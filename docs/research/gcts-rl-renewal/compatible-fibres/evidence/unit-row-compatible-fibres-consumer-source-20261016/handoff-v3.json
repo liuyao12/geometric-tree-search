@@ -1,0 +1,85 @@
+{
+  "ADVISER_VERSION": "unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres",
+  "API": {
+    "arity": "Six module keywords, four injected engine keywords; inherited Source docstring five-keyword typo remains explicitly nonoperative.",
+    "engine_callback": "validate_advice(*,state,decision,batch,tick)",
+    "module": "validate_advice(*,language,semantics,state,decision,batch,tick)",
+    "receipt_modes": [
+      "ADVICE_BATCH",
+      "PENDING_KEYS"
+    ],
+    "receipt_schema": "unit-row-advice-validation-v1"
+  },
+  "VERSION": "unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions",
+  "actual_execution_authorized": false,
+  "all_named_functions_raw_AST_exact": 8,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_static": {
+    "bytes": 2143,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/author-static-v3.json",
+    "sha256": "1c91471391d9cdcfa8c6223053871ba7f87b3152e3a8d0a5d11b8ee792a4688a"
+  },
+  "forward_patch": {
+    "bytes": 749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/forward.patch",
+    "sha256": "a056fdc3b2594f40402ae272c373bb5f5a5ec748718af02aba2c8e6a117e147a"
+  },
+  "full_inverse_patch": {
+    "bytes": 749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/inverse.patch",
+    "sha256": "b858f253946df68cd6761d7f44c1957a16015351b3202af391cd93231f67705b"
+  },
+  "parent_contract": {
+    "bytes": 19988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/Source-contract-v2.json",
+    "sha256": "70675d6cd0bc2fb61dc02b13bba361ca96af98ae133808bbf93d44bb1ad7303c"
+  },
+  "parent_source": {
+    "bytes": 16290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+    "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+  },
+  "remaining_gates": [
+    "This constant-only Source is UNEXECUTED; no old36pass4SKIP controls or prior target outcome is promoted. Current controls, Root caller6/grant and original native20/512MiB/failure55/owned60/caller90+1 remain required.",
+    "Pair only adviser VERSION unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres and engine exact consumer VERSIONv3 through authenticated current Source17/input2. No adviser3 or engine8 capsule is fabricated before their author freeze.",
+    "Adviser compatible-source fibre generation may change which preferences are proposed, not membership/ranking/ports/legality/wholebatch/current PENDING checks here. Full fallback, global scheduler and exact rollback remain mandatory externally.",
+    "No scientific/project import, function, model/Q/word decoding, native clock, test/control, actual plan/grant, proof, board, trajectory, GCTS/RL or performance acceptance occurs in this packet."
+  ],
+  "schema": "unit-row-compatible-fibres-consumer-handoff-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 16299,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+    "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+  },
+  "source_contract": {
+    "bytes": 10250,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-contract-v3.json",
+    "sha256": "ceead8e6bea02ca1559e2042d3bc8a3b227bea962e844f2e11a9c2a2284a4658"
+  },
+  "source_delta": {
+    "bytes": 2048,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-delta-v3.json",
+    "sha256": "3c9e2326682ba21dafa93c03bb540bdd024c672b3aaedc872d3bd0ec620ae3d9"
+  },
+  "source_only": true,
+  "sources": {
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "status": "UNEXECUTED_SOURCE_ONLY_PENDING_DISTINCT_REVIEW_AND_ROOT_ACTIVATION"
+}

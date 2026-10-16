@@ -1,0 +1,88 @@
+{
+  "added_regions": [],
+  "changed_raw_AST_regions": [],
+  "edits": [
+    {
+      "after": "VERSION = 'lazy-unit-row-global-engine-v8-compatible-fibres-versions'\n",
+      "before": "VERSION = 'lazy-unit-row-global-engine-v7-fair-interface-versions'\n",
+      "new_offset": 317,
+      "old_offset": 317
+    },
+    {
+      "after": "ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres'\nADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions'\n",
+      "before": "ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'\nADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v2-interface-ordering'\n",
+      "new_offset": 662,
+      "old_offset": 659
+    }
+  ],
+  "forward_complete_raw_exact": true,
+  "inverse_complete_raw_exact": true,
+  "parent_source": {
+    "bytes": 52615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+    "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+  },
+  "patches": {
+    "forward.patch": {
+      "bytes": 1115,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/forward.patch",
+      "sha256": "878eaee8fae8d4f456141fe621934cd244ec9c2c33abc290484be29560e72f6a"
+    },
+    "inverse.patch": {
+      "bytes": 1115,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/inverse.patch",
+      "sha256": "1a8aada94594af0541a84d31322f7f43d5dcade1caa29ad86a81e0dc7acd402f"
+    }
+  },
+  "removed_regions": [],
+  "schema": "compatible-fibres-full-raw-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52627,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+    "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_regions": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "certify_by_current_cover",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.search.walk"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "added_regions": [],
+  "changed_raw_AST_regions": [
+    "propose_branch",
+    "propose_branch.ui_mp_stream"
+  ],
+  "edits": [
+    {
+      "after": "VERSION = 'unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres'\n",
+      "before": "VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'\n",
+      "new_offset": 343,
+      "old_offset": 343
+    },
+    {
+      "after": "            pairs = indices((len(universals), len(terms)))\n            pairs_done, fibres = False, []\n            while True:\n                # Admit at most one matching nonempty fibre per yielded turn.\n                # Failed pair/read tests charge work, not an empty proposal turn.\n                if not pairs_done:\n                    for ui, ti in pairs:\n                        work.step()\n                        universal, term = universals[ui], terms[ti]\n                        try:\n                            instance = language.substitute(universal[2], universal[1], term)\n                        except outside:\n                            continue\n                        if instance != goal:\n                            continue\n                        sources = []\n                        for source in range(row):\n                            work.step()\n                            if source != chosen and read_compatible(source, universal):\n                                sources.append(source)\n                        if sources:\n                            fibres.append((universal, term, sources, 0))\n                            break\n                    else:\n                        pairs_done = True\n                if not fibres:\n                    return\n                # FIFO between admitted pairs; canonical row order within each.\n                universal, term, sources, position = fibres.pop(0)\n                source = sources[position]\n                if position+1 < len(sources):\n                    fibres.append((universal, term, sources, position+1))\n",
+      "before": "            sources = [source for source in range(row) if source != chosen]\n            for ui, ti, si in indices((len(universals), len(terms), len(sources))):\n",
+      "new_offset": 18662,
+      "old_offset": 18661
+    },
+    {
+      "after": "",
+      "before": "                universal, term, source = universals[ui], terms[ti], sources[si]\n                try:\n                    instance = language.substitute(universal[2], universal[1], term)\n                except outside:\n                    yield None\n                    continue\n                if instance != goal or not read_compatible(source, universal):\n                    yield None\n                    continue\n",
+      "new_offset": 20286,
+      "old_offset": 18849
+    }
+  ],
+  "forward_complete_raw_exact": true,
+  "inverse_complete_raw_exact": true,
+  "parent_source": {
+    "bytes": 24988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+    "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+  },
+  "patches": {
+    "forward.patch": {
+      "bytes": 3052,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/forward.patch",
+      "sha256": "d360e1f52066b7c8477a0172ccf111172ed57d350476b3d4bd03a7a52db3b807"
+    },
+    "inverse.patch": {
+      "bytes": 3052,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/inverse.patch",
+      "sha256": "ccd8adb916dbaadb7008f386082d985ed5fd528dd2857c2b22a99838f7083a77"
+    }
+  },
+  "removed_regions": [],
+  "schema": "compatible-fibres-full-raw-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 26007,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+    "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_regions": [
+    "require",
+    "canonical",
+    "sha",
+    "iter_fair_indices",
+    "iter_fair_indices.shell",
+    "_Quota",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "propose_branch.clone",
+    "propose_branch.tile",
+    "propose_branch.compatible",
+    "propose_branch.nodes",
+    "propose_branch.indices",
+    "propose_branch.read_compatible",
+    "propose_branch.expand_frame",
+    "propose_branch.emit",
+    "propose_branch.fallback_stream",
+    "propose_branch.licence_stream",
+    "propose_branch.term_occurrences",
+    "propose_branch.transport_stream"
+  ]
+}

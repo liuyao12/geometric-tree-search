@@ -1,0 +1,146 @@
+{
+  "API": {
+    "call": "run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,fallback,certify_fallback,tick)",
+    "expected_cases": 43,
+    "factory": "Same actual current engine public callbacks/fresh authority. Additional component factories have no advice callbacks and call actual global decision; no API expansion/private cache mutation or fake degree/EOF.",
+    "keyword_count": 8,
+    "new_cases": 3,
+    "new_cases_key": "new_cases",
+    "output_schema": "unit-row-goal-advice-controls-v1",
+    "preserved_prior_cases": 40,
+    "qualification": "All43 PASSED0SKIP/no other gap plus every other current Root control prerequisite. Existing40 unchanged; missing eligible reopening/replacement/source fibre stays explicit SKIP and gates targets."
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 12371,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/author-static-v1.json",
+    "sha256": "3c1d571eb87f306d9429fcb99dd1a36b335c7a5be2c17840737ca52aed9e8250"
+  },
+  "author_static_checks": 20,
+  "authorship_disclosure": "Author wrote prior controls/membership/degree proposer/fallback; did not author adviser3/consumer3/engine8/c354/transition. Root component note is explicit calibration, not supplied theorem proof. Distinct arithmetic review discloses adviser/engine/c354/transition authorship. Root owns caller/runtime/once/resource/actual/target admission.",
+  "dependency_contracts": {
+    "adviser": {
+      "bytes": 15617,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "3dffe2290254ad969cfcb8817d1d149e8ba6a944ac88e1791cd55b8bcecfe048"
+    },
+    "engine": {
+      "bytes": 7403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "986bec372461b8e629893c289e073fbbb1f0f6445d24be52d7f285ece1c64091"
+    },
+    "validator": {
+      "bytes": 10250,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-contract-v3.json",
+      "sha256": "ceead8e6bea02ca1559e2042d3bc8a3b227bea962e844f2e11a9c2a2284a4658"
+    }
+  },
+  "forward_patch": {
+    "bytes": 14847,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/fair40-to-compatible43-forward.patch",
+    "sha256": "0164284a932b8a334464d07b25ec10df897479525c12e9c755a8070e4e785045"
+  },
+  "full_inverse_patch": {
+    "bytes": 14847,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible43-to-fair40-full-inverse.patch",
+    "sha256": "9a4c93e29f2ed8942d49b4d633cae97086d63a16f8b0a696136931fc120d2d55"
+  },
+  "new_cases": [
+    "compatible-occupied-UI-source-fibre-returned-and-validated",
+    "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+    "missing-UI-source-remains-PENDING-not-a-fact"
+  ],
+  "prior40_newcase_names": [
+    "real-returned-interface-features-score-and-order",
+    "forged-interface-feature-and-score-rejections",
+    "Boolean-versus-integer-feature-and-score-rejections",
+    "obsolete-adviser-version-rejected",
+    "later-ranked-quality-defect-and-order-rejected",
+    "real-returned-root-reopening-remains-legal-and-demoted",
+    "real-returned-universal-diversity-with-declared-term-horizon",
+    "nonempty-READY-replacement-adopted-after-definite-rejection",
+    "replacement-installs-anchor-only-not-future-obligations",
+    "replacement-owned-nonempty-inner-and-parent-rollback-exact"
+  ],
+  "remaining_gates": [
+    "Genuine whole current controls review; separate current adviser/consumer/engine reviews.",
+    "Exact current Root cold caller/source/input/native/external boundaries and once grants remain Root-owned. No actual authored here.",
+    "All43 noSKIP/no gaps plus other current control stages before targets; no inherited old36/4/current Source prediction.",
+    "No dynamic finite-index/multi-term calibration, generation completeness, unseen descriptor absence, fullgraph/trajectory/proof/RL/marking learning or speedup claim.",
+    "No scientific function executed; Source-only evidence does not establish actual component legality, runtime eligibility or native fit."
+  ],
+  "schema": "unit-row-compatible-fibres-controls-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-compatible-fibres-controls-Source",
+  "source": {
+    "bytes": 82817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+    "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+  },
+  "source_contract": {
+    "bytes": 15817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/Source-contract-v1.json",
+    "sha256": "696a323d10c963817b59975d3c9d0ece42926200c27894a737e5b37785fa5ffd"
+  },
+  "source_delta": {
+    "bytes": 17276,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/Source-delta-v1.json",
+    "sha256": "3fb7f762585213af9798e2d67e2650ba4b65343a023116e0fb7f57675bb1540b"
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 82817,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+      "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "unchanged_old30_definitions": 11
+}

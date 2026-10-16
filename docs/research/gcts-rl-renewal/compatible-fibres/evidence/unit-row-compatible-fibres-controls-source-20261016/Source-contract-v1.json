@@ -1,0 +1,242 @@
+{
+  "API": {
+    "call": "run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,fallback,certify_fallback,tick)",
+    "expected_cases": 43,
+    "factory": "Same actual current engine public callbacks/fresh authority. Additional component factories have no advice callbacks and call actual global decision; no API expansion/private cache mutation or fake degree/EOF.",
+    "keyword_count": 8,
+    "new_cases": 3,
+    "new_cases_key": "new_cases",
+    "output_schema": "unit-row-goal-advice-controls-v1",
+    "preserved_prior_cases": 40,
+    "qualification": "All43 PASSED0SKIP/no other gap plus every other current Root control prerequisite. Existing40 unchanged; missing eligible reopening/replacement/source fibre stays explicit SKIP and gates targets."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-compatible-fibres-controls-Source",
+    "source": {
+      "bytes": 82817,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+      "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+    },
+    "source_contract": "exact current raw capsule",
+    "source_only": true,
+    "source_review_passed": "Distinct genuine reviewer decides",
+    "sources": "exact current full map"
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 12371,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/author-static-v1.json",
+    "sha256": "3c1d571eb87f306d9429fcb99dd1a36b335c7a5be2c17840737ca52aed9e8250"
+  },
+  "authorship_disclosure": "Author wrote prior controls/membership/degree proposer/fallback; did not author adviser3/consumer3/engine8/c354/transition. Root component note is explicit calibration, not supplied theorem proof. Distinct arithmetic review discloses adviser/engine/c354/transition authorship. Root owns caller/runtime/once/resource/actual/target admission.",
+  "component_design": {
+    "bytes": 3146,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-next-diagnosis-source-20261016/ROOT-reopening-component-design-v1.json",
+    "sha256": "3536a4f16e78490a7575af2abe8f8cf5769a1a70629c91dea6b9c251b5bc3df0"
+  },
+  "controls": {
+    "incompatible_source": "No extra search; join actual existing independently rejected pending key/literal remote mark, same-state returned READY advice and original remote TRY. Validate every returned read and no incompatible key returned/executed/noEXCLUDE. No claim that unreturned descriptor was never generated or a base candidate pruned.",
+    "missing_source": "Only actual returned UI_MP MP member universal port0 external obligation at unoccupied row with absent formula mark; exact PENDING and factFalse, full independently validated batch retained.",
+    "occupied_source": "Generic original AX_name from actual previous fixture, full original AX tile atrow1 plus existing fixture tiles. Real state/globalBRANCH/complete adviser batch/independent receipt; requires an actual returned UI_MP universal premise at occupied matching row1. Absence SKIP.",
+    "preservation": "All old30 eleven definitions raw+AST exact; all existing40 names/checks retained. Final wrapper only minimally adds components/fibre observations and updates own/current version and counts. Entire prior positive replacement3 block raw exact.",
+    "quota_and_fallback": "All original old40 genuine quotaUNKNOWN/empty-hint fallback/globaldeadforced/rollback/exception cases retained; no duplicate quota search or new degree/EOF authority.",
+    "replacement": "Unchanged genuine same-BRANCH real READY future-bearing replacement requirement: full real batch checked before first actual future-bearing proposal retained as control-only order-preserving subsequence. One anchor installed, no future marks or facts; own public child/parent rollback. Not target policy.",
+    "root_reopening_component": "First eligible original declared parameter v, F=eq(v,v), one selected original UG20 reading F at8; original final target boundary retained. Component/Source proposal only, not target proof/route or reachable-trajectory assertion. Real engine.decision must BRANCH; real5/3/1/50000/8 actual batch saved before eligibility and independently validated complete. It enters ordinary returned-batch reopening scan; genuine absent result SKIP, no fabricated family/rescoring.",
+    "unknown": "Component nonBRANCH/UNKNOWN/empty/future-family absence retained as actual diagnostic/gap, never success. No fit prediction; native20/512 gates unchanged."
+  },
+  "costs_and_limits": {
+    "aggregate_owned_bytes": 536870912,
+    "baseline22_observed_cost_is_not_fit_prediction": "Root reported11.942900s. Reused work avoids duplicate root adoption; all collection/extra3search/output costs remain same20 and mayUNKNOWN. No stage split/cap/quota/model reduction.",
+    "caller_seconds": 90,
+    "encoded_output_bytes": 4194304,
+    "expanded_output_bytes": 16777216,
+    "failure_only_seconds": 55,
+    "finish_seconds": 1,
+    "height": 24,
+    "joint_seconds": 20,
+    "maximum_events": 2000,
+    "maximum_nodes": 128,
+    "owned_seconds": 60,
+    "same_original_profile": "shared-bounded-six-rule-B12-N44-v2"
+  },
+  "current_versions": {
+    "adviser": "unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres",
+    "engine": "lazy-unit-row-global-engine-v8-compatible-fibres-versions",
+    "validator": "unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions"
+  },
+  "dependency_contracts": {
+    "adviser": {
+      "bytes": 15617,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "3dffe2290254ad969cfcb8817d1d149e8ba6a944ac88e1791cd55b8bcecfe048"
+    },
+    "engine": {
+      "bytes": 7403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "986bec372461b8e629893c289e073fbbb1f0f6445d24be52d7f285ece1c64091"
+    },
+    "validator": {
+      "bytes": 10250,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-contract-v3.json",
+      "sha256": "ceead8e6bea02ca1559e2042d3bc8a3b227bea962e844f2e11a9c2a2284a4658"
+    }
+  },
+  "historical_actual_disposition": {
+    "bytes": 6221,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+    "sha256": "57d83c7a8a1e91df402c22b9274b659ac622a413e4859593fe45c89dc984520e"
+  },
+  "historical_actual_scope": {
+    "B_bytes": 63111168,
+    "label": "Immutable prior Source1b90 actual only; not current Source success, current no-replay/no reclassification.",
+    "native_launch_to_postprobe_ns": 14224545000,
+    "passed": 36,
+    "qualification": false,
+    "skipped": 4
+  },
+  "input_bindings": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "new_cases": [
+    "compatible-occupied-UI-source-fibre-returned-and-validated",
+    "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+    "missing-UI-source-remains-PENDING-not-a-fact"
+  ],
+  "original30_source": {
+    "bytes": 48798,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+    "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e"
+  },
+  "parent_contract": {
+    "bytes": 13569,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/Source-contract-v1.json",
+    "sha256": "a7c04560f265762dc9cd331491b5806cec9e5e8f0333334e4ae9ca25596c26b9"
+  },
+  "parent_source": {
+    "bytes": 71685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+    "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+  },
+  "previous_checkpoint": {
+    "bytes": 21223,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-publication-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "46f29e3c24f2e4035f39d009e32e948ca361bf43596aafa28241defb97ab119c"
+  },
+  "ranking_unchanged": {
+    "features": "Exactly7; independent recomputation from candidate preimages/ordered offsets, selected outputs, current t/m and literal root subtrees, not supplied feature metadata.",
+    "ordering": "Descending lexicographic score5 then ascending full canonical anchor key. Independent actual consumer verifies whole batch, including every later proposal.",
+    "pair_count": "External obligations at unoccupied rows, distinct by actual row+canonical formula; repeated ordered ports remain present but count one pair. No causal reuse/fact acceptance.",
+    "quality": "0 iff any distinct unoccupied external pair has literal formula equal to named current goal_root; else2 if a member produces that goal at its actual rootrow; else1. RootNone gives connectedFalse/reopensFalse/class1.",
+    "score": [
+      "quality_class",
+      "-unresolved_interface_pairs",
+      "int(anchor_novel)",
+      "literal_list_subtree_overlap",
+      "-primitive_members"
+    ]
+  },
+  "remaining_gates": [
+    "Genuine whole current controls review; separate current adviser/consumer/engine reviews.",
+    "Exact current Root cold caller/source/input/native/external boundaries and once grants remain Root-owned. No actual authored here.",
+    "All43 noSKIP/no gaps plus other current control stages before targets; no inherited old36/4/current Source prediction.",
+    "No dynamic finite-index/multi-term calibration, generation completeness, unseen descriptor absence, fullgraph/trajectory/proof/RL/marking learning or speedup claim.",
+    "No scientific function executed; Source-only evidence does not establish actual component legality, runtime eligibility or native fit."
+  ],
+  "retained_prior40_labels": [
+    "real-returned-interface-features-score-and-order",
+    "forged-interface-feature-and-score-rejections",
+    "Boolean-versus-integer-feature-and-score-rejections",
+    "obsolete-adviser-version-rejected",
+    "later-ranked-quality-defect-and-order-rejected",
+    "real-returned-root-reopening-remains-legal-and-demoted",
+    "real-returned-universal-diversity-with-declared-term-horizon",
+    "nonempty-READY-replacement-adopted-after-definite-rejection",
+    "replacement-installs-anchor-only-not-future-obligations",
+    "replacement-owned-nonempty-inner-and-parent-rollback-exact"
+  ],
+  "schema": "unit-row-compatible-fibres-controls-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-compatible-fibres-controls-Source",
+  "source": {
+    "bytes": 82817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+    "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+  },
+  "source_delta": {
+    "bytes": 17276,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/Source-delta-v1.json",
+    "sha256": "3fb7f762585213af9798e2d67e2650ba4b65343a023116e0fb7f57675bb1540b"
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 82817,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+      "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "version": "unit-row-compatible-source-fibres-controls-v1"
+}

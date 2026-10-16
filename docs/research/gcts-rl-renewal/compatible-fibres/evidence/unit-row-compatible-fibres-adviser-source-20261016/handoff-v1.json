@@ -1,0 +1,69 @@
+{
+  "API": {
+    "body_schema": "unit-row-goal-branch-advice-batch-v1",
+    "decision": "Exact {kind:BRANCH,row:integer0..23}. Root must establish actual fresh global dead/forced/earliest-generation decision; this adviser cannot certify the scheduler or make a non-BRANCH decision executable.",
+    "dependencies": "Caller passes original private membership language, exact c354 semantics module, exact69b4 open_fallback and iter_syntax endpoints, and original native-budget callback. No project Source imports and no old finite-family/donor code.",
+    "inputs_not_allowed": "No proof word, donor, target route, manual term list, learned library, row route, recipe sequence or caller-supplied goal obligations. Demands come from current original output marks; term/universal pools come from current original inputs and canonical bounded syntax.",
+    "proposal_schema": "unit-row-goal-incident-proposal-v1",
+    "signature": "propose_branch(*,language,semantics,fallback,iter_syntax,state,decision,tick,maximum_work=50000,maximum_proposals=8,maximum_demands=16,maximum_terms=16,maximum_rounds=8)"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 3466,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/author-static-v1.json",
+    "sha256": "72515899b80579cf41efeb5fcab997dbaffbded999ab1b9649a87fd5223e6e95"
+  },
+  "paired_consumer": {
+    "bytes": 16299,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+    "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+  },
+  "parent_contract": {
+    "bytes": 21577,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/Source-contract-v2.json",
+    "sha256": "25570f6d3f9bce83c7c13781ec204b62bc970e104936e73ed126b5f4e7bc64af"
+  },
+  "parent_source": {
+    "bytes": 24988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+    "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+  },
+  "policy": {
+    "admission_and_order": "Before each yielded attempt admit at most one next matching pair with nonempty source list; skipped pair/source checks still charge work. Pop first admitted FIFO fibre, take its next canonical source and requeue if more remain. A previously requeued fibre can precede a newly appended one. This is finite-prefix ordering, not equal service or guaranteed useful/different interface.",
+    "cost_scope": "guarded_steps charges matching/admission/source scanning and original downstream checks; descriptor_steps remains yielded schema attempts, not visited pair count or exact cardinality. No new telemetry/outerfields. No phase timing or speedup prediction.",
+    "finite_argument": "Each bounded pair is examined at most once in diagonal order. Each admitted fibre advances its finite canonical source list once per service and FIFO has finitely many admitted entries; if consumption/quota continue, every retained compatible source/pair descriptor is reached. Original finite rounds/work can stop earlier; no exhaustion of full original universe inferred.",
+    "legality": "After source selection invoke old tile independently for original UI licence and original ordered MP, then unchanged emit/compatible member-union checker including full key/preimage, complete t/m, selected/excluded, repeated ordered ports, and digest/preimage collisions. Explicit member illegality can still yield None and consume the turn. No new pruning/exclusion/domain/degree/EOF authority.",
+    "matching": "Within each UI_MP frame, consume existing lazy diagonal universal/term pairs. Substitute once per visited pair. Skip nonmatching or exact OutsideLanguage pairs with charged work; no empty proposal-turn yield. No donor, target-specific symbols/term/row/proof sequence or goal from outside current state.",
+    "retention_bound": "At most one fibre admitted before each yielded stream turn. Outer unchanged loop calls each stream at most maximum_rounds times, so at a suspended yield active fibres<=maximum_rounds<=32; each retains<=23source row indices, one position and references to bounded universal/term pool entries. No candidate packets for the full pair-source product are prebuilt. A scan may process many mismatching finite pairs before yielding and may hit unchanged work/native limit.",
+    "source_fibre": "For a matching pair, scan canonical strict-prior source rows except current anchor. Keep row iff output mark absent OR literal original formula mark equals universal. Occupied compatible sources remain; absent source is PENDING, never an accepted fact. Source compatibility is a necessary advisory test only, not whole legality."
+  },
+  "remaining_limits": [
+    "Current previous36PASS4SKIP/no targets remain history; no new qualification inherits.",
+    "Same finite salient term/universal pools, bounded inverseUG frames, bestfamily/fullanchor and outputtopk can omit every useful family.",
+    "No prediction that READY future-bearing/reopening/replacement controls will succeed; absence of returnedtopk is not non-generation.",
+    "Ragged UI scan may consume quota before another descriptor; UNKNOWN partial advice remains diagnostic only.",
+    "No learned cluster/marking/RL/base grammar change/proof/completeGCTSgraph/scheduler/trajectory/resource or acceleration claim."
+  ],
+  "review_schema": "unit-row-goal-branch-adviser-typed-Source-review-v1",
+  "review_scope": "unit-row-generic-goal-branch-adviser-Source",
+  "schema": "compatible-fibres-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 26007,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+    "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+  },
+  "source_contract": {
+    "bytes": 15617,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-contract-v1.json",
+    "sha256": "3dffe2290254ad969cfcb8817d1d149e8ba6a944ac88e1791cd55b8bcecfe048"
+  },
+  "source_delta": {
+    "bytes": 4795,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-delta-v1.json",
+    "sha256": "3081defce5431efe91a210e7024d1ede599f7860a8fb8fedfb73df8d8b23bf7e"
+  },
+  "source_only": true,
+  "status": "IMMUTABLE_SOURCE_ONLY_UNEXECUTED_PENDING_DISTINCT_REVIEW_CURRENT_CONTROLS_AND_ROOT_GRANTS"
+}

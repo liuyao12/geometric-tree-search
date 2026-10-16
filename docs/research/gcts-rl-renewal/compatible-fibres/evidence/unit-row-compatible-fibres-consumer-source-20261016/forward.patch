@@ -1,0 +1,14 @@
+--- independent_advice_consumer_v2.py
++++ independent_advice_consumer_v3.py
+@@ -8,9 +8,9 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-independent-advice-consumer-validator-v2-interface-ordering'
++VERSION = 'unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions'
+ SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+-ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'
++ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+                 'degree_or_EOF_accepted', 'scheduler_accepted',
+                 'complete_GCTS_model_accepted', 'trajectory_accepted',

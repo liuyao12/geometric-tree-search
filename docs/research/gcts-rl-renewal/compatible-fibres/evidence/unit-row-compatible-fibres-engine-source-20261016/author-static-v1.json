@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "claim": "Full raw offset forward/inverse reconstruct both complete parent/current modules; unified patches saved.",
+      "id": "P1",
+      "passed": true
+    },
+    {
+      "claim": "Adviser changes only ownVERSION and ui_mp_stream;21 other named function/class/nested regions raw+AST exact.",
+      "id": "P2",
+      "passed": true
+    },
+    {
+      "claim": "Engine changes only own/adviser/validator3module VERSION literals; all40named regions and allothermoduleAST exact.",
+      "id": "P3",
+      "passed": true
+    },
+    {
+      "claim": "AST compile only without Source evaluation/import; no scientific/helper/kernel/model/Q/word/clock/test/actual calls.",
+      "id": "P4",
+      "passed": true
+    }
+  ],
+  "full_module_AST_exact_except": [
+    "VERSION",
+    "ADVISER_VERSION",
+    "ADVICE_VALIDATOR_VERSION"
+  ],
+  "schema": "compatible-fibres-engine-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52627,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+    "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+  },
+  "source_delta": {
+    "bytes": 3561,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/Source-delta-v1.json",
+    "sha256": "03de49fe7713ded8dbbde2a336a55962aba144ace49f061db24da5c60abaefc6"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "certify_by_current_cover",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.search.walk"
+  ]
+}

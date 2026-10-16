@@ -1,0 +1,287 @@
+{
+  "all_author_static_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 20,
+  "checks": [
+    {
+      "check": "AST parse and compile only",
+      "evidence": "Code object never executed; raw/small JSON/AST metadata only.",
+      "passed": true
+    },
+    {
+      "check": "exact immutable Source bytes",
+      "evidence": {
+        "bytes": 82817,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+        "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw forward/inverse",
+      "evidence": {
+        "changed_regions": 7,
+        "parent": {
+          "bytes": 71685,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+          "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "old30 eleven definitions whole raw and AST exact",
+      "evidence": [
+        {
+          "kind": "ClassDef",
+          "name": "Unavailable",
+          "ordinal": 0,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "1bfb3ab02870cf57260ad49ecd68159e8b9fab808d71399e50f30533562c0bfd"
+        },
+        {
+          "kind": "ClassDef",
+          "name": "CallbackExhausted",
+          "ordinal": 1,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "b8658becece9d36bfc66968f086ccedfc08495b54261b2104206d07c09a1bb36"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "need",
+          "ordinal": 2,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "aa140feb98f72734704d885983d92f08a327fe22bec968da0dc273a63f817f91"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "canonical",
+          "ordinal": 3,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "164d176a437c1e1bc2358db13b42955e38cf8c8c8e003ad2d57c3d3ed0929d06"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "digest",
+          "ordinal": 4,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "f3e8c46a05bd8e4a89e9d087fdc05177b18ce63355e98c2350b27b10297bf681"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "tile",
+          "ordinal": 5,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "9b7a29e4366e4ef2bae556ee54a0adbfbb2784d5bba7383d70dc677de226c377"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "state",
+          "ordinal": 6,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "7ebc944c5c72d82549784d9051c6ecb0ad426c64613fa95960e0dc7cfaccecb0"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "ug",
+          "ordinal": 7,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "a7556b0c378b78803e4cf134869efe9624382976258d649bb1d93d99eb9df113"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "obligations",
+          "ordinal": 8,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "3814781b8ba1395c5622f7fcd2ba094e7e90c19740adb2b5242fdb358149b7f0"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "run_controls",
+          "ordinal": 9,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "5866800ad90e7f541bd7a542ef8db7438f549f924dd8f98d8edcd2c40394d424"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "run_controls",
+          "ordinal": 10,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "de7a80b7793a56a218094a846d80b171720266b4129f6ace5515b9bc2364ee2f"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "check": "all40 existing names/checks preserved",
+      "evidence": "All previous30 function bodies exact; final10 labels and complete real replacement3 body exact, except own current adviser expectation/version/documentation and new43 counting. Complete inverse records all edits.",
+      "passed": true
+    },
+    {
+      "check": "entire prior actual replacement/adoption/rollback block raw exact",
+      "evidence": {
+        "bytes": 5466,
+        "sha256": "3a40b691b227f9dbac75be0bc3d0ce99bee4898713028e6b8ee35a89e629d273"
+      },
+      "passed": true
+    },
+    {
+      "check": "same eight keyword API, unchanged result schema",
+      "evidence": [
+        "language",
+        "engine_factory",
+        "adviser",
+        "validate_advice",
+        "degree_proposer",
+        "fallback",
+        "certify_fallback",
+        "tick"
+      ],
+      "passed": true
+    },
+    {
+      "check": "three new cases43 total",
+      "evidence": [
+        "compatible-occupied-UI-source-fibre-returned-and-validated",
+        "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+        "missing-UI-source-remains-PENDING-not-a-fact"
+      ],
+      "passed": true
+    },
+    {
+      "check": "only original three stdlib imports",
+      "evidence": "No project import, code execution, model/Q input, clock or activation.",
+      "passed": true
+    },
+    {
+      "check": "exact current Sources10",
+      "evidence": {
+        "adviser": {
+          "bytes": 26007,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+          "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+        },
+        "controls": {
+          "bytes": 82817,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+          "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+        },
+        "degree_checker": {
+          "bytes": 27553,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+          "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+        },
+        "degree_proposer": {
+          "bytes": 22030,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+          "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+        },
+        "engine": {
+          "bytes": 52627,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+          "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+        },
+        "fallback": {
+          "bytes": 24227,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+          "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+        },
+        "kernel": {
+          "bytes": 10323,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+          "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+        },
+        "membership": {
+          "bytes": 20112,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+          "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+        },
+        "transition": {
+          "bytes": 8134,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+          "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+        },
+        "validator": {
+          "bytes": 16299,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+          "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "literal original component construction",
+      "evidence": "Root-approved open component, parameter chosen generically; original target boundary preserved by unchanged state helper, no hand-created family/proof route.",
+      "passed": true
+    },
+    {
+      "check": "actual engine BRANCH, full real return/receipt",
+      "evidence": "Public engine.decision; no adviser called unless actual kind BRANCH; full batch saved before status eligibility, actual original validator checks complete READY batch; strongflagsFalse.",
+      "passed": true
+    },
+    {
+      "check": "exact owned component rollback",
+      "evidence": "Public checkpoint before global decision, final public rollback whole snapshot check; no selected future family installed and no private mutation.",
+      "passed": true
+    },
+    {
+      "check": "original policy controls not raised",
+      "evidence": "Each new component adviser call work50000/demands5/rounds3/terms1/proposals8; no separate fair helper or timer; native/delegate authority external.",
+      "passed": true
+    },
+    {
+      "check": "occupied source actual declaration provenance",
+      "evidence": "AX_name comes from genuine previous30 fixture; original named AX tile atrow1 plus original selected fixture; whole membership/state/engine/batch/receipt checked in future actual, no eligibility promise.",
+      "passed": true
+    },
+    {
+      "check": "incompatible read observations only",
+      "evidence": "Reuse genuine pending rejection and same-state returned batch; inspect full preimage reads against literal current m, actual TRY excludes illegal key and noEXCLUDE; no unseen-generation/base pruning authority.",
+      "passed": true
+    },
+    {
+      "check": "missing read is actual MP universal source",
+      "evidence": "Actual UI_MP member rule mp/port0, external unoccupied row, absent channel1 mark, literal PENDING/factFalse; independent wholebatch receipt.",
+      "passed": true
+    },
+    {
+      "check": "historical36PASS4SKIP immutable",
+      "evidence": "Prior actual records only referenced by pin; no replay/reclassification/runtime inheritance. All new absence stays SKIP/unqualified.",
+      "passed": true
+    },
+    {
+      "check": "unchanged mathematical/native gates",
+      "evidence": {
+        "aggregate_owned_bytes": 536870912,
+        "baseline22_observed_cost_is_not_fit_prediction": "Root reported11.942900s. Reused work avoids duplicate root adoption; all collection/extra3search/output costs remain same20 and mayUNKNOWN. No stage split/cap/quota/model reduction.",
+        "caller_seconds": 90,
+        "encoded_output_bytes": 4194304,
+        "expanded_output_bytes": 16777216,
+        "failure_only_seconds": 55,
+        "finish_seconds": 1,
+        "height": 24,
+        "joint_seconds": 20,
+        "maximum_events": 2000,
+        "maximum_nodes": 128,
+        "owned_seconds": 60,
+        "same_original_profile": "shared-bounded-six-rule-B12-N44-v2"
+      },
+      "passed": true
+    },
+    {
+      "check": "no scientific runtime",
+      "evidence": "No imports/functions/kernel/checker/search/adviser/model/clock/test/actual/grant/plan/output execution; Source AST/compile-only and raw/small metadata operations.",
+      "passed": true
+    }
+  ],
+  "distinct_review_required": true,
+  "schema": "unit-row-compatible-fibres-controls-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 82817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+    "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+  },
+  "source_only": true
+}

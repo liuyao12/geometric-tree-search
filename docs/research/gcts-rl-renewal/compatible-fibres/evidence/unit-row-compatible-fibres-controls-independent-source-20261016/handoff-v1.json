@@ -1,0 +1,29 @@
+{
+  "check_count": 14,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 14618,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "e8f4b4cb0c2a9775b6dd4d8afd94e18202d5c5bd3a69b5685604a1a21d36bcf0"
+  },
+  "raw_reference_count": 29,
+  "schema": "compatible-fibres-controls-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 82817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+    "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+  },
+  "source_contract": {
+    "bytes": 15817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/Source-contract-v1.json",
+    "sha256": "696a323d10c963817b59975d3c9d0ece42926200c27894a737e5b37785fa5ffd"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 5567,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "e26aadb492c7a8da287d5ad9821f239569f3f61a058ff90f57a726ae4fae90e7"
+  }
+}

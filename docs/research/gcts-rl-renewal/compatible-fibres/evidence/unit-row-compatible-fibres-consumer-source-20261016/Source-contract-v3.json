@@ -1,0 +1,147 @@
+{
+  "API": {
+    "arity": "Six module keywords, four injected engine keywords; inherited Source docstring five-keyword typo remains explicitly nonoperative.",
+    "engine_callback": "validate_advice(*,state,decision,batch,tick)",
+    "module": "validate_advice(*,language,semantics,state,decision,batch,tick)",
+    "receipt_modes": [
+      "ADVICE_BATCH",
+      "PENDING_KEYS"
+    ],
+    "receipt_schema": "unit-row-advice-validation-v1"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "schema": "unit-row-independent-advice-consumer-typed-Source-review-v3",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-independent-advice-consumer-validator-Source",
+    "source": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    "source_contract": "exact current raw capsule",
+    "source_only": true,
+    "source_review_passed": "Distinct reviewer decides; author static is not a peer pass.",
+    "sources": {
+      "membership": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "semantics": {
+        "bytes": 27553,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+      },
+      "validator": {
+        "bytes": 16299,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+        "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_static": {
+    "bytes": 2143,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/author-static-v3.json",
+    "sha256": "1c91471391d9cdcfa8c6223053871ba7f87b3152e3a8d0a5d11b8ee792a4688a"
+  },
+  "authorship_disclosure": "Author wrote parent f668/3455 consumer, prior horizon/control fixtures and original1717/codec/family. Adviser3/engine8 author is arithmetic; membership is controls-author. This is a constant-only consumer successor, not an independent new semantic checker. Distinct Root+peer review and measured actuals are required.",
+  "checkpoint_historical_only": {
+    "bytes": 21223,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-publication-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "46f29e3c24f2e4035f39d009e32e948ca361bf43596aafa28241defb97ab119c"
+  },
+  "inheritance": "Entire parent70675 contract applies except own/adviser VERSION literals and exact validator Source capsule. Every function/ranking/ordered ports/PENDING/current state+binding/wholebatch/flags/schema/WORK_FIELDS/limits/import remains byte and AST exact. Parent Source/prose/current checkpoint are historical provenance, not current execution or an adviser3/engine8 implementation claim.",
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "parent_contract": {
+    "bytes": 19988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/Source-contract-v2.json",
+    "sha256": "70675d6cd0bc2fb61dc02b13bba361ca96af98ae133808bbf93d44bb1ad7303c"
+  },
+  "parent_source": {
+    "bytes": 16290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+    "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+  },
+  "preservation": {
+    "PENDING_branch_raw_exact": true,
+    "all_named_functions_raw_AST_exact": 8,
+    "score5_features7_all_checks_exact": true,
+    "two_constants_only": true,
+    "unchanged_limits_WORK_FIELDS_strongflags_schemas": true
+  },
+  "ranking_policy": {
+    "literal_types": "Expected booleans/integers are computed from rebuilt current data; canonical JSON equality is exact and distinguishes False from0, True from1, integers from finite floats, wrong arity, extra/missing feature keys and stale values. No bool/int coercion of supplied score/features.",
+    "name": "FAIR_INTERFACE_RANKING_V2",
+    "old_features": "goal_connected still requires an original member output at the named current marked unfilled root row with literal matching formula; anchor_novel compares current selected output formulas, subtree overlap and member count are unchanged.",
+    "order": "Descending lexicographic score, then unchanged ascending full canonical anchor key; whole ranked batch validated. Finite generation fairness belongs to adviser, not certified by this consumer.",
+    "quality_class": "Literal integer0 if reopens_root, else integer2 if goal_connected, else integer1. Root-reopening families remain legal, validated, rankable and selectable; they are not pruned.",
+    "ranking_feature_keys": [
+      "goal_connected",
+      "anchor_novel",
+      "literal_list_subtree_overlap",
+      "primitive_members",
+      "quality_class",
+      "reopens_root",
+      "unresolved_interface_pairs"
+    ],
+    "reopens_root": "True exactly when goal_root is not None and at least one such unoccupied external pair has canonical formula literally equal to that named root formula; row need not equal root row. This is a generic syntactic ordering feature, not logical consequence/equivalence or proof of circularity.",
+    "root_None": "goal_connected=False and reopens_root=False; quality_class=1. Pair count still uses every distinct unoccupied external interface. No unnamed root is guessed from target or marks, and absence of a named-root reopening penalty does not establish noncircularity.",
+    "scope": "Only proposal ordering. No point m/t is installed, no fact/inference is supplied, no candidate/domain/exclusion/EOF/degree/scheduler/rollback/global graph authority is created.",
+    "score": [
+      "quality_class",
+      "-unresolved_interface_pairs",
+      "int(anchor_novel)",
+      "literal_list_subtree_overlap",
+      "-primitive_members"
+    ],
+    "unresolved_interface_pairs": "Distinct pairs (literal external obligation row, canonical literal formula) from rebuilt ordered_PENDING_obligations whose occupied field is exactly False. Internal member links and occupied external reads are excluded. Repeated ports remain fully represented and checked but identical unoccupied row/formula pairs count once; different rows or formulas remain distinct."
+  },
+  "remaining_gates": [
+    "This constant-only Source is UNEXECUTED; no old36pass4SKIP controls or prior target outcome is promoted. Current controls, Root caller6/grant and original native20/512MiB/failure55/owned60/caller90+1 remain required.",
+    "Pair only adviser VERSION unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres and engine exact consumer VERSIONv3 through authenticated current Source17/input2. No adviser3 or engine8 capsule is fabricated before their author freeze.",
+    "Adviser compatible-source fibre generation may change which preferences are proposed, not membership/ranking/ports/legality/wholebatch/current PENDING checks here. Full fallback, global scheduler and exact rollback remain mandatory externally.",
+    "No scientific/project import, function, model/Q/word decoding, native clock, test/control, actual plan/grant, proof, board, trajectory, GCTS/RL or performance acceptance occurs in this packet."
+  ],
+  "required_adviser_VERSION": "unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres",
+  "schema": "unit-row-independent-advice-consumer-Source-contract-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-independent-advice-consumer-validator-Source",
+  "source": {
+    "bytes": 16299,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+    "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+  },
+  "source_delta": {
+    "bytes": 2048,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-delta-v3.json",
+    "sha256": "3c9e2326682ba21dafa93c03bb540bdd024c672b3aaedc872d3bd0ec620ae3d9"
+  },
+  "source_only": true,
+  "sources": {
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "version": "unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions"
+}

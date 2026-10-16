@@ -1,0 +1,156 @@
+{
+  "changed_regions": 7,
+  "edits": [
+    {
+      "after_utf8": "VERSION = 'unit-row-compatible-source-fibres-controls-v1'",
+      "before_utf8": "VERSION = 'unit-row-fair-interface-quality-controls-v1'",
+      "new_start": 339,
+      "old_start": 339
+    },
+    {
+      "after_utf8": "Preserved40 checks plus three current source-fibre component controls.",
+      "before_utf8": "Unchanged30 plus ten fair-interface/replacement component controls.",
+      "new_start": 49051,
+      "old_start": 49049
+    },
+    {
+      "after_utf8": "  need(result['declared_cases']==30 and len(result['cases'])==30,'all prior30 run exactly once unchanged')\n\n  # Two explicitly declared component calibrations only. They are never inputs\n  # to the original-root theorem search. The real engine chooses the BRANCH;\n  # absent/UNKNOWN batches remain diagnostic and never manufacture coverage.\n  fibre_labels=('compatible-occupied-UI-source-fibre-returned-and-validated',\n    'incompatible-marked-UI-source-not-returned-as-legal-or-executed',\n    'missing-UI-source-remains-PENDING-not-a-fact')\n  component_attempts={}\n  def component(s,label):\n    tick();e=engine_factory(initial_state=copy.deepcopy(s),degree_proposer=degree_proposer,\n      fallback=fallback,certify_fallback=certify_fallback,\n      branch_adviser=None,validate_advice=None,tick=tick)\n    outer=e.checkpoint();before=e.state_snapshot()\n    attempt={'state':copy.deepcopy(s),'before':copy.deepcopy(before),'scope':\n      'Declared open original-language component only; no claim of reachability from target-root search or proof trajectory.',\n      'authority_accepted':False}\n    component_attempts[label]=attempt\n    try:\n      d=e.decision();after=e.state_snapshot()\n      need(canonical(after['state'])==canonical(before['state']),\n        'real global decision changes no selected point/mark state')\n      attempt.update(actual_decision=copy.deepcopy(d),after_decision=copy.deepcopy(after))\n      if d.get('kind')!='BRANCH':\n        attempt['eligibility_gap']='Actual original global decision is '+str(d.get('kind'))+'; no BRANCH fabricated.'\n        return attempt\n      b=adviser(state=copy.deepcopy(after['state']),decision=copy.deepcopy(d),tick=tick,\n        maximum_work=50000,maximum_terms=1,maximum_demands=5,maximum_rounds=3,maximum_proposals=8)\n      attempt['whole_actual_batch']=copy.deepcopy(b)\n      remember(after['state'],d,b)\n      if b['status']!='READY':\n        attempt['eligibility_gap']='Actual bounded component adviser is '+str(b['status'])+'; partial data diagnostic only.'\n        return attempt\n      receipt=validate_advice(state=copy.deepcopy(after['state']),decision=copy.deepcopy(d),\n        batch=copy.deepcopy(b),tick=tick)\n      need(all(receipt[k] is False for k in STRONG_FLAGS),'whole component independent false authority flags')\n      attempt['whole_actual_receipt']=copy.deepcopy(receipt)\n      need(canonical(e.state_snapshot())==canonical(after),'advice and validation install no member in real component engine')\n      return attempt\n    finally:\n      e.rollback(outer)\n      need(canonical(e.state_snapshot())==canonical(before),'exact owned component rollback, no hidden family or member')\n      attempt['restored_sha256']=digest(e.state_snapshot())\n  component_reason=None\n  try:\n    eligible=[v for v in sorted(language.parameters) if v not in language.forbidden]\n    if not eligible:raise Unavailable('No original Gamma-eligible declared parameter for reopening component.')\n    v=eligible[0];f=['eq',['var',v],['var',v]]\n    selected=ug(language,f,v,8,20,tick)\n    open_state=state(language,[selected],tick)\n    component(open_state,'root_reopening')\n    component_attempts['root_reopening']['declaration']={'eligible_parameter':v,\n      'literal_component_formula':f,'only_selected_tile':selected,\n      'original_target_boundary_preserved':True,'not_target_proof_route':True}\n  except language.OutsideLanguage as ex:\n    if type(ex) is not language.OutsideLanguage:raise\n    component_reason='Definite original-profile exclusion of component fixture: '+str(ex)\n  except Unavailable as ex:component_reason=str(ex)\n  if component_reason is not None:\n    component_attempts['root_reopening']={'eligibility_gap':component_reason,'authority_accepted':False}\n  occupied_reason=None\n  try:\n    original_fixture=result['artifacts'].get('fixture')\n    if original_fixture is None:raise Unavailable('No actual original30 fixture to derive an occupied AX source.')\n    ax_name=original_fixture['derived_from']['AX_name'];u=copy.deepcopy(language.theory['axioms'][ax_name])\n    selected_tiles=[]\n    for r in original_fixture['state']['selected']:\n      pre=r['type_preimage'];row=r['translation'][1]\n      selected_tiles.append(tile(language,pre['primitive_witness'],pre['ordered_premise_formulas'],\n        [row+d for d in pre['ordered_offsets']],row,tick))\n    occupied_ax=tile(language,{'rule':'axiom','name':ax_name,'formula':u},[],[],1,tick)\n    compatible_state=state(language,selected_tiles+[occupied_ax],tick)\n    component(compatible_state,'occupied_compatible_UI_source')\n    component_attempts['occupied_compatible_UI_source']['declaration']={\n      'AX_name_from_actual_original_fixture':ax_name,'selected_original_AX':occupied_ax,\n      'source_row':1,'not_target_proof_route':True}\n  except language.OutsideLanguage as ex:\n    if type(ex) is not language.OutsideLanguage:raise\n    occupied_reason='Definite original-profile exclusion of occupied-source fixture: '+str(ex)\n  except Unavailable as ex:occupied_reason=str(ex)\n  if occupied_reason is not None:\n    component_attempts['occupied_compatible_UI_source']={'eligibility_gap':occupied_reason,'authority_accepted':False}\n  evidence['component_attempts']=component_attempts\n",
+      "before_utf8": "  need(result['declared_cases']==30 and len(result['cases'])==30,'all prior30 run exactly once unchanged')\n",
+      "new_start": 55766,
+      "old_start": 55761
+    },
+    {
+      "after_utf8": "unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres','actual current fair-interface adviser version'",
+      "before_utf8": "unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering','actual current fair-interface adviser version'",
+      "new_start": 64740,
+      "old_start": 59641
+    },
+    {
+      "after_utf8": "\n  # Source-fibre observations use only actual current returns, not a claim that\n  # an omitted descriptor/base candidate was never generated or legally pruned.\n  occupied=component_attempts['occupied_compatible_UI_source']\n  if 'whole_actual_receipt' not in occupied:\n    skip(fibre_labels[0],occupied.get('eligibility_gap','No complete occupied-source actual READY batch.'))\n  else:\n    matches=[];source_formula=occupied['declaration']['selected_original_AX']['placement_key']['type_preimage']['primitive_witness']['formula']\n    for index,p in enumerate(occupied['whole_actual_batch']['proposals']):\n      tick()\n      if p['scheme']!='GENERIC_UI_MP':continue\n      for mi,m in enumerate(p['members']):\n        pre=m['candidate']['placement_key']['type_preimage'];row=m['candidate']['placement_key']['translation'][1]\n        if pre['primitive_witness']['rule']!='mp':continue\n        if row+pre['ordered_offsets'][0]==1 and canonical(pre['ordered_premise_formulas'][0])==canonical(source_formula):\n          need(m['candidate']['read_obligations'][0]['occupied'] is True\n            and m['candidate']['read_obligations'][0]['fact_accepted'] is False,\n            'genuine occupied matching AX source retains literal original read semantics')\n          matches.append({'proposal_index':index,'member_index':mi,'source_row':1})\n    if not matches:skip(fibre_labels[0],'No genuine returned UI_MP uses the compatible occupied AX source; no generated-family inference.')\n    else:passed(fibre_labels[0],{'artifact':'fair_interface.component_attempts.occupied_compatible_UI_source',\n      'actual_matches':matches,'scope':'Real global BRANCH+whole returned batch independently checked; occupied AX source, not a supplied proof.'})\n  bad_contexts=[rec for rec in records if rec['rejection'] is not None]\n  incompatible_evidence=None\n  for rec in bad_contexts:\n    tick();rejection=rec['rejection'];st=rejection['state'];d=rejection['decision']\n    actuals=[x for x in returned.values() if canonical(x['state'])==canonical(st) and canonical(x['decision'])==canonical(d)]\n    if not actuals:continue\n    entry=actuals[0];batch=entry['batch'];rr=check(st,d,batch)\n    marks={tuple(p):v for p,v in st['m']};conflicts=[]\n    for rejected in rejection['receipt']['rejections']:\n      key=rejected['key'];pre=key['type_preimage'];row=key['translation'][1]\n      for port,(formula,offset) in enumerate(zip(pre['ordered_premise_formulas'],pre['ordered_offsets'])):\n        read=(1,row+offset)\n        if read in marks and canonical(marks[read])!=canonical(['formula',canonical(formula)]):\n          conflicts.append({'rejected_full_key':key,'port':port,'read_point':list(read),\n            'required_formula':copy.deepcopy(formula),'actual_assigned_mark':copy.deepcopy(marks[read])})\n    if not conflicts:continue\n    for p in batch['proposals']:\n      for m in p['members']:\n        tick();key=m['candidate']['placement_key'];pre=key['type_preimage'];row=key['translation'][1]\n        for formula,offset in zip(pre['ordered_premise_formulas'],pre['ordered_offsets']):\n          read=(1,row+offset)\n          need(read not in marks or canonical(marks[read])==canonical(['formula',canonical(formula)]),\n            'every actual returned member read compatible with assigned literal marks')\n        need(all(canonical(key)!=canonical(c['rejected_full_key']) for c in conflicts),\n          'actual independently illegal pending key not returned as legal advice')\n    remote=result['artifacts'].get('remote_search')\n    if remote is None:continue\n    need(not any(x['kind']=='EXCLUDE' for x in remote['events']),\n      'hint incompatibility/UNKNOWN remains non-pruning, no fake exhausted child')\n    attempted={canonical(x['key']) for x in remote['events'] if x['kind']=='TRY'}\n    need(all(canonical(c['rejected_full_key']) not in attempted for c in conflicts),\n      'genuinely incompatible rejected key not executed in observed remote search')\n    incompatible_evidence={'actual_rejection':rejection,'conflicting_original_reads':conflicts,\n      'whole_actual_batch':batch,'whole_actual_receipt':rr,'remote_search_artifact':'remote_search',\n      'scope':'Returned descriptors and actual TRY only; no unseen-generation, full-fibre, degree/EOF or base pruning claim.'}\n    break\n  if incompatible_evidence is None:\n    skip(fibre_labels[1],'No genuine current incompatible-mark rejection joined to a complete READY return and observed remote search.')\n  else:\n    evidence['incompatible_read']=incompatible_evidence\n    passed(fibre_labels[1],{'artifact':'fair_interface.incompatible_read'})\n  missing=None\n  for entry in returned.values():\n    tick();st=entry['state'];marks={tuple(p):v for p,v in st['m']};totals={tuple(p):v for p,v in st['t']}\n    for pi,p in enumerate(entry['batch']['proposals']):\n      if p['scheme']!='GENERIC_UI_MP':continue\n      for oi,o in enumerate(p['ordered_PENDING_obligations']):\n        source_member=p['members'][o['member_index']]['candidate']['placement_key']['type_preimage']\n        if (source_member['primitive_witness']['rule']=='mp' and o['port']==0\n            and o['occupied'] is False and (1,o['row']) not in marks):\n          need(totals[(0,o['row'])]==0 and o['status']=='PENDING' and o['fact_accepted'] is False,\n            'truly absent source output/mark remains unproved PENDING obligation')\n          receipt=check(st,entry['decision'],entry['batch'])\n          missing={'actual_batch':entry,'whole_actual_receipt':receipt,'proposal_index':pi,\n            'obligation_index':oi,'missing_literal_point':[1,o['row']],\n            'scope':'Generated compatible missing-read preference, never evidence its premise is a fact.'}\n          break\n      if missing is not None:break\n    if missing is not None:break\n  if missing is None:skip(fibre_labels[2],'No genuine returned UI_MP external obligation at an actually absent unoccupied source mark.')\n  else:\n    evidence['missing_source']=missing\n    passed(fibre_labels[2],{'artifact':'fair_interface.missing_source'})\n\n  need(len(extra)==13 and {x['case'] for x in extra}==set(labels+fibre_labels),'all thirteen new declared gates retained exactly once')",
+      "before_utf8": "  need(len(extra)==10 and {x['case'] for x in extra}==set(labels),'all ten new declared gates retained exactly once')",
+      "new_start": 75823,
+      "old_start": 70723
+    },
+    {
+      "after_utf8": "need(len(result['cases'])==43 and len({x['case'] for x in result['cases']})==43,'all forty-three unique cases, no old gate replaced')",
+      "before_utf8": "need(len(result['cases'])==40 and len({x['case'] for x in result['cases']})==40,'all forty unique cases, no old gate replaced')",
+      "new_start": 82048,
+      "old_start": 70922
+    },
+    {
+      "after_utf8": "result['version']=VERSION;result['declared_cases']=43",
+      "before_utf8": "result['version']=VERSION;result['declared_cases']=40",
+      "new_start": 82184,
+      "old_start": 71052
+    }
+  ],
+  "forward_reconstructs_entire_source": true,
+  "inverse_reconstructs_entire_parent": true,
+  "parent_source": {
+    "bytes": 71685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+    "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+  },
+  "retained_prior40_newcase_names": [
+    "real-returned-interface-features-score-and-order",
+    "forged-interface-feature-and-score-rejections",
+    "Boolean-versus-integer-feature-and-score-rejections",
+    "obsolete-adviser-version-rejected",
+    "later-ranked-quality-defect-and-order-rejected",
+    "real-returned-root-reopening-remains-legal-and-demoted",
+    "real-returned-universal-diversity-with-declared-term-horizon",
+    "nonempty-READY-replacement-adopted-after-definite-rejection",
+    "replacement-installs-anchor-only-not-future-obligations",
+    "replacement-owned-nonempty-inner-and-parent-rollback-exact"
+  ],
+  "schema": "unit-row-compatible-fibres-controls-byte-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 82817,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-controls-source-20261016/compatible_fibres_controls_v1.py",
+    "sha256": "2737f8076e79e261f167334e3d05cb8f5b0939ef239d3cfd9c9e163d242d6d45"
+  },
+  "unchanged_old30_definitions": [
+    {
+      "kind": "ClassDef",
+      "name": "Unavailable",
+      "ordinal": 0,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "1bfb3ab02870cf57260ad49ecd68159e8b9fab808d71399e50f30533562c0bfd"
+    },
+    {
+      "kind": "ClassDef",
+      "name": "CallbackExhausted",
+      "ordinal": 1,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "b8658becece9d36bfc66968f086ccedfc08495b54261b2104206d07c09a1bb36"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "need",
+      "ordinal": 2,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "aa140feb98f72734704d885983d92f08a327fe22bec968da0dc273a63f817f91"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "canonical",
+      "ordinal": 3,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "164d176a437c1e1bc2358db13b42955e38cf8c8c8e003ad2d57c3d3ed0929d06"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "digest",
+      "ordinal": 4,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "f3e8c46a05bd8e4a89e9d087fdc05177b18ce63355e98c2350b27b10297bf681"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "tile",
+      "ordinal": 5,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "9b7a29e4366e4ef2bae556ee54a0adbfbb2784d5bba7383d70dc677de226c377"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "state",
+      "ordinal": 6,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "7ebc944c5c72d82549784d9051c6ecb0ad426c64613fa95960e0dc7cfaccecb0"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "ug",
+      "ordinal": 7,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "a7556b0c378b78803e4cf134869efe9624382976258d649bb1d93d99eb9df113"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "obligations",
+      "ordinal": 8,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "3814781b8ba1395c5622f7fcd2ba094e7e90c19740adb2b5242fdb358149b7f0"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "run_controls",
+      "ordinal": 9,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "5866800ad90e7f541bd7a542ef8db7438f549f924dd8f98d8edcd2c40394d424"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "run_controls",
+      "ordinal": 10,
+      "raw_and_AST_exact": true,
+      "raw_sha256": "de7a80b7793a56a218094a846d80b171720266b4129f6ace5515b9bc2364ee2f"
+    }
+  ],
+  "unchanged_replacement_raw": {
+    "bytes": 5466,
+    "sha256": "3a40b691b227f9dbac75be0bc3d0ce99bee4898713028e6b8ee35a89e629d273"
+  }
+}

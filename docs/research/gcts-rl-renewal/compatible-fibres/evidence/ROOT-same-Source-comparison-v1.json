@@ -1,0 +1,42 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "actuals_this_turn": 3,
+  "all_closed_and_reaped": true,
+  "broad_goal_complete": false,
+  "current_control_gates": {
+    "consumer_case_or_phase_coverage_known": false,
+    "consumer_declared": 43,
+    "consumer_passed": null,
+    "consumer_record_returned": false,
+    "consumer_skipped": null,
+    "original": 17,
+    "retention": 17
+  },
+  "current_goal_turn": "progress",
+  "dispositions": {
+    "advice-controls": {
+      "bytes": 4046,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "50a1f63a59c95accd4422c2a0683ba7db2505b9416b016a43d671081d500429b"
+    },
+    "domain-controls": {
+      "bytes": 3422,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "sha256": "feb00eedfb2233da506467cd755fa3923e0a8c45c9003d790386556573f09537"
+    },
+    "original-controls": {
+      "bytes": 3235,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "sha256": "3704a0f3500a348e23408a0fad8927dd205ea1c261a803611dd2e1974729e704"
+    }
+  },
+  "previous_goal_turn": "progress",
+  "same_Source17_input2_contract_reviews_runtime_limits": true,
+  "schema": "ROOT-compatible-fibres-same-Source-comparison-v1",
+  "scientific_replay": false,
+  "target_actuals_launched": false,
+  "target_admission_blocked_by_current_control_gaps": true,
+  "target_outcomes": {},
+  "target_word_or_donor_supplied": false
+}

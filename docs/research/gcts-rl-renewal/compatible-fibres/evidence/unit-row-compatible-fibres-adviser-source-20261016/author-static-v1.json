@@ -1,0 +1,95 @@
+{
+  "changed_raw_AST_regions": [
+    "propose_branch",
+    "propose_branch.ui_mp_stream"
+  ],
+  "checks": [
+    {
+      "claim": "Full raw offset forward/inverse reconstruct both complete parent/current modules; unified patches saved.",
+      "id": "P1",
+      "passed": true
+    },
+    {
+      "claim": "Adviser changes only ownVERSION and ui_mp_stream;21 other named function/class/nested regions raw+AST exact.",
+      "id": "P2",
+      "passed": true
+    },
+    {
+      "claim": "Engine changes only own/adviser/validator3module VERSION literals; all40named regions and allothermoduleAST exact.",
+      "id": "P3",
+      "passed": true
+    },
+    {
+      "claim": "AST compile only without Source evaluation/import; no scientific/helper/kernel/model/Q/word/clock/test/actual calls.",
+      "id": "P4",
+      "passed": true
+    },
+    {
+      "claim": "Existing diagonal universal/term enumeration/helper exact; only matching nonempty source fibres admitted; source rows canonical strict-prior except anchor, occupied matches remain.",
+      "id": "P5",
+      "passed": true
+    },
+    {
+      "claim": "Every match/filter scan charged to same work.step/nativecallback; only exact OutsideLanguage filtered; other failures propagate or existing Timeout->UNKNOWN diagnostic behavior.",
+      "id": "P6",
+      "passed": true
+    },
+    {
+      "claim": "Each yield retains old full UI and MP tile rebuilding plus original emit/wholeunion/key/collision checks, ranking/ports/pending and flags exact.",
+      "id": "P7",
+      "passed": true
+    },
+    {
+      "claim": "Outer ABI/batch/proposal schema/WORK_FIELDS/score5/features7/scalarlimits/fallback/native boundaries unchanged; no useful family/runtimeclaim.",
+      "id": "P8",
+      "passed": true
+    },
+    {
+      "claim": "Only bounded admitted source lists/FIFO positions retained; no pair-source Cartesian product or complete candidate-list materialization.",
+      "id": "P9",
+      "passed": true
+    },
+    {
+      "claim": "All referenced raw Source/contract/checkpoint/consumer capsules rehashed; no fabricatedreview/runtimegrant.",
+      "id": "P10",
+      "passed": true
+    }
+  ],
+  "schema": "compatible-fibres-adviser-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 26007,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+    "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+  },
+  "source_delta": {
+    "bytes": 4795,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-delta-v1.json",
+    "sha256": "3081defce5431efe91a210e7024d1ede599f7860a8fb8fedfb73df8d8b23bf7e"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_regions": [
+    "require",
+    "canonical",
+    "sha",
+    "iter_fair_indices",
+    "iter_fair_indices.shell",
+    "_Quota",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "propose_branch.clone",
+    "propose_branch.tile",
+    "propose_branch.compatible",
+    "propose_branch.nodes",
+    "propose_branch.indices",
+    "propose_branch.read_compatible",
+    "propose_branch.expand_frame",
+    "propose_branch.emit",
+    "propose_branch.fallback_stream",
+    "propose_branch.licence_stream",
+    "propose_branch.term_occurrences",
+    "propose_branch.transport_stream"
+  ]
+}

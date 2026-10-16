@@ -1,0 +1,63 @@
+--- old
++++ new
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'
++VERSION = 'unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres'
+ SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+ FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+@@ -363,18 +363,39 @@
+             goal, row = frame['formula'], frame['row']
+             if row <= chosen:
+                 return
+-            sources = [source for source in range(row) if source != chosen]
+-            for ui, ti, si in indices((len(universals), len(terms), len(sources))):
+-                work.step()
+-                universal, term, source = universals[ui], terms[ti], sources[si]
+-                try:
+-                    instance = language.substitute(universal[2], universal[1], term)
+-                except outside:
+-                    yield None
+-                    continue
+-                if instance != goal or not read_compatible(source, universal):
+-                    yield None
+-                    continue
++            pairs = indices((len(universals), len(terms)))
++            pairs_done, fibres = False, []
++            while True:
++                # Admit at most one matching nonempty fibre per yielded turn.
++                # Failed pair/read tests charge work, not an empty proposal turn.
++                if not pairs_done:
++                    for ui, ti in pairs:
++                        work.step()
++                        universal, term = universals[ui], terms[ti]
++                        try:
++                            instance = language.substitute(universal[2], universal[1], term)
++                        except outside:
++                            continue
++                        if instance != goal:
++                            continue
++                        sources = []
++                        for source in range(row):
++                            work.step()
++                            if source != chosen and read_compatible(source, universal):
++                                sources.append(source)
++                        if sources:
++                            fibres.append((universal, term, sources, 0))
++                            break
++                    else:
++                        pairs_done = True
++                if not fibres:
++                    return
++                # FIFO between admitted pairs; canonical row order within each.
++                universal, term, sources, position = fibres.pop(0)
++                source = sources[position]
++                if position+1 < len(sources):
++                    fibres.append((universal, term, sources, position+1))
++                work.step()
+                 licence = ['imp', universal, goal]
+                 anchor = tile({'rule': 'instantiate', 'universal': universal,
+                                'term': term, 'formula': licence}, [], [], chosen)

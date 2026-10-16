@@ -1,0 +1,41 @@
+{
+  "author_static": {
+    "bytes": 2143,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/author-static-v3.json",
+    "sha256": "1c91471391d9cdcfa8c6223053871ba7f87b3152e3a8d0a5d11b8ee792a4688a"
+  },
+  "complete_raw_and_AST_inverse": true,
+  "edits": [
+    {
+      "after": "VERSION = 'unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions'",
+      "before": "VERSION = 'unit-row-independent-advice-consumer-validator-v2-interface-ordering'"
+    },
+    {
+      "after": "ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres'",
+      "before": "ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'"
+    }
+  ],
+  "forward_patch": {
+    "bytes": 749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/forward.patch",
+    "sha256": "a056fdc3b2594f40402ae272c373bb5f5a5ec748718af02aba2c8e6a117e147a"
+  },
+  "inverse_patch": {
+    "bytes": 749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/inverse.patch",
+    "sha256": "b858f253946df68cd6761d7f44c1957a16015351b3202af391cd93231f67705b"
+  },
+  "parent": {
+    "bytes": 16290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+    "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+  },
+  "schema": "unit-row-compatible-fibres-consumer-Source-delta-v3",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 16299,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+    "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+  },
+  "source_only": true
+}

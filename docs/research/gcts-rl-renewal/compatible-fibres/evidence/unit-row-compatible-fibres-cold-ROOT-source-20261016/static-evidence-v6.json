@@ -1,0 +1,39 @@
+{
+  "Source17_input2_sixlimits": true,
+  "all_nested_functions_AST_exact": true,
+  "compile_only": true,
+  "entire_inverse_recovers_parent": true,
+  "literal_edits": 7,
+  "metadata_note": "Reuse exact AST-located literal pin assembly and whole seven-region inverse from current caller5 builder. Earlier assembly erratum remains historical.",
+  "response_stdout_native_exit_suffix_raw_exact": true,
+  "scientific_execution": false,
+  "source": {
+    "bytes": 49585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-cold-ROOT-source-20261016/unit_row_compatible_fibres_cold_v6.py",
+    "sha256": "28328d883296a48320799e44e3d2000496fd633b55614abe4a272a03701bac4d"
+  },
+  "source_contract": {
+    "bytes": 43834,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-cold-ROOT-source-20261016/Source-contract-v6.json",
+    "sha256": "cf322a405bb1950f1d511d80fab2a0f0f5677e9d030357f3bad73b2edcc0f3e9"
+  },
+  "top_level_helpers_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

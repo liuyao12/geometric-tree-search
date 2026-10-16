@@ -1,0 +1,19 @@
+--- old
++++ new
+@@ -7,13 +7,13 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v7-fair-interface-versions'
++VERSION = 'lazy-unit-row-global-engine-v8-compatible-fibres-versions'
+ VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'
+ SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+ FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'
+ TRANSITION_VERSION = 'unit-row-domain-transition-checker-v1'
+-ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'
+-ADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v2-interface-ordering'
++ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres'
++ADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions'
+ ADVICE_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')

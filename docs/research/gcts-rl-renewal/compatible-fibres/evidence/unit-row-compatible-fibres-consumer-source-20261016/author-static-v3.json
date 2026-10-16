@@ -1,0 +1,59 @@
+{
+  "all_named_function_regions_raw_AST_exact": [
+    {
+      "name": "require",
+      "raw_sha256": "963bacb840016bd49dc0231024848c95010d522ea64dfe979cab9778e429d6ef"
+    },
+    {
+      "name": "text",
+      "raw_sha256": "83a09e1cceb7b8a3923a4a24670fbbfad5d5a9bf74add954b44e521931ce78e3"
+    },
+    {
+      "name": "digest",
+      "raw_sha256": "4e3b0d64d986ccdbd722717ab98ec1f710eb1bde343b15afe2b8b3f9e9b57cd3"
+    },
+    {
+      "name": "equal",
+      "raw_sha256": "f347631e1ca0b476f8eb6127e0792882b3ab205c9ed0604b8f24045bbb61a167"
+    },
+    {
+      "name": "shape",
+      "raw_sha256": "283e34901a8e588200f6010b57573dae0bcbc2a4aa9681bc8659c3d238cbb086"
+    },
+    {
+      "name": "subtrees",
+      "raw_sha256": "a531edd8aec98208e56f94011880cff283b6bca47749e712398eec5c5017450f"
+    },
+    {
+      "name": "validate_advice",
+      "raw_sha256": "80b130470b303f42760ba5641594303db6ce2cff5c309ca82e76ac39eb76fc17"
+    },
+    {
+      "name": "validate_advice.rebuild_key",
+      "raw_sha256": "c22542736de6c4d0e68b34199a9b188ba2764fba890d1535150e46c508407dff"
+    }
+  ],
+  "both_unified_patches_applied_exact": true,
+  "compile_only": true,
+  "entire_forward_inverse_exact": true,
+  "entire_module_AST_exact_after_two_constant_restoration": true,
+  "literal_edits": 2,
+  "named_function_count": 8,
+  "parent": {
+    "bytes": 16290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+    "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+  },
+  "pending_branch_raw_exact": {
+    "bytes": 1290,
+    "sha256": "05b4047513c4ab4277e52faa8cf4f55c51122e3536a27abb28f77a6957876d09"
+  },
+  "schema": "unit-row-compatible-fibres-consumer-author-static-v3",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 16299,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+    "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+  },
+  "source_only": true
+}
