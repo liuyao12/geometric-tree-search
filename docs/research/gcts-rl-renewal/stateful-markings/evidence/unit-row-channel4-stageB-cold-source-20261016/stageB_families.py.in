@@ -1,0 +1,245 @@
+    def ug(body, source, row):
+        return tile({'rule':'generalize','variable':variable,'formula':['all',variable,copy.deepcopy(body)]},
+                    [body],[source],row)
+
+    def make_engine(state, log):
+        language = fresh_language(); current = marked_semantics(language)
+        def proposer(**kwargs):
+            return current.propose_degree(degree_proposer=modules['proposer'].propose_degree,**kwargs)
+        def filtered(**kwargs):
+            real = adapter.open_fallback(semantics=current,base_fallback=fallback.open_fallback,**kwargs)
+            record = {'context':copy.deepcopy(real.context()),'events':[]}
+            log.append(record)
+            return ObservedCursor(real,record,tick)
+        def certifier(**kwargs):
+            return engine.certify_by_current_cover(degree_proposer=proposer,semantics=current,**kwargs)
+        return engine.LazyUnitRowEngine(language=language,degree_proposer=proposer,
+            semantics=current,fallback=filtered,certify_fallback=certifier,
+            transition_checker=adapter.MarkedTransition(),tick=tick,
+            initial_state=copy.deepcopy(state),branch_adviser=None,validate_advice=None,branch_tie='ROW')
+
+    def snapshot(e):
+        value = e.state_snapshot()
+        need(value['state']['generation'] == [[[0,r],0] for r in range(24)]
+             and value['marking_id'] == marking['marking_id'], 'original roots0 and frozen marked snapshot')
+        return value
+
+    def candidate(base,state):
+        language = fresh_language(); current = marked_semantics(language)
+        _,totals,marks,selected,excluded,names = current.private_state(language,state,tick)
+        key = base['placement_key']
+        pre = {'schema':'unit-row-row0-decorated-type-v1',
+            'base_type_preimage':copy.deepcopy(key['type_preimage']),'marking_id':marking['marking_id']}
+        value = current.rebuild_tile(language,pre,copy.deepcopy(key['translation']),tick)
+        current.check_collision(value,names)
+        reason = current.legality(value,totals,marks,selected,excluded)
+        return current.with_obligations(value,totals,tick),reason
+
+    def place_base(e,base):
+        before = snapshot(e)
+        value,reason = candidate(base,before['state'])
+        need(reason is None,'fresh whole-current-point legality before public placement')
+        e.place(value)
+        return value
+
+    def rowproof(value,row):
+        return next(p for p in value['last_transition']['rows'] if p['row'] == row)
+
+    def slot(value,row):
+        return dict(value['cursors'])[row]
+
+    def archived(value,old_slot):
+        return [entry for entry in value.get('context_archive',[]) if
+            all(canonical(entry[name]) == canonical(old_slot[name])
+                for name in ('context','keys','candidates','completion'))]
+
+    def core(value):
+        return {k:v for k,v in value.items() if k != 'read_obligations'}
+
+    def maps(entries):
+        return {tuple(p):v for p,v in entries}
+
+    def exact_restore(e,token,before):
+        e.rollback(token)
+        after = snapshot(e)
+        need(canonical(after) == canonical(before),'exact owned semantic/domain/cursor/archive/dependency restore')
+        return after
+
+    def family_A():
+        log = []; initial = state_from([ug(['bot'],1,2)])
+        e = make_engine(initial,log); outer_before = snapshot(e); outer = e.checkpoint()
+        data = {'initial_state':initial,'outer_before':outer_before}
+        try:
+            first3,first6 = e.next_alternative(3),e.next_alternative(6)
+            need(first3['kind'] == first6['kind'] == 'CANDIDATE'
+                 and all(x['candidate']['base_tile']['placement_key']['type_preimage']['primitive_witness']['rule'] == 'axiom'
+                         for x in (first3,first6)), 'actual first original AX candidates on both rows')
+            k3 = first3['candidate']['base_tile']['placement_key']
+            k6 = first6['candidate']['base_tile']['placement_key']
+            need(k3['tile_type_id'] == k6['tile_type_id']
+                 and canonical(k3['type_preimage']) == canonical(k6['type_preimage'])
+                 and k3['translation'] != k6['translation'], 'genuine repeated original prototype across queried rows')
+            before = snapshot(e)
+            unseen_base = ug(ax_formula,4,6)
+            unseen_before,old_reason = candidate(unseen_base,before['state'])
+            need(old_reason is None and all(canonical(c['placement_key']) != canonical(unseen_before['placement_key'])
+                 for _,c in ((3,first3['candidate']),(6,first6['candidate']))), 'legal remote-read candidate not in observed one-key prefix')
+            placed = place_base(e,ug(['bot'],4,5)); after = snapshot(e)
+            old_m,new_m = maps(before['state']['m']),maps(after['state']['m'])
+            changed = {p for p in set(old_m)|set(new_m)
+                       if p not in old_m or p not in new_m or canonical(old_m[p]) != canonical(new_m[p])}
+            observed_support = {tuple(p) for p,v in first6['candidate']['global_t_values']+first6['candidate']['global_m_values']}
+            need((4,4) in changed and not changed.intersection(observed_support), 'actual unseen remote support, not only exposed dependencies')
+            need(rowproof(after,3)['retain'] is True and rowproof(after,6)['retain'] is False
+                 and rowproof(after,6)['reason'] == 'possible_full_channel4_support_changed'
+                 and after['last_transition']['collision_ledger_equal'] is True
+                 and after['row_versions'][3] == before['row_versions'][3]
+                 and after['row_versions'][6] > before['row_versions'][6]
+                 and 3 in dict(after['cursors']) and 6 not in dict(after['cursors']),
+                 'same full ledger retains unaffected3 and invalidates complete possible support at6')
+            unseen_after,new_reason = candidate(unseen_base,after['state'])
+            need(new_reason == 'whole_remote_or_metadata_mark_conflict', 'actual unseen alternative lost whole point legality')
+            next6 = e.next_alternative(6); refreshed = snapshot(e)
+            need(next6['kind'] == 'CANDIDATE' and slot(refreshed,6)['context']['state_sha256'] ==
+                 hashlib.sha256(canonical(after['state'])).hexdigest(), 'invalidated6 gets genuine current-state cursor')
+            data.update(first3=first3,first6=first6,before_remote=before,remote_placement=placed,
+                after_remote=after,changed_mark_points=[list(p) for p in sorted(changed)],
+                unseen_candidate_before=unseen_before,unseen_legality_before=old_reason,
+                unseen_candidate_after=unseen_after,unseen_legality_after=new_reason,
+                fresh_row6=next6,after_requery=refreshed)
+            passed('unseen-remote-support-retains3-invalidates6',family='A',scope='Both original channel1 and added4 change; no isolated4 causality claim.')
+            far = place_base(e,tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],22))
+            after_new = snapshot(e)
+            need(after_new['last_transition']['collision_ledger_equal'] is False
+                 and not any(p['retain'] for p in after_new['last_transition']['rows'])
+                 and rowproof(after_new,3)['reason'] == rowproof(after_new,6)['reason'] == 'global_collision_ledger_changed',
+                 'genuinely new selected prototype outside3/6 support invalidates full global identity relation')
+            data.update(new_far_prototype=far,after_new_prototype=after_new)
+            passed('new-prototype-global-ledger-invalidates-frontier',family='A',scope='No hash injectivity assumption; no fabricated true hash-collision runtime test.')
+        finally:
+            e.rollback(outer)
+        data['outer_after'] = snapshot(e)
+        need(canonical(data['outer_after']) == canonical(outer_before),'familyA exact outer checkpoint restore')
+        data['actual_cursor_log'] = log; families['A'] = data
+        passed('remote-family-exact-outer-restore',family='A')
+
+    def family_B():
+        log = []; d = ['all',variable,copy.deepcopy(ax_formula)]
+        tiles = [tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],0),
+                 ug(ax_formula,1,2),ug(d,3,5)]
+        initial = state_from(tiles); e = make_engine(initial,log)
+        outer_before = snapshot(e); outer = e.checkpoint()
+        data = {'initial_state':initial,'seeds':tiles,'outer_before':outer_before}
+        try:
+            original_events = [e.next_alternative(3),e.next_alternative(3),e.next_alternative(3)]
+            need([x['kind'] for x in original_events] == ['CANDIDATE','CANDIDATE','EOF'], 'actual complete two-UG cursor before retention')
+            before = snapshot(e); old_slot = copy.deepcopy(slot(before,3))
+            need(sorted(o['occupied'] for c in old_slot['candidates'] for o in c['read_obligations']) == [False,True],
+                 'one actual pending and one occupied input before refresh')
+            fill1 = place_base(e,tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],1))
+            first = snapshot(e); retained1 = slot(first,3)
+            need(rowproof(first,3)['retain'] is True and first['last_transition']['collision_ledger_equal'] is True
+                 and rowproof(first,3)['read_occupancy_changes'] == [1]
+                 and canonical(retained1['keys']) == canonical(old_slot['keys'])
+                 and all(canonical(retained1[k]) == canonical(old_slot[k]) for k in ('context','completion'))
+                 and len(archived(retained1,old_slot)) == 1, 'first retention archives complete original actual cursor packets')
+            need(all(canonical(core(a)) == canonical(core(b)) for a,b in zip(old_slot['candidates'],retained1['candidates']))
+                 and all(o['occupied'] is True for c in retained1['candidates'] for o in c['read_obligations']),
+                 'refresh changes only current read occupancy, not original or added point/core packets')
+            fill22 = place_base(e,tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],22))
+            second = snapshot(e); retained2 = slot(second,3)
+            need(rowproof(second,3)['retain'] is True and second['last_transition']['collision_ledger_equal'] is True
+                 and all(canonical(retained2[k]) == canonical(old_slot[k]) for k in ('context','keys','completion'))
+                 and len(retained2['context_archive']) == 1 and len(archived(retained2,old_slot)) == 1
+                 and canonical(retained2['candidates']) == canonical(retained1['candidates']),
+                 'second retain BEFORE replay preserves one original full archive, no refreshed-packet old-context relabel')
+            data.update(original_events=original_events,before_retention=before,original_slot=old_slot,
+                fill1=fill1,first_retained_snapshot=first,fill22=fill22,second_retained_snapshot=second)
+            passed('repeated-retain-preserves-original-full-archive-and-refresh',family='B')
+            inner_before = snapshot(e); inner = e.checkpoint(); start = len(log)
+            try:
+                returned = e.next_alternative(3); continued = snapshot(e)
+                need(returned['kind'] == 'EOF' and len(log) == start+1
+                     and [x['kind'] for x in log[-1]['events']] == ['CANDIDATE','CANDIDATE','EOF']
+                     and [x['ordinal'] for x in log[-1]['events'][:-1]] == [0,1], 'fresh full two-key prefix before current EOF')
+                fresh_slot = slot(continued,3)
+                need(fresh_slot['context']['state_sha256'] == hashlib.sha256(canonical(second['state'])).hexdigest()
+                     and len(archived(fresh_slot,old_slot)) == 1, 'current context refreshed, original full archive survives')
+                first_log = copy.deepcopy(log[-1])
+            finally:
+                e.rollback(inner)
+            inner_after = snapshot(e)
+            need(canonical(inner_after) == canonical(inner_before),'nonempty retained archive exact inner rollback')
+            repeat_start = len(log); repeated = e.next_alternative(3); repeated_snapshot = snapshot(e)
+            need(repeated['kind'] == 'EOF' and len(log) == repeat_start+1
+                 and canonical(log[-1]) == canonical(first_log)
+                 and canonical(repeated_snapshot) == canonical(continued), 'repeat genuine full continuation after restoring nonempty archive checkpoint')
+            data.update(inner_before=inner_before,first_continuation=returned,first_continued_snapshot=continued,
+                first_replay_log=first_log,inner_after=inner_after,repeated_continuation=repeated,
+                repeated_snapshot=repeated_snapshot,repeated_replay_log=copy.deepcopy(log[-1]))
+            passed('fresh-full-prefix-replay-nonempty-inner-rollback-repeat',family='B')
+        finally:
+            e.rollback(outer)
+        data['outer_after'] = snapshot(e)
+        need(canonical(data['outer_after']) == canonical(outer_before),'familyB exact outer checkpoint restore')
+        data['actual_cursor_log'] = log; families['B'] = data
+        passed('archive-family-exact-outer-restore',family='B')
+
+    def family_C():
+        log = []; initial = state_from([]); e = make_engine(initial,log)
+        outer_before = snapshot(e); outer = e.checkpoint()
+        data = {'initial_state':initial,'outer_before':outer_before}
+        try:
+            first = place_base(e,ug(['bot'],1,2)); one = snapshot(e)
+            need(dict((tuple(p),v) for p,v in one['mark_reference_counts'])[(4,0)] == 1
+                 and dict((tuple(p),v) for p,v in one['mark_reference_counts'])[(4,1)] == 1,
+                 'actual guard and first selected shared-mark reference')
+            inner = e.checkpoint()
+            try:
+                second = place_base(e,ug(['bot'],1,3)); two = snapshot(e)
+                refs = maps(two['mark_reference_counts']); marks = maps(two['state']['m'])
+                need(refs[(4,0)] == 1 and refs[(4,1)] == 2
+                     and marks[(4,0)] == 0 and marks[(4,1)] == 1
+                     and len(two['state']['selected']) == 2, 'shared matching ones have two actual selected references and one union value')
+                data.update(first=first,one_reference=one,second=second,two_references=two)
+                passed('shared-channel4-two-refs-and-fixed-zero',family='C')
+            finally:
+                e.rollback(inner)
+            after_inner = snapshot(e)
+            need(canonical(after_inner) == canonical(one)
+                 and maps(after_inner['mark_reference_counts'])[(4,1)] == 1, 'inner restore removes exactly one reference')
+            data['inner_after'] = after_inner
+            passed('shared-channel4-inner-exact-restore-one-ref',family='C')
+        finally:
+            e.rollback(outer)
+        after_outer = snapshot(e); refs = maps(after_outer['mark_reference_counts'])
+        need(canonical(after_outer) == canonical(outer_before) and (4,1) not in refs
+             and (4,1) not in maps(after_outer['state']['m']) and refs[(4,0)] == 1,
+             'outer restore removes final shared assignment while fixed zero remains referenced')
+        data['outer_after'] = after_outer; data['actual_cursor_log'] = log; families['C'] = data
+        passed('shared-channel4-outer-exact-restore-absence',family='C')
+
+    call(family_A); call(family_B); call(family_C)
+    expected_controls = ['unseen-remote-support-retains3-invalidates6',
+        'new-prototype-global-ledger-invalidates-frontier','remote-family-exact-outer-restore',
+        'repeated-retain-preserves-original-full-archive-and-refresh',
+        'fresh-full-prefix-replay-nonempty-inner-rollback-repeat','archive-family-exact-outer-restore',
+        'shared-channel4-two-refs-and-fixed-zero','shared-channel4-inner-exact-restore-one-ref',
+        'shared-channel4-outer-exact-restore-absence']
+    need([c['case'] for c in controls] == expected_controls and all(c['status'] == 'PASSED' for c in controls),
+         'all9 essential StageB controls completed without gaps')
+    stageB = {'schema':'ROOT-unit-row-channel4-stageB-payload-v1','stage':'SUPPORT_RETENTION_ARCHIVE_REFRESH_POINT_REFS_ONLY',
+        'prior_acceptance':{k:FIXED_INPUTS[k] for k in FIXED_INPUTS if k.startswith('stageA_')},
+        'original_model_sources':ORIGINAL_SOURCES,'original_model_binding':ORIGINAL_BINDING,
+        'marking':marking,'definition_check':definition_check,'families':families,
+        'controls':controls,'control_count':len(controls),'expected_cases':expected_controls,'all_controls_completed':True,
+        'cached_degree_receipt_transfer_exercised':False,'global_decision_or_scheduler_qualified':False,
+        'unknown_child_search_rollback_qualified':False,'target_search_performed':False,
+        'failure_marking_activated':False,'engine_search_performed':False,
+        'logical_proof_accepted':False,'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
+        'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}
+    result_raw = canonical({'schema':'ROOT-unit-row-global-engine-result-v1','purpose':plan['purpose'],
+        'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,
+        'controls':None,'search':None,'found_validation':None,'channel4_stageB':stageB,
+        'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,
+        'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'

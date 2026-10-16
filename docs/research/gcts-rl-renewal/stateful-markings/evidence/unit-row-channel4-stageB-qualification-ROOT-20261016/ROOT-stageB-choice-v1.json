@@ -1,0 +1,82 @@
+{
+  "actual_execution_authorized": false,
+  "current_goal_turn": "progress",
+  "essential_families": [
+    {
+      "cases": [
+        "unseen-remote-support-retains3-invalidates6",
+        "new-prototype-global-ledger-invalidates-frontier",
+        "remote-family-exact-outer-restore"
+      ],
+      "checks": "Full original+decorated state collision ledgers stay equal. Complete possible1+4 support retains3, invalidates6 although its exposedAX has no changed-point dependency. The unseen remote candidate becomes point-incompatible; actual fresh6 cursor is rebound. Then genuinely new selected AX22 outside3/6 support changes global ledger and invalidates all frontier domains. Full outer checkpoint restores exact original logical snapshot.",
+      "family": "A",
+      "scope": "Change includes channel1 AND4; no isolated4-causal or timing claim. Repeated observed original ID/fullpreimage at different rows is genuine; fabricated true hash collision not tested.",
+      "setup": "Fresh valid initial selected UG2 reads admitted bot at1. Cache actual first AX candidates on3/6, same original prototype/full preimage at distinct translations. Independently reconstruct legal UG6 reading AX at4 not in either prefix. Public place same-prototype UG5 readingbot@4."
+    },
+    {
+      "cases": [
+        "repeated-retain-preserves-original-full-archive-and-refresh",
+        "fresh-full-prefix-replay-nonempty-inner-rollback-repeat",
+        "archive-family-exact-outer-restore"
+      ],
+      "checks": "Public AX1 fill is same selected prototype, complete support/ledger retains3, only currentread occupancy changes. Full original context/keys/full original candidate packets/EOF are archived. Before any replay, public sameAX22 outsideq3 support causes second retention; only one original full archive remains and refreshed current packets are never stamped with old context. Inner ownedcheckpoint AFTER both retentions/nonempty archive. Fresh currentcursor logs actual two full candidate/ordinal prefix thenEOF; old archive survives. Inner exactrollback and repeated genuine continuation produce identical full context/event/snapshot data. Outer checkpoint exactrestore.",
+      "family": "B",
+      "scope": "No degree query/decision called. Engine certificate cache remains unused; no complete degree receipt transfer qualification. EOF remains its existing untrusted proposal, as StageA separately qualified.",
+      "setup": "Fresh valid AX0(A)+UG2(A@1)+UG5(D@3), D=all(v,A), generic declared firstAX and parameter. Genuine publicq3 cursor produces twoUG keys thenEOF; one read is pending and one occupied."
+    },
+    {
+      "cases": [
+        "shared-channel4-two-refs-and-fixed-zero",
+        "shared-channel4-inner-exact-restore-one-ref",
+        "shared-channel4-outer-exact-restore-absence"
+      ],
+      "checks": "Fixed4,0 reference remains1 and value0. Shared4,1 point has two selected references with value1; inner restore removes exactlyone reference and restores fullsnapshot. Outer restore removes last assignment entirely (absence distinct0) and retains fixedguard reference1; fullsnapshot exact.",
+      "family": "C",
+      "scope": "Two distinct legal translations/preimages; pendingbot read is obligation, not a proved fact. No scheduling/growth/proof claim.",
+      "setup": "Fresh original marked root. Public UG2(bot@1), owned inner checkpoint, then publicUG3(bot@1), all primitive/fullpoint membership checked in currentstate."
+    }
+  ],
+  "expected_cases": [
+    "unseen-remote-support-retains3-invalidates6",
+    "new-prototype-global-ledger-invalidates-frontier",
+    "remote-family-exact-outer-restore",
+    "repeated-retain-preserves-original-full-archive-and-refresh",
+    "fresh-full-prefix-replay-nonempty-inner-rollback-repeat",
+    "archive-family-exact-outer-restore",
+    "shared-channel4-two-refs-and-fixed-zero",
+    "shared-channel4-inner-exact-restore-one-ref",
+    "shared-channel4-outer-exact-restore-absence"
+  ],
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "maximum_planned_actual_invocations": 1,
+  "native_fit": "UNMEASURED",
+  "previous_checkpoint": {
+    "bytes": 30493,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-report-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "fd1d078154a09a22157841e055067f13dca8fd1205a80e9aaa807f9b70d32d74"
+  },
+  "previous_goal_turn": "progress",
+  "purpose": "unit-row-channel4-retention-archive-refs-controls",
+  "remaining_gaps": [
+    "No scientific imports/function evaluation, models, clocks, tests or actual by author. Source-only controls fit is UNMEASURED; native20 timeout/exception is incomplete/UNKNOWN, never pass or restart.",
+    "All9 essential cases must finish with PASSED/noSKIP. The parentStageA23/0 fixed acceptance qualifies only prior local degree/cursor stage; not current stateful retention/refcounts/rollback.",
+    "No global decision/scheduler/target search or UNKNOWN-child search restoration is invoked. Public place/checkpoint/rollback are local transactions, not a scheduled trajectory. No target word/donor/proof route.",
+    "No cached degree certificate transfer is exercised because no decision is called; evidence is cursor prefix/EOF archive and independently checked point state/transition scope only. StageC retains global scheduling/degree-cache/unknown-child obligations.",
+    "No fabricated valid4-only transition or true hash-collision test. The remote change affects both base1 and added4; whole possible-support criterion is checked without causal acceleration or minimality claim. Full ledgers compare literal preimages, not hashes alone.",
+    "OriginalSource17/input2/binding remain separately raw-authenticated; current executableSource11 is not passed into membership and never rebases original keys/epochs. Current marker identity is explicit fullstate metadata.",
+    "Original20s/512MiB aggregate (internal500reserve), failure55/owned60/caller90+1 unchanged. All setup/import/accepteddataauth/freshlanguage/model reconstruction/placement/retention/refresh/replay/snapshot/output/exit charged. No budget increase or helper optimization.",
+    "Whole saved native snapshots/contexts/candidate packets/EOF/logs remain authoritative for a future saved-only closure. Publication must not run a new scientific matcher or infer omitted cases. Work logs/counters are outside semantic checkpoint restoration.",
+    "All proof/exactboard/fullGCTSmodel/trajectory/markactivation/RL/advantage/resource flags remain false in worker; Root alone qualifies the current finite controls/native closure."
+  ],
+  "schema": "ROOT-channel4-stageB-choice-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Fresh valid local marked states, public next_alternative/place/checkpoint/rollback/state_snapshot only. No global decision/search, supplied proof word, donor or route."
+}

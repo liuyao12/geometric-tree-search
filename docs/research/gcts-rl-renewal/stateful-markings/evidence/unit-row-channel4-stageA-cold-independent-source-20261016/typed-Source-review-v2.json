@@ -1,0 +1,99 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Reviewer authored parentc1c2 caller, decorator/membership/c960/fallback/projection and engine9 tie; did not author currentStageA caller, marked adapter/engine11,c354/kernel or9fd6 independent verifier. Whole current Source+contract and dependency APIs reviewed; not an independently authored second algorithm or runtime recheck.",
+  "blockers": [],
+  "closed_blockers": [
+    "CHANNEL4-STAGEA-IMMEDIATE-MEMBERSHIP-BOUNDARY-1"
+  ],
+  "findings": {
+    "bytes": 26108,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-independent-source-20261016/findings-v2.json",
+    "sha256": "458c9eeff130e563e6866634508c4665ca14b2b564bacc837fa24bd106f15af6"
+  },
+  "limitations": [
+    "Source/AST/raw/compile only, no project/module import/function/model/kernel/checker/search/test/clock/actual executed.",
+    "Current23-case actual/native fit and current once grant/plan/external closure remain Root-owned and pending. No old16 construction result or prior Source review qualifies current runtime.",
+    "StageA uses fresh local degree/full point reconstruction and genuine finite cursors only. No engine instance/global scheduler, transition/unseen support retention, cursor replay, refcount lifecycle, graph rollback or target search qualified. StageB/C remain open.",
+    "General all-six EOF remains unaccepted when fresh restricted c960/c354 cover incomplete; two partial surviving0/1 remain UNKNOWN. No pruning/model cardinality/target impossibility/proof/marking activation/RL/benefit claim."
+  ],
+  "preserved_negative": {
+    "bytes": 5049,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "e360b57ccb9317cb773521d2148ea7e819c1f74cff55c6a19a7963b2d8d94a8e"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-channel4-stageA-cold-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-channel4-stageA-cold-Source",
+  "source": {
+    "bytes": 64283,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/channel4_stageA_cold_v2.py",
+    "sha256": "965b50fbaf8c54c5ea64e6aaabb4f885246b78f572ec840378fbde32d9148523"
+  },
+  "source_contract": {
+    "bytes": 33643,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/Source-contract-v2.json",
+    "sha256": "0eb10015dec8d4f9f1f68ceddfb3587f93d6939984eda1ee0c89afb8b3c0507d"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "engine": {
+      "bytes": 56207,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+      "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "intake": {
+      "bytes": 64283,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/channel4_stageA_cold_v2.py",
+      "sha256": "965b50fbaf8c54c5ea64e6aaabb4f885246b78f572ec840378fbde32d9148523"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 28980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    }
+  },
+  "status": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER"
+}

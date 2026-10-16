@@ -1,0 +1,3320 @@
+{
+  "forward_patch": {
+    "bytes": 25494,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-forward-v1.patch",
+    "sha256": "458377fe3b290580047a39397f4c120a426bf9b6a37b2cfb4ad31790aaf532bd"
+  },
+  "forward_reconstruction_exact": true,
+  "forward_sequential_edits": [
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 571
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 600
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 672
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 704
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 748
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 3732
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 3967
+    },
+    {
+      "after": "",
+      "before": "deg",
+      "offset_utf8_bytes": 4116
+    },
+    {
+      "after": "tention-archiv",
+      "before": "",
+      "offset_utf8_bytes": 4118
+    },
+    {
+      "after": "",
+      "before": "cu",
+      "offset_utf8_bytes": 4134
+    },
+    {
+      "after": "ef",
+      "before": "",
+      "offset_utf8_bytes": 4135
+    },
+    {
+      "after": "",
+      "before": "or",
+      "offset_utf8_bytes": 4138
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 4190
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 4227
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 4310
+    },
+    {
+      "after": "",
+      "before": "deg",
+      "offset_utf8_bytes": 4537
+    },
+    {
+      "after": "tention-archiv",
+      "before": "",
+      "offset_utf8_bytes": 4539
+    },
+    {
+      "after": "",
+      "before": "cu",
+      "offset_utf8_bytes": 4555
+    },
+    {
+      "after": "ef",
+      "before": "",
+      "offset_utf8_bytes": 4556
+    },
+    {
+      "after": "",
+      "before": "or",
+      "offset_utf8_bytes": 4559
+    },
+    {
+      "after": "1",
+      "before": "2-guarded-sizes",
+      "offset_utf8_bytes": 4566
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 4594
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 4614
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 4644
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 4705
+    },
+    {
+      "after": "\n",
+      "before": "",
+      "offset_utf8_bytes": 4718
+    },
+    {
+      "after": "ssert",
+      "before": "nd",
+      "offset_utf8_bytes": 4720
+    },
+    {
+      "after": "SUPPORT_",
+      "before": "DEG",
+      "offset_utf8_bytes": 4742
+    },
+    {
+      "after": "TENTION_ARCHIV",
+      "before": "",
+      "offset_utf8_bytes": 4752
+    },
+    {
+      "after": "",
+      "before": "FILTER_ORDE",
+      "offset_utf8_bytes": 4768
+    },
+    {
+      "after": "FRESH",
+      "before": "D",
+      "offset_utf8_bytes": 4770
+    },
+    {
+      "after": "POINT_",
+      "before": "CU",
+      "offset_utf8_bytes": 4776
+    },
+    {
+      "after": "EF",
+      "before": "",
+      "offset_utf8_bytes": 4783
+    },
+    {
+      "after": "",
+      "before": "OR_EOF",
+      "offset_utf8_bytes": 4786
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 4866
+    },
+    {
+      "after": "da",
+      "before": "con",
+      "offset_utf8_bytes": 4922
+    },
+    {
+      "after": "",
+      "before": "r",
+      "offset_utf8_bytes": 4925
+    },
+    {
+      "after": "",
+      "before": "ct",
+      "offset_utf8_bytes": 4926
+    },
+    {
+      "after": "len(data['original_model_sources'])==17\nexpected=['unseen-remote-support-retains3-invalidates6',\n 'new-prototype-global-ledger-invalidates-frontier','remote-family-exact-outer-restore',\n 'repeated-retain-preserves-original-full-archive-and-refresh',\n 'fresh-full-prefix-replay-nonempty-inner-rollback-repeat','archive-family-exact-outer-restore',\n 'shared-channel4-two-refs-and-fixed-zero','shared-channel4-inner-exact-restore-one-ref',\n 'shared-channel4-outer-exact-restore-absence']\nassert ",
+      "before": "",
+      "offset_utf8_bytes": 4980
+    },
+    {
+      "after": "",
+      "before": "23 and ",
+      "offset_utf8_bytes": 5495
+    },
+    {
+      "after": "9",
+      "before": "23",
+      "offset_utf8_bytes": 5518
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 5554
+    },
+    {
+      "after": "==expected\nassert [c['family']for c in data['controls']]==['A']*3+['B']*3+['C']*3",
+      "before": "",
+      "offset_utf8_bytes": 5658
+    },
+    {
+      "after": "p",
+      "before": "car",
+      "offset_utf8_bytes": 5812
+    },
+    {
+      "after": "or_acc",
+      "before": "",
+      "offset_utf8_bytes": 5815
+    },
+    {
+      "after": "ptance",
+      "before": "rs",
+      "offset_utf8_bytes": 5822
+    },
+    {
+      "after": "k:v for k,v in ",
+      "before": "'",
+      "offset_utf8_bytes": 5833
+    },
+    {
+      "after": "lan",
+      "before": "roposer':",
+      "offset_utf8_bytes": 5849
+    },
+    {
+      "after": "",
+      "before": "['bot']],",
+      "offset_utf8_bytes": 5853
+    },
+    {
+      "after": "",
+      "before": "de",
+      "offset_utf8_bytes": 5856
+    },
+    {
+      "after": "u",
+      "before": "enden",
+      "offset_utf8_bytes": 5857
+    },
+    {
+      "after": "s",
+      "before": "':[['bot",
+      "offset_utf8_bytes": 5859
+    },
+    {
+      "after": ".items()if k.startswith('stageA_')",
+      "before": "]",
+      "offset_utf8_bytes": 5862
+    },
+    {
+      "after": "pri",
+      "before": "",
+      "offset_utf8_bytes": 5898
+    },
+    {
+      "after": "r",
+      "before": "ld",
+      "offset_utf8_bytes": 5902
+    },
+    {
+      "after": "st",
+      "before": "m",
+      "offset_utf8_bytes": 5931
+    },
+    {
+      "after": "",
+      "before": "rkin",
+      "offset_utf8_bytes": 5934
+    },
+    {
+      "after": "eA",
+      "before": "",
+      "offset_utf8_bytes": 5935
+    },
+    {
+      "after": "ch",
+      "before": "m",
+      "offset_utf8_bytes": 5952
+    },
+    {
+      "after": "",
+      "before": "rki",
+      "offset_utf8_bytes": 5955
+    },
+    {
+      "after": "nel4",
+      "before": "g",
+      "offset_utf8_bytes": 5956
+    },
+    {
+      "after": "s",
+      "before": "da",
+      "offset_utf8_bytes": 5961
+    },
+    {
+      "after": "geA",
+      "before": "",
+      "offset_utf8_bytes": 5964
+    },
+    {
+      "after": "\nprior_",
+      "before": ";",
+      "offset_utf8_bytes": 5969
+    },
+    {
+      "after": "",
+      "before": "ccepte",
+      "offset_utf8_bytes": 5977
+    },
+    {
+      "after": "mission",
+      "before": "",
+      "offset_utf8_bytes": 5978
+    },
+    {
+      "after": "st",
+      "before": "m",
+      "offset_utf8_bytes": 6013
+    },
+    {
+      "after": "",
+      "before": "rkin",
+      "offset_utf8_bytes": 6016
+    },
+    {
+      "after": "eA",
+      "before": "",
+      "offset_utf8_bytes": 6017
+    },
+    {
+      "after": "\nassert prior_admission['actual_closed'] is prior_admission['all_reaped'] is prior_admission['native_resources_qualified'] is True\nassert prior_admission['passed_cases']==23 and prior_admission['skipped_cases']==0\nassert prior_admission['later_engine_stages_qualified'] is False",
+      "before": "",
+      "offset_utf8_bytes": 6035
+    },
+    {
+      "after": "pri",
+      "before": "",
+      "offset_utf8_bytes": 6338
+    },
+    {
+      "after": "r",
+      "before": "ld",
+      "offset_utf8_bytes": 6342
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 6354
+    },
+    {
+      "after": "prior_",
+      "before": "",
+      "offset_utf8_bytes": 6390
+    },
+    {
+      "after": "",
+      "before": "ccepte",
+      "offset_utf8_bytes": 6397
+    },
+    {
+      "after": "mission",
+      "before": "",
+      "offset_utf8_bytes": 6398
+    },
+    {
+      "after": "",
+      "before": "']\nassert hashlib.sha256(canonical(data['marking'])).hexdigest()==accepted['marking_sha256",
+      "offset_utf8_bytes": 6417
+    },
+    {
+      "after": " is data['definition_check']['projection_literals_rechecked'] ",
+      "before": "",
+      "offset_utf8_bytes": 6470
+    },
+    {
+      "after": "\n",
+      "before": " ",
+      "offset_utf8_bytes": 6539
+    },
+    {
+      "after": "ssert",
+      "before": "nd",
+      "offset_utf8_bytes": 6541
+    },
+    {
+      "after": "definiti",
+      "before": "r",
+      "offset_utf8_bytes": 6613
+    },
+    {
+      "after": "n",
+      "before": "ot",
+      "offset_utf8_bytes": 6622
+    },
+    {
+      "after": "ch",
+      "before": "state']['sel",
+      "offset_utf8_bytes": 6624
+    },
+    {
+      "after": "k",
+      "before": "ted']==[]and data['root_state']['excluded']==[]\nassert [[4,0],0]in data['root_state",
+      "offset_utf8_bytes": 6628
+    },
+    {
+      "after": "",
+      "before": "']\nexpected={'UG-many':('MANY','MANY',2,2,2),'UG-one':('SINGLETON','SINGLETON',1,1,2),\n 'UG-zero':('ZERO','ZERO',0,0,2),'deep43-zero':('ZERO','ZERO',0,0,2),\n 't",
+      "offset_utf8_bytes": 6634
+    },
+    {
+      "after": "k",
+      "before": "get-complete-filtered-zero':('SINGLETON','ZERO',1,0,1),\n 'deep42-row2':('TWO_OR_MORE','UNKNOWN',2,1,2),'deep42-row3':('TWO_OR_MORE','UNKNOWN',2,0,3)}\nassert set(data['fixtures'])==set(expected)\nsummary=[]\nfor name,(base_status,status,offered,survived,row)",
+      "offset_utf8_bytes": 6636
+    },
+    {
+      "after": "",
+      "before": " expected.items():\n f=data['fixtures'][name];p=f['proposal'];r=f['receipt'];base=f['base_state'];state=f['state'];ori",
+      "offset_utf8_bytes": 6639
+    },
+    {
+      "after": "",
+      "before": "inal=p['original_proposal']\n assert f['row']==p['row']==r['row']==row\n assert p['state']==state and original['state']==base\n assert p['state",
+      "offset_utf8_bytes": 6640
+    },
+    {
+      "after": "hashlib.sha256(canonical(data['ma",
+      "before": "",
+      "offset_utf8_bytes": 6651
+    },
+    {
+      "after": "king'])).hexdigest()\nmid=data['marking']['marking_id']\n\ndef equal(left,right):\n    # Full canonical literal equality, including bool versus int; no matcher.\n    assert canonical(left)==canonical(right)\n\ndef points(entries):\n    assert type(entries) is list\n    out={}\n    for point,value in entries:\n        assert type(point) is list and len(point)==2 and all(type(x) is int for x in point)\n        key=tuple(point);assert key not in out;out[key]=value\n    return out\n\ndef snapshot(value):\n    assert value['marking_id']==value['state']['marking_id']==mid\n    assert value['state']['input_epoch']==binding['language_epoch'] and value['state']['height']==24\n    equal(value['state']['generation'],[[[0,r],0]for r in range(24)])\n    assert value['scheduler_policy']['branch_tie']=='ROW' and value['pending_preferences'] is None\n    assert value['certificates']==[]  # No degree query/decision in this stage.\n    assert type(value['row_versions']) is list and len(value['row_versions'])==24\n    return value\n\ndef slot(value,row):\n    entries=value['cursors'];assert len({r for r,_ in entries})==len(entries)\n    return dict(entries)[row]\n\ndef rowproof(value,row):\n    entries=value['last_transition']['rows'];assert [x['row']for x in entries]==list(range(24))\n    return entries[row]\n\ndef core(packet):return {k:v for k,v in packet.items()if k!='read_obligations'}\n\ndef context(value,state):\n    equal(value['state'],state)\n    assert value",
+      "before": "",
+      "offset_utf8_bytes": 6685
+    },
+    {
+      "after": "   ",
+      "before": "",
+      "offset_utf8_bytes": 8187
+    },
+    {
+      "after": "v",
+      "before": "origin",
+      "offset_utf8_bytes": 8197
+    },
+    {
+      "after": "ue",
+      "before": "",
+      "offset_utf8_bytes": 8200
+    },
+    {
+      "after": "con",
+      "before": "sta",
+      "offset_utf8_bytes": 8204
+    },
+    {
+      "after": "x",
+      "before": "_sha256']==r['original_base_receip",
+      "offset_utf8_bytes": 8209
+    },
+    {
+      "after": "",
+      "before": "']['state",
+      "offset_utf8_bytes": 8211
+    },
+    {
+      "after": "{k:v for k,v in v",
+      "before": "b",
+      "offset_utf8_bytes": 8247
+    },
+    {
+      "after": "lue.item",
+      "before": "",
+      "offset_utf8_bytes": 8265
+    },
+    {
+      "after": "()if k!='cont",
+      "before": "",
+      "offset_utf8_bytes": 8274
+    },
+    {
+      "after": "xt_sha256'}",
+      "before": "",
+      "offset_utf8_bytes": 8288
+    },
+    {
+      "after": "   ",
+      "before": "",
+      "offset_utf8_bytes": 8315
+    },
+    {
+      "after": "value['marking_id']==mid and value['in",
+      "before": "",
+      "offset_utf8_bytes": 8325
+    },
+    {
+      "after": "ut_epoch']==binding['language_epoch']\n    equal(value",
+      "before": "",
+      "offset_utf8_bytes": 8364
+    },
+    {
+      "after": ",binding)\n\ndef archive_entry(original):return {k:",
+      "before": "==",
+      "offset_utf8_bytes": 8437
+    },
+    {
+      "after": "k]for k in(",
+      "before": "",
+      "offset_utf8_bytes": 8495
+    },
+    {
+      "after": "context','keys','c",
+      "before": "l",
+      "offset_utf8_bytes": 8507
+    },
+    {
+      "after": "",
+      "before": "nguage_bi",
+      "offset_utf8_bytes": 8526
+    },
+    {
+      "after": "",
+      "before": "ng']==bin",
+      "offset_utf8_bytes": 8529
+    },
+    {
+      "after": "",
+      "before": "ing\n assert r['st",
+      "offset_utf8_bytes": 8530
+    },
+    {
+      "after": "e",
+      "before": "u",
+      "offset_utf8_bytes": 8532
+    },
+    {
+      "after": ",'comple",
+      "before": "]==s",
+      "offset_utf8_bytes": 8535
+    },
+    {
+      "after": "ion')}\n\ndef ex",
+      "before": "",
+      "offset_utf8_bytes": 8544
+    },
+    {
+      "after": "c",
+      "before": "",
+      "offset_utf8_bytes": 8559
+    },
+    {
+      "after": "_archive(c",
+      "before": "",
+      "offset_utf8_bytes": 8561
+    },
+    {
+      "after": "rre",
+      "before": "s a",
+      "offset_utf8_bytes": 8572
+    },
+    {
+      "after": "t,",
+      "before": "d r['",
+      "offset_utf8_bytes": 8576
+    },
+    {
+      "after": "):\n    equal(current['context",
+      "before": "",
+      "offset_utf8_bytes": 8586
+    },
+    {
+      "after": "",
+      "before": "b",
+      "offset_utf8_bytes": 8616
+    },
+    {
+      "after": "rchive'],[archiv",
+      "before": "s",
+      "offset_utf8_bytes": 8617
+    },
+    {
+      "after": "",
+      "before": "receipt']['status']==base_status\n assert l",
+      "offset_utf8_bytes": 8635
+    },
+    {
+      "after": "try",
+      "before": "",
+      "offset_utf8_bytes": 8637
+    },
+    {
+      "after": ")])\n    assert set(current['context_archive'][0])=={'context','keys','candidates','completion'}\n\ndef logged_prefix(log,current,state):\n    context(log['context'],state);equal(log['context'],current['context'])\n    events=log['events'];assert [x['kind']for x in events]==['CANDIDATE','CANDIDATE','EOF']\n    assert [x['ordinal']for x in events[:-1]]==[0,1]\n    for index,event in enumerate(events[:-1]):\n        assert event['context_sha256']==log['context']['context_sha256'] and event['independently_checked'] is False\n        equal(event['candidate'],current",
+      "before": "",
+      "offset_utf8_bytes": 8649
+    },
+    {
+      "after": "[i",
+      "before": ")==offered a",
+      "offset_utf8_bytes": 9222
+    },
+    {
+      "after": "ex])\n",
+      "before": "",
+      "offset_utf8_bytes": 9226
+    },
+    {
+      "after": "       equa",
+      "before": "",
+      "offset_utf8_bytes": 9232
+    },
+    {
+      "after": "(ev",
+      "before": "",
+      "offset_utf8_bytes": 9244
+    },
+    {
+      "after": "t",
+      "before": "(p",
+      "offset_utf8_bytes": 9249
+    },
+    {
+      "after": "",
+      "before": "s",
+      "offset_utf8_bytes": 9261
+    },
+    {
+      "after": "",
+      "before": ")==survived\n assert r['candidate_keys']==[x",
+      "offset_utf8_bytes": 9263
+    },
+    {
+      "after": ",cu",
+      "before": "fo",
+      "offset_utf8_bytes": 9280
+    },
+    {
+      "after": "rent['keys'][",
+      "before": " x ",
+      "offset_utf8_bytes": 9284
+    },
+    {
+      "after": "dex])\n",
+      "before": "",
+      "offset_utf8_bytes": 9299
+    },
+    {
+      "after": "   assert events[-1]",
+      "before": "p",
+      "offset_utf8_bytes": 9306
+    },
+    {
+      "after": "context_sha256']==log['context']['context_sha256']\n    equal(events[-1]['completion'],current['completion'])\n    completion=current['completion']\n    assert completion['context_sha256']==log['context']['context_sha256']\n    assert completion['state_sha256']==log['context']['state_sha256'] and completion['yielded_",
+      "before": "",
+      "offset_utf8_bytes": 9328
+    },
+    {
+      "after": "==2",
+      "before": "]",
+      "offset_utf8_bytes": 9654
+    },
+    {
+      "after": "   ",
+      "before": "",
+      "offset_utf8_bytes": 9658
+    },
+    {
+      "after": "completion",
+      "before": "r",
+      "offset_utf8_bytes": 9669
+    },
+    {
+      "after": "mid and com",
+      "before": "",
+      "offset_utf8_bytes": 9695
+    },
+    {
+      "after": "letion",
+      "before": "",
+      "offset_utf8_bytes": 9707
+    },
+    {
+      "after": "",
+      "before": "mark",
+      "offset_utf8_bytes": 9715
+    },
+    {
+      "after": "dependently",
+      "before": "g",
+      "offset_utf8_bytes": 9717
+    },
+    {
+      "after": "checke",
+      "before": "i",
+      "offset_utf8_bytes": 9729
+    },
+    {
+      "after": " i",
+      "before": "==",
+      "offset_utf8_bytes": 9738
+    },
+    {
+      "after": " F",
+      "before": "t",
+      "offset_utf8_bytes": 9741
+    },
+    {
+      "after": "ls",
+      "before": "t",
+      "offset_utf8_bytes": 9744
+    },
+    {
+      "after": "",
+      "before": "['marking_id']==data['marking']['marking_id']",
+      "offset_utf8_bytes": 9747
+    },
+    {
+      "after": "",
+      "before": "if",
+      "offset_utf8_bytes": 9749
+    },
+    {
+      "after": "",
+      "before": "status=='UNKNOWN':\n",
+      "offset_utf8_bytes": 9750
+    },
+    {
+      "after": "completion['deg",
+      "before": "",
+      "offset_utf8_bytes": 9759
+    },
+    {
+      "after": "ee_zero_or_singleton_accepted'] is False\n    assert all(completion",
+      "before": "",
+      "offset_utf8_bytes": 9775
+    },
+    {
+      "after": "k]is False for k in(",
+      "before": "",
+      "offset_utf8_bytes": 9842
+    },
+    {
+      "after": "andidate_graph_accepted',\n        'schedul",
+      "before": "ov",
+      "offset_utf8_bytes": 9873
+    },
+    {
+      "after": "or_rollba",
+      "before": "che",
+      "offset_utf8_bytes": 9918
+    },
+    {
+      "after": "_accept",
+      "before": "",
+      "offset_utf8_bytes": 9929
+    },
+    {
+      "after": ",'log",
+      "before": "]",
+      "offset_utf8_bytes": 9939
+    },
+    {
+      "after": "c",
+      "before": "s F",
+      "offset_utf8_bytes": 9945
+    },
+    {
+      "after": "_proof_accepted','ROOT_resource_accepted'))\n\nfamilies=data['families'];as",
+      "before": "",
+      "offset_utf8_bytes": 9948
+    },
+    {
+      "after": "rt set(families)=={'A','B','C'}\nfor family in families.values():\n    snapshot(family['outer_before']);snapshot(family['outer_after'])\n    equal(family['outer_before']['state'],family['initial_state'])\n    equal(family['outer_after'],family['outer_before'])\n\na=families['A']\nbefore=snapshot(a['before_remote']);after=snapshot(a['after_remote'])\nfor row,name in((3,'first3'),(6,'first6')):\n    event=a[name];assert event['kind']=='CANDIDATE'\n    equal(event['candidate'],slot(before,row)['candidates'][0])\n    equal(event['candidate']['placement_key'],slot(before,row)['keys'][0])\n    assert event['candidate']['base_tile']['placement_key']['type_preimage']['primitive_witness']['rule']=='axiom'\nk3=a['first3']['candidate']['base_tile']['placement_key'];k6=a['first6']['candidate']['base_tile']['placement_key']\nassert k3['tile_type_id']==k6['tile_type_id']",
+      "before": "",
+      "offset_utf8_bytes": 10023
+    },
+    {
+      "after": "k3",
+      "before": "r",
+      "offset_utf8_bytes": 10883
+    },
+    {
+      "after": "translation']!=k6['translation'];equal(k3['type_preimage'],k6['type_preimage'])\nassert a['unseen_l",
+      "before": "d",
+      "offset_utf8_bytes": 10887
+    },
+    {
+      "after": "ality_befo",
+      "before": "",
+      "offset_utf8_bytes": 10987
+    },
+    {
+      "after": "",
+      "before": "e_exact",
+      "offset_utf8_bytes": 10999
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 11001
+    },
+    {
+      "after": "a",
+      "before": "r",
+      "offset_utf8_bytes": 11014
+    },
+    {
+      "after": "un",
+      "before": "",
+      "offset_utf8_bytes": 11017
+    },
+    {
+      "after": "een_",
+      "before": "o",
+      "offset_utf8_bytes": 11020
+    },
+    {
+      "after": "gality",
+      "before": "",
+      "offset_utf8_bytes": 11026
+    },
+    {
+      "after": "",
+      "before": "c",
+      "offset_utf8_bytes": 11033
+    },
+    {
+      "after": "f",
+      "before": "ndida",
+      "offset_utf8_bytes": 11034
+    },
+    {
+      "after": "",
+      "before": "']is None and ",
+      "offset_utf8_bytes": 11037
+    },
+    {
+      "after": "",
+      "before": "['accepted_local_evidence']is False\n else:\n  assert r['complete_cover_checked']is True and r['degree_exact']==survived and r['accepted_local_evidence']is True\n for rejection in p['marked_rejections']:\n  assert rejection['reason",
+      "offset_utf8_bytes": 11038
+    },
+    {
+      "after": "equ",
+      "before": "  ",
+      "offset_utf8_bytes": 11083
+    },
+    {
+      "after": "l(a['un",
+      "before": "s",
+      "offset_utf8_bytes": 11087
+    },
+    {
+      "after": "en_candida",
+      "before": "r",
+      "offset_utf8_bytes": 11096
+    },
+    {
+      "after": "e_befo",
+      "before": " ",
+      "offset_utf8_bytes": 11107
+    },
+    {
+      "after": "'],a",
+      "before": "jection",
+      "offset_utf8_bytes": 11115
+    },
+    {
+      "after": "u",
+      "before": "co",
+      "offset_utf8_bytes": 11121
+    },
+    {
+      "after": "",
+      "before": "flicting_points']==[[[4,0],0,1]]\n as",
+      "offset_utf8_bytes": 11123
+    },
+    {
+      "after": "",
+      "before": "rt l",
+      "offset_utf8_bytes": 11125
+    },
+    {
+      "after": "_c",
+      "before": "(p['m",
+      "offset_utf8_bytes": 11127
+    },
+    {
+      "after": "ndidate_afte",
+      "before": "",
+      "offset_utf8_bytes": 11130
+    },
+    {
+      "after": "",
+      "before": "ked_rejections",
+      "offset_utf8_bytes": 11143
+    },
+    {
+      "after": "",
+      "before": "==offered-survived",
+      "offset_utf8_bytes": 11146
+    },
+    {
+      "after": "",
+      "before": " summary.append(dict(fixture=name,row=row,original_status=base_status,marked_status=status,\n  original_offered=offered,marked_survivors=survived,complete_cover_checked=r['complete_cover_checked']))\nassert data['fixtures']['target-complete-filtered-zero']['state']['excluded']==[]\nstream_counts={'UG-many':(2,2,'MANY'),'UG-one':(1,1,'SINGLETON'),'UG-zero':(0,0,'ZERO'),\n 'target-complete-filtered-zero':(1,0,'ZERO'),'deep42-row2':(2,1,None),'deep42-row3':(6,4,None)}\nassert set(data['cursors'])==set(stream_counts)\nstream_summary=[]\nfor name,(original_count,marked_count,status)in stream_counts.items():\n s=data['cursors'][name];f=data['fixtures'][name]\n assert s['fixture_ref']==name and s['state']==f['state']and s['base_state']==f['base_state']and s['row']==f['row']\n oe,me=s['original_events'],s['marked_events']\n assert len(oe)==original_count+1 and len(me)==marked_count+1 and oe[-1]['kind']==me[-1]['kind']=='EOF'\n assert [e['ordinal']for e in oe[:-1]]==list(range(original_count))and [e['ordinal']for e in me[:-1]]==list(range(marked_count))\n ",
+      "offset_utf8_bytes": 11147
+    },
+    {
+      "after": "canonical(a",
+      "before": "e",
+      "offset_utf8_bytes": 11158
+    },
+    {
+      "after": "u",
+      "before": "ki",
+      "offset_utf8_bytes": 11171
+    },
+    {
+      "after": "",
+      "before": "d']=='CANDIDATE'for e in oe[:-1]+me[:-1])\n as",
+      "offset_utf8_bytes": 11173
+    },
+    {
+      "after": "",
+      "before": "rt s['mark",
+      "offset_utf8_bytes": 11175
+    },
+    {
+      "after": "",
+      "before": "d_co",
+      "offset_utf8_bytes": 11176
+    },
+    {
+      "after": "",
+      "before": "text']['original_context']==s['original_context']\n assert s['marked_context']['state']==s['state']and s['original_context']['state']==s['base_state']\n assert me[-1]['completion']['original_completion']==oe[-1]['completion']\n assert me[-1]['completion']['yielded",
+      "offset_utf8_bytes": 11177
+    },
+    {
+      "after": "_befo",
+      "before": "s']==ma",
+      "offset_utf8_bytes": 11187
+    },
+    {
+      "after": "",
+      "before": "k",
+      "offset_utf8_bytes": 11193
+    },
+    {
+      "after": "",
+      "before": "d_count and oe[-1]['completion",
+      "offset_utf8_bytes": 11194
+    },
+    {
+      "after": "placement_ke",
+      "before": "",
+      "offset_utf8_bytes": 11198
+    },
+    {
+      "after": "",
+      "before": "ielded_candidates",
+      "offset_utf8_bytes": 11211
+    },
+    {
+      "after": ")!",
+      "before": "",
+      "offset_utf8_bytes": 11213
+    },
+    {
+      "after": "",
+      "before": "=original_count\n receipt=s['fresh_cover_receipt']\n if status is None:assert receipt is None\n else:\n  assert receipt['status']==status and receipt['complete_cover_checked']is True and receipt['degree_exact']==marked_count\n  assert {",
+      "offset_utf8_bytes": 11216
+    },
+    {
+      "after": "a[n]['candidate']",
+      "before": "x",
+      "offset_utf8_bytes": 11226
+    },
+    {
+      "after": "n in('first3','first6'))\nequal(after['state']['selected'][-1],a['remote_placement']['selection_record'])\noldmarks,newmarks=points(before['state']['m']),points(after['state']['m'])\nchanged=sorted(p for p",
+      "before": "x",
+      "offset_utf8_bytes": 11265
+    },
+    {
+      "after": "set(oldmarks)|set(newmarks)if p not in oldmarks or p not in newmarks or canonical(oldmarks",
+      "before": "",
+      "offset_utf8_bytes": 11471
+    },
+    {
+      "after": "p])!=canonical(n",
+      "before": "",
+      "offset_utf8_bytes": 11562
+    },
+    {
+      "after": "wmarks[p]))\nequal(a['changed_mark_points'],[list(p)for p in changed]);assert (4,4)in changed\nsupport={tuple(p)for p,v in a['first6']",
+      "before": "",
+      "offset_utf8_bytes": 11579
+    },
+    {
+      "after": "['global_t_values']+a['first6']['candidate']['global_m_values']}\nassert not set(changed).intersection(support)\nassert after['last_transition']['collision_ledger_equal'] is True\nassert rowproof(after,3)['retain'] is True and rowproof(after,6)['retain'] is False\nassert rowproof(after,6)['reason']=='possible_full_channel4_support_changed'\nassert after['row_versions'][3]==before['row_versions'][3] and after['row_versions'][6]>before['row_versions'][6]\nassert 3 in dict(after['cursors']) and 6 not in dict(after['cursors'])\nexact_archive(slot(after,3),slot(before,3))\nrequery=snapshot(a['after_requery']);assert a['fresh_row6']['kind']=='CANDIDATE'\ncontext(slot(requery,6)['context'],after['state']);equal(slot(requery,6)['candidates'][0],a['fresh_row6']['candidate'])\nnew=snapshot(a['after_new_prototype']);equal(new['state']['selected'][-1],a['new_far_prototype']['selection_record'])\nassert new['last_transition']['collision_ledger_equal'] is False and not any(x['retain']",
+      "before": "",
+      "offset_utf8_bytes": 11724
+    },
+    {
+      "after": "x in new['last_transition']['rows'])\nassert rowproof(new,3)['reason']==rowproof(new,6)['reason']=='global_collision_ledger_changed'\nassert len(a['actual_cursor_log'])==3\nfor log,current,stat",
+      "before": "",
+      "offset_utf8_bytes": 12702
+    },
+    {
+      "after": "((a['actual_cursor_log'][0],slot(before,3),befor",
+      "before": " m",
+      "offset_utf8_bytes": 12896
+    },
+    {
+      "after": "'state']),\n (a['actual_cursor_log'][",
+      "before": ":-",
+      "offset_utf8_bytes": 12946
+    },
+    {
+      "after": ",slot(before,6),before['state'",
+      "before": "",
+      "offset_utf8_bytes": 12984
+    },
+    {
+      "after": "),\n (a['actual_cursor_log'][2],slot(requery,6),after['state'])):\n    context(log['context'],state);equal(log['context'],current['context'])\n    assert len(log['events'])",
+      "before": "}",
+      "offset_utf8_bytes": 13015
+    },
+    {
+      "after": "1 and log['events'][0]['kind']=='CANDIDATE' and log['events'][0]['ordinal']==0\n    equal(log['events'][0]['",
+      "before": "{",
+      "offset_utf8_bytes": 13186
+    },
+    {
+      "after": "d",
+      "before": "on",
+      "offset_utf8_bytes": 13296
+    },
+    {
+      "after": "date'],",
+      "before": "",
+      "offset_utf8_bytes": 13298
+    },
+    {
+      "after": "u",
+      "before": "al(k)fo",
+      "offset_utf8_bytes": 13306
+    },
+    {
+      "after": "",
+      "before": " k in ",
+      "offset_utf8_bytes": 13308
+    },
+    {
+      "after": "n",
+      "before": "ceip",
+      "offset_utf8_bytes": 13310
+    },
+    {
+      "after": "s'][0])\n\nb=families['B'];old=b['original",
+      "before": "",
+      "offset_utf8_bytes": 13323
+    },
+    {
+      "after": "slot'];before=snapshot(b['before_retention'])\nequal(old,slot(before,3));assert len(old['",
+      "before": "",
+      "offset_utf8_bytes": 13364
+    },
+    {
+      "after": ")==l",
+      "before": "}\n stream_summary.app",
+      "offset_utf8_bytes": 13458
+    },
+    {
+      "after": "(ol",
+      "before": "",
+      "offset_utf8_bytes": 13464
+    },
+    {
+      "after": "['can",
+      "before": "(",
+      "offset_utf8_bytes": 13468
+    },
+    {
+      "after": "da",
+      "before": "c",
+      "offset_utf8_bytes": 13475
+    },
+    {
+      "after": "es'])==2\nassert [x['kind']",
+      "before": "(",
+      "offset_utf8_bytes": 13478
+    },
+    {
+      "after": "or x ",
+      "before": "",
+      "offset_utf8_bytes": 13505
+    },
+    {
+      "after": "",
+      "before": "xture=",
+      "offset_utf8_bytes": 13511
+    },
+    {
+      "after": " b['",
+      "before": "ame,",
+      "offset_utf8_bytes": 13512
+    },
+    {
+      "after": "al_events']]==['CANDIDATE','CANDIDATE','EOF']\nfor index in range(2):equal(b['original_events'][index]['candidate'],old['candidates'][index])\nequal(b['original_events'][-1]['completion'],old['completion'])\nassert sorted(x['occupied']for c in old['candidates']for x in c['read_obligations'])==[False,True]\nfirst=snapshot(b['first_retained_snapshot']);second=snapshot(b['second_retained_snapshot'])\none,two=slot(first,3),slot(second,3)\nfor current in(first,second):\n    assert rowproof(current,3)['retain'] is True and current['last_transition']['collision_ledger_equal'] is True\n    value=slot(current,3);exact_archive(value,old)\n    for field in('context','keys','completion'):equal(value[field],old[field])\nassert rowproof(first,3)['read_occupancy_changes']==[1]\nequal(first['state']['selected'][-1],b['fill1']['selection_record']);equal(second['state']['selected'][-1],b['fill22']['selection_record'])\nfor oldpacket,newpacket in zip(old['candidates'],one['candidates']):equal(core(oldpacket),core(newpacket))\nassert all(x['occupied'] is True for c in one['candidates']for x in c['read_obligations'])\nequal(two['candidates'],one['candidates']);equal(b['inner_before'],second);equal(b['inner_after'],b['inner_before'])\ncontinued=snapshot(b['first_continued_snapshot']);repeated=snapshot(b['repeated_snapshot'])\nfor current in(continued,repeated):\n    value=slot(current,3);context(value['context'],second['state']);exact_archive(value,old)\n    equal(value['keys'],old['keys']);equal(value['candidates'],two['candidates'])\nlogged_prefix(b['first_replay_log'],slot(continued,3),second['state'])\nlogged_prefix(b['repeated_replay_log'],slot(repeated,3),second['state'])\nequal(b['first_replay_log'],b['repeated_replay_log']);equal(continued,repeated)\nassert b['first_continuation']['kind']==b['repeated_continuation']['kind']=='EOF'\nequal(b['first_continuation']['completion'],slot(continued,3)['completion']);equal(b['first_continuation'],b['repeated_continuation'])\nassert len(b['actu",
+      "before": "",
+      "offset_utf8_bytes": 13522
+    },
+    {
+      "after": "log'])==3\nlogged_prefix(b['a",
+      "before": "",
+      "offset_utf8_bytes": 15512
+    },
+    {
+      "after": "t",
+      "before": "o",
+      "offset_utf8_bytes": 15541
+    },
+    {
+      "after": "",
+      "before": "nt=origin",
+      "offset_utf8_bytes": 15543
+    },
+    {
+      "after": "",
+      "before": "_count,marked",
+      "offset_utf8_bytes": 15545
+    },
+    {
+      "after": "log'][0],old,before['state'])\nequal(b['actual_cursor_log'][1],b['first_replay_log']);equal(b['actual_cursor_log'][2],b['repeated_replay_log'])\n\nc=families['C'];one=snapshot(c['one_reference']);two=snapshot(c['two_references'])\nequal(one['state']['selected'][-1],c['first']['selection_re",
+      "before": "",
+      "offset_utf8_bytes": 15553
+    },
+    {
+      "after": "rd']);eq",
+      "before": "",
+      "offset_utf8_bytes": 15841
+    },
+    {
+      "after": "al(two['state']['selected'][-1],c['second']['selection_record'])\nassert len(one['state']['selected'])==1 and len(two['state']['selected'])==2\nfor curre",
+      "before": "",
+      "offset_utf8_bytes": 15850
+    },
+    {
+      "after": ",n in((one,1),(two,2)):\n    refs,",
+      "before": "=",
+      "offset_utf8_bytes": 16003
+    },
+    {
+      "after": "s=points(curr",
+      "before": "",
+      "offset_utf8_bytes": 16040
+    },
+    {
+      "after": "nt['mark_reference",
+      "before": "d",
+      "offset_utf8_bytes": 16054
+    },
+    {
+      "after": "s'])",
+      "before": "",
+      "offset_utf8_bytes": 16078
+    },
+    {
+      "after": "points(cur",
+      "before": "f",
+      "offset_utf8_bytes": 16083
+    },
+    {
+      "after": "nt['",
+      "before": "",
+      "offset_utf8_bytes": 16095
+    },
+    {
+      "after": "tate']['m'])\n    assert type(refs[(4,0)]) is type(refs[(4,1)]) is int and refs[(4,0)]==1 and refs[(4,1)]==n\n    assert type(marks[(4,0)]) is type(marks[(4,1)]) is int and marks[(4,0)]==0 and marks[(4,1)]==1\nequal(c['inner",
+      "before": "h",
+      "offset_utf8_bytes": 16100
+    },
+    {
+      "after": "after'],one)\nouter=",
+      "before": "",
+      "offset_utf8_bytes": 16322
+    },
+    {
+      "after": "['",
+      "before": "",
+      "offset_utf8_bytes": 16342
+    },
+    {
+      "after": "uter_after'];assert (4,1)not in points(outer['",
+      "before": "",
+      "offset_utf8_bytes": 16345
+    },
+    {
+      "after": "ark_r",
+      "before": "pl",
+      "offset_utf8_bytes": 16392
+    },
+    {
+      "after": "ferenc",
+      "before": "t",
+      "offset_utf8_bytes": 16398
+    },
+    {
+      "after": "unts']) and (4,1)not in points(out",
+      "before": "v",
+      "offset_utf8_bytes": 16408
+    },
+    {
+      "after": "['",
+      "before": "_",
+      "offset_utf8_bytes": 16444
+    },
+    {
+      "after": "e']['m'])\nassert points(o",
+      "before": "",
+      "offset_utf8_bytes": 16450
+    },
+    {
+      "after": "ter['mark_reference_count",
+      "before": "",
+      "offset_utf8_bytes": 16476
+    },
+    {
+      "after": "'])[(4,0)]",
+      "before": "",
+      "offset_utf8_bytes": 16502
+    },
+    {
+      "after": "=1 ",
+      "before": "st",
+      "offset_utf8_bytes": 16513
+    },
+    {
+      "after": "nd c['ac",
+      "before": "",
+      "offset_utf8_bytes": 16517
+    },
+    {
+      "after": "al_cur",
+      "before": "",
+      "offset_utf8_bytes": 16527
+    },
+    {
+      "after": "or_log']==[]\n",
+      "before": "))",
+      "offset_utf8_bytes": 16534
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 16558
+    },
+    {
+      "after": "c",
+      "before": "l",
+      "offset_utf8_bytes": 16560
+    },
+    {
+      "after": "ched_degree_receip",
+      "before": "",
+      "offset_utf8_bytes": 16562
+    },
+    {
+      "after": "_transf",
+      "before": "",
+      "offset_utf8_bytes": 16581
+    },
+    {
+      "after": "exercised','",
+      "before": "",
+      "offset_utf8_bytes": 16591
+    },
+    {
+      "after": "lob",
+      "before": "r",
+      "offset_utf8_bytes": 16604
+    },
+    {
+      "after": "l",
+      "before": "ph",
+      "offset_utf8_bytes": 16608
+    },
+    {
+      "after": "",
+      "before": "penden",
+      "offset_utf8_bytes": 16612
+    },
+    {
+      "after": "is",
+      "before": "y_retent",
+      "offset_utf8_bytes": 16613
+    },
+    {
+      "after": "o",
+      "before": "",
+      "offset_utf8_bytes": 16619
+    },
+    {
+      "after": "",
+      "before": "ollback",
+      "offset_utf8_bytes": 16621
+    },
+    {
+      "after": "_qualified',\n 'unknown_child_search_rollback",
+      "before": "",
+      "offset_utf8_bytes": 16631
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 16971
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 16991
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 17126
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 17146
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 17348
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 17402
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 17556
+    },
+    {
+      "after": "9",
+      "before": "23",
+      "offset_utf8_bytes": 17920
+    },
+    {
+      "after": "supp",
+      "before": "l",
+      "offset_utf8_bytes": 17940
+    },
+    {
+      "after": "rt",
+      "before": "cal",
+      "offset_utf8_bytes": 17945
+    },
+    {
+      "after": "",
+      "before": "deg",
+      "offset_utf8_bytes": 17948
+    },
+    {
+      "after": "tention_archiv",
+      "before": "",
+      "offset_utf8_bytes": 17950
+    },
+    {
+      "after": "referen",
+      "before": "",
+      "offset_utf8_bytes": 17966
+    },
+    {
+      "after": "e",
+      "before": "ursor",
+      "offset_utf8_bytes": 17974
+    },
+    {
+      "after": "am",
+      "before": "",
+      "offset_utf8_bytes": 18000
+    },
+    {
+      "after": "ly",
+      "before": "xture",
+      "offset_utf8_bytes": 18003
+    },
+    {
+      "after": "3",
+      "before": "7",
+      "offset_utf8_bytes": 18012
+    },
+    {
+      "after": "a",
+      "before": "ur",
+      "offset_utf8_bytes": 18015
+    },
+    {
+      "after": "e",
+      "before": "or",
+      "offset_utf8_bytes": 18017
+    },
+    {
+      "after": "",
+      "before": "co",
+      "offset_utf8_bytes": 18019
+    },
+    {
+      "after": "am",
+      "before": "texts=6,fixtur",
+      "offset_utf8_bytes": 18020
+    },
+    {
+      "after": "expe",
+      "before": "summary,",
+      "offset_utf8_bytes": 18025
+    },
+    {
+      "after": "",
+      "before": "ursors=s",
+      "offset_utf8_bytes": 18030
+    },
+    {
+      "after": "",
+      "before": "r",
+      "offset_utf8_bytes": 18031
+    },
+    {
+      "after": "d",
+      "before": "am_summary",
+      "offset_utf8_bytes": 18032
+    },
+    {
+      "after": "mid,marking_sha256=hashlib.sha256(canonical(",
+      "before": "",
+      "offset_utf8_bytes": 18047
+    },
+    {
+      "after": ")).hexd",
+      "before": "['mark",
+      "offset_utf8_bytes": 18106
+    },
+    {
+      "after": "",
+      "before": "n",
+      "offset_utf8_bytes": 18114
+    },
+    {
+      "after": "est()",
+      "before": "_id']",
+      "offset_utf8_bytes": 18115
+    },
+    {
+      "after": "full sna",
+      "before": "",
+      "offset_utf8_bytes": 18206
+    },
+    {
+      "after": "sh",
+      "before": "r",
+      "offset_utf8_bytes": 18215
+    },
+    {
+      "after": "",
+      "before": "posal/receip",
+      "offset_utf8_bytes": 18218
+    },
+    {
+      "after": "ursor/",
+      "before": "",
+      "offset_utf8_bytes": 18229
+    },
+    {
+      "after": "rchive/refere",
+      "before": "",
+      "offset_utf8_bytes": 18236
+    },
+    {
+      "after": "ce/restore l",
+      "before": "d",
+      "offset_utf8_bytes": 18250
+    },
+    {
+      "after": "",
+      "before": "da",
+      "offset_utf8_bytes": 18263
+    },
+    {
+      "after": "ral",
+      "before": "-key",
+      "offset_utf8_bytes": 18265
+    },
+    {
+      "after": "family_scope={'A':'Complete possible-support invalidation plus unchanged/new global ledger and exact owned restore; both1/4 change, no iso",
+      "before": "",
+      "offset_utf8_bytes": 18331
+    },
+    {
+      "after": "d4 claim.',\n 'B':'Occupancy refresh and literal old archive/current full-prefix replay/nonempty nested rollback; no degree receipt transfer.',\n 'C':'Actual matching mark reference counts and exact nested owned restore; not scheduled search.'},\n work_logs_and_counters_outside_semantic_rollback=True,cached_degree_receipt_transfe",
+      "before": "",
+      "offset_utf8_bytes": 18473
+    },
+    {
+      "after": "xercised=False,\n global_decisio",
+      "before": "",
+      "offset_utf8_bytes": 18804
+    },
+    {
+      "after": "_or",
+      "before": "gine",
+      "offset_utf8_bytes": 18836
+    },
+    {
+      "after": "ch",
+      "before": "tag",
+      "offset_utf8_bytes": 18841
+    },
+    {
+      "after": "duler",
+      "before": "s",
+      "offset_utf8_bytes": 18844
+    },
+    {
+      "after": "unknown_child_search_rollback_qualified=False,\n ",
+      "before": "",
+      "offset_utf8_bytes": 18866
+    },
+    {
+      "after": "engine_search_performed=False,failure_marking_activated=False,\n ",
+      "before": "",
+      "offset_utf8_bytes": 18944
+    },
+    {
+      "after": "_accepted=False,exact_point_board",
+      "before": "",
+      "offset_utf8_bytes": 19021
+    },
+    {
+      "after": "",
+      "before": "\n ",
+      "offset_utf8_bytes": 19088
+    },
+    {
+      "after": "\n ",
+      "before": "",
+      "offset_utf8_bytes": 19117
+    },
+    {
+      "after": "Cached degree rece",
+      "before": "Poss",
+      "offset_utf8_bytes": 19199
+    },
+    {
+      "after": "",
+      "before": "ble-su",
+      "offset_utf8_bytes": 19218
+    },
+    {
+      "after": "",
+      "before": "por",
+      "offset_utf8_bytes": 19219
+    },
+    {
+      "after": "",
+      "before": "itions, re",
+      "offset_utf8_bytes": 19226
+    },
+    {
+      "after": "",
+      "before": "ence counts",
+      "offset_utf8_bytes": 19229
+    },
+    {
+      "after": "",
+      "before": "retained archives and exact rollback controls remain pendin",
+      "offset_utf8_bytes": 19231
+    },
+    {
+      "after": "",
+      "before": ".',\n  'G",
+      "offset_utf8_bytes": 19232
+    },
+    {
+      "after": "",
+      "before": " engine",
+      "offset_utf8_bytes": 19237
+    },
+    {
+      "after": "/scheduler",
+      "before": "",
+      "offset_utf8_bytes": 19247
+    },
+    {
+      "after": " search",
+      "before": "",
+      "offset_utf8_bytes": 19275
+    },
+    {
+      "after": "'No fabricated true hash-collision test or valid isolated channel4-only transition.',\n",
+      "before": "",
+      "offset_utf8_bytes": 19318
+    },
+    {
+      "after": "B",
+      "before": "A",
+      "offset_utf8_bytes": 19550
+    },
+    {
+      "after": "9",
+      "before": "23",
+      "offset_utf8_bytes": 19711
+    },
+    {
+      "after": "am",
+      "before": "",
+      "offset_utf8_bytes": 19714
+    },
+    {
+      "after": "li",
+      "before": "xtur",
+      "offset_utf8_bytes": 19717
+    },
+    {
+      "after": "3",
+      "before": "7,cursor_contexts=6",
+      "offset_utf8_bytes": 19722
+    }
+  ],
+  "inverse_patch": {
+    "bytes": 25494,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-inverse-v1.patch",
+    "sha256": "7dac5586021ed2ad3ed0eefcd37fd49521825805b92195083788153d6bb4de96"
+  },
+  "inverse_reconstruction_exact": true,
+  "inverse_sequential_edits": [
+    {
+      "after": "7,cursor_contexts=6",
+      "before": "3",
+      "offset_utf8_bytes": 19722
+    },
+    {
+      "after": "xtur",
+      "before": "li",
+      "offset_utf8_bytes": 19717
+    },
+    {
+      "after": "",
+      "before": "am",
+      "offset_utf8_bytes": 19714
+    },
+    {
+      "after": "23",
+      "before": "9",
+      "offset_utf8_bytes": 19711
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 19550
+    },
+    {
+      "after": "",
+      "before": "'No fabricated true hash-collision test or valid isolated channel4-only transition.',\n",
+      "offset_utf8_bytes": 19318
+    },
+    {
+      "after": "",
+      "before": " search",
+      "offset_utf8_bytes": 19275
+    },
+    {
+      "after": "",
+      "before": "/scheduler",
+      "offset_utf8_bytes": 19247
+    },
+    {
+      "after": " engine",
+      "before": "",
+      "offset_utf8_bytes": 19237
+    },
+    {
+      "after": ".',\n  'G",
+      "before": "",
+      "offset_utf8_bytes": 19232
+    },
+    {
+      "after": "retained archives and exact rollback controls remain pendin",
+      "before": "",
+      "offset_utf8_bytes": 19231
+    },
+    {
+      "after": "ence counts",
+      "before": "",
+      "offset_utf8_bytes": 19229
+    },
+    {
+      "after": "itions, re",
+      "before": "",
+      "offset_utf8_bytes": 19226
+    },
+    {
+      "after": "por",
+      "before": "",
+      "offset_utf8_bytes": 19219
+    },
+    {
+      "after": "ble-su",
+      "before": "",
+      "offset_utf8_bytes": 19218
+    },
+    {
+      "after": "Poss",
+      "before": "Cached degree rece",
+      "offset_utf8_bytes": 19199
+    },
+    {
+      "after": "",
+      "before": "\n ",
+      "offset_utf8_bytes": 19117
+    },
+    {
+      "after": "\n ",
+      "before": "",
+      "offset_utf8_bytes": 19088
+    },
+    {
+      "after": "",
+      "before": "_accepted=False,exact_point_board",
+      "offset_utf8_bytes": 19021
+    },
+    {
+      "after": "",
+      "before": "engine_search_performed=False,failure_marking_activated=False,\n ",
+      "offset_utf8_bytes": 18944
+    },
+    {
+      "after": "",
+      "before": "unknown_child_search_rollback_qualified=False,\n ",
+      "offset_utf8_bytes": 18866
+    },
+    {
+      "after": "s",
+      "before": "duler",
+      "offset_utf8_bytes": 18844
+    },
+    {
+      "after": "tag",
+      "before": "ch",
+      "offset_utf8_bytes": 18841
+    },
+    {
+      "after": "gine",
+      "before": "_or",
+      "offset_utf8_bytes": 18836
+    },
+    {
+      "after": "",
+      "before": "xercised=False,\n global_decisio",
+      "offset_utf8_bytes": 18804
+    },
+    {
+      "after": "",
+      "before": "d4 claim.',\n 'B':'Occupancy refresh and literal old archive/current full-prefix replay/nonempty nested rollback; no degree receipt transfer.',\n 'C':'Actual matching mark reference counts and exact nested owned restore; not scheduled search.'},\n work_logs_and_counters_outside_semantic_rollback=True,cached_degree_receipt_transfe",
+      "offset_utf8_bytes": 18473
+    },
+    {
+      "after": "",
+      "before": "family_scope={'A':'Complete possible-support invalidation plus unchanged/new global ledger and exact owned restore; both1/4 change, no iso",
+      "offset_utf8_bytes": 18331
+    },
+    {
+      "after": "-key",
+      "before": "ral",
+      "offset_utf8_bytes": 18265
+    },
+    {
+      "after": "da",
+      "before": "",
+      "offset_utf8_bytes": 18263
+    },
+    {
+      "after": "d",
+      "before": "ce/restore l",
+      "offset_utf8_bytes": 18250
+    },
+    {
+      "after": "",
+      "before": "rchive/refere",
+      "offset_utf8_bytes": 18236
+    },
+    {
+      "after": "",
+      "before": "ursor/",
+      "offset_utf8_bytes": 18229
+    },
+    {
+      "after": "posal/receip",
+      "before": "",
+      "offset_utf8_bytes": 18218
+    },
+    {
+      "after": "r",
+      "before": "sh",
+      "offset_utf8_bytes": 18215
+    },
+    {
+      "after": "",
+      "before": "full sna",
+      "offset_utf8_bytes": 18206
+    },
+    {
+      "after": "_id']",
+      "before": "est()",
+      "offset_utf8_bytes": 18115
+    },
+    {
+      "after": "n",
+      "before": "",
+      "offset_utf8_bytes": 18114
+    },
+    {
+      "after": "['mark",
+      "before": ")).hexd",
+      "offset_utf8_bytes": 18106
+    },
+    {
+      "after": "",
+      "before": "mid,marking_sha256=hashlib.sha256(canonical(",
+      "offset_utf8_bytes": 18047
+    },
+    {
+      "after": "am_summary",
+      "before": "d",
+      "offset_utf8_bytes": 18032
+    },
+    {
+      "after": "r",
+      "before": "",
+      "offset_utf8_bytes": 18031
+    },
+    {
+      "after": "ursors=s",
+      "before": "",
+      "offset_utf8_bytes": 18030
+    },
+    {
+      "after": "summary,",
+      "before": "expe",
+      "offset_utf8_bytes": 18025
+    },
+    {
+      "after": "texts=6,fixtur",
+      "before": "am",
+      "offset_utf8_bytes": 18020
+    },
+    {
+      "after": "co",
+      "before": "",
+      "offset_utf8_bytes": 18019
+    },
+    {
+      "after": "or",
+      "before": "e",
+      "offset_utf8_bytes": 18017
+    },
+    {
+      "after": "ur",
+      "before": "a",
+      "offset_utf8_bytes": 18015
+    },
+    {
+      "after": "7",
+      "before": "3",
+      "offset_utf8_bytes": 18012
+    },
+    {
+      "after": "xture",
+      "before": "ly",
+      "offset_utf8_bytes": 18003
+    },
+    {
+      "after": "",
+      "before": "am",
+      "offset_utf8_bytes": 18000
+    },
+    {
+      "after": "ursor",
+      "before": "e",
+      "offset_utf8_bytes": 17974
+    },
+    {
+      "after": "",
+      "before": "referen",
+      "offset_utf8_bytes": 17966
+    },
+    {
+      "after": "",
+      "before": "tention_archiv",
+      "offset_utf8_bytes": 17950
+    },
+    {
+      "after": "deg",
+      "before": "",
+      "offset_utf8_bytes": 17948
+    },
+    {
+      "after": "cal",
+      "before": "rt",
+      "offset_utf8_bytes": 17945
+    },
+    {
+      "after": "l",
+      "before": "supp",
+      "offset_utf8_bytes": 17940
+    },
+    {
+      "after": "23",
+      "before": "9",
+      "offset_utf8_bytes": 17920
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 17556
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 17402
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 17348
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 17146
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 17126
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 16991
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 16971
+    },
+    {
+      "after": "",
+      "before": "_qualified',\n 'unknown_child_search_rollback",
+      "offset_utf8_bytes": 16631
+    },
+    {
+      "after": "ollback",
+      "before": "",
+      "offset_utf8_bytes": 16621
+    },
+    {
+      "after": "",
+      "before": "o",
+      "offset_utf8_bytes": 16619
+    },
+    {
+      "after": "y_retent",
+      "before": "is",
+      "offset_utf8_bytes": 16613
+    },
+    {
+      "after": "penden",
+      "before": "",
+      "offset_utf8_bytes": 16612
+    },
+    {
+      "after": "ph",
+      "before": "l",
+      "offset_utf8_bytes": 16608
+    },
+    {
+      "after": "r",
+      "before": "lob",
+      "offset_utf8_bytes": 16604
+    },
+    {
+      "after": "",
+      "before": "exercised','",
+      "offset_utf8_bytes": 16591
+    },
+    {
+      "after": "",
+      "before": "_transf",
+      "offset_utf8_bytes": 16581
+    },
+    {
+      "after": "",
+      "before": "ched_degree_receip",
+      "offset_utf8_bytes": 16562
+    },
+    {
+      "after": "l",
+      "before": "c",
+      "offset_utf8_bytes": 16560
+    },
+    {
+      "after": " ",
+      "before": "",
+      "offset_utf8_bytes": 16558
+    },
+    {
+      "after": "))",
+      "before": "or_log']==[]\n",
+      "offset_utf8_bytes": 16534
+    },
+    {
+      "after": "",
+      "before": "al_cur",
+      "offset_utf8_bytes": 16527
+    },
+    {
+      "after": "",
+      "before": "nd c['ac",
+      "offset_utf8_bytes": 16517
+    },
+    {
+      "after": "st",
+      "before": "=1 ",
+      "offset_utf8_bytes": 16513
+    },
+    {
+      "after": "",
+      "before": "'])[(4,0)]",
+      "offset_utf8_bytes": 16502
+    },
+    {
+      "after": "",
+      "before": "ter['mark_reference_count",
+      "offset_utf8_bytes": 16476
+    },
+    {
+      "after": "",
+      "before": "e']['m'])\nassert points(o",
+      "offset_utf8_bytes": 16450
+    },
+    {
+      "after": "_",
+      "before": "['",
+      "offset_utf8_bytes": 16444
+    },
+    {
+      "after": "v",
+      "before": "unts']) and (4,1)not in points(out",
+      "offset_utf8_bytes": 16408
+    },
+    {
+      "after": "t",
+      "before": "ferenc",
+      "offset_utf8_bytes": 16398
+    },
+    {
+      "after": "pl",
+      "before": "ark_r",
+      "offset_utf8_bytes": 16392
+    },
+    {
+      "after": "",
+      "before": "uter_after'];assert (4,1)not in points(outer['",
+      "offset_utf8_bytes": 16345
+    },
+    {
+      "after": "",
+      "before": "['",
+      "offset_utf8_bytes": 16342
+    },
+    {
+      "after": "",
+      "before": "after'],one)\nouter=",
+      "offset_utf8_bytes": 16322
+    },
+    {
+      "after": "h",
+      "before": "tate']['m'])\n    assert type(refs[(4,0)]) is type(refs[(4,1)]) is int and refs[(4,0)]==1 and refs[(4,1)]==n\n    assert type(marks[(4,0)]) is type(marks[(4,1)]) is int and marks[(4,0)]==0 and marks[(4,1)]==1\nequal(c['inner",
+      "offset_utf8_bytes": 16100
+    },
+    {
+      "after": "",
+      "before": "nt['",
+      "offset_utf8_bytes": 16095
+    },
+    {
+      "after": "f",
+      "before": "points(cur",
+      "offset_utf8_bytes": 16083
+    },
+    {
+      "after": "",
+      "before": "s'])",
+      "offset_utf8_bytes": 16078
+    },
+    {
+      "after": "d",
+      "before": "nt['mark_reference",
+      "offset_utf8_bytes": 16054
+    },
+    {
+      "after": "",
+      "before": "s=points(curr",
+      "offset_utf8_bytes": 16040
+    },
+    {
+      "after": "=",
+      "before": ",n in((one,1),(two,2)):\n    refs,",
+      "offset_utf8_bytes": 16003
+    },
+    {
+      "after": "",
+      "before": "al(two['state']['selected'][-1],c['second']['selection_record'])\nassert len(one['state']['selected'])==1 and len(two['state']['selected'])==2\nfor curre",
+      "offset_utf8_bytes": 15850
+    },
+    {
+      "after": "",
+      "before": "rd']);eq",
+      "offset_utf8_bytes": 15841
+    },
+    {
+      "after": "",
+      "before": "log'][0],old,before['state'])\nequal(b['actual_cursor_log'][1],b['first_replay_log']);equal(b['actual_cursor_log'][2],b['repeated_replay_log'])\n\nc=families['C'];one=snapshot(c['one_reference']);two=snapshot(c['two_references'])\nequal(one['state']['selected'][-1],c['first']['selection_re",
+      "offset_utf8_bytes": 15553
+    },
+    {
+      "after": "_count,marked",
+      "before": "",
+      "offset_utf8_bytes": 15545
+    },
+    {
+      "after": "nt=origin",
+      "before": "",
+      "offset_utf8_bytes": 15543
+    },
+    {
+      "after": "o",
+      "before": "t",
+      "offset_utf8_bytes": 15541
+    },
+    {
+      "after": "",
+      "before": "log'])==3\nlogged_prefix(b['a",
+      "offset_utf8_bytes": 15512
+    },
+    {
+      "after": "",
+      "before": "al_events']]==['CANDIDATE','CANDIDATE','EOF']\nfor index in range(2):equal(b['original_events'][index]['candidate'],old['candidates'][index])\nequal(b['original_events'][-1]['completion'],old['completion'])\nassert sorted(x['occupied']for c in old['candidates']for x in c['read_obligations'])==[False,True]\nfirst=snapshot(b['first_retained_snapshot']);second=snapshot(b['second_retained_snapshot'])\none,two=slot(first,3),slot(second,3)\nfor current in(first,second):\n    assert rowproof(current,3)['retain'] is True and current['last_transition']['collision_ledger_equal'] is True\n    value=slot(current,3);exact_archive(value,old)\n    for field in('context','keys','completion'):equal(value[field],old[field])\nassert rowproof(first,3)['read_occupancy_changes']==[1]\nequal(first['state']['selected'][-1],b['fill1']['selection_record']);equal(second['state']['selected'][-1],b['fill22']['selection_record'])\nfor oldpacket,newpacket in zip(old['candidates'],one['candidates']):equal(core(oldpacket),core(newpacket))\nassert all(x['occupied'] is True for c in one['candidates']for x in c['read_obligations'])\nequal(two['candidates'],one['candidates']);equal(b['inner_before'],second);equal(b['inner_after'],b['inner_before'])\ncontinued=snapshot(b['first_continued_snapshot']);repeated=snapshot(b['repeated_snapshot'])\nfor current in(continued,repeated):\n    value=slot(current,3);context(value['context'],second['state']);exact_archive(value,old)\n    equal(value['keys'],old['keys']);equal(value['candidates'],two['candidates'])\nlogged_prefix(b['first_replay_log'],slot(continued,3),second['state'])\nlogged_prefix(b['repeated_replay_log'],slot(repeated,3),second['state'])\nequal(b['first_replay_log'],b['repeated_replay_log']);equal(continued,repeated)\nassert b['first_continuation']['kind']==b['repeated_continuation']['kind']=='EOF'\nequal(b['first_continuation']['completion'],slot(continued,3)['completion']);equal(b['first_continuation'],b['repeated_continuation'])\nassert len(b['actu",
+      "offset_utf8_bytes": 13522
+    },
+    {
+      "after": "ame,",
+      "before": " b['",
+      "offset_utf8_bytes": 13512
+    },
+    {
+      "after": "xture=",
+      "before": "",
+      "offset_utf8_bytes": 13511
+    },
+    {
+      "after": "",
+      "before": "or x ",
+      "offset_utf8_bytes": 13505
+    },
+    {
+      "after": "(",
+      "before": "es'])==2\nassert [x['kind']",
+      "offset_utf8_bytes": 13478
+    },
+    {
+      "after": "c",
+      "before": "da",
+      "offset_utf8_bytes": 13475
+    },
+    {
+      "after": "(",
+      "before": "['can",
+      "offset_utf8_bytes": 13468
+    },
+    {
+      "after": "",
+      "before": "(ol",
+      "offset_utf8_bytes": 13464
+    },
+    {
+      "after": "}\n stream_summary.app",
+      "before": ")==l",
+      "offset_utf8_bytes": 13458
+    },
+    {
+      "after": "",
+      "before": "slot'];before=snapshot(b['before_retention'])\nequal(old,slot(before,3));assert len(old['",
+      "offset_utf8_bytes": 13364
+    },
+    {
+      "after": "",
+      "before": "s'][0])\n\nb=families['B'];old=b['original",
+      "offset_utf8_bytes": 13323
+    },
+    {
+      "after": "ceip",
+      "before": "n",
+      "offset_utf8_bytes": 13310
+    },
+    {
+      "after": " k in ",
+      "before": "",
+      "offset_utf8_bytes": 13308
+    },
+    {
+      "after": "al(k)fo",
+      "before": "u",
+      "offset_utf8_bytes": 13306
+    },
+    {
+      "after": "",
+      "before": "date'],",
+      "offset_utf8_bytes": 13298
+    },
+    {
+      "after": "on",
+      "before": "d",
+      "offset_utf8_bytes": 13296
+    },
+    {
+      "after": "{",
+      "before": "1 and log['events'][0]['kind']=='CANDIDATE' and log['events'][0]['ordinal']==0\n    equal(log['events'][0]['",
+      "offset_utf8_bytes": 13186
+    },
+    {
+      "after": "}",
+      "before": "),\n (a['actual_cursor_log'][2],slot(requery,6),after['state'])):\n    context(log['context'],state);equal(log['context'],current['context'])\n    assert len(log['events'])",
+      "offset_utf8_bytes": 13015
+    },
+    {
+      "after": "",
+      "before": ",slot(before,6),before['state'",
+      "offset_utf8_bytes": 12984
+    },
+    {
+      "after": ":-",
+      "before": "'state']),\n (a['actual_cursor_log'][",
+      "offset_utf8_bytes": 12946
+    },
+    {
+      "after": " m",
+      "before": "((a['actual_cursor_log'][0],slot(before,3),befor",
+      "offset_utf8_bytes": 12896
+    },
+    {
+      "after": "",
+      "before": "x in new['last_transition']['rows'])\nassert rowproof(new,3)['reason']==rowproof(new,6)['reason']=='global_collision_ledger_changed'\nassert len(a['actual_cursor_log'])==3\nfor log,current,stat",
+      "offset_utf8_bytes": 12702
+    },
+    {
+      "after": "",
+      "before": "['global_t_values']+a['first6']['candidate']['global_m_values']}\nassert not set(changed).intersection(support)\nassert after['last_transition']['collision_ledger_equal'] is True\nassert rowproof(after,3)['retain'] is True and rowproof(after,6)['retain'] is False\nassert rowproof(after,6)['reason']=='possible_full_channel4_support_changed'\nassert after['row_versions'][3]==before['row_versions'][3] and after['row_versions'][6]>before['row_versions'][6]\nassert 3 in dict(after['cursors']) and 6 not in dict(after['cursors'])\nexact_archive(slot(after,3),slot(before,3))\nrequery=snapshot(a['after_requery']);assert a['fresh_row6']['kind']=='CANDIDATE'\ncontext(slot(requery,6)['context'],after['state']);equal(slot(requery,6)['candidates'][0],a['fresh_row6']['candidate'])\nnew=snapshot(a['after_new_prototype']);equal(new['state']['selected'][-1],a['new_far_prototype']['selection_record'])\nassert new['last_transition']['collision_ledger_equal'] is False and not any(x['retain']",
+      "offset_utf8_bytes": 11724
+    },
+    {
+      "after": "",
+      "before": "wmarks[p]))\nequal(a['changed_mark_points'],[list(p)for p in changed]);assert (4,4)in changed\nsupport={tuple(p)for p,v in a['first6']",
+      "offset_utf8_bytes": 11579
+    },
+    {
+      "after": "",
+      "before": "p])!=canonical(n",
+      "offset_utf8_bytes": 11562
+    },
+    {
+      "after": "",
+      "before": "set(oldmarks)|set(newmarks)if p not in oldmarks or p not in newmarks or canonical(oldmarks",
+      "offset_utf8_bytes": 11471
+    },
+    {
+      "after": "x",
+      "before": "n in('first3','first6'))\nequal(after['state']['selected'][-1],a['remote_placement']['selection_record'])\noldmarks,newmarks=points(before['state']['m']),points(after['state']['m'])\nchanged=sorted(p for p",
+      "offset_utf8_bytes": 11265
+    },
+    {
+      "after": "x",
+      "before": "a[n]['candidate']",
+      "offset_utf8_bytes": 11226
+    },
+    {
+      "after": "=original_count\n receipt=s['fresh_cover_receipt']\n if status is None:assert receipt is None\n else:\n  assert receipt['status']==status and receipt['complete_cover_checked']is True and receipt['degree_exact']==marked_count\n  assert {",
+      "before": "",
+      "offset_utf8_bytes": 11216
+    },
+    {
+      "after": "",
+      "before": ")!",
+      "offset_utf8_bytes": 11213
+    },
+    {
+      "after": "ielded_candidates",
+      "before": "",
+      "offset_utf8_bytes": 11211
+    },
+    {
+      "after": "",
+      "before": "placement_ke",
+      "offset_utf8_bytes": 11198
+    },
+    {
+      "after": "d_count and oe[-1]['completion",
+      "before": "",
+      "offset_utf8_bytes": 11194
+    },
+    {
+      "after": "k",
+      "before": "",
+      "offset_utf8_bytes": 11193
+    },
+    {
+      "after": "s']==ma",
+      "before": "_befo",
+      "offset_utf8_bytes": 11187
+    },
+    {
+      "after": "text']['original_context']==s['original_context']\n assert s['marked_context']['state']==s['state']and s['original_context']['state']==s['base_state']\n assert me[-1]['completion']['original_completion']==oe[-1]['completion']\n assert me[-1]['completion']['yielded",
+      "before": "",
+      "offset_utf8_bytes": 11177
+    },
+    {
+      "after": "d_co",
+      "before": "",
+      "offset_utf8_bytes": 11176
+    },
+    {
+      "after": "rt s['mark",
+      "before": "",
+      "offset_utf8_bytes": 11175
+    },
+    {
+      "after": "d']=='CANDIDATE'for e in oe[:-1]+me[:-1])\n as",
+      "before": "",
+      "offset_utf8_bytes": 11173
+    },
+    {
+      "after": "ki",
+      "before": "u",
+      "offset_utf8_bytes": 11171
+    },
+    {
+      "after": "e",
+      "before": "canonical(a",
+      "offset_utf8_bytes": 11158
+    },
+    {
+      "after": " summary.append(dict(fixture=name,row=row,original_status=base_status,marked_status=status,\n  original_offered=offered,marked_survivors=survived,complete_cover_checked=r['complete_cover_checked']))\nassert data['fixtures']['target-complete-filtered-zero']['state']['excluded']==[]\nstream_counts={'UG-many':(2,2,'MANY'),'UG-one':(1,1,'SINGLETON'),'UG-zero':(0,0,'ZERO'),\n 'target-complete-filtered-zero':(1,0,'ZERO'),'deep42-row2':(2,1,None),'deep42-row3':(6,4,None)}\nassert set(data['cursors'])==set(stream_counts)\nstream_summary=[]\nfor name,(original_count,marked_count,status)in stream_counts.items():\n s=data['cursors'][name];f=data['fixtures'][name]\n assert s['fixture_ref']==name and s['state']==f['state']and s['base_state']==f['base_state']and s['row']==f['row']\n oe,me=s['original_events'],s['marked_events']\n assert len(oe)==original_count+1 and len(me)==marked_count+1 and oe[-1]['kind']==me[-1]['kind']=='EOF'\n assert [e['ordinal']for e in oe[:-1]]==list(range(original_count))and [e['ordinal']for e in me[:-1]]==list(range(marked_count))\n ",
+      "before": "",
+      "offset_utf8_bytes": 11147
+    },
+    {
+      "after": "==offered-survived",
+      "before": "",
+      "offset_utf8_bytes": 11146
+    },
+    {
+      "after": "ked_rejections",
+      "before": "",
+      "offset_utf8_bytes": 11143
+    },
+    {
+      "after": "",
+      "before": "ndidate_afte",
+      "offset_utf8_bytes": 11130
+    },
+    {
+      "after": "(p['m",
+      "before": "_c",
+      "offset_utf8_bytes": 11127
+    },
+    {
+      "after": "rt l",
+      "before": "",
+      "offset_utf8_bytes": 11125
+    },
+    {
+      "after": "flicting_points']==[[[4,0],0,1]]\n as",
+      "before": "",
+      "offset_utf8_bytes": 11123
+    },
+    {
+      "after": "co",
+      "before": "u",
+      "offset_utf8_bytes": 11121
+    },
+    {
+      "after": "jection",
+      "before": "'],a",
+      "offset_utf8_bytes": 11115
+    },
+    {
+      "after": " ",
+      "before": "e_befo",
+      "offset_utf8_bytes": 11107
+    },
+    {
+      "after": "r",
+      "before": "en_candida",
+      "offset_utf8_bytes": 11096
+    },
+    {
+      "after": "s",
+      "before": "l(a['un",
+      "offset_utf8_bytes": 11087
+    },
+    {
+      "after": "  ",
+      "before": "equ",
+      "offset_utf8_bytes": 11083
+    },
+    {
+      "after": "['accepted_local_evidence']is False\n else:\n  assert r['complete_cover_checked']is True and r['degree_exact']==survived and r['accepted_local_evidence']is True\n for rejection in p['marked_rejections']:\n  assert rejection['reason",
+      "before": "",
+      "offset_utf8_bytes": 11038
+    },
+    {
+      "after": "']is None and ",
+      "before": "",
+      "offset_utf8_bytes": 11037
+    },
+    {
+      "after": "ndida",
+      "before": "f",
+      "offset_utf8_bytes": 11034
+    },
+    {
+      "after": "c",
+      "before": "",
+      "offset_utf8_bytes": 11033
+    },
+    {
+      "after": "",
+      "before": "gality",
+      "offset_utf8_bytes": 11026
+    },
+    {
+      "after": "o",
+      "before": "een_",
+      "offset_utf8_bytes": 11020
+    },
+    {
+      "after": "",
+      "before": "un",
+      "offset_utf8_bytes": 11017
+    },
+    {
+      "after": "r",
+      "before": "a",
+      "offset_utf8_bytes": 11014
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 11001
+    },
+    {
+      "after": "e_exact",
+      "before": "",
+      "offset_utf8_bytes": 10999
+    },
+    {
+      "after": "",
+      "before": "ality_befo",
+      "offset_utf8_bytes": 10987
+    },
+    {
+      "after": "d",
+      "before": "translation']!=k6['translation'];equal(k3['type_preimage'],k6['type_preimage'])\nassert a['unseen_l",
+      "offset_utf8_bytes": 10887
+    },
+    {
+      "after": "r",
+      "before": "k3",
+      "offset_utf8_bytes": 10883
+    },
+    {
+      "after": "",
+      "before": "rt set(families)=={'A','B','C'}\nfor family in families.values():\n    snapshot(family['outer_before']);snapshot(family['outer_after'])\n    equal(family['outer_before']['state'],family['initial_state'])\n    equal(family['outer_after'],family['outer_before'])\n\na=families['A']\nbefore=snapshot(a['before_remote']);after=snapshot(a['after_remote'])\nfor row,name in((3,'first3'),(6,'first6')):\n    event=a[name];assert event['kind']=='CANDIDATE'\n    equal(event['candidate'],slot(before,row)['candidates'][0])\n    equal(event['candidate']['placement_key'],slot(before,row)['keys'][0])\n    assert event['candidate']['base_tile']['placement_key']['type_preimage']['primitive_witness']['rule']=='axiom'\nk3=a['first3']['candidate']['base_tile']['placement_key'];k6=a['first6']['candidate']['base_tile']['placement_key']\nassert k3['tile_type_id']==k6['tile_type_id']",
+      "offset_utf8_bytes": 10023
+    },
+    {
+      "after": "",
+      "before": "_proof_accepted','ROOT_resource_accepted'))\n\nfamilies=data['families'];as",
+      "offset_utf8_bytes": 9948
+    },
+    {
+      "after": "s F",
+      "before": "c",
+      "offset_utf8_bytes": 9945
+    },
+    {
+      "after": "]",
+      "before": ",'log",
+      "offset_utf8_bytes": 9939
+    },
+    {
+      "after": "",
+      "before": "_accept",
+      "offset_utf8_bytes": 9929
+    },
+    {
+      "after": "che",
+      "before": "or_rollba",
+      "offset_utf8_bytes": 9918
+    },
+    {
+      "after": "ov",
+      "before": "andidate_graph_accepted',\n        'schedul",
+      "offset_utf8_bytes": 9873
+    },
+    {
+      "after": "",
+      "before": "k]is False for k in(",
+      "offset_utf8_bytes": 9842
+    },
+    {
+      "after": "",
+      "before": "ee_zero_or_singleton_accepted'] is False\n    assert all(completion",
+      "offset_utf8_bytes": 9775
+    },
+    {
+      "after": "",
+      "before": "completion['deg",
+      "offset_utf8_bytes": 9759
+    },
+    {
+      "after": "status=='UNKNOWN':\n",
+      "before": "",
+      "offset_utf8_bytes": 9750
+    },
+    {
+      "after": "if",
+      "before": "",
+      "offset_utf8_bytes": 9749
+    },
+    {
+      "after": "['marking_id']==data['marking']['marking_id']",
+      "before": "",
+      "offset_utf8_bytes": 9747
+    },
+    {
+      "after": "t",
+      "before": "ls",
+      "offset_utf8_bytes": 9744
+    },
+    {
+      "after": "t",
+      "before": " F",
+      "offset_utf8_bytes": 9741
+    },
+    {
+      "after": "==",
+      "before": " i",
+      "offset_utf8_bytes": 9738
+    },
+    {
+      "after": "i",
+      "before": "checke",
+      "offset_utf8_bytes": 9729
+    },
+    {
+      "after": "g",
+      "before": "dependently",
+      "offset_utf8_bytes": 9717
+    },
+    {
+      "after": "mark",
+      "before": "",
+      "offset_utf8_bytes": 9715
+    },
+    {
+      "after": "",
+      "before": "letion",
+      "offset_utf8_bytes": 9707
+    },
+    {
+      "after": "",
+      "before": "mid and com",
+      "offset_utf8_bytes": 9695
+    },
+    {
+      "after": "r",
+      "before": "completion",
+      "offset_utf8_bytes": 9669
+    },
+    {
+      "after": "",
+      "before": "   ",
+      "offset_utf8_bytes": 9658
+    },
+    {
+      "after": "]",
+      "before": "==2",
+      "offset_utf8_bytes": 9654
+    },
+    {
+      "after": "",
+      "before": "context_sha256']==log['context']['context_sha256']\n    equal(events[-1]['completion'],current['completion'])\n    completion=current['completion']\n    assert completion['context_sha256']==log['context']['context_sha256']\n    assert completion['state_sha256']==log['context']['state_sha256'] and completion['yielded_",
+      "offset_utf8_bytes": 9328
+    },
+    {
+      "after": "p",
+      "before": "   assert events[-1]",
+      "offset_utf8_bytes": 9306
+    },
+    {
+      "after": "",
+      "before": "dex])\n",
+      "offset_utf8_bytes": 9299
+    },
+    {
+      "after": " x ",
+      "before": "rent['keys'][",
+      "offset_utf8_bytes": 9284
+    },
+    {
+      "after": "fo",
+      "before": ",cu",
+      "offset_utf8_bytes": 9280
+    },
+    {
+      "after": ")==survived\n assert r['candidate_keys']==[x",
+      "before": "",
+      "offset_utf8_bytes": 9263
+    },
+    {
+      "after": "s",
+      "before": "",
+      "offset_utf8_bytes": 9261
+    },
+    {
+      "after": "(p",
+      "before": "t",
+      "offset_utf8_bytes": 9249
+    },
+    {
+      "after": "",
+      "before": "(ev",
+      "offset_utf8_bytes": 9244
+    },
+    {
+      "after": "",
+      "before": "       equa",
+      "offset_utf8_bytes": 9232
+    },
+    {
+      "after": "",
+      "before": "ex])\n",
+      "offset_utf8_bytes": 9226
+    },
+    {
+      "after": ")==offered a",
+      "before": "[i",
+      "offset_utf8_bytes": 9222
+    },
+    {
+      "after": "",
+      "before": ")])\n    assert set(current['context_archive'][0])=={'context','keys','candidates','completion'}\n\ndef logged_prefix(log,current,state):\n    context(log['context'],state);equal(log['context'],current['context'])\n    events=log['events'];assert [x['kind']for x in events]==['CANDIDATE','CANDIDATE','EOF']\n    assert [x['ordinal']for x in events[:-1]]==[0,1]\n    for index,event in enumerate(events[:-1]):\n        assert event['context_sha256']==log['context']['context_sha256'] and event['independently_checked'] is False\n        equal(event['candidate'],current",
+      "offset_utf8_bytes": 8649
+    },
+    {
+      "after": "",
+      "before": "try",
+      "offset_utf8_bytes": 8637
+    },
+    {
+      "after": "receipt']['status']==base_status\n assert l",
+      "before": "",
+      "offset_utf8_bytes": 8635
+    },
+    {
+      "after": "s",
+      "before": "rchive'],[archiv",
+      "offset_utf8_bytes": 8617
+    },
+    {
+      "after": "b",
+      "before": "",
+      "offset_utf8_bytes": 8616
+    },
+    {
+      "after": "",
+      "before": "):\n    equal(current['context",
+      "offset_utf8_bytes": 8586
+    },
+    {
+      "after": "d r['",
+      "before": "t,",
+      "offset_utf8_bytes": 8576
+    },
+    {
+      "after": "s a",
+      "before": "rre",
+      "offset_utf8_bytes": 8572
+    },
+    {
+      "after": "",
+      "before": "_archive(c",
+      "offset_utf8_bytes": 8561
+    },
+    {
+      "after": "",
+      "before": "c",
+      "offset_utf8_bytes": 8559
+    },
+    {
+      "after": "",
+      "before": "ion')}\n\ndef ex",
+      "offset_utf8_bytes": 8544
+    },
+    {
+      "after": "]==s",
+      "before": ",'comple",
+      "offset_utf8_bytes": 8535
+    },
+    {
+      "after": "u",
+      "before": "e",
+      "offset_utf8_bytes": 8532
+    },
+    {
+      "after": "ing\n assert r['st",
+      "before": "",
+      "offset_utf8_bytes": 8530
+    },
+    {
+      "after": "ng']==bin",
+      "before": "",
+      "offset_utf8_bytes": 8529
+    },
+    {
+      "after": "nguage_bi",
+      "before": "",
+      "offset_utf8_bytes": 8526
+    },
+    {
+      "after": "l",
+      "before": "context','keys','c",
+      "offset_utf8_bytes": 8507
+    },
+    {
+      "after": "",
+      "before": "k]for k in(",
+      "offset_utf8_bytes": 8495
+    },
+    {
+      "after": "==",
+      "before": ",binding)\n\ndef archive_entry(original):return {k:",
+      "offset_utf8_bytes": 8437
+    },
+    {
+      "after": "",
+      "before": "ut_epoch']==binding['language_epoch']\n    equal(value",
+      "offset_utf8_bytes": 8364
+    },
+    {
+      "after": "",
+      "before": "value['marking_id']==mid and value['in",
+      "offset_utf8_bytes": 8325
+    },
+    {
+      "after": "",
+      "before": "   ",
+      "offset_utf8_bytes": 8315
+    },
+    {
+      "after": "",
+      "before": "xt_sha256'}",
+      "offset_utf8_bytes": 8288
+    },
+    {
+      "after": "",
+      "before": "()if k!='cont",
+      "offset_utf8_bytes": 8274
+    },
+    {
+      "after": "",
+      "before": "lue.item",
+      "offset_utf8_bytes": 8265
+    },
+    {
+      "after": "b",
+      "before": "{k:v for k,v in v",
+      "offset_utf8_bytes": 8247
+    },
+    {
+      "after": "']['state",
+      "before": "",
+      "offset_utf8_bytes": 8211
+    },
+    {
+      "after": "_sha256']==r['original_base_receip",
+      "before": "x",
+      "offset_utf8_bytes": 8209
+    },
+    {
+      "after": "sta",
+      "before": "con",
+      "offset_utf8_bytes": 8204
+    },
+    {
+      "after": "",
+      "before": "ue",
+      "offset_utf8_bytes": 8200
+    },
+    {
+      "after": "origin",
+      "before": "v",
+      "offset_utf8_bytes": 8197
+    },
+    {
+      "after": "",
+      "before": "   ",
+      "offset_utf8_bytes": 8187
+    },
+    {
+      "after": "",
+      "before": "king'])).hexdigest()\nmid=data['marking']['marking_id']\n\ndef equal(left,right):\n    # Full canonical literal equality, including bool versus int; no matcher.\n    assert canonical(left)==canonical(right)\n\ndef points(entries):\n    assert type(entries) is list\n    out={}\n    for point,value in entries:\n        assert type(point) is list and len(point)==2 and all(type(x) is int for x in point)\n        key=tuple(point);assert key not in out;out[key]=value\n    return out\n\ndef snapshot(value):\n    assert value['marking_id']==value['state']['marking_id']==mid\n    assert value['state']['input_epoch']==binding['language_epoch'] and value['state']['height']==24\n    equal(value['state']['generation'],[[[0,r],0]for r in range(24)])\n    assert value['scheduler_policy']['branch_tie']=='ROW' and value['pending_preferences'] is None\n    assert value['certificates']==[]  # No degree query/decision in this stage.\n    assert type(value['row_versions']) is list and len(value['row_versions'])==24\n    return value\n\ndef slot(value,row):\n    entries=value['cursors'];assert len({r for r,_ in entries})==len(entries)\n    return dict(entries)[row]\n\ndef rowproof(value,row):\n    entries=value['last_transition']['rows'];assert [x['row']for x in entries]==list(range(24))\n    return entries[row]\n\ndef core(packet):return {k:v for k,v in packet.items()if k!='read_obligations'}\n\ndef context(value,state):\n    equal(value['state'],state)\n    assert value",
+      "offset_utf8_bytes": 6685
+    },
+    {
+      "after": "",
+      "before": "hashlib.sha256(canonical(data['ma",
+      "offset_utf8_bytes": 6651
+    },
+    {
+      "after": "inal=p['original_proposal']\n assert f['row']==p['row']==r['row']==row\n assert p['state']==state and original['state']==base\n assert p['state",
+      "before": "",
+      "offset_utf8_bytes": 6640
+    },
+    {
+      "after": " expected.items():\n f=data['fixtures'][name];p=f['proposal'];r=f['receipt'];base=f['base_state'];state=f['state'];ori",
+      "before": "",
+      "offset_utf8_bytes": 6639
+    },
+    {
+      "after": "get-complete-filtered-zero':('SINGLETON','ZERO',1,0,1),\n 'deep42-row2':('TWO_OR_MORE','UNKNOWN',2,1,2),'deep42-row3':('TWO_OR_MORE','UNKNOWN',2,0,3)}\nassert set(data['fixtures'])==set(expected)\nsummary=[]\nfor name,(base_status,status,offered,survived,row)",
+      "before": "k",
+      "offset_utf8_bytes": 6636
+    },
+    {
+      "after": "']\nexpected={'UG-many':('MANY','MANY',2,2,2),'UG-one':('SINGLETON','SINGLETON',1,1,2),\n 'UG-zero':('ZERO','ZERO',0,0,2),'deep43-zero':('ZERO','ZERO',0,0,2),\n 't",
+      "before": "",
+      "offset_utf8_bytes": 6634
+    },
+    {
+      "after": "ted']==[]and data['root_state']['excluded']==[]\nassert [[4,0],0]in data['root_state",
+      "before": "k",
+      "offset_utf8_bytes": 6628
+    },
+    {
+      "after": "state']['sel",
+      "before": "ch",
+      "offset_utf8_bytes": 6624
+    },
+    {
+      "after": "ot",
+      "before": "n",
+      "offset_utf8_bytes": 6622
+    },
+    {
+      "after": "r",
+      "before": "definiti",
+      "offset_utf8_bytes": 6613
+    },
+    {
+      "after": "nd",
+      "before": "ssert",
+      "offset_utf8_bytes": 6541
+    },
+    {
+      "after": " ",
+      "before": "\n",
+      "offset_utf8_bytes": 6539
+    },
+    {
+      "after": "",
+      "before": " is data['definition_check']['projection_literals_rechecked'] ",
+      "offset_utf8_bytes": 6470
+    },
+    {
+      "after": "']\nassert hashlib.sha256(canonical(data['marking'])).hexdigest()==accepted['marking_sha256",
+      "before": "",
+      "offset_utf8_bytes": 6417
+    },
+    {
+      "after": "",
+      "before": "mission",
+      "offset_utf8_bytes": 6398
+    },
+    {
+      "after": "ccepte",
+      "before": "",
+      "offset_utf8_bytes": 6397
+    },
+    {
+      "after": "",
+      "before": "prior_",
+      "offset_utf8_bytes": 6390
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 6354
+    },
+    {
+      "after": "ld",
+      "before": "r",
+      "offset_utf8_bytes": 6342
+    },
+    {
+      "after": "",
+      "before": "pri",
+      "offset_utf8_bytes": 6338
+    },
+    {
+      "after": "",
+      "before": "\nassert prior_admission['actual_closed'] is prior_admission['all_reaped'] is prior_admission['native_resources_qualified'] is True\nassert prior_admission['passed_cases']==23 and prior_admission['skipped_cases']==0\nassert prior_admission['later_engine_stages_qualified'] is False",
+      "offset_utf8_bytes": 6035
+    },
+    {
+      "after": "",
+      "before": "eA",
+      "offset_utf8_bytes": 6017
+    },
+    {
+      "after": "rkin",
+      "before": "",
+      "offset_utf8_bytes": 6016
+    },
+    {
+      "after": "m",
+      "before": "st",
+      "offset_utf8_bytes": 6013
+    },
+    {
+      "after": "",
+      "before": "mission",
+      "offset_utf8_bytes": 5978
+    },
+    {
+      "after": "ccepte",
+      "before": "",
+      "offset_utf8_bytes": 5977
+    },
+    {
+      "after": ";",
+      "before": "\nprior_",
+      "offset_utf8_bytes": 5969
+    },
+    {
+      "after": "",
+      "before": "geA",
+      "offset_utf8_bytes": 5964
+    },
+    {
+      "after": "da",
+      "before": "s",
+      "offset_utf8_bytes": 5961
+    },
+    {
+      "after": "g",
+      "before": "nel4",
+      "offset_utf8_bytes": 5956
+    },
+    {
+      "after": "rki",
+      "before": "",
+      "offset_utf8_bytes": 5955
+    },
+    {
+      "after": "m",
+      "before": "ch",
+      "offset_utf8_bytes": 5952
+    },
+    {
+      "after": "",
+      "before": "eA",
+      "offset_utf8_bytes": 5935
+    },
+    {
+      "after": "rkin",
+      "before": "",
+      "offset_utf8_bytes": 5934
+    },
+    {
+      "after": "m",
+      "before": "st",
+      "offset_utf8_bytes": 5931
+    },
+    {
+      "after": "ld",
+      "before": "r",
+      "offset_utf8_bytes": 5902
+    },
+    {
+      "after": "",
+      "before": "pri",
+      "offset_utf8_bytes": 5898
+    },
+    {
+      "after": "]",
+      "before": ".items()if k.startswith('stageA_')",
+      "offset_utf8_bytes": 5862
+    },
+    {
+      "after": "':[['bot",
+      "before": "s",
+      "offset_utf8_bytes": 5859
+    },
+    {
+      "after": "enden",
+      "before": "u",
+      "offset_utf8_bytes": 5857
+    },
+    {
+      "after": "de",
+      "before": "",
+      "offset_utf8_bytes": 5856
+    },
+    {
+      "after": "['bot']],",
+      "before": "",
+      "offset_utf8_bytes": 5853
+    },
+    {
+      "after": "roposer':",
+      "before": "lan",
+      "offset_utf8_bytes": 5849
+    },
+    {
+      "after": "'",
+      "before": "k:v for k,v in ",
+      "offset_utf8_bytes": 5833
+    },
+    {
+      "after": "rs",
+      "before": "ptance",
+      "offset_utf8_bytes": 5822
+    },
+    {
+      "after": "",
+      "before": "or_acc",
+      "offset_utf8_bytes": 5815
+    },
+    {
+      "after": "car",
+      "before": "p",
+      "offset_utf8_bytes": 5812
+    },
+    {
+      "after": "",
+      "before": "==expected\nassert [c['family']for c in data['controls']]==['A']*3+['B']*3+['C']*3",
+      "offset_utf8_bytes": 5658
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 5554
+    },
+    {
+      "after": "23",
+      "before": "9",
+      "offset_utf8_bytes": 5518
+    },
+    {
+      "after": "23 and ",
+      "before": "",
+      "offset_utf8_bytes": 5495
+    },
+    {
+      "after": "",
+      "before": "len(data['original_model_sources'])==17\nexpected=['unseen-remote-support-retains3-invalidates6',\n 'new-prototype-global-ledger-invalidates-frontier','remote-family-exact-outer-restore',\n 'repeated-retain-preserves-original-full-archive-and-refresh',\n 'fresh-full-prefix-replay-nonempty-inner-rollback-repeat','archive-family-exact-outer-restore',\n 'shared-channel4-two-refs-and-fixed-zero','shared-channel4-inner-exact-restore-one-ref',\n 'shared-channel4-outer-exact-restore-absence']\nassert ",
+      "offset_utf8_bytes": 4980
+    },
+    {
+      "after": "ct",
+      "before": "",
+      "offset_utf8_bytes": 4926
+    },
+    {
+      "after": "r",
+      "before": "",
+      "offset_utf8_bytes": 4925
+    },
+    {
+      "after": "con",
+      "before": "da",
+      "offset_utf8_bytes": 4922
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 4866
+    },
+    {
+      "after": "OR_EOF",
+      "before": "",
+      "offset_utf8_bytes": 4786
+    },
+    {
+      "after": "",
+      "before": "EF",
+      "offset_utf8_bytes": 4783
+    },
+    {
+      "after": "CU",
+      "before": "POINT_",
+      "offset_utf8_bytes": 4776
+    },
+    {
+      "after": "D",
+      "before": "FRESH",
+      "offset_utf8_bytes": 4770
+    },
+    {
+      "after": "FILTER_ORDE",
+      "before": "",
+      "offset_utf8_bytes": 4768
+    },
+    {
+      "after": "",
+      "before": "TENTION_ARCHIV",
+      "offset_utf8_bytes": 4752
+    },
+    {
+      "after": "DEG",
+      "before": "SUPPORT_",
+      "offset_utf8_bytes": 4742
+    },
+    {
+      "after": "nd",
+      "before": "ssert",
+      "offset_utf8_bytes": 4720
+    },
+    {
+      "after": "",
+      "before": "\n",
+      "offset_utf8_bytes": 4718
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 4705
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 4644
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 4614
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 4594
+    },
+    {
+      "after": "2-guarded-sizes",
+      "before": "1",
+      "offset_utf8_bytes": 4566
+    },
+    {
+      "after": "or",
+      "before": "",
+      "offset_utf8_bytes": 4559
+    },
+    {
+      "after": "",
+      "before": "ef",
+      "offset_utf8_bytes": 4556
+    },
+    {
+      "after": "cu",
+      "before": "",
+      "offset_utf8_bytes": 4555
+    },
+    {
+      "after": "",
+      "before": "tention-archiv",
+      "offset_utf8_bytes": 4539
+    },
+    {
+      "after": "deg",
+      "before": "",
+      "offset_utf8_bytes": 4537
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 4310
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 4227
+    },
+    {
+      "after": "",
+      "before": " ",
+      "offset_utf8_bytes": 4190
+    },
+    {
+      "after": "or",
+      "before": "",
+      "offset_utf8_bytes": 4138
+    },
+    {
+      "after": "",
+      "before": "ef",
+      "offset_utf8_bytes": 4135
+    },
+    {
+      "after": "cu",
+      "before": "",
+      "offset_utf8_bytes": 4134
+    },
+    {
+      "after": "",
+      "before": "tention-archiv",
+      "offset_utf8_bytes": 4118
+    },
+    {
+      "after": "deg",
+      "before": "",
+      "offset_utf8_bytes": 4116
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 3967
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 3732
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 748
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 704
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 672
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 600
+    },
+    {
+      "after": "A",
+      "before": "B",
+      "offset_utf8_bytes": 571
+    }
+  ],
+  "parent": {
+    "bytes": 12087,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_close_stageA_saved_v1.py",
+    "sha256": "54bfcd1d4543eab052fa299867113c597efbefb1f6c05a60487bec7a1a6fe47b"
+  },
+  "schema": "unit-row-stageB-saved-closer-full-Source-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19796,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/ROOT_close_stageB_saved_v1.py",
+    "sha256": "43ecd40ba45adb917005881990da0243236a7db8a4248144642b248d8256aa79"
+  }
+}

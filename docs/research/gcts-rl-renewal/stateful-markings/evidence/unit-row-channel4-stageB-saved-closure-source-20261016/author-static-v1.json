@@ -1,0 +1,35 @@
+{
+  "authoring_note": "Initial author-only import whitelist treated from pathlib import Path as a module name and asserted incorrectly after parse/compile; whitelist corrected to inspect ImportFrom.module. No helper execution or Source behavior change. Source immutable43ecd after code-only notice.",
+  "checks": {
+    "AST_compile_only": true,
+    "exact_current_nine_labels": true,
+    "exclusive_disposition_write_after_all_checks": true,
+    "four_parent_metadata_helpers_raw_AST_exact": [
+      "canonical",
+      "pin",
+      "read",
+      "check"
+    ],
+    "full_forward_inverse_raw_exact": true,
+    "imports_only_hashlib_json_Path": true,
+    "native_wire_header_raw_exact_after_endpoint_rename": true,
+    "no_exception_to_pass_conversion": true,
+    "no_exec_eval_import_or_scientific_calls": true
+  },
+  "helper_executed": false,
+  "saved_data_access": "Root explicitly allowed reading already-decoded JSON field shapes only; no helper/scientific execution, no disposition written by author.",
+  "schema": "unit-row-stageB-saved-closer-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19796,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/ROOT_close_stageB_saved_v1.py",
+    "sha256": "43ecd40ba45adb917005881990da0243236a7db8a4248144642b248d8256aa79"
+  },
+  "source_delta": {
+    "bytes": 87626,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-delta-v1.json",
+    "sha256": "20cf133343b7663bb378b4c464d2e3f8c8cfe1860982b465ae89502b08acdd92"
+  },
+  "source_only": true
+}

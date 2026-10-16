@@ -1,0 +1,32 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "blockers": [],
+  "full329_sequential_edits_and_unified_forward_inverse_verified": true,
+  "metadata_helpers_and_native_wire_prefix_preserved": true,
+  "reviewer_identity": "/root",
+  "schema": "unit-row-channel4-stageB-saved-closer-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-channel4-stageB-saved-literal-closure-Source",
+  "scope_limits": "All9 saved full-record literal joins only, no matcher/model/checker or scientific replay. Logs/counters outside semantic rollback; no degree-cache/global decisions/search/proof/RL/gain qualification.",
+  "source": {
+    "bytes": 19796,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/ROOT_close_stageB_saved_v1.py",
+    "sha256": "43ecd40ba45adb917005881990da0243236a7db8a4248144642b248d8256aa79"
+  },
+  "source_contract": {
+    "bytes": 8755,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-contract-v1.json",
+    "sha256": "142699041a76becfdd12e3be9d42c5c44fe17f35729264008271b51b2ca4b072"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 19796,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/ROOT_close_stageB_saved_v1.py",
+      "sha256": "43ecd40ba45adb917005881990da0243236a7db8a4248144642b248d8256aa79"
+    }
+  },
+  "whole_current_Source_and_contract_read": true
+}

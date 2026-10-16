@@ -1,0 +1,456 @@
+"""SOURCE ONLY: frozen channel4 point semantics, filtered cursor and retention.
+
+No project imports, source loader, clocks, target route or search. The caller
+authenticates the separate original Source17 language and current executable
+Sources. Independent marked reconstruction is injected, never inferred from
+this adapter's own constructor. EOF is untrusted until a fresh complete cover.
+"""
+import hashlib
+import json
+
+VERSION = 'unit-row-channel4-point-adapter-v1'
+SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'
+TRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'
+FALLBACK_VERSION = 'unit-row-channel4-filtered-six-rule-fallback-v1'
+BASE_SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+BASE_FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'
+DECORATOR_VERSION = 'unit-row-certified-row0-point-mark-decorator-v1'
+VERIFIER_VERSION = 'unit-row-independent-channel4-state-verifier-v1'
+STATE_SCHEMA = 'unit-row-channel4-private-state-v1'
+RECEIPT_SCHEMA = 'unit-row-channel4-degree-evidence-check-v1'
+RULES = ['axiom', 'assumption', 'instantiate', 'eq_subst', 'mp', 'generalize']
+FLAGS = ('complete_candidate_graph_accepted', 'scheduler_or_rollback_accepted',
+         'logical_proof_accepted', 'ROOT_resource_accepted')
+
+
+def require(ok, reason):
+    if not ok:
+        raise ValueError('channel4 adapter: ' + reason)
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'),
+                      ensure_ascii=False, allow_nan=False)
+
+
+def sha(value):
+    return hashlib.sha256(canonical(value).encode('utf8')).hexdigest()
+
+
+class MarkedSemantics:
+    VERSION = SEMANTICS_VERSION
+
+    def __init__(self, *, language, base_semantics, decorator, verifier, marking, tick):
+        require(base_semantics.VERSION == BASE_SEMANTICS_VERSION
+                and decorator.VERSION == DECORATOR_VERSION
+                and verifier.VERSION == VERIFIER_VERSION, 'exact injected component versions')
+        self.base, self.decorator, self.verifier = base_semantics, decorator, verifier
+        self._marking = base_semantics.tree(marking, tick)
+        self._frozen = canonical(self._marking)
+        self.marking_id = self._marking['marking_id']
+        self.check_marking(language, tick)
+
+    def tree(self, value, tick):
+        return self.base.tree(value, tick)
+
+    def point_map(self, entries, tick):
+        return self.base.point_map(entries, tick)
+
+    def agree(self, values, point, value):
+        return self.base.agree(values, point, value)
+
+    def check_marking(self, language, tick):
+        require(canonical(self._marking) == self._frozen
+                and self._marking['marking_id'] == self.marking_id, 'frozen full marking')
+        check = self.verifier.check_marking(language=language, semantics=self.base,
+                                           marking=self._marking, tick=tick)
+        require(check['marking_checked'] is True
+                and check['marking_id'] == self.marking_id
+                and canonical(check['marking']) == self._frozen, 'independent full marking check')
+        return check
+
+    def _base_key(self, language, key, selected, tick):
+        fields = {'tile_type_id', 'type_preimage', 'translation'}
+        require(type(key) is dict and set(key) == fields | ({'generation'} if selected else set()),
+                'exact decorated key/record')
+        pre = key['type_preimage']
+        require(type(pre) is dict and set(pre) == {'schema', 'base_type_preimage', 'marking_id'}
+                and pre['schema'] == 'unit-row-row0-decorated-type-v1'
+                and pre['marking_id'] == self.marking_id, 'decorated preimage and frozen model')
+        tile = self.base.rebuild_tile(language, pre['base_type_preimage'], key['translation'], tick)
+        rebuilt = self.rebuild_tile(language, pre, key['translation'], tick)
+        expected = rebuilt['selection_record'] if selected else rebuilt['placement_key']
+        require(canonical(key) == canonical(expected), 'complete literal decorated key, no digest-only identity')
+        return tile['selection_record'] if selected else tile['placement_key']
+
+    def base_state(self, language, state, tick):
+        s = self.tree(state, tick)
+        require(type(s) is dict and set(s) == {'schema', 'input_epoch', 'height', 't',
+                'm', 'selected', 'excluded', 'generation', 'marking_id'}
+                and s['schema'] == STATE_SCHEMA and s['marking_id'] == self.marking_id,
+                'new exact marked state fields/schema/marking identity')
+        require(type(s['m']) is list and type(s['selected']) is list
+                and type(s['excluded']) is list, 'full state arrays')
+        marks = self.point_map(s['m'], tick)
+        require(all(p[0] in (1, 2, 3, 4) for p in marks), 'declared full mark channels')
+        base = {k: self.tree(s[k], tick) for k in ('input_epoch', 'height', 't', 'generation')}
+        base.update(schema='unit-row-implicit-private-state-v1',
+            m=[[list(p), v] for p, v in sorted(marks.items()) if p[0] != 4],
+            selected=[self._base_key(language, k, True, tick) for k in s['selected']],
+            excluded=[self._base_key(language, k, False, tick) for k in s['excluded']])
+        return self.base.private_state(language, base, tick)[0]
+
+    def initial_state(self, language, tick):
+        self.check_marking(language, tick)
+        epoch = language.binding['language_epoch']
+        marks = {(1, k): ['outside', epoch] for k in range(-23, 0)}
+        marks[(1, 23)] = ['formula', canonical(language.target)]
+        marks[(4, 0)] = 0
+        return {'schema': STATE_SCHEMA, 'marking_id': self.marking_id,
+            'input_epoch': epoch, 'height': 24, 't': [[[0, r], 0] for r in range(24)],
+            'm': [[list(p), v] for p, v in sorted(marks.items())], 'selected': [],
+            'excluded': [], 'generation': [[[0, r], 0] for r in range(24)]}
+
+    def rebuild_tile(self, language, preimage, translation, tick):
+        require(type(preimage) is dict and set(preimage) == {'schema', 'base_type_preimage', 'marking_id'}
+                and preimage['schema'] == 'unit-row-row0-decorated-type-v1'
+                and preimage['marking_id'] == self.marking_id, 'exact marked prototype preimage')
+        base = self.base.rebuild_tile(language, preimage['base_type_preimage'], translation, tick)
+        packet = self.decorator.decorate_prototype(marking=self._marking, base_tile=base, tick=tick)
+        checked = self.verifier.check_decorated_tile(language=language, semantics=self.base,
+            marking=self._marking, tile=packet, tick=tick)
+        require(canonical(packet) == canonical(checked), 'complete independently rebuilt marked prototype')
+        # Engine-facing packet preserves the full independently checked nested
+        # packet. Selection_record is explicitly derived, not a decorator field.
+        return dict(checked, selection_record=dict(checked['placement_key'], generation=1))
+
+    def private_state(self, language, state, tick):
+        s = self.tree(state, tick)
+        base = self.base_state(language, s, tick)
+        _, t, _, _, _, base_names = self.base.private_state(language, base, tick)
+        packets, selected, excluded, names = [], set(), set(), dict(base_names)
+        for category in ('selected', 'excluded'):
+            for record in s[category]:
+                tick()
+                tile = self.rebuild_tile(language, record['type_preimage'], record['translation'], tick)
+                self.check_collision(tile, names)
+                key = canonical(tile['placement_key'])
+                require(key not in selected and key not in excluded, 'no duplicate/overlapping decorated key')
+                (selected if category == 'selected' else excluded).add(key)
+                if category == 'selected':
+                    packets.append({k: v for k, v in tile.items() if k != 'selection_record'})
+        full_marks = self.point_map(s['m'], tick)
+        packet = {'schema': 'unit-row-row0-decorated-state-v1', 'version': DECORATOR_VERSION,
+            'marking_id': self.marking_id, 'base_state': base, 'decorated_selected': packets,
+            'global_t_values': s['t'], 'global_m_values': s['m'],
+            'added_m_values': [[list(p), v] for p, v in sorted(full_marks.items()) if p[0] == 4],
+            **{k: False for k in self.verifier.DATA_FLAGS}}
+        check = self.verifier.check_marked_state(language=language, semantics=self.base,
+            marking=self._marking, state=packet, tick=tick)
+        require(check['marked_state_checked'] is True and check['marking_id'] == self.marking_id,
+                'independent complete marked state union')
+        return s, t, full_marks, selected, excluded, names
+
+    def check_collision(self, tile, names):
+        self.base.check_collision(tile['base_tile'], names)
+        key = tile['placement_key']
+        pre = canonical(key['type_preimage'])
+        require(key['tile_type_id'] not in names or names[key['tile_type_id']] == pre,
+                'decorated hash/full-preimage collision')
+        names[key['tile_type_id']] = pre
+
+    def legality(self, tile, totals, marks, selected, excluded):
+        # The ordinary whole-point comparison now sees actual channel4 values.
+        return self.base.legality(tile, totals, marks, selected, excluded)
+
+    def with_obligations(self, tile, totals, tick):
+        row = tile['placement_key']['translation'][1]
+        pre = tile['placement_key']['type_preimage']['base_type_preimage']
+        tile['read_obligations'] = [{'row': row+d, 'formula': self.tree(f, tick),
+            'occupied': totals[(0, row+d)] == 1, 'fact_accepted': False}
+            for d, f in zip(pre['ordered_offsets'], pre['ordered_premise_formulas'])]
+        return tile
+
+    def _filter(self, language, state, originals, tick):
+        _, t, m, selected, excluded, names = self.private_state(language, state, tick)
+        base_state = self.base_state(language, state, tick)
+        _, bt, bm, bs, be, _ = self.base.private_state(language, base_state, tick)
+        require(type(originals) is list, 'whole original candidate list')
+        checked, removed, used = [], [], set()
+        for raw in originals:
+            tick()
+            key = raw['placement_key']
+            bare = self.base.rebuild_tile(language, key['type_preimage'], key['translation'], tick)
+            require(self.base.legality(bare, bt, bm, bs, be) is None, 'original candidate whole legality')
+            original = self.base.with_obligations(self.tree(bare, tick), bt, tick)
+            require(canonical(raw) == canonical(original), 'entire original candidate packet')
+            pre = {'schema': 'unit-row-row0-decorated-type-v1',
+                   'base_type_preimage': key['type_preimage'], 'marking_id': self.marking_id}
+            tile = self.rebuild_tile(language, pre, key['translation'], tick)
+            self.check_collision(tile, names)
+            identity = canonical(tile['placement_key'])
+            require(identity not in used, 'distinct complete decorated candidate keys')
+            used.add(identity)
+            reason = self.legality(tile, t, m, selected, excluded)
+            if reason is None:
+                checked.append(self.with_obligations(tile, t, tick))
+            else:
+                # Only an actual full point comparison removes a candidate.
+                require(reason == 'whole_remote_or_metadata_mark_conflict',
+                        'base-legal candidate can only lose marked agreement')
+                conflicts = [[p, self.tree(m[tuple(p)], tick), self.tree(v, tick)]
+                    for p, v in tile['global_m_values'] if tuple(p) in m
+                    and canonical(m[tuple(p)]) != canonical(v)]
+                require(conflicts and all(p[0] == 4 for p, _, _ in conflicts),
+                        'explicit channel4 conflict points')
+                removed.append({'placement_key': tile['placement_key'], 'reason': reason,
+                                'conflicting_points': conflicts})
+        return checked, removed
+
+    def propose_degree(self, *, language, state, row, tick, degree_proposer):
+        s = self.private_state(language, state, tick)[0]
+        original = degree_proposer(language=language, state=self.base_state(language, s, tick), row=row, tick=tick)
+        candidates, removed = self._filter(language, s, original['candidates'], tick)
+        return {'schema': 'unit-row-channel4-degree-evidence-proposal-v1', 'version': VERSION,
+            'state': s, 'state_sha256': sha(s), 'input_epoch': s['input_epoch'],
+            'marking_id': self.marking_id, 'language_binding': self.tree(language.binding, tick),
+            'row': row, 'original_proposal': original, 'candidates': candidates,
+            'marked_rejections': removed, 'untrusted': True, **{k: False for k in FLAGS}}
+
+    def check_degree_evidence(self, *, language, state, row, proposal, tick):
+        s = self.private_state(language, state, tick)[0]
+        p = self.tree(proposal, tick)
+        fields = {'schema', 'version', 'state', 'state_sha256', 'input_epoch', 'marking_id',
+            'language_binding', 'row', 'original_proposal', 'candidates', 'marked_rejections', 'untrusted'} | set(FLAGS)
+        require(type(p) is dict and set(p) == fields
+                and p['schema'] == 'unit-row-channel4-degree-evidence-proposal-v1'
+                and p['version'] == VERSION and p['untrusted'] is True
+                and all(p[k] is False for k in FLAGS), 'exact untrusted marked proposal')
+        require(canonical(p['state']) == canonical(s) and p['state_sha256'] == sha(s)
+                and p['input_epoch'] == s['input_epoch'] and p['marking_id'] == self.marking_id
+                and canonical(p['language_binding']) == canonical(language.binding)
+                and type(p['row']) is int and p['row'] == row, 'full marked proposal context')
+        # Check the FULL original proposal first, not its copied receipt.
+        original_receipt = self.base.check_degree_evidence(language=language,
+            state=self.base_state(language, s, tick), row=row, proposal=p['original_proposal'], tick=tick)
+        candidates, removed = self._filter(language, s, p['original_proposal']['candidates'], tick)
+        require(canonical(p['candidates']) == canonical(candidates)
+                and canonical(p['marked_rejections']) == canonical(removed), 'complete independent marked filtering')
+        covered = original_receipt['complete_cover_checked'] is True
+        count = len(candidates) if covered else None
+        status = ('ZERO' if count == 0 else 'SINGLETON' if count == 1 else 'MANY') if covered else (
+            'TWO_OR_MORE' if len(candidates) >= 2 else 'UNKNOWN')
+        tick()
+        return {'schema': RECEIPT_SCHEMA, 'version': SEMANTICS_VERSION,
+            'status': status, 'accepted_local_evidence': status != 'UNKNOWN',
+            'input_epoch': s['input_epoch'], 'marking_id': self.marking_id,
+            'state_sha256': sha(s), 'row': row, 'complete_cover_checked': covered,
+            'degree_exact': count, 'missing_mark_cover_checked': original_receipt['missing_mark_cover_checked'],
+            'candidate_keys': [c['placement_key'] for c in candidates],
+            'sole_candidate': candidates[0] if count == 1 else None,
+            'original_base_receipt': original_receipt, 'marked_rejections': removed,
+            'scope': 'Fresh original cover/bound plus full independently rebuilt channel4 point filtering.',
+            **{k: False for k in FLAGS}}
+
+
+class MarkedTransition:
+    VERSION = TRANSITION_VERSION
+
+    def authority_snapshot(self, *, language, semantics, tick):
+        require(semantics.VERSION == SEMANTICS_VERSION, 'marked semantics API')
+        check = semantics.check_marking(language, tick)
+        value = {name: getattr(language, name) for name in ('policy', 'declaration',
+            'source_bindings', 'theory', 'parameters', 'gamma', 'target', 'hole', 'binding')}
+        for name in ('parameter_set', 'input_names', 'binder_names', 'forbidden'):
+            values = getattr(language, name)
+            require(type(values) is frozenset and all(type(v) is str for v in values), 'frozen scoped names')
+            value[name] = sorted(values)
+        value.update(semantics_version=SEMANTICS_VERSION, fallback_version=FALLBACK_VERSION,
+            marking=check['marking'], independent_marked_verifier_version=VERIFIER_VERSION)
+        return semantics.tree(value, tick)
+
+    def _projection(self, state, totals, marks, row, tick):
+        # Complete POSSIBLE support, including ungenerated placements. Strict
+        # prior offsets and independent prototype reconstruction prove this
+        # superset; no inference from the currently exposed candidate list.
+        points = [(ch, k) for ch in (1, 4) for k in range(row+1)] + [(2, row), (3, row)]
+        assignments = []
+        for p in points:
+            tick()
+            assignments.append([list(p), p in marks, marks[p] if p in marks else None])
+        inventories = {name: sorted(canonical(k) for k in state[name]
+            if k['translation'][1] == row) for name in ('selected', 'excluded')}
+        return {'row': row, 't': [[[0, row], totals[(0, row)]]], 'm': assignments,
+            'inventories': inventories, 'root_generation': dict((tuple(p), v)
+                for p, v in state['generation'])[(0, row)], 'marking_id': state['marking_id']}
+
+    def check_transition(self, *, language, semantics, before, after, rows, authority, tick):
+        require(type(authority) is str and canonical(self.authority_snapshot(
+            language=language, semantics=semantics, tick=tick)) == authority, 'unchanged full marked authority')
+        require(type(rows) is list and all(type(r) is int and 0 <= r < 24 for r in rows)
+                and rows == sorted(set(rows)), 'sorted unique rows')
+        old, ot, om, _, _, on = semantics.private_state(language, before, tick)
+        new, nt, nm, _, _, nn = semantics.private_state(language, after, tick)
+        same_names = canonical(sorted(on.items())) == canonical(sorted(nn.items()))
+        result = []
+        for row in rows:
+            tick()
+            op = self._projection(old, ot, om, row, tick)
+            np = self._projection(new, nt, nm, row, tick)
+            equal = canonical(op) == canonical(np)
+            frontier = ot[(0, row)] == nt[(0, row)] == 0
+            result.append({'row': row, 'retain': frontier and same_names and equal,
+                'reason': ('occupied_or_removed_frontier' if not frontier else
+                    'global_collision_ledger_changed' if not same_names else
+                    'possible_full_channel4_support_changed' if not equal else
+                    'literal_all_possible_full_support_and_collision_ledger_equal'),
+                'read_occupancy_changes': [k for k in range(row) if ot[(0, k)] != nt[(0, k)]],
+                'before_projection_sha256': sha(op), 'after_projection_sha256': sha(np)})
+        return {'schema': 'unit-row-channel4-checked-domain-transition-v1', 'version': TRANSITION_VERSION,
+            'marking_id': semantics.marking_id, 'before_state_sha256': sha(old), 'after_state_sha256': sha(new),
+            'authority_sha256': hashlib.sha256(authority.encode('utf8')).hexdigest(),
+            'input_epoch': old['input_epoch'], 'rows': result, 'collision_ledger_equal': same_names,
+            'before_collision_ledger_sha256': sha(sorted(on.items())),
+            'after_collision_ledger_sha256': sha(sorted(nn.items())),
+            'compared_literal_values_not_only_hashes': True, 'degree_or_EOF_accepted': False,
+            'complete_graph_accepted': False, 'scheduler_trajectory_accepted': False,
+            'logical_proof_accepted': False, 'ROOT_resource_accepted': False}
+
+    def refresh_candidates(self, *, language, semantics, state, candidates, tick):
+        _, t, m, selected, excluded, names = semantics.private_state(language, state, tick)
+        require(type(candidates) is list, 'complete known candidate list')
+        refreshed, used = [], set()
+        for raw in candidates:
+            tick()
+            key = raw['placement_key']
+            tile = semantics.rebuild_tile(language, key['type_preimage'], key['translation'], tick)
+            semantics.check_collision(tile, names)
+            require(canonical(key) == canonical(tile['placement_key'])
+                    and semantics.legality(tile, t, m, selected, excluded) is None, 'retained full current legality')
+            require(canonical({k: v for k, v in raw.items() if k != 'read_obligations'}) == canonical(tile),
+                    'all retained original and channel4 core values unchanged')
+            encoded = canonical(key)
+            require(encoded not in used, 'distinct full retained keys')
+            used.add(encoded)
+            refreshed.append(semantics.with_obligations(tile, t, tick))
+        return refreshed
+
+
+class FilteredCursor:
+    """Order-preserving filter; original and marked EOF remain untrusted."""
+    VERSION = FALLBACK_VERSION
+
+    def __init__(self, *, language, semantics, state, row, base_fallback, tick):
+        self._semantics, self._language, self._tick = semantics, language, tick
+        self._failed, self._done = False, False
+        self._raw_count, self._count, self._removed = 0, 0, 0
+        self._names = dict(semantics.private_state(language, state, tick)[5])
+        self._state = semantics.tree(state, tick)
+        base = semantics.base_state(language, state, tick)
+        self._cursor = base_fallback(language=language, state=base, row=row, tick=tick)
+        original = self._cursor.context()
+        require(original['schema'] == 'unit-row-all-six-fallback-context-v1'
+                and original['version'] == BASE_FALLBACK_VERSION
+                and canonical(original['state']) == canonical(base)
+                and original['state_sha256'] == sha(base)
+                and original['input_epoch'] == state['input_epoch']
+                and canonical(original['language_binding']) == canonical(language.binding)
+                and type(original['row']) is int and original['row'] == row
+                and original['context_sha256'] == sha({k: v for k, v in original.items()
+                    if k != 'context_sha256'}), 'complete original cursor context')
+        context = {'schema': 'unit-row-channel4-fallback-context-v1', 'version': FALLBACK_VERSION,
+            'input_epoch': state['input_epoch'], 'language_binding': semantics.tree(language.binding, tick),
+            'marking_id': semantics.marking_id, 'row': row, 'state': self._state,
+            'state_sha256': sha(self._state), 'original_context': semantics.tree(original, tick)}
+        context['context_sha256'] = sha(context)
+        self._context, self._completion = context, None
+
+    def context(self):
+        if self._failed:
+            raise RuntimeError('marked fallback poisoned')
+        try:
+            return self._semantics.tree(self._context, self._tick)
+        except BaseException:
+            self._failed = True
+            raise
+
+    def abort(self):
+        self._failed = True
+        self._cursor.abort()
+
+    def advance(self):
+        if self._failed:
+            raise RuntimeError('marked fallback poisoned; no EOF')
+        try:
+            if not self._done:
+                while True:
+                    self._tick()
+                    event = self._cursor.advance()
+                    original = self._context['original_context']
+                    require(event['schema'] == 'unit-row-all-six-fallback-event-v1'
+                            and event['context_sha256'] == original['context_sha256'], 'original event context')
+                    if event['kind'] == 'CANDIDATE':
+                        require(set(event) == {'schema', 'kind', 'context_sha256', 'ordinal', 'candidate',
+                                'independently_checked'} and type(event['ordinal']) is int
+                                and event['ordinal'] == self._raw_count and event['independently_checked'] is False,
+                                'original stream literal ordinal and flags')
+                        candidates, removed = self._semantics._filter(self._language, self._state,
+                                                                     [event['candidate']], self._tick)
+                        # Full original and decorated collision ledgers span ALL
+                        # observed original candidates, including removed ones.
+                        key = event['candidate']['placement_key']
+                        pre = {'schema': 'unit-row-row0-decorated-type-v1',
+                            'base_type_preimage': key['type_preimage'], 'marking_id': self._semantics.marking_id}
+                        tile = self._semantics.rebuild_tile(self._language, pre, key['translation'], self._tick)
+                        self._semantics.check_collision(tile, self._names)
+                        self._raw_count += 1
+                        self._removed += len(removed)
+                        if not candidates:
+                            continue
+                        result = {'schema': 'unit-row-channel4-fallback-event-v1', 'kind': 'CANDIDATE',
+                            'context_sha256': self._context['context_sha256'], 'ordinal': self._count,
+                            'candidate': candidates[0], 'independently_checked': False}
+                        self._count += 1
+                        return self._semantics.tree(result, self._tick)
+                    require(event['kind'] == 'EOF' and set(event) == {'schema', 'kind', 'context_sha256', 'completion'},
+                            'original explicit EOF')
+                    completion = event['completion']
+                    expected_fields = {'schema', 'version', 'context_sha256', 'state_sha256', 'input_epoch',
+                        'row', 'yielded_candidates', 'rules_completed', 'stats', 'complete_fallback_proposed',
+                        'independently_checked', 'degree_zero_or_singleton_accepted', 'complete_candidate_graph_accepted',
+                        'scheduler_or_rollback_accepted', 'logical_proof_accepted', 'ROOT_resource_accepted'}
+                    require(type(completion) is dict and set(completion) == expected_fields
+                            and completion['schema'] == 'unit-row-all-six-fallback-completion-v1'
+                            and completion['version'] == BASE_FALLBACK_VERSION
+                            and completion['context_sha256'] == original['context_sha256']
+                            and completion['state_sha256'] == original['state_sha256']
+                            and completion['input_epoch'] == original['input_epoch']
+                            and type(completion['row']) is int and completion['row'] == original['row']
+                            and type(completion['yielded_candidates']) is int
+                            and completion['yielded_candidates'] == self._raw_count
+                            and completion['rules_completed'] == RULES and type(completion['stats']) is dict
+                            and completion['complete_fallback_proposed'] is True
+                            and all(completion[k] is False for k in ('independently_checked',
+                                'degree_zero_or_singleton_accepted') + FLAGS), 'untrusted complete original six-rule EOF')
+                    self._completion = {'schema': 'unit-row-channel4-fallback-completion-v1',
+                        'version': FALLBACK_VERSION, 'context_sha256': self._context['context_sha256'],
+                        'state_sha256': self._context['state_sha256'], 'input_epoch': self._state['input_epoch'],
+                        'marking_id': self._semantics.marking_id, 'row': self._context['row'],
+                        'yielded_candidates': self._count, 'rules_completed': RULES,
+                        'stats': {'original_yielded_candidates': self._raw_count, 'marked_removed': self._removed},
+                        'original_completion': self._semantics.tree(completion, self._tick),
+                        'complete_fallback_proposed': True, 'independently_checked': False,
+                        'degree_zero_or_singleton_accepted': False, **{k: False for k in FLAGS}}
+                    self._done = True
+                    break
+            return {'schema': 'unit-row-channel4-fallback-event-v1', 'kind': 'EOF',
+                'context_sha256': self._context['context_sha256'],
+                'completion': self._semantics.tree(self._completion, self._tick)}
+        except BaseException:
+            self._failed = True
+            raise
+
+
+def open_fallback(*, language, semantics, state, row, base_fallback, tick):
+    return FilteredCursor(language=language, semantics=semantics, state=state,
+                          row=row, base_fallback=base_fallback, tick=tick)

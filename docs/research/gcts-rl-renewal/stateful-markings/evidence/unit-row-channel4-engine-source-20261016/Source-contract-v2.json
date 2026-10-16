@@ -1,0 +1,336 @@
+{
+  "API": {
+    "certifier": "Use successor engine.certify_by_current_cover with current marked semantics and proposer closure. Fresh c960+c354 complete cover and independent complete marked filtering must exactly agree with all filtered cursor keys. A short EOF is never authority.",
+    "create_semantics": {
+      "meaning": "Call once with original Source17 language and caller-authenticated frozen nonempty marking. c354/fcc4/9fd6 injected modules remain separately sealed. Full independent marking reconstruction occurs; no data-only constructor confers prior Root acceptance.",
+      "signature": "MarkedSemantics(*, language, base_semantics, decorator, verifier, marking, tick)"
+    },
+    "create_transition": {
+      "meaning": "Separate VERSION object; authority_snapshot/check_transition/refresh_candidates have existing injected engine keyword ABI.",
+      "signature": "MarkedTransition()"
+    },
+    "engine": "LazyUnitRowEngine retains original keyword ABI, caps128/2000, height24/root0 and optional branch_tie ROW|ASSIGNED-OUTPUT-THEN-ROW. Initial state from semantics.initial_state unless explicit checked new state. branch_adviser and validate_advice MUST both be None in this first marked lane.",
+    "fallback_adapter": {
+      "binding": "Caller closure supplies original69.open_fallback and marked semantics; engine sees existing language/state/row/tick ABI.",
+      "signature": "open_fallback(*, language, semantics, state, row, base_fallback, tick)"
+    },
+    "proposer_adapter": {
+      "binding": "Caller closure supplies original c960.propose_degree; engine sees prior four-keyword degree API. Receives full new marked state; original c960 sees reconstructed original base8 state only. Returns wrapper plus actual surviving full decorated candidates.",
+      "signature": "semantics.propose_degree(*, language, state, row, tick, degree_proposer)"
+    },
+    "public_engine": "decision/place/next_alternative/checkpoint/rollback/state_snapshot/search remain existing API shapes except explicitly new marked state/context/receipt/result schemas and marking_id. Public place still requires caller-owned checkpoint for rollback on interrupted non-atomic installation.",
+    "source_ownership": "Engine and adapter authored by /root/arithmetic_induction; distinct peer+Root review and Root-owned actual mandatory."
+  },
+  "Review_ABI": {
+    "adapter_source": {
+      "bytes": 28980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+    },
+    "author_identity": "/root/arithmetic_induction",
+    "reviewer_identity": "Distinct reviewer determines",
+    "schema": "unit-row-frozen-channel4-engine-typed-Source-review-v2",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-frozen-channel4-engine-Source",
+    "source": {
+      "bytes": 56207,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+      "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+    },
+    "source_contract": "Exact current raw Source-contract-v2.json pin",
+    "source_only": true,
+    "source_review_passed": "Distinct reviewer determines",
+    "sources": {
+      "base_fallback": {
+        "bytes": 24227,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+        "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+      },
+      "decorator": {
+        "bytes": 12619,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+        "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+      },
+      "degree_checker": {
+        "bytes": 27553,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+      },
+      "degree_proposer": {
+        "bytes": 22030,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+        "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+      },
+      "engine": {
+        "bytes": 56207,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+        "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+      },
+      "kernel": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "marked_adapter": {
+        "bytes": 28980,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+        "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+      },
+      "marked_verifier": {
+        "bytes": 18475,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+        "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+      },
+      "membership": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      }
+    }
+  },
+  "adapter_source": {
+    "bytes": 28980,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+    "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "authorship": "Arithmetic authored engine/adapter and c354/preceding engine/adviser; diagnosis authored independent9fd6 verifier; controls authored decorator/c960/fallback. This author packet is not peer review. Root owns full caller review/grants/actuals/publication.",
+  "component_source_count": 9,
+  "conformance": {
+    "author_static": {
+      "bytes": 3326,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/author-static-v2.json",
+      "sha256": "829472fa0678cba9f1452f82077d2ad258b2854bc708f7cfc20ea350cfd2d7ae"
+    },
+    "engine_delta": "Preserved parent9\u219210 full20-region inverse chain. Current10\u219211 exactly2regions: ownVERSION and _observe block. Forty named parent10 regions raw/AST exact, only containingclass/_observe changed. Scheduler/decision/degree/filter/cursor/transition/install/checkpoint/rollback remain unchanged.",
+    "master": "Global DEAD before unresolved gate/FORCED, earliest-generation and named ROW/MARK tie preserved. Fixed24 roots0. Complete original fallback modulo sound full point filter, untrusted EOF, exact owned rollback and keep-unaffected support proof.",
+    "source_delta": {
+      "bytes": 5046,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/Source-delta-v2.json",
+      "sha256": "11e0dae3b86d976a05e28498c61326d501c3011a3b4fbafe0f95444099c61184"
+    }
+  },
+  "correction_history": {
+    "current_fix": "Before inserting a new observed candidate, compare its nested original ID/preimage with every existing observed candidate, alongside unchanged decorated comparison. Both comparisons require full literal preimage equality on ID equality. VERSION advances11; adapter unchanged.",
+    "current_runtime_acceptance": false,
+    "delta": {
+      "bytes": 5046,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/Source-delta-v2.json",
+      "sha256": "11e0dae3b86d976a05e28498c61326d501c3011a3b4fbafe0f95444099c61184"
+    },
+    "frozen10": {
+      "bytes": 55769,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v10.py",
+      "sha256": "d6886a7bb5330d311a752756604b6f073efd0537b31182bcc3cd7cbf32ff2d14"
+    },
+    "issue": "GLOBAL-ORIGINAL-CANDIDATE-ID-1: original10 checked only outer IDs globally. Adapter checked original IDs within query/state/cursor, leaving cross-row/cursor original ID collisions unchecked. Distinct peer found; author agrees real no-injectivity regression. No runtime was activated."
+  },
+  "cursor": {
+    "algorithm": "Fresh original69 cursor on original base state. Check every original full key/member/point/read packet, independently rebuild decorated packet, full current legality and shared collision ledger spanning original returned candidates including removed ones. Skip only explicit channel4 disagreement. Preserve exact survivor order and ordinals0..; no decorated-ID ordering.",
+    "completion_schema": "unit-row-channel4-fallback-completion-v1",
+    "context_fields": [
+      "schema",
+      "version",
+      "input_epoch",
+      "language_binding",
+      "marking_id",
+      "row",
+      "state",
+      "state_sha256",
+      "original_context",
+      "context_sha256"
+    ],
+    "context_schema": "unit-row-channel4-fallback-context-v1",
+    "eof": "New untrusted EOF contains original full context+original full completion, original/removed/survivor counts, marked full stateSHA/ID and six-rule order. Engine validates new schema and binding. Not a fresh complete-cover checker; only fresh checked marked cover/key equality can accept EOF degree/exhaustion.",
+    "event_schema": "unit-row-channel4-fallback-event-v1",
+    "failure": "Any exception from context/advance permanently poisons wrapper; abort poisons before delegating original abort. Resource errors cannot later become EOF. Repeated EOF replays same untrusted receipt only.",
+    "retention": "Existing complete context/key/candidate/EOF flat archives are retained before refresh. Fresh reopened marked cursor replays entire ordered full survivor prefix in genuine current marked context. Old context/EOF are literal provenance, never relabeled.",
+    "version": "unit-row-channel4-filtered-six-rule-fallback-v1"
+  },
+  "degree": {
+    "algorithm": "Untrusted proposer preserves full raw c960 original proposal, rebuilds each original full packet, constructs/decorates/independently reconstructs it, then applies ordinary full t-capacity/m-agreement. Survivors stay in original order; explicit conflicting channel4 points retained. No arbitrary ValueError catch is a removal.",
+    "checking": "MarkedSemantics.check_degree_evidence first independently calls original c354 on FULL original proposal/private original state. It then reconstructs+filters every offered original survivor afresh, exact-compares full decorated candidate/rejection arrays, full marking/state/binding/query and false flags.",
+    "complete": "If and only if c354 checked a complete original cover, the entire filtered list is complete for marked relation: length0 ZERO,1 SINGLETON,>=2 MANY. Complete base ZERO remains fresh checked ZERO in valid marked state.",
+    "flags": "All graph/scheduler/proof/resource flags false; local accepted_local_evidence pertains only to current checked row evidence.",
+    "original_base_receipt": "Fresh marked receipt stores original_base_receipt. Engine original_receipt is reserved for the entire original marked evidence wrapper during transfer; it never silently drops the marked filtering evidence.",
+    "partial": "With no complete original cover, >=2 distinct independently valid surviving full keys establishes TWO_OR_MORE only. 0/1 survivors is UNKNOWN, even if original receipt said TWO_OR_MORE. Partial witness losses never become0/1 or complete MANY.",
+    "proposal_fields": [
+      "schema",
+      "version",
+      "state",
+      "state_sha256",
+      "input_epoch",
+      "marking_id",
+      "language_binding",
+      "row",
+      "original_proposal",
+      "candidates",
+      "marked_rejections",
+      "untrusted",
+      "complete_candidate_graph_accepted",
+      "scheduler_or_rollback_accepted",
+      "logical_proof_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "proposal_schema": "unit-row-channel4-degree-evidence-proposal-v1",
+    "receipt_schema": "unit-row-channel4-degree-evidence-check-v1",
+    "receipt_version": "unit-row-channel4-filtered-degree-semantics-v1"
+  },
+  "prospective_controls": [
+    "Full original/decorated key and epoch identity; full guard and pending read4 conflict, exact marked state union/absence0.",
+    "Fresh complete base cover with marked0/1/many, partial two witness losses\u2192UNKNOWN, forged old/base receipt rejected.",
+    "Original-order fallback survivors/full original EOF provenance, poisoned partial stream cannotEOF, fresh complete marked cover agreement required.",
+    "Unseen4remote dependency invalidation; truly unaffected row retention, occupancy refresh, repeated literal cursor archive replay and full rollback.",
+    "Global DEAD before forced/UNKNOWN gates and same policy/caps; no advice botharms; baseline original9 unchanged."
+  ],
+  "references": {
+    "decorator_contract": {
+      "bytes": 14800,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/Source-contract-v1.json",
+      "sha256": "cfdf9dc0f39fd96f7565c5d0028a7d546cce7d013b994de7d2f4a88730d63427"
+    },
+    "marked_verifier_contract": {
+      "bytes": 14503,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/Source-contract-v1.json",
+      "sha256": "8d0215d9fccd8b8112f44dec730bc0300d19f2361144843d993a279f3c835e43"
+    },
+    "marked_verifier_distinct_review": {
+      "bytes": 2851,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "9bc147c0dda82be7937c9aa0bba851eb79680da0bf324bc0521c164f1edd5638"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "original_model_plan_example": {
+      "bytes": 7926,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-canonical-search-plan-v1.json",
+      "sha256": "b5d28b6269cf6fd19394850c8de833e185529568a66dffc84c2477a6af565366"
+    },
+    "parent_engine": {
+      "bytes": 55152,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    "prior_contract": {
+      "bytes": 23668,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "549bd6d99b4923c14d038847ce050a77bf1d8070ded59c95987e1cb9b3ae5124"
+    },
+    "prior_engine10": {
+      "bytes": 55769,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v10.py",
+      "sha256": "d6886a7bb5330d311a752756604b6f073efd0537b31182bcc3cd7cbf32ff2d14"
+    },
+    "prior_handoff": {
+      "bytes": 8802,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/handoff-v1.json",
+      "sha256": "eb9b16e4c3ad5bc5536a2424f9ce104935f0efb7472604d5cd48d9f693074a1f"
+    },
+    "seam": {
+      "bytes": 9897,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-seam-source-20261016/integration-seam-v1.json",
+      "sha256": "17024af0dcbb698dae8f591447769897e2d212b3b8cd1e4da71429161bc3c415"
+    }
+  },
+  "remaining_gates": [
+    "Source-only, unexecuted: no current runtime controls, candidate graph/trajectory, target search, exact board, proof, activation, benefit or fit acceptance.",
+    "One trusted adapter implements marked filtering and transition argument. It invokes separately authored full point verifier and c354, but is not a separately authored second cover/transition/engine algorithm. Independent whole Source review and fresh controls remain mandatory.",
+    "All-six general EOF remains unsupported when fresh c960/c354 cover is UNKNOWN. More than one partial witness may be lost; then global branch/forced cannot proceed until complete independent evidence or two surviving witnesses exists. UNKNOWN never becomes pruning.",
+    "Implicit graph is certified relation/lower bounds plus observed prefix/reverse dependencies; no exact full bounded language cardinality or universal finite Wang palette claim.",
+    "Only nonempty frozen marked lane supported. Unchanged engine9/adviceNone is declared baseline on same original Source17 model/policy/budgets, not a neutral10 overhead control. Whole-system construction/checking costs differ and must be charged; no sole-mark causal timing claim.",
+    "Original adviser/consumer methods remain dormant/raw-exact for preservation; constructor rejects any non-None advice endpoints. No target route, donor, successful word or privileged recipe supplied.",
+    "External positive admission still requires unchanged original primitive word checking and full marked-state/board verification. Engine found is a proposal only.",
+    "Existing original20s/512MiB/55/60/caller90+1 and all setup/import/construction/search/check/output/exit costs are Root caller obligations, unchanged; this packet grants no actual execution.",
+    "Repeated full independent marking/tile/state reconstruction may be costly. No measured phase/cost/fit claim and no unsafe memoization introduced."
+  ],
+  "retention": {
+    "criterion": "For row \\(r\\), compare presence+literal value at every \\((1,k),(4,k)\\), \\(0\\le k\\le r\\), metadata \\((2,r),(3,r)\\), total \\(t(0,r)\\), full row-local selected/excluded keys, root generation, full global original+decorated ID/preimage ledgers, and immutable full language+marking authority.",
+    "global_observed_collision_ledger": "Engine11 _observe independently checks BOTH outer decorated ID/full-preimage and nested original base_tile ID/full-preimage across all globally observed legal candidate packets, including different row proposals/cursors. Existing observed COW set is the ledger; no new hash-only store. Every collision throws before graph install. Retention refresh also checks full selected/excluded/current known candidate ledgers; original10 missing cross-query nested-original comparison was a genuine blocker and remains frozen.",
+    "no_shortcut": "No all-domain reset default. Unaffected rows retain checked classification/cursor prefixes through explicit new transition wrapper; changed ledger/support/frontier invalidates affected proof. Global ledger change conservatively invalidates all, as prior Source; no hash injectivity assumption or new two-witness caching.",
+    "proof": "All original unit-row prototypes have positive support only(0,r), output at(1,r), reads only prior0..r-1, metadata at2/3,r. Decoration adds4 at exactly those original formula ports, so complete POSSIBLE4 support is subset0..r even for ungenerated prototypes. Literal equality on this superset plus local inventory/full collision ledger yields equal legal candidate relation AND original survivor order. Changed prior t occupancy affects read-obligation packets only; each retained known packet is independently rebuilt/refreshed.",
+    "reverse_dependencies": "Existing _observe now indexes every actual full global_t+global_m point incl4. Snapshot declares complete implicit1/4 possible support. New fixed4guard included in reference counts. _install/checkpoint/rollback/COW archives stay raw-exact to engine9.",
+    "rollback": "Entire full marked state, refs, row versions, certs, slots/archives, observed/reverse, transition and preferences are owned COW payloads. Frozen marking/authority are per-engine immutable configuration. No callbacks needed to restore exhausted search root.",
+    "version": "unit-row-channel4-support-transition-v1"
+  },
+  "schema": "unit-row-channel4-engine-Source-contract-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-frozen-channel4-engine-Source",
+  "source": {
+    "bytes": 56207,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+    "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+  },
+  "source_map_scope": "Component map9 only; Root cold runtime complete map may add existing intake/support/checker roles. Separate original semantic Source17 map is NOT replaced by this component map.",
+  "source_only": true,
+  "sources": {
+    "base_fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 56207,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+      "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 28980,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    }
+  },
+  "state": {
+    "exact_fields": [
+      "schema",
+      "input_epoch",
+      "height",
+      "t",
+      "m",
+      "selected",
+      "excluded",
+      "generation",
+      "marking_id"
+    ],
+    "full_points": "t unchanged24 required unit rows; m is exact original fixed+selected union PLUS guard m(4,0)=0 and all selected extra ones. Missing differs from assigned0. No fixed original formula boundary is decorated. New flat m is sorted canonical point union, no ignored extras.",
+    "independent_join": "Adapter reconstructs every bare original selected/excluded prototype via c354, complete decorated prototypes via fcc4 and separately authored9fd6, and nested unit-row-row0-decorated-state-v1 with exact original base_state/decorated_selected/full point arrays. Independent9fd6 whole-state comparison validates full union.",
+    "keys": "Outer key exactly tile_type_id/type_preimage/translation (selected adds generation1). New preimage exactly schema/base_type_preimage/marking_id. Original preimage, original translation, ordered ports and base key remain nested literally. Full equality and both original+decorated ID/preimage collision ledgers, never assumed hash injectivity.",
+    "original_identity": "input_epoch is unchanged ORIGINAL Source17 language epoch. The source map passed to original membership must be the separately authenticated original17 map, never current runtime Sources. Marking ID and new schema/hash add explicit new context identity; no epoch/key or receipt rebasing.",
+    "schema": "unit-row-channel4-private-state-v1"
+  },
+  "status": "FROZEN_SOURCE_ONLY_PENDING_DISTINCT_REVIEW_AND_ROOT_ACTUAL"
+}

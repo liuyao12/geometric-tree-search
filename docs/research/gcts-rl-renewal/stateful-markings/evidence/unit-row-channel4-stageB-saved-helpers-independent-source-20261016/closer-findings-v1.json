@@ -1,0 +1,261 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "blockers": [],
+  "check_count": 26,
+  "checks": [
+    {
+      "check": "handoff-source",
+      "passed": true
+    },
+    {
+      "check": "handoff-source_contract",
+      "passed": true
+    },
+    {
+      "check": "handoff-source_delta",
+      "passed": true
+    },
+    {
+      "check": "handoff-author_static",
+      "passed": true
+    },
+    {
+      "check": "current-source-closer",
+      "passed": true
+    },
+    {
+      "check": "reference-controller_contract",
+      "passed": true
+    },
+    {
+      "check": "reference-controller_handoff",
+      "passed": true
+    },
+    {
+      "check": "reference-controller_source",
+      "passed": true
+    },
+    {
+      "check": "reference-master",
+      "passed": true
+    },
+    {
+      "check": "reference-parent",
+      "passed": true
+    },
+    {
+      "check": "329-full-sequential-forward",
+      "passed": true
+    },
+    {
+      "check": "329-full-sequential-inverse",
+      "passed": true
+    },
+    {
+      "check": "forward_patch-pin",
+      "passed": true
+    },
+    {
+      "check": "forward_patch-actual-application",
+      "passed": true
+    },
+    {
+      "check": "inverse_patch-pin",
+      "passed": true
+    },
+    {
+      "check": "inverse_patch-actual-application",
+      "passed": true
+    },
+    {
+      "check": "parse-compile-only-no-evaluation",
+      "passed": true
+    },
+    {
+      "check": "whole-native-wire-prefix-exact-endpoint-rename",
+      "passed": true
+    },
+    {
+      "check": "four-original-metadata-helpers-raw-AST-exact",
+      "passed": true
+    },
+    {
+      "check": "only-json-hashlib-pathlib-imports",
+      "passed": true
+    },
+    {
+      "check": "no-project-scientific-or-clock-endpoints",
+      "passed": true
+    },
+    {
+      "check": "exact-nine-current-controller-cases",
+      "passed": true
+    },
+    {
+      "check": "source-count-1-current-review-map",
+      "passed": true
+    },
+    {
+      "check": "strict-native20-512-gates-not-replaced-by-Date",
+      "passed": true
+    },
+    {
+      "check": "complete-output2-twoLF-firstLF-hash",
+      "passed": true
+    },
+    {
+      "check": "disposition-exclusive-after-all-joins",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Conditional on Root copying exact reviewedbytes to current qualificationfolder and invoking unoptimized Python (asserts enabled), as contract explicitlyrequires.",
+    "This is saved-only literal closure of existing native measured evidence, not independent scientific model/checker replay. Current raw result has not been decoded or accepted by reviewer.",
+    "Native/wire prefix and four metadata helpers are shared Root ancestry; separately authored currentfamilyjoins were whole-read and compared to currentcontroller, not a second mathematical implementation.",
+    "Reviewer authored decorator/membership/c960/fallback/projection/ancestorcaller and prior StageB/controller review; did not author this savedcloser or currentStageB caller/adapter/engine/c354/verifier.",
+    "No target proof/search, activated marking, full GCTS conformance, degree certificate transfer/global scheduler/UNKNOWNchild qualification, RL or gain from this scope."
+  ],
+  "raw_refs": [
+    {
+      "bytes": 19796,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/ROOT_close_stageB_saved_v1.py",
+      "sha256": "43ecd40ba45adb917005881990da0243236a7db8a4248144642b248d8256aa79"
+    },
+    {
+      "bytes": 8755,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-contract-v1.json",
+      "sha256": "142699041a76becfdd12e3be9d42c5c44fe17f35729264008271b51b2ca4b072"
+    },
+    {
+      "bytes": 87626,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-delta-v1.json",
+      "sha256": "20cf133343b7663bb378b4c464d2e3f8c8cfe1860982b465ae89502b08acdd92"
+    },
+    {
+      "bytes": 1736,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/author-static-v1.json",
+      "sha256": "7bc21dfd41602a77dbad809f5a8ed915a77c6f60a458800ae3bb6a9a984d5e06"
+    },
+    {
+      "bytes": 31660,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/Source-contract-v1.json",
+      "sha256": "b621e8776b81228510615ed7c36de103162e6460be3ac410aaad323ea6f1c851"
+    },
+    {
+      "bytes": 19129,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/handoff-v1.json",
+      "sha256": "67877c65f4403baf0dce9244b49325c8f6137dcc264b2ca93f7ce16ac7bfb2d3"
+    },
+    {
+      "bytes": 66733,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/channel4_stageB_cold_v1.py",
+      "sha256": "f2c7a08fb57973e707c6a694a2dbc6a45945b8758c1b3d57408828da28395d1d"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 12087,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_close_stageA_saved_v1.py",
+      "sha256": "54bfcd1d4543eab052fa299867113c597efbefb1f6c05a60487bec7a1a6fe47b"
+    },
+    {
+      "bytes": 25494,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-forward-v1.patch",
+      "sha256": "458377fe3b290580047a39397f4c120a426bf9b6a37b2cfb4ad31790aaf532bd"
+    },
+    {
+      "bytes": 25494,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-inverse-v1.patch",
+      "sha256": "7dac5586021ed2ad3ed0eefcd37fd49521825805b92195083788153d6bb4de96"
+    }
+  ],
+  "reviewed_handoff": {
+    "bytes": 6350,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/handoff-v1.json",
+    "sha256": "9fa0e8d7826581ad44b24d8ccd44b3fa861a53808dbe920a7daf618b6ff7ab8c"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-stageB-saved-closer-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19796,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/ROOT_close_stageB_saved_v1.py",
+    "sha256": "43ecd40ba45adb917005881990da0243236a7db8a4248144642b248d8256aa79"
+  },
+  "source_contract": {
+    "bytes": 8755,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-contract-v1.json",
+    "sha256": "142699041a76becfdd12e3be9d42c5c44fe17f35729264008271b51b2ca4b072"
+  },
+  "source_delta": {
+    "bytes": 87626,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/Source-delta-v1.json",
+    "sha256": "20cf133343b7663bb378b4c464d2e3f8c8cfe1860982b465ae89502b08acdd92"
+  },
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 19796,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-saved-closure-source-20261016/ROOT_close_stageB_saved_v1.py",
+      "sha256": "43ecd40ba45adb917005881990da0243236a7db8a4248144642b248d8256aa79"
+    }
+  },
+  "whole_Source_assessment": [
+    {
+      "assessment": "Whole acceptedStageA prefix before transport join is raw exact after endpoint filename/mode rename. Allreaped/wait4/native launch through postprobe strict20,512MiB,Date60/caller90+1,fulloutput2/twoLF bodyhash includesLF/stdout/pins/source/input/nonce/runtime/grant/reviews checked. Separate strict decoder concordance full expanded hash is required; this helper does not decompress or replay science.",
+      "lines": [
+        13,
+        59
+      ],
+      "topic": "Native/wire/transport custody"
+    },
+    {
+      "assessment": "Exact current11/input8/purpose/result/body/contract and frozen marking are joined to prior acceptedStageA. Exact ordered9 PASSED/noSKIP and A/B/C label partitions required. Every root/outer snapshot originalstate/rootgenerations/policy/no degreecerts checked; broad activation/search/degree-transfer/scheduler/proof/RL/gain flags remain false. Prior23/0 only input provenance, not current stage proof.",
+      "lines": [
+        48,
+        80,
+        144,
+        148,
+        228,
+        253
+      ],
+      "topic": "Current9 and original17/raw marking joins"
+    },
+    {
+      "assessment": "Both first genuineAX packets join pre-remoteslots and same original fullprototype at distinct translations. Recorded unseen fullpacket before/after equal (read4 remains unoccupied; only literalmark changes), legalityreasons retained. Changedpoint list is literal recomputation from saved arrays and misses observedAX support. Current transition3retain/6invalidate,versions/cursor deletion/archive, fresh6 context and new selectedfarAX/globalledger/allinvalidated joins required. All three real observedcursor logs join their exact slot/context/packet. No new point legality matcher or inference.",
+      "lines": [
+        150,
+        185
+      ],
+      "topic": "Family A literal transition and unseen support evidence"
+    },
+    {
+      "assessment": "Original twoUG keys/candidates/EOF match slot and original realcursor log. Both pre-replay retentions match single exact fourfield archive containing original fullpackets and complete oldcontext/keys/EOF; only read_obligations dropped for corepacket equality; occupancyliteral checks retained. Inner snapshot is exact secondretention and innerafter equals it. Each of two real replaylogs joins currentcontext state,contextSHA,ordinals0/1,wholecandidate packets/keys/EOF/falseflags. Both runs/full snapshots equal; allthree logs joined. Outer exactrestore checked separately. No fake generatorrewind, receiptSHA relabel or worklogrollback.",
+      "lines": [
+        187,
+        215
+      ],
+      "topic": "Family B complete old archive/current replay/innerouter restores"
+    },
+    {
+      "assessment": "Actual first/second selectedpacket records join snapshots. Strictint guard value0/ref1 and sharedmark value1/ref1then2 checked. Full innerafter equals one-ref snapshot; full outerafter equals originalroot, sharedassignment/refabsent andguardref1, emptycursorlog. No scheduledproof/degree inferred.",
+      "lines": [
+        217,
+        226
+      ],
+      "topic": "Family C actual refs and nested exact restoration"
+    },
+    {
+      "assessment": "Raw Source review only. Helper writes Root disposition only after alljoins with exclusive creation; review itself writes no Root disposition and decodes no result. Root must copy exact frozen bytes to qualificationfolder and execute ordinary non-O Python due inheritedassert gates. No liveclock/model/scientific/helper execution, no accepted case/native result is asserted by this review.",
+      "lines": [
+        235,
+        256
+      ],
+      "topic": "Authoring/execution boundary"
+    }
+  ]
+}

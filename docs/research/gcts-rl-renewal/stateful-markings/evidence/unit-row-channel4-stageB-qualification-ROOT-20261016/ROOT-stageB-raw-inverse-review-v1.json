@@ -1,0 +1,28 @@
+{
+  "actual_unified_forward_inverse": true,
+  "all_current11_input8_original17_input2_pins_verified": true,
+  "all_current_Source_AST_compile_only": true,
+  "contract": {
+    "bytes": 31660,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "b621e8776b81228510615ed7c36de103162e6460be3ac410aaad323ea6f1c851"
+  },
+  "exact31_region_forward_inverse": true,
+  "helpers17_raw_AST_equal": true,
+  "no_scientific_imports_or_execution": true,
+  "parent": {
+    "bytes": 64283,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/channel4_stageA_cold_v2.py",
+    "sha256": "965b50fbaf8c54c5ea64e6aaabb4f885246b78f572ec840378fbde32d9148523"
+  },
+  "schema": "ROOT-channel4-stageB-raw-inverse-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 66733,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/channel4_stageB_cold_v1.py",
+    "sha256": "f2c7a08fb57973e707c6a694a2dbc6a45945b8758c1b3d57408828da28395d1d"
+  },
+  "whole_current_Source_and_contract_read": true,
+  "whole_native_output_failure_tail_equal": true
+}

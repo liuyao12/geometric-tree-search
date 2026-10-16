@@ -1,0 +1,40 @@
+{
+  "author_identity": "/root",
+  "blockers": [],
+  "checks": [
+    "Whole current decoder read; exact single stageA\u2192stageB argv literal and full raw/AST inverse independently checked.",
+    "All helper functions AST exact; compile-only, no exec/import/evaluation.",
+    "4MiB encoded/16MiB expanded caps; strict builtin integer sizes, hashes, canonical base64 roundtrip and one complete zlib stream/no tails.",
+    "Full canonical outer and expanded JSON+LF; exact source/input/purpose join to current pinned plan.",
+    "Exclusive new expanded/concordance output; full bytes retained, no filtering/trimming.",
+    "No project/scientific imports, models, clocks, helper execution or decoded result inspection."
+  ],
+  "limitations": [
+    "Decode/concordance only; no native20/512/Date/terminal/case/scientific qualification. Saved StageB closer must independently close those raw fields before acceptance.",
+    "Reviewer authored parent scientific dependencies and earlier controller ancestor, not this Root decoder. Source review is neither scientific replay nor result acceptance.",
+    "Root alone may execute current helper against saved bytes; no actual authorization authored here."
+  ],
+  "parent_source": {
+    "bytes": 5208,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_decode_saved_transport_v6.py",
+    "sha256": "394eb0aea024201efe13363d5afe3ca5c2876529373cc93e6019f7b421ebdef7"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "ROOT-stageB-saved-decoder-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "StageB-lossless-saved-transport-decoder-Source",
+  "source": {
+    "bytes": 5208,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT_decode_saved_transport_v7.py",
+    "sha256": "fd287e7d6b5f8c5767965bb7766df67c165dd949d20060db0b0462714d753c11"
+  },
+  "source_delta": {
+    "bytes": 856,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-decoder-Source-delta-v1.json",
+    "sha256": "91a31e7c9e1d972bcdc86ade0dda249527c676db2842e88eb8d00b0617144717"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "status": "CONDITIONAL_SOURCE_PASS"
+}

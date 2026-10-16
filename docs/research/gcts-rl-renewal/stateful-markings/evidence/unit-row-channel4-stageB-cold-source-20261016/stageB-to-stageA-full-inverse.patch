@@ -1,0 +1,643 @@
+--- a/channel4_stageB_cold_v1.py
++++ b/channel4_stageA_cold_v2.py
+@@ -1,6 +1,6 @@
+-"""Prospective StageB: possible-support retention, full cursor archives and refs.
+-Public local transactions only; no global decision/search or degree-cache transfer.
+-Current executable Source11 remains separate from original semantic Source17.
++"""Prospective first channel4 runtime qualification: degree/filter/cursor/EOF.
++Current executable Source11 is distinct from the original semantic Source17.
++No target search, graph/retention qualification, proof or activation.
+ """
+ import time
+ CLOCK=time.clock_gettime_ns
+@@ -25,12 +25,12 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='unit-row-channel4-retention-archive-refs-cold-v1'
+-SCOPE='unit-row-channel4-stageB-cold-Source'
++VERSION='unit-row-channel4-degree-cursor-cold-v2-guarded-sizes'
++SCOPE='unit-row-channel4-stageA-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+ FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'decorator': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895', 'bytes': 12619}, 'marked_verifier': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a', 'bytes': 18475}, 'marked_adapter': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py', 'sha256': '821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9', 'bytes': 28980}, 'engine': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py', 'sha256': 'fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476', 'bytes': 56207}, 'fallback': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae', 'bytes': 24227}}
+-FIXED_INPUTS={'stageA_disposition': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-disposition-v1.json', 'sha256': '79edfc98d428edbe89e564cb6bb98e0f89fc7ee004335d15c4d55cd33e5d949e', 'bytes': 5803}, 'stageA_plan': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-plan-v1.json', 'sha256': 'cca9f6f918436fe7e02374775462c86c66445f16703941b4d803437f113b4664', 'bytes': 7866}, 'stageA_transport': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-transport-concordance-v1.json', 'sha256': 'c94cc2516c9817215fdb516e6b7c64913e25fabdea16aacff5b56f7bcd4ac87f', 'bytes': 1479}, 'stageA_expanded': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-expanded-result-v1.json', 'sha256': '82fe3136954b74a945b891f224632174ee82eb41090477cb3976a8dc727a58f8', 'bytes': 1031675}, 'stageA_encoded': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/engine-result.json', 'sha256': 'bbfe3f3f87bead3f90f23e9ab2cb801f3fa6d5c2cd88bccc9506c88cf49be891', 'bytes': 76302}, 'stageA_response': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/response.jsonl', 'sha256': '3e0951b1a5a37152579ee69db0effc4f255d78767f1f7b5fed3868f7156df3a5', 'bytes': 7541}, 'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}}
++FIXED_INPUTS={'marking_disposition': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT-marking-disposition-v1.json', 'sha256': '46a04787501db397fc9993118ebd5800a301ddc7898398a386438a905a415f77', 'bytes': 5271}, 'marking_plan': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT-marking-plan-v1.json', 'sha256': '32c2b9e377b3ebbc353ac17b1dd808fb5b85a5ab21a456d97fddee63ae0e2240', 'bytes': 7353}, 'marking_transport': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT-marking-transport-concordance-v1.json', 'sha256': 'ef50dd4c265bc843ebda31174948abbbb9fb67e68bf800acddfdd2ca6d00c7f1', 'bytes': 1466}, 'marking_expanded': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/ROOT-marking-expanded-result-v1.json', 'sha256': 'db4c457fb03d10787d2fea4061dd134868c0154ecd86a8e82322e61fbdd00cba', 'bytes': 502708}, 'marking_encoded': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/marking-owned-v1/engine-result.json', 'sha256': '6c20a05df94f985d3e5ab4052af75aee155a10cab5ab90a927825cefa61e1b63', 'bytes': 46337}, 'marking_response': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-marking-ROOT-20261016/marking-owned-v1/response.jsonl', 'sha256': '8099df1a00f8395c5d7cd026ba942723b59149cfc5a679f146c352fb1ffc5aca', 'bytes': 7079}, 'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}}
+ LIMITS={'aggregate_owned_bytes': 536870912, 'caller_finish_reserve_seconds': 1, 'caller_seconds': 90, 'failure_only_seconds': 55, 'joint_seconds': 20, 'owned_seconds': 60}
+ 
+ ORIGINAL_SOURCES={'advice_controls': {'bytes': 130156, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py', 'sha256': '0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3'}, 'advice_validator': {'bytes': 16299, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py', 'sha256': '8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1'}, 'adviser': {'bytes': 26007, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py', 'sha256': '6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98'}, 'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'controls': {'bytes': 31931, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py', 'sha256': '50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a'}, 'converter': {'bytes': 5528, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py', 'sha256': 'baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'engine': {'bytes': 55152, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py', 'sha256': '54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'intake': {'bytes': 55852, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py', 'sha256': '652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'point_checker': {'bytes': 10201, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py', 'sha256': '99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'retained_controls': {'bytes': 25338, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py', 'sha256': 'd1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb'}, 'transition': {'bytes': 8134, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py', 'sha256': '2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491'}, 'word_checker': {'bytes': 46514, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py', 'sha256': '1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3'}}
+@@ -324,21 +324,6 @@
+     return encoded
+ 
+ 
+-class ObservedCursor:
+-    """Record genuine state-bound fallback events; never create or alter EOF."""
+-    def __init__(self,real,record,tick):
+-        self.real,self.record,self.tick = real,record,tick
+-    def context(self):
+-        return self.real.context()
+-    def advance(self):
+-        self.tick()
+-        event = self.real.advance()
+-        self.record['events'].append(copy.deepcopy(event))
+-        return event
+-    def abort(self):
+-        return self.real.abort()
+-
+-
+ def main(argv):
+     need(__name__=='__main__' and len(argv)==1,'one Root certified-marking data plan')
+     end=EARLY_G+20000000000
+@@ -358,8 +343,8 @@
+     plan_raw=path.read_bytes();need(len(plan_raw)<=1048576,'whole bounded Root plan');plan=decode(plan_raw)
+     need(set(plan)=={'schema','invocation_id','purpose','output_directory','sources','inputs','source_contract',
+         'reviews','ROOT_authorization','runtime','limits','resource_rule'},'exact current plan12')
+-    need(plan['schema']=='ROOT-channel4-stageB-plan-v1'
+-         and plan['purpose']=='unit-row-channel4-retention-archive-refs-controls'
++    need(plan['schema']=='ROOT-channel4-stageA-plan-v1'
++         and plan['purpose']=='unit-row-channel4-degree-cursor-controls'
+          and plan['resource_rule']=='single-owned-process-native-terminal-v1'
+          and plan['limits']==LIMITS and all(type(v) is int for v in plan['limits'].values()),'original six limits')
+     need(type(plan['invocation_id']) is str and 1<=len(plan['invocation_id'])<=128
+@@ -372,7 +357,7 @@
+     read_pinned(plan['runtime'])
+     source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract=decode(read_pinned(plan['source_contract']))
+-    need(contract['schema']=='unit-row-channel4-stageB-cold-Source-contract-v1'
++    need(contract['schema']=='unit-row-channel4-stageA-cold-Source-contract-v1'
+          and contract['sources']==plan['sources'] and contract['inputs']==FIXED_INPUTS
+          and contract['limits']==LIMITS and contract['original_model_sources']==ORIGINAL_SOURCES
+          and contract['original_model_inputs']==ORIGINAL_INPUTS
+@@ -388,7 +373,7 @@
+              and (review['reviewer_identity']=='/root' if role=='ROOT' else review['reviewer_identity'] not in ('/root/arithmetic_induction','/root')),
+              'genuine current scoped Source reviews')
+     grant=decode(read_pinned(plan['ROOT_authorization']))
+-    need(grant['schema']=='ROOT-channel4-stageB-authorization-v1'
++    need(grant['schema']=='ROOT-channel4-stageA-authorization-v1'
+          and grant['author_identity']=='/root' and grant['actual_execution_authorized'] is True
+          and type(grant['maximum_actual_invocations']) is int and grant['maximum_actual_invocations']==1
+          and all(grant[k]==plan[k] for k in ('invocation_id','purpose','sources','inputs','source_contract',
+@@ -445,36 +430,36 @@
+             'source_bindings':copy.deepcopy(ORIGINAL_SOURCES),'kernel_module':kernel,'local_deadline':local_deadline,'tick':tick})
+         need(canonical(language.binding)==canonical(ORIGINAL_BINDING),'exact original model epoch without rebasing')
+         return language
+-    # Authenticate the WHOLE prior StageA result. Its receipts are inputs,
++    # Authenticate the WHOLE prior construction result. Its receipts are inputs,
+     # never substituted for the fresh checks in this current native window.
+-    accepted = decode(inputs_raw['stageA_disposition'])
+-    prior = decode(inputs_raw['stageA_plan'])
+-    transport = decode(inputs_raw['stageA_transport'])
+-    expanded = decode(inputs_raw['stageA_expanded'])
+-    need(accepted['schema'] == 'ROOT-channel4-stageA-disposition-v1'
++    accepted = decode(inputs_raw['marking_disposition'])
++    prior = decode(inputs_raw['marking_plan'])
++    transport = decode(inputs_raw['marking_transport'])
++    expanded = decode(inputs_raw['marking_expanded'])
++    need(accepted['schema'] == 'ROOT-certified-row0-marking-disposition-v1'
+          and accepted['actual_closed'] is True and accepted['all_reaped'] is True
+          and accepted['native_resources_qualified'] is True and accepted['complete_wire_verified'] is True
+-         and accepted['local_degree_cursor_controls_accepted'] is True
+-         and accepted['later_engine_stages_qualified'] is False
+-         and accepted['passed_cases'] == 23 and accepted['skipped_cases'] == 0,
+-         'fixed prior Root acceptance of23local-degree/cursor cases only')
+-    need(accepted['plan'] == FIXED_INPUTS['stageA_plan']
+-         and accepted['lossless_transport_concordance'] == FIXED_INPUTS['stageA_transport']
+-         and accepted['outputs'] == [FIXED_INPUTS['stageA_encoded'], FIXED_INPUTS['stageA_response']]
+-         and transport['plan'] == FIXED_INPUTS['stageA_plan']
+-         and transport['encoded_file'] == FIXED_INPUTS['stageA_encoded']
+-         and transport['expanded_file'] == FIXED_INPUTS['stageA_expanded']
++         and accepted['constructed_marking_data_accepted'] is True
++         and accepted['independent_marking_data_check_accepted'] is True
++         and accepted['passed_cases'] == 16 and accepted['skipped_cases'] == 0,
++         'fixed prior Root acceptance of constructed marking data only')
++    need(accepted['plan'] == FIXED_INPUTS['marking_plan']
++         and accepted['lossless_transport_concordance'] == FIXED_INPUTS['marking_transport']
++         and accepted['outputs'] == [FIXED_INPUTS['marking_encoded'], FIXED_INPUTS['marking_response']]
++         and transport['plan'] == FIXED_INPUTS['marking_plan']
++         and transport['encoded_file'] == FIXED_INPUTS['marking_encoded']
++         and transport['expanded_file'] == FIXED_INPUTS['marking_expanded']
+          and transport['all_full_record_bytes_retained'] is True,
+          'prior marking disposition/plan/transport/full output joins')
+-    need(canonical(expanded)+b'\n' == inputs_raw['stageA_expanded']
++    need(canonical(expanded)+b'\n' == inputs_raw['marking_expanded']
+          and expanded['sources'] == prior['sources'] and expanded['inputs'] == prior['inputs']
+-         and expanded['purpose'] == prior['purpose'] == 'unit-row-channel4-degree-cursor-controls'
++         and expanded['purpose'] == prior['purpose'] == 'unit-row-certified-row0-marking-data-controls'
+          and expanded['language_binding'] == accepted['original_model_binding'] == ORIGINAL_BINDING,
+          'accepted canonical whole result and original semantic epoch')
+     old_contract = decode(read_pinned(prior['source_contract']))
+     need(old_contract['sources'] == prior['sources'] and old_contract['inputs'] == prior['inputs']
+          and old_contract['original_model_sources'] == ORIGINAL_SOURCES
+-         and old_contract['original_model_binding'] == ORIGINAL_BINDING, 'prior Source11 versus original Model17')
++         and old_contract['original_model_binding'] == ORIGINAL_BINDING, 'prior Source9 versus original Model17')
+     for ref in prior['sources'].values(): read_pinned(ref)
+     for ref in prior['inputs'].values(): read_pinned(ref,4*1048576+131072)
+     old_grant = decode(read_pinned(prior['ROOT_authorization']))
+@@ -488,27 +473,27 @@
+         need(review['source'] == prior['sources']['intake'] and review['sources'] == prior['sources']
+              and review['source_contract'] == prior['source_contract'] and review['source_only'] is True
+              and review['source_review_passed'] is True, 'prior complete Source review provenance')
+-    lines = inputs_raw['stageA_response'].splitlines(keepends=True)
++    lines = inputs_raw['marking_response'].splitlines(keepends=True)
+     need(len(lines) == 2 and all(v.endswith(b'\n') for v in lines), 'prior response exactly twoLF')
+     old_body, old_completion = map(decode,lines)
+     need(old_completion['body_sha256'] == hashlib.sha256(lines[0]).hexdigest()
+          and old_completion['body_bytes'] == len(lines[0])
+-         and old_body['plan'] == raw_pin(inputs_raw['stageA_plan'])
++         and old_body['plan'] == raw_pin(inputs_raw['marking_plan'])
+          and old_body['sources'] == prior['sources'] and old_body['inputs'] == prior['inputs']
+-         and old_body['outputs'] == [FIXED_INPUTS['stageA_encoded']], 'prior complete response bytes')
+-    previous = expanded['channel4_stageA']
+-    need(previous['schema'] == 'ROOT-unit-row-channel4-stageA-payload-v1'
++         and old_body['outputs'] == [FIXED_INPUTS['marking_encoded']], 'prior complete response bytes')
++    previous = expanded['marking_data']
++    need(previous['schema'] == 'ROOT-certified-row0-marking-data-payload-v1'
+          and previous['original_model_sources'] == ORIGINAL_SOURCES
+          and previous['original_model_binding'] == ORIGINAL_BINDING
+-         and previous['control_count'] == 23 and len(previous['controls']) == 23
+-         and len(previous['fixtures']) == 7 and len(previous['cursors']) == 6
++         and previous['control_count'] == 16 and len(previous['controls']) == 16
+          and previous['all_controls_completed'] is True
+          and all(c['status'] == 'PASSED' for c in previous['controls'])
+-         and all(accepted[k] is False for k in ('target_search_performed',
++         and all(accepted[k] is False for k in ('engine_activated','target_search_performed',
+             'logical_proof_accepted','complete_GCTS_model_accepted','RL_accepted','GCTS_advantage_claimed')),
+-         'prior narrow StageA acceptance, no graph/scheduler/search qualification')
++         'prior narrow marking-data acceptance, no engine activation')
+     marking = copy.deepcopy(previous['marking'])
+-    need(marking['marking_id'] == accepted['marking_id'],
++    need(marking['marking_id'] == accepted['marking_id']
++         and hashlib.sha256(canonical(marking)).hexdigest() == accepted['marking_sha256'],
+          'whole accepted frozen marking identity')
+     adapter, engine, fallback = (modules[k] for k in ('marked_adapter','engine','fallback'))
+     decorator, verifier = modules['decorator'], modules['marked_verifier']
+@@ -518,9 +503,19 @@
+         'semantics':semantics,'marking':copy.deepcopy(marking),'tick':tick})
+     need(definition_check['marking_checked'] is True and definition_check['marking_id'] == marking['marking_id'],
+          'fresh independent whole marking check')
+-    controls, families = [], {}
++    controls, fixtures, cursors = [], {}, {}
++
+     def passed(name, **data):
+         tick(); controls.append(dict(case=name,status='PASSED',**data))
++
++    def negative(name, fn, exact_reason):
++        reason = None
++        try: call(fn)
++        except ValueError as error:
++            if type(error) is not ValueError: raise
++            reason = str(error)
++        need(reason == exact_reason,'exact negative, no swallowed authority/resource failure')
++        passed(name,reason=reason)
+ 
+     def marked_semantics(language, endpoint_tick=None):
+         return adapter.MarkedSemantics(language=language,base_semantics=semantics,
+@@ -569,255 +564,209 @@
+         need(canonical(checked) == canonical(marked),'fresh full marked state, no projection-only acceptance')
+         return marked
+ 
+-    language = fresh_language()
+-    variable = language.parameters[0]
+-    ax_name = sorted(language.theory['axioms'])[0]
+-    ax_formula = copy.deepcopy(language.theory['axioms'][ax_name])
+-    need(['bot'] in marking['definition']['certified_literals'], 'authenticated certified bot literal for new mark supports')
+-
+-    def ug(body, source, row):
+-        return tile({'rule':'generalize','variable':variable,'formula':['all',variable,copy.deepcopy(body)]},
+-                    [body],[source],row)
+-
+-    def make_engine(state, log):
++    def query(name,state,row,status,base_status=None):
++        language = fresh_language()
++        proposer_semantics = marked_semantics(language)
++        proposal = proposer_semantics.propose_degree(language=language,state=copy.deepcopy(state),row=row,
++            degree_proposer=modules['proposer'].propose_degree,tick=tick)
++        check_language = fresh_language()
++        checker_semantics = marked_semantics(check_language)
++        receipt = checker_semantics.check_degree_evidence(language=check_language,state=copy.deepcopy(state),
++            row=row,proposal=copy.deepcopy(proposal),tick=tick)
++        need(receipt['status'] == status and receipt['marking_id'] == marking['marking_id']
++             and receipt['state_sha256'] == hashlib.sha256(canonical(state)).hexdigest(), 'actual fresh marked degree status/context')
++        if base_status is not None: need(receipt['original_base_receipt']['status'] == base_status,'actual original status')
++        evidence = {'state':copy.deepcopy(state),'base_state':checker_semantics.base_state(check_language,state,tick),
++            'row':row,'proposal':proposal,'receipt':receipt}
++        fixtures[name] = evidence
++        return evidence
++
++    def certify(state,row,completion,candidates):
+         language = fresh_language(); current = marked_semantics(language)
+         def proposer(**kwargs):
+             return current.propose_degree(degree_proposer=modules['proposer'].propose_degree,**kwargs)
+-        def filtered(**kwargs):
+-            real = adapter.open_fallback(semantics=current,base_fallback=fallback.open_fallback,**kwargs)
+-            record = {'context':copy.deepcopy(real.context()),'events':[]}
+-            log.append(record)
+-            return ObservedCursor(real,record,tick)
+-        def certifier(**kwargs):
+-            return engine.certify_by_current_cover(degree_proposer=proposer,semantics=current,**kwargs)
+-        return engine.LazyUnitRowEngine(language=language,degree_proposer=proposer,
+-            semantics=current,fallback=filtered,certify_fallback=certifier,
+-            transition_checker=adapter.MarkedTransition(),tick=tick,
+-            initial_state=copy.deepcopy(state),branch_adviser=None,validate_advice=None,branch_tie='ROW')
+-
+-    def snapshot(e):
+-        value = e.state_snapshot()
+-        need(value['state']['generation'] == [[[0,r],0] for r in range(24)]
+-             and value['marking_id'] == marking['marking_id'], 'original roots0 and frozen marked snapshot')
+-        return value
+-
+-    def candidate(base,state):
++        return engine.certify_by_current_cover(language=language,state=copy.deepcopy(state),row=row,
++            completion=copy.deepcopy(completion),checked_candidates=copy.deepcopy(candidates),
++            degree_proposer=proposer,semantics=current,tick=tick)
++
++    def streams(name,evidence,original_count,marked_count,certified_status):
++        state,row = evidence['state'],evidence['row']
+         language = fresh_language(); current = marked_semantics(language)
+-        _,totals,marks,selected,excluded,names = current.private_state(language,state,tick)
+-        key = base['placement_key']
+-        pre = {'schema':'unit-row-row0-decorated-type-v1',
+-            'base_type_preimage':copy.deepcopy(key['type_preimage']),'marking_id':marking['marking_id']}
+-        value = current.rebuild_tile(language,pre,copy.deepcopy(key['translation']),tick)
+-        current.check_collision(value,names)
+-        reason = current.legality(value,totals,marks,selected,excluded)
+-        return current.with_obligations(value,totals,tick),reason
+-
+-    def place_base(e,base):
+-        before = snapshot(e)
+-        value,reason = candidate(base,before['state'])
+-        need(reason is None,'fresh whole-current-point legality before public placement')
+-        e.place(value)
+-        return value
+-
+-    def rowproof(value,row):
+-        return next(p for p in value['last_transition']['rows'] if p['row'] == row)
+-
+-    def slot(value,row):
+-        return dict(value['cursors'])[row]
+-
+-    def archived(value,old_slot):
+-        return [entry for entry in value.get('context_archive',[]) if
+-            all(canonical(entry[name]) == canonical(old_slot[name])
+-                for name in ('context','keys','candidates','completion'))]
+-
+-    def core(value):
+-        return {k:v for k,v in value.items() if k != 'read_obligations'}
+-
+-    def maps(entries):
+-        return {tuple(p):v for p,v in entries}
+-
+-    def exact_restore(e,token,before):
+-        e.rollback(token)
+-        after = snapshot(e)
+-        need(canonical(after) == canonical(before),'exact owned semantic/domain/cursor/archive/dependency restore')
+-        return after
+-
+-    def family_A():
+-        log = []; initial = state_from([ug(['bot'],1,2)])
+-        e = make_engine(initial,log); outer_before = snapshot(e); outer = e.checkpoint()
+-        data = {'initial_state':initial,'outer_before':outer_before}
+-        try:
+-            first3,first6 = e.next_alternative(3),e.next_alternative(6)
+-            need(first3['kind'] == first6['kind'] == 'CANDIDATE'
+-                 and all(x['candidate']['base_tile']['placement_key']['type_preimage']['primitive_witness']['rule'] == 'axiom'
+-                         for x in (first3,first6)), 'actual first original AX candidates on both rows')
+-            k3 = first3['candidate']['base_tile']['placement_key']
+-            k6 = first6['candidate']['base_tile']['placement_key']
+-            need(k3['tile_type_id'] == k6['tile_type_id']
+-                 and canonical(k3['type_preimage']) == canonical(k6['type_preimage'])
+-                 and k3['translation'] != k6['translation'], 'genuine repeated original prototype across queried rows')
+-            before = snapshot(e)
+-            unseen_base = ug(ax_formula,4,6)
+-            unseen_before,old_reason = candidate(unseen_base,before['state'])
+-            need(old_reason is None and all(canonical(c['placement_key']) != canonical(unseen_before['placement_key'])
+-                 for _,c in ((3,first3['candidate']),(6,first6['candidate']))), 'legal remote-read candidate not in observed one-key prefix')
+-            placed = place_base(e,ug(['bot'],4,5)); after = snapshot(e)
+-            old_m,new_m = maps(before['state']['m']),maps(after['state']['m'])
+-            changed = {p for p in set(old_m)|set(new_m)
+-                       if p not in old_m or p not in new_m or canonical(old_m[p]) != canonical(new_m[p])}
+-            observed_support = {tuple(p) for p,v in first6['candidate']['global_t_values']+first6['candidate']['global_m_values']}
+-            need((4,4) in changed and not changed.intersection(observed_support), 'actual unseen remote support, not only exposed dependencies')
+-            need(rowproof(after,3)['retain'] is True and rowproof(after,6)['retain'] is False
+-                 and rowproof(after,6)['reason'] == 'possible_full_channel4_support_changed'
+-                 and after['last_transition']['collision_ledger_equal'] is True
+-                 and after['row_versions'][3] == before['row_versions'][3]
+-                 and after['row_versions'][6] > before['row_versions'][6]
+-                 and 3 in dict(after['cursors']) and 6 not in dict(after['cursors']),
+-                 'same full ledger retains unaffected3 and invalidates complete possible support at6')
+-            unseen_after,new_reason = candidate(unseen_base,after['state'])
+-            need(new_reason == 'whole_remote_or_metadata_mark_conflict', 'actual unseen alternative lost whole point legality')
+-            next6 = e.next_alternative(6); refreshed = snapshot(e)
+-            need(next6['kind'] == 'CANDIDATE' and slot(refreshed,6)['context']['state_sha256'] ==
+-                 hashlib.sha256(canonical(after['state'])).hexdigest(), 'invalidated6 gets genuine current-state cursor')
+-            data.update(first3=first3,first6=first6,before_remote=before,remote_placement=placed,
+-                after_remote=after,changed_mark_points=[list(p) for p in sorted(changed)],
+-                unseen_candidate_before=unseen_before,unseen_legality_before=old_reason,
+-                unseen_candidate_after=unseen_after,unseen_legality_after=new_reason,
+-                fresh_row6=next6,after_requery=refreshed)
+-            passed('unseen-remote-support-retains3-invalidates6',family='A',scope='Both original channel1 and added4 change; no isolated4 causality claim.')
+-            far = place_base(e,tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],22))
+-            after_new = snapshot(e)
+-            need(after_new['last_transition']['collision_ledger_equal'] is False
+-                 and not any(p['retain'] for p in after_new['last_transition']['rows'])
+-                 and rowproof(after_new,3)['reason'] == rowproof(after_new,6)['reason'] == 'global_collision_ledger_changed',
+-                 'genuinely new selected prototype outside3/6 support invalidates full global identity relation')
+-            data.update(new_far_prototype=far,after_new_prototype=after_new)
+-            passed('new-prototype-global-ledger-invalidates-frontier',family='A',scope='No hash injectivity assumption; no fabricated true hash-collision runtime test.')
+-        finally:
+-            e.rollback(outer)
+-        data['outer_after'] = snapshot(e)
+-        need(canonical(data['outer_after']) == canonical(outer_before),'familyA exact outer checkpoint restore')
+-        data['actual_cursor_log'] = log; families['A'] = data
+-        passed('remote-family-exact-outer-restore',family='A')
+-
+-    def family_B():
+-        log = []; d = ['all',variable,copy.deepcopy(ax_formula)]
+-        tiles = [tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],0),
+-                 ug(ax_formula,1,2),ug(d,3,5)]
+-        initial = state_from(tiles); e = make_engine(initial,log)
+-        outer_before = snapshot(e); outer = e.checkpoint()
+-        data = {'initial_state':initial,'seeds':tiles,'outer_before':outer_before}
+-        try:
+-            original_events = [e.next_alternative(3),e.next_alternative(3),e.next_alternative(3)]
+-            need([x['kind'] for x in original_events] == ['CANDIDATE','CANDIDATE','EOF'], 'actual complete two-UG cursor before retention')
+-            before = snapshot(e); old_slot = copy.deepcopy(slot(before,3))
+-            need(sorted(o['occupied'] for c in old_slot['candidates'] for o in c['read_obligations']) == [False,True],
+-                 'one actual pending and one occupied input before refresh')
+-            fill1 = place_base(e,tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],1))
+-            first = snapshot(e); retained1 = slot(first,3)
+-            need(rowproof(first,3)['retain'] is True and first['last_transition']['collision_ledger_equal'] is True
+-                 and rowproof(first,3)['read_occupancy_changes'] == [1]
+-                 and canonical(retained1['keys']) == canonical(old_slot['keys'])
+-                 and all(canonical(retained1[k]) == canonical(old_slot[k]) for k in ('context','completion'))
+-                 and len(archived(retained1,old_slot)) == 1, 'first retention archives complete original actual cursor packets')
+-            need(all(canonical(core(a)) == canonical(core(b)) for a,b in zip(old_slot['candidates'],retained1['candidates']))
+-                 and all(o['occupied'] is True for c in retained1['candidates'] for o in c['read_obligations']),
+-                 'refresh changes only current read occupancy, not original or added point/core packets')
+-            fill22 = place_base(e,tile({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],22))
+-            second = snapshot(e); retained2 = slot(second,3)
+-            need(rowproof(second,3)['retain'] is True and second['last_transition']['collision_ledger_equal'] is True
+-                 and all(canonical(retained2[k]) == canonical(old_slot[k]) for k in ('context','keys','completion'))
+-                 and len(retained2['context_archive']) == 1 and len(archived(retained2,old_slot)) == 1
+-                 and canonical(retained2['candidates']) == canonical(retained1['candidates']),
+-                 'second retain BEFORE replay preserves one original full archive, no refreshed-packet old-context relabel')
+-            data.update(original_events=original_events,before_retention=before,original_slot=old_slot,
+-                fill1=fill1,first_retained_snapshot=first,fill22=fill22,second_retained_snapshot=second)
+-            passed('repeated-retain-preserves-original-full-archive-and-refresh',family='B')
+-            inner_before = snapshot(e); inner = e.checkpoint(); start = len(log)
+-            try:
+-                returned = e.next_alternative(3); continued = snapshot(e)
+-                need(returned['kind'] == 'EOF' and len(log) == start+1
+-                     and [x['kind'] for x in log[-1]['events']] == ['CANDIDATE','CANDIDATE','EOF']
+-                     and [x['ordinal'] for x in log[-1]['events'][:-1]] == [0,1], 'fresh full two-key prefix before current EOF')
+-                fresh_slot = slot(continued,3)
+-                need(fresh_slot['context']['state_sha256'] == hashlib.sha256(canonical(second['state'])).hexdigest()
+-                     and len(archived(fresh_slot,old_slot)) == 1, 'current context refreshed, original full archive survives')
+-                first_log = copy.deepcopy(log[-1])
+-            finally:
+-                e.rollback(inner)
+-            inner_after = snapshot(e)
+-            need(canonical(inner_after) == canonical(inner_before),'nonempty retained archive exact inner rollback')
+-            repeat_start = len(log); repeated = e.next_alternative(3); repeated_snapshot = snapshot(e)
+-            need(repeated['kind'] == 'EOF' and len(log) == repeat_start+1
+-                 and canonical(log[-1]) == canonical(first_log)
+-                 and canonical(repeated_snapshot) == canonical(continued), 'repeat genuine full continuation after restoring nonempty archive checkpoint')
+-            data.update(inner_before=inner_before,first_continuation=returned,first_continued_snapshot=continued,
+-                first_replay_log=first_log,inner_after=inner_after,repeated_continuation=repeated,
+-                repeated_snapshot=repeated_snapshot,repeated_replay_log=copy.deepcopy(log[-1]))
+-            passed('fresh-full-prefix-replay-nonempty-inner-rollback-repeat',family='B')
+-        finally:
+-            e.rollback(outer)
+-        data['outer_after'] = snapshot(e)
+-        need(canonical(data['outer_after']) == canonical(outer_before),'familyB exact outer checkpoint restore')
+-        data['actual_cursor_log'] = log; families['B'] = data
+-        passed('archive-family-exact-outer-restore',family='B')
+-
+-    def family_C():
+-        log = []; initial = state_from([]); e = make_engine(initial,log)
+-        outer_before = snapshot(e); outer = e.checkpoint()
+-        data = {'initial_state':initial,'outer_before':outer_before}
+-        try:
+-            first = place_base(e,ug(['bot'],1,2)); one = snapshot(e)
+-            need(dict((tuple(p),v) for p,v in one['mark_reference_counts'])[(4,0)] == 1
+-                 and dict((tuple(p),v) for p,v in one['mark_reference_counts'])[(4,1)] == 1,
+-                 'actual guard and first selected shared-mark reference')
+-            inner = e.checkpoint()
+-            try:
+-                second = place_base(e,ug(['bot'],1,3)); two = snapshot(e)
+-                refs = maps(two['mark_reference_counts']); marks = maps(two['state']['m'])
+-                need(refs[(4,0)] == 1 and refs[(4,1)] == 2
+-                     and marks[(4,0)] == 0 and marks[(4,1)] == 1
+-                     and len(two['state']['selected']) == 2, 'shared matching ones have two actual selected references and one union value')
+-                data.update(first=first,one_reference=one,second=second,two_references=two)
+-                passed('shared-channel4-two-refs-and-fixed-zero',family='C')
+-            finally:
+-                e.rollback(inner)
+-            after_inner = snapshot(e)
+-            need(canonical(after_inner) == canonical(one)
+-                 and maps(after_inner['mark_reference_counts'])[(4,1)] == 1, 'inner restore removes exactly one reference')
+-            data['inner_after'] = after_inner
+-            passed('shared-channel4-inner-exact-restore-one-ref',family='C')
+-        finally:
+-            e.rollback(outer)
+-        after_outer = snapshot(e); refs = maps(after_outer['mark_reference_counts'])
+-        need(canonical(after_outer) == canonical(outer_before) and (4,1) not in refs
+-             and (4,1) not in maps(after_outer['state']['m']) and refs[(4,0)] == 1,
+-             'outer restore removes final shared assignment while fixed zero remains referenced')
+-        data['outer_after'] = after_outer; data['actual_cursor_log'] = log; families['C'] = data
+-        passed('shared-channel4-outer-exact-restore-absence',family='C')
+-
+-    call(family_A); call(family_B); call(family_C)
+-    expected_controls = ['unseen-remote-support-retains3-invalidates6',
+-        'new-prototype-global-ledger-invalidates-frontier','remote-family-exact-outer-restore',
+-        'repeated-retain-preserves-original-full-archive-and-refresh',
+-        'fresh-full-prefix-replay-nonempty-inner-rollback-repeat','archive-family-exact-outer-restore',
+-        'shared-channel4-two-refs-and-fixed-zero','shared-channel4-inner-exact-restore-one-ref',
+-        'shared-channel4-outer-exact-restore-absence']
++        base = current.base_state(language,state,tick)
++        original_cursor = fallback.open_fallback(language=language,state=base,row=row,tick=tick)
++        marked_cursor = adapter.open_fallback(language=language,semantics=current,state=copy.deepcopy(state),
++            row=row,base_fallback=fallback.open_fallback,tick=tick)
++        oc,mc = original_cursor.context(),marked_cursor.context()
++        original_events,marked_events = [],[]
++        for cursor,events in ((original_cursor,original_events),(marked_cursor,marked_events)):
++            while True:
++                tick(); event = cursor.advance(); events.append(event)
++                if event['kind'] == 'EOF': break
++        original_candidates = [e['candidate'] for e in original_events if e['kind'] == 'CANDIDATE']
++        marked_candidates = [e['candidate'] for e in marked_events if e['kind'] == 'CANDIDATE']
++        need(len(original_candidates) == original_count and len(marked_candidates) == marked_count,'actual complete finite stream lengths')
++        expected,rejections = current._filter(language,state,original_candidates,tick)
++        need(canonical(expected) == canonical(marked_candidates),'exact original-order surviving full packet subsequence')
++        need([e['ordinal'] for e in original_events[:-1]] == list(range(original_count))
++             and [e['ordinal'] for e in marked_events[:-1]] == list(range(marked_count)), 'actual contiguous stream ordinals')
++        completion = marked_events[-1]['completion']
++        need(canonical(completion['original_completion']) == canonical(original_events[-1]['completion'])
++             and canonical(mc['original_context']) == canonical(oc),'complete original context/EOF provenance retained')
++        receipt = certify(state,row,completion,marked_candidates)
++        need(receipt is None if certified_status is None else receipt['status'] == certified_status,
++             'fresh complete cover gate, EOF does not imply independent completeness')
++        packet = {'fixture_ref':name,'state':state,'base_state':base,'row':row,'original_context':oc,
++            'marked_context':mc,'original_events':original_events,'marked_events':marked_events,
++            'full_stream_filter_rejections':rejections,'fresh_cover_receipt':receipt,
++            'scope':'Actual finite fallback stream; EOF untrusted absent fresh complete cover. Partial proposal scope remains separate.'}
++        cursors[name] = packet
++        return packet
++
++    language = fresh_language(); root = call(state_from,([],))
++    need(root['m'][-1] == [[4,0],0] and root['input_epoch'] == ORIGINAL_BINDING['language_epoch'],
++         'original epoch and explicit fixed channel4 zero')
++    passed('accepted-marking-fresh-independent-root',state=root,definition_check=definition_check)
++    def tiny_carriers():
++        left = list(modules['proposer'].iter_bounded_formulas(language=fresh_language(),maximum_nodes=1,tick=tick))
++        right = list(semantics.independent_carrier(fresh_language(),1,tick))
++        need(left == right == [['bot']] and ['bot'] in marking['definition']['certified_literals'],
++             'actual complete size1 carrier and admitted bot literal')
++        return {'proposer':left,'independent':right}
++    carriers = call(tiny_carriers)
++    passed('fresh-complete-size-one-carriers',carriers=carriers)
++    variable = language.parameters[0]
++    ax_name = sorted(language.theory['axioms'])[0]; ax_formula = copy.deepcopy(language.theory['axioms'][ax_name])
++    axioms = [call(tile,({'rule':'axiom','name':ax_name,'formula':ax_formula},[],[],r)) for r in (0,1)]
++    universal = ['all',variable,ax_formula]
++    seed = call(tile,({'rule':'generalize','variable':variable,'formula':['all',variable,universal]},[universal],[2],3))
++    ug_state = call(state_from,(axioms+[seed],))
++    many = call(query,('UG-many',ug_state,2,'MANY','MANY'))
++    need(many['receipt']['degree_exact'] == 2,'two actual complete UG occurrences')
++    passed('complete-UG-many',fixture_ref='UG-many')
++    base_keys = [c['base_tile']['placement_key'] for c in many['proposal']['candidates']]
++    one_state = call(state_from,(axioms+[seed],base_keys[:1]))
++    one = call(query,('UG-one',one_state,2,'SINGLETON','SINGLETON'))
++    passed('complete-UG-singleton-with-explicit-control-exclusion',fixture_ref='UG-one',conditional_exclusion=True)
++    zero_state = call(state_from,(axioms+[seed],base_keys))
++    zero = call(query,('UG-zero',zero_state,2,'ZERO','ZERO'))
++    passed('complete-UG-zero-with-explicit-control-exclusions',fixture_ref='UG-zero',conditional_exclusions=True)
++    deep42 = ['bot']
++    for _ in range(41): deep42 = ['not',deep42]
++    deep43 = ['not',deep42]
++    def deep_sizes():
++        return [language.formula(deep42),language.formula(deep43)]
++    sizes = call(deep_sizes)
++    need(sizes == [42,43],'native bounded deep formulas')
++    def demand(formula,row):
++        outer = ['all',variable,formula]
++        return tile({'rule':'generalize','variable':variable,'formula':outer},[formula],[row],row+1)
++    deep_zero_state = call(state_from,([call(demand,(deep43,2))],))
++    deep_zero = call(query,('deep43-zero',deep_zero_state,2,'ZERO','ZERO'))
++    passed('deep43-complete-zero',fixture_ref='deep43-zero')
++    target = copy.deepcopy(language.target)
++    target_state = call(state_from,([call(tile,({'rule':'generalize','variable':variable,
++        'formula':['all',variable,target]},[target],[1],3))],))
++    filtered_zero = call(query,('target-complete-filtered-zero',target_state,1,'ZERO','SINGLETON'))
++    need(filtered_zero['receipt']['complete_cover_checked'] is True
++         and filtered_zero['receipt']['original_base_receipt']['degree_exact'] == 1
++         and len(filtered_zero['proposal']['marked_rejections']) == 1, 'genuine complete original one loses actual marking')
++    passed('complete-original-singleton-filtered-to-zero',fixture_ref='target-complete-filtered-zero',
++        scope='Conditional pending UG control only; no target derivation supplied or accepted.')
++    partials = []
++    for row,expected_survivors,reads in ((2,1,[[0,1],[1,0]]),(3,0,[[0,1],[0,2]])):
++        s = call(state_from,([call(demand,(deep42,row))],))
++        q = call(query,('deep42-row'+str(row),s,row,'UNKNOWN','TWO_OR_MORE'))
++        original = q['proposal']['original_proposal']['candidates']
++        actual_reads = [[row+d for d in c['placement_key']['type_preimage']['ordered_offsets']] for c in original]
++        need(actual_reads == reads and len(q['proposal']['candidates']) == expected_survivors
++             and q['receipt']['complete_cover_checked'] is False and q['receipt']['degree_exact'] is None
++             and q['receipt']['sole_candidate'] is None, 'actual partial witness loss remains UNKNOWN')
++        partials.append(q)
++        passed('partial-two-to-'+str(expected_survivors)+'-remains-UNKNOWN',fixture_ref='deep42-row'+str(row),
++            scope='Observed original two-witness prefix only, never entire original inventory.')
++    for name,q,bc,mc,expected in (('UG-many',many,2,2,'MANY'),('UG-one',one,1,1,'SINGLETON'),
++            ('UG-zero',zero,0,0,'ZERO'),('target-complete-filtered-zero',filtered_zero,1,0,'ZERO'),
++            ('deep42-row2',partials[0],2,1,None),('deep42-row3',partials[1],6,4,None)):
++        call(streams,(name,q,bc,mc,expected))
++        passed('real-cursor-'+name,fixture_ref=name,fresh_cover_expected=expected)
++    def verify_proposal(evidence,proposal):
++        language = fresh_language(); current = marked_semantics(language)
++        return current.check_degree_evidence(language=language,state=copy.deepcopy(evidence['state']),
++            row=evidence['row'],proposal=copy.deepcopy(proposal),tick=tick)
++    negative('copied-receipt-is-not-a-proposal',lambda:verify_proposal(partials[0],partials[0]['receipt']),
++             'channel4 adapter: exact untrusted marked proposal')
++    forged = copy.deepcopy(partials[0]['proposal']); forged['original_proposal']['complete_cover_proposed'] = True
++    negative('forged-incomplete-cover-flag-rejected',lambda:verify_proposal(partials[0],forged),
++             'degree evidence: cover flag exact boolean')
++    forged = copy.deepcopy(many['proposal']); forged['candidates'].reverse()
++    negative('wrong-full-survivor-proposal-order-rejected',lambda:verify_proposal(many,forged),
++             'channel4 adapter: complete independent marked filtering')
++    complete = cursors['UG-one']; completion = complete['marked_events'][-1]['completion']
++    candidates = [e['candidate'] for e in complete['marked_events'][:-1]]
++    wrong_candidates = copy.deepcopy(candidates); wrong_candidates[0] = copy.deepcopy(many['proposal']['candidates'][0])
++    negative('wrong-fresh-cover-key-set-rejected',lambda:certify(one_state,2,completion,wrong_candidates),
++             'lazy engine: fresh complete cover agrees with entire checked fallback stream')
++    forged = copy.deepcopy(completion); forged['state_sha256'] = '0'*64
++    negative('wrong-completion-state-digest-rejected',lambda:certify(one_state,2,forged,candidates),
++             'lazy engine: fresh completion/cover exact original context')
++    forged = copy.deepcopy(completion); forged['marking_id'] = 'forged'
++    negative('wrong-completion-marking-id-rejected',lambda:certify(one_state,2,forged,candidates),
++             'lazy engine: fresh completion/cover exact original context')
++    def poisoned_cursor(interrupt):
++        language = fresh_language(); current = marked_semantics(language); gate = {'armed':False}
++        def endpoint_tick():
++            tick()
++            if gate['armed']: raise TimeoutError('declared native-first StageA cursor interruption')
++        cursor = adapter.open_fallback(language=language,semantics=current,state=copy.deepcopy(ug_state),
++            row=2,base_fallback=fallback.open_fallback,tick=endpoint_tick)
++        context = cursor.context(); first = cursor.advance()
++        need(first['kind'] == 'CANDIDATE','actual nonempty cursor prefix before poison')
++        reason = None
++        if interrupt:
++            gate['armed'] = True
++            try: cursor.advance()
++            except TimeoutError as error:
++                if type(error) is not TimeoutError: raise
++                reason = str(error)
++            need(reason == 'declared native-first StageA cursor interruption','explicit callback fault propagated')
++            gate['armed'] = False
++        else: cursor.abort()
++        poison = None
++        try: cursor.advance()
++        except RuntimeError as error:
++            if type(error) is not RuntimeError: raise
++            poison = str(error)
++        need(poison == 'marked fallback poisoned; no EOF','failed or aborted cursor cannot become EOF')
++        return {'context':context,'first_event':first,'interruption_reason':reason,'permanent_poison_reason':poison}
++    interrupted = call(poisoned_cursor,(True,))
++    passed('interrupted-partial-cursor-permanently-poisoned',evidence=interrupted)
++    aborted = call(poisoned_cursor,(False,))
++    passed('aborted-partial-cursor-permanently-poisoned',evidence=aborted)
++    expected_controls = ['accepted-marking-fresh-independent-root','fresh-complete-size-one-carriers',
++        'complete-UG-many','complete-UG-singleton-with-explicit-control-exclusion',
++        'complete-UG-zero-with-explicit-control-exclusions','deep43-complete-zero',
++        'complete-original-singleton-filtered-to-zero','partial-two-to-1-remains-UNKNOWN','partial-two-to-0-remains-UNKNOWN',
++        'real-cursor-UG-many','real-cursor-UG-one','real-cursor-UG-zero','real-cursor-target-complete-filtered-zero',
++        'real-cursor-deep42-row2','real-cursor-deep42-row3','copied-receipt-is-not-a-proposal',
++        'forged-incomplete-cover-flag-rejected','wrong-full-survivor-proposal-order-rejected',
++        'wrong-fresh-cover-key-set-rejected','wrong-completion-state-digest-rejected',
++        'wrong-completion-marking-id-rejected','interrupted-partial-cursor-permanently-poisoned',
++        'aborted-partial-cursor-permanently-poisoned']
+     need([c['case'] for c in controls] == expected_controls and all(c['status'] == 'PASSED' for c in controls),
+-         'all9 essential StageB controls completed without gaps')
+-    stageB = {'schema':'ROOT-unit-row-channel4-stageB-payload-v1','stage':'SUPPORT_RETENTION_ARCHIVE_REFRESH_POINT_REFS_ONLY',
+-        'prior_acceptance':{k:FIXED_INPUTS[k] for k in FIXED_INPUTS if k.startswith('stageA_')},
++         'all23 essential StageA controls completed without gaps')
++    stageA = {'schema':'ROOT-unit-row-channel4-stageA-payload-v1','stage':'DEGREE_FILTER_ORDERED_CURSOR_EOF_ONLY',
++        'prior_acceptance':{k:FIXED_INPUTS[k] for k in FIXED_INPUTS if k.startswith('marking_')},
+         'original_model_sources':ORIGINAL_SOURCES,'original_model_binding':ORIGINAL_BINDING,
+-        'marking':marking,'definition_check':definition_check,'families':families,
+-        'controls':controls,'control_count':len(controls),'expected_cases':expected_controls,'all_controls_completed':True,
+-        'cached_degree_receipt_transfer_exercised':False,'global_decision_or_scheduler_qualified':False,
+-        'unknown_child_search_rollback_qualified':False,'target_search_performed':False,
+-        'failure_marking_activated':False,'engine_search_performed':False,
++        'marking':marking,'definition_check':definition_check,'root_state':root,'carriers':carriers,
++        'fixtures':fixtures,'cursors':cursors,'controls':controls,'control_count':len(controls),
++        'expected_cases':expected_controls,'all_controls_completed':True,
++        'later_graph_dependency_retention_rollback_scheduler_qualified':False,
++        'target_search_performed':False,'failure_marking_activated':False,'engine_search_performed':False,
+         'logical_proof_accepted':False,'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
+         'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}
+     result_raw = canonical({'schema':'ROOT-unit-row-global-engine-result-v1','purpose':plan['purpose'],
+         'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,
+-        'controls':None,'search':None,'found_validation':None,'channel4_stageB':stageB,
++        'controls':None,'search':None,'found_validation':None,'channel4_stageA':stageA,
+         'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     result_raw=call(encode_result_transport,(result_raw,))

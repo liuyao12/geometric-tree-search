@@ -1,0 +1,144 @@
+{
+  "check_count": 19,
+  "checks": [
+    {
+      "check": "raw-frozen-stageA-parent-and-current",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "AST-compile-only-no-evaluation",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "all17-top-helpers-raw-AST-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "whole-output-nativeexit-failuretail-byte-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "currentSource11-input8-original17-input2-pins",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "full-byte-inverses",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "actual-unified-forward-inverse",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "exact9unique-case-labels",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "no-decision-search-scheduler-call",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "no-private-engine-attribute-edits-or-calls",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "all-three-family-main-calls-through-original-call",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "public-place-owns-outer-checkpoint-finally-rollback",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "repeat-retain-before-replay-full-original-archive",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "nonempty-inner-rollback-repeat-fresh-context",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "actual-shared-reference2-to1-toabsence",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "same20-512-55-60-90plus1",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "observed-cursor-actual-delegation-only",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "no-C0",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    },
+    {
+      "check": "all-strongflags-false-no-runtime-claim",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source reasoning only."
+    }
+  ],
+  "expected_cases": [
+    "unseen-remote-support-retains3-invalidates6",
+    "new-prototype-global-ledger-invalidates-frontier",
+    "remote-family-exact-outer-restore",
+    "repeated-retain-preserves-original-full-archive-and-refresh",
+    "fresh-full-prefix-replay-nonempty-inner-rollback-repeat",
+    "archive-family-exact-outer-restore",
+    "shared-channel4-two-refs-and-fixed-zero",
+    "shared-channel4-inner-exact-restore-one-ref",
+    "shared-channel4-outer-exact-restore-absence"
+  ],
+  "schema": "unit-row-channel4-stageB-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 66733,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/channel4_stageB_cold_v1.py",
+    "sha256": "f2c7a08fb57973e707c6a694a2dbc6a45945b8758c1b3d57408828da28395d1d"
+  },
+  "source_delta": {
+    "bytes": 49320,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "e04c7561a2c13006c8f34165c0f79ad5d7d28b39ffaee391b6af9d926f1e1fc4"
+  },
+  "source_only": true,
+  "unchanged_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

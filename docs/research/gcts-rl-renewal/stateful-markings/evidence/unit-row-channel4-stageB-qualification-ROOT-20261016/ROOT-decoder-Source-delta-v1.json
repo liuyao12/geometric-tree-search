@@ -1,0 +1,19 @@
+{
+  "exact_one_region": true,
+  "full_inverse_reconstructs_parent": true,
+  "new_utf8": "sys.argv[1] == 'stageB'",
+  "old_utf8": "sys.argv[1] == 'stageA'",
+  "parent": {
+    "bytes": 5208,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_decode_saved_transport_v6.py",
+    "sha256": "394eb0aea024201efe13363d5afe3ca5c2876529373cc93e6019f7b421ebdef7"
+  },
+  "schema": "ROOT-stageB-saved-decoder-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 5208,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT_decode_saved_transport_v7.py",
+    "sha256": "fd287e7d6b5f8c5767965bb7766df67c165dd949d20060db0b0462714d753c11"
+  }
+}
