@@ -1,0 +1,43 @@
+{
+  "actual_execution_authorized": false,
+  "adapter_source": {
+    "bytes": 28980,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+    "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+  },
+  "findings": {
+    "bytes": 22621,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-independent-source-20261016/findings-v2.json",
+    "sha256": "8932987641e714a5d3fcaa8c5fbeb16177a9dd9030071a091f582ec89281acee"
+  },
+  "preserved_negative": {
+    "bytes": 4783,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "d69664dd6b6ca5c54c7945fb4847281dab931761fb25e73de440894b7dfcf7c4"
+  },
+  "review": {
+    "bytes": 5839,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "0cd2e765b85efdeb86b97db4cae6e2a1ee025d70b0de49c89a995af69269d287"
+  },
+  "reviewed_handoff": {
+    "bytes": 10047,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/handoff-v2.json",
+    "sha256": "374888d6abfde88f4e023f33612beacee10397d9fcb55c6dd570b67aeaa4c30e"
+  },
+  "schema": "unit-row-channel4-engine-independent-review-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 56207,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+    "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+  },
+  "source_contract": {
+    "bytes": 26435,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/Source-contract-v2.json",
+    "sha256": "822af60d570a3dca2fad23cec441109802fa7322b29e63262ce444d1bd695683"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

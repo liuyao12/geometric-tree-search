@@ -1,0 +1,163 @@
+{
+  "check_count": 20,
+  "checks": [
+    {
+      "check": "raw-parent-c1c246e5",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "AST-compile-only",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "whole-17-top-helpers-raw-AST-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "entire-helper-prefix-byte-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "native-output-main-tail-byte-exact",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "full-byte-forward-inverse",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "actual-unified-forward-inverse",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "currentSource11-input8-original17-input2-pins",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "exact23unique-case-labels",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "no-C0",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "original20-512-55-60-90plus1-unchanged",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "current-author-review-ABI-arithmetic",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "no-engine-instance-or-search",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "full-stream-and-proposal-payload-no-trimming",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "whole-current-accepted-marking-joins",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "all-partial-witness-losses-UNKNOWN",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "fresh-complete-E-UG-filter-one-to-zero",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "cursor-order-separate-from-certifier-key-sets",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "poison-after-genuine-nonempty-prefix",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    },
+    {
+      "check": "no-runtime-fit-or-scientific-acceptance",
+      "passed": true,
+      "scope": "Raw/AST/compile or manual Source inspection only."
+    }
+  ],
+  "expected_cases": [
+    "accepted-marking-fresh-independent-root",
+    "fresh-complete-size-one-carriers",
+    "complete-UG-many",
+    "complete-UG-singleton-with-explicit-control-exclusion",
+    "complete-UG-zero-with-explicit-control-exclusions",
+    "deep43-complete-zero",
+    "complete-original-singleton-filtered-to-zero",
+    "partial-two-to-1-remains-UNKNOWN",
+    "partial-two-to-0-remains-UNKNOWN",
+    "real-cursor-UG-many",
+    "real-cursor-UG-one",
+    "real-cursor-UG-zero",
+    "real-cursor-target-complete-filtered-zero",
+    "real-cursor-deep42-row2",
+    "real-cursor-deep42-row3",
+    "copied-receipt-is-not-a-proposal",
+    "forged-incomplete-cover-flag-rejected",
+    "wrong-full-survivor-proposal-order-rejected",
+    "wrong-fresh-cover-key-set-rejected",
+    "wrong-completion-state-digest-rejected",
+    "wrong-completion-marking-id-rejected",
+    "interrupted-partial-cursor-permanently-poisoned",
+    "aborted-partial-cursor-permanently-poisoned"
+  ],
+  "schema": "unit-row-channel4-stageA-cold-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 64200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/channel4_stageA_cold_v1.py",
+    "sha256": "a1c00f4186c84c2f8dffe57a3ff875e4ccbe8a1cf999746d4a761dd095b10ddd"
+  },
+  "source_delta": {
+    "bytes": 206099,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/Source-delta-v1.json",
+    "sha256": "d979391a92a4b287471a999bf0dd7b33fbd1f19f886c239d27f8bc6e79c768e2"
+  },
+  "source_only": true,
+  "unchanged_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

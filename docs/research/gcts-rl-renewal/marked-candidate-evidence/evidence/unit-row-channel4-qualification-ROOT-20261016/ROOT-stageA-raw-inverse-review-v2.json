@@ -1,0 +1,26 @@
+{
+  "SCOPE": "unit-row-channel4-stageA-cold-Source",
+  "VERSION": "unit-row-channel4-degree-cursor-cold-v2-guarded-sizes",
+  "all_helper_raw_AST_exact": true,
+  "current_Source11_input8_original_Source17_pins_verified": true,
+  "current_correction_edits": 2,
+  "current_correction_forward_inverse_exact": true,
+  "fixed_boundary_issue": "Two formerly direct formula counts now within FunctionType deep_sizes invoked through unchangedcall; no scientific execution.",
+  "full_native_output_failure_tail_exact": true,
+  "inherited_helper_count": 17,
+  "original_model_and_limits_unchanged": true,
+  "preserved_v1": {
+    "bytes": 64200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/channel4_stageA_cold_v1.py",
+    "sha256": "a1c00f4186c84c2f8dffe57a3ff875e4ccbe8a1cf999746d4a761dd095b10ddd"
+  },
+  "schema": "ROOT-stageA-caller-raw-inverse-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 64283,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/channel4_stageA_cold_v2.py",
+    "sha256": "965b50fbaf8c54c5ea64e6aaabb4f885246b78f572ec840378fbde32d9148523"
+  },
+  "whole_read_body_exact": true
+}

@@ -1,0 +1,30 @@
+--- a/lazy_unit_row_global_engine_v11.py
++++ b/lazy_unit_row_global_engine_v10.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v11-channel4-global-original-key-collision'
++VERSION = 'lazy-unit-row-global-engine-v10-frozen-channel4-point-marking'
+ VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'
+ MARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION'
+ BRANCH_TIES = ('ROW', 'ASSIGNED-OUTPUT-THEN-ROW')
+@@ -412,18 +412,11 @@
+         row = tile['placement_key']['translation'][1]
+         name = tile['placement_key']['tile_type_id']
+         preimage = canonical(tile['placement_key']['type_preimage'])
+-        base = tile['base_tile']['placement_key']
+-        base_name = base['tile_type_id']
+-        base_preimage = canonical(base['type_preimage'])
+         for record in self._observed.values():
+             self.tick()
+             old = record['candidate']['placement_key']
+             need(old['tile_type_id'] != name or canonical(old['type_preimage']) == preimage,
+                  'exposed prototype digest/full-preimage collision')
+-            old_base = record['candidate']['base_tile']['placement_key']
+-            need(old_base['tile_type_id'] != base_name
+-                 or canonical(old_base['type_preimage']) == base_preimage,
+-                 'exposed original prototype digest/full-preimage collision')
+         dependencies = sorted({tuple(p) for p, v in tile['global_t_values'] + tile['global_m_values']})
+         observed = dict(self._observed)
+         observed[encoded] = {'row': row, 'candidate': tile,

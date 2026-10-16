@@ -1,0 +1,46 @@
+{
+  "schema": "ROOT-channel4-qualification-stageA-choice-v1",
+  "previous_goal_turn": "progress",
+  "current_goal_turn": "progress",
+  "previous_checkpoint_sha256": "6e8bc6bfc3cb2c2eb826252d0c38aacb557f9d913bad85c0a8cdc99ac32bb859",
+  "selected_stage": "A: fresh marked local degrees, real ordered cursor and fresh-cover EOF gate",
+  "reason": "The accepted compiler experiment establishes point data only. Marked filtering must preserve the distinction between complete covers and incomplete witness samples before any engine activation or target comparison.",
+  "prospective_families": [
+    "Fresh complete finite UG contexts giving exact marked ZERO, SINGLETON and MANY; conditional full-key exclusions are labeled control inputs.",
+    "Actual complete original singleton UG reading E at first row, removed by channel4 conflict to marked ZERO, in a valid pending universal control state.",
+    "Genuine deep42 incomplete two-witness proposals filtered to one and zero survivors; both remain UNKNOWN.",
+    "Real original and filtered cursors preserve survivor order, full contexts, packets, explicit EOF and exact completion provenance.",
+    "Fresh independently completed cover is required for short EOF classification; incomplete fresh cover never becomes empty or singleton.",
+    "Malformed evidence, context and marking identity reject; interruption or abort poisons cursor rather than becoming EOF."
+  ],
+  "fixture_spec_sha256": "03be9a54d427bff10c3b5638beb853dae1ae80f3a23b8214b3acb539d8562d75",
+  "engine_source_sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476",
+  "adapter_source_sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9",
+  "prior_marking_disposition_sha256": "46a04787501db397fc9993118ebd5800a301ddc7898398a386438a905a415f77",
+  "prior_marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+  "scope": "Same original semantic Source17, empty Gamma, height24, fixed nonempty marking; current executable sources separately authenticated. All setup/import/construction/check/cursor/output/exit/postprobe costs charged. No supplied proof word, donor or successful route.",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "maximum_planned_actual_invocations_after_current_reviews": 1,
+  "exact_case_names_and_count": "To be frozen in current cold Source contract before grant or actual. Every declared case must complete; no unavailable/skipped fixture counts as pass.",
+  "actual_execution_authorized": false,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "remaining_stages": [
+    "B: possible-support transitions, retained domains, reference counts and nonempty archive rollback.",
+    "C: genuine global scheduling and UNKNOWN-child restoration; separately labeled nonlogical scheduler kernel.",
+    "Matched unchanged engine9/adviceNone versus marked engine11/adviceNone search with same original model, tie and budgets; charge whole-system construction and checking costs."
+  ],
+  "full_engine_qualified": false,
+  "target_search_performed": false,
+  "logical_proof_accepted": false,
+  "RL_accepted": false,
+  "GCTS_advantage_claimed": false,
+  "native_fit": "UNMEASURED"
+}

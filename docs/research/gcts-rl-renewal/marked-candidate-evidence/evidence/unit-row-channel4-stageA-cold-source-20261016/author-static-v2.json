@@ -1,0 +1,71 @@
+{
+  "checks": [
+    {
+      "check": "AST-compile-only",
+      "passed": true
+    },
+    {
+      "check": "exact2region-byte-inverse",
+      "passed": true
+    },
+    {
+      "check": "whole-AST-inverse-after-restoration",
+      "passed": true
+    },
+    {
+      "check": "actual-unified-forward-inverse",
+      "passed": true
+    },
+    {
+      "check": "unchanged17-top-helpers",
+      "passed": true
+    },
+    {
+      "check": "all23cases-unchanged",
+      "passed": true
+    },
+    {
+      "check": "no-boundmethod-as-invoke-endpoint",
+      "passed": true
+    },
+    {
+      "check": "deep-size-science-through-original-call-pre-post-full-guard",
+      "passed": true
+    },
+    {
+      "check": "native-output-failure-tail-unchanged",
+      "passed": true
+    },
+    {
+      "check": "same10dependencies-input8-original17-input2-limits",
+      "passed": true
+    },
+    {
+      "check": "no-C0",
+      "passed": true
+    },
+    {
+      "check": "no-scientific-evaluation",
+      "passed": true
+    }
+  ],
+  "prior_static": {
+    "bytes": 5132,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/author-static-v1.json",
+    "sha256": "ba1119c28f323e811c3b87030ecc2df1d593afc74733fbf66050f299a9a46fd3"
+  },
+  "schema": "unit-row-channel4-stageA-guarded-sizes-author-static-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 64283,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/channel4_stageA_cold_v2.py",
+    "sha256": "965b50fbaf8c54c5ea64e6aaabb4f885246b78f572ec840378fbde32d9148523"
+  },
+  "source_delta": {
+    "bytes": 2233,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/Source-delta-v2.json",
+    "sha256": "75399d7d356c3252b3413e36010937f041080ff57949138f2de229837d582251"
+  },
+  "source_only": true
+}

@@ -1,0 +1,191 @@
+{
+  "actual_unified_forward_inverse_verified": true,
+  "adapter": {
+    "bytes": 28980,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+    "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+  },
+  "adapter_addition_patch": {
+    "bytes": 29504,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/adapter-addition-v1.patch",
+    "sha256": "af7fb562113b50ef67bf7e84093bf910d599866dbbdc977cacc00ffae391a066"
+  },
+  "adapter_addition_reconstructed": true,
+  "byte_forward_inverse_verified": true,
+  "changed_count": 12,
+  "changed_named_regions": [
+    "certify_by_current_cover",
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine.search"
+  ],
+  "edit_count": 20,
+  "edits": [
+    {
+      "new": "VERSION = 'lazy-unit-row-global-engine-v10-frozen-channel4-point-marking'",
+      "offset_at_step": 320,
+      "old": "VERSION = 'lazy-unit-row-global-engine-v9-marking-aware-branch-tie'"
+    },
+    {
+      "new": "SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'",
+      "offset_at_step": 620,
+      "old": "SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'"
+    },
+    {
+      "new": "FALLBACK_VERSION = 'unit-row-channel4-filtered-six-rule-fallback-v1'",
+      "offset_at_step": 689,
+      "old": "FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'"
+    },
+    {
+      "new": "TRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'",
+      "offset_at_step": 758,
+      "old": "TRANSITION_VERSION = 'unit-row-domain-transition-checker-v1'"
+    },
+    {
+      "new": "        need(branch_adviser is None and validate_advice is None,\n             'initial frozen-channel4 lane has advice disabled in both comparison arms')\n        self.branch_adviser, self.validate_advice = branch_adviser, validate_advice\n",
+      "offset_at_step": 6528,
+      "old": "        self.branch_adviser, self.validate_advice = branch_adviser, validate_advice\n"
+    },
+    {
+      "new": "        if initial_state is None:\n            initial_state = semantics.initial_state(language, tick)\n",
+      "offset_at_step": 7977,
+      "old": "        epoch = language.binding['language_epoch']\n        if initial_state is None:\n            marks = [[[1, k], ['outside', epoch]] for k in range(-23, 0)]\n            marks.append([[1, 23], ['formula', canonical(language.target)]])\n            initial_state = {'schema': 'unit-row-implicit-private-state-v1',\n                'input_epoch': epoch, 'height': 24,\n                't': [[[0, r], 0] for r in range(24)], 'm': marks,\n                'selected': [], 'excluded': [],\n                'generation': [[[0, r], 0] for r in range(24)]}\n"
+    },
+    {
+      "new": "        refs[(1, 23)] = 1\n        refs[(4, 0)] = 1\n",
+      "offset_at_step": 9032,
+      "old": "        refs[(1, 23)] = 1\n"
+    },
+    {
+      "new": "            'scheduler_policy': self._policy_snapshot(),\n            'marking_id': self._state['marking_id'],\n            'authority_sha256'",
+      "offset_at_step": 10502,
+      "old": "            'scheduler_policy': self._policy_snapshot(),\n            'authority_sha256'"
+    },
+    {
+      "new": "                          'read_channels': [1, 4], 'output_channels': [1, 4],\n                          'possible_absolute_mark_rows': [0, r],\n                          'read_interval': [-23, r-1],",
+      "offset_at_step": 10880,
+      "old": "                          'read_channel': 1, 'read_interval': [-23, r-1],"
+    },
+    {
+      "new": "        return {'schema': 'unit-row-channel4-transferred-domain-classification-v1',\n            'marking_id': self._state['marking_id'],",
+      "offset_at_step": 13703,
+      "old": "        return {'schema': 'unit-row-transferred-domain-classification-v1',"
+    },
+    {
+      "new": "                  'state', 'state_sha256', 'context_sha256', 'marking_id', 'original_context'}",
+      "offset_at_step": 25933,
+      "old": "                  'state', 'state_sha256', 'context_sha256'}"
+    },
+    {
+      "new": "context['schema'] == 'unit-row-channel4-fallback-context-v1'\n             and context['marking_id'] == self._state['marking_id']",
+      "offset_at_step": 26107,
+      "old": "context['schema'] == 'unit-row-all-six-fallback-context-v1'"
+    },
+    {
+      "new": "event.get('schema') == 'unit-row-channel4-fallback-event-v1'",
+      "offset_at_step": 27109,
+      "old": "event.get('schema') == 'unit-row-all-six-fallback-event-v1'"
+    },
+    {
+      "new": "                  'logical_proof_accepted', 'ROOT_resource_accepted', 'marking_id', 'original_completion'}",
+      "offset_at_step": 28178,
+      "old": "                  'logical_proof_accepted', 'ROOT_resource_accepted'}"
+    },
+    {
+      "new": "completion['schema'] == 'unit-row-channel4-fallback-completion-v1'\n             and completion['marking_id'] == self._state['marking_id']",
+      "offset_at_step": 28370,
+      "old": "completion['schema'] == 'unit-row-all-six-fallback-completion-v1'"
+    },
+    {
+      "new": "                return {'schema': 'unit-row-channel4-checked-prefix-classification-v1',\n                        'marking_id': self._state['marking_id'],",
+      "offset_at_step": 32916,
+      "old": "                return {'schema': 'unit-row-checked-prefix-classification-v2',"
+    },
+    {
+      "new": "receipt.get('schema') == 'unit-row-channel4-degree-evidence-check-v1'\n             and receipt.get('version') == SEMANTICS_VERSION\n             and receipt.get('marking_id') == self._state['marking_id']",
+      "offset_at_step": 34588,
+      "old": "receipt.get('schema') == 'unit-row-degree-evidence-check-v2'"
+    },
+    {
+      "new": "            pre = record['type_preimage']['base_type_preimage']\n            command",
+      "offset_at_step": 39290,
+      "old": "            pre = record['type_preimage']\n            command"
+    },
+    {
+      "new": "return {'schema': 'unit-row-channel4-lazy-global-search-result-v1', 'version': VERSION,\n            'marking_id': self._state['marking_id'],",
+      "offset_at_step": 54586,
+      "old": "return {'schema': 'unit-row-lazy-global-search-result-v1', 'version': VERSION,"
+    },
+    {
+      "new": "         and receipt['input_epoch'] == language.binding['language_epoch']\n         and completion['marking_id'] == state['marking_id']\n         and receipt['marking_id'] == state['marking_id'],",
+      "offset_at_step": 5078,
+      "old": "         and receipt['input_epoch'] == language.binding['language_epoch'],"
+    }
+  ],
+  "forward_patch": {
+    "bytes": 10099,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/engine-forward-v1.patch",
+    "sha256": "3229ad889ea0f188b7e90ea11be64c31e3856cf3e3f1521ced75c9a6a5bd3754"
+  },
+  "inverse_patch": {
+    "bytes": 10099,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/engine-inverse-v1.patch",
+    "sha256": "60c9a14b5730c826139e1a8f037fb789079c3233a3caed944849bb1c4d563124"
+  },
+  "parent": {
+    "bytes": 55152,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+    "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+  },
+  "region_note": "Named parent class/function regions include containing class; no runtime calls. Only Source writing/bytes/AST/compile.",
+  "schema": "unit-row-channel4-engine-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55769,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v10.py",
+    "sha256": "d6886a7bb5330d311a752756604b6f073efd0537b31182bcc3cd7cbf32ff2d14"
+  },
+  "source_only": true,
+  "unchanged_count": 30,
+  "unchanged_named_regions": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine._policy_snapshot",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine.search.walk"
+  ]
+}

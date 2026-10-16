@@ -1,0 +1,164 @@
+{
+  "adapter": {
+    "bytes": 28980,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+    "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+  },
+  "check_count": 18,
+  "checks": [
+    {
+      "check": "raw-current-code-pins",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "AST-compile-only-no-evaluation",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "only-json-hashlib-imports",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "engine20-region-full-byte-forward-inverse",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "actual-unified-forward-inverse",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "adapter-whole-addition-inverse",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "no-forbidden-C0",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "pure-scheduler-byte-preserved",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "whole-search-byte-delta-only-result-envelope",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "whole-checkpoint-rollback-byte-preserved",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "whole-install-retention-archive-byte-preserved",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "whole-candidate-observation-place-byte-preserved",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "no-advice-callbacks-initial-lane",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "full-original-check-before-independent-filter",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "loss-of-partial-witnesses-UNKNOWN",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "full-channel4-unseen-support",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "poisoned-cursor-failure-not-EOF",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    },
+    {
+      "check": "fresh-complete-cover-required-for-EOF",
+      "evidence_scope": "Raw Source/AST/compile or manual Source inspection; no semantic execution.",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "No tests/scientific calls/model construction/clocks/actuals. Static source checks do not establish runtime fit or correctness.",
+    "Adapter is one new trusted filtering/transition implementation; separately authored9fd6 verifier provides independent point reconstruction, not independent whole engine/cursor replay."
+  ],
+  "named_changed": [
+    "certify_by_current_cover",
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine.search"
+  ],
+  "named_preserved": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine._policy_snapshot",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine.search.walk"
+  ],
+  "schema": "unit-row-channel4-engine-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55769,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v10.py",
+    "sha256": "d6886a7bb5330d311a752756604b6f073efd0537b31182bcc3cd7cbf32ff2d14"
+  },
+  "source_delta": {
+    "bytes": 9502,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/Source-delta-v1.json",
+    "sha256": "853f8475ca5e926e8b2ee3756c0f60fe9c11def59455f7b07d6aab74212d8bd5"
+  },
+  "source_only": true
+}

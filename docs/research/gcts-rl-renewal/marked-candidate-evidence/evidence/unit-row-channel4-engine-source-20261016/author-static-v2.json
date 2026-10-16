@@ -1,0 +1,113 @@
+{
+  "checks": [
+    {
+      "check": "frozen10rawpin",
+      "passed": true
+    },
+    {
+      "check": "AST-compile-only",
+      "passed": true
+    },
+    {
+      "check": "exact2region-byte-inverse",
+      "passed": true
+    },
+    {
+      "check": "actual-unified-inverses",
+      "passed": true
+    },
+    {
+      "check": "40named-regions-raw-AST-exact",
+      "passed": true
+    },
+    {
+      "check": "old-outer-global-check-preserved",
+      "passed": true
+    },
+    {
+      "check": "new-inner-original-global-check-before-install",
+      "passed": true
+    },
+    {
+      "check": "no-new-cache-or-checkpoint-field",
+      "passed": true
+    },
+    {
+      "check": "no-scheduler-degree-fallback-transition-change",
+      "passed": true
+    },
+    {
+      "check": "adapter-unchanged",
+      "passed": true
+    },
+    {
+      "check": "no-C0",
+      "passed": true
+    },
+    {
+      "check": "no-scientific-evaluation",
+      "passed": true
+    }
+  ],
+  "named_regions_changed": [
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine._observe"
+  ],
+  "named_regions_unchanged": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "certify_by_current_cover",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine._policy_snapshot",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.search.walk"
+  ],
+  "note": "This is the author Source-only correction, not peer review or runtime qualification. Frozen10 and its negative peer finding remain preserved.",
+  "schema": "unit-row-channel4-global-original-ledger-author-static-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 56207,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+    "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+  },
+  "source_delta": {
+    "bytes": 5046,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/Source-delta-v2.json",
+    "sha256": "11e0dae3b86d976a05e28498c61326d501c3011a3b4fbafe0f95444099c61184"
+  },
+  "source_only": true
+}

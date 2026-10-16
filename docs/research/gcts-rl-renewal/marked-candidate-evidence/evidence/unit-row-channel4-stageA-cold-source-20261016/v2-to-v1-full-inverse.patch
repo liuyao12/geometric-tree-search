@@ -1,0 +1,23 @@
+--- a/channel4_stageA_cold_v2.py
++++ b/channel4_stageA_cold_v1.py
+@@ -25,7 +25,7 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='unit-row-channel4-degree-cursor-cold-v2-guarded-sizes'
++VERSION='unit-row-channel4-degree-cursor-cold-v1'
+ SCOPE='unit-row-channel4-stageA-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+@@ -653,10 +653,7 @@
+     deep42 = ['bot']
+     for _ in range(41): deep42 = ['not',deep42]
+     deep43 = ['not',deep42]
+-    def deep_sizes():
+-        return [language.formula(deep42),language.formula(deep43)]
+-    sizes = call(deep_sizes)
+-    need(sizes == [42,43],'native bounded deep formulas')
++    need(language.formula(deep42) == 42 and language.formula(deep43) == 43,'native bounded deep formulas')
+     def demand(formula,row):
+         outer = ['all',variable,formula]
+         return tile({'rule':'generalize','variable':variable,'formula':outer},[formula],[row],row+1)

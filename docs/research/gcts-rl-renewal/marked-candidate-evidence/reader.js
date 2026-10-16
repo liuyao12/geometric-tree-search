@@ -1,0 +1,15 @@
+'use strict';
+function row(parent,values){const tr=document.createElement('tr');for(const value of values){const td=document.createElement('td');td.textContent=value;tr.append(td)}parent.append(tr)}
+(async()=>{const r=await fetch('report-data.json');if(!r.ok)throw Error('Saved experiment unavailable');const d=await r.json();
+for(const id of ['lead','outcome','scope-text','assessment','next-step'])document.getElementById(id).textContent=d[id];
+for(const m of d.metrics){const card=document.createElement('div');card.className='metric';const label=document.createElement('strong');label.textContent=m.label;const value=document.createElement('span');value.textContent=m.value;card.append(label,value);document.getElementById('metrics').append(card)}
+for(const c of d.controls)row(document.getElementById('control-rows'),[c.name,c.status,c.observed]);
+for(const l of d.links){const li=document.createElement('li'),a=document.createElement('a');a.textContent=l.label;a.href=l.href;li.append(a);document.getElementById('links').append(li)}
+if(window.MathJax?.startup?.promise)await MathJax.startup.promise;
+async function render(f){if(window.MathJax?.typesetClear)MathJax.typesetClear([document.getElementById('reader')]);document.getElementById('fixture-intro').textContent=f.intro;document.getElementById('fixture-english').textContent=f.english;document.getElementById('stream-summary').textContent=f.stream_summary;
+const flow=document.getElementById('evidence-flow');flow.replaceChildren();for(const c of f.flow){const card=document.createElement('div');card.className='evidence-card '+c.kind;const strong=document.createElement('strong');strong.textContent=c.label;const value=document.createElement('span');value.textContent=c.value;card.append(strong,value);flow.append(card)}
+const verdict=document.getElementById('verdict');verdict.textContent=f.verdict;verdict.className='callout '+(f.status==='UNKNOWN'?'unresolved':'accepted');const rows=document.getElementById('candidate-rows');rows.replaceChildren();for(const c of f.candidates)row(rows,[c.label,c.rule,c.offsets]);const conflicts=document.getElementById('conflict-rows');conflicts.replaceChildren();for(const c of f.conflicts)row(conflicts,c);if(!f.conflicts.length)row(conflicts,['No additional marking conflict','—','—']);document.getElementById('fixture-record').textContent=JSON.stringify(f.record,null,2);document.body.dataset.fixture=f.id;document.body.dataset.receiptStatus=f.status;document.body.dataset.completeCover=String(f.complete_cover);for(const b of document.querySelectorAll('[data-fixture]'))b.setAttribute('aria-pressed',String(b.dataset.fixture===f.id));if(window.MathJax?.typesetPromise)await MathJax.typesetPromise()}
+for(const f of d.fixtures){const b=document.createElement('button');b.type='button';b.textContent=f.label;b.dataset.fixture=f.id;b.addEventListener('click',()=>render(f).catch(fail));document.getElementById('fixtures').append(b)}
+await render(d.fixtures[0]);document.body.dataset.savedReaderReady='true';
+})().catch(fail);
+function fail(e){document.body.dataset.savedReaderFailed='true';document.getElementById('lead').textContent=e.message}

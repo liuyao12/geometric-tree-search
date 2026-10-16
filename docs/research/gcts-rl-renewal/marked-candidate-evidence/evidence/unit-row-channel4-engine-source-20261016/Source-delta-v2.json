@@ -1,0 +1,94 @@
+{
+  "actual_unified_forward_inverse_verified": true,
+  "byte_forward_inverse_verified": true,
+  "changed_regions": [
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine._observe"
+  ],
+  "edit_count": 2,
+  "edits": [
+    {
+      "new": "VERSION = 'lazy-unit-row-global-engine-v11-channel4-global-original-key-collision'",
+      "offset_at_step": 320,
+      "old": "VERSION = 'lazy-unit-row-global-engine-v10-frozen-channel4-point-marking'"
+    },
+    {
+      "new": "        preimage = canonical(tile['placement_key']['type_preimage'])\n        base = tile['base_tile']['placement_key']\n        base_name = base['tile_type_id']\n        base_preimage = canonical(base['type_preimage'])\n        for record in self._observed.values():\n            self.tick()\n            old = record['candidate']['placement_key']\n            need(old['tile_type_id'] != name or canonical(old['type_preimage']) == preimage,\n                 'exposed prototype digest/full-preimage collision')\n            old_base = record['candidate']['base_tile']['placement_key']\n            need(old_base['tile_type_id'] != base_name\n                 or canonical(old_base['type_preimage']) == base_preimage,\n                 'exposed original prototype digest/full-preimage collision')\n",
+      "offset_at_step": 22694,
+      "old": "        preimage = canonical(tile['placement_key']['type_preimage'])\n        for record in self._observed.values():\n            self.tick()\n            old = record['candidate']['placement_key']\n            need(old['tile_type_id'] != name or canonical(old['type_preimage']) == preimage,\n                 'exposed prototype digest/full-preimage collision')\n"
+    }
+  ],
+  "forward_patch": {
+    "bytes": 1654,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/engine-forward-v2.patch",
+    "sha256": "69b3ca46acca730ee7e2f6ff51e38813e86f8e8eb369a63551045af3bcac16fc"
+  },
+  "inverse_patch": {
+    "bytes": 1654,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/engine-inverse-v2.patch",
+    "sha256": "738c9d1a72ff2e4fed1b71067fdb1ba23a6cc35504bd9f78c19bcad44d51d2ef"
+  },
+  "parent": {
+    "bytes": 55769,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v10.py",
+    "sha256": "d6886a7bb5330d311a752756604b6f073efd0537b31182bcc3cd7cbf32ff2d14"
+  },
+  "rationale": "Across all observed legal decorated candidates (including different row queries/cursors), compare original base_tile ID/full-preimage in addition to existing outer decorated ID/full-preimage. No hash injectivity assumption; collision throws before COW graph install. Existing observed/checkpoint/retention containers already preserve this global set.",
+  "schema": "unit-row-channel4-global-original-ledger-Source-delta-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 56207,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+    "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476"
+  },
+  "source_only": true,
+  "unchanged_adapter": {
+    "bytes": 28980,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+    "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+  },
+  "unchanged_count": 40,
+  "unchanged_regions": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "certify_by_current_cover",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine._policy_snapshot",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.search.walk"
+  ]
+}

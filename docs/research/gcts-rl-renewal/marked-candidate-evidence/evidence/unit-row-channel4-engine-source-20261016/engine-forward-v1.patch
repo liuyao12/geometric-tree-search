@@ -1,0 +1,165 @@
+--- a/lazy_unit_row_global_engine_v9.py
++++ b/lazy_unit_row_global_engine_v10.py
+@@ -7,13 +7,13 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v9-marking-aware-branch-tie'
++VERSION = 'lazy-unit-row-global-engine-v10-frozen-channel4-point-marking'
+ VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'
+ MARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION'
+ BRANCH_TIES = ('ROW', 'ASSIGNED-OUTPUT-THEN-ROW')
+-SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+-FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'
+-TRANSITION_VERSION = 'unit-row-domain-transition-checker-v1'
++SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'
++FALLBACK_VERSION = 'unit-row-channel4-filtered-six-rule-fallback-v1'
++TRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'
+ ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres'
+ ADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions'
+ ADVICE_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+@@ -98,7 +98,9 @@
+          'fresh complete cover agrees with entire checked fallback stream')
+     need(completion['state_sha256'] == digest(state)
+          and receipt['state_sha256'] == digest(state) and receipt['row'] == row
+-         and receipt['input_epoch'] == language.binding['language_epoch'],
++         and receipt['input_epoch'] == language.binding['language_epoch']
++         and completion['marking_id'] == state['marking_id']
++         and receipt['marking_id'] == state['marking_id'],
+          'fresh completion/cover exact original context')
+     tick()
+     return receipt
+@@ -129,6 +131,8 @@
+         need((branch_adviser is None and validate_advice is None)
+              or (callable(branch_adviser) and callable(validate_advice)),
+              'both optional advice endpoints or neither')
++        need(branch_adviser is None and validate_advice is None,
++             'initial frozen-channel4 lane has advice disabled in both comparison arms')
+         self.branch_adviser, self.validate_advice = branch_adviser, validate_advice
+         self._preferences = None
+         need(transition_checker.VERSION == TRANSITION_VERSION, 'selected transition checker')
+@@ -147,15 +151,8 @@
+                            advice_selected=0, pending_checks=0, pending_selected=0,
+                            pending_rejected=0, pending_retired=0, family_abandonments=0,
+                            fallback_branch_choices=0)
+-        epoch = language.binding['language_epoch']
+         if initial_state is None:
+-            marks = [[[1, k], ['outside', epoch]] for k in range(-23, 0)]
+-            marks.append([[1, 23], ['formula', canonical(language.target)]])
+-            initial_state = {'schema': 'unit-row-implicit-private-state-v1',
+-                'input_epoch': epoch, 'height': 24,
+-                't': [[[0, r], 0] for r in range(24)], 'm': marks,
+-                'selected': [], 'excluded': [],
+-                'generation': [[[0, r], 0] for r in range(24)]}
++            initial_state = semantics.initial_state(language, tick)
+         self._state = semantics.private_state(language, initial_state, tick)[0]
+         self._revision, self._versions = 0, (0,) * 24
+         self._certs, self._slots, self._observed, self._reverse = {}, {}, {}, {}
+@@ -179,6 +176,7 @@
+     def _reference_counts(self, state):
+         refs = {(1, k): 1 for k in range(-23, 0)}
+         refs[(1, 23)] = 1
++        refs[(4, 0)] = 1
+         for record in state['selected']:
+             self.tick()
+             tile = self.semantics.rebuild_tile(self.language, record['type_preimage'],
+@@ -206,10 +204,13 @@
+             'last_transition': self._last_transition,
+             'pending_preferences': self._preferences,
+             'scheduler_policy': self._policy_snapshot(),
++            'marking_id': self._state['marking_id'],
+             'authority_sha256': hashlib.sha256(self._authority.encode('utf8')).hexdigest(),
+             'implicit_dependencies': {'scope': 'ALL_POSSIBLE_UNIT_ROW_SUPPORT_PLUS_COLLISION_LEDGER',
+                 'rows': [{'row': r, 'positive': [0, r], 'output': [1, r],
+-                          'read_channel': 1, 'read_interval': [-23, r-1],
++                          'read_channels': [1, 4], 'output_channels': [1, 4],
++                          'possible_absolute_mark_rows': [0, r],
++                          'read_interval': [-23, r-1],
+                           'read_occupancy': [[0, k] for k in range(r)],
+                           'local_full_key_exclusions': r,
+                           'global_full_preimage_collision_ledger': True,
+@@ -253,7 +254,8 @@
+              'owned checked cache at exact preceding state')
+         proof = next(v for v in transition['rows'] if v['row'] == row)
+         need(proof['retain'] is True, 'checked sufficient domain equality')
+-        return {'schema': 'unit-row-transferred-domain-classification-v1',
++        return {'schema': 'unit-row-channel4-transferred-domain-classification-v1',
++            'marking_id': self._state['marking_id'],
+             'version': VERSION, 'state_sha256': current, 'row': row,
+             'input_epoch': self._state['input_epoch'],
+             'status': receipt['status'],
+@@ -464,9 +466,10 @@
+                                row=row, tick=self.tick)
+         context = self._copy(cursor.context())
+         fields = {'schema', 'version', 'input_epoch', 'language_binding', 'row',
+-                  'state', 'state_sha256', 'context_sha256'}
++                  'state', 'state_sha256', 'context_sha256', 'marking_id', 'original_context'}
+         need(type(context) is dict and set(context) == fields
+-             and context['schema'] == 'unit-row-all-six-fallback-context-v1'
++             and context['schema'] == 'unit-row-channel4-fallback-context-v1'
++             and context['marking_id'] == self._state['marking_id']
+              and context['version'] == FALLBACK_VERSION
+              and context['input_epoch'] == self._state['input_epoch']
+              and context['language_binding'] == self.language.binding
+@@ -482,7 +485,7 @@
+         self.counts['fallback_advances'] += 1
+         event = self._copy(cursor.advance())
+         base = {'schema', 'kind', 'context_sha256'}
+-        need(type(event) is dict and event.get('schema') == 'unit-row-all-six-fallback-event-v1'
++        need(type(event) is dict and event.get('schema') == 'unit-row-channel4-fallback-event-v1'
+              and event.get('context_sha256') == context['context_sha256'], 'fallback event context')
+         if event.get('kind') == 'CANDIDATE':
+             need(set(event) == base | {'ordinal', 'candidate', 'independently_checked'}
+@@ -495,9 +498,10 @@
+                   'row', 'yielded_candidates', 'rules_completed', 'stats', 'complete_fallback_proposed',
+                   'independently_checked', 'degree_zero_or_singleton_accepted',
+                   'complete_candidate_graph_accepted', 'scheduler_or_rollback_accepted',
+-                  'logical_proof_accepted', 'ROOT_resource_accepted'}
++                  'logical_proof_accepted', 'ROOT_resource_accepted', 'marking_id', 'original_completion'}
+         need(type(completion) is dict and set(completion) == fields
+-             and completion['schema'] == 'unit-row-all-six-fallback-completion-v1'
++             and completion['schema'] == 'unit-row-channel4-fallback-completion-v1'
++             and completion['marking_id'] == self._state['marking_id']
+              and completion['version'] == FALLBACK_VERSION
+              and completion['context_sha256'] == context['context_sha256']
+              and completion['state_sha256'] == context['state_sha256']
+@@ -571,7 +575,8 @@
+         while True:
+             slot = self._slots.get(row)
+             if slot is not None and len(slot['keys']) >= 2:
+-                return {'schema': 'unit-row-checked-prefix-classification-v2',
++                return {'schema': 'unit-row-channel4-checked-prefix-classification-v1',
++                        'marking_id': self._state['marking_id'],
+                         'status': 'TWO_OR_MORE', 'state_sha256': digest(self._state),
+                         'input_epoch': self._state['input_epoch'],
+                         'row': row, 'candidate_keys': self._copy(slot['keys'][:2]),
+@@ -596,7 +601,9 @@
+             return receipt
+ 
+     def _validate_receipt(self, receipt, row, require_cover=False):
+-        need(type(receipt) is dict and receipt.get('schema') == 'unit-row-degree-evidence-check-v2'
++        need(type(receipt) is dict and receipt.get('schema') == 'unit-row-channel4-degree-evidence-check-v1'
++             and receipt.get('version') == SEMANTICS_VERSION
++             and receipt.get('marking_id') == self._state['marking_id']
+              and receipt.get('state_sha256') == digest(self._state)
+              and receipt.get('input_epoch') == self._state['input_epoch']
+              and type(receipt.get('row')) is int and receipt['row'] == row
+@@ -671,7 +678,7 @@
+         word = []
+         for row, record in enumerate(records):
+             self.tick()
+-            pre = record['type_preimage']
++            pre = record['type_preimage']['base_type_preimage']
+             command = self._copy(pre['primitive_witness'])
+             refs = [row+d for d in pre['ordered_offsets']]
+             if command['rule'] == 'mp':
+@@ -932,7 +939,8 @@
+             reason = 'unresolved local degree or unaccepted fallback completion'
+         if status != 'UNKNOWN':
+             self.tick()
+-        return {'schema': 'unit-row-lazy-global-search-result-v1', 'version': VERSION,
++        return {'schema': 'unit-row-channel4-lazy-global-search-result-v1', 'version': VERSION,
++            'marking_id': self._state['marking_id'],
+             'variant': VARIANT if self.branch_tie == 'ROW' else MARK_VARIANT,
+             'scheduler_policy': self._policy_snapshot(),
+             'status': status, 'reason': reason,

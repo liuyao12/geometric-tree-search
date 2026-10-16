@@ -1,0 +1,40 @@
+{
+  "actual_disposition": {
+    "bytes": 5803,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-disposition-v1.json",
+    "sha256": "79edfc98d428edbe89e564cb6bb98e0f89fc7ee004335d15c4d55cd33e5d949e"
+  },
+  "authorship": "Diagnosis authored the independent marked verifier9fd60 and prior consumer/controls/1717/codec/family work and the proposed qualification SPEC, not Root decoder6/closer1 or current stageA controller/adapter/c354. Review covers helper Source and saved data joins, not self-peer verification of the authored dependency or a second mathematical kernel.",
+  "blockers": [],
+  "findings": {
+    "bytes": 10689,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-saved-closure-independent-source-20261016/findings-v1.json",
+    "sha256": "0a92bed40022ead6e9233ef3cefa4b80cd676a5862a27509b40bf1a175816e17"
+  },
+  "helpers_already_run_by_Root": true,
+  "later_stages_qualified": false,
+  "post_hoc_review": true,
+  "reviewer_executed_helpers": false,
+  "schema": "unit-row-channel4-stageA-saved-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replay": false,
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 12087,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_close_stageA_saved_v1.py",
+      "sha256": "54bfcd1d4543eab052fa299867113c597efbefb1f6c05a60487bec7a1a6fe47b"
+    },
+    "decoder": {
+      "bytes": 5208,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_decode_saved_transport_v6.py",
+      "sha256": "394eb0aea024201efe13363d5afe3ca5c2876529373cc93e6019f7b421ebdef7"
+    }
+  },
+  "typed_review": {
+    "bytes": 2776,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-saved-closure-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "bbc3ba6d146a8d41baf29a5ab180741638d16cda9d00c827e089196a4eee0b4f"
+  }
+}

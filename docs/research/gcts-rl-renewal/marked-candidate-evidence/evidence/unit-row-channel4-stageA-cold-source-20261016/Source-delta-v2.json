@@ -1,0 +1,43 @@
+{
+  "actual_unified_forward_inverse_verified": true,
+  "edit_count": 2,
+  "edits": [
+    {
+      "new": "VERSION='unit-row-channel4-degree-cursor-cold-v2-guarded-sizes'",
+      "offset_at_step": 609,
+      "old": "VERSION='unit-row-channel4-degree-cursor-cold-v1'"
+    },
+    {
+      "new": "    def deep_sizes():\n        return [language.formula(deep42),language.formula(deep43)]\n    sizes = call(deep_sizes)\n    need(sizes == [42,43],'native bounded deep formulas')",
+      "offset_at_step": 52723,
+      "old": "    need(language.formula(deep42) == 42 and language.formula(deep43) == 43,'native bounded deep formulas')"
+    }
+  ],
+  "forward_patch": {
+    "bytes": 947,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/v1-to-v2-forward.patch",
+    "sha256": "a3211e7446c0aed68a2fad84975d9c96cd649c0cd454e5eaead93e9808d3bd08"
+  },
+  "full_byte_inverse_verified": true,
+  "inverse_patch": {
+    "bytes": 947,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/v2-to-v1-full-inverse.patch",
+    "sha256": "85e0c50e2b38df7fef8170e8ffcfde10000fe0a507f0dcdc95815f6f13b1ffc7"
+  },
+  "parent": {
+    "bytes": 64200,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/channel4_stageA_cold_v1.py",
+    "sha256": "a1c00f4186c84c2f8dffe57a3ff875e4ccbe8a1cf999746d4a761dd095b10ddd"
+  },
+  "schema": "unit-row-channel4-stageA-guarded-sizes-Source-delta-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Only ownVERSION plus replace direct main membership calls with FunctionType deep_sizes+call(deep_sizes); no bound method passed to call. Existing native/module/helper/output/scientific/case logic otherwise byte exact.",
+  "source": {
+    "bytes": 64283,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/channel4_stageA_cold_v2.py",
+    "sha256": "965b50fbaf8c54c5ea64e6aaabb4f885246b78f572ec840378fbde32d9148523"
+  },
+  "source_only": true,
+  "whole_AST_inverse_verified": true
+}

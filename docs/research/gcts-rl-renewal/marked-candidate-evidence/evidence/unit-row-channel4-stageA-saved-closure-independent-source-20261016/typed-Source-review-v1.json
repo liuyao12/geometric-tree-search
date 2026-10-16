@@ -1,0 +1,51 @@
+{
+  "author_identity": "/root",
+  "authorship": "Diagnosis authored the independent marked verifier9fd60 and prior consumer/controls/1717/codec/family work and the proposed qualification SPEC, not Root decoder6/closer1 or current stageA controller/adapter/c354. Review covers helper Source and saved data joins, not self-peer verification of the authored dependency or a second mathematical kernel.",
+  "blockers": [],
+  "checks": 14,
+  "context_contract": {
+    "bytes": 33643,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-cold-source-20261016/Source-contract-v2.json",
+    "sha256": "0eb10015dec8d4f9f1f68ceddfb3587f93d6939984eda1ee0c89afb8b3c0507d"
+  },
+  "decoder_source": {
+    "bytes": 5208,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_decode_saved_transport_v6.py",
+    "sha256": "394eb0aea024201efe13363d5afe3ca5c2876529373cc93e6019f7b421ebdef7"
+  },
+  "disposition": "CONDITIONAL_SOURCE_PASS_AND_SAVED_LITERAL_CONCORDANCE",
+  "findings": {
+    "bytes": 10689,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageA-saved-closure-independent-source-20261016/findings-v1.json",
+    "sha256": "0a92bed40022ead6e9233ef3cefa4b80cd676a5862a27509b40bf1a175816e17"
+  },
+  "helpers_already_run_by_Root": true,
+  "later_stages_qualified": false,
+  "post_hoc_review": true,
+  "reviewer_executed_helpers": false,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-channel4-stageA-saved-closure-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replay": false,
+  "scope": "unit-row-channel4-stageA-saved-JSON-concordance-Source",
+  "source": {
+    "bytes": 12087,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_close_stageA_saved_v1.py",
+    "sha256": "54bfcd1d4543eab052fa299867113c597efbefb1f6c05a60487bec7a1a6fe47b"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 12087,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_close_stageA_saved_v1.py",
+      "sha256": "54bfcd1d4543eab052fa299867113c597efbefb1f6c05a60487bec7a1a6fe47b"
+    },
+    "decoder": {
+      "bytes": 5208,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT_decode_saved_transport_v6.py",
+      "sha256": "394eb0aea024201efe13363d5afe3ca5c2876529373cc93e6019f7b421ebdef7"
+    }
+  }
+}
