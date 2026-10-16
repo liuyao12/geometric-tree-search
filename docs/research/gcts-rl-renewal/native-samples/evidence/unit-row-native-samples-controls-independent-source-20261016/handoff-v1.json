@@ -1,0 +1,53 @@
+{
+  "schema": "unit-row-native-samples-controls-independent-handoff-v1",
+  "scope": "unit-row-native-samples-controls-Source",
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source": {
+    "bytes": 98770,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/compatible_fibres_controls_v5.py",
+    "sha256": "1c332075d25b00ad31642c1f20b8e62415633aec2821fefa99235ffc4ec6f1be"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/Source-contract-v5.json",
+    "sha256": "a9865911ba4be3eaccb68f1a7e19b17dd5ad4dc6cc03e993d07b5050e0f5aa19",
+    "bytes": 23123
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "13d7f6e9fd948868511f9c9597ca95a594939035657942633994a2c437b94922",
+    "bytes": 7800
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "020ebabe4c7ea2003c80843247fcf5b2179afe3723719200c4c88cadae9d2690",
+    "bytes": 19729
+  },
+  "independent_delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "8197ed5a28139ed0ce4f5d39e21594385693c04661f4f837039b58bb293ee25d",
+    "bytes": 22739
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "checks": {
+    "raw_and_AST": 17,
+    "manual": 6,
+    "unique_raw_paths": 39,
+    "sequential_byte_regions": 23,
+    "parent_sites_converted": 20,
+    "new_sites": 4,
+    "total_sites": 24,
+    "maximum_marker_ASCII_bytes": 1766,
+    "retained_cases": 43,
+    "raw_exact_helpers_or_classes": 9,
+    "marker_only_definitions": 3
+  },
+  "blockers": [],
+  "remaining": "Root current caller/explicit native tick ABI/once-plan and all actual control/resource/output gates remain separate; no fit/timing/case/proof/trajectory/benefit inference from Source or prints. Existing UNKNOWNs unchanged.",
+  "authorship_disclosure": "Reviewer authored immutable consumer3/earlier consumer validators and earlier control-harness/horizon changes, plus older logical-checker/codec/family work. Reviewer did not author controls2/3/4/5, current adviser/engine, c960 proposer, c354 checker or Root caller. This is an independent current controls implementation/delta review retaining exact prior whole controls4 scope; it is not self-review of consumer3, a second mathematical implementation, runtime qualification or admission.",
+  "actual_execution_authorized": false
+}

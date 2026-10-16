@@ -1,0 +1,290 @@
+{
+  "all_author_static_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 15,
+  "checks": [
+    {
+      "check": "exact_current_and_parent_raw_pins",
+      "passed": true
+    },
+    {
+      "check": "syntax_compile_only_not_executed",
+      "passed": true
+    },
+    {
+      "check": "all23_sequential_edits_reconstruct_whole_current",
+      "passed": true
+    },
+    {
+      "check": "all23_inverse_edits_reconstruct_whole_parent",
+      "passed": true
+    },
+    {
+      "check": "whole_module_AST_erasure_inverse",
+      "passed": true
+    },
+    {
+      "check": "all9_helpers_classes_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "check": "all3_control_definitions_marker_erasure_exact",
+      "passed": true
+    },
+    {
+      "check": "same43_case_names_full_science_and8_keyword_API",
+      "passed": true
+    },
+    {
+      "check": "no_added_import_clock_helper_scientific_call",
+      "passed": true
+    },
+    {
+      "check": "twenty_converted_plus_four_unique_fixed_sites",
+      "passed": true
+    },
+    {
+      "check": "exact_signed64_nonbool_nonnegative_check_at_every_site",
+      "passed": true
+    },
+    {
+      "check": "both_compound_search_observation_lines_raw_unchanged",
+      "passed": true
+    },
+    {
+      "check": "no_markers_in_loops_callbacks_finally_or_handlers",
+      "passed": true
+    },
+    {
+      "check": "same_full_other9_Source_roles_and_input2",
+      "passed": true
+    },
+    {
+      "check": "no_profiling_optimization_or_new_actual",
+      "passed": true
+    }
+  ],
+  "distinct_review_required": true,
+  "marker_erasure_equivalent_definitions": [
+    {
+      "kind": "FunctionDef",
+      "marker_erasure_AST_exact": true,
+      "name": "run_controls",
+      "ordinal": 9
+    },
+    {
+      "kind": "FunctionDef",
+      "marker_erasure_AST_exact": true,
+      "name": "run_controls",
+      "ordinal": 10
+    },
+    {
+      "kind": "FunctionDef",
+      "marker_erasure_AST_exact": true,
+      "name": "run_controls",
+      "ordinal": 11
+    }
+  ],
+  "metadata_writer_note": "A non-operative pre-freeze metadata assertion initially expected6 variable mentions per sample line; corrected to actual4 (96 total). Frozen Source was unchanged; no project code was executed.",
+  "parent_source": {
+    "bytes": 94228,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py",
+    "sha256": "d07fad27a63d5c74543433b06dadf00352fe292797d61d6d5058988781d0afd2"
+  },
+  "positions": [
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "new_site": false,
+      "source_line": 172
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "new_site": false,
+      "source_line": 187
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "new_site": false,
+      "source_line": 190
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "new_site": false,
+      "source_line": 203
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "new_site": false,
+      "source_line": 234
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "new_site": false,
+      "source_line": 275
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "new_site": false,
+      "source_line": 304
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "new_site": true,
+      "source_line": 330
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "new_site": true,
+      "source_line": 332
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "new_site": true,
+      "source_line": 352
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+      "new_site": true,
+      "source_line": 354
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "new_site": false,
+      "source_line": 367
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "new_site": false,
+      "source_line": 601
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+      "new_site": false,
+      "source_line": 672
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "new_site": false,
+      "source_line": 913
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "new_site": false,
+      "source_line": 918
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "new_site": false,
+      "source_line": 961
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "new_site": false,
+      "source_line": 979
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "new_site": false,
+      "source_line": 980
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "new_site": false,
+      "source_line": 1040
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "new_site": false,
+      "source_line": 1101
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "new_site": false,
+      "source_line": 1171
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "new_site": false,
+      "source_line": 1328
+    },
+    {
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN",
+      "new_site": false,
+      "source_line": 1353
+    }
+  ],
+  "schema": "unit-row-native-samples-controls-author-static-v5",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 98770,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/compatible_fibres_controls_v5.py",
+    "sha256": "1c332075d25b00ad31642c1f20b8e62415633aec2821fefa99235ffc4ec6f1be"
+  },
+  "source_only": true,
+  "unchanged_raw_definitions": [
+    {
+      "kind": "ClassDef",
+      "name": "Unavailable",
+      "ordinal": 0,
+      "raw_AST_exact": true,
+      "raw_sha256": "0633d4c830dca042342e9e90385b150644cc55294a6029ec8150623e6e0eb9c7"
+    },
+    {
+      "kind": "ClassDef",
+      "name": "CallbackExhausted",
+      "ordinal": 1,
+      "raw_AST_exact": true,
+      "raw_sha256": "ed63a8ff8458cf3d9d5b7afc535250eb000815c95fbf417f6bc1377e2ed9f4c2"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "need",
+      "ordinal": 2,
+      "raw_AST_exact": true,
+      "raw_sha256": "cfb2359a99fb5844db1d9b7610758d828c86945b044bc352c78ced9fece32556"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "canonical",
+      "ordinal": 3,
+      "raw_AST_exact": true,
+      "raw_sha256": "3d0cba3e5232ca23a7129b2da6af51a68c34121ca073948fd18e8f2e9bb68268"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "digest",
+      "ordinal": 4,
+      "raw_AST_exact": true,
+      "raw_sha256": "ba4b204365b99acc82629d44da79e9b2995d4460b992169519341d4d48275144"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "tile",
+      "ordinal": 5,
+      "raw_AST_exact": true,
+      "raw_sha256": "180bb27f6de2b574c473adf86ff7da20370081febb16f8b31208c12babe95fa5"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "state",
+      "ordinal": 6,
+      "raw_AST_exact": true,
+      "raw_sha256": "95664cf1567b15500aadafc08511edcf6f032a3e5f368560a1fa70f579ef9a83"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "ug",
+      "ordinal": 7,
+      "raw_AST_exact": true,
+      "raw_sha256": "910adb314f1decffc2b619dd735712322b77359ddb74287834903f1d5ca55210"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "obligations",
+      "ordinal": 8,
+      "raw_AST_exact": true,
+      "raw_sha256": "5187bbb0dae876a54662dfda6fcdf995c80289791aaa8ace629e6894e249eac0"
+    }
+  ]
+}

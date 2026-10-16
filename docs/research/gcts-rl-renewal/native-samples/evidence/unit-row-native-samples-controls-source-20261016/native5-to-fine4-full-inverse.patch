@@ -1,0 +1,194 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/compatible_fibres_controls_v5.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py
+@@ -9,7 +9,7 @@
+ import json
+ import sys
+ 
+-VERSION = 'unit-row-native-samples-controls-v5'
++VERSION = 'unit-row-fine-phase-controls-v4'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -169,7 +169,7 @@
+     need(holder['child_snapshot'] is not None,'actual placed child observed before interruption')
+     return value,holder['child_snapshot']
+ 
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP',file=sys.stderr,flush=True);tick()
+   initial=state(language,[],tick)
+   names=sorted(language.theory['axioms']);variables=[v for v in sorted(language.parameters) if v not in language.forbidden]
+   roots=[language.theory['axioms'][n] for n in names]+list(language.gamma)
+@@ -184,10 +184,10 @@
+     demand=['all',v,copy.deepcopy(body)]
+     future=prepared(ug,language,demand,v,8,9,tick)
+     s=state(language,[future],tick)
+-    phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION',phase_native_ns,file=sys.stderr,flush=True);tick()
++    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION',file=sys.stderr,flush=True);tick()
+     e=make(s);decision=e.decision()
+     if decision!={'kind':'BRANCH','row':0}:raise Unavailable('Original scheduler did not choose row0 BRANCH: '+canonical(decision))
+-    phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE',phase_native_ns,file=sys.stderr,flush=True);tick()
++    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE',file=sys.stderr,flush=True);tick()
+     before=canonical(s);batch=current_advice(state=copy.deepcopy(s),decision=decision,tick=tick)
+     # Preserve the WHOLE actual return before eligibility can skip controls.
+     # UNKNOWN partial proposals/counters are diagnostic only, never executable.
+@@ -200,7 +200,7 @@
+         'selected_future_UG':copy.deepcopy(future)}}
+     if batch['status']!='READY' or not batch['proposals']:
+       raise Unavailable('Actual bounded adviser returned no current READY proposal: '+str(batch['status']))
+-    phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK',phase_native_ns,file=sys.stderr,flush=True);tick()
++    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK',file=sys.stderr,flush=True);tick()
+     receipt=receipt_flags(check(s,decision,batch))
+     need(canonical(s)==before,'adviser and independent validator do not alter fixture state')
+     need(receipt['selection'] is not None,'genuine READY first anchor validated')
+@@ -231,7 +231,7 @@
+         'meaning':'Repeated observations, not distinct facts or causal reuse.'})
+     else:skip(common_names[1],'Actual returned proposals have no external PENDING obligation to exercise.')
+ 
+-    phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS',phase_native_ns,file=sys.stderr,flush=True);tick()
++    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS',file=sys.stderr,flush=True);tick()
+     mutations=[]
+     def bad(label,edit):
+       b=copy.deepcopy(batch);edit(b);mutations.append({'mutation':label,'result':reject(lambda:check(s,decision,b))})
+@@ -272,7 +272,7 @@
+     # current joins ONLY to test the validator's UNKNOWN-status rejection edge.
+     qjoin=copy.deepcopy(q);qjoin.update(binding=copy.deepcopy(batch['binding']),state_sha256=batch['state_sha256'],decision=copy.deepcopy(decision))
+     passed(common_names[5],reject(lambda:check(s,decision,qjoin)),seam)
+-    phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES',phase_native_ns,file=sys.stderr,flush=True);tick()
++    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES',file=sys.stderr,flush=True);tick()
+     canonical_first=first_key(s,0);artifacts['canonical_first']=canonical_first
+     empty_result,empty_child=stop_after_placement(s,empty_advice)
+     need(canonical(first_try(empty_result)['key'])==canonical(canonical_first['event']['candidate']['placement_key']),
+@@ -301,7 +301,7 @@
+     if not selection['future_keys']:
+       for label in common_names[11:]:skip(label,'Actual first selected family has no future keys; consumer gate remains unqualified.')
+     else:
+-      phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE',phase_native_ns,file=sys.stderr,flush=True);tick()
++      tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE',file=sys.stderr,flush=True);tick()
+       holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[]}
+       def watched_validator(**kwargs):
+         tick();value=validate_advice(**kwargs)
+@@ -327,9 +327,7 @@
+           return quota_advice(**kwargs)
+         return current_advice(**kwargs) if holder['phase']=='capture' else empty_advice(**kwargs)
+       e=make(s,capture_degree,watched_adviser,watched_validator);holder['engine']=e
+-      phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP',phase_native_ns,file=sys.stderr,flush=True);tick()
+       outer=e.checkpoint();before=snap(e);r=e.search();unknown_result(e,before,r)
+-      phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP',phase_native_ns,file=sys.stderr,flush=True);tick()
+       inner=holder['inner_snapshot'];token=holder['inner_token']
+       need(inner is not None and token is not None,'genuine normal-search child has nonempty family')
+       need(len(inner['state']['selected'])==len(s['selected'])+1,'one anchor placed, no future members')
+@@ -349,9 +347,7 @@
+       # Same genuine engine and once-bound callbacks. Only explicit control
+       # phase changes in a stable holder; no engine callback reseal/mutation.
+       h=holder;e2=e;outer2=outer;before2=before;inner2=copy.deepcopy(inner)
+-      phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP',phase_native_ns,file=sys.stderr,flush=True);tick()
+       h['phase']='continue';h['receipts']=[];continuation=e2.search();unknown_result(e2,inner2,continuation)
+-      phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP',phase_native_ns,file=sys.stderr,flush=True);tick()
+       selected_pending=[x for x in h['receipts'] if x['selection'] is not None]
+       if selected_pending:
+         need(continuation['counts']['pending_selected']>=1,'actual pending selection counter')
+@@ -364,7 +360,7 @@
+ 
+       # Derive one remote conflict from an actual pending key, not from a
+       # supplied target route. It must leave that pending output row unfilled.
+-      phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE',phase_native_ns,file=sys.stderr,flush=True);tick()
++      tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE',file=sys.stderr,flush=True);tick()
+       e2.rollback(token);remote_error=None
+       try:
+         family=inner2['pending_preferences'];remote=None;bad_key=None
+@@ -598,7 +594,7 @@
+   result=_run_prior_controls(language=language,engine_factory=observing_factory,adviser=adviser,
+     validate_advice=validate_advice,degree_proposer=degree_proposer,fallback=fallback,
+     certify_fallback=certify_fallback,tick=tick)
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN',file=sys.stderr,flush=True);tick()
+   need(result['declared_cases']==22 and len(result['cases'])==22,'all original22 retained once')
+   candidates=[r for r in records if r['token'] is not None]
+   reason=None
+@@ -669,7 +665,7 @@
+     need(remote['root_snapshot_sha256']==remote['final_snapshot_sha256'], 'old remote search whole-root rollback')
+     passed(labels[4],{'inner_snapshot_sha256':digest(inner),'restored_sha256':digest(before),
+       'remote_search_root_sha256':remote['root_snapshot_sha256']})
+-    phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS',phase_native_ns,file=sys.stderr,flush=True);tick()
++    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS',file=sys.stderr,flush=True);tick()
+     try:
+       for mode,label in (('VALUE_ERROR',labels[5]),('TIMEOUT',labels[6])):
+         engine.rollback(token);before=engine.state_snapshot();start=len(record['adviser_calls']);record['mode']=mode
+@@ -910,12 +906,12 @@
+     record['engine']=e
+     return e
+   degree_endpoint=degree_proposer;validator_endpoint=fresh_validate
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30',file=sys.stderr,flush=True);tick()
+   result=_run_prior30_controls(language=language,engine_factory=observing_factory,adviser=actual_adviser,
+     validate_advice=fresh_validate,degree_proposer=degree_proposer,fallback=fallback,
+     certify_fallback=certify_fallback,tick=tick)
+   need(result['declared_cases']==30 and len(result['cases'])==30,'all prior30 run exactly once unchanged')
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30',file=sys.stderr,flush=True);tick()
+ 
+   # Two explicitly declared component calibrations only. They are never inputs
+   # to the original-root theorem search. The real engine chooses the BRANCH;
+@@ -958,7 +954,7 @@
+       e.rollback(outer)
+       need(canonical(e.state_snapshot())==canonical(before),'exact owned component rollback, no hidden family or member')
+       attempt['restored_sha256']=digest(e.state_snapshot())
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING',file=sys.stderr,flush=True);tick()
+   component_reason=None
+   try:
+     eligible=[v for v in sorted(language.parameters) if v not in language.forbidden]
+@@ -976,8 +972,8 @@
+   except Unavailable as ex:component_reason=str(ex)
+   if component_reason is not None:
+     component_attempts['root_reopening']={'eligibility_gap':component_reason,'authority_accepted':False}
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING',phase_native_ns,file=sys.stderr,flush=True);tick()
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING',file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED',file=sys.stderr,flush=True);tick()
+   occupied_reason=None
+   try:
+     original_fixture=result['artifacts'].get('fixture')
+@@ -1037,7 +1033,7 @@
+   if occupied_reason is not None:
+     component_attempts['occupied_compatible_UI_source']={'eligibility_gap':occupied_reason,'authority_accepted':False}
+   evidence['component_attempts']=component_attempts
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED',file=sys.stderr,flush=True);tick()
+ 
+   # Recompute from full candidate ports and actual state, independently of the
+   # proposal's feature diagnostics. The actual independent validator separately
+@@ -1098,7 +1094,7 @@
+       reason=str(ex)
+     tick();need(reason=='advice consumer: '+expected,'exact malformed rejection, not resource/custody failure')
+     return {'exception_type':'ValueError','reason':reason,'malformed_batch_sha256':digest(b)}
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS',file=sys.stderr,flush=True);tick()
+   fixture=result['artifacts'].get('fixture')
+   if fixture is None:
+     for label in labels[:7]:skip(label,'No genuine returned READY fixture; no fabricated quality or generation evidence.')
+@@ -1168,7 +1164,7 @@
+       'distinct_returned_universals':len(universals),'distinct_returned_terms':len(terms),
+       'scope':'Observed returned universal diversity only; no multi-term fairness, complete generation or absence claim.'})
+ 
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT',file=sys.stderr,flush=True);tick()
+   candidates=[r for r in records if r['token'] is not None]
+   if len(candidates)!=1:
+     for label in labels[7:]:skip(label,'No unique genuine completed pending-rejection checkpoint; no synthetic replacement family.')
+@@ -1325,7 +1321,7 @@
+     passed(fibre_labels[2],{'artifact':'fair_interface.missing_source'})
+ 
+   need(len(extra)==13 and {x['case'] for x in extra}==set(labels+fibre_labels),'all thirteen new declared gates retained exactly once')
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT',file=sys.stderr,flush=True);tick()
+   used_origins={x['origin_fresh_call'] for x in reuse_log};unique_authorities={};used_entries=[]
+   for key,entry in report_receipts.items():
+     tick()
+@@ -1350,5 +1346,5 @@
+   result['fair_interface_scope']=local
+   result['no_generation_claim_from_topk_absence']=True
+   result['control_only_real_order_preserving_suppression_never_target_policy']=True
+-  phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN',phase_native_ns,file=sys.stderr,flush=True);tick()
++  tick();print('UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN',file=sys.stderr,flush=True);tick()
+   tick();return result

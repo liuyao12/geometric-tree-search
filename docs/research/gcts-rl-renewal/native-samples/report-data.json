@@ -1,0 +1,296 @@
+{
+  "assessment": "The next concrete diagnosis is the active continuation query or scheduler step. The evidence places most of this attempt after its pre-continuation read; it does not identify the responsible method, pending family or candidate. All original control checks, independent validation and limits remain. No new theorem, search advantage, learned marking or RL result is established.",
+  "consumer_passed": null,
+  "consumer_skipped": null,
+  "control_record": null,
+  "evidence": [
+    {
+      "href": "evidence-manifest.json",
+      "label": "Exact evidence manifest"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Current UNKNOWN disposition"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/advice-controls-external-v1/meter-stderr.txt",
+      "label": "Actual trace and worker error"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/advice-controls-external-v1/native-terminal.json",
+      "label": "Current native terminal/reaping"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/advice-controls-external-v1/ONCE.json",
+      "label": "Current once invocation"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/advice-controls-external-v1/observation.json",
+      "label": "Current postterminal observation"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/ROOT-advice-controls-tool-bracket-v1.json",
+      "label": "Current tool time bracket"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "label": "Current original controls"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "label": "Current retention controls"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "label": "Original controls lossless record"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "label": "Retention controls lossless record"
+    },
+    {
+      "href": "evidence/ROOT-same-Source-comparison-v1.json",
+      "label": "Same mathematical input and limits"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-cold-ROOT-source-20261016/Source-contract-v10.json",
+      "label": "Current caller contract"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-controls-source-20261016/Source-contract-v5.json",
+      "label": "Exact trace contract"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-controls-source-20261016/Source-delta-v5.json",
+      "label": "Full marker-erasure delta"
+    },
+    {
+      "href": "../fine-phase/reader.html#results",
+      "label": "Earlier untimed trace and immutable timeouts"
+    },
+    {
+      "href": "../fair-interface/reader.html#family",
+      "label": "Earlier actual tile rows"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-controls-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent controls review"
+    },
+    {
+      "href": "evidence/unit-row-native-samples-cold-independent-source-20261016/typed-Source-review-v10.json",
+      "label": "Independent caller review"
+    }
+  ],
+  "interval_caption": "Blue bars show elapsed intervals between recorded native reads, including all intervening checks and writes. The gray interval ends at the postterminal probe and has no finer Source attribution. Bar lengths compare intervals, not passed cases or progress; labels are Source positions, not exclusive method timings.",
+  "lead": "The native readings direct the next investigation toward continuation. The expanded control stage still remains UNKNOWN.",
+  "native_read_intervals": [
+    {
+      "kind": "sample-interval",
+      "label": "Cold launch to first sample",
+      "ns": 120395000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "First sample to prior-control setup sample",
+      "ns": 65000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "Setup sample to fixture-decision sample",
+      "ns": 395000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "Decision sample to adviser sample",
+      "ns": 584885000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "Adviser sample to fixture-check sample",
+      "ns": 54365000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "Fixture-check sample to negative-controls sample",
+      "ns": 44673000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "Negative-controls sample to short-search sample",
+      "ns": 462227000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "Short-search sample to pending-lifecycle sample",
+      "ns": 3326785000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "Pending sample to pre-adoption sample",
+      "ns": 10174000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "Before to after adoption group samples",
+      "ns": 953660000
+    },
+    {
+      "kind": "sample-interval",
+      "label": "After-adoption to pre-continuation sample",
+      "ns": 9076000
+    },
+    {
+      "kind": "unattributed-tail",
+      "label": "Pre-continuation sample to postterminal probe: finer attribution unknown",
+      "ns": 14487505000
+    }
+  ],
+  "native_samples": [
+    {
+      "elapsed_from_launch_ns": 120395000,
+      "interval_since_previous_ns": 120395000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "native_ns_decimal": "490365732584000",
+      "previous_marker": null
+    },
+    {
+      "elapsed_from_launch_ns": 120460000,
+      "interval_since_previous_ns": 65000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "native_ns_decimal": "490365732649000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30"
+    },
+    {
+      "elapsed_from_launch_ns": 120855000,
+      "interval_since_previous_ns": 395000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "native_ns_decimal": "490365733044000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP"
+    },
+    {
+      "elapsed_from_launch_ns": 705740000,
+      "interval_since_previous_ns": 584885000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "native_ns_decimal": "490366317929000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION"
+    },
+    {
+      "elapsed_from_launch_ns": 760105000,
+      "interval_since_previous_ns": 54365000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "native_ns_decimal": "490366372294000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE"
+    },
+    {
+      "elapsed_from_launch_ns": 804778000,
+      "interval_since_previous_ns": 44673000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "native_ns_decimal": "490366416967000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK"
+    },
+    {
+      "elapsed_from_launch_ns": 1267005000,
+      "interval_since_previous_ns": 462227000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "native_ns_decimal": "490366879194000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS"
+    },
+    {
+      "elapsed_from_launch_ns": 4593790000,
+      "interval_since_previous_ns": 3326785000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "native_ns_decimal": "490370205979000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES"
+    },
+    {
+      "elapsed_from_launch_ns": 4603964000,
+      "interval_since_previous_ns": 10174000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "native_ns_decimal": "490370216153000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE"
+    },
+    {
+      "elapsed_from_launch_ns": 5557624000,
+      "interval_since_previous_ns": 953660000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "native_ns_decimal": "490371169813000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP"
+    },
+    {
+      "elapsed_from_launch_ns": 5566700000,
+      "interval_since_previous_ns": 9076000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "native_ns_decimal": "490371178889000",
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP"
+    }
+  ],
+  "observed_phases": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP"
+  ],
+  "outcome": "The current original search and retention suites pass without skips. Expanded controls still hit the unchanged time limit without a returned case record. All three invocations are closed and reaped; no target run was admitted.",
+  "phase_explanation": "Eleven sampled writes are recorded through P30_BEFORE_CONTINUATION_SEARCH_GROUP. The earlier and later adoption-group reads differ by \\(0.953660\\,\\mathrm{s}\\). The pre-continuation read is \\(5.566700\\,\\mathrm{s}\\) after the original native caller launch. The interval from there to the postterminal probe is \\(14.487505\\,\\mathrm{s}\\). No after-continuation write is recorded. These intervals include checks, copies, callbacks and output; the final interval also includes failure handling and terminal/probe work. They do not isolate one method, certify a case or classify older runs.",
+  "phase_literals": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+    "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+    "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+    "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+  ],
+  "phase_stderr": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30 490365732584000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP 490365732649000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION 490365733044000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE 490366317929000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK 490366372294000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS 490366416967000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES 490366879194000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE 490370205979000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP 490370216153000\nUNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP 490371169813000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP 490371178889000\nUNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete local-degree controls original20/500 reserve unfinished\n",
+  "qualification": "Native read intervals are diagnostic observations. No expanded-stage case count, completed phase, reuse count, component coverage or native-positive stage result is accepted.",
+  "reuse_record": null,
+  "schema": "native-samples-saved-reader-v1",
+  "stage_native_qualified": false,
+  "stages": [
+    {
+      "label": "original controls",
+      "native_launch_to_postprobe_ns": 6833078000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 44285952
+    },
+    {
+      "label": "domain controls",
+      "native_launch_to_postprobe_ns": 5499185000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 56557568
+    },
+    {
+      "label": "advice controls",
+      "native_launch_to_postprobe_ns": 20054205000,
+      "native_resources_qualified": false,
+      "outcome": "UNKNOWN; no case record",
+      "peak_bytes": 47300608
+    }
+  ]
+}

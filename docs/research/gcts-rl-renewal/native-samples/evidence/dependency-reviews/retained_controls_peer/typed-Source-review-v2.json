@@ -1,0 +1,27 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored prior language/proposer/fallback and separate diagnostic caller, and independently reviewed retained engine/checker. Reviewer did not author this harness, engine, transition checker or current c354. No self-review of caller here.",
+  "disposition": "CONDITIONAL_CURRENT_WHOLE_SOURCE_PASS_RUNTIME_PENDING",
+  "findings": {
+    "bytes": 21947,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-controls-independent-source-20261015/findings-v2.json",
+    "sha256": "6958df0904e2b7be590f9ee2a21122eccc5aba9d6b7791a094e8387e6477906a"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "unit-row-retained-domain-controls-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-retained-domain-adversarial-controls-Source",
+  "source": {
+    "bytes": 25338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+    "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+  },
+  "source_contract": {
+    "bytes": 14481,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/Source-contract-v2.json",
+    "sha256": "2290c598eac6d39e8e164787668971cda88962f3b689353169038919dd8dff63"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

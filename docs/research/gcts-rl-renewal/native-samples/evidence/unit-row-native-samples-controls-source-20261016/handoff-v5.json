@@ -1,0 +1,302 @@
+{
+  "API": {
+    "call": "run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,fallback,certify_fallback,tick)",
+    "expected_cases": 43,
+    "factory": "Existing Root callbacks/engine3 version8/consumer3/adviser3; no new public method/degree wrapper/caller format.",
+    "keyword_count": 8,
+    "new_cases": 0,
+    "new_cases_key": "new_cases",
+    "output_schema": "unit-row-goal-advice-controls-v1",
+    "preserved_prior_cases": 43,
+    "qualification": "All43 PASSED0SKIP/no other gap plus current original17/retention17 and unchanged full native/wire gates; targets stay withheld until genuine current qualification."
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 8170,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/author-static-v5.json",
+    "sha256": "c9e4b12bfc6f4108970026486255c536cb216edb7388de3cdb85f10b121dab1f"
+  },
+  "author_static_checks": 15,
+  "authoritative_checkpoint": {
+    "bytes": 22030,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-publication-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "9524011cbc128f0c077cc868c97121ba40a80bef6790d69b193449d9fb11aae8"
+  },
+  "authorship_disclosure": "Author wrote controls/membership/degree/fallback; not adviser3/consumer3/engine8/c354/transition. This is author static evidence, not peer review or actual evidence. Diagnosis reviewer authors consumer; Root owns caller/native/once/actual/disposition/publication.",
+  "forward_patch": {
+    "bytes": 17901,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/fine4-to-native5-forward.patch",
+    "sha256": "7d4d458e33ce04e605eb05224582ebf401688ea44b224a45139c61a4a5312b2a"
+  },
+  "full_inverse_patch": {
+    "bytes": 17901,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/native5-to-fine4-full-inverse.patch",
+    "sha256": "ac5c9de772b02571d50af405e0cab82f2be43be54ee39f30861510d4c2248f45"
+  },
+  "marker_erasure_equivalent_definitions": 3,
+  "new_cases": [],
+  "parent_contract": {
+    "bytes": 23550,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/Source-contract-v4.json",
+    "sha256": "1edeb923c73aca7f8c228648228e959c364f1a3565ab019b663442c7a411f067"
+  },
+  "parent_source": {
+    "bytes": 94228,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py",
+    "sha256": "d07fad27a63d5c74543433b06dadf00352fe292797d61d6d5058988781d0afd2"
+  },
+  "phase_stderr": {
+    "clock_reference": "Saved samples may be joined to original external native caller launch/terminal observations in the same kernel domain. No new began epoch/deadline reset/internal timer/clock call. External true terminal/postprobe and full Date gates remain authoritative.",
+    "costs": "Sampling validation/formatting/write/flush/postchecks and unchanged science remain charged to original20/512/external60/90+1. Instrumentation may cause UNKNOWN; no fit/optimization prediction.",
+    "diagnostic_tick_return_ABI": "Sample ONLY the original Root direct native/resource tick passed unchanged through all three controls wrappers. It must return genuine sampled now as exact builtin int after its original checks. Generic injected/nested engine-adapter step returns (currently None) are not samples. Caller must explicitly pin/guard this diagnostic return contract. No new keyword/positional parameter or clock.",
+    "failure": "Original pre/post tick, integer validation or write/flush failure propagates. No deliberate emission after a failed precheck, logging on unwind or posttimeout scientific work. A started write can stall beyond20 then fail postcheck; retained bytes remain unqualified. Failure55 does not license more science.",
+    "maximum_emissions": 24,
+    "maximum_full_sequence_bytes": 1766,
+    "maximum_native_decimal_digits": 19,
+    "new_search_site_scope": "BEFORE_ADOPTION_SEARCH_GROUP precedes unchanged compound outer checkpoint/before snapshot/search/unknown_result line; AFTER includes all of it. BEFORE_CONTINUATION_SEARCH_GROUP precedes unchanged phase+receipt reset/search/unknown_result line; AFTER includes existing UNKNOWN/no-exclusion/full-restoration assertions. Scientific statements are not split/reordered.",
+    "new_site_literals": [
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP"
+    ],
+    "observation_only": "Every line, including AFTER/AT_RETURN, is an UNQUALIFIED producer reached-write plus prewrite sample. No accepted entry/return/nonreturn, completed case/phase, PASS/SKIP count, cache hit, exclusive-method duration, proof, trajectory, resource-positive, target or RL admission. Differences include guards/fresh languages/copies/assertions/I/O; prewrite sample is not completed-write time. Missing labels establish neither absence nor nonreturn. No earlier actual attribution.",
+    "order": "Runtime ordered SUBSEQUENCE of24 unique labels, not physical Source order or unconditional full prefix. Existing eligibility branches may omit sites. At most one emission per static site per invocation; no sites in loops/callbacks/handlers/finally. A partial last line is only a prefix of actual-path bytes.",
+    "ordered_literals": [
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+    ],
+    "positions": [
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+        "new_site": false,
+        "source_line": 172
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+        "new_site": false,
+        "source_line": 187
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+        "new_site": false,
+        "source_line": 190
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+        "new_site": false,
+        "source_line": 203
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+        "new_site": false,
+        "source_line": 234
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+        "new_site": false,
+        "source_line": 275
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+        "new_site": false,
+        "source_line": 304
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+        "new_site": true,
+        "source_line": 330
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+        "new_site": true,
+        "source_line": 332
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+        "new_site": true,
+        "source_line": 352
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+        "new_site": true,
+        "source_line": 354
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+        "new_site": false,
+        "source_line": 367
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+        "new_site": false,
+        "source_line": 601
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+        "new_site": false,
+        "source_line": 672
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+        "new_site": false,
+        "source_line": 913
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+        "new_site": false,
+        "source_line": 918
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+        "new_site": false,
+        "source_line": 961
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+        "new_site": false,
+        "source_line": 979
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+        "new_site": false,
+        "source_line": 980
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+        "new_site": false,
+        "source_line": 1040
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+        "new_site": false,
+        "source_line": 1101
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+        "new_site": false,
+        "source_line": 1171
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+        "new_site": false,
+        "source_line": 1328
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN",
+        "new_site": false,
+        "source_line": 1353
+      }
+    ],
+    "prefix": "UNQUALIFIED_PHASE_OBSERVATION ",
+    "sample_range_inclusive": [
+      0,
+      9223372036854775807
+    ],
+    "sampling_code": "phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print(fixed_literal,phase_native_ns,file=sys.stderr,flush=True);tick()",
+    "wire": "Exact ordered literal, one ASCII space, canonical base10 nonnegative signed64 native-ns integer, LF. No sign, bool, float, leading zero except0, dynamic label or extra field."
+  },
+  "remaining_gates": [
+    "Distinct whole exact current Source/contract/delta review plus Root read; Source pass grants no execution.",
+    "Root must bind exact diagnostic direct-native tick return ABI/current24-site bounded stderr wire/current Source in a separately frozen caller and plan; no grant/plan/actual here.",
+    "Fresh current original17/retention17/full43 PASSED0SKIP/no gaps and original full wire/native20/512/55/60/90+1 gates before targets.",
+    "All prior UNKNOWN/SKIP/raw failures/frozen Sources retained; no retrospective timing/case/fit or optimization claim."
+  ],
+  "schema": "unit-row-native-samples-controls-handoff-v5",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-native-samples-controls-Source",
+  "source": {
+    "bytes": 98770,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/compatible_fibres_controls_v5.py",
+    "sha256": "1c332075d25b00ad31642c1f20b8e62415633aec2821fefa99235ffc4ec6f1be"
+  },
+  "source_contract": {
+    "bytes": 23123,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/Source-contract-v5.json",
+    "sha256": "a9865911ba4be3eaccb68f1a7e19b17dd5ad4dc6cc03e993d07b5050e0f5aa19"
+  },
+  "source_delta": {
+    "bytes": 19991,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/Source-delta-v5.json",
+    "sha256": "25637b1b4708c48f48e44ee5683a46f1a34c2efbaada0d1aa4c1b085e6664a0f"
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 98770,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/compatible_fibres_controls_v5.py",
+      "sha256": "1c332075d25b00ad31642c1f20b8e62415633aec2821fefa99235ffc4ec6f1be"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "unchanged_raw_definitions": 9,
+  "whole_module_AST_inverse": true
+}
