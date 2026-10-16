@@ -17,7 +17,7 @@ function candidate(c,number,checked){const box=node('div',undefined,'candidate')
 async function showCase(c){$('case-result').textContent=c.status+' · '+(c.observed.receipt?.status||c.observed.exception_type||(c.observed.actual?'Carrier reference checked':'Unavailable'));$('case-scope').textContent=c.scope+(c.observed.reason?' '+c.observed.reason:'');$('case-json').textContent=JSON.stringify(c,null,2);$('root-grid').replaceChildren();$('candidates').replaceChildren();$('fibre-summary').replaceChildren();
   const o=c.observed,s=o.state,receipt=o.receipt,submitted=o.proposal?.candidates||[];
   if(s){const totals=new Map(s.t.map(([p,v])=>[p[1],v])),marks=new Map(s.m.filter(([p])=>p[0]===1).map(([p,v])=>[p[1],v]));for(let r=0;r<24;r++){const el=node('div',math(String(r+1)),'root-point'+(totals.get(r)===1?' filled':'')+(marks.has(r)?' marked':'')+(o.row===r?' queried':''));const v=marks.get(r);el.title=v?JSON.stringify(v):'Unassigned output';$('root-grid').append(el);}}
-  else $('root-grid').append(node('p','This case records an exception or an unavailable fixture; no displayed private state.'));
+  else $('root-grid').append(node('p','This case has no saved point-state display; its complete evidence is below.'));
   $('candidate-title').textContent=receipt?.accepted_local_evidence?'Independently checked candidates':'Untrusted submitted candidates';
   for(const[cIndex,cand]of submitted.entries())$('candidates').append(candidate(cand,cIndex+1,Boolean(receipt?.accepted_local_evidence)));
   if(!submitted.length)$('candidates').append(node('p',receipt?.status==='ZERO'?'The completed restricted census has no surviving candidate.':'No candidates displayed; this alone establishes no degree.'));
