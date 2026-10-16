@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 78703,
+  "compressed_sha256": "0d2f6d8fbf834d64e18bfae23a61195d93c9e6bfee5109f2f6bbb20059d9a5f8",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 105262,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+    "sha256": "66d1107ca7a46d5b3677fe883fcfb93a4ed627e1fc1dbf580918f0be2dc31a8c"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 1942674,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/ROOT-original-controls-expanded-result-v1.json",
+    "sha256": "707484431fd0e1b53afa8bc873c0b7cd234c875627ce5536c213eac9dafb5b9e"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 7907,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/ROOT-original-controls-plan-v1.json",
+    "sha256": "c8196aaeee487c2298fa82b8aed3bc0e112c005878609e9e55f51ed0bc385394"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}

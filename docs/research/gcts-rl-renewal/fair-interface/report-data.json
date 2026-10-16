@@ -1,0 +1,104 @@
+{
+  "consumer_passed": 36,
+  "consumer_skipped": 4,
+  "diagnostic_path": "../cluster-consumer/evidence/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+  "evidence": [
+    {
+      "href": "evidence-manifest.json",
+      "label": "Exact evidence manifest"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Current consumer disposition"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "label": "Whole current consumer record"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "label": "Current original17 controls"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "label": "Current retention17 controls"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "label": "Original17 lossless record"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "label": "Retention17 lossless record"
+    },
+    {
+      "href": "evidence/ROOT-same-Source-comparison-v1.json",
+      "label": "Current admission and comparison"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-cold-ROOT-source-20261016/Source-contract-v5.json",
+      "label": "Current caller contract"
+    },
+    {
+      "href": "../family-retirement/reader.html#results",
+      "label": "Previous milestone and all earlier outcomes"
+    },
+    {
+      "href": "../shared-bounded-proofs/reader.html#reader",
+      "label": "Earlier independently checked conventional proof"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-controls-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent advice_controls review"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-consumer-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent advice_validator review"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-components-independent-source-20261016/adviser-typed-Source-review-v1.json",
+      "label": "Independent adviser review"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-components-independent-source-20261016/engine-typed-Source-review-v1.json",
+      "label": "Independent engine review"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-cold-independent-source-20261016/typed-Source-review-v5.json",
+      "label": "Independent whole caller review"
+    },
+    {
+      "href": "evidence/unit-row-fair-interface-ROOT-review-20261016/ROOT-contract-descriptive-erratum-v1.json",
+      "label": "Inherited descriptive contract erratum"
+    }
+  ],
+  "ready_path": "evidence/unit-row-fair-interface-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+  "result_lead": "\\(36\\) of \\(40\\) controls passed; \\(4\\) skipped. New target searches were not admitted.",
+  "result_scope": "The original search and retention stages each pass all seventeen controls. Current skipped consumer gates block target admission. No new canonical or advised target plan was issued; the earlier target pair remains UNKNOWN.",
+  "schema": "fair-interface-saved-reader-v1",
+  "stages": [
+    {
+      "label": "Original controls",
+      "native_launch_to_postprobe_ns": 6070903000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; \\(0\\) skipped",
+      "peak_bytes": 44449792
+    },
+    {
+      "label": "Domain controls",
+      "native_launch_to_postprobe_ns": 4581637000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; \\(0\\) skipped",
+      "peak_bytes": 65175552
+    },
+    {
+      "label": "Advice controls",
+      "native_launch_to_postprobe_ns": 14224545000,
+      "native_resources_qualified": true,
+      "outcome": "\\(36\\) passed; \\(4\\) skipped",
+      "peak_bytes": 63111168
+    }
+  ],
+  "target_detail": "Current control gaps block launch",
+  "target_label": "NOT ADMITTED"
+}

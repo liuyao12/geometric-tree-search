@@ -1,0 +1,45 @@
+{
+  "base_source": {
+    "bytes": 52581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+    "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+  },
+  "changed_callables": [],
+  "checks": [
+    {
+      "claim": "Current adviser and engine parsed and compile(AST,exec) only; no evaluation.",
+      "id": "SOURCE-1",
+      "passed": true
+    },
+    {
+      "claim": "Both complete raw forward/inverse byte reconstructions verified, and full patches saved.",
+      "id": "RAW-2",
+      "passed": true
+    },
+    {
+      "claim": "Engine module AST exact after removing only VERSION/ADVISER_VERSION/ADVICE_VALIDATOR_VERSION assignments; all callables raw+AST exact.",
+      "id": "ENGINE-3",
+      "passed": true
+    }
+  ],
+  "full_module_AST_exact_except_named_literals": [
+    "VERSION",
+    "ADVISER_VERSION",
+    "ADVICE_VALIDATOR_VERSION"
+  ],
+  "schema": "fair-interface-engine-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+    "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+  },
+  "source_delta": {
+    "bytes": 3635,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/Source-delta-v1.json",
+    "sha256": "0efff367d00b053e516e400066c127bbf12439422d0270e9247b8480631b86d6"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_callable_count": 40
+}

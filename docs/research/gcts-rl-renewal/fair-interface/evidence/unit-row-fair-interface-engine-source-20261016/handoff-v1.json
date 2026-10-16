@@ -1,0 +1,54 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 1754,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/author-static-v1.json",
+    "sha256": "00b47101e361e16ba331e282e4b37c94607b0818bedea374999d677d11f33417"
+  },
+  "base_source": {
+    "bytes": 52581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+    "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+  },
+  "changed_callables": [],
+  "changed_module_literals": {
+    "ADVICE_VALIDATOR_VERSION": "unit-row-independent-advice-consumer-validator-v2-interface-ordering",
+    "ADVISER_VERSION": "unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering",
+    "VERSION": "lazy-unit-row-global-engine-v7-fair-interface-versions"
+  },
+  "paired_sources": {
+    "adviser": {
+      "bytes": 24988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+      "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+    },
+    "consumer_validator": {
+      "bytes": 16290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+      "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+    }
+  },
+  "remaining": "Distinct Source review, current full Source/caller integration, separate controls/actual Root grants required. No function/project execution, Q/model decoding, clocks, tests, plans or actuals here.",
+  "review_schema": "unit-row-goal-advice-engine-typed-Source-review-v1",
+  "review_scope": "unit-row-goal-advice-global-engine-Source",
+  "schema": "unit-row-fair-interface-engine-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+    "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+  },
+  "source_contract": {
+    "bytes": 7416,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/Source-contract-v1.json",
+    "sha256": "c25b20bac38c4ffdecb69368e289cc3aff98f2b0dc0a0778a2787cc425c2f6eb"
+  },
+  "source_delta": {
+    "bytes": 3635,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/Source-delta-v1.json",
+    "sha256": "0efff367d00b053e516e400066c127bbf12439422d0270e9247b8480631b86d6"
+  },
+  "source_only": true,
+  "unchanged_callable_count": 40
+}

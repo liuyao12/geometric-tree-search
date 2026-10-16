@@ -1,0 +1,340 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-advice-whole-family-retirement-controls-v1'
++VERSION = 'unit-row-fair-interface-quality-controls-v1'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -707,3 +707,328 @@
+   result['family_retirement_control_scope']=local
+   tick();return result
+ 
++
++# Keep both previous control functions and all thirty original cases unchanged.
++_run_prior30_controls = run_controls
++
++
++def run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,
++                 fallback,certify_fallback,tick):
++  """Unchanged30 plus ten fair-interface/replacement component controls.
++
++  Observe genuine current returns only. A missing returned descriptor is not
++  evidence of nongeneration; absent reopening/replacement coverage stays a gap.
++  No fair-index calibration, route, fake family, candidate universe or EOF.
++  """
++  labels=('real-returned-interface-features-score-and-order',
++    'forged-interface-feature-and-score-rejections',
++    'Boolean-versus-integer-feature-and-score-rejections',
++    'obsolete-adviser-version-rejected',
++    'later-ranked-quality-defect-and-order-rejected',
++    'real-returned-root-reopening-remains-legal-and-demoted',
++    'real-returned-universal-diversity-with-declared-term-horizon',
++    'nonempty-READY-replacement-adopted-after-definite-rejection',
++    'replacement-installs-anchor-only-not-future-obligations',
++    'replacement-owned-nonempty-inner-and-parent-rollback-exact')
++  records=[];extra=[];evidence={};returned={}
++  local='Genuine current original-language returned-batch and owned-search controls; no degree, proof, speed, learned marking or RL authority.'
++  seam='CONTROL ONLY: malformed literal packets or order-preserving suppression after whole real-batch validation; never used by target search.'
++  def passed(name,value,scope=local):
++    tick();extra.append({'case':name,'status':'PASSED','observed':copy.deepcopy(value),'scope':scope})
++  def skip(name,reason):
++    extra.append({'case':name,'status':'SKIPPED','observed':{'reason':str(reason)},
++      'scope':'Unexercised interface/replacement coverage remains an explicit unqualified gate.'})
++  def remember(s,d,b):
++    tick()
++    if b.get('status')=='READY' and b.get('proposals'):
++      key=digest(b)
++      if key not in returned:
++        returned[key]={'state':copy.deepcopy(s),'decision':copy.deepcopy(d),'batch':copy.deepcopy(b)}
++  def actual_adviser(**kwargs):
++    tick();b=adviser(**kwargs)
++    remember(kwargs['state'],kwargs['decision'],b)
++    return b
++  def observing_factory(*,initial_state=None,degree_proposer=degree_proposer,
++                        fallback=fallback,certify_fallback=certify_fallback,
++                        branch_adviser=None,validate_advice=None,tick):
++    if branch_adviser is None:
++      return engine_factory(initial_state=initial_state,degree_proposer=degree_proposer,
++        fallback=fallback,certify_fallback=certify_fallback,
++        branch_adviser=None,validate_advice=None,tick=tick)
++    record={'mode':'PRIOR30','engine':None,'token':None,'snapshot':None,
++      'rejection':None,'replacement':None,'replacement_attempt':None,'child_token':None,'child_snapshot':None,
++      'fresh_calls':0}
++    records.append(record)
++    prior_degree,prior_adviser,prior_validator=degree_proposer,branch_adviser,validate_advice
++    def observed_degree(**kwargs):
++      tick()
++      if record['mode']=='PRIOR30':return prior_degree(**kwargs)
++      if record['replacement'] is not None:
++        current=record['engine'].state_snapshot()
++        if current['pending_preferences'] is not None:
++          record['child_snapshot']=current
++          record['child_token']=record['engine'].checkpoint()
++          raise CallbackExhausted('declared stable stop after genuine READY replacement anchor adoption and placement')
++      return degree_endpoint(**kwargs)
++    def observed_adviser(**kwargs):
++      tick()
++      if record['mode']=='PRIOR30':return prior_adviser(**kwargs)
++      record['fresh_calls']+=1
++      need(record['fresh_calls']==1,'at most one fresh batch at the same actual rejected BRANCH')
++      b=adviser(**kwargs,maximum_work=50000,maximum_terms=1,
++        maximum_demands=5,maximum_rounds=3,maximum_proposals=8)
++      remember(kwargs['state'],kwargs['decision'],b)
++      record['replacement_attempt']={'state':copy.deepcopy(kwargs['state']),
++        'decision':copy.deepcopy(kwargs['decision']),'whole_actual_batch':copy.deepcopy(b),
++        'diagnostic_only':True,'authority_accepted':False}
++      if b['status']!='READY':
++        raise Unavailable('Actual replacement batch is '+str(b['status'])+'; partial proposals are diagnostic only.')
++      full_receipt=validator_endpoint(state=copy.deepcopy(kwargs['state']),
++        decision=copy.deepcopy(kwargs['decision']),batch=copy.deepcopy(b),tick=tick)
++      # Validate EVERY genuine ranked proposal before optional suppression.
++      positions=[i for i,p in enumerate(b['proposals']) if len(p['members'])>1]
++      if not positions:
++        raise Unavailable('Actual validated READY replacement has no genuine future-bearing family.')
++      index=positions[0];restricted=copy.deepcopy(b)
++      restricted['proposals']=[copy.deepcopy(b['proposals'][index])]
++      receipt=validator_endpoint(state=copy.deepcopy(kwargs['state']),
++        decision=copy.deepcopy(kwargs['decision']),batch=copy.deepcopy(restricted),tick=tick)
++      need(receipt['selection'] is not None and receipt['selection']['future_keys'],
++        'order-preserving real subselection has nonempty independently checked future preferences')
++      record['replacement']={'state':copy.deepcopy(kwargs['state']),
++        'decision':copy.deepcopy(kwargs['decision']),'whole_actual_batch':copy.deepcopy(b),
++        'whole_actual_receipt':copy.deepcopy(full_receipt),
++        'control_only_selected_index':index,'executed_batch':restricted,
++        'executed_receipt':copy.deepcopy(receipt),
++        'suppression_scope':'CONTROL ONLY whole real batch validated first; one actual proposal retained in original order; never target policy.'}
++      return restricted
++    def observed_validator(**kwargs):
++      tick();receipt=prior_validator(**kwargs) if record['mode']=='PRIOR30' else validator_endpoint(**kwargs)
++      if (record['mode']=='PRIOR30' and record['token'] is None
++          and receipt['mode']=='PENDING_KEYS' and receipt['rejections']):
++        record['snapshot']=record['engine'].state_snapshot()
++        record['token']=record['engine'].checkpoint()
++        record['rejection']={'state':copy.deepcopy(kwargs['state']),
++          'decision':copy.deepcopy(kwargs['decision']),'request':copy.deepcopy(kwargs['batch']),
++          'receipt':copy.deepcopy(receipt)}
++      return receipt
++    e=engine_factory(initial_state=initial_state,degree_proposer=observed_degree,
++      fallback=fallback,certify_fallback=certify_fallback,
++      branch_adviser=observed_adviser,validate_advice=observed_validator,tick=tick)
++    record['engine']=e
++    return e
++  degree_endpoint=degree_proposer;validator_endpoint=validate_advice
++  result=_run_prior30_controls(language=language,engine_factory=observing_factory,adviser=actual_adviser,
++    validate_advice=validate_advice,degree_proposer=degree_proposer,fallback=fallback,
++    certify_fallback=certify_fallback,tick=tick)
++  need(result['declared_cases']==30 and len(result['cases'])==30,'all prior30 run exactly once unchanged')
++
++  # Recompute from full candidate ports and actual state, independently of the
++  # proposal's feature diagnostics. The actual independent validator separately
++  # reconstructs all members and temporary point unions, including later ranks.
++  def nodes(value):
++    stack=[value]
++    while stack:
++      tick();node=stack.pop()
++      if type(node) is list:
++        yield node
++        stack.extend(reversed([x for x in node if type(x) is list]))
++  def features(s,d,p):
++    totals={tuple(point):value for point,value in s['t']}
++    marks={tuple(point):value for point,value in s['m']}
++    root_nodes=set()
++    for row in range(d['row'],24):
++      tick()
++      if totals[(0,row)]==0 and (1,row) in marks:
++        value=marks[(1,row)]
++        need(type(value) is list and len(value)==2 and value[0]=='formula','literal unfilled current root formula')
++        root_nodes.update(canonical(n) for n in nodes(json.loads(value[1])))
++    members=p['members'];member_rows={m['candidate']['placement_key']['translation'][1] for m in members}
++    interfaces=set();external_occurrences=0
++    for m in members:
++      tick();key=m['candidate']['placement_key'];pre=key['type_preimage'];row=key['translation'][1]
++      for formula,offset in zip(pre['ordered_premise_formulas'],pre['ordered_offsets']):
++        tick();read=row+offset
++        if read not in member_rows and totals[(0,read)]==0:
++          interfaces.add((read,canonical(formula)));external_occurrences+=1
++    root=p['goal_root']
++    connected=root is not None and any(
++      m['candidate']['placement_key']['translation'][1]==root['row'] and
++      canonical(m['candidate']['placement_key']['type_preimage']['primitive_witness']['formula'])==canonical(root['formula'])
++      for m in members)
++    reopens=root is not None and any(f==canonical(root['formula']) for _,f in interfaces)
++    quality=0 if reopens else 2 if connected else 1
++    anchor=p['anchor_full_key'];formula=anchor['type_preimage']['primitive_witness']['formula']
++    selected={canonical(r['type_preimage']['primitive_witness']['formula']) for r in s['selected']}
++    novel=canonical(formula) not in selected
++    overlap=sum(canonical(n) in root_nodes for n in nodes(formula))
++    f={'goal_connected':connected,'anchor_novel':novel,'literal_list_subtree_overlap':overlap,
++      'primitive_members':len(members),'quality_class':quality,'reopens_root':reopens,
++      'unresolved_interface_pairs':len(interfaces)}
++    score=[quality,-len(interfaces),int(novel),overlap,-len(members)]
++    need(canonical(p['ranking_features'])==canonical(f) and canonical(p['score'])==canonical(score),
++      'independent literal seven features and score5, Boolean distinct from integer')
++    return {'features':f,'score':score,'distinct_unoccupied_external_pairs':[[r,json.loads(x)] for r,x in sorted(interfaces)],
++      'unoccupied_external_port_occurrences':external_occurrences}
++  def check(s,d,b):
++    tick();r=validate_advice(state=copy.deepcopy(s),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=tick)
++    need(all(r[k] is False for k in STRONG_FLAGS),'independent receipt stronger flags all false')
++    return r
++  def reject(s,d,b,expected):
++    tick();reason=None
++    try:check(s,d,b)
++    except ValueError as ex:
++      if type(ex) is not ValueError:raise
++      reason=str(ex)
++    tick();need(reason=='advice consumer: '+expected,'exact malformed rejection, not resource/custody failure')
++    return {'exception_type':'ValueError','reason':reason,'malformed_batch_sha256':digest(b)}
++  fixture=result['artifacts'].get('fixture')
++  if fixture is None:
++    for label in labels[:7]:skip(label,'No genuine returned READY fixture; no fabricated quality or generation evidence.')
++  else:
++    s,d,b=fixture['state'],fixture['decision'],fixture['batch']
++    need(b['version']=='unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering','actual current fair-interface adviser version')
++    receipt=check(s,d,b);rows=[features(s,d,p) for p in b['proposals']]
++    order=[(tuple(-v for v in p['score']),canonical(p['anchor_full_key'])) for p in b['proposals']]
++    need(order==sorted(order),'actual whole returned batch has exact score5/full-anchor tie order')
++    evidence['scoring']={'source_artifact':'fixture.batch','actual_batch_sha256':digest(b),
++      'actual_independent_receipt':receipt,'recomputed_rows':rows,
++      'scope':'Distinct interface pairs, not repeated port occurrences; no causal reuse or generation-completeness claim.'}
++    passed(labels[0],{'artifact':'fair_interface.scoring','returned_proposals':len(rows)})
++    changes=(('quality_class',lambda p:p['ranking_features'].__setitem__('quality_class',p['ranking_features']['quality_class']+1),'independent advisory feature values'),
++      ('reopens_root',lambda p:p['ranking_features'].__setitem__('reopens_root',not p['ranking_features']['reopens_root']),'independent advisory feature values'),
++      ('unresolved_interface_pairs',lambda p:p['ranking_features'].__setitem__('unresolved_interface_pairs',p['ranking_features']['unresolved_interface_pairs']+1),'independent advisory feature values'),
++      ('score_interface_penalty',lambda p:p['score'].__setitem__(1,p['score'][1]-1),'independent literal advisory score'))
++    mutations=[]
++    for label,edit,why in changes:
++      value=copy.deepcopy(b);edit(value['proposals'][0])
++      mutations.append({'mutation':label,'result':reject(s,d,value,why)})
++    passed(labels[1],{'source_batch_sha256':digest(b),'mutations':mutations},seam)
++    mutations=[]
++    for label,edit,why in (
++        ('integer-for-Boolean',lambda p:p['ranking_features'].__setitem__('goal_connected',int(p['ranking_features']['goal_connected'])),'independent advisory feature values'),
++        ('Boolean-for-score-int',lambda p:p['score'].__setitem__(2,bool(p['score'][2])),'independent literal advisory score'),
++        ('Boolean-for-feature-int',lambda p:p['ranking_features'].__setitem__('quality_class',bool(p['ranking_features']['quality_class'])),'independent advisory feature values')):
++      value=copy.deepcopy(b);edit(value['proposals'][0]);mutations.append({'mutation':label,'result':reject(s,d,value,why)})
++    passed(labels[2],{'source_batch_sha256':digest(b),'mutations':mutations},seam)
++    value=copy.deepcopy(b);value['version']='unit-row-generic-goal-branch-adviser-v1'
++    passed(labels[3],reject(s,d,value,'whole current READY batch only'),seam)
++    if len(b['proposals'])<2:skip(labels[4],'Fewer than two genuine returned proposals; no later-rank/order mutation.')
++    else:
++      value=copy.deepcopy(b);value['proposals'][-1]['score'][0]+=1
++      later=reject(s,d,value,'independent literal advisory score')
++      value=copy.deepcopy(b);value['proposals'].reverse()
++      ordered=reject(s,d,value,'whole original ranked batch order')
++      passed(labels[4],{'later_proposal':later,'reversed_actual_order':ordered},seam)
++    reopening=[];diversity=[];universals=set();terms=set()
++    for batch_sha,entry in returned.items():
++      tick();batch=entry['batch'];st=entry['state'];dec=entry['decision']
++      observed_receipt=check(st,dec,batch)
++      for index,p in enumerate(batch['proposals']):
++        observed=features(st,dec,p)
++        for m in p['members']:
++          w=m['candidate']['placement_key']['type_preimage']['primitive_witness']
++          if w['rule']=='instantiate':universals.add(canonical(w['universal']));terms.add(canonical(w['term']))
++        if observed['features']['reopens_root']:
++          reopening.append((batch_sha,entry,index,observed))
++      diversity.append({'batch_sha256':batch_sha,'state_sha256':batch['state_sha256'],
++        'limits':copy.deepcopy(batch['limits']),'work':copy.deepcopy(batch['work']),
++        'returned_proposals':len(batch['proposals']),
++        'independent_receipt_sha256':digest(observed_receipt)})
++    evidence['returned_observations']={'batches':diversity,'distinct_returned_UI_universals':[json.loads(x) for x in sorted(universals)],
++      'distinct_returned_UI_terms':[json.loads(x) for x in sorted(terms)],
++      'limitations':'Returned top-k only; best-per-full-anchor and top-k discard descriptors. Absence never proves nongeneration. terms1 controls cannot establish multi-term runtime fairness; finite-index scheduling has static review only.'}
++    if not reopening:skip(labels[5],'No genuine returned root-reopening proposal; lawful generation/demotion runtime coverage remains a gap, never fabricated.')
++    else:
++      sha,entry,index,observed=reopening[0];r=check(entry['state'],entry['decision'],entry['batch'])
++      need(observed['features']['quality_class']==0 and entry['batch']['proposals'][index]['installed'] is False,
++        'literal open-root debt remains legal but class0, not pruned or installed')
++      evidence['reopening']={'actual_batch':entry,'proposal_index':index,'recomputed':observed,'independent_receipt':r}
++      passed(labels[5],{'artifact':'fair_interface.reopening','actual_returned_class':0})
++    if len(universals)<2:
++      skip(labels[6],'Fewer than two distinct UI universal descriptors genuinely returned. No inference about unseen generation/top-k; terms1 horizon unchanged.')
++    else:passed(labels[6],{'artifact':'fair_interface.returned_observations',
++      'distinct_returned_universals':len(universals),'distinct_returned_terms':len(terms),
++      'scope':'Observed returned universal diversity only; no multi-term fairness, complete generation or absence claim.'})
++
++  candidates=[r for r in records if r['token'] is not None]
++  if len(candidates)!=1:
++    for label in labels[7:]:skip(label,'No unique genuine completed pending-rejection checkpoint; no synthetic replacement family.')
++  else:
++    record=candidates[0];e=record['engine'];outer=e.checkpoint();outer_snapshot=e.state_snapshot()
++    inner=record['snapshot'];old_pending=inner['pending_preferences'];reason=None
++    try:
++      e.rollback(record['token']);before=e.state_snapshot()
++      need(canonical(before)==canonical(inner),'actual pending-rejection owned token restores full parent')
++      record['mode']='READY_REPLACEMENT';record['fresh_calls']=0
++      try:r=e.search()
++      except Unavailable as ex:reason=str(ex)
++      if reason is None:
++        after=e.state_snapshot();child=record['child_snapshot'];replacement=record['replacement']
++        if child is None or record['child_token'] is None:
++          reason='Actual search did not reach stable nonempty READY replacement child before UNKNOWN.'
++        else:
++          need(r['status']=='UNKNOWN' and r['found'] is None and r['root_restored'] is True
++            and r['stack_restored'] is True and canonical(after)==canonical(before),
++            'native-first declared interruption restores full real rejection parent')
++          need(record['fresh_calls']==1 and not any(x['kind']=='EXCLUDE' for x in r['events']),
++            'one fresh actual batch; interruption/rejection never excludes a base child')
++          need(canonical(replacement['state'])==canonical(record['rejection']['state'])
++            and canonical(replacement['decision'])==canonical(record['rejection']['decision']),
++            'fresh READY replacement at exact same actual independently rejected BRANCH')
++          events=[x for x in r['events'] if x['kind']=='ADVICE' and x['abandoned_family'] is not None]
++          need(len(events)==1 and events[0]['mode']=='ADVICE_BATCH'
++            and events[0]['abandoned_family']['family_id']==old_pending['family_id'],
++            'whole old family abandoned then genuine replacement adopted inside same child')
++          fresh=child['pending_preferences'];selection=replacement['executed_receipt']['selection']
++          need(fresh is not None and fresh['pending_keys'] and fresh['family_id']!=old_pending['family_id']
++            and canonical(fresh)==canonical(events[0]['pending_preferences'])
++            and {canonical(k) for k in fresh['pending_keys']}=={canonical(k) for k in selection['future_keys']},
++            'actual new nonempty advisory family, never fabricated pending state')
++          evidence['replacement']={**replacement,'actual_rejection':record['rejection'],
++            'before':before,'child':child,'actual_result':r,'after':after}
++          passed(labels[7],{'artifact':'fair_interface.replacement','same_branch_fresh_calls':record['fresh_calls']},seam)
++          anchor=selection['anchor'];selected_before={canonical(x) for x in before['state']['selected']}
++          selected_after={canonical(x) for x in child['state']['selected']}
++          expected_record=copy.deepcopy(anchor['selection_record'])
++          need(selected_after-selected_before=={canonical(expected_record)} and selected_before<=selected_after,
++            'exactly independently selected current anchor added, never a future member')
++          expected_tiles=[]
++          for rec in before['state']['selected']:
++            pre=rec['type_preimage'];row=rec['translation'][1]
++            expected_tiles.append(tile(language,pre['primitive_witness'],pre['ordered_premise_formulas'],
++              [row+d for d in pre['ordered_offsets']],row,tick))
++          expected=state(language,expected_tiles+[anchor],tick,before['state']['excluded'])
++          need(canonical(expected)==canonical(child['state']),
++            'full child t/m/generations/exclusions equal old selected state plus exactly real anchor')
++          installed={canonical({k:rec[k] for k in ('tile_type_id','type_preimage','translation')}) for rec in child['state']['selected']}
++          need(all(canonical(k) not in installed for k in fresh['pending_keys']),
++            'all replacement future keys remain uninstalled preferences, read obligations not facts')
++          passed(labels[8],{'artifact':'fair_interface.replacement','added_anchor':anchor['placement_key'],
++            'future_keys_remain_preferences':fresh['pending_keys']})
++          e.rollback(record['child_token'])
++          need(canonical(e.state_snapshot())==canonical(child),'public owned child token restores exact nonempty replacement family')
++          child_sha=digest(e.state_snapshot());e.rollback(record['token'])
++          need(canonical(e.state_snapshot())==canonical(before),'public owned original parent token restores whole old pending family')
++          passed(labels[9],{'new_child_snapshot_sha256':digest(child),'restored_child_sha256':child_sha,
++            'old_parent_sha256':digest(before),'restored_parent_sha256':digest(e.state_snapshot()),
++            'search_root_sha256':r['root_snapshot_sha256'],'search_final_sha256':r['final_snapshot_sha256']})
++      if record['replacement_attempt'] is not None:
++        evidence['replacement_attempt']=record['replacement_attempt']
++      if reason is not None:
++        for label in labels[7:]:skip(label,reason)
++    finally:
++      record['mode']='PRIOR30';e.rollback(outer)
++      need(canonical(e.state_snapshot())==canonical(outer_snapshot),'exact finished prior30 outer snapshot restored')
++  need(len(extra)==10 and {x['case'] for x in extra}==set(labels),'all ten new declared gates retained exactly once')
++  result['cases'].extend(extra);result['artifacts']['fair_interface']=evidence
++  need(len(result['cases'])==40 and len({x['case'] for x in result['cases']})==40,'all forty unique cases, no old gate replaced')
++  result['version']=VERSION;result['declared_cases']=40
++  result['passed']=sum(x['status']=='PASSED' for x in result['cases'])
++  result['skipped']=sum(x['status']=='SKIPPED' for x in result['cases'])
++  result['unqualified_consumer_gates']=[x['case'] for x in result['cases'] if x['status']=='SKIPPED']
++  result['all_advice_consumer_gates_qualified']=not result['unqualified_consumer_gates'] and not result['additional_coverage_gaps']
++  result['fair_interface_scope']=local
++  result['no_generation_claim_from_topk_absence']=True
++  result['control_only_real_order_preserving_suppression_never_target_policy']=True
++  tick();return result

@@ -1,0 +1,155 @@
+{
+  "changed_source_roles": [
+    "advice_controls",
+    "advice_validator",
+    "adviser",
+    "engine",
+    "intake"
+  ],
+  "compile_only": true,
+  "complete_forward_and_inverse_exact": true,
+  "edits": [
+    {
+      "after": "{'bytes': 52615, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py', 'sha256': '4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975'}",
+      "before": "{'bytes': 52581, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py', 'sha256': '0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8'}"
+    },
+    {
+      "after": "{'bytes': 24988, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py', 'sha256': 'a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae'}",
+      "before": "{'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py', 'sha256': 'c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb', 'bytes': 21913}"
+    },
+    {
+      "after": "{'bytes': 16290, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py', 'sha256': '3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f'}",
+      "before": "{'bytes': 15295, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py', 'sha256': 'f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317'}"
+    },
+    {
+      "after": "{'bytes': 71685, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py', 'sha256': '1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f'}",
+      "before": "{'bytes': 48798, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py', 'sha256': '183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e'}"
+    },
+    {
+      "after": "VERSION='unit-row-fair-interface-cold-v5'",
+      "before": "VERSION='unit-row-advice-family-retirement-cold-v4'"
+    },
+    {
+      "after": "SCOPE='unit-row-fair-interface-cold-Source'",
+      "before": "SCOPE='unit-row-advice-family-retirement-cold-Source'"
+    },
+    {
+      "after": "contract['schema'] == 'unit-row-fair-interface-cold-Source-contract-v5'",
+      "before": "contract['schema'] == 'unit-row-advice-family-retirement-cold-Source-contract-v4'"
+    }
+  ],
+  "output_native_exit_suffix_raw_exact": true,
+  "parent": {
+    "bytes": 49615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/unit_row_advice_family_retirement_cold_v4.py",
+    "sha256": "5b88a8c096e8e55bad143c313749594d58631117584d4c9d34cf74c1a9dfcb95"
+  },
+  "schema": "fair-interface-cold-independent-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 49561,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-cold-ROOT-source-20261016/unit_row_fair_interface_cold_v5.py",
+    "sha256": "cea5a036a2e25b0e861a1f111b347edf121eab44fbfa3c0ff2495cfdfd8174c5"
+  },
+  "source_only": true,
+  "unchanged_nested_regions": [
+    "all_function_anchors.retain",
+    "save_failure_diagnostic.failure_gate",
+    "save_failure_diagnostic.encoded",
+    "save_failure_diagnostic.encoded.append",
+    "save_failure_diagnostic.encoded.visit",
+    "save_failure_diagnostic.write",
+    "main.tick",
+    "main.guard",
+    "main.boundary",
+    "main.fresh_language",
+    "main.proposer_adapter",
+    "main.proposer_adapter.step",
+    "main.fallback_adapter",
+    "main.fallback_adapter.step",
+    "main.certify_adapter",
+    "main.certify_adapter.step",
+    "main.engine_factory",
+    "main.engine_factory.step",
+    "main.transition_adapter",
+    "main.transition_adapter.step",
+    "main.refresh_adapter",
+    "main.refresh_adapter.step",
+    "main.scheduler_adapter",
+    "main.scheduler_adapter.step",
+    "main.adviser_adapter",
+    "main.adviser_adapter.step",
+    "main.validate_advice_adapter",
+    "main.validate_advice_adapter.step",
+    "main.validate_found",
+    "main.run_original_search"
+  ],
+  "unchanged_region_raw_sha256": {
+    "all_function_anchors": "13b843c4a86b48ba4325ec0e4d6cae1f50ecf87cd15bb6882e7f1e656eeb1359",
+    "all_function_anchors.retain": "545a99e78fec2f1fee974aafa1cc53c74d15328db204441e89b1a7e6f6c88911",
+    "anchor": "e00439d659af69218d5fb48534b3615f92e6737e3b74afda44294f1a97aa2b6c",
+    "cancel": "d327a3226ace0a4d887a608ccdc928f0cc0b6033596e838c9870f832a29c74f6",
+    "canonical": "e6f971ed204c525efc31169468bb2a064b7f288125d209e173546ae01d5d06f6",
+    "decode": "999bf233b04fd8e6a14093aaafad9f5d80739f2a17517a9717dc049a52f07725",
+    "encode_result_transport": "e1d266a0be0b0e96c8fa678b1441b89c945dee6c90a6a08b3968a6fa44d4d35f",
+    "finite_float": "6fcd00fac31cc9001d8f46395a4acc5893feee0c1b666207c1004e385c94ff8d",
+    "invoke": "c9cd7507b2f1b643263b4b76677384f2cfb24349a3dccba72ec42d3801f7e192",
+    "load_module": "19ec4f92b0d05a91fe9df37ab8a636dfe7fdc18e15a31db717c2c4fbec0a8940",
+    "main.adviser_adapter": "6c62d61d663c1a29f90344a21e1b63ed53df367ad82dd42b2f47020298c7966c",
+    "main.adviser_adapter.step": "4a07d58199f7c3bcbcc6de832fbb9530fd2372a4288e64f3fe02c0a2d5a4b7d3",
+    "main.boundary": "bf3c63ea7b752482bb159a498c15ee37a35f5ca7a510ad76d541afec0bfea09a",
+    "main.certify_adapter": "ec2300c5f2edcfd7e39fb0707bcb615e8b9a015025780202dab9ed33ef367e76",
+    "main.certify_adapter.step": "4a07d58199f7c3bcbcc6de832fbb9530fd2372a4288e64f3fe02c0a2d5a4b7d3",
+    "main.engine_factory": "df27dab690f17d94b23f72c8982c6f1d090ead5983352bc2148d0e09475d4d56",
+    "main.engine_factory.step": "4a07d58199f7c3bcbcc6de832fbb9530fd2372a4288e64f3fe02c0a2d5a4b7d3",
+    "main.fallback_adapter": "2f5aba9d9bb7902c4577aac0ed0d7bc9ba431874721397d837f45906e8fd7f66",
+    "main.fallback_adapter.step": "4a07d58199f7c3bcbcc6de832fbb9530fd2372a4288e64f3fe02c0a2d5a4b7d3",
+    "main.fresh_language": "43d5b20c9935af6276b585a706642b2bd4bcc5bfcf1eabf9ca9cb631ab25e2a1",
+    "main.guard": "8d1cb8f24273a9e52ddbd4c617a0ac0f238d4a97b1554cb758cb4d7dfa333b0d",
+    "main.proposer_adapter": "335236e08aada5b77513d465d5b1119434c2d51ca23e13668a5315566ef54fc5",
+    "main.proposer_adapter.step": "4a07d58199f7c3bcbcc6de832fbb9530fd2372a4288e64f3fe02c0a2d5a4b7d3",
+    "main.refresh_adapter": "ed7152972ee538481629793b2cb16610ad173f711d6817f8e0e05bbf7b40b392",
+    "main.refresh_adapter.step": "4a07d58199f7c3bcbcc6de832fbb9530fd2372a4288e64f3fe02c0a2d5a4b7d3",
+    "main.run_original_search": "6862b1daa3e4cd3ed9e6c21b695f6a3ffbe188a855a672a4b8a530e4e0138f51",
+    "main.scheduler_adapter": "b400bc40f8e114d927be5a01addae398f3f7346bd7f81c2547dc16bb27bda0ab",
+    "main.scheduler_adapter.step": "4a07d58199f7c3bcbcc6de832fbb9530fd2372a4288e64f3fe02c0a2d5a4b7d3",
+    "main.tick": "cc4ea1b00fc9ec2c2461938567995efcb98d879bf03719c1826be47ed394cbb4",
+    "main.transition_adapter": "d1fec00967c9739d5a5d5764367d43870d6e285096307e4f3edb80c749896671",
+    "main.transition_adapter.step": "4a07d58199f7c3bcbcc6de832fbb9530fd2372a4288e64f3fe02c0a2d5a4b7d3",
+    "main.validate_advice_adapter": "407fd31d036e4f35060ff321355b6c84cf9f3e7d816bd73b9b48b829ccd06ebf",
+    "main.validate_advice_adapter.step": "4a07d58199f7c3bcbcc6de832fbb9530fd2372a4288e64f3fe02c0a2d5a4b7d3",
+    "main.validate_found": "abf4b97987bf141b4f4d557176acaea12d3d5f7f62b9294b859bad854c2d9cee",
+    "need": "28db3a733fb01ddff1ff5744ade203bedc8ed7f83fc600866196573c4b1fd6ae",
+    "raw_pin": "553ef4f145fc0015daa3593925312a69b20bfbb094bc91302e9fe9a002e45b73",
+    "read_pinned": "4999ee31234e0f9f9f2a9cd6f3bd5a36d6a6ad030b41f1eca71bfb5bc9743e60",
+    "reject_constant": "fbf6f011a2bf3364a0f5cb587fe09a5f7aa9ef63bb10054210fa4075beb2e21d",
+    "same": "1eb7a8d73d2e404d18052c944c2590616739fa6b2d674c584676a85a486b2ec7",
+    "save_failure_diagnostic": "bdfa02dfb97d2a7afb1439a404a9197ac64e36a75df0470bdff6b262b427484a",
+    "save_failure_diagnostic.encoded": "26a3b2eacbacde6d12d4489f0cdf8f5ae1ec07932c4fda899cafd539d6db6ab9",
+    "save_failure_diagnostic.encoded.append": "288da430f44f2e0af2e7e2a7b134bfca1dc58cf5888c77ac5a91855a786baf2f",
+    "save_failure_diagnostic.encoded.visit": "8dd69ad4d346be09c1f087cd9e8ab0450a7f8923e78b70fc84542c7b71139888",
+    "save_failure_diagnostic.failure_gate": "1af31e83f4f3826f8dfd5aea23a5b3cf4a765630fa9253029f9ddf4ec55817c0",
+    "save_failure_diagnostic.write": "d9c7efe87382673663e7b62b23a7be2d06cb99ef7e1a75581abf34853b792288",
+    "unique": "ad825c5063675a2f7eed3132945ca740591f98dce1d82dd9780d9cba73d1f1ba",
+    "write_new": "615dccd12447228f9b2eb6726df54a1447d105001b8b5925bc46c7ce47f140bf"
+  },
+  "unchanged_top_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

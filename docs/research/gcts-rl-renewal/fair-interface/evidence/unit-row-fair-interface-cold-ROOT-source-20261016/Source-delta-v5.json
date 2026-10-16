@@ -1,0 +1,45 @@
+{
+  "edits": [
+    {
+      "after": "{'bytes': 52615, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py', 'sha256': '4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975'}",
+      "before": "{'bytes': 52581, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py', 'sha256': '0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8'}"
+    },
+    {
+      "after": "{'bytes': 24988, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py', 'sha256': 'a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae'}",
+      "before": "{'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py', 'sha256': 'c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb', 'bytes': 21913}"
+    },
+    {
+      "after": "{'bytes': 16290, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py', 'sha256': '3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f'}",
+      "before": "{'bytes': 15295, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py', 'sha256': 'f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317'}"
+    },
+    {
+      "after": "{'bytes': 71685, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py', 'sha256': '1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f'}",
+      "before": "{'bytes': 48798, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py', 'sha256': '183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e'}"
+    },
+    {
+      "after": "VERSION='unit-row-fair-interface-cold-v5'",
+      "before": "VERSION='unit-row-advice-family-retirement-cold-v4'"
+    },
+    {
+      "after": "SCOPE='unit-row-fair-interface-cold-Source'",
+      "before": "SCOPE='unit-row-advice-family-retirement-cold-Source'"
+    },
+    {
+      "after": "contract['schema'] == 'unit-row-fair-interface-cold-Source-contract-v5'",
+      "before": "contract['schema'] == 'unit-row-advice-family-retirement-cold-Source-contract-v4'"
+    }
+  ],
+  "entire_inverse_recovers_parent": true,
+  "parent": {
+    "bytes": 49615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-cold-ROOT-source-20261016/unit_row_advice_family_retirement_cold_v4.py",
+    "sha256": "5b88a8c096e8e55bad143c313749594d58631117584d4c9d34cf74c1a9dfcb95"
+  },
+  "schema": "ROOT-fair-interface-cold-Source-delta-v5",
+  "scope": "Four component pins and own VERSION/SCOPE/consumed schema only; all17 helpers/nestedfunctions/output-nativeexit exact.",
+  "source": {
+    "bytes": 49561,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-cold-ROOT-source-20261016/unit_row_fair_interface_cold_v5.py",
+    "sha256": "cea5a036a2e25b0e861a1f111b347edf121eab44fbfa3c0ff2495cfdfd8174c5"
+  }
+}

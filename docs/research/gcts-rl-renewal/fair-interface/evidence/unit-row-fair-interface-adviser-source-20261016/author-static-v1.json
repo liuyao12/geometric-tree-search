@@ -1,0 +1,85 @@
+{
+  "check_count": 13,
+  "checks": [
+    {
+      "claim": "Current adviser and engine parsed and compile(AST,exec) only; no evaluation.",
+      "id": "SOURCE-1",
+      "passed": true
+    },
+    {
+      "claim": "Both complete raw forward/inverse byte reconstructions verified, and full patches saved.",
+      "id": "RAW-2",
+      "passed": true
+    },
+    {
+      "claim": "Engine module AST exact after removing only VERSION/ADVISER_VERSION/ADVICE_VALIDATOR_VERSION assignments; all callables raw+AST exact.",
+      "id": "ENGINE-3",
+      "passed": true
+    },
+    {
+      "claim": "Raw+AST unchanged and changed/new callable census is saved in full delta.",
+      "id": "ADVISER-4",
+      "passed": true
+    },
+    {
+      "claim": "All nine old strong-flag names exact and false; outer batch/proposal schemas and WORK_FIELDS unchanged by static Source inspection.",
+      "id": "FLAGS-5",
+      "passed": true
+    },
+    {
+      "claim": "Own public API default/ceiling literals unchanged; selected Root 5/3/proposals8/work50000/controlterms1/targetterms16 remain caller configuration.",
+      "id": "LIMITS-6",
+      "passed": true
+    },
+    {
+      "claim": "Score5 and seven features exact Root specification and independent consumer3455 literal ABI.",
+      "id": "RANK-7",
+      "passed": true
+    },
+    {
+      "claim": "Incremental bounded inverse UG streams replace eager breadth materialization; unfilled/read-compatible prior rows with UI_MP source slack first.",
+      "id": "FRAME-8",
+      "passed": true
+    },
+    {
+      "claim": "Finite positive index boxes enumerated lazily by increasing coordinate sum and earlier-axis-first within each shell; no Cartesian list.",
+      "id": "FAIR-9",
+      "passed": true
+    },
+    {
+      "claim": "Original tile/private-state/member-union/fallback validation helpers and exact OutsideLanguage handling remain unchanged.",
+      "id": "CANDIDATE-10",
+      "passed": true
+    },
+    {
+      "claim": "Existing TimeoutError-to-diagnostic-UNKNOWN behavior and explicit original fallback remain; no zero/one/EOF authority added.",
+      "id": "UNKNOWN-11",
+      "passed": true
+    },
+    {
+      "claim": "All retained baseline contract references rehashed from literal raw bytes; current pairing capsules exact.",
+      "id": "REFS-12",
+      "passed": true
+    },
+    {
+      "claim": "Current Source has no C0 controls except ordinary whitespace.",
+      "id": "TEXT-13",
+      "passed": true
+    }
+  ],
+  "method": "stdlib raw Source hashes/AST/compile without evaluation; static assertions only, not tests or mathematical execution.",
+  "schema": "fair-interface-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 24988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+    "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+  },
+  "source_delta": {
+    "bytes": 17022,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/Source-delta-v1.json",
+    "sha256": "ea6177c91e9e0e1175b4cc14cc19ae31e7b3f0bd0df37b74425e2f0d2fe2e22e"
+  },
+  "source_only": true
+}

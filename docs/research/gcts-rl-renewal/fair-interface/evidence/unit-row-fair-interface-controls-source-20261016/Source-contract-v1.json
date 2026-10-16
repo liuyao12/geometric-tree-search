@@ -1,0 +1,198 @@
+{
+  "API": {
+    "call": "run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,fallback,certify_fallback,tick)",
+    "expected_cases": 40,
+    "factory": "Same actual original engine public constructor callbacks; optional observed callback wrappers. Fresh authority/custody/native tick remain Root-owned. No new endpoint/fair_indices parameter.",
+    "keyword_count": 8,
+    "new_cases": 10,
+    "new_cases_key": "new_cases",
+    "output_schema": "unit-row-goal-advice-controls-v1",
+    "preserved_prior_cases": 30,
+    "qualification": "All40 PASSED0SKIP/no additional gap plus every other current Root prerequisite. Any absence remains unqualified; no quota/model/budget relaxation or inherited runtime pass."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-fair-interface-controls-Source",
+    "source": {
+      "bytes": 71685,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+      "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+    },
+    "source_contract": "exact current raw capsule",
+    "source_only": true,
+    "source_review_passed": "Distinct genuine reviewer decides",
+    "sources": "exact current full map"
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 11648,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/author-static-v1.json",
+    "sha256": "556c696433225ffca202ac1e2608923ec099a6dade0514edcfeb9e9e66b9296d"
+  },
+  "authorship_disclosure": "Author wrote prior controls, membership, degree proposer and complete fallback; did not author current adviser2/consumer2/engine7/c354/transition. This is controls Source only. Arithmetic distinct review discloses its engine/adviser/c354/transition authorship; Root owns cold integration/native closure and actual grants.",
+  "consumer_contract": {
+    "bytes": 19988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/Source-contract-v2.json",
+    "sha256": "70675d6cd0bc2fb61dc02b13bba361ca96af98ae133808bbf93d44bb1ad7303c"
+  },
+  "controls": {
+    "adoption": "At stable actual degree callback after child adoption+placement, capture public snapshot and owned token, then native-first declared Timeout. Require exactly one anchor added, full t/m/generation/exclusion recomposition and no future member installed; actual replacement family nonempty and different oldID.",
+    "diagnostics": "Replacement whole actual READY/UNKNOWN/empty return captured before eligibility with diagnostic_onlyTrue/authority_acceptedFalse; lack of future-bearing READY family SKIPs all3 replacement gates.",
+    "fairness": "Returned universal diversity only if at least two actually returned UI universals; otherwise explicit gap. Control terms1 cannot establish multi-term runtime fairness. iter_fair_indices has static author/reviewer argument only; not dynamically called or tested here.",
+    "malformed": "Explicit clone mutations of real batch: quality/reopening/paircount/score, integer-for-Boolean and Boolean-for-integer, oldversion, later score and reversed order. Exact plain ValueError reason required, native/custody post-boundaries stay external; failures never become definite exclusion.",
+    "preserved30": "All11 previous top-level callable/class definitions and full original30 bodies raw/AST exact; only moduleVERSION then appended alias/exported wrapper. Prior exported function is called once.",
+    "reopening": "Only a genuinely returned reopening proposal can pass runtime coverage; independently validates same actual complete batch and class0 without pruning. Otherwise SKIP, not fabricated/rescored packet.",
+    "replacement": "Reuse the genuine old30 first pending-rejection checkpoint; no synthetic family/private state. One new normal search calls actual adviser at exact same independently rejected BRANCH. Whole real batch independently validated before first future-bearing proposal retained as an order-preserving CONTROL-ONLY subsequence; complete selected batch validated again then engine validates. Never target policy.",
+    "returned_observations": "Every observed unique READY nonempty real batch is independently validated, features recomputed, returned UI universal/term identities counted. No generation telemetry added. Best-per-full-anchor and top-k may discard generated descriptors; absence proves nothing.",
+    "rollback": "Finished search UNKNOWN/root+stackrestored/noEXCLUDE; public child token restores entire genuine nonempty newfamily; public rejection token restores exact oldfamily parent; original finished outer state restored finally."
+  },
+  "costs_and_limits": {
+    "aggregate_owned_bytes": 536870912,
+    "baseline22_observed_cost_is_not_fit_prediction": "Root reported11.942900s. Reused work avoids duplicate root adoption; all collection/extra3search/output costs remain same20 and mayUNKNOWN. No stage split/cap/quota/model reduction.",
+    "caller_seconds": 90,
+    "encoded_output_bytes": 4194304,
+    "expanded_output_bytes": 16777216,
+    "failure_only_seconds": 55,
+    "finish_seconds": 1,
+    "height": 24,
+    "joint_seconds": 20,
+    "maximum_events": 2000,
+    "maximum_nodes": 128,
+    "owned_seconds": 60,
+    "same_original_profile": "shared-bounded-six-rule-B12-N44-v2"
+  },
+  "current_checkpoint": {
+    "bytes": 13743,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-publication-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "93cb85593720d512608295f94c45b01d1e83237c62f3a240f533da35fa049fda"
+  },
+  "input_bindings": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "new_cases": [
+    "real-returned-interface-features-score-and-order",
+    "forged-interface-feature-and-score-rejections",
+    "Boolean-versus-integer-feature-and-score-rejections",
+    "obsolete-adviser-version-rejected",
+    "later-ranked-quality-defect-and-order-rejected",
+    "real-returned-root-reopening-remains-legal-and-demoted",
+    "real-returned-universal-diversity-with-declared-term-horizon",
+    "nonempty-READY-replacement-adopted-after-definite-rejection",
+    "replacement-installs-anchor-only-not-future-obligations",
+    "replacement-owned-nonempty-inner-and-parent-rollback-exact"
+  ],
+  "parent_contract": {
+    "bytes": 11706,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/Source-contract-v1.json",
+    "sha256": "73cb71dd586ef336182443f9d7277583f500bf53a49b636177d00da476d8a0b9"
+  },
+  "parent_source": {
+    "bytes": 48798,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-controls-source-20261016/family_retirement_controls_v1.py",
+    "sha256": "183a7b28efe792a0550d0cbab353825ba6403d03e7394de7f77ce11f59dad48e"
+  },
+  "ranking": {
+    "features": "Exactly7; independent recomputation from candidate preimages/ordered offsets, selected outputs, current t/m and literal root subtrees, not supplied feature metadata.",
+    "ordering": "Descending lexicographic score5 then ascending full canonical anchor key. Independent actual consumer verifies whole batch, including every later proposal.",
+    "pair_count": "External obligations at unoccupied rows, distinct by actual row+canonical formula; repeated ordered ports remain present but count one pair. No causal reuse/fact acceptance.",
+    "quality": "0 iff any distinct unoccupied external pair has literal formula equal to named current goal_root; else2 if a member produces that goal at its actual rootrow; else1. RootNone gives connectedFalse/reopensFalse/class1.",
+    "score": [
+      "quality_class",
+      "-unresolved_interface_pairs",
+      "int(anchor_novel)",
+      "literal_list_subtree_overlap",
+      "-primitive_members"
+    ]
+  },
+  "remaining_gates": [
+    "Genuine whole current controls Source peer review plus separate current adviser/consumer/engine reviews.",
+    "Current Root cold Source/input/caller/source seals and original native measurement; no actual plan/grant/output authored here.",
+    "All40 noSKIP/no gap and other current controls before target arms. Missing reopening or replacement blocks qualification honestly.",
+    "Finite-index helper and multi-term runtime fairness not dynamically calibrated; no generation proof from top-k absence.",
+    "No Source-only prediction of fit, proof, full GCTS graph/scheduler/trajectory, marking learning, RL or speedup; all stronger result flags False."
+  ],
+  "schema": "unit-row-fair-interface-controls-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-fair-interface-controls-Source",
+  "source": {
+    "bytes": 71685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+    "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+  },
+  "source_delta": {
+    "bytes": 26789,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/Source-delta-v1.json",
+    "sha256": "26da5d80de75fa5907db5fd47fad64c26701ae7c273269e8742d579fcad9ce44"
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 24988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+      "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+    },
+    "controls": {
+      "bytes": 71685,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+      "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52615,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+      "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+      "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+    }
+  },
+  "version": "unit-row-fair-interface-quality-controls-v1"
+}

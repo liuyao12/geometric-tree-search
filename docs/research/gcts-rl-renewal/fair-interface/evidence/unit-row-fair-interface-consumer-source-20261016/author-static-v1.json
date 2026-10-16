@@ -1,0 +1,81 @@
+{
+  "compile_only_no_execution": true,
+  "entire_forward_recovers_current": true,
+  "entire_inverse_recovers_parent": true,
+  "interface_semantics_AST": {
+    "distinct_pair_literal": true,
+    "module_keywords": [
+      "language",
+      "semantics",
+      "state",
+      "decision",
+      "batch",
+      "tick"
+    ],
+    "quality_classes_explicit": true,
+    "ranking_uses_only_reconstructed_obligations": true,
+    "reopening_boolean_explicit": true,
+    "root_none_explicit": true,
+    "score_literal": true
+  },
+  "literal_regions_changed": 3,
+  "parent": {
+    "bytes": 15295,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+    "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+  },
+  "pending_key_branch_raw_exact": {
+    "bytes": 1290,
+    "sha256": "05b4047513c4ab4277e52faa8cf4f55c51122e3536a27abb28f77a6957876d09"
+  },
+  "rebuild_key_helper_raw_AST_exact": true,
+  "schema": "unit-row-interface-consumer-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 16290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+    "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+  },
+  "source_only": true,
+  "unchanged_constants": [
+    "SEMANTICS_VERSION",
+    "STRONG_FLAGS",
+    "LEGALITY_REASONS",
+    "SCHEMES",
+    "LIMITS",
+    "WORK_FIELDS"
+  ],
+  "unchanged_top_level_helpers": [
+    {
+      "AST_and_raw_exact": true,
+      "name": "require",
+      "raw_sha256": "963bacb840016bd49dc0231024848c95010d522ea64dfe979cab9778e429d6ef"
+    },
+    {
+      "AST_and_raw_exact": true,
+      "name": "text",
+      "raw_sha256": "83a09e1cceb7b8a3923a4a24670fbbfad5d5a9bf74add954b44e521931ce78e3"
+    },
+    {
+      "AST_and_raw_exact": true,
+      "name": "digest",
+      "raw_sha256": "4e3b0d64d986ccdbd722717ab98ec1f710eb1bde343b15afe2b8b3f9e9b57cd3"
+    },
+    {
+      "AST_and_raw_exact": true,
+      "name": "equal",
+      "raw_sha256": "f347631e1ca0b476f8eb6127e0792882b3ab205c9ed0604b8f24045bbb61a167"
+    },
+    {
+      "AST_and_raw_exact": true,
+      "name": "shape",
+      "raw_sha256": "283e34901a8e588200f6010b57573dae0bcbc2a4aa9681bc8659c3d238cbb086"
+    },
+    {
+      "AST_and_raw_exact": true,
+      "name": "subtrees",
+      "raw_sha256": "a531edd8aec98208e56f94011880cff283b6bca47749e712398eec5c5017450f"
+    }
+  ]
+}

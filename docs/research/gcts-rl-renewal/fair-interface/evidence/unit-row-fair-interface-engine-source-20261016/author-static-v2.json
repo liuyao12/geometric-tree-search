@@ -1,0 +1,97 @@
+{
+  "base_source": {
+    "bytes": 52581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+    "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+  },
+  "callable_census": {
+    "added_callables": [],
+    "changed_callables_or_classes": [],
+    "removed_callables": [],
+    "unchanged_raw_and_AST_callables": [
+      "Unresolved",
+      "need",
+      "canonical",
+      "digest",
+      "diagnostic_copy",
+      "select_schedule",
+      "certify_by_current_cover",
+      "_Checkpoint",
+      "_Checkpoint.__init__",
+      "LazyUnitRowEngine",
+      "LazyUnitRowEngine.__init__",
+      "LazyUnitRowEngine._copy",
+      "LazyUnitRowEngine._reference_counts",
+      "LazyUnitRowEngine._emit",
+      "LazyUnitRowEngine._snapshot_value",
+      "LazyUnitRowEngine.state_snapshot",
+      "LazyUnitRowEngine.checkpoint",
+      "LazyUnitRowEngine.rollback",
+      "LazyUnitRowEngine._check_authority",
+      "LazyUnitRowEngine._transfer_receipt",
+      "LazyUnitRowEngine._has_archived_context",
+      "LazyUnitRowEngine._archive_context",
+      "LazyUnitRowEngine._install",
+      "LazyUnitRowEngine._install.remember",
+      "LazyUnitRowEngine._candidate",
+      "LazyUnitRowEngine._observe",
+      "LazyUnitRowEngine.place",
+      "LazyUnitRowEngine._exclude_exhausted",
+      "LazyUnitRowEngine._open",
+      "LazyUnitRowEngine._advance",
+      "LazyUnitRowEngine.next_alternative",
+      "LazyUnitRowEngine._fallback_degree",
+      "LazyUnitRowEngine._validate_receipt",
+      "LazyUnitRowEngine.decision",
+      "LazyUnitRowEngine._word",
+      "LazyUnitRowEngine._checked_advice",
+      "LazyUnitRowEngine._select_branch",
+      "LazyUnitRowEngine._adopt_branch",
+      "LazyUnitRowEngine.search",
+      "LazyUnitRowEngine.search.walk"
+    ]
+  },
+  "changed_callables": [],
+  "checks": [
+    {
+      "claim": "Current adviser and engine parsed and compile(AST,exec) only; no evaluation.",
+      "id": "SOURCE-1",
+      "passed": true
+    },
+    {
+      "claim": "Both complete raw forward/inverse byte reconstructions verified, and full patches saved.",
+      "id": "RAW-2",
+      "passed": true
+    },
+    {
+      "claim": "Engine module AST exact after removing only VERSION/ADVISER_VERSION/ADVICE_VALIDATOR_VERSION assignments; all callables raw+AST exact.",
+      "id": "ENGINE-3",
+      "passed": true
+    }
+  ],
+  "full_module_AST_exact_except_named_literals": [
+    "VERSION",
+    "ADVISER_VERSION",
+    "ADVICE_VALIDATOR_VERSION"
+  ],
+  "preserved_v1_static": {
+    "bytes": 1754,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/author-static-v1.json",
+    "sha256": "00b47101e361e16ba331e282e4b37c94607b0818bedea374999d677d11f33417"
+  },
+  "schema": "fair-interface-engine-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+    "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+  },
+  "source_delta": {
+    "bytes": 4126,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/Source-delta-v2.json",
+    "sha256": "bcee10e11e55c77f81f5c9094dc95376cec71a66bb1191dcf899693d613cd838"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_callable_count": 40
+}

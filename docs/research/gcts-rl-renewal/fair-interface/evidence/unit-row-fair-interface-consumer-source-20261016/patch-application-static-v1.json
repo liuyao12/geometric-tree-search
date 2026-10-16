@@ -1,0 +1,27 @@
+{
+  "forward_patch": {
+    "bytes": 2611,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/consumer-v1-to-v2.patch",
+    "sha256": "52eb5e3c3513e2c30aa529dcc28f8044d79afb5d0f6b5311b92f913043566f20"
+  },
+  "forward_raw_patch_application_exact": true,
+  "inverse_patch": {
+    "bytes": 2611,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/consumer-v2-to-v1-full-inverse.patch",
+    "sha256": "e13cdc807fe96bfb2a3a24a1b6cf0d26c3dee29e7502628461aef6c9260df643"
+  },
+  "inverse_raw_patch_application_exact": true,
+  "parent": {
+    "bytes": 15295,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+    "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+  },
+  "schema": "unit-row-interface-consumer-patch-application-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 16290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+    "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+  },
+  "source_only": true
+}

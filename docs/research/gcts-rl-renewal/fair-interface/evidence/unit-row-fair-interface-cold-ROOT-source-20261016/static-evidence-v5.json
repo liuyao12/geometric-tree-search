@@ -1,0 +1,39 @@
+{
+  "Source17_input2_sixlimits": true,
+  "all_nested_functions_AST_exact": true,
+  "compile_only": true,
+  "entire_inverse_recovers_parent": true,
+  "literal_edits": 7,
+  "metadata_note": "Initial assembly assumed repr key order from sorted JSON for original adviser/consumer FIXED pins; no Source written. Corrected to exact AST-located literal segments, preserving whole seven-region inverse. No scientific actual.",
+  "response_stdout_native_exit_suffix_raw_exact": true,
+  "scientific_execution": false,
+  "source": {
+    "bytes": 49561,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-cold-ROOT-source-20261016/unit_row_fair_interface_cold_v5.py",
+    "sha256": "cea5a036a2e25b0e861a1f111b347edf121eab44fbfa3c0ff2495cfdfd8174c5"
+  },
+  "source_contract": {
+    "bytes": 34671,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-cold-ROOT-source-20261016/Source-contract-v5.json",
+    "sha256": "2f4dabd4372584ad78466ada0eb6132ae7fc50a0fff3484ce7d298dfea59c5bd"
+  },
+  "top_level_helpers_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

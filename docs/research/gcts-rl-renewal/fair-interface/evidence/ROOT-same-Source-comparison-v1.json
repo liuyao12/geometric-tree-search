@@ -1,0 +1,40 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "actuals_this_turn": 3,
+  "all_closed_and_reaped": true,
+  "broad_goal_complete": false,
+  "current_control_gates": {
+    "consumer_declared": 40,
+    "consumer_passed": 36,
+    "consumer_skipped": 4,
+    "original": 17,
+    "retention": 17
+  },
+  "current_goal_turn": "progress",
+  "dispositions": {
+    "advice-controls": {
+      "bytes": 6221,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "57d83c7a8a1e91df402c22b9274b659ac622a413e4859593fe45c89dc984520e"
+    },
+    "domain-controls": {
+      "bytes": 3409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "sha256": "47c0bde3e1e366fd0bdb0d5497bc241dfcd3e40a22eba39b79f01c78bbede95e"
+    },
+    "original-controls": {
+      "bytes": 3224,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "sha256": "9363ab23eda06ea5fa0d1efce96240612d82672faea8510e841542a0d373150a"
+    }
+  },
+  "previous_goal_turn": "progress",
+  "same_Source17_input2_contract_reviews_runtime_limits": true,
+  "schema": "ROOT-fair-interface-same-Source-comparison-v1",
+  "scientific_replay": false,
+  "target_actuals_launched": false,
+  "target_admission_blocked_by_current_control_gaps": true,
+  "target_outcomes": {},
+  "target_word_or_donor_supplied": false
+}

@@ -1,0 +1,41 @@
+--- independent_advice_consumer_v1.py
++++ independent_advice_consumer_v2.py
+@@ -8,9 +8,9 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-independent-advice-consumer-validator-v1'
++VERSION = 'unit-row-independent-advice-consumer-validator-v2-interface-ordering'
+ SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+-ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v1'
++ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+                 'degree_or_EOF_accepted', 'scheduler_accepted',
+                 'complete_GCTS_model_accepted', 'trajectory_accepted',
+@@ -241,10 +241,24 @@
+             formula = anchor['placement_key']['type_preimage']['primitive_witness']['formula']
+             novel = text(formula) not in selected_outputs
+             overlap = sum(text(n) in root_nodes for n in subtrees(formula, tick))
+-            score = [int(connected), int(novel), overlap, -len(members)]
++            # External interfaces are reconstructed above, not read from diagnostics.
++            # Repeated ordered ports stay present, but share one interface pair here.
++            unresolved_pairs = set()
++            for obligation in obligations:
++                tick()
++                if obligation['occupied'] is False:
++                    unresolved_pairs.add((obligation['row'], text(obligation['formula'])))
++            root_formula = None if root is None else text(root['formula'])
++            reopens_root = root is not None and any(
++                formula_text == root_formula for _, formula_text in unresolved_pairs)
++            quality_class = 0 if reopens_root else 2 if connected else 1
++            unresolved_interface_pairs = len(unresolved_pairs)
++            score = [quality_class, -unresolved_interface_pairs, int(novel), overlap, -len(members)]
+             equal(proposal['score'], score, 'independent literal advisory score')
+             equal(proposal['ranking_features'], {'goal_connected': connected, 'anchor_novel': novel,
+-                  'literal_list_subtree_overlap': overlap, 'primitive_members': len(members)},
++                  'literal_list_subtree_overlap': overlap, 'primitive_members': len(members),
++                  'quality_class': quality_class, 'reopens_root': reopens_root,
++                  'unresolved_interface_pairs': unresolved_interface_pairs},
+                   'independent advisory feature values')
+             ordering.append((tuple(-n for n in score), anchor_id))
+             if proposal_index == 0:

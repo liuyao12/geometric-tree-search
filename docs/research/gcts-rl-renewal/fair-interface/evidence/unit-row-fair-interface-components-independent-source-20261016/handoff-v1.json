@@ -1,0 +1,65 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored f668 parent and current3455 consumer, prior horizon/control fixtures, original1717 checker/codec/family and quality diagnosis; reviewer did not author current adviser, engine, c354/transition or fallback. This independently reviews adviser/engine Source and policy joins, not the reviewer-authored consumer itself or a second mathematical kernel. Consumer has separate Root/distinct peer obligations.",
+  "components": {
+    "adviser": {
+      "source": {
+        "bytes": 24988,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+        "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+      },
+      "source_contract": {
+        "bytes": 21577,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/Source-contract-v2.json",
+        "sha256": "25570f6d3f9bce83c7c13781ec204b62bc970e104936e73ed126b5f4e7bc64af"
+      }
+    },
+    "engine": {
+      "source": {
+        "bytes": 52615,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+        "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+      },
+      "source_contract": {
+        "bytes": 7913,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/Source-contract-v2.json",
+        "sha256": "d6266caa852fcdb890253178d182f6e0b243a861be8f7730ada6ed19cc2cfb27"
+      }
+    }
+  },
+  "disposition": "CONDITIONAL_WHOLE_CURRENT_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 17092,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-components-independent-source-20261016/findings-v1.json",
+    "sha256": "719c32056ed5e9cec14ceb807f9f3c8d2377c3666762b3f567de1cf54787a3e0"
+  },
+  "independent_delta": {
+    "bytes": 5669,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-components-independent-source-20261016/independent-delta-v1.json",
+    "sha256": "1799b580f9bc6781ffcb4feaf8e260970d66bc1c6b0af4ed25ec77f693736759"
+  },
+  "remaining_gates": [
+    "Source-only conditional pass, not activation, runtime fit, proof/board/graph/trajectory/GCTS/RL benefit or a current Source-control qualification. All previous UNKNOWNs and controls remain historical.",
+    "Root current whole caller/maps/reviews/fresh once grants and current required noSKIP controls must precede target actuals. Original20/512MiB/failure55/owned60/caller90+1, complete outputs/true wait4/postprobe remain mandatory.",
+    "Finite salient pools, shared demand cap, bounded rounds, one best family per anchor and compatibility failures can miss useful layouts. No claim that source3, root-reopening or nonempty replacement appears; absent top-k does not show a descriptor was never generated.",
+    "Full base fallback, actual global dead/forced/earliest-generation ROW-TIE, current legality, uninstalled preferences and exact rollback remain engine/caller obligations. Arbitrary all-six EOF/full reference conformance remain unqualified."
+  ],
+  "reviews": {
+    "adviser": {
+      "bytes": 3095,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-components-independent-source-20261016/adviser-typed-Source-review-v1.json",
+      "sha256": "f61171234911c7e3d294e8c01b862805c97408e7d24baae451b95babac6a98b0"
+    },
+    "engine": {
+      "bytes": 3097,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-components-independent-source-20261016/engine-typed-Source-review-v1.json",
+      "sha256": "a9e0caca13cb92cc6b1509a173c448f16acc8d09e88a9714ac3fadb0f7e382d3"
+    }
+  },
+  "schema": "fair-interface-components-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "unique_raw_paths": 35
+}

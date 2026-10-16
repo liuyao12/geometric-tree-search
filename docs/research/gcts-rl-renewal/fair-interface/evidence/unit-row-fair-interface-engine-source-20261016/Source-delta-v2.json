@@ -1,0 +1,93 @@
+{
+  "added_callables": [],
+  "base": {
+    "bytes": 52581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+    "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+  },
+  "changed_callables_or_classes": [],
+  "current": {
+    "bytes": 52615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+    "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+  },
+  "forward_exact": true,
+  "forward_patch": {
+    "bytes": 1074,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/forward.patch",
+    "sha256": "acb77fc11cc5693cc55875cae956714ef319dccabe37901b6edc15b07d13d8f7"
+  },
+  "inverse_exact": true,
+  "inverse_patch": {
+    "bytes": 1074,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/inverse.patch",
+    "sha256": "a7dfc1e3f8a64e4671579dc9e773fb5c23d3f038b8dd3ae49abf80a65bb3ca89"
+  },
+  "metadata_correction": "Additive V2 complete callable census traverses nested Try/loop/conditional bodies too. V1 raw offsets/patches/inverses remain exact and unchanged; operative Source unchanged.",
+  "note": "Only stdlib Source/AST/raw-byte work. No module evaluation/import/scientific function calls/tests/models/clocks/actuals.",
+  "preserved_v1_delta": {
+    "bytes": 3635,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/Source-delta-v1.json",
+    "sha256": "0efff367d00b053e516e400066c127bbf12439422d0270e9247b8480631b86d6"
+  },
+  "raw_edit_regions": [
+    {
+      "after": "VERSION = 'lazy-unit-row-global-engine-v7-fair-interface-versions'\n",
+      "base_byte_offset": 317,
+      "before": "VERSION = 'lazy-unit-row-global-engine-v6-abandon-rejected-advisory-family'\n",
+      "current_byte_offset": 317
+    },
+    {
+      "after": "ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'\nADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v2-interface-ordering'\n",
+      "base_byte_offset": 668,
+      "before": "ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v1'\nADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v1'\n",
+      "current_byte_offset": 659
+    }
+  ],
+  "removed_callables": [],
+  "schema": "full-raw-offset-and-callable-delta-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "unchanged_raw_and_AST_callables": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "certify_by_current_cover",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.search.walk"
+  ]
+}

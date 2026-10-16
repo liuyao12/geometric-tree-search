@@ -1,0 +1,274 @@
+{
+  "all_author_static_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 18,
+  "checks": [
+    {
+      "check": "Source AST parse and compile only",
+      "evidence": "Compiled code object never executed; all inspection uses raw bytes/AST/std-library metadata.",
+      "passed": true
+    },
+    {
+      "check": "exact immutable source capsule",
+      "evidence": {
+        "bytes": 71685,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+        "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+      },
+      "passed": true
+    },
+    {
+      "check": "full byte forward and inverse reconstruction",
+      "evidence": "Two edits: own VERSION literal and appended alias/exported wrapper; whole both buffers recovered.",
+      "passed": true
+    },
+    {
+      "check": "all eleven prior30 definitions raw and AST exact",
+      "evidence": [
+        {
+          "kind": "ClassDef",
+          "name": "Unavailable",
+          "ordinal": 0,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "1bfb3ab02870cf57260ad49ecd68159e8b9fab808d71399e50f30533562c0bfd"
+        },
+        {
+          "kind": "ClassDef",
+          "name": "CallbackExhausted",
+          "ordinal": 1,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "b8658becece9d36bfc66968f086ccedfc08495b54261b2104206d07c09a1bb36"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "need",
+          "ordinal": 2,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "aa140feb98f72734704d885983d92f08a327fe22bec968da0dc273a63f817f91"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "canonical",
+          "ordinal": 3,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "164d176a437c1e1bc2358db13b42955e38cf8c8c8e003ad2d57c3d3ed0929d06"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "digest",
+          "ordinal": 4,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "f3e8c46a05bd8e4a89e9d087fdc05177b18ce63355e98c2350b27b10297bf681"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "tile",
+          "ordinal": 5,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "9b7a29e4366e4ef2bae556ee54a0adbfbb2784d5bba7383d70dc677de226c377"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "state",
+          "ordinal": 6,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "7ebc944c5c72d82549784d9051c6ecb0ad426c64613fa95960e0dc7cfaccecb0"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "ug",
+          "ordinal": 7,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "a7556b0c378b78803e4cf134869efe9624382976258d649bb1d93d99eb9df113"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "obligations",
+          "ordinal": 8,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "3814781b8ba1395c5622f7fcd2ba094e7e90c19740adb2b5242fdb358149b7f0"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "run_controls",
+          "ordinal": 9,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "5866800ad90e7f541bd7a542ef8db7438f549f924dd8f98d8edcd2c40394d424"
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "run_controls",
+          "ordinal": 10,
+          "raw_and_AST_exact": true,
+          "raw_sha256": "de7a80b7793a56a218094a846d80b171720266b4129f6ace5515b9bc2364ee2f"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "check": "entire old30 prefix exact after only VERSION inverse",
+      "evidence": "Both prior run_controls functions, original22+added8 case bodies and all9 helper/class definitions retained.",
+      "passed": true
+    },
+    {
+      "check": "one new exported eight-keyword wrapper, unchanged API",
+      "evidence": [
+        "language",
+        "engine_factory",
+        "adviser",
+        "validate_advice",
+        "degree_proposer",
+        "fallback",
+        "certify_fallback",
+        "tick"
+      ],
+      "passed": true
+    },
+    {
+      "check": "ten explicit new labels and40 total",
+      "evidence": [
+        "real-returned-interface-features-score-and-order",
+        "forged-interface-feature-and-score-rejections",
+        "Boolean-versus-integer-feature-and-score-rejections",
+        "obsolete-adviser-version-rejected",
+        "later-ranked-quality-defect-and-order-rejected",
+        "real-returned-root-reopening-remains-legal-and-demoted",
+        "real-returned-universal-diversity-with-declared-term-horizon",
+        "nonempty-READY-replacement-adopted-after-definite-rejection",
+        "replacement-installs-anchor-only-not-future-obligations",
+        "replacement-owned-nonempty-inner-and-parent-rollback-exact"
+      ],
+      "passed": true
+    },
+    {
+      "check": "same only three stdlib imports",
+      "evidence": "No project import, model, proof, donor, clock or activation code.",
+      "passed": true
+    },
+    {
+      "check": "current ten raw source pins",
+      "evidence": {
+        "adviser": {
+          "bytes": 24988,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+          "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+        },
+        "controls": {
+          "bytes": 71685,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+          "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+        },
+        "degree_checker": {
+          "bytes": 27553,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+          "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+        },
+        "degree_proposer": {
+          "bytes": 22030,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+          "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+        },
+        "engine": {
+          "bytes": 52615,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+          "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+        },
+        "fallback": {
+          "bytes": 24227,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+          "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+        },
+        "kernel": {
+          "bytes": 10323,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+          "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+        },
+        "membership": {
+          "bytes": 20112,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+          "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+        },
+        "transition": {
+          "bytes": 8134,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+          "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+        },
+        "validator": {
+          "bytes": 16290,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+          "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "actual current adviser2/consumer2 literals",
+      "evidence": "Runtime validator/compiler authority remains caller-injected; full actual batch checked before subselection.",
+      "passed": true
+    },
+    {
+      "check": "no public finite-index callback added",
+      "evidence": "Root policy: no dynamic finite-index calibration; returned absence never generation evidence.",
+      "passed": true
+    },
+    {
+      "check": "native-first real callback controls",
+      "evidence": "All new observing/fault endpoints begin tick(); no timer or source callback is executed during authoring.",
+      "passed": true
+    },
+    {
+      "check": "raw replacement attempt preserved before eligibility",
+      "evidence": "Whole raw READY/UNKNOWN/empty return saved as diagnostic only.",
+      "passed": true
+    },
+    {
+      "check": "whole real replacement batch before order-preserving suppression",
+      "evidence": "Independently checked actual proposal retained; no manufactured family, reranking or target suppression.",
+      "passed": true
+    },
+    {
+      "check": "stable genuine public checkpoints only",
+      "evidence": "Capture state_snapshot/checkpoint after pending receipt in real branch callback; adoption capture from degree callback after normal child placement; public rollback outside finished search.",
+      "passed": true
+    },
+    {
+      "check": "gaps propagate to unqualified result",
+      "evidence": "Every skipped new case enters unqualified_consumer_gates; old additional_coverage_gaps retained; all strong flags inherited False.",
+      "passed": true
+    },
+    {
+      "check": "strict original resource/model policy retained",
+      "evidence": {
+        "aggregate_owned_bytes": 536870912,
+        "baseline22_observed_cost_is_not_fit_prediction": "Root reported11.942900s. Reused work avoids duplicate root adoption; all collection/extra3search/output costs remain same20 and mayUNKNOWN. No stage split/cap/quota/model reduction.",
+        "caller_seconds": 90,
+        "encoded_output_bytes": 4194304,
+        "expanded_output_bytes": 16777216,
+        "failure_only_seconds": 55,
+        "finish_seconds": 1,
+        "height": 24,
+        "joint_seconds": 20,
+        "maximum_events": 2000,
+        "maximum_nodes": 128,
+        "owned_seconds": 60,
+        "same_original_profile": "shared-bounded-six-rule-B12-N44-v2"
+      },
+      "passed": true
+    },
+    {
+      "check": "no scientific execution",
+      "evidence": "Source/AST/compile and raw/small metadata only; no project functions, import/exec, kernel, Q/model parse, clocks, tests, plans, actual outputs or publication.",
+      "passed": true
+    }
+  ],
+  "distinct_review_required": true,
+  "schema": "unit-row-fair-interface-controls-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 71685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+    "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+  },
+  "source_only": true
+}

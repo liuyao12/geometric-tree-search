@@ -1,0 +1,30 @@
+{
+  "check_count": 18,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 13374,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "604e4d9ee7ff1633b58816d20ae365be443f843cd285512759c6e004cc5043b8"
+  },
+  "raw_reference_count": 23,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "fair-interface-controls-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 71685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+    "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+  },
+  "source_contract": {
+    "bytes": 13569,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/Source-contract-v1.json",
+    "sha256": "a7c04560f265762dc9cd331491b5806cec9e5e8f0333334e4ae9ca25596c26b9"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 5654,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "73e00113ccd858b6af67ac52b5425e0d1fda651492910a272e1f47c0cfb1a3f4"
+  }
+}

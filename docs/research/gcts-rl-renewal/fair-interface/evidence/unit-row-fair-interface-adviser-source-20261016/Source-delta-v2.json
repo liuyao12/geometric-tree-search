@@ -1,0 +1,162 @@
+{
+  "added_callables": [
+    "iter_fair_indices",
+    "iter_fair_indices.shell",
+    "propose_branch.indices",
+    "propose_branch.read_compatible",
+    "propose_branch.expand_frame"
+  ],
+  "base": {
+    "bytes": 21913,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+    "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+  },
+  "changed_callables_or_classes": [
+    "propose_branch",
+    "propose_branch.emit",
+    "propose_branch.licence_stream",
+    "propose_branch.ui_mp_stream",
+    "propose_branch.transport_stream"
+  ],
+  "current": {
+    "bytes": 24988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+    "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+  },
+  "forward_exact": true,
+  "forward_patch": {
+    "bytes": 17387,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/forward.patch",
+    "sha256": "75ae8be108e46ad8be6c246f5d8317c2b1f9dd03e00857a1a111558736fe66fb"
+  },
+  "inverse_exact": true,
+  "inverse_patch": {
+    "bytes": 17387,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/inverse.patch",
+    "sha256": "c91bd8993c6bdd91be888c2bbd6f479926cab14e8fc415f5112a0a5f893d1d9c"
+  },
+  "metadata_correction": "Additive V2 complete callable census traverses nested Try/loop/conditional bodies too. V1 raw offsets/patches/inverses remain exact and unchanged; operative Source unchanged.",
+  "note": "Only stdlib Source/AST/raw-byte work. No module evaluation/import/scientific function calls/tests/models/clocks/actuals.",
+  "preserved_v1_delta": {
+    "bytes": 17022,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/Source-delta-v1.json",
+    "sha256": "ea6177c91e9e0e1175b4cc14cc19ae31e7b3f0bd0df37b74425e2f0d2fe2e22e"
+  },
+  "raw_edit_regions": [
+    {
+      "after": "VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'\n",
+      "base_byte_offset": 343,
+      "before": "VERSION = 'unit-row-generic-goal-branch-adviser-v1'\n",
+      "current_byte_offset": 343
+    },
+    {
+      "after": "\n\ndef iter_fair_indices(*, lengths, tick):\n    \"\"\"Lazy finite index-box diagonal order; no mathematical EOF authority.\n\n    Increasing coordinate sum, earlier-axis increments first within each shell.\n    Every finite vector is reached if consumption/budget continue. Actual bounded\n    rounds can stop sooner and do not certify a primitive/candidate universe.\n    \"\"\"\n    tick()\n    require(type(lengths) in (tuple, list) and 1 <= len(lengths) <= 8\n            and all(type(n) is int and 0 <= n <= 64 for n in lengths),\n            'bounded literal index-axis lengths')\n    bounds = tuple(lengths)\n    if any(n == 0 for n in bounds):\n        return\n    def shell(axis, remaining, prefix):\n        tick()\n        if axis == len(bounds):\n            if remaining == 0:\n                yield tuple(prefix)\n            return\n        low = max(0, remaining - sum(n-1 for n in bounds[axis+1:]))\n        high = min(bounds[axis]-1, remaining)\n        for value in range(high, low-1, -1):\n            tick()\n            yield from shell(axis+1, remaining-value, prefix+[value])\n    for total in range(sum(n-1 for n in bounds)+1):\n        tick()\n        yield from shell(0, total, [])\n",
+      "base_byte_offset": 1158,
+      "before": "",
+      "current_byte_offset": 1182
+    },
+    {
+      "after": "        def indices(lengths):\n            yield from iter_fair_indices(lengths=lengths, tick=work.step)\n\n        def read_compatible(row, formula):\n            work.step()\n            point = (1, row)\n            return point not in marks or canonical(marks[point]) == canonical(['formula', canonical(formula)])\n\n        def expand_frame(frame):\n            # One yielded descriptor per parent per round; no eager first-root\n            # expansion. Open rows that can host UI+MP are considered first:\n            # there must be a strict-prior source distinct from the anchor.\n",
+      "base_byte_offset": 9054,
+      "before": "        # Breadth-first inverse UG demands. Suffix tiles remain uninstalled.\n        # Truncation is an advisory bias, never a complete-cover assertion.\n        frames = [dict(r, suffix=[], root=clone(r)) for r in roots[:maximum_demands]]\n        position = 0\n        while position < len(frames) and len(frames) < maximum_demands:\n            frame = frames[position]\n            position += 1\n",
+      "current_byte_offset": 10254
+    },
+    {
+      "after": "                return\n            priors = []\n",
+      "base_byte_offset": 9620,
+      "before": "                continue\n",
+      "current_byte_offset": 11003
+    },
+    {
+      "after": "                work.step()\n                if totals[(0, prior)] == 0 and read_compatible(prior, formula[2]):\n                    priors.append(prior)\n            priors.sort(key=lambda r: (r < chosen+2, r))\n            for prior in priors:\n",
+      "base_byte_offset": 9690,
+      "before": "",
+      "current_byte_offset": 11095
+    },
+    {
+      "after": "                yield (None if suffix is None else\n                    {'row': prior, 'formula': clone(formula[2]),\n                     'suffix': suffix, 'root': frame['root']})\n\n        frames = [dict(r, suffix=[], root=clone(r)) for r in roots[:maximum_demands]]\n        expansions = [expand_frame(frame) for frame in frames]\n",
+      "base_byte_offset": 9938,
+      "before": "                if suffix is not None:\n                    frames.append({'row': prior, 'formula': clone(formula[2]),\n                                   'suffix': suffix, 'root': frame['root']})\n                if len(frames) >= maximum_demands:\n                    break\n",
+      "current_byte_offset": 11585
+    },
+    {
+      "after": "            obligations, port_records = [], []\n",
+      "base_byte_offset": 10845,
+      "before": "            obligations, records = [], []\n",
+      "current_byte_offset": 12549
+    },
+    {
+      "after": "                port_records.append(ports)\n",
+      "base_byte_offset": 11695,
+      "before": "                records.append({'candidate': clone(member), 'ordered_ports': ports})\n",
+      "current_byte_offset": 13404
+    },
+    {
+      "after": "            unresolved = set()\n            for obligation in obligations:\n                work.step()\n                if obligation['occupied'] is False:\n                    unresolved.add((obligation['row'], canonical(obligation['formula'])))\n            reopens = root is not None and any(value == canonical(root['formula']) for row, value in unresolved)\n            quality = 0 if reopens else 2 if connected else 1\n            score = [quality, -len(unresolved), int(novel), overlap, -len(ordered)]\n            if anchor_key in batch:\n                stats['duplicate_anchors'] += 1\n                if batch[anchor_key]['score'] >= score:\n                    return\n            records = [{'candidate': clone(member), 'ordered_ports': ports}\n                       for member, ports in zip(ordered, port_records)]\n",
+      "base_byte_offset": 12242,
+      "before": "            score = [int(connected), int(novel), overlap, -len(ordered)]\n",
+      "current_byte_offset": 13909
+    },
+    {
+      "after": "                    'literal_list_subtree_overlap': overlap, 'primitive_members': len(ordered),\n                    'quality_class': quality, 'reopens_root': reopens,\n                    'unresolved_interface_pairs': len(unresolved)},\n",
+      "base_byte_offset": 12836,
+      "before": "                    'literal_list_subtree_overlap': overlap, 'primitive_members': len(ordered)},\n",
+      "current_byte_offset": 15248
+    },
+    {
+      "after": "",
+      "base_byte_offset": 13002,
+      "before": "            if anchor_key in batch:\n                stats['duplicate_anchors'] += 1\n                if batch[anchor_key]['score'] >= score:\n                    return\n",
+      "current_byte_offset": 15552
+    },
+    {
+      "after": "            for ui, ti in indices((len(universals), len(terms))):\n                work.step()\n                universal, term = universals[ui], terms[ti]\n                try:\n                    instance = language.substitute(universal[2], universal[1], term)\n                except outside:\n                    yield None\n                    continue\n                witness = {'rule': 'instantiate', 'universal': universal, 'term': term,\n                           'formula': ['imp', universal, instance]}\n                anchor = tile(witness, [], [], chosen)\n                yield anchor, [anchor], 'GENERIC_UI_LICENCE', None\n",
+      "base_byte_offset": 15506,
+      "before": "            for universal in universals:\n                for term in terms:\n                    work.step()\n                    try:\n                        instance = language.substitute(universal[2], universal[1], term)\n                    except outside:\n                        yield None\n                        continue\n                    witness = {'rule': 'instantiate', 'universal': universal, 'term': term,\n                               'formula': ['imp', universal, instance]}\n                    anchor = tile(witness, [], [], chosen)\n                    yield anchor, [anchor], 'GENERIC_UI_LICENCE', None\n",
+      "current_byte_offset": 17889
+    },
+    {
+      "after": "            sources = [source for source in range(row) if source != chosen]\n            for ui, ti, si in indices((len(universals), len(terms), len(sources))):\n                work.step()\n                universal, term, source = universals[ui], terms[ti], sources[si]\n                try:\n                    instance = language.substitute(universal[2], universal[1], term)\n                except outside:\n                    yield None\n                    continue\n                if instance != goal or not read_compatible(source, universal):\n                    yield None\n                    continue\n                licence = ['imp', universal, goal]\n                anchor = tile({'rule': 'instantiate', 'universal': universal,\n                               'term': term, 'formula': licence}, [], [], chosen)\n                if anchor is None:\n                    yield None\n                    continue\n                end = tile({'rule': 'mp', 'formula': goal}, [universal, licence], [source, chosen], row)\n                yield anchor, [anchor, end] + frame['suffix'], 'GENERIC_UI_MP', frame['root']\n",
+      "base_byte_offset": 16268,
+      "before": "            for universal in universals:\n                for term in terms:\n                    work.step()\n                    try:\n                        instance = language.substitute(universal[2], universal[1], term)\n                    except outside:\n                        yield None\n                        continue\n                    if instance != goal:\n                        yield None\n                        continue\n                    licence = ['imp', universal, goal]\n                    anchor = tile({'rule': 'instantiate', 'universal': universal,\n                                   'term': term, 'formula': licence}, [], [], chosen)\n                    if anchor is None:\n                        yield None\n                        continue\n                    for source in range(row):\n                        work.step()\n                        if source == chosen:\n                            yield None\n                            continue\n                        end = tile({'rule': 'mp', 'formula': goal}, [universal, licence], [source, chosen], row)\n                        yield anchor, [anchor, end] + frame['suffix'], 'GENERIC_UI_MP', frame['root']\n",
+      "current_byte_offset": 18661
+    },
+    {
+      "after": "            occurrences = list(term_occurrences(goal))  # One bounded AST, not a product.\n            middles = [r for r in range(chosen+1, row) if totals[(0, r)] == 0]\n            inputs = [r for r in range(row) if r != chosen]\n            for oi, ti, mi, ei, ai in indices((len(occurrences), len(terms),\n                                               len(middles), len(inputs), len(inputs))):\n                work.step()\n                path, right = occurrences[oi]\n                left, middle = terms[ti], middles[mi]\n                equality_row, antecedent_row = inputs[ei], inputs[ai]\n                if equality_row >= middle or antecedent_row == middle:\n                    yield None\n                    continue\n",
+      "base_byte_offset": 18005,
+      "before": "            for path, right in term_occurrences(goal):\n",
+      "current_byte_offset": 20326
+    },
+    {
+      "after": "                try:\n                    antecedent = language.substitute(template, language.hole, left)\n                except outside:\n                    yield None\n                    continue\n                equality = ['eq', left, right]\n                if not read_compatible(equality_row, equality) or not read_compatible(antecedent_row, antecedent):\n                    yield None\n                    continue\n                implication = ['imp', antecedent, goal]\n                licence = ['imp', equality, implication]\n                anchor = tile({'rule': 'eq_subst', 'variable': language.hole,\n                    'template': template, 'left': left, 'right': right, 'formula': licence}, [], [], chosen)\n                if anchor is None:\n                    yield None\n                    continue\n                mid = tile({'rule': 'mp', 'formula': implication},\n                    [equality, licence], [equality_row, chosen], middle)\n                end = tile({'rule': 'mp', 'formula': goal},\n                    [antecedent, implication], [antecedent_row, middle], row)\n                yield anchor, [anchor, mid, end] + frame['suffix'], 'GENERIC_ATOMIC_TRANSPORT', frame['root']\n",
+      "base_byte_offset": 18274,
+      "before": "                for left in terms:\n                    work.step()\n                    try:\n                        antecedent = language.substitute(template, language.hole, left)\n                    except outside:\n                        yield None\n                        continue\n                    equality = ['eq', left, right]\n                    implication = ['imp', antecedent, goal]\n                    licence = ['imp', equality, implication]\n                    anchor = tile({'rule': 'eq_subst', 'variable': language.hole,\n                        'template': template, 'left': left, 'right': right, 'formula': licence}, [], [], chosen)\n                    if anchor is None:\n                        yield None\n                        continue\n                    for middle in range(chosen+1, row):\n                        for equality_row in range(middle):\n                            work.step()\n                            if equality_row == chosen:\n                                # An equality input cannot equal the anchor's\n                                # outer-implication output at the same point.\n                                yield None\n                                continue\n                            for antecedent_row in range(row):\n                                work.step()\n                                if antecedent_row in (chosen, middle):\n                                    yield None\n                                    continue\n                                mid = tile({'rule': 'mp', 'formula': implication},\n                                    [equality, licence], [equality_row, chosen], middle)\n                                end = tile({'rule': 'mp', 'formula': goal},\n                                    [antecedent, implication], [antecedent_row, middle], row)\n                                yield anchor, [anchor, mid, end] + frame['suffix'], 'GENERIC_ATOMIC_TRANSPORT', frame['root']\n",
+      "current_byte_offset": 21264
+    },
+    {
+      "after": "            # Rotate over the parents present at this round's entry. Newly\n            # admitted frames are serviced as proposals now, expanded next round.\n            continued, admitted = [], []\n            for expansion in expansions:\n                if len(frames) >= maximum_demands:\n                    break\n                work.step()\n                try:\n                    child = next(expansion)\n                except StopIteration:\n                    continue\n                continued.append(expansion)\n                if child is not None:\n                    frames.append(child)\n                    admitted.append(expand_frame(child))\n                    streams += [ui_mp_stream(child), transport_stream(child)]\n            expansions = continued + admitted\n            stats['demand_count'] = len(frames)\n",
+      "base_byte_offset": 20425,
+      "before": "",
+      "current_byte_offset": 22672
+    }
+  ],
+  "removed_callables": [],
+  "schema": "full-raw-offset-and-callable-delta-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "unchanged_raw_and_AST_callables": [
+    "require",
+    "canonical",
+    "sha",
+    "_Quota",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "propose_branch.clone",
+    "propose_branch.tile",
+    "propose_branch.compatible",
+    "propose_branch.nodes",
+    "propose_branch.fallback_stream",
+    "propose_branch.term_occurrences"
+  ]
+}

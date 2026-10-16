@@ -1,0 +1,335 @@
+--- base
++++ current
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-generic-goal-branch-adviser-v1'
++VERSION = 'unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering'
+ SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+ FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+@@ -28,6 +28,36 @@
+ 
+ def sha(value):
+     return hashlib.sha256(canonical(value).encode('utf8')).hexdigest()
++
++
++def iter_fair_indices(*, lengths, tick):
++    """Lazy finite index-box diagonal order; no mathematical EOF authority.
++
++    Increasing coordinate sum, earlier-axis increments first within each shell.
++    Every finite vector is reached if consumption/budget continue. Actual bounded
++    rounds can stop sooner and do not certify a primitive/candidate universe.
++    """
++    tick()
++    require(type(lengths) in (tuple, list) and 1 <= len(lengths) <= 8
++            and all(type(n) is int and 0 <= n <= 64 for n in lengths),
++            'bounded literal index-axis lengths')
++    bounds = tuple(lengths)
++    if any(n == 0 for n in bounds):
++        return
++    def shell(axis, remaining, prefix):
++        tick()
++        if axis == len(bounds):
++            if remaining == 0:
++                yield tuple(prefix)
++            return
++        low = max(0, remaining - sum(n-1 for n in bounds[axis+1:]))
++        high = min(bounds[axis]-1, remaining)
++        for value in range(high, low-1, -1):
++            tick()
++            yield from shell(axis+1, remaining-value, prefix+[value])
++    for total in range(sum(n-1 for n in bounds)+1):
++        tick()
++        yield from shell(0, total, [])
+ 
+ 
+ class _Quota(TimeoutError):
+@@ -191,26 +221,38 @@
+                     break
+         stats['term_count'], stats['universal_count'] = len(terms), len(universals)
+ 
+-        # Breadth-first inverse UG demands. Suffix tiles remain uninstalled.
+-        # Truncation is an advisory bias, never a complete-cover assertion.
+-        frames = [dict(r, suffix=[], root=clone(r)) for r in roots[:maximum_demands]]
+-        position = 0
+-        while position < len(frames) and len(frames) < maximum_demands:
+-            frame = frames[position]
+-            position += 1
++        def indices(lengths):
++            yield from iter_fair_indices(lengths=lengths, tick=work.step)
++
++        def read_compatible(row, formula):
++            work.step()
++            point = (1, row)
++            return point not in marks or canonical(marks[point]) == canonical(['formula', canonical(formula)])
++
++        def expand_frame(frame):
++            # One yielded descriptor per parent per round; no eager first-root
++            # expansion. Open rows that can host UI+MP are considered first:
++            # there must be a strict-prior source distinct from the anchor.
+             formula, row = frame['formula'], frame['row']
+             if formula[0] != 'all' or formula[1] not in language.parameters or formula[1] in language.forbidden:
+-                continue
++                return
++            priors = []
+             for prior in range(chosen, row):
++                work.step()
++                if totals[(0, prior)] == 0 and read_compatible(prior, formula[2]):
++                    priors.append(prior)
++            priors.sort(key=lambda r: (r < chosen+2, r))
++            for prior in priors:
+                 work.step()
+                 member = tile({'rule': 'generalize', 'variable': formula[1], 'formula': formula},
+                               [formula[2]], [prior], row)
+                 suffix = compatible([member] + frame['suffix'])
+-                if suffix is not None:
+-                    frames.append({'row': prior, 'formula': clone(formula[2]),
+-                                   'suffix': suffix, 'root': frame['root']})
+-                if len(frames) >= maximum_demands:
+-                    break
++                yield (None if suffix is None else
++                    {'row': prior, 'formula': clone(formula[2]),
++                     'suffix': suffix, 'root': frame['root']})
++
++        frames = [dict(r, suffix=[], root=clone(r)) for r in roots[:maximum_demands]]
++        expansions = [expand_frame(frame) for frame in frames]
+         stats['demand_count'] = len(frames)
+ 
+         def emit(anchor, members, scheme, root=None):
+@@ -224,7 +266,7 @@
+             anchor_key = canonical(anchor['placement_key'])
+             require(any(canonical(c['placement_key']) == anchor_key for c in ordered), 'anchor is a member')
+             by_row = {c['placement_key']['translation'][1]: i for i, c in enumerate(ordered)}
+-            obligations, records = [], []
++            obligations, port_records = [], []
+             for index, member in enumerate(ordered):
+                 ports = []
+                 for port, read in enumerate(member['read_obligations']):
+@@ -237,25 +279,36 @@
+                         obligations.append({'member_index': index, 'port': port, 'row': read['row'],
+                             'formula': clone(read['formula']), 'occupied': read['occupied'],
+                             'status': 'PENDING', 'fact_accepted': False})
+-                records.append({'candidate': clone(member), 'ordered_ports': ports})
++                port_records.append(ports)
+             formula = anchor['placement_key']['type_preimage']['primitive_witness']['formula']
+             connected = root is not None and any(c['placement_key']['translation'][1] == root['row']
+                 and c['placement_key']['type_preimage']['primitive_witness']['formula'] == root['formula'] for c in ordered)
+             novel = canonical(formula) not in selected_outputs
+             overlap = sum(canonical(n) in root_nodes for n in nodes(formula))
+-            score = [int(connected), int(novel), overlap, -len(ordered)]
++            unresolved = set()
++            for obligation in obligations:
++                work.step()
++                if obligation['occupied'] is False:
++                    unresolved.add((obligation['row'], canonical(obligation['formula'])))
++            reopens = root is not None and any(value == canonical(root['formula']) for row, value in unresolved)
++            quality = 0 if reopens else 2 if connected else 1
++            score = [quality, -len(unresolved), int(novel), overlap, -len(ordered)]
++            if anchor_key in batch:
++                stats['duplicate_anchors'] += 1
++                if batch[anchor_key]['score'] >= score:
++                    return
++            records = [{'candidate': clone(member), 'ordered_ports': ports}
++                       for member, ports in zip(ordered, port_records)]
+             proposal = {'schema': 'unit-row-goal-incident-proposal-v1', 'scheme': scheme,
+                 'binding': clone(binding), 'state_sha256': state_sha, 'branch_row': chosen,
+                 'anchor_full_key': clone(anchor['placement_key']), 'members': records,
+                 'ordered_PENDING_obligations': obligations, 'goal_root': clone(root),
+                 'score': score, 'future_members_are_preferences_only': True,
+                 'ranking_features': {'goal_connected': connected, 'anchor_novel': novel,
+-                    'literal_list_subtree_overlap': overlap, 'primitive_members': len(ordered)},
++                    'literal_list_subtree_overlap': overlap, 'primitive_members': len(ordered),
++                    'quality_class': quality, 'reopens_root': reopens,
++                    'unresolved_interface_pairs': len(unresolved)},
+                 'installed': False, 'logical_proof_accepted': False}
+-            if anchor_key in batch:
+-                stats['duplicate_anchors'] += 1
+-                if batch[anchor_key]['score'] >= score:
+-                    return
+             batch[anchor_key] = proposal
+ 
+         def fallback_stream():
+@@ -293,47 +346,43 @@
+                 yield fresh, [fresh], 'CANONICAL_PREFIX_NOVELTY', None
+ 
+         def licence_stream():
+-            for universal in universals:
+-                for term in terms:
+-                    work.step()
+-                    try:
+-                        instance = language.substitute(universal[2], universal[1], term)
+-                    except outside:
+-                        yield None
+-                        continue
+-                    witness = {'rule': 'instantiate', 'universal': universal, 'term': term,
+-                               'formula': ['imp', universal, instance]}
+-                    anchor = tile(witness, [], [], chosen)
+-                    yield anchor, [anchor], 'GENERIC_UI_LICENCE', None
++            for ui, ti in indices((len(universals), len(terms))):
++                work.step()
++                universal, term = universals[ui], terms[ti]
++                try:
++                    instance = language.substitute(universal[2], universal[1], term)
++                except outside:
++                    yield None
++                    continue
++                witness = {'rule': 'instantiate', 'universal': universal, 'term': term,
++                           'formula': ['imp', universal, instance]}
++                anchor = tile(witness, [], [], chosen)
++                yield anchor, [anchor], 'GENERIC_UI_LICENCE', None
+ 
+         def ui_mp_stream(frame):
+             goal, row = frame['formula'], frame['row']
+             if row <= chosen:
+                 return
+-            for universal in universals:
+-                for term in terms:
+-                    work.step()
+-                    try:
+-                        instance = language.substitute(universal[2], universal[1], term)
+-                    except outside:
+-                        yield None
+-                        continue
+-                    if instance != goal:
+-                        yield None
+-                        continue
+-                    licence = ['imp', universal, goal]
+-                    anchor = tile({'rule': 'instantiate', 'universal': universal,
+-                                   'term': term, 'formula': licence}, [], [], chosen)
+-                    if anchor is None:
+-                        yield None
+-                        continue
+-                    for source in range(row):
+-                        work.step()
+-                        if source == chosen:
+-                            yield None
+-                            continue
+-                        end = tile({'rule': 'mp', 'formula': goal}, [universal, licence], [source, chosen], row)
+-                        yield anchor, [anchor, end] + frame['suffix'], 'GENERIC_UI_MP', frame['root']
++            sources = [source for source in range(row) if source != chosen]
++            for ui, ti, si in indices((len(universals), len(terms), len(sources))):
++                work.step()
++                universal, term, source = universals[ui], terms[ti], sources[si]
++                try:
++                    instance = language.substitute(universal[2], universal[1], term)
++                except outside:
++                    yield None
++                    continue
++                if instance != goal or not read_compatible(source, universal):
++                    yield None
++                    continue
++                licence = ['imp', universal, goal]
++                anchor = tile({'rule': 'instantiate', 'universal': universal,
++                               'term': term, 'formula': licence}, [], [], chosen)
++                if anchor is None:
++                    yield None
++                    continue
++                end = tile({'rule': 'mp', 'formula': goal}, [universal, licence], [source, chosen], row)
++                yield anchor, [anchor, end] + frame['suffix'], 'GENERIC_UI_MP', frame['root']
+ 
+         def term_occurrences(value, path=()):
+             work.step()
+@@ -348,50 +397,67 @@
+             goal, row = frame['formula'], frame['row']
+             if goal[0] not in ('eq', 'pred') or row < chosen+3:
+                 return
+-            for path, right in term_occurrences(goal):
++            occurrences = list(term_occurrences(goal))  # One bounded AST, not a product.
++            middles = [r for r in range(chosen+1, row) if totals[(0, r)] == 0]
++            inputs = [r for r in range(row) if r != chosen]
++            for oi, ti, mi, ei, ai in indices((len(occurrences), len(terms),
++                                               len(middles), len(inputs), len(inputs))):
++                work.step()
++                path, right = occurrences[oi]
++                left, middle = terms[ti], middles[mi]
++                equality_row, antecedent_row = inputs[ei], inputs[ai]
++                if equality_row >= middle or antecedent_row == middle:
++                    yield None
++                    continue
+                 template = clone(goal)
+                 parent = template
+                 for index in path[:-1]:
+                     parent = parent[index]
+                 parent[path[-1]] = ['var', language.hole]
+-                for left in terms:
+-                    work.step()
+-                    try:
+-                        antecedent = language.substitute(template, language.hole, left)
+-                    except outside:
+-                        yield None
+-                        continue
+-                    equality = ['eq', left, right]
+-                    implication = ['imp', antecedent, goal]
+-                    licence = ['imp', equality, implication]
+-                    anchor = tile({'rule': 'eq_subst', 'variable': language.hole,
+-                        'template': template, 'left': left, 'right': right, 'formula': licence}, [], [], chosen)
+-                    if anchor is None:
+-                        yield None
+-                        continue
+-                    for middle in range(chosen+1, row):
+-                        for equality_row in range(middle):
+-                            work.step()
+-                            if equality_row == chosen:
+-                                # An equality input cannot equal the anchor's
+-                                # outer-implication output at the same point.
+-                                yield None
+-                                continue
+-                            for antecedent_row in range(row):
+-                                work.step()
+-                                if antecedent_row in (chosen, middle):
+-                                    yield None
+-                                    continue
+-                                mid = tile({'rule': 'mp', 'formula': implication},
+-                                    [equality, licence], [equality_row, chosen], middle)
+-                                end = tile({'rule': 'mp', 'formula': goal},
+-                                    [antecedent, implication], [antecedent_row, middle], row)
+-                                yield anchor, [anchor, mid, end] + frame['suffix'], 'GENERIC_ATOMIC_TRANSPORT', frame['root']
++                try:
++                    antecedent = language.substitute(template, language.hole, left)
++                except outside:
++                    yield None
++                    continue
++                equality = ['eq', left, right]
++                if not read_compatible(equality_row, equality) or not read_compatible(antecedent_row, antecedent):
++                    yield None
++                    continue
++                implication = ['imp', antecedent, goal]
++                licence = ['imp', equality, implication]
++                anchor = tile({'rule': 'eq_subst', 'variable': language.hole,
++                    'template': template, 'left': left, 'right': right, 'formula': licence}, [], [], chosen)
++                if anchor is None:
++                    yield None
++                    continue
++                mid = tile({'rule': 'mp', 'formula': implication},
++                    [equality, licence], [equality_row, chosen], middle)
++                end = tile({'rule': 'mp', 'formula': goal},
++                    [antecedent, implication], [antecedent_row, middle], row)
++                yield anchor, [anchor, mid, end] + frame['suffix'], 'GENERIC_ATOMIC_TRANSPORT', frame['root']
+ 
+         streams = [fallback_stream(), licence_stream()]
+         for frame in frames:
+             streams += [ui_mp_stream(frame), transport_stream(frame)]
+         for round_index in range(maximum_rounds):
++            # Rotate over the parents present at this round's entry. Newly
++            # admitted frames are serviced as proposals now, expanded next round.
++            continued, admitted = [], []
++            for expansion in expansions:
++                if len(frames) >= maximum_demands:
++                    break
++                work.step()
++                try:
++                    child = next(expansion)
++                except StopIteration:
++                    continue
++                continued.append(expansion)
++                if child is not None:
++                    frames.append(child)
++                    admitted.append(expand_frame(child))
++                    streams += [ui_mp_stream(child), transport_stream(child)]
++            expansions = continued + admitted
++            stats['demand_count'] = len(frames)
+             live = []
+             for stream in streams:
+                 work.step()

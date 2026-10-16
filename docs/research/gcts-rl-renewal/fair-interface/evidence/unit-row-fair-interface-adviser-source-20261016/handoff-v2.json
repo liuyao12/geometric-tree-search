@@ -1,0 +1,74 @@
+{
+  "API": {
+    "body_schema": "unit-row-goal-branch-advice-batch-v1",
+    "decision": "Exact {kind:BRANCH,row:integer0..23}. Root must establish actual fresh global dead/forced/earliest-generation decision; this adviser cannot certify the scheduler or make a non-BRANCH decision executable.",
+    "dependencies": "Caller passes original private membership language, exact c354 semantics module, exact69b4 open_fallback and iter_syntax endpoints, and original native-budget callback. No project Source imports and no old finite-family/donor code.",
+    "inputs_not_allowed": "No proof word, donor, target route, manual term list, learned library, row route, recipe sequence or caller-supplied goal obligations. Demands come from current original output marks; term/universal pools come from current original inputs and canonical bounded syntax.",
+    "proposal_schema": "unit-row-goal-incident-proposal-v1",
+    "signature": "propose_branch(*,language,semantics,fallback,iter_syntax,state,decision,tick,maximum_work=50000,maximum_proposals=8,maximum_demands=16,maximum_terms=16,maximum_rounds=8)"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 4436,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/author-static-v2.json",
+    "sha256": "f9ed222e0dde4c541ee15627b7538a3e32838bad24582a2cbc9eab76b4ff50cf"
+  },
+  "base_source": {
+    "bytes": 21913,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+    "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+  },
+  "limitations": [
+    "One best family per anchor loses interface diversity. A detached class1 UI licence can replace a class0 root-reopening family with the same anchor; no returned reopening proposal is guaranteed. Absent top-k is not generation evidence.",
+    "Bounds/demands/rounds deliberately omit advisory possibilities. Full original all-six fallback is mandatory; no adviser absence or UNKNOWN means impossibility.",
+    "Current work fields are unchanged and do not reveal axis visitation or per-phase costs. Finite-index mechanism has a static argument only; no dynamic diversity/fit/runtime calibration performed.",
+    "Quality prioritizes structurally connected nonreopening layouts, not discharge of unresolved inputs, semantic relevance, theorem validity, learning, RL or GCTS marking gain.",
+    "Compatibility failures still consume diagonal turns; bounded rounds can miss later legal sources, terms or transports.",
+    "Current30 qualified controls and old target UNKNOWN are historical and confer no qualification on these successors. All current controls/caller/grants/native/resource/target results await Root."
+  ],
+  "metadata_correction": "Additive V2 complete callable census traverses nested Try/loop/conditional bodies too. V1 raw offsets/patches/inverses remain exact and unchanged; operative Source unchanged.",
+  "paired_consumer": {
+    "bytes": 16290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+    "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+  },
+  "paired_consumer_contract": {
+    "bytes": 19988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/Source-contract-v2.json",
+    "sha256": "70675d6cd0bc2fb61dc02b13bba361ca96af98ae133808bbf93d44bb1ad7303c"
+  },
+  "paired_engine": {
+    "bytes": 52615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+    "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+  },
+  "policy": "score5/features7; lazy finite diagonal advisory descriptor axes; incremental bounded inverseUG frames; original memberships/candidate universe/fallback/limits unchanged.",
+  "preserved_v1_handoff": {
+    "bytes": 5196,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/handoff-v1.json",
+    "sha256": "ec8b3ac776590cbd243db32abf32911a47d5b0616c736ad6ffd4655e419b91cd"
+  },
+  "review_schema": "unit-row-goal-branch-adviser-typed-Source-review-v1",
+  "review_scope": "unit-row-generic-goal-branch-adviser-Source",
+  "schema": "unit-row-fair-interface-adviser-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 24988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+    "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+  },
+  "source_contract": {
+    "bytes": 21577,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/Source-contract-v2.json",
+    "sha256": "25570f6d3f9bce83c7c13781ec204b62bc970e104936e73ed126b5f4e7bc64af"
+  },
+  "source_delta": {
+    "bytes": 17949,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/Source-delta-v2.json",
+    "sha256": "0db6eab902fe8628a936de4ca77e38148e7443646b9db17e64c519378757684d"
+  },
+  "source_only": true,
+  "status": "SOURCE_ONLY_IMMUTABLE_UNEXECUTED_PENDING_DISTINCT_REVIEW_AND_FRESH_ROOT_CONTROLS_GRANTS",
+  "unchanged_raw_AST_callable_count": 13
+}

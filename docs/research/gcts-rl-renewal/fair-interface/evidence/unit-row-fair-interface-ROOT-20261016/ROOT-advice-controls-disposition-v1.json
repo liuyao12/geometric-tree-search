@@ -1,0 +1,144 @@
+{
+  "actual_adviser_return": {
+    "independently_validated": true,
+    "limits": {
+      "maximum_demands": 5,
+      "maximum_proposals": 8,
+      "maximum_rounds": 3,
+      "maximum_terms": 1,
+      "maximum_work": 50000
+    },
+    "proposals": 6,
+    "reason": null,
+    "status": "READY",
+    "work": {
+      "candidate_members_checked": 15,
+      "definite_profile_rejections": 0,
+      "demand_count": 5,
+      "descriptor_steps": 20,
+      "duplicate_anchors": 3,
+      "fallback_prefix_candidates": 3,
+      "guarded_steps": 10530,
+      "incompatible_unions": 0,
+      "rounds": 3,
+      "term_count": 1,
+      "unique_anchors": 6,
+      "universal_count": 5
+    }
+  },
+  "actual_closed": true,
+  "additional_coverage_gaps": [
+    {
+      "case": "real-returned-root-reopening-remains-legal-and-demoted",
+      "reason": "No genuine returned root-reopening proposal; lawful generation/demotion runtime coverage remains a gap, never fabricated."
+    },
+    {
+      "case": "nonempty-READY-replacement-adopted-after-definite-rejection",
+      "reason": "Actual validated READY replacement has no genuine future-bearing family."
+    },
+    {
+      "case": "replacement-installs-anchor-only-not-future-obligations",
+      "reason": "Actual validated READY replacement has no genuine future-bearing family."
+    },
+    {
+      "case": "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+      "reason": "Actual validated READY replacement has no genuine future-bearing family."
+    }
+  ],
+  "aggregate_B_bytes": 63111168,
+  "all_advice_consumer_gates_qualified": false,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 14.393,
+  "complete_wire_verified": true,
+  "conformance_gaps": [
+    "No full graph/trajectory conformance or arbitrary all-six EOF authority.",
+    "Fixed24unit rows, no fractional/shared positive support or universal fixed Wang palette.",
+    "Hand-written advice, no learned/RL/lemma inventory or proof-search gain.",
+    "Finite heuristic pools/rounds plus one-best-anchor dedup can omit interfaces."
+  ],
+  "controls_accepted": false,
+  "current_goal_turn": "progress",
+  "declared_cases": 40,
+  "fair_interface_evidence": {
+    "actual_returned_batch_sha256": "cec149b1a350bf9dc61e4fdbc812a331159f302b087007a6492b0c070c34d7e8",
+    "finite_index_dynamic_calibration": false,
+    "multi_term_control_calibration": false,
+    "new_case_names": [
+      "real-returned-interface-features-score-and-order",
+      "forged-interface-feature-and-score-rejections",
+      "Boolean-versus-integer-feature-and-score-rejections",
+      "obsolete-adviser-version-rejected",
+      "later-ranked-quality-defect-and-order-rejected",
+      "real-returned-root-reopening-remains-legal-and-demoted",
+      "real-returned-universal-diversity-with-declared-term-horizon",
+      "nonempty-READY-replacement-adopted-after-definite-rejection",
+      "replacement-installs-anchor-only-not-future-obligations",
+      "replacement-owned-nonempty-inner-and-parent-rollback-exact"
+    ],
+    "no_generation_inferred_from_topk_absence": true,
+    "replacement_passed": false,
+    "source_scoring_rows_reconciled": true
+  },
+  "family_retirement_evidence": {
+    "abandoned_pending_keys": 2,
+    "abandonment_event_sha256": "94793303cd0ecfea789f59b7e1b4c6d966f6b1147a98a86a5c4f8b4e7083cf6f",
+    "actual_rejected_keys": 1,
+    "all_eight_prior_lifecycle_cases_reconciled": true,
+    "different_legal_future_key_checked": true,
+    "later_fresh_calls": 2,
+    "same_branch_fresh_calls": 1
+  },
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "663024e9f63f00dbdc5863bcc2fecf1848cf29fad55453a63a958806ab57642f",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "6f9c5cfaf177385619292b967021073f2912698fbeb07bcc0df43fc22a7eda68"
+  },
+  "lossless_transport_concordance": {
+    "bytes": 1484,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/ROOT-advice-controls-transport-concordance-v1.json",
+    "sha256": "3b70038932a8c6d97ebd48e632a5cbb9163def4f4be4643d8472c7c923471d95"
+  },
+  "native_launch_to_postprobe_ns": 14224545000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 14196928000,
+  "outputs": [
+    {
+      "bytes": 327191,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+      "sha256": "d5ad08d1fdd48151970f4b580a087858201a96c8c33078ed0623633f6d3824e4"
+    },
+    {
+      "bytes": 7006,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/advice-controls-owned-v1/response.jsonl",
+      "sha256": "b43be8869daf9436a566406373cf99079b137ec9f4d7713d821e449058f7a4a9"
+    }
+  ],
+  "passed_cases": 36,
+  "plan": {
+    "bytes": 7899,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "991df0778767816004e8cb70ade35596b109461986cbdb954e55c38a5ab7f10f"
+  },
+  "previous_goal_turn": "progress",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-advice-consumer-controls-disposition-v5",
+  "scientific_replay": false,
+  "scope": "Current original-language40-case controls: prior30 unchanged plus ten declared quality/replacement cases; actual skipped gates remain unqualified. No target or theorem discovery/full trajectory claim.",
+  "selected_family": {
+    "anchor_row": 0,
+    "future_rows": [
+      2,
+      8
+    ],
+    "scheme": "GENERIC_UI_MP",
+    "snapshot_sha256": "01bb1960c11c7021f26d7ef153598b29c9f7bd2e9bfd3420397af6731e10ddc1"
+  },
+  "skipped_cases": 4,
+  "status": "PARTIAL_LOCAL_CONSUMER_CONTROLS_TARGETS_NOT_ADMITTED",
+  "target_admission_qualified": false,
+  "terminal_T_bytes": 63111168
+}

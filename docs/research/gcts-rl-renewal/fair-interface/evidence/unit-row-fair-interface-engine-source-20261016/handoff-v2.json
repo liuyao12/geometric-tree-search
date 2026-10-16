@@ -1,0 +1,61 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 3637,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/author-static-v2.json",
+    "sha256": "c74c1b2c42257588505cfeb4401ce049dacd070bb0bcf4e5545618ae41f38c94"
+  },
+  "base_source": {
+    "bytes": 52581,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+    "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+  },
+  "changed_callables": [],
+  "changed_module_literals": {
+    "ADVICE_VALIDATOR_VERSION": "unit-row-independent-advice-consumer-validator-v2-interface-ordering",
+    "ADVISER_VERSION": "unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering",
+    "VERSION": "lazy-unit-row-global-engine-v7-fair-interface-versions"
+  },
+  "metadata_correction": "Additive V2 complete callable census traverses nested Try/loop/conditional bodies too. V1 raw offsets/patches/inverses remain exact and unchanged; operative Source unchanged.",
+  "paired_sources": {
+    "adviser": {
+      "bytes": 24988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+      "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+    },
+    "consumer_validator": {
+      "bytes": 16290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+      "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+    }
+  },
+  "preserved_v1_handoff": {
+    "bytes": 2998,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/handoff-v1.json",
+    "sha256": "2e9826dcfe717853f76a25aba49266e68c2a55bc58f9798d8f02750c607369d1"
+  },
+  "remaining": "Distinct Source review, current full Source/caller integration, separate controls/actual Root grants required. No function/project execution, Q/model decoding, clocks, tests, plans or actuals here.",
+  "review_schema": "unit-row-goal-advice-engine-typed-Source-review-v1",
+  "review_scope": "unit-row-goal-advice-global-engine-Source",
+  "schema": "unit-row-fair-interface-engine-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+    "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+  },
+  "source_contract": {
+    "bytes": 7913,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/Source-contract-v2.json",
+    "sha256": "d6266caa852fcdb890253178d182f6e0b243a861be8f7730ada6ed19cc2cfb27"
+  },
+  "source_delta": {
+    "bytes": 4126,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/Source-delta-v2.json",
+    "sha256": "bcee10e11e55c77f81f5c9094dc95376cec71a66bb1191dcf899693d613cd838"
+  },
+  "source_only": true,
+  "unchanged_callable_count": 40,
+  "unchanged_raw_AST_callable_count": 40
+}

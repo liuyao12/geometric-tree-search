@@ -1,0 +1,35 @@
+{
+  "field": "advice",
+  "operative_source_changed": false,
+  "operative_sources": {
+    "advice_controls": {
+      "bytes": 71685,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-controls-source-20261016/fair_interface_controls_v1.py",
+      "sha256": "1b90063ea2635e1e6a40220cc0ce2e5733f25eed25703cc93d8e3dd8ec835a5f"
+    },
+    "advice_validator": {
+      "bytes": 16290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+      "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+    },
+    "adviser": {
+      "bytes": 24988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+      "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+    },
+    "engine": {
+      "bytes": 52615,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+      "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+    }
+  },
+  "qualification": "Inherited top-level descriptive advice paragraph names c6fc/f668 predecessor versions. Read it as historical prose. Operative sources/FIXED/Review_ABI/fair_interface_successor bind current a9bf adviser2/3455 consumer2/4afe engine7/1b90 controls, as independently reviewed. No old version is accepted by current Source.",
+  "schema": "ROOT-fair-interface-descriptive-erratum-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 34671,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-cold-ROOT-source-20261016/Source-contract-v5.json",
+    "sha256": "2f4dabd4372584ad78466ada0eb6132ae7fc50a0fff3484ce7d298dfea59c5bd"
+  }
+}

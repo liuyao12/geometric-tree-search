@@ -1,0 +1,117 @@
+{
+  "API": {
+    "ADVISER_VERSION": "unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering",
+    "VERSION": "unit-row-independent-advice-consumer-validator-v2-interface-ordering",
+    "injected_engine": "validate_advice(*,state,decision,batch,tick)",
+    "module": "validate_advice(*,language,semantics,state,decision,batch,tick)",
+    "receipt_schema": "unit-row-advice-validation-v1"
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_static": {
+    "bytes": 2594,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/author-static-v1.json",
+    "sha256": "66150faf4e107f5be251231797bf59f32da39a0ef4355b0ade92529f146a7e34"
+  },
+  "authorship_disclosure": "Author also wrote f668 parent consumer, earlier horizon control changes, original1717 checker, codec/family and harness work. Adviser and c354 semantics/engine are arithmetic-author; membership is controls-author. This Source independently recomputes the new adviser feature policy without importing/copying its helper; it is not a second logical kernel. Distinct Root+peer review and actual native evidence remain necessary.",
+  "changed_regions": 3,
+  "forward_patch": {
+    "bytes": 2611,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/consumer-v1-to-v2.patch",
+    "sha256": "52eb5e3c3513e2c30aa529dcc28f8044d79afb5d0f6b5311b92f913043566f20"
+  },
+  "full_inverse_patch": {
+    "bytes": 2611,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/consumer-v2-to-v1-full-inverse.patch",
+    "sha256": "e13cdc807fe96bfb2a3a24a1b6cf0d26c3dee29e7502628461aef6c9260df643"
+  },
+  "implementation_status": "UNEXECUTED_SOURCE_REQUIRES_DISTINCT_REVIEW",
+  "parent_contract": {
+    "bytes": 13583,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/Source-contract-v1.json",
+    "sha256": "55d331260ee45e103ec7f12da7fce96029be1d9075da206a632bce5ef78f6ff1"
+  },
+  "parent_source": {
+    "bytes": 15295,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+    "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+  },
+  "patch_application_static": {
+    "bytes": 1386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/patch-application-static-v1.json",
+    "sha256": "3bedb98edf882b8a2aa071c6ab68b0616e3b4deeafab2924aed41c9453b69679"
+  },
+  "pending_branch_raw_exact": true,
+  "ranking_policy": {
+    "literal_types": "Expected booleans/integers are computed from rebuilt current data; canonical JSON equality is exact and distinguishes False from0, True from1, integers from finite floats, wrong arity, extra/missing feature keys and stale values. No bool/int coercion of supplied score/features.",
+    "name": "FAIR_INTERFACE_RANKING_V2",
+    "old_features": "goal_connected still requires an original member output at the named current marked unfilled root row with literal matching formula; anchor_novel compares current selected output formulas, subtree overlap and member count are unchanged.",
+    "order": "Descending lexicographic score, then unchanged ascending full canonical anchor key; whole ranked batch validated. Finite generation fairness belongs to adviser, not certified by this consumer.",
+    "quality_class": "Literal integer0 if reopens_root, else integer2 if goal_connected, else integer1. Root-reopening families remain legal, validated, rankable and selectable; they are not pruned.",
+    "ranking_feature_keys": [
+      "goal_connected",
+      "anchor_novel",
+      "literal_list_subtree_overlap",
+      "primitive_members",
+      "quality_class",
+      "reopens_root",
+      "unresolved_interface_pairs"
+    ],
+    "reopens_root": "True exactly when goal_root is not None and at least one such unoccupied external pair has canonical formula literally equal to that named root formula; row need not equal root row. This is a generic syntactic ordering feature, not logical consequence/equivalence or proof of circularity.",
+    "root_None": "goal_connected=False and reopens_root=False; quality_class=1. Pair count still uses every distinct unoccupied external interface. No unnamed root is guessed from target or marks, and absence of a named-root reopening penalty does not establish noncircularity.",
+    "scope": "Only proposal ordering. No point m/t is installed, no fact/inference is supplied, no candidate/domain/exclusion/EOF/degree/scheduler/rollback/global graph authority is created.",
+    "score": [
+      "quality_class",
+      "-unresolved_interface_pairs",
+      "int(anchor_novel)",
+      "literal_list_subtree_overlap",
+      "-primitive_members"
+    ],
+    "unresolved_interface_pairs": "Distinct pairs (literal external obligation row, canonical literal formula) from rebuilt ordered_PENDING_obligations whose occupied field is exactly False. Internal member links and occupied external reads are excluded. Repeated ports remain fully represented and checked but identical unoccupied row/formula pairs count once; different rows or formulas remain distinct."
+  },
+  "remaining_gates": [
+    "Distinct whole current Source/delta review before any Root pairing/actual; author static checks are not a peer pass.",
+    "Pair exact adviser VERSIONv2 and engine validator VERSIONv2 via authenticated current Root Source map/contract/reviews. The consumer imports/calls neither adviser nor engine; no current adviser2 Source capsule is fabricated here.",
+    "Fresh controls must exercise independently recomputed features/order for root-reopening vs connected vs detached/rootNone, repeated external pairs vs distinct rows, occupied/internal interfaces, strict bool/int mismatch and malformed later proposals. Reopening remains legal. Existing PENDING/whole packet/remote/collision/guard failures remain meaningful controls.",
+    "Engine still must establish actual complete global BRANCH and full base fallback, independently current zero/singleton/EOF where available, exact uninstalled-family adoption/retirement/rollback. Ranking is not complete universe or root-closure authority.",
+    "Root cold fresh authority and original20/512MiB/failure55/owned60/caller90+1, complete whole wire/output/terminal native closure and independent membership1717/point checks remain mandatory. No fit, speedup, proof, GCTS/RL/learned marking/transfer/trajectory claim.",
+    "No scientific Source/helper/kernel/model/Q/word/clock/test/control/actual execution or actual plan/grant/publication occurs in this packet."
+  ],
+  "schema": "unit-row-fair-interface-consumer-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 16290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+    "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+  },
+  "source_contract": {
+    "bytes": 19988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/Source-contract-v2.json",
+    "sha256": "70675d6cd0bc2fb61dc02b13bba361ca96af98ae133808bbf93d44bb1ad7303c"
+  },
+  "source_delta": {
+    "bytes": 4038,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/Source-delta-v1.json",
+    "sha256": "87b6d7307f72614f72794e7730fdfcb46847acd83818e6c9ea074e59402ebb24"
+  },
+  "source_only": true,
+  "sources": {
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "validator": {
+      "bytes": 16290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+      "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+    }
+  },
+  "unchanged_helpers": 6
+}

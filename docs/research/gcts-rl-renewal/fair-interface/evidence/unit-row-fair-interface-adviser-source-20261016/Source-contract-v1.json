@@ -1,0 +1,247 @@
+{
+  "API": {
+    "body_schema": "unit-row-goal-branch-advice-batch-v1",
+    "decision": "Exact {kind:BRANCH,row:integer0..23}. Root must establish actual fresh global dead/forced/earliest-generation decision; this adviser cannot certify the scheduler or make a non-BRANCH decision executable.",
+    "dependencies": "Caller passes original private membership language, exact c354 semantics module, exact69b4 open_fallback and iter_syntax endpoints, and original native-budget callback. No project Source imports and no old finite-family/donor code.",
+    "inputs_not_allowed": "No proof word, donor, target route, manual term list, learned library, row route, recipe sequence or caller-supplied goal obligations. Demands come from current original output marks; term/universal pools come from current original inputs and canonical bounded syntax.",
+    "proposal_schema": "unit-row-goal-incident-proposal-v1",
+    "signature": "propose_branch(*,language,semantics,fallback,iter_syntax,state,decision,tick,maximum_work=50000,maximum_proposals=8,maximum_demands=16,maximum_terms=16,maximum_rounds=8)"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "schema": "unit-row-goal-branch-adviser-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-generic-goal-branch-adviser-Source",
+    "source": {
+      "bytes": 24988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+      "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+    },
+    "source_contract": "Exact current raw contract capsule",
+    "source_only": true,
+    "source_review_passed": "Genuine distinct reviewer decides; no author self-pass."
+  },
+  "algorithm": {
+    "advisory_filters": "UI_MP sources omit the incident anchor row (a universal cannot equal its UI licence implication); required instantiated goal/current marked universal read compatibility is checked before member construction. Atomic transport omits occupied middle rows, conflicting equality/antecedent reads, and structurally invalid source alignments before member construction. Every surviving member is STILL rebuilt by unchanged original c354 and the full compatible union; these filters affect advice generation only and never base candidate exclusion.",
+    "bias": "These explicit schema choices, salient-prefix pools, inverse-UG horizon, canonical physical-row alignments and per-stream round quotas are hand-written heuristic restrictions on advice. They are NOT restrictions on the full original six-rule candidate universe; complete base fallback outside the module is mandatory. No RL or learned marking/cluster claim.",
+    "dedup_and_cost": "Unchanged one highest-scoring family per FULL anchor. Same-union/member/interface validation precedes score/dedup. Full output candidate cloning is postponed until a better family survives that dedup, reducing only redundant output copying. This is a Source change, no measured cost/speedup claim.",
+    "fairness": "Advisory finite pools remain parameter/input/canonical-prefix biased. Licence and UI_MP descriptor axes, and atomic-transport occurrence/left-term/middle/ordered-input axes, use lazy iter_fair_indices increasing L1 shells; earlier axes increment first within each shell. Only one descriptor from each live schema/frame stream per round. Structural/current read compatibility rejection consumes its descriptor yield; no usable-source/source3/useful-proposal guarantee, equal CPU latency or all-root/all-interface coverage. New parent frames are not eagerly expanded. At a truncated shared demand cap the earlier parent may get the residual slot. No full Cartesian product is materialized.",
+    "finite_index_static_argument": {
+      "domain": "1..8 finite integer axes; lengths0..64. Zero axis emits no index tuple. This numeric helper grants no mathematical exhaustion authority and is not exposed as a new caller/control endpoint.",
+      "proof": "Each vector has unique integer coordinate sum between0 and sum(length-1). At that shell the recursive low/high inequalities enumerate exactly every bounded coordinate prefix admitting the remaining suffix sum; the leaf emits iff residual sum0. Disjoint coordinates/shells give no duplicates. In every finite nonempty box each vector is eventually emitted if consumption and budget continue. Prefix truncation remains incomplete.",
+      "retention": "Only bounds, one recursive prefix of at most8 integers, and bounded stream/frame/member data; no product materialization. Existing quota/native callback remains mandatory.",
+      "signature": "iter_fair_indices(*,lengths,tick)"
+    },
+    "inverse_demands": "Seed current marked/unfilled outputs in canonical row order up to maximum_demands. Each round advances each parent frame present at round entry once until the shared frame cap. New accepted frames join proposal streams now and are expanded in later rounds. Eligible original UG suffixes are rebuilt/union-checked; prefer unfilled/current-read-compatible prior rows >= chosen+2 (a UI_MP frame needs a strict-prior source distinct from its anchor), then remaining compatible unfilled priors. All preferences remain uninstalled. No known theorem/term/row route is input.",
+    "pending": "members contain full current candidate packets and exact ordered member/pending ports. Every member other than anchor_full_key is a PENDING future preference by definition, even if its data is compatible now. ordered_PENDING_obligations retain every external port and actual occupancy with fact_accepted=False. Repeated ports are not silently quotiented.",
+    "ranking": "Descending exact score5 ['quality_class', '-unresolved_interface_pairs', 'int(anchor_novel)', 'literal_list_subtree_overlap', '-primitive_members'] then canonical full anchor key. Unresolved pairs are DISTINCT (physical row, canonical formula) among EXTERNAL ordered PENDING obligations whose occupied value is exactly False. Duplicate/repeated ports remain in the actual ordered interface. reopens_root iff non-None goal_root formula literally matches any such formula. quality_class=0 if reopens_root, otherwise2 if goal_connected, otherwise1. RootNone has false connected/reopens and quality1. This is layout-only heuristic debt, never a proof or closed-goal determination. Reopening proposals remain allowed.",
+    "ranking_features_exact_keys": [
+      "goal_connected",
+      "anchor_novel",
+      "literal_list_subtree_overlap",
+      "primitive_members",
+      "quality_class",
+      "reopens_root",
+      "unresolved_interface_pairs"
+    ],
+    "schemas": [
+      "CANONICAL_PREFIX_NOVELTY: exact original all-six fallback prefix, independently rebuilt current candidate packets.",
+      "GENERIC_UI_LICENCE: original zero-port UI licence, no acceptance of its universal antecedent.",
+      "GENERIC_UI_MP: incident original UI licence plus future MP and pending universal antecedent.",
+      "GENERIC_ATOMIC_TRANSPORT: one-hole term occurrence in an atomic demand, original EqSubst licence plus two future MP members, ordered pending equality/atomic input obligations. No induction or new kernel inference."
+    ],
+    "terms": "Bounded parameter-first and input-subterm salient terms, then canonical term-stream prefix if room; only original standalone term membership. Universal subformulas of original target/axioms/Gamma/selected outputs form another bounded pool. Literal selected outputs are novelty data, never accepted facts.",
+    "union": "Every primitive reconstructed from full original preimage/ordered ports/strict negative offsets with c354 membership and whole legality. A temporary compatible union checks all t/m support, current selected/excluded full keys and digest/preimage collisions; exact shared keys count once. This temporary union is only a proposal check and is never installed in the engine."
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 3299,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/author-static-v1.json",
+    "sha256": "96b9760313259328fb020caed1590390569aaeb85702964b9f70cabcb53d5ae7"
+  },
+  "base_contract": {
+    "bytes": 12193,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/Source-contract-v1.json",
+    "sha256": "e46ce289256c834f35701bcd41f667140980c8a60c976691242ab824622719a7"
+  },
+  "base_source": {
+    "bytes": 21913,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+    "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+  },
+  "delta": {
+    "bytes": 17022,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/Source-delta-v1.json",
+    "sha256": "ea6177c91e9e0e1175b4cc14cc19ae31e7b3f0bd0df37b74425e2f0d2fe2e22e"
+  },
+  "limitations": [
+    "One best family per anchor loses interface diversity. A detached class1 UI licence can replace a class0 root-reopening family with the same anchor; no returned reopening proposal is guaranteed. Absent top-k is not generation evidence.",
+    "Bounds/demands/rounds deliberately omit advisory possibilities. Full original all-six fallback is mandatory; no adviser absence or UNKNOWN means impossibility.",
+    "Current work fields are unchanged and do not reveal axis visitation or per-phase costs. Finite-index mechanism has a static argument only; no dynamic diversity/fit/runtime calibration performed.",
+    "Quality prioritizes structurally connected nonreopening layouts, not discharge of unresolved inputs, semantic relevance, theorem validity, learning, RL or GCTS marking gain.",
+    "Compatibility failures still consume diagonal turns; bounded rounds can miss later legal sources, terms or transports.",
+    "Current30 qualified controls and old target UNKNOWN are historical and confer no qualification on these successors. All current controls/caller/grants/native/resource/target results await Root."
+  ],
+  "limits": {
+    "Root_current_configured_horizon": {
+      "control_maximum_terms": 1,
+      "maximum_demands": 5,
+      "maximum_proposals": 8,
+      "maximum_rounds": 3,
+      "maximum_work": 50000,
+      "target_maximum_terms": 16
+    },
+    "ceilings": {
+      "maximum_demands": 48,
+      "maximum_proposals": 32,
+      "maximum_rounds": 32,
+      "maximum_terms": 32,
+      "maximum_work": 500000
+    },
+    "defaults": {
+      "maximum_demands": 16,
+      "maximum_proposals": 8,
+      "maximum_rounds": 8,
+      "maximum_terms": 16,
+      "maximum_work": 50000
+    },
+    "meaning": "guarded_steps counts explicit routed adviser/fallback/semantics ticks; internal original language/kernel ticks remain separately native guarded and are not claimed in this count. Descriptor count is yielded schema attempts, not complete candidate cardinality. Proposals are at most configured output count; internal candidates at most rounds times (2+2*demands) yielded attempts.",
+    "universe": "Bounded term12/formula44 profile remains unchanged. Advisory quotas may miss every useful instance; no empty batch, stopped stream or quota exhaustion proves no candidate/no proof.",
+    "work_fields": [
+      "descriptor_steps",
+      "candidate_members_checked",
+      "definite_profile_rejections",
+      "incompatible_unions",
+      "duplicate_anchors",
+      "term_count",
+      "universal_count",
+      "demand_count",
+      "rounds",
+      "fallback_prefix_candidates",
+      "guarded_steps",
+      "unique_anchors"
+    ]
+  },
+  "paired_consumer_version": "unit-row-independent-advice-consumer-validator-v2-interface-ordering",
+  "paired_engine_source": {
+    "bytes": 52615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-engine-source-20261016/lazy_unit_row_global_engine_v7.py",
+    "sha256": "4afebebcc9c6dd114a3c98bdd386fc5ed83735f5479f38ece5cc457398af8975"
+  },
+  "raw_references": {
+    "baseline_adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "baseline_adviser_contract": {
+      "bytes": 12193,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "e46ce289256c834f35701bcd41f667140980c8a60c976691242ab824622719a7"
+    },
+    "baseline_engine": {
+      "bytes": 52581,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/lazy_unit_row_global_engine_v6.py",
+      "sha256": "0b45e2797ded03a4fd4a083ea8f747a9fdf10ed35af18f2efe91a3ccfdbecab8"
+    },
+    "baseline_engine_contract": {
+      "bytes": 17749,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "b331df934f4c522ad8d97819529fa4c0cf8d2e311f70d62bd9c9e248214d8c6a"
+    },
+    "current_checkpoint": {
+      "bytes": 13743,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-retirement-publication-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+      "sha256": "93cb85593720d512608295f94c45b01d1e83237c62f3a240f533da35fa049fda"
+    },
+    "degree_semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_semantics_contract": {
+      "bytes": 11994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-contract-v2.json",
+      "sha256": "342cb0662f66262fa3ceb891f407a70128e299f8cdcc81bf95625902f6081cb9"
+    },
+    "fallback_and_term_stream": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "fallback_contract": {
+      "bytes": 14336,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-contract-v1.json",
+      "sha256": "5800fb0834efadd31afde96d3518257e5f6d3e43932ee2863127c666c053c683"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "paired_consumer": {
+      "bytes": 16290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/independent_advice_consumer_v2.py",
+      "sha256": "3455b61cffc0eede914d1c7d27c52bb8f9b771bce96d002c048cf3146807670f"
+    },
+    "paired_consumer_contract": {
+      "bytes": 19988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/Source-contract-v2.json",
+      "sha256": "70675d6cd0bc2fb61dc02b13bba361ca96af98ae133808bbf93d44bb1ad7303c"
+    },
+    "paired_consumer_handoff": {
+      "bytes": 8936,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-consumer-source-20261016/handoff-v2.json",
+      "sha256": "9fc0a1195cb0baed70f2eff51d1efb3839bde9cf8deaa1067b155f1336a622c6"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "quality_note": {
+      "bytes": 24724,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-quality-diagnosis-source-20261016/Source-note-v1.json",
+      "sha256": "e96e05bb311f0e0c1acd2e9f97637ae1364832ea6add410ce8472bf895e8d165"
+    },
+    "research_note": {
+      "bytes": 13657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-proposal-research-source-20261016/research-note-v1.json",
+      "sha256": "a2a0b1ba5562ae4f718f65aa87426588b1920c328e09a3fa641ca656d3ffbd66"
+    }
+  },
+  "remaining_controls": [
+    "Fresh decision gate rejects DEAD/FORCED/SOLVED and stale/wrong original epoch.",
+    "Every emitted anchor/future union checked by independent current original membership/point endpoints; incompatible remote marks, invalid offsets, repeated/shared-port errors cannot create accepted facts.",
+    "Empty/all-rejected advice preserves canonical fallback; later-row preferences cannot override chosen row/global forced/dead.",
+    "Work-quota and injected callback Timeout yield UNKNOWN; callback ValueError propagates; no exhausted exclusion or partial batch use.",
+    "Future consumer trails preference consumption/contexts with exact existing rollback, preserves all canonical alternatives, and uses only genuine child EXHAUSTED for exclusions.",
+    "Matched canonical/advised point arms on same engine/model/full grammar; same-information ordinary control before any GCTS-specific advantage claim."
+  ],
+  "remaining_gates": "Genuine distinct whole Source review of current adviser+engine and consumer/controls, fresh Root same-authority full Source/callback custody/cold integration, current controls and once-only grants. Original20/55/60/512MiB/90+1 and final output/terminal admission unchanged. No runtime outcome or useful-proposal prediction.",
+  "resource_and_integration": "Original20 success/512MiB,55 failure/60 owned/90+1 caller remain external mandatory gates. All preparation/proposal/validation/serialization/output costs charged. Final READY callback precedes builtin ranking/output; Root must enforce native post-output/terminal deadline too. UNKNOWN failure-only output uses no failed scientific callback. No actual Resource qualification, scientific execution, clock, plan or engine change here.",
+  "schema": "unit-row-fair-interface-adviser-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-generic-goal-branch-adviser-Source",
+  "source": {
+    "bytes": 24988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fair-interface-adviser-source-20261016/goal_branch_adviser_v2.py",
+    "sha256": "a9bf1b38cefcbe4377710d77e7736698b289c4f81512bc1ecc66234206b860ae"
+  },
+  "source_only": true,
+  "status_and_output": {
+    "READY": "Finite configured advice computation returned; always incomplete=True and original_fallback_required=True, even if all selected streams stopped.",
+    "UNKNOWN": "Own work quota or external TimeoutError interrupts. Any partial proposals are DIAGNOSTIC ONLY; do not execute them as an admitted advice batch. No EXHAUSTED result exists. Other callback/authority/ValueError failures propagate; only exact original OutsideLanguage is filtered.",
+    "flags": "All logical_proof/exact_board/degree_or_EOF/scheduler/complete_GCTS/trajectory/learned_marking/RL/ROOT_resource flags false. Origin HAND_WRITTEN_GENERIC_GOAL_ORDERING, learned=False.",
+    "future_execution": "Root must independently rebuild/revalidate the anchor against actual original current state before trying it. Future members/marks must not be placed or imposed early. They may be reconsidered only when unchanged global propagation/scheduler chooses the corresponding incident row; forced/dead results override preferences.",
+    "staleness": "Current Source/binding/state and pending-context lineage are caller responsibilities. Never treat a digest as sole authority. This module supplies no preference persistence, state mutation, engine hook, rollback implementation, pruning or fallback cursor replacement."
+  },
+  "version": "unit-row-generic-goal-branch-adviser-v2-fair-interface-ordering"
+}
