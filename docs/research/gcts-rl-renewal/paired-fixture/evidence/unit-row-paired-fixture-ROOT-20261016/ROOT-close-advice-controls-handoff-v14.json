@@ -1,0 +1,40 @@
+{
+  "activation": "Root whole review and exact current measured saved records required; no execution by author.",
+  "author_identity": "/root/arithmetic_induction",
+  "controls_source": {
+    "bytes": 114823,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201"
+  },
+  "delta": {
+    "bytes": 14521,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT-close-advice-controls-v11-to-v14-delta.json",
+    "sha256": "0b9440b7fe8eb24ac5686584cb2c319a0ea78dd36d0a357c294488253a513b74"
+  },
+  "dependency_audit": {
+    "bytes": 10173,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-dependency-audit-source-20261016/case-dependencies-v1.json",
+    "sha256": "bada82fcf8c133b32573ebdca460479e171f34c447fa5c52f5202765607ab190"
+  },
+  "helper_executed": false,
+  "independent_review_passed": false,
+  "schema": "ROOT-paired-fixture-saved-closer-handoff-v14",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 43300,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT_close_advice_controls_saved_v14.py",
+    "sha256": "062a1e18fdff2b4ac5565f718229e8b16b1c69146fb47669ec940ae98bf88425"
+  },
+  "source_contract": {
+    "bytes": 4905,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT-close-advice-controls-Source-contract-v14.json",
+    "sha256": "f6f334215d555327b2cf13309c5fd0c5a809b92ad775e724633cdafe5854f084"
+  },
+  "source_only": true,
+  "static": {
+    "bytes": 1430,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT-close-advice-controls-static-v14.json",
+    "sha256": "7c1176b855cf3eb48a5d86496c8d1d9a8f86ec2c9b8af117b4f2289815037e8c"
+  }
+}

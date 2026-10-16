@@ -1,0 +1,30 @@
+{
+  "schema": "unit-row-paired-fixture-controls-independent-handoff-v7",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source": {
+    "bytes": 114633,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py",
+    "sha256": "900be8b58ae3aa3a48f477a4f4bfa57fb37fef1ed7db3740f8ab7b77a6d500c0"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-contract-v7.json",
+    "sha256": "01c5cbf1c484aea6e82fd48d1169a24d6b4454f55be0f13942628c42ba583b6b",
+    "bytes": 35759
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/typed-Source-review-v7.json",
+    "sha256": "1e3347cadc4f43736a5b7db44663fc63699a9a879f0a067a05feeee8b0a72f1c",
+    "bytes": 5752
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/findings-v7.json",
+    "sha256": "67c5b45da01d43e3bb3e32fa7516d195c0bf6c415a7f80944611642f0d9c7879",
+    "bytes": 2695
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "SOURCE_BLOCKED",
+  "next": "Review additive8 repair separately; frozen7 and this genuine negative remain immutable."
+}

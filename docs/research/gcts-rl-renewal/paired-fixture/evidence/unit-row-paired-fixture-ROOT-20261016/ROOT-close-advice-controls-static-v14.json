@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "AST_parse": true,
+    "all_five_helpers_raw_exact": true,
+    "compile_without_execution": true,
+    "complete_forward_inverse": true,
+    "no_nonwhitespace_C0_controls": true,
+    "only_five_original_top_helpers": true,
+    "original_future_[2,8]_assertion_retained": true,
+    "sibling_full_continuation_alias_equal": true,
+    "sibling_positive_flag_required": true,
+    "source_pins_exact": true
+  },
+  "controls": {
+    "bytes": 114823,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201"
+  },
+  "helper_executed": false,
+  "independent_review": false,
+  "parent": {
+    "bytes": 31049,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-ROOT-20261016/ROOT_close_advice_controls_saved_v11.py",
+    "sha256": "9c390a94142f8a97c83dae51aeb58ced85c7b353aff1d81dc6cf03f01a01f8fb"
+  },
+  "schema": "ROOT-saved-closer-author-static-v14",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 43300,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT_close_advice_controls_saved_v14.py",
+    "sha256": "062a1e18fdff2b4ac5565f718229e8b16b1c69146fb47669ec940ae98bf88425"
+  }
+}

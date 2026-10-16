@@ -1,0 +1,58 @@
+{
+  "schema": "unit-row-paired-fixture-case-dependency-audit-v1",
+  "author_identity": "/root/arithmetic_induction",
+  "scope": "Source dependency audit of the frozen43 controls and saved-only positive closer before a paired-fixture successor; no review or activation of moving Source7",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_execution": false,
+  "semantic_replay": false,
+  "authorship_disclosure": "I authored the paired adviser3, engine8 and c354 checker dependencies, but not the frozen controls6 or Root saved-only closer11. This is a literal Source dependency audit, not independent membership, trajectory or runtime acceptance.",
+  "inputs": {
+    "master": {"path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md", "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9", "bytes": 21657},
+    "controls6": {"path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py", "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f", "bytes": 104747},
+    "positive_closer11": {"path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-ROOT-20261016/ROOT_close_advice_controls_saved_v11.py", "sha256": "9c390a94142f8a97c83dae51aeb58ced85c7b353aff1d81dc6cf03f01a01f8fb", "bytes": 31049},
+    "prior_conditional_fixture_note": {"path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-calibration-source-20261016/fixture-note-v1.json", "sha256": "2ad7bec3747fea44a6ce5b005fdb97782b3f058668f9539fa605d98beb80f2ba", "bytes": 11239}
+  },
+  "review_extent": {
+    "whole_controls6_read": true,
+    "whole_positive_closer11_read": true,
+    "master_read": true,
+    "metadata_verification": "Raw SHA256/length, Source AST parse and compilation only; neither Source was imported or evaluated."
+  },
+  "recommended_case_partition": [
+    {"cases": "common0..13 and18..19; original remote16..17", "context": "original", "rule": "Keep original seed, actual ranked batch/receipt, adopted anchor, owned original inner/outer tokens and callbacks. In particular, remote rejection and forced retirement retain their original still-unoccupied external ports and original future keys."},
+    {"cases": "common14 pending-key-real-current-row-selection and15 pending-search-exact-inner-root-restoration", "context": "separate positive pending sibling", "rule": "Derive sibling seed from the same declared universal AX plus two literal duplicate AX selections and the existing future UG. Obtain a fresh actual BRANCH, whole actual READY batch, independent receipt, actual anchor-only adoption and owned sibling inner token. Require real scheduled PENDING_KEYS selection, actual placement and full inner-root restoration. No historical family or assumed row list is authority."},
+    {"cases": "original scheduler20..21", "context": "existing separate AX/UG dead/forced fixtures", "rule": "No pairing or callback substitution; retain global precedence checks."},
+    {"cases": "middle eight lifecycle cases22..29", "context": "original rejection, except successful continuity may explicitly reference sibling", "rule": "The unique real pending-rejection record, remote search, failure injections, remaining-key component check and later-branch reconsideration stay on the original engine/token. The successful-continuity case may join sibling pending_continuation_search only with explicit fixture identity and full original sibling provenance."},
+    {"cases": "quality30..34, reopening35, returned diversity36", "context": "original scoring fixture plus separately labeled component/returned batches", "rule": "Do not accidentally relabel scoring or returned observations as sibling. Exact full authority/state/decision/batch report-reuse keys already distinguish the contexts."},
+    {"cases": "replacement37..39 and incompatible-source41", "context": "original real remote-rejection record", "rule": "Retain actual original rejection state/decision/family, same-branch fresh return, public token and finished outer state. Never select an arbitrary sibling record after records gains another engine."},
+    {"cases": "occupied-compatible-UI-source40", "context": "actual accepted scheduled PENDING callback, normally sibling", "rule": "Use the record that owns the callback snapshot/token. Join exact callback state, real BRANCH, request, independent receipt, actual selected AX source, full component batch/receipt and finished outer rollback. A scratch state or new decision is insufficient."},
+    {"cases": "missing-source42", "context": "any explicitly recorded complete actual return", "rule": "Keep exact returned state/decision/batch/receipt and absent mark/zero occupancy. This observation does not imply a premise is proved or a descriptor was exhausted."}
+  ],
+  "concrete_join_risks": [
+    {"id": "PAIRED-ORIGINAL-LOCALS", "source_lines": [408, 555], "risk": "Original remote/forced blocks reuse selection/future/inner/token/e2/h locals. Rebinding these to the sibling can remove the unoccupied remote read or mix owned tokens.", "required": "Keep original locals or an explicit original bundle unchanged; use separate sibling holder/engine/tokens/seed/selection/inner."},
+    {"id": "PAIRED-ONE-CASE-ONCE", "source_lines": [216, 311], "risk": "Fixture-error and no-future branches already emit common14/15 as part of broad ranges.", "required": "Emit all43 labels exactly once after splitting their eligibility. A sibling block must not append duplicate14/15, suppress original failure or weaken SKIP qualification."},
+    {"id": "PAIRED-SEED-RECOMPOSITION", "source_lines": [408, 420], "risk": "Current expected state uses only [future,anchor]. A sibling has additional actual AX baseline placements.", "required": "Recompose the complete sibling baseline plus exactly its independently selected anchor, preserving ordered selection/generations/marks/exclusions. All future member keys remain uninstalled."},
+    {"id": "PAIRED-PENDING-NOT-FORCED", "source_lines": [359, 442], "risk": "The continuation stop requires an actual independent pending selection, not merely reaching or forced-filling a future row.", "required": "Preserve the real BRANCH callback, receipt selection, ADVICE PENDING_KEYS event and subsequent actual selected-key TRY/child snapshot; keep exact sibling root restoration."},
+    {"id": "PAIRED-REJECTION-RECORD", "source_lines": [669, 694, 1253], "risk": "Both wrappers currently require exactly one captured rejection record. A second engine may create another observed rejection.", "required": "Keep unique original remote provenance explicit. Do not choose an arbitrary record, swallow ambiguity or apply a foreign token. Extra unintended records remain an eligibility failure unless precisely joined."},
+    {"id": "PAIRED-OCCUPIED-CALLBACK", "source_lines": [964, 1114], "risk": "Only the first accepted callback per engine is saved; occupied calibration additionally hardcodes first ordered MP source1 and the original fixture AX name.", "required": "The chosen accepted callback must satisfy that exact source/AX condition. If using another actual occupied source, version the explicit expectation and retain its real ordered port/AX record. Duplicate availability alone does not establish which key was selected. Roll back and restore on the same owning engine; no reconstructed parent or scratch global decision."},
+    {"id": "PAIRED-CLOSER-SINGLE-FUTURE", "source_lines": [95, 137], "risk": "Closer11 aliases one original future list [2,8] to positive inner/continuation and forced retirement.", "required": "Keep original future keys for remote/forced only. Add explicit sibling seed/batch/receipt/adoption/inner/continuation joins and family labels; do not globally replace [2,8]."},
+    {"id": "PAIRED-CLOSER-FAMILY-LABEL", "source_lines": [167, 215, 278], "risk": "Saved continuity, occupied callback and selected_family output currently imply one family context.", "required": "Distinguish original and sibling family IDs/keys/state hashes throughout saved joins. Receipt and snapshot hashes are comparison evidence only, with full literal equality retained."}
+  ],
+  "minimal_future_saved_join_spec": {
+    "original": ["original seed and fixture actual attempt/batch/receipt", "original adopted anchor and entire owned inner snapshot", "original remote-mark rejection request/receipt/abandonment/remaining legal key", "original forced-fill events and exactly retired original key set"],
+    "sibling": ["complete declared seed tiles, including both selected AX records and fixed UG", "fresh real BRANCH and complete actual READY batch/independent receipt", "actual anchor-only adoption and sibling owned inner snapshot", "actual accepted PENDING_KEYS callback exact state/decision/request/receipt before child adoption", "actual ADVICE selection and matching TRY key plus selected-state change", "no future preinstallation, no EXCLUDE on interruption, exact sibling inner-root restoration"],
+    "occupied": ["same record engine owns accepted-context token", "callback snapshot state equals component before/after state", "actual ordered occupied source formula and exact original AX selection", "whole real component adviser return independently checked without placement", "same finished outer snapshot restored after component observation"]
+  },
+  "limits_and_claims": {
+    "all43_meanings_preserved": "Required, not yet established for Source7.",
+    "original_native20_and512MiB": "Unchanged; setup, extra sibling work, membership, full guarded validation, output and exit remain charged.",
+    "fit_prediction": false,
+    "first_actual_family_or_future_rows_predicted": false,
+    "trajectory_or_proof_admission": false,
+    "all_skips_remain_unqualified": true,
+    "base_fallback_scheduler_and_membership_changes": false,
+    "publication": "This prospective note is outside current publication/qualification manifests. No frozen Source or old actual is modified."
+  }
+}

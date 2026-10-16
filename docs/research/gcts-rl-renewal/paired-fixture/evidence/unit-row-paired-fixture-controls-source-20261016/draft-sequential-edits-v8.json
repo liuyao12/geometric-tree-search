@@ -1,0 +1,32 @@
+[
+  {
+    "description": "Own immutable successor version",
+    "forward_offset_at_this_step": 350,
+    "before_utf8": "VERSION = 'unit-row-paired-fixture-controls-v7'",
+    "after_utf8": "VERSION = 'unit-row-paired-fixture-controls-v8-positive-aliases'"
+  },
+  {
+    "description": "Separate adoption eligibility from actual pending selection",
+    "forward_offset_at_this_step": 32289,
+    "before_utf8": "        'eligibility_qualified':False,'no_future_preinstallation':False}",
+    "after_utf8": "        'eligibility_qualified':False,'pending_selection_observed':False,'no_future_preinstallation':False}"
+  },
+  {
+    "description": "Publish no positive-only references before actual pending selection",
+    "forward_offset_at_this_step": 36843,
+    "before_utf8": "          continuation_before=copy.deepcopy(paired_inner),eligibility_qualified=True,no_future_preinstallation=True,\n          continuation_search_ref='pending_continuation_search',pending_receipts_ref='pending_selection_receipts')",
+    "after_utf8": "          continuation_before=copy.deepcopy(paired_inner),eligibility_qualified=True,no_future_preinstallation=True)"
+  },
+  {
+    "description": "Retain full actual attempt privately even without positive selection; do not bypass old30 missing-artifact gap guard",
+    "forward_offset_at_this_step": 37218,
+    "before_utf8": "        artifacts['pending_selection_receipts']=copy.deepcopy(paired_holder['receipts'])\n        artifacts['pending_continuation_search']=continuation\n        artifacts['pending_continuation_lineage']={'fixture_ref':'pending_success_fixture',\n          'family_id':paired_inner['pending_preferences']['family_id'],\n          'inner_snapshot_sha256':digest(paired_inner),'original_fixture_used':False}\n",
+    "after_utf8": "        paired_evidence['continuation_search']=continuation\n"
+  },
+  {
+    "description": "Expose legacy positive aliases only inside actual selected-pending branch",
+    "forward_offset_at_this_step": 37793,
+    "before_utf8": "          passed(common_names[14],{'fixture':'pending_success_fixture','search':'pending_continuation_search',",
+    "after_utf8": "          paired_evidence.update(pending_selection_observed=True,\n            continuation_search_ref='pending_continuation_search',pending_receipts_ref='pending_selection_receipts')\n          artifacts['pending_selection_receipts']=copy.deepcopy(paired_holder['receipts'])\n          artifacts['pending_continuation_search']=continuation\n          artifacts['pending_continuation_lineage']={'fixture_ref':'pending_success_fixture',\n            'family_id':paired_inner['pending_preferences']['family_id'],\n            'inner_snapshot_sha256':digest(paired_inner),'original_fixture_used':False}\n          passed(common_names[14],{'fixture':'pending_success_fixture','search':'pending_continuation_search',"
+  }
+]

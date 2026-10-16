@@ -1,0 +1,60 @@
+{
+  "schema": "unit-row-paired-fixture-retained-regions-v8",
+  "source_only": true,
+  "scientific_calls": 0,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201",
+    "bytes": 114823
+  },
+  "checks": [
+    {
+      "check": "original adoption/common11-13",
+      "passed": true,
+      "whole_raw_bytes": 2348,
+      "sha256": "f84ebf263352846e33f7fada6047292b6eae9b45673f5d22de681915830342e1"
+    },
+    {
+      "check": "original remote/malformed/forced retirement",
+      "passed": true,
+      "whole_raw_bytes": 7843,
+      "sha256": "1a470e160f954ab545447b5bf8ea3084a33730445816b0a56e6b0d7ec5451e0c"
+    },
+    {
+      "check": "original scheduler and initial22 result wire",
+      "passed": true,
+      "whole_raw_bytes": 2663,
+      "sha256": "320a4d9f2b752014568c8205ed83107f5a92ac2966b94f55653205945131451f"
+    },
+    {
+      "check": "authority_bytes:0 entire raw+AST exact6-to-8",
+      "passed": true
+    },
+    {
+      "check": "fresh_validate:0 entire raw+AST exact6-to-8",
+      "passed": true
+    },
+    {
+      "check": "report_receipt:0 entire raw+AST exact6-to-8",
+      "passed": true
+    },
+    {
+      "check": "remember:0 entire raw+AST exact6-to-8",
+      "passed": true
+    },
+    {
+      "check": "current_advice:0 entire raw+AST exact6-to-8",
+      "passed": true
+    },
+    {
+      "check": "observing_factory:0 entire raw+AST exact6-to-8",
+      "passed": true
+    },
+    {
+      "check": "observing_factory:1 entire raw+AST exact6-to-8",
+      "passed": true
+    }
+  ],
+  "check_count": 10,
+  "method": "Raw selected whole-region equality and stdlib AST only; no generated Source evaluated."
+}

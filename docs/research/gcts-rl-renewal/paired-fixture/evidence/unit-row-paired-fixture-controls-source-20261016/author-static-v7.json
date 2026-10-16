@@ -1,0 +1,274 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "changed_top_level_definitions": "Three run_controls bodies only, plus ownVERSION. Callback factory separates holders with same delegate/stop semantics; sibling changes common14/15 context and explicit downstream joins.",
+  "checks": [
+    {
+      "check": "complete sequential byte forward",
+      "evidence": 8,
+      "passed": true
+    },
+    {
+      "check": "complete sequential byte inverse",
+      "evidence": {
+        "bytes": 104747,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+        "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+      },
+      "passed": true
+    },
+    {
+      "check": "AST/compile-only syntax",
+      "evidence": "ast.parse and compile(...,exec) only, generated code never executed or imported",
+      "passed": true
+    },
+    {
+      "check": "same twelve top-level callable/class definition names",
+      "evidence": [
+        "Unavailable",
+        "CallbackExhausted",
+        "need",
+        "canonical",
+        "digest",
+        "tile",
+        "state",
+        "ug",
+        "obligations",
+        "run_controls",
+        "run_controls",
+        "run_controls"
+      ],
+      "passed": true
+    },
+    {
+      "check": "raw and AST exact helper Unavailable",
+      "evidence": {
+        "new_line": 17,
+        "old_line": 17
+      },
+      "passed": true
+    },
+    {
+      "check": "raw and AST exact helper CallbackExhausted",
+      "evidence": {
+        "new_line": 20,
+        "old_line": 20
+      },
+      "passed": true
+    },
+    {
+      "check": "raw and AST exact helper need",
+      "evidence": {
+        "new_line": 23,
+        "old_line": 23
+      },
+      "passed": true
+    },
+    {
+      "check": "raw and AST exact helper canonical",
+      "evidence": {
+        "new_line": 27,
+        "old_line": 27
+      },
+      "passed": true
+    },
+    {
+      "check": "raw and AST exact helper digest",
+      "evidence": {
+        "new_line": 30,
+        "old_line": 30
+      },
+      "passed": true
+    },
+    {
+      "check": "raw and AST exact helper tile",
+      "evidence": {
+        "new_line": 33,
+        "old_line": 33
+      },
+      "passed": true
+    },
+    {
+      "check": "raw and AST exact helper state",
+      "evidence": {
+        "new_line": 52,
+        "old_line": 52
+      },
+      "passed": true
+    },
+    {
+      "check": "raw and AST exact helper ug",
+      "evidence": {
+        "new_line": 74,
+        "old_line": 74
+      },
+      "passed": true
+    },
+    {
+      "check": "raw and AST exact helper obligations",
+      "evidence": {
+        "new_line": 78,
+        "old_line": 78
+      },
+      "passed": true
+    },
+    {
+      "check": "same three wrapper APIs exactly eight keyword-only parameters",
+      "evidence": [
+        [
+          "language",
+          "engine_factory",
+          "adviser",
+          "validate_advice",
+          "degree_proposer",
+          "fallback",
+          "certify_fallback",
+          "tick"
+        ],
+        [
+          "language",
+          "engine_factory",
+          "adviser",
+          "validate_advice",
+          "degree_proposer",
+          "fallback",
+          "certify_fallback",
+          "tick"
+        ],
+        [
+          "language",
+          "engine_factory",
+          "adviser",
+          "validate_advice",
+          "degree_proposer",
+          "fallback",
+          "certify_fallback",
+          "tick"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "check": "unchanged case declaration common_names",
+      "evidence": 1,
+      "passed": true
+    },
+    {
+      "check": "unchanged case declaration scheduler_names",
+      "evidence": 1,
+      "passed": true
+    },
+    {
+      "check": "unchanged case declaration labels",
+      "evidence": 2,
+      "passed": true
+    },
+    {
+      "check": "unchanged case declaration fibre_labels",
+      "evidence": 1,
+      "passed": true
+    },
+    {
+      "check": "callback mechanical AST inverse watched_validator",
+      "evidence": "active_holder -> holder; shared integer -> old diagnostic holder count; erase Nonlocal and continue-only completed-request copies",
+      "passed": true
+    },
+    {
+      "check": "callback mechanical AST inverse capture_degree",
+      "evidence": "active_holder -> holder; shared integer -> old diagnostic holder count; erase Nonlocal and continue-only completed-request copies",
+      "passed": true
+    },
+    {
+      "check": "callback mechanical AST inverse watched_adviser",
+      "evidence": "active_holder -> holder; shared integer -> old diagnostic holder count; erase Nonlocal and continue-only completed-request copies",
+      "passed": true
+    },
+    {
+      "check": "whole raw retained original adoption and common11-13",
+      "evidence": {
+        "bytes": 2194
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw retained original remote, malformed pending and forced retirement",
+      "evidence": {
+        "bytes": 8279
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw retained original scheduler precedence controls",
+      "evidence": {
+        "bytes": 2663
+      },
+      "passed": true
+    },
+    {
+      "check": "all twenty-four native marker lines byte exact",
+      "evidence": 24,
+      "passed": true
+    },
+    {
+      "check": "six progress sites defined once with one shared cap",
+      "evidence": [
+        "UNQUALIFIED_CONTINUATION_OBSERVATION VALIDATOR_ENTRY",
+        "UNQUALIFIED_CONTINUATION_OBSERVATION VALIDATOR_AFTER_DELEGATE",
+        "UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY",
+        "UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT",
+        "UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE",
+        "UNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE"
+      ],
+      "passed": true
+    },
+    {
+      "check": "one callback factory bound separately to original and sibling holders",
+      "evidence": "No mutation of constructed engine callback slots",
+      "passed": true
+    },
+    {
+      "check": "other nine scientific Source bytes exactly current",
+      "evidence": "all nine dependency raw capsules reauthenticated below",
+      "passed": true
+    },
+    {
+      "check": "input2, master and all Sources raw SHA/length exact",
+      "evidence": {
+        "inputs": 2,
+        "sources": 10
+      },
+      "passed": true
+    }
+  ],
+  "checks_count": 29,
+  "method": "Only raw bytes, stdlib JSON/hash/difflib, AST and compile-only. No module import/exec, function/kernel/search/model/checker/clock/test calls.",
+  "parent": {
+    "bytes": 104747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+    "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+  },
+  "schema": "unit-row-paired-fixture-author-static-v7",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 114633,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py",
+    "sha256": "900be8b58ae3aa3a48f477a4f4bfa57fb37fef1ed7db3740f8ab7b77a6d500c0"
+  },
+  "source_delta": {
+    "bytes": 31639,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-delta-v7.json",
+    "sha256": "47f556ec263829f7c80b3c640466a91adb60b4771709ba10188b42e918c6bdac"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_definitions": [
+    "Unavailable",
+    "CallbackExhausted",
+    "need",
+    "canonical",
+    "digest",
+    "tile",
+    "state",
+    "ug",
+    "obligations"
+  ]
+}

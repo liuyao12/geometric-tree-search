@@ -1,0 +1,35 @@
+{
+  "descriptive_corrections": [
+    {
+      "after": "Genuine distinct whole Source8/contract/patch review plus Root whole delta; author static pass does not activate code.",
+      "before": "Genuine distinct whole Source7/contract/patch review plus Root whole delta; author static pass does not activate code.",
+      "path": "remaining_gates[0]"
+    },
+    {
+      "after": "Root must separately bind current Source8/diagnostic API/explicit paired artifact joins and retain all other Source/input/native/output gates.",
+      "before": "Root must separately bind current Source7/diagnostic API/explicit paired artifact joins and retain all other Source/input/native/output gates.",
+      "path": "remaining_gates[1]"
+    }
+  ],
+  "handoff": {
+    "bytes": 30752,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/handoff-v8.json",
+    "sha256": "2c6bf9733f327a5963fce8e2cfdb0b14e36fd8ff366629765c9461b911471c74"
+  },
+  "issue": "remaining_gates indices0/1 retain descriptive Source7 authoring-stage wording from the preserved pairing packet. They mean the exact corrected current Source8 raw capsule in source/Review_ABI/sources, not the rejected900be Source7. Both operative maps and ownVERSION already bind8 exactly; no executable/schema/API/limits or review authority change.",
+  "schema": "paired-fixture-descriptive-version-erratum-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Additive disclosure only. Frozen Source7/8/contract/handoff unchanged; no scientific execution or current qualification.",
+  "source": {
+    "bytes": 114823,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201"
+  },
+  "source_contract": {
+    "bytes": 39741,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-contract-v8.json",
+    "sha256": "684b9d77e17839c9a30800baabae5877db2ad34451367c43b886351d2a3fe7fa"
+  },
+  "source_only": true
+}

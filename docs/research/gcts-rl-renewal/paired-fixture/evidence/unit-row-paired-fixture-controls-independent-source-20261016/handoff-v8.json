@@ -1,0 +1,64 @@
+{
+  "schema": "unit-row-paired-fixture-controls-independent-handoff-v8",
+  "scope": "unit-row-paired-fixture-controls-Source",
+  "source": {
+    "bytes": 114823,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-contract-v8.json",
+    "sha256": "684b9d77e17839c9a30800baabae5877db2ad34451367c43b886351d2a3fe7fa",
+    "bytes": 39741
+  },
+  "source_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/handoff-v8.json",
+    "sha256": "2c6bf9733f327a5963fce8e2cfdb0b14e36fd8ff366629765c9461b911471c74",
+    "bytes": 30752
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/typed-Source-review-v8.json",
+    "sha256": "0d73efd11cb74f68f6d58f418bd7295c6c724944c86f3e82215993d99e330fd3",
+    "bytes": 7848
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/findings-v8.json",
+    "sha256": "8e89f2d2a164b714c39af47102c76148ab5eb8661915974de7cc9f364cd9a9fa",
+    "bytes": 8672
+  },
+  "independent_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/independent-Source-checks-v8.json",
+    "sha256": "9c4b7598e0d1438537264757adb2ad639b81f97b5221c80c78dd6c3a16a9ba1d",
+    "bytes": 19289
+  },
+  "retained_regions": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/retained-regions-v8.json",
+    "sha256": "89aa4372cd890cf43ecdac09711580dbfbaa9eefef39e9ae0372c3e7ef3cd238",
+    "bytes": 1836
+  },
+  "preserved_negative_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/handoff-v7.json",
+    "sha256": "6e7681b4efcb097aa41b596de6d1c220364f73b2db4b31008ba50d9b02881378",
+    "bytes": 1554
+  },
+  "metadata_erratum": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/metadata-version-erratum-v1.json",
+    "sha256": "412525967043b15dee25b134021c6d0cc97dbb2ca17d2d404e89ee7c893c3f16",
+    "bytes": 2232
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "checks_summary": {
+    "raw_AST_checks": 44,
+    "additional_retained_regions": 10,
+    "manual_findings": 10,
+    "unique_paths_in_main_check_packet": 39
+  },
+  "actual_execution_authorized": false,
+  "next": "Root owns current caller/plan/grant and any single measured actual; all43 real gaps and original native limits remain."
+}

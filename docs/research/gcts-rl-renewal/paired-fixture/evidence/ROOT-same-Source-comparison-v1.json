@@ -1,0 +1,20 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "across_versions_changed_sources": [
+    "advice_controls",
+    "intake"
+  ],
+  "across_versions_same_mathematical_input_runtime_limits": true,
+  "actuals": 3,
+  "all_closed_and_reaped": true,
+  "broad_goal_complete": false,
+  "current_goal_turn": "progress",
+  "previous_goal_turn": "progress",
+  "proof_accepted": false,
+  "same_Source17_input2_reviews_runtime_limits_within_version": true,
+  "schema": "ROOT-paired-fixture-comparison-v1",
+  "scientific_replay": false,
+  "target_actuals_launched": 0,
+  "unqualified_marker_observations_only": true
+}

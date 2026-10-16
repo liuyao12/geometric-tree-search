@@ -1,0 +1,54 @@
+{
+  "schema": "unit-row-paired-fixture-controls-independent-findings-v7",
+  "source_only": true,
+  "scientific_calls": 0,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py",
+    "sha256": "900be8b58ae3aa3a48f477a4f4bfa57fb37fef1ed7db3740f8ab7b77a6d500c0",
+    "bytes": 114633
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-contract-v7.json",
+    "sha256": "01c5cbf1c484aea6e82fd48d1169a24d6b4454f55be0f13942628c42ba583b6b",
+    "bytes": 35759
+  },
+  "handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/handoff-v7.json",
+    "sha256": "a335b8424b2dc71e5b246b6187668f095ba34e5048489f4582cfd708e564f861",
+    "bytes": 27887
+  },
+  "blockers": [
+    {
+      "id": "PAIRED-CONTINUITY-GAP-1",
+      "sites": [
+        {
+          "line": 512,
+          "through": 526
+        },
+        {
+          "line": 781,
+          "through": 785
+        },
+        {
+          "line": 838,
+          "through": 840
+        }
+      ],
+      "finding": "The sibling continuation publishes legacy positive search/receipt/lineage aliases before checking selected_pending. A returned UNKNOWN with no selection correctly marks common14 SKIPPED, but the alias bypasses old30 missing-artifact SKIP and reaches its required successful-PENDING assertion. This is fail-closed reporting/eligibility propagation failure, not false acceptance.",
+      "minimal_repair": "Retain every returned attempt in pending_success_fixture.continuation_search; publish legacy positive aliases and refs only after actual selected_pending/counter/family checks. Record pending_selection_observed separately from adoption eligibility.",
+      "runtime_claim": false
+    }
+  ],
+  "retained_scope": "Whole Source7 paired A/B implementation and new contract reviewed against whole reviewed Source6; no other concrete blocker identified. Actual fixture eligibility, complete43 qualification and fit remain unmeasured.",
+  "author_acknowledgment": "Author explicitly acknowledged exact frozen7 defect and prepared additive8 without modifying7.",
+  "scientific_acceptance": false,
+  "logical_proof_accepted": false,
+  "exact_point_board_accepted": false,
+  "degree_or_EOF_accepted": false,
+  "scheduler_accepted": false,
+  "complete_GCTS_model_accepted": false,
+  "trajectory_accepted": false,
+  "learned_marking_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false
+}

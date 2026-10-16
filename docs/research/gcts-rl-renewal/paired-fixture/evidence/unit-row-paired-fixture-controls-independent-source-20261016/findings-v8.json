@@ -1,0 +1,121 @@
+{
+  "schema": "unit-row-paired-fixture-controls-independent-findings-v8",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source": {
+    "bytes": 114823,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-contract-v8.json",
+    "sha256": "684b9d77e17839c9a30800baabae5877db2ad34451367c43b886351d2a3fe7fa",
+    "bytes": 39741
+  },
+  "source_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/handoff-v8.json",
+    "sha256": "2c6bf9733f327a5963fce8e2cfdb0b14e36fd8ff366629765c9461b911471c74",
+    "bytes": 30752
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "blockers": [],
+  "closed_blocker_ids": [
+    "PAIRED-CONTINUITY-GAP-1"
+  ],
+  "genuine_negative": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/typed-Source-review-v7.json",
+    "sha256": "1e3347cadc4f43736a5b7db44663fc63699a9a879f0a067a05feeee8b0a72f1c",
+    "bytes": 5752
+  },
+  "independent_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/independent-Source-checks-v8.json",
+    "sha256": "9c4b7598e0d1438537264757adb2ad639b81f97b5221c80c78dd6c3a16a9ba1d",
+    "bytes": 19289
+  },
+  "retained_region_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/retained-regions-v8.json",
+    "sha256": "89aa4372cd890cf43ecdac09711580dbfbaa9eefef39e9ae0372c3e7ef3cd238",
+    "bytes": 1836
+  },
+  "manual_checks": [
+    {
+      "id": "M1",
+      "result": "PASS",
+      "finding": "Original-language fixture only: U/name and Gamma-eligible parameter derive from current language; sibling seeds are original UG9 reading8 and two same named AX(U) translations1/2. No saved word/donor/library/proof route or extra inference. Duplicate translations keep distinct original full placement keys."
+    },
+    {
+      "id": "M2",
+      "result": "PASS",
+      "finding": "Nine original helper/class regions raw+AST exact. Whole selected tile recomposition retains fixed original target, outside sentinel, unit t and literal m union, all24 roots and generation0. Unoccupied formula obligations are never established facts."
+    },
+    {
+      "id": "M3",
+      "result": "PASS",
+      "finding": "Factory binds A and B holders before their engine construction, with one enclosing max24 diagnostic counter. Independent AST inverse recovers original callbacks after explicit holder/counter rebinding and new raw completed pending-call copy. Existing delegate calls/stop paths/kwargs/value identity remain; no engine callback mutation."
+    },
+    {
+      "id": "M4",
+      "result": "PASS",
+      "finding": "A owns original e/holder/outer/before/inner/token and h/e2 aliases. Entire adoption/common11-13, remote/malformed/forced retirement and scheduler blocks are raw exact to6. B never overwrites these engine/token variables. Final old30 rejection/replacement work still uses actual A rejection-owned callback."
+    },
+    {
+      "id": "M5",
+      "result": "PASS",
+      "finding": "B eligibility requires real engine decision BRANCH0, full actual READY result, independent whole receipt, first actual selection with future keys, actual normal search capture and exact seed-plus-anchor point state. No desired-proposal filtering/static two-MP degree authority. If actual first family/shape fails eligibility it remains SKIPPED."
+    },
+    {
+      "id": "M6",
+      "result": "PASS",
+      "finding": "B checkpoint precedes decision; own search root/inner restored exactly; actual captured inner token belongs B. Future full keys are compared to actual selection and explicitly absent from selected state. Entire owned outer state restored in finally. No reverse editing or cross-engine tokens."
+    },
+    {
+      "id": "M7",
+      "result": "PASS",
+      "finding": "PAIRED-CONTINUITY-GAP-1 is closed only prospectively: attempt saved separately; three legacy positive aliases/refs appear only within selected_pending after actual counter/binding/mode/family checks. Adoption eligibility and pending_selection_observed are distinct. No selection keeps common14 SKIP, common15 returned restoration evidence and old30 missing-artifact SKIP."
+    },
+    {
+      "id": "M8",
+      "result": "PASS",
+      "finding": "Continuity evidence explicitly joins B family/inner/root/result/receipts while rejection evidence stays A. Occupied component requires actual accepted-PENDING callback with B family and complete seed prefix, actual source1 original AX and MP read, restores its owning public token, validates actual captured decision/state/authority, installs nothing and restores full finished outer state. Source2-only or absent eligible callback stays a gap."
+    },
+    {
+      "id": "M9",
+      "result": "PASS",
+      "finding": "Entire authority_bytes/fresh_validate/report_receipt/remember and both observing_factory functions raw+AST exact to6. Report-only receipt reuse stays report-only; all engine, negative, injected and replacement delegations remain fresh. No acceptance based on a digest/cache/proposal without full original validation."
+    },
+    {
+      "id": "M10",
+      "result": "PASS",
+      "finding": "All43 names and eight keyword arguments preserved. All24 sampled phase lines remain exact and six progress sites retain explicit shared-cap/current-kwargs provenance. CONTINUATION phase now includes B setup/decision/advice/adoption/search/restore; contract declares this enlarged diagnostic interval. No elapsed comparison to older sources, exclusive timing, completed-case or positive authority follows."
+    }
+  ],
+  "manual_check_count": 10,
+  "interpretation": [
+    "Source6-to8 is a disclosed control-fixture change, not whole semantic equivalence to6. Whole byte inverse and mechanical callback inverse do not claim original same boundary for common14/15.",
+    "The sibling is a conditional calibration, not a supplied target proof route or an assertion that an eligible family will be returned. Actual 43 qualification/fit/positive target remain unmeasured.",
+    "Do not equate future preferences with installed m marks. The withdrawn earlier root-imposed-row2 objection does not apply; current review uses literal selected seeds/current full state.",
+    "Historical comments describing unchanged22/30 or no duplicate adoption are superseded by explicit paired changes, case mapping and artifact provenance in the operative current contract.",
+    "Contract remaining_gates has inherited descriptive Source7 labels. Additive metadata-version-erratum-v1.json names current8; operative source/Review_ABI/sources/VERSION are8. No Source or consumed schema changed."
+  ],
+  "metadata_erratum": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/metadata-version-erratum-v1.json",
+    "sha256": "412525967043b15dee25b134021c6d0cc97dbb2ca17d2d404e89ee7c893c3f16",
+    "bytes": 2232
+  },
+  "remaining_runtime_evidence": [
+    "Actual original declaration/profile eligibility, real whole READY/independent receipt, B owned anchor and selected PENDING, A remote rejection/forced retirement, B occupied component, complete A/B lineage and all exact restores.",
+    "Current all43 PASSED0SKIP/no additional gaps, fresh original17/retention17 and complete raw result/envelope/EOF/inventory/native lifecycle gates before any target activation.",
+    "Original native20s/512MiB, failure-only55s, owned60s, caller90s plus finish1s remain; extra sibling work/copies may cause UNKNOWN. No fit/cost benefit prediction.",
+    "Complete full GCTS graph/reference scheduler and broader model/trajectory/RL obligations remain as recorded, not conferred by local component controls."
+  ],
+  "logical_proof_accepted": false,
+  "exact_point_board_accepted": false,
+  "degree_or_EOF_accepted": false,
+  "scheduler_accepted": false,
+  "complete_GCTS_model_accepted": false,
+  "trajectory_accepted": false,
+  "learned_marking_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false
+}

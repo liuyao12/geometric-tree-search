@@ -1,0 +1,97 @@
+{
+  "complete_forward_exact": true,
+  "complete_inverse_exact": true,
+  "edits": [
+    {
+      "new": "# Paired fixture B is distinct from original fixture A above. These are saved\n# literal joins only; no candidate, degree, point or mathematical replay.\nsibling=art['pending_success_fixture'];lineage=art['pending_continuation_lineage']\nassert sibling['schema']=='unit-row-paired-pending-success-fixture-v1' and sibling['original_fixture_ref']=='fixture'\nassert sibling['eligibility_qualified'] is True and sibling['no_future_preinstallation'] is True\nassert sibling['pending_selection_observed'] is True\nassert sibling['continuation_search_ref']=='pending_continuation_search' and sibling['pending_receipts_ref']=='pending_selection_receipts'\nsibling_state=sibling['state'];seeds=sibling['seeds'];assert len(seeds)==3\nassert [x['placement_key']['translation'] for x in seeds]==[[0,9],[0,1],[0,2]]\nassert canonical(seeds[0])==canonical(fixture['derived_from']['selected_future_UG'])\nassert sibling['derived_from']['AX_name']==fixture['derived_from']['AX_name'] and sibling['derived_from']['duplicate_source_rows']==[1,2]\nassert sibling['derived_from']['eligible_parameter']==fixture['derived_from']['eligible_parameter'] and sibling['derived_from']['original_target_boundary_preserved'] is True\nassert canonical(sibling['derived_from']['selected_future_UG'])==canonical(seeds[0])\noriginal_declaration=read(check(plan['inputs']['declaration']));ax_name=fixture['derived_from']['AX_name']\nax_formula=original_declaration['theory']['axioms'][ax_name]\nfor seed in seeds[1:]:\n key=seed['placement_key'];pre=key['type_preimage']\n assert pre['primitive_witness']=={'rule':'axiom','name':ax_name,'formula':ax_formula}\n assert pre['ordered_premise_formulas']==pre['ordered_offsets']==[]\n assert canonical(seed['selection_record'])==canonical(dict(key,generation=1))\nassert canonical(sibling_state['selected'])==canonical([x['selection_record'] for x in seeds])\nassert sibling_state['input_epoch']==body['language_binding']['language_epoch'] and sibling_state['height']==24\nassert sibling_state['generation']==fixture['state']['generation'] and sibling_state['excluded']==fixture['state']['excluded']\nassert canonical(sibling['outer_before']['state'])==canonical(sibling_state)==canonical(sibling['search_before']['state'])\nassert canonical(sibling['outer_before'])==canonical(sibling['outer_after'])\nassert sibling['outer_restoration']['before_sha256']==sibling['outer_restoration']['after_sha256']==sha(sibling['outer_before'])\nsibling_batch=sibling['whole_actual_batch'];sibling_receipt=sibling['whole_actual_receipt'];sibling_selection=sibling['selection']\nassert sibling_batch['status']=='READY' and sibling_batch['reason'] is None and sibling_batch['proposals']\nassert sibling_batch['version']==batch['version'] and sibling_batch['limits']==batch['limits']\nassert 0<sibling_batch['work']['guarded_steps']<=50000\nassert sibling['decision']==sibling_batch['decision']==sibling_receipt['decision']=={'kind':'BRANCH','row':0}\nassert sibling_batch['binding']==sibling_receipt['binding']==body['language_binding']\nassert sibling_batch['state_sha256']==sibling_receipt['state_sha256']==sha(sibling_state) and sibling_receipt['input_sha256']==sha(sibling_batch)\nassert sibling_receipt['mode']=='ADVICE_BATCH' and sibling_receipt['rejections']==[]\nassert all(p['installed'] is False and p['logical_proof_accepted'] is False for p in sibling_batch['proposals'])\nassert all(o['status']=='PENDING' and o['fact_accepted'] is False for p in sibling_batch['proposals'] for o in p['ordered_PENDING_obligations'])\nassert canonical(sibling_selection)==canonical(sibling_receipt['selection']) and sibling_selection['future_keys']\nassert canonical(sibling_selection['anchor'])==canonical(sibling_batch['proposals'][0]['members'][0]['candidate'])\nsibling_inner=sibling['inner_snapshot'];sibling_future=sibling_selection['future_keys'];sibling_pending=sibling_inner['pending_preferences']\nsibling_anchor=sibling_selection['anchor'];sibling_key=sibling_anchor['placement_key'];sibling_family=sibling_pending['family_id']\nassert canonical(sibling_inner['state']['selected'])==canonical(sibling_state['selected']+[sibling_anchor['selection_record']])\nassert canonical(sibling_pending['pending_keys'])==canonical(sibling_future) and canonical(sibling_pending['anchor_key'])==canonical(sibling_key)\nassert sibling_pending['binding']==body['language_binding'] and sibling_pending['origin']==sibling_selection['origin']\nassert sibling_family==sha({'binding':body['language_binding'],'origin':sibling_selection['origin'],'anchor_key':sibling_key,'future_keys':sibling_future})\nassert sibling_pending['lineage']==[{'mode':'ADVICE_BATCH','key':sibling_key,'state_sha256':sha(sibling_state)}]\nfor k in sibling_future:assert not any(all(canonical(rec[f])==canonical(k[f]) for f in ('tile_type_id','type_preimage','translation')) for rec in sibling_inner['state']['selected'])\nsibling_adoption=sibling['adoption_search']\nassert sibling_adoption['status']=='UNKNOWN' and sibling_adoption['found'] is None and sibling_adoption['root_restored'] is True and sibling_adoption['stack_restored'] is True\nassert sibling_adoption['root_snapshot_sha256']==sibling_adoption['final_snapshot_sha256']==sha(sibling['search_before'])\nassert canonical(sibling_adoption['last_observed_state'])==canonical(sibling_inner['state'])\nassert not any(e['kind']=='EXCLUDE' for e in sibling_adoption['events'])\nadoption_tries=[(i,e) for i,e in enumerate(sibling_adoption['events']) if e['kind']=='TRY']\nadoption_advice=[(i,e) for i,e in enumerate(sibling_adoption['events']) if e['kind']=='ADVICE']\nadoption_places=[(i,e) for i,e in enumerate(sibling_adoption['events']) if e['kind']=='PLACE']\nassert len(adoption_tries)==len(adoption_advice)==len(adoption_places)==1\nassert adoption_tries[0][0]<adoption_advice[0][0]<adoption_places[0][0]\nassert adoption_tries[0][1]['mode']=='BRANCH' and adoption_tries[0][1]['row']==adoption_places[0][1]['row']==0\nassert all(canonical(x[1]['key'])==canonical(sibling_key) for x in (adoption_tries[0],adoption_advice[0],adoption_places[0]))\nassert adoption_advice[0][1]['mode']=='ADVICE_BATCH' and adoption_advice[0][1]['family_id']==sibling_family and canonical(adoption_advice[0][1]['pending_preferences'])==canonical(sibling_pending)\nassert canonical(sibling['continuation_before'])==canonical(sibling_inner)\nassert sibling['inner_restoration']['before_sha256']==sibling['inner_restoration']['after_sha256']==sha(sibling_inner)\nassert lineage=={'fixture_ref':'pending_success_fixture','family_id':sibling_family,'inner_snapshot_sha256':sha(sibling_inner),'original_fixture_used':False}\ncontinuation=art['pending_continuation_search'];pending_calls=sibling['pending_calls']\nassert canonical(sibling['continuation_search'])==canonical(continuation)\nassert continuation['root_snapshot_sha256']==continuation['final_snapshot_sha256']==sha(sibling_inner)\nassert pending_calls and canonical([x['receipt'] for x in pending_calls])==canonical(pr)\nassert continuation['counts']['pending_selected']>=1\nsuccessful_calls=[];pending_event_joins=[]\nfor call in pending_calls:\n st,d,req,rec=(call[k] for k in ('state','decision','request','receipt'))\n assert d['kind']=='BRANCH' and req['decision']==rec['decision']==d\n assert req['schema']=='unit-row-pending-preference-request-v1' and req['family_id']==sibling_family\n assert req['binding']==rec['binding']==body['language_binding'] and req['state_sha256']==rec['state_sha256']==sha(st)\n assert rec['input_sha256']==sha(req) and rec['mode']=='PENDING_KEYS'\n assert canonical(st['selected'][:len(sibling_state['selected'])])==canonical(sibling_state['selected'])\n assert all(k['translation']==[0,d['row']] and canonical(k) in {canonical(x) for x in sibling_future} for k in req['keys'])\n if rec['selection'] is None or rec['rejections']:continue\n chosen=rec['selection']['anchor']['placement_key']\n assert rec['selection']['future_keys']==[] and rec['selection']['origin']=={'family_id':sibling_family}\n assert canonical(chosen) in {canonical(k) for k in req['keys']}\n successful_calls.append(call)\n matches=[(i,e) for i,e in enumerate(continuation['events']) if e['kind']=='ADVICE' and e['mode']=='PENDING_KEYS' and e['family_id']==sibling_family and canonical(e['key'])==canonical(chosen)]\n assert matches\n for i,e in matches:\n  assert e['abandoned_family'] is None and e['rejected_keys']==[] and e['origin']=={'family_id':sibling_family}\n  assert i>1 and continuation['events'][i-1]['kind']=='TRY' and continuation['events'][i-1]['mode']=='BRANCH'\n  assert continuation['events'][i-2]['kind']=='DECISION' and continuation['events'][i-2]['decision']==d\n  assert all(continuation['events'][j]['state_sha256']==sha(st) for j in (i-2,i-1,i))\n  assert continuation['events'][i-1]['row']==d['row'] and canonical(continuation['events'][i-1]['key'])==canonical(chosen)\n  later=next((j for j in range(i+1,len(continuation['events'])) if continuation['events'][j]['kind'] in ('PLACE','RESTORE','TRY')),None)\n  assert later is not None and continuation['events'][later]['kind']=='PLACE' and continuation['events'][later]['row']==d['row'] and canonical(continuation['events'][later]['key'])==canonical(chosen)\n  pending_event_joins.append({'callback_state_sha256':sha(st),'decision':d,'request_sha256':sha(req),'receipt_sha256':sha(rec),'DECISION_index':i-2,'TRY_index':i-1,'ADVICE_index':i,'PLACE_index':later,'key':chosen})\n assert canonical(rec['selection']['anchor']['selection_record']) in {canonical(x) for x in continuation['last_observed_state']['selected']}\nassert successful_calls and pending_event_joins\nassert by['pending-key-real-current-row-selection']=={'fixture':'pending_success_fixture','search':'pending_continuation_search','receipts':'pending_selection_receipts','lineage':'pending_continuation_lineage'}\nrestore_by=by['pending-search-exact-inner-root-restoration']\nassert restore_by['fixture']=='pending_success_fixture' and restore_by['before_sha256']==restore_by['after_sha256']==sha(sibling_inner)\n",
+      "new_end": 22607,
+      "new_start": 12685,
+      "old": "",
+      "old_end": 12685,
+      "old_start": 12685
+    },
+    {
+      "new": "3]]['fixture_ref']=='pending_success_fixture' and canonical(by[new_names[3]]['lineage'])==canonical(lineage)\nassert life['successful_continuity_context']=={'fixture_ref':'pending_success_fixture','lineage':lineage,'original_rejection_fixture_ref':'fixture','distinct_control_contexts':True}\nassert by[new_names[",
+      "new_end": 27066,
+      "new_start": 26755,
+      "old": "",
+      "old_end": 16833,
+      "old_start": 16833
+    },
+    {
+      "new": " for k in strong)\nassert all(sibling_batch[k] is False and sibling_receipt[k] is False and all(c['receipt'][k] is False for c in pending_calls)",
+      "new_end": 29039,
+      "new_start": 28896,
+      "old": "",
+      "old_end": 18663,
+      "old_start": 18663
+    },
+    {
+      "new": "attempt['fixture_ref']=='pending_success_fixture' and attempt['paired_family_id']==sibling_family\n   assert cb['snapshot']['pending_preferences']['family_id']==sibling_family\n   assert canonical(cb['snapshot']['state']['selected'][:len(sibling_state['selected'])])==canonical(sibling_state['selected'])\n   assert any(canonical(cb['snapshot']['state'])==canonical(call['state']) and all(canonical(cb[k])==canonical(call[k]) for k in ('decision','request','receipt')) for call in successful_calls)\n   assert canonical(attempt['finished_outer_before'])==canonical(sibling['outer_after'])\n   assert ",
+      "new_end": 32616,
+      "new_start": 32021,
+      "old": "",
+      "old_end": 21645,
+      "old_start": 21645
+    },
+    {
+      "new": "\n   assert canonical(ax)==canonical(seeds[1]['selection_record']) and attempt['declaration']['AX_name_from_actual_original_fixture']==ax_name\n   occupied_anchor=cr['selection']['anchor']['placement_key'];occupied_pre=occupied_anchor['type_preimage'];occupied_row=attempt['actual_decision']['row']\n   assert occupied_pre['primitive_witness']['rule']=='mp' and occupied_row+occupied_pre['ordered_offsets'][0]==1 and canonical(occupied_pre['ordered_premise_formulas'][0])==canonical(ax_formula)",
+      "new_end": 33864,
+      "new_start": 33373,
+      "old": "",
+      "old_end": 22402,
+      "old_start": 22402
+    },
+    {
+      "new": "4",
+      "new_end": 39125,
+      "new_start": 39124,
+      "old": "1",
+      "old_end": 27663,
+      "old_start": 27662
+    },
+    {
+      "new": "fixture_ref':'fixture','role':'original remote rejection and forced retirement','",
+      "new_end": 40385,
+      "new_start": 40304,
+      "old": "",
+      "old_end": 28842,
+      "old_start": 28842
+    },
+    {
+      "new": "paired_fixture_evidence':{'fixture_ref':'pending_success_fixture','original_fixture_ref':'fixture','distinct_control_contexts':True,'seed_state_sha256':sha(sibling_state),'seed_candidates_sha256':sha(seeds),'whole_actual_batch_sha256':sha(sibling_batch),'whole_actual_receipt_sha256':sha(sibling_receipt),'family_id':sibling_family,'future_rows':[k['translation'][1] for k in sibling_future],'inner_snapshot_sha256':sha(sibling_inner),'actual_pending_calls':len(pending_calls),'successful_pending_calls':len(successful_calls),'literal_event_joins':pending_event_joins,'inner_and_outer_restored':True,'scientific_replay':False},\n '",
+      "new_end": 41123,
+      "new_start": 40493,
+      "old": "",
+      "old_end": 28950,
+      "old_start": 28950
+    },
+    {
+      "new": " explicit original remote/forced and distinct paired pending-success contexts;",
+      "new_end": 41251,
+      "new_start": 41173,
+      "old": "",
+      "old_end": 29000,
+      "old_start": 29000
+    }
+  ],
+  "parent": {
+    "bytes": 31049,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-ROOT-20261016/ROOT_close_advice_controls_saved_v11.py",
+    "sha256": "9c390a94142f8a97c83dae51aeb58ced85c7b353aff1d81dc6cf03f01a01f8fb"
+  },
+  "schema": "ROOT-saved-closer-exact-Source-delta-v14",
+  "source": {
+    "bytes": 43300,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT_close_advice_controls_saved_v14.py",
+    "sha256": "062a1e18fdff2b4ac5565f718229e8b16b1c69146fb47669ec940ae98bf88425"
+  },
+  "source_executed": false,
+  "unchanged_top_functions": [
+    "canonical",
+    "pin",
+    "read",
+    "check",
+    "sha"
+  ]
+}

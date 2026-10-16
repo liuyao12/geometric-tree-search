@@ -1,0 +1,896 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "aggregate_B_bytes_observed": 55803904,
+  "all_advice_consumer_gates_qualified": false,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "case_counts_accepted": false,
+  "complete_Date_seconds": 20.258,
+  "complete_GCTS_model_accepted": false,
+  "continuation_pairing_claimed": false,
+  "continuation_record_cap": 24,
+  "controls_accepted": false,
+  "current_goal_turn": "progress",
+  "declared_cases": 43,
+  "failure_lifecycle_verified": true,
+  "last_unqualified_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+  "logical_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 20105896000,
+  "native_resources_qualified": false,
+  "native_sample_read_intervals_concordant": true,
+  "native_worker_lifetime_ns": 20035610000,
+  "next_action": "Preserve this actual; do not restart unchanged or increase limits/remove cases. Diagnose/optimize a separately frozen reviewed Source successor under same endpoint, keeping full43 qualification and target scope.",
+  "nonprovability_claimed": false,
+  "passed_cases": null,
+  "phase_duration_known": false,
+  "plan": {
+    "bytes": 7916,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "c7f668d5b51bcc50779fe0d6da1bfa46dcb75e8b6623aa649d82641dbd83f9c2"
+  },
+  "previous_actual_phase_attribution": false,
+  "previous_goal_turn": "progress",
+  "raw_diagnostic_inventory": [
+    {
+      "bytes": 331,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-owned-v1/diagnostic-completion.json",
+      "sha256": "9fef10cd6db0699f838145225e77eafdaae8bb26b62b40d171389be7887f6434"
+    },
+    {
+      "bytes": 7200,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-owned-v1/unknown-diagnostic.json",
+      "sha256": "eebff45feef2e6ee799c14a9a153372a2b2fa14ba4c3292932fd6abab918fac4"
+    }
+  ],
+  "raw_evidence": [
+    {
+      "bytes": 259,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/ONCE.json",
+      "sha256": "8173927471680f6d7e0440e5badc20ce44734c13ee0cfba36b2dcc9a4bc610dc"
+    },
+    {
+      "bytes": 3119,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/meter-stderr.txt",
+      "sha256": "cca2fa19985df915557490375fffb32a0f08ce209e154a5267eb306edc21a99f"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1693,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/native-terminal.json",
+      "sha256": "2b32f6c02a9521b0bc565e54d5e4d533459b9f1d65804a803ca457cddd9956a5"
+    },
+    {
+      "bytes": 476,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/observation.json",
+      "sha256": "4a9108e76a94059c5734d90a72cdfe74af9151d4ce755a12bd30434a3b96d43e"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "3158c0eefcac80ac4116043c4c53546a6b082a5ef6c73344676f5e5cd12b946c"
+    }
+  ],
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "retained_latest_context": {
+    "active_failure_frame_known": false,
+    "complete_raw_diagnostic_verified": true,
+    "context_native_began_ns": 496569571986000,
+    "context_native_deadline_ns": 496589571986000,
+    "diagnostic_only": true,
+    "failure55_terminal_probe_resources_reconciled": true,
+    "files": [
+      {
+        "bytes": 331,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-owned-v1/diagnostic-completion.json",
+        "sha256": "9fef10cd6db0699f838145225e77eafdaae8bb26b62b40d171389be7887f6434"
+      },
+      {
+        "bytes": 7200,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/advice-controls-owned-v1/unknown-diagnostic.json",
+        "sha256": "eebff45feef2e6ee799c14a9a153372a2b2fa14ba4c3292932fd6abab918fac4"
+      }
+    ],
+    "last_observations": [
+      {
+        "elapsed_from_launch_ns": 7201341000,
+        "last_observation_age_to_postprobe_ns": 12904555000,
+        "last_observation_age_to_terminal_ns": 12834269000,
+        "native_ns": 496576754855000,
+        "role": "validator",
+        "row": 3,
+        "selected_count": 4,
+        "stage": "VALIDATOR_NATIVE_STEP"
+      },
+      {
+        "elapsed_from_launch_ns": 19932084000,
+        "last_observation_age_to_postprobe_ns": 173812000,
+        "last_observation_age_to_terminal_ns": 103526000,
+        "native_ns": 496589485598000,
+        "role": "fallback",
+        "row": 7,
+        "selected_count": 9,
+        "stage": "FALLBACK_NATIVE_STEP"
+      },
+      {
+        "elapsed_from_launch_ns": 20015921000,
+        "last_observation_age_to_postprobe_ns": 89975000,
+        "last_observation_age_to_terminal_ns": 19689000,
+        "native_ns": 496589569435000,
+        "role": "proposer",
+        "row": 8,
+        "selected_count": 10,
+        "stage": "PROPOSER_NATIVE_STEP"
+      }
+    ],
+    "latest_record": {
+      "elapsed_from_launch_ns": 20015921000,
+      "last_observation_age_to_postprobe_ns": 89975000,
+      "last_observation_age_to_terminal_ns": 19689000,
+      "native_ns": 496589569435000,
+      "role": "proposer",
+      "row": 8,
+      "selected_count": 10,
+      "stage": "PROPOSER_NATIVE_STEP"
+    },
+    "live_state_or_proof_trajectory_accepted": false,
+    "scientific_replay": false,
+    "unavailable_roles": [
+      "completion"
+    ]
+  },
+  "returned_control_record": false,
+  "sample_reference": "Original captured nativeCLOCK_MONOTONIC reads returned by direct Rootmain.tick, relative to original external callerlaunch; intervals include output/checks/all intervening work, not exclusive-method costs. No new clock/G/reset, accepted cases or earlier attribution.",
+  "schema": "ROOT-latest-context-consumer-timeout-disposition-v1",
+  "scientific_replay": false,
+  "scope": "Fresh latest-context-instrumented43 currentSource17 stage did not complete original native20 gate; no encoded/expanded control record returned. Fixed bounded stderr phase/nativeint subsequence plus continuation stage/scalar records is diagnostic only. Native read differences are saved observations and not exclusive-method costs or qualified stage evidence. No case pass/skip count, completed phase, useful proposal, exclusive phase duration, logical proof, trajectory or native-positive admission inferred. No attribution to earlier uninstrumented actuals.",
+  "skipped_cases": null,
+  "stage_or_phase_coverage_known": false,
+  "status": "UNKNOWN_NATIVE20_NO_RETURNED_CONTROL_RECORD",
+  "target_actuals_launched": 0,
+  "target_admission_qualified": false,
+  "target_plans_issued": 0,
+  "terminal_T_bytes_observed": 55803904,
+  "unqualified_continuation_observations": [
+    {
+      "kind": "continuation",
+      "native_ns": 496575938883000,
+      "ordinal": 1,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496575942470000,
+      "ordinal": 2,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496575942482000,
+      "ordinal": 3,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496575959842000,
+      "ordinal": 4,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496575971263000,
+      "ordinal": 5,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496575975466000,
+      "ordinal": 6,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496575975479000,
+      "ordinal": 7,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496575997814000,
+      "ordinal": 8,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576009483000,
+      "ordinal": 9,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576014081000,
+      "ordinal": 10,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576014136000,
+      "ordinal": 11,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576030948000,
+      "ordinal": 12,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576042518000,
+      "ordinal": 13,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576047573000,
+      "ordinal": 14,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576047583000,
+      "ordinal": 15,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576070696000,
+      "ordinal": 16,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576082121000,
+      "ordinal": 17,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576087644000,
+      "ordinal": 18,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576087653000,
+      "ordinal": 19,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576105102000,
+      "ordinal": 20,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576116754000,
+      "ordinal": 21,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576122813000,
+      "ordinal": 22,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576122827000,
+      "ordinal": 23,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 496576140740000,
+      "ordinal": 24,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    }
+  ],
+  "unqualified_native_samples": [
+    {
+      "elapsed_from_launch_ns": 120185000,
+      "interval_since_previous_ns": 120185000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "native_ns": 496569673699000,
+      "previous_marker": null
+    },
+    {
+      "elapsed_from_launch_ns": 120248000,
+      "interval_since_previous_ns": 63000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "native_ns": 496569673762000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30"
+    },
+    {
+      "elapsed_from_launch_ns": 120661000,
+      "interval_since_previous_ns": 413000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "native_ns": 496569674175000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP"
+    },
+    {
+      "elapsed_from_launch_ns": 680428000,
+      "interval_since_previous_ns": 559767000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "native_ns": 496570233942000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION"
+    },
+    {
+      "elapsed_from_launch_ns": 731717000,
+      "interval_since_previous_ns": 51289000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "native_ns": 496570285231000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE"
+    },
+    {
+      "elapsed_from_launch_ns": 774236000,
+      "interval_since_previous_ns": 42519000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "native_ns": 496570327750000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK"
+    },
+    {
+      "elapsed_from_launch_ns": 1211628000,
+      "interval_since_previous_ns": 437392000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "native_ns": 496570765142000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS"
+    },
+    {
+      "elapsed_from_launch_ns": 4365442000,
+      "interval_since_previous_ns": 3153814000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "native_ns": 496573918956000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES"
+    },
+    {
+      "elapsed_from_launch_ns": 4375381000,
+      "interval_since_previous_ns": 9939000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "native_ns": 496573928895000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE"
+    },
+    {
+      "elapsed_from_launch_ns": 5283554000,
+      "interval_since_previous_ns": 908173000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "native_ns": 496574837068000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP"
+    },
+    {
+      "elapsed_from_launch_ns": 5291765000,
+      "interval_since_previous_ns": 8211000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "native_ns": 496574845279000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP"
+    },
+    {
+      "elapsed_from_launch_ns": 7281934000,
+      "interval_since_previous_ns": 1990169000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+      "native_ns": 496576835448000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP"
+    },
+    {
+      "elapsed_from_launch_ns": 7281975000,
+      "interval_since_previous_ns": 41000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "native_ns": 496576835489000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP"
+    }
+  ],
+  "unqualified_native_timeline": [
+    {
+      "elapsed_from_launch_ns": 120185000,
+      "interval_since_previous_ns": 120185000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "native_ns": 496569673699000
+    },
+    {
+      "elapsed_from_launch_ns": 120248000,
+      "interval_since_previous_ns": 63000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "native_ns": 496569673762000
+    },
+    {
+      "elapsed_from_launch_ns": 120661000,
+      "interval_since_previous_ns": 413000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "native_ns": 496569674175000
+    },
+    {
+      "elapsed_from_launch_ns": 680428000,
+      "interval_since_previous_ns": 559767000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "native_ns": 496570233942000
+    },
+    {
+      "elapsed_from_launch_ns": 731717000,
+      "interval_since_previous_ns": 51289000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "native_ns": 496570285231000
+    },
+    {
+      "elapsed_from_launch_ns": 774236000,
+      "interval_since_previous_ns": 42519000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "native_ns": 496570327750000
+    },
+    {
+      "elapsed_from_launch_ns": 1211628000,
+      "interval_since_previous_ns": 437392000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "native_ns": 496570765142000
+    },
+    {
+      "elapsed_from_launch_ns": 4365442000,
+      "interval_since_previous_ns": 3153814000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "native_ns": 496573918956000
+    },
+    {
+      "elapsed_from_launch_ns": 4375381000,
+      "interval_since_previous_ns": 9939000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "native_ns": 496573928895000
+    },
+    {
+      "elapsed_from_launch_ns": 5283554000,
+      "interval_since_previous_ns": 908173000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "native_ns": 496574837068000
+    },
+    {
+      "elapsed_from_launch_ns": 5291765000,
+      "interval_since_previous_ns": 8211000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "native_ns": 496574845279000
+    },
+    {
+      "elapsed_from_launch_ns": 6385369000,
+      "interval_since_previous_ns": 1093604000,
+      "kind": "continuation",
+      "native_ns": 496575938883000,
+      "ordinal": 1,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6388956000,
+      "interval_since_previous_ns": 3587000,
+      "kind": "continuation",
+      "native_ns": 496575942470000,
+      "ordinal": 2,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6388968000,
+      "interval_since_previous_ns": 12000,
+      "kind": "continuation",
+      "native_ns": 496575942482000,
+      "ordinal": 3,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6406328000,
+      "interval_since_previous_ns": 17360000,
+      "kind": "continuation",
+      "native_ns": 496575959842000,
+      "ordinal": 4,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6417749000,
+      "interval_since_previous_ns": 11421000,
+      "kind": "continuation",
+      "native_ns": 496575971263000,
+      "ordinal": 5,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6421952000,
+      "interval_since_previous_ns": 4203000,
+      "kind": "continuation",
+      "native_ns": 496575975466000,
+      "ordinal": 6,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6421965000,
+      "interval_since_previous_ns": 13000,
+      "kind": "continuation",
+      "native_ns": 496575975479000,
+      "ordinal": 7,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6444300000,
+      "interval_since_previous_ns": 22335000,
+      "kind": "continuation",
+      "native_ns": 496575997814000,
+      "ordinal": 8,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6455969000,
+      "interval_since_previous_ns": 11669000,
+      "kind": "continuation",
+      "native_ns": 496576009483000,
+      "ordinal": 9,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6460567000,
+      "interval_since_previous_ns": 4598000,
+      "kind": "continuation",
+      "native_ns": 496576014081000,
+      "ordinal": 10,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6460622000,
+      "interval_since_previous_ns": 55000,
+      "kind": "continuation",
+      "native_ns": 496576014136000,
+      "ordinal": 11,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6477434000,
+      "interval_since_previous_ns": 16812000,
+      "kind": "continuation",
+      "native_ns": 496576030948000,
+      "ordinal": 12,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6489004000,
+      "interval_since_previous_ns": 11570000,
+      "kind": "continuation",
+      "native_ns": 496576042518000,
+      "ordinal": 13,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6494059000,
+      "interval_since_previous_ns": 5055000,
+      "kind": "continuation",
+      "native_ns": 496576047573000,
+      "ordinal": 14,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6494069000,
+      "interval_since_previous_ns": 10000,
+      "kind": "continuation",
+      "native_ns": 496576047583000,
+      "ordinal": 15,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6517182000,
+      "interval_since_previous_ns": 23113000,
+      "kind": "continuation",
+      "native_ns": 496576070696000,
+      "ordinal": 16,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6528607000,
+      "interval_since_previous_ns": 11425000,
+      "kind": "continuation",
+      "native_ns": 496576082121000,
+      "ordinal": 17,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6534130000,
+      "interval_since_previous_ns": 5523000,
+      "kind": "continuation",
+      "native_ns": 496576087644000,
+      "ordinal": 18,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6534139000,
+      "interval_since_previous_ns": 9000,
+      "kind": "continuation",
+      "native_ns": 496576087653000,
+      "ordinal": 19,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6551588000,
+      "interval_since_previous_ns": 17449000,
+      "kind": "continuation",
+      "native_ns": 496576105102000,
+      "ordinal": 20,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6563240000,
+      "interval_since_previous_ns": 11652000,
+      "kind": "continuation",
+      "native_ns": 496576116754000,
+      "ordinal": 21,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6569299000,
+      "interval_since_previous_ns": 6059000,
+      "kind": "continuation",
+      "native_ns": 496576122813000,
+      "ordinal": 22,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6569313000,
+      "interval_since_previous_ns": 14000,
+      "kind": "continuation",
+      "native_ns": 496576122827000,
+      "ordinal": 23,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6587226000,
+      "interval_since_previous_ns": 17913000,
+      "kind": "continuation",
+      "native_ns": 496576140740000,
+      "ordinal": 24,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7281934000,
+      "interval_since_previous_ns": 694708000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+      "native_ns": 496576835448000
+    },
+    {
+      "elapsed_from_launch_ns": 7281975000,
+      "interval_since_previous_ns": 41000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "native_ns": 496576835489000
+    }
+  ],
+  "unqualified_observed_phase_markers": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE"
+  ],
+  "unqualified_phase_prefix_available": true
+}

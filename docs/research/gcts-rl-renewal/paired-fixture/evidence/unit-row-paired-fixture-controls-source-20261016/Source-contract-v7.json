@@ -1,0 +1,583 @@
+{
+  "API": {
+    "call": "run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,fallback,certify_fallback,tick)",
+    "expected_cases": 43,
+    "factory": "Same existing Root callbacks/engine8/consumer3/adviser3. No new public method, keyword, degree wrapper or caller format.",
+    "keyword_count": 8,
+    "new_cases": 0,
+    "new_cases_key": "new_cases",
+    "output_schema": "unit-row-goal-advice-controls-v1",
+    "preserved_prior_cases": 43,
+    "qualification": "All43 PASSED0SKIP/no other gap plus current original17/retention17 and unchanged full native/wire gates; targets stay withheld until genuine current qualification."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-paired-fixture-controls-Source",
+    "source": {
+      "bytes": 114633,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py",
+      "sha256": "900be8b58ae3aa3a48f477a4f4bfa57fb37fef1ed7db3740f8ab7b77a6d500c0"
+    },
+    "source_contract": "exact current raw capsule",
+    "source_only": true,
+    "source_review_passed": "Distinct genuine reviewer decides",
+    "sources": "exact current full map"
+  },
+  "all_case_names": [
+    "genuine-READY-whole-independent-validation",
+    "pending-obligations-never-facts",
+    "malformed-batch-controls",
+    "later-ranked-malformed-proposal-rejected",
+    "genuine-quota-UNKNOWN-diagnostic-only",
+    "UNKNOWN-rejected-by-executable-validator",
+    "empty-hints-preserve-canonical-choice",
+    "quota-UNKNOWN-preserves-canonical-choice",
+    "adviser-Timeout-UNKNOWN-no-exclusion",
+    "adviser-ValueError-propagates",
+    "validator-ValueError-propagates",
+    "actual-anchor-only-no-future-preinstallation",
+    "first-search-exact-root-restoration",
+    "public-rollback-restores-genuine-nonempty-pending",
+    "pending-key-real-current-row-selection",
+    "pending-search-exact-inner-root-restoration",
+    "remote-mark-invalidates-pending-key",
+    "rejected-pending-hint-preserves-canonical-choice",
+    "pending-request-malformed-controls",
+    "global-forced-fill-retires-family-before-fresh-advice",
+    "global-DEAD-overrides-advice",
+    "global-FORCED-overrides-advice",
+    "whole-family-abandoned-with-different-future-key-remaining",
+    "one-fresh-batch-at-same-rejected-BRANCH",
+    "abandoned-future-members-never-installed-or-excluded",
+    "successful-pending-continuity-preserved",
+    "rejection-parent-and-owned-inner-rollback-exact",
+    "fresh-replacement-ValueError-propagates-without-family-commit",
+    "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+    "later-BRANCH-reconsiders-fresh-advice-after-abandonment",
+    "real-returned-interface-features-score-and-order",
+    "forged-interface-feature-and-score-rejections",
+    "Boolean-versus-integer-feature-and-score-rejections",
+    "obsolete-adviser-version-rejected",
+    "later-ranked-quality-defect-and-order-rejected",
+    "real-returned-root-reopening-remains-legal-and-demoted",
+    "real-returned-universal-diversity-with-declared-term-horizon",
+    "nonempty-READY-replacement-adopted-after-definite-rejection",
+    "replacement-installs-anchor-only-not-future-obligations",
+    "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+    "compatible-occupied-UI-source-fibre-returned-and-validated",
+    "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+    "missing-UI-source-remains-PENDING-not-a-fact"
+  ],
+  "artifact_API": {
+    "family_retirement.successful_continuity_context": "Explicit B lineage plus original_rejection_fixture_ref:fixture; distinct_control_contexts:true.",
+    "occupied_component": "Must match B family_id and full seed prefix in actual accepted callback. Existing first ordered MP read/source1 actual original AX requirement retained; source2-only result is a gap, not inferred source1. No scratch decision or reconstruction. Component stores fixture_ref and paired_family_id, actual owned callback full snapshot/request/receipt, finished outer before/after on same B engine.",
+    "original_artifacts_unchanged": "fixture/adoption_search/genuine_inner_snapshot/remote_*/forced_retirement stay original A.",
+    "pending_continuation_lineage": "{fixture_ref:pending_success_fixture,family_id,inner_snapshot_sha256,original_fixture_used:false}.",
+    "pending_continuation_search": "Actual sibling B search, no original A positive wait. UNKNOWN/restored/noEXCLUDE required.",
+    "pending_selection_receipts": "Actual B continuation PENDING_KEYS receipts, including null selections if any.",
+    "pending_success_fixture": {
+      "adoption_search": "Actual UNKNOWN control search with original rollback/noEXCLUDE checks.",
+      "continuation_before": "Exact inner snapshot restored via paired owned token.",
+      "continuation_search_ref": "pending_continuation_search",
+      "decision": "Actual real global decision, mustBRANCH0 for eligibility.",
+      "eligibility_gap": "Honest original-profile/shape/scheduler/READY gap; common14/15 skipped exactly once before any pass.",
+      "eligibility_qualified": "Local fixture construction/adoption gates only, not current43/runtime/resource qualification.",
+      "inner_restoration": "{before_sha256,after_sha256} exact whole inner-root restoration; same digests also in common15.",
+      "inner_snapshot": "Actual stable owned child capture, all seeds plus only actual anchor.",
+      "outer_after": "Full own outer snapshot restored in paired finally; no outer query after propagated exception.",
+      "outer_before": "Full snapshot before paired decision.",
+      "outer_restoration": "{before_sha256,after_sha256} exact join outer_before==outer_after.",
+      "pending_calls": "[{state,decision,request,receipt}] from every actual returned PENDING_KEYS callback in paired continuation; raw copies only, no inferred missing callback.",
+      "pending_receipts_ref": "pending_selection_receipts",
+      "schema": "unit-row-paired-pending-success-fixture-v1",
+      "search_before": "Full cached snapshot immediately before paired adoption search.",
+      "seeds": "List of full candidate packets [future,AX1,AX2].",
+      "selection": "Actual first independent selection, no suppression.",
+      "state": "Full independent state(language,seeds) value, original target retained.",
+      "whole_actual_batch": "Full actual return saved before READY gate.",
+      "whole_actual_receipt": "Full successful independent whole READY receipt."
+    }
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 7908,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/author-static-v7.json",
+    "sha256": "e40dca822563646daf00620311fb178bafd7c3246eacc55c97831fbb97c0d6ed"
+  },
+  "authoritative_checkpoint": {
+    "bytes": 43205,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-publication-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "b2406a14d45b50164d32fef0a9b4bc6a7a6fe91c81cae8b83b0e3fbde5229fe2"
+  },
+  "authorship_disclosure": "Author wrote controls/membership/degree/fallback; not adviser3/consumer3/engine8/c354/transition. Source-only author evidence is not an independent review or actual. Diagnosis owns genuine peer review; Root owns caller/once/grants/native actual/disposition/publication.",
+  "changes": "Control-only paired fixture for positive pending selection/common14/15 and successful-continuity/occupied-callback joins. Original one-source fixture, adoption/common11-13, remote rejection, malformed pending and forced-fill code stay original. New duplicate original AX seeds1/2 plus same UG9 sibling must obtain actual globalBRANCH0/full actual READY/independent whole receipt, one actual anchor-only child and actual later PENDING selection. No desired family/subselection, future preinstallation or scheduler/degree shortcut. Callback factory binds separate holders; one total continuation cap24; full actual pending request tuples retained. Existing report-only memo/fresh delegation and other scientific logic unchanged outside exact delta.",
+  "continuation_stderr": {
+    "bound_kind": "Conservative declared upper bound24 times longest admissible line, not a claim every stage sequence attains it.",
+    "cap_scope": "One nonlocal integer per original22 invocation shared by both factory-bound holders; six static sites defined once, original A remains capture/remote/forced, sibling B alone enterscontinue. Cap24 TOTAL across actual eligible writes, including any future path reuse; cap never changes work/stop/degree. Nested/injected step returnsNone never sampled.",
+    "context_provenance": "row is actual kwargs.row for degree or kwargs.decision.row for validator. selected_count is len(actual kwargs.state.selected), NOT a fresh live-engine query. pending_presence is0/1 ONLY at DEGREE_AFTER_SNAPSHOT from already-computed current.pending_preferences; otherwise -1. receipt_selection is0/1 ONLY at VALIDATOR_AFTER_DELEGATE from the actual returned value.selection; otherwise -1. No field infers an unobserved family, mark or pending fact.",
+    "costs_failures": "Each emitted record starts with direct original native tick, checks strict scalar bounds, prints/flushes, then direct tick. All costs remain under original20/512/60/90+1. Failed native check/type/write/flush propagates; no postdelegate record if delegation raises. Original guards still bracket delegation; no new catches/failure55 science. Logging can cause UNKNOWN sooner. No fit prediction.",
+    "direct_tick_ABI": "Sample ONLY the original Root direct native/resource tick passed unchanged through all three controls wrappers. It must return genuine sampled now as exact builtin int after its original checks. Generic injected/nested engine-adapter step returns (currently None) are not samples. Caller must explicitly pin/guard this diagnostic return contract. No new keyword/positional parameter or clock.",
+    "existing_phase_ascii_bytes": 1766,
+    "field_count_after_stage": 6,
+    "fields": [
+      {
+        "name": "ordinal",
+        "range": [
+          1,
+          24
+        ]
+      },
+      {
+        "name": "native_ns",
+        "range": [
+          0,
+          9223372036854775807
+        ]
+      },
+      {
+        "name": "row",
+        "range": [
+          0,
+          23
+        ]
+      },
+      {
+        "name": "selected_count",
+        "range": [
+          0,
+          24
+        ]
+      },
+      {
+        "name": "pending_presence",
+        "range": [
+          -1,
+          1
+        ]
+      },
+      {
+        "name": "receipt_selection",
+        "range": [
+          -1,
+          1
+        ]
+      }
+    ],
+    "maximum_ascii_bytes_per_record": 96,
+    "maximum_ascii_bytes_per_record_by_stage": {
+      "DEGREE_AFTER_DELEGATE": 94,
+      "DEGREE_AFTER_SNAPSHOT": 93,
+      "DEGREE_BEFORE_DELEGATE": 95,
+      "DEGREE_ENTRY": 85,
+      "VALIDATOR_AFTER_DELEGATE": 96,
+      "VALIDATOR_ENTRY": 88
+    },
+    "maximum_combined_diagnostic_ascii_bytes": 4070,
+    "maximum_continuation_ascii_bytes": 2304,
+    "ordering": "Shared ordinal1..24 counts diagnostic attempts only. Six static sites may recur across calls and interleave/nest through caller callbacks; no unconditional one-list stage order. For an actual normally returning degree callback reaching its delegate, ENTRY/AFTER_SNAPSHOT/BEFORE_DELEGATE/AFTER_DELEGATE are positions in that call; original controlled stop may omit delegate sites. Validator has ENTRY/AFTER_DELEGATE positions. Cap/exception/deadline can truncate ANY pair. No call ID or guaranteed pairing is claimed; row/count equality never proves same state/call, and missing mate never proves nonreturn.",
+    "positions_in_physical_Source_order": [
+      {
+        "source_line": 323,
+        "stage": "VALIDATOR_ENTRY"
+      },
+      {
+        "source_line": 337,
+        "stage": "VALIDATOR_AFTER_DELEGATE"
+      },
+      {
+        "source_line": 359,
+        "stage": "DEGREE_ENTRY"
+      },
+      {
+        "source_line": 373,
+        "stage": "DEGREE_AFTER_SNAPSHOT"
+      },
+      {
+        "source_line": 395,
+        "stage": "DEGREE_BEFORE_DELEGATE"
+      },
+      {
+        "source_line": 409,
+        "stage": "DEGREE_AFTER_DELEGATE"
+      }
+    ],
+    "prefix": "UNQUALIFIED_CONTINUATION_OBSERVATION ",
+    "schema": "unit-row-unqualified-continuation-progress-line-v1",
+    "scope": "Exact old six stages and tuple/signed64 safety. selected_count is current callback kwargs.state only; pendingpresence only existing snapshot; selection only actual returned receipt. Native callback/row counts may differ with paired boundary; no comparison/phase attribution to old actual.",
+    "stages": [
+      "DEGREE_ENTRY",
+      "DEGREE_AFTER_SNAPSHOT",
+      "DEGREE_BEFORE_DELEGATE",
+      "DEGREE_AFTER_DELEGATE",
+      "VALIDATOR_ENTRY",
+      "VALIDATOR_AFTER_DELEGATE"
+    ],
+    "total_record_cap": 24,
+    "wire": "Fixed prefix and literal stage, then six ASCII-space-separated canonical decimal integers in field order, then LF. Only unavailable flags may be -1. No plus sign/leading zero except0, bool/float, dynamic string, formula, candidate or JSON formatting."
+  },
+  "costs_and_limits": {
+    "aggregate_owned_bytes": 536870912,
+    "baseline22_observed_cost_is_not_fit_prediction": "Historical observations remain unchanged. Source7 adds genuine sibling decision/advice/adoption/search and raw evidence under same complete20 endpoint; no fit/cost-reduction prediction, stage split, limit/quota/model reduction or inherited qualification.",
+    "caller_seconds": 90,
+    "encoded_output_bytes": 4194304,
+    "expanded_output_bytes": 16777216,
+    "failure_only_seconds": 55,
+    "finish_seconds": 1,
+    "height": 24,
+    "joint_seconds": 20,
+    "maximum_events": 2000,
+    "maximum_nodes": 128,
+    "owned_seconds": 60,
+    "same_original_profile": "shared-bounded-six-rule-B12-N44-v2"
+  },
+  "current_versions": {
+    "adviser": "unit-row-generic-goal-branch-adviser-v3-compatible-source-fibres",
+    "engine": "lazy-unit-row-global-engine-v8-compatible-fibres-versions",
+    "validator": "unit-row-independent-advice-consumer-validator-v3-compatible-fibres-versions"
+  },
+  "dependency_contracts": {
+    "adviser": {
+      "bytes": 15617,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "3dffe2290254ad969cfcb8817d1d149e8ba6a944ac88e1791cd55b8bcecfe048"
+    },
+    "engine": {
+      "bytes": 7403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "986bec372461b8e629893c289e073fbbb1f0f6445d24be52d7f285ece1c64091"
+    },
+    "validator": {
+      "bytes": 10250,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-contract-v3.json",
+      "sha256": "ceead8e6bea02ca1559e2042d3bc8a3b227bea962e844f2e11a9c2a2284a4658"
+    }
+  },
+  "forward_patch": {
+    "bytes": 32086,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/continuation6-to-paired7-forward.patch",
+    "sha256": "24ef7c8364676958f9295727007db1cad4d5b223f8736e8d3d6f0259ef685d02"
+  },
+  "full_inverse_patch": {
+    "bytes": 32086,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/paired7-to-continuation6-full-inverse.patch",
+    "sha256": "c5c6165116808cc3e983b8ea7cba4a18d4032d1f2f52c609d25ff410789e686a"
+  },
+  "historical_inference_boundary": "Saved latest-context row/selected scalars are entry values, not active frame, actual full state, family layout or proof. Source6 native UNKNOWN preserved; no claim its first family MP2 was forced, nor why control failed.",
+  "historical_unknown": {
+    "bytes": 28434,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+    "sha256": "14f2b1274b27324cc468c91351e16806e29dfc8ce7dd69f52dded5a23a81a50b"
+  },
+  "input_bindings": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "new_cases": [],
+  "paired_fixture": {
+    "known_literal_boundaries": "Both fixtures are declared control hypotheses. No saved proof word, donor, family library or route, no new primitive/inference and no target search input change.",
+    "original_A": {
+      "artifacts": [
+        "fixture",
+        "adoption_search",
+        "genuine_inner_snapshot",
+        "remote_search",
+        "remote_receipts",
+        "remote_fixture",
+        "forced_retirement"
+      ],
+      "cases": "common0-13 and16-19; scheduler20/21 unchanged. Retirement30 rejection/replacement/fault/later controls remain original A. Original selected future keys/rows are derived from actual original receipt, never globally relabeled to sibling rows.",
+      "tokens": "Original holder/e/outer/before/inner/token and h/e2/outer2/before2/inner2 remain A; sibling code never rebinds them."
+    },
+    "purpose": "Duplicate-source generic component calibration for successful pending selection while original singleton/absent-source fixture preserves remote rejection and forced retirement. This is a controls boundary, never the target-search boundary.",
+    "reports": "All43 names unchanged. No additional counted cases; old30 are not claimed raw-identical because common14/15 context and explicit lineage checks change. Full delta and retained raw regions enumerate exact scope.",
+    "scope_gates": "No assertion of actual eligible family, future rows3/8, source1 selection, current43 PASS or native fit. First actual family is accepted honestly; no desired packet rerank/subselection. Unavailable shape remains SKIP, failed/time/resource errors propagate UNKNOWN/failure under original caller.",
+    "sibling_B": {
+      "actual_eligibility": "Real engine.decision()==BRANCH0, full bounded actual adviser READY with first future-bearing selection independently validated, genuine ordinary search anchor-only owned child, exact whole state equals all seeds plus actual anchor, own inner token restore, actual normal PENDING_KEYS selection or explicit SKIP. Two potential MP alternatives motivate fixture only; static multiplicity never degree authority.",
+      "case_mapping": "common14 pending-key-real-current-row-selection; common15 pending-search-exact-inner-root-restoration; retirement successful-pending-continuity-preserved explicitly references B, distinct from A rejection.",
+      "seed_declaration": "Full candidate list [same original selected future UG9 reading8, original named AX(U) at1, same named AX(U) at2]. Distinct translation identities retained; original target mark and all24 roots unchanged.",
+      "tokens": "Separate paired_engine/paired_holder/paired_outer/paired_inner/paired_token; callbacks bound before construction; no reentrant state mutation or cross-engine token."
+    }
+  },
+  "parent_contract": {
+    "bytes": 28536,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/Source-contract-v6.json",
+    "sha256": "eae8374f8a7bec046921c0d6befad429a5de3230b5cc0a3b601bab493e87787f"
+  },
+  "parent_source": {
+    "bytes": 104747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+    "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+  },
+  "phase_stderr": {
+    "clock_reference": "Saved samples may be joined to original external native caller launch/terminal observations in the same kernel domain. No new began epoch/deadline reset/internal timer/clock call. External true terminal/postprobe and full Date gates remain authoritative.",
+    "costs": "Sampling validation/formatting/write/flush/postchecks and unchanged science remain charged to original20/512/external60/90+1. Instrumentation may cause UNKNOWN; no fit/optimization prediction.",
+    "diagnostic_tick_return_ABI": "Sample ONLY the original Root direct native/resource tick passed unchanged through all three controls wrappers. It must return genuine sampled now as exact builtin int after its original checks. Generic injected/nested engine-adapter step returns (currently None) are not samples. Caller must explicitly pin/guard this diagnostic return contract. No new keyword/positional parameter or clock.",
+    "failure": "Original pre/post tick, integer validation or write/flush failure propagates. No deliberate emission after a failed precheck, logging on unwind or posttimeout scientific work. A started write can stall beyond20 then fail postcheck; retained bytes remain unqualified. Failure55 does not license more science.",
+    "maximum_emissions": 24,
+    "maximum_full_sequence_bytes": 1766,
+    "maximum_native_decimal_digits": 19,
+    "new_search_site_scope": "Existing24 exact lines remain. ADOPTION group is original A checkpoint/snapshot/search/unknown_result. CONTINUATION group now includes sibling seed/setup/checkpoint, real decision, full actual advice/validation, adoption+restoration, inner restore, continuation+UNKNOWN/restoration assertions and own outer restore/eligibility reports. No additional marker invocation; never exclusive search timing or equal interval to prior Source.",
+    "new_site_literals": [
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP"
+    ],
+    "observation_only": "Every line, including AFTER/AT_RETURN, is an UNQUALIFIED producer reached-write plus prewrite sample. No accepted entry/return/nonreturn, completed case/phase, PASS/SKIP count, cache hit, exclusive-method duration, proof, trajectory, resource-positive, target or RL admission. Differences include guards/fresh languages/copies/assertions/I/O; prewrite sample is not completed-write time. Missing labels establish neither absence nor nonreturn. No earlier actual attribution.",
+    "order": "Runtime ordered SUBSEQUENCE of24 unique labels, not physical Source order or unconditional full prefix. Existing eligibility branches may omit sites. At most one emission per static site per invocation; no sites in loops/callbacks/handlers/finally. A partial last line is only a prefix of actual-path bytes.",
+    "ordered_literals": [
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+    ],
+    "positions": [
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+        "source_line": 172
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+        "source_line": 187
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+        "source_line": 190
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+        "source_line": 203
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+        "source_line": 234
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+        "source_line": 275
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+        "source_line": 304
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+        "source_line": 422
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+        "source_line": 424
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+        "source_line": 444
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+        "source_line": 538
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+        "source_line": 542
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+        "source_line": 776
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+        "source_line": 863
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+        "source_line": 1104
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+        "source_line": 1109
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+        "source_line": 1152
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+        "source_line": 1170
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+        "source_line": 1171
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+        "source_line": 1239
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+        "source_line": 1300
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+        "source_line": 1370
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+        "source_line": 1527
+      },
+      {
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN",
+        "source_line": 1552
+      }
+    ],
+    "prefix": "UNQUALIFIED_PHASE_OBSERVATION ",
+    "sample_range_inclusive": [
+      0,
+      9223372036854775807
+    ],
+    "sampling_code": "phase_native_ns=tick();need(type(phase_native_ns) is int and 0<=phase_native_ns<=9223372036854775807,'original direct native tick diagnostic signed64 integer');print(fixed_literal,phase_native_ns,file=sys.stderr,flush=True);tick()",
+    "wire": "Exact ordered literal, one ASCII space, canonical base10 nonnegative signed64 native-ns integer, LF. No sign, bool, float, leading zero except0, dynamic label or extra field."
+  },
+  "provenance_output_unchanged": {
+    "occupied_context_path": "artifacts.fair_interface.component_attempts.occupied_compatible_UI_source",
+    "occupied_joins": "actual_callback.snapshot == before == after_decision; state == before.state; actual_callback.decision/request/receipt join actual_decision/current state; finished_outer_before == finished_outer_after, digest(after)==restored_sha256. Reopening separate scratch component retains restored==before. Additional Source7 gates: fixture_ref==pending_success_fixture; paired_family_id matches captured owned family; full selected seed prefix matches B; actual original AX atsource1 and selected MP firstread1. No source2 assumption.",
+    "path": "artifacts.fair_interface.report_observation_reuse",
+    "scope_note": "Existing exact full authority/request bytes report-only memo unchanged; every engine/negative/injected/replacement delegate remains fresh. The original report field name is retained; only downstream context provenance above changes.",
+    "shape": {
+      "authorities": "[{sha256,value:<full effective authority once>}]",
+      "counts": [
+        "fresh_calls",
+        "recorded_unique_receipts",
+        "report_hits",
+        "report_misses"
+      ],
+      "entries": "[{origin_fresh_call,authority_sha256,state,decision,batch,receipt}] only origins referenced by reports",
+      "sites": "[{site,reused,origin_fresh_call,state_sha256,decision_sha256,batch_sha256,receipt_sha256}]"
+    }
+  },
+  "remaining_gates": [
+    "Genuine distinct whole Source7/contract/patch review plus Root whole delta; author static pass does not activate code.",
+    "Root must separately bind current Source7/diagnostic API/explicit paired artifact joins and retain all other Source/input/native/output gates.",
+    "Fresh original17 and retention17 plus all43 PASSED0SKIP/no other gaps under unchanged complete native20/512/55/60/90+1 and full lossless wire gates before targets.",
+    "No current actual/candidate/proof/trajectory/model-count/RL/fit claim. All earlier actuals and current UNKNOWN preserved; no unchanged rerun authorized by this packet."
+  ],
+  "schema": "unit-row-paired-fixture-controls-Source-contract-v7",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-paired-fixture-controls-Source",
+  "source": {
+    "bytes": 114633,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py",
+    "sha256": "900be8b58ae3aa3a48f477a4f4bfa57fb37fef1ed7db3740f8ab7b77a6d500c0"
+  },
+  "source_delta": {
+    "bytes": 31639,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-delta-v7.json",
+    "sha256": "47f556ec263829f7c80b3c640466a91adb60b4771709ba10188b42e918c6bdac"
+  },
+  "source_notes": {
+    "arithmetic_calibration": {
+      "bytes": 11239,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-calibration-source-20261016/fixture-note-v1.json",
+      "sha256": "2ad7bec3747fea44a6ce5b005fdb97782b3f058668f9539fa605d98beb80f2ba"
+    },
+    "author_pairing": {
+      "bytes": 10004,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-diagnosis-source-20261016/fixture-pairing-note-v1.json",
+      "sha256": "1d59dd7879f924b953787f1f9b65c8b6cf0761842940de3e8c43343b86ac906d"
+    },
+    "case_dependencies": {
+      "bytes": 10173,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-dependency-audit-source-20261016/case-dependencies-v1.json",
+      "sha256": "bada82fcf8c133b32573ebdca460479e171f34c447fa5c52f5202765607ab190"
+    }
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 114633,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py",
+      "sha256": "900be8b58ae3aa3a48f477a4f4bfa57fb37fef1ed7db3740f8ab7b77a6d500c0"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "version": "unit-row-paired-fixture-controls-v7"
+}

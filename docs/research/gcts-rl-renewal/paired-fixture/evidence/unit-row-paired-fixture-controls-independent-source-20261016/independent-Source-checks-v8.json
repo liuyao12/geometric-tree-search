@@ -1,0 +1,471 @@
+{
+  "schema": "unit-row-paired-fixture-independent-Source-checks-v8",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201",
+    "bytes": 114823
+  },
+  "checks": [
+    {
+      "check": "all frozen metadata capsules reauthenticated",
+      "passed": true,
+      "evidence": {
+        "unique_raw_paths": 39,
+        "input_policy": "Declaration/profile raw hash only, no decoding."
+      }
+    },
+    {
+      "check": "whole sequential raw/AST inverse 6-to-7",
+      "passed": true,
+      "evidence": 8
+    },
+    {
+      "check": "whole sequential raw/AST inverse 7-to-8",
+      "passed": true,
+      "evidence": 5
+    },
+    {
+      "check": "whole sequential raw/AST inverse 6-to-8",
+      "passed": true,
+      "evidence": 13
+    },
+    {
+      "check": "whole unified patch continuation6-to-paired7-forward.patch",
+      "passed": true,
+      "evidence": 32086
+    },
+    {
+      "check": "whole unified patch paired7-to-continuation6-full-inverse.patch",
+      "passed": true,
+      "evidence": 32086
+    },
+    {
+      "check": "whole unified patch paired7-to-paired8-forward.patch",
+      "passed": true,
+      "evidence": 4075
+    },
+    {
+      "check": "whole unified patch paired7-to-paired8-full-inverse.patch",
+      "passed": true,
+      "evidence": 4075
+    },
+    {
+      "check": "whole unified patch continuation6-to-paired8-forward.patch",
+      "passed": true,
+      "evidence": 32278
+    },
+    {
+      "check": "whole unified patch continuation6-to-paired8-full-inverse.patch",
+      "passed": true,
+      "evidence": 32278
+    },
+    {
+      "check": "AST/compile syntax only",
+      "passed": true,
+      "evidence": "No module import/evaluation/exec, semantic calls or tests."
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 0:Unavailable",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 1:CallbackExhausted",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 2:need",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 3:canonical",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 4:digest",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 5:tile",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 6:state",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 7:ug",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 8:obligations",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 10:run_controls",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "full top callable raw+AST 7-to-8 11:run_controls",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "nine initial helper/class regions raw+AST exact6-to-8",
+      "passed": true,
+      "evidence": [
+        "Unavailable",
+        "CallbackExhausted",
+        "need",
+        "canonical",
+        "digest",
+        "tile",
+        "state",
+        "ug",
+        "obligations"
+      ]
+    },
+    {
+      "check": "whole callback/factory raw+AST exact7-to-8 watched_validator",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "whole callback/factory raw+AST exact7-to-8 capture_degree",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "whole callback/factory raw+AST exact7-to-8 watched_adviser",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "whole callback/factory raw+AST exact7-to-8 lifecycle_callbacks",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "independent mechanical callback AST inverse to6 watched_validator",
+      "passed": true,
+      "evidence": "Undo holder rename, shared scalar counter and nonlocal, added raw pending-call observation only."
+    },
+    {
+      "check": "independent mechanical callback AST inverse to6 capture_degree",
+      "passed": true,
+      "evidence": "Undo holder rename, shared scalar counter and nonlocal, added raw pending-call observation only."
+    },
+    {
+      "check": "independent mechanical callback AST inverse to6 watched_adviser",
+      "passed": true,
+      "evidence": "Undo holder rename, shared scalar counter and nonlocal, added raw pending-call observation only."
+    },
+    {
+      "check": "all case literals exact6-to-8 common_names",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "all case literals exact6-to-8 scheduler_names",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "all case literals exact6-to-8 labels",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "all case literals exact6-to-8 fibre_labels",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "43 unchanged unique declared cases",
+      "passed": true,
+      "evidence": 43
+    },
+    {
+      "check": "other9 Sources unchanged",
+      "passed": true,
+      "evidence": 9
+    },
+    {
+      "check": "input2/API/native and output limits unchanged",
+      "passed": true,
+      "evidence": {
+        "aggregate_owned_bytes": 536870912,
+        "baseline22_observed_cost_is_not_fit_prediction": "Historical observations remain unchanged. Source7 adds genuine sibling decision/advice/adoption/search and raw evidence under same complete20 endpoint; no fit/cost-reduction prediction, stage split, limit/quota/model reduction or inherited qualification.",
+        "caller_seconds": 90,
+        "encoded_output_bytes": 4194304,
+        "expanded_output_bytes": 16777216,
+        "failure_only_seconds": 55,
+        "finish_seconds": 1,
+        "height": 24,
+        "joint_seconds": 20,
+        "maximum_events": 2000,
+        "maximum_nodes": 128,
+        "owned_seconds": 60,
+        "same_original_profile": "shared-bounded-six-rule-B12-N44-v2"
+      }
+    },
+    {
+      "check": "24 entire phase tick/sample/write/posttick groups byte exact6-to-8",
+      "passed": true,
+      "evidence": 24
+    },
+    {
+      "check": "six diagnostic print ASTs exact after declared shared-counter binding inverse",
+      "passed": true,
+      "evidence": 6
+    },
+    {
+      "check": "all current physical diagnostic positions 7",
+      "passed": true,
+      "evidence": {
+        "phase": 24,
+        "continuation": 6
+      }
+    },
+    {
+      "check": "all current physical diagnostic positions 8",
+      "passed": true,
+      "evidence": {
+        "phase": 24,
+        "continuation": 6
+      }
+    },
+    {
+      "check": "all three positive aliases only inside selected_pending actual branch",
+      "passed": true,
+      "evidence": [
+        520,
+        521,
+        522
+      ]
+    },
+    {
+      "check": "full unsuccessful attempt retained outside positive branch",
+      "passed": true,
+      "evidence": true
+    },
+    {
+      "check": "all three run_controls preserve exact8kw API",
+      "passed": true,
+      "evidence": 8
+    }
+  ],
+  "check_count": 44,
+  "references": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py",
+      "sha256": "900be8b58ae3aa3a48f477a4f4bfa57fb37fef1ed7db3740f8ab7b77a6d500c0",
+      "bytes": 114633
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-contract-v7.json",
+      "sha256": "01c5cbf1c484aea6e82fd48d1169a24d6b4454f55be0f13942628c42ba583b6b",
+      "bytes": 35759
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/handoff-v7.json",
+      "sha256": "a335b8424b2dc71e5b246b6187668f095ba34e5048489f4582cfd708e564f861",
+      "bytes": 27887
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-delta-v7.json",
+      "sha256": "47f556ec263829f7c80b3c640466a91adb60b4771709ba10188b42e918c6bdac",
+      "bytes": 31639
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/author-static-v7.json",
+      "sha256": "e40dca822563646daf00620311fb178bafd7c3246eacc55c97831fbb97c0d6ed",
+      "bytes": 7908
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-publication-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+      "sha256": "b2406a14d45b50164d32fef0a9b4bc6a7a6fe91c81cae8b83b0e3fbde5229fe2",
+      "bytes": 43205
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "3dffe2290254ad969cfcb8817d1d149e8ba6a944ac88e1791cd55b8bcecfe048",
+      "bytes": 15617
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "986bec372461b8e629893c289e073fbbb1f0f6445d24be52d7f285ece1c64091",
+      "bytes": 7403
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-contract-v3.json",
+      "sha256": "ceead8e6bea02ca1559e2042d3bc8a3b227bea962e844f2e11a9c2a2284a4658",
+      "bytes": 10250
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/continuation6-to-paired7-forward.patch",
+      "sha256": "24ef7c8364676958f9295727007db1cad4d5b223f8736e8d3d6f0259ef685d02",
+      "bytes": 32086
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/paired7-to-continuation6-full-inverse.patch",
+      "sha256": "c5c6165116808cc3e983b8ea7cba4a18d4032d1f2f52c609d25ff410789e686a",
+      "bytes": 32086
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "14f2b1274b27324cc468c91351e16806e29dfc8ce7dd69f52dded5a23a81a50b",
+      "bytes": 28434
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "bytes": 2925
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "bytes": 8773
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/Source-contract-v6.json",
+      "sha256": "eae8374f8a7bec046921c0d6befad429a5de3230b5cc0a3b601bab493e87787f",
+      "bytes": 28536
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+      "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f",
+      "bytes": 104747
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-calibration-source-20261016/fixture-note-v1.json",
+      "sha256": "2ad7bec3747fea44a6ce5b005fdb97782b3f058668f9539fa605d98beb80f2ba",
+      "bytes": 11239
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-diagnosis-source-20261016/fixture-pairing-note-v1.json",
+      "sha256": "1d59dd7879f924b953787f1f9b65c8b6cf0761842940de3e8c43343b86ac906d",
+      "bytes": 10004
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-dependency-audit-source-20261016/case-dependencies-v1.json",
+      "sha256": "bada82fcf8c133b32573ebdca460479e171f34c447fa5c52f5202765607ab190",
+      "bytes": 10173
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98",
+      "bytes": 26007
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "bytes": 22030
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6",
+      "bytes": 52627
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "bytes": 24227
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491",
+      "bytes": 8134
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1",
+      "bytes": 16299
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+      "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201",
+      "bytes": 114823
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-contract-v8.json",
+      "sha256": "684b9d77e17839c9a30800baabae5877db2ad34451367c43b886351d2a3fe7fa",
+      "bytes": 39741
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/handoff-v8.json",
+      "sha256": "2c6bf9733f327a5963fce8e2cfdb0b14e36fd8ff366629765c9461b911471c74",
+      "bytes": 30752
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/Source-delta-v8.json",
+      "sha256": "0c680dbf99aaac66bb0a9556076bca65168b8a2ec49d698e545456c7fd2bd00b",
+      "bytes": 39109
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/author-static-v8.json",
+      "sha256": "95b910de49057e289b335e05304f1861e5fa5d1f43ffb24a89026e70264b48ec",
+      "bytes": 7372
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/continuation6-to-paired8-forward.patch",
+      "sha256": "2d6f938034a6d1564166532a02e91c8f1d01bb1dea1c5c6e499d75191efdb34a",
+      "bytes": 32278
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/continuation6-to-paired8-full-inverse.patch",
+      "sha256": "258b01f4bcb7296f934f14b6bbdbf25356f957822822cf3e06bb8228b3fdc11c",
+      "bytes": 32278
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/paired7-to-paired8-forward.patch",
+      "sha256": "05ee6bc268f75a6d6622579d3b872e989a6ec17bd39f032e35c212cfde22bc37",
+      "bytes": 4075
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/paired7-to-paired8-full-inverse.patch",
+      "sha256": "a65e120843a09cde6afb69592f2c9c34345cd120350e4c832a53b73215144cdb",
+      "bytes": 4075
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/metadata-version-erratum-v1.json",
+      "sha256": "412525967043b15dee25b134021c6d0cc97dbb2ca17d2d404e89ee7c893c3f16",
+      "bytes": 2232
+    }
+  ],
+  "raw_reference_count": 39,
+  "method": "Independent stdlib full raw SHA/length, AST/compile-only, full positional inverses and six full unified patches; no Source module imports/evaluation/functions/tests, no declaration/profile decoding.",
+  "reviewer_static_correction": "An earlier unsaved assertion attempt omitted holder[continuation_records] to shared nonlocal scalar normalization and failed before any review artifact write. Corrected explicit inverse above; no Source defect/execution or claim of its execution."
+}

@@ -1,0 +1,52 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py
+@@ -9,7 +9,7 @@
+ import json
+ import sys
+ 
+-VERSION = 'unit-row-paired-fixture-controls-v8-positive-aliases'
++VERSION = 'unit-row-paired-fixture-controls-v7'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -449,7 +449,7 @@
+       paired_error=None;paired_engine=None;paired_outer=None
+       paired_evidence={'schema':'unit-row-paired-pending-success-fixture-v1',
+         'original_fixture_ref':'fixture','scope':'CONTROL ONLY duplicate original AX sources; no target route or scheduler shortcut.',
+-        'eligibility_qualified':False,'pending_selection_observed':False,'no_future_preinstallation':False}
++        'eligibility_qualified':False,'no_future_preinstallation':False}
+       artifacts['pending_success_fixture']=paired_evidence
+       try:
+         paired_ax=[prepared(tile,language,{'rule':'axiom','name':name,'formula':u},[],[],row,tick)
+@@ -504,24 +504,22 @@
+         paired_engine.rollback(paired_token)
+         need(canonical(snap(paired_engine))==canonical(paired_inner),'paired owned inner token restores full snapshot')
+         paired_evidence.update(inner_snapshot=copy.deepcopy(paired_inner),
+-          continuation_before=copy.deepcopy(paired_inner),eligibility_qualified=True,no_future_preinstallation=True)
++          continuation_before=copy.deepcopy(paired_inner),eligibility_qualified=True,no_future_preinstallation=True,
++          continuation_search_ref='pending_continuation_search',pending_receipts_ref='pending_selection_receipts')
+         paired_holder['phase']='continue';paired_holder['receipts']=[]
+         continuation=paired_engine.search();unknown_result(paired_engine,paired_inner,continuation)
+         paired_evidence['pending_calls']=copy.deepcopy(paired_holder['pending_calls'])
+-        paired_evidence['continuation_search']=continuation
++        artifacts['pending_selection_receipts']=copy.deepcopy(paired_holder['receipts'])
++        artifacts['pending_continuation_search']=continuation
++        artifacts['pending_continuation_lineage']={'fixture_ref':'pending_success_fixture',
++          'family_id':paired_inner['pending_preferences']['family_id'],
++          'inner_snapshot_sha256':digest(paired_inner),'original_fixture_used':False}
+         selected_pending=[x for x in paired_holder['receipts'] if x['selection'] is not None]
+         if selected_pending:
+           need(continuation['counts']['pending_selected']>=1,'actual paired pending selection counter')
+           need(all(x['binding']==language.binding and x['mode']=='PENDING_KEYS'
+             and x['selection']['origin']['family_id']==paired_inner['pending_preferences']['family_id']
+             for x in selected_pending),'actual successful receipt belongs to this paired owned family')
+-          paired_evidence.update(pending_selection_observed=True,
+-            continuation_search_ref='pending_continuation_search',pending_receipts_ref='pending_selection_receipts')
+-          artifacts['pending_selection_receipts']=copy.deepcopy(paired_holder['receipts'])
+-          artifacts['pending_continuation_search']=continuation
+-          artifacts['pending_continuation_lineage']={'fixture_ref':'pending_success_fixture',
+-            'family_id':paired_inner['pending_preferences']['family_id'],
+-            'inner_snapshot_sha256':digest(paired_inner),'original_fixture_used':False}
+           passed(common_names[14],{'fixture':'pending_success_fixture','search':'pending_continuation_search',
+             'receipts':'pending_selection_receipts','lineage':'pending_continuation_lineage'})
+         else:

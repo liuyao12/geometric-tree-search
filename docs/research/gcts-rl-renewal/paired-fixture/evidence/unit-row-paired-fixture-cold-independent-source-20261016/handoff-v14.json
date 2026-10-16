@@ -1,0 +1,32 @@
+{
+  "author_identity": "/root",
+  "checks": 21,
+  "findings": {
+    "bytes": 20046,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-cold-independent-source-20261016/findings-v14.json",
+    "sha256": "e35d681928d5b747f2bb7bd59cb178e1f560efb5d24b6c3790ef1af30daa7a85"
+  },
+  "no_source_execution": true,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-paired-fixture-cold-independent-handoff-v14",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55635,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-cold-ROOT-source-20261016/unit_row_paired_fixture_cold_v14.py",
+    "sha256": "790d62adf3c033697599c105a88cfb34c69318c9be3ea41e7e8cf9a5d878db64"
+  },
+  "source_contract": {
+    "bytes": 74073,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-cold-ROOT-source-20261016/Source-contract-v14.json",
+    "sha256": "03cc08f8ccced5c02dfa8fac2f2069550e1643af6f180cdff83b34e0c3d99454"
+  },
+  "source_only": true,
+  "summary": "Genuine distinct whole caller14 conditional Source pass. Exact4literal forward/inverse+wholeAST inverse to13,17helper/47nonmain regions and full native/proof/output/failure paths unchanged; current17/input2/43 names and specs exact. No scoped blocker; all actual/admission conditions retained.",
+  "typed_review": {
+    "bytes": 7752,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-cold-independent-source-20261016/typed-Source-review-v14.json",
+    "sha256": "b3eaf69007f4d23805b8732e30107410e89a33cce2199e8ef010477f953a34ad"
+  },
+  "unique_raw_paths": 30
+}

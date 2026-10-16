@@ -1,0 +1,234 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "checks": [
+    {
+      "check": "immediate complete five-edit raw forward and inverse",
+      "evidence": {
+        "current": {
+          "bytes": 114823,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+          "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201"
+        },
+        "parent": {
+          "bytes": 114633,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py",
+          "sha256": "900be8b58ae3aa3a48f477a4f4bfa57fb37fef1ed7db3740f8ab7b77a6d500c0"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "complete Source6 to corrected8 raw forward and inverse",
+      "evidence": {
+        "base": {
+          "bytes": 104747,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+          "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+        },
+        "sequential_edits": 13
+      },
+      "passed": true
+    },
+    {
+      "check": "AST/compile-only syntax",
+      "evidence": "No generated code imported, executed, invoked or tested.",
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 0 Unavailable",
+      "evidence": {
+        "current_line": 17,
+        "old_line": 17
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 1 CallbackExhausted",
+      "evidence": {
+        "current_line": 20,
+        "old_line": 20
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 2 need",
+      "evidence": {
+        "current_line": 23,
+        "old_line": 23
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 3 canonical",
+      "evidence": {
+        "current_line": 27,
+        "old_line": 27
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 4 digest",
+      "evidence": {
+        "current_line": 30,
+        "old_line": 30
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 5 tile",
+      "evidence": {
+        "current_line": 33,
+        "old_line": 33
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 6 state",
+      "evidence": {
+        "current_line": 52,
+        "old_line": 52
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 7 ug",
+      "evidence": {
+        "current_line": 74,
+        "old_line": 74
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 8 obligations",
+      "evidence": {
+        "current_line": 78,
+        "old_line": 78
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 10 run_controls",
+      "evidence": {
+        "current_line": 692,
+        "old_line": 690
+      },
+      "passed": true
+    },
+    {
+      "check": "whole callable AST exact to7 11 run_controls",
+      "evidence": {
+        "current_line": 923,
+        "old_line": 921
+      },
+      "passed": true
+    },
+    {
+      "check": "callback whole AST unchanged in gap repair watched_validator",
+      "evidence": "Delegation, callbacks, shared counter, stop and exception paths unchanged.",
+      "passed": true
+    },
+    {
+      "check": "callback whole AST unchanged in gap repair capture_degree",
+      "evidence": "Delegation, callbacks, shared counter, stop and exception paths unchanged.",
+      "passed": true
+    },
+    {
+      "check": "callback whole AST unchanged in gap repair watched_adviser",
+      "evidence": "Delegation, callbacks, shared counter, stop and exception paths unchanged.",
+      "passed": true
+    },
+    {
+      "check": "callback whole AST unchanged in gap repair lifecycle_callbacks",
+      "evidence": "Delegation, callbacks, shared counter, stop and exception paths unchanged.",
+      "passed": true
+    },
+    {
+      "check": "case declaration unchanged common_names",
+      "evidence": "No new/removed/renamed counted case.",
+      "passed": true
+    },
+    {
+      "check": "case declaration unchanged scheduler_names",
+      "evidence": "No new/removed/renamed counted case.",
+      "passed": true
+    },
+    {
+      "check": "case declaration unchanged labels",
+      "evidence": "No new/removed/renamed counted case.",
+      "passed": true
+    },
+    {
+      "check": "case declaration unchanged fibre_labels",
+      "evidence": "No new/removed/renamed counted case.",
+      "passed": true
+    },
+    {
+      "check": "all24 phase sample lines byte exact",
+      "evidence": 24,
+      "passed": true
+    },
+    {
+      "check": "all exact diagnostic print ASTs UNQUALIFIED_PHASE_OBSERVATION",
+      "evidence": 24,
+      "passed": true
+    },
+    {
+      "check": "all exact diagnostic print ASTs UNQUALIFIED_CONTINUATION_OBSERVATION",
+      "evidence": 6,
+      "passed": true
+    },
+    {
+      "check": "legacy positive aliases assigned only inside actual selected_pending branch",
+      "evidence": [
+        [
+          "pending_selection_receipts",
+          520
+        ],
+        [
+          "pending_continuation_search",
+          521
+        ],
+        [
+          "pending_continuation_lineage",
+          522
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "check": "whole unsuccessful actual attempt remains separate diagnostic artifact",
+      "evidence": "Adoption eligibility does not imply later pending success; old30 missing alias yields all prior explicit gap handling.",
+      "passed": true
+    },
+    {
+      "check": "other9 Sources and input2 exact full raw SHA/length",
+      "evidence": {
+        "inputs": 2,
+        "sources": 10
+      },
+      "passed": true
+    }
+  ],
+  "checks_count": 28,
+  "method": "Only raw bytes/hash/JSON/difflib/AST/compile-only; no generated-module execution/import, project/scientific function, kernel/model/search/checker/clock/test call.",
+  "parent": {
+    "bytes": 114633,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v7.py",
+    "sha256": "900be8b58ae3aa3a48f477a4f4bfa57fb37fef1ed7db3740f8ab7b77a6d500c0"
+  },
+  "retained_whole7_static": {
+    "bytes": 7908,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/author-static-v7.json",
+    "sha256": "e40dca822563646daf00620311fb178bafd7c3246eacc55c97831fbb97c0d6ed"
+  },
+  "schema": "unit-row-paired-fixture-author-static-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Narrow honest-SKIP gap repair; retained whole pairing/static scope remains explicit, no actual.",
+  "source": {
+    "bytes": 114823,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201"
+  },
+  "source_only": true
+}

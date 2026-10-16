@@ -1,0 +1,143 @@
+{
+  "RL_accepted": false,
+  "assessment": "The paired design has removed a static ambiguity: successful continuation and remote rejection now have distinct control boundaries and explicit evidence links. The current actual does not return the records needed to qualify either test. Its later marker position narrows investigation toward the original remote lifecycle, while leaving the intervening costs and execution path unqualified.",
+  "broad_goal_complete": false,
+  "lead": "Independent review caught a real control defect. The revised paired boundary reaches a later diagnostic position, but the complete cluster suite still times out.",
+  "links": [
+    {
+      "href": "evidence-manifest.json",
+      "label": "Exact evidence manifest"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Current unknown disposition"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/advice-controls-owned-v1/unknown-diagnostic.json",
+      "label": "Complete timeout scalar record"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/advice-controls-owned-v1/diagnostic-completion.json",
+      "label": "Raw completion marker"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/meter-stderr.txt",
+      "label": "Native trace and error"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/native-terminal.json",
+      "label": "Native terminal and reaping"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/ONCE.json",
+      "label": "Once invocation"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/advice-controls-external-v1/observation.json",
+      "label": "Fresh postterminal observation"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/ROOT-advice-controls-tool-bracket-v1.json",
+      "label": "Complete tool time bracket"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "label": "Original controls disposition"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "label": "Retained-state disposition"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "label": "Original controls lossless result"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "label": "Retained-state lossless result"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-controls-independent-source-20261016/typed-Source-review-v7.json",
+      "label": "Unexecuted version7 negative review"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-controls-independent-source-20261016/typed-Source-review-v8.json",
+      "label": "Corrected version8 independent review"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-cold-independent-source-20261016/typed-Source-review-v14.json",
+      "label": "Caller14 independent review"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-controls-source-20261016/Source-contract-v8.json",
+      "label": "Paired artifact and control contract"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-cold-ROOT-source-20261016/Source-contract-v14.json",
+      "label": "Current caller contract"
+    },
+    {
+      "href": "evidence/unit-row-paired-fixture-ROOT-20261016/ROOT-saved-closer-Source-review-v1.json",
+      "label": "Saved-result checker review"
+    },
+    {
+      "href": "../latest-context/reader.html#results",
+      "label": "Earlier complete observations"
+    }
+  ],
+  "next_step": "Next, inspect whether the original remote-conflict boundary can reach its intended pending-member rejection branch under the real scheduler. Preserve all existing case meanings and complete fallback. Another unchanged rerun, extra logging or a larger limit would not resolve that semantic question.",
+  "observation_text": "The trace includes the position after the paired continuation block and the start of the original remote-conflict lifecycle, at \\(7.281975\\,\\mathrm{s}\\) from launch. This is a reached-write observation, not an accepted case outcome. The last validator slot is row \\(3\\), entry count \\(4\\); later fallback and proposer slots have entry counts \\(9\\) and \\(10\\). These fields do not establish a successful PENDING receipt.",
+  "outcome": "Original search and retained-state controls each pass every test without skips. The expanded cluster suite is UNKNOWN: no guarded case record was returned. All three processes are closed and reaped. No target proof search was admitted.",
+  "proof_accepted": false,
+  "roles": [
+    {
+      "elapsed_ns": 20015921000,
+      "role": "proposer",
+      "row": 8,
+      "selected_count": 10
+    },
+    {
+      "elapsed_ns": 19932084000,
+      "role": "fallback",
+      "row": 7,
+      "selected_count": 9
+    },
+    {
+      "elapsed_ns": null,
+      "role": "completion",
+      "row": null,
+      "selected_count": null
+    },
+    {
+      "elapsed_ns": 7201341000,
+      "role": "validator",
+      "row": 3,
+      "selected_count": 4
+    }
+  ],
+  "schema": "paired-fixture-saved-reader-v1",
+  "stages": [
+    {
+      "label": "original controls",
+      "native_ns": 6229855000,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 47579136,
+      "qualified": true
+    },
+    {
+      "label": "domain controls",
+      "native_ns": 4553561000,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 68173824,
+      "qualified": true
+    },
+    {
+      "label": "advice controls",
+      "native_ns": 20105896000,
+      "outcome": "UNKNOWN; no case record",
+      "peak_bytes": 55803904,
+      "qualified": false
+    }
+  ],
+  "trace": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30 496569673699000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP 496569673762000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION 496569674175000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE 496570233942000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK 496570285231000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS 496570327750000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES 496570765142000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE 496573918956000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP 496573928895000\nUNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP 496574837068000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP 496574845279000\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 1 496575938883000 3 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 2 496575942470000 3 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 3 496575942482000 3 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 4 496575959842000 3 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 5 496575971263000 4 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 6 496575975466000 4 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 7 496575975479000 4 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 8 496575997814000 4 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 9 496576009483000 5 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 10 496576014081000 5 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 11 496576014136000 5 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 12 496576030948000 5 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 13 496576042518000 6 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 14 496576047573000 6 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 15 496576047583000 6 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 16 496576070696000 6 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 17 496576082121000 7 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 18 496576087644000 7 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 19 496576087653000 7 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 20 496576105102000 7 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_ENTRY 21 496576116754000 8 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_SNAPSHOT 22 496576122813000 8 4 1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_BEFORE_DELEGATE 23 496576122827000 8 4 -1 -1\nUNQUALIFIED_CONTINUATION_OBSERVATION DEGREE_AFTER_DELEGATE 24 496576140740000 8 4 -1 -1\nUNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP 496576835448000\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE 496576835489000\nUNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete local-degree controls original20/500 reserve unfinished\n"
+}
