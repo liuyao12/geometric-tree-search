@@ -1,0 +1,87 @@
+{
+  "HTML_JS_id_reference_count": 13,
+  "JS_syntax_check": {
+    "command": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --check reader.js",
+    "evaluation": false,
+    "exit_code": 0
+  },
+  "MathJax_config_source": {
+    "bytes": 4130,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-forced-diagnostic-reader-ROOT-source-20261016/reader.html",
+    "sha256": "aae5ccec57c6d7530a52fdbcc3bed2e09dfff50a826d4d5c287f26d794b6ba4c"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "browser_or_UI_execution": false,
+  "checks": [
+    {
+      "name": "HTML_source_parse_unique_ids_and_JS_reference_concordance",
+      "passed": true
+    },
+    {
+      "name": "existing_MathJax_config_raw_exact_and_CDN_path",
+      "passed": true
+    },
+    {
+      "name": "local_CSS_JS_asset_references",
+      "passed": true
+    },
+    {
+      "name": "JS_syntax_only_Node_check_exit0_without_evaluation",
+      "passed": true
+    },
+    {
+      "name": "single_same_origin_report_data_fetch_only",
+      "passed": true
+    },
+    {
+      "name": "no_project_model_kernel_checker_API_import_or_evaluation",
+      "passed": true
+    },
+    {
+      "name": "safe_URL_protocols_and_textContent_DOM_rendering",
+      "passed": true
+    },
+    {
+      "name": "no_embedded_report_data_or_measured_results",
+      "passed": true
+    },
+    {
+      "name": "unavailable_values_remain_null_or_unavailable_not_zero",
+      "passed": true
+    },
+    {
+      "name": "all_six_modes_twelve_case_metadata_consistency",
+      "passed": true
+    },
+    {
+      "name": "responsive_layout_focus_reduced_motion_styles_present",
+      "passed": true
+    },
+    {
+      "name": "no_Root_pub_or_index_changes",
+      "passed": true
+    }
+  ],
+  "clocks_read": 0,
+  "schema": "unit-row-fresh-projection-reader-author-static-v1",
+  "scientific_calls": 0,
+  "source_assets": {
+    "reader.css": {
+      "bytes": 9448,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-reader-source-20261016/reader.css",
+      "sha256": "59866b33e97dbf45bcda866b8776f485e7b1025a8a3af6e5540e381e8448fff4"
+    },
+    "reader.html": {
+      "bytes": 7562,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-reader-source-20261016/reader.html",
+      "sha256": "ea3169065edee6cf031149b9f2f4374530532c21374ca234aa632f37878793ff"
+    },
+    "reader.js": {
+      "bytes": 11424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-reader-source-20261016/reader.js",
+      "sha256": "e48d3dee9e8f1774e329f616e340443bee1c26234f99e31b25aae92f33dad30a"
+    }
+  },
+  "source_only": true,
+  "test_runs": 0
+}

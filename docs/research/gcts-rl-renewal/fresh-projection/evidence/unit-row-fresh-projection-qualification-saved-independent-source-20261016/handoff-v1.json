@@ -1,0 +1,43 @@
+{
+  "compile_calls": 0,
+  "findings": {
+    "bytes": 11885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-independent-source-20261016/findings-v1.json",
+    "sha256": "7c50ff5217ec454619fe9e1504f6a52bbf27ee7eed9795ab2e6b444363ae2611"
+  },
+  "helper_executions": 0,
+  "py_compile_calls": 0,
+  "saved_output_decodes": 0,
+  "schema": "unit-row-fresh-projection-qualification-saved-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54367,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_close_fresh_projection_qualification_saved_v1.py",
+    "sha256": "83706ef2f72ba1e8cc3a5f8025e91c644575132495b32d0841295f20f10f78af"
+  },
+  "source_contract": {
+    "bytes": 28008,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "06f1d21b333ae48505430b7c0be0349d260598fde33cbb9658a4125763b73d5e"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 54367,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_close_fresh_projection_qualification_saved_v1.py",
+      "sha256": "83706ef2f72ba1e8cc3a5f8025e91c644575132495b32d0841295f20f10f78af"
+    },
+    "decoder": {
+      "bytes": 6338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_decode_fresh_projection_qualification_saved_v1.py",
+      "sha256": "fa6f0e72d71f38b135068d5e524efc0148e6c8b8ca0813a893ffd99b3890fcce"
+    }
+  },
+  "typed_review": {
+    "bytes": 3604,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "35f71c2fef117170bfb3b253e53abeb6ad20e8b83c5f0a9ae3a098300b223cf2"
+  }
+}

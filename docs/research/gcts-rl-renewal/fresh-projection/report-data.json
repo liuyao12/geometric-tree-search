@@ -1,0 +1,179 @@
+{
+  "all_current_controls_qualified": false,
+  "current_qualified": 8,
+  "date": "2026-10-16",
+  "endpoints": [
+    {
+      "aggregate_B_bytes": 47366144,
+      "case_names": [
+        "MR-01-new-and-legacy-route-consumption",
+        "MR-02-wrong-route-and-context-rejected"
+      ],
+      "complete_returned_record": false,
+      "current_seconds": 27.781533,
+      "disposition_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-router-protocol-disposition-v1.json",
+      "expanded_href": null,
+      "label": "Routing and invalid proposals",
+      "mode": "router-protocol",
+      "prior_seconds": 2.814003,
+      "qualified_case_count": 0,
+      "reported_case_count": null,
+      "unqualified_case_count": 2
+    },
+    {
+      "aggregate_B_bytes": 56934400,
+      "case_names": [
+        "MR-03-global-forced-requery-dead-exhaustion",
+        "MR-04-owned-full-root-restoration"
+      ],
+      "complete_returned_record": false,
+      "current_seconds": 20.090386,
+      "disposition_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-global-forced-dead-disposition-v1.json",
+      "expanded_href": null,
+      "label": "Forced search and full restoration",
+      "mode": "global-forced-dead",
+      "prior_seconds": 20.090303,
+      "qualified_case_count": 0,
+      "reported_case_count": null,
+      "unqualified_case_count": 2
+    },
+    {
+      "aggregate_B_bytes": 67567616,
+      "case_names": [
+        "MR-05-native-singleton-full-origin-transfer",
+        "MR-06-current-sole-consumption-and-owned-rollback"
+      ],
+      "complete_returned_record": true,
+      "current_seconds": 18.824572,
+      "disposition_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-singleton-transfer-disposition-v1.json",
+      "expanded_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-singleton-transfer-expanded-result-v1.json",
+      "label": "Singleton retention and reuse",
+      "mode": "singleton-transfer",
+      "prior_seconds": 19.008723,
+      "qualified_case_count": 2,
+      "reported_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    {
+      "aggregate_B_bytes": 51085312,
+      "case_names": [
+        "MR-07-native-TWO-full-origin-transfer",
+        "MR-08-refreshed-witnesses-global-branch-and-owned-rollback"
+      ],
+      "complete_returned_record": true,
+      "current_seconds": 19.116134,
+      "disposition_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-two-transfer-disposition-v1.json",
+      "expanded_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-two-transfer-expanded-result-v1.json",
+      "label": "Two-witness retention and reuse",
+      "mode": "two-transfer",
+      "prior_seconds": 19.332476,
+      "qualified_case_count": 2,
+      "reported_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    {
+      "aggregate_B_bytes": 50446336,
+      "case_names": [
+        "MR-09-real-short-stream-and-fresh-complete-keySET",
+        "MR-10-legacy-implication-EOF-remains-unaccepted"
+      ],
+      "complete_returned_record": true,
+      "current_seconds": 4.853946,
+      "disposition_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-short-EOF-disposition-v1.json",
+      "expanded_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-short-EOF-expanded-result-v1.json",
+      "label": "Short streams and complete key sets",
+      "mode": "short-EOF",
+      "prior_seconds": 5.006299,
+      "qualified_case_count": 2,
+      "reported_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    {
+      "aggregate_B_bytes": 55132160,
+      "case_names": [
+        "MR-11-actual-child-native-first-declared-UNKNOWN",
+        "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+      ],
+      "complete_returned_record": true,
+      "current_seconds": 4.529024,
+      "disposition_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-child-UNKNOWN-disposition-v1.json",
+      "expanded_href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-child-UNKNOWN-expanded-result-v1.json",
+      "label": "Interrupted child and rollback",
+      "mode": "child-UNKNOWN",
+      "prior_seconds": 4.639092,
+      "qualified_case_count": 2,
+      "reported_case_count": 2,
+      "unqualified_case_count": 0
+    }
+  ],
+  "evidence": [
+    {
+      "bytes": 49921,
+      "href": "evidence-manifest.json",
+      "label": "Full raw evidence manifest",
+      "sha256": "c6e8a59dbb743d1b7d34fe979020e39e3ccb284a9c7b011bc5f48bfd352ce3dc"
+    },
+    {
+      "bytes": 5822,
+      "href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-MR-qualification-disposition-v1.json",
+      "label": "Complete current aggregate disposition",
+      "sha256": "5807b75f7063f367fba0a216e0b1d2bb3a4a88b5e610e6f37489597a12a52679"
+    },
+    {
+      "bytes": 2082,
+      "href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-next-step-assessment-v1.json",
+      "label": "Root assessment and next step",
+      "sha256": "97891b227ce14646b83275e7ca5697b5c1c62f6bbc915844b1bb75221c35b42a"
+    },
+    {
+      "bytes": 5820,
+      "href": "../decision-context/evidence/unit-row-decision-context-ROOT-20261016/ROOT-MR-qualification-disposition-v1.json",
+      "label": "Previous ten-of-twelve disposition",
+      "sha256": "8f46a45da9f2384bcae144bbf1cb017c2d7f8e4e3646ce7adac5235c93aee61d"
+    },
+    {
+      "bytes": 3847,
+      "href": "evidence/unit-row-fresh-projection-ROOT-20261016/ROOT-implementation-choice-v1.json",
+      "label": "Prospective implementation choice and frozen bounds",
+      "sha256": "3aead12ed60a2d14afff93de5da0ac96a14a535fa359445c3be24c5df5b6cc9b"
+    },
+    {
+      "bytes": 35295,
+      "href": "evidence/unit-row-fresh-projection-adapter-source-20261016/Source-contract-v1.json",
+      "label": "Adapter Source and current composition contract",
+      "sha256": "8db81c755e0ade5eae2aa5d04ec68eb012be05a89b4ef092616a4343340fc040"
+    },
+    {
+      "bytes": 6956,
+      "href": "evidence/unit-row-fresh-projection-adapter-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent adapter and composition review",
+      "sha256": "3c77320f1aa512cd3c3e4cfff2d1959b7cca376656f801f9308ef16cf8a4e72d"
+    },
+    {
+      "bytes": 7132,
+      "href": "evidence/unit-row-fresh-projection-qualification-cold-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent unchanged-control caller review",
+      "sha256": "93e80572a239ca5b69685652031bb0b918768f6bb0407db8ac4a44de7e9e1c78"
+    },
+    {
+      "bytes": 3604,
+      "href": "evidence/unit-row-fresh-projection-qualification-saved-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent saved-record helper review",
+      "sha256": "35f71c2fef117170bfb3b253e53abeb6ad20e8b83c5f0a9ae3a098300b223cf2"
+    }
+  ],
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "next_step": "Retain this unsuccessful qualification and the previous record; do not promote the new composition. Investigate the new routing nonreturn using separately reviewed bounded observations around authority/input setup and routed work, under the same limits and scientific controls. A reached marker would localize an interval, not prove the failure cause. No unchanged retry or new diagnostic actual is authorized by this report.",
+  "prior_qualified": 10,
+  "reader_scope": "The new composition qualifies \\(8\\) of \\(12\\) cases, versus the previous \\(10\\). Both failed endpoints have no complete scientific record; their reported counts remain unavailable. This is the specialized \\(24\\)-row model. The observations establish no cause for the routing nonreturn, target theorem, full GCTS conformance, RL result or performance advantage.",
+  "schema": "ROOT-fresh-projection-public-report-v1",
+  "title": "One fresh projection, mixed results",
+  "total_required": 12
+}

@@ -1,0 +1,148 @@
+{
+  "actual_output_decode": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 20,
+  "checks": [
+    {
+      "name": "closer_AST_compile_only_no_evaluation",
+      "passed": true
+    },
+    {
+      "name": "closer_full_raw_and_AST_forward_inverse",
+      "passed": true
+    },
+    {
+      "name": "closer_both_actual_unified_patch_directions",
+      "passed": true
+    },
+    {
+      "name": "closer_unchanged_functions_raw_AST",
+      "passed": true
+    },
+    {
+      "name": "closer_stdlib_imports_no_dynamic_evaluation_exact",
+      "passed": true
+    },
+    {
+      "name": "decoder_AST_compile_only_no_evaluation",
+      "passed": true
+    },
+    {
+      "name": "decoder_full_raw_and_AST_forward_inverse",
+      "passed": true
+    },
+    {
+      "name": "decoder_both_actual_unified_patch_directions",
+      "passed": true
+    },
+    {
+      "name": "decoder_unchanged_functions_raw_AST",
+      "passed": true
+    },
+    {
+      "name": "decoder_stdlib_imports_no_dynamic_evaluation_exact",
+      "passed": true
+    },
+    {
+      "name": "fixed_current_coldcontract_source_scope_version",
+      "passed": true
+    },
+    {
+      "name": "same_all_six_twelve_engine_version_limits_cases",
+      "passed": true
+    },
+    {
+      "name": "entire_positive_native_wire_prefix_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "all_literal_family_join_bodies_raw_exact",
+      "passed": true
+    },
+    {
+      "name": "same_session_bothNone_or_samepositive_exactint_guards",
+      "passed": true
+    },
+    {
+      "name": "tick_message_lifetime_separate_failurecause_alwaysfalse",
+      "passed": true
+    },
+    {
+      "name": "failure_None_counts_zero_qualified_full_mode_gap",
+      "passed": true
+    },
+    {
+      "name": "expected_cases_single_immutable_tuple_all_len_list_uses",
+      "passed": true
+    },
+    {
+      "name": "negative_expected_proposal_and_cursor_local_expected_isolated",
+      "passed": true
+    },
+    {
+      "name": "all_current14_input8_original17_input2_rawcaps_exact",
+      "passed": true,
+      "unique_paths": 33
+    }
+  ],
+  "helper_execution": false,
+  "independent_review": false,
+  "preserved_functions_raw_AST": {
+    "closer": [
+      "canonical",
+      "pin",
+      "read",
+      "check",
+      "native_refs",
+      "aggregate",
+      "equal",
+      "sha",
+      "points",
+      "state",
+      "packet",
+      "native_receipt",
+      "query_record",
+      "logged_receipt",
+      "snapshot",
+      "certificate",
+      "core",
+      "selected_append",
+      "search_result",
+      "seed_join",
+      "transfer_join",
+      "cursor_stream"
+    ],
+    "decoder": [
+      "need",
+      "canonical",
+      "pairs",
+      "constant",
+      "finite",
+      "decode",
+      "buffer_pin",
+      "read_bounded",
+      "checked_raw"
+    ]
+  },
+  "schema": "unit-row-fresh-projection-qualification-saved-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_delta": {
+    "bytes": 10415,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/Source-delta-v1.json",
+    "sha256": "72f6144cd4faa2afbcabf046a6d0b0b756ccc800ea2bf518d14fbecfcdc44d7d"
+  },
+  "source_only": true,
+  "sources": {
+    "closer": {
+      "bytes": 54367,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_close_fresh_projection_qualification_saved_v1.py",
+      "sha256": "83706ef2f72ba1e8cc3a5f8025e91c644575132495b32d0841295f20f10f78af"
+    },
+    "decoder": {
+      "bytes": 6338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_decode_fresh_projection_qualification_saved_v1.py",
+      "sha256": "fa6f0e72d71f38b135068d5e524efc0148e6c8b8ca0813a893ffd99b3890fcce"
+    }
+  }
+}

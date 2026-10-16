@@ -1,0 +1,98 @@
+{
+  "actual_patch_forward_exact": true,
+  "actual_patch_inverse_exact": true,
+  "actual_unified_patches": {
+    "forward": {
+      "bytes": 2371,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/adapter-forward.patch",
+      "sha256": "799d5d40d78e86352a108c0693063371cca837b4270662ffdeb6283e78678880"
+    },
+    "full_inverse": {
+      "bytes": 2371,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/adapter-full-inverse.patch",
+      "sha256": "52b67c49525c30a2ba1c44ae3d0bc1b1d327927499609e671367b6ddda8f5c57"
+    }
+  },
+  "added_callables": [
+    "MarkedSemantics._fresh_base_projection"
+  ],
+  "changed_existing_callables": [
+    "MarkedSemantics.base_state",
+    "MarkedSemantics.private_state"
+  ],
+  "edits": [
+    {
+      "label": "implementation_tag_only",
+      "new": "IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-fresh-projection-v2'\n",
+      "new_end": 549,
+      "new_start": 470,
+      "old": "",
+      "old_end": 470,
+      "old_start": 470
+    },
+    {
+      "label": "exact_old_body_to_fresh_helper_and_public_wrapper",
+      "new": "    def _fresh_base_projection(self, language, state, tick):\n        s = self.tree(state, tick)\n        require(type(s) is dict and set(s) == {'schema', 'input_epoch', 'height', 't',\n                'm', 'selected', 'excluded', 'generation', 'marking_id'}\n                and s['schema'] == STATE_SCHEMA and s['marking_id'] == self.marking_id,\n                'new exact marked state fields/schema/marking identity')\n        require(type(s['m']) is list and type(s['selected']) is list\n                and type(s['excluded']) is list, 'full state arrays')\n        marks = self.point_map(s['m'], tick)\n        require(all(p[0] in (1, 2, 3, 4) for p in marks), 'declared full mark channels')\n        base = {k: self.tree(s[k], tick) for k in ('input_epoch', 'height', 't', 'generation')}\n        base.update(schema='unit-row-implicit-private-state-v1',\n            m=[[list(p), v] for p, v in sorted(marks.items()) if p[0] != 4],\n            selected=[self._base_key(language, k, True, tick) for k in s['selected']],\n            excluded=[self._base_key(language, k, False, tick) for k in s['excluded']])\n        return self.base.private_state(language, base, tick)\n\n    def base_state(self, language, state, tick):\n        return self._fresh_base_projection(language, state, tick)[0]\n\n",
+      "new_end": 5527,
+      "new_start": 4243,
+      "old": "    def base_state(self, language, state, tick):\n        s = self.tree(state, tick)\n        require(type(s) is dict and set(s) == {'schema', 'input_epoch', 'height', 't',\n                'm', 'selected', 'excluded', 'generation', 'marking_id'}\n                and s['schema'] == STATE_SCHEMA and s['marking_id'] == self.marking_id,\n                'new exact marked state fields/schema/marking identity')\n        require(type(s['m']) is list and type(s['selected']) is list\n                and type(s['excluded']) is list, 'full state arrays')\n        marks = self.point_map(s['m'], tick)\n        require(all(p[0] in (1, 2, 3, 4) for p in marks), 'declared full mark channels')\n        base = {k: self.tree(s[k], tick) for k in ('input_epoch', 'height', 't', 'generation')}\n        base.update(schema='unit-row-implicit-private-state-v1',\n            m=[[list(p), v] for p, v in sorted(marks.items()) if p[0] != 4],\n            selected=[self._base_key(language, k, True, tick) for k in s['selected']],\n            excluded=[self._base_key(language, k, False, tick) for k in s['excluded']])\n        return self.base.private_state(language, base, tick)[0]\n\n",
+      "old_end": 5320,
+      "old_start": 4164
+    },
+    {
+      "label": "same_call_tuple_consumption_only",
+      "new": "        projection = self._fresh_base_projection(language, s, tick)\n        base, t, base_names = projection[0], projection[1], projection[5]",
+      "new_end": 7432,
+      "new_start": 7291,
+      "old": "        base = self.base_state(language, s, tick)\n        _, t, _, _, _, base_names = self.base.private_state(language, base, tick)",
+      "old_end": 7215,
+      "old_start": 7084
+    }
+  ],
+  "old_helper_body_exact_except_fulltuple_return": true,
+  "parent": {
+    "bytes": 28980,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+    "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9"
+  },
+  "raw_forward_exact": true,
+  "raw_inverse_exact": true,
+  "schema": "unit-row-fresh-projection-adapter-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 29197,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py",
+    "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+  },
+  "source_only": true,
+  "unchanged_callables_raw_AST": [
+    "require",
+    "canonical",
+    "sha",
+    "MarkedSemantics.__init__",
+    "MarkedSemantics.tree",
+    "MarkedSemantics.point_map",
+    "MarkedSemantics.agree",
+    "MarkedSemantics.check_marking",
+    "MarkedSemantics._base_key",
+    "MarkedSemantics.initial_state",
+    "MarkedSemantics.rebuild_tile",
+    "MarkedSemantics.check_collision",
+    "MarkedSemantics.legality",
+    "MarkedSemantics.with_obligations",
+    "MarkedSemantics._filter",
+    "MarkedSemantics.propose_degree",
+    "MarkedSemantics.check_degree_evidence",
+    "MarkedTransition.authority_snapshot",
+    "MarkedTransition._projection",
+    "MarkedTransition.check_transition",
+    "MarkedTransition.refresh_candidates",
+    "FilteredCursor.__init__",
+    "FilteredCursor.context",
+    "FilteredCursor.abort",
+    "FilteredCursor.advance",
+    "open_fallback"
+  ],
+  "whole_AST_inverse_exact": true
+}

@@ -1,0 +1,43 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 2832,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-reader-source-20261016/author-static-v1.json",
+    "sha256": "b5adbb9bc9c0397a6208afef6f6b712b121092bafcdee9785089860a03547c8e"
+  },
+  "browser_or_UI_execution": false,
+  "intended_package_folder": "fresh-projection/",
+  "publication_performed": false,
+  "reader_source": {
+    "bytes": 4319,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-reader-source-20261016/reader-source-v1.json",
+    "sha256": "5c96f041792c979093d7bcc78079eb50dbdfd521c76807f9a0015e9d302726a8"
+  },
+  "remaining_work": [
+    "Root supplies exact current report-data.json after six actuals/strict closure.",
+    "Root UI/node QA, package/deploy to existing destination and live verification."
+  ],
+  "report_data_written": false,
+  "required_data_file": "report-data.json",
+  "schema": "unit-row-fresh-projection-reader-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_assets": {
+    "reader.css": {
+      "bytes": 9448,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-reader-source-20261016/reader.css",
+      "sha256": "59866b33e97dbf45bcda866b8776f485e7b1025a8a3af6e5540e381e8448fff4"
+    },
+    "reader.html": {
+      "bytes": 7562,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-reader-source-20261016/reader.html",
+      "sha256": "ea3169065edee6cf031149b9f2f4374530532c21374ca234aa632f37878793ff"
+    },
+    "reader.js": {
+      "bytes": 11424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-reader-source-20261016/reader.js",
+      "sha256": "e48d3dee9e8f1774e329f616e340443bee1c26234f99e31b25aae92f33dad30a"
+    }
+  },
+  "source_only": true
+}

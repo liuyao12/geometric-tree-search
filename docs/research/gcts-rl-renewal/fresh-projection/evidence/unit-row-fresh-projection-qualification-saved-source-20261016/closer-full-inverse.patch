@@ -1,0 +1,92 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_close_fresh_projection_qualification_saved_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_close_decision_context_qualification_saved_v1.py
+@@ -14,7 +14,7 @@
+ def check(ref):
+     p=Path(ref['path']);assert p.is_absolute() and p==p.resolve() and pin(p)==ref;return p
+ 
+-EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': 'd87bdb1f449e8c06d994b2801210ad6998a6977ef91fa48f0184ac661de21282', 'bytes': 41202}
++EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': '105cc90ec4a8993410563dc1d6c9bd3fce62b5e5f0cd9696a13e229737fa26cd', 'bytes': 39735}
+ MODE_PURPOSE={'router-protocol': 'unit-row-marked-aware-router-protocol-controls', 'global-forced-dead': 'unit-row-marked-aware-global-forced-dead-controls', 'singleton-transfer': 'unit-row-marked-aware-singleton-transfer-controls', 'two-transfer': 'unit-row-marked-aware-two-transfer-controls', 'short-EOF': 'unit-row-marked-aware-short-EOF-controls', 'child-UNKNOWN': 'unit-row-marked-aware-child-UNKNOWN-controls'}
+ EXPECTED_CASES={'router-protocol': ['MR-01-new-and-legacy-route-consumption', 'MR-02-wrong-route-and-context-rejected'], 'global-forced-dead': ['MR-03-global-forced-requery-dead-exhaustion', 'MR-04-owned-full-root-restoration'], 'singleton-transfer': ['MR-05-native-singleton-full-origin-transfer', 'MR-06-current-sole-consumption-and-owned-rollback'], 'two-transfer': ['MR-07-native-TWO-full-origin-transfer', 'MR-08-refreshed-witnesses-global-branch-and-owned-rollback'], 'short-EOF': ['MR-09-real-short-stream-and-fresh-complete-keySET', 'MR-10-legacy-implication-EOF-remains-unaccepted'], 'child-UNKNOWN': ['MR-11-actual-child-native-first-declared-UNKNOWN', 'MR-12-UNKNOWN-no-exclusion-full-owned-rollback']}
+ LIMITS={'aggregate_owned_bytes': 536870912, 'caller_finish_reserve_seconds': 1, 'caller_seconds': 90, 'failure_only_seconds': 55, 'joint_seconds': 20, 'owned_seconds': 60}
+@@ -30,13 +30,13 @@
+     contract=read(check(plan['source_contract']))
+     assert contract['sources']==plan['sources'] and contract['inputs']==plan['inputs']
+     assert len(plan['sources'])==14 and len(plan['inputs'])==8
+-    assert contract['source']==plan['sources']['intake'] and contract['source']['sha256']=='007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb'
++    assert contract['source']==plan['sources']['intake'] and contract['source']['sha256']=='dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325'
+     for ref in [*plan['sources'].values(),*plan['inputs'].values(),plan['runtime'],*contract['original_model_sources'].values(),*contract['original_model_inputs'].values()]:check(ref)
+     assert len(contract['original_model_sources'])==17
+     assert set(plan['reviews'])=={'ROOT','peer'}
+     for role,ref in plan['reviews'].items():
+         v=read(check(ref))
+-        assert v['scope']=='unit-row-fresh-projection-qualification-cold-Source' and v['author_identity']=='/root/hilbert_advice_controls'
++        assert v['scope']=='unit-row-decision-context-qualification-cold-Source' and v['author_identity']=='/root/hilbert_advice_controls'
+         assert v['source']==plan['sources']['intake'] and v['sources']==plan['sources'] and v['source_contract']==plan['source_contract']
+         assert v['source_only']is v['source_review_passed']is True and type(v['scientific_calls'])is int and v['scientific_calls']==0 and v['scientific_acceptance']is False
+         assert(v['reviewer_identity']=='/root'if role=='ROOT'else v['reviewer_identity']not in('/root','/root/hilbert_advice_controls'))
+@@ -74,8 +74,8 @@
+     assert(external/'meter-stdout.txt').read_bytes()==b''
+     stderr=(external/'meter-stderr.txt').read_bytes()
+     assert(external/'postterminal-probe-stderr.txt').read_bytes()==b''
+-    tick_timeout_line_observed=(stderr==b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\n')
+-    caller_lifetime_at_least20=terminal-start>=20000000000
++    deadline=(stderr==b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\n'
++              and terminal-start>=20000000000)
+     raw_outputs=[]
+     if owned.exists():
+         assert owned.is_dir() and all(p.is_file() and p.name in('engine-result.json','response.jsonl')for p in owned.iterdir())
+@@ -88,8 +88,7 @@
+         plan=pp,invocation_id=plan['invocation_id'],sources=plan['sources'],inputs=plan['inputs'],source_contract=plan['source_contract'],
+         outputs=raw_outputs,native_evidence=native_refs(external),tool_bracket=pin(bracket_path),
+         actual_closed=True,all_reaped=True,native_terminal_closed=True,native_resources_qualified=False,complete_wire_verified=False,
+-        original20_positive_native_gate_failed=True,native_tick_timeout_line_observed=tick_timeout_line_observed,
+-        caller_lifetime_at_least20=caller_lifetime_at_least20,failure_cause_established=False,
++        original20_positive_native_gate_failed=True,native_deadline_confirmed=deadline,
+         native_launch_to_postprobe_ns=probe-start,native_worker_lifetime_ns=terminal-start,
+         aggregate_B_bytes=peak,terminal_T_bytes=peak,complete_Date_seconds=date,
+         reported_case_count=None,passed_cases=None,skipped_cases=None,qualified_case_count=0,unqualified_case_count=len(EXPECTED_CASES[mode]),
+@@ -97,7 +96,7 @@
+         complete_returned_record=False,owned_output_directory_exists=owned.exists(),whole_engine_qualification_accepted=False,
+         prior_StageC_suite_qualified=False,
+         marking_id=prior['marking_id'],original_model_binding=contract['original_model_binding'],
+-        failure_kind='NONZERO_NO_RETURNED_CASE_RECORD',
++        failure_kind='NATIVE20_DEADLINE_NO_RETURNED_CASE_RECORD'if deadline else'NONZERO_NO_RETURNED_CASE_RECORD',
+         raw_stderr_pin=pin(external/'meter-stderr.txt'),
+         diagnostic_limit='Opaque raw stderr/native administrative closure only; no inferred case progress, counts, degree, membership or semantic success.',
+         reconciliation_scope='No output decode or scientific replay; nonzero administrative failure always0qualified/countsNone.',
+@@ -199,13 +198,13 @@
+ expanded_path=check(transport['expanded_file']);result=read(expanded_path)
+ assert expanded_path.read_bytes()==canonical(result)+b'\n'
+ data=result['routed_engine_qualification'];contract=read(check(plan['source_contract']))
+-assert plan['source_contract']==EXPECTED_CONTRACT and contract['schema']=='unit-row-fresh-projection-qualification-cold-Source-contract-v1'
++assert plan['source_contract']==EXPECTED_CONTRACT and contract['schema']=='unit-row-decision-context-qualification-cold-Source-contract-v1'
+ assert len(plan['sources'])==14 and len(plan['inputs'])==8 and plan['schema']=='ROOT-routed-engine-qualification-plan-v1'
+ assert plan['purpose']==MODE_PURPOSE[mode] and plan['limits']==LIMITS
+ assert result['sources']==contract['sources']==plan['sources'] and result['inputs']==contract['inputs']==plan['inputs']
+ assert result['purpose']==plan['purpose'] and plan['sources']['intake']==contract['source']
+-assert contract['source']['sha256']=='007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb'
+-assert body['version']=='unit-row-fresh-projection-qualification-cold-v1'
++assert contract['source']['sha256']=='dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325'
++assert body['version']=='unit-row-decision-context-qualification-cold-v1'
+ assert canonical(body)+b'\n'==lines[0] and canonical(completion)+b'\n'==lines[1]
+ binding=contract['original_model_binding']
+ assert result['language_binding']==body['language_binding']==body['original_model_binding']==binding
+@@ -222,7 +221,7 @@
+ assert set(plan['reviews'])=={'ROOT','peer'}
+ for role,ref in plan['reviews'].items():
+     review=read(check(ref))
+-    assert review['scope']=='unit-row-fresh-projection-qualification-cold-Source' and review['author_identity']=='/root/hilbert_advice_controls'
++    assert review['scope']=='unit-row-decision-context-qualification-cold-Source' and review['author_identity']=='/root/hilbert_advice_controls'
+     assert review['source']==plan['sources']['intake'] and review['sources']==plan['sources'] and review['source_contract']==plan['source_contract']
+     assert review['source_only'] is review['source_review_passed'] is True and type(review['scientific_calls'])is int and review['scientific_calls']==0
+     assert review['scientific_acceptance'] is False
+@@ -609,7 +608,7 @@
+  outputs=outputs,native_evidence=native_refs(external),tool_bracket=pin(HERE/('ROOT-MR-'+mode+'-tool-bracket-v1.json')),
+  lossless_transport_concordance=pin(HERE/('ROOT-MR-'+mode+'-transport-concordance-v1.json')),raw_expanded=pin(expanded_path),
+  complete_wire_verified=True,native_terminal_closed=True,native_resources_qualified=True,complete_returned_record=True,
+- failure_cause_established=False,original20_positive_native_gate_failed=False,owned_output_directory_exists=True,
++ native_deadline_confirmed=False,original20_positive_native_gate_failed=False,owned_output_directory_exists=True,
+  native_launch_to_postprobe_ns=probe-start,native_worker_lifetime_ns=terminal-start,aggregate_B_bytes=peak,terminal_T_bytes=peak,
+  complete_Date_seconds=date,resource_rule='single-owned-process-native-terminal-v1; B=T',actual_closed=True,all_reaped=True,
+  reported_case_count=len(expected_cases),qualified_case_count=len(expected_cases),unqualified_case_count=0,passed_cases=len(expected_cases),skipped_cases=0,

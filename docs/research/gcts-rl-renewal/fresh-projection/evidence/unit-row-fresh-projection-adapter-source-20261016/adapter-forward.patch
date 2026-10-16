@@ -1,0 +1,42 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py
+@@ -9,6 +9,7 @@
+ import json
+ 
+ VERSION = 'unit-row-channel4-point-adapter-v1'
++IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-fresh-projection-v2'
+ SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'
+ TRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'
+ FALLBACK_VERSION = 'unit-row-channel4-filtered-six-rule-fallback-v1'
+@@ -83,7 +84,7 @@
+         require(canonical(key) == canonical(expected), 'complete literal decorated key, no digest-only identity')
+         return tile['selection_record'] if selected else tile['placement_key']
+ 
+-    def base_state(self, language, state, tick):
++    def _fresh_base_projection(self, language, state, tick):
+         s = self.tree(state, tick)
+         require(type(s) is dict and set(s) == {'schema', 'input_epoch', 'height', 't',
+                 'm', 'selected', 'excluded', 'generation', 'marking_id'}
+@@ -98,7 +99,10 @@
+             m=[[list(p), v] for p, v in sorted(marks.items()) if p[0] != 4],
+             selected=[self._base_key(language, k, True, tick) for k in s['selected']],
+             excluded=[self._base_key(language, k, False, tick) for k in s['excluded']])
+-        return self.base.private_state(language, base, tick)[0]
++        return self.base.private_state(language, base, tick)
++
++    def base_state(self, language, state, tick):
++        return self._fresh_base_projection(language, state, tick)[0]
+ 
+     def initial_state(self, language, tick):
+         self.check_marking(language, tick)
+@@ -126,8 +130,8 @@
+ 
+     def private_state(self, language, state, tick):
+         s = self.tree(state, tick)
+-        base = self.base_state(language, s, tick)
+-        _, t, _, _, _, base_names = self.base.private_state(language, base, tick)
++        projection = self._fresh_base_projection(language, s, tick)
++        base, t, base_names = projection[0], projection[1], projection[5]
+         packets, selected, excluded, names = [], set(), set(), dict(base_names)
+         for category in ('selected', 'excluded'):
+             for record in s[category]:

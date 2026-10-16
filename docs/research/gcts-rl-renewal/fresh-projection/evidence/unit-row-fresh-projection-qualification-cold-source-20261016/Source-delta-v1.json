@@ -1,0 +1,69 @@
+{
+  "edit_count": 4,
+  "edits": [
+    {
+      "label": "own_VERSION_SCOPE",
+      "new_end": 673,
+      "new_start": 556,
+      "new_utf8": "VERSION='unit-row-fresh-projection-qualification-cold-v1'\nSCOPE='unit-row-fresh-projection-qualification-cold-Source'",
+      "old_end": 673,
+      "old_start": 556,
+      "old_utf8": "VERSION='unit-row-decision-context-qualification-cold-v1'\nSCOPE='unit-row-decision-context-qualification-cold-Source'"
+    },
+    {
+      "label": "current_adapter_capsule",
+      "new_end": 3937,
+      "new_start": 3678,
+      "new_utf8": "{'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py', 'sha256': 'a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c', 'bytes': 29197}",
+      "old_end": 3928,
+      "old_start": 3678,
+      "old_utf8": "{'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py', 'sha256': '821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9', 'bytes': 28980}"
+    },
+    {
+      "label": "consumed_contract_schema",
+      "new_end": 33177,
+      "new_start": 33092,
+      "new_utf8": "contract['schema']=='unit-row-fresh-projection-qualification-cold-Source-contract-v1'",
+      "old_end": 33168,
+      "old_start": 33083,
+      "old_utf8": "contract['schema']=='unit-row-decision-context-qualification-cold-Source-contract-v1'"
+    },
+    {
+      "label": "explicit_implementation_tag_gate_preserves_public_API",
+      "new_end": 44883,
+      "new_start": 44669,
+      "new_utf8": "and adapter.VERSION == 'unit-row-channel4-point-adapter-v1'\n         and adapter.IMPLEMENTATION_VERSION == 'unit-row-channel4-point-adapter-fresh-projection-v2',\n         'current reviewed engine/adapter versions')",
+      "old_end": 44764,
+      "old_start": 44660,
+      "old_utf8": "and adapter.VERSION == 'unit-row-channel4-point-adapter-v1', 'current reviewed engine/adapter versions')"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "parent": {
+    "bytes": 78159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/decision_context_qualification_cold_v1.py",
+    "sha256": "dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325"
+  },
+  "patches": [
+    {
+      "bytes": 13021,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/parent-to-current-forward.patch",
+      "sha256": "8fc375972dd0560598a8ea9b3cbb343e32be04b1630e87353fbdcf9b1c4a9539"
+    },
+    {
+      "bytes": 13021,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/current-to-parent-full-inverse.patch",
+      "sha256": "f867f066485ebb05a9d859c5f4a1b9fccfe4410bac12a0a15a0a36ae24ff39c9"
+    }
+  ],
+  "schema": "unit-row-fresh-projection-qualification-cold-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 78278,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/fresh_projection_qualification_cold_v1.py",
+    "sha256": "007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb"
+  },
+  "source_only": true,
+  "whole_AST_inverse_verified": true
+}

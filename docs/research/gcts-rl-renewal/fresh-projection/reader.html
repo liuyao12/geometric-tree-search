@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Saved qualification records for a local fresh-projection implementation change in bounded proof search.">
+<title>One fresh projection · GCTS research</title>
+<link rel="stylesheet" href="reader.css?v=59866b33e97d">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script defer src="reader.js?v=7e0fa3a5f9b5"></script>
+</head>
+<body>
+<a class="skip-link" href="#outcome">Skip to results</a>
+<header class="page-header">
+<div class="header-top"><a class="notebook-link" href="../index.html">GCTS research notebook</a><span id="report-date" class="date"></span></div>
+<p class="eyebrow">BOUNDED PROOF SEARCH · IMPLEMENTATION CONTROL</p>
+<h1 id="report-title">One fresh projection</h1>
+<p class="dek">Reuse a freshly checked local tuple, then measure the same controls.</p>
+<nav aria-label="Report sections"><a href="#outcome">Qualification</a><a href="#comparison">Six measured windows</a><a href="#change">The implementation</a><a href="#parallel">Parallel work</a><a href="#evidence">Evidence</a></nav>
+</header>
+<main>
+<p id="load-status" class="load-status" role="status" aria-live="polite">Loading the saved report. No measured result is embedded in this reader.</p>
+<section id="outcome" class="panel" aria-labelledby="outcome-title">
+<p class="section-kicker">THE SAVED RESULT</p><h2 id="outcome-title">Qualification across both versions</h2>
+<div class="count-grid">
+<div class="count-card previous"><span class="count-label">Previous Source</span><strong id="prior-count">Unavailable</strong><span class="count-caption">qualified essential cases</span></div>
+<div class="count-card current"><span class="count-label">Current Source</span><strong id="current-count">Unavailable</strong><span class="count-caption">qualified essential cases</span></div>
+<div class="outcome-card"><span class="count-label">Current disposition</span><strong id="current-status">Awaiting saved data</strong><p id="outcome-copy">The saved closure determines qualification. The display performs no scientific checking.</p></div>
+</div>
+<p id="reader-scope" class="scope-note"></p>
+</section>
+<section id="comparison" aria-labelledby="comparison-title">
+<p class="section-kicker">SAME SCOPES · SEPARATE WINDOWS</p><h2 id="comparison-title">Where each endpoint finished</h2>
+<p>Each scope runs in its own cold window, with the same \(20\,\mathrm{s}\) positive limit and \(512\,\mathrm{MiB}\) aggregate owned-memory bound. Setup, imports, reconstruction, checking and output remain charged. There is no combined suite claim within one window.</p>
+<div class="chart-legend" aria-label="Bar legend"><span><i class="swatch previous"></i>Previous</span><span><i class="swatch current"></i>Current</span><span class="limit-legend">Vertical rule: declared positive limit</span></div>
+<div id="comparison-chart" class="comparison-chart" aria-label="Saved elapsed times for six endpoints"></div>
+<p class="chart-note">Bars reproduce the elapsed values supplied with the saved endpoint records. A window beyond the positive limit remains unqualified. These version comparisons do not establish a causal speedup from markings or an advantage over ordinary proof search.</p>
+<div id="endpoint-details" class="endpoint-details"></div>
+</section>
+<section id="change" class="panel" aria-labelledby="change-title">
+<p class="section-kicker">A NARROW SOURCE CHANGE</p><h2 id="change-title">Keep one fresh validation result</h2>
+<div class="change-grid">
+<div><p>The adapter previously checked the original state inside <code>base_state()</code>, kept only its state value, then immediately checked that state again to recover totals and the collision ledger.</p><p>A private helper now returns the whole freshly checked tuple \((s,t,m,S,X,N)\). The same invocation of <code>private_state()</code> consumes its state, totals and name ledger. Public <code>base_state()</code> still returns a fresh state projection.</p></div>
+<div class="retained-checks"><h3>The independent checks remain</h3><p>The independently authored marked-state verifier still rebuilds the complete marked union. Membership, complete keys and preimages, original and added point values, collisions, read obligations, canonical fallback, global decisions and exact rollback remain checked.</p><p>The tuple stays local to the call. It is not a persistent cache, a proposer-supplied certificate, or shared independent-checker authority. The copied ledger keeps later candidate updates separate.</p></div>
+</div>
+<details class="technical-note"><summary>Implementation identity and comparison scope</summary><p>The adapter keeps its public protocol versions and adds <code>IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-fresh-projection-v2'</code>. New Source hashes and composition reviews identify the implementation. The original semantic Source map, input and model epoch stay separate from the current executable map.</p><p>The equivalence argument concerns returned values under unchanged trusted synchronous authority. Removing a traversal changes work; it does not promise identical budget outcomes. This report supplies no theorem proof, RL result, full GCTS conformance claim, or target-search success.</p></details>
+</section>
+<section id="parallel" aria-labelledby="parallel-title">
+<p class="section-kicker">HOW THE WORK IS DIVIDED</p><h2 id="parallel-title">Parallel work, distinct responsibilities</h2>
+<div class="lane-grid">
+<article class="lane"><span class="lane-number">01</span><h3>Implementation</h3><p>One agent authors the local adapter change, its value-equivalence argument, and complete Source inverses.</p></article>
+<article class="lane"><span class="lane-number">02</span><h3>Unchanged experiment</h3><p>The control owner preserves all six scopes and twelve essential cases, the language and model epoch, fallback order and original budgets.</p></article>
+<article class="lane"><span class="lane-number">03</span><h3>Independent review</h3><p>A separate reviewer reads the complete current Source and composition. Prior implementation reviews remain historical evidence.</p></article>
+<article class="lane"><span class="lane-number">04</span><h3>Root integration and actuals</h3><p>Root owns grants, measured executions, strict saved-record reconciliation and publication. Source review alone does not qualify an execution.</p></article>
+</div>
+</section>
+<section id="next" class="next-panel" aria-labelledby="next-title"><p class="section-kicker">WHAT FOLLOWS</p><h2 id="next-title">Next research step</h2><p id="next-step">Awaiting the saved report.</p></section>
+<section id="evidence" aria-labelledby="evidence-title"><p class="section-kicker">EXACT RECORDS</p><h2 id="evidence-title">Inspect the evidence</h2><p>Links point to the packaged saved records. The reader renders their supplied metadata; it runs no proof kernel, candidate generator, engine, or semantic verifier.</p><ul id="evidence-list" class="evidence-list"></ul><details><summary>Complete public report metadata</summary><pre id="report-metadata">Unavailable until report-data.json is supplied.</pre></details></section>
+</main>
+<footer>Separate scoped controls under unchanged bounds. No measured numbers are built into these reader assets.</footer>
+</body>
+</html>

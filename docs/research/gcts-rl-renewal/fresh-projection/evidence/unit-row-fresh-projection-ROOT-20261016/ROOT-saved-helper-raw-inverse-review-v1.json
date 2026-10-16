@@ -1,0 +1,46 @@
+{
+  "AST_compile_only": true,
+  "Source_only": true,
+  "helpers": [
+    {
+      "changed_functions": [
+        "auth_plan",
+        "failure_only"
+      ],
+      "exact_raw_AST_patch_inverse": true,
+      "parent": {
+        "bytes": 54274,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_close_decision_context_qualification_saved_v1.py",
+        "sha256": "167258370086783080583168298201ab13ae41486392064009729461caa8d01a"
+      },
+      "role": "closer",
+      "source": {
+        "bytes": 54367,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_close_fresh_projection_qualification_saved_v1.py",
+        "sha256": "83706ef2f72ba1e8cc3a5f8025e91c644575132495b32d0841295f20f10f78af"
+      }
+    },
+    {
+      "changed_functions": [],
+      "exact_raw_AST_patch_inverse": true,
+      "parent": {
+        "bytes": 6338,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_decode_decision_context_qualification_saved_v1.py",
+        "sha256": "f1c6a1bb42c04478e0cff1a4924169c2ed92c8333a5362375409bf90b7ba5ec6"
+      },
+      "role": "decoder",
+      "source": {
+        "bytes": 6338,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_decode_fresh_projection_qualification_saved_v1.py",
+        "sha256": "fa6f0e72d71f38b135068d5e524efc0148e6c8b8ca0813a893ffd99b3890fcce"
+      }
+    }
+  ],
+  "schema": "ROOT-fresh-projection-saved-helper-raw-inverse-review-v1",
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 28008,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/Source-contract-v1.json",
+    "sha256": "06f1d21b333ae48505430b7c0be0349d260598fde33cbb9658a4125763b73d5e"
+  }
+}

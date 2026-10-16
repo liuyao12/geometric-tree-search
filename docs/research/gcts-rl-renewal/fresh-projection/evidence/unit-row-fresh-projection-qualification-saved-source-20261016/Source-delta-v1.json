@@ -1,0 +1,173 @@
+{
+  "authority_literal_substitutions": [
+    {
+      "new": "{'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': 'd87bdb1f449e8c06d994b2801210ad6998a6977ef91fa48f0184ac661de21282', 'bytes': 41202}",
+      "old": "{'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': '105cc90ec4a8993410563dc1d6c9bd3fce62b5e5f0cd9696a13e229737fa26cd', 'bytes': 39735}"
+    },
+    {
+      "new": "007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb",
+      "old": "dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325"
+    },
+    {
+      "new": "unit-row-fresh-projection-qualification-cold-Source",
+      "old": "unit-row-decision-context-qualification-cold-Source"
+    },
+    {
+      "new": "unit-row-fresh-projection-qualification-cold-v1",
+      "old": "unit-row-decision-context-qualification-cold-v1"
+    }
+  ],
+  "failure_attribution_scope": "Exact shared tick message and measured caller lifetime observations separated; no throw-cause proof, no deadline-specific failurekind. Native/wire/countsNone/all12 joins unchanged.",
+  "helpers": {
+    "closer": {
+      "edit_count": 10,
+      "edits": [
+        {
+          "new_end": 936,
+          "new_start": 653,
+          "new_utf8": "EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': 'd87bdb1f449e8c06d994b2801210ad6998a6977ef91fa48f0184ac661de21282', 'bytes': 41202}\n",
+          "old_end": 936,
+          "old_start": 653,
+          "old_utf8": "EXPECTED_CONTRACT={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': '105cc90ec4a8993410563dc1d6c9bd3fce62b5e5f0cd9696a13e229737fa26cd', 'bytes': 39735}\n"
+        },
+        {
+          "new_end": 3128,
+          "new_start": 2970,
+          "new_utf8": "    assert contract['source']==plan['sources']['intake'] and contract['source']['sha256']=='007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb'\n",
+          "old_end": 3128,
+          "old_start": 2970,
+          "old_utf8": "    assert contract['source']==plan['sources']['intake'] and contract['source']['sha256']=='dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325'\n"
+        },
+        {
+          "new_end": 3627,
+          "new_start": 3488,
+          "new_utf8": "        assert v['scope']=='unit-row-fresh-projection-qualification-cold-Source' and v['author_identity']=='/root/hilbert_advice_controls'\n",
+          "old_end": 3627,
+          "old_start": 3488,
+          "old_utf8": "        assert v['scope']=='unit-row-decision-context-qualification-cold-Source' and v['author_identity']=='/root/hilbert_advice_controls'\n"
+        },
+        {
+          "new_end": 7327,
+          "new_start": 7111,
+          "new_utf8": "    tick_timeout_line_observed=(stderr==b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\\n')\n    caller_lifetime_at_least20=terminal-start>=20000000000\n",
+          "old_end": 7296,
+          "old_start": 7111,
+          "old_utf8": "    deadline=(stderr==b'UNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete marking data controls original20/500 reserve unfinished\\n'\n              and terminal-start>=20000000000)\n"
+        },
+        {
+          "new_end": 8582,
+          "new_start": 8373,
+          "new_utf8": "        original20_positive_native_gate_failed=True,native_tick_timeout_line_observed=tick_timeout_line_observed,\n        caller_lifetime_at_least20=caller_lifetime_at_least20,failure_cause_established=False,\n",
+          "old_end": 8430,
+          "old_start": 8342,
+          "old_utf8": "        original20_positive_native_gate_failed=True,native_deadline_confirmed=deadline,\n"
+        },
+        {
+          "new_end": 9317,
+          "new_start": 9261,
+          "new_utf8": "        failure_kind='NONZERO_NO_RETURNED_CASE_RECORD',\n",
+          "old_end": 9224,
+          "old_start": 9109,
+          "old_utf8": "        failure_kind='NATIVE20_DEADLINE_NO_RETURNED_CASE_RECORD'if deadline else'NONZERO_NO_RETURNED_CASE_RECORD',\n"
+        },
+        {
+          "new_end": 19086,
+          "new_start": 18946,
+          "new_utf8": "assert plan['source_contract']==EXPECTED_CONTRACT and contract['schema']=='unit-row-fresh-projection-qualification-cold-Source-contract-v1'\n",
+          "old_end": 18993,
+          "old_start": 18853,
+          "old_utf8": "assert plan['source_contract']==EXPECTED_CONTRACT and contract['schema']=='unit-row-decision-context-qualification-cold-Source-contract-v1'\n"
+        },
+        {
+          "new_end": 19668,
+          "new_start": 19490,
+          "new_utf8": "assert contract['source']['sha256']=='007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb'\nassert body['version']=='unit-row-fresh-projection-qualification-cold-v1'\n",
+          "old_end": 19575,
+          "old_start": 19397,
+          "old_utf8": "assert contract['source']['sha256']=='dd4edc8a204b9407a27e8c2d09d0a795accd6d6028e509ed96cabd879621f325'\nassert body['version']=='unit-row-decision-context-qualification-cold-v1'\n"
+        },
+        {
+          "new_end": 20996,
+          "new_start": 20851,
+          "new_utf8": "    assert review['scope']=='unit-row-fresh-projection-qualification-cold-Source' and review['author_identity']=='/root/hilbert_advice_controls'\n",
+          "old_end": 20903,
+          "old_start": 20758,
+          "old_utf8": "    assert review['scope']=='unit-row-decision-context-qualification-cold-Source' and review['author_identity']=='/root/hilbert_advice_controls'\n"
+        },
+        {
+          "new_end": 52511,
+          "new_start": 52397,
+          "new_utf8": " failure_cause_established=False,original20_positive_native_gate_failed=False,owned_output_directory_exists=True,\n",
+          "old_end": 52418,
+          "old_start": 52304,
+          "old_utf8": " native_deadline_confirmed=False,original20_positive_native_gate_failed=False,owned_output_directory_exists=True,\n"
+        }
+      ],
+      "parent": {
+        "bytes": 54274,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_close_decision_context_qualification_saved_v1.py",
+        "sha256": "167258370086783080583168298201ab13ae41486392064009729461caa8d01a"
+      },
+      "patches": [
+        {
+          "bytes": 9979,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/closer-forward.patch",
+          "sha256": "822ad23f5b516b4525948a09b5d1e53415230b0b09ed9c6ac05ed444fd9db852"
+        },
+        {
+          "bytes": 9979,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/closer-full-inverse.patch",
+          "sha256": "0ea6b368c5ec7221dd3bde94b74c77686cdbf6a65b38aa4ae89b60319b9a59eb"
+        }
+      ],
+      "raw_forward_inverse_exact": true,
+      "source": {
+        "bytes": 54367,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_close_fresh_projection_qualification_saved_v1.py",
+        "sha256": "83706ef2f72ba1e8cc3a5f8025e91c644575132495b32d0841295f20f10f78af"
+      },
+      "whole_AST_inverse_exact": true
+    },
+    "decoder": {
+      "edit_count": 1,
+      "edits": [
+        {
+          "new_end": 2281,
+          "new_start": 1931,
+          "new_utf8": "need(plan['source_contract']=={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': 'd87bdb1f449e8c06d994b2801210ad6998a6977ef91fa48f0184ac661de21282', 'bytes': 41202},'fixed reviewed routed qualification Source contract')\n",
+          "old_end": 2281,
+          "old_start": 1931,
+          "old_utf8": "need(plan['source_contract']=={'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-cold-source-20261016/Source-contract-v1.json', 'sha256': '105cc90ec4a8993410563dc1d6c9bd3fce62b5e5f0cd9696a13e229737fa26cd', 'bytes': 39735},'fixed reviewed routed qualification Source contract')\n"
+        }
+      ],
+      "parent": {
+        "bytes": 6338,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-qualification-saved-source-20261016/ROOT_decode_decision_context_qualification_saved_v1.py",
+        "sha256": "f1c6a1bb42c04478e0cff1a4924169c2ed92c8333a5362375409bf90b7ba5ec6"
+      },
+      "patches": [
+        {
+          "bytes": 2127,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/decoder-forward.patch",
+          "sha256": "63a992c6814f33fcbf03248c9fda71bf2446401c98f799977df41ab18e6a2550"
+        },
+        {
+          "bytes": 2127,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/decoder-full-inverse.patch",
+          "sha256": "09b6a779b293aab7870ed8319aad162d3601331424b2361a3c14acf980b3429d"
+        }
+      ],
+      "raw_forward_inverse_exact": true,
+      "source": {
+        "bytes": 6338,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-saved-source-20261016/ROOT_decode_fresh_projection_qualification_saved_v1.py",
+        "sha256": "fa6f0e72d71f38b135068d5e524efc0148e6c8b8ca0813a893ffd99b3890fcce"
+      },
+      "whole_AST_inverse_exact": true
+    }
+  },
+  "schema": "unit-row-fresh-projection-qualification-saved-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}
