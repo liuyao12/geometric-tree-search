@@ -1,0 +1,86 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/compatible_fibres_controls_v3.py
+@@ -9,7 +9,7 @@
+ import json
+ import sys
+ 
+-VERSION = 'unit-row-fine-phase-controls-v4'
++VERSION = 'unit-row-phase-diagnostic-controls-v3'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -169,7 +169,6 @@
+     need(holder['child_snapshot'] is not None,'actual placed child observed before interruption')
+     return value,holder['child_snapshot']
+ 
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP',file=sys.stderr,flush=True);tick()
+   initial=state(language,[],tick)
+   names=sorted(language.theory['axioms']);variables=[v for v in sorted(language.parameters) if v not in language.forbidden]
+   roots=[language.theory['axioms'][n] for n in names]+list(language.gamma)
+@@ -184,10 +183,8 @@
+     demand=['all',v,copy.deepcopy(body)]
+     future=prepared(ug,language,demand,v,8,9,tick)
+     s=state(language,[future],tick)
+-    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION',file=sys.stderr,flush=True);tick()
+     e=make(s);decision=e.decision()
+     if decision!={'kind':'BRANCH','row':0}:raise Unavailable('Original scheduler did not choose row0 BRANCH: '+canonical(decision))
+-    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE',file=sys.stderr,flush=True);tick()
+     before=canonical(s);batch=current_advice(state=copy.deepcopy(s),decision=decision,tick=tick)
+     # Preserve the WHOLE actual return before eligibility can skip controls.
+     # UNKNOWN partial proposals/counters are diagnostic only, never executable.
+@@ -200,7 +197,6 @@
+         'selected_future_UG':copy.deepcopy(future)}}
+     if batch['status']!='READY' or not batch['proposals']:
+       raise Unavailable('Actual bounded adviser returned no current READY proposal: '+str(batch['status']))
+-    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK',file=sys.stderr,flush=True);tick()
+     receipt=receipt_flags(check(s,decision,batch))
+     need(canonical(s)==before,'adviser and independent validator do not alter fixture state')
+     need(receipt['selection'] is not None,'genuine READY first anchor validated')
+@@ -231,7 +227,6 @@
+         'meaning':'Repeated observations, not distinct facts or causal reuse.'})
+     else:skip(common_names[1],'Actual returned proposals have no external PENDING obligation to exercise.')
+ 
+-    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS',file=sys.stderr,flush=True);tick()
+     mutations=[]
+     def bad(label,edit):
+       b=copy.deepcopy(batch);edit(b);mutations.append({'mutation':label,'result':reject(lambda:check(s,decision,b))})
+@@ -272,7 +267,6 @@
+     # current joins ONLY to test the validator's UNKNOWN-status rejection edge.
+     qjoin=copy.deepcopy(q);qjoin.update(binding=copy.deepcopy(batch['binding']),state_sha256=batch['state_sha256'],decision=copy.deepcopy(decision))
+     passed(common_names[5],reject(lambda:check(s,decision,qjoin)),seam)
+-    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES',file=sys.stderr,flush=True);tick()
+     canonical_first=first_key(s,0);artifacts['canonical_first']=canonical_first
+     empty_result,empty_child=stop_after_placement(s,empty_advice)
+     need(canonical(first_try(empty_result)['key'])==canonical(canonical_first['event']['candidate']['placement_key']),
+@@ -301,7 +295,6 @@
+     if not selection['future_keys']:
+       for label in common_names[11:]:skip(label,'Actual first selected family has no future keys; consumer gate remains unqualified.')
+     else:
+-      tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE',file=sys.stderr,flush=True);tick()
+       holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[]}
+       def watched_validator(**kwargs):
+         tick();value=validate_advice(**kwargs)
+@@ -360,7 +353,6 @@
+ 
+       # Derive one remote conflict from an actual pending key, not from a
+       # supplied target route. It must leave that pending output row unfilled.
+-      tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE',file=sys.stderr,flush=True);tick()
+       e2.rollback(token);remote_error=None
+       try:
+         family=inner2['pending_preferences'];remote=None;bad_key=None
+@@ -594,7 +586,6 @@
+   result=_run_prior_controls(language=language,engine_factory=observing_factory,adviser=adviser,
+     validate_advice=validate_advice,degree_proposer=degree_proposer,fallback=fallback,
+     certify_fallback=certify_fallback,tick=tick)
+-  tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN',file=sys.stderr,flush=True);tick()
+   need(result['declared_cases']==22 and len(result['cases'])==22,'all original22 retained once')
+   candidates=[r for r in records if r['token'] is not None]
+   reason=None
+@@ -665,7 +656,6 @@
+     need(remote['root_snapshot_sha256']==remote['final_snapshot_sha256'], 'old remote search whole-root rollback')
+     passed(labels[4],{'inner_snapshot_sha256':digest(inner),'restored_sha256':digest(before),
+       'remote_search_root_sha256':remote['root_snapshot_sha256']})
+-    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS',file=sys.stderr,flush=True);tick()
+     try:
+       for mode,label in (('VALUE_ERROR',labels[5]),('TIMEOUT',labels[6])):
+         engine.rollback(token);before=engine.state_snapshot();start=len(record['adviser_calls']);record['mode']=mode

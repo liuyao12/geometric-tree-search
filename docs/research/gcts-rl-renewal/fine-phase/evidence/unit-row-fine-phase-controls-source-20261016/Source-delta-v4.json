@@ -1,0 +1,203 @@
+{
+  "edits": [
+    {
+      "after_utf8": "VERSION = 'unit-row-fine-phase-controls-v4'",
+      "before_utf8": "VERSION = 'unit-row-phase-diagnostic-controls-v3'",
+      "forward_offset_at_this_step": 350
+    },
+    {
+      "after_utf8": "  tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP',file=sys.stderr,flush=True);tick()\n  initial=state(language,[],tick)",
+      "before_utf8": "  initial=state(language,[],tick)",
+      "forward_offset_at_this_step": 8937
+    },
+    {
+      "after_utf8": "    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION',file=sys.stderr,flush=True);tick()\n    e=make(s);decision=e.decision()",
+      "before_utf8": "    e=make(s);decision=e.decision()",
+      "forward_offset_at_this_step": 9866
+    },
+    {
+      "after_utf8": "    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE',file=sys.stderr,flush=True);tick()\n    before=canonical(s);batch=current_advice(state=copy.deepcopy(s),decision=decision,tick=tick)",
+      "before_utf8": "    before=canonical(s);batch=current_advice(state=copy.deepcopy(s),decision=decision,tick=tick)",
+      "forward_offset_at_this_step": 10146
+    },
+    {
+      "after_utf8": "    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK',file=sys.stderr,flush=True);tick()\n    receipt=receipt_flags(check(s,decision,batch))",
+      "before_utf8": "    receipt=receipt_flags(check(s,decision,batch))",
+      "forward_offset_at_this_step": 11166
+    },
+    {
+      "after_utf8": "    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS',file=sys.stderr,flush=True);tick()\n    mutations=[]\n    def bad(label,edit):",
+      "before_utf8": "    mutations=[]\n    def bad(label,edit):",
+      "forward_offset_at_this_step": 13558
+    },
+    {
+      "after_utf8": "    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES',file=sys.stderr,flush=True);tick()\n    canonical_first=first_key(s,0);artifacts['canonical_first']=canonical_first",
+      "before_utf8": "    canonical_first=first_key(s,0);artifacts['canonical_first']=canonical_first",
+      "forward_offset_at_this_step": 16790
+    },
+    {
+      "after_utf8": "      tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE',file=sys.stderr,flush=True);tick()\n      holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[]}",
+      "before_utf8": "      holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[]}",
+      "forward_offset_at_this_step": 19046
+    },
+    {
+      "after_utf8": "      tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE',file=sys.stderr,flush=True);tick()\n      e2.rollback(token);remote_error=None",
+      "before_utf8": "      e2.rollback(token);remote_error=None",
+      "forward_offset_at_this_step": 23679
+    },
+    {
+      "after_utf8": "  tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN',file=sys.stderr,flush=True);tick()\n  need(result['declared_cases']==22 and len(result['cases'])==22,'all original22 retained once')",
+      "before_utf8": "  need(result['declared_cases']==22 and len(result['cases'])==22,'all original22 retained once')",
+      "forward_offset_at_this_step": 39872
+    },
+    {
+      "after_utf8": "    tick();print('UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS',file=sys.stderr,flush=True);tick()\n    try:\n      for mode,label in (('VALUE_ERROR',labels[5]),('TIMEOUT',labels[6])):",
+      "before_utf8": "    try:\n      for mode,label in (('VALUE_ERROR',labels[5]),('TIMEOUT',labels[6])):",
+      "forward_offset_at_this_step": 45810
+    }
+  ],
+  "fine_markers": [
+    {
+      "line": 172,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP"
+    },
+    {
+      "line": 187,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION"
+    },
+    {
+      "line": 190,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE"
+    },
+    {
+      "line": 203,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK"
+    },
+    {
+      "line": 234,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS"
+    },
+    {
+      "line": 275,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES"
+    },
+    {
+      "line": 304,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE"
+    },
+    {
+      "line": 363,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE"
+    },
+    {
+      "line": 597,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN"
+    },
+    {
+      "line": 668,
+      "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS"
+    }
+  ],
+  "forward_reconstructs_entire_source": true,
+  "inverse_reconstructs_entire_parent": true,
+  "marker_erasure_equivalent_definitions": [
+    {
+      "AST_exact_after_new_marker_erasure": true,
+      "name": "run_controls",
+      "ordinal": 9,
+      "raw_changed_only_for_fine_markers": true
+    },
+    {
+      "AST_exact_after_new_marker_erasure": true,
+      "name": "run_controls",
+      "ordinal": 10,
+      "raw_changed_only_for_fine_markers": true
+    }
+  ],
+  "parent_source": {
+    "bytes": 93129,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-source-20261016/compatible_fibres_controls_v3.py",
+    "sha256": "0065aab7baf7e69439a1ca7579cf4333756f4b3ca864f466eb91bd5717460156"
+  },
+  "schema": "unit-row-fine-phase-controls-sequential-byte-delta-v4",
+  "scientific_calls": 0,
+  "sequential_regions": 11,
+  "source": {
+    "bytes": 94228,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py",
+    "sha256": "d07fad27a63d5c74543433b06dadf00352fe292797d61d6d5058988781d0afd2"
+  },
+  "unchanged_raw_definitions": [
+    {
+      "kind": "ClassDef",
+      "name": "Unavailable",
+      "ordinal": 0,
+      "raw_AST_exact": true,
+      "raw_sha256": "1bfb3ab02870cf57260ad49ecd68159e8b9fab808d71399e50f30533562c0bfd"
+    },
+    {
+      "kind": "ClassDef",
+      "name": "CallbackExhausted",
+      "ordinal": 1,
+      "raw_AST_exact": true,
+      "raw_sha256": "b8658becece9d36bfc66968f086ccedfc08495b54261b2104206d07c09a1bb36"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "need",
+      "ordinal": 2,
+      "raw_AST_exact": true,
+      "raw_sha256": "aa140feb98f72734704d885983d92f08a327fe22bec968da0dc273a63f817f91"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "canonical",
+      "ordinal": 3,
+      "raw_AST_exact": true,
+      "raw_sha256": "164d176a437c1e1bc2358db13b42955e38cf8c8c8e003ad2d57c3d3ed0929d06"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "digest",
+      "ordinal": 4,
+      "raw_AST_exact": true,
+      "raw_sha256": "f3e8c46a05bd8e4a89e9d087fdc05177b18ce63355e98c2350b27b10297bf681"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "tile",
+      "ordinal": 5,
+      "raw_AST_exact": true,
+      "raw_sha256": "9b7a29e4366e4ef2bae556ee54a0adbfbb2784d5bba7383d70dc677de226c377"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "state",
+      "ordinal": 6,
+      "raw_AST_exact": true,
+      "raw_sha256": "7ebc944c5c72d82549784d9051c6ecb0ad426c64613fa95960e0dc7cfaccecb0"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "ug",
+      "ordinal": 7,
+      "raw_AST_exact": true,
+      "raw_sha256": "a7556b0c378b78803e4cf134869efe9624382976258d649bb1d93d99eb9df113"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "obligations",
+      "ordinal": 8,
+      "raw_AST_exact": true,
+      "raw_sha256": "3814781b8ba1395c5622f7fcd2ba094e7e90c19740adb2b5242fdb358149b7f0"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "run_controls",
+      "ordinal": 11,
+      "raw_AST_exact": true,
+      "raw_sha256": "01e9569fd8428c691cfd0f20e3a67d472d96db798b9e7624a398023a192114b1"
+    }
+  ],
+  "whole_module_AST_inverse_after_only_new_markers_and_version": true
+}

@@ -1,0 +1,48 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "across_versions_changed_sources": [
+    "advice_controls",
+    "intake"
+  ],
+  "across_versions_same_input_runtime_limits": true,
+  "actuals_this_turn": 3,
+  "all_closed_and_reaped": true,
+  "broad_goal_complete": false,
+  "current_goal_turn": "progress",
+  "dispositions": {
+    "advice-controls": {
+      "bytes": 4923,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "5d59221ad320986b0c5cb508e7e43e27fa4dc5db79371a6ef936011fec2483d6"
+    },
+    "domain-controls": {
+      "bytes": 3394,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "sha256": "3632ad2cddc4aa14097deccd861ee807ac540e345e909250d45da50e2a4914a9"
+    },
+    "original-controls": {
+      "bytes": 3208,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "sha256": "5dac29c6cfdb8e5588049654c71a1857b7f178210a6f17b65e0e28590558e4b4"
+    }
+  },
+  "logical_proof_accepted": false,
+  "no_dynamic_cost_or_case_coverage": true,
+  "previous_actual_phase_attribution": false,
+  "previous_goal_turn": "progress",
+  "same_Source17_input2_contract_reviews_runtime_limits_within_version": true,
+  "schema": "ROOT-fine-phase-comparison-v1",
+  "scientific_replay": false,
+  "target_actuals_launched": 0,
+  "unqualified_current_writes": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE"
+  ]
+}

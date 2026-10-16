@@ -1,0 +1,261 @@
+{
+  "schema": "unit-row-fine-phase-controls-independent-findings-v1",
+  "scope": "unit-row-fine-phase-controls-Source",
+  "source": {
+    "bytes": 94228,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py",
+    "sha256": "d07fad27a63d5c74543433b06dadf00352fe292797d61d6d5058988781d0afd2"
+  },
+  "source_contract": {
+    "bytes": 23550,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/Source-contract-v4.json",
+    "sha256": "1edeb923c73aca7f8c228648228e959c364f1a3565ab019b663442c7a411f067"
+  },
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 94228,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py",
+      "sha256": "d07fad27a63d5c74543433b06dadf00352fe292797d61d6d5058988781d0afd2"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored immutable consumer3/earlier consumer-validator and control-harness/horizon edits, plus older logical-checker/codec/family work. Reviewer did not author these controls3/4, adviser, engine, c960 or c354. This review retains prior whole controls3 scope and is not self-review of consumer3 or runtime qualification.",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "blockers": [],
+  "independent_delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "79a57a42944ac66bf223d8a16cfa1bb2767a1afe83df06b05517c7eb7e78f442",
+    "bytes": 15607
+  },
+  "manual_checks": [
+    {
+      "id": "MEANING",
+      "passed": true,
+      "finding": "All new labels are unqualified reached-write observations. P30_AT_ORIGINAL22_RETURN names a Source position only, never accepted return/completion/case/count authority. No accepted entry, return, nonreturn, helper/callback correctness, cache hit, proposal, phase duration or positive native/proof/trajectory claim follows."
+    },
+    {
+      "id": "CONDITIONAL-ORDER",
+      "passed": true,
+      "finding": "Source definitions precede the outer wrapper text, but actual run starts coarse BEFORE_PRIOR30 then calls old30/22. Fixture, future-family and retirement markers are conditional and may be skipped. The full observed complete-line list is an ordered subsequence of the runtime maximal20 list, not necessarily a prefix. Missing labels prove no absence of Source work."
+    },
+    {
+      "id": "TICKS-FAILURES",
+      "passed": true,
+      "finding": "Each new write is pre/postchecked by original tick; print/flush or its posttick may fail, including crossing deadline during I/O. There is no clock sample or reset, new callback/helper or logging in finally. Only bounded Source/marker/error evidence is possible after failure; no posttimeout scientific delegate is added."
+    },
+    {
+      "id": "SCIENTIFIC-AND-LIFECYCLE",
+      "passed": true,
+      "finding": "Whole raw/AST erasure preserves all43 negative/positive assertions, native callback propagation, fresh engine/negative/replacement calls, five report-only reuse sites, actual accepted callback capture, branch ownership and exact inner/finished-outer restoration. Added native checks/I/O are charged and can create earlier failure points; no fit or outcome equivalence under budget is promised."
+    },
+    {
+      "id": "GATES",
+      "passed": true,
+      "finding": "A current Root caller/plan must bind this Source and bounded20-site stderr policy. Only complete43PASSED0SKIP/no-gap output plus current original17/retention17 and all original native/wire gates can qualify controls. Source3 and older UNKNOWNs remain unchanged, with no retrospective phase attribution or target grant."
+    }
+  ],
+  "phase_stderr": {
+    "coarse_literals_preserved": [
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+    ],
+    "coarse_maximum_bytes": 463,
+    "failure": "Original tick/write/flush errors propagate; no logging in finally/exception handlers or deliberately after a failed native check. A started write may stall across20 before postcheck fails; no per-marker deadline or timestamp claim. A bounded partial line/subsequence plus existing raw error evidence remains diagnostic only. Failure55 never authorizes new scientific work.",
+    "fine_literals_added": [
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS"
+    ],
+    "fine_maximum_bytes": 565,
+    "maximum_emissions": 20,
+    "maximum_full_sequence_bytes": 1028,
+    "observation_only": "Any literal, including P30_AT_ORIGINAL22_RETURN, is only a reached-write producer observation. No accepted entry/return/completed phase, case count/pass/skip, cache hit, useful candidate, callback/rollback correctness, elapsed duration or positive native/proof/trajectory/target/RL admission follows. Missing labels do not prove code was absent; a native precheck before the next label can fail even after preceding work returns.",
+    "order": "Runtime ordered subsequence of this20-item list, not physical Source line order: outer BEFORE_PRIOR30, conditional fine old22+old30 positions, outer AFTER_PRIOR30 then remaining coarse positions. Branch eligibility may omit fine sites. At most one emission per static site per controls invocation.",
+    "ordered_literals": [
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+    ],
+    "positions": [
+      {
+        "anchor": "  initial=state(language,[],tick)",
+        "conditional_path": "unconditional",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+        "parent_line": 172,
+        "purpose": "First original22 body, before its initial state/theory root setup; helper-definition entry overhead remains outside this boundary.",
+        "source_line": 172
+      },
+      {
+        "anchor": "    e=make(s);decision=e.decision()",
+        "conditional_path": "eligible fixture try",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+        "parent_line": 186,
+        "purpose": "After original fixture UG/state construction, before actual engine construction/global decision.",
+        "source_line": 187
+      },
+      {
+        "anchor": "    before=canonical(s);batch=current_advice(state=copy.deepcopy(s),decision=decision,tick=tick)",
+        "conditional_path": "actual fixture BRANCH path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+        "parent_line": 188,
+        "purpose": "Before existing state canonical copy and actual bounded adviser delegation; no argument/routine split.",
+        "source_line": 190
+      },
+      {
+        "anchor": "    receipt=receipt_flags(check(s,decision,batch))",
+        "conditional_path": "eligible nonempty READY fixture path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+        "parent_line": 200,
+        "purpose": "Before original full independent fixture consumer/receipt check; no accepted proposal/positive gate implied.",
+        "source_line": 203
+      },
+      {
+        "anchor": "    mutations=[]\n    def bad(label,edit):",
+        "conditional_path": "eligible fixture else",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+        "parent_line": 230,
+        "purpose": "Before original malformed-batch/ordered-port/later-proposal negative work.",
+        "source_line": 234
+      },
+      {
+        "anchor": "    canonical_first=first_key(s,0);artifacts['canonical_first']=canonical_first",
+        "conditional_path": "eligible fixture else",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+        "parent_line": 270,
+        "purpose": "Before original canonical-prefix and empty/quota/error search controls. Existing quota/UNKNOWN-status setup remains before this marker.",
+        "source_line": 275
+      },
+      {
+        "anchor": "      holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[]}",
+        "conditional_path": "genuine independently selected future-key family path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+        "parent_line": 298,
+        "purpose": "Before original actual anchor adoption/owned checkpoint and pending continuation work.",
+        "source_line": 304
+      },
+      {
+        "anchor": "      e2.rollback(token);remote_error=None",
+        "conditional_path": "genuine pending lifecycle path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+        "parent_line": 356,
+        "purpose": "Before original remote-conflict fixture/search, then remaining pending/forced-fill work. This does not isolate each later substep.",
+        "source_line": 363
+      },
+      {
+        "anchor": "  need(result['declared_cases']==22 and len(result['cases'])==22,'all original22 retained once')",
+        "conditional_path": "unconditional if original22 returned",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+        "parent_line": 589,
+        "purpose": "Second original30 wrapper, immediately after its unchanged original22 call returns and before existing declaration-shape assertion/extra8 analyses.",
+        "source_line": 597
+      },
+      {
+        "anchor": "    try:\n      for mode,label in (('VALUE_ERROR',labels[5]),('TIMEOUT',labels[6])):",
+        "conditional_path": "genuine prior remote/continuation evidence path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+        "parent_line": 659,
+        "purpose": "Before original extra8 control short replacement-error/Timeout/later-branch searches. Prior retirement/recomposition/component reports remain before this position.",
+        "source_line": 668
+      }
+    ],
+    "prefix": "UNQUALIFIED_PHASE_OBSERVATION ",
+    "qualification": "Only separate complete current43 record and wire/custody/native20/512/55/60/90+1 gates with all43PASSED0SKIP/no gaps and current original17/retention17 can qualify controls. Logs alone never qualify and do not retrospectively classify older runs.",
+    "wire": "Unchanged direct original tick();print(one fixed ASCIIliteral,file=sys.stderr,flush=True);tick(), normal LF. Existing sys import only. No phase helper/global state/counters/snapshots/clock/process or extra scientific delegation."
+  },
+  "remaining_gates": [
+    "Distinct whole exact current Source/contract/delta review plus Root read.",
+    "Root must bind current controls Source and full20 literal boundedstderr policy in current caller/once plan; no grants/plans/actuals here.",
+    "All43 scientific/guard/limits/currentcontext/memo/caller/output/native gates remain; no case removal, budget increase or unchanged rerun.",
+    "No bottleneck/timing attribution or fit prediction. Prior Source3 marker-only timeout and all earlier records remain unchanged.",
+    "No target/proof/fullGCTS/trajectory/RL/learning/positive native admission from Source or stderr."
+  ],
+  "prior_whole_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-phase-diagnostic-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "542b1f2323d1b9de191bb7d478c40edf1fa7b5dd07d64d63d9690a3ee61a64f7",
+    "bytes": 6071
+  },
+  "ROOT_resource_accepted": false,
+  "logical_proof_accepted": false
+}

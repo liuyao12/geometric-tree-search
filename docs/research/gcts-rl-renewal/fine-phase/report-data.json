@@ -1,0 +1,147 @@
+{
+  "assessment": "The next diagnosis should distinguish accumulated control cost from adoption and continuation work before choosing an optimization. A further untimed marker alone would not measure where the budget went. All control checks, independent fresh validation, rollback semantics and the original success limit remain required. No new theorem, proof-search gain, learned marking or RL result is established.",
+  "consumer_passed": null,
+  "consumer_skipped": null,
+  "control_record": null,
+  "evidence": [
+    {
+      "href": "evidence-manifest.json",
+      "label": "Exact evidence manifest"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Current UNKNOWN disposition"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/advice-controls-external-v1/meter-stderr.txt",
+      "label": "Actual trace and worker error"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/advice-controls-external-v1/native-terminal.json",
+      "label": "Current native terminal/reaping"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/advice-controls-external-v1/ONCE.json",
+      "label": "Current once invocation"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/advice-controls-external-v1/observation.json",
+      "label": "Current postterminal observation"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/ROOT-advice-controls-tool-bracket-v1.json",
+      "label": "Current tool time bracket"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "label": "Current original controls"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "label": "Current retention controls"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "label": "Original controls lossless record"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "label": "Retention controls lossless record"
+    },
+    {
+      "href": "evidence/ROOT-same-Source-comparison-v1.json",
+      "label": "Same mathematical input and limits"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-cold-ROOT-source-20261016/Source-contract-v9.json",
+      "label": "Current caller contract"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-controls-source-20261016/Source-contract-v4.json",
+      "label": "Exact trace contract"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-controls-source-20261016/Source-delta-v4.json",
+      "label": "Full marker-erasure delta"
+    },
+    {
+      "href": "../observation-reuse/reader.html#results",
+      "label": "Earlier coarse trace and immutable timeouts"
+    },
+    {
+      "href": "../fair-interface/reader.html#family",
+      "label": "Earlier actual tile rows"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-controls-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent controls review"
+    },
+    {
+      "href": "evidence/unit-row-fine-phase-cold-independent-source-20261016/typed-Source-review-v9.json",
+      "label": "Independent caller review"
+    }
+  ],
+  "lead": "Eight fixed trace writes narrow the next investigation. Expanded controls still remain UNKNOWN.",
+  "observed_phases": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE"
+  ],
+  "outcome": "The current original search and retention suites pass without skips. The expanded stage reaches the unchanged time limit without returning its case record. All three invocations are closed and reaped; no target run was admitted.",
+  "phase_explanation": "The trace records eight writes through P30_BEFORE_PENDING_LIFECYCLE; no P30_BEFORE_REMOTE_LIFECYCLE write is recorded. Between these Source sites lie marker postcheck, callback setup, engine construction, adoption search, checkpoint and rollback checks, continuation search and reports, and the next marker precheck. No timestamps distinguish earlier accumulated cost from this interval. Write/flush or budget checks may fail, and conditional sites may be skipped. These observations certify no case result, entry, return, nonreturn or bottleneck, and do not classify earlier runs.",
+  "phase_literals": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+    "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+    "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+    "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+  ],
+  "phase_stderr": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES\nUNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE\nUNIT_ROW_GLOBAL_ENGINE_UNKNOWN: TimeoutError: complete local-degree controls original20/500 reserve unfinished\n",
+  "qualification": "Eight recorded writes are diagnostic observations, not passed cases or completed phases. No expanded-stage case count, reuse count, component coverage or native-positive result is accepted.",
+  "reuse_record": null,
+  "schema": "fine-phase-saved-reader-v1",
+  "stage_native_qualified": false,
+  "stages": [
+    {
+      "label": "original controls",
+      "native_launch_to_postprobe_ns": 6215397000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 45973504
+    },
+    {
+      "label": "domain controls",
+      "native_launch_to_postprobe_ns": 4782610000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed; no skips",
+      "peak_bytes": 67354624
+    },
+    {
+      "label": "advice controls",
+      "native_launch_to_postprobe_ns": 20098584000,
+      "native_resources_qualified": false,
+      "outcome": "UNKNOWN; no case record",
+      "peak_bytes": 47267840
+    }
+  ]
+}

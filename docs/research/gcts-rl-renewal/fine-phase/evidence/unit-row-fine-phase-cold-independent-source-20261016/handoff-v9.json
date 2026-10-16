@@ -1,0 +1,32 @@
+{
+  "actual_execution_authorized": false,
+  "checks_count": 16,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 29197,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-cold-independent-source-20261016/findings-v9.json",
+    "sha256": "3a06b8595af21c9a276d88c30be8f6550bc55744854d1a6861c43eeb2c711e8b"
+  },
+  "packet_distinct_raw_paths_checked": 69,
+  "packet_reference_occurrences_checked": 163,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-fine-phase-cold-independent-handoff-v9",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 49557,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-cold-ROOT-source-20261016/unit_row_fine_phase_cold_v9.py",
+    "sha256": "77c184ee33710b69b1e9fa94ee11ed0abec0a1190a07864c549a5f912995ea20"
+  },
+  "source_contract": {
+    "bytes": 52691,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-cold-ROOT-source-20261016/Source-contract-v9.json",
+    "sha256": "8ad2a7be318ce83c711b978b4d90b3a17b19cba79c2f7186ece663c10fcf1414"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 7693,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-cold-independent-source-20261016/typed-Source-review-v9.json",
+    "sha256": "369e08351c648799d0ff6234978b8a771ea6852141f17cef5c59ccc67e178b24"
+  }
+}

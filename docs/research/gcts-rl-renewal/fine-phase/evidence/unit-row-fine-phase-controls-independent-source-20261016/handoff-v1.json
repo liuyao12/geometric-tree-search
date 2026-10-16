@@ -1,0 +1,43 @@
+{
+  "schema": "unit-row-fine-phase-controls-independent-handoff-v1",
+  "scope": "unit-row-fine-phase-controls-Source",
+  "source": {
+    "bytes": 94228,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py",
+    "sha256": "d07fad27a63d5c74543433b06dadf00352fe292797d61d6d5058988781d0afd2"
+  },
+  "source_contract": {
+    "bytes": 23550,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/Source-contract-v4.json",
+    "sha256": "1edeb923c73aca7f8c228648228e959c364f1a3565ab019b663442c7a411f067"
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "bb2e41d20f1e1208d57c70e3eca34bd0687e5db8da9ecebeb64b4c2448433b1d",
+    "bytes": 6361
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "706ac9b706c8fc8bb9b99be533248de9dc6908b9485b6288fd887455dc968b3c",
+    "bytes": 16765
+  },
+  "independent_delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "79a57a42944ac66bf223d8a16cfa1bb2767a1afe83df06b05517c7eb7e78f442",
+    "bytes": 15607
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored immutable consumer3/earlier consumer-validator and control-harness/horizon edits, plus older logical-checker/codec/family work. Reviewer did not author these controls3/4, adviser, engine, c960 or c354. This review retains prior whole controls3 scope and is not self-review of consumer3 or runtime qualification.",
+  "summary": "Ten new tick-bracketed static markers +VERSION only. Entire Source3 raw/AST restoration and both patches checked; all43/reuse/lifecycle unchanged. Runtime maximal20 markers1028B, conditional ordered subsequence; no entry/return/completion/timing/qualification claim. No execution or actual grant.",
+  "remaining_gates": [
+    "Distinct whole exact current Source/contract/delta review plus Root read.",
+    "Root must bind current controls Source and full20 literal boundedstderr policy in current caller/once plan; no grants/plans/actuals here.",
+    "All43 scientific/guard/limits/currentcontext/memo/caller/output/native gates remain; no case removal, budget increase or unchanged rerun.",
+    "No bottleneck/timing attribution or fit prediction. Prior Source3 marker-only timeout and all earlier records remain unchanged.",
+    "No target/proof/fullGCTS/trajectory/RL/learning/positive native admission from Source or stderr."
+  ]
+}

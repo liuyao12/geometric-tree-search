@@ -1,0 +1,272 @@
+{
+  "API": {
+    "call": "run_controls(*,language,engine_factory,adviser,validate_advice,degree_proposer,fallback,certify_fallback,tick)",
+    "expected_cases": 43,
+    "factory": "Existing Root callbacks/engine3 version8/consumer3/adviser3; no new public method/degree wrapper/caller format.",
+    "keyword_count": 8,
+    "new_cases": 0,
+    "new_cases_key": "new_cases",
+    "output_schema": "unit-row-goal-advice-controls-v1",
+    "preserved_prior_cases": 43,
+    "qualification": "All43 PASSED0SKIP/no other gap plus current original17/retention17 and unchanged full native/wire gates; targets stay withheld until genuine current qualification."
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 13345,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/author-static-v4.json",
+    "sha256": "d4b37ece52b2a61503ebecf42a4bf795a7c013e49f985285932dd117199191a4"
+  },
+  "author_static_checks": 15,
+  "authorship_disclosure": "Author wrote controls/membership/degree/fallback; not adviser3/consumer3/engine8/c354/transition. This is author static evidence, not peer review or actual evidence. Diagnosis reviewer authors consumer; Root owns caller/native/once/actual/disposition/publication.",
+  "dependency_contracts": {
+    "adviser": {
+      "bytes": 15617,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "3dffe2290254ad969cfcb8817d1d149e8ba6a944ac88e1791cd55b8bcecfe048"
+    },
+    "engine": {
+      "bytes": 7403,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "986bec372461b8e629893c289e073fbbb1f0f6445d24be52d7f285ece1c64091"
+    },
+    "validator": {
+      "bytes": 10250,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/Source-contract-v3.json",
+      "sha256": "ceead8e6bea02ca1559e2042d3bc8a3b227bea962e844f2e11a9c2a2284a4658"
+    }
+  },
+  "forward_patch": {
+    "bytes": 5880,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/coarse3-to-fine4-forward.patch",
+    "sha256": "c94e1e0e6ec92c78b985c7d9b6db8fd1c8876d8d94a488f00f755342c6a85652"
+  },
+  "full_inverse_patch": {
+    "bytes": 5880,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/fine4-to-coarse3-full-inverse.patch",
+    "sha256": "7b9ce021397b78e0fbf702359b41b4aeeadbeae6b2ecfba12c538944f40b8632"
+  },
+  "marker_erasure_equivalent_definitions": 2,
+  "new_cases": [],
+  "phase_stderr": {
+    "coarse_literals_preserved": [
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+    ],
+    "coarse_maximum_bytes": 463,
+    "failure": "Original tick/write/flush errors propagate; no logging in finally/exception handlers or deliberately after a failed native check. A started write may stall across20 before postcheck fails; no per-marker deadline or timestamp claim. A bounded partial line/subsequence plus existing raw error evidence remains diagnostic only. Failure55 never authorizes new scientific work.",
+    "fine_literals_added": [
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS"
+    ],
+    "fine_maximum_bytes": 565,
+    "maximum_emissions": 20,
+    "maximum_full_sequence_bytes": 1028,
+    "observation_only": "Any literal, including P30_AT_ORIGINAL22_RETURN, is only a reached-write producer observation. No accepted entry/return/completed phase, case count/pass/skip, cache hit, useful candidate, callback/rollback correctness, elapsed duration or positive native/proof/trajectory/target/RL admission follows. Missing labels do not prove code was absent; a native precheck before the next label can fail even after preceding work returns.",
+    "order": "Runtime ordered subsequence of this20-item list, not physical Source line order: outer BEFORE_PRIOR30, conditional fine old22+old30 positions, outer AFTER_PRIOR30 then remaining coarse positions. Branch eligibility may omit fine sites. At most one emission per static site per controls invocation.",
+    "ordered_literals": [
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN"
+    ],
+    "positions": [
+      {
+        "anchor": "  initial=state(language,[],tick)",
+        "conditional_path": "unconditional",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+        "parent_line": 172,
+        "purpose": "First original22 body, before its initial state/theory root setup; helper-definition entry overhead remains outside this boundary.",
+        "source_line": 172
+      },
+      {
+        "anchor": "    e=make(s);decision=e.decision()",
+        "conditional_path": "eligible fixture try",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+        "parent_line": 186,
+        "purpose": "After original fixture UG/state construction, before actual engine construction/global decision.",
+        "source_line": 187
+      },
+      {
+        "anchor": "    before=canonical(s);batch=current_advice(state=copy.deepcopy(s),decision=decision,tick=tick)",
+        "conditional_path": "actual fixture BRANCH path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+        "parent_line": 188,
+        "purpose": "Before existing state canonical copy and actual bounded adviser delegation; no argument/routine split.",
+        "source_line": 190
+      },
+      {
+        "anchor": "    receipt=receipt_flags(check(s,decision,batch))",
+        "conditional_path": "eligible nonempty READY fixture path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+        "parent_line": 200,
+        "purpose": "Before original full independent fixture consumer/receipt check; no accepted proposal/positive gate implied.",
+        "source_line": 203
+      },
+      {
+        "anchor": "    mutations=[]\n    def bad(label,edit):",
+        "conditional_path": "eligible fixture else",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+        "parent_line": 230,
+        "purpose": "Before original malformed-batch/ordered-port/later-proposal negative work.",
+        "source_line": 234
+      },
+      {
+        "anchor": "    canonical_first=first_key(s,0);artifacts['canonical_first']=canonical_first",
+        "conditional_path": "eligible fixture else",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+        "parent_line": 270,
+        "purpose": "Before original canonical-prefix and empty/quota/error search controls. Existing quota/UNKNOWN-status setup remains before this marker.",
+        "source_line": 275
+      },
+      {
+        "anchor": "      holder={'engine':None,'inner_token':None,'inner_snapshot':None,'phase':'capture','receipts':[]}",
+        "conditional_path": "genuine independently selected future-key family path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+        "parent_line": 298,
+        "purpose": "Before original actual anchor adoption/owned checkpoint and pending continuation work.",
+        "source_line": 304
+      },
+      {
+        "anchor": "      e2.rollback(token);remote_error=None",
+        "conditional_path": "genuine pending lifecycle path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+        "parent_line": 356,
+        "purpose": "Before original remote-conflict fixture/search, then remaining pending/forced-fill work. This does not isolate each later substep.",
+        "source_line": 363
+      },
+      {
+        "anchor": "  need(result['declared_cases']==22 and len(result['cases'])==22,'all original22 retained once')",
+        "conditional_path": "unconditional if original22 returned",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+        "parent_line": 589,
+        "purpose": "Second original30 wrapper, immediately after its unchanged original22 call returns and before existing declaration-shape assertion/extra8 analyses.",
+        "source_line": 597
+      },
+      {
+        "anchor": "    try:\n      for mode,label in (('VALUE_ERROR',labels[5]),('TIMEOUT',labels[6])):",
+        "conditional_path": "genuine prior remote/continuation evidence path",
+        "literal": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_RETIREMENT_FOLLOWUPS",
+        "parent_line": 659,
+        "purpose": "Before original extra8 control short replacement-error/Timeout/later-branch searches. Prior retirement/recomposition/component reports remain before this position.",
+        "source_line": 668
+      }
+    ],
+    "prefix": "UNQUALIFIED_PHASE_OBSERVATION ",
+    "qualification": "Only separate complete current43 record and wire/custody/native20/512/55/60/90+1 gates with all43PASSED0SKIP/no gaps and current original17/retention17 can qualify controls. Logs alone never qualify and do not retrospectively classify older runs.",
+    "wire": "Unchanged direct original tick();print(one fixed ASCIIliteral,file=sys.stderr,flush=True);tick(), normal LF. Existing sys import only. No phase helper/global state/counters/snapshots/clock/process or extra scientific delegation."
+  },
+  "remaining_gates": [
+    "Distinct whole exact current Source/contract/delta review plus Root read.",
+    "Root must bind current controls Source and full20 literal boundedstderr policy in current caller/once plan; no grants/plans/actuals here.",
+    "All43 scientific/guard/limits/currentcontext/memo/caller/output/native gates remain; no case removal, budget increase or unchanged rerun.",
+    "No bottleneck/timing attribution or fit prediction. Prior Source3 marker-only timeout and all earlier records remain unchanged.",
+    "No target/proof/fullGCTS/trajectory/RL/learning/positive native admission from Source or stderr."
+  ],
+  "schema": "unit-row-fine-phase-controls-handoff-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-fine-phase-controls-Source",
+  "source": {
+    "bytes": 94228,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py",
+    "sha256": "d07fad27a63d5c74543433b06dadf00352fe292797d61d6d5058988781d0afd2"
+  },
+  "source_contract": {
+    "bytes": 23550,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/Source-contract-v4.json",
+    "sha256": "1edeb923c73aca7f8c228648228e959c364f1a3565ab019b663442c7a411f067"
+  },
+  "source_delta": {
+    "bytes": 8110,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/Source-delta-v4.json",
+    "sha256": "aa8b445cc8c8ee2cb6db3c317685a160f59acb87bbdfbdc6c502ea9f9e9f8fd1"
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 94228,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fine-phase-controls-source-20261016/compatible_fibres_controls_v4.py",
+      "sha256": "d07fad27a63d5c74543433b06dadf00352fe292797d61d6d5058988781d0afd2"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "unchanged_raw_definitions": 10,
+  "whole_module_AST_inverse": true
+}
