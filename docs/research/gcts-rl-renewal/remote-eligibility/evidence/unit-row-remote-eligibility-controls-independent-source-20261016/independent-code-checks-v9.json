@@ -1,0 +1,141 @@
+{
+  "schema": "unit-row-remote-eligibility-independent-code-checks-v9",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+    "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476",
+    "bytes": 118016
+  },
+  "parent": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201",
+    "bytes": 114823
+  },
+  "checks": [
+    {
+      "check": "Independent own VERSION plus one insertion full raw forward/inverse and whole AST inverse",
+      "passed": true,
+      "inserted_bytes": 3206,
+      "inserted_lines": 39
+    },
+    {
+      "check": "entire top-level raw+AST exact 0:Unavailable",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 1:CallbackExhausted",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 2:need",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 3:canonical",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 4:digest",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 5:tile",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 6:state",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 7:ug",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 8:obligations",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 10:run_controls",
+      "passed": true
+    },
+    {
+      "check": "entire top-level raw+AST exact 11:run_controls",
+      "passed": true
+    },
+    {
+      "check": "Every nested/helper FunctionDef raw+AST exact, no new function or API",
+      "passed": true,
+      "count": 55,
+      "names": [
+        "need:0",
+        "canonical:0",
+        "digest:0",
+        "tile:0",
+        "state:0",
+        "ug:0",
+        "obligations:0",
+        "passed:0",
+        "passed:1",
+        "passed:2",
+        "skip:0",
+        "skip:1",
+        "skip:2",
+        "prepared:0",
+        "reject:0",
+        "reject:1",
+        "snap:0",
+        "restored:0",
+        "make:0",
+        "current_advice:0",
+        "check:0",
+        "check:1",
+        "receipt_flags:0",
+        "first_key:0",
+        "unknown_result:0",
+        "first_try:0",
+        "empty_advice:0",
+        "quota_advice:0",
+        "stop_after_placement:0",
+        "observing_factory:0",
+        "observing_factory:1",
+        "authority_bytes:0",
+        "request_bytes:0",
+        "fresh_validate:0",
+        "report_receipt:0",
+        "remember:0",
+        "actual_adviser:0",
+        "component:0",
+        "nodes:0",
+        "features:0",
+        "observed_degree:0",
+        "observed_degree:1",
+        "observed_degree:2",
+        "bad:0",
+        "timeout_advice:0",
+        "value_error:0",
+        "forbidden_advice:0",
+        "observed_adviser:0",
+        "observed_adviser:1",
+        "observed_validator:0",
+        "observed_validator:1",
+        "lifecycle_callbacks:0",
+        "watched_validator:0",
+        "capture_degree:0",
+        "watched_adviser:0"
+      ]
+    },
+    {
+      "check": "All24 sampled phase groups and six continuation write lines exact",
+      "passed": true,
+      "count": 30
+    },
+    {
+      "check": "Component call isolated, one real decision, exact bad-row gate and postdecision search baseline",
+      "passed": true
+    }
+  ],
+  "check_count": 15,
+  "method": "Own stdlib byte forward/inverse and AST inspection/compile only; no generated Source evaluated/imported or semantic tests. Final contract/handoff remains required for typed review."
+}

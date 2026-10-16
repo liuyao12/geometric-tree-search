@@ -1,0 +1,305 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "checks": [
+    {
+      "check": "complete two-edit whole byte forward",
+      "evidence": 2,
+      "passed": true
+    },
+    {
+      "check": "complete two-edit whole byte inverse",
+      "evidence": {
+        "bytes": 114823,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+        "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201"
+      },
+      "passed": true
+    },
+    {
+      "check": "whole AST inverse after exact declared source erasure",
+      "evidence": "No generated code execution/import.",
+      "passed": true
+    },
+    {
+      "check": "AST/compile-only syntax",
+      "evidence": "ast.parse/compile only, never exec/import/function/kernel/checker/search/model/clock/test.",
+      "passed": true
+    },
+    {
+      "check": "same twelve top-level names",
+      "evidence": [
+        "Unavailable",
+        "CallbackExhausted",
+        "need",
+        "canonical",
+        "digest",
+        "tile",
+        "state",
+        "ug",
+        "obligations",
+        "run_controls",
+        "run_controls",
+        "run_controls"
+      ],
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 0 Unavailable",
+      "evidence": {
+        "new_line": 17,
+        "old_line": 17
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 1 CallbackExhausted",
+      "evidence": {
+        "new_line": 20,
+        "old_line": 20
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 2 need",
+      "evidence": {
+        "new_line": 23,
+        "old_line": 23
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 3 canonical",
+      "evidence": {
+        "new_line": 27,
+        "old_line": 27
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 4 digest",
+      "evidence": {
+        "new_line": 30,
+        "old_line": 30
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 5 tile",
+      "evidence": {
+        "new_line": 33,
+        "old_line": 33
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 6 state",
+      "evidence": {
+        "new_line": 52,
+        "old_line": 52
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 7 ug",
+      "evidence": {
+        "new_line": 74,
+        "old_line": 74
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 8 obligations",
+      "evidence": {
+        "new_line": 78,
+        "old_line": 78
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 10 run_controls",
+      "evidence": {
+        "new_line": 731,
+        "old_line": 692
+      },
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST unchanged 11 run_controls",
+      "evidence": {
+        "new_line": 962,
+        "old_line": 923
+      },
+      "passed": true
+    },
+    {
+      "check": "same eight-keyword API all three wrappers",
+      "evidence": [
+        "language",
+        "engine_factory",
+        "adviser",
+        "validate_advice",
+        "degree_proposer",
+        "fallback",
+        "certify_fallback",
+        "tick"
+      ],
+      "passed": true
+    },
+    {
+      "check": "case declaration unchanged common_names",
+      "evidence": "43 exact same case names, no added/removed/renamed case.",
+      "passed": true
+    },
+    {
+      "check": "case declaration unchanged scheduler_names",
+      "evidence": "43 exact same case names, no added/removed/renamed case.",
+      "passed": true
+    },
+    {
+      "check": "case declaration unchanged labels",
+      "evidence": "43 exact same case names, no added/removed/renamed case.",
+      "passed": true
+    },
+    {
+      "check": "case declaration unchanged fibre_labels",
+      "evidence": "43 exact same case names, no added/removed/renamed case.",
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact lifecycle callback watched_validator",
+      "evidence": "No callback/stop/return/kwargs change.",
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact lifecycle callback capture_degree",
+      "evidence": "No callback/stop/return/kwargs change.",
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact lifecycle callback watched_adviser",
+      "evidence": "No callback/stop/return/kwargs change.",
+      "passed": true
+    },
+    {
+      "check": "whole raw/AST exact lifecycle callback lifecycle_callbacks",
+      "evidence": "No callback/stop/return/kwargs change.",
+      "passed": true
+    },
+    {
+      "check": "exact diagnostic print ASTs UNQUALIFIED_PHASE_OBSERVATION ",
+      "evidence": 24,
+      "passed": true
+    },
+    {
+      "check": "exact raw diagnostic lines UNQUALIFIED_PHASE_OBSERVATION ",
+      "evidence": 24,
+      "passed": true
+    },
+    {
+      "check": "exact diagnostic print ASTs UNQUALIFIED_CONTINUATION_OBSERVATION ",
+      "evidence": 6,
+      "passed": true
+    },
+    {
+      "check": "exact raw diagnostic lines UNQUALIFIED_CONTINUATION_OBSERVATION ",
+      "evidence": 6,
+      "passed": true
+    },
+    {
+      "check": "unchanged original live-search compound retained once",
+      "evidence": "After actual exact bad-row BRANCH gate and postdecision baseline.",
+      "passed": true
+    },
+    {
+      "check": "component directly uses check, not watched/live delegate",
+      "evidence": "Existing check calls captured original validation endpoint; not engine observers.",
+      "passed": true
+    },
+    {
+      "check": "capture phase disabled before component/decision",
+      "evidence": "Empty holder prevents capture/remote stop during preflight.",
+      "passed": true
+    },
+    {
+      "check": "exact decision gate and postdecision search baseline",
+      "evidence": "No fabricated BRANCH/degree/EOF; unexpected shapes fail closed.",
+      "passed": true
+    },
+    {
+      "check": "old30 and outer43 raw untouched gap predicates",
+      "evidence": "Old30 missing actual artifacts ->eightSKIPs; outer actual-checkpoint/context predicates remain exact, component cannot create them.",
+      "passed": true
+    },
+    {
+      "check": "other9 scientific Sources, input2 and master full raw pins exact",
+      "evidence": {
+        "Sources": 10,
+        "inputs": 2
+      },
+      "passed": true
+    }
+  ],
+  "checks_count": 35,
+  "limitations": "Author static construction evidence, not genuine independent review, control result or fit prediction.",
+  "method": "Raw bytes, stdlib hash/JSON/difflib, AST/compile only. No generated code import/exec/function/model/kernel/search/checker/test/clock/actual calls.",
+  "parent": {
+    "bytes": 114823,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py",
+    "sha256": "b2737a9427adb93ebf9857c76f6b49c8be7540350643e9730d10910cd26f7201"
+  },
+  "schema": "unit-row-remote-eligibility-author-static-v9",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 118016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+    "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_definitions": [
+    {
+      "index": 0,
+      "name": "Unavailable"
+    },
+    {
+      "index": 1,
+      "name": "CallbackExhausted"
+    },
+    {
+      "index": 2,
+      "name": "need"
+    },
+    {
+      "index": 3,
+      "name": "canonical"
+    },
+    {
+      "index": 4,
+      "name": "digest"
+    },
+    {
+      "index": 5,
+      "name": "tile"
+    },
+    {
+      "index": 6,
+      "name": "state"
+    },
+    {
+      "index": 7,
+      "name": "ug"
+    },
+    {
+      "index": 8,
+      "name": "obligations"
+    },
+    {
+      "index": 10,
+      "name": "run_controls"
+    },
+    {
+      "index": 11,
+      "name": "run_controls"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "schema": "unit-row-remote-eligibility-controls-typed-Source-review-v1",
+  "scope": "unit-row-remote-eligibility-controls-Source",
+  "source": {
+    "bytes": 118016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+    "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/Source-contract-v9.json",
+    "sha256": "ec1328227aee080bd715aeff7c07ba450388bc45addb497644a6c2b68b2cfacc",
+    "bytes": 45182
+  },
+  "sources": {
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "controls": {
+      "bytes": 118016,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+      "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    }
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored immutable consumer3/earlier validators and earlier control-harness/horizon/logical-checker/codec/family work; did not author controls9/8, adviser3, engine8, c960/c354 or Root caller. Distinct control Source review retaining whole8, not self-review of consumer dependency or independent semantic replay.",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "summary": "No scoped blocker. Complete two-edit raw/AST inverse; isolated component rejection; real exact-row BRANCH gate; explicit postdecision baseline/cumulative cost; honest16/17 and downstream gaps; original A/B ownership, cases, diagnostics and limits preserved.",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/findings-v9.json",
+    "sha256": "99befd5c5fc4347b612d86637e585cf13bdaca60fa3b70ffb6aaee98ce48f734",
+    "bytes": 5849
+  },
+  "code_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/independent-code-checks-v9.json",
+    "sha256": "4f4056823e9c2adcdc237460e6a83a935945d5fc48357231878b97aa305b2de2",
+    "bytes": 4016
+  },
+  "metadata_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/independent-metadata-checks-v9.json",
+    "sha256": "5e595dbbde9a7971ffe33e0d5d5696f350f28548246e9675c09f4d316d7218c9",
+    "bytes": 14002
+  },
+  "prior_whole_review": {
+    "bytes": 7848,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/typed-Source-review-v8.json",
+    "sha256": "0d73efd11cb74f68f6d58f418bd7295c6c724944c86f3e82215993d99e330fd3"
+  },
+  "conditions": [
+    "Root independently binds/reviews current cold caller/Source9/contract9/diagnostic tick ABI and original input2; no grant/actual here.",
+    "Current original17/retention17 plus all43 PASSED0SKIP/no essential gap and full native20/512MiB/failure55/owned60/caller90+1/lossless4MiBencoded/16MiBexpanded gates remain mandatory before targets.",
+    "Component intake has no actual branch/rejection/fallback/EOF/degree authority; require real normal-search callback/event/placement and owned exact rollback. Ineligible decision is an essential gap.",
+    "Preflight is charged and stateful; preserve after_decision logical search baseline, cumulative events/counters and before/after artifacts, no reset/equal-runtime claim.",
+    "Preserve frozen8/actual14 UNKNOWN and earlier negative7; no eligibility/43/fit/proof/trajectory/GCTS/RL prediction."
+  ],
+  "logical_proof_accepted": false,
+  "exact_point_board_accepted": false,
+  "degree_or_EOF_accepted": false,
+  "scheduler_accepted": false,
+  "complete_GCTS_model_accepted": false,
+  "trajectory_accepted": false,
+  "learned_marking_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false
+}

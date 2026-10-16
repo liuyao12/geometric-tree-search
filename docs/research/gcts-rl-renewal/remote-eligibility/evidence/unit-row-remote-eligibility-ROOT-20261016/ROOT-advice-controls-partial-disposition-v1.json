@@ -1,0 +1,1716 @@
+{
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "actual_closed": true,
+  "additional_coverage_gaps": [],
+  "aggregate_B_bytes": 64782336,
+  "all_advice_consumer_gates_qualified": false,
+  "all_case_labels": [
+    "genuine-READY-whole-independent-validation",
+    "pending-obligations-never-facts",
+    "malformed-batch-controls",
+    "later-ranked-malformed-proposal-rejected",
+    "genuine-quota-UNKNOWN-diagnostic-only",
+    "UNKNOWN-rejected-by-executable-validator",
+    "empty-hints-preserve-canonical-choice",
+    "quota-UNKNOWN-preserves-canonical-choice",
+    "adviser-Timeout-UNKNOWN-no-exclusion",
+    "adviser-ValueError-propagates",
+    "validator-ValueError-propagates",
+    "actual-anchor-only-no-future-preinstallation",
+    "first-search-exact-root-restoration",
+    "public-rollback-restores-genuine-nonempty-pending",
+    "pending-key-real-current-row-selection",
+    "pending-search-exact-inner-root-restoration",
+    "remote-mark-invalidates-pending-key",
+    "rejected-pending-hint-preserves-canonical-choice",
+    "pending-request-malformed-controls",
+    "global-forced-fill-retires-family-before-fresh-advice",
+    "global-DEAD-overrides-advice",
+    "global-FORCED-overrides-advice",
+    "whole-family-abandoned-with-different-future-key-remaining",
+    "one-fresh-batch-at-same-rejected-BRANCH",
+    "abandoned-future-members-never-installed-or-excluded",
+    "successful-pending-continuity-preserved",
+    "rejection-parent-and-owned-inner-rollback-exact",
+    "fresh-replacement-ValueError-propagates-without-family-commit",
+    "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+    "later-BRANCH-reconsiders-fresh-advice-after-abandonment",
+    "real-returned-interface-features-score-and-order",
+    "forged-interface-feature-and-score-rejections",
+    "Boolean-versus-integer-feature-and-score-rejections",
+    "obsolete-adviser-version-rejected",
+    "later-ranked-quality-defect-and-order-rejected",
+    "real-returned-root-reopening-remains-legal-and-demoted",
+    "real-returned-universal-diversity-with-declared-term-horizon",
+    "nonempty-READY-replacement-adopted-after-definite-rejection",
+    "replacement-installs-anchor-only-not-future-obligations",
+    "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+    "compatible-occupied-UI-source-fibre-returned-and-validated",
+    "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+    "missing-UI-source-remains-PENDING-not-a-fact"
+  ],
+  "all_reaped": true,
+  "artifact_keys": [
+    "adoption_search",
+    "callback_timeout_search",
+    "canonical_first",
+    "dead_search",
+    "empty_search",
+    "fair_interface",
+    "family_retirement",
+    "fixture",
+    "fixture_advice_attempt",
+    "forced_search",
+    "genuine_inner_snapshot",
+    "pending_continuation_lineage",
+    "pending_continuation_search",
+    "pending_selection_receipts",
+    "pending_success_fixture",
+    "quota_UNKNOWN",
+    "quota_search",
+    "remote_eligibility"
+  ],
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Author owns adviser/engine/c354 and saved-only positive closer14. This partial helper performs literal saved-wire/resource/metadata concordance only; no independent scientific replay or own-dependency proof acceptance.",
+  "case_statuses": [
+    {
+      "case": "genuine-READY-whole-independent-validation",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "pending-obligations-never-facts",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "malformed-batch-controls",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "later-ranked-malformed-proposal-rejected",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "genuine-quota-UNKNOWN-diagnostic-only",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "UNKNOWN-rejected-by-executable-validator",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "empty-hints-preserve-canonical-choice",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "quota-UNKNOWN-preserves-canonical-choice",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "adviser-Timeout-UNKNOWN-no-exclusion",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "adviser-ValueError-propagates",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "validator-ValueError-propagates",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "actual-anchor-only-no-future-preinstallation",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "first-search-exact-root-restoration",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "public-rollback-restores-genuine-nonempty-pending",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "pending-key-real-current-row-selection",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "pending-search-exact-inner-root-restoration",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "remote-mark-invalidates-pending-key",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "rejected-pending-hint-preserves-canonical-choice",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "pending-request-malformed-controls",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "global-forced-fill-retires-family-before-fresh-advice",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "global-DEAD-overrides-advice",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "global-FORCED-overrides-advice",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "whole-family-abandoned-with-different-future-key-remaining",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "one-fresh-batch-at-same-rejected-BRANCH",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "abandoned-future-members-never-installed-or-excluded",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "successful-pending-continuity-preserved",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "rejection-parent-and-owned-inner-rollback-exact",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "fresh-replacement-ValueError-propagates-without-family-commit",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "later-BRANCH-reconsiders-fresh-advice-after-abandonment",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "real-returned-interface-features-score-and-order",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "forged-interface-feature-and-score-rejections",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "Boolean-versus-integer-feature-and-score-rejections",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "obsolete-adviser-version-rejected",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "later-ranked-quality-defect-and-order-rejected",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "real-returned-root-reopening-remains-legal-and-demoted",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "real-returned-universal-diversity-with-declared-term-horizon",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "nonempty-READY-replacement-adopted-after-definite-rejection",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "replacement-installs-anchor-only-not-future-obligations",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "compatible-occupied-UI-source-fibre-returned-and-validated",
+      "reported_status": "PASSED"
+    },
+    {
+      "case": "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "missing-UI-source-remains-PENDING-not-a-fact",
+      "reported_status": "PASSED"
+    }
+  ],
+  "complete_Date_seconds": 10.801,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "controls_accepted": false,
+  "declared_cases": 43,
+  "degree_or_EOF_accepted": false,
+  "essential_gaps": [
+    {
+      "case": "remote-mark-invalidates-pending-key",
+      "reason": "Actual global decision is not BRANCH at the invalidated pending row; no unrelated-scheduling wait or fabricated rejection.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "rejected-pending-hint-preserves-canonical-choice",
+      "reason": "Actual global decision is not BRANCH at the invalidated pending row; no unrelated-scheduling wait or fabricated rejection.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "global-forced-fill-retires-family-before-fresh-advice",
+      "reason": "Forced-fill fixture needs actual two-key family below the last two rows.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "whole-family-abandoned-with-different-future-key-remaining",
+      "reason": "Original22 did not produce required actual remote_fixture; no fabricated family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "one-fresh-batch-at-same-rejected-BRANCH",
+      "reason": "Original22 did not produce required actual remote_fixture; no fabricated family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "abandoned-future-members-never-installed-or-excluded",
+      "reason": "Original22 did not produce required actual remote_fixture; no fabricated family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "successful-pending-continuity-preserved",
+      "reason": "Original22 did not produce required actual remote_fixture; no fabricated family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "rejection-parent-and-owned-inner-rollback-exact",
+      "reason": "Original22 did not produce required actual remote_fixture; no fabricated family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "fresh-replacement-ValueError-propagates-without-family-commit",
+      "reason": "Original22 did not produce required actual remote_fixture; no fabricated family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "fresh-replacement-Timeout-UNKNOWN-no-exclusion",
+      "reason": "Original22 did not produce required actual remote_fixture; no fabricated family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "later-BRANCH-reconsiders-fresh-advice-after-abandonment",
+      "reason": "Original22 did not produce required actual remote_fixture; no fabricated family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "nonempty-READY-replacement-adopted-after-definite-rejection",
+      "reason": "No unique genuine completed pending-rejection checkpoint; no synthetic replacement family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "replacement-installs-anchor-only-not-future-obligations",
+      "reason": "No unique genuine completed pending-rejection checkpoint; no synthetic replacement family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "replacement-owned-nonempty-inner-and-parent-rollback-exact",
+      "reason": "No unique genuine completed pending-rejection checkpoint; no synthetic replacement family.",
+      "reported_status": "SKIPPED"
+    },
+    {
+      "case": "incompatible-marked-UI-source-not-returned-as-legal-or-executed",
+      "reason": "No genuine current incompatible-mark rejection joined to a complete READY return and observed remote search.",
+      "reported_status": "SKIPPED"
+    }
+  ],
+  "exact_point_board_accepted": false,
+  "full_raw_evidence": {
+    "expanded_result": {
+      "bytes": 3357112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "sha256": "f7842ac393204a7efd1a8103a28477890b475303e1dc532692c7d0066e8089f8"
+    },
+    "native_terminal": {
+      "bytes": 1703,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/advice-controls-external-v1/native-terminal.json",
+      "sha256": "262fae8bf3d4bb58e3deb88afea7531eca401bbb9b45d4bcf9dac96be8d6d0d9"
+    },
+    "observation": {
+      "bytes": 480,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/advice-controls-external-v1/observation.json",
+      "sha256": "e17212e4c2a4fc3ddd81f249711f067e069a7a1d4edee6e356e27301cef344f1"
+    },
+    "outputs": [
+      {
+        "bytes": 266223,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+        "sha256": "e5eaf226c9e16d55ef4fb80e1905bc879f745f5345f8c865cad8c25635aba014"
+      },
+      {
+        "bytes": 7046,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/advice-controls-owned-v1/response.jsonl",
+        "sha256": "437e12801b5c3188362935969c5265bed78de4b83cc8f0efcd694e23bce9f533"
+      }
+    ],
+    "tool_bracket": {
+      "bytes": 304,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/ROOT-advice-controls-tool-bracket-v1.json",
+      "sha256": "522cdae6196844eb40666bad67e20a06a455cb93ec332ed4ec721050d51ac1f3"
+    },
+    "transport_concordance": {
+      "bytes": 1496,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/ROOT-advice-controls-transport-concordance-v1.json",
+      "sha256": "414ca7eceff10610c55bafb6517a4fcf431cd1413b2792aceae8f7c1dca88eb4"
+    }
+  },
+  "full_returned_record_retained": true,
+  "inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "learned_marking_accepted": false,
+  "logical_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 10642492000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 10582376000,
+  "paired_saved_alias_concordance": {
+    "artifact_present": true,
+    "pending_selection_accepted_here": false,
+    "pending_selection_observed": true,
+    "source_artifact": "controls.artifacts.pending_success_fixture",
+    "whole_artifact_sha256": "b0d8228a16c8723a8fae76e20acd76ee4ed7dd471de00b1cd8758f70fd021065"
+  },
+  "plan": {
+    "bytes": 7952,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "f3cd7c4c87176ca4a63f269795a9a22e51b06c3043eafdca686ed668c3b608a2"
+  },
+  "positive_closer14_used": false,
+  "proof_search_or_target_result_accepted": false,
+  "remote_calibration_saved_concordance": {
+    "actual_global_decision": {
+      "candidate": {
+        "global_m_values": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              1
+            ],
+            1
+          ]
+        ],
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "membership": {
+          "binding": {
+            "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+            "language_epoch": "3023f5100cbed3ae7978fbd23cc8246a663ed26b92d9898a7c9c0e936c3e5999",
+            "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+            "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+            "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+            "source_bindings_sha256": "377026604aabf5b1a05c7d1a1134904191472a3cc601d78836a00b86daab8d7b"
+          },
+          "identity_preimage": {
+            "binding": {
+              "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+              "language_epoch": "3023f5100cbed3ae7978fbd23cc8246a663ed26b92d9898a7c9c0e936c3e5999",
+              "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "377026604aabf5b1a05c7d1a1134904191472a3cc601d78836a00b86daab8d7b"
+            },
+            "ordered_premise_formulas": [],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "name": "AS",
+              "rule": "axiom"
+            }
+          },
+          "logical_acceptance": false,
+          "ordered_input_formula_ids": [],
+          "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+          "primitive_id": "e2575ba1f8de96ac0b79343978508154fe6576bb6313d50e9f264c0c81270e8a",
+          "schema": "shared-bounded-primitive-member-v1",
+          "status": "MEMBER"
+        },
+        "placement_key": {
+          "tile_type_id": "bounded-point-tile-20ea2170b90d2e65c022cd571346e4ef7334f29bf86daab3dd1ae7b32c330cce",
+          "translation": [
+            0,
+            1
+          ],
+          "type_preimage": {
+            "input_epoch": "3023f5100cbed3ae7978fbd23cc8246a663ed26b92d9898a7c9c0e936c3e5999",
+            "ordered_offsets": [],
+            "ordered_premise_formulas": [],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "name": "AS",
+              "rule": "axiom"
+            }
+          }
+        },
+        "read_obligations": [],
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "bounded-point-tile-20ea2170b90d2e65c022cd571346e4ef7334f29bf86daab3dd1ae7b32c330cce",
+          "translation": [
+            0,
+            1
+          ],
+          "type_preimage": {
+            "input_epoch": "3023f5100cbed3ae7978fbd23cc8246a663ed26b92d9898a7c9c0e936c3e5999",
+            "ordered_offsets": [],
+            "ordered_premise_formulas": [],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "name": "AS",
+              "rule": "axiom"
+            }
+          }
+        }
+      },
+      "kind": "FORCED",
+      "row": 1
+    },
+    "after_state_sha256": "826838d63a13655466ad70c785b1669f94feb4195d6abf6fb8719c377fb37866",
+    "artifact_present": true,
+    "bad_key": {
+      "tile_type_id": "bounded-point-tile-02818fd9734b3aabceff502065056c77905393ec6c03376e62e1d642713bc21b",
+      "translation": [
+        0,
+        8
+      ],
+      "type_preimage": {
+        "input_epoch": "3023f5100cbed3ae7978fbd23cc8246a663ed26b92d9898a7c9c0e936c3e5999",
+        "ordered_offsets": [
+          -7,
+          -8
+        ],
+        "ordered_premise_formulas": [
+          [
+            "all",
+            "n",
+            [
+              "all",
+              "n",
+              [
+                "all",
+                "y",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ],
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "imp",
+            [
+              "all",
+              "n",
+              [
+                "all",
+                "n",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "n"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "n",
+              [
+                "all",
+                "y",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ],
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "primitive_witness": {
+          "formula": [
+            "all",
+            "n",
+            [
+              "all",
+              "y",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "mp"
+        }
+      }
+    },
+    "before_state_sha256": "826838d63a13655466ad70c785b1669f94feb4195d6abf6fb8719c377fb37866",
+    "component_is_scheduler_authority": false,
+    "component_receipt_sha256": "6213a8cc71ec1a9e8085c01484a6744dde204491d879c14ec6fc8cddcc314586",
+    "component_request_sha256": "cbb5600a85c3622039b2a3d4d22ea6b6bec0d91e176a4309fca3600128c05001",
+    "eligible_actual_branch": false,
+    "engine_lifecycle_accepted": false,
+    "family_id": "7c5d1c6bd117d187fefad7b8e30b99c57099af66aaab84728c6bd9551e73c613",
+    "literal_joins_verified": true,
+    "normal_search_started": false,
+    "scientific_replay": false,
+    "source_artifact": "controls.artifacts.remote_eligibility",
+    "whole_artifact_sha256": "124741ddbf125bb65e8f07627e198f3a375dd51e5fbc1efa737643d61d1abf7e"
+  },
+  "reported_PASSED_semantics_accepted_here": false,
+  "reported_passed_cases": 28,
+  "reported_skipped_cases": 15,
+  "scheduler_accepted": false,
+  "schema": "ROOT-advice-consumer-controls-partial-disposition-v15",
+  "scientific_replay": false,
+  "scope": "Only complete returned current43 records with essential SKIPs/additional gaps; exact raw record remains authoritative. Component-shaped pending rejection is not a global engine rejection/branch/rollback test; absent tests are not inferred. Native/wire closure does not qualify controls, target, trajectory, learned marking or RL.",
+  "source_contract": {
+    "bytes": 78318,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-cold-ROOT-source-20261016/Source-contract-v15.json",
+    "sha256": "19b9d91478a01239f75218d60b49b228d8b2df0000d7d44622d4136c34ac212b"
+  },
+  "sources": {
+    "advice_controls": {
+      "bytes": 118016,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+      "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476"
+    },
+    "advice_validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    "converter": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "engine": {
+      "bytes": 52627,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py",
+      "sha256": "e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "intake": {
+      "bytes": 55651,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-cold-ROOT-source-20261016/unit_row_remote_eligibility_cold_v15.py",
+      "sha256": "451b484879c56bb31404ca942a47566f029f548ef16a2d38ecfe890738b711e2"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "point_checker": {
+      "bytes": 10201,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "retained_controls": {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "word_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    }
+  },
+  "status": "COMPLETE_RETURNED43_PARTIAL_CONTROLS_TARGETS_NOT_ADMITTED",
+  "target_admission_qualified": false,
+  "trajectory_accepted": false,
+  "unqualified_continuation_observations": [
+    {
+      "kind": "continuation",
+      "native_ns": 498337362177000,
+      "ordinal": 1,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337366038000,
+      "ordinal": 2,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337366053000,
+      "ordinal": 3,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337383767000,
+      "ordinal": 4,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337395490000,
+      "ordinal": 5,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337399793000,
+      "ordinal": 6,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337399805000,
+      "ordinal": 7,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337423361000,
+      "ordinal": 8,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337435083000,
+      "ordinal": 9,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337439938000,
+      "ordinal": 10,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337439947000,
+      "ordinal": 11,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337457438000,
+      "ordinal": 12,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337469352000,
+      "ordinal": 13,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337474769000,
+      "ordinal": 14,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337477478000,
+      "ordinal": 15,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337495348000,
+      "ordinal": 16,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337507605000,
+      "ordinal": 17,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337518561000,
+      "ordinal": 18,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337518590000,
+      "ordinal": 19,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337536281000,
+      "ordinal": 20,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337548090000,
+      "ordinal": 21,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337554342000,
+      "ordinal": 22,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337554351000,
+      "ordinal": 23,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "kind": "continuation",
+      "native_ns": 498337572672000,
+      "ordinal": 24,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    }
+  ],
+  "unqualified_native_timeline": [
+    {
+      "elapsed_from_launch_ns": 139097000,
+      "interval_since_previous_ns": 139097000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "native_ns": 498330995045000
+    },
+    {
+      "elapsed_from_launch_ns": 139165000,
+      "interval_since_previous_ns": 68000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "native_ns": 498330995113000
+    },
+    {
+      "elapsed_from_launch_ns": 139618000,
+      "interval_since_previous_ns": 453000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "native_ns": 498330995566000
+    },
+    {
+      "elapsed_from_launch_ns": 744489000,
+      "interval_since_previous_ns": 604871000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "native_ns": 498331600437000
+    },
+    {
+      "elapsed_from_launch_ns": 796540000,
+      "interval_since_previous_ns": 52051000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "native_ns": 498331652488000
+    },
+    {
+      "elapsed_from_launch_ns": 841018000,
+      "interval_since_previous_ns": 44478000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "native_ns": 498331696966000
+    },
+    {
+      "elapsed_from_launch_ns": 1288545000,
+      "interval_since_previous_ns": 447527000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "native_ns": 498332144493000
+    },
+    {
+      "elapsed_from_launch_ns": 4477588000,
+      "interval_since_previous_ns": 3189043000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "native_ns": 498335333536000
+    },
+    {
+      "elapsed_from_launch_ns": 4488161000,
+      "interval_since_previous_ns": 10573000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "native_ns": 498335344109000
+    },
+    {
+      "elapsed_from_launch_ns": 5391701000,
+      "interval_since_previous_ns": 903540000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "native_ns": 498336247649000
+    },
+    {
+      "elapsed_from_launch_ns": 5400026000,
+      "interval_since_previous_ns": 8325000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "native_ns": 498336255974000
+    },
+    {
+      "elapsed_from_launch_ns": 6506229000,
+      "interval_since_previous_ns": 1106203000,
+      "kind": "continuation",
+      "native_ns": 498337362177000,
+      "ordinal": 1,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6510090000,
+      "interval_since_previous_ns": 3861000,
+      "kind": "continuation",
+      "native_ns": 498337366038000,
+      "ordinal": 2,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6510105000,
+      "interval_since_previous_ns": 15000,
+      "kind": "continuation",
+      "native_ns": 498337366053000,
+      "ordinal": 3,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6527819000,
+      "interval_since_previous_ns": 17714000,
+      "kind": "continuation",
+      "native_ns": 498337383767000,
+      "ordinal": 4,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 3,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6539542000,
+      "interval_since_previous_ns": 11723000,
+      "kind": "continuation",
+      "native_ns": 498337395490000,
+      "ordinal": 5,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6543845000,
+      "interval_since_previous_ns": 4303000,
+      "kind": "continuation",
+      "native_ns": 498337399793000,
+      "ordinal": 6,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6543857000,
+      "interval_since_previous_ns": 12000,
+      "kind": "continuation",
+      "native_ns": 498337399805000,
+      "ordinal": 7,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6567413000,
+      "interval_since_previous_ns": 23556000,
+      "kind": "continuation",
+      "native_ns": 498337423361000,
+      "ordinal": 8,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 4,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6579135000,
+      "interval_since_previous_ns": 11722000,
+      "kind": "continuation",
+      "native_ns": 498337435083000,
+      "ordinal": 9,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6583990000,
+      "interval_since_previous_ns": 4855000,
+      "kind": "continuation",
+      "native_ns": 498337439938000,
+      "ordinal": 10,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6583999000,
+      "interval_since_previous_ns": 9000,
+      "kind": "continuation",
+      "native_ns": 498337439947000,
+      "ordinal": 11,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6601490000,
+      "interval_since_previous_ns": 17491000,
+      "kind": "continuation",
+      "native_ns": 498337457438000,
+      "ordinal": 12,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 5,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6613404000,
+      "interval_since_previous_ns": 11914000,
+      "kind": "continuation",
+      "native_ns": 498337469352000,
+      "ordinal": 13,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6618821000,
+      "interval_since_previous_ns": 5417000,
+      "kind": "continuation",
+      "native_ns": 498337474769000,
+      "ordinal": 14,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6621530000,
+      "interval_since_previous_ns": 2709000,
+      "kind": "continuation",
+      "native_ns": 498337477478000,
+      "ordinal": 15,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6639400000,
+      "interval_since_previous_ns": 17870000,
+      "kind": "continuation",
+      "native_ns": 498337495348000,
+      "ordinal": 16,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 6,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6651657000,
+      "interval_since_previous_ns": 12257000,
+      "kind": "continuation",
+      "native_ns": 498337507605000,
+      "ordinal": 17,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6662613000,
+      "interval_since_previous_ns": 10956000,
+      "kind": "continuation",
+      "native_ns": 498337518561000,
+      "ordinal": 18,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6662642000,
+      "interval_since_previous_ns": 29000,
+      "kind": "continuation",
+      "native_ns": 498337518590000,
+      "ordinal": 19,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6680333000,
+      "interval_since_previous_ns": 17691000,
+      "kind": "continuation",
+      "native_ns": 498337536281000,
+      "ordinal": 20,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 7,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6692142000,
+      "interval_since_previous_ns": 11809000,
+      "kind": "continuation",
+      "native_ns": 498337548090000,
+      "ordinal": 21,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "elapsed_from_launch_ns": 6698394000,
+      "interval_since_previous_ns": 6252000,
+      "kind": "continuation",
+      "native_ns": 498337554342000,
+      "ordinal": 22,
+      "pending_presence": 1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "elapsed_from_launch_ns": 6698403000,
+      "interval_since_previous_ns": 9000,
+      "kind": "continuation",
+      "native_ns": 498337554351000,
+      "ordinal": 23,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 6716724000,
+      "interval_since_previous_ns": 18321000,
+      "kind": "continuation",
+      "native_ns": 498337572672000,
+      "ordinal": 24,
+      "pending_presence": -1,
+      "receipt_selection": -1,
+      "row": 8,
+      "selected_count": 4,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    },
+    {
+      "elapsed_from_launch_ns": 7419176000,
+      "interval_since_previous_ns": 702452000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_CONTINUATION_SEARCH_GROUP",
+      "native_ns": 498338275124000
+    },
+    {
+      "elapsed_from_launch_ns": 7419216000,
+      "interval_since_previous_ns": 40000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_REMOTE_LIFECYCLE",
+      "native_ns": 498338275164000
+    },
+    {
+      "elapsed_from_launch_ns": 9116037000,
+      "interval_since_previous_ns": 1696821000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AT_ORIGINAL22_RETURN",
+      "native_ns": 498339971985000
+    },
+    {
+      "elapsed_from_launch_ns": 9116090000,
+      "interval_since_previous_ns": 53000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION AFTER_PRIOR30",
+      "native_ns": 498339972038000
+    },
+    {
+      "elapsed_from_launch_ns": 9116098000,
+      "interval_since_previous_ns": 8000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REOPENING",
+      "native_ns": 498339972046000
+    },
+    {
+      "elapsed_from_launch_ns": 9852651000,
+      "interval_since_previous_ns": 736553000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION AFTER_REOPENING",
+      "native_ns": 498340708599000
+    },
+    {
+      "elapsed_from_launch_ns": 9852687000,
+      "interval_since_previous_ns": 36000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OCCUPIED",
+      "native_ns": 498340708635000
+    },
+    {
+      "elapsed_from_launch_ns": 10027705000,
+      "interval_since_previous_ns": 175018000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION AFTER_OCCUPIED",
+      "native_ns": 498340883653000
+    },
+    {
+      "elapsed_from_launch_ns": 10027745000,
+      "interval_since_previous_ns": 40000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_QUALITY_REPORTS",
+      "native_ns": 498340883693000
+    },
+    {
+      "elapsed_from_launch_ns": 10473064000,
+      "interval_since_previous_ns": 445319000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_REPLACEMENT",
+      "native_ns": 498341329012000
+    },
+    {
+      "elapsed_from_launch_ns": 10477228000,
+      "interval_since_previous_ns": 4164000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_OUTPUT",
+      "native_ns": 498341333176000
+    },
+    {
+      "elapsed_from_launch_ns": 10479160000,
+      "interval_since_previous_ns": 1932000,
+      "kind": "phase",
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_RETURN",
+      "native_ns": 498341335108000
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "schema": "unit-row-remote-eligibility-controls-independent-findings-v9",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "source": {
+    "bytes": 118016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+    "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/Source-contract-v9.json",
+    "sha256": "ec1328227aee080bd715aeff7c07ba450388bc45addb497644a6c2b68b2cfacc",
+    "bytes": 45182
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "blockers": [],
+  "manual_findings": [
+    {
+      "id": "V9-1",
+      "lines": [
+        129,
+        130,
+        572,
+        593
+      ],
+      "finding": "One-key component check copies full inputs through original direct endpoint, bypassing watched_validator and both engine observer wrappers. It requires no selection, exactly one full-key explicit remote-mark rejection and false strong flags. Live holder remains empty; no callback/token/event is fabricated. Other authority/collision/guard/resource failures propagate."
+    },
+    {
+      "id": "V9-2",
+      "lines": [
+        594,
+        603
+      ],
+      "finding": "One real public decision is retained with full pre/post logical snapshots. Point state and pending family stay whole-equal; only exact BRANCH at bad-key row qualifies. Other BRANCH/FORCED/DEAD/UNKNOWN remains essential gap, never pass or original-theory nonprovability."
+    },
+    {
+      "id": "V9-3",
+      "lines": [
+        605,
+        609
+      ],
+      "finding": "Search starts/restores exact after_decision logical snapshot. Preflight caches/cursors and cumulative events/counters/native work are not reset or claimed identical to old execution. Engine snapshots exclude monotone counters/events; contract discloses this precisely."
+    },
+    {
+      "id": "V9-4",
+      "lines": [
+        609,
+        623
+      ],
+      "finding": "Original live search/reset and actual rejected-key/fallback/noEXCLUDE checks remain; original owning A outer2 rollback/restored-before2 assertion still runs in finally. Component/global decision alone passes no case. B continuation/occupied ownership is untouched."
+    },
+    {
+      "id": "V9-5",
+      "lines": [
+        614,
+        623,
+        820,
+        824,
+        1412,
+        1414
+      ],
+      "finding": "Ineligible decision raises existing Unavailable before positive remote aliases, so16/17 SKIP and old30 missing-artifact guard skips8. Outer replacement still requires unique genuine rejection callback; incompatible-read still requires actual context plus remote_search. Other genuine observations need not all skip, but any essential gap blocks all43 qualification."
+    },
+    {
+      "id": "V9-6",
+      "lines": [
+        87,
+        88
+      ],
+      "finding": "Whole8 scope retained through independent whole two-region raw/AST inverse. All nested/helper functions,11 other top-level regions,43 labels,8kwargs, A/B lineage, report-only memo/fresh delegations, diagnostics, base grammar/fallback and original numeric gates remain. No target proof/route, invented branch/degree/EOF or stronger acceptance."
+    },
+    {
+      "id": "V9-7",
+      "lines": [
+        380,
+        381
+      ],
+      "finding": "Existing remote stop waits for later degree callback; retained evidence may delay it. Eligible preflight therefore predicts neither prompt interruption nor complete43/native20 fit. This Source limitation is not an actual-path/bottleneck diagnosis."
+    }
+  ],
+  "code_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/independent-code-checks-v9.json",
+    "sha256": "4f4056823e9c2adcdc237460e6a83a935945d5fc48357231878b97aa305b2de2",
+    "bytes": 4016
+  },
+  "metadata_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/independent-metadata-checks-v9.json",
+    "sha256": "5e595dbbde9a7971ffe33e0d5d5696f350f28548246e9675c09f4d316d7218c9",
+    "bytes": 14002
+  },
+  "prior_whole_review": {
+    "bytes": 7848,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/typed-Source-review-v8.json",
+    "sha256": "0d73efd11cb74f68f6d58f418bd7295c6c724944c86f3e82215993d99e330fd3"
+  },
+  "prior_actual14": {
+    "bytes": 29676,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+    "sha256": "eaee9f99e8208bbecbe30927bdbf2353b9f597fa206166da18226938c12f5c03"
+  },
+  "preserved_negative7": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-independent-source-20261016/typed-Source-review-v7.json",
+    "sha256": "1e3347cadc4f43736a5b7db44663fc63699a9a879f0a067a05feeee8b0a72f1c",
+    "bytes": 5752
+  },
+  "interpretation": "Independent control calibration Source review, not consumer self-review, semantic replay, actual eligibility/complete43/native fit or a target-search result. Earlier UNKNOWN observations remain unqualified.",
+  "logical_proof_accepted": false,
+  "exact_point_board_accepted": false,
+  "degree_or_EOF_accepted": false,
+  "scheduler_accepted": false,
+  "complete_GCTS_model_accepted": false,
+  "trajectory_accepted": false,
+  "learned_marking_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false
+}

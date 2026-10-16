@@ -1,0 +1,54 @@
+{
+  "schema": "unit-row-remote-eligibility-controls-independent-handoff-v9",
+  "scope": "unit-row-remote-eligibility-controls-Source",
+  "source": {
+    "bytes": 118016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py",
+    "sha256": "b22520891b5a75196f4ce67763095cf99fe30876e95f0e1b2bd3e9f30b49c476"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/Source-contract-v9.json",
+    "sha256": "ec1328227aee080bd715aeff7c07ba450388bc45addb497644a6c2b68b2cfacc",
+    "bytes": 45182
+  },
+  "source_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/handoff-v9.json",
+    "sha256": "c045b14368d0ccaa4629457025fb077e012ca321e1fcdeda62f7a2f823223c7f",
+    "bytes": 30603
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/typed-Source-review-v9.json",
+    "sha256": "72bfb5a90453eea0f1233218688d62e47bd6b565570978b5f7c8aa2d316a6274",
+    "bytes": 7113
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/findings-v9.json",
+    "sha256": "99befd5c5fc4347b612d86637e585cf13bdaca60fa3b70ffb6aaee98ce48f734",
+    "bytes": 5849
+  },
+  "code_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/independent-code-checks-v9.json",
+    "sha256": "4f4056823e9c2adcdc237460e6a83a935945d5fc48357231878b97aa305b2de2",
+    "bytes": 4016
+  },
+  "metadata_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-independent-source-20261016/independent-metadata-checks-v9.json",
+    "sha256": "5e595dbbde9a7971ffe33e0d5d5696f350f28548246e9675c09f4d316d7218c9",
+    "bytes": 14002
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "checks_summary": {
+    "code": 15,
+    "metadata": 13,
+    "manual": 7,
+    "raw_paths": 42
+  },
+  "actual_execution_authorized": false,
+  "next": "Root owns current caller/plan/grant and measured actuals. All43 and original native gates required."
+}

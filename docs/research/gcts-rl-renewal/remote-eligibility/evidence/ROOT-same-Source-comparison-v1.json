@@ -1,0 +1,23 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "actuals": 3,
+  "all_closed_and_reaped": true,
+  "broad_goal_complete": false,
+  "changed_sources": [
+    "advice_controls",
+    "intake"
+  ],
+  "current_full_record_returned": true,
+  "current_goal_turn": "progress",
+  "previous_goal_turn": "progress",
+  "proof_accepted": false,
+  "reported_PASSED_semantics_independently_accepted_here": false,
+  "reported_passed": 28,
+  "reported_skipped": 15,
+  "same_Source17_input2_reviews_runtime_limits_within_version": true,
+  "same_mathematical_input_runtime_limits": true,
+  "schema": "ROOT-remote-eligibility-comparison-v1",
+  "scientific_replay": false,
+  "target_actuals_launched": 0
+}

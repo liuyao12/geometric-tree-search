@@ -1,0 +1,30 @@
+{
+  "checks": {
+    "AST_parse_compile_only": true,
+    "all9_strong_flags_false_required": true,
+    "complete_partial43_required": true,
+    "controls_target_unconditionally_false": true,
+    "full_raw_expanded_evidence_retained": true,
+    "no_nonwhitespace_C0": true,
+    "positive14_source_unchanged": true,
+    "raw_source_pin_exact": true,
+    "remote_component_not_scheduler_authority": true,
+    "strict_wire_native_prefix_exact_except_docstring_and_positive_prior30_pass_requirement": true
+  },
+  "duplicate_sha_disclosed": true,
+  "helper_executed": false,
+  "independent_review_passed": false,
+  "parent_positive_source": {
+    "bytes": 43300,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-ROOT-20261016/ROOT_close_advice_controls_saved_v14.py",
+    "sha256": "062a1e18fdff2b4ac5565f718229e8b16b1c69146fb47669ec940ae98bf88425"
+  },
+  "schema": "ROOT-partial-closer-author-static-v15",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 20518,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-ROOT-20261016/ROOT_close_advice_controls_partial_saved_v15.py",
+    "sha256": "cf41fff0e679705f50bfc02681dcbb1f8a40ab964ddc36b79a1a144cce81dbf5"
+  },
+  "source_only": true
+}

@@ -1,0 +1,31 @@
+{
+  "author_identity": "/root",
+  "checks": 18,
+  "findings": {
+    "bytes": 16129,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-cold-independent-source-20261016/findings-v15.json",
+    "sha256": "657bbdb42ff239c9ad69c8c92003691941c3946a33895974f8f6f0c170d7b59e"
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-remote-eligibility-cold-independent-handoff-v15",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55651,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-cold-ROOT-source-20261016/unit_row_remote_eligibility_cold_v15.py",
+    "sha256": "451b484879c56bb31404ca942a47566f029f548ef16a2d38ecfe890738b711e2"
+  },
+  "source_contract": {
+    "bytes": 78318,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-cold-ROOT-source-20261016/Source-contract-v15.json",
+    "sha256": "19b9d91478a01239f75218d60b49b228d8b2df0000d7d44622d4136c34ac212b"
+  },
+  "source_only": true,
+  "summary": "Genuine distinct conditional caller15 Source pass, no scoped blocker; exact4literal/fullinverse/ASTinverse to whole-reviewed14,17helpers/47nonmain paths/current17/input2/current43/specs exact. No science or actual execution/admission.",
+  "typed_review": {
+    "bytes": 7692,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-cold-independent-source-20261016/typed-Source-review-v15.json",
+    "sha256": "9bdf4af83971cb8aef2ee0ce17a7d6826e615e223651f2ceb3cda420feb9f478"
+  },
+  "unique_raw_paths": 30
+}

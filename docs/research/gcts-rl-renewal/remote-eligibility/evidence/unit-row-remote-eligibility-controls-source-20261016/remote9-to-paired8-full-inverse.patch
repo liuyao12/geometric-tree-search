@@ -1,0 +1,57 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-remote-eligibility-controls-source-20261016/compatible_fibres_controls_v9.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-paired-fixture-controls-source-20261016/compatible_fibres_controls_v8.py
+@@ -9,7 +9,7 @@
+ import json
+ import sys
+ 
+-VERSION = 'unit-row-remote-eligibility-controls-v9'
++VERSION = 'unit-row-paired-fixture-controls-v8-positive-aliases'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -567,45 +567,6 @@
+           if remote is not None:break
+         if remote is None:raise Unavailable('No legal original remote UG conflict for an actual absent pending read.')
+         e2.place(obligations(remote,inner2['state']));remote_before=snap(e2)
+-        # COMPONENT validation is not the live engine callback and never supplies
+-        # its receipt holder. Only the real scheduler can qualify the search.
+-        h['phase']='remote';h['receipts']=[]
+-        bad_row=bad_key['translation'][1]
+-        component_decision={'kind':'BRANCH','row':bad_row}
+-        component_request={'schema':'unit-row-pending-preference-request-v1',
+-          'binding':copy.deepcopy(language.binding),'state_sha256':digest(remote_before['state']),
+-          'decision':copy.deepcopy(component_decision),'family_id':family['family_id'],
+-          'keys':[copy.deepcopy(bad_key)]}
+-        remote_eligibility={'schema':'unit-row-remote-rejection-eligibility-v1',
+-          'original_fixture_ref':'fixture','scope':'COMPONENT rejection plus real global decision; neither replaces normal engine rejection/fallback/rollback.',
+-          'remote':copy.deepcopy(remote),'bad_key':copy.deepcopy(bad_key),
+-          'before_decision':copy.deepcopy(remote_before),'component_request':copy.deepcopy(component_request),
+-          'component_decision_is_scheduler_authority':False,'eligible_actual_branch':False,
+-          'normal_search_started':False}
+-        artifacts['remote_eligibility']=remote_eligibility
+-        component_receipt=receipt_flags(check(remote_before['state'],component_decision,component_request))
+-        remote_eligibility['component_receipt']=copy.deepcopy(component_receipt)
+-        need(component_receipt['mode']=='PENDING_KEYS' and component_receipt['selection'] is None
+-          and len(component_receipt['rejections'])==1
+-          and canonical(component_receipt['rejections'][0]['key'])==canonical(bad_key)
+-          and component_receipt['rejections'][0]['reason']=='whole_remote_or_metadata_mark_conflict',
+-          'component independently rejects exact whole pending key for the intended remote mark')
+-        need(h['receipts']==[],'component receipt never enters live pending holder or observer')
+-        actual_remote_decision=e2.decision();after_remote_decision=snap(e2)
+-        remote_eligibility.update(actual_global_decision=copy.deepcopy(actual_remote_decision),
+-          after_decision=copy.deepcopy(after_remote_decision))
+-        need(canonical(after_remote_decision['state'])==canonical(remote_before['state'])
+-          and canonical(after_remote_decision['pending_preferences'])==canonical(remote_before['pending_preferences']),
+-          'real eligibility decision changes no selected point state or pending family')
+-        need(h['receipts']==[],'real decision does not fabricate a live pending rejection')
+-        if actual_remote_decision!={'kind':'BRANCH','row':bad_row}:
+-          remote_eligibility['eligibility_gap']='Actual global decision is not BRANCH at the invalidated pending row; no unrelated-scheduling wait or fabricated rejection.'
+-          raise Unavailable(remote_eligibility['eligibility_gap'])
+-        remote_eligibility['eligible_actual_branch']=True
+-        # Real decision may advance caches/events/counts. Search restores this
+-        # exact postdecision snapshot; all preflight work remains charged.
+-        remote_before=after_remote_decision
+-        remote_eligibility['normal_search_started']=True
+         h['phase']='remote';h['receipts']=[];remote_search=e2.search();unknown_result(e2,remote_before,remote_search)
+         rejected=[x for x in h['receipts'] if x['rejections']]
+         if not rejected:raise Unavailable('Actual scheduler did not reach conflicting pending row before independent UNKNOWN.')
