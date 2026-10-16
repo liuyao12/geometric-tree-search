@@ -1,0 +1,154 @@
+{
+  "blockers": [],
+  "checks": [
+    {
+      "finding": "Entire decoder74lines read. All9 inherited decoder helper FunctionDefs raw/AST exact; only endpoint/transport-contract lookup/context-label top-level adaptation.",
+      "id": "TRANSPORT-1",
+      "passed": true
+    },
+    {
+      "finding": "Whole bounded EOF, no-follow regular paths, exact7 envelope fields, outer canonical JSON+LF, strict literal lengths/hashes, canonical base64, bounded single zlib complete EOF with no unused/unconsumed tails, expanded full bytes/hash/one LF and inner canonical JSON retained.",
+      "id": "TRANSPORT-2",
+      "passed": true
+    },
+    {
+      "finding": "Exact owned2file inventory, two complete response LF records, body firstLF hash/byte completion, current plan/source/input/invocation/limit/output pins, stdout receipt and empty successful stderr/probe stderr.",
+      "id": "WIRE-1",
+      "passed": true
+    },
+    {
+      "finding": "Native chunk raw equality to inherited marked-frontier closer after removing only its unrelated timeline diagnostics; no native gate weakened.",
+      "id": "RESOURCE-1",
+      "passed": true
+    },
+    {
+      "finding": "Successful actual tool exit/no session; complete Date nonnegative<=60 and+1<=90; same plan hashes in bracket/observation/ONCE; probe/meter0; caller/wait4exit0, samePID, allreaped/errorNone/nointerrupt/nocancel; launch<=G<terminal<=probe, deadline=G+20e9, elapsedliteral, strict0<probe-launch<20e9 and exactinteger peak<=512MiB.",
+      "id": "RESOURCE-2",
+      "passed": true
+    },
+    {
+      "finding": "Current Source7/input8 authenticated and joined contract/result/body; semantic original17 map/binding kept separate; original Source pins rehashed. No append-to-old-epoch or key rewrite.",
+      "id": "MODEL-1",
+      "passed": true
+    },
+    {
+      "finding": "Two samples canonical/advised: raw old plans/prefixes checked; firstDEAD0 event5/PLACE4/fullprefix/key join; one selected record/emptyexclusions/root0generation/height24/originalepoch; full rebuiltstate SHA equals oldPLACE andDEAD. Required row0 literal and target23 markings plus unit totals checked.",
+      "id": "CONTEXT-1",
+      "passed": true
+    },
+    {
+      "finding": "Fresh proposal exact rebuiltstate/binding/row and complete nonimp row0 cover, empty keys/rejections/fullAXGamma/pair census; current c354 receipt ZERO/degreeint0/currentstate/epoch/completeaccepted/emptykeys/soleNone and false higherflags. Copied old receipt is never used to accept local evidence.",
+      "id": "CONTEXT-2",
+      "passed": true
+    },
+    {
+      "finding": "Full literal+ASCIIhash/modelauthority declaration/source17/binding hash, complete sorted original AX formulas/MEMBER receipts/mismatch and empty originalGamma, exact6rule names/all exclusions; no-remote/selected/exclusion/savedreceipt projection scope checked.",
+      "id": "PROJECTION-1",
+      "passed": true
+    },
+    {
+      "finding": "Fresh check complete recomputed_certificate equals actual certificate, full ASCIIcertificate hash and narrowprojection flag; all9 higherflagsfalse. Same implementation recomputation expressly disclosed; no1717/99b3/full theorem claim.",
+      "id": "PROJECTION-2",
+      "passed": true
+    },
+    {
+      "finding": "Exactly12 contract/currentcaller names in order, allPASSED, two samples, noSKIP. OriginalAX certificate NOT_CERTIFIED/positive actual census and projectionFalse;3forgedprojection checks exactreason. Remainingnegative statuses bind actual strictly reviewed caller names; no scientific check reimplemented by closer.",
+      "id": "CONTROLS-1",
+      "passed": true
+    },
+    {
+      "finding": "Disposition admits only two fresh input-local zero/projection certificates and current12 local controls+native resource closure. Oldtrajectory/proof/targetimpossibility/markactivation/RL/GCTSgain/fullmodel flagsfalse and remaininggaps explicit.",
+      "id": "SCOPE-1",
+      "passed": true
+    },
+    {
+      "finding": "This review only read Source/current schema metadata, hashes, AST and compile. Neither closure helper, project function nor scientific endpoint/model/clock/test/actual invoked.",
+      "id": "NOEXEC-1",
+      "passed": true
+    }
+  ],
+  "checks_count": 13,
+  "current_control_names": [
+    "canonical-fresh-complete-ZERO-and-projection",
+    "changed-saved-state-hash-rejected",
+    "selected-stale-epoch-rejected",
+    "root-exclusion-prefix-rejected",
+    "copied-old-ZERO-is-not-a-proposal",
+    "forged-complete-cover-census-rejected",
+    "UNKNOWN-never-certified-ZERO",
+    "advised-fresh-complete-ZERO-and-projection",
+    "original-AX-is-not-forbidden",
+    "projection-forged-census-rejected",
+    "projection-forged-binding-rejected",
+    "projection-forged-literal-rejected"
+  ],
+  "helper_calls": 0,
+  "native_gate_raw_equal_after_only_diagnostic_removal": true,
+  "raw_references": [
+    {
+      "bytes": 5289,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT_decode_saved_transport_v4.py",
+      "sha256": "945405004fb3793f91caddfef3dbbf7335581bdf399d0f1df8502df242f18025"
+    },
+    {
+      "bytes": 14110,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT_close_certification_saved_v1.py",
+      "sha256": "86f33fb897f90592a8e9f8fe8d6a037b9c97f5de1112893350478f3a8ffb2029"
+    },
+    {
+      "bytes": 5315,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT_decode_saved_transport_v3.py",
+      "sha256": "1adfabc2cbd40c124cfe122a636f4189e0a7415876ec89c6e69408b16277d933"
+    },
+    {
+      "bytes": 63333,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT_close_advice_controls_saved_v16.py",
+      "sha256": "b1dd23f9a4e7880de33f73d381035c080e96f1227f69ef6a742b8dec37b5eec6"
+    },
+    {
+      "bytes": 24396,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/Source-contract-v1.json",
+      "sha256": "66fdf6a2ecf11e6f0838e8de1229c1c704c4ee8a8f587fc564b48460980e7b47"
+    },
+    {
+      "bytes": 56338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/certify_first_dead0_cold_v1.py",
+      "sha256": "1fe3b0c863ac38925a0b6c47bb4951ff7fc8f913931404d3206d9a551ff75d02"
+    },
+    {
+      "bytes": 8577,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT_prepare_certification_v1.py",
+      "sha256": "e65dc57feca8893aee48708889d02edcb6218d4998b4188508dc7df8cdf87743"
+    },
+    {
+      "bytes": 11074,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+    },
+    {
+      "bytes": 13159,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/Source-contract-v1.json",
+      "sha256": "686a09b276c2d377353a01ad005b275d95333db6b698f4a5053f63b3c57f3c4d"
+    }
+  ],
+  "removed_parent_timeline_lines": [
+    "assert all(start<=x['native_ns']<=terminal for x in native_timeline) and [x['native_ns'] for x in native_timeline]==sorted(x['native_ns'] for x in native_timeline)\n",
+    "for i,x in enumerate(native_timeline):\n",
+    " x['elapsed_from_launch_ns']=x['native_ns']-start;x['interval_since_previous_ns']=x['native_ns']-(native_timeline[i-1]['native_ns'] if i else start)\n"
+  ],
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "row0-saved-closure-independent-static-findings-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "unchanged_decoder_helpers": [
+    "need",
+    "canonical",
+    "pairs",
+    "constant",
+    "finite",
+    "decode",
+    "buffer_pin",
+    "read_bounded",
+    "checked_raw"
+  ]
+}

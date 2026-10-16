@@ -1,0 +1,123 @@
+{
+  "all_checks_passed": true,
+  "checks": [
+    {
+      "id": "Source7-distinct-from-original17",
+      "passed": true
+    },
+    {
+      "id": "input8-and-original2",
+      "passed": true
+    },
+    {
+      "id": "exact-original-binding",
+      "passed": true
+    },
+    {
+      "id": "original-six-limits",
+      "passed": true
+    },
+    {
+      "id": "whole-all-source-input-pins",
+      "passed": true
+    },
+    {
+      "id": "five-overlap-roles-exact",
+      "passed": true
+    },
+    {
+      "id": "projection-current-fixed",
+      "passed": true
+    },
+    {
+      "id": "all17-inherited-helper-raw-AST-exact",
+      "passed": true
+    },
+    {
+      "id": "new-main-no-old-main-execution",
+      "passed": true
+    },
+    {
+      "id": "old-model-map-used-in-fresh-language",
+      "passed": true
+    },
+    {
+      "id": "deterministic-first-DEAD0-selector",
+      "passed": true
+    },
+    {
+      "id": "one-root-placement-no-prior-exclusion",
+      "passed": true
+    },
+    {
+      "id": "rebuild-whole-boundary-state-and-hash",
+      "passed": true
+    },
+    {
+      "id": "fresh-independent-ZERO-not-saved-receipt",
+      "passed": true
+    },
+    {
+      "id": "separate-fresh-projection-authority",
+      "passed": true
+    },
+    {
+      "id": "twelve-literal-local-controls",
+      "passed": true
+    },
+    {
+      "id": "result-envelope-sources-inputs-purpose-preserved",
+      "passed": true
+    },
+    {
+      "id": "full-twoLF-native-output-and-exit",
+      "passed": true
+    },
+    {
+      "id": "no-marking-or-search-invocation",
+      "passed": true
+    },
+    {
+      "id": "compile-only-and-no-C0",
+      "passed": true
+    },
+    {
+      "id": "whole-byte-forward-inverse",
+      "passed": true
+    }
+  ],
+  "execution": "Only raw/JSON/AST/compile performed, no project import/evaluation/function/model/clock/test/actual.",
+  "parent": {
+    "bytes": 55852,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+    "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+  },
+  "retained17_top_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ],
+  "schema": "first-DEAD0-certification-caller-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 56338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/certify_first_dead0_cold_v1.py",
+    "sha256": "1fe3b0c863ac38925a0b6c47bb4951ff7fc8f913931404d3206d9a551ff75d02"
+  },
+  "source_only": true
+}

@@ -1,0 +1,2247 @@
+{
+  "changes": "Own IDs/fixedcurrent6/input8/originalauthority constants; two new small top-level selector/receipt guards; replacement main for bounded saved-context extraction+fresh full-context and row0projection certification. No original Source modified.",
+  "edits": [
+    {
+      "after": "SOUR",
+      "before": "",
+      "new_offset": 3,
+      "old_offset": 3
+    },
+    {
+      "after": "E ONLY: fresh certification of two first saved DEAD0 contexts.\nCurrent executable Source7 is separate from authenticate",
+      "before": "ol",
+      "new_offset": 8,
+      "old_offset": 4
+    },
+    {
+      "after": "Model Source17.\nNo en",
+      "before": "unit-row ",
+      "new_offset": 138,
+      "old_offset": 17
+    },
+    {
+      "after": "ine/search/tar",
+      "before": "lobal en",
+      "new_offset": 160,
+      "old_offset": 27
+    },
+    {
+      "after": "et proof or mark",
+      "before": "ine endpoints. Reuses exist",
+      "new_offset": 175,
+      "old_offset": 36
+    },
+    {
+      "after": "ac",
+      "before": "na",
+      "new_offset": 195,
+      "old_offset": 67
+    },
+    {
+      "after": "ation is performed",
+      "before": "e helpers.\nControls or a separate fresh target search; no supplied proof word/donor/library",
+      "new_offset": 200,
+      "old_offset": 72
+    },
+    {
+      "after": "first-DEAD0-certification",
+      "before": "marked-frontier",
+      "new_offset": 621,
+      "old_offset": 566
+    },
+    {
+      "after": "",
+      "before": "7",
+      "new_offset": 654,
+      "old_offset": 589
+    },
+    {
+      "after": "first-DEAD0-certification",
+      "before": "marked-frontier",
+      "new_offset": 672,
+      "old_offset": 608
+    },
+    {
+      "after": "kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, '",
+      "before": "",
+      "new_offset": 1082,
+      "old_offset": 1008
+    },
+    {
+      "after": "row0_projection",
+      "before": "kernel",
+      "new_offset": 2205,
+      "old_offset": 1301
+    },
+    {
+      "after": "",
+      "before": "'bytes': 10323, ",
+      "new_offset": 2224,
+      "old_offset": 1311
+    },
+    {
+      "after": "unit-row-row-",
+      "before": "arithmetic-open-generali",
+      "new_offset": 2307,
+      "old_offset": 1410
+    },
+    {
+      "after": "ro-projec",
+      "before": "-implementa",
+      "new_offset": 2322,
+      "old_offset": 1436
+    },
+    {
+      "after": "6",
+      "before": "4",
+      "new_offset": 2350,
+      "old_offset": 1466
+    },
+    {
+      "after": "row_zero_rule_projection",
+      "before": "arithmetic_q_kernel",
+      "new_offset": 2352,
+      "old_offset": 1468
+    },
+    {
+      "after": "cbd1",
+      "before": "",
+      "new_offset": 2396,
+      "old_offset": 1507
+    },
+    {
+      "after": "df",
+      "before": "3",
+      "new_offset": 2401,
+      "old_offset": 1508
+    },
+    {
+      "after": "95daa2",
+      "before": "76ab",
+      "new_offset": 2406,
+      "old_offset": 1512
+    },
+    {
+      "after": "",
+      "before": "c672c5241f792cf898059a9f0157ace8f15b9684c7e48",
+      "new_offset": 2413,
+      "old_offset": 1517
+    },
+    {
+      "after": "8eb91e5b4df832606c7b8dcf910",
+      "before": "d",
+      "new_offset": 2416,
+      "old_offset": 1565
+    },
+    {
+      "after": "e9bd8910",
+      "before": "",
+      "new_offset": 2445,
+      "old_offset": 1568
+    },
+    {
+      "after": "f38",
+      "before": "a9'}, 'mem",
+      "new_offset": 2454,
+      "old_offset": 1569
+    },
+    {
+      "after": "ab', ",
+      "before": "ership': {",
+      "new_offset": 2458,
+      "old_offset": 1580
+    },
+    {
+      "after": "",
+      "before": "20",
+      "new_offset": 2472,
+      "old_offset": 1599
+    },
+    {
+      "after": "074}}\nFIXED_INPUTS={'declaration': {'bytes': ",
+      "before": "",
+      "new_offset": 2474,
+      "old_offset": 1603
+    },
+    {
+      "after": "925",
+      "before": "",
+      "new_offset": 2520,
+      "old_offset": 1604
+    },
+    {
+      "after": "arithmetic-ri",
+      "before": "shared-bounded-lan",
+      "new_offset": 2608,
+      "old_offset": 1689
+    },
+    {
+      "after": "ht-two-prepar",
+      "before": "uage-implement",
+      "new_offset": 2622,
+      "old_offset": 1708
+    },
+    {
+      "after": "Q-ri",
+      "before": "bounded_six_rule_lan",
+      "new_offset": 2657,
+      "old_offset": 1744
+    },
+    {
+      "after": "ht-two-declaration-",
+      "before": "uage_",
+      "new_offset": 2662,
+      "old_offset": 1765
+    },
+    {
+      "after": "1",
+      "before": "2",
+      "new_offset": 2682,
+      "old_offset": 1771
+    },
+    {
+      "after": "json",
+      "before": "py",
+      "new_offset": 2684,
+      "old_offset": 1773
+    },
+    {
+      "after": "a",
+      "before": "5d",
+      "new_offset": 2702,
+      "old_offset": 1789
+    },
+    {
+      "after": "ce8237aca",
+      "before": "fb",
+      "new_offset": 2704,
+      "old_offset": 1792
+    },
+    {
+      "after": "485f94cbce0c909a055a",
+      "before": "",
+      "new_offset": 2715,
+      "old_offset": 1796
+    },
+    {
+      "after": "",
+      "before": "626c952f",
+      "new_offset": 2736,
+      "old_offset": 1797
+    },
+    {
+      "after": "",
+      "before": "65",
+      "new_offset": 2737,
+      "old_offset": 1806
+    },
+    {
+      "after": "1",
+      "before": "dd",
+      "new_offset": 2738,
+      "old_offset": 1809
+    },
+    {
+      "after": "a0cc",
+      "before": "ffabdb",
+      "new_offset": 2741,
+      "old_offset": 1813
+    },
+    {
+      "after": "",
+      "before": "fe2",
+      "new_offset": 2746,
+      "old_offset": 1820
+    },
+    {
+      "after": "99cf",
+      "before": "e",
+      "new_offset": 2748,
+      "old_offset": 1825
+    },
+    {
+      "after": "dc1990323d3df'}, 'profile': {'",
+      "before": "",
+      "new_offset": 2753,
+      "old_offset": 1827
+    },
+    {
+      "after": "ytes': 8",
+      "before": "e122ef",
+      "new_offset": 2784,
+      "old_offset": 1828
+    },
+    {
+      "after": "",
+      "before": "e",
+      "new_offset": 2793,
+      "old_offset": 1835
+    },
+    {
+      "after": "",
+      "before": "ef4a7759da43332'}, 'proposer': {'bytes': 22030",
+      "new_offset": 2795,
+      "old_offset": 1838
+    },
+    {
+      "after": "shared-bounded-la",
+      "before": "unit-row-missi",
+      "new_offset": 2880,
+      "old_offset": 1969
+    },
+    {
+      "after": "ua",
+      "before": "-mark-de",
+      "new_offset": 2899,
+      "old_offset": 1985
+    },
+    {
+      "after": "e-ROOT",
+      "before": "ree-source",
+      "new_offset": 2902,
+      "old_offset": 1994
+    },
+    {
+      "after": "ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}, 'canonical_plan': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-",
+      "before": "unit_",
+      "new_offset": 2918,
+      "old_offset": 2014
+    },
+    {
+      "after": "-marked-frontier-ROOT-20261016/ROOT-canonical-search-plan-v1.json', 'sha256': 'b5d28b6269cf6fd19394850c8de833e185529568a66dffc84c2477a6af565366', 'bytes': 7926}, 'canonical_prefix': {'path': '/Users/liuyao/Documents/Codex/projects/",
+      "before": "_missin",
+      "new_offset": 3137,
+      "old_offset": 2022
+    },
+    {
+      "after": "eometric-tree-search/.gcts-active/unit-row-",
+      "before": "_",
+      "new_offset": 3369,
+      "old_offset": 2030
+    },
+    {
+      "after": "ed-frontier-ROOT-20261016/canonical-search-owned-v1/unknown-dia",
+      "before": "_de",
+      "new_offset": 3416,
+      "old_offset": 2035
+    },
+    {
+      "after": "nostic.json', 'sha256': 'af53a1a7fc531107c5f8dfdd6ecd2f3bc534a9c7ee5bf66a7d8fde812bbca9b4', 'bytes': 967331}, 'canonical_completion': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/canonical-search-owned-v1/diagnostic-completion.json', 'sha256': '6140ae4d0aa61f61ac9a3a8f1d11d6c80756fb449f63590d93bdff94a16ec190', 'bytes': 337}, 'advised_plan': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/ROOT-advised-search-plan-v1.json', 'sha256': '118cd141b9c45a7592e965c959ece6acfc49b0a4b4cbb15e2e9ccf5d62e8c7c1', 'bytes': 7917}, 'advised_prefix': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/advised-search-owned-v1/unknown-diagnostic.json', 'sha256': '95156ef6f9b73eef97188a09d67a8c4b93ada761e7ccf9a69d9abbd6b7e0025d', 'bytes': 980523}, 'advised_completion': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-ROOT-20261016/advised-search-owned-v1/diagnostic-completion.json', 'sha256': '12d234026b2929daf831dcd6cc91c3aa409cd2cba8065b3a93eef4f7c2310515', 'bytes': 337}}\nLIMITS={'aggregate_owned_bytes': 536870912, 'caller_finish_reserve_seconds': 1, 'caller_seconds': 90, 'failure_only_seconds': 55, 'joint_seconds': 20, 'owned_seconds': 60}\n\nORIGINAL_SOURCES={'advice_controls': {'bytes': 130156, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py', 'sha256': '0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3'}, 'advice_validator': {'bytes': 16299, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer",
+      "before": "ree",
+      "new_offset": 3480,
+      "old_offset": 2039
+    },
+    {
+      "after": "8116e",
+      "before": "c",
+      "new_offset": 5422,
+      "old_offset": 2062
+    },
+    {
+      "after": "104a7bf431b2efefd08b38ebb",
+      "before": "",
+      "new_offset": 5428,
+      "old_offset": 2064
+    },
+    {
+      "after": "7a0884d9ccf893",
+      "before": "e",
+      "new_offset": 5455,
+      "old_offset": 2066
+    },
+    {
+      "after": "2",
+      "before": "e",
+      "new_offset": 5470,
+      "old_offset": 2068
+    },
+    {
+      "after": "647edf9f37eca1'}, 'adviser': {'bytes': 2",
+      "before": "5",
+      "new_offset": 5472,
+      "old_offset": 2070
+    },
+    {
+      "after": "07, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-2",
+      "before": "5",
+      "new_offset": 5514,
+      "old_offset": 2073
+    },
+    {
+      "after": "61016/goal_branch_adviser_v3.py', 'sha",
+      "before": "f95f",
+      "new_offset": 5646,
+      "old_offset": 2076
+    },
+    {
+      "after": "': '6b",
+      "before": "",
+      "new_offset": 5687,
+      "old_offset": 2083
+    },
+    {
+      "after": "a8b24509d8379b9f37474948",
+      "before": "",
+      "new_offset": 5694,
+      "old_offset": 2084
+    },
+    {
+      "after": "0f",
+      "before": "c",
+      "new_offset": 5719,
+      "old_offset": 2085
+    },
+    {
+      "after": "721481b0d692c7e144f8bc8c389d31e98'}, 'clean_support': {'bytes': 4",
+      "before": "c",
+      "new_offset": 5722,
+      "old_offset": 2087
+    },
+    {
+      "after": "8",
+      "before": "a72b32c67775aedc2e",
+      "new_offset": 5789,
+      "old_offset": 2090
+    },
+    {
+      "after": "",
+      "before": "2e0300a366e3d7e90'}, 'fallback': {'bytes': 24227",
+      "new_offset": 5791,
+      "old_offset": 2109
+    },
+    {
+      "after": "arithmetic-Q-glo",
+      "before": "unit-row-all-six-fall",
+      "new_offset": 5876,
+      "old_offset": 2242
+    },
+    {
+      "after": "l-clo",
+      "before": "",
+      "new_offset": 5894,
+      "old_offset": 2265
+    },
+    {
+      "after": "-lane-A",
+      "before": "",
+      "new_offset": 5901,
+      "old_offset": 2267
+    },
+    {
+      "after": "Q_clean_",
+      "before": "unit_ro",
+      "new_offset": 5925,
+      "old_offset": 2284
+    },
+    {
+      "after": "ord_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'controls': {'bytes': 31931, 'path': '/Users/liuyao/Documents/Code",
+      "before": "_all_si",
+      "new_offset": 5934,
+      "old_offset": 2292
+    },
+    {
+      "after": "/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py', 'sha256': '50faf07d85de3",
+      "before": "_fall",
+      "new_offset": 6114,
+      "old_offset": 2300
+    },
+    {
+      "after": "e6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a'}, 'converter': {'bytes': 5528, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board",
+      "before": "ack",
+      "new_offset": 6275,
+      "old_offset": 2306
+    },
+    {
+      "after": "baefa732406c20087304643b16e812f0f1e4e0a62513f50",
+      "before": "",
+      "new_offset": 6523,
+      "old_offset": 2329
+    },
+    {
+      "after": "c6f30",
+      "before": "",
+      "new_offset": 6572,
+      "old_offset": 2331
+    },
+    {
+      "after": "a7f7b",
+      "before": "4a9",
+      "new_offset": 6578,
+      "old_offset": 2332
+    },
+    {
+      "after": "e63'}, 'degree_checker': {'bytes': 2",
+      "before": "",
+      "new_offset": 6584,
+      "old_offset": 2336
+    },
+    {
+      "after": "553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-2",
+      "before": "",
+      "new_offset": 6621,
+      "old_offset": 2337
+    },
+    {
+      "after": "26",
+      "before": "d93",
+      "new_offset": 6748,
+      "old_offset": 2338
+    },
+    {
+      "after": "",
+      "before": "e",
+      "new_offset": 6751,
+      "old_offset": 2342
+    },
+    {
+      "after": "5/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a",
+      "before": "",
+      "new_offset": 6753,
+      "old_offset": 2345
+    },
+    {
+      "after": "",
+      "before": "38f5d7f9",
+      "new_offset": 6842,
+      "old_offset": 2346
+    },
+    {
+      "after": "32ef16",
+      "before": "",
+      "new_offset": 6845,
+      "old_offset": 2357
+    },
+    {
+      "after": "cad1e",
+      "before": "f",
+      "new_offset": 6852,
+      "old_offset": 2358
+    },
+    {
+      "after": "",
+      "before": "6e",
+      "new_offset": 6858,
+      "old_offset": 2360
+    },
+    {
+      "after": "29123290215",
+      "before": "cbfe7a",
+      "new_offset": 6860,
+      "old_offset": 2364
+    },
+    {
+      "after": "af8",
+      "before": "7503b99",
+      "new_offset": 6874,
+      "old_offset": 2373
+    },
+    {
+      "after": "d",
+      "before": "a24934a4fae",
+      "new_offset": 6879,
+      "old_offset": 2382
+    },
+    {
+      "after": "fallback",
+      "before": "controls",
+      "new_offset": 7156,
+      "old_offset": 2669
+    },
+    {
+      "after": "'bytes': 24227, ",
+      "before": "",
+      "new_offset": 7168,
+      "old_offset": 2681
+    },
+    {
+      "after": "all-six-fallbac",
+      "before": "mar",
+      "new_offset": 7276,
+      "old_offset": 2773
+    },
+    {
+      "after": "-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'intake': {'bytes': 55852, 'path': '/Users/liuyao/Documents/Codex/projects/",
+      "before": "in",
+      "new_offset": 7292,
+      "old_offset": 2777
+    },
+    {
+      "after": "eometric-tree-search/.gcts-active/unit-ro",
+      "before": "-a",
+      "new_offset": 7498,
+      "old_offset": 2780
+    },
+    {
+      "after": "-marked-frontier-cold-ROOT",
+      "before": "are-controls",
+      "new_offset": 7540,
+      "old_offset": 2783
+    },
+    {
+      "after": "unit_row_",
+      "before": "",
+      "new_offset": 7583,
+      "old_offset": 2812
+    },
+    {
+      "after": "ed_frontier_cold_",
+      "before": "ing_aware_ad",
+      "new_offset": 7596,
+      "old_offset": 2816
+    },
+    {
+      "after": "17",
+      "before": "ersarial_controls_v2",
+      "new_offset": 7614,
+      "old_offset": 2829
+    },
+    {
+      "after": "6",
+      "before": "",
+      "new_offset": 7633,
+      "old_offset": 2866
+    },
+    {
+      "after": "2434adfb19",
+      "before": "0faf07d8",
+      "new_offset": 7635,
+      "old_offset": 2867
+    },
+    {
+      "after": "15",
+      "before": "de3be6aa6f822f",
+      "new_offset": 7646,
+      "old_offset": 2876
+    },
+    {
+      "after": "b5",
+      "before": "f",
+      "new_offset": 7650,
+      "old_offset": 2892
+    },
+    {
+      "after": "6",
+      "before": "d",
+      "new_offset": 7653,
+      "old_offset": 2894
+    },
+    {
+      "after": "9ebfece1a0fce3c1d40ad4a",
+      "before": "2f7fd",
+      "new_offset": 7655,
+      "old_offset": 2896
+    },
+    {
+      "after": "338c58fa108cce51e5'}, 'kernel': {'bytes': ",
+      "before": "d",
+      "new_offset": 7679,
+      "old_offset": 2902
+    },
+    {
+      "after": "",
+      "before": "e60c",
+      "new_offset": 7724,
+      "old_offset": 2906
+    },
+    {
+      "after": "",
+      "before": "d96cb0c54cbb4f8567a', 'bytes': ",
+      "new_offset": 7725,
+      "old_offset": 2911
+    },
+    {
+      "after": "",
+      "before": "1931}, 'transition': {'bytes': 8134",
+      "new_offset": 7726,
+      "old_offset": 2943
+    },
+    {
+      "after": "arithmetic-open-",
+      "before": "unit-row-retained-domain-en",
+      "new_offset": 7811,
+      "old_offset": 3063
+    },
+    {
+      "after": "eneralize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation",
+      "before": "ine",
+      "new_offset": 7828,
+      "old_offset": 3091
+    },
+    {
+      "after": "bounded_six_rule_language",
+      "before": "unit_row_domain_transition_checker",
+      "new_offset": 8145,
+      "old_offset": 3111
+    },
+    {
+      "after": "2",
+      "before": "1",
+      "new_offset": 8172,
+      "old_offset": 3147
+    },
+    {
+      "after": "5d1fb6476",
+      "before": "",
+      "new_offset": 8190,
+      "old_offset": 3165
+    },
+    {
+      "after": "6c95",
+      "before": "e",
+      "new_offset": 8200,
+      "old_offset": 3166
+    },
+    {
+      "after": "f4",
+      "before": "d",
+      "new_offset": 8205,
+      "old_offset": 3168
+    },
+    {
+      "after": "5",
+      "before": "6c",
+      "new_offset": 8208,
+      "old_offset": 3170
+    },
+    {
+      "after": "dd8cffabdb3fe29be0be122ef7e73ef4a77",
+      "before": "c",
+      "new_offset": 8210,
+      "old_offset": 3173
+    },
+    {
+      "after": "9da",
+      "before": "8",
+      "new_offset": 8246,
+      "old_offset": 3175
+    },
+    {
+      "after": "",
+      "before": "ef086f073df09e2eda7a50d3972fa1900a8ecf",
+      "new_offset": 8251,
+      "old_offset": 3178
+    },
+    {
+      "after": "",
+      "before": "f5c9",
+      "new_offset": 8253,
+      "old_offset": 3218
+    },
+    {
+      "after": "",
+      "before": "ab3491",
+      "new_offset": 8254,
+      "old_offset": 3223
+    },
+    {
+      "after": "point_checker",
+      "before": "retained_controls",
+      "new_offset": 8259,
+      "old_offset": 3234
+    },
+    {
+      "after": "10",
+      "before": "",
+      "new_offset": 8285,
+      "old_offset": 3264
+    },
+    {
+      "after": "01",
+      "before": "5338",
+      "new_offset": 8288,
+      "old_offset": 3265
+    },
+    {
+      "after": "shared-bounded-point-board-independent",
+      "before": "unit-row-retained-domain-controls",
+      "new_offset": 8375,
+      "old_offset": 3354
+    },
+    {
+      "after": "independent_word_point_board_checker_v1.py', 'sha256': '99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'retained_controls': {'bytes': 25338, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/",
+      "before": "",
+      "new_offset": 8430,
+      "old_offset": 3404
+    },
+    {
+      "after": "transition",
+      "before": "adviser",
+      "new_offset": 9111,
+      "old_offset": 3517
+    },
+    {
+      "after": "8134",
+      "before": "26007",
+      "new_offset": 9134,
+      "old_offset": 3537
+    },
+    {
+      "after": "retained-domain-engine",
+      "before": "compatible-fibres-adviser",
+      "new_offset": 9232,
+      "old_offset": 3636
+    },
+    {
+      "after": "5",
+      "before": "6",
+      "new_offset": 9269,
+      "old_offset": 3676
+    },
+    {
+      "after": "unit_row_domain_transition_checker_",
+      "before": "goal_branch_ad",
+      "new_offset": 9271,
+      "old_offset": 3678
+    },
+    {
+      "after": "1",
+      "before": "iser_v3",
+      "new_offset": 9307,
+      "old_offset": 3693
+    },
+    {
+      "after": "2e2d",
+      "before": "",
+      "new_offset": 9325,
+      "old_offset": 3717
+    },
+    {
+      "after": "6c3c5",
+      "before": "b1a",
+      "new_offset": 9330,
+      "old_offset": 3718
+    },
+    {
+      "after": "43ef086f073df09e",
+      "before": "b",
+      "new_offset": 9336,
+      "old_offset": 3722
+    },
+    {
+      "after": "eda7a",
+      "before": "4",
+      "new_offset": 9353,
+      "old_offset": 3724
+    },
+    {
+      "after": "d",
+      "before": "9d8",
+      "new_offset": 9360,
+      "old_offset": 3727
+    },
+    {
+      "after": "",
+      "before": "79b9f3747494810f",
+      "new_offset": 9362,
+      "old_offset": 3731
+    },
+    {
+      "after": "fa",
+      "before": "",
+      "new_offset": 9365,
+      "old_offset": 3750
+    },
+    {
+      "after": "900a",
+      "before": "4",
+      "new_offset": 9368,
+      "old_offset": 3751
+    },
+    {
+      "after": "ecf33f5c",
+      "before": "1b0d6",
+      "new_offset": 9373,
+      "old_offset": 3753
+    },
+    {
+      "after": "ab3",
+      "before": "c7e1",
+      "new_offset": 9383,
+      "old_offset": 3760
+    },
+    {
+      "after": "",
+      "before": "4f8bc8c389d31e98'}, 'advice_validator': {'bytes': 16299, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py', 'sha256': '8116e",
+      "new_offset": 9387,
+      "old_offset": 3765
+    },
+    {
+      "after": "",
+      "before": "04a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1'}, 'advice_controls': {'bytes': 130156, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py', 'sha256': '0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3",
+      "new_offset": 9389,
+      "old_offset": 4011
+    },
+    {
+      "after": "",
+      "before": ", 'converter': {'bytes': 5528, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py', 'sha256': 'baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63'",
+      "new_offset": 9678,
+      "old_offset": 4638
+    },
+    {
+      "after": "\nOR",
+      "before": ", 'point_checker': {'bytes': 10201, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py', 'sha256': '99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d'}}\nF",
+      "new_offset": 9679,
+      "old_offset": 4900
+    },
+    {
+      "after": "GINAL",
+      "before": "XED",
+      "new_offset": 9683,
+      "old_offset": 5200
+    },
+    {
+      "after": "'bytes': 2925, ",
+      "before": "",
+      "new_offset": 9713,
+      "old_offset": 5228
+    },
+    {
+      "after": "}, 'profile': {",
+      "before": ", ",
+      "new_offset": 9970,
+      "old_offset": 5470
+    },
+    {
+      "after": "8773, ",
+      "before": "2925}, 'profile': {",
+      "new_offset": 9994,
+      "old_offset": 5481
+    },
+    {
+      "after": "}}\nORIGINAL_BINDING={'declaration_sha256': 'a1ce8237aca64485f94c",
+      "before": ", '",
+      "new_offset": 10227,
+      "old_offset": 5727
+    },
+    {
+      "after": "ce0c909a055a74318ca0cc39b99cf0dc1990323d3df', 'language_epoch",
+      "before": "ytes",
+      "new_offset": 10292,
+      "old_offset": 5731
+    },
+    {
+      "after": "'3",
+      "before": "",
+      "new_offset": 10356,
+      "old_offset": 5738
+    },
+    {
+      "after": "2755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b', 'logical_input_sha256': '959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57', 'profile_name': 'shared-bounded-six-rule-B12-N44-v2', 'profile_sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02', 'source_bindings_sha256': '9",
+      "before": "",
+      "new_offset": 10359,
+      "old_offset": 5739
+    },
+    {
+      "after": "edd4149a2260e1",
+      "before": "3}}\nLIMITS={'aggregate_owned_",
+      "new_offset": 10686,
+      "old_offset": 5741
+    },
+    {
+      "after": "abdc",
+      "before": "ytes': ",
+      "new_offset": 10701,
+      "old_offset": 5771
+    },
+    {
+      "after": "",
+      "before": "3687",
+      "new_offset": 10706,
+      "old_offset": 5779
+    },
+    {
+      "after": "6a",
+      "before": "",
+      "new_offset": 10708,
+      "old_offset": 5785
+    },
+    {
+      "after": "8e3",
+      "before": "",
+      "new_offset": 10711,
+      "old_offset": 5786
+    },
+    {
+      "after": "43",
+      "before": ", 'caller_finish_reserve_seconds': ",
+      "new_offset": 10715,
+      "old_offset": 5787
+    },
+    {
+      "after": "810c1fa",
+      "before": ", 'caller_seconds': ",
+      "new_offset": 10718,
+      "old_offset": 5823
+    },
+    {
+      "after": "573b",
+      "before": "",
+      "new_offset": 10726,
+      "old_offset": 5844
+    },
+    {
+      "after": "ee4eca4c07",
+      "before": ", 'failure_only_seconds': ",
+      "new_offset": 10731,
+      "old_offset": 5845
+    },
+    {
+      "after": "1c66",
+      "before": "5, 'joint_seconds': ",
+      "new_offset": 10742,
+      "old_offset": 5872
+    },
+    {
+      "after": "'",
+      "before": "0, 'owned_seconds': 60",
+      "new_offset": 10747,
+      "old_offset": 5893
+    },
+    {
+      "after": "extract_first_dead0(document, original_plan, original_plan_pin, expected_purpose, tick):\n    \"\"\"Select a bounded saved proposal, never accept its old degree claims.\"\"\"\n    tick()\n    need(type(document) is dict and set(document)=={'context','diagnostic','returned_metadata','events_prefix'},\n         'whole saved diagnostic fields')\n    context=document['context'];diagnostic=document['diagnostic'];events=document['events_prefix']\n    need(context['plan']=={k:original_plan_pin[k] for k in ('sha256','bytes')}\n         and context['sources']==ORIGINAL_SOURCES and context['inputs']==ORIGINAL_INPUTS\n         and context['language_binding']==ORIGINAL_BINDING and context['limits']==LIMITS\n         and context['invocation_id']==original_plan['invocation_id']\n         and context['purpose']==original_plan['purpose']==expected_purpose,\n         'whole original saved context and model binding')\n    need(diagnostic['schema']=='unit-row-search-failure-diagnostic-v1'\n         and diagnostic['qualification']=='UNQUALIFIED_UNKNOWN_RAW_PREFIX'\n         and diagnostic['diagnostic_only'] is True and diagnostic['capture_available'] is True\n         and diagnostic['positive_joint_gate_accepted'] is False\n         and diagnostic['ROOT_resource_accepted'] is False,\n         'saved data are unqualified proposals only')\n    need(type(events) is list and 0<len(events)<=2000\n         and diagnostic['saved_event_count']==len(events), 'bounded complete saved prefix')\n    index=None\n    for ordinal,event in enumerate(events):\n        tick()\n        need(type(event) is dict and type(event.get('event')) is int\n             and event['event']==ordinal and type(event.get('kind')) is str,\n             'literal ordered saved events')\n        decision=event.get('decision')\n        if index is None and event['kind']=='DECISION' and type(decision) is dict and decision.get('kind')=='DEAD':\n            need(set(decision)=={'kind','row'} and type(decision['row']) is int,'strict saved DEAD decision fields')\n            if decision['row']==0:index=ordinal\n    need(index is not None, 'saved prefix has a first DEAD0 proposal')\n    prefix=events[:index+1];tries=[];places=[]\n    for event in prefix:\n        tick()\n        need(event['kind'] in ('DECISION','FALLBACK','TRY','ADVICE','INVALIDATE','PLACE'),\n             'root one-placement prefix only')\n        if event['kind']=='TRY':tries.append(event)\n        if event['kind']=='PLACE':places.append(event)\n    need(len(tries)==len(places)==1 and 0<tries[0]['event']<places[0]['event']<index,\n         'one preceding root TRY and PLACE')\n    trial,place=tries[0],places[0];root=prefix[0]\n    need(trial['mode']=='BRANCH' and type(trial['depth']) is int and trial['depth']==0\n         and root['kind']=='DECISION' and root['decision']=={'kind':'BRANCH','row':trial['row']}\n         and type(trial['row']) is int and 0<=trial['row']<24\n         and place['row']==trial['row'] and canonical(trial['key'])==canonical(place['key'])\n         and trial['state_sha256']==root['state_sha256']\n         and place['state_sha256']==prefix[-1]['state_sha256'],\n         'exact root branch and single full-key placement join')\n    key=copy.deepcopy(place['key'])\n    need(type(key) is dict and set(key)=={'tile_type_id','type_preimage','translation'}\n         and key['translation']==[0,trial['row']], 'complete selected placement key')\n    # All evidence/status arrays and returned_metadata are deliberately unused.\n    tick()\n    return {'schema':'first-DEAD0-context-extraction-v1','dead_event_index':index,\n        'try_event_index':trial['event'],'place_event_index':place['event'],\n        'selected_key':key,'expected_root_state_sha256':root['state_sha256'],\n        'expected_state_sha256':place['state_sha256'],'selected_prefix_events':copy.deepcopy(prefix),\n        'saved_receipts_accepted':False,'trajectory_accepted':False}\n\n\ndef require_fresh_zero(receipt, state):\n    need(type(receipt) is dict and receipt['schema']=='unit-row-degree-evidence-check-v2'\n         and receipt['version']=='independent-unit-row-missing-mark-degree-check-v2'\n         and receipt['status']=='ZERO' and receipt['accepted_local_evidence'] is True\n         and receipt['complete_cover_checked'] is True and type(receipt['degree_exact']) is int\n         and receipt['degree_exact']==0 and receipt['candidate_keys']==[]\n         and receipt['sole_candidate'] is None and type(receipt['row']) is int and receipt['row']==0\n         and receipt['input_epoch']==state['input_epoch']\n         and receipt['state_sha256']==hashlib.sha256(canonical(state)).hexdigest()\n         and all(receipt[k] is False for k in ('complete_candidate_graph_accepted',\n             'scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted')),\n         'fresh independently completed ZERO required')\n\n\ndef ",
+      "before": "",
+      "new_offset": 27042,
+      "old_offset": 22209
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 31897,
+      "old_offset": 22238
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 31899,
+      "old_offset": 22241
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 31923,
+      "old_offset": 22266
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 31925,
+      "old_offset": 22269
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 31927,
+      "old_offset": 22272
+    },
+    {
+      "after": "local-certification plan')\n    end",
+      "before": "actual plan')\n    end ",
+      "new_offset": 31937,
+      "old_offset": 22283
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 31972,
+      "old_offset": 22306
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 31979,
+      "old_offset": 22314
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 31980,
+      "old_offset": 22316
+    },
+    {
+      "after": "self_id,",
+      "before": " self_id, ",
+      "new_offset": 32002,
+      "old_offset": 22339
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32016,
+      "old_offset": 22355
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32025,
+      "old_offset": 22365
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32032,
+      "old_offset": 22373
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32033,
+      "old_offset": 22375
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32052,
+      "old_offset": 22395
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32073,
+      "old_offset": 22417
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32079,
+      "old_offset": 22424
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32088,
+      "old_offset": 22434
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32547,
+      "old_offset": 22894
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32548,
+      "old_offset": 22896
+    },
+    {
+      "after": ";",
+      "before": "\n        ",
+      "new_offset": 32572,
+      "old_offset": 22921
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32576,
+      "old_offset": 22933
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32577,
+      "old_offset": 22935
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32628,
+      "old_offset": 22987
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32630,
+      "old_offset": 22990
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32633,
+      "old_offset": 22994
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32634,
+      "old_offset": 22996
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32645,
+      "old_offset": 23008
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32647,
+      "old_offset": 23011
+    },
+    {
+      "after": " certification",
+      "before": "-degree controls",
+      "new_offset": 32704,
+      "old_offset": 23069
+    },
+    {
+      "after": ";",
+      "before": "\n    ",
+      "new_offset": 32784,
+      "old_offset": 23151
+    },
+    {
+      "after": "cancel);",
+      "before": " cancel)\n    ",
+      "new_offset": 32813,
+      "old_offset": 23184
+    },
+    {
+      "after": "cancel)\n    path",
+      "before": " cancel)\n    plan_path ",
+      "new_offset": 32850,
+      "old_offset": 23226
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32867,
+      "old_offset": 23250
+    },
+    {
+      "after": ";need(",
+      "before": "\n    need(plan_",
+      "new_offset": 32880,
+      "old_offset": 23264
+    },
+    {
+      "after": "ath",
+      "before": "lan_path ",
+      "new_offset": 32910,
+      "old_offset": 23303
+    },
+    {
+      "after": "",
+      "before": " plan_",
+      "new_offset": 32915,
+      "old_offset": 23314
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32930,
+      "old_offset": 23335
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 32970,
+      "old_offset": 23376
+    },
+    {
+      "after": "",
+      "before": " plan_",
+      "new_offset": 32971,
+      "old_offset": 23378
+    },
+    {
+      "after": ";",
+      "before": "\n    ",
+      "new_offset": 32988,
+      "old_offset": 23401
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33007,
+      "old_offset": 23424
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33009,
+      "old_offset": 23427
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33017,
+      "old_offset": 23436
+    },
+    {
+      "after": ";plan",
+      "before": "\n    plan ",
+      "new_offset": 33043,
+      "old_offset": 23463
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33049,
+      "old_offset": 23474
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33084,
+      "old_offset": 23510
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33086,
+      "old_offset": 23513
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33254,
+      "old_offset": 23682
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33301,
+      "old_offset": 23730
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33303,
+      "old_offset": 23733
+    },
+    {
+      "after": "first-DEAD0-certification",
+      "before": "unit-row-global-engine",
+      "new_offset": 33309,
+      "old_offset": 23740
+    },
+    {
+      "after": " ",
+      "before": "",
+      "new_offset": 33352,
+      "old_offset": 23780
+    },
+    {
+      "after": "",
+      "before": " in ('unit-row-advised-original-controls','unit-row-advised-domain-controls','unit-row-advised-advice-controls','unit-row-advised-canonical-search','unit-row-advised-target-search')\n        and plan['resource_rule'] ",
+      "new_offset": 33372,
+      "old_offset": 23799
+    },
+    {
+      "after": "'unit-row-first-DEAD0-certification'\n         and plan['resource_rule']==",
+      "before": " ",
+      "new_offset": 33374,
+      "old_offset": 24017
+    },
+    {
+      "after": " ",
+      "before": "",
+      "new_offset": 33497,
+      "old_offset": 24068
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33516,
+      "old_offset": 24086
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33518,
+      "old_offset": 24089
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33582,
+      "old_offset": 24154
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33654,
+      "old_offset": 24227
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33656,
+      "old_offset": 24230
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33682,
+      "old_offset": 24257
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33684,
+      "old_offset": 24260
+    },
+    {
+      "after": " ",
+      "before": "",
+      "new_offset": 33696,
+      "old_offset": 24273
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33782,
+      "old_offset": 24358
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33834,
+      "old_offset": 24411
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33836,
+      "old_offset": 24414
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33846,
+      "old_offset": 24425
+    },
+    {
+      "after": " ",
+      "before": "",
+      "new_offset": 33862,
+      "old_offset": 24442
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33889,
+      "old_offset": 24468
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33891,
+      "old_offset": 24471
+    },
+    {
+      "after": " ",
+      "before": "",
+      "new_offset": 33927,
+      "old_offset": 24508
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33965,
+      "old_offset": 24545
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 33967,
+      "old_offset": 24548
+    },
+    {
+      "after": " ",
+      "before": "",
+      "new_offset": 34005,
+      "old_offset": 24587
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34024,
+      "old_offset": 24605
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34026,
+      "old_offset": 24608
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34039,
+      "old_offset": 24622
+    },
+    {
+      "after": "current executable",
+      "before": "frozen",
+      "new_offset": 34046,
+      "old_offset": 24630
+    },
+    {
+      "after": "7 and saved input8",
+      "before": " and original input2",
+      "new_offset": 34071,
+      "old_offset": 24643
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34113,
+      "old_offset": 24687
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34115,
+      "old_offset": 24690
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34158,
+      "old_offset": 24734
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34160,
+      "old_offset": 24737
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34200,
+      "old_offset": 24778
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34272,
+      "old_offset": 24851
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34273,
+      "old_offset": 24853
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34279,
+      "old_offset": 24860
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34349,
+      "old_offset": 24931
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34350,
+      "old_offset": 24933
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34422,
+      "old_offset": 25006
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34424,
+      "old_offset": 25009
+    },
+    {
+      "after": "first-DEAD0-certification",
+      "before": "marked-frontier",
+      "new_offset": 34434,
+      "old_offset": 25020
+    },
+    {
+      "after": "'\n ",
+      "before": "7'\n",
+      "new_offset": 34483,
+      "old_offset": 25059
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34517,
+      "old_offset": 25093
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34519,
+      "old_offset": 25096
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34557,
+      "old_offset": 25135
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34559,
+      "old_offset": 25138
+    },
+    {
+      "after": " ",
+      "before": "",
+      "new_offset": 34580,
+      "old_offset": 25160
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34603,
+      "old_offset": 25182
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 34605,
+      "old_offset": 25185
+    },
+    {
+      "after": " and contract",
+      "before": ", 'whole exact current Source contract')\n    need(set(plan",
+      "new_offset": 34611,
+      "old_offset": 25192
+    },
+    {
+      "after": "original_model_source",
+      "before": "review",
+      "new_offset": 34626,
+      "old_offset": 25252
+    },
+    {
+      "after": "",
+      "before": ") ",
+      "new_offset": 34650,
+      "old_offset": 25261
+    },
+    {
+      "after": "O",
+      "before": " {'",
+      "new_offset": 34652,
+      "old_offset": 25265
+    },
+    {
+      "after": "IGINAL_S",
+      "before": "",
+      "new_offset": 34654,
+      "old_offset": 25269
+    },
+    {
+      "after": "URCE",
+      "before": "OT','peer'}, 'author review and distinct whole-",
+      "new_offset": 34663,
+      "old_offset": 25270
+    },
+    {
+      "after": "\n         and contract",
+      "before": "ource peer')\n    for role,ref in plan",
+      "new_offset": 34668,
+      "old_offset": 25318
+    },
+    {
+      "after": "original_model_input",
+      "before": "review",
+      "new_offset": 34692,
+      "old_offset": 25357
+    },
+    {
+      "after": "",
+      "before": ".items():\n        review = decode(read_pinned(ref))\n        need(review['scope'] ",
+      "new_offset": 34715,
+      "old_offset": 25366
+    },
+    {
+      "after": "",
+      "before": " SC",
+      "new_offset": 34717,
+      "old_offset": 25449
+    },
+    {
+      "after": "",
+      "before": "PE and review['author_identity'] == '/root'\n            and review['source'] == plan['sources']['intake'] and review['sources'] == plan['sources']\n            and review['source_contract'] == plan['source_contract'] and review['source_only'] is True\n            and review['source_review_passed'] is True and type(review['scientific_calls']) is int\n            and review['scientific_calls'] == 0 and review['scientific_acceptance'] is False\n            and (review['reviewer_identity'] == '/root' if role == '",
+      "new_offset": 34718,
+      "old_offset": 25453
+    },
+    {
+      "after": "",
+      "before": "OOT'\n                 else review['reviewer_identity'] != '/root'), 'genuine current scoped Source reviews')\n    grant = decode(read_pinned(plan['ROOT_authorization']))\n    need(grant['schema'] == 'ROOT-unit-row-global-engine-authorization-v1'\n        and grant['author_identity'] == '/root' and grant['actual_execution_authorized'] is True\n        and grant['maximum_actual_invocations'] == 1\n        and all(grant[k] == plan[k] for k in ('invocation_id','purpose','sources','inputs','source_contract',\n            'reviews','runtime','limits','resource_rule','output_directory')), 'exact once-only Root actual grant')\n    declaration_raw = read_pinned(F",
+      "new_offset": 34719,
+      "old_offset": 25964
+    },
+    {
+      "after": "GINAL",
+      "before": "XED",
+      "new_offset": 34720,
+      "old_offset": 26620
+    },
+    {
+      "after": "\n         and contract",
+      "before": "",
+      "new_offset": 34732,
+      "old_offset": 26630
+    },
+    {
+      "after": "original_model_binding",
+      "before": "declaration",
+      "new_offset": 34756,
+      "old_offset": 26632
+    },
+    {
+      "after": "",
+      "before": ")\n    profile_raw ",
+      "new_offset": 34780,
+      "old_offset": 26645
+    },
+    {
+      "after": "=OR",
+      "before": " read_pinned(F",
+      "new_offset": 34781,
+      "old_offset": 26664
+    },
+    {
+      "after": "G",
+      "before": "XED_",
+      "new_offset": 34785,
+      "old_offset": 26679
+    },
+    {
+      "after": "AL_BINDING,'whole current and original-model contract')\n    need(set(plan",
+      "before": "PUTS",
+      "new_offset": 34788,
+      "old_offset": 26685
+    },
+    {
+      "after": "reviews",
+      "before": "profile",
+      "new_offset": 34863,
+      "old_offset": 26691
+    },
+    {
+      "after": "",
+      "before": "\n    authority_raw = canonical({'declaration': decode(declaration_raw), 'profile': decode(profile_raw)})\n    authority = decode(authority_raw)\n    need(authority['profile']['profile_name'] ",
+      "new_offset": 34873,
+      "old_offset": 26701
+    },
+    {
+      "after": "",
+      "before": " 'shared-bounded-six-rule-B12-N44-v2'\n        and type(authority['declaration']['height']) is int and authority['declaration']['height'] == 24,\n        'same original bounded profile and fixed24 boundary')\n    modules = ",
+      "new_offset": 34875,
+      "old_offset": 26892
+    },
+    {
+      "after": "",
+      "before": "role: load_module(role,source_raw[role]) for role in FIXED}\n    support, kernel, membership = (modules[k] for k in ('clean_support','kernel','membership'))\n    decoder = json.JSONDecoder(object_pairs_hook=unique,parse_float=finite_float,parse_constant=reject_constant)\n    sealed_modules = (sys.modules[__name__],*modules.values(),json,json.decoder,json.encoder,json.scanner,\n        copy,hashlib,itertools,math,os,resource,signal,stat,sys,time,types,base64,binascii,zlib)\n    seal = support.CodeSeal(sealed_modules,decoder,end)\n    plan_raw_value = canonical(plan)\n    anchor_fn, anchor_code, same_fn, same_code = anchor, anchor.__code__, same, same.__code__\n    tick_state = anchor_fn(tick)\n    method, method_fn = seal.check, support.CodeSeal.check\n    method_state = anchor_fn(method_fn)\n    strong_functions = all_function_anchors(sealed_modules)\n    def guard():\n        for phase in (0,1):\n            if (anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code\n                    or same is not same_fn or same_fn.__code__ is not same_code\n                    or support.CodeSeal.check is not method_fn or not same_fn(method_fn,method_state)\n                    or method.__self__ is not seal or method.__func__ is not method_fn\n                    or not same_fn(tick,tick_state)):\n                raise RuntimeError('original complete Source/native guard changed')\n            tick()\n            if phase == 0:\n                method()\n            if any(not same_fn(fn,state) for fn,state in strong_functions):\n                raise RuntimeError('original Source code/defaults/cells changed')\n        need(canonical(plan) == plan_raw_value and canonical(authority) == authority_raw,\n             'complete original plan and private input authority')\n    guard_state = anchor_fn(guard)\n    def boundary():\n        if not same_fn(guard,guard_state):\n            raise RuntimeError('original immediate boundary guard changed')\n        guard()\n        if not same_fn(guard,guard_state):\n            raise RuntimeError('original immediate boundary guard changed on return')\n    boundary_anchor = anchor_fn(boundary)\n    invoke_fn, invoke_code = invoke, invoke.__code__\n    local_deadline = invoke_fn(support.project_local_float_deadline,(end,),{'producer_pair':False},\n        boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)[1]\n    def fresh_language(endpoint_tick):\n        # Re-authenticate original full inputs; never reuse proposer-mutated language.\n        d, p = read_pinned(FIXED_INPUTS['declaration']), read_pinned(FIXED_INPUTS['profile'])\n        need(d == declaration_raw and p == profile_raw, 'same complete original raw inputs')\n        value = invoke_fn(membership.make_language,(),{'declaration_raw':d,\n            'expected_declaration_sha256':FIXED_INPUTS['declaration']['sha256'],'profile_raw':p,\n            'source_bindings':copy.deepcopy(plan['sources']),'kernel_module':kernel,\n            'local_deadline':local_deadline,'tick':endpoint_tick},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        need(value.binding['profile_name'] == authority['profile']['profile_name']\n            and value.binding['declaration_sha256'] == FIXED_INPUTS['declaration']['sha256']\n            and value.binding['profile_sha256'] == FIXED_INPUTS['profile']['sha256'], 'fresh original language binding')\n        return value\n    fixture_language = fresh_language(tick)\n    binding_raw = canonical(fixture_language.binding)\n    native_tick = tick\n    latest_callbacks = {'proposer':None,'fallback':None,'completion':None,'validator':None}\n    def proposer_adapter(*,language,state,row,tick):\n        injected_tick = tick\n        observed_row = row\n        diagnostic_row = observed_row if type(observed_row) is int and 0<=observed_row<24 else -1\n        selected_argument = state.get('selected') if type(state) is dict else None\n        diagnostic_selected = len(selected_argument) if type(selected_argument) is list and len(selected_argument)<=24 else -1\n        def step():\n            diagnostic_native_ns = native_tick()\n            latest_callbacks['proposer'] = ('PROPOSER_NATIVE_STEP',diagnostic_row,diagnostic_selected,diagnostic_native_ns)\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private proposer epoch unchanged')\n        return invoke_fn(modules['proposer'].propose_degree,(),{'language':private,'state':copy.deepcopy(state),\n            'row':row,'tick':step},boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    def fallback_adapter(*,language,state,row,tick):\n        injected_tick = tick\n        observed_row = row\n        diagnostic_row = observed_row if type(observed_row) is int and 0<=observed_row<24 else -1\n        selected_argument = state.get('selected') if type(state) is dict else None\n        diagnostic_selected = len(selected_argument) if type(selected_argument) is list and len(selected_argument)<=24 else -1\n        def step():\n            diagnostic_native_ns = native_tick()\n            latest_callbacks['fallback'] = ('FALLBACK_NATIVE_STEP',diagnostic_row,diagnostic_selected,diagnostic_native_ns)\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private original fallback epoch')\n        return invoke_fn(modules['fallback'].open_fallback,(),{'language':private,\n            'state':copy.deepcopy(state),'row':row,'tick':step},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    def certify_adapter(*,language,state,row,completion,checked_candidates,tick):\n        injected_tick = tick\n        observed_row = row\n        diagnostic_row = observed_row if type(observed_row) is int and 0<=observed_row<24 else -1\n        selected_argument = state.get('selected') if type(state) is dict else None\n        diagnostic_selected = len(selected_argument) if type(selected_argument) is list and len(selected_argument)<=24 else -1\n        def step():\n            diagnostic_native_ns = native_tick()\n            latest_callbacks['completion'] = ('COMPLETION_NATIVE_STEP',diagnostic_row,diagnostic_selected,diagnostic_native_ns)\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private original completion-check epoch')\n        return invoke_fn(modules['engine'].certify_by_current_cover,(),{\n            'language':private,'state':copy.deepcopy(state),'row':row,\n            'completion':copy.deepcopy(completion),'checked_candidates':copy.deepcopy(checked_candidates),\n            'degree_proposer':proposer_adapter,'semantics':modules['degree_checker'],'tick':step},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    def engine_factory(*,initial_state=None,degree_proposer=proposer_adapter,\n            fallback=fallback_adapter,certify_fallback=certify_adapter,\n            branch_adviser=None,validate_advice=None,tick,branch_tie='ROW'):\n        injected_tick = tick\n        def step():\n            native_tick()\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private per-engine original semantics authority')\n        # Construction/methods/cursor iteration remain inside the surrounding\n        # guarded endpoint. No per-method or per-yield Source seal is claimed.\n        return modules['engine'].LazyUnitRowEngine(language=private,\n            degree_proposer=degree_proposer,semantics=modules['degree_checker'],\n            transition_checker=modules['transition'],\n            fallback=fallback,certify_fallback=certify_fallback,tick=step,\n            branch_adviser=branch_adviser,validate_advice=validate_advice,branch_tie=branch_tie,\n            initial_state=copy.deepcopy(initial_state),maximum_nodes=128,maximum_events=2000)\n    def transition_adapter(*,before,after,rows,tick):\n        injected_tick = tick\n        def step():\n            native_tick()\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private original transition authority')\n        snapshot = invoke_fn(modules['transition'].authority_snapshot,(),{\n            'language':private,'semantics':modules['degree_checker'],'tick':step},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        return invoke_fn(modules['transition'].check_transition,(),{\n            'language':private,'semantics':modules['degree_checker'],\n            'before':copy.deepcopy(before),'after':copy.deepcopy(after),'rows':copy.deepcopy(rows),\n            'authority':canonical(snapshot).decode('utf8'),'tick':step},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    def refresh_adapter(*,state,candidates,tick):\n        injected_tick = tick\n        def step():\n            native_tick()\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private original known-packet refresh authority')\n        return invoke_fn(modules['transition'].refresh_candidates,(),{\n            'language':private,'semantics':modules['degree_checker'],\n            'state':copy.deepcopy(state),'candidates':copy.deepcopy(candidates),'tick':step},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    def scheduler_adapter(*,evidence,generations,tick,branch_tie='ROW',assigned_output_rows=None):\n        injected_tick = tick\n        def step():\n            native_tick()\n            injected_tick()\n        return invoke_fn(modules['engine'].select_schedule,(),{\n            'evidence':copy.deepcopy(evidence),'generations':copy.deepcopy(generations),'tick':step,\n            'branch_tie':branch_tie,'assigned_output_rows':copy.deepcopy(assigned_output_rows)},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    def adviser_adapter(*,state,decision,tick,maximum_work=50000,maximum_proposals=8,\n            maximum_demands=5,maximum_terms=16,maximum_rounds=3):\n        injected_tick = tick\n        def step():\n            native_tick()\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private original goal-adviser authority')\n        return invoke_fn(modules['adviser'].propose_branch,(),{\n            'language':private,'semantics':modules['degree_checker'],\n            'fallback':modules['fallback'].open_fallback,\n            'iter_syntax':modules['fallback'].iter_syntax,\n            'state':copy.deepcopy(state),'decision':copy.deepcopy(decision),'tick':step,\n            'maximum_work':maximum_work,'maximum_proposals':maximum_proposals,\n            'maximum_demands':maximum_demands,'maximum_terms':maximum_terms,\n            'maximum_rounds':maximum_rounds},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    def validate_advice_adapter(*,state,decision,batch,tick):\n        injected_tick = tick\n        observed_row = decision.get('row') if type(decision) is dict else None\n        diagnostic_row = observed_row if type(observed_row) is int and 0<=observed_row<24 else -1\n        selected_argument = state.get('selected') if type(state) is dict else None\n        diagnostic_selected = len(selected_argument) if type(selected_argument) is list and len(selected_argument)<=24 else -1\n        def step():\n            diagnostic_native_ns = native_tick()\n            latest_callbacks['validator'] = ('VALIDATOR_NATIVE_STEP',diagnostic_row,diagnostic_selected,diagnostic_native_ns)\n            injected_tick()\n        private = fresh_language(step)\n        need(canonical(private.binding) == binding_raw, 'private independent advice-consumer authority')\n        return invoke_fn(modules['advice_validator'].validate_advice,(),{\n            'language':private,'semantics':modules['degree_checker'],\n            'state':copy.deepcopy(state),'decision':copy.deepcopy(decision),\n            'batch':copy.deepcopy(batch),'tick':step},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n\n    def validate_found(found):\n        # Positive proof/board checks stay inside this original cold20 run.\n        need(type(found) is dict and set(found) == {'state','word_proposal'},\n             'complete found proposal, never producer proof authority')\n        commands_raw = canonical(found['word_proposal'])\n        state_raw = canonical(found['state'])\n        commands = decode(commands_raw)\n        need(type(commands) is list and len(commands) == 24,\n             'complete original24 command word, no shorter endpoint')\n        private = fresh_language(tick)\n        need(canonical(private.binding) == binding_raw, 'fresh independent found-word language')\n        membership_receipt = invoke_fn(membership.check_word,(),{\n            'language':private,'commands':decode(commands_raw),'tick':tick},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        need(membership_receipt['schema'] == 'shared-bounded-six-rule-word-membership-v1'\n            and membership_receipt['completed'] is True\n            and membership_receipt['all_commands_in_language'] is True\n            and membership_receipt['original_Gamma_preserved'] is True\n            and membership_receipt['exact_target'] is True\n            and membership_receipt['logical_acceptance'] is False\n            and membership_receipt['command_count'] == len(commands)\n            and len(membership_receipt['rows']) == len(commands)\n            and membership_receipt['commands_sha256'] == hashlib.sha256(commands_raw).hexdigest()\n            and canonical(membership_receipt['binding']) == binding_raw,\n             'whole fresh original bounded-language word membership')\n        original_raw = read_pinned(FIXED_INPUTS['declaration'])\n        need(original_raw == declaration_raw, 'whole original declaration after search')\n        original = decode(original_raw)\n        need(canonical(original) == canonical(authority['declaration']),\n             'original theory/Gamma/target, not candidate authority')\n        word_receipt = invoke_fn(modules['word_checker'].check_primitive_word,(),{\n            'theory':original['theory'],'parameters':original['parameters'],\n            'original_Gamma':original['ordered_Gamma'],'commands':decode(commands_raw),\n            'target':original['target'],'source_guard':boundary,\n            'deadline':local_deadline,'maximum_visits':5000000},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        need(word_receipt['completed'] is True\n            and word_receipt['original_Gamma_target_sequent_accepted'] is True\n            and word_receipt['original_ordered_Gamma'] == original['ordered_Gamma']\n            and word_receipt['parameters'] == original['parameters']\n            and word_receipt['target'] == original['target']\n            and word_receipt['theory_sha256'] == hashlib.sha256(canonical(original['theory'])).hexdigest()\n            and word_receipt['commands_sha256'] == hashlib.sha256(commands_raw).hexdigest(),\n             'unchanged1717 whole original-target proof check')\n        packet = invoke_fn(modules['converter'].propose_point_board,(),{\n            'commands':decode(commands_raw),'height':24,\n            'input_epoch':decode(binding_raw)['language_epoch'],'tick':tick},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        packet_raw = canonical(packet)\n        need(len(packet_raw) <= 2*1048576, 'whole found point packet, never trimmed')\n        point_receipt = invoke_fn(modules['point_checker'].check_point_board,(),{\n            'commands':decode(commands_raw),'height':24,\n            'input_epoch':decode(binding_raw)['language_epoch'],\n            'packet':decode(packet_raw),'tick':tick},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        need(point_receipt['exact_point_board_accepted'] is True\n            and point_receipt['whole_unit_target_verified'] is True\n            and point_receipt['literal_marking_union_verified'] is True\n            and point_receipt['padding_rows'] == 0\n            and point_receipt['source_word_length'] == 24\n            and point_receipt['packet_sha256'] == hashlib.sha256(packet_raw).hexdigest()\n            and point_receipt['source_word_sha256'] == hashlib.sha256(commands_raw).hexdigest()\n            and canonical(point_receipt['checked_padded_commands']) == commands_raw,\n             'independent full word-to-point projection and literal marking union')\n        private = fresh_language(tick)\n        checked = invoke_fn(modules['degree_checker'].private_state,\n            (private,decode(state_raw),tick),{},\n            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)[0]\n        need(canonical(checked) == state_raw, 'whole found state already canonical current original state')\n        expected_selected = [dict((k,tile[k]) for k in ('tile_type_id','type_preimage','translation'))\n                             for tile in decode(packet_raw)['tiles']]\n        expected_selected = [dict(record,generation=1) for record in expected_selected]\n        actual_selected = sorted(checked['selected'],key=lambda record:record['translation'][1])\n        expected_marks = [[point,value] for point,value,count in point_receipt['marking_union']]\n        need(canonical(actual_selected) == canonical(expected_selected)\n            and canonical(checked['t']) == canonical(point_receipt['unit_totals'])\n            and canonical(checked['m']) == canonical(expected_marks)\n            and checked['height'] == 24\n            and checked['input_epoch'] == decode(binding_raw)['language_epoch'],\n             'actual found selections and whole t/m state equal independently checked point board')\n        tick()\n        return {'schema':",
+      "new_offset": 34876,
+      "old_offset": 27113
+    },
+    {
+      "after": "','peer'},'Root revie",
+      "before": "-found-",
+      "new_offset": 34881,
+      "old_offset": 45103
+    },
+    {
+      "after": " and distinct whole-Source peer')\n    for role,ref in plan['re",
+      "before": "ord-point-",
+      "new_offset": 34903,
+      "old_offset": 45111
+    },
+    {
+      "after": "iews'].items():\n        re",
+      "before": "alidation-",
+      "new_offset": 34966,
+      "old_offset": 45122
+    },
+    {
+      "after": "ie",
+      "before": "1',\n            'commands_sha256':hashlib.sha256(commands_ra",
+      "new_offset": 34993,
+      "old_offset": 45133
+    },
+    {
+      "after": "=decode(read_pinned(ref))\n        need(revie",
+      "before": ").hexdigest(),\n            'found_state_sha256':hashlib.sha256(state_ra",
+      "new_offset": 34996,
+      "old_offset": 45194
+    },
+    {
+      "after": "['scope']==SCOPE and revie",
+      "before": ").hexdigest(),\n            'language_binding':decode(binding_ra",
+      "new_offset": 35041,
+      "old_offset": 45266
+    },
+    {
+      "after": "['author_identity']=='/root/arithmetic_induction'\n             and revie",
+      "before": "),'membership':membership_receipt,\n            'independent_",
+      "new_offset": 35068,
+      "old_offset": 45330
+    },
+    {
+      "after": "['source']==plan['sources']['intake'] and revie",
+      "before": "ord':",
+      "new_offset": 35141,
+      "old_offset": 45391
+    },
+    {
+      "after": "['sources']==plan['sources']\n             and revie",
+      "before": "ord_receipt,'point_board':decode(packet_ra",
+      "new_offset": 35189,
+      "old_offset": 45397
+    },
+    {
+      "after": "['source_contract']==plan['source_contract'] and review['source_only'] is ",
+      "before": "),\n            'independent_point_board':point_receipt,\n            'found_state_projection_equal':",
+      "new_offset": 35241,
+      "old_offset": 45440
+    },
+    {
+      "after": "\n             and review['source_review_passed'] is ",
+      "before": ",'checked_in_original_cold_endpoint':",
+      "new_offset": 35319,
+      "old_offset": 45543
+    },
+    {
+      "after": " and type(re",
+      "before": ",\n            'positi",
+      "new_offset": 35375,
+      "old_offset": 45584
+    },
+    {
+      "after": "iew['scientific_calls']) is int\n             and re",
+      "before": "e_nati",
+      "new_offset": 35388,
+      "old_offset": 45606
+    },
+    {
+      "after": "iew['scientific_calls']==0 and review['scientific_acceptance'] is False\n             and (review['reviewer_identit",
+      "before": "e_and_Source_boundar",
+      "new_offset": 35440,
+      "old_offset": 45613
+    },
+    {
+      "after": "']=='/root' if role==",
+      "before": "_still_required':True,\n            'complete_candidate_graph_accepted':False,'trajectory_accepted':False,\n            'RL_accepted':False,'GCTS_advantage_accepted':False,",
+      "new_offset": 35555,
+      "old_offset": 45634
+    },
+    {
+      "after": "' else review['reviewer_identity'] not in ('/root/arithmetic_induction','/root')),\n             'genuine current scoped Source reviews')\n    grant",
+      "before": "_resource_accepted':False}\n\n    search_capture ",
+      "new_offset": 35581,
+      "old_offset": 45809
+    },
+    {
+      "after": "decode(read_pinned(",
+      "before": " {'returned':False,'payload':None,'returned_ns':None}\n    def run_original_search():\n        enabled = ",
+      "new_offset": 35728,
+      "old_offset": 45857
+    },
+    {
+      "after": "",
+      "before": "'purpose'] == 'unit-row-advised-target-search'\n        engine = engine_factory(initial_state=None,tick=tick,branch_tie='ASSIGNED-OUTPUT-THEN-ROW',\n            branch_adviser=adviser_adapter if enabled else None,\n            validate_advice=validate_advice_adapter if enabled else None)\n        value = engine.search()\n        # Save ONLY an actual returned payload before invoke's unchanged\n        # postboundary may reject it. Never call engine methods after failure.\n        search_capture['payload'] = value\n        search_capture['returned'] = True\n        search_capture['returned_ns'] = clock(clock_id)\n        return value\n    found_validation = None\n    is_controls = plan['purpose'] in ('unit-row-advised-original-controls','unit-row-advised-domain-controls','unit-row-advised-advice-controls')\n    if is_controls:\n        is_original = plan['purpose'] == 'unit-row-advised-original-controls'\n        is_advice = plan['purpose'] == 'unit-row-advised-advice-controls'\n        selected_controls = modules['controls'] if is_original else modules['advice_controls'] if is_advice else modules['retained_controls']\n        control_kwargs = {'language':fixture_language,'engine_factory':engine_factory,\n            'degree_proposer':proposer_adapter,'fallback':fallback_adapter,\n            'certify_fallback':certify_adapter,'tick':tick}\n        if is_original:\n            control_kwargs['scheduler'] = scheduler_adapter\n        elif is_advice:\n            control_kwargs.update(adviser=adviser_adapter,validate_advice=validate_advice_adapter)\n        else:\n            control_kwargs.update(transition=transition_adapter,refresh=refresh_adapter)\n        diagnostic_run = Path(plan['output_directory'])\n        need(diagnostic_run.is_absolute() and diagnostic_run == diagnostic_run.resolve()\n            and not diagnostic_run.exists(), 'fresh canonical controls output before delegation')\n        diagnostic_path = str(diagnostic_run)\n        diagnostic_context = canonical({'purpose':plan['purpose'],'invocation_id':plan['invocation_id'],\n            'plan':raw_pin(plan_raw),'sources':plan['sources'],'inputs':plan['inputs'],\n            'language_binding':decode(binding_raw),'joint_began_ns':EARLY_G,\n            'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,'limits':LIMITS})\n        failure_writer = save_failure_diagnostic\n        failure_writer_state = anchor_fn(failure_writer)\n        controls_timeout_type = TimeoutError\n        try:\n            payload = invoke_fn(selected_controls.run_controls,(),control_kwargs,\n                boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        except BaseException as control_error:\n            if type(control_error) is controls_timeout_type:\n                try:\n                    if (anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code\n                            or same is not same_fn or same_fn.__code__ is not same_code\n                            or not same_fn(failure_writer,failure_writer_state)):\n                        raise RuntimeError('original raw controls-context writer changed')\n                    failure_writer(diagnostic_path,diagnostic_context,latest_callbacks,\n                        'CONTROLS_TIMEOUT_LAST_SCALARS',EARLY_G)\n                except BaseException:\n                    pass\n            raise\n        expected_schema = ('unit-row-lazy-global-controls-v1' if is_original\n                           else 'unit-row-goal-advice-controls-v1' if is_advice\n                           else 'unit-row-retained-domain-controls-v1')\n        need(type(payload) is dict and payload['schema'] == expected_schema\n            and payload['all_declared_cases_completed'] is True and type(payload['cases']) is list,\n            'complete selected original or retained control record; scopes remain distinct')\n    else:\n        diagnostic_run = Path(plan['output_directory'])\n        need(diagnostic_run.is_absolute() and diagnostic_run == diagnostic_run.resolve()\n            and not diagnostic_run.exists(), 'fresh canonical search output before delegation')\n        diagnostic_path = str(diagnostic_run)\n        diagnostic_context = canonical({'purpose':plan['purpose'],'invocation_id':plan['invocation_id'],\n            'plan':raw_pin(plan_raw),'sources':plan['sources'],'inputs':plan['inputs'],\n            'language_binding':decode(binding_raw),'joint_began_ns':EARLY_G,\n            'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,'limits':LIMITS})\n        failure_writer = save_failure_diagnostic\n        failure_writer_state = anchor_fn(failure_writer)\n        try:\n            payload = invoke_fn(run_original_search,(),{},\n                boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n            need(type(payload) is dict and payload['schema'] == 'unit-row-lazy-global-search-result-v1'\n                and payload['status'] in ('POINT_BOARD_PROPOSAL','EXHAUSTED','UNKNOWN')\n                and payload['root_restored'] is True and payload['stack_restored'] is True,\n                'fresh original-root search result, not an accepted proof')\n            need((payload['found'] is not None) is (payload['status'] == 'POINT_BOARD_PROPOSAL'),\n                 'found proposal exactly joins producer board-proposal status')\n            if payload['found'] is not None:\n                found_validation = invoke_fn(validate_found,(copy.deepcopy(payload['found']),),{},\n                    boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        except BaseException as search_error:\n            # Failure-only raw retention never replaces the original fault,\n            # original20 gate, or exit2. Any partial diagnostic is inventory only.\n            failure_kind = 'TimeoutError' if type(search_error) is TimeoutError else 'SOURCE_OR_RUNTIME_FAILURE'\n            try:\n                if (anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code\n                        or same is not same_fn or same_fn.__code__ is not same_code\n                        or not same_fn(failure_writer,failure_writer_state)):\n                    raise RuntimeError('original raw diagnostic writer changed')\n                failure_writer(diagnostic_path,diagnostic_context,search_capture,failure_kind,EARLY_G)\n            except BaseException:\n                pass\n            raise\n    result_raw = canonical({'schema':",
+      "new_offset": 35752,
+      "old_offset": 45965
+    },
+    {
+      "after": "_authorization']))\n    need(",
+      "before": "-unit-row-",
+      "new_offset": 35757,
+      "old_offset": 52355
+    },
+    {
+      "after": "rant",
+      "before": "lobal-engine-result-v1',\n        'purpose':plan",
+      "new_offset": 35786,
+      "old_offset": 52366
+    },
+    {
+      "after": "schema",
+      "before": "purpose",
+      "new_offset": 35792,
+      "old_offset": 52415
+    },
+    {
+      "after": "==",
+      "before": ",'controls':payload if is_controls else None,\n        'search':None if is_controls else payload,'found_validation':found_validation,\n        'search_work_bounds':{'maximum_nodes':128,'maximum_events':2000},\n        'language_binding':decode(binding_raw),\n        'sources':plan['sources'],'inputs':plan['inputs'],\n        'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,\n        'logical_proof_accepted':False,",
+      "new_offset": 35800,
+      "old_offset": 52424
+    },
+    {
+      "after": "-first-DEAD0-certification-authorization-v1'\n         and grant['author_identity']=='/root' and grant['actual_execution_authorized'] is True\n         and type(grant['maximum_actual_invocations']) is int and grant['maximum_actual_invocations']==1\n         and all(grant[k]==plan[k] for k in ('invocation_id','purpose','sources','inputs','source_contract',\n             'reviews','runtime','limits','resource_rule','output_directory')),'exact once-only Root actual grant')\n    inputs_raw={role",
+      "before": "_resource_accepted'",
+      "new_offset": 35807,
+      "old_offset": 52868
+    },
+    {
+      "after": "read_pinned(ref,",
+      "before": "False}) + b'\\n'\n    result_raw = invoke_fn(encode_result_transport,(result_raw,),{},\n        boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    need(len(result_raw) <= ",
+      "new_offset": 36299,
+      "old_offset": 52888
+    },
+    {
+      "after": "+131072) for role,ref in FIXED_INPUTS.items()}\n    original_ra",
+      "before": ", '",
+      "new_offset": 36324,
+      "old_offset": 53084
+    },
+    {
+      "after": "={role:read_pinned(ref) for role,ref in ORIGINAL_SOURCES.items()}\n    for role in ('clean_support','kernel','mem",
+      "before": "hole ",
+      "new_offset": 36387,
+      "old_offset": 53088
+    },
+    {
+      "after": "ership','proposer','de",
+      "before": "ounded ",
+      "new_offset": 36500,
+      "old_offset": 53094
+    },
+    {
+      "after": "ree_checker'):\n        need(FIXED",
+      "before": "lobal engine output')\n    run = Path(plan",
+      "new_offset": 36523,
+      "old_offset": 53102
+    },
+    {
+      "after": "role",
+      "before": "'output_directory'",
+      "new_offset": 36557,
+      "old_offset": 53144
+    },
+    {
+      "after": "",
+      "before": ")\n    need(run.is_absolute() and run ",
+      "new_offset": 36562,
+      "old_offset": 53163
+    },
+    {
+      "after": "ORIGINAL_SOURCES[role] and source_raw[role]==original_raw[role],\n             'current delegated mathematical role raw-identical to original model')\n    old_plans={}\n    for arm,purpose in (('canonical','unit-row-advised-canonical-search'),('advised','unit-row-advised-target-search')):\n        old=decode(inputs_raw[arm+'_plan']);old_plans[arm]=old\n        need(old['schema']=='ROOT-unit-row-global-engine-plan-v1' and old['purpose']==purpose\n             and old['sources']==ORIGINAL_SOURCES and old['inputs']==ORIGINAL_INPUTS\n             and old['limits']==LIMITS and old['resource_rule']==plan['resource_rule'],\n             'separately authenticated original Source17 plan')\n        old_contract=decode(read_pinned(old['source_contract']))\n        need(old_contract['sources']==ORIGINAL_SOURCES and old_contract['inputs']==ORIGINAL_INPUTS,\n             'original whole source contract')\n        old_grant=decode(read_pinned(old['ROOT_authorization']))\n        need(old_grant['author_identity']=='/root' and old_grant['actual_execution_authorized'] is True\n             and old_grant['maximum_actual_invocations']==1\n             and all(old_grant[k]==old[k] for k in ('invocation_id','purpose','sources','inputs','source_contract',\n                 'reviews','runtime','limits','resource_rule','output_directory')),'original fixed Root grant provenance only')\n        for role,ref in old['reviews']",
+      "before": " run",
+      "new_offset": 36564,
+      "old_offset": 53202
+    },
+    {
+      "after": "items():\n            r",
+      "before": "resol",
+      "new_offset": 37969,
+      "old_offset": 53207
+    },
+    {
+      "after": "=decode(read_pinned(ref));need(rv['source']==ORIGINAL_SOURCES['intake']\n                and rv['sources']==ORIGINAL_SOURCES and rv['source_contract']==old['source_contract']\n                and rv['source_only'] is True and rv['source_review_passed'] is True,'original Source review provenance only')\n        marker=decode(inputs_raw[arm+'_completion'])\n        need(marker['schema']=='unit-row-search-failure-diagnostic-completion-v1'\n             and marker['file']=='unknown-diagnostic",
+      "before": "e() and not run",
+      "new_offset": 37992,
+      "old_offset": 53213
+    },
+    {
+      "after": "json'\n             and {k:marker[k] for k in ('sha256','bytes')}==raw_pin(inputs_raw[arm+'_prefi",
+      "before": "e",
+      "new_offset": 38481,
+      "old_offset": 53229
+    },
+    {
+      "after": "'])\n             and marker['diagnostic_only'] is True and marker['positive_joint_gate_accepted'] is False\n             and marker['ROOT_resource_accepted'] is False\n             and marker['terminal_exit2_and_external_failure_closure_required'] is True,'whole original raw diagnostic completion')\n    declaration_raw,profile_raw=inputs_raw['declaration'],inputs_raw['profile']\n    need(FIXED_INPUTS['declaration']==ORIGINAL_INPUTS['declaration'] and FIXED_INPUTS['profile']==ORIGINAL_INPUTS['profile'],\n         'same original raw input2')\n    authority_raw=canonical({'declaration':decode(declaration_raw),'policy':decode(profile_raw),\n        'source_bindings':ORIGINAL_SOURCES,'binding':ORIGINAL_BINDING})\n    original_context_raw=canonical({'sources':ORIGINAL_SOURCES,'binding':ORIGINAL_BINDING,'inputs':ORIGINAL_INPUTS,'plans':old_plans})\n    modules={role:load_module(role,source_raw[role]) for role in FIXED}\n    support,kernel,membership,semantics=(modules[k] for k in ('clean_support','kernel','membership','degree_checker'))\n    decoder=json.JSONDecoder(object_pairs_hook=unique,parse_float=finite_float,parse_constant=reject_constant)\n    sealed_modules=(sys.modules[__name__],*modules.values(),json,json.decoder,json.encoder,json.scanner,\n        copy,hashlib,itertools,math,os,resource,signal,stat,sys,time,types,base64,binascii,zlib)\n    seal=support.CodeSeal(sealed_modules,decoder,end)\n    plan_raw_value=canonical(plan)\n    anchor_fn,anchor_code,same_fn,same_code=anchor,anchor.__code__,same,same.__code__\n    tick_state=anchor_fn(tick);method,method_fn=seal.check,support.CodeSeal.check;method_state=anchor_fn(method_fn)\n    strong_functions=all_function_anchors(sealed_modules)\n    def guard():\n        for phase in (0,1):\n            if (anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code\n                    or same is not same_fn or same_fn.__code__ is not same_code\n                    or support.CodeSeal.check is not method_fn or not same_fn(method_fn,method_state)\n                    or method.__self__ is not seal or method.__func__ is not method_fn\n                    or not same_fn(tick,tick_state)):\n                raise RuntimeError('original complete Source/native guard changed')\n            tick()\n            if phase==0:method()\n            if any(not same_fn(fn,state) for fn,state in strong_functions):\n                raise RuntimeError('original Source code/defaults/cells changed')\n        need(canonical(plan)==plan_raw_value and canonical({'sources':ORIGINAL_SOURCES,'binding':ORIGINAL_BINDING,\n             'inputs':ORIGINAL_INPUTS,'plans':old_plans})==original_context_raw,'current plan and private original authority unchanged')\n    guard_state=anchor_fn(guard)\n    def boundary():\n        if not same_fn(guard,guard_state):raise RuntimeError('original immediate boundary guard changed')\n        guard()\n        if not same_fn(guard,guard_state):raise RuntimeError('original immediate boundary guard changed on return')\n    boundary_anchor=anchor_fn(boundary);invoke_fn,invoke_code=invoke,invoke.__code__\n    def call(fn,args=(),kwargs=None):\n        return invoke_fn(fn,args,{} if kwargs is None else kwargs,boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    local_deadline=call(support.project_local_float_deadline,(end,),{'producer_pair':False})[1]\n    def fresh_language():\n        d,p=read_pinned(ORIGINAL_INPUTS['declaration']),read_pinned(ORIGINAL_INPUTS['profile'])\n        need(d==declaration_raw and p==profile_raw,'whole original authority input bytes')\n        language=call(membership.make_language,kwargs={'declaration_raw':d,\n            'expected_declaration_sha256':ORIGINAL_INPUTS['declaration']['sha256'],'profile_raw':p,\n            'source_bindings':copy.deepcopy(ORIGINAL_SOURCES),'kernel_module':kernel,'local_deadline':local_deadline,'tick':tick})\n        need(canonical(language.binding)==canonical(ORIGINAL_BINDING),'exact original model epoch without rebasing')\n        return language\n    def rebuild_sample(extraction,language):\n        tick();epoch=ORIGINAL_BINDING['language_epoch']\n        root={'schema':'unit-row-implicit-private-state-v1','input_epoch':epoch,'height':24,\n            't':[[[0,r],0] for r in range(24)],\n            'm':[[[1,k],['outside',epoch]] for k in range(-23,0)]+[[[1,23],['formula',canonical(language.target).decode('utf8')]]],\n            'selected':[],'excluded':[],'generation':[[[0,r],0] for r in range(24)]}\n        need(hashlib.sha256(canonical(root)).hexdigest()==extraction['expected_root_state_sha256'],'exact saved root state SHA')\n        key=copy.deepcopy(extraction['selected_key'])\n        need(key['type_preimage']['input_epoch']==epoch,'selected original epoch required')\n        _,totals,marks,selected,excluded,names=semantics.private_state(language,root,tick)\n        candidate=semantics.rebuild_tile(language,key['type_preimage'],key['translation'],tick)\n        need(canonical(candidate['placement_key'])==canonical(key),'selected original full key without rewriting')\n        semantics.check_collision(candidate,names)\n        need(semantics.legality(candidate,totals,marks,selected,excluded) is None,'selected whole original placement legal')\n        for point,value in candidate['global_t_values']:\n            tick();point=tuple(point);need(point in totals,'selected support within fixed target');totals[point]+=value\n        for point,value in candidate['global_m_values']:\n            tick();point=tuple(point)\n            need(point not in marks or canonical(marks[point])==canonical(value),'selected literal marking agreement')\n            marks[point]=copy.deepcopy(value)\n        state=dict(root,t=sorted([[list(p),v] for p,v in totals.items()]),m=sorted([[list(p),v] for p,v in marks.items()]),\n            selected=[candidate['selection_record']])\n        checked=semantics.private_state(language,state,tick)[0]\n        need(canonical(checked)==canonical(state) and state['excluded']==[]\n             and dict((tuple(p),v) for p,v in state['t'])[(0,0)]==0,'unfilled row0 exact reconstructed state')\n        need(hashlib.sha256(canonical(state)).hexdigest()==extraction['expected_state_sha256'],'exact saved rebuilt state SHA')\n        return state\n    def check_proposal(state,proposal):\n        language=fresh_language()\n        return call(semantics.check_degree_evidence,kwargs={'language':language,'state':copy.deepcopy(state),\n            'row':0,'proposal':copy.deepcopy(proposal),'tick':tick})\n    controls=[]\n    def negative(name,fn,reason):\n        tick();caught=None\n        try:call(fn)\n        except ValueError as error:\n            if type(error) is not ValueError:raise\n            caught=str(error)\n        need(caught==reason,'exact declared negative rejection, never callback/authority/resource failure')\n        tick();controls.append({'case':name,'status':'PASSED','reason':caught})\n    samples=[]\n    for arm,purpose in (('canonical','unit-row-advised-canonical-search'),('advised','unit-row-advised-target-search')):\n        tick();document=decode(inputs_raw[arm+'_prefix']);old=old_plans[arm]\n        extraction=call(extract_first_dead0,(document,old,FIXED_INPUTS[arm+'_plan'],purpose,tick))\n        language=fresh_language();state=call(rebuild_sample,(extraction,language))\n        proposal=call(modules['proposer'].propose_degree,kwargs={'language':fresh_language(),\n            'state':copy.deepcopy(state),'row':0,'tick':tick})\n        receipt=check_proposal(state,proposal);call(require_fresh_zero,(receipt,state))\n        literal=decode(dict((tuple(p),v) for p,v in state['m'])[(1,0)][1])\n        projection=call(modules['row0_projection'].certify_row_zero_projection,kwargs={\n            'language':fresh_language(),'authority':decode(authority_raw),'literal':copy.deepcopy(literal),'tick':tick})\n        projection_check=call(modules['row0_projection'].check_row_zero_projection,kwargs={\n            'language':fresh_language(),'authority':decode(authority_raw),'literal':copy.deepcopy(literal),\n            'certificate':copy.deepcopy(projection),'tick':tick})\n        need(projection['schema']=='unit-row-row-zero-projection-certificate-v1' and projection['status']=='FORBIDDEN'\n             and projection_check['schema']=='unit-row-row-zero-projection-check-v1'\n             and projection_check['projection_accepted'] is True\n             and projection_check['certificate_sha256']==hashlib.sha256(json.dumps(projection,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode('ascii')).hexdigest()\n             and canonical(projection_check['recomputed_certificate'])==canonical(projection),'fresh input-scoped row0 projection check')\n        samples.append({'arm':arm,'selection':extraction,'state':state,'state_sha256':hashlib.sha256(canonical(state)).hexdigest(),\n            'original_model_binding':copy.deepcopy(ORIGINAL_BINDING),'fresh_proposal':proposal,'fresh_receipt':receipt,\n            'literal':literal,'projection_certificate':projection,'projection_check':projection_check,\n            'saved_receipts_accepted':False,'old_trajectory_accepted':False})\n        controls.append({'case':arm+'-fresh-complete-ZERO-and-projection','status':'PASSED'})\n        if arm=='canonical':\n            bad=copy.deepcopy(extraction);bad['expected_state_sha256']='0'*64\n            negative('changed-saved-state-hash-rejected',lambda:rebuild_sample(bad,fresh_language()),'exact saved rebuilt state SHA')\n            bad_epoch=copy.deepcopy(extraction);bad_epoch['selected_key']['type_preimage']['input_epoch']='stale'\n            negative('selected-stale-epoch-rejected',lambda:rebuild_sample(bad_epoch,fresh_language()),'selected original epoch required')\n            bad_doc=copy.deepcopy(document);bad_doc['events_prefix'][0]['kind']='EXCLUDE'\n            negative('root-exclusion-prefix-rejected',lambda:extract_first_dead0(bad_doc,old,FIXED_INPUTS[arm+'_plan'],purpose,tick),'root one-placement prefix only')\n            old_receipt=dict(document['events_prefix'][extraction['dead_event_index']]['evidence'])[0]\n            negative('copied-old-ZERO-is-not-a-proposal',lambda:check_proposal(state,old_receipt),'degree evidence: exact proposal fields')\n            forged=copy.deepcopy(proposal);forged['coverage']['axiom_labels_seen']=[]\n            negative('forged-complete-cover-census-rejected',lambda:check_proposal(state,forged),'degree evidence: complete occurrence/pair census')\n            unknown=copy.deepcopy(proposal);unknown.update(kind='UNKNOWN',complete_cover_proposed=False,candidates=[],coverage=None,fibre_cover=None,rejections=[])\n            unknown_receipt=check_proposal(state,unknown)\n            need(unknown_receipt['status']=='UNKNOWN' and unknown_receipt['complete_cover_checked'] is False,'honest incomplete query remains UNKNOWN')\n            negative('UNKNOWN-never-certified-ZERO',lambda:require_fresh_zero(unknown_receipt,state),'fresh independently completed ZERO required')\n    projection_flags=('logical_proof_accepted','exact_point_board_accepted','target_impossibility_accepted',\n        'complete_GCTS_model_accepted','marking_activation_accepted','trajectory_accepted','GCTS_advantage_accepted','RL_accepted','ROOT_resource_accepted')\n    for sample in samples:\n        need(all(sample['projection_certificate'][k] is False and sample['projection_check'][k] is False for k in projection_flags),\n             'projection is narrow input-scoped lemma only')\n    ax_name=sorted(decode(authority_raw)['declaration']['theory']['axioms'])[0]\n    ax_literal=copy.deepcopy(decode(authority_raw)['declaration']['theory']['axioms'][ax_name])\n    ax_certificate=call(modules['row0_projection'].certify_row_zero_projection,kwargs={\n        'language':fresh_language(),'authority':decode(authority_raw),'literal':ax_literal,'tick':tick})\n    ax_check=call(modules['row0_projection'].check_row_zero_projection,kwargs={\n        'language':fresh_language(),'authority':decode(authority_raw),'literal':copy.deepcopy(ax_literal),\n        'certificate':copy.deepcopy(ax_certificate),'tick':tick})\n    need(ax_certificate['status']=='NOT_CERTIFIED' and ax_check['projection_accepted'] is False,\n         'actual original named AX cannot yield a forbidden projection certificate')\n    controls.append({'case':'original-AX-is-not-forbidden','status':'PASSED','AX_name':ax_name,\n        'certificate':ax_certificate,'check':ax_check})\n    reference=samples[0]\n    def check_projection(certificate):\n        return call(modules['row0_projection'].check_row_zero_projection,kwargs={\n            'language':fresh_language(),'authority':decode(authority_raw),'literal':copy.deepcopy(reference['literal']),\n            'certificate':certificate,'tick':tick})\n    for mutation in ('census','binding','literal'):\n        forged_projection=copy.deepcopy(reference['projection_certificate'])\n        if mutation=='census':forged_projection['named_axiom_census']=[]\n        elif mutation=='binding':forged_projection['model_authority']['binding']['language_epoch']='stale'\n        else:forged_projection['literal']=copy.deepcopy(ax_literal)\n        negative('projection-forged-'+mutation+'-rejected',lambda:check_projection(forged_projection),\n            'row-zero projection: complete certificate matches original authority/literal/census/six-rule reasons')\n    expected_controls=['canonical-fresh-complete-ZERO-and-projection','changed-saved-state-hash-rejected',\n        'selected-stale-epoch-rejected','root-exclusion-prefix-rejected','copied-old-ZERO-is-not-a-proposal',\n        'forged-complete-cover-census-rejected','UNKNOWN-never-certified-ZERO',\n        'advised-fresh-complete-ZERO-and-projection','original-AX-is-not-forbidden',\n        'projection-forged-census-rejected','projection-forged-binding-rejected','projection-forged-literal-rejected']\n    need([v['case'] for v in controls]==expected_controls and all(v['status']=='PASSED' for v in controls)\n         and len(samples)==2,'all two samples and twelve explicit local controls completed')\n    certification={'schema':'ROOT-first-DEAD0-certification-payload-v1',\n        'original_model_sources':ORIGINAL_SOURCES,'original_model_binding':ORIGINAL_BINDING,\n        'samples':samples,'controls':controls,'sample_count':len(samples),'control_count':len(controls),\n        'all_controls_completed':True,'local_contexts_freshly_checked':True,\n        'row0_projection_certificates_checked':True,'saved_receipts_accepted':False,\n        'logical_proof_accepted':False,'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,\n        'failure_marking_activated':False,'RL_accepted':False,'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}\n    result_raw=canonical({'schema':'ROOT-unit-row-global-engine-result-v1','purpose':plan['purpose'],\n        'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,\n        'controls':None,'search':None,'found_validation':None,'certification':certification,\n        'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,\n        'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\\n'\n    result_raw=call(encode_result_transport,(result_raw,))\n    run=Path(plan['output_directory']);need(run.is_absolute() and run==run.resolve() and not run.exists(),",
+      "before": "ists(), ",
+      "new_offset": 38578,
+      "old_offset": 53231
+    },
+    {
+      "after": ";result_pin",
+      "before": "\n    result_pin ",
+      "new_offset": 53936,
+      "old_offset": 53296
+    },
+    {
+      "after": "call",
+      "before": " invoke_fn",
+      "new_offset": 53948,
+      "old_offset": 53313
+    },
+    {
+      "after": ")\n",
+      "before": ",{},\n    ",
+      "new_offset": 54000,
+      "old_offset": 53371
+    },
+    {
+      "after": "d",
+      "before": "undar",
+      "new_offset": 54008,
+      "old_offset": 53386
+    },
+    {
+      "after": "",
+      "before": ",boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n    body ",
+      "new_offset": 54010,
+      "old_offset": 53392
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 54011,
+      "old_offset": 53460
+    },
+    {
+      "after": "",
+      "before": "\n        ",
+      "new_offset": 54177,
+      "old_offset": 53627
+    },
+    {
+      "after": "\n        ",
+      "before": "",
+      "new_offset": 54202,
+      "old_offset": 53661
+    },
+    {
+      "after": "",
+      "before": "\n        ",
+      "new_offset": 54261,
+      "old_offset": 53711
+    },
+    {
+      "after": "ORIGINAL_BINDING,'original_model_",
+      "before": "decode(",
+      "new_offset": 54280,
+      "old_offset": 53739
+    },
+    {
+      "after": "':ORIGINAL_BINDING,\n        ",
+      "before": "_raw),",
+      "new_offset": 54320,
+      "old_offset": 53753
+    },
+    {
+      "after": "",
+      "before": "\n        ",
+      "new_offset": 54371,
+      "old_offset": 53782
+    },
+    {
+      "after": "logical_proof_accepted':False,'",
+      "before": "",
+      "new_offset": 54552,
+      "old_offset": 53972
+    },
+    {
+      "after": "failure_markin",
+      "before": "lo",
+      "new_offset": 54669,
+      "old_offset": 54058
+    },
+    {
+      "after": "_activa",
+      "before": "ical_proof_accep",
+      "new_offset": 54684,
+      "old_offset": 54061
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 54766,
+      "old_offset": 54152
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 54767,
+      "old_offset": 54154
+    },
+    {
+      "after": ";completion",
+      "before": "\n    completion ",
+      "new_offset": 54788,
+      "old_offset": 54176
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 54800,
+      "old_offset": 54193
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55016,
+      "old_offset": 54410
+    },
+    {
+      "after": "call",
+      "before": " invoke_fn",
+      "new_offset": 55017,
+      "old_offset": 54412
+    },
+    {
+      "after": "",
+      "before": ",{},\n        boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code",
+      "new_offset": 55091,
+      "old_offset": 54492
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55139,
+      "old_offset": 54617
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55141,
+      "old_offset": 54620
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55181,
+      "old_offset": 54661
+    },
+    {
+      "after": "final_raw",
+      "before": "receipt ",
+      "new_offset": 55202,
+      "old_offset": 54683
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55212,
+      "old_offset": 54692
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55448,
+      "old_offset": 54929
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55449,
+      "old_offset": 54931
+    },
+    {
+      "after": ";offset",
+      "before": "\n    offset ",
+      "new_offset": 55469,
+      "old_offset": 54952
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55477,
+      "old_offset": 54965
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55495,
+      "old_offset": 54984
+    },
+    {
+      "after": "len(final_raw",
+      "before": " len(receipt",
+      "new_offset": 55496,
+      "old_offset": 54986
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55525,
+      "old_offset": 55014
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55526,
+      "old_offset": 55016
+    },
+    {
+      "after": "final_raw",
+      "before": "receipt",
+      "new_offset": 55537,
+      "old_offset": 55028
+    },
+    {
+      "after": ";need(count",
+      "before": "\n        need(count ",
+      "new_offset": 55556,
+      "old_offset": 55045
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55568,
+      "old_offset": 55066
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55570,
+      "old_offset": 55069
+    },
+    {
+      "after": ";offset",
+      "before": "\n        offset ",
+      "new_offset": 55599,
+      "old_offset": 55099
+    },
+    {
+      "after": "",
+      "before": " ",
+      "new_offset": 55608,
+      "old_offset": 55117
+    },
+    {
+      "after": ";",
+      "before": "\n    ",
+      "new_offset": 55884,
+      "old_offset": 55394
+    }
+  ],
+  "parent": {
+    "bytes": 55852,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+    "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+  },
+  "schema": "first-DEAD0-certification-caller-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 56338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/certify_first_dead0_cold_v1.py",
+    "sha256": "1fe3b0c863ac38925a0b6c47bb4951ff7fc8f913931404d3206d9a551ff75d02"
+  },
+  "source_only": true,
+  "unchanged_top_level_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ],
+  "whole_forward_inverse_exact": true
+}

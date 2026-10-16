@@ -1,0 +1,117 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "checks": [
+    {
+      "check": "whole Source parsed and compiled without import/exec",
+      "passed": true
+    },
+    {
+      "check": "only hashlib/json imports, no project/clock/file/process import or call",
+      "passed": true
+    },
+    {
+      "check": "no exception handler/resource-to-exclusion path",
+      "passed": true
+    },
+    {
+      "check": "exact keyword-only two public APIs",
+      "passed": true
+    },
+    {
+      "check": "constant original kernel/membership/c354 SHA/byte pins independently match raw bytes",
+      "passed": true
+    },
+    {
+      "check": "six-rule arity map exact to original kernel/point map",
+      "passed": true
+    },
+    {
+      "check": "certification input has no state, selected keys, old receipt, expected status, rule-shape or proofword parameter",
+      "passed": true
+    },
+    {
+      "check": "full named AX sorted loop and ordered Gamma enumerate loop call original primitive membership",
+      "passed": true
+    },
+    {
+      "check": "complete certificate verification recomputes via certify and compares canonical full objects",
+      "passed": true
+    },
+    {
+      "check": "height exact integer24 and binding/source/logical input/epoch checks present",
+      "passed": true
+    },
+    {
+      "check": "projection lemma accepts only all-six exclusion conjunction",
+      "passed": true
+    },
+    {
+      "check": "zero-prior row argument records strict negative offsets and nonnegative absolute reads",
+      "passed": true
+    },
+    {
+      "check": "all9 higher proof/marking/trajectory/RL/resource flags false in both APIs",
+      "passed": true
+    },
+    {
+      "check": "no theorem-specific symbol/word/source-saved proof literal encoded",
+      "passed": true
+    },
+    {
+      "check": "no c354 domain query, carrier, engine, model or target search invoked",
+      "passed": true
+    },
+    {
+      "check": "pre/post entire authority equality and literal stability across original delegates",
+      "passed": true
+    }
+  ],
+  "checks_count": 16,
+  "functions": [
+    "need",
+    "tree",
+    "canonical",
+    "digest",
+    "_check_authority",
+    "certify_row_zero_projection",
+    "check_row_zero_projection"
+  ],
+  "method": "Raw bytes, literal AST inspection, parse/compile only; no function or scientific Source execution. Static checks are not runtime tests.",
+  "schema": "unit-row-row-zero-projection-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 11074,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+    "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+  },
+  "source_lines": 194,
+  "source_only": true,
+  "sources": {
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "row0_projection": {
+      "bytes": 11074,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+    }
+  }
+}

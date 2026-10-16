@@ -1,0 +1,77 @@
+{
+  "API": {
+    "authority": "Exact builtin JSON dict with four keys declaration/policy/source_bindings/binding. Caller privately parses whole original authenticated input2 and supplies exact authenticated original17 map/expected binding. It is not copied from a mutable producer or accepted from the candidate certificate.",
+    "certificate": "unit-row-row-zero-projection-certificate-v1, version unit-row-row-zero-rule-projection-v1. Full model_authority and hash, literal and hash, row0/height24, explicit assumptions, complete named_axiom_census and ordered_Gamma_census with original primitive MEMBERS/formulas/equality, six rule_exclusions with arity/reasons, projection scope and9 false higher flags. independently_checked=False.",
+    "certify": "certify_row_zero_projection(*,language,authority,literal,tick)",
+    "check": "check_row_zero_projection(*,language,authority,literal,certificate,tick)",
+    "language": "Fresh original bounded membership instance per actual certification/verification delegate, constructed from same original raw inputs and original17 map. Original kernel/membership code sealed by current executable caller. Do not reuse an untrusted producer language; keep current executable Source7 separate from original semantic Source17.",
+    "literal": "Exact independently extracted demanded formula from the authorized failure sample, caller-private for check. Generic module contains no target/axiom/proof-route literal. Changing a certificate literal while keeping that expected argument cannot pass.",
+    "receipt": "unit-row-row-zero-projection-check-v1 with certificate_sha256, compared_full_certificate=True, complete recomputed_certificate, projection_accepted=(status FORBIDDEN), independently_checked=True, same9 higher flagsFalse.",
+    "statuses": "FORBIDDEN only if every six-rule exclusion holds. NOT_CERTIFIED for any AX/Gamma occurrence match or an implication outside this projection family; this is not a positive proof of a matching full board. Membership/authority/native/programming errors propagate instead of producing a forbidden literal.",
+    "tick": "Original captured resource-only callback. Full CodeSeal/current caller/native gates bracket entire delegate externally. Exceptions propagate; no catches or local budget reset."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "unit-row-row-zero-rule-projection-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-input-scoped-row-zero-rule-projection-Source",
+    "source": {
+      "bytes": 11074,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+    },
+    "source_contract": "Exact raw contract capsule",
+    "source_only": true,
+    "source_review_passed": "Distinct reviewer decides genuinely"
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_static": {
+    "bytes": 4429,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/author-static-v1.json",
+    "sha256": "7dac7dafdb374c1f52e4f39c0e5025b9ca85c41a982e88c1f9283796bff036df"
+  },
+  "schema": "unit-row-row-zero-rule-projection-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-input-scoped-row-zero-rule-projection-Source",
+  "source": {
+    "bytes": 11074,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+    "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+  },
+  "source_contract": {
+    "bytes": 13159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/Source-contract-v1.json",
+    "sha256": "686a09b276c2d377353a01ad005b275d95333db6b698f4a5053f63b3c57f3c4d"
+  },
+  "source_only": true,
+  "sources": {
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "row0_projection": {
+      "bytes": 11074,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+    }
+  },
+  "status": "FROZEN_SOURCE_ONLY_UNEXECUTED_PENDING_DISTINCT_REVIEW_AND_ROOT_ACTUAL"
+}

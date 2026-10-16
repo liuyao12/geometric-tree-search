@@ -1,0 +1,59 @@
+{
+  "schema": "unit-row-row-zero-rule-projection-typed-Source-review-v1",
+  "scope": "unit-row-input-scoped-row-zero-rule-projection-Source",
+  "source": {
+    "bytes": 11074,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+    "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+  },
+  "source_contract": {
+    "bytes": 13159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/Source-contract-v1.json",
+    "sha256": "686a09b276c2d377353a01ad005b275d95333db6b698f4a5053f63b3c57f3c4d"
+  },
+  "sources": {
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "row0_projection": {
+      "bytes": 11074,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+    }
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "disposition": "CONDITIONAL_SOURCE_PASS_UNEXECUTED",
+  "authorship_disclosure": "I authored consumer3/original23 and older checker/codec/family dependencies, not this projection,43bc,5d1f,c960/c354. Current caller author arithmetic_induction owns43bc/c354; distinct review is Source provenance, not a new independent theorem implementation.",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-independent-source-20261016/findings-v1.json",
+    "sha256": "1f773643e65a0951ff58a15ebac78cd1211a53b9c47147a098a196c0d7e2f8fd",
+    "bytes": 6357
+  },
+  "remaining_gates": [
+    "Genuine whole current Source7 caller review including exact old/new bindings, source/input raw custody and full-context reconstruction.",
+    "Root-owned fresh generation/recomputation, complete local c960+c354 ZERO and declared negatives/countercontrol under original native20/512MiB/failure55/owned60/caller90+1.",
+    "Saved-only closure and narrow result wording; all old UNKNOWN trajectories/results remain unqualified."
+  ]
+}

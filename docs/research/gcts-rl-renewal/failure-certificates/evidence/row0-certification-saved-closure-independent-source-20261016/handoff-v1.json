@@ -1,0 +1,32 @@
+{
+  "findings": {
+    "bytes": 8214,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-certification-saved-closure-independent-source-20261016/static-findings-v1.json",
+    "sha256": "99fc2f8b9e87684928170ed12c43ff7d1b34440ec35cab7f9489e4c0095e66c7"
+  },
+  "helper_calls": 0,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "row0-certification-saved-closure-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 14110,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT_close_certification_saved_v1.py",
+      "sha256": "86f33fb897f90592a8e9f8fe8d6a037b9c97f5de1112893350478f3a8ffb2029"
+    },
+    "decoder": {
+      "bytes": 5289,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT_decode_saved_transport_v4.py",
+      "sha256": "945405004fb3793f91caddfef3dbbf7335581bdf399d0f1df8502df242f18025"
+    }
+  },
+  "status": "GENUINE_CONDITIONAL_SOURCE_REVIEW_ONLY_NO_HELPER_OR_SCIENTIFIC_EXECUTION",
+  "typed_review": {
+    "bytes": 3033,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-certification-saved-closure-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "7b22e288fefa92f3f09b6f46255488b032798593b4b8d4a9293859bab5bf1430"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "edit_count": 368,
+  "parent": {
+    "bytes": 55852,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+    "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+  },
+  "schema": "ROOT-row0-caller-raw-inverse-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 56338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/certify_first_dead0_cold_v1.py",
+    "sha256": "1fe3b0c863ac38925a0b6c47bb4951ff7fc8f913931404d3206d9a551ff75d02"
+  },
+  "unchanged_helpers": {
+    "all_function_anchors": true,
+    "anchor": true,
+    "cancel": true,
+    "canonical": true,
+    "decode": true,
+    "encode_result_transport": true,
+    "finite_float": true,
+    "invoke": true,
+    "load_module": true,
+    "need": true,
+    "raw_pin": true,
+    "read_pinned": true,
+    "reject_constant": true,
+    "same": true,
+    "save_failure_diagnostic": true,
+    "unique": true,
+    "write_new": true
+  },
+  "whole_forward_inverse_exact": true
+}

@@ -1,0 +1,130 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "aggregate_B_bytes": 41385984,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 0.766,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "current_goal_turn": "progress",
+  "failure_marking_activated": false,
+  "fresh_local_contexts_accepted": 2,
+  "input_scoped_row0_projection_certificates_accepted": 2,
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1484,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT-certification-transport-concordance-v1.json",
+    "sha256": "a74b4a75e4041d761870d65b1894589e2ab6fd482a591ed58532d7df43055729"
+  },
+  "native_launch_to_postprobe_ns": 600234000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 533063000,
+  "old_trajectory_accepted": false,
+  "original_model_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "outputs": [
+    {
+      "bytes": 43357,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/certification-owned-v1/engine-result.json",
+      "sha256": "9b152865766b25f5b823132c97d33f160b9b8f4262570dfc5a6a29812793412c"
+    },
+    {
+      "bytes": 6512,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/certification-owned-v1/response.jsonl",
+      "sha256": "07e8cf1050c9d09f64a73429f4010e36287aa6153fb8cf471cee573503363d01"
+    }
+  ],
+  "passed_cases": 12,
+  "plan": {
+    "bytes": 6722,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT-certification-plan-v1.json",
+    "sha256": "d4da8ae35d852cb53e6b252233b40d7ddf2610d843cddc99cc5e2fcfc9f39e8f"
+  },
+  "previous_goal_turn": "progress",
+  "projection_verification_disclosure": "Fresh full-certificate recomputation uses same trusted structural module; c354 full-context degree check is separately authored.",
+  "reconciliation_scope": "Whole saved literal bytes/response/native/proposal/certificate/census comparisons only; no scientific/model/checker replay.",
+  "remaining_gaps": [
+    "No marking compiled/activated or graph-pruning gain measured.",
+    "Input-scoped row0 lemma only; no arbitrary-row/binder/translation generalization.",
+    "Current unit-row specialization lacks full reference conformance and universal fixed Wang palette.",
+    "Turtle/Penrose/PA/Hilbert/RL/infinite-plane/substitution goals remain open."
+  ],
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "samples": [
+    {
+      "arm": "canonical",
+      "literal": [
+        "bot"
+      ],
+      "local_degree": 0,
+      "projection_certificate_sha256": "d23a4d9299fc83475a13d904e13f1a9f0576844b3d845a9337fbfedaf153ab82",
+      "row0_projection": "FORBIDDEN",
+      "state_sha256": "66a4b377e1c5c55395c46b8ee26445b6c3ac6353f7d3063aa6296ab612b13b6c"
+    },
+    {
+      "arm": "advised",
+      "literal": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "local_degree": 0,
+      "projection_certificate_sha256": "e45744183302f29449e6fc2af86765eb5e190a16761cf797051f22a7d9c25ca9",
+      "row0_projection": "FORBIDDEN",
+      "state_sha256": "705af36132e6f6f8d93517e8dcbd507f6104215008aaa2bedf4205592762709d"
+    }
+  ],
+  "schema": "ROOT-row0-failure-certification-disposition-v1",
+  "skipped_cases": 0,
+  "target_impossibility_accepted": false,
+  "terminal_T_bytes": 41385984
+}

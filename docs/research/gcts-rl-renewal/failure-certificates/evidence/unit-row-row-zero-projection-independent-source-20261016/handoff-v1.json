@@ -1,0 +1,26 @@
+{
+  "schema": "unit-row-row-zero-projection-independent-review-handoff-v1",
+  "source": {
+    "bytes": 11074,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+    "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+  },
+  "source_contract": {
+    "bytes": 13159,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/Source-contract-v1.json",
+    "sha256": "686a09b276c2d377353a01ad005b275d95333db6b698f4a5053f63b3c57f3c4d"
+  },
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "b56afd17d9089a24e7b06e69a4d70531bcf7c51363256b21aa89c7d847f48d3d",
+    "bytes": 3595
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-independent-source-20261016/findings-v1.json",
+    "sha256": "1f773643e65a0951ff58a15ebac78cd1211a53b9c47147a098a196c0d7e2f8fd",
+    "bytes": 6357
+  },
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false
+}

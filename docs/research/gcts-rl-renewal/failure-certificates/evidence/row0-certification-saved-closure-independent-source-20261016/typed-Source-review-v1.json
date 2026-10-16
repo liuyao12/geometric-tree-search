@@ -1,0 +1,47 @@
+{
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored projection module, bounded membership, c960 proposer/fallback and other prior controls/engine9; did not author these Root saved-data helpers. Review checks closure code/schema/data joins and inherited native gates, not a second scientific/mathematical recheck. Distinct c354 authored arithmetic. Root owns execution/saved output/resource qualification.",
+  "blockers": [],
+  "caller_source": {
+    "bytes": 56338,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/certify_first_dead0_cold_v1.py",
+    "sha256": "1fe3b0c863ac38925a0b6c47bb4951ff7fc8f913931404d3206d9a551ff75d02"
+  },
+  "caller_source_contract": {
+    "bytes": 24396,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-first-DEAD0-certification-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "66fdf6a2ecf11e6f0838e8de1229c1c704c4ee8a8f587fc564b48460980e7b47"
+  },
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 8214,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-certification-saved-closure-independent-source-20261016/static-findings-v1.json",
+    "sha256": "99fc2f8b9e87684928170ed12c43ff7d1b34440ec35cab7f9489e4c0095e66c7"
+  },
+  "helper_calls": 0,
+  "limitations": [
+    "No actual saved result was generated or closed during this review; Root may run reviewed helpers only after a successful closed actual.",
+    "Helpers are trusted Root-local metadata closure under the pinned caller/runtime/native meter, not a hostile-file parser/security framework. Full canonical bounded payload is established by decoder before closer.",
+    "Projection receipt fresh recomputation uses same trusted module, not independently authored theorem algorithm/1717/99b3.",
+    "Native approval, fresh Zero/projection acceptance and12runtimecontrols remain Root actual/closure results, never Source-only review results."
+  ],
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "row0-certification-saved-closure-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-row0-certification-saved-wire-native-and-literal-closure-Source",
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "closer": {
+      "bytes": 14110,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT_close_certification_saved_v1.py",
+      "sha256": "86f33fb897f90592a8e9f8fe8d6a037b9c97f5de1112893350478f3a8ffb2029"
+    },
+    "decoder": {
+      "bytes": 5289,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/row0-failure-certification-ROOT-20261016/ROOT_decode_saved_transport_v4.py",
+      "sha256": "945405004fb3793f91caddfef3dbbf7335581bdf399d0f1df8502df242f18025"
+    }
+  }
+}
