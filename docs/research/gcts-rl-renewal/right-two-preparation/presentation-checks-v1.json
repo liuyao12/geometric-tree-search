@@ -1,0 +1,127 @@
+{
+  "schema": "right-two-preparation-reader-presentation-checks-v1",
+  "presentation_only": true,
+  "check_count": 25,
+  "checks": [
+    {
+      "id": "no-unresolved-placeholders",
+      "passed": true
+    },
+    {
+      "id": "no-forbidden-C0",
+      "passed": true
+    },
+    {
+      "id": "audit-anchor-and-unique-ids",
+      "passed": true
+    },
+    {
+      "id": "all-anchor-links-close",
+      "passed": true
+    },
+    {
+      "id": "every-download-route-mapped",
+      "passed": true
+    },
+    {
+      "id": "all-mapped-files-exist",
+      "passed": true
+    },
+    {
+      "id": "established-MathJax",
+      "passed": true
+    },
+    {
+      "id": "closed-right-two-statement",
+      "passed": true
+    },
+    {
+      "id": "whole24-visual",
+      "passed": true
+    },
+    {
+      "id": "whole24-counts-match-audit",
+      "passed": true
+    },
+    {
+      "id": "whole-domain-total",
+      "passed": true
+    },
+    {
+      "id": "complete-census-match",
+      "passed": true
+    },
+    {
+      "id": "actual-semantic-check-count",
+      "passed": true
+    },
+    {
+      "id": "audit-admission-narrow",
+      "passed": true
+    },
+    {
+      "id": "higher-flags-false",
+      "passed": true
+    },
+    {
+      "id": "no-search-or-RL",
+      "passed": true
+    },
+    {
+      "id": "preparation-costs-exact",
+      "passed": true
+    },
+    {
+      "id": "audit-costs-exact",
+      "passed": true
+    },
+    {
+      "id": "audit-MiB-exact",
+      "passed": true
+    },
+    {
+      "id": "separate-stages-cost-scope",
+      "passed": true
+    },
+    {
+      "id": "producer-audit-source-support-join",
+      "passed": true
+    },
+    {
+      "id": "source-only-consumers-explicit",
+      "passed": true
+    },
+    {
+      "id": "grammar-gap-qualified",
+      "passed": true
+    },
+    {
+      "id": "large-model-no-display-decode",
+      "passed": true
+    },
+    {
+      "id": "authorship-disclosed",
+      "passed": true
+    }
+  ],
+  "reader": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-report-source-20261015/reader.html",
+    "sha256": "d2350ead127f24b2ff67ba4b9dd4e43470b319fe2e0a8a150d2833f4554cbb08",
+    "bytes": 44329
+  },
+  "data": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-report-source-20261015/report-data.json",
+    "sha256": "4344feaf86d2eb81616db64c258c5c2088076a3395d4c313ae8b6dace728bd93",
+    "bytes": 21299
+  },
+  "alias_map": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-report-source-20261015/public-alias-map-v1.json",
+    "sha256": "c614866b3813de7b7ff29baf6d0c1a1eedeb690d958ddd1dfbad0dbfaa82fff0",
+    "bytes": 14575
+  },
+  "scientific_or_Source_calls": 0,
+  "large_Q_JSON_decodes": 0,
+  "native_clocks_tests_actuals": 0,
+  "browser_or_MathJax_runtime_checks": 0,
+  "boundary": "Static saved-display checks only. Root retains browser/layout/live/archive verification and publication."
+}

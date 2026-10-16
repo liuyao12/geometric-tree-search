@@ -1,0 +1,31 @@
+{
+  "schema": "right-two-audit-intake-independent-Source-handoff-v2",
+  "source_only": true,
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/typed-Source-review-v2.json",
+    "sha256": "87037c2f3c7efa00e8eb80a007dfe89bcbaf840d7d939da204d3abacf4ceb81b",
+    "bytes": 2874
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/findings-v2.json",
+    "sha256": "fa7a05d6378b4236da0d62c37fa58bd93dd7ea57e5e56ba8687ec0b948e33a86",
+    "bytes": 15962
+  },
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v2.py",
+    "sha256": "d34ba50668094ecdd593bad7c07d3fdb3ea962e944f5f5a2bcb0319a0ee5a2e4",
+    "bytes": 26850
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/Source-contract-v2.json",
+    "sha256": "15bf854b0cd54ccb552d649158cf956c25cfa2a7a0d680a085ac9f7a31193c7c",
+    "bytes": 8464
+  },
+  "source_review_passed": false,
+  "check_count": 51,
+  "unique_raw_records": 22,
+  "blocker_ids": [
+    "RIGHT-TWO-AUDIT-RELEASE-TEXT-2"
+  ],
+  "actual_execution_authorized": false
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "right-two-independent-audit-saved-custody-handoff-v1",
+  "saved_data_only": true,
+  "saved_record_consistent": true,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-saved-independent-20261015/findings-v1.json",
+    "sha256": "77c9ffe062df224238b55b133841b4a6a4cc74830b78c0cd9a235242e7b4bf4e",
+    "bytes": 108639
+  },
+  "Root_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-audit-disposition-v1.json",
+    "sha256": "14ad69316169c62445700940024e90150cb5172d44998a5b5f71313cb233b564",
+    "bytes": 9778
+  },
+  "actual_result": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-owned-v1/audit-result.json",
+    "sha256": "848f67a03c16f681bd2587f4155b84382fe4f6d88d10c835a8ac98e349f69066",
+    "bytes": 5595
+  },
+  "check_count": 77,
+  "raw_reference_count": 110,
+  "unique_raw_path_count": 49,
+  "observations": {
+    "formulas": 11149,
+    "recipes": 16201,
+    "all_rows": 24,
+    "complete_candidate_count": 36734910,
+    "native_launch_to_postprobe_ns": 18438472000,
+    "terminal_peak_bytes": 354516992,
+    "tool_elapsed_ms": 18617
+  },
+  "scope": "Saved closure/native/wire/count/epoch custody only. Actual full independent audit result remains the mathematical evidence; this review does not reexecute it or independently reconstruct any formula/recipe/domain. Root alone grants current admission.",
+  "disclosure": "Reviewer authored the narrow cf7c auditor binding successor (fixed current declaration/Source6), not the inherited independent Semantics/reconstruct_grammar/domain algorithms or Root intake/actual/disposition. Authorship disclosed; no independent mathematical authority is conferred by this saved review.",
+  "scientific_or_Source_calls": 0,
+  "Q_payload_state_oracle_decodes": 0,
+  "clocks_tests_actuals": 0,
+  "target_proof_accepted": false,
+  "recipient_family_accepted": false,
+  "RL_accepted": false,
+  "advantage_claimed": false,
+  "blockers": []
+}

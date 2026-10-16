@@ -1,0 +1,51 @@
+{
+  "schema": "ordinary-goal-consumer-author-static-v1",
+  "source_only": true,
+  "checks": [
+    {
+      "id": "syntax-compile-only",
+      "passed": true
+    },
+    {
+      "id": "stdlib-only",
+      "passed": true
+    },
+    {
+      "id": "shared-API-calls",
+      "passed": true
+    },
+    {
+      "id": "no-native-clock-reset",
+      "passed": true
+    },
+    {
+      "id": "complete-permutation-guards",
+      "passed": true
+    },
+    {
+      "id": "fact-only-premises",
+      "passed": true
+    },
+    {
+      "id": "primitive-expansion",
+      "passed": true
+    },
+    {
+      "id": "no-runtime-calls",
+      "passed": true
+    }
+  ],
+  "check_count": 8,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/ordinary_goal_ordered_saturation_v1.py",
+    "sha256": "b1b7c40c9f6da98afa260e51395c48a3b0080ab550d4a4032c6cfdbeed3066ce",
+    "bytes": 15027
+  },
+  "ordinary_ancestor": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-control-source-20261015/Q_ordinary_first_ready_saturation_v1.py",
+    "sha256": "860134e6a3c95b4099713a481d5ce322cfd9cc452a87a45330b932424054f875",
+    "bytes": 17921
+  },
+  "scope": "Whole newly authored code read and AST/compile only. No semantic function/fixture/helper/Q/clock/test/run.",
+  "calls": 0
+}

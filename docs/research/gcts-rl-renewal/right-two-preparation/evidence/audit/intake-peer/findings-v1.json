@@ -1,0 +1,466 @@
+{
+  "schema": "right-two-audit-intake-independent-Source-findings-v1",
+  "scope": "right-two-complete-independent-audit-intake-Source",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v1.py",
+    "sha256": "4113de9e776f6c45ebca32ce890694a6fc6ec864b1282328469b9c5c9903dcb3",
+    "bytes": 12556
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/Source-contract-v1.json",
+    "sha256": "6548fa223f607fea1e5dbc948a5d035ec0a710f633ae53ffd71627a4283c5b99",
+    "bytes": 8070
+  },
+  "sources": {
+    "auditor": {
+      "bytes": 46327,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+      "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "intake": {
+      "bytes": 12556,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v1.py",
+      "sha256": "4113de9e776f6c45ebca32ce890694a6fc6ec864b1282328469b9c5c9903dcb3"
+    }
+  },
+  "author_identity": "/root",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source_review_passed": false,
+  "checks": [
+    {
+      "id": "exact-current-source",
+      "passed": true
+    },
+    {
+      "id": "exact-current-contract",
+      "passed": true
+    },
+    {
+      "id": "Source4",
+      "passed": true
+    },
+    {
+      "id": "producer-raw-only",
+      "passed": true
+    },
+    {
+      "id": "generic-parser-only",
+      "passed": true
+    },
+    {
+      "id": "one-current-fullbuffer",
+      "passed": true,
+      "detail": "Authenticated whole bytes→decode→drop raw→one generic lossless parse→droptext; no naive full Q parse."
+    },
+    {
+      "id": "whole-current-math-endpoint",
+      "passed": true
+    },
+    {
+      "id": "hard-current-core",
+      "passed": true
+    },
+    {
+      "id": "raw-vs-value-explicit",
+      "passed": true
+    },
+    {
+      "id": "whole-model-epochs",
+      "passed": true
+    },
+    {
+      "id": "no-search-model-trim",
+      "passed": true
+    },
+    {
+      "id": "native-early-one-D",
+      "passed": true
+    },
+    {
+      "id": "native-exit-tail",
+      "passed": true
+    },
+    {
+      "id": "full-output-wire",
+      "passed": true
+    },
+    {
+      "id": "no-spawn",
+      "passed": true
+    },
+    {
+      "id": "literal-current-limits",
+      "passed": true
+    },
+    {
+      "id": "strong-flags-false",
+      "passed": true
+    },
+    {
+      "id": "raw-1",
+      "passed": true
+    },
+    {
+      "id": "raw-2",
+      "passed": true
+    },
+    {
+      "id": "raw-3",
+      "passed": true
+    },
+    {
+      "id": "raw-4",
+      "passed": true
+    },
+    {
+      "id": "raw-5",
+      "passed": true
+    },
+    {
+      "id": "raw-6",
+      "passed": true
+    },
+    {
+      "id": "raw-7",
+      "passed": true
+    },
+    {
+      "id": "raw-8",
+      "passed": true
+    },
+    {
+      "id": "raw-9",
+      "passed": true
+    },
+    {
+      "id": "raw-10",
+      "passed": true
+    },
+    {
+      "id": "raw-11",
+      "passed": true
+    },
+    {
+      "id": "raw-12",
+      "passed": true
+    },
+    {
+      "id": "raw-13",
+      "passed": true
+    },
+    {
+      "id": "raw-14",
+      "passed": true
+    },
+    {
+      "id": "raw-15",
+      "passed": true
+    },
+    {
+      "id": "raw-16",
+      "passed": true
+    },
+    {
+      "id": "raw-17",
+      "passed": true
+    },
+    {
+      "id": "raw-18",
+      "passed": true
+    },
+    {
+      "id": "raw-19",
+      "passed": true
+    },
+    {
+      "id": "RIGHT-TWO-AUDIT-LIVE-CALLER-1",
+      "passed": false,
+      "detail": "Concrete Source blocker: instantiated nested guard/tick/call and ParseBudget.check are not module bindings captured by CodeSeal. Own callers invoke them directly without original identity/code/default/cell anchors, including final poststdout guard();tick();exit_fn(0). Same-object code replacement can bypass those guards. No mutation/execution outcome asserted."
+    },
+    {
+      "id": "syntax-only",
+      "passed": true,
+      "detail": "One syntax compile+AST parse only; no Source/project/helper/native/Q/test/actual execution."
+    }
+  ],
+  "check_count": 38,
+  "raw_records": [
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-protocol-choice-v1.json",
+        "sha256": "c5beae3c9529842d7d867790e6c66f487909fc65147e53a0b6ada73d360c59cf",
+        "bytes": 6543
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-auditor-independent-source-20261015/typed-Source-review-v1.json",
+        "sha256": "75e0e7b0092388df973344b5c74e8d5bcb7271c80dc45026f1e8f0046ccff46b",
+        "bytes": 4046
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+        "bytes": 2925
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-oracle-domains.json",
+        "sha256": "04d0be2091fc7145619c26283ca96f5e03d3cce2e40145370f4d6025c2a203eb",
+        "bytes": 8295991
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-state.json",
+        "sha256": "e3327a27f0dbc139f8bd03fbeaafde7b29556e230dbf10f4f325e2888dc713fc",
+        "bytes": 8296636
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/preparation.json",
+        "sha256": "1573da45b4f3671efd04197791385e5be1a81cefc83338c61f7a3bd63fbbad1e",
+        "bytes": 38957245
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-preparation-disposition-v1.json",
+        "sha256": "013e59285997463bfc0c0321387e95b9ed01c65c5714a257704210d32a7c71c5",
+        "bytes": 8576
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-plan-v1.json",
+        "sha256": "3ee0d610ae18b2738e6203d4ccd1834e670094e39fa97a45e08aa6add774b389",
+        "bytes": 4464
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+        "bytes": 10187
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+        "bytes": 48584
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+        "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+        "bytes": 19742
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+        "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+        "bytes": 41739
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+        "bytes": 10323
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+        "bytes": 102352
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v1.py",
+        "sha256": "4113de9e776f6c45ebca32ce890694a6fc6ec864b1282328469b9c5c9903dcb3",
+        "bytes": 12556
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+        "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa",
+        "bytes": 46327
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+        "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df",
+        "bytes": 5806
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/Source-contract-v1.json",
+        "sha256": "6548fa223f607fea1e5dbc948a5d035ec0a710f633ae53ffd71627a4283c5b99",
+        "bytes": 8070
+      },
+      "whole_raw_match": true
+    }
+  ],
+  "unique_raw_records": 19,
+  "blockers": [
+    {
+      "id": "RIGHT-TWO-AUDIT-LIVE-CALLER-1",
+      "priority": "blocking current Source readiness",
+      "sites": [
+        {
+          "line": 108,
+          "endpoint": "tick"
+        },
+        {
+          "line": 161,
+          "endpoint": "tick"
+        },
+        {
+          "line": 162,
+          "endpoint": "tick"
+        },
+        {
+          "line": 163,
+          "endpoint": "call"
+        },
+        {
+          "line": 163,
+          "endpoint": "tick"
+        },
+        {
+          "line": 164,
+          "endpoint": "call"
+        },
+        {
+          "line": 172,
+          "endpoint": "call"
+        },
+        {
+          "line": 181,
+          "endpoint": "call"
+        },
+        {
+          "line": 184,
+          "endpoint": "guard"
+        },
+        {
+          "line": 188,
+          "endpoint": "guard"
+        },
+        {
+          "line": 188,
+          "endpoint": "tick"
+        },
+        {
+          "line": 152,
+          "endpoint": "tick"
+        },
+        {
+          "line": 152,
+          "endpoint": "tick"
+        },
+        {
+          "line": 155,
+          "endpoint": "guard"
+        },
+        {
+          "line": 158,
+          "endpoint": "call"
+        },
+        {
+          "line": 157,
+          "endpoint": "guard"
+        },
+        {
+          "line": 160,
+          "endpoint": "guard"
+        }
+      ],
+      "nested_definitions": {
+        "tick": {
+          "start_line": 102,
+          "end_line": 107
+        },
+        "guard": {
+          "start_line": 151,
+          "end_line": 153
+        },
+        "call": {
+          "start_line": 154,
+          "end_line": 157
+        },
+        "ParseBudget": {
+          "start_line": 159,
+          "end_line": 160
+        }
+      },
+      "explanation": "CodeSeal receives sys.modules[__name__] before ParseBudget is constructed and captures top-level main code/defaults, not each live nested callable object created by main. call() delegates guard before/after fn but does not first authenticate live guard; ParseBudget.check directly delegates the same guard. Final direct guard and tick after stdout have no original caller-side live-function state check and no later independent Source boundary before exit0. Original auditor Boundary snapshots source_guard only when instantiated, so it does not replace earlier caller custody or protect post-auditor final calls.",
+      "necessary_repair": "Capture original live identities/code/defaults/kwdefault entries/closure cells once after their legitimate creation, retain stable holders where counters change, and compare through original anchored validators immediately before and after each actual live delegation. Cover call itself at its own caller, guard→tick, ParseBudget.check→guard and final poststdout boundary. No callback resealing, no no-op guard or model/cap change.",
+      "not_claimed": "No mutation/helper function was executed. This is a reachable Source authority gap, not evidence of actual corruption or a mathematical algorithm defect."
+    }
+  ],
+  "whole_current_intake_contract_and_handoff_read": true,
+  "positive_scope": "Current raw pins, exactSource4/producerRawOnly, new-declaration binding, current complete rawprep→decode→dropraw→genericparse, full independent reconstruction/domain endpoint, value-vs-raw/epochs, full wire/native caps and false strongerflags are coherent on Source read.",
+  "other_integration_notes": [
+    "Before actual, concreteplan13 must equal exact Sourcecontract inputs6/runtime/producerSource6 and current review records. No plan from this reviewer.",
+    "Runtime/metadata preflight uses trusted Root config and fixed synchronous Source scope. Do not claim arbitrary hostile Python module/OS mutation protection or current fit.",
+    "Cold seal tuple omits pathlib/itertools namespaces reached by unchanged Sources; any scope claim beyond enumerated modules needs explicit custody design. This note is not a newly demonstrated mathematical failure or an execution result.",
+    "Full current phase/body outputs and resource closure still need one Root actual after repaired Source+peer reviews; no actual allowed by this negative."
+  ],
+  "authorship_disclosure": "Reviewer authored original1717 auditor/checker, lossless codec and new producer prep intake/declaration, but did not author this Root clean audit intake. This is Source integration review, not independent mathematical implementation or actual replay.",
+  "execution": {
+    "Source_project_functions": 0,
+    "Q_decodes": 0,
+    "clocks": 0,
+    "tests": 0,
+    "actual_plans_outputs": 0
+  }
+}

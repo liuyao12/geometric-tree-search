@@ -1,0 +1,806 @@
+{
+  "schema": "right-two-auditor-independent-Source-findings-v1",
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source_review_passed": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+    "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa",
+    "bytes": 46327
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/Source-contract-v1.json",
+    "sha256": "45fe3cd4d2fee479df741e682196c95278321de1d119013817478a457160223d",
+    "bytes": 5798
+  },
+  "parent": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+    "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+    "bytes": 46514
+  },
+  "fixed_declaration": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+    "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "bytes": 2925
+  },
+  "declaration_value_sha256": "ae8aacb2b659ba2d2438c5bc640ae1f6e7fccb8b056f138bde6a6d1e2151449f",
+  "fixed_producer_sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+      "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+      "bytes": 41739
+    },
+    "catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  },
+  "checks": [
+    {
+      "id": "exact-source",
+      "passed": true,
+      "detail": "Whole current raw bytes read, not imported/executed."
+    },
+    {
+      "id": "exact-parent",
+      "passed": true
+    },
+    {
+      "id": "exact-contract",
+      "passed": true
+    },
+    {
+      "id": "exact-delta",
+      "passed": true
+    },
+    {
+      "id": "unique-literal-region-VERSION",
+      "passed": true
+    },
+    {
+      "id": "unique-literal-region-DECLARATION_RAW_SHA256",
+      "passed": true
+    },
+    {
+      "id": "unique-literal-region-DECLARATION_VALUE_SHA256",
+      "passed": true
+    },
+    {
+      "id": "unique-literal-region-FROZEN_PRODUCER_BINDINGS",
+      "passed": true
+    },
+    {
+      "id": "unique-provenance-region-0",
+      "passed": true
+    },
+    {
+      "id": "unique-provenance-region-1",
+      "passed": true
+    },
+    {
+      "id": "unique-provenance-region-2",
+      "passed": true
+    },
+    {
+      "id": "whole-byte-forward",
+      "passed": true,
+      "detail": "Entire module exact after ONLY4 assignment and3 doc/role/message replacements."
+    },
+    {
+      "id": "whole-byte-inverse",
+      "passed": true
+    },
+    {
+      "id": "author-forward-patch",
+      "passed": true
+    },
+    {
+      "id": "author-inverse-patch",
+      "passed": true
+    },
+    {
+      "id": "delta-span-537-537",
+      "passed": true
+    },
+    {
+      "id": "delta-span-549-557",
+      "passed": true
+    },
+    {
+      "id": "delta-span-550-565",
+      "passed": true
+    },
+    {
+      "id": "delta-span-718-733",
+      "passed": true
+    },
+    {
+      "id": "delta-span-719-737",
+      "passed": true
+    },
+    {
+      "id": "delta-span-720-739",
+      "passed": true
+    },
+    {
+      "id": "delta-span-721-748",
+      "passed": true
+    },
+    {
+      "id": "delta-span-722-756",
+      "passed": true
+    },
+    {
+      "id": "delta-span-723-759",
+      "passed": true
+    },
+    {
+      "id": "delta-span-724-770",
+      "passed": true
+    },
+    {
+      "id": "delta-span-726-783",
+      "passed": true
+    },
+    {
+      "id": "delta-span-728-784",
+      "passed": true
+    },
+    {
+      "id": "delta-span-734-785",
+      "passed": true
+    },
+    {
+      "id": "delta-span-738-787",
+      "passed": true
+    },
+    {
+      "id": "delta-span-739-792",
+      "passed": true
+    },
+    {
+      "id": "delta-span-740-797",
+      "passed": true
+    },
+    {
+      "id": "delta-span-812-827",
+      "passed": true
+    },
+    {
+      "id": "delta-span-814-859",
+      "passed": true
+    },
+    {
+      "id": "delta-span-815-863",
+      "passed": true
+    },
+    {
+      "id": "delta-span-821-868",
+      "passed": true
+    },
+    {
+      "id": "delta-span-843-870",
+      "passed": true
+    },
+    {
+      "id": "delta-span-844-886",
+      "passed": true
+    },
+    {
+      "id": "delta-span-845-891",
+      "passed": true
+    },
+    {
+      "id": "delta-span-1364-1379",
+      "passed": true
+    },
+    {
+      "id": "delta-span-1637-1916",
+      "passed": true
+    },
+    {
+      "id": "delta-span-2195-2762",
+      "passed": true
+    },
+    {
+      "id": "delta-span-2954-3042",
+      "passed": true
+    },
+    {
+      "id": "delta-span-38267-38073",
+      "passed": true
+    },
+    {
+      "id": "delta-span-38268-38080",
+      "passed": true
+    },
+    {
+      "id": "delta-span-38270-38085",
+      "passed": true
+    },
+    {
+      "id": "delta-span-38293-38118",
+      "passed": true
+    },
+    {
+      "id": "delta-span-38294-38121",
+      "passed": true
+    },
+    {
+      "id": "delta-span-38301-38122",
+      "passed": true
+    },
+    {
+      "id": "delta-span-38303-38125",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40297-40107",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40335-40155",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40358-40167",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40361-40179",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40372-40180",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40388-40194",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40390-40202",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40398-40207",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40406-40213",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40516-40332",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40518-40338",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40526-40339",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40530-40342",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40543-40365",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40584-40395",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40586-40396",
+      "passed": true
+    },
+    {
+      "id": "delta-span-40588-40399",
+      "passed": true
+    },
+    {
+      "id": "all-positional-forward",
+      "passed": true
+    },
+    {
+      "id": "all-positional-inverse",
+      "passed": true
+    },
+    {
+      "id": "same-all21-topdefinitions",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-Boundary",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-Semantics",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-Unresolved",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-callback_state",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-canonical",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-canonical_blocks",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-check_point_state",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-check_primitive_word",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-compare_owned_chunks",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-digest",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-formula_nodes",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-independent_domain",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-integer",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-literal_points",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-need",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-parse_key",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-reconstruct_grammar",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-symbol",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-term_nodes",
+      "passed": true
+    },
+    {
+      "id": "unchanged-definition-term_size",
+      "passed": true
+    },
+    {
+      "id": "exact20-declared",
+      "passed": true
+    },
+    {
+      "id": "audit-algorithm-AST-exact",
+      "passed": true,
+      "detail": "Signature, all reconstruction/domain/state/output/deadline steps unchanged; only doc/string/set provenance literals differ."
+    },
+    {
+      "id": "other-module-nodes-exact",
+      "passed": true
+    },
+    {
+      "id": "unchanged-constant-PRODUCER_PROFILE",
+      "passed": true
+    },
+    {
+      "id": "unchanged-constant-MARKING",
+      "passed": true
+    },
+    {
+      "id": "unchanged-constant-GRAMMAR",
+      "passed": true
+    },
+    {
+      "id": "unchanged-constant-LIMITS",
+      "passed": true
+    },
+    {
+      "id": "unchanged-constant-RULE_FIELDS",
+      "passed": true
+    },
+    {
+      "id": "exact-current-producer6",
+      "passed": true
+    },
+    {
+      "id": "same-raw-declaration",
+      "passed": true
+    },
+    {
+      "id": "same-value-declaration",
+      "passed": true
+    },
+    {
+      "id": "no-producer-import",
+      "passed": true,
+      "detail": "New module imports only original stdlib; producerSource6 is raw provenance, never executed by this auditor."
+    },
+    {
+      "id": "raw-decl-not-runtime-override",
+      "passed": true
+    },
+    {
+      "id": "no-expected-count-shortcut",
+      "passed": true,
+      "detail": "Counts derived by unchanged reconstruction; old11147/16200 not acceptance constants."
+    },
+    {
+      "id": "original-audit-strongflags-false",
+      "passed": true
+    },
+    {
+      "id": "raw-1",
+      "passed": true
+    },
+    {
+      "id": "raw-2",
+      "passed": true
+    },
+    {
+      "id": "raw-3",
+      "passed": true
+    },
+    {
+      "id": "raw-4",
+      "passed": true
+    },
+    {
+      "id": "raw-5",
+      "passed": true
+    },
+    {
+      "id": "raw-6",
+      "passed": true
+    },
+    {
+      "id": "raw-7",
+      "passed": true
+    },
+    {
+      "id": "raw-8",
+      "passed": true
+    },
+    {
+      "id": "raw-9",
+      "passed": true
+    },
+    {
+      "id": "raw-10",
+      "passed": true
+    },
+    {
+      "id": "raw-11",
+      "passed": true
+    },
+    {
+      "id": "raw-12",
+      "passed": true
+    },
+    {
+      "id": "raw-13",
+      "passed": true
+    },
+    {
+      "id": "syntax-only",
+      "passed": true,
+      "detail": "One compile/AST check, no eval/import/Source/native/Q/helper/test/actual execution."
+    }
+  ],
+  "check_count": 118,
+  "unchanged_definition_proof": [
+    {
+      "name": "Boundary",
+      "raw_bytes": 2298,
+      "raw_sha256": "90df148bcab9ad5ee830de7ba1cc4c72425e5c3bfb2db1aa8ae2b0ad35c10c7b",
+      "AST_sha256": "d8f30de708f10fc80f6b8545aacd3fbabb009f997f96b403113500fd45141a9f",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "Semantics",
+      "raw_bytes": 11319,
+      "raw_sha256": "71fb2a1f751d780962d81222b81f8dc611b53427d97d3126a713c9740a5998dc",
+      "AST_sha256": "153580a953b7bef0d91a5dd5954c5dfeca7ce3f2ab9bc7b473f2c02b057a1a1c",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "Unresolved",
+      "raw_bytes": 113,
+      "raw_sha256": "391038d0ab8526a7ff0b87c1bc1d70e0ef62c77eda519fd67fa41f16bbf23ac1",
+      "AST_sha256": "25a7dd4961f4e60d1902f0463ac53a6910b6fc74254366748c4dc7cc4e955ef7",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "callback_state",
+      "raw_bytes": 464,
+      "raw_sha256": "cf22967d987a6a5e54aa94c5448455ca2fc05c2b6554c8e5ca3cf639888c63d0",
+      "AST_sha256": "baa4333aa954fdcaf6c1ced5867b5a5b85c422e5bd82d011d54e75b6b1650797",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "canonical",
+      "raw_bytes": 126,
+      "raw_sha256": "d34e91696b8725e85edb3c23d0322d2d7f3331b50c71ec0c920be1e2dd021204",
+      "AST_sha256": "d3a71bdef7236ba91755dbc6b2c9b9299c2497fd725e578f00f5f5e648849cc4",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "canonical_blocks",
+      "raw_bytes": 499,
+      "raw_sha256": "d0843e1b81a6e570ff58715349e8b32bb3844cbb167ae5fda0a661d7ad93a291",
+      "AST_sha256": "de4d1ee72af49c1251024de467a6cc6f6c1a83c4260c82d065006617ffe8e065",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "check_point_state",
+      "raw_bytes": 5548,
+      "raw_sha256": "36c7c9e16a96ea17a10126af1216f522b300794fe199d20ca777afa42e6bb3d8",
+      "AST_sha256": "9278bee49f48281e0b787b13a0c06bfa015e7cac83ccaf1329e31475b265de35",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "check_primitive_word",
+      "raw_bytes": 2691,
+      "raw_sha256": "039e620c0000988394e53d8d3dba145f09b8c9f8cad9cda849561b72a2d61ab9",
+      "AST_sha256": "7deac47a49db28b21626afa08ced565e2d449bee36ccaa2bdf9d984146db714b",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "compare_owned_chunks",
+      "raw_bytes": 1248,
+      "raw_sha256": "0507b241c0ac311001cec83ae611a0218eb9f86ae4f2c45b6fef2885e846884a",
+      "AST_sha256": "381594465604e66957919c5b4f14696f8105c226aae1628eb8c2de9e481cd19d",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "digest",
+      "raw_bytes": 89,
+      "raw_sha256": "70d36f23d919c4396f49fd66828baeedc6b6f3cfd16eb234a71fd77a65b61b98",
+      "AST_sha256": "c365e077a272580a07907d26219c77aceccf61a39dedf06b791a2fa8470a67a0",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "formula_nodes",
+      "raw_bytes": 296,
+      "raw_sha256": "5c973a7862ce21660c1ef1a3466e1f8367e4c96583207789a32a7557f4ae9d84",
+      "AST_sha256": "de3944dc3bbe2681b368e05f0c63ae5ecbd8604da6133d23b1d04301d30b1209",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "independent_domain",
+      "raw_bytes": 2415,
+      "raw_sha256": "3c84209d04d0cc6a6ba8965cb49a8682fe7bcf430aac4af823fe4c06eee27548",
+      "AST_sha256": "4c28d709562adbc9d5c02ca43dd075e9ba12b1562d50f8d31f2669d7e3cbb413",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "integer",
+      "raw_bytes": 116,
+      "raw_sha256": "8c820cebcfa4ff877efe6ed5759aabff9ff035da3368ca291795e26c705efe94",
+      "AST_sha256": "05f75ed67a5ad1d7559c4aa871c37e7cdd5cd98bfe22142fa2fde1c1dd86465b",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "literal_points",
+      "raw_bytes": 509,
+      "raw_sha256": "4b4edc64d02bb98ebdaf7031df377bd34192e22aff2396268cc573c3d146e679",
+      "AST_sha256": "fda434715991e945da1cb143dd0208e0f1d74943bffc94413a6a14115b63b2af",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "need",
+      "raw_bytes": 71,
+      "raw_sha256": "4b3a697e0d6c229d054eb933137631f3eec63797433cf8a40cb5f41231911d04",
+      "AST_sha256": "50c73b0443cfa78614639ae4ee0d07d28a67ecca7324481e1cbb4212f796a592",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "parse_key",
+      "raw_bytes": 539,
+      "raw_sha256": "6cac84d059e33ca958290b21ddb8490c3ffd0748b0639b398f872809b32218a8",
+      "AST_sha256": "bb0b998da0e0d0b1dc79169ab9a0308d253a5764378dc76a1737614b8c45c58c",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "reconstruct_grammar",
+      "raw_bytes": 5624,
+      "raw_sha256": "993e7ecfe94e7f1576a2d8de87998698cf4d363a81a2072868358bba285dc7b6",
+      "AST_sha256": "183a80b94939aeb4b1d4fd975b076b894340ee9315a791c5d81cc79ac7139f07",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "symbol",
+      "raw_bytes": 155,
+      "raw_sha256": "2c616627063eaf5d88d3160ab33f78a711a0a9ecb6ea93785335b6e5a515b082",
+      "AST_sha256": "bae39c8ee6842025383c52e76537446918058f8267ac2b6fe7396e20b5aba713",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "term_nodes",
+      "raw_bytes": 188,
+      "raw_sha256": "59b5c85aeb6f2e6c53f28579ceaa61bf83de1695b55b94fe7a2c3e58e4687fbc",
+      "AST_sha256": "337a94e699fdad4624c8714768bcb06d764e4dc8314d8f68a6f142d0897c4499",
+      "raw_and_AST_exact": true
+    },
+    {
+      "name": "term_size",
+      "raw_bytes": 64,
+      "raw_sha256": "05c38d129231c0d15da745b72c5bad9bc779748464b2bfb484c2b2320ae3bb49",
+      "AST_sha256": "cb07c3a442130d10e314ed64096187ea62533d03143c7b1319fd83c7804e5803",
+      "raw_and_AST_exact": true
+    }
+  ],
+  "raw_records": [
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+        "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa",
+        "bytes": 46327
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+        "bytes": 2925
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+        "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+        "bytes": 41739
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+        "bytes": 10187
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+        "bytes": 48584
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+        "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+        "bytes": 19742
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+        "bytes": 10323
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/Source-delta-v1.json",
+        "sha256": "a358e5b99adcd67da84c8665fed85aa40a29cba9ef80c76beae28ba0064f3214",
+        "bytes": 18249
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/Source-contract-v1.json",
+        "sha256": "45fe3cd4d2fee479df741e682196c95278321de1d119013817478a457160223d",
+        "bytes": 5798
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/parent-to-right-two-forward.patch",
+        "sha256": "6a8ab6079baa973c0db60137089727e4ac7a634d306d6c111347282cc1de31d8",
+        "bytes": 6599
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/right-two-to-parent-full-inverse.patch",
+        "sha256": "c3a20195bb291d85c0af5e284bf8e7fda153a8fdf202d10d7c44da32d8d87799",
+        "bytes": 6599
+      },
+      "whole_raw_match": true
+    }
+  ],
+  "unique_raw_records": 13,
+  "conclusion": "No concrete scoped Source blocker found in current successor. Conditional Source pass for exact declaration/provenance rebinding only; underlying mathematical algorithms and all20 other definitions byte+AST inherited unchanged.",
+  "disclosure": "Reviewer authored original1717 independent auditor/checker and current preparationworker, but did not author this controls-authored successor. This is genuine delta/current-binding review, not a second independent semantic implementation or actual mathematical replay.",
+  "integration_conditions": [
+    "Root must authenticate the new raw declaration and whole actual preparation once, whole state/oracle files/EOF and exactSource6 before calling unchanged signature. ProducerSources remain RAW_ONLY in clean audit process.",
+    "Oldcodec decode_lossless_preparation fixed0321 rawpin must not be called on newprep. Existing generic parse_lossless_preparation_text may be reused only after new caller raw authentication/decode, fullbuffer release/sharing guards.",
+    "Audit result declaration_sha256 is canonical VALUE digest (ae8a...), whereas recipient context_binding declaration_sha256 is RAW file digest(a1ce...). Do not conflate their fields.",
+    "Conservative existing same-process localdeadline under original global20; full cold T/postprobe/60/512/90+1 closure, distinct intake Source review and actual audit all still pending.",
+    "No new target proof, family instance, pointtrajectory/fullboard/native/RL/advantage or universal soundness claim."
+  ],
+  "execution": {
+    "Source_project_or_auditor_functions": 0,
+    "Q_payload_decodes": 0,
+    "clocks": 0,
+    "tests": 0,
+    "plans_actuals": 0
+  }
+}

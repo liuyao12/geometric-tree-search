@@ -1,0 +1,53 @@
+{
+  "schema": "ordinary-goal-consumer-Source-handoff-v2",
+  "source_only": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/ordinary_goal_ordered_saturation_v1.py",
+    "sha256": "b1b7c40c9f6da98afa260e51395c48a3b0080ab550d4a4032c6cfdbeed3066ce",
+    "bytes": 15027
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/Source-contract-v2.json",
+    "sha256": "07157568032f83ceb330aefb3c5bc4b981f4582de8433b57a389629ba261819d",
+    "bytes": 7151
+  },
+  "sources": {
+    "ordinary_consumer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/ordinary_goal_ordered_saturation_v1.py",
+      "sha256": "b1b7c40c9f6da98afa260e51395c48a3b0080ab550d4a4032c6cfdbeed3066ce",
+      "bytes": 15027
+    },
+    "goal_proposal_module": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+      "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+      "bytes": 31647
+    }
+  },
+  "integration": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/integration-v1.json",
+    "sha256": "314037a1513e4f1bb05745c86323c9fc0250818ecb1219abe8583046e6040037",
+    "bytes": 2513
+  },
+  "controls": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/prospective-controls-v1.json",
+    "sha256": "d19d78edb0293dea54ccfbd28c7ffe877f8c4ba548da7d47db77cb5d137bbd84",
+    "bytes": 7058
+  },
+  "static_authoring": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/author-static-v1.json",
+    "sha256": "f63f1785c6f34534bf740891c7fc86bf4e0a4c96e25e04b1b26de67e549feea6",
+    "bytes": 1437
+  },
+  "prior_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/handoff-v1.json",
+    "sha256": "c3a47735c9da49ab6eb746002527e1ef33b428d1d4aba30b209fe01a4d0cceb8",
+    "bytes": 1559
+  },
+  "current_dependency_pin_pending": false,
+  "consumer_independent_review_pending": true,
+  "scientific_calls": 0,
+  "Q_payload_decodes": 0,
+  "clocks_tests_actual_plans_outputs": 0,
+  "actual_activation": false
+}

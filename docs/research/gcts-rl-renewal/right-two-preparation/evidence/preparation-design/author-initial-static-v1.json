@@ -1,0 +1,83 @@
+{
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v1.py",
+    "sha256": "3dd05e2fd00c437a362e7b84d402d1aa75e5815a64319300f563559dd65abcc4",
+    "bytes": 41754
+  },
+  "declaration": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+    "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "bytes": 2925
+  },
+  "Source_dependencies": {
+    "kernel": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    },
+    "catalogue": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+      "bytes": 10187
+    },
+    "point_graph": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+      "bytes": 28531
+    },
+    "domain_oracle": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+      "bytes": 19742
+    },
+    "clean_support": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "bytes": 48584
+    }
+  },
+  "input_records": {
+    "declaration": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "bytes": 2925
+    },
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  },
+  "copied_parent_helpers": [
+    "need",
+    "integer",
+    "canonical",
+    "digest",
+    "pin_bytes",
+    "duplicate_free",
+    "no_constant",
+    "no_float",
+    "signed_integer",
+    "finite_float",
+    "tree",
+    "decode",
+    "regular_fd",
+    "read_small",
+    "write_exclusive",
+    "anchor",
+    "same",
+    "load_fixed",
+    "exact_limits",
+    "invoke"
+  ],
+  "copied_serializers": [
+    "json_blockable",
+    "json_chunks canonical bytes-to-text adaptation only"
+  ],
+  "dispatch_sites": 12,
+  "Source_functions_executed": 0,
+  "Q_decodes": 0,
+  "clocks": 0,
+  "tests": 0,
+  "actual_plans_outputs": 0
+}

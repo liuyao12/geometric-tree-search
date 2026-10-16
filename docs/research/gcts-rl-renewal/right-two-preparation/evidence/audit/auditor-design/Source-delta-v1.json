@@ -1,0 +1,613 @@
+{
+  "schema": "right-two-independent-auditor-Source-delta-v1",
+  "source_only": true,
+  "parent": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+    "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+    "bytes": 46514
+  },
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+    "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa",
+    "bytes": 46327
+  },
+  "edits": [
+    {
+      "old_start": 537,
+      "old_end": 538,
+      "new_start": 537,
+      "new_end": 546,
+      "old_text": "Q",
+      "new_text": "right-two"
+    },
+    {
+      "old_start": 549,
+      "old_end": 549,
+      "new_start": 557,
+      "new_end": 564,
+      "old_text": "",
+      "new_text": "Source-"
+    },
+    {
+      "old_start": 550,
+      "old_end": 551,
+      "new_start": 565,
+      "new_end": 566,
+      "old_text": "1",
+      "new_text": "2"
+    },
+    {
+      "old_start": 718,
+      "old_end": 718,
+      "new_start": 733,
+      "new_end": 736,
+      "old_text": "",
+      "new_text": "a1c"
+    },
+    {
+      "old_start": 719,
+      "old_end": 719,
+      "new_start": 737,
+      "new_end": 738,
+      "old_text": "",
+      "new_text": "8"
+    },
+    {
+      "old_start": 720,
+      "old_end": 720,
+      "new_start": 739,
+      "new_end": 747,
+      "old_text": "",
+      "new_text": "37aca644"
+    },
+    {
+      "old_start": 721,
+      "old_end": 721,
+      "new_start": 748,
+      "new_end": 755,
+      "old_text": "",
+      "new_text": "5f94cbc"
+    },
+    {
+      "old_start": 722,
+      "old_end": 722,
+      "new_start": 756,
+      "new_end": 758,
+      "old_text": "",
+      "new_text": "0c"
+    },
+    {
+      "old_start": 723,
+      "old_end": 723,
+      "new_start": 759,
+      "new_end": 769,
+      "old_text": "",
+      "new_text": "09a055a743"
+    },
+    {
+      "old_start": 724,
+      "old_end": 725,
+      "new_start": 770,
+      "new_end": 782,
+      "old_text": "4",
+      "new_text": "8ca0cc39b99c"
+    },
+    {
+      "old_start": 726,
+      "old_end": 727,
+      "new_start": 783,
+      "new_end": 783,
+      "old_text": "c",
+      "new_text": ""
+    },
+    {
+      "old_start": 728,
+      "old_end": 733,
+      "new_start": 784,
+      "new_end": 784,
+      "old_text": "1100f",
+      "new_text": ""
+    },
+    {
+      "old_start": 734,
+      "old_end": 736,
+      "new_start": 785,
+      "new_end": 785,
+      "old_text": "75",
+      "new_text": ""
+    },
+    {
+      "old_start": 738,
+      "old_end": 738,
+      "new_start": 787,
+      "new_end": 791,
+      "old_text": "",
+      "new_text": "9903"
+    },
+    {
+      "old_start": 739,
+      "old_end": 739,
+      "new_start": 792,
+      "new_end": 796,
+      "old_text": "",
+      "new_text": "3d3d"
+    },
+    {
+      "old_start": 740,
+      "old_end": 782,
+      "new_start": 797,
+      "new_end": 797,
+      "old_text": "1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "new_text": ""
+    },
+    {
+      "old_start": 812,
+      "old_end": 812,
+      "new_start": 827,
+      "new_end": 857,
+      "old_text": "",
+      "new_text": "ae8aacb2b659ba2d2438c5bc640ae1"
+    },
+    {
+      "old_start": 814,
+      "old_end": 814,
+      "new_start": 859,
+      "new_end": 862,
+      "old_text": "",
+      "new_text": "e7f"
+    },
+    {
+      "old_start": 815,
+      "old_end": 820,
+      "new_start": 863,
+      "new_end": 867,
+      "old_text": "a72af",
+      "new_text": "cb8b"
+    },
+    {
+      "old_start": 821,
+      "old_end": 841,
+      "new_start": 868,
+      "new_end": 868,
+      "old_text": "11a9343f4661b5092d54",
+      "new_text": ""
+    },
+    {
+      "old_start": 843,
+      "old_end": 843,
+      "new_start": 870,
+      "new_end": 885,
+      "old_text": "",
+      "new_text": "f138bde6a6d1e21"
+    },
+    {
+      "old_start": 844,
+      "old_end": 844,
+      "new_start": 886,
+      "new_end": 890,
+      "old_text": "",
+      "new_text": "1449"
+    },
+    {
+      "old_start": 845,
+      "old_end": 876,
+      "new_start": 891,
+      "new_end": 891,
+      "old_text": "668a978fd020734072267b76f89b7a3",
+      "new_text": ""
+    },
+    {
+      "old_start": 1364,
+      "old_end": 1364,
+      "new_start": 1379,
+      "new_end": 1643,
+      "old_text": "",
+      "new_text": "intake': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py', 'sha256': 'c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc', 'bytes': 41739}, '"
+    },
+    {
+      "old_start": 1637,
+      "old_end": 1637,
+      "new_start": 1916,
+      "new_end": 2204,
+      "old_text": "",
+      "new_text": "a'}, 'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9b"
+    },
+    {
+      "old_start": 2195,
+      "old_end": 2674,
+      "new_start": 2762,
+      "new_end": 2762,
+      "old_text": "master': {'bytes': 21657, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md', 'sha256': 'c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9'}, 'payload': {'bytes': 5435, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py', 'sha256': 'ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad'}, '",
+      "new_text": ""
+    },
+    {
+      "old_start": 2954,
+      "old_end": 3236,
+      "new_start": 3042,
+      "new_end": 3042,
+      "old_text": "'}, 'worker': {'bytes': 37266, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py', 'sha256': '75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d",
+      "new_text": ""
+    },
+    {
+      "old_start": 38267,
+      "old_end": 38267,
+      "new_start": 38073,
+      "new_end": 38079,
+      "old_text": "",
+      "new_text": "ix fix"
+    },
+    {
+      "old_start": 38268,
+      "old_end": 38269,
+      "new_start": 38080,
+      "new_end": 38084,
+      "old_text": "v",
+      "new_text": "d fr"
+    },
+    {
+      "old_start": 38270,
+      "old_end": 38271,
+      "new_start": 38085,
+      "new_end": 38096,
+      "old_text": "n",
+      "new_text": "sh producer"
+    },
+    {
+      "old_start": 38293,
+      "old_end": 38293,
+      "new_start": 38118,
+      "new_end": 38120,
+      "old_text": "",
+      "new_text": "wh"
+    },
+    {
+      "old_start": 38294,
+      "old_end": 38300,
+      "new_start": 38121,
+      "new_end": 38121,
+      "old_text": "rigina",
+      "new_text": ""
+    },
+    {
+      "old_start": 38301,
+      "old_end": 38301,
+      "new_start": 38122,
+      "new_end": 38123,
+      "old_text": "",
+      "new_text": "e"
+    },
+    {
+      "old_start": 38303,
+      "old_end": 38317,
+      "new_start": 38125,
+      "new_end": 38127,
+      "old_text": "esource-closed",
+      "new_text": "aw"
+    },
+    {
+      "old_start": 40297,
+      "old_end": 40297,
+      "new_start": 40107,
+      "new_end": 40117,
+      "old_text": "",
+      "new_text": "intake', '"
+    },
+    {
+      "old_start": 40335,
+      "old_end": 40346,
+      "new_start": 40155,
+      "new_end": 40155,
+      "old_text": "payload', '",
+      "new_text": ""
+    },
+    {
+      "old_start": 40358,
+      "old_end": 40359,
+      "new_start": 40167,
+      "new_end": 40177,
+      "old_text": "w",
+      "new_text": "clean_supp"
+    },
+    {
+      "old_start": 40361,
+      "old_end": 40371,
+      "new_start": 40179,
+      "new_end": 40179,
+      "old_text": "ker', 'mas",
+      "new_text": ""
+    },
+    {
+      "old_start": 40372,
+      "old_end": 40374,
+      "new_start": 40180,
+      "new_end": 40180,
+      "old_text": "er",
+      "new_text": ""
+    },
+    {
+      "old_start": 40388,
+      "old_end": 40389,
+      "new_start": 40194,
+      "new_end": 40201,
+      "old_text": "o",
+      "new_text": "fixed f"
+    },
+    {
+      "old_start": 40390,
+      "old_end": 40396,
+      "new_start": 40202,
+      "new_end": 40205,
+      "old_text": "iginal",
+      "new_text": "esh"
+    },
+    {
+      "old_start": 40398,
+      "old_end": 40402,
+      "new_start": 40207,
+      "new_end": 40209,
+      "old_text": "even",
+      "new_text": "ix"
+    },
+    {
+      "old_start": 40406,
+      "old_end": 40406,
+      "new_start": 40213,
+      "new_end": 40222,
+      "old_text": "",
+      "new_text": " producer"
+    },
+    {
+      "old_start": 40516,
+      "old_end": 40517,
+      "new_start": 40332,
+      "new_end": 40337,
+      "old_text": "u",
+      "new_text": "froze"
+    },
+    {
+      "old_start": 40518,
+      "old_end": 40525,
+      "new_start": 40338,
+      "new_end": 40338,
+      "old_text": "changed",
+      "new_text": ""
+    },
+    {
+      "old_start": 40526,
+      "old_end": 40527,
+      "new_start": 40339,
+      "new_end": 40339,
+      "old_text": "o",
+      "new_text": ""
+    },
+    {
+      "old_start": 40530,
+      "old_end": 40534,
+      "new_start": 40342,
+      "new_end": 40356,
+      "old_text": "inal",
+      "new_text": "ht-two Source6"
+    },
+    {
+      "old_start": 40543,
+      "old_end": 40554,
+      "new_start": 40365,
+      "new_end": 40365,
+      "old_text": " provenance",
+      "new_text": ""
+    },
+    {
+      "old_start": 40584,
+      "old_end": 40585,
+      "new_start": 40395,
+      "new_end": 40395,
+      "old_text": "s",
+      "new_text": ""
+    },
+    {
+      "old_start": 40586,
+      "old_end": 40587,
+      "new_start": 40396,
+      "new_end": 40398,
+      "old_text": "u",
+      "new_text": "ve"
+    },
+    {
+      "old_start": 40588,
+      "old_end": 40589,
+      "new_start": 40399,
+      "new_end": 40402,
+      "old_text": "c",
+      "new_text": "rid"
+    }
+  ],
+  "forward": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/parent-to-right-two-forward.patch",
+    "sha256": "6a8ab6079baa973c0db60137089727e4ac7a634d306d6c111347282cc1de31d8",
+    "bytes": 6599
+  },
+  "inverse": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/right-two-to-parent-full-inverse.patch",
+    "sha256": "c3a20195bb291d85c0af5e284bf8e7fda153a8fdf202d10d7c44da32d8d87799",
+    "bytes": 6599
+  },
+  "checks": [
+    {
+      "id": "all-other-definitions",
+      "passed": true,
+      "detail": {
+        "unchanged": [
+          "Boundary",
+          "Semantics",
+          "Unresolved",
+          "callback_state",
+          "canonical",
+          "canonical_blocks",
+          "check_point_state",
+          "check_primitive_word",
+          "compare_owned_chunks",
+          "digest",
+          "formula_nodes",
+          "independent_domain",
+          "integer",
+          "literal_points",
+          "need",
+          "parse_key",
+          "reconstruct_grammar",
+          "symbol",
+          "term_nodes",
+          "term_size"
+        ],
+        "count": 20
+      }
+    },
+    {
+      "id": "complete-audit-mathematical-body-inverse",
+      "passed": true,
+      "detail": "Restoring exact provenance role literal/rejection wording/docstring gives whole original audit AST."
+    },
+    {
+      "id": "full-module-byte-inverse",
+      "passed": true,
+      "detail": "Every literal replacement offset restored the complete46514-byte parent module."
+    },
+    {
+      "id": "same-grammar-ceilings",
+      "passed": true,
+      "detail": "No term pool, recipe, formula, visit or domain ceiling change."
+    },
+    {
+      "id": "fixed-current-declaration",
+      "passed": true,
+      "detail": "Exact fixed new declaration, no caller-selectable override."
+    },
+    {
+      "id": "fixed-current-producer6",
+      "passed": true,
+      "detail": "All six exact current producer paths/SHA/bytes are immutable Source constants; expected_source_bindings must equal them."
+    },
+    {
+      "id": "syntax-only",
+      "passed": true,
+      "detail": "AST and compile-only; no compiled object or Source/project function executed."
+    }
+  ],
+  "check_count": 7,
+  "raw_references": [
+    {
+      "role": "parent",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "passed": true
+    },
+    {
+      "role": "declaration",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+        "bytes": 2925
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+        "bytes": 2925
+      },
+      "passed": true
+    },
+    {
+      "role": "intake",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+        "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+        "bytes": 41739
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+        "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+        "bytes": 41739
+      },
+      "passed": true
+    },
+    {
+      "role": "catalogue",
+      "expected": {
+        "bytes": 10187,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+        "bytes": 10187
+      },
+      "passed": true
+    },
+    {
+      "role": "clean_support",
+      "expected": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+        "bytes": 48584
+      },
+      "passed": true
+    },
+    {
+      "role": "controls",
+      "expected": {
+        "bytes": 19742,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+        "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+        "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+        "bytes": 19742
+      },
+      "passed": true
+    },
+    {
+      "role": "kernel",
+      "expected": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+        "bytes": 10323
+      },
+      "passed": true
+    },
+    {
+      "role": "point_graph",
+      "expected": {
+        "bytes": 28531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "passed": true
+    }
+  ],
+  "Source_or_project_function_calls": 0,
+  "Q_payload_decodes": 0,
+  "clocks_tests_actuals": 0
+}

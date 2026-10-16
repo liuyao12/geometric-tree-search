@@ -1,0 +1,108 @@
+{
+  "schema": "Q-right-two-preparation-Source-handoff-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+    "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+    "bytes": 41739
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Source-contract-v1.json",
+    "sha256": "b60a18d370a6adc8df8c27d898cf4662bef032126a42ab3460b36fed82797527",
+    "bytes": 15161
+  },
+  "sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+      "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+      "bytes": 41739
+    },
+    "catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  },
+  "declaration": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+    "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "bytes": 2925
+  },
+  "declaration_value_sha256": "ae8aacb2b659ba2d2438c5bc640ae1f6e7fccb8b056f138bde6a6d1e2151449f",
+  "inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  },
+  "static_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/static-authoring-checks-v1.json",
+    "sha256": "0544a0baa0043b17af109c38fc7d2507537c1ff9f9c3108b6e76ca7986940e7e",
+    "bytes": 9783
+  },
+  "Root_prospective_protocol": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-protocol-choice-v1.json",
+    "sha256": "67b7f355eafdbe725b0013ce25f304130efc5b081eb796c975344655051cae64",
+    "bytes": 4110
+  },
+  "draft_v1_preserved": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v1.py",
+    "sha256": "3dd05e2fd00c437a362e7b84d402d1aa75e5815a64319300f563559dd65abcc4",
+    "bytes": 41754
+  },
+  "forward_role_patch": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/worker-v1-to-v2-role-binding.patch",
+    "sha256": "30e7b59e8fa56be7af29dde39de61f457f0a80ae803bf5df467da74b5a483147",
+    "bytes": 2318
+  },
+  "full_inverse_patch": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/worker-v2-to-v1-full-inverse.patch",
+    "sha256": "29f77eb8bcfbeacc64b3a8691d3b12f4e6a03b7d6211e97daa3b406dd36e44ae",
+    "bytes": 2318
+  },
+  "scope": "Complete originalgrammar right-two preparation only. New target exactforalln add(n,succ(succ0))=succ(succn), same AZ/AS/emptyGamma/n/24/ceilings. Full derived catalogue and all24 state/oracle streams, no search/proof/lemma/model trim/count expectations.",
+  "prepared_API": "Original payload/catalogue ABI plus separate summary context_binding4 and declaration_valueSHA; actual honest Source6 provenance. All strong/math flags false; old1717 audit not current.",
+  "Source_eligibility_gap": {
+    "finding": "Generic compiler freezes operand_values before both universal-instantiation rounds. The right-two target/axiom subterms do not include add(n,succ0), which has4nodes beyond basebound3; subsequent formulas may contain it without adding an equalityoperand. No family instance may invent an unlicensed recipe.",
+    "scope": "Source eligibility diagnosis only, not proof of unprovability or target-specific backcone. No term is injected or grammar widened. A future system-wide closure successor would need new source/model/caps/reviews."
+  },
+  "required_next": [
+    "Root+distinctpeer Source6 review, fresh exact Root plan12/grant/native external9ded/meter2 invocation; no plan/grant/output from author.",
+    "Full canonical prep/state/oracle EOF/output/native postterminal/limits saved reconciliation, honest UNKNOWN on any complete-model overflow.",
+    "Separate fresh independent catalogue/domain admission successor before currentrecipient/search/family use."
+  ],
+  "execution": {
+    "Source_project_functions": 0,
+    "Q_decodes": 0,
+    "clocks": 0,
+    "tests": 0,
+    "actual_plans_outputs": 0
+  }
+}

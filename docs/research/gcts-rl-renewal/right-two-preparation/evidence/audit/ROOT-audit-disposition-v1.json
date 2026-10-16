@@ -1,0 +1,215 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "all24_initial_domains_admitted": true,
+  "census": {
+    "arity_counts": {
+      "0": 5480,
+      "1": 415,
+      "2": 10306
+    },
+    "atomic_templates": 44,
+    "formulas": 11149,
+    "generalization_sources": 415,
+    "generated_equality_schemes_before_dedup": 5324,
+    "hole_contexts": 2,
+    "instantiation_rounds": [
+      {
+        "new_recipes": 33,
+        "recipes": 35,
+        "round": 0,
+        "universals": 3
+      },
+      {
+        "new_recipes": 121,
+        "recipes": 156,
+        "round": 1,
+        "universals": 14
+      }
+    ],
+    "operands": 11,
+    "recipes": 16201,
+    "unconstrained_key_universe_upper_bound": 44809204
+  },
+  "checks": [
+    "true native terminal/reap without error/interruption",
+    "all actual terminal exits zero",
+    "same once-only current plan/invocation/purpose",
+    "same once-only current plan/invocation/purpose",
+    "native terminal order and interval",
+    "strict launch-through-postprobe20",
+    "single-owned-process B=T true native wait4 peak below512MiB",
+    "one invocation same-handle complete tool bracket and60/90+1 gates",
+    "entire stderr empty",
+    "whole actual postterminal probe bytes",
+    "entire current sources:independent_right_two_semantics_v2.py",
+    "entire current sources:Q_clean_word_verifier_global_clock_v4.py",
+    "entire current sources:Q_untrusted_lossless_preparation_codec_v1.py",
+    "entire current sources:audit_right_two_v3.py",
+    "entire current inputs:Q-right-two-declaration-v1.json",
+    "entire current inputs:initial-oracle-domains.json",
+    "entire current inputs:initial-state.json",
+    "entire current inputs:preparation.json",
+    "entire current inputs:ROOT-preparation-disposition-v1.json",
+    "entire current inputs:ROOT-plan-v1.json",
+    "entire current producer_sources:arithmetic_q_catalog_v1.py",
+    "entire current producer_sources:Q_clean_word_verifier_global_clock_v4.py",
+    "entire current producer_sources:arithmetic_Q_streamed_controls_v3.py",
+    "entire current producer_sources:prepare_right_two_v2.py",
+    "entire current producer_sources:arithmetic_q_kernel_v1.py",
+    "entire current producer_sources:arithmetic_q_point_graph_v1.py",
+    "entire current authority/review/runtime:Source-contract-v3.json",
+    "entire current authority/review/runtime:ROOT-authorization-v1.json",
+    "entire current authority/review/runtime:python3.9",
+    "entire current authority/review/runtime:ROOT-Source-review-v1.json",
+    "entire current authority/review/runtime:typed-Source-review-v3.json",
+    "entire exact twoLF response",
+    "full canonical bodyLF completion hash/bytes",
+    "unchanged complete response endpoint",
+    "complete exact current audit response",
+    "same actual limits/current Source4/input6/producerSource6",
+    "one inherited original joint G/D inside native interval",
+    "whole pending final observation binds full response",
+    "complete two-file final output inventory",
+    "whole EOF/hash:audit-result.json",
+    "whole EOF/hash:response.jsonl",
+    "no omitted owned file",
+    "fresh prior producer resource admission only",
+    "whole independent bounded grammar/primitive/domain result completed and accepted",
+    "same canonical declaration VALUE digest distinct from raw declaration digest",
+    "all independent context epochs and fixed full producerSource6 match",
+    "entire fresh independent and producer census/primitive checks agree",
+    "all24 independent complete domain counts agree",
+    "all24 complete independent domain fingerprints and exact saved union accepted",
+    "same empty initial state/decision and no search or RL",
+    "no unearned result flag:FOL_complete",
+    "no unearned result flag:ROOT_admission_issued",
+    "no unearned result flag:ROOT_resource_accepted",
+    "no unearned result flag:full24_accepted",
+    "no unearned result flag:full_PA_accepted",
+    "no unearned result flag:full_trajectory_accepted",
+    "no unearned result flag:induction_accepted",
+    "no unearned result flag:native_accepted",
+    "no unearned result flag:target_proof_discovered",
+    "no unearned result flag:universal_compiler_accepted",
+    "no unearned domain flag:full24_accepted",
+    "no unearned domain flag:full_trajectory_accepted",
+    "no unearned domain flag:logical_proof_accepted",
+    "pending response retains no unearned flag:RL_accepted",
+    "pending response retains no unearned flag:ROOT_catalogue_admitted",
+    "pending response retains no unearned flag:ROOT_resource_accepted",
+    "pending response retains no unearned flag:recipient_family_accepted",
+    "pending response retains no unearned flag:target_proof_accepted"
+  ],
+  "context_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "formula_registry_sha256": "9977d671409f105cea8aab1999ea400c04ba98cfceb6ffe0893d7a0a65c26aab",
+    "model_epoch": "3fc552c0febf60a7817dcce0abce1bc3c0fa7b19b2a9498b37803b6d6a212d52",
+    "primitive_authority_epoch": "5bc648a9a454250b20bfb93ac018e3691b992443c773dd04ba07ec81a584ea52"
+  },
+  "declaration_value_sha256": "ae8aacb2b659ba2d2438c5bc640ae1f6e7fccb8b056f138bde6a6d1e2151449f",
+  "evidence": [
+    {
+      "bytes": 259,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-external-v1/ONCE.json",
+      "sha256": "00691b30a46ef43fb061f4a239baad08fa73b81c3289ad7853d0481df5890993"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-external-v1/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-external-v1/meter-stdout.txt",
+      "sha256": "36d93745132a10857342c78a3d86a0abf428c6a83ec28b7ca00797e23d85a13e"
+    },
+    {
+      "bytes": 1669,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-external-v1/native-terminal.json",
+      "sha256": "e5437ed5c4a6d38d87056f1bad98702dbea3555f88bd89bdf64bb16280babfc1"
+    },
+    {
+      "bytes": 476,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-external-v1/observation.json",
+      "sha256": "234d8538915eae314e09edbe715902cd2b4f9d142f853349dbb3cce63860c034"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "3f6b46ce12bdba63476f17695b2a92495afbc43ffe65b58194c4ae9e13daf304"
+    },
+    {
+      "bytes": 5595,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-owned-v1/audit-result.json",
+      "sha256": "848f67a03c16f681bd2587f4155b84382fe4f6d88d10c835a8ac98e349f69066"
+    },
+    {
+      "bytes": 5670,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/audit-owned-v1/response.jsonl",
+      "sha256": "a420531c6b88a2821e78a09e4d182c9566ef88afd1c301097aded26252f030dc"
+    }
+  ],
+  "full24_solution_accepted": false,
+  "goal_complete": false,
+  "independent_catalogue_admitted": true,
+  "initial_decision": {
+    "count": 23,
+    "generation": 0,
+    "kind": "branch",
+    "row": 23
+  },
+  "initial_legal_candidate_count": 36734910,
+  "initial_legal_domain_counts": [
+    5480,
+    5895,
+    26922,
+    68561,
+    130812,
+    213675,
+    317150,
+    441237,
+    585936,
+    751247,
+    937170,
+    1143705,
+    1370852,
+    1618611,
+    1886982,
+    2175965,
+    2485560,
+    2815767,
+    3166586,
+    3538017,
+    3930060,
+    4342715,
+    4775982,
+    23
+  ],
+  "invocation_id": "right-two-complete-independent-audit-20261015-v1",
+  "limits": "Fixed reviewed synchronous Sources/Darwin runtime and single owned process; no hostile OS/VM guarantee. This is catalogue/initial-state admission, not a discovered theorem or search performance result.",
+  "native_Wang_palette_accepted": false,
+  "native_caller_elapsed_ns": 18368851000,
+  "native_launch_to_postprobe_ns": 18438472000,
+  "native_single_worker_peak_bytes": 354516992,
+  "next": "Fresh clean equal-information ordinary/point consumers and controls required before recipient proof/benefit claims.",
+  "owned_file_bytes": 11265,
+  "owned_files": 2,
+  "plan": {
+    "bytes": 7052,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-plan-v1.json",
+    "sha256": "c591627430d4aad3f5381baa4af968658013725ff14c5feee0daf4d47db12935"
+  },
+  "recipient_family_accepted": false,
+  "resource_accepted": true,
+  "schema": "ROOT-right-two-independent-audit-disposition-v1",
+  "scope": "Fresh independent complete finite grammar, all16201 primitive semantics and all24 initial point domains admitted under unchanged strict20s/512MiB. Saved closure reads small results and streams raw bytes only; no semantic replay.",
+  "target_proof_accepted": false,
+  "tool_date_elapsed_ms": 18617,
+  "trajectory_accepted": false
+}

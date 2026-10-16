@@ -1,0 +1,21 @@
+{
+  "began_ms": 1792107605803,
+  "initial_end_ms": 1792107606963,
+  "calls": [
+    {
+      "chunk_id": "92aaa7",
+      "wall_time_seconds": 1.003609833,
+      "session_id": 62861,
+      "original_token_count": 0,
+      "output": ""
+    },
+    {
+      "chunk_id": "484a95",
+      "wall_time_seconds": 0.000006584,
+      "exit_code": 0,
+      "original_token_count": 123,
+      "output": "{\"ROOT_primary_accepted\": false, \"ROOT_resource_accepted\": false, \"external_began_ns\": 447413873970000, \"invocation_id\": \"Q-right-two-complete-preparation-20261015-v1\", \"measurement_only\": true, \"meter_returncode\": 0, \"plan_bytes\": 4464, \"plan_sha256\": \"3ee0d610ae18b2738e6203d4ccd1834e670094e39fa97a45e08aa6add774b389\", \"postterminal_native_probe_ns\": 447425973624000, \"probe_returncode\": 0, \"purpose\": \"complete-right-two-preparation\", \"schema\": \"ROOT-ordinary-external-observation-v1\"}\n"
+    }
+  ],
+  "ended_ms": 1792107618747
+}

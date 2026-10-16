@@ -1,0 +1,27 @@
+{
+  "schema": "goal-attached-current-core-point-independent-Source-handoff-v1",
+  "source_only": true,
+  "typed_reviews": {
+    "proposal_module": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/current-core-point-review/proposal_module-typed-Source-review-v1.json",
+      "sha256": "a15b97021886817181f8ba8c654bac27f53816ce4114bb4318712aba4c27867b",
+      "bytes": 2423
+    },
+    "advisory_point_producer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/current-core-point-review/advisory_point_producer-typed-Source-review-v1.json",
+      "sha256": "66410f90fc4c24fefb28c42b39e6a0194ed981bd11ac1bcc5f2a2735f3253a88",
+      "bytes": 2438
+    }
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/current-core-point-review/findings-v1.json",
+    "sha256": "6f7ed0d722c3a0007881cb25b246d11f38259f182ed178a52e92a8cce49232f8",
+    "bytes": 47468
+  },
+  "check_count": 55,
+  "raw_reference_count": 36,
+  "unique_raw_path_count": 18,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_activation": false
+}

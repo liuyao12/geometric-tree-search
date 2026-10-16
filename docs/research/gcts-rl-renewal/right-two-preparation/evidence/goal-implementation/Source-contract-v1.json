@@ -1,0 +1,248 @@
+{
+  "API": {
+    "logical_index": {
+      "binding": "Exact caller-authenticated declaration_sha256/model_epoch/primitive_authority_epoch/formula_registry_sha256. This data API cannot authenticate the raw declaration bytes; cold caller owns that pin.",
+      "catalogue": "Exact existing parsed preparation[\"catalogue\"] raw ABI; no parse, compiler, graph or checker is invoked. Full formulas/records/order/preimages remain; Q empty Gamma/one parameter/height24.",
+      "constructor": "GoalFamilyIndex(*, catalogue, binding, tick)",
+      "instance_fields": {
+        "ROOT_library_admitted": false,
+        "family_id": "actual shape-derived ID",
+        "input_obligations": "port/formula_code/formula/status=PENDING/fact_accepted=false",
+        "licensed_hole": "current recipe hole",
+        "logical_accepted": false,
+        "members": "three dicts recipe_index/recipe_id/ordered_ports/primitive_witness",
+        "new_primitive_rule": false,
+        "ordered_input_codes": "two ordered/repeat-preserving codes",
+        "ordered_ports": "[input,i] or [member,j], exact body order",
+        "output_code": "original code",
+        "recipient_binding": "exact4",
+        "role_terms": "one simultaneous typed binding",
+        "status": "PENDING_INPUTS"
+      },
+      "methods": {
+        "goal_codes": "index.goal_codes(*, goal_code, tick) -> list[int]; FIFO inverse output-to-premise traversal, ordered recipe and port census.",
+        "instances": "index.iter_instances(*, goal_formula, family, tick) -> iterator of goal-attached-logical-instance-v1; every unbound role product in declared role order/canonical pool order, every licensed hole in original recipe order. First-choice consumers may stop advice enumeration; it never supplies degree completeness.",
+        "primitive_order": "primitive_goal_order(*, index, goal_code, tick) -> list[int], complete unique permutation, all inverse-priority recipes then every remaining canonical recipe."
+      },
+      "role_pool": "All canonical distinct e499-bounded typed left/right operands of every original eq_subst recipe. UI-only terms are never inserted; exact membership of all3 grounded primitive recipe signatures is mandatory."
+    },
+    "point_proposals": {
+      "enumeration": "Every increasing internal member row triple ending at goal_row; external input0 before member1 and input1 before member2, canonical row order. Repeated inputs may share one compatible row. Exact selected key reuse only, full original fixed/current union/refcounts and all row exclusions checked.",
+      "expansion": "primitive_members hold original key plus physical_command with original MP ports. External proof commands are not fabricated. primitive_commands_are_complete_word=false; final complete word remains producer ancestry extraction plus independent checker.",
+      "functions": [
+        "point_view(*,index,state,tick)",
+        "iter_point_proposals(*,index,instance,state,goal_row,tick,branch_row=None)",
+        "first_point_preference(*,index,families,state,branch_row,goal_code,tick)"
+      ],
+      "mutation": "No graph write, persistent reservation or agenda. Proposal data is discarded after branch selection; every later state gets a fresh point view/embedding. Thus original rollback remains complete without new hidden trail state.",
+      "obligation_statuses": [
+        "PENDING",
+        "SELECTED_PENDING",
+        "DEPENDENCY_COMPLETE_SELECTED"
+      ],
+      "proposal_fields": [
+        "recipient_binding",
+        "family_id",
+        "goal_row",
+        "goal_formula",
+        "source_point_view_sha256",
+        "role_terms",
+        "ordered_input_codes",
+        "ordered_obligations",
+        "member_keys",
+        "new_primitive_keys",
+        "primitive_members",
+        "primitive_commands_are_complete_word",
+        "status",
+        "logical_accepted",
+        "graph_changed",
+        "macro_executed",
+        "ROOT_library_admitted"
+      ],
+      "status_scope": "These are observed structural dependencies, not independent proof/fact admission; fact_accepted always false.",
+      "view": "Small original point view: model_epoch/roots/totals/order/marks4(x,y,value,refcount)/excluded. It is NOT a full-domain snapshot/certificate."
+    },
+    "producer": {
+      "call": "run_untrusted_candidate_search(*, point_module,catalogue,declaration,original_source_bindings,binding,coordinator_invocation_id,authority_sha256,event_directory,joint_began_ns,joint_deadline_ns,expected_binding,advice_mode=\"canonical\",goal_module=None,family_library=None)",
+      "fallback": "All original Factors/bit products and branch exclusions remain. Priority is a full recipe permutation; no macro or shortlist supplies dead/forced counts. Each failed exhausted child is excluded only after restored parent; UNKNOWN/found never excluded.",
+      "family_goals": "Goal code encounter order is the same FIFO as ordinary. Point can embed only actual formula-mark demands into original rows; this physical restriction does not change base candidate completeness.",
+      "modes": {
+        "canonical": "Original first canonical key; no proposal index constructed.",
+        "family-goals": "Same primitive fallback, plus first compatible original member from current demanded-goal family embeddings.",
+        "primitive-goals": "Full inverse primitive recipe ordering applied only to existing complete branch Factors."
+      },
+      "required_new_cold_inputs": "expected_binding, authenticated proposal module and actual library data are new caller obligations. Old v5 bootstrap/parent Source pins and old raw preparation hash do not activate this API.",
+      "sequencing": "Global graph.decision dead/forced/generation choice before advice. Forced singleton path unchanged. Recheck graph.decision/row/legal before one base placement. Original exact child/node/root rollback and parent-local exhaustion exclusion unchanged.",
+      "telemetry": "Original full streaming fingerprint/encoding and fresh actual postrollback hashes unchanged. Small advice counters and goal_family_preference event attach full provisional body/obligations. No timing/speed inference.",
+      "wire": "Inherited single first candidate Q-untrusted-first-candidate-word-v1, original ordered physical keys and max1/no rescue. Result schema unchanged, version6; all proof/point/resource flags false."
+    }
+  },
+  "Q_payload_decodes": 0,
+  "Source_review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "producer_scope": "Q-goal-family-advisory-point-producer-Source",
+    "proposal_scope": "Q-goal-attached-family-proposals-Source",
+    "required_fields": {
+      "actual_activation": false,
+      "scientific_calls": 0,
+      "source_only": true,
+      "source_review_passed": "genuine verdict"
+    },
+    "reviewer_identity": "distinct reviewer",
+    "source_contract": "exact current raw capsule",
+    "sources": {
+      "advisory_point_producer": {
+        "bytes": 36533,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960"
+      },
+      "proposal_module": {
+        "bytes": 31647,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+        "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625"
+      }
+    }
+  },
+  "actual_plans_or_runs_created": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Author of earlier Q kernel/catalogue, ordinary/point producers and cold/report dependencies. This is new implementation authorship, not independent review or actual qualification.",
+  "limits": {
+    "aggregate_bytes": 536870912,
+    "caller_seconds": 90,
+    "failure_seconds": 55,
+    "finish_reserve_seconds": 1,
+    "joint_seconds": 20,
+    "max_attempts": 128,
+    "max_candidates": 1,
+    "max_events": 2000,
+    "max_expanded_word_rows": 24,
+    "owned_seconds": 60,
+    "producer_reserve_bytes": 524288000
+  },
+  "native_clock_calls": 0,
+  "preserved": {
+    "complete_producer_delta": {
+      "bytes": 12353,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+      "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c"
+    },
+    "exact_e499_copied_definitions": [
+      "NoInstance",
+      "OutsideSyntax",
+      "syntax_need",
+      "need",
+      "canonical",
+      "digest",
+      "integer",
+      "term",
+      "atomic_shape",
+      "fill_context",
+      "ground"
+    ],
+    "independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "original_point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "selected_fact_family": {
+      "bytes": 29157,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    },
+    "unchanged_producer_definitions": [
+      "Unfinished",
+      "need",
+      "canonical",
+      "Budget",
+      "chunks",
+      "complete_digest",
+      "FingerprintWriter",
+      "state_fingerprint",
+      "CompactEvents",
+      "decision_data",
+      "collect_first_ancestry"
+    ]
+  },
+  "references": {
+    "actual_mined_library": {
+      "bytes": 6598,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/mined-library.json",
+      "sha256": "84117683519304ce0ea8d52d81635dbf5e4cb0b380abef15a651ea4bcc10cb93"
+    },
+    "actual_training_disposition": {
+      "bytes": 14316,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json",
+      "sha256": "4f5693d5dd22a2d40afc81250e4c1d0339703e46d0439d0519d27bc749a69bb6"
+    },
+    "current_family_contract": {
+      "bytes": 12386,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+      "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c"
+    },
+    "current_family_source": {
+      "bytes": 29157,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "original_catalogue_source": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "original_independent_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "original_point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    },
+    "preserved_producer_v5": {
+      "bytes": 30988,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+      "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+    },
+    "right_two_preparation_handoff": {
+      "bytes": 6651,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/handoff-v1.json",
+      "sha256": "edc218115193365d58721a98042a61ea2ce9ad58852c4640268784e83681bbf0"
+    }
+  },
+  "schema": "goal-attached-arithmetic-family-implementation-Source-contract-v1",
+  "scientific_calls": 0,
+  "scope": "One actual mined e499 family data shape consumed as provisional goal guidance; no selected-fact API/checker/graph edit or new inference. No target term, known word, donor row assignment or prepared answer in new Source.",
+  "source_only": true,
+  "sources": {
+    "advisory_point_producer": {
+      "bytes": 36533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+      "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960"
+    },
+    "proposal_module": {
+      "bytes": 31647,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+      "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625"
+    }
+  },
+  "unresolved_gates": [
+    "Genuine distinct current Source review of BOTH new modules; not a self-pass.",
+    "Fresh right-two preparation and independent whole catalogue/all24 audit. Counts/epochs/fit are not known from Source. Missing add(n,succ0) equality operand is a specific observed old-compiler eligibility limitation, never filled by this code or a nonprovability claim.",
+    "Future ROOT-authorized cold caller must authenticate exact preparation/declaration/Source/library buffers, preserve actual defaults/cells/clock/source callback custody and supply expected_binding. These untrusted data modules are not a new security/cold loader framework.",
+    "Existing old point bootstrap/parent and fixed right-one verifier authority cannot simply accept new hashes/kwargs; reviewed explicit fresh integration is required. Unchanged1717 mathematical command checker remains the intended independent endpoint.",
+    "Focused actual controls for unfilled inputs, repeated ports, licensed-recipe absence, stale epoch/rows/union, scheduler/fallback and exact rollback. No controls/functions/tests have been executed.",
+    "Matched ordinary consumer and current controls Source review; fair actual comparison and all original native/resource/EOF gates remain pending.",
+    "No family/library/recipient/point/word/trajectory/resource or RL admission. Constructor/indexing/embedding fit and practical contribution are unknown."
+  ]
+}

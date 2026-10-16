@@ -1,0 +1,108 @@
+{
+  "Root_protocol": {
+    "bytes": 6543,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-protocol-choice-v1.json",
+    "sha256": "c5beae3c9529842d7d867790e6c66f487909fc65147e53a0b6ada73d360c59cf"
+  },
+  "actuals": 0,
+  "author_identity": "/root",
+  "inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "initial_oracle": {
+      "bytes": 8295991,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-oracle-domains.json",
+      "sha256": "04d0be2091fc7145619c26283ca96f5e03d3cce2e40145370f4d6025c2a203eb"
+    },
+    "initial_state": {
+      "bytes": 8296636,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-state.json",
+      "sha256": "e3327a27f0dbc139f8bd03fbeaafde7b29556e230dbf10f4f325e2888dc713fc"
+    },
+    "preparation": {
+      "bytes": 38957245,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/preparation.json",
+      "sha256": "1573da45b4f3671efd04197791385e5be1a81cefc83338c61f7a3bd63fbbad1e"
+    },
+    "producer_admission": {
+      "bytes": 8576,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-preparation-disposition-v1.json",
+      "sha256": "013e59285997463bfc0c0321387e95b9ed01c65c5714a257704210d32a7c71c5"
+    },
+    "producer_plan": {
+      "bytes": 4464,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-plan-v1.json",
+      "sha256": "3ee0d610ae18b2738e6203d4ccd1834e670094e39fa97a45e08aa6add774b389"
+    }
+  },
+  "producer_sources": {
+    "catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    "intake": {
+      "bytes": 41739,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+      "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  },
+  "schema": "right-two-independent-audit-intake-Source-handoff-v1",
+  "scientific_calls": 0,
+  "scope": "Complete newtarget catalogue/domain audit only. All producer mathematical code raw-only. Current cf7c reconstructs every formula/recipe/domain from declaration; original1717 remains generic proofwordchecker later.",
+  "source": {
+    "bytes": 12556,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v1.py",
+    "sha256": "4113de9e776f6c45ebca32ce890694a6fc6ec864b1282328469b9c5c9903dcb3"
+  },
+  "source_contract": {
+    "bytes": 8070,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/Source-contract-v1.json",
+    "sha256": "6548fa223f607fea1e5dbc948a5d035ec0a710f633ae53ffd71627a4283c5b99"
+  },
+  "sources": {
+    "auditor": {
+      "bytes": 46327,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+      "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "intake": {
+      "bytes": 12556,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v1.py",
+      "sha256": "4113de9e776f6c45ebca32ce890694a6fc6ec864b1282328469b9c5c9903dcb3"
+    }
+  }
+}

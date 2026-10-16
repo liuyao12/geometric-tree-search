@@ -1,0 +1,280 @@
+{
+  "schema": "Q-right-two-preparation-author-static-v1",
+  "checks": [
+    {
+      "id": "inherited-need",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-integer",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-canonical",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-digest",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-pin_bytes",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-duplicate_free",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-no_constant",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-no_float",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-signed_integer",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-finite_float",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-tree",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-decode",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-regular_fd",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-read_small",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-write_exclusive",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-anchor",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-same",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-load_fixed",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-exact_limits",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "inherited-invoke",
+      "passed": true,
+      "detail": "Full FunctionDef AST exact, no function executed."
+    },
+    {
+      "id": "bounded-serializer",
+      "passed": true,
+      "detail": "Full original bounded C-block eligibility unchanged."
+    },
+    {
+      "id": "canonical-generator-adaptation",
+      "passed": true,
+      "detail": "Only canonical bytes→UTF8 text API adaptation; recursion/block32/all fields exact."
+    },
+    {
+      "id": "Source6-vs-Root-choice",
+      "passed": true,
+      "detail": "Honest current worker/kernel/catalogue/point/controls/support, no old payload/worker ledger."
+    },
+    {
+      "id": "raw-source-intake",
+      "passed": true,
+      "detail": "Whole raw Source authenticated, not executed."
+    },
+    {
+      "id": "raw-source-catalogue",
+      "passed": true,
+      "detail": "Whole raw Source authenticated, not executed."
+    },
+    {
+      "id": "raw-source-clean_support",
+      "passed": true,
+      "detail": "Whole raw Source authenticated, not executed."
+    },
+    {
+      "id": "raw-source-controls",
+      "passed": true,
+      "detail": "Whole raw Source authenticated, not executed."
+    },
+    {
+      "id": "raw-source-kernel",
+      "passed": true,
+      "detail": "Whole raw Source authenticated, not executed."
+    },
+    {
+      "id": "raw-source-point_graph",
+      "passed": true,
+      "detail": "Whole raw Source authenticated, not executed."
+    },
+    {
+      "id": "raw-input-declaration",
+      "passed": true,
+      "detail": "Declaration/master only; no old Q payload reads."
+    },
+    {
+      "id": "raw-input-master",
+      "passed": true,
+      "detail": "Declaration/master only; no old Q payload reads."
+    },
+    {
+      "id": "sole-target-change",
+      "passed": true,
+      "detail": "Only declared closed target changed, original signature/AZ/AS/Gamma/parameters/grammar/height/ceilings unchanged."
+    },
+    {
+      "id": "exact-right-two-target",
+      "passed": true,
+      "detail": "Exact target AST, no word/intermediates/lemma data."
+    },
+    {
+      "id": "limits-unchanged",
+      "passed": true,
+      "detail": "Original20/55/60/512/90+1/runtime, no raise/reset."
+    },
+    {
+      "id": "no-search-or-control-suite",
+      "passed": true,
+      "detail": "Only full catalogue construction/one graph/initial state/all-row oracle serializers."
+    },
+    {
+      "id": "no-spawn",
+      "passed": true,
+      "detail": "Exactly one owned process; external T only, no descendant sum."
+    },
+    {
+      "id": "full-output-format",
+      "passed": true,
+      "detail": "All complete files plus current exact4 binding; no old counts."
+    },
+    {
+      "id": "stream-not-full-parse",
+      "passed": true,
+      "detail": "No full initial state copy or Q-preparation parse; full streams retained."
+    },
+    {
+      "id": "caps-reused",
+      "passed": true,
+      "detail": "Original output ceilings; overflow UNKNOWN, no truncation."
+    },
+    {
+      "id": "grammar-gap-disclosed",
+      "passed": true,
+      "detail": "Static limitation, no compiler or operand injection."
+    },
+    {
+      "id": "syntax-only",
+      "passed": true,
+      "detail": "AST/compile only; no proposed Source/module/clock/fixture/test/Q execution."
+    },
+    {
+      "id": "all-guarded-dispatch-finally",
+      "passed": true,
+      "detail": "Copied checked delegate verifies ordinary and exceptional exits."
+    }
+  ],
+  "check_count": 42,
+  "all_checks_passed": true,
+  "sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+      "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+      "bytes": 41739
+    },
+    "catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  },
+  "inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  },
+  "inherited_helper_parent": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-training-source-20261015/atomic_donor_training_intake_v2.py",
+    "sha256": "065051bc9bb8df8ae95d2d737ddc11bdd051bf0788920c9b23e5788c6524ad67",
+    "bytes": 62865
+  },
+  "inherited_serialization_parent": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py",
+    "sha256": "75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d",
+    "bytes": 37266
+  },
+  "execution": {
+    "proposed_Source_functions": 0,
+    "Q_decodes": 0,
+    "clocks": 0,
+    "tests": 0,
+    "actual_plans_output_directories": 0
+  },
+  "author_check_correction": "Initial metadata freezer used literal_eval on two multiplication-only constant ASTs and stopped before writing artifacts; corrected exact expression AST comparisons. No Source change/function execution.",
+  "note": "Unexecuted first draft v1 preserved; selectedv2 changes VERSION and role domain_oracle→controls to match Root Source6 ledger, same dependency bytes."
+}

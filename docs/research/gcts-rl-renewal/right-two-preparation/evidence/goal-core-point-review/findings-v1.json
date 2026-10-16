@@ -1,0 +1,912 @@
+{
+  "schema": "goal-attached-current-core-point-independent-Source-findings-v1",
+  "source_only": true,
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "author_identity": "/root/arithmetic_induction",
+  "sources": {
+    "advisory_point_producer": {
+      "bytes": 36533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+      "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960"
+    },
+    "proposal_module": {
+      "bytes": 31647,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+      "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625"
+    }
+  },
+  "source_contract": {
+    "bytes": 15678,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+    "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff"
+  },
+  "check_count": 55,
+  "checks": [
+    {
+      "id": "packet-current-map",
+      "passed": true,
+      "detail": "Exact current two-role map and common contract; no stale sourcepass promotion."
+    },
+    {
+      "id": "all-raw-references",
+      "passed": true,
+      "detail": "Whole raw bytes of all declared refs authenticated; no large Q data read or decoded."
+    },
+    {
+      "id": "full-byte-forward",
+      "passed": true,
+      "detail": "Independent application of all actual byte-offset edits reproduces whole selected producer6."
+    },
+    {
+      "id": "full-byte-inverse",
+      "passed": true,
+      "detail": "Independent full inverse restores all30,988 parent bytes."
+    },
+    {
+      "id": "producer-inherited-Unfinished",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-need",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-canonical",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-Budget",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-chunks",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-complete_digest",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-FingerprintWriter",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-state_fingerprint",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-CompactEvents",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-decision_data",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "producer-inherited-collect_first_ancestry",
+      "passed": true,
+      "detail": "Whole class/function AST unchanged, including all fingerprint/serialization/ancestry helpers."
+    },
+    {
+      "id": "family-inherited-NoInstance",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-OutsideSyntax",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-syntax_need",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-need",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-canonical",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-digest",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-integer",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-term",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-atomic_shape",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-fill_context",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "family-inherited-ground",
+      "passed": true,
+      "detail": "Complete e499 syntax/type/grounding definition AST exact; no new target syntax or binder relaxation."
+    },
+    {
+      "id": "changed-definition-set",
+      "passed": true,
+      "detail": "Only original main changed plus two new preference helpers; original point module untouched."
+    },
+    {
+      "id": "same-limits",
+      "passed": true,
+      "detail": "Original128 attempts/2000events/max1/24word and20/55/60/512/90+1 retained."
+    },
+    {
+      "id": "whole-current-read",
+      "passed": true,
+      "detail": "Whole core current31,647 bytes, full producer current main/new helpers and complete byte delta against retained v5 whole review read; common contract/API/role maps read. No compiled object executed."
+    },
+    {
+      "id": "raw-context-epochs",
+      "passed": true,
+      "detail": "GoalFamilyIndex retains whole raw formulas/recipes/order and verifies registry, original authority/context/model preimages against current4. Raw declaration hash remains authenticated caller custody, never arbitrary expected-binding override authority."
+    },
+    {
+      "id": "exact-licence",
+      "passed": true,
+      "detail": "Every recipe witness/ordered premise preimage and ID is checked against original authority/marking/context. Lookup uses exact full witness+ordered premise signature; no new rule or transplanted recipe is synthesized."
+    },
+    {
+      "id": "typed-role-pool",
+      "passed": true,
+      "detail": "Unbound role pool is canonical unique bounded typed operands from all licensed eq_subst left/right fields, not UI-only later subterms. Output-bound terms still need exact all3 member lookup. Particular missing operand forbids that instance, not all families/theorem."
+    },
+    {
+      "id": "shape-not-target",
+      "passed": true,
+      "detail": "Generic e499 shape validates exact equality-substitution/two-MP body, repeated one-hole atomic Eq/declaredPred context, simultaneous correlated slots, nominal arity/node/depth bounds. No target successor term, donor row, intermediate proof route or new inference is embedded."
+    },
+    {
+      "id": "whole-output-match",
+      "passed": true,
+      "detail": "Output matching respects repeated roles and literal constructors. No binders/connectives in context; variable terms must use original parameters, licensed hole is distinct. All member witnesses/input/output formulas roundtrip through exact current recipe lookup."
+    },
+    {
+      "id": "budget-not-negative",
+      "passed": true,
+      "detail": "Only OutsideSyntax and actual NoInstance compatibility errors become no advice. Delegated tick/guard/deadline failures propagate; no budget exception licenses domain EOF or mathematical refutation."
+    },
+    {
+      "id": "pending-not-fact",
+      "passed": true,
+      "detail": "Logical/physical proposals are PENDING_INPUTS with fact/logical acceptancefalse. They name external obligations, not added axioms/proofs. Dependence-complete selected is structural observation only; unchanged final1717 checker owns mathematics."
+    },
+    {
+      "id": "inverse-shared-order",
+      "passed": true,
+      "detail": "goal_codes is FIFO over original output-to-premise graph and original per-output/ordered-port order. primitive_goal_order includes every original recipe exactly once plus full canonical remainder; goal information reorders, never prunes."
+    },
+    {
+      "id": "strict-row-ports",
+      "passed": true,
+      "detail": "Physical members use increasing rows and original ordered MP ports; external0 precedes member1 and external1 precedes member2. Self/future/circular references reject. Equal input formulas may share one compatible source row while retaining both ports."
+    },
+    {
+      "id": "complete-union",
+      "passed": true,
+      "detail": "Original fixed/current/member t/m union uses every support/mark including assignedzero and mark-only ports. Duplicate shared keys are counted once via selected-row exact reuse; distinct keys on one unit row reject. Current marks/refcounts and parent-local exclusions are recomposed."
+    },
+    {
+      "id": "complete-selected-ancestry",
+      "passed": true,
+      "detail": "point_view recomposes current order and selected dependency-complete rows with strict-prior refs and full original formula marks. Partial selected ancestors remain SELECTED_PENDING, never proof admission."
+    },
+    {
+      "id": "no-reservation-mutation",
+      "passed": true,
+      "detail": "Proposal engine receives plain small state view and immutable logical catalogue data; code mutates neither graph nor persistent reservation/agenda. No hidden new trail; each actual branch reevaluates current demands, union, exclusions and row embedding."
+    },
+    {
+      "id": "not-full-domain-certificate",
+      "passed": true,
+      "detail": "Small view contains totals/order/marks/refcounts/roots/exclusions/model, not domains/reverse/bookkeeping/trajectory proof. It is read-only advice scope only; original graph remains the full domain authority."
+    },
+    {
+      "id": "global-scheduler-first",
+      "passed": true,
+      "detail": "Current graph.decision runs before advice and candidate extraction: any global dead returns first; forced singleton path is unchanged. Advice only chooses a compatible original key incident to the already chosen earliest-generation branch."
+    },
+    {
+      "id": "single-original-commit",
+      "passed": true,
+      "detail": "place rechecks original full decision/row/legal and forced singleton EOF, then applies exactly one original key. No atomic macro, skipping forced propagation, free mark injection or family-exclusive proof edge."
+    },
+    {
+      "id": "full-base-fallback",
+      "passed": true,
+      "detail": "If no family preference, full recipe permutation and original Factor/set_bits reference products enumerate the original canonical per-recipe alternatives and exclusions. Exhausted failed child exclusion stays in restored parent context; no sampled advice pool supplies degree counts."
+    },
+    {
+      "id": "exact-rollback-retained",
+      "passed": true,
+      "detail": "Every child/node/root rollback is retained with actual fresh postrollback full fingerprint comparisons. Reuse invalidation before apply/exclude/allrollback is unchanged; no cache by checkpoint length or new graph-private mutation."
+    },
+    {
+      "id": "unknown-unwind",
+      "passed": true,
+      "detail": "FOUND candidate or UNKNOWN returns only after original unwinds; only genuine producer EXHAUSTED_SUBTREE permits parent-local exclusion. Cleanup/late/restoration failure withdraws candidate, never salvages a prefix or proves theorem absence."
+    },
+    {
+      "id": "first-closed-word",
+      "passed": true,
+      "detail": "Unchanged collect_first_ancestry requires complete selected strict-prior proof dependencies and original ordered witness expansion, shared keys once, full original Gamma context and<=24 primitive rows, max1/no rescue. Target word is not a whole24 board certificate."
+    },
+    {
+      "id": "original-math-graph",
+      "passed": true,
+      "detail": "Unchanged8d22 graph and1717 arbitrary-word checker remain separate roles. No new inference/grammar/point orientation/rank or RL update; final closed-target/Gamma/generalization/capture checks remain fresh checker work."
+    },
+    {
+      "id": "honest-telemetry",
+      "passed": true,
+      "detail": "Original compact events/full fingerprints/cost phase definitions unchanged; new events include actual provisional advice and counters. Counters are repeated observations, not unique instances, proved discharges or measured benefit. library_used indicates data enabled, not necessarily a preference."
+    },
+    {
+      "id": "no-fit-prediction",
+      "passed": true,
+      "detail": "Index/role-product/embedding enumeration cost is charged and may time out. No actual match, proof, corpus improvement, resource fit or speed follows from Source review. Current Source-only author flags remainfalse."
+    },
+    {
+      "id": "necessary-current-integration",
+      "passed": true,
+      "detail": "Future cold caller must authenticate exact new module/library/fresh complete model and expected_binding, original native/source/default/callback custody and all final EOF/resource gates. Old v5 loader or right-one authority/codec cannot activate by hash relabeling."
+    },
+    {
+      "id": "controls-and-comparison-open",
+      "passed": true,
+      "detail": "Focused actual pending/cycle/future/swapped/stale/zero/sharedkey/scheduler/fallback/rollback controls and matched ordinary information are still required. Source controls were not executed; no authored recipient proof is supplied."
+    },
+    {
+      "id": "reviewer-disclosure",
+      "passed": true,
+      "detail": "Reviewer authored separate ordinary reordering consumer using the supplied shared API, earlier neutral controls/census and target proposals; did not author this core, producer, e499 family, graph or checker."
+    },
+    {
+      "id": "execution-zero",
+      "passed": true,
+      "detail": "Only stdlib raw hash/metadata/AST/compile and exact byte inverse operations performed; no Source/project/scientific function, Q payload parse, clock, test, plan, output namespace or actual run."
+    }
+  ],
+  "raw_reference_count": 36,
+  "raw_references": [
+    {
+      "origin": "handoff.actual_training_library",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/mined-library.json",
+        "sha256": "84117683519304ce0ea8d52d81635dbf5e4cb0b380abef15a651ea4bcc10cb93",
+        "bytes": 6598
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/mined-library.json",
+        "sha256": "84117683519304ce0ea8d52d81635dbf5e4cb0b380abef15a651ea4bcc10cb93",
+        "bytes": 6598
+      },
+      "passed": true
+    },
+    {
+      "origin": "handoff.complete_delta",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+        "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c",
+        "bytes": 12353
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+        "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c",
+        "bytes": 12353
+      },
+      "passed": true
+    },
+    {
+      "origin": "handoff.source_contract",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+        "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff",
+        "bytes": 15678
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+        "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff",
+        "bytes": 15678
+      },
+      "passed": true
+    },
+    {
+      "origin": "handoff.sources.advisory_point_producer",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "passed": true
+    },
+    {
+      "origin": "handoff.sources.proposal_module",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+        "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+        "bytes": 31647
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+        "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+        "bytes": 31647
+      },
+      "passed": true
+    },
+    {
+      "origin": "handoff.static_conformance",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/static-Source-conformance-v1.json",
+        "sha256": "54c01e9efe38ad18264463ae7d5d56d6ef46c191f49af918cfd77b67574abeb7",
+        "bytes": 3591
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/static-Source-conformance-v1.json",
+        "sha256": "54c01e9efe38ad18264463ae7d5d56d6ef46c191f49af918cfd77b67574abeb7",
+        "bytes": 3591
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.Source_review_ABI.sources.advisory_point_producer",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.Source_review_ABI.sources.proposal_module",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+        "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+        "bytes": 31647
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+        "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+        "bytes": 31647
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.preserved.complete_producer_delta",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+        "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c",
+        "bytes": 12353
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+        "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c",
+        "bytes": 12353
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.preserved.independent_checker",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.preserved.original_point_graph",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.preserved.selected_fact_family",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+        "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+        "bytes": 29157
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+        "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+        "bytes": 29157
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.actual_mined_library",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/mined-library.json",
+        "sha256": "84117683519304ce0ea8d52d81635dbf5e4cb0b380abef15a651ea4bcc10cb93",
+        "bytes": 6598
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/mined-library.json",
+        "sha256": "84117683519304ce0ea8d52d81635dbf5e4cb0b380abef15a651ea4bcc10cb93",
+        "bytes": 6598
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.actual_training_disposition",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json",
+        "sha256": "4f5693d5dd22a2d40afc81250e4c1d0339703e46d0439d0519d27bc749a69bb6",
+        "bytes": 14316
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json",
+        "sha256": "4f5693d5dd22a2d40afc81250e4c1d0339703e46d0439d0519d27bc749a69bb6",
+        "bytes": 14316
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.current_family_contract",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+        "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c",
+        "bytes": 12386
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+        "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c",
+        "bytes": 12386
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.current_family_source",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+        "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+        "bytes": 29157
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+        "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+        "bytes": 29157
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.master",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+        "bytes": 21657
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+        "bytes": 21657
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.original_catalogue_source",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+        "bytes": 10187
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+        "bytes": 10187
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.original_independent_checker",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.original_point_graph",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.preserved_producer_v5",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+        "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c",
+        "bytes": 30988
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+        "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c",
+        "bytes": 30988
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.references.right_two_preparation_handoff",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/handoff-v1.json",
+        "sha256": "edc218115193365d58721a98042a61ea2ce9ad58852c4640268784e83681bbf0",
+        "bytes": 6651
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/handoff-v1.json",
+        "sha256": "edc218115193365d58721a98042a61ea2ce9ad58852c4640268784e83681bbf0",
+        "bytes": 6651
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.sources.advisory_point_producer",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "passed": true
+    },
+    {
+      "origin": "contract.sources.proposal_module",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+        "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+        "bytes": 31647
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+        "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+        "bytes": 31647
+      },
+      "passed": true
+    },
+    {
+      "origin": "delta.new_source",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "passed": true
+    },
+    {
+      "origin": "delta.old_source",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+        "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c",
+        "bytes": 30988
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+        "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c",
+        "bytes": 30988
+      },
+      "passed": true
+    },
+    {
+      "origin": "author-static.complete_delta",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+        "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c",
+        "bytes": 12353
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+        "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c",
+        "bytes": 12353
+      },
+      "passed": true
+    },
+    {
+      "origin": "author-static.patches[0]",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6.patch",
+        "sha256": "a60f830ff5bd69f6d5ee9f347b3ae6fc7ce421df01a1e467c5161bfae68c7bb0",
+        "bytes": 12460
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6.patch",
+        "sha256": "a60f830ff5bd69f6d5ee9f347b3ae6fc7ce421df01a1e467c5161bfae68c7bb0",
+        "bytes": 12460
+      },
+      "passed": true
+    },
+    {
+      "origin": "author-static.patches[1]",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v6-to-v5.patch",
+        "sha256": "35e646fe722354d5804282ed6f15a3387065df41bab32151c7f6955a602dd66d",
+        "bytes": 12460
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v6-to-v5.patch",
+        "sha256": "35e646fe722354d5804282ed6f15a3387065df41bab32151c7f6955a602dd66d",
+        "bytes": 12460
+      },
+      "passed": true
+    },
+    {
+      "origin": "author-static.source_contract",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+        "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff",
+        "bytes": 15678
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+        "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff",
+        "bytes": 15678
+      },
+      "passed": true
+    },
+    {
+      "origin": "author-static.sources.advisory_point_producer",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+        "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+        "bytes": 36533
+      },
+      "passed": true
+    },
+    {
+      "origin": "author-static.sources.proposal_module",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+        "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+        "bytes": 31647
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+        "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+        "bytes": 31647
+      },
+      "passed": true
+    },
+    {
+      "origin": "whole-packet:handoff-v1.json",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/handoff-v1.json",
+        "sha256": "fedc5ee03bc62f9141b9c6eae8848d044636404e8d59fe7a3dfbbd2131864590",
+        "bytes": 2828
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/handoff-v1.json",
+        "sha256": "fedc5ee03bc62f9141b9c6eae8848d044636404e8d59fe7a3dfbbd2131864590",
+        "bytes": 2828
+      },
+      "passed": true
+    },
+    {
+      "origin": "whole-packet:Source-contract-v1.json",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+        "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff",
+        "bytes": 15678
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+        "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff",
+        "bytes": 15678
+      },
+      "passed": true
+    },
+    {
+      "origin": "whole-packet:producer-v5-to-v6-complete-delta-v1.json",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+        "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c",
+        "bytes": 12353
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+        "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c",
+        "bytes": 12353
+      },
+      "passed": true
+    },
+    {
+      "origin": "whole-packet:static-Source-conformance-v1.json",
+      "expected": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/static-Source-conformance-v1.json",
+        "sha256": "54c01e9efe38ad18264463ae7d5d56d6ef46c191f49af918cfd77b67574abeb7",
+        "bytes": 3591
+      },
+      "observed": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/static-Source-conformance-v1.json",
+        "sha256": "54c01e9efe38ad18264463ae7d5d56d6ef46c191f49af918cfd77b67574abeb7",
+        "bytes": 3591
+      },
+      "passed": true
+    }
+  ],
+  "unique_raw_path_count": 18,
+  "unique_raw_paths": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "bytes": 46514
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+      "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c",
+      "bytes": 30988
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+      "bytes": 10187
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+      "bytes": 28531
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/handoff-v1.json",
+      "sha256": "edc218115193365d58721a98042a61ea2ce9ad58852c4640268784e83681bbf0",
+      "bytes": 6651
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/ROOT-training-disposition-v1.json",
+      "sha256": "4f5693d5dd22a2d40afc81250e4c1d0339703e46d0439d0519d27bc749a69bb6",
+      "bytes": 14316
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/atomic-family-donor-ROOT-20261015/training-owned-v1/mined-library.json",
+      "sha256": "84117683519304ce0ea8d52d81635dbf5e4cb0b380abef15a651ea4bcc10cb93",
+      "bytes": 6598
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+      "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960",
+      "bytes": 36533
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+      "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff",
+      "bytes": 15678
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+      "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625",
+      "bytes": 31647
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/handoff-v1.json",
+      "sha256": "fedc5ee03bc62f9141b9c6eae8848d044636404e8d59fe7a3dfbbd2131864590",
+      "bytes": 2828
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+      "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c",
+      "bytes": 12353
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6.patch",
+      "sha256": "a60f830ff5bd69f6d5ee9f347b3ae6fc7ce421df01a1e467c5161bfae68c7bb0",
+      "bytes": 12460
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v6-to-v5.patch",
+      "sha256": "35e646fe722354d5804282ed6f15a3387065df41bab32151c7f6955a602dd66d",
+      "bytes": 12460
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/static-Source-conformance-v1.json",
+      "sha256": "54c01e9efe38ad18264463ae7d5d56d6ef46c191f49af918cfd77b67574abeb7",
+      "bytes": 3591
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/Source-contract-v2.json",
+      "sha256": "2436441fec2ec9482d460139ea13f4ce8e3fc8be07a4276725237b9ff2434f1c",
+      "bytes": 12386
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/typed-atomic-context-family-source-20261015/typed_atomic_context_transport_v2.py",
+      "sha256": "e4998ebf6a4045396b2c4475f8e41d37f83dcb98f09b30676b30bf38f86093ee",
+      "bytes": 29157
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    }
+  ],
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_activation": false,
+  "blockers": [],
+  "advisories": [
+    "library_used means actual family data enabled/present; only actual licensed_instances/family_preferences indicate observed use.",
+    "Pending and dependency-complete counts are repeated structural observations, not uniquely tracked later-discharge proof or independent trajectory evidence.",
+    "Goal role/embedding runtime fit, meaningful actual controls/current recipient and all clean cold/math/resource gates remain pending."
+  ],
+  "disclosure": "Reviewer authored separate ordinary reordering consumer using the supplied shared API, earlier neutral controls/census and target proposals; did not author this core, producer, e499 family, graph or checker."
+}

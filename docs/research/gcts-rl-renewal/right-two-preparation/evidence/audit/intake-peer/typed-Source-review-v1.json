@@ -1,0 +1,52 @@
+{
+  "schema": "right-two-independent-audit-intake-Source-review-v1",
+  "scope": "right-two-complete-independent-audit-intake-Source",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v1.py",
+    "sha256": "4113de9e776f6c45ebca32ce890694a6fc6ec864b1282328469b9c5c9903dcb3",
+    "bytes": 12556
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/Source-contract-v1.json",
+    "sha256": "6548fa223f607fea1e5dbc948a5d035ec0a710f633ae53ffd71627a4283c5b99",
+    "bytes": 8070
+  },
+  "sources": {
+    "auditor": {
+      "bytes": 46327,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+      "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "intake": {
+      "bytes": 12556,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v1.py",
+      "sha256": "4113de9e776f6c45ebca32ce890694a6fc6ec864b1282328469b9c5c9903dcb3"
+    }
+  },
+  "author_identity": "/root",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source_review_passed": false,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/findings-v1.json",
+    "sha256": "a1f44d25d5a6d0a2be5c4f9d89f0e1b05a3cba1d8d0d871201e20ca733c1b620",
+    "bytes": 16517
+  },
+  "check_count": 38,
+  "blocker_ids": [
+    "RIGHT-TWO-AUDIT-LIVE-CALLER-1"
+  ],
+  "scope_limit": "CurrentV1 negative live-caller guard finding. No semantic/Q/clock/actual execution. Original checker/codec/producer dependency authorship disclosed."
+}

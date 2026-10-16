@@ -1,0 +1,204 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py
+@@ -14,17 +14,13 @@
+ import resource
+ import time
+ import types
+-VERSION = 'Q-full-original-model-untrusted-compact-candidate-Source-v5'
++VERSION = 'Q-goal-attached-original-grammar-untrusted-candidate-Source-v6'
+ CLOCK_DOMAIN = 'time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ 
+ LIMITS = {'joint_seconds': 20, 'failure_seconds': 55, 'worker_bytes': 524288000,
+           'owned_seconds': 60, 'owned_bytes': 536870912, 'caller_seconds': 90,
+           'max_attempts': 128, 'max_events': 2000, 'max_candidates': 1}
+ 
+-CURRENT = {'declaration_sha256': 'e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc',
+-    'model_epoch': '3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9',
+-    'primitive_authority_epoch': '4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039',
+-    'formula_registry_sha256': '4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe'}
+ 
+ RULES = {'axiom', 'assumption', 'instantiate', 'eq_subst', 'mp', 'generalize'}
+ 
+@@ -320,17 +316,68 @@
+     budget.check()
+     return None
+ 
++def _goal_point_view(graph):
++    """Small original state view for read-only advice; no domain snapshot copy."""
++    return {'model_epoch': graph.model_epoch, 'roots': list(graph.roots),
++        'totals': list(graph.totals), 'order': [k.data() for k in graph.order],
++        'marks': [[x, y, v, graph.mark_refs[(x, y)]]
++                  for (x, y), v in sorted(graph.marks.items())],
++        'excluded': [[k.data() for k in sorted(row)] for row in graph.excluded]}
++
++
++def _priority_base_key(graph, point_module, row, recipe_order, budget):
++    """Same existing Factor products, reordered only; no degree recomputation.
++
++    Each choice scans ALL original recipe ranks until the first available key.
++    Original graph counts/singletons and final legal check remain authoritative
++    for producer scheduling. No candidate is removed by this preference.
++    """
++    factors = {f.recipe: f for f in graph.domains[row].factors}
++    for index in recipe_order:
++        budget.check()
++        factor = factors.get(index)
++        if factor is None:
++            continue
++        recipe = graph.recipes[index]
++        if not recipe.inputs:
++            refs = [()]
++        elif len(recipe.inputs) == 1:
++            refs = ((a,) for a in point_module.set_bits(factor.left))
++        else:
++            refs = ((a, b) for a in point_module.set_bits(factor.left)
++                    for b in point_module.set_bits(factor.right)
++                    if not factor.different or a != b)
++        for ports in refs:
++            budget.check()
++            key = point_module.Key(index, row, ports)
++            if key not in graph.excluded[row]:
++                need(graph.legal(key), 'same complete original factor candidate')
++                return key
++    raise ValueError('positive original domain has no remaining base alternative')
++
++
+ def run_untrusted_candidate_search(*, point_module, catalogue, declaration,
+         original_source_bindings, binding, coordinator_invocation_id, authority_sha256,
+-        event_directory, joint_began_ns, joint_deadline_ns):
++        event_directory, joint_began_ns, joint_deadline_ns, expected_binding,
++        advice_mode='canonical', goal_module=None, family_library=None):
+     """Fresh complete PointGraph, canonical full fallback, first submission only.
+ 
+-    Caller/authenticated FD loading are separate unimplemented integration gates.
++    Caller/authenticated FD loading are separate integration gates. The caller
++    MUST authenticate expected_binding against a fresh complete recipient model.
++    This successor has no fixed right-one or right-two term/epoch construction.
++    Goal advice remains untrusted ordering after the original chosen branch.
+     Returned data cannot assert proof, selected provenance, point or resource
+     acceptance. Fresh verifier has no dependence on this module's own predicates.
+     """
+     budget = Budget(joint_began_ns, joint_deadline_ns)
+-    need(type(binding) is dict and binding == CURRENT, 'fixed original epoch digest binding')
++    need(type(binding) is dict and binding == expected_binding
++         and set(binding) == {'declaration_sha256', 'model_epoch',
++             'primitive_authority_epoch', 'formula_registry_sha256'}
++         and all(type(v) is str and len(v) == 64
++             and all(c in '0123456789abcdef' for c in v) for v in binding.values()),
++         'exact current caller-authenticated complete recipient binding')
++    need(advice_mode in ('canonical', 'primitive-goals', 'family-goals'),
++         'declared matched advisory mode, never an implicit pruning gate')
+     need(type(coordinator_invocation_id) is str and 1 <= len(coordinator_invocation_id) <= 128
+          and all(c in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.:' for c in coordinator_invocation_id)
+          and type(authority_sha256) is str and len(authority_sha256) == 64
+@@ -344,24 +391,38 @@
+         fixed_marks=boundary['fixed_marks'], roots=boundary['roots'], seed_keys=(), fixture=False,
+         source_bindings=original_source_bindings)
+     budget.check()
+-    need(graph.model_epoch == CURRENT['model_epoch'] and graph.authority_epoch == CURRENT['primitive_authority_epoch']
+-         and graph.registry_sha == CURRENT['formula_registry_sha256'] and graph.initial_selected == (),
++    need(graph.model_epoch == binding['model_epoch'] and graph.authority_epoch == binding['primitive_authority_epoch']
++         and graph.registry_sha == binding['formula_registry_sha256'] and graph.initial_selected == (),
+          'entire original graph model, no Source/model epoch replacement')
+     # Original constructor has traversed the complete registry and inventory;
+     # no target shortlist, alternative compiler or historical proof input.
+     need(graph.formulas == catalogue['formula_codes'] and len(graph.recipes) == len(catalogue['recipes']),
+          'whole original registry/recipes retained')
+     target_code = next(index for index, formula in enumerate(graph.formulas) if formula == declaration['target'])
++    index, recipe_order, families = None, None, []
++    if advice_mode != 'canonical':
++        need(goal_module is not None, 'current authenticated proposal module required')
++        index = goal_module.GoalFamilyIndex(catalogue=catalogue, binding=binding, tick=budget.check)
++        recipe_order = goal_module.primitive_goal_order(index=index,
++            goal_code=target_code, tick=budget.check)
++        if advice_mode == 'family-goals':
++            need(type(family_library) is dict
++                 and family_library['schema'] == 'mined-typed-atomic-context-library-v2'
++                 and type(family_library['families']) is list,
++                 'authenticated actual mined data, no bundled library or target word')
++            families = family_library['families']
+     budget.phases['construction_end_ns'] = budget.check()
+     events = CompactEvents(event_directory, budget)
+     counters = dict(attempts=0, placements=0, forced=0, branch_decisions=0, backtracks=0,
+-        exclusions=0, nodes=0, rollbacks=0, events=0, ancestry_scans=0)
++        exclusions=0, nodes=0, rollbacks=0, events=0, ancestry_scans=0,
++        advice_requests=0, family_preferences=0, pending_inputs_observed=0,
++        dependency_complete_inputs_observed=0, primitive_priority_choices=0)
+     outcome = {'candidate': None, 'restoration_failed': False, 'trace_complete': True}
+     entry = graph.checkpoint()
+     error = None
+ 
+     def emit(kind, *, node=None, parent=None, depth=0, decision=None, key=None,
+-             status=None, fingerprint=False, reuse=None, cleanup=False):
++             status=None, fingerprint=False, reuse=None, cleanup=False, advice=None):
+         budget.check(cleanup=cleanup)
+         ordinal = counters['events']
+         if reuse is not None:
+@@ -394,6 +455,10 @@
+             'state_fingerprint_reused_from_event':reused_from,
+             'producer_claim_only':True,'full_domain_snapshot':False,
+             'independent_trajectory_replay_accepted':False}
++        if index is not None:
++            record['goal_advice_counts'] = dict(index.counts)
++        if advice is not None:
++            record['provisional_goal_family_advice'] = copy.deepcopy(advice)
+         raw = events.append(record,cleanup=cleanup)
+         counters['events'] += 1
+         return {'event':ordinal,'state_fingerprint':state,'file':raw,
+@@ -417,6 +482,34 @@
+         budget.check()
+         emit('forced_place' if current.kind == 'forced' else 'branch_place',
+              node=node, parent=parent, depth=depth, decision=decision, key=key)
++
++    def choose_branch(decision, node, parent, depth, canonical_key):
++        # Called only AFTER graph.decision has ruled out every dead/forced point.
++        if advice_mode == 'canonical':
++            return canonical_key
++        counters['advice_requests'] += 1
++        if advice_mode == 'family-goals':
++            state = _goal_point_view(graph)
++            preferred = goal_module.first_point_preference(index=index, families=families,
++                state=state, branch_row=decision['row'], goal_code=target_code, tick=budget.check)
++            budget.check()
++            need(_goal_point_view(graph) == state, 'read-only provisional advice changes no original state')
++            if preferred is not None:
++                raw = preferred['preferred_key']
++                key = point_module.Key(raw[0], raw[1], tuple(raw[2]))
++                need(key.row == decision['row'] and graph.legal(key),
++                     'preferred original member in actual selected complete branch')
++                proposal = preferred['proposal']
++                counters['family_preferences'] += 1
++                counters['pending_inputs_observed'] += sum(
++                    o['status'] != 'DEPENDENCY_COMPLETE_SELECTED' for o in proposal['ordered_obligations'])
++                counters['dependency_complete_inputs_observed'] += sum(
++                    o['status'] == 'DEPENDENCY_COMPLETE_SELECTED' for o in proposal['ordered_obligations'])
++                emit('goal_family_preference', node=node, parent=parent, depth=depth,
++                     decision=decision, key=key, advice=proposal)
++                return key
++        counters['primitive_priority_choices'] += 1
++        return _priority_base_key(graph, point_module, decision['row'], recipe_order, budget)
+ 
+     def walk(parent, depth, *, reuse_entry=None):
+         budget.check()
+@@ -468,6 +561,7 @@
+                     place(key, decision, node, parent, depth)
+                     continue
+                 need(decision['kind'] == 'branch', 'earliest-generation branch only')
++                key = choose_branch(decision, node, parent, depth, key)
+                 counters['branch_decisions'] += 1
+                 parent_checkpoint = graph.checkpoint()
+                 parent_state = emit('branch_checkpoint', node=node, parent=parent, depth=depth,
+@@ -545,7 +639,12 @@
+         'phase_counts_observed_before_return_validation':dict(budget.counts),
+         'phase_intervals_native_ns':dict(budget.phases),
+         'phase_scope':'Construction/search are enclosing intervals; fingerprint/event times nested, never add twice. Outer intake/parse/output/checker/exit remain separate charged costs.',
+-        'library_used': False, 'rank_used': False, 'RL_used': False, 'native_accepted': False}
++        'library_used': advice_mode == 'family-goals' and bool(families),
++        'goal_advice_mode': advice_mode,
++        'goal_advice_counts': {} if index is None else dict(index.counts),
++        'goal_advice_scope': 'Provisional pending inputs and original base-key preferences only; no fact, macro, pruning or library admission.',
++        'ROOT_library_admitted': False,
++        'rank_used': False, 'RL_used': False, 'native_accepted': False}
+     try:
+         if result['candidate'] is not None:
+             need(status == 'CANDIDATE_NOT_VERIFIED' and not outcome['restoration_failed'], 'only fully unwound candidate can escape')

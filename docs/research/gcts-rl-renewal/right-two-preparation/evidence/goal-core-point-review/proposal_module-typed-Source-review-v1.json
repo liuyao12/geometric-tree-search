@@ -1,0 +1,43 @@
+{
+  "schema": "goal-attached-current-typed-Source-review-v1",
+  "scope": "Q-goal-attached-family-proposals-Source",
+  "source": {
+    "bytes": 31647,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+    "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625"
+  },
+  "sources": {
+    "advisory_point_producer": {
+      "bytes": 36533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+      "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960"
+    },
+    "proposal_module": {
+      "bytes": 31647,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+      "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625"
+    }
+  },
+  "source_contract": {
+    "bytes": 15678,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+    "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_activation": false,
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/current-core-point-review/findings-v1.json",
+    "sha256": "6f7ed0d722c3a0007881cb25b246d11f38259f182ed178a52e92a8cce49232f8",
+    "bytes": 47468
+  },
+  "check_count": 55,
+  "raw_reference_count": 36,
+  "unique_raw_path_count": 18,
+  "scope_limit": "Conditional current Source only; no actual control, proof, library/recipient/point/full24/trajectory/native/RL/resource acceptance or activation.",
+  "disclosure": "Reviewer authored separate ordinary reordering consumer using the supplied shared API, earlier neutral controls/census and target proposals; did not author this core, producer, e499 family, graph or checker."
+}

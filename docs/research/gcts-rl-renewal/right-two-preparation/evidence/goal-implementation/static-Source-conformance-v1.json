@@ -1,0 +1,86 @@
+{
+  "all_static_checks_passed": true,
+  "author_identity": "/root/arithmetic_induction",
+  "checks": {
+    "actuals_tests_clocks_Q_decodes": 0,
+    "candidate_domain_generation_scheduler_original_source_untouched": true,
+    "e499_exact_copied_class_function_ASTs": [
+      "NoInstance",
+      "OutsideSyntax",
+      "syntax_need",
+      "need",
+      "canonical",
+      "digest",
+      "integer",
+      "term",
+      "atomic_shape",
+      "fill_context",
+      "ground"
+    ],
+    "full_byte_forward_inverse_producer": true,
+    "new_proposer_no_literal_succ_add_zero_n_or_target_names": "Source AST string constants checked for succ/add/zero/right-one/right-two; no target terms are embedded.",
+    "no_C0_controls_except_LF_tab": true,
+    "no_top_level_algorithm_invocation": true,
+    "not_runtime_tested": true,
+    "postrollback_full_hash_functions_AST_exact": true,
+    "producer11_exact_unchanged_top_level_definitions": [
+      "Unfinished",
+      "need",
+      "canonical",
+      "Budget",
+      "chunks",
+      "complete_digest",
+      "FingerprintWriter",
+      "state_fingerprint",
+      "CompactEvents",
+      "decision_data",
+      "collect_first_ancestry"
+    ],
+    "producer_CURRENT_literal_removed_no_fixed_target_epoch": true,
+    "producer_added_definitions": [
+      "_goal_point_view",
+      "_priority_base_key"
+    ],
+    "producer_changed_definition": "run_untrusted_candidate_search (including explicit nested advice glue)",
+    "producer_removed_definitions": [],
+    "stdlib_only_imports_no_project_imports": true,
+    "syntax_compile_only_both_modules": true
+  },
+  "complete_delta": {
+    "bytes": 12353,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6-complete-delta-v1.json",
+    "sha256": "4a7122312f75262db2b63387539f2c6641a710f5250722f058a28f02be1a8b3c"
+  },
+  "patches": [
+    {
+      "bytes": 12460,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v5-to-v6.patch",
+      "sha256": "a60f830ff5bd69f6d5ee9f347b3ae6fc7ce421df01a1e467c5161bfae68c7bb0"
+    },
+    {
+      "bytes": 12460,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/producer-v6-to-v5.patch",
+      "sha256": "35e646fe722354d5804282ed6f15a3387065df41bab32151c7f6955a602dd66d"
+    }
+  ],
+  "schema": "goal-attached-family-static-Source-conformance-v1",
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 15678,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Source-contract-v1.json",
+    "sha256": "de6d16bfa57291d9c65e355f750591fb8e2617d27200c6071c1de4dd924669ff"
+  },
+  "source_only": true,
+  "sources": {
+    "advisory_point_producer": {
+      "bytes": 36533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+      "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960"
+    },
+    "proposal_module": {
+      "bytes": 31647,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+      "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625"
+    }
+  }
+}

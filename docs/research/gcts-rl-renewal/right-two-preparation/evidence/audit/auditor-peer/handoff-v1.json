@@ -1,0 +1,30 @@
+{
+  "schema": "right-two-auditor-independent-Source-review-handoff-v1",
+  "source_only": true,
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-auditor-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "75e0e7b0092388df973344b5c74e8d5bcb7271c80dc45026f1e8f0046ccff46b",
+    "bytes": 4046
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-auditor-independent-source-20261015/findings-v1.json",
+    "sha256": "a3aa61dd5220373be4d1d49db1a611972481891f3aa46f137f9a5652bc1d0d1c",
+    "bytes": 24583
+  },
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+    "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa",
+    "bytes": 46327
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/Source-contract-v1.json",
+    "sha256": "45fe3cd4d2fee479df741e682196c95278321de1d119013817478a457160223d",
+    "bytes": 5798
+  },
+  "source_review_passed": true,
+  "check_count": 118,
+  "unchanged_definitions": 20,
+  "raw_records": 13,
+  "disclosure": "Reviewer authored original1717 independent auditor/checker and current preparationworker, but did not author this controls-authored successor. This is genuine delta/current-binding review, not a second independent semantic implementation or actual mathematical replay.",
+  "actual_execution_authorized": false
+}

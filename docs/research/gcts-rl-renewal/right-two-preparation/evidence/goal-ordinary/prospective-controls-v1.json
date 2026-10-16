@@ -1,0 +1,230 @@
+{
+  "schema": "goal-family-matched-prospective-controls-v1",
+  "source_only": true,
+  "case_count": 18,
+  "cases": [
+    {
+      "id": "pending-is-not-fact",
+      "scope": "ordinary+point",
+      "stimulus": "A licensed three-member proposal has two unproved input ports.",
+      "expected": "logical_accepted/fact_accepted remainfalse; final MP/output cannot become known until all ordered actual primitive premises are known. The original zero-port eq_subst member may independently become a legitimate primitive fact."
+    },
+    {
+      "id": "circular-member",
+      "scope": "common instance",
+      "mutation": {
+        "member": 1,
+        "ordered_ports": [
+          [
+            "input",
+            0
+          ],
+          [
+            "member",
+            1
+          ]
+        ]
+      },
+      "expected": "Reject self-member source before any preference/fact."
+    },
+    {
+      "id": "future-member",
+      "scope": "common instance",
+      "mutation": {
+        "member": 1,
+        "ordered_ports": [
+          [
+            "input",
+            0
+          ],
+          [
+            "member",
+            2
+          ]
+        ]
+      },
+      "expected": "Reject future member source; no resequenced constructor rescue."
+    },
+    {
+      "id": "swapped-MP",
+      "scope": "common instance",
+      "mutation": {
+        "member": 1,
+        "ordered_ports": [
+          [
+            "member",
+            0
+          ],
+          [
+            "input",
+            0
+          ]
+        ]
+      },
+      "expected": "Reject unless this exact ordered premise interface is itself the licensed original recipe; no commutation by set equality."
+    },
+    {
+      "id": "stale-epoch",
+      "scope": "common instance",
+      "mutation": "Change exactly one declaration/model/authority/registry digest.",
+      "expected": "Reject against current authenticated preparation; old right-one epochs never promoted."
+    },
+    {
+      "id": "Boolean-index",
+      "scope": "common instance/word",
+      "mutation": {
+        "recipe_index": true
+      },
+      "expected": "Reject strict integer/port validation; no True→1 coercion."
+    },
+    {
+      "id": "wrong-witness",
+      "scope": "common instance",
+      "mutation": "Keep recipe_index/id but change one primitive witness field.",
+      "expected": "Reject exact licensed witness comparison; no introduced recipe or inference."
+    },
+    {
+      "id": "repeated-inputs",
+      "scope": "positive interface control only",
+      "stimulus": "Both ordered input codes are identical and share one proved source.",
+      "expected": "Retain two port occurrences, permit one shared proof node, preserve repeated ordered MP references and avoid double-counting physical shared keys. No target theorem fixture."
+    },
+    {
+      "id": "assigned-zero",
+      "scope": "NONLOGICAL point marking",
+      "state_marks": [
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "candidate_marks": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "expected": "Reject conflicting assigned0 vs1; removing candidate mark would be a distinct absent/unconstrained control, not the same placement."
+    },
+    {
+      "id": "shared-key-unit",
+      "scope": "NONLOGICAL cluster union",
+      "stimulus": "Two member descriptions name the identical original key with unit t at one row.",
+      "expected": "Aggregate the shared key once with correct m-refcount; two distinct keys at that same unit row overfill and reject."
+    },
+    {
+      "id": "dead-before-forced",
+      "scope": "NONLOGICAL scheduler",
+      "frontier": [
+        {
+          "row": 0,
+          "generation": 0,
+          "candidates": [
+            "a"
+          ]
+        },
+        {
+          "row": 2,
+          "generation": 5,
+          "candidates": []
+        }
+      ],
+      "expected": "Global dead row2 dominates forced row0 and every advice preference."
+    },
+    {
+      "id": "forced-before-branch",
+      "scope": "NONLOGICAL scheduler",
+      "frontier": [
+        {
+          "row": 0,
+          "generation": 0,
+          "candidates": [
+            "a",
+            "b"
+          ]
+        },
+        {
+          "row": 1,
+          "generation": 5,
+          "candidates": [
+            "c"
+          ]
+        }
+      ],
+      "expected": "Global forced row1 dominates early branch row0 and family ordering."
+    },
+    {
+      "id": "earliest-generation",
+      "scope": "NONLOGICAL scheduler",
+      "frontier": [
+        {
+          "row": 0,
+          "generation": 0,
+          "candidates": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        {
+          "row": 1,
+          "generation": 1,
+          "candidates": [
+            "d",
+            "e"
+          ]
+        }
+      ],
+      "expected": "Branch row0; minimum degree breaks generation ties only."
+    },
+    {
+      "id": "canonical-fallback",
+      "scope": "ordinary order+point alternatives",
+      "canonical": [
+        "a",
+        "b",
+        "c"
+      ],
+      "preferred": [
+        "b",
+        "b"
+      ],
+      "expected_order": [
+        "b",
+        "a",
+        "c"
+      ],
+      "expected": "No original recipe/key removed; duplicate advice never changes unit inventory."
+    },
+    {
+      "id": "no-licensed-instance",
+      "scope": "common/ordinary/point",
+      "stimulus": "A role binding needs a primitive witness absent from the complete current inventory.",
+      "expected": "NoInstance/no advice only; all canonical base alternatives remain. Specific right-two missing operand is not a theorem/nonprovability claim."
+    },
+    {
+      "id": "failed-transaction-rollback",
+      "scope": "NONLOGICAL point+advice",
+      "stimulus": "A proposal is partially applied and then rejected, cancelled or late.",
+      "expected": "Compare full pre/post graph+advice snapshots: order, t, marks/refs includingzero, generations, domains, reverse/dependencies, exclusions, reservations and pending status exact. UNKNOWN does not license an exhausted-child exclusion."
+    },
+    {
+      "id": "primitive-word-count",
+      "scope": "ordinary+point candidate",
+      "stimulus": "A family-label count fits but complete shared primitive ancestry exceeds24.",
+      "expected": "UNKNOWN; count actual expanded distinct primitive rows, no macro-as-one or shorter-proof rescue."
+    },
+    {
+      "id": "wrong-final-target-or-Gamma",
+      "scope": "unchanged1717 checker",
+      "stimulus": "Complete word ends at another target, or original Gamma/freshness/occurrence is changed.",
+      "expected": "Reject exact original closed target/full Gamma at separate unchanged1717 endpoint, regardless of producer/family flags."
+    }
+  ],
+  "actual_results": null,
+  "actual_controls_executed": 0,
+  "qualification": false,
+  "scope": "Literal mutations/toy state declarations to integrate into genuine current common/ordinary/point controls. NONLOGICAL scheduler/union controls are not target proofs. No test or Source was executed."
+}

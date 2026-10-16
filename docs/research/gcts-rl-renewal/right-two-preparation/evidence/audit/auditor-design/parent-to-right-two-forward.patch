@@ -1,0 +1,47 @@
+--- independent_Q_semantics_v1.py
++++ independent_right_two_semantics_v2.py
+@@ -13,11 +13,11 @@
+ import time
+ import types
+ 
+-VERSION = 'independent-complete-finite-Q-semantics-v1'
++VERSION = 'independent-complete-finite-right-two-semantics-Source-v2'
+ PRODUCER_PROFILE = 'arithmetic-empty-Gamma-unary-generalize-finite-catalog-v1'
+ MARKING = 'injective-formula-ordered-primitive-offset-Q-v1'
+-DECLARATION_RAW_SHA256 = 'e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc'
+-DECLARATION_VALUE_SHA256 = 'f6ca72af011a9343f4661b5092d54565f668a978fd020734072267b76f89b7a3'
++DECLARATION_RAW_SHA256 = 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'
++DECLARATION_VALUE_SHA256 = 'ae8aacb2b659ba2d2438c5bc640ae1f6e7fccb8b056f138bde6a6d1e2151449f'
+ GRAMMAR = {'term_node_bound': 3, 'target_and_axiom_open_subterms': True,
+     'instantiation_rounds': 2, 'hole_context_node_bound': 2,
+     'equality_template_other_terms': 'complete_operand_pool',
+@@ -25,7 +25,7 @@
+     'generalization_sources': 'all_resulting_parameter_scoped_equality_atoms',
+     'target_seed_is_formula_only': True}
+ LIMITS = {'maximum_formulas': 50000, 'maximum_recipes': 20000, 'maximum_visits': 5000000}
+-FROZEN_PRODUCER_BINDINGS = {'catalogue': {'bytes': 10187, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py', 'sha256': '2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a'}, 'controls': {'bytes': 19742, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py', 'sha256': '4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'master': {'bytes': 21657, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md', 'sha256': 'c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9'}, 'payload': {'bytes': 5435, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/q_preparation_owned_graph_v3.py', 'sha256': 'ee2088bf60709f6c0c5a78297841bd0684674369fa9d3c08119b96a59caa88ad'}, 'point_graph': {'bytes': 28531, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py', 'sha256': '8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567'}, 'worker': {'bytes': 37266, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_worker_v7.py', 'sha256': '75d5d80701a0815d78e182a5cb7eb99412bff5b48a5b936a8850b625743de48d'}}
++FROZEN_PRODUCER_BINDINGS = {'intake': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py', 'sha256': 'c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc', 'bytes': 41739}, 'catalogue': {'bytes': 10187, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py', 'sha256': '2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a'}, 'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'controls': {'bytes': 19742, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py', 'sha256': '4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'point_graph': {'bytes': 28531, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py', 'sha256': '8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567'}}
+ RULE_FIELDS = {'axiom': {'name'}, 'assumption': {'index'},
+     'instantiate': {'universal', 'term'},
+     'eq_subst': {'variable', 'template', 'left', 'right'},
+@@ -721,7 +721,7 @@
+     """Reconstruct whole formula/recipe language then audit every initial domain.
+ 
+     ROOT's future worker authenticates one raw preparation buffer and its exact
+-    declaration, seven provenance roles and original resource-closed producer
++    declaration, six fixed fresh producer provenance roles and whole raw producer
+     inputs before this API. All producer roles remain RAW-ONLY. This function
+     imports no producer kernel, compiler, graph, control or serializer.
+     """
+@@ -747,9 +747,9 @@
+     context = {'theory': declaration['theory'], 'ordered_local_premises': declaration['ordered_Gamma']}
+     need(canonical(catalogue['context']) == canonical(context), 'entire original ordered context')
+     need(type(expected_source_bindings) is dict and set(expected_source_bindings) ==
+-         {'kernel', 'catalogue', 'point_graph', 'payload', 'controls', 'worker', 'master'}, 'complete original seven raw roles')
++         {'intake', 'kernel', 'catalogue', 'point_graph', 'controls', 'clean_support'}, 'complete fixed fresh six raw producer roles')
+     need(canonical(expected_source_bindings) == canonical(FROZEN_PRODUCER_BINDINGS),
+-         'exact unchanged original producer provenance ledger, not arbitrary caller sources')
++         'exact frozen right-two Source6 producer ledger, not arbitrary caller overrides')
+     authority_base = {'activated': False, 'native_accepted': False,
+         'recipient_theory_sha256': digest(declaration['theory']), 'profile': PRODUCER_PROFILE,
+         'declaration_sha256': digest(declaration), 'scope': 'Q finite six-rule open-parameter grammar only',

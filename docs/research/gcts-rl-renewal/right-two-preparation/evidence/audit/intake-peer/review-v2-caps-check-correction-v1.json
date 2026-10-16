@@ -1,0 +1,21 @@
+{
+  "schema": "right-two-intake-review-metadata-correction-v1",
+  "preserved_typed_v2": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/typed-Source-review-v2.json",
+    "sha256": "87037c2f3c7efa00e8eb80a007dfe89bcbaf840d7d939da204d3abacf4ceb81b",
+    "bytes": 2874
+  },
+  "preserved_findings_v2": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/findings-v2.json",
+    "sha256": "fa7a05d6378b4236da0d62c37fa58bd93dd7ea57e5e56ba8687ec0b948e33a86",
+    "bytes": 15962
+  },
+  "issue": "V2 combined math-code-inputs-caps-unchanged check had an unnecessary record.get unused fallback making its limits subcondition a self-comparison. Inputs/producer/dependency subconditions were genuine; V2 remained NEGATIVE for unreachable deltext.",
+  "replacement_check": {
+    "id": "actual-cap-expression-check",
+    "passed": true,
+    "detail": "Correct actual Source AST and allcurrent/priorcontract limits comparison; no fallback/self-equality."
+  },
+  "Source_execution_or_outcome_changed": false,
+  "current_result": "Actual SourceV1/V2/V3 literal LIMITS and contract1/2/3 all match original20/55/60/512/90+1. No Source/current actual admission inferred."
+}

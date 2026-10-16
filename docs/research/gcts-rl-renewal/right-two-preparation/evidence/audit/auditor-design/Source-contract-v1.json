@@ -1,0 +1,104 @@
+{
+  "schema": "right-two-independent-catalogue-point-auditor-Source-contract-v1",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source_only": true,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+    "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa",
+    "bytes": 46327
+  },
+  "parent": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+    "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+    "bytes": 46514
+  },
+  "fixed_declaration": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+    "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "bytes": 2925
+  },
+  "declaration_value_sha256": "ae8aacb2b659ba2d2438c5bc640ae1f6e7fccb8b056f138bde6a6d1e2151449f",
+  "fixed_producer_sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+      "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+      "bytes": 41739
+    },
+    "catalogue": {
+      "bytes": 10187,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+      "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 19742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+      "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "point_graph": {
+      "bytes": 28531,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+      "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567"
+    }
+  },
+  "API": "audit_saved_profile(*, declaration, preparation, expected_source_bindings, source_guard, deadline, initial_state_record, initial_oracle_record): original signature unchanged.",
+  "scope": "Fresh exact right-two declaration and whole fixed Source6 producer provenance only. Independently reconstruct original finite grammar/primitives and compare complete24 initial point domains/state/oracle. No proof-search/target-discovery/trajectory/native/full24/RL authority.",
+  "unchanged_definitions": [
+    "Boundary",
+    "Semantics",
+    "Unresolved",
+    "callback_state",
+    "canonical",
+    "canonical_blocks",
+    "check_point_state",
+    "check_primitive_word",
+    "compare_owned_chunks",
+    "digest",
+    "formula_nodes",
+    "independent_domain",
+    "integer",
+    "literal_points",
+    "need",
+    "parse_key",
+    "reconstruct_grammar",
+    "symbol",
+    "term_nodes",
+    "term_size"
+  ],
+  "mathematics": "Semantics, capture-safe substitution, six primitive rules, check_primitive_word, reconstruct_grammar, complete factored-domain algorithms, streaming EOF comparisons and complete state union all byte/AST inherited unchanged. The primary theorem checker remains original1717 in later search lanes; this separate module is for fresh catalogue audit.",
+  "budgets": {
+    "joint_seconds": 20,
+    "failure_seconds": 55,
+    "owned_seconds": 60,
+    "aggregate_bytes": 536870912,
+    "caller_seconds": 90,
+    "finish_reserve_seconds": 1,
+    "maximum_visits": 5000000,
+    "maximum_formulas": 50000,
+    "maximum_recipes": 20000,
+    "height": 24
+  },
+  "Source_review_scope": "right-two-independent-catalogue-point-auditor-Source",
+  "cold_intake_requirements": [
+    "Root exact current authenticated plan must raw-pin this new auditor and Source6 producer/declaration; no arbitrary overrides or historical7-role promotion.",
+    "One whole authenticated raw preparation decode/parse and full own initial state/oracle files, all EOF/hashes from actual fresh producer. No partial preparation or copied old counts.",
+    "Existing authenticated Source/callback guard and conservative same-process local deadline projection under original global20; full cold terminal/output/memory/caller closure are separate.",
+    "Distinct Source review, actual reconstruction/domain checking and saved-result reconciliation are pending; no admission from this Source packet."
+  ],
+  "delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/Source-delta-v1.json",
+    "sha256": "a358e5b99adcd67da84c8665fed85aa40a29cba9ef80c76beae28ba0064f3214",
+    "bytes": 18249
+  },
+  "actual_execution_authorized": false,
+  "scientific_calls": 0
+}

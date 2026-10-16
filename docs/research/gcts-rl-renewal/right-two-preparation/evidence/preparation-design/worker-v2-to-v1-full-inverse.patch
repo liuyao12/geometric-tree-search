@@ -1,0 +1,31 @@
+--- prepare_right_two_v2.py
++++ prepare_right_two_v1.py
+@@ -27,7 +27,7 @@
+ import sys
+ import types
+ 
+-VERSION='Q-right-two-complete-preparation-intake-Source-v2'
++VERSION='Q-right-two-complete-preparation-intake-Source-v1'
+ AUTHOR='/root/hilbert_ordering_diagnosis'
+ REVIEW_SCOPE='Q-right-two-complete-preparation-intake-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+@@ -41,7 +41,7 @@
+  'clean_support': {'bytes': 48584,
+                    'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py',
+                    'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'},
+- 'controls': {'bytes': 19742,
++ 'domain_oracle': {'bytes': 19742,
+                    'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py',
+                    'sha256': '4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638'},
+  'kernel': {'bytes': 10323,
+@@ -410,8 +410,8 @@
+     raw_inputs={r:read_small(p['path'],MAX_SMALL,p) for r,p in FIXED_INPUTS.items()}
+     declaration=decode(raw_inputs['declaration'],MAX_SMALL);declaration_seal=digest(declaration)
+     raw_sources={'intake':own_raw};raw_sources.update({r:read_small(p['path'],MAX_SMALL,p) for r,p in FIXED_SOURCES.items()});tick()
+-    modules={r:load_fixed(r,raw_sources[r]) for r in ('clean_support','kernel','catalogue','point_graph','controls')}
+-    support,kernel,catalogue,point,domains=(modules[r] for r in ('clean_support','kernel','catalogue','point_graph','controls'))
++    modules={r:load_fixed(r,raw_sources[r]) for r in ('clean_support','kernel','catalogue','point_graph','domain_oracle')}
++    support,kernel,catalogue,point,domains=(modules[r] for r in ('clean_support','kernel','catalogue','point_graph','domain_oracle'))
+     decoder=json.JSONDecoder(object_pairs_hook=duplicate_free,parse_int=signed_integer,parse_float=no_float,parse_constant=no_constant,strict=True)
+     sealed_modules=(sys.modules[__name__],*modules.values(),json,json.decoder,json.encoder,json.scanner,copy,
+                     hashlib,itertools,math,os,select,sys,time,types,resource,fcntl,stat)

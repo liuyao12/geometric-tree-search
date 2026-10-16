@@ -1,0 +1,273 @@
+{
+  "edits": [
+    {
+      "new_end": 568,
+      "new_start": 565,
+      "new_utf8": "goa",
+      "old_end": 567,
+      "old_start": 565,
+      "old_utf8": "fu"
+    },
+    {
+      "new_end": 578,
+      "new_start": 569,
+      "new_utf8": "-attached",
+      "old_end": 569,
+      "old_start": 568,
+      "old_utf8": "l"
+    },
+    {
+      "new_end": 591,
+      "new_start": 588,
+      "new_utf8": "gra",
+      "old_end": 579,
+      "old_start": 579,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 595,
+      "new_start": 592,
+      "new_utf8": "mar",
+      "old_end": 584,
+      "old_start": 580,
+      "old_utf8": "odel"
+    },
+    {
+      "new_end": 605,
+      "new_start": 605,
+      "new_utf8": "",
+      "old_end": 602,
+      "old_start": 594,
+      "old_utf8": "-compact"
+    },
+    {
+      "new_end": 625,
+      "new_start": 624,
+      "new_utf8": "6",
+      "old_end": 622,
+      "old_start": 621,
+      "old_utf8": "5"
+    },
+    {
+      "new_end": 921,
+      "new_start": 921,
+      "new_utf8": "",
+      "old_end": 1306,
+      "old_start": 918,
+      "old_utf8": "\nCURRENT = {'declaration_sha256': 'e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc',\n    'model_epoch': '3a8854e0e0137d125dfa8af8870be04e4242ec2e7036b6bb8977cd33ad1454f9',\n    'primitive_authority_epoch': '4ac41a90b9655036e2e7ed6cd7d9a971b9097d6b2c7d0f70e8408b8d93a54039',\n    'formula_registry_sha256': '4a12ada631861b1637b7d5e17e76c45b9a942816c412f5a6f0fc48c1698eb7fe'}"
+    },
+    {
+      "new_end": 16852,
+      "new_start": 15037,
+      "new_utf8": "_goal_point_view(graph):\n    \"\"\"Small original state view for read-only advice; no domain snapshot copy.\"\"\"\n    return {'model_epoch': graph.model_epoch, 'roots': list(graph.roots),\n        'totals': list(graph.totals), 'order': [k.data() for k in graph.order],\n        'marks': [[x, y, v, graph.mark_refs[(x, y)]]\n                  for (x, y), v in sorted(graph.marks.items())],\n        'excluded': [[k.data() for k in sorted(row)] for row in graph.excluded]}\n\n\ndef _priority_base_key(graph, point_module, row, recipe_order, budget):\n    \"\"\"Same existing Factor products, reordered only; no degree recomputation.\n\n    Each choice scans ALL original recipe ranks until the first available key.\n    Original graph counts/singletons and final legal check remain authoritative\n    for producer scheduling. No candidate is removed by this preference.\n    \"\"\"\n    factors = {f.recipe: f for f in graph.domains[row].factors}\n    for index in recipe_order:\n        budget.check()\n        factor = factors.get(index)\n        if factor is None:\n            continue\n        recipe = graph.recipes[index]\n        if not recipe.inputs:\n            refs = [()]\n        elif len(recipe.inputs) == 1:\n            refs = ((a,) for a in point_module.set_bits(factor.left))\n        else:\n            refs = ((a, b) for a in point_module.set_bits(factor.left)\n                    for b in point_module.set_bits(factor.right)\n                    if not factor.different or a != b)\n        for ports in refs:\n            budget.check()\n            key = point_module.Key(index, row, ports)\n            if key not in graph.excluded[row]:\n                need(graph.legal(key), 'same complete original factor candidate')\n                return key\n    raise ValueError('positive original domain has no remaining base alternative')\n\n\ndef ",
+      "old_end": 15422,
+      "old_start": 15422,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 17160,
+      "new_start": 17070,
+      "new_utf8": ", expected_binding,\n        advice_mode='canonical', goal_module=None, family_library=None",
+      "old_end": 15640,
+      "old_start": 15640,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 17295,
+      "new_start": 17295,
+      "new_utf8": "",
+      "old_end": 15789,
+      "old_start": 15775,
+      "old_utf8": "unimplemented "
+    },
+    {
+      "new_end": 17561,
+      "new_start": 17312,
+      "new_utf8": ". The caller\n    MUST authenticate expected_binding against a fresh complete recipient model.\n    This successor has no fixed right-one or right-two term/epoch construction.\n    Goal advice remains untrusted ordering after the original chosen branch",
+      "old_end": 15806,
+      "old_start": 15806,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 17899,
+      "new_start": 17832,
+      "new_utf8": "expected_binding\n         and set(binding) == {'declaration_sha256'",
+      "old_end": 16084,
+      "old_start": 16077,
+      "old_utf8": "CURRENT"
+    },
+    {
+      "new_end": 17905,
+      "new_start": 17902,
+      "new_utf8": "mod",
+      "old_end": 16090,
+      "old_start": 16087,
+      "old_utf8": "fix"
+    },
+    {
+      "new_end": 17906,
+      "new_start": 17906,
+      "new_utf8": "",
+      "old_end": 16100,
+      "old_start": 16091,
+      "old_utf8": "d origina"
+    },
+    {
+      "new_end": 17908,
+      "new_start": 17907,
+      "new_utf8": "_",
+      "old_end": 16102,
+      "old_start": 16101,
+      "old_utf8": " "
+    },
+    {
+      "new_end": 17916,
+      "new_start": 17913,
+      "new_utf8": "',\n",
+      "old_end": 16107,
+      "old_start": 16107,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 18103,
+      "new_start": 17917,
+      "new_utf8": "            'primitive_authority_epoch', 'formula_registry_sha256'}\n         and all(type(v) is str and len(v) == 64\n             and all(c in '0123456789abcdef' for c in v) for v in bin",
+      "old_end": 16108,
+      "old_start": 16108,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 18106,
+      "new_start": 18105,
+      "new_utf8": "n",
+      "old_end": 16110,
+      "old_start": 16110,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 18112,
+      "new_start": 18107,
+      "new_utf8": ".valu",
+      "old_end": 16111,
+      "old_start": 16111,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 18181,
+      "new_start": 18114,
+      "new_utf8": "()),\n         'exact current caller-authenticated complete recipien",
+      "old_end": 16113,
+      "old_start": 16113,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 18339,
+      "new_start": 18190,
+      "new_utf8": "')\n    need(advice_mode in ('canonical', 'primitive-goals', 'family-goals'),\n         'declared matched advisory mode, never an implicit pruning gate",
+      "old_end": 16122,
+      "old_start": 16122,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19471,
+      "new_start": 19464,
+      "new_utf8": "binding",
+      "old_end": 17254,
+      "old_start": 17247,
+      "old_utf8": "CURRENT"
+    },
+    {
+      "new_end": 19523,
+      "new_start": 19516,
+      "new_utf8": "binding",
+      "old_end": 17306,
+      "old_start": 17299,
+      "old_utf8": "CURRENT"
+    },
+    {
+      "new_end": 19595,
+      "new_start": 19588,
+      "new_utf8": "binding",
+      "old_end": 17378,
+      "old_start": 17371,
+      "old_utf8": "CURRENT"
+    },
+    {
+      "new_end": 20938,
+      "new_start": 20163,
+      "new_utf8": "index, recipe_order, families = None, None, []\n    if advice_mode != 'canonical':\n        need(goal_module is not None, 'current authenticated proposal module required')\n        index = goal_module.GoalFamilyIndex(catalogue=catalogue, binding=binding, tick=budget.check)\n        recipe_order = goal_module.primitive_goal_order(index=index,\n            goal_code=target_code, tick=budget.check)\n        if advice_mode == 'family-goals':\n            need(type(family_library) is dict\n                 and family_library['schema'] == 'mined-typed-atomic-context-library-v2'\n                 and type(family_library['families']) is list,\n                 'authenticated actual mined data, no bundled library or target word')\n            families = family_library['families']\n    ",
+      "old_end": 17946,
+      "old_start": 17946,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21354,
+      "new_start": 21201,
+      "new_utf8": "s=0,\n        advice_requests=0, family_preferences=0, pending_inputs_observed=0,\n        dependency_complete_inputs_observed=0, primitive_priority_choice",
+      "old_end": 18209,
+      "old_start": 18209,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21657,
+      "new_start": 21644,
+      "new_utf8": "e, advice=Non",
+      "old_end": 18499,
+      "old_start": 18499,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23948,
+      "new_start": 23748,
+      "new_utf8": "if index is not None:\n            record['goal_advice_counts'] = dict(index.counts)\n        if advice is not None:\n            record['provisional_goal_family_advice'] = copy.deepcopy(advice)\n        ",
+      "old_end": 20590,
+      "old_start": 20590,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 26893,
+      "new_start": 25130,
+      "new_utf8": ")\n\n    def choose_branch(decision, node, parent, depth, canonical_key):\n        # Called only AFTER graph.decision has ruled out every dead/forced point.\n        if advice_mode == 'canonical':\n            return canonical_key\n        counters['advice_requests'] += 1\n        if advice_mode == 'family-goals':\n            state = _goal_point_view(graph)\n            preferred = goal_module.first_point_preference(index=index, families=families,\n                state=state, branch_row=decision['row'], goal_code=target_code, tick=budget.check)\n            budget.check()\n            need(_goal_point_view(graph) == state, 'read-only provisional advice changes no original state')\n            if preferred is not None:\n                raw = preferred['preferred_key']\n                key = point_module.Key(raw[0], raw[1], tuple(raw[2]))\n                need(key.row == decision['row'] and graph.legal(key),\n                     'preferred original member in actual selected complete branch')\n                proposal = preferred['proposal']\n                counters['family_preferences'] += 1\n                counters['pending_inputs_observed'] += sum(\n                    o['status'] != 'DEPENDENCY_COMPLETE_SELECTED' for o in proposal['ordered_obligations'])\n                counters['dependency_complete_inputs_observed'] += sum(\n                    o['status'] == 'DEPENDENCY_COMPLETE_SELECTED' for o in proposal['ordered_obligations'])\n                emit('goal_family_preference', node=node, parent=parent, depth=depth,\n                     decision=decision, key=key, advice=proposal)\n                return key\n        counters['primitive_priority_choices'] += 1\n        return _priority_base_key(graph, point_module, decision['row'], recipe_order, budget",
+      "old_end": 21772,
+      "old_start": 21772,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 30085,
+      "new_start": 30013,
+      "new_utf8": ")\n                key = choose_branch(decision, node, parent, depth, key",
+      "old_end": 24892,
+      "old_start": 24892,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 35301,
+      "new_start": 34957,
+      "new_utf8": "advice_mode == 'family-goals' and bool(families),\n        'goal_advice_mode': advice_mode,\n        'goal_advice_counts': {} if index is None else dict(index.counts),\n        'goal_advice_scope': 'Provisional pending inputs and original base-key preferences only; no fact, macro, pruning or library admission.',\n        'ROOT_library_admitted': ",
+      "old_end": 29764,
+      "old_start": 29764,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 35315,
+      "new_start": 35307,
+      "new_utf8": "\n       ",
+      "old_end": 29770,
+      "old_start": 29770,
+      "old_utf8": ""
+    }
+  ],
+  "encoding": "UTF-8 byte offsets; apply replacements in reverse order.",
+  "full_forward_and_inverse_passed": true,
+  "new_source": {
+    "bytes": 36533,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/Q_untrusted_goal_family_candidate_search_v6.py",
+    "sha256": "9412ecd6fe0fd88a7b86088a438f93600367a58c0d0e4a0747f6a7d76c1fd960"
+  },
+  "old_source": {
+    "bytes": 30988,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-point-checkpoint-reuse-source-20261015/Q_untrusted_compact_candidate_search_v5.py",
+    "sha256": "e45336591a3b1ef8624fb5c004de7cf21cbe6b81f577ec55503123468758403c"
+  },
+  "schema": "goal-family-advisory-producer-complete-positional-delta-v1"
+}

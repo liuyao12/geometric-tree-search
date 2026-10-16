@@ -1,0 +1,669 @@
+{
+  "schema": "right-two-preparation-independent-saved-findings-v1",
+  "source_only": false,
+  "saved_evidence_only": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "all_literal_checks_passed": true,
+  "checks": [
+    {
+      "id": "whole-twoLF-EOF",
+      "passed": true
+    },
+    {
+      "id": "canonical-two-lines",
+      "passed": true
+    },
+    {
+      "id": "completion-body-LF",
+      "passed": true
+    },
+    {
+      "id": "whole-canonical-final-stdout",
+      "passed": true
+    },
+    {
+      "id": "whole-empty-errors",
+      "passed": true
+    },
+    {
+      "id": "Root-current-scopes",
+      "passed": true
+    },
+    {
+      "id": "exact-plan12",
+      "passed": true
+    },
+    {
+      "id": "same-purpose-invocation",
+      "passed": true
+    },
+    {
+      "id": "same-actual-plan",
+      "passed": true
+    },
+    {
+      "id": "Source6-input2-summary",
+      "passed": true
+    },
+    {
+      "id": "current-grant",
+      "passed": true
+    },
+    {
+      "id": "original-limits",
+      "passed": true
+    },
+    {
+      "id": "current-typed-ROOT",
+      "passed": true
+    },
+    {
+      "id": "current-typed-peer",
+      "passed": true
+    },
+    {
+      "id": "whole-declaration",
+      "passed": true
+    },
+    {
+      "id": "all-context-bindings",
+      "passed": true
+    },
+    {
+      "id": "source-protocol-scope",
+      "passed": true
+    },
+    {
+      "id": "exact5-owned",
+      "passed": true
+    },
+    {
+      "id": "summary-output-initial-state.json",
+      "passed": true
+    },
+    {
+      "id": "summary-output-initial-oracle-domains.json",
+      "passed": true
+    },
+    {
+      "id": "summary-output-preparation.json",
+      "passed": true
+    },
+    {
+      "id": "response-output-initial-state.json",
+      "passed": true
+    },
+    {
+      "id": "response-output-initial-oracle-domains.json",
+      "passed": true
+    },
+    {
+      "id": "response-output-preparation.json",
+      "passed": true
+    },
+    {
+      "id": "response-output-summary.json",
+      "passed": true
+    },
+    {
+      "id": "final-output-initial-state.json",
+      "passed": true
+    },
+    {
+      "id": "final-output-initial-oracle-domains.json",
+      "passed": true
+    },
+    {
+      "id": "final-output-preparation.json",
+      "passed": true
+    },
+    {
+      "id": "final-output-summary.json",
+      "passed": true
+    },
+    {
+      "id": "final-output-response.jsonl",
+      "passed": true
+    },
+    {
+      "id": "self-excluding-inventories",
+      "passed": true
+    },
+    {
+      "id": "total-owned-bytes",
+      "passed": true
+    },
+    {
+      "id": "serialization-caps",
+      "passed": true
+    },
+    {
+      "id": "literal-clock-values",
+      "passed": true
+    },
+    {
+      "id": "whole-clock-chain",
+      "passed": true
+    },
+    {
+      "id": "true-native-reap",
+      "passed": true
+    },
+    {
+      "id": "exact-native-intervals",
+      "passed": true
+    },
+    {
+      "id": "native-T-only-memory",
+      "passed": true,
+      "detail": "One fixed process; do not substitute pre-exit samples, subtract descendants, or add a nonexistent second worker."
+    },
+    {
+      "id": "native-probe-complete",
+      "passed": true
+    },
+    {
+      "id": "complete-Date-bracket",
+      "passed": true
+    },
+    {
+      "id": "all24-counts",
+      "passed": true
+    },
+    {
+      "id": "candidate-count-sum",
+      "passed": true
+    },
+    {
+      "id": "initial-decision-literal-consistency",
+      "passed": true
+    },
+    {
+      "id": "whole-observed-census",
+      "passed": true
+    },
+    {
+      "id": "arity-upper-bound-arithmetic",
+      "passed": true
+    },
+    {
+      "id": "census-numeric-relations",
+      "passed": true
+    },
+    {
+      "id": "producer-only-work",
+      "passed": true
+    },
+    {
+      "id": "summary-false-independent_catalogue_admitted",
+      "passed": true
+    },
+    {
+      "id": "summary-false-ROOT_resource_accepted",
+      "passed": true
+    },
+    {
+      "id": "summary-false-target_proof_accepted",
+      "passed": true
+    },
+    {
+      "id": "summary-false-full24_solution_accepted",
+      "passed": true
+    },
+    {
+      "id": "summary-false-trajectory_accepted",
+      "passed": true
+    },
+    {
+      "id": "summary-false-native_accepted",
+      "passed": true
+    },
+    {
+      "id": "summary-false-RL_accepted",
+      "passed": true
+    },
+    {
+      "id": "response-recipient-false",
+      "passed": true
+    },
+    {
+      "id": "Root-higher-claims-false",
+      "passed": true
+    },
+    {
+      "id": "raw-record-1",
+      "passed": true
+    },
+    {
+      "id": "raw-record-2",
+      "passed": true
+    },
+    {
+      "id": "raw-record-3",
+      "passed": true
+    },
+    {
+      "id": "raw-record-4",
+      "passed": true
+    },
+    {
+      "id": "raw-record-5",
+      "passed": true
+    },
+    {
+      "id": "raw-record-6",
+      "passed": true
+    },
+    {
+      "id": "raw-record-7",
+      "passed": true
+    },
+    {
+      "id": "raw-record-8",
+      "passed": true
+    },
+    {
+      "id": "raw-record-9",
+      "passed": true
+    },
+    {
+      "id": "raw-record-10",
+      "passed": true
+    },
+    {
+      "id": "raw-record-11",
+      "passed": true
+    },
+    {
+      "id": "raw-record-12",
+      "passed": true
+    },
+    {
+      "id": "raw-record-13",
+      "passed": true
+    },
+    {
+      "id": "raw-record-14",
+      "passed": true
+    },
+    {
+      "id": "raw-record-15",
+      "passed": true
+    },
+    {
+      "id": "raw-record-16",
+      "passed": true
+    },
+    {
+      "id": "raw-record-17",
+      "passed": true
+    },
+    {
+      "id": "raw-record-18",
+      "passed": true
+    },
+    {
+      "id": "raw-record-19",
+      "passed": true
+    },
+    {
+      "id": "raw-record-20",
+      "passed": true
+    },
+    {
+      "id": "raw-record-21",
+      "passed": true
+    },
+    {
+      "id": "raw-record-22",
+      "passed": true
+    },
+    {
+      "id": "raw-record-23",
+      "passed": true
+    },
+    {
+      "id": "raw-record-24",
+      "passed": true
+    },
+    {
+      "id": "raw-record-25",
+      "passed": true
+    },
+    {
+      "id": "raw-record-26",
+      "passed": true
+    },
+    {
+      "id": "raw-record-27",
+      "passed": true
+    },
+    {
+      "id": "raw-record-28",
+      "passed": true
+    },
+    {
+      "id": "raw-record-29",
+      "passed": true
+    }
+  ],
+  "check_count": 85,
+  "raw_records": [
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-authorization-v1.json",
+        "sha256": "98b14e5b1fb8e206fd6bbd6e7d88197f78493eb5f0df80816cbb152f48691c27",
+        "bytes": 3220
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+        "bytes": 2925
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+        "bytes": 21657
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-Source-review-v1.json",
+        "sha256": "7299191938363199f63da24728a5ef707f964f85661aa3148bc18aa76bb3fa39",
+        "bytes": 4044
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/preparation-review/typed-Source-review-v1.json",
+        "sha256": "146fc2a83cdb14ba32362dd275eb1d41e9f265decb4f7e284d09ce8cd6ec31bd",
+        "bytes": 3690
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+        "bytes": 102352
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Source-contract-v1.json",
+        "sha256": "b60a18d370a6adc8df8c27d898cf4662bef032126a42ab3460b36fed82797527",
+        "bytes": 15161
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+        "bytes": 10187
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+        "bytes": 48584
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+        "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+        "bytes": 19742
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+        "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+        "bytes": 41739
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+        "bytes": 10323
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+        "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+        "bytes": 4357
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+        "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+        "bytes": 6734
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-plan-v1.json",
+        "sha256": "3ee0d610ae18b2738e6203d4ccd1834e670094e39fa97a45e08aa6add774b389",
+        "bytes": 4464
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-protocol-choice-v1.json",
+        "sha256": "67b7f355eafdbe725b0013ce25f304130efc5b081eb796c975344655051cae64",
+        "bytes": 4110
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-state.json",
+        "sha256": "e3327a27f0dbc139f8bd03fbeaafde7b29556e230dbf10f4f325e2888dc713fc",
+        "bytes": 8296636
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-oracle-domains.json",
+        "sha256": "04d0be2091fc7145619c26283ca96f5e03d3cce2e40145370f4d6025c2a203eb",
+        "bytes": 8295991
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/preparation.json",
+        "sha256": "1573da45b4f3671efd04197791385e5be1a81cefc83338c61f7a3bd63fbbad1e",
+        "bytes": 38957245
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/summary.json",
+        "sha256": "8458d7649cedf7f0e936197d023978af8afc653842f70bcddc622e5201268022",
+        "bytes": 6137
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/response.jsonl",
+        "sha256": "33c0d3a50aa52bee35f5faad860f70c9081319c5d04d326c998525d18f622f36",
+        "bytes": 4520
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-external-v1/ONCE.json",
+        "sha256": "969837ebf04d8ae1b883b7db2c39de2b515b29906c64bc557c87a2c6389d4d86",
+        "bytes": 249
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-external-v1/meter-stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-external-v1/meter-stdout.txt",
+        "sha256": "add61de1d0420afc25ffdb3dd96f9b9a964100c5634748001a7c37e9cd3dc797",
+        "bytes": 1985
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-external-v1/native-terminal.json",
+        "sha256": "062402c9ec1a83d4d81db0c61906bd557530af5dff480e71431fe0af65cded9f",
+        "bytes": 1675
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-external-v1/observation.json",
+        "sha256": "2f142948e30ba921bb496c16d4a35197e00c4c48d1bec51d57013de66aa3f8ac",
+        "bytes": 466
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-external-v1/postterminal-probe-stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-external-v1/postterminal-probe-stdout.txt",
+        "sha256": "9d0760e94dea84d6135cb0b7826797a0cc76ad5ceb256f0ae43d7f2d9bcc9b51",
+        "bytes": 16
+      },
+      "whole_raw_match": true
+    }
+  ],
+  "unique_raw_records": 29,
+  "owned_inventory": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/summary.json",
+      "sha256": "8458d7649cedf7f0e936197d023978af8afc653842f70bcddc622e5201268022",
+      "bytes": 6137
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-state.json",
+      "sha256": "e3327a27f0dbc139f8bd03fbeaafde7b29556e230dbf10f4f325e2888dc713fc",
+      "bytes": 8296636
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/preparation.json",
+      "sha256": "1573da45b4f3671efd04197791385e5be1a81cefc83338c61f7a3bd63fbbad1e",
+      "bytes": 38957245
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/response.jsonl",
+      "sha256": "33c0d3a50aa52bee35f5faad860f70c9081319c5d04d326c998525d18f622f36",
+      "bytes": 4520
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-oracle-domains.json",
+      "sha256": "04d0be2091fc7145619c26283ca96f5e03d3cce2e40145370f4d6025c2a203eb",
+      "bytes": 8295991
+    }
+  ],
+  "Root_disposition": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-preparation-disposition-v1.json",
+    "sha256": "013e59285997463bfc0c0321387e95b9ed01c65c5714a257704210d32a7c71c5",
+    "bytes": 8576
+  },
+  "observations": {
+    "producer_preparation_resource_closed": true,
+    "independent_catalogue_admitted": false,
+    "formulas": 11149,
+    "recipes": 16201,
+    "initial_domain_counts": [
+      5480,
+      5895,
+      26922,
+      68561,
+      130812,
+      213675,
+      317150,
+      441237,
+      585936,
+      751247,
+      937170,
+      1143705,
+      1370852,
+      1618611,
+      1886982,
+      2175965,
+      2485560,
+      2815767,
+      3166586,
+      3538017,
+      3930060,
+      4342715,
+      4775982,
+      23
+    ],
+    "initial_candidate_sum": 36734910,
+    "native_lifetime_ns": 11981407000,
+    "native_launch_to_postprobe_ns": 12031477000,
+    "true_terminal_bytes": 358973440,
+    "Date_wall_ms": 12944
+  },
+  "limitations": [
+    "Three large preparation/state/oracle JSON files were complete streaming-hashed only, not parsed/reconstructed. Counts/domains/epochs are producer summaries cross-bound to complete raw outputs, not independently mathematically admitted.",
+    "No Source/project/checker/compiler/codec/auditor/graph/kernel/search/miner/clock/test replay. This is saved metadata/inventory/native arithmetic only.",
+    "Native meter observer_scope has inherited generic caller-plus-worker wording; operative explicit current Rootprotocol/plan/disposition uses B=T for one worker. ROOT-closure actual_started=false is historical preflight metadata, not a denial of the subsequent actual.",
+    "Original right-one1717 admission remains historical. New current auditor Source passed review but requires separate actual reconstruction/domain audit before current model qualification."
+  ],
+  "authorship_disclosure": "Reviewer authored this prep intake/declaration and original independent checker/codec/family. Did not author Root execution/disposition or generic compiler/kernel/point/oracle. This distinct saved evidence check is not an independently authored mathematical implementation.",
+  "execution": {
+    "scientific_Source_or_project_functions": 0,
+    "large_Q_JSON_decodes": 0,
+    "clocks": 0,
+    "tests": 0,
+    "actuals_or_plans": 0
+  }
+}

@@ -1,0 +1,503 @@
+{
+  "schema": "right-two-audit-intake-independent-Source-findings-v3",
+  "scope": "right-two-complete-independent-audit-intake-Source",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v3.py",
+    "sha256": "741d88d0d54b90aeadc6ad193d8906daa8a02eaa5ca5d63255997a358bb6683f",
+    "bytes": 26854
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/Source-contract-v3.json",
+    "sha256": "1e0f89e92bfb7f3ae48fb83253d3a0722fac7114323777092df49cf0ee963a7a",
+    "bytes": 8907
+  },
+  "sources": {
+    "auditor": {
+      "bytes": 46327,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+      "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "codec": {
+      "bytes": 5806,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+      "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df"
+    },
+    "intake": {
+      "bytes": 26854,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v3.py",
+      "sha256": "741d88d0d54b90aeadc6ad193d8906daa8a02eaa5ca5d63255997a358bb6683f"
+    }
+  },
+  "author_identity": "/root",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source_review_passed": true,
+  "checks": [
+    {
+      "id": "current-exact-source",
+      "passed": true
+    },
+    {
+      "id": "current-contract",
+      "passed": true
+    },
+    {
+      "id": "unique-storage-delta",
+      "passed": true
+    },
+    {
+      "id": "whole-two-edit-forward",
+      "passed": true
+    },
+    {
+      "id": "whole-two-edit-inverse",
+      "passed": true
+    },
+    {
+      "id": "same-top-definitions",
+      "passed": true
+    },
+    {
+      "id": "unchanged-ParseBudget",
+      "passed": true
+    },
+    {
+      "id": "unchanged-anchor",
+      "passed": true
+    },
+    {
+      "id": "unchanged-canonical",
+      "passed": true
+    },
+    {
+      "id": "unchanged-decode",
+      "passed": true
+    },
+    {
+      "id": "unchanged-finite_float",
+      "passed": true
+    },
+    {
+      "id": "unchanged-invoke",
+      "passed": true
+    },
+    {
+      "id": "unchanged-load_module",
+      "passed": true
+    },
+    {
+      "id": "unchanged-need",
+      "passed": true
+    },
+    {
+      "id": "unchanged-raw_pin",
+      "passed": true
+    },
+    {
+      "id": "unchanged-read_pinned",
+      "passed": true
+    },
+    {
+      "id": "unchanged-reject_constant",
+      "passed": true
+    },
+    {
+      "id": "unchanged-same",
+      "passed": true
+    },
+    {
+      "id": "unchanged-unique",
+      "passed": true
+    },
+    {
+      "id": "unchanged-write_new",
+      "passed": true
+    },
+    {
+      "id": "unconditional-main-text-release",
+      "passed": true,
+      "detail": "Exactly one direct main.body Delete(text), not conditional/unreachable."
+    },
+    {
+      "id": "release-after-parse-guard-before-audit",
+      "passed": true,
+      "detail": "Normal parse postcaller check precedes text release; audit follows."
+    },
+    {
+      "id": "no-later-wholetext-use",
+      "passed": true
+    },
+    {
+      "id": "same-exact-input6",
+      "passed": true
+    },
+    {
+      "id": "same-producer6",
+      "passed": true
+    },
+    {
+      "id": "same-executed-dependencies",
+      "passed": true
+    },
+    {
+      "id": "actual-cap-expression-check",
+      "passed": true,
+      "detail": "Correct actual Source AST and allcurrent/priorcontract limits comparison; no fallback/self-equality."
+    },
+    {
+      "id": "V1-caller-repair-preserved",
+      "passed": true
+    },
+    {
+      "id": "no-old-codec-decoder",
+      "passed": true
+    },
+    {
+      "id": "scope-raw-producer",
+      "passed": true
+    },
+    {
+      "id": "current-raw-1",
+      "passed": true
+    },
+    {
+      "id": "current-raw-2",
+      "passed": true
+    },
+    {
+      "id": "current-raw-3",
+      "passed": true
+    },
+    {
+      "id": "current-raw-4",
+      "passed": true
+    },
+    {
+      "id": "current-raw-5",
+      "passed": true
+    },
+    {
+      "id": "current-raw-6",
+      "passed": true
+    },
+    {
+      "id": "current-raw-7",
+      "passed": true
+    },
+    {
+      "id": "current-raw-8",
+      "passed": true
+    },
+    {
+      "id": "current-raw-9",
+      "passed": true
+    },
+    {
+      "id": "current-raw-10",
+      "passed": true
+    },
+    {
+      "id": "current-raw-11",
+      "passed": true
+    },
+    {
+      "id": "current-raw-12",
+      "passed": true
+    },
+    {
+      "id": "current-raw-13",
+      "passed": true
+    },
+    {
+      "id": "current-raw-14",
+      "passed": true
+    },
+    {
+      "id": "current-raw-15",
+      "passed": true
+    },
+    {
+      "id": "current-raw-16",
+      "passed": true
+    },
+    {
+      "id": "current-raw-17",
+      "passed": true
+    },
+    {
+      "id": "current-raw-18",
+      "passed": true
+    },
+    {
+      "id": "current-raw-19",
+      "passed": true
+    },
+    {
+      "id": "current-raw-20",
+      "passed": true
+    },
+    {
+      "id": "current-raw-21",
+      "passed": true
+    },
+    {
+      "id": "current-raw-22",
+      "passed": true
+    },
+    {
+      "id": "current-raw-23",
+      "passed": true
+    },
+    {
+      "id": "current-raw-24",
+      "passed": true
+    },
+    {
+      "id": "syntax-only",
+      "passed": true,
+      "detail": "No scientific Source/helper/codec/auditor/Q/native/test/actual execution. Large3input files streamhashonly."
+    }
+  ],
+  "check_count": 55,
+  "raw_records": [
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-protocol-choice-v3.json",
+        "sha256": "eabf1923098b88231d6deeb80ef1bffdc2592cf3e4a20fd96fbf2b6fc7c21837",
+        "bytes": 7611
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-auditor-independent-source-20261015/typed-Source-review-v1.json",
+        "sha256": "75e0e7b0092388df973344b5c74e8d5bcb7271c80dc45026f1e8f0046ccff46b",
+        "bytes": 4046
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+        "bytes": 2925
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-oracle-domains.json",
+        "sha256": "04d0be2091fc7145619c26283ca96f5e03d3cce2e40145370f4d6025c2a203eb",
+        "bytes": 8295991
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/initial-state.json",
+        "sha256": "e3327a27f0dbc139f8bd03fbeaafde7b29556e230dbf10f4f325e2888dc713fc",
+        "bytes": 8296636
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/preparation-owned-v1/preparation.json",
+        "sha256": "1573da45b4f3671efd04197791385e5be1a81cefc83338c61f7a3bd63fbbad1e",
+        "bytes": 38957245
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-preparation-disposition-v1.json",
+        "sha256": "013e59285997463bfc0c0321387e95b9ed01c65c5714a257704210d32a7c71c5",
+        "bytes": 8576
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-ROOT-20261015/ROOT-plan-v1.json",
+        "sha256": "3ee0d610ae18b2738e6203d4ccd1834e670094e39fa97a45e08aa6add774b389",
+        "bytes": 4464
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/Source-contract-v1.json",
+        "sha256": "6548fa223f607fea1e5dbc948a5d035ec0a710f633ae53ffd71627a4283c5b99",
+        "bytes": 8070
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/Source-contract-v2.json",
+        "sha256": "15bf854b0cd54ccb552d649158cf956c25cfa2a7a0d680a085ac9f7a31193c7c",
+        "bytes": 8464
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_catalog_v1.py",
+        "sha256": "2db11af0d7206afd4e1c10b53b97c16f98064c14fd1e57a9a2ca34c0a602348a",
+        "bytes": 10187
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+        "bytes": 48584
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-streamed-controls-source-20261014/arithmetic_Q_streamed_controls_v3.py",
+        "sha256": "4e28fadd9c76ba6664e485fa2c5aa97beaa08639986b6d56aae50395b006e638",
+        "bytes": 19742
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/prepare_right_two_v2.py",
+        "sha256": "c344d1f59b2b3b30f31b3899581889ba7e4e5268c308bc399320b6ba579fecdc",
+        "bytes": 41739
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+        "bytes": 10323
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_point_graph_v1.py",
+        "sha256": "8d22ea390c675349fc9c90057cd152a4d0e75024bb365d70116cef0656597567",
+        "bytes": 28531
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+        "bytes": 102352
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/audit_right_two_v3.py",
+        "sha256": "741d88d0d54b90aeadc6ad193d8906daa8a02eaa5ca5d63255997a358bb6683f",
+        "bytes": 26854
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/right-two-auditor/independent_right_two_semantics_v2.py",
+        "sha256": "cf7c5fc0482e41f05221d075087eb962a1faa877f1c7c63493f4090f8cc86afa",
+        "bytes": 46327
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-untrusted-preparation-codec-source-20261014/Q_untrusted_lossless_preparation_codec_v1.py",
+        "sha256": "d0d922416aab576ab324397cee94e82c3ddf1e4f0131426f76802695934f88df",
+        "bytes": 5806
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/typed-Source-review-v1.json",
+        "sha256": "0b60ec67939bab1ffad11330bb5335cd7b52fdecc26b2045f3b31b1271238241",
+        "bytes": 2728
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/handoff-v1.json",
+        "sha256": "f10985e68b950a5f1751e9826a9ea7d7c1715d682fc05a665e9cb8505471ee33",
+        "bytes": 6246
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/handoff-v2.json",
+        "sha256": "987f2bdbfac497696064e782b6630d39e4d273abb17f8a97ac8b20f7a0e69dd6",
+        "bytes": 6925
+      },
+      "whole_raw_match": true
+    },
+    {
+      "record": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-source-20261015/Source-contract-v3.json",
+        "sha256": "1e0f89e92bfb7f3ae48fb83253d3a0722fac7114323777092df49cf0ee963a7a",
+        "bytes": 8907
+      },
+      "whole_raw_match": true
+    }
+  ],
+  "unique_raw_records": 24,
+  "preserved_negatives": [
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "0b60ec67939bab1ffad11330bb5335cd7b52fdecc26b2045f3b31b1271238241",
+      "bytes": 2728
+    },
+    {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/typed-Source-review-v2.json",
+      "sha256": "87037c2f3c7efa00e8eb80a007dfe89bcbaf840d7d939da204d3abacf4ceb81b",
+      "bytes": 2874
+    }
+  ],
+  "review_metadata_correction": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/review-v2-caps-check-correction-v1.json",
+    "sha256": "ab3489b933dd94ee8639da0de242ed5b258c72219cbb8d2ff608548ec2c98dc7",
+    "bytes": 1357
+  },
+  "whole_retained_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-intake-independent-source-20261015/findings-v2.json",
+    "sha256": "fa7a05d6378b4236da0d62c37fa58bd93dd7ea57e5e56ba8687ec0b948e33a86",
+    "bytes": 15962
+  },
+  "resolved_blockers": [
+    "RIGHT-TWO-AUDIT-LIVE-CALLER-1",
+    "RIGHT-TWO-AUDIT-RELEASE-TEXT-2"
+  ],
+  "blockers": [],
+  "conclusion": "Conditional currentSource4 PASS. Normal-path fulltext release is now correct; original caller/exception/final/ParseBudget boundary repairs persist. Exact unchanged math/core/input6/producer6/caps/protocol/wire scope retained. No concrete scoped current Source blocker found.",
+  "remaining": [
+    "Concrete Root plan13/currenttypedreviews/grant and full raw Source4/input6/runtime/meter/observer pins must match exact current contract before once-only actual.",
+    "Actual full parse/reconstruction/all24 domains/EOF/output/native T-only/global20/owned60/caller90+1 and saved admission unearned. No fit prediction.",
+    "Fixed reviewed synchronous Source scope; no hostile VM/OS or arbitrary private ParseBudget/CodeSeal object mutation guarantee. No Source/parser exemptions were introduced by this delta."
+  ],
+  "authorship_disclosure": "Reviewer authored original1717 checker/auditor, lossless codec and producerprep; not Root audit intake successor. This is genuine current Source integration review, not a second mathematical implementation or semantic replay.",
+  "execution": {
+    "scientific_Source_project_functions": 0,
+    "large_Q_JSON_decodes": 0,
+    "clocks": 0,
+    "tests": 0,
+    "actuals_plans": 0
+  }
+}

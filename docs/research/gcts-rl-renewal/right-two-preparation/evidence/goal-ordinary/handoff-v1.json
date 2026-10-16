@@ -1,0 +1,30 @@
+{
+  "schema": "ordinary-goal-consumer-Source-handoff-v1",
+  "source_only": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/ordinary_goal_ordered_saturation_v1.py",
+    "sha256": "b1b7c40c9f6da98afa260e51395c48a3b0080ab550d4a4032c6cfdbeed3066ce",
+    "bytes": 15027
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/Source-contract-v1.json",
+    "sha256": "535aad035cce90c5edd7751c05336ff362fbbcd90c0460492d966316e80c222a",
+    "bytes": 3632
+  },
+  "controls": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/prospective-controls-v1.json",
+    "sha256": "d19d78edb0293dea54ccfbd28c7ffe877f8c4ba548da7d47db77cb5d137bbd84",
+    "bytes": 7058
+  },
+  "static_authoring": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/author-static-v1.json",
+    "sha256": "f63f1785c6f34534bf740891c7fc86bf4e0a4c96e25e04b1b26de67e549feea6",
+    "bytes": 1437
+  },
+  "scientific_calls": 0,
+  "Q_payload_decodes": 0,
+  "clocks_tests_actual_plans_outputs": 0,
+  "actual_execution_authorized": false,
+  "dependency_current_pin_pending": true
+}

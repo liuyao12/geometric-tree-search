@@ -1,0 +1,43 @@
+{
+  "schema": "right-two-preparation-reader-handoff-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "presentation_only": true,
+  "reader": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-report-source-20261015/reader.html",
+    "sha256": "d2350ead127f24b2ff67ba4b9dd4e43470b319fe2e0a8a150d2833f4554cbb08",
+    "bytes": 44329
+  },
+  "report_data": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-report-source-20261015/report-data.json",
+    "sha256": "4344feaf86d2eb81616db64c258c5c2088076a3395d4c313ae8b6dace728bd93",
+    "bytes": 21299
+  },
+  "public_alias_map": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-report-source-20261015/public-alias-map-v1.json",
+    "sha256": "c614866b3813de7b7ff29baf6d0c1a1eedeb690d958ddd1dfbad0dbfaa82fff0",
+    "bytes": 14575
+  },
+  "presentation_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-report-source-20261015/presentation-checks-v1.json",
+    "sha256": "766e3e8d22296e216a5d9756207798ef4598e835af93ea3cf6dc2fea4d038087",
+    "bytes": 3062
+  },
+  "check_count": 25,
+  "current_admission_source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-independent-audit-ROOT-20261015/ROOT-audit-disposition-v1.json",
+    "sha256": "14ad69316169c62445700940024e90150cb5172d44998a5b5f71313cb233b564",
+    "bytes": 9778
+  },
+  "claim": "Complete right-two finite catalogue and all initial domains admitted in separate cold audit. No target proof, recipient application, board/trajectory/native-Wang/RL/advantage claim. Goal core/point/ordinary implemented and Source-reviewed, still unrun.",
+  "authorship_disclosure": "Authored preparation worker and original checker/codec/family; reviewed other-authored auditor/intake Source. Report uses Root actual dispositions and small saved results, not a second mathematical implementation.",
+  "scientific_or_Source_calls": 0,
+  "large_Q_JSON_decodes": 0,
+  "native_clocks_tests_actuals": 0,
+  "no_publication_performed": true,
+  "pending": [
+    "Root build exact complete preparation-and-domains.zip and verify mapped publication bytes",
+    "Root browser/MathJax/layout/live QA and publication to existing destination"
+  ],
+  "report_folder": "right-two-preparation/",
+  "notes": "Existing source V1/V2 negatives, V2 reviewer-metadata correction and all prior actual scopes remain untouched."
+}

@@ -1,0 +1,48 @@
+{
+  "actual_activation": false,
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "Reviewer authored shared core8dab and old860/arithmetic dependencies; consumer b1b7 author is distinct. Core is bound by genuine distinct a15 peer review; this record is not self-review of core.",
+  "check_count": 28,
+  "core_peer_review": {
+    "bytes": 2423,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/current-core-point-review/proposal_module-typed-Source-review-v1.json",
+    "sha256": "a15b97021886817181f8ba8c654bac27f53816ce4114bb4318712aba4c27867b"
+  },
+  "findings": {
+    "bytes": 23640,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-ordinary-arithmetic-review-source-20261015/findings-v1.json",
+    "sha256": "295432cf50b48ca8095e17cdbe5425e4472b0dea9d8443c5e3ed829d8696cd68"
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_qualified": false,
+  "schema": "ordinary-goal-consumer-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ordinary-goal-ordered-consumer-Source",
+  "scope_limit": "Conditional Source-only ordinary recipe ordering/first-ready saturation. No runtime, cold custody, actual controls, proof/library/recipient/point/full24/trajectory/native/resource/RL or speed admission.",
+  "source": {
+    "bytes": 15027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/ordinary_goal_ordered_saturation_v1.py",
+    "sha256": "b1b7c40c9f6da98afa260e51395c48a3b0080ab550d4a4032c6cfdbeed3066ce"
+  },
+  "source_contract": {
+    "bytes": 7151,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/Source-contract-v2.json",
+    "sha256": "07157568032f83ceb330aefb3c5bc4b981f4582de8433b57a389629ba261819d"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "goal_proposal_module": {
+      "bytes": 31647,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-implementation-source-20261015/goal_attached_family_proposals_v1.py",
+      "sha256": "8dabf928a5d93794046dff051334e3b96460141c867f2c92c167071e3a515625"
+    },
+    "ordinary_consumer": {
+      "bytes": 15027,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/ordinary_goal_ordered_saturation_v1.py",
+      "sha256": "b1b7c40c9f6da98afa260e51395c48a3b0080ab550d4a4032c6cfdbeed3066ce"
+    }
+  }
+}

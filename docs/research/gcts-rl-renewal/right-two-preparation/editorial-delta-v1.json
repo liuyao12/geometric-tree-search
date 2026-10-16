@@ -1,0 +1,17 @@
+{
+  "change": "Only adds horizontal overflow containment to display MathJax containers. A long axiom display overflowed the normal narrow viewport by6px; no mathematical text, data, source, evidence or actual result changes.",
+  "current": {
+    "bytes": 44412,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-publication-ROOT-20261015/reader-v2.html",
+    "sha256": "52e052edd8a008dec55f493b7018310c9a0fc97411b0481c65b37876973ba5b3"
+  },
+  "current_reader_alias_supersedes_original_public_alias_map": true,
+  "original": {
+    "bytes": 44329,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-report-source-20261015/reader.html",
+    "sha256": "d2350ead127f24b2ff67ba4b9dd4e43470b319fe2e0a8a150d2833f4554cbb08"
+  },
+  "original_public_copy": "reader-source-v1.html",
+  "schema": "ROOT-right-two-reader-editorial-delta-v1",
+  "scientific_calls": 0
+}

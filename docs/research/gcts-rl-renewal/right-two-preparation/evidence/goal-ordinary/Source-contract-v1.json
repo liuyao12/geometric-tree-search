@@ -1,0 +1,42 @@
+{
+  "schema": "ordinary-goal-ordered-consumer-Source-contract-v1",
+  "source_only": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/ordinary_goal_ordered_saturation_v1.py",
+    "sha256": "b1b7c40c9f6da98afa260e51395c48a3b0080ab550d4a4032c6cfdbeed3066ce",
+    "bytes": 15027
+  },
+  "scope": "Pure untrusted ordinary recipe reordering and first-ready full forward saturation, explicitly not a point solver.",
+  "API": "run_goal_ordered_saturation(*,goal_module,catalogue,declaration,binding,families,use_families,coordinator_invocation_id,authority_sha256,joint_began_ns,joint_deadline_ns,tick)",
+  "shared_module_required_API": [
+    "GoalFamilyIndex(catalogue=raw_prepared_catalogue,binding=current4,tick=tick)",
+    "index.goal_codes(goal_code=target,tick=tick) -> FIFO goal-code list",
+    "primitive_goal_order(index=index,goal_code=target,tick=tick) -> complete permutation of recipe indices",
+    "index.iter_instances(goal_formula=raw_formula,family=exact_mined_record,tick=tick) -> goal-attached-logical-instance-v1"
+  ],
+  "current_shared_module_pin": null,
+  "dependency_state": "Arithmetic author has supplied exact API; whole module/contract/current Source review freeze pending. This consumer is independently frozen but not integrated/activated.",
+  "semantics": [
+    "No family is a fact or new inference rule; full original licensed primitive recipe IDs/preimages/witnesses remain.",
+    "Both arms share generic inverse priority/FIFOgoal order. In advised arm first lawful instance per goal/family in original canonical enumeration only changes recipe preference; no completeness/degree claim.",
+    "Every complete forward sweep visits all original recipes once. Actual ordered premises must already be known; first justification per formula retained, no supplied target proof.",
+    "Expanded selected shared ancestry strict-prior/ordered/repeated ports, atmost24 primitives, max1candidate, exact target; no shorter-proof rescue or finite-negative theorem.",
+    "Pending/discharged counters are ordinary logical port observations, not point-mark removals, forced moves, full-board or proof authority.",
+    "All proposal/index/fallback/serialization/tick work remains inside original inheritedG20/500 reserve/512owned/55failure/60owned/90+1; this module creates no new clock or allowance."
+  ],
+  "required_cold_integration": [
+    "Fresh complete right-two catalogue/initial-domain independent admission and exact declaration/context4 bindings. Never old right-one CURRENT/counts or codec pin reuse.",
+    "Authenticate exact current shared module and mined family data to both arms; Source/checker guards and native budget tick are caller obligations, not a no-op callback.",
+    "New honest ordinary-goal candidate wire requires narrow current clean ordinary adapter/authority binding; unchanged olde65 pins cannot accept it.",
+    "Separate fresh unchanged1717 full original closed-target word check, full output/terminal/EOF/owned resource custody, distinct Source review and actual controls before any result."
+  ],
+  "controls": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-consumer/prospective-controls-v1.json",
+    "sha256": "d19d78edb0293dea54ccfbd28c7ffe877f8c4ba548da7d47db77cb5d137bbd84",
+    "bytes": 7058
+  },
+  "all_acceptance_false": true,
+  "actual_execution_authorized": false,
+  "scientific_calls": 0
+}
