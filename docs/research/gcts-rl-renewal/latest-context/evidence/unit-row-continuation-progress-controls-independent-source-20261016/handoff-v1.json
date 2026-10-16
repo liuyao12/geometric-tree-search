@@ -1,0 +1,60 @@
+{
+  "schema": "unit-row-continuation-progress-controls-independent-handoff-v1",
+  "scope": "unit-row-continuation-progress-controls-Source",
+  "source": {
+    "bytes": 104747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+    "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/Source-contract-v6.json",
+    "sha256": "eae8374f8a7bec046921c0d6befad429a5de3230b5cc0a3b601bab493e87787f",
+    "bytes": 28536
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "0ee7a40c87a6004d9b1f6c90462b7394e9e9dbc33d5ae0e2da502e4f5649fbfc",
+    "bytes": 8277
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "a2e93bd3af2f85d6e35c6d6e916b34c9e7b4aef1f09060c57a1905eb5a30d9fd",
+    "bytes": 11749
+  },
+  "independent_delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "97e89c2be1e164d725399987399b0ae5ea1fb0eba7cf23c93b5c6e94362bb02c",
+    "bytes": 22261
+  },
+  "position_erratum": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/inherited-phase-position-erratum-v1.json",
+    "sha256": "f0b3ef662c8916b0582efdff49e8321e6c43327ea100f34066b4b3158ff4df50",
+    "bytes": 5159
+  },
+  "checks": {
+    "raw_and_AST": 13,
+    "manual": 7,
+    "unique_raw_paths": 39,
+    "sequential_byte_regions": 5,
+    "raw_exact_top_definitions": 11,
+    "erasure_exact_control_bodies": 1,
+    "new_static_sites": 6,
+    "shared_maximum_continuation_record_attempts": 24,
+    "maximum_continuation_ASCII_bytes": 2304,
+    "existing_phase_sites": 24,
+    "existing_phase_ASCII_bytes": 1766,
+    "maximum_combined_diagnostic_ASCII_bytes": 4070,
+    "retained_cases": 43
+  },
+  "blockers": [],
+  "authorship_disclosure": "Reviewer authored immutable consumer3/earlier consumer validators and earlier control-harness/horizon work, plus older logical-checker/codec/family work. Reviewer did not author controls2/3/4/5/6, adviser3/engine8, current c960/c354 or Root caller. This is independent controls implementation/delta review retaining exact whole Source5 review, not self-review of consumer3, a second mathematical implementation or runtime qualification.",
+  "remaining": "Current Root caller/explicit native tick ABI/once-plan and all actual43/current17+17/output/native gates stay separate; no fit/completion/case/proof/trajectory/benefit inference from Source or diagnostics. All old UNKNOWNs unchanged.",
+  "actual_execution_authorized": false
+}

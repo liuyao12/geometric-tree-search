@@ -1,0 +1,151 @@
+{
+  "schema": "unit-row-continuation-progress-controls-independent-findings-v1",
+  "scope": "unit-row-continuation-progress-controls-Source",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "author_identity": "/root/hilbert_advice_controls",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored immutable consumer3/earlier consumer validators and earlier control-harness/horizon work, plus older logical-checker/codec/family work. Reviewer did not author controls2/3/4/5/6, adviser3/engine8, current c960/c354 or Root caller. This is independent controls implementation/delta review retaining exact whole Source5 review, not self-review of consumer3, a second mathematical implementation or runtime qualification.",
+  "source": {
+    "bytes": 104747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+    "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+  },
+  "source_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/Source-contract-v6.json",
+    "sha256": "eae8374f8a7bec046921c0d6befad429a5de3230b5cc0a3b601bab493e87787f",
+    "bytes": 28536
+  },
+  "author_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/handoff-v6.json",
+    "sha256": "a38db3bac75e7235e4888aded8c7197d336ab42d1667f4847b16b68712c14593",
+    "bytes": 21567
+  },
+  "source_delta": {
+    "bytes": 11045,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/Source-delta-v6.json",
+    "sha256": "ed350246a7f331b67893ee46f12fa4604552f54144a68e8240ef608087efa186"
+  },
+  "forward_patch": {
+    "bytes": 8561,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/native5-to-continuation6-forward.patch",
+    "sha256": "9b0be32a7e9d190cb82d1e48d7a4c0ef9c74f885fc2092f524a814cdb3d18de0"
+  },
+  "full_inverse_patch": {
+    "bytes": 8561,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/continuation6-to-native5-full-inverse.patch",
+    "sha256": "326c79ebebd4af5aaf990c9421a7ed40f4b6b50c1c757f88f92934195a7d540f"
+  },
+  "parent_source": {
+    "bytes": 98770,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/compatible_fibres_controls_v5.py",
+    "sha256": "1c332075d25b00ad31642c1f20b8e62415633aec2821fefa99235ffc4ec6f1be"
+  },
+  "parent_contract": {
+    "bytes": 23123,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-source-20261016/Source-contract-v5.json",
+    "sha256": "a9865911ba4be3eaccb68f1a7e19b17dd5ad4dc6cc03e993d07b5050e0f5aa19"
+  },
+  "prior_whole_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "13d7f6e9fd948868511f9c9597ca95a594939035657942633994a2c437b94922",
+    "bytes": 7800
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "checkpoint": {
+    "bytes": 26359,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-native-samples-publication-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+    "sha256": "2b9486c1a3ee4789ee44ed839f1d5a9c5dc9b06b48839db3e1221d5d267a584e"
+  },
+  "independent_delta": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "97e89c2be1e164d725399987399b0ae5ea1fb0eba7cf23c93b5c6e94362bb02c",
+    "bytes": 22261
+  },
+  "position_erratum": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/inherited-phase-position-erratum-v1.json",
+    "sha256": "f0b3ef662c8916b0582efdff49e8321e6c43327ea100f34066b4b3158ff4df50",
+    "bytes": 5159
+  },
+  "checks": {
+    "raw_and_AST": 13,
+    "manual": 7,
+    "unique_raw_paths": 39,
+    "sequential_byte_regions": 5,
+    "raw_exact_top_definitions": 11,
+    "erasure_exact_control_bodies": 1,
+    "new_static_sites": 6,
+    "shared_maximum_continuation_record_attempts": 24,
+    "maximum_continuation_ASCII_bytes": 2304,
+    "existing_phase_sites": 24,
+    "existing_phase_ASCII_bytes": 1766,
+    "maximum_combined_diagnostic_ASCII_bytes": 4070,
+    "retained_cases": 43
+  },
+  "manual_findings": [
+    {
+      "id": "M1",
+      "finding": "Exactly-once original delegation, original kwargs and same returned object are preserved.",
+      "basis": "Validator tick;value=validate_advice(**kwargs) and degree tick;current=snap(engine) compound lines are raw exact. Original degree return expression becomes one assignment to continuation_value and return of that same object after logging. Original receipt append, stop conditions and exception propagation stay in original order; no new catch or scientific call.",
+      "limit": "Additional native checks/type validation/format/write/flush cost can cause earlier UNKNOWN. This instrumentation does not promise observational timing equivalence or fit."
+    },
+    {
+      "id": "M2",
+      "finding": "Shared cap bounds diagnostics and does not truncate the algorithm.",
+      "basis": "One owned holder counter initialized0, six guarded increment sites, no reset or algorithm read. Each block is entered only in phase continue while counter<24. At24 the new block alone is skipped and every original statement continues. Counter increments before attempted print.",
+      "limit": "Ordinals count attempted diagnostic writes, not completed callbacks, phases, proposals or cases. Failure may leave a partial last line; no extra truncation record or guaranteed pair."
+    },
+    {
+      "id": "M3",
+      "finding": "Only existing literal callback context is observed; no extra snapshot/project call.",
+      "basis": "Row comes from kwargs.row or kwargs.decision.row; selected count is length of kwargs.state.selected. Pending0/1 exists only after the already-computed current snapshot at DEGREE_AFTER_SNAPSHOT. Selection0/1 exists only after an actual returned receipt at VALIDATOR_AFTER_DELEGATE. Other availability fields are-1. All records use direct native tick before data/print and after flush.",
+      "limit": "A degree-query row is not by itself a chosen global BRANCH; presence flags do not identify a family, candidate, mark, installed fact or accepted pending selection. No diagnostic changes preferences, exclusions, receipts or scientific authority."
+    },
+    {
+      "id": "M4",
+      "finding": "Wire, recurrence and timing meaning are bounded and explicit.",
+      "basis": "Six literal stages, six integer fields, stage-specific signed64/nonbool/int bounds. Maximum per record96 ASCII bytes, total24x96=2304; original phase markers remain1766, combined4070. Six sites can recur across callbacks; original stops can omit delegate sites and cap/exception/deadline can truncate a pair.",
+      "limit": "No call identifier is supplied. Repeated row/count and adjacent labels do not prove the same call/state. Numbers are prewrite readings; intervals include guards/copies/assertions/I/O and other work, not exclusive method cost, bottleneck or accepted entry/return/nonreturn."
+    },
+    {
+      "id": "M5",
+      "finding": "Native return ABI is inherited explicitly and remains a caller binding gate.",
+      "basis": "Only original direct Root native/resource tick returned int is sampled, passed unchanged through the three controls wrappers. Nested engine-adapter step functions returning None are not sampled. No clock, helper, import, framework or deadline reset is introduced.",
+      "limit": "Root separately reviews/pins current caller11/Source map/once-plan and external same-kernel clock joins. Source pass supplies no grant, external lifecycle admission, positive native gate or actual observation."
+    },
+    {
+      "id": "M6",
+      "finding": "Inherited phase line numbers have a bounded descriptive erratum, without operative change.",
+      "basis": "All24 original phase-group byte lines match Source5. Seventeen physical positions shift by79 lines; contract phase_stderr.positions retains parent anchors. Independently computed current24 mapping exactly matches the additive frozen author erratum f0b3ef66.",
+      "limit": "Labels, order, scalar ranges, bytes and exact current Source pin are operative. Root confirmed saved parsers do not use source_line. Keep contract and erratum immutable together; never treat inherited positions as current line authority."
+    },
+    {
+      "id": "M7",
+      "finding": "All43/model/graph/guard/qualification scope remains unchanged.",
+      "basis": "Complete five-region raw inverse, both full patches and independent whole raw/AST diagnostic erasure restore Source5. Eleven top-level definitions are raw exact; only first run_controls body contains new diagnostic blocks. Other9 Source roles/input2/API/profile/limits/cases/memo/fullfallback/rollback are exact.",
+      "limit": "Master still requires complete frontier incidence, global dead/forced/generation and exact rollback with current limitations. Current original17/retention17 and all43 PASSED0SKIP/no gaps plus native gates remain required before targets; no past UNKNOWN/SKIP is reclassified."
+    }
+  ],
+  "blockers": [],
+  "conditions": [
+    "Root separately binds/reviews current caller, exact original direct native tick int-return ABI, both bounded diagnostic wires and current Source map/once-plan. No execution is authorized by this Source review.",
+    "All43 PASSED0SKIP/no other gap plus fresh original17/retention17 and complete result/wire/original native20/512MiB/failure-only55/owned60/caller90+1 gates remain. Diagnostic cap never removes a scientific gate.",
+    "Treat continuation records as bounded unqualified observations only: shared ordinal attempts, conditional/recurrent stages, no call-ID/pair/completion/case/bottleneck/exclusive-method/positive authority. No retrospective attribution or fit prediction.",
+    "Retain the exact contract and additive inherited-phase-position erratum. Physical source_line parent anchors are descriptive only; operative parser uses current labels/order/types/bounds, not stale line numbers.",
+    "Preserve all prior Sources and UNKNOWN/SKIP/failures. No proof/board/degree/EOF/scheduler/trajectory/complete-GCTS/learned-marking/RL/resource admission here."
+  ],
+  "execution_policy": "Only stdlib raw Source/hashes, small metadata and AST parse/compile without evaluation; declaration/profile HASH ONLY. No project module imports, scientific/helper functions, model/Q/word decoding, semantic replay, clock/test/actual/plan/grant/publication.",
+  "logical_proof_accepted": false,
+  "ROOT_resource_accepted": false,
+  "complete_GCTS_model_accepted": false,
+  "trajectory_accepted": false,
+  "learned_marking_accepted": false,
+  "RL_accepted": false
+}

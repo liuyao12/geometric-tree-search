@@ -1,0 +1,121 @@
+{
+  "schema": "unit-row-latest-context-manual-independent-findings-v13",
+  "scope": "unit-row-latest-context-typed-keys-cold-Source",
+  "review_kind": "Independent manual failure-path plus whole current change/erasure review; separate from arithmetic whole-caller review.",
+  "source": {
+    "bytes": 55664,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-typed-keys-cold-ROOT-source-20261016/unit_row_latest_context_cold_v13.py",
+    "sha256": "db4fcab69a94c76895ece3a533e983d8d16a136d0ea22b060cf73b4307ff72c3"
+  },
+  "source_contract": {
+    "bytes": 73959,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-typed-keys-cold-ROOT-source-20261016/Source-contract-v13.json",
+    "sha256": "c938d5355dff3807b127653eaf32939bfcab70891c26bf38585dabebc60f80f0"
+  },
+  "source_delta": {
+    "bytes": 1524,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-typed-keys-cold-ROOT-source-20261016/Source-delta-v13.json",
+    "sha256": "0a95ec897d1f2ac9de93244e12a00c26501551d2b1283fd4d0a92b3a5984e49b"
+  },
+  "parent_source": {
+    "bytes": 55594,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-cold-ROOT-source-20261016/unit_row_latest_context_cold_v12.py",
+    "sha256": "bc338290010bfa9038e1c6e5f1b8f7d8fec9832faa1d7bb8e656c6334106a2a2"
+  },
+  "author_identity": "/root",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored current consumer3/earlier validators, original1717 checker and older codec/family/control-harness/horizon/retained-control work. Reviewer did not author Root caller11/12/13, current adviser/engine, c354 or native meter. This is an independent manual failure-path/current-Source review with complete raw/AST erasure, not self-review of those dependencies or a second mathematical implementation. A separate whole-caller peer review is owned by arithmetic; neither review is runtime qualification.",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "checks": {
+    "raw_and_AST": 12,
+    "manual": 8,
+    "unique_raw_paths": 27,
+    "eleven_to_twelve_regions": 11,
+    "twelve_to_thirteen_regions": 4,
+    "unchanged_top_helpers": 16,
+    "fixed_scalar_slots": 4,
+    "raw_diagnostic_cap": 16384,
+    "completion_cap": 1024,
+    "current_Sources": 17,
+    "inputs_hash_only": 2,
+    "retained_consumer_cases": 43
+  },
+  "independent_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-manual-independent-source-20261016/independent-Source-checks-v13.json",
+    "sha256": "a664385be5c709c24c1764d9ceff2bfa96436f51caf5f068e5751c235a8fd3b2",
+    "bytes": 11978
+  },
+  "master": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+    "bytes": 21657
+  },
+  "manual_findings": [
+    {
+      "id": "M1",
+      "finding": "Four fixed latest slots are caller-owned scalar observations, outside engine rollback.",
+      "basis": "A single dict initializes proposer/fallback/completion/validator to None. Four existing native_tick calls are assigned, then overwrite one exact four-tuple before the unchanged injected_tick. No extra native clock/tick, snapshot, project/model call, live I/O, semantic copy/hash, history or step limit is introduced.",
+      "limit": "Extra scalar bookkeeping is charged under original20. Slots are not supplied as proof/state/selection/degree/EOF authority and can retain earlier callback-entry context after rollback."
+    },
+    {
+      "id": "M2",
+      "finding": "Optional context extraction is total for the declared builtin input shapes without changing acceptance.",
+      "basis": "Row is accepted only as exact int in0..23; malformed/missing/bool gives-1. Selected count uses only exactdict entry selected when exactlist length<=24; otherwise-1. Original arguments still pass unchanged to fresh-language/original guarded delegates. Nested step remains implicit None return, and original native/injected call order is unchanged.",
+      "limit": "These are adapter-entry row/count fields, not a new live engine query. A fallback cursor may call its old step later using that entry context; four roles need not refer to one state."
+    },
+    {
+      "id": "M3",
+      "finding": "Only the captured exact builtin TimeoutError escaping controls invoke triggers best-effort retention.",
+      "basis": "Current context/path and writer anchor are captured before delegation. The old guarded control call is inside try; exact type(control_error) is controls_timeout_type gates the new branch. Writer structural guard is checked, writer faults are contained, then the original exception is re-raised and unchanged outer handler exits2. Non-timeout behavior is retained.",
+      "limit": "returned_control_record=False means no guarded payload reached the caller, not evidence no inner Python return occurred: invoke postboundary may itself throw after a delegate returns. No case/pass/skip/completion inference follows."
+    },
+    {
+      "id": "M4",
+      "finding": "Current13 closes the strict builtin key guard gap without changing the encoder.",
+      "basis": "Exactdict is checked first, then all keys exactstr, then set equality to the four literal roles. Each None or exacttuple value is checked for length4, literal role stage, exact ints and originalG<=native_ns<originalG+20 plus signed64 bound. It is converted to a NEW exact builtin dict before encoded is called.",
+      "limit": "Frozen12 remains unexecuted precursor with no positive review here. This is strict builtin path review, not a hostile concurrent OS/VM security guarantee."
+    },
+    {
+      "id": "M5",
+      "finding": "Failure-only output remains bounded raw data with genuine completion requirements.",
+      "basis": "Existing captured native failure_gate/resource reserve, strict builtin encoder and exclusive write/close bodies are raw exact. New controls raw labels/observations each<=4096, whole raw<=16384 including LF; completion<=1024 includes exact raw SHA/bytes. No project/model/checker/original20 boundary is invoked after failure.",
+      "limit": "Failure55 allows only bounded raw retention/cleanup. Missing/partial/capped/unsupported output or writer fault is inventory-only UNKNOWN. Complete bytes plus marker still need true exit2/reap/native failure55/owned60/512MiB/caller90+1; never a positive native gate or response record."
+    },
+    {
+      "id": "M6",
+      "finding": "Old target-search route and positive acceptance/exit behavior are preserved.",
+      "basis": "The whole search else body is raw exact. The old writer search-body logic is retained under else; failure_gate/encoded/write nested functions are raw exact. Whole success result/transport/output2/stdout/native20/exit0 suffix and exceptional __main__ exit2 block are raw exact. Sixteen top-level helpers remain raw exact; no new helper/import/custody framework.",
+      "limit": "Only new failure-kind/schema selects the controls raw branch. All new data stays strongly false for logical/point/fullgraph/trajectory/RL/resource acceptance."
+    },
+    {
+      "id": "M7",
+      "finding": "The observational coverage boundary is explicit.",
+      "basis": "Slots can update during fresh_language before the named scientific endpoint, and capture its entry row/count at the last successful existing native check. adviser_adapter directly supplies raw fallback/iter_syntax using its own step, bypassing fallback_adapter. Contract explicitly declares adviser-internal fallback coverage false.",
+      "limit": "Last successful sample is not an active timeout frame, exclusive-call timer, loop/candidate/family identity or cause. None is not proof a role was never called. No older-run attribution, useful-scheme/retirement inference or fit/optimization prediction."
+    },
+    {
+      "id": "M8",
+      "finding": "Scientific universe, guards and qualification thresholds are unchanged.",
+      "basis": "Other16 Sources/input2/limits and original declaration authority, proof checks, purposes, scheduler, fallback and retention contract match11. Eleven-edit11→12 and four-edit12→13 full inverses plus independent whole AST erasure recover11. Master point/graph/global-order/rollback obligations remain operative.",
+      "limit": "All43 PASSED0SKIP/no gaps and separately current17+17 plus native20/512/failure55/owned60/caller90+1/full wire gates remain. No prior UNKNOWN/SKIP is promoted; no grant, target route or actual is authored."
+    }
+  ],
+  "blockers": [],
+  "conditions": [
+    "Root independently completes current whole-caller peer/read, then binds exact Source17/input2/current contracts/reviews/once-plan/external native protocol. This Source review issues no execution or resource-fit grant.",
+    "All43 and current original17/retention17/full-output/native20/512MiB/failure55/owned60/caller90+1 gates remain. Failure55 permits raw diagnostic retention only; every new record and partial output is unqualified.",
+    "Interpret native slots as last successful adapter check with entry-argument row/count. Roles may be stale or from different states; adviser-internal enumeration is uncovered. No active frame, nonreturn, case completion, loop/family/bottleneck, exclusive cost, proof/trajectory/benefit or earlier attribution.",
+    "Keep12 and its disclosed strict-builtin-key concern immutable/unactivated; current13 is a distinct corrected Source. No invented12 pass or runtime outcome.",
+    "Preserve all previous unknowns and current master/reference gaps. Root owns actuals, saved reconciliation, resource disposition and publication."
+  ],
+  "execution_disclosure": "Standard-library raw Source/small contract hashes, AST parse/compile WITHOUT evaluation and own metadata only. Declaration/profile hash only. No project/scientific/helper import/call, model/Q/word decode, replay, clock, test, actual, grant/plan or publication.",
+  "logical_proof_accepted": false,
+  "ROOT_resource_accepted": false,
+  "complete_GCTS_model_accepted": false,
+  "trajectory_accepted": false,
+  "RL_accepted": false
+}

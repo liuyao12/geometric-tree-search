@@ -1,0 +1,54 @@
+{
+  "schema": "unit-row-latest-context-manual-independent-handoff-v13",
+  "scope": "unit-row-latest-context-typed-keys-cold-Source",
+  "source": {
+    "bytes": 55664,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-typed-keys-cold-ROOT-source-20261016/unit_row_latest_context_cold_v13.py",
+    "sha256": "db4fcab69a94c76895ece3a533e983d8d16a136d0ea22b060cf73b4307ff72c3"
+  },
+  "source_contract": {
+    "bytes": 73959,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-typed-keys-cold-ROOT-source-20261016/Source-contract-v13.json",
+    "sha256": "c938d5355dff3807b127653eaf32939bfcab70891c26bf38585dabebc60f80f0"
+  },
+  "author_identity": "/root",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "typed_review": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-manual-independent-source-20261016/typed-Source-review-v13.json",
+    "sha256": "edc928ec30326db948781b24ec78214ff3f457dda3054433161740cf2d6c1dc9",
+    "bytes": 9826
+  },
+  "findings": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-manual-independent-source-20261016/findings-v13.json",
+    "sha256": "3d58254f98c9414546c0007429cf0a8e2f3b30d8595c4a018785d3d43c6e1ca5",
+    "bytes": 10456
+  },
+  "independent_checks": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-manual-independent-source-20261016/independent-Source-checks-v13.json",
+    "sha256": "a664385be5c709c24c1764d9ceff2bfa96436f51caf5f068e5751c235a8fd3b2",
+    "bytes": 11978
+  },
+  "checks": {
+    "raw_and_AST": 12,
+    "manual": 8,
+    "unique_raw_paths": 27,
+    "eleven_to_twelve_regions": 11,
+    "twelve_to_thirteen_regions": 4,
+    "unchanged_top_helpers": 16,
+    "fixed_scalar_slots": 4,
+    "raw_diagnostic_cap": 16384,
+    "completion_cap": 1024,
+    "current_Sources": 17,
+    "inputs_hash_only": 2,
+    "retained_consumer_cases": 43
+  },
+  "blockers": [],
+  "actual_execution_authorized": false,
+  "authorship_disclosure": "Reviewer authored current consumer3/earlier validators, original1717 checker and older codec/family/control-harness/horizon/retained-control work. Reviewer did not author Root caller11/12/13, current adviser/engine, c354 or native meter. This is an independent manual failure-path/current-Source review with complete raw/AST erasure, not self-review of those dependencies or a second mathematical implementation. A separate whole-caller peer review is owned by arithmetic; neither review is runtime qualification.",
+  "remaining": "Root current whole peer and all actual controls/native/output gates remain separate. No scientific replay, resource fit or active-failure/bottleneck claim; unqualified diagnostics only."
+}

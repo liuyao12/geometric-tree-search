@@ -1,0 +1,131 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "across_versions_changed_sources": [
+    "advice_controls",
+    "intake"
+  ],
+  "across_versions_same_input_runtime_limits": true,
+  "actuals_this_turn": 3,
+  "all_closed_and_reaped": true,
+  "broad_goal_complete": false,
+  "current_goal_turn": "progress",
+  "dispositions": {
+    "advice-controls": {
+      "bytes": 28434,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "14f2b1274b27324cc468c91351e16806e29dfc8ce7dd69f52dded5a23a81a50b"
+    },
+    "domain-controls": {
+      "bytes": 3410,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "sha256": "3154382fc9268632626268bce111087efdf264bb4f22dfff468b11de3ace2d1e"
+    },
+    "original-controls": {
+      "bytes": 3223,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "sha256": "fbf2152b39099b08a88865b2b4b032d0ac2587052b79e703dd94e45d4fbad104"
+    }
+  },
+  "logical_proof_accepted": false,
+  "native_sample_read_intervals_concordant": true,
+  "native_samples": [
+    {
+      "elapsed_from_launch_ns": 116561000,
+      "interval_since_previous_ns": 116561000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+      "native_ns": 493871760623000,
+      "previous_marker": null
+    },
+    {
+      "elapsed_from_launch_ns": 116636000,
+      "interval_since_previous_ns": 75000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+      "native_ns": 493871760698000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30"
+    },
+    {
+      "elapsed_from_launch_ns": 117066000,
+      "interval_since_previous_ns": 430000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+      "native_ns": 493871761128000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP"
+    },
+    {
+      "elapsed_from_launch_ns": 679538000,
+      "interval_since_previous_ns": 562472000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+      "native_ns": 493872323600000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION"
+    },
+    {
+      "elapsed_from_launch_ns": 732517000,
+      "interval_since_previous_ns": 52979000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+      "native_ns": 493872376579000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE"
+    },
+    {
+      "elapsed_from_launch_ns": 774535000,
+      "interval_since_previous_ns": 42018000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+      "native_ns": 493872418597000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK"
+    },
+    {
+      "elapsed_from_launch_ns": 1214334000,
+      "interval_since_previous_ns": 439799000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+      "native_ns": 493872858396000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS"
+    },
+    {
+      "elapsed_from_launch_ns": 4398954000,
+      "interval_since_previous_ns": 3184620000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+      "native_ns": 493876043016000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES"
+    },
+    {
+      "elapsed_from_launch_ns": 4408528000,
+      "interval_since_previous_ns": 9574000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+      "native_ns": 493876052590000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE"
+    },
+    {
+      "elapsed_from_launch_ns": 5368178000,
+      "interval_since_previous_ns": 959650000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+      "native_ns": 493877012240000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP"
+    },
+    {
+      "elapsed_from_launch_ns": 5376459000,
+      "interval_since_previous_ns": 8281000,
+      "marker": "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP",
+      "native_ns": 493877020521000,
+      "previous_marker": "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP"
+    }
+  ],
+  "no_exclusive_method_cost_or_case_coverage": true,
+  "previous_actual_phase_attribution": false,
+  "previous_goal_turn": "progress",
+  "same_Source17_input2_contract_reviews_runtime_limits_within_version": true,
+  "schema": "ROOT-latest-context-comparison-v1",
+  "scientific_replay": false,
+  "target_actuals_launched": 0,
+  "unqualified_current_writes": [
+    "UNQUALIFIED_PHASE_OBSERVATION BEFORE_PRIOR30",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SETUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_DECISION",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_ADVICE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_FIXTURE_CHECK",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_NEGATIVE_CONTROLS",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_SHORT_SEARCHES",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_PENDING_LIFECYCLE",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_ADOPTION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_AFTER_ADOPTION_SEARCH_GROUP",
+    "UNQUALIFIED_PHASE_OBSERVATION P30_BEFORE_CONTINUATION_SEARCH_GROUP"
+  ]
+}

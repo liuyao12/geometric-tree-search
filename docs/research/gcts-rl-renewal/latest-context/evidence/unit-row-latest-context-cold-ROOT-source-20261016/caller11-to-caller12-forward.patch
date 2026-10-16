@@ -1,0 +1,245 @@
+--- caller11
++++ caller12
+@@ -24,8 +24,8 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='unit-row-continuation-progress-cold-v11'
+-SCOPE='unit-row-continuation-progress-cold-Source'
++VERSION='unit-row-latest-context-cold-v12'
++SCOPE='unit-row-latest-context-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+ FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'engine': {'bytes': 52627, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-engine-source-20261016/lazy_unit_row_global_engine_v8.py', 'sha256': 'e2be0578c407548164af7281937e8102fa2cc7822d6e042bf30dfeba2539b6d6'}, 'controls': {'bytes': 21896, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py', 'sha256': 'd7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7'}, 'transition': {'bytes': 8134, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py', 'sha256': '2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491'}, 'retained_controls': {'bytes': 25338, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py', 'sha256': 'd1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb'}, 'adviser': {'bytes': 26007, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py', 'sha256': '6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98'}, 'advice_validator': {'bytes': 16299, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py', 'sha256': '8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1'}, 'advice_controls': {'bytes': 104747, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py', 'sha256': '1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f'}, 'word_checker': {'bytes': 46514, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py', 'sha256': '1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3'}, 'converter': {'bytes': 5528, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py', 'sha256': 'baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63'}, 'point_checker': {'bytes': 10201, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py', 'sha256': '99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d'}}
+@@ -211,45 +211,76 @@
+     # context_raw was encoded before the untrusted search delegation.
+     if type(context_raw) is not bytes or len(context_raw) > 65536:
+         raise ValueError('bounded predelegation diagnostic context')
+-    available = capture['returned'] is True
+-    value = capture['payload'] if available else None
+-    metadata = None; metadata_saved = False; total_events = None; event_raw = []
+-    prefix_reason = 'NO_RETURNED_RECORD'; metadata_reason = None
+-    if type(value) is dict and all(type(key) is str for key in value):
+-        try:
+-            metadata = encoded({key: item for key,item in value.items() if key != 'events'}, 1048576)
+-            metadata_saved = True
+-        except ValueError:
+-            metadata_reason = 'BUILTIN_METADATA_OUTPUT_BOUND_OR_TYPE'
+-        events = value.get('events')
+-        if type(events) is list:
+-            total_events = len(events); used = 0; prefix_reason = 'ALL_RETURNED_EVENTS_SAVED'
+-            for event in events:
+-                if len(event_raw) >= 2000:
+-                    prefix_reason = 'DIAGNOSTIC_EVENT_PREFIX_LIMIT'; break
+-                try: raw = encoded(event, 262144)
+-                except ValueError:
+-                    prefix_reason = 'NEXT_EVENT_OUTPUT_BOUND_OR_TYPE'; break
+-                if used+len(raw)+1 > 3*1048576:
+-                    prefix_reason = 'DIAGNOSTIC_EVENT_BYTE_LIMIT'; break
+-                event_raw.append(raw); used += len(raw)+1
+-        else: prefix_reason = 'RETURNED_EVENTS_NOT_BUILTIN_LIST'
+-    elif available: metadata_reason = 'RETURNED_VALUE_NOT_BUILTIN_STRING_KEY_DICT'
+-    # These labels are caller observations, never claims trusted from the payload.
+-    labels = encoded({'schema':'unit-row-search-failure-diagnostic-v1',
+-        'diagnostic_only':True,'qualification':'UNQUALIFIED_UNKNOWN_RAW_PREFIX',
+-        'capture_available':available,'capture_is_builtin_dict':type(value) is dict,
+-        'engine_return_observed_ns':capture['returned_ns'], 'failure_kind':failure_kind,
+-        'metadata_saved':metadata_saved,'metadata_omission_reason':metadata_reason,
+-        'returned_event_count':total_events,'saved_event_count':len(event_raw),
+-        'omitted_event_count':None if total_events is None else total_events-len(event_raw),
+-        'event_prefix_reason':prefix_reason,'may_include_post_deadline_unwind':True,
+-        'positive_joint_gate_accepted':False,'logical_proof_accepted':False,
+-        'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
+-        'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}, 65536)
+-    raw = (b'{"context":'+context_raw+b',"diagnostic":'+labels+b',"returned_metadata":'
+-           +(metadata if metadata_saved else b'null')+b',"events_prefix":['
+-           +b','.join(event_raw)+b']}\n')
++    if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS':
++        roles = ('proposer','fallback','completion','validator')
++        if type(capture) is not dict or set(capture) != set(roles):
++            raise ValueError('fixed builtin last-context slots')
++        observations = {}
++        for role in roles:
++            item = capture[role]
++            if item is None:
++                observations[role] = None
++                continue
++            if type(item) is not tuple or len(item) != 4:
++                raise ValueError('fixed scalar last-context tuple')
++            stage,row,selected,native_ns = item
++            if (type(stage) is not str or stage != role.upper()+'_NATIVE_STEP'
++                    or type(row) is not int or not -1<=row<24
++                    or type(selected) is not int or not -1<=selected<=24
++                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000
++                    or not 0<=native_ns<=9223372036854775807):
++                raise ValueError('bounded builtin last-context fields')
++            observations[role] = {'stage':stage,'row':row,'selected_count':selected,'native_ns':native_ns}
++        labels = encoded({'schema':'unit-row-controls-last-context-diagnostic-v1',
++            'diagnostic_only':True,'qualification':'UNQUALIFIED_LAST_ADAPTER_NATIVE_OBSERVATIONS',
++            'failure_kind':'TimeoutError','returned_control_record':False,
++            'callback_context':'ENTRY_ARGUMENT_ROW_AND_SELECTED_COUNT_AT_LAST_SUCCESSFUL_EXISTING_NATIVE_CHECK',
++            'last_observation_is_active_failure_frame':False,'live_state_or_proof_trajectory_accepted':False,
++            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,
++            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
++            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False},4096)
++        raw = b'{"context":'+context_raw+b',"diagnostic":'+labels+b',"last_observations":'+encoded(observations,4096)+b'}\n'
++        if len(raw)>16384:raise ValueError('whole controls-context diagnostic16KiB bound')
++    else:
++        available = capture['returned'] is True
++        value = capture['payload'] if available else None
++        metadata = None; metadata_saved = False; total_events = None; event_raw = []
++        prefix_reason = 'NO_RETURNED_RECORD'; metadata_reason = None
++        if type(value) is dict and all(type(key) is str for key in value):
++            try:
++                metadata = encoded({key: item for key,item in value.items() if key != 'events'}, 1048576)
++                metadata_saved = True
++            except ValueError:
++                metadata_reason = 'BUILTIN_METADATA_OUTPUT_BOUND_OR_TYPE'
++            events = value.get('events')
++            if type(events) is list:
++                total_events = len(events); used = 0; prefix_reason = 'ALL_RETURNED_EVENTS_SAVED'
++                for event in events:
++                    if len(event_raw) >= 2000:
++                        prefix_reason = 'DIAGNOSTIC_EVENT_PREFIX_LIMIT'; break
++                    try: raw = encoded(event, 262144)
++                    except ValueError:
++                        prefix_reason = 'NEXT_EVENT_OUTPUT_BOUND_OR_TYPE'; break
++                    if used+len(raw)+1 > 3*1048576:
++                        prefix_reason = 'DIAGNOSTIC_EVENT_BYTE_LIMIT'; break
++                    event_raw.append(raw); used += len(raw)+1
++            else: prefix_reason = 'RETURNED_EVENTS_NOT_BUILTIN_LIST'
++        elif available: metadata_reason = 'RETURNED_VALUE_NOT_BUILTIN_STRING_KEY_DICT'
++        # These labels are caller observations, never claims trusted from the payload.
++        labels = encoded({'schema':'unit-row-search-failure-diagnostic-v1',
++            'diagnostic_only':True,'qualification':'UNQUALIFIED_UNKNOWN_RAW_PREFIX',
++            'capture_available':available,'capture_is_builtin_dict':type(value) is dict,
++            'engine_return_observed_ns':capture['returned_ns'], 'failure_kind':failure_kind,
++            'metadata_saved':metadata_saved,'metadata_omission_reason':metadata_reason,
++            'returned_event_count':total_events,'saved_event_count':len(event_raw),
++            'omitted_event_count':None if total_events is None else total_events-len(event_raw),
++            'event_prefix_reason':prefix_reason,'may_include_post_deadline_unwind':True,
++            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,
++            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
++            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}, 65536)
++        raw = (b'{"context":'+context_raw+b',"diagnostic":'+labels+b',"returned_metadata":'
++               +(metadata if metadata_saved else b'null')+b',"events_prefix":['
++               +b','.join(event_raw)+b']}\n')
+     if len(raw) > 4*1048576+131072: raise ValueError('whole diagnostic output bound')
+     def write(name, content):
+         failure_gate()
+@@ -265,7 +296,7 @@
+         failure_gate()
+     failure_gate(); _mkdir(output_path, 0o700)
+     write('unknown-diagnostic.json',raw)
+-    marker = encoded({'schema':'unit-row-search-failure-diagnostic-completion-v1',
++    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-search-failure-diagnostic-completion-v1'),
+         'file':'unknown-diagnostic.json','sha256':_hash(raw).hexdigest(),'bytes':len(raw),
+         'diagnostic_only':True,'positive_joint_gate_accepted':False,
+         'ROOT_resource_accepted':False,'terminal_exit2_and_external_failure_closure_required':True}, 1024)+b'\n'
+@@ -326,7 +357,7 @@
+     read_pinned(plan['runtime'])
+     source_raw = {role: read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract = decode(read_pinned(plan['source_contract']))
+-    need(contract['schema'] == 'unit-row-continuation-progress-cold-Source-contract-v11'
++    need(contract['schema'] == 'unit-row-latest-context-cold-Source-contract-v12'
+         and contract['sources'] == plan['sources'] and contract['inputs'] == FIXED_INPUTS
+         and contract['limits'] == LIMITS, 'whole exact current Source contract')
+     need(set(plan['reviews']) == {'ROOT','peer'}, 'author review and distinct whole-Source peer')
+@@ -406,10 +437,16 @@
+     fixture_language = fresh_language(tick)
+     binding_raw = canonical(fixture_language.binding)
+     native_tick = tick
++    latest_callbacks = {'proposer':None,'fallback':None,'completion':None,'validator':None}
+     def proposer_adapter(*,language,state,row,tick):
+         injected_tick = tick
++        observed_row = row
++        diagnostic_row = observed_row if type(observed_row) is int and 0<=observed_row<24 else -1
++        selected_argument = state.get('selected') if type(state) is dict else None
++        diagnostic_selected = len(selected_argument) if type(selected_argument) is list and len(selected_argument)<=24 else -1
+         def step():
+-            native_tick()
++            diagnostic_native_ns = native_tick()
++            latest_callbacks['proposer'] = ('PROPOSER_NATIVE_STEP',diagnostic_row,diagnostic_selected,diagnostic_native_ns)
+             injected_tick()
+         private = fresh_language(step)
+         need(canonical(private.binding) == binding_raw, 'private proposer epoch unchanged')
+@@ -417,8 +454,13 @@
+             'row':row,'tick':step},boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+     def fallback_adapter(*,language,state,row,tick):
+         injected_tick = tick
++        observed_row = row
++        diagnostic_row = observed_row if type(observed_row) is int and 0<=observed_row<24 else -1
++        selected_argument = state.get('selected') if type(state) is dict else None
++        diagnostic_selected = len(selected_argument) if type(selected_argument) is list and len(selected_argument)<=24 else -1
+         def step():
+-            native_tick()
++            diagnostic_native_ns = native_tick()
++            latest_callbacks['fallback'] = ('FALLBACK_NATIVE_STEP',diagnostic_row,diagnostic_selected,diagnostic_native_ns)
+             injected_tick()
+         private = fresh_language(step)
+         need(canonical(private.binding) == binding_raw, 'private original fallback epoch')
+@@ -427,8 +469,13 @@
+             boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+     def certify_adapter(*,language,state,row,completion,checked_candidates,tick):
+         injected_tick = tick
++        observed_row = row
++        diagnostic_row = observed_row if type(observed_row) is int and 0<=observed_row<24 else -1
++        selected_argument = state.get('selected') if type(state) is dict else None
++        diagnostic_selected = len(selected_argument) if type(selected_argument) is list and len(selected_argument)<=24 else -1
+         def step():
+-            native_tick()
++            diagnostic_native_ns = native_tick()
++            latest_callbacks['completion'] = ('COMPLETION_NATIVE_STEP',diagnostic_row,diagnostic_selected,diagnostic_native_ns)
+             injected_tick()
+         private = fresh_language(step)
+         need(canonical(private.binding) == binding_raw, 'private original completion-check epoch')
+@@ -507,8 +554,13 @@
+             boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+     def validate_advice_adapter(*,state,decision,batch,tick):
+         injected_tick = tick
++        observed_row = decision.get('row') if type(decision) is dict else None
++        diagnostic_row = observed_row if type(observed_row) is int and 0<=observed_row<24 else -1
++        selected_argument = state.get('selected') if type(state) is dict else None
++        diagnostic_selected = len(selected_argument) if type(selected_argument) is list and len(selected_argument)<=24 else -1
+         def step():
+-            native_tick()
++            diagnostic_native_ns = native_tick()
++            latest_callbacks['validator'] = ('VALIDATOR_NATIVE_STEP',diagnostic_row,diagnostic_selected,diagnostic_native_ns)
+             injected_tick()
+         private = fresh_language(step)
+         need(canonical(private.binding) == binding_raw, 'private independent advice-consumer authority')
+@@ -638,8 +690,32 @@
+             control_kwargs.update(adviser=adviser_adapter,validate_advice=validate_advice_adapter)
+         else:
+             control_kwargs.update(transition=transition_adapter,refresh=refresh_adapter)
+-        payload = invoke_fn(selected_controls.run_controls,(),control_kwargs,
+-            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
++        diagnostic_run = Path(plan['output_directory'])
++        need(diagnostic_run.is_absolute() and diagnostic_run == diagnostic_run.resolve()
++            and not diagnostic_run.exists(), 'fresh canonical controls output before delegation')
++        diagnostic_path = str(diagnostic_run)
++        diagnostic_context = canonical({'purpose':plan['purpose'],'invocation_id':plan['invocation_id'],
++            'plan':raw_pin(plan_raw),'sources':plan['sources'],'inputs':plan['inputs'],
++            'language_binding':decode(binding_raw),'joint_began_ns':EARLY_G,
++            'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,'limits':LIMITS})
++        failure_writer = save_failure_diagnostic
++        failure_writer_state = anchor_fn(failure_writer)
++        controls_timeout_type = TimeoutError
++        try:
++            payload = invoke_fn(selected_controls.run_controls,(),control_kwargs,
++                boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
++        except BaseException as control_error:
++            if type(control_error) is controls_timeout_type:
++                try:
++                    if (anchor is not anchor_fn or anchor_fn.__code__ is not anchor_code
++                            or same is not same_fn or same_fn.__code__ is not same_code
++                            or not same_fn(failure_writer,failure_writer_state)):
++                        raise RuntimeError('original raw controls-context writer changed')
++                    failure_writer(diagnostic_path,diagnostic_context,latest_callbacks,
++                        'CONTROLS_TIMEOUT_LAST_SCALARS',EARLY_G)
++                except BaseException:
++                    pass
++            raise
+         expected_schema = ('unit-row-lazy-global-controls-v1' if is_original
+                            else 'unit-row-goal-advice-controls-v1' if is_advice
+                            else 'unit-row-retained-domain-controls-v1')

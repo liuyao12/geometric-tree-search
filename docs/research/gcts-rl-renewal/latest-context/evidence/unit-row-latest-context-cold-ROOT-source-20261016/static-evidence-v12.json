@@ -1,0 +1,39 @@
+{
+  "compile_only": true,
+  "edits": 11,
+  "old_target_search_route_raw_exact": true,
+  "other16Sources_input2_alllimits_exact": true,
+  "positive_response_native_exit_tail_exact": true,
+  "same17tophelpers_no_newhelper": true,
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55594,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-cold-ROOT-source-20261016/unit_row_latest_context_cold_v12.py",
+    "sha256": "bc338290010bfa9038e1c6e5f1b8f7d8fec9832faa1d7bb8e656c6334106a2a2"
+  },
+  "source_contract": {
+    "bytes": 73613,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-cold-ROOT-source-20261016/Source-contract-v12.json",
+    "sha256": "98bad3f2d430c9e59388e544a005c760262efa9f1e50a4a21e6e89e6ade5b525"
+  },
+  "unchanged_raw_top_level_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "encode_result_transport"
+  ],
+  "whole_raw_AST_inverse": true
+}

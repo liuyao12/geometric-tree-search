@@ -1,0 +1,34 @@
+{
+  "all_science_except_samecaller_bindings_unchanged": true,
+  "edits": [
+    {
+      "after": "VERSION='unit-row-latest-context-cold-v13'",
+      "before": "VERSION='unit-row-latest-context-cold-v12'"
+    },
+    {
+      "after": "SCOPE='unit-row-latest-context-typed-keys-cold-Source'",
+      "before": "SCOPE='unit-row-latest-context-cold-Source'"
+    },
+    {
+      "after": "contract['schema'] == 'unit-row-latest-context-typed-keys-cold-Source-contract-v13'",
+      "before": "contract['schema'] == 'unit-row-latest-context-cold-Source-contract-v12'"
+    },
+    {
+      "after": "if type(capture) is not dict or not all(type(key) is str for key in capture) or set(capture) != set(roles):",
+      "before": "if type(capture) is not dict or set(capture) != set(roles):"
+    }
+  ],
+  "parent": {
+    "bytes": 55594,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-cold-ROOT-source-20261016/unit_row_latest_context_cold_v12.py",
+    "sha256": "bc338290010bfa9038e1c6e5f1b8f7d8fec9832faa1d7bb8e656c6334106a2a2"
+  },
+  "schema": "ROOT-latest-context-typed-keys-Source-delta-v13",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55664,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-typed-keys-cold-ROOT-source-20261016/unit_row_latest_context_cold_v13.py",
+    "sha256": "db4fcab69a94c76895ece3a533e983d8d16a136d0ea22b060cf73b4307ff72c3"
+  },
+  "whole_inverse_raw_AST_recovers_parent": true
+}

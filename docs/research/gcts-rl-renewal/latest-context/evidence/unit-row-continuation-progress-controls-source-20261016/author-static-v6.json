@@ -1,0 +1,203 @@
+{
+  "all_author_static_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 18,
+  "checks": [
+    {
+      "check": "exact_current_parent_pins",
+      "passed": true
+    },
+    {
+      "check": "compile_AST_only_not_executed",
+      "passed": true
+    },
+    {
+      "check": "five_forward_regions_reconstruct_entire_source",
+      "passed": true
+    },
+    {
+      "check": "five_inverse_regions_reconstruct_entire_parent",
+      "passed": true
+    },
+    {
+      "check": "whole_module_AST_semantic_erasure_recovers_parent",
+      "passed": true
+    },
+    {
+      "check": "eleven_other_top_definitions_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "check": "one_controls_definition_only_diagnostic_erasure_change",
+      "passed": true
+    },
+    {
+      "check": "existing24_native_phase_groups_byte_exact",
+      "passed": true
+    },
+    {
+      "check": "all43_case_names_checks_API_context_memo_rollback_unchanged",
+      "passed": true
+    },
+    {
+      "check": "six_inline_sites_one_shared24_cap_no_reset",
+      "passed": true
+    },
+    {
+      "check": "native_first_direct_tick_strict_scalar_bounds",
+      "passed": true
+    },
+    {
+      "check": "unavailable_flags_distinct_from_actual_snapshot_receipt",
+      "passed": true
+    },
+    {
+      "check": "no_added_import_helper_clock_snapshot_model_candidate_JSON_call",
+      "passed": true
+    },
+    {
+      "check": "exactly_once_delegate_same_kwargs_same_return_object",
+      "passed": true
+    },
+    {
+      "check": "original_delegate_exception_path_has_no_after_record",
+      "passed": true
+    },
+    {
+      "check": "cap_changes_logging_only_no_science_or_stop",
+      "passed": true
+    },
+    {
+      "check": "same_other9_sources_input2_limits",
+      "passed": true
+    },
+    {
+      "check": "no_actual_or_runtime_fit_prediction",
+      "passed": true
+    }
+  ],
+  "diagnostic_erasure_equivalent_definitions": [
+    {
+      "diagnostic_erasure_AST_exact": true,
+      "kind": "FunctionDef",
+      "name": "run_controls",
+      "ordinal": 9
+    }
+  ],
+  "distinct_review_required": true,
+  "existing24_phase_groups_byte_exact": true,
+  "schema": "unit-row-continuation-progress-controls-author-static-v6",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "sites": [
+    {
+      "source_line": 318,
+      "stage": "VALIDATOR_ENTRY"
+    },
+    {
+      "source_line": 332,
+      "stage": "VALIDATOR_AFTER_DELEGATE"
+    },
+    {
+      "source_line": 348,
+      "stage": "DEGREE_ENTRY"
+    },
+    {
+      "source_line": 362,
+      "stage": "DEGREE_AFTER_SNAPSHOT"
+    },
+    {
+      "source_line": 384,
+      "stage": "DEGREE_BEFORE_DELEGATE"
+    },
+    {
+      "source_line": 398,
+      "stage": "DEGREE_AFTER_DELEGATE"
+    }
+  ],
+  "source": {
+    "bytes": 104747,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-continuation-progress-controls-source-20261016/compatible_fibres_controls_v6.py",
+    "sha256": "1301e9cfc6f2444f4da3f0deb91c93b8bd6200ae04729d9c272a4cf887d4092f"
+  },
+  "source_only": true,
+  "unchanged_raw_definitions": [
+    {
+      "kind": "ClassDef",
+      "name": "Unavailable",
+      "ordinal": 0,
+      "raw_AST_exact": true,
+      "raw_sha256": "0633d4c830dca042342e9e90385b150644cc55294a6029ec8150623e6e0eb9c7"
+    },
+    {
+      "kind": "ClassDef",
+      "name": "CallbackExhausted",
+      "ordinal": 1,
+      "raw_AST_exact": true,
+      "raw_sha256": "ed63a8ff8458cf3d9d5b7afc535250eb000815c95fbf417f6bc1377e2ed9f4c2"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "need",
+      "ordinal": 2,
+      "raw_AST_exact": true,
+      "raw_sha256": "cfb2359a99fb5844db1d9b7610758d828c86945b044bc352c78ced9fece32556"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "canonical",
+      "ordinal": 3,
+      "raw_AST_exact": true,
+      "raw_sha256": "3d0cba3e5232ca23a7129b2da6af51a68c34121ca073948fd18e8f2e9bb68268"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "digest",
+      "ordinal": 4,
+      "raw_AST_exact": true,
+      "raw_sha256": "ba4b204365b99acc82629d44da79e9b2995d4460b992169519341d4d48275144"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "tile",
+      "ordinal": 5,
+      "raw_AST_exact": true,
+      "raw_sha256": "180bb27f6de2b574c473adf86ff7da20370081febb16f8b31208c12babe95fa5"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "state",
+      "ordinal": 6,
+      "raw_AST_exact": true,
+      "raw_sha256": "95664cf1567b15500aadafc08511edcf6f032a3e5f368560a1fa70f579ef9a83"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "ug",
+      "ordinal": 7,
+      "raw_AST_exact": true,
+      "raw_sha256": "910adb314f1decffc2b619dd735712322b77359ddb74287834903f1d5ca55210"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "obligations",
+      "ordinal": 8,
+      "raw_AST_exact": true,
+      "raw_sha256": "5187bbb0dae876a54662dfda6fcdf995c80289791aaa8ace629e6894e249eac0"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "run_controls",
+      "ordinal": 10,
+      "raw_AST_exact": true,
+      "raw_sha256": "642cef1a41beba8d90a9fb8a8b2462e8193755166ed20e795127f80b4c6c3977"
+    },
+    {
+      "kind": "FunctionDef",
+      "name": "run_controls",
+      "ordinal": 11,
+      "raw_AST_exact": true,
+      "raw_sha256": "fe148df56c483d6d38d0af82526b0547415b92ee858b4348b77ab1feb62484a0"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "compile_only": true,
+  "existing_native_callcounts_delegate_rules_unchanged": true,
+  "minimal_edits": 4,
+  "other16Sources_input2_limits_unchanged": true,
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 55664,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-typed-keys-cold-ROOT-source-20261016/unit_row_latest_context_cold_v13.py",
+    "sha256": "db4fcab69a94c76895ece3a533e983d8d16a136d0ea22b060cf73b4307ff72c3"
+  },
+  "source_contract": {
+    "bytes": 73959,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-latest-context-typed-keys-cold-ROOT-source-20261016/Source-contract-v13.json",
+    "sha256": "c938d5355dff3807b127653eaf32939bfcab70891c26bf38585dabebc60f80f0"
+  },
+  "whole_raw_AST_inverse": true
+}
