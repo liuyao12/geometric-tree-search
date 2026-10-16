@@ -1,0 +1,19 @@
+{
+  "correct_check_count": 25,
+  "correct_raw_reference_count": 25,
+  "description": "One check detail says All24 full raw references; exact array contains25 and comparison independently checked every25. Operative data/predicate/typedSource verdict unchanged; original findings preserved.",
+  "findings": {
+    "bytes": 19004,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-engine-independent-source-20261016/findings-v1.json",
+    "sha256": "6d6ace50819e9dead4f65c288a112b365e61ac9764ea6ffa6622e4054e4d2630"
+  },
+  "schema": "unit-row-advice-engine-review-metadata-count-clarification-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "typed_review": {
+    "bytes": 2550,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-engine-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "3bb7b5b2ff8fd3bc8e6cc022dbe9b349f90849c89a8e44748a30ca4e945a1a5a"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "checks": [
+    {
+      "id": "exact_frozen_source",
+      "passed": true
+    },
+    {
+      "id": "whole_source_AST_and_compile_only",
+      "passed": true
+    },
+    {
+      "id": "full_raw_forward_inverse",
+      "passed": true
+    },
+    {
+      "id": "exact_changed_five_methods",
+      "passed": true
+    },
+    {
+      "id": "three_private_advice_helpers_only",
+      "passed": true
+    },
+    {
+      "id": "twenty_seven_inherited_callables_AST_and_bytes_exact",
+      "passed": true
+    },
+    {
+      "id": "no_project_clock_or_donor_import",
+      "passed": true
+    },
+    {
+      "id": "global_decision_scheduler_exact",
+      "passed": true
+    },
+    {
+      "id": "degree_fallback_transition_archive_exclusion_word_methods_exact",
+      "passed": true
+    },
+    {
+      "id": "preference_selection_has_no_attribute_store",
+      "passed": true
+    },
+    {
+      "id": "adoption_inside_owned_child_try_finally",
+      "passed": true
+    },
+    {
+      "id": "strict_validator_errors_not_caught",
+      "passed": true
+    },
+    {
+      "id": "active_family_blocks_unrelated_new_batches",
+      "passed": true
+    },
+    {
+      "id": "pending_state_in_snapshot_checkpoint_and_rollback",
+      "passed": true
+    },
+    {
+      "id": "owning_tick_immediately_after_adviser_and_validator",
+      "passed": true
+    },
+    {
+      "id": "baseline_canonical_branch_block_retained_literal",
+      "passed": true
+    },
+    {
+      "id": "no_actuals_functions_tests_models_or_clocks_executed",
+      "passed": true
+    }
+  ],
+  "counts": {
+    "actuals": 0,
+    "checks": 17,
+    "clock_calls": 0,
+    "project_imports": 0,
+    "scientific_calls": 0,
+    "tests": 0
+  },
+  "limitation": "Literal/AST Source assertions only; no scientific behavior or runtime qualification.",
+  "schema": "unit-row-goal-advice-engine-author-static-v1",
+  "source": {
+    "bytes": 50927,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py",
+    "sha256": "d30b56cc371dc62a85b3eb30363149b6f95a7cff9100fa1d770413228d52c98d"
+  },
+  "source_only": true
+}

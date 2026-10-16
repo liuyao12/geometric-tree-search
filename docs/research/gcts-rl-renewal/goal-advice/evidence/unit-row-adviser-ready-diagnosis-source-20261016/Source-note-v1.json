@@ -1,0 +1,95 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "concrete_source_cost_and_termination": [
+    {
+      "finding": "All inverse-UG demand frames are constructed eagerly. Each prospective suffix invokes full original rebuild/member legality and compatible-union validation before any proposal stream runs. With two marked roots and maximum_demands16 there are up to14 newly appended frames; reducing the heuristic limit to5 allows at most3. This is a static work bound, not a measured phase count.",
+      "source": "propose_branch frames preparation, before streams/round loop"
+    },
+    {
+      "finding": "The same finite work quota charges recursive full JSON clones and candidate/preimage/mark traversals as well as descriptor work. Full authority-rich candidate packets are copied into each candidate family. emit constructs ports, cloned members/binding and proposal data before discarding an equal-or-worse duplicate anchor. These are concrete repeated-work paths, not evidence of which path caused this actual UNKNOWN.",
+      "source": "_Work.step, clone, tile, compatible, emit"
+    },
+    {
+      "finding": "Current READY requires the declared round loop to finish. Any TimeoutError while constructing later frames/descriptors changes the entire batch to UNKNOWN even if partial proposals were already built. That behavior is honest and must remain diagnostic-only; partial UNKNOWN must not be relabeled READY.",
+      "source": "round loop and outer except TimeoutError"
+    }
+  ],
+  "limitations": [
+    "No exact cause, quota count, phase timing, speedup or future fit inferred from saved UNKNOWN.",
+    "Finite advisor horizons are proposal biases, never full language/exhaustion authority.",
+    "Existing old17 and retained17 passes remain separate; current consumer gate is unqualified and target arms withheld."
+  ],
+  "next_measurement": "First freeze/review a diagnostic harness that preserves the entire actual initial adviser return, including reason, limits, work and partial proposal packets, even on UNKNOWN. Under a fresh Root-owned grant compare a declared generic smaller horizon only after preserving that evidence. Require actual READY plus independently checked connected multi-member batch and all consumer gates; any UNKNOWN/essential SKIP stays unqualified. No target arm is warranted by the current2pass20skip stage.",
+  "observed": {
+    "missing_diagnostics": "The initial adviser batch, reason, work counters, partial proposals and phase completion were discarded by harness fixture Unavailable handling. The record establishes UNKNOWN only; it cannot distinguish adviser quota, owning native deadline, membership interruption or another TimeoutError origin.",
+    "passed": 2,
+    "passed_case_ids": [
+      "global-DEAD-overrides-advice",
+      "global-FORCED-overrides-advice"
+    ],
+    "purpose": "unit-row-advised-advice-controls",
+    "qualified": false,
+    "record_schema": "ROOT-unit-row-global-engine-result-v1",
+    "saved_artifacts": [
+      "dead_search",
+      "forced_search"
+    ],
+    "single_skip_reason": "Actual bounded adviser returned no current READY proposal: UNKNOWN",
+    "skipped": 20
+  },
+  "one_minimal_prospective_option": {
+    "before": {
+      "maximum_demands": 16,
+      "maximum_proposals": 8,
+      "maximum_rounds": 4,
+      "maximum_terms": 1,
+      "maximum_work": 50000
+    },
+    "change": "A separately frozen smaller GENERIC adviser horizon in controls/current adapter only: maximum_demands5, maximum_rounds3, maximum_terms1; retain maximum_work50000 and maximum_proposals8. Do not blindly raise quota or change the adviser, independent validator, grammar, global scheduler, original fallback or positive20-second gate.",
+    "proposed": {
+      "maximum_demands": 5,
+      "maximum_proposals": 8,
+      "maximum_rounds": 3,
+      "maximum_terms": 1,
+      "maximum_work": 50000
+    },
+    "soundness_and_information": "Only an explicitly heuristic advisory horizon is reduced. Every emitted primitive and compatible family still requires original membership/whole-point validation; future reads remain PENDING. Complete all-six base fallback and independently checked degree0/1 remain unchanged. No new theorem proof, donor word, selected route, extra fact, candidate exclusion or learned/RL claim.",
+    "source_reason": "For this AX-derived control fixture, the two existing marked roots occupy the first two frame slots. Breadth expansion with limit5 admits prior rows0,1,2 of the first universal demand. This retains a generic incident UI plus MP plus UG family without selecting a theorem-specific term or route; the frame policy is uniformly truncated and incomplete.",
+    "status": "UNMEASURED_PROSPECTIVE_OPTION_NO_IMPLEMENTATION_NO_FIT_PREDICTION",
+    "stream_bound": "At most12 instantiated stream objects (2+2*5), versus34 with16 frames. Each next may still do substantial guarded work; these are not native runtime or quota certificates.",
+    "why_three_not_two": "The current universal encounter order starts with the original target, then named AS. For the row2 UI/MP frame, first next yields a mismatch for the first universal; second next reaches AS but yields the excluded source0 because it equals the chosen anchor row; third next can yield source1. Thus rounds2 is insufficient for this specific existing stream order. This is literal Source reasoning, not an executed proposal or proof."
+  },
+  "schema": "unit-row-adviser-ready-source-diagnosis-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Whole c6fc adviser Source, current original declaration/profile and literal saved controls status only. No Source/project/helper/kernel/model/word execution, semantic replay, clock, test, plan or actual. Adviser/engine dependency authorship disclosed; this is author Source cost analysis, not independent trajectory validation.",
+  "source_only": true,
+  "sources_and_saved_evidence": {
+    "actual_small_record": {
+      "bytes": 79936,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "sha256": "09db355fa75ef99cd5b1ff836518c88bb4073a9c44c62a971f0c8422e8a11871"
+    },
+    "adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "harness": {
+      "bytes": 32773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v1.py",
+      "sha256": "9862fa5e979d56bc769bcf399803fdb46cf28a7b7303202e3bab7ea8f2d4de4f"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "unchanged_limits": "Original native20 positive/readiness, failure55, owned60,512MiB,c caller90+1; no Source or runtime modifications in this note."
+}

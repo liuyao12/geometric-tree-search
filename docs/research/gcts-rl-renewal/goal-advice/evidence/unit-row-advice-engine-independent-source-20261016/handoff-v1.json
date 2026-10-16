@@ -1,0 +1,38 @@
+{
+  "findings": {
+    "bytes": 19004,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-engine-independent-source-20261016/findings-v1.json",
+    "sha256": "6d6ace50819e9dead4f65c288a112b365e61ac9764ea6ffa6622e4054e4d2630"
+  },
+  "independent_delta": {
+    "bytes": 3937,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-engine-independent-source-20261016/independent-delta-v1.json",
+    "sha256": "40b59213f56d413b551e9a2c9550eb8fb43c6459239f978aeff570c2e80086d2"
+  },
+  "precursor_observation": {
+    "bytes": 4875,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-engine-independent-source-20261016/engine-precursor-observation-v1.json",
+    "sha256": "9d01c0f960bb1b7cf834e581a1d80bf4feb684e4b08ba69e0019d58b7e5c013b"
+  },
+  "schema": "unit-row-goal-advice-engine-independent-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-goal-advice-global-engine-Source",
+  "source": {
+    "bytes": 51786,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+    "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+  },
+  "source_contract": {
+    "bytes": 22207,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/Source-contract-v2.json",
+    "sha256": "c24b0137b5a0372bd9999c0670317935fa1d6cfa716f590e34c9f2c3cf0877cf"
+  },
+  "source_only": true,
+  "summary": "Genuine conditional dbaf5 whole/deltaSource pass. Actual globalBRANCH gate/current independently rebuilt anchor/full preference rollback/canonical fallback/retainedcursor logic/fill retirement checked. Own validator dependency disclosed. Current cold/adversarial/runtime/native gates pending.",
+  "typed_review": {
+    "bytes": 2550,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-engine-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "3bb7b5b2ff8fd3bc8e6cc022dbe9b349f90849c89a8e44748a30ca4e945a1a5a"
+  }
+}

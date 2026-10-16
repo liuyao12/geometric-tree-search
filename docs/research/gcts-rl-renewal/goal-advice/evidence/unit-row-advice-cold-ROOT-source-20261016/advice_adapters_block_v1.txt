@@ -1,0 +1,29 @@
+    def adviser_adapter(*,state,decision,tick,maximum_work=50000,maximum_proposals=8,
+            maximum_demands=16,maximum_terms=16,maximum_rounds=8):
+        injected_tick = tick
+        def step():
+            native_tick()
+            injected_tick()
+        private = fresh_language(step)
+        need(canonical(private.binding) == binding_raw, 'private original goal-adviser authority')
+        return invoke_fn(modules['adviser'].propose_branch,(),{
+            'language':private,'semantics':modules['degree_checker'],
+            'fallback':modules['fallback'].open_fallback,
+            'iter_syntax':modules['fallback'].iter_syntax,
+            'state':copy.deepcopy(state),'decision':copy.deepcopy(decision),'tick':step,
+            'maximum_work':maximum_work,'maximum_proposals':maximum_proposals,
+            'maximum_demands':maximum_demands,'maximum_terms':maximum_terms,
+            'maximum_rounds':maximum_rounds},
+            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+    def validate_advice_adapter(*,state,decision,batch,tick):
+        injected_tick = tick
+        def step():
+            native_tick()
+            injected_tick()
+        private = fresh_language(step)
+        need(canonical(private.binding) == binding_raw, 'private independent advice-consumer authority')
+        return invoke_fn(modules['advice_validator'].validate_advice,(),{
+            'language':private,'semantics':modules['degree_checker'],
+            'state':copy.deepcopy(state),'decision':copy.deepcopy(decision),
+            'batch':copy.deepcopy(batch),'tick':step},
+            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)

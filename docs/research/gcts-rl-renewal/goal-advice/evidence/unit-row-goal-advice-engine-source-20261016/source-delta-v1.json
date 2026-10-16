@@ -1,0 +1,420 @@
+{
+  "added_callables": [
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch"
+  ],
+  "base": {
+    "bytes": 39803,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+    "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+  },
+  "changed_callables": [
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine.search"
+  ],
+  "complete_forward_inverse_raw_bytes_verified": true,
+  "current": {
+    "bytes": 50927,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py",
+    "sha256": "d30b56cc371dc62a85b3eb30363149b6f95a7cff9100fa1d770413228d52c98d"
+  },
+  "edits": [
+    {
+      "new_end": 109,
+      "new_start": 107,
+      "new_utf8": "Op",
+      "old_end": 154,
+      "old_start": 107,
+      "old_utf8": "Source-only successor with checked domain reten"
+    },
+    {
+      "new_end": 153,
+      "new_start": 113,
+      "new_utf8": "al post-BRANCH goal-ordering preferences",
+      "old_end": 158,
+      "old_start": 158,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 358,
+      "new_start": 357,
+      "new_utf8": "4",
+      "old_end": 363,
+      "old_start": 362,
+      "old_utf8": "3"
+    },
+    {
+      "new_end": 360,
+      "new_start": 359,
+      "new_utf8": "t",
+      "old_end": 364,
+      "old_start": 364,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 366,
+      "new_start": 361,
+      "new_utf8": "ansac",
+      "old_end": 366,
+      "old_start": 365,
+      "old_utf8": "e"
+    },
+    {
+      "new_end": 367,
+      "new_start": 367,
+      "new_utf8": "",
+      "old_end": 368,
+      "old_start": 367,
+      "old_utf8": "a"
+    },
+    {
+      "new_end": 368,
+      "new_start": 368,
+      "new_utf8": "",
+      "old_end": 377,
+      "old_start": 369,
+      "old_utf8": "ned-curs"
+    },
+    {
+      "new_end": 369,
+      "new_start": 369,
+      "new_utf8": "",
+      "old_end": 385,
+      "old_start": 378,
+      "old_utf8": "r-prove"
+    },
+    {
+      "new_end": 382,
+      "new_start": 371,
+      "new_utf8": "l-goal-advi",
+      "old_end": 388,
+      "old_start": 387,
+      "old_utf8": "n"
+    },
+    {
+      "new_end": 1201,
+      "new_start": 660,
+      "new_utf8": "\nADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v1'\nADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v1'\nADVICE_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',\n    'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',\n    'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')\nHINT_REJECTION_REASONS = ('already_selected', 'branch_excluded_complete_key',\n    'whole_support_capacity', 'whole_remote_or_metadata_mark_conflict')",
+      "old_end": 666,
+      "old_start": 666,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 4691,
+      "new_start": 4631,
+      "new_utf8": ",\n                 branch_adviser=None, validate_advice=None",
+      "old_end": 4096,
+      "old_start": 4096,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 5504,
+      "new_start": 5189,
+      "new_utf8": "\n        need((branch_adviser is None and validate_advice is None)\n             or (callable(branch_adviser) and callable(validate_advice)),\n             'both optional advice endpoints or neither')\n        self.branch_adviser, self.validate_advice = branch_adviser, validate_advice\n        self._preferences = None",
+      "old_end": 4594,
+      "old_start": 4594,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 6437,
+      "new_start": 6245,
+      "new_utf8": "es=0, advice_calls=0, advice_unknown=0,\n                           advice_selected=0, pending_checks=0, pending_selected=0,\n                           pending_rejected=0, fallback_branch_choic",
+      "old_end": 5335,
+      "old_start": 5335,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 8914,
+      "new_start": 8860,
+      "new_utf8": "pending_preferences': self._preferences,\n            '",
+      "old_end": 7758,
+      "old_start": 7758,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 10017,
+      "new_start": 9998,
+      "new_utf8": ", self._preferences",
+      "old_end": 8842,
+      "old_start": 8842,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 10401,
+      "new_start": 10373,
+      "new_utf8": ",\n         self._preferences",
+      "old_end": 9198,
+      "old_start": 9198,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 46147,
+      "new_start": 36678,
+      "new_utf8": "_checked_advice(self, decision, batch, mode):\n        \"\"\"Join a fresh independent receipt; never reinterpret a raised failure.\"\"\"\n        self.tick()\n        receipt = self.validate_advice(state=self._copy(self._state),\n            decision=self._copy(decision), batch=self._copy(batch), tick=self.tick)\n        # An adviser-local UNKNOWN is not permission to outlive the owning clock.\n        self.tick()\n        receipt = self._copy(receipt)\n        fields = {'schema', 'version', 'mode', 'binding', 'state_sha256',\n                  'decision', 'input_sha256', 'selection', 'rejections'} | set(ADVICE_FLAGS)\n        need(type(receipt) is dict and set(receipt) == fields\n             and receipt['schema'] == 'unit-row-advice-validation-v1'\n             and receipt['version'] == ADVICE_VALIDATOR_VERSION and receipt['mode'] == mode\n             and canonical(receipt['binding']) == canonical(self.language.binding)\n             and receipt['state_sha256'] == digest(self._state)\n             and canonical(receipt['decision']) == canonical(decision)\n             and receipt['input_sha256'] == digest(batch)\n             and all(receipt[k] is False for k in ADVICE_FLAGS),\n             'independent advice receipt exact current input and false authority flags')\n        need(type(receipt['rejections']) is list and len(receipt['rejections']) <= 24,\n             'bounded explicit pending rejections')\n        rejected = set()\n        requested = {canonical(k) for k in batch['keys']} if mode == 'PENDING_KEYS' else set()\n        for rejection in receipt['rejections']:\n            self.tick()\n            need(type(rejection) is dict and set(rejection) == {'key', 'reason'}\n                 and rejection['reason'] in HINT_REJECTION_REASONS,\n                 'only definite original legality returns remove a hint')\n            identity = canonical(rejection['key'])\n            need(identity in requested and identity not in rejected,\n                 'each rejected full key belongs to this pending request once')\n            rejected.add(identity)\n        selection = receipt['selection']\n        if selection is not None:\n            need(type(selection) is dict and set(selection) == {'anchor', 'future_keys', 'origin'},\n                 'independent chosen family fields')\n            anchor = self._candidate(selection['anchor'], decision['row'])\n            identity = canonical(anchor['placement_key'])\n            need(identity not in rejected and type(selection['future_keys']) is list\n                 and len(selection['future_keys']) <= 23 and type(selection['origin']) is dict,\n                 'chosen anchor and bounded future preferences')\n            seen = {identity}\n            for key in selection['future_keys']:\n                self.tick()\n                need(type(key) is dict and set(key) == {'tile_type_id', 'type_preimage', 'translation'}\n                     and type(key['translation']) is list and len(key['translation']) == 2\n                     and type(key['translation'][0]) is int and key['translation'][0] == 0\n                     and type(key['translation'][1]) is int\n                     and decision['row'] < key['translation'][1] < 24,\n                     'full later-row preference keys, never installed members')\n                encoded = canonical(key)\n                need(encoded not in seen, 'unique full future keys')\n                seen.add(encoded)\n            if mode == 'PENDING_KEYS':\n                need(identity in requested and selection['future_keys'] == []\n                     and selection['origin'] == {'family_id': batch['family_id']},\n                     'pending selection belongs to existing family only')\n            selection = dict(selection, anchor=anchor)\n        return selection, rejected\n\n    def _select_branch(self, decision):\n        \"\"\"Pure with respect to preference state; called only after global BRANCH.\"\"\"\n        need(decision['kind'] == 'BRANCH', 'advice cannot bypass global scheduler')\n        row, preferences = decision['row'], self._copy(self._preferences)\n        dropped = []\n        if preferences is not None:\n            keys = [k for k in preferences['pending_keys'] if k['translation'][1] == row]\n            if keys:\n                self.counts['pending_checks'] += 1\n                request = {'schema': 'unit-row-pending-preference-request-v1',\n                    'binding': self._copy(self.language.binding),\n                    'state_sha256': digest(self._state), 'decision': self._copy(decision),\n                    'family_id': preferences['family_id'], 'keys': keys}\n                selected, rejected = self._checked_advice(decision, request, 'PENDING_KEYS')\n                dropped = [self._copy(k) for k in keys if canonical(k) in rejected]\n                self.counts['pending_rejected'] += len(dropped)\n                preferences = dict(preferences, pending_keys=[k for k in preferences['pending_keys']\n                                                               if canonical(k) not in rejected])\n                if selected is not None:\n                    anchor = selected['anchor']\n                    chosen = canonical(anchor['placement_key'])\n                    remaining = [k for k in preferences['pending_keys'] if canonical(k) != chosen]\n                    lineage = preferences['lineage'] + [{'mode': 'PENDING_KEYS',\n                        'key': self._copy(anchor['placement_key']), 'state_sha256': digest(self._state)}]\n                    need(len(lineage) <= 24, 'one preference lineage entry per installed row')\n                    preferences = dict(preferences, pending_keys=remaining, lineage=lineage)\n                    return {'candidate': anchor, 'mode': 'PENDING_KEYS',\n                        'preferences': preferences if remaining else None,\n                        'family_id': request['family_id'], 'origin': selected['origin'],\n                        'rejected_keys': dropped}\n                if not preferences['pending_keys']:\n                    preferences = None\n        # Preserve one chosen family across intervening canonical branches.\n        # A new unrelated batch cannot replace an unconsumed family.\n        if preferences is None:\n            self.counts['advice_calls'] += 1\n            batch = self.branch_adviser(state=self._copy(self._state),\n                                        decision=self._copy(decision), tick=self.tick)\n            self.tick()\n            need(type(batch) is dict and batch.get('schema') == 'unit-row-goal-branch-advice-batch-v1'\n                 and batch.get('version') == ADVISER_VERSION\n                 and batch.get('status') in ('READY', 'UNKNOWN'), 'current advisory batch status')\n            if batch['status'] == 'UNKNOWN':\n                # No partial candidate, pending key, completion or pruning is used.\n                self.counts['advice_unknown'] += 1\n            else:\n                selected, rejected = self._checked_advice(decision, batch, 'ADVICE_BATCH')\n                need(not rejected, 'READY validation never silently drops bad members')\n                if selected is not None:\n                    anchor, future = selected['anchor'], selected['future_keys']\n                    origin = self._copy(selected['origin'])\n                    family_id = digest({'binding': self.language.binding, 'origin': origin,\n                        'anchor_key': anchor['placement_key'], 'future_keys': future})\n                    family = {'schema': 'unit-row-branch-preference-family-v1',\n                        'family_id': family_id, 'binding': self._copy(self.language.binding),\n                        'origin': origin, 'anchor_key': self._copy(anchor['placement_key']),\n                        'pending_keys': self._copy(future), 'lineage': [{'mode': 'ADVICE_BATCH',\n                            'key': self._copy(anchor['placement_key']), 'state_sha256': digest(self._state)}]}\n                    return {'candidate': anchor, 'mode': 'ADVICE_BATCH',\n                        'preferences': family if future else None, 'family_id': family_id,\n                        'origin': origin, 'rejected_keys': dropped}\n        self.counts['fallback_branch_choices'] += 1\n        slot = self._slots.get(row)\n        if slot is not None and slot['candidates']:\n            candidate = self._copy(slot['candidates'][0])\n        else:\n            item = self.next_alternative(row)\n            if item['kind'] == 'EOF':\n                raise Unresolved('no canonical branch alternative; EOF is not pruning authority')\n            candidate = item['candidate']\n        return {'candidate': candidate, 'mode': 'CANONICAL_FALLBACK',\n            'preferences': preferences, 'family_id': None if preferences is None else preferences['family_id'],\n            'origin': None, 'rejected_keys': dropped}\n\n    def _adopt_branch(self, plan):\n        \"\"\"Called INSIDE the owned child try/finally; no future mark is imposed.\"\"\"\n        self._preferences = self._copy(plan['preferences'])\n        if plan['mode'] == 'ADVICE_BATCH':\n            self.counts['advice_selected'] += 1\n        elif plan['mode'] == 'PENDING_KEYS':\n            self.counts['pending_selected'] += 1\n        self._observe(plan['candidate'])\n        self._emit('ADVICE', mode=plan['mode'], family_id=plan['family_id'],\n            key=plan['candidate']['placement_key'], origin=plan['origin'],\n            rejected_keys=plan['rejected_keys'], pending_preferences=self._preferences)\n\n    def ",
+      "old_end": 35475,
+      "old_start": 35475,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 47240,
+      "new_start": 47205,
+      "new_utf8": "branch_plan = None\n                ",
+      "old_end": 36533,
+      "old_start": 36533,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 47668,
+      "new_start": 47453,
+      "new_utf8": "if self.branch_adviser is not None:\n                        branch_plan = self._select_branch(decision)\n                        candidate = branch_plan['candidate']\n                    else:\n                        ",
+      "old_end": 36746,
+      "old_start": 36746,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 47700,
+      "new_start": 47696,
+      "new_utf8": "    ",
+      "old_end": 36774,
+      "old_start": 36774,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 47768,
+      "new_start": 47764,
+      "new_utf8": "    ",
+      "old_end": 36838,
+      "old_start": 36838,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 47862,
+      "new_start": 47858,
+      "new_utf8": "    ",
+      "old_end": 36928,
+      "old_start": 36928,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 47872,
+      "new_start": 47868,
+      "new_utf8": "    ",
+      "old_end": 36934,
+      "old_start": 36934,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 47958,
+      "new_start": 47954,
+      "new_utf8": "    ",
+      "old_end": 37016,
+      "old_start": 37016,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 47988,
+      "new_start": 47984,
+      "new_utf8": "    ",
+      "old_end": 37042,
+      "old_start": 37042,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 48102,
+      "new_start": 48098,
+      "new_utf8": "    ",
+      "old_end": 37152,
+      "old_start": 37152,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 48426,
+      "new_start": 48322,
+      "new_utf8": "\n                    if branch_plan is not None:\n                        self._adopt_branch(branch_plan)",
+      "old_end": 37372,
+      "old_start": 37372,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 50270,
+      "new_start": 50200,
+      "new_utf8": "branch_advice_enabled': self.branch_adviser is not None,\n            '",
+      "old_end": 39146,
+      "old_start": 39146,
+      "old_utf8": ""
+    }
+  ],
+  "execution": "AST compile only; no Source evaluation or calls.",
+  "schema": "unit-row-goal-advice-engine-source-delta-v1",
+  "source_only": true,
+  "unchanged_callables": [
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "need",
+      "sha256_utf8_body": "9b81736234f0f8676c37d012e9e26cdf8a5bf4e87f0c88f8f592772e80850bc0"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "canonical",
+      "sha256_utf8_body": "4fdf55942834873a2c99effa6eed13a99ddc74cb59db6f51fa92858aee75d6d6"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "digest",
+      "sha256_utf8_body": "41d801acdaad42a80eec7621fbcc328ea7b6e2f8c0d778185efcd6268342d221"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "diagnostic_copy",
+      "sha256_utf8_body": "08d1848ee5b6f7ac67fcf78553f44d2273013db904368d2063eda19a915becd6"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "select_schedule",
+      "sha256_utf8_body": "e1751251b8cfa1c626ee969186e4f7f737fb5844e3eab46e7a728488a9d97d03"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "certify_by_current_cover",
+      "sha256_utf8_body": "510516bea70d1f0416d958b0bf13aa6b2a84a02a2a719464eb385dd783e4013a"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "_Checkpoint.__init__",
+      "sha256_utf8_body": "038fff8ffa14229ae04b607134d4dc45e61eeede64c8bcb01decb581d9db984d"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._copy",
+      "sha256_utf8_body": "fdbf72a8d0f310d4650194d8016f51525a1206ecb93944cc0f5270fc67e9b97c"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._reference_counts",
+      "sha256_utf8_body": "719ceb98f778303af048bafefe3835df540c3a30b87a5842de9c6b14c6a62f23"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._emit",
+      "sha256_utf8_body": "0eb86c7f546d52b74ebcfb3c2a21e7b5e5d606460029aece766e694b8d2b00f3"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.state_snapshot",
+      "sha256_utf8_body": "a991a956a1ed7c4435b55aec0d5294d3fad0e7b7d2937e071985643abd31d3a4"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._check_authority",
+      "sha256_utf8_body": "507c891e3d0d47d27495b9a8102735ef5c2b8dabb64ceaff964d0ba9626b89cd"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._transfer_receipt",
+      "sha256_utf8_body": "ae8a51f22d8999910707fb9d7ac493a358cbcf056159174bfaaa236ad6db801b"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._has_archived_context",
+      "sha256_utf8_body": "e4c9afaef83928dd4740acc793a6f090fa0e557974e51ea0540106ccc487eaca"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._archive_context",
+      "sha256_utf8_body": "8246169340ea8cd00189b4fa52f80060650f10e4443831919d005846d821400b"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._install",
+      "sha256_utf8_body": "4186455d0269d847a7a16b33bd585f8b0763c5e98524d20e68be43f010edbb89"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._candidate",
+      "sha256_utf8_body": "c7c9598c3495ecc0ee99e0c96b952ee470ac4a854b60c35596c06130b2e5769c"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._observe",
+      "sha256_utf8_body": "383b6920004fac23fa0c060f1026b20085b29355c079bdfc34cd5d32693a7b39"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.place",
+      "sha256_utf8_body": "75c8c221963a1578bbcae0838babec946833c06241d48426e02b4098992abfd6"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._exclude_exhausted",
+      "sha256_utf8_body": "594224b147ebf21d1691147f6c307b46e57507f6f33d6cb96ffec6355d26c47d"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._open",
+      "sha256_utf8_body": "64fa28d1f1852aaad3bd7a26fba90a9d85962fa0fcef7fc93d8cff12a2d375fe"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._advance",
+      "sha256_utf8_body": "4bdc6e99d91b4023c51027c42b45f3c2377af2106158098136908bf0be4262f2"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.next_alternative",
+      "sha256_utf8_body": "058a63bdd844947911ca9a94d58f49581bb8d930d39b5ab558278523fc12952e"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._fallback_degree",
+      "sha256_utf8_body": "06d61d21dc32a37be7627b363ea0a2c3f48f4fc2c5a62558046ef6fbf6b8122c"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._validate_receipt",
+      "sha256_utf8_body": "32eb88642e8fb869a156119736d19d0a1e205e545e62d498e38ef6dd9f2623f8"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.decision",
+      "sha256_utf8_body": "3f92bf5e601a05469d93a1fb14e3370e1c8917c52b81082c5e93ef0d21b76a4c"
+    },
+    {
+      "ast_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._word",
+      "sha256_utf8_body": "cadb9c4e04ee1322d23be64f1a67a61f084923e6738a188274016bc4055efa4c"
+    }
+  ],
+  "unified_forward_patch": "--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py\n+++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py\n@@ -1,17 +1,24 @@\n \"\"\"SOURCE ONLY original unit-row engine, named EARLIEST-GENERATION-ROW-TIE.\n \n-No project imports or clocks. Source-only successor with checked domain retention.\n+No project imports or clocks. Optional post-BRANCH goal-ordering preferences.\n Caller authenticates language, current semantics,\n proposer and complete fallback Sources. EOF alone never proves zero/exhaustion.\n \"\"\"\n import hashlib\n import json\n \n-VERSION = 'lazy-unit-row-global-engine-v3-retained-cursor-provenance'\n+VERSION = 'lazy-unit-row-global-engine-v4-transactional-goal-advice'\n VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'\n SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'\n FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'\n TRANSITION_VERSION = 'unit-row-domain-transition-checker-v1'\n+ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v1'\n+ADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v1'\n+ADVICE_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',\n+    'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',\n+    'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')\n+HINT_REJECTION_REASONS = ('already_selected', 'branch_excluded_complete_key',\n+    'whole_support_capacity', 'whole_remote_or_metadata_mark_conflict')\n RULES = ['axiom', 'assumption', 'instantiate', 'eq_subst', 'mp', 'generalize']\n \n \n@@ -92,7 +99,8 @@\n class LazyUnitRowEngine:\n     def __init__(self, *, language, degree_proposer, semantics, fallback,\n                  certify_fallback, transition_checker, tick, initial_state=None,\n-                 maximum_nodes=128, maximum_events=2000):\n+                 maximum_nodes=128, maximum_events=2000,\n+                 branch_adviser=None, validate_advice=None):\n         tick()\n         need(semantics.VERSION == SEMANTICS_VERSION, 'selected independent semantics API')\n         need(type(maximum_nodes) is int and 0 < maximum_nodes <= 128\n@@ -101,6 +109,11 @@\n         self.language, self.semantics, self.tick = language, semantics, tick\n         self.degree_proposer, self.fallback = degree_proposer, fallback\n         self.certify_fallback = certify_fallback\n+        need((branch_adviser is None and validate_advice is None)\n+             or (callable(branch_adviser) and callable(validate_advice)),\n+             'both optional advice endpoints or neither')\n+        self.branch_adviser, self.validate_advice = branch_adviser, validate_advice\n+        self._preferences = None\n         need(transition_checker.VERSION == TRANSITION_VERSION, 'selected transition checker')\n         self.transition_checker = transition_checker\n         self._authority = canonical(transition_checker.authority_snapshot(\n@@ -111,7 +124,9 @@\n         self.counts = dict(nodes=0, placements=0, forced=0, branches=0, backtracks=0, restores=0,\n                            global_scans=0, fallback_advances=0, cursor_replays=0,\n                            retained_domains=0, invalidated_domains=0, retained_queries=0,\n-                           retained_prefixes=0)\n+                           retained_prefixes=0, advice_calls=0, advice_unknown=0,\n+                           advice_selected=0, pending_checks=0, pending_selected=0,\n+                           pending_rejected=0, fallback_branch_choices=0)\n         epoch = language.binding['language_epoch']\n         if initial_state is None:\n             marks = [[[1, k], ['outside', epoch]] for k in range(-23, 0)]\n@@ -158,6 +173,7 @@\n             'exposed_candidates': [[k, v] for k, v in sorted(self._observed.items())],\n             'reverse_dependencies': [[list(p), sorted(keys)] for p, keys in sorted(self._reverse.items())],\n             'last_transition': self._last_transition,\n+            'pending_preferences': self._preferences,\n             'authority_sha256': hashlib.sha256(self._authority.encode('utf8')).hexdigest(),\n             'implicit_dependencies': {'scope': 'ALL_POSSIBLE_UNIT_ROW_SUPPORT_PLUS_COLLISION_LEDGER',\n                 'rows': [{'row': r, 'positive': [0, r], 'output': [1, r],\n@@ -175,13 +191,14 @@\n         # These containers are copy-on-write. No mutable iterator is authority.\n         return _Checkpoint(self, (self._state, self._revision, self._versions,\n             self._refs, self._certs, self._slots, self._observed, self._reverse,\n-            self._last_transition))\n+            self._last_transition, self._preferences))\n \n     def rollback(self, token):\n         \"\"\"No callback/replay needed for restoration after an exhausted budget.\"\"\"\n         need(type(token) is _Checkpoint and token.owner is self, 'owned checkpoint')\n         (self._state, self._revision, self._versions, self._refs, self._certs,\n-         self._slots, self._observed, self._reverse, self._last_transition) = token.payload\n+         self._slots, self._observed, self._reverse, self._last_transition,\n+         self._preferences) = token.payload\n         self._live = {}  # Lazily reopen and verify the saved full prefix on use.\n \n     def _check_authority(self):\n@@ -623,6 +640,152 @@\n             word.append(command)\n         return word\n \n+    def _checked_advice(self, decision, batch, mode):\n+        \"\"\"Join a fresh independent receipt; never reinterpret a raised failure.\"\"\"\n+        self.tick()\n+        receipt = self.validate_advice(state=self._copy(self._state),\n+            decision=self._copy(decision), batch=self._copy(batch), tick=self.tick)\n+        # An adviser-local UNKNOWN is not permission to outlive the owning clock.\n+        self.tick()\n+        receipt = self._copy(receipt)\n+        fields = {'schema', 'version', 'mode', 'binding', 'state_sha256',\n+                  'decision', 'input_sha256', 'selection', 'rejections'} | set(ADVICE_FLAGS)\n+        need(type(receipt) is dict and set(receipt) == fields\n+             and receipt['schema'] == 'unit-row-advice-validation-v1'\n+             and receipt['version'] == ADVICE_VALIDATOR_VERSION and receipt['mode'] == mode\n+             and canonical(receipt['binding']) == canonical(self.language.binding)\n+             and receipt['state_sha256'] == digest(self._state)\n+             and canonical(receipt['decision']) == canonical(decision)\n+             and receipt['input_sha256'] == digest(batch)\n+             and all(receipt[k] is False for k in ADVICE_FLAGS),\n+             'independent advice receipt exact current input and false authority flags')\n+        need(type(receipt['rejections']) is list and len(receipt['rejections']) <= 24,\n+             'bounded explicit pending rejections')\n+        rejected = set()\n+        requested = {canonical(k) for k in batch['keys']} if mode == 'PENDING_KEYS' else set()\n+        for rejection in receipt['rejections']:\n+            self.tick()\n+            need(type(rejection) is dict and set(rejection) == {'key', 'reason'}\n+                 and rejection['reason'] in HINT_REJECTION_REASONS,\n+                 'only definite original legality returns remove a hint')\n+            identity = canonical(rejection['key'])\n+            need(identity in requested and identity not in rejected,\n+                 'each rejected full key belongs to this pending request once')\n+            rejected.add(identity)\n+        selection = receipt['selection']\n+        if selection is not None:\n+            need(type(selection) is dict and set(selection) == {'anchor', 'future_keys', 'origin'},\n+                 'independent chosen family fields')\n+            anchor = self._candidate(selection['anchor'], decision['row'])\n+            identity = canonical(anchor['placement_key'])\n+            need(identity not in rejected and type(selection['future_keys']) is list\n+                 and len(selection['future_keys']) <= 23 and type(selection['origin']) is dict,\n+                 'chosen anchor and bounded future preferences')\n+            seen = {identity}\n+            for key in selection['future_keys']:\n+                self.tick()\n+                need(type(key) is dict and set(key) == {'tile_type_id', 'type_preimage', 'translation'}\n+                     and type(key['translation']) is list and len(key['translation']) == 2\n+                     and type(key['translation'][0]) is int and key['translation'][0] == 0\n+                     and type(key['translation'][1]) is int\n+                     and decision['row'] < key['translation'][1] < 24,\n+                     'full later-row preference keys, never installed members')\n+                encoded = canonical(key)\n+                need(encoded not in seen, 'unique full future keys')\n+                seen.add(encoded)\n+            if mode == 'PENDING_KEYS':\n+                need(identity in requested and selection['future_keys'] == []\n+                     and selection['origin'] == {'family_id': batch['family_id']},\n+                     'pending selection belongs to existing family only')\n+            selection = dict(selection, anchor=anchor)\n+        return selection, rejected\n+\n+    def _select_branch(self, decision):\n+        \"\"\"Pure with respect to preference state; called only after global BRANCH.\"\"\"\n+        need(decision['kind'] == 'BRANCH', 'advice cannot bypass global scheduler')\n+        row, preferences = decision['row'], self._copy(self._preferences)\n+        dropped = []\n+        if preferences is not None:\n+            keys = [k for k in preferences['pending_keys'] if k['translation'][1] == row]\n+            if keys:\n+                self.counts['pending_checks'] += 1\n+                request = {'schema': 'unit-row-pending-preference-request-v1',\n+                    'binding': self._copy(self.language.binding),\n+                    'state_sha256': digest(self._state), 'decision': self._copy(decision),\n+                    'family_id': preferences['family_id'], 'keys': keys}\n+                selected, rejected = self._checked_advice(decision, request, 'PENDING_KEYS')\n+                dropped = [self._copy(k) for k in keys if canonical(k) in rejected]\n+                self.counts['pending_rejected'] += len(dropped)\n+                preferences = dict(preferences, pending_keys=[k for k in preferences['pending_keys']\n+                                                               if canonical(k) not in rejected])\n+                if selected is not None:\n+                    anchor = selected['anchor']\n+                    chosen = canonical(anchor['placement_key'])\n+                    remaining = [k for k in preferences['pending_keys'] if canonical(k) != chosen]\n+                    lineage = preferences['lineage'] + [{'mode': 'PENDING_KEYS',\n+                        'key': self._copy(anchor['placement_key']), 'state_sha256': digest(self._state)}]\n+                    need(len(lineage) <= 24, 'one preference lineage entry per installed row')\n+                    preferences = dict(preferences, pending_keys=remaining, lineage=lineage)\n+                    return {'candidate': anchor, 'mode': 'PENDING_KEYS',\n+                        'preferences': preferences if remaining else None,\n+                        'family_id': request['family_id'], 'origin': selected['origin'],\n+                        'rejected_keys': dropped}\n+                if not preferences['pending_keys']:\n+                    preferences = None\n+        # Preserve one chosen family across intervening canonical branches.\n+        # A new unrelated batch cannot replace an unconsumed family.\n+        if preferences is None:\n+            self.counts['advice_calls'] += 1\n+            batch = self.branch_adviser(state=self._copy(self._state),\n+                                        decision=self._copy(decision), tick=self.tick)\n+            self.tick()\n+            need(type(batch) is dict and batch.get('schema') == 'unit-row-goal-branch-advice-batch-v1'\n+                 and batch.get('version') == ADVISER_VERSION\n+                 and batch.get('status') in ('READY', 'UNKNOWN'), 'current advisory batch status')\n+            if batch['status'] == 'UNKNOWN':\n+                # No partial candidate, pending key, completion or pruning is used.\n+                self.counts['advice_unknown'] += 1\n+            else:\n+                selected, rejected = self._checked_advice(decision, batch, 'ADVICE_BATCH')\n+                need(not rejected, 'READY validation never silently drops bad members')\n+                if selected is not None:\n+                    anchor, future = selected['anchor'], selected['future_keys']\n+                    origin = self._copy(selected['origin'])\n+                    family_id = digest({'binding': self.language.binding, 'origin': origin,\n+                        'anchor_key': anchor['placement_key'], 'future_keys': future})\n+                    family = {'schema': 'unit-row-branch-preference-family-v1',\n+                        'family_id': family_id, 'binding': self._copy(self.language.binding),\n+                        'origin': origin, 'anchor_key': self._copy(anchor['placement_key']),\n+                        'pending_keys': self._copy(future), 'lineage': [{'mode': 'ADVICE_BATCH',\n+                            'key': self._copy(anchor['placement_key']), 'state_sha256': digest(self._state)}]}\n+                    return {'candidate': anchor, 'mode': 'ADVICE_BATCH',\n+                        'preferences': family if future else None, 'family_id': family_id,\n+                        'origin': origin, 'rejected_keys': dropped}\n+        self.counts['fallback_branch_choices'] += 1\n+        slot = self._slots.get(row)\n+        if slot is not None and slot['candidates']:\n+            candidate = self._copy(slot['candidates'][0])\n+        else:\n+            item = self.next_alternative(row)\n+            if item['kind'] == 'EOF':\n+                raise Unresolved('no canonical branch alternative; EOF is not pruning authority')\n+            candidate = item['candidate']\n+        return {'candidate': candidate, 'mode': 'CANONICAL_FALLBACK',\n+            'preferences': preferences, 'family_id': None if preferences is None else preferences['family_id'],\n+            'origin': None, 'rejected_keys': dropped}\n+\n+    def _adopt_branch(self, plan):\n+        \"\"\"Called INSIDE the owned child try/finally; no future mark is imposed.\"\"\"\n+        self._preferences = self._copy(plan['preferences'])\n+        if plan['mode'] == 'ADVICE_BATCH':\n+            self.counts['advice_selected'] += 1\n+        elif plan['mode'] == 'PENDING_KEYS':\n+            self.counts['pending_selected'] += 1\n+        self._observe(plan['candidate'])\n+        self._emit('ADVICE', mode=plan['mode'], family_id=plan['family_id'],\n+            key=plan['candidate']['placement_key'], origin=plan['origin'],\n+            rejected_keys=plan['rejected_keys'], pending_preferences=self._preferences)\n+\n     def search(self):\n         \"\"\"Full rollback on FOUND/UNKNOWN too; only exhausted child permits exclusion.\"\"\"\n         before = self.state_snapshot()\n@@ -647,22 +810,29 @@\n                     found = {'state': self._copy(self._state), 'word_proposal': self._word()}\n                     return 'POINT_BOARD_PROPOSAL'\n                 row = decision['row']\n+                branch_plan = None\n                 if kind == 'FORCED':\n                     candidate = decision['candidate']\n                     self.counts['forced'] += 1\n                 else:\n                     self.counts['branches'] += 1\n-                    slot = self._slots.get(row)\n-                    if slot is not None and slot['candidates']:\n-                        candidate = self._copy(slot['candidates'][0])\n+                    if self.branch_adviser is not None:\n+                        branch_plan = self._select_branch(decision)\n+                        candidate = branch_plan['candidate']\n                     else:\n-                        item = self.next_alternative(row)\n-                        if item['kind'] == 'EOF':\n-                            raise Unresolved('no canonical branch alternative; EOF is not pruning authority')\n-                        candidate = item['candidate']\n+                        slot = self._slots.get(row)\n+                        if slot is not None and slot['candidates']:\n+                            candidate = self._copy(slot['candidates'][0])\n+                        else:\n+                            item = self.next_alternative(row)\n+                            if item['kind'] == 'EOF':\n+                                raise Unresolved('no canonical branch alternative; EOF is not pruning authority')\n+                            candidate = item['candidate']\n                 checkpoint = self.checkpoint()\n                 self._emit('TRY', depth=depth, row=row, mode=kind, key=candidate['placement_key'])\n                 try:\n+                    if branch_plan is not None:\n+                        self._adopt_branch(branch_plan)\n                     self.place(candidate)\n                     child = walk(depth+1)\n                 except TimeoutError:\n@@ -699,6 +869,7 @@\n             self.tick()\n         return {'schema': 'unit-row-lazy-global-search-result-v1', 'version': VERSION,\n             'variant': VARIANT, 'status': status, 'reason': reason,\n+            'branch_advice_enabled': self.branch_adviser is not None,\n             'input_epoch': self._state['input_epoch'], 'root_restored': True,\n             'stack_restored': True, 'last_observed_state': last_state,\n             'root_snapshot_sha256': digest(before), 'final_snapshot_sha256': digest(after),\n",
+  "unified_inverse_patch": "--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py\n+++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py\n@@ -1,24 +1,17 @@\n \"\"\"SOURCE ONLY original unit-row engine, named EARLIEST-GENERATION-ROW-TIE.\n \n-No project imports or clocks. Optional post-BRANCH goal-ordering preferences.\n+No project imports or clocks. Source-only successor with checked domain retention.\n Caller authenticates language, current semantics,\n proposer and complete fallback Sources. EOF alone never proves zero/exhaustion.\n \"\"\"\n import hashlib\n import json\n \n-VERSION = 'lazy-unit-row-global-engine-v4-transactional-goal-advice'\n+VERSION = 'lazy-unit-row-global-engine-v3-retained-cursor-provenance'\n VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'\n SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'\n FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'\n TRANSITION_VERSION = 'unit-row-domain-transition-checker-v1'\n-ADVISER_VERSION = 'unit-row-generic-goal-branch-adviser-v1'\n-ADVICE_VALIDATOR_VERSION = 'unit-row-independent-advice-consumer-validator-v1'\n-ADVICE_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',\n-    'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',\n-    'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')\n-HINT_REJECTION_REASONS = ('already_selected', 'branch_excluded_complete_key',\n-    'whole_support_capacity', 'whole_remote_or_metadata_mark_conflict')\n RULES = ['axiom', 'assumption', 'instantiate', 'eq_subst', 'mp', 'generalize']\n \n \n@@ -99,8 +92,7 @@\n class LazyUnitRowEngine:\n     def __init__(self, *, language, degree_proposer, semantics, fallback,\n                  certify_fallback, transition_checker, tick, initial_state=None,\n-                 maximum_nodes=128, maximum_events=2000,\n-                 branch_adviser=None, validate_advice=None):\n+                 maximum_nodes=128, maximum_events=2000):\n         tick()\n         need(semantics.VERSION == SEMANTICS_VERSION, 'selected independent semantics API')\n         need(type(maximum_nodes) is int and 0 < maximum_nodes <= 128\n@@ -109,11 +101,6 @@\n         self.language, self.semantics, self.tick = language, semantics, tick\n         self.degree_proposer, self.fallback = degree_proposer, fallback\n         self.certify_fallback = certify_fallback\n-        need((branch_adviser is None and validate_advice is None)\n-             or (callable(branch_adviser) and callable(validate_advice)),\n-             'both optional advice endpoints or neither')\n-        self.branch_adviser, self.validate_advice = branch_adviser, validate_advice\n-        self._preferences = None\n         need(transition_checker.VERSION == TRANSITION_VERSION, 'selected transition checker')\n         self.transition_checker = transition_checker\n         self._authority = canonical(transition_checker.authority_snapshot(\n@@ -124,9 +111,7 @@\n         self.counts = dict(nodes=0, placements=0, forced=0, branches=0, backtracks=0, restores=0,\n                            global_scans=0, fallback_advances=0, cursor_replays=0,\n                            retained_domains=0, invalidated_domains=0, retained_queries=0,\n-                           retained_prefixes=0, advice_calls=0, advice_unknown=0,\n-                           advice_selected=0, pending_checks=0, pending_selected=0,\n-                           pending_rejected=0, fallback_branch_choices=0)\n+                           retained_prefixes=0)\n         epoch = language.binding['language_epoch']\n         if initial_state is None:\n             marks = [[[1, k], ['outside', epoch]] for k in range(-23, 0)]\n@@ -173,7 +158,6 @@\n             'exposed_candidates': [[k, v] for k, v in sorted(self._observed.items())],\n             'reverse_dependencies': [[list(p), sorted(keys)] for p, keys in sorted(self._reverse.items())],\n             'last_transition': self._last_transition,\n-            'pending_preferences': self._preferences,\n             'authority_sha256': hashlib.sha256(self._authority.encode('utf8')).hexdigest(),\n             'implicit_dependencies': {'scope': 'ALL_POSSIBLE_UNIT_ROW_SUPPORT_PLUS_COLLISION_LEDGER',\n                 'rows': [{'row': r, 'positive': [0, r], 'output': [1, r],\n@@ -191,14 +175,13 @@\n         # These containers are copy-on-write. No mutable iterator is authority.\n         return _Checkpoint(self, (self._state, self._revision, self._versions,\n             self._refs, self._certs, self._slots, self._observed, self._reverse,\n-            self._last_transition, self._preferences))\n+            self._last_transition))\n \n     def rollback(self, token):\n         \"\"\"No callback/replay needed for restoration after an exhausted budget.\"\"\"\n         need(type(token) is _Checkpoint and token.owner is self, 'owned checkpoint')\n         (self._state, self._revision, self._versions, self._refs, self._certs,\n-         self._slots, self._observed, self._reverse, self._last_transition,\n-         self._preferences) = token.payload\n+         self._slots, self._observed, self._reverse, self._last_transition) = token.payload\n         self._live = {}  # Lazily reopen and verify the saved full prefix on use.\n \n     def _check_authority(self):\n@@ -640,152 +623,6 @@\n             word.append(command)\n         return word\n \n-    def _checked_advice(self, decision, batch, mode):\n-        \"\"\"Join a fresh independent receipt; never reinterpret a raised failure.\"\"\"\n-        self.tick()\n-        receipt = self.validate_advice(state=self._copy(self._state),\n-            decision=self._copy(decision), batch=self._copy(batch), tick=self.tick)\n-        # An adviser-local UNKNOWN is not permission to outlive the owning clock.\n-        self.tick()\n-        receipt = self._copy(receipt)\n-        fields = {'schema', 'version', 'mode', 'binding', 'state_sha256',\n-                  'decision', 'input_sha256', 'selection', 'rejections'} | set(ADVICE_FLAGS)\n-        need(type(receipt) is dict and set(receipt) == fields\n-             and receipt['schema'] == 'unit-row-advice-validation-v1'\n-             and receipt['version'] == ADVICE_VALIDATOR_VERSION and receipt['mode'] == mode\n-             and canonical(receipt['binding']) == canonical(self.language.binding)\n-             and receipt['state_sha256'] == digest(self._state)\n-             and canonical(receipt['decision']) == canonical(decision)\n-             and receipt['input_sha256'] == digest(batch)\n-             and all(receipt[k] is False for k in ADVICE_FLAGS),\n-             'independent advice receipt exact current input and false authority flags')\n-        need(type(receipt['rejections']) is list and len(receipt['rejections']) <= 24,\n-             'bounded explicit pending rejections')\n-        rejected = set()\n-        requested = {canonical(k) for k in batch['keys']} if mode == 'PENDING_KEYS' else set()\n-        for rejection in receipt['rejections']:\n-            self.tick()\n-            need(type(rejection) is dict and set(rejection) == {'key', 'reason'}\n-                 and rejection['reason'] in HINT_REJECTION_REASONS,\n-                 'only definite original legality returns remove a hint')\n-            identity = canonical(rejection['key'])\n-            need(identity in requested and identity not in rejected,\n-                 'each rejected full key belongs to this pending request once')\n-            rejected.add(identity)\n-        selection = receipt['selection']\n-        if selection is not None:\n-            need(type(selection) is dict and set(selection) == {'anchor', 'future_keys', 'origin'},\n-                 'independent chosen family fields')\n-            anchor = self._candidate(selection['anchor'], decision['row'])\n-            identity = canonical(anchor['placement_key'])\n-            need(identity not in rejected and type(selection['future_keys']) is list\n-                 and len(selection['future_keys']) <= 23 and type(selection['origin']) is dict,\n-                 'chosen anchor and bounded future preferences')\n-            seen = {identity}\n-            for key in selection['future_keys']:\n-                self.tick()\n-                need(type(key) is dict and set(key) == {'tile_type_id', 'type_preimage', 'translation'}\n-                     and type(key['translation']) is list and len(key['translation']) == 2\n-                     and type(key['translation'][0]) is int and key['translation'][0] == 0\n-                     and type(key['translation'][1]) is int\n-                     and decision['row'] < key['translation'][1] < 24,\n-                     'full later-row preference keys, never installed members')\n-                encoded = canonical(key)\n-                need(encoded not in seen, 'unique full future keys')\n-                seen.add(encoded)\n-            if mode == 'PENDING_KEYS':\n-                need(identity in requested and selection['future_keys'] == []\n-                     and selection['origin'] == {'family_id': batch['family_id']},\n-                     'pending selection belongs to existing family only')\n-            selection = dict(selection, anchor=anchor)\n-        return selection, rejected\n-\n-    def _select_branch(self, decision):\n-        \"\"\"Pure with respect to preference state; called only after global BRANCH.\"\"\"\n-        need(decision['kind'] == 'BRANCH', 'advice cannot bypass global scheduler')\n-        row, preferences = decision['row'], self._copy(self._preferences)\n-        dropped = []\n-        if preferences is not None:\n-            keys = [k for k in preferences['pending_keys'] if k['translation'][1] == row]\n-            if keys:\n-                self.counts['pending_checks'] += 1\n-                request = {'schema': 'unit-row-pending-preference-request-v1',\n-                    'binding': self._copy(self.language.binding),\n-                    'state_sha256': digest(self._state), 'decision': self._copy(decision),\n-                    'family_id': preferences['family_id'], 'keys': keys}\n-                selected, rejected = self._checked_advice(decision, request, 'PENDING_KEYS')\n-                dropped = [self._copy(k) for k in keys if canonical(k) in rejected]\n-                self.counts['pending_rejected'] += len(dropped)\n-                preferences = dict(preferences, pending_keys=[k for k in preferences['pending_keys']\n-                                                               if canonical(k) not in rejected])\n-                if selected is not None:\n-                    anchor = selected['anchor']\n-                    chosen = canonical(anchor['placement_key'])\n-                    remaining = [k for k in preferences['pending_keys'] if canonical(k) != chosen]\n-                    lineage = preferences['lineage'] + [{'mode': 'PENDING_KEYS',\n-                        'key': self._copy(anchor['placement_key']), 'state_sha256': digest(self._state)}]\n-                    need(len(lineage) <= 24, 'one preference lineage entry per installed row')\n-                    preferences = dict(preferences, pending_keys=remaining, lineage=lineage)\n-                    return {'candidate': anchor, 'mode': 'PENDING_KEYS',\n-                        'preferences': preferences if remaining else None,\n-                        'family_id': request['family_id'], 'origin': selected['origin'],\n-                        'rejected_keys': dropped}\n-                if not preferences['pending_keys']:\n-                    preferences = None\n-        # Preserve one chosen family across intervening canonical branches.\n-        # A new unrelated batch cannot replace an unconsumed family.\n-        if preferences is None:\n-            self.counts['advice_calls'] += 1\n-            batch = self.branch_adviser(state=self._copy(self._state),\n-                                        decision=self._copy(decision), tick=self.tick)\n-            self.tick()\n-            need(type(batch) is dict and batch.get('schema') == 'unit-row-goal-branch-advice-batch-v1'\n-                 and batch.get('version') == ADVISER_VERSION\n-                 and batch.get('status') in ('READY', 'UNKNOWN'), 'current advisory batch status')\n-            if batch['status'] == 'UNKNOWN':\n-                # No partial candidate, pending key, completion or pruning is used.\n-                self.counts['advice_unknown'] += 1\n-            else:\n-                selected, rejected = self._checked_advice(decision, batch, 'ADVICE_BATCH')\n-                need(not rejected, 'READY validation never silently drops bad members')\n-                if selected is not None:\n-                    anchor, future = selected['anchor'], selected['future_keys']\n-                    origin = self._copy(selected['origin'])\n-                    family_id = digest({'binding': self.language.binding, 'origin': origin,\n-                        'anchor_key': anchor['placement_key'], 'future_keys': future})\n-                    family = {'schema': 'unit-row-branch-preference-family-v1',\n-                        'family_id': family_id, 'binding': self._copy(self.language.binding),\n-                        'origin': origin, 'anchor_key': self._copy(anchor['placement_key']),\n-                        'pending_keys': self._copy(future), 'lineage': [{'mode': 'ADVICE_BATCH',\n-                            'key': self._copy(anchor['placement_key']), 'state_sha256': digest(self._state)}]}\n-                    return {'candidate': anchor, 'mode': 'ADVICE_BATCH',\n-                        'preferences': family if future else None, 'family_id': family_id,\n-                        'origin': origin, 'rejected_keys': dropped}\n-        self.counts['fallback_branch_choices'] += 1\n-        slot = self._slots.get(row)\n-        if slot is not None and slot['candidates']:\n-            candidate = self._copy(slot['candidates'][0])\n-        else:\n-            item = self.next_alternative(row)\n-            if item['kind'] == 'EOF':\n-                raise Unresolved('no canonical branch alternative; EOF is not pruning authority')\n-            candidate = item['candidate']\n-        return {'candidate': candidate, 'mode': 'CANONICAL_FALLBACK',\n-            'preferences': preferences, 'family_id': None if preferences is None else preferences['family_id'],\n-            'origin': None, 'rejected_keys': dropped}\n-\n-    def _adopt_branch(self, plan):\n-        \"\"\"Called INSIDE the owned child try/finally; no future mark is imposed.\"\"\"\n-        self._preferences = self._copy(plan['preferences'])\n-        if plan['mode'] == 'ADVICE_BATCH':\n-            self.counts['advice_selected'] += 1\n-        elif plan['mode'] == 'PENDING_KEYS':\n-            self.counts['pending_selected'] += 1\n-        self._observe(plan['candidate'])\n-        self._emit('ADVICE', mode=plan['mode'], family_id=plan['family_id'],\n-            key=plan['candidate']['placement_key'], origin=plan['origin'],\n-            rejected_keys=plan['rejected_keys'], pending_preferences=self._preferences)\n-\n     def search(self):\n         \"\"\"Full rollback on FOUND/UNKNOWN too; only exhausted child permits exclusion.\"\"\"\n         before = self.state_snapshot()\n@@ -810,29 +647,22 @@\n                     found = {'state': self._copy(self._state), 'word_proposal': self._word()}\n                     return 'POINT_BOARD_PROPOSAL'\n                 row = decision['row']\n-                branch_plan = None\n                 if kind == 'FORCED':\n                     candidate = decision['candidate']\n                     self.counts['forced'] += 1\n                 else:\n                     self.counts['branches'] += 1\n-                    if self.branch_adviser is not None:\n-                        branch_plan = self._select_branch(decision)\n-                        candidate = branch_plan['candidate']\n+                    slot = self._slots.get(row)\n+                    if slot is not None and slot['candidates']:\n+                        candidate = self._copy(slot['candidates'][0])\n                     else:\n-                        slot = self._slots.get(row)\n-                        if slot is not None and slot['candidates']:\n-                            candidate = self._copy(slot['candidates'][0])\n-                        else:\n-                            item = self.next_alternative(row)\n-                            if item['kind'] == 'EOF':\n-                                raise Unresolved('no canonical branch alternative; EOF is not pruning authority')\n-                            candidate = item['candidate']\n+                        item = self.next_alternative(row)\n+                        if item['kind'] == 'EOF':\n+                            raise Unresolved('no canonical branch alternative; EOF is not pruning authority')\n+                        candidate = item['candidate']\n                 checkpoint = self.checkpoint()\n                 self._emit('TRY', depth=depth, row=row, mode=kind, key=candidate['placement_key'])\n                 try:\n-                    if branch_plan is not None:\n-                        self._adopt_branch(branch_plan)\n                     self.place(candidate)\n                     child = walk(depth+1)\n                 except TimeoutError:\n@@ -869,7 +699,6 @@\n             self.tick()\n         return {'schema': 'unit-row-lazy-global-search-result-v1', 'version': VERSION,\n             'variant': VARIANT, 'status': status, 'reason': reason,\n-            'branch_advice_enabled': self.branch_adviser is not None,\n             'input_epoch': self._state['input_epoch'], 'root_restored': True,\n             'stack_restored': True, 'last_observed_state': last_state,\n             'root_snapshot_sha256': digest(before), 'final_snapshot_sha256': digest(after),\n"
+}

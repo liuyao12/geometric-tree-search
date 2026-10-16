@@ -1,0 +1,40 @@
+{
+  "base": {
+    "bytes": 5270,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py",
+    "sha256": "28e9764777bdcb8d549ec58814842c39d49dd05fe10a6ed6acfc942fc12a9516"
+  },
+  "current": {
+    "bytes": 5315,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT_decode_saved_transport_v3.py",
+    "sha256": "1adfabc2cbd40c124cfe122a636f4189e0a7415876ec89c6e69408b16277d933"
+  },
+  "edits": [
+    {
+      "new_utf8": "('original-controls','domain-controls','advice-controls','canonical-search','advised-search')",
+      "old_utf8": "('original-controls','domain-controls','search')"
+    },
+    {
+      "new_utf8": "same current Source17/input2/purpose",
+      "old_utf8": "same current Source11/input2/purpose"
+    }
+  ],
+  "entire_forward_inverse_verified": true,
+  "schema": "unit-row-advised-saved-decoder-independent-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "unchanged_function_definitions": [
+    "need",
+    "canonical",
+    "pairs",
+    "constant",
+    "finite",
+    "decode",
+    "buffer_pin",
+    "read_bounded",
+    "checked_raw"
+  ],
+  "unified_forward_patch": "--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py\n+++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT_decode_saved_transport_v3.py\n@@ -35,7 +35,7 @@\n     p=Path(r['path']);raw=read_bounded(p,1048576)\n     need(buffer_pin(p,raw)==r,'same authenticated saved metadata buffer')\n     return raw\n-need(len(sys.argv)==2 and sys.argv[1] in ('original-controls','domain-controls','search'),'one saved endpoint mode')\n+need(len(sys.argv)==2 and sys.argv[1] in ('original-controls','domain-controls','advice-controls','canonical-search','advised-search'),'one saved endpoint mode')\n mode=sys.argv[1];plan_path=HERE/('ROOT-'+mode+'-plan-v1.json');plan_raw=read_bounded(plan_path,1048576);plan=decode(plan_raw)\n contract=decode(checked_raw(plan['source_contract']));transport=contract['transport']\n need(transport['encoded_file_cap_bytes']==ENCODED_CAP and transport['expanded_full_canonical_JSON_LF_cap_bytes']==EXPANDED_CAP,'frozen transport bounds')\n@@ -60,7 +60,7 @@\n need(expanded.endswith(b'\\n') and expanded.count(b'\\n')==1,'one complete canonical expanded JSON/LF')\n result=decode(expanded)\n need(canonical(result)+b'\\n'==expanded and result['schema']=='ROOT-unit-row-global-engine-result-v1','whole original expanded result JSON')\n-need(result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['purpose']==plan['purpose'],'same current Source11/input2/purpose')\n+need(result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['purpose']==plan['purpose'],'same current Source17/input2/purpose')\n out=HERE/('ROOT-'+mode+'-expanded-result-v1.json')\n with out.open('xb') as f:f.write(expanded)\n meta={'schema':'ROOT-lossless-saved-transport-concordance-v1','plan':buffer_pin(plan_path,plan_raw),'encoded_file':buffer_pin(p,raw),'expanded_file':buffer_pin(out,expanded),\n",
+  "unified_inverse_patch": "--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT_decode_saved_transport_v3.py\n+++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py\n@@ -35,7 +35,7 @@\n     p=Path(r['path']);raw=read_bounded(p,1048576)\n     need(buffer_pin(p,raw)==r,'same authenticated saved metadata buffer')\n     return raw\n-need(len(sys.argv)==2 and sys.argv[1] in ('original-controls','domain-controls','advice-controls','canonical-search','advised-search'),'one saved endpoint mode')\n+need(len(sys.argv)==2 and sys.argv[1] in ('original-controls','domain-controls','search'),'one saved endpoint mode')\n mode=sys.argv[1];plan_path=HERE/('ROOT-'+mode+'-plan-v1.json');plan_raw=read_bounded(plan_path,1048576);plan=decode(plan_raw)\n contract=decode(checked_raw(plan['source_contract']));transport=contract['transport']\n need(transport['encoded_file_cap_bytes']==ENCODED_CAP and transport['expanded_full_canonical_JSON_LF_cap_bytes']==EXPANDED_CAP,'frozen transport bounds')\n@@ -60,7 +60,7 @@\n need(expanded.endswith(b'\\n') and expanded.count(b'\\n')==1,'one complete canonical expanded JSON/LF')\n result=decode(expanded)\n need(canonical(result)+b'\\n'==expanded and result['schema']=='ROOT-unit-row-global-engine-result-v1','whole original expanded result JSON')\n-need(result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['purpose']==plan['purpose'],'same current Source17/input2/purpose')\n+need(result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['purpose']==plan['purpose'],'same current Source11/input2/purpose')\n out=HERE/('ROOT-'+mode+'-expanded-result-v1.json')\n with out.open('xb') as f:f.write(expanded)\n meta={'schema':'ROOT-lossless-saved-transport-concordance-v1','plan':buffer_pin(plan_path,plan_raw),'encoded_file':buffer_pin(p,raw),'expanded_file':buffer_pin(out,expanded),\n"
+}

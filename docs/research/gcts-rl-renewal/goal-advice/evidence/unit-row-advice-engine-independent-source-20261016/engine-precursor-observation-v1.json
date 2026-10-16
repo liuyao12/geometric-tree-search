@@ -1,0 +1,88 @@
+{
+  "algorithm_verdict": "No concrete scoped soundness blocker found. Root selected lifecycle quality successor before activation.",
+  "author_identity": "/root/arithmetic_induction",
+  "authorship": "Reviewer authored f668 independent validator plus earlier checker/codec/family/control harness Sources; reviewer did not author this engine/adviser/current c354 semantics. Validator is a disclosed dependency, not independently rereviewed as reviewer-owned math.",
+  "baseline": {
+    "bytes": 39803,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+    "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+  },
+  "boundary_checks": [
+    "Actual unchanged global decision() runs before branch callback; DEAD/UNKNOWN/SOLVED/FORCED do not invoke adviser.",
+    "READY only reaches independent validation; raw UNKNOWN never supplies a candidate/key/EOF/pruning. Native callback tick follows both endpoints.",
+    "Independent receipt exact binding/full input/current state joins, all nine false flags, fresh current c354 anchor rebuild, bounded later keys.",
+    "Selection only computes prospective preference state. Adoption occurs inside owned child try/finally before place; rollback payload/snapshot includes whole family.",
+    "Full canonical fallback/domain/dependency/retention/archive/EOF methods AST exact. Adviser preferences affect ordering only, never domain counts or sibling exclusion.",
+    "Only genuine child EXHAUSTED triggers original exclusion; two TimeoutError handlers retained, no ValueError catch.",
+    "Callbacks None selects original canonical branch AST; added null snapshot field/counters/VERSION are metadata and native overhead, not byte-identical output/runtime promise."
+  ],
+  "callable_delta": {
+    "added": [
+      "LazyUnitRowEngine._checked_advice",
+      "LazyUnitRowEngine._select_branch",
+      "LazyUnitRowEngine._adopt_branch"
+    ],
+    "changed": [
+      "LazyUnitRowEngine.__init__",
+      "LazyUnitRowEngine._snapshot_value",
+      "LazyUnitRowEngine.checkpoint",
+      "LazyUnitRowEngine.rollback",
+      "LazyUnitRowEngine.search"
+    ],
+    "removed": [],
+    "unchanged_AST": [
+      "need",
+      "canonical",
+      "digest",
+      "diagnostic_copy",
+      "select_schedule",
+      "certify_by_current_cover",
+      "_Checkpoint.__init__",
+      "LazyUnitRowEngine._copy",
+      "LazyUnitRowEngine._reference_counts",
+      "LazyUnitRowEngine._emit",
+      "LazyUnitRowEngine.state_snapshot",
+      "LazyUnitRowEngine._check_authority",
+      "LazyUnitRowEngine._transfer_receipt",
+      "LazyUnitRowEngine._has_archived_context",
+      "LazyUnitRowEngine._archive_context",
+      "LazyUnitRowEngine._install",
+      "LazyUnitRowEngine._candidate",
+      "LazyUnitRowEngine._observe",
+      "LazyUnitRowEngine.place",
+      "LazyUnitRowEngine._exclude_exhausted",
+      "LazyUnitRowEngine._open",
+      "LazyUnitRowEngine._advance",
+      "LazyUnitRowEngine.next_alternative",
+      "LazyUnitRowEngine._fallback_degree",
+      "LazyUnitRowEngine._validate_receipt",
+      "LazyUnitRowEngine.decision",
+      "LazyUnitRowEngine._word"
+    ]
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "nonblocking_quality_observation": {
+    "Root_choice": "Preserve precursor, add small Source-only successor retiring occupied-row preference keys at a later actual BRANCH. No runtime failure, retroactive negative or actual admission is asserted.",
+    "finding": "A FORCED placement can occupy a future preference row; later BRANCH selection filters only keys at the chosen row, so obsolete occupied-row keys can retain a family and suppress fresh unrelated batches. This does not constrain canonical fallback or permit unsound pruning.",
+    "location": "LazyUnitRowEngine._select_branch",
+    "name": "OCCUPIED-PREFERENCE-LIFECYCLE"
+  },
+  "not_current_typed_admission": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-advice-engine-precursor-whole-Source-observation-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 50927,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py",
+    "sha256": "d30b56cc371dc62a85b3eb30363149b6f95a7cff9100fa1d770413228d52c98d"
+  },
+  "source_contract_status": "No immutable author contract received for d30b at review boundary; current successor will receive genuine exact typed review.",
+  "source_only": true,
+  "whole_Source_read": true,
+  "whole_baseline_read": true
+}

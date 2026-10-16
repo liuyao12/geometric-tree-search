@@ -1,0 +1,294 @@
+{
+  "API": {
+    "branch_adviser": "Injected endpoint branch_adviser(*,state,decision,tick); Root supplies authenticated original c6fc module dependencies. Only actual unchanged global BRANCH can invoke it.",
+    "callbacks": "Both optional callbacks absent or both callable. No new public transaction/control injection. Existing factory can override degree_proposer plus optional callbacks for labeled controls; original semantics/transition authority remains caller-owned.",
+    "engine": "LazyUnitRowEngine(*,language,degree_proposer,semantics,fallback,certify_fallback,transition_checker,tick,initial_state=None,maximum_nodes=128,maximum_events=2000,branch_adviser=None,validate_advice=None)",
+    "preserved_public_methods": [
+      "state_snapshot",
+      "checkpoint",
+      "rollback",
+      "decision",
+      "place",
+      "next_alternative",
+      "search"
+    ],
+    "validate_advice": "Injected endpoint validate_advice(*,state,decision,batch,tick). Public f668 module adds language,semantics (six total keywords; engine closure receives four). Same callback handles READY batch and pending request."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "schema": "unit-row-goal-advice-engine-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-goal-advice-global-engine-Source",
+    "source": {
+      "bytes": 51786,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+      "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+    },
+    "source_contract": "Exact current contract raw capsule",
+    "source_only": true
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 1837,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/author-static-v2.json",
+    "sha256": "419b6360bc1ad556e9f751f0e9f84e0d23fce4208c3ebcfccf40da4b18f97b3f"
+  },
+  "authorship": {
+    "advice_validator": "/root/hilbert_ordering_diagnosis",
+    "cold_caller_and_actual": "/root",
+    "engine_and_retention_checker": "/root/arithmetic_induction",
+    "generic_adviser": "/root/arithmetic_induction",
+    "new_advice_controls": "/root/hilbert_advice_controls",
+    "required": "No author self-review or automatic inheritance of old17/retention17 runtime qualification. New actuals require exact current independent review and Root grant."
+  },
+  "conformance_gaps": [
+    "Specialized finite24 unit-row roots0/ROW-TIE; no general generation/minimum-count acceleration claim.",
+    "Implicit complete six-rule relation exists, but most all-six EOF remains unqualified unless independently certified current cover. UNKNOWN may prevent any move.",
+    "Support/collision retention remains conservative; global collision-ledger growth can invalidate all domains. No stronger refresh cache implemented.",
+    "Adviser is hand-written finite goal ordering, not learned cluster/RL. Incomplete proposal horizons may miss useful guidance; canonical fallback preserves original candidates.",
+    "Independent current callback Source/effective function/default/closure/native/authority custody belongs to Root cold caller. No new cold integration or runtime success in this packet.",
+    "No primitive logical proof acceptance, complete graph/trajectory admission, automatic discovery success or performance advantage supplied by this Source change."
+  ],
+  "lifecycle_delta": {
+    "from_v4": "Only VERSION, __init__ counter, _select_branch pure retirement and retired_keys return/event in _adopt_branch differ.32 other callables including entire search/checkpoint/rollback exact.",
+    "full_chain": "v3ca615→v4d30b complete raw inverse in source-delta-v1; v4d30b→v5dbaf complete raw inverse in source-delta-v2.27 inherited ca615 callable bodies remain exact.",
+    "motivation": "Source review identified inactive family after forced occupation as a heuristic lifecycle limitation, not unsoundness or runtime failure. Root requested this explicit additive correction."
+  },
+  "raw_references": {
+    "adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "adviser_contract": {
+      "bytes": 12193,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "e46ce289256c834f35701bcd41f667140980c8a60c976691242ab824622719a7"
+    },
+    "adviser_peer": {
+      "bytes": 1430,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "a4b8846268c5d029880e27703db27cabd0d30a8767a3efb19085129f1c6df12e"
+    },
+    "base_to_v4_full_delta": {
+      "bytes": 59111,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/source-delta-v1.json",
+      "sha256": "8517c4a1bf44360ba8d843864f750146602e3de49acf239071acd7382f641160"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "degree_proposer_contract": {
+      "bytes": 13319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+    },
+    "degree_semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_semantics_contract": {
+      "bytes": 11994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-contract-v2.json",
+      "sha256": "342cb0662f66262fa3ceb891f407a70128e299f8cdcc81bf95625902f6081cb9"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "fallback_contract": {
+      "bytes": 14336,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-contract-v1.json",
+      "sha256": "5800fb0834efadd31afde96d3518257e5f6d3e43932ee2863127c666c053c683"
+    },
+    "independent_advice_validator": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    },
+    "independent_advice_validator_arity_note": {
+      "bytes": 1573,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/API-arity-clarification-v1.json",
+      "sha256": "1800bc335146fee48eda16e7e50e8b6bf49714190f89e01b0e89c5ddbb4642c2"
+    },
+    "independent_advice_validator_contract": {
+      "bytes": 13583,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/Source-contract-v1.json",
+      "sha256": "55d331260ee45e103ec7f12da7fce96029be1d9075da206a632bce5ef78f6ff1"
+    },
+    "independent_advice_validator_handoff": {
+      "bytes": 6212,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/handoff-v2.json",
+      "sha256": "86c137a074a9e5b51535551b9b0ff866d5a3ec6d0e762ce477212a018e7ffdbd"
+    },
+    "language": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "preserved_v4_contract": {
+      "bytes": 19482,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/Source-contract-v1.json",
+      "sha256": "3f49f3c01e2d288195a24634f230ad39035e5bfe69df9ad23bb07c604fe91e28"
+    },
+    "preserved_v4_handoff": {
+      "bytes": 4354,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/handoff-v1.json",
+      "sha256": "f468aae1c69501d4eb2fa598098d5eeb4249b7a3250bdfd7cd09b6c2bccb7883"
+    },
+    "preserved_v4_source": {
+      "bytes": 50927,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py",
+      "sha256": "d30b56cc371dc62a85b3eb30363149b6f95a7cff9100fa1d770413228d52c98d"
+    },
+    "previous_contract": {
+      "bytes": 18063,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/Source-contract-v2.json",
+      "sha256": "a7559112bf6669c453aedad5cb78e4dacf5cf237849b9cab192b8286f00cd39c"
+    },
+    "previous_engine": {
+      "bytes": 39803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+      "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+    },
+    "previous_engine_peer": {
+      "bytes": 2270,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-peer-source-20261015/engine-typed-Source-review-v1.json",
+      "sha256": "4d31719255abd045a8aa4791b4902f38be43d93131816468323798c272390487"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "transition_checker": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "transition_checker_peer": {
+      "bytes": 2282,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-peer-source-20261015/transition_checker-typed-Source-review-v1.json",
+      "sha256": "21a2d858e1c7ca2f05313a1e602a648aac13c03303c954fc55ec1565ee9c8fe4"
+    }
+  },
+  "remaining_gates": [
+    "Genuine whole/delta current engine review; validator and adviser separately reviewed with authorship disclosed.",
+    "Fresh original17 + retained17 + new genuine adviser/transaction/pending/current-key/UNKNOWN/callback controls through exact current caller.",
+    "Root-owned fresh target experiment on same original authority/limits, matched baseline and all measured overhead, independent checker for any word."
+  ],
+  "resources": "Native original20 positive/readiness, failure55, owned60,512MiB aggregate, caller90+1 unchanged. All advice enumeration/validation/rebuilding/copy/serialization/output/exit work charged. Engine has no clocks or resource admission. Same128 node/2000 event maxima. Extra events may reach cap earlier: UNKNOWN, never exhaustion. No timing/bottleneck/speed claim from late prior observations.",
+  "review_checklist": [
+    "Authenticate source/delta/raw inverses and27 unchanged callable bodies/ASTs.",
+    "Verify global decision unchanged and advice only after BRANCH.",
+    "Verify pure preference selection, checkpoint before adopt, adopt inside try/finally and exact snapshot/rollback.",
+    "Verify one-family continuation at intervening rows, selected-family-only adoption and current fresh pending full-key rebuild.",
+    "Verify no pending marks/facts/auto-macro, canonical fallback/exhausted-only exclusion and no exception filtering.",
+    "Verify exact validator receipt/full input joins, nine false flags, UNKNOWN partial ignore with postcallback native tick.",
+    "Verify oldNone callback path and external caller/control/qualification limitations.",
+    "Verify already filled-row hint retirement is pure until child checkpoint, full-key logged, no point/candidate exclusion; forced-consumption control uses actual global decision."
+  ],
+  "schema": "unit-row-goal-advice-engine-Source-contract-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "selection_and_lineage": {
+    "continuation": "While a nonempty active family remains, intervening BRANCH rows use canonical fallback and preserve it. No unrelated batch replacement. At a selected pending row, validate all its requested keys in current original state; choose first legal key. Remove chosen key and only explicit current legality rejections in the child plan. No key is a fact or imposed mark.",
+    "empty_and_forced": "Global FORCED placement does not call advice or impose preference marks. At the next actual BRANCH, read owned current t through original semantics.point_map and retire ONLY advisory keys at t(0,row)==1, including globally forced/otherwise valid placements. This is completed-obligation lifecycle, not illegality/pruning/exclusion or proof. Pruned preferences remain pure local data until child checkpoint/adoption; if no keys remain, request a fresh batch. If any remain, preserve canonical intervening branches.",
+    "failure": "After exhausted child, parent family is restored, then existing full-key exclusion/global rescanning runs. Revalidation can reject the now excluded hint. UNKNOWN never excludes. All canonical candidates remain available via complete original fallback; advisory ordering is not a rule or pruning.",
+    "lineage": "Snapshot pending_preferences is None or unit-row-branch-preference-family-v1 {schema,family_id,binding,origin,anchor_key,pending_keys,lineage}. family_id is a provenance SHA over complete binding/origin/full initial anchor/future keys; not authority. Initial and consumed-key lineage records mode/key/state_sha256. At most24 installed family members on a path; at most23 future keys. No recursive histories.",
+    "retirement": "v5 adds pending_retired monotone work counter and ADVICE.retired_keys. Each retired record is a full key; current occupied-row support is authority only for ending an advisory preference. No point state, fallback, degree/cover/cursor/receipt, family identity or member membership is altered.",
+    "single_family": "Only the independently validated first ranked READY proposal is selected; its other members are future full-key preferences. No other batch family adopted. Every batch is independently rebuilt in full before selection.",
+    "transaction": "After actual BRANCH, _select_branch computes a pure preference plan. Existing checkpoint is taken; TRY does not mutate preferences. INSIDE child try/finally, _adopt_branch sets the COW family, observes only the anchor, emits diagnostic ADVICE and then ordinary place executes. Every exception/child result restores the owned checkpoint. Counts/events/budget remain monotone."
+  },
+  "snapshot_and_result": {
+    "count_meaning": "advice/pending calls/rejections/retirements/fallback choices count work and can survive rollback. selected counters count adoption attempts inside child transaction, not successful lasting tiling or useful advice. Retirement is computed from actual owned t marks at next real BRANCH; a later interruption may restore original family. Existing counters unchanged.",
+    "events": "ADVICE in enabled mode records mode/family_id/chosen full key/origin/rejected_keys/retired_keys/child pending_preferences before placement. Retired keys are filled-row preferences, not excluded candidates. TRY/PLACE/RESTORE/EXCLUDE retain old meaning; all events charged to same2000 cap. CANONICAL_FALLBACK is advisory-mode continuation, not learned gain.",
+    "new_counts": [
+      "advice_calls",
+      "advice_unknown",
+      "advice_selected",
+      "pending_checks",
+      "pending_selected",
+      "pending_rejected",
+      "pending_retired",
+      "fallback_branch_choices"
+    ],
+    "search_result": "Same unit-row-lazy-global-search-result-v1, new VERSION and branch_advice_enabled boolean. Existing found word is proposal only, independent unchanged1717 still required; no proof/trajectory/GCTS/RL/resource acceptance.",
+    "snapshot_addition": "pending_preferences included in exact state_snapshot, checkpoint payload and rollback; append-only checkpoint slot, old slots unchanged. Public place remains policy-independent and requires external owned checkpoint on exceptions."
+  },
+  "source": {
+    "bytes": 51786,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+    "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+  },
+  "source_delta": {
+    "bytes": 20542,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/source-delta-v2.json",
+    "sha256": "b59cc8cba807809d71442b5ff35432ef786ebaa97d6a8b3b1eaeccd03f89dbbf"
+  },
+  "source_only": true,
+  "unchanged_semantics": {
+    "EOF": "General fallback EOF has no blanket pruning authority. Existing fresh exact-state independent complete-cover plus stream key equality is required for zero/one/exhaustion. UNKNOWN children never excluded.",
+    "baseline": "With both optional callbacks None, original canonical branch block is retained literally; extra empty snapshot/counter/result fields and VERSION differ. No advice events/callbacks run. Claims of actual identical execution/cost await controls.",
+    "master": "Global certified DEAD before forced before earliest-generation ROW-TIE; all fixed24 root generations0. decision, scheduler, degree verification and fallback are byte/AST unchanged.",
+    "retention": "All possible-support/collision-ledger criterion, transferred original receipts, fresh occupancy metadata, exposed/reverse incidences and full flat original cursor context/prefix/EOF archives unchanged. No two-witness refresh/cache extension in this change.",
+    "universe": "Original B12/N44 six-rule language/theory/Gamma/target/full implicit candidate universe, unit-row inventory identity/full keys/ordered repeated ports, exact marks and independent c354 rebuilt legality unchanged. No word, donor, library, target-specific route or rank input."
+  },
+  "validator_protocol": {
+    "UNKNOWN": "Only batch status UNKNOWN from current adviser schema/version is ignored wholesale, including any partial proposals. Native-first tick immediately after adviser return still enforces owner deadline; native exceptions propagate UNKNOWN through existing search. READY only is passed to validator; no UNKNOWN partial is adopted.",
+    "error_discipline": "Only independently returned named original legality rejections remove a hint. Exceptions (ValueError including authority/key/type/collision/guard failure, callback/time/resource failures and others) propagate. No exception fallback/drop. READY illegal member is an error, not shortlist filtering.",
+    "exact_fields": [
+      "schema",
+      "version",
+      "mode",
+      "binding",
+      "state_sha256",
+      "decision",
+      "input_sha256",
+      "selection",
+      "rejections",
+      "logical_proof_accepted",
+      "exact_point_board_accepted",
+      "degree_or_EOF_accepted",
+      "scheduler_accepted",
+      "complete_GCTS_model_accepted",
+      "trajectory_accepted",
+      "learned_marking_accepted",
+      "RL_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "join": "Engine checks complete current binding/state SHA/literal decision/digest of entire input, exact receipt fields and all nine False flags. Chosen anchor is additionally rebuilt through unchanged _candidate; _observe adds only this full incident candidate inside child transaction. Keys use full preimages, not hash injectivity assumptions.",
+    "pending_rejections": [
+      "already_selected",
+      "branch_excluded_complete_key",
+      "whole_support_capacity",
+      "whole_remote_or_metadata_mark_conflict"
+    ],
+    "pending_request": {
+      "fields": [
+        "schema",
+        "binding",
+        "state_sha256",
+        "decision",
+        "family_id",
+        "keys"
+      ],
+      "keys": "Only actual BRANCH row full keys from current active family, max24; never all future rows.",
+      "schema": "unit-row-pending-preference-request-v1"
+    },
+    "receipt_schema": "unit-row-advice-validation-v1",
+    "receipt_version": "unit-row-independent-advice-consumer-validator-v1"
+  },
+  "variant": "GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION",
+  "version": "lazy-unit-row-global-engine-v5-retire-filled-preferences"
+}

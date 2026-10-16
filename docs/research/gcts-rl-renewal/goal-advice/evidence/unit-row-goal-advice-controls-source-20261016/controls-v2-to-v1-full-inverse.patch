@@ -1,0 +1,27 @@
+--- parent
++++ successor
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-goal-advice-adversarial-controls-v2-preserved-advice-diagnostics'
++VERSION = 'unit-row-goal-advice-adversarial-controls-v1'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -185,15 +185,6 @@
+     e=make(s);decision=e.decision()
+     if decision!={'kind':'BRANCH','row':0}:raise Unavailable('Original scheduler did not choose row0 BRANCH: '+canonical(decision))
+     before=canonical(s);batch=current_advice(state=copy.deepcopy(s),decision=decision,tick=tick)
+-    # Preserve the WHOLE actual return before eligibility can skip controls.
+-    # UNKNOWN partial proposals/counters are diagnostic only, never executable.
+-    artifacts['fixture_advice_attempt']={'schema':'unit-row-fixture-advice-attempt-v1',
+-      'state':copy.deepcopy(s),'decision':copy.deepcopy(decision),
+-      'actual_adviser_return':copy.deepcopy(batch),'diagnostic_only':True,
+-      'authority_accepted':False,
+-      'pre_advice_state_sha256':hashlib.sha256(before.encode()).hexdigest(),
+-      'derived_from':{'AX_name':name,'eligible_parameter':v,'UI_instance':copy.deepcopy(body),
+-        'selected_future_UG':copy.deepcopy(future)}}
+     if batch['status']!='READY' or not batch['proposals']:
+       raise Unavailable('Actual bounded adviser returned no current READY proposal: '+str(batch['status']))
+     receipt=receipt_flags(check(s,decision,batch))

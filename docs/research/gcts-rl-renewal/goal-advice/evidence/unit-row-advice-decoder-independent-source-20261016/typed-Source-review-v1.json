@@ -1,0 +1,32 @@
+{
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer did not author Root decoder, current cold caller or current envelope encoder; reviewer previously reviewed decoder2 and authored reused1717/codec, independent advice validator and old control harness dependencies. This is Source/transport review only, not saved data decoding or another semantic checker.",
+  "disposition": "CONDITIONAL_SOURCE_PASS_SAVED_TRANSPORT_ONLY",
+  "findings": {
+    "bytes": 11539,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-decoder-independent-source-20261016/findings-v1.json",
+    "sha256": "ce6ac03b6066f34a45d44e569010a6bfae9b1b133ab9d7d1794c98d78001b0d8"
+  },
+  "remaining_gates": [
+    "Root saved-only execution must use exact current plan/mode/whole encoded file and preserve any malformed/overflow/EOF failure. No decoder or actual output was executed/read by this review.",
+    "Transport concordance alone cannot admit controls, counts, proof/board, trajectory, restoration, resource/time success or matched search comparison. Root independently closes native terminal/probe/wire/output/schema and scientific receipts.",
+    "Five modes are filenames selecting saved Root-authorized endpoints; unchanged complete result purpose/Source/input joins remain plan-derived, never an extra scientific authority from the mode label."
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "unit-row-advised-saved-decoder-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-advised-saved-lossless-transport-decoder-Source",
+  "source": {
+    "bytes": 5315,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT_decode_saved_transport_v3.py",
+    "sha256": "1adfabc2cbd40c124cfe122a636f4189e0a7415876ec89c6e69408b16277d933"
+  },
+  "source_contract": {
+    "bytes": 19239,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "c9a1391bfbd4edfef779432cdc0779a9971edd1fb4cb58537a660d7be1373e90"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

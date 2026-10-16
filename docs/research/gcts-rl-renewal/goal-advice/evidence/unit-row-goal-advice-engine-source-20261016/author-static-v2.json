@@ -1,0 +1,70 @@
+{
+  "actuals": 0,
+  "author_identity": "/root/arithmetic_induction",
+  "base": {
+    "bytes": 50927,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py",
+    "sha256": "d30b56cc371dc62a85b3eb30363149b6f95a7cff9100fa1d770413228d52c98d"
+  },
+  "checks": [
+    {
+      "id": "exact_current_code",
+      "passed": true
+    },
+    {
+      "id": "whole_AST_compile_only",
+      "passed": true
+    },
+    {
+      "id": "full_raw_forward_inverse",
+      "passed": true
+    },
+    {
+      "id": "exact_three_changed_methods",
+      "passed": true
+    },
+    {
+      "id": "thirty_two_other_callable_AST_and_body_bytes_exact",
+      "passed": true
+    },
+    {
+      "id": "retirement_has_no_preference_attribute_mutation",
+      "passed": true
+    },
+    {
+      "id": "no_new_exception_handler",
+      "passed": true
+    },
+    {
+      "id": "point_state_occupied_test_only",
+      "passed": true
+    },
+    {
+      "id": "search_adoption_and_owned_finally_AST_exact",
+      "passed": true
+    },
+    {
+      "id": "snapshot_checkpoint_rollback_AST_exact",
+      "passed": true
+    },
+    {
+      "id": "retirement_logged_in_all_three_selection_returns",
+      "passed": true
+    },
+    {
+      "id": "no_runtime_functions_models_clocks_tests",
+      "passed": true
+    }
+  ],
+  "clock_calls": 0,
+  "project_imports": 0,
+  "schema": "unit-row-goal-advice-engine-author-static-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51786,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+    "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+  },
+  "source_only": true,
+  "tests": 0
+}

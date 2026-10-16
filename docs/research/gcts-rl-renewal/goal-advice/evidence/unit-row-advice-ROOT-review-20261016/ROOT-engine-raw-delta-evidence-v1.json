@@ -1,0 +1,65 @@
+{
+  "added_callables": [
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch"
+  ],
+  "chain": [
+    {
+      "delta": {
+        "bytes": 59111,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/source-delta-v1.json",
+        "sha256": "8517c4a1bf44360ba8d843864f750146602e3de49acf239071acd7382f641160"
+      },
+      "edits": 28,
+      "forward_and_inverse_exact": true
+    },
+    {
+      "delta": {
+        "bytes": 20542,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/source-delta-v2.json",
+        "sha256": "b59cc8cba807809d71442b5ff35432ef786ebaa97d6a8b3b1eaeccd03f89dbbf"
+      },
+      "edits": 7,
+      "forward_and_inverse_exact": true
+    }
+  ],
+  "changed_callables": [
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine.search"
+  ],
+  "compile_only": true,
+  "scientific_execution": false,
+  "unchanged_raw_AST_callables": [
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "certify_by_current_cover",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine._word"
+  ]
+}

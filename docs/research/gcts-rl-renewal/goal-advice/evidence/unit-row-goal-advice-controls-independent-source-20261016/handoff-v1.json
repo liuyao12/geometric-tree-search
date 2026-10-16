@@ -1,0 +1,33 @@
+{
+  "authorship_disclosure": "Engine/adviser/c354/transition dependency author; not controls author.",
+  "checks": 31,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_RUNTIME_ADMISSION",
+  "findings": {
+    "bytes": 23170,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-independent-source-20261016/findings-v1.json",
+    "sha256": "259a018c5caa1e7a6ebcf6d248d10fabd8f499adb3bc91e41dd42dbf79770be6"
+  },
+  "remaining": "Root current cold caller/authority guards, fresh actual all22 no-gap controls and complete native/resource/wire closure; no target or efficiency prediction.",
+  "review_scope": "unit-row-goal-advice-controls-Source",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-goal-advice-controls-independent-review-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scoped_blockers": 0,
+  "source": {
+    "bytes": 32773,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v1.py",
+    "sha256": "9862fa5e979d56bc769bcf399803fdb46cf28a7b7303202e3bab7ea8f2d4de4f"
+  },
+  "source_contract": {
+    "bytes": 13718,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/Source-contract-v1.json",
+    "sha256": "4fe467e61270d033f7deed56ded41ab15f3c092e24759c2e99ec442aecc0b4ee"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 6591,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "db6e69038220a3ecba01501814e187b516ec55b52a040b7ce1cf575fda0083e1"
+  }
+}

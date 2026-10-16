@@ -1,0 +1,38 @@
+{
+  "API": {
+    "body_schema": "unit-row-goal-branch-advice-batch-v1",
+    "decision": "Exact {kind:BRANCH,row:integer0..23}. Root must establish actual fresh global dead/forced/earliest-generation decision; this adviser cannot certify the scheduler or make a non-BRANCH decision executable.",
+    "dependencies": "Caller passes original private membership language, exact c354 semantics module, exact69b4 open_fallback and iter_syntax endpoints, and original native-budget callback. No project Source imports and no old finite-family/donor code.",
+    "inputs_not_allowed": "No proof word, donor, target route, manual term list, learned library, row route, recipe sequence or caller-supplied goal obligations. Demands come from current original output marks; term/universal pools come from current original inputs and canonical bounded syntax.",
+    "proposal_schema": "unit-row-goal-incident-proposal-v1",
+    "signature": "propose_branch(*,language,semantics,fallback,iter_syntax,state,decision,tick,maximum_work=50000,maximum_proposals=8,maximum_demands=16,maximum_terms=16,maximum_rounds=8)"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 2152,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/author-static-v1.json",
+    "sha256": "e7055724be6e655aed67acc8313ff0a111b68962efbe5f02675a0aa698ba566e"
+  },
+  "delta": {
+    "bytes": 25546,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/source-delta-v1.json",
+    "sha256": "c4c89761e10bfcbcef7ca871bfd29e422500a5c2e5f7b2682e0c17c2c881701d"
+  },
+  "review_scope": "unit-row-generic-goal-branch-adviser-Source",
+  "schema": "unit-row-goal-branch-adviser-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21913,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+    "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+  },
+  "source_contract": {
+    "bytes": 12193,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/Source-contract-v1.json",
+    "sha256": "e46ce289256c834f35701bcd41f667140980c8a60c976691242ab824622719a7"
+  },
+  "source_only": true,
+  "status": "FROZEN_SOURCE_ONLY_DISTINCT_REVIEW_PENDING",
+  "summary": "Bounded generic hand-written incident-anchor advice with PENDING future clusters; no donor, learned authority, scheduler/degree/engine mutation. Complete original fallback mandatory, resource interruption UNKNOWN. No Source functions/models/clocks/tests/actuals."
+}

@@ -1,0 +1,91 @@
+    def validate_found(found):
+        # Positive proof/board checks stay inside this original cold20 run.
+        need(type(found) is dict and set(found) == {'state','word_proposal'},
+             'complete found proposal, never producer proof authority')
+        commands_raw = canonical(found['word_proposal'])
+        state_raw = canonical(found['state'])
+        commands = decode(commands_raw)
+        need(type(commands) is list and len(commands) == 24,
+             'complete original24 command word, no shorter endpoint')
+        private = fresh_language(tick)
+        need(canonical(private.binding) == binding_raw, 'fresh independent found-word language')
+        membership_receipt = invoke_fn(membership.check_word,(),{
+            'language':private,'commands':decode(commands_raw),'tick':tick},
+            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+        need(membership_receipt['schema'] == 'shared-bounded-six-rule-word-membership-v1'
+            and membership_receipt['completed'] is True
+            and membership_receipt['all_commands_in_language'] is True
+            and membership_receipt['original_Gamma_preserved'] is True
+            and membership_receipt['exact_target'] is True
+            and membership_receipt['logical_acceptance'] is False
+            and membership_receipt['command_count'] == len(commands)
+            and len(membership_receipt['rows']) == len(commands)
+            and membership_receipt['commands_sha256'] == hashlib.sha256(commands_raw).hexdigest()
+            and canonical(membership_receipt['binding']) == binding_raw,
+             'whole fresh original bounded-language word membership')
+        original_raw = read_pinned(FIXED_INPUTS['declaration'])
+        need(original_raw == declaration_raw, 'whole original declaration after search')
+        original = decode(original_raw)
+        need(canonical(original) == canonical(authority['declaration']),
+             'original theory/Gamma/target, not candidate authority')
+        word_receipt = invoke_fn(modules['word_checker'].check_primitive_word,(),{
+            'theory':original['theory'],'parameters':original['parameters'],
+            'original_Gamma':original['ordered_Gamma'],'commands':decode(commands_raw),
+            'target':original['target'],'source_guard':boundary,
+            'deadline':local_deadline,'maximum_visits':5000000},
+            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+        need(word_receipt['completed'] is True
+            and word_receipt['original_Gamma_target_sequent_accepted'] is True
+            and word_receipt['original_ordered_Gamma'] == original['ordered_Gamma']
+            and word_receipt['parameters'] == original['parameters']
+            and word_receipt['target'] == original['target']
+            and word_receipt['theory_sha256'] == hashlib.sha256(canonical(original['theory'])).hexdigest()
+            and word_receipt['commands_sha256'] == hashlib.sha256(commands_raw).hexdigest(),
+             'unchanged1717 whole original-target proof check')
+        packet = invoke_fn(modules['converter'].propose_point_board,(),{
+            'commands':decode(commands_raw),'height':24,
+            'input_epoch':decode(binding_raw)['language_epoch'],'tick':tick},
+            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+        packet_raw = canonical(packet)
+        need(len(packet_raw) <= 2*1048576, 'whole found point packet, never trimmed')
+        point_receipt = invoke_fn(modules['point_checker'].check_point_board,(),{
+            'commands':decode(commands_raw),'height':24,
+            'input_epoch':decode(binding_raw)['language_epoch'],
+            'packet':decode(packet_raw),'tick':tick},
+            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+        need(point_receipt['exact_point_board_accepted'] is True
+            and point_receipt['whole_unit_target_verified'] is True
+            and point_receipt['literal_marking_union_verified'] is True
+            and point_receipt['padding_rows'] == 0
+            and point_receipt['source_word_length'] == 24
+            and point_receipt['packet_sha256'] == hashlib.sha256(packet_raw).hexdigest()
+            and point_receipt['source_word_sha256'] == hashlib.sha256(commands_raw).hexdigest()
+            and canonical(point_receipt['checked_padded_commands']) == commands_raw,
+             'independent full word-to-point projection and literal marking union')
+        private = fresh_language(tick)
+        checked = invoke_fn(modules['degree_checker'].private_state,
+            (private,decode(state_raw),tick),{},
+            boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)[0]
+        need(canonical(checked) == state_raw, 'whole found state already canonical current original state')
+        expected_selected = [dict((k,tile[k]) for k in ('tile_type_id','type_preimage','translation'))
+                             for tile in packet['tiles']]
+        expected_selected = [dict(record,generation=1) for record in expected_selected]
+        actual_selected = sorted(checked['selected'],key=lambda record:record['translation'][1])
+        expected_marks = [[point,value] for point,value,count in point_receipt['marking_union']]
+        need(canonical(actual_selected) == canonical(expected_selected)
+            and canonical(checked['t']) == canonical(point_receipt['unit_totals'])
+            and canonical(checked['m']) == canonical(expected_marks)
+            and checked['height'] == 24
+            and checked['input_epoch'] == decode(binding_raw)['language_epoch'],
+             'actual found selections and whole t/m state equal independently checked point board')
+        tick()
+        return {'schema':'ROOT-found-word-point-validation-v1',
+            'commands_sha256':hashlib.sha256(commands_raw).hexdigest(),
+            'found_state_sha256':hashlib.sha256(state_raw).hexdigest(),
+            'language_binding':decode(binding_raw),'membership':membership_receipt,
+            'independent_word':word_receipt,'point_board':packet,
+            'independent_point_board':point_receipt,
+            'found_state_projection_equal':True,'checked_in_original_cold_endpoint':True,
+            'positive_native_and_Source_boundary_still_required':True,
+            'complete_candidate_graph_accepted':False,'trajectory_accepted':False,
+            'RL_accepted':False,'GCTS_advantage_accepted':False,'ROOT_resource_accepted':False}

@@ -1,0 +1,33 @@
+{
+  "findings": {
+    "bytes": 11966,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-diagnostic-independent-source-20261016/findings-v1.json",
+    "sha256": "a5dd310dedc721f7c363212ff1c5460ddf6d568899b53fdc923b219ea8a15e65"
+  },
+  "independent_delta": {
+    "bytes": 2639,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-diagnostic-independent-source-20261016/independent-delta-v1.json",
+    "sha256": "58b1a4a9e96aea4e50da9fd651a335507d2b8bbf8e71cad35887a9e0b5d404b4"
+  },
+  "schema": "unit-row-goal-advice-controls-diagnostic-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-goal-advice-controls-Source",
+  "source": {
+    "bytes": 33448,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py",
+    "sha256": "229f9cdd2daf6b9aa7f9b6ea071f2ffdbf69b1caf82351a818cf8a489c30a98b"
+  },
+  "source_contract": {
+    "bytes": 16901,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/Source-contract-v2.json",
+    "sha256": "6bcd7f183347888df4b1076f9f50894aa01508d775727cf99844fb20ce697e05"
+  },
+  "source_only": true,
+  "summary": "Genuine whole old/new/contract Source-only pass:2rawedits/fullinverse, whole ASTinverse after capture removal/VERSION restore. Whole actual return retained before old eligibility, diagnostic-only/authorityFalse; no quotas/model/cases/fallback/qualification or runtime admission change.",
+  "typed_review": {
+    "bytes": 5414,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-diagnostic-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "9467a76cb65730b8921c7282b0773f43bac733b089fa36a30c9afc9626338ef0"
+  }
+}

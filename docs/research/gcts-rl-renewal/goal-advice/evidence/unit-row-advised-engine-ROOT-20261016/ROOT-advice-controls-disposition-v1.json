@@ -1,0 +1,61 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "additional_coverage_gaps": [],
+  "aggregate_B_bytes": 26050560,
+  "all_advice_consumer_gates_qualified": false,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 15.948,
+  "complete_wire_verified": true,
+  "controls_accepted": false,
+  "current_goal_turn": "progress",
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "d0ca029bbdd8a9e0afdb7be3c388513695af26ea83ef6f7113544560fbd11200",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "6af4455ba3738252819c4e1f444ba49ef97a1d7f6aef779c897dfe6fe36b6da1"
+  },
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1479,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT-advice-controls-transport-concordance-v1.json",
+    "sha256": "7ee20bed0bd6cb56aaaf2e27beaaca85bafa09f420814b079e554ffa79c0794f"
+  },
+  "native_launch_to_postprobe_ns": 1648076000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 1595933000,
+  "observation": "UNKNOWN status saved as skip reason only; harness did not retain actual partial adviser batch, so cause/work counts/partial proposal counts are unavailable.",
+  "old_UNKNOWNs_preserved": true,
+  "outputs": [
+    {
+      "bytes": 11423,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+      "sha256": "a3de58c0e71de89a71f05bb65771b5341c06454a7895f0b0d7b298d48d9a3d0e"
+    },
+    {
+      "bytes": 6982,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/advice-controls-owned-v1/response.jsonl",
+      "sha256": "812afa5902a494b56c6708892ce0e23c7288d320659c30ec88f3d0bfad544cff"
+    }
+  ],
+  "passed_cases": 2,
+  "plan": {
+    "bytes": 7860,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "21ef0190e6073e599f57855aff566cfc903d769f56559667bb4073f1aa6bd457"
+  },
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved wire/source/marker/native/status/receipt field concordance only; no scientific functions or proof replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-advice-consumer-controls-disposition-v1",
+  "scope": "Two actual global priority controls passed; twenty adviser/currentpending/rollback consumer cases skipped for genuine UNKNOWN advice. No target search admitted.",
+  "skipped_cases": 20,
+  "status": "UNQUALIFIED_CONSUMER_COVERAGE",
+  "target_arms_admitted": false,
+  "terminal_T_bytes": 26050560
+}

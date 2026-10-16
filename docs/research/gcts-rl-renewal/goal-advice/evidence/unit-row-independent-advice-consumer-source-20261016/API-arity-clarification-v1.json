@@ -1,0 +1,39 @@
+{
+  "injected_engine_keyword_count": 4,
+  "injected_engine_keyword_only_arguments": [
+    "state",
+    "decision",
+    "batch",
+    "tick"
+  ],
+  "module_keyword_count": 6,
+  "module_keyword_only_arguments": [
+    "language",
+    "semantics",
+    "state",
+    "decision",
+    "batch",
+    "tick"
+  ],
+  "operative_change": false,
+  "preserved_handoff": {
+    "bytes": 5615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/handoff-v1.json",
+    "sha256": "de449120e7aab457ec486fe087078841883669a4b111e462144793be0d2e20a9"
+  },
+  "reason": "One descriptive Source docstring says five-keyword API; earlier human coordination messages repeated that overcount. Operative signature and author-static exact AST check are correct and unchanged.",
+  "schema": "unit-row-advice-validator-API-arity-clarification-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15295,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+    "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+  },
+  "source_contract": {
+    "bytes": 13583,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/Source-contract-v1.json",
+    "sha256": "55d331260ee45e103ec7f12da7fce96029be1d9075da206a632bce5ef78f6ff1"
+  },
+  "source_only": true
+}

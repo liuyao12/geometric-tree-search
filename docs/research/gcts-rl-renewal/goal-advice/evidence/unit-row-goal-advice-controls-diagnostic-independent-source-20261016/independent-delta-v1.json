@@ -1,0 +1,59 @@
+{
+  "entire_AST_inverse": true,
+  "full_raw_forward_inverse": true,
+  "offset_edits": [
+    {
+      "after": "2-preserved-advice-diagnostics",
+      "before": "1",
+      "new_end": 423,
+      "new_start": 393,
+      "old_end": 394,
+      "old_start": 393
+    },
+    {
+      "after": "\n    # Preserve the WHOLE actual return before eligibility can skip controls.\n    # UNKNOWN partial proposals/counters are diagnostic only, never executable.\n    artifacts['fixture_advice_attempt']={'schema':'unit-row-fixture-advice-attempt-v1',\n      'state':copy.deepcopy(s),'decision':copy.deepcopy(decision),\n      'actual_adviser_return':copy.deepcopy(batch),'diagnostic_only':True,\n      'authority_accepted':False,\n      'pre_advice_state_sha256':hashlib.sha256(before.encode()).hexdigest(),\n      'derived_from':{'AX_name':name,'eligible_parameter':v,'UI_instance':copy.deepcopy(body),\n        'selected_future_UG':copy.deepcopy(future)}}",
+      "before": "",
+      "new_end": 10709,
+      "new_start": 10063,
+      "old_end": 10034,
+      "old_start": 10034
+    }
+  ],
+  "parent_source": {
+    "bytes": 32773,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v1.py",
+    "sha256": "9862fa5e979d56bc769bcf399803fdb46cf28a7b7303202e3bab7ea8f2d4de4f"
+  },
+  "patches": {
+    "controls-v1-to-v2-forward.patch": {
+      "bytes": 1637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/controls-v1-to-v2-forward.patch",
+      "sha256": "6f8ff334a048644e50bbd53b16343853d96b0c8e3e0a8e754d699f23e1be1319"
+    },
+    "controls-v2-to-v1-full-inverse.patch": {
+      "bytes": 1637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/controls-v2-to-v1-full-inverse.patch",
+      "sha256": "4495598202ffaaead59c71b570a412b052c4194181075de406d52e07fb3e880c"
+    }
+  },
+  "schema": "unit-row-advice-controls-diagnostic-independent-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 33448,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py",
+    "sha256": "229f9cdd2daf6b9aa7f9b6ea071f2ffdbf69b1caf82351a818cf8a489c30a98b"
+  },
+  "source_only": true,
+  "unchanged_helpers": [
+    "Unavailable",
+    "CallbackExhausted",
+    "need",
+    "canonical",
+    "digest",
+    "tile",
+    "state",
+    "ug",
+    "obligations"
+  ]
+}

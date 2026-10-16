@@ -1,0 +1,91 @@
+{
+  "API": {
+    "authority": "Root wrapper freshly reconstructs/authenticates the full original private language and current c354 semantics for each call, guards whole Source/delegation before/after, and injects a native budget tick. No module loader/CodeSeal replacement is implemented here.",
+    "batch": "Complete literal c6fc READY batch or the exact pending request below. UNKNOWN/partial batches reject and are never executable preferences.",
+    "decision": "Exact {kind:BRANCH,row:literal int 0..23}. Validator reconstitutes the whole original state and requires incident row unfilled; actual complete global dead-before-forced-before-ROW-TIE decision MUST be independently established by the engine. Passing a BRANCH-shaped dict cannot establish that decision.",
+    "injected_engine_callback": "validate_advice(*,state,decision,batch,tick)",
+    "module_signature": "validate_advice(*,language,semantics,state,decision,batch,tick)",
+    "pending_request": {
+      "binding": "complete fresh original binding",
+      "decision": "exact actual BRANCH decision join",
+      "family_id": "opaque nonempty string length <=256 (engine 64-character digest fits); provenance only",
+      "keys": "ordered list <=24 unique complete original placement keys, all at the selected row",
+      "schema": "unit-row-pending-preference-request-v1",
+      "state_sha256": "SHA256 of complete cloned literal current state"
+    },
+    "receipt": {
+      "binding": "full original binding, not just epoch/hash",
+      "decision": "complete joined branch decision",
+      "flags": {
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "complete_GCTS_model_accepted": false,
+        "degree_or_EOF_accepted": false,
+        "exact_point_board_accepted": false,
+        "learned_marking_accepted": false,
+        "logical_proof_accepted": false,
+        "scheduler_accepted": false,
+        "trajectory_accepted": false
+      },
+      "input_sha256": "whole literal batch/request canonical hash",
+      "mode": "ADVICE_BATCH | PENDING_KEYS",
+      "rejections": "pending only, list {key:full key,reason:explicit c354 legality return}; never exception conversion",
+      "schema": "unit-row-advice-validation-v1",
+      "selection": "None or {anchor:fresh whole current packet,future_keys:[complete keys],origin:JSON provenance}",
+      "state_sha256": "whole current state hash join, after semantic reconstruction",
+      "version": "unit-row-independent-advice-consumer-validator-v1"
+    },
+    "selection_origin": "ADVICE_BATCH: {batch_sha256,proposal_index:0,scheme,goal_root}. PENDING_KEYS: {family_id}. No source or family authority is derived from origin."
+  },
+  "API_arity_clarification": {
+    "bytes": 1573,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/API-arity-clarification-v1.json",
+    "sha256": "1800bc335146fee48eda16e7e50e8b6bf49714190f89e01b0e89c5ddbb4642c2"
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_static": {
+    "bytes": 2720,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/author-static-v1.json",
+    "sha256": "b57572ff81bbe0a3b57e453bd0e868887aa24dca5a3ffeff7b6dc67e1c02661d"
+  },
+  "authorship": "Validator independently authored by /root/hilbert_ordering_diagnosis; adviser and c354 semantics authored by /root/arithmetic_induction; membership authored by /root/hilbert_advice_controls. Validator author previously authored original1717 checker, lossless codec, family and adversarial harness Sources; this is a new consumer check against reused current semantics, not a second logical kernel or independent theorem proof.",
+  "previous_handoff": {
+    "bytes": 5615,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/handoff-v1.json",
+    "sha256": "de449120e7aab457ec486fe087078841883669a4b111e462144793be0d2e20a9"
+  },
+  "schema": "unit-row-independent-advice-consumer-Source-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-independent-advice-consumer-validator-Source",
+  "source": {
+    "bytes": 15295,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+    "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+  },
+  "source_contract": {
+    "bytes": 13583,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/Source-contract-v1.json",
+    "sha256": "55d331260ee45e103ec7f12da7fce96029be1d9075da206a632bce5ef78f6ff1"
+  },
+  "source_only": true,
+  "sources": {
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "validator": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    }
+  },
+  "status": "FROZEN_SOURCE_ONLY_DISTINCT_REVIEW_PENDING",
+  "summary": "Whole READY batch independently reconstructed before first ranked anchor; only its future full keys remain uninstalled preferences. Pending keys current-rebuilt; only explicit nonexception legality reasons drop hints. No exception handlers, engine mutation, fallback/EOF or global BRANCH authority."
+}

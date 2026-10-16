@@ -1,0 +1,416 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_disclosure": {
+    "harness_author_overlap": [
+      "membership/proposer/fallback implementations and reused diagnostic helpers"
+    ],
+    "reviewer_authored": [
+      "current engine dbaf5",
+      "generic adviser c6fc",
+      "c354 degree checker",
+      "2e2d transition checker"
+    ],
+    "reviewer_did_not_author": [
+      "controls9862",
+      "validator f668",
+      "membership5d1f",
+      "degree proposer c960",
+      "fallback69b4"
+    ],
+    "scope": "Genuine distinct harness review only; not self-review of the listed dependency implementations."
+  },
+  "checks": [
+    {
+      "evidence": "whole source + source/contract/handoff hashes",
+      "finding": "Whole immutable486-line Source, full contract and handoff read; exact Source capsule9862/32773 and current contract4fe4/13718 authenticated.",
+      "id": "GAC01",
+      "passed": true
+    },
+    {
+      "evidence": "sources/raw_references maps",
+      "finding": "All10 executed Source roles and8 raw reference capsules agree literally with current files; full Source map matches handoff. No self-asserted actual admission.",
+      "id": "GAC02",
+      "passed": true
+    },
+    {
+      "evidence": "master sections2–6, current dbaf5 decision/search",
+      "finding": "Master complete-frontier/dead-before-forced/earliest-generation/fallback/proposal distinction used; actual unchanged engine decision controls each search.",
+      "id": "GAC03",
+      "passed": true
+    },
+    {
+      "evidence": "run_controls signature + make/current_advice/check",
+      "finding": "Eight keyword API and seven-key factory match Source; independent validator is injected four-key engine closure, adviser accepts declared heuristic quota kwargs.",
+      "id": "GAC04",
+      "passed": true
+    },
+    {
+      "evidence": "whole AST imports/attributes",
+      "finding": "Only copy/hashlib/json imported; no project, model, oracle, saved word, donor, library or clock import. No private engine attribute/hook.",
+      "id": "GAC05",
+      "passed": true
+    },
+    {
+      "evidence": "Unavailable/CallbackExhausted/need/canonical/digest/tile/state/ug/obligations",
+      "finding": "Nine prior helper/class definitions match retained controls d1dc in whole bytes and AST; independent prior logical acceptance is not inferred.",
+      "id": "GAC06",
+      "passed": true
+    },
+    {
+      "evidence": "tile/state/ug/obligations",
+      "finding": "Tile fixtures call original language.primitive, exact ordered offsets/preimage/hash, unit support and marking points. State recomposes selected whole marks/capacity, original target row23/outside boundary and all24 root generations0.",
+      "id": "GAC07",
+      "passed": true
+    },
+    {
+      "evidence": "initial fixture construction + artifacts.fixture",
+      "finding": "Main fixture is generic first named universal AX + eligible parameter substitution. Selected UG9 imposes a pending universal atrow8; no target proof route or logical fact assigned. Actual adviser chooses ranked family.",
+      "id": "GAC08",
+      "passed": true
+    },
+    {
+      "evidence": "fixture e.decision + Unavailable handler",
+      "finding": "Actual current global decision must literally be BRANCH row0 before adviser is asked. Unexpected decision/fixture profile absence is explicitly unqualified eligibility SKIP.",
+      "id": "GAC09",
+      "passed": true
+    },
+    {
+      "evidence": "receipt_flags/check + artifact fixture",
+      "finding": "Positive READY batch and entire independent receipt retained; state before/after literal equality required. All9 strong receipt flags False.",
+      "id": "GAC10",
+      "passed": true
+    },
+    {
+      "evidence": "pending-obligations-never-facts",
+      "finding": "Uninstalled flags and every external PENDING obligation/fact_accepted=False checked. Empty external-obligation coverage is SKIP, not vacuous gate qualification.",
+      "id": "GAC11",
+      "passed": true
+    },
+    {
+      "evidence": "bad mutations + later-ranked case",
+      "finding": "Malformed copies cover stale binding/state/scheduler row, anchor ID, full member mark, duplicate identity, installed/proof authority, ports and unchosen later-ranked member. Entire batch independently checked.",
+      "id": "GAC12",
+      "passed": true
+    },
+    {
+      "evidence": "port_locations/pairs + coverage_gaps + final qualification",
+      "finding": "Port subcase absence is an explicit additional_coverage_gap, so encompassing PASSED record cannot qualify all consumer gates by hiding missing two-port coverage.",
+      "id": "GAC13",
+      "passed": true
+    },
+    {
+      "evidence": "quota_advice/quota_UNKNOWN/qjoin",
+      "finding": "Genuine adviser maximum_work1 UNKNOWN retained. Join-only mutation isolates validator UNKNOWN rejection and is never executed as engine advice.",
+      "id": "GAC14",
+      "passed": true
+    },
+    {
+      "evidence": "first_key + stop_after_placement cases6–7",
+      "finding": "Empty-hint and quota-UNKNOWN actual search first TRY key is compared to genuine current fallback.context/advance candidate0; fallback abort finally, no manufactured EOF/universe.",
+      "id": "GAC15",
+      "passed": true
+    },
+    {
+      "evidence": "timeout_advice + unknown_result",
+      "finding": "Native-first explicit callback Timeout produces UNKNOWN/no TRY/no EXCLUDE; original before/after whole snapshot equality required.",
+      "id": "GAC16",
+      "passed": true
+    },
+    {
+      "evidence": "value_error + exact reason checks",
+      "finding": "Exact declared callback ValueError string must escape adviser and validator into caller; whole root restored. ValueError is not converted into hint removal.",
+      "id": "GAC17",
+      "passed": true
+    },
+    {
+      "evidence": "capture_degree + holder.engine.checkpoint",
+      "finding": "A stable actual degree callback captures public owned child checkpoint only after normal engine adoption/placement exposes nonempty pending family. No private family fabrication/reseal.",
+      "id": "GAC18",
+      "passed": true
+    },
+    {
+      "evidence": "actual-anchor-only-no-future-preinstallation",
+      "finding": "Exactly one anchor installed is checked against independent selection; every future key absent, whole state equals original fixture plus anchor only. Snapshot and full search trace retained.",
+      "id": "GAC19",
+      "passed": true
+    },
+    {
+      "evidence": "first-search/root and public-rollback cases",
+      "finding": "Initial search UNKNOWN must restore exact root. Public rollback of genuine child token must recover exact nonempty family snapshot; continuation uses same engine and once-bound callbacks.",
+      "id": "GAC20",
+      "passed": true
+    },
+    {
+      "evidence": "phase continue + watched_validator/capture_degree",
+      "finding": "Continuation observes real pending-key independent selection and pending_selected count, then interrupt after actual placement, restoring exact inner root. Nonreachability yields unqualified SKIP rather than fake pass.",
+      "id": "GAC21",
+      "passed": true
+    },
+    {
+      "evidence": "remote derivation/current receipt fixture",
+      "finding": "Remote fixture derives an absent read of actual pending key and a different original AX, imposes it by compatible later UG/public place. Exact full-key whole_remote_or_metadata_mark_conflict required.",
+      "id": "GAC22",
+      "passed": true
+    },
+    {
+      "evidence": "remote_search ADVICE + current engine selector",
+      "finding": "Rejected pending hint is not a new exclusion/pruning; observed enabled-mode ADVICE must name CANONICAL_FALLBACK. This observation is narrower than independent whole candidate-sequence replay.",
+      "id": "GAC23",
+      "passed": true
+    },
+    {
+      "evidence": "pending-request-malformed-controls scope",
+      "finding": "Pending duplicate/incident-row/forged-key negatives use component-intake BRANCH shape explicitly distinguished from actual global scheduling evidence.",
+      "id": "GAC24",
+      "passed": true
+    },
+    {
+      "evidence": "forced-retirement fixture construction",
+      "finding": "Forced-fill retirement is produced from actual original AX predecessors and later UG constraint, no direct pending placement or scripted degree/scheduler. Search must show FORCED TRY for both future rows.",
+      "id": "GAC25",
+      "passed": true
+    },
+    {
+      "evidence": "forced-retirement observed totals/events + final restored",
+      "finding": "Fresh adviser callback must observe every pending row occupied; exact old full-key set appears in ADVICE.retired_keys and pending family None. Quota UNKNOWN then canonical fallback, exact rollback.",
+      "id": "GAC26",
+      "passed": true
+    },
+    {
+      "evidence": "scheduler_names controls",
+      "finding": "Separate original AX/UG DEAD and FORCED fixtures install a forbidden adviser, requiring zero adviser calls before dead/forced propagation. No fake base universe/EOF.",
+      "id": "GAC27",
+      "passed": true
+    },
+    {
+      "evidence": "final expected_names/missing/result + contract qualification",
+      "finding": "Every declared case exactly once; any skipped case or missing subcase makes all_advice_consumer_gates_qualified False. all_declared_cases_completed means record coverage, not every case passed.",
+      "id": "GAC28",
+      "passed": true
+    },
+    {
+      "evidence": "prepared/reject/callback helpers + contract seams",
+      "finding": "Only exact OutsideLanguage is converted into fixture eligibility Unavailable; explicit callbacks tick native-first; other resource/authority failures propagate subject to external guarded delegates. Malformed reject records exact ValueError diagnostics.",
+      "id": "GAC29",
+      "passed": true
+    },
+    {
+      "evidence": "result flags + contract scope",
+      "finding": "All9 stronger proof/point/degree/scheduler/graph/trajectory/learned/RL/resource flags explicitlyFalse, independent of local control outcome. Original17/retained17 are separate.",
+      "id": "GAC30",
+      "passed": true
+    },
+    {
+      "evidence": "contract limits + review method",
+      "finding": "No dynamic/semantic execution performed by this review; AST compile only. Original20/512/failure55/owned60/caller90+1 and expanded16MiB/encoded4MiB lossless output remain actual external gates, not Source fit predictions.",
+      "id": "GAC31",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Distinct review covers the harness Source/control assertions, not a new independently reimplemented kernel, graph, proof or target trajectory. Reviewer authored engine/adviser/c354/transition dependencies; harness author authored membership/proposer/fallback dependencies.",
+    "Actual original-language eligibility, nonempty family, pending continuation, remote fixture and forced-fill retirement are not established by Source reading. Any essential SKIP or missing port subcase must leave local qualification False; Root must require completed exact current controls before target admission.",
+    "The remote rejected-hint canonical case checks a genuine rejection and ADVICE mode/current engine behavior; unlike empty/quota cases it does not independently compare a new-context fallback candidate0 key. No whole canonical trajectory acceptance claimed.",
+    "Malformed negative controls accept exact-type ValueError and retain its full message; they do not independently prove exception causality. Original Source/effective endpoint/authority/native guards and immediate postcallback boundary remain trusted external caller obligations; resource failures must not be treated as expected negatives.",
+    "Counts/events from reused engine are cumulative work observations, not separate causal gains, unique proof steps or efficiency. No20-second/512MiB/control-wire fit or useful advice prediction follows from AST checks.",
+    "No project/scientific function, native clock, model/word/Q payload, test or actual called; only raw JSON/hash/AST/compile metadata operations."
+  ],
+  "method": "Whole frozen Source + whole current contract/handoff, Source-level dependency comparison, independent raw capsule and AST/body assertions only. No scientific Source calls/exec/imports/models/clocks/tests/actuals.",
+  "references": {
+    "author_static": {
+      "bytes": 9469,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/author-static-v1.json",
+      "sha256": "6f23d0d64d309c0f589327c511c7cd80511d9b6e9b567e8878fde59d97dab8b8"
+    },
+    "handoff": {
+      "bytes": 6413,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/handoff-v1.json",
+      "sha256": "1d24cde398aecdd04236b4eb4aae31207acc0ef8748800ad8023b03d2167c42c"
+    },
+    "raw_references.adviser_contract": {
+      "bytes": 12193,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "e46ce289256c834f35701bcd41f667140980c8a60c976691242ab824622719a7"
+    },
+    "raw_references.declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "raw_references.engine_contract": {
+      "bytes": 22207,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/Source-contract-v2.json",
+      "sha256": "c24b0137b5a0372bd9999c0670317935fa1d6cfa716f590e34c9f2c3cf0877cf"
+    },
+    "raw_references.master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "raw_references.original_controls": {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    "raw_references.prior_controls": {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    "raw_references.profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "raw_references.validator_contract": {
+      "bytes": 13583,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/Source-contract-v1.json",
+      "sha256": "55d331260ee45e103ec7f12da7fce96029be1d9075da206a632bce5ef78f6ff1"
+    },
+    "source_contract": {
+      "bytes": 13718,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/Source-contract-v1.json",
+      "sha256": "4fe467e61270d033f7deed56ded41ab15f3c092e24759c2e99ec442aecc0b4ee"
+    },
+    "sources.adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "sources.controls": {
+      "bytes": 32773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v1.py",
+      "sha256": "9862fa5e979d56bc769bcf399803fdb46cf28a7b7303202e3bab7ea8f2d4de4f"
+    },
+    "sources.degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "sources.degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "sources.engine": {
+      "bytes": 51786,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+      "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+    },
+    "sources.fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "sources.kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "sources.membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "sources.transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "sources.validator": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    }
+  },
+  "review_scope": "unit-row-goal-advice-controls-Source",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-goal-advice-controls-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scoped_blockers": [],
+  "source": {
+    "bytes": 32773,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v1.py",
+    "sha256": "9862fa5e979d56bc769bcf399803fdb46cf28a7b7303202e3bab7ea8f2d4de4f"
+  },
+  "source_contract": {
+    "bytes": 13718,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/Source-contract-v1.json",
+    "sha256": "4fe467e61270d033f7deed56ded41ab15f3c092e24759c2e99ec442aecc0b4ee"
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "controls": {
+      "bytes": 32773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v1.py",
+      "sha256": "9862fa5e979d56bc769bcf399803fdb46cf28a7b7303202e3bab7ea8f2d4de4f"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 51786,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+      "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    }
+  },
+  "summary": {
+    "checks": 31,
+    "declared_cases": 22,
+    "identical_inherited_helpers": [
+      "Unavailable",
+      "CallbackExhausted",
+      "need",
+      "canonical",
+      "digest",
+      "tile",
+      "state",
+      "ug",
+      "obligations"
+    ],
+    "passed": 31,
+    "scoped_blockers": 0,
+    "source_review_passed": true
+  },
+  "whole_contract_read": true,
+  "whole_handoff_read": true,
+  "whole_source_read": true
+}

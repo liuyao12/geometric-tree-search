@@ -1,0 +1,23 @@
+{
+  "checks": [
+    "Whole strict bounded predecessor plus exact two literal edits inspected; no project imports/functions or replay.",
+    "Mode list expands to exact five current endpoints only; diagnostic Source count label corrected. Every other byte including bounded samebuffer reading, strict whole canonicalJSON/LF/base64/singlezlib/hash/count/Source/input/purpose joins unchanged.",
+    "No resource or logical acceptance supplied by transport decoder."
+  ],
+  "parent": {
+    "bytes": 5270,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-packed-ROOT-20261016/ROOT_decode_saved_transport_v2.py",
+    "sha256": "28e9764777bdcb8d549ec58814842c39d49dd05fe10a6ed6acfc942fc12a9516"
+  },
+  "reviewer_identity": "/root",
+  "schema": "ROOT-saved-transport-decoder-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 5315,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT_decode_saved_transport_v3.py",
+    "sha256": "1adfabc2cbd40c124cfe122a636f4189e0a7415876ec89c6e69408b16277d933"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

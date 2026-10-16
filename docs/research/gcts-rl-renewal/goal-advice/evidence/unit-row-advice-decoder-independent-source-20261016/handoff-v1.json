@@ -1,0 +1,33 @@
+{
+  "findings": {
+    "bytes": 11539,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-decoder-independent-source-20261016/findings-v1.json",
+    "sha256": "ce6ac03b6066f34a45d44e569010a6bfae9b1b133ab9d7d1794c98d78001b0d8"
+  },
+  "independent_delta": {
+    "bytes": 5358,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-decoder-independent-source-20261016/independent-delta-v1.json",
+    "sha256": "5072368a049d2a255573fcac60eae4d8c135acf84d111692cc91cacfe122efef"
+  },
+  "schema": "unit-row-advised-saved-decoder-independent-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-advised-saved-lossless-transport-decoder-Source",
+  "source": {
+    "bytes": 5315,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT_decode_saved_transport_v3.py",
+    "sha256": "1adfabc2cbd40c124cfe122a636f4189e0a7415876ec89c6e69408b16277d933"
+  },
+  "source_contract": {
+    "bytes": 19239,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "c9a1391bfbd4edfef779432cdc0779a9971edd1fb4cb58537a660d7be1373e90"
+  },
+  "source_only": true,
+  "summary": "Genuine whole current decoder3/callercontract Source-only pass: exactly2 literal changes, all9 helpers unchanged, complete strict bounded samebuffer canonicalJSON/base64/zlib/hash/EOF transport preserved. No decoder/data/functions/tests/actuals executed; no scientific/native admission.",
+  "typed_review": {
+    "bytes": 2276,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-decoder-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "902dad0535f9a21d87ad6ea108e72344bb30e663f28866c4efaed80237bb7766"
+  }
+}

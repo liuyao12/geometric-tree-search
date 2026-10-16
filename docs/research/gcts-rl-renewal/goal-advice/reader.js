@@ -1,0 +1,28 @@
+'use strict';
+// Display saved JSON only. No project imports, scientific calls, transitions or proof checking.
+const $=id=>document.getElementById(id),math=s=>`\\(${s}\\)`,esc=s=>String(s).replace(/[\\{}_%&#$]/g,c=>'\\'+c);
+function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
+function term(t){if(t[0]==='var')return esc(t[1]);const a=t[2].map(term);if(t[1]==='zero'&&!a.length)return'0';if(t[1]==='succ'&&a.length===1)return`S(${a[0]})`;if(t[1]==='add'&&a.length===2)return`(${a[0]}+${a[1]})`;return`\\operatorname{${esc(t[1])}}(${a.join(',')})`;}
+function formula(f){switch(f[0]){case'eq':return`${term(f[1])}=${term(f[2])}`;case'all':return`\\forall ${esc(f[1])}\\;\\bigl(${formula(f[2])}\\bigr)`;case'imp':return`\\bigl(${formula(f[1])}\\bigr)\\Rightarrow\\bigl(${formula(f[2])}\\bigr)`;default:throw Error('Unsupported saved control formula');}}
+let queue=Promise.resolve();function typeset(nodes){queue=queue.then(async()=>{await MathJax.startup.promise;MathJax.typesetClear(nodes);await MathJax.typesetPromise(nodes);});return queue;}
+function clear(n){if(window.MathJax?.typesetClear)MathJax.typesetClear([n]);n.replaceChildren();}
+function option(n,value,text){const o=el('option',text);o.value=String(value);n.append(o);}
+let record,state,current;
+async function showRow(row){clear($('row-reader'));const box=$('row-reader'),t=state.t.find(([p])=>p[0]===0&&p[1]===row)?.[1]??0,mark=state.m.find(([p])=>p[0]===1&&p[1]===row)?.[1],tile=state.selected.find(k=>k.translation[1]===row);
+box.append(el('h3',`Saved point ${math(`r=${row}`)}`),el('p',`Unit support ${math(`t(0,${row})=${t}`)}. ${t?'Occupied in the recorded child.':'Unfilled in the recorded child.'}`));
+if(mark?.[0]==='formula'){const f=JSON.parse(mark[1]);box.append(el('p',t?'Recorded formula:':'Pending formula requirement:'),el('div',math(formula(f)),'formula-box'));}else box.append(el('p','No formula marking is assigned here. Missing is unconstrained.'));
+if(tile){const p=tile.type_preimage,w=p.primitive_witness;box.append(el('p',w.rule==='axiom'?'This tile states the named addition axiom AS.':`From the earlier read formula, universally generalize over the declared parameter ${math('n')}. This is a constructed control step, not a complete target proof.`));
+for(let i=0;i<p.ordered_offsets.length;i++){const read=row+p.ordered_offsets[i];box.append(el('p',`Amber offset ${math(String(p.ordered_offsets[i]))}: read ${math(`r=${read}`)}. Required formula:`),el('div',math(formula(p.ordered_premise_formulas[i])),'formula-box'));}
+box.append(el('p',tile.tile_type_id,'hash'));}
+for(const b of $('row-grid').children)b.setAttribute('aria-pressed',String(Number(b.dataset.row)===row));$('row-select').value=String(row);document.body.dataset.savedRow=String(row);await typeset([box]);}
+function rawCase(){if($('case-details').open)$('case-json').textContent=JSON.stringify(current,null,2);else $('case-json').textContent='';}
+async function showCase(i){current=record.controls.cases[i];clear($('case-reader'));const box=$('case-reader');box.append(el('p',current.status,current.status==='PASSED'?'status pass':'status'),el('p',current.observed.reason??'Actual global scheduler priority control; no adviser call was made.'),el('p',current.scope,'caption'));rawCase();document.body.dataset.savedCase=String(i);await typeset([box]);}
+async function main(){const get=async p=>{const r=await fetch(p);if(!r.ok)throw Error('Missing saved record '+p);return r.json();};const data=await get('report-data.json');record=await get(data.controls_path);state=record.controls.cases.at(-1).observed.child_state;
+const stages=[['Original controls',data.original_controls,math('17')+' passed'],['Retention controls',data.domain_controls,math('17')+' passed'],['Advice consumer',data.advice_controls,math('2')+' passed; '+math('20')+' skipped']];
+for(const[label,d,outcome]of stages){const card=el('div',undefined,'card');card.append(el('span',label,'eyebrow'),el('strong',label==='Advice consumer'?'Unqualified':math(String(d.passed_cases))),el('span',label==='Advice consumer'?'Target arms withheld':'Separate qualified control stage','muted'));$('summary').append(card);const tr=el('tr');for(const v of [label,outcome,math((d.native_launch_to_postprobe_ns/1e9).toFixed(6)+'\\,\\mathrm{s}'),math((d.aggregate_B_bytes/1048576).toFixed(3)+'\\,\\mathrm{MiB}')])tr.append(el('td',v));$('metrics').append(tr);}
+for(let row=0;row<state.height;row++){const filled=state.t.some(([p,v])=>p[0]===0&&p[1]===row&&v===1),marked=state.m.some(([p])=>p[0]===1&&p[1]===row),b=el('button',math(String(row)),(filled?'filled ':'')+(marked?'marked':''));b.type='button';b.dataset.row=String(row);b.setAttribute('aria-label','Read saved point '+row);b.addEventListener('click',()=>showRow(row));$('row-grid').append(b);option($('row-select'),row,'Point '+row);}
+$('row-select').addEventListener('change',()=>showRow(Number($('row-select').value)));$('state-json').textContent=JSON.stringify(state,null,2);
+for(const[c,i]of record.controls.cases.map((c,i)=>[c,i]))option($('case-select'),i,`${i+1} · ${c.status} · ${c.case.replaceAll('-',' ')}`);$('case-select').addEventListener('change',()=>showCase(Number($('case-select').value)));$('case-details').addEventListener('toggle',rawCase);
+for(const x of data.evidence){const li=el('li'),a=el('a',x.label);a.href=x.href;li.append(a);$('evidence-links').append(li);}
+await showRow(1);await showCase(0);await typeset([$('summary'),$('metrics'),$('row-grid')]);document.body.dataset.savedReaderReady='true';}
+main().catch(e=>{document.body.dataset.savedReaderFailed='true';document.querySelector('.lead').textContent='Saved reader failed: '+e.message;});

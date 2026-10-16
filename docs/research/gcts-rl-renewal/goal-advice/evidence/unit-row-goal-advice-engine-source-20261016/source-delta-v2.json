@@ -1,0 +1,276 @@
+{
+  "added_callables": [],
+  "base": {
+    "bytes": 50927,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py",
+    "sha256": "d30b56cc371dc62a85b3eb30363149b6f95a7cff9100fa1d770413228d52c98d"
+  },
+  "changed_callables": [
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch"
+  ],
+  "current": {
+    "bytes": 51786,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+    "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+  },
+  "edits": [
+    {
+      "new_end": 386,
+      "new_start": 317,
+      "new_utf8": "VERSION = 'lazy-unit-row-global-engine-v5-retire-filled-preferences'\n",
+      "old_end": 386,
+      "old_start": 317,
+      "old_utf8": "VERSION = 'lazy-unit-row-global-engine-v4-transactional-goal-advice'\n"
+    },
+    {
+      "new_end": 6462,
+      "new_start": 6369,
+      "new_utf8": "                           pending_rejected=0, pending_retired=0, fallback_branch_choices=0)\n",
+      "old_end": 6443,
+      "old_start": 6369,
+      "old_utf8": "                           pending_rejected=0, fallback_branch_choices=0)\n"
+    },
+    {
+      "new_end": 41494,
+      "new_start": 40755,
+      "new_utf8": "        dropped, retired = [], []\n        if preferences is not None:\n            # The real global decision already validated this owned point state.\n            # Occupied rows need no future preference, even if globally forced.\n            totals = self.semantics.point_map(self._state['t'], self.tick)\n            remaining = []\n            for key in preferences['pending_keys']:\n                self.tick()\n                if totals[(0, key['translation'][1])] == 1:\n                    retired.append(self._copy(key))\n                else:\n                    remaining.append(key)\n            self.counts['pending_retired'] += len(retired)\n            preferences = dict(preferences, pending_keys=remaining) if remaining else None\n",
+      "old_end": 40757,
+      "old_start": 40736,
+      "old_utf8": "        dropped = []\n"
+    },
+    {
+      "new_end": 43379,
+      "new_start": 43304,
+      "new_utf8": "                        'rejected_keys': dropped, 'retired_keys': retired}\n",
+      "old_end": 42617,
+      "old_start": 42567,
+      "old_utf8": "                        'rejected_keys': dropped}\n"
+    },
+    {
+      "new_end": 45607,
+      "new_start": 45514,
+      "new_utf8": "                        'origin': origin, 'rejected_keys': dropped, 'retired_keys': retired}\n",
+      "old_end": 44820,
+      "old_start": 44752,
+      "old_utf8": "                        'origin': origin, 'rejected_keys': dropped}\n"
+    },
+    {
+      "new_end": 46304,
+      "new_start": 46225,
+      "new_utf8": "            'origin': None, 'rejected_keys': dropped, 'retired_keys': retired}\n",
+      "old_end": 45492,
+      "old_start": 45438,
+      "old_utf8": "            'origin': None, 'rejected_keys': dropped}\n"
+    },
+    {
+      "new_end": 46997,
+      "new_start": 46862,
+      "new_utf8": "            rejected_keys=plan['rejected_keys'], retired_keys=plan['retired_keys'],\n            pending_preferences=self._preferences)\n",
+      "old_end": 46138,
+      "old_start": 46050,
+      "old_utf8": "            rejected_keys=plan['rejected_keys'], pending_preferences=self._preferences)\n"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "reason": "Heuristic family lifecycle only: next actual BRANCH retires advisory keys at already filled rows, never a candidate/pruning/degree exclusion. Originalv4 remains preserved.",
+  "schema": "unit-row-goal-advice-engine-source-delta-v2",
+  "source_only": true,
+  "unchanged_callables": [
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "need",
+      "sha256_utf8_body": "9b81736234f0f8676c37d012e9e26cdf8a5bf4e87f0c88f8f592772e80850bc0"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "canonical",
+      "sha256_utf8_body": "4fdf55942834873a2c99effa6eed13a99ddc74cb59db6f51fa92858aee75d6d6"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "digest",
+      "sha256_utf8_body": "41d801acdaad42a80eec7621fbcc328ea7b6e2f8c0d778185efcd6268342d221"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "diagnostic_copy",
+      "sha256_utf8_body": "08d1848ee5b6f7ac67fcf78553f44d2273013db904368d2063eda19a915becd6"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "select_schedule",
+      "sha256_utf8_body": "e1751251b8cfa1c626ee969186e4f7f737fb5844e3eab46e7a728488a9d97d03"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "certify_by_current_cover",
+      "sha256_utf8_body": "510516bea70d1f0416d958b0bf13aa6b2a84a02a2a719464eb385dd783e4013a"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "_Checkpoint.__init__",
+      "sha256_utf8_body": "038fff8ffa14229ae04b607134d4dc45e61eeede64c8bcb01decb581d9db984d"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._copy",
+      "sha256_utf8_body": "fdbf72a8d0f310d4650194d8016f51525a1206ecb93944cc0f5270fc67e9b97c"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._reference_counts",
+      "sha256_utf8_body": "719ceb98f778303af048bafefe3835df540c3a30b87a5842de9c6b14c6a62f23"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._emit",
+      "sha256_utf8_body": "0eb86c7f546d52b74ebcfb3c2a21e7b5e5d606460029aece766e694b8d2b00f3"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._snapshot_value",
+      "sha256_utf8_body": "5410ef49c24e59d491175e4c9bd8db04b3bd3aaa0f90c50e3bbb6a0787eb41d7"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.state_snapshot",
+      "sha256_utf8_body": "a991a956a1ed7c4435b55aec0d5294d3fad0e7b7d2937e071985643abd31d3a4"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.checkpoint",
+      "sha256_utf8_body": "716cbb4e16d367958978f9d703f99dd6d988e9fd991e91637832237aac7e1350"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.rollback",
+      "sha256_utf8_body": "3e0e6938638c2205ae73b84b3e2c637ad974b24c95bcb3ea4792536428c20e86"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._check_authority",
+      "sha256_utf8_body": "507c891e3d0d47d27495b9a8102735ef5c2b8dabb64ceaff964d0ba9626b89cd"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._transfer_receipt",
+      "sha256_utf8_body": "ae8a51f22d8999910707fb9d7ac493a358cbcf056159174bfaaa236ad6db801b"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._has_archived_context",
+      "sha256_utf8_body": "e4c9afaef83928dd4740acc793a6f090fa0e557974e51ea0540106ccc487eaca"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._archive_context",
+      "sha256_utf8_body": "8246169340ea8cd00189b4fa52f80060650f10e4443831919d005846d821400b"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._install",
+      "sha256_utf8_body": "4186455d0269d847a7a16b33bd585f8b0763c5e98524d20e68be43f010edbb89"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._candidate",
+      "sha256_utf8_body": "c7c9598c3495ecc0ee99e0c96b952ee470ac4a854b60c35596c06130b2e5769c"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._observe",
+      "sha256_utf8_body": "383b6920004fac23fa0c060f1026b20085b29355c079bdfc34cd5d32693a7b39"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.place",
+      "sha256_utf8_body": "75c8c221963a1578bbcae0838babec946833c06241d48426e02b4098992abfd6"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._exclude_exhausted",
+      "sha256_utf8_body": "594224b147ebf21d1691147f6c307b46e57507f6f33d6cb96ffec6355d26c47d"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._open",
+      "sha256_utf8_body": "64fa28d1f1852aaad3bd7a26fba90a9d85962fa0fcef7fc93d8cff12a2d375fe"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._advance",
+      "sha256_utf8_body": "4bdc6e99d91b4023c51027c42b45f3c2377af2106158098136908bf0be4262f2"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.next_alternative",
+      "sha256_utf8_body": "058a63bdd844947911ca9a94d58f49581bb8d930d39b5ab558278523fc12952e"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._fallback_degree",
+      "sha256_utf8_body": "06d61d21dc32a37be7627b363ea0a2c3f48f4fc2c5a62558046ef6fbf6b8122c"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._validate_receipt",
+      "sha256_utf8_body": "32eb88642e8fb869a156119736d19d0a1e205e545e62d498e38ef6dd9f2623f8"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.decision",
+      "sha256_utf8_body": "3f92bf5e601a05469d93a1fb14e3370e1c8917c52b81082c5e93ef0d21b76a4c"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._word",
+      "sha256_utf8_body": "cadb9c4e04ee1322d23be64f1a67a61f084923e6738a188274016bc4055efa4c"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine._checked_advice",
+      "sha256_utf8_body": "7439342f46c39c33aef9284482fd889509aeb70e345e351b5b266b5d3bfce812"
+    },
+    {
+      "AST_identical": true,
+      "body_bytes_identical": true,
+      "name": "LazyUnitRowEngine.search",
+      "sha256_utf8_body": "243ecc9aca3e083a3eaf387776edc8b8f8676f1b4dbb1a2102db3cb472cd9ec1"
+    }
+  ],
+  "unified_forward_patch": "--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py\n+++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py\n@@ -7,7 +7,7 @@\n import hashlib\n import json\n \n-VERSION = 'lazy-unit-row-global-engine-v4-transactional-goal-advice'\n+VERSION = 'lazy-unit-row-global-engine-v5-retire-filled-preferences'\n VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'\n SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'\n FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'\n@@ -126,7 +126,7 @@\n                            retained_domains=0, invalidated_domains=0, retained_queries=0,\n                            retained_prefixes=0, advice_calls=0, advice_unknown=0,\n                            advice_selected=0, pending_checks=0, pending_selected=0,\n-                           pending_rejected=0, fallback_branch_choices=0)\n+                           pending_rejected=0, pending_retired=0, fallback_branch_choices=0)\n         epoch = language.binding['language_epoch']\n         if initial_state is None:\n             marks = [[[1, k], ['outside', epoch]] for k in range(-23, 0)]\n@@ -704,7 +704,20 @@\n         \"\"\"Pure with respect to preference state; called only after global BRANCH.\"\"\"\n         need(decision['kind'] == 'BRANCH', 'advice cannot bypass global scheduler')\n         row, preferences = decision['row'], self._copy(self._preferences)\n-        dropped = []\n+        dropped, retired = [], []\n+        if preferences is not None:\n+            # The real global decision already validated this owned point state.\n+            # Occupied rows need no future preference, even if globally forced.\n+            totals = self.semantics.point_map(self._state['t'], self.tick)\n+            remaining = []\n+            for key in preferences['pending_keys']:\n+                self.tick()\n+                if totals[(0, key['translation'][1])] == 1:\n+                    retired.append(self._copy(key))\n+                else:\n+                    remaining.append(key)\n+            self.counts['pending_retired'] += len(retired)\n+            preferences = dict(preferences, pending_keys=remaining) if remaining else None\n         if preferences is not None:\n             keys = [k for k in preferences['pending_keys'] if k['translation'][1] == row]\n             if keys:\n@@ -729,7 +742,7 @@\n                     return {'candidate': anchor, 'mode': 'PENDING_KEYS',\n                         'preferences': preferences if remaining else None,\n                         'family_id': request['family_id'], 'origin': selected['origin'],\n-                        'rejected_keys': dropped}\n+                        'rejected_keys': dropped, 'retired_keys': retired}\n                 if not preferences['pending_keys']:\n                     preferences = None\n         # Preserve one chosen family across intervening canonical branches.\n@@ -760,7 +773,7 @@\n                             'key': self._copy(anchor['placement_key']), 'state_sha256': digest(self._state)}]}\n                     return {'candidate': anchor, 'mode': 'ADVICE_BATCH',\n                         'preferences': family if future else None, 'family_id': family_id,\n-                        'origin': origin, 'rejected_keys': dropped}\n+                        'origin': origin, 'rejected_keys': dropped, 'retired_keys': retired}\n         self.counts['fallback_branch_choices'] += 1\n         slot = self._slots.get(row)\n         if slot is not None and slot['candidates']:\n@@ -772,7 +785,7 @@\n             candidate = item['candidate']\n         return {'candidate': candidate, 'mode': 'CANONICAL_FALLBACK',\n             'preferences': preferences, 'family_id': None if preferences is None else preferences['family_id'],\n-            'origin': None, 'rejected_keys': dropped}\n+            'origin': None, 'rejected_keys': dropped, 'retired_keys': retired}\n \n     def _adopt_branch(self, plan):\n         \"\"\"Called INSIDE the owned child try/finally; no future mark is imposed.\"\"\"\n@@ -784,7 +797,8 @@\n         self._observe(plan['candidate'])\n         self._emit('ADVICE', mode=plan['mode'], family_id=plan['family_id'],\n             key=plan['candidate']['placement_key'], origin=plan['origin'],\n-            rejected_keys=plan['rejected_keys'], pending_preferences=self._preferences)\n+            rejected_keys=plan['rejected_keys'], retired_keys=plan['retired_keys'],\n+            pending_preferences=self._preferences)\n \n     def search(self):\n         \"\"\"Full rollback on FOUND/UNKNOWN too; only exhausted child permits exclusion.\"\"\"\n",
+  "unified_inverse_patch": "--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py\n+++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v4.py\n@@ -7,7 +7,7 @@\n import hashlib\n import json\n \n-VERSION = 'lazy-unit-row-global-engine-v5-retire-filled-preferences'\n+VERSION = 'lazy-unit-row-global-engine-v4-transactional-goal-advice'\n VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION'\n SEMANTICS_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'\n FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'\n@@ -126,7 +126,7 @@\n                            retained_domains=0, invalidated_domains=0, retained_queries=0,\n                            retained_prefixes=0, advice_calls=0, advice_unknown=0,\n                            advice_selected=0, pending_checks=0, pending_selected=0,\n-                           pending_rejected=0, pending_retired=0, fallback_branch_choices=0)\n+                           pending_rejected=0, fallback_branch_choices=0)\n         epoch = language.binding['language_epoch']\n         if initial_state is None:\n             marks = [[[1, k], ['outside', epoch]] for k in range(-23, 0)]\n@@ -704,20 +704,7 @@\n         \"\"\"Pure with respect to preference state; called only after global BRANCH.\"\"\"\n         need(decision['kind'] == 'BRANCH', 'advice cannot bypass global scheduler')\n         row, preferences = decision['row'], self._copy(self._preferences)\n-        dropped, retired = [], []\n-        if preferences is not None:\n-            # The real global decision already validated this owned point state.\n-            # Occupied rows need no future preference, even if globally forced.\n-            totals = self.semantics.point_map(self._state['t'], self.tick)\n-            remaining = []\n-            for key in preferences['pending_keys']:\n-                self.tick()\n-                if totals[(0, key['translation'][1])] == 1:\n-                    retired.append(self._copy(key))\n-                else:\n-                    remaining.append(key)\n-            self.counts['pending_retired'] += len(retired)\n-            preferences = dict(preferences, pending_keys=remaining) if remaining else None\n+        dropped = []\n         if preferences is not None:\n             keys = [k for k in preferences['pending_keys'] if k['translation'][1] == row]\n             if keys:\n@@ -742,7 +729,7 @@\n                     return {'candidate': anchor, 'mode': 'PENDING_KEYS',\n                         'preferences': preferences if remaining else None,\n                         'family_id': request['family_id'], 'origin': selected['origin'],\n-                        'rejected_keys': dropped, 'retired_keys': retired}\n+                        'rejected_keys': dropped}\n                 if not preferences['pending_keys']:\n                     preferences = None\n         # Preserve one chosen family across intervening canonical branches.\n@@ -773,7 +760,7 @@\n                             'key': self._copy(anchor['placement_key']), 'state_sha256': digest(self._state)}]}\n                     return {'candidate': anchor, 'mode': 'ADVICE_BATCH',\n                         'preferences': family if future else None, 'family_id': family_id,\n-                        'origin': origin, 'rejected_keys': dropped, 'retired_keys': retired}\n+                        'origin': origin, 'rejected_keys': dropped}\n         self.counts['fallback_branch_choices'] += 1\n         slot = self._slots.get(row)\n         if slot is not None and slot['candidates']:\n@@ -785,7 +772,7 @@\n             candidate = item['candidate']\n         return {'candidate': candidate, 'mode': 'CANONICAL_FALLBACK',\n             'preferences': preferences, 'family_id': None if preferences is None else preferences['family_id'],\n-            'origin': None, 'rejected_keys': dropped, 'retired_keys': retired}\n+            'origin': None, 'rejected_keys': dropped}\n \n     def _adopt_branch(self, plan):\n         \"\"\"Called INSIDE the owned child try/finally; no future mark is imposed.\"\"\"\n@@ -797,8 +784,7 @@\n         self._observe(plan['candidate'])\n         self._emit('ADVICE', mode=plan['mode'], family_id=plan['family_id'],\n             key=plan['candidate']['placement_key'], origin=plan['origin'],\n-            rejected_keys=plan['rejected_keys'], retired_keys=plan['retired_keys'],\n-            pending_preferences=self._preferences)\n+            rejected_keys=plan['rejected_keys'], pending_preferences=self._preferences)\n \n     def search(self):\n         \"\"\"Full rollback on FOUND/UNKNOWN too; only exhausted child permits exclusion.\"\"\"\n"
+}

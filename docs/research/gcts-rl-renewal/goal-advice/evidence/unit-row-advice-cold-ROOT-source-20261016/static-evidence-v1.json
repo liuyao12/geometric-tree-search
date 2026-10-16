@@ -1,0 +1,36 @@
+{
+  "Source17_input2_sixlimits": true,
+  "compile_only": true,
+  "entire_inverse_recovers_parent": true,
+  "response_stdout_native_exit_suffix_raw_exact": true,
+  "scientific_execution": false,
+  "source": {
+    "bytes": 49554,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-ROOT-source-20261016/unit_row_advised_domain_cold_v1.py",
+    "sha256": "2baf0264a35c29f0e23d0466039627e5302f4deb25792a6f807a0c1b3b4c7b59"
+  },
+  "source_contract": {
+    "bytes": 19239,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "c9a1391bfbd4edfef779432cdc0779a9971edd1fb4cb58537a660d7be1373e90"
+  },
+  "top_level_helpers_raw_and_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

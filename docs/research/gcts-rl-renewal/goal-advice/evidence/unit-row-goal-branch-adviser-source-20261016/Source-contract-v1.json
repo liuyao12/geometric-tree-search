@@ -1,0 +1,139 @@
+{
+  "API": {
+    "body_schema": "unit-row-goal-branch-advice-batch-v1",
+    "decision": "Exact {kind:BRANCH,row:integer0..23}. Root must establish actual fresh global dead/forced/earliest-generation decision; this adviser cannot certify the scheduler or make a non-BRANCH decision executable.",
+    "dependencies": "Caller passes original private membership language, exact c354 semantics module, exact69b4 open_fallback and iter_syntax endpoints, and original native-budget callback. No project Source imports and no old finite-family/donor code.",
+    "inputs_not_allowed": "No proof word, donor, target route, manual term list, learned library, row route, recipe sequence or caller-supplied goal obligations. Demands come from current original output marks; term/universal pools come from current original inputs and canonical bounded syntax.",
+    "proposal_schema": "unit-row-goal-incident-proposal-v1",
+    "signature": "propose_branch(*,language,semantics,fallback,iter_syntax,state,decision,tick,maximum_work=50000,maximum_proposals=8,maximum_demands=16,maximum_terms=16,maximum_rounds=8)"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "schema": "unit-row-goal-branch-adviser-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-generic-goal-branch-adviser-Source",
+    "source": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "source_contract": "Exact current raw contract capsule",
+    "source_only": true,
+    "source_review_passed": "Genuine distinct reviewer decides; no author self-pass."
+  },
+  "algorithm": {
+    "bias": "These explicit schema choices, salient-prefix pools, inverse-UG horizon, canonical physical-row alignments and per-stream round quotas are hand-written heuristic restrictions on advice. They are NOT restrictions on the full original six-rule candidate universe; complete base fallback outside the module is mandatory. No RL or learned marking/cluster claim.",
+    "fairness": "Round-robin one yielded descriptor per live schema/demand stream per round. A stream may perform charged membership/point work before yielding; no equal CPU allocation or bounded native latency is claimed. No target-specific symbol or row pattern.",
+    "inverse_demands": "Current marked/unfilled output rows in canonical row order; bounded breadth-first inverse UG frames on eligible original parameters/strict earlier rows. Suffix UG placements are uninstalled preferences. No complete backward-closure claim.",
+    "pending": "members contain full current candidate packets and exact ordered member/pending ports. Every member other than anchor_full_key is a PENDING future preference by definition, even if its data is compatible now. ordered_PENDING_obligations retain every external port and actual occupancy with fact_accepted=False. Repeated ports are not silently quotiented.",
+    "ranking": "Descending goal-connected, anchor-output novel among literal selected outputs, literal list-subtree overlap with marked goals, then fewer primitive members; final tie is canonical full anchor key. One preferred compatible cluster per exact anchor; duplicate advisory anchors do not remove base alternatives.",
+    "schemas": [
+      "CANONICAL_PREFIX_NOVELTY: exact original all-six fallback prefix, independently rebuilt current candidate packets.",
+      "GENERIC_UI_LICENCE: original zero-port UI licence, no acceptance of its universal antecedent.",
+      "GENERIC_UI_MP: incident original UI licence plus future MP and pending universal antecedent.",
+      "GENERIC_ATOMIC_TRANSPORT: one-hole term occurrence in an atomic demand, original EqSubst licence plus two future MP members, ordered pending equality/atomic input obligations. No induction or new kernel inference."
+    ],
+    "terms": "Bounded parameter-first and input-subterm salient terms, then canonical term-stream prefix if room; only original standalone term membership. Universal subformulas of original target/axioms/Gamma/selected outputs form another bounded pool. Literal selected outputs are novelty data, never accepted facts.",
+    "union": "Every primitive reconstructed from full original preimage/ordered ports/strict negative offsets with c354 membership and whole legality. A temporary compatible union checks all t/m support, current selected/excluded full keys and digest/preimage collisions; exact shared keys count once. This temporary union is only a proposal check and is never installed in the engine."
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 2152,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/author-static-v1.json",
+    "sha256": "e7055724be6e655aed67acc8313ff0a111b68962efbe5f02675a0aa698ba566e"
+  },
+  "delta": {
+    "bytes": 25546,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/source-delta-v1.json",
+    "sha256": "c4c89761e10bfcbcef7ca871bfd29e422500a5c2e5f7b2682e0c17c2c881701d"
+  },
+  "limits": {
+    "ceilings": {
+      "maximum_demands": 48,
+      "maximum_proposals": 32,
+      "maximum_rounds": 32,
+      "maximum_terms": 32,
+      "maximum_work": 500000
+    },
+    "defaults": {
+      "maximum_demands": 16,
+      "maximum_proposals": 8,
+      "maximum_rounds": 8,
+      "maximum_terms": 16,
+      "maximum_work": 50000
+    },
+    "meaning": "guarded_steps counts explicit routed adviser/fallback/semantics ticks; internal original language/kernel ticks remain separately native guarded and are not claimed in this count. Descriptor count is yielded schema attempts, not complete candidate cardinality. Proposals are at most configured output count; internal candidates at most rounds times (2+2*demands) yielded attempts.",
+    "universe": "Bounded term12/formula44 profile remains unchanged. Advisory quotas may miss every useful instance; no empty batch, stopped stream or quota exhaustion proves no candidate/no proof."
+  },
+  "raw_references": {
+    "degree_semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_semantics_contract": {
+      "bytes": 11994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-contract-v2.json",
+      "sha256": "342cb0662f66262fa3ceb891f407a70128e299f8cdcc81bf95625902f6081cb9"
+    },
+    "fallback_and_term_stream": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "fallback_contract": {
+      "bytes": 14336,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-contract-v1.json",
+      "sha256": "5800fb0834efadd31afde96d3518257e5f6d3e43932ee2863127c666c053c683"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "research_note": {
+      "bytes": 13657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-proposal-research-source-20261016/research-note-v1.json",
+      "sha256": "a2a0b1ba5562ae4f718f65aa87426588b1920c328e09a3fa641ca656d3ffbd66"
+    }
+  },
+  "remaining_controls": [
+    "Fresh decision gate rejects DEAD/FORCED/SOLVED and stale/wrong original epoch.",
+    "Every emitted anchor/future union checked by independent current original membership/point endpoints; incompatible remote marks, invalid offsets, repeated/shared-port errors cannot create accepted facts.",
+    "Empty/all-rejected advice preserves canonical fallback; later-row preferences cannot override chosen row/global forced/dead.",
+    "Work-quota and injected callback Timeout yield UNKNOWN; callback ValueError propagates; no exhausted exclusion or partial batch use.",
+    "Future consumer trails preference consumption/contexts with exact existing rollback, preserves all canonical alternatives, and uses only genuine child EXHAUSTED for exclusions.",
+    "Matched canonical/advised point arms on same engine/model/full grammar; same-information ordinary control before any GCTS-specific advantage claim."
+  ],
+  "remaining_gates": "Genuine distinct whole Source review, fresh control/consumer integration, Root original-authority/Source callback custody, once-only actual grants and independent proof/board/resource validation remain pending.",
+  "resource_and_integration": "Original20 success/512MiB,55 failure/60 owned/90+1 caller remain external mandatory gates. All preparation/proposal/validation/serialization/output costs charged. Final READY callback precedes builtin ranking/output; Root must enforce native post-output/terminal deadline too. UNKNOWN failure-only output uses no failed scientific callback. No actual Resource qualification, scientific execution, clock, plan or engine change here.",
+  "schema": "unit-row-goal-branch-adviser-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-generic-goal-branch-adviser-Source",
+  "source": {
+    "bytes": 21913,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+    "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+  },
+  "source_only": true,
+  "status_and_output": {
+    "READY": "Finite configured advice computation returned; always incomplete=True and original_fallback_required=True, even if all selected streams stopped.",
+    "UNKNOWN": "Own work quota or external TimeoutError interrupts. Any partial proposals are DIAGNOSTIC ONLY; do not execute them as an admitted advice batch. No EXHAUSTED result exists. Other callback/authority/ValueError failures propagate; only exact original OutsideLanguage is filtered.",
+    "flags": "All logical_proof/exact_board/degree_or_EOF/scheduler/complete_GCTS/trajectory/learned_marking/RL/ROOT_resource flags false. Origin HAND_WRITTEN_GENERIC_GOAL_ORDERING, learned=False.",
+    "future_execution": "Root must independently rebuild/revalidate the anchor against actual original current state before trying it. Future members/marks must not be placed or imposed early. They may be reconsidered only when unchanged global propagation/scheduler chooses the corresponding incident row; forced/dead results override preferences.",
+    "staleness": "Current Source/binding/state and pending-context lineage are caller responsibilities. Never treat a digest as sole authority. This module supplies no preference persistence, state mutation, engine hook, rollback implementation, pruning or fallback cursor replacement."
+  },
+  "version": "unit-row-generic-goal-branch-adviser-v1"
+}

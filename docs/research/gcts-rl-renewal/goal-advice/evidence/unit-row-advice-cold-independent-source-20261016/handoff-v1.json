@@ -1,0 +1,36 @@
+{
+  "all_actuals_pending": true,
+  "checks": 28,
+  "disposition": "CONDITIONAL_SOURCE_PASS",
+  "findings": {
+    "bytes": 27523,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-independent-source-20261016/findings-v1.json",
+    "sha256": "0346a2f25cc2fe791ca3fb0b7e8e7d27bf9cb095229d6087c1093aafc399a776"
+  },
+  "independent_delta": {
+    "bytes": 24025,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-independent-source-20261016/independent-Source-delta-v1.json",
+    "sha256": "30acc1a17d6e5c0b152f2efd740449eccc0d1a668ffada2e5a85a8967f3104f2"
+  },
+  "raw_unique_paths": 33,
+  "schema": "unit-row-advised-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-advised-domain-cold-Source",
+  "source": {
+    "bytes": 49554,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-ROOT-source-20261016/unit_row_advised_domain_cold_v1.py",
+    "sha256": "2baf0264a35c29f0e23d0466039627e5302f4deb25792a6f807a0c1b3b4c7b59"
+  },
+  "source_contract": {
+    "bytes": 19239,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "c9a1391bfbd4edfef779432cdc0779a9971edd1fb4cb58537a660d7be1373e90"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 7610,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "f13344deb7efde24c4e5539f2a3aa78a86c73b30a18247432b417d308a59da97"
+  }
+}

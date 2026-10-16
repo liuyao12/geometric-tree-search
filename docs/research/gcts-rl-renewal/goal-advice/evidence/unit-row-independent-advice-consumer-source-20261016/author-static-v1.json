@@ -1,0 +1,76 @@
+{
+  "check_count": 12,
+  "checks": [
+    {
+      "detail": "AST parsed and compiled, never executed or imported as a module.",
+      "name": "compile_only",
+      "passed": true
+    },
+    {
+      "detail": "Root closure injects two authority arguments; engine receives state/decision/batch/tick (four keywords).",
+      "name": "exact_public_endpoint",
+      "passed": true
+    },
+    {
+      "detail": "No adviser, engine, kernel, checker, loader, clock or scientific import.",
+      "name": "stdlib_imports_only",
+      "passed": true
+    },
+    {
+      "detail": "No broad ValueError or Timeout handling, including pending refresh.",
+      "name": "no_exception_conversion",
+      "passed": true
+    },
+    {
+      "detail": "compile is used only by this metadata script, absent from validator.",
+      "name": "no_dynamic_source_or_clock_calls",
+      "passed": true
+    },
+    {
+      "detail": "Raw dependency Source bytes bound below; runtime custody remains Root responsibility.",
+      "name": "exact_current_versions",
+      "passed": true
+    },
+    {
+      "detail": "Same false flags as adviser; no positive board/degree/graph/scheduler/proof/resource claim.",
+      "name": "exact_nine_strong_flags",
+      "passed": true
+    },
+    {
+      "detail": "Pending rejection branch uses explicit return values; rebuild/collision/authority errors escape.",
+      "name": "only_explicit_legality_returns",
+      "passed": true
+    },
+    {
+      "detail": "Private semantic clone and independently rebuilt packets only; no original caller state or module mutation.",
+      "name": "no_input_mutation_assignments",
+      "passed": true
+    },
+    {
+      "detail": "Public endpoint requires all exact named authority/data/tick arguments.",
+      "name": "no_function_default_injection",
+      "passed": true
+    },
+    {
+      "detail": "Source UTF-8 has no forbidden C0 controls.",
+      "name": "no_c0_bytes",
+      "passed": true
+    },
+    {
+      "detail": "Mode inputs separate; no fallback event or EOF accepted as advice.",
+      "name": "separate_mode_schemas",
+      "passed": true
+    }
+  ],
+  "controls_executed": false,
+  "executed_source_functions": false,
+  "schema": "unit-row-independent-advice-consumer-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Raw/AST/compile-only metadata; author static checks are not independent peer review or semantic tests.",
+  "source": {
+    "bytes": 15295,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+    "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+  }
+}

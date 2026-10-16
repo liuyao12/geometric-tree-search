@@ -1,0 +1,166 @@
+{
+  "API": {
+    "authority": "Root wrapper freshly reconstructs/authenticates the full original private language and current c354 semantics for each call, guards whole Source/delegation before/after, and injects a native budget tick. No module loader/CodeSeal replacement is implemented here.",
+    "batch": "Complete literal c6fc READY batch or the exact pending request below. UNKNOWN/partial batches reject and are never executable preferences.",
+    "decision": "Exact {kind:BRANCH,row:literal int 0..23}. Validator reconstitutes the whole original state and requires incident row unfilled; actual complete global dead-before-forced-before-ROW-TIE decision MUST be independently established by the engine. Passing a BRANCH-shaped dict cannot establish that decision.",
+    "injected_engine_callback": "validate_advice(*,state,decision,batch,tick)",
+    "module_signature": "validate_advice(*,language,semantics,state,decision,batch,tick)",
+    "pending_request": {
+      "binding": "complete fresh original binding",
+      "decision": "exact actual BRANCH decision join",
+      "family_id": "opaque nonempty string length <=256 (engine 64-character digest fits); provenance only",
+      "keys": "ordered list <=24 unique complete original placement keys, all at the selected row",
+      "schema": "unit-row-pending-preference-request-v1",
+      "state_sha256": "SHA256 of complete cloned literal current state"
+    },
+    "receipt": {
+      "binding": "full original binding, not just epoch/hash",
+      "decision": "complete joined branch decision",
+      "flags": {
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "complete_GCTS_model_accepted": false,
+        "degree_or_EOF_accepted": false,
+        "exact_point_board_accepted": false,
+        "learned_marking_accepted": false,
+        "logical_proof_accepted": false,
+        "scheduler_accepted": false,
+        "trajectory_accepted": false
+      },
+      "input_sha256": "whole literal batch/request canonical hash",
+      "mode": "ADVICE_BATCH | PENDING_KEYS",
+      "rejections": "pending only, list {key:full key,reason:explicit c354 legality return}; never exception conversion",
+      "schema": "unit-row-advice-validation-v1",
+      "selection": "None or {anchor:fresh whole current packet,future_keys:[complete keys],origin:JSON provenance}",
+      "state_sha256": "whole current state hash join, after semantic reconstruction",
+      "version": "unit-row-independent-advice-consumer-validator-v1"
+    },
+    "selection_origin": "ADVICE_BATCH: {batch_sha256,proposal_index:0,scheme,goal_root}. PENDING_KEYS: {family_id}. No source or family authority is derived from origin."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-independent-advice-consumer-validator-Source",
+    "source": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    },
+    "source_contract": "exact current raw contract capsule",
+    "source_only": true,
+    "source_review_passed": "Distinct genuine reviewer decides; author static record is not a peer pass.",
+    "sources": "exact sources map above"
+  },
+  "algorithm": {
+    "compatible_union": "Each proposal independently checks temporary sum/mark agreement of its complete deduplicated member expansion against current state. This union is neither installed nor treated as facts. It is distinct from a TWO lower bound whose alternatives need not be mutually compatible.",
+    "members": "For each member rebuild original six-rule membership, full prototype preimage and negative ordered offsets, exact shared key/local and global t/m/membership/read-obligations packet. Enforce current selected/excluded/capacity/remote-mark legality. Full keys are unique within each emitted member expansion; one distinct member per sorted row with anchor at branch row. A common collision ledger spans all proposals. Shared full keys across proposals require exact whole-packet agreement; alternatives are not combined.",
+    "nonmutation": "Inputs cloned via strict builtin JSON semantics; no selected/excluded/state, engine domain, fallback cursor, EOF, graph, scheduler or preference trail is changed by this module.",
+    "original_state": "c354.private_state independently rebuilds fixed outside/target marks, all24 root generations0, every selected/excluded original full preimage and ordered offsets, complete t/m equality and common type/preimage collision ledger. Full binding equality uses canonical literal JSON so bool differs from int.",
+    "pending": "Rebuild EVERY provided complete key against NEW whole private state, exact preimage/key and collision ledger, then evaluate CURRENT legality. First legal key is selected with fresh occupancy and no adopted future keys; engine owns its remaining family. Only explicit returned already_selected/branch_excluded_complete_key/whole_support_capacity/whole_remote_or_metadata_mark_conflict produces a dropped-hint rejection. Unsupported primitive, bad epoch/preimage, collision, guard/native/callback errors propagate; no catch-all ValueError.",
+    "ports": "Reconstruct every ordered port, including repeats, internal member reference and external PENDING obligation with CURRENT original occupancy and fact_accepted=False. Future selected/occupied input marks remain pending metadata, never new fact authority.",
+    "ranking": "Independently recompute literal current marked-root join, goal-connected/output-novel/subtree-overlap/member-count features and score/order. These are generic hand-written advisory biases; route provenance for a named heuristic scheme is not an added inference licence. Select ONLY first ranked anchor and other members as uninstalled future keys.",
+    "whole_READY_intake": "Exact schema/version/field set; reason None, nine false flags, incomplete/fallback/diagnostic metadata, bounded literal quotas and work diagnostics. Every returned proposal is validated before any receipt is returned. Empty READY batch selects None without degree/exhaustion meaning."
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_static": {
+    "bytes": 2720,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/author-static-v1.json",
+    "sha256": "b57572ff81bbe0a3b57e453bd0e868887aa24dca5a3ffeff7b6dc67e1c02661d"
+  },
+  "authorship_and_independence": "Validator independently authored by /root/hilbert_ordering_diagnosis; adviser and c354 semantics authored by /root/arithmetic_induction; membership authored by /root/hilbert_advice_controls. Validator author previously authored original1717 checker, lossless codec, family and adversarial harness Sources; this is a new consumer check against reused current semantics, not a second logical kernel or independent theorem proof.",
+  "master_conformance": "This endpoint checks finite preference data only; it certifies no complete candidate/frontier graph, global scheduling, primitive placement trajectory, rollback, native geometry/Wang system, learned marking, RL or speedup. Those current master obligations remain with the original engine and future actual evidence.",
+  "raw_references": {
+    "adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "adviser_contract": {
+      "bytes": 12193,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "e46ce289256c834f35701bcd41f667140980c8a60c976691242ab824622719a7"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "membership_contract": {
+      "bytes": 16749,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v2.json",
+      "sha256": "2a3f16462139153ef43cbe3b76a457ebfa35d88b37a343ba28732a2e94481e77"
+    },
+    "prior_retained_engine": {
+      "bytes": 39803,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/lazy_unit_row_global_engine_v3.py",
+      "sha256": "ca6151724b61e4fc3f8a2ba9ffa4a77c03e516898d7970eb275a6fc70a435c6f"
+    },
+    "prior_transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "semantics_contract": {
+      "bytes": 11994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-contract-v2.json",
+      "sha256": "342cb0662f66262fa3ceb891f407a70128e299f8cdcc81bf95625902f6081cb9"
+    }
+  },
+  "remaining_gates": [
+    "Distinct whole Source/API review and genuine adversarial control Source/review/actuals pending; AST checks do not predict runtime fit or usefulness.",
+    "Optional retained-engine hook successor must preserve old kwargs with callbacks None, complete graph/current actual BRANCH decision, global dead/forced/earliest-generation, canonical all-six fallback and complete independent covers.",
+    "Engine must checkpoint/adopt/consume/restore pending preference family state exactly; revalidate a key only when its row is actually selected, never install future member marks early or let preferences prune base alternatives.",
+    "Raw UNKNOWN advice must remain diagnostic only; malformed advice or validator/authority failures cannot be relabeled as exhausted/zero or silently ignored through broad exception handlers.",
+    "Root cold Source/input/native callback custody, original20/512MiB/failure55/owned60/caller90+1, complete output/terminal resources and independent proof/board endpoints remain external mandatory gates.",
+    "No scientific Source functions, models/Q, clocks, tests, controls, actual plan, proof word, donor/library, runtime experiment or publication was executed/authored in this packet."
+  ],
+  "schema": "unit-row-independent-advice-consumer-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-independent-advice-consumer-validator-Source",
+  "source": {
+    "bytes": 15295,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+    "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+  },
+  "source_only": true,
+  "sources": {
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "validator": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    }
+  },
+  "version": "unit-row-independent-advice-consumer-validator-v1"
+}

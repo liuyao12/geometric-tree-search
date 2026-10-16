@@ -1,0 +1,96 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "check_count": 20,
+  "checks": [
+    {
+      "id": "AST_compile_only_no_exec",
+      "passed": true
+    },
+    {
+      "id": "stdlib_json_hashlib_only",
+      "passed": true
+    },
+    {
+      "id": "no_theorem_specific_symbol_literals",
+      "passed": true
+    },
+    {
+      "id": "only_BRANCH_decision_API",
+      "passed": true
+    },
+    {
+      "id": "no_proof_word_donor_library_arguments",
+      "passed": true
+    },
+    {
+      "id": "current_c354_membership_and_full_legality",
+      "passed": true
+    },
+    {
+      "id": "full_current_fallback_prefix_context",
+      "passed": true
+    },
+    {
+      "id": "ordered_strict_prior_preimage",
+      "passed": true
+    },
+    {
+      "id": "cluster_full_union_checked",
+      "passed": true
+    },
+    {
+      "id": "shared_full_keys_deduplicated",
+      "passed": true
+    },
+    {
+      "id": "pending_never_fact_accepted",
+      "passed": true
+    },
+    {
+      "id": "future_not_installed",
+      "passed": true
+    },
+    {
+      "id": "explicit_handwritten_origin",
+      "passed": true
+    },
+    {
+      "id": "incomplete_full_fallback_required",
+      "passed": true
+    },
+    {
+      "id": "resource_interruption_UNKNOWN",
+      "passed": true
+    },
+    {
+      "id": "no_broad_ValueError_catch",
+      "passed": true
+    },
+    {
+      "id": "only_exact_OutsideLanguage_filter",
+      "passed": true
+    },
+    {
+      "id": "no_graph_or_engine_mutations",
+      "passed": true
+    },
+    {
+      "id": "positive_output_all_strong_flags_false",
+      "passed": true
+    },
+    {
+      "id": "bounded_work_and_round_robin",
+      "passed": true
+    }
+  ],
+  "no_authored_function_or_test_execution": true,
+  "not_independent_review": true,
+  "schema": "unit-row-goal-adviser-author-static-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21913,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+    "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+  },
+  "source_only": true
+}
