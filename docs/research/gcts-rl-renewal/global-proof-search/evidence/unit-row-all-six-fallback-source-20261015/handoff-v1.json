@@ -1,0 +1,90 @@
+{
+  "API": {
+    "abort": "cursor.abort() permanently poisons before closing its generator; no later completion",
+    "advance": "cursor.advance() -> CANDIDATE or EOF event; no implicit Python iterator EOF/caught resource failure",
+    "context": "cursor.context() -> cloned unit-row-all-six-fallback-context-v1",
+    "open_fallback": "open_fallback(*,language,state,row,tick) -> FallbackCursor",
+    "syntax": "iter_syntax(*,language,kind,maximum_nodes,tick) -> lazy exact-size eligible roots; kind term/formula/universal/template, literal bounds1..12 or1..44"
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 17,
+  "delta": {
+    "bytes": 102349,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-delta-v1.json",
+    "sha256": "5dcf2a2066fbc500f94ceef62c1fffbd41c51ba59d3e91f7ef116ad286ade05c"
+  },
+  "next": "Arithmetic genuine whole Source review and separate engine/controls integration; no EOF authority or activation from author evidence.",
+  "raw_references": {
+    "design": {
+      "bytes": 5990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-design-source-20261015/lazy-unit-row-engine-design-v2.json",
+      "sha256": "273a1a9420eccbe020b956d6ff743f59ce332b3e36301f4b8efd3e0b873418d7"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "parent_contract": {
+      "bytes": 13319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+    },
+    "parent_peer": {
+      "bytes": 2731,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "a5a98a012ae74621ec6d8cd251684b5a2c8768aac22eee777f24f11eae0256d3"
+    },
+    "parent_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "point_encoding": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "restricted_cover_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    }
+  },
+  "review_scope": "unit-row-complete-lazy-six-rule-fallback-Source",
+  "schema": "unit-row-all-six-fallback-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 24227,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+    "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+  },
+  "source_contract": {
+    "bytes": 14336,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-contract-v1.json",
+    "sha256": "5800fb0834efadd31afde96d3518257e5f6d3e43932ee2863127c666c053c683"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 10270,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/author-static-evidence-v1.json",
+    "sha256": "80247b677061818de5ef92ab5db1dea412f51e47f6f622b5cd51b60af9ee3d49"
+  },
+  "status": "FROZEN_SOURCE_ONLY_DISTINCT_REVIEW_PENDING"
+}

@@ -1,0 +1,153 @@
+{
+  "changes": [
+    {
+      "new": {
+        "certify_fallback": "None or exact sealed callable(*,language,state,row,completion,checked_candidates,tick)->fresh completed degree receipt orNone. Root may bind certify_by_current_cover with currentdegree_proposer/currentsemantics. Any synthetic certifier must be separately labeled declared-domain mechanics only, never original-language authority.",
+        "constructor": "LazyUnitRowEngine(*,language,degree_proposer,semantics,fallback,certify_fallback,tick,initial_state=None,maximum_nodes=128,maximum_events=2000)",
+        "control_factory": "Root harness factory injects private original language+c354 module/class; accepts initial_state,degree_proposer,fallback,certify_fallback,tick. Primary must default initial_state=None, no saved word/prefix/library.",
+        "current_semantics": "Exact currentc354 module: private_state,tree,rebuild_tile,point_map,agree,legality,with_obligations,check_collision,check_degree_evidence. Reuse genuine reviewed helpers, not another custody framework.",
+        "fallback": "Exact69b4 open_fallback(*,language,state,row,tick), cursor.context()/advance() with declared full context and candidate|untrustedEOF event schema. Every yielded candidate independently checked; no new EOF authority.",
+        "public_methods": [
+          "state_snapshot()",
+          "checkpoint() -> opaque owned token",
+          "rollback(token)",
+          "decision() -> DEAD|FORCED|BRANCH|SOLVED|UNKNOWN record",
+          "place(candidate) -> validated policy-independent transaction only",
+          "next_alternative(row) -> CANDIDATE with candidate or EOF with untrusted completion",
+          "search() -> unit-row-lazy-global-search-result-v1"
+        ],
+        "public_place_transaction": {
+          "accounting": "Rollback restores semantic containers and cursor replay state, not monotone work counters/events or the consumed external budget.",
+          "reason": "place validates and installs state before emitting INVALIDATE and PLACE. A tick/resource exception in either post-install event can leave the placement installed. place does not promise atomic rollback on exception.",
+          "required_pattern": "token=engine.checkpoint(); try: engine.place(candidate); ... finally: engine.rollback(token) whenever caller requires restoration, including any resource/callback exception.",
+          "search": "search owns a checkpoint/finally around every child and a final root checkpoint. Public place is policy-independent mechanics and needs its caller-owned checkpoint."
+        },
+        "pure_scheduler": "select_schedule(*,evidence,generations,tick): dict row->checked status, complete generations. Varied-generation calibration separate NONLOGICAL utility scope; original unit-row engine state validator permits all24roots0 only."
+      },
+      "old": {
+        "certify_fallback": "None or exact sealed callable(*,language,state,row,completion,checked_candidates,tick)->fresh completed degree receipt orNone. Root may bind certify_by_current_cover with currentdegree_proposer/currentsemantics. Any synthetic certifier must be separately labeled declared-domain mechanics only, never original-language authority.",
+        "constructor": "LazyUnitRowEngine(*,language,degree_proposer,semantics,fallback,certify_fallback,tick,initial_state=None,maximum_nodes=128,maximum_events=2000)",
+        "control_factory": "Root harness factory injects private original language+c354 module/class; accepts initial_state,degree_proposer,fallback,certify_fallback,tick. Primary must default initial_state=None, no saved word/prefix/library.",
+        "current_semantics": "Exact currentc354 module: private_state,tree,rebuild_tile,point_map,agree,legality,with_obligations,check_collision,check_degree_evidence. Reuse genuine reviewed helpers, not another custody framework.",
+        "fallback": "Exact69b4 open_fallback(*,language,state,row,tick), cursor.context()/advance() with declared full context and candidate|untrustedEOF event schema. Every yielded candidate independently checked; no new EOF authority.",
+        "public_methods": [
+          "state_snapshot()",
+          "checkpoint() -> opaque owned token",
+          "rollback(token)",
+          "decision() -> DEAD|FORCED|BRANCH|SOLVED|UNKNOWN record",
+          "place(candidate) -> validated policy-independent transaction only",
+          "next_alternative(row) -> CANDIDATE with candidate or EOF with untrusted completion",
+          "search() -> unit-row-lazy-global-search-result-v1"
+        ],
+        "pure_scheduler": "select_schedule(*,evidence,generations,tick): dict row->checked status, complete generations. Varied-generation calibration separate NONLOGICAL utility scope; original unit-row engine state validator permits all24roots0 only."
+      },
+      "old_present": true,
+      "path": [
+        "API"
+      ]
+    },
+    {
+      "new": {
+        "disposition": "Explicit specialized ALL24-REBIND variant; this does not conform to the reference requirement to retain unaffected domains. Conservative revalidation is not an exemption from that requirement.",
+        "eligible_assessment": "Global dead-before-forced scheduling, declared earliest-generation ROW-TIE mechanics, complete-context invalidation safety and rollback may be assessed separately.",
+        "future": "Retain unaffected domains only with justified dependency and whole-context certificate rebinding; that change requires a separately frozen Source successor and review.",
+        "implementation": "Source _install lines 172-181 increments all row versions and clears all certificates, logical/live cursors, observed candidates and reverse indexes on every placement or exclusion. Some domains may be unaffected by the actual point-support change.",
+        "master_requirement": "docs/basic-tiling-algorithm.md section 4, line 116: Keep unaffected domains.",
+        "not_claimed": [
+          "full reference incremental conformance",
+          "retention of unaffected domains",
+          "incremental acceleration",
+          "complete candidate graph or trajectory admission"
+        ]
+      },
+      "old_present": false,
+      "path": [
+        "conformance_gap"
+      ]
+    },
+    {
+      "new": "Complete implicit universe is bound to all-six Source contract; each placement has one positive incidence (0,row), but all output/read/offset/remote markings matter. Exposed candidates have shared full-key nodes, exact incidence/dependency records and reverse indexes. Every state/exclusion change conservatively invalidates ALL24 whole-context certificates and live cursors, including unseen placements/rejections. This first engine recomputes rather than claiming optimal incremental retention. This is explicitly ALL24-REBIND and leaves the master section 4 requirement to keep unaffected domains unfulfilled.",
+      "old": "Complete implicit universe is bound to all-six Source contract; each placement has one positive incidence (0,row), but all output/read/offset/remote markings matter. Exposed candidates have shared full-key nodes, exact incidence/dependency records and reverse indexes. Every state/exclusion change conservatively invalidates ALL24 whole-context certificates and live cursors, including unseen placements/rejections. This first engine recomputes rather than claiming optimal incremental retention.",
+      "old_present": true,
+      "path": [
+        "domain_bookkeeping"
+      ]
+    },
+    {
+      "new": {
+        "bytes": 13491,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/Source-contract-v1.json",
+        "sha256": "04f0e72aa90b7595706b122cf3a98ab9399532165d1680598c295625f1a986fa"
+      },
+      "old_present": false,
+      "path": [
+        "preserved_contract_v1"
+      ]
+    },
+    {
+      "new": [
+        "Distinct whole engine Source review and frozen backend/protocol bindings.",
+        "New adversarial genuine-language and separately labeled scheduler/cursor mechanics controls; prior35localcontrols do not certify global engine.",
+        "Reviewed cold caller plus Root purpose-specific actual grant before controls or fresh primary.",
+        "Explicit ALL24-REBIND variant does not retain unaffected domains as required by master section 4; no full reference incremental conformance or acceleration claim.",
+        "General independent all-six exhaustion checker, full implicit graph/trajectory conformance and fractional/shared-support/general growing-target cases remain outside this specialized implementation.",
+        "No automatic proof/GCTS/learned/RL/speed advantage, unbounded extension or universal finite Wang claim."
+      ],
+      "old": [
+        "Distinct whole engine Source review and frozen backend/protocol bindings.",
+        "New adversarial genuine-language and separately labeled scheduler/cursor mechanics controls; prior35localcontrols do not certify global engine.",
+        "Reviewed cold caller plus Root purpose-specific actual grant before controls or fresh primary.",
+        "General independent all-six exhaustion checker, full implicit graph/trajectory conformance and fractional/shared-support/general growing-target cases remain outside this specialized implementation.",
+        "No automatic proof/GCTS/learned/RL/speed advantage, unbounded extension or universal finite Wang claim."
+      ],
+      "old_present": true,
+      "path": [
+        "remaining_gates"
+      ]
+    },
+    {
+      "new": "unit-row-lazy-global-engine-Source-contract-v2",
+      "old": "unit-row-lazy-global-engine-Source-contract-v1",
+      "old_present": true,
+      "path": [
+        "schema"
+      ]
+    },
+    {
+      "new": "Canonical fallback first remaining legal key; every placement and justified parent exclusion returns to global checks. No alternative/hint pool replaces fallback. Forced child exhaustion valid only from exact sole-domain evidence. Node/event caps and callback/resource failure UNKNOWN; all ancestors unwind exact semantic state. Public place is an API mechanics surface, not independently scheduled search. Public place is not exception-atomic: a caller requiring restoration must own checkpoint/finally rollback because post-install event emission can raise.",
+      "old": "Canonical fallback first remaining legal key; every placement and justified parent exclusion returns to global checks. No alternative/hint pool replaces fallback. Forced child exhaustion valid only from exact sole-domain evidence. Node/event caps and callback/resource failure UNKNOWN; all ancestors unwind exact semantic state. Public place is an API mechanics surface, not independently scheduled search.",
+      "old_present": true,
+      "path": [
+        "search"
+      ]
+    },
+    {
+      "new": "ALL24-REBIND",
+      "old_present": false,
+      "path": [
+        "specialized_variant"
+      ]
+    }
+  ],
+  "current_contract": {
+    "bytes": 16287,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/Source-contract-v2.json",
+    "sha256": "a7356f8f0f977fe8acaa514d2003991ba71f6db7960d5404846ad65fe09bedb0"
+  },
+  "forward_json_exact": true,
+  "inverse_full_json_and_raw_bytes_exact": true,
+  "previous_contract": {
+    "bytes": 13491,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/Source-contract-v1.json",
+    "sha256": "04f0e72aa90b7595706b122cf3a98ab9399532165d1680598c295625f1a986fa"
+  },
+  "schema": "unit-row-engine-metadata-delta-v2",
+  "scientific_calls": 0,
+  "scope": "Metadata-only explicit conformance gap and public transaction obligation; no executable Source or ABI change.",
+  "source_only": true,
+  "source_unchanged": {
+    "bytes": 27865,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+    "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+  }
+}

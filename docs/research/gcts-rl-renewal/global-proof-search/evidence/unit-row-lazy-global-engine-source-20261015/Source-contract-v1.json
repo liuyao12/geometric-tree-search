@@ -1,0 +1,171 @@
+{
+  "API": {
+    "certify_fallback": "None or exact sealed callable(*,language,state,row,completion,checked_candidates,tick)->fresh completed degree receipt orNone. Root may bind certify_by_current_cover with currentdegree_proposer/currentsemantics. Any synthetic certifier must be separately labeled declared-domain mechanics only, never original-language authority.",
+    "constructor": "LazyUnitRowEngine(*,language,degree_proposer,semantics,fallback,certify_fallback,tick,initial_state=None,maximum_nodes=128,maximum_events=2000)",
+    "control_factory": "Root harness factory injects private original language+c354 module/class; accepts initial_state,degree_proposer,fallback,certify_fallback,tick. Primary must default initial_state=None, no saved word/prefix/library.",
+    "current_semantics": "Exact currentc354 module: private_state,tree,rebuild_tile,point_map,agree,legality,with_obligations,check_collision,check_degree_evidence. Reuse genuine reviewed helpers, not another custody framework.",
+    "fallback": "Exact69b4 open_fallback(*,language,state,row,tick), cursor.context()/advance() with declared full context and candidate|untrustedEOF event schema. Every yielded candidate independently checked; no new EOF authority.",
+    "public_methods": [
+      "state_snapshot()",
+      "checkpoint() -> opaque owned token",
+      "rollback(token)",
+      "decision() -> DEAD|FORCED|BRANCH|SOLVED|UNKNOWN record",
+      "place(candidate) -> validated policy-independent transaction only",
+      "next_alternative(row) -> CANDIDATE with candidate or EOF with untrusted completion",
+      "search() -> unit-row-lazy-global-search-result-v1"
+    ],
+    "pure_scheduler": "select_schedule(*,evidence,generations,tick): dict row->checked status, complete generations. Varied-generation calibration separate NONLOGICAL utility scope; original unit-row engine state validator permits all24roots0 only."
+  },
+  "EOF_gap": "General all-six independent exhaustion certification remains unimplemented. certify_by_current_cover only succeeds where currentc960/c354 returns a fresh complete nonimp cover and its full survivor keys agree with the entire checked fallback stream. Otherwise EOF UNKNOWN. This is an honest limitation, not permission to skip a row or drop alternatives.",
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "schema": "unit-row-lazy-global-engine-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-lazy-global-engine-Source",
+    "source": {
+      "bytes": 27865,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+      "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+    },
+    "source_contract": "Exact current raw contract capsule, no self hash.",
+    "source_only": true,
+    "source_review_passed": "Distinct reviewer decides, no author self-pass."
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 10657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/author-static-v1.json",
+    "sha256": "399b1eed163c38dfaeaaf859dcbc639894396adc613ee0676886e6f10de13e65"
+  },
+  "design_review": {
+    "bytes": 2016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/design-review-v1.json",
+    "sha256": "32df518affbbc58732d3e6326c8c418c1a51d73227ccc1bef079acd0dbaed490"
+  },
+  "domain_bookkeeping": "Complete implicit universe is bound to all-six Source contract; each placement has one positive incidence (0,row), but all output/read/offset/remote markings matter. Exposed candidates have shared full-key nodes, exact incidence/dependency records and reverse indexes. Every state/exclusion change conservatively invalidates ALL24 whole-context certificates and live cursors, including unseen placements/rejections. This first engine recomputes rather than claiming optimal incremental retention.",
+  "model_and_authority": "Original separately named B12/N44 six-rule language and original declaration/theory/Gamma/target/parameters, fixed24 unit points, exact integer translations and original primitive preimages. All inputs/epochs/Source/parser/default/closure/native/callback authority authenticated by Root caller. No Q decode, clock or project import in this module. Older ground-count profile unchanged, not claimed.",
+  "raw_references": {
+    "all_six_fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "all_six_fallback_contract": {
+      "bytes": 14336,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-contract-v1.json",
+      "sha256": "5800fb0834efadd31afde96d3518257e5f6d3e43932ee2863127c666c053c683"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "degree_proposer_contract": {
+      "bytes": 13319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+    },
+    "degree_proposer_peer": {
+      "bytes": 2731,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "a5a98a012ae74621ec6d8cd251684b5a2c8768aac22eee777f24f11eae0256d3"
+    },
+    "degree_semantics": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_semantics_contract": {
+      "bytes": 11994,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/Source-contract-v2.json",
+      "sha256": "342cb0662f66262fa3ceb891f407a70128e299f8cdcc81bf95625902f6081cb9"
+    },
+    "design_handoff_v2": {
+      "bytes": 1046,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-design-source-20261015/handoff-v2.json",
+      "sha256": "f34cfe791c56edcbf3d7cdfb2d7cfa50f97bc417a177f665bccb2563992d8403"
+    },
+    "design_v2": {
+      "bytes": 5990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-design-source-20261015/lazy-unit-row-engine-design-v2.json",
+      "sha256": "273a1a9420eccbe020b956d6ff743f59ce332b3e36301f4b8efd3e0b873418d7"
+    },
+    "language": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "original_kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "remaining_gates": [
+    "Distinct whole engine Source review and frozen backend/protocol bindings.",
+    "New adversarial genuine-language and separately labeled scheduler/cursor mechanics controls; prior35localcontrols do not certify global engine.",
+    "Reviewed cold caller plus Root purpose-specific actual grant before controls or fresh primary.",
+    "General independent all-six exhaustion checker, full implicit graph/trajectory conformance and fractional/shared-support/general growing-target cases remain outside this specialized implementation.",
+    "No automatic proof/GCTS/learned/RL/speed advantage, unbounded extension or universal finite Wang claim."
+  ],
+  "resource_scope": "Original native success20/512MiB, failure-only55, owned60, caller90+1 remain mandatory outside. Setup/degree/generation/replay/checking/trace/serialization/output/exit all charged. No runtime clock or fit promise here. UNKNOWN cleanup copies builtin diagnostic data only without calling a failed scientific tick; positive status still requires final tick plus Root native output/terminal admission.",
+  "result": {
+    "counter_meaning": "nodes count global decision rounds inclparent exclusion rescans, placements count installed transactions, backtracks only exhausted children, restores all completed child finally rollback, fallback_advances includes replaywork; interrupted-tail work may lack event. Search re-use never resets caps or absolute caller clock.",
+    "counters": [
+      "nodes",
+      "placements",
+      "forced",
+      "branches",
+      "backtracks",
+      "restores",
+      "global_scans",
+      "fallback_advances",
+      "cursor_replays"
+    ],
+    "events": "Ordered DECISION (checked receipts+statuses), TRY, PLACE, RESTORE, EXCLUDE, FALLBACK and INVALIDATE. Full graph/trajectory independent replay is still pending; trace_complete only completion of this event protocol, not full GCTS admission.",
+    "false_flags": [
+      "logical_proof_accepted",
+      "exact_point_board_accepted",
+      "complete_candidate_graph_accepted",
+      "trajectory_accepted",
+      "GCTS_advantage_accepted",
+      "RL_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "fields": "version,variant,status,reason,input_epoch,root_restored,stack_restored,last_observed_state,root_snapshot_sha256,final_snapshot_sha256,found,events,counts,trace_complete plus false acceptance flags.",
+    "point_proposal": "Only entire24-row exact unit target with full private state/mark recomposition; returns found.state and24 expanded original primitive commands. Fresh independent1717 plus word/board checks remain external before any proof/board acceptance.",
+    "schema": "unit-row-lazy-global-search-result-v1",
+    "status": [
+      "POINT_BOARD_PROPOSAL",
+      "EXHAUSTED",
+      "UNKNOWN"
+    ],
+    "unknown": "Deepest captured last_observed_state is separate from restored root. Unsupported degree/uncertifiedEOF returnsUNKNOWN; interrupted output/trace not complete proof. Reason is diagnostic only."
+  },
+  "rollback": "Copy-on-write semantic containers. Owned token retains state, revision+all row versions, mark refcounts, certifications, logical cursor context/full consumed keys, candidate incidences/reverse dependencies and exclusions. Live Python iterators are disposable; after rollback open fresh exact context and recheck entire recorded prefix before continuing. Exclusion after proved childEXHAUSTED starts new context/cursor; UNKNOWN never excludes. Performance counters/events and original membership visit budget remain monotone work accounting, not rolled back.",
+  "scheduling": "Fresh currentdegree proposal+independentcheck first across frontier; certified ZERO kills immediately. Resolve UNKNOWN via independently checked fallback prefix>=2 or fresh certified EOF. If any unresolved remains, no forced/branch. Exact singleton chosen before all branch choices. Earliest generation then ROW-TIE, no minimum-degree estimate from lower bounds.",
+  "schema": "unit-row-lazy-global-engine-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-lazy-global-engine-Source",
+  "search": "Canonical fallback first remaining legal key; every placement and justified parent exclusion returns to global checks. No alternative/hint pool replaces fallback. Forced child exhaustion valid only from exact sole-domain evidence. Node/event caps and callback/resource failure UNKNOWN; all ancestors unwind exact semantic state. Public place is an API mechanics surface, not independently scheduled search.",
+  "source": {
+    "bytes": 27865,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+    "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+  },
+  "source_only": true,
+  "variant": "GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE",
+  "version": "lazy-unit-row-global-engine-v1"
+}

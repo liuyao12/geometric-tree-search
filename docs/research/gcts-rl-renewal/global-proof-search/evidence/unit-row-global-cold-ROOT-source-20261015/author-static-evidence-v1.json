@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "helper_AST_exact": 15,
+    "old_carrier_and_checker_adapters_removed": true,
+    "original_input2_unchanged": true,
+    "original_limits_unchanged": true,
+    "two_endpoints_explicit": true,
+    "whole_Source9_AST_compile_only": true
+  },
+  "schema": "ROOT-global-cold-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 25792,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-cold-ROOT-source-20261015/unit_row_global_engine_cold_v1.py",
+    "sha256": "4e83784213ae01805648bac7ba8787842db846fabf037b8f3f6a56d5978d6ff2"
+  },
+  "source_only": true
+}

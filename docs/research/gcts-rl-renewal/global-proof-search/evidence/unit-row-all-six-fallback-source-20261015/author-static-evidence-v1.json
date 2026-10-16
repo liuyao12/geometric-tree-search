@@ -1,0 +1,176 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 17,
+  "checks": [
+    {
+      "check": "whole raw Source and AST compile-only",
+      "evidence": "No exec/import/function calls. Full forward/inverse raw offset and patch records; inverse AST exact.",
+      "passed": true
+    },
+    {
+      "check": "nine whole state/key/point helpers andfour nested grammar helpers exact",
+      "evidence": {
+        "nested": [
+          "compositions",
+          "children",
+          "terms",
+          "formulas"
+        ],
+        "whole": [
+          "need",
+          "canonical",
+          "digest",
+          "clone",
+          "pairs",
+          "merge",
+          "prototype",
+          "validate_state",
+          "marked_formula"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "check": "finite complete scoped syntax roots",
+      "evidence": "All declared fun/pred arities0..4, parameters, literal binder_names, bot/eq/pred/not/all/imp/and/or; every positive node allocation/ordered argument tuple/repeated term/literal shadowing. Templates use exact distinguished hole plusparameters and atomic roots only; do not prefilter contextual bodies.",
+      "passed": true
+    },
+    {
+      "check": "exact whole root membership and unchanged limits",
+      "evidence": "Terms12, whole formulas/templates44, fixed height24, depth64/fresh32/visits5m in supplied original membership/kernel. Every completed root syntax object passes original checker; only definite OutsideLanguage filtered.",
+      "passed": true
+    },
+    {
+      "check": "all six deterministic rule families retained",
+      "evidence": "Named AX labels, Gamma indices, all UI universal/parameter terms, atomic EqSubst templates/ordered left-right terms, every MP orderedpriorpair and bounded A/C, every eligible UG parameter/body/priorrow. Equal outputs never merge different witnesses.",
+      "passed": true
+    },
+    {
+      "check": "all bounds derived rather than empirical pruning",
+      "evidence": "UI |U|<=42; UG |B|<=43; MP |A|+|C|<=43. Atomic substitution never shrinks template nodes, giving EqSubst general2|T|+|left|+|right|+3<=44, or fixed-output |T|<=min(|Tleft|,|Tright|). Original full membership remains decisive.",
+      "passed": true
+    },
+    {
+      "check": "exact fixed-mark inverse filters",
+      "evidence": "Assigned output filters roots, fixes UI U, fixes EqSubst operand pair, fixes UG body/binder, and fixes MP output. Assigned prior A/implication fixes remaining MP fields; missing fields enumerate full eligible carrier. These are literal necessary equalities, not known-fact/goal/backcone restrictions.",
+      "passed": true
+    },
+    {
+      "check": "all ordered prior pairs and outside boundary",
+      "evidence": "Both refs range0..r-1 independently. Same-row MP is explicitly accounted as finite AST occurs-empty, not silently merged. Strict negative offsets plus full disjoint outside sentinel prove omitted negative absolute reads impossible.",
+      "passed": true
+    },
+    {
+      "check": "whole primitive/point/exclusion validation before every yielded key",
+      "evidence": "Unchanged prototype primitive membership, full internal/remote t/m agreement/capacity, fixedboundary, selected multiplicity, exact exclusions and live state hash/preimages. Pending read fact_acceptedFalse, including unoccupied marked/absent outputs.",
+      "passed": true
+    },
+    {
+      "check": "structural full-key uniqueness without carrier cache",
+      "evidence": "Disjoint rule tags; AX name/Gamma index; UI U+term; Eq template+ordered terms; MP pair+literal A/C; UG variable/body/row. Exact grammar generates each literal AST once. Full canonical preimage+translation, never digest-only identity. Rejected key carrier not retained.",
+      "passed": true
+    },
+    {
+      "check": "finite rule scheduling and rule EOF custody",
+      "evidence": "Round-robin one descriptor attempt per live family, deterministic per-family syntax/physical-row order. Every family must return its exact RULE_COMPLETE token; all six tokens required for final ALL_SIX_COMPLETE. A single descriptor next may still be expensive; no practical fairness/fit guarantee.",
+      "passed": true
+    },
+    {
+      "check": "snapshot context/real EOF and permanent failure",
+      "evidence": "Cursor context retains full cloned state/binding/epoch/row and hashes, zero-based candidate ordinal. Completion only from actual full stream token, exact count and sixrulelist. Prefix/abort/closed generator cannot fabricate EOF. Any context/advance exception permanently poisons; no resume afterresourcefailure.",
+      "passed": true
+    },
+    {
+      "check": "EOF remains untrusted and never supplies global degree",
+      "evidence": "Completion flags explicitly independentFalse, zero/singleton/graph/scheduler/proof/resourceFalse. Root requires fresh completed restrictedcoverc960+c354 exact samecontext surviving-key equality; otherwise EOF stays UNKNOWN. No self-certifier or blanket fallback authority.",
+      "passed": true
+    },
+    {
+      "check": "state changes and rollback remain external",
+      "evidence": "No incremental graph/cache/trail/resume checkpoint or Python generator rewind. New state/exclusion requires new cursor. A caller may retain untouched parent cursor or recreate/replay exact consumed prefix in restored context; Source-only component does not certify rollback.",
+      "passed": true
+    },
+    {
+      "check": "no resource cap becomes EOF",
+      "evidence": "No internal timer/visit/output/attempt/top-k cutoff. Original tick/membership/depth/fresh/time/memory/callback exceptions propagate; completion cannot follow failed/aborted cursor. Only completed semantic OutsideLanguage exclusions filtered.",
+      "passed": true
+    },
+    {
+      "check": "unchanged mathematical language and no supplied route",
+      "evidence": "No word/donor/library/catalogue/new model/target symbols/intermediates. Original generic data only. Broader B12/N44 finite syntax remains separate from unchanged legacy20k/50k ground caps; no oldceiling or universal grammar/count claim.",
+      "passed": true
+    },
+    {
+      "check": "pure Source task/no actuals",
+      "evidence": "Only named raw Source/small metadata/AST/compile-without-exec; no Q/model parser, kernel/solver/checker/new scientific functions, clocks/tests/plans/grants/output actuals/publication.",
+      "passed": true
+    }
+  ],
+  "delta": {
+    "bytes": 102349,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-delta-v1.json",
+    "sha256": "5dcf2a2066fbc500f94ceef62c1fffbd41c51ba59d3e91f7ef116ad286ade05c"
+  },
+  "raw_references": {
+    "design": {
+      "bytes": 5990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-design-source-20261015/lazy-unit-row-engine-design-v2.json",
+      "sha256": "273a1a9420eccbe020b956d6ff743f59ce332b3e36301f4b8efd3e0b873418d7"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "parent_contract": {
+      "bytes": 13319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+    },
+    "parent_peer": {
+      "bytes": 2731,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "a5a98a012ae74621ec6d8cd251684b5a2c8768aac22eee777f24f11eae0256d3"
+    },
+    "parent_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "point_encoding": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "restricted_cover_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    }
+  },
+  "schema": "unit-row-all-six-fallback-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Author raw/AST and structural argument only, not runtime enumeration/control/independent completeness qualification.",
+  "source": {
+    "bytes": 24227,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+    "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+  },
+  "source_only": true
+}

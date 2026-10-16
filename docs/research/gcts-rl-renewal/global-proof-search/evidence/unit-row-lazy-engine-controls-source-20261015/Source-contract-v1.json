@@ -1,0 +1,198 @@
+{
+  "API": {
+    "certify_fallback": "CALLABLE(*,language,state,row,completion,checked_candidates,tick)->fresh current completed c960/c354 receipt or None. Full surviving key equality required. UNKNOWN/TWO is not EOF authority.",
+    "degree_proposer": "CALLABLE(*,language,state,row,tick)->current c960 proposal. Root supplies fresh authenticated same-binding authority for each untrusted endpoint.",
+    "engine_factory": "CALLABLE(*,initial_state,degree_proposer,fallback,certify_fallback,tick)->current LazyUnitRowEngine. Root injects separately authenticated original language+c354 semantics+engine class; native tick plus supplied control tick both charged. No private mutation hooks.",
+    "entry": "run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,scheduler,tick)",
+    "fallback": "CALLABLE open_fallback(*,language,state,row,tick)->real current context/advance/abort cursor. Exact original state/fieldsets; controlled adapters can only interrupt/delegate, never invent candidate/EOF.",
+    "scheduler": "CALLABLE select_schedule(*,evidence,generations,tick); only two explicitly NONLOGICAL pure-kernel cases use abstract statuses/varied generations.",
+    "tick": "Original native budget always retained; declared local callback exhaustion is seam-only. Timeouts/UNKNOWN propagate or are exact expected seam exceptions, never zero/exhaustion."
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "reviewer_identity": "Distinct reviewer, not author.",
+    "schema": "unit-row-lazy-global-adversarial-controls-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-lazy-global-adversarial-controls-Source",
+    "source": {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    "source_contract": "Exact selected raw contract capsule; no self-hash.",
+    "source_only": true,
+    "source_review_passed": "Reviewer decides genuinely."
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship": "This agent authored fixture helpers and earlier checker/codec/family dependencies, not the current c354 degree checker, c960 proposer, new fallback or global engine. This is authored control Source, not independent semantic/runtime validation.",
+  "cases": [
+    {
+      "case": "late-global-ZERO-before-earlier-singleton",
+      "requirement": "Original pending AX row0 singleton versus later bottom row2 exact ZERO; DEAD2 must win before placement."
+    },
+    {
+      "case": "global-forced-before-branch",
+      "requirement": "Original pending AX row0 exact singleton; all other original frontier obligations checked before FORCED0."
+    },
+    {
+      "case": "real-EOF-singleton-without-independent-cover-UNKNOWN",
+      "requirement": "Valid hint suppression; actual one-key EOF with certifier=None cannot authorize singleton."
+    },
+    {
+      "case": "real-EOF-singleton-current-cover-FORCED",
+      "requirement": "Same actual one-key EOF, fresh current completed c960/c354 cover agrees with entire stream."
+    },
+    {
+      "case": "interrupted-zero-prefix-not-ZERO",
+      "requirement": "Real cursor aborted before any candidate; exact callback exception, never fabricated EOF."
+    },
+    {
+      "case": "interrupted-one-prefix-not-SINGLETON",
+      "requirement": "Real cursor aborted after one actual candidate; no singleton from incomplete prefix."
+    },
+    {
+      "case": "unseen-remote-key-invalidated",
+      "requirement": "Deep42 ordered MP reverse key unseen when later legal UG introduces remote bottom marking; ALL24 version/cache invalidation and actual illegal stale reverse rejection."
+    },
+    {
+      "case": "remote-singleton-stream-cover-key-agreement",
+      "requirement": "One real survivor+EOF agrees with fresh independently completed cover in exact changed context."
+    },
+    {
+      "case": "rollback-revives-unseen-key-and-cursor-position",
+      "requirement": "Exact whole checkpoint restored; reopened cursor replays consumed prefix then returns unseen reverse key."
+    },
+    {
+      "case": "exact-ordered-child-alternatives-and-restoration",
+      "requirement": "Two genuine ordered MP children each show certified dead obligation; public manual transaction rollback, explicitly not reference-scheduled branch trace."
+    },
+    {
+      "case": "omitted-stream-survivor-rejected",
+      "requirement": "Current completed cover rejects missing real sole survivor; no forged EOF."
+    },
+    {
+      "case": "assumed-exclusions-change-context-not-universe",
+      "requirement": "Explicit assumed full-key exclusion changes exact context and removes only specified original placement; no proof of exclusion justification."
+    },
+    {
+      "case": "UNKNOWN-child-never-excluded",
+      "requirement": "Only bounded search call: original root/first real child; child hint suppression+real-cursor interruption yields UNKNOWN, exact root/stack restoration, no EXCLUDE."
+    },
+    {
+      "case": "callback-exhaustion-poisons-real-cursor",
+      "requirement": "Injected callback calls original native tick first, then declared exhaustion; failed real cursor later RuntimeError, never EOF."
+    },
+    {
+      "case": "abort-poisons-real-cursor",
+      "requirement": "Real cursor abort later RuntimeError, never EOF."
+    },
+    {
+      "case": "synthetic-varied-generation-and-ROW-TIE",
+      "requirement": "NONLOGICAL pure scheduler: early10 vs later2 chooses early; equal generation names row tie, not minimum count."
+    },
+    {
+      "case": "synthetic-global-priority-with-UNKNOWN",
+      "requirement": "NONLOGICAL abstract statuses: global ZERO before singleton; UNKNOWN prevents unsafe forced action."
+    }
+  ],
+  "complete_graph_obligation": "ALL original active frontier must have independently sufficient local evidence before forced/branching; candidate nodes shared by full key, all remote dependencies including unseen possibilities invalidated conservatively. These controls challenge selected obligations; Source-only authorship is not complete global conformance or whole all-six EOF certification.",
+  "deep_fixture_math_latex": "C=\\operatorname{not}^{41}(\\bot),\\quad |C|=42,\\quad |A|\\le43-|C|=1. Under checked empty original predicate inventory the sole one-node antecedent is \\bot, yielding the two ordered distinct prior-row MP placements.",
+  "dependencies": {
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 27865,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+      "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "fallback_contract": {
+      "bytes": 14336,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-contract-v1.json",
+      "sha256": "5800fb0834efadd31afde96d3518257e5f6d3e43932ee2863127c666c053c683"
+    },
+    "inherited_fixture_helpers": {
+      "bytes": 20072,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-controls-source-20261015/missing_mark_degree_controls_v2.py",
+      "sha256": "4fc9e409aad995a4b7eea2afbf11d447b75a7e70d4b2d58ffc9dad1cc10c59d5"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "language_policy": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    }
+  },
+  "eligibility": "Only prepared fixture construction catches exact OutsideLanguage into Unavailable/SKIPPED. Callback/resources and unexpected endpoint errors propagate. Root AX/Gamma counts, eligible parameters, exact C shape/bounds and empty predicates derive from actual original input; unavailable controls are explicitly skipped, never fabricated.",
+  "model": "Authenticated original theory/parameter/Gamma/target only; no saved proof word, donor, library or supplied target route. Exact original height24/unit support/m union/complete outside target/generations0. AX/UG/MP fixtures built through original bounded membership. Complete root/Gamma occurrence identity retained.",
+  "native_limits": "No local cap changes or clocks; Root existing original20s/512MiB/failure55s/owned60s/caller90+1 and cold lifecycle apply to every eventual call. Engine node128/event2000 limits unchanged. No actual or plan here.",
+  "remaining_runtime_gaps": [
+    "Independent whole current engine/fallback/harness/caller Source reviews.",
+    "One genuine bounded control run with full saved evidence and SKIP accounting under native gates.",
+    "Complete arbitrary implication/absent-output EOF certification remains unavailable; no 0/1/exhaustion from its generator EOF alone.",
+    "Separate original initial-state search, independent complete word/board verification and actual resource disposition.",
+    "No fractional capacity/shared-positive-support/general-growth/rotation or native geometric Wang/RL/marking-learning/benefit claim."
+  ],
+  "result": {
+    "all_declared_cases_completed": true,
+    "assertions": "Any genuine assertion mismatch raises, not a successful result. SKIPPED is only definite original fixture ineligibility, with explicit reason; no inherited runtime pass.",
+    "cases": "Full list {case,status PASSED|SKIPPED,observed,scope}; observed retains actual positive/negative proposals, cursor events, certificates, logical snapshots or exact rejection reasons as appropriate.",
+    "false_flags": [
+      "complete_candidate_graph_accepted",
+      "scheduler_or_rollback_accepted",
+      "logical_proof_accepted",
+      "exact_point_board_accepted",
+      "GCTS_advantage_accepted",
+      "trajectory_accepted",
+      "RL_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "prospective_case_count": 17,
+    "schema": "unit-row-lazy-global-controls-v1",
+    "version": "unit-row-lazy-global-adversarial-controls-v1"
+  },
+  "rollback_scope": "Whole semantic/cursor/dependency/reference-count snapshots must match exactly; diagnostics/cumulative work counters remain observations. Live Python iterator is recreated and exact consumed prefix replayed, never rewound. Manual place/rollback tests are transaction mechanics, not scheduler execution.",
+  "schema": "unit-row-lazy-global-adversarial-controls-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-lazy-global-adversarial-controls-Source",
+  "search_scope": "Exactly one search call, deliberately incomplete child-transport seam with no target answer expectation. Parent separately owns any fresh original-root theorem search and all actual grants.",
+  "source": {
+    "bytes": 21896,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+    "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 6882,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/author-static-evidence-v1.json",
+    "sha256": "171cdd3a2fb5fc52ebd8482770daa764190ca1ca53ac5d844ee0c34c20822b9e"
+  }
+}

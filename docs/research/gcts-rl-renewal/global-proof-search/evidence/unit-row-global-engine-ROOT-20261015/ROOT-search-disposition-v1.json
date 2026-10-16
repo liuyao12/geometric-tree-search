@@ -1,0 +1,74 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "aggregate_B_bytes": 39387136,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 20.247,
+  "complete_GCTS_model_accepted": false,
+  "complete_worker_result_available": false,
+  "independent_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 20073125000,
+  "native_lifecycle_observation_verified": true,
+  "native_resources_qualified": false,
+  "native_worker_lifetime_ns": 20033790000,
+  "next_action": "Preserve unknown. Add bounded failure-only diagnostics without changing20s acceptance, and test a separately frozen retained-domain engine successor. Do not restart unchanged actual.",
+  "nonprovability_claimed": false,
+  "observed_prefix": null,
+  "old_UNKNOWNs_preserved": true,
+  "plan": {
+    "bytes": 5372,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-engine-ROOT-20261015/ROOT-search-plan-v1.json",
+    "sha256": "3694b48eda0bfb98b126f4fb475575d10b516fc18bac080c84e66e916a5cb751"
+  },
+  "previous_goal_turn": "progress",
+  "raw_evidence": [
+    {
+      "bytes": 245,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-engine-ROOT-20261015/search-external-v1/ONCE.json",
+      "sha256": "21d7b7458faca9e22de2048986d2d62bdbd9cda34f182b96fcf06f8162dccc26"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-engine-ROOT-20261015/search-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 111,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-engine-ROOT-20261015/search-external-v1/meter-stderr.txt",
+      "sha256": "ab20fdad9385dfef8fdc9502376b649f5a165abcd9958855bb7695c519919115"
+    },
+    {
+      "bytes": 1673,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-engine-ROOT-20261015/search-external-v1/native-terminal.json",
+      "sha256": "b44d0938bff0e0e9180b61eb0dd324a295d407c095447e52df32f1fb066c1335"
+    },
+    {
+      "bytes": 462,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-engine-ROOT-20261015/search-external-v1/observation.json",
+      "sha256": "f53fcf9ca1f6df6030fd4868a8d8e751a290d6e14960d51f3fe324c9c091cea2"
+    },
+    {
+      "bytes": 16,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-engine-ROOT-20261015/search-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "7ef400bd5dcaf1a62fe44103ddd998899b866b90514f9e925f85f63ea59ee105"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-engine-ROOT-20261015/search-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "reason": "Original native20s deadline; worker exited2 before complete engine output. Positive native gate not qualified.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "root_or_stack_restoration_runtime_verified": false,
+  "schema": "ROOT-unit-row-global-search-UNKNOWN-disposition-v1",
+  "scope": "One cold search from original right-two initialstate, same declaration/profile/all-six universe/height24, named ROW-TIE+ALL24-REBIND variant, node128/event2000 ceilings. No word/donor/library input.",
+  "search_counts": null,
+  "search_trace": null,
+  "status": "UNKNOWN",
+  "terminal_T_bytes": 39387136,
+  "worker_exit_code": 2
+}

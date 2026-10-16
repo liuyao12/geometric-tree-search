@@ -1,0 +1,35 @@
+{
+  "check_count": 13,
+  "findings": {
+    "bytes": 21953,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-cold-independent-source-20261015/findings-v1.json",
+    "sha256": "588c95a4be8c7f3090156c91b5341167cfaa3a1bd1fdb8831a4f55e2fbc376ff"
+  },
+  "next": "Root purpose-specific plan/grant/actual and complete saved/native disposition only; no activation by this review.",
+  "raw_reference_paths": 38,
+  "schema": "unit-row-global-engine-cold-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 25792,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-cold-ROOT-source-20261015/unit_row_global_engine_cold_v1.py",
+    "sha256": "4e83784213ae01805648bac7ba8787842db846fabf037b8f3f6a56d5978d6ff2"
+  },
+  "source_contract": {
+    "bytes": 10879,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-cold-ROOT-source-20261015/Source-contract-v1.json",
+    "sha256": "1dc66c42243725e0f27b3c6172bce11249835717f5749b86ed015d19f3843b7b"
+  },
+  "source_handoff": {
+    "bytes": 4627,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-cold-ROOT-source-20261015/handoff-v1.json",
+    "sha256": "d36ed12ca5503a6d52084aacc2e60f0e338b60e59c88c5b849d283340163b453"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS_ONLY",
+  "typed_review": {
+    "bytes": 4886,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-global-cold-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "a98d3e39461960714ddaa588e8afafc4cdd9be84b70f18d3023e428845223139"
+  }
+}

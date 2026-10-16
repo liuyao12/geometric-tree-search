@@ -1,0 +1,10 @@
+{
+  "plan_sha256": "3694b48eda0bfb98b126f4fb475575d10b516fc18bac080c84e66e916a5cb751",
+  "plan_bytes": 5372,
+  "began_Date_ms": 1792124544181,
+  "ended_Date_ms": 1792124564428,
+  "complete_Date_seconds": 20.247,
+  "tool_exit_code": 2,
+  "tool_session_id": null,
+  "full_tool_output": "{\"ROOT_primary_accepted\": false, \"ROOT_resource_accepted\": false, \"external_began_ns\": 464352265344000, \"invocation_id\": \"unit-row-global-engine-search-20261015-v1\", \"measurement_only\": true, \"meter_returncode\": 2, \"plan_bytes\": 5372, \"plan_sha256\": \"3694b48eda0bfb98b126f4fb475575d10b516fc18bac080c84e66e916a5cb751\", \"postterminal_native_probe_ns\": 464372402411000, \"probe_returncode\": 0, \"purpose\": \"unit-row-global-engine-search\", \"schema\": \"ROOT-ordinary-external-observation-v1\"}\n"
+}

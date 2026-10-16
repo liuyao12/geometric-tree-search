@@ -1,0 +1,44 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 10657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/author-static-v1.json",
+    "sha256": "399b1eed163c38dfaeaaf859dcbc639894396adc613ee0676886e6f10de13e65"
+  },
+  "conformance": "Does not retain unaffected domains under master section 4. Global scheduling/rollback mechanics only; no full reference incremental conformance or acceleration.",
+  "constructor": "LazyUnitRowEngine(*,language,degree_proposer,semantics,fallback,certify_fallback,tick,initial_state=None,maximum_nodes=128,maximum_events=2000)",
+  "design_review": {
+    "bytes": 2016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/design-review-v1.json",
+    "sha256": "32df518affbbc58732d3e6326c8c418c1a51d73227ccc1bef079acd0dbaed490"
+  },
+  "metadata_delta": {
+    "bytes": 12094,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/metadata-delta-v2.json",
+    "sha256": "5f65fc85b9a91ae8e6c646ad8bcd54dbbf23fcb59fe6cee3fc8c32da448b305e"
+  },
+  "preserved_handoff_v1": {
+    "bytes": 1812,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/handoff-v1.json",
+    "sha256": "00ac6b7eb353156d0270da04a5851abc32a7dac113898bbe547ae448fdc2bb11"
+  },
+  "public_place": "Caller-owned checkpoint/finally rollback required for restoration even on post-install resource exception; place is not exception-atomic.",
+  "remaining": "No blanket EOF authority. Fresh current cover certifier or UNKNOWN; full control/cold/native/proof/point/GCTS admission pending. No functions/Q/model/word/clocks/tests/plans/actuals.",
+  "review_scope": "unit-row-lazy-global-engine-Source",
+  "schema": "unit-row-lazy-global-engine-Source-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 27865,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+    "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+  },
+  "source_contract": {
+    "bytes": 16287,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/Source-contract-v2.json",
+    "sha256": "a7356f8f0f977fe8acaa514d2003991ba71f6db7960d5404846ad65fe09bedb0"
+  },
+  "source_only": true,
+  "specialized_variant": "ALL24-REBIND",
+  "status": "FROZEN_SOURCE_ONLY_DISTINCT_REVIEW_PENDING"
+}

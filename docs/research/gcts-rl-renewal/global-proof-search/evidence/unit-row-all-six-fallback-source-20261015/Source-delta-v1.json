@@ -1,0 +1,3840 @@
+{
+  "after": {
+    "bytes": 24227,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+    "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+  },
+  "before": {
+    "bytes": 22030,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+    "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+  },
+  "edits": [
+    {
+      "after_end": 19,
+      "after_start": 15,
+      "after_utf8": "comp",
+      "before_end": 15,
+      "before_start": 15,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 38,
+      "after_start": 20,
+      "after_utf8": "ete lazy six-rule ",
+      "before_end": 17,
+      "before_start": 16,
+      "before_utf8": "o"
+    },
+    {
+      "after_end": 97,
+      "after_start": 40,
+      "after_utf8": "ndidate stream for the fixed unit rows.\nEOF proposes comp",
+      "before_end": 19,
+      "before_start": 19,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 120,
+      "after_start": 98,
+      "after_utf8": "etion, never certifies",
+      "before_end": 20,
+      "before_start": 20,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 128,
+      "after_start": 127,
+      "after_utf8": ";",
+      "before_end": 27,
+      "before_start": 27,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 130,
+      "after_start": 130,
+      "after_utf8": "",
+      "before_end": 40,
+      "before_start": 29,
+      "before_utf8": "roposals. P"
+    },
+    {
+      "after_end": 147,
+      "after_start": 147,
+      "after_utf8": "",
+      "before_end": 70,
+      "before_start": 57,
+      "before_utf8": "obligations, "
+    },
+    {
+      "after_end": 159,
+      "after_start": 158,
+      "after_utf8": "O",
+      "before_end": 88,
+      "before_start": 81,
+      "before_utf8": "Whole p"
+    },
+    {
+      "after_end": 164,
+      "after_start": 161,
+      "after_utf8": "gin",
+      "before_end": 91,
+      "before_start": 90,
+      "before_utf8": "v"
+    },
+    {
+      "after_end": 166,
+      "after_start": 165,
+      "after_utf8": "l",
+      "before_end": 94,
+      "before_start": 92,
+      "before_utf8": "te"
+    },
+    {
+      "after_end": 167,
+      "after_start": 167,
+      "after_utf8": "",
+      "before_end": 101,
+      "before_start": 95,
+      "before_utf8": "state/"
+    },
+    {
+      "after_end": 180,
+      "after_start": 174,
+      "after_utf8": "e/stat",
+      "before_end": 108,
+      "before_start": 108,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 207,
+      "after_start": 199,
+      "after_utf8": " and all",
+      "before_end": 128,
+      "before_start": 127,
+      "before_utf8": ";"
+    },
+    {
+      "after_end": 290,
+      "after_start": 288,
+      "after_utf8": "co",
+      "before_end": 210,
+      "before_start": 209,
+      "before_utf8": "i"
+    },
+    {
+      "after_end": 294,
+      "after_start": 293,
+      "after_utf8": "e",
+      "before_end": 216,
+      "before_start": 213,
+      "before_utf8": "ici"
+    },
+    {
+      "after_end": 295,
+      "after_start": 295,
+      "after_utf8": "",
+      "before_end": 223,
+      "before_start": 217,
+      "before_utf8": "-degre"
+    },
+    {
+      "after_end": 303,
+      "after_start": 297,
+      "after_utf8": "lazy-s",
+      "before_end": 227,
+      "before_start": 225,
+      "before_utf8": "ev"
+    },
+    {
+      "after_end": 309,
+      "after_start": 304,
+      "after_utf8": "x-rul",
+      "before_end": 232,
+      "before_start": 228,
+      "before_utf8": "denc"
+    },
+    {
+      "after_end": 320,
+      "after_start": 311,
+      "after_utf8": "fallback-",
+      "before_end": 234,
+      "before_start": 234,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 322,
+      "after_start": 321,
+      "after_utf8": "1",
+      "before_end": 250,
+      "before_start": 235,
+      "before_utf8": "3-missing-marks"
+    },
+    {
+      "after_end": 8181,
+      "after_start": 8179,
+      "after_utf8": "sy",
+      "before_end": 8110,
+      "before_start": 8107,
+      "before_utf8": "bou"
+    },
+    {
+      "after_end": 8183,
+      "after_start": 8182,
+      "after_utf8": "t",
+      "before_end": 8121,
+      "before_start": 8111,
+      "before_utf8": "ded_formul"
+    },
+    {
+      "after_end": 8185,
+      "after_start": 8184,
+      "after_utf8": "x",
+      "before_end": 8123,
+      "before_start": 8122,
+      "before_utf8": "s"
+    },
+    {
+      "after_end": 8203,
+      "after_start": 8197,
+      "after_utf8": ", kind",
+      "before_end": 8135,
+      "before_start": 8135,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 8450,
+      "after_start": 8322,
+      "after_utf8": "kind in ('term', 'formula', 'universal', 'template'), 'declared syntax kind')\n    bound = 12 if kind == 'term' else 44\n    need(",
+      "before_end": 8254,
+      "before_start": 8254,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 8508,
+      "after_start": 8503,
+      "after_utf8": "bound",
+      "before_end": 8309,
+      "before_start": 8307,
+      "before_utf8": "44"
+    },
+    {
+      "after_end": 8511,
+      "after_start": 8511,
+      "after_utf8": "",
+      "before_end": 8315,
+      "before_start": 8312,
+      "before_utf8": "who"
+    },
+    {
+      "after_end": 8514,
+      "after_start": 8512,
+      "after_utf8": "it",
+      "before_end": 8316,
+      "before_start": 8316,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 8515,
+      "after_start": 8515,
+      "after_utf8": "",
+      "before_end": 8320,
+      "before_start": 8317,
+      "before_utf8": " fo"
+    },
+    {
+      "after_end": 8517,
+      "after_start": 8516,
+      "after_utf8": "a",
+      "before_end": 8323,
+      "before_start": 8321,
+      "before_utf8": "mu"
+    },
+    {
+      "after_end": 8518,
+      "after_start": 8518,
+      "after_utf8": "",
+      "before_end": 8325,
+      "before_start": 8324,
+      "before_utf8": "a"
+    },
+    {
+      "after_end": 8529,
+      "after_start": 8520,
+      "after_utf8": "yntax nod",
+      "before_end": 8329,
+      "before_start": 8327,
+      "before_utf8": "iz"
+    },
+    {
+      "after_end": 8536,
+      "after_start": 8536,
+      "after_utf8": "",
+      "before_end": 8341,
+      "before_start": 8336,
+      "before_utf8": "1..44"
+    },
+    {
+      "after_end": 8864,
+      "after_start": 8811,
+      "after_utf8": ") | ({language.hole} if kind == 'template' else set()",
+      "before_end": 8616,
+      "before_start": 8616,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 11915,
+      "after_start": 10943,
+      "after_utf8": "def roots(size):\n        if kind == 'term':\n            yield from terms(size, scope)\n        elif kind == 'formula':\n            yield from formulas(size, scope)\n        elif kind == 'universal':\n            if size >= 2:\n                for name in binders:\n                    for body in formulas(size-1, scope | {name}):\n                        tick()\n                        yield ['all', name, body]\n        else:\n            for name, arity in predicates:\n                for sizes in compositions(size-1, arity):\n                    for args in children(sizes, scope, True):\n                        tick()\n                        yield ['pred', name, args]\n            for sizes in compositions(size-1, 2):\n                for args in children(sizes, scope, True):\n                    tick()\n                    yield ['eq', args[0], args[1]]\n\n    validator = language.term if kind == 'term' else language.template if kind == 'template' else language.formula\n    ",
+      "before_end": 10695,
+      "before_start": 10695,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 11969,
+      "after_start": 11966,
+      "after_utf8": "val",
+      "before_end": 10750,
+      "before_start": 10746,
+      "before_utf8": "form"
+    },
+    {
+      "after_end": 11971,
+      "after_start": 11970,
+      "after_utf8": "e",
+      "before_end": 10753,
+      "before_start": 10751,
+      "before_utf8": "la"
+    },
+    {
+      "after_end": 11976,
+      "after_start": 11975,
+      "after_utf8": "r",
+      "before_end": 10758,
+      "before_start": 10757,
+      "before_utf8": "f"
+    },
+    {
+      "after_end": 11979,
+      "after_start": 11977,
+      "after_utf8": "ot",
+      "before_end": 10764,
+      "before_start": 10759,
+      "before_utf8": "rmula"
+    },
+    {
+      "after_end": 11984,
+      "after_start": 11984,
+      "after_utf8": "",
+      "before_end": 10776,
+      "before_start": 10769,
+      "before_utf8": "e, scop"
+    },
+    {
+      "after_end": 12056,
+      "after_start": 12054,
+      "after_utf8": "va",
+      "before_end": 10846,
+      "before_start": 10846,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12059,
+      "after_start": 12057,
+      "after_utf8": "id",
+      "before_end": 10847,
+      "before_start": 10847,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12061,
+      "after_start": 12060,
+      "after_utf8": "t",
+      "before_end": 10856,
+      "before_start": 10848,
+      "before_utf8": "nguage.f"
+    },
+    {
+      "after_end": 12067,
+      "after_start": 12063,
+      "after_utf8": "(val",
+      "before_end": 10859,
+      "before_start": 10858,
+      "before_utf8": "m"
+    },
+    {
+      "after_end": 12069,
+      "after_start": 12068,
+      "after_utf8": "e",
+      "before_end": 10870,
+      "before_start": 10860,
+      "before_utf8": "la(formula"
+    },
+    {
+      "after_end": 12253,
+      "after_start": 12227,
+      "after_utf8": "value\n\n\nRULE_ORDER = ('axi",
+      "before_end": 11029,
+      "before_start": 11028,
+      "before_utf8": "f"
+    },
+    {
+      "after_end": 12310,
+      "after_start": 12254,
+      "after_utf8": "m', 'assumption', 'instantiate', 'eq_subst', 'mp', 'gene",
+      "before_end": 11030,
+      "before_start": 11030,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12312,
+      "after_start": 12311,
+      "after_utf8": "a",
+      "before_end": 11033,
+      "before_start": 11031,
+      "before_utf8": "mu"
+    },
+    {
+      "after_end": 12318,
+      "after_start": 12313,
+      "after_utf8": "ize')",
+      "before_end": 11035,
+      "before_start": 11034,
+      "before_utf8": "a"
+    },
+    {
+      "after_end": 12407,
+      "after_start": 12325,
+      "after_utf8": "_legal_reason(tile, totals, marks, selected, excluded):\n    key = canonical(tile['",
+      "before_end": 11042,
+      "before_start": 11042,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12456,
+      "after_start": 12408,
+      "after_utf8": "lacement_key'])\n    if key in selected:\n        ",
+      "before_end": 11043,
+      "before_start": 11043,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12539,
+      "after_start": 12457,
+      "after_utf8": "eturn 'already_selected'\n    if key in excluded:\n        return 'branch_excluded_c",
+      "before_end": 11044,
+      "before_start": 11044,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12656,
+      "after_start": 12540,
+      "after_utf8": "mplete_key'\n    if any(totals.get(tuple(p), 1)+v > 1 for p, v in tile['global_t_values']):\n        return 'whole_sup",
+      "before_end": 11045,
+      "before_start": 11045,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12698,
+      "after_start": 12658,
+      "after_utf8": "rt_capacity'\n    if any(tuple(p) in mark",
+      "before_end": 11047,
+      "before_start": 11047,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12816,
+      "after_start": 12699,
+      "after_utf8": " and canonical(marks[tuple(p)]) != canonical(v)\n           for p, v in tile['global_m_values']):\n        return 'whol",
+      "before_end": 11048,
+      "before_start": 11048,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12870,
+      "after_start": 12818,
+      "after_utf8": "remote_or_metadata_mark_conflict'\n    return None\n\n\n",
+      "before_end": 11050,
+      "before_start": 11050,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12887,
+      "after_start": 12872,
+      "after_utf8": "f _all_candidat",
+      "before_end": 11054,
+      "before_start": 11052,
+      "before_utf8": "gr"
+    },
+    {
+      "after_end": 12889,
+      "after_start": 12888,
+      "after_utf8": "s",
+      "before_end": 11056,
+      "before_start": 11055,
+      "before_utf8": "e"
+    },
+    {
+      "after_end": 12890,
+      "after_start": 12890,
+      "after_utf8": "",
+      "before_end": 11060,
+      "before_start": 11057,
+      "before_utf8": "*, "
+    },
+    {
+      "after_end": 12907,
+      "after_start": 12901,
+      "after_utf8": "napsho",
+      "before_end": 11071,
+      "before_start": 11071,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 12908,
+      "after_start": 12908,
+      "after_utf8": "",
+      "before_end": 11075,
+      "before_start": 11072,
+      "before_utf8": "ate"
+    },
+    {
+      "after_end": 12921,
+      "after_start": 12921,
+      "after_utf8": "",
+      "before_end": 11375,
+      "before_start": 11088,
+      "before_utf8": "\n    \"\"\"Return two legal witnesses, an untrusted restricted cover, or UNKNOWN.\n\n    Callback/typing budgets propagate. No zero/singleton decision, graph update,\n    pruning, placement, branch preference or rollback is performed by this API.\n    \"\"\"\n    outside = language.OutsideLanguage"
+    },
+    {
+      "after_end": 12967,
+      "after_start": 12964,
+      "after_utf8": "nam",
+      "before_end": 11426,
+      "before_start": 11418,
+      "before_utf8": "prototyp"
+    },
+    {
+      "after_end": 13004,
+      "after_start": 12998,
+      "after_utf8": "napsho",
+      "before_end": 11457,
+      "before_start": 11457,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 13005,
+      "after_start": 13005,
+      "after_utf8": "",
+      "before_end": 11461,
+      "before_start": 11458,
+      "before_utf8": "ate"
+    },
+    {
+      "after_end": 13178,
+      "after_start": 13177,
+      "after_utf8": "p",
+      "before_end": 11635,
+      "before_start": 11633,
+      "before_utf8": "ea"
+    },
+    {
+      "after_end": 13179,
+      "after_start": 13179,
+      "after_utf8": "",
+      "before_end": 11637,
+      "before_start": 11636,
+      "before_utf8": "l"
+    },
+    {
+      "after_end": 13181,
+      "after_start": 13180,
+      "after_utf8": "o",
+      "before_end": 11639,
+      "before_start": 11638,
+      "before_utf8": "e"
+    },
+    {
+      "after_end": 13209,
+      "after_start": 13208,
+      "after_utf8": "k",
+      "before_end": 11667,
+      "before_start": 11666,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 13232,
+      "after_start": 13231,
+      "after_utf8": "k",
+      "before_end": 11690,
+      "before_start": 11689,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 13362,
+      "after_start": 13252,
+      "after_utf8": "outside = language.OutsideLanguage\n    stats = {'attempts_by_rule': {k: 0 for k in RULE_ORDER}, 'membership_ex",
+      "before_end": 11710,
+      "before_start": 11710,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 13367,
+      "after_start": 13363,
+      "after_utf8": "lusi",
+      "before_end": 11711,
+      "before_start": 11711,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 14375,
+      "after_start": 13368,
+      "after_utf8": "ns': 0,\n             'point_rejections': 0, 'MP_same_row_occurs_empty': 0, 'yielded_candidates': 0}\n\n    def formulas(maximum):\n        if maximum >= 1:\n            yield from iter_syntax(language=language, kind='formula', maximum_nodes=maximum, tick=tick)\n\n    def terms():\n        yield from iter_syntax(language=language, kind='term', maximum_nodes=12, tick=tick)\n\n    def descriptors(rule):\n        if rule == 'axiom':\n            for name, formula in sorted(language.theory['axioms'].items()):\n                tick()\n                if output is None or formula == output:\n                    yield {'rule': rule, 'name': name, 'formula': formula}, [], []\n        elif rule == 'assumption':\n            for index, formula in enumerate(language.gamma):\n                tick()\n                if output is None or formula == output:\n                    yield {'rule': rule, 'index': index, 'formula': formula}, [], []\n        elif rule == 'instantiate':\n            if output is None:\n                uni",
+      "before_end": 11712,
+      "before_start": 11712,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15157,
+      "after_start": 14378,
+      "after_utf8": "sals = iter_syntax(language=language, kind='universal', maximum_nodes=42, tick=tick)\n            elif output[0] == 'imp' and output[1][0] == 'all':\n                universals = (output[1],)\n            else:\n                universals = ()\n            for universal in universals:\n                for term in terms():\n                    tick()\n                    try:\n                        instance = language.substitute(universal[2], universal[1], term)\n                    except outside:\n                        yield None\n                        continue\n                    formula = ['imp', universal, instance]\n                    yield {'rule': rule, 'universal': universal, 'term': term, 'formula': formula}, [], []\n        elif rule == 'eq_subst':\n            fixed",
+      "before_end": 11715,
+      "before_start": 11715,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15204,
+      "after_start": 15178,
+      "after_utf8": "\n            shape = fixed",
+      "before_end": 11736,
+      "before_start": 11736,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15220,
+      "after_start": 15219,
+      "after_utf8": "=",
+      "before_end": 11752,
+      "before_start": 11751,
+      "before_utf8": "!"
+    },
+    {
+      "after_end": 15232,
+      "after_start": 15232,
+      "after_utf8": "",
+      "before_end": 11820,
+      "before_start": 11764,
+      "before_utf8": "all(f is not None for f in earlier)\n    missing_cover = "
+    },
+    {
+      "after_end": 15244,
+      "after_start": 15238,
+      "after_utf8": "[1][0]",
+      "before_end": 11826,
+      "before_start": 11826,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15247,
+      "after_start": 15245,
+      "after_utf8": "==",
+      "before_end": 11829,
+      "before_start": 11827,
+      "before_utf8": "is"
+    },
+    {
+      "after_end": 15249,
+      "after_start": 15248,
+      "after_utf8": "'",
+      "before_end": 11837,
+      "before_start": 11830,
+      "before_utf8": "not Non"
+    },
+    {
+      "after_end": 15252,
+      "after_start": 15250,
+      "after_utf8": "q'",
+      "before_end": 11838,
+      "before_start": 11838,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15267,
+      "after_start": 15264,
+      "after_utf8": "2][",
+      "before_end": 11850,
+      "before_start": 11850,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15271,
+      "after_start": 15270,
+      "after_utf8": "=",
+      "before_end": 11854,
+      "before_start": 11853,
+      "before_utf8": "!"
+    },
+    {
+      "after_end": 15279,
+      "after_start": 15278,
+      "after_utf8": "\n",
+      "before_end": 11861,
+      "before_start": 11861,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15320,
+      "after_start": 15280,
+      "after_utf8": "           lefts = (output[1][1],) if sh",
+      "before_end": 11862,
+      "before_start": 11862,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15339,
+      "after_start": 15321,
+      "after_utf8": "pe else terms() if",
+      "before_end": 11865,
+      "before_start": 11863,
+      "before_utf8": "nd"
+    },
+    {
+      "after_end": 15347,
+      "after_start": 15344,
+      "after_utf8": "fix",
+      "before_end": 11873,
+      "before_start": 11870,
+      "before_utf8": "cov"
+    },
+    {
+      "after_end": 15357,
+      "after_start": 15348,
+      "after_utf8": "d else ()",
+      "before_end": 11875,
+      "before_start": 11874,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 15362,
+      "after_start": 15362,
+      "after_utf8": "",
+      "before_end": 11896,
+      "before_start": 11880,
+      "before_utf8": "missing_complete"
+    },
+    {
+      "after_end": 15363,
+      "after_start": 15363,
+      "after_utf8": "",
+      "before_end": 11898,
+      "before_start": 11897,
+      "before_utf8": "="
+    },
+    {
+      "after_end": 15366,
+      "after_start": 15364,
+      "after_utf8": "  ",
+      "before_end": 11905,
+      "before_start": 11899,
+      "before_utf8": "False\n"
+    },
+    {
+      "after_end": 15371,
+      "after_start": 15371,
+      "after_utf8": "",
+      "before_end": 11916,
+      "before_start": 11910,
+      "before_utf8": "ibre_c"
+    },
+    {
+      "after_end": 15372,
+      "after_start": 15372,
+      "after_utf8": "",
+      "before_end": 11919,
+      "before_start": 11917,
+      "before_utf8": "ve"
+    },
+    {
+      "after_end": 15375,
+      "after_start": 15374,
+      "after_utf8": "l",
+      "before_end": 11926,
+      "before_start": 11921,
+      "before_utf8": "= Non"
+    },
+    {
+      "after_end": 15378,
+      "after_start": 15376,
+      "after_utf8": "ft",
+      "before_end": 11931,
+      "before_start": 11927,
+      "before_utf8": "\n   "
+    },
+    {
+      "after_end": 15384,
+      "after_start": 15380,
+      "after_utf8": "n le",
+      "before_end": 11933,
+      "before_start": 11933,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15386,
+      "after_start": 15385,
+      "after_utf8": "t",
+      "before_end": 11937,
+      "before_start": 11934,
+      "before_utf8": " mi"
+    },
+    {
+      "after_end": 15387,
+      "after_start": 15387,
+      "after_utf8": "",
+      "before_end": 11948,
+      "before_start": 11938,
+      "before_utf8": "sing_cover"
+    },
+    {
+      "after_end": 15415,
+      "after_start": 15397,
+      "after_utf8": "        rights = (",
+      "before_end": 11958,
+      "before_start": 11958,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15479,
+      "after_start": 15421,
+      "after_utf8": "[1][2],) if shape else terms()\n                for right i",
+      "before_end": 11965,
+      "before_start": 11964,
+      "before_utf8": "_"
+    },
+    {
+      "after_end": 15543,
+      "after_start": 15480,
+      "after_utf8": " rights:\n                    tick()\n                    if shap",
+      "before_end": 11968,
+      "before_start": 11966,
+      "before_utf8": "od"
+    },
+    {
+      "after_end": 15577,
+      "after_start": 15544,
+      "after_utf8": ":\n                        maximum",
+      "before_end": 11970,
+      "before_start": 11969,
+      "before_utf8": "s"
+    },
+    {
+      "after_end": 15615,
+      "after_start": 15579,
+      "after_utf8": " min(language.formula(output[2][1]),",
+      "before_end": 11972,
+      "before_start": 11972,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15645,
+      "after_start": 15639,
+      "after_utf8": "[2][2]",
+      "before_end": 11996,
+      "before_start": 11996,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15647,
+      "after_start": 15646,
+      "after_utf8": ")",
+      "before_end": 12085,
+      "before_start": 11997,
+      "before_utf8": "\n        fibre_cover = {'schema': 'unit-row-missing-mark-fibres-v1', 'completed': False,"
+    },
+    {
+      "after_end": 15668,
+      "after_start": 15660,
+      "after_utf8": "        ",
+      "before_end": 12109,
+      "before_start": 12098,
+      "before_utf8": "'output_nod"
+    },
+    {
+      "after_end": 15670,
+      "after_start": 15669,
+      "after_utf8": "l",
+      "before_end": 12110,
+      "before_start": 12110,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15672,
+      "after_start": 15671,
+      "after_utf8": "e",
+      "before_end": 12112,
+      "before_start": 12111,
+      "before_utf8": "'"
+    },
+    {
+      "after_end": 15673,
+      "after_start": 15673,
+      "after_utf8": "",
+      "before_end": 12171,
+      "before_start": 12113,
+      "before_utf8": " output_nodes, 'MP_antecedent_max_nodes': 43-output_nodes,"
+    },
+    {
+      "after_end": 15699,
+      "after_start": 15686,
+      "after_utf8": "            m",
+      "before_end": 12185,
+      "before_start": 12184,
+      "before_utf8": "'"
+    },
+    {
+      "after_end": 15749,
+      "after_start": 15700,
+      "after_utf8": "ximum = (44-3-language.term(left)-language.term(r",
+      "before_end": 12188,
+      "before_start": 12186,
+      "before_utf8": "ss"
+    },
+    {
+      "after_end": 15752,
+      "after_start": 15751,
+      "after_utf8": "h",
+      "before_end": 12229,
+      "before_start": 12190,
+      "before_utf8": "ned_prior_rows': [k for k, f in enumera"
+    },
+    {
+      "after_end": 15753,
+      "after_start": 15753,
+      "after_utf8": "",
+      "before_end": 12239,
+      "before_start": 12230,
+      "before_utf8": "e(earlier"
+    },
+    {
+      "after_end": 15758,
+      "after_start": 15754,
+      "after_utf8": ")//2",
+      "before_end": 12259,
+      "before_start": 12240,
+      "before_utf8": " if f is not None],"
+    },
+    {
+      "after_end": 15771,
+      "after_start": 15771,
+      "after_utf8": "",
+      "before_end": 12292,
+      "before_start": 12272,
+      "before_utf8": "'absent_prior_rows':"
+    },
+    {
+      "after_end": 15772,
+      "after_start": 15772,
+      "after_utf8": "",
+      "before_end": 12295,
+      "before_start": 12293,
+      "before_utf8": "[k"
+    },
+    {
+      "after_end": 15773,
+      "after_start": 15773,
+      "after_utf8": "",
+      "before_end": 12299,
+      "before_start": 12296,
+      "before_utf8": "for"
+    },
+    {
+      "after_end": 15774,
+      "after_start": 15774,
+      "after_utf8": "",
+      "before_end": 12302,
+      "before_start": 12300,
+      "before_utf8": "k,"
+    },
+    {
+      "after_end": 15775,
+      "after_start": 15775,
+      "after_utf8": "",
+      "before_end": 12304,
+      "before_start": 12303,
+      "before_utf8": "f"
+    },
+    {
+      "after_end": 15776,
+      "after_start": 15776,
+      "after_utf8": "",
+      "before_end": 12307,
+      "before_start": 12305,
+      "before_utf8": "in"
+    },
+    {
+      "after_end": 15778,
+      "after_start": 15777,
+      "after_utf8": " ",
+      "before_end": 12326,
+      "before_start": 12308,
+      "before_utf8": "enumerate(earlier)"
+    },
+    {
+      "after_end": 15789,
+      "after_start": 15782,
+      "after_utf8": "maximum",
+      "before_end": 12331,
+      "before_start": 12330,
+      "before_utf8": "f"
+    },
+    {
+      "after_end": 15791,
+      "after_start": 15790,
+      "after_utf8": "<",
+      "before_end": 12334,
+      "before_start": 12332,
+      "before_utf8": "is"
+    },
+    {
+      "after_end": 15794,
+      "after_start": 15792,
+      "after_utf8": "1:",
+      "before_end": 12341,
+      "before_start": 12335,
+      "before_utf8": "None],"
+    },
+    {
+      "after_end": 15823,
+      "after_start": 15807,
+      "after_utf8": "            cont",
+      "before_end": 12357,
+      "before_start": 12354,
+      "before_utf8": "'ax"
+    },
+    {
+      "after_end": 15826,
+      "after_start": 15824,
+      "after_utf8": "nu",
+      "before_end": 12364,
+      "before_start": 12358,
+      "before_utf8": "om_lab"
+    },
+    {
+      "after_end": 15827,
+      "after_start": 15827,
+      "after_utf8": "",
+      "before_end": 12408,
+      "before_start": 12365,
+      "before_utf8": "ls_seen': [], 'Gamma_occurrences_seen': [],"
+    },
+    {
+      "after_end": 15900,
+      "after_start": 15840,
+      "after_utf8": "        for template in iter_syntax(language=language, kind=",
+      "before_end": 12421,
+      "before_start": 12421,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 15919,
+      "after_start": 15901,
+      "after_utf8": "template', maximum",
+      "before_end": 12424,
+      "before_start": 12422,
+      "before_utf8": "UG"
+    },
+    {
+      "after_end": 15923,
+      "after_start": 15920,
+      "after_utf8": "nod",
+      "before_end": 12429,
+      "before_start": 12425,
+      "before_utf8": "fibr"
+    },
+    {
+      "after_end": 15933,
+      "after_start": 15925,
+      "after_utf8": "=maximum",
+      "before_end": 12436,
+      "before_start": 12431,
+      "before_utf8": "': []"
+    },
+    {
+      "after_end": 15936,
+      "after_start": 15935,
+      "after_utf8": "t",
+      "before_end": 12451,
+      "before_start": 12438,
+      "before_utf8": "'ordered_MP_f"
+    },
+    {
+      "after_end": 15945,
+      "after_start": 15937,
+      "after_utf8": "ck=tick)",
+      "before_end": 12457,
+      "before_start": 12452,
+      "before_utf8": "bres'"
+    },
+    {
+      "after_end": 15946,
+      "after_start": 15946,
+      "after_utf8": "",
+      "before_end": 12462,
+      "before_start": 12458,
+      "before_utf8": " [],"
+    },
+    {
+      "after_end": 15959,
+      "after_start": 15959,
+      "after_utf8": "",
+      "before_end": 12491,
+      "before_start": 12475,
+      "before_utf8": "'carrier_order':"
+    },
+    {
+      "after_end": 15960,
+      "after_start": 15960,
+      "after_utf8": "",
+      "before_end": 12498,
+      "before_start": 12492,
+      "before_utf8": "'size;"
+    },
+    {
+      "after_end": 15961,
+      "after_start": 15961,
+      "after_utf8": "",
+      "before_end": 12530,
+      "before_start": 12499,
+      "before_utf8": "bot,pred,eq,not,all,imp,and,or;"
+    },
+    {
+      "after_end": 15962,
+      "after_start": 15962,
+      "after_utf8": "",
+      "before_end": 12538,
+      "before_start": 12531,
+      "before_utf8": "literal"
+    },
+    {
+      "after_end": 15963,
+      "after_start": 15963,
+      "after_utf8": "",
+      "before_end": 12545,
+      "before_start": 12539,
+      "before_utf8": "names;"
+    },
+    {
+      "after_end": 15971,
+      "after_start": 15964,
+      "after_utf8": "       ",
+      "before_end": 12550,
+      "before_start": 12546,
+      "before_utf8": "posi"
+    },
+    {
+      "after_end": 15973,
+      "after_start": 15973,
+      "after_utf8": "",
+      "before_end": 12560,
+      "before_start": 12552,
+      "before_utf8": "ve size "
+    },
+    {
+      "after_end": 15977,
+      "after_start": 15974,
+      "after_utf8": "k()",
+      "before_end": 12574,
+      "before_start": 12561,
+      "before_utf8": "ompositions',"
+    },
+    {
+      "after_end": 16003,
+      "after_start": 15990,
+      "after_utf8": "            t",
+      "before_end": 12590,
+      "before_start": 12587,
+      "before_utf8": "'ca"
+    },
+    {
+      "after_end": 16005,
+      "after_start": 16004,
+      "after_utf8": "y",
+      "before_end": 12609,
+      "before_start": 12591,
+      "before_utf8": "rier_materialized'"
+    },
+    {
+      "after_end": 16006,
+      "after_start": 16006,
+      "after_utf8": "",
+      "before_end": 12650,
+      "before_start": 12610,
+      "before_utf8": " False, 'independently_accepted': False}"
+    },
+    {
+      "after_end": 16040,
+      "after_start": 16011,
+      "after_utf8": "                        a = l",
+      "before_end": 12656,
+      "before_start": 12655,
+      "before_utf8": "c"
+    },
+    {
+      "after_end": 16053,
+      "after_start": 16042,
+      "after_utf8": "guage.subst",
+      "before_end": 12659,
+      "before_start": 12658,
+      "before_utf8": "d"
+    },
+    {
+      "after_end": 16064,
+      "after_start": 16054,
+      "after_utf8": "tute(templ",
+      "before_end": 12661,
+      "before_start": 12660,
+      "before_utf8": "d"
+    },
+    {
+      "after_end": 16067,
+      "after_start": 16067,
+      "after_utf8": "",
+      "before_end": 12665,
+      "before_start": 12664,
+      "before_utf8": "s"
+    },
+    {
+      "after_end": 16131,
+      "after_start": 16069,
+      "after_utf8": "language.hole, left)\n                            b = language.",
+      "before_end": 12667,
+      "before_start": 12667,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16140,
+      "after_start": 16132,
+      "after_utf8": "ubstitut",
+      "before_end": 12668,
+      "before_start": 12668,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16143,
+      "after_start": 16141,
+      "after_utf8": "(t",
+      "before_end": 12669,
+      "before_start": 12669,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16154,
+      "after_start": 16144,
+      "after_utf8": "mplate, la",
+      "before_end": 12670,
+      "before_start": 12670,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16165,
+      "after_start": 16155,
+      "after_utf8": "guage.hole",
+      "before_end": 12671,
+      "before_start": 12671,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16198,
+      "after_start": 16168,
+      "after_utf8": "ight)\n                        ",
+      "before_end": 12674,
+      "before_start": 12674,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16201,
+      "after_start": 16199,
+      "after_utf8": "xc",
+      "before_end": 12676,
+      "before_start": 12675,
+      "before_utf8": "j"
+    },
+    {
+      "after_end": 16281,
+      "after_start": 16202,
+      "after_utf8": "pt outside:\n                            yield None\n                            ",
+      "before_end": 12677,
+      "before_start": 12677,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16284,
+      "after_start": 16282,
+      "after_utf8": "on",
+      "before_end": 12678,
+      "before_start": 12678,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16315,
+      "after_start": 16286,
+      "after_utf8": "nue\n                        f",
+      "before_end": 12680,
+      "before_start": 12680,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16321,
+      "after_start": 16316,
+      "after_utf8": "rmula",
+      "before_end": 12683,
+      "before_start": 12681,
+      "before_utf8": "ns"
+    },
+    {
+      "after_end": 16350,
+      "after_start": 16325,
+      "after_utf8": "'imp', ['eq', left, right",
+      "before_end": 12687,
+      "before_start": 12687,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16359,
+      "after_start": 16353,
+      "after_utf8": "['imp'",
+      "before_end": 12695,
+      "before_start": 12690,
+      "before_utf8": "set()"
+    },
+    {
+      "after_end": 16366,
+      "after_start": 16361,
+      "after_utf8": "a, b]",
+      "before_end": 12698,
+      "before_start": 12697,
+      "before_utf8": "["
+    },
+    {
+      "after_end": 16414,
+      "after_start": 16372,
+      "after_utf8": "                    yield {'rule': rule, '",
+      "before_end": 12706,
+      "before_start": 12704,
+      "before_utf8": "co"
+    },
+    {
+      "after_end": 16421,
+      "after_start": 16415,
+      "after_utf8": "ariabl",
+      "before_end": 12707,
+      "before_start": 12707,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16430,
+      "after_start": 16422,
+      "after_utf8": "': langu",
+      "before_end": 12709,
+      "before_start": 12708,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 16439,
+      "after_start": 16433,
+      "after_utf8": ".hole,",
+      "before_end": 12712,
+      "before_start": 12712,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16440,
+      "after_start": 16440,
+      "after_utf8": "",
+      "before_end": 12716,
+      "before_start": 12713,
+      "before_utf8": "= {"
+    },
+    {
+      "after_end": 16443,
+      "after_start": 16441,
+      "after_utf8": "te",
+      "before_end": 12721,
+      "before_start": 12717,
+      "before_utf8": "axio"
+    },
+    {
+      "after_end": 16445,
+      "after_start": 16444,
+      "after_utf8": "p",
+      "before_end": 12723,
+      "before_start": 12722,
+      "before_utf8": "_"
+    },
+    {
+      "after_end": 16448,
+      "after_start": 16447,
+      "after_utf8": "t",
+      "before_end": 12726,
+      "before_start": 12725,
+      "before_utf8": "b"
+    },
+    {
+      "after_end": 16449,
+      "after_start": 16449,
+      "after_utf8": "",
+      "before_end": 12734,
+      "before_start": 12727,
+      "before_utf8": "ls_seen"
+    },
+    {
+      "after_end": 16457,
+      "after_start": 16452,
+      "after_utf8": "templ",
+      "before_end": 12743,
+      "before_start": 12737,
+      "before_utf8": "[], 'G"
+    },
+    {
+      "after_end": 16459,
+      "after_start": 16458,
+      "after_utf8": "t",
+      "before_end": 12754,
+      "before_start": 12744,
+      "before_utf8": "mma_occurr"
+    },
+    {
+      "after_end": 16460,
+      "after_start": 16460,
+      "after_utf8": "",
+      "before_end": 12769,
+      "before_start": 12755,
+      "before_utf8": "nces_seen': []"
+    },
+    {
+      "after_end": 16493,
+      "after_start": 16478,
+      "after_utf8": "               ",
+      "before_end": 12787,
+      "before_start": 12787,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16612,
+      "after_start": 16494,
+      "after_utf8": "left': left, 'right': right, 'formula': formula}, [], []\n        elif rule == 'mp':\n            for i, a in enumerate(",
+      "before_end": 12791,
+      "before_start": 12788,
+      "before_utf8": "UG_"
+    },
+    {
+      "after_end": 16772,
+      "after_start": 16617,
+      "after_utf8": "):\n                for j, implication in enumerate(prior):\n                    tick()\n                    if i == j:\n                        stats['MP_same",
+      "before_end": 12796,
+      "before_start": 12796,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 16782,
+      "after_start": 16776,
+      "after_utf8": "_occur",
+      "before_end": 12800,
+      "before_start": 12800,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 17376,
+      "after_start": 16784,
+      "after_utf8": "empty'] += 1\n                        continue\n                    if implication is not None:\n                        if implication[0] != 'imp' or (a is not None and a != implication[1]):\n                            continue\n                        antecedent, conclusion = implication[1], implication[2]\n                        if output is None or output == conclusion:\n                            yield {'rule': rule, 'formula': conclusion}, [antecedent, implication], [i, j]\n                    elif a is not None:\n                        conclusions = (output,) if output is not None el",
+      "before_end": 12802,
+      "before_start": 12802,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 17784,
+      "after_start": 17378,
+      "after_utf8": " formulas(43-language.formula(a))\n                        for conclusion in conclusions:\n                            yield {'rule': rule, 'formula': conclusion}, [a, ['imp', a, conclusion]], [i, j]\n                    else:\n                        conclusions = (output,) if output is not None else formulas(42)\n                        for conclusion in conclusions:\n                            for anteced",
+      "before_end": 12804,
+      "before_start": 12804,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 18649,
+      "after_start": 17786,
+      "after_utf8": "t in formulas(43-language.formula(conclusion)):\n                                yield {'rule': rule, 'formula': conclusion}, [antecedent, ['imp', antecedent, conclusion]], [i, j]\n        else:\n            for variable in language.parameters:\n                tick()\n                if variable in language.forbidden or (output is not None and (output[0] != 'all' or output[1] != variable)):\n                    continue\n                for k, marked in enumerate(prior):\n                    if output is not None:\n                        bodies = (output[2],) if marked is None or marked == output[2] else ()\n                    else:\n                        bodies = (marked,) if marked is not None else formulas(43)\n                    for body in bodies:\n                        tick()\n                        yield {'rule': rule, 'variable': variable, 'formula",
+      "before_end": 12806,
+      "before_start": 12806,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 18683,
+      "after_start": 18653,
+      "after_utf8": "'all', variable, body]}, [body",
+      "before_end": 12810,
+      "before_start": 12810,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 18698,
+      "after_start": 18686,
+      "after_utf8": "[k]\n        ",
+      "before_end": 12818,
+      "before_start": 12813,
+      "before_utf8": "'orde"
+    },
+    {
+      "after_end": 18711,
+      "after_start": 18700,
+      "after_utf8": "turn ('RULE",
+      "before_end": 12821,
+      "before_start": 12820,
+      "before_utf8": "d"
+    },
+    {
+      "after_end": 18714,
+      "after_start": 18712,
+      "after_utf8": "CO",
+      "before_end": 12822,
+      "before_start": 12822,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 18723,
+      "after_start": 18716,
+      "after_utf8": "LETE', ",
+      "before_end": 12828,
+      "before_start": 12824,
+      "before_utf8": "_pai"
+    },
+    {
+      "after_end": 18726,
+      "after_start": 18724,
+      "after_utf8": "ul",
+      "before_end": 12832,
+      "before_start": 12829,
+      "before_utf8": "s_s"
+    },
+    {
+      "after_end": 18728,
+      "after_start": 18727,
+      "after_utf8": ")",
+      "before_end": 12841,
+      "before_start": 12833,
+      "before_utf8": "en': []}"
+    },
+    {
+      "after_end": 18752,
+      "after_start": 18734,
+      "after_utf8": "streams = [(rule, ",
+      "before_end": 12847,
+      "before_start": 12847,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 18771,
+      "after_start": 18754,
+      "after_utf8": "scriptors(rule)) ",
+      "before_end": 12849,
+      "before_start": 12849,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19170,
+      "after_start": 18772,
+      "after_utf8": "or rule in RULE_ORDER]\n    completed = []\n    while streams:\n        remaining = []\n        for rule, stream in streams:\n            tick()\n            try:\n                descriptor = next(stream)\n            except StopIteration as stopped:\n                need(stopped.value == ('RULE_COMPLETE', rule), 'unfinished rule stream is not EOF')\n                completed.append(rule)\n               ",
+      "before_end": 12850,
+      "before_start": 12850,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19348,
+      "after_start": 19174,
+      "after_utf8": "tinue\n            remaining.append((rule, stream))\n            stats['attempts_by_rule'][rule] += 1\n            if descriptor is None:\n                stats['membership_exclu",
+      "before_end": 12854,
+      "before_start": 12854,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19384,
+      "after_start": 19350,
+      "after_utf8": "ons'] += 1\n                continu",
+      "before_end": 12857,
+      "before_start": 12856,
+      "before_utf8": "d"
+    },
+    {
+      "after_end": 19398,
+      "after_start": 19385,
+      "after_utf8": "\n            ",
+      "before_end": 12860,
+      "before_start": 12858,
+      "before_utf8": "r("
+    },
+    {
+      "after_end": 19422,
+      "after_start": 19422,
+      "after_utf8": "",
+      "before_end": 12885,
+      "before_start": 12884,
+      "before_utf8": ","
+    },
+    {
+      "after_end": 19429,
+      "after_start": 19423,
+      "after_utf8": "= desc",
+      "before_end": 12886,
+      "before_start": 12886,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19432,
+      "after_start": 19430,
+      "after_utf8": "ip",
+      "before_end": 12888,
+      "before_start": 12887,
+      "before_utf8": "e"
+    },
+    {
+      "after_end": 19434,
+      "after_start": 19433,
+      "after_utf8": "o",
+      "before_end": 12893,
+      "before_start": 12889,
+      "before_utf8": "ain_"
+    },
+    {
+      "after_end": 19435,
+      "after_start": 19435,
+      "after_utf8": "",
+      "before_end": 12909,
+      "before_start": 12894,
+      "before_utf8": "ejection=True):"
+    },
+    {
+      "after_end": 19440,
+      "after_start": 19440,
+      "after_utf8": "",
+      "before_end": 12925,
+      "before_start": 12914,
+      "before_utf8": "    tick()\n"
+    },
+    {
+      "after_end": 19457,
+      "after_start": 19453,
+      "after_utf8": "    ",
+      "before_end": 12938,
+      "before_start": 12938,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19517,
+      "after_start": 19516,
+      "after_utf8": "k",
+      "before_end": 12998,
+      "before_start": 12997,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 19527,
+      "after_start": 19526,
+      "after_utf8": "k",
+      "before_end": 13008,
+      "before_start": 13007,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 19562,
+      "after_start": 19558,
+      "after_utf8": "    ",
+      "before_end": 13039,
+      "before_start": 13039,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19576,
+      "after_start": 19576,
+      "after_utf8": "",
+      "before_end": 13062,
+      "before_start": 13053,
+      "before_utf8": " as error"
+    },
+    {
+      "after_end": 19577,
+      "after_start": 19577,
+      "after_utf8": "",
+      "before_end": 13132,
+      "before_start": 13063,
+      "before_utf8": "\n            result = {'rule': witness['rule'], 'reads': list(reads),"
+    },
+    {
+      "after_end": 19600,
+      "after_start": 19594,
+      "after_utf8": "stats[",
+      "before_end": 13155,
+      "before_start": 13149,
+      "before_utf8": "      "
+    },
+    {
+      "after_end": 19601,
+      "after_start": 19601,
+      "after_utf8": "",
+      "before_end": 13197,
+      "before_start": 13156,
+      "before_utf8": "reason': error.reason, 'kind': 'definite_"
+    },
+    {
+      "after_end": 19622,
+      "after_start": 19621,
+      "after_utf8": "s",
+      "before_end": 13217,
+      "before_start": 13217,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19624,
+      "after_start": 19623,
+      "after_utf8": "]",
+      "before_end": 13220,
+      "before_start": 13218,
+      "before_utf8": "}\n"
+    },
+    {
+      "after_end": 19627,
+      "after_start": 19625,
+      "after_utf8": "+=",
+      "before_end": 13221,
+      "before_start": 13221,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19629,
+      "after_start": 19628,
+      "after_utf8": "1",
+      "before_end": 13252,
+      "before_start": 13222,
+      "before_utf8": "          if retain_rejection:"
+    },
+    {
+      "after_end": 19646,
+      "after_start": 19646,
+      "after_utf8": "",
+      "before_end": 13273,
+      "before_start": 13269,
+      "before_utf8": "reje"
+    },
+    {
+      "after_end": 19649,
+      "after_start": 19647,
+      "after_utf8": "on",
+      "before_end": 13274,
+      "before_start": 13274,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19651,
+      "after_start": 19651,
+      "after_utf8": "",
+      "before_end": 13277,
+      "before_start": 13276,
+      "before_utf8": "o"
+    },
+    {
+      "after_end": 19653,
+      "after_start": 19652,
+      "after_utf8": "u",
+      "before_end": 13283,
+      "before_start": 13278,
+      "before_utf8": "s.app"
+    },
+    {
+      "after_end": 19654,
+      "after_start": 19654,
+      "after_utf8": "",
+      "before_end": 13294,
+      "before_start": 13284,
+      "before_utf8": "nd(result)"
+    },
+    {
+      "after_end": 19667,
+      "after_start": 19667,
+      "after_utf8": "",
+      "before_end": 13329,
+      "before_start": 13307,
+      "before_utf8": "return result\n        "
+    },
+    {
+      "after_end": 19670,
+      "after_start": 19670,
+      "after_utf8": "",
+      "before_end": 13380,
+      "before_start": 13332,
+      "before_utf8": " = canonical(tile['placement_key'])\n        name"
+    },
+    {
+      "after_end": 19727,
+      "after_start": 19694,
+      "after_utf8": "\n            name, preimage = key",
+      "before_end": 13404,
+      "before_start": 13404,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19744,
+      "after_start": 19743,
+      "after_utf8": ",",
+      "before_end": 13434,
+      "before_start": 13420,
+      "before_utf8": "\n        pre ="
+    },
+    {
+      "after_end": 19755,
+      "after_start": 19755,
+      "after_utf8": "",
+      "before_end": 13461,
+      "before_start": 13445,
+      "before_utf8": "tile['placement_"
+    },
+    {
+      "after_end": 19758,
+      "after_start": 19758,
+      "after_utf8": "",
+      "before_end": 13466,
+      "before_start": 13464,
+      "before_utf8": "']"
+    },
+    {
+      "after_end": 19789,
+      "after_start": 19785,
+      "after_utf8": "    ",
+      "before_end": 13493,
+      "before_start": 13493,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19809,
+      "after_start": 19806,
+      "after_utf8": "nam",
+      "before_end": 13518,
+      "before_start": 13510,
+      "before_utf8": "prototyp"
+    },
+    {
+      "after_end": 19818,
+      "after_start": 19815,
+      "after_utf8": "nam",
+      "before_end": 13532,
+      "before_start": 13524,
+      "before_utf8": "prototyp"
+    },
+    {
+      "after_end": 19838,
+      "after_start": 19833,
+      "after_utf8": "image",
+      "before_end": 13547,
+      "before_start": 13547,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19855,
+      "after_start": 19841,
+      "after_utf8": "current-state ",
+      "before_end": 13550,
+      "before_start": 13550,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19901,
+      "after_start": 19901,
+      "after_utf8": "",
+      "before_end": 13670,
+      "before_start": 13596,
+      "before_utf8": "# Full preimage is identity. Do not cache a carrier of rejected keys.\n    "
+    },
+    {
+      "after_end": 19911,
+      "after_start": 19908,
+      "after_utf8": "_le",
+      "before_end": 13687,
+      "before_start": 13677,
+      "before_utf8": "not missin"
+    },
+    {
+      "after_end": 19914,
+      "after_start": 19912,
+      "after_utf8": "al",
+      "before_end": 13688,
+      "before_start": 13688,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19915,
+      "after_start": 19915,
+      "after_utf8": "",
+      "before_end": 13739,
+      "before_start": 13689,
+      "before_utf8": "cover:\n            prototypes[name] = pre\n        "
+    },
+    {
+      "after_end": 19927,
+      "after_start": 19921,
+      "after_utf8": "(tile,",
+      "before_end": 13745,
+      "before_start": 13745,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 19935,
+      "after_start": 19928,
+      "after_utf8": "totals,",
+      "before_end": 13747,
+      "before_start": 13746,
+      "before_utf8": "="
+    },
+    {
+      "after_end": 19939,
+      "after_start": 19936,
+      "after_utf8": "mar",
+      "before_end": 13764,
+      "before_start": 13748,
+      "before_utf8": "None\n        if "
+    },
+    {
+      "after_end": 19942,
+      "after_start": 19940,
+      "after_utf8": "s,",
+      "before_end": 13770,
+      "before_start": 13765,
+      "before_utf8": "ey in"
+    },
+    {
+      "after_end": 19952,
+      "after_start": 19951,
+      "after_utf8": ",",
+      "before_end": 13840,
+      "before_start": 13779,
+      "before_utf8": ":\n            reason = 'already_selected'\n        elif key in"
+    },
+    {
+      "after_end": 19961,
+      "after_start": 19961,
+      "after_utf8": "",
+      "before_end": 14058,
+      "before_start": 13849,
+      "before_utf8": ":\n            reason = 'branch_excluded_complete_key'\n        elif any(totals.get(tuple(p), 1)+v > 1 for p, v in tile['global_t_values']):\n            reason = 'whole_support_capacity'\n        elif any(tuple(p"
+    },
+    {
+      "after_end": 19964,
+      "after_start": 19964,
+      "after_utf8": "",
+      "before_end": 14067,
+      "before_start": 14061,
+      "before_utf8": "n mark"
+    },
+    {
+      "after_end": 19966,
+      "after_start": 19966,
+      "after_utf8": "",
+      "before_end": 14075,
+      "before_start": 14069,
+      "before_utf8": "and ca"
+    },
+    {
+      "after_end": 19968,
+      "after_start": 19968,
+      "after_utf8": "",
+      "before_end": 14089,
+      "before_start": 14077,
+      "before_utf8": "nical(marks["
+    },
+    {
+      "after_end": 19969,
+      "after_start": 19969,
+      "after_utf8": "",
+      "before_end": 14099,
+      "before_start": 14090,
+      "before_utf8": "uple(p)])"
+    },
+    {
+      "after_end": 19971,
+      "after_start": 19970,
+      "after_utf8": "N",
+      "before_end": 14106,
+      "before_start": 14100,
+      "before_utf8": "!= can"
+    },
+    {
+      "after_end": 19973,
+      "after_start": 19973,
+      "after_utf8": "",
+      "before_end": 14148,
+      "before_start": 14108,
+      "before_utf8": "ical(v)\n                 for p, v in til"
+    },
+    {
+      "after_end": 19974,
+      "after_start": 19974,
+      "after_utf8": "",
+      "before_end": 14430,
+      "before_start": 14149,
+      "before_utf8": "['global_m_values']):\n            reason = 'whole_remote_or_metadata_mark_conflict'\n        if reason:\n            result = {'rule': witness['rule'], 'reads': list(reads), 'kind': reason,\n                      'placement_key': tile['placement_key']}\n            if retain_rejection"
+    },
+    {
+      "after_end": 20005,
+      "after_start": 19992,
+      "after_utf8": "stats['point_",
+      "before_end": 14448,
+      "before_start": 14448,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20022,
+      "after_start": 20015,
+      "after_utf8": "'] += 1",
+      "before_end": 14473,
+      "before_start": 14458,
+      "before_utf8": ".append(result)"
+    },
+    {
+      "after_end": 20035,
+      "after_start": 20035,
+      "after_utf8": "",
+      "before_end": 14500,
+      "before_start": 14486,
+      "before_utf8": "return result\n"
+    },
+    {
+      "after_end": 20041,
+      "after_start": 20039,
+      "after_utf8": "co",
+      "before_end": 14515,
+      "before_start": 14504,
+      "before_utf8": "    if key "
+    },
+    {
+      "after_end": 20042,
+      "after_start": 20042,
+      "after_utf8": "",
+      "before_end": 14517,
+      "before_start": 14516,
+      "before_utf8": "o"
+    },
+    {
+      "after_end": 20043,
+      "after_start": 20043,
+      "after_utf8": "",
+      "before_end": 14519,
+      "before_start": 14518,
+      "before_utf8": " "
+    },
+    {
+      "after_end": 20046,
+      "after_start": 20045,
+      "after_utf8": "u",
+      "before_end": 14587,
+      "before_start": 14521,
+      "before_utf8": " seen:\n            seen.add(key)\n            prototypes[name] = pr"
+    },
+    {
+      "after_end": 20097,
+      "after_start": 20096,
+      "after_utf8": "k",
+      "before_end": 14638,
+      "before_start": 14637,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 20142,
+      "after_start": 20142,
+      "after_utf8": "",
+      "before_end": 14684,
+      "before_start": 14683,
+      "before_utf8": " "
+    },
+    {
+      "after_end": 20166,
+      "after_start": 20165,
+      "after_utf8": "k",
+      "before_end": 14708,
+      "before_start": 14707,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 20204,
+      "after_start": 20203,
+      "after_utf8": "k",
+      "before_end": 14746,
+      "before_start": 14745,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 20260,
+      "after_start": 20245,
+      "after_utf8": "stats['yielded_",
+      "before_end": 14787,
+      "before_start": 14787,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20277,
+      "after_start": 20270,
+      "after_utf8": "'] += 1",
+      "before_end": 14810,
+      "before_start": 14797,
+      "before_utf8": ".append(tile)"
+    },
+    {
+      "after_end": 20292,
+      "after_start": 20290,
+      "after_utf8": "yi",
+      "before_end": 14824,
+      "before_start": 14823,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 20296,
+      "after_start": 20293,
+      "after_utf8": "ld ",
+      "before_end": 14825,
+      "before_start": 14825,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20297,
+      "after_start": 20297,
+      "after_utf8": "",
+      "before_end": 14833,
+      "before_start": 14826,
+      "before_utf8": "urn {'k"
+    },
+    {
+      "after_end": 20299,
+      "after_start": 20298,
+      "after_utf8": "l",
+      "before_end": 14841,
+      "before_start": 14834,
+      "before_utf8": "nd': 'n"
+    },
+    {
+      "after_end": 20300,
+      "after_start": 20300,
+      "after_utf8": "",
+      "before_end": 14854,
+      "before_start": 14842,
+      "before_utf8": "w_survivor'}"
+    },
+    {
+      "after_end": 20311,
+      "after_start": 20309,
+      "after_utf8": "st",
+      "before_end": 14863,
+      "before_start": 14863,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20319,
+      "after_start": 20313,
+      "after_utf8": "ams = ",
+      "before_end": 14867,
+      "before_start": 14865,
+      "before_utf8": "tu"
+    },
+    {
+      "after_end": 20322,
+      "after_start": 20320,
+      "after_utf8": "em",
+      "before_end": 14886,
+      "before_start": 14868,
+      "before_utf8": "n {'kind': 'duplic"
+    },
+    {
+      "after_end": 20323,
+      "after_start": 20323,
+      "after_utf8": "",
+      "before_end": 14911,
+      "before_start": 14887,
+      "before_utf8": "te_full_key'}\n\n    def f"
+    },
+    {
+      "after_end": 20328,
+      "after_start": 20326,
+      "after_utf8": "ng",
+      "before_end": 14921,
+      "before_start": 14914,
+      "before_utf8": "shed():"
+    },
+    {
+      "after_end": 20329,
+      "after_start": 20329,
+      "after_utf8": "",
+      "before_end": 14997,
+      "before_start": 14922,
+      "before_utf8": "        return not cover and len(candidates) >= 2\n\n    def response():\n    "
+    },
+    {
+      "after_end": 20441,
+      "after_start": 20344,
+      "after_utf8": "need(len(completed) == 6 and set(completed) == set(RULE_ORDER), 'all six complete rule streams')\n",
+      "before_end": 15012,
+      "before_start": 15012,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20457,
+      "after_start": 20445,
+      "after_utf8": "return {'mar",
+      "before_end": 15016,
+      "before_start": 15016,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20462,
+      "after_start": 20458,
+      "after_utf8": "er':",
+      "before_end": 15020,
+      "before_start": 15017,
+      "before_utf8": "ind"
+    },
+    {
+      "after_end": 20463,
+      "after_start": 20463,
+      "after_utf8": "",
+      "before_end": 15024,
+      "before_start": 15021,
+      "before_utf8": "= ("
+    },
+    {
+      "after_end": 20467,
+      "after_start": 20464,
+      "after_utf8": "ALL",
+      "before_end": 15028,
+      "before_start": 15025,
+      "before_utf8": "NON"
+    },
+    {
+      "after_end": 20468,
+      "after_start": 20468,
+      "after_utf8": "",
+      "before_end": 15034,
+      "before_start": 15029,
+      "before_utf8": "IMP_A"
+    },
+    {
+      "after_end": 20469,
+      "after_start": 20469,
+      "after_utf8": "",
+      "before_end": 15046,
+      "before_start": 15035,
+      "before_utf8": "SIGNED_PREF"
+    },
+    {
+      "after_end": 20515,
+      "after_start": 20474,
+      "after_utf8": "MPLETE', 'rules_completed': list(RULE_ORD",
+      "before_end": 15052,
+      "before_start": 15051,
+      "before_utf8": "V"
+    },
+    {
+      "after_end": 20520,
+      "after_start": 20517,
+      "after_utf8": "), ",
+      "before_end": 15054,
+      "before_start": 15054,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20528,
+      "after_start": 20521,
+      "after_utf8": "stats':",
+      "before_end": 15055,
+      "before_start": 15055,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20609,
+      "after_start": 20529,
+      "after_utf8": "stats}\n\n\nclass FallbackCursor:\n    \"\"\"Untrusted state-bound stream. Errors/abort",
+      "before_end": 15058,
+      "before_start": 15056,
+      "before_utf8": "if"
+    },
+    {
+      "after_end": 20616,
+      "after_start": 20611,
+      "after_utf8": "an ne",
+      "before_end": 15061,
+      "before_start": 15060,
+      "before_utf8": "o"
+    },
+    {
+      "after_end": 20621,
+      "after_start": 20620,
+      "after_utf8": "b",
+      "before_end": 15065,
+      "before_start": 15065,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20759,
+      "after_start": 20622,
+      "after_utf8": "come normal EOF.\"\"\"\n    def __init__(self, *, language, state, row, tick):\n        self._tick, self._failed, self._done = tick, False, Fa",
+      "before_end": 15066,
+      "before_start": 15066,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20785,
+      "after_start": 20771,
+      "after_utf8": "self._yielded,",
+      "before_end": 15078,
+      "before_start": 15078,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20789,
+      "after_start": 20786,
+      "after_utf8": "sel",
+      "before_end": 15116,
+      "before_start": 15079,
+      "before_utf8": "       'NON_IMP_MISSING_MARK_COVER' i"
+    },
+    {
+      "after_end": 20791,
+      "after_start": 20790,
+      "after_utf8": ".",
+      "before_end": 15125,
+      "before_start": 15117,
+      "before_utf8": " missing"
+    },
+    {
+      "after_end": 20802,
+      "after_start": 20799,
+      "after_utf8": "ion",
+      "before_end": 15134,
+      "before_start": 15133,
+      "before_utf8": "e"
+    },
+    {
+      "after_end": 20811,
+      "after_start": 20803,
+      "after_utf8": "= 0, Non",
+      "before_end": 15138,
+      "before_start": 15135,
+      "before_utf8": "els"
+    },
+    {
+      "after_end": 20883,
+      "after_start": 20821,
+      "after_utf8": "s, totals, _, _, _, _ = validate_state(language, state, tick)\n",
+      "before_end": 15148,
+      "before_start": 15148,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20905,
+      "after_start": 20891,
+      "after_utf8": "need(type(row)",
+      "before_end": 15177,
+      "before_start": 15156,
+      "before_utf8": "'TWO_LEGAL_WITNESSES'"
+    },
+    {
+      "after_end": 20908,
+      "after_start": 20907,
+      "after_utf8": "s",
+      "before_end": 15180,
+      "before_start": 15179,
+      "before_utf8": "f"
+    },
+    {
+      "after_end": 20910,
+      "after_start": 20909,
+      "after_utf8": "i",
+      "before_end": 15183,
+      "before_start": 15181,
+      "before_utf8": "le"
+    },
+    {
+      "after_end": 20913,
+      "after_start": 20911,
+      "after_utf8": "t ",
+      "before_end": 15186,
+      "before_start": 15184,
+      "before_utf8": "(c"
+    },
+    {
+      "after_end": 20916,
+      "after_start": 20916,
+      "after_utf8": "",
+      "before_end": 15196,
+      "before_start": 15189,
+      "before_utf8": "idates)"
+    },
+    {
+      "after_end": 20920,
+      "after_start": 20917,
+      "after_utf8": "0 <",
+      "before_end": 15198,
+      "before_start": 15197,
+      "before_utf8": ">"
+    },
+    {
+      "after_end": 20928,
+      "after_start": 20922,
+      "after_utf8": "row < ",
+      "before_end": 15200,
+      "before_start": 15200,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20930,
+      "after_start": 20929,
+      "after_utf8": "4",
+      "before_end": 15201,
+      "before_start": 15201,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 20939,
+      "after_start": 20931,
+      "after_utf8": "and tota",
+      "before_end": 15203,
+      "before_start": 15202,
+      "before_utf8": "e"
+    },
+    {
+      "after_end": 20957,
+      "after_start": 20941,
+      "after_utf8": "[(0, row)] == 0,",
+      "before_end": 15206,
+      "before_start": 15205,
+      "before_utf8": "e"
+    },
+    {
+      "after_end": 20988,
+      "after_start": 20959,
+      "after_utf8": "queried unfilled required row",
+      "before_end": 15215,
+      "before_start": 15208,
+      "before_utf8": "UNKNOWN"
+    },
+    {
+      "after_end": 21003,
+      "after_start": 20999,
+      "after_utf8": "cont",
+      "before_end": 15227,
+      "before_start": 15226,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 21005,
+      "after_start": 21004,
+      "after_utf8": "x",
+      "before_end": 15228,
+      "before_start": 15228,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 21008,
+      "after_start": 21006,
+      "after_utf8": " =",
+      "before_end": 15232,
+      "before_start": 15229,
+      "before_utf8": "urn"
+    },
+    {
+      "after_end": 21030,
+      "after_start": 21030,
+      "after_utf8": "",
+      "before_end": 15276,
+      "before_start": 15254,
+      "before_utf8": "degree-evidence-propos"
+    },
+    {
+      "after_end": 21054,
+      "after_start": 21032,
+      "after_utf8": "l-six-fallback-context",
+      "before_end": 15278,
+      "before_start": 15278,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 21057,
+      "after_start": 21056,
+      "after_utf8": "1",
+      "before_end": 15281,
+      "before_start": 15280,
+      "before_utf8": "2"
+    },
+    {
+      "after_end": 21080,
+      "after_start": 21080,
+      "after_utf8": "",
+      "before_end": 15377,
+      "before_start": 15304,
+      "before_utf8": "                'kind': kind, 'state': s, 'state_sha256': digest(s),\n    "
+    },
+    {
+      "after_end": 21188,
+      "after_start": 21188,
+      "after_utf8": "",
+      "before_end": 15489,
+      "before_start": 15485,
+      "before_utf8": "    "
+    },
+    {
+      "after_end": 22316,
+      "after_start": 21201,
+      "after_utf8": "state': s, 'state_sha256': digest(s)}\n        context['context_sha256'] = digest(context)\n        self._context = context\n        self._stream = _all_candidates(language, s, row, tick)\n\n    def context(self):\n        if self._failed:\n            raise RuntimeError('fallback cursor failed/aborted')\n        try:\n            return clone(self._context, self._tick)\n        except BaseException:\n            self._failed = True\n            raise\n\n    def abort(self):\n        self._failed = True\n        self._stream.close()\n\n    def advance(self):\n        if self._failed:\n            raise RuntimeError('fallback cursor failed/aborted; completion unavailable')\n        try:\n            self._tick()\n            if not self._done:\n                try:\n                    candidate = next(self._stream)\n                except StopIteration as stopped:\n                    token = stopped.value\n                    need(type(token) is dict and token.get('marker') == 'ALL_SIX_COMPLETE'\n                         and token.get('rules_completed') == list(RULE_ORDER)\n                         and token['stats']['yielded_",
+      "before_end": 15502,
+      "before_start": 15502,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22328,
+      "after_start": 22327,
+      "after_utf8": "]",
+      "before_end": 15514,
+      "before_start": 15513,
+      "before_utf8": ":"
+    },
+    {
+      "after_end": 22373,
+      "after_start": 22329,
+      "after_utf8": "== self._yielded,\n                         '",
+      "before_end": 15515,
+      "before_start": 15515,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22381,
+      "after_start": 22374,
+      "after_utf8": "losed/f",
+      "before_end": 15516,
+      "before_start": 15516,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22385,
+      "after_start": 22382,
+      "after_utf8": "ile",
+      "before_end": 15518,
+      "before_start": 15517,
+      "before_utf8": "n"
+    },
+    {
+      "after_end": 22394,
+      "after_start": 22386,
+      "after_utf8": " stream ",
+      "before_end": 15519,
+      "before_start": 15519,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22395,
+      "after_start": 22395,
+      "after_utf8": "",
+      "before_end": 15524,
+      "before_start": 15520,
+      "before_utf8": "date"
+    },
+    {
+      "after_end": 22400,
+      "after_start": 22397,
+      "after_utf8": "not",
+      "before_end": 15528,
+      "before_start": 15526,
+      "before_utf8": "if"
+    },
+    {
+      "after_end": 22539,
+      "after_start": 22403,
+      "after_utf8": "mpleted generator EOF')\n                    completion = {'schema': 'unit-row-all-six-fallback-completion-v1',\n                        '",
+      "before_end": 15531,
+      "before_start": 15531,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22548,
+      "after_start": 22542,
+      "after_utf8": "sion':",
+      "before_end": 15534,
+      "before_start": 15534,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22577,
+      "after_start": 22549,
+      "after_utf8": "VERSION, 'context_sha256': s",
+      "before_end": 15535,
+      "before_start": 15535,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22582,
+      "after_start": 22579,
+      "after_utf8": "f._",
+      "before_end": 15540,
+      "before_start": 15537,
+      "before_utf8": "se "
+    },
+    {
+      "after_end": 22584,
+      "after_start": 22583,
+      "after_utf8": "o",
+      "before_end": 15542,
+      "before_start": 15541,
+      "before_utf8": "a"
+    },
+    {
+      "after_end": 22585,
+      "after_start": 22585,
+      "after_utf8": "",
+      "before_end": 15547,
+      "before_start": 15543,
+      "before_utf8": "dida"
+    },
+    {
+      "after_end": 22599,
+      "after_start": 22587,
+      "after_utf8": "xt['context_",
+      "before_end": 15549,
+      "before_start": 15549,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22602,
+      "after_start": 22600,
+      "after_utf8": "ha",
+      "before_end": 15552,
+      "before_start": 15550,
+      "before_utf8": "[:"
+    },
+    {
+      "after_end": 22606,
+      "after_start": 22603,
+      "after_utf8": "56'",
+      "before_end": 15553,
+      "before_start": 15553,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22633,
+      "after_start": 22625,
+      "after_utf8": "        ",
+      "before_end": 15572,
+      "before_start": 15572,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22638,
+      "after_start": 22634,
+      "after_utf8": "stat",
+      "before_end": 15576,
+      "before_start": 15573,
+      "before_utf8": "cov"
+    },
+    {
+      "after_end": 22642,
+      "after_start": 22639,
+      "after_utf8": "_sh",
+      "before_end": 15578,
+      "before_start": 15577,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 22646,
+      "after_start": 22643,
+      "after_utf8": "256",
+      "before_end": 15581,
+      "before_start": 15579,
+      "before_utf8": "ge"
+    },
+    {
+      "after_end": 22655,
+      "after_start": 22649,
+      "after_utf8": "self._",
+      "before_end": 15584,
+      "before_start": 15584,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22659,
+      "after_start": 22657,
+      "after_utf8": "nt",
+      "before_end": 15587,
+      "before_start": 15586,
+      "before_utf8": "v"
+    },
+    {
+      "after_end": 22666,
+      "after_start": 22660,
+      "after_utf8": "xt['st",
+      "before_end": 15589,
+      "before_start": 15588,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 22668,
+      "after_start": 22667,
+      "after_utf8": "t",
+      "before_end": 15591,
+      "before_start": 15590,
+      "before_utf8": "g"
+    },
+    {
+      "after_end": 22670,
+      "after_start": 22669,
+      "after_utf8": "_",
+      "before_end": 15604,
+      "before_start": 15592,
+      "before_utf8": " if cover el"
+    },
+    {
+      "after_end": 22678,
+      "after_start": 22671,
+      "after_utf8": "ha256']",
+      "before_end": 15611,
+      "before_start": 15605,
+      "before_utf8": "e None"
+    },
+    {
+      "after_end": 22687,
+      "after_start": 22681,
+      "after_utf8": "input_",
+      "before_end": 15615,
+      "before_start": 15614,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 22696,
+      "after_start": 22688,
+      "after_utf8": "poch': s",
+      "before_end": 15617,
+      "before_start": 15616,
+      "before_utf8": "j"
+    },
+    {
+      "after_end": 22701,
+      "after_start": 22697,
+      "after_utf8": "lf._",
+      "before_end": 15618,
+      "before_start": 15618,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22702,
+      "after_start": 22702,
+      "after_utf8": "",
+      "before_end": 15621,
+      "before_start": 15619,
+      "before_utf8": "ti"
+    },
+    {
+      "after_end": 22796,
+      "after_start": 22704,
+      "after_utf8": "text['input_epoch'],\n                        'row': self._context['row'], 'yielded_candidate",
+      "before_end": 15623,
+      "before_start": 15623,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22801,
+      "after_start": 22800,
+      "after_utf8": "s",
+      "before_end": 15628,
+      "before_start": 15627,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 22808,
+      "after_start": 22802,
+      "after_utf8": "lf._yi",
+      "before_end": 15630,
+      "before_start": 15629,
+      "before_utf8": "j"
+    },
+    {
+      "after_end": 22813,
+      "after_start": 22809,
+      "after_utf8": "lded",
+      "before_end": 15637,
+      "before_start": 15631,
+      "before_utf8": "ctions"
+    },
+    {
+      "after_end": 22917,
+      "after_start": 22815,
+      "after_utf8": "                        'rules_completed': token['rules_completed'], 'stats': token['stats'],\n        ",
+      "before_end": 15639,
+      "before_start": 15639,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22949,
+      "after_start": 22943,
+      "after_utf8": "fallba",
+      "before_end": 15665,
+      "before_start": 15665,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22951,
+      "after_start": 22950,
+      "after_utf8": "k",
+      "before_end": 15670,
+      "before_start": 15666,
+      "before_utf8": "over"
+    },
+    {
+      "after_end": 22964,
+      "after_start": 22963,
+      "after_utf8": "T",
+      "before_end": 15686,
+      "before_start": 15682,
+      "before_utf8": "cove"
+    },
+    {
+      "after_end": 22966,
+      "after_start": 22965,
+      "after_utf8": "u",
+      "before_end": 15706,
+      "before_start": 15687,
+      "before_utf8": " or missing_complet"
+    },
+    {
+      "after_end": 22970,
+      "after_start": 22970,
+      "after_utf8": "",
+      "before_end": 15711,
+      "before_start": 15710,
+      "before_utf8": "f"
+    },
+    {
+      "after_end": 22973,
+      "after_start": 22971,
+      "after_utf8": "nd",
+      "before_end": 15714,
+      "before_start": 15712,
+      "before_utf8": "br"
+    },
+    {
+      "after_end": 22983,
+      "after_start": 22974,
+      "after_utf8": "pendently",
+      "before_end": 15715,
+      "before_start": 15715,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 22986,
+      "after_start": 22985,
+      "after_utf8": "h",
+      "before_end": 15719,
+      "before_start": 15717,
+      "before_utf8": "ov"
+    },
+    {
+      "after_end": 22987,
+      "after_start": 22987,
+      "after_utf8": "",
+      "before_end": 15730,
+      "before_start": 15720,
+      "before_utf8": "r': fibre_"
+    },
+    {
+      "after_end": 22989,
+      "after_start": 22988,
+      "after_utf8": "k",
+      "before_end": 15745,
+      "before_start": 15731,
+      "before_utf8": "over, 'untrust"
+    },
+    {
+      "after_end": 22998,
+      "after_start": 22994,
+      "after_utf8": "Fals",
+      "before_end": 15753,
+      "before_start": 15750,
+      "before_utf8": "Tru"
+    },
+    {
+      "after_end": 23009,
+      "after_start": 23001,
+      "after_utf8": "        ",
+      "before_end": 15756,
+      "before_start": 15756,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23070,
+      "after_start": 23070,
+      "after_utf8": "",
+      "before_end": 15866,
+      "before_start": 15817,
+      "before_utf8": "degree_ge_two_accepted': False,\n                '"
+    },
+    {
+      "after_end": 23136,
+      "after_start": 23112,
+      "after_utf8": "\n                       ",
+      "before_end": 15908,
+      "before_start": 15908,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23177,
+      "after_start": 23177,
+      "after_utf8": "",
+      "before_end": 15965,
+      "before_start": 15949,
+      "before_utf8": "\n               "
+    },
+    {
+      "after_end": 23192,
+      "after_start": 23192,
+      "after_utf8": "",
+      "before_end": 16013,
+      "before_start": 15980,
+      "before_utf8": "_accepted': False, 'ROOT_resource"
+    },
+    {
+      "after_end": 23227,
+      "after_start": 23227,
+      "after_utf8": "",
+      "before_end": 18397,
+      "before_start": 16048,
+      "before_utf8": "'scope': 'Local evidence only; independent checker/global graph/fallback still required.'}\n\n    for name, formula in sorted(language.theory['axioms'].items()):\n        tick()\n        if cover:\n            coverage['axiom_labels_seen'].append(name)\n        if missing_cover:\n            fibre_cover['axiom_labels_seen'].append(name)\n        if output is None or formula == output:\n            consider({'rule': 'axiom', 'name': name, 'formula': formula}, [], [])\n            if finished():\n                return response()\n    for index, formula in enumerate(language.gamma):\n        tick()\n        if cover:\n            coverage['Gamma_occurrences_seen'].append(index)\n        if missing_cover:\n            fibre_cover['Gamma_occurrences_seen'].append(index)\n        if output is None or formula == output:\n            consider({'rule': 'assumption', 'index': index, 'formula': formula}, [], [])\n            if finished():\n                return response()\n    if missing_cover:\n        def fibre(witnesses, descriptor):\n            examined, rejected, legal_before = 0, 0, len(candidates)\n            transcript, decisions = hashlib.sha256(), hashlib.sha256()\n            for witness, premises, reads in witnesses:\n                tick()\n                transcript.update((canonical([witness, premises, reads])+'\\n').encode('utf8'))\n                examined += 1\n                result = consider(witness, premises, reads, False)\n                decisions.update((canonical(result)+'\\n').encode('utf8'))\n                rejected += result['kind'] not in ('new_survivor', 'duplicate_full_key')\n                if finished():\n                    return False\n            descriptor.update(completed=True, examined=examined,\n                new_survivors=len(candidates)-legal_before, rejections=rejected,\n                examined_preimages_sha256=transcript.hexdigest(),\n                decisions_sha256=decisions.hexdigest())\n            return True\n\n        for k, marked in enumerate(earlier):\n            tick()\n            descriptor = {'row': k, 'inverse': 'UG', 'completed': False}\n            fibre_cover['UG_fibres'].append(descriptor)\n            proposals = ()\n            if output[0] == 'all' and (marked is None or marked == output[2]):\n                proposals = (({'rule': 'generalize', 'variable': output[1],\n                      "
+    },
+    {
+      "after_end": 23240,
+      "after_start": 23236,
+      "after_utf8": "ROOT",
+      "before_end": 18490,
+      "before_start": 18406,
+      "before_utf8": "formula': output}, [output[2]], [k]),)\n                descriptor['case'] = 'missing"
+    },
+    {
+      "after_end": 23241,
+      "after_start": 23241,
+      "after_utf8": "",
+      "before_end": 18678,
+      "before_start": 18491,
+      "before_utf8": "or_matching_body'\n            else:\n                descriptor['case'] = 'not_universal_or_assigned_body_mismatch'\n            if not fibre(proposals, descriptor):\n                return "
+    },
+    {
+      "after_end": 23254,
+      "after_start": 23244,
+      "after_utf8": "ource_acce",
+      "before_end": 18681,
+      "before_start": 18681,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23255,
+      "after_start": 23255,
+      "after_utf8": "",
+      "before_end": 18879,
+      "before_start": 18682,
+      "before_utf8": "onse()\n        for i, left in enumerate(earlier):\n            for j, implication in enumerate(earlier):\n                tick()\n                descriptor = {'rows': [i, j], 'inverse': 'MP', 'comple"
+    },
+    {
+      "after_end": 23284,
+      "after_start": 23284,
+      "after_utf8": "",
+      "before_end": 18960,
+      "before_start": 18908,
+      "before_utf8": "fibre_cover['ordered_MP_fibres'].append(descriptor)\n"
+    },
+    {
+      "after_end": 23288,
+      "after_start": 23288,
+      "after_utf8": "",
+      "before_end": 19027,
+      "before_start": 18964,
+      "before_utf8": "            if i == j:\n                    descriptor.update(ca"
+    },
+    {
+      "after_end": 23293,
+      "after_start": 23290,
+      "after_utf8": "lf.",
+      "before_end": 19037,
+      "before_start": 19029,
+      "before_utf8": "='FINITE"
+    },
+    {
+      "after_end": 23299,
+      "after_start": 23294,
+      "after_utf8": "compl",
+      "before_end": 19087,
+      "before_start": 19038,
+      "before_utf8": "AST_OCCURS_CHECK_EMPTY',\n                        "
+    },
+    {
+      "after_end": 23300,
+      "after_start": 23300,
+      "after_utf8": "",
+      "before_end": 19091,
+      "before_start": 19088,
+      "before_utf8": "qua"
+    },
+    {
+      "after_end": 23305,
+      "after_start": 23304,
+      "after_utf8": " ",
+      "before_end": 19095,
+      "before_start": 19095,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23323,
+      "after_start": 23306,
+      "after_utf8": " clone(completion",
+      "before_end": 19100,
+      "before_start": 19096,
+      "before_utf8": "['A'"
+    },
+    {
+      "after_end": 23325,
+      "after_start": 23325,
+      "after_utf8": "",
+      "before_end": 19124,
+      "before_start": 19102,
+      "before_utf8": "['imp', 'A', 'C']], po"
+    },
+    {
+      "after_end": 23331,
+      "after_start": 23326,
+      "after_utf8": "elf._",
+      "before_end": 19126,
+      "before_start": 19125,
+      "before_utf8": "i"
+    },
+    {
+      "after_end": 23335,
+      "after_start": 23333,
+      "after_utf8": "ck",
+      "before_end": 19156,
+      "before_start": 19128,
+      "before_utf8": "ve_output_nodes=output_nodes"
+    },
+    {
+      "after_end": 23357,
+      "after_start": 23357,
+      "after_utf8": "",
+      "before_end": 19183,
+      "before_start": 19178,
+      "before_utf8": "propo"
+    },
+    {
+      "after_end": 23359,
+      "after_start": 23358,
+      "after_utf8": "e",
+      "before_end": 19185,
+      "before_start": 19184,
+      "before_utf8": "a"
+    },
+    {
+      "after_end": 23367,
+      "after_start": 23360,
+      "after_utf8": "f._tick",
+      "before_end": 19190,
+      "before_start": 19186,
+      "before_utf8": "s = "
+    },
+    {
+      "after_end": 23369,
+      "after_start": 23369,
+      "after_utf8": "",
+      "before_end": 19231,
+      "before_start": 19192,
+      "before_utf8": "\n                elif left is not None:"
+    },
+    {
+      "after_end": 23390,
+      "after_start": 23390,
+      "after_utf8": "",
+      "before_end": 19266,
+      "before_start": 19252,
+      "before_utf8": "descriptor['ca"
+    },
+    {
+      "after_end": 23396,
+      "after_start": 23392,
+      "after_utf8": "lf._",
+      "before_end": 19280,
+      "before_start": 19268,
+      "before_utf8": "'] = 'antece"
+    },
+    {
+      "after_end": 23397,
+      "after_start": 23397,
+      "after_utf8": "",
+      "before_end": 19464,
+      "before_start": 19281,
+      "before_utf8": "ent_assigned'\n                    required = ['imp', left, output]\n                    proposals = (({'rule': 'mp', 'formula': output}, [left, required], [i, j]),) if implication is N"
+    },
+    {
+      "after_end": 23401,
+      "after_start": 23401,
+      "after_utf8": "",
+      "before_end": 19484,
+      "before_start": 19468,
+      "before_utf8": "or implication ="
+    },
+    {
+      "after_end": 23404,
+      "after_start": 23403,
+      "after_utf8": "T",
+      "before_end": 19654,
+      "before_start": 19486,
+      "before_utf8": "required else ()\n                elif implication is not None:\n                    descriptor['case'] = 'only_implication_assigned'\n                    proposals = (({'"
+    },
+    {
+      "after_end": 23406,
+      "after_start": 23406,
+      "after_utf8": "",
+      "before_end": 19657,
+      "before_start": 19656,
+      "before_utf8": "l"
+    },
+    {
+      "after_end": 23407,
+      "after_start": 23407,
+      "after_utf8": "",
+      "before_end": 19791,
+      "before_start": 19658,
+      "before_utf8": "': 'mp', 'formula': output}, [implication[1], implication], [i, j]),) if implication[0] == 'imp' and implication[2] == output else ()"
+    },
+    {
+      "after_end": 23450,
+      "after_start": 23450,
+      "after_utf8": "",
+      "before_end": 19835,
+      "before_start": 19834,
+      "before_utf8": "d"
+    },
+    {
+      "after_end": 23454,
+      "after_start": 23451,
+      "after_utf8": "ven",
+      "before_end": 19841,
+      "before_start": 19836,
+      "before_utf8": "scrip"
+    },
+    {
+      "after_end": 23455,
+      "after_start": 23455,
+      "after_utf8": "",
+      "before_end": 19852,
+      "before_start": 19842,
+      "before_utf8": "or['case']"
+    },
+    {
+      "after_end": 23459,
+      "after_start": 23458,
+      "after_utf8": "{",
+      "before_end": 19855,
+      "before_start": 19855,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23460,
+      "after_start": 23460,
+      "after_utf8": "",
+      "before_end": 19873,
+      "before_start": 19856,
+      "before_utf8": "both_absent_full_"
+    },
+    {
+      "after_end": 23463,
+      "after_start": 23462,
+      "after_utf8": "h",
+      "before_end": 19877,
+      "before_start": 19875,
+      "before_utf8": "op"
+    },
+    {
+      "after_end": 23464,
+      "after_start": 23464,
+      "after_utf8": "",
+      "before_end": 19909,
+      "before_start": 19878,
+      "before_utf8": "d_carrier'\n                    "
+    },
+    {
+      "after_end": 23466,
+      "after_start": 23466,
+      "after_utf8": "",
+      "before_end": 19998,
+      "before_start": 19911,
+      "before_utf8": "ximum = fibre_cover['MP_antecedent_max_nodes']\n                    proposals = (({'rule"
+    },
+    {
+      "after_end": 23504,
+      "after_start": 23470,
+      "after_utf8": "unit-row-all-six-fallback-event-v1",
+      "before_end": 20004,
+      "before_start": 20002,
+      "before_utf8": "mp"
+    },
+    {
+      "after_end": 23512,
+      "after_start": 23508,
+      "after_utf8": "kind",
+      "before_end": 20015,
+      "before_start": 20008,
+      "before_utf8": "formula"
+    },
+    {
+      "after_end": 23526,
+      "after_start": 23515,
+      "after_utf8": "'CANDIDATE'",
+      "before_end": 20025,
+      "before_start": 20018,
+      "before_utf8": "output}"
+    },
+    {
+      "after_end": 23569,
+      "after_start": 23552,
+      "after_utf8": "'context_sha256':",
+      "before_end": 20051,
+      "before_start": 20051,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23583,
+      "after_start": 23570,
+      "after_utf8": "self._context",
+      "before_end": 20065,
+      "before_start": 20052,
+      "before_utf8": "         [a, "
+    },
+    {
+      "after_end": 23599,
+      "after_start": 23585,
+      "after_utf8": "context_sha256",
+      "before_end": 20070,
+      "before_start": 20067,
+      "before_utf8": "imp"
+    },
+    {
+      "after_end": 23600,
+      "after_start": 23600,
+      "after_utf8": "",
+      "before_end": 20083,
+      "before_start": 20071,
+      "before_utf8": ", a, output]"
+    },
+    {
+      "after_end": 23604,
+      "after_start": 23603,
+      "after_utf8": "'",
+      "before_end": 20119,
+      "before_start": 20086,
+      "before_utf8": "[i, j])\n                        f"
+    },
+    {
+      "after_end": 23607,
+      "after_start": 23606,
+      "after_utf8": "d",
+      "before_end": 20124,
+      "before_start": 20121,
+      "before_utf8": " a "
+    },
+    {
+      "after_end": 23613,
+      "after_start": 23609,
+      "after_utf8": "al':",
+      "before_end": 20126,
+      "before_start": 20126,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23621,
+      "after_start": 23614,
+      "after_utf8": "self._y",
+      "before_end": 20127,
+      "before_start": 20127,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23622,
+      "after_start": 23622,
+      "after_utf8": "",
+      "before_end": 20129,
+      "before_start": 20128,
+      "before_utf8": "t"
+    },
+    {
+      "after_end": 23624,
+      "after_start": 23623,
+      "after_utf8": "l",
+      "before_end": 20136,
+      "before_start": 20130,
+      "before_utf8": "r_boun"
+    },
+    {
+      "after_end": 23627,
+      "after_start": 23627,
+      "after_utf8": "",
+      "before_end": 20166,
+      "before_start": 20139,
+      "before_utf8": "_formulas(language=language"
+    },
+    {
+      "after_end": 23665,
+      "after_start": 23653,
+      "after_utf8": "'candidate':",
+      "before_end": 20192,
+      "before_start": 20192,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23676,
+      "after_start": 23666,
+      "after_utf8": "candidate,",
+      "before_end": 20193,
+      "before_start": 20193,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23678,
+      "after_start": 23677,
+      "after_utf8": "'",
+      "before_end": 20199,
+      "before_start": 20194,
+      "before_utf8": "  max"
+    },
+    {
+      "after_end": 23679,
+      "after_start": 23679,
+      "after_utf8": "",
+      "before_end": 20204,
+      "before_start": 20200,
+      "before_utf8": "mum_"
+    },
+    {
+      "after_end": 23680,
+      "after_start": 23680,
+      "after_utf8": "",
+      "before_end": 20206,
+      "before_start": 20205,
+      "before_utf8": "o"
+    },
+    {
+      "after_end": 23688,
+      "after_start": 23682,
+      "after_utf8": "penden",
+      "before_end": 20219,
+      "before_start": 20208,
+      "before_utf8": "s=maximum, "
+    },
+    {
+      "after_end": 23695,
+      "after_start": 23689,
+      "after_utf8": "ly_che",
+      "before_end": 20221,
+      "before_start": 20220,
+      "before_utf8": "i"
+    },
+    {
+      "after_end": 23701,
+      "after_start": 23697,
+      "after_utf8": "ed':",
+      "before_end": 20230,
+      "before_start": 20223,
+      "before_utf8": "=tick))"
+    },
+    {
+      "after_end": 23703,
+      "after_start": 23702,
+      "after_utf8": "F",
+      "before_end": 20235,
+      "before_start": 20231,
+      "before_utf8": "if m"
+    },
+    {
+      "after_end": 23704,
+      "after_start": 23704,
+      "after_utf8": "",
+      "before_end": 20248,
+      "before_start": 20236,
+      "before_utf8": "ximum >= 1 e"
+    },
+    {
+      "after_end": 23708,
+      "after_start": 23707,
+      "after_utf8": "}",
+      "before_end": 20254,
+      "before_start": 20251,
+      "before_utf8": " ()"
+    },
+    {
+      "after_end": 23736,
+      "after_start": 23725,
+      "after_utf8": "    self._y",
+      "before_end": 20271,
+      "before_start": 20271,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23737,
+      "after_start": 23737,
+      "after_utf8": "",
+      "before_end": 20282,
+      "before_start": 20272,
+      "before_utf8": "f not fibr"
+    },
+    {
+      "after_end": 23738,
+      "after_start": 23738,
+      "after_utf8": "",
+      "before_end": 20291,
+      "before_start": 20283,
+      "before_utf8": "(proposa"
+    },
+    {
+      "after_end": 23739,
+      "after_start": 23739,
+      "after_utf8": "",
+      "before_end": 20295,
+      "before_start": 20292,
+      "before_utf8": "s, "
+    },
+    {
+      "after_end": 23747,
+      "after_start": 23741,
+      "after_utf8": "d += 1",
+      "before_end": 20307,
+      "before_start": 20297,
+      "before_utf8": "scriptor):"
+    },
+    {
+      "after_end": 23777,
+      "after_start": 23775,
+      "after_utf8": "cl",
+      "before_end": 20339,
+      "before_start": 20335,
+      "before_utf8": "resp"
+    },
+    {
+      "after_end": 23788,
+      "after_start": 23779,
+      "after_utf8": "e(event, ",
+      "before_end": 20341,
+      "before_start": 20341,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23794,
+      "after_start": 23790,
+      "after_utf8": "lf._",
+      "before_end": 20354,
+      "before_start": 20343,
+      "before_utf8": "()\n        "
+    },
+    {
+      "after_end": 23798,
+      "after_start": 23798,
+      "after_utf8": "",
+      "before_end": 20359,
+      "before_start": 20358,
+      "before_utf8": "("
+    },
+    {
+      "after_end": 23800,
+      "after_start": 23800,
+      "after_utf8": "",
+      "before_end": 21061,
+      "before_start": 20361,
+      "before_utf8": "        missing_complete = True\n        fibre_cover['completed'] = True\n        return response()\n\n    for r, formula in enumerate(earlier):\n        tick()\n        if cover and output[0] == 'all':\n            coverage['UG_prior_rows_seen'].append(r)\n        if not cover and output is not None and output[0] == 'all':\n            formula = output[2]\n        if formula is None:\n            continue\n        for variable in language.parameters:\n            conclusion = ['all', variable, formula]\n            if output is None or conclusion == output:\n                consider({'rule': 'generalize', 'variable': variable, 'formula': conclusion}, [formula], [r])\n                if finished():\n        "
+    },
+    {
+      "after_end": 23836,
+      "after_start": 23819,
+      "after_utf8": "{'schema': 'unit-",
+      "before_end": 21080,
+      "before_start": 21080,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23857,
+      "after_start": 23837,
+      "after_utf8": "ow-all-six-fallback-",
+      "before_end": 21081,
+      "before_start": 21081,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23860,
+      "after_start": 23858,
+      "after_utf8": "ve",
+      "before_end": 21085,
+      "before_start": 21082,
+      "before_utf8": "spo"
+    },
+    {
+      "after_end": 23866,
+      "after_start": 23861,
+      "after_utf8": "t-v1'",
+      "before_end": 21100,
+      "before_start": 21086,
+      "before_utf8": "se()\n    for i"
+    },
+    {
+      "after_end": 23870,
+      "after_start": 23868,
+      "after_utf8": "'k",
+      "before_end": 21107,
+      "before_start": 21102,
+      "before_utf8": "left "
+    },
+    {
+      "after_end": 23875,
+      "after_start": 23872,
+      "after_utf8": "d':",
+      "before_end": 21109,
+      "before_start": 21109,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23881,
+      "after_start": 23876,
+      "after_utf8": "'EOF'",
+      "before_end": 21143,
+      "before_start": 21110,
+      "before_utf8": "enumerate(earlier):\n        for j"
+    },
+    {
+      "after_end": 23882,
+      "after_start": 23882,
+      "after_utf8": "",
+      "before_end": 21220,
+      "before_start": 21144,
+      "before_utf8": " implication in enumerate(earlier):\n            tick()\n            if cover:"
+    },
+    {
+      "after_end": 23900,
+      "after_start": 23899,
+      "after_utf8": "'",
+      "before_end": 21237,
+      "before_start": 21237,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23904,
+      "after_start": 23902,
+      "after_utf8": "nt",
+      "before_end": 21240,
+      "before_start": 21239,
+      "before_utf8": "v"
+    },
+    {
+      "after_end": 23910,
+      "after_start": 23905,
+      "after_utf8": "xt_sh",
+      "before_end": 21242,
+      "before_start": 21241,
+      "before_utf8": "r"
+    },
+    {
+      "after_end": 23918,
+      "after_start": 23911,
+      "after_utf8": "256': s",
+      "before_end": 21244,
+      "before_start": 21243,
+      "before_utf8": "g"
+    },
+    {
+      "after_end": 23930,
+      "after_start": 23919,
+      "after_utf8": "lf._context",
+      "before_end": 21245,
+      "before_start": 21245,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23933,
+      "after_start": 23932,
+      "after_utf8": "c",
+      "before_end": 21247,
+      "before_start": 21247,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23936,
+      "after_start": 23934,
+      "after_utf8": "nt",
+      "before_end": 21250,
+      "before_start": 21248,
+      "before_utf8": "rd"
+    },
+    {
+      "after_end": 23939,
+      "after_start": 23937,
+      "after_utf8": "xt",
+      "before_end": 21263,
+      "before_start": 21251,
+      "before_utf8": "red_MP_pairs"
+    },
+    {
+      "after_end": 23946,
+      "after_start": 23941,
+      "after_utf8": "ha256",
+      "before_end": 21268,
+      "before_start": 21265,
+      "before_utf8": "een"
+    },
+    {
+      "after_end": 23948,
+      "after_start": 23948,
+      "after_utf8": "",
+      "before_end": 21280,
+      "before_start": 21270,
+      "before_utf8": ".append([i"
+    },
+    {
+      "after_end": 23949,
+      "after_start": 23949,
+      "after_utf8": "",
+      "before_end": 21314,
+      "before_start": 21281,
+      "before_utf8": " j])\n            if left is None:"
+    },
+    {
+      "after_end": 23967,
+      "after_start": 23966,
+      "after_utf8": "'",
+      "before_end": 21331,
+      "before_start": 21331,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 23973,
+      "after_start": 23969,
+      "after_utf8": "mple",
+      "before_end": 21334,
+      "before_start": 21333,
+      "before_utf8": "n"
+    },
+    {
+      "after_end": 23976,
+      "after_start": 23975,
+      "after_utf8": "o",
+      "before_end": 21336,
+      "before_start": 21336,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 24076,
+      "after_start": 23977,
+      "after_utf8": "': clone(self._completion, self._tick)}\n        except BaseException:\n            self._failed = Tr",
+      "before_end": 21337,
+      "before_start": 21337,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 24092,
+      "after_start": 24091,
+      "after_utf8": "r",
+      "before_end": 21361,
+      "before_start": 21352,
+      "before_utf8": "if implic"
+    },
+    {
+      "after_end": 24093,
+      "after_start": 24093,
+      "after_utf8": "",
+      "before_end": 21367,
+      "before_start": 21362,
+      "before_utf8": "tion "
+    },
+    {
+      "after_end": 24095,
+      "after_start": 24095,
+      "after_utf8": "",
+      "before_end": 21373,
+      "before_start": 21369,
+      "before_utf8": " Non"
+    },
+    {
+      "after_end": 24096,
+      "after_start": 24096,
+      "after_utf8": "",
+      "before_end": 21375,
+      "before_start": 21374,
+      "before_utf8": ":"
+    },
+    {
+      "after_end": 24101,
+      "after_start": 24097,
+      "after_utf8": "\n\nde",
+      "before_end": 21393,
+      "before_start": 21376,
+      "before_utf8": "                i"
+    },
+    {
+      "after_end": 24104,
+      "after_start": 24104,
+      "after_utf8": "",
+      "before_end": 21398,
+      "before_start": 21396,
+      "before_utf8": "ut"
+    },
+    {
+      "after_end": 24106,
+      "after_start": 24105,
+      "after_utf8": "e",
+      "before_end": 21407,
+      "before_start": 21399,
+      "before_utf8": "ut is No"
+    },
+    {
+      "after_end": 24114,
+      "after_start": 24107,
+      "after_utf8": "_fallba",
+      "before_end": 21431,
+      "before_start": 21408,
+      "before_utf8": "e:\n                    "
+    },
+    {
+      "after_end": 24118,
+      "after_start": 24115,
+      "after_utf8": "k(*",
+      "before_end": 21492,
+      "before_start": 21432,
+      "before_utf8": "ontinue\n                conclusion, premise = output, ['imp'"
+    },
+    {
+      "after_end": 24121,
+      "after_start": 24121,
+      "after_utf8": "",
+      "before_end": 21549,
+      "before_start": 21495,
+      "before_utf8": "eft, output]\n            elif implication[0] == 'imp' "
+    },
+    {
+      "after_end": 24125,
+      "after_start": 24123,
+      "after_utf8": "gu",
+      "before_end": 21559,
+      "before_start": 21551,
+      "before_utf8": "d implic"
+    },
+    {
+      "after_end": 24127,
+      "after_start": 24126,
+      "after_utf8": "g",
+      "before_end": 21572,
+      "before_start": 21560,
+      "before_utf8": "tion[1] == l"
+    },
+    {
+      "after_end": 24128,
+      "after_start": 24128,
+      "after_utf8": "",
+      "before_end": 21603,
+      "before_start": 21573,
+      "before_utf8": "ft:\n                conclusion"
+    },
+    {
+      "after_end": 24129,
+      "after_start": 24129,
+      "after_utf8": "",
+      "before_end": 21993,
+      "before_start": 21604,
+      "before_utf8": " premise = implication[2], implication\n                if output is not None and conclusion != output:\n                    continue\n            else:\n                continue\n            consider({'rule': 'mp', 'formula': conclusion}, [left, premise], [i, j])\n            if finished():\n                return response()\n    # UI/transport licences have outer imp; other incomplete queries"
+    },
+    {
+      "after_end": 24136,
+      "after_start": 24133,
+      "after_utf8": "te,",
+      "before_end": 21998,
+      "before_start": 21997,
+      "before_utf8": "y"
+    },
+    {
+      "after_end": 24148,
+      "after_start": 24137,
+      "after_utf8": "row, tick):",
+      "before_end": 22007,
+      "before_start": 21999,
+      "before_utf8": "UNKNOWN."
+    },
+    {
+      "after_end": 24170,
+      "after_start": 24160,
+      "after_utf8": "FallbackCu",
+      "before_end": 22019,
+      "before_start": 22019,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 24182,
+      "after_start": 24171,
+      "after_utf8": "sor(languag",
+      "before_end": 22020,
+      "before_start": 22020,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 24194,
+      "after_start": 24183,
+      "after_utf8": "=language, ",
+      "before_end": 22021,
+      "before_start": 22021,
+      "before_utf8": ""
+    },
+    {
+      "after_end": 24208,
+      "after_start": 24195,
+      "after_utf8": "tate=state, r",
+      "before_end": 22023,
+      "before_start": 22022,
+      "before_utf8": "p"
+    },
+    {
+      "after_end": 24225,
+      "after_start": 24209,
+      "after_utf8": "w=row, tick=tick",
+      "before_end": 22028,
+      "before_start": 22024,
+      "before_utf8": "nse("
+    }
+  ],
+  "patches": {
+    "all-six-v1-to-missing-mark-v3-full-inverse.patch": {
+      "bytes": 26458,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/all-six-v1-to-missing-mark-v3-full-inverse.patch",
+      "sha256": "77fef1f1656bf2ff13e479368e09086783d4ffc276f9b3989074b122c0247a6c"
+    },
+    "missing-mark-v3-to-all-six-v1-forward.patch": {
+      "bytes": 26514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/missing-mark-v3-to-all-six-v1-forward.patch",
+      "sha256": "5236ad5727ab8e422c07bda2db45a710d82c954b37c0b98759bc356437e561ff"
+    }
+  },
+  "removed_API": "propose_degree is not replaced in old module; this new module exposes full fallback cursor and generalized syntax roots.",
+  "schema": "unit-row-all-six-fallback-Source-delta-v1",
+  "scientific_calls": 0,
+  "unchanged_nested_grammar_functions": [
+    "compositions",
+    "children",
+    "terms",
+    "formulas"
+  ],
+  "unchanged_top_functions": [
+    "need",
+    "canonical",
+    "digest",
+    "clone",
+    "pairs",
+    "merge",
+    "prototype",
+    "validate_state",
+    "marked_formula"
+  ],
+  "whole_AST_inverse": true,
+  "whole_byte_forward_and_inverse": true
+}

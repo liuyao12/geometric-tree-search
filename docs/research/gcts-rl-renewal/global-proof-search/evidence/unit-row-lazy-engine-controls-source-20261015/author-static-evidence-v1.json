@@ -1,0 +1,226 @@
+{
+  "Source_execution": false,
+  "actual_grant": false,
+  "check_count": 17,
+  "checks": [
+    {
+      "check": "complete-forward-patch",
+      "detail": "All original bytes plus exact raw changes reconstruct selected current Source.",
+      "passed": true
+    },
+    {
+      "check": "complete-inverse-patch",
+      "detail": "All selected Source bytes reconstruct frozen parent.",
+      "passed": true
+    },
+    {
+      "check": "eight-inherited-helpers",
+      "detail": "Two classes and six fixture helpers unchanged; no inherited control-pass claim.",
+      "passed": true
+    },
+    {
+      "check": "callable-keyword-only-API",
+      "detail": "Exact agreed Root adapter ABI.",
+      "passed": true
+    },
+    {
+      "check": "stdlib-imports-only",
+      "detail": "No project import, clock, native subprocess, runner or dynamic module execution.",
+      "passed": true
+    },
+    {
+      "check": "definition-only-module",
+      "detail": "No top-level scientific/control calls.",
+      "passed": true
+    },
+    {
+      "check": "one-explicit-incomplete-search-seam",
+      "detail": "No original-root automatic target search in this harness.",
+      "passed": true
+    },
+    {
+      "check": "public-engine-surfaces-only",
+      "detail": "Controls use constructor injection/public transaction/snapshot/decision/cursor/search surfaces; no private mutation hook.",
+      "passed": true
+    },
+    {
+      "check": "native-EOF-not-synthesized",
+      "detail": "Interrupt wrapper delegates real events and aborts before raising; constructs no candidate/EOF packet.",
+      "passed": true
+    },
+    {
+      "check": "fixture-only-eligibility-catching",
+      "detail": "Only prepared fixture membership maps definite exclusion to SKIP. Engine/proposer/fallback/certifier OutsideLanguage or resource failures otherwise propagate.",
+      "passed": true
+    },
+    {
+      "check": "original-height-generation-preserved",
+      "detail": "Production all24 root generations0; varied-generation calibration is explicitly separate.",
+      "passed": true
+    },
+    {
+      "check": "UNKNOWN-no-parent-exclusion-assertion",
+      "detail": "Literal negative predicate on actual seam trace/restored state.",
+      "passed": true
+    },
+    {
+      "check": "exact-whole-snapshot-rollback-assertion",
+      "detail": "Checks state, refs, logical cursor prefix/position, certificates, exposed graph and reverse/implicit dependencies.",
+      "passed": true
+    },
+    {
+      "check": "C0-and-C1-not-classified-before-EOF",
+      "detail": "Declared cap0/cap1 seam cannot create completion or zero/singleton acceptance.",
+      "passed": true
+    },
+    {
+      "check": "no-forbidden-C0-bytes",
+      "detail": "Raw Source contains no other C0 bytes.",
+      "passed": true
+    },
+    {
+      "check": "result-schema-and-false-scopes",
+      "detail": "Root later derives actual outcomes; Source author grants nothing.",
+      "passed": true
+    },
+    {
+      "check": "all-declared-case-labels-present",
+      "detail": "Seventeen distinct prospective controls; actual SKIPPED retains scope gap.",
+      "passed": true
+    }
+  ],
+  "full_forward_patch": {
+    "bytes": 37260,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/parent-to-controls-v1.patch",
+    "sha256": "8fceee3f6f2819b8db83cfb04648db487a72644ef5f8971aec06f4268b455d67"
+  },
+  "full_inverse_patch": {
+    "bytes": 37270,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/controls-v1-to-parent-full-inverse.patch",
+    "sha256": "37f16c9486f27933a0bab39e0b4c9d19b75cec1ae5086f979de16034c28fe91d"
+  },
+  "inherited_helpers": [
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "current_lines": [
+        12,
+        13
+      ],
+      "name": "Unavailable",
+      "parent_lines": [
+        9,
+        10
+      ],
+      "region_sha256": "0633d4c830dca042342e9e90385b150644cc55294a6029ec8150623e6e0eb9c7"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "current_lines": [
+        15,
+        16
+      ],
+      "name": "CallbackExhausted",
+      "parent_lines": [
+        13,
+        14
+      ],
+      "region_sha256": "ed63a8ff8458cf3d9d5b7afc535250eb000815c95fbf417f6bc1377e2ed9f4c2"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "current_lines": [
+        18,
+        20
+      ],
+      "name": "need",
+      "parent_lines": [
+        17,
+        19
+      ],
+      "region_sha256": "cfb2359a99fb5844db1d9b7610758d828c86945b044bc352c78ced9fece32556"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "current_lines": [
+        22,
+        23
+      ],
+      "name": "canonical",
+      "parent_lines": [
+        22,
+        23
+      ],
+      "region_sha256": "3d0cba3e5232ca23a7129b2da6af51a68c34121ca073948fd18e8f2e9bb68268"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "current_lines": [
+        25,
+        26
+      ],
+      "name": "digest",
+      "parent_lines": [
+        26,
+        27
+      ],
+      "region_sha256": "ba4b204365b99acc82629d44da79e9b2995d4460b992169519341d4d48275144"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "current_lines": [
+        28,
+        45
+      ],
+      "name": "tile",
+      "parent_lines": [
+        30,
+        47
+      ],
+      "region_sha256": "180bb27f6de2b574c473adf86ff7da20370081febb16f8b31208c12babe95fa5"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "current_lines": [
+        47,
+        67
+      ],
+      "name": "state",
+      "parent_lines": [
+        50,
+        70
+      ],
+      "region_sha256": "95664cf1567b15500aadafc08511edcf6f032a3e5f368560a1fa70f579ef9a83"
+    },
+    {
+      "AST_equal": true,
+      "byte_equal": true,
+      "current_lines": [
+        69,
+        71
+      ],
+      "name": "ug",
+      "parent_lines": [
+        73,
+        75
+      ],
+      "region_sha256": "910adb314f1decffc2b619dd735712322b77359ddb74287834903f1d5ca55210"
+    }
+  ],
+  "native_clock_calls": 0,
+  "prefreeze_metadata_note": "Two initial static predicates were too broad: one included type(error).__name__ among engine attributes; another treated a CONTROL_INTERRUPT diagnostic dict as a fabricated wire return. Final predicates inspect only engine e attributes and returned dicts respectively; Source unchanged and unexecuted.",
+  "schema": "unit-row-lazy-engine-controls-author-static-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21896,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+    "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+  },
+  "tests_or_controls_run": false
+}

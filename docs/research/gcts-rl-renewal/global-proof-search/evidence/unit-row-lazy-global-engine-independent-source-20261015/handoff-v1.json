@@ -1,0 +1,36 @@
+{
+  "check_count": 15,
+  "findings": {
+    "bytes": 14101,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-independent-source-20261015/findings-v1.json",
+    "sha256": "4f1b707129b09cf4eaacc2c88afbc1ecb192b2bf18247057b9510e8c69f4e3d5"
+  },
+  "next": "Root-only controls andfreshsearch ifseparatelyauthorized; completecurrentgates/native/savedclosure required. ALL24gap andgeneralEOFauthority remainopen.",
+  "raw_reference_paths": 21,
+  "schema": "unit-row-lazy-global-engine-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-lazy-global-engine-Source",
+  "source": {
+    "bytes": 27865,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+    "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+  },
+  "source_contract": {
+    "bytes": 16287,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/Source-contract-v2.json",
+    "sha256": "a7356f8f0f977fe8acaa514d2003991ba71f6db7960d5404846ad65fe09bedb0"
+  },
+  "source_handoff": {
+    "bytes": 2759,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/handoff-v2.json",
+    "sha256": "44a40ede7cb7bb76e3617ecdfb39f5ea3ce0253864bc32c40b9fd7a06e5cb548"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS_ONLY",
+  "typed_review": {
+    "bytes": 1586,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "72cb702f5b8cd2a5a29b8c72494a1d6d9b6c3147e9cf52112310660b23712e40"
+  }
+}

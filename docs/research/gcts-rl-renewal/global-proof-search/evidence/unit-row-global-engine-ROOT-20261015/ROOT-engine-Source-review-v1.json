@@ -1,0 +1,29 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Root did not author this dependency; Root authored the cold caller and policy. Distinct dependency Source review, not runtime/caller-independent admission.",
+  "checks": [
+    "Whole27,865B Source,13,491B V1 and16,287B currentV2 contracts read. Complete global cheap queries, certified ZERO before forced/branch, UNKNOWN blocks positive decision, ROW-TIE within earliest generation.",
+    "New alternatives independently reconstructed by currentc354. Same-state cursor replay validates consumed full prefix; EOF zero/one/exhaustion requires a fresh independent completed cover with exact entire key agreement.",
+    "Copy-on-write checkpoint contains point totals, m union/refcounts, selected/excluded keys, root generations, revision/versions, certificates, logical cursor prefixes, observed incidences and reverse dependencies. Live cursors discarded/replayed.",
+    "Only proved childEXHAUSTED creates parent exclusion; UNKNOWN cannot prune, caps never exhaust. Deepest interrupted state captured before unwind, root and all stack contexts restored.",
+    "Explicit gap: ALL24 invalidation does not retain unaffected domains (master4). Specialized unit-row ROW-TIE+ALL24-REBIND variant, not complete reference incremental conformance/acceleration. Public place needs caller checkpoint/finally after installation errors."
+  ],
+  "concrete_blockers": [],
+  "reviewer_identity": "/root",
+  "schema": "unit-row-lazy-global-engine-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-lazy-global-engine-Source",
+  "source": {
+    "bytes": 27865,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+    "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+  },
+  "source_contract": {
+    "bytes": 16287,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/Source-contract-v2.json",
+    "sha256": "a7356f8f0f977fe8acaa514d2003991ba71f6db7960d5404846ad65fe09bedb0"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

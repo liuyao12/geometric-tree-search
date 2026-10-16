@@ -1,0 +1,183 @@
+{
+  "API": {
+    "abort": "cursor.abort() permanently poisons before closing its generator; no later completion",
+    "advance": "cursor.advance() -> CANDIDATE or EOF event; no implicit Python iterator EOF/caught resource failure",
+    "context": "cursor.context() -> cloned unit-row-all-six-fallback-context-v1",
+    "open_fallback": "open_fallback(*,language,state,row,tick) -> FallbackCursor",
+    "syntax": "iter_syntax(*,language,kind,maximum_nodes,tick) -> lazy exact-size eligible roots; kind term/formula/universal/template, literal bounds1..12 or1..44"
+  },
+  "EOF_event": {
+    "all_accepted_flags": false,
+    "complete_fallback_proposed": true,
+    "completion_fields": [
+      "version",
+      "context_sha256",
+      "state_sha256",
+      "input_epoch",
+      "row",
+      "yielded_candidates",
+      "rules_completed",
+      "stats",
+      "complete_fallback_proposed",
+      "independently_checked",
+      "degree_zero_or_singleton_accepted",
+      "complete_candidate_graph_accepted",
+      "scheduler_or_rollback_accepted",
+      "logical_proof_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "completion_schema": "unit-row-all-six-fallback-completion-v1",
+    "fields": [
+      "context_sha256",
+      "completion"
+    ],
+    "independently_checked": false,
+    "kind": "EOF",
+    "repeated_EOF": "Returns same cloned untrusted completion only after fresh tick; any error poisons. It adds no acceptance.",
+    "schema": "unit-row-all-six-fallback-event-v1"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "unit-row-all-six-fallback-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "unit-row-complete-lazy-six-rule-fallback-Source",
+    "source": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "source_contract": "Exact current raw contract capsule; no self hash.",
+    "source_only": true,
+    "source_review_passed": "Distinct reviewer alone decides."
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "bound_proofs_latex": [
+    "For UI, |\\operatorname{imp}(U,I)|=1+|U|+|I|\\le44 and |I|\\ge1, hence |U|\\le42.",
+    "For UG, |\\forall x B|=1+|B|\\le44, hence |B|\\le43.",
+    "For MP, |\\operatorname{imp}(A,C)|=1+|A|+|C|\\le44, hence |A|+|C|\\le43.",
+    "Atomic term replacement never reduces node count. The EqSubst output size is 3+|l|+|r|+|T_l|+|T_r|; since |T_l|,|T_r|\\ge|T|, the stated template bound is necessary.",
+    "Every generated whole formula has size\\le44, hence literal AST depth\\le43<64; original membership still enforces all actual limits."
+  ],
+  "caller_authority": "Exact authenticated membership5d1f/policy227b/kernel43bc and unchanged original logical declaration, stable original language object/data and captured resource-only tick for entire cursor lifetime. Snapshot protects caller state from mutation, not hostile changes to language/kernel/OS. External Source/data seals/fresh independent checking/native gates belong to later caller; no new custody framework.",
+  "candidate_event": {
+    "candidate": "Original complete placement_key/selection_record/local/global t/m/membership/read_obligations. No supplied word or pendingread fact.",
+    "fields": [
+      "context_sha256",
+      "ordinal",
+      "candidate",
+      "independently_checked"
+    ],
+    "independently_checked": false,
+    "kind": "CANDIDATE",
+    "ordinal": "literal int starting0, one per yielded full key",
+    "schema": "unit-row-all-six-fallback-event-v1"
+  },
+  "completion_and_errors": "Every rule must return its exact complete marker, then allsix complete token and matching yielded count must be observed. Any context/advance exception marks cursor permanentlyfailed before rethrow; abort/closed generator cannot return normal EOF later. Only exact OutsideLanguage is semantic exclusion. Resource/typingbudget/callback/freshunknown/programming failures never yield EOF or exhaustive rejection. Callback cannot impersonate OutsideLanguage.",
+  "context_fields": [
+    "schema",
+    "version",
+    "input_epoch",
+    "language_binding",
+    "row",
+    "state",
+    "state_sha256",
+    "context_sha256"
+  ],
+  "context_hash": "state_sha256 is canonical full cloned state SHA. context_sha256 hashes canonical context before adding that field. Caller state changes after open do not update the snapshot. Every changed marking/exclusion/version requires a new context.",
+  "delta": {
+    "bytes": 102349,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/Source-delta-v1.json",
+    "sha256": "5dcf2a2066fbc500f94ceef62c1fffbd41c51ba59d3e91f7ef116ad286ade05c"
+  },
+  "families": {
+    "assumption": "Every occurrence-indexed original Gamma entry similarly; duplicates retain indices.",
+    "axiom": "Sorted every named original matching literal assigned output or all when absent; same formula/different labels remain separate.",
+    "eq_subst": "If output absent, all ordered parameter terms left/right<=12 and every bounded atomic template under exact distinguishedhole. Derived maxT=floor((44-3-|left|-|right|)/2). If assigned output has exact licence shape imp(eq(left,right),imp(Tleft,Tright)), fixleft/right and maxT=min(|Tleft|,|Tright|); enumerate every possible original template including nohole/zeroaritypred. Substitution is original atomic capture-safe method; completeprimitive+fullmark legality decides. Other shapes empty.",
+    "generalize": "Every original parameter not forbidden by wholeGamma and every prior row. Assigned output all(x,B) fixes variable/body, assignedsource mustmatch; absent output+assignedsource fixesB; both absent enumerates every eligible wholebody<=43. All occurrences remain pending obligations regardless occupancy. Full original membership and complete marking checks remain.",
+    "instantiate": "If output absent, all eligible universals node<=42 and all parameter terms<=12. If output is imp(U,V) with U outerall, exact U and all terms. Other assigned outputs empty. Original capture-safe substitute constructs imp(U,instance); actual primitive checks full profile/fresh policy and whole output; mark filter mayreject. Different witness terms retained even if variable absent.",
+    "mp": "For every ordered prior pair incl i=j: same-row fibre proved empty by finiteAST A=imp(A,C). Assigned implication imp(A,C) fixes both A/C; incompatible assigned antecedent or output empties fibre. Assigned A with missing implication enumerates all eligible C up to43-|A| unless outputfixed. Both absent enumerate every C<=42 (or fixedC) and every A<=43-|C|. Whole original MP/profile/point legality applies."
+  },
+  "initial_EOF_authority": "NO blanket EOF zero/one, branch-exhaustion or globalgraph acceptance. Initial engine must independently obtain fresh c960+c354 COMPLETED nonimp cover for the exact same state/binding/row and compare its entire surviving full key set to the actual completed checked stream. UNKNOWN or TWO lowerbound cover does not certify EOF. General uncovered EOF stays unaccepted/UNKNOWN until independently qualified. Candidate membership/whole legality can be independently checked separately.",
+  "memory": "No carrier/key/rejection materialization or visitedkeyset. Six lazy syntax/fibre streams, current bounded ASTs, supplied state/exclusions and current candidate only. External engine may retain consumed prefixes for independent checking/rollback and pays allcost. A single family next may still be huge; roundrobin does not guarantee bounded perattempt latency or fit.",
+  "ordering_and_keys": "Deterministic round-robin descriptor attempts in rule order AX,Gamma,UI,EqSubst,MP,UG. Per-family syntax sizes/name/compositions and ordered row pairs as Source. A primitive witness+orderedpremiseformulas+orderednegativeoffsets+epoch+translation is the full key. Different witnesses/ports/rows/terms/templates remain distinct. Hash names never alone identify/dedup. Unit positive support aligns uniquely to queried row. Negative absolute reads are impossible by complete outside sentinel; current/future reads impossible by strictnegative offsets.",
+  "private_state": "Same exact unit-row-implicit-private-state-v1 eightfields/current epoch/height24/allrootgenerations0/selected1, complete t/m/fixed target/outside union and selected/excluded full key preimages. Invalid/other marks reject, never become absent. Exclusion justification remains caller responsibility.",
+  "raw_references": {
+    "design": {
+      "bytes": 5990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-design-source-20261015/lazy-unit-row-engine-design-v2.json",
+      "sha256": "273a1a9420eccbe020b956d6ff743f59ce332b3e36301f4b8efd3e0b873418d7"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "parent_contract": {
+      "bytes": 13319,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/Source-contract-v1.json",
+      "sha256": "11e91c8cd4ed5078d765047a7456116ec89fb470c353fd6721a954147d6fb310"
+    },
+    "parent_peer": {
+      "bytes": 2731,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-independent-source-20261015/typed-Source-review-v1.json",
+      "sha256": "a5a98a012ae74621ec6d8cd251684b5a2c8768aac22eee777f24f11eae0256d3"
+    },
+    "parent_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "point_encoding": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "restricted_cover_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    }
+  },
+  "remaining_gaps": [
+    "Genuine independent whole Source review pending.",
+    "No runtime enumeration/controls/fit or complete arbitrary EOF validator; broader family EOF authority remains open.",
+    "No globalfrontier/reverse dependencies/incremental revalidation/deadforcedscheduler/earliestgenerationties/rollback/search implemented here.",
+    "No theorem/proof/RL/marking learning/count/physicalpalette/benefit or resource admission.",
+    "No native clocks/tests/plans/grants/actuals/cold framework/publication. Original20/512MiB/55/60/90+1 caller gates unchanged; legacy20k/50k profile untouched."
+  ],
+  "rollback_integration": "No graph/transaction/checkpoint implementation. Changed state/exclusions require fresh cursor. Parent cursor can remain untouched across child exploration, or recreate/replay exact consumed prefix in restored context; no invented Python generator rewind. Failed/UNKNOWN cursor or child cannot justify exclusion or exhaustion.",
+  "schema": "unit-row-all-six-fallback-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-complete-lazy-six-rule-fallback-Source",
+  "source": {
+    "bytes": 24227,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+    "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 10270,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/author-static-evidence-v1.json",
+    "sha256": "80247b677061818de5ef92ab5db1dea412f51e47f6f622b5cd51b60af9ee3d49"
+  },
+  "stats": "attempts_by_rule counts yielded descriptor attempts, including completed substitution exclusions; membership_exclusions, point_rejections, MP_same_row_occurs_empty and yielded_candidates are untrusted observations, not full primitive/ground counts or comparative work. Logical shape filters and empty fibres need not yield descriptors.",
+  "syntax_complete_argument": "Induction on exact constructor node size. Finite symbols/scopes and positive ordered compositions cover every declared AST exactly once. Root term validation12, formula/universal44 under parameters, template44 underparameters+hole with eq/pred roots. Each all extends only its own lexical body; no alpha quotient or body standalone filter. Literal fresh names/binder shadowing retained. Four original nested grammar implementations copied exact.",
+  "version": "unit-row-complete-lazy-six-rule-fallback-v1"
+}

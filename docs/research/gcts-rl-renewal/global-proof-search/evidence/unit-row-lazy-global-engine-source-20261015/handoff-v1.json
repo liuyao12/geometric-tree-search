@@ -1,0 +1,31 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "author_static": {
+    "bytes": 10657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/author-static-v1.json",
+    "sha256": "399b1eed163c38dfaeaaf859dcbc639894396adc613ee0676886e6f10de13e65"
+  },
+  "constructor": "LazyUnitRowEngine(*,language,degree_proposer,semantics,fallback,certify_fallback,tick,initial_state=None,maximum_nodes=128,maximum_events=2000)",
+  "design_review": {
+    "bytes": 2016,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/design-review-v1.json",
+    "sha256": "32df518affbbc58732d3e6326c8c418c1a51d73227ccc1bef079acd0dbaed490"
+  },
+  "remaining": "No blanket EOF authority. Fresh current cover certifier or UNKNOWN; full control/cold/native/proof/point/GCTS admission pending. No functions/Q/model/word/clocks/tests/plans/actuals.",
+  "review_scope": "unit-row-lazy-global-engine-Source",
+  "schema": "unit-row-lazy-global-engine-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 27865,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+    "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+  },
+  "source_contract": {
+    "bytes": 13491,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/Source-contract-v1.json",
+    "sha256": "04f0e72aa90b7595706b122cf3a98ab9399532165d1680598c295625f1a986fa"
+  },
+  "source_only": true,
+  "status": "FROZEN_SOURCE_ONLY_DISTINCT_REVIEW_PENDING"
+}

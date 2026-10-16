@@ -1,0 +1,38 @@
+{
+  "API": "run_controls(*,language,engine_factory,degree_proposer,fallback,certify_fallback,scheduler,tick)",
+  "all_declared_cases_completed_field": true,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_static_evidence": {
+    "bytes": 6882,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/author-static-evidence-v1.json",
+    "sha256": "171cdd3a2fb5fc52ebd8482770daa764190ca1ca53ac5d844ee0c34c20822b9e"
+  },
+  "engine": {
+    "bytes": 27865,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+    "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+  },
+  "fallback": {
+    "bytes": 24227,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+    "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+  },
+  "next": "Root/distinct current Source review, caller-only Source9 rebinding and Root-only scoped actual activation; no inherited pass.",
+  "prospective_cases": 17,
+  "result_schema": "unit-row-lazy-global-controls-v1",
+  "schema": "unit-row-lazy-global-adversarial-controls-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Source-only original-language adversarial controls with separately labeled incomplete-cursor/search and NONLOGICAL scheduler seams. No target answer supplied, no actual or grant.",
+  "source": {
+    "bytes": 21896,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+    "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+  },
+  "source_contract": {
+    "bytes": 13405,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/Source-contract-v1.json",
+    "sha256": "d18049198f584f08b6ce350c03ddac9a6ec39694e66742c10d203b7c2a0ee869"
+  },
+  "source_only": true
+}

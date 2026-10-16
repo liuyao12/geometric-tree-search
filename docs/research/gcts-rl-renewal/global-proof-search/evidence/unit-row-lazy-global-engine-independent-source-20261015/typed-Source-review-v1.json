@@ -1,0 +1,30 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Reviewer authored membership/proposer/fallback dependencies, not engine or currentdegreechecker/controls. Review strictlycurrentenginewholeSource/currentcontractV2; notanindependentall-sixuniversecertificate.",
+  "check_count": 15,
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 14101,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-independent-source-20261015/findings-v1.json",
+    "sha256": "4f1b707129b09cf4eaacc2c88afbc1ecb192b2bf18247057b9510e8c69f4e3d5"
+  },
+  "full_reference_incremental_conformance": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_GCTS_proof_RL_resource_accepted": false,
+  "schema": "unit-row-lazy-global-engine-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-lazy-global-engine-Source",
+  "source": {
+    "bytes": 27865,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/lazy_unit_row_global_engine_v1.py",
+    "sha256": "ebd4b3eb9ef708525c6ce629d7619d6c3241cc0046afe3852ec9423af9f5197e"
+  },
+  "source_contract": {
+    "bytes": 16287,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-global-engine-source-20261015/Source-contract-v2.json",
+    "sha256": "a7356f8f0f977fe8acaa514d2003991ba71f6db7960d5404846ad65fe09bedb0"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}
