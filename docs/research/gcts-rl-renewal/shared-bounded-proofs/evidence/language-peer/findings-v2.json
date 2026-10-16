@@ -1,0 +1,713 @@
+{
+  "Source_delta": {
+    "bytes": 13686,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-delta-v2.json",
+    "sha256": "a851fcf42f91693fcf4a20f88a66b77a8f19778dcc0ab560637f58b6488dfe3f"
+  },
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "Reviewer authored earlier design/policy reviews, goal-family modules, untrusted point/ordinary and finite-Horn modules plus clean-support clock changes. Reviewer did not author these membership/proposer modules or original43bc/1717 semantics. No self-review of an authored module occurs here.",
+  "concrete_blockers": [],
+  "current_checks": [
+    {
+      "check": "exact whole raw membership original",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw membership current",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw membership forward patch",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw membership inverse patch",
+      "passed": true
+    },
+    {
+      "check": "membership original byte range 2711",
+      "passed": true
+    },
+    {
+      "check": "membership current byte range 2711",
+      "passed": true
+    },
+    {
+      "check": "membership original byte range 420",
+      "passed": true
+    },
+    {
+      "check": "membership current byte range 420",
+      "passed": true
+    },
+    {
+      "check": "membership complete forward and inverse equality",
+      "passed": true
+    },
+    {
+      "check": "membership all other top-level AST definitions exact",
+      "passed": true
+    },
+    {
+      "check": "all14 membership method ASTs exact",
+      "passed": true
+    },
+    {
+      "check": "one original OutsideLanguage class exposure",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw proposer original",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw proposer current",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw proposer forward patch",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw proposer inverse patch",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 13876",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 13811",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 13875",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 13808",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 13873",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 13805",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 13871",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 13795",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 12082",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 12011",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 12081",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 12008",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 12079",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 12005",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 12077",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 11995",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 6065",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 5988",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 6064",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 5985",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 6062",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 5982",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 6060",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 5972",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 5493",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 5410",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 5492",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 5407",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 5490",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 5404",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 5488",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 5394",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4458",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4328",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4447",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4321",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4442",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4315",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4400",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4304",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4389",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4302",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4385",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4301",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4374",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4297",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4365",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4295",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4362",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4294",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4359",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4291",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4339",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4288",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4319",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4287",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4300",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4285",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4277",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4276",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4275",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4263",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4273",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4262",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4272",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4237",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4263",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4230",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4232",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4210",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4226",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4208",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4211",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4205",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4208",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4204",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4192",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4202",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4182",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4184",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4176",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4181",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 4174",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 4174",
+      "passed": true
+    },
+    {
+      "check": "proposer original byte range 408",
+      "passed": true
+    },
+    {
+      "check": "proposer current byte range 408",
+      "passed": true
+    },
+    {
+      "check": "proposer complete forward and inverse equality",
+      "passed": true
+    },
+    {
+      "check": "proposer all other top-level AST definitions exact",
+      "passed": true
+    },
+    {
+      "check": "single exact language.OutsideLanguage entry capture",
+      "passed": true
+    },
+    {
+      "check": "all4 rejection catches bound to captured definite class",
+      "passed": true
+    },
+    {
+      "check": "no residual broad ValueError/Exception/TimeoutError catch",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw factored_design_review",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw first_input",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw kernel",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw master",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw policy",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw symbolic_design_review",
+      "passed": true
+    },
+    {
+      "check": "exact whole raw preserved prior genuine negative",
+      "passed": true
+    },
+    {
+      "check": "current contract/handoff/delta Source maps exact",
+      "passed": true
+    },
+    {
+      "check": "current policy/limits/ABIs unchanged",
+      "passed": true
+    },
+    {
+      "check": "contract explicitly exposes exact definite exception and no broad fallback",
+      "passed": true
+    }
+  ],
+  "current_static_check_count": 117,
+  "future_caller_requirement": "Authenticate actual module/class endpoint and complete default/kwdefault/cell data; the exposed OutsideLanguage class identity is now part of actual language API custody. Producer is untrusted; reconstruct fresh private language from authenticated raw original inputs before final membership and unchanged1717 word check. No count/legacy/GCTS/actual/native/resource authority is granted.",
+  "limits": [
+    "Module Source review only; no source/function/native-clock/project/Q/test execution.",
+    "Membership object and producer arguments are mutable. Cold caller must reauthenticate original inputs and construct fresh private language after producer; Source seals do not protect mutable authority by themselves.",
+    "Generic ordinary search is intentionally incomplete: known terms/universals only, single/all atom contexts, oriented equality, omitted vacuous UG, lowest-cost DAG only, all fixed heuristic limits. No count, zero/one, exhaustion or negative authority.",
+    "Full original<=24 word membership and unchanged1717 original theory/Gamma/target check, output/native/caller/resources and actual controls remain pending.",
+    "Root_resource_accepted is the exact module flag spelling; consumers must not invent a different key or infer acceptance."
+  ],
+  "prior_negative_preserved": {
+    "bytes": 2234,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/proposer-typed-Source-review-v1.json",
+    "sha256": "dc67fe8cf1543778fe38890f0022042b9d032d12e0baaf57a965dedb3b090ee8"
+  },
+  "prior_whole_review": {
+    "bytes": 11056,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/findings-v1.json",
+    "sha256": "5f5ff567abbf7f2bfb2be4f4c32ed5130515831826e877bf8e1dc029f6551549"
+  },
+  "raw_references": [
+    {
+      "bytes": 20073,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v1.py",
+      "sha256": "ffce8882b0bb676cc517cf13ef13339dbcb34fb99464f0c0db69dd33487b9596"
+    },
+    {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 736,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language-v1-v2-forward.patch",
+      "sha256": "0736cdb44a0ac9a894b50ac7cee583132b035afa5e4c8e91c20c31e46dbb4baa"
+    },
+    {
+      "bytes": 736,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language-v1-v2-inverse.patch",
+      "sha256": "423d9e02e6590768b81f82f1fa8e977494351a1b4f3f2a03765d04b32fb2892d"
+    },
+    {
+      "bytes": 15446,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v1.py",
+      "sha256": "887ee06e6f771524d5ab9df88cce27c6100c17ba7c069f14f4b6028d6208f34e"
+    },
+    {
+      "bytes": 15376,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v2.py",
+      "sha256": "c5831f8157620e484bd6fce18c0b7ecd24fd8bd59348393954410ac9505a21b3"
+    },
+    {
+      "bytes": 3118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer-v1-v2-forward.patch",
+      "sha256": "fe4c3e4bec42233b77dc50ba033129ccf87026fb8172a81c157e5b4b2801a78f"
+    },
+    {
+      "bytes": 3118,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer-v1-v2-inverse.patch",
+      "sha256": "5d6c68c0ddc9f025e43ba178fba369e6678ce6369e918be64675def95c6eff9f"
+    },
+    {
+      "bytes": 16711,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/factored-candidate-interface-independent-design-review-20261015/review-v1.json",
+      "sha256": "84eb35a47af2dd247f34c35a859b235abcf485180d5efc42c7105099bcd46c01"
+    },
+    {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 16195,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-quantified-schematic-language-independent-review-source-20261015/findings-v1.json",
+      "sha256": "c34e5610516862dd9f65e7dd5c2e33ac4275c6fd285500f2ff6c3150e1afe001"
+    },
+    {
+      "bytes": 2097,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/handoff-v1.json",
+      "sha256": "a6c5e3bba4162b786f9ee323dd31a0732a016ed48edcc35bcc51df216bf178d5"
+    }
+  ],
+  "resolved_blocker": {
+    "analysis": "All four rejection sites now catch only the once-captured actual language OutsideLanguage class. Generic ValueError from resource/callback/programming operations no longer falls into a membership rejection handler. TimeoutError/MembershipUnknown remains propagated. No witness, syntax, substitution, rule, search order, macro expansion, DAG selection,<=24 limit, or output schema changed.",
+    "id": "BOUNDED-PROPOSER-EXCEPTION-1",
+    "resolved": true
+  },
+  "retained_whole_check_count": 25,
+  "retained_whole_checks": [
+    {
+      "check": "no project import/clock/process/file calls membership",
+      "passed": true
+    },
+    {
+      "check": "no target-specific arithmetic literals membership",
+      "passed": true
+    },
+    {
+      "check": "no project import/clock/process/file calls proposer",
+      "passed": true
+    },
+    {
+      "check": "no target-specific arithmetic literals proposer",
+      "passed": true
+    },
+    {
+      "check": "selected policyV2 exact raw/hash and fresh logical language epoch",
+      "passed": true
+    },
+    {
+      "check": "complete immutable raw decode/duplicate keys/no float declarations",
+      "passed": true
+    },
+    {
+      "check": "full original theory/Gamma/parameter/closedtarget gate before publication",
+      "passed": true
+    },
+    {
+      "check": "literal binder environment vs eligible whole formula and schema-only hole",
+      "passed": true
+    },
+    {
+      "check": "uniform term12/formula44/template44/depth64 bounded scoped traversal",
+      "passed": true
+    },
+    {
+      "check": "complete name census and evidenced fresh>=32 exclusion",
+      "passed": true
+    },
+    {
+      "check": "original43bc kernel supplied by current raw pin/version, not import",
+      "passed": true
+    },
+    {
+      "check": "six exact primitive fields/ordered arities and current kernel validation",
+      "passed": true
+    },
+    {
+      "check": "UI substitution fully bounded before MEMBER; atomic equality licence exact",
+      "passed": true
+    },
+    {
+      "check": "original Gamma-sensitive whole-formula UG and repeated ordered MP inputs",
+      "passed": true
+    },
+    {
+      "check": "strict original word refs and exact final closed target, <=24 commands",
+      "passed": true
+    },
+    {
+      "check": "private raw authority must reconstruct fresh language after producer",
+      "passed": true
+    },
+    {
+      "check": "producer starts facts only from named axioms/indexed Gamma",
+      "passed": true
+    },
+    {
+      "check": "generic known-universal UI/MP/equality transport expanded into primitives",
+      "passed": true
+    },
+    {
+      "check": "new UG facts revisited by UI in later rounds; no old two-round phase restriction",
+      "passed": true
+    },
+    {
+      "check": "serial IDs strictly after ancestors; sorted ancestry remaps actual prior references",
+      "passed": true
+    },
+    {
+      "check": "one encountered proof DAG per literal formula and other omissions disclosed",
+      "passed": true
+    },
+    {
+      "check": "heuristic quiet/stops are UNKNOWN with null candidate, never complete exhaustion",
+      "passed": true
+    },
+    {
+      "check": "TimeoutError is not caught as definite membership rejection",
+      "passed": true
+    },
+    {
+      "check": "all proof/count/legacy/GCTS/RL/resource claims remain false",
+      "passed": true
+    },
+    {
+      "check": "cold Source custody/native/caller/independent1717 gates explicitly deferred",
+      "passed": true
+    }
+  ],
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "shared-bounded-language-current-Source-findings-v2",
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 16749,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v2.json",
+    "sha256": "2a3f16462139153ef43cbe3b76a457ebfa35d88b37a343ba28732a2e94481e77"
+  },
+  "source_handoff": {
+    "bytes": 2569,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/handoff-v2.json",
+    "sha256": "f809deafc0d5025176e5d0b0dbb7ce61dd5bf39e2ae95e28f1a76677c61d1374"
+  },
+  "source_only": true,
+  "sources": {
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 15376,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v2.py",
+      "sha256": "c5831f8157620e484bd6fce18c0b7ecd24fd8bd59348393954410ac9505a21b3"
+    }
+  },
+  "whole_current_Source_coverage": "Complete exact forward/inverse byte reconstruction plus unchanged14 membership method/13 other definitions and5 other proposer definition ASTs; retained genuine full V1 Source/semantic review. Current changed class/capture/catch paths read directly. No Source function executed.",
+  "whole_current_contract_and_delta_read": true
+}

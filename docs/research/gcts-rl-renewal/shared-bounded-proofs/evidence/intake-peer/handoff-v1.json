@@ -1,0 +1,32 @@
+{
+  "check_count": 27,
+  "findings": {
+    "bytes": 76046,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/findings-v1.json",
+    "sha256": "d10f403a44535f1e7d15bdeb303938e6037835705aceab918d597d2545b444ae"
+  },
+  "raw_references": 81,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "shared-bounded-ordinary-cold-independent-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Exact new intake only with own dependency authorship disclosed; no grant, actual, fit or proof result.",
+  "source": {
+    "bytes": 39482,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v2.py",
+    "sha256": "f804bac13bf2b69f1d223a947ef8108298124f1350ab2e91f3cc06631a57d067"
+  },
+  "source_contract": {
+    "bytes": 13163,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v1.json",
+    "sha256": "99ff0726969678a2576b24feea33cbb6d81c91598649d0b181d4a4837626df26"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "typed_review": {
+    "bytes": 4103,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "4155bfb336d372c3f17259e0b1f0acba02b45a760215ce08a22faf0199e59a57"
+  },
+  "unique_raw_paths": 27
+}

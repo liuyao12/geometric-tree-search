@@ -1,0 +1,654 @@
+{
+  "ROOT_disposition": {
+    "bytes": 5634,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-ordinary-disposition-v2.json",
+    "sha256": "14cd600bfa4df80d52badcaa4423e320befe0d13f2cf8f6d3ca7a041be84c4dc"
+  },
+  "all_checks_passed": true,
+  "authenticated_raw_pins": [
+    {
+      "bytes": 4495,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-plan-v2.json",
+      "sha256": "27684102be63e2f7f6f0d5bc984da40fbd39931c4ac896c1f33bd5f0b1d5f77f"
+    },
+    {
+      "bytes": 868,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-tool-bracket-v2.json",
+      "sha256": "45db2a412eee7a4a843c05696191e5a344c417dd2339ec4859af0c10ef196b3b"
+    },
+    {
+      "bytes": 8393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/search-result.json",
+      "sha256": "e4be3ccd17c3666736b84a514c54aecbde662d766fa749f6b4491dcab691e292"
+    },
+    {
+      "bytes": 39170,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/word-check.json",
+      "sha256": "4efe51e4900cffd24bfd8178591beb657d4542febdfb584fc424cce713d3108f"
+    },
+    {
+      "bytes": 4699,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/response.jsonl",
+      "sha256": "5b565601d1f53dc3ce22dec258ef4e73b9c9128ce14f3d755e86c2c258015a62"
+    },
+    {
+      "bytes": 1663,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v2/native-terminal.json",
+      "sha256": "e46cd7d65eb7ac8aa7c8631eb8b26759f1e9e0d66643b5ce106611bdd4c44f97"
+    },
+    {
+      "bytes": 474,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v2/observation.json",
+      "sha256": "a10c9d9fe762cdc55b0517ab520f0eb384c3a1b898eb7b106ad2b03b6024ddbb"
+    },
+    {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 39482,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+      "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 23734,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+      "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a"
+    },
+    {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    {
+      "bytes": 14695,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v3.json",
+      "sha256": "4987f8074fa637d66c9ae1063aa9539da958b0debbc4fbea5a07def5d0bb6cdd"
+    },
+    {
+      "bytes": 5381,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-authorization-v2.json",
+      "sha256": "be8adbf6d0651996eb55f0a188b8d7a22400af30dc5d94117729ed5734ff490d"
+    },
+    {
+      "bytes": 5132,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-Source-review-v2.json",
+      "sha256": "e2b1889af6de5c7a1393007760413332144617e3ba3fcedb21301271d2310c9c"
+    },
+    {
+      "bytes": 4717,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/typed-Source-review-v3.json",
+      "sha256": "070f2f984d486f07a01a78483e81c3977beef33b34b1d3c02e5f9cbf74ceb795"
+    },
+    {
+      "bytes": 2288,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/membership-typed-Source-review-v3.json",
+      "sha256": "64ee4adb46ba82693685a802456e74d6186bdaa5722dafd19e641bdb5ccc74ca"
+    },
+    {
+      "bytes": 2259,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/proposer-typed-Source-review-v3.json",
+      "sha256": "d062ed6500fae95736b413f9d6a6034326b50d08b2e1a3aaa1c5d217d06bdef2"
+    },
+    {
+      "bytes": 2537,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-protocol-choice-v2.json",
+      "sha256": "5df53381c4b81baa94ce45a2b7b8458a3f18e9f99c99b41d21d49ffecc4f3855"
+    },
+    {
+      "bytes": 4885,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-ordinary-disposition-v1.json",
+      "sha256": "9ad7729636c3ed82fd7f6a25d6abaf9f6db0ad319605bbcdd59e3d4bece8cb34"
+    },
+    {
+      "bytes": 14695,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v2.json",
+      "sha256": "acba8bd66f7faa48020fdee721010bd6fb6dddf8dbcc26c81490bb95d8d52175"
+    }
+  ],
+  "authorship_disclosure": "Reviewer independently reviewed membership/proposer Sources and authored earlier policy, point-checker/correspondence, Horn and clean-support clock work. Reviewer did not author current ordinary proposer/membership/intake/1717. This review compares recorded data and hashes only; it is not another mathematical check of17commands.",
+  "check_count": 96,
+  "checks": [
+    {
+      "check": "raw hash/length actual plan",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length whole external bracket",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length actual search-result.json",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length actual word-check.json",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length actual response.jsonl",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length native_terminal",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length postterminal_observation",
+      "passed": true
+    },
+    {
+      "check": "exact complete canonical twoLF+EOF",
+      "passed": true
+    },
+    {
+      "check": "whole bodyLF completion digest/length",
+      "passed": true
+    },
+    {
+      "check": "exact Source6/input2 same plan/grant/body",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length sources:checker",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length sources:clean_support",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length sources:intake",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length sources:kernel",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length sources:membership",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length sources:proposer",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length inputs:declaration",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length inputs:profile",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length runtime",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length source_contract",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length ROOT_authorization",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length cold Source review ROOT",
+      "passed": true
+    },
+    {
+      "check": "current cold review scope/map ROOT",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length cold Source review peer",
+      "passed": true
+    },
+    {
+      "check": "current cold review scope/map peer",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length language dependency review membership",
+      "passed": true
+    },
+    {
+      "check": "current dependency Source membership",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length language dependency review proposer",
+      "passed": true
+    },
+    {
+      "check": "current dependency Source proposer",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length actual frozen protocol",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length prior UNKNOWN immutable",
+      "passed": true
+    },
+    {
+      "check": "raw hash/length prior schema-negative contract immutable",
+      "passed": true
+    },
+    {
+      "check": "single authorized exact invocation/purpose/plan",
+      "passed": true
+    },
+    {
+      "check": "original native/caller/memory limits and B=T rule",
+      "passed": true
+    },
+    {
+      "check": "untrusted complete candidate17 schema/origin",
+      "passed": true
+    },
+    {
+      "check": "same current language binding throughout",
+      "passed": true
+    },
+    {
+      "check": "raw declaration/profile and logical input digest",
+      "passed": true
+    },
+    {
+      "check": "complete actual Source6 digest and language epoch",
+      "passed": true
+    },
+    {
+      "check": "same complete17 command hash/length across receipts",
+      "passed": true
+    },
+    {
+      "check": "row0 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row0 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row1 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row1 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row2 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row2 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row3 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row3 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row4 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row4 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row5 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row5 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row6 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row6 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row7 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row7 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row8 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row8 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row9 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row9 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row10 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row10 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row11 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row11 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row12 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row12 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row13 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row13 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row14 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row14 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row15 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row15 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "row16 exact ordered prior-index metadata",
+      "passed": true
+    },
+    {
+      "check": "row16 saved member preimage/formula hashes",
+      "passed": true
+    },
+    {
+      "check": "exact rule/port totals",
+      "passed": true
+    },
+    {
+      "check": "original literal target/Gamma/parameters/theory unchanged metadata",
+      "passed": true
+    },
+    {
+      "check": "all saved essential indices and Gamma consumption labels",
+      "passed": true
+    },
+    {
+      "check": "saved whole membership and independent word completion flags",
+      "passed": true
+    },
+    {
+      "check": "word receipt binds exact raw declaration/profile",
+      "passed": true
+    },
+    {
+      "check": "saved untrusted counters/labels agree Root exactly",
+      "passed": true
+    },
+    {
+      "check": "counter scalar limits unchanged and observations nonnegative",
+      "passed": true
+    },
+    {
+      "check": "incomplete pending streams/watchers retained honest",
+      "passed": true
+    },
+    {
+      "check": "no unearned strong flags search",
+      "passed": true
+    },
+    {
+      "check": "no unearned strong flags word",
+      "passed": true
+    },
+    {
+      "check": "no unearned strong flags independent",
+      "passed": true
+    },
+    {
+      "check": "no unearned strong flags body",
+      "passed": true
+    },
+    {
+      "check": "Root alone accepts actual checked positive word/native resources",
+      "passed": true
+    },
+    {
+      "check": "native exact truewait4/reap and exit0",
+      "passed": true
+    },
+    {
+      "check": "global native epoch order/original20",
+      "passed": true
+    },
+    {
+      "check": "exact native lifetime distinct from launch-through-probe",
+      "passed": true
+    },
+    {
+      "check": "truewait4 single-process B=T29360128 below512MiB",
+      "passed": true
+    },
+    {
+      "check": "native argv exact pinned runtime/intake/plan",
+      "passed": true
+    },
+    {
+      "check": "complete Date0.994s/toolterminal/owned60/caller90+1",
+      "passed": true
+    },
+    {
+      "check": "whole native probe bytes and empty stderr",
+      "passed": true
+    },
+    {
+      "check": "complete owned inventory three files+output receipt pins",
+      "passed": true
+    },
+    {
+      "check": "pending finalstdout retains no proof/resource authority",
+      "passed": true
+    },
+    {
+      "check": "prior finite-negative/UNKNOWN admission is preserved separately",
+      "passed": true
+    }
+  ],
+  "discrepancies": [],
+  "display_rows": {
+    "bytes": 63060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-saved-record-review-20261015/raw-display-rows-v1.json",
+    "sha256": "6ef93b04c539bda3433e3dbd75a9bcd42e5c6dbcc95c63c784ffb8f675579f31"
+  },
+  "new_proof_acceptance": false,
+  "reporting_limits": [
+    "0.810736s is launch-through-postprobe; true native process lifetime is0.737761s. Both include different portions of the bounded cold lifecycle; neither is isolated search CPU time. Date0.994s is a separate external bracket.",
+    "All Source/input authentication, language construction, heuristic search, fresh membership/1717 checks/output/exit belong to this actual; no phase-specific cost attribution was independently derived.",
+    "Goal watcher firings and repeated attempts are ordinary heuristic observations, not mined-library reuse, GCTS activation or causal speed advantage.",
+    "Term-only-quiescence advisory remains part of algorithm incompleteness despite successful positive endpoint. Pending streams/watch keys remain recorded; no full language enumeration/negative certificate.",
+    "New syntax-bounded profile differs from old finite graph; old grammar negative and prior UNKNOWN/schema-negative records remain separate and unchanged.",
+    "No Source/kernel/checker/project function, clock, Q/model payload, test, experiment or proof replay was invoked. Root alone owns original actual acceptance and later boardstage."
+  ],
+  "reviewer_identity": "/root/arithmetic_induction",
+  "saved_records_only": true,
+  "saved_summary": {
+    "Date_elapsed_ms": 994,
+    "command_count": 17,
+    "learned_family_use_inferred": false,
+    "native_B_equals_T_bytes": 29360128,
+    "native_launch_to_postprobe_ns": 810736000,
+    "native_worker_lifetime_ns": 737761000,
+    "ordered_port_occurrences": 17,
+    "ordinary_goal_transport_firings_claimed": 1,
+    "producer_facts_added_claimed": 480,
+    "producer_term_cache_claimed": 256,
+    "rule_counts": {
+      "axiom": 2,
+      "eq_subst": 2,
+      "generalize": 1,
+      "instantiate": 4,
+      "mp": 8
+    }
+  },
+  "schema": "shared-bounded-ordinary-saved-record-concordance-v1",
+  "scientific_calls": 0,
+  "semantic_replay": false,
+  "small_record_pins": [
+    {
+      "bytes": 4495,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-plan-v2.json",
+      "sha256": "27684102be63e2f7f6f0d5bc984da40fbd39931c4ac896c1f33bd5f0b1d5f77f"
+    },
+    {
+      "bytes": 5381,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-authorization-v2.json",
+      "sha256": "be8adbf6d0651996eb55f0a188b8d7a22400af30dc5d94117729ed5734ff490d"
+    },
+    {
+      "bytes": 5634,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-ordinary-disposition-v2.json",
+      "sha256": "14cd600bfa4df80d52badcaa4423e320befe0d13f2cf8f6d3ca7a041be84c4dc"
+    },
+    {
+      "bytes": 868,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-tool-bracket-v2.json",
+      "sha256": "45db2a412eee7a4a843c05696191e5a344c417dd2339ec4859af0c10ef196b3b"
+    },
+    {
+      "bytes": 2537,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-protocol-choice-v2.json",
+      "sha256": "5df53381c4b81baa94ce45a2b7b8458a3f18e9f99c99b41d21d49ffecc4f3855"
+    },
+    {
+      "bytes": 8393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/search-result.json",
+      "sha256": "e4be3ccd17c3666736b84a514c54aecbde662d766fa749f6b4491dcab691e292"
+    },
+    {
+      "bytes": 39170,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/word-check.json",
+      "sha256": "4efe51e4900cffd24bfd8178591beb657d4542febdfb584fc424cce713d3108f"
+    },
+    {
+      "bytes": 1663,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v2/native-terminal.json",
+      "sha256": "e46cd7d65eb7ac8aa7c8631eb8b26759f1e9e0d66643b5ce106611bdd4c44f97"
+    },
+    {
+      "bytes": 474,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v2/observation.json",
+      "sha256": "a10c9d9fe762cdc55b0517ab520f0eb384c3a1b898eb7b106ad2b03b6024ddbb"
+    },
+    {
+      "bytes": 257,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v2/ONCE.json",
+      "sha256": "e1a332a3cc52adf3e3122d84073a87b02429585edf66f33b2755d12606456703"
+    },
+    {
+      "bytes": 1152,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v2/meter-stdout.txt",
+      "sha256": "55c8b2dcbda58943ba5b5e762355030ca3178aff7a0731d6ac3ce1a2de3f0b5f"
+    },
+    {
+      "bytes": 4699,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/response.jsonl",
+      "sha256": "5b565601d1f53dc3ce22dec258ef4e73b9c9128ce14f3d755e86c2c258015a62"
+    },
+    {
+      "bytes": 5132,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-Source-review-v2.json",
+      "sha256": "e2b1889af6de5c7a1393007760413332144617e3ba3fcedb21301271d2310c9c"
+    },
+    {
+      "bytes": 4717,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/typed-Source-review-v3.json",
+      "sha256": "070f2f984d486f07a01a78483e81c3977beef33b34b1d3c02e5f9cbf74ceb795"
+    },
+    {
+      "bytes": 2288,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/membership-typed-Source-review-v3.json",
+      "sha256": "64ee4adb46ba82693685a802456e74d6186bdaa5722dafd19e641bdb5ccc74ca"
+    },
+    {
+      "bytes": 2259,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/proposer-typed-Source-review-v3.json",
+      "sha256": "d062ed6500fae95736b413f9d6a6034326b50d08b2e1a3aaa1c5d217d06bdef2"
+    },
+    {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  ]
+}

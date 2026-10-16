@@ -1,0 +1,69 @@
+{
+  "schema": "ROOT-shared-bounded-six-rule-language-policy-v1",
+  "status": "FROZEN_PROSPECTIVE_LANGUAGE_POLICY_NO_MODEL_OR_EXECUTION_ADMISSION",
+  "purpose": "A principled implicit primitive language for the unchanged right-two arithmetic target, then shared symbolic theory inputs. Positive proof discovery is the first endpoint; complete GCTS domain/count admission is separate.",
+  "profile_name": "shared-bounded-six-rule-B12-N44-v1",
+  "input": "The entire original theory, occurrence-ordered Gamma, declared parameters and target are data. Reuse the exact right-two declaration as the first input, interpreting only its logical input fields and height. Preserve the old declaration and profile unchanged.",
+  "syntax": {
+    "node_measure": "One node for each var, fun, bot, eq, pred, all, not, imp, and, or constructor; include all term nodes in formula size. Symbol spelling and argument arrays add no nodes.",
+    "maximum_term_nodes": 12,
+    "maximum_whole_formula_nodes": 44,
+    "maximum_atomic_template_nodes": 44,
+    "maximum_depth": 64,
+    "maximum_fresh_names": 32,
+    "maximum_checker_visits": 5000000,
+    "parameter_terms": "Every signature-correct term of size at most12 whose variables are original declared parameters. This carrier is independent of target demand, known facts, family matches and search outcomes.",
+    "binder_names": "All literal variable names occurring anywhere in original theory, Gamma, target and parameter declarations, together with fresh0 through fresh31. Retain literal spelling and shadowing; no alpha-equivalence quotient.",
+    "template_hole": "The first hole0,hole1,... absent from the complete input variable-name set and parameters. A template is any declared atomic eq/pred formula within the same term and template bounds whose free variables are in parameters plus this distinguished hole. Zero, one or multiple hole occurrences are allowed. It is schema syntax, not a new proof parameter.",
+    "scoped_syntax": "Terms inside formulas may additionally mention lexically active bound variables. An extracted body retains its binder environment as syntax. Only whole formulas with free variables contained in original parameters are eligible proof labels; a subtree or target label is never automatically a fact.",
+    "admissibility": "Apply bounds to all whole formulas and all complete terms in the primitive witness and premise/output formulas, including capture-safe substitution outputs. Bounds define the language uniformly. Out-of-language witnesses are not silently added on demand.",
+    "finite_formula_carrier": "All signature-correct eligible whole formulas over the finite literal binder namespace and the existing kernel's bot/eq/pred/all/not/imp/and/or AST, within the exact declared term/formula/depth bounds. This is an implicit full syntax carrier, not a discovery-order registry."
+  },
+  "primitive_relation": {
+    "calculus": "The unchanged43b Q kernel and1717 independent word endpoint's six primitive rules only. No induction, equality shortcut, deduction or new connective rule is admitted.",
+    "axiom": "Exactly the original named closed axioms, zero input.",
+    "assumption": "Exactly an original occurrence-indexed Gamma formula, zero input.",
+    "instantiate": "For every eligible universal U and every parameter term t, the exact capture-safe implication U -> U.body[U.variable:=t], zero input, if every witness/result passes the uniform bounds. Revisit all admissible universals independently of any old compiler phase.",
+    "eq_subst": "For every eligible atomic template and ordered pair of parameter terms, the exact existing equality-transport implication, zero input, if the entire witness/result passes the uniform bounds.",
+    "mp": "For every eligible implication imp(A,B), the ordered two-input primitive [A,imp(A,B)] -> B.",
+    "generalize": "For every eligible whole F and original parameter v absent from every original Gamma free-variable occurrence, the unary primitive F -> all(v,F), if the result passes bounds. No new eigenparameter or atom-only restriction.",
+    "identity": "Canonical literal JSON preimage of profile/input epochs, exact primitive witness and ordered premise formulas. Retain exact preimages with digests; no encounter-order codes or unproved alpha merging.",
+    "word_endpoint": "At most24 primitive commands, strict prior references, same original Gamma and exact final target. Producer macros must expand into these commands; no pending obligation is a fact."
+  },
+  "count_policy": {
+    "old_maximum_ground_recipes": 20000,
+    "old_maximum_ground_formulas": 50000,
+    "old_profile_unchanged": true,
+    "new_maximum_ground_recipes": null,
+    "new_maximum_ground_formulas": null,
+    "meaning": "This separately named profile is bounded by finite syntax, rather than the old ground-cardinality ceilings. Virtual ground cardinalities are not schema/cache counts. Exact total counts remain an uncompleted milestone; do not claim old-ceiling conformance, a complete new catalogue/count certificate or legacy performance equivalence.",
+    "GCTS_gate": "No empty/singleton domain or reference scheduler decision may use an unexhausted syntax generator or unproved count. Ordinary positive word search can propose a word without admitting a complete point model. UNKNOWN is the only negative outcome without a separately checked exhaustive certificate."
+  },
+  "implementation_sequence": [
+    "Implement an explicit generic membership/primitive decoder and on-demand ordinary proof producer. Do not encode an arithmetic proof route, selected intermediate or supplied word.",
+    "Independently review the membership and expansion semantics before Root activation. Check complete legacy embedding separately against every original formula and primitive recipe, preserving all old alternatives.",
+    "Attempt fresh automatic proof discovery on the unchanged right-two input and check the full expanded word with the unchanged independent endpoint.",
+    "Develop complete symbolic domain/count certificates, exact scheduler/rollback and matched point/family comparisons. No ordinary search success by itself establishes GCTS, learned marking, native Wang or RL contribution."
+  ],
+  "ordinary_search_scope": "A conventional symbolic search control may prioritize actual known facts, unification, size, proof cost and goal similarity, and may construct generic equality-transport macros expanded to the same three primitives. It receives no saved donor word, learned body assignment, target-selected base rule restriction or supplied route. Heuristic exhaustion is not finite-language exhaustion; all proposal/time/fact/word bounds and incomplete search choices must be reported.",
+  "resource_policy": {
+    "native_success_seconds_strict": 20,
+    "aggregate_memory_bytes": 536870912,
+    "single_process_terminal_policy": "B=T; no children",
+    "failure_evidence_seconds": 55,
+    "owned_wall_seconds": 60,
+    "caller_seconds": 90,
+    "termination_allowance_seconds": 1,
+    "root_owns_all_actuals": true
+  },
+  "acceptance": {
+    "new_language_implementation_accepted": false,
+    "complete_legacy_embedding_accepted": false,
+    "complete_ground_counts_accepted": false,
+    "new_right_two_proof_accepted": false,
+    "complete_GCTS_model_accepted": false,
+    "GCTS_advantage_or_RL_accepted": false,
+    "universal_finite_Wang_palette_accepted": false,
+    "broad_goal_complete": false
+  }
+}

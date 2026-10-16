@@ -1,0 +1,104 @@
+{
+  "actual_word_or_Q_input_read": false,
+  "author_identity": "/root/arithmetic_induction",
+  "board_assumptions": [
+    "All positive support is contained in \\(Q_H=\\{(0,r):0\\le r<H\\}\\). Every required point has total \\(T(p)=1\\), with exact unit contributions. A placement identity is its complete type plus translation, selected at most once; contributions of distinct placements add.",
+    "Fixed markings are \\(m(1,y)=\\mathrm O(e)\\) for every \\(1-H\\le y<0\\), and \\(m(1,H-1)=\\mathrm F(G)\\). The union of every active and fixed marking is single-valued wherever assigned, including mark-only points.",
+    "Each placed prototype is independently established to be a literal valid primitive instance in the same original theory/Gamma/parameters/bounded profile. It is not enough for a producer to claim membership or for the point labels merely to match.",
+    "For completeness relative to all bounded-language words, the inventory must contain every such primitive instance at every ordered offset tuple in the declared range when internally consistent. Soundness of a particular board only needs membership of its selected prototypes. Completeness is conditional on this coverage; neither the converter nor this note certifies complete ground counts."
+  ],
+  "clock_tests_grants_actuals_or_publication": false,
+  "completeness_relative_to_words": {
+    "proof": [
+      "Use a valid word from the same bounded primitive language and original context, with every source reference strict-prior. Its first command must have zero ports: a nonzero-port command would require an index smaller than zero. Therefore that exact first command can be repeated as a valid filler; this does not invent an axiom, fact or proof rule.",
+      "Put \\(p=H-L\\). Prepend \\(p\\) copies of the first zero-port command. Move original row \\(r\\) to row \\(p+r\\), and change each original source \\(k\\) to \\(p+k\\). Witness formulas, theory/context indices and logical side conditions are unchanged. The padded word has \\(H\\) commands and final conclusion \\(G\\).",
+      "For each original port use \\(d=(p+k)-(p+r)=k-r\\). Thus \\(1-H\\le d<0\\); padding changes no relative offset. Choose the complete inventory prototype for the exact witness, actual ordered prior formulas and these offsets, and translate it to its padded output row. Fillers use the same zero-port type at distinct translations. Their repeated type does not repeat a placement identity.",
+      "Every row now has exactly one positive unit and no positive support outside Q_H. Each read formula equals the output formula of its actual source row by word validity. Duplicate reads therefore agree. Offset marks occupy their own ordered-port channels at the output row; different rows do not conflict there. No constructed read lies in a negative absolute row, and the final formula agrees with G. All fixed and active markings agree. Hence the board is exact.",
+      "This padding/reconstruction is the specific convention checked by the Root converter and separate checker. Other valid words/boards may exist; the theorem does not require the discovery algorithm to choose this padding or enumerate every board."
+    ],
+    "statement_latex": "\\[\\text{Valid nonempty inventory-language word of length }1\\le L\\le H\\text{ ending in }G\\ \\Longrightarrow\\ \\text{an exact board on }Q_H.\\]"
+  },
+  "excluded_claims": [
+    "No automatic theorem discovery from a supplied word-to-board projection. A fresh discovered checked word is a separate experimental result.",
+    "No complete candidate graph, domain zero/one, globaldead/forced/earliest-generation scheduling, exact rollback or GCTS trajectory follows from a positive board. Those are additional algorithm/conformance obligations.",
+    "No learned receptor/marking/RL activation or speed contribution follows.",
+    "This palette depends on input/profile/height, carries remote point markings and uses arbitrary tagged formula values. It is not an adjacency-only Wang construction or one fixed universal finite palette.",
+    "No full FOL/PA, induction, Turing completeness, arithmetic nonprovability or unbounded-language completeness is claimed.",
+    "No solver/checker/Source execution, actual word/Q/model read, clock/test/grant/plan/publication occurred."
+  ],
+  "fixed_data": {
+    "context": "Fix a literal theory \\(\\mathcal T\\), the whole occurrence-indexed undischarged context \\(\\Gamma\\), original parameter set \\(P\\), closed target \\(G\\), input epoch \\(e\\), and finite height \\(1\\le H\\le24\\). They are private common authority, independent of a proposed board.",
+    "formula_values": "Let \\(\\operatorname{enc}(A)\\) be an injective canonical encoding of validated literal formula ASTs. Equality of marking values compares the full tagged value, not just a digest. Define \\(\\mathrm F(A)=[\\texttt{formula},\\operatorname{enc}(A)]\\), \\(\\mathrm O(e)=[\\texttt{outside},e]\\), and \\(\\mathrm D(d)=[\\texttt{offset},d]\\). The tags are disjoint. Preserve literal binders and repeated ports; no alpha quotient is assumed.",
+    "logic": "Use exactly the declared bounded six-rule primitive language and original kernel/independent1717 meanings. Axiom/assumption/UI/equality-transport licences have zero ports; MP has two ordered ports; generalization has one. UI and equality transport conclude their checked implication formula, never an unstated rewritten fact. UG uses the full original Gamma side condition. Every selected recipe must be valid in that fixed context and bounded language."
+  },
+  "prototype_definition": {
+    "action": "Allowed placements are integer translations only, with every value unchanged. No rotation, reflection, coordinate-dependent reinterpretation, shape intersection or separate geometric legality test.",
+    "consistency": "Retain a prototype only if duplicate marking assignments agree. Ordered duplicate ports are allowed when their literal required formula values agree; they are not silently dropped. Missing marks remain absent, rather than becoming assigned zero.",
+    "licence": "A prototype is determined by a valid primitive witness \\(w\\), its output \\(C\\), its ordered premise occurrences \\((A_0,\\ldots,A_{a-1})\\), the same epoch \\(e\\), and ordered offsets \\(d_j\\in\\{1-H,\\ldots,-1\\}\\). Arity \\(a\\) is the exact primitive arity, so zero-port prototypes have no offsets. Keep complete preimages; an ID digest is not a substitute for them.",
+    "m_latex": "\\[m(1,0)=\\mathrm F(C),\\qquad m(1,d_j)=\\mathrm F(A_j),\\qquad m(2+j,0)=\\mathrm D(d_j).\\]",
+    "t_latex": "\\[t(0,0)=1,\\qquad t(p)=0\\quad(p\\ne(0,0)).\\]"
+  },
+  "references": {
+    "bounded_profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "converter": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "converter_contract": {
+      "bytes": 4122,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/Source-contract-v1.json",
+      "sha256": "9911b693eb078a69d32019fc4847266b53a23f12fac91f262034f66707fa40e4"
+    },
+    "independent_point_checker": {
+      "bytes": 10201,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "point_checker_contract": {
+      "bytes": 6673,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/Source-contract-v1.json",
+      "sha256": "f906431ebe88084bb18ee537c388176e8a2110312cfa6a69792738c9a23a9ae9"
+    },
+    "unchanged_primitive_endpoint": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    }
+  },
+  "schema": "bounded-word-translated-point-board-correspondence-metatheorem-v1",
+  "soundness": {
+    "proof": [
+      "Each prototype has exactly one positive unit at its local origin. Because all positive support is inside Q_H, each placement is translated by (0,r) for a declared row. Exact unit capacity gives exactly one placement at each row and no extra positive placement; enumerate them in increasing row order.",
+      "For a port of the row-\\(r\\) placement, let \\(k=r+d_j\\). Strict negativity gives \\(k<r\\). The height-bounded offset gives \\(k\\ge1-H\\). If \\(k<0\\), the port assigns \\(\\mathrm F(A_j)\\) at \\((1,k)\\), while the fixed boundary assigns the disjoint value \\(\\mathrm O(e)\\). Exact agreement forbids this. Hence every port reads an actual earlier row \\(0\\le k<r\\). Merely requiring an arbitrary negative offset, without covering every potentially read negative row by the sentinel, would not prove this step.",
+      "The unique placement at row \\(k\\) marks \\((1,k)\\) by its output \\(\\mathrm F(C_k)\\). The reading port marks the same point by \\(\\mathrm F(A_j)\\). Full literal agreement and injectivity of enc imply \\(C_k=A_j\\), occurrence by occurrence. Repeated source indices are preserved and need no distinctness assumption.",
+      "Convert each row witness to its exact command, replacing MP/UG ports with these actual earlier row indices in original order. Induct on the row: zero-port commands are original licensed axioms/assumptions/implication schemata; nonzero-port commands have precisely their required previously derived premises. Inventory validity therefore gives each conclusion under the same whole original Gamma, including the UG restriction.",
+      "The output marking of the final row agrees with fixed \\(\\mathrm F(G)\\), so its output is exactly \\(G\\). The projected word has exactly \\(H\\) primitive commands and strict-prior references. This proves the claim. It does not show that any search procedure produced the board."
+    ],
+    "statement_latex": "\\[\\text{Exact inventory-valid board on }Q_H\\ \\Longrightarrow\\ \\Gamma\\vdash_{\\mathcal T}^{\\text{primitive},\\,H}G.\\]"
+  },
+  "source_or_scientific_function_calls": 0,
+  "status": "SOURCE_LEVEL_MATHEMATICAL_ARGUMENT_CONDITIONAL_ON_EXACT_DECLARED_INVENTORY_AND_INPUT",
+  "summary": "Under the explicit assumptions below, exact height-H translated point boards and bounded-language primitive derivation words of length at mostH have the same positive endpoint. A board projects to an H-command derivation; a shorter nonempty word pads by its first zero-port command and translates into a board. This is a conditional representation theorem, not automatic proof discovery or an implemented GCTS search theorem.",
+  "verification_complexity": {
+    "actual_checker_implementation": "The authored checker uses Python point dictionaries plus sorted receipt output, so an expected/amortized hash-table bound may be used only with that stated assumption; no hostile collision or fixed runtime bound is proved. Its work scales with the explicit selected packet and full-value encodings, not unused virtual ground-inventory cardinality.",
+    "external_logic_cost": "Add the actual bounded-membership/substitution and independent word-check costs for every used primitive, plus Source/input authentication, setup/output/terminal. No count of schemata or selected rows alone bounds these costs; no measured speed or original20s/512MiB fit is inferred.",
+    "point_union_reference_bound": "A deterministic implementation may sort all point occurrences and compare equal-point groups: \\(O(M+R\\log R\\cdot b)\\) bit work under linear full-value comparison/encoding, and \\(O(M+Rb)\\) retained space. It must inspect every payload used; formula equality is not constant-time by decree.",
+    "representation_assumptions": "Explicit finite packet/word with total encoded size M, R total positive/mark occurrences, integer coordinates of bit length at mostb, and independently verifiable selected primitive witnesses. Full formula strings/preimages are retained. H<=24 here; asymptotic statements only describe a general finite-height representation."
+  },
+  "what_current_Source_checks_and_does_not_check": {
+    "converter": "Untrusted deterministic proposal from an original word: first-zero padding, shifts, preimages, t/m and boundary. It performs no logical acceptance/search.",
+    "external_obligations": "Check each padded primitive against selected bounded membership and check the entire padded word with unchanged1717 against the private original theory/parameters/Gamma/closed target. Authenticate original input/Source/EOF and current resources separately. A point packet alone cannot replace any of these checks.",
+    "independent_point_checker": "Reconstructs the same complete packet from private original word/height/epoch, compares exact builtin types and values, then independently accumulates all positive totals and literal marking unions. This covers point correspondence for its packet; it does not itself validate primitive membership, whole original target authority or logical rules.",
+    "metatheorem_vs_evidence": "No new word, board or implementation run was supplied or executed for this note. The metatheorem assumes exact inventory validity/coverage; it does not newly establish those assumptions, complete embedding, total counts or actual correctness of either Source."
+  }
+}

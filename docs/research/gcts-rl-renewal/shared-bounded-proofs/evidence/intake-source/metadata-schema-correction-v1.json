@@ -1,0 +1,36 @@
+{
+  "schema": "shared-bounded-intake-metadata-schema-correction-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "preserved_rejected_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v2.json",
+    "sha256": "acba8bd66f7faa48020fdee721010bd6fb6dddf8dbcc26c81490bb95d8d52175",
+    "bytes": 14695
+  },
+  "preserved_rejected_handoff": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/handoff-v2.json",
+    "sha256": "9112bf5370afcf0007c36f7900b8bca6619828850828f173846dc80732defb9d",
+    "bytes": 6960
+  },
+  "corrected_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v3.json",
+    "sha256": "4987f8074fa637d66c9ae1063aa9539da958b0debbc4fbea5a07def5d0bb6cdd",
+    "bytes": 14695
+  },
+  "source_unchanged": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+    "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389",
+    "bytes": 39482
+  },
+  "finding": "Contract2 incorrectly advanced a consumed wire schema to -v2 although Source main requires -v1. The frozen20 author checks did not cover consumed schema agreement; Root and independent peer found this static integration error before activation.",
+  "only_contract_data_change": "schema literal restored to shared-bounded-ordinary-positive-cold-Source-contract-v1; artifact filename version advances to3. Every other contract value remains identical.",
+  "checks": {
+    "whole_contract_inverse_exact_except_one_schema_field": true,
+    "actual_AST_consumed_schema_matches_current": true,
+    "Source_and_all_current_role_maps_unchanged": true,
+    "all_current_Source_raw_capsules_match": true
+  },
+  "scientific_calls": 0,
+  "Source_functions_Q_clocks_tests_plans_actuals": 0,
+  "current_review": "New exact contract capsule requires genuine current Root/peer applicability; old contract2 cannot admit."
+}

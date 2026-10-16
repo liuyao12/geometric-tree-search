@@ -1,0 +1,11 @@
+{
+  "schema": "ROOT-shared-bounded-ordinary-tool-bracket-v1",
+  "plan_sha256": "27684102be63e2f7f6f0d5bc984da40fbd39931c4ac896c1f33bd5f0b1d5f77f",
+  "plan_bytes": 4495,
+  "began_Date_ms": 1792116227430,
+  "ended_Date_ms": 1792116228424,
+  "complete_Date_seconds": 0.994,
+  "tool_exit_code": 0,
+  "tool_session_id": null,
+  "output": "{\"ROOT_primary_accepted\": false, \"ROOT_resource_accepted\": false, \"external_began_ns\": 456035509496000, \"invocation_id\": \"shared-bounded-right-two-ordinary-20261015-v2\", \"measurement_only\": true, \"meter_returncode\": 0, \"plan_bytes\": 4495, \"plan_sha256\": \"27684102be63e2f7f6f0d5bc984da40fbd39931c4ac896c1f33bd5f0b1d5f77f\", \"postterminal_native_probe_ns\": 456036395759000, \"probe_returncode\": 0, \"purpose\": \"shared-bounded-ordinary-positive-word\", \"schema\": \"ROOT-ordinary-external-observation-v1\"}\n"
+}

@@ -1,0 +1,54 @@
+{
+  "Q_or_model_decodes": 0,
+  "author_identity": "/root",
+  "current_policy": {
+    "bytes": 8773,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+    "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+  },
+  "disposition": {
+    "actual_or_model_admission": false,
+    "concrete_unresolved_policy_blockers": [],
+    "full_legacy_embedding_or_ground_counts_accepted": false,
+    "implementation_Source_review_passed": false,
+    "policy_direction_and_boundaries_review_passed": true
+  },
+  "exact_semantic_inverse_to_v1_confirmed": true,
+  "next": "Review exact current frozen membership and ordinary-proposer implementation before Root activation. No further policy framework or engine change requested.",
+  "prior_policy": {
+    "bytes": 7444,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v1.json",
+    "sha256": "09ca475758de1ef3463b5c33fe1606ef2812090b4f0361423db7d3210163a3df"
+  },
+  "prior_whole_policy_review": {
+    "bytes": 10433,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-policy-independent-review-source-20261015/review-v1.json",
+    "sha256": "2859e5b214eb33e9b7881c8ab12ace63f30ab3351f15863a9331470cd89dd678"
+  },
+  "resolutions": [
+    {
+      "evidence": "New syntax.fresh_exhaustion requires an exact complete literal name-set census for OUT_OF_PROFILE_FRESH_NAMESPACE at suffix>=32. Time/visit/depth/computation exhaustion stays UNKNOWN and propagates; no new fresh name or alpha equivalence. New membership_outcomes explicitly separates MEMBER, evidenced OUT_OF_PROFILE and UNKNOWN.",
+      "id": "POLICY-FRESH-1",
+      "resolved_at_policy_level": true
+    },
+    {
+      "evidence": "New syntax.input_gate validates every named axiom, every original Gamma occurrence and exact target before constructing a language object, rejecting the profile/input pairing on out-of-profile inputs without dropping theory/context.",
+      "id": "POLICY-INPUT-1",
+      "resolved_at_policy_level": true
+    }
+  ],
+  "retained_scope": "All other whole-v1 findings/review checks are retained by exact semantic inverse. Original six-rule checker/target/empty Gamma/24-row endpoint and separately named B12/N44 profile remain fixed; no GCTS zero/one/count authority, no old ceiling relabel and no supplied proof route. A policy pass is neither algorithm completeness, Source qualification, proof discovery nor practical native/resource fit.",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "shared-bounded-language-policy-v2-targeted-resolution-review-v1",
+  "scientific_calls": 0,
+  "six_changed_or_added_paths": [
+    "/schema",
+    "/profile_name",
+    "/supersedes_unactivated_policy",
+    "/syntax/fresh_exhaustion",
+    "/syntax/input_gate",
+    "/primitive_relation/membership_outcomes"
+  ],
+  "source_and_logical_review_only": true,
+  "whole_current_policy_read": true
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "shared-bounded-point-packet-controls-prospective-v1",
+  "cases": [
+    "Boolean-coordinate",
+    "Boolean-weight",
+    "Boolean-source",
+    "Boolean-index",
+    "stale-epoch",
+    "stale-preimage",
+    "wrong-offset",
+    "wrong-input",
+    "wrong-source-index",
+    "wrong-target-boundary",
+    "wrong-outside-boundary",
+    "duplicate-row",
+    "missing-row",
+    "conflicting-mark"
+  ],
+  "count": 14,
+  "mutations": "Only isolated builtin packet deep copies made by current intake Source; private original word/height/epoch unchanged. No checker/Source/callback/native mutation.",
+  "required_observation": "Every one calls genuine independently authored check_point_board under full pre/post seals; only exact ValueError with one of the four literal reconstruction reasons counts. Normal return fails the whole stage, no N/A.",
+  "expected_reason_set": [
+    "exact packet value type",
+    "exact packet dictionary fields",
+    "exact packet ordered array length",
+    "exact packet scalar value"
+  ],
+  "exception_policy": "RuntimeError/TimeoutError/native/callback/other ValueError and every postguard failure propagate. Immediate original-caller check plus a fresh full boundary occur outside expected-error catch before recording rejection.",
+  "scope": "Negative packets generally stop at exact complete reconstruction comparison; do not claim later overfill/conflict accumulator branch coverage. Unmodified positive packet exercises full unit totals and literal marking union.",
+  "requires_original_word_shape": "Boolean-source/wrong-source controls require an actual generalize command and Boolean-index an actual MP command; missing shape fails stage, never N/A. The fixed input is the actual searched word, not an authored positive fixture.",
+  "all_costs": "Mutation/copy/guard/calls/error/output remain inside original native20 and external B=T/512;55 only failure evidence.",
+  "actual_executed": false
+}

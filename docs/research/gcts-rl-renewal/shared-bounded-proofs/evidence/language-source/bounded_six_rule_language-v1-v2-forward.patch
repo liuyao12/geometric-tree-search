@@ -1,0 +1,20 @@
+--- bounded_six_rule_language_v1.py
++++ bounded_six_rule_language_v2.py
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'shared-bounded-six-rule-language-v1'
++VERSION = 'shared-bounded-six-rule-language-v2'
+ PROFILE_NAME = 'shared-bounded-six-rule-B12-N44-v2'
+ PROFILE_SHA256 = '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'
+ KERNEL_SHA256 = '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'
+@@ -82,6 +82,8 @@
+ 
+ 
+ class BoundedLanguage:
++    OutsideLanguage = OutsideLanguage
++
+     def __init__(self, *, declaration_raw, expected_declaration_sha256, profile_raw,
+                  source_bindings, kernel_module, local_deadline, tick):
+         need(callable(tick), 'resource callback')

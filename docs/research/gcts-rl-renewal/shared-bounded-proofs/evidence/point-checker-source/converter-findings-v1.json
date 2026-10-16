@@ -1,0 +1,47 @@
+{
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer did not author Root converter. Reviewer separately authored the new independent point checker; this proposal review does not independently qualify that checker. Earlier arithmetic/family/custody authorship is contextual, not new Source or actual acceptance.",
+  "check_count": 12,
+  "checker_independently_reviewed": false,
+  "checks": [
+    "Entire converter Source/contract read; exact raw pin and compile-only",
+    "Exact primitive command fields and all ordered refs strict-prior integer",
+    "First command necessarily zero-port; padding copies it, never invents a rule",
+    "Original full word stays intact; every physical ref shifts by same filler count",
+    "Last padded row retains original word final formula; all declared H rows occupied once",
+    "Each prototype retains complete witness/ordered premise/offset/epoch preimage",
+    "Local unit t and formula/source/offset marks translate exactly without changing values",
+    "Fixed negative-row sentinel tag disjoint from formula tag, final target mark explicit",
+    "Repeated ordered ports retained; matching duplicate marking occurrences legal",
+    "Packet retains all scientific/logical/resource/trajectory flags false",
+    "No converter execution/import of project/logical/point functions or candidate enumeration",
+    "No logical membership from proposal or positive board; external padded membership+1717 required"
+  ],
+  "concrete_blockers": [],
+  "limitations": [
+    "Converter does not itself validate primitive logic or bounded membership, type-check every AST scalar, check complete point union or establish current target authority. It is correctly labelled untrusted; external gates are mandatory.",
+    "The implicit all-primitives inventory is described rather than enumerated/counted. This can support a positive checked board but supplies no complete graph, forced/dead decision, scheduler, rollback or search evidence.",
+    "No actual word/target proof route was received; no Source function, test, clock, model decode or experiment executed."
+  ],
+  "new_checker_Source": {
+    "bytes": 10201,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+    "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "bounded-word-to-point-board-proposal-independent-Source-findings-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 5528,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+    "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+  },
+  "source_contract": {
+    "bytes": 4122,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/Source-contract-v1.json",
+    "sha256": "9911b693eb078a69d32019fc4847266b53a23f12fac91f262034f66707fa40e4"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "whole_source_and_contract_read": true
+}

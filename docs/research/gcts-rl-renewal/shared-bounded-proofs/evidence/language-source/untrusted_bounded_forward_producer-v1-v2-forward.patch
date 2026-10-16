@@ -1,0 +1,62 @@
+--- untrusted_bounded_forward_producer_v1.py
++++ untrusted_bounded_forward_producer_v2.py
+@@ -7,7 +7,7 @@
+ import copy
+ import json
+ 
+-VERSION = 'untrusted-bounded-known-fact-producer-v1'
++VERSION = 'untrusted-bounded-known-fact-producer-v2'
+ SEARCH_LIMITS = {'maximum_rounds': 32, 'maximum_facts': 2048,
+                  'maximum_parameter_terms': 256, 'maximum_proposals': 50000,
+                  'maximum_atomic_templates_per_pair': 64, 'maximum_word_commands': 24}
+@@ -107,11 +107,9 @@
+     serial = [0]
+     attempted_ui, attempted_mp, attempted_ug, attempted_transport = set(), set(), set(), set()
+     stop = 'heuristic worklist quiet; implicit syntax carrier not exhausted'
+-    outside = language.__class__.__module__
+-    # The injected language's definite exclusion type is obtained from a known failure
+-    # only by its module API in the caller contract; here catch its ValueError superclass.
+-    # TimeoutError is never caught as an exclusion.
+-    del outside
++    # Capture the exact language-defined definite exclusion class once.
++    # Resource/callback/programming failures are not membership exclusions.
++    outside_language = language.OutsideLanguage
+     target_key = _key(language.target)
+     target_terms = {_key(term) for term in _term_occurrences(language.target)}
+ 
+@@ -144,7 +142,7 @@
+                 continue
+             try:
+                 language.term(term)
+-            except ValueError:
++            except outside_language:
+                 continue
+             if len(terms) >= limits['maximum_parameter_terms']:
+                 counters['term_limit_omissions'] += 1
+@@ -159,7 +157,7 @@
+         counters['proposals'] += 1
+         try:
+             language.primitive(witness, [prior[2] for prior in premises])
+-        except ValueError:
++        except outside_language:
+             counters['membership_rejections'] += 1
+             return None
+         serial[0] += 1
+@@ -274,7 +272,7 @@
+                         license_node = node({'rule': 'instantiate', 'universal': copy.deepcopy(universal[2]),
+                                              'term': copy.deepcopy(term),
+                                              'formula': ['imp', copy.deepcopy(universal[2]), instance]}, [])
+-                    except ValueError:
++                    except outside_language:
+                         counters['membership_rejections'] += 1
+                         continue
+                     changed = add(mp(universal, license_node)) or changed
+@@ -302,7 +300,7 @@
+                                                  'template': template, 'left': copy.deepcopy(left),
+                                                  'right': copy.deepcopy(right), 'formula': ['imp',
+                                                  copy.deepcopy(equality[2]), ['imp', copy.deepcopy(atom[2]), transported]]}, [])
+-                        except ValueError:
++                        except outside_language:
+                             counters['membership_rejections'] += 1
+                             continue
+                         intermediate = mp(equality, license_node)

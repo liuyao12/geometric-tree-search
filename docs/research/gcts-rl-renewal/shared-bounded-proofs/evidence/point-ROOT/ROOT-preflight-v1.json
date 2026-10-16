@@ -1,0 +1,29 @@
+{
+  "actual_execution_occurred": false,
+  "external_directory_absent": true,
+  "helpers_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors"
+  ],
+  "output_directory_absent": true,
+  "plan": {
+    "bytes": 5110,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-ROOT-20261015/ROOT-plan-v1.json",
+    "sha256": "8ee6c2b59902f87111369b31b8bcafc74c3d8a4c273daaa18cdb317382938f8b"
+  },
+  "schema": "ROOT-shared-bounded-point-board-preflight-v1",
+  "scientific_calls": 0
+}

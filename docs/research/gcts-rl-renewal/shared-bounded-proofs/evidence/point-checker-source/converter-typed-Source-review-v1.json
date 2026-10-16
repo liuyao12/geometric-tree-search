@@ -1,0 +1,28 @@
+{
+  "actual_activation": false,
+  "all_checks_passed": true,
+  "author_identity": "/root",
+  "findings": {
+    "bytes": 3249,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/converter-findings-v1.json",
+    "sha256": "1e512b6b34ba88b2fcbc15d6b4a3adcd28c727f64ca62dad7a6f26e3b29160fc"
+  },
+  "limitations": "Conditional untrusted proposal Source only; independent exact point checker, bounded padded-word membership, unchanged1717 logical endpoint and cold resource/output gates remain separate.",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "bounded-word-to-point-board-proposal-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-untrusted-bounded-word-to-point-board-proposal-Source",
+  "source": {
+    "bytes": 5528,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+    "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+  },
+  "source_contract": {
+    "bytes": 4122,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/Source-contract-v1.json",
+    "sha256": "9911b693eb078a69d32019fc4847266b53a23f12fac91f262034f66707fa40e4"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

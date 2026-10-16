@@ -1,0 +1,20 @@
+{
+  "actual_word_or_Q_read": false,
+  "author_identity": "/root/arithmetic_induction",
+  "critical_assumptions": [
+    "Every selected prototype is exact primitive-valid under whole original Gamma",
+    "Offsets are strictly negative AND bounded to1-H..-1; outside sentinel covers every potentially negative read",
+    "Exact unit t target/no outside positive support/full literal tagged m agreement",
+    "Complete inventory coverage needed only for the all-words completeness direction",
+    "Current Source point receipt still requires external bounded membership/1717 whole word check"
+  ],
+  "schema": "bounded-word-point-board-correspondence-handoff-v1",
+  "scientific_calls": 0,
+  "scope": "Conditional soundness and completeness relative to declared inventory-language words; no automatic discovery, trajectory/count, palette/universality or runtime admission.",
+  "source_level_mathematics_only": true,
+  "statement": {
+    "bytes": 14225,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-correspondence-source-20261015/correspondence-v1.json",
+    "sha256": "8d67086414f86015c9da071753e48d93a4f1f9522c0ab323aa568899490207c4"
+  }
+}

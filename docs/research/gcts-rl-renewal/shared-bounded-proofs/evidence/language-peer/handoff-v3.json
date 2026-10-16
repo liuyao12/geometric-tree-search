@@ -1,0 +1,49 @@
+{
+  "actual_admission": false,
+  "advisories": [
+    "V3-TERM-ONLY-QUIESCENCE-1"
+  ],
+  "concrete_soundness_blockers": [],
+  "findings": {
+    "bytes": 13689,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/findings-v3.json",
+    "sha256": "708035cdde81c1d7c24492c5d993a0efb8b4f42ee48c12a74b0b6db8f7d9a4dc"
+  },
+  "membership_applicability": {
+    "bytes": 2288,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/membership-typed-Source-review-v3.json",
+    "sha256": "64ee4adb46ba82693685a802456e74d6186bdaa5722dafd19e641bdb5ccc74ca"
+  },
+  "prior_history_preserved": {
+    "bytes": 2391,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/handoff-v2.json",
+    "sha256": "108b4cfc49c984b9f37f436ed7ddb56a2f439830ce3f11ad27e6bdfd280376e9"
+  },
+  "proposer_review": {
+    "bytes": 2259,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/proposer-typed-Source-review-v3.json",
+    "sha256": "d062ed6500fae95736b413f9d6a6034326b50d08b2e1a3aaa1c5d217d06bdef2"
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "shared-bounded-language-independent-review-handoff-v3",
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 19009,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v3.json",
+    "sha256": "ab9734d53223394a49e2e234777c4f52c36f524b586e364bb9e0c71d2d6e6ef0"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 23734,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+      "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a"
+    }
+  }
+}

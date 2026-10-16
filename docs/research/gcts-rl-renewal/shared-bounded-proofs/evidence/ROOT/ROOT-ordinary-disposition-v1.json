@@ -1,0 +1,106 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_marking_activated": false,
+  "RL_accepted": false,
+  "aggregate_B_bytes": 68976640,
+  "bracket": {
+    "bytes": 433,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-tool-bracket-v1.json",
+    "sha256": "2d93cb25f95f5b2b34a6bf67a173b509a7198d2742c5b79d3489cdf3446edd34"
+  },
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 3.471,
+  "complete_GCTS_model_accepted": false,
+  "complete_ground_counts_accepted": false,
+  "complete_legacy_embedding_accepted": false,
+  "complete_wire_verified": true,
+  "full24_accepted": false,
+  "heuristic_limits": {
+    "maximum_atomic_templates_per_pair": 64,
+    "maximum_facts": 2048,
+    "maximum_parameter_terms": 256,
+    "maximum_proposals": 50000,
+    "maximum_rounds": 32,
+    "maximum_word_commands": 24
+  },
+  "invocation_id": "shared-bounded-right-two-ordinary-20261015-v1",
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "db2d91bb341aab11c7bfea33d0083ca2933cb83285c141e3c0e975e26f1afd30",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "9f798e10315e6cbc8827b32cc06cd9763f0a90b765736be5545ec4f57563bf71"
+  },
+  "native_Wang_palette_accepted": false,
+  "native_launch_to_postprobe_ns": 3299300000,
+  "native_resources_qualified": true,
+  "native_terminal": {
+    "bytes": 1662,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v1/native-terminal.json",
+    "sha256": "815136387a34ac0256612a1eab148b3eff8577857176238a1b7ace1bfeb47e42"
+  },
+  "native_worker_lifetime_ns": 3255392000,
+  "old_finite_negative_and_UNKNOWNs_unchanged": true,
+  "outputs": [
+    {
+      "bytes": 1840,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v1/search-result.json",
+      "sha256": "56430076a0250748db38ae23392ed32e1ecc4de9e37228cfe2e8fc7921e84e4b"
+    },
+    {
+      "bytes": 1522,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v1/word-check.json",
+      "sha256": "ab6b889c6e121a46270fef2e91531cf3d79e9a85719d78a153dcb57b0330e468"
+    },
+    {
+      "bytes": 4685,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v1/response.jsonl",
+      "sha256": "da1d1422548468ff9068148bdef442d799b30868b543f873c02da41504859755"
+    }
+  ],
+  "plan": {
+    "bytes": 4495,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-plan-v1.json",
+    "sha256": "dc2a6d0e87f4bd8428a90c3ac6c3bc5b3cbacfe85766ee6fec08e3d273e52d47"
+  },
+  "postterminal_observation": {
+    "bytes": 474,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v1/observation.json",
+    "sha256": "190d15258034004fc03fd2643964227c2669f879f6304f619d238e6d386a31f3"
+  },
+  "producer_counters_untrusted": {
+    "facts_added": 2048,
+    "facts_improved": 46,
+    "membership_rejections": 2050,
+    "mp_proposals": 2292,
+    "primitive_commands_constructed": 4554,
+    "proposals": 6604,
+    "rounds": 3,
+    "term_limit_omissions": 4096,
+    "terms_added": 256,
+    "transport_proposals": 645,
+    "ug_proposals": 275,
+    "ui_proposals": 3390,
+    "word_bound_omissions": 0
+  },
+  "reconciliation_scope": "Whole saved bytes, fixed authority/bindings, logical receipt and native/wire/caller metadata only; no Source/kernel/checker execution or model decode.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-shared-bounded-ordinary-disposition-v1",
+  "search_incompleteness": {
+    "UI": "known universals and retained parameter terms only",
+    "complete_language_enumeration": false,
+    "negative_certificate": false,
+    "parameter_terms": "input and actually known-fact subterms only, bounded cache",
+    "proof_selection": "one lowest encountered DAG cost per literal formula; no bounded completeness",
+    "stop_reason": "maximum_facts",
+    "template_cap_per_pair": 64,
+    "transport": "known oriented equality and known atom; single/all occurrence holes only",
+    "word_bound": 24
+  },
+  "search_status": "UNKNOWN_HEURISTIC_LIMIT",
+  "target_proof_accepted": false,
+  "terminal_T_bytes": 68976640,
+  "trajectory_accepted": false,
+  "word_commands": null
+}

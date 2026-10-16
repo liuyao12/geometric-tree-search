@@ -1,0 +1,44 @@
+{
+  "actual_activation": false,
+  "advisories": [
+    "V3-TERM-ONLY-QUIESCENCE-1"
+  ],
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 13689,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/findings-v3.json",
+    "sha256": "708035cdde81c1d7c24492c5d993a0efb8b4f42ee48c12a74b0b6db8f7d9a4dc"
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "shared-bounded-language-module-typed-Source-review-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-untrusted-bounded-ordinary-proposer-Source",
+  "scope_limit": "Whole current proposer Source/delta plus retained exact membership Source applicability; explicit heuristic omissions including term-only quiescence. No count/completeness, proof, GCTS, resource or runtime acceptance.",
+  "source": {
+    "bytes": 23734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+    "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a"
+  },
+  "source_contract": {
+    "bytes": 19009,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v3.json",
+    "sha256": "ab9734d53223394a49e2e234777c4f52c36f524b586e364bb9e0c71d2d6e6ef0"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 23734,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+      "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a"
+    }
+  }
+}

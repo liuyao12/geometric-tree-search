@@ -1,0 +1,30 @@
+{
+  "API": "check_point_board(*, commands, height, input_epoch, packet, tick)",
+  "actual_executed": false,
+  "author_identity": "/root/arithmetic_induction",
+  "checker_contract": {
+    "bytes": 6673,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/Source-contract-v1.json",
+    "sha256": "f906431ebe88084bb18ee537c388176e8a2110312cfa6a69792738c9a23a9ae9"
+  },
+  "checker_review_required": true,
+  "checker_source": {
+    "bytes": 10201,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+    "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+  },
+  "converter_findings": {
+    "bytes": 3249,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/converter-findings-v1.json",
+    "sha256": "1e512b6b34ba88b2fcbc15d6b4a3adcd28c727f64ca62dad7a6f26e3b29160fc"
+  },
+  "converter_review": {
+    "bytes": 1465,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/converter-typed-Source-review-v1.json",
+    "sha256": "d211db0126c0404cc67863289c248ca7703652e18106d99ad055243d4499b862"
+  },
+  "schema": "independent-bounded-word-point-board-Source-handoff-v1",
+  "scientific_calls": 0,
+  "scope": "Separate exact typed whole point-board reconstruction/union only; no logical/trajectory/count/resource admission. Source authoring and Root converter review, no self-review pass for new checker.",
+  "source_only": true
+}

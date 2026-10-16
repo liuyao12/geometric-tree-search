@@ -1,0 +1,419 @@
+--- producer-v3
++++ producer-v2
+@@ -7,7 +7,7 @@
+ import copy
+ import json
+ 
+-VERSION = 'untrusted-bounded-known-fact-producer-v3'
++VERSION = 'untrusted-bounded-known-fact-producer-v2'
+ SEARCH_LIMITS = {'maximum_rounds': 32, 'maximum_facts': 2048,
+                  'maximum_parameter_terms': 256, 'maximum_proposals': 50000,
+                  'maximum_atomic_templates_per_pair': 64, 'maximum_word_commands': 24}
+@@ -95,69 +95,23 @@
+                 return
+ 
+ 
+-def _match_instance(pattern, goal, variable, tick):
+-    """Literal one-variable matching is only an ordering hint; substitution rechecks it."""
+-    replacement = [None]
+-    def match(left, right, shadowed=False):
+-        tick()
+-        if type(left) is not list or type(right) is not list or not left or not right:
+-            return left == right
+-        if left[0] == 'var' and left[1] == variable and not shadowed:
+-            if replacement[0] is None:
+-                replacement[0] = copy.deepcopy(right)
+-            return replacement[0] == right
+-        if left[0] != right[0] or len(left) != len(right):
+-            return False
+-        if left[0] == 'all':
+-            return left[1] == right[1] and match(left[2], right[2], shadowed or left[1] == variable)
+-        if left[0] in ('fun', 'pred'):
+-            return left[1] == right[1] and len(left[2]) == len(right[2]) and all(
+-                match(a, b, shadowed) for a, b in zip(left[2], right[2]))
+-        if left[0] in ('var', 'bot'):
+-            return left == right
+-        return all(match(a, b, shadowed) for a, b in zip(left[1:], right[1:]))
+-    return match(pattern, goal), replacement[0]
+-
+-
+ def propose_word(*, language, tick):
+-    """Fair bounded heuristic agenda; pending goals never become accepted facts."""
++    """Return an unverified <=24-command candidate, or explicitly incomplete UNKNOWN."""
+     limits = copy.deepcopy(SEARCH_LIMITS)
+     counters = {'rounds': 0, 'proposals': 0, 'membership_rejections': 0,
+                 'facts_added': 0, 'facts_improved': 0, 'terms_added': 0,
+                 'term_limit_omissions': 0, 'word_bound_omissions': 0,
+                 'ui_proposals': 0, 'mp_proposals': 0, 'ug_proposals': 0,
+-                'transport_proposals': 0, 'primitive_commands_constructed': 0,
+-                'goal_ui_attempts': 0, 'goal_mp_attempts': 0, 'goal_ug_attempts': 0,
+-                'goal_transport_watches': 0, 'goal_transport_firings': 0,
+-                'agenda_tasks': {'UI': 0, 'MP': 0, 'transport': 0, 'UG': 0}}
++                'transport_proposals': 0, 'primitive_commands_constructed': 0}
+     facts, terms = {}, {}
+     serial = [0]
+     attempted_ui, attempted_mp, attempted_ug, attempted_transport = set(), set(), set(), set()
++    stop = 'heuristic worklist quiet; implicit syntax carrier not exhausted'
++    # Capture the exact language-defined definite exclusion class once.
++    # Resource/callback/programming failures are not membership exclusions.
+     outside_language = language.OutsideLanguage
+     target_key = _key(language.target)
+     target_terms = {_key(term) for term in _term_occurrences(language.target)}
+-    stop = 'heuristic worklist quiet; implicit syntax carrier not exhausted'
+-    # Syntax hints only: eligible target subformulas, never initial facts.
+-    goals = {}
+-    syntax_pending = [language.target]
+-    while syntax_pending:
+-        tick()
+-        formula = syntax_pending.pop()
+-        try:
+-            language.formula(formula)
+-        except outside_language:
+-            pass
+-        else:
+-            goals[_key(formula)] = copy.deepcopy(formula)
+-        if formula[0] == 'all':
+-            syntax_pending.append(formula[2])
+-        elif formula[0] in ('not', 'imp', 'and', 'or'):
+-            syntax_pending.extend(formula[1:])
+-    newly_known = []
+-    implication_index = {}
+-    transport_waiters = {}
+-    watch_seen, watch_fired, goal_ui_seen = set(), set(), set()
+-    active_streams = {}
+ 
+     def ticked():
+         tick()
+@@ -225,12 +179,7 @@
+             raise SearchStopped('maximum_facts')
+         facts[key] = result
+         counters['facts_added' if prior is None else 'facts_improved'] += 1
+-        if key == target_key:
+-            raise SearchStopped('actual known target ancestry; independent check still required')
+         add_terms(result[2])
+-        newly_known.append(result)
+-        if result[2][0] == 'imp' and _key(result[2][2]) in goals:
+-            implication_index.setdefault(_key(result[2][1]), []).append(result)
+         return True
+ 
+     def mp(antecedent, implication):
+@@ -263,173 +212,8 @@
+                 'binding': copy.deepcopy(language.binding), 'commands': commands,
+                 'origin': 'untrusted-on-demand-known-fact-search', 'full_word_not_prefix': True}
+ 
+-    def execute_ui(universal, term):
+-        counters['ui_proposals'] += 1
+-        try:
+-            instance = language.substitute(universal[2][2], universal[2][1], term)
+-            license_node = node({'rule': 'instantiate', 'universal': copy.deepcopy(universal[2]),
+-                                 'term': copy.deepcopy(term),
+-                                 'formula': ['imp', copy.deepcopy(universal[2]), instance]}, [])
+-        except outside_language:
+-            counters['membership_rejections'] += 1
+-            return None
+-        return mp(universal, license_node)
+-
+-    def execute_transport(equality, atom, template):
+-        counters['transport_proposals'] += 1
+-        left, right = equality[2][1:]
+-        try:
+-            transported = language.substitute(template, language.hole, right)
+-            license_node = node({'rule': 'eq_subst', 'variable': language.hole,
+-                                 'template': copy.deepcopy(template), 'left': copy.deepcopy(left),
+-                                 'right': copy.deepcopy(right), 'formula': ['imp',
+-                                 copy.deepcopy(equality[2]), ['imp', copy.deepcopy(atom[2]), transported]]}, [])
+-        except outside_language:
+-            counters['membership_rejections'] += 1
+-            return None
+-        return mp(atom, mp(equality, license_node))
+-
+-    def fire_watch(watch, atom):
+-        equality, template, goal, token = watch
+-        firing = (token, atom[0])
+-        if firing in watch_fired:
+-            return
+-        watch_fired.add(firing)
+-        counters['goal_transport_firings'] += 1
+-        result = execute_transport(equality, atom, template)
+-        if result is not None and result[2] == goal:
+-            add(result)
+-
+-    def close_goals():
+-        # Every closing rule requires ACTUAL known premises and original primitive
+-        # expansion. Missing premises are indexed hints, never inserted into facts.
+-        while newly_known and target_key not in facts:
+-            ticked()
+-            prior = newly_known.pop(0)
+-            formula, key = prior[2], _key(prior[2])
+-            for implication in implication_index.get(key, ()):
+-                counters['goal_mp_attempts'] += 1
+-                add(mp(prior, implication))
+-            if formula[0] == 'imp' and _key(formula[2]) in goals and _key(formula[1]) in facts:
+-                counters['goal_mp_attempts'] += 1
+-                add(mp(facts[_key(formula[1])], prior))
+-            for goal in goals.values():
+-                ticked()
+-                if _key(goal) in facts:
+-                    continue
+-                if goal[0] == 'all' and goal[1] in language.parameters and goal[1] not in language.forbidden and goal[2] == formula:
+-                    counters['goal_ug_attempts'] += 1
+-                    counters['ug_proposals'] += 1
+-                    add(node({'rule': 'generalize', 'variable': goal[1],
+-                              'formula': copy.deepcopy(goal)}, [prior]))
+-                if formula[0] == 'all':
+-                    token = (prior[0], _key(goal))
+-                    if token not in goal_ui_seen:
+-                        goal_ui_seen.add(token)
+-                        counters['goal_ui_attempts'] += 1
+-                        matched, term = _match_instance(formula[2], goal, formula[1], ticked)
+-                        if matched:
+-                            if term is None and terms:
+-                                term = min(terms.values(), key=lambda t: (_size(t), _key(t)))
+-                            if term is not None:
+-                                try:
+-                                    language.term(term)
+-                                except outside_language:
+-                                    counters['membership_rejections'] += 1
+-                                else:
+-                                    term_key = _key(term)
+-                                    if term_key not in terms:
+-                                        if len(terms) >= limits['maximum_parameter_terms']:
+-                                            counters['term_limit_omissions'] += 1
+-                                            continue
+-                                        terms[term_key] = copy.deepcopy(term)
+-                                        counters['terms_added'] += 1
+-                                    result = execute_ui(prior, term)
+-                                    if result is not None and result[2] == goal:
+-                                        add(result)
+-            for watch in transport_waiters.get(key, ()):
+-                fire_watch(watch, prior)
+-            if formula[0] == 'eq' and formula[1] != formula[2]:
+-                left, right = formula[1:]
+-                for goal in goals.values():
+-                    if goal[0] not in ('eq', 'pred') or _key(goal) in facts:
+-                        continue
+-                    # Reverse use here computes only a missing-premise hint. The
+-                    # actual deduction remains forward from equality + known atom.
+-                    for template in _atomic_templates(goal, right, language.hole,
+-                                                      limits['maximum_atomic_templates_per_pair'], ticked):
+-                        try:
+-                            language.template(template)
+-                            premise = language.substitute(template, language.hole, left)
+-                            language.formula(premise)
+-                        except outside_language:
+-                            counters['membership_rejections'] += 1
+-                            continue
+-                        premise_key = _key(premise)
+-                        token = (prior[0], _key(template), _key(goal), premise_key)
+-                        if token in watch_seen:
+-                            continue
+-                        watch_seen.add(token)
+-                        watch = (prior, template, goal, token)
+-                        transport_waiters.setdefault(premise_key, []).append(watch)
+-                        counters['goal_transport_watches'] += 1
+-                        if premise_key in facts:
+-                            fire_watch(watch, facts[premise_key])
+-
+-    def ui_tasks(current, ordered_terms):
+-        for universal in current:
+-            if universal[2][0] != 'all':
+-                continue
+-            for term in ordered_terms:
+-                ticked()
+-                pair = (universal[0], _key(term))
+-                if pair not in attempted_ui:
+-                    attempted_ui.add(pair)
+-                    yield (universal, term)
+-
+-    def mp_tasks(current):
+-        for implication in current:
+-            ticked()
+-            formula = implication[2]
+-            if formula[0] != 'imp' or _key(formula[1]) not in facts:
+-                continue
+-            antecedent = facts[_key(formula[1])]
+-            pair = (antecedent[0], implication[0])
+-            if pair not in attempted_mp:
+-                attempted_mp.add(pair)
+-                yield (antecedent, implication)
+-
+-    def transport_tasks(current):
+-        equalities = [item for item in current if item[2][0] == 'eq']
+-        atoms = [item for item in current if item[2][0] in ('eq', 'pred')]
+-        for equality in equalities:
+-            left, right = equality[2][1:]
+-            if left == right:
+-                continue
+-            for atom in atoms:
+-                ticked()
+-                pair = (equality[0], atom[0])
+-                if pair in attempted_transport:
+-                    continue
+-                attempted_transport.add(pair)
+-                for template in _atomic_templates(atom[2], left, language.hole,
+-                                                  limits['maximum_atomic_templates_per_pair'], ticked):
+-                    yield (equality, atom, template)
+-
+-    def ug_tasks(current):
+-        for prior in current:
+-            for variable in language.parameters:
+-                ticked()
+-                if variable in language.forbidden or variable not in language.free(prior[2]):
+-                    continue
+-                pair = (prior[0], variable)
+-                if pair not in attempted_ug:
+-                    attempted_ug.add(pair)
+-                    yield (prior, variable)
+-
+     def result(found, reason):
+         ticked()
+-        pending_watch_observations = sum(key not in facts for key in transport_waiters)
+         return dict({'schema': 'shared-bounded-ordinary-proposal-v1', 'version': VERSION,
+                      'status': 'CANDIDATE_NOT_VERIFIED' if found is not None else 'UNKNOWN',
+                      'candidate': found, 'binding': copy.deepcopy(language.binding),
+@@ -437,16 +221,10 @@
+                      'incompleteness': {
+                          'stop_reason': reason, 'complete_language_enumeration': False,
+                          'negative_certificate': False,
+-                         'parameter_terms': 'input/known-fact subterms and literal goal-unified terms, same bounded cache',
+-                         'UI': 'known universals, retained parameter terms, and literal goal unification only',
+-                         'transport': 'known oriented equality plus actual known atom; single/all occurrence templates only',
++                         'parameter_terms': 'input and actually known-fact subterms only, bounded cache',
++                         'UI': 'known universals and retained parameter terms only',
++                         'transport': 'known oriented equality and known atom; single/all occurrence holes only',
+                          'proof_selection': 'one lowest encountered DAG cost per literal formula; no bounded completeness',
+-                         'vacuous_UG': 'only goal-closing vacuous UG is tried',
+-                         'agenda': 'one task per live UI/MP/transport/UG stream per cycle; new facts/terms enter next wave, goal closings immediate',
+-                         'streams_not_observed_exhausted_at_stop': [name for name, live in active_streams.items() if live],
+-                         'new_fact_notifications_remaining': len(newly_known),
+-                         'pending_goal_premise_keys': pending_watch_observations,
+-                         'goal_watches_are_observations_not_facts': True,
+                          'word_bound': 24, 'template_cap_per_pair': limits['maximum_atomic_templates_per_pair']},
+                      'logical_acceptance': False}, **{key: False for key in STRONG_FLAGS})
+ 
+@@ -459,49 +237,95 @@
+                       'formula': copy.deepcopy(language.theory['axioms'][name])}, []))
+         for index, formula in enumerate(language.gamma):
+             add(node({'rule': 'assumption', 'index': index, 'formula': copy.deepcopy(formula)}, []))
+-        close_goals()
+         for round_index in range(limits['maximum_rounds']):
+             counters['rounds'] = round_index + 1
+             found = candidate()
+             if found is not None:
+                 return result(found, 'actual known target ancestry; independent check still required')
+-            start_version = counters['facts_added'] + counters['facts_improved']
++            changed = False
+             current = sorted(list(facts.values()), key=priority)
+-            ordered_terms = sorted(terms.values(), key=lambda term: (0 if _key(term) in target_terms else 1, _size(term), _key(term)))
+-            streams = {'UI': iter(ui_tasks(current, ordered_terms)), 'MP': iter(mp_tasks(current)),
+-                       'transport': iter(transport_tasks(current)), 'UG': iter(ug_tasks(current))}
+-            active_streams = {name: True for name in streams}
+-            while any(active_streams.values()):
+-                for name in ('UI', 'MP', 'transport', 'UG'):
++            # All existing literal implications, with actual known ordered antecedents.
++            for implication in current:
++                ticked()
++                formula = implication[2]
++                if formula[0] != 'imp' or _key(formula[1]) not in facts:
++                    continue
++                antecedent = facts[_key(formula[1])]
++                pair = (antecedent[0], implication[0])
++                if pair not in attempted_mp:
++                    attempted_mp.add(pair)
++                    changed = add(mp(antecedent, implication)) or changed
++            # New universals can come from any prior rule, including UG.
++            ordered_terms = sorted(terms.values(), key=lambda term: (_size(term), _key(term)))
++            for universal in current:
++                if universal[2][0] != 'all':
++                    continue
++                for term in ordered_terms:
+                     ticked()
+-                    if not active_streams[name]:
++                    pair = (universal[0], _key(term))
++                    if pair in attempted_ui:
+                         continue
++                    attempted_ui.add(pair)
++                    counters['ui_proposals'] += 1
+                     try:
+-                        task = next(streams[name])
+-                    except StopIteration:
+-                        active_streams[name] = False
++                        instance = language.substitute(universal[2][2], universal[2][1], term)
++                        license_node = node({'rule': 'instantiate', 'universal': copy.deepcopy(universal[2]),
++                                             'term': copy.deepcopy(term),
++                                             'formula': ['imp', copy.deepcopy(universal[2]), instance]}, [])
++                    except outside_language:
++                        counters['membership_rejections'] += 1
+                         continue
+-                    counters['agenda_tasks'][name] += 1
+-                    if name == 'UI':
+-                        add(execute_ui(*task))
+-                    elif name == 'MP':
+-                        add(mp(*task))
+-                    elif name == 'transport':
+-                        add(execute_transport(*task))
+-                    else:
+-                        prior, variable = task
++                    changed = add(mp(universal, license_node)) or changed
++                    if target_key in facts:
++                        return result(candidate(), 'actual known target ancestry; independent check still required')
++            current = sorted(list(facts.values()), key=priority)
++            equalities = [item for item in current if item[2][0] == 'eq']
++            atoms = [item for item in current if item[2][0] in ('eq', 'pred')]
++            for equality in equalities:
++                left, right = equality[2][1:]
++                if left == right:
++                    continue
++                for atom in atoms:
++                    pair = (equality[0], atom[0])
++                    if pair in attempted_transport:
++                        continue
++                    attempted_transport.add(pair)
++                    for template in _atomic_templates(atom[2], left, language.hole,
++                                                      limits['maximum_atomic_templates_per_pair'], ticked):
++                        ticked()
++                        counters['transport_proposals'] += 1
++                        try:
++                            transported = language.substitute(template, language.hole, right)
++                            license_node = node({'rule': 'eq_subst', 'variable': language.hole,
++                                                 'template': template, 'left': copy.deepcopy(left),
++                                                 'right': copy.deepcopy(right), 'formula': ['imp',
++                                                 copy.deepcopy(equality[2]), ['imp', copy.deepcopy(atom[2]), transported]]}, [])
++                        except outside_language:
++                            counters['membership_rejections'] += 1
++                            continue
++                        intermediate = mp(equality, license_node)
++                        changed = add(mp(atom, intermediate)) or changed
++            # Whole-formula UG is never an atomic-only rule. Only original parameters.
++            for prior in sorted(list(facts.values()), key=priority):
++                for variable in language.parameters:
++                    ticked()
++                    if variable in language.forbidden or variable not in language.free(prior[2]):
++                        # Vacuous UG is a permitted primitive but omitted by this heuristic.
++                        continue
++                    pair = (prior[0], variable)
++                    if pair not in attempted_ug:
++                        attempted_ug.add(pair)
+                         counters['ug_proposals'] += 1
+-                        add(node({'rule': 'generalize', 'variable': variable,
+-                                  'formula': ['all', variable, copy.deepcopy(prior[2])]}, [prior]))
+-                    close_goals()
+-                    found = candidate()
+-                    if found is not None:
+-                        return result(found, 'actual known target ancestry; independent check still required')
+-            if counters['facts_added'] + counters['facts_improved'] == start_version:
++                        changed = add(node({'rule': 'generalize', 'variable': variable,
++                                            'formula': ['all', variable, copy.deepcopy(prior[2])]}, [prior])) or changed
++            found = candidate()
++            if found is not None:
++                return result(found, 'actual known target ancestry; independent check still required')
++            if not changed:
+                 break
+         else:
+             stop = 'maximum_rounds'
+     except SearchStopped as error:
+         stop = str(error)
+-    # Resource/callback/kernel/programming failures propagate; no false exclusion.
+-    return result(candidate(), stop)
++    # TimeoutError deliberately propagates: it is unresolved work, never a negative proof.
++    return result(None, stop)

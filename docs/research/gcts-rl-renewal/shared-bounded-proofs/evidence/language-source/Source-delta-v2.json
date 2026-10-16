@@ -1,0 +1,494 @@
+{
+  "checks": [
+    {
+      "check": "membership full declared forward/inverse",
+      "edit_count": 2,
+      "passed": true
+    },
+    {
+      "check": "all membership class methods AST unchanged",
+      "method_names": [
+        "__init__",
+        "_formula",
+        "_literal_names",
+        "_step",
+        "_substitute_term",
+        "_term",
+        "contextual_formula",
+        "formula",
+        "free",
+        "primitive",
+        "substitute",
+        "template",
+        "term",
+        "term_names"
+      ],
+      "passed": true
+    },
+    {
+      "check": "membership other top-level definitions AST exact",
+      "definition_names": [
+        "OutsideLanguage",
+        "MembershipUnknown",
+        "need",
+        "canonical",
+        "digest",
+        "_pairs",
+        "_no_number",
+        "_decode",
+        "_name",
+        "_flags",
+        "make_language",
+        "check_primitive_record",
+        "check_word"
+      ],
+      "passed": true
+    },
+    {
+      "check": "proposer full declared forward/inverse",
+      "edit_count": 43,
+      "passed": true
+    },
+    {
+      "check": "proposer other top-level definitions AST exact",
+      "definition_names": [
+        "SearchStopped",
+        "_key",
+        "_size",
+        "_term_occurrences",
+        "_atomic_templates"
+      ],
+      "passed": true
+    },
+    {
+      "check": "proposer catches exact captured class at all four sites",
+      "passed": true
+    }
+  ],
+  "deltas": {
+    "membership": {
+      "byte_edits": [
+        {
+          "new_end": 421,
+          "new_start": 420,
+          "new_utf8": "2",
+          "old_end": 421,
+          "old_start": 420,
+          "old_utf8": "1"
+        },
+        {
+          "new_end": 2750,
+          "new_start": 2711,
+          "new_utf8": "\n    OutsideLanguage = OutsideLanguage\n",
+          "old_end": 2711,
+          "old_start": 2711,
+          "old_utf8": ""
+        }
+      ],
+      "current": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "full_forward": true,
+      "full_inverse": true,
+      "original": {
+        "bytes": 20073,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v1.py",
+        "sha256": "ffce8882b0bb676cc517cf13ef13339dbcb34fb99464f0c0db69dd33487b9596"
+      },
+      "patches": {
+        "forward": {
+          "bytes": 736,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language-v1-v2-forward.patch",
+          "sha256": "0736cdb44a0ac9a894b50ac7cee583132b035afa5e4c8e91c20c31e46dbb4baa"
+        },
+        "inverse": {
+          "bytes": 736,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language-v1-v2-inverse.patch",
+          "sha256": "423d9e02e6590768b81f82f1fa8e977494351a1b4f3f2a03765d04b32fb2892d"
+        }
+      }
+    },
+    "proposer": {
+      "byte_edits": [
+        {
+          "new_end": 409,
+          "new_start": 408,
+          "new_utf8": "2",
+          "old_end": 409,
+          "old_start": 408,
+          "old_utf8": "1"
+        },
+        {
+          "new_end": 4180,
+          "new_start": 4174,
+          "new_utf8": "# Capt",
+          "old_end": 4175,
+          "old_start": 4174,
+          "old_utf8": "o"
+        },
+        {
+          "new_end": 4182,
+          "new_start": 4181,
+          "new_utf8": "r",
+          "old_end": 4180,
+          "old_start": 4176,
+          "old_utf8": "tsid"
+        },
+        {
+          "new_end": 4193,
+          "new_start": 4184,
+          "new_utf8": "the exact",
+          "old_end": 4183,
+          "old_start": 4182,
+          "old_utf8": "="
+        },
+        {
+          "new_end": 4203,
+          "new_start": 4202,
+          "new_utf8": "-",
+          "old_end": 4207,
+          "old_start": 4192,
+          "old_utf8": ".__class__.__mo"
+        },
+        {
+          "new_end": 4204,
+          "new_start": 4204,
+          "new_utf8": "",
+          "old_end": 4210,
+          "old_start": 4208,
+          "old_utf8": "ul"
+        },
+        {
+          "new_end": 4206,
+          "new_start": 4205,
+          "new_utf8": "f",
+          "old_end": 4224,
+          "old_start": 4211,
+          "old_utf8": "__\n    # The "
+        },
+        {
+          "new_end": 4208,
+          "new_start": 4208,
+          "new_utf8": "",
+          "old_end": 4230,
+          "old_start": 4226,
+          "old_utf8": "ject"
+        },
+        {
+          "new_end": 4210,
+          "new_start": 4210,
+          "new_utf8": "",
+          "old_end": 4243,
+          "old_start": 4232,
+          "old_utf8": " language's"
+        },
+        {
+          "new_end": 4234,
+          "new_start": 4230,
+          "new_utf8": "clas",
+          "old_end": 4269,
+          "old_start": 4263,
+          "old_utf8": "type i"
+        },
+        {
+          "new_end": 4261,
+          "new_start": 4237,
+          "new_utf8": "nce.\n    # Resource/call",
+          "old_end": 4272,
+          "old_start": 4272,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 4262,
+          "new_start": 4262,
+          "new_utf8": "",
+          "old_end": 4274,
+          "old_start": 4273,
+          "old_utf8": "t"
+        },
+        {
+          "new_end": 4274,
+          "new_start": 4263,
+          "new_utf8": "ck/programm",
+          "old_end": 4275,
+          "old_start": 4275,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 4277,
+          "new_start": 4276,
+          "new_utf8": "g",
+          "old_end": 4292,
+          "old_start": 4277,
+          "old_utf8": "ed from a known"
+        },
+        {
+          "new_end": 4285,
+          "new_start": 4285,
+          "new_utf8": "",
+          "old_end": 4317,
+          "old_start": 4300,
+          "old_utf8": "\n    # only by it"
+        },
+        {
+          "new_end": 4287,
+          "new_start": 4287,
+          "new_utf8": "",
+          "old_end": 4338,
+          "old_start": 4319,
+          "old_utf8": "module API in the c"
+        },
+        {
+          "new_end": 4288,
+          "new_start": 4288,
+          "new_utf8": "",
+          "old_end": 4356,
+          "old_start": 4339,
+          "old_utf8": "ller contract; he"
+        },
+        {
+          "new_end": 4293,
+          "new_start": 4291,
+          "new_utf8": "no",
+          "old_end": 4361,
+          "old_start": 4359,
+          "old_utf8": "ca"
+        },
+        {
+          "new_end": 4294,
+          "new_start": 4294,
+          "new_utf8": "",
+          "old_end": 4364,
+          "old_start": 4362,
+          "old_utf8": "ch"
+        },
+        {
+          "new_end": 4296,
+          "new_start": 4295,
+          "new_utf8": "m",
+          "old_end": 4373,
+          "old_start": 4365,
+          "old_utf8": "its Valu"
+        },
+        {
+          "new_end": 4299,
+          "new_start": 4297,
+          "new_utf8": "mb",
+          "old_end": 4383,
+          "old_start": 4374,
+          "old_utf8": "Error sup"
+        },
+        {
+          "new_end": 4301,
+          "new_start": 4301,
+          "new_utf8": "",
+          "old_end": 4388,
+          "old_start": 4385,
+          "old_utf8": "cla"
+        },
+        {
+          "new_end": 4303,
+          "new_start": 4302,
+          "new_utf8": "h",
+          "old_end": 4399,
+          "old_start": 4389,
+          "old_utf8": "s.\n    # T"
+        },
+        {
+          "new_end": 4305,
+          "new_start": 4304,
+          "new_utf8": "p",
+          "old_end": 4432,
+          "old_start": 4400,
+          "old_utf8": "meoutError is never caught as an"
+        },
+        {
+          "new_end": 4316,
+          "new_start": 4315,
+          "new_utf8": "s",
+          "old_end": 4442,
+          "old_start": 4442,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 4321,
+          "new_start": 4321,
+          "new_utf8": "",
+          "old_end": 4451,
+          "old_start": 4447,
+          "old_utf8": " del"
+        },
+        {
+          "new_end": 4364,
+          "new_start": 4328,
+          "new_utf8": "e_language = language.OutsideLanguag",
+          "old_end": 4458,
+          "old_start": 4458,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 5403,
+          "new_start": 5394,
+          "new_utf8": "outside_l",
+          "old_end": 5489,
+          "old_start": 5488,
+          "old_utf8": "V"
+        },
+        {
+          "new_end": 5406,
+          "new_start": 5404,
+          "new_utf8": "ng",
+          "old_end": 5491,
+          "old_start": 5490,
+          "old_utf8": "l"
+        },
+        {
+          "new_end": 5409,
+          "new_start": 5407,
+          "new_utf8": "ag",
+          "old_end": 5492,
+          "old_start": 5492,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 5410,
+          "new_start": 5410,
+          "new_utf8": "",
+          "old_end": 5498,
+          "old_start": 5493,
+          "old_utf8": "Error"
+        },
+        {
+          "new_end": 5981,
+          "new_start": 5972,
+          "new_utf8": "outside_l",
+          "old_end": 6061,
+          "old_start": 6060,
+          "old_utf8": "V"
+        },
+        {
+          "new_end": 5984,
+          "new_start": 5982,
+          "new_utf8": "ng",
+          "old_end": 6063,
+          "old_start": 6062,
+          "old_utf8": "l"
+        },
+        {
+          "new_end": 5987,
+          "new_start": 5985,
+          "new_utf8": "ag",
+          "old_end": 6064,
+          "old_start": 6064,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 5988,
+          "new_start": 5988,
+          "new_utf8": "",
+          "old_end": 6070,
+          "old_start": 6065,
+          "old_utf8": "Error"
+        },
+        {
+          "new_end": 12004,
+          "new_start": 11995,
+          "new_utf8": "outside_l",
+          "old_end": 12078,
+          "old_start": 12077,
+          "old_utf8": "V"
+        },
+        {
+          "new_end": 12007,
+          "new_start": 12005,
+          "new_utf8": "ng",
+          "old_end": 12080,
+          "old_start": 12079,
+          "old_utf8": "l"
+        },
+        {
+          "new_end": 12010,
+          "new_start": 12008,
+          "new_utf8": "ag",
+          "old_end": 12081,
+          "old_start": 12081,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 12011,
+          "new_start": 12011,
+          "new_utf8": "",
+          "old_end": 12087,
+          "old_start": 12082,
+          "old_utf8": "Error"
+        },
+        {
+          "new_end": 13804,
+          "new_start": 13795,
+          "new_utf8": "outside_l",
+          "old_end": 13872,
+          "old_start": 13871,
+          "old_utf8": "V"
+        },
+        {
+          "new_end": 13807,
+          "new_start": 13805,
+          "new_utf8": "ng",
+          "old_end": 13874,
+          "old_start": 13873,
+          "old_utf8": "l"
+        },
+        {
+          "new_end": 13810,
+          "new_start": 13808,
+          "new_utf8": "ag",
+          "old_end": 13875,
+          "old_start": 13875,
+          "old_utf8": ""
+        },
+        {
+          "new_end": 13811,
+          "new_start": 13811,
+          "new_utf8": "",
+          "old_end": 13881,
+          "old_start": 13876,
+          "old_utf8": "Error"
+        }
+      ],
+      "current": {
+        "bytes": 15376,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v2.py",
+        "sha256": "c5831f8157620e484bd6fce18c0b7ecd24fd8bd59348393954410ac9505a21b3"
+      },
+      "full_forward": true,
+      "full_inverse": true,
+      "original": {
+        "bytes": 15446,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v1.py",
+        "sha256": "887ee06e6f771524d5ab9df88cce27c6100c17ba7c069f14f4b6028d6208f34e"
+      },
+      "patches": {
+        "forward": {
+          "bytes": 3118,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer-v1-v2-forward.patch",
+          "sha256": "fe4c3e4bec42233b77dc50ba033129ccf87026fb8172a81c157e5b4b2801a78f"
+        },
+        "inverse": {
+          "bytes": 3118,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer-v1-v2-inverse.patch",
+          "sha256": "5d6c68c0ddc9f025e43ba178fba369e6678ce6369e918be64675def95c6eff9f"
+        }
+      }
+    }
+  },
+  "negative_preserved": {
+    "bytes": 2097,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/handoff-v1.json",
+    "sha256": "a6c5e3bba4162b786f9ee323dd31a0732a016ed48edcc35bcc51df216bf178d5"
+  },
+  "schema": "shared-bounded-language-Source-delta-v2",
+  "scientific_calls": 0,
+  "scope": "Only VERSIONs, one class exposure, exact once-captured class plus four exception catches/comment replacement. No membership method/search/macro/limits changes."
+}

@@ -1,0 +1,238 @@
+{
+  "schema": "shared-bounded-ordinary-positive-cold-Source-contract-v2",
+  "scope": "shared-bounded-ordinary-positive-cold-intake-Source",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_activation": false,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+    "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389",
+    "bytes": 39482
+  },
+  "sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+      "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389",
+      "bytes": 39482
+    },
+    "membership": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "proposer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+      "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a",
+      "bytes": 23734
+    },
+    "kernel": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    },
+    "checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "bytes": 46514
+    },
+    "clean_support": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "bytes": 48584
+    }
+  },
+  "inputs": {
+    "declaration": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "bytes": 2925
+    },
+    "profile": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "bytes": 8773
+    }
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "Review_ABI": {
+    "schema": "shared-bounded-ordinary-positive-cold-typed-Source-review-v1",
+    "scope": "shared-bounded-ordinary-positive-cold-intake-Source",
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+      "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389",
+      "bytes": 39482
+    },
+    "sources": {
+      "intake": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+        "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389",
+        "bytes": 39482
+      },
+      "membership": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+        "bytes": 20112
+      },
+      "proposer": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+        "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a",
+        "bytes": 23734
+      },
+      "kernel": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+        "bytes": 10323
+      },
+      "checker": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "clean_support": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+        "bytes": 48584
+      }
+    },
+    "source_contract": "Exact raw capsule of this current contract, no circular self pin.",
+    "reviewers": "Root=/root and peer distinct from Root and author. Dependency authorship must be disclosed.",
+    "required": {
+      "source_only": true,
+      "source_review_passed": true,
+      "scientific_calls": 0,
+      "scientific_acceptance": false
+    }
+  },
+  "API": {
+    "CLI": "TOP __main__ argv1 sole canonical Root plan path; same external9ded/native2 ABI",
+    "plan_fields": 12,
+    "Source_roles": 6,
+    "inputs": 2,
+    "word_limit": 24,
+    "submissions": 1,
+    "membership_factory": "make_language(*,declaration_raw,expected_declaration_sha256,profile_raw,source_bindings,kernel_module,local_deadline,tick)",
+    "membership_word": "check_word(*,language,commands,tick)",
+    "proposer": "propose_word(*,language,tick)",
+    "language_binding_fields": [
+      "profile_name",
+      "profile_sha256",
+      "declaration_sha256",
+      "logical_input_sha256",
+      "source_bindings_sha256",
+      "language_epoch"
+    ],
+    "epoch_access": "binding['language_epoch']; no .epoch attribute",
+    "membership_receipt": "shared-bounded-six-rule-word-membership-v1; all_commands_in_language/completed/original_Gamma_preserved/exact_target, complete rows, command_count/SHA/binding, logical_acceptancefalse",
+    "word_endpoint": "Unchanged1717.check_primitive_word, original freshly raw-authenticated theory/parameters/ordered_Gamma/exact closed target, maximum_visits5000000",
+    "outputs": [
+      "search-result.json",
+      "word-check.json",
+      "response.jsonl"
+    ],
+    "response_body": "shared-bounded-ordinary-response-body-v1",
+    "completion": "Q-clean-verifier-response-completion-v1, complete first line including LF SHA/bytes; exit0/EOF/deadline external still mandatory"
+  },
+  "authority": "Private immutable raw declaration/profile and canonical authority survive producer; plan value and original authority are fully guarded. Producer language is discarded. Both raw input files are reauthenticated after search and a fresh private language is constructed. No returned source/path/theory/target/Gamma/binding/checked flag substitutes authority. Every expanded command is rechecked before fresh independent1717.",
+  "guard_scope": "Existing unchanged support CodeSeal/default decoder/native/parser/builtin and strong Python identity/default/kwdefault-entry/closure anchors plus original direct invoke callers. Module registration complete before capture. No new VM framework, arbitrary hostileOS/VM/async-thread promise, or mutable producer object custody guarantee.",
+  "support_usage": "Only CodeSeal,project_local_float_deadline,inspect_json_tree helpers are invoked; legacy fixed-target support main/validate_authority/old raw Q gates are never called. No codec/PointGraph/compiler/cold owner/search framework executes.",
+  "tick_scope": "Original native resource-only tick inside language/proposer/membership; existing full1717 Source callback; full direct caller/invoke/CodeSeal before+after every delegation. No shared native clock reset.",
+  "storage": "Only small raw declaration/profile/Source buffers; each input actual immutable buffer authenticated before decode. Full producer return canonical-roundtripped and bounded2MiB; overbound/timeout is UNKNOWN, no favorable truncation. Final original declaration is fresh decoded after producer and final membership. Diagnostic finite floats may be represented in receipts; command tree is strictly inspected and independently typed.",
+  "compatibility": "Separately named implicit syntax profileV2; no old20k/50k ground-ceiling conformance, complete finite carrier/cardinality certificate, complete legacy embedding, GCTS domain/scheduler, new positive theorem, recipient/family, point/full24/trajectory/native-Wang/marking/RL or benefit is admitted by Source.",
+  "provenance": {
+    "parent_helpers": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-cold-integration/right_two_ordinary_cold_intake_v2.py",
+      "sha256": "7a9fd71a31807dd042f0259fc133341f96823ff3b5f099d5698f133aa245269c",
+      "bytes": 42226
+    },
+    "copied_helpers": [
+      "need",
+      "canonical",
+      "raw_pin",
+      "unique",
+      "reject_constant",
+      "finite_float",
+      "decode",
+      "read_pinned",
+      "load_module",
+      "write_new",
+      "anchor",
+      "same",
+      "invoke",
+      "cancel",
+      "all_function_anchors"
+    ],
+    "preserved_code_only": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/code-only-v1.json",
+      "sha256": "f0023d5ae1ef0baa539daa958d04336fb3c248f52e02609c7b7e05415db11129",
+      "bytes": 3493
+    },
+    "intake_delta": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v2-to-v3-delta-v1.json",
+      "sha256": "9be200e6ece43a33365d6bae215748cd36bc815e9d20c562f27b045b72a1cbce",
+      "bytes": 2602
+    },
+    "current_module_contract": {
+      "bytes": 19009,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v3.json",
+      "sha256": "ab9734d53223394a49e2e234777c4f52c36f524b586e364bb9e0c71d2d6e6ef0"
+    },
+    "current_module_handoff": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/handoff-v3.json",
+      "sha256": "3ce2e1b31cddb155f70273ea797b9e8959be0fa9f1fac60ae35e254a149fdb69",
+      "bytes": 2888
+    },
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "native_clock_policy": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+      "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4",
+      "bytes": 4443
+    },
+    "selected_parent_Source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v2.py",
+      "sha256": "f804bac13bf2b69f1d223a947ef8108298124f1350ab2e91f3cc06631a57d067",
+      "bytes": 39482
+    },
+    "selected_parent_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v1.json",
+      "sha256": "99ff0726969678a2576b24feea33cbb6d81c91598649d0b181d4a4837626df26",
+      "bytes": 13163
+    },
+    "selected_parent_handoff": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/handoff-v1.json",
+      "sha256": "bce6c9363878e407dab92a317400ebb6f10f2c70ea46f064656483ac31954d22",
+      "bytes": 5915
+    }
+  },
+  "plan_shape": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/ROOT-plan-shape-v2.json",
+    "sha256": "0d1092df644f1d1ea4f7927b8ddd35c9662e1457a2e85f153ac9070e6ad6ed39",
+    "bytes": 4372
+  },
+  "caller_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/caller-contract-v2.json",
+    "sha256": "9b7f831fd3abf1c37106b4d12f3a0dc95f85648690ffe25506833ffcd7616a6b",
+    "bytes": 2767
+  },
+  "prospective_protocol": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/prospective-protocol-v2.json",
+    "sha256": "2dc6212db5f97229cf1ef942ae25b6cfffdde59917fcb4e7e6b1651a288e88db",
+    "bytes": 4318
+  },
+  "readiness": "Genuine current producerV3 and intakeV3 Source reviews pending at author freeze; Root alone selects fresh exact plan/grant/output and once-only actual. No proof, speed, fit or fairness result predicted.",
+  "successor_scope": "Only exact producer capsule path/SHA/bytes and intake VERSION changed in Source. All16 definitions including main, all28 direct original caller guards, original authority reconstruction, fresh final membership/1717, Source6/input2/plan12/native2/external9ded, outputs and limits are unchanged. New proposer scheduling is a separately authored/reviewed dependency, not an intake algorithm edit.",
+  "prior_actual_scope": "Preserved Root first actual under intakeV2 f804 returned UNKNOWN maximum_facts and no candidate. Its outcome/resources and historical reviews remain separate; no old Source pass applies to the changed current Source map."
+}

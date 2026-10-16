@@ -1,0 +1,40 @@
+{
+  "advisory": "V3-TERM-ONLY-QUIESCENCE-1: a new retained term without a fact change need not receive another wave. No every-new-term or exhaustion claim.",
+  "comparison": "Same language, original logical inputs, all6 heuristic scalar limits, cold checker and native gates; different incomplete producer scheduling and generic goal closure hints.",
+  "declaration": {
+    "bytes": 2925,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+    "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+  },
+  "endpoint": "Fresh automatically proposed <=24-command word for the unchanged original closed right-two target, or UNKNOWN.",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "native_rule": "One owned process; no descendants; true terminal B=T; launch through fresh postprobe strictly below20s.",
+  "new_controls": "No supplied proof word or theorem route. Fresh complete membership and unchanged independently qualified1717 on any returned word. No new finite-count/GCTS/point controls inferred.",
+  "preserved_prior_actual": {
+    "bytes": 4885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-ordinary-disposition-v1.json",
+    "sha256": "9ad7729636c3ed82fd7f6a25d6abaf9f6db0ad319605bbcdd59e3d4bece8cb34"
+  },
+  "preserved_unexecuted_negative_contract": {
+    "bytes": 14695,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v2.json",
+    "sha256": "acba8bd66f7faa48020fdee721010bd6fb6dddf8dbcc26c81490bb95d8d52175"
+  },
+  "previous_goal_turn": "progress",
+  "profile": {
+    "bytes": 8773,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+    "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+  },
+  "purpose": "shared-bounded-ordinary-positive-word",
+  "schema": "ROOT-shared-bounded-ordinary-positive-protocol-choice-v1",
+  "scientific_execution_occurred": false,
+  "scope": "One ordinary search/check attempt only; no GCTS/RL, point/full24, legacy embedding, complete syntax enumeration or advantage claim."
+}

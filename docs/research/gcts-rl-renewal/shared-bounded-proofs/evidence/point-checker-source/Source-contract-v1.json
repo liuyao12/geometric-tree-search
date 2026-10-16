@@ -1,0 +1,95 @@
+{
+  "API": "check_point_board(*, commands, height, input_epoch, packet, tick)",
+  "algorithm": [
+    "Copy private word through exact builtin JSON trees; reject float/custom structures; check exact six command field sets and strict-prior integer source refs. No primitive rule is logically accepted by this structural check.",
+    "Independently construct each absolute row: leading copies of original first zero-port primitive, then entire original word with all source indices shifted by height-minus-length. Do not call/import converter or a point engine.",
+    "From each padded row reconstruct exact primitive witness, ordered input formulas/offsets, canonical complete prototype preimage/ID, local t/m, translated t/m and fixed boundary. Tagged formula values carry full canonical formula strings, not only hashes.",
+    "Compare every packet field/list/order/scalar recursively with exact builtin type identity before equality. Boolean coordinates/indices/weights cannot pass as integers; extra/missing/reordered data and changed flags reject.",
+    "Reaccumulate actual compared positive support and all fixed/active markings. All support must lie in declared target, each required point totals exactly1, duplicate marks agree literally, agreeing repeated ports contribute repeated mark occurrences. One selected placement per row; identical type ID must retain identical complete preimage.",
+    "Return whole exact-board receipt plus newly rebuilt padded command list for separate bounded membership and1717 logical verification. Mandatory tick exceptions propagate; there is no clock/reset/Source import/process/plan/output-file behavior."
+  ],
+  "author_identity": "/root/arithmetic_induction",
+  "current_status": {
+    "Source_authoring_complete": true,
+    "actual_executed": false,
+    "distinct_checker_Source_review_passed": false,
+    "logical_or_resource_admitted": false
+  },
+  "external_mandatory_gates": [
+    "Whole original source word must be bound to private original theory/Gamma/target and current language epoch; the packet itself supplies none of that authority.",
+    "Verify every padded command belongs to exact selected bounded language and check whole padded word with unchanged independent1717 endpoint against original private target/theory/parameters/Gamma. Converter/checker may preserve a structurally valid but logically invalid word; this point receipt never accepts it as a theorem.",
+    "Genuine cold caller must authenticate/load/seal exact Source/callback/native/argument authority and complete output raw/EOF, without using producer-mutated authority objects. All setup/copy/reconstruction/logical checks/output/exit costs remain original20/512/55/60/caller90+1.",
+    "Positive finite board requires no complete candidate cardinality or search trajectory. Complete implicit inventory/counts/globaldead-forced-earliestgeneration/rollback need separate conformance before any GCTS search claim.",
+    "Meaningful later controls: changed target/boundary, bool scalar, missing/duplicate row, stale epoch/preimage, wrong source/offset/input label, malformed packet, conflicting duplicate marks, and padded membership/word mismatch. None were executed during authoring."
+  ],
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "point_model": {
+    "boundary": "Outside sentinel at channel1 rows1-H..-1; exact original private-word final formula at channel1 rowH-1. Entire expected boundary is reconstructed and compared.",
+    "domain": "integer pairs; exact unit t, full tagged literal m",
+    "identity": "Prototype preimage = private input epoch + primitive witness + ordered premise formulas + ordered strictly negative offsets; placement = type ID and translation. Complete preimages are retained and duplicate ID/preimage disagreement rejects.",
+    "target": "\\(Q=\\{(0,r):0\\le r<H\\},\\quad T(0,r)=1.\\)",
+    "transformations": "integer translations only; values unchanged"
+  },
+  "private_inputs": "Caller-authenticated original full nonempty word, exact height1..24, lowercase64hex input epoch. Never take private authority from packet. Actual profile first endpoint uses height24; this API does not change it. The whole original final target/theory/Gamma/profile remain caller-private external authority.",
+  "proposal_Source": {
+    "bytes": 5528,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+    "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+  },
+  "proposal_contract": {
+    "bytes": 4122,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/Source-contract-v1.json",
+    "sha256": "9911b693eb078a69d32019fc4847266b53a23f12fac91f262034f66707fa40e4"
+  },
+  "receipt": {
+    "false_flags": [
+      "logical_proof_accepted",
+      "bounded_primitive_membership_accepted",
+      "complete_candidate_graph_accepted",
+      "trajectory_accepted",
+      "GCTS_advantage_accepted",
+      "RL_accepted",
+      "native_Wang_palette_accepted",
+      "ROOT_resource_accepted"
+    ],
+    "positive_fields": [
+      "exact_point_board_accepted",
+      "whole_unit_target_verified",
+      "literal_marking_union_verified"
+    ],
+    "returned_authority_free_data": [
+      "input_epoch",
+      "height",
+      "source_word_sha256",
+      "source_word_length",
+      "padding_rows",
+      "padded_commands_sha256",
+      "packet_sha256",
+      "tile_count",
+      "placement_identity_count",
+      "prototype_identity_count",
+      "required_point_count",
+      "fixed_mark_occurrences",
+      "marking_point_count",
+      "marking_occurrence_count",
+      "unit_totals",
+      "marking_union",
+      "checked_padded_commands",
+      "scope"
+    ],
+    "schema": "independent-bounded-word-point-board-check-v1"
+  },
+  "schema": "independent-bounded-word-point-board-checker-Source-contract-v1",
+  "scientific_calls": 0,
+  "scope": "Exact positive point-board projection only; no generated proof route, selected GCTS search, adjacency-only Wang palette, learned marking, family, RL or advantage.",
+  "source": {
+    "bytes": 10201,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+    "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+  },
+  "source_only": true
+}

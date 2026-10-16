@@ -1,0 +1,26 @@
+{
+  "ROOT_disposition": {
+    "bytes": 5634,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-ordinary-disposition-v2.json",
+    "sha256": "14cd600bfa4df80d52badcaa4423e320befe0d13f2cf8f6d3ca7a041be84c4dc"
+  },
+  "all_checks_passed": true,
+  "discrepancies": [],
+  "findings": {
+    "bytes": 24235,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-saved-record-review-20261015/findings-v1.json",
+    "sha256": "78693ab9ac84406b24d9e5ff0edef9b0d65ef8873bdb2693d033a70037a47d00"
+  },
+  "new_proof_acceptance": false,
+  "raw_display_rows": {
+    "bytes": 63060,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-saved-record-review-20261015/raw-display-rows-v1.json",
+    "sha256": "6ef93b04c539bda3433e3dbd75a9bcd42e5c6dbcc95c63c784ffb8f675579f31"
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "saved_records_only": true,
+  "schema": "shared-bounded-ordinary-saved-record-review-handoff-v1",
+  "scientific_calls": 0,
+  "scope": "Exact saved small records, full raw pins,17command/reference/receipt concordance and native/caller accounting only; no independent logical replay or new point/family/GCTS acceptance.",
+  "semantic_replay": false
+}

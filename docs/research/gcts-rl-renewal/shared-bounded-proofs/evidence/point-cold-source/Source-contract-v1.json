@@ -1,0 +1,274 @@
+{
+  "schema": "shared-bounded-point-board-verification-cold-Source-contract-v1",
+  "scope": "shared-bounded-point-board-verification-cold-intake-Source",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_activation": false,
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/verify_saved_word_point_board_v1.py",
+    "sha256": "dd7a1a13829c63d41935038327c063a7089b2c3e28d28c20f4743ebcd6ec7be2",
+    "bytes": 55225
+  },
+  "sources": {
+    "intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/verify_saved_word_point_board_v1.py",
+      "sha256": "dd7a1a13829c63d41935038327c063a7089b2c3e28d28c20f4743ebcd6ec7be2",
+      "bytes": 55225
+    },
+    "membership": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "kernel": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323
+    },
+    "checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "bytes": 46514
+    },
+    "clean_support": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "bytes": 48584
+    },
+    "converter": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63",
+      "bytes": 5528
+    },
+    "point_checker": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d",
+      "bytes": 10201
+    }
+  },
+  "inputs": {
+    "declaration": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "bytes": 2925
+    },
+    "profile": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "bytes": 8773
+    },
+    "word_source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/search-result.json",
+      "sha256": "e4be3ccd17c3666736b84a514c54aecbde662d766fa749f6b4491dcab691e292",
+      "bytes": 8393
+    }
+  },
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "Review_ABI": {
+    "schema": "shared-bounded-point-board-verification-cold-typed-Source-review-v1",
+    "scope": "shared-bounded-point-board-verification-cold-intake-Source",
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "source": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/verify_saved_word_point_board_v1.py",
+      "sha256": "dd7a1a13829c63d41935038327c063a7089b2c3e28d28c20f4743ebcd6ec7be2",
+      "bytes": 55225
+    },
+    "sources": {
+      "intake": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/verify_saved_word_point_board_v1.py",
+        "sha256": "dd7a1a13829c63d41935038327c063a7089b2c3e28d28c20f4743ebcd6ec7be2",
+        "bytes": 55225
+      },
+      "membership": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+        "bytes": 20112
+      },
+      "kernel": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+        "bytes": 10323
+      },
+      "checker": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+        "bytes": 46514
+      },
+      "clean_support": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+        "bytes": 48584
+      },
+      "converter": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+        "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63",
+        "bytes": 5528
+      },
+      "point_checker": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+        "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d",
+        "bytes": 10201
+      }
+    },
+    "source_contract": "Exact capsule of this contract; no circular self hash.",
+    "required": {
+      "source_only": true,
+      "source_review_passed": true,
+      "scientific_calls": 0,
+      "scientific_acceptance": false
+    },
+    "reviewers": "Root=/root; peer distinct from Root and author, disclosing dependency authorship."
+  },
+  "API": {
+    "converter": "propose_point_board(*,commands,height,input_epoch,tick)",
+    "point_checker": "check_point_board(*,commands,height,input_epoch,packet,tick)",
+    "membership_factory": "make_language(*,declaration_raw,expected_declaration_sha256,profile_raw,source_bindings,kernel_module,local_deadline,tick)",
+    "membership_word": "check_word(*,language,commands,tick)",
+    "independent_word": "Unchanged1717.check_primitive_word; theory/parameters/original_Gamma/target freshly decoded from authenticated original bytes; maximum_visits5000000",
+    "entry": "TOP __main__ sole canonical Root plan path, no private main or clock reset",
+    "outputs": [
+      "point-board.json",
+      "word-checks.json",
+      "controls.json",
+      "response.jsonl"
+    ],
+    "response_body": "shared-bounded-point-board-response-body-v1",
+    "completion": "Q-clean-verifier-response-completion-v1; body hash/length include LF; second canonical line plus LF and strict EOF; terminal status/native deadline remain external"
+  },
+  "consumed_schemas": {
+    "plan": "ROOT-shared-bounded-point-board-plan-v1",
+    "purpose": "shared-bounded-point-board-verification",
+    "contract": "shared-bounded-point-board-verification-cold-Source-contract-v1",
+    "grant": "ROOT-shared-bounded-point-board-authorization-v1",
+    "review_scope": "shared-bounded-point-board-verification-cold-intake-Source"
+  },
+  "plan_fields": [
+    "schema",
+    "invocation_id",
+    "purpose",
+    "output_directory",
+    "sources",
+    "inputs",
+    "source_contract",
+    "reviews",
+    "ROOT_authorization",
+    "runtime",
+    "limits",
+    "resource_rule"
+  ],
+  "Source_roles": 7,
+  "input_count": 3,
+  "authority": "The saved successful ordinary search-result is UNTRUSTED word data. Only its complete command list is used. Historical candidate binding/checked/proof/status flags never confer current authority. Exact original declaration and profile raw buffers remain private and are reauthenticated after untrusted converter along with the full word-source buffer. Fresh currentSource7 language binding supplies point input_epoch; its epoch legitimately differs from historical ordinarySource6. Every final theory/parameter/orderedGamma/target is separately freshly decoded from original raw declaration, never packet/receipt data.",
+  "semantic_sequence": [
+    "Authenticate sole plan/current Root+peer/grant and full raw Source7/input3; compile only same buffers, fully register all modules before existing CodeSeal capture",
+    "Construct complete original bounded language; pure command-tree inspection, whole original <=24 membership then unchanged1717 against freshly decoded original context",
+    "Invoke untrusted converter exactly once with a copy of the original complete commands, original height24 and current private Source7 epoch; canonical whole packet bounded2MiB, no truncation",
+    "Reauthenticate declaration/profile/word-source whole raw bytes after converter; construct fresh private validator and compare identical current binding",
+    "Execute all14 isolated packet-negative controls through genuine independent point checker with private original word/height/epoch unchanged; expected exact ValueError reasons only",
+    "Independent pointchecker rebuilds complete24 rows, exact prototype preimages/offsets/boundary and compares every packet field; accumulates all unit support and literal marking union",
+    "Take padded commands ONLY from independent checker rebuilt receipt, not packet padded list; inspect complete tree, whole24 membership and unchanged1717 again on fresh original authority",
+    "Write complete packet+point receipt, original/padded commands+memberships+logical receipts, all control records and canonical2LF response; complete stdout/final Source/tick/native exit gates remain original20"
+  ],
+  "positive_scope": "Only verified complete finite point-board projection and same original mathematical target word under the separately named bounded syntax. No search rerun or automatically generated point trajectory. Positive board verification needs no exhausted candidate enumeration; it does not certify that inventory count or GCTS bookkeeping exists.",
+  "point_model": {
+    "domain": "Exact integer pairs; unit positive support, literal tagged formula/offset/outside marking values. Missing marking differs from assigned zero.",
+    "transformations": "Integer translations of point support only, values unchanged. No rotations/reflections/adjacency-only Wang palette or geometric-shape claim.",
+    "target": "All24 declared required unit points; exact original target boundary at final row and disjoint outside sentinel at all potentially read negative rows.",
+    "identity": "Current private input epoch + complete primitive witness + ordered premise formulas and strict-prior offsets; shared repeated ports retain ordered occurrences. Distinct selected placement=typeID+translation. Literal data/preimages are checked, not only hash equality.",
+    "verification": "Fresh whole original/padded language membership and1717 establish primitive correctness; independently authored point checker reconstructs and checks t/m union.",
+    "gaps": [
+      "Complete frontier/candidate bipartite incidence and certified lazy domain counts",
+      "Globaldead/forced/earliest-generation scheduler and reference rollback",
+      "Fractional/shared-support/general-growth conformance and new learned-marking/RL effects"
+    ]
+  },
+  "guard_scope": "15 exact existing helpers plus original native tick/boundary/invoke/CodeSeal patterns; Source/parser/default-decoder/builtin/function code/default-entry/closure snapshots cover reviewed synchronous same process, not hostile OS/VM/threads. Full guards before/after every delegate including exceptional return; native resource-only ticks inside membership/converter/point checker; unchanged1717 keeps full boundary callback. No new custody framework.",
+  "storage_and_output": "Only bounded small Source/input buffers; no giant Q prep/catalogue/PointGraph. Each actual immutable raw buffer SHA/EOF is authenticated before decoding. Packet<=2MiB, each semantic output<=2MiB or whole stage fails. Finite diagnostic floats allowed only outside strict command trees; no favorable prefix. Four complete output files and self-excluding body/completion/full stdout inventory.",
+  "native_scope": "One earliest G before other imports; D=G+20e9, same projected local deadline for both original/padded1717. Fresh original/final kernel/checker instances retain5M visits each; no cumulative cross-instance visit certificate claimed. All work charged to same native20. One owned worker/no descendants; true external native meter2 terminal B=T<=512MiB, native launch-to-postprobe<20, complete Date<=60 and +1<=90;55 only failure evidence. Captured native os._exit after final complete stdout and guards.",
+  "controls": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/control-inventory-v1.json",
+    "sha256": "219a10a79295f7e4e8499387dc1773eb0af343e493fc4b3967cf4696b120ed61",
+    "bytes": 1939
+  },
+  "caller_contract": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/caller-contract-v1.json",
+    "sha256": "c197c16e308a802b4f76befea7cfa6622338d4c3c8da94854adf1c1c369a7d5a",
+    "bytes": 2842
+  },
+  "plan_shape": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/ROOT-plan-shape-v1.json",
+    "sha256": "aff20bd5221a69640554710c3d9ea200c5de38427c4740865029d0e9e50adead",
+    "bytes": 4984
+  },
+  "provenance": {
+    "parent_intake": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+      "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389",
+      "bytes": 39482
+    },
+    "copied15_helpers": [
+      "need",
+      "canonical",
+      "raw_pin",
+      "unique",
+      "reject_constant",
+      "finite_float",
+      "decode",
+      "read_pinned",
+      "load_module",
+      "write_new",
+      "anchor",
+      "same",
+      "invoke",
+      "cancel",
+      "all_function_anchors"
+    ],
+    "forward_patch": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/ordinary-v3-to-point-v1.patch",
+      "sha256": "02514c7413f7472810c19afdcd418078c12846b4df6b667f7567f97c17b4d914",
+      "bytes": 55277
+    },
+    "inverse_patch": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/point-v1-to-ordinary-v3-full-inverse.patch",
+      "sha256": "b99fb45fe9b47c1e2147b709ac7831db620541415d5589675512c04ad4c8ddf5",
+      "bytes": 56881
+    },
+    "converter_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/Source-contract-v1.json",
+      "sha256": "9911b693eb078a69d32019fc4847266b53a23f12fac91f262034f66707fa40e4",
+      "bytes": 4122
+    },
+    "point_checker_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/Source-contract-v1.json",
+      "sha256": "f906431ebe88084bb18ee537c388176e8a2110312cfa6a69792738c9a23a9ae9",
+      "bytes": 6673
+    },
+    "membership_contract": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v3.json",
+      "sha256": "ab9734d53223394a49e2e234777c4f52c36f524b586e364bb9e0c71d2d6e6ef0",
+      "bytes": 19009
+    },
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "clock_policy": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+      "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4",
+      "bytes": 4443
+    }
+  },
+  "authorship_disclosure": "Intake and original1717/support lineage by diagnosis; converter by Root; independent pointchecker by arithmetic; membership by controls. This is a new guarded integration, not a new independent mathematical implementation.",
+  "all_unearned_scope_flags": "Root resource/target admission pending external; all complete-GCTS/groundcount/legacyembedding/full24-GCTS/trajectory/nativeWang/marking/RL/advantage flags false. Prior UNKNOWNs and finite-grammar negative unchanged.",
+  "readiness": "Current whole Source7 Root+distinct-peer review, fresh Root-only plan/grant and every actual control/positive/native/resource/output gate remain pending; no expected proof/board/fit result from Source."
+}

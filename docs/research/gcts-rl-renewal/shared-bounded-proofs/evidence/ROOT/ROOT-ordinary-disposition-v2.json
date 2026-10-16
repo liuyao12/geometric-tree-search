@@ -1,0 +1,126 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_marking_activated": false,
+  "RL_accepted": false,
+  "aggregate_B_bytes": 29360128,
+  "bracket": {
+    "bytes": 868,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-tool-bracket-v2.json",
+    "sha256": "45db2a412eee7a4a843c05696191e5a344c417dd2339ec4859af0c10ef196b3b"
+  },
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 0.994,
+  "complete_GCTS_model_accepted": false,
+  "complete_ground_counts_accepted": false,
+  "complete_legacy_embedding_accepted": false,
+  "complete_wire_verified": true,
+  "full24_accepted": false,
+  "heuristic_limits": {
+    "maximum_atomic_templates_per_pair": 64,
+    "maximum_facts": 2048,
+    "maximum_parameter_terms": 256,
+    "maximum_proposals": 50000,
+    "maximum_rounds": 32,
+    "maximum_word_commands": 24
+  },
+  "invocation_id": "shared-bounded-right-two-ordinary-20261015-v2",
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "09c3261ad7cfb45107cecdf59dc4dcd41a89321dd2ec8f6954fcbaea06664478",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "5e166354610042dad4bb1ed07a9685a25f8a00d65168b2347564883e4a7f3ffd"
+  },
+  "native_Wang_palette_accepted": false,
+  "native_launch_to_postprobe_ns": 810736000,
+  "native_resources_qualified": true,
+  "native_terminal": {
+    "bytes": 1663,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v2/native-terminal.json",
+    "sha256": "e46cd7d65eb7ac8aa7c8631eb8b26759f1e9e0d66643b5ce106611bdd4c44f97"
+  },
+  "native_worker_lifetime_ns": 737761000,
+  "old_finite_negative_and_UNKNOWNs_unchanged": true,
+  "outputs": [
+    {
+      "bytes": 8393,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/search-result.json",
+      "sha256": "e4be3ccd17c3666736b84a514c54aecbde662d766fa749f6b4491dcab691e292"
+    },
+    {
+      "bytes": 39170,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/word-check.json",
+      "sha256": "4efe51e4900cffd24bfd8178591beb657d4542febdfb584fc424cce713d3108f"
+    },
+    {
+      "bytes": 4699,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v2/response.jsonl",
+      "sha256": "5b565601d1f53dc3ce22dec258ef4e73b9c9128ce14f3d755e86c2c258015a62"
+    }
+  ],
+  "plan": {
+    "bytes": 4495,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ROOT-plan-v2.json",
+    "sha256": "27684102be63e2f7f6f0d5bc984da40fbd39931c4ac896c1f33bd5f0b1d5f77f"
+  },
+  "postterminal_observation": {
+    "bytes": 474,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-external-v2/observation.json",
+    "sha256": "a10c9d9fe762cdc55b0517ab520f0eb384c3a1b898eb7b106ad2b03b6024ddbb"
+  },
+  "producer_counters_untrusted": {
+    "agenda_tasks": {
+      "MP": 0,
+      "UG": 99,
+      "UI": 305,
+      "transport": 186
+    },
+    "facts_added": 480,
+    "facts_improved": 0,
+    "goal_mp_attempts": 0,
+    "goal_transport_firings": 1,
+    "goal_transport_watches": 21,
+    "goal_ug_attempts": 1,
+    "goal_ui_attempts": 230,
+    "membership_rejections": 74,
+    "mp_proposals": 532,
+    "primitive_commands_constructed": 1052,
+    "proposals": 1126,
+    "rounds": 3,
+    "term_limit_omissions": 243,
+    "terms_added": 256,
+    "transport_proposals": 187,
+    "ug_proposals": 100,
+    "ui_proposals": 305,
+    "word_bound_omissions": 0
+  },
+  "reconciliation_scope": "Whole saved bytes, fixed authority/bindings, logical receipt and native/wire/caller metadata only; no Source/kernel/checker execution or model decode.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-shared-bounded-ordinary-disposition-v1",
+  "search_incompleteness": {
+    "UI": "known universals, retained parameter terms, and literal goal unification only",
+    "agenda": "one task per live UI/MP/transport/UG stream per cycle; new facts/terms enter next wave, goal closings immediate",
+    "complete_language_enumeration": false,
+    "goal_watches_are_observations_not_facts": true,
+    "negative_certificate": false,
+    "new_fact_notifications_remaining": 0,
+    "parameter_terms": "input/known-fact subterms and literal goal-unified terms, same bounded cache",
+    "pending_goal_premise_keys": 20,
+    "proof_selection": "one lowest encountered DAG cost per literal formula; no bounded completeness",
+    "stop_reason": "actual known target ancestry; independent check still required",
+    "streams_not_observed_exhausted_at_stop": [
+      "UI",
+      "transport"
+    ],
+    "template_cap_per_pair": 64,
+    "transport": "known oriented equality plus actual known atom; single/all occurrence templates only",
+    "vacuous_UG": "only goal-closing vacuous UG is tried",
+    "word_bound": 24
+  },
+  "search_status": "CHECKED_POSITIVE_WORD",
+  "target_proof_accepted": true,
+  "terminal_T_bytes": 29360128,
+  "trajectory_accepted": false,
+  "word_commands": 17
+}

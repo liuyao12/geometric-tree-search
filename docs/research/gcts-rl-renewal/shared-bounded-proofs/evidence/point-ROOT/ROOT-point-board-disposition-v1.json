@@ -1,0 +1,88 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_marking_activated": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "aggregate_B_bytes": 23920640,
+  "bracket": {
+    "bytes": 876,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-ROOT-20261015/ROOT-tool-bracket-v1.json",
+    "sha256": "8d6c61c695ddfc89a18d5536c36779d8d34483b3fb645b654dae5d02e6b3d095"
+  },
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 0.889,
+  "complete_GCTS_model_accepted": false,
+  "complete_ground_counts_accepted": false,
+  "complete_legacy_embedding_accepted": false,
+  "complete_wire_verified": true,
+  "control_scope": "Exact reconstruction rejections; no negative accumulator-branch coverage claimed.",
+  "cost_scope": "Separate complete cold verification stage. Earlier search and failed attempt remain separate; no joint20s claim.",
+  "invocation_id": "shared-bounded-right-two-point-board-20261015-v1",
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "08fd6a97263a0e6fa4f626b46bbfc3d81ab6568871ac1b0419a267a0b9e55f91",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "0b4441f098d60aa930bc4bd5548fa98b8cf3ddfc4be2b376acc082ffaaa0fb13"
+  },
+  "logical_target_accepted": true,
+  "marking_occurrence_count": 82,
+  "marking_point_count": 64,
+  "native_Wang_palette_accepted": false,
+  "native_launch_to_postprobe_ns": 715284000,
+  "native_resources_qualified": true,
+  "native_terminal": {
+    "bytes": 1673,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-ROOT-20261015/point-external-v1/native-terminal.json",
+    "sha256": "a80e265e17f7418451fe5832c49d25c1f2cb0607bd45c9e7e079b20ca1b29b58"
+  },
+  "native_worker_lifetime_ns": 659842000,
+  "new_theorem_discovery": false,
+  "old_finite_negative_and_UNKNOWNs_unchanged": true,
+  "original_word_commands": 17,
+  "outputs": [
+    {
+      "bytes": 68862,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-ROOT-20261015/point-owned-v1/point-board.json",
+      "sha256": "56060df07d62fc36af0af24dd80f8c48fd46fb00c6d038ffcbb01e4975f58f06"
+    },
+    {
+      "bytes": 93763,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-ROOT-20261015/point-owned-v1/word-checks.json",
+      "sha256": "ed8fff2f8a2cda6ae6c34c58518d2aea3af341bb25104cf24491e2c87d766a09"
+    },
+    {
+      "bytes": 4690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-ROOT-20261015/point-owned-v1/controls.json",
+      "sha256": "4809fede0c9053a003fcaadf520e98242df5635c181659d8ee02324a4a108a21"
+    },
+    {
+      "bytes": 5527,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-ROOT-20261015/point-owned-v1/response.jsonl",
+      "sha256": "4cda87b42f2ef85498657f8757a3d6e77ef9ec7e4b75ea2708e2e2adf7c62752"
+    }
+  ],
+  "packet_controls_rejected": 14,
+  "padded_word_commands": 24,
+  "padding_rows": 7,
+  "physical_rows": 24,
+  "plan": {
+    "bytes": 5110,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-ROOT-20261015/ROOT-plan-v1.json",
+    "sha256": "8ee6c2b59902f87111369b31b8bcafc74c3d8a4c273daaa18cdb317382938f8b"
+  },
+  "positive_point_board_accepted": true,
+  "postterminal_observation": {
+    "bytes": 479,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-ROOT-20261015/point-external-v1/observation.json",
+    "sha256": "81c9bc34adfc06965c8530f65d13038a13e75fcde186e4ff451b0aa5ab4fbf0f"
+  },
+  "prototype_identity_count": 17,
+  "reconciliation_scope": "Whole saved bytes, fixed authority/bindings, completed point/logical receipt and native/wire/caller metadata only; no Source/kernel/checker/point/model replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-shared-bounded-positive-point-board-disposition-v1",
+  "search_rerun": false,
+  "terminal_T_bytes": 23920640,
+  "unit_target_points": 24
+}

@@ -1,0 +1,258 @@
+{
+  "acceptance": {
+    "GCTS_advantage_or_RL_accepted": false,
+    "GCTS_model_accepted": false,
+    "Root_resource_accepted": false,
+    "complete_ground_counts_accepted": false,
+    "complete_legacy_embedding_accepted": false,
+    "finite_Wang_accepted": false,
+    "new_right_two_proof_accepted": false,
+    "source_independently_reviewed": false
+  },
+  "api": {
+    "check_word": {
+      "fields": [
+        "schema",
+        "completed",
+        "all_commands_in_language",
+        "rows",
+        "command_count",
+        "commands_sha256",
+        "binding",
+        "original_Gamma_preserved",
+        "exact_target",
+        "logical_acceptance"
+      ],
+      "logical_acceptance": false,
+      "maximum_word_commands": 24,
+      "positive_fields": [
+        "completed",
+        "all_commands_in_language",
+        "original_Gamma_preserved",
+        "exact_target"
+      ],
+      "rows": "Complete primitive MEMBER records augmented with command_index and actual ordered refs; no prefix accepted.",
+      "schema": "shared-bounded-six-rule-word-membership-v1",
+      "signature": "check_word(*, language, commands, tick) -> receipt"
+    },
+    "make_language": {
+      "binding_fields": [
+        "profile_name",
+        "profile_sha256",
+        "declaration_sha256",
+        "logical_input_sha256",
+        "source_bindings_sha256",
+        "language_epoch"
+      ],
+      "epoch_access": "language.binding['language_epoch']; no .epoch attribute",
+      "local_deadline": "Captured conservative local perf-counter float projection supplied by reviewed cold caller for unchanged43b only. Global native original interval remains caller authority; this module calls no clock.",
+      "object": "Ordinary complete constructor, normal __dict__, no slots/authority override. Mutable exposed data is untrusted in producer hands; reconstruct a new private object from fresh original raw inputs before final membership. Exact definite exception class is exposed as language.OutsideLanguage (class attribute).",
+      "raw_inputs": "Complete immutable bytes for original declaration and exactly selected policyV2. Declaration SHA is fixed by separately authenticated caller. Only logical input fields theory/ordered_Gamma/parameters/target/height interpreted; old grammar and ground-cardinality ceilings remain historical under their old profile.",
+      "signature": "make_language(*, declaration_raw, expected_declaration_sha256, profile_raw, source_bindings, kernel_module, local_deadline, tick) -> BoundedLanguage",
+      "source_bindings": "Caller-authenticated full Source map, every role capsule has literal sha256/bytes; kernel role must be unchanged43b/10323 and injected module VERSION exact. No module imports or file reads by this code. Full current map custody and native clock projections belong to the caller.",
+      "tick": "Captured resource-only callback. Full Source seals bracket whole construction/membership/producer delegates outside this module."
+    },
+    "primitive_record": {
+      "meaning": "Exact rule witness excludes physical references. Ordered formula list preserves repeats. All witnesses/premises/output scoped and bounded, then original kernel.command invoked with canonical local refs. Canonical literal identity preimage contains complete binding, exact witness and ordered premise formulas. No discovery-order formula codes or alpha quotient. Suitable for a future literal old-recipe embedding pass; no old payload is loaded here.",
+      "member_schema": "shared-bounded-primitive-member-v1",
+      "outcomes": "Return status MEMBER only on complete kernel-validated membership. OutsideLanguage(ValueError) has reason/evidence for definite OUT_OF_PROFILE. MembershipUnknown(TimeoutError), any raw callback TimeoutError, or other incomplete computation is unresolved; it is never an exclusion. The API does not convert these exceptions into false booleans.",
+      "signature": "check_primitive_record(*, language, primitive_witness, ordered_premise_formulas, tick) -> MEMBER record; same as language.primitive(witness,ordered_premises)"
+    },
+    "propose_word": {
+      "all_statuses_untrusted": true,
+      "candidate_fields": [
+        "schema",
+        "binding",
+        "commands",
+        "origin",
+        "full_word_not_prefix"
+      ],
+      "candidate_origin": "untrusted-on-demand-known-fact-search",
+      "candidate_schema": "shared-bounded-ordinary-word-candidate-v1",
+      "exception_policy": "Capture language.OutsideLanguage once at entry, catch only that exact class at the four proposal rejection sites. Ordinary ValueError/callback/kernel/programming/resource failures propagate, rather than becoming rejection counts. The trusted resource callback is not a source of language exclusions.",
+      "schema": "shared-bounded-ordinary-proposal-v1",
+      "signature": "propose_word(*, language, tick) -> proposal",
+      "status": [
+        "CANDIDATE_NOT_VERIFIED",
+        "UNKNOWN"
+      ],
+      "unknown_candidate": null
+    },
+    "syntax": "language.term(parameter term); language.formula(whole proof label); language.contextual_formula(formula,binder_environment); language.template(atomic formula); language.substitute is exact capture algorithm for already validated syntax, not an independent arbitrary-input public proof checker."
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "deferred": [
+    "Distinct complete Source review.",
+    "Cold caller/current authority/raw Source closure integration review.",
+    "Native global-clock and original20/512/55/60/90+1 actual resource qualification.",
+    "Fresh automatic positive target discovery and independent full word check.",
+    "Complete old catalogue embedding, ground counts and all-domain conformance.",
+    "Any GCTS/family/RL/transfer/contribution or unbounded logical universality claim."
+  ],
+  "language": {
+    "fresh": "Substitution copies original43b capture/shadowing behavior. Complete all-name census precedes deterministic first-free suffix. Only complete suffix>=32 yields OUT_OF_PROFILE_FRESH_NAMESPACE with used-name evidence. Depth/time/visit/resource failures remain UNKNOWN.",
+    "hole": "First hole suffix absent from complete original variable-name set plus parameters; atomic eq/pred templates can have zero/one/repeated occurrences. Same term/formula bounds apply.",
+    "legacy_embedding": "Separate future all-old-formula/all-old-recipe pass required. No complete embedding claimed from bounds or static Source checks.",
+    "membership_vs_enumeration": "Carrier is all eligible finite syntax, independent of known facts or target demand. This module decides individual supplied primitive records; it does not enumerate the entire carrier or prove total counts/absence/singletons.",
+    "node_measure": "One node for each var, fun, bot, eq, pred, all, not, imp, and, or constructor; include all term nodes in formula size. Symbol spelling and argument arrays add no nodes.",
+    "rules": "All six original rules only: original named axiom, original indexed Gamma, UI for any eligible universal and parameter term, atomic equality transport, ordered MP, whole-formula UG under complete original Gamma side condition. No finite generator phase restriction.",
+    "scoping": "Parameter terms use only declared parameters. Formula terms may use lexically active literal binders. Binder namespace is complete original logical input variable-name set plus fresh0..fresh31. Extracted contextual bodies are syntax, never facts. Literal spelling and shadowing retained.",
+    "uniform_bounds": {
+      "atomic_template_nodes": 44,
+      "depth": 64,
+      "fresh_suffixes": 32,
+      "kernel_visits": 5000000,
+      "term_nodes": 12,
+      "whole_formula_nodes": 44,
+      "word_commands": 24
+    },
+    "whole_input_gate": "Validate every original axiom (closed), every occurrence-ordered Gamma entry (free vars original parameters), and exact closed target before complete object publication; reject whole profile input, never omit an original alternative."
+  },
+  "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+  "proposer": {
+    "heuristic_limits": {
+      "maximum_atomic_templates_per_pair": 64,
+      "maximum_facts": 2048,
+      "maximum_parameter_terms": 256,
+      "maximum_proposals": 50000,
+      "maximum_rounds": 32,
+      "maximum_word_commands": 24
+    },
+    "incomplete_choices": [
+      "Only input/actually known-fact parameter subterms, not all bounded terms.",
+      "Only known-universal UI, not arbitrary zero-input universal syntax.",
+      "Only single/all occurrence templates, not all arbitrary atom templates/subsets.",
+      "Oriented equality only; no shortcut symmetry/reflexivity/induction.",
+      "Vacuous UG omitted, although admitted by membership.",
+      "One lowest encountered proof-DAG cost per formula can lose sharing alternatives.",
+      "Fact/term/template/round/proposal/word bounds, generic ordering and resource failure can miss a proof."
+    ],
+    "initial_facts": "Only actual original named axioms and occurrence-indexed Gamma; target/subtrees are syntax hints, never facts.",
+    "proof_candidate": "Expanded original primitive command ancestry only, at most24, no saved donor/body/library input. Candidate must be isolated and rechecked with fresh private membership and independently unchanged1717 against freshly authenticated original theory/parameters/Gamma/target under same G/D.",
+    "search": "Generic MP; known-universal UI with retained parameter subterms; generic oriented equality transport on known atom single/all matching-subterm contexts; UG of known whole formulas. Every macro creates unchanged primitive witnesses and real ancestry, then emits strict-prior expanded word.",
+    "unknown": "Quiet worklist or any heuristic stop is UNKNOWN with candidate null, never finite-language exhaustion. Callback/kernel/programming/resource failures propagate; only exact language-defined OutsideLanguage is counted as a definite proposal rejection. Cold caller final native gates remain mandatory."
+  },
+  "purpose": "A generic implicit bounded primitive membership relation and an incomplete on-demand conventional positive-word proposer. This is not a GCTS engine, catalogue/count certificate, family library, finite Wang palette or RL learner.",
+  "raw_references": {
+    "factored_design_review": {
+      "bytes": 16711,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/factored-candidate-interface-independent-design-review-20261015/review-v1.json",
+      "sha256": "84eb35a47af2dd247f34c35a859b235abcf485180d5efc42c7105099bcd46c01"
+    },
+    "first_input": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "policy": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "symbolic_design_review": {
+      "bytes": 16195,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-quantified-schematic-language-independent-review-source-20261015/findings-v1.json",
+      "sha256": "c34e5610516862dd9f65e7dd5c2e33ac4275c6fd285500f2ff6c3150e1afe001"
+    }
+  },
+  "resource_policy": {
+    "aggregate_memory_bytes": 536870912,
+    "caller_seconds": 90,
+    "failure_evidence_seconds": 55,
+    "native_success_seconds_strict": 20,
+    "owned_wall_seconds": 60,
+    "root_owns_all_actuals": true,
+    "single_process_terminal_policy": "B=T; no children",
+    "termination_allowance_seconds": 1
+  },
+  "review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "current_delta": "V1 whole membership scope retained only after reauthentication; genuine proposer V1 negative preserved. V2 requires fresh exact-source applicability review; no old pass relabel.",
+    "required_exact_fields": [
+      "source",
+      "source_contract",
+      "sources",
+      "scope",
+      "author_identity",
+      "reviewer_identity"
+    ],
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scopes": {
+      "membership": "Q-shared-bounded-six-rule-membership-Source",
+      "proposer": "Q-untrusted-bounded-ordinary-proposer-Source"
+    },
+    "source_only": true,
+    "source_review_passed": "genuine distinct reviewer decides; author does not fabricate pass"
+  },
+  "schema": "shared-bounded-language-modules-Source-contract-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": {
+    "membership": "Q-shared-bounded-six-rule-membership-Source",
+    "proposer": "Q-untrusted-bounded-ordinary-proposer-Source"
+  },
+  "selected_policy": {
+    "bytes": 8773,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+    "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+  },
+  "source_history": {
+    "V1_contract": {
+      "bytes": 14442,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v1.json",
+      "sha256": "b3f03a08344868d0819f793e8f5e89beda9c4cb2b5d7d6fa15081f621f3f899d"
+    },
+    "V1_negative_review_handoff": {
+      "bytes": 2097,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/handoff-v1.json",
+      "sha256": "a6c5e3bba4162b786f9ee323dd31a0732a016ed48edcc35bcc51df216bf178d5"
+    },
+    "delta": {
+      "bytes": 13686,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-delta-v2.json",
+      "sha256": "a851fcf42f91693fcf4a20f88a66b77a8f19778dcc0ab560637f58b6488dfe3f"
+    },
+    "old_sources": {
+      "membership": {
+        "bytes": 20073,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v1.py",
+        "sha256": "ffce8882b0bb676cc517cf13ef13339dbcb34fb99464f0c0db69dd33487b9596"
+      },
+      "proposer": {
+        "bytes": 15446,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v1.py",
+        "sha256": "887ee06e6f771524d5ab9df88cce27c6100c17ba7c069f14f4b6028d6208f34e"
+      }
+    }
+  },
+  "source_only": true,
+  "sources": {
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 15376,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v2.py",
+      "sha256": "c5831f8157620e484bd6fce18c0b7ecd24fd8bd59348393954410ac9505a21b3"
+    }
+  },
+  "static_evidence": {
+    "bytes": 13686,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-delta-v2.json",
+    "sha256": "a851fcf42f91693fcf4a20f88a66b77a8f19778dcc0ab560637f58b6488dfe3f"
+  },
+  "trust_boundary": "Producer and all its exposed objects/counters are untrusted. A Source seal alone does not protect mutable argument data. Cold intake must reauthenticate original raw inputs and reconstruct private language after producer; isolate/strictly bound candidate, full Source seals before/after authority delegates, then membership and unchanged1717 full-word check. No resource callback acts as an acceptance seal."
+}

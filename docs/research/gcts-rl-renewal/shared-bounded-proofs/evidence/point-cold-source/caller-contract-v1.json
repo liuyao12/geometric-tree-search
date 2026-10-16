@@ -1,0 +1,46 @@
+{
+  "schema": "shared-bounded-point-board-verification-caller-contract-v1",
+  "entry": "TOP exact pinned Python -I -S -B intake sole-plan-path; no private-module main, no reset.",
+  "worker": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/verify_saved_word_point_board_v1.py",
+    "sha256": "dd7a1a13829c63d41935038327c063a7089b2c3e28d28c20f4743ebcd6ec7be2",
+    "bytes": 55225
+  },
+  "runtime": {
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e",
+    "bytes": 102352
+  },
+  "native_terminal_meter": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+    "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+    "bytes": 6734
+  },
+  "external_driver": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+    "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+    "bytes": 4357
+  },
+  "external_argv": "Existing external9ded argv4: actual plan path / whole SHA / bytes / fresh external directory; it reads exact plan.sources.intake then native meter2 CLI7.",
+  "owned_processes": 1,
+  "descendants": 0,
+  "memory_rule": "B=T from true external wait4 terminal high-water value; no inherited terminal-parent-plus-child double count and no preexit substitute.",
+  "success": [
+    "Exact worker PID/status0 truly reaped, no error/interruption/cancel; complete wire/output/stdout EOF and hashes",
+    "Native launch<=EARLY_G<terminal<=postterminal original CLOCK_MONOTONIC observation; launch-to-postprobe strictly<20e9",
+    "True terminal T<=536870912B; internal500MiB threshold is reserve only",
+    "One genuine complete finite nonnegative tool Date bracket<=60s and +1<=90s",
+    "Root alone reconciles exact Source7/input3/original+padded membership and1717/whole point union/14 genuine rejection controls/native/wire/caller closure; no prefix."
+  ],
+  "failure": "Any late/incomplete/cancel/hash/custody or native failure means UNKNOWN/no accepted prefix;55s permits bounded error evidence only.",
+  "instrument_scope": "Meter/probe external trusted instruments exclude instrument memory; their startup/output/exit wall is charged. No extra owned process or new measurement framework.",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "actual_invocations": 0
+}

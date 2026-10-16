@@ -1,0 +1,224 @@
+{
+  "all_literal_author_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 24,
+  "checks": [
+    {
+      "check": "membership complete raw bytes/AST/compile-only",
+      "evidence": {
+        "bytes": 20073,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v1.py",
+        "sha256": "ffce8882b0bb676cc517cf13ef13339dbcb34fb99464f0c0db69dd33487b9596"
+      },
+      "passed": true
+    },
+    {
+      "check": "membership imports are stdlib only",
+      "evidence": [
+        "copy",
+        "hashlib",
+        "json"
+      ],
+      "passed": true
+    },
+    {
+      "check": "membership no filesystem/process/clock APIs",
+      "evidence": "AST attribute census; no function invocation",
+      "passed": true
+    },
+    {
+      "check": "membership no top-level expression call",
+      "evidence": [],
+      "passed": true
+    },
+    {
+      "check": "proposer complete raw bytes/AST/compile-only",
+      "evidence": {
+        "bytes": 15446,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v1.py",
+        "sha256": "887ee06e6f771524d5ab9df88cce27c6100c17ba7c069f14f4b6028d6208f34e"
+      },
+      "passed": true
+    },
+    {
+      "check": "proposer imports are stdlib only",
+      "evidence": [
+        "copy",
+        "json"
+      ],
+      "passed": true
+    },
+    {
+      "check": "proposer no filesystem/process/clock APIs",
+      "evidence": "AST attribute census; no function invocation",
+      "passed": true
+    },
+    {
+      "check": "proposer no top-level expression call",
+      "evidence": [],
+      "passed": true
+    },
+    {
+      "check": "selected raw policy V2",
+      "evidence": {
+        "bytes": 8773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+        "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+      },
+      "passed": true
+    },
+    {
+      "check": "six exact arities",
+      "evidence": {
+        "assumption": 0,
+        "axiom": 0,
+        "eq_subst": 0,
+        "generalize": 1,
+        "instantiate": 0,
+        "mp": 2
+      },
+      "passed": true
+    },
+    {
+      "check": "kernel raw binding",
+      "evidence": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "passed": true
+    },
+    {
+      "check": "profile name and syntax bounds",
+      "evidence": "policy read whole; scalar literal checks only",
+      "passed": true
+    },
+    {
+      "check": "three stable public membership delegates",
+      "evidence": [
+        "_decode",
+        "_flags",
+        "_name",
+        "_no_number",
+        "_pairs",
+        "canonical",
+        "check_primitive_record",
+        "check_word",
+        "digest",
+        "make_language",
+        "need"
+      ],
+      "passed": true
+    },
+    {
+      "check": "factory exact keyword interface",
+      "evidence": [
+        "declaration_raw",
+        "expected_declaration_sha256",
+        "profile_raw",
+        "source_bindings",
+        "kernel_module",
+        "local_deadline",
+        "tick"
+      ],
+      "passed": true
+    },
+    {
+      "check": "proposer sole language/tick keyword API",
+      "evidence": "AST signature only",
+      "passed": true
+    },
+    {
+      "check": "explicit whole-input axiom/Gamma/target gate",
+      "evidence": "literal control regions; no semantic execution",
+      "passed": true
+    },
+    {
+      "check": "fresh exclusion follows complete used-name census",
+      "evidence": "literal control flow inspected",
+      "passed": true
+    },
+    {
+      "check": "kernel TimeoutError is unresolved",
+      "evidence": "kernel.command error path read",
+      "passed": true
+    },
+    {
+      "check": "word height and strict ordered refs",
+      "evidence": "word function complete Source read",
+      "passed": true
+    },
+    {
+      "check": "no target/theory symbol hardcodes in producer",
+      "evidence": "literal string census; generic AST tags are allowed",
+      "passed": true
+    },
+    {
+      "check": "producer never emits negative exhaustion label",
+      "evidence": "complete return regions read",
+      "passed": true
+    },
+    {
+      "check": "producer TimeoutError not caught as ValueError",
+      "evidence": "AST exception handlers",
+      "passed": true
+    },
+    {
+      "check": "no donor/library/word input",
+      "evidence": "no raw proof/candidate argument; whole source read",
+      "passed": true
+    },
+    {
+      "check": "source_only no project code execution",
+      "evidence": "Only raw stdlib metadata, ast.parse and compile(code, exec-mode) without exec/import. No scientific/helper/new module/native clock/test calls.",
+      "passed": true
+    }
+  ],
+  "limits": "Author Source evidence only, not independent review, scientific execution, membership conformance, successful proof, or resource admission.",
+  "raw_references": {
+    "factored_design_review": {
+      "bytes": 16711,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/factored-candidate-interface-independent-design-review-20261015/review-v1.json",
+      "sha256": "84eb35a47af2dd247f34c35a859b235abcf485180d5efc42c7105099bcd46c01"
+    },
+    "first_input": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "policy": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "symbolic_design_review": {
+      "bytes": 16195,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-quantified-schematic-language-independent-review-source-20261015/findings-v1.json",
+      "sha256": "c34e5610516862dd9f65e7dd5c2e33ac4275c6fd285500f2ff6c3150e1afe001"
+    }
+  },
+  "schema": "shared-bounded-language-author-static-evidence-v1",
+  "scientific_calls": 0,
+  "sources": {
+    "membership": {
+      "bytes": 20073,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v1.py",
+      "sha256": "ffce8882b0bb676cc517cf13ef13339dbcb34fb99464f0c0db69dd33487b9596"
+    },
+    "proposer": {
+      "bytes": 15446,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v1.py",
+      "sha256": "887ee06e6f771524d5ab9df88cce27c6100c17ba7c069f14f4b6028d6208f34e"
+    }
+  }
+}

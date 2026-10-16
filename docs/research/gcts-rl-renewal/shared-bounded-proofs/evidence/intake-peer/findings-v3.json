@@ -1,0 +1,863 @@
+{
+  "actual_activation": false,
+  "advisories": [
+    "V3-TERM-ONLY-QUIESCENCE-1 remains an incomplete producer heuristic, not mathematical rejection authority."
+  ],
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored membership/proposer dependencies, not this intake or original kernel1717/support. Their independent current module Source passes are arithmetic a25f/0e2e, reauthenticated here. This review independently assesses new intake, full authority/caller/fresh-input/output integration, not a second independent proof of reviewer-owned module semantics.",
+  "blockers": [],
+  "check_count": 11,
+  "checks": [
+    {
+      "check": "exact single-field metadata repair",
+      "evidence": "Entire contract data comparison: only consumed schema literal differs; every map/cap/API/authority/provenance field identical",
+      "passed": true
+    },
+    {
+      "check": "whole raw contract inverse",
+      "evidence": "Complete byte reconstruction from preserved rejected acba to corrected4987",
+      "passed": true
+    },
+    {
+      "check": "actual consumer schema now aligned",
+      "evidence": "Actual unchanged main line213 read; BOUNDED-INTAKE-CONTRACT-SCHEMA-1 closed exactly",
+      "passed": true
+    },
+    {
+      "check": "identical source and current full Source6/input2 API/caps",
+      "evidence": "All16 definitions/28 direct callers and15 inherited helpers remain genuinely reviewed exact bytes, not reauthored",
+      "passed": true
+    },
+    {
+      "check": "retained10 current positives and27 whole positives",
+      "evidence": "Reauthenticated complete raw records for retained scopes; the one old false schema predicate is replaced by the explicit corrected check above",
+      "passed": true
+    },
+    {
+      "check": "exact operative Review ABI maps",
+      "evidence": "No top-source-only check or old-map typed pass promotion",
+      "passed": true
+    },
+    {
+      "check": "current independent membership/proposer review bindings",
+      "evidence": {
+        "membership": {
+          "bytes": 2288,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/membership-typed-Source-review-v3.json",
+          "sha256": "64ee4adb46ba82693685a802456e74d6186bdaa5722dafd19e641bdb5ccc74ca"
+        },
+        "proposer": {
+          "bytes": 2259,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/proposer-typed-Source-review-v3.json",
+          "sha256": "d062ed6500fae95736b413f9d6a6034326b50d08b2e1a3aaa1c5d217d06bdef2"
+        }
+      },
+      "passed": true
+    },
+    {
+      "check": "scope advisory remains explicit incompleteness",
+      "evidence": "Term-only growth can be omitted at quiescence; no promise of every new-term combination, count/completeness/negative/positive result. No intake soundness blocker follows.",
+      "passed": true
+    },
+    {
+      "check": "all actual schema selfrefs fixed and histories retained",
+      "evidence": "Static/handoff references current4987, rejectedacba/handoff2 and genuine negative41d67 remain immutable",
+      "passed": true
+    },
+    {
+      "check": "no new actual approval or scientific admission",
+      "evidence": "Root sole actual owner; current strict original20/512/55/60/90+1/caller/EOF/full-word and private original authority gates remain",
+      "passed": true
+    },
+    {
+      "check": "Source/metadata-only review",
+      "evidence": "Only raw complete reads/hashes, small saved JSON comparisons; no source imports/exec/functions/helper/scientific/native clock/tests/Q decode or plans/actuals",
+      "passed": true
+    }
+  ],
+  "disposition": "CONDITIONAL_CURRENT_SOURCE_PASS_SCHEMA_REPAIR_CLOSED",
+  "preserved_negative": {
+    "bytes": 3551,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/typed-Source-review-v2.json",
+    "sha256": "41d67bf3d21ee812e373fff18def87d416184e734b01cbe9d4c9b7dfa4c38161"
+  },
+  "raw_reference_count": 51,
+  "raw_references": [
+    {
+      "actual": {
+        "bytes": 13163,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v1.json",
+        "sha256": "99ff0726969678a2576b24feea33cbb6d81c91598649d0b181d4a4837626df26"
+      },
+      "matched": true,
+      "origin": "current_handoff/preserved_parent/contract",
+      "record": {
+        "bytes": 13163,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v1.json",
+        "sha256": "99ff0726969678a2576b24feea33cbb6d81c91598649d0b181d4a4837626df26"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 39482,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v2.py",
+        "sha256": "f804bac13bf2b69f1d223a947ef8108298124f1350ab2e91f3cc06631a57d067"
+      },
+      "matched": true,
+      "origin": "current_handoff/preserved_parent/source",
+      "record": {
+        "bytes": 39482,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v2.py",
+        "sha256": "f804bac13bf2b69f1d223a947ef8108298124f1350ab2e91f3cc06631a57d067"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "matched": true,
+      "origin": "proposer_current_independent_review/sources/membership",
+      "record": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 15376,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v2.py",
+        "sha256": "c5831f8157620e484bd6fce18c0b7ecd24fd8bd59348393954410ac9505a21b3"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 15376,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v2.py",
+        "sha256": "c5831f8157620e484bd6fce18c0b7ecd24fd8bd59348393954410ac9505a21b3"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "matched": true,
+      "origin": "current_handoff/sources/kernel",
+      "record": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 46514,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+      },
+      "matched": true,
+      "origin": "current_handoff/sources/checker",
+      "record": {
+        "bytes": 46514,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+        "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "matched": true,
+      "origin": "current_handoff/sources/clean_support",
+      "record": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2925,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+      },
+      "matched": true,
+      "origin": "current_handoff/inputs/declaration",
+      "record": {
+        "bytes": 2925,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 8773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+        "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+      },
+      "matched": true,
+      "origin": "current_handoff/inputs/profile",
+      "record": {
+        "bytes": 8773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+        "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2767,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/caller-contract-v1.json",
+        "sha256": "5277faa3bde67ab85982b55bd054d2d0634605a9d64e1126ccbacdb0a78c5061"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 2767,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/caller-contract-v1.json",
+        "sha256": "5277faa3bde67ab85982b55bd054d2d0634605a9d64e1126ccbacdb0a78c5061"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 4372,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/ROOT-plan-shape-v1.json",
+        "sha256": "32f755c665b04e61665c036a966760cc09465ade3175c30d1c74865c4e00ea68"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 4372,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/ROOT-plan-shape-v1.json",
+        "sha256": "32f755c665b04e61665c036a966760cc09465ade3175c30d1c74865c4e00ea68"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 4318,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/prospective-protocol-v1.json",
+        "sha256": "65c172940fc3acdb85015c511c13b4f41489eb37612c129b6a5ebc32d1ec04fa"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 4318,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/prospective-protocol-v1.json",
+        "sha256": "65c172940fc3acdb85015c511c13b4f41489eb37612c129b6a5ebc32d1ec04fa"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 7396,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/author-static-evidence-v1.json",
+        "sha256": "3a22847fd581f3e93c279e753f6240a7e58ea777cf0aa324b4b3be086e49cf03"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 7396,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/author-static-evidence-v1.json",
+        "sha256": "3a22847fd581f3e93c279e753f6240a7e58ea777cf0aa324b4b3be086e49cf03"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 1761,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v1-to-v2-delta-v1.json",
+        "sha256": "ea7ad72dbd991b6894f5987d7a8f687c5308912c4fa3cc2373c68bac5b4833f6"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 1761,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v1-to-v2-delta-v1.json",
+        "sha256": "ea7ad72dbd991b6894f5987d7a8f687c5308912c4fa3cc2373c68bac5b4833f6"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2569,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/handoff-v2.json",
+        "sha256": "f809deafc0d5025176e5d0b0dbb7ce61dd5bf39e2ae95e28f1a76677c61d1374"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 2569,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/handoff-v2.json",
+        "sha256": "f809deafc0d5025176e5d0b0dbb7ce61dd5bf39e2ae95e28f1a76677c61d1374"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 42226,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-cold-integration/right_two_ordinary_cold_intake_v2.py",
+        "sha256": "7a9fd71a31807dd042f0259fc133341f96823ff3b5f099d5698f133aa245269c"
+      },
+      "matched": true,
+      "origin": "current_contract/provenance/parent_helpers",
+      "record": {
+        "bytes": 42226,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/goal-attached-receptors-independent-source-20261015/ordinary-cold-integration/right_two_ordinary_cold_intake_v2.py",
+        "sha256": "7a9fd71a31807dd042f0259fc133341f96823ff3b5f099d5698f133aa245269c"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 3493,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/code-only-v1.json",
+        "sha256": "f0023d5ae1ef0baa539daa958d04336fb3c248f52e02609c7b7e05415db11129"
+      },
+      "matched": true,
+      "origin": "current_contract/provenance/preserved_code_only",
+      "record": {
+        "bytes": 3493,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/code-only-v1.json",
+        "sha256": "f0023d5ae1ef0baa539daa958d04336fb3c248f52e02609c7b7e05415db11129"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 16749,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v2.json",
+        "sha256": "2a3f16462139153ef43cbe3b76a457ebfa35d88b37a343ba28732a2e94481e77"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 16749,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v2.json",
+        "sha256": "2a3f16462139153ef43cbe3b76a457ebfa35d88b37a343ba28732a2e94481e77"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      "matched": true,
+      "origin": "current_contract/provenance/master",
+      "record": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 4443,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+        "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+      },
+      "matched": true,
+      "origin": "current_contract/provenance/native_clock_policy",
+      "record": {
+        "bytes": 4443,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-runtime-clock-ABI-qualification-20261015/ROOT-global-clock-repair-choice-v1.json",
+        "sha256": "2e526972409799e8874d10afdf0cb094ac4f6dc634b2fc0ffdaa2be789d172b4"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 102352,
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 102352,
+        "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+        "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 6734,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+        "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 6734,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+        "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 4357,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+        "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 4357,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-ordinary-first-ready-ROOT-20261015/ROOT_external_once_v1.py",
+        "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 39482,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v1.py",
+        "sha256": "78f064e0d9e9edddf91e9924f73e4ce8f48766fc319a135efb0725ff52d4ec52"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 39482,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v1.py",
+        "sha256": "78f064e0d9e9edddf91e9924f73e4ce8f48766fc319a135efb0725ff52d4ec52"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 3946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v1-to-v2.patch",
+        "sha256": "be0a13d2c8e7bc437a92476ade27866604cea703b06b36ed043e2c8a91d5019e"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 3946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v1-to-v2.patch",
+        "sha256": "be0a13d2c8e7bc437a92476ade27866604cea703b06b36ed043e2c8a91d5019e"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 3946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v2-to-v1-full-inverse.patch",
+        "sha256": "9afc8c9abafacc42b1f53889a3b6de71e7d5be58a8ce04af50ff99a333ab98f5"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 3946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v2-to-v1-full-inverse.patch",
+        "sha256": "9afc8c9abafacc42b1f53889a3b6de71e7d5be58a8ce04af50ff99a333ab98f5"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 22691,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/findings-v2.json",
+        "sha256": "55981fbea1bc0797eabaf521999a6df408522945e2d41bf77a5e4b5ad1075bdc"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 22691,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/findings-v2.json",
+        "sha256": "55981fbea1bc0797eabaf521999a6df408522945e2d41bf77a5e4b5ad1075bdc"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 39482,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+        "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389"
+      },
+      "matched": true,
+      "origin": "correction/source_unchanged",
+      "record": {
+        "bytes": 39482,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+        "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 23734,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+        "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a"
+      },
+      "matched": true,
+      "origin": "proposer_current_independent_review/sources/proposer",
+      "record": {
+        "bytes": 23734,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+        "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 14695,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v2.json",
+        "sha256": "acba8bd66f7faa48020fdee721010bd6fb6dddf8dbcc26c81490bb95d8d52175"
+      },
+      "matched": true,
+      "origin": "correction/preserved_rejected_contract",
+      "record": {
+        "bytes": 14695,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v2.json",
+        "sha256": "acba8bd66f7faa48020fdee721010bd6fb6dddf8dbcc26c81490bb95d8d52175"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 6960,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/handoff-v2.json",
+        "sha256": "9112bf5370afcf0007c36f7900b8bca6619828850828f173846dc80732defb9d"
+      },
+      "matched": true,
+      "origin": "correction/preserved_rejected_handoff",
+      "record": {
+        "bytes": 6960,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/handoff-v2.json",
+        "sha256": "9112bf5370afcf0007c36f7900b8bca6619828850828f173846dc80732defb9d"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2602,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v2-to-v3-delta-v1.json",
+        "sha256": "9be200e6ece43a33365d6bae215748cd36bc815e9d20c562f27b045b72a1cbce"
+      },
+      "matched": true,
+      "origin": "current_handoff/intake_delta",
+      "record": {
+        "bytes": 2602,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v2-to-v3-delta-v1.json",
+        "sha256": "9be200e6ece43a33365d6bae215748cd36bc815e9d20c562f27b045b72a1cbce"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2767,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/caller-contract-v2.json",
+        "sha256": "9b7f831fd3abf1c37106b4d12f3a0dc95f85648690ffe25506833ffcd7616a6b"
+      },
+      "matched": true,
+      "origin": "current_handoff/caller_contract",
+      "record": {
+        "bytes": 2767,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/caller-contract-v2.json",
+        "sha256": "9b7f831fd3abf1c37106b4d12f3a0dc95f85648690ffe25506833ffcd7616a6b"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 4372,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/ROOT-plan-shape-v2.json",
+        "sha256": "0d1092df644f1d1ea4f7927b8ddd35c9662e1457a2e85f153ac9070e6ad6ed39"
+      },
+      "matched": true,
+      "origin": "current_handoff/plan_shape",
+      "record": {
+        "bytes": 4372,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/ROOT-plan-shape-v2.json",
+        "sha256": "0d1092df644f1d1ea4f7927b8ddd35c9662e1457a2e85f153ac9070e6ad6ed39"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 4318,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/prospective-protocol-v2.json",
+        "sha256": "2dc6212db5f97229cf1ef942ae25b6cfffdde59917fcb4e7e6b1651a288e88db"
+      },
+      "matched": true,
+      "origin": "current_handoff/prospective_protocol",
+      "record": {
+        "bytes": 4318,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/prospective-protocol-v2.json",
+        "sha256": "2dc6212db5f97229cf1ef942ae25b6cfffdde59917fcb4e7e6b1651a288e88db"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 5003,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/author-static-evidence-v2.json",
+        "sha256": "e969df913a935d6ad993920b0faf365c5d1090d97faa5af0accb538dc3e9ddef"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 5003,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/author-static-evidence-v2.json",
+        "sha256": "e969df913a935d6ad993920b0faf365c5d1090d97faa5af0accb538dc3e9ddef"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 3946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v2-to-v3.patch",
+        "sha256": "971866d11d09358f791c1361f736cda0011bc3e84f9911409e502e64286e2ba8"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 3946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v2-to-v3.patch",
+        "sha256": "971866d11d09358f791c1361f736cda0011bc3e84f9911409e502e64286e2ba8"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 3946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v3-to-v2-full-inverse.patch",
+        "sha256": "ce7cd216bdf4389dfc2304d8f9e56b6de1a26a823ea6fb5959e75a33f850cf49"
+      },
+      "matched": true,
+      "origin": "retained_current_negative",
+      "record": {
+        "bytes": 3946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/intake-v3-to-v2-full-inverse.patch",
+        "sha256": "ce7cd216bdf4389dfc2304d8f9e56b6de1a26a823ea6fb5959e75a33f850cf49"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 19009,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v3.json",
+        "sha256": "ab9734d53223394a49e2e234777c4f52c36f524b586e364bb9e0c71d2d6e6ef0"
+      },
+      "matched": true,
+      "origin": "proposer_current_independent_review/source_contract",
+      "record": {
+        "bytes": 19009,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v3.json",
+        "sha256": "ab9734d53223394a49e2e234777c4f52c36f524b586e364bb9e0c71d2d6e6ef0"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2888,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/handoff-v3.json",
+        "sha256": "3ce2e1b31cddb155f70273ea797b9e8959be0fa9f1fac60ae35e254a149fdb69"
+      },
+      "matched": true,
+      "origin": "current_handoff/current_modules",
+      "record": {
+        "bytes": 2888,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/handoff-v3.json",
+        "sha256": "3ce2e1b31cddb155f70273ea797b9e8959be0fa9f1fac60ae35e254a149fdb69"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 5915,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/handoff-v1.json",
+        "sha256": "bce6c9363878e407dab92a317400ebb6f10f2c70ea46f064656483ac31954d22"
+      },
+      "matched": true,
+      "origin": "current_handoff/preserved_parent/handoff",
+      "record": {
+        "bytes": 5915,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/handoff-v1.json",
+        "sha256": "bce6c9363878e407dab92a317400ebb6f10f2c70ea46f064656483ac31954d22"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 14695,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v3.json",
+        "sha256": "4987f8074fa637d66c9ae1063aa9539da958b0debbc4fbea5a07def5d0bb6cdd"
+      },
+      "matched": true,
+      "origin": "current_contract_file",
+      "record": {
+        "bytes": 14695,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v3.json",
+        "sha256": "4987f8074fa637d66c9ae1063aa9539da958b0debbc4fbea5a07def5d0bb6cdd"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 5539,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/author-static-evidence-v3.json",
+        "sha256": "3fe9ebc5e2bc7f58e82ce98bb5cee6f728dd93c1fbdb42bf24085ebdb1b261f4"
+      },
+      "matched": true,
+      "origin": "current_handoff/author_static",
+      "record": {
+        "bytes": 5539,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/author-static-evidence-v3.json",
+        "sha256": "3fe9ebc5e2bc7f58e82ce98bb5cee6f728dd93c1fbdb42bf24085ebdb1b261f4"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2242,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/metadata-schema-correction-v1.json",
+        "sha256": "e17a5e4fa02e8c36feec0bae7a5c346eea5f6bf4b81748d6cbb058dfd5bcd6d2"
+      },
+      "matched": true,
+      "origin": "correction_file",
+      "record": {
+        "bytes": 2242,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/metadata-schema-correction-v1.json",
+        "sha256": "e17a5e4fa02e8c36feec0bae7a5c346eea5f6bf4b81748d6cbb058dfd5bcd6d2"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 13689,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/findings-v3.json",
+        "sha256": "708035cdde81c1d7c24492c5d993a0efb8b4f42ee48c12a74b0b6db8f7d9a4dc"
+      },
+      "matched": true,
+      "origin": "proposer_current_independent_review/findings",
+      "record": {
+        "bytes": 13689,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/findings-v3.json",
+        "sha256": "708035cdde81c1d7c24492c5d993a0efb8b4f42ee48c12a74b0b6db8f7d9a4dc"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2288,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/membership-typed-Source-review-v3.json",
+        "sha256": "64ee4adb46ba82693685a802456e74d6186bdaa5722dafd19e641bdb5ccc74ca"
+      },
+      "matched": true,
+      "origin": "membership_review_file",
+      "record": {
+        "bytes": 2288,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/membership-typed-Source-review-v3.json",
+        "sha256": "64ee4adb46ba82693685a802456e74d6186bdaa5722dafd19e641bdb5ccc74ca"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2259,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/proposer-typed-Source-review-v3.json",
+        "sha256": "d062ed6500fae95736b413f9d6a6034326b50d08b2e1a3aaa1c5d217d06bdef2"
+      },
+      "matched": true,
+      "origin": "proposer_review_file",
+      "record": {
+        "bytes": 2259,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/proposer-typed-Source-review-v3.json",
+        "sha256": "d062ed6500fae95736b413f9d6a6034326b50d08b2e1a3aaa1c5d217d06bdef2"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 2465,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/handoff-v3.json",
+        "sha256": "3d7271bc2a7cab55bbd38f8208972168fd567dcec75b35c2213380b67ae2d839"
+      },
+      "matched": true,
+      "origin": "current_modules_review_handoff",
+      "record": {
+        "bytes": 2465,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/handoff-v3.json",
+        "sha256": "3d7271bc2a7cab55bbd38f8208972168fd567dcec75b35c2213380b67ae2d839"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 7877,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/handoff-v3.json",
+        "sha256": "01366cc20f9d2833ea46b6dffc0160168accc9860c1eb1f0dd9c17927e271e9f"
+      },
+      "matched": true,
+      "origin": "current_handoff_file",
+      "record": {
+        "bytes": 7877,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/handoff-v3.json",
+        "sha256": "01366cc20f9d2833ea46b6dffc0160168accc9860c1eb1f0dd9c17927e271e9f"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 3551,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/typed-Source-review-v2.json",
+        "sha256": "41d67bf3d21ee812e373fff18def87d416184e734b01cbe9d4c9b7dfa4c38161"
+      },
+      "matched": true,
+      "origin": "preserved_negative",
+      "record": {
+        "bytes": 3551,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/typed-Source-review-v2.json",
+        "sha256": "41d67bf3d21ee812e373fff18def87d416184e734b01cbe9d4c9b7dfa4c38161"
+      }
+    },
+    {
+      "actual": {
+        "bytes": 4103,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/typed-Source-review-v1.json",
+        "sha256": "4155bfb336d372c3f17259e0b1f0acba02b45a760215ce08a22faf0199e59a57"
+      },
+      "matched": true,
+      "origin": "retained_whole_review",
+      "record": {
+        "bytes": 4103,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/typed-Source-review-v1.json",
+        "sha256": "4155bfb336d372c3f17259e0b1f0acba02b45a760215ce08a22faf0199e59a57"
+      }
+    }
+  ],
+  "resolved": [
+    "BOUNDED-INTAKE-CONTRACT-SCHEMA-1"
+  ],
+  "retained_current_positive_checks": 10,
+  "retained_whole_checks": 27,
+  "retained_whole_review": {
+    "bytes": 4103,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "4155bfb336d372c3f17259e0b1f0acba02b45a760215ce08a22faf0199e59a57"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "shared-bounded-ordinary-cold-independent-Source-findings-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Current intakeV3 plus full corrected contract applicability. Source-level positive-word endpoint only; no actual native/resource/proof, finite negative, count/legacy/GCTS/marking/RL benefit admission.",
+  "source": {
+    "bytes": 39482,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+    "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389"
+  },
+  "source_contract": {
+    "bytes": 14695,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/Source-contract-v3.json",
+    "sha256": "4987f8074fa637d66c9ae1063aa9539da958b0debbc4fbea5a07def5d0bb6cdd"
+  },
+  "source_handoff": {
+    "bytes": 7877,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/handoff-v3.json",
+    "sha256": "01366cc20f9d2833ea46b6dffc0160168accc9860c1eb1f0dd9c17927e271e9f"
+  },
+  "sources": {
+    "checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "intake": {
+      "bytes": 39482,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v3.py",
+      "sha256": "cd3fd500ccdcda59347e76ad06c3a7d1834076fd2759b066040529556148a389"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 23734,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+      "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a"
+    }
+  }
+}

@@ -1,0 +1,1487 @@
+{
+  "byte_edits": [
+    {
+      "new_end": 409,
+      "new_start": 408,
+      "new_utf8": "3",
+      "old_end": 409,
+      "old_start": 408,
+      "old_utf8": "2"
+    },
+    {
+      "new_end": 4586,
+      "new_start": 3423,
+      "new_utf8": "_match_instance(pattern, goal, variable, tick):\n    \"\"\"Literal one-variable matching is only an ordering hint; substitution rechecks it.\"\"\"\n    replacement = [None]\n    def match(left, right, shadowed=False):\n        tick()\n        if type(left) is not list or type(right) is not list or not left or not right:\n            return left == right\n        if left[0] == 'var' and left[1] == variable and not shadowed:\n            if replacement[0] is None:\n                replacement[0] = copy.deepcopy(right)\n            return replacement[0] == right\n        if left[0] != right[0] or len(left) != len(right):\n            return False\n        if left[0] == 'all':\n            return left[1] == right[1] and match(left[2], right[2], shadowed or left[1] == variable)\n        if left[0] in ('fun', 'pred'):\n            return left[1] == right[1] and len(left[2]) == len(right[2]) and all(\n                match(a, b, shadowed) for a, b in zip(left[2], right[2]))\n        if left[0] in ('var', 'bot'):\n            return left == right\n        return all(match(a, b, shadowed) for a, b in zip(left[1:], right[1:]))\n    return match(pattern, goal), replacement[0]\n\n\ndef ",
+      "old_end": 3423,
+      "old_start": 3423,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 4636,
+      "new_start": 4626,
+      "new_utf8": "Fair bound",
+      "old_end": 3464,
+      "old_start": 3463,
+      "old_utf8": "R"
+    },
+    {
+      "new_end": 4641,
+      "new_start": 4637,
+      "new_utf8": "d he",
+      "old_end": 3466,
+      "old_start": 3465,
+      "old_utf8": "t"
+    },
+    {
+      "new_end": 4648,
+      "new_start": 4643,
+      "new_utf8": "istic",
+      "old_end": 3469,
+      "old_start": 3468,
+      "old_utf8": "n"
+    },
+    {
+      "new_end": 4652,
+      "new_start": 4650,
+      "new_utf8": "ge",
+      "old_end": 3471,
+      "old_start": 3471,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 4656,
+      "new_start": 4653,
+      "new_utf8": "da;",
+      "old_end": 3472,
+      "old_start": 3472,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 4659,
+      "new_start": 4657,
+      "new_utf8": "pe",
+      "old_end": 3474,
+      "old_start": 3473,
+      "old_utf8": "u"
+    },
+    {
+      "new_end": 4673,
+      "new_start": 4660,
+      "new_utf8": "ding goals ne",
+      "old_end": 3475,
+      "old_start": 3475,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 4690,
+      "new_start": 4676,
+      "new_utf8": " become accept",
+      "old_end": 3481,
+      "old_start": 3478,
+      "old_utf8": "ifi"
+    },
+    {
+      "new_end": 4695,
+      "new_start": 4693,
+      "new_utf8": "fa",
+      "old_end": 3489,
+      "old_start": 3484,
+      "old_utf8": "<=24-"
+    },
+    {
+      "new_end": 4696,
+      "new_start": 4696,
+      "new_utf8": "",
+      "old_end": 3504,
+      "old_start": 3490,
+      "old_utf8": "ommand candida"
+    },
+    {
+      "new_end": 4698,
+      "new_start": 4697,
+      "new_utf8": "s",
+      "old_end": 3540,
+      "old_start": 3505,
+      "old_utf8": "e, or explicitly incomplete UNKNOWN"
+    },
+    {
+      "new_end": 5347,
+      "new_start": 5111,
+      "new_utf8": ",\n                'goal_ui_attempts': 0, 'goal_mp_attempts': 0, 'goal_ug_attempts': 0,\n                'goal_transport_watches': 0, 'goal_transport_firings': 0,\n                'agenda_tasks': {'UI': 0, 'MP': 0, 'transport': 0, 'UG': 0}",
+      "old_end": 3953,
+      "old_start": 3953,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 5486,
+      "new_start": 5486,
+      "new_utf8": "",
+      "old_end": 4317,
+      "old_start": 4092,
+      "old_utf8": "\n    stop = 'heuristic worklist quiet; implicit syntax carrier not exhausted'\n    # Capture the exact language-defined definite exclusion class once.\n    # Resource/callback/programming failures are not membership exclusions."
+    },
+    {
+      "new_end": 6454,
+      "new_start": 5651,
+      "new_utf8": "}\n    stop = 'heuristic worklist quiet; implicit syntax carrier not exhausted'\n    # Syntax hints only: eligible target subformulas, never initial facts.\n    goals = {}\n    syntax_pending = [language.target]\n    while syntax_pending:\n        tick()\n        formula = syntax_pending.pop()\n        try:\n            language.formula(formula)\n        except outside_language:\n            pass\n        else:\n            goals[_key(formula)] = copy.deepcopy(formula)\n        if formula[0] == 'all':\n            syntax_pending.append(formula[2])\n        elif formula[0] in ('not', 'imp', 'and', 'or'):\n            syntax_pending.extend(formula[1:])\n    newly_known = []\n    implication_index = {}\n    transport_waiters = {}\n    watch_seen, watch_fired, goal_ui_seen = set(), set(), set()\n    active_streams = {",
+      "old_end": 4482,
+      "old_start": 4482,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 8926,
+      "new_start": 8798,
+      "new_utf8": "if key == target_key:\n            raise SearchStopped('actual known target ancestry; independent check still required')\n        ",
+      "old_end": 6826,
+      "old_start": 6826,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 9126,
+      "new_start": 8945,
+      "new_utf8": ")\n        newly_known.append(result)\n        if result[2][0] == 'imp' and _key(result[2][2]) in goals:\n            implication_index.setdefault(_key(result[2][1]), []).append(result",
+      "old_end": 6845,
+      "old_start": 6845,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 18822,
+      "new_start": 10599,
+      "new_utf8": "execute_ui(universal, term):\n        counters['ui_proposals'] += 1\n        try:\n            instance = language.substitute(universal[2][2], universal[2][1], term)\n            license_node = node({'rule': 'instantiate', 'universal': copy.deepcopy(universal[2]),\n                                 'term': copy.deepcopy(term),\n                                 'formula': ['imp', copy.deepcopy(universal[2]), instance]}, [])\n        except outside_language:\n            counters['membership_rejections'] += 1\n            return None\n        return mp(universal, license_node)\n\n    def execute_transport(equality, atom, template):\n        counters['transport_proposals'] += 1\n        left, right = equality[2][1:]\n        try:\n            transported = language.substitute(template, language.hole, right)\n            license_node = node({'rule': 'eq_subst', 'variable': language.hole,\n                                 'template': copy.deepcopy(template), 'left': copy.deepcopy(left),\n                                 'right': copy.deepcopy(right), 'formula': ['imp',\n                                 copy.deepcopy(equality[2]), ['imp', copy.deepcopy(atom[2]), transported]]}, [])\n        except outside_language:\n            counters['membership_rejections'] += 1\n            return None\n        return mp(atom, mp(equality, license_node))\n\n    def fire_watch(watch, atom):\n        equality, template, goal, token = watch\n        firing = (token, atom[0])\n        if firing in watch_fired:\n            return\n        watch_fired.add(firing)\n        counters['goal_transport_firings'] += 1\n        result = execute_transport(equality, atom, template)\n        if result is not None and result[2] == goal:\n            add(result)\n\n    def close_goals():\n        # Every closing rule requires ACTUAL known premises and original primitive\n        # expansion. Missing premises are indexed hints, never inserted into facts.\n        while newly_known and target_key not in facts:\n            ticked()\n            prior = newly_known.pop(0)\n            formula, key = prior[2], _key(prior[2])\n            for implication in implication_index.get(key, ()):\n                counters['goal_mp_attempts'] += 1\n                add(mp(prior, implication))\n            if formula[0] == 'imp' and _key(formula[2]) in goals and _key(formula[1]) in facts:\n                counters['goal_mp_attempts'] += 1\n                add(mp(facts[_key(formula[1])], prior))\n            for goal in goals.values():\n                ticked()\n                if _key(goal) in facts:\n                    continue\n                if goal[0] == 'all' and goal[1] in language.parameters and goal[1] not in language.forbidden and goal[2] == formula:\n                    counters['goal_ug_attempts'] += 1\n                    counters['ug_proposals'] += 1\n                    add(node({'rule': 'generalize', 'variable': goal[1],\n                              'formula': copy.deepcopy(goal)}, [prior]))\n                if formula[0] == 'all':\n                    token = (prior[0], _key(goal))\n                    if token not in goal_ui_seen:\n                        goal_ui_seen.add(token)\n                        counters['goal_ui_attempts'] += 1\n                        matched, term = _match_instance(formula[2], goal, formula[1], ticked)\n                        if matched:\n                            if term is None and terms:\n                                term = min(terms.values(), key=lambda t: (_size(t), _key(t)))\n                            if term is not None:\n                                try:\n                                    language.term(term)\n                                except outside_language:\n                                    counters['membership_rejections'] += 1\n                                else:\n                                    term_key = _key(term)\n                                    if term_key not in terms:\n                                        if len(terms) >= limits['maximum_parameter_terms']:\n                                            counters['term_limit_omissions'] += 1\n                                            continue\n                                        terms[term_key] = copy.deepcopy(term)\n                                        counters['terms_added'] += 1\n                                    result = execute_ui(prior, term)\n                                    if result is not None and result[2] == goal:\n                                        add(result)\n            for watch in transport_waiters.get(key, ()):\n                fire_watch(watch, prior)\n            if formula[0] == 'eq' and formula[1] != formula[2]:\n                left, right = formula[1:]\n                for goal in goals.values():\n                    if goal[0] not in ('eq', 'pred') or _key(goal) in facts:\n                        continue\n                    # Reverse use here computes only a missing-premise hint. The\n                    # actual deduction remains forward from equality + known atom.\n                    for template in _atomic_templates(goal, right, language.hole,\n                                                      limits['maximum_atomic_templates_per_pair'], ticked):\n                        try:\n                            language.template(template)\n                            premise = language.substitute(template, language.hole, left)\n                            language.formula(premise)\n                        except outside_language:\n                            counters['membership_rejections'] += 1\n                            continue\n                        premise_key = _key(premise)\n                        token = (prior[0], _key(template), _key(goal), premise_key)\n                        if token in watch_seen:\n                            continue\n                        watch_seen.add(token)\n                        watch = (prior, template, goal, token)\n                        transport_waiters.setdefault(premise_key, []).append(watch)\n                        counters['goal_transport_watches'] += 1\n                        if premise_key in facts:\n                            fire_watch(watch, facts[premise_key])\n\n    def ui_tasks(current, ordered_terms):\n        for universal in current:\n            if universal[2][0] != 'all':\n                continue\n            for term in ordered_terms:\n                ticked()\n                pair = (universal[0], _key(term))\n                if pair not in attempted_ui:\n                    attempted_ui.add(pair)\n                    yield (universal, term)\n\n    def mp_tasks(current):\n        for implication in current:\n            ticked()\n            formula = implication[2]\n            if formula[0] != 'imp' or _key(formula[1]) not in facts:\n                continue\n            antecedent = facts[_key(formula[1])]\n            pair = (antecedent[0], implication[0])\n            if pair not in attempted_mp:\n                attempted_mp.add(pair)\n                yield (antecedent, implication)\n\n    def transport_tasks(current):\n        equalities = [item for item in current if item[2][0] == 'eq']\n        atoms = [item for item in current if item[2][0] in ('eq', 'pred')]\n        for equality in equalities:\n            left, right = equality[2][1:]\n            if left == right:\n                continue\n            for atom in atoms:\n                ticked()\n                pair = (equality[0], atom[0])\n                if pair in attempted_transport:\n                    continue\n                attempted_transport.add(pair)\n                for template in _atomic_templates(atom[2], left, language.hole,\n                                                  limits['maximum_atomic_templates_per_pair'], ticked):\n                    yield (equality, atom, template)\n\n    def ug_tasks(current):\n        for prior in current:\n            for variable in language.parameters:\n                ticked()\n                if variable in language.forbidden or variable not in language.free(prior[2]):\n                    continue\n                pair = (prior[0], variable)\n                if pair not in attempted_ug:\n                    attempted_ug.add(pair)\n                    yield (prior, variable)\n\n    def ",
+      "old_end": 8318,
+      "old_start": 8318,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 18948,
+      "new_start": 18860,
+      "new_utf8": ")\n        pending_watch_observations = sum(key not in facts for key in transport_waiters",
+      "old_end": 8356,
+      "old_start": 8356,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19537,
+      "new_start": 19536,
+      "new_utf8": "/",
+      "old_end": 8958,
+      "old_start": 8944,
+      "old_utf8": " and actually "
+    },
+    {
+      "new_end": 19570,
+      "new_start": 19557,
+      "new_utf8": "and literal g",
+      "old_end": 8978,
+      "old_start": 8978,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19575,
+      "new_start": 19571,
+      "new_utf8": "al-u",
+      "old_end": 8979,
+      "old_start": 8979,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19587,
+      "new_start": 19576,
+      "new_utf8": "ified terms",
+      "old_end": 8982,
+      "old_start": 8980,
+      "old_utf8": "ly"
+    },
+    {
+      "new_end": 19593,
+      "new_start": 19588,
+      "new_utf8": " same",
+      "old_end": 8983,
+      "old_start": 8983,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19659,
+      "new_start": 19658,
+      "new_utf8": ",",
+      "old_end": 9052,
+      "old_start": 9048,
+      "old_utf8": " and"
+    },
+    {
+      "new_end": 19714,
+      "new_start": 19684,
+      "new_utf8": ", and literal goal unification",
+      "old_end": 9077,
+      "old_start": 9077,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19790,
+      "new_start": 19785,
+      "new_utf8": "plus ",
+      "old_end": 9148,
+      "old_start": 9148,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 19796,
+      "new_start": 19791,
+      "new_utf8": "ctual",
+      "old_end": 9151,
+      "old_start": 9149,
+      "old_utf8": "nd"
+    },
+    {
+      "new_end": 19835,
+      "new_start": 19831,
+      "new_utf8": "temp",
+      "old_end": 9188,
+      "old_start": 9186,
+      "old_utf8": "ho"
+    },
+    {
+      "new_end": 19838,
+      "new_start": 19836,
+      "new_utf8": "at",
+      "old_end": 9189,
+      "old_start": 9189,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 20559,
+      "new_start": 19970,
+      "new_utf8": ",\n                         'vacuous_UG': 'only goal-closing vacuous UG is tried',\n                         'agenda': 'one task per live UI/MP/transport/UG stream per cycle; new facts/terms enter next wave, goal closings immediate',\n                         'streams_not_observed_exhausted_at_stop': [name for name, live in active_streams.items() if live],\n                         'new_fact_notifications_remaining': len(newly_known),\n                         'pending_goal_premise_keys': pending_watch_observations,\n                         'goal_watches_are_observations_not_facts': True",
+      "old_end": 9321,
+      "old_start": 9321,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21309,
+      "new_start": 21287,
+      "new_utf8": "close_goals()\n        ",
+      "old_end": 10049,
+      "old_start": 10049,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21593,
+      "new_start": 21591,
+      "new_utf8": "st",
+      "old_end": 10333,
+      "old_start": 10331,
+      "old_utf8": "ch"
+    },
+    {
+      "new_end": 21603,
+      "new_start": 21594,
+      "new_utf8": "rt_versio",
+      "old_end": 10334,
+      "old_start": 10334,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21604,
+      "new_start": 21604,
+      "new_utf8": "",
+      "old_end": 10338,
+      "old_start": 10335,
+      "old_utf8": "ged"
+    },
+    {
+      "new_end": 21618,
+      "new_start": 21607,
+      "new_utf8": "counters['f",
+      "old_end": 10342,
+      "old_start": 10341,
+      "old_utf8": "F"
+    },
+    {
+      "new_end": 21621,
+      "new_start": 21619,
+      "new_utf8": "ct",
+      "old_end": 10344,
+      "old_start": 10343,
+      "old_utf8": "l"
+    },
+    {
+      "new_end": 21626,
+      "new_start": 21622,
+      "new_utf8": "_add",
+      "old_end": 10345,
+      "old_start": 10345,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21659,
+      "new_start": 21627,
+      "new_utf8": "d'] + counters['facts_improved']",
+      "old_end": 10346,
+      "old_start": 10346,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21737,
+      "new_start": 21737,
+      "new_utf8": "",
+      "old_end": 11063,
+      "old_start": 10424,
+      "old_utf8": "# All existing literal implications, with actual known ordered antecedents.\n            for implication in current:\n                ticked()\n                formula = implication[2]\n                if formula[0] != 'imp' or _key(formula[1]) not in facts:\n                    continue\n                antecedent = facts[_key(formula[1])]\n                pair = (antecedent[0], implication[0])\n                if pair not in attempted_mp:\n                    attempted_mp.add(pair)\n                    changed = add(mp(antecedent, implication)) or changed\n            # New universals can come from any prior rule, including UG.\n            "
+    },
+    {
+      "new_end": 21834,
+      "new_start": 21794,
+      "new_utf8": "0 if _key(term) in target_terms else 1, ",
+      "old_end": 11120,
+      "old_start": 11120,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21874,
+      "new_start": 21872,
+      "new_utf8": "st",
+      "old_end": 11160,
+      "old_start": 11158,
+      "old_utf8": "fo"
+    },
+    {
+      "new_end": 21879,
+      "new_start": 21875,
+      "new_utf8": "eams",
+      "old_end": 11161,
+      "old_start": 11161,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21889,
+      "new_start": 21880,
+      "new_utf8": "= {'UI': ",
+      "old_end": 11164,
+      "old_start": 11162,
+      "old_utf8": "un"
+    },
+    {
+      "new_end": 21891,
+      "new_start": 21890,
+      "new_utf8": "t",
+      "old_end": 11166,
+      "old_start": 11165,
+      "old_utf8": "v"
+    },
+    {
+      "new_end": 21899,
+      "new_start": 21893,
+      "new_utf8": "(ui_ta",
+      "old_end": 11168,
+      "old_start": 11168,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21903,
+      "new_start": 21900,
+      "new_utf8": "ks(",
+      "old_end": 11175,
+      "old_start": 11169,
+      "old_utf8": "al in "
+    },
+    {
+      "new_end": 21933,
+      "new_start": 21910,
+      "new_utf8": ", ordered_terms)), 'MP'",
+      "old_end": 11182,
+      "old_start": 11182,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21934,
+      "new_start": 21934,
+      "new_utf8": "",
+      "old_end": 11199,
+      "old_start": 11183,
+      "old_utf8": "\n               "
+    },
+    {
+      "new_end": 21937,
+      "new_start": 21936,
+      "new_utf8": "t",
+      "old_end": 11207,
+      "old_start": 11201,
+      "old_utf8": "f univ"
+    },
+    {
+      "new_end": 21945,
+      "new_start": 21939,
+      "new_utf8": "(mp_ta",
+      "old_end": 11209,
+      "old_start": 11209,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 21959,
+      "new_start": 21946,
+      "new_utf8": "ks(current)),",
+      "old_end": 11228,
+      "old_start": 11210,
+      "old_utf8": "al[2][0] != 'all':"
+    },
+    {
+      "new_end": 22017,
+      "new_start": 21980,
+      "new_utf8": "   'transport': iter(transport_tasks(",
+      "old_end": 11249,
+      "old_start": 11249,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22022,
+      "new_start": 22018,
+      "new_utf8": "urre",
+      "old_end": 11251,
+      "old_start": 11250,
+      "old_utf8": "o"
+    },
+    {
+      "new_end": 22109,
+      "new_start": 22024,
+      "new_utf8": ")), 'UG': iter(ug_tasks(current))}\n            active_streams = {name: True for name ",
+      "old_end": 11253,
+      "old_start": 11253,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22161,
+      "new_start": 22111,
+      "new_utf8": " streams}\n            while any(active_streams.val",
+      "old_end": 11255,
+      "old_start": 11255,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22168,
+      "new_start": 22163,
+      "new_utf8": "s()):",
+      "old_end": 11257,
+      "old_start": 11257,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22192,
+      "new_start": 22189,
+      "new_utf8": "nam",
+      "old_end": 11279,
+      "old_start": 11278,
+      "old_utf8": "t"
+    },
+    {
+      "new_end": 22193,
+      "new_start": 22193,
+      "new_utf8": "",
+      "old_end": 11282,
+      "old_start": 11280,
+      "old_utf8": "rm"
+    },
+    {
+      "new_end": 22217,
+      "new_start": 22197,
+      "new_utf8": "('UI', 'MP', 'transp",
+      "old_end": 11286,
+      "old_start": 11286,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22219,
+      "new_start": 22219,
+      "new_utf8": "",
+      "old_end": 11294,
+      "old_start": 11288,
+      "old_utf8": "dered_"
+    },
+    {
+      "new_end": 22228,
+      "new_start": 22220,
+      "new_utf8": "', 'UG')",
+      "old_end": 11299,
+      "old_start": 11295,
+      "old_utf8": "erms"
+    },
+    {
+      "new_end": 22286,
+      "new_start": 22279,
+      "new_utf8": "if not ",
+      "old_end": 11351,
+      "old_start": 11350,
+      "old_utf8": "p"
+    },
+    {
+      "new_end": 22289,
+      "new_start": 22287,
+      "new_utf8": "ct",
+      "old_end": 11360,
+      "old_start": 11352,
+      "old_utf8": "ir = (un"
+    },
+    {
+      "new_end": 22295,
+      "new_start": 22292,
+      "new_utf8": "_st",
+      "old_end": 11363,
+      "old_start": 11363,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22299,
+      "new_start": 22296,
+      "new_utf8": "eam",
+      "old_end": 11364,
+      "old_start": 11364,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22302,
+      "new_start": 22300,
+      "new_utf8": "[n",
+      "old_end": 11365,
+      "old_start": 11365,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22305,
+      "new_start": 22303,
+      "new_utf8": "me",
+      "old_end": 11369,
+      "old_start": 11366,
+      "old_utf8": "l[0"
+    },
+    {
+      "new_end": 22306,
+      "new_start": 22306,
+      "new_utf8": "",
+      "old_end": 11427,
+      "old_start": 11370,
+      "old_utf8": ", _key(term))\n                    if pair in attempted_ui"
+    },
+    {
+      "new_end": 22361,
+      "new_start": 22361,
+      "new_utf8": "",
+      "old_end": 11575,
+      "old_start": 11482,
+      "old_utf8": "attempted_ui.add(pair)\n                    counters['ui_proposals'] += 1\n                    "
+    },
+    {
+      "new_end": 22390,
+      "new_start": 22390,
+      "new_utf8": "",
+      "old_end": 11607,
+      "old_start": 11604,
+      "old_utf8": "ins"
+    },
+    {
+      "new_end": 22392,
+      "new_start": 22392,
+      "new_utf8": "",
+      "old_end": 11624,
+      "old_start": 11609,
+      "old_utf8": "nce = language."
+    },
+    {
+      "new_end": 22394,
+      "new_start": 22393,
+      "new_utf8": "k",
+      "old_end": 11711,
+      "old_start": 11625,
+      "old_utf8": "ubstitute(universal[2][2], universal[2][1], term)\n                        license_node"
+    },
+    {
+      "new_end": 22398,
+      "new_start": 22398,
+      "new_utf8": "",
+      "old_end": 11717,
+      "old_start": 11715,
+      "old_utf8": "od"
+    },
+    {
+      "new_end": 22401,
+      "new_start": 22399,
+      "new_utf8": "xt",
+      "old_end": 11718,
+      "old_start": 11718,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22402,
+      "new_start": 22402,
+      "new_utf8": "",
+      "old_end": 11731,
+      "old_start": 11719,
+      "old_utf8": "{'rule': 'in"
+    },
+    {
+      "new_end": 22406,
+      "new_start": 22404,
+      "new_utf8": "re",
+      "old_end": 11733,
+      "old_start": 11733,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22410,
+      "new_start": 22407,
+      "new_utf8": "ms[",
+      "old_end": 11734,
+      "old_start": 11734,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22411,
+      "new_start": 22411,
+      "new_utf8": "",
+      "old_end": 11737,
+      "old_start": 11735,
+      "old_utf8": "ti"
+    },
+    {
+      "new_end": 22413,
+      "new_start": 22412,
+      "new_utf8": "m",
+      "old_end": 11739,
+      "old_start": 11738,
+      "old_utf8": "t"
+    },
+    {
+      "new_end": 22414,
+      "new_start": 22414,
+      "new_utf8": "",
+      "old_end": 11965,
+      "old_start": 11740,
+      "old_utf8": "', 'universal': copy.deepcopy(universal[2]),\n                                             'term': copy.deepcopy(term),\n                                             'formula': ['imp', copy.deepcopy(universal[2]), instance]}, ["
+    },
+    {
+      "new_end": 22446,
+      "new_start": 22444,
+      "new_utf8": "St",
+      "old_end": 11995,
+      "old_start": 11995,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22449,
+      "new_start": 22447,
+      "new_utf8": "pI",
+      "old_end": 11997,
+      "old_start": 11996,
+      "old_utf8": "u"
+    },
+    {
+      "new_end": 22454,
+      "new_start": 22450,
+      "new_utf8": "erat",
+      "old_end": 11999,
+      "old_start": 11998,
+      "old_utf8": "s"
+    },
+    {
+      "new_end": 22456,
+      "new_start": 22455,
+      "new_utf8": "o",
+      "old_end": 12005,
+      "old_start": 12000,
+      "old_utf8": "de_la"
+    },
+    {
+      "new_end": 22457,
+      "new_start": 22457,
+      "new_utf8": "",
+      "old_end": 12011,
+      "old_start": 12006,
+      "old_utf8": "guage"
+    },
+    {
+      "new_end": 22484,
+      "new_start": 22483,
+      "new_utf8": "a",
+      "old_end": 12062,
+      "old_start": 12037,
+      "old_utf8": "counters['membership_reje"
+    },
+    {
+      "new_end": 22498,
+      "new_start": 22487,
+      "new_utf8": "ve_streams[",
+      "old_end": 12066,
+      "old_start": 12065,
+      "old_utf8": "o"
+    },
+    {
+      "new_end": 22502,
+      "new_start": 22499,
+      "new_utf8": "ame",
+      "old_end": 12069,
+      "old_start": 12067,
+      "old_utf8": "s'"
+    },
+    {
+      "new_end": 22504,
+      "new_start": 22504,
+      "new_utf8": "",
+      "old_end": 12072,
+      "old_start": 12071,
+      "old_utf8": "+"
+    },
+    {
+      "new_end": 22511,
+      "new_start": 22506,
+      "new_utf8": "False",
+      "old_end": 12075,
+      "old_start": 12074,
+      "old_utf8": "1"
+    },
+    {
+      "new_end": 22566,
+      "new_start": 22566,
+      "new_utf8": "",
+      "old_end": 13181,
+      "old_start": 12130,
+      "old_utf8": "hanged = add(mp(universal, license_node)) or changed\n                    if target_key in facts:\n                        return result(candidate(), 'actual known target ancestry; independent check still required')\n            current = sorted(list(facts.values()), key=priority)\n            equalities = [item for item in current if item[2][0] == 'eq']\n            atoms = [item for item in current if item[2][0] in ('eq', 'pred')]\n            for equality in equalities:\n                left, right = equality[2][1:]\n                if left == right:\n                    continue\n                for atom in atoms:\n                    pair = (equality[0], atom[0])\n                    if pair in attempted_transport:\n                        continue\n                    attempted_transport.add(pair)\n                    for template in _atomic_templates(atom[2], left, language.hole,\n                                                      limits['maximum_atomic_templates_per_pair'], ticked):\n                        ticked()\n                        c"
+    },
+    {
+      "new_end": 22582,
+      "new_start": 22575,
+      "new_utf8": "agenda_",
+      "old_end": 13190,
+      "old_start": 13190,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22583,
+      "new_start": 22583,
+      "new_utf8": "",
+      "old_end": 13192,
+      "old_start": 13191,
+      "old_utf8": "r"
+    },
+    {
+      "new_end": 22584,
+      "new_start": 22584,
+      "new_utf8": "",
+      "old_end": 13194,
+      "old_start": 13193,
+      "old_utf8": "n"
+    },
+    {
+      "new_end": 22586,
+      "new_start": 22585,
+      "new_utf8": "k",
+      "old_end": 13208,
+      "old_start": 13195,
+      "old_utf8": "port_proposal"
+    },
+    {
+      "new_end": 22594,
+      "new_start": 22588,
+      "new_utf8": "][name",
+      "old_end": 13210,
+      "old_start": 13210,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22623,
+      "new_start": 22621,
+      "new_utf8": "if",
+      "old_end": 13237,
+      "old_start": 13237,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22628,
+      "new_start": 22624,
+      "new_utf8": "name",
+      "old_end": 13238,
+      "old_start": 13238,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22631,
+      "new_start": 22629,
+      "new_utf8": "==",
+      "old_end": 13239,
+      "old_start": 13239,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22636,
+      "new_start": 22632,
+      "new_utf8": "'UI'",
+      "old_end": 13244,
+      "old_start": 13240,
+      "old_utf8": " try"
+    },
+    {
+      "new_end": 22685,
+      "new_start": 22662,
+      "new_utf8": "add(execute_ui(*task))\n",
+      "old_end": 13270,
+      "old_start": 13270,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22711,
+      "new_start": 22689,
+      "new_utf8": "                elif n",
+      "old_end": 13276,
+      "old_start": 13274,
+      "old_utf8": "tr"
+    },
+    {
+      "new_end": 22713,
+      "new_start": 22712,
+      "new_utf8": "m",
+      "old_end": 13283,
+      "old_start": 13277,
+      "old_utf8": "nsport"
+    },
+    {
+      "new_end": 22714,
+      "new_start": 22714,
+      "new_utf8": "",
+      "old_end": 13285,
+      "old_start": 13284,
+      "old_utf8": "d"
+    },
+    {
+      "new_end": 22717,
+      "new_start": 22716,
+      "new_utf8": "=",
+      "old_end": 13287,
+      "old_start": 13287,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22723,
+      "new_start": 22718,
+      "new_utf8": "'MP':",
+      "old_end": 13339,
+      "old_start": 13288,
+      "old_utf8": "language.substitute(template, language.hole, right)"
+    },
+    {
+      "new_end": 22763,
+      "new_start": 22748,
+      "new_utf8": "add(mp(*task))\n",
+      "old_end": 13364,
+      "old_start": 13364,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22784,
+      "new_start": 22767,
+      "new_utf8": "                e",
+      "old_end": 13368,
+      "old_start": 13368,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22788,
+      "new_start": 22786,
+      "new_utf8": "f ",
+      "old_end": 13372,
+      "old_start": 13370,
+      "old_utf8": "ce"
+    },
+    {
+      "new_end": 22791,
+      "new_start": 22789,
+      "new_utf8": "am",
+      "old_end": 13379,
+      "old_start": 13373,
+      "old_utf8": "se_nod"
+    },
+    {
+      "new_end": 22795,
+      "new_start": 22794,
+      "new_utf8": "=",
+      "old_end": 13382,
+      "old_start": 13382,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22800,
+      "new_start": 22796,
+      "new_utf8": "'tra",
+      "old_end": 13383,
+      "old_start": 13383,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22803,
+      "new_start": 22801,
+      "new_utf8": "sp",
+      "old_end": 13384,
+      "old_start": 13384,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 22804,
+      "new_start": 22804,
+      "new_utf8": "",
+      "old_end": 13390,
+      "old_start": 13385,
+      "old_utf8": "de({'"
+    },
+    {
+      "new_end": 22806,
+      "new_start": 22805,
+      "new_utf8": "t",
+      "old_end": 13394,
+      "old_start": 13391,
+      "old_utf8": "ule"
+    },
+    {
+      "new_end": 22808,
+      "new_start": 22808,
+      "new_utf8": "",
+      "old_end": 13435,
+      "old_start": 13396,
+      "old_utf8": " 'eq_subst', 'variable': language.hole,"
+    },
+    {
+      "new_end": 22842,
+      "new_start": 22833,
+      "new_utf8": "add(execu",
+      "old_end": 13486,
+      "old_start": 13460,
+      "old_utf8": "                         '"
+    },
+    {
+      "new_end": 22845,
+      "new_start": 22844,
+      "new_utf8": "_",
+      "old_end": 13744,
+      "old_start": 13488,
+      "old_utf8": "mplate': template, 'left': copy.deepcopy(left),\n                                                 'right': copy.deepcopy(right), 'formula': ['imp',\n                                                 copy.deepcopy(equality[2]), ['imp', copy.deepcopy(atom[2]), "
+    },
+    {
+      "new_end": 22861,
+      "new_start": 22854,
+      "new_utf8": "(*task)",
+      "old_end": 13762,
+      "old_start": 13753,
+      "old_utf8": "ed]]}, []"
+    },
+    {
+      "new_end": 22883,
+      "new_start": 22883,
+      "new_utf8": "",
+      "old_end": 13788,
+      "old_start": 13784,
+      "old_utf8": "    "
+    },
+    {
+      "new_end": 22885,
+      "new_start": 22884,
+      "new_utf8": "l",
+      "old_end": 13798,
+      "old_start": 13789,
+      "old_utf8": "xcept out"
+    },
+    {
+      "new_end": 22886,
+      "new_start": 22886,
+      "new_utf8": "",
+      "old_end": 13810,
+      "old_start": 13799,
+      "old_utf8": "ide_languag"
+    },
+    {
+      "new_end": 22913,
+      "new_start": 22913,
+      "new_utf8": "",
+      "old_end": 14159,
+      "old_start": 13837,
+      "old_utf8": "    counters['membership_rejections'] += 1\n                            continue\n                        intermediate = mp(equality, license_node)\n                        changed = add(mp(atom, intermediate)) or changed\n            # Whole-formula UG is never an atomic-only rule. Only original parameters.\n            for "
+    },
+    {
+      "new_end": 22918,
+      "new_start": 22918,
+      "new_utf8": "",
+      "old_end": 14195,
+      "old_start": 14164,
+      "old_utf8": " in sorted(list(facts.values())"
+    },
+    {
+      "new_end": 22919,
+      "new_start": 22919,
+      "new_utf8": "",
+      "old_end": 14231,
+      "old_start": 14196,
+      "old_utf8": " key=priority):\n                for"
+    },
+    {
+      "new_end": 22930,
+      "new_start": 22929,
+      "new_utf8": "=",
+      "old_end": 14284,
+      "old_start": 14241,
+      "old_utf8": "in language.parameters:\n                   "
+    },
+    {
+      "new_end": 22934,
+      "new_start": 22932,
+      "new_utf8": "as",
+      "old_end": 14288,
+      "old_start": 14286,
+      "old_utf8": "ic"
+    },
+    {
+      "new_end": 22935,
+      "new_start": 22935,
+      "new_utf8": "",
+      "old_end": 14661,
+      "old_start": 14289,
+      "old_utf8": "ed()\n                    if variable in language.forbidden or variable not in language.free(prior[2]):\n                        # Vacuous UG is a permitted primitive but omitted by this heuristic.\n                        continue\n                    pair = (prior[0], variable)\n                    if pair not in attempted_ug:\n                        attempted_ug.add(pair)"
+    },
+    {
+      "new_end": 23014,
+      "new_start": 23014,
+      "new_utf8": "",
+      "old_end": 14750,
+      "old_start": 14740,
+      "old_utf8": "changed = "
+    },
+    {
+      "new_end": 23068,
+      "new_start": 23068,
+      "new_utf8": "",
+      "old_end": 14814,
+      "old_start": 14804,
+      "old_utf8": "          "
+    },
+    {
+      "new_end": 23168,
+      "new_start": 23167,
+      "new_utf8": "\n",
+      "old_end": 14913,
+      "old_start": 14913,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23187,
+      "new_start": 23169,
+      "new_utf8": "                  ",
+      "old_end": 14916,
+      "old_start": 14914,
+      "old_utf8": "or"
+    },
+    {
+      "new_end": 23196,
+      "new_start": 23189,
+      "new_utf8": "lose_go",
+      "old_end": 14919,
+      "old_start": 14918,
+      "old_utf8": "h"
+    },
+    {
+      "new_end": 23201,
+      "new_start": 23197,
+      "new_utf8": "ls()",
+      "old_end": 14924,
+      "old_start": 14920,
+      "old_utf8": "nged"
+    },
+    {
+      "new_end": 23210,
+      "new_start": 23202,
+      "new_utf8": "        ",
+      "old_end": 14925,
+      "old_start": 14925,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23262,
+      "new_start": 23254,
+      "new_utf8": "        ",
+      "old_end": 14969,
+      "old_start": 14969,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23292,
+      "new_start": 23284,
+      "new_utf8": "        ",
+      "old_end": 14991,
+      "old_start": 14991,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23413,
+      "new_start": 23410,
+      "new_utf8": "cou",
+      "old_end": 15109,
+      "old_start": 15109,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23414,
+      "new_start": 23414,
+      "new_utf8": "",
+      "old_end": 15111,
+      "old_start": 15110,
+      "old_utf8": "o"
+    },
+    {
+      "new_end": 23435,
+      "new_start": 23415,
+      "new_utf8": "ers['facts_added'] +",
+      "old_end": 15112,
+      "old_start": 15112,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23447,
+      "new_start": 23437,
+      "new_utf8": "ounters['f",
+      "old_end": 15115,
+      "old_start": 15114,
+      "old_utf8": "h"
+    },
+    {
+      "new_end": 23458,
+      "new_start": 23448,
+      "new_utf8": "cts_improv",
+      "old_end": 15118,
+      "old_start": 15116,
+      "old_utf8": "ng"
+    },
+    {
+      "new_end": 23479,
+      "new_start": 23460,
+      "new_utf8": "'] == start_version",
+      "old_end": 15120,
+      "old_start": 15120,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23621,
+      "new_start": 23620,
+      "new_utf8": "R",
+      "old_end": 15264,
+      "old_start": 15261,
+      "old_utf8": "Tim"
+    },
+    {
+      "new_end": 23623,
+      "new_start": 23622,
+      "new_utf8": "s",
+      "old_end": 15265,
+      "old_start": 15265,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23625,
+      "new_start": 23625,
+      "new_utf8": "",
+      "old_end": 15269,
+      "old_start": 15267,
+      "old_utf8": "tE"
+    },
+    {
+      "new_end": 23646,
+      "new_start": 23626,
+      "new_utf8": "ce/callback/kernel/p",
+      "old_end": 15270,
+      "old_start": 15270,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23649,
+      "new_start": 23648,
+      "new_utf8": "g",
+      "old_end": 15280,
+      "old_start": 15272,
+      "old_utf8": "r delibe"
+    },
+    {
+      "new_end": 23663,
+      "new_start": 23651,
+      "new_utf8": "mming failur",
+      "old_end": 15283,
+      "old_start": 15282,
+      "old_utf8": "t"
+    },
+    {
+      "new_end": 23665,
+      "new_start": 23664,
+      "new_utf8": "s",
+      "old_end": 15286,
+      "old_start": 15284,
+      "old_utf8": "ly"
+    },
+    {
+      "new_end": 23676,
+      "new_start": 23675,
+      "new_utf8": ";",
+      "old_end": 15321,
+      "old_start": 15296,
+      "old_utf8": "s: it is unresolved work,"
+    },
+    {
+      "new_end": 23679,
+      "new_start": 23678,
+      "new_utf8": "o",
+      "old_end": 15327,
+      "old_start": 15323,
+      "old_utf8": "ever"
+    },
+    {
+      "new_end": 23681,
+      "new_start": 23680,
+      "new_utf8": "f",
+      "old_end": 15328,
+      "old_start": 15328,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23684,
+      "new_start": 23682,
+      "new_utf8": "ls",
+      "old_end": 15337,
+      "old_start": 15329,
+      "old_utf8": " negativ"
+    },
+    {
+      "new_end": 23693,
+      "new_start": 23686,
+      "new_utf8": "exclusi",
+      "old_end": 15341,
+      "old_start": 15339,
+      "old_utf8": "pr"
+    },
+    {
+      "new_end": 23695,
+      "new_start": 23694,
+      "new_utf8": "n",
+      "old_end": 15344,
+      "old_start": 15342,
+      "old_utf8": "of"
+    },
+    {
+      "new_end": 23717,
+      "new_start": 23715,
+      "new_utf8": "ca",
+      "old_end": 15366,
+      "old_start": 15364,
+      "old_utf8": "No"
+    },
+    {
+      "new_end": 23723,
+      "new_start": 23718,
+      "new_utf8": "didat",
+      "old_end": 15367,
+      "old_start": 15367,
+      "old_utf8": ""
+    },
+    {
+      "new_end": 23726,
+      "new_start": 23724,
+      "new_utf8": "()",
+      "old_end": 15368,
+      "old_start": 15368,
+      "old_utf8": ""
+    }
+  ],
+  "cause_scope": "No actual phase timing or causal attribution. Current actual remains UNKNOWN; new Source does not predict proof/fit.",
+  "changes": [
+    "own VERSION",
+    "generic literal UI goal matcher",
+    "replace full-category batches with one-yielded-task category interleaving and incremental next-wave snapshots",
+    "generic immediate goal-closing MP/UG/UI plus equality-transport pending-premise watchers",
+    "honest stream/watcher/task diagnostics and early stop on actual known target"
+  ],
+  "check_count": 17,
+  "checks": [
+    {
+      "check": "whole Source AST and compile-only",
+      "evidence": {
+        "bytes": 23734,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+        "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a"
+      },
+      "passed": true
+    },
+    {
+      "check": "five original top-level helper definitions unchanged",
+      "evidence": [
+        "SearchStopped",
+        "_key",
+        "_size",
+        "_term_occurrences",
+        "_atomic_templates"
+      ],
+      "passed": true
+    },
+    {
+      "check": "eight primitive/DAG/writer helpers unchanged",
+      "evidence": [
+        "ticked",
+        "proof_nodes",
+        "cost",
+        "priority",
+        "add_terms",
+        "node",
+        "mp",
+        "candidate"
+      ],
+      "passed": true
+    },
+    {
+      "check": "all six original heuristic limits exact",
+      "evidence": {
+        "maximum_atomic_templates_per_pair": 64,
+        "maximum_facts": 2048,
+        "maximum_parameter_terms": 256,
+        "maximum_proposals": 50000,
+        "maximum_rounds": 32,
+        "maximum_word_commands": 24
+      },
+      "passed": true
+    },
+    {
+      "check": "original language unchanged",
+      "evidence": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "passed": true
+    },
+    {
+      "check": "same sole keyword producer API",
+      "evidence": "Only language and resource-only captured tick",
+      "passed": true
+    },
+    {
+      "check": "no new imports or symbol-specific literals",
+      "evidence": "copy/json only; literal AST constructors are generic",
+      "passed": true
+    },
+    {
+      "check": "all exclusion catches remain exact captured class",
+      "evidence": "No generic ValueError/TimeoutError/Exception catch",
+      "passed": true
+    },
+    {
+      "check": "deterministic interleaved stream dispatcher",
+      "evidence": "One yielded inference task per live category per cycle; source scanning within next() also charged to original native interval",
+      "passed": true
+    },
+    {
+      "check": "generic goal hints are not facts",
+      "evidence": "Initial facts remain only actual axiom/Gamma primitive nodes. Eligible target subformulas and missing premise watches never inserted as facts.",
+      "passed": true
+    },
+    {
+      "check": "actual goal matching rechecked by original primitives",
+      "evidence": "UI is literal syntactic match hint only. Primitive membership checks full generated license/result. Transport requires actual known equality and atom, exact original three-command expansion.",
+      "passed": true
+    },
+    {
+      "check": "goal-unified terms use same bounded cache",
+      "evidence": "No term-cache override or cap increase",
+      "passed": true
+    },
+    {
+      "check": "all facts still pass actual node and same fact/word caps",
+      "evidence": "Missing premise is only watch key. Fact insertion requires generated actual primitive ancestry; final candidate still <=24 strict-prior commands.",
+      "passed": true
+    },
+    {
+      "check": "stop observes actual candidate but never negative exhaustion",
+      "evidence": "A genuine target node stops immediately; final extraction is unverified, native/cold final membership and1717 still required.",
+      "passed": true
+    },
+    {
+      "check": "unfinished stream/watcher diagnostics explicit",
+      "evidence": "No exact remaining-queue size or complete carrier fair enumeration claim",
+      "passed": true
+    },
+    {
+      "check": "whole declared byte forward and inverse",
+      "evidence": {
+        "edit_records": 161
+      },
+      "passed": true
+    },
+    {
+      "check": "saved actual observation UNKNOWN no candidate, no replay",
+      "evidence": "Saved small JSON only. No source/semantic/clock/test execution. No per-phase timing exists; starvation is Source-level scheduling motivation, not measured timing attribution.",
+      "passed": true
+    }
+  ],
+  "current": {
+    "bytes": 23734,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v3.py",
+    "sha256": "6cf0bf560d9426ef6e3acb5c7fd94981f8cdb4dbb8383b74747d01bb76158a8a"
+  },
+  "full_forward": true,
+  "full_inverse": true,
+  "parent": {
+    "bytes": 15376,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v2.py",
+    "sha256": "c5831f8157620e484bd6fce18c0b7ecd24fd8bd59348393954410ac9505a21b3"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 22924,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/producer-v2-v3-forward.patch",
+      "sha256": "a5753cef2a82cde3e5207886f5bf52d027c7f72651cb07ba652f480798f20d4f"
+    },
+    "inverse": {
+      "bytes": 22924,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/producer-v2-v3-inverse.patch",
+      "sha256": "8e24a5eceeb4054037ad119e290020adbd29fa4dac7ca50449a1aab5e0491544"
+    }
+  },
+  "prior_actual": {
+    "candidate": null,
+    "counters": {
+      "facts_added": 2048,
+      "facts_improved": 46,
+      "membership_rejections": 2050,
+      "mp_proposals": 2292,
+      "primitive_commands_constructed": 4554,
+      "proposals": 6604,
+      "rounds": 3,
+      "term_limit_omissions": 4096,
+      "terms_added": 256,
+      "transport_proposals": 645,
+      "ug_proposals": 275,
+      "ui_proposals": 3390,
+      "word_bound_omissions": 0
+    },
+    "status": "UNKNOWN"
+  },
+  "prior_actual_raw": {
+    "bytes": 1840,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v1/search-result.json",
+    "sha256": "56430076a0250748db38ae23392ed32e1ecc4de9e37228cfe2e8fc7921e84e4b"
+  },
+  "schema": "bounded-untrusted-producer-interleaving-Source-delta-v3",
+  "scientific_calls": 0,
+  "unchanged_nested_definitions": [
+    "ticked",
+    "proof_nodes",
+    "cost",
+    "priority",
+    "add_terms",
+    "node",
+    "mp",
+    "candidate"
+  ],
+  "unchanged_top_definitions": [
+    "SearchStopped",
+    "_key",
+    "_size",
+    "_term_occurrences",
+    "_atomic_templates"
+  ]
+}

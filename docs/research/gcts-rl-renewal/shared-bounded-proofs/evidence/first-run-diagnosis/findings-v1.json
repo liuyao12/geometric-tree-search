@@ -1,0 +1,90 @@
+{
+  "schema": "shared-bounded-ordinary-first-UNKNOWN-saved-counter-diagnosis-v1",
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "scope": "Saved small output/raw-hash/counter reconciliation and static ordering only; Root owns native/resource/full disposition.",
+  "authorship_disclosure": "Authored intake, unchanged independent checker and support dependencies; did not author proposer. This is not an independent semantic recheck.",
+  "evidence": {
+    "search-result.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v1/search-result.json",
+      "sha256": "56430076a0250748db38ae23392ed32e1ecc4de9e37228cfe2e8fc7921e84e4b",
+      "bytes": 1840
+    },
+    "word-check.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v1/word-check.json",
+      "sha256": "ab6b889c6e121a46270fef2e91531cf3d79e9a85719d78a153dcb57b0330e468",
+      "bytes": 1522
+    },
+    "response.jsonl": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-ROOT-20261015/ordinary-owned-v1/response.jsonl",
+      "sha256": "da1d1422548468ff9068148bdef442d799b30868b543f873c02da41504859755",
+      "bytes": 4685
+    },
+    "proposer": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v2.py",
+      "sha256": "c5831f8157620e484bd6fce18c0b7ecd24fd8bd59348393954410ac9505a21b3",
+      "bytes": 15376
+    },
+    "intake": {
+      "bytes": 39482,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-ordinary-cold-source-20261015/bounded_ordinary_intake_v2.py",
+      "sha256": "f804bac13bf2b69f1d223a947ef8108298124f1350ab2e91f3cc06631a57d067"
+    }
+  },
+  "checks": {
+    "wire_exact_two_LF_lines_no_suffix": true,
+    "complete_body_line_hash_bytes": true,
+    "all_output_pins_match_saved_raw": true,
+    "status_UNKNOWN_candidate_null": true,
+    "recorded_maximum_facts_stop": true,
+    "recorded_parameter_term_cap": true,
+    "proposal_outcome_counters_partition": true,
+    "matching_three_language_bindings": true,
+    "no_membership_or_independent_word_receipt": true,
+    "all_proposal_authority_flags_false": true,
+    "recorded_proposer_caps_equal_literal_source": true,
+    "proposer_source_matches_actual_source_binding": true,
+    "intake_source_matches_actual_source_binding": true
+  },
+  "all_checks_passed": true,
+  "recorded_counters": {
+    "facts_added": 2048,
+    "facts_improved": 46,
+    "membership_rejections": 2050,
+    "mp_proposals": 2292,
+    "primitive_commands_constructed": 4554,
+    "proposals": 6604,
+    "rounds": 3,
+    "term_limit_omissions": 4096,
+    "terms_added": 256,
+    "transport_proposals": 645,
+    "ug_proposals": 275,
+    "ui_proposals": 3390,
+    "word_bound_omissions": 0
+  },
+  "recorded_search_limits": {
+    "maximum_atomic_templates_per_pair": 64,
+    "maximum_facts": 2048,
+    "maximum_parameter_terms": 256,
+    "maximum_proposals": 50000,
+    "maximum_rounds": 32,
+    "maximum_word_commands": 24
+  },
+  "recorded_incompleteness": {
+    "UI": "known universals and retained parameter terms only",
+    "complete_language_enumeration": false,
+    "negative_certificate": false,
+    "parameter_terms": "input and actually known-fact subterms only, bounded cache",
+    "proof_selection": "one lowest encountered DAG cost per literal formula; no bounded completeness",
+    "stop_reason": "maximum_facts",
+    "template_cap_per_pair": 64,
+    "transport": "known oriented equality and known atom; single/all occurrence holes only",
+    "word_bound": 24
+  },
+  "source_observation": "In each V2 outer round, the literal Source batches existing MP, UI over current universals and retained terms, equality transport over current known pairs, then UG. The source exposes target checks at round entry, after UI additions, and after the later batches. This ordering is a static observation, not a measured phase attribution.",
+  "conclusion": "The saved producer reports maximum_facts before returning any candidate. The saved word receipt is null, so no final membership or independent word check is represented. This incomplete UNKNOWN does not certify language exhaustion or target unprovability.",
+  "limits": "Counters are untrusted producer diagnostics. No retained per-inference timeline or phase timings establish which phase caused the cap, whether a different ordering succeeds, or any predicted benefit. Native/resource acceptance is outside this compact note.",
+  "proposed_next_scope": "Only a separately reviewed generic interleaving/goal-closing proposer successor with identical language and declared work caps; no new result inferred.",
+  "Source_or_helper_functions_executed": 0,
+  "Q_model_decodes": 0,
+  "clocks_tests_replays_actuals": 0
+}

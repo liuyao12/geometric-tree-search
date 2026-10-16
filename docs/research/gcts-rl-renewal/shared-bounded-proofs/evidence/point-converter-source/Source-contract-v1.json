@@ -1,0 +1,32 @@
+{
+  "schema": "shared-bounded-word-point-board-proposal-contract-v1",
+  "author": "/root",
+  "status": "SOURCE_ONLY_UNEXECUTED_UNREVIEWED_PROPOSAL_CONVERTER",
+  "source": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+    "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63",
+    "bytes": 5528
+  },
+  "API": "propose_point_board(commands=whole_primitive_word, height=24, input_epoch=private_sha256, tick=original_resource_tick)",
+  "point_model": {
+    "domain": "Integer coordinate pairs, exact unit positive values, literal tagged marking values.",
+    "required_points": "The height consecutive points [0,row], starting at row0; all active root obligations initially have generation0.",
+    "transformations": "Integer translations only. Values retain their literal tags and payload under translation. No rotation, reflection, polygon geometry or extra overlap predicate.",
+    "inventory": "For every bounded-language primitive witness with ordered premise formulas, and every ordered strict-prior offset list from -(height-1) through -1, retain the corresponding prototype if its internal marking assignments agree. This is an implicit finite inventory under the frozen syntax/height policy. Complete candidate counts and a GCTS implementation are not supplied by this converter.",
+    "prototype": "Unit positive support at [0,0]. Output formula marking at [1,0]. For port j with offset d and premise A, formula marking at [1,d] and tagged offset marking at [2+j,0]. Repeated ports remain occurrences; agreeing duplicate markings are legal.",
+    "boundary": "Assign the exact original target formula at [1,height-1]; assign a disjoint outside sentinel at [1,row] for all potentially read negative rows. An outside sentinel cannot equal a tagged formula value.",
+    "identity": "Exact primitive witness, ordered premises, ordered offsets and private input epoch form the canonical tile-type preimage. A selected placement is that type plus translation; distinct rows are distinct placements. Marking agreement uses full literal values, not only their hashes.",
+    "positive_verification": "Verify every declared required point has total unit capacity, all positive support lies in those declared rows, and every active and fixed marking agrees. Independently establish every used prototype's bounded-language membership and the same original proof endpoint. A positive board needs no exhausted candidate enumeration; scheduler/trajectory claims do."
+  },
+  "padding": "Copy the original first zero-input primitive into every leading filler row, then shift the full original word and every source reference by the filler count. This preserves the discovered word. Recheck all padded commands against private language authority and the unchanged independent logical endpoint.",
+  "independent_checker_required": [
+    "Receive original source word, declared height and input epoch from private freshly authenticated input, not the packet.",
+    "Reconstruct padding, tile preimages, all local/global point data and boundary independently; never call/import the converter.",
+    "Compare complete packet fields and exact raw values, then independently accumulate total positive values and compatible marking union.",
+    "Reject missing/duplicate rows, a changed target/boundary, wrong source offset or input label, changed type identity, stale epoch, Boolean coordinates/indices/weights and conflicting duplicate ports.",
+    "Keep logical membership, word acceptance and Root resource authority separate from point-union acceptance. No GCTS scheduling, complete domains, native adjacency-only palette or RL result is inferred."
+  ],
+  "scope": "A conventional proof-word-to-point-board baseline and inspectable colored remote markings. No new proof word, complete graph, search, semantic test, actual resource run or publication occurred during authoring.",
+  "static_validation": "AST parse and compile only; Source not imported or executed.",
+  "all_acceptance_false": true
+}

@@ -1,0 +1,41 @@
+{
+  "actual_activation": false,
+  "all_checks_passed": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 11056,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-independent-source-20261015/findings-v1.json",
+    "sha256": "5f5ff567abbf7f2bfb2be4f4c32ed5130515831826e877bf8e1dc029f6551549"
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "shared-bounded-language-module-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Q-shared-bounded-six-rule-membership-Source",
+  "scope_limit": "Whole exact module Source/contract/policy only. No execution, word, complete counts/legacy/GCTS or resource admission. Callback/source custody and fresh private final checking remain cold-caller obligations.",
+  "source": {
+    "bytes": 20073,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v1.py",
+    "sha256": "ffce8882b0bb676cc517cf13ef13339dbcb34fb99464f0c0db69dd33487b9596"
+  },
+  "source_contract": {
+    "bytes": 14442,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/Source-contract-v1.json",
+    "sha256": "b3f03a08344868d0819f793e8f5e89beda9c4cb2b5d7d6fa15081f621f3f899d"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "membership": {
+      "bytes": 20073,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v1.py",
+      "sha256": "ffce8882b0bb676cc517cf13ef13339dbcb34fb99464f0c0db69dd33487b9596"
+    },
+    "proposer": {
+      "bytes": 15446,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/untrusted_bounded_forward_producer_v1.py",
+      "sha256": "887ee06e6f771524d5ab9df88cce27c6100c17ba7c069f14f4b6028d6208f34e"
+    }
+  }
+}

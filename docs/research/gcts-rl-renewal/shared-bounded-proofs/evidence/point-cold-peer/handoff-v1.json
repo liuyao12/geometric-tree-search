@@ -1,0 +1,31 @@
+{
+  "check_count": 21,
+  "findings": {
+    "bytes": 34820,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-independent-source-20261015/findings-v1.json",
+    "sha256": "64ef8ffdeb479de1709bcbd25df550578bcbd49ea0b56034373e55075ba09df3"
+  },
+  "raw_paths": 33,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "shared-bounded-point-board-cold-independent-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Whole current Source7 intake integration only. Root actual/resource/point/word admission separate; no grant/publication.",
+  "source": {
+    "bytes": 55225,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/verify_saved_word_point_board_v1.py",
+    "sha256": "dd7a1a13829c63d41935038327c063a7089b2c3e28d28c20f4743ebcd6ec7be2"
+  },
+  "source_contract": {
+    "bytes": 18227,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-source-20261015/Source-contract-v1.json",
+    "sha256": "19944feb69ddf1f0080cc5b7d2dc90c2711eeb9ed96d667bd8ff915e798809c0"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "typed_review": {
+    "bytes": 5246,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-cold-independent-source-20261015/typed-Source-review-v1.json",
+    "sha256": "e1046f98107837d0976ec593f87bf35f796b8bbd2c9f87dd0fec5f10b4f24019"
+  }
+}
