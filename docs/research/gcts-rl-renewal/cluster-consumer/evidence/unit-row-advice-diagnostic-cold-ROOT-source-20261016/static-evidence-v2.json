@@ -1,0 +1,43 @@
+{
+  "Source17_input2_sixlimits": true,
+  "compile_only": true,
+  "entire_inverse_recovers_parent": true,
+  "literal_edits": 4,
+  "parent": {
+    "bytes": 49554,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-ROOT-source-20261016/unit_row_advised_domain_cold_v1.py",
+    "sha256": "2baf0264a35c29f0e23d0466039627e5302f4deb25792a6f807a0c1b3b4c7b59"
+  },
+  "response_stdout_native_exit_suffix_raw_exact": true,
+  "schema": "ROOT-diagnostic-cold-static-evidence-v2",
+  "scientific_execution": false,
+  "source": {
+    "bytes": 49587,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-ROOT-source-20261016/unit_row_advised_domain_diagnostic_cold_v2.py",
+    "sha256": "dd5d5951a2b269197d4bbdc56e5f6088b5b3bcbd1a47b18ec8db59ed0de26a50"
+  },
+  "source_contract": {
+    "bytes": 20611,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "71ec9fc3bc8442f6c5a56e9836e4e195cc9c020a9c2db703ee7d622087c8b107"
+  },
+  "top_level_helpers_raw_and_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

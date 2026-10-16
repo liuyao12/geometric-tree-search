@@ -1,0 +1,33 @@
+{
+  "edits": [
+    {
+      "after": "{'bytes': 33448, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py', 'sha256': '229f9cdd2daf6b9aa7f9b6ea071f2ffdbf69b1caf82351a818cf8a489c30a98b'}",
+      "before": "{'bytes': 32773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v1.py', 'sha256': '9862fa5e979d56bc769bcf399803fdb46cf28a7b7303202e3bab7ea8f2d4de4f'}"
+    },
+    {
+      "after": "VERSION='unit-row-advised-domain-diagnostic-cold-v2'",
+      "before": "VERSION='unit-row-advised-domain-cold-v1'"
+    },
+    {
+      "after": "SCOPE='unit-row-advised-domain-diagnostic-cold-Source'",
+      "before": "SCOPE='unit-row-advised-domain-cold-Source'"
+    },
+    {
+      "after": "contract['schema'] == 'unit-row-advised-domain-diagnostic-cold-Source-contract-v2'",
+      "before": "contract['schema'] == 'unit-row-advised-domain-cold-Source-contract-v1'"
+    }
+  ],
+  "entire_inverse_recovers_parent": true,
+  "parent": {
+    "bytes": 49554,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-cold-ROOT-source-20261016/unit_row_advised_domain_cold_v1.py",
+    "sha256": "2baf0264a35c29f0e23d0466039627e5302f4deb25792a6f807a0c1b3b4c7b59"
+  },
+  "schema": "ROOT-diagnostic-cold-Source-delta-v2",
+  "semantic_scope": "Control pin and ownVERSION/SCOPE/contract schema only. No scientific algorithm/helper/adapter/budget/positive-check/output changes.",
+  "source": {
+    "bytes": 49587,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-ROOT-source-20261016/unit_row_advised_domain_diagnostic_cold_v2.py",
+    "sha256": "dd5d5951a2b269197d4bbdc56e5f6088b5b3bcbd1a47b18ec8db59ed0de26a50"
+  }
+}

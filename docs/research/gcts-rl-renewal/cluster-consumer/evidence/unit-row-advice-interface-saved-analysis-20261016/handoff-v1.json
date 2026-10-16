@@ -1,0 +1,36 @@
+{
+  "code_modified": false,
+  "inputs": {
+    "Root_advised_UNKNOWN_disposition": {
+      "bytes": 6688,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advised-search-disposition-v1.json",
+      "sha256": "62668d874e54ba00d79590710cb0d852c70a991eb164c9b951f9d04dc5dc7d91"
+    },
+    "Root_local_controls_disposition": {
+      "bytes": 4401,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "74b52510afb7da2dcc335595fc04743c3ef7d152a77f7686972f13001c552a9c"
+    },
+    "late_diagnostic": {
+      "bytes": 1315628,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/advised-search-owned-v1/unknown-diagnostic.json",
+      "sha256": "121f9d8901a2e35fa1f1bbbbfca2bf9d8fe2abdd93c27accf0c8755b17430ee7"
+    },
+    "qualified_control_record": {
+      "bytes": 1411729,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "sha256": "bf39acd5ce3a8562049fe03b94f1aeacbcf756ae063818149adc5e79ff6fc0d6"
+    }
+  },
+  "literal_check_count": 12,
+  "note": {
+    "bytes": 7499,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-interface-saved-analysis-20261016/note-v1.json",
+    "sha256": "bee693bb5633a5f435169ecabf63ab005a2ce45df16df81d4bb84bc4807b474d"
+  },
+  "schema": "unit-row-advice-saved-interface-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "semantic_replay": false,
+  "summary": "Qualified fixture: UI(AS→B),MP from pendingAS,UG; target late hint: UI(P→E),MP needingP,UG returningP. Thus target hint restates its own root; no late acceptance, benefit or new theorem claim."
+}

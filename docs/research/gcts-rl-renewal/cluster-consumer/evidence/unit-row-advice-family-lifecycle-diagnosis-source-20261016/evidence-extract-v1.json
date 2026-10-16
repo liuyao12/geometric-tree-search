@@ -1,0 +1,1775 @@
+{
+  "compact_advice_events": [
+    {
+      "chosen_row": 0,
+      "chosen_rule": "instantiate",
+      "event": 2,
+      "mode": "ADVICE_BATCH",
+      "pending_rows": [
+        2,
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 1,
+      "chosen_rule": "axiom",
+      "event": 8,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        2,
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 2,
+      "chosen_rule": "axiom",
+      "event": 14,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [
+        2
+      ],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 3,
+      "chosen_rule": "axiom",
+      "event": 20,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 4,
+      "chosen_rule": "axiom",
+      "event": 26,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 5,
+      "chosen_rule": "axiom",
+      "event": 32,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 6,
+      "chosen_rule": "axiom",
+      "event": 38,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 7,
+      "chosen_rule": "axiom",
+      "event": 44,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 8,
+      "chosen_rule": "axiom",
+      "event": 50,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 9,
+      "chosen_rule": "axiom",
+      "event": 56,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 10,
+      "chosen_rule": "axiom",
+      "event": 62,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 11,
+      "chosen_rule": "axiom",
+      "event": 68,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 12,
+      "chosen_rule": "axiom",
+      "event": 74,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 13,
+      "chosen_rule": "axiom",
+      "event": 80,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 14,
+      "chosen_rule": "axiom",
+      "event": 86,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 15,
+      "chosen_rule": "axiom",
+      "event": 92,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 16,
+      "chosen_rule": "axiom",
+      "event": 98,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 17,
+      "chosen_rule": "axiom",
+      "event": 104,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 18,
+      "chosen_rule": "axiom",
+      "event": 110,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 19,
+      "chosen_rule": "axiom",
+      "event": 116,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 20,
+      "chosen_rule": "axiom",
+      "event": 122,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 21,
+      "chosen_rule": "axiom",
+      "event": 128,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "axiom",
+      "event": 134,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "instantiate",
+      "event": 144,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "eq_subst",
+      "event": 154,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "generalize",
+      "event": 164,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "axiom",
+      "event": 174,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "instantiate",
+      "event": 184,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "eq_subst",
+      "event": 194,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "generalize",
+      "event": 204,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "instantiate",
+      "event": 214,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "eq_subst",
+      "event": 224,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "generalize",
+      "event": 234,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "instantiate",
+      "event": 244,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "eq_subst",
+      "event": 254,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "generalize",
+      "event": 264,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "instantiate",
+      "event": 274,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "eq_subst",
+      "event": 284,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "generalize",
+      "event": 294,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    },
+    {
+      "chosen_row": 22,
+      "chosen_rule": "instantiate",
+      "event": 304,
+      "mode": "CANONICAL_FALLBACK",
+      "pending_rows": [
+        23
+      ],
+      "rejected_rows": [],
+      "retired_rows": []
+    }
+  ],
+  "context": {
+    "invocation_id": "unit-row-advised-horizon-advised-search-20261016-v3",
+    "language_binding": {
+      "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "language_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+      "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+      "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+      "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "source_bindings_sha256": "fdefd182013da835d7184abee7aec3a8710864d734a7bef1cab0ce167e2f6c67"
+    },
+    "purpose": "unit-row-advised-target-search",
+    "sources_join": "Complete original Source17 map is pinned in diagnostic_record.context.sources; no source relabeling."
+  },
+  "control_record": {
+    "bytes": 1411729,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+    "sha256": "bf39acd5ce3a8562049fe03b94f1aeacbcf756ae063818149adc5e79ff6fc0d6"
+  },
+  "control_selection": {
+    "batch_status": "READY",
+    "derived_AX_name": "AS",
+    "goal_root": {
+      "formula": [
+        "all",
+        "n",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "row": 8
+    },
+    "independent_receipt_schema": "unit-row-advice-validation-v1",
+    "independent_selection_present": true,
+    "limits": {
+      "maximum_demands": 5,
+      "maximum_proposals": 8,
+      "maximum_rounds": 3,
+      "maximum_terms": 1,
+      "maximum_work": 50000
+    },
+    "member_rows": [
+      0,
+      2,
+      8
+    ],
+    "member_rules": [
+      "instantiate",
+      "mp",
+      "generalize"
+    ],
+    "ordered_PENDING_obligations": [
+      {
+        "fact_accepted": false,
+        "formula": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "member_index": 1,
+        "occupied": false,
+        "port": 0,
+        "row": 1,
+        "status": "PENDING"
+      }
+    ],
+    "ranking_features": {
+      "anchor_novel": true,
+      "goal_connected": true,
+      "literal_list_subtree_overlap": 18,
+      "primitive_members": 3
+    },
+    "recorded_passed": 22,
+    "recorded_skipped": 0,
+    "scheme": "GENERIC_UI_MP",
+    "score": [
+      1,
+      1,
+      18,
+      -3
+    ]
+  },
+  "definite_rejection_observation": {
+    "chosen_key": {
+      "tile_type_id": "bounded-point-tile-85d86acdb5e3b9638369af91086b53fc012384177866b58fea33b5a3a9d93963",
+      "translation": [
+        0,
+        2
+      ],
+      "type_preimage": {
+        "input_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+        "ordered_offsets": [],
+        "ordered_premise_formulas": [],
+        "primitive_witness": {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "AS",
+          "rule": "axiom"
+        }
+      }
+    },
+    "event": 14,
+    "mode": "CANONICAL_FALLBACK",
+    "per_key_reason": "Not saved in ADVICE; no reason invented.",
+    "rejected_keys": [
+      {
+        "tile_type_id": "bounded-point-tile-afd6913c5a02efce07af6d8bdc7421232c983ade03049f84005879d8cbbeaf84",
+        "translation": [
+          0,
+          2
+        ],
+        "type_preimage": {
+          "input_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+          "ordered_offsets": [
+            -1,
+            -2
+          ],
+          "ordered_premise_formulas": [
+            [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "all",
+                "n",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "fun",
+                                "zero",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "primitive_witness": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "mp"
+          }
+        }
+      }
+    ],
+    "remaining_pending_keys": [
+      {
+        "tile_type_id": "bounded-point-tile-938af06b42542b1c2c83b4ea954f80a0559d6476d727a763b6205e6d9c26d07c",
+        "translation": [
+          0,
+          23
+        ],
+        "type_preimage": {
+          "input_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+          "ordered_offsets": [
+            -21
+          ],
+          "ordered_premise_formulas": [
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "primitive_witness": {
+            "formula": [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "variable": "n"
+          }
+        }
+      }
+    ]
+  },
+  "diagnostic_record": {
+    "bytes": 1315628,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/advised-search-owned-v1/unknown-diagnostic.json",
+    "sha256": "121f9d8901a2e35fa1f1bbbbfca2bf9d8fe2abdd93c27accf0c8755b17430ee7"
+  },
+  "family_id": "d2c3a560205441039af626ed9ab04bee87a976614ace14757cc233246335ba15",
+  "initial_adoption": {
+    "event": 2,
+    "key": {
+      "tile_type_id": "bounded-point-tile-9488cc890c567332ce978b8880f2a41d5f658b71e5b33f0b166eefde93e257ca",
+      "translation": [
+        0,
+        0
+      ],
+      "type_preimage": {
+        "input_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+        "ordered_offsets": [],
+        "ordered_premise_formulas": [],
+        "primitive_witness": {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "n"
+          ],
+          "universal": [
+            "all",
+            "n",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "mode": "ADVICE_BATCH",
+    "origin": {
+      "batch_sha256": "903db5d5fa95d4c133fd1634c1b20b8b6eba25fb4af52b92d69963bf6f67e88f",
+      "goal_root": {
+        "formula": [
+          "all",
+          "n",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "row": 23
+      },
+      "proposal_index": 0,
+      "scheme": "GENERIC_UI_MP"
+    },
+    "pending_keys": [
+      {
+        "tile_type_id": "bounded-point-tile-afd6913c5a02efce07af6d8bdc7421232c983ade03049f84005879d8cbbeaf84",
+        "translation": [
+          0,
+          2
+        ],
+        "type_preimage": {
+          "input_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+          "ordered_offsets": [
+            -1,
+            -2
+          ],
+          "ordered_premise_formulas": [
+            [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "all",
+                "n",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "fun",
+                                "zero",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "primitive_witness": {
+            "formula": [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "mp"
+          }
+        }
+      },
+      {
+        "tile_type_id": "bounded-point-tile-938af06b42542b1c2c83b4ea954f80a0559d6476d727a763b6205e6d9c26d07c",
+        "translation": [
+          0,
+          23
+        ],
+        "type_preimage": {
+          "input_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+          "ordered_offsets": [
+            -21
+          ],
+          "ordered_premise_formulas": [
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "primitive_witness": {
+            "formula": [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "variable": "n"
+          }
+        }
+      }
+    ]
+  },
+  "later_pending_observation": {
+    "event": 304,
+    "literal_marks_match": false,
+    "pending_keys": [
+      {
+        "tile_type_id": "bounded-point-tile-938af06b42542b1c2c83b4ea954f80a0559d6476d727a763b6205e6d9c26d07c",
+        "translation": [
+          0,
+          23
+        ],
+        "type_preimage": {
+          "input_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+          "ordered_offsets": [
+            -21
+          ],
+          "ordered_premise_formulas": [
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "primitive_witness": {
+            "formula": [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "variable": "n"
+          }
+        }
+      }
+    ],
+    "required_row2_mark_from_pending_key": [
+      "formula",
+      "[\"eq\",[\"fun\",\"add\",[[\"var\",\"n\"],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"fun\",\"zero\",[]]]]]]]],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"var\",\"n\"]]]]]]"
+    ],
+    "row23_t": 0,
+    "saved_last_point_mark_row1": [
+      "formula",
+      "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+    ],
+    "saved_last_point_mark_row2": [
+      "formula",
+      "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+    ]
+  },
+  "method": "Direct JSON field copies and literal equality/counts only; no semantic replay.",
+  "qualification": {
+    "GCTS_search_trajectory_accepted": false,
+    "RL_accepted": false,
+    "ROOT_resource_accepted": false,
+    "capture_available": true,
+    "capture_is_builtin_dict": true,
+    "complete_GCTS_model_accepted": false,
+    "diagnostic_only": true,
+    "engine_return_observed_ns": 473735622392000,
+    "event_prefix_reason": "ALL_RETURNED_EVENTS_SAVED",
+    "exact_point_board_accepted": false,
+    "failure_kind": "TimeoutError",
+    "logical_proof_accepted": false,
+    "may_include_post_deadline_unwind": true,
+    "metadata_omission_reason": null,
+    "metadata_saved": true,
+    "omitted_event_count": 0,
+    "positive_joint_gate_accepted": false,
+    "qualification": "UNQUALIFIED_UNKNOWN_RAW_PREFIX",
+    "returned_event_count": 312,
+    "saved_event_count": 312,
+    "schema": "unit-row-search-failure-diagnostic-v1"
+  },
+  "reported_counts": {
+    "advice_calls": 1,
+    "advice_selected": 1,
+    "advice_unknown": 0,
+    "backtracks": 18,
+    "branches": 41,
+    "cursor_replays": 0,
+    "fallback_advances": 39,
+    "fallback_branch_choices": 40,
+    "forced": 0,
+    "global_scans": 59,
+    "invalidated_domains": 1391,
+    "nodes": 59,
+    "pending_checks": 1,
+    "pending_rejected": 1,
+    "pending_retired": 0,
+    "pending_selected": 0,
+    "placements": 40,
+    "restores": 40,
+    "retained_domains": 1,
+    "retained_prefixes": 0,
+    "retained_queries": 1
+  },
+  "schema": "unit-row-advice-family-lifecycle-literal-extract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0
+}

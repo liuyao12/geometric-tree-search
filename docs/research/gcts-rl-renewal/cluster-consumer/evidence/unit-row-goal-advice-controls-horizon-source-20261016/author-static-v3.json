@@ -1,0 +1,79 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "check_count": 12,
+  "checks": [
+    {
+      "detail": "Frozen229f parent bytes unchanged.",
+      "name": "exact_reviewed_parent",
+      "passed": true
+    },
+    {
+      "detail": "Two declared replacement regions only; second region changes exactly2 horizon integer literals. Complete actual whole raw source reconstructed both directions.",
+      "name": "exact_raw_forward_inverse",
+      "passed": true
+    },
+    {
+      "detail": "Two class declarations+seven helpers remain raw/AST exact; no new endpoint or inference.",
+      "name": "nine_helpers_exact",
+      "passed": true
+    },
+    {
+      "detail": "Every other immediate nested control helper/closure AST unchanged.",
+      "name": "only_current_advice_nested_change",
+      "passed": true
+    },
+    {
+      "detail": "RestoreVERSION/current_advice demand/round constants exactly reproduces entire parent module AST, including artifact/eligibility/quotas/22cases/fallback/errors/qualification.",
+      "name": "entire_AST_inverse",
+      "passed": true
+    },
+    {
+      "detail": "Only generic advisory demand/round horizons change; no manual terms/route/primitive/schema injection.",
+      "name": "exact_new_generic_horizon",
+      "passed": true
+    },
+    {
+      "detail": "Actual c6fc original work50000 remains default for current_advice. Separate original quota1 negative untouched.",
+      "name": "original_adviser_work_default",
+      "passed": true
+    },
+    {
+      "detail": "Same exact8 keyword endpoint; no extra source, grant, clock, proof, donor/library or mutable mode input.",
+      "name": "same_API",
+      "passed": true
+    },
+    {
+      "detail": "Entire v2 actual-return copy/diagnostic-only/authorityFalse/READY-or-skip branch included in full AST inverse; no partialUNKNOWN use.",
+      "name": "complete_actual_return_artifact_unchanged",
+      "passed": true
+    },
+    {
+      "detail": "All22 declared cases and nine false stronger flags unchanged. Any SKIP/subcase gap still prevents local coverage qualification.",
+      "name": "same_cases_and_strong_flags",
+      "passed": true
+    },
+    {
+      "detail": "AST parse/compile only; no project/Source/function/kernel/model/clock/test execution.",
+      "name": "Source_only_stdlib",
+      "passed": true
+    },
+    {
+      "detail": "Pinned Source-level rationale only; no exact cause, READY success or fit inferred from old UNKNOWN.",
+      "name": "rationale_exact",
+      "passed": true
+    }
+  ],
+  "executed_source_functions": false,
+  "runtime_controls": false,
+  "schema": "unit-row-goal-advice-controls-horizon-author-static-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Author raw/AST/compile-only checks, not distinct Source review or runtime qualification.",
+  "source": {
+    "bytes": 33442,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py",
+    "sha256": "dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3"
+  },
+  "source_only": true,
+  "status": "UNMEASURED"
+}

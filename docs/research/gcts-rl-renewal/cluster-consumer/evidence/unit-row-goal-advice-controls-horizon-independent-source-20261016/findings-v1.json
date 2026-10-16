@@ -1,0 +1,408 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "checks": [
+    {
+      "evidence": "current/parent raw Source + metadata",
+      "finding": "Whole frozen current Source and parent diagnosticV2 covered, whole current/parent contracts and handoff read, exact current selection dac89/e9d0/325a authenticated.",
+      "id": "H01",
+      "passed": true
+    },
+    {
+      "evidence": "Source-delta-v3 replacement_regions",
+      "finding": "Exactly two declared raw replacement regions independently match old/new bytes and reconstruct both entire buffers.",
+      "id": "H02",
+      "passed": true
+    },
+    {
+      "evidence": "a220907d forward /41688f56 inverse",
+      "finding": "Both full forward/inverse patch bytes authenticated; no instruction/code execution used for comparison.",
+      "id": "H03",
+      "passed": true
+    },
+    {
+      "evidence": "independent AST inverse and body comparison",
+      "finding": "Restoring only VERSION and two horizon integers makes entire current AST identical to parent. All other named callables body bytes/AST exact.",
+      "id": "H04",
+      "passed": true
+    },
+    {
+      "evidence": "Unavailable,CallbackExhausted,need,canonical,digest,tile,state,ug,obligations",
+      "finding": "Nine original top helper/class definitions preserved; all inherited controls retain original primitive/member/state/mark validation.",
+      "id": "H05",
+      "passed": true
+    },
+    {
+      "evidence": "current_advice and quota_advice",
+      "finding": "current_advice now demands5/rounds3; terms1/proposals8 exact, default adviser work50000 unchanged. Quota1 negative helper byte/AST unchanged.",
+      "id": "H06",
+      "passed": true
+    },
+    {
+      "evidence": "nine dependency Source pins identical to parent",
+      "finding": "Only advisory finite horizon changes; original all-six grammar/profile/input/full base fallback and global dead/forced/ROW-TIE, rollback/retention Source roles unchanged.",
+      "id": "H07",
+      "passed": true
+    },
+    {
+      "evidence": "fixture_advice_attempt exact inherited V2 block",
+      "finding": "Entire actual returned adviser batch/state/decision/derivation stored before eligibility can skip. Reason/work/limits/partial proposals remain diagnostic with authorityFalse.",
+      "id": "H08",
+      "passed": true
+    },
+    {
+      "evidence": "artifact placement + inherited contract failure_scope",
+      "finding": "Diagnostic capture adds no catch or late-callback permission. Native/source boundaries and complete output caps still external; nonreturned or guard-rejected batch cannot be invented.",
+      "id": "H09",
+      "passed": true
+    },
+    {
+      "evidence": "whole run_controls normalized AST and case inventory",
+      "finding": "UNKNOWN or READY-empty still unqualified; partial proposals never supplied as advice. All22 case names/order/malformed/interruption/pending/retirement/scheduler checks exact.",
+      "id": "H10",
+      "passed": true
+    },
+    {
+      "evidence": "final qualification exact unchanged",
+      "finding": "Any SKIP or missing port subcase still makes local all_advice_consumer_gates_qualified False. Record completeness is distinct from all controls passed.",
+      "id": "H11",
+      "passed": true
+    },
+    {
+      "evidence": "unchanged_limits literal equality",
+      "finding": "Original20/512/55/60/caller90+1 and lossless encoded4MiB/expanded16MiB caps identical; no clock/reset/model/exclusion/proof change.",
+      "id": "H12",
+      "passed": true
+    },
+    {
+      "evidence": "STRONG_FLAGS/result inherited exact",
+      "finding": "All nine stronger proof/point/degree/scheduler/graph/trajectory/learned/RL/resource flags remainFalse. No self-review/runtime result in packet.",
+      "id": "H13",
+      "passed": true
+    },
+    {
+      "evidence": "horizon_successor_scope meaning/cost/status",
+      "finding": "Source rationale is prospective: smaller generic horizon does not guarantee READY, useful connected family,20-second fit or speedup. Own prior Source note is rationale, not empirical attribution.",
+      "id": "H14",
+      "passed": true
+    },
+    {
+      "evidence": "activation_condition/remaining_gates",
+      "finding": "Activation still requires first distinct diagnosticV2 observation and separate Root choice/current coldcaller review/once grant; review is no activation authority.",
+      "id": "H15",
+      "passed": true
+    },
+    {
+      "evidence": "exact code delta + original declarations/profile pins",
+      "finding": "Current maps retain original declared target/theory/Gamma/parameters; no supplied word/donor/library, target-specific symbol or route introduced by literal limit edits.",
+      "id": "H16",
+      "passed": true
+    },
+    {
+      "evidence": "authorship overlap statement",
+      "finding": "Distinct reviewer did not author changed V3 or inherited harness; adviser/engine/c354/transition and rationale authorship disclosed. No fresh calculus acceptance.",
+      "id": "H17",
+      "passed": true
+    },
+    {
+      "evidence": "review method",
+      "finding": "Source/raw/JSON/hash/AST compile only; no project/imported Source, scientific/helper/kernel/model/word, clock, test, actual/grant/outdir invoked.",
+      "id": "H18",
+      "passed": true
+    }
+  ],
+  "disposition": "CONDITIONAL_SOURCE_PASS_UNMEASURED_NO_ACTIVATION",
+  "inherited_harness_author_identity": "/root/hilbert_advice_controls",
+  "limitations": [
+    "Reviewer authored adviser/engine/c354/transition and Source rationale, not V3 horizon edits or inherited harness. Distinct review covers current harness Source/delta, not reacceptance of own dependencies.",
+    "No executed adviser/count/time/fit/target result. CurrentV3 UNMEASURED; Root diagnosticV2 actual and separate evidence-based oncegrant required.",
+    "All inherited Source-control limitations retained: eligibility SKIPs or missing port subcases never qualify, malformed ValueError cause remains contextual, remote fallback assertion narrower than independent whole trajectory.",
+    "Whole actual return means actual returned payload only when current native/source boundary and complete output succeed; copying/output overhead remains charged.",
+    "Generic smaller heuristic horizon can miss useful proposals and still return UNKNOWN. Complete original universe/fallback is external and unchanged; no finite-language exhaustion, GCTS gain, learned/RL or proof authority."
+  ],
+  "parent_V2_peer": {
+    "bytes": 5414,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-diagnostic-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "9467a76cb65730b8921c7282b0773f43bac733b089fa36a30c9afc9626338ef0"
+  },
+  "parent_contract": {
+    "bytes": 16901,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/Source-contract-v2.json",
+    "sha256": "6bcd7f183347888df4b1076f9f50894aa01508d775727cf99844fb20ce697e05"
+  },
+  "parent_source": {
+    "bytes": 33448,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py",
+    "sha256": "229f9cdd2daf6b9aa7f9b6ea071f2ffdbf69b1caf82351a818cf8a489c30a98b"
+  },
+  "preserved_V1_review": {
+    "bytes": 6591,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "db6e69038220a3ecba01501814e187b516ec55b52a040b7ce1cf575fda0083e1"
+  },
+  "references": {
+    "Source-contract-v3.json": {
+      "bytes": 20035,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/Source-contract-v3.json",
+      "sha256": "e9d05cc430406f926fa5f7a31e7ed654ef6270bfc1f96bd54109572ced3a97cc"
+    },
+    "Source-delta-v3.json": {
+      "bytes": 2735,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/Source-delta-v3.json",
+      "sha256": "acc91eae1905fd95c6a4d9cfa6458c7a53ffdff442dbe2968830f4844ed86ada"
+    },
+    "author-static-v3.json": {
+      "bytes": 3160,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/author-static-v3.json",
+      "sha256": "ada17c6d22e8e1372bad6a9d8dbc51a19710a79c3e9a56a7f4fb5b8c99a5d650"
+    },
+    "controls-v2-to-v3-forward.patch": {
+      "bytes": 1395,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/controls-v2-to-v3-forward.patch",
+      "sha256": "a220907d6d30bafc4e7da8b5ae92b08d1e077ef4d7fa515fc4a52cd8d2ecb68d"
+    },
+    "controls-v3-to-v2-full-inverse.patch": {
+      "bytes": 1395,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/controls-v3-to-v2-full-inverse.patch",
+      "sha256": "41688f567cd33b7b888c1e40a43d28f93b47bc0380bd0dc33f10fcbeeb66b70c"
+    },
+    "handoff-v3.json": {
+      "bytes": 8256,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/handoff-v3.json",
+      "sha256": "325a670b6accb1a0f9156b54611e19738d656322bf502464733ef4c4f8c0d6a8"
+    },
+    "parent_contract": {
+      "bytes": 16901,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/Source-contract-v2.json",
+      "sha256": "6bcd7f183347888df4b1076f9f50894aa01508d775727cf99844fb20ce697e05"
+    },
+    "parent_source": {
+      "bytes": 33448,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py",
+      "sha256": "229f9cdd2daf6b9aa7f9b6ea071f2ffdbf69b1caf82351a818cf8a489c30a98b"
+    },
+    "raw_references.adviser_contract": {
+      "bytes": 12193,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/Source-contract-v1.json",
+      "sha256": "e46ce289256c834f35701bcd41f667140980c8a60c976691242ab824622719a7"
+    },
+    "raw_references.declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "raw_references.diagnostic_V2_parent_handoff": {
+      "bytes": 9244,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/handoff-v2.json",
+      "sha256": "293b60d17f679cb9b47419578d0226776d96f4c18989269a790c2df1cd5da7c3"
+    },
+    "raw_references.diagnostic_V2_peer": {
+      "bytes": 5414,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-diagnostic-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "9467a76cb65730b8921c7282b0773f43bac733b089fa36a30c9afc9626338ef0"
+    },
+    "raw_references.engine_contract": {
+      "bytes": 22207,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/Source-contract-v2.json",
+      "sha256": "c24b0137b5a0372bd9999c0670317935fa1d6cfa716f590e34c9f2c3cf0877cf"
+    },
+    "raw_references.master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "raw_references.original_controls": {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    "raw_references.prior_controls": {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    "raw_references.profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "raw_references.rationale_note": {
+      "bytes": 7570,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-adviser-ready-diagnosis-source-20261016/Source-note-v1.json",
+      "sha256": "ac6b137a2aa35168d1b88cb81b1f903b76e624321058415a38526f677a94fcfc"
+    },
+    "raw_references.saved_first_controls_actual": {
+      "bytes": 79936,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "sha256": "09db355fa75ef99cd5b1ff836518c88bb4073a9c44c62a971f0c8422e8a11871"
+    },
+    "raw_references.validator_contract": {
+      "bytes": 13583,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/Source-contract-v1.json",
+      "sha256": "55d331260ee45e103ec7f12da7fce96029be1d9075da206a632bce5ef78f6ff1"
+    },
+    "sources.adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "sources.controls": {
+      "bytes": 33442,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py",
+      "sha256": "dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3"
+    },
+    "sources.degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "sources.degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "sources.engine": {
+      "bytes": 51786,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+      "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+    },
+    "sources.fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "sources.kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "sources.membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "sources.transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "sources.validator": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    }
+  },
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-goal-advice-controls-horizon-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-goal-advice-controls-Source",
+  "scoped_blockers": [],
+  "source": {
+    "bytes": 33442,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py",
+    "sha256": "dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3"
+  },
+  "source_contract": {
+    "bytes": 20035,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/Source-contract-v3.json",
+    "sha256": "e9d05cc430406f926fa5f7a31e7ed654ef6270bfc1f96bd54109572ced3a97cc"
+  },
+  "source_only": true,
+  "sources": {
+    "adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "controls": {
+      "bytes": 33442,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py",
+      "sha256": "dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "engine": {
+      "bytes": 51786,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+      "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "validator": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    }
+  },
+  "verified": {
+    "case_count": 22,
+    "checks": 18,
+    "entire_AST_inverse": true,
+    "entire_raw_forward_inverse": true,
+    "raw_references": 30,
+    "replacement_regions": 2,
+    "unchanged_named_callables": [
+      "Unavailable",
+      "CallbackExhausted",
+      "need",
+      "canonical",
+      "digest",
+      "tile",
+      "state",
+      "ug",
+      "obligations",
+      "passed",
+      "skip",
+      "prepared",
+      "reject",
+      "snap",
+      "restored",
+      "make",
+      "check",
+      "receipt_flags",
+      "first_key",
+      "unknown_result",
+      "first_try",
+      "empty_advice",
+      "quota_advice",
+      "stop_after_placement",
+      "observed_degree",
+      "bad",
+      "timeout_advice",
+      "value_error",
+      "forbidden_advice",
+      "watched_validator",
+      "capture_degree",
+      "watched_adviser"
+    ]
+  },
+  "whole_contracts_read": true,
+  "whole_current_source_read": true,
+  "whole_parent_source_coverage": "Whole parent raw bytes read and exact normalized inverse; identical tail checked against whole current Source coverage."
+}

@@ -1,0 +1,20 @@
+{
+  "body_bytes_identical": true,
+  "reviewed_parent": {
+    "bytes": 5315,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advised-engine-ROOT-20261016/ROOT_decode_saved_transport_v3.py",
+    "sha256": "1adfabc2cbd40c124cfe122a636f4189e0a7415876ec89c6e69408b16277d933"
+  },
+  "reviewer_identity": "/root",
+  "schema": "ROOT-saved-decoder-identical-relocation-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Identical saved-only decoder with unchanged HERE-relative actual location. Complete strict bounded samebuffer JSON/base64/zlib/hash/LF/Source17-input2-purpose joins preserved. No scientific replay or resource acceptance.",
+  "source": {
+    "bytes": 5315,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-ROOT-20261016/ROOT_decode_saved_transport_v3.py",
+    "sha256": "1adfabc2cbd40c124cfe122a636f4189e0a7415876ec89c6e69408b16277d933"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

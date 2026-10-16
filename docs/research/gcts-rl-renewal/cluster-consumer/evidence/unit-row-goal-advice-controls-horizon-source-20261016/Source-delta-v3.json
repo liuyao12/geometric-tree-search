@@ -1,0 +1,78 @@
+{
+  "full_forward_exact": true,
+  "full_inverse_exact": true,
+  "parent_source": {
+    "bytes": 33448,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py",
+    "sha256": "229f9cdd2daf6b9aa7f9b6ea071f2ffdbf69b1caf82351a818cf8a489c30a98b"
+  },
+  "patches": {
+    "controls-v2-to-v3-forward.patch": {
+      "bytes": 1395,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/controls-v2-to-v3-forward.patch",
+      "sha256": "a220907d6d30bafc4e7da8b5ae92b08d1e077ef4d7fa515fc4a52cd8d2ecb68d"
+    },
+    "controls-v3-to-v2-full-inverse.patch": {
+      "bytes": 1395,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/controls-v3-to-v2-full-inverse.patch",
+      "sha256": "41688f567cd33b7b888c1e40a43d28f93b47bc0380bd0dc33f10fcbeeb66b70c"
+    }
+  },
+  "replacement_regions": [
+    {
+      "after": "VERSION = 'unit-row-goal-advice-adversarial-controls-v3-smaller-generic-horizon'",
+      "before": "VERSION = 'unit-row-goal-advice-adversarial-controls-v2-preserved-advice-diagnostics'",
+      "new_end": 419,
+      "new_start": 339,
+      "old_end": 424,
+      "old_start": 339
+    },
+    {
+      "after": "return adviser(**kwargs,maximum_terms=1,maximum_demands=5,maximum_rounds=3,maximum_proposals=8)",
+      "before": "return adviser(**kwargs,maximum_terms=1,maximum_demands=16,maximum_rounds=4,maximum_proposals=8)",
+      "new_end": 6609,
+      "new_start": 6514,
+      "old_end": 6615,
+      "old_start": 6519
+    }
+  ],
+  "schema": "unit-row-goal-advice-controls-horizon-Source-delta-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 33442,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py",
+    "sha256": "dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3"
+  },
+  "source_only": true,
+  "status": "UNMEASURED",
+  "unchanged9_helper_names": [
+    "Unavailable",
+    "CallbackExhausted",
+    "need",
+    "canonical",
+    "digest",
+    "tile",
+    "state",
+    "ug",
+    "obligations"
+  ],
+  "unchanged_other_nested_functions": [
+    "passed",
+    "skip",
+    "prepared",
+    "reject",
+    "snap",
+    "restored",
+    "make",
+    "check",
+    "receipt_flags",
+    "first_key",
+    "unknown_result",
+    "first_try",
+    "empty_advice",
+    "quota_advice",
+    "stop_after_placement"
+  ],
+  "whole_AST_inverse_after_restoring_VERSION_and_two_horizon_literals": true
+}

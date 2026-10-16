@@ -1,0 +1,84 @@
+{
+  "actual_adviser_adapter_defaults": {
+    "maximum_demands": 5,
+    "maximum_proposals": 8,
+    "maximum_rounds": 3,
+    "maximum_terms": 16,
+    "maximum_work": 50000
+  },
+  "adviser_adapter_whole_body_exact": true,
+  "entire_forward_exact": true,
+  "entire_inverse_exact": true,
+  "literal_edits": [
+    {
+      "after": "{'bytes': 33442, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py', 'sha256': 'dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3'}",
+      "before": "{'bytes': 33448, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py', 'sha256': '229f9cdd2daf6b9aa7f9b6ea071f2ffdbf69b1caf82351a818cf8a489c30a98b'}"
+    },
+    {
+      "after": "VERSION='unit-row-advised-domain-horizon-cold-v3'",
+      "before": "VERSION='unit-row-advised-domain-diagnostic-cold-v2'"
+    },
+    {
+      "after": "SCOPE='unit-row-advised-domain-horizon-cold-Source'",
+      "before": "SCOPE='unit-row-advised-domain-diagnostic-cold-Source'"
+    },
+    {
+      "after": "contract['schema'] == 'unit-row-advised-domain-horizon-cold-Source-contract-v3'",
+      "before": "contract['schema'] == 'unit-row-advised-domain-diagnostic-cold-Source-contract-v2'"
+    },
+    {
+      "after": "            maximum_demands=5,maximum_terms=16,maximum_rounds=3):",
+      "before": "            maximum_demands=16,maximum_terms=16,maximum_rounds=8):"
+    }
+  ],
+  "parent_source": {
+    "bytes": 49587,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-ROOT-source-20261016/unit_row_advised_domain_diagnostic_cold_v2.py",
+    "sha256": "dd5d5951a2b269197d4bbdc56e5f6088b5b3bcbd1a47b18ec8db59ed0de26a50"
+  },
+  "schema": "unit-row-horizon-cold-independent-Source-delta-v3",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 49585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-ROOT-source-20261016/unit_row_advised_domain_horizon_cold_v3.py",
+    "sha256": "98524052a3682a3374d7cf4988e7e74856c6e12e2de7b5f4a4973664ff411097"
+  },
+  "source_only": true,
+  "unchanged17_top_helpers": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ],
+  "unchanged_nested_main_functions": [
+    "tick",
+    "guard",
+    "boundary",
+    "fresh_language",
+    "proposer_adapter",
+    "fallback_adapter",
+    "certify_adapter",
+    "engine_factory",
+    "transition_adapter",
+    "refresh_adapter",
+    "scheduler_adapter",
+    "validate_advice_adapter",
+    "validate_found",
+    "run_original_search"
+  ],
+  "whole_main_exact_after_restoring_only_schema_and_default_line": true,
+  "whole_response_stdout_native_exit_suffix_exact": true
+}

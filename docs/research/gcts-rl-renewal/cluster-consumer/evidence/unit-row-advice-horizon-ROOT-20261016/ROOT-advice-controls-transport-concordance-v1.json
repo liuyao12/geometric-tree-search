@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 130425,
+  "compressed_sha256": "1bf0a2f30f8f550fa30a3b2754f4b737d031f61ac25f95e8655260a52ca5ed00",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 174223,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+    "sha256": "b1e597c65db785ee4f261a3951a7354d1b6bbb9011c83f862f98775d77e8f1e4"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 1411729,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+    "sha256": "bf39acd5ce3a8562049fe03b94f1aeacbcf756ae063818149adc5e79ff6fc0d6"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 7908,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "0de75ab508e9446075acc8422de94dca794dc712c4c89eef81a2967374ee7c69"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}

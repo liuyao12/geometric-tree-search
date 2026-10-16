@@ -1,0 +1,31 @@
+{
+  "checks": 18,
+  "disposition": "CONDITIONAL_SOURCE_PASS_UNMEASURED_NO_ACTIVATION",
+  "findings": {
+    "bytes": 22089,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-independent-source-20261016/findings-v1.json",
+    "sha256": "f32cf804332af75ccf341522dffb0a3229cf7669c9ae03d9a666dfe6a2e06fa1"
+  },
+  "remaining": "First separate diagnosticV2 observation; Root evidence-based choice/current caller review/grant; actual full22/noessentialgap/native/resource/output qualification remains absent.",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "unit-row-goal-advice-controls-horizon-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scoped_blockers": 0,
+  "source": {
+    "bytes": 33442,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py",
+    "sha256": "dac89e55a49d3fb6ee425ee97762674667745c2c222815897494555734a340f3"
+  },
+  "source_contract": {
+    "bytes": 20035,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/Source-contract-v3.json",
+    "sha256": "e9d05cc430406f926fa5f7a31e7ed654ef6270bfc1f96bd54109572ced3a97cc"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 5839,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "6a1272239818b37193614aab4ffe9263bb88d2bb919a39c4953205c1a78905df"
+  }
+}

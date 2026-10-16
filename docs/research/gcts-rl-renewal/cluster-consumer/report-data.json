@@ -1,0 +1,135 @@
+{
+  "diagnostic_path": "evidence/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+  "evidence": [
+    {
+      "href": "evidence-manifest.json",
+      "label": "Manifest with every exact public evidence copy"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Current22 controls: qualified disposition"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "label": "Whole current consumer record"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/ROOT-original-controls-disposition-v1.json",
+      "label": "Current original17 controls"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/ROOT-domain-controls-disposition-v1.json",
+      "label": "Current retention17 controls"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "label": "Full original17 lossless record"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/domain-controls-owned-v1/engine-result.json",
+      "label": "Full retention17 lossless record"
+    },
+    {
+      "href": "evidence/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "label": "Diagnostic quota result: prior2pass20skip preserved"
+    },
+    {
+      "href": "evidence/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "label": "Whole diagnostic adviser return"
+    },
+    {
+      "href": "evidence/ROOT-same-Source-comparison-v1.json",
+      "label": "Same-Source comparison and unchanged model"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/ROOT-canonical-search-disposition-v1.json",
+      "label": "Canonical target UNKNOWN"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/ROOT-advised-search-disposition-v1.json",
+      "label": "Advised target UNKNOWN"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/canonical-search-owned-v1/unknown-diagnostic.json",
+      "label": "All308 returned canonical events"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-ROOT-20261016/advised-search-owned-v1/unknown-diagnostic.json",
+      "label": "All312 returned advised events"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-cold-ROOT-source-20261016/Source-contract-v3.json",
+      "label": "Current horizon caller contract"
+    },
+    {
+      "href": "evidence/unit-row-advice-horizon-cold-independent-source-20261016/typed-Source-review-v3.json",
+      "label": "Independent whole-caller review"
+    },
+    {
+      "href": "evidence/unit-row-goal-advice-controls-horizon-independent-source-20261016/typed-Source-review-v1.json",
+      "label": "Independent horizon-controls review"
+    },
+    {
+      "href": "evidence/unit-row-advice-interface-saved-analysis-20261016/note-v1.json",
+      "label": "Saved interface translation note"
+    },
+    {
+      "href": "evidence/unit-row-advice-family-lifecycle-diagnosis-source-20261016/Source-note-v1.json",
+      "label": "Saved lifecycle diagnosis and unimplemented repair"
+    },
+    {
+      "href": "../goal-advice/reader.html#results",
+      "label": "Earlier unqualified consumer and actualtile visual"
+    },
+    {
+      "href": "../shared-bounded-proofs/reader.html#reader",
+      "label": "Earlier independently checked conventional proof"
+    }
+  ],
+  "ready_path": "evidence/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+  "schema": "cluster-consumer-saved-reader-v1",
+  "stages": [
+    {
+      "label": "Diagnostic successor",
+      "native_launch_to_postprobe_ns": 1528686000,
+      "native_resources_qualified": true,
+      "outcome": "\\(2\\) passed; \\(20\\) skipped",
+      "peak_bytes": 26411008
+    },
+    {
+      "label": "Consumer controls",
+      "native_launch_to_postprobe_ns": 11942900000,
+      "native_resources_qualified": true,
+      "outcome": "\\(22\\) passed; no skips",
+      "peak_bytes": 40861696
+    },
+    {
+      "label": "Original controls",
+      "native_launch_to_postprobe_ns": 6080854000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed",
+      "peak_bytes": 42254336
+    },
+    {
+      "label": "Retention controls",
+      "native_launch_to_postprobe_ns": 4562820000,
+      "native_resources_qualified": true,
+      "outcome": "\\(17\\) passed",
+      "peak_bytes": 62734336
+    },
+    {
+      "label": "Canonical target",
+      "native_launch_to_postprobe_ns": 20120830000,
+      "native_resources_qualified": false,
+      "outcome": "UNKNOWN",
+      "peak_bytes": 48037888
+    },
+    {
+      "label": "Advised target",
+      "native_launch_to_postprobe_ns": 20152738000,
+      "native_resources_qualified": false,
+      "outcome": "UNKNOWN",
+      "peak_bytes": 49479680
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "actual_adviser_return": {
+    "executable": false,
+    "limits": {
+      "maximum_demands": 16,
+      "maximum_proposals": 8,
+      "maximum_rounds": 4,
+      "maximum_terms": 1,
+      "maximum_work": 50000
+    },
+    "partial_proposals": 8,
+    "reason": "_Quota: finite adviser work quota; no exhaustion claim",
+    "status": "UNKNOWN",
+    "work": {
+      "candidate_members_checked": 61,
+      "definite_profile_rejections": 0,
+      "demand_count": 16,
+      "descriptor_steps": 73,
+      "duplicate_anchors": 19,
+      "fallback_prefix_candidates": 4,
+      "guarded_steps": 50000,
+      "incompatible_unions": 1,
+      "rounds": 3,
+      "term_count": 1,
+      "unique_anchors": 8,
+      "universal_count": 6
+    }
+  },
+  "actual_closed": true,
+  "additional_coverage_gaps": [],
+  "aggregate_B_bytes": 26411008,
+  "all_advice_consumer_gates_qualified": false,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 7.022,
+  "complete_wire_verified": true,
+  "controls_accepted": false,
+  "current_goal_turn": "progress",
+  "fixture_attempt_state_sha256": "957fb0b2416962ad4f2d2d19b86652a726b20637f16e2187090fb862187474cf",
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "6547aed8b73c8a7e8953cbc875cf1927581615c647ef225ee45fa5c87a645d87",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "9ae5fab53f96959dd3e748ef15a37d7a8482d335675e76a673040e8cbce1777d"
+  },
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1490,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-transport-concordance-v1.json",
+    "sha256": "0c23a074ad1f9a65b2b363f1e88ff67bf6380701be4fe0399e396bdf4a78f3db"
+  },
+  "native_launch_to_postprobe_ns": 1528686000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 1481719000,
+  "observation": "Complete actual return retained: adviser own quota50000 reached after3 completed rounds,61checked members,73descriptor steps,8partial proposals. Producer work counters are observations, not causal phase costs or accepted proposals.",
+  "old_UNKNOWNs_preserved": true,
+  "outputs": [
+    {
+      "bytes": 17961,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+      "sha256": "0d2f4d6dbcb3acf7b7d338c31970ae182e82e5471ba818efeb86601840a5f1ba"
+    },
+    {
+      "bytes": 7029,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-ROOT-20261016/advice-controls-owned-v1/response.jsonl",
+      "sha256": "a82253b6579175e391ff626328efe0b640b2ba687f1c8d364b75d925380e5382"
+    }
+  ],
+  "passed_cases": 2,
+  "plan": {
+    "bytes": 7924,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "e0f0e598fcbd531f14aa18716c1fff52e481c7bf25ffa2e0b095afb1b6850d24"
+  },
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved wire/source/marker/native/status/receipt field concordance only; no scientific functions or proof replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-advice-consumer-controls-disposition-v1",
+  "scope": "Two actual global priority controls passed; twenty adviser/currentpending/rollback consumer cases skipped for genuine UNKNOWN advice. No target search admitted.",
+  "skipped_cases": 20,
+  "status": "UNQUALIFIED_CONSUMER_COVERAGE",
+  "target_arms_admitted": false,
+  "terminal_T_bytes": 26411008
+}

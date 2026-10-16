@@ -1,0 +1,535 @@
+{
+  "actual_decision": {
+    "kind": "BRANCH",
+    "row": 0
+  },
+  "actual_fixture_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "6547aed8b73c8a7e8953cbc875cf1927581615c647ef225ee45fa5c87a645d87",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "9ae5fab53f96959dd3e748ef15a37d7a8482d335675e76a673040e8cbce1777d"
+  },
+  "actual_state_sha256": "957fb0b2416962ad4f2d2d19b86652a726b20637f16e2187090fb862187474cf",
+  "author_identity": "/root/arithmetic_induction",
+  "evidence_needed_for_V3": [
+    "A fresh actual batch must return READY under its exact new Source/epoch/state/decision and pass the independent f668 validator for the ENTIRE batch. No reusing or promoting these partial UNKNOWN proposals, old receipts or state hashes.",
+    "Actual global BRANCH must choose the current row and only the independently selected anchor be placed. Future full keys remain preferences; exact primitive ports, compatible union and current legality still require validation. Any word would require independent unchanged checker; no word is supplied here.",
+    "Genuine nonempty pending state must be captured by owned checkpoint, root rollback shown, public token restored, later global selection must revalidate and place a pending key; remote conflict must drop only that hint and preserve canonical fallback. Global forced-fill must retire exactly occupied preferences and permit new advice.",
+    "All22 meaningful control cases must pass with no essential SKIP/subcase gap and complete output/native20/512/failure55/owned60/caller90+1 accounting. A READY batch alone is not tested consumer behavior, proof progress, successful target search, GCTS advantage or RL.",
+    "The reduced horizon is prospective; its actual proposals/ranking/work/outcome must be retained afresh. No prediction that rank0/rank1 survives, no phase-cause attribution and no runtime/speed prediction."
+  ],
+  "input_context": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "6547aed8b73c8a7e8953cbc875cf1927581615c647ef225ee45fa5c87a645d87",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "9ae5fab53f96959dd3e748ef15a37d7a8482d335675e76a673040e8cbce1777d"
+  },
+  "literal_findings": [
+    "Yes: two saved producer-ranked proposals have a connected three-member interface. Rank0 uses rows0,2,23 and rank1 rows0,2,8; each lists instantiate, ordered MP, then generalize. Six other proposals contain a single zero-input member. These are emitted claims from an UNKNOWN batch, not accepted membership/compatibility.",
+    "Both connected proposals expose one unoccupied PENDING input atrow1: MP port0. MP port1 points to the incident row0 licence member; the UG port points to the MP row2 member. They list future_preferences_only=True, installed=False and logical_proof_accepted=False. Pending reads never establish facts.",
+    "Rank0 has score[1,1,31,-3] and rank1[1,1,18,-3]. Their producer features say goal_connected/anchor_novel=True. Rank0 pending formula is literally identical to its own goal-root formula atrow23. It therefore restates the goal as an earlier open obligation; the saved syntactic goal-connected score is not evidence of proof progress or discharge.",
+    "Rank1 pending formula is literally equal to the named AS formula also present in this SAME saved file's forced-search selected-axiom record. It exposes a genuine unresolved AX-shaped input interface, but no row1 AX fact or cluster member was installed/tested in the skipped consumer cases.",
+    "The saved actual V2 reason is _Quota with guarded_steps50000, completed rounds3 against requested4, demands16, descriptor_steps73, checkedmembers61, uniqueanchors8 and duplicateanchors19. These are producer-reported work observations. They do not time phases, explain the older V1 UNKNOWN retrospectively, or establish future fit."
+  ],
+  "method": "Saved JSON and whole-file hash only; no Source/project/kernel/adviser/validator/engine function, model construction, semantic proof/point replay, clock, test, rerun or actual. Reviewer authored adviser/engine/c354/transition; this is Source-author literal saved-data analysis, not independent logical acceptance.",
+  "observed_batch": {
+    "all_22_controls_qualified": false,
+    "authority_accepted": false,
+    "diagnostic_only": true,
+    "limits": {
+      "maximum_demands": 16,
+      "maximum_proposals": 8,
+      "maximum_rounds": 4,
+      "maximum_terms": 1,
+      "maximum_work": 50000
+    },
+    "partial_batch_executable": false,
+    "partial_proposals": 8,
+    "passed": 2,
+    "reason": "_Quota: finite adviser work quota; no exhaustion claim",
+    "skipped": 20,
+    "status": "UNKNOWN",
+    "work": {
+      "candidate_members_checked": 61,
+      "definite_profile_rejections": 0,
+      "demand_count": 16,
+      "descriptor_steps": 73,
+      "duplicate_anchors": 19,
+      "fallback_prefix_candidates": 4,
+      "guarded_steps": 50000,
+      "incompatible_unions": 1,
+      "rounds": 3,
+      "term_count": 1,
+      "unique_anchors": 8,
+      "universal_count": 6
+    }
+  },
+  "proposal_inventory": [
+    {
+      "future_preferences_only": true,
+      "goal_row": 23,
+      "installed": false,
+      "logical_proof_accepted": false,
+      "members": [
+        {
+          "ordered_physical_reads": [],
+          "ordered_ports": [],
+          "row": 0,
+          "rule": "instantiate",
+          "tile_type_id": "bounded-point-tile-0a710396ff26a3291b91cd2dd4fb262c51408c162738e2317eb6929237894bf8"
+        },
+        {
+          "ordered_physical_reads": [
+            1,
+            0
+          ],
+          "ordered_ports": [
+            {
+              "index": 0,
+              "kind": "pending",
+              "port": 0,
+              "row": 1
+            },
+            {
+              "index": 0,
+              "kind": "member",
+              "port": 1,
+              "row": 0
+            }
+          ],
+          "row": 2,
+          "rule": "mp",
+          "tile_type_id": "bounded-point-tile-975f3e06d2748d69a357ae94870c1c38be8487950747d5e8ab4c6b27412dec35"
+        },
+        {
+          "ordered_physical_reads": [
+            2
+          ],
+          "ordered_ports": [
+            {
+              "index": 1,
+              "kind": "member",
+              "port": 0,
+              "row": 2
+            }
+          ],
+          "row": 23,
+          "rule": "generalize",
+          "tile_type_id": "bounded-point-tile-dd17923b53bc97499e8537787cc1e909656c36f102e47b23c56c90446ed8a854"
+        }
+      ],
+      "pending_interfaces": [
+        {
+          "fact_accepted": false,
+          "literal_formula_equals_own_goal": true,
+          "member_index": 1,
+          "occupied": false,
+          "port": 0,
+          "row": 1,
+          "status": "PENDING"
+        }
+      ],
+      "rank": 0,
+      "ranking_features": {
+        "anchor_novel": true,
+        "goal_connected": true,
+        "literal_list_subtree_overlap": 31,
+        "primitive_members": 3
+      },
+      "scheme": "GENERIC_UI_MP",
+      "score": [
+        1,
+        1,
+        31,
+        -3
+      ]
+    },
+    {
+      "future_preferences_only": true,
+      "goal_row": 8,
+      "installed": false,
+      "logical_proof_accepted": false,
+      "members": [
+        {
+          "ordered_physical_reads": [],
+          "ordered_ports": [],
+          "row": 0,
+          "rule": "instantiate",
+          "tile_type_id": "bounded-point-tile-a641743e90f3aec7bef4373a4f6a55b109e503307dabf2cc2c06f03f870e6041"
+        },
+        {
+          "ordered_physical_reads": [
+            1,
+            0
+          ],
+          "ordered_ports": [
+            {
+              "index": 0,
+              "kind": "pending",
+              "port": 0,
+              "row": 1
+            },
+            {
+              "index": 0,
+              "kind": "member",
+              "port": 1,
+              "row": 0
+            }
+          ],
+          "row": 2,
+          "rule": "mp",
+          "tile_type_id": "bounded-point-tile-53ad7215b9abf9ed06777b1a195bebff48d03de263db369c0612e581fcaf707e"
+        },
+        {
+          "ordered_physical_reads": [
+            2
+          ],
+          "ordered_ports": [
+            {
+              "index": 1,
+              "kind": "member",
+              "port": 0,
+              "row": 2
+            }
+          ],
+          "row": 8,
+          "rule": "generalize",
+          "tile_type_id": "bounded-point-tile-d7fe80c09f1696e6d0c930a4c1a7dbe317f8c47388883670bb0c68b46681b6bc"
+        }
+      ],
+      "pending_interfaces": [
+        {
+          "fact_accepted": false,
+          "literal_formula_equals_own_goal": false,
+          "member_index": 1,
+          "occupied": false,
+          "port": 0,
+          "row": 1,
+          "status": "PENDING"
+        }
+      ],
+      "rank": 1,
+      "ranking_features": {
+        "anchor_novel": true,
+        "goal_connected": true,
+        "literal_list_subtree_overlap": 18,
+        "primitive_members": 3
+      },
+      "scheme": "GENERIC_UI_MP",
+      "score": [
+        1,
+        1,
+        18,
+        -3
+      ]
+    },
+    {
+      "future_preferences_only": true,
+      "goal_row": null,
+      "installed": false,
+      "logical_proof_accepted": false,
+      "members": [
+        {
+          "ordered_physical_reads": [],
+          "ordered_ports": [],
+          "row": 0,
+          "rule": "instantiate",
+          "tile_type_id": "bounded-point-tile-5d9e0d27f2b6790287a728aa26aee948624804fcecc6641ff50f5e5982b6353b"
+        }
+      ],
+      "pending_interfaces": [],
+      "rank": 2,
+      "ranking_features": {
+        "anchor_novel": true,
+        "goal_connected": false,
+        "literal_list_subtree_overlap": 30,
+        "primitive_members": 1
+      },
+      "scheme": "GENERIC_UI_LICENCE",
+      "score": [
+        0,
+        1,
+        30,
+        -1
+      ]
+    },
+    {
+      "future_preferences_only": true,
+      "goal_row": null,
+      "installed": false,
+      "logical_proof_accepted": false,
+      "members": [
+        {
+          "ordered_physical_reads": [],
+          "ordered_ports": [],
+          "row": 0,
+          "rule": "eq_subst",
+          "tile_type_id": "bounded-point-tile-7c2871c28e414661a34b593062f0365251e6f57f5a82893645fc758bdbe26b2f"
+        }
+      ],
+      "pending_interfaces": [],
+      "rank": 3,
+      "ranking_features": {
+        "anchor_novel": true,
+        "goal_connected": false,
+        "literal_list_subtree_overlap": 6,
+        "primitive_members": 1
+      },
+      "scheme": "CANONICAL_PREFIX_NOVELTY",
+      "score": [
+        0,
+        1,
+        6,
+        -1
+      ]
+    },
+    {
+      "future_preferences_only": true,
+      "goal_row": null,
+      "installed": false,
+      "logical_proof_accepted": false,
+      "members": [
+        {
+          "ordered_physical_reads": [],
+          "ordered_ports": [],
+          "row": 0,
+          "rule": "instantiate",
+          "tile_type_id": "bounded-point-tile-8e8146e7907327cb6f24c6555875c8c7a68da0c0596caa2f9ec4c65b14ef0ae9"
+        }
+      ],
+      "pending_interfaces": [],
+      "rank": 4,
+      "ranking_features": {
+        "anchor_novel": true,
+        "goal_connected": false,
+        "literal_list_subtree_overlap": 6,
+        "primitive_members": 1
+      },
+      "scheme": "GENERIC_UI_LICENCE",
+      "score": [
+        0,
+        1,
+        6,
+        -1
+      ]
+    },
+    {
+      "future_preferences_only": true,
+      "goal_row": null,
+      "installed": false,
+      "logical_proof_accepted": false,
+      "members": [
+        {
+          "ordered_physical_reads": [],
+          "ordered_ports": [],
+          "row": 0,
+          "rule": "axiom",
+          "tile_type_id": "bounded-point-tile-c35544f61c89be59cf8b33b12ffa3c38065d39465db0c42e3a0f93c81702fa26"
+        }
+      ],
+      "pending_interfaces": [],
+      "rank": 5,
+      "ranking_features": {
+        "anchor_novel": true,
+        "goal_connected": false,
+        "literal_list_subtree_overlap": 4,
+        "primitive_members": 1
+      },
+      "scheme": "CANONICAL_PREFIX_NOVELTY",
+      "score": [
+        0,
+        1,
+        4,
+        -1
+      ]
+    },
+    {
+      "future_preferences_only": true,
+      "goal_row": null,
+      "installed": false,
+      "logical_proof_accepted": false,
+      "members": [
+        {
+          "ordered_physical_reads": [],
+          "ordered_ports": [],
+          "row": 0,
+          "rule": "axiom",
+          "tile_type_id": "bounded-point-tile-ef0e1530b0b2498efb2f5f3befe37305a05b8b3f3b802fcd5f31d509e8921aa7"
+        }
+      ],
+      "pending_interfaces": [],
+      "rank": 6,
+      "ranking_features": {
+        "anchor_novel": true,
+        "goal_connected": false,
+        "literal_list_subtree_overlap": 2,
+        "primitive_members": 1
+      },
+      "scheme": "CANONICAL_PREFIX_NOVELTY",
+      "score": [
+        0,
+        1,
+        2,
+        -1
+      ]
+    },
+    {
+      "future_preferences_only": true,
+      "goal_row": null,
+      "installed": false,
+      "logical_proof_accepted": false,
+      "members": [
+        {
+          "ordered_physical_reads": [],
+          "ordered_ports": [],
+          "row": 0,
+          "rule": "instantiate",
+          "tile_type_id": "bounded-point-tile-3cfaa566b63e5502a9c4f81d8d93519d40959b03f63dfd36640da049224229e6"
+        }
+      ],
+      "pending_interfaces": [],
+      "rank": 7,
+      "ranking_features": {
+        "anchor_novel": true,
+        "goal_connected": false,
+        "literal_list_subtree_overlap": 0,
+        "primitive_members": 1
+      },
+      "scheme": "CANONICAL_PREFIX_NOVELTY",
+      "score": [
+        0,
+        1,
+        0,
+        -1
+      ]
+    }
+  ],
+  "record_locators": {
+    "batch": "controls.artifacts.fixture_advice_attempt.actual_adviser_return",
+    "epoch": "language_binding",
+    "private_fixture": "controls.artifacts.fixture_advice_attempt",
+    "whole_original_sources": "sources"
+  },
+  "saved_record": {
+    "bytes": 154054,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+    "sha256": "bfb954475d009111af04e5475d2ae7240d1f77b3cfbcf21d5f3d3f45a92d3d2d"
+  },
+  "schema": "unit-row-advice-partial-family-saved-analysis-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "strong_acceptance": {
+    "RL_accepted": false,
+    "ROOT_resource_accepted": false,
+    "complete_GCTS_model_accepted": false,
+    "degree_or_EOF_accepted": false,
+    "exact_point_board_accepted": false,
+    "learned_marking_accepted": false,
+    "logical_proof_accepted": false,
+    "scheduler_accepted": false,
+    "trajectory_accepted": false
+  },
+  "whole_source_context": {
+    "advice_controls": {
+      "bytes": 33448,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py",
+      "sha256": "229f9cdd2daf6b9aa7f9b6ea071f2ffdbf69b1caf82351a818cf8a489c30a98b"
+    },
+    "advice_validator": {
+      "bytes": 15295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-independent-advice-consumer-source-20261016/independent_advice_consumer_v1.py",
+      "sha256": "f668330c0ed98b9d6cd56150996c141c991a93b9058b898a86fd3068c832d317"
+    },
+    "adviser": {
+      "bytes": 21913,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-branch-adviser-source-20261016/goal_branch_adviser_v1.py",
+      "sha256": "c6fc2e5dfae79eb4f3a070f1439e2461f9f684ee72ee3bf4620aca7645ef40cb"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 21896,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-lazy-engine-controls-source-20261015/lazy_engine_adversarial_controls_v1.py",
+      "sha256": "d7b0c0f6776e6b383e92e270f559e9b8978523a5ac5cfd91ec283996e214e4d7"
+    },
+    "converter": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "engine": {
+      "bytes": 51786,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-engine-source-20261016/lazy_unit_row_global_engine_v5.py",
+      "sha256": "dbaf04e1606b99156a86fd2d572b8ed695da8c814a0a05dbb19523d9d6176d84"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "intake": {
+      "bytes": 49587,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-ROOT-source-20261016/unit_row_advised_domain_diagnostic_cold_v2.py",
+      "sha256": "dd5d5951a2b269197d4bbdc56e5f6088b5b3bcbd1a47b18ec8db59ed0de26a50"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "point_checker": {
+      "bytes": 10201,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "retained_controls": {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "word_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    }
+  }
+}

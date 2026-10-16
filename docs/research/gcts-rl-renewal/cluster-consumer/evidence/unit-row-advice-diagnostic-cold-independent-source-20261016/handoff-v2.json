@@ -1,0 +1,36 @@
+{
+  "current_checks": 14,
+  "disposition": "CONDITIONAL_SOURCE_PASS_NO_SCOPED_BLOCKER",
+  "findings": {
+    "bytes": 30598,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-independent-source-20261016/findings-v2.json",
+    "sha256": "deb5285ed1e8b3471cce3a0ec5dc3d129f72a5e38948b6eff8a8b150a940b769"
+  },
+  "independent_delta": {
+    "bytes": 2807,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-independent-source-20261016/independent-Source-delta-v2.json",
+    "sha256": "226eb0e578f9d562871e1f8d20c90d52034c7d2fbb7e96c728e5a94fce8c1336"
+  },
+  "raw_unique_paths": 34,
+  "retained_whole_parent_checks": 28,
+  "schema": "unit-row-advice-diagnostic-cold-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "unit-row-advised-domain-diagnostic-cold-Source",
+  "source": {
+    "bytes": 49587,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-ROOT-source-20261016/unit_row_advised_domain_diagnostic_cold_v2.py",
+    "sha256": "dd5d5951a2b269197d4bbdc56e5f6088b5b3bcbd1a47b18ec8db59ed0de26a50"
+  },
+  "source_contract": {
+    "bytes": 20611,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "71ec9fc3bc8442f6c5a56e9836e4e195cc9c020a9c2db703ee7d622087c8b107"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 7616,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-cold-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "3874b5698957085c40a93c6d353ad9a3b5387c8f21dcc486700f039fea945557"
+  }
+}

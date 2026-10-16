@@ -1,0 +1,183 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "advice_enabled_observed": false,
+  "aggregate_B_bytes_observed": 48037888,
+  "all_reaped": true,
+  "arm": "canonical-search",
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 25.868,
+  "complete_GCTS_model_accepted": false,
+  "complete_diagnostic_bytes_and_marker_verified": true,
+  "current_goal_turn": "progress",
+  "diagnostic_only": true,
+  "failure_lifecycle_verified": true,
+  "logical_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 20120830000,
+  "native_resources_qualified": false,
+  "native_worker_lifetime_ns": 20080827000,
+  "next_action": "Preserve UNKNOWN and late-data qualification. Current3control stages qualified; inspect observed advice and pending interfaces before changing policy, no unchanged actual restart.",
+  "nonprovability_claimed": false,
+  "observations": {
+    "counts": {
+      "advice_calls": 0,
+      "advice_selected": 0,
+      "advice_unknown": 0,
+      "backtracks": 22,
+      "branches": 44,
+      "cursor_replays": 0,
+      "fallback_advances": 44,
+      "fallback_branch_choices": 0,
+      "forced": 0,
+      "global_scans": 67,
+      "invalidated_domains": 1583,
+      "nodes": 67,
+      "pending_checks": 0,
+      "pending_rejected": 0,
+      "pending_retired": 0,
+      "pending_selected": 0,
+      "placements": 44,
+      "restores": 44,
+      "retained_domains": 1,
+      "retained_prefixes": 0,
+      "retained_queries": 1
+    },
+    "decision_kinds": {
+      "BRANCH": 44,
+      "DEAD": 22
+    },
+    "event_count": 308,
+    "event_kinds": {
+      "DECISION": 66,
+      "EXCLUDE": 22,
+      "FALLBACK": 44,
+      "INVALIDATE": 66,
+      "PLACE": 44,
+      "RESTORE": 22,
+      "TRY": 44
+    },
+    "interrupted_axiom_names": [
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS",
+      "AS"
+    ],
+    "interrupted_excluded_count": 22,
+    "interrupted_rule_counts": {
+      "axiom": 22
+    },
+    "interrupted_selected_rows": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "producer_final_snapshot_sha256": "dc4fac50fa173cd157475d3576edef3a956e2bcef3e28fcbcc203ae7744137e0",
+    "producer_root_restored": true,
+    "producer_root_snapshot_sha256": "dc4fac50fa173cd157475d3576edef3a956e2bcef3e28fcbcc203ae7744137e0",
+    "producer_stack_restored": true,
+    "qualification": "UNQUALIFIED_PRODUCER_OBSERVATIONS_ONLY"
+  },
+  "original_trace_free_UNKNOWN_preserved": true,
+  "outputs": [
+    {
+      "bytes": 1232941,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/canonical-search-owned-v1/unknown-diagnostic.json",
+      "sha256": "d9eb850f1df05242de8e9c01a30b656eaa387db89b686083d6837351076c76b6"
+    },
+    {
+      "bytes": 338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/canonical-search-owned-v1/diagnostic-completion.json",
+      "sha256": "2ea1817703648df3dd3485800de6bc92d5cfe225ec87de4f03db6dcd525a1719"
+    }
+  ],
+  "plan": {
+    "bytes": 7912,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-canonical-search-plan-v1.json",
+    "sha256": "b2620af043e675f22b360dec702cc606a407d5d429fcf6ee269f8b14c9f69666"
+  },
+  "previous_goal_turn": "progress",
+  "raw_evidence": [
+    {
+      "bytes": 261,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/canonical-search-external-v1/ONCE.json",
+      "sha256": "8015a338c6cfc41d04b250ec5b2ead9050a45bb98a4499d8ad837263dc322d32"
+    },
+    {
+      "bytes": 111,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/canonical-search-external-v1/meter-stderr.txt",
+      "sha256": "ab20fdad9385dfef8fdc9502376b649f5a165abcd9958855bb7695c519919115"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/canonical-search-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1701,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/canonical-search-external-v1/native-terminal.json",
+      "sha256": "7a684a9678f1368a655b539840a51ab1344d5619ebafae1aa376eaf693eaaa48"
+    },
+    {
+      "bytes": 478,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/canonical-search-external-v1/observation.json",
+      "sha256": "8ebaaabc9192a10d02bec851a885b7a5a8ce916473ab730306062f894ed2911a"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/canonical-search-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/canonical-search-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "f27b02437e3d86df0361f623f9de24c02a1125916906404aa02119a9883aa9e7"
+    }
+  ],
+  "reason": "Original native20s deadline; inherited failure-only path saved actual returned raw producer data then rethrew exit2. No success/proof/trajectory admission.",
+  "reconciliation_scope": "Whole saved bytes/marker/context/source pins/native lifecycle only. No model, checker, search, word, proof or trajectory replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "root_or_stack_restoration_runtime_verified": false,
+  "schema": "ROOT-unit-row-diagnostic-search-UNKNOWN-disposition-v1",
+  "scope": "CurrentSource17 horizon caller9852, same original right-two target/profile/all-six inventory/24root points. Original success20s. Canonical/advised stages separately owned; no word/donor/library/proof route.",
+  "status": "UNKNOWN",
+  "terminal_T_bytes_observed": 48037888
+}

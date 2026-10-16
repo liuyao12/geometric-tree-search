@@ -1,0 +1,37 @@
+{
+  "Source17_input2_sixlimits": true,
+  "compile_only": true,
+  "entire_inverse_recovers_parent": true,
+  "literal_edits": 5,
+  "response_stdout_native_exit_suffix_raw_exact": true,
+  "scientific_execution": false,
+  "source": {
+    "bytes": 49585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-ROOT-source-20261016/unit_row_advised_domain_horizon_cold_v3.py",
+    "sha256": "98524052a3682a3374d7cf4988e7e74856c6e12e2de7b5f4a4973664ff411097"
+  },
+  "source_contract": {
+    "bytes": 22727,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-cold-ROOT-source-20261016/Source-contract-v3.json",
+    "sha256": "29ac934db17f88711763cfcd29e7f322e3037ebb52facfcc2c6ad2d3643bc1cf"
+  },
+  "top_level_helpers_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport"
+  ]
+}

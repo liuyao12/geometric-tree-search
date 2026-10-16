@@ -1,0 +1,114 @@
+"""Whole saved evidence/resource concordance only. No degree or logical replay."""
+import hashlib
+import json
+from pathlib import Path
+
+HERE=Path(__file__).resolve().parent
+def canonical(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()
+def pin(p):
+    raw=p.read_bytes();return {'path':str(p),'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw)}
+def read(p):return json.loads(p.read_bytes())
+def check(ref):
+    p=Path(ref['path']);assert p.is_absolute() and p==p.resolve() and pin(p)==ref;return p
+mode='advice-controls'
+plan_path=HERE/'ROOT-advice-controls-plan-v1.json';plan=read(plan_path);pp=pin(plan_path)
+owned=HERE/'advice-controls-owned-v1';external=HERE/'advice-controls-external-v1'
+bracket=read(HERE/'ROOT-advice-controls-tool-bracket-v1.json')
+assert bracket['plan_sha256']==pp['sha256'] and bracket['plan_bytes']==pp['bytes']
+assert bracket['tool_exit_code']==0 and bracket['tool_session_id'] is None
+date=(bracket['ended_Date_ms']-bracket['began_Date_ms'])/1000
+assert date==bracket['complete_Date_seconds'] and 0<=date<=60 and date+1<=90
+assert sorted(p.name for p in owned.iterdir())==['engine-result.json','response.jsonl']
+outputs=[pin(owned/n) for n in ('engine-result.json','response.jsonl')]
+lines=(owned/'response.jsonl').read_bytes().splitlines(keepends=True)
+assert len(lines)==2 and all(x.endswith(b'\n') for x in lines)
+body,completion=map(json.loads,lines)
+assert completion['body_sha256']==hashlib.sha256(lines[0]).hexdigest() and completion['body_bytes']==len(lines[0])
+assert completion['schema']=='Q-clean-verifier-response-completion-v1' and completion['exit_zero_and_coordinator_deadline_required'] is True
+assert body['schema']=='ROOT-unit-row-global-engine-response-body-v1' and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+assert body['plan']=={k:pp[k] for k in ('sha256','bytes')} and body['sources']==plan['sources'] and body['inputs']==plan['inputs']
+assert body['invocation_id']==plan['invocation_id'] and body['limits']==plan['limits'] and body['outputs']==outputs[:1]
+for ref in [*plan['sources'].values(),*plan['inputs'].values(),plan['source_contract'],plan['ROOT_authorization'],*plan['reviews'].values(),plan['runtime']]:check(ref)
+stdout_raw=(external/'meter-stdout.txt').read_bytes();assert stdout_raw.endswith(b'\n') and len(stdout_raw.splitlines())==1
+stdout=json.loads(stdout_raw);assert stdout['outputs']==outputs and stdout['response']==outputs[-1] and stdout['pending_external'] is True
+assert not (external/'meter-stderr.txt').read_bytes() and not (external/'postterminal-probe-stderr.txt').read_bytes()
+native=read(external/'native-terminal.json');observation=read(external/'observation.json');once=read(external/'ONCE.json')
+for v in (observation,once):assert v['plan_sha256']==pp['sha256'] and v['plan_bytes']==pp['bytes'] and v['invocation_id']==plan['invocation_id']
+assert observation['meter_returncode']==observation['probe_returncode']==0
+probe=int((external/'postterminal-probe-stdout.txt').read_bytes());assert probe==observation['postterminal_native_probe_ns']
+assert native['caller_returncode']==native['wait4_status']==0 and native['all_reaped'] is True
+assert native['caller_pid']==native['wait4_pid'] and native['error'] is None and native['interrupted'] is False and native['cancellation_forwarded'] is False
+start=native['caller_launch_began_ns'];terminal=native['caller_terminal_observed_ns'];g=body['joint_began_ns']
+assert start<=g<terminal<=probe and body['joint_deadline_ns']==g+20000000000
+assert terminal-start==native['caller_kernel_elapsed_ns'] and 0<probe-start<20000000000
+peak=native['wait4_usage'][2];assert type(peak) is int and peak==native['caller_kernel_peak_bytes'] and 0<peak<=536870912
+transport=read(HERE/'ROOT-advice-controls-transport-concordance-v1.json')
+assert transport['plan']==pp and transport['encoded_file']==outputs[0] and transport['all_full_record_bytes_retained'] is True
+result=read(check(transport['expanded_file']));controls=result['controls'];cases=controls['cases']
+assert result['sources']==plan['sources'] and result['inputs']==plan['inputs'] and result['language_binding']==body['language_binding']
+assert result['purpose']=='unit-row-advised-advice-controls' and result['search'] is None and result['found_validation'] is None
+contract=read(HERE.parent/'unit-row-goal-advice-controls-horizon-source-20261016/Source-contract-v3.json')
+assert controls['schema']=='unit-row-goal-advice-controls-v1' and controls['all_declared_cases_completed'] is True
+assert [x['case'] for x in cases]==contract['cases'] and len(cases)==22 and all(x['status']=='PASSED' for x in cases)
+assert controls['passed']==22 and controls['skipped']==0 and controls['all_advice_consumer_gates_qualified'] is True
+assert controls['unqualified_consumer_gates']==controls['additional_coverage_gaps']==[]
+art=controls['artifacts'];by={x['case']:x['observed'] for x in cases}
+def sha(x):return hashlib.sha256(canonical(x)).hexdigest()
+fixture=art['fixture'];attempt=art['fixture_advice_attempt'];batch=attempt['actual_adviser_return'];receipt=fixture['receipt'];selection=receipt['selection']
+assert canonical(attempt['state'])==canonical(fixture['state']) and canonical(batch)==canonical(fixture['batch'])
+assert batch['status']=='READY' and batch['reason'] is None and batch['limits']=={'maximum_work':50000,'maximum_proposals':8,'maximum_demands':5,'maximum_terms':1,'maximum_rounds':3}
+assert batch['work']['guarded_steps']==9526 and batch['work']['rounds']==3 and len(batch['proposals'])==6
+assert batch['state_sha256']==attempt['pre_advice_state_sha256']==sha(fixture['state'])==receipt['state_sha256']
+assert batch['binding']==receipt['binding']==body['language_binding'] and receipt['input_sha256']==sha(batch) and receipt['mode']=='ADVICE_BATCH'
+assert batch['decision']==receipt['decision']==fixture['decision']=={'kind':'BRANCH','row':0}
+assert canonical(selection['anchor'])==canonical(batch['proposals'][0]['members'][0]['candidate'])
+future=selection['future_keys'];assert [k['translation'][1] for k in future]==[2,8]
+assert all(p['installed'] is False and p['logical_proof_accepted'] is False for p in batch['proposals'])
+obligations=[o for p in batch['proposals'] for o in p['ordered_PENDING_obligations']]
+assert obligations and all(o['status']=='PENDING' and o['fact_accepted'] is False for o in obligations)
+for x in by['malformed-batch-controls']['mutations']:assert x['result']['exception_type']=='ValueError'
+assert any(x['mutation']=='swapped-ordered-ports' for x in by['malformed-batch-controls']['mutations'])
+assert by['later-ranked-malformed-proposal-rejected']['exception_type']=='ValueError'
+for name in ('UNKNOWN-rejected-by-executable-validator','adviser-ValueError-propagates','validator-ValueError-propagates'):
+ assert by[name]['exception_type']=='ValueError'
+for x in by['pending-request-malformed-controls']['checks']:assert x['result']['exception_type']=='ValueError'
+unknown_names=('empty_search','quota_search','callback_timeout_search','adoption_search','pending_continuation_search','remote_search','forced_search')
+for name in unknown_names:
+ r=art[name];assert r['status']=='UNKNOWN' and r['found'] is None and r['root_restored'] is True and r['stack_restored'] is True
+ assert r['root_snapshot_sha256']==r['final_snapshot_sha256'] and not any(e['kind']=='EXCLUDE' for e in r['events'])
+assert not any(e['kind']=='TRY' for e in art['callback_timeout_search']['events'])
+canonical_key=art['canonical_first']['event']['candidate']['placement_key']
+for name in ('empty_search','quota_search'):
+ assert canonical(next(e for e in art[name]['events'] if e['kind']=='TRY')['key'])==canonical(canonical_key)
+assert art['quota_UNKNOWN']['status']=='UNKNOWN' and art['quota_search']['counts']['advice_unknown']>=1
+inner=art['genuine_inner_snapshot'];assert canonical(inner['pending_preferences']['pending_keys'])==canonical(future)
+assert len(inner['state']['selected'])==len(fixture['state']['selected'])+1
+assert canonical(inner['state'])==canonical(art['adoption_search']['last_observed_state'])
+for k in future:assert not any(all(canonical(r[f])==canonical(k[f]) for f in ('tile_type_id','type_preimage','translation')) for r in inner['state']['selected'])
+assert canonical(by['public-rollback-restores-genuine-nonempty-pending']['actual_pending_keys'])==canonical(future)
+for name in ('adviser-ValueError-propagates','validator-ValueError-propagates','first-search-exact-root-restoration','pending-search-exact-inner-root-restoration'):
+ x=by[name];assert x['before_sha256']==x['after_sha256']
+pr=art['pending_selection_receipts'];assert pr and any(x['selection'] is not None and x['mode']=='PENDING_KEYS' for x in pr)
+assert art['pending_continuation_search']['counts']['pending_selected']>=1
+rr=art['remote_receipts'];bad=art['remote_fixture']['invalidated_pending_key']
+assert any(canonical(x['key'])==canonical(bad) and x['reason']=='whole_remote_or_metadata_mark_conflict' for r in rr for x in r['rejections'])
+fb=by['rejected-pending-hint-preserves-canonical-choice']['actual_fallback_event'];assert fb['mode']=='CANONICAL_FALLBACK' and fb['rejected_keys']
+fr=art['forced_retirement'];r=fr['search'];assert r['status']=='UNKNOWN' and r['root_restored'] and r['stack_restored'] and r['root_snapshot_sha256']==r['final_snapshot_sha256']
+assert {e['row'] for e in r['events'] if e['kind']=='TRY' and e['mode']=='FORCED'}>={2,8}
+retired=by['global-forced-fill-retires-family-before-fresh-advice']['retired_keys'];assert {canonical(k) for k in retired}=={canonical(k) for k in future}
+assert any(e['kind']=='ADVICE' and {canonical(k) for k in e['retired_keys']}=={canonical(k) for k in future} and e['pending_preferences'] is None for e in r['events'])
+assert art['dead_search']['status']=='EXHAUSTED' and art['dead_search']['counts']['advice_calls']==0 and art['forced_search']['counts']['advice_calls']==0
+strong=('logical_proof_accepted','exact_point_board_accepted','degree_or_EOF_accepted','scheduler_accepted','complete_GCTS_model_accepted','trajectory_accepted','learned_marking_accepted','RL_accepted','ROOT_resource_accepted')
+assert all(controls[k] is False and batch[k] is False and receipt[k] is False for k in strong)
+out={'schema':'ROOT-advice-consumer-controls-disposition-v3','plan':pp,'outputs':outputs,'status':'QUALIFIED_LOCAL_CONSUMER_CONTROLS','controls_accepted':True,'passed_cases':22,'skipped_cases':0,'all_advice_consumer_gates_qualified':True,'additional_coverage_gaps':[],
+ 'complete_wire_verified':True,'lossless_transport_concordance':pin(HERE/'ROOT-advice-controls-transport-concordance-v1.json'),
+ 'native_resources_qualified':True,'native_worker_lifetime_ns':terminal-start,'native_launch_to_postprobe_ns':probe-start,'aggregate_B_bytes':peak,'terminal_T_bytes':peak,'complete_Date_seconds':date,'language_binding':body['language_binding'],'resource_rule':'single-owned-process-native-terminal-v1; B=T','all_reaped':True,'actual_closed':True,
+ 'actual_adviser_return':{'status':batch['status'],'reason':batch['reason'],'limits':batch['limits'],'work':batch['work'],'proposals':len(batch['proposals']),'independently_validated':True},
+ 'selected_family':{'anchor_row':0,'future_rows':[2,8],'scheme':batch['proposals'][0]['scheme'],'snapshot_sha256':sha(inner)},
+ 'scope':'Constructed original-language22-case adviser/currentconsumer controls, genuine READY independently checked wholebatch, anchor-only placement, pending selection, remote rejection/canonical fallback, forced-fill retirement and owned snapshot rollback. Explicit malformed/interruption/hint-suppression seams; no target discovery/full trajectory conformance.',
+ 'conformance_gaps':['No full reference graph/trajectory conformance or arbitrary all-six EOF authority.','Fixed24unit rows, no fractional/shared positive support or universal fixed Wang palette.','Hand-written advice only, no learned/RL/lemma inventory result.'],
+ 'logical_proof_accepted':False,'GCTS_search_trajectory_accepted':False,'GCTS_advantage_claimed':False,'RL_accepted':False,'broad_goal_complete':False,'previous_goal_turn':'progress','current_goal_turn':'progress','old_UNKNOWNs_and_skips_preserved':True,
+ 'reconciliation_scope':'Whole saved canonical records/native/source/wire/receipt hashes and observed field equality only; no late project/checker/engine/model/word replay.'}
+q=HERE/'ROOT-advice-controls-disposition-v1.json'
+with q.open('x') as f:json.dump(out,f,indent=2,sort_keys=True);f.write('\n')
+print(json.dumps({'disposition':pin(q),'passed':22,'skipped':0,'native_seconds':(probe-start)/1e9,'B_bytes':peak,'Date_seconds':date}))

@@ -1,0 +1,19 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "evidence_extract": {
+    "bytes": 42746,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-lifecycle-diagnosis-source-20261016/evidence-extract-v1.json",
+    "sha256": "f319ad3c92d1b7c707c465782ce64e80c93bbe6378286ee6e965d49c105d2b43"
+  },
+  "note": {
+    "bytes": 6941,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-family-lifecycle-diagnosis-source-20261016/Source-note-v1.json",
+    "sha256": "f6de7ac53e2270815d43325adb9f76a8540cc709e2567fdb15f839f8ca8e8d5b"
+  },
+  "schema": "unit-row-advice-family-lifecycle-diagnosis-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "status": "SOURCE_AND_SAVED_LITERAL_ANALYSIS_ONLY_NO_TRAJECTORY_ACCEPTANCE",
+  "summary": "Observed rejected row2 member leaves stale UG23 preference and suppresses fresh batches. Minimal proposed heuristic abandons only advisory family on definite current pending rejection, with COW transaction/rollback; no Source changes or actuals."
+}

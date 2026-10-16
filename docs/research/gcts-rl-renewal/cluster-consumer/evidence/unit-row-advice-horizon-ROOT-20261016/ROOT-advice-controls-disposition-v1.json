@@ -1,0 +1,100 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "actual_adviser_return": {
+    "independently_validated": true,
+    "limits": {
+      "maximum_demands": 5,
+      "maximum_proposals": 8,
+      "maximum_rounds": 3,
+      "maximum_terms": 1,
+      "maximum_work": 50000
+    },
+    "proposals": 6,
+    "reason": null,
+    "status": "READY",
+    "work": {
+      "candidate_members_checked": 12,
+      "definite_profile_rejections": 0,
+      "demand_count": 5,
+      "descriptor_steps": 18,
+      "duplicate_anchors": 1,
+      "fallback_prefix_candidates": 3,
+      "guarded_steps": 9526,
+      "incompatible_unions": 0,
+      "rounds": 3,
+      "term_count": 1,
+      "unique_anchors": 6,
+      "universal_count": 5
+    }
+  },
+  "actual_closed": true,
+  "additional_coverage_gaps": [],
+  "aggregate_B_bytes": 40861696,
+  "all_advice_consumer_gates_qualified": true,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 23.029,
+  "complete_wire_verified": true,
+  "conformance_gaps": [
+    "No full reference graph/trajectory conformance or arbitrary all-six EOF authority.",
+    "Fixed24unit rows, no fractional/shared positive support or universal fixed Wang palette.",
+    "Hand-written advice only, no learned/RL/lemma inventory result."
+  ],
+  "controls_accepted": true,
+  "current_goal_turn": "progress",
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "fdefd182013da835d7184abee7aec3a8710864d734a7bef1cab0ce167e2f6c67"
+  },
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1484,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-transport-concordance-v1.json",
+    "sha256": "c18c3e35c4e631ad1bbfd681331a93425890301290ed4bef6e90173f32880cd3"
+  },
+  "native_launch_to_postprobe_ns": 11942900000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 11905658000,
+  "old_UNKNOWNs_and_skips_preserved": true,
+  "outputs": [
+    {
+      "bytes": 174223,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/advice-controls-owned-v1/engine-result.json",
+      "sha256": "b1e597c65db785ee4f261a3951a7354d1b6bbb9011c83f862f98775d77e8f1e4"
+    },
+    {
+      "bytes": 7023,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/advice-controls-owned-v1/response.jsonl",
+      "sha256": "41777d55fbf804f2ee29a75b4029bf8cd6bbab80c12df7f01852401dacc3162b"
+    }
+  ],
+  "passed_cases": 22,
+  "plan": {
+    "bytes": 7908,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-plan-v1.json",
+    "sha256": "0de75ab508e9446075acc8422de94dca794dc712c4c89eef81a2967374ee7c69"
+  },
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved canonical records/native/source/wire/receipt hashes and observed field equality only; no late project/checker/engine/model/word replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-advice-consumer-controls-disposition-v3",
+  "scope": "Constructed original-language22-case adviser/currentconsumer controls, genuine READY independently checked wholebatch, anchor-only placement, pending selection, remote rejection/canonical fallback, forced-fill retirement and owned snapshot rollback. Explicit malformed/interruption/hint-suppression seams; no target discovery/full trajectory conformance.",
+  "selected_family": {
+    "anchor_row": 0,
+    "future_rows": [
+      2,
+      8
+    ],
+    "scheme": "GENERIC_UI_MP",
+    "snapshot_sha256": "47a471255496ca3ae3c94050a09a5d2592eca898dc83aaefbaf8dce77b01689e"
+  },
+  "skipped_cases": 0,
+  "status": "QUALIFIED_LOCAL_CONSUMER_CONTROLS",
+  "terminal_T_bytes": 40861696
+}

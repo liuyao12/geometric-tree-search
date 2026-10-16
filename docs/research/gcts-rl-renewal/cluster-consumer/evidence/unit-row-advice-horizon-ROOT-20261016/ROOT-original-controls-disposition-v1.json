@@ -1,0 +1,60 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_marking_activated": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "aggregate_B_bytes": 42254336,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 6.254,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "conformance_gaps": [
+    "Current sufficient retention with conservative global-ledger invalidation, no full reference conformance.",
+    "General all-six independent EOF/exhaustion certifier absent.",
+    "Specialized24unit rows only."
+  ],
+  "controls_accepted": true,
+  "language_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "ef624469dcc3d532ac32c3a31730bffd62a1c451dfa0056f9254ceb787836be1",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "fdefd182013da835d7184abee7aec3a8710864d734a7bef1cab0ce167e2f6c67"
+  },
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1489,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-original-controls-transport-concordance-v1.json",
+    "sha256": "9a8afbcd3d98ae208769d40b6bbf642b66351921ffff2b7d13326495dc42d3ff"
+  },
+  "native_launch_to_postprobe_ns": 6080854000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 6047429000,
+  "old_UNKNOWNs_and_finite_negative_preserved": true,
+  "outputs": [
+    {
+      "bytes": 105530,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/original-controls-owned-v1/engine-result.json",
+      "sha256": "0b2fee3603a7427030de2ebcd1a674baa15a013a6bf0b0778379c4fbf32e12eb"
+    },
+    {
+      "bytes": 7027,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/original-controls-owned-v1/response.jsonl",
+      "sha256": "3ff638f1a7f610e105e1fb4b88cb281b4554e2c3d29be312b4f5d48e3f2278dd"
+    }
+  ],
+  "passed_cases": 17,
+  "plan": {
+    "bytes": 7916,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-original-controls-plan-v1.json",
+    "sha256": "585035fba672343f766002df09b0419aeb84523fa2ffaa30846af74e44971e32"
+  },
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved raw bytes, complete receipts/wire/native/caller metadata only; no Source/kernel/checker/model/word/degree replay.",
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-unit-row-global-engine-controls-disposition-v1",
+  "scope": "Original17 controls on current retained-domain engine; constructed original-language global/remote/cursor/rollback cases, declared incomplete transport seams and two separate NONLOGICAL scheduler calibrations. No target search in this endpoint.",
+  "skipped_cases": 0,
+  "terminal_T_bytes": 42254336
+}

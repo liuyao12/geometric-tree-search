@@ -1,0 +1,180 @@
+{
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Analyst authored reused f668 validator and horizonV3 harness change/earlier fixture helpers, not adviser/current engine. This independent saved-field reading neither reruns their logic nor constitutes a second semantic implementation or new mathematical admission.",
+  "bounded_diagnostic_observations": {
+    "ADVICE_modes": {
+      "ADVICE_BATCH": 1,
+      "CANONICAL_FALLBACK": 39
+    },
+    "qualification": "UNQUALIFIED_UNKNOWN_RAW_PREFIX",
+    "reported_advice_calls": 1,
+    "reported_pending_checks": 1,
+    "reported_pending_rejected": 1,
+    "reported_pending_selected": 0,
+    "saved_events": 312,
+    "warning": "These are returned late producer observations, not validated search counters/ordering/rollback or a causal explanation of native20 UNKNOWN."
+  },
+  "checks": [
+    {
+      "literal_concordant": true,
+      "name": "controls22andzeroSKIP"
+    },
+    {
+      "literal_concordant": true,
+      "name": "fixture_READY_and_first_selection"
+    },
+    {
+      "literal_concordant": true,
+      "name": "whole_batch_receipt_hash_join"
+    },
+    {
+      "literal_concordant": true,
+      "name": "future_key_literal_expansion"
+    },
+    {
+      "literal_concordant": true,
+      "name": "fixture_open_AS_exact_universal"
+    },
+    {
+      "literal_concordant": true,
+      "name": "fixture_ordered_member_refs"
+    },
+    {
+      "literal_concordant": true,
+      "name": "fixture_pending_receipt_current_MP"
+    },
+    {
+      "literal_concordant": true,
+      "name": "target_hint_literal_self_root"
+    },
+    {
+      "literal_concordant": true,
+      "name": "target_ordered_rows_offsets"
+    },
+    {
+      "literal_concordant": true,
+      "name": "target_literal_rejected_key_and_AS_choice"
+    },
+    {
+      "literal_concordant": true,
+      "name": "late_unknown_scope"
+    },
+    {
+      "literal_concordant": true,
+      "name": "late_whole_returned_prefix_literal_counts"
+    }
+  ],
+  "code_modified": false,
+  "design_quality": "The real fixture demonstrates a checked UI/MP/UG interface and pending-key mechanics. Syntactic goal_connected ranking alone does not measure a reduction of unproved obligations: the target sample scores as connected while reopening the target itself. No novel GCTS marking, RL, speedup or useful target transfer is established.",
+  "inputs": {
+    "Root_advised_UNKNOWN_disposition": {
+      "bytes": 6688,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advised-search-disposition-v1.json",
+      "sha256": "62668d874e54ba00d79590710cb0d852c70a991eb164c9b951f9d04dc5dc7d91"
+    },
+    "Root_local_controls_disposition": {
+      "bytes": 4401,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+      "sha256": "74b52510afb7da2dcc335595fc04743c3ef7d152a77f7686972f13001c552a9c"
+    },
+    "late_diagnostic": {
+      "bytes": 1315628,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/advised-search-owned-v1/unknown-diagnostic.json",
+      "sha256": "121f9d8901a2e35fa1f1bbbbfca2bf9d8fe2abdd93c27accf0c8755b17430ee7"
+    },
+    "qualified_control_record": {
+      "bytes": 1411729,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advice-controls-expanded-result-v1.json",
+      "sha256": "bf39acd5ce3a8562049fe03b94f1aeacbcf756ae063818149adc5e79ff6fc0d6"
+    }
+  },
+  "literal_check_count": 12,
+  "notation": {
+    "A_S": "\\(A_S:=\\forall x\\,\\forall y\\,[x+S(y)=S(x+y)]\\).",
+    "B": "\\(B(n):=\\forall y\\,[n+S(y)=S(n+y)]\\).",
+    "E": "\\(E(n):=n+S(S(0))=S(S(n))\\), with target \\(P:=\\forall n\\,E(n)\\)."
+  },
+  "qualified_fixture": {
+    "existing_fixture_constraint": "The already selected row9 UG tile reads the root at row8 and adds another universal wrapper. It is a point-control demand, not an independently closed theorem word.",
+    "external_interface": {
+      "fact_accepted": false,
+      "formula_latex": "\\(A_S\\)",
+      "meaning": "An open input obligation, which the named original axiom can supply; not a fact accepted merely from its marking.",
+      "occupied": false,
+      "row": 1
+    },
+    "literal_continuation": "Saved PENDING_KEYS receipt later selects the same full MP key at row2 with no rejections. This reports exercised continuation mechanics, not a new theorem or transferred result.",
+    "recorded_scope": "Root qualified22 local consumer cases/zeroSKIP; no target theorem follows. Batch READY has6 proposals, selected0 GENERIC_UI_MP; independent receipt retains all stronger acceptance flagsFalse.",
+    "rows": [
+      {
+        "formula_latex": "\\(A_S\\to B(n)\\)",
+        "meaning": "An original UI implication licence. It does not by itself assert either antecedent or consequent.",
+        "ordered_reads": [],
+        "row": 0,
+        "rule": "instantiate"
+      },
+      {
+        "formula_latex": "\\(B(n)\\)",
+        "meaning": "Use pending AS at row1 as antecedent and the row0 licence as implication; order is preserved.",
+        "ordered_reads": [
+          1,
+          0
+        ],
+        "row": 2,
+        "rule": "mp"
+      },
+      {
+        "formula_latex": "\\(\\forall n\\,B(n)\\)",
+        "meaning": "Generalize the open-parameter instance from row2. This is an uninstalled future member at initial admission.",
+        "ordered_reads": [
+          2
+        ],
+        "row": 8,
+        "rule": "generalize"
+      }
+    ]
+  },
+  "schema": "unit-row-advice-saved-mathematical-interface-note-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "SavedJSON-only literal producer-field concordance and human interface translation; no primitive/membership/legality/engine replay. Late observations remain unqualified.",
+  "semantic_replay": false,
+  "unqualified_target_hint": {
+    "event": 2,
+    "external_interface": {
+      "formula_latex": "\\(P\\)",
+      "meaning": "The same unproved target is demanded as the MP antecedent.",
+      "row": 1
+    },
+    "interpretation": "YES: the target hint literally restates its own root. Physical row references are strictly prior, but at formula level this family obtains the target only after assuming the target as an open input. It supplies no new route to establish that input. This is weak advice, not unsound inference: the interface stays pending and final proof checks were never satisfied.",
+    "literal_followup": "Late records say row1 chose named AX AS; event14 rejects the exact pending MP key and chooses canonical fallback. The recorded AS formula differs literally from its requested target antecedent. No independent legality recheck or accepted trajectory is claimed.",
+    "mode": "ADVICE_BATCH",
+    "root_row": 23,
+    "rows": [
+      {
+        "formula_latex": "\\(P\\to E(n)\\)",
+        "ordered_reads": [],
+        "row": 0,
+        "rule": "instantiate"
+      },
+      {
+        "formula_latex": "\\(E(n)\\)",
+        "ordered_reads": [
+          1,
+          0
+        ],
+        "row": 2,
+        "rule": "mp"
+      },
+      {
+        "formula_latex": "\\(P\\)",
+        "ordered_reads": [
+          2
+        ],
+        "row": 23,
+        "rule": "generalize"
+      }
+    ],
+    "scheme": "GENERIC_UI_MP"
+  }
+}

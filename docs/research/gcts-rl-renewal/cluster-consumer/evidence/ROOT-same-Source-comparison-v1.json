@@ -1,0 +1,35 @@
+{
+  "RL_accepted": false,
+  "actuals_this_turn": 6,
+  "advised": {
+    "bytes": 6688,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-advised-search-disposition-v1.json",
+    "sha256": "62668d874e54ba00d79590710cb0d852c70a991eb164c9b951f9d04dc5dc7d91"
+  },
+  "all_six_closed_and_reaped": true,
+  "broad_goal_complete": false,
+  "canonical": {
+    "bytes": 6666,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-horizon-ROOT-20261016/ROOT-canonical-search-disposition-v1.json",
+    "sha256": "2379bbcce2decf70c5447ea7802537726d56ba8a2e96550ae101cb05750c28f5"
+  },
+  "current_control_gates": {
+    "consumer": 22,
+    "original": 17,
+    "retention": 17,
+    "skipped": 0
+  },
+  "current_goal_turn": "progress",
+  "hand_written_advice": true,
+  "outcome": "BothUNKNOWN; no matched successful proof, acceptedtrajectory, speed ratio or advantage. Lateobservations qualifiedasdiagnostic only.",
+  "previous_goal_turn": "progress",
+  "same_Source17_input2_contract_runtime_limits_reviews": true,
+  "schema": "ROOT-cluster-consumer-same-Source-comparison-v1",
+  "scientific_replay": false,
+  "target_word_or_donor_supplied": false,
+  "unqualified_prior_diagnostic": {
+    "bytes": 4114,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-advice-diagnostic-ROOT-20261016/ROOT-advice-controls-disposition-v1.json",
+    "sha256": "24c1669578e78ddccdc5e52b0236a95060789d90b5a2b2e9f987810eecba17a1"
+  }
+}

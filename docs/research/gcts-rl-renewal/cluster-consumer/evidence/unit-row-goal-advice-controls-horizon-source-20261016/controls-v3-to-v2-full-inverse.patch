@@ -1,0 +1,20 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-horizon-source-20261016/goal_advice_controls_v3.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-goal-advice-controls-source-20261016/goal_advice_controls_v2.py
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'unit-row-goal-advice-adversarial-controls-v3-smaller-generic-horizon'
++VERSION = 'unit-row-goal-advice-adversarial-controls-v2-preserved-advice-diagnostics'
+ STRONG_FLAGS = ('logical_proof_accepted', 'exact_point_board_accepted',
+     'degree_or_EOF_accepted', 'scheduler_accepted', 'complete_GCTS_model_accepted',
+     'trajectory_accepted', 'learned_marking_accepted', 'RL_accepted', 'ROOT_resource_accepted')
+@@ -124,7 +124,7 @@
+       fallback=fallback,certify_fallback=certify_fallback,branch_adviser=adv,
+       validate_advice=validate_advice if validator is None and adv is not None else validator,tick=tick)
+   def current_advice(**kwargs):
+-    return adviser(**kwargs,maximum_terms=1,maximum_demands=5,maximum_rounds=3,maximum_proposals=8)
++    return adviser(**kwargs,maximum_terms=1,maximum_demands=16,maximum_rounds=4,maximum_proposals=8)
+   def check(s,d,b,step=tick):
+     return validate_advice(state=copy.deepcopy(s),decision=copy.deepcopy(d),batch=copy.deepcopy(b),tick=step)
+   def receipt_flags(receipt):
