@@ -1,0 +1,44 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "changed_existing_regions": [
+    "main"
+  ],
+  "compile_without_evaluation_passed": true,
+  "declared_edit_count": 4,
+  "helper_executed": false,
+  "module_imported": false,
+  "new_or_deleted_regions": [],
+  "parent_source": {
+    "bytes": 22103,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+    "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5"
+  },
+  "schema": "ROOT-all-checked-discovery-static-Source-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22113,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+    "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09"
+  },
+  "source_delta": {
+    "bytes": 2720,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-Source-delta-v1.json",
+    "sha256": "2647ed02817de48ffbce78846efce1ffd8ee635292947ecc829426645d59220d"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_regions": [
+    "need",
+    "canonical",
+    "unique",
+    "decode",
+    "raw_pin",
+    "read",
+    "pinned",
+    "write",
+    "read_phases",
+    "read_failure_diagnostic"
+  ],
+  "whole_AST_inverse_exact": true,
+  "whole_raw_forward_inverse_exact": true
+}

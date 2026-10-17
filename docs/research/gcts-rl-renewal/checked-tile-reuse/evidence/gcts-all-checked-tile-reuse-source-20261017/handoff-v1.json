@@ -1,0 +1,51 @@
+{
+  "schema": "unit-row-all-checked-tile-reuse-handoff-v1",
+  "source": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+    "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+    "bytes": 29308
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/Source-contract-v1.json",
+    "sha256": "69852968d29ec694ffe8691657baa9a1af3c015604e03b5f672f66fabae1ace3",
+    "bytes": 18422
+  },
+  "API_wire": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/API-wire-v1.json",
+    "sha256": "7e2c13660291846df6b2ca6fa0a7f6d299d80bb991f3e357f79d328f30e2febc",
+    "bytes": 2716
+  },
+  "source_delta": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/Source-delta-v1.json",
+    "sha256": "2f459724eb6d7b82ed67d21a37f67b9c93f77a53aead1756045255f2fbf86f1e",
+    "bytes": 3557
+  },
+  "static_audit": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/static-audit-v1.json",
+    "sha256": "0356c32ed45d43ded20a5775759747ba60843858e4eccc22547b1f585dad7c80",
+    "bytes": 4441
+  },
+  "actual_patch_files": {
+    "forward": {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/forward-v1.patch",
+      "sha256": "9185566a5e46097dab0f7ad120991cb12893d12b14c0edfb517e6140b69f970b",
+      "bytes": 3456
+    },
+    "full_inverse": {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/full-inverse-v1.patch",
+      "sha256": "e8fb5d08215e8b3bae9fa92ed205d50b35c82d14c317a04d34d968d93c12dbbf",
+      "bytes": 3456
+    }
+  },
+  "parent_source": {
+    "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+    "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+    "bytes": 29316
+  },
+  "implementation_version": "unit-row-channel4-point-adapter-all-checked-tiles-local-reuse-v4",
+  "source_only": true,
+  "scientific_calls": 0,
+  "runtime_fit": "UNMEASURED",
+  "actual_authorization": false,
+  "Root_next_action": "Independent whole Source peer and Root review, then explicitly chosen future composition/qualification; never silently replace current ea300/memo Source map."
+}

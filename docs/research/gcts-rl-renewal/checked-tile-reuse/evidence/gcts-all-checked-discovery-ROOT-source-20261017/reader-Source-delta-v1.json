@@ -1,0 +1,61 @@
+{
+  "actual_patch_application": {
+    "forward": "exact full byte result",
+    "full-inverse": "exact full byte result"
+  },
+  "actual_patches": {
+    "forward": {
+      "bytes": 2589,
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "aa2a2be9a1a6973de1286522822c9194be2f713899381fafa3c1ef0fa13c3bd9"
+    },
+    "full-inverse": {
+      "bytes": 2589,
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "f155b2eb973160113817c897f773c036649d73e980102691983c30ddf89dde1e"
+    }
+  },
+  "edits": [
+    {
+      "label": "literal_current_contract",
+      "new": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '77e1499d1b6f4fad59b1a71eef5392decbcef8efe8d101cb9cdcb248146324b8', 'bytes': 26571}",
+      "old": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb', 'bytes': 23948}",
+      "start": 329
+    },
+    {
+      "label": "operative_contract_schema",
+      "new": "contract['schema'] == 'ROOT-connected-prefix-discovery-all-checked-tiles-cold-Source-contract-v1'",
+      "old": "contract['schema'] == 'ROOT-connected-prefix-discovery-negative-memo-cold-Source-contract-v1'",
+      "start": 8143
+    },
+    {
+      "label": "current_review_scope",
+      "new": "review['scope'] == 'ROOT-connected-prefix-discovery-all-checked-tiles-cold-Source'",
+      "old": "review['scope'] == 'ROOT-connected-prefix-discovery-negative-memo-cold-Source'",
+      "start": 8916
+    },
+    {
+      "label": "response_VERSION",
+      "new": "body['version']=='ROOT-connected-prefix-discovery-all-checked-tiles-cold-v3'",
+      "old": "body['version']=='ROOT-connected-prefix-discovery-negative-memo-cold-v2'",
+      "start": 16495
+    }
+  ],
+  "parent_source": {
+    "bytes": 22103,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+    "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5"
+  },
+  "schema": "ROOT-all-checked-discovery-raw-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22113,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+    "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09"
+  },
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_forward_exact": true,
+  "whole_raw_inverse_exact": true
+}

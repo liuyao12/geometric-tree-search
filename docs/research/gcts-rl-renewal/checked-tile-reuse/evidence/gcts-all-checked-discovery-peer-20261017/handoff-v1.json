@@ -1,0 +1,57 @@
+{
+  "schema": "ROOT-all-checked-discovery-independent-review-handoff-v1",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root",
+  "source_authoring_agent": "/root/hilbert_advice_controls",
+  "caller_typed_review": {
+    "path": "/private/tmp/gcts-all-checked-discovery-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "fbb476f442cdd0271975d3e9e74bc0a2c4755f8831b4972e7198a6a373426791",
+    "bytes": 7155
+  },
+  "reader_typed_review": {
+    "path": "/private/tmp/gcts-all-checked-discovery-peer-20261017/reader-typed-Source-review-v1.json",
+    "sha256": "821a50371f4c8bfffd1653a943005ebd7ee2b1e708bcdaeb74f2800b8a9114e0",
+    "bytes": 2995
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-all-checked-discovery-peer-20261017/findings-v1.json",
+    "sha256": "bf8f5550d448310e00cf664c6621b89cee3abec06a73bad07d5e0b9ea20066e3",
+    "bytes": 7916
+  },
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-all-checked-discovery-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "e8723aa07b16b807aebd0a48a42e50916f85e15ca8c0418f1e836d0b9fe65761",
+    "bytes": 11532
+  },
+  "source": {
+    "bytes": 53806,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v3.py",
+    "sha256": "c68fb15559459888b9225e9b28a212ae2d0e942627a4b5182ae1b9d52c844a12"
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "77e1499d1b6f4fad59b1a71eef5392decbcef8efe8d101cb9cdcb248146324b8",
+    "bytes": 26571
+  },
+  "reader": {
+    "bytes": 22113,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+    "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09"
+  },
+  "reader_source_contract": {
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "75ddf23c9a2849f3fb885bbdc7ec05d6d56399071ef3c557740a4fbcc6d5340c",
+    "bytes": 2024
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/handoff-v1.json",
+    "sha256": "ac4e3419af0bb8d99380ff928db66b2a681a83a26bebb01b91bebf80436efd49",
+    "bytes": 18927
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_execution_authorized": false,
+  "summary": "No scoped blocker. Whole caller/readout/contracts plus six/four full raw/AST inverses and all four actual patch directions verified; current16/new1844 with unchanged exact7ae1 and original17/input2/native constraints. Source passes do not authorize actuals or inherit runtime evidence."
+}

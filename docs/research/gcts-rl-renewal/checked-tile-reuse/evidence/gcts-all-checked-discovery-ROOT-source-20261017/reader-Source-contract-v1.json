@@ -1,0 +1,39 @@
+{
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 26571,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "77e1499d1b6f4fad59b1a71eef5392decbcef8efe8d101cb9cdcb248146324b8"
+  },
+  "parent_reader": {
+    "bytes": 22103,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+    "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5"
+  },
+  "parent_reader_contract": {
+    "bytes": 1404,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "906f66ed5a926fef23bbda19d53d01f97de69e8e4ad85d1d046b5bc953796c39"
+  },
+  "schema": "ROOT-all-checked-discovery-saved-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Exact four current-capsule/schema/review-scope/response-version rebinds only. Same whole native20/512 positive versus55 failure, once/session/Date, same-buffer canonical/lossless wire, six phases and failure4slots. Memo counters remain whole opaque payload only; no cache-hit, cause, speedup, proof/engine/GCTS/RL/gain qualification.",
+  "source": {
+    "bytes": 22113,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+    "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09"
+  },
+  "source_authoring_agent": "/root/hilbert_advice_controls",
+  "source_delta": {
+    "bytes": 2720,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-Source-delta-v1.json",
+    "sha256": "2647ed02817de48ffbce78846efce1ffd8ee635292947ecc829426645d59220d"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 1401,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-static-audit-v1.json",
+    "sha256": "a49f1dbd05585c7bc163949fd1d88074324e25855c24709f919e8296678aaf0a"
+  }
+}

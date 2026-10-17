@@ -1,0 +1,29 @@
+{
+  "changed_source_roles": [
+    "intake",
+    "marked_adapter"
+  ],
+  "current16_input8_original17_input2_unchanged": true,
+  "records": [
+    {
+      "compiled_without_evaluation": true,
+      "edits": 6,
+      "full_AST_inverse": true,
+      "full_raw_forward": true,
+      "full_raw_inverse": true,
+      "kind": "caller"
+    },
+    {
+      "compiled_without_evaluation": true,
+      "edits": 4,
+      "full_AST_inverse": true,
+      "full_raw_forward": true,
+      "full_raw_inverse": true,
+      "kind": "reader"
+    }
+  ],
+  "schema": "ROOT-all-checked-discovery-independent-Source-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

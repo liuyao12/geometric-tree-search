@@ -1,0 +1,115 @@
+{
+  "schema": "unit-row-all-checked-tile-reuse-independent-packet-audit-v1",
+  "source_only": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "handoff": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/handoff-v1.json",
+    "sha256": "0c03ad38092908d31ee07dda2f12f53549f3586a587746d467cb7e9ed6b875ce",
+    "bytes": 2242
+  },
+  "raw_references": [
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/handoff-v1.json",
+      "sha256": "0c03ad38092908d31ee07dda2f12f53549f3586a587746d467cb7e9ed6b875ce",
+      "bytes": 2242
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+      "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+      "bytes": 29308
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/Source-contract-v1.json",
+      "sha256": "69852968d29ec694ffe8691657baa9a1af3c015604e03b5f672f66fabae1ace3",
+      "bytes": 18422
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/API-wire-v1.json",
+      "sha256": "7e2c13660291846df6b2ca6fa0a7f6d299d80bb991f3e357f79d328f30e2febc",
+      "bytes": 2716
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/Source-delta-v1.json",
+      "sha256": "2f459724eb6d7b82ed67d21a37f67b9c93f77a53aead1756045255f2fbf86f1e",
+      "bytes": 3557
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/static-audit-v1.json",
+      "sha256": "0356c32ed45d43ded20a5775759747ba60843858e4eccc22547b1f585dad7c80",
+      "bytes": 4441
+    },
+    {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+      "bytes": 29316
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/forward-v1.patch",
+      "sha256": "9185566a5e46097dab0f7ad120991cb12893d12b14c0edfb517e6140b69f970b",
+      "bytes": 3456
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/full-inverse-v1.patch",
+      "sha256": "e8fb5d08215e8b3bae9fa92ed205d50b35c82d14c317a04d34d968d93c12dbbf",
+      "bytes": 3456
+    },
+    {
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c",
+      "bytes": 22804
+    }
+  ],
+  "author_delta_regions": 6,
+  "actual_patch_applications": [
+    {
+      "direction": "forward",
+      "returncode": 0,
+      "bytes_exact": true,
+      "output": "",
+      "Source_copy": {
+        "path": "/private/tmp/gcts-all-checked-tile-reuse-peer-20261017/actual-patch-forward-Source.py",
+        "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+        "bytes": 29308
+      }
+    },
+    {
+      "direction": "full_inverse",
+      "returncode": 0,
+      "bytes_exact": true,
+      "output": "",
+      "Source_copy": {
+        "path": "/private/tmp/gcts-all-checked-tile-reuse-peer-20261017/actual-patch-full_inverse-Source.py",
+        "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+        "bytes": 29316
+      }
+    }
+  ],
+  "factored_core_AST_erasure": true,
+  "all_public_arguments_exact": true,
+  "public_constants_exact_except_implementation": true,
+  "original_model_and_limits_literal_ancestry_exact": true,
+  "checks": [
+    "Frozen source/contract/API/delta/static/parent and both patch pins verified from retained raw buffers.",
+    "Operative own Source map exactly one current marked_adapter; unchanged dependencies separately inherited, not relabelled as freshly reread.",
+    "Author six sequential-offset forward/inverse exact against independent six-region reconstruction.",
+    "Both actual /usr/bin/patch directions applied to own nonexecuted Source copies with exact full-byte results.",
+    "Private factoring AST erasure restores inherited full _filter body with no mathematical statement removed.",
+    "All public signatures and constants exact except declared implementation ID.",
+    "Original17/input2/binding and six original limit fields exactly equal pinned Root ancestry contract.",
+    "Contract/API explicitly limit value argument to synchronous pinned cumulative native Root ticks; no arbitrary nth-tick/error-trace equivalence.",
+    "No runtime fit, count, qualification or current memo Source-map inheritance claimed."
+  ],
+  "authoring_errors": [
+    {
+      "stage": "first metadata audit before artifact write",
+      "issue": "Direct Python tuple FLAGS versus JSON-array API representation equality assertion failed.",
+      "resolution": "Rechecked exact old/current Python constant type and value equality, then compared JSON representation for API document only. No Source or contract change; no project execution."
+    }
+  ],
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "project_imports": 0,
+  "project_or_helper_execution": false,
+  "actual_or_result_reads": false,
+  "clock_calls": 0
+}

@@ -1,0 +1,70 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "changed_existing_regions": [
+    "main"
+  ],
+  "compile_without_evaluation_passed": true,
+  "declared_edit_count": 6,
+  "helper_executed": false,
+  "module_imported": false,
+  "new_or_deleted_regions": [],
+  "parent_source": {
+    "bytes": 53857,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py",
+    "sha256": "e88da1c944a6fedc61d2abf5f27e32279d5f37ca94e9e71cb602086ee864e439"
+  },
+  "schema": "ROOT-all-checked-discovery-static-Source-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 53806,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v3.py",
+    "sha256": "c68fb15559459888b9225e9b28a212ae2d0e942627a4b5182ae1b9d52c844a12"
+  },
+  "source_delta": {
+    "bytes": 11141,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/caller-Source-delta-v1.json",
+    "sha256": "a5c1deb0da7452d302202e2eda7011c9c0cdf031dd7b39a0ad9eacd402864892"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_regions": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "all_function_anchors.retain",
+    "save_failure_diagnostic",
+    "save_failure_diagnostic.failure_gate",
+    "save_failure_diagnostic.encoded",
+    "save_failure_diagnostic.encoded.append",
+    "save_failure_diagnostic.encoded.visit",
+    "save_failure_diagnostic.write",
+    "encode_result_transport",
+    "ObservedCursor",
+    "ObservedCursor.__init__",
+    "ObservedCursor.context",
+    "ObservedCursor.advance",
+    "ObservedCursor.abort",
+    "ChildControlInterruption",
+    "main.tick",
+    "main.guard",
+    "main.boundary",
+    "main.call",
+    "main.fresh_language",
+    "main.phase",
+    "main.run_discovery"
+  ],
+  "whole_AST_inverse_exact": true,
+  "whole_raw_forward_inverse_exact": true
+}

@@ -1,0 +1,285 @@
+{
+  "schema": "ROOT-all-checked-discovery-independent-raw-AST-audit-v1",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source_only": true,
+  "handoff": {
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/handoff-v1.json",
+    "sha256": "ac4e3419af0bb8d99380ff928db66b2a681a83a26bebb01b91bebf80436efd49",
+    "bytes": 18927
+  },
+  "results": [
+    {
+      "kind": "caller",
+      "source": {
+        "bytes": 53806,
+        "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v3.py",
+        "sha256": "c68fb15559459888b9225e9b28a212ae2d0e942627a4b5182ae1b9d52c844a12"
+      },
+      "parent": {
+        "bytes": 53857,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py",
+        "sha256": "e88da1c944a6fedc61d2abf5f27e32279d5f37ca94e9e71cb602086ee864e439"
+      },
+      "regions": 6,
+      "whole_raw_forward_inverse": true,
+      "whole_AST_inverse": true,
+      "main_inverse_raw_exact": true,
+      "compile_without_evaluation": true,
+      "unchanged_raw_AST_named_regions": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language",
+        "main.phase",
+        "main.run_discovery"
+      ],
+      "changed_named_regions": [
+        "main"
+      ],
+      "actual_patches": [
+        {
+          "direction": "forward",
+          "returncode": 0,
+          "full_bytes_exact": true,
+          "patch": {
+            "bytes": 12950,
+            "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/caller-forward.patch",
+            "sha256": "0a77c0b4bdbaae2574e07b7b3d21121faabeba701de358177c5f427ac4949cd4"
+          },
+          "output": ""
+        },
+        {
+          "direction": "full-inverse",
+          "returncode": 0,
+          "full_bytes_exact": true,
+          "patch": {
+            "bytes": 12950,
+            "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/caller-full-inverse.patch",
+            "sha256": "6308296495b861e18ef8f6b110cbb05fed03bbb5bf2ccfb0401f9afdeef63f14"
+          },
+          "output": ""
+        }
+      ]
+    },
+    {
+      "kind": "reader",
+      "source": {
+        "bytes": 22113,
+        "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+        "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09"
+      },
+      "parent": {
+        "bytes": 22103,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+        "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5"
+      },
+      "regions": 4,
+      "whole_raw_forward_inverse": true,
+      "whole_AST_inverse": true,
+      "main_inverse_raw_exact": true,
+      "compile_without_evaluation": true,
+      "unchanged_raw_AST_named_regions": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write",
+        "read_phases",
+        "read_failure_diagnostic"
+      ],
+      "changed_named_regions": [
+        "main"
+      ],
+      "actual_patches": [
+        {
+          "direction": "forward",
+          "returncode": 0,
+          "full_bytes_exact": true,
+          "patch": {
+            "bytes": 2589,
+            "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-forward.patch",
+            "sha256": "aa2a2be9a1a6973de1286522822c9194be2f713899381fafa3c1ef0fa13c3bd9"
+          },
+          "output": ""
+        },
+        {
+          "direction": "full-inverse",
+          "returncode": 0,
+          "full_bytes_exact": true,
+          "patch": {
+            "bytes": 2589,
+            "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-full-inverse.patch",
+            "sha256": "f155b2eb973160113817c897f773c036649d73e980102691983c30ddf89dde1e"
+          },
+          "output": ""
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "Current caller/reader/contracts/deltas/static/parents/component Source pins checked from retained raw buffers.",
+    "Exact six caller/four reader literal edits reconstruct whole current and full inverse raw bytes/AST.",
+    "Both actual patch directions for caller and reader applied on independent nonexecuted Source copies.",
+    "Caller36 named regions (including two classes) raw+AST exact; only main literal gates change.",
+    "Reader10 helpers raw+AST exact; only main current binding literals change.",
+    "Whole caller main and reader main recover exact ancestor bytes after declared literal erasure.",
+    "All17 caller top helpers, nested guards/failure writer and two classes preserved in exact regions.",
+    "Caller current16 map changes only intake and adapter; CASE7ae1/helperddb4/other14 component capsules unchanged.",
+    "Original17/input2/binding/input8/sixlimits/expectedcase/phase/branchvariant/helper contract equal parent metadata.",
+    "New adapter implementation gate and exact current1844/6985/componentpeer match composition contract.",
+    "Root authority and explicit Controls delegation agree in cold/readout operative metadata.",
+    "Reader CURRENT_CONTRACT/schema/scope/responseVERSION bind current cold instead of historical composition.",
+    "All Source/AST compile operations were without evaluation; no helper/test/project/native/scientific execution or results read."
+  ],
+  "check_count": 13,
+  "raw_Source_metadata_references": [
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/handoff-v1.json",
+      "sha256": "ac4e3419af0bb8d99380ff928db66b2a681a83a26bebb01b91bebf80436efd49",
+      "bytes": 18927
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v3.py",
+      "sha256": "c68fb15559459888b9225e9b28a212ae2d0e942627a4b5182ae1b9d52c844a12",
+      "bytes": 53806
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "77e1499d1b6f4fad59b1a71eef5392decbcef8efe8d101cb9cdcb248146324b8",
+      "bytes": 26571
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/caller-Source-delta-v1.json",
+      "sha256": "a5c1deb0da7452d302202e2eda7011c9c0cdf031dd7b39a0ad9eacd402864892",
+      "bytes": 11141
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/caller-static-audit-v1.json",
+      "sha256": "1434123b3a043f61de3d7325308e8b166cc7777463eab42e14ea19a7fe3d28bc",
+      "bytes": 2100
+    },
+    {
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py",
+      "sha256": "e88da1c944a6fedc61d2abf5f27e32279d5f37ca94e9e71cb602086ee864e439",
+      "bytes": 53857
+    },
+    {
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb",
+      "bytes": 23948
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+      "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09",
+      "bytes": 22113
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "75ddf23c9a2849f3fb885bbdc7ec05d6d56399071ef3c557740a4fbcc6d5340c",
+      "bytes": 2024
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-Source-delta-v1.json",
+      "sha256": "2647ed02817de48ffbce78846efce1ffd8ee635292947ecc829426645d59220d",
+      "bytes": 2720
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-static-audit-v1.json",
+      "sha256": "a49f1dbd05585c7bc163949fd1d88074324e25855c24709f919e8296678aaf0a",
+      "bytes": 1401
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+      "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+      "bytes": 29308
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/Source-contract-v1.json",
+      "sha256": "69852968d29ec694ffe8691657baa9a1af3c015604e03b5f672f66fabae1ace3",
+      "bytes": 18422
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "7bf8ba57a0126c7cee3c91c63f78a4bf31a63d8b7f4c2ab669947f885f1cf857",
+      "bytes": 3095
+    },
+    {
+      "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+      "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3",
+      "bytes": 11668
+    },
+    {
+      "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-contract-v1.json",
+      "sha256": "ed80270e666c16a7228ce42c972c5d97357cf7e7f3edd22921441fe415909dc5",
+      "bytes": 16291
+    },
+    {
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+      "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5",
+      "bytes": 22103
+    },
+    {
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "906f66ed5a926fef23bbda19d53d01f97de69e8e4ad85d1d046b5bc953796c39",
+      "bytes": 1404
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/caller-forward.patch",
+      "sha256": "0a77c0b4bdbaae2574e07b7b3d21121faabeba701de358177c5f427ac4949cd4",
+      "bytes": 12950
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/caller-full-inverse.patch",
+      "sha256": "6308296495b861e18ef8f6b110cbb05fed03bbb5bf2ccfb0401f9afdeef63f14",
+      "bytes": 12950
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "aa2a2be9a1a6973de1286522822c9194be2f713899381fafa3c1ef0fa13c3bd9",
+      "bytes": 2589
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "f155b2eb973160113817c897f773c036649d73e980102691983c30ddf89dde1e",
+      "bytes": 2589
+    }
+  ],
+  "actual_input_or_result_references_opened": false,
+  "scientific_calls": 0,
+  "clock_calls": 0,
+  "actual_authorized": false,
+  "authoring_errors": []
+}

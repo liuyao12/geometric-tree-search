@@ -1,0 +1,159 @@
+{
+  "schema": "ROOT-all-checked-connected-discovery-independent-findings-v1",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root",
+  "source_authoring_agent": "/root/hilbert_advice_controls",
+  "source": {
+    "bytes": 53806,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v3.py",
+    "sha256": "c68fb15559459888b9225e9b28a212ae2d0e942627a4b5182ae1b9d52c844a12"
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "77e1499d1b6f4fad59b1a71eef5392decbcef8efe8d101cb9cdcb248146324b8",
+    "bytes": 26571
+  },
+  "reader": {
+    "bytes": 22113,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+    "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09"
+  },
+  "reader_source_contract": {
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "75ddf23c9a2849f3fb885bbdc7ec05d6d56399071ef3c557740a4fbcc6d5340c",
+    "bytes": 2024
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/handoff-v1.json",
+    "sha256": "ac4e3419af0bb8d99380ff928db66b2a681a83a26bebb01b91bebf80436efd49",
+    "bytes": 18927
+  },
+  "source_only": true,
+  "whole_current_caller_reader_and_contracts_read": true,
+  "findings": [
+    {
+      "id": "AC01",
+      "status": "NO_SCOPED_BLOCKER",
+      "source": "caller",
+      "lines": [
+        26,
+        36,
+        352,
+        410,
+        444,
+        450
+      ],
+      "finding": "Whole caller preserves separate original17/input2/binding and current16/input8 authority. Only intake and adapter capsules differ from parent. Original Source byte checks, private fresh language binding equality and full accepted StageB marking provenance code remain exact; no prior actual data was opened by reviewer and no past runtime acceptance is transferred to current map."
+    },
+    {
+      "id": "AC02",
+      "status": "NO_SCOPED_BLOCKER",
+      "source": "caller",
+      "lines": [
+        80,
+        160,
+        352,
+        442,
+        640,
+        659
+      ],
+      "finding": "Native-first whole20/internal500 reserve, current Source/map/contract/review/once gates, full CodeSeal/function-anchor checks around actual calls, canonical owned output and final boundary/nativeexit are exact except current literals. All six external limit fields are unchanged. Root author authority is accompanied by explicit Controls delegation, with distinct peer still required."
+    },
+    {
+      "id": "AC03",
+      "status": "NO_SCOPED_BLOCKER",
+      "source": "caller",
+      "lines": [
+        522,
+        567
+      ],
+      "finding": "Current public adapter VERSION plus IMPLEMENTATION_VERSION gate binds1844; fixed Source hash/contract/peer correspond. Already independently reviewed component retains full current original/marked state, membership, packet and point checks and both full-preimage censuses for all removed/surviving fallback candidates. Call-local checked tile references introduce no crosscall or negative memo authority."
+    },
+    {
+      "id": "AC04",
+      "status": "NO_SCOPED_BLOCKER",
+      "source": "caller",
+      "lines": [
+        555,
+        567
+      ],
+      "finding": "The exact7ae1 CASE and ddb4 helper are unchanged. Negative structural memo still compares full type-sensitive callback state/helper limits/original binding under current pinned native Source scope and only stores completed NO_CONNECTED_EDGE. Positive capture and unknown/errors remain fresh; delegates and canonical engine13 MARK tie/fallback/rollback are unchanged. Structural edge capture is not frontier viability, theorem or family discovery."
+    },
+    {
+      "id": "AC05",
+      "status": "NO_SCOPED_BLOCKER",
+      "source": "caller",
+      "lines": [
+        532,
+        596
+      ],
+      "finding": "Six fixed native phase sites and four last-entry scalar slots are unchanged. Only exact builtin TimeoutError escaping guarded delegation reaches the existing captured failure-only55 writer; inline writer identity check and original rethrow/exit2 remain exact, with no late project/checker/clock20 callback. Partial writer output has no completion authority; slots are previous entry observations rather than active failure frames or returned moves."
+    },
+    {
+      "id": "AC06",
+      "status": "NO_SCOPED_BLOCKER",
+      "source": "reader",
+      "lines": [
+        13,
+        57,
+        144,
+        221
+      ],
+      "finding": "Whole saved reader pins current operative contract/schema/review scope/responseVERSION through exactly four literal rebinds. Retained plan/bracket/native buffers bind their own decoded data and hashes. Source/input/runtime/grant/review plus once/session/Date/wait4/pid/native-launch/terminal/probe/exit/resource joins are inherited unchanged; native failure55 remains distinct from positive20. This helper reads saved bytes only and never evaluates a project module."
+    },
+    {
+      "id": "AC07",
+      "status": "NO_SCOPED_BLOCKER",
+      "source": "reader",
+      "lines": [
+        67,
+        141,
+        222,
+        318
+      ],
+      "finding": "Literal ordered six-phase parsing, bounded raw tail and full two-file failure SHA/context/clock/slot joins remain exact. Missing/incomplete pair returns unavailable diagnostics; malformed joins fail closed. Nonzero stdout is pinned opaque, never interpreted as a result. Even complete diagnostic data confers no case count, failure cause, exclusive method cost, move/restore, proof, engine or gain acceptance."
+    },
+    {
+      "id": "AC08",
+      "status": "NO_SCOPED_BLOCKER",
+      "source": "reader",
+      "lines": [
+        236,
+        313
+      ],
+      "finding": "Positive closure retains exact same-handle strict20/512, canonical one-line final/two-line response, exact seven-field lossless envelope, validating base64 decode, compressed/expanded SHA+length, one bounded zlib stream EOF/no tails and whole canonical expanded Source/input/purpose/native joins. All broad flags stay false; saved memo counters remain opaque. A Source-bound structural capture provenance join is the narrow output scope, not scientific replay or current frontier qualification."
+    }
+  ],
+  "blockers": [],
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-all-checked-discovery-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "e8723aa07b16b807aebd0a48a42e50916f85e15ca8c0418f1e836d0b9fe65761",
+    "bytes": 11532
+  },
+  "raw_scope": {
+    "caller_regions": 6,
+    "reader_regions": 4,
+    "actual_patch_directions_verified": 4,
+    "caller_unchanged_named_regions": 36,
+    "caller_classes_in_named_regions": 2,
+    "caller_top_helpers_exact": 17,
+    "reader_helpers_exact": 10,
+    "whole_main_literal_erasure_to_parent": true,
+    "compile_without_evaluation_only": true
+  },
+  "scope_limitations": [
+    "Original17/input2, current16/input8 and complete authority remain separately authenticated by future actual; this peer opens Source/metadata only, never saved inputs/results.",
+    "No arbitrary hostile callbacks, nth-tick/error-prefix equivalence, performance gain or runtime fit inferred from removing duplicate reconstruction.",
+    "No previous10/12, memo failure, connected discovery, receptor, theorem or target qualification transfers.",
+    "Root alone owns any once grant, actual, saved-only invocation and later terminal/wire reconciliation."
+  ],
+  "scientific_calls": 0,
+  "project_imports": 0,
+  "project_or_helper_evaluation": false,
+  "scientific_acceptance": false,
+  "clock_calls": 0,
+  "actual_result_capture_proofword_donor_reads": false,
+  "actual_authorization": false,
+  "runtime_fit": "UNMEASURED"
+}

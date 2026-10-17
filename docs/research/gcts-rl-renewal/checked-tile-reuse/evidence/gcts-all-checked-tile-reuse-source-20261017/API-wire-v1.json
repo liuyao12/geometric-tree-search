@@ -1,0 +1,49 @@
+{
+  "schema": "unit-row-all-checked-tile-reuse-API-v1",
+  "public_protocols": {
+    "VERSION": "unit-row-channel4-point-adapter-v1",
+    "SEMANTICS_VERSION": "unit-row-channel4-filtered-degree-semantics-v1",
+    "TRANSITION_VERSION": "unit-row-channel4-support-transition-v1",
+    "FALLBACK_VERSION": "unit-row-channel4-filtered-six-rule-fallback-v1",
+    "BASE_SEMANTICS_VERSION": "independent-unit-row-missing-mark-degree-check-v2",
+    "BASE_FALLBACK_VERSION": "unit-row-complete-lazy-six-rule-fallback-v1",
+    "DECORATOR_VERSION": "unit-row-certified-row0-point-mark-decorator-v1",
+    "VERIFIER_VERSION": "unit-row-independent-channel4-state-verifier-v1",
+    "STATE_SCHEMA": "unit-row-channel4-private-state-v1",
+    "RECEIPT_SCHEMA": "unit-row-channel4-degree-evidence-check-v1",
+    "RULES": [
+      "axiom",
+      "assumption",
+      "instantiate",
+      "eq_subst",
+      "mp",
+      "generalize"
+    ],
+    "FLAGS": [
+      "complete_candidate_graph_accepted",
+      "scheduler_or_rollback_accepted",
+      "logical_proof_accepted",
+      "ROOT_resource_accepted"
+    ]
+  },
+  "implementation_version": "unit-row-channel4-point-adapter-all-checked-tiles-local-reuse-v4",
+  "public_method_signatures_unchanged": true,
+  "compatibility_filter": {
+    "method": "MarkedSemantics._filter(language,state,originals,tick)",
+    "return": "(checked,removed), exactly the inherited pair; all caller bodies unchanged",
+    "wrapper": "Calls private triple helper and discards only the extra local-reference list"
+  },
+  "private_helper": {
+    "method": "MarkedSemantics._filter_all_checked(language,state,originals,tick)",
+    "return": "(checked,removed,all_checked)",
+    "all_checked": "One full rebuilt/decorated/independently checked tile per original candidate in original order, including every removed candidate. Returned only after all inherited whole checks succeed.",
+    "ownership": "Call-local new list of existing checked tile references; no self field/cross-call cache. Surviving tile is the same object as the normal checked survivor and may already include unchanged read_obligations metadata. Collision consumes only full original/decorated type key/preimage, not obligations."
+  },
+  "cursor": "Advance consumes triple once, applies same persistent original+decorated check_collision for every all_checked tile with cumulative native tick, then performs exactly inherited raw/removed/survivor counts and order/EOF/poison behavior. Only duplicate second rebuild is removed.",
+  "new_mathematical_algorithm": false,
+  "new_state_or_receipt_schema": false,
+  "no_arbitrary_nthtick_resource_prefix_equivalence": true,
+  "scientific_calls": 0,
+  "source_only": true,
+  "native_fit": "UNMEASURED"
+}

@@ -1,0 +1,134 @@
+{
+  "schema": "unit-row-all-checked-tile-reuse-independent-findings-v1",
+  "scope": "unit-row-all-checked-tile-reuse-adapter-Source",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/arithmetic_induction",
+  "source": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+    "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+    "bytes": 29308
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/Source-contract-v1.json",
+    "sha256": "69852968d29ec694ffe8691657baa9a1af3c015604e03b5f672f66fabae1ace3",
+    "bytes": 18422
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/handoff-v1.json",
+    "sha256": "0c03ad38092908d31ee07dda2f12f53549f3586a587746d467cb7e9ed6b875ce",
+    "bytes": 2242
+  },
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_only": true,
+  "whole_current_source_read": true,
+  "whole_current_contract_API_delta_static_read": true,
+  "parent_read_basis": "Parent ea300 implementation authored/reviewed previously; exact current whole Source and raw old/new diff read for this task, independently reconstructed all six regions and whole parent bytes/AST. Unchanged dependencies are pinned ancestry rather than freshly re-executed or newly accepted mathematics.",
+  "findings": [
+    {
+      "id": "AT01",
+      "status": "NO_SCOPED_BLOCKER",
+      "lines": [
+        44,
+        159
+      ],
+      "finding": "Complete state reconstruction and original projection remain unchanged. Private marked state still rebuilds original selected/excluded keys with c354 membership/state checks and independently verifies the full decorated union through 9fd. Local list reuse supplies no state, marking or epoch authority."
+    },
+    {
+      "id": "AT02",
+      "status": "NO_SCOPED_BLOCKER",
+      "lines": [
+        181,
+        217
+      ],
+      "finding": "The new private core retains every inherited filter operation in order: fresh state/projection, original membership and whole legality, exact original packet including read obligations, fresh decorated reconstruction/independent full packet check, both-key collision check, unique placement identity and whole marked legality. AST erasure of only name/list/append/triple returns the exact old core."
+    },
+    {
+      "id": "AT03",
+      "status": "NO_SCOPED_BLOCKER",
+      "lines": [
+        173,
+        217
+      ],
+      "finding": "Every successful original input contributes one all_checked tile in original order after either survivor or explicit channel4-only conflict processing. Removed tiles are retained for census. Survivor annotation adds read_obligations only; both placement keys, original base_tile and full preimages remain the same independently rebuilt data. No pending read becomes a fact."
+    },
+    {
+      "id": "AT04",
+      "status": "NO_SCOPED_BLOCKER",
+      "lines": [
+        161,
+        167,
+        410,
+        425
+      ],
+      "finding": "FilteredCursor applies the existing persistent check_collision to all_checked before raw/removed/yield counters. That method checks both original and decorated full-preimage ledgers. A collision on a removed candidate still raises before discard; alternatives are never merged into a point union. This replaces only a duplicate rebuild of the same frozen key/preimage/translation."
+    },
+    {
+      "id": "AT05",
+      "status": "NO_SCOPED_BLOCKER",
+      "lines": [
+        219,
+        266
+      ],
+      "finding": "The inherited _filter signature and two-value result remain unchanged. Proposal/checker callers, full original independent degree check, partial-loss UNKNOWN behavior, complete-cover authority and native receipt flags are raw/AST exact. The local extra list is not stored in an object, context, receipt, checkpoint or shared proposer/checker state."
+    },
+    {
+      "id": "AT06",
+      "status": "NO_SCOPED_BLOCKER",
+      "lines": [
+        269,
+        349,
+        356,
+        388,
+        426,
+        467
+      ],
+      "finding": "Full transition support/authority/collision projections, retained candidate refresh, original/decorated cursor context, survivor sequence, ordinals, original and marked EOF completion fields and flags, abort and BaseException poisoning are inherited unchanged. Engine fresh-cover/current-keySET acceptance and owned rollback are still separate obligations; this module does not newly qualify them."
+    },
+    {
+      "id": "AT07",
+      "status": "SCOPE_LIMITATION",
+      "lines": [
+        188,
+        216,
+        398,
+        416,
+        460,
+        462
+      ],
+      "finding": "Remaining native ticks and failures propagate and poison as before. Removing deterministic duplicate reconstruction changes native/parser/tick/resource prefixes; there is no arbitrary nth-tick callback, interruption-point, hostile-mutator, byte-result, timing or error-trace equivalence claim. The value argument assumes the exact synchronous pinned Sources, immutable model and cumulative Root-native guard stated in the contract."
+    },
+    {
+      "id": "AT08",
+      "status": "SCOPE_LIMITATION",
+      "lines": [
+        11,
+        24
+      ],
+      "finding": "Only IMPLEMENTATION_VERSION changes. All public version/schema constants and inherited argument ASTs are exact; new Source/hash/map/implementation gate must be authenticated by a future caller. Original17/input2/binding and six native limits are literal-equal to pinned ancestry. No prior qualification, timeout attribution, cost gain, connected-prefix capture, target or theorem result transfers."
+    }
+  ],
+  "blockers": [],
+  "code_audit": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-peer-20261017/independent-code-audit-v1.json",
+    "sha256": "e7ecd50961aab9e081958df91bd83dc4db435d21a0089224a104679a3c86783e",
+    "bytes": 5026
+  },
+  "packet_audit": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-peer-20261017/independent-packet-audit-v1.json",
+    "sha256": "a83ff4abf781a71ab1685e45efd2d7b4e7c92936d9b2463714c220ce361d7492",
+    "bytes": 5138
+  },
+  "check_count": 18,
+  "unchanged_inherited_callables": 28,
+  "full_raw_regions": 6,
+  "actual_patch_directions": 2,
+  "review_limits": [
+    "No scientific imports, project calls, helper evaluation, test runs, clocks, actuals or result/proofword/capture reads.",
+    "compile was builtin Source/AST compilation without evaluation; patched Source copies were never executed.",
+    "Fresh cursor/degree/graph/rollback and all current runtime conformance remain unqualified until Root chooses a measured composition."
+  ],
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "runtime_fit": "UNMEASURED",
+  "actual_authorization": false
+}

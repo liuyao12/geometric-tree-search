@@ -1,0 +1,103 @@
+{
+  "schema": "unit-row-all-checked-tile-reuse-independent-code-audit-v1",
+  "source_only": true,
+  "reviewer": "/root/hilbert_ordering_diagnosis",
+  "parent": {
+    "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+    "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+    "bytes": 29316
+  },
+  "source": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+    "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+    "bytes": 29308
+  },
+  "literal_regions": [
+    {
+      "old": "IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-filter-local-projection-v3'",
+      "new": "IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-all-checked-tiles-local-reuse-v4'"
+    },
+    {
+      "old": "    def _filter(self, language, state, originals, tick):",
+      "new": "    def _filter_all_checked(self, language, state, originals, tick):"
+    },
+    {
+      "old": "        checked, removed, used = [], [], set()\n",
+      "new": "        checked, removed, used = [], [], set()\n        all_checked = []\n"
+    },
+    {
+      "old": "        return checked, removed\n\n    def propose_degree",
+      "new": "            all_checked.append(tile)\n        return checked, removed, all_checked\n\n    def _filter(self, language, state, originals, tick):\n        checked, removed, all_checked = self._filter_all_checked(language, state, originals, tick)\n        return checked, removed\n\n    def propose_degree"
+    },
+    {
+      "old": "                        candidates, removed = self._semantics._filter(self._language, self._state,\n                                                                     [event['candidate']], self._tick)",
+      "new": "                        candidates, removed, all_checked = self._semantics._filter_all_checked(\n                            self._language, self._state, [event['candidate']], self._tick)"
+    },
+    {
+      "old": "                        key = event['candidate']['placement_key']\n                        pre = {'schema': 'unit-row-row0-decorated-type-v1',\n                            'base_type_preimage': key['type_preimage'], 'marking_id': self._semantics.marking_id}\n                        tile = self._semantics.rebuild_tile(self._language, pre, key['translation'], self._tick)\n                        self._semantics.check_collision(tile, self._names)",
+      "new": "                        for tile in all_checked:\n                            self._tick()\n                            self._semantics.check_collision(tile, self._names)"
+    }
+  ],
+  "full_forward_raw": true,
+  "full_inverse_raw": true,
+  "full_inverse_AST": true,
+  "compile_without_evaluation": true,
+  "inherited_callable_count": 30,
+  "current_callable_count": 31,
+  "raw_AST_exact_callables": [
+    "require",
+    "canonical",
+    "sha",
+    "MarkedSemantics.__init__",
+    "MarkedSemantics.tree",
+    "MarkedSemantics.point_map",
+    "MarkedSemantics.agree",
+    "MarkedSemantics.check_marking",
+    "MarkedSemantics._base_key",
+    "MarkedSemantics._fresh_base_projection",
+    "MarkedSemantics.base_state",
+    "MarkedSemantics.initial_state",
+    "MarkedSemantics.rebuild_tile",
+    "MarkedSemantics._checked_state_projection",
+    "MarkedSemantics.private_state",
+    "MarkedSemantics.check_collision",
+    "MarkedSemantics.legality",
+    "MarkedSemantics.with_obligations",
+    "MarkedSemantics.propose_degree",
+    "MarkedSemantics.check_degree_evidence",
+    "MarkedTransition.authority_snapshot",
+    "MarkedTransition._projection",
+    "MarkedTransition.check_transition",
+    "MarkedTransition.refresh_candidates",
+    "FilteredCursor.__init__",
+    "FilteredCursor.context",
+    "FilteredCursor.abort",
+    "open_fallback"
+  ],
+  "changed_inherited_callables": [
+    "MarkedSemantics._filter",
+    "FilteredCursor.advance"
+  ],
+  "added_callables": [
+    "MarkedSemantics._filter_all_checked"
+  ],
+  "checks": [
+    "Independent six literal regions reconstruct exact frozen successor bytes.",
+    "Reverse all six regions reconstruct exact whole parent bytes and AST.",
+    "Whole parent/current compile objects created without evaluation or execution.",
+    "Twenty-eight inherited callable regions are both raw and AST exact.",
+    "Only inherited _filter and advance bodies changed; one private helper added.",
+    "Public _filter callable arguments exactly preserved.",
+    "All unchanged version/schema/rules/flag constants are whole-inverse bound.",
+    "Independent whole Source read includes private-state/base projection, independent tile/state checks, degree, transition, cursor and EOF.",
+    "Actual patch directions and final contract/map joins remain a separate packet audit, not inferred here."
+  ],
+  "project_imports": 0,
+  "project_function_calls": 0,
+  "scientific_calls": 0,
+  "test_execution": false,
+  "actual_execution": false,
+  "clock_calls": 0,
+  "result_reads": 0,
+  "authoring_errors": []
+}

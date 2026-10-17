@@ -1,0 +1,66 @@
+{
+  "schema": "unit-row-all-checked-tile-reuse-Source-delta-v1",
+  "parent_source": {
+    "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+    "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+    "bytes": 29316
+  },
+  "source": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+    "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+    "bytes": 29308
+  },
+  "coordinate_convention": "sequential forward offsets, reverse order for inverse",
+  "edit_count": 6,
+  "edits": [
+    {
+      "start": 470,
+      "old": "IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-filter-local-projection-v3'",
+      "new": "IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-all-checked-tiles-local-reuse-v4'"
+    },
+    {
+      "start": 10188,
+      "old": "    def _filter(self, language, state, originals, tick):\n",
+      "new": "    def _filter_all_checked(self, language, state, originals, tick):\n"
+    },
+    {
+      "start": 10522,
+      "old": "        checked, removed, used = [], [], set()\n",
+      "new": "        checked, removed, used = [], [], set()\n        all_checked = []\n"
+    },
+    {
+      "start": 12456,
+      "old": "        return checked, removed\n\n    def propose_degree(",
+      "new": "            all_checked.append(tile)\n        return checked, removed, all_checked\n\n    def _filter(self, language, state, originals, tick):\n        checked, removed, all_checked = self._filter_all_checked(language, state, originals, tick)\n        return checked, removed\n\n    def propose_degree("
+    },
+    {
+      "start": 24820,
+      "old": "                        candidates, removed = self._semantics._filter(self._language, self._state,\n                                                                     [event['candidate']], self._tick)\n",
+      "new": "                        candidates, removed, all_checked = self._semantics._filter_all_checked(\n                            self._language, self._state, [event['candidate']], self._tick)\n"
+    },
+    {
+      "start": 25168,
+      "old": "                        key = event['candidate']['placement_key']\n                        pre = {'schema': 'unit-row-row0-decorated-type-v1',\n                            'base_type_preimage': key['type_preimage'], 'marking_id': self._semantics.marking_id}\n                        tile = self._semantics.rebuild_tile(self._language, pre, key['translation'], self._tick)\n                        self._semantics.check_collision(tile, self._names)\n",
+      "new": "                        for tile in all_checked:\n                            self._tick()\n                            self._semantics.check_collision(tile, self._names)\n"
+    }
+  ],
+  "raw_forward_inverse_exact": true,
+  "whole_AST_inverse_exact": true,
+  "actual_patch_files": {
+    "forward": {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/forward-v1.patch",
+      "sha256": "9185566a5e46097dab0f7ad120991cb12893d12b14c0edfb517e6140b69f970b",
+      "bytes": 3456
+    },
+    "full_inverse": {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/full-inverse-v1.patch",
+      "sha256": "e8fb5d08215e8b3bae9fa92ed205d50b35c82d14c317a04d34d968d93c12dbbf",
+      "bytes": 3456
+    }
+  },
+  "actual_forward_exit_code": 0,
+  "actual_inverse_exit_code": 0,
+  "actual_both_directions_bytes_exact": true,
+  "existing_Source_unchanged": true,
+  "scientific_calls": 0
+}

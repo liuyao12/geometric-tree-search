@@ -1,0 +1,138 @@
+{
+  "schema": "unit-row-all-checked-tile-reuse-static-audit-v1",
+  "source": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+    "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+    "bytes": 29308
+  },
+  "parent_source": {
+    "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+    "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+    "bytes": 29316
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "compile_without_evaluation": true,
+  "project_module_or_helper_evaluation": false,
+  "tests_run": false,
+  "clock_calls": 0,
+  "actual_or_result_reads": false,
+  "checks": [
+    {
+      "name": "Full Source raw/AST inspection and compile without evaluation",
+      "passed": true
+    },
+    {
+      "name": "Exactly6 raw regions and wholeAST inverse exact",
+      "passed": true
+    },
+    {
+      "name": "Both actual unified patch applications exact",
+      "passed": true
+    },
+    {
+      "name": "All public VERSION/schema/constants/signatures unchanged; only implementation tag changes",
+      "passed": true
+    },
+    {
+      "name": "Private core erases to old _filter whole AST after name/list/append/triple removal",
+      "passed": true
+    },
+    {
+      "name": "Compatibility pair wrapper exact old signature",
+      "passed": true
+    },
+    {
+      "name": "Original current state/projection/member/9fd/core literal checks preserved",
+      "passed": true
+    },
+    {
+      "name": "All original candidates appended after full checks, removed candidates included",
+      "passed": true
+    },
+    {
+      "name": "Persistent both-ID/fullpreimage collision check covers all returned tiles before counts",
+      "passed": true
+    },
+    {
+      "name": "No survivor-only census or cross-alternative point union introduced",
+      "passed": true
+    },
+    {
+      "name": "Survivor sequence/raw/removal counts/EOF completion/flags/replay context preserved",
+      "passed": true
+    },
+    {
+      "name": "Exception poisoning/abort and transition/refresh/dependency/rollback-related bodies rawAST exact",
+      "passed": true
+    },
+    {
+      "name": "New list ownership local, only old checked tile refs, no context or cache stored",
+      "passed": true
+    },
+    {
+      "name": "Native ticks remain cumulative; explicit tick before persistent census",
+      "passed": true
+    },
+    {
+      "name": "No helper/model/checker/clock/tests/imported project/actual/result/proofword execution",
+      "passed": true
+    }
+  ],
+  "check_count": 15,
+  "unchanged_named_regions": [
+    "require",
+    "canonical",
+    "sha",
+    "MarkedSemantics.__init__",
+    "MarkedSemantics.tree",
+    "MarkedSemantics.point_map",
+    "MarkedSemantics.agree",
+    "MarkedSemantics.check_marking",
+    "MarkedSemantics._base_key",
+    "MarkedSemantics._fresh_base_projection",
+    "MarkedSemantics.base_state",
+    "MarkedSemantics.initial_state",
+    "MarkedSemantics.rebuild_tile",
+    "MarkedSemantics._checked_state_projection",
+    "MarkedSemantics.private_state",
+    "MarkedSemantics.check_collision",
+    "MarkedSemantics.legality",
+    "MarkedSemantics.with_obligations",
+    "MarkedSemantics.propose_degree",
+    "MarkedSemantics.check_degree_evidence",
+    "MarkedTransition",
+    "MarkedTransition.authority_snapshot",
+    "MarkedTransition._projection",
+    "MarkedTransition.check_transition",
+    "MarkedTransition.refresh_candidates",
+    "FilteredCursor.__init__",
+    "FilteredCursor.context",
+    "FilteredCursor.abort",
+    "open_fallback"
+  ],
+  "changed_named_regions": [
+    "MarkedSemantics",
+    "MarkedSemantics._filter",
+    "FilteredCursor",
+    "FilteredCursor.advance"
+  ],
+  "added_named_regions": [
+    "MarkedSemantics._filter_all_checked"
+  ],
+  "factored_core_AST_erasure_exact": true,
+  "public_constants_and_signatures_exact": true,
+  "actual_patch_files": {
+    "forward": {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/forward-v1.patch",
+      "sha256": "9185566a5e46097dab0f7ad120991cb12893d12b14c0edfb517e6140b69f970b",
+      "bytes": 3456
+    },
+    "full_inverse": {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/full-inverse-v1.patch",
+      "sha256": "e8fb5d08215e8b3bae9fa92ed205d50b35c82d14c317a04d34d968d93c12dbbf",
+      "bytes": 3456
+    }
+  },
+  "runtime_fit": "UNMEASURED"
+}

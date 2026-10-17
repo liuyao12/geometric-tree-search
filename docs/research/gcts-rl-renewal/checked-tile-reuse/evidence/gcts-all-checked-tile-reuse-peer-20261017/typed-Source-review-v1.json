@@ -1,0 +1,58 @@
+{
+  "schema": "unit-row-all-checked-tile-reuse-typed-Source-review-v1",
+  "scope": "unit-row-all-checked-tile-reuse-adapter-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/arithmetic_induction",
+  "source_contract": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/Source-contract-v1.json",
+    "sha256": "69852968d29ec694ffe8691657baa9a1af3c015604e03b5f672f66fabae1ace3",
+    "bytes": 18422
+  },
+  "source": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+    "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+    "bytes": 29308
+  },
+  "sources": {
+    "marked_adapter": {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+      "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+      "bytes": 29308
+    }
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored ea300 parent filter-local reuse, independent marked verifier9fd, independent marked-aware checker8f and earlier controls/diagnostics; those shared primitive and model dependencies are disclosed. Arithmetic authored this v4 successor and historical point/engine ancestry. This is a distinct review of the successor and complete retained Source argument, not a self-independent reacceptance of inherited mathematics or runtime evidence.",
+  "findings": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-peer-20261017/findings-v1.json",
+    "sha256": "4503caa902ec2c60aface5088433771f28a4f99dcf7694dd8562fb82484da1e8",
+    "bytes": 6805
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/handoff-v1.json",
+    "sha256": "0c03ad38092908d31ee07dda2f12f53549f3586a587746d467cb7e9ed6b875ce",
+    "bytes": 2242
+  },
+  "independent_code_audit": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-peer-20261017/independent-code-audit-v1.json",
+    "sha256": "e7ecd50961aab9e081958df91bd83dc4db435d21a0089224a104679a3c86783e",
+    "bytes": 5026
+  },
+  "independent_packet_audit": {
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-peer-20261017/independent-packet-audit-v1.json",
+    "sha256": "a83ff4abf781a71ab1685e45efd2d7b4e7c92936d9b2463714c220ce361d7492",
+    "bytes": 5138
+  },
+  "whole_current_source_and_contract_reviewed": true,
+  "blockers": [],
+  "raw_region_count": 6,
+  "unchanged_inherited_callables_raw_AST": 28,
+  "actual_patch_directions_verified": 2,
+  "runtime_qualification_inherited": false,
+  "runtime_fit": "UNMEASURED",
+  "actual_execution_authorized": false,
+  "scope_condition": "Exact synchronous pinned current Sources/cumulative Root-native tick and unchanged original17/input2/model/marking. Future current-composition authority/implementation tag and measured complete qualification remain Root responsibilities. No arbitrary callback or hostile mutation equivalence."
+}

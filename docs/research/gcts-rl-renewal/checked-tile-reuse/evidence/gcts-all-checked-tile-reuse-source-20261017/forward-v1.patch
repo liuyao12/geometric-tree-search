@@ -1,0 +1,59 @@
+--- marked_unit_row_adapter_v4.py
++++ marked_unit_row_adapter_v4.py
+@@ -9,7 +9,7 @@
+ import json
+ 
+ VERSION = 'unit-row-channel4-point-adapter-v1'
+-IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-filter-local-projection-v3'
++IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-all-checked-tiles-local-reuse-v4'
+ SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'
+ TRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'
+ FALLBACK_VERSION = 'unit-row-channel4-filtered-six-rule-fallback-v1'
+@@ -178,12 +178,13 @@
+             for d, f in zip(pre['ordered_offsets'], pre['ordered_premise_formulas'])]
+         return tile
+ 
+-    def _filter(self, language, state, originals, tick):
++    def _filter_all_checked(self, language, state, originals, tick):
+         checked_state, projection = self._checked_state_projection(language, state, tick)
+         _, t, m, selected, excluded, names = checked_state
+         _, bt, bm, bs, be, _ = projection
+         require(type(originals) is list, 'whole original candidate list')
+         checked, removed, used = [], [], set()
++        all_checked = []
+         for raw in originals:
+             tick()
+             key = raw['placement_key']
+@@ -212,6 +213,11 @@
+                         'explicit channel4 conflict points')
+                 removed.append({'placement_key': tile['placement_key'], 'reason': reason,
+                                 'conflicting_points': conflicts})
++            all_checked.append(tile)
++        return checked, removed, all_checked
++
++    def _filter(self, language, state, originals, tick):
++        checked, removed, all_checked = self._filter_all_checked(language, state, originals, tick)
+         return checked, removed
+ 
+     def propose_degree(self, *, language, state, row, tick, degree_proposer):
+@@ -401,15 +407,13 @@
+                                 'independently_checked'} and type(event['ordinal']) is int
+                                 and event['ordinal'] == self._raw_count and event['independently_checked'] is False,
+                                 'original stream literal ordinal and flags')
+-                        candidates, removed = self._semantics._filter(self._language, self._state,
+-                                                                     [event['candidate']], self._tick)
++                        candidates, removed, all_checked = self._semantics._filter_all_checked(
++                            self._language, self._state, [event['candidate']], self._tick)
+                         # Full original and decorated collision ledgers span ALL
+                         # observed original candidates, including removed ones.
+-                        key = event['candidate']['placement_key']
+-                        pre = {'schema': 'unit-row-row0-decorated-type-v1',
+-                            'base_type_preimage': key['type_preimage'], 'marking_id': self._semantics.marking_id}
+-                        tile = self._semantics.rebuild_tile(self._language, pre, key['translation'], self._tick)
+-                        self._semantics.check_collision(tile, self._names)
++                        for tile in all_checked:
++                            self._tick()
++                            self._semantics.check_collision(tile, self._names)
+                         self._raw_count += 1
+                         self._removed += len(removed)
+                         if not candidates:

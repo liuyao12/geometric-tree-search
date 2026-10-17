@@ -1,0 +1,55 @@
+{
+  "schema": "ROOT-all-checked-discovery-saved-typed-Source-review-v1",
+  "scope": "ROOT-all-checked-discovery-saved-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root",
+  "source_authoring_agent": "/root/hilbert_advice_controls",
+  "source": {
+    "bytes": 22113,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+    "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09"
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "75ddf23c9a2849f3fb885bbdc7ec05d6d56399071ef3c557740a4fbcc6d5340c",
+    "bytes": 2024
+  },
+  "sources": {
+    "saved_reader": {
+      "bytes": 22113,
+      "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+      "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09"
+    }
+  },
+  "current_operative_cold_contract": {
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "77e1499d1b6f4fad59b1a71eef5392decbcef8efe8d101cb9cdcb248146324b8",
+    "bytes": 26571
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored ea300 parent adapter, independent marked verifier9fd/marked-aware checker8f and earlier controls/saved-helper ancestry, and independently reviewed new1844 and unchanged7ae1/ddb4. Root owns this composition and delegated current caller/reader authoring to Controls. Reviewer did not author these current six/four-edit files; shared dependencies/wire/previous component reviews are disclosed and supply no self-independent runtime mathematics.",
+  "findings": {
+    "path": "/private/tmp/gcts-all-checked-discovery-peer-20261017/findings-v1.json",
+    "sha256": "bf8f5550d448310e00cf664c6621b89cee3abec06a73bad07d5e0b9ea20066e3",
+    "bytes": 7916
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-all-checked-discovery-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "e8723aa07b16b807aebd0a48a42e50916f85e15ca8c0418f1e836d0b9fe65761",
+    "bytes": 11532
+  },
+  "whole_current_source_and_contract_reviewed": true,
+  "blockers": [],
+  "exact_literal_regions": 4,
+  "actual_patch_directions_verified": 2,
+  "unchanged_helpers_raw_AST_exact": 10,
+  "saved_helper_executed": false,
+  "actual_outputs_or_inputs_read": false,
+  "runtime_qualification_inherited": false,
+  "actual_execution_authorized": false,
+  "scope_limit": "Source-bound saved byte/native closure only; no semantic replay, opaque memo interpretation, cause/performance/case/engine/proof acceptance. Reader metadata supplies no separate operative Review_ABI; this additive typed packet explicitly pins its own and current cold contracts."
+}

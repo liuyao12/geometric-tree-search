@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reuse every already-checked tile</title>
+  <link rel="stylesheet" href="reader.css?v=20261017-ct1">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script defer src="reader.js?v=20261017-ct1"></script>
+</head>
+<body><main>
+  <nav><a href="../index.html#checked-tile-reuse">Research notebook</a><a href="../negative-memo-discovery/reader.html#result">Previous memo attempt</a></nav>
+  <p class="eyebrow">SAME POINT MODEL · A NEW EXECUTABLE ADAPTER</p>
+  <h1>Checked once.<br>Retained for the ledger.</h1>
+  <p class="lead">The cursor can retain tiles that its filter has already rebuilt and independently checked. It still compares every tile with the persistent collision ledger, including candidates removed by the marking filter.</p>
+  <p class="status" id="status" role="status">Loading the frozen evidence…</p>
+
+  <section class="metrics" aria-label="Native measurements">
+    <article><strong id="elapsed">Not returned</strong><span>Native launch through fresh postterminal probe</span></article>
+    <article><strong id="memory">Not returned</strong><span>Owned peak memory</span></article>
+    <article><strong>\(0\)</strong><span>New theorems claimed</span></article>
+  </section>
+
+  <section id="change">
+    <p class="eyebrow">THE SINGLE ADAPTER CHANGE</p>
+    <h2>Keep the checked tile, including rejected candidates.</h2>
+    <p>Previously, the filter rebuilt and checked each tile, then the cursor rebuilt that tile again for its collision census. The new adapter returns the full checked tile list to that same cursor call. Reuse ends with the call: there is no persistent tile cache or inherited receipt.</p>
+    <figure class="schematic" aria-labelledby="schematic-caption">
+      <figcaption id="schematic-caption"><b>Implementation schematic</b> — not measured counts or a proof</figcaption>
+      <ol class="check-flow">
+        <li><span class="step-label">Rebuild + independent check</span><p>Full primitive, original and marked tile.</p></li>
+        <li><span class="step-label">Legality filter</span><p>Record survivor or rejection through the existing checks.</p></li>
+        <li><span class="step-label">Retain the checked tile</span><p>A call-local reference to that same full packet.</p></li>
+        <li class="ledger"><span class="step-label">Collision ledger over all</span><p>Compare original and decorated identities, including removed tiles.</p></li>
+        <li><span class="step-label">Survivor or skip</span><p>Keep original cursor order, completion and error behavior.</p></li>
+      </ol>
+    </figure>
+    <p>The point data \(t\) and \(m\), native membership, independent checks, legality, global dead-end and forced-move priority, generation order, complete fallback and rollback are unchanged. The adapter Source and implementation tag changed, so this composition needs its own measured evidence.</p>
+  </section>
+
+  <section id="comparison">
+    <p class="eyebrow">THREE SEPARATE ATTEMPTS</p>
+    <h2>Same problem, separately recorded outcomes.</h2>
+    <div class="table-wrap"><table>
+      <colgroup><col class="attempt-col"><col class="outcome-col"><col class="time-col"><col class="memory-col"></colgroup>
+      <thead><tr><th scope="col">Attempt</th><th scope="col">Stored outcome</th><th scope="col">Native elapsed</th><th scope="col">Peak memory</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Original observer</th><td>Unknown</td><td>\(20.15\;\mathrm{s}\)</td><td>\(45.6\;\mathrm{MiB}\)</td></tr>
+        <tr><th scope="row">Exact negative memo</th><td>Unknown</td><td>\(20.11\;\mathrm{s}\)</td><td>\(46.0\;\mathrm{MiB}\)</td></tr>
+        <tr class="current-attempt"><th scope="row">All checked tile reuse <span>Current composition</span></th><td id="compare-status">Not returned</td><td id="compare-time">Not returned</td><td id="compare-memory">Not returned</td></tr>
+      </tbody>
+    </table></div>
+    <p class="caption">Each attempt has its own original positive-result limit of \(20\) seconds and \(512\;\mathrm{MiB}\). Elapsed time includes native launch through a fresh postterminal probe. Unknown outcomes and different partial observations do not establish speedup. Setup, observation and checking costs are charged.</p>
+    <h3>The exact negative observer memo remains in place.</h3>
+    <p>Only a completed structural negative may be reused after type-sensitive equality of the whole state and unchanged helper authority. Positive observations, errors and unknown results are not cached.</p>
+    <div class="memo-counts">
+      <article><strong id="memo-lookups">Not returned</strong><span>Memo lookups returned</span></article>
+      <article><strong id="memo-hits">Not returned</strong><span>Exact negative hits returned</span></article>
+      <article><strong id="memo-inspections">Not returned</strong><span>Full observer inspections returned</span></article>
+    </div>
+    <p id="memo-scope"></p>
+  </section>
+
+  <section id="result">
+    <p class="eyebrow">CURRENT ACTUAL, INCLUDING COLD SETUP</p>
+    <h2 id="result-title">The measured result</h2><p id="result-text"></p>
+    <div class="flow">
+      <article><b>Empty board</b><p>Original target, axioms, bounded language and marking. No selected cells or exclusions.</p></article>
+      <article><b>Ordinary search</b><p>Global dead ends, forced moves, then earliest generation. Assigned-output preference breaks generation ties only.</p></article>
+      <article><b>Generic stop</b><p>Observe any selected row reading another selected row. Capture the first complete connected-edge observation.</p></article>
+      <article><b>Fresh frontier required</b><p>The interrupted query has not established a viable frontier. A later reuse attempt requires a fresh full decision.</p></article>
+    </div>
+    <p class="scope">This is a specialized bounded arithmetic lane. A capture, a viable frontier, an accepted proof and a search advantage are separate milestones. Historical Source passes and baseline assertions do not qualify this new executable composition.</p>
+  </section>
+
+  <section id="reader">
+    <p class="eyebrow">ACTUAL EVIDENCE ONLY</p>
+    <h2 id="reader-title">Inspect the recorded state</h2><p id="reader-intro"></p>
+    <div id="capture-view" hidden>
+      <svg id="dependency-view" role="img" aria-label="Selected rows and actual strict-prior dependencies"></svg>
+      <p class="caption">Blue cells are selected outputs. Amber links are premise reads within the selected fragment. Gray ports are unresolved receptors. The drawing does not certify an unfinished premise.</p>
+      <div class="row-controls" id="row-controls" role="group" aria-label="Inspect a selected row"></div>
+      <article class="row-card"><p class="tag" id="row-label"></p><div class="formula" id="formula"></div><p id="english"></p><div id="premise-list"></div>
+        <p class="caption">Formula and words translate the saved tile witness. Read occupancy does not turn an unresolved receptor into a theorem. Full point values remain in the exact record below.</p>
+        <details><summary>Full selected record and exact marking preimage</summary><pre id="raw-row"></pre></details>
+      </article>
+    </div>
+    <div id="unknown-view" hidden><div class="diagnostic-grid" id="last-observations"></div><p class="caption">These are the latest recorded callback entries. They are not the active failure frame, a proof trajectory, complete search counts or an established timeout cause. Missing records remain missing.</p></div>
+  </section>
+
+  <section id="phases">
+    <p class="eyebrow">REACHED NATIVE WRITE SITES</p>
+    <h2>Charged phase observations</h2>
+    <p>Fixed markers were emitted inside the original window. Their intervals include everything between samples; they are not exclusive component timings. An absent marker establishes no completed or unentered phase.</p>
+    <div id="phase-list" class="phase-list"></div>
+  </section>
+
+  <section id="parallel">
+    <p class="eyebrow">IMPLEMENTATION AND DISTINCT REVIEWS</p>
+    <h2>Separate code, review and measurement.</h2>
+    <div class="roles">
+      <article><h3>Call-local reuse</h3><p>The arithmetic agent implemented the new adapter path. Checked tiles removed by the filter still reach the original and decorated collision census.</p></article>
+      <article><h3>Current composition</h3><p>The controls agent composed the new caller and saved reader. The diagnosis agent separately reviewed whole Sources, contracts and exact inverses.</p></article>
+      <article><h3>Owned evidence</h3><p>Root owns the fresh native authorization, measured call and saved-byte reconciliation. Source review alone establishes no fit, proof or search benefit.</p></article>
+    </div>
+  </section>
+
+  <section id="next">
+    <p class="eyebrow">SUBSTANTIVE NEXT TEST · DESIGN, UNEXECUTED</p>
+    <h2>Transfer a connected family to new receptors.</h2>
+    <p>The proposed next capability uses automatically mined conditional fragment templates. It would infer a new substitution from current outputs and ordered premise ports, then freshly check the full primitive expansion and point interface. Repeated slots, source sharing, scope and context must all agree.</p>
+    <p>A literal-ground provider would be the matched control. Construction and independent checking costs must be included. Missing matches remain unknown; native global checks and complete fallback cannot be bypassed. This design is not an accepted generalized lemma, an activated policy or evidence that this cost attempt gained a proof.</p>
+  </section>
+
+  <section id="evidence"><h2>Reproducible evidence</h2><ul id="evidence-list"></ul>
+    <p><a href="evidence-manifest.json">Full file hashes and lengths</a>. This page displays a saved-data projection; loading it does not run search, a checker or a scientific replay.</p>
+    <details><summary>Exact disposition and scope</summary><pre id="run-details"></pre></details>
+  </section>
+  <footer>The research goal remains active. A cheaper implementation and a useful lemma-search contribution require separate evidence.</footer>
+</main></body></html>

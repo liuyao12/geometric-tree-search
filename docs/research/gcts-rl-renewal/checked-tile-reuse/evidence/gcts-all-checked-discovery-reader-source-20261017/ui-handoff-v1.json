@@ -1,0 +1,80 @@
+{
+  "Root_next_action": "Supply saved projection under unchanged API, package these three UI files at existing notebook checked-tile-reuse/, then perform rendered/live QA and publication. No data file, actual, grant or deployment authored here.",
+  "actual_or_result_or_proofword_or_donor_files_read": false,
+  "assets": {
+    "reader.css": {
+      "bytes": 5576,
+      "path": "/private/tmp/gcts-all-checked-discovery-reader-source-20261017/reader.css",
+      "sha256": "038a813a0c50c165b80b6961b7abc565ad97698c950cde74e482876fe17370de"
+    },
+    "reader.html": {
+      "bytes": 10428,
+      "path": "/private/tmp/gcts-all-checked-discovery-reader-source-20261017/reader.html",
+      "sha256": "5ef4d5fbaa67c209a64fa114840b3387e3267b32d1e92e6c7743ded305666feb"
+    },
+    "reader.js": {
+      "bytes": 8621,
+      "path": "/private/tmp/gcts-all-checked-discovery-reader-source-20261017/reader.js",
+      "sha256": "41f30d820accd467a350bbf8b59d5ed5d68ccf653536be433f966cc4584b9f17"
+    }
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "checks": {
+    "HTML_unique_ids": true,
+    "bundled_node_check_exit_code": 0,
+    "literal_JS_id_targets_exist": true,
+    "no_innerHTML_data_insertion": true,
+    "rendered_549_QA_performed": false,
+    "same_report_data_endpoint": true,
+    "static_table_549_basis": "At549px main content width513px, fixed table100%, column percentages30+24+23+23, wrap-enabled labels; no table min-width or scroll container.",
+    "three_attempt_table_body_rows": true
+  },
+  "consumed_fields": [
+    "disposition",
+    "status_text",
+    "result_title",
+    "result_text",
+    "reader_title",
+    "reader_intro",
+    "rows",
+    "edges",
+    "last_observations",
+    "comparison_status",
+    "structural_memo",
+    "native_launch_ns",
+    "evidence_links",
+    "links",
+    "run_details"
+  ],
+  "current_measurements_supplied_by_Root": true,
+  "display_only": true,
+  "features": [
+    "current status/result/reader headings remain data-driven",
+    "three-attempt fixed-width wrapping table; no horizontal table scroll container",
+    "all-checked call-local flow explicitly labelled implementation schematic, not measured counts/proof",
+    "collision census includes removed candidates; no removed membership/independent/legality checks",
+    "memo values missing or not a nonnegative exact display count remain Not returned, with no null-to-zero conversion",
+    "returned row/edge inspector versus unreturned latest-callback diagnostics",
+    "receptor-family transfer labelled design/unexecuted; no benefit/proof claim",
+    "LaTeX through established MathJax; no external media"
+  ],
+  "historical_measurements_from_task_instruction_only": {
+    "exact_negative_memo": {
+      "elapsed_display_seconds": "20.11",
+      "memory_display_MiB": "46.0",
+      "outcome": "Unknown"
+    },
+    "original_observer": {
+      "elapsed_display_seconds": "20.15",
+      "memory_display_MiB": "45.6",
+      "outcome": "Unknown"
+    }
+  },
+  "report_data_API_unchanged": true,
+  "report_data_endpoint": "report-data.json",
+  "schema": "GCTS-all-checked-discovery-reader-UI-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "stylesheet_cache_version": "20261017-ct1",
+  "target_page": "checked-tile-reuse/reader.html"
+}
