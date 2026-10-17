@@ -1,0 +1,116 @@
+[
+  {
+    "label": "own_version_1",
+    "new": "VERSION='unit-row-global-phase-diagnostic-cold-v1'",
+    "old": "VERSION='ROOT-call-local-projection-qualification-cold-v1'",
+    "start": 556
+  },
+  {
+    "label": "own_scope_1",
+    "new": "SCOPE='unit-row-global-phase-diagnostic-cold-Source'",
+    "old": "SCOPE='ROOT-call-local-projection-qualification-cold-Source'",
+    "start": 607
+  },
+  {
+    "label": "own_contract_schema_1",
+    "new": "contract['schema']=='unit-row-global-phase-diagnostic-cold-Source-contract-v1'",
+    "old": "contract['schema']=='ROOT-call-local-projection-qualification-cold-Source-contract-v1'",
+    "start": 33072
+  },
+  {
+    "label": "own_author_1",
+    "new": "review['author_identity']=='/root/hilbert_ordering_diagnosis'",
+    "old": "review['author_identity']=='/root'",
+    "start": 33728
+  },
+  {
+    "label": "own_peer_distinct_1",
+    "new": "review['reviewer_identity'] not in ('/root','/root/hilbert_ordering_diagnosis')",
+    "old": "review['reviewer_identity'] != '/root'",
+    "start": 34260
+  },
+  {
+    "label": "diagnostic_local_writer_1",
+    "new": "    # Diagnostic state is external to the engine and never supplies science.\n    diagnostic_global = plan['purpose']=='unit-row-marked-aware-global-forced-dead-controls'\n    latest_callbacks = {'proposer':None,'fallback':None,'completion':None,'validator':None}\n    diagnostic_first = {'entry':False,'return':False}\n    phase_tick,phase_tick_code = tick,tick.__code__\n    phase_tick_defaults,phase_tick_kwdefaults = tick.__defaults__,tick.__kwdefaults__\n    phase_write,phase_write_type = os.write,types.BuiltinFunctionType\n    phase_labels = ('BEFORE_GLOBAL_HANDLER', 'BEFORE_GLOBAL_SEED_GROUP', 'AFTER_GLOBAL_SEED_GROUP', 'BEFORE_GLOBAL_ENGINE_GROUP', 'AFTER_GLOBAL_ENGINE_GROUP', 'BEFORE_GLOBAL_SEARCH_GROUP', 'FIRST_PROPOSER_ENTRY', 'FIRST_PROPOSER_RETURN', 'AFTER_GLOBAL_SEARCH_GROUP', 'BEFORE_GLOBAL_ASSERTIONS', 'AFTER_GLOBAL_OUTER_RESTORE', 'AFTER_GLOBAL_HANDLER', 'BEFORE_DIAGNOSTIC_OUTPUT')\n    def phase(stage):\n        if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code\n                or phase_tick.__defaults__ is not phase_tick_defaults\n                or phase_tick.__kwdefaults__ is not phase_tick_kwdefaults\n                or os.write is not phase_write or type(phase_write) is not phase_write_type):\n            raise RuntimeError('original diagnostic native endpoints changed')\n        native_ns=phase_tick()\n        need(type(stage)is str and stage in phase_labels and type(native_ns)is int\n             and 0<=native_ns<=9223372036854775807,'literal diagnostic phase/native sample')\n        raw=('UNQUALIFIED_GLOBAL_PHASE_OBSERVATION '+stage+' '+str(native_ns)+'\\n').encode('ascii')\n        offset=0\n        while offset<len(raw):\n            phase_tick()\n            if os.write is not phase_write or type(phase_write) is not phase_write_type:\n                raise RuntimeError('original diagnostic write endpoint changed')\n            count=phase_write(2,raw[offset:]);need(type(count)is int and count>0,'whole bounded phase write')\n            offset+=count\n        phase_tick()\n\n    def passed(name, **data):\n",
+    "old": "    def passed(name, **data):\n",
+    "start": 45231
+  },
+  {
+    "label": "proposer_entry_1",
+    "new": "            native_ns=tick()\n            if diagnostic_global:\n                qrow=kw.get('row');qstate=kw.get('state')\n                qselected=qstate.get('selected')if type(qstate)is dict else None\n                latest_callbacks['proposer']=('PROPOSER_NATIVE_STEP',qrow if type(qrow)is int and 0<=qrow<24 else -1,\n                    len(qselected)if type(qselected)is list and len(qselected)<=24 else -1,native_ns)\n                if not diagnostic_first['entry']:\n                    diagnostic_first['entry']=True;phase('FIRST_PROPOSER_ENTRY')\n            if interrupt",
+    "old": "            native_ns=tick()\n            if interrupt",
+    "start": 55194
+  },
+  {
+    "label": "proposer_return_1",
+    "new": "            value=es.propose_degree(**kw)\n            if diagnostic_global and not diagnostic_first['return']:\n                diagnostic_first['return']=True;phase('FIRST_PROPOSER_RETURN')\n",
+    "old": "            value=es.propose_degree(**kw)\n",
+    "start": 56305
+  },
+  {
+    "label": "fallback_latest_1",
+    "new": "        def filtered(**kw):\n            if diagnostic_global:\n                callback_ns=tick();qrow=kw.get('row');qstate=kw.get('state')\n                qselected=qstate.get('selected')if type(qstate)is dict else None\n                latest_callbacks['fallback']=('FALLBACK_NATIVE_STEP',qrow if type(qrow)is int and 0<=qrow<24 else -1,\n                    len(qselected)if type(qselected)is list and len(qselected)<=24 else -1,callback_ns)\n",
+    "old": "        def filtered(**kw):\n",
+    "start": 56918
+  },
+  {
+    "label": "completion_latest_1",
+    "new": "        def certifier(**kw):\n            if diagnostic_global:\n                callback_ns=tick();qrow=kw.get('row');qstate=kw.get('state')\n                qselected=qstate.get('selected')if type(qstate)is dict else None\n                latest_callbacks['completion']=('COMPLETION_NATIVE_STEP',qrow if type(qrow)is int and 0<=qrow<24 else -1,\n                    len(qselected)if type(qselected)is list and len(qselected)<=24 else -1,callback_ns)\n",
+    "old": "        def certifier(**kw):\n",
+    "start": 57684
+  },
+  {
+    "label": "global_seed_group_1",
+    "new": "    def global_family():\n        phase('BEFORE_GLOBAL_SEED_GROUP')\n        c=deep_output();seeds=[ug(ax_formula,1,4),ug(c,3,5)];state=state_from(seeds);log={}\n        phase('AFTER_GLOBAL_SEED_GROUP')\n        phase('BEFORE_GLOBAL_ENGINE_GROUP')\n",
+    "old": "    def global_family():\n        c=deep_output();seeds=[ug(ax_formula,1,4),ug(c,3,5)];state=state_from(seeds);log={}\n",
+    "start": 62587
+  },
+  {
+    "label": "global_engine_group_1",
+    "new": "        handle=make_engine(state,log);e=handle['engine'];before=snapshot(e);outer=e.checkpoint()\n        phase('AFTER_GLOBAL_ENGINE_GROUP')\n        family={'seeds':seeds,'initial_state':state,'before':before,'actual_log':log}\n",
+    "old": "        handle=make_engine(state,log);e=handle['engine'];before=snapshot(e);outer=e.checkpoint()\n        family={'seeds':seeds,'initial_state':state,'before':before,'actual_log':log}\n",
+    "start": 62831
+  },
+  {
+    "label": "global_search_group_1",
+    "new": "        try:\n            phase('BEFORE_GLOBAL_SEARCH_GROUP')\n            result=e.search();after=snapshot(e)\n            phase('AFTER_GLOBAL_SEARCH_GROUP')\n            family.update(search_result=result,after=after)\n            phase('BEFORE_GLOBAL_ASSERTIONS')\n            decisions=[v for v in result['events'] if v['kind']=='DECISION']\n",
+    "old": "        try:\n            result=e.search();after=snapshot(e)\n            family.update(search_result=result,after=after)\n            decisions=[v for v in result['events'] if v['kind']=='DECISION']\n",
+    "start": 63103
+  },
+  {
+    "label": "global_after_restore_1",
+    "new": "        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='GLOBAL_FORCED_DEAD')\n        phase('AFTER_GLOBAL_OUTER_RESTORE')\n",
+    "old": "        passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='GLOBAL_FORCED_DEAD')\n",
+    "start": 65700
+  },
+  {
+    "label": "guarded_handler_and_late_writer_1",
+    "new": "    # Capture all late-writer authority before the original20 delegation.\n    diagnostic_context_raw=canonical({'schema':'unit-row-global-phase-diagnostic-context-v1',\n        'invocation_id':plan['invocation_id'],'purpose':plan['purpose'],'plan':raw_pin(plan_raw),\n        'sources':plan['sources'],'inputs':plan['inputs'],'source_contract':plan['source_contract'],\n        'original_model_binding':ORIGINAL_BINDING,'joint_began_ns':EARLY_G,'joint_deadline_ns':end,\n        'diagnostic_only':True,'reported_case_count':None,'qualified_case_count':0,\n        'positive_joint_gate_accepted':False,'engine_qualified':False,'logical_proof_accepted':False,\n        'complete_GCTS_model_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False})\n    need(len(diagnostic_context_raw)<=65536,'bounded predelegation phase diagnostic context')\n    diagnostic_output_path=str(Path(plan['output_directory']).resolve())\n    diagnostic_writer=save_failure_diagnostic\n    diagnostic_writer_anchor=anchor_fn(diagnostic_writer)\n    if diagnostic_global:phase('BEFORE_GLOBAL_HANDLER')\n    try:\n        call(handlers[plan['purpose']])\n    except TimeoutError as diagnostic_error:\n        if diagnostic_global and type(diagnostic_error)is TimeoutError:\n            # Builtin identity checks and the existing captured writer ONLY;\n            # never invoke a project/native20/Source guard after TimeoutError.\n            try:\n                a=diagnostic_writer_anchor;f=diagnostic_writer\n                if (save_failure_diagnostic is f and f.__code__ is a[1] and f.__globals__ is a[2]\n                        and f.__defaults__ is a[3] and f.__kwdefaults__ is a[4]\n                        and len(f.__closure__ or ())==len(a[5])\n                        and all(x is y and x.cell_contents is v for x,(y,v)in zip(f.__closure__ or (),a[5]))\n                        and tuple((k,id(v))for k,v in sorted((f.__kwdefaults__ or {}).items()))\n                            ==tuple((k,token)for k,token,v in a[6])\n                        and all(f.__kwdefaults__[k]is v for k,token,v in a[6])):\n                    f(diagnostic_output_path,diagnostic_context_raw,latest_callbacks,\n                      'CONTROLS_TIMEOUT_LAST_SCALARS',EARLY_G)\n            except BaseException:\n                pass  # Missing/incomplete diagnostic files remain incomplete.\n        raise\n    if diagnostic_global:phase('AFTER_GLOBAL_HANDLER')\n",
+    "old": "    call(handlers[plan['purpose']])\n",
+    "start": 77368
+  },
+  {
+    "label": "before_output_1",
+    "new": "    if diagnostic_global:phase('BEFORE_DIAGNOSTIC_OUTPUT')\n    qualification = {'schema':'ROOT-unit-row-routed-engine-qualification-payload-v1',\n",
+    "old": "    qualification = {'schema':'ROOT-unit-row-routed-engine-qualification-payload-v1',\n",
+    "start": 80105
+  },
+  {
+    "label": "result_diagnostic_header_1",
+    "new": "        'controls':None,'search':None,'found_validation':None,'routed_engine_qualification':qualification,\n        'diagnostic_only':True,'reported_case_count':None,'qualified_case_count':0,'engine_qualified':False,\n",
+    "old": "        'controls':None,'search':None,'found_validation':None,'routed_engine_qualification':qualification,\n",
+    "start": 81659
+  },
+  {
+    "label": "response_diagnostic_header_1",
+    "new": "        'status':'COMPLETE_WORKER_PENDING_EXTERNAL','invocation_id':plan['invocation_id'],'plan':raw_pin(plan_raw),\n        'diagnostic_only':True,'reported_case_count':None,'qualified_case_count':0,'engine_qualified':False,\n",
+    "old": "        'status':'COMPLETE_WORKER_PENDING_EXTERNAL','invocation_id':plan['invocation_id'],'plan':raw_pin(plan_raw),\n",
+    "start": 82426
+  },
+  {
+    "label": "final_diagnostic_header_1",
+    "new": "        'outputs':[result_pin,response_pin],'response':response_pin,'pending_external':True,\n        'diagnostic_only':True,'reported_case_count':None,'qualified_case_count':0,'engine_qualified':False,\n",
+    "old": "        'outputs':[result_pin,response_pin],'response':response_pin,'pending_external':True,\n",
+    "start": 83746
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "actual_patches": {
+    "forward": {
+      "bytes": 9525,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/readout-forward.patch",
+      "sha256": "3851d1c1afb1726ba533510250f193e7cf4c01e6227104e3303528c119d27447"
+    },
+    "full-inverse": {
+      "bytes": 9533,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/readout-full-inverse.patch",
+      "sha256": "61255fc808eea5b9aed26c206471d3bde2113daac15487bb7a17bcee8e79c48e"
+    }
+  },
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 27649,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/Source-contract-v2.json",
+    "sha256": "e637176c9cf7ffd0ce7a71cc5e8bcdacd0536f694797547f8d9d1ad649a06370"
+  },
+  "outcomes": "exit2 UNKNOWN; exit0 native20/512 +fullwire grants only stored one-cell integration observation; zero newtheorems/wholeengine/fullGCTS/RL/gain",
+  "parent_source": {
+    "bytes": 12172,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v1.py",
+    "sha256": "c376554097bf5d0961520464c0eecd3d74d02e3b308a61e626fb93025d8b1f5b"
+  },
+  "schema": "ROOT-engine-family-pipeline-saved-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "saved byte/native/transport joins only; no semantic replay; same pinned buffers parsed; current literal capsule gates",
+  "source": {
+    "bytes": 15303,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v2.py",
+    "sha256": "f7abedd0481bb826e31ebc75955a9a4ca44de30d07c29bfef7062925689c2c96"
+  },
+  "source_only": true
+}

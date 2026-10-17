@@ -1,0 +1,62 @@
+{
+  "AST_inverse_exact": true,
+  "actual_patches": {
+    "forward": {
+      "bytes": 1524,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/collector-v1-to-v2-forward.patch",
+      "sha256": "d08973aa631719107f93fbb83b6b1ab3f8c56b162fd2a2946029a113e3365765"
+    },
+    "full_inverse": {
+      "bytes": 1524,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/collector-v1-to-v2-full-inverse.patch",
+      "sha256": "5e11698ebfb881a0cbde8cee5041efc9dcb6ec31acda70cb7e95e04574c7e2eb"
+    }
+  },
+  "ancestry_full_addition": {
+    "bytes": 21000,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-delta-v1.json",
+    "sha256": "78cb337072d1f0c70fa7911a4cbbca7edb684e6dc5124832e71696ceef5bf5a8"
+  },
+  "attribute_accesses_fixed": 3,
+  "edit_count": 3,
+  "edits": [
+    {
+      "new_end": 10,
+      "new_start": 9,
+      "new_utf8": "VERSION = 'receptor-family-checked-engine-state-DAG-collector-v2-kernel-visit-counter'\n",
+      "old_end": 10,
+      "old_start": 9,
+      "old_utf8": "VERSION = 'receptor-family-checked-engine-state-DAG-collector-v1'\n"
+    },
+    {
+      "new_end": 149,
+      "new_start": 148,
+      "new_utf8": "        before_visits = language.kernel.visits\n",
+      "old_end": 149,
+      "old_start": 148,
+      "old_utf8": "        before_visits = language.visits\n"
+    },
+    {
+      "new_end": 183,
+      "new_start": 182,
+      "new_utf8": "            require(type(language.kernel.visits) is int and language.kernel.visits >= before_visits,\n",
+      "old_end": 183,
+      "old_start": 182,
+      "old_utf8": "            require(type(language.visits) is int and language.visits >= before_visits,\n"
+    }
+  ],
+  "parent": {
+    "bytes": 19514,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+    "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+  },
+  "raw_forward_full_inverse_exact": true,
+  "schema": "receptor-family-checked-state-DAG-collector-immediate-Source-delta-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19556,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+    "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+  },
+  "source_only": true
+}

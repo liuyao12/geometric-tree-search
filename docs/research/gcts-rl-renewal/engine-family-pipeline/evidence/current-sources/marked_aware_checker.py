@@ -1,0 +1,484 @@
+"""SOURCE ONLY independent marked-aware non-implication finite-fibre checking.
+
+No proposer/adapter import or enumeration call. Original c354 point primitives
+and independent9fd6 marking/state reconstruction are injected by the caller.
+The caller authenticates original Source17/input2 separately from new runtime
+Sources. Pending reads are obligations, not established facts. A partial loss
+never proves zero/one. Resource/callback/authority errors propagate unchanged.
+"""
+import hashlib
+import json
+
+VERSION = 'unit-row-independent-marked-aware-nonimp-fibre-checker-v1'
+PROPOSER_VERSION = 'unit-row-marked-aware-nonimp-fibre-proposer-v1'
+BASE_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+VERIFIER_VERSION = 'unit-row-independent-channel4-state-verifier-v1'
+DECORATOR_VERSION = 'unit-row-certified-row0-point-mark-decorator-v1'
+PROPOSAL_SCHEMA = 'unit-row-marked-aware-nonimp-fibre-proposal-v1'
+FIBRE_SCHEMA = 'unit-row-marked-aware-nonimp-fibres-v1'
+RECEIPT_SCHEMA = 'unit-row-marked-aware-nonimp-fibre-check-v1'
+SCOPE = ('Local marked-aware non-implication fibre evidence only; independent '
+         'checking/global graph/fallback still required.')
+FLAGS = ('complete_candidate_graph_accepted', 'scheduler_or_rollback_accepted',
+         'logical_proof_accepted', 'ROOT_resource_accepted')
+DATA_FLAGS = ('independently_checked', 'logical_proof_accepted',
+    'exact_point_board_accepted', 'complete_GCTS_model_accepted',
+    'marking_activated', 'trajectory_accepted', 'GCTS_advantage_accepted',
+    'RL_accepted', 'ROOT_resource_accepted')
+CARRIER_ORDER = ('size; bot,pred,eq,not,all,imp,and,or; literal names; '
+                 'positive size compositions')
+
+
+def require(ok, reason):
+    if not ok:
+        raise ValueError('marked-aware fibre evidence: ' + reason)
+
+
+def tree(value, tick):
+    tick()
+    if type(value) in (str, int, bool) or value is None:
+        return value
+    if type(value) is list:
+        return [tree(v, tick) for v in value]
+    require(type(value) is dict and all(type(k) is str for k in value),
+            'literal builtin JSON, no float/custom object')
+    return {k: tree(v, tick) for k, v in value.items()}
+
+
+def text(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'),
+                      ensure_ascii=False, allow_nan=False)
+
+
+def sha(value):
+    return hashlib.sha256(text(value).encode('utf8')).hexdigest()
+
+
+def decorated_packet(language, base, verifier, model, original, tick):
+    """Derive actual extra values/identity independently of the decorator."""
+    literal_set = {text(v) for v in model['definition']['certified_literals']}
+    support = sorted({(4, point[1]) for point, value in original['local_m_values']
+                      if point[0] == 1 and value[1] in literal_set})
+    local = [[list(point), 1] for point in support]
+    row = original['placement_key']['translation'][1]
+    glob = [[[point[0], point[1]+row], value] for point, value in local]
+    pre = {'schema': 'unit-row-row0-decorated-type-v1',
+           'base_type_preimage': original['placement_key']['type_preimage'],
+           'marking_id': model['marking_id']}
+    bare = {'schema': 'unit-row-row0-decorated-tile-v1', 'version': DECORATOR_VERSION,
+        'marking_id': model['marking_id'], 'base_tile': original,
+        'placement_key': {'tile_type_id': 'row0-decorated-tile-'+sha(pre),
+            'type_preimage': pre, 'translation': [0, row]},
+        'local_t_values': original['local_t_values'],
+        'global_t_values': original['global_t_values'],
+        'local_m_values': original['local_m_values']+local,
+        'global_m_values': original['global_m_values']+glob,
+        'added_local_m_values': local, 'added_global_m_values': glob,
+        **{k: False for k in DATA_FLAGS}}
+    checked = verifier.check_decorated_tile(language=language, semantics=base,
+                                           marking=model, tile=bare, tick=tick)
+    require(text(checked) == text(bare), 'entire independent decorated packet')
+    return checked
+
+
+def collision(base, tile, names):
+    base.check_collision(tile['base_tile'], names)
+    key = tile['placement_key']
+    literal = text(key['type_preimage'])
+    require(key['tile_type_id'] not in names or names[key['tile_type_id']] == literal,
+            'global decorated digest/full-preimage collision')
+    names[key['tile_type_id']] = literal
+
+
+def obligations(tile, totals, tick):
+    row = tile['placement_key']['translation'][1]
+    pre = tile['placement_key']['type_preimage']['base_type_preimage']
+    result = dict(tile, selection_record=dict(tile['placement_key'], generation=1))
+    result['read_obligations'] = [{'row': row+delta, 'formula': tree(formula, tick),
+        'occupied': totals[(0, row+delta)] == 1, 'fact_accepted': False}
+        for delta, formula in zip(pre['ordered_offsets'], pre['ordered_premise_formulas'])]
+    return result
+
+
+def private_state(language, base, verifier, marking, state, tick):
+    require(base.VERSION == BASE_VERSION and verifier.VERSION == VERIFIER_VERSION,
+            'exact independent original and marked APIs')
+    model_receipt = verifier.check_marking(language=language, semantics=base,
+                                          marking=marking, tick=tick)
+    model = tree(model_receipt['marking'], tick)
+    require(model_receipt['marking_checked'] is True
+            and text(model) == text(marking)
+            and text(model['definition']['original_binding']) == text(language.binding),
+            'whole independently checked frozen model/original binding')
+    s = tree(state, tick)
+    require(type(s) is dict and set(s) == {'schema', 'input_epoch', 'height', 't',
+            'm', 'selected', 'excluded', 'generation', 'marking_id'}
+            and s['schema'] == 'unit-row-channel4-private-state-v1'
+            and s['marking_id'] == model['marking_id'], 'exact full marked private state')
+    marks = base.point_map(s['m'], tick)
+    require(all(point[0] in (1, 2, 3, 4) for point in marks), 'only declared mark channels')
+    original = {k: tree(s[k], tick) for k in ('input_epoch', 'height', 't', 'generation')}
+    original.update(schema='unit-row-implicit-private-state-v1',
+        m=[[list(point), value] for point, value in sorted(marks.items()) if point[0] != 4],
+        selected=[], excluded=[])
+    packets, decorated_keys = [], {'selected': set(), 'excluded': set()}
+    names = {}
+    for category in ('selected', 'excluded'):
+        require(type(s[category]) is list, 'complete selected/excluded inventories')
+        for record in s[category]:
+            tick()
+            fields = {'tile_type_id', 'type_preimage', 'translation'}
+            selected = category == 'selected'
+            require(type(record) is dict and set(record) == fields | ({'generation'} if selected else set()),
+                    'full decorated key/selection fields')
+            pre = record['type_preimage']
+            require(type(pre) is dict and set(pre) == {'schema', 'base_type_preimage', 'marking_id'}
+                    and pre['schema'] == 'unit-row-row0-decorated-type-v1'
+                    and pre['marking_id'] == model['marking_id'], 'exact decorated preimage')
+            raw = base.rebuild_tile(language, pre['base_type_preimage'], record['translation'], tick)
+            tile = decorated_packet(language, base, verifier, model, raw, tick)
+            collision(base, tile, names)
+            expected = dict(tile['placement_key'], generation=1) if selected else tile['placement_key']
+            require(text(record) == text(expected), 'whole original/decorated identity, no hash-only authority')
+            key = text(tile['placement_key'])
+            require(key not in decorated_keys['selected'] and key not in decorated_keys['excluded'],
+                    'no duplicate or overlapping full decorated key')
+            decorated_keys[category].add(key)
+            original[category].append(raw['selection_record'] if selected else raw['placement_key'])
+            if selected:
+                packets.append(tile)
+    original, totals, _, _, _, original_names = base.private_state(language, original, tick)
+    for name, pre in original_names.items():
+        require(name not in names or names[name] == pre, 'whole original collision ledger agreement')
+        names[name] = pre
+    wrapper = {'schema': 'unit-row-row0-decorated-state-v1', 'version': DECORATOR_VERSION,
+        'marking_id': model['marking_id'], 'base_state': original,
+        'decorated_selected': packets, 'global_t_values': s['t'], 'global_m_values': s['m'],
+        'added_m_values': [[list(point), value] for point, value in sorted(marks.items()) if point[0] == 4],
+        **{k: False for k in DATA_FLAGS}}
+    checked = verifier.check_marked_state(language=language, semantics=base,
+                                         marking=model, state=wrapper, tick=tick)
+    require(checked['marked_state_checked'] is True
+            and checked['marking_id'] == model['marking_id']
+            and checked['original_state_sha256'] == sha(original),
+            'full independent original and actual channel4 state union')
+    return s, original, model, totals, marks, decorated_keys['selected'], decorated_keys['excluded'], names, checked
+
+
+def independent_carrier(language, bound, tick):
+    """c354-derived lazy odometer/product grammar, never proposer enumeration."""
+    require(type(bound) is int and 1 <= bound <= 44, 'carrier bound1..44')
+    outside = language.OutsideLanguage
+    fun = sorted(language.theory['functions'].items())
+    pred = sorted(language.theory['predicates'].items())
+    binders = sorted(language.binder_names)
+
+    def allocations(total, width):
+        tick()
+        if width == 0:
+            if total == 0:
+                yield ()
+            return
+        if total < width:
+            return
+        if width == 1:
+            yield (total,)
+            return
+        upper = total-width+1
+        head = [1] * (width-1)
+        while True:
+            tick()
+            last = total-sum(head)
+            if last >= 1:
+                yield tuple(head+[last])
+            position = len(head)-1
+            while position >= 0 and head[position] == upper:
+                head[position] = 1
+                position -= 1
+            if position < 0:
+                return
+            head[position] += 1
+
+    def product(sizes, names, term_mode):
+        tick()
+        if not sizes:
+            yield []
+            return
+        child = term if term_mode else formula
+        stack, prefix = [iter(child(sizes[0], names))], []
+        while stack:
+            tick()
+            try:
+                item = next(stack[-1])
+            except StopIteration:
+                stack.pop()
+                if prefix:
+                    prefix.pop()
+                continue
+            if len(stack) == len(sizes):
+                yield prefix+[item]
+            else:
+                prefix.append(item)
+                stack.append(iter(child(sizes[len(prefix)], names)))
+
+    def term(size, names):
+        tick()
+        if not 1 <= size <= 12:
+            return
+        if size == 1:
+            for name in sorted(names):
+                tick()
+                yield ['var', name]
+        for name, arity in fun:
+            for sizes in allocations(size-1, arity):
+                for values in product(sizes, names, True):
+                    tick()
+                    yield ['fun', name, values]
+
+    def formula(size, names):
+        tick()
+        if size == 1:
+            yield ['bot']
+        for name, arity in pred:
+            for sizes in allocations(size-1, arity):
+                for values in product(sizes, names, True):
+                    tick()
+                    yield ['pred', name, values]
+        for sizes in allocations(size-1, 2):
+            for values in product(sizes, names, True):
+                tick()
+                yield ['eq', values[0], values[1]]
+        if size > 1:
+            for body in formula(size-1, names):
+                tick()
+                yield ['not', body]
+            for binder in binders:
+                for body in formula(size-1, names | {binder}):
+                    tick()
+                    yield ['all', binder, body]
+        for tag in ('imp', 'and', 'or'):
+            for sizes in allocations(size-1, 2):
+                for values in product(sizes, names, False):
+                    tick()
+                    yield [tag, values[0], values[1]]
+
+    for nodes in range(1, bound+1):
+        for value in formula(nodes, frozenset(language.parameter_set)):
+            tick()
+            try:
+                measured = language.formula(value)
+            except outside:
+                continue
+            require(measured == nodes, 'independent exact constructor count')
+            yield value
+
+
+def fibre_header(language, prefix, output, tick):
+    tick()
+    nodes = language.formula(output)
+    return {'schema': FIBRE_SCHEMA, 'completed': False, 'output_nodes': nodes,
+        'MP_antecedent_max_nodes': 43-nodes,
+        'assigned_prior_rows': [i for i, value in enumerate(prefix) if value is not None],
+        'absent_prior_rows': [i for i, value in enumerate(prefix) if value is None],
+        'axiom_labels_seen': [], 'Gamma_occurrences_seen': [],
+        'UG_fibres': [], 'ordered_MP_fibres': [], 'carrier_order': CARRIER_ORDER,
+        'carrier_materialized': False, 'independently_accepted': False,
+        'UI_EqSubst_excluded_by_nonimp': True}
+
+
+def complete_census(language, base, verifier, model, state, row, output, prefix,
+                    totals, marks, selected, excluded, names, tick):
+    """Finish every required fibre for a claimed exact zero or singleton."""
+    evidence = fibre_header(language, prefix, output, tick)
+    survivors, seen, roots = [], set(), []
+    outside = language.OutsideLanguage
+
+    def evaluate(witness, premises, reads):
+        tick()
+        pre = {'input_epoch': state['input_epoch'], 'primitive_witness': witness,
+            'ordered_premise_formulas': premises, 'ordered_offsets': [k-row for k in reads]}
+        try:
+            original = base.rebuild_tile(language, pre, [0, row], tick)
+        except outside as error:
+            return {'rule': witness['rule'], 'reads': reads, 'reason': error.reason,
+                    'kind': 'definite_membership_exclusion'}
+        tile = decorated_packet(language, base, verifier, model, original, tick)
+        collision(base, tile, names)
+        reason = base.legality(tile, totals, marks, selected, excluded)
+        if reason is not None:
+            return {'rule': witness['rule'], 'reads': reads, 'kind': reason,
+                    'placement_key': tile['placement_key']}
+        key = text(tile['placement_key'])
+        if key in seen:
+            return {'kind': 'duplicate_full_key'}
+        seen.add(key)
+        survivors.append(obligations(tile, totals, tick))
+        require(all(value is not None for value in prefix) or len(survivors) < 2,
+                'complete missing-prefix cover cannot conceal two marked survivors')
+        return {'kind': 'new_survivor'}
+
+    for label in sorted(language.theory['axioms']):
+        tick()
+        evidence['axiom_labels_seen'].append(label)
+        if text(language.theory['axioms'][label]) == text(output):
+            result = evaluate({'rule': 'axiom', 'name': label, 'formula': output}, [], [])
+            if result['kind'] not in ('new_survivor', 'duplicate_full_key'):
+                roots.append(result)
+    for index, value in enumerate(language.gamma):
+        tick()
+        evidence['Gamma_occurrences_seen'].append(index)
+        if text(value) == text(output):
+            result = evaluate({'rule': 'assumption', 'index': index, 'formula': output}, [], [])
+            if result['kind'] not in ('new_survivor', 'duplicate_full_key'):
+                roots.append(result)
+
+    def finish(descriptor, stream):
+        transcript, decisions = hashlib.sha256(), hashlib.sha256()
+        examined, rejected, start = 0, 0, len(survivors)
+        for witness, premises, reads in stream:
+            tick()
+            transcript.update((text([witness, premises, reads])+'\n').encode('utf8'))
+            examined += 1
+            result = evaluate(witness, premises, reads)
+            decisions.update((text(result)+'\n').encode('utf8'))
+            rejected += result['kind'] not in ('new_survivor', 'duplicate_full_key')
+        descriptor.update(completed=True, examined=examined,
+            new_survivors=len(survivors)-start, rejections=rejected,
+            examined_preimages_sha256=transcript.hexdigest(), decisions_sha256=decisions.hexdigest())
+
+    for k, value in enumerate(prefix):
+        tick()
+        descriptor = {'row': k, 'inverse': 'UG', 'completed': False}
+        evidence['UG_fibres'].append(descriptor)
+        if output[0] == 'all' and (value is None or text(value) == text(output[2])):
+            descriptor['case'] = 'missing_or_matching_body'
+            stream = (({'rule': 'generalize', 'variable': output[1], 'formula': output}, [output[2]], [k]),)
+        else:
+            descriptor['case'] = 'not_universal_or_assigned_body_mismatch'
+            stream = ()
+        finish(descriptor, stream)
+    for i in range(row):
+        for j in range(row):
+            tick()
+            antecedent, implication = prefix[i], prefix[j]
+            descriptor = {'rows': [i, j], 'inverse': 'MP', 'completed': False}
+            evidence['ordered_MP_fibres'].append(descriptor)
+            if i == j:
+                descriptor.update(case='FINITE_AST_OCCURS_CHECK_EMPTY',
+                    equation=['A', ['imp', 'A', 'C']], positive_output_nodes=evidence['output_nodes'])
+                stream = ()
+            elif antecedent is not None:
+                descriptor['case'] = 'antecedent_assigned'
+                required = ['imp', antecedent, output]
+                stream = (({'rule': 'mp', 'formula': output}, [antecedent, required], [i, j]),) if implication is None or text(implication) == text(required) else ()
+            elif implication is not None:
+                descriptor['case'] = 'only_implication_assigned'
+                stream = (({'rule': 'mp', 'formula': output}, [implication[1], implication], [i, j]),) if implication[0] == 'imp' and text(implication[2]) == text(output) else ()
+            else:
+                descriptor['case'] = 'both_absent_full_scoped_carrier'
+                bound = evidence['MP_antecedent_max_nodes']
+                stream = (({'rule': 'mp', 'formula': output}, [value, ['imp', value, output]], [i, j])
+                    for value in independent_carrier(language, bound, tick)) if bound >= 1 else ()
+            finish(descriptor, stream)
+    evidence['completed'] = True
+    tick()
+    return survivors, roots, evidence
+
+
+def check_degree_evidence(*, language, base_semantics, verifier, marking, state, row, proposal, tick):
+    """Accept only new local evidence; this is not an old c354 complete receipt."""
+    authority = verifier.private_authority(language, base_semantics, tick)
+    s, original, model, totals, marks, selected, excluded, names, state_check = private_state(
+        language, base_semantics, verifier, marking, state, tick)
+    require(type(row) is int and 0 <= row < 24 and totals[(0, row)] == 0, 'unfilled queried row')
+    output = base_semantics.formula_at(language, marks, row, tick)
+    prefix = [base_semantics.formula_at(language, marks, k, tick) for k in range(row)]
+    p = tree(proposal, tick)
+    fields = {'schema', 'version', 'kind', 'state', 'state_sha256', 'original_state',
+        'original_state_sha256', 'input_epoch', 'language_binding', 'marking_id',
+        'row', 'output_formula', 'candidates', 'root_rejections', 'fibre_cover',
+        'complete_cover_proposed', 'untrusted', 'scope'} | set(FLAGS)
+    require(type(p) is dict and set(p) == fields and p['schema'] == PROPOSAL_SCHEMA
+            and p['version'] == PROPOSER_VERSION, 'exact proposal protocol/fields/version')
+    require(text(p['state']) == text(s) and p['state_sha256'] == sha(s)
+            and text(p['original_state']) == text(original)
+            and p['original_state_sha256'] == sha(original)
+            and p['input_epoch'] == s['input_epoch']
+            and text(p['language_binding']) == text(language.binding)
+            and p['marking_id'] == model['marking_id']
+            and type(p['row']) is int and p['row'] == row
+            and text(p['output_formula']) == text(output), 'whole original/marked current context')
+    require(p['untrusted'] is True and p['scope'] == SCOPE
+            and all(p[k] is False for k in FLAGS), 'untrusted flags/scope')
+    require(type(p['candidates']) is list and type(p['root_rejections']) is list, 'full candidate/observation lists')
+    kind = p['kind']
+    require(type(kind) is str and kind in ('TWO_LEGAL_WITNESSES',
+            'COMPLETE_NONIMP_FIBRE_COVER', 'UNKNOWN'), 'declared evidence kind')
+    covered = kind == 'COMPLETE_NONIMP_FIBRE_COVER'
+    require(p['complete_cover_proposed'] is covered, 'literal completion flag')
+    eligible = output is not None and output[0] != 'imp'
+    candidates, roots, census = [], [], None
+    if not eligible:
+        require(kind == 'UNKNOWN' and p['candidates'] == []
+                and p['root_rejections'] == [] and p['fibre_cover'] is None,
+                'implication/absent output remains unsupported UNKNOWN')
+    elif covered:
+        candidates, roots, census = complete_census(language, base_semantics,
+            verifier, model, s, row, output, prefix, totals, marks, selected, excluded, names, tick)
+        require(text(p['candidates']) == text(candidates), 'whole independent marked survivor packets/order')
+        require(text(p['root_rejections']) == text(roots), 'whole independent root rejection census')
+        require(text(p['fibre_cover']) == text(census), 'complete independent fibres/counts/hashes')
+    else:
+        header = fibre_header(language, prefix, output, tick)
+        partial = p['fibre_cover']
+        require(type(partial) is dict and set(partial) == set(header), 'partial fibre exact header fields')
+        for name, value in header.items():
+            if name in ('axiom_labels_seen', 'Gamma_occurrences_seen', 'UG_fibres', 'ordered_MP_fibres'):
+                require(type(partial[name]) is list, 'partial observations are arrays, not coverage authority')
+            else:
+                require(text(partial[name]) == text(value), 'partial fibre context/unfinished header')
+        require(len(p['candidates']) == 2 if kind == 'TWO_LEGAL_WITNESSES'
+                else len(p['candidates']) <= 1, 'two-witness/UNKNOWN candidate count')
+        used = set()
+        for raw in p['candidates']:
+            tick()
+            require(type(raw) is dict and type(raw.get('placement_key')) is dict, 'full proposed candidate')
+            key = raw['placement_key']
+            require(set(key) == {'tile_type_id', 'type_preimage', 'translation'}
+                    and key['translation'] == [0, row], 'incident complete placement key')
+            pre = key['type_preimage']
+            require(type(pre) is dict and set(pre) == {'schema', 'base_type_preimage', 'marking_id'}
+                    and pre['schema'] == 'unit-row-row0-decorated-type-v1'
+                    and pre['marking_id'] == model['marking_id'], 'full proposed decorated preimage')
+            original_tile = base_semantics.rebuild_tile(language, pre['base_type_preimage'], key['translation'], tick)
+            tile = decorated_packet(language, base_semantics, verifier, model, original_tile, tick)
+            collision(base_semantics, tile, names)
+            require(base_semantics.legality(tile, totals, marks, selected, excluded) is None,
+                    'whole current marked candidate legality')
+            identity = text(tile['placement_key'])
+            require(identity not in used, 'two full witnesses must be distinct placements')
+            used.add(identity)
+            expected = obligations(tile, totals, tick)
+            require(text(raw) == text(expected), 'entire rebuilt current marked witness/ordered obligations')
+            candidates.append(expected)
+        # Partial rejection arrays/counters are not copied as checked evidence.
+    require(text(verifier.private_authority(language, base_semantics, tick)) == text(authority)
+            and text(marking) == text(model), 'whole original authority and frozen marking unchanged')
+    degree = len(candidates) if covered else None
+    status = ('ZERO' if degree == 0 else 'SINGLETON' if degree == 1 else 'MANY') if covered else (
+        'TWO_OR_MORE' if kind == 'TWO_LEGAL_WITNESSES' else 'UNKNOWN')
+    tick()
+    return {'schema': RECEIPT_SCHEMA, 'version': VERSION, 'status': status,
+        'accepted_local_evidence': status != 'UNKNOWN',
+        'complete_cover_checked': covered, 'nonimp_fibre_cover_checked': covered,
+        'degree_exact': degree, 'candidate_keys': [tile['placement_key'] for tile in candidates],
+        'sole_candidate': candidates[0] if degree == 1 else None,
+        'checked_candidates': candidates, 'checked_root_rejections': roots,
+        'checked_fibre_cover': census,
+        'state': s, 'state_sha256': sha(s), 'original_state': original,
+        'original_state_sha256': sha(original), 'row': row, 'output_formula': output,
+        'input_epoch': s['input_epoch'], 'language_binding': tree(language.binding, tick),
+        'marking_id': model['marking_id'], 'marking_sha256': sha(model),
+        'independent_marked_state_check': state_check, 'proposal_sha256': sha(p),
+        'scope': 'New independently re-enumerated marked local evidence; no old c354 completion or graph authority.',
+        **{k: False for k in FLAGS}}

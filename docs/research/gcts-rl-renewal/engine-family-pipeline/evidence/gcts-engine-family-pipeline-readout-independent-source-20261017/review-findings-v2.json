@@ -1,0 +1,187 @@
+{
+  "actual_data_read": false,
+  "actual_patches": {
+    "forward": {
+      "bytes": 9525,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/readout-forward.patch",
+      "sha256": "3851d1c1afb1726ba533510250f193e7cf4c01e6227104e3303528c119d27447"
+    },
+    "full-inverse": {
+      "bytes": 9533,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/readout-full-inverse.patch",
+      "sha256": "61255fc808eea5b9aed26c206471d3bde2113daac15487bb7a17bcee8e79c48e"
+    }
+  },
+  "authorship": "Reviewer authored physical provider, host adapter, family-consumer and prior native/mathematical/caller ancestry. Root authored this saved readout. This separate raw-data closure Source audit is not a second independently implemented mathematical check.",
+  "checks": [
+    {
+      "id": "CURRENT-AND-PARENT-RAW-PINS",
+      "pass": true
+    },
+    {
+      "id": "CONTRACT-CURRENT-SOURCE-PIN",
+      "pass": true
+    },
+    {
+      "id": "WHOLE-CURRENT-AST-COMPILE-NO-EVAL",
+      "pass": true
+    },
+    {
+      "id": "ACTUAL-FORWARD-PATCH",
+      "pass": true
+    },
+    {
+      "id": "ACTUAL-FULL-INVERSE-PATCH",
+      "pass": true
+    },
+    {
+      "id": "EIGHT-HELPERS-RAW-AST-EXACT",
+      "pass": true
+    },
+    {
+      "id": "CURRENT-CONTRACT-LITERAL-CAPSULE",
+      "pass": true
+    },
+    {
+      "id": "EXACT-CURRENT22-ORIGINAL17-INPUT2-MAPS",
+      "pass": true
+    },
+    {
+      "id": "NO-SCIENTIFIC-OR-CLOCK-API",
+      "pass": true
+    },
+    {
+      "id": "SAME-AUTHENTICATED-OUTPUT-BUFFERS",
+      "pass": true
+    },
+    {
+      "id": "POSITIVE-NATIVE20-512-FAILURE55",
+      "pass": true
+    },
+    {
+      "id": "EXACT-NATIVE-SESSION-EXIT-TYPES",
+      "pass": true
+    },
+    {
+      "id": "FULL-CANONICAL-WIRE-LOSSLESS-BOUNDS",
+      "pass": true
+    },
+    {
+      "id": "ONLY-NARROW-PREFERENCE-AUTHORITY",
+      "pass": true
+    }
+  ],
+  "concrete_blockers": [],
+  "helper_executed": false,
+  "limitations": [
+    "No actual data reconciliation has been performed by reviewer.",
+    "Source pass does not certify runtime results/resources or permit a cold execution.",
+    "Root owns any later saved-only reader execution and narrow acceptance."
+  ],
+  "manual_findings": [
+    {
+      "finding": "CURRENT_CONTRACT is the exact immutable e637/27649 concise contract; its current22 map binds caller1f64 and original17/input2/epoch. Pipeline V1 stale cold contract is preserved separately, not operative.",
+      "id": "CURRENT-CAPSULE"
+    },
+    {
+      "finding": "pinned(ref) returns raw output bytes retained in output_raw; response and envelope parse those exact buffers. Whole response LF/completion SHA and compressed/expanded hashes/canonical bytes join all layers.",
+      "id": "SAME-BUFFER"
+    },
+    {
+      "finding": "Native once/observation/meter schemas, version/clock/PID/exact-int times/exits/reap and no-cancellation join fixed argv, plan SHA/size, exact probe bytes and same-handle Date bracket. BothNone or positive exact-int sessions, bool excluded.",
+      "id": "NATIVE"
+    },
+    {
+      "finding": "Positive requires launch-through-postprobe below20s and RSS below512MiB with empty stderr; failure branch has strict below55s native terminal closure and no positive wire/integration qualification. Date includes wrapper startup/output scope below91s; old60s meter kill/owned bound stays in frozen native Source.",
+      "id": "RESOURCE-SCOPE"
+    },
+    {
+      "finding": "Completion schema/exit-required flag, response status/version/native-clock/limits/resource/current-source maps, final pending flag and full original-model payload/false flags now joined without replaying mathematics.",
+      "id": "WIRE"
+    },
+    {
+      "finding": "CHECKED_FRESH_BRANCH_PREFERENCE is trusted only as the guarded measured caller report. The reader neither rechecks mathematics nor installs a member. Returned UNKNOWN may have native/wire closure but integration flag remainsfalse; exit2 staysUNKNOWN and has no full wire/integration qualification.",
+      "id": "NARROW-POSITIVE"
+    },
+    {
+      "finding": "No theorem, whole-engine/full-GCTS/RL/gain or marking activation is accepted; summary reported_theorem_count0 is a fixed no-new-theorem label, not inferred mathematical completeness.",
+      "id": "NO-STRONG-PROMOTION"
+    },
+    {
+      "finding": "All three frozen V1 blockers closed by exact current Source; V1 review and code retained.",
+      "id": "NEGATIVE-CLOSED"
+    }
+  ],
+  "method": "Whole current reader/contract, entire affected main, actual native once/meter Sources and cold output wire literals read. Raw/AST metadata and compile without evaluation only. No readout/helper/module/cold/project/science/clock execution; no actual plan, grant, native, result or output files opened.",
+  "operative_cold_contract": {
+    "bytes": 27649,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/Source-contract-v2.json",
+    "sha256": "e637176c9cf7ffd0ce7a71cc5e8bcdacd0536f694797547f8d9d1ad649a06370"
+  },
+  "operative_cold_source": {
+    "bytes": 51791,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_engine_family_pipeline_cold_v1.py",
+    "sha256": "1f642912eea4a89523aad855d83e2f1d213c07945ae0bdc71bfb6b8c69cd3562"
+  },
+  "parent_source": {
+    "bytes": 12172,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v1.py",
+    "sha256": "c376554097bf5d0961520464c0eecd3d74d02e3b308a61e626fb93025d8b1f5b"
+  },
+  "patch_hunks": {
+    "forward": 7,
+    "inverse": 7
+  },
+  "preserved_negative": {
+    "bytes": 1560,
+    "path": "/private/tmp/gcts-engine-family-pipeline-readout-independent-source-20261017/typed-Source-review-v1.json",
+    "sha256": "6e4fc91d5ab27e9a11f7c2a220967379a83532ee7c1ea1429b67bb556e449510"
+  },
+  "schema": "ROOT-engine-family-pipeline-saved-Source-findings-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15303,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v2.py",
+    "sha256": "f7abedd0481bb826e31ebc75955a9a4ca44de30d07c29bfef7062925689c2c96"
+  },
+  "source_contract": {
+    "bytes": 1648,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/readout-Source-contract-v2.json",
+    "sha256": "ab897204fc34d7c8c874e2b53dde8bf6562215e53596190a12abf338c4522693"
+  },
+  "unchanged_helpers": [
+    {
+      "name": "need",
+      "sha256": "4abc771a00d8a93c998d84916eb2c3e37bf42ec965f3cf7b72ab04695141c4a5"
+    },
+    {
+      "name": "canonical",
+      "sha256": "be2656a409d348185eef310652f0425470f672641fc28cead367113a0b7916f9"
+    },
+    {
+      "name": "unique",
+      "sha256": "668bd105dc8d9479a6e06e79d5ba1dd280136ac79f299f35a808ac7c6965cf68"
+    },
+    {
+      "name": "decode",
+      "sha256": "206501fe5d65b301fae5677412fddea47a8dcb977ec3b376c01b7fc079b90248"
+    },
+    {
+      "name": "raw_pin",
+      "sha256": "fc1304dc4832963075dcf183bf9811a74d88a4538e6e73ef5f9dbbe4d0a7dae1"
+    },
+    {
+      "name": "read",
+      "sha256": "5f78fd969a3d199dc4b2d0a4274f89056442b92e6c464071aa51409c116c960e"
+    },
+    {
+      "name": "pinned",
+      "sha256": "06db6a0f48361c55fb109f93ba5b5fd2fa8df866e99d21782986c9bd965f1f16"
+    },
+    {
+      "name": "write",
+      "sha256": "442a7f666cade566a1c71a132a7206c78073b6331ec2510e599b1db9d2bb6bf2"
+    }
+  ],
+  "verdict": "CONDITIONAL_SOURCE_PASS"
+}

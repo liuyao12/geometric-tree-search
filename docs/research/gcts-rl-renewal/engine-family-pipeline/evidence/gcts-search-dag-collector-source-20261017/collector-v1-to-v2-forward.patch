@@ -1,0 +1,29 @@
+--- checked_engine_state_dag_collector_v1.py
++++ checked_engine_state_dag_collector_v2.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-checked-engine-state-DAG-collector-v1'
++VERSION = 'receptor-family-checked-engine-state-DAG-collector-v2-kernel-visit-counter'
+ RESULT_SCHEMA = 'receptor-family-checked-state-DAG-collection-v1'
+ DAG_SCHEMA = 'receptor-family-primitive-derivation-DAG-v1'
+ BASE_VERSION = 'independent-unit-row-missing-mark-degree-check-v2'
+@@ -146,7 +146,7 @@
+                 and point.verifier.VERSION == VERIFIER_VERSION
+                 and host_adapter.VERSION == HOST_ADAPTER_VERSION,
+                 'APIS', 'exact original/marked/host adapter protocols')
+-        before_visits = language.visits
++        before_visits = language.kernel.visits
+         require(type(before_visits) is int, 'VISITS', 'native cumulative parser counter')
+         host = work.copy(work.call(host_adapter.describe_host,
+                                   language=language, tick=work.step))
+@@ -180,7 +180,7 @@
+                     and point.marking_id == marking_id,
+                     'APIS', 'owned component/marking identity unchanged')
+             work.call(point.check_marking, language, work.step)
+-            require(type(language.visits) is int and language.visits >= before_visits,
++            require(type(language.kernel.visits) is int and language.kernel.visits >= before_visits,
+                     'VISITS', 'no native counter reset')
+ 
+         if not s['selected']:

@@ -1,0 +1,40 @@
+{
+  "actual_data_read": false,
+  "author_identity": "/root",
+  "author_overlap_disclosed": true,
+  "blockers": [
+    "PIPELINE-SAVED-CURRENT-CAPSULE-1",
+    "PIPELINE-SAVED-PIN-PARSE-BUFFER-1",
+    "PIPELINE-SAVED-SESSION-EXIT-TYPES-1"
+  ],
+  "findings": {
+    "bytes": 5245,
+    "path": "/private/tmp/gcts-engine-family-pipeline-readout-independent-source-20261017/review-findings-v1.json",
+    "sha256": "da0f6e403161834f3697cce790d14274d46145f6fdb1cb374cb293b9c41f48df"
+  },
+  "helper_executed": false,
+  "integration_path_accepted": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_qualified": false,
+  "schema": "ROOT-engine-family-pipeline-saved-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-engine-family-pipeline-saved-Source",
+  "source": {
+    "bytes": 12172,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v1.py",
+    "sha256": "c376554097bf5d0961520464c0eecd3d74d02e3b308a61e626fb93025d8b1f5b"
+  },
+  "source_contract": null,
+  "source_contract_status": "No saved-reader Source contract frozen when V1 finding was raised; exact cold contract is separately pinned in findings.",
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "readout": {
+      "bytes": 12172,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v1.py",
+      "sha256": "c376554097bf5d0961520464c0eecd3d74d02e3b308a61e626fb93025d8b1f5b"
+    }
+  },
+  "verdict": "SOURCE_REJECTED"
+}

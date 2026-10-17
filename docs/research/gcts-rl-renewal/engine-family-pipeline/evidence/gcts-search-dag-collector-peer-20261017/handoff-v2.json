@@ -1,0 +1,43 @@
+{
+  "blockers": [],
+  "findings": {
+    "bytes": 4395,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/findings-v2.json",
+    "sha256": "c883fe5acd5da0cae29554b34d3cfadd7ad200a812b2b0d4c13ab9ff268773e5"
+  },
+  "preserved_negative": {
+    "bytes": 2695,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "a687f4231326ccbc16e8f6efa3665b3126e8fc6710207b8812ba41a35c773fcb"
+  },
+  "raw_AST_evidence": {
+    "bytes": 3125,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/independent-raw-AST-v2.json",
+    "sha256": "5fd0fded312dd05e604ae6e704b9c10be84ff4d0f966a77e0a1fc33015d27572"
+  },
+  "schema": "receptor-family-collector-peer-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19556,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+    "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+  },
+  "source_contract": {
+    "bytes": 12609,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-contract-v2.json",
+    "sha256": "99e2edb85f15fba5b64398a3aeb1b256a634d711b43e8903c77fb9c6dd9dc741"
+  },
+  "source_handoff": {
+    "bytes": 3234,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/handoff-v2.json",
+    "sha256": "bdd4adf9abb8e97161f1bdb0a20547efa93a1830cfc43303747d7c1c2e23e178"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "typed_review": {
+    "bytes": 2914,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "3f05c7a98d94dab159473ff02ecf99ff0db362a9070fd817abca44ff34662441"
+  }
+}

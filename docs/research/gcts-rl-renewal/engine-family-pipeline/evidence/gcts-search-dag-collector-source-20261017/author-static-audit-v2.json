@@ -1,0 +1,68 @@
+{
+  "API_wire": {
+    "bytes": 5484,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/API-wire-v2.json",
+    "sha256": "ea26f10c137855cb4881eacc2b53748d51f19421440843395a9626cad736b0ec"
+  },
+  "attribute_accesses_fixed": 3,
+  "changed_line_regions": 3,
+  "changed_regions": [
+    "collect_derivation",
+    "collect_derivation.finish_guard"
+  ],
+  "check_count": 8,
+  "checks": [
+    "SourceV1_preserved",
+    "ownVERSION_and_counter_lines_only",
+    "three_attribute_accesses_two_counter_lines",
+    "full3region_raw_inverse",
+    "whole_AST_inverse",
+    "both_actual_unified_patch_directions",
+    "every_other_named_region_raw_ASTexact",
+    "builtin_compile_without_evaluation_only"
+  ],
+  "clocks_called": 0,
+  "immediate_delta": {
+    "bytes": 2339,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/immediate-Source-delta-v2.json",
+    "sha256": "ffb1251025c36b76f0a7e4caa95a7386c5639f3f800ffe7064807fad71db2b05"
+  },
+  "models_executed": 0,
+  "parent": {
+    "bytes": 19514,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+    "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+  },
+  "raw_AST_exact_regions": [
+    "CollectionDataError",
+    "CollectionDataError.__init__",
+    "_Unfinished",
+    "_CallbackFailure",
+    "_CallbackFailure.__init__",
+    "require",
+    "canonical",
+    "digest",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "_Work.copy",
+    "_Work.call",
+    "_Work.report",
+    "collect_derivation.result"
+  ],
+  "retained_whole_static_audit": {
+    "bytes": 6044,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/author-static-audit-v1.json",
+    "sha256": "3942d06d05f39d07ce17fa7f5fe339df35daec3676da688125024419eb4047ef"
+  },
+  "schema": "receptor-family-checked-state-DAG-collector-author-static-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19556,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+    "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+  },
+  "source_only": true,
+  "tests_run": 0
+}

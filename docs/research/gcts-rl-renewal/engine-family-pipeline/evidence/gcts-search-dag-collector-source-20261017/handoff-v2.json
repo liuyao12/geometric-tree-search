@@ -1,0 +1,75 @@
+{
+  "API_wire": {
+    "bytes": 5484,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/API-wire-v2.json",
+    "sha256": "ea26f10c137855cb4881eacc2b53748d51f19421440843395a9626cad736b0ec"
+  },
+  "actual_patches": {
+    "forward": {
+      "bytes": 1524,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/collector-v1-to-v2-forward.patch",
+      "sha256": "d08973aa631719107f93fbb83b6b1ab3f8c56b162fd2a2946029a113e3365765"
+    },
+    "full_inverse": {
+      "bytes": 1524,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/collector-v1-to-v2-full-inverse.patch",
+      "sha256": "5e11698ebfb881a0cbde8cee5041efc9dcb6ec31acda70cb7e95e04574c7e2eb"
+    }
+  },
+  "ancestry_full_addition": {
+    "bytes": 21000,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-delta-v1.json",
+    "sha256": "78cb337072d1f0c70fa7911a4cbbca7edb684e6dc5124832e71696ceef5bf5a8"
+  },
+  "author_static": {
+    "bytes": 2223,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/author-static-audit-v2.json",
+    "sha256": "e0aa57a2a9dc2d4f605e08a44697ba608ab8443381dfef44078f5f7fbb58c472"
+  },
+  "closed_in_Source_only": [
+    "COLLECTOR-NATIVE-COUNTER-ABI-1"
+  ],
+  "next": "Genuine distinct whole currentV2+contract/repair review and Root whole review before any separately granted actual. V1 negative preserved, no execution.",
+  "preserved_negative": {
+    "bytes": 2695,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "a687f4231326ccbc16e8f6efa3665b3126e8fc6710207b8812ba41a35c773fcb"
+  },
+  "preserved_parent_contract": {
+    "bytes": 10602,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-contract-v1.json",
+    "sha256": "f83cd6b6e0cce6794639b19b1ee0ebf12424d9772f4e5a1a1edd2b06c4db21f0"
+  },
+  "preserved_parent_source": {
+    "bytes": 19514,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+    "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+  },
+  "runtime_qualified": false,
+  "schema": "receptor-family-checked-state-DAG-collector-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19556,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+    "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+  },
+  "source_contract": {
+    "bytes": 12609,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-contract-v2.json",
+    "sha256": "99e2edb85f15fba5b64398a3aeb1b256a634d711b43e8903c77fb9c6dd9dc741"
+  },
+  "source_delta": {
+    "bytes": 2339,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/immediate-Source-delta-v2.json",
+    "sha256": "ffb1251025c36b76f0a7e4caa95a7386c5639f3f800ffe7064807fad71db2b05"
+  },
+  "source_only": true,
+  "sources": {
+    "collector": {
+      "bytes": 19556,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    }
+  }
+}

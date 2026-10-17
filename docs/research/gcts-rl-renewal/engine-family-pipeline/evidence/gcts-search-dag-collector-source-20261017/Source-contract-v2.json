@@ -1,0 +1,197 @@
+{
+  "API_wire": {
+    "bytes": 5484,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/API-wire-v2.json",
+    "sha256": "ea26f10c137855cb4881eacc2b53748d51f19421440843395a9626cad736b0ec"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "required": [
+      "status",
+      "author_overlap",
+      "findings",
+      "blockers"
+    ],
+    "schema": "receptor-family-checked-state-DAG-collector-typed-Source-review-v2",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-checked-state-DAG-collector-Source",
+    "source": {
+      "bytes": 19556,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    },
+    "source_contract": "Exact frozen current contract capsule",
+    "source_only": true,
+    "sources": {
+      "collector": {
+        "bytes": 19556,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+        "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+      }
+    }
+  },
+  "ancestry_full_addition": {
+    "bytes": 21000,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-delta-v1.json",
+    "sha256": "78cb337072d1f0c70fa7911a4cbbca7edb684e6dc5124832e71696ceef5bf5a8"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Author owns generic miner/producer, historical c354/engine/kernel/caller dependencies. Current4bd6 hostadapter and9fd marked verifier independently authored. This Source author record is not a peer review or scientific pass.",
+  "author_static": {
+    "bytes": 2223,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/author-static-audit-v2.json",
+    "sha256": "e0aa57a2a9dc2d4f605e08a44697ba608ab8443381dfef44078f5f7fbb58c472"
+  },
+  "dependency_sources": {
+    "base": {
+      "original_source": {
+        "bytes": 27553,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+      },
+      "retained_exact_bytes": {
+        "bytes": 27553,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-base_semantics.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+      }
+    },
+    "host_adapter": {
+      "original_source": {
+        "bytes": 25205,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+        "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+      },
+      "retained_exact_bytes": {
+        "bytes": 25205,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-family_adapter.py",
+        "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+      }
+    },
+    "language": {
+      "original_source": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "retained_exact_bytes": {
+        "bytes": 20112,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-language.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      }
+    },
+    "miner": {
+      "original_source": {
+        "bytes": 29018,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
+        "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+      },
+      "retained_exact_bytes": {
+        "bytes": 29018,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-miner.py",
+        "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+      }
+    },
+    "old_point": {
+      "original_source": {
+        "bytes": 29197,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py",
+        "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+      },
+      "retained_exact_bytes": {
+        "bytes": 29197,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-point_adapter.py",
+        "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+      }
+    }
+  },
+  "engine_activated": false,
+  "implementation": {
+    "bounded_work": "Own copy/loop/injected tick work/depth limits; no native time/space reset, no crosscall cache or parser visits reset. Native delegates keep original cumulative Root tick/parser bounds; own work is not a complete timing metric.",
+    "closure": "dependency_closed_relative_to_Gamma is only a graph dependency statement. Even input-free/emptyGamma does not produce a root proof/word/target membership check, scheduler conclusion or universal lemma.",
+    "context": "Selected assumption is a real original native node with exact orderedGamma index. hypotheses[]; wholeGamma retained inhost/context maps. No Gamma occurrence becomes a fake occupied premise row.",
+    "current_binding": "Current selected family lane uses pointa197, c354 and4bd6. Public version checks are interface gates only; Root must authenticate raw Source objects/callbacks and original17/input2 separately. ea300 is not silently substituted.",
+    "entrypoint": "collect_derivation(*,language,base_semantics,marked_semantics,host_adapter,state,origin,tick,limits=None)",
+    "full_original_authority": "Actual4bd6.describe_host checks full original Source17 effective declaration/profile/epoch/binding/theory/names/kernel/Gamma. Collector freshly validates each Gamma formula, original complete state and each native selected witness. Runtime map is distinct and never rebases original keys.",
+    "open_reads": "Occupied source iff actual selected output exists; its exact output must equal ordered premise. Every absent read is a conditional input, even if a formula mark already constrains it. Repeated read row shares literal source identity and formula. All read fact_accepted flagsFalse.",
+    "origin": "Caller metadata retained literally, explicitly untrusted. No engine-generated/seed/chronology/proof label is accepted. Root must separately join actual guarded public capture/trace/current state.",
+    "outputs": "All selected DAG sinks, no target-specific output/cut choice. Full internal/read/source maps and native/member/state preimages retained.",
+    "ownership": "Strict builtin JSON copied on entry; delegates use normalized private copies; owned names ledger may be locally extended only for full collision comparisons. No engine object, graph/cursor/cert/exclusion state or input point data mutated. Trusted synchronous pinned callback scope; no hostile reentrancy promise.",
+    "reconstruction": "Fresh full marked state uses a197->9fd independent full union; original projection/c354 private_state separately fresh. Each selected marked packet is rebuilt, then original bare packet rebuilt again and compared exactly to nested packet/records/current original projection. Full member receipt and identity preimage retained; no digest-only key identity.",
+    "topology": "Rows ascending are dependency order because every original ordered offset is strictly prior. Supplied selected list index is retained only as provenance and never called authenticated placement chronology.",
+    "unknown": "Empty selected state or collector own finite allowance ->UNKNOWN with derivation/projections/maps null and checked_members empty. Every narrow checkFalse then; no partial DAG admission. Native/callback/authority/membership/collision failures propagate instead of becoming expected invalid-data or UNKNOWN."
+  },
+  "preserved_negative": {
+    "bytes": 2695,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "a687f4231326ccbc16e8f6efa3665b3126e8fc6710207b8812ba41a35c773fcb"
+  },
+  "preserved_negative_findings": {
+    "bytes": 4277,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/findings-v1.json",
+    "sha256": "435c860600040896520448bc4b924ba90d004d391c713fd0aac6ce970935cd51"
+  },
+  "preserved_parent_contract": {
+    "bytes": 10602,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-contract-v1.json",
+    "sha256": "f83cd6b6e0cce6794639b19b1ee0ebf12424d9772f4e5a1a1edd2b06c4db21f0"
+  },
+  "preserved_parent_source": {
+    "bytes": 19514,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+    "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+  },
+  "remaining_gaps": [
+    "No execution/tests/native fit measured by author; fresh Root qualification required.",
+    "Collector is one trusted adapter over separately injected native/base/marked checks, not independently authored second collector.",
+    "No automatic history extraction or engine-generated proof authentication, no complete-target proof word, no native independent DAG-level proof receipt.",
+    "Physical row rebinding, receptor match/provider assembly, newfamily engine qualification remain separate.",
+    "Baseline engine13+ea300 10/12 does not qualify familyengine3+a197."
+  ],
+  "repair": {
+    "changed_line_regions": 3,
+    "corrected_attribute_accesses": 3,
+    "disposition": "CORRECTED_IN_SOURCE_ONLY_NO_RUNTIME_CLAIM",
+    "exact_scope": "3 changedlines: ownVERSION plus before_visits assignment and finish_guard line. Exactly3 language.visits attributes become language.kernel.visits; no other code/fixture/data protocol change.",
+    "finding": "COLLECTOR-NATIVE-COUNTER-ABI-1",
+    "reason": "5d1 owns QChecker at language.kernel; visits is its native cumulative counter, not a BoundedLanguage attribute.",
+    "retained_whole_static": {
+      "bytes": 6044,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/author-static-audit-v1.json",
+      "sha256": "3942d06d05f39d07ce17fa7f5fe339df35daec3676da688125024419eb4047ef"
+    }
+  },
+  "required_fresh_controls": [
+    "Actual unordered selected chronology with strict prior dependency reconstruction and exact ordered/repeated source refs.",
+    "All six rule forms; empty originalGamma cannot be replaced by fabricated positive assumption scope.",
+    "Open read marked but not occupied remains input; repeated open row consistent source; actual occupied source exact key/formula.",
+    "Malformed state/epoch/member/fullpreimage/collision/context data rejected through real owning checks; callback TimeoutError remains interruption.",
+    "Own finite work limit and empty state UNKNOWN no partial graph.",
+    "Native miner structural admission + expander/checker/native roundtrip and exact source-key maps; collector output by itself is not family or search qualification.",
+    "Root actual state/trace provenance join and marked full state closure under original unchanged budget; no supplied target route."
+  ],
+  "runtime_qualified": false,
+  "schema": "receptor-family-checked-state-DAG-collector-Source-contract-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-checked-state-DAG-collector-Source",
+  "source": {
+    "bytes": 19556,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+    "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+  },
+  "source_delta": {
+    "bytes": 2339,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/immediate-Source-delta-v2.json",
+    "sha256": "ffb1251025c36b76f0a7e4caa95a7386c5639f3f800ffe7064807fad71db2b05"
+  },
+  "source_only": true,
+  "sources": {
+    "collector": {
+      "bytes": 19556,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    }
+  },
+  "status": "SOURCE_ONLY_UNMEASURED_NOT_ACTIVATED"
+}

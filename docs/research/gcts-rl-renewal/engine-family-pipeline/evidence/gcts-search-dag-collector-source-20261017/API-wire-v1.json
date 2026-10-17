@@ -1,0 +1,77 @@
+{
+  "API": {
+    "collect_derivation": "(*,language,base_semantics,marked_semantics,host_adapter,state,origin,tick,limits=None)",
+    "injection": "marked_semantics is the old point object (router.point), base is c354, host_adapter is4bd6.describe_host. Root authenticates complete raw Sources/original17/input2 and owns fresh language/native tick. No engine object/private cache/certificate or trace API is consumed.",
+    "limits": {
+      "depth": 128,
+      "edges": 48,
+      "selected": 24,
+      "string_bytes": 1048576,
+      "work": 1000000
+    },
+    "origin": "Required builtin JSON dict; retained unchanged as untrusted caller provenance. No engine-generated/traversal/chronology/proof claim is authenticated from it. Root must separately join actual engine state/trace.",
+    "own_bound": "Only collector finite work/depth/size allowance produces UNKNOWN; no partial derivation. Native/authority/membership/collision/data/callback failures propagate. External native tick stays cumulative."
+  },
+  "current_scope": "Six original rule forms on actual fixed24 original host; no target/theorem template, engine mutation/search, donor/target/result reads or implementation execution by author. Current family composition remains Source-only; baseline10/12 does not qualify it.",
+  "empty_state": "UNKNOWN/EMPTY_SELECTED_STATE: exact miner wire requires nonempty nodes; empty state is not a negative search conclusion.",
+  "miner_DAG": {
+    "fields": [
+      "schema",
+      "host_binding",
+      "inputs",
+      "hypotheses",
+      "nodes",
+      "outputs",
+      "origin"
+    ],
+    "hypotheses": "[]: every actually selected assumption is a real native assumption primitive node with original Gamma index. Full Gamma remains in actual host/maps; no premise fact invented from Gamma membership.",
+    "inputs": "[{id,formula,sharing:ALLOW_SAME_EXACT_PRIOR_SOURCE,source,occupied:false,fact_accepted:false}]; one per unoccupied read row, literal formula must agree across repeated reads. source={schema:receptor-family-collected-unoccupied-source-v1,row,state_sha256,marking_id,binding}. It is source provenance, NOT current provider input-source metadata.",
+    "nodes": "[{id:n<absolute_row>,rule,formula,arguments,ordered_inputs,origin}]; arguments are exact native primitive_witness minus rule/formula; refs preserve full ordered/repeated premise list. Node order is ascending physical output row, never selected insertion/chronological order.",
+    "origin": "collector identity/full binding/marking/state digest plus full opaque caller_origin; engine_generated_accepted:false and root_proof_accepted:false.",
+    "outputs": "[{id:o<absolute_row>,formula,source:{node:n<row>}}] for every selected sink, no target-based output selection.",
+    "schema": "receptor-family-primitive-derivation-DAG-v1"
+  },
+  "physical_rebinding": "Provider consumes derivation/miner records only as proposals. It must replace source provenance with actual current receptor source schema/keys/occupancy, enumerate strict-prior physical rows, regenerate expansion and independently check/native-adapt through consumer. No one-cell macro or candidate pruning.",
+  "result": {
+    "checked_members": "Ordered by output row; full fresh original_tile/marked_tile/native membership and original selected record index retained.",
+    "checks": "Narrow fresh state/member/ordered-reference/context/data-coherence booleans only, plus dependency_closed_relative_to_Gamma. All broad proof/target/degree/EOF/engine/marking/scheduler/RL/runtime/resource acceptance flags False.",
+    "derivation": "Complete exact miner75f4 DAG wire on success; null on UNKNOWN. Even an input-free DAG is not a root/target proof receipt.",
+    "fields": [
+      "schema",
+      "version",
+      "status",
+      "reason",
+      "request",
+      "host",
+      "binding",
+      "marking_id",
+      "state_sha256",
+      "derivation",
+      "derivation_sha256",
+      "state_projections",
+      "checked_members",
+      "maps",
+      "checks",
+      "work",
+      "flags"
+    ],
+    "maps": {
+      "context_occurrences": "every original ordered Gamma index+formula+actual selected assumption-node IDs; no hypothetical physical assumption row",
+      "inputs": "deduplicated unoccupied physical row+formula->input_id,full source metadata,all ordered consumers",
+      "nodes": "row topology->node_id,source_selected_index,rule,full original/decorated keys,dependency_closed_relative_to_Gamma",
+      "outputs": "all selected DAG sinks in ascending row order->output_id,node_id,row,formula",
+      "reads": "every ordered consumer edge->absolute source row,literal formula,node or input ref,actual occupied bool,original/decorated source keys or null,fact_accepted:false",
+      "selection_order": "original supplied selected index->node_id,row,full original/decorated keys"
+    },
+    "schema": "receptor-family-checked-state-DAG-collection-v1",
+    "state_projections": "{marked_state,original_state} after fresh marked and original checking; null on UNKNOWN.",
+    "status": [
+      "COLLECTED_CONDITIONAL_DAG",
+      "UNKNOWN"
+    ]
+  },
+  "schema": "receptor-family-checked-state-DAG-collector-API-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "version": "receptor-family-checked-engine-state-DAG-collector-v1"
+}

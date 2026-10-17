@@ -1,0 +1,52 @@
+{
+  "API_wire": {
+    "bytes": 5287,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/API-wire-v1.json",
+    "sha256": "19a32df2de58ba2ceba9c75b0fc875f6e004f5b37e51053abf777658673ca99b"
+  },
+  "actual_patches": {
+    "forward": {
+      "bytes": 19930,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/collector-addition.patch",
+      "sha256": "6d69bdfc654aca46d8359274aa83a7bb6ce38de54a425af2398fb8870bd5808d"
+    },
+    "full_inverse": {
+      "bytes": 19930,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/collector-full-inverse.patch",
+      "sha256": "01819c2a8d8620629ce7855a076b1591e5a95b60b9974d8c421aa0e31b19a732"
+    }
+  },
+  "author_static": {
+    "bytes": 6044,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/author-static-audit-v1.json",
+    "sha256": "3942d06d05f39d07ce17fa7f5fe339df35daec3676da688125024419eb4047ef"
+  },
+  "next": "Root whole Source review and assigned distinct peer before any separately granted native actual. Provider uses current rebinding, not collected origin/source facts.",
+  "runtime_qualified": false,
+  "schema": "receptor-family-checked-state-DAG-collector-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19514,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+    "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+  },
+  "source_contract": {
+    "bytes": 10602,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-contract-v1.json",
+    "sha256": "f83cd6b6e0cce6794639b19b1ee0ebf12424d9772f4e5a1a1edd2b06c4db21f0"
+  },
+  "source_delta": {
+    "bytes": 21000,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-delta-v1.json",
+    "sha256": "78cb337072d1f0c70fa7911a4cbbca7edb684e6dc5124832e71696ceef5bf5a8"
+  },
+  "source_only": true,
+  "sources": {
+    "collector": {
+      "bytes": 19514,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+      "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+    }
+  }
+}

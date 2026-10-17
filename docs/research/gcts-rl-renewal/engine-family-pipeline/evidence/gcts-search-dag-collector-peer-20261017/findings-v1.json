@@ -1,0 +1,64 @@
+{
+  "author_overlap": "Reviewer did not author collector. Reviewer authored9fd marked verifier used through point,8f7a,currentea3004 adapter(not declareda197 lane),4358 receptor checker and earlier controls/helpers. Arithmetic authors collector/miner/producer/c354/kernel/engine; Controls authors4bd6. Shared dependencies disclosed; no independent self-math or runtime acceptance.",
+  "blockers": [
+    "COLLECTOR-NATIVE-COUNTER-ABI-1"
+  ],
+  "findings": [
+    {
+      "dependency": {
+        "bytes": 20112,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-language.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "detail": "Exact5d1 BoundedLanguage has no visits attribute/property/getattr alias. Collector unconditionally reads language.visits before host/state checks and twice in finish_guard. Actual parser counter is language.kernel.visits, used by4bd6. Authentic language therefore cannot reach collection; AttributeError is a Source inference, not executed. PreserveV1; no caller-side alias or model substitution.",
+      "id": "COLLECTOR-NATIVE-COUNTER-ABI-1",
+      "severity": "BLOCKER",
+      "source_lines": [
+        149,
+        183
+      ]
+    },
+    {
+      "detail": "Conditional Source structure: full real host; six exact native arguments/arities; full original/marked state checks and each original/decorated selected packet, record, native MEMBER/binding/preimage and collision ledger rebuilt. UI/EqSubst are correct zero-read licence forms.",
+      "id": "NATIVE-SIX-RULES"
+    },
+    {
+      "detail": "Ascending physical rows and strict-prior native offsets justify acyclic topology; selected insertion index is provenance only. Every ordered/repeated port retained, occupied source formula exact. Absent reads remain conditional input even if marked; one source row shares only equal literal formula, all fact flagsFalse.",
+      "id": "ROW-PORTS"
+    },
+    {
+      "detail": "Real assumption nodes retain actual indexedGamma formula; hypotheses[] supplies no fictitious occupied read. All selected sinks/output maps retained, no target cut. Opaque origin/closed-dependency flag never accepts engine history, root proof/theorem, degree/EOF or search benefit.",
+      "id": "GAMMA-SINK-ORIGIN"
+    },
+    {
+      "detail": "Strict copied builtin data, fresh owned maps/full keys, pre/post whole host/input/marking checks in trusted synchronous pinned scope. Own limits return cleared UNKNOWN only; wrapped callbacks rethrow original exception object, other native/member/authority/collision failures propagate. No engine/cache/cursor mutation. Counter guard itself blocked by confirmed ABI finding.",
+      "id": "WORK-MUTATION-ERROR"
+    }
+  ],
+  "limitations": [
+    "No model/project/collector/checker/helper function or module executed/imported/evaluated; no tests/clocks/actual/results/proofword reads. Raw/AST/metadata/builtincompilewithout-evaluation and Sourcepatch operations only.",
+    "All nonblocker observations conditional; corrected successor needs distinct currentreview and Root fresh runtime controls. Baseline10/12 does not qualify familya197 lane.",
+    "Unordered selection, repeated/open ports, actualGamma, all six forms, native error/ownUNKNOWN, exact key/state/collision/provenance and miner/expander/checker/native roundtrip remain unmeasured."
+  ],
+  "raw_AST_evidence": {
+    "bytes": 5137,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "c16871e6f703263df408bdf89141220b28d7c7bc0328d7aede9d4a1293ccff25"
+  },
+  "schema": "receptor-family-collector-peer-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19514,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+    "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+  },
+  "source_contract": {
+    "bytes": 10602,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-contract-v1.json",
+    "sha256": "f83cd6b6e0cce6794639b19b1ee0ebf12424d9772f4e5a1a1edd2b06c4db21f0"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "status": "SOURCE_BLOCKED"
+}

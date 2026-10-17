@@ -1,0 +1,54 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_overlap": "Reviewer did not author provider. Reviewer authored4358 independent expansion checker,9fd marked-state verifier,8f finite-fibre checker,currentea3004 adapter(not provider a197 lane), and earlier controls/helpers; reviewed producer/collector separately. Provider author Controls owns4bd6 host adapter and family consumer/engine fork. Arithmetic authors miner/producer/c354/kernel/engine ancestry. Shared wire and primitives are disclosed; this review is distinct provider control-flow/composition review, not independent self-proof of dependencies or runtime conformance.",
+  "blockers": [],
+  "engine_activated": false,
+  "findings": {
+    "bytes": 8326,
+    "path": "/private/tmp/gcts-mined-family-provider-peer-20261017/findings-v1.json",
+    "sha256": "8d37f240bd3814a58ce40567eeeafbf20333355b8a0aed30e404c357c3a4a2ed"
+  },
+  "limitations": [
+    "Source-only review: no provider, project, model, checker, collector, miner, engine or saved helper was imported, evaluated or called; no tests, clocks, actuals or saved scientific result/proofword reads.",
+    "This is literal-ground transfer over current flattened PRIMITIVE descriptors with dependencies empty. New abstraction environments, arbitrary nested registries, complete inverse matching and placement enumeration are outside scope.",
+    "The bounded row/record/work prefix may expose no eligible instance; there is no native fit, search usefulness, gain, speedup, learned marking or RL evidence.",
+    "Root must join source DAG to an actual owned engine capture separately and authenticate the full current executable map plus unchanged original Source17/input2 and fixed marking. Host shape/version checks are not cold Source authentication.",
+    "Actual all-six native/marked point compatibility, open and repeated ports, Gamma, same-source ALLOW and DISTINCT, cross-alternative collision rejection, callback errors/own UNKNOWN, current-source refresh and engine integration remain fresh runtime obligations.",
+    "The prospective family lane uses a197+consumer2d680+familyengine3da1. Current ea3004 baseline qualification and previous RF component results do not qualify this new composition."
+  ],
+  "proof_accepted": false,
+  "raw_AST_evidence": {
+    "bytes": 6682,
+    "path": "/private/tmp/gcts-mined-family-provider-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "efa569c95e091fbeb3212940da4aa9fed4ecfbdf7e5337a78d6dc3702dfdb19b"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "receptor-family-mined-provider-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-mined-provider-Source",
+  "source": {
+    "bytes": 37232,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+    "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+  },
+  "source_contract": {
+    "bytes": 17451,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-contract-v1.json",
+    "sha256": "90984f07fefab1bad5bf8c715dfda97cb342b874c5f56ec79fb9f8e0f4f51bb2"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "provider": {
+      "bytes": 37232,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+      "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+    }
+  },
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "whole_current_Source_contract_API_read": true
+}

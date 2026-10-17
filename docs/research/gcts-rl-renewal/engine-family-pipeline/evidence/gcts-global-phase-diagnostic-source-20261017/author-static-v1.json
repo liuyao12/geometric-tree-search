@@ -1,0 +1,183 @@
+{
+  "actual_patches": {
+    "forward": {
+      "bytes": 15773,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/caller-forward.patch",
+      "sha256": "c96e433fdc27f42916674362e37cd48036550866fb67556aadd1f9b99beafa9c"
+    },
+    "full-inverse": {
+      "bytes": 15773,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/caller-full-inverse.patch",
+      "sha256": "c376638dc7b4bb1d91c43dcf8c4be6110a9f1b9988732fa3b7824b2c9587d4da"
+    }
+  },
+  "actual_result_reads": 0,
+  "added_private_region": "main.phase",
+  "changed_existing_regions": [
+    "main",
+    "main.make_engine",
+    "main.make_engine.proposer",
+    "main.make_engine.filtered",
+    "main.make_engine.certifier",
+    "main.global_family"
+  ],
+  "check_count": 14,
+  "checks": [
+    {
+      "check": "Whole parent/current raw and all19 sequential forward/fullinverse exact.",
+      "passed": true
+    },
+    {
+      "check": "Both actual unified patch directions independently match complete bytes.",
+      "passed": true
+    },
+    {
+      "check": "Whole ASTinverse exact and builtincompilewithout-evaluation accepts currentSource.",
+      "passed": true
+    },
+    {
+      "check": "All17 tophelpers/2classes including inherited failurewriter and native exceptional suffix rawexact.",
+      "passed": true
+    },
+    {
+      "check": "Only main plus2direct nested bodies and3 nested callback bodies change; one native-only phase helper added.",
+      "passed": true
+    },
+    {
+      "check": "All other endpoint scientific statements/fixtures/assertions unchanged and wholemath12 erasure returns parent byteexact.",
+      "passed": true
+    },
+    {
+      "check": "All module constants exceptownVERSION/SCOPE exact; current13/input8/original17/input2/epoch/limits/cases unchanged.",
+      "passed": true
+    },
+    {
+      "check": "13unique fixedphase literal sites match runtime-whitelist exactly; finitecomputedASCIIwirebounds.",
+      "passed": true
+    },
+    {
+      "check": "Each phase uses captured existing tick/native integer then charged builtinwrite loop/posttick.",
+      "passed": true
+    },
+    {
+      "check": "Proposer existing nativefirstline retained; no extra model/snapshot/privateengine method added.",
+      "passed": true
+    },
+    {
+      "check": "4latestentryslots only, validatorNone, fullscalar writer rawexact; callbackdata neveraffects engine.",
+      "passed": true
+    },
+    {
+      "check": "Latecatch outside unchanged guardedcall; exact builtinTimeoutError only, rethroworiginal, no lateproject/native20 call.",
+      "passed": true
+    },
+    {
+      "check": "Successful outerheaders explicit diagnostic_only/reportedNone/qualified0/engineFalse; rawscientificpayloadunaccepted.",
+      "passed": true
+    },
+    {
+      "check": "No scientific imports/module eval/helpercalls/tests/clocks/actual/resultreads byauthor.",
+      "passed": true
+    }
+  ],
+  "clock_calls": 0,
+  "compile_without_evaluation": true,
+  "maximum_complete_marker_bytes": 1059,
+  "maximum_marker_line_bytes": 84,
+  "module_evaluations": 0,
+  "parent_copy": {
+    "bytes": 78220,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/ROOT_call_local_projection_qualification_cold_v1.py",
+    "sha256": "0caecb1d5780f856f9a41461c09dc9eb539b428df78d20bc69e2d5b4245a5400"
+  },
+  "phase_labels_runtime_order": [
+    "BEFORE_GLOBAL_HANDLER",
+    "BEFORE_GLOBAL_SEED_GROUP",
+    "AFTER_GLOBAL_SEED_GROUP",
+    "BEFORE_GLOBAL_ENGINE_GROUP",
+    "AFTER_GLOBAL_ENGINE_GROUP",
+    "BEFORE_GLOBAL_SEARCH_GROUP",
+    "FIRST_PROPOSER_ENTRY",
+    "FIRST_PROPOSER_RETURN",
+    "AFTER_GLOBAL_SEARCH_GROUP",
+    "BEFORE_GLOBAL_ASSERTIONS",
+    "AFTER_GLOBAL_OUTER_RESTORE",
+    "AFTER_GLOBAL_HANDLER",
+    "BEFORE_DIAGNOSTIC_OUTPUT"
+  ],
+  "phase_sites": 13,
+  "raw_AST_exact_regions": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "all_function_anchors.retain",
+    "save_failure_diagnostic",
+    "save_failure_diagnostic.failure_gate",
+    "save_failure_diagnostic.encoded",
+    "save_failure_diagnostic.encoded.append",
+    "save_failure_diagnostic.encoded.visit",
+    "save_failure_diagnostic.write",
+    "encode_result_transport",
+    "ObservedCursor",
+    "ObservedCursor.__init__",
+    "ObservedCursor.context",
+    "ObservedCursor.advance",
+    "ObservedCursor.abort",
+    "ChildControlInterruption",
+    "main.tick",
+    "main.guard",
+    "main.boundary",
+    "main.call",
+    "main.fresh_language",
+    "main.passed",
+    "main.marked_semantics",
+    "main.root_state",
+    "main.tile",
+    "main.state_from",
+    "main.ug",
+    "main.snapshot",
+    "main.candidate",
+    "main.place_base",
+    "main.rowproof",
+    "main.slot",
+    "main.archived",
+    "main.core",
+    "main.maps",
+    "main.exact_restore",
+    "main.routed",
+    "main.sha",
+    "main.ax",
+    "main.deep_output",
+    "main.query",
+    "main.make_engine.original",
+    "main.cert",
+    "main.expect_error",
+    "main.protocol_family",
+    "main.transfer_family",
+    "main.stream_component",
+    "main.eof_family",
+    "main.child_family"
+  ],
+  "schema": "unit-row-global-phase-diagnostic-author-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 84909,
+    "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/global_phase_diagnostic_cold_v1.py",
+    "sha256": "d44ad0a0ba4ba4895dd1ab5c0e6ffd4980ee5a876856a7cf51d8fdfeaec0f8fa"
+  },
+  "source_only": true,
+  "tests_run": 0
+}

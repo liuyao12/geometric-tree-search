@@ -1,0 +1,42 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 8326,
+    "path": "/private/tmp/gcts-mined-family-provider-peer-20261017/findings-v1.json",
+    "sha256": "8d37f240bd3814a58ce40567eeeafbf20333355b8a0aed30e404c357c3a4a2ed"
+  },
+  "raw_AST_evidence": {
+    "bytes": 6682,
+    "path": "/private/tmp/gcts-mined-family-provider-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "efa569c95e091fbeb3212940da4aa9fed4ecfbdf7e5337a78d6dc3702dfdb19b"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "receptor-family-mined-provider-independent-review-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 37232,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+    "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+  },
+  "source_contract": {
+    "bytes": 17451,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-contract-v1.json",
+    "sha256": "90984f07fefab1bad5bf8c715dfda97cb342b874c5f56ec79fb9f8e0f4f51bb2"
+  },
+  "source_only": true,
+  "sources": {
+    "provider": {
+      "bytes": 37232,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+      "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+    }
+  },
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "typed_review": {
+    "bytes": 3703,
+    "path": "/private/tmp/gcts-mined-family-provider-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "7972e797497706df3eec2fcda4c2ff0de0f8ce353e3e14b5c3ac55ecdfc814ad"
+  }
+}

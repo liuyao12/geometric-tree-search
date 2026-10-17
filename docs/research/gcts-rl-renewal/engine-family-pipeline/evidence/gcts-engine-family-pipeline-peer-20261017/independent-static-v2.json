@@ -1,0 +1,179 @@
+{
+  "actual_or_result_reads": 0,
+  "added_regions": [
+    "main.run_pipeline"
+  ],
+  "both_actual_patch_directions_exact": true,
+  "case_count": 1,
+  "case_source": {
+    "bytes": 10964,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_engine_family_pipeline_cases_v1.py",
+    "sha256": "49d1afa95929a4d0ad30b8329cf41a775e48ee16e21a2f156fdc1f290d997f59"
+  },
+  "changed_common_regions": [
+    "main"
+  ],
+  "check_count": 18,
+  "checks": [
+    "whole_frozen_caller_case_and_corrected_contract_read",
+    "all12_sequential_forward_inverse_exact",
+    "both_actual_unified_patch_directions_exact",
+    "whole_AST_inverse_exact",
+    "all_unchanged_helpers_native_failure_transport_guard_suffix_exact",
+    "only_main_and_owned_pipeline_shim_changed",
+    "current22_input8_original17_input2_binding_limits_exact",
+    "no_human_descriptor_input_or_componentcase_import",
+    "actual_empty_initial_pointstate_and_excluded_arrays",
+    "nativefirst_actual_capture_fullstate_TRY_PLACE_key_rootrestore_join",
+    "collector2_miner_literal_source_provider_consumer_ABIs",
+    "one_language_cumulative_tick_unchanged20_512_cost",
+    "actual_fresh_global_BRANCHand_noneplacement_preference",
+    "allUNKNOWNpaths_no_negative_or_theorem_promotion",
+    "fullrecords_untrimmed_bounded_transport_response_stdout",
+    "currentcontract_artifact_purpose_cases_VERSION_ABI_matches_source",
+    "V1_stale_operative_contract_preserved_negative",
+    "no_scientific_eval_test_clock_result_or_actual_byreviewer"
+  ],
+  "clocks_called": 0,
+  "current22map_exact": true,
+  "edit_count": 12,
+  "input8_original17_input2_binding_limits_exact": true,
+  "models_evaluated": 0,
+  "raw_AST_exact_regions": [
+    "ChildControlInterruption",
+    "ObservedCursor",
+    "ObservedCursor.__init__",
+    "ObservedCursor.abort",
+    "ObservedCursor.advance",
+    "ObservedCursor.context",
+    "all_function_anchors",
+    "all_function_anchors.retain",
+    "anchor",
+    "cancel",
+    "canonical",
+    "decode",
+    "encode_result_transport",
+    "finite_float",
+    "invoke",
+    "load_module",
+    "main.boundary",
+    "main.call",
+    "main.fresh_language",
+    "main.guard",
+    "main.tick",
+    "need",
+    "raw_pin",
+    "read_pinned",
+    "reject_constant",
+    "same",
+    "save_failure_diagnostic",
+    "save_failure_diagnostic.encoded",
+    "save_failure_diagnostic.encoded.append",
+    "save_failure_diagnostic.encoded.visit",
+    "save_failure_diagnostic.failure_gate",
+    "save_failure_diagnostic.write",
+    "unique",
+    "write_new"
+  ],
+  "raw_forward_inverse_and_AST_inverse_exact": true,
+  "raw_refs": [
+    {
+      "bytes": 51791,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_engine_family_pipeline_cold_v1.py",
+      "sha256": "1f642912eea4a89523aad855d83e2f1d213c07945ae0bdc71bfb6b8c69cd3562"
+    },
+    {
+      "bytes": 10964,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_engine_family_pipeline_cases_v1.py",
+      "sha256": "49d1afa95929a4d0ad30b8329cf41a775e48ee16e21a2f156fdc1f290d997f59"
+    },
+    {
+      "bytes": 27649,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/Source-contract-v2.json",
+      "sha256": "e637176c9cf7ffd0ce7a71cc5e8bcdacd0536f694797547f8d9d1ad649a06370"
+    },
+    {
+      "bytes": 24385,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/Source-delta-v1.json",
+      "sha256": "1a9ff6c795daea132c3c24ab8a92af2aff64d502786d5bf766280258ba95ec4b"
+    },
+    {
+      "bytes": 51685,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/receptor-family-components/evidence/receptor-family-bridge-cold-ROOT-source-20261016/ROOT_receptor_family_bridge_cold_v2.py",
+      "sha256": "912489c3f82bf21b0efc60d14ec7c4448793dd41e2d80050a9278a110fe6415b"
+    },
+    {
+      "bytes": 30072,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/Source-contract-v1.json",
+      "sha256": "1263f34afe58ac63db22acfe242871acb83e44651b5c6747b099f11167e93597"
+    },
+    {
+      "bytes": 17841,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/handoff-v1.json",
+      "sha256": "9b80d43465ca2469db0897f23e70796f4053746a72a8080aa63a20208db3ab54"
+    },
+    {
+      "bytes": 18067,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/handoff-v2.json",
+      "sha256": "7693fd761c2e7eb41c38463ac53b67cf526088cb2d250308b01bb58d58c32cd2"
+    },
+    {
+      "bytes": 29069,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/caller-forward.patch",
+      "sha256": "af0428cbacc11e142693bb727ea9d0fadb0cfc473c9f893e921ed53e823207d3"
+    },
+    {
+      "bytes": 29069,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/caller-full-inverse.patch",
+      "sha256": "14a8e869ecb37830b17323c4330affb1df3cd146ea3aaacb0bde94e7b6a1f9b8"
+    },
+    {
+      "bytes": 12609,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-contract-v2.json",
+      "sha256": "99e2edb85f15fba5b64398a3aeb1b256a634d711b43e8903c77fb9c6dd9dc741"
+    },
+    {
+      "bytes": 17451,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-contract-v1.json",
+      "sha256": "90984f07fefab1bad5bf8c715dfda97cb342b874c5f56ec79fb9f8e0f4f51bb2"
+    },
+    {
+      "bytes": 19556,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    },
+    {
+      "bytes": 29018,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_miner_v1.py",
+      "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+    },
+    {
+      "bytes": 37232,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+      "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+    },
+    {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    }
+  ],
+  "removed_regions": [
+    "main.run_component"
+  ],
+  "schema": "ROOT-engine-family-pipeline-independent-static-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51791,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_engine_family_pipeline_cold_v1.py",
+    "sha256": "1f642912eea4a89523aad855d83e2f1d213c07945ae0bdc71bfb6b8c69cd3562"
+  },
+  "source_contract": {
+    "bytes": 27649,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/Source-contract-v2.json",
+    "sha256": "e637176c9cf7ffd0ce7a71cc5e8bcdacd0536f694797547f8d9d1ad649a06370"
+  },
+  "source_only": true,
+  "tests_run": 0
+}

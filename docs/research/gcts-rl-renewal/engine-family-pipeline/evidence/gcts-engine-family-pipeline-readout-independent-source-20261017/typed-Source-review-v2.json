@@ -1,0 +1,49 @@
+{
+  "actual_data_read": false,
+  "author_identity": "/root",
+  "author_overlap_disclosed": true,
+  "blockers_closed": [
+    "PIPELINE-SAVED-CURRENT-CAPSULE-1",
+    "PIPELINE-SAVED-PIN-PARSE-BUFFER-1",
+    "PIPELINE-SAVED-SESSION-EXIT-TYPES-1"
+  ],
+  "findings": {
+    "bytes": 7384,
+    "path": "/private/tmp/gcts-engine-family-pipeline-readout-independent-source-20261017/review-findings-v2.json",
+    "sha256": "30161ad0e64008b94345059ae6b1614823bbca9a83629894351c8eaebc9bef3a"
+  },
+  "helper_executed": false,
+  "integration_path_accepted": false,
+  "preserved_negative": {
+    "bytes": 1560,
+    "path": "/private/tmp/gcts-engine-family-pipeline-readout-independent-source-20261017/typed-Source-review-v1.json",
+    "sha256": "6e4fc91d5ab27e9a11f7c2a220967379a83532ee7c1ea1429b67bb556e449510"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_qualified": false,
+  "schema": "ROOT-engine-family-pipeline-saved-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-engine-family-pipeline-saved-Source",
+  "source": {
+    "bytes": 15303,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v2.py",
+    "sha256": "f7abedd0481bb826e31ebc75955a9a4ca44de30d07c29bfef7062925689c2c96"
+  },
+  "source_contract": {
+    "bytes": 1648,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/readout-Source-contract-v2.json",
+    "sha256": "ab897204fc34d7c8c874e2b53dde8bf6562215e53596190a12abf338c4522693"
+  },
+  "source_contract_scope": "saved byte/native/transport joins only; no semantic replay; same pinned buffers parsed; current literal capsule gates",
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "readout": {
+      "bytes": 15303,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v2.py",
+      "sha256": "f7abedd0481bb826e31ebc75955a9a4ca44de30d07c29bfef7062925689c2c96"
+    }
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS"
+}

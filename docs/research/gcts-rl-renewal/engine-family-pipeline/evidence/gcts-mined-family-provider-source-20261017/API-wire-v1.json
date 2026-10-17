@@ -1,0 +1,70 @@
+{
+  "API": {
+    "build_family_batch": "(*, language, base_semantics, marked_semantics, producer, expansion_checker, host_adapter, mined, state, decision, tick, limits=None)",
+    "injection": "marked_semantics is router.point. Caller authenticates full modules and immutable original Source17/input2 authority; no engine/cursor/degree object is accepted.",
+    "limits": {
+      "depth": 128,
+      "input_bytes": 4194304,
+      "instances": 8,
+      "records": 16,
+      "row_trials": 256,
+      "work": 1000000
+    },
+    "result": "{batch,report}; the family_proposer closure returns only batch to current consumer2/engine3.",
+    "scope": "Literal-ground-first: only each miner record full original substitution is tried. All 24 physical rows remain in the finite row universe. Bounded lexicographic row-assignment prefixes and record order are advisory ordering only; no inverse-unification, completeness or absence claim."
+  },
+  "batch": {
+    "fields": [
+      "schema",
+      "status",
+      "binding",
+      "marking_id",
+      "state_sha256",
+      "decision",
+      "instances"
+    ],
+    "instances": "Exactly ordinary seven-field registry/family_id/host/substitution/port_bindings/proposal/row_assignment. Each offered instance freshly expanded, independently checked and natively adapted; no partial instance. UNKNOWN has instances[].",
+    "schema": "receptor-family-primitive-preference-batch-v1",
+    "status": [
+      "READY",
+      "UNKNOWN"
+    ]
+  },
+  "census": "Current selected/excluded plus every exposed original/decorated prototype is compared by full type preimage; alternative point unions remain separate. Engine3 must still compare against its own observed census.",
+  "flags": {
+    "RL_accepted": false,
+    "degree_or_EOF_accepted": false,
+    "engine_activated": false,
+    "fact_accepted": false,
+    "matching_complete": false,
+    "proof_accepted": false,
+    "proposal_only": true,
+    "pruning_accepted": false,
+    "runtime_qualified": false,
+    "scheduler_accepted": false,
+    "trajectory_accepted": false
+  },
+  "physical_sources": {
+    "fact_accepted": false,
+    "fields": [
+      "schema",
+      "row",
+      "original_full_key"
+    ],
+    "origin": "Miner/collector source metadata is retained only as opaque origin. Actual current original selected full key or null, row and occupancy replace it.",
+    "port_fields": [
+      "port_id",
+      "formula",
+      "source",
+      "occupied",
+      "fact_accepted"
+    ],
+    "schema": "receptor-family-six-rule-input-source-v1"
+  },
+  "rejections": "Only actual strict-prior, physical sharing, capacity/excluded-key and full mark disagreement reject the current row assignment. No branch exclusion is installed and no descriptor/native failure is caught as a learned negative. Native, callback, data, malformed and collision errors propagate. Own bounded work can return a completed advisory prefix only.",
+  "row_policy": "For each fully checked ground expansion, anchor each primitive node in expansion order at actual supplied BRANCH row; input rows then topological node rows in ascending physical order, with strict-prior propagation and exact mark/share/point checks. No target literal selection or engine decision supplied by provider.",
+  "schema": "receptor-family-mined-provider-API-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "version": "receptor-family-literal-ground-physical-provider-v1"
+}

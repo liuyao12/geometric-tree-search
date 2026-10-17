@@ -1,0 +1,45 @@
+{
+  "case_source": {
+    "bytes": 10964,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_engine_family_pipeline_cases_v1.py",
+    "sha256": "49d1afa95929a4d0ad30b8329cf41a775e48ee16e21a2f156fdc1f290d997f59"
+  },
+  "closed_findings": [
+    "PIPELINE-OPERATIVE-CONTRACT-STALE-1"
+  ],
+  "findings": {
+    "bytes": 11031,
+    "path": "/private/tmp/gcts-engine-family-pipeline-peer-20261017/findings-v2.json",
+    "sha256": "5dcebfe3248b46d8d1ba826cf7f1b7ffbae3ff22afd36ce167492cfdfd857309"
+  },
+  "independent_static": {
+    "bytes": 6909,
+    "path": "/private/tmp/gcts-engine-family-pipeline-peer-20261017/independent-static-v2.json",
+    "sha256": "1e37c1a0121b3934d572ffe2e050c6540f9c152c023c4260ec427074f81be279"
+  },
+  "next": "Root wholecompositionreview and separate actualgrant. No actual qualification from thisSource pass.",
+  "preserved_negative": {
+    "bytes": 8928,
+    "path": "/private/tmp/gcts-engine-family-pipeline-peer-20261017/typed-Source-negative-contract-v1.json",
+    "sha256": "3e980b1fff9fb3448f7d8041c7e8e32fcaae96f08444766ee4d0fa928b024a63"
+  },
+  "review": {
+    "bytes": 10068,
+    "path": "/private/tmp/gcts-engine-family-pipeline-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "c3bbf039ac287e2db27e6e1155de06f0df2b9eb63a793d6a124deb1787cbab7b"
+  },
+  "schema": "ROOT-engine-family-pipeline-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51791,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_engine_family_pipeline_cold_v1.py",
+    "sha256": "1f642912eea4a89523aad855d83e2f1d213c07945ae0bdc71bfb6b8c69cd3562"
+  },
+  "source_contract": {
+    "bytes": 27649,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/Source-contract-v2.json",
+    "sha256": "e637176c9cf7ffd0ce7a71cc5e8bcdacd0536f694797547f8d9d1ad649a06370"
+  },
+  "status": "CONDITIONAL_SOURCE_PASS"
+}

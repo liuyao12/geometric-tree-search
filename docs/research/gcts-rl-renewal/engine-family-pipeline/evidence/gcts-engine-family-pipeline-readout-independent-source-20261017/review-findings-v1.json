@@ -1,0 +1,132 @@
+{
+  "actual_data_read": false,
+  "additional_strict_literal_gaps": [
+    {
+      "finding": "V1 omits completion.schema and exit/deadline flag; body version/status/limits/resource_rule/CLOCK_DOMAIN; final pending_external. All values are explicit in current cold output tail and can be joined without semantic replay.",
+      "scope": "response/final"
+    },
+    {
+      "finding": "V1 does not join payload schema/full original_source17/input2 maps and payload broad false flags; pipeline schema/version/case and human-route flags are not checked. These are current Source-literal claims, not independent mathematics.",
+      "scope": "payload"
+    },
+    {
+      "finding": "V1 omits ONCE and observation schema; native meter version/CLOCK_DOMAIN; exact-positive pid and exact-integer metadata fields beyond launch/terminal/probe/peak. Old native Source defines each field literally.",
+      "scope": "native"
+    }
+  ],
+  "authorship": "Reviewer /root/hilbert_advice_controls authored provider, host adapter and earlier caller/native mathematical ancestry. Root authored this new saved reader. This is distinct raw-data closure Source review, not independent native/mathematical replay.",
+  "concrete_findings": [
+    {
+      "finding": "Plan sources, contract, review and grant data are mutually compared, but no literal expected current Source/contract capsule is fixed. An arbitrary self-consistent same-schema package can be labelled current.",
+      "id": "PIPELINE-SAVED-CURRENT-CAPSULE-1",
+      "lines": [
+        68,
+        94
+      ],
+      "required_fix": "Pin the actual concise current contract or exact current cold Source/map; compare whole authority fields against it, including original17/input2/epoch and limits.",
+      "severity": "BLOCKER"
+    },
+    {
+      "finding": "final.outputs are authenticated through pinned(ref), discarded, then response and envelope are read again and parsed without joining the actual parsed buffers to those refs. Pinning one read does not authenticate a later read.",
+      "id": "PIPELINE-SAVED-PIN-PARSE-BUFFER-1",
+      "lines": [
+        153,
+        156,
+        170
+      ],
+      "required_fix": "Retain and parse the exact returned pinned buffers or compare their raw pins before parsing; no output rerun needed.",
+      "severity": "BLOCKER"
+    },
+    {
+      "finding": "Session equality admits equal booleans/strings and int equality admits bool return codes. Same-handle provenance requires bothNone or matching positive exact integers, plus exact-integer exits.",
+      "id": "PIPELINE-SAVED-SESSION-EXIT-TYPES-1",
+      "lines": [
+        105,
+        110,
+        126
+      ],
+      "required_fix": "Restore exact-int-or-bothNone old session policy and exact return-code types.",
+      "severity": "BLOCKER"
+    }
+  ],
+  "helper_executed": false,
+  "method": "Whole source and cold wire/contract literal comparison, AST/compile without evaluation; recovered only native instrument SOURCE blobs through gitshow. No helper/cold/project/checker/model/test/clock call and no actual/result/plan/grant/native/output file read.",
+  "named_regions": [
+    {
+      "end_line": 16,
+      "name": "need",
+      "source_line": 14
+    },
+    {
+      "end_line": 21,
+      "name": "canonical",
+      "source_line": 19
+    },
+    {
+      "end_line": 29,
+      "name": "unique",
+      "source_line": 24
+    },
+    {
+      "end_line": 34,
+      "name": "decode",
+      "source_line": 32
+    },
+    {
+      "end_line": 38,
+      "name": "raw_pin",
+      "source_line": 37
+    },
+    {
+      "end_line": 49,
+      "name": "read",
+      "source_line": 41
+    },
+    {
+      "end_line": 55,
+      "name": "pinned",
+      "source_line": 52
+    },
+    {
+      "end_line": 62,
+      "name": "write",
+      "source_line": 58
+    },
+    {
+      "end_line": 191,
+      "name": "main",
+      "source_line": 65
+    }
+  ],
+  "operative_cold_contract": {
+    "bytes": 27649,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/Source-contract-v2.json",
+    "sha256": "e637176c9cf7ffd0ce7a71cc5e8bcdacd0536f694797547f8d9d1ad649a06370"
+  },
+  "operative_cold_source": {
+    "bytes": 51791,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_engine_family_pipeline_cold_v1.py",
+    "sha256": "1f642912eea4a89523aad855d83e2f1d213c07945ae0bdc71bfb6b8c69cd3562"
+  },
+  "schema": "ROOT-engine-family-pipeline-saved-Source-findings-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 12172,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v1.py",
+    "sha256": "c376554097bf5d0961520464c0eecd3d74d02e3b308a61e626fb93025d8b1f5b"
+  },
+  "source_contract": null,
+  "source_references": [
+    {
+      "bytes": 4357,
+      "path": "/private/tmp/gcts-engine-family-pipeline-readout-independent-source-20261017/reviewed-ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+    },
+    {
+      "bytes": 6734,
+      "path": "/private/tmp/gcts-engine-family-pipeline-readout-independent-source-20261017/reviewed-Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    }
+  ],
+  "verdict": "SOURCE_REJECTED"
+}

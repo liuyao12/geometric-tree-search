@@ -1,0 +1,298 @@
+{
+  "API": {
+    "build_family_batch": {
+      "callback": "family_proposer(*,state,decision,tick) calls this endpoint with its authenticated dependencies and returns result[batch] only. It must not relabel report as a consumer/degree/EOF receipt.",
+      "freshness": "Fresh full current point/private-state check, actual describe_host, original projection; actual engine-selected global BRANCH is supplied by caller. This endpoint validates shape/incident unfilled row but cannot certify scheduler authority.",
+      "keyword_only": [
+        "language",
+        "base_semantics",
+        "marked_semantics",
+        "producer",
+        "expansion_checker",
+        "host_adapter",
+        "mined",
+        "state",
+        "decision",
+        "tick",
+        "limits"
+      ],
+      "limits_default": null,
+      "return_fields": [
+        "batch",
+        "report"
+      ]
+    }
+  },
+  "API_wire": {
+    "bytes": 3414,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/API-wire-v1.json",
+    "sha256": "81c96655b4c6c9fb9396e639a1cd4edefdf4d3a1d9d2bd791a7d39eb2b1ddd8d"
+  },
+  "Review_ABI": {
+    "required_disclosure": [
+      "reviewer authorship/dependency overlap",
+      "no scientific execution",
+      "runtime/engine/proof qualification remains false"
+    ],
+    "schema": "receptor-family-mined-provider-typed-Source-review-v1",
+    "scope": "receptor-family-mined-provider-Source",
+    "source": {
+      "bytes": 37232,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+      "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+    },
+    "source_contract": "exact reference to this Source-contract-v1.json",
+    "sources": {
+      "provider": {
+        "bytes": 37232,
+        "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+        "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+      }
+    },
+    "verdict": "CONDITIONAL_SOURCE_PASS or SOURCE_REJECTED"
+  },
+  "Source_pool_manifest": {
+    "bytes": 4824,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/manifest.json",
+    "sha256": "5f4ded26569959aad5c5ce1abb015fa6e1435fd283315a68e744e1a314e59bab"
+  },
+  "authorship": {
+    "author": "/root/hilbert_advice_controls",
+    "overlap": "Author owns host adapter and family-consumer/engine preference fork and earlier membership/proposer/fallback/marked-decorator ancestry; wire coordinated with independent miner/collector producer Arithmetic and expansion checker Diagnosis. No fully independent end-to-end mathematical implementation claimed.",
+    "peer_review": "Not yet performed on this exact provider Source. Root owns review, grants and measured actuals."
+  },
+  "batch": {
+    "exact_fields": [
+      "schema",
+      "status",
+      "binding",
+      "marking_id",
+      "state_sha256",
+      "decision",
+      "instances"
+    ],
+    "instances": {
+      "exact_fields": [
+        "registry",
+        "family_id",
+        "host",
+        "substitution",
+        "port_bindings",
+        "proposal",
+        "row_assignment"
+      ],
+      "max": 8,
+      "port_bindings": "Complete original indexed hypothesis and output formula arrays plus fresh actual input-source binding; fact_accepted alwaysFalse.",
+      "registry": "One entire original mined descriptor; no manufactured receipt or producer family. Full descriptor and provenance retained.",
+      "row_assignment": {
+        "input_rows": "Every root input port ID with exact integer absolute row.",
+        "node_rows": "Every independently rebuilt primitive flat node ID with exact integer absolute row; includes actual materialized Gamma assumptions.",
+        "schema": "receptor-family-six-rule-row-assignment-v1"
+      }
+    },
+    "schema": "receptor-family-primitive-preference-batch-v1",
+    "state_hash": "SHA256 of ensure_ascii=False sorted compact UTF8 canonical complete offered marked state, matching consumer2. Hash indexing is not state/identity equality.",
+    "status": [
+      "READY",
+      "UNKNOWN"
+    ]
+  },
+  "checks_and_exceptions": {
+    "collision": "A single full original+decorated prototype census starts with current selected/excluded names and includes every exposed candidate, even rejected assignments, plus every READY adaptation. Family digest identity also compares full preimages. Alternatives never share their hypothetical t/m union. Engine3 must still compare all offered members to its separate full observed census.",
+    "errors": "No native, malformed, collision, checker, authority or callback error is caught as a rejection. Own _Unfinished alone becomes bounded proposal prefix. Caller tick errors are wrapped only to preserve exact identity across own-bound handling, then re-raised unchanged. Unexpected matcher rejected_bindings raises MATCH_PROTOCOL; it is not a learned failure.",
+    "native": "Each grounded native witness first passes actual language.primitive with all ordered premises. Every row candidate is rebuilt by marked point semantics with independent full decorated/native checking. Final instance is regenerated via producer simultaneous all-port match, independently checked, then4bd6 freshly checks all native members, all physical calls and full marked hypothetical union.",
+    "point_rejection": "Explicit literal formula conflict, actual strict-prior/share mismatch, branch_excluded_complete_key, whole_support_capacity, whole_remote_or_metadata_mark_conflict reject THIS_PHYSICAL_GROUND_ASSIGNMENT_ONLY. No new excluded key, marking, pruned base candidate or family impossibility is installed.",
+    "roundtrip": "Fresh producer expansion + fresh independent4358 rebuilding of source-ground record; full selected native witnesses, ordered/repeated edges, boundary kind/formula/sharing/opaque origin and complete output/outgoing-use census joined to entire untrusted source DAG. This authenticates data coherence only, not source proof or engine-origin.",
+    "stability": "Full original caller request canonical bytes compared at end; complete original language binding and full freshly described host compared. Current state is unchanged; modules are authenticated by caller Source guards. Native deadline/authority failures propagate even at final boundary."
+  },
+  "collector_wire": {
+    "bytes": 5287,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/API-wire-v1.json",
+    "sha256": "19a32df2de58ba2ceba9c75b0fc875f6e004f5b37e51053abf777658673ca99b"
+  },
+  "default_limits": {
+    "depth": 128,
+    "input_bytes": 4194304,
+    "instances": 8,
+    "records": 16,
+    "row_trials": 256,
+    "work": 1000000
+  },
+  "delta": {
+    "bytes": 39205,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-delta-v1.json",
+    "sha256": "17706534e39601f11d1e2fbc340e203c0777c2bf877b0d1c0e8527a7b357b7e3"
+  },
+  "dependencies": {
+    "base": {
+      "bytes": 27553,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "consumer": {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    },
+    "family_engine": {
+      "bytes": 76668,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_search_engine_v3.py",
+      "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "language": {
+      "bytes": 20112,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "miner": {
+      "bytes": 29018,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_miner_v1.py",
+      "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+    },
+    "point": {
+      "bytes": 29197,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v2.py",
+      "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+    },
+    "producer": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    }
+  },
+  "future_essential_controls": [
+    "Full fresh current/old-source separation and altered host/binding/data rejection.",
+    "Source ground all-edge/output/Gamma data roundtrip and forged literal/edge map rejection.",
+    "Current row/source full-key/occupancy refresh; unresolved input factFalse.",
+    "Strict-prior and repeated-port literal matching; DISTINCT physical sharing and exact ALLOW dedup.",
+    "Unused external-input final mark conflict; assigned0 differs from absence.",
+    "Actual channel4 guard/current whole-support conflict and exact selected reuse.",
+    "Whole current+all-alternative original/decorated collision census without unioning alternatives.",
+    "Fresh producer/checker/native adaptation; invalid native witness propagates, not silently skipped.",
+    "Own bound UNKNOWN/no partial instance versus callback/native exception identity.",
+    "Every offered instance incident to actual global BRANCH; complete canonical fallback unchanged."
+  ],
+  "input_source": {
+    "exact_fields": [
+      "schema",
+      "row",
+      "original_full_key"
+    ],
+    "fact_accepted": false,
+    "occupied": "Actual current t((0,row))==1, independently checked current state. Occupied input is not accepted theorem.",
+    "original_full_key": "Actual original projected selected record at that row without generation, or null. Never copied from miner/collector source metadata.",
+    "schema": "receptor-family-six-rule-input-source-v1"
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "model_authority": {
+    "composition": "consumer2d680/family-engine3da1 with pointa197. baselineea3004 qualification10/12 does not transfer; current family composition remains prospective Source-only.",
+    "listed_dependencies": "Exact raw refs are Source-only dependency pins, not a claim to be a complete cold-caller executable map.",
+    "semantic_model": "Immutable original Source17/input2 and full original language binding supplied/authenticated privately by Root caller. New runtime module map grows separately, cardinality not fixed here, never rebases original language epoch."
+  },
+  "report": {
+    "cost": "work.steps counts provider-owned step calls, not exhaustive instructions/delegations or wall time. All work/serialization/checks remain inside caller native budget. No fit/performance claim.",
+    "fields": [
+      "schema",
+      "version",
+      "batch",
+      "request",
+      "host",
+      "original_state",
+      "checked_state",
+      "records",
+      "row_rejections",
+      "offers",
+      "prototype_census",
+      "reason",
+      "work",
+      "scope",
+      "flags"
+    ],
+    "flags": {
+      "RL_accepted": false,
+      "degree_or_EOF_accepted": false,
+      "engine_activated": false,
+      "fact_accepted": false,
+      "matching_complete": false,
+      "proof_accepted": false,
+      "proposal_only": true,
+      "pruning_accepted": false,
+      "runtime_qualified": false,
+      "scheduler_accepted": false,
+      "trajectory_accepted": false
+    },
+    "prototype_census": "Sorted full type-ID / complete canonical preimage table; original base and decorated names use actual point semantics. No alternative graph/mark installation.",
+    "records": "Full original record, ground proposal/check/data roundtrip/native memberships, anchor domains, actual fresh physical matches/checks/adaptations. Partial observational records may remain on an own prefix stop but never become a partial offered instance.",
+    "rejections": "Only assignment-scoped observations; not source/target/candidate-domain no-generation or impossibility certificates.",
+    "schema": "receptor-family-mined-physical-provider-v1"
+  },
+  "row_order": {
+    "anchors": "Each independently rebuilt primitive node in expansion order fixed in turn to actual BRANCH row; no target literal/rule route.",
+    "interfaces": "Input/output/read formulas checked against assigned current/partial/final marks; missing mark imposes no zero. Unused inputs remain unresolved if unoccupied.",
+    "records": "Miner-provided ordered record prefix; no learned selection guarantee.",
+    "sharing": "For every checked call frame, DISTINCT cannot share actual row. ALLOW shares only same literal formula and actual current physical source identity; shared member placements require full packet equality.",
+    "strict_prior": "Fixpoint propagates source+1<=target through every actual ordered edge over0..23; assigned reads checked again. No row removed by generation/degree/target heuristic.",
+    "variables": "Root input rows in expansion order, then all primitive node rows in topological expansion order; ascending row in each remaining exact domain."
+  },
+  "schema": "receptor-family-mined-provider-Source-contract-v1",
+  "scientific_calls": 0,
+  "scope": "receptor-family-mined-provider-Source",
+  "scope_limits": {
+    "descriptor_support": "Current miner75f4 flattened PRIMITIVE bodies/dependencies[]; six native rules supported, actual indexed Gamma materialization retained. Generic arbitrary mined shapes are supported, not direct arbitrary nested FAMILY_CALL registries.",
+    "early_unknown": "An own input-byte/copy/work bound may return UNKNOWN before native checking. report.checked_state/original_state/host may be null; there is no validation claim for unvisited input. Any encountered malformed/native/callback/collision error propagates.",
+    "expanded_primitive_nodes": 24,
+    "ground_substitution": "Only every chosen record original full substitution; no newly enumerated terms/formulas or inverse unifier. Repeated-fragment abstract descriptors are still grounded to their original environment.",
+    "native_row_universe": [
+      0,
+      23
+    ],
+    "prefix": "Own bound can retain only completed independently checked/native-adapted instances. READY denotes offered complete instances, never matching completeness. UNKNOWN has instances[]; unfinished/data-unvisited suffix is not a negative.",
+    "records": "Only first16 ordinary miner records in source order by default; lower limits allowed. No family/syntax/language exhaustion claim."
+  },
+  "soundness_scope": {
+    "current_limitations": [
+      "No executed provider/collector/miner/expander/checker/host call; no runtime conformance or fit evidence.",
+      "General inverse matching and new abstraction-ground transfer unfinished.",
+      "Connected multi-node search-extracted usefulness unmeasured; first bounded trial may yield no eligible instance.",
+      "Literal-ground row prefix is not complete placement enumeration; no absence/pruning claim.",
+      "Host-specific original arithmetic six-rule dialect only; old Hilbert/block host not integrated.",
+      "No engine activation by this module; Root must separately authenticate prospective callback integration and actual execution."
+    ],
+    "host_membership": "Only individually actual native/adapted ground members of a hypothetical local union. Unoccupied reads remain obligations, never facts, and even occupied source nodes imply no theorem receipt.",
+    "no_new_authority": "No proof, target theorem, trajectory, degree/EOF, scheduler, rollback, complete GCTS, learned marking, RL, resource or gain acceptance.",
+    "scheduler": "Provider cannot call/place/search/decide/complete/rollback. Engine13 global DEAD/FORCED/generation and complete canonical fallback remain solely authoritative. Family consumer3 seam may use only one fresh legal primitive preference after actual global BRANCH."
+  },
+  "source": {
+    "bytes": 37232,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+    "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+  },
+  "source_only": true,
+  "sources": {
+    "provider": {
+      "bytes": 37232,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+      "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+    }
+  },
+  "static_audit": {
+    "bytes": 5536,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/static-audit-v1.json",
+    "sha256": "9d01065ad39082c4db9f705d01d9b0047e20c049df7e7540fbafa4033e913933"
+  },
+  "version": "receptor-family-literal-ground-physical-provider-v1"
+}

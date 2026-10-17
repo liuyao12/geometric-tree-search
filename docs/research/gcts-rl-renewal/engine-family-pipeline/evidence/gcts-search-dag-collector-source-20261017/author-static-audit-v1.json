@@ -1,0 +1,188 @@
+{
+  "API_wire": {
+    "bytes": 5287,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/API-wire-v1.json",
+    "sha256": "19a32df2de58ba2ceba9c75b0fc875f6e004f5b37e51053abf777658673ca99b"
+  },
+  "AST_exception_handlers": [
+    "_CallbackFailure",
+    "_Unfinished",
+    "BaseException"
+  ],
+  "AST_named_functions": [
+    "require",
+    "canonical",
+    "digest",
+    "collect_derivation",
+    "__init__",
+    "__init__",
+    "__init__",
+    "step",
+    "copy",
+    "call",
+    "report",
+    "result",
+    "finish_guard"
+  ],
+  "Source_delta": {
+    "bytes": 21000,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-delta-v1.json",
+    "sha256": "78cb337072d1f0c70fa7911a4cbbca7edb684e6dc5124832e71696ceef5bf5a8"
+  },
+  "actual_fit_measured": false,
+  "check_count": 19,
+  "checks": [
+    {
+      "name": "exact_Source_and_five_dependency_backups",
+      "passed": true
+    },
+    {
+      "name": "stdlib_only_no_project_import_or_loader",
+      "passed": true
+    },
+    {
+      "name": "AST_compile_without_evaluation",
+      "passed": true
+    },
+    {
+      "name": "exact_keyword_only_API",
+      "passed": true
+    },
+    {
+      "name": "actual_addition_and_removal_patch_inverse",
+      "passed": true
+    },
+    {
+      "name": "all_six_rules_and_native_arguments",
+      "passed": true
+    },
+    {
+      "name": "fresh_full_marked_and_original_state_checks",
+      "passed": true
+    },
+    {
+      "name": "fresh_original_and_marked_rebuild_per_selected",
+      "passed": true
+    },
+    {
+      "name": "fresh_native_full_receipt_preimage_join",
+      "passed": true
+    },
+    {
+      "name": "dependency_order_not_chronology",
+      "passed": true
+    },
+    {
+      "name": "strict_prior_and_occupancy_source_formula",
+      "passed": true
+    },
+    {
+      "name": "explicit_unoccupied_conditional_input",
+      "passed": true
+    },
+    {
+      "name": "actual_assumption_nodes_and_whole_Gamma",
+      "passed": true
+    },
+    {
+      "name": "full_internal_order_read_source_key_maps",
+      "passed": true
+    },
+    {
+      "name": "no_engine_history_or_proofword_acceptance",
+      "passed": true
+    },
+    {
+      "name": "no_private_engine_cache_or_policy_mutation",
+      "passed": true
+    },
+    {
+      "name": "own_finite_bounds_no_partial_DAG",
+      "passed": true
+    },
+    {
+      "name": "callback_failure_propagation_not_negative",
+      "passed": true
+    },
+    {
+      "name": "full_host_input_marking_prepost_and_no_visit_reset",
+      "passed": true
+    }
+  ],
+  "compile_without_evaluation": true,
+  "dependency_backups": {
+    "base": {
+      "original_source": {
+        "bytes": 27553,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+      },
+      "retained_exact_bytes": {
+        "bytes": 27553,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-base_semantics.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+      }
+    },
+    "host_adapter": {
+      "original_source": {
+        "bytes": 25205,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+        "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+      },
+      "retained_exact_bytes": {
+        "bytes": 25205,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-family_adapter.py",
+        "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+      }
+    },
+    "language": {
+      "original_source": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "retained_exact_bytes": {
+        "bytes": 20112,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-language.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      }
+    },
+    "miner": {
+      "original_source": {
+        "bytes": 29018,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
+        "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+      },
+      "retained_exact_bytes": {
+        "bytes": 29018,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-miner.py",
+        "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+      }
+    },
+    "old_point": {
+      "original_source": {
+        "bytes": 29197,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py",
+        "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+      },
+      "retained_exact_bytes": {
+        "bytes": 29197,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/reference-point_adapter.py",
+        "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+      }
+    }
+  },
+  "imports": [
+    "hashlib",
+    "json"
+  ],
+  "no_models_project_functions_tests_clocks_actuals": true,
+  "schema": "receptor-family-checked-state-DAG-collector-author-static-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19514,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+    "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+  },
+  "source_only": true
+}

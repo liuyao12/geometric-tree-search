@@ -1,0 +1,262 @@
+{
+  "API_wire": {
+    "bytes": 3414,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/API-wire-v1.json",
+    "sha256": "81c96655b4c6c9fb9396e639a1cd4edefdf4d3a1d9d2bd791a7d39eb2b1ddd8d"
+  },
+  "checked_dependency_pins": [
+    {
+      "bytes": 27553,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "role": "base",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "role": "checker",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "role": "consumer",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    },
+    {
+      "bytes": 76668,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_search_engine_v3.py",
+      "role": "family_engine",
+      "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+    },
+    {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "role": "host_adapter",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    {
+      "bytes": 20112,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/bounded_six_rule_language_v2.py",
+      "role": "language",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 29018,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_miner_v1.py",
+      "role": "miner",
+      "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+    },
+    {
+      "bytes": 29197,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v2.py",
+      "role": "point",
+      "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+    },
+    {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "role": "producer",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    }
+  ],
+  "checks": {
+    "API_wire_exact_pin": true,
+    "actual_forward_patch_full_source": true,
+    "actual_inverse_patch_empty_parent": true,
+    "contract_exact_pin": true,
+    "current_one_source_map": true,
+    "delta_exact_pin": true,
+    "literal_root_row_universe": true,
+    "no_engine_or_clock_API_calls": true,
+    "no_project_imports": true,
+    "only_hashlib_json_imports": true,
+    "only_own_bound_and_callback_catches_in_provider": true,
+    "public_keyword_only_API": true,
+    "source_contract_source_exact": true,
+    "source_exact_pin": true,
+    "static_audit_exact_pin": true,
+    "whole_AST_parse_compile_without_evaluation": true,
+    "whole_addition_forward_bytes": true,
+    "whole_removal_inverse_empty_parent": true
+  },
+  "delta": {
+    "bytes": 39205,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-delta-v1.json",
+    "sha256": "17706534e39601f11d1e2fbc340e203c0777c2bf877b0d1c0e8527a7b357b7e3"
+  },
+  "handoff": {
+    "bytes": 3994,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/handoff-v1.json",
+    "sha256": "875e12f3607ba7c1deafeb6b16f79f808927929f09018f7579b795be1fa705ea"
+  },
+  "method": "Raw retained metadata/Source, AST and builtin compile without evaluation; actual Source addition/removal patch in review-owned directory. No module/helper/model/checker execution, tests, clocks or saved scientific result reads.",
+  "named_regions": {
+    "ProviderDataError": [
+      {
+        "end_line": 34,
+        "line": 31
+      }
+    ],
+    "_CallbackFailure": [
+      {
+        "end_line": 43,
+        "line": 41
+      }
+    ],
+    "_Unfinished": [
+      {
+        "end_line": 38,
+        "line": 37
+      }
+    ],
+    "_Work": [
+      {
+        "end_line": 108,
+        "line": 70
+      }
+    ],
+    "__init__": [
+      {
+        "end_line": 34,
+        "line": 32
+      },
+      {
+        "end_line": 43,
+        "line": 42
+      },
+      {
+        "end_line": 81,
+        "line": 71
+      }
+    ],
+    "_constraints": [
+      {
+        "end_line": 284,
+        "line": 259
+      }
+    ],
+    "_ground_roundtrip": [
+      {
+        "end_line": 256,
+        "line": 129
+      }
+    ],
+    "_key": [
+      {
+        "end_line": 112,
+        "line": 111
+      }
+    ],
+    "_ready_checked": [
+      {
+        "end_line": 126,
+        "line": 115
+      }
+    ],
+    "ascii_digest": [
+      {
+        "end_line": 63,
+        "line": 60
+      }
+    ],
+    "build_family_batch": [
+      {
+        "end_line": 616,
+        "line": 287
+      }
+    ],
+    "canonical": [
+      {
+        "end_line": 53,
+        "line": 51
+      }
+    ],
+    "copy": [
+      {
+        "end_line": 108,
+        "line": 101
+      }
+    ],
+    "digest": [
+      {
+        "end_line": 57,
+        "line": 56
+      }
+    ],
+    "fields": [
+      {
+        "end_line": 67,
+        "line": 66
+      }
+    ],
+    "literal_agrees": [
+      {
+        "end_line": 358,
+        "line": 357
+      }
+    ],
+    "native": [
+      {
+        "end_line": 87,
+        "line": 83
+      }
+    ],
+    "offer": [
+      {
+        "end_line": 446,
+        "line": 378
+      }
+    ],
+    "physical_sharing": [
+      {
+        "end_line": 376,
+        "line": 360
+      }
+    ],
+    "reject": [
+      {
+        "end_line": 355,
+        "line": 350
+      }
+    ],
+    "require": [
+      {
+        "end_line": 48,
+        "line": 46
+      }
+    ],
+    "step": [
+      {
+        "end_line": 93,
+        "line": 89
+      }
+    ],
+    "trial": [
+      {
+        "end_line": 99,
+        "line": 95
+      }
+    ],
+    "visit": [
+      {
+        "end_line": 579,
+        "line": 512
+      }
+    ]
+  },
+  "schema": "receptor-family-mined-provider-independent-raw-AST-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 37232,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+    "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+  },
+  "source_contract": {
+    "bytes": 17451,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-contract-v1.json",
+    "sha256": "90984f07fefab1bad5bf8c715dfda97cb342b874c5f56ec79fb9f8e0f4f51bb2"
+  },
+  "source_only": true
+}

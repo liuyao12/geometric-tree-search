@@ -1,0 +1,216 @@
+--- caller.py
++++ caller.py
+@@ -24,8 +24,8 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='ROOT-call-local-projection-qualification-cold-v1'
+-SCOPE='ROOT-call-local-projection-qualification-cold-Source'
++VERSION='unit-row-global-phase-diagnostic-cold-v1'
++SCOPE='unit-row-global-phase-diagnostic-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+ QUALIFICATION_CASES_BY_PURPOSE={'unit-row-marked-aware-child-UNKNOWN-controls': ['MR-11-actual-child-native-first-declared-UNKNOWN', 'MR-12-UNKNOWN-no-exclusion-full-owned-rollback'], 'unit-row-marked-aware-global-forced-dead-controls': ['MR-03-global-forced-requery-dead-exhaustion', 'MR-04-owned-full-root-restoration'], 'unit-row-marked-aware-router-protocol-controls': ['MR-01-new-and-legacy-route-consumption', 'MR-02-wrong-route-and-context-rejected'], 'unit-row-marked-aware-short-EOF-controls': ['MR-09-real-short-stream-and-fresh-complete-keySET', 'MR-10-legacy-implication-EOF-remains-unaccepted'], 'unit-row-marked-aware-singleton-transfer-controls': ['MR-05-native-singleton-full-origin-transfer', 'MR-06-current-sole-consumption-and-owned-rollback'], 'unit-row-marked-aware-two-transfer-controls': ['MR-07-native-TWO-full-origin-transfer', 'MR-08-refreshed-witnesses-global-branch-and-owned-rollback']}
+@@ -377,7 +377,7 @@
+     read_pinned(plan['runtime'])
+     source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract=decode(read_pinned(plan['source_contract']))
+-    need(contract['schema']=='ROOT-call-local-projection-qualification-cold-Source-contract-v1'
++    need(contract['schema']=='unit-row-global-phase-diagnostic-cold-Source-contract-v1'
+          and contract['sources']==plan['sources'] and contract['inputs']==FIXED_INPUTS
+          and contract['limits']==LIMITS and contract['original_model_sources']==ORIGINAL_SOURCES
+          and contract['original_model_inputs']==ORIGINAL_INPUTS
+@@ -385,12 +385,12 @@
+     need(set(plan['reviews'])=={'ROOT','peer'},'Root review and distinct whole-Source peer')
+     for role,ref in plan['reviews'].items():
+         review=decode(read_pinned(ref))
+-        need(review['scope']==SCOPE and review['author_identity']=='/root'
++        need(review['scope']==SCOPE and review['author_identity']=='/root/hilbert_ordering_diagnosis'
+              and review['source']==plan['sources']['intake'] and review['sources']==plan['sources']
+              and review['source_contract']==plan['source_contract'] and review['source_only'] is True
+              and review['source_review_passed'] is True and type(review['scientific_calls']) is int
+              and review['scientific_calls']==0 and review['scientific_acceptance'] is False
+-             and (review['reviewer_identity']=='/root' if role=='ROOT' else review['reviewer_identity'] != '/root'),
++             and (review['reviewer_identity']=='/root' if role=='ROOT' else review['reviewer_identity'] not in ('/root','/root/hilbert_ordering_diagnosis')),
+              'genuine current scoped Source reviews')
+     grant=decode(read_pinned(plan['ROOT_authorization']))
+     need(grant['schema']=='ROOT-routed-engine-qualification-authorization-v1'
+@@ -531,6 +531,33 @@
+     need(definition_check['marking_checked'] is True and definition_check['marking_id'] == marking['marking_id'],
+          'fresh independent whole marking check')
+     controls, families = [], {}
++    # Diagnostic state is external to the engine and never supplies science.
++    diagnostic_global = plan['purpose']=='unit-row-marked-aware-global-forced-dead-controls'
++    latest_callbacks = {'proposer':None,'fallback':None,'completion':None,'validator':None}
++    diagnostic_first = {'entry':False,'return':False}
++    phase_tick,phase_tick_code = tick,tick.__code__
++    phase_tick_defaults,phase_tick_kwdefaults = tick.__defaults__,tick.__kwdefaults__
++    phase_write,phase_write_type = os.write,types.BuiltinFunctionType
++    phase_labels = ('BEFORE_GLOBAL_HANDLER', 'BEFORE_GLOBAL_SEED_GROUP', 'AFTER_GLOBAL_SEED_GROUP', 'BEFORE_GLOBAL_ENGINE_GROUP', 'AFTER_GLOBAL_ENGINE_GROUP', 'BEFORE_GLOBAL_SEARCH_GROUP', 'FIRST_PROPOSER_ENTRY', 'FIRST_PROPOSER_RETURN', 'AFTER_GLOBAL_SEARCH_GROUP', 'BEFORE_GLOBAL_ASSERTIONS', 'AFTER_GLOBAL_OUTER_RESTORE', 'AFTER_GLOBAL_HANDLER', 'BEFORE_DIAGNOSTIC_OUTPUT')
++    def phase(stage):
++        if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code
++                or phase_tick.__defaults__ is not phase_tick_defaults
++                or phase_tick.__kwdefaults__ is not phase_tick_kwdefaults
++                or os.write is not phase_write or type(phase_write) is not phase_write_type):
++            raise RuntimeError('original diagnostic native endpoints changed')
++        native_ns=phase_tick()
++        need(type(stage)is str and stage in phase_labels and type(native_ns)is int
++             and 0<=native_ns<=9223372036854775807,'literal diagnostic phase/native sample')
++        raw=('UNQUALIFIED_GLOBAL_PHASE_OBSERVATION '+stage+' '+str(native_ns)+'\n').encode('ascii')
++        offset=0
++        while offset<len(raw):
++            phase_tick()
++            if os.write is not phase_write or type(phase_write) is not phase_write_type:
++                raise RuntimeError('original diagnostic write endpoint changed')
++            count=phase_write(2,raw[offset:]);need(type(count)is int and count>0,'whole bounded phase write')
++            offset+=count
++        phase_tick()
++
+     def passed(name, **data):
+         tick(); controls.append(dict(case=name,status='PASSED',**data))
+ 
+@@ -679,6 +706,13 @@
+         log.update(queries=[],original_cursors=[],marked_cursors=[],covers=[],interruptions=[])
+         def proposer(**kw):
+             native_ns=tick()
++            if diagnostic_global:
++                qrow=kw.get('row');qstate=kw.get('state')
++                qselected=qstate.get('selected')if type(qstate)is dict else None
++                latest_callbacks['proposer']=('PROPOSER_NATIVE_STEP',qrow if type(qrow)is int and 0<=qrow<24 else -1,
++                    len(qselected)if type(qselected)is list and len(qselected)<=24 else -1,native_ns)
++                if not diagnostic_first['entry']:
++                    diagnostic_first['entry']=True;phase('FIRST_PROPOSER_ENTRY')
+             if interrupt and len(kw['state']['selected'])>initial_count:
+                 log['interruptions'].append({'kind':'DECLARED_ACTUAL_CHILD_DEGREE_INTERRUPTION',
+                     'native_ns':native_ns,'row':kw['row'],'state':copy.deepcopy(kw['state']),
+@@ -686,6 +720,8 @@
+                     'joint_began_ns':EARLY_G,'joint_deadline_ns':end})
+                 raise ChildControlInterruption('routed qualification native-first actual child degree interruption')
+             value=es.propose_degree(**kw)
++            if diagnostic_global and not diagnostic_first['return']:
++                diagnostic_first['return']=True;phase('FIRST_PROPOSER_RETURN')
+             log['queries'].append({'row':kw['row'],'state':copy.deepcopy(kw['state']),
+                 'state_sha256':sha(kw['state']),'proposal':copy.deepcopy(value)})
+             return value
+@@ -694,11 +730,21 @@
+             record={'context':real.context(),'events':[]};log['original_cursors'].append(record)
+             return ObservedCursor(real,record,kw['tick'])
+         def filtered(**kw):
++            if diagnostic_global:
++                callback_ns=tick();qrow=kw.get('row');qstate=kw.get('state')
++                qselected=qstate.get('selected')if type(qstate)is dict else None
++                latest_callbacks['fallback']=('FALLBACK_NATIVE_STEP',qrow if type(qrow)is int and 0<=qrow<24 else -1,
++                    len(qselected)if type(qselected)is list and len(qselected)<=24 else -1,callback_ns)
+             real=adapter.open_fallback(language=kw['language'],semantics=es.point,state=kw['state'],
+                 row=kw['row'],base_fallback=original,tick=kw['tick'])
+             record={'context':real.context(),'events':[]};log['marked_cursors'].append(record)
+             return ObservedCursor(real,record,kw['tick'])
+         def certifier(**kw):
++            if diagnostic_global:
++                callback_ns=tick();qrow=kw.get('row');qstate=kw.get('state')
++                qselected=qstate.get('selected')if type(qstate)is dict else None
++                latest_callbacks['completion']=('COMPLETION_NATIVE_STEP',qrow if type(qrow)is int and 0<=qrow<24 else -1,
++                    len(qselected)if type(qselected)is list and len(qselected)<=24 else -1,callback_ns)
+             value=engine.certify_by_current_cover(**kw,degree_proposer=proposer,semantics=es)
+             log['covers'].append({'state':copy.deepcopy(kw['state']),'row':kw['row'],
+                 'completion':copy.deepcopy(kw['completion']),
+@@ -765,13 +811,20 @@
+         passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='ROUTING_PROTOCOL')
+ 
+     def global_family():
++        phase('BEFORE_GLOBAL_SEED_GROUP')
+         c=deep_output();seeds=[ug(ax_formula,1,4),ug(c,3,5)];state=state_from(seeds);log={}
++        phase('AFTER_GLOBAL_SEED_GROUP')
++        phase('BEFORE_GLOBAL_ENGINE_GROUP')
+         handle=make_engine(state,log);e=handle['engine'];before=snapshot(e);outer=e.checkpoint()
++        phase('AFTER_GLOBAL_ENGINE_GROUP')
+         family={'seeds':seeds,'initial_state':state,'before':before,'actual_log':log}
+         families['GLOBAL_FORCED_DEAD']=family
+         try:
++            phase('BEFORE_GLOBAL_SEARCH_GROUP')
+             result=e.search();after=snapshot(e)
++            phase('AFTER_GLOBAL_SEARCH_GROUP')
+             family.update(search_result=result,after=after)
++            phase('BEFORE_GLOBAL_ASSERTIONS')
+             decisions=[v for v in result['events'] if v['kind']=='DECISION']
+             need([v['decision']['kind'] for v in decisions]==['FORCED','FORCED','DEAD']
+                  and [v['decision']['row'] for v in decisions]==[1,3,2]
+@@ -800,6 +853,7 @@
+         family['outer_after']=snapshot(e)
+         need(canonical(family['outer_after'])==canonical(before),'owned outer rollback')
+         passed(QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][1],family='GLOBAL_FORCED_DEAD')
++        phase('AFTER_GLOBAL_OUTER_RESTORE')
+ 
+     def transfer_family(single):
+         d=['all',variable,copy.deepcopy(ax_formula)]
+@@ -948,11 +1002,45 @@
+         'unit-row-marked-aware-two-transfer-controls':lambda:transfer_family(False),
+         'unit-row-marked-aware-short-EOF-controls':eof_family,
+         'unit-row-marked-aware-child-UNKNOWN-controls':child_family}
+-    call(handlers[plan['purpose']])
++    # Capture all late-writer authority before the original20 delegation.
++    diagnostic_context_raw=canonical({'schema':'unit-row-global-phase-diagnostic-context-v1',
++        'invocation_id':plan['invocation_id'],'purpose':plan['purpose'],'plan':raw_pin(plan_raw),
++        'sources':plan['sources'],'inputs':plan['inputs'],'source_contract':plan['source_contract'],
++        'original_model_binding':ORIGINAL_BINDING,'joint_began_ns':EARLY_G,'joint_deadline_ns':end,
++        'diagnostic_only':True,'reported_case_count':None,'qualified_case_count':0,
++        'positive_joint_gate_accepted':False,'engine_qualified':False,'logical_proof_accepted':False,
++        'complete_GCTS_model_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False})
++    need(len(diagnostic_context_raw)<=65536,'bounded predelegation phase diagnostic context')
++    diagnostic_output_path=str(Path(plan['output_directory']).resolve())
++    diagnostic_writer=save_failure_diagnostic
++    diagnostic_writer_anchor=anchor_fn(diagnostic_writer)
++    if diagnostic_global:phase('BEFORE_GLOBAL_HANDLER')
++    try:
++        call(handlers[plan['purpose']])
++    except TimeoutError as diagnostic_error:
++        if diagnostic_global and type(diagnostic_error)is TimeoutError:
++            # Builtin identity checks and the existing captured writer ONLY;
++            # never invoke a project/native20/Source guard after TimeoutError.
++            try:
++                a=diagnostic_writer_anchor;f=diagnostic_writer
++                if (save_failure_diagnostic is f and f.__code__ is a[1] and f.__globals__ is a[2]
++                        and f.__defaults__ is a[3] and f.__kwdefaults__ is a[4]
++                        and len(f.__closure__ or ())==len(a[5])
++                        and all(x is y and x.cell_contents is v for x,(y,v)in zip(f.__closure__ or (),a[5]))
++                        and tuple((k,id(v))for k,v in sorted((f.__kwdefaults__ or {}).items()))
++                            ==tuple((k,token)for k,token,v in a[6])
++                        and all(f.__kwdefaults__[k]is v for k,token,v in a[6])):
++                    f(diagnostic_output_path,diagnostic_context_raw,latest_callbacks,
++                      'CONTROLS_TIMEOUT_LAST_SCALARS',EARLY_G)
++            except BaseException:
++                pass  # Missing/incomplete diagnostic files remain incomplete.
++        raise
++    if diagnostic_global:phase('AFTER_GLOBAL_HANDLER')
+     expected_controls = QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']]
+     need([c['case'] for c in controls] == expected_controls
+          and len(controls) == len(expected_controls) and all(c['status'] == 'PASSED' for c in controls),
+          'every essential local calibration assertion completed, without SKIP/substitution')
++    if diagnostic_global:phase('BEFORE_DIAGNOSTIC_OUTPUT')
+     qualification = {'schema':'ROOT-unit-row-routed-engine-qualification-payload-v1',
+         'stage':'ROUTED_ENGINE_CONSUMER_QUALIFICATION_ONLY','endpoint_purpose':plan['purpose'],
+         'separate_endpoint_count':6,'required_case_count':12,'whole_engine_qualification_accepted':False,
+@@ -970,6 +1058,7 @@
+     result_raw = canonical({'schema':'ROOT-unit-row-routed-engine-qualification-result-v1','purpose':plan['purpose'],
+         'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,
+         'controls':None,'search':None,'found_validation':None,'routed_engine_qualification':qualification,
++        'diagnostic_only':True,'reported_case_count':None,'qualified_case_count':0,'engine_qualified':False,
+         'complete_GCTS_model_accepted':False,'GCTS_search_trajectory_accepted':False,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     result_raw=call(encode_result_transport,(result_raw,))
+@@ -977,6 +1066,7 @@
+     run.mkdir(mode=0o700);result_pin=call(write_new,(run/'engine-result.json',result_raw))
+     body={'schema':'ROOT-unit-row-routed-engine-qualification-response-body-v1','version':VERSION,
+         'status':'COMPLETE_WORKER_PENDING_EXTERNAL','invocation_id':plan['invocation_id'],'plan':raw_pin(plan_raw),
++        'diagnostic_only':True,'reported_case_count':None,'qualified_case_count':0,'engine_qualified':False,
+         'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,'original_model_binding':ORIGINAL_BINDING,
+         'outputs':[result_pin],'joint_began_ns':EARLY_G,'joint_deadline_ns':end,'CLOCK_DOMAIN':CLOCK_DOMAIN,
+         'limits':LIMITS,'resource_rule':plan['resource_rule'],'ROOT_resource_accepted':False,
+@@ -989,6 +1079,7 @@
+     need(sorted(p.name for p in run.iterdir())==['engine-result.json','response.jsonl'],'whole output2')
+     final_raw=canonical({'schema':'ROOT-unit-row-routed-engine-qualification-final-observation-v1',
+         'outputs':[result_pin,response_pin],'response':response_pin,'pending_external':True,
++        'diagnostic_only':True,'reported_case_count':None,'qualified_case_count':0,'engine_qualified':False,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     boundary();offset=0
+     while offset<len(final_raw):

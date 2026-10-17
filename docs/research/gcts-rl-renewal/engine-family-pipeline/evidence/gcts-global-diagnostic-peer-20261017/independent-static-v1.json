@@ -1,0 +1,216 @@
+{
+  "actual_forward_inverse_and_AST_inverse_exact": true,
+  "actual_or_result_reads": 0,
+  "added_region": "main.phase",
+  "case_map": {
+    "unit-row-marked-aware-child-UNKNOWN-controls": [
+      "MR-11-actual-child-native-first-declared-UNKNOWN",
+      "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+    ],
+    "unit-row-marked-aware-global-forced-dead-controls": [
+      "MR-03-global-forced-requery-dead-exhaustion",
+      "MR-04-owned-full-root-restoration"
+    ],
+    "unit-row-marked-aware-router-protocol-controls": [
+      "MR-01-new-and-legacy-route-consumption",
+      "MR-02-wrong-route-and-context-rejected"
+    ],
+    "unit-row-marked-aware-short-EOF-controls": [
+      "MR-09-real-short-stream-and-fresh-complete-keySET",
+      "MR-10-legacy-implication-EOF-remains-unaccepted"
+    ],
+    "unit-row-marked-aware-singleton-transfer-controls": [
+      "MR-05-native-singleton-full-origin-transfer",
+      "MR-06-current-sole-consumption-and-owned-rollback"
+    ],
+    "unit-row-marked-aware-two-transfer-controls": [
+      "MR-07-native-TWO-full-origin-transfer",
+      "MR-08-refreshed-witnesses-global-branch-and-owned-rollback"
+    ]
+  },
+  "changed_existing_regions": [
+    "main",
+    "main.make_engine",
+    "main.make_engine.proposer",
+    "main.make_engine.filtered",
+    "main.make_engine.certifier",
+    "main.global_family"
+  ],
+  "check_count": 21,
+  "checks": [
+    "whole_current_Source_contract_handoff_readout_costnotes_read",
+    "all19_sequential_forward_and_full_inverse_exact",
+    "both_actual_unified_patch_directions_exact",
+    "whole_AST_inverse_exact_no_Source_evaluation",
+    "all17_tophelpers_2classes_native_tail_raw_AST_preserved",
+    "only_six_existing_function_regions_changed_plus_phase",
+    "all12_scientific_control_erasure_exact_five_other_family_bodies_rawexact",
+    "current14_input8_original17_input2_binding_limits_literal_exact",
+    "ea300_current_only_familyengine_a197_not_composed",
+    "13_unique_fixed_sites_runtime_whitelist_wire84_1059",
+    "phase_captured_native_tick_write_charged_no_new_clock",
+    "first_return_after_actual_proposer_not_independent_check_acceptance",
+    "four_scalar_slots_entry_only_validator_None_no_history_or_activeframe",
+    "same_guarded_call_constructor_delegate_kwargs_return_identity_preserved",
+    "exact_builtin_TimeoutError_only_late_writer_original_rethrow",
+    "captured_writer_all_defaults_cells_tokens_rawexact_no_late_science",
+    "missing_partial_writer_unaccepted_failure55_not_native20_positive",
+    "success_result_response_final_explicit_diagnostic_null_counts_zeroqualified",
+    "readout_partial_tail_stop_malformed_no_cause_or_exclusive_timing_inference",
+    "scientific_payload_opaque_all_outcomes_zeroqualification",
+    "no_import_eval_test_clock_actual_result_or_donor_execution_byreviewer"
+  ],
+  "clocks_called": 0,
+  "complete_current_sources_map_literal_equal": true,
+  "module_evaluations": 0,
+  "native_failure_suffix_rawexact": true,
+  "raw_AST_exact_regions": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "all_function_anchors.retain",
+    "save_failure_diagnostic",
+    "save_failure_diagnostic.failure_gate",
+    "save_failure_diagnostic.encoded",
+    "save_failure_diagnostic.encoded.append",
+    "save_failure_diagnostic.encoded.visit",
+    "save_failure_diagnostic.write",
+    "encode_result_transport",
+    "ObservedCursor",
+    "ObservedCursor.__init__",
+    "ObservedCursor.context",
+    "ObservedCursor.advance",
+    "ObservedCursor.abort",
+    "ChildControlInterruption",
+    "main.tick",
+    "main.guard",
+    "main.boundary",
+    "main.call",
+    "main.fresh_language",
+    "main.passed",
+    "main.marked_semantics",
+    "main.root_state",
+    "main.tile",
+    "main.state_from",
+    "main.ug",
+    "main.snapshot",
+    "main.candidate",
+    "main.place_base",
+    "main.rowproof",
+    "main.slot",
+    "main.archived",
+    "main.core",
+    "main.maps",
+    "main.exact_restore",
+    "main.routed",
+    "main.sha",
+    "main.ax",
+    "main.deep_output",
+    "main.query",
+    "main.make_engine.original",
+    "main.cert",
+    "main.expect_error",
+    "main.protocol_family",
+    "main.transfer_family",
+    "main.stream_component",
+    "main.eof_family",
+    "main.child_family"
+  ],
+  "raw_refs": [
+    {
+      "bytes": 84909,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/global_phase_diagnostic_cold_v1.py",
+      "sha256": "d44ad0a0ba4ba4895dd1ab5c0e6ffd4980ee5a876856a7cf51d8fdfeaec0f8fa"
+    },
+    {
+      "bytes": 31049,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/Source-contract-v1.json",
+      "sha256": "b5e266467e384aa584679762722b450055186dc5e986a8995349d0ec2e1aacca"
+    },
+    {
+      "bytes": 13372,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/Source-delta-v1.json",
+      "sha256": "8af052e6eacb94e45611e4783dbe4c2a08eeedd4f8ebbcf96864dde3825d8651"
+    },
+    {
+      "bytes": 13622,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/native-readout-protocol-v1.json",
+      "sha256": "8bc3a263a6eaf6f7d73bcd7aa4f6fe53f0ef43c887b2f9a0391e10473d123cf5"
+    },
+    {
+      "bytes": 5650,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/author-static-v1.json",
+      "sha256": "0337b6b5d7a75d098167878fdb697291a4f447a5a9aa5418b591c6033bf410a9"
+    },
+    {
+      "bytes": 4642,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/Source-cost-diagnosis-v1.json",
+      "sha256": "9ee492fcaec495e748425459594224aff83a1b6cae2418e4dc71e2003622c4d1"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 4824,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/manifest.json",
+      "sha256": "5f4ded26569959aad5c5ce1abb015fa6e1435fd283315a68e744e1a314e59bab"
+    },
+    {
+      "bytes": 78220,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/ROOT_call_local_projection_qualification_cold_v1.py",
+      "sha256": "0caecb1d5780f856f9a41461c09dc9eb539b428df78d20bc69e2d5b4245a5400"
+    },
+    {
+      "bytes": 11601,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/sequential-edits-v1.json",
+      "sha256": "be995e74908d4936b16b55e6ec74e4739a0d914c0f28218d182207c4ba18c3c8"
+    },
+    {
+      "bytes": 13767,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/handoff-v1.json",
+      "sha256": "9b1b4cfc11003df97170133060a2acc279c3f61c54cc487560afef5cf2745fc9"
+    },
+    {
+      "bytes": 15773,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/caller-forward.patch",
+      "sha256": "c96e433fdc27f42916674362e37cd48036550866fb67556aadd1f9b99beafa9c"
+    },
+    {
+      "bytes": 15773,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/caller-full-inverse.patch",
+      "sha256": "c376638dc7b4bb1d91c43dcf8c4be6110a9f1b9988732fa3b7824b2c9587d4da"
+    }
+  ],
+  "schema": "unit-row-global-phase-diagnostic-independent-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "sequential_edit_count": 19,
+  "source": {
+    "bytes": 84909,
+    "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/global_phase_diagnostic_cold_v1.py",
+    "sha256": "d44ad0a0ba4ba4895dd1ab5c0e6ffd4980ee5a876856a7cf51d8fdfeaec0f8fa"
+  },
+  "source_contract": {
+    "bytes": 31049,
+    "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/Source-contract-v1.json",
+    "sha256": "b5e266467e384aa584679762722b450055186dc5e986a8995349d0ec2e1aacca"
+  },
+  "source_only": true,
+  "tests_run": 0,
+  "wire_maximum_line_bytes": 84,
+  "wire_maximum_total_bytes": 1059
+}

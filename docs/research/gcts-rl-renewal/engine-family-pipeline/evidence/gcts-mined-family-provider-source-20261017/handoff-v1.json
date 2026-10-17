@@ -1,0 +1,94 @@
+{
+  "API": "build_family_batch(*,language,base_semantics,marked_semantics,producer,expansion_checker,host_adapter,mined,state,decision,tick,limits=None)->{batch,report}; callback returns batch only.",
+  "API_wire": {
+    "bytes": 3414,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/API-wire-v1.json",
+    "sha256": "81c96655b4c6c9fb9396e639a1cd4edefdf4d3a1d9d2bd791a7d39eb2b1ddd8d"
+  },
+  "Review_ABI": {
+    "required_disclosure": [
+      "reviewer authorship/dependency overlap",
+      "no scientific execution",
+      "runtime/engine/proof qualification remains false"
+    ],
+    "schema": "receptor-family-mined-provider-typed-Source-review-v1",
+    "scope": "receptor-family-mined-provider-Source",
+    "source": {
+      "bytes": 37232,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+      "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+    },
+    "source_contract": {
+      "bytes": 17451,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-contract-v1.json",
+      "sha256": "90984f07fefab1bad5bf8c715dfda97cb342b874c5f56ec79fb9f8e0f4f51bb2"
+    },
+    "sources": {
+      "provider": {
+        "bytes": 37232,
+        "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+        "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+      }
+    },
+    "verdict": "CONDITIONAL_SOURCE_PASS or SOURCE_REJECTED"
+  },
+  "authorship": {
+    "author": "/root/hilbert_advice_controls",
+    "overlap": "Author owns host adapter and family-consumer/engine preference fork and earlier membership/proposer/fallback/marked-decorator ancestry; wire coordinated with independent miner/collector producer Arithmetic and expansion checker Diagnosis. No fully independent end-to-end mathematical implementation claimed.",
+    "peer_review": "Not yet performed on this exact provider Source. Root owns review, grants and measured actuals."
+  },
+  "batch_exact_fields": [
+    "schema",
+    "status",
+    "binding",
+    "marking_id",
+    "state_sha256",
+    "decision",
+    "instances"
+  ],
+  "composition": "a197 +consumer2d680/familyengine3da1 prospective only. Original17/input2 epoch unchanged; full executable caller map separate.",
+  "delta": {
+    "bytes": 39205,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-delta-v1.json",
+    "sha256": "17706534e39601f11d1e2fbc340e203c0777c2bf877b0d1c0e8527a7b357b7e3"
+  },
+  "engine_activated": false,
+  "instance_exact_fields": [
+    "registry",
+    "family_id",
+    "host",
+    "substitution",
+    "port_bindings",
+    "proposal",
+    "row_assignment"
+  ],
+  "limits": {
+    "depth": 128,
+    "input_bytes": 4194304,
+    "instances": 8,
+    "records": 16,
+    "row_trials": 256,
+    "work": 1000000
+  },
+  "proof_accepted": false,
+  "runtime_qualified": false,
+  "schema": "receptor-family-mined-provider-handoff-v1",
+  "scientific_calls": 0,
+  "scope": "Bounded literal-ground arbitrary mined primitive cuts. Fresh current physical receptors, simultaneous matching, independent expansion and native full point union. Incomplete advisory prefix; no preference is degree/EOF/pruning/fact.",
+  "source": {
+    "bytes": 37232,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+    "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+  },
+  "source_contract": {
+    "bytes": 17451,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-contract-v1.json",
+    "sha256": "90984f07fefab1bad5bf8c715dfda97cb342b874c5f56ec79fb9f8e0f4f51bb2"
+  },
+  "static_audit": {
+    "bytes": 5536,
+    "path": "/private/tmp/gcts-mined-family-provider-source-20261017/static-audit-v1.json",
+    "sha256": "9d01065ad39082c4db9f705d01d9b0047e20c049df7e7540fbafa4033e913933"
+  },
+  "status": "SOURCE_READY_FOR_DISTINCT_REVIEW_ONLY"
+}

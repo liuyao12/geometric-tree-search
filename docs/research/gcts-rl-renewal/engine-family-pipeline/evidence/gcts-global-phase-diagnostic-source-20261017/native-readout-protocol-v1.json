@@ -1,0 +1,183 @@
+{
+  "all_outcomes": {
+    "current_historical_qualification": "Parent current10/12 remains unchanged; Source diagnostic supplies0newqualification. Root stated prior global native failure/causeunknown, not inspected by author.",
+    "flags": {
+      "GCTS_advantage_claimed": false,
+      "RL_accepted": false,
+      "ROOT_resource_accepted": false,
+      "actual_execution_authorized": false,
+      "actual_result_read": false,
+      "complete_GCTS_model_accepted": false,
+      "engine_qualified": false,
+      "exact_point_board_accepted": false,
+      "exclusive_cost_attributed": false,
+      "failure_cause_established": false,
+      "failure_marking_activated": false,
+      "helper_or_module_executed": false,
+      "logical_proof_accepted": false,
+      "scientific_acceptance": false,
+      "scientific_replay": false,
+      "target_search_performed": false,
+      "trajectory_accepted": false,
+      "whole_engine_qualification_accepted": false
+    },
+    "qualified_case_count": 0,
+    "reported_case_count": null
+  },
+  "caller": {
+    "bytes": 84909,
+    "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/global_phase_diagnostic_cold_v1.py",
+    "sha256": "d44ad0a0ba4ba4895dd1ab5c0e6ffd4980ee5a876856a7cf51d8fdfeaec0f8fa"
+  },
+  "current_sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_router": {
+      "bytes": 12779,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    },
+    "engine": {
+      "bytes": 66670,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py",
+      "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "intake": {
+      "bytes": 84909,
+      "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/global_phase_diagnostic_cold_v1.py",
+      "sha256": "d44ad0a0ba4ba4895dd1ab5c0e6ffd4980ee5a876856a7cf51d8fdfeaec0f8fa"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 29316,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-baseline-readiness-source-20261016/marked_unit_row_adapter_v3.py",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e"
+    },
+    "marked_aware_checker": {
+      "bytes": 25783,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+    },
+    "marked_aware_proposer": {
+      "bytes": 14064,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    }
+  },
+  "diagnostic_only": true,
+  "failure_writer": {
+    "complete_pair": "Authenticate exact output inventory/pair, raw unknown JSON+LF and complete marker file+LF, marker full raw hash/bytes/file name and diagnostic_only/false strong flags. Join complete context invocation/purpose/plan SHA+bytes/current Sources14/input8/sourcecontract/originalbinding/EARLY_G/deadline to the exact Root plan/native launch. Compare context reportedNone/qualified0/engineFalse and writer returned_control_recordFalse/activeframeFalse/all promotionFalse. Validate exact four scalar fields/roles with None distinct from unobserved. Missing/partial pair is incomplete observation only.",
+    "files": [
+      "unknown-diagnostic.json",
+      "diagnostic-completion.json"
+    ],
+    "late_calls": "All context bytes/path/function/code/default/kwdefault/cell anchors captured before delegate. Catch is outside original call, so native20 invocation/Source boundary semantics are preserved. After failure, only inline builtin identity comparisons and the retained builtin-only writer run; no tick/guard/anchor/same/Path/project/model/checker/engine method is called. Original error re-raised, unchanged outer EXIT2.",
+    "limits": "Inherited captured native failure55 gate, internal500MiB reserve and original external512MiB, owned60, caller90+1 apply; partial/incomplete writer never positive. No requirement that failurewriter succeed under an already expired55/resource bound.",
+    "message_scope": "Exact tick TimeoutError text and native lifetime>=20 are separate facts if observed. Neither proves cause, exclusive bottleneck, interrupted method or scientific path. Any failure has reported countsNone/qualified0.",
+    "raw_context_schema": "unit-row-global-phase-diagnostic-context-v1",
+    "schemas": [
+      "unit-row-controls-last-context-diagnostic-v1",
+      "unit-row-controls-last-context-completion-v1"
+    ],
+    "source": "Existing top-level save_failure_diagnostic remains raw exact. Only exact builtin TimeoutError escaping original guarded handler call can trigger writer; subclasses and failures before/after that call need not create diagnostic files."
+  },
+  "latest_entry_slots": {
+    "provenance": "Proposer uses its unchanged existing native-first tick sample. Fallback filtered-cursor opener and completion certifier add an original native tick before their unchanged delegate. Only row and selected-list length are read from existing arguments; no model/snapshot/private engine call. Malformed optional row/count become -1 without affecting mathematical acceptance. Entries overwrite fixed slots outside semantic rollback; no history.",
+    "roles": [
+      "proposer",
+      "fallback",
+      "completion",
+      "validator"
+    ],
+    "shape": "Exact dictionary with the four roles; each None or literal tuple(stage,row,selected_count,native_ns). Stage exactly ROLE.upper()+_NATIVE_STEP; row exact int0..23 or -1unavailable, selected exact int0..24 or -1unavailable, native exact signed64 nonnegative integer.",
+    "validator_scope": "Always None: the independent checker is invoked internally by engine/router and no wrapper/method replacement is added. None is not absence of validation or proof of progress. A last entry is not the active failure frame, a nonreturn, an actual move/row selected by scheduler, a completed query or case."
+  },
+  "original_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "parent_caller": {
+    "bytes": 78220,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-qualification-cold-ROOT-source-20261016/ROOT_call_local_projection_qualification_cold_v1.py",
+    "sha256": "0caecb1d5780f856f9a41461c09dc9eb539b428df78d20bc69e2d5b4245a5400"
+  },
+  "phase_stderr": {
+    "charged_writer": "Existing captured main.tick is checked for function/code/default/kwdefault identity; captured builtin os.write identity/type. Tick before sample/write, every partial-write iteration and after complete write. All writes and checks consume the original20 window/internal500MiB reserve; no separate clock or off-budget profiling.",
+    "maximum_complete_line_bytes": 84,
+    "maximum_complete_marker_bytes": 1059,
+    "maximum_sites": 13,
+    "native_join": "Samples are producer diagnostics; qualify only their byte/native-clock concordance against exact current once/plan/grant/review/Source14/input8/native terminal/tool bracket/session. Native launch <= EARLY_G <= sample < originaldeadline and sample <= terminal/postprobe where metadata permits; missing samples do not prove absence. Read-to-read differences include intervening writes/guards/snapshots/checks/all accumulated work and are not exclusive method costs.",
+    "order": "Complete recognized labels form a unique ordered subsequence of the runtime list, never a source-lexical ordering. Not every label is guaranteed to be written. A reached write is only an observation at that location. FIRST_PROPOSER_RETURN is after the first actual es.propose_degree return, before the existing query log/current independent checker; it is not a degree, completed engine decision, case or proof acceptance.",
+    "ordered_runtime_literals": [
+      "BEFORE_GLOBAL_HANDLER",
+      "BEFORE_GLOBAL_SEED_GROUP",
+      "AFTER_GLOBAL_SEED_GROUP",
+      "BEFORE_GLOBAL_ENGINE_GROUP",
+      "AFTER_GLOBAL_ENGINE_GROUP",
+      "BEFORE_GLOBAL_SEARCH_GROUP",
+      "FIRST_PROPOSER_ENTRY",
+      "FIRST_PROPOSER_RETURN",
+      "AFTER_GLOBAL_SEARCH_GROUP",
+      "BEFORE_GLOBAL_ASSERTIONS",
+      "AFTER_GLOBAL_OUTER_RESTORE",
+      "AFTER_GLOBAL_HANDLER",
+      "BEFORE_DIAGNOSTIC_OUTPUT"
+    ],
+    "partial_or_malformed": "A trailing partial/non-LF line can result from a charged write interrupted by native error. Retain raw stderr/hash/bytes; do not treat a partial/malformed line as an observed phase/sample/error or infer missing work. Stop phase recognition at malformed/nonprotocol data while retaining whole raw bytes. Existing bounded UNIT_ROW_GLOBAL_ENGINE_UNKNOWN line may follow; exact equality is a message observation only.",
+    "prefix": "UNQUALIFIED_GLOBAL_PHASE_OBSERVATION",
+    "wire": "Exact ASCII prefix, one space, exact fixed stage, one space, canonical unsigned decimal native monotonic integer, one LF. Sample exact non-bool int in [0,2^63-1]. No user/dynamic label, row/key/formula/string payload or unbounded event history."
+  },
+  "purpose": "unit-row-marked-aware-global-forced-dead-controls",
+  "qualified_case_count": 0,
+  "reported_case_count": null,
+  "schema": "unit-row-global-phase-diagnostic-readout-protocol-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "successful_exit0": {
+    "acceptance": "No engine, MR03/04, previous global/target, theorem, trajectory, resource-positive, RL or gain promotion. Requires separate future complete qualification scope if Root chooses.",
+    "opaque_payload": "routed_engine_qualification retains all unchanged raw producer records/assertions only for completeness; this diagnostic never qualifies or reports their case counts. Do not run an old qualification closer or promote their internal control_count/PASSED labels. Root readout treats payload opaque and records zero qualification even exit0.",
+    "wire": "Preserve whole full canonical expanded+LF16MiB/zlib6/base64 envelope4MiB, response2LF and final stdout1LF/currentSource14/input8/once/native20/512 joins. New outer result/response/final headers explicitly diagnostic_onlyTrue/reported_case_countNone/qualified_case_count0/engine_qualifiedFalse."
+  }
+}

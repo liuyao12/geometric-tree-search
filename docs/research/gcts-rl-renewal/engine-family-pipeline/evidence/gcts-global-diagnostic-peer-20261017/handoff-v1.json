@@ -1,0 +1,35 @@
+{
+  "findings": {
+    "bytes": 9694,
+    "path": "/private/tmp/gcts-global-diagnostic-peer-20261017/findings-v1.json",
+    "sha256": "c70464de96768947f7f34be5500458a24eb122e3fa29804d98d4b64472c1081b"
+  },
+  "independent_static": {
+    "bytes": 8026,
+    "path": "/private/tmp/gcts-global-diagnostic-peer-20261017/independent-static-v1.json",
+    "sha256": "f09fef20421e375b6163efaa1ba265791b5d76b90be97e3927f205fb430bfd41"
+  },
+  "next": "Root whole review and separately reviewed exact diagnostic saved readout before any helper use. Root alone grants/runs actual; all outcomes remain diagnostic only.",
+  "qualified_case_count": 0,
+  "reported_case_count": null,
+  "review": {
+    "bytes": 7249,
+    "path": "/private/tmp/gcts-global-diagnostic-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "78dc7974fb91c7e3b2d78655a59ac99c7ad49bca78f759bb0bd9b7432f47d457"
+  },
+  "schema": "unit-row-global-phase-diagnostic-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 84909,
+    "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/global_phase_diagnostic_cold_v1.py",
+    "sha256": "d44ad0a0ba4ba4895dd1ab5c0e6ffd4980ee5a876856a7cf51d8fdfeaec0f8fa"
+  },
+  "source_contract": {
+    "bytes": 31049,
+    "path": "/private/tmp/gcts-global-phase-diagnostic-source-20261017/Source-contract-v1.json",
+    "sha256": "b5e266467e384aa584679762722b450055186dc5e986a8995349d0ec2e1aacca"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS"
+}

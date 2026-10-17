@@ -1,0 +1,49 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Reviewer did not author collector. Reviewer authored9fd marked verifier used through point,8f7a,currentea3004 adapter(not declareda197 lane),4358 receptor checker and earlier controls/helpers. Arithmetic authors collector/miner/producer/c354/kernel/engine; Controls authors4bd6. Shared dependencies disclosed; no independent self-math or runtime acceptance.",
+  "blockers": [
+    "COLLECTOR-NATIVE-COUNTER-ABI-1"
+  ],
+  "findings": {
+    "bytes": 4277,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/findings-v1.json",
+    "sha256": "435c860600040896520448bc4b924ba90d004d391c713fd0aac6ce970935cd51"
+  },
+  "limitations": [
+    "No model/project/collector/checker/helper function or module executed/imported/evaluated; no tests/clocks/actual/results/proofword reads. Raw/AST/metadata/builtincompilewithout-evaluation and Sourcepatch operations only.",
+    "All nonblocker observations conditional; corrected successor needs distinct currentreview and Root fresh runtime controls. Baseline10/12 does not qualify familya197 lane.",
+    "Unordered selection, repeated/open ports, actualGamma, all six forms, native error/ownUNKNOWN, exact key/state/collision/provenance and miner/expander/checker/native roundtrip remain unmeasured."
+  ],
+  "raw_AST_evidence": {
+    "bytes": 5137,
+    "path": "/private/tmp/gcts-search-dag-collector-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "c16871e6f703263df408bdf89141220b28d7c7bc0328d7aede9d4a1293ccff25"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "receptor-family-checked-state-DAG-collector-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-checked-state-DAG-collector-Source",
+  "source": {
+    "bytes": 19514,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+    "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+  },
+  "source_contract": {
+    "bytes": 10602,
+    "path": "/private/tmp/gcts-search-dag-collector-source-20261017/Source-contract-v1.json",
+    "sha256": "f83cd6b6e0cce6794639b19b1ee0ebf12424d9772f4e5a1a1edd2b06c4db21f0"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "collector": {
+      "bytes": 19514,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v1.py",
+      "sha256": "054887fcccdd8ec76a11af7a463c835e47c2fb239a2b0a3f106fa574e0260a55"
+    }
+  },
+  "status": "SOURCE_BLOCKED",
+  "whole_Source_contract_API_read": true
+}
