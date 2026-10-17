@@ -1,0 +1,5752 @@
+{
+  "GCTS_advantage": false,
+  "RL_accepted": false,
+  "actual_conflict": [
+    [
+      [
+        5,
+        0
+      ],
+      0,
+      1
+    ]
+  ],
+  "all_board_redundancy_scope": "ALL_COMPLETE_EXACT_BOARDS_OF_THIS_ORIGINAL_INPUT",
+  "binding": {
+    "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+    "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+    "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "complete_GCTS_model_accepted": false,
+  "component_admission": {
+    "bytes": 9214,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/ROOT-component-admission-v1.json",
+    "sha256": "5eb24a2e8a8ec49abf598c00a4c3c2f8fb59ce964592b4b9f08a6ed18dd81a2c"
+  },
+  "component_control_branches": 0,
+  "component_control_degree_EOF_qualification": false,
+  "component_control_scheduler_qualification": false,
+  "component_control_search_nodes": 0,
+  "component_controls_are_supplied_not_discovered": true,
+  "component_native_seconds": 1.632122,
+  "component_owned_peak_bytes": 27688960,
+  "component_probes": {
+    "allowed_axiom_row0": {
+      "decorated": {
+        "GCTS_advantage_accepted": false,
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "added_global_m_values": [
+          [
+            [
+              5,
+              0
+            ],
+            0
+          ]
+        ],
+        "added_local_m_values": [
+          [
+            [
+              5,
+              0
+            ],
+            0
+          ]
+        ],
+        "base_tile": {
+          "global_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ]
+          ],
+          "global_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "local_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ]
+          ],
+          "local_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "membership": {
+            "binding": {
+              "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+              "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "identity_preimage": {
+              "binding": {
+                "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            },
+            "logical_acceptance": false,
+            "ordered_input_formula_ids": [],
+            "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+            "primitive_id": "e8e576ad5d915ddc6a0173ed396fefca6b39f2f7d654842b7b4957082fe59c01",
+            "schema": "shared-bounded-primitive-member-v1",
+            "status": "MEMBER"
+          },
+          "placement_key": {
+            "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+            "translation": [
+              0,
+              0
+            ],
+            "type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            }
+          },
+          "selection_record": {
+            "generation": 1,
+            "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+            "translation": [
+              0,
+              0
+            ],
+            "type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            }
+          }
+        },
+        "complete_GCTS_model_accepted": false,
+        "exact_point_board_accepted": false,
+        "global_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              5,
+              0
+            ],
+            0
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "independently_checked": false,
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              5,
+              0
+            ],
+            0
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "logical_proof_accepted": false,
+        "marking_activated": false,
+        "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+        "placement_key": {
+          "tile_type_id": "row0-channel45-decorated-tile-38ac68fdc756b212e9c7ba8b0b61a2ba5819271db5f2d42e563be67006e80984",
+          "translation": [
+            0,
+            0
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            },
+            "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+            "schema": "unit-row-row0-channel45-decorated-type-v1"
+          }
+        },
+        "read_obligations": [],
+        "schema": "unit-row-row0-channel45-decorated-tile-v1",
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "row0-channel45-decorated-tile-38ac68fdc756b212e9c7ba8b0b61a2ba5819271db5f2d42e563be67006e80984",
+          "translation": [
+            0,
+            0
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            },
+            "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+            "schema": "unit-row-row0-channel45-decorated-type-v1"
+          }
+        },
+        "trajectory_accepted": false,
+        "version": "unit-row-certified-row0-channel45-point-mark-decorator-v1"
+      },
+      "degree_or_EOF_accepted": false,
+      "original": {
+        "global_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "membership": {
+          "binding": {
+            "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+            "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+            "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+            "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+            "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+          },
+          "identity_preimage": {
+            "binding": {
+              "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+              "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "ordered_premise_formulas": [],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "name": "AS",
+              "rule": "axiom"
+            }
+          },
+          "logical_acceptance": false,
+          "ordered_input_formula_ids": [],
+          "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+          "primitive_id": "e8e576ad5d915ddc6a0173ed396fefca6b39f2f7d654842b7b4957082fe59c01",
+          "schema": "shared-bounded-primitive-member-v1",
+          "status": "MEMBER"
+        },
+        "placement_key": {
+          "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+          "translation": [
+            0,
+            0
+          ],
+          "type_preimage": {
+            "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "ordered_offsets": [],
+            "ordered_premise_formulas": [],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "name": "AS",
+              "rule": "axiom"
+            }
+          }
+        },
+        "read_obligations": [],
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+          "translation": [
+            0,
+            0
+          ],
+          "type_preimage": {
+            "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "ordered_offsets": [],
+            "ordered_premise_formulas": [],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "name": "AS",
+              "rule": "axiom"
+            }
+          }
+        }
+      },
+      "rejections": [],
+      "survivors": [
+        {
+          "GCTS_advantage_accepted": false,
+          "RL_accepted": false,
+          "ROOT_resource_accepted": false,
+          "added_global_m_values": [
+            [
+              [
+                5,
+                0
+              ],
+              0
+            ]
+          ],
+          "added_local_m_values": [
+            [
+              [
+                5,
+                0
+              ],
+              0
+            ]
+          ],
+          "base_tile": {
+            "global_m_values": [
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  "formula",
+                  "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+                ]
+              ]
+            ],
+            "global_t_values": [
+              [
+                [
+                  0,
+                  0
+                ],
+                1
+              ]
+            ],
+            "local_m_values": [
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  "formula",
+                  "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+                ]
+              ]
+            ],
+            "local_t_values": [
+              [
+                [
+                  0,
+                  0
+                ],
+                1
+              ]
+            ],
+            "membership": {
+              "binding": {
+                "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "identity_preimage": {
+                "binding": {
+                  "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                  "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                  "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                  "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                  "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                  "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+                },
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              },
+              "logical_acceptance": false,
+              "ordered_input_formula_ids": [],
+              "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+              "primitive_id": "e8e576ad5d915ddc6a0173ed396fefca6b39f2f7d654842b7b4957082fe59c01",
+              "schema": "shared-bounded-primitive-member-v1",
+              "status": "MEMBER"
+            },
+            "placement_key": {
+              "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+              "translation": [
+                0,
+                0
+              ],
+              "type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [],
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              }
+            },
+            "selection_record": {
+              "generation": 1,
+              "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+              "translation": [
+                0,
+                0
+              ],
+              "type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [],
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              }
+            }
+          },
+          "complete_GCTS_model_accepted": false,
+          "exact_point_board_accepted": false,
+          "global_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ],
+            [
+              [
+                5,
+                0
+              ],
+              0
+            ]
+          ],
+          "global_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "independently_checked": false,
+          "local_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ],
+            [
+              [
+                5,
+                0
+              ],
+              0
+            ]
+          ],
+          "local_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "logical_proof_accepted": false,
+          "marking_activated": false,
+          "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+          "placement_key": {
+            "tile_type_id": "row0-channel45-decorated-tile-38ac68fdc756b212e9c7ba8b0b61a2ba5819271db5f2d42e563be67006e80984",
+            "translation": [
+              0,
+              0
+            ],
+            "type_preimage": {
+              "base_type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [],
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              },
+              "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+              "schema": "unit-row-row0-channel45-decorated-type-v1"
+            }
+          },
+          "read_obligations": [],
+          "schema": "unit-row-row0-channel45-decorated-tile-v1",
+          "selection_record": {
+            "generation": 1,
+            "tile_type_id": "row0-channel45-decorated-tile-38ac68fdc756b212e9c7ba8b0b61a2ba5819271db5f2d42e563be67006e80984",
+            "translation": [
+              0,
+              0
+            ],
+            "type_preimage": {
+              "base_type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [],
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              },
+              "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+              "schema": "unit-row-row0-channel45-decorated-type-v1"
+            }
+          },
+          "trajectory_accepted": false,
+          "version": "unit-row-certified-row0-channel45-point-mark-decorator-v1"
+        }
+      ]
+    },
+    "allowed_axiom_row1": {
+      "decorated": {
+        "GCTS_advantage_accepted": false,
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "added_global_m_values": [
+          [
+            [
+              5,
+              1
+            ],
+            0
+          ]
+        ],
+        "added_local_m_values": [
+          [
+            [
+              5,
+              0
+            ],
+            0
+          ]
+        ],
+        "base_tile": {
+          "global_m_values": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ]
+          ],
+          "global_t_values": [
+            [
+              [
+                0,
+                1
+              ],
+              1
+            ]
+          ],
+          "local_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ]
+          ],
+          "local_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "membership": {
+            "binding": {
+              "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+              "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "identity_preimage": {
+              "binding": {
+                "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            },
+            "logical_acceptance": false,
+            "ordered_input_formula_ids": [],
+            "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+            "primitive_id": "e8e576ad5d915ddc6a0173ed396fefca6b39f2f7d654842b7b4957082fe59c01",
+            "schema": "shared-bounded-primitive-member-v1",
+            "status": "MEMBER"
+          },
+          "placement_key": {
+            "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+            "translation": [
+              0,
+              1
+            ],
+            "type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            }
+          },
+          "selection_record": {
+            "generation": 1,
+            "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+            "translation": [
+              0,
+              1
+            ],
+            "type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            }
+          }
+        },
+        "complete_GCTS_model_accepted": false,
+        "exact_point_board_accepted": false,
+        "global_m_values": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              5,
+              1
+            ],
+            0
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              1
+            ],
+            1
+          ]
+        ],
+        "independently_checked": false,
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              5,
+              0
+            ],
+            0
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "logical_proof_accepted": false,
+        "marking_activated": false,
+        "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+        "placement_key": {
+          "tile_type_id": "row0-channel45-decorated-tile-38ac68fdc756b212e9c7ba8b0b61a2ba5819271db5f2d42e563be67006e80984",
+          "translation": [
+            0,
+            1
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            },
+            "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+            "schema": "unit-row-row0-channel45-decorated-type-v1"
+          }
+        },
+        "read_obligations": [],
+        "schema": "unit-row-row0-channel45-decorated-tile-v1",
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "row0-channel45-decorated-tile-38ac68fdc756b212e9c7ba8b0b61a2ba5819271db5f2d42e563be67006e80984",
+          "translation": [
+            0,
+            1
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            },
+            "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+            "schema": "unit-row-row0-channel45-decorated-type-v1"
+          }
+        },
+        "trajectory_accepted": false,
+        "version": "unit-row-certified-row0-channel45-point-mark-decorator-v1"
+      },
+      "degree_or_EOF_accepted": false,
+      "original": {
+        "global_m_values": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              1
+            ],
+            1
+          ]
+        ],
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "membership": {
+          "binding": {
+            "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+            "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+            "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+            "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+            "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+          },
+          "identity_preimage": {
+            "binding": {
+              "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+              "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "ordered_premise_formulas": [],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "name": "AS",
+              "rule": "axiom"
+            }
+          },
+          "logical_acceptance": false,
+          "ordered_input_formula_ids": [],
+          "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+          "primitive_id": "e8e576ad5d915ddc6a0173ed396fefca6b39f2f7d654842b7b4957082fe59c01",
+          "schema": "shared-bounded-primitive-member-v1",
+          "status": "MEMBER"
+        },
+        "placement_key": {
+          "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+          "translation": [
+            0,
+            1
+          ],
+          "type_preimage": {
+            "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "ordered_offsets": [],
+            "ordered_premise_formulas": [],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "name": "AS",
+              "rule": "axiom"
+            }
+          }
+        },
+        "read_obligations": [],
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+          "translation": [
+            0,
+            1
+          ],
+          "type_preimage": {
+            "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "ordered_offsets": [],
+            "ordered_premise_formulas": [],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "var",
+                              "y"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "name": "AS",
+              "rule": "axiom"
+            }
+          }
+        }
+      },
+      "rejections": [],
+      "survivors": [
+        {
+          "GCTS_advantage_accepted": false,
+          "RL_accepted": false,
+          "ROOT_resource_accepted": false,
+          "added_global_m_values": [
+            [
+              [
+                5,
+                1
+              ],
+              0
+            ]
+          ],
+          "added_local_m_values": [
+            [
+              [
+                5,
+                0
+              ],
+              0
+            ]
+          ],
+          "base_tile": {
+            "global_m_values": [
+              [
+                [
+                  1,
+                  1
+                ],
+                [
+                  "formula",
+                  "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+                ]
+              ]
+            ],
+            "global_t_values": [
+              [
+                [
+                  0,
+                  1
+                ],
+                1
+              ]
+            ],
+            "local_m_values": [
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  "formula",
+                  "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+                ]
+              ]
+            ],
+            "local_t_values": [
+              [
+                [
+                  0,
+                  0
+                ],
+                1
+              ]
+            ],
+            "membership": {
+              "binding": {
+                "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "identity_preimage": {
+                "binding": {
+                  "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                  "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                  "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                  "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                  "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                  "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+                },
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              },
+              "logical_acceptance": false,
+              "ordered_input_formula_ids": [],
+              "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+              "primitive_id": "e8e576ad5d915ddc6a0173ed396fefca6b39f2f7d654842b7b4957082fe59c01",
+              "schema": "shared-bounded-primitive-member-v1",
+              "status": "MEMBER"
+            },
+            "placement_key": {
+              "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+              "translation": [
+                0,
+                1
+              ],
+              "type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [],
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              }
+            },
+            "selection_record": {
+              "generation": 1,
+              "tile_type_id": "bounded-point-tile-ce321e7a4ea6439fda1a9cf5489981aa51f017e57de8318416cbde58372cc8a4",
+              "translation": [
+                0,
+                1
+              ],
+              "type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [],
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              }
+            }
+          },
+          "complete_GCTS_model_accepted": false,
+          "exact_point_board_accepted": false,
+          "global_m_values": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ],
+            [
+              [
+                5,
+                1
+              ],
+              0
+            ]
+          ],
+          "global_t_values": [
+            [
+              [
+                0,
+                1
+              ],
+              1
+            ]
+          ],
+          "independently_checked": false,
+          "local_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ],
+            [
+              [
+                5,
+                0
+              ],
+              0
+            ]
+          ],
+          "local_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "logical_proof_accepted": false,
+          "marking_activated": false,
+          "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+          "placement_key": {
+            "tile_type_id": "row0-channel45-decorated-tile-38ac68fdc756b212e9c7ba8b0b61a2ba5819271db5f2d42e563be67006e80984",
+            "translation": [
+              0,
+              1
+            ],
+            "type_preimage": {
+              "base_type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [],
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              },
+              "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+              "schema": "unit-row-row0-channel45-decorated-type-v1"
+            }
+          },
+          "read_obligations": [],
+          "schema": "unit-row-row0-channel45-decorated-tile-v1",
+          "selection_record": {
+            "generation": 1,
+            "tile_type_id": "row0-channel45-decorated-tile-38ac68fdc756b212e9c7ba8b0b61a2ba5819271db5f2d42e563be67006e80984",
+            "translation": [
+              0,
+              1
+            ],
+            "type_preimage": {
+              "base_type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [],
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              },
+              "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+              "schema": "unit-row-row0-channel45-decorated-type-v1"
+            }
+          },
+          "trajectory_accepted": false,
+          "version": "unit-row-certified-row0-channel45-point-mark-decorator-v1"
+        }
+      ]
+    },
+    "forbidden_remote_row0_read": {
+      "decorated": {
+        "GCTS_advantage_accepted": false,
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "added_global_m_values": [
+          [
+            [
+              5,
+              0
+            ],
+            1
+          ],
+          [
+            [
+              5,
+              1
+            ],
+            0
+          ],
+          [
+            [
+              5,
+              2
+            ],
+            1
+          ]
+        ],
+        "added_local_m_values": [
+          [
+            [
+              5,
+              -2
+            ],
+            1
+          ],
+          [
+            [
+              5,
+              -1
+            ],
+            0
+          ],
+          [
+            [
+              5,
+              0
+            ],
+            1
+          ]
+        ],
+        "base_tile": {
+          "global_m_values": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                2,
+                2
+              ],
+              [
+                "offset",
+                -2
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                "formula",
+                "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+              ]
+            ],
+            [
+              [
+                3,
+                2
+              ],
+              [
+                "offset",
+                -1
+              ]
+            ]
+          ],
+          "global_t_values": [
+            [
+              [
+                0,
+                2
+              ],
+              1
+            ]
+          ],
+          "local_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                1,
+                -2
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                2,
+                0
+              ],
+              [
+                "offset",
+                -2
+              ]
+            ],
+            [
+              [
+                1,
+                -1
+              ],
+              [
+                "formula",
+                "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+              ]
+            ],
+            [
+              [
+                3,
+                0
+              ],
+              [
+                "offset",
+                -1
+              ]
+            ]
+          ],
+          "local_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "membership": {
+            "binding": {
+              "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+              "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "identity_preimage": {
+              "binding": {
+                "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            },
+            "logical_acceptance": false,
+            "ordered_input_formula_ids": [
+              "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+              "1b4d9162cfdde3e19e52f737861d04009718b8455954772e42fcc2dce5747da8"
+            ],
+            "output_formula_id": "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+            "primitive_id": "e8319e5d3d1e07aa78822bd74ddeead825be04cae93fc223bc67f0ce4bc5cc9e",
+            "schema": "shared-bounded-primitive-member-v1",
+            "status": "MEMBER"
+          },
+          "placement_key": {
+            "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+            "translation": [
+              0,
+              2
+            ],
+            "type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [
+                -2,
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            }
+          },
+          "selection_record": {
+            "generation": 1,
+            "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+            "translation": [
+              0,
+              2
+            ],
+            "type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [
+                -2,
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            }
+          }
+        },
+        "complete_GCTS_model_accepted": false,
+        "exact_point_board_accepted": false,
+        "global_m_values": [
+          [
+            [
+              1,
+              2
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              2,
+              2
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+            ]
+          ],
+          [
+            [
+              3,
+              2
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ],
+          [
+            [
+              5,
+              0
+            ],
+            1
+          ],
+          [
+            [
+              5,
+              1
+            ],
+            0
+          ],
+          [
+            [
+              5,
+              2
+            ],
+            1
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              2
+            ],
+            1
+          ]
+        ],
+        "independently_checked": false,
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              1,
+              -2
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              1,
+              -1
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ],
+          [
+            [
+              5,
+              -2
+            ],
+            1
+          ],
+          [
+            [
+              5,
+              -1
+            ],
+            0
+          ],
+          [
+            [
+              5,
+              0
+            ],
+            1
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "logical_proof_accepted": false,
+        "marking_activated": false,
+        "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+        "placement_key": {
+          "tile_type_id": "row0-channel45-decorated-tile-8e633430f2090797c4056fa092c79aaa45efc70a57a021a067489e91dd5f39b6",
+          "translation": [
+            0,
+            2
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [
+                -2,
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            },
+            "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+            "schema": "unit-row-row0-channel45-decorated-type-v1"
+          }
+        },
+        "schema": "unit-row-row0-channel45-decorated-tile-v1",
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "row0-channel45-decorated-tile-8e633430f2090797c4056fa092c79aaa45efc70a57a021a067489e91dd5f39b6",
+          "translation": [
+            0,
+            2
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [
+                -2,
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            },
+            "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+            "schema": "unit-row-row0-channel45-decorated-type-v1"
+          }
+        },
+        "trajectory_accepted": false,
+        "version": "unit-row-certified-row0-channel45-point-mark-decorator-v1"
+      },
+      "degree_or_EOF_accepted": false,
+      "original": {
+        "global_m_values": [
+          [
+            [
+              1,
+              2
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              2,
+              2
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+            ]
+          ],
+          [
+            [
+              3,
+              2
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              2
+            ],
+            1
+          ]
+        ],
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              1,
+              -2
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              1,
+              -1
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "membership": {
+          "binding": {
+            "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+            "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+            "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+            "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+            "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+          },
+          "identity_preimage": {
+            "binding": {
+              "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+              "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "ordered_premise_formulas": [
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ],
+            "primitive_witness": {
+              "formula": [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "rule": "mp"
+            }
+          },
+          "logical_acceptance": false,
+          "ordered_input_formula_ids": [
+            "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+            "1b4d9162cfdde3e19e52f737861d04009718b8455954772e42fcc2dce5747da8"
+          ],
+          "output_formula_id": "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+          "primitive_id": "e8319e5d3d1e07aa78822bd74ddeead825be04cae93fc223bc67f0ce4bc5cc9e",
+          "schema": "shared-bounded-primitive-member-v1",
+          "status": "MEMBER"
+        },
+        "placement_key": {
+          "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+          "translation": [
+            0,
+            2
+          ],
+          "type_preimage": {
+            "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "ordered_offsets": [
+              -2,
+              -1
+            ],
+            "ordered_premise_formulas": [
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ],
+            "primitive_witness": {
+              "formula": [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "rule": "mp"
+            }
+          }
+        },
+        "read_obligations": [
+          {
+            "fact_accepted": false,
+            "formula": [
+              "eq",
+              [
+                "var",
+                "n"
+              ],
+              [
+                "var",
+                "n"
+              ]
+            ],
+            "occupied": false,
+            "row": 0
+          },
+          {
+            "fact_accepted": false,
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ],
+            "occupied": false,
+            "row": 1
+          }
+        ],
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+          "translation": [
+            0,
+            2
+          ],
+          "type_preimage": {
+            "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "ordered_offsets": [
+              -2,
+              -1
+            ],
+            "ordered_premise_formulas": [
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ],
+            "primitive_witness": {
+              "formula": [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "rule": "mp"
+            }
+          }
+        }
+      },
+      "rejections": [
+        {
+          "conflicting_points": [
+            [
+              [
+                5,
+                0
+              ],
+              0,
+              1
+            ]
+          ],
+          "placement_key": {
+            "tile_type_id": "row0-channel45-decorated-tile-8e633430f2090797c4056fa092c79aaa45efc70a57a021a067489e91dd5f39b6",
+            "translation": [
+              0,
+              2
+            ],
+            "type_preimage": {
+              "base_type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [
+                  -2,
+                  -1
+                ],
+                "ordered_premise_formulas": [
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ],
+                "primitive_witness": {
+                  "formula": [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              },
+              "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+              "schema": "unit-row-row0-channel45-decorated-type-v1"
+            }
+          },
+          "reason": "whole_remote_or_metadata_mark_conflict"
+        }
+      ],
+      "survivors": []
+    },
+    "same_head_away_from_seed": {
+      "decorated": {
+        "GCTS_advantage_accepted": false,
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "added_global_m_values": [
+          [
+            [
+              5,
+              1
+            ],
+            1
+          ],
+          [
+            [
+              5,
+              2
+            ],
+            0
+          ],
+          [
+            [
+              5,
+              3
+            ],
+            1
+          ]
+        ],
+        "added_local_m_values": [
+          [
+            [
+              5,
+              -2
+            ],
+            1
+          ],
+          [
+            [
+              5,
+              -1
+            ],
+            0
+          ],
+          [
+            [
+              5,
+              0
+            ],
+            1
+          ]
+        ],
+        "base_tile": {
+          "global_m_values": [
+            [
+              [
+                1,
+                3
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                2,
+                3
+              ],
+              [
+                "offset",
+                -2
+              ]
+            ],
+            [
+              [
+                1,
+                2
+              ],
+              [
+                "formula",
+                "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+              ]
+            ],
+            [
+              [
+                3,
+                3
+              ],
+              [
+                "offset",
+                -1
+              ]
+            ]
+          ],
+          "global_t_values": [
+            [
+              [
+                0,
+                3
+              ],
+              1
+            ]
+          ],
+          "local_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                1,
+                -2
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                2,
+                0
+              ],
+              [
+                "offset",
+                -2
+              ]
+            ],
+            [
+              [
+                1,
+                -1
+              ],
+              [
+                "formula",
+                "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+              ]
+            ],
+            [
+              [
+                3,
+                0
+              ],
+              [
+                "offset",
+                -1
+              ]
+            ]
+          ],
+          "local_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "membership": {
+            "binding": {
+              "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+              "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "identity_preimage": {
+              "binding": {
+                "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            },
+            "logical_acceptance": false,
+            "ordered_input_formula_ids": [
+              "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+              "1b4d9162cfdde3e19e52f737861d04009718b8455954772e42fcc2dce5747da8"
+            ],
+            "output_formula_id": "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+            "primitive_id": "e8319e5d3d1e07aa78822bd74ddeead825be04cae93fc223bc67f0ce4bc5cc9e",
+            "schema": "shared-bounded-primitive-member-v1",
+            "status": "MEMBER"
+          },
+          "placement_key": {
+            "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+            "translation": [
+              0,
+              3
+            ],
+            "type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [
+                -2,
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            }
+          },
+          "selection_record": {
+            "generation": 1,
+            "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+            "translation": [
+              0,
+              3
+            ],
+            "type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [
+                -2,
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            }
+          }
+        },
+        "complete_GCTS_model_accepted": false,
+        "exact_point_board_accepted": false,
+        "global_m_values": [
+          [
+            [
+              1,
+              3
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              2,
+              3
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              1,
+              2
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+            ]
+          ],
+          [
+            [
+              3,
+              3
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ],
+          [
+            [
+              5,
+              1
+            ],
+            1
+          ],
+          [
+            [
+              5,
+              2
+            ],
+            0
+          ],
+          [
+            [
+              5,
+              3
+            ],
+            1
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              3
+            ],
+            1
+          ]
+        ],
+        "independently_checked": false,
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              1,
+              -2
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              1,
+              -1
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ],
+          [
+            [
+              5,
+              -2
+            ],
+            1
+          ],
+          [
+            [
+              5,
+              -1
+            ],
+            0
+          ],
+          [
+            [
+              5,
+              0
+            ],
+            1
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "logical_proof_accepted": false,
+        "marking_activated": false,
+        "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+        "placement_key": {
+          "tile_type_id": "row0-channel45-decorated-tile-8e633430f2090797c4056fa092c79aaa45efc70a57a021a067489e91dd5f39b6",
+          "translation": [
+            0,
+            3
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [
+                -2,
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            },
+            "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+            "schema": "unit-row-row0-channel45-decorated-type-v1"
+          }
+        },
+        "read_obligations": [
+          {
+            "fact_accepted": false,
+            "formula": [
+              "eq",
+              [
+                "var",
+                "n"
+              ],
+              [
+                "var",
+                "n"
+              ]
+            ],
+            "occupied": false,
+            "row": 1
+          },
+          {
+            "fact_accepted": false,
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ],
+            "occupied": false,
+            "row": 2
+          }
+        ],
+        "schema": "unit-row-row0-channel45-decorated-tile-v1",
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "row0-channel45-decorated-tile-8e633430f2090797c4056fa092c79aaa45efc70a57a021a067489e91dd5f39b6",
+          "translation": [
+            0,
+            3
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "ordered_offsets": [
+                -2,
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                "rule": "mp"
+              }
+            },
+            "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+            "schema": "unit-row-row0-channel45-decorated-type-v1"
+          }
+        },
+        "trajectory_accepted": false,
+        "version": "unit-row-certified-row0-channel45-point-mark-decorator-v1"
+      },
+      "degree_or_EOF_accepted": false,
+      "original": {
+        "global_m_values": [
+          [
+            [
+              1,
+              3
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              2,
+              3
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              1,
+              2
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+            ]
+          ],
+          [
+            [
+              3,
+              3
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              3
+            ],
+            1
+          ]
+        ],
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              1,
+              -2
+            ],
+            [
+              "formula",
+              "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              1,
+              -1
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "membership": {
+          "binding": {
+            "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+            "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+            "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+            "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+            "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+          },
+          "identity_preimage": {
+            "binding": {
+              "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+              "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+              "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "ordered_premise_formulas": [
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ],
+            "primitive_witness": {
+              "formula": [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "rule": "mp"
+            }
+          },
+          "logical_acceptance": false,
+          "ordered_input_formula_ids": [
+            "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+            "1b4d9162cfdde3e19e52f737861d04009718b8455954772e42fcc2dce5747da8"
+          ],
+          "output_formula_id": "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+          "primitive_id": "e8319e5d3d1e07aa78822bd74ddeead825be04cae93fc223bc67f0ce4bc5cc9e",
+          "schema": "shared-bounded-primitive-member-v1",
+          "status": "MEMBER"
+        },
+        "placement_key": {
+          "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+          "translation": [
+            0,
+            3
+          ],
+          "type_preimage": {
+            "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "ordered_offsets": [
+              -2,
+              -1
+            ],
+            "ordered_premise_formulas": [
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ],
+            "primitive_witness": {
+              "formula": [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "rule": "mp"
+            }
+          }
+        },
+        "read_obligations": [
+          {
+            "fact_accepted": false,
+            "formula": [
+              "eq",
+              [
+                "var",
+                "n"
+              ],
+              [
+                "var",
+                "n"
+              ]
+            ],
+            "occupied": false,
+            "row": 1
+          },
+          {
+            "fact_accepted": false,
+            "formula": [
+              "imp",
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ],
+            "occupied": false,
+            "row": 2
+          }
+        ],
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+          "translation": [
+            0,
+            3
+          ],
+          "type_preimage": {
+            "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+            "ordered_offsets": [
+              -2,
+              -1
+            ],
+            "ordered_premise_formulas": [
+              [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ],
+            "primitive_witness": {
+              "formula": [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "rule": "mp"
+            }
+          }
+        }
+      },
+      "rejections": [],
+      "survivors": [
+        {
+          "GCTS_advantage_accepted": false,
+          "RL_accepted": false,
+          "ROOT_resource_accepted": false,
+          "added_global_m_values": [
+            [
+              [
+                5,
+                1
+              ],
+              1
+            ],
+            [
+              [
+                5,
+                2
+              ],
+              0
+            ],
+            [
+              [
+                5,
+                3
+              ],
+              1
+            ]
+          ],
+          "added_local_m_values": [
+            [
+              [
+                5,
+                -2
+              ],
+              1
+            ],
+            [
+              [
+                5,
+                -1
+              ],
+              0
+            ],
+            [
+              [
+                5,
+                0
+              ],
+              1
+            ]
+          ],
+          "base_tile": {
+            "global_m_values": [
+              [
+                [
+                  1,
+                  3
+                ],
+                [
+                  "formula",
+                  "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+                ]
+              ],
+              [
+                [
+                  1,
+                  1
+                ],
+                [
+                  "formula",
+                  "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+                ]
+              ],
+              [
+                [
+                  2,
+                  3
+                ],
+                [
+                  "offset",
+                  -2
+                ]
+              ],
+              [
+                [
+                  1,
+                  2
+                ],
+                [
+                  "formula",
+                  "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+                ]
+              ],
+              [
+                [
+                  3,
+                  3
+                ],
+                [
+                  "offset",
+                  -1
+                ]
+              ]
+            ],
+            "global_t_values": [
+              [
+                [
+                  0,
+                  3
+                ],
+                1
+              ]
+            ],
+            "local_m_values": [
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  "formula",
+                  "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+                ]
+              ],
+              [
+                [
+                  1,
+                  -2
+                ],
+                [
+                  "formula",
+                  "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+                ]
+              ],
+              [
+                [
+                  2,
+                  0
+                ],
+                [
+                  "offset",
+                  -2
+                ]
+              ],
+              [
+                [
+                  1,
+                  -1
+                ],
+                [
+                  "formula",
+                  "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+                ]
+              ],
+              [
+                [
+                  3,
+                  0
+                ],
+                [
+                  "offset",
+                  -1
+                ]
+              ]
+            ],
+            "local_t_values": [
+              [
+                [
+                  0,
+                  0
+                ],
+                1
+              ]
+            ],
+            "membership": {
+              "binding": {
+                "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "identity_preimage": {
+                "binding": {
+                  "declaration_sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+                  "language_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                  "logical_input_sha256": "cb92ec75b4eb0fdd1f8811279ee4acedcb809482e12b8ebc7745be5a52eb0ed9",
+                  "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                  "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                  "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+                },
+                "ordered_premise_formulas": [
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ],
+                "primitive_witness": {
+                  "formula": [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              },
+              "logical_acceptance": false,
+              "ordered_input_formula_ids": [
+                "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+                "1b4d9162cfdde3e19e52f737861d04009718b8455954772e42fcc2dce5747da8"
+              ],
+              "output_formula_id": "6b18930ddebb1f8e3f056304cab5086d97880122109b240458034f7c40b87819",
+              "primitive_id": "e8319e5d3d1e07aa78822bd74ddeead825be04cae93fc223bc67f0ce4bc5cc9e",
+              "schema": "shared-bounded-primitive-member-v1",
+              "status": "MEMBER"
+            },
+            "placement_key": {
+              "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+              "translation": [
+                0,
+                3
+              ],
+              "type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [
+                  -2,
+                  -1
+                ],
+                "ordered_premise_formulas": [
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ],
+                "primitive_witness": {
+                  "formula": [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              }
+            },
+            "selection_record": {
+              "generation": 1,
+              "tile_type_id": "bounded-point-tile-7c42a1620a8f075be2a2d6b34bfaa6f0085a38684f427c54f14f9999be6b1f6f",
+              "translation": [
+                0,
+                3
+              ],
+              "type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [
+                  -2,
+                  -1
+                ],
+                "ordered_premise_formulas": [
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ],
+                "primitive_witness": {
+                  "formula": [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              }
+            }
+          },
+          "complete_GCTS_model_accepted": false,
+          "exact_point_board_accepted": false,
+          "global_m_values": [
+            [
+              [
+                1,
+                3
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                2,
+                3
+              ],
+              [
+                "offset",
+                -2
+              ]
+            ],
+            [
+              [
+                1,
+                2
+              ],
+              [
+                "formula",
+                "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+              ]
+            ],
+            [
+              [
+                3,
+                3
+              ],
+              [
+                "offset",
+                -1
+              ]
+            ],
+            [
+              [
+                5,
+                1
+              ],
+              1
+            ],
+            [
+              [
+                5,
+                2
+              ],
+              0
+            ],
+            [
+              [
+                5,
+                3
+              ],
+              1
+            ]
+          ],
+          "global_t_values": [
+            [
+              [
+                0,
+                3
+              ],
+              1
+            ]
+          ],
+          "independently_checked": false,
+          "local_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                1,
+                -2
+              ],
+              [
+                "formula",
+                "[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]"
+              ]
+            ],
+            [
+              [
+                2,
+                0
+              ],
+              [
+                "offset",
+                -2
+              ]
+            ],
+            [
+              [
+                1,
+                -1
+              ],
+              [
+                "formula",
+                "[\"imp\",[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]],[\"eq\",[\"var\",\"n\"],[\"var\",\"n\"]]]"
+              ]
+            ],
+            [
+              [
+                3,
+                0
+              ],
+              [
+                "offset",
+                -1
+              ]
+            ],
+            [
+              [
+                5,
+                -2
+              ],
+              1
+            ],
+            [
+              [
+                5,
+                -1
+              ],
+              0
+            ],
+            [
+              [
+                5,
+                0
+              ],
+              1
+            ]
+          ],
+          "local_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "logical_proof_accepted": false,
+          "marking_activated": false,
+          "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+          "placement_key": {
+            "tile_type_id": "row0-channel45-decorated-tile-8e633430f2090797c4056fa092c79aaa45efc70a57a021a067489e91dd5f39b6",
+            "translation": [
+              0,
+              3
+            ],
+            "type_preimage": {
+              "base_type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [
+                  -2,
+                  -1
+                ],
+                "ordered_premise_formulas": [
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ],
+                "primitive_witness": {
+                  "formula": [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              },
+              "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+              "schema": "unit-row-row0-channel45-decorated-type-v1"
+            }
+          },
+          "read_obligations": [
+            {
+              "fact_accepted": false,
+              "formula": [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "occupied": false,
+              "row": 1
+            },
+            {
+              "fact_accepted": false,
+              "formula": [
+                "imp",
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ],
+                [
+                  "eq",
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ],
+              "occupied": false,
+              "row": 2
+            }
+          ],
+          "schema": "unit-row-row0-channel45-decorated-tile-v1",
+          "selection_record": {
+            "generation": 1,
+            "tile_type_id": "row0-channel45-decorated-tile-8e633430f2090797c4056fa092c79aaa45efc70a57a021a067489e91dd5f39b6",
+            "translation": [
+              0,
+              3
+            ],
+            "type_preimage": {
+              "base_type_preimage": {
+                "input_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+                "ordered_offsets": [
+                  -2,
+                  -1
+                ],
+                "ordered_premise_formulas": [
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ],
+                    [
+                      "eq",
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ],
+                "primitive_witness": {
+                  "formula": [
+                    "eq",
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              },
+              "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+              "schema": "unit-row-row0-channel45-decorated-type-v1"
+            }
+          },
+          "trajectory_accepted": false,
+          "version": "unit-row-certified-row0-channel45-point-mark-decorator-v1"
+        }
+      ]
+    }
+  },
+  "current_target_latex": "\\forall n\\;\\operatorname{add}(n,S(0))=S(n)",
+  "date": "2026-10-17",
+  "full_theorem_attempt": {
+    "bytes": 3003,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/ROOT-incomplete-disposition-v1.json",
+    "sha256": "439fdc60d9ab792c135dc3df91597cfbdc310537d6f444cbb80d4acb501933b6"
+  },
+  "goal_complete": false,
+  "independent_controls_saved_data_review": {
+    "bytes": 3911,
+    "path": "/private/tmp/gcts-channel45-saved-data-peer-20261017/typed-data-review-controls-v1.json",
+    "sha256": "cd61e0f2b6b0a516da8da8ae0a485226fe2ffc0d3472caf32ace6e7e0332d330"
+  },
+  "independent_search_saved_data_review": {
+    "bytes": 3085,
+    "path": "/private/tmp/gcts-channel45-saved-data-peer-20261017/typed-data-review-search-v1.json",
+    "sha256": "0b0e4705b1983511468a572de31aac48b9bd675e6aa955d630a9fb1ecc3e82df"
+  },
+  "marking_id": "row0-channel45-marking-ba1d41a8136e5bd5f8332df6d4132882fbe8f294f62ab01ab0b4537bd420d78b",
+  "marking_learned": false,
+  "negative_controls": [
+    {
+      "message": "channel4 verifier: whole original plus extra marking state/union",
+      "reason": "missing explicit zero seed",
+      "rejected": true
+    },
+    {
+      "message": "channel4 verifier: whole original plus extra marking state/union",
+      "reason": "changed seed value",
+      "rejected": true
+    },
+    {
+      "message": "channel4 verifier: whole independently derived six-rule head certificate",
+      "reason": "forged forbidden-head mask",
+      "rejected": true
+    }
+  ],
+  "new_arithmetic_proof": false,
+  "new_mask": [
+    [
+      "bot",
+      1
+    ],
+    [
+      "eq",
+      1
+    ],
+    [
+      "pred",
+      1
+    ],
+    [
+      "all",
+      0
+    ],
+    [
+      "not",
+      1
+    ],
+    [
+      "imp",
+      0
+    ],
+    [
+      "and",
+      1
+    ],
+    [
+      "or",
+      1
+    ]
+  ],
+  "new_native_channel5_distinct_from_earlier_advisory_head_filter": true,
+  "next": "Conventional baseline now has a separate automatic proof; this marked selected search remains UNKNOWN. Next useful family transfer, controlled marking ablation and trained RL still open.",
+  "performance_accepted": false,
+  "row0_seed": [
+    [
+      5,
+      0
+    ],
+    0
+  ],
+  "schema": "GCTS-native-row0-head-marking-progress-v1",
+  "scope": "One positive tiny native point-filter/negative-record/direct-transaction control, followed by a separate incomplete full selected-proof search. Not a method speed comparison, learned marking or proof-search win.",
+  "search_case_body_reached": null,
+  "search_case_returned": null,
+  "search_last_marker_seconds": 0.294514,
+  "search_native_seconds": 20.224601,
+  "search_nodes": null,
+  "search_owned_peak_bytes": 28573696,
+  "search_proof_commands": null,
+  "search_root_restored": null,
+  "search_status": "UNKNOWN_native20_no_complete_case_record",
+  "subsequent_conventional_arithmetic_proof": "arithmetic-baseline-summary.json",
+  "transaction_counts": {
+    "advice_calls": 0,
+    "advice_selected": 0,
+    "advice_unknown": 0,
+    "backtracks": 0,
+    "branches": 0,
+    "cursor_replays": 0,
+    "fallback_advances": 0,
+    "fallback_branch_choices": 0,
+    "family_abandonments": 0,
+    "family_batches": 0,
+    "family_canonical_choices": 0,
+    "family_checks": 0,
+    "family_choices": 0,
+    "family_invalidated": 0,
+    "family_unknown": 0,
+    "forced": 0,
+    "global_scans": 0,
+    "invalidated_domains": 24,
+    "nodes": 0,
+    "pending_checks": 0,
+    "pending_rejected": 0,
+    "pending_retired": 0,
+    "pending_selected": 0,
+    "placements": 1,
+    "restores": 0,
+    "retained_domains": 0,
+    "retained_prefixes": 0,
+    "retained_queries": 0
+  },
+  "transaction_new_assigned_zero_point": [
+    [
+      5,
+      1
+    ],
+    0
+  ],
+  "transaction_new_zero_reference_count": 1,
+  "transaction_snapshot_equal": true,
+  "useful_family_transfer": false
+}

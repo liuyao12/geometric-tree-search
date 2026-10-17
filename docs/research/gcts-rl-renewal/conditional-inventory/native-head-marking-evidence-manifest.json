@@ -1,0 +1,859 @@
+{
+  "archive": {
+    "bytes": 684286,
+    "path": "native-head-marking-reproduction.zip",
+    "sha256": "600935c834700db468647e5d0f4da868f0fe93580787d873dffc0b3cd56548a4"
+  },
+  "files": [
+    {
+      "archive_member": "objects/0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+      "bytes": 6734,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    },
+    {
+      "archive_member": "objects/464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "bytes": 48584,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "archive_member": "objects/1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "bytes": 46514,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "archive_member": "objects/43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "bytes": 10323,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "archive_member": "objects/c6c923e06535b6dd943b9d4feba196dfe4041a9aada99e733a95c70e70e8494c",
+      "bytes": 13635,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "c6c923e06535b6dd943b9d4feba196dfe4041a9aada99e733a95c70e70e8494c"
+    },
+    {
+      "archive_member": "objects/5eb24a2e8a8ec49abf598c00a4c3c2f8fb59ce964592b4b9f08a6ed18dd81a2c",
+      "bytes": 9214,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/ROOT-component-admission-v1.json",
+      "sha256": "5eb24a2e8a8ec49abf598c00a4c3c2f8fb59ce964592b4b9f08a6ed18dd81a2c"
+    },
+    {
+      "archive_member": "objects/1515b28bd8aedf074dd5ae2e8f55986a039d213a90684089a628bce65f014b55",
+      "bytes": 391100,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "1515b28bd8aedf074dd5ae2e8f55986a039d213a90684089a628bce65f014b55"
+    },
+    {
+      "archive_member": "objects/678efef8f43648abde3ffb71f41ffc3c7222da1d6b98fec42bdf52823c2cc8f8",
+      "bytes": 13813,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "678efef8f43648abde3ffb71f41ffc3c7222da1d6b98fec42bdf52823c2cc8f8"
+    },
+    {
+      "archive_member": "objects/335817ff2cb5bb140d665a462e31e92e9baa9aee2c68123f1fc5ee1d0e484fec",
+      "bytes": 1315,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/ROOT-prelaunch-v1.json",
+      "sha256": "335817ff2cb5bb140d665a462e31e92e9baa9aee2c68123f1fc5ee1d0e484fec"
+    },
+    {
+      "archive_member": "objects/21314a6a64ff438ee79a40b36615ce4a1fb1ffa2eb76a65f62d4689e258ead3c",
+      "bytes": 1556,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/ROOT-same-handle-tool-trace-v1.json",
+      "sha256": "21314a6a64ff438ee79a40b36615ce4a1fb1ffa2eb76a65f62d4689e258ead3c"
+    },
+    {
+      "archive_member": "objects/b2b829d0fa6205738409a987d5f7afbdb071d0463a76c33757922f321eb8852e",
+      "bytes": 259,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/external-v1/ONCE.json",
+      "sha256": "b2b829d0fa6205738409a987d5f7afbdb071d0463a76c33757922f321eb8852e"
+    },
+    {
+      "archive_member": "objects/01151657598f1f067767efff711ebcb4adf80bc7a2b7413496ebdaf97ea09465",
+      "bytes": 806,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/external-v1/meter-stderr.txt",
+      "sha256": "01151657598f1f067767efff711ebcb4adf80bc7a2b7413496ebdaf97ea09465"
+    },
+    {
+      "archive_member": "objects/c7cfc774ca487b09e7123622f995692fcc1a112fbcc35538a3743fd821957bd0",
+      "bytes": 634,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/external-v1/meter-stdout.txt",
+      "sha256": "c7cfc774ca487b09e7123622f995692fcc1a112fbcc35538a3743fd821957bd0"
+    },
+    {
+      "archive_member": "objects/f06f1f4583b975df473a06ee6114d675effbc0f6137dc693fa3894fc4efc586d",
+      "bytes": 1600,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/external-v1/native-terminal.json",
+      "sha256": "f06f1f4583b975df473a06ee6114d675effbc0f6137dc693fa3894fc4efc586d"
+    },
+    {
+      "archive_member": "objects/1e0f3064e5cca9f1524aa4e04c508dc13f5dbdca9f18378ae422a3c530dffd3c",
+      "bytes": 476,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/external-v1/observation.json",
+      "sha256": "1e0f3064e5cca9f1524aa4e04c508dc13f5dbdca9f18378ae422a3c530dffd3c"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/7099757b5b60ad0d8d664c8bdd8270a5a78a25b8f3d8677641e3f58d63d6b124",
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/external-v1/postterminal-probe-stdout.txt",
+      "sha256": "7099757b5b60ad0d8d664c8bdd8270a5a78a25b8f3d8677641e3f58d63d6b124"
+    },
+    {
+      "archive_member": "objects/776e1e1d1920d9b0d617e2b49ddff9cac0ac59adaffc260a3f4d13435e613e0d",
+      "bytes": 34777,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/owned-v1/engine-result.json",
+      "sha256": "776e1e1d1920d9b0d617e2b49ddff9cac0ac59adaffc260a3f4d13435e613e0d"
+    },
+    {
+      "archive_member": "objects/0ba09e13ab61c2e18a004a6609518c2c47147a5e9e9f7c9b3cc0c140ef6e9998",
+      "bytes": 1530,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-controls-ROOT-20261017/owned-v1/response.jsonl",
+      "sha256": "0ba09e13ab61c2e18a004a6609518c2c47147a5e9e9f7c9b3cc0c140ef6e9998"
+    },
+    {
+      "archive_member": "objects/ab1a9e35c9b1eee90d114671ed1d13d4a57e06dcd4cda7b50b807e43bfeed204",
+      "bytes": 13930,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "ab1a9e35c9b1eee90d114671ed1d13d4a57e06dcd4cda7b50b807e43bfeed204"
+    },
+    {
+      "archive_member": "objects/439fdc60d9ab792c135dc3df91597cfbdc310537d6f444cbb80d4acb501933b6",
+      "bytes": 3003,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/ROOT-incomplete-disposition-v1.json",
+      "sha256": "439fdc60d9ab792c135dc3df91597cfbdc310537d6f444cbb80d4acb501933b6"
+    },
+    {
+      "archive_member": "objects/66b586d5bbc0cf279577f43b61550dbf3c60ccb78730d9214e708ebf4d843e53",
+      "bytes": 13803,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "66b586d5bbc0cf279577f43b61550dbf3c60ccb78730d9214e708ebf4d843e53"
+    },
+    {
+      "archive_member": "objects/49ffa6d46edbc95f6daff09f72fc11d147dd83131359eda7642263cbc49dd986",
+      "bytes": 1467,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/ROOT-prelaunch-v1.json",
+      "sha256": "49ffa6d46edbc95f6daff09f72fc11d147dd83131359eda7642263cbc49dd986"
+    },
+    {
+      "archive_member": "objects/03e1f494d56d8c9ed79eb5b74936a8b019da3d6f80d077ac6f7e9d9e73541914",
+      "bytes": 1733,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/ROOT-same-handle-tool-trace-v1.json",
+      "sha256": "03e1f494d56d8c9ed79eb5b74936a8b019da3d6f80d077ac6f7e9d9e73541914"
+    },
+    {
+      "archive_member": "objects/e3c1c58b01c8bc1da78aae8c91823f99750b1183db62d1c42f8c21d4f104dcfc",
+      "bytes": 253,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/external-v1/ONCE.json",
+      "sha256": "e3c1c58b01c8bc1da78aae8c91823f99750b1183db62d1c42f8c21d4f104dcfc"
+    },
+    {
+      "archive_member": "objects/e26498f6d70e755336b4e6b4aafaed745035695020653a87336c48fcef15a803",
+      "bytes": 806,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/external-v1/meter-stderr.txt",
+      "sha256": "e26498f6d70e755336b4e6b4aafaed745035695020653a87336c48fcef15a803"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/0b18ef0ce8b6dc90d9a339023e6fd46f3c0252722c95bc66257cab41902cce37",
+      "bytes": 1602,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/external-v1/native-terminal.json",
+      "sha256": "0b18ef0ce8b6dc90d9a339023e6fd46f3c0252722c95bc66257cab41902cce37"
+    },
+    {
+      "archive_member": "objects/c555e4ca199d708106332e9d572519ab862135b1d1ed27a6de37a68acbcb764d",
+      "bytes": 470,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/external-v1/observation.json",
+      "sha256": "c555e4ca199d708106332e9d572519ab862135b1d1ed27a6de37a68acbcb764d"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/17f0e609011ef9fda378c9a88b5396e4b6fdf6610af87a94912d26a79001ad54",
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-channel45-search-ROOT-20261017/external-v1/postterminal-probe-stdout.txt",
+      "sha256": "17f0e609011ef9fda378c9a88b5396e4b6fdf6610af87a94912d26a79001ad54"
+    },
+    {
+      "archive_member": "objects/227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "bytes": 8773,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "archive_member": "objects/5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "archive_member": "objects/99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d",
+      "bytes": 10201,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    {
+      "archive_member": "objects/baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63",
+      "bytes": 5528,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    {
+      "archive_member": "objects/69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "bytes": 24227,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "archive_member": "objects/6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98",
+      "bytes": 26007,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    {
+      "archive_member": "objects/8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1",
+      "bytes": 16299,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    {
+      "archive_member": "objects/652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5",
+      "bytes": 55852,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    {
+      "archive_member": "objects/50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a",
+      "bytes": 31931,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    {
+      "archive_member": "objects/54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146",
+      "bytes": 55152,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    {
+      "archive_member": "objects/c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "archive_member": "objects/c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "bytes": 22030,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "archive_member": "objects/d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb",
+      "bytes": 25338,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    {
+      "archive_member": "objects/2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491",
+      "bytes": 8134,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    {
+      "archive_member": "objects/cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab",
+      "bytes": 11074,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+    },
+    {
+      "archive_member": "objects/0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3",
+      "bytes": 130156,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    {
+      "archive_member": "objects/c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "archive_member": "objects/e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc",
+      "bytes": 2683,
+      "original_path": "/private/tmp/gcts-arithmetic-first-proof-stop-source-20261017/Q-right-one-declaration-v1.json",
+      "sha256": "e28e914fc01100fd75c12f1b271ec6ead107f211b4c91060d98c95e524d46fcc"
+    },
+    {
+      "archive_member": "objects/a615f2d9aed146a558c4af8218b87d1cf702386233fabadbee9a499e1bfdd8f6",
+      "bytes": 2903,
+      "original_path": "/private/tmp/gcts-channel45-cold-peer-20261017/findings-v1.json",
+      "sha256": "a615f2d9aed146a558c4af8218b87d1cf702386233fabadbee9a499e1bfdd8f6"
+    },
+    {
+      "archive_member": "objects/f9743ea87a56ea301f60a81de70d340f9856aa70b22b1a5a732e6af560be5bb2",
+      "bytes": 1833,
+      "original_path": "/private/tmp/gcts-channel45-cold-peer-20261017/findings-v2.json",
+      "sha256": "f9743ea87a56ea301f60a81de70d340f9856aa70b22b1a5a732e6af560be5bb2"
+    },
+    {
+      "archive_member": "objects/3fb45e2e67f39cdd34de0ed9a96f79d6b0679bb1b1a292ba8c4c102ade3179fd",
+      "bytes": 820,
+      "original_path": "/private/tmp/gcts-channel45-cold-peer-20261017/handoff-v1.json",
+      "sha256": "3fb45e2e67f39cdd34de0ed9a96f79d6b0679bb1b1a292ba8c4c102ade3179fd"
+    },
+    {
+      "archive_member": "objects/cb5195d7d7a3cd6182446a84e117696aa096ac985dd45f4884f1d92d5b782cd6",
+      "bytes": 1040,
+      "original_path": "/private/tmp/gcts-channel45-cold-peer-20261017/handoff-v2.json",
+      "sha256": "cb5195d7d7a3cd6182446a84e117696aa096ac985dd45f4884f1d92d5b782cd6"
+    },
+    {
+      "archive_member": "objects/abc8043cf73948aacc512e8d4f20217bedfe1a847154801d4bbf1fe9c0bea77a",
+      "bytes": 34289,
+      "original_path": "/private/tmp/gcts-channel45-cold-peer-20261017/independent-static-audit-v1.json",
+      "sha256": "abc8043cf73948aacc512e8d4f20217bedfe1a847154801d4bbf1fe9c0bea77a"
+    },
+    {
+      "archive_member": "objects/5911fb95aadaf147f49921ae11351aaf5e6d01134f09d35327de7e2619304383",
+      "bytes": 3692,
+      "original_path": "/private/tmp/gcts-channel45-cold-peer-20261017/independent-static-audit-v2.json",
+      "sha256": "5911fb95aadaf147f49921ae11351aaf5e6d01134f09d35327de7e2619304383"
+    },
+    {
+      "archive_member": "objects/0ccfd0a3cf510753a24f7f03c9635e43a652ffe6132d5f6bb8af04334dd43713",
+      "bytes": 2161,
+      "original_path": "/private/tmp/gcts-channel45-cold-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "0ccfd0a3cf510753a24f7f03c9635e43a652ffe6132d5f6bb8af04334dd43713"
+    },
+    {
+      "archive_member": "objects/a8a69dd11dda43a68bf9064bb6fe7b0c75e94fec117d24d5d40108fea34f4716",
+      "bytes": 2445,
+      "original_path": "/private/tmp/gcts-channel45-cold-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "a8a69dd11dda43a68bf9064bb6fe7b0c75e94fec117d24d5d40108fea34f4716"
+    },
+    {
+      "archive_member": "objects/64ef3aea47f5d0b8394e89f20cf9dec5671ff05dffb9031453ae744b4a263d7f",
+      "bytes": 9555,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/ROOT-source-byte-preflight-v1.json",
+      "sha256": "64ef3aea47f5d0b8394e89f20cf9dec5671ff05dffb9031453ae744b4a263d7f"
+    },
+    {
+      "archive_member": "objects/4e995dcf400c2d76ed4f7c5dcdfdf3995fc7f9f6afa76b95ded3b433c2a93bde",
+      "bytes": 19565,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/Source-contract-v1.json",
+      "sha256": "4e995dcf400c2d76ed4f7c5dcdfdf3995fc7f9f6afa76b95ded3b433c2a93bde"
+    },
+    {
+      "archive_member": "objects/d3fe8bf7e83d181579f42e07f9f20d5d39fa226f43c8bc5805591d5b210746f2",
+      "bytes": 20459,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/Source-contract-v2.json",
+      "sha256": "d3fe8bf7e83d181579f42e07f9f20d5d39fa226f43c8bc5805591d5b210746f2"
+    },
+    {
+      "archive_member": "objects/fe244898b244222c7051bbbc93e42d4e172f0026a3d763366d18976f065eaf47",
+      "bytes": 21672,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/Source-contract-v3.json",
+      "sha256": "fe244898b244222c7051bbbc93e42d4e172f0026a3d763366d18976f065eaf47"
+    },
+    {
+      "archive_member": "objects/a96b6385521751a7c5a7331fb3c3b52f801d1b9084adb978d3afdeef30a4f14c",
+      "bytes": 1353,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/handoff-v1.json",
+      "sha256": "a96b6385521751a7c5a7331fb3c3b52f801d1b9084adb978d3afdeef30a4f14c"
+    },
+    {
+      "archive_member": "objects/a6b4a059aa887952c69140cab3a0f6595cb843fa584d61a05f41413b261f6005",
+      "bytes": 1565,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/handoff-v2.json",
+      "sha256": "a6b4a059aa887952c69140cab3a0f6595cb843fa584d61a05f41413b261f6005"
+    },
+    {
+      "archive_member": "objects/ceab21a24b0f5ac8ecceb2a519eb9ad2b2385ac7fff467b92eea194e84c35e81",
+      "bytes": 1641,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/handoff-v3.json",
+      "sha256": "ceab21a24b0f5ac8ecceb2a519eb9ad2b2385ac7fff467b92eea194e84c35e81"
+    },
+    {
+      "archive_member": "objects/9f40614897a03a13e266d05637d2587b93d55e128cbdd0c05b9e0f3cd8826a60",
+      "bytes": 38725,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/parent-forward.patch",
+      "sha256": "9f40614897a03a13e266d05637d2587b93d55e128cbdd0c05b9e0f3cd8826a60"
+    },
+    {
+      "archive_member": "objects/eba4589b0d888b48776504fbf090c2835fa415b35575f3a9cb27de27659c8ebf",
+      "bytes": 38725,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/parent-inverse.patch",
+      "sha256": "eba4589b0d888b48776504fbf090c2835fa415b35575f3a9cb27de27659c8ebf"
+    },
+    {
+      "archive_member": "objects/87cadd049cd5f403cc50aad48f6abed2e0c5ee6ddbced3a4fdf853dd06fc6b96",
+      "bytes": 44727,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/right_one_channel45_cold_v1.py",
+      "sha256": "87cadd049cd5f403cc50aad48f6abed2e0c5ee6ddbced3a4fdf853dd06fc6b96"
+    },
+    {
+      "archive_member": "objects/794debcceb94211b6e8f85de8846377c77a3ea227a9d8fa2eae3dfc71ddfd565",
+      "bytes": 44761,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/right_one_channel45_cold_v2.py",
+      "sha256": "794debcceb94211b6e8f85de8846377c77a3ea227a9d8fa2eae3dfc71ddfd565"
+    },
+    {
+      "archive_member": "objects/b38d84aa0246e7621f22643415c304b6a46221aa3c8ede8b775f1a2e21d766bf",
+      "bytes": 981,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/v1-v2-forward.patch",
+      "sha256": "b38d84aa0246e7621f22643415c304b6a46221aa3c8ede8b775f1a2e21d766bf"
+    },
+    {
+      "archive_member": "objects/65d318dbfac6cd7cfd46bed38609567f85e6875806c12928d2c2cc785903eed1",
+      "bytes": 981,
+      "original_path": "/private/tmp/gcts-channel45-cold-source-20261017/v1-v2-inverse.patch",
+      "sha256": "65d318dbfac6cd7cfd46bed38609567f85e6875806c12928d2c2cc785903eed1"
+    },
+    {
+      "archive_member": "objects/8b3e4f0d4f981aa7ea58bff96f1a0776692650b3bc1efee6cc5bdaca819ecdbb",
+      "bytes": 815,
+      "original_path": "/private/tmp/gcts-channel45-saved-data-peer-20261017/handoff-v1.json",
+      "sha256": "8b3e4f0d4f981aa7ea58bff96f1a0776692650b3bc1efee6cc5bdaca819ecdbb"
+    },
+    {
+      "archive_member": "objects/5b5ff64f96dd16ccef5dd89e9a14987c8309d001e6e92babbe8265fe936be539",
+      "bytes": 47482,
+      "original_path": "/private/tmp/gcts-channel45-saved-data-peer-20261017/independent-saved-byte-audit-v1.json",
+      "sha256": "5b5ff64f96dd16ccef5dd89e9a14987c8309d001e6e92babbe8265fe936be539"
+    },
+    {
+      "archive_member": "objects/cd61e0f2b6b0a516da8da8ae0a485226fe2ffc0d3472caf32ace6e7e0332d330",
+      "bytes": 3911,
+      "original_path": "/private/tmp/gcts-channel45-saved-data-peer-20261017/typed-data-review-controls-v1.json",
+      "sha256": "cd61e0f2b6b0a516da8da8ae0a485226fe2ffc0d3472caf32ace6e7e0332d330"
+    },
+    {
+      "archive_member": "objects/0b0e4705b1983511468a572de31aac48b9bd675e6aa955d630a9fb1ecc3e82df",
+      "bytes": 3085,
+      "original_path": "/private/tmp/gcts-channel45-saved-data-peer-20261017/typed-data-review-search-v1.json",
+      "sha256": "0b0e4705b1983511468a572de31aac48b9bd675e6aa955d630a9fb1ecc3e82df"
+    },
+    {
+      "archive_member": "objects/9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "bytes": 4357,
+      "original_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+    },
+    {
+      "archive_member": "objects/278418b52bf5b6cfb0f3e5be2647e470c65764f864aa8dba98072b304b634b36",
+      "bytes": 12305,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/audit_source.py",
+      "sha256": "278418b52bf5b6cfb0f3e5be2647e470c65764f864aa8dba98072b304b634b36"
+    },
+    {
+      "archive_member": "objects/e7aa9368acd5f2331a0c0ceccd64c1e35403cedcae486a71b00c04f360374aa8",
+      "bytes": 10712,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/findings-v1.json",
+      "sha256": "e7aa9368acd5f2331a0c0ceccd64c1e35403cedcae486a71b00c04f360374aa8"
+    },
+    {
+      "archive_member": "objects/7efd5123ca2f62e226f0b19e20ba208bbba44a294870bacaad269b32be0871ca",
+      "bytes": 12483,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/freeze_review.py",
+      "sha256": "7efd5123ca2f62e226f0b19e20ba208bbba44a294870bacaad269b32be0871ca"
+    },
+    {
+      "archive_member": "objects/2358d850334e5fb58775f74387a8b78792d78537020418d32a9abf59898ae65b",
+      "bytes": 1019,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/handoff-v1.json",
+      "sha256": "2358d850334e5fb58775f74387a8b78792d78537020418d32a9abf59898ae65b"
+    },
+    {
+      "archive_member": "objects/8050f44988b7daf327d6075c8d5418342e0f3471db54f11039ba5f6e3db71fca",
+      "bytes": 52567,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/independent-static-audit-v1.json",
+      "sha256": "8050f44988b7daf327d6075c8d5418342e0f3471db54f11039ba5f6e3db71fca"
+    },
+    {
+      "archive_member": "objects/a81932fbbfd130a2c13614dde381e8143c56aaee28b2562bc0775a35a3420101",
+      "bytes": 7035,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-0/target.py",
+      "sha256": "a81932fbbfd130a2c13614dde381e8143c56aaee28b2562bc0775a35a3420101"
+    },
+    {
+      "archive_member": "objects/fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895",
+      "bytes": 12619,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-1/target.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    {
+      "archive_member": "objects/6e003b988be687b42a355bc838974ff50b6930186b9d6dace7171c3e157a15c9",
+      "bytes": 14809,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-11/target.py",
+      "sha256": "6e003b988be687b42a355bc838974ff50b6930186b9d6dace7171c3e157a15c9"
+    },
+    {
+      "archive_member": "objects/9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816",
+      "bytes": 19556,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-2/target.py",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    },
+    {
+      "archive_member": "objects/9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a",
+      "bytes": 18475,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-3/target.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    {
+      "archive_member": "objects/8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188",
+      "bytes": 25783,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-4/target.py",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+    },
+    {
+      "archive_member": "objects/4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d",
+      "bytes": 14064,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-5/target.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    },
+    {
+      "archive_member": "objects/a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150",
+      "bytes": 12779,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-6/target.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    },
+    {
+      "archive_member": "objects/7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
+      "bytes": 31038,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-7/target.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    },
+    {
+      "archive_member": "objects/8e21ad3dc1b821caf1c4aaa4240b4fb1c4f94136bc4fb2ac7926076e68ba9be7",
+      "bytes": 101851,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-8/target.py",
+      "sha256": "8e21ad3dc1b821caf1c4aaa4240b4fb1c4f94136bc4fb2ac7926076e68ba9be7"
+    },
+    {
+      "archive_member": "objects/4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9",
+      "bytes": 25205,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/patch-9/target.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    {
+      "archive_member": "objects/38eb7d1ad08847fccbd40a5a259c45acbd3b9c82930e7b2a3e374e9616998e10",
+      "bytes": 5633,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "38eb7d1ad08847fccbd40a5a259c45acbd3b9c82930e7b2a3e374e9616998e10"
+    },
+    {
+      "archive_member": "objects/e4805a3c2dee21a43c600e9712842f47f65c084106c3a6482948f908852afa2b",
+      "bytes": 3638,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/API-wire-v1.json",
+      "sha256": "e4805a3c2dee21a43c600e9712842f47f65c084106c3a6482948f908852afa2b"
+    },
+    {
+      "archive_member": "objects/a70c84363010ad1993b74c620d68480dc869b40adbde56fde1fb9880b0e1c79d",
+      "bytes": 35798,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/Source-contract-v1.json",
+      "sha256": "a70c84363010ad1993b74c620d68480dc869b40adbde56fde1fb9880b0e1c79d"
+    },
+    {
+      "archive_member": "objects/1af26c7e8b9d4e1c8e5fad9f088e3208f9d25fba51be636f7c1fb9a6d80fdb8d",
+      "bytes": 85825,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/Source-delta-v1.json",
+      "sha256": "1af26c7e8b9d4e1c8e5fad9f088e3208f9d25fba51be636f7c1fb9a6d80fdb8d"
+    },
+    {
+      "archive_member": "objects/4d7ec39778acf310261f0d19477427a9ac2df687159565514365d238270a1257",
+      "bytes": 7034,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/arithmetic_first_proof_cases_v3.py",
+      "sha256": "4d7ec39778acf310261f0d19477427a9ac2df687159565514365d238270a1257"
+    },
+    {
+      "archive_member": "objects/5cf05928e8e92f804e4cfb776a254cdeb2694b575fd00f32e93fe6f8e01434e5",
+      "bytes": 921,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/arithmetic_first_proof_cases_v3.py.forward.patch",
+      "sha256": "5cf05928e8e92f804e4cfb776a254cdeb2694b575fd00f32e93fe6f8e01434e5"
+    },
+    {
+      "archive_member": "objects/92e115bf4f4712aa9c5b7a6d8b467bf15053683a5133e4bc6e06115568aef97f",
+      "bytes": 921,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/arithmetic_first_proof_cases_v3.py.inverse.patch",
+      "sha256": "92e115bf4f4712aa9c5b7a6d8b467bf15053683a5133e4bc6e06115568aef97f"
+    },
+    {
+      "archive_member": "objects/5f096302055d464243626065a1c85b8f9ca96edb0d1b33e5822ed95973873c92",
+      "bytes": 29693,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/build_sources.py",
+      "sha256": "5f096302055d464243626065a1c85b8f9ca96edb0d1b33e5822ed95973873c92"
+    },
+    {
+      "archive_member": "objects/311204ceefd43a7c0370b978f1fa9d646523f9e1f4345ebb892c0800fa755e69",
+      "bytes": 17246,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/certified_channel45_point_mark_decorator_v1.py",
+      "sha256": "311204ceefd43a7c0370b978f1fa9d646523f9e1f4345ebb892c0800fa755e69"
+    },
+    {
+      "archive_member": "objects/1080fd13588d3a68f613aa010e987ae807561fff5f5e64e8b5f63d6b66927ca2",
+      "bytes": 10664,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/certified_channel45_point_mark_decorator_v1.py.forward.patch",
+      "sha256": "1080fd13588d3a68f613aa010e987ae807561fff5f5e64e8b5f63d6b66927ca2"
+    },
+    {
+      "archive_member": "objects/8d388099e2c77df1e30a94e903c15ec94ae02a066798c689a49e98ac63c9a070",
+      "bytes": 10664,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/certified_channel45_point_mark_decorator_v1.py.inverse.patch",
+      "sha256": "8d388099e2c77df1e30a94e903c15ec94ae02a066798c689a49e98ac63c9a070"
+    },
+    {
+      "archive_member": "objects/fade74092ce5fdb2171bf18866b719447960fc8b041db727d675b3f88cbacc54",
+      "bytes": 19535,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/checked_engine_state_dag_collector_v3.py",
+      "sha256": "fade74092ce5fdb2171bf18866b719447960fc8b041db727d675b3f88cbacc54"
+    },
+    {
+      "archive_member": "objects/e206584f00b0e53724f3f86be724d3870cc37f1c0c807d01d4aa749c77cfd4a2",
+      "bytes": 991,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/checked_engine_state_dag_collector_v3.py.forward.patch",
+      "sha256": "e206584f00b0e53724f3f86be724d3870cc37f1c0c807d01d4aa749c77cfd4a2"
+    },
+    {
+      "archive_member": "objects/fb633d902559ab1b55a9803be3dfbe270f86910eeafa9202a07dcce0cd065827",
+      "bytes": 991,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/checked_engine_state_dag_collector_v3.py.inverse.patch",
+      "sha256": "fb633d902559ab1b55a9803be3dfbe270f86910eeafa9202a07dcce0cd065827"
+    },
+    {
+      "archive_member": "objects/76aa1f785df9bb25334ced9d5e59eea3428e0a97c7ad051b03dca31b5aeb043d",
+      "bytes": 3382,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/code-capsule-v1.json",
+      "sha256": "76aa1f785df9bb25334ced9d5e59eea3428e0a97c7ad051b03dca31b5aeb043d"
+    },
+    {
+      "archive_member": "objects/e1b00efa2009ad850bd455eb683d2ed10649661f750d8cf5ff379eda1fc91015",
+      "bytes": 15198,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/freeze_contract.py",
+      "sha256": "e1b00efa2009ad850bd455eb683d2ed10649661f750d8cf5ff379eda1fc91015"
+    },
+    {
+      "archive_member": "objects/d69db5b85b0a38937348492f47b5b7821659ef4763f76595ef78c107e0f9a58c",
+      "bytes": 7836,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/freeze_metadata.py",
+      "sha256": "d69db5b85b0a38937348492f47b5b7821659ef4763f76595ef78c107e0f9a58c"
+    },
+    {
+      "archive_member": "objects/5279673e1e82a71bd3242e9916de9ed9698dc2cabb3da9966cf0cd6cc580d737",
+      "bytes": 8553,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/handoff-v1.json",
+      "sha256": "5279673e1e82a71bd3242e9916de9ed9698dc2cabb3da9966cf0cd6cc580d737"
+    },
+    {
+      "archive_member": "objects/a0f5e8afa5e5238fbb1691fd68de634dea0ec9dec2e300fa85ce14d04d4fc31d",
+      "bytes": 1008,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/handoff-v2.json",
+      "sha256": "a0f5e8afa5e5238fbb1691fd68de634dea0ec9dec2e300fa85ce14d04d4fc31d"
+    },
+    {
+      "archive_member": "objects/64ca4ca54cf2bdaab0c439e63052a61f0fcba3864508a49f2d4f269d49b74823",
+      "bytes": 13156,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/implementation-plan-v1.json",
+      "sha256": "64ca4ca54cf2bdaab0c439e63052a61f0fcba3864508a49f2d4f269d49b74823"
+    },
+    {
+      "archive_member": "objects/972f33e41536d3814b5b69f4dee159a2fe04f3a865a903ce908253ae817134e9",
+      "bytes": 26976,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/independent_channel45_state_verifier_v1.py",
+      "sha256": "972f33e41536d3814b5b69f4dee159a2fe04f3a865a903ce908253ae817134e9"
+    },
+    {
+      "archive_member": "objects/80edc65a6f0ad603c3556ff289ab38e9f2e93ea8f7e540569abd318353f816f4",
+      "bytes": 15505,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/independent_channel45_state_verifier_v1.py.forward.patch",
+      "sha256": "80edc65a6f0ad603c3556ff289ab38e9f2e93ea8f7e540569abd318353f816f4"
+    },
+    {
+      "archive_member": "objects/5ca423ad5934fa8f85ddc0e14d429d45a29837ec61d9f7b587493fe93757a4fd",
+      "bytes": 15505,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/independent_channel45_state_verifier_v1.py.inverse.patch",
+      "sha256": "5ca423ad5934fa8f85ddc0e14d429d45a29837ec61d9f7b587493fe93757a4fd"
+    },
+    {
+      "archive_member": "objects/f608c074f0f8b25bc33049b0b74a15e7bc61245c45bcfe92c595d1e4afe551b9",
+      "bytes": 26502,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/independent_marked_aware_fibre_checker_v2.py",
+      "sha256": "f608c074f0f8b25bc33049b0b74a15e7bc61245c45bcfe92c595d1e4afe551b9"
+    },
+    {
+      "archive_member": "objects/ee4d5c74ebef3ac45d9f2f8abaa02ddb48a494ce0dff3c2a076b989628d65acf",
+      "bytes": 6863,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/independent_marked_aware_fibre_checker_v2.py.forward.patch",
+      "sha256": "ee4d5c74ebef3ac45d9f2f8abaa02ddb48a494ce0dff3c2a076b989628d65acf"
+    },
+    {
+      "archive_member": "objects/ffdfc74b197d33d9ac87e74ffa008ebb66688b7fc501f6d173beebbb4621d22f",
+      "bytes": 6863,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/independent_marked_aware_fibre_checker_v2.py.inverse.patch",
+      "sha256": "ffdfc74b197d33d9ac87e74ffa008ebb66688b7fc501f6d173beebbb4621d22f"
+    },
+    {
+      "archive_member": "objects/04b92a21e48c1c057427f190b30be089ec988aa29e7c6ba2759178fcc0be9204",
+      "bytes": 14085,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_aware_nonimp_fibre_proposer_v2.py",
+      "sha256": "04b92a21e48c1c057427f190b30be089ec988aa29e7c6ba2759178fcc0be9204"
+    },
+    {
+      "archive_member": "objects/cbe28a08eb9546515bca3d33e774e2f0c8004650928619b3d15cc515e40e550d",
+      "bytes": 1285,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_aware_nonimp_fibre_proposer_v2.py.forward.patch",
+      "sha256": "cbe28a08eb9546515bca3d33e774e2f0c8004650928619b3d15cc515e40e550d"
+    },
+    {
+      "archive_member": "objects/b6011e7150ecec8c721fb646a34b3954e650293b3a5b3d6324bddb4f76adecd4",
+      "bytes": 1285,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_aware_nonimp_fibre_proposer_v2.py.inverse.patch",
+      "sha256": "b6011e7150ecec8c721fb646a34b3954e650293b3a5b3d6324bddb4f76adecd4"
+    },
+    {
+      "archive_member": "objects/4d3f72b809542bbd35cea9c99ded889f0dd4802a9ff01af0dfabcfb8222a73ec",
+      "bytes": 12816,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_degree_router_v2.py",
+      "sha256": "4d3f72b809542bbd35cea9c99ded889f0dd4802a9ff01af0dfabcfb8222a73ec"
+    },
+    {
+      "archive_member": "objects/b75fe387d13fa16dc1916f90ab6795d4092f125b47626d23a86f3663c7de83f6",
+      "bytes": 5050,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_degree_router_v2.py.forward.patch",
+      "sha256": "b75fe387d13fa16dc1916f90ab6795d4092f125b47626d23a86f3663c7de83f6"
+    },
+    {
+      "archive_member": "objects/fce853719f776bf6d7a6bdabbad4ffcbaaecc51d5d26a6f15c48820fe92293a4",
+      "bytes": 5050,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_degree_router_v2.py.inverse.patch",
+      "sha256": "fce853719f776bf6d7a6bdabbad4ffcbaaecc51d5d26a6f15c48820fe92293a4"
+    },
+    {
+      "archive_member": "objects/c1f9bdaaa56b5409a97ec5afd03a932fa7edfc3613519d53eeea230387d7bec0",
+      "bytes": 31168,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_unit_row_adapter_v6.py",
+      "sha256": "c1f9bdaaa56b5409a97ec5afd03a932fa7edfc3613519d53eeea230387d7bec0"
+    },
+    {
+      "archive_member": "objects/d62c2c682e6536a5ed5200cfcd7df459a1d04c58e72dc187fe591981d476b47c",
+      "bytes": 15271,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_unit_row_adapter_v6.py.forward.patch",
+      "sha256": "d62c2c682e6536a5ed5200cfcd7df459a1d04c58e72dc187fe591981d476b47c"
+    },
+    {
+      "archive_member": "objects/dab9135c695c7ffea5dab1a908c9cfe54474665fb254255ac995a08000f19293",
+      "bytes": 15271,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_unit_row_adapter_v6.py.inverse.patch",
+      "sha256": "dab9135c695c7ffea5dab1a908c9cfe54474665fb254255ac995a08000f19293"
+    },
+    {
+      "archive_member": "objects/0891a6e4da93f9f363800ea1aac94d60328469379c5910c1ccef96061a37ef5a",
+      "bytes": 2012,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/parent-paths-v1.json",
+      "sha256": "0891a6e4da93f9f363800ea1aac94d60328469379c5910c1ccef96061a37ef5a"
+    },
+    {
+      "archive_member": "objects/a1b812e662e1fd9a9ef350a9a9e71d655ac9f4fc90bd2407c38351179ea16f34",
+      "bytes": 101953,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/receptor_family_search_engine_v11.py",
+      "sha256": "a1b812e662e1fd9a9ef350a9a9e71d655ac9f4fc90bd2407c38351179ea16f34"
+    },
+    {
+      "archive_member": "objects/429ae1da63547f46dce37da1f9f6bf3dc1972cf2b5f90762dc4c00e3b6646e03",
+      "bytes": 11902,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/receptor_family_search_engine_v11.py.forward.patch",
+      "sha256": "429ae1da63547f46dce37da1f9f6bf3dc1972cf2b5f90762dc4c00e3b6646e03"
+    },
+    {
+      "archive_member": "objects/bed8173c14dbd6b9e94a98780211777cd6984e68554051893a8e7fb322bcb377",
+      "bytes": 11902,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/receptor_family_search_engine_v11.py.inverse.patch",
+      "sha256": "bed8173c14dbd6b9e94a98780211777cd6984e68554051893a8e7fb322bcb377"
+    },
+    {
+      "archive_member": "objects/5f515565eda2bb1d9ec62bab996c723a9c88957ba9844e84b74cb5fb0ce836e8",
+      "bytes": 25220,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/receptor_family_six_rule_adapter_v4.py",
+      "sha256": "5f515565eda2bb1d9ec62bab996c723a9c88957ba9844e84b74cb5fb0ce836e8"
+    },
+    {
+      "archive_member": "objects/11fe8a98d905bea97403be71a57786354d229f6f460a8566350af120ce02dee7",
+      "bytes": 2954,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/receptor_family_six_rule_adapter_v4.py.forward.patch",
+      "sha256": "11fe8a98d905bea97403be71a57786354d229f6f460a8566350af120ce02dee7"
+    },
+    {
+      "archive_member": "objects/ad500ec9f28d8ca88cfbace7491efa7542402a41c4a25808f46e5db26cf726a2",
+      "bytes": 2954,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/receptor_family_six_rule_adapter_v4.py.inverse.patch",
+      "sha256": "ad500ec9f28d8ca88cfbace7491efa7542402a41c4a25808f46e5db26cf726a2"
+    },
+    {
+      "archive_member": "objects/12df8e44da7ac8c7bd18da50393ffd95cad9e59e4b9447a997689c9c84df8c46",
+      "bytes": 1019,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/reviewer-assignment-erratum-v1.json",
+      "sha256": "12df8e44da7ac8c7bd18da50393ffd95cad9e59e4b9447a997689c9c84df8c46"
+    },
+    {
+      "archive_member": "objects/a0b3a68fc78a34748d851d0a0fa06417fc5c280be0638337c8825ffae46df498",
+      "bytes": 9484,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/row_zero_head_projection_v1.py",
+      "sha256": "a0b3a68fc78a34748d851d0a0fa06417fc5c280be0638337c8825ffae46df498"
+    },
+    {
+      "archive_member": "objects/e1f02cef88dbf9a98efc4ba134953c448d74d081048f55d80bcf1eabf5050e03",
+      "bytes": 9693,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/row_zero_head_projection_v1.py.forward.patch",
+      "sha256": "e1f02cef88dbf9a98efc4ba134953c448d74d081048f55d80bcf1eabf5050e03"
+    },
+    {
+      "archive_member": "objects/7e08e2d2b6aa23b03966c363d0d3db1178085fb05cf8050fca5e2299e7c95389",
+      "bytes": 9693,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/row_zero_head_projection_v1.py.inverse.patch",
+      "sha256": "7e08e2d2b6aa23b03966c363d0d3db1178085fb05cf8050fca5e2299e7c95389"
+    },
+    {
+      "archive_member": "objects/ad24a7114f8338f522591a43b95106e11bfe3c7bfff69dd6b5286e36059ac8e6",
+      "bytes": 14802,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/selected_dag_first_proof_observer_v3.py",
+      "sha256": "ad24a7114f8338f522591a43b95106e11bfe3c7bfff69dd6b5286e36059ac8e6"
+    },
+    {
+      "archive_member": "objects/06bc9229d0e81f22c64ad84afae214988429f4d1d6b1b72d63dab28f4784e1d6",
+      "bytes": 717,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/selected_dag_first_proof_observer_v3.py.forward.patch",
+      "sha256": "06bc9229d0e81f22c64ad84afae214988429f4d1d6b1b72d63dab28f4784e1d6"
+    },
+    {
+      "archive_member": "objects/da3883c4f7c774d6918f659e996b4677934dbe701374381d3e6502a2129b401b",
+      "bytes": 717,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/selected_dag_first_proof_observer_v3.py.inverse.patch",
+      "sha256": "da3883c4f7c774d6918f659e996b4677934dbe701374381d3e6502a2129b401b"
+    },
+    {
+      "archive_member": "objects/a2f9b02952cbf974113772b256412f769830cf3c4e30ac49f8dd56b69ff9280f",
+      "bytes": 159336,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/static-audit-v1.json",
+      "sha256": "a2f9b02952cbf974113772b256412f769830cf3c4e30ac49f8dd56b69ff9280f"
+    }
+  ],
+  "original_path_count": 141,
+  "schema": "GCTS-native-head-marking-evidence-manifest-v1",
+  "scope": "Frozen Source, exact patch/review evidence, two distinct once-only native records and Root full lossless expanded controls. No OS binaries, unrelated work or private placeholder backups. Old actuals are evidence, not authorization to restart them.",
+  "unique_object_count": 139
+}
