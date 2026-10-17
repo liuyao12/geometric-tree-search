@@ -1,0 +1,88 @@
+{
+  "API": {
+    "bytes": 5122,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/API-wire-v4.json",
+    "sha256": "57151af851a4d8ffbfb5bd243193223b26b2cb71f34e2d5137be9ca3c59e5062"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "required": [
+      "Whole current writer/readout/API/contract and exact parent inverses/patches.",
+      "Old branches erasure, original once/native/positive wire and all limits.",
+      "Explicit own primitive omission versus propagating native/codec/errors; captured identity/type/prepost gates.",
+      "16MiB bounded lossless expansion,3MiB wire, artifact exact bytes and strict null/captured/omitted distinction.",
+      "No actual/codec/generated/scientific execution; disclose ancestry; future Root current rebind and grant separate."
+    ],
+    "schema": "ROOT-milestone-lossless-wire-typed-Source-review-v4",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-milestone-lossless-wire-Source",
+    "source": {
+      "bytes": 36501,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+      "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+    },
+    "source_contract": {
+      "bytes": 7708,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-contract-v4.json",
+      "sha256": "a8a7693daf481aff731fcf4e411c4b296cfba2eab0ca9a4aff2cd35c30f20930"
+    },
+    "source_only": true,
+    "sources": {
+      "saved_reader_candidate": {
+        "bytes": 52379,
+        "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+        "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+      },
+      "writer_replacement": {
+        "bytes": 36501,
+        "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+        "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "next": "Distinct whole Source review then Root separate literal rebind/current composition/grant only. No actual or codec execution.",
+  "parent_handoff": {
+    "bytes": 3196,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/handoff-v1.json",
+    "sha256": "e3d84b8b7cc3ea1cbda520059fd7c3670e97a9d080cda5f2c347b326af7c1c28"
+  },
+  "runtime_qualified": false,
+  "schema": "ROOT-milestone-lossless-wire-handoff-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 36501,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+    "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+  },
+  "source_contract": {
+    "bytes": 7708,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-contract-v4.json",
+    "sha256": "a8a7693daf481aff731fcf4e411c4b296cfba2eab0ca9a4aff2cd35c30f20930"
+  },
+  "source_delta": {
+    "bytes": 30633,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-delta-v4.json",
+    "sha256": "357dd3c1265c1b8c19a3eabd8148cbb06d773d4e3c528c4c6825db88557f0253"
+  },
+  "source_only": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 52379,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+      "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+    },
+    "writer_replacement": {
+      "bytes": 36501,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+      "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+    }
+  },
+  "static_audit": {
+    "bytes": 1389,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/static-audit-v4.json",
+    "sha256": "2e78207e1974e9013b39b02d94d9dff9c3981a486db0f2b8bf522b0ba16d55e1"
+  }
+}

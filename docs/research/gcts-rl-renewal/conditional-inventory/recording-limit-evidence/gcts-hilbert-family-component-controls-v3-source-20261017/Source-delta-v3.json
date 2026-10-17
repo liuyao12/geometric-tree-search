@@ -1,0 +1,71 @@
+{
+  "actual_patch_F0_directions": 2,
+  "frozen_prior_sources_modified": false,
+  "full_raw_AST_inverse": true,
+  "inherited_top_functions_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "load_module",
+    "stdlib_gate",
+    "encode_result_transport"
+  ],
+  "parent_delta": {
+    "bytes": 10149,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/caller-Source-delta-v2.json",
+    "sha256": "35b496d8a3096b351e4ad51a25e9712722b5c6055c106ee285f275e90dbf6bd5"
+  },
+  "parent_source": {
+    "bytes": 26908,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_cold_v2.py",
+    "sha256": "e790186dd224ff498e758d8bb9eb83dfb641741b61e0d457b47a0c8687797d13"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 5851,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/caller-v2-to-v3-forward.patch",
+      "sha256": "5aa806540e823900ad960323bd5f13551b63a85bf920c9a4db124701f3f2ccc3"
+    },
+    "inverse": {
+      "bytes": 5851,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/caller-v2-to-v3-inverse.patch",
+      "sha256": "f9f541463267db8684e3fc03f86104e7f5455b5cd727b6cfa54abc7e3416199c"
+    }
+  },
+  "raw_edits": [
+    {
+      "after": "VERSION='ROOT-Hilbert-shared-family-component-controls-cold-v3-callable-boundaries'",
+      "before": "VERSION='ROOT-Hilbert-shared-family-component-controls-cold-v2-child-unknown'"
+    },
+    {
+      "after": "    def call(fn,args=(),kwargs=None):\n        actual_kwargs={}if kwargs is None else kwargs\n        if type(fn)is types.FunctionType:\n            return invoke_fn(fn,args,actual_kwargs,boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n        # The original invoke still receives only a Python function. The thunk\n        # additionally guards the actual class/method endpoint it delegates to.\n        if type(fn)is types.MethodType:\n            receiver,actual_function=fn.__self__,fn.__func__\n            receiver_type=type(receiver);method_name=actual_function.__name__\n            actual_function_state=anchor_fn(actual_function)\n            class_snapshot=support.class_state(receiver_type)\n            def actual_guard():\n                if(type(fn)is not types.MethodType or fn.__self__ is not receiver\n                    or fn.__func__ is not actual_function or type(receiver)is not receiver_type\n                    or not same_fn(actual_function,actual_function_state)\n                    or support.class_state(receiver_type)!=class_snapshot):\n                    raise RuntimeError('actual bound-method code/MRO/receiver changed')\n                effective=getattr(receiver,method_name)\n                if(type(effective)is not types.MethodType or effective.__self__ is not receiver\n                    or effective.__func__ is not actual_function):\n                    raise RuntimeError('actual receiver effective method changed')\n        else:\n            need(isinstance(fn,type),'only pinned Python function/class/bound-method delegate')\n            actual_class,metaclass=fn,type(fn)\n            class_snapshot=support.class_state(actual_class)\n            metaclass_snapshot=support.class_state(metaclass)\n            def actual_guard():\n                if(fn is not actual_class or type(fn)is not metaclass\n                    or support.class_state(actual_class)!=class_snapshot\n                    or support.class_state(metaclass)!=metaclass_snapshot):\n                    raise RuntimeError('actual constructor/metaclass/MRO endpoint changed')\n        actual_guard_fn=actual_guard;actual_guard_code=actual_guard.__code__\n        actual_guard_state=anchor_fn(actual_guard)\n        def thunk():\n            if(actual_guard is not actual_guard_fn or actual_guard_fn.__code__ is not actual_guard_code\n                or not same_fn(actual_guard_fn,actual_guard_state)):\n                raise RuntimeError('actual delegate validator changed')\n            actual_guard_fn()\n            try:\n                return fn(*args,**actual_kwargs)\n            finally:\n                if(actual_guard is not actual_guard_fn or actual_guard_fn.__code__ is not actual_guard_code\n                    or not same_fn(actual_guard_fn,actual_guard_state)):\n                    raise RuntimeError('actual delegate validator changed on exceptional return')\n                actual_guard_fn()\n                if(actual_guard_fn.__code__ is not actual_guard_code\n                    or not same_fn(actual_guard_fn,actual_guard_state)):\n                    raise RuntimeError('actual delegate validator changed after final guard')\n        return invoke_fn(thunk,(),{},boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n",
+      "before": "    def call(fn,args=(),kwargs=None):\n        return invoke_fn(fn,args,{}if kwargs is None else kwargs,boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)\n"
+    },
+    {
+      "after": "    generated.append((graph_type,support.class_state(graph_type)))\n    graph=call(graph_type,kwargs={'header_pin':qualification['catalog']})\n    generated.append((type(graph.catalog),support.class_state(type(graph.catalog))))\n",
+      "before": "    graph=call(graph_type,kwargs={'header_pin':qualification['catalog']})\n    generated.extend((cls,support.class_state(cls))for cls in (graph_type,type(graph.catalog)))\n"
+    },
+    {
+      "after": "contract['schema']=='ROOT-Hilbert-family-component-controls-Source-contract-v3'",
+      "before": "contract['schema']=='ROOT-Hilbert-family-component-controls-Source-contract-v2'"
+    }
+  ],
+  "schema": "Hilbert-family-component-controls-cold-immediate-delta-v3",
+  "source": {
+    "bytes": 30049,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/hilbert_family_component_controls_cold_v3.py",
+    "sha256": "6366bd89a113795dd2a1e59b570f50308ad73cd8703b5542d076bcfe19cc2d8a"
+  },
+  "source_only": true
+}

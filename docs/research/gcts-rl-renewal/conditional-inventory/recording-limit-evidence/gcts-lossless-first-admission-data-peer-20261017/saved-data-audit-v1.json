@@ -1,0 +1,294 @@
+{
+  "actuals_launched": 0,
+  "checks": [
+    {
+      "check": "exact requested disposition",
+      "passed": true
+    },
+    {
+      "check": "disposition saved plan/bracket pins",
+      "passed": true
+    },
+    {
+      "check": "full twofile diagnostic pins",
+      "passed": true
+    },
+    {
+      "check": "V4 exact schemas",
+      "passed": true
+    },
+    {
+      "check": "complete pair remains failure-only",
+      "passed": true
+    },
+    {
+      "check": "context exact retained plan",
+      "passed": true
+    },
+    {
+      "check": "context/disposition full equality",
+      "passed": true
+    },
+    {
+      "check": "grant saved pin",
+      "passed": true
+    },
+    {
+      "check": "grant exact once currentcontext",
+      "passed": true
+    },
+    {
+      "check": "review ROOT pin",
+      "passed": true
+    },
+    {
+      "check": "review ROOT exactcontext",
+      "passed": true
+    },
+    {
+      "check": "review peer pin",
+      "passed": true
+    },
+    {
+      "check": "review peer exactcontext",
+      "passed": true
+    },
+    {
+      "check": "contract saved pin",
+      "passed": true
+    },
+    {
+      "check": "current22/input10/original17/input2",
+      "passed": true
+    },
+    {
+      "check": "raw pin ONCE.json",
+      "passed": true
+    },
+    {
+      "check": "raw pin meter-stderr.txt",
+      "passed": true
+    },
+    {
+      "check": "raw pin meter-stdout.txt",
+      "passed": true
+    },
+    {
+      "check": "raw pin native-terminal.json",
+      "passed": true
+    },
+    {
+      "check": "raw pin observation.json",
+      "passed": true
+    },
+    {
+      "check": "raw pin postterminal-probe-stderr.txt",
+      "passed": true
+    },
+    {
+      "check": "raw pin postterminal-probe-stdout.txt",
+      "passed": true
+    },
+    {
+      "check": "exact once plan/purpose",
+      "passed": true
+    },
+    {
+      "check": "native once observation join",
+      "passed": true
+    },
+    {
+      "check": "all closed exit2 reaped",
+      "passed": true
+    },
+    {
+      "check": "native exact utility currentcaller and plan",
+      "passed": true
+    },
+    {
+      "check": "native stamp chronology",
+      "passed": true
+    },
+    {
+      "check": "native launch-postprobe exact",
+      "passed": true
+    },
+    {
+      "check": "native lifetime/usage equal",
+      "passed": true
+    },
+    {
+      "check": "failure55/caller90 Date gates",
+      "passed": true
+    },
+    {
+      "check": "Date native/tool exactonce",
+      "passed": true
+    },
+    {
+      "check": "postterminal probe exact same clock scalar",
+      "passed": true
+    },
+    {
+      "check": "stdout opaque retained empty actual",
+      "passed": true
+    },
+    {
+      "check": "whole complete phase literals match saved",
+      "passed": true
+    },
+    {
+      "check": "phase monotonic native20 stamps",
+      "passed": true
+    },
+    {
+      "check": "error tail exact hash only",
+      "passed": true
+    },
+    {
+      "check": "exact3 captured prefix and null fourth",
+      "passed": true
+    },
+    {
+      "check": "header matching native phase intervals",
+      "passed": true
+    },
+    {
+      "check": "no fourth/search-return/afterengine observation",
+      "passed": true
+    },
+    {
+      "check": "exact3-0-0 omission counts",
+      "passed": true
+    },
+    {
+      "check": "explicit firstrecord own primitive NODE_LIMIT",
+      "passed": true
+    },
+    {
+      "check": "serialization metadata exactdisposition",
+      "passed": true
+    },
+    {
+      "check": "envelope literal exact disposition",
+      "passed": true
+    },
+    {
+      "check": "separate artifact exact null4 noLF",
+      "passed": true
+    },
+    {
+      "check": "encoded envelope count exactcompactASCII",
+      "passed": true
+    },
+    {
+      "check": "provider summary exact retainedscalar",
+      "passed": true
+    },
+    {
+      "check": "all legacy slots null exact",
+      "passed": true
+    },
+    {
+      "check": "zero qualification/current UNKNOWN allauthorityfalse",
+      "passed": true
+    }
+  ],
+  "codec_calls": 0,
+  "read_refs": [
+    {
+      "bytes": 16580,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "7648312296dca5b106d9f6cf17665fbdc62d6d2ebc6b1dd42f079314d858c753"
+    },
+    {
+      "bytes": 10952,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "ea871e231c6733a81b10f2aea5e58a946db24b118c55887d9015571f77815513"
+    },
+    {
+      "bytes": 386,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-Date-bracket-v1.json",
+      "sha256": "8508414b9a7843fc77e3ec80df58039a17dbc2fff0a444ef9163b3de7efe4ff9"
+    },
+    {
+      "bytes": 667,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-tool-observation-v1.json",
+      "sha256": "4cbb233b385342277d0163c86265fb11a4484674867ca50a476204d7a4de86b4"
+    },
+    {
+      "bytes": 12152,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-owned-v1/unknown-diagnostic.json",
+      "sha256": "650b7f86818f2d9327e037e04a9d9168be042c0a92356a73fe5bc1813b198369"
+    },
+    {
+      "bytes": 337,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-owned-v1/diagnostic-completion.json",
+      "sha256": "ecc3646aaed731b97062f0d012d028d76f8ceac122dc2641c85188bfd85be56d"
+    },
+    {
+      "bytes": 21,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-expanded-engine-journal-v1.json",
+      "sha256": "6cd8cec706fa11110d83fb46f97df1f9be43b4c570f3390e7c7f6a5173f595e6"
+    },
+    {
+      "bytes": 13679,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "7edf75307a705ac59b950f39d3cb7ad5ef2fdc9dc781a98e36d218c0facdfa22"
+    },
+    {
+      "bytes": 9604,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "e28e8cd2c56d8aa19be110c6e659f9a7611970f8fb4d0add8555466d75f08f74"
+    },
+    {
+      "bytes": 7665,
+      "path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "ec9546db0b0b9e299deb0f9fa5ca979304001e0c0ef3f7a680e79a10480c567c"
+    },
+    {
+      "bytes": 24238,
+      "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "46efcfe31565dd1c722a62f42267917dfcf2c0e55f6b1fa278368fdaa8ad6720"
+    },
+    {
+      "bytes": 266,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/ONCE.json",
+      "sha256": "5ec2864741c726ef519e5364a10e1a32e705a7bcf617b4be2691647f713fee1b"
+    },
+    {
+      "bytes": 1315,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/meter-stderr.txt",
+      "sha256": "b9ec28da0620c679c5f314ecea36a79996d5f3e8cd98f0f0d6c0f547e1bbe238"
+    },
+    {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1593,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/native-terminal.json",
+      "sha256": "7644e5f20847ec8ab692a9cf7144a3d236439a1d3226a4fbfd68020f86738aff"
+    },
+    {
+      "bytes": 483,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/observation.json",
+      "sha256": "b2aa0265db63b25fc48a9def1f967ffa3d0b9e89dc7d773bac0ef780db264ea1"
+    },
+    {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 16,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "dd3917ddfa50ccbef84a281ec271434319db5d7266ee0ace1ac785a54e0f9d27"
+    }
+  ],
+  "saved_data_only": true,
+  "schema": "lossless-first-admission-independent-saved-metadata-audit-v1",
+  "scientific_calls": 0,
+  "scientific_replay": false
+}

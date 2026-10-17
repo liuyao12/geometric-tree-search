@@ -1,0 +1,164 @@
+{
+  "checks": [
+    {
+      "added_definitions": [],
+      "both_actual_patch_directions": true,
+      "changed_definitions": [
+        "save_failure_diagnostic",
+        "main"
+      ],
+      "compile_without_evaluation": true,
+      "parent": {
+        "bytes": 76794,
+        "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/first_admission_receiver_cold_v1.py",
+        "sha256": "8fd4ac50d08d0532465705713760daeadc0e7bef3ca60970db5f73e416ef6bfa"
+      },
+      "raw_AST_inverses_passed": true,
+      "raw_regions": 5,
+      "regions": [
+        {
+          "new": "VERSION='ROOT-receiver-inference-probe-cold-v6-lossless-first-admission-journal'\n",
+          "new_end": 26,
+          "new_start": 25,
+          "old": "VERSION='ROOT-receiver-inference-probe-cold-v5-first-admission-journal'\n",
+          "old_end": 26,
+          "old_start": 25
+        },
+        {
+          "new": "        _compress=zlib.compress, _compress_anchor=zlib.compress,\n        _b64=binascii.b2a_base64, _b64_anchor=binascii.b2a_base64,\n",
+          "new_end": 164,
+          "new_start": 162,
+          "old": "",
+          "old_end": 162,
+          "old_start": 162
+        },
+        {
+          "new": "    elif failure_kind == 'CONTROLS_TIMEOUT_ENGINE_MILESTONES_LOSSLESS_V4':\n        roles = ('proposer','fallback','completion','validator')\n        counters = ('planned_assignments','attempted_assignments','binding_attempts',\n            'ground_environment_proposals','distinct_environment_attempts','full_expansions',\n            'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',\n            'checked_instances','duplicate_instances','offered_instances','head_gate_calls',\n            'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',\n            'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')\n        if (type(capture) is not dict or len(capture) != 3\n                or not all(type(key) is str for key in capture)\n                or set(capture) != {'legacy','provider_returns','engine_milestones'}):\n            raise ValueError('fixed builtin provider-return capture')\n        legacy = capture['legacy']; returned = capture['provider_returns']\n        if (type(legacy) is not dict or len(legacy) != 4\n                or not all(type(key) is str for key in legacy) or set(legacy) != set(roles)\n                or type(returned) is not list or len(returned) != 2):\n            raise ValueError('fixed legacy and two provider-return slots')\n        observations = {}\n        for role in roles:\n            failure_gate()\n            item = legacy[role]\n            if item is None:\n                observations[role] = None\n                continue\n            if type(item) is not tuple or len(item) != 4:\n                raise ValueError('fixed scalar last-context tuple')\n            stage,row,selected,native_ns = item\n            if (type(stage) is not str or stage != role.upper()+'_NATIVE_STEP'\n                    or type(row) is not int or not -1<=row<24\n                    or type(selected) is not int or not -1<=selected<=24\n                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000\n                    or not 0<=native_ns<=9223372036854775807):\n                raise ValueError('bounded builtin last-context fields')\n            observations[role] = {'stage':stage,'row':row,'selected_count':selected,'native_ns':native_ns}\n        summaries = []\n        for index in range(2):\n            failure_gate()\n            item = returned[index]\n            if item is None:\n                summaries.append(None)\n                continue\n            if (type(item) is not dict or len(item) != 7\n                    or not all(type(key) is str for key in item)\n                    or set(item) != {'ordinal','native_ns','batch_status','instance_count',\n                        'provider_reason','provider_steps','accounting'}):\n                raise ValueError('fixed builtin provider-return fields')\n            ordinal = item['ordinal']; native_ns = item['native_ns']; counts = item['accounting']\n            if (type(ordinal) is not int or ordinal != index+1\n                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000\n                    or not 0<=native_ns<=9223372036854775807\n                    or type(item['batch_status']) is not str or len(item['batch_status'])>64\n                    or type(item['instance_count']) is not int or not 0<=item['instance_count']<=1\n                    or type(item['provider_reason']) is not str or len(item['provider_reason'])>256\n                    or type(item['provider_steps']) is not int or not 0<=item['provider_steps']<=1000000\n                    or type(counts) is not dict or len(counts) != 20\n                    or not all(type(key) is str for key in counts) or set(counts) != set(counters)\n                    or not all(type(counts[key]) is int and 0<=counts[key]<=1000000 for key in counters)):\n                raise ValueError('bounded builtin provider-return scalars')\n            summaries.append({'ordinal':ordinal,'native_ns':native_ns,\n                'batch_status':item['batch_status'],'instance_count':item['instance_count'],\n                'provider_reason':item['provider_reason'],'provider_steps':item['provider_steps'],\n                'accounting':{key:counts[key] for key in counters}})\n        stages = ('FIRST_ROOT_FAMILY_PLAN_READY','FIRST_ROOT_FAMILY_EVENT_READY',\n            'FIRST_ROOT_PRIMITIVE_PLACED','FIRST_CHILD_DECISION_READY')\n        milestones = capture['engine_milestones']\n        if type(milestones) is not list or len(milestones) != 4:\n            raise ValueError('fixed four raw engine milestone slots')\n        headers = []; captured = 0; ended = False; previous_ns = began_ns\n        for index in range(4):\n            failure_gate()\n            item = milestones[index]\n            if item is None:\n                ended = True; headers.append(None); continue\n            if (ended or type(item) is not dict or len(item) != 4\n                    or not all(type(key) is str for key in item)\n                    or set(item) != {'ordinal','stage','native_ns','record'}\n                    or type(item['ordinal']) is not int or item['ordinal'] != index+1\n                    or type(item['stage']) is not str or item['stage'] != stages[index]\n                    or type(item['native_ns']) is not int\n                    or not previous_ns<=item['native_ns']<began_ns+20000000000\n                    or not 0<=item['native_ns']<=9223372036854775807\n                    or type(item['record']) is not dict):\n                raise ValueError('literal monotone-prefix raw milestone headers')\n            headers.append({'ordinal':index+1,'stage':item['stage'],'native_ns':item['native_ns']})\n            previous_ns=item['native_ns']; captured+=1\n        # Only this new V4 branch changes encoding. Legacy/V3 stays literal.\n        def codec_gate():\n            failure_gate()\n            if (type(_compress) is not types.BuiltinFunctionType or _compress is not _compress_anchor\n                    or type(_b64) is not types.BuiltinFunctionType or _b64 is not _b64_anchor):\n                raise RuntimeError('original captured lossless codec endpoint changed')\n        def journal_item(value, maximum, ordinal):\n            chunks=[];size=0;nodes=0;omission=None\n            def reject(code, limit, observed):\n                nonlocal omission\n                if omission is None:\n                    omission={'phase':'BUILTIN_SERIALIZATION','code':code,\n                        'record_ordinal':ordinal,'limit':limit,'observed':observed}\n                return False\n            def append(raw):\n                nonlocal size\n                size+=len(raw)\n                if size>maximum:return reject('EXPANDED_BYTE_LIMIT',maximum,size)\n                chunks.append(raw);return True\n            def visit(item, depth):\n                nonlocal nodes\n                nodes+=1\n                if nodes>200000:return reject('NODE_LIMIT',200000,nodes)\n                if depth>128:return reject('DEPTH_LIMIT',128,depth)\n                if nodes%64==1:failure_gate()\n                kind=type(item)\n                if item is None:return append(b'null')\n                if kind is bool:return append(b'true'if item else b'false')\n                if kind is int:\n                    bits=item.bit_length()\n                    if bits>4096:return reject('INTEGER_BIT_LIMIT',4096,bits)\n                    return append(str(item).encode('ascii'))\n                if kind is str:\n                    if len(item)>262144:return reject('STRING_LENGTH_LIMIT',262144,len(item))\n                    return append(_escape(item).encode('ascii'))\n                if kind is list or kind is dict:\n                    if not append(b'['if kind is list else b'{'):return False\n                    for index,entry in enumerate(item if kind is list else item.items()):\n                        if index and not append(b','):return False\n                        if kind is dict:\n                            key,child=entry\n                            if type(key)is not str:return reject('NON_STRING_KEY',None,'NON_STRING_KEY')\n                            if not visit(key,depth+1)or not append(b':')or not visit(child,depth+1):return False\n                        elif not visit(entry,depth+1):return False\n                    return append(b']'if kind is list else b'}')\n                return reject('NON_BUILTIN_VALUE',None,'UNSUPPORTED')\n            complete=visit(value,0);failure_gate()\n            if not complete:return None,omission\n            return b''.join(chunks),None\n        journal=[b'null',b'null',b'null',b'null'];journal_bytes=21\n        candidate_prefix=0;serialization_omission=None;wire_omission=None\n        for index in range(captured):\n            failure_gate()\n            item_raw,serialization_omission=journal_item(milestones[index],16777216-journal_bytes+4,index+1)\n            if serialization_omission is not None:break\n            journal[index]=item_raw;journal_bytes+=len(item_raw)-4;candidate_prefix+=1\n        journal_raw=b'['+b','.join(journal)+b']'\n        if len(journal_raw)!=journal_bytes or journal_bytes>16777216:\n            raise RuntimeError('lossless expanded journal exact byte accounting')\n        journal=[];item_raw=None\n        codec_gate();expanded_sha=_hash(journal_raw).hexdigest();codec_gate()\n        codec_gate();compressed=_compress(journal_raw,6);codec_gate()\n        if type(compressed)is not bytes:raise RuntimeError('captured compressor returned nonbytes')\n        journal_raw=None\n        codec_gate();compressed_sha=_hash(compressed).hexdigest();codec_gate()\n        envelope_prefix=encoded({'schema':'unit-row-engine-milestone-lossless-envelope-v1',\n            'encoding':'zlib+base64','expanded_bytes':journal_bytes,'expanded_sha256':expanded_sha,\n            'compressed_bytes':len(compressed),'compressed_sha256':compressed_sha},4096)[:-1]+b',\"payload_base64\":\"'\n        envelope_suffix=b'\"}'\n        projected=len(envelope_prefix)+4*((len(compressed)+2)//3)+len(envelope_suffix)\n        envelope_raw=None;retained=0\n        if projected>3145728:\n            wire_omission={'phase':'ENCODED_ENVELOPE','code':'ENCODED_ENVELOPE_BYTE_LIMIT',\n                'record_ordinal':1 if captured else None,'limit':3145728,'observed':projected}\n        else:\n            codec_gate();payload=_b64(compressed,newline=False);codec_gate()\n            if type(payload)is not bytes or len(payload)!=4*((len(compressed)+2)//3):\n                raise RuntimeError('captured base64 exact whole length')\n            envelope_raw=envelope_prefix+payload+envelope_suffix\n            if len(envelope_raw)!=projected or len(envelope_raw)>3145728:\n                raise RuntimeError('lossless encoded envelope exact byte accounting')\n            retained=candidate_prefix\n        compressed=None;payload=None\n        prefix_reason=('ENCODED_ENVELOPE_BYTE_LIMIT'if wire_omission is not None else\n            'OWN_PRIMITIVE_SERIALIZATION_LIMIT'if serialization_omission is not None else 'ALL_CAPTURED_RECORDS_SAVED')\n        labels=encoded({'schema':'unit-row-controls-engine-milestones-diagnostic-v4',\n            'diagnostic_only':True,'qualification':'UNQUALIFIED_LITERAL_ENGINE_MILESTONE_RECORDS',\n            'failure_kind':'TimeoutError','returned_control_record':False,\n            'callback_context':'LITERAL_RETURNED_SCALARS_AND_RAW_ENGINE_RECORDS_ONLY',\n            'provider_return_summaries_are_unvalidated_scalars':True,'engine_milestone_records_are_unvalidated':True,\n            'captured_headers':headers,'captured_record_count':captured,\n            'encoded_candidate_prefix_count':candidate_prefix,'serialized_record_count':retained,\n            'omitted_record_count':captured-retained,'next_omitted_ordinal':retained+1 if retained<captured else None,\n            'engine_record_prefix_reason':prefix_reason,'engine_journal_bytes':journal_bytes if envelope_raw is not None else None,\n            'expanded_candidate_bytes':journal_bytes,'encoded_envelope_bytes':None if envelope_raw is None else len(envelope_raw),\n            'serialization_omission':serialization_omission,'wire_omission':wire_omission,\n            'last_observation_is_active_failure_frame':False,'callback_return_to_engine_proved':False,\n            'offers_accepted':False,'current_state_accepted':False,'failure_cause_established':False,\n            'live_state_or_proof_trajectory_accepted':False,'positive_joint_gate_accepted':False,\n            'logical_proof_accepted':False,'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,\n            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False},65536)\n        raw=(b'{\"context\":'+context_raw+b',\"diagnostic\":'+labels\n            +b',\"last_observations\":'+encoded(observations,4096)+b',\"provider_returns\":'+encoded(summaries,8192)\n            +b',\"engine_milestones_envelope\":'+(b'null'if envelope_raw is None else envelope_raw)+b'}\\n')\n",
+          "new_end": 516,
+          "new_start": 327,
+          "old": "",
+          "old_end": 325,
+          "old_start": 325
+        },
+        {
+          "new": "    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-controls-provider-returns-completion-v2' if failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2' else 'unit-row-controls-engine-milestones-completion-v4' if failure_kind == 'CONTROLS_TIMEOUT_ENGINE_MILESTONES_LOSSLESS_V4' else 'unit-row-controls-engine-milestones-completion-v3' if failure_kind == 'CONTROLS_TIMEOUT_ENGINE_MILESTONES_V3' else 'unit-row-search-failure-diagnostic-completion-v1'),\n",
+          "new_end": 690,
+          "new_start": 689,
+          "old": "    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-controls-provider-returns-completion-v2' if failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2' else 'unit-row-controls-engine-milestones-completion-v3' if failure_kind == 'CONTROLS_TIMEOUT_ENGINE_MILESTONES_V3' else 'unit-row-search-failure-diagnostic-completion-v1'),\n",
+          "old_end": 499,
+          "old_start": 498
+        },
+        {
+          "new": "                      'CONTROLS_TIMEOUT_ENGINE_MILESTONES_LOSSLESS_V4',EARLY_G)\n",
+          "new_end": 1090,
+          "new_start": 1089,
+          "old": "                      'CONTROLS_TIMEOUT_ENGINE_MILESTONES_V3',EARLY_G)\n",
+          "old_end": 899,
+          "old_start": 898
+        }
+      ],
+      "source": {
+        "bytes": 90045,
+        "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py",
+        "sha256": "e157a9b2aa517e6563f7730f496d7a9ea8ee584615c6a42cdc037226f8a12842"
+      },
+      "unchanged_definitions": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.phase",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language",
+        "main.capture_provider_summary",
+        "main.capture_engine_milestone",
+        "main.run_receiver"
+      ]
+    },
+    {
+      "added_definitions": [],
+      "both_actual_patch_directions": true,
+      "changed_definitions": [
+        "main"
+      ],
+      "compile_without_evaluation": true,
+      "parent": {
+        "bytes": 52379,
+        "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+        "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+      },
+      "raw_AST_inverses_passed": true,
+      "raw_regions": 2,
+      "regions": [
+        {
+          "new": "CURRENT_CONTRACT={'path': '/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/Source-contract-v1.json', 'bytes': 24238, 'sha256': '46efcfe31565dd1c722a62f42267917dfcf2c0e55f6b1fa278368fdaa8ad6720'}\n",
+          "new_end": 13,
+          "new_start": 12,
+          "old": "CURRENT_CONTRACT={'path': '/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d', 'bytes': 21574}\n",
+          "old_end": 13,
+          "old_start": 12
+        },
+        {
+          "new": "             and body['version']=='ROOT-receiver-inference-probe-cold-v6-lossless-first-admission-journal'\n",
+          "new_end": 684,
+          "new_start": 683,
+          "old": "             and body['version']=='ROOT-receiver-inference-probe-cold-v4-callback-stages'\n",
+          "old_end": 684,
+          "old_start": 683
+        }
+      ],
+      "source": {
+        "bytes": 52406,
+        "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py",
+        "sha256": "2b23a8269e9116a4997d461342f5245e1d5bf372f972e638cd5b5b3f2fdd6b21"
+      },
+      "unchanged_definitions": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write",
+        "read_phases",
+        "validate_positive_callback_phases",
+        "validate_engine_milestones",
+        "decode_milestone_envelope",
+        "validate_serialization_omission",
+        "read_failure_diagnostic"
+      ]
+    }
+  ],
+  "codec_calls": 0,
+  "module_evaluations": 0,
+  "schema": "ROOT-lossless-first-admission-source-audit-v1",
+  "scientific_calls": 0
+}

@@ -1,0 +1,21 @@
+--- target.py
++++ target.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'hilbert-shared-family-native-component-controls-v1'
++VERSION = 'hilbert-shared-family-native-component-controls-v2-child-unknown'
+ RESULT_SCHEMA = 'hilbert-shared-family-component-controls-v1'
+ COLLECTOR_VERSION = 'hilbert-shared-family-current-selected-DAG-collector-v2-adapter-v3'
+ ADAPTER_VERSION = 'hilbert-shared-parametric-family-native-admission-adapter-v3-current-hint-invalidation'
+@@ -218,6 +218,9 @@
+         executor.step(control_key);tick()
+         child=graph.decision();record_decision('actual_control_child',child)
+         continued=consume([],hint_checkpoint,child);evidence['child_continuation']=continued
++        if continued['status']=='UNKNOWN':
++            graph.rollback(root_checkpoint)
++            return finish('UNKNOWN','ACTUAL_CHILD_CONTINUATION_CHECK_UNFINISHED')
+         # Either exact nonbranch invalidation or a fresh legal remaining hint;
+         # no expected child route or family absence is supplied to the graph.
+         if child.kind!='branch':

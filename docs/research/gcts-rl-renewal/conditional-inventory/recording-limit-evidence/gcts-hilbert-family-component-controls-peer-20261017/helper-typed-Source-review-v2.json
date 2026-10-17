@@ -1,0 +1,55 @@
+{
+  "Source_pass": true,
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "Own generic checker/arithmetic ancestry and prior adapter/collector peers, not Controls helper/cold author; original Hilbert native mathematics not accepted by this review.",
+  "blocker_ids": [],
+  "collector_thin_verdict": {
+    "bytes": 1927,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-typed-Source-review-v2.json",
+    "sha256": "88d2a463a9d6db8a8a5de41a2ff38bec1d1f6cbf3d6c98b80d3d53357c8d7419"
+  },
+  "findings": {
+    "bytes": 3551,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/findings-v2.json",
+    "sha256": "d0aaa6b95998fde3350617367c8631ac5741c4a06eff4b770fb9c2995d1e6202"
+  },
+  "preserved_negative": {
+    "bytes": 6424,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "621028615707736367adeca3e5e45fc0a338a9eb78e117a42e9e235dc74f9f62"
+  },
+  "resolved_blocker_ids": [
+    "HILBERT-COMPONENT-CHILD-UNKNOWN-1"
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "Hilbert-family-component-controls-helper-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Hilbert-family-component-controls-helper-Source",
+  "source": {
+    "bytes": 18467,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py",
+    "sha256": "1de9e74e177ad52bf085e4d37ddd7de7a0a7d3c47e9c3d37ef3cf33a9ff4fdcf"
+  },
+  "source_contract": {
+    "bytes": 7781,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/controls-Source-contract-v2.json",
+    "sha256": "96c9d86e76eb9165d95f1aa4624db28604a790c850b85caafca5387b7528ebae"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "component_controls": {
+      "bytes": 18467,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py",
+      "sha256": "1de9e74e177ad52bf085e4d37ddd7de7a0a7d3c47e9c3d37ef3cf33a9ff4fdcf"
+    }
+  },
+  "static_audit": {
+    "bytes": 22979,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v2.json",
+    "sha256": "d0130461abb0f094afa1eb96c50e717bf12e71d546465cbb57703fb2c003fb62"
+  }
+}

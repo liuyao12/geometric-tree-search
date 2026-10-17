@@ -1,0 +1,59 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "all_reaped": true,
+  "component_checks_accepted": false,
+  "component_record_complete": false,
+  "exit_code": 2,
+  "files": [
+    {
+      "bytes": 26460,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "3a7eeda5c3c2b5061de5934e3a6c5547b438446e35639443dc36d5c508573092"
+    },
+    {
+      "bytes": 26554,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "546f27c4365c601b31de46482e893cea5cb4b12e7e3fe7960e12e0f5193a18d2"
+    },
+    {
+      "bytes": 424,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-Date-bracket-v1.json",
+      "sha256": "6e7f86cb89ed92011a9d786425d929c99d323e539f738cb0ac1aacb0e08115ae"
+    },
+    {
+      "bytes": 269,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/ONCE.json",
+      "sha256": "bf4b96ecc962f2d179e563391a9d7e3e94be7ef39249d72531341b1fcd169377"
+    },
+    {
+      "bytes": 1588,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/native-terminal.json",
+      "sha256": "443402e049f1e1b8894eef479ad9f8b17cbf88529c08a0b4e935915162e781e5"
+    },
+    {
+      "bytes": 486,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/observation.json",
+      "sha256": "4e19d305f9c5d2b66ffd1981966b514e96c873ef6d309ae3ec32356e5369add5"
+    },
+    {
+      "bytes": 73,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/meter-stderr.txt",
+      "sha256": "d6eee29a624f54e7ba757462a4b73d4da0c9d0a72fcbbaa8bb22e12fce1759fd"
+    }
+  ],
+  "full_GCTS_accepted": false,
+  "logical_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 256357000,
+  "next": "Preserve V2 review and actual; new immutable V3 repair and distinct callable-category review before a separately declared actual.",
+  "no_component_output": true,
+  "owned_peak_bytes": 27492352,
+  "owned_terminal_elapsed_ns": 209542000,
+  "restarted": false,
+  "schema": "ROOT-Hilbert-component-runtime-disposition-v1",
+  "source_diagnosis": "Pinned cold invoke requires exact FunctionType through anchor(fn), yet delegates class ClosedInputs and later bound methods. The review missed an incompatible callable ABI. This is not a failed mathematical proof or exhausted search.",
+  "status": "UNKNOWN_INFRASTRUCTURE",
+  "stderr": "HILBERT_COMPONENT_CONTROLS_UNKNOWN: ValueError: original Python function\n",
+  "whole_ToolDate_seconds": 0.501
+}

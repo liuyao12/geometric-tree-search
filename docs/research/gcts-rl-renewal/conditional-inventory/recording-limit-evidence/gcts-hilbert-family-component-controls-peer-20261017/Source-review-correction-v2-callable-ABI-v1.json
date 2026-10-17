@@ -1,0 +1,44 @@
+{
+  "authorship_disclosure": "Own prior current cold peer/generic checker/arithmetic ancestry. This is a correction to my review; no self-authored cold repair.",
+  "finding": {
+    "anchor_line": 102,
+    "bound_method_calls": [
+      {
+        "expression": "closed.json",
+        "line": 317
+      },
+      {
+        "expression": "closed.close",
+        "line": 340
+      },
+      {
+        "expression": "wire.model_epoch",
+        "line": 328
+      }
+    ],
+    "detail": "invoke unconditionally calls anchor(fn), while anchor accepts only exact FunctionType. The actual first delegated ClosedInputs class and later generated graph class, bound closed.json/close and wire.model_epoch methods do not satisfy that gate. Thus declared native admission cannot run through current cold API. I missed this in the prior whole Source review.",
+    "first_class_call_line": 316,
+    "id": "HILBERT-COMPONENT-CALLABLE-ABI-1",
+    "invoke_line": 120,
+    "severity": "blocker"
+  },
+  "module_evaluations": 0,
+  "preserved_historical_review": {
+    "bytes": 6799,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "8df73e91b09b91cef49e2058278cf2db242b011cf057921679f98d860b2d870e"
+  },
+  "required_successor_review": "Review all delegated callable categories and retain full class/MRO/effective endpoint, bound receiver/function/code/default/closure identity and pre/post exceptional Source/native boundary guards. Parent/current model/budgets/case semantics remain frozen; no repair/actual authorization from this note.",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "Hilbert-component-cold-Source-review-correction-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Current V2 cold executable callable boundary, not helper semantics or collector mathematics. Previous review bytes remain immutable; this correction bars treating that pass as current cold readiness. Root-reported runtime negative is a separate record, not read or replayed here.",
+  "source": {
+    "bytes": 26908,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_cold_v2.py",
+    "sha256": "e790186dd224ff498e758d8bb9eb83dfb641741b61e0d457b47a0c8687797d13"
+  },
+  "source_only": true,
+  "source_review_passed": false
+}

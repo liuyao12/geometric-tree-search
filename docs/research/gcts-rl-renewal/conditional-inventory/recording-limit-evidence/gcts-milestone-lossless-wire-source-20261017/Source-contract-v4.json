@@ -1,0 +1,119 @@
+{
+  "API": {
+    "bytes": 5122,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/API-wire-v4.json",
+    "sha256": "57151af851a4d8ffbfb5bd243193223b26b2cb71f34e2d5137be9ca3c59e5062"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "required": [
+      "Whole current writer/readout/API/contract and exact parent inverses/patches.",
+      "Old branches erasure, original once/native/positive wire and all limits.",
+      "Explicit own primitive omission versus propagating native/codec/errors; captured identity/type/prepost gates.",
+      "16MiB bounded lossless expansion,3MiB wire, artifact exact bytes and strict null/captured/omitted distinction.",
+      "No actual/codec/generated/scientific execution; disclose ancestry; future Root current rebind and grant separate."
+    ],
+    "schema": "ROOT-milestone-lossless-wire-typed-Source-review-v4",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-milestone-lossless-wire-Source",
+    "source": {
+      "bytes": 36501,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+      "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+    },
+    "source_contract": "EXACT_CURRENT_CONTRACT_PIN",
+    "source_only": true,
+    "sources": {
+      "saved_reader_candidate": {
+        "bytes": 52379,
+        "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+        "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+      },
+      "writer_replacement": {
+        "bytes": 36501,
+        "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+        "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "approved_design": {
+    "bytes": 9171,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-design-20261017/lossless-wire-design-v1.json",
+    "sha256": "683349c19c64c6114a80b0aa0e01e49ff96bfb48f07eb6ec1bc197f38dac0154"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_overlap": "Author wrote helper1685/generic arithmetic ancestry, reviewed engine8/current reader and audited saved actual30204; not Controls V3 writer author. Root owns future composition/actual; this is author static evidence, not independent peer.",
+  "change_scope": "New explicitly named V4 failure branch/anchored builtin codecs and saved-only bounded decoder/export. Legacy/V3 writer scientific/diagnostic branches restored exactly by erasure; existing reader helpers/phases/positive native transport unchanged, main adds only export-path kwarg.",
+  "clock_calls": 0,
+  "codec_evaluations": 0,
+  "downstream_gaps": [
+    "Root must import binascii early and embed exact writer, choose V4 failure kind, rebind template authority/body VERSION and pin current cold/reader contracts in a separately reviewed composition.",
+    "Distinct peer/current Root review and new explicit actual grant required. This packet authorizes no actual or processing of any old frozen actual.",
+    "Current V3 omitted reason remains disjunctive; new codes can characterize only future saved data, never retroactively assert a reason."
+  ],
+  "generated_function_evaluations": 0,
+  "model_or_result_reads_during_authoring": false,
+  "parent_source_contract": {
+    "bytes": 13584,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/Source-contract-v1.json",
+    "sha256": "383b8b31b90d1c11979f8412c0744973c2b13371760ac46c93046b17188649f8"
+  },
+  "parent_sources": {
+    "saved_reader_candidate": {
+      "bytes": 42910,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/first_admission_saved_reader_v3.py",
+      "sha256": "0d17ae4cef18f9aa03f65ea63c332707289eaaaac49e05f591f27a463553a350"
+    },
+    "writer_replacement": {
+      "bytes": 23268,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/save_failure_diagnostic_v3.fragment.py",
+      "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26"
+    }
+  },
+  "runtime_qualified": false,
+  "safety_and_ownership": [
+    "Captured compressor/base64 builtin identity+type and captured native55/resource gates before/after each C call; no late imports/model/checker/project/positive encoder/original20 callback. Root anchors all new function defaults under existing identity/CodeSeal checks.",
+    "C codec calls are not cooperatively interruptible; a postcall gate may fail. Whole memory and work remain charged, no fit/performance/recovery promise.",
+    "Only explicit owned serializer guard outcomes return omission codes. No exception handler exists in the V4 branch; native/resource/codec/hash/escape/type-identity/I/O errors propagate to the existing outer best-effort failure path. Old branches retain their historical semantics.",
+    "No structural cap is relaxed:200k nodes/depth128/string262144/int4096 per record; expanded byte cap16MiB and retained encoded envelope3MiB. Node count resets per wrapper exactly as old; at most4 wrappers.",
+    "Writer compresses once; overlarge encoded envelope keeps no bodies and records exact output omission separately from serialization omission. Header/scalar data stays truthful; no invented prefix, retry or native exception swallowing.",
+    "Reader preserves native/once/Date/current Source/grant/schema and failure55 gates, strictly bounds base64/zlib/EOF/hashes/JSON/structure/prefix/time/counts. Complete V4 records are exported only as exact<=16MiB separate bytes after all checks, no LF; envelope+raw ref remain in disposition. Incomplete export cannot return complete accepted readout.",
+    "Even decoded bodies remain unvalidated mathematical data and failure UNKNOWN/0qualified/countsNone. No admission/primitive/child/restoration/proof/cause/gain follows from this wire."
+  ],
+  "schema": "ROOT-milestone-lossless-wire-Source-contract-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-milestone-lossless-wire-Source",
+  "source": {
+    "bytes": 36501,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+    "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+  },
+  "source_delta": {
+    "bytes": 30633,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-delta-v4.json",
+    "sha256": "357dd3c1265c1b8c19a3eabd8148cbb06d773d4e3c528c4c6825db88557f0253"
+  },
+  "source_only": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 52379,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+      "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+    },
+    "writer_replacement": {
+      "bytes": 36501,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+      "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+    }
+  },
+  "static_audit": {
+    "bytes": 1389,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/static-audit-v4.json",
+    "sha256": "2e78207e1974e9013b39b02d94d9dff9c3981a486db0f2b8bf522b0ba16d55e1"
+  },
+  "tests_executed": false,
+  "unchanged_authority": "Engine8/helper1685 observer/COW records, original17/input2 model, current future Root22/input10 rebind, all native20/55/512/once/source guards and failure4MiB+131072. ExistingV3 files and frozen actual30204 untouched; no runtime qualification inherited."
+}

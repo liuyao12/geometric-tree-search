@@ -1,0 +1,16 @@
+{
+  "actual_execution_authorized": false,
+  "full_reference_plan": {
+    "bytes": 22256,
+    "path": "/private/tmp/gcts-parallel-benchmark-plan-20261017/parallel-benchmark-plan-v1.json",
+    "sha256": "79cfb76ebd8c2c009019652bb2a6f0233ecadc7c2b4244171821758f4dd8fe14"
+  },
+  "priority": {
+    "bytes": 10643,
+    "path": "/private/tmp/gcts-parallel-benchmark-plan-20261017/benchmark-priority-v1.json",
+    "sha256": "5bd9b6e0b333e61ce05d3efb899dcf3e2a0a7bf6bedee701d56a09099596cbbe"
+  },
+  "schema": "GCTS-parallel-benchmark-plan-handoff-v2",
+  "scientific_calls": 0,
+  "source_only": true
+}

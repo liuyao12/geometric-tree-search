@@ -1,0 +1,63 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "all_reaped": true,
+  "component_record_complete": false,
+  "exclusive_failure_cause_established": false,
+  "files": [
+    {
+      "bytes": 26472,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "426e37a679c9642db3a8dcf18d35f53810671e377a2c483c0d389559c70386ea"
+    },
+    {
+      "bytes": 26563,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "6b4dca74f625d72d2e53564a802426ea85f98a0f4cbb6ab2344ba534ae77d156"
+    },
+    {
+      "bytes": 386,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-Date-bracket-v1.json",
+      "sha256": "aa18fbe25c79f47be1be90b39fb3f8b6fc0ea516808b701462c3e38281c22f56"
+    },
+    {
+      "bytes": 272,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/ONCE.json",
+      "sha256": "4e13c338c45c92d2b7872c0fb0aea067966178716ba4e5a7fffa0b7f91d4c8c5"
+    },
+    {
+      "bytes": 1592,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/native-terminal.json",
+      "sha256": "f0ead09d40cd71f4fd2662436fd9d42309daafcdc84326fe2e92bb5e15528ace"
+    },
+    {
+      "bytes": 489,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/observation.json",
+      "sha256": "66d43445d44e6a84f8ccfd066f0754fe67a77c5fd9d99ff40d18cb2ff9a2c39d"
+    },
+    {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "full_GCTS_accepted": false,
+  "interpretation": "No returned component evidence before external owned60 termination. No mathematical failure, searched-proof result, complete graph rollback or successful component count inferred.",
+  "logical_proof_accepted": false,
+  "native_launch_to_postprobe_ns": 59987595000,
+  "next": "Audit full transitive input availability and add bounded admission/graph phase diagnostics before any newly declared successor experiment; do not restart this unchanged invocation.",
+  "owned_child_exit_code": -9,
+  "owned_outer_timeout": true,
+  "owned_peak_bytes": 27623424,
+  "owned_terminal_elapsed_ns": 59949920000,
+  "qualified_component_checks": null,
+  "reported_component_status": null,
+  "restarted": false,
+  "schema": "ROOT-Hilbert-component-runtime-disposition-v1",
+  "source_only_repair": "V3 repaired V2 callable ABI; independent source pass confers no native/component completion.",
+  "status": "UNKNOWN_NO_COMPONENT_RECORD",
+  "stderr_empty": true,
+  "whole_ToolDate_seconds": 60.184,
+  "wrapper_exit_code": 2
+}

@@ -1,0 +1,40 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root",
+  "authorship_disclosure": "Own engine8/checker/point ancestry; distinct Root composition review, not self-review of engine8.",
+  "blockers": [],
+  "current_operative_contract": {
+    "bytes": 24238,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "46efcfe31565dd1c722a62f42267917dfcf2c0e55f6b1fa278368fdaa8ad6720"
+  },
+  "findings": {
+    "bytes": 2240,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/findings-v1.json",
+    "sha256": "e3f4edd2e304b05d6689ed0900e6e5660acbe7a853e254acd6de3d58aeb2e2e9"
+  },
+  "independent_static_audit": {
+    "bytes": 14822,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/independent-static-audit-v1.json",
+    "sha256": "5ba9f7e44f2a024d2ae438157788cce62956af96f9d8ef6123a157b8dd55d849"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "ROOT-receiver-inference-saved-reader-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-receiver-inference-saved-reader-Source",
+  "source": {
+    "bytes": 52406,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py",
+    "sha256": "2b23a8269e9116a4997d461342f5245e1d5bf372f972e638cd5b5b3f2fdd6b21"
+  },
+  "source_contract": {
+    "bytes": 1251,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "6b26971e127bc406d384ff6148bd6f7b1ce51c480b4c9086c697e82b34bef0e7"
+  },
+  "source_only": true,
+  "source_pass": true,
+  "source_review_passed": true
+}

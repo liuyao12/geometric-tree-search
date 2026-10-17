@@ -1,0 +1,61 @@
+{
+  "authorship_disclosure": "Reviewer owns4358 independent checker and arithmetic point/fibre/family-engine ancestry; reviewed adapterV3 and V4 diagnostic seams, not Controls current cold/helper/collector/consumer. Shared native/host/miner interfaces and own adapter peer overlap disclosed.",
+  "blockers": [
+    {
+      "basis": "API availability says missing/own unfinished prefixes return UNKNOWN; Root confirmed this required check cannot qualify if unfinished. This is a Source-reachable path, not an observed actual.",
+      "id": "HILBERT-COMPONENT-CHILD-UNKNOWN-1",
+      "lines": [
+        219,
+        230
+      ],
+      "problem": "A consumer own-work UNKNOWN at the actual control child is not gated before the child-kind split. For BRANCH, candidateNone passes and actual_branch_continuation_rechecked becomesTrue, so later restored/admin checks may complete and yield CHECKED_COMPONENT_CONTROLS despite the unfinished required child check. For nonbranch, the same honest UNKNOWN instead raises ValueError.",
+      "required_repair": "Before child-kind assertions, explicitly detect continued.statusUNKNOWN, roll back owned root and return finish UNKNOWN with an honest reason; preserve actual child evidence and all native/error/fixture/model/limit behavior. Do not interpret UNKNOWN as invalidation or checked continuation.",
+      "severity": "blocking required component control completion",
+      "source": {
+        "bytes": 18284,
+        "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_v1.py",
+        "sha256": "c6bde3b6f56f3af6eada270128aebdf55312aec4df27d17f918d28db02337e7c"
+      }
+    }
+  ],
+  "collector_current_verdict": {
+    "bytes": 1927,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-typed-Source-review-v2.json",
+    "sha256": "88d2a463a9d6db8a8a5de41a2ff38bec1d1f6cbf3d6c98b80d3d53357c8d7419"
+  },
+  "controls_source": {
+    "bytes": 18284,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_v1.py",
+    "sha256": "c6bde3b6f56f3af6eada270128aebdf55312aec4df27d17f918d28db02337e7c"
+  },
+  "no_actual_or_result_inputs_read": true,
+  "other_assessments": [
+    "Cold whole clock begins before setup imports/Source and input reads, admission and graph/control/output work; all guarded calls/final output remain under same20 and500MiB reserve with external512/55/60/90+1/once closure mandatory. No fit/OS ownership or current availability claimed.",
+    "Actual original co_filename/module.__file__ paths are used at compile, preserving native ROOT/source closure; all16 Source roles and one exact qualified context remain distinct from arithmetic original17. Full original Hilbert static admission is fresh, not dynamic or all-five qualification.",
+    "Original14 custody/native helpers are raw/AST exact to reviewed parent. New stdlib loaded-file provenance, currentSource/CodeSeal/strong defaults/cells/generated classes/exceptional invoke and final boundary guards remain. Same synchronous trusted-Source scope, no arbitrary hostile-frame guarantee.",
+    "Every control placement uses actual mandatory global decision and Executor.step. First canonical actual BRANCH member is explicitly an API fixture; its current native DAG is collected/mined and source/parent/current admissions are fresh. No donor/proof route, no authored claim of useful family discovery.",
+    "Censuses merge all actually exposed packets/collection/admission/consumer alternatives by full preimage. Hypothetical alternative unions are separate; open premises/family absence never become graph facts or pruning.",
+    "Ordering checks preferred first plus native complete_count/descriptor only, not whole stream/hash/EOF or full dynamic domain algebra qualification.",
+    "Administrative exclusion is a deliberately scoped public API invalidation/rollback control with child_exhaustion/search_pruning/negative theorem false. Owned hint/root semantic rollback is checked only on a returned record; metrics/revision/full cursor trajectory are outside that claim. On exceptions rollback is attempted; exit2 implies no completed restore or counts."
+  ],
+  "schema": "Hilbert-family-component-controls-peer-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 26891,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_cold_v1.py",
+    "sha256": "2b3eebc3bb8e4246df5a1c40ad3bf788ae73c050366992fbae09fdae877bf9f8"
+  },
+  "source_contract": {
+    "bytes": 16804,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/Source-contract-v1.json",
+    "sha256": "d9a390cb812201b6ddc27d54ad8e0d7430914e9429b1fad11bb5971f0840cfe4"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 12582,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v1.json",
+    "sha256": "757ac2b39d5df17e9e422c35236739c44e7f3359266d951f7fbc398400cddb54"
+  },
+  "verdict": "SOURCE_NEGATIVE"
+}

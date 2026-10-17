@@ -1,0 +1,509 @@
+{
+  "actual_call_site_categories": [
+    {
+      "Source_category": "FunctionType",
+      "delegate": "stdlib_gate",
+      "line": 362
+    },
+    {
+      "Source_category": "class",
+      "delegate": "context_checker.ClosedInputs",
+      "line": 363
+    },
+    {
+      "Source_category": "MethodType",
+      "delegate": "closed.json",
+      "line": 364
+    },
+    {
+      "Source_category": "FunctionType",
+      "delegate": "context_checker.admitted_context",
+      "line": 366
+    },
+    {
+      "Source_category": "FunctionType",
+      "delegate": "modules['dynamic_graph_adapter'].make_dynamic_graph_type",
+      "line": 370
+    },
+    {
+      "Source_category": "class",
+      "delegate": "graph_type",
+      "line": 373
+    },
+    {
+      "Source_category": "class",
+      "delegate": "context_checker.SelectedWire",
+      "line": 375
+    },
+    {
+      "Source_category": "MethodType",
+      "delegate": "wire.model_epoch",
+      "line": 376
+    },
+    {
+      "Source_category": "FunctionType",
+      "delegate": "modules['component_controls'].run_component_controls",
+      "line": 378
+    },
+    {
+      "Source_category": "MethodType",
+      "delegate": "closed.close",
+      "line": 388
+    },
+    {
+      "Source_category": "FunctionType",
+      "delegate": "stdlib_gate",
+      "line": 388
+    },
+    {
+      "Source_category": "FunctionType",
+      "delegate": "encode_result_transport",
+      "line": 397
+    },
+    {
+      "Source_category": "FunctionType",
+      "delegate": "canonical",
+      "line": 397
+    },
+    {
+      "Source_category": "FunctionType",
+      "delegate": "write_new",
+      "line": 399
+    },
+    {
+      "Source_category": "FunctionType",
+      "delegate": "write_new",
+      "line": 410
+    }
+  ],
+  "actual_patch_directions": {
+    "forward": {
+      "bytes": 5851,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/caller-v2-to-v3-forward.patch",
+      "sha256": "5aa806540e823900ad960323bd5f13551b63a85bf920c9a4db124701f3f2ccc3"
+    },
+    "inverse": {
+      "bytes": 5851,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/caller-v2-to-v3-inverse.patch",
+      "sha256": "f9f541463267db8684e3fc03f86104e7f5455b5cd727b6cfa54abc7e3416199c"
+    }
+  },
+  "added_named_regions": [
+    "main.call.actual_guard",
+    "main.call.thunk"
+  ],
+  "changed_named_regions": [
+    "main",
+    "main.call"
+  ],
+  "checks": [
+    {
+      "check": "exact pin source",
+      "passed": true
+    },
+    {
+      "check": "exact pin source_contract",
+      "passed": true
+    },
+    {
+      "check": "exact pin API",
+      "passed": true
+    },
+    {
+      "check": "exact pin delta",
+      "passed": true
+    },
+    {
+      "check": "exact pin controls_source",
+      "passed": true
+    },
+    {
+      "check": "exact pin controls_contract",
+      "passed": true
+    },
+    {
+      "check": "parent Source pin",
+      "passed": true
+    },
+    {
+      "check": "only4 edits",
+      "passed": true
+    },
+    {
+      "check": "unique old edit VERSION='ROOT-Hilbert-shared-family-comp",
+      "passed": true
+    },
+    {
+      "check": "unique old edit     def call(fn,args=(),kwargs=None):\n  ",
+      "passed": true
+    },
+    {
+      "check": "unique old edit     graph=call(graph_type,kwargs={'heade",
+      "passed": true
+    },
+    {
+      "check": "unique old edit contract['schema']=='ROOT-Hilbert-family",
+      "passed": true
+    },
+    {
+      "check": "whole raw forward",
+      "passed": true
+    },
+    {
+      "check": "unique new edit contract['schema']=='ROOT-Hilbert-family",
+      "passed": true
+    },
+    {
+      "check": "unique new edit     generated.append((graph_type,support",
+      "passed": true
+    },
+    {
+      "check": "unique new edit     def call(fn,args=(),kwargs=None):\n  ",
+      "passed": true
+    },
+    {
+      "check": "unique new edit VERSION='ROOT-Hilbert-shared-family-comp",
+      "passed": true
+    },
+    {
+      "check": "whole raw inverse",
+      "passed": true
+    },
+    {
+      "check": "whole AST inverse",
+      "passed": true
+    },
+    {
+      "check": "compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "inherited raw need",
+      "passed": true
+    },
+    {
+      "check": "inherited raw canonical",
+      "passed": true
+    },
+    {
+      "check": "inherited raw raw_pin",
+      "passed": true
+    },
+    {
+      "check": "inherited raw unique",
+      "passed": true
+    },
+    {
+      "check": "inherited raw reject_constant",
+      "passed": true
+    },
+    {
+      "check": "inherited raw finite_float",
+      "passed": true
+    },
+    {
+      "check": "inherited raw decode",
+      "passed": true
+    },
+    {
+      "check": "inherited raw read_pinned",
+      "passed": true
+    },
+    {
+      "check": "inherited raw write_new",
+      "passed": true
+    },
+    {
+      "check": "inherited raw anchor",
+      "passed": true
+    },
+    {
+      "check": "inherited raw same",
+      "passed": true
+    },
+    {
+      "check": "inherited raw invoke",
+      "passed": true
+    },
+    {
+      "check": "inherited raw cancel",
+      "passed": true
+    },
+    {
+      "check": "inherited raw all_function_anchors",
+      "passed": true
+    },
+    {
+      "check": "inherited raw all_function_anchors.retain",
+      "passed": true
+    },
+    {
+      "check": "inherited raw load_module",
+      "passed": true
+    },
+    {
+      "check": "inherited raw stdlib_gate",
+      "passed": true
+    },
+    {
+      "check": "inherited raw encode_result_transport",
+      "passed": true
+    },
+    {
+      "check": "inherited raw main.tick",
+      "passed": true
+    },
+    {
+      "check": "inherited raw main.guard",
+      "passed": true
+    },
+    {
+      "check": "inherited raw main.boundary",
+      "passed": true
+    },
+    {
+      "check": "onlymain/call existing changed",
+      "passed": true
+    },
+    {
+      "check": "onlynew guard/thunk defs",
+      "passed": true
+    },
+    {
+      "check": "forward patch pin",
+      "passed": true
+    },
+    {
+      "check": "actual forward patch zero",
+      "passed": true
+    },
+    {
+      "check": "actual forward cmp exact",
+      "passed": true
+    },
+    {
+      "check": "inverse patch pin",
+      "passed": true
+    },
+    {
+      "check": "actual inverse patch zero",
+      "passed": true
+    },
+    {
+      "check": "actual inverse cmp exact",
+      "passed": true
+    },
+    {
+      "check": "whole contract unchanged limits",
+      "passed": true
+    },
+    {
+      "check": "whole contract unchanged qualified_contexts",
+      "passed": true
+    },
+    {
+      "check": "whole contract unchanged original_semantic_authority",
+      "passed": true
+    },
+    {
+      "check": "whole contract unchanged resource_boundary",
+      "passed": true
+    },
+    {
+      "check": "whole contract unchanged human_heuristic_and_conformance_limits",
+      "passed": true
+    },
+    {
+      "check": "whole contract unchanged component_vs_dynamic",
+      "passed": true
+    },
+    {
+      "check": "whole contract unchanged stdlib_native_boundary",
+      "passed": true
+    },
+    {
+      "check": "whole contract unchanged controls_contract",
+      "passed": true
+    },
+    {
+      "check": "onlyintake source rebind",
+      "passed": true
+    },
+    {
+      "check": "FIXED same15 refs",
+      "passed": true
+    },
+    {
+      "check": "six native limits exact",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 362",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 363",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 364",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 366",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 370",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 373",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 375",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 376",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 378",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 388",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 388",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 397",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 397",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 399",
+      "passed": true
+    },
+    {
+      "check": "actual call site category 410",
+      "passed": true
+    },
+    {
+      "check": "complete call category list",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal type(fn)is types.FunctionType",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal type(fn)is types.MethodType",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal need(isinstance(fn,type)",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal fn.__self__ is not receiver",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal fn.__func__ is not actual_function",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal support.class_state(receiver_type)!=class_snapshot",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal effective=getattr(receiver,method_name)",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal support.class_state(actual_class)!=class_snapshot",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal support.class_state(metaclass)!=metaclass_snapshot",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal actual_guard_state=anchor_fn(actual_guard)",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal finally:",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal actual_guard_fn()",
+      "passed": true
+    },
+    {
+      "check": "dispatch/guard literal invoke_fn(thunk,(),{},boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)",
+      "passed": true
+    },
+    {
+      "check": "generated graph sealed beforeconstructor",
+      "passed": true
+    },
+    {
+      "check": "old invoke/anchor/same rawexact",
+      "passed": true
+    }
+  ],
+  "clock_calls": 0,
+  "delta": {
+    "bytes": 6231,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/Source-delta-v3.json",
+    "sha256": "c3821a9c20ea4d2a7cf6d00cc0bda2260ea7e61485770a0fcf22a87d704ba45d"
+  },
+  "module_evaluations": 0,
+  "parent": {
+    "bytes": 26908,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_cold_v2.py",
+    "sha256": "e790186dd224ff498e758d8bb9eb83dfb641741b61e0d457b47a0c8687797d13"
+  },
+  "schema": "Hilbert-component-controls-independent-Source-audit-v3",
+  "scientific_calls": 0,
+  "scope": "Whole retained current cold/API/contract and repaired callable boundaries. Source/AST/compile-without-evaluation and actual text patches only.",
+  "source": {
+    "bytes": 30049,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/hilbert_family_component_controls_cold_v3.py",
+    "sha256": "6366bd89a113795dd2a1e59b570f50308ad73cd8703b5542d076bcfe19cc2d8a"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "all_function_anchors.retain",
+    "load_module",
+    "stdlib_gate",
+    "encode_result_transport",
+    "main.tick",
+    "main.guard",
+    "main.boundary"
+  ]
+}

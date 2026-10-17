@@ -1,0 +1,92 @@
+{
+  "GCTS_advantage": false,
+  "RL": false,
+  "arithmetic": {
+    "disposition": {
+      "bytes": 16580,
+      "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "7648312296dca5b106d9f6cf17665fbdc62d6d2ebc6b1dd42f079314d858c753"
+    },
+    "full_receiver": false,
+    "independent_data_peer": {
+      "bytes": 1998,
+      "path": "/private/tmp/gcts-lossless-first-admission-data-peer-20261017/typed-data-review-v1.json",
+      "sha256": "3aa50170ef7eaffbfd9e887978aed86c4d46be67a80fd2d53794d85bfe5168ae"
+    },
+    "mathematical_acceptance": false,
+    "native_launch_to_postprobe_ns": 20341815000,
+    "peak_bytes": 88408064,
+    "serialization": {
+      "captured_headers": [
+        {
+          "native_ns": 609108006030000,
+          "ordinal": 1,
+          "stage": "FIRST_ROOT_FAMILY_PLAN_READY"
+        },
+        {
+          "native_ns": 609108067192000,
+          "ordinal": 2,
+          "stage": "FIRST_ROOT_FAMILY_EVENT_READY"
+        },
+        {
+          "native_ns": 609108315397000,
+          "ordinal": 3,
+          "stage": "FIRST_ROOT_PRIMITIVE_PLACED"
+        },
+        null
+      ],
+      "captured_record_count": 3,
+      "encoded_candidate_prefix_count": 0,
+      "encoded_envelope_bytes": 342,
+      "engine_journal_bytes": 21,
+      "engine_record_prefix_reason": "OWN_PRIMITIVE_SERIALIZATION_LIMIT",
+      "expanded_candidate_bytes": 21,
+      "next_omitted_ordinal": 1,
+      "omitted_record_count": 3,
+      "serialization_omission": {
+        "code": "NODE_LIMIT",
+        "limit": 200000,
+        "observed": 200001,
+        "phase": "BUILTIN_SERIALIZATION",
+        "record_ordinal": 1
+      },
+      "serialized_record_count": 0,
+      "wire_omission": null
+    },
+    "status": "UNKNOWN"
+  },
+  "geometry_component": {
+    "component_checks_accepted": false,
+    "component_record_complete": false,
+    "disposition": {
+      "bytes": 2727,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "326f9a0b431129a5ba028c1df9d68cdd76c7c1e60531dd6371082333b23fb36b"
+    },
+    "source_correction": {
+      "bytes": 2375,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/Source-review-correction-v2-callable-ABI-v1.json",
+      "sha256": "2669b1e4535446dee174eb049e42bee84dbcec3b3352acc903b72892ad730081"
+    },
+    "status": "UNKNOWN_INFRASTRUCTURE"
+  },
+  "geometry_component_successor": {
+    "component_record_complete": false,
+    "disposition": {
+      "bytes": 2930,
+      "path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "99a5cfc8ed6d8a9828151fbf164d1d3501b0ac998e9666b513617e6afd4abf29"
+    },
+    "exclusive_failure_cause_established": false,
+    "native_launch_to_postprobe_ns": 59987595000,
+    "owned_child_exit_code": -9,
+    "qualified_component_checks": null,
+    "status": "UNKNOWN_NO_COMPONENT_RECORD",
+    "wrapper_exit_code": 2
+  },
+  "matched_comparison_status": "No actual. A duplicate full source/input guard in the native inner loop was identified before execution; minimal Source successor and saved readout/metadata integration remain pending.",
+  "new_theorem": false,
+  "previous_V3_omission_cause_established": false,
+  "schema": "GCTS-recording-limit-and-component-status-v1",
+  "scientific_replay": false
+}

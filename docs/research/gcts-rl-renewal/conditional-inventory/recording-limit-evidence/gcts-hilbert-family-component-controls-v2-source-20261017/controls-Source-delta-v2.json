@@ -1,0 +1,53 @@
+{
+  "actual_patch_F0_directions": 2,
+  "full_raw_AST_inverse": true,
+  "inherited_regions": {
+    "changed": [
+      "run_component_controls"
+    ],
+    "raw_AST_exact": [
+      "need",
+      "canonical"
+    ]
+  },
+  "parent_addition_delta": {
+    "bytes": 19628,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/controls-Source-delta-v1.json",
+    "sha256": "4acf24a644862b7cf3a2ed1c81bfedb842eeb4194f742d1303a84d699717ba3a"
+  },
+  "parent_source": {
+    "bytes": 18284,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_v1.py",
+    "sha256": "c6bde3b6f56f3af6eada270128aebdf55312aec4df27d17f918d28db02337e7c"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 1078,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/controls-v1-to-v2-forward.patch",
+      "sha256": "e99dca79072c9388ff8a8fcf886d3d8b2ac30c19e68a4a127fc9ea54ce669728"
+    },
+    "inverse": {
+      "bytes": 1078,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/controls-v1-to-v2-inverse.patch",
+      "sha256": "3ba533f3c0e42b21774dbcdb75d76fcc640125e3bb7a0f7f89766fc6d138d729"
+    }
+  },
+  "prior_frozen_Source_modified": false,
+  "raw_edits": [
+    {
+      "after": "VERSION = 'hilbert-shared-family-native-component-controls-v2-child-unknown'",
+      "before": "VERSION = 'hilbert-shared-family-native-component-controls-v1'"
+    },
+    {
+      "after": "        continued=consume([],hint_checkpoint,child);evidence['child_continuation']=continued\n        if continued['status']=='UNKNOWN':\n            graph.rollback(root_checkpoint)\n            return finish('UNKNOWN','ACTUAL_CHILD_CONTINUATION_CHECK_UNFINISHED')\n",
+      "before": "        continued=consume([],hint_checkpoint,child);evidence['child_continuation']=continued\n"
+    }
+  ],
+  "schema": "Hilbert-component-controls-controls-immediate-delta-v2",
+  "source": {
+    "bytes": 18467,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py",
+    "sha256": "1de9e74e177ad52bf085e4d37ddd7de7a0a7d3c47e9c3d37ef3cf33a9ff4fdcf"
+  },
+  "source_only": true
+}

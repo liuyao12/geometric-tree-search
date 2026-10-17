@@ -1,0 +1,32 @@
+{
+  "actual_execution_authorized": false,
+  "collector_findings": {
+    "bytes": 2694,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-findings-v2.json",
+    "sha256": "f80e49aa27b1f1d1548fb226fd82e1a756eb07c8ea3ecb3a183eec5d1d8af1a5"
+  },
+  "collector_review": {
+    "bytes": 1927,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-typed-Source-review-v2.json",
+    "sha256": "88d2a463a9d6db8a8a5de41a2ff38bec1d1f6cbf3d6c98b80d3d53357c8d7419"
+  },
+  "component_findings": {
+    "bytes": 5137,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/findings-v1.json",
+    "sha256": "9c039884843f6b74a9e22dd7087e6522a49fc1ef8c0b7a72d040e5994d616c1d"
+  },
+  "component_review": {
+    "bytes": 6424,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "621028615707736367adeca3e5e45fc0a338a9eb78e117a42e9e235dc74f9f62"
+  },
+  "schema": "Hilbert-component-controls-peer-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "static_audit": {
+    "bytes": 12582,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v1.json",
+    "sha256": "757ac2b39d5df17e9e422c35236739c44e7f3359266d951f7fbc398400cddb54"
+  }
+}

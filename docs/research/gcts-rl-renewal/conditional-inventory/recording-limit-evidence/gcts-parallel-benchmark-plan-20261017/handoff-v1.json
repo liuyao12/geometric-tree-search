@@ -1,0 +1,15 @@
+{
+  "actual_execution_authorized": false,
+  "clock_calls": 0,
+  "module_evaluations": 0,
+  "new_actuals": 0,
+  "plan": {
+    "bytes": 22256,
+    "path": "/private/tmp/gcts-parallel-benchmark-plan-20261017/parallel-benchmark-plan-v1.json",
+    "sha256": "79cfb76ebd8c2c009019652bb2a6f0233ecadc7c2b4244171821758f4dd8fe14"
+  },
+  "schema": "GCTS-parallel-benchmark-plan-handoff-v1",
+  "scientific_calls": 0,
+  "scope": "Small prospective benchmark plan; no Source/declared-context/grant/publication changes.",
+  "source_only": true
+}

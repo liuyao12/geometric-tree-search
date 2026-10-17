@@ -1,0 +1,41 @@
+{
+  "Source_pass": true,
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "Own checker/shared adapter-peer/arithmetic ancestry; not collector author. Full findings disclosure.",
+  "findings": {
+    "bytes": 2694,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-findings-v2.json",
+    "sha256": "f80e49aa27b1f1d1548fb226fd82e1a756eb07c8ea3ecb3a183eec5d1d8af1a5"
+  },
+  "review_kind": "whole current collector/native interface plus thin raw/AST/actualpatch review",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "Hilbert-shared-family-selected-collector-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Hilbert-shared-family-selected-collector-Source",
+  "source": {
+    "bytes": 21800,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/hilbert_shared_family_selected_dag_collector_v2.py",
+    "sha256": "7160d774e3026fadf4ad959931ad0847028ad47308a57c2ac5480a3f39bf260a"
+  },
+  "source_contract": {
+    "bytes": 6864,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/Source-contract-v2.json",
+    "sha256": "47691bcdac3076267f10217dc9eaef0ca2902b3d9df745025d139070cf698711"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "hilbert_selected_collector": {
+      "bytes": 21800,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/hilbert_shared_family_selected_dag_collector_v2.py",
+      "sha256": "7160d774e3026fadf4ad959931ad0847028ad47308a57c2ac5480a3f39bf260a"
+    }
+  },
+  "static_audit": {
+    "bytes": 12582,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v1.json",
+    "sha256": "757ac2b39d5df17e9e422c35236739c44e7f3359266d951f7fbc398400cddb54"
+  }
+}

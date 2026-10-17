@@ -1,0 +1,47 @@
+{
+  "actual_or_result_reads": false,
+  "all_four_real_patch_F0_directions": true,
+  "clock_calls": 0,
+  "codec_functions_evaluated": false,
+  "compile_without_evaluation": true,
+  "generated_functions_evaluated": false,
+  "new_writer_branch_has_no_exception_handlers": true,
+  "one_compress_and_one_b64_call_site": true,
+  "py_compile_used": false,
+  "raw_regions": {
+    "reader": 11,
+    "writer": 3
+  },
+  "reader_main_new_export_kw_erasure_restores_parent_AST": true,
+  "retained_named_regions": {
+    "reader": [
+      "need",
+      "canonical",
+      "unique",
+      "decode",
+      "raw_pin",
+      "read",
+      "pinned",
+      "write",
+      "read_phases",
+      "validate_positive_callback_phases",
+      "validate_engine_milestones"
+    ],
+    "writer": [
+      "save_failure_diagnostic.failure_gate",
+      "save_failure_diagnostic.encoded",
+      "save_failure_diagnostic.encoded.append",
+      "save_failure_diagnostic.encoded.visit",
+      "save_failure_diagnostic.write"
+    ]
+  },
+  "schema": "ROOT-milestone-lossless-wire-static-audit-v4",
+  "scientific_calls": 0,
+  "source_delta": {
+    "bytes": 30633,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-delta-v4.json",
+    "sha256": "357dd3c1265c1b8c19a3eabd8148cbb06d773d4e3c528c4c6825db88557f0253"
+  },
+  "tests_executed": false,
+  "writer_complete_V4_erasure_restores_parent_AST": true
+}

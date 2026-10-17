@@ -1,0 +1,300 @@
+{
+  "API": {
+    "bytes": 6254,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/API-wire-v3.json",
+    "sha256": "277a2638431cfc0765c9aefd099c75b80af58f282f7c8324b1fe9e9adc34da5b"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "reviewer_identity": "Root /root review plus a distinct nonauthor/nonRoot peer, disclose shared dependencies",
+    "schema": "ROOT-Hilbert-family-component-controls-cold-typed-Source-review-v3",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-Hilbert-shared-family-component-controls-cold-Source",
+    "source": {
+      "bytes": 30049,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/hilbert_family_component_controls_cold_v3.py",
+      "sha256": "6366bd89a113795dd2a1e59b570f50308ad73cd8703b5542d076bcfe19cc2d8a"
+    },
+    "source_contract": "EXACT_CURRENT_CONTRACT_PIN",
+    "source_only": true,
+    "source_review_passed": "bool",
+    "sources": {
+      "clean_support": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "collector": {
+        "bytes": 21800,
+        "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/hilbert_shared_family_selected_dag_collector_v2.py",
+        "sha256": "7160d774e3026fadf4ad959931ad0847028ad47308a57c2ac5480a3f39bf260a"
+      },
+      "compact_decoder": {
+        "bytes": 14720,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+        "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293"
+      },
+      "compact_graph": {
+        "bytes": 42946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+        "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+      },
+      "component_controls": {
+        "bytes": 18467,
+        "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py",
+        "sha256": "1de9e74e177ad52bf085e4d37ddd7de7a0a7d3c47e9c3d37ef3cf33a9ff4fdcf"
+      },
+      "consumer": {
+        "bytes": 19341,
+        "path": "/private/tmp/gcts-hilbert-shared-family-consumer-source-20261017/hilbert_shared_family_preference_consumer_v1.py",
+        "sha256": "7819736573d25c4937a82afdee2e2c8b7187039c15606eb3fe37d1715bdf0c74"
+      },
+      "context_checker": {
+        "bytes": 64540,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+        "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+      },
+      "dynamic_graph_adapter": {
+        "bytes": 35568,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+        "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+      },
+      "dynamic_lifecycle_adapter": {
+        "bytes": 29230,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+        "sha256": "677c48c7aebfecf0c83c8daa8bf8e873d0be1e415906afa6687f0b9652e33719"
+      },
+      "expansion_checker": {
+        "bytes": 56670,
+        "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_checker.py",
+        "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+      },
+      "host_adapter": {
+        "bytes": 31330,
+        "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v3-source-20261017/hilbert_shared_family_admission_adapter_v3.py",
+        "sha256": "cb20ac2b95a8c84b3c0230065dd13c9fa1b1f9945e329f5ecbfa2bd38d674296"
+      },
+      "intake": {
+        "bytes": 30049,
+        "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/hilbert_family_component_controls_cold_v3.py",
+        "sha256": "6366bd89a113795dd2a1e59b570f50308ad73cd8703b5542d076bcfe19cc2d8a"
+      },
+      "logical_oracle": {
+        "bytes": 24588,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+        "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+      },
+      "miner": {
+        "bytes": 37218,
+        "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+        "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+      },
+      "point_core": {
+        "bytes": 31300,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+        "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+      },
+      "producer": {
+        "bytes": 51898,
+        "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_expander.py",
+        "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "author": "/root/hilbert_advice_controls",
+  "authorship_overlap": "Controls authored current Hilbert adapter/collector/consumer and prior guard instrumentation; this is not their independent review. Native/context/checker/miner and Root execution ownership remain distinct. Root arranges distinct whole Source review before any once actual.",
+  "clock_calls": 0,
+  "collector_current_contract": {
+    "bytes": 6864,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/Source-contract-v2.json",
+    "sha256": "47691bcdac3076267f10217dc9eaef0ca2902b3d9df745025d139070cf698711"
+  },
+  "collector_current_peer": "Exact current collectorV2 peer is bound above; no runtime qualification. Current caller/helper distinct review still required before actual.",
+  "component_peers": {
+    "adapter_v3": {
+      "bytes": 2401,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "6fa501b0fb29fef400002781a4c3f4973ce2ab66b7a434ce0a998b7d1a51b82c"
+    },
+    "collector_parent_v1_historical": {
+      "bytes": 2763,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "b90349d287794220f51bcc05ec67d26c2ffc9dc0de66e0023809ffe51510dd1f"
+    },
+    "collector_v2": {
+      "bytes": 1927,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-typed-Source-review-v2.json",
+      "sha256": "88d2a463a9d6db8a8a5de41a2ff38bec1d1f6cbf3d6c98b80d3d53357c8d7419"
+    },
+    "consumer_v1": {
+      "bytes": 2486,
+      "path": "/private/tmp/gcts-hilbert-shared-family-consumer-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "4a67be2f7f60a0d9b819f67c770ebb84ba11176b3e344a9490478ff1b10eae1f"
+    }
+  },
+  "component_vs_dynamic": "A complete current record can establish only its literal component checks after external resource closure. No production dynamic qualification, full stream hash, all-five coverage, complete-GCTS, new theorem, trajectory, learned pruning, RL, gain or runtime claim is inherited. A nonbranch invalidation may be unavailable; actual child kind is retained.",
+  "controls_contract": {
+    "bytes": 7781,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/controls-Source-contract-v2.json",
+    "sha256": "96c9d86e76eb9165d95f1aa4624db28604a790c850b85caafca5387b7528ebae"
+  },
+  "controls_delta": {
+    "bytes": 2230,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/controls-Source-delta-v2.json",
+    "sha256": "ce83efcfeab9d1af77a4348742a5842bc7327bba66a5b2a1be14ef1494d40502"
+  },
+  "correction": "Guarded classes/bound methods now use a Python thunk inside unchanged invoke exceptional/final boundary. Actual class/MRO/metaclass or method/receiver/function/effective lookup snapshots remain exact; plain function path unchanged. No scientific helper/model/caps/wire change.",
+  "delta": {
+    "bytes": 6231,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/Source-delta-v3.json",
+    "sha256": "c3821a9c20ea4d2a7cf6d00cc0bda2260ea7e61485770a0fcf22a87d704ba45d"
+  },
+  "human_heuristic_and_conformance_limits": [
+    "The fixture uses first canonical member of first actual global BRANCH after at most24 real forced moves. This is a deliberately human-declared API control allocation, not automatic discovery or a learned route.",
+    "Miner bounded8 literal/optional proposals and first literal containing the actual control member are control-fixture selection, not evidence of useful reusable inventory.",
+    "Only native semantic state/hint ownership is restored. Metrics may change; no full object, whole engine/cursor checkpoint qualification claimed.",
+    "Public complete ordered_domain contract retained with exact count/first-key checks, but full domain enumeration/EOF equality and production scheduler trajectories remain separate future controls.",
+    "Administrative exclusion tests invalidation/rollback; child exhaustion/proof/search pruning are explicitly false.",
+    "No Source peer or compile-only audit confers runtime/geometry qualification."
+  ],
+  "integration_and_actual_owner": "/root",
+  "limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "module_evaluations": 0,
+  "original_semantic_authority": "The exact original Hilbert qualified-context/native whole catalogue and source bindings determine the model epoch; full24 required roots/exterior/target/seed marks, native five rules and indexed ordered Gamma remain unchanged. Static qualification is authenticated afresh, never relabelled dynamic/all-five acceptance. Arithmetic original17/input2 is an unrelated epoch.",
+  "parent_contract": {
+    "bytes": 17848,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/Source-contract-v2.json",
+    "sha256": "68bf893485ae73e299939eef4f9c04a22b7f9205bb25e4aa8495ae422b406a28"
+  },
+  "parent_current_peer": {
+    "bytes": 6799,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "8df73e91b09b91cef49e2058278cf2db242b011cf057921679f98d860b2d870e"
+  },
+  "preserved_negative": {
+    "bytes": 6424,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "621028615707736367adeca3e5e45fc0a338a9eb78e117a42e9e235dc74f9f62"
+  },
+  "prior_attempt_disclosure": "Root reported one V2 native attempt terminal exit2 before any component record due anchor refusing a class. Source author did not inspect actual files or replay it. It conveys no component success/failure or restoration result; V2 bytes and its peer remain preserved. New actual requires separate Root choice/grant.",
+  "qualified_contexts": {
+    "fresh-inc-point-chain-w": {
+      "bytes": 10586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+      "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+    },
+    "fresh-inc-reversed-line-chain": {
+      "bytes": 10652,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+      "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef"
+    }
+  },
+  "resource_boundary": "One cold native20 from EARLY_G before setup/imports, leaf500MiB reserve under external512MiB limit; existing failure55/owned60/caller90+1. Root external once/meter2 native terminal closure, reaping/Date and final observed peak remain mandatory separate checks. This Source packet grants nothing and predicts no fit.",
+  "schema": "ROOT-Hilbert-family-component-controls-Source-contract-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-Hilbert-shared-family-component-controls-cold-Source",
+  "source": {
+    "bytes": 30049,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/hilbert_family_component_controls_cold_v3.py",
+    "sha256": "6366bd89a113795dd2a1e59b570f50308ad73cd8703b5542d076bcfe19cc2d8a"
+  },
+  "source_only": true,
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "collector": {
+      "bytes": 21800,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/hilbert_shared_family_selected_dag_collector_v2.py",
+      "sha256": "7160d774e3026fadf4ad959931ad0847028ad47308a57c2ac5480a3f39bf260a"
+    },
+    "compact_decoder": {
+      "bytes": 14720,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293"
+    },
+    "compact_graph": {
+      "bytes": 42946,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+    },
+    "component_controls": {
+      "bytes": 18467,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py",
+      "sha256": "1de9e74e177ad52bf085e4d37ddd7de7a0a7d3c47e9c3d37ef3cf33a9ff4fdcf"
+    },
+    "consumer": {
+      "bytes": 19341,
+      "path": "/private/tmp/gcts-hilbert-shared-family-consumer-source-20261017/hilbert_shared_family_preference_consumer_v1.py",
+      "sha256": "7819736573d25c4937a82afdee2e2c8b7187039c15606eb3fe37d1715bdf0c74"
+    },
+    "context_checker": {
+      "bytes": 64540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    "dynamic_graph_adapter": {
+      "bytes": 35568,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    "dynamic_lifecycle_adapter": {
+      "bytes": 29230,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "sha256": "677c48c7aebfecf0c83c8daa8bf8e873d0be1e415906afa6687f0b9652e33719"
+    },
+    "expansion_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_checker.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "host_adapter": {
+      "bytes": 31330,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v3-source-20261017/hilbert_shared_family_admission_adapter_v3.py",
+      "sha256": "cb20ac2b95a8c84b3c0230065dd13c9fa1b1f9945e329f5ecbfa2bd38d674296"
+    },
+    "intake": {
+      "bytes": 30049,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/hilbert_family_component_controls_cold_v3.py",
+      "sha256": "6366bd89a113795dd2a1e59b570f50308ad73cd8703b5542d076bcfe19cc2d8a"
+    },
+    "logical_oracle": {
+      "bytes": 24588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    "miner": {
+      "bytes": 37218,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+    },
+    "point_core": {
+      "bytes": 31300,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    "producer": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_expander.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    }
+  },
+  "static_audit": {
+    "bytes": 2762,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/static-audit-v3.json",
+    "sha256": "af730ad05965d1e274c173541fd7c9cd13ef615eaaef3421d8cd5734a01e35f3"
+  },
+  "stdlib_native_boundary": "Full actual interpreter and every loaded file-backed stdlib module raw pin; no cached/unpinned scientific import. Existing CodeSeal/invoke/strong code/default/cell guards, native clock/resource/exit checks and generated native class MRO captures. This is pinned synchronous execution, not hostile VM protection."
+}

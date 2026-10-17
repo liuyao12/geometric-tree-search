@@ -1,0 +1,30 @@
+{
+  "actuals_launched": 0,
+  "audit": {
+    "bytes": 8532,
+    "path": "/private/tmp/gcts-lossless-first-admission-data-peer-20261017/saved-data-audit-v1.json",
+    "sha256": "7e8448bc9aec26a8c3103ca467af8fb19aac5d58001611aedab722f7dbe08021"
+  },
+  "authorship_disclosure": "Reviewer authored engine8 and prior V4/Root Source peers. This is distinct saved-metadata concordance only, not independent scientific rechecking of own engine or a new actual.",
+  "blockers": [],
+  "codec_calls": 0,
+  "disposition": {
+    "bytes": 16580,
+    "path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+    "sha256": "7648312296dca5b106d9f6cf17665fbdc62d6d2ebc6b1dd42f079314d858c753"
+  },
+  "findings": [
+    "Exact current plan/grant/reviews/once/native terminal/Date and complete diagnostic twofile/header/count joins agree. Current native20 positive gate failed; failure55 closure and memory/native reaping agree.",
+    "Only three raw captured stage headers are available, with no raw record admitted. Firstrecord serialization explicitly exceeded own node200000 cap at200001; wire omission is null. This is a writer omission observation, not the engine failure cause.",
+    "Separate saved artifact is exact21-byte noLF null4 and joins envelope expanded length/hash. Codec transformation was not rerun; compressed hash is retained literal metadata under separately reviewed and Root-run strict reader.",
+    "Provider READY1 is unvalidated scalar data. No full offer, candidate, selected key, current state, accepted placement/child/restore or proof inference is licensed; no earlierV3 cause inference or performance extrapolation."
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "saved_data_only": true,
+  "saved_metadata_review_passed": true,
+  "schema": "lossless-first-admission-independent-saved-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replay": false,
+  "status": "UNKNOWN"
+}

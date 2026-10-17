@@ -1,0 +1,50 @@
+{
+  "Source_pass": true,
+  "actual_execution_authorized": false,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Own engine8 and prior seam/checker/point ancestry; distinct current writer/readout author. Full findings disclosure.",
+  "clock_calls": 0,
+  "codec_evaluations": 0,
+  "findings": {
+    "bytes": 4378,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/findings-v4.json",
+    "sha256": "61f7cc41264991312c0aff3aca665b17f5408113ae74c6e6f951e3f38428cad2"
+  },
+  "module_evaluations": 0,
+  "review_kind": "genuine whole current writer/readout/API/contract plus complete parent raw/AST/actualpatch review",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "ROOT-milestone-lossless-wire-typed-Source-review-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-milestone-lossless-wire-Source",
+  "source": {
+    "bytes": 36501,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+    "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+  },
+  "source_contract": {
+    "bytes": 7708,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-contract-v4.json",
+    "sha256": "a8a7693daf481aff731fcf4e411c4b296cfba2eab0ca9a4aff2cd35c30f20930"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 52379,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+      "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+    },
+    "writer_replacement": {
+      "bytes": 36501,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+      "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+    }
+  },
+  "static_audit": {
+    "bytes": 10343,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/independent-static-audit-v4.json",
+    "sha256": "c283008125e7f77d90b79427ecc5760e17a73d612a104154261fb2c2e8f6492a"
+  }
+}

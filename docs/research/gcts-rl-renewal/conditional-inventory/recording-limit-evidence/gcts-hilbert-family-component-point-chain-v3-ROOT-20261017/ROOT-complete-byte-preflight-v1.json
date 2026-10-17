@@ -1,0 +1,619 @@
+{
+  "bytes": 4897163,
+  "files": [
+    {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 21800,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/hilbert_shared_family_selected_dag_collector_v2.py",
+      "sha256": "7160d774e3026fadf4ad959931ad0847028ad47308a57c2ac5480a3f39bf260a"
+    },
+    {
+      "bytes": 14720,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293"
+    },
+    {
+      "bytes": 42946,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6"
+    },
+    {
+      "bytes": 18467,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py",
+      "sha256": "1de9e74e177ad52bf085e4d37ddd7de7a0a7d3c47e9c3d37ef3cf33a9ff4fdcf"
+    },
+    {
+      "bytes": 19341,
+      "path": "/private/tmp/gcts-hilbert-shared-family-consumer-source-20261017/hilbert_shared_family_preference_consumer_v1.py",
+      "sha256": "7819736573d25c4937a82afdee2e2c8b7187039c15606eb3fe37d1715bdf0c74"
+    },
+    {
+      "bytes": 64540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    {
+      "bytes": 35568,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    {
+      "bytes": 29230,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "sha256": "677c48c7aebfecf0c83c8daa8bf8e873d0be1e415906afa6687f0b9652e33719"
+    },
+    {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_checker.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    {
+      "bytes": 31330,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v3-source-20261017/hilbert_shared_family_admission_adapter_v3.py",
+      "sha256": "cb20ac2b95a8c84b3c0230065dd13c9fa1b1f9945e329f5ecbfa2bd38d674296"
+    },
+    {
+      "bytes": 30049,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/hilbert_family_component_controls_cold_v3.py",
+      "sha256": "6366bd89a113795dd2a1e59b570f50308ad73cd8703b5542d076bcfe19cc2d8a"
+    },
+    {
+      "bytes": 24588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    {
+      "bytes": 37218,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+    },
+    {
+      "bytes": 31300,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_expander.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    {
+      "bytes": 18436,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/Source-contract-v3.json",
+      "sha256": "e5cb592d7e71da394043a5868c92ca5de36e254152d3e1ce57254d31be582a6d"
+    },
+    {
+      "bytes": 1927,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-typed-Source-review-v2.json",
+      "sha256": "88d2a463a9d6db8a8a5de41a2ff38bec1d1f6cbf3d6c98b80d3d53357c8d7419"
+    },
+    {
+      "bytes": 2541,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/findings-v3.json",
+      "sha256": "d9ef979d95458190955c8d2f09c187e1f26c7a3449d10b69d795927572f714b5"
+    },
+    {
+      "bytes": 2375,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/Source-review-correction-v2-callable-ABI-v1.json",
+      "sha256": "2669b1e4535446dee174eb049e42bee84dbcec3b3352acc903b72892ad730081"
+    },
+    {
+      "bytes": 2494,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/helper-typed-Source-review-v2.json",
+      "sha256": "8cb6f2570248091fd7fc896dffb02a70c833c4f3c3c44c57d614d4061d2a28f1"
+    },
+    {
+      "bytes": 11858,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v3.json",
+      "sha256": "894339f8d166677b05804917ebe88196ceed4d90ac78772fcd42412a19111a04"
+    },
+    {
+      "bytes": 10586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+      "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+    },
+    {
+      "bytes": 10822,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+      "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561"
+    },
+    {
+      "bytes": 43532,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+      "sha256": "b60869d015f5f60caa726864595a6293a4566ffdf04403c2499ade76987ef831"
+    },
+    {
+      "bytes": 8002,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-ROOT-source-20261013/ROOT-worker-SOURCE-review-v1.json",
+      "sha256": "d96193b03ce50bd743670618aae32c0b55cb7308c9dd676dfb832c150036ee41"
+    },
+    {
+      "bytes": 6730,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-first-proof-worker-source-review-v2.json",
+      "sha256": "356addcead5a5f8375573f325748760da93355cf099992896583e04e657cf748"
+    },
+    {
+      "bytes": 2860,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "sha256": "5c57b5852120307a152a9cb4f594f22f431a316a7ce2346971aaf1d538fefdcd"
+    },
+    {
+      "bytes": 9388,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "sha256": "293946e9cb0129ead69d73816061fc5a56fea045364cd3d5c4350b233e8b5373"
+    },
+    {
+      "bytes": 245655,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "sha256": "338ce0a39c04afaa2be59571866dcbc4e43f84d5226db678ee9931be5f75aadf"
+    },
+    {
+      "bytes": 30699,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-worker-plan-v1.json",
+      "sha256": "33924efad6c115d9a65736fbff5b190a732c454e6039e0712f9113d681472735"
+    },
+    {
+      "bytes": 31035,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/audit-result-v1.json",
+      "sha256": "c8440f2d274ce1199cd320ec13dfd5a2211cd2a11e6bad25de1b572f445ccc62"
+    },
+    {
+      "bytes": 2897,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "sha256": "4b9d5f6357a63ab2754fa05ba6762212bc4f615b7e5ac0c77f8a15622853274b"
+    },
+    {
+      "bytes": 10169,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "sha256": "53fe3bae5701581e333963cf22b10f926cc83254209af861a442e6301242dab0"
+    },
+    {
+      "bytes": 21921,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-worker-plan-v1.json",
+      "sha256": "d63cead0136e63b245e3df569d160942df77a2c9cbb03498d3c8ac61c6091ef2"
+    },
+    {
+      "bytes": 23400,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/preparation-result-v1.json",
+      "sha256": "bc7ef755c138fbfe2e2d4501473b82563427e69379381d83f21bcbfb5784531d"
+    },
+    {
+      "bytes": 15171,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+      "sha256": "db4dc3b904715be3123ed1a9b22eb1ce9144c35aa00c610da94f13263e4334e8"
+    },
+    {
+      "bytes": 7441,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+      "sha256": "1b9d6b94c78f363ba20f48234dc1eb48ac9dcfa548e8f0fa1a7350699b059b34"
+    },
+    {
+      "bytes": 14799,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_grammar_v1.py",
+      "sha256": "34322db5dc25cd3e0cc1dfa43f379f9f45107442c4f035d955b39f1e21b31db1"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 47959,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_audit_worker_v1.py",
+      "sha256": "7b25d902b69398d5d71c450ee9e63021df6d3b4e967b4c47b7d6e6b563d55fe6"
+    },
+    {
+      "bytes": 20787,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "sha256": "d638f7152ec7fa8293adbd8915b79de60f95d0756952bdc6bf0e40b15f549ca0"
+    },
+    {
+      "bytes": 46112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_compiler_v1.py",
+      "sha256": "57653bb27eaf3c4dd1e050c70ac360133f78e1f636cd1276a39a20fd64610a56"
+    },
+    {
+      "bytes": 31893,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_prepare_worker_v1.py",
+      "sha256": "cc1f05b4b18e4f570b25745a0cf3d3f7c816e4146872f36f8d7a939894acb7e3"
+    },
+    {
+      "bytes": 102352,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+      "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+    },
+    {
+      "bytes": 5147,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/__future__.py",
+      "sha256": "5373c92a824f872aa3aedadce8fe8f858c27f1abbe9a3faa0dc34f0af1984332"
+    },
+    {
+      "bytes": 29377,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/_collections_abc.py",
+      "sha256": "b48bf9fb41a1712a7e179c095d6dc871d84c5da2f651d35e91cc4a7c230ce60f"
+    },
+    {
+      "bytes": 5340,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/_compression.py",
+      "sha256": "326755377c7b8d98cf71333d62e5b4cb1c4e06519d704961da025f5933dee08d"
+    },
+    {
+      "bytes": 5817,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/_weakrefset.py",
+      "sha256": "07f242a104934c6a6269ea0db05c15ad8059600b5ddff79e92fcc0118ce37491"
+    },
+    {
+      "bytes": 4920,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/abc.py",
+      "sha256": "937d73a33adba6b015171e0e2670ec4ddfe155e36f9ab4bf711853d3b7df6419"
+    },
+    {
+      "bytes": 56179,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ast.py",
+      "sha256": "4585b867dd51b2b500fdaa7eaf8fc85066596f49f35f2e07c98991171b0afa79"
+    },
+    {
+      "bytes": 19861,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/base64.py",
+      "sha256": "e711173099429960173cf5efce4227fa6f6fac7a078eca7daee2fd4eae378e8c"
+    },
+    {
+      "bytes": 36673,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/codecs.py",
+      "sha256": "8c88dc3fa4a2b85759c8c5394dce9c0a5248e99ea85fc57f42d7372da0e69256"
+    },
+    {
+      "bytes": 49819,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/collections/__init__.py",
+      "sha256": "0521f8084998b03f29317872a35531adea4708b32b0ebd4cfdf8e178a93dba76"
+    },
+    {
+      "bytes": 185,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/collections/abc.py",
+      "sha256": "48b5761c03a85a6ce56f5cdbded1c909133da568f3c61369cff128118706f35f"
+    },
+    {
+      "bytes": 23676,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py",
+      "sha256": "dd570a85645667f767f4733e90801e77d3f8980a71fe6341255e8336de1a583b"
+    },
+    {
+      "bytes": 8661,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/copy.py",
+      "sha256": "1c99e51667586e771eb051f9072471afd6094dca69b558d352b5dc13bfed6b71"
+    },
+    {
+      "bytes": 7274,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/copyreg.py",
+      "sha256": "55c1fa8ee6e89eb8645441d5fc1e215c5ec95d8fce218107d3f9d9e25ca31a2d"
+    },
+    {
+      "bytes": 49504,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/dataclasses.py",
+      "sha256": "100d5daf6285d6b756794d3405174c79eec136bda24d65114d28dde569618250"
+    },
+    {
+      "bytes": 20570,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/dis.py",
+      "sha256": "12f8cf82811f5dda498fa3c4852af458d1a4915ccf779b4badad08407b8e15e9"
+    },
+    {
+      "bytes": 5802,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/encodings/__init__.py",
+      "sha256": "4776cea7e37975dbfcb71198a22e16af3ac78e6f4337b59ce0631c7e0cc1430a"
+    },
+    {
+      "bytes": 15677,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/encodings/aliases.py",
+      "sha256": "6fdcc49ba23a0203ae6cf28e608f8e6297d7c4d77d52e651db3cb49b9564c6d2"
+    },
+    {
+      "bytes": 34564,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/encodings/cp437.py",
+      "sha256": "5c2a5015cd36cf7f561269f33dec4c323093d3d88b0673969accdabdcb9ce2cb"
+    },
+    {
+      "bytes": 1264,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/encodings/latin_1.py",
+      "sha256": "b75503e532a27c636477396c855209ff5f3036536d2a4bede0a576c89382b60c"
+    },
+    {
+      "bytes": 1005,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/encodings/utf_8.py",
+      "sha256": "ba0cac060269583523ca9506473a755203037c57d466a11aa89a30a5f6756f3d"
+    },
+    {
+      "bytes": 39440,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/enum.py",
+      "sha256": "1fbc8192d68b50b55169e391ef02ade61be803e61665ca65de1c43051d6b7b10"
+    },
+    {
+      "bytes": 6004,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/fnmatch.py",
+      "sha256": "10aac42dbd125cb1bf952c9528e43511671d5756616c0f75f6a8f527ac936fc7"
+    },
+    {
+      "bytes": 37491,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/functools.py",
+      "sha256": "7bddb80d53e7e9b0bf0d0527b8957911ca9aa3fa931f75525f122b1dc09504a5"
+    },
+    {
+      "bytes": 4975,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/genericpath.py",
+      "sha256": "9d58ad64056a89f12258a62596c2073cd9e52b459dde152f710edc0cffcd865b"
+    },
+    {
+      "bytes": 21772,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/gzip.py",
+      "sha256": "e1287cead7a16d31bacb1498e3847467f672056d5b0b8d5fa7f2ba4e0c5d3cba"
+    },
+    {
+      "bytes": 10010,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/hashlib.py",
+      "sha256": "a25e6f24d6ae5b5205844e2717f3d6dbeda005c1afeaf4d450b4f2c363a3d34a"
+    },
+    {
+      "bytes": 22877,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/heapq.py",
+      "sha256": "0351667ed3afd3310ebd353526824d6f6f34d641ef0a785552c6893b7f95fdf3"
+    },
+    {
+      "bytes": 6061,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py",
+      "sha256": "45421c08a03062ba41e37e484cb0e4d8474be13c2a34806cb5b63c9edcb94a10"
+    },
+    {
+      "bytes": 40322,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/_bootstrap.py",
+      "sha256": "dccbc1da2f9e922b2faab3b1db5543f6898539b3603b406a88b03a287d76a62e"
+    },
+    {
+      "bytes": 64569,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/_bootstrap_external.py",
+      "sha256": "ae0b9f573429b63e40942e8d3365c73a7ed37302fff6dfc7eebbd2bb62b6bd85"
+    },
+    {
+      "bytes": 844,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/machinery.py",
+      "sha256": "d8675d9b5553ae4ce0a01005bc47a199b9167ef2c4217a4bbda8f457170aae8b"
+    },
+    {
+      "bytes": 118883,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/inspect.py",
+      "sha256": "31c6e49ba7d231e2ea7e9d989bba231ddcba90cc0a32df7a328d84f1d165ff75"
+    },
+    {
+      "bytes": 3541,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/io.py",
+      "sha256": "01907eff5e1a17d37e967b4d6d1bd2230e03d30f56cc1a1384a14dd77be5ff60"
+    },
+    {
+      "bytes": 14017,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/__init__.py",
+      "sha256": "332fabb72a4a1ed02c9207a7619ab339dac8f0b6862e16f6499147121b302a27"
+    },
+    {
+      "bytes": 12472,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/decoder.py",
+      "sha256": "079f7a25863c18fc9a9abc59735d684535b9deaafc08acda416997784b78e9c5"
+    },
+    {
+      "bytes": 16072,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/encoder.py",
+      "sha256": "cdb1eb54c453f672c56caf00c02ace80c97fb48121c4af734b7c4123ceb1fb3d"
+    },
+    {
+      "bytes": 2425,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/scanner.py",
+      "sha256": "8604d9d03786d0d509abb49e9f069337278ea988c244069ae8ca2c89acc2cb08"
+    },
+    {
+      "bytes": 1047,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/keyword.py",
+      "sha256": "22997a4c432a03c3ec9b91d0c20be3d59648fd22c6f1251c6d071fd3f32b7308"
+    },
+    {
+      "bytes": 202384,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_blake2.cpython-39-darwin.so",
+      "sha256": "ace7a5d932bbaa749474c1dadcde5c2de4f3bd1ab3b4eca7e97bbec9ab3a6f96"
+    },
+    {
+      "bytes": 172560,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_hashlib.cpython-39-darwin.so",
+      "sha256": "da802e76e50f627108a9a8a4a77d703af94bfb56dc4fc4c9560c297c5313bb44"
+    },
+    {
+      "bytes": 151024,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_heapq.cpython-39-darwin.so",
+      "sha256": "9613d8b26ff63aee06ae46e69a44eea726a97fded23ff721fd97e4bd6a58a1a7"
+    },
+    {
+      "bytes": 171456,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_json.cpython-39-darwin.so",
+      "sha256": "abc9b5ea12a96d7552ec34298fbbba6784427fd6304cbe2757a4bbc35194ba13"
+    },
+    {
+      "bytes": 134720,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_opcode.cpython-39-darwin.so",
+      "sha256": "555a6a629124de05815383f47dac6925c0558f05d61021cb2a822ccc8da3f76a"
+    },
+    {
+      "bytes": 251504,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_sha3.cpython-39-darwin.so",
+      "sha256": "0fa9ff6e0c522355b660d8ec0017c85831282ea6c4bb010a5a93ca7e9e939162"
+    },
+    {
+      "bytes": 172976,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/_struct.cpython-39-darwin.so",
+      "sha256": "20dbbcea553b43fec32dc2a740f1cb82f04c0bfc56a87f76f777b7c0f1d6ffc5"
+    },
+    {
+      "bytes": 169376,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/binascii.cpython-39-darwin.so",
+      "sha256": "89b39e24b8caa32965ec0d8ae803395cba7a21a6002ca310c3e70ac37ef1fe10"
+    },
+    {
+      "bytes": 205616,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/math.cpython-39-darwin.so",
+      "sha256": "481a699baee3ebeee9f6c0d5976a6b7b41036d6d6f8ebb8eecd30c1da97a51b1"
+    },
+    {
+      "bytes": 154160,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/mmap.cpython-39-darwin.so",
+      "sha256": "83b75c143039c8a84c420a52bd9f45a282bec65abd3a0e355fe284d11ffbc15b"
+    },
+    {
+      "bytes": 135472,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/resource.cpython-39-darwin.so",
+      "sha256": "8dbb63547fe326ab8bb727cbfdb90dabcddbef7ccac8183c348ccaeb10991a67"
+    },
+    {
+      "bytes": 171856,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/select.cpython-39-darwin.so",
+      "sha256": "f1ba7ae457f69c2f9c28f40a518e8ec3b3ee55c93e53b26838b1a7ca40446a7f"
+    },
+    {
+      "bytes": 170768,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload/zlib.cpython-39-darwin.so",
+      "sha256": "7ea07df71547078514c569e682f97f9fb6657efbd8b9d161973567bc2aa49474"
+    },
+    {
+      "bytes": 6017,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/linecache.py",
+      "sha256": "17ea8edf10e81e889e54c46678055fdbf307cc9b553afde57d878e8b383da36d"
+    },
+    {
+      "bytes": 27734,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ntpath.py",
+      "sha256": "d4dad66e55873f0649884f723271da7ab3efb6b7ffc55c02f6d231d377552950"
+    },
+    {
+      "bytes": 5660,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/opcode.py",
+      "sha256": "51704446c56af48ba80718ec157f073f8032605e65c6a1988433621405945b76"
+    },
+    {
+      "bytes": 10711,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/operator.py",
+      "sha256": "eb0193353c7be76c92fc55123129b2f4cc92ab27fbcfedb140f2404c8774b63d"
+    },
+    {
+      "bytes": 39404,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/os.py",
+      "sha256": "8dbe2d2e9f228747cacbbcc6758721e794b652e5c22b6224cb07e303ebbc620d"
+    },
+    {
+      "bytes": 53285,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py",
+      "sha256": "6b33d2d55c09aa9c607a528003ed8fe154894afaa977ec554e0a858240412b72"
+    },
+    {
+      "bytes": 15627,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/posixpath.py",
+      "sha256": "f1b267bec4f8d29b2aadf21d019bf6e0935ab1c2c6c9ec0981cb7c54191be986"
+    },
+    {
+      "bytes": 15861,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/re.py",
+      "sha256": "4326ef93e3cf336c06523426187dce705c12f9fdc0a562a7cd00ab1739b14c2d"
+    },
+    {
+      "bytes": 5267,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/reprlib.py",
+      "sha256": "dc786fbc528e10bc6ea3c1fa84e4178e85c4f3c9b937a4b191546aec317e9cb9"
+    },
+    {
+      "bytes": 2273,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/signal.py",
+      "sha256": "4ebf461c99cf469e2ac22f6076040c6d16eeef0130a42a13a6ff7fe6cbe4ae6a"
+    },
+    {
+      "bytes": 26695,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/sre_compile.py",
+      "sha256": "b56ae9cd5b1e4e73ca4a6a726c46f5c95e164ca89c0271cc9fcb96e22a464c12"
+    },
+    {
+      "bytes": 7154,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/sre_constants.py",
+      "sha256": "476cd69325e5ec4fd85a539e8422a1e7c7427b3a2f4803568179d774e0a23d86"
+    },
+    {
+      "bytes": 40230,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/sre_parse.py",
+      "sha256": "9aeaff031db4e88971874d8858ab0e220d6e3b2a7ffe1d10d024feb0c1cb7f80"
+    },
+    {
+      "bytes": 5485,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/stat.py",
+      "sha256": "052af0327eae6941b69b05c088b3e748f79995635f80ac4cc7125eb333eb4c77"
+    },
+    {
+      "bytes": 257,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/struct.py",
+      "sha256": "9c231f9497caf513a22dee8f790b07f969b0e45854a0bdd6dd84b492e08c2856"
+    },
+    {
+      "bytes": 2368,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/token.py",
+      "sha256": "ab560a77c64094e898048757f3c62a72de40413a78f6c42f4988338a24afa6d8"
+    },
+    {
+      "bytes": 25841,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/tokenize.py",
+      "sha256": "cdd8daa337a82b515b500b41c102ce315e35d566fa6f086158d9754d57da1a62"
+    },
+    {
+      "bytes": 9746,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/types.py",
+      "sha256": "77013cfc8b37c89003df8080ad3ddddae28232edd90b6434b33f3f108f0a7ada"
+    },
+    {
+      "bytes": 74850,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/typing.py",
+      "sha256": "8f179cb73f6ba0e037fcef214cbe82edaa19ea4d04e22bc3e7f444a89e486f0f"
+    },
+    {
+      "bytes": 7,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/__init__.py",
+      "sha256": "c8204cfd372ee45f79cb744ed0565bc8d486716115a546f48477c0719b8a6bb9"
+    },
+    {
+      "bytes": 42353,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/parse.py",
+      "sha256": "e2433f6bda355439360d95255459e23fbd338cbfe12eb14ef28794c512cf5408"
+    },
+    {
+      "bytes": 19688,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/warnings.py",
+      "sha256": "b8e7748e4c67eb65cea5d3b3bd888d245771c0ebe63117f747189a55a9b622db"
+    },
+    {
+      "bytes": 21244,
+      "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/weakref.py",
+      "sha256": "27825b396816ac697c7a635b1396dd3749d376e3e16965dc9c3f25f47a67b423"
+    },
+    {
+      "bytes": 2401,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "6fa501b0fb29fef400002781a4c3f4973ce2ab66b7a434ce0a998b7d1a51b82c"
+    },
+    {
+      "bytes": 2763,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "b90349d287794220f51bcc05ec67d26c2ffc9dc0de66e0023809ffe51510dd1f"
+    },
+    {
+      "bytes": 2486,
+      "path": "/private/tmp/gcts-hilbert-shared-family-consumer-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "4a67be2f7f60a0d9b819f67c770ebb84ba11176b3e344a9490478ff1b10eae1f"
+    }
+  ],
+  "files_count": 122,
+  "proof_inputs_supplied": false,
+  "schema": "ROOT-Hilbert-component-byte-preflight-v1",
+  "scientific_calls": 0
+}

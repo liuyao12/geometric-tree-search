@@ -1,0 +1,110 @@
+{
+  "counts_and_omissions": {
+    "captured_record_count": "Own original20 captured nonnull headers",
+    "encoded_candidate_prefix_count": "Whole wrappers serialized within structural/16MiB bounds before encoding; may not be retained if envelope exceeds3MiB.",
+    "encoded_envelope_bytes": "Actual envelope ASCII bytes or null",
+    "engine_journal_bytes": "Actual retained expanded bytes or null without envelope",
+    "expanded_candidate_bytes": "Candidate expanded four-slot list size",
+    "next_omitted_ordinal": "retained+1 or null",
+    "omitted_record_count": "captured minus retained",
+    "serialization_codes": [
+      "EXPANDED_BYTE_LIMIT",
+      "STRING_LENGTH_LIMIT",
+      "NODE_LIMIT",
+      "DEPTH_LIMIT",
+      "INTEGER_BIT_LIMIT",
+      "NON_STRING_KEY",
+      "NON_BUILTIN_VALUE"
+    ],
+    "serialization_omission_fields": [
+      "phase",
+      "code",
+      "record_ordinal",
+      "limit",
+      "observed"
+    ],
+    "serialized_record_count": "Only complete bodies actually retained in the saved lossless envelope",
+    "wire_omission": "Separate ENCODED_ENVELOPE_BYTE_LIMIT with projected full envelope bytes; can coexist with an earlier serialization omission. Native/codec/guard errors never become either omission."
+  },
+  "implementation_identity": "unit-row-engine-milestone-lossless-failure-wire-v4",
+  "limits": {
+    "encoded_envelope_bytes": 3145728,
+    "expanded_journal_bytes": 16777216,
+    "failure_seconds": 55,
+    "integer_bits": 4096,
+    "internal_reserve_bytes": 524288000,
+    "owned_bytes": 536870912,
+    "per_record_depth": 128,
+    "per_record_nodes": 200000,
+    "positive_seconds": 20,
+    "records": 4,
+    "string_codepoints": 262144,
+    "whole_failure_bytes": 4325376
+  },
+  "reader": {
+    "CLI": "Unchanged five args: plan external-directory tool-bracket expanded-path disposition-path",
+    "Root_rebind_required": "Candidate intentionally retains parent template CURRENT_CONTRACT and body VERSION literals. Root must separately rebind exact future cold/current contract/VERSION and review composition before use.",
+    "V4_export_basename": "ROOT-expanded-engine-journal-v1.json",
+    "disposition_fields": [
+      "engine_milestones_envelope",
+      "decoded_engine_journal",
+      "engine_milestone_decoded_records_inlinedFalse",
+      "engine_milestone_serialization",
+      "engine_milestone_records_are_unvalidatedTrue",
+      "engine_milestone_semantic_acceptanceFalse"
+    ],
+    "export": "Only after full bounded lossless decode + whole hash/EOF + builtin structural/schema/header/phase/count/omission and prior native/context checks; exact expanded ASCII no added LF; <=16MiB with write count/full bounded readback.",
+    "null_export": "No retained envelope means no artifact and decoded_engine_journal=null. Captured versus omitted/uncaptured remain separate.",
+    "old_V3": "Inline original V3 branch unchanged; no old actual is silently reinterpreted.",
+    "path_rule": "disposition_path.with_name(LOSSLESS_JOURNAL_BASENAME), canonical absolute fresh exclusive sibling"
+  },
+  "runtime_qualified": false,
+  "schema": "ROOT-milestone-lossless-failure-wire-API-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 52379,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+      "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+    },
+    "writer_replacement": {
+      "bytes": 36501,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+      "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+    }
+  },
+  "writer": {
+    "Root_import_requirement": "Root loads stdlib binascii before the function definition/CodeSeal, under original cold/native cost. No late import/project/positive-encoder call.",
+    "completion_schema": "unit-row-controls-engine-milestones-completion-v4",
+    "diagnostic_schema": "unit-row-controls-engine-milestones-diagnostic-v4",
+    "encoding": "zlib+base64, fixed compressor level6; b2a_base64 newlineFalse",
+    "envelope_fields": [
+      "schema",
+      "encoding",
+      "expanded_bytes",
+      "expanded_sha256",
+      "compressed_bytes",
+      "compressed_sha256",
+      "payload_base64"
+    ],
+    "envelope_schema": "unit-row-engine-milestone-lossless-envelope-v1",
+    "expanded": "Exact insertion-order ensure_asciiTrue compact JSON four-slot complete wrapper prefix/null suffix, no LF.",
+    "new_defaults": [
+      "_compress=zlib.compress",
+      "_compress_anchor=zlib.compress",
+      "_b64=binascii.b2a_base64",
+      "_b64_anchor=binascii.b2a_base64"
+    ],
+    "new_failure_kind": "CONTROLS_TIMEOUT_ENGINE_MILESTONES_LOSSLESS_V4",
+    "outer_fields": [
+      "context",
+      "diagnostic",
+      "last_observations",
+      "provider_returns",
+      "engine_milestones_envelope"
+    ],
+    "signature": "save_failure_diagnostic(output_path,context_raw,capture,failure_kind,began_ns,*,<captured native/builtin defaults>)"
+  }
+}

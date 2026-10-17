@@ -1,0 +1,31 @@
+{
+  "audit": {
+    "bytes": 11858,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v3.json",
+    "sha256": "894339f8d166677b05804917ebe88196ceed4d90ac78772fcd42412a19111a04"
+  },
+  "author_handoff": {
+    "bytes": 12260,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/handoff-v3.json",
+    "sha256": "c6e3f1ccaba5140b9434fd8fed76d10ed610a7de985f179632b702f3d4a5c51f"
+  },
+  "findings": {
+    "bytes": 2541,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/findings-v3.json",
+    "sha256": "d9ef979d95458190955c8d2f09c187e1f26c7a3449d10b69d795927572f714b5"
+  },
+  "preserved_V2_correction": {
+    "bytes": 2375,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/Source-review-correction-v2-callable-ABI-v1.json",
+    "sha256": "2669b1e4535446dee174eb049e42bee84dbcec3b3352acc903b72892ad730081"
+  },
+  "review": {
+    "bytes": 7004,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v3.json",
+    "sha256": "e77fcbd56fe7c1c653a3686b225bd6fe79923633b4b3957d9839ae2fbb7209a2"
+  },
+  "schema": "Hilbert-component-controls-independent-Source-handoff-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

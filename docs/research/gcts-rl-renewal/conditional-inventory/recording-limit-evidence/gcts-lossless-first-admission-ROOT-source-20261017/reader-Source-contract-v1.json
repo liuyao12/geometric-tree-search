@@ -1,0 +1,23 @@
+{
+  "current_operative_contract": {
+    "bytes": 24238,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "46efcfe31565dd1c722a62f42267917dfcf2c0e55f6b1fa278368fdaa8ad6720"
+  },
+  "lossless_export": "Exact <=16MiB noLF ROOT-expanded-engine-journal-v1.json exclusive sibling after complete saved-wire/native/schema/header/phase checks; never semantic acceptance.",
+  "parent_source": {
+    "bytes": 52379,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+    "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+  },
+  "schema": "ROOT-receiver-inference-saved-reader-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Saved complete bytes, original once/native terminal/wire and resource reconciliation only. No scientific imports, replay, semantic proof or target/transfer acceptance.",
+  "source": {
+    "bytes": 52406,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py",
+    "sha256": "2b23a8269e9116a4997d461342f5245e1d5bf372f972e638cd5b5b3f2fdd6b21"
+  },
+  "source_only": true
+}

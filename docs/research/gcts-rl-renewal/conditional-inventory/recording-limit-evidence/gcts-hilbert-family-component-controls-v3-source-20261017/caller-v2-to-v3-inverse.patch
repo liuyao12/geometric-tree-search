@@ -1,0 +1,87 @@
+--- target.py
++++ target.py
+@@ -36,7 +36,7 @@
+ import zlib
+ from collections.abc import Mapping,Sequence
+ EXIT=os._exit
+-VERSION='ROOT-Hilbert-shared-family-component-controls-cold-v3-callable-boundaries'
++VERSION='ROOT-Hilbert-shared-family-component-controls-cold-v2-child-unknown'
+ SCOPE='ROOT-Hilbert-shared-family-component-controls-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+@@ -254,7 +254,7 @@
+         and plan['inputs']=={'qualified_context':QUALIFICATIONS[plan['context_id']]}, 'exact current source/context map')
+     source_raw={role:read_pinned(pin)for role,pin in plan['sources'].items()};tick()
+     contract=decode(read_pinned(plan['source_contract']))
+-    need(contract['schema']=='ROOT-Hilbert-family-component-controls-Source-contract-v3'
++    need(contract['schema']=='ROOT-Hilbert-family-component-controls-Source-contract-v2'
+         and contract['sources']==plan['sources']and contract['qualified_contexts']==QUALIFICATIONS
+         and contract['limits']==LIMITS,'whole current source contract')
+     need(set(plan['reviews'])=={'ROOT','peer'},'Root and distinct whole current composition review')
+@@ -311,54 +311,7 @@
+         if not same_fn(guard,guard_state):raise RuntimeError('immediate boundary changed after delegation')
+     boundary_anchor=anchor_fn(boundary);invoke_fn,invoke_code=invoke,invoke.__code__
+     def call(fn,args=(),kwargs=None):
+-        actual_kwargs={}if kwargs is None else kwargs
+-        if type(fn)is types.FunctionType:
+-            return invoke_fn(fn,args,actual_kwargs,boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+-        # The original invoke still receives only a Python function. The thunk
+-        # additionally guards the actual class/method endpoint it delegates to.
+-        if type(fn)is types.MethodType:
+-            receiver,actual_function=fn.__self__,fn.__func__
+-            receiver_type=type(receiver);method_name=actual_function.__name__
+-            actual_function_state=anchor_fn(actual_function)
+-            class_snapshot=support.class_state(receiver_type)
+-            def actual_guard():
+-                if(type(fn)is not types.MethodType or fn.__self__ is not receiver
+-                    or fn.__func__ is not actual_function or type(receiver)is not receiver_type
+-                    or not same_fn(actual_function,actual_function_state)
+-                    or support.class_state(receiver_type)!=class_snapshot):
+-                    raise RuntimeError('actual bound-method code/MRO/receiver changed')
+-                effective=getattr(receiver,method_name)
+-                if(type(effective)is not types.MethodType or effective.__self__ is not receiver
+-                    or effective.__func__ is not actual_function):
+-                    raise RuntimeError('actual receiver effective method changed')
+-        else:
+-            need(isinstance(fn,type),'only pinned Python function/class/bound-method delegate')
+-            actual_class,metaclass=fn,type(fn)
+-            class_snapshot=support.class_state(actual_class)
+-            metaclass_snapshot=support.class_state(metaclass)
+-            def actual_guard():
+-                if(fn is not actual_class or type(fn)is not metaclass
+-                    or support.class_state(actual_class)!=class_snapshot
+-                    or support.class_state(metaclass)!=metaclass_snapshot):
+-                    raise RuntimeError('actual constructor/metaclass/MRO endpoint changed')
+-        actual_guard_fn=actual_guard;actual_guard_code=actual_guard.__code__
+-        actual_guard_state=anchor_fn(actual_guard)
+-        def thunk():
+-            if(actual_guard is not actual_guard_fn or actual_guard_fn.__code__ is not actual_guard_code
+-                or not same_fn(actual_guard_fn,actual_guard_state)):
+-                raise RuntimeError('actual delegate validator changed')
+-            actual_guard_fn()
+-            try:
+-                return fn(*args,**actual_kwargs)
+-            finally:
+-                if(actual_guard is not actual_guard_fn or actual_guard_fn.__code__ is not actual_guard_code
+-                    or not same_fn(actual_guard_fn,actual_guard_state)):
+-                    raise RuntimeError('actual delegate validator changed on exceptional return')
+-                actual_guard_fn()
+-                if(actual_guard_fn.__code__ is not actual_guard_code
+-                    or not same_fn(actual_guard_fn,actual_guard_state)):
+-                    raise RuntimeError('actual delegate validator changed after final guard')
+-        return invoke_fn(thunk,(),{},boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
++        return invoke_fn(fn,args,{}if kwargs is None else kwargs,boundary,boundary_anchor,anchor_fn,anchor_code,same_fn,same_code)
+     stdlib_after=call(stdlib_gate,(plan['runtime'],plan['sources']))
+     closed=call(context_checker.ClosedInputs)
+     qualification=call(closed.json,(plan['inputs']['qualified_context'],))
+@@ -369,9 +322,8 @@
+     runtime_sources=[{'role':role,**FIXED[role]}for role in runtime_roles]
+     graph_type=call(modules['dynamic_graph_adapter'].make_dynamic_graph_type,
+         (modules['point_core'],modules['compact_graph'],modules['compact_decoder']),{'runtime_sources':runtime_sources})
+-    generated.append((graph_type,support.class_state(graph_type)))
+     graph=call(graph_type,kwargs={'header_pin':qualification['catalog']})
+-    generated.append((type(graph.catalog),support.class_state(type(graph.catalog))))
++    generated.extend((cls,support.class_state(cls))for cls in (graph_type,type(graph.catalog)))
+     wire=call(context_checker.SelectedWire,(header,))
+     need(call(wire.model_epoch)==graph.model_epoch and canonical(graph.catalog.header)==canonical(header),
+         'complete unchanged catalogue/original epoch')

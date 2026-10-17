@@ -1,0 +1,28 @@
+{
+  "audit": {
+    "bytes": 11858,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v3.json",
+    "sha256": "894339f8d166677b05804917ebe88196ceed4d90ac78772fcd42412a19111a04"
+  },
+  "authorship_disclosure": "Reviewer authored4358/general checker/arithmetic ancestry and previous cold peer that missed the original callable mismatch; not Controls current cold/helper author. This review explicitly audits the repaired category seam; no scientific functions/clocks/actual/results were evaluated.",
+  "blockers": [],
+  "findings": [
+    "All direct call sites classify as actual pinned Python functions, classes or Python bound methods; no unsupported builtin/foreign callable is needed. Plain functions retain rawexact invoke. Classes and methods delegate only via a fresh Python thunk, so anchor receives FunctionType.",
+    "Method guards bind actual __self__/__func__, strong function code/default/cell anchor, receiver type/MRO and effective receiver lookup. Constructor guards bind actual class/metaclass/MRO snapshots. The guard itself is strongly anchored before and after actual invocation, including exceptional finally; unchanged invoke still performs outer pre/post Source/native boundary.",
+    "Generated graph class is registered in the persistent owned MRO guard before construction; actual catalogue class follows immediately after. Original co_filename, native admission/class factories and current15 fixed roles remain unchanged.",
+    "Helper1de9 including childUNKNOWN/root rollback repair, collector7160 and all model/context/census/fallback/semantic-rollback limits and scopes are unchanged. Historical V2 review and separate Source correction/native negative are preserved; no component runtime acceptance or fit is inherited.",
+    "Class snapshots and current invocation guards are scoped to pinned synchronous Sources, not hostile VM/ABA/reentrant protection. Real native/callback/guard/malformed errors remain fatal; own helper UNKNOWN is not completed qualification."
+  ],
+  "prior_correction": {
+    "bytes": 2375,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/Source-review-correction-v2-callable-ABI-v1.json",
+    "sha256": "2669b1e4535446dee174eb049e42bee84dbcec3b3352acc903b72892ad730081"
+  },
+  "resolved_blocker_ids": [
+    "HILBERT-COMPONENT-CALLABLE-ABI-1"
+  ],
+  "schema": "Hilbert-component-controls-independent-Source-findings-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

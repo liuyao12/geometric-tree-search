@@ -1,0 +1,1761 @@
+{
+  "arithmetic_scope": "Full six Peano axioms and nat-induction schema data, conservatively extended by four closed parameter constants. First search grammar only supports axiom/instantiate/eq_subst/assumption/MP; no induction commands or full PA completeness claimed.",
+  "cases": [
+    {
+      "english": "Assuming a equals b, b equals c, and c equals d, adding zero to a gives b.",
+      "hypotheses": [
+        "eq-ab",
+        "eq-bc",
+        "eq-cd"
+      ],
+      "id": "train-pa-right-zero",
+      "latex": "a=b,\\ b=c,\\ c=d\\ \\vdash_{\\mathcal T_{\\mathrm{PA}}}\\ a+0=b",
+      "rows": 24,
+      "split": "train",
+      "structural_tag": "one PA zero instance plus one equality transport",
+      "target": "arith-zero-to-b",
+      "theory": "pa-ground"
+    },
+    {
+      "english": "Under the same three equalities, adding one to a gives the successor of b.",
+      "hypotheses": [
+        "eq-ab",
+        "eq-bc",
+        "eq-cd"
+      ],
+      "id": "train-pa-right-one",
+      "latex": "a=b,\\ b=c,\\ c=d\\ \\vdash_{\\mathcal T_{\\mathrm{PA}}}\\ a+S(0)=S(b)",
+      "rows": 24,
+      "split": "train",
+      "structural_tag": "PA successor addition and equality under successor",
+      "target": "arith-one-to-sb",
+      "theory": "pa-ground"
+    },
+    {
+      "english": "The two indexed occurrences both say u equals v. If C is incident with u, C is incident with v.",
+      "hypotheses": [
+        "eq-uv",
+        "eq-uv",
+        "inc-Cu"
+      ],
+      "id": "train-inc-line",
+      "latex": "u=v,\\ u=v,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,v)",
+      "rows": 24,
+      "split": "train",
+      "structural_tag": "one line-argument transport, distinct repeated equality occurrences",
+      "target": "inc-Cv",
+      "theory": "hilbert-incidence"
+    },
+    {
+      "english": "If C equals D and C is incident with u, D is incident with u. The line equality remains a declared premise.",
+      "hypotheses": [
+        "eq-CD",
+        "eq-uv",
+        "inc-Cu"
+      ],
+      "id": "train-inc-point",
+      "latex": "C=D,\\ u=v,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(D,u)",
+      "rows": 24,
+      "split": "train",
+      "structural_tag": "one point-argument transport, retained unused line equality",
+      "target": "inc-Du",
+      "theory": "hilbert-incidence"
+    },
+    {
+      "english": "The guard says that the distinct points A and B are incident with both lines u and v. If C is incident with u, C is incident with v; the equality v equals w remains a declared premise. No Point(C) premise is added.",
+      "hypotheses": [
+        "guard-ABuv",
+        "inc-Cu",
+        "eq-vw"
+      ],
+      "id": "train-inc-uniqueness",
+      "latex": "H(A,B,u,v),\\ \\operatorname{Incident}(C,u),\\ v=w\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,v)",
+      "rows": 24,
+      "split": "train",
+      "structural_tag": "four quantified I.2 instantiations then incidence transport",
+      "target": "inc-Cv",
+      "theory": "hilbert-incidence"
+    },
+    {
+      "english": "Combine the zero law with the entire chain from a through b and c to d.",
+      "hypotheses": [
+        "eq-ab",
+        "eq-bc",
+        "eq-cd"
+      ],
+      "id": "eval-pa-chain",
+      "latex": "a=b,\\ b=c,\\ c=d\\ \\vdash_{\\mathcal T_{\\mathrm{PA}}}\\ a+0=d",
+      "rows": 24,
+      "split": "evaluation",
+      "structural_tag": "PA zero instance composed with all three equality links",
+      "target": "arith-zero-to-d",
+      "theory": "pa-ground"
+    },
+    {
+      "english": "Adding zero twice to a yields c under the first two links. All three premise occurrences remain in the context.",
+      "hypotheses": [
+        "eq-ab",
+        "eq-bc",
+        "eq-cd"
+      ],
+      "id": "eval-pa-nested",
+      "latex": "a=b,\\ b=c,\\ c=d\\ \\vdash_{\\mathcal T_{\\mathrm{PA}}}\\ (a+0)+0=c",
+      "rows": 24,
+      "split": "evaluation",
+      "structural_tag": "two nested PA zero reductions plus two equality links",
+      "target": "arith-nested-zero-to-c",
+      "theory": "pa-ground"
+    },
+    {
+      "english": "Transport the incident relation in both arguments: replace C with D and u with v.",
+      "hypotheses": [
+        "eq-CD",
+        "eq-uv",
+        "inc-Cu"
+      ],
+      "id": "eval-inc-both-arguments",
+      "latex": "C=D,\\ u=v,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(D,v)",
+      "rows": 24,
+      "split": "evaluation",
+      "structural_tag": "compose point-argument and line-argument transport",
+      "target": "inc-Dv",
+      "theory": "hilbert-incidence"
+    },
+    {
+      "english": "Use the common distinct points A and B to identify u with v, and the separate equality C equals D to conclude that D lies on v.",
+      "hypotheses": [
+        "guard-ABuv",
+        "eq-CD",
+        "inc-Cu"
+      ],
+      "id": "eval-inc-uniqueness-point",
+      "latex": "H(A,B,u,v),\\ C=D,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(D,v)",
+      "rows": 24,
+      "split": "evaluation",
+      "structural_tag": "compose I.2 line uniqueness with separate point equality transport",
+      "target": "inc-Dv",
+      "theory": "hilbert-incidence"
+    },
+    {
+      "actual_outcome": null,
+      "certificate": null,
+      "english": "If u equals v, v equals w, and C is incident with u, conclude that C is incident with w.",
+      "hypotheses": [
+        "eq-uv",
+        "eq-vw",
+        "inc-Cu"
+      ],
+      "id": "next-inc-equality-line-chain",
+      "independent_acceptance": null,
+      "latex": "u=v,\\ v=w,\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,w)",
+      "ordered_hypothesis_occurrences": 3,
+      "policy_checkpoint": null,
+      "proof_rows": null,
+      "proof_words": [],
+      "role": "heldout integration diagnostic",
+      "rows": 24,
+      "scope": "Equality transport in a symbolic incidence predicate. This conclusion does not need the I.2 axiom and is not a substantive new geometry result.",
+      "split": "evaluation",
+      "structural_tag": "composition of two line-argument equality transports",
+      "target": "inc-Cw",
+      "theory": "hilbert-incidence"
+    },
+    {
+      "actual_outcome": null,
+      "certificate": null,
+      "english": "The distinct guarded points A and B lie on u and v, and also on v and w. If C is incident with u, conclude that C is incident with w.",
+      "hypotheses": [
+        "guard-ABuv",
+        "guard-ABvw",
+        "inc-Cu"
+      ],
+      "id": "next-inc-two-uniqueness",
+      "independent_acceptance": null,
+      "latex": "H(A,B,u,v),\\ H(A,B,v,w),\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,w)",
+      "ordered_hypothesis_occurrences": 3,
+      "policy_checkpoint": null,
+      "proof_rows": null,
+      "proof_words": [],
+      "role": "primary next heldout geometry candidate",
+      "rows": 24,
+      "scope": "Two guarded I.2 uniqueness instances compose. This exact mathematical candidate was already named proposed-hi-two-identifications in the prior ladder; this file advances its literal declaration, not its novelty.",
+      "split": "evaluation",
+      "structural_tag": "composition across two guarded I.2 line-identification interfaces",
+      "target": "inc-Cw",
+      "theory": "hilbert-incidence"
+    },
+    {
+      "actual_outcome": null,
+      "certificate": null,
+      "english": "The first common-point guard is assumed. That guard implies a second guard for v and w. If C is incident with u, conclude that C is incident with w.",
+      "hypotheses": [
+        "guard-ABuv",
+        "guard-ABuv-implies-ABvw",
+        "inc-Cu"
+      ],
+      "id": "next-inc-derived-middle-guard",
+      "independent_acceptance": null,
+      "latex": "H(A,B,u,v),\\ (H(A,B,u,v)\\Rightarrow H(A,B,v,w)),\\ \\operatorname{Incident}(C,u)\\ \\vdash_{\\mathcal T_{\\mathrm{I.2}}}\\ \\operatorname{Incident}(C,w)",
+      "ordered_hypothesis_occurrences": 3,
+      "policy_checkpoint": null,
+      "proof_rows": null,
+      "proof_words": [],
+      "role": "heldout receptor-dependency diagnostic",
+      "rows": 24,
+      "scope": "The second receptor guard must be obtained by an actual earlier derivation, rather than treated as a fixed root fact. No claimed row fit or successful placement sequence is supplied.",
+      "split": "evaluation",
+      "structural_tag": "guard receptor provided by a declared implication consequence",
+      "target": "inc-Cw",
+      "theory": "hilbert-incidence"
+    },
+    {
+      "actual_outcome": null,
+      "certificate": null,
+      "english": "The exact supplied ordered hypotheses and target are the statement. No proof, row route or inventory lemma is supplied.",
+      "hypotheses": [
+        "fresh-inc-point-chain-w/Gamma-0",
+        "fresh-inc-point-chain-w/Gamma-1",
+        "fresh-inc-point-chain-w/Gamma-2"
+      ],
+      "id": "fresh-inc-point-chain-w",
+      "independent_acceptance": null,
+      "latex": "\\(A=B,\\;B=C,\\;\\operatorname{Incident}(A,w)\\;\\vdash\\;\\operatorname{Incident}(C,w)\\)",
+      "ordered_hypothesis_occurrences": 3,
+      "policy_checkpoint": null,
+      "proof_rows": null,
+      "proof_words": [],
+      "role": "fresh first-checked-proof evaluation",
+      "rows": 24,
+      "scope": "Elementary symbolic equality calibration in the unsorted I.2-only signature; fresh source context, not a new geometry theorem or implicit logical sort.",
+      "split": "evaluation",
+      "structural_tag": "fresh declared ground incidence sequent",
+      "target": "fresh-inc-point-chain-w/target",
+      "theory": "hilbert-incidence"
+    },
+    {
+      "actual_outcome": null,
+      "certificate": null,
+      "english": "The exact supplied ordered hypotheses and target are the statement. No proof, row route or inventory lemma is supplied.",
+      "hypotheses": [
+        "fresh-inc-reversed-line-chain/Gamma-0",
+        "fresh-inc-reversed-line-chain/Gamma-1",
+        "fresh-inc-reversed-line-chain/Gamma-2"
+      ],
+      "id": "fresh-inc-reversed-line-chain",
+      "independent_acceptance": null,
+      "latex": "\\(v=u,\\;w=v,\\;\\operatorname{Incident}(D,w)\\;\\vdash\\;\\operatorname{Incident}(D,u)\\)",
+      "ordered_hypothesis_occurrences": 3,
+      "policy_checkpoint": null,
+      "proof_rows": null,
+      "proof_words": [],
+      "role": "fresh first-checked-proof evaluation",
+      "rows": 24,
+      "scope": "Elementary symbolic equality calibration in the unsorted I.2-only signature; fresh source context, not a new geometry theorem or implicit logical sort.",
+      "split": "evaluation",
+      "structural_tag": "fresh declared ground incidence sequent",
+      "target": "fresh-inc-reversed-line-chain/target",
+      "theory": "hilbert-incidence"
+    }
+  ],
+  "counts_measured": false,
+  "execution_authorized": false,
+  "finite_grammars": {
+    "hilbert-incidence": {
+      "binder_roles": {
+        "P": "point",
+        "Q": "point",
+        "l": "line",
+        "m": "line"
+      },
+      "equality_layers": 1,
+      "instantiation_rounds": 4,
+      "term_roles": {
+        "line": [
+          "u",
+          "v",
+          "w"
+        ],
+        "point": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    },
+    "pa-ground": {
+      "binder_roles": {
+        "x": "closed",
+        "y": "numeral"
+      },
+      "equality_layers": 1,
+      "instantiation_rounds": 4,
+      "term_roles": {
+        "closed": "all_closed_seed_subterms",
+        "numeral": "closed_seed_numerals"
+      }
+    }
+  },
+  "guard_association": "exact right-associated conjunction in literal AST; display conjunction is only readable notation",
+  "guard_latex": "H(A,B,u,v):=\\operatorname{Point}(A)\\land\\operatorname{Point}(B)\\land\\operatorname{Line}(u)\\land\\operatorname{Line}(v)\\land\\neg(A=B)\\land\\operatorname{Incident}(A,u)\\land\\operatorname{Incident}(B,u)\\land\\operatorname{Incident}(A,v)\\land\\operatorname{Incident}(B,v)",
+  "heldout_scope": "Structural composition/term-nesting holdout only. Symbols, formulas and target boundaries are visible to deterministic complete syntax compilation; no evaluation proof/trace/cluster/reward used for library mining or updates.",
+  "incidence_scope": "Single unsorted FOL kernel with restricted I.2 axiom data. Parameter roles only restrict this declared finite instantiation grammar; they are not extra kernel typing axioms. No explicit geometric coordinates.",
+  "literal_formulas": {
+    "arith-nested-zero-to-c": [
+      "eq",
+      [
+        "fun",
+        "add",
+        [
+          [
+            "fun",
+            "add",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "zero",
+            []
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "c",
+        []
+      ]
+    ],
+    "arith-one-to-sb": [
+      "eq",
+      [
+        "fun",
+        "add",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "succ",
+        [
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ]
+    ],
+    "arith-zero-to-b": [
+      "eq",
+      [
+        "fun",
+        "add",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "zero",
+            []
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "b",
+        []
+      ]
+    ],
+    "arith-zero-to-d": [
+      "eq",
+      [
+        "fun",
+        "add",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "zero",
+            []
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "d",
+        []
+      ]
+    ],
+    "eq-CD": [
+      "eq",
+      [
+        "fun",
+        "C",
+        []
+      ],
+      [
+        "fun",
+        "D",
+        []
+      ]
+    ],
+    "eq-ab": [
+      "eq",
+      [
+        "fun",
+        "a",
+        []
+      ],
+      [
+        "fun",
+        "b",
+        []
+      ]
+    ],
+    "eq-bc": [
+      "eq",
+      [
+        "fun",
+        "b",
+        []
+      ],
+      [
+        "fun",
+        "c",
+        []
+      ]
+    ],
+    "eq-cd": [
+      "eq",
+      [
+        "fun",
+        "c",
+        []
+      ],
+      [
+        "fun",
+        "d",
+        []
+      ]
+    ],
+    "eq-uv": [
+      "eq",
+      [
+        "fun",
+        "u",
+        []
+      ],
+      [
+        "fun",
+        "v",
+        []
+      ]
+    ],
+    "eq-vw": [
+      "eq",
+      [
+        "fun",
+        "v",
+        []
+      ],
+      [
+        "fun",
+        "w",
+        []
+      ]
+    ],
+    "fresh-inc-point-chain-w/Gamma-0": [
+      "eq",
+      [
+        "fun",
+        "A",
+        []
+      ],
+      [
+        "fun",
+        "B",
+        []
+      ]
+    ],
+    "fresh-inc-point-chain-w/Gamma-1": [
+      "eq",
+      [
+        "fun",
+        "B",
+        []
+      ],
+      [
+        "fun",
+        "C",
+        []
+      ]
+    ],
+    "fresh-inc-point-chain-w/Gamma-2": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "A",
+          []
+        ],
+        [
+          "fun",
+          "w",
+          []
+        ]
+      ]
+    ],
+    "fresh-inc-point-chain-w/target": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "C",
+          []
+        ],
+        [
+          "fun",
+          "w",
+          []
+        ]
+      ]
+    ],
+    "fresh-inc-reversed-line-chain/Gamma-0": [
+      "eq",
+      [
+        "fun",
+        "v",
+        []
+      ],
+      [
+        "fun",
+        "u",
+        []
+      ]
+    ],
+    "fresh-inc-reversed-line-chain/Gamma-1": [
+      "eq",
+      [
+        "fun",
+        "w",
+        []
+      ],
+      [
+        "fun",
+        "v",
+        []
+      ]
+    ],
+    "fresh-inc-reversed-line-chain/Gamma-2": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "D",
+          []
+        ],
+        [
+          "fun",
+          "w",
+          []
+        ]
+      ]
+    ],
+    "fresh-inc-reversed-line-chain/target": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "D",
+          []
+        ],
+        [
+          "fun",
+          "u",
+          []
+        ]
+      ]
+    ],
+    "guard-ABuv": [
+      "and",
+      [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "A",
+            []
+          ]
+        ]
+      ],
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Line",
+            [
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "not",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "B",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "u",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "B",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "u",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "A",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "B",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "guard-ABuv-implies-ABvw": [
+      "imp",
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "B",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "A",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "u",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "B",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "u",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "A",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "B",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "v",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Point",
+            [
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "pred",
+                "Line",
+                [
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "not",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "B",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "A",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "v",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "B",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "v",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "A",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "w",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "pred",
+                        "Incident",
+                        [
+                          [
+                            "fun",
+                            "B",
+                            []
+                          ],
+                          [
+                            "fun",
+                            "w",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "guard-ABvw": [
+      "and",
+      [
+        "pred",
+        "Point",
+        [
+          [
+            "fun",
+            "A",
+            []
+          ]
+        ]
+      ],
+      [
+        "and",
+        [
+          "pred",
+          "Point",
+          [
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ]
+        ],
+        [
+          "and",
+          [
+            "pred",
+            "Line",
+            [
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ]
+          ],
+          [
+            "and",
+            [
+              "pred",
+              "Line",
+              [
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "and",
+              [
+                "not",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "B",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "and",
+                [
+                  "pred",
+                  "Incident",
+                  [
+                    [
+                      "fun",
+                      "A",
+                      []
+                    ],
+                    [
+                      "fun",
+                      "v",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "and",
+                  [
+                    "pred",
+                    "Incident",
+                    [
+                      [
+                        "fun",
+                        "B",
+                        []
+                      ],
+                      [
+                        "fun",
+                        "v",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "A",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "w",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "pred",
+                      "Incident",
+                      [
+                        [
+                          "fun",
+                          "B",
+                          []
+                        ],
+                        [
+                          "fun",
+                          "w",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "inc-Cu": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "C",
+          []
+        ],
+        [
+          "fun",
+          "u",
+          []
+        ]
+      ]
+    ],
+    "inc-Cv": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "C",
+          []
+        ],
+        [
+          "fun",
+          "v",
+          []
+        ]
+      ]
+    ],
+    "inc-Cw": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "C",
+          []
+        ],
+        [
+          "fun",
+          "w",
+          []
+        ]
+      ]
+    ],
+    "inc-Du": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "D",
+          []
+        ],
+        [
+          "fun",
+          "u",
+          []
+        ]
+      ]
+    ],
+    "inc-Dv": [
+      "pred",
+      "Incident",
+      [
+        [
+          "fun",
+          "D",
+          []
+        ],
+        [
+          "fun",
+          "v",
+          []
+        ]
+      ]
+    ]
+  },
+  "literal_profile": "Preserve all original12 declarations and exact9 inherited seed IDs. Only the two appended fresh equality-cohort IDs are selectable by this SOURCE compiler/grammar pair.",
+  "new_RL_training": false,
+  "old_attempts": "No old selector or semantically identical context may be selected; historical UNKNOWNs, accepted119 and verified121 remain immutable. These are fresh declaration/source instances, not retries or new positive results.",
+  "proof_words": [],
+  "recipient_case_ids": [
+    "next-inc-equality-line-chain",
+    "next-inc-two-uniqueness",
+    "next-inc-derived-middle-guard",
+    "fresh-inc-point-chain-w",
+    "fresh-inc-reversed-line-chain"
+  ],
+  "schema": "hilbert-next-ground-theorem-fixtures-v1",
+  "seed_vocabulary_note": "The complete same-theory loop sees all original cases plus the exact2 new hypothesis/target ASTs and whole unchanged I.2 axiom. All five primitive rules, four snapshot rounds, one equality layer and complete finite role pools are retained. No saved proof, proposal, exclusion, learned body or model is a seed.",
+  "source_declaration_parent": {
+    "bytes": 35493,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-receptor-benchmark-source-20261013/candidate-declarations-v1.json",
+    "sha256": "a9748e01636323ab886f4e5e41d5d89ae9ef56cf36dbb7884e53c537597a83bd"
+  },
+  "source_fresh_cohort_parent": {
+    "bytes": 61285,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/first-checked-proof-candidate-cohort-v1.json",
+    "sha256": "eeb13ad46fe2bab153162068a666cb27cb88aa124a165b9cdda3bb6c3f8452bc"
+  },
+  "source_only": true,
+  "source_only_seed_case_ids": [
+    "train-pa-right-zero",
+    "train-pa-right-one",
+    "train-inc-line",
+    "train-inc-point",
+    "train-inc-uniqueness",
+    "eval-pa-chain",
+    "eval-pa-nested",
+    "eval-inc-both-arguments",
+    "eval-inc-uniqueness-point"
+  ],
+  "target_searches": 0,
+  "theories": {
+    "hilbert-incidence": {
+      "axioms": {
+        "I.2": [
+          "all",
+          "P",
+          [
+            "all",
+            "Q",
+            [
+              "all",
+              "l",
+              [
+                "all",
+                "m",
+                [
+                  "imp",
+                  [
+                    "and",
+                    [
+                      "pred",
+                      "Point",
+                      [
+                        [
+                          "var",
+                          "P"
+                        ]
+                      ]
+                    ],
+                    [
+                      "and",
+                      [
+                        "pred",
+                        "Point",
+                        [
+                          [
+                            "var",
+                            "Q"
+                          ]
+                        ]
+                      ],
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Line",
+                          [
+                            [
+                              "var",
+                              "l"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Line",
+                            [
+                              [
+                                "var",
+                                "m"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "not",
+                              [
+                                "eq",
+                                [
+                                  "var",
+                                  "P"
+                                ],
+                                [
+                                  "var",
+                                  "Q"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Incident",
+                                [
+                                  [
+                                    "var",
+                                    "P"
+                                  ],
+                                  [
+                                    "var",
+                                    "l"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "pred",
+                                  "Incident",
+                                  [
+                                    [
+                                      "var",
+                                      "Q"
+                                    ],
+                                    [
+                                      "var",
+                                      "l"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "Q"
+                                      ],
+                                      [
+                                        "var",
+                                        "m"
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "eq",
+                    [
+                      "var",
+                      "l"
+                    ],
+                    [
+                      "var",
+                      "m"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      },
+      "functions": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "u": 0,
+        "v": 0,
+        "w": 0
+      },
+      "predicates": {
+        "Incident": 2,
+        "Line": 1,
+        "Point": 1
+      },
+      "schemas": []
+    },
+    "pa-ground": {
+      "axioms": {
+        "addition-successor": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "addition-zero": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        "multiplication-successor": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "mul",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "mul",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "multiplication-zero": [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "mul",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        ],
+        "successor-injective": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "successor-nonzero": [
+          "all",
+          "x",
+          [
+            "not",
+            [
+              "eq",
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ]
+        ]
+      },
+      "functions": {
+        "a": 0,
+        "add": 2,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "mul": 2,
+        "succ": 1,
+        "zero": 0
+      },
+      "predicates": {},
+      "schemas": [
+        "nat-induction"
+      ]
+    }
+  }
+}

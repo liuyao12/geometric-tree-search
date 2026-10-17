@@ -1,0 +1,42 @@
+{
+  "audit": {
+    "bytes": 22979,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v2.json",
+    "sha256": "d0130461abb0f094afa1eb96c50e717bf12e71d546465cbb57703fb2c003fb62"
+  },
+  "author_handoff": {
+    "bytes": 12797,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/handoff-v2.json",
+    "sha256": "e40814f356869bd03a97ec356ba0cccbed678c8b0c9b2e97792cb2356f73f921"
+  },
+  "caller_review": {
+    "bytes": 6799,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "8df73e91b09b91cef49e2058278cf2db242b011cf057921679f98d860b2d870e"
+  },
+  "collector_separate_review": {
+    "bytes": 1927,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-typed-Source-review-v2.json",
+    "sha256": "88d2a463a9d6db8a8a5de41a2ff38bec1d1f6cbf3d6c98b80d3d53357c8d7419"
+  },
+  "findings": {
+    "bytes": 3551,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/findings-v2.json",
+    "sha256": "d0aaa6b95998fde3350617367c8631ac5741c4a06eff4b770fb9c2995d1e6202"
+  },
+  "helper_review": {
+    "bytes": 2494,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/helper-typed-Source-review-v2.json",
+    "sha256": "8cb6f2570248091fd7fc896dffb02a70c833c4f3c3c44c57d614d4061d2a28f1"
+  },
+  "preserved_V1_negative": {
+    "bytes": 6424,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "621028615707736367adeca3e5e45fc0a338a9eb78e117a42e9e235dc74f9f62"
+  },
+  "schema": "Hilbert-component-controls-independent-Source-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "verdict": "Conditional Source pass; no actual authorization or runtime qualification."
+}

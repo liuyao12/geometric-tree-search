@@ -1,0 +1,599 @@
+{
+  "checks": [
+    {
+      "check": "current raw pin source",
+      "passed": true
+    },
+    {
+      "check": "current raw pin source_contract",
+      "passed": true
+    },
+    {
+      "check": "current raw pin reader",
+      "passed": true
+    },
+    {
+      "check": "current raw pin reader_source_contract",
+      "passed": true
+    },
+    {
+      "check": "current raw pin lossless_handoff",
+      "passed": true
+    },
+    {
+      "check": "cold parent raw pin",
+      "passed": true
+    },
+    {
+      "check": "cold current raw pin",
+      "passed": true
+    },
+    {
+      "check": "cold old raw region 898",
+      "passed": true
+    },
+    {
+      "check": "cold old raw region 498",
+      "passed": true
+    },
+    {
+      "check": "cold old raw region 325",
+      "passed": true
+    },
+    {
+      "check": "cold old raw region 162",
+      "passed": true
+    },
+    {
+      "check": "cold old raw region 25",
+      "passed": true
+    },
+    {
+      "check": "cold full raw forward",
+      "passed": true
+    },
+    {
+      "check": "cold new raw region 1089",
+      "passed": true
+    },
+    {
+      "check": "cold new raw region 689",
+      "passed": true
+    },
+    {
+      "check": "cold new raw region 327",
+      "passed": true
+    },
+    {
+      "check": "cold new raw region 162",
+      "passed": true
+    },
+    {
+      "check": "cold new raw region 25",
+      "passed": true
+    },
+    {
+      "check": "cold full raw inverse",
+      "passed": true
+    },
+    {
+      "check": "cold whole AST inverse",
+      "passed": true
+    },
+    {
+      "check": "cold compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "cold no removed callable regions",
+      "passed": true
+    },
+    {
+      "check": "cold only reviewed writer nested additions",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw need",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw canonical",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw raw_pin",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw unique",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw reject_constant",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw finite_float",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw decode",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw read_pinned",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw load_module",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw write_new",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw anchor",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw same",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw invoke",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw cancel",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw all_function_anchors",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw all_function_anchors.retain",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw save_failure_diagnostic.failure_gate",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw save_failure_diagnostic.encoded",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw save_failure_diagnostic.encoded.append",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw save_failure_diagnostic.encoded.visit",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw save_failure_diagnostic.write",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw encode_result_transport",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw ObservedCursor",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw ObservedCursor.__init__",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw ObservedCursor.context",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw ObservedCursor.advance",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw ObservedCursor.abort",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw ChildControlInterruption",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw main.tick",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw main.phase",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw main.guard",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw main.boundary",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw main.call",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw main.fresh_language",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw main.capture_provider_summary",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw main.capture_engine_milestone",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw main.run_receiver",
+      "passed": true
+    },
+    {
+      "check": "cold inherited region count",
+      "passed": true
+    },
+    {
+      "check": "cold actual forward patch return",
+      "detail": "patching file source.py",
+      "passed": true
+    },
+    {
+      "check": "cold actual forward patch exact",
+      "passed": true
+    },
+    {
+      "check": "cold actual inverse patch return",
+      "detail": "patching file source.py",
+      "passed": true
+    },
+    {
+      "check": "cold actual inverse patch exact",
+      "passed": true
+    },
+    {
+      "check": "reader parent raw pin",
+      "passed": true
+    },
+    {
+      "check": "reader current raw pin",
+      "passed": true
+    },
+    {
+      "check": "reader old raw region 683",
+      "passed": true
+    },
+    {
+      "check": "reader old raw region 12",
+      "passed": true
+    },
+    {
+      "check": "reader full raw forward",
+      "passed": true
+    },
+    {
+      "check": "reader new raw region 683",
+      "passed": true
+    },
+    {
+      "check": "reader new raw region 12",
+      "passed": true
+    },
+    {
+      "check": "reader full raw inverse",
+      "passed": true
+    },
+    {
+      "check": "reader whole AST inverse",
+      "passed": true
+    },
+    {
+      "check": "reader compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "reader no removed callable regions",
+      "passed": true
+    },
+    {
+      "check": "reader only reviewed writer nested additions",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw need",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw canonical",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw unique",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw decode",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw raw_pin",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw read",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw pinned",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw write",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw read_phases",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw validate_positive_callback_phases",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw validate_engine_milestones",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw decode_milestone_envelope",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw validate_serialization_omission",
+      "passed": true
+    },
+    {
+      "check": "reader inherited raw read_failure_diagnostic",
+      "passed": true
+    },
+    {
+      "check": "reader inherited region count",
+      "passed": true
+    },
+    {
+      "check": "reader actual forward patch return",
+      "detail": "patching file source.py",
+      "passed": true
+    },
+    {
+      "check": "reader actual forward patch exact",
+      "passed": true
+    },
+    {
+      "check": "reader actual inverse patch return",
+      "detail": "patching file source.py",
+      "passed": true
+    },
+    {
+      "check": "reader actual inverse patch exact",
+      "passed": true
+    },
+    {
+      "check": "embedded whole reviewed writer raw exact",
+      "passed": true
+    },
+    {
+      "check": "current FIXED literal exact sources without intake",
+      "passed": true
+    },
+    {
+      "check": "current source22",
+      "passed": true
+    },
+    {
+      "check": "reader CURRENT_CONTRACT exact current contract",
+      "passed": true
+    },
+    {
+      "check": "reader contract exact source and operative refs",
+      "passed": true
+    },
+    {
+      "check": "whole contract inherited inputs",
+      "passed": true
+    },
+    {
+      "check": "whole contract inherited original_model_sources",
+      "passed": true
+    },
+    {
+      "check": "whole contract inherited original_model_inputs",
+      "passed": true
+    },
+    {
+      "check": "whole contract inherited original_model_binding",
+      "passed": true
+    },
+    {
+      "check": "whole contract inherited limits",
+      "passed": true
+    },
+    {
+      "check": "whole contract inherited allocation",
+      "passed": true
+    },
+    {
+      "check": "whole contract inherited phase_sites",
+      "passed": true
+    },
+    {
+      "check": "original17/input2/current10 distinct",
+      "passed": true
+    },
+    {
+      "check": "unchanged34phase sites",
+      "passed": true
+    },
+    {
+      "check": "new codec kwdefaults exact",
+      "passed": true
+    },
+    {
+      "check": "late exact V4 kind wired",
+      "passed": true
+    },
+    {
+      "check": "positive reader exact current VERSION",
+      "passed": true
+    },
+    {
+      "check": "unchanged node2 event256 original20 failure55",
+      "passed": true
+    }
+  ],
+  "codec_calls": 0,
+  "module_evaluations": 0,
+  "records": [
+    {
+      "added_reviewed_writer_regions": [
+        "save_failure_diagnostic.codec_gate",
+        "save_failure_diagnostic.journal_item",
+        "save_failure_diagnostic.journal_item.append",
+        "save_failure_diagnostic.journal_item.reject",
+        "save_failure_diagnostic.journal_item.visit"
+      ],
+      "changed_named_regions": [
+        "save_failure_diagnostic",
+        "main"
+      ],
+      "parent": {
+        "bytes": 76794,
+        "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/first_admission_receiver_cold_v1.py",
+        "sha256": "8fd4ac50d08d0532465705713760daeadc0e7bef3ca60970db5f73e416ef6bfa"
+      },
+      "patches": [
+        {
+          "bytes": 16441,
+          "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py.forward.patch",
+          "sha256": "46beea5f106f54224f1b2455440794f2ff44ae6badac8e7b2dfc3ab09db81f06"
+        },
+        {
+          "bytes": 16441,
+          "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py.inverse.patch",
+          "sha256": "f4302e2b117e415ebf7c02953ce4361788b712d9909ba871456924505f4ab45c"
+        }
+      ],
+      "raw_regions": 5,
+      "role": "cold",
+      "source": {
+        "bytes": 90045,
+        "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py",
+        "sha256": "e157a9b2aa517e6563f7730f496d7a9ea8ee584615c6a42cdc037226f8a12842"
+      },
+      "unchanged_named_regions": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.phase",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language",
+        "main.capture_provider_summary",
+        "main.capture_engine_milestone",
+        "main.run_receiver"
+      ]
+    },
+    {
+      "added_reviewed_writer_regions": [],
+      "changed_named_regions": [
+        "main"
+      ],
+      "parent": {
+        "bytes": 52379,
+        "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+        "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+      },
+      "patches": [
+        {
+          "bytes": 1270,
+          "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py.forward.patch",
+          "sha256": "ea176056cc8f8af0b1813ae94e02fd4b7c0e2a1e1a6917c8c9a82cdb81c9da19"
+        },
+        {
+          "bytes": 1270,
+          "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py.inverse.patch",
+          "sha256": "d948910b6b1c449f89887cf6df286ca215e12038688c1e2fff2d6ea76841b1ae"
+        }
+      ],
+      "raw_regions": 2,
+      "role": "reader",
+      "source": {
+        "bytes": 52406,
+        "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py",
+        "sha256": "2b23a8269e9116a4997d461342f5245e1d5bf372f972e638cd5b5b3f2fdd6b21"
+      },
+      "unchanged_named_regions": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write",
+        "read_phases",
+        "validate_positive_callback_phases",
+        "validate_engine_milestones",
+        "decode_milestone_envelope",
+        "validate_serialization_omission",
+        "read_failure_diagnostic"
+      ]
+    }
+  ],
+  "reviewed_writer": {
+    "bytes": 36501,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+    "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+  },
+  "schema": "lossless-first-admission-independent-Source-audit-v1",
+  "scientific_calls": 0,
+  "scope": "Source metadata, raw/AST, compile without evaluation, real text patches only; no scientific inputs or actual outputs read.",
+  "source_only": true
+}

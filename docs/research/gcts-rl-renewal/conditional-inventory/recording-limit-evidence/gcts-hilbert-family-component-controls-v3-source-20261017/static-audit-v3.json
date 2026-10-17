@@ -1,0 +1,103 @@
+{
+  "actual_patch_F0_directions": 2,
+  "call_sites": [
+    {
+      "expression": "stdlib_gate",
+      "line": 362
+    },
+    {
+      "expression": "context_checker.ClosedInputs",
+      "line": 363
+    },
+    {
+      "expression": "closed.json",
+      "line": 364
+    },
+    {
+      "expression": "context_checker.admitted_context",
+      "line": 366
+    },
+    {
+      "expression": "modules['dynamic_graph_adapter'].make_dynamic_graph_type",
+      "line": 370
+    },
+    {
+      "expression": "graph_type",
+      "line": 373
+    },
+    {
+      "expression": "context_checker.SelectedWire",
+      "line": 375
+    },
+    {
+      "expression": "modules['component_controls'].run_component_controls",
+      "line": 378
+    },
+    {
+      "expression": "closed.close",
+      "line": 388
+    },
+    {
+      "expression": "stdlib_gate",
+      "line": 388
+    },
+    {
+      "expression": "encode_result_transport",
+      "line": 397
+    },
+    {
+      "expression": "write_new",
+      "line": 399
+    },
+    {
+      "expression": "write_new",
+      "line": 410
+    },
+    {
+      "expression": "canonical",
+      "line": 397
+    },
+    {
+      "expression": "wire.model_epoch",
+      "line": 376
+    }
+  ],
+  "classification": {
+    "bound_methods": "Python thunk checks actual receiver/type, original function strong anchor+MRO snapshot and freshly resolved effective receiver method pre/post, including exceptional return.",
+    "classes": "Python thunk checks full actual class and metaclass MRO/function/default/closure snapshots pre/post; original invoke anchors thunk and exceptional finally boundary.",
+    "functions": "Original invoke(fn,args,kwargs) unchanged.",
+    "other_callables": "Explicitly rejected, no generic callable bypass."
+  },
+  "clock_calls": 0,
+  "compile_without_evaluation": true,
+  "generated_guards": "graph_type class added to ordinary guard before construction; immutable catalog class added immediately after successful construction. Constructor thunk guards actual inherited __new__/__init__/metaclass code throughout.",
+  "module_evaluations": 0,
+  "raw_edits": 4,
+  "same_fixed15_current_sources": true,
+  "same_original_contexts_limits_native_wire": true,
+  "schema": "Hilbert-family-component-controls-static-audit-v3",
+  "scientific_calls": 0,
+  "scientific_helper_source_unchanged": true,
+  "source_only": true,
+  "tests_or_functions_executed": 0,
+  "top_level_helpers_raw_AST_exact": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "load_module",
+    "stdlib_gate",
+    "encode_result_transport"
+  ],
+  "whole_raw_AST_inverse": true
+}

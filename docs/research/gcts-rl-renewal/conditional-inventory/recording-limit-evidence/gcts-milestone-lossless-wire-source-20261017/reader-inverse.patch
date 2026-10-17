@@ -1,0 +1,212 @@
+--- source.py
++++ source.py
+@@ -79,8 +79,6 @@
+     ('state','decision','decision_event','prototype_census'))
+ MILESTONE_ENGINE_VERSION='lazy-unit-row-global-engine-v13-receptor-family-preferences-v8-first-admission-journal'
+ MILESTONE_JOURNAL_MAX_BYTES=3*1048576
+-LOSSLESS_EXPANDED_MAX_BYTES=16*1048576
+-LOSSLESS_JOURNAL_BASENAME='ROOT-expanded-engine-journal-v1.json'
+ DIAGNOSTIC_MAX_BYTES=4*1048576+131072
+ PHASES=LEGACY_PHASES+CALLBACK_PHASES+SEARCH_PHASES+MILESTONE_PHASES
+ PROVIDER_COUNTERS=('planned_assignments','attempted_assignments','binding_attempts',
+@@ -290,68 +288,7 @@
+     return {'captured_headers':headers,'captured_record_count':captured,'serialized_record_count':serialized}
+ 
+ 
+-def decode_milestone_envelope(envelope):
+-    need(type(envelope)is dict and set(envelope)=={'schema','encoding','expanded_bytes','expanded_sha256',
+-        'compressed_bytes','compressed_sha256','payload_base64'}, 'exact V4 lossless envelope fields')
+-    need(envelope['schema']=='unit-row-engine-milestone-lossless-envelope-v1'
+-         and envelope['encoding']=='zlib+base64'
+-         and type(envelope['expanded_bytes'])is int and 21<=envelope['expanded_bytes']<=LOSSLESS_EXPANDED_MAX_BYTES
+-         and type(envelope['compressed_bytes'])is int and 0<envelope['compressed_bytes']<=MILESTONE_JOURNAL_MAX_BYTES
+-         and type(envelope['expanded_sha256'])is str and type(envelope['compressed_sha256'])is str
+-         and type(envelope['payload_base64'])is str, 'literal V4 lossless envelope bounds')
+-    encoded=json.dumps(envelope,ensure_ascii=True,separators=(',', ':'),allow_nan=False).encode('ascii')
+-    need(len(encoded)<=MILESTONE_JOURNAL_MAX_BYTES, 'whole V4 encoded envelope cap')
+-    compressed=base64.b64decode(envelope['payload_base64'],validate=True)
+-    need(len(compressed)==envelope['compressed_bytes']
+-         and raw_pin(compressed)['sha256']==envelope['compressed_sha256'], 'V4 whole compressed hash and length')
+-    decoder=zlib.decompressobj();expanded=decoder.decompress(compressed,LOSSLESS_EXPANDED_MAX_BYTES+1)
+-    need(len(expanded)<=LOSSLESS_EXPANDED_MAX_BYTES and decoder.eof
+-         and decoder.unused_data==b'' and decoder.unconsumed_tail==b'', 'V4 bounded whole zlib EOF no extra stream')
+-    need(len(expanded)==envelope['expanded_bytes'] and raw_pin(expanded)['sha256']==envelope['expanded_sha256'],
+-         'V4 whole expanded hash and length')
+-    slots=decode(expanded)
+-    need(type(slots)is list and len(slots)==4, 'V4 fixed four decoded journal slots')
+-    need(json.dumps(slots,ensure_ascii=True,separators=(',', ':'),allow_nan=False).encode('ascii')==expanded,
+-         'V4 exact insertion-order ASCII expanded JSON without extra LF')
+-    # Exact writer structural limits, per whole wrapper rather than only record body.
+-    for wrapper in slots:
+-        if wrapper is None:continue
+-        pending=[(wrapper,0)];nodes=0
+-        while pending:
+-            item,depth=pending.pop();nodes+=1;kind=type(item)
+-            need(nodes<=200000 and depth<=128, 'V4 per-record node and depth limits')
+-            if item is None or kind is bool:continue
+-            if kind is int:need(item.bit_length()<=4096, 'V4 integer bit limit')
+-            elif kind is str:need(len(item)<=262144, 'V4 string length limit')
+-            elif kind is list:pending.extend((value,depth+1)for value in item)
+-            elif kind is dict:
+-                need(all(type(key)is str for key in item), 'V4 builtin string dictionary keys')
+-                for key,value in item.items():pending.extend(((key,depth+1),(value,depth+1)))
+-            else:need(False, 'V4 builtin JSON value types only')
+-    return slots,expanded,len(encoded)
+-
+-
+-def validate_serialization_omission(value, candidate, captured):
+-    if value is None:
+-        need(candidate==captured, 'V4 full serializable captured prefix without omission');return
+-    need(type(value)is dict and set(value)=={'phase','code','record_ordinal','limit','observed'}
+-         and value['phase']=='BUILTIN_SERIALIZATION' and type(value['record_ordinal'])is int
+-         and value['record_ordinal']==candidate+1<=captured, 'V4 exact owned serialization omission')
+-    code=value['code'];limit=value['limit'];observed=value['observed']
+-    bounds={'STRING_LENGTH_LIMIT':262144,'NODE_LIMIT':200000,'DEPTH_LIMIT':128,'INTEGER_BIT_LIMIT':4096}
+-    if code=='EXPANDED_BYTE_LIMIT':
+-        need(type(limit)is int and 0<limit<=LOSSLESS_EXPANDED_MAX_BYTES and type(observed)is int and observed>limit,
+-             'V4 exact expanded byte omission counters')
+-    elif code in bounds:
+-        need(type(limit)is int and limit==bounds[code]and type(observed)is int and observed>limit,
+-             'V4 exact primitive omission counters')
+-    else:
+-        need((code=='NON_STRING_KEY'and observed=='NON_STRING_KEY')
+-             or(code=='NON_BUILTIN_VALUE'and observed=='UNSUPPORTED'), 'V4 explicit own type omission code')
+-        need(limit is None and type(observed)is str, 'V4 bounded type omission metadata')
+-
+-
+-def read_failure_diagnostic(owned,plan,plan_raw,contract,launch,terminal,phases,*,journal_output_path=None):
++def read_failure_diagnostic(owned,plan,plan_raw,contract,launch,terminal,phases):
+     if not owned.exists():
+         return {'complete_pair':False,'reason':'no owned diagnostic directory'}
+     names=sorted(p.name for p in owned.iterdir())
+@@ -368,10 +305,9 @@
+          'exact builtin diagnostic completion fields')
+     need(type(marker['schema'])is str and marker['schema']in
+          ('unit-row-controls-last-context-completion-v1','unit-row-controls-provider-returns-completion-v2',
+-          'unit-row-controls-engine-milestones-completion-v3','unit-row-controls-engine-milestones-completion-v4'),
++          'unit-row-controls-engine-milestones-completion-v3'),
+          'explicit legacy or provider-return completion schema')
+-    lossless_journal=marker['schema']=='unit-row-controls-engine-milestones-completion-v4'
+-    engine_journal=lossless_journal or marker['schema']=='unit-row-controls-engine-milestones-completion-v3'
++    engine_journal=marker['schema']=='unit-row-controls-engine-milestones-completion-v3'
+     provider_journal=engine_journal or marker['schema']=='unit-row-controls-provider-returns-completion-v2'
+     need(type(marker['file'])is str and marker['file']=='unknown-diagnostic.json'
+          and type(marker['sha256'])is str and marker['sha256']==raw_pin(diagnostic_raw)['sha256']
+@@ -384,7 +320,7 @@
+          'same complete builtin failure diagnostic bytes')
+     outer_keys={'context','diagnostic','last_observations'}
+     if provider_journal:outer_keys.add('provider_returns')
+-    if engine_journal:outer_keys.add('engine_milestones_envelope'if lossless_journal else 'engine_milestones')
++    if engine_journal:outer_keys.add('engine_milestones')
+     need(type(diagnostic)is dict and len(diagnostic)==len(outer_keys)
+          and all(type(key)is str for key in diagnostic) and set(diagnostic)==outer_keys,
+          'exact builtin diagnostic object')
+@@ -418,14 +354,12 @@
+             'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
+             'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}
+         if engine_journal:
+-            expected_labels.update(schema=('unit-row-controls-engine-milestones-diagnostic-v4'if lossless_journal else 'unit-row-controls-engine-milestones-diagnostic-v3'),
++            expected_labels.update(schema='unit-row-controls-engine-milestones-diagnostic-v3',
+                 qualification='UNQUALIFIED_LITERAL_ENGINE_MILESTONE_RECORDS',
+                 callback_context='LITERAL_RETURNED_SCALARS_AND_RAW_ENGINE_RECORDS_ONLY',
+                 engine_milestone_records_are_unvalidated=True)
+         metadata_keys={'captured_headers','captured_record_count','serialized_record_count',
+             'omitted_record_count','next_omitted_ordinal','engine_record_prefix_reason','engine_journal_bytes'} if engine_journal else set()
+-        if lossless_journal:metadata_keys.update(('encoded_candidate_prefix_count','expanded_candidate_bytes',
+-            'encoded_envelope_bytes','serialization_omission','wire_omission'))
+         need(set(labels)==set(expected_labels)|metadata_keys
+              and all(type(labels[key])is type(value) and labels[key]==value
+                      for key,value in expected_labels.items()), 'literal V2 unqualified scalar-only labels')
+@@ -477,49 +411,8 @@
+                  and (group+'_CALLBACK_READY'not in phase_stamps
+                       or value['native_ns']<=phase_stamps[group+'_CALLBACK_READY']),
+                  'nullable scalar timestamp joins reached delegate and optional ready sites')
+-    milestone_summary=None;decoded_journal=None;decoded_slots=None;decoded_export=None
+-    if lossless_journal:
+-        envelope=diagnostic['engine_milestones_envelope']
+-        if envelope is None:
+-            slots_for_headers=[None,None,None,None];encoded_bytes=None
+-        else:
+-            decoded_slots,decoded_journal,encoded_bytes=decode_milestone_envelope(envelope)
+-            slots_for_headers=decoded_slots
+-        milestone_summary=validate_engine_milestones(slots_for_headers,phases,began,deadline,terminal,
+-            labels['captured_headers'])
+-        captured=milestone_summary['captured_record_count'];retained=milestone_summary['serialized_record_count']
+-        candidate=labels['encoded_candidate_prefix_count']
+-        need(all(type(labels[key])is int for key in ('captured_record_count','serialized_record_count',
+-                  'omitted_record_count','encoded_candidate_prefix_count','expanded_candidate_bytes'))
+-             and 0<=candidate<=captured and 21<=labels['expanded_candidate_bytes']<=LOSSLESS_EXPANDED_MAX_BYTES
+-             and labels['captured_record_count']==captured and labels['serialized_record_count']==retained
+-             and labels['omitted_record_count']==captured-retained, 'V4 exact captured candidate retained omitted counts')
+-        validate_serialization_omission(labels['serialization_omission'],candidate,captured)
+-        wire=labels['wire_omission']
+-        if envelope is None:
+-            need(retained==0 and type(wire)is dict
+-                 and set(wire)=={'phase','code','record_ordinal','limit','observed'}
+-                 and wire['phase']=='ENCODED_ENVELOPE'and wire['code']=='ENCODED_ENVELOPE_BYTE_LIMIT'
+-                 and type(wire['limit'])is int and wire['limit']==MILESTONE_JOURNAL_MAX_BYTES
+-                 and type(wire['observed'])is int and wire['observed']>wire['limit']
+-                 and ((captured==0 and wire['record_ordinal']is None)or
+-                      (captured>0 and type(wire['record_ordinal'])is int and wire['record_ordinal']==1))
+-                 and labels['engine_journal_bytes']is None and labels['encoded_envelope_bytes']is None,
+-                 'V4 no retained envelope exact output-bound omission; no invented decoded data')
+-        else:
+-            need(wire is None and retained==candidate
+-                 and type(labels['engine_journal_bytes'])is int
+-                 and labels['engine_journal_bytes']==labels['expanded_candidate_bytes']==len(decoded_journal)
+-                 and type(labels['encoded_envelope_bytes'])is int and labels['encoded_envelope_bytes']==encoded_bytes,
+-                 'V4 exact retained whole lossless journal byte counts')
+-        reason=('ENCODED_ENVELOPE_BYTE_LIMIT'if wire is not None else
+-            'OWN_PRIMITIVE_SERIALIZATION_LIMIT'if labels['serialization_omission']is not None else 'ALL_CAPTURED_RECORDS_SAVED')
+-        need(type(labels['engine_record_prefix_reason'])is str and labels['engine_record_prefix_reason']==reason,
+-             'V4 explicit own omission phase reason')
+-        if captured==retained:need(labels['next_omitted_ordinal']is None, 'V4 no omitted captured body')
+-        else:need(type(labels['next_omitted_ordinal'])is int and labels['next_omitted_ordinal']==retained+1,
+-                  'V4 next omitted whole captured record')
+-    elif engine_journal:
++    milestone_summary=None
++    if engine_journal:
+         milestone_summary=validate_engine_milestones(diagnostic['engine_milestones'],phases,began,deadline,terminal,
+             labels['captured_headers'])
+         captured=milestone_summary['captured_record_count'];serialized=milestone_summary['serialized_record_count']
+@@ -540,16 +433,6 @@
+             need(type(labels['next_omitted_ordinal'])is int and labels['next_omitted_ordinal']==serialized+1
+                  and labels['engine_record_prefix_reason']!='ALL_CAPTURED_RECORDS_SAVED', 'explicit whole-record omitted suffix')
+     need(all(began<=phase['native_ns']<deadline for phase in phases), 'complete phase samples within original20')
+-    # Export only after native/context/schema/header/phase/omission checks above pass.
+-    if lossless_journal and decoded_journal is not None:
+-        need(journal_output_path is not None, 'V4 explicit derived expanded-journal path')
+-        target=Path(journal_output_path)
+-        need(target.is_absolute()and target==target.resolve()and target.name==LOSSLESS_JOURNAL_BASENAME
+-             and not target.exists(), 'fresh canonical sibling expanded-journal artifact')
+-        with target.open('xb')as stream:
+-            need(stream.write(decoded_journal)==len(decoded_journal), 'whole expanded journal write')
+-        need(read(target,LOSSLESS_EXPANDED_MAX_BYTES)==decoded_journal, 'whole expanded journal EOF readback')
+-        decoded_export=dict(path=str(target),**raw_pin(decoded_journal))
+     result={'complete_pair':True,'diagnostic':dict(path=str(owned/'unknown-diagnostic.json'),**raw_pin(diagnostic_raw)),
+         'completion':dict(path=str(owned/'diagnostic-completion.json'),**raw_pin(completion_raw)),
+         'context':context,'last_observations':slots,'last_observation_is_active_failure_frame':False,
+@@ -557,12 +440,7 @@
+     if provider_journal:
+         result.update(provider_returns=returned,provider_return_summaries_are_unvalidated_scalars=True,
+             callback_return_to_engine_proved=False,offers_accepted=False,current_state_accepted=False)
+-    if lossless_journal:
+-        result.update(engine_milestones_envelope=diagnostic['engine_milestones_envelope'],
+-            decoded_engine_journal=decoded_export,engine_milestone_decoded_records_inlined=False,
+-            engine_milestone_serialization={key:labels[key]for key in metadata_keys},
+-            engine_milestone_records_are_unvalidated=True,engine_milestone_semantic_acceptance=False)
+-    elif engine_journal:
++    if engine_journal:
+         result.update(engine_milestones=diagnostic['engine_milestones'],
+             engine_milestone_serialization={key:labels[key]for key in metadata_keys},
+             engine_milestone_records_are_unvalidated=True,engine_milestone_semantic_acceptance=False)
+@@ -735,8 +613,7 @@
+             receiver_probe_record_complete=pipeline['status']=='RECEIVER_PROBE_RECORDED',
+             expanded=dict(path=str(expanded_path),**raw_pin(expanded)),outputs=final['outputs'])
+     else:
+-        summary['failure_diagnostic']=read_failure_diagnostic(Path(plan['output_directory']),plan,plan_raw,contract,launch,terminal,phases,
+-            journal_output_path=disposition_path.with_name(LOSSLESS_JOURNAL_BASENAME))
++        summary['failure_diagnostic']=read_failure_diagnostic(Path(plan['output_directory']),plan,plan_raw,contract,launch,terminal,phases)
+     print(json.dumps({'disposition':write(disposition_path,summary),'status':summary['status'],
+         'receiver_probe_record_complete':summary['receiver_probe_record_complete'],
+         'native_launch_to_postprobe_ns':probe-launch,'aggregate_B_bytes':meter['caller_kernel_peak_bytes']},sort_keys=True))

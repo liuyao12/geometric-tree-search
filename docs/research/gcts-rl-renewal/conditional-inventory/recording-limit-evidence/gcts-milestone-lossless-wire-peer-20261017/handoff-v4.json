@@ -1,0 +1,22 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 4378,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/findings-v4.json",
+    "sha256": "61f7cc41264991312c0aff3aca665b17f5408113ae74c6e6f951e3f38428cad2"
+  },
+  "review": {
+    "bytes": 2201,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/typed-Source-review-v4.json",
+    "sha256": "850ed81db5c3a9fa8c53d34b18b9a57145ed02056e63f57f5d9d8bcac36ee1c7"
+  },
+  "schema": "ROOT-milestone-lossless-wire-peer-handoff-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "static_audit": {
+    "bytes": 10343,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/independent-static-audit-v4.json",
+    "sha256": "c283008125e7f77d90b79427ecc5760e17a73d612a104154261fb2c2e8f6492a"
+  }
+}

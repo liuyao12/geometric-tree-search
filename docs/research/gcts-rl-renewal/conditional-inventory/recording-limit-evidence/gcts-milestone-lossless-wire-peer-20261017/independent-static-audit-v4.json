@@ -1,0 +1,435 @@
+{
+  "actual_or_result_reads": false,
+  "actual_patch_outputs": {
+    "reader": {
+      "forward": "patching file source.py\n",
+      "inverse": "patching file source.py\n"
+    },
+    "writer": {
+      "forward": "patching file source.py\n",
+      "inverse": "patching file source.py\n"
+    }
+  },
+  "checks": [
+    {
+      "check": "exact contract",
+      "passed": true
+    },
+    {
+      "check": "exact API",
+      "passed": true
+    },
+    {
+      "check": "exact delta",
+      "passed": true
+    },
+    {
+      "check": "exact author_static",
+      "passed": true
+    },
+    {
+      "check": "exact approved_design",
+      "passed": true
+    },
+    {
+      "check": "reader source pin",
+      "passed": true
+    },
+    {
+      "check": "reader parent pin",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 615",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 442",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 435",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 413",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 362",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 356",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 322",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 309",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 307",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 290",
+      "passed": true
+    },
+    {
+      "check": "reader before line region 81",
+      "passed": true
+    },
+    {
+      "check": "reader whole raw forward",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 737",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 559",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 542",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 479",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 426",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 420",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 386",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 372",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 370",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 292",
+      "passed": true
+    },
+    {
+      "check": "reader after line region 81",
+      "passed": true
+    },
+    {
+      "check": "reader whole raw inverse",
+      "passed": true
+    },
+    {
+      "check": "reader whole AST inverse",
+      "passed": true
+    },
+    {
+      "check": "reader compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "reader forward patch pin",
+      "passed": true
+    },
+    {
+      "check": "reader actual forward -F0",
+      "passed": true
+    },
+    {
+      "check": "reader actual forward exactbytes",
+      "passed": true
+    },
+    {
+      "check": "reader inverse patch pin",
+      "passed": true
+    },
+    {
+      "check": "reader actual inverse -F0",
+      "passed": true
+    },
+    {
+      "check": "reader actual inverse exactbytes",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw need",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw canonical",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw unique",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw decode",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw raw_pin",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw read",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw pinned",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw write",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw read_phases",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw validate_positive_callback_phases",
+      "passed": true
+    },
+    {
+      "check": "reader retained raw validate_engine_milestones",
+      "passed": true
+    },
+    {
+      "check": "reader retained helper count",
+      "passed": true
+    },
+    {
+      "check": "writer source pin",
+      "passed": true
+    },
+    {
+      "check": "writer parent pin",
+      "passed": true
+    },
+    {
+      "check": "writer before line region 340",
+      "passed": true
+    },
+    {
+      "check": "writer before line region 167",
+      "passed": true
+    },
+    {
+      "check": "writer before line region 4",
+      "passed": true
+    },
+    {
+      "check": "writer whole raw forward",
+      "passed": true
+    },
+    {
+      "check": "writer after line region 531",
+      "passed": true
+    },
+    {
+      "check": "writer after line region 169",
+      "passed": true
+    },
+    {
+      "check": "writer after line region 4",
+      "passed": true
+    },
+    {
+      "check": "writer whole raw inverse",
+      "passed": true
+    },
+    {
+      "check": "writer whole AST inverse",
+      "passed": true
+    },
+    {
+      "check": "writer compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "writer forward patch pin",
+      "passed": true
+    },
+    {
+      "check": "writer actual forward -F0",
+      "passed": true
+    },
+    {
+      "check": "writer actual forward exactbytes",
+      "passed": true
+    },
+    {
+      "check": "writer inverse patch pin",
+      "passed": true
+    },
+    {
+      "check": "writer actual inverse -F0",
+      "passed": true
+    },
+    {
+      "check": "writer actual inverse exactbytes",
+      "passed": true
+    },
+    {
+      "check": "writer retained raw save_failure_diagnostic.failure_gate",
+      "passed": true
+    },
+    {
+      "check": "writer retained raw save_failure_diagnostic.encoded",
+      "passed": true
+    },
+    {
+      "check": "writer retained raw save_failure_diagnostic.encoded.append",
+      "passed": true
+    },
+    {
+      "check": "writer retained raw save_failure_diagnostic.encoded.visit",
+      "passed": true
+    },
+    {
+      "check": "writer retained raw save_failure_diagnostic.write",
+      "passed": true
+    },
+    {
+      "check": "writer retained helper count",
+      "passed": true
+    },
+    {
+      "check": "new V4 branch no catches",
+      "passed": true
+    },
+    {
+      "check": "captured codec defaults/types/identity",
+      "passed": true
+    },
+    {
+      "check": "codec prepost gates",
+      "passed": true
+    },
+    {
+      "check": "unsupported type no dynamic name/repr",
+      "passed": true
+    },
+    {
+      "check": "bounded one zlib stream without flush",
+      "passed": true
+    },
+    {
+      "check": "base64 strict alphabet",
+      "passed": true
+    },
+    {
+      "check": "expanded exact insertion-order ASCII",
+      "passed": true
+    },
+    {
+      "check": "all selected native/structural caps",
+      "passed": true
+    },
+    {
+      "check": "export follows all phase/body/omission checks",
+      "passed": true
+    },
+    {
+      "check": "exclusive bounded exact artifact noLF",
+      "passed": true
+    },
+    {
+      "check": "future Root authority rebind still required",
+      "passed": true
+    }
+  ],
+  "clock_calls": 0,
+  "codec_evaluations": 0,
+  "delta_coordinates": "zero-based line regions, checked against complete retained raw before/after",
+  "module_evaluations": 0,
+  "references": {
+    "API": {
+      "bytes": 5122,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/API-wire-v4.json",
+      "sha256": "57151af851a4d8ffbfb5bd243193223b26b2cb71f34e2d5137be9ca3c59e5062"
+    },
+    "approved_design": {
+      "bytes": 9171,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-design-20261017/lossless-wire-design-v1.json",
+      "sha256": "683349c19c64c6114a80b0aa0e01e49ff96bfb48f07eb6ec1bc197f38dac0154"
+    },
+    "author_static": {
+      "bytes": 1389,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/static-audit-v4.json",
+      "sha256": "2e78207e1974e9013b39b02d94d9dff9c3981a486db0f2b8bf522b0ba16d55e1"
+    },
+    "contract": {
+      "bytes": 7708,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-contract-v4.json",
+      "sha256": "a8a7693daf481aff731fcf4e411c4b296cfba2eab0ca9a4aff2cd35c30f20930"
+    },
+    "delta": {
+      "bytes": 30633,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-delta-v4.json",
+      "sha256": "357dd3c1265c1b8c19a3eabd8148cbb06d773d4e3c528c4c6825db88557f0253"
+    },
+    "reader_parent": {
+      "bytes": 42910,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/first_admission_saved_reader_v3.py",
+      "sha256": "0d17ae4cef18f9aa03f65ea63c332707289eaaaac49e05f591f27a463553a350"
+    },
+    "reader_source": {
+      "bytes": 52379,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+      "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f"
+    },
+    "writer_parent": {
+      "bytes": 23268,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/save_failure_diagnostic_v3.fragment.py",
+      "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26"
+    },
+    "writer_source": {
+      "bytes": 36501,
+      "path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+      "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619"
+    }
+  },
+  "retained_named_regions": {
+    "reader": [
+      "need",
+      "canonical",
+      "unique",
+      "decode",
+      "raw_pin",
+      "read",
+      "pinned",
+      "write",
+      "read_phases",
+      "validate_positive_callback_phases",
+      "validate_engine_milestones"
+    ],
+    "writer": [
+      "save_failure_diagnostic.failure_gate",
+      "save_failure_diagnostic.encoded",
+      "save_failure_diagnostic.encoded.append",
+      "save_failure_diagnostic.encoded.visit",
+      "save_failure_diagnostic.write"
+    ]
+  },
+  "schema": "ROOT-milestone-lossless-wire-peer-static-v4",
+  "scientific_calls": 0,
+  "source_only": true
+}

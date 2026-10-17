@@ -1,0 +1,29 @@
+{
+  "assessment": {
+    "bytes": 12989,
+    "path": "/private/tmp/gcts-parallel-search-assessment-20261017/parallel-search-assessment-v1.json",
+    "sha256": "c9cb72cd3ae879b0a1e227ebc9e51e8753bd329bf473bac415907bae3c83cbca"
+  },
+  "evidence": {
+    "arithmetic_summary": {
+      "bytes": 6569,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/ROOT-first-admission-diagnostic-summary-v1.json",
+      "sha256": "2aef794cf60decdfc030c7106facd1e2ff2e3ffe1fc15650bb7a2827481e2a54"
+    },
+    "geometry_reconciliation": {
+      "bytes": 15205,
+      "path": "/private/tmp/gcts-hilbert-fresh-status-reconciliation-20261017/status-reconciliation-v1.json",
+      "sha256": "9027ad21bad6c4013b693c13461cb9b0a59f1c711af8e97be79dde73004f3cc9"
+    },
+    "saved_report": {
+      "bytes": 32136,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "42900bbe9842df88c30a203e580136a6fd2a62a30fbf032b536511bd189e9a3b"
+    }
+  },
+  "execution_authorized": false,
+  "new_actuals": 0,
+  "schema": "GCTS-parallel-search-assessment-handoff-v1",
+  "scientific_calls": 0,
+  "source_only_or_saved_metadata_only": true
+}

@@ -1,0 +1,271 @@
+"""SOURCE ONLY: catalogue-generated Hilbert COMPONENT CONTROLS.
+
+No supplied proof route, search, published certificate or donor inventory input.
+Actual global decisions precede every Executor.step; all point unions stay native.
+Availability of a branch/literal extraction is not promised by this Source packet.
+"""
+import hashlib
+import json
+
+VERSION = 'hilbert-shared-family-native-component-controls-v2-child-unknown'
+RESULT_SCHEMA = 'hilbert-shared-family-component-controls-v1'
+COLLECTOR_VERSION = 'hilbert-shared-family-current-selected-DAG-collector-v2-adapter-v3'
+ADAPTER_VERSION = 'hilbert-shared-parametric-family-native-admission-adapter-v3-current-hint-invalidation'
+CONSUMER_VERSION = 'hilbert-shared-family-fresh-primitive-preference-consumer-v1'
+MINER_VERSION = 'receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue'
+PRODUCER_VERSION = 'receptor-family-typed-expander-v1'
+CHECKER_VERSION = 'receptor-family-independent-expansion-checker-v1'
+FLAGS = {'component_controls_only': True, 'discovered_proof': False,
+    'logical_proof_accepted': False, 'all_five_rules_qualified': False,
+    'whole_engine_qualified': False, 'complete_GCTS_model_accepted': False,
+    'trajectory_accepted': False, 'pruning_accepted': False, 'RL_accepted': False,
+    'useful_transfer_accepted': False, 'runtime_qualified': False,
+    'ROOT_resource_accepted': False}
+
+
+def need(value, message):
+    if not value:raise ValueError(message)
+
+
+def canonical(value):
+    return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False)
+
+
+def run_component_controls(*, graph, point_core, host_adapter, collector, miner,
+                           producer, expansion_checker, consumer, context_checker,
+                           logical_oracle, closed_inputs, qualification, tick):
+    """One current original context, no externally supplied local control key.
+
+    The first real global branch's first canonical native member is temporarily
+    placed through Executor.step, collected and mined, then rolled back. A literal
+    cut containing that member is a deliberately labelled API control. It is
+    freshly admitted at the restored actual branch, not a discovered theorem.
+    """
+    need(callable(tick),'original cumulative native endpoint')
+    expected={'host_adapter':ADAPTER_VERSION,'collector':COLLECTOR_VERSION,
+        'miner':MINER_VERSION,'producer':PRODUCER_VERSION,
+        'expansion_checker':CHECKER_VERSION,'consumer':CONSUMER_VERSION}
+    modules={'host_adapter':host_adapter,'collector':collector,'miner':miner,
+        'producer':producer,'expansion_checker':expansion_checker,'consumer':consumer}
+    need(all(modules[k].VERSION==v for k,v in expected.items()),'exact separately named current APIs')
+    names={};events=[];evidence={};checks={}
+    initial=graph.semantic_state();root_checkpoint=graph.checkpoint()
+    initial_raw=canonical(initial);qualification_raw=canonical(qualification)
+    entry_host=host_adapter.describe_host(graph=graph,context_checker=context_checker,
+        closed_inputs=closed_inputs,qualification=qualification,tick=tick)
+    entry_host_raw=canonical(entry_host)
+    def merge(entries):
+        need(type(entries)is list,'literal full exposed identity census')
+        for pair in entries:
+            tick();need(type(pair)is list and len(pair)==2 and all(type(x)is str for x in pair),'full ID/preimage pair')
+            ident,preimage=pair
+            need(ident not in names or names[ident]==preimage,'full identity collision; no digest injectivity')
+            names[ident]=preimage
+    def census():return [[key,value]for key,value in sorted(names.items())]
+    def expose(packet):
+        pre=packet['identity_preimage']
+        merge([[pre['prototype_id'],canonical(pre['prototype_preimage'])],
+            [packet['id'],canonical(pre)]])
+    def record_decision(label,decision):
+        events.append({'event':'DECISION','label':label,'decision':{
+            'kind':decision.kind,'row':decision.row,'count':decision.count,'generation':decision.generation}})
+    def finish(status,reason):
+        tick()
+        need(canonical(graph.semantic_state())==initial_raw,'complete owned root semantic rollback')
+        fresh=host_adapter.describe_host(graph=graph,context_checker=context_checker,
+            closed_inputs=closed_inputs,qualification=qualification,tick=tick)
+        need(canonical(fresh)==entry_host_raw and canonical(qualification)==qualification_raw
+            and all(modules[k].VERSION==v for k,v in expected.items()),'same whole original context and current endpoints')
+        return {'schema':RESULT_SCHEMA,'version':VERSION,'status':status,'reason':reason,
+            'label':'CATALOGUE_GENERATED_COMPONENT_CONTROLS','host':entry_host,
+            'qualification':qualification,'initial_state':initial,'final_state':graph.semantic_state(),
+            'events':events,'evidence':evidence,'checks':checks,'prototype_census':census(),
+            'full_root_semantic_rollback_checked':True,'flags':dict(FLAGS)}
+    executor=point_core.Executor(graph)
+    try:
+        # Mandatory global DEAD/FORCED handling is never replaced by a family.
+        decision=graph.decision();record_decision('initial',decision)
+        for ordinal in range(24):
+            tick()
+            if decision.kind!='forced':break
+            domain=graph.ordered_domain(decision,())
+            key=domain.first();packet=graph.decorate(key);expose(packet)
+            before=graph.semantic_state();executor.step(key);tick()
+            events.append({'event':'ACTUAL_FORCED_CONTROL_STEP','ordinal':ordinal,
+                'before':before,'member':packet,'after':graph.semantic_state()})
+            decision=graph.decision();record_decision('after_forced',decision)
+        if decision.kind!='branch':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','NO_ACTUAL_BRANCH_IN_BOUNDED_COMPONENT_CONTROL_PREFIX')
+        parent_checkpoint=graph.checkpoint();parent_state=graph.semantic_state()
+        parent_raw=canonical(parent_state)
+        canonical_domain=graph.ordered_domain(decision,())
+        evidence['canonical_domain']=canonical_domain.descriptor()
+        control_key=canonical_domain.first();control_packet=graph.decorate(control_key);expose(control_packet)
+        evidence['control_member']=control_packet
+        # This is the native canonical control child, not an authored proof step.
+        executor.step(control_key);tick();control_state=graph.semantic_state()
+        events.append({'event':'CATALOGUE_CONTROL_PLACE','before':parent_state,
+            'member':control_packet,'after':control_state})
+        collected=collector.collect_derivation(graph=graph,point_core=point_core,
+            host_adapter=host_adapter,context_checker=context_checker,logical_oracle=logical_oracle,
+            closed_inputs=closed_inputs,qualification=qualification,prototype_census=census(),
+            origin={'kind':'CATALOGUE_GENERATED_COMPONENT_CONTROL','discovered_proof':False,
+                'engine_generated_proof_accepted':False},tick=tick)
+        evidence['collection']=collected;merge(collected['prototype_census'])
+        if collected['status']!='COLLECTED_CONDITIONAL_DAG':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','SELECTED_DAG_COLLECTION_UNFINISHED')
+        checks['current_selected_DAG_collected']=True
+        mined=miner.mine_families(host=collected['host'],derivation=collected['derivation'],
+            tick=tick,limits={'families':8,'members':2,'generalizations_per_cut':1},cut_selection='ANY')
+        evidence['mining']=mined
+        family_names={};chosen=None
+        control_node='n'+str(control_key.row)
+        for record in mined['families']:
+            tick();fid=record['family_id'];pre=canonical(record['family_preimage'])
+            need(fid not in family_names or family_names[fid]==pre,'whole descriptor preimage collision')
+            family_names[fid]=pre
+            if chosen is None and record['fragment_generalization']is None and control_node in record['cut']['selected_node_ids']:
+                chosen=record
+        if chosen is None:
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','LITERAL_CONTROL_CUT_NOT_EMITTED_IN_DECLARED_MINER_PREFIX')
+        evidence['chosen_literal_control']=chosen
+        # Use only exact collector/miner source maps; no proof-route row table.
+        node_rows={item['node_id']:item['row']for item in collected['checked_members']}
+        input_rows={item['input_id']:item['row']for item in collected['maps']['inputs']}
+        steps={item['descriptor_step_id']:item['source_node_id']for item in chosen['source_node_map']}
+        boundary={item['port_id']:item for item in chosen['boundary_source_map']}
+        registry=[chosen['descriptor']]
+        def source_row(item):
+            if item['source_node_id']is not None:return node_rows[item['source_node_id']]
+            return input_rows[item['source_input_id']]
+        def fresh_ports():
+            tick();state=graph.semantic_state();selected={}
+            for key_data in state['order']:
+                key=point_core.Key(key_data[0],key_data[1],tuple(key_data[2]))
+                packet=graph.decorate(key);expose(packet);selected[key.row]=packet
+            ports={'hypotheses':chosen['source_port_bindings']['hypotheses'],'inputs':[],
+                'outputs':chosen['source_port_bindings']['outputs']}
+            for port in chosen['source_port_bindings']['inputs']:
+                tick();row=source_row(boundary[port['port_id']]);packet=selected.get(row)
+                ports['inputs'].append({'port_id':port['port_id'],'formula':port['formula'],
+                    'source':{'schema':'hilbert-shared-family-current-input-source-v1','row':row,
+                        'model_epoch':state['model_epoch'],'context_id':entry_host['binding']['context_id'],
+                        'selected_key':None if packet is None else packet['key'],'selected_placement':packet},
+                    'occupied':state['totals'][row]==1,'fact_accepted':False})
+            return ports
+        def admit_current():
+            ports=fresh_ports()
+            proposal=producer.expand_family(registry=registry,family_id=chosen['family_id'],
+                host=entry_host,substitution=chosen['substitution'],port_bindings=ports,tick=tick)
+            evidence.setdefault('fresh_expansions',[]).append(proposal)
+            if proposal['status']!='READY_PROPOSAL':return None
+            assignments=[]
+            for node in proposal['primitive_nodes']:
+                origin=node['origin']
+                if origin['hypothesis_port']is not None:row=source_row(boundary[origin['hypothesis_port']])
+                else:row=node_rows[steps[origin['step_id']]]
+                assignments.append([node['id'],row])
+            rows={'schema':'hilbert-shared-family-row-assignment-v1','node_rows':assignments,
+                'input_rows':[[p['port_id'],source_row(boundary[p['port_id']])]for p in proposal['input_ports']]}
+            admitted=host_adapter.adapt_expansion(graph=graph,point_core=point_core,
+                context_checker=context_checker,logical_oracle=logical_oracle,closed_inputs=closed_inputs,
+                qualification=qualification,expansion_checker=expansion_checker,registry=registry,
+                family_id=chosen['family_id'],host=entry_host,substitution=chosen['substitution'],
+                port_bindings=ports,proposal=proposal,row_assignment=rows,prototype_census=census(),tick=tick)
+            merge(admitted['prototype_census']);return admitted
+        source_admission=admit_current();evidence['selected_child_admission']=source_admission
+        if source_admission is None or source_admission['status']!='READY_LOCAL_CLUSTER':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','SOURCE_GROUND_CONTROL_NOT_COMPLETELY_ADMITTED')
+        checks['fresh_source_ground_native_cluster']=True
+        graph.rollback(parent_checkpoint);tick()
+        need(canonical(graph.semantic_state())==parent_raw,'owned parent exact semantic rollback')
+        current=graph.decision();record_decision('restored_parent',current)
+        need(current==decision,'same actual global parent branch after rollback')
+        current_admission=admit_current();evidence['restored_parent_admission']=current_admission
+        if current_admission is None or current_admission['status']!='READY_LOCAL_CLUSTER':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','CURRENT_PARENT_CONTROL_NOT_COMPLETELY_ADMITTED')
+        def consume(offers,continuation,actual):
+            before=canonical(graph.semantic_state())
+            value=consumer.consume_preferences(graph=graph,point_core=point_core,host_adapter=host_adapter,
+                producer=producer,expansion_checker=expansion_checker,context_checker=context_checker,
+                logical_oracle=logical_oracle,closed_inputs=closed_inputs,qualification=qualification,
+                decision=actual,clusters=offers,continuation=continuation,prototype_census=census(),tick=tick)
+            merge(value['prototype_census'])
+            need(canonical(graph.semantic_state())==before,'consumer semantic nonmutation')
+            return value
+        preferred=consume([current_admission],None,current);evidence['branch_preference']=preferred
+        if preferred['status']!='READY':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','GENUINE_BRANCH_PREFERENCE_UNAVAILABLE_IN_CONTROL_PREFIX')
+        need(preferred['candidate']['key']==control_key.data(),'fresh preference is actual catalogue control member')
+        ordered=graph.ordered_domain(current,(control_key,))
+        descriptor=ordered.descriptor();evidence['preferred_domain']=descriptor
+        need(ordered.first()==control_key and len(ordered)==current.count
+            and descriptor['complete_count']==current.count,'preference plus unchanged complete native fallback contract')
+        checks['actual_branch_preference_and_native_ordering']=True
+        # Rechecking an unchanged context must freshly admit the continuation.
+        repeated=consume([],preferred['continuation'],current);evidence['same_state_continuation']=repeated
+        if repeated['status']!='READY':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','FRESH_CONTINUATION_CHECK_UNFINISHED')
+        need(repeated['candidate']['key']==control_key.data(),'same state fresh primitive member')
+        hint_checkpoint=preferred['continuation']
+        executor.step(control_key);tick()
+        child=graph.decision();record_decision('actual_control_child',child)
+        continued=consume([],hint_checkpoint,child);evidence['child_continuation']=continued
+        if continued['status']=='UNKNOWN':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','ACTUAL_CHILD_CONTINUATION_CHECK_UNFINISHED')
+        # Either exact nonbranch invalidation or a fresh legal remaining hint;
+        # no expected child route or family absence is supplied to the graph.
+        if child.kind!='branch':
+            need(continued['status']=='INVALIDATED' and continued['candidate']is None,
+                'actual nonbranch cannot accept family preference')
+            checks['actual_nonbranch_continuation_invalidated']=True
+        else:
+            need(continued['candidate']is None or continued['candidate']['key'][1]==child.row,
+                'any continuation matches actual current branch row')
+            checks['actual_branch_continuation_rechecked']=True
+        evidence['continuation_invalidation_availability']=('ACTUAL_NONBRANCH' if child.kind!='branch' else 'NO_NONBRANCH_IN_THIS_CONTROL')
+        graph.rollback(parent_checkpoint);tick()
+        need(canonical(graph.semantic_state())==parent_raw,'control child parent rollback')
+        # The caller owns the hint transaction: restore the original literal hint.
+        restored=consume([],hint_checkpoint,graph.decision());evidence['restored_continuation']=restored
+        if restored['status']!='READY':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','RESTORED_CONTINUATION_CHECK_UNFINISHED')
+        need(restored['candidate']['key']==control_key.data(),'restored same literal hint fresh admission')
+        checks['hint_and_graph_owned_restore']=True
+        before_exclusion=graph.semantic_state()
+        graph.exclude_failed_child(control_key);tick()
+        excluded_state=graph.semantic_state();excluded_decision=graph.decision()
+        record_decision('administrative_exclusion_only',excluded_decision)
+        invalidated=consume([],hint_checkpoint,excluded_decision)
+        evidence['administrative_exclusion']={'before':before_exclusion,'after':excluded_state,
+            'excluded_key':control_key.data(),'continuation':invalidated,
+            'exclusion_is_administrative':True,'child_exhaustion_proved':False,
+            'search_pruning_authorized':False,'negative_theorem_result':False}
+        if invalidated['status']=='UNKNOWN':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','ADMINISTRATIVE_INVALIDATION_CHECK_UNFINISHED')
+        need(invalidated['status']=='INVALIDATED' and invalidated['candidate']is None,
+            'administrative excluded control member cannot remain a primitive preference')
+        graph.rollback(parent_checkpoint);tick()
+        need(canonical(graph.semantic_state())==parent_raw,'administrative exclusion exact semantic rollback')
+        recovered=consume([],hint_checkpoint,graph.decision());evidence['administrative_restored_continuation']=recovered
+        if recovered['status']!='READY':
+            graph.rollback(root_checkpoint)
+            return finish('UNKNOWN','ADMINISTRATIVE_RESTORE_CHECK_UNFINISHED')
+        need(recovered['candidate']['key']==control_key.data(),'restored exclusion control fresh primitive preference')
+        checks['administrative_invalidation_and_owned_restore']=True
+        graph.rollback(root_checkpoint)
+        return finish('CHECKED_COMPONENT_CONTROLS','NARROW_CURRENT_API_CONTROLS_COMPLETED; NO_FULL_DYNAMIC_QUALIFICATION')
+    finally:
+        # Ordinary, bounded-UNKNOWN and exceptional paths all attempt the same
+        # owned native rollback; any native/guard/rollback error propagates.
+        graph.rollback(root_checkpoint)

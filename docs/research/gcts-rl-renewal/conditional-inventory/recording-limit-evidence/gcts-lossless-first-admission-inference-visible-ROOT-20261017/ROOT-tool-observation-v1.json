@@ -1,0 +1,7 @@
+{
+  "chunk_id": "93dd18",
+  "wall_time_seconds": 2.525161667,
+  "exit_code": 2,
+  "original_token_count": 127,
+  "output": "{\"ROOT_primary_accepted\": false, \"ROOT_resource_accepted\": false, \"external_began_ns\": 609100056255000, \"invocation_id\": \"ROOT-lossless-first-admission-receiver-visible-20261017-v1\", \"measurement_only\": true, \"meter_returncode\": 2, \"plan_bytes\": 10952, \"plan_sha256\": \"ea871e231c6733a81b10f2aea5e58a946db24b118c55887d9015571f77815513\", \"postterminal_native_probe_ns\": 609120543612000, \"probe_returncode\": 0, \"purpose\": \"receptor-inference-visible-probe\", \"schema\": \"ROOT-ordinary-external-observation-v1\"}\n"
+}

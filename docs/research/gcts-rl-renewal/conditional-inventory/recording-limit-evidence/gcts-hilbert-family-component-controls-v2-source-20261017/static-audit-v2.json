@@ -1,0 +1,56 @@
+{
+  "actual_patch_F0_directions": 4,
+  "all_other_limits_models_and_wire_fields_raw_exact": true,
+  "clock_calls": 0,
+  "compile_without_evaluation": true,
+  "correction_static_order": "Native child decision -> consume -> evidence retains returned packet -> explicit UNKNOWN rollback/finish -> actual child kind dispatch. No catch or changed native callback error taxonomy.",
+  "module_evaluations": 0,
+  "preserved_negative": {
+    "bytes": 6424,
+    "path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "621028615707736367adeca3e5e45fc0a338a9eb78e117a42e9e235dc74f9f62"
+  },
+  "raw_edit_counts": {
+    "caller": 3,
+    "controls": 2
+  },
+  "regions": {
+    "caller": {
+      "changed": [
+        "main"
+      ],
+      "raw_AST_exact": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "load_module",
+        "stdlib_gate",
+        "encode_result_transport"
+      ]
+    },
+    "controls": {
+      "changed": [
+        "run_component_controls"
+      ],
+      "raw_AST_exact": [
+        "need",
+        "canonical"
+      ]
+    }
+  },
+  "schema": "Hilbert-family-component-controls-static-audit-v2",
+  "scientific_calls": 0,
+  "source_only": true,
+  "whole_raw_AST_inverse": true
+}

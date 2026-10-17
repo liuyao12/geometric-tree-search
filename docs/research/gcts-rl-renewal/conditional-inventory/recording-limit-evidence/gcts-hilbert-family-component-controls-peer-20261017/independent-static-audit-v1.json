@@ -1,0 +1,506 @@
+{
+  "actual_or_result_reads": false,
+  "actual_patch_outputs": {
+    "caller": {
+      "forward": "patching file target.py\n",
+      "inverse": "patching file target.py\n"
+    },
+    "collector": {
+      "forward": "patching file target.py\n",
+      "inverse": "patching file target.py\n"
+    },
+    "controls": {
+      "forward": "patching file target.py\n",
+      "inverse": "patching file target.py\n"
+    }
+  },
+  "checks": [
+    {
+      "check": "exact caller",
+      "passed": true
+    },
+    {
+      "check": "exact controls",
+      "passed": true
+    },
+    {
+      "check": "exact contract",
+      "passed": true
+    },
+    {
+      "check": "exact controls_contract",
+      "passed": true
+    },
+    {
+      "check": "exact API",
+      "passed": true
+    },
+    {
+      "check": "exact caller_delta",
+      "passed": true
+    },
+    {
+      "check": "exact controls_delta",
+      "passed": true
+    },
+    {
+      "check": "exact collector",
+      "passed": true
+    },
+    {
+      "check": "exact collector_contract",
+      "passed": true
+    },
+    {
+      "check": "exact collector_API",
+      "passed": true
+    },
+    {
+      "check": "exact collector_delta",
+      "passed": true
+    },
+    {
+      "check": "exact collector_parent",
+      "passed": true
+    },
+    {
+      "check": "exact collector_parent_peer",
+      "passed": true
+    },
+    {
+      "check": "exact adapter_peer",
+      "passed": true
+    },
+    {
+      "check": "one collector raw region",
+      "passed": true
+    },
+    {
+      "check": "collector forward complete raw",
+      "passed": true
+    },
+    {
+      "check": "collector inverse complete raw",
+      "passed": true
+    },
+    {
+      "check": "collector inverse AST",
+      "passed": true
+    },
+    {
+      "check": "collector retained raw CollectionDataError",
+      "passed": true
+    },
+    {
+      "check": "collector retained AST CollectionDataError",
+      "passed": true
+    },
+    {
+      "check": "collector retained raw _Unfinished",
+      "passed": true
+    },
+    {
+      "check": "collector retained AST _Unfinished",
+      "passed": true
+    },
+    {
+      "check": "collector retained raw _CallbackFailure",
+      "passed": true
+    },
+    {
+      "check": "collector retained AST _CallbackFailure",
+      "passed": true
+    },
+    {
+      "check": "collector retained raw require",
+      "passed": true
+    },
+    {
+      "check": "collector retained AST require",
+      "passed": true
+    },
+    {
+      "check": "collector retained raw canonical",
+      "passed": true
+    },
+    {
+      "check": "collector retained AST canonical",
+      "passed": true
+    },
+    {
+      "check": "collector retained raw digest",
+      "passed": true
+    },
+    {
+      "check": "collector retained AST digest",
+      "passed": true
+    },
+    {
+      "check": "collector retained raw _Work",
+      "passed": true
+    },
+    {
+      "check": "collector retained AST _Work",
+      "passed": true
+    },
+    {
+      "check": "collector retained raw collect_derivation",
+      "passed": true
+    },
+    {
+      "check": "collector retained AST collect_derivation",
+      "passed": true
+    },
+    {
+      "check": "collector8 inherited definitions",
+      "passed": true
+    },
+    {
+      "check": "collector safe patch basename",
+      "passed": true
+    },
+    {
+      "check": "collector forward patch pin",
+      "passed": true
+    },
+    {
+      "check": "collector actual forward -F0",
+      "passed": true
+    },
+    {
+      "check": "collector actual forward fullbyte",
+      "passed": true
+    },
+    {
+      "check": "collector inverse patch pin",
+      "passed": true
+    },
+    {
+      "check": "collector actual inverse -F0",
+      "passed": true
+    },
+    {
+      "check": "collector actual inverse fullbyte",
+      "passed": true
+    },
+    {
+      "check": "caller complete addition raw",
+      "passed": true
+    },
+    {
+      "check": "caller raw deletion inverse",
+      "passed": true
+    },
+    {
+      "check": "caller AST addition",
+      "passed": true
+    },
+    {
+      "check": "caller compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "caller safe patch basename",
+      "passed": true
+    },
+    {
+      "check": "caller forward patch pin",
+      "passed": true
+    },
+    {
+      "check": "caller actual forward -F0",
+      "passed": true
+    },
+    {
+      "check": "caller actual forward fullbyte",
+      "passed": true
+    },
+    {
+      "check": "caller inverse patch pin",
+      "passed": true
+    },
+    {
+      "check": "caller actual inverse -F0",
+      "passed": true
+    },
+    {
+      "check": "caller actual inverse fullbyte",
+      "passed": true
+    },
+    {
+      "check": "controls complete addition raw",
+      "passed": true
+    },
+    {
+      "check": "controls raw deletion inverse",
+      "passed": true
+    },
+    {
+      "check": "controls AST addition",
+      "passed": true
+    },
+    {
+      "check": "controls compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "controls safe patch basename",
+      "passed": true
+    },
+    {
+      "check": "controls forward patch pin",
+      "passed": true
+    },
+    {
+      "check": "controls actual forward -F0",
+      "passed": true
+    },
+    {
+      "check": "controls actual forward fullbyte",
+      "passed": true
+    },
+    {
+      "check": "controls inverse patch pin",
+      "passed": true
+    },
+    {
+      "check": "controls actual inverse -F0",
+      "passed": true
+    },
+    {
+      "check": "controls actual inverse fullbyte",
+      "passed": true
+    },
+    {
+      "check": "collector compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "current exact16 map and15 fixed roles",
+      "passed": true
+    },
+    {
+      "check": "operative contract fullmap",
+      "passed": true
+    },
+    {
+      "check": "actual original compile filename",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw need",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST need",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw canonical",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST canonical",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw raw_pin",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST raw_pin",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw unique",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST unique",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw reject_constant",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST reject_constant",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw finite_float",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST finite_float",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw decode",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST decode",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw read_pinned",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST read_pinned",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw write_new",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST write_new",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw anchor",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST anchor",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw same",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST same",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw invoke",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST invoke",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw cancel",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST cancel",
+      "passed": true
+    },
+    {
+      "check": "cold inherited raw all_function_anchors",
+      "passed": true
+    },
+    {
+      "check": "cold inherited AST all_function_anchors",
+      "passed": true
+    },
+    {
+      "check": "early cumulative native clock",
+      "passed": true
+    },
+    {
+      "check": "case no proof or search invocation",
+      "passed": true
+    },
+    {
+      "check": "admin exclusion explicitly no pruning",
+      "passed": true
+    },
+    {
+      "check": "owned root finally rollback",
+      "passed": true
+    },
+    {
+      "check": "exact defect Source remains frozen",
+      "passed": true
+    }
+  ],
+  "clock_calls": 0,
+  "module_evaluations": 0,
+  "not_a_runtime_or_whole_source_availability_preflight": true,
+  "references": {
+    "API": {
+      "bytes": 5726,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/API-wire-v1.json",
+      "sha256": "9aa5afce1aa70494b08159b5c2426f8a104cd05b8e0c215f17b97d9698970ec4"
+    },
+    "adapter_peer": {
+      "bytes": 2401,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "6fa501b0fb29fef400002781a4c3f4973ce2ab66b7a434ce0a998b7d1a51b82c"
+    },
+    "caller": {
+      "bytes": 26891,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_cold_v1.py",
+      "sha256": "2b3eebc3bb8e4246df5a1c40ad3bf788ae73c050366992fbae09fdae877bf9f8"
+    },
+    "caller_delta": {
+      "bytes": 28356,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/caller-Source-delta-v1.json",
+      "sha256": "266d9274d7f652a4abe4c325cc0c3b9276f911c7cebfd7201ca371b294c698fa"
+    },
+    "cold_ancestry": {
+      "bytes": 66670,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+      "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91"
+    },
+    "collector": {
+      "bytes": 21800,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/hilbert_shared_family_selected_dag_collector_v2.py",
+      "sha256": "7160d774e3026fadf4ad959931ad0847028ad47308a57c2ac5480a3f39bf260a"
+    },
+    "collector_API": {
+      "bytes": 5068,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/API-wire-v2.json",
+      "sha256": "fef2c31941214df4947e6c2de5578df824e1fc1975e69638a86932cf21dde714"
+    },
+    "collector_contract": {
+      "bytes": 6864,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/Source-contract-v2.json",
+      "sha256": "47691bcdac3076267f10217dc9eaef0ca2902b3d9df745025d139070cf698711"
+    },
+    "collector_delta": {
+      "bytes": 2136,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/Source-delta-v2.json",
+      "sha256": "b920dac0385754a4a421f0553548c0b31be4d3b62cb9c3646f3e94d61d1dca89"
+    },
+    "collector_parent": {
+      "bytes": 21778,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/hilbert_shared_family_selected_dag_collector_v1.py",
+      "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd"
+    },
+    "collector_parent_peer": {
+      "bytes": 2763,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "b90349d287794220f51bcc05ec67d26c2ffc9dc0de66e0023809ffe51510dd1f"
+    },
+    "contract": {
+      "bytes": 16804,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/Source-contract-v1.json",
+      "sha256": "d9a390cb812201b6ddc27d54ad8e0d7430914e9429b1fad11bb5971f0840cfe4"
+    },
+    "controls": {
+      "bytes": 18284,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_v1.py",
+      "sha256": "c6bde3b6f56f3af6eada270128aebdf55312aec4df27d17f918d28db02337e7c"
+    },
+    "controls_contract": {
+      "bytes": 6981,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/controls-Source-contract-v1.json",
+      "sha256": "0378fa3ca6dad04c7ce89e2b50e738d9a986508019da43f777c9c7a4718bf969"
+    },
+    "controls_delta": {
+      "bytes": 19628,
+      "path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/controls-Source-delta-v1.json",
+      "sha256": "4acf24a644862b7cf3a2ed1c81bfedb842eeb4194f742d1303a84d699717ba3a"
+    }
+  },
+  "schema": "Hilbert-component-and-collector-peer-static-v1",
+  "scientific_calls": 0,
+  "source_only": true
+}

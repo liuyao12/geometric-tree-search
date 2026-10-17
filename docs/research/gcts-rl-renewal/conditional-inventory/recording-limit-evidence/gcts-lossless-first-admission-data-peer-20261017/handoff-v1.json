@@ -1,0 +1,16 @@
+{
+  "audit": {
+    "bytes": 8532,
+    "path": "/private/tmp/gcts-lossless-first-admission-data-peer-20261017/saved-data-audit-v1.json",
+    "sha256": "7e8448bc9aec26a8c3103ca467af8fb19aac5d58001611aedab722f7dbe08021"
+  },
+  "review": {
+    "bytes": 1998,
+    "path": "/private/tmp/gcts-lossless-first-admission-data-peer-20261017/typed-data-review-v1.json",
+    "sha256": "3aa50170ef7eaffbfd9e887978aed86c4d46be67a80fd2d53794d85bfe5168ae"
+  },
+  "saved_data_only": true,
+  "schema": "lossless-first-admission-independent-saved-data-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0
+}

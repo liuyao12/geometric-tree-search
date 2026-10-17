@@ -1,0 +1,32 @@
+{
+  "audit": {
+    "bytes": 14822,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/independent-static-audit-v1.json",
+    "sha256": "5ba9f7e44f2a024d2ae438157788cce62956af96f9d8ef6123a157b8dd55d849"
+  },
+  "author_handoff": {
+    "bytes": 15045,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/handoff-v1.json",
+    "sha256": "23eb82b5d5f4fe406f8938861c9aa6362809ddc059fee018a4f55d4cbe07b106"
+  },
+  "caller_review": {
+    "bytes": 7665,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "ec9546db0b0b9e299deb0f9fa5ca979304001e0c0ef3f7a680e79a10480c567c"
+  },
+  "findings": {
+    "bytes": 2240,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/findings-v1.json",
+    "sha256": "e3f4edd2e304b05d6689ed0900e6e5660acbe7a853e254acd6de3d58aeb2e2e9"
+  },
+  "reader_review": {
+    "bytes": 1768,
+    "path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/reader-typed-Source-review-v1.json",
+    "sha256": "6cd707d78923a2efb469660f7ad83a92edd0b4f10faec3f5ab45a76ce34b13d7"
+  },
+  "schema": "lossless-first-admission-independent-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "verdict": "Conditional Source pass; no runtime or scientific authority."
+}

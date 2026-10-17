@@ -1,0 +1,1252 @@
+{
+  "bytes": 3491871,
+  "files": [
+    {
+      "bytes": 16152,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/ROOT-direct-byte-preflight-v1.json",
+      "sha256": "b83749fcc85af90ef826522bf30e2d0a8116c17bcf688e768de493263d1c2714",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT-direct-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 19659,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "4801673e5affa9ac5d3225214458af9cb36cc085b6feb97c70cb8ab2a9a141f3",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json"
+    },
+    {
+      "bytes": 4357,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_external_once_v1.py"
+    },
+    {
+      "bytes": 52406,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py",
+      "sha256": "2b23a8269e9116a4997d461342f5245e1d5bf372f972e638cd5b5b3f2fdd6b21",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py"
+    },
+    {
+      "bytes": 1270,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py.forward.patch",
+      "sha256": "ea176056cc8f8af0b1813ae94e02fd4b7c0e2a1e1a6917c8c9a82cdb81c9da19",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py.forward.patch"
+    },
+    {
+      "bytes": 1270,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py.inverse.patch",
+      "sha256": "d948910b6b1c449f89887cf6df286ca215e12038688c1e2fff2d6ea76841b1ae",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_read_lossless_first_admission_saved_v1.py.inverse.patch"
+    },
+    {
+      "bytes": 24238,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "46efcfe31565dd1c722a62f42267917dfcf2c0e55f6b1fa278368fdaa8ad6720",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 1550,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/direct_byte_preflight_v1.py",
+      "sha256": "9c86189c9fdfb6a841df59399eab4407c862d9a1b236e2db9dcda7e7c5b1a500",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/direct_byte_preflight_v1.py"
+    },
+    {
+      "bytes": 15045,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/handoff-v1.json",
+      "sha256": "23eb82b5d5f4fe406f8938861c9aa6362809ddc059fee018a4f55d4cbe07b106",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 90045,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py",
+      "sha256": "e157a9b2aa517e6563f7730f496d7a9ea8ee584615c6a42cdc037226f8a12842",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py"
+    },
+    {
+      "bytes": 16441,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py.forward.patch",
+      "sha256": "46beea5f106f54224f1b2455440794f2ff44ae6badac8e7b2dfc3ab09db81f06",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py.forward.patch"
+    },
+    {
+      "bytes": 16441,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py.inverse.patch",
+      "sha256": "f4302e2b117e415ebf7c02953ce4361788b712d9909ba871456924505f4ab45c",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/lossless_first_admission_receiver_cold_v1.py.inverse.patch"
+    },
+    {
+      "bytes": 7481,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/prepare_actual_metadata_v1.py",
+      "sha256": "419ce704deb52d98d42dd1ada5de1efb8ce4c8dbe89bc1922bb44db38bbc0c0d",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/prepare_actual_metadata_v1.py"
+    },
+    {
+      "bytes": 52406,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_lossless_first_admission_saved_v1.py/forward/source.py",
+      "sha256": "2b23a8269e9116a4997d461342f5245e1d5bf372f972e638cd5b5b3f2fdd6b21",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_lossless_first_admission_saved_v1.py/forward/source.py"
+    },
+    {
+      "bytes": 52379,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_lossless_first_admission_saved_v1.py/inverse/source.py",
+      "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_lossless_first_admission_saved_v1.py/inverse/source.py"
+    },
+    {
+      "bytes": 90045,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/raw-patch-audit-v1/lossless_first_admission_receiver_cold_v1.py/forward/source.py",
+      "sha256": "e157a9b2aa517e6563f7730f496d7a9ea8ee584615c6a42cdc037226f8a12842",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/raw-patch-audit-v1/lossless_first_admission_receiver_cold_v1.py/forward/source.py"
+    },
+    {
+      "bytes": 76794,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/raw-patch-audit-v1/lossless_first_admission_receiver_cold_v1.py/inverse/source.py",
+      "sha256": "8fd4ac50d08d0532465705713760daeadc0e7bef3ca60970db5f73e416ef6bfa",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/raw-patch-audit-v1/lossless_first_admission_receiver_cold_v1.py/inverse/source.py"
+    },
+    {
+      "bytes": 1251,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "6b26971e127bc406d384ff6148bd6f7b1ce51c480b4c9086c697e82b34bef0e7",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/reader-Source-contract-v1.json"
+    },
+    {
+      "bytes": 2240,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-peer-20261017/findings-v1.json",
+      "sha256": "e3f4edd2e304b05d6689ed0900e6e5660acbe7a853e254acd6de3d58aeb2e2e9",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 1368,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-peer-20261017/handoff-v1.json",
+      "sha256": "11562e079b1b967c3b90513033fae1285ef592f26c7086c587a59b0e9e87a76a",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 14822,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-peer-20261017/independent-static-audit-v1.json",
+      "sha256": "5ba9f7e44f2a024d2ae438157788cce62956af96f9d8ef6123a157b8dd55d849",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/independent-static-audit-v1.json"
+    },
+    {
+      "bytes": 76794,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-peer-20261017/patch-cold/source.py",
+      "sha256": "8fd4ac50d08d0532465705713760daeadc0e7bef3ca60970db5f73e416ef6bfa",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/patch-cold/source.py"
+    },
+    {
+      "bytes": 52379,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-peer-20261017/patch-reader/source.py",
+      "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/patch-reader/source.py"
+    },
+    {
+      "bytes": 1768,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-peer-20261017/reader-typed-Source-review-v1.json",
+      "sha256": "6cd707d78923a2efb469660f7ad83a92edd0b4f10faec3f5ab45a76ce34b13d7",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/reader-typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 7665,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-ROOT-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "ec9546db0b0b9e299deb0f9fa5ca979304001e0c0ef3f7a680e79a10480c567c",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-ROOT-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 5122,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/API-wire-v4.json",
+      "sha256": "57151af851a4d8ffbfb5bd243193223b26b2cb71f34e2d5137be9ca3c59e5062",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/API-wire-v4.json"
+    },
+    {
+      "bytes": 7708,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/Source-contract-v4.json",
+      "sha256": "a8a7693daf481aff731fcf4e411c4b296cfba2eab0ca9a4aff2cd35c30f20930",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-contract-v4.json"
+    },
+    {
+      "bytes": 30633,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/Source-delta-v4.json",
+      "sha256": "357dd3c1265c1b8c19a3eabd8148cbb06d773d4e3c528c4c6825db88557f0253",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/Source-delta-v4.json"
+    },
+    {
+      "bytes": 4068,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/handoff-v4.json",
+      "sha256": "f498c5626105788d4f87b0778ae15292255cb90a9dfa00f3aa57e61e77914768",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/handoff-v4.json"
+    },
+    {
+      "bytes": 52379,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py",
+      "sha256": "251ea06ad0a328017c607fae4c2a50cf1227a40d709a20dd621f2f01a8bffd3f",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/milestone_lossless_saved_reader_v4.py"
+    },
+    {
+      "bytes": 42910,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/patch-work-reader/source.py",
+      "sha256": "0d17ae4cef18f9aa03f65ea63c332707289eaaaac49e05f591f27a463553a350",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/patch-work-reader/source.py"
+    },
+    {
+      "bytes": 23268,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/patch-work-writer/source.py",
+      "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/patch-work-writer/source.py"
+    },
+    {
+      "bytes": 15831,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/reader-forward.patch",
+      "sha256": "4b28f7bdbaeebfee6693d280d5ab7428406aae4b7382d2afb34c06d890966561",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/reader-forward.patch"
+    },
+    {
+      "bytes": 15831,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/reader-inverse.patch",
+      "sha256": "4fdca683bc497d30ff81dc74a5f363d3d0820f1fc25c411ebe9cc031288e6bac",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/reader-inverse.patch"
+    },
+    {
+      "bytes": 36501,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py",
+      "sha256": "c31ec420a59056b02e706a4b5ac2223e66e01d37cfba39af363fb7dcaf38d619",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/save_failure_diagnostic_v4.fragment.py"
+    },
+    {
+      "bytes": 1389,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/static-audit-v4.json",
+      "sha256": "2e78207e1974e9013b39b02d94d9dff9c3981a486db0f2b8bf522b0ba16d55e1",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/static-audit-v4.json"
+    },
+    {
+      "bytes": 15610,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/writer-forward.patch",
+      "sha256": "edf138724dd6c1a7c613d874a30bb36b43af8530aed26e2637dd65090caf2b56",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/writer-forward.patch"
+    },
+    {
+      "bytes": 15610,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-source-20261017/writer-inverse.patch",
+      "sha256": "5e2fcfc93d6940ba14695fd65ccffec0179b6c36bedaf905875aedc86660cdab",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-source-20261017/writer-inverse.patch"
+    },
+    {
+      "bytes": 4378,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-peer-20261017/findings-v4.json",
+      "sha256": "61f7cc41264991312c0aff3aca665b17f5408113ae74c6e6f951e3f38428cad2",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/findings-v4.json"
+    },
+    {
+      "bytes": 842,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-peer-20261017/handoff-v4.json",
+      "sha256": "1e1a3e5de59b097a0a520c0b7373f8fb33ea3f1abb5ecb0d18b44c2292097116",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/handoff-v4.json"
+    },
+    {
+      "bytes": 10343,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-peer-20261017/independent-static-audit-v4.json",
+      "sha256": "c283008125e7f77d90b79427ecc5760e17a73d612a104154261fb2c2e8f6492a",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/independent-static-audit-v4.json"
+    },
+    {
+      "bytes": 42910,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-peer-20261017/patch-audit-reader/source.py",
+      "sha256": "0d17ae4cef18f9aa03f65ea63c332707289eaaaac49e05f591f27a463553a350",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/patch-audit-reader/source.py"
+    },
+    {
+      "bytes": 23268,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-peer-20261017/patch-audit-writer/source.py",
+      "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/patch-audit-writer/source.py"
+    },
+    {
+      "bytes": 2201,
+      "path": "recording-limit-evidence/gcts-milestone-lossless-wire-peer-20261017/typed-Source-review-v4.json",
+      "sha256": "850ed81db5c3a9fa8c53d34b18b9a57145ed02056e63f57f5d9d8bcac36ee1c7",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-peer-20261017/typed-Source-review-v4.json"
+    },
+    {
+      "bytes": 266,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/ONCE.json",
+      "sha256": "5ec2864741c726ef519e5364a10e1a32e705a7bcf617b4be2691647f713fee1b",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 1315,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/meter-stderr.txt",
+      "sha256": "b9ec28da0620c679c5f314ecea36a79996d5f3e8cd98f0f0d6c0f547e1bbe238",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1593,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/native-terminal.json",
+      "sha256": "7644e5f20847ec8ab692a9cf7144a3d236439a1d3226a4fbfd68020f86738aff",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 483,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/observation.json",
+      "sha256": "b2aa0265db63b25fc48a9def1f967ffa3d0b9e89dc7d773bac0ef780db264ea1",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "dd3917ddfa50ccbef84a281ec271434319db5d7266ee0ace1ac785a54e0f9d27",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 337,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-owned-v1/diagnostic-completion.json",
+      "sha256": "ecc3646aaed731b97062f0d012d028d76f8ceac122dc2641c85188bfd85be56d",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-owned-v1/diagnostic-completion.json"
+    },
+    {
+      "bytes": 12152,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-owned-v1/unknown-diagnostic.json",
+      "sha256": "650b7f86818f2d9327e037e04a9d9168be042c0a92356a73fe5bc1813b198369",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/RI-owned-v1/unknown-diagnostic.json"
+    },
+    {
+      "bytes": 386,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-Date-bracket-v1.json",
+      "sha256": "8508414b9a7843fc77e3ec80df58039a17dbc2fff0a444ef9163b3de7efe4ff9",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 9604,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "e28e8cd2c56d8aa19be110c6e659f9a7611970f8fb4d0add8555466d75f08f74",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 13679,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "7edf75307a705ac59b950f39d3cb7ad5ef2fdc9dc781a98e36d218c0facdfa22",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 16580,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "7648312296dca5b106d9f6cf17665fbdc62d6d2ebc6b1dd42f079314d858c753",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 21,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-expanded-engine-journal-v1.json",
+      "sha256": "6cd8cec706fa11110d83fb46f97df1f9be43b4c570f3390e7c7f6a5173f595e6",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-expanded-engine-journal-v1.json"
+    },
+    {
+      "bytes": 10952,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "ea871e231c6733a81b10f2aea5e58a946db24b118c55887d9015571f77815513",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 667,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-tool-observation-v1.json",
+      "sha256": "4cbb233b385342277d0163c86265fb11a4484674867ca50a476204d7a4de86b4",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-inference-visible-ROOT-20261017/ROOT-tool-observation-v1.json"
+    },
+    {
+      "bytes": 605,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-data-peer-20261017/handoff-v1.json",
+      "sha256": "2bd4e5593ecedf09379935097b2b2f2c2a15db8786da27fc1a4544e9d6228370",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-data-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 8532,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-data-peer-20261017/saved-data-audit-v1.json",
+      "sha256": "7e8448bc9aec26a8c3103ca467af8fb19aac5d58001611aedab722f7dbe08021",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-data-peer-20261017/saved-data-audit-v1.json"
+    },
+    {
+      "bytes": 1998,
+      "path": "recording-limit-evidence/gcts-lossless-first-admission-data-peer-20261017/typed-data-review-v1.json",
+      "sha256": "3aa50170ef7eaffbfd9e887978aed86c4d46be67a80fd2d53794d85bfe5168ae",
+      "source_path": "/private/tmp/gcts-lossless-first-admission-data-peer-20261017/typed-data-review-v1.json"
+    },
+    {
+      "bytes": 5726,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/API-wire-v1.json",
+      "sha256": "9aa5afce1aa70494b08159b5c2426f8a104cd05b8e0c215f17b97d9698970ec4",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/API-wire-v1.json"
+    },
+    {
+      "bytes": 16804,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/Source-contract-v1.json",
+      "sha256": "d9a390cb812201b6ddc27d54ad8e0d7430914e9429b1fad11bb5971f0840cfe4",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 19579,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/build_cold_source.py",
+      "sha256": "6d8b94288c3eab381a9ac61adc5c24c1b3a86945fea1c37d400ffc4cadc91c3c",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/build_cold_source.py"
+    },
+    {
+      "bytes": 28356,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/caller-Source-delta-v1.json",
+      "sha256": "266d9274d7f652a4abe4c325cc0c3b9276f911c7cebfd7201ca371b294c698fa",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/caller-Source-delta-v1.json"
+    },
+    {
+      "bytes": 27321,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/caller-addition-forward.patch",
+      "sha256": "5df08d1baaf1371cffd9c6861ecbf1b433219f20b3c9fa11904d3944340f170f",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/caller-addition-forward.patch"
+    },
+    {
+      "bytes": 27321,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/caller-addition-inverse.patch",
+      "sha256": "d092b86f8a861a37b960e5a9cbef6fd3e62b9a2cec8c7a26eef5713dd50d9787",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/caller-addition-inverse.patch"
+    },
+    {
+      "bytes": 6981,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/controls-Source-contract-v1.json",
+      "sha256": "0378fa3ca6dad04c7ce89e2b50e738d9a986508019da43f777c9c7a4718bf969",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/controls-Source-contract-v1.json"
+    },
+    {
+      "bytes": 19628,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/controls-Source-delta-v1.json",
+      "sha256": "4acf24a644862b7cf3a2ed1c81bfedb842eeb4194f742d1303a84d699717ba3a",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/controls-Source-delta-v1.json"
+    },
+    {
+      "bytes": 18598,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/controls-addition-forward.patch",
+      "sha256": "3b4c3f9f6130182217aa37897c5421eab91c421cb153942a3c30791e4dfea6e1",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/controls-addition-forward.patch"
+    },
+    {
+      "bytes": 18598,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/controls-addition-inverse.patch",
+      "sha256": "c43650ac08054db3d72e3ebdf17c8fd63e3bf6f1de9ff27587b4886fe0ae680d",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/controls-addition-inverse.patch"
+    },
+    {
+      "bytes": 16645,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/freeze_metadata.py",
+      "sha256": "5aaa5910c185397a44383c950de4b9afbffb72e61abf0b2e8dd5e44839035942",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/freeze_metadata.py"
+    },
+    {
+      "bytes": 12495,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/handoff-v1.json",
+      "sha256": "eaa98cff31a6ebc4dea9bc0fbd92e13b00121ac6d3ff38f0a80a9f33d5051754",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 26891,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_cold_v1.py",
+      "sha256": "2b3eebc3bb8e4246df5a1c40ad3bf788ae73c050366992fbae09fdae877bf9f8",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_cold_v1.py"
+    },
+    {
+      "bytes": 18284,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_v1.py",
+      "sha256": "c6bde3b6f56f3af6eada270128aebdf55312aec4df27d17f918d28db02337e7c",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/hilbert_family_component_controls_v1.py"
+    },
+    {
+      "bytes": 26891,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/patch-audit-caller-forward/target.py",
+      "sha256": "2b3eebc3bb8e4246df5a1c40ad3bf788ae73c050366992fbae09fdae877bf9f8",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/patch-audit-caller-forward/target.py"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/patch-audit-caller-inverse/target.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/patch-audit-caller-inverse/target.py"
+    },
+    {
+      "bytes": 18284,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/patch-audit-controls-forward/target.py",
+      "sha256": "c6bde3b6f56f3af6eada270128aebdf55312aec4df27d17f918d28db02337e7c",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/patch-audit-controls-forward/target.py"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/patch-audit-controls-inverse/target.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/patch-audit-controls-inverse/target.py"
+    },
+    {
+      "bytes": 2340,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-source-20261017/static-audit-v1.json",
+      "sha256": "3cf2245fa4a62462b44488ed8696a3218c41e95ef039a074d6f029e6b85a83f0",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 6245,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/API-wire-v2.json",
+      "sha256": "a00f6c82293c79650ca1ac7f94f4f7027ce36dda29a8843155fa24be3142e9d4",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/API-wire-v2.json"
+    },
+    {
+      "bytes": 17848,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/Source-contract-v2.json",
+      "sha256": "68bf893485ae73e299939eef4f9c04a22b7f9205bb25e4aa8495ae422b406a28",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 10149,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/caller-Source-delta-v2.json",
+      "sha256": "35b496d8a3096b351e4ad51a25e9712722b5c6055c106ee285f275e90dbf6bd5",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/caller-Source-delta-v2.json"
+    },
+    {
+      "bytes": 9755,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/caller-v1-to-v2-forward.patch",
+      "sha256": "c6d5bfe07488114348d91f880825dc6b3368b096463f7cb062810c2c4438885a",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/caller-v1-to-v2-forward.patch"
+    },
+    {
+      "bytes": 9755,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/caller-v1-to-v2-inverse.patch",
+      "sha256": "680ccc26db8b248cfd978e045e5eda462413c6606ffbe2645acfe044ba35d561",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/caller-v1-to-v2-inverse.patch"
+    },
+    {
+      "bytes": 7781,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/controls-Source-contract-v2.json",
+      "sha256": "96c9d86e76eb9165d95f1aa4624db28604a790c850b85caafca5387b7528ebae",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/controls-Source-contract-v2.json"
+    },
+    {
+      "bytes": 2230,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/controls-Source-delta-v2.json",
+      "sha256": "ce83efcfeab9d1af77a4348742a5842bc7327bba66a5b2a1be14ef1494d40502",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/controls-Source-delta-v2.json"
+    },
+    {
+      "bytes": 1078,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/controls-v1-to-v2-forward.patch",
+      "sha256": "e99dca79072c9388ff8a8fcf886d3d8b2ac30c19e68a4a127fc9ea54ce669728",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/controls-v1-to-v2-forward.patch"
+    },
+    {
+      "bytes": 1078,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/controls-v1-to-v2-inverse.patch",
+      "sha256": "3ba533f3c0e42b21774dbcdb75d76fcc640125e3bb7a0f7f89766fc6d138d729",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/controls-v1-to-v2-inverse.patch"
+    },
+    {
+      "bytes": 8178,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/freeze_successor.py",
+      "sha256": "75edcd911f2f82fbaf421b5a88ecc15eb456fa7be0d77946c832bdc80b557ca0",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/freeze_successor.py"
+    },
+    {
+      "bytes": 12797,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/handoff-v2.json",
+      "sha256": "e40814f356869bd03a97ec356ba0cccbed678c8b0c9b2e97792cb2356f73f921",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 26908,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_cold_v2.py",
+      "sha256": "e790186dd224ff498e758d8bb9eb83dfb641741b61e0d457b47a0c8687797d13",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_cold_v2.py"
+    },
+    {
+      "bytes": 18467,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py",
+      "sha256": "1de9e74e177ad52bf085e4d37ddd7de7a0a7d3c47e9c3d37ef3cf33a9ff4fdcf",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py"
+    },
+    {
+      "bytes": 26908,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/patch-audit-caller-forward/target.py",
+      "sha256": "e790186dd224ff498e758d8bb9eb83dfb641741b61e0d457b47a0c8687797d13",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/patch-audit-caller-forward/target.py"
+    },
+    {
+      "bytes": 26891,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/patch-audit-caller-inverse/target.py",
+      "sha256": "2b3eebc3bb8e4246df5a1c40ad3bf788ae73c050366992fbae09fdae877bf9f8",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/patch-audit-caller-inverse/target.py"
+    },
+    {
+      "bytes": 18467,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/patch-audit-controls-forward/target.py",
+      "sha256": "1de9e74e177ad52bf085e4d37ddd7de7a0a7d3c47e9c3d37ef3cf33a9ff4fdcf",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/patch-audit-controls-forward/target.py"
+    },
+    {
+      "bytes": 18284,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/patch-audit-controls-inverse/target.py",
+      "sha256": "c6bde3b6f56f3af6eada270128aebdf55312aec4df27d17f918d28db02337e7c",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/patch-audit-controls-inverse/target.py"
+    },
+    {
+      "bytes": 1495,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v2-source-20261017/static-audit-v2.json",
+      "sha256": "d220b66796cb9e2690aa624413e96e9c7a55fb37eb3abf249b5f537fc6714cfe",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/static-audit-v2.json"
+    },
+    {
+      "bytes": 2375,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/Source-review-correction-v2-callable-ABI-v1.json",
+      "sha256": "2669b1e4535446dee174eb049e42bee84dbcec3b3352acc903b72892ad730081",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/Source-review-correction-v2-callable-ABI-v1.json"
+    },
+    {
+      "bytes": 2694,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/collector-findings-v2.json",
+      "sha256": "f80e49aa27b1f1d1548fb226fd82e1a756eb07c8ea3ecb3a183eec5d1d8af1a5",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-findings-v2.json"
+    },
+    {
+      "bytes": 1927,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/collector-typed-Source-review-v2.json",
+      "sha256": "88d2a463a9d6db8a8a5de41a2ff38bec1d1f6cbf3d6c98b80d3d53357c8d7419",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/collector-typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 5137,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/findings-v1.json",
+      "sha256": "9c039884843f6b74a9e22dd7087e6522a49fc1ef8c0b7a72d040e5994d616c1d",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 3551,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/findings-v2.json",
+      "sha256": "d0aaa6b95998fde3350617367c8631ac5741c4a06eff4b770fb9c2995d1e6202",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/findings-v2.json"
+    },
+    {
+      "bytes": 1377,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/handoff-v1.json",
+      "sha256": "13f61d58cab330b04905c2b9e9b0407316af94e17273d678ea812c22628cbc48",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 1907,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/handoff-v2.json",
+      "sha256": "be5334bbbd64b1cd7bc134ad0c326d7c7bb2bf811ac5da04bad697add8fbc051",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 2494,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/helper-typed-Source-review-v2.json",
+      "sha256": "8cb6f2570248091fd7fc896dffb02a70c833c4f3c3c44c57d614d4061d2a28f1",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/helper-typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 12582,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v1.json",
+      "sha256": "757ac2b39d5df17e9e422c35236739c44e7f3359266d951f7fbc398400cddb54",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v1.json"
+    },
+    {
+      "bytes": 22979,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v2.json",
+      "sha256": "d0130461abb0f094afa1eb96c50e717bf12e71d546465cbb57703fb2c003fb62",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v2.json"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/patch-audit-caller/target.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/patch-audit-caller/target.py"
+    },
+    {
+      "bytes": 21778,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/patch-audit-collector/target.py",
+      "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/patch-audit-collector/target.py"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/patch-audit-controls/target.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/patch-audit-controls/target.py"
+    },
+    {
+      "bytes": 26891,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/patch-caller-v2/target.py",
+      "sha256": "2b3eebc3bb8e4246df5a1c40ad3bf788ae73c050366992fbae09fdae877bf9f8",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/patch-caller-v2/target.py"
+    },
+    {
+      "bytes": 18284,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/patch-controls-v2/target.py",
+      "sha256": "c6bde3b6f56f3af6eada270128aebdf55312aec4df27d17f918d28db02337e7c",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/patch-controls-v2/target.py"
+    },
+    {
+      "bytes": 6424,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "621028615707736367adeca3e5e45fc0a338a9eb78e117a42e9e235dc74f9f62",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 6799,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "8df73e91b09b91cef49e2058278cf2db242b011cf057921679f98d860b2d870e",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 424,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-Date-bracket-v1.json",
+      "sha256": "6e7f86cb89ed92011a9d786425d929c99d323e539f738cb0ac1aacb0e08115ae",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 6336,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "ae0e5dbf369269f0e27f5b183c268b1b937786448b32420dbf240ccfce38bfdc",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 26554,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "546f27c4365c601b31de46482e893cea5cb4b12e7e3fe7960e12e0f5193a18d2",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 31931,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-complete-byte-preflight-v1.json",
+      "sha256": "e8cf36c4fd853ce4513d6c8a12e698e1cd76588b3b106a5990607c8ba12257c9",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-complete-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 2727,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "326f9a0b431129a5ba028c1df9d68cdd76c7c1e60531dd6371082333b23fb36b",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 26460,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "3a7eeda5c3c2b5061de5934e3a6c5547b438446e35639443dc36d5c508573092",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 670,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-tool-observation-v1.json",
+      "sha256": "0c4b518db76d8926f846b9bca4d993bbe4580e7fea3bd16d187bd31d6d0e7cf1",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/ROOT-tool-observation-v1.json"
+    },
+    {
+      "bytes": 269,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/ONCE.json",
+      "sha256": "bf4b96ecc962f2d179e563391a9d7e3e94be7ef39249d72531341b1fcd169377",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 73,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/meter-stderr.txt",
+      "sha256": "d6eee29a624f54e7ba757462a4b73d4da0c9d0a72fcbbaa8bb22e12fce1759fd",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1588,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/native-terminal.json",
+      "sha256": "443402e049f1e1b8894eef479ad9f8b17cbf88529c08a0b4e935915162e781e5",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 486,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/observation.json",
+      "sha256": "4e19d305f9c5d2b66ffd1981966b514e96c873ef6d309ae3ec32356e5369add5",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "55fe4e3d828f3dc10eed021ed4957ef83e9cb1c2592e4ed5bb2c59c86a2c9c91",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-ROOT-20261017/component-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 7370,
+      "path": "recording-limit-evidence/gcts-parallel-search-assessment-20261017/assessment-v1.json",
+      "sha256": "fcf72689c121aae1230c877645624b261ecfce90c64a566654b2bdc3ac8e79fb",
+      "source_path": "/private/tmp/gcts-parallel-search-assessment-20261017/assessment-v1.json"
+    },
+    {
+      "bytes": 1212,
+      "path": "recording-limit-evidence/gcts-parallel-search-assessment-20261017/handoff-v1.json",
+      "sha256": "379e656c0f4d03cb5db6db3cf6d60a7bb91d86fb8bb3a0ffb08fada3992fc3e3",
+      "source_path": "/private/tmp/gcts-parallel-search-assessment-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 12989,
+      "path": "recording-limit-evidence/gcts-parallel-search-assessment-20261017/parallel-search-assessment-v1.json",
+      "sha256": "c9cb72cd3ae879b0a1e227ebc9e51e8753bd329bf473bac415907bae3c83cbca",
+      "source_path": "/private/tmp/gcts-parallel-search-assessment-20261017/parallel-search-assessment-v1.json"
+    },
+    {
+      "bytes": 10643,
+      "path": "recording-limit-evidence/gcts-parallel-benchmark-plan-20261017/benchmark-priority-v1.json",
+      "sha256": "5bd9b6e0b333e61ce05d3efb899dcf3e2a0a7bf6bedee701d56a09099596cbbe",
+      "source_path": "/private/tmp/gcts-parallel-benchmark-plan-20261017/benchmark-priority-v1.json"
+    },
+    {
+      "bytes": 18273,
+      "path": "recording-limit-evidence/gcts-parallel-benchmark-plan-20261017/freeze_plan.py",
+      "sha256": "82eda9110db044c5627e9f53c67fa53f7b786f6d82e2d78f59df444a75ed94ee",
+      "source_path": "/private/tmp/gcts-parallel-benchmark-plan-20261017/freeze_plan.py"
+    },
+    {
+      "bytes": 531,
+      "path": "recording-limit-evidence/gcts-parallel-benchmark-plan-20261017/handoff-v1.json",
+      "sha256": "29aaad1ae6c3b868cfd872d2ed4bd62b759db050c75e2ec3e35d2700e282d00f",
+      "source_path": "/private/tmp/gcts-parallel-benchmark-plan-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 592,
+      "path": "recording-limit-evidence/gcts-parallel-benchmark-plan-20261017/handoff-v2.json",
+      "sha256": "b57c76a854dc9e1d69e6ad728c5c17927d64f353352a2043d2f84ac657d6053a",
+      "source_path": "/private/tmp/gcts-parallel-benchmark-plan-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 22256,
+      "path": "recording-limit-evidence/gcts-parallel-benchmark-plan-20261017/parallel-benchmark-plan-v1.json",
+      "sha256": "79cfb76ebd8c2c009019652bb2a6f0233ecadc7c2b4244171821758f4dd8fe14",
+      "source_path": "/private/tmp/gcts-parallel-benchmark-plan-20261017/parallel-benchmark-plan-v1.json"
+    },
+    {
+      "bytes": 48584,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py"
+    },
+    {
+      "bytes": 14720,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py",
+      "sha256": "46e3b26a688d64665303238d7d8f3f9b54345cc98e17d903403ca1b62b9b0293",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-compiler-source-20261012/compact_catalog_decoder_v1.py"
+    },
+    {
+      "bytes": 29230,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py",
+      "sha256": "677c48c7aebfecf0c83c8daa8bf8e873d0be1e415906afa6687f0b9652e33719",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-dynamic-source-20261012/compact_cluster_lifecycle_v2.py"
+    },
+    {
+      "bytes": 20787,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py",
+      "sha256": "d638f7152ec7fa8293adbd8915b79de60f95d0756952bdc6bf0e40b15f549ca0",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-engine-source-20261012/compact_point_graph_v1.py"
+    },
+    {
+      "bytes": 15171,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py",
+      "sha256": "db4dc3b904715be3123ed1a9b22eb1ce9144c35aa00c610da94f13263e4334e8",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_catalog_audit_v1.py"
+    },
+    {
+      "bytes": 7441,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py",
+      "sha256": "1b9d6b94c78f363ba20f48234dc1eb48ac9dcfa548e8f0fa1a7350699b059b34",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/cluster-transfer-compact-independent-source-20261012/independent_compact_domains_v1.py"
+    },
+    {
+      "bytes": 8002,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/fresh-equality-first-proof-ROOT-source-20261013/ROOT-worker-SOURCE-review-v1.json",
+      "sha256": "d96193b03ce50bd743670618aae32c0b55cb7308c9dd676dfb832c150036ee41",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-ROOT-source-20261013/ROOT-worker-SOURCE-review-v1.json"
+    },
+    {
+      "bytes": 10586,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+      "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json"
+    },
+    {
+      "bytes": 64540,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py"
+    },
+    {
+      "bytes": 35568,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py"
+    },
+    {
+      "bytes": 2897,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-ROOT-final-decision-v1.json",
+      "sha256": "4b9d5f6357a63ab2754fa05ba6762212bc4f615b7e5ac0c77f8a15622853274b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/preparation-ROOT-final-decision-v1.json"
+    },
+    {
+      "bytes": 2860,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-ROOT-final-decision-v1.json",
+      "sha256": "5c57b5852120307a152a9cb4f594f22f431a316a7ce2346971aaf1d538fefdcd",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-fresh-inc-point-chain-w-static-progress-20261013/replay-ROOT-final-decision-v1.json"
+    },
+    {
+      "bytes": 31035,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/audit-result-v1.json",
+      "sha256": "c8440f2d274ce1199cd320ec13dfd5a2211cd2a11e6bad25de1b572f445ccc62",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/audit-result-v1.json"
+    },
+    {
+      "bytes": 245655,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-licenses-v1.jsonl.gz",
+      "sha256": "338ce0a39c04afaa2be59571866dcbc4e43f84d5226db678ee9931be5f75aadf",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-licenses-v1.jsonl.gz"
+    },
+    {
+      "bytes": 9388,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-static-evidence-v1.json.gz",
+      "sha256": "293946e9cb0129ead69d73816061fc5a56fea045364cd3d5c4350b233e8b5373",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-v1/complete-independent-static-evidence-v1.json.gz"
+    },
+    {
+      "bytes": 30699,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-worker-plan-v1.json",
+      "sha256": "33924efad6c115d9a65736fbff5b190a732c454e6039e0712f9113d681472735",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-audit-worker-plan-v1.json"
+    },
+    {
+      "bytes": 10822,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+      "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json"
+    },
+    {
+      "bytes": 10169,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/full-preparation-evidence-v1.json.gz",
+      "sha256": "53fe3bae5701581e333963cf22b10f926cc83254209af861a442e6301242dab0",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/full-preparation-evidence-v1.json.gz"
+    },
+    {
+      "bytes": 23400,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/preparation-result-v1.json",
+      "sha256": "bc7ef755c138fbfe2e2d4501473b82563427e69379381d83f21bcbfb5784531d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/preparation-result-v1.json"
+    },
+    {
+      "bytes": 21921,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-worker-plan-v1.json",
+      "sha256": "d63cead0136e63b245e3df569d160942df77a2c9cbb03498d3c8ac61c6091ef2",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-worker-plan-v1.json"
+    },
+    {
+      "bytes": 43532,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+      "sha256": "b60869d015f5f60caa726864595a6293a4566ffdf04403c2499ade76987ef831",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json"
+    },
+    {
+      "bytes": 47959,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_audit_worker_v1.py",
+      "sha256": "7b25d902b69398d5d71c450ee9e63021df6d3b4e967b4c47b7d6e6b563d55fe6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_audit_worker_v1.py"
+    },
+    {
+      "bytes": 46112,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_compiler_v1.py",
+      "sha256": "57653bb27eaf3c4dd1e050c70ac360133f78e1f636cd1276a39a20fd64610a56",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_compiler_v1.py"
+    },
+    {
+      "bytes": 14799,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_grammar_v1.py",
+      "sha256": "34322db5dc25cd3e0cc1dfa43f379f9f45107442c4f035d955b39f1e21b31db1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_grammar_v1.py"
+    },
+    {
+      "bytes": 31893,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_prepare_worker_v1.py",
+      "sha256": "cc1f05b4b18e4f570b25745a0cf3d3f7c816e4146872f36f8d7a939894acb7e3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_prepare_worker_v1.py"
+    },
+    {
+      "bytes": 6730,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-first-proof-worker-source-review-v2.json",
+      "sha256": "356addcead5a5f8375573f325748760da93355cf099992896583e04e657cf748",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-incidence-priority-review-20261013/fresh-first-proof-worker-source-review-v2.json"
+    },
+    {
+      "bytes": 24588,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py"
+    },
+    {
+      "bytes": 31300,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py"
+    },
+    {
+      "bytes": 42946,
+      "path": "recording-limit-evidence/current-dependencies/project/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py",
+      "sha256": "c7af8a415670dd54a3177fda823a0c3fb0bbcc582e59125a974ea19de06748e6",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/reversible-classification-row-mask-source-20261013/compact_point_graph_reversible_v4.py"
+    },
+    {
+      "bytes": 21657,
+      "path": "recording-limit-evidence/current-dependencies/project/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md"
+    },
+    {
+      "bytes": 26908,
+      "path": "recording-limit-evidence/current-dependencies/temporary/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_cold_v2.py",
+      "sha256": "e790186dd224ff498e758d8bb9eb83dfb641741b61e0d457b47a0c8687797d13",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_cold_v2.py"
+    },
+    {
+      "bytes": 18467,
+      "path": "recording-limit-evidence/current-dependencies/temporary/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py",
+      "sha256": "1de9e74e177ad52bf085e4d37ddd7de7a0a7d3c47e9c3d37ef3cf33a9ff4fdcf",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v2-source-20261017/hilbert_family_component_controls_v2.py"
+    },
+    {
+      "bytes": 56670,
+      "path": "recording-limit-evidence/current-dependencies/temporary/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_checker.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1",
+      "source_path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_checker.py"
+    },
+    {
+      "bytes": 51898,
+      "path": "recording-limit-evidence/current-dependencies/temporary/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_expander.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2",
+      "source_path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_expander.py"
+    },
+    {
+      "bytes": 31330,
+      "path": "recording-limit-evidence/current-dependencies/temporary/gcts-hilbert-shared-family-adapter-v3-source-20261017/hilbert_shared_family_admission_adapter_v3.py",
+      "sha256": "cb20ac2b95a8c84b3c0230065dd13c9fa1b1f9945e329f5ecbfa2bd38d674296",
+      "source_path": "/private/tmp/gcts-hilbert-shared-family-adapter-v3-source-20261017/hilbert_shared_family_admission_adapter_v3.py"
+    },
+    {
+      "bytes": 21800,
+      "path": "recording-limit-evidence/current-dependencies/temporary/gcts-hilbert-shared-family-collector-v2-source-20261017/hilbert_shared_family_selected_dag_collector_v2.py",
+      "sha256": "7160d774e3026fadf4ad959931ad0847028ad47308a57c2ac5480a3f39bf260a",
+      "source_path": "/private/tmp/gcts-hilbert-shared-family-collector-v2-source-20261017/hilbert_shared_family_selected_dag_collector_v2.py"
+    },
+    {
+      "bytes": 19341,
+      "path": "recording-limit-evidence/current-dependencies/temporary/gcts-hilbert-shared-family-consumer-source-20261017/hilbert_shared_family_preference_consumer_v1.py",
+      "sha256": "7819736573d25c4937a82afdee2e2c8b7187039c15606eb3fe37d1715bdf0c74",
+      "source_path": "/private/tmp/gcts-hilbert-shared-family-consumer-source-20261017/hilbert_shared_family_preference_consumer_v1.py"
+    },
+    {
+      "bytes": 37218,
+      "path": "recording-limit-evidence/current-dependencies/temporary/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py"
+    },
+    {
+      "bytes": 6254,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/API-wire-v3.json",
+      "sha256": "277a2638431cfc0765c9aefd099c75b80af58f282f7c8324b1fe9e9adc34da5b",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/API-wire-v3.json"
+    },
+    {
+      "bytes": 18436,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/Source-contract-v3.json",
+      "sha256": "e5cb592d7e71da394043a5868c92ca5de36e254152d3e1ce57254d31be582a6d",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/Source-contract-v3.json"
+    },
+    {
+      "bytes": 6231,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/Source-delta-v3.json",
+      "sha256": "c3821a9c20ea4d2a7cf6d00cc0bda2260ea7e61485770a0fcf22a87d704ba45d",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/Source-delta-v3.json"
+    },
+    {
+      "bytes": 5851,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/caller-v2-to-v3-forward.patch",
+      "sha256": "5aa806540e823900ad960323bd5f13551b63a85bf920c9a4db124701f3f2ccc3",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/caller-v2-to-v3-forward.patch"
+    },
+    {
+      "bytes": 5851,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/caller-v2-to-v3-inverse.patch",
+      "sha256": "f9f541463267db8684e3fc03f86104e7f5455b5cd727b6cfa54abc7e3416199c",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/caller-v2-to-v3-inverse.patch"
+    },
+    {
+      "bytes": 11007,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/freeze_successor.py",
+      "sha256": "1b74dd85f62c5c36898c3cb87460fc1f548ac47128653ae456420375cab94e38",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/freeze_successor.py"
+    },
+    {
+      "bytes": 12260,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/handoff-v3.json",
+      "sha256": "c6e3f1ccaba5140b9434fd8fed76d10ed610a7de985f179632b702f3d4a5c51f",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 30049,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/hilbert_family_component_controls_cold_v3.py",
+      "sha256": "6366bd89a113795dd2a1e59b570f50308ad73cd8703b5542d076bcfe19cc2d8a",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/hilbert_family_component_controls_cold_v3.py"
+    },
+    {
+      "bytes": 30049,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/patch-audit-forward/target.py",
+      "sha256": "6366bd89a113795dd2a1e59b570f50308ad73cd8703b5542d076bcfe19cc2d8a",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/patch-audit-forward/target.py"
+    },
+    {
+      "bytes": 26908,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/patch-audit-inverse/target.py",
+      "sha256": "e790186dd224ff498e758d8bb9eb83dfb641741b61e0d457b47a0c8687797d13",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/patch-audit-inverse/target.py"
+    },
+    {
+      "bytes": 2762,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-v3-source-20261017/static-audit-v3.json",
+      "sha256": "af730ad05965d1e274c173541fd7c9cd13ef615eaaef3421d8cd5734a01e35f3",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-v3-source-20261017/static-audit-v3.json"
+    },
+    {
+      "bytes": 2541,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/findings-v3.json",
+      "sha256": "d9ef979d95458190955c8d2f09c187e1f26c7a3449d10b69d795927572f714b5",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/findings-v3.json"
+    },
+    {
+      "bytes": 1333,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/handoff-v3.json",
+      "sha256": "455d49a22dd571d961f62d553074d6ff2baeed086061636651adfa988831e990",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 11858,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v3.json",
+      "sha256": "894339f8d166677b05804917ebe88196ceed4d90ac78772fcd42412a19111a04",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/independent-static-audit-v3.json"
+    },
+    {
+      "bytes": 26908,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/patch-caller-v3/target.py",
+      "sha256": "e790186dd224ff498e758d8bb9eb83dfb641741b61e0d457b47a0c8687797d13",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/patch-caller-v3/target.py"
+    },
+    {
+      "bytes": 7004,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "e77fcbd56fe7c1c653a3686b225bd6fe79923633b4b3957d9839ae2fbb7209a2",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-controls-peer-20261017/typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 386,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-Date-bracket-v1.json",
+      "sha256": "aa18fbe25c79f47be1be90b39fb3f8b6fc0ea516808b701462c3e38281c22f56",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 6459,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "1f699f7e84c54a24e834b242233d639e9dd2034257b5f39471b370846d6fa204",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 26563,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "6b4dca74f625d72d2e53564a802426ea85f98a0f4cbb6ab2344ba534ae77d156",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 32187,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-complete-byte-preflight-v1.json",
+      "sha256": "7a6c27be7d5e54a6c7e0cba6afa698c93c0331c7c9e8bf04ddf2d82a5dd874c0",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-complete-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 2930,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "99a5cfc8ed6d8a9828151fbf164d1d3501b0ac998e9666b513617e6afd4abf29",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 26472,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "426e37a679c9642db3a8dcf18d35f53810671e377a2c483c0d389559c70386ea",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 671,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-tool-observation-v1.json",
+      "sha256": "4498a305339d461004f7da6189c9fea50578dfb0d8fbf15367c03de45105d176",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/ROOT-tool-observation-v1.json"
+    },
+    {
+      "bytes": 272,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/ONCE.json",
+      "sha256": "4e13c338c45c92d2b7872c0fb0aea067966178716ba4e5a7fffa0b7f91d4c8c5",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/meter-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1592,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/native-terminal.json",
+      "sha256": "f0ead09d40cd71f4fd2662436fd9d42309daafcdc84326fe2e92bb5e15528ace",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 489,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/observation.json",
+      "sha256": "66d43445d44e6a84f8ccfd066f0754fe67a77c5fd9d99ff40d18cb2ff9a2c39d",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "recording-limit-evidence/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "0221355a92c6b001a70da89cb8836af7971d7c5a4cebbe05a0f8866bde344788",
+      "source_path": "/private/tmp/gcts-hilbert-family-component-point-chain-v3-ROOT-20261017/component-external-v1/postterminal-probe-stdout.txt"
+    }
+  ],
+  "files_count": 207,
+  "new_theorem": false,
+  "schema": "GCTS-recording-limit-evidence-manifest-v1",
+  "scientific_replay": false,
+  "scope": "Frozen Sources, reviews/correction, once-only terminal diagnostic and component error; saved metadata assessment and prospective benchmark plan. No native replay or new proof acceptance."
+}
