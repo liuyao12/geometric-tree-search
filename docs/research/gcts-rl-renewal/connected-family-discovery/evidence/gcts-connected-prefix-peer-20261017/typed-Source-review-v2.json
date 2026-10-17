@@ -1,0 +1,49 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Reviewer did not author observer or discovery caller. Reviewer authored ea300 point adapter,4358 receptor checker,9fd marked verifier,8f checker and earlier controls/diagnostics; Arithmetic authors this observer and engine13/collector/miner/producer/c354/kernel ancestry. Shared dependencies disclosed. This is a distinct structural helper/trace composition review, not independent self-math or runtime acceptance.",
+  "blockers": [],
+  "findings": {
+    "bytes": 6410,
+    "path": "/private/tmp/gcts-connected-prefix-peer-20261017/findings-v2.json",
+    "sha256": "fa68319384836b9baa49fcac70518ce3b99e5225b10ae109f96755525f2f38f7"
+  },
+  "full_raw_AST_actual_patch_inverse_checked": true,
+  "preserved_V1_negative": {
+    "bytes": 1333,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT-helper-Source-negative-v1.json",
+    "sha256": "f8fd87c9d4be281d62387c2ba0926ece2bc4771ec9bb03a42458967ca9ce2876"
+  },
+  "raw_Source_evidence": {
+    "bytes": 3634,
+    "path": "/private/tmp/gcts-connected-prefix-peer-20261017/independent-raw-AST-v2.json",
+    "sha256": "cf23d38189495d5418d42f0277075f6549944e8756e0a971ce3413148b709eca"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "receptor-family-connected-prefix-observer-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-connected-prefix-observer-Source",
+  "source": {
+    "bytes": 21076,
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+    "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338"
+  },
+  "source_contract": {
+    "bytes": 8208,
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-contract-v2.json",
+    "sha256": "37ebc4654f6619de56c6b797b45318d9bdb63638c2c775cf7eb3f606016019d8"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "connected_prefix_observer": {
+      "bytes": 21076,
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+      "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338"
+    }
+  },
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "whole_current_Source_contract_API_engine_trace_read": true
+}

@@ -1,0 +1,180 @@
+{
+  "API": {
+    "build_family_batch": "Keyword API unchanged from provider9098; only own VERSION and expected MINER_VERSION constants changed. Full source-ground roundtrip, physical sources, all24 rows, complete offered census, independent/native adaptation and flags remain raw/AST exact.",
+    "cut_selection": {
+      "ANY": "No new connectedness filter; old ancestor/cut/variant ordering remains. Immediate existing familycap now stops before optional catalogue advancement.",
+      "CONNECTED_AT_LEAST_TWO": "Only emit a cut with at least two distinct original primitive node IDs and weak connectivity in the full induced subgraph. All actual ordered internal references are preserved; undirected neighbor sets are only an advisory connectivity predicate. No formula/rule/target or open-boundary filter.",
+      "default": "ANY",
+      "enum": [
+        "ANY",
+        "CONNECTED_AT_LEAST_TWO"
+      ],
+      "malformed": "Exact str enum required; MiningDataError code CUT_SELECTION propagates.",
+      "time_of_filter": "After existing cut-count/dedup/seen accounting, before graph.cut, _Builder and catalogue. Native original/marked membership still belongs to fresh provider/checker/host stages, never this structural predicate."
+    },
+    "mine_families": "(*,host,derivation,tick,limits=None,cut_selection=ANY)",
+    "output": "Existing miner/proposal/BATCH schemas and fields unchanged. cut_selection is reported in existing reason string; no added request/work/outer fields. This is not an old-receipt relabel."
+  },
+  "RL_accepted": false,
+  "Review_ABI": {
+    "required": [
+      "reviewer authorship overlap",
+      "whole current Source and contracts",
+      "full raw/AST/actual-patch inverse",
+      "no runtime acceptance"
+    ],
+    "schema": "receptor-family-connected-miner-provider-typed-Source-review-v2",
+    "scope": "receptor-family-connected-miner-provider-Source",
+    "source": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "source_contract": "exact current Source-contract-v2.json capsule",
+    "sources": {
+      "miner": {
+        "bytes": 30862,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+        "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+      },
+      "provider": {
+        "bytes": 37272,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+        "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+      }
+    }
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship": {
+    "author": "/root/hilbert_advice_controls",
+    "overlap": "Author previously authored provider, host adapter, consumer and related mathematical ancestry. Parent miner was authored by Arithmetic; expansion checker by Diagnosis. This packet is author static evidence, not an independent review.",
+    "runtime_status": "No scientific/module/helper/model/clock/test execution, no actual/proofword/result reads. Distinct Source peer and Root grants/current composition reviews remain required."
+  },
+  "cap_behavior": {
+    "change": "After retaining an allowed complete record, stop immediately if the existing familycap is reached, before requesting the next variants() yield and optional graph.catalogue.",
+    "changed_observations": "VERSION/reason/work/cut_attempts/duplicate count and callback invocation tail may differ because unneeded optional work is not performed. Do not claim whole runtime/output/callback equivalence or inherit old results. Callback errors that are reached still propagate unchanged.",
+    "no_runtime_claim": "No code/helper/model/scientific function was executed. No fit, speedup, availability, proof or advantage prediction.",
+    "preserved": "Full retained descriptor/substitution/ordered-edge/boundary/output/family-preimage data and old alternative order. No reduced grammar or primitive universe."
+  },
+  "composition": {
+    "fallback": "No changes to scheduler/DEAD/FORCED/earliest-generation/canonical complete fallback/cursors/EOF/exclusions/rollback or engine modules. Providers supply checked preferences only; open inputs never facts.",
+    "model": "Original semantic Source17/input2/binding/epoch and full native language remain immutable; executable map grows separately.",
+    "point": "a197 and ea300 retain the same public VERSION/point API; caller/current whole Source map and implementation-tag gates must explicitly bind its chosen Source. Baseline qualification or old one-cell composition does not transfer automatically.",
+    "unchanged_native_roles": {
+      "checker": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1",
+      "consumer": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874",
+      "host_adapter": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9",
+      "producer": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "windows": "Root may choose a discovery native20/512 window and a later fresh native-checked mining/rebinding native20/512 window. Charge/report both independently; no combined20 or performance/gain claim. No actual authorized by Source packet."
+  },
+  "engine_activated": false,
+  "exact_changes": {
+    "miner": [
+      "own VERSION",
+      "new private _connected_cut full induced weak-connectivity predicate",
+      "mine_families keyword and enum validation",
+      "conditional structural emission filter before graph.cut/Builder/catalogue",
+      "immediate familycap stop after append",
+      "existing reason string includes selected policy"
+    ],
+    "provider": [
+      "own VERSION",
+      "MINER_VERSION"
+    ]
+  },
+  "first_connected_component": {
+    "automatic_order": "Original round-robin ancestor states/queues over original ordered primitive nodes. First structurally eligible cut in that existing prefix emits its literal variant before any optional abstraction. No node list/family/formula/rule route is supplied.",
+    "bounds": "For an actual current collector DAG with n<=24 selected nodes, members2 permits at most n singleton cut attempts plus n two-node attempts, before dedup; cuts48 covers that structural schedule if owning work/native allowance finishes. Generic miner inputs may have >24 nodes and remain bounded prefixes.",
+    "limits": "members2 chooses only the first queued prior node for an anchor. This is not enumeration of every possible connected two-node cut or every cluster. Syntax work/native budget may stop first.",
+    "open_ports": "Closed clusters are allowed. Any open source/cut receptor is preserved as an explicit conditional input with fact_acceptedFalse; physical provider refreshes source/key/occupancy. Open-boundary-at-origin and unoccupied-at-current/hypothetical-union are distinct observations.",
+    "physical_meaning": "At least2 source cut nodes is separate from count of deduped actual placements, new placements, unresolved inputs and chosen pending member. A connected internal edge requires strict prior actual rows at native adaptation, but no extra new-member/placement/whole-search claim follows from syntax selection.",
+    "recommended_limits": {
+      "cuts": 48,
+      "families": 1,
+      "members": 2
+    }
+  },
+  "future_essential_controls": [
+    "ANY default and CONNECTED_AT_LEAST_TWO same ordinary output schema/flags; malformed selection error propagates.",
+    "One-node/disconnected cuts unoffered by connected policy, without base exclusion or impossibility claims.",
+    "First qualifying literal from actual round-robin source order with families1/members2; no optional catalogue advance after cap.",
+    "Closed and open connected families both allowed; every ordered edge and boundary/output/Gamma map remains full.",
+    "Unresolved/callback/work paths remain advisory UNKNOWN or propagated errors; no hidden completion.",
+    "Fresh provider physical rows/source-key/occupancy, full all-offered type census, independent/native member union and current actual BRANCH.",
+    "Distinct source-node count versus actual unique/new/pending member counts reported separately."
+  ],
+  "parent_contracts": {
+    "miner": {
+      "bytes": 9298,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/Source-contract-v1.json",
+      "sha256": "7b3f79d71eebccb0f61da51e0e79e2d68c74310d2e9796a5f2dc0ef0f1a13cd4"
+    },
+    "provider": {
+      "bytes": 17451,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/Source-contract-v1.json",
+      "sha256": "90984f07fefab1bad5bf8c715dfda97cb342b874c5f56ec79fb9f8e0f4f51bb2"
+    }
+  },
+  "parents": {
+    "miner": {
+      "bytes": 29018,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_miner_v1.py",
+      "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+    },
+    "provider": {
+      "bytes": 37232,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+      "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+    }
+  },
+  "proof_accepted": false,
+  "representation_assessment": {
+    "future_only": "Moving full node-origin keys/membership out of the miner DAG into already retained collection maps would require a separately reviewed collector/provenance contract; not implemented and no hash-only identity authority.",
+    "mandatory_data": "This successor does not strip collector checked_members/maps/native memberships/full original/decorated keys, ground witnesses/formulas/ordered refs, full family/type preimages or any required point values. Alternatives never union their t/m.",
+    "no_code_change_here": "Caller may already pass only a tiny opaque experiment/invocation/stage/capture identity as collector origin and retain full Root trace separately in its evidence; full raw trace-to-state/key joins remain external and are never replaced by a hash proof.",
+    "why": "Collector embeds caller origin in derivation origin; miner repeats it in every descriptor provenance, then producer/checker/provider/consumer requests copy those full values. A full Root trace is unnecessary opaque provenance at that repeated location."
+  },
+  "row_trial_assessment": {
+    "current_provider": "All24 rows retained; input variables first, then topological nodes, with each primitive anchored in turn to actual supplied BRANCH. Shared default256 row trials and1e6 provider work steps can exhaust inside an early DFS anchor. No complete placement search or fairness claim.",
+    "future_only": "Interleaving anchor row cursors or forward-checking exact remaining row domains could change advisory order, but is not implemented here. Native/provider/consumer checks remain fresh.",
+    "two_node_open_bound": "With original emptyGamma and six arities<=2, a two-node connected cut has at most3 distinct external input references. Fixing one node to BRANCH leaves at most4 free row variables, at most2*24^4 raw complete assignments over both anchors before strict-prior/marks/sharing pruning. This is a Source combinatorial upper bound, not a measured cost or a promise that256 trials reaches an eligible row."
+  },
+  "runtime_qualified": false,
+  "schema": "receptor-family-connected-miner-provider-Source-contract-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-connected-miner-provider-Source",
+  "source": {
+    "bytes": 30862,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+    "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+  },
+  "source_delta": {
+    "bytes": 5749,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-delta-v2.json",
+    "sha256": "1915f1b7433e02eb8dfb3446aec4df4b4fdaab5e3edc01e80d443cf1ac7fcd1f"
+  },
+  "source_only": true,
+  "sources": {
+    "miner": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "provider": {
+      "bytes": 37272,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+      "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+    }
+  },
+  "static_audit": {
+    "bytes": 16515,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/static-audit-v2.json",
+    "sha256": "7b9c2513f975b459fec42afecd846891b1fe08b4e57b5d291880987d4896d7f7"
+  },
+  "versions": {
+    "miner": "receptor-family-primitive-DAG-miner-v2-connected-cut-selection",
+    "provider": "receptor-family-literal-ground-physical-provider-v2-connected-miner"
+  }
+}

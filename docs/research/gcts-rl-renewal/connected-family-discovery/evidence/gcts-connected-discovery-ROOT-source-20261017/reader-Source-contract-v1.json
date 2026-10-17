@@ -1,0 +1,28 @@
+{
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 22804,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c"
+  },
+  "parent_reviewed_reader": {
+    "bytes": 15303,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v2.py",
+    "sha256": "f7abedd0481bb826e31ebc75955a9a4ca44de30d07c29bfef7062925689c2c96"
+  },
+  "schema": "ROOT-connected-discovery-saved-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Saved-only whole native/capsule/wire/phase/failure4slot joins; no semantic replay or clocks. Positive native20 allows connected-prefix provenance only, no current frontier viability/collector/lemma/proof/GCTS/RL/gain. Failurewindow55 retains diagnostic only.",
+  "source": {
+    "bytes": 21864,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v1.py",
+    "sha256": "807aecad970a9f2cd4add2a835dd7d2cbffbbd95dac8d7c378703549f8315bc2"
+  },
+  "source_delta": {
+    "bytes": 13028,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-Source-delta-v1.json",
+    "sha256": "efc598a43d797ee377c54456873de8bfb28d6538fdc37e17695248cd756774dc"
+  },
+  "source_only": true
+}

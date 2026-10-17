@@ -1,0 +1,163 @@
+{
+  "actual_data_read": false,
+  "ancestry": {
+    "base": {
+      "bytes": 15303,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v2.py",
+      "sha256": "f7abedd0481bb826e31ebc75955a9a4ca44de30d07c29bfef7062925689c2c96"
+    },
+    "base_delta": {
+      "bytes": 13028,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-Source-delta-v1.json",
+      "sha256": "efc598a43d797ee377c54456873de8bfb28d6538fdc37e17695248cd756774dc"
+    },
+    "base_unchanged_helpers": [
+      "need",
+      "canonical",
+      "unique",
+      "decode",
+      "raw_pin",
+      "read",
+      "pinned",
+      "write"
+    ],
+    "immediate_delta": {
+      "bytes": 1921,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-immediate-Source-delta-v2.json",
+      "sha256": "8c7b0c89d1c0f26d4bf24d99b3cd8a567e6382b38f041bd0f7d03d84b42b17e4"
+    },
+    "new_unchanged_helpers": [
+      "read_phases",
+      "read_failure_diagnostic"
+    ],
+    "v1": {
+      "bytes": 21864,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v1.py",
+      "sha256": "807aecad970a9f2cd4add2a835dd7d2cbffbbd95dac8d7c378703549f8315bc2"
+    }
+  },
+  "author_identity": "/root",
+  "authorship": "Reviewer authored host/provider/consumer and earlier native mathematical/caller ancestry, and reviewed f7ab base readout. Root authored this current saved reader/cases; this is distinct saved-data closure Source review, not another independent mathematical checker.",
+  "checks": [
+    {
+      "id": "ALL-CURRENT-AND-PARENT-PINS",
+      "pass": true
+    },
+    {
+      "id": "CURRENT-AST-COMPILE-NO-EVALUATION",
+      "pass": true
+    },
+    {
+      "id": "FULL-22-EDIT-ANCESTRY-RAW-AST-INVERSE",
+      "pass": true
+    },
+    {
+      "id": "FULL-TWO-EDIT-IMMEDIATE-RAW-AST-INVERSE",
+      "pass": true
+    },
+    {
+      "id": "FOUR-ACTUAL-PATCH-DIRECTIONS",
+      "pass": true
+    },
+    {
+      "id": "EIGHT-BASE-HELPERS-RAW-AST-EXACT",
+      "pass": true
+    },
+    {
+      "id": "BOTH-NEW-PARSERS-IMMEDIATE-RAW-AST-EXACT",
+      "pass": true
+    },
+    {
+      "id": "LITERAL-OPERATIVE-CAPSULE-AND-16-8-17-2-MAPS",
+      "pass": true
+    },
+    {
+      "id": "FIXED-PHASE-WHITELIST-COLD-MATCH",
+      "pass": true
+    },
+    {
+      "id": "EXACT-INHERITED-FAILURE-WRITER",
+      "pass": true
+    },
+    {
+      "id": "V1-KEY-AND-CAPTURE-REPAIRS",
+      "pass": true
+    },
+    {
+      "id": "NO-PROJECT-OR-CLOCK-API",
+      "pass": true
+    }
+  ],
+  "concrete_blockers": [],
+  "helper_executed": false,
+  "manual_findings": [
+    {
+      "finding": "Literal current e4ab capsule fixes current16 executable Sources/input8 separately from immutable semantic17/input2/binding. Exact current plan/Source/grant/review/native argv joins remain, with no qualification inheritance.",
+      "id": "OPERATIVE-AUTHORITY"
+    },
+    {
+      "finding": "Original f7ab schemas/version/native clock/PID/exact integer session and exit/reap/no cancellation/Date/postprobe gates remain. Positive below20s/512MiB is distinct from failure below55s; no failed-window positive resource qualification.",
+      "id": "WHOLE-NATIVE"
+    },
+    {
+      "finding": "Whole pinned response/envelope buffers are retained and parsed directly. Canonical LF/completion SHA, exact output inventory/order, complete zlib/base64 bounds and original-source/binding false flags remain.",
+      "id": "SAME-BUFFER-WIRE"
+    },
+    {
+      "finding": "Parser accepts at most6 unique Source-ordered literal stages, bounded canonical integer timestamps in native launch/terminal bounds. Positive requires exact conditional5/6 stages and original20 bounds with no tail; failure retains an ordered complete-line prefix/subsequence plus opaque raw tail hash. These are reached-write observations only, not current/failed method, cause, viability or exclusive cost.",
+      "id": "PHASE-SCOPE"
+    },
+    {
+      "finding": "V2 validates captures as list length0..1 and requires joined status to have one capture. All6 phases are expected if a capture exists even if trace join returns own UNKNOWN; otherwise5 stages. No capture is promoted merely from a phase label.",
+      "id": "CAPTURE-VS-JOIN"
+    },
+    {
+      "finding": "Same-buffer completion marker SHA authenticates raw16KiB failure diagnostic and context. Fixed proposer/fallback/completion/validator slots, validatorNone, stage/row/count/time bounds and original G window are literal checks; None,-1,0 remain distinct. Last callback argument count is not a live state or active failure frame.",
+      "id": "FOUR-SLOTS"
+    },
+    {
+      "finding": "Exact builtin TimeoutError writer path remains raw/AST unchanged in cold caller; absent/incomplete pair is an allowed diagnostic gap. Complete pair carries qualified_case_count0 and reported_case_countNone; causeEstablishedFalse. No callback/semantic replay or late scientific work in reader.",
+      "id": "FAILURE-LIMITS"
+    },
+    {
+      "finding": "Only connected_prefix_provenance_joined is written in positive summary; obsolete integration_path_accepted field removed. The status label is a guarded measured-caller report, not an independent mathematical rerun.",
+      "id": "CORRECT-PROMOTION-FIELD"
+    },
+    {
+      "finding": "Even joined capture denies current_frontier_viability_checked and collector_or_family_pipeline_executed. Theorems0 is fixed no-new-theorem scope; whole engine/fullGCTS/RL/gain remainfalse. Later fresh global decision, native collector and family pipeline are separate required work.",
+      "id": "PARTIAL-STATE-ONLY"
+    }
+  ],
+  "method": "Whole V2/V1/base reader and current cold-wire/contract/native instrument Source read; raw/AST/compile without evaluation and full inverse checks only. No actual plan/grant/native/result/output files opened; no helper/project/model/test/clock execution.",
+  "operative_cold_contract": {
+    "bytes": 22804,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c"
+  },
+  "operative_cold_source": {
+    "bytes": 53815,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v1.py",
+    "sha256": "cde3077a41039bd830ab00bcd6f6de850b609a4e320cae3787f76269ff14d376"
+  },
+  "preserved_negative": {
+    "bytes": 1103,
+    "path": "/private/tmp/gcts-connected-discovery-readout-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "ea33cfa739d1e830fe946fd612dda0f41c55588586d89e00bf24d8303228b633"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_qualified": false,
+  "schema": "ROOT-connected-discovery-saved-Source-findings-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22057,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v2.py",
+    "sha256": "d253225006f0a51c9bc2c6d8e1c249886898e62e959bac4a866f3a0d9277cc9f"
+  },
+  "source_contract": {
+    "bytes": 1756,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "0cbd6136475a5bee0968b89c1373aef8fa476871bbddf80c9fa3ef630e8d7478"
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS"
+}

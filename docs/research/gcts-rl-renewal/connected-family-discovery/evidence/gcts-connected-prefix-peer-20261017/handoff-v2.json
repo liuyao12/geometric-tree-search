@@ -1,0 +1,45 @@
+{
+  "findings": {
+    "bytes": 6410,
+    "path": "/private/tmp/gcts-connected-prefix-peer-20261017/findings-v2.json",
+    "sha256": "fa68319384836b9baa49fcac70518ce3b99e5225b10ae109f96755525f2f38f7"
+  },
+  "preserved_V1_negative": {
+    "bytes": 1333,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT-helper-Source-negative-v1.json",
+    "sha256": "f8fd87c9d4be281d62387c2ba0926ece2bc4771ec9bb03a42458967ca9ce2876"
+  },
+  "raw_Source_evidence": {
+    "bytes": 3634,
+    "path": "/private/tmp/gcts-connected-prefix-peer-20261017/independent-raw-AST-v2.json",
+    "sha256": "cf23d38189495d5418d42f0277075f6549944e8756e0a971ce3413148b709eca"
+  },
+  "runtime_qualified": false,
+  "schema": "connected-prefix-observer-independent-review-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21076,
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+    "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338"
+  },
+  "source_contract": {
+    "bytes": 8208,
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-contract-v2.json",
+    "sha256": "37ebc4654f6619de56c6b797b45318d9bdb63638c2c775cf7eb3f606016019d8"
+  },
+  "source_only": true,
+  "sources": {
+    "connected_prefix_observer": {
+      "bytes": 21076,
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+      "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338"
+    }
+  },
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "typed_review": {
+    "bytes": 2423,
+    "path": "/private/tmp/gcts-connected-prefix-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "8bb05c6ba726b0c532770ef89aab0cd43fd3f39128efeaf026e356735b19464a"
+  }
+}

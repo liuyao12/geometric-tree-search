@@ -1,0 +1,20 @@
+{
+  "assessment": {
+    "bytes": 17322,
+    "path": "/private/tmp/gcts-connected-composition-review-source-20261017/composition-assessment-v1.json",
+    "sha256": "2bd62ec669edcc2fa08444808088de6b09f8102d5292ba9df150a71ebb410727"
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "conclusion": "ea300 is public-ABI/completed-mathematics compatible within declared synchronous pinned scope; fresh current composition and connected-path evidence still required.",
+  "implementation_authorship_disclosed": true,
+  "raw_Source_evidence": {
+    "bytes": 6989,
+    "path": "/private/tmp/gcts-connected-composition-review-source-20261017/raw-Source-evidence-v1.json",
+    "sha256": "11ec20647adc7559a5cc0539688f1d471debc0e752da5bc6383a3b48028ed3cd"
+  },
+  "runtime_qualified": false,
+  "schema": "connected-family-point-composition-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

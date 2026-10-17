@@ -1,0 +1,97 @@
+{
+  "modules": {
+    "miner": {
+      "actual_forward_patch": {
+        "bytes": 3991,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/miner-forward.patch",
+        "sha256": "9b425622efc3dc8f1a17debba7fb0953bde8e7456b282336a038c1d7e0874896"
+      },
+      "actual_full_inverse_patch": {
+        "bytes": 3991,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/miner-full-inverse.patch",
+        "sha256": "b5bfac229664604ab1feac080aeff6f4d3078f52b7637b2bd4cd9db42c23dbbb"
+      },
+      "edits": [
+        {
+          "after": "VERSION = 'receptor-family-primitive-DAG-miner-v2-connected-cut-selection'\n",
+          "before": "VERSION = 'receptor-family-primitive-DAG-miner-v1'\n",
+          "index": 0,
+          "start_byte_in_current_sequence": 339
+        },
+        {
+          "after": "def _connected_cut(graph, cut):\n    \"\"\"Only an advisory emission predicate on the full induced primitive DAG.\n\n    Every internal ordered edge remains in graph.cut's unchanged wire. The\n    undirected neighbor sets below test weak connectivity only, not legality,\n    proof closure, generation, candidate-domain completeness or source authority.\n    \"\"\"\n    graph.w.step()\n    if len(cut) < 2:\n        return False\n    selected = set(cut)\n    adjacent = {nid: set() for nid in cut}\n    for nid in cut:\n        graph.w.step()\n        for ref in graph.nodes[nid]['ordered_inputs']:\n            graph.w.step()\n            if 'node' in ref and ref['node'] in selected:\n                source = ref['node']\n                adjacent[nid].add(source)\n                adjacent[source].add(nid)\n    queue, reached = [cut[0]], set()\n    while queue:\n        graph.w.step()\n        nid = queue.pop(0)\n        if nid not in reached:\n            reached.add(nid)\n            # Source-topological order makes this diagnostic traversal stable;\n            # it never reorders primitive ports or the ancestor mining queue.\n            queue.extend(sorted(adjacent[nid]-reached, key=graph.position.get))\n    return reached == selected\n\n\ndef mine_families(*,host,derivation,tick,limits=None,cut_selection='ANY'):\n    require(type(cut_selection) is str and cut_selection in ('ANY', 'CONNECTED_AT_LEAST_TWO'),\n            'CUT_SELECTION', 'explicit generic advisory emission policy')\n",
+          "before": "def mine_families(*,host,derivation,tick,limits=None):\n",
+          "index": 1,
+          "start_byte_in_current_sequence": 25925
+        },
+        {
+          "after": "                if cut_selection == 'CONNECTED_AT_LEAST_TWO' and not _connected_cut(graph, cut):\n                    continue  # Unemitted syntax prefix, never a base-candidate exclusion.\n",
+          "before": "",
+          "index": 2,
+          "start_byte_in_current_sequence": 28828
+        },
+        {
+          "after": "                    if len(families) >= work.limits['families']:\n                        reason='finite family proposal prefix bound; no exhaustion claim';stopped=True;break\n",
+          "before": "",
+          "index": 3,
+          "start_byte_in_current_sequence": 30202
+        },
+        {
+          "after": "            'mining_complete':False,'work':work.report(),\n            'reason':'cut_selection='+cut_selection+'; '+reason,'flags':dict(FLAGS)}\n",
+          "before": "            'mining_complete':False,'work':work.report(),'reason':reason,'flags':dict(FLAGS)}\n",
+          "index": 4,
+          "start_byte_in_current_sequence": 30719
+        }
+      ],
+      "parent_source": {
+        "bytes": 29018,
+        "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_miner_v1.py",
+        "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+      },
+      "source": {
+        "bytes": 30862,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+        "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+      }
+    },
+    "provider": {
+      "actual_forward_patch": {
+        "bytes": 758,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/provider-forward.patch",
+        "sha256": "cfc653f815061be391cac8904f57acfd89d8c6c9dc3b306d0e84b6acc7338bac"
+      },
+      "actual_full_inverse_patch": {
+        "bytes": 758,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/provider-full-inverse.patch",
+        "sha256": "16e786abaddc109795972cef81070ed371580ec9b6ddee522ec221c7ebaa34b7"
+      },
+      "edits": [
+        {
+          "after": "VERSION = 'receptor-family-literal-ground-physical-provider-v2-connected-miner'\n",
+          "before": "VERSION = 'receptor-family-literal-ground-physical-provider-v1'\n",
+          "index": 0,
+          "start_byte_in_current_sequence": 341
+        },
+        {
+          "after": "MINER_VERSION = 'receptor-family-primitive-DAG-miner-v2-connected-cut-selection'\n",
+          "before": "MINER_VERSION = 'receptor-family-primitive-DAG-miner-v1'\n",
+          "index": 1,
+          "start_byte_in_current_sequence": 545
+        }
+      ],
+      "parent_source": {
+        "bytes": 37232,
+        "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+        "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+      },
+      "source": {
+        "bytes": 37272,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+        "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+      }
+    }
+  },
+  "no_original_file_modified": true,
+  "schema": "receptor-family-connected-miner-provider-Source-delta-v2",
+  "scientific_calls": 0
+}

@@ -1,0 +1,146 @@
+{
+  "schema": "ROOT-connected-discovery-independent-findings-v1",
+  "reviewer_identity": "/root/arithmetic_induction",
+  "author_identity": "/root",
+  "source": {
+    "bytes": 53815,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v1.py",
+    "sha256": "cde3077a41039bd830ab00bcd6f6de850b609a4e320cae3787f76269ff14d376"
+  },
+  "case_source": {
+    "bytes": 6767,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cases_v1.py",
+    "sha256": "0e9b5a4d029c32853fa72032385f005d5773969ccb4044b119cd4194eb35261f"
+  },
+  "source_contract": {
+    "bytes": 22804,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c"
+  },
+  "static_preservation": {
+    "path": "/private/tmp/gcts-connected-discovery-peer-20261017/static-preservation-v1.json",
+    "sha256": "36e659235e7124baf6a2951f8322da3dfa41ac04b311b4573b9ee31476d82895",
+    "bytes": 4225
+  },
+  "findings": [
+    {
+      "id": "CD-CURRENT-AUTHORITY",
+      "disposition": "NO_SCOPED_BLOCKER",
+      "finding": "Whole caller, whole case and operative contract read. Current Source16/input8 exactly match FIXED plus intake, handoff/Review_ABI and contract. Original semantic Source17/input2/binding and all six native limits exactly match parent; original make_language uses ORIGINAL_SOURCES, never current runtime map.",
+      "evidence": [
+        "caller lines26-40,main plan/current/original joins",
+        "contract sources/inputs/original_model_sources/original_model_binding",
+        "static-preservation-v1.json"
+      ]
+    },
+    {
+      "id": "CD-ANCESTRY-INVERSE",
+      "disposition": "VERIFIED_STATIC",
+      "finding": "All12 ordered literal/block deltas reconstruct current and original byteexact; whole AST inverse exact. Both actual unified patches applied in both directions against scratch data. All34 common named regions except main raw+AST exact; main.run_pipeline removed, main.phase/run_discovery added. Native tick/CodeSeal/guard/call/fresh_language/failure writer and final exception tail preserved.",
+      "evidence": [
+        "Source-delta-v1.json",
+        "caller-forward.patch",
+        "caller-full-inverse.patch",
+        "static-preservation-v1.json"
+      ]
+    },
+    {
+      "id": "CD-ROOT-OWNED-OBSERVATION",
+      "disposition": "NO_SCOPED_BLOCKER",
+      "finding": "All3 public constructor callbacks first native-tick and save one fixed scalar entry observation; only supplied current callback state is inspected. No full proposal/query log, private cache access or cursor-context-as-current-state shortcut. First structural UNKNOWN immediately raises dedicated TimeoutError subclass; engine UNKNOWN preserves incomplete inspection rather than skipping and claiming firstness.",
+      "evidence": [
+        "whole case observe/proposer/fallback/certify functions"
+      ]
+    },
+    {
+      "id": "CD-CAPTURE-SCOPE",
+      "disposition": "NO_SCOPED_BLOCKER",
+      "finding": "Predicate is any selected-to-selected strict-prior ordered read, with no formula/rule/row route filter. >=2 selected need not mean all selected nodes connected; repeated edges remain indexed. Status CAPTURED_CONNECTED_PARTIAL_STATE requires exact intentional UNKNOWN plus full trace join; viability and proof/degree/EOF/library/engine/RL/gain/resource flags false. No completed current global decision is claimed.",
+      "evidence": [
+        "case run_discovery",
+        "helper public API",
+        "caller discovery gate and payload"
+      ]
+    },
+    {
+      "id": "CD-ACTIVE-TRACE",
+      "disposition": "DEPENDENCY_AUTHORSHIP_DISCLOSED",
+      "finding": "Root case retains actual whole search/events/root snapshots and calls the full active trace join. Prior backtracks/exclusions are permitted. Intentional exception unwind has no emitted RESTORE event; outstanding placed TRY frames join captured full selected/excluded arrays and full restored root snapshots separately. I authored this helper and do not self-review it as independent; Diagnosis distinct whole current helper review remains required before grant.",
+      "evidence": [
+        "helper Source-contract-v2.json",
+        "case join_active_search_trace call",
+        "engine13 search"
+      ]
+    },
+    {
+      "id": "CD-COMPOSITION",
+      "disposition": "NO_SCOPED_BLOCKER",
+      "finding": "Engine13 and marked adapter ea300 are explicit current pins. ea300 IMPLEMENTATION_VERSION conjunct checked while public protocol VERSION preserved. Whole current marking is freshly independently checked after authenticated prior StageB provenance. Prior StageB/onecell results are not promoted to discovery, family engine or theorem qualification.",
+      "evidence": [
+        "caller current engine/adapter gate",
+        "verifier.check_marking guarded call",
+        "contract qualifications_inheritedFalse"
+      ]
+    },
+    {
+      "id": "CD-NATIVE-DIAGNOSTIC-WIRE",
+      "disposition": "NO_SCOPED_BLOCKER",
+      "finding": "6 fixed phase sites with captured native tick/os.write endpoints; only charged original20 writes. Ordered-subsequence of complete labels, optional last partial write and old raw error tail possible. Fixed4 scalar slots; validator uninstrumented/None. No entry sample identifies active failure frame or exclusive method cost. Existing raw unchanged failure55 writer only on exact builtin TimeoutError escaping guarded call; incomplete/absent output stays incomplete.",
+      "phase_labels": [
+        "BEFORE_ENGINE",
+        "BEFORE_SEARCH",
+        "CAPTURED_CONNECTED",
+        "AFTER_SEARCH",
+        "AFTER_TRACE_JOIN",
+        "BEFORE_OUTPUT"
+      ],
+      "maximum_complete_line_bytes": 65,
+      "maximum_complete_wire_bytes": 367,
+      "evidence": [
+        "caller phase",
+        "main exact builtin TimeoutError catch",
+        "unchanged save_failure_diagnostic"
+      ]
+    },
+    {
+      "id": "CD-NATIVE-OUTPUT",
+      "disposition": "NO_SCOPED_BLOCKER",
+      "finding": "Whole setup/auth/import/construction/search/capture/join/serialization/positive output remain under original20/512MiB with internal500 reserve. Existing strict complete canonicalJSON+LF/zlib6/base64 16MiB/4MiB transport, twoLF response and final native exit preserved. Failure55 cannot become positive20 acceptance. Saved/native readout is separately reviewed/closed by Root; no actual fit inferred.",
+      "evidence": [
+        "caller tick",
+        "encode_result_transport",
+        "result/response/final tail",
+        "contract artifact_API/native_limits"
+      ]
+    },
+    {
+      "id": "CD-SEPARATE-BRIDGE",
+      "disposition": "REQUIRED_LATER_SCOPE",
+      "finding": "This Source loads/calls no collector/miner/provider/consumer/expander. Any later bridge must be separately reviewed/granted, freshly reconstruct the captured full state and obtain a full global decision before inventories/preferences. A DEAD or UNKNOWN decision cannot be bypassed. No combined20 or speed/theorem/RL claim.",
+      "evidence": [
+        "current exact16 map",
+        "whole case/caller",
+        "contract scope_statement"
+      ]
+    },
+    {
+      "id": "CD-HISTORICAL-HEADER",
+      "disposition": "NONBLOCKING_PROSE_ANCESTRY",
+      "finding": "Top caller docstring still refers to historical six endpoints/twelve assertions. The only dispatchable purpose, operative contract, full result schemas and all acceptance flags are explicitly discovery-only/one case. This header is not used as authority; no Source change requested.",
+      "evidence": [
+        "caller docstring and QUALIFICATION_CASES_BY_PURPOSE",
+        "contract expected_cases/purpose/scope"
+      ]
+    }
+  ],
+  "source_only": true,
+  "scientific_calls": 0,
+  "project_imports": false,
+  "helper_execution": false,
+  "model_or_checker_calls": 0,
+  "clock_calls": 0,
+  "tests_or_actuals": false,
+  "compile_without_evaluation": true,
+  "result_or_donor_reads": false,
+  "scope_limit": "Current Root caller/case integration review, not an independent self-review of authored helper/dependencies or runtime qualification."
+}

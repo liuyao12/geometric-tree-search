@@ -1,0 +1,98 @@
+{
+  "API": {
+    "build_family_batch": "Keyword API unchanged from provider9098; only own VERSION and expected MINER_VERSION constants changed. Full source-ground roundtrip, physical sources, all24 rows, complete offered census, independent/native adaptation and flags remain raw/AST exact.",
+    "cut_selection": {
+      "ANY": "No new connectedness filter; old ancestor/cut/variant ordering remains. Immediate existing familycap now stops before optional catalogue advancement.",
+      "CONNECTED_AT_LEAST_TWO": "Only emit a cut with at least two distinct original primitive node IDs and weak connectivity in the full induced subgraph. All actual ordered internal references are preserved; undirected neighbor sets are only an advisory connectivity predicate. No formula/rule/target or open-boundary filter.",
+      "default": "ANY",
+      "enum": [
+        "ANY",
+        "CONNECTED_AT_LEAST_TWO"
+      ],
+      "malformed": "Exact str enum required; MiningDataError code CUT_SELECTION propagates.",
+      "time_of_filter": "After existing cut-count/dedup/seen accounting, before graph.cut, _Builder and catalogue. Native original/marked membership still belongs to fresh provider/checker/host stages, never this structural predicate."
+    },
+    "mine_families": "(*,host,derivation,tick,limits=None,cut_selection=ANY)",
+    "output": "Existing miner/proposal/BATCH schemas and fields unchanged. cut_selection is reported in existing reason string; no added request/work/outer fields. This is not an old-receipt relabel."
+  },
+  "Review_ABI": {
+    "required": [
+      "reviewer authorship overlap",
+      "whole current Source and contracts",
+      "full raw/AST/actual-patch inverse",
+      "no runtime acceptance"
+    ],
+    "schema": "receptor-family-connected-miner-provider-typed-Source-review-v2",
+    "scope": "receptor-family-connected-miner-provider-Source",
+    "source": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "source_contract": {
+      "bytes": 12960,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-contract-v2.json",
+      "sha256": "22e7dbb7f23bd8c8b224c7a7ebe0c5d0716f682bd6c306a9e5a48a7d72022b2c"
+    },
+    "sources": {
+      "miner": {
+        "bytes": 30862,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+        "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+      },
+      "provider": {
+        "bytes": 37272,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+        "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+      }
+    }
+  },
+  "authorship": {
+    "author": "/root/hilbert_advice_controls",
+    "overlap": "Author previously authored provider, host adapter, consumer and related mathematical ancestry. Parent miner was authored by Arithmetic; expansion checker by Diagnosis. This packet is author static evidence, not an independent review.",
+    "runtime_status": "No scientific/module/helper/model/clock/test execution, no actual/proofword/result reads. Distinct Source peer and Root grants/current composition reviews remain required."
+  },
+  "recommended_first_limits": {
+    "cuts": 48,
+    "families": 1,
+    "members": 2
+  },
+  "runtime_qualified": false,
+  "schema": "receptor-family-connected-miner-provider-handoff-v2",
+  "scientific_calls": 0,
+  "scope": "Generic connected-cut advisory emission and constant-only provider version coupling. No open-boundary requirement; all open receptors factFalse. No mathematical/engine/fallback change or existing runtime inheritance.",
+  "source": {
+    "bytes": 30862,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+    "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+  },
+  "source_contract": {
+    "bytes": 12960,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-contract-v2.json",
+    "sha256": "22e7dbb7f23bd8c8b224c7a7ebe0c5d0716f682bd6c306a9e5a48a7d72022b2c"
+  },
+  "source_delta": {
+    "bytes": 5749,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-delta-v2.json",
+    "sha256": "1915f1b7433e02eb8dfb3446aec4df4b4fdaab5e3edc01e80d443cf1ac7fcd1f"
+  },
+  "source_only": true,
+  "sources": {
+    "miner": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "provider": {
+      "bytes": 37272,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+      "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+    }
+  },
+  "static_audit": {
+    "bytes": 16515,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/static-audit-v2.json",
+    "sha256": "7b9c2513f975b459fec42afecd846891b1fe08b4e57b5d291880987d4896d7f7"
+  },
+  "status": "SOURCE_READY_FOR_DISTINCT_REVIEW_ONLY"
+}

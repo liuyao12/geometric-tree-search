@@ -1,0 +1,23 @@
+--- before
++++ after
+@@ -283,7 +283,10 @@
+              and evidence['purpose']==plan['purpose'], 'full canonical current payload')
+         payload=evidence['connected_prefix_discovery'];pipeline=payload['discovery']
+         need(all(body['joint_began_ns']<=x['native_ns']<body['joint_deadline_ns']for x in phases), 'positive phase samples original20')
+-        wanted=list(PHASES)if pipeline['status']=='CAPTURED_CONNECTED_PARTIAL_STATE'else [x for x in PHASES if x!='CAPTURED_CONNECTED']
++        captures=pipeline['captures']
++        need(type(captures)is list and len(captures)<=1
++             and (pipeline['status']!='CAPTURED_CONNECTED_PARTIAL_STATE'or len(captures)==1), 'literal captured versus joined status')
++        wanted=list(PHASES)if captures else [x for x in PHASES if x!='CAPTURED_CONNECTED']
+         need([x['stage']for x in phases]==wanted,'all reached positive fixed phase sites')
+         need(payload['schema']=='ROOT-connected-prefix-discovery-payload-v1'
+              and payload['original_model_sources']==contract['original_model_sources']
+@@ -306,7 +309,7 @@
+              'exact narrow result, no strong promotion')
+         with expanded_path.open('xb')as stream:stream.write(expanded)
+         summary.update(status=pipeline['status'],complete_wire_verified=True,native_resources_qualified=True,
+-            integration_path_accepted=pipeline['status']=='CAPTURED_CONNECTED_PARTIAL_STATE',
++            connected_prefix_provenance_joined=pipeline['status']=='CAPTURED_CONNECTED_PARTIAL_STATE',
+             expanded=dict(path=str(expanded_path),**raw_pin(expanded)),outputs=final['outputs'])
+     else:
+         summary['failure_diagnostic']=read_failure_diagnostic(Path(plan['output_directory']),plan,plan_raw,contract,launch,terminal,phases)

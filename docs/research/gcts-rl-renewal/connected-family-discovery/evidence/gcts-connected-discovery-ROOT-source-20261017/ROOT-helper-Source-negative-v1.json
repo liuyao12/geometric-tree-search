@@ -1,0 +1,33 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "findings": [
+    {
+      "blocker": true,
+      "code": "DECORATED-TYPE-ID-PREFIX-ABI",
+      "consequence": "authentic selected native keys always rejected by structural observer",
+      "native_wire": "fcc4 decorator line180 uses 'row0-decorated-tile-'+sha(decorated_pre)",
+      "source": "_key requires _hex(value['tile_type_id'])"
+    },
+    {
+      "blocker": true,
+      "code": "MARKING-ID-PREFIX-ABI",
+      "consequence": "authentic empty root is rejected at first public callback",
+      "native_wire": "fcc4 decorator line114 uses 'row0-marking-'+sha(definition)",
+      "source": "_state requires _hex(state['marking_id'])"
+    }
+  ],
+  "preserve_negative": true,
+  "required_repair": "only own version plus correct native fixed-prefix/hex-suffix shape gates; native semantic checks still separate",
+  "reviewer_identity": "/root",
+  "runtime_execution_attempted": false,
+  "schema": "ROOT-connected-observer-Source-negative-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 20721,
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v1.py",
+    "sha256": "e177e815059d8373b54fefdc4de9ddb9e478c81c4427274bd737cf73e81f934a"
+  },
+  "source_only": true,
+  "source_review_passed": false
+}

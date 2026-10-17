@@ -1,0 +1,45 @@
+--- a/point.py
++++ b/point.py
+@@ -9,7 +9,7 @@
+ import json
+ 
+ VERSION = 'unit-row-channel4-point-adapter-v1'
+-IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-filter-local-projection-v3'
++IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-fresh-projection-v2'
+ SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'
+ TRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'
+ FALLBACK_VERSION = 'unit-row-channel4-filtered-six-rule-fallback-v1'
+@@ -128,7 +128,7 @@
+         # packet. Selection_record is explicitly derived, not a decorator field.
+         return dict(checked, selection_record=dict(checked['placement_key'], generation=1))
+ 
+-    def _checked_state_projection(self, language, state, tick):
++    def private_state(self, language, state, tick):
+         s = self.tree(state, tick)
+         projection = self._fresh_base_projection(language, s, tick)
+         base, t, base_names = projection[0], projection[1], projection[5]
+@@ -153,10 +153,7 @@
+             marking=self._marking, state=packet, tick=tick)
+         require(check['marked_state_checked'] is True and check['marking_id'] == self.marking_id,
+                 'independent complete marked state union')
+-        return (s, t, full_marks, selected, excluded, names), projection
+-
+-    def private_state(self, language, state, tick):
+-        return self._checked_state_projection(language, state, tick)[0]
++        return s, t, full_marks, selected, excluded, names
+ 
+     def check_collision(self, tile, names):
+         self.base.check_collision(tile['base_tile'], names)
+@@ -179,9 +176,9 @@
+         return tile
+ 
+     def _filter(self, language, state, originals, tick):
+-        checked_state, projection = self._checked_state_projection(language, state, tick)
+-        _, t, m, selected, excluded, names = checked_state
+-        _, bt, bm, bs, be, _ = projection
++        _, t, m, selected, excluded, names = self.private_state(language, state, tick)
++        base_state = self.base_state(language, state, tick)
++        _, bt, bm, bs, be, _ = self.base.private_state(language, base_state, tick)
+         require(type(originals) is list, 'whole original candidate list')
+         checked, removed, used = [], [], set()
+         for raw in originals:

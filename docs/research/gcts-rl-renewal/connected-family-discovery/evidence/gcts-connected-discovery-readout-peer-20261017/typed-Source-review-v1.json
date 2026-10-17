@@ -1,0 +1,28 @@
+{
+  "actual_data_read": false,
+  "author_identity": "/root",
+  "findings": {
+    "bytes": 1498,
+    "path": "/private/tmp/gcts-connected-discovery-readout-peer-20261017/review-findings-v1.json",
+    "sha256": "fdc9836b64f3ef0f47a874493d3281cc1761acec9e68b6deb23a962cbff5f623"
+  },
+  "helper_executed": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "ROOT-connected-discovery-saved-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-connected-discovery-saved-Source",
+  "source": {
+    "bytes": 21864,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v1.py",
+    "sha256": "807aecad970a9f2cd4add2a835dd7d2cbffbbd95dac8d7c378703549f8315bc2"
+  },
+  "source_contract": {
+    "bytes": 1394,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "603f83c17aaa4e92aca2127df2d22100e0ad41c767b82a7b60350058e9306a4e"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "verdict": "SOURCE_REJECTED"
+}

@@ -1,0 +1,80 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_overlap": "Reviewer did not author either current miner/provider. Reviewer authored4358 receptor expansion checker,9fd marked verifier,8f checker,ea300 point optimization and earlier controls/helpers, and separately reviewed parent ec8c. Controls authors current pair and host/consumer/family-engine ancestry; Arithmetic authored parent75f4/miner/producer/kernel/c354/collector. Shared wire/primitives disclosed; no self-mathematics or runtime acceptance.",
+  "blockers": [],
+  "findings": [
+    {
+      "finding": "The new helper checks at least2 selected distinct IDs and traverses every internal ordered primitive node edge in the induced cut, treating the edges as undirected only for weak connectivity. It compares reached against the full cut. No formula/rule/target/open-port filter or native legality claim appears.",
+      "id": "CM01",
+      "lines": [
+        401,
+        431
+      ]
+    },
+    {
+      "finding": "ANY is the exact default enum; malformed selection propagates CUT_SELECTION. Connected filtering occurs after existing attempt/dedup/seen accounting, before graph.cut, Builder and optional catalogue. The original ancestor queues, state round-robin, topological cut sort and primitive/ordered-edge data remain unchanged. Unemitted syntax is never a base exclusion.",
+      "id": "CM02",
+      "lines": [
+        434,
+        462
+      ]
+    },
+    {
+      "finding": "Literal variant remains first. Immediately after appending a whole allowed record, the existing family bound stops before the next variants yield/catalogue. The retained-record order is preserved; cut/work/reason/callback tails may change, exactly as current contract discloses. No callback/native result equivalence or fit is claimed.",
+      "id": "CM03",
+      "lines": [
+        463,
+        484
+      ]
+    },
+    {
+      "finding": "Only own VERSION and MINER_VERSION change. All17 named provider callables including complete current source/key/occupancy rebinding, full roundtrip, all24 rows, global full-preimage ledger, separate unions, fresh matching/checker/native adaptation, exception taxonomy and incomplete prefix handling are raw+AST exact.",
+      "id": "CM04",
+      "lines": [
+        7,
+        17
+      ],
+      "source": "provider"
+    },
+    {
+      "finding": "Full literal descriptor, all ordered/repeated edges, cut boundaries/outputs/Gamma maps and original substitution survive. At least2 source nodes, deduped physical placements, new placements, unresolved ports and actual pending selection are separate observations. Closed clusters are allowed; open inputs retain factFalse and require fresh current physical/native admission.",
+      "id": "CM05"
+    },
+    {
+      "finding": "members2/cuts48/families1 is a declared bounded generic component prefix, not all possible pairs/families or native-budget availability. A collector state has at most24 source nodes, so its first and second round-robin prefix is at most48 attempts if work finishes; no inference about future usefulness or measured cost follows.",
+      "id": "CM06"
+    },
+    {
+      "finding": "Original17/input2/epoch and native six-rule candidate universe remain unchanged. ea300 replacement requires a current caller/composite exact implementation Source gate separately; old a197, baseline10/12 and onecell evidence do not transfer. No engine/scheduler/fallback/rollback Source changed by this pair.",
+      "id": "CM07"
+    }
+  ],
+  "gaps": [
+    "Fresh structural/filter/default/closed-open/first-prefix/callback-bound controls and whole current-source/native admission remain unrun.",
+    "No physical multi-member continuation, proof/search gain, learned model or engine conformance qualified.",
+    "No model/project/helper/miner/provider/checker module/function evaluated/imported/called; no tests/clocks/results/proofword reads. Raw/AST/compile-without-evaluation and Sourcepatch copies only."
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "connected-miner-provider-independent-findings-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 12960,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-contract-v2.json",
+    "sha256": "22e7dbb7f23bd8c8b224c7a7ebe0c5d0716f682bd6c306a9e5a48a7d72022b2c"
+  },
+  "source_only": true,
+  "sources": {
+    "miner": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "provider": {
+      "bytes": 37272,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+      "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+    }
+  }
+}

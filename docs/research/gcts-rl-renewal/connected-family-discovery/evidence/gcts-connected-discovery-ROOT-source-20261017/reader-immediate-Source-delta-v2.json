@@ -1,0 +1,39 @@
+{
+  "actual_patches": {
+    "forward": {
+      "bytes": 1783,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-v1-v2-forward.patch",
+      "sha256": "2efd932d6972e9156703d37f71240c1a135889c8547ca65e5efa7c7471ddd182"
+    },
+    "full-inverse": {
+      "bytes": 1783,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-v1-v2-full-inverse.patch",
+      "sha256": "bd9f8e6881d7f2df7764c7c51c402a147e55df5ffabcbfe5135f3d4839b4b9e9"
+    }
+  },
+  "edits": [
+    {
+      "new": "            connected_prefix_provenance_joined=pipeline['status']=='CAPTURED_CONNECTED_PARTIAL_STATE',",
+      "old": "            integration_path_accepted=pipeline['status']=='CAPTURED_CONNECTED_PARTIAL_STATE',",
+      "start": 21158
+    },
+    {
+      "new": "        captures=pipeline['captures']\n        need(type(captures)is list and len(captures)<=1\n             and (pipeline['status']!='CAPTURED_CONNECTED_PARTIAL_STATE'or len(captures)==1), 'literal captured versus joined status')\n        wanted=list(PHASES)if captures else [x for x in PHASES if x!='CAPTURED_CONNECTED']",
+      "old": "        wanted=list(PHASES)if pipeline['status']=='CAPTURED_CONNECTED_PARTIAL_STATE'else [x for x in PHASES if x!='CAPTURED_CONNECTED']",
+      "start": 19037
+    }
+  ],
+  "parent_source": {
+    "bytes": 21864,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v1.py",
+    "sha256": "807aecad970a9f2cd4add2a835dd7d2cbffbbd95dac8d7c378703549f8315bc2"
+  },
+  "schema": "ROOT-connected-discovery-saved-immediate-Source-delta-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22057,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v2.py",
+    "sha256": "d253225006f0a51c9bc2c6d8e1c249886898e62e959bac4a866f3a0d9277cc9f"
+  },
+  "whole_raw_AST_inverse_exact": true
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "receptor-family-connected-prefix-observer-handoff-v1",
+  "source": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v1.py",
+    "sha256": "e177e815059d8373b54fefdc4de9ddb9e478c81c4427274bd737cf73e81f934a",
+    "bytes": 20721
+  },
+  "API_wire": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/API-wire-v1.json",
+    "sha256": "8536fd9080cde5fd7b3b7c9df74744ed6d6ed4af70efa5019c865a2710222619",
+    "bytes": 4825
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-contract-v1.json",
+    "sha256": "b65989ceade22d2d17ac6a740b607642d84a7506ba65d821f2cca13880c6cb86",
+    "bytes": 7123
+  },
+  "source_delta": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-delta-v1.json",
+    "sha256": "c28a134fefe56998b6e3e2d4113228f8a078f5d78303e5c2b4443658765b2a76",
+    "bytes": 22454
+  },
+  "static_audit": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/static-audit-v1.json",
+    "sha256": "a7c423671a8f452abeb70a73e89d8d2f547b4712b916505ebf4a3ee844c6b991",
+    "bytes": 7315
+  },
+  "actual_patch_files": {
+    "forward": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/addition-forward-v1.patch",
+      "sha256": "56d00a4cd29c8a7f6507a914c2f2a8942022bbef86b47bada82cba7c14e5f1e7",
+      "bytes": 21139
+    },
+    "inverse": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/addition-inverse-v1.patch",
+      "sha256": "55e979cf8945b62e257407afbd056bd1577929892640ba95a193feb19799fec8",
+      "bytes": 21139
+    }
+  },
+  "references": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "engine13": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/lazy_unit_row_global_engine_v13.py",
+      "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10",
+      "bytes": 66670
+    },
+    "marked_adapter_ea300": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+      "bytes": 29316
+    },
+    "original_base_semantics": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    "API_wire": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/API-wire-v1.json",
+      "sha256": "8536fd9080cde5fd7b3b7c9df74744ed6d6ed4af70efa5019c865a2710222619",
+      "bytes": 4825
+    }
+  },
+  "scientific_calls": 0,
+  "execution_status": "NOT_EXECUTED",
+  "native_fit": "UNMEASURED",
+  "Root_action": "Whole Root and distinct Source review before any grant. Root integrates and executes discovery; no collector/miner/provider in this endpoint."
+}

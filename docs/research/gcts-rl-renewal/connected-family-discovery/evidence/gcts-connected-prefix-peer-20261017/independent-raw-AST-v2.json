@@ -1,0 +1,99 @@
+{
+  "API_wire": {
+    "bytes": 5251,
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/API-wire-v2.json",
+    "sha256": "ba402c5fb87f8f03416a9bd28c394ed89fefdef6a3999b90f700f8b1c60ee67b"
+  },
+  "Root_preserved_negative": {
+    "bytes": 1333,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT-helper-Source-negative-v1.json",
+    "sha256": "f8fd87c9d4be281d62387c2ba0926ece2bc4771ec9bb03a42458967ca9ce2876"
+  },
+  "changed_regions": [
+    "_key",
+    "_state"
+  ],
+  "checks": {
+    "API_wire_pin": true,
+    "author_actual_forward_patch_exact": true,
+    "author_actual_inverse_patch_exact": true,
+    "author_three_edits_full_raw_inverse": true,
+    "author_three_parent_coordinate_edits_complete_forward": true,
+    "contract_pin": true,
+    "current_source_map_exact": true,
+    "delta_pin": true,
+    "no_model_or_clock_methods": true,
+    "only_hashlib_json_imports": true,
+    "only_key_and_state_regions_changed": true,
+    "only_own_limit_caught_public_joins": true,
+    "seventeen_other_named_regions_exact": true,
+    "source_pin": true,
+    "static_pin": true,
+    "whole_AST_compile_without_evaluation": true,
+    "whole_AST_inverse": true
+  },
+  "engine_reference": {
+    "bytes": 66670,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/lazy_unit_row_global_engine_v13.py",
+    "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+  },
+  "handoff": {
+    "bytes": 2167,
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/handoff-v2.json",
+    "sha256": "a2edf0f7d4d78a1d12fa1c6bd14e26cc70558fbe5fe83b4e3e96596fb29892e0"
+  },
+  "metadata_audit_note": "Initial audit assertions assumed sequential edit offsets and callable-only census; actual delta uses retained-parent offsets, and its17 named regions include3 class regions. Corrected audit verifies all parent coordinates,14 unchanged callables+3 classes, complete raw/AST reconstruction and both actual patches. No Source changed/evaluated.",
+  "method": "Full raw Source/contract/API and pinned engine trace read; metadata hashes, AST/builtin compile without evaluation, actual forward/inverse Source patches only.",
+  "parent_relative_edit_offsets": [
+    {
+      "actual_sequential_offset": 424,
+      "declared_parent_offset": 424
+    },
+    {
+      "actual_sequential_offset": 4271,
+      "declared_parent_offset": 4252
+    },
+    {
+      "actual_sequential_offset": 6461,
+      "declared_parent_offset": 6257
+    }
+  ],
+  "point_reference": {
+    "bytes": 29316,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+    "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e"
+  },
+  "schema": "connected-prefix-observer-independent-raw-AST-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21076,
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+    "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338"
+  },
+  "source_contract": {
+    "bytes": 8208,
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-contract-v2.json",
+    "sha256": "37ebc4654f6619de56c6b797b45318d9bdb63638c2c775cf7eb3f606016019d8"
+  },
+  "source_only": true,
+  "unchanged_callable_count": 14,
+  "unchanged_named_regions": [
+    "ConnectedPrefixCaptured",
+    "_Limit",
+    "_require",
+    "_canonical",
+    "_digest",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "_Work.tree",
+    "_Work.record",
+    "_scope",
+    "_hex",
+    "_inspect",
+    "inspect_selected_edges",
+    "_same",
+    "_join",
+    "join_active_search_trace"
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "pairs": {
+    "miner": {
+      "actual_patch_forward_and_full_inverse": true,
+      "added_callables": [
+        "_connected_cut"
+      ],
+      "changed_inherited_callables": [
+        "mine_families"
+      ],
+      "compile_without_evaluation": true,
+      "edits": [
+        {
+          "after": "VERSION = 'receptor-family-primitive-DAG-miner-v2-connected-cut-selection'\n",
+          "before": "VERSION = 'receptor-family-primitive-DAG-miner-v1'\n",
+          "start_byte": 339
+        },
+        {
+          "after": "def _connected_cut(graph, cut):\n    \"\"\"Only an advisory emission predicate on the full induced primitive DAG.\n\n    Every internal ordered edge remains in graph.cut's unchanged wire. The\n    undirected neighbor sets below test weak connectivity only, not legality,\n    proof closure, generation, candidate-domain completeness or source authority.\n    \"\"\"\n    graph.w.step()\n    if len(cut) < 2:\n        return False\n    selected = set(cut)\n    adjacent = {nid: set() for nid in cut}\n    for nid in cut:\n        graph.w.step()\n        for ref in graph.nodes[nid]['ordered_inputs']:\n            graph.w.step()\n            if 'node' in ref and ref['node'] in selected:\n                source = ref['node']\n                adjacent[nid].add(source)\n                adjacent[source].add(nid)\n    queue, reached = [cut[0]], set()\n    while queue:\n        graph.w.step()\n        nid = queue.pop(0)\n        if nid not in reached:\n            reached.add(nid)\n            # Source-topological order makes this diagnostic traversal stable;\n            # it never reorders primitive ports or the ancestor mining queue.\n            queue.extend(sorted(adjacent[nid]-reached, key=graph.position.get))\n    return reached == selected\n\n\ndef mine_families(*,host,derivation,tick,limits=None,cut_selection='ANY'):\n    require(type(cut_selection) is str and cut_selection in ('ANY', 'CONNECTED_AT_LEAST_TWO'),\n            'CUT_SELECTION', 'explicit generic advisory emission policy')\n",
+          "before": "def mine_families(*,host,derivation,tick,limits=None):\n",
+          "start_byte": 25925
+        },
+        {
+          "after": "                if cut_selection == 'CONNECTED_AT_LEAST_TWO' and not _connected_cut(graph, cut):\n                    continue  # Unemitted syntax prefix, never a base-candidate exclusion.\n",
+          "before": "",
+          "start_byte": 28828
+        },
+        {
+          "after": "                    if len(families) >= work.limits['families']:\n                        reason='finite family proposal prefix bound; no exhaustion claim';stopped=True;break\n",
+          "before": "",
+          "start_byte": 30202
+        },
+        {
+          "after": "            'mining_complete':False,'work':work.report(),\n            'reason':'cut_selection='+cut_selection+'; '+reason,'flags':dict(FLAGS)}\n",
+          "before": "            'mining_complete':False,'work':work.report(),'reason':reason,'flags':dict(FLAGS)}\n",
+          "start_byte": 30719
+        }
+      ],
+      "forward_patch": {
+        "bytes": 3955,
+        "path": "/private/tmp/gcts-connected-miner-peer-20261017/miner-forward.patch",
+        "sha256": "d4345f40661304ee8a51f8109392d8e387ac494607630580bee03aaafcec203f"
+      },
+      "full_inverse_patch": {
+        "bytes": 3955,
+        "path": "/private/tmp/gcts-connected-miner-peer-20261017/miner-full-inverse.patch",
+        "sha256": "908119c00aaec25515142c1ecea36a7631f52e93c7e950c1f0c8220698fd027a"
+      },
+      "parent": {
+        "bytes": 29018,
+        "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_miner_v1.py",
+        "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+      },
+      "source": {
+        "bytes": 30862,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+        "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+      },
+      "unchanged_named_callables_raw_AST_exact": [
+        "MiningDataError.__init__",
+        "_CallbackFailure.__init__",
+        "require",
+        "canonical",
+        "digest",
+        "keys",
+        "name",
+        "ident",
+        "_Work.__init__",
+        "_Work.step",
+        "_Work.copy",
+        "_Work.report",
+        "_Graph.__init__",
+        "_Graph._host",
+        "_Graph.native",
+        "_Graph.argument",
+        "_Graph.gamma",
+        "_Graph.resolve",
+        "_Graph.free",
+        "_Graph.fragment_key",
+        "_Graph.fragments",
+        "_Graph.size",
+        "_Graph.cut",
+        "_Graph.catalogue",
+        "_Builder.__init__",
+        "_Builder.variable",
+        "_Builder.abstract",
+        "_Builder.chosen",
+        "_Builder.template",
+        "_Builder.argument",
+        "_Builder.build",
+        "validate_derivation"
+      ],
+      "unchanged_named_count": 32,
+      "whole_raw_forward_and_full_inverse": true
+    },
+    "provider": {
+      "actual_patch_forward_and_full_inverse": true,
+      "added_callables": [],
+      "changed_inherited_callables": [],
+      "compile_without_evaluation": true,
+      "edits": [
+        {
+          "after": "VERSION = 'receptor-family-literal-ground-physical-provider-v2-connected-miner'\n",
+          "before": "VERSION = 'receptor-family-literal-ground-physical-provider-v1'\n",
+          "start_byte": 341
+        },
+        {
+          "after": "MINER_VERSION = 'receptor-family-primitive-DAG-miner-v2-connected-cut-selection'\n",
+          "before": "MINER_VERSION = 'receptor-family-primitive-DAG-miner-v1'\n",
+          "start_byte": 545
+        }
+      ],
+      "forward_patch": {
+        "bytes": 704,
+        "path": "/private/tmp/gcts-connected-miner-peer-20261017/provider-forward.patch",
+        "sha256": "270bdb002617cb77e99b46b1382f4f14add37682246e8fbfaa93c1ea4e610dd4"
+      },
+      "full_inverse_patch": {
+        "bytes": 704,
+        "path": "/private/tmp/gcts-connected-miner-peer-20261017/provider-full-inverse.patch",
+        "sha256": "4d18e7d61bf865f95d97afaf12432d164b031d8438016cac355907e950f1d750"
+      },
+      "parent": {
+        "bytes": 37232,
+        "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+        "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+      },
+      "source": {
+        "bytes": 37272,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+        "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+      },
+      "unchanged_named_callables_raw_AST_exact": [
+        "ProviderDataError.__init__",
+        "_CallbackFailure.__init__",
+        "require",
+        "canonical",
+        "digest",
+        "ascii_digest",
+        "fields",
+        "_Work.__init__",
+        "_Work.native",
+        "_Work.step",
+        "_Work.trial",
+        "_Work.copy",
+        "_key",
+        "_ready_checked",
+        "_ground_roundtrip",
+        "_constraints",
+        "build_family_batch"
+      ],
+      "unchanged_named_count": 17,
+      "whole_raw_forward_and_full_inverse": true
+    }
+  },
+  "schema": "connected-miner-provider-code-only-raw-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "status": "AWAITING_FROZEN_CONTRACT_FOR_TYPED_REVIEW"
+}

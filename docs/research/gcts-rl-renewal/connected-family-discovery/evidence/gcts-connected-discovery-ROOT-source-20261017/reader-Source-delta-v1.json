@@ -1,0 +1,163 @@
+{
+  "actual_patches": {
+    "forward": {
+      "bytes": 14618,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "b592656ed2c1adad0879b30feac9533d2bd63f5322474487a6c5b9a756c3af30"
+    },
+    "full-inverse": {
+      "bytes": 14618,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "de2ef4e3391896fc7a22f42768b0568442473885817ae0ddf980269af90b9e55"
+    }
+  },
+  "edit_count": 22,
+  "edits": [
+    {
+      "label": "literal_current_capsule",
+      "new": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c', 'bytes': 22804}",
+      "old": "CURRENT_CONTRACT = {'path':'/private/tmp/gcts-engine-family-pipeline-source-20261017/Source-contract-v2.json',\n    'sha256':'e637176c9cf7ffd0ce7a71cc5e8bcdacd0536f694797547f8d9d1ad649a06370','bytes':27649}",
+      "start": 329
+    },
+    {
+      "label": "ROOT-engine-family-pipeline-cold-Source-contract-v1",
+      "new": "ROOT-connected-prefix-discovery-cold-Source-contract-v1",
+      "old": "ROOT-engine-family-pipeline-cold-Source-contract-v1",
+      "start": 2587
+    },
+    {
+      "label": "ROOT-engine-family-pipeline-cold-Source",
+      "new": "ROOT-connected-prefix-discovery-cold-Source",
+      "old": "ROOT-engine-family-pipeline-cold-Source",
+      "start": 3339
+    },
+    {
+      "label": "ROOT-engine-family-pipeline-disposition-v1",
+      "new": "ROOT-connected-prefix-discovery-disposition-v1",
+      "old": "ROOT-engine-family-pipeline-disposition-v1",
+      "start": 8069
+    },
+    {
+      "label": "ROOT-engine-family-pipeline-final-observation-v1",
+      "new": "ROOT-connected-prefix-discovery-final-observation-v1",
+      "old": "ROOT-engine-family-pipeline-final-observation-v1",
+      "start": 9321
+    },
+    {
+      "label": "ROOT-engine-family-pipeline-response-body-v1",
+      "new": "ROOT-connected-prefix-discovery-response-body-v1",
+      "old": "ROOT-engine-family-pipeline-response-body-v1",
+      "start": 10525
+    },
+    {
+      "label": "ROOT-engine-family-pipeline-cold-v1",
+      "new": "ROOT-connected-prefix-discovery-cold-v1",
+      "old": "ROOT-engine-family-pipeline-cold-v1",
+      "start": 10610
+    },
+    {
+      "label": "ROOT-engine-family-pipeline-result-v1",
+      "new": "ROOT-connected-prefix-discovery-result-v1",
+      "old": "ROOT-engine-family-pipeline-result-v1",
+      "start": 12726
+    },
+    {
+      "label": "ROOT-engine-family-pipeline-payload-v1",
+      "new": "ROOT-connected-prefix-discovery-payload-v1",
+      "old": "ROOT-engine-family-pipeline-payload-v1",
+      "start": 13064
+    },
+    {
+      "label": "evidence['engine_family_pipeline'];pipeline=payload['pipeline']",
+      "new": "evidence['connected_prefix_discovery'];pipeline=payload['discovery']",
+      "old": "evidence['engine_family_pipeline'];pipeline=payload['pipeline']",
+      "start": 12967
+    },
+    {
+      "label": "pipeline['status']in ('UNKNOWN','CHECKED_FRESH_BRANCH_PREFERENCE')",
+      "new": "pipeline['status']in ('UNKNOWN','CAPTURED_CONNECTED_PARTIAL_STATE')",
+      "old": "pipeline['status']in ('UNKNOWN','CHECKED_FRESH_BRANCH_PREFERENCE')",
+      "start": 14174
+    },
+    {
+      "label": "pipeline['status']=='CHECKED_FRESH_BRANCH_PREFERENCE'",
+      "new": "pipeline['status']=='CAPTURED_CONNECTED_PARTIAL_STATE'",
+      "old": "pipeline['status']=='CHECKED_FRESH_BRANCH_PREFERENCE'",
+      "start": 14844
+    },
+    {
+      "label": "narrow_summary_12",
+      "new": "'connected_prefix_provenance_joined'",
+      "old": "'integration_path_accepted'",
+      "start": 8486
+    },
+    {
+      "label": "narrow_summary_13",
+      "new": "'connected_prefix_provenance_joined'",
+      "old": "'integration_path_accepted'",
+      "start": 15110
+    },
+    {
+      "label": "narrow_summary_14",
+      "new": "'connected_prefix_provenance_joined'",
+      "old": "'integration_path_accepted'",
+      "start": 15155
+    },
+    {
+      "label": "phase_parser_insert",
+      "new": "\nPHASES=('BEFORE_ENGINE','BEFORE_SEARCH','CAPTURED_CONNECTED','AFTER_SEARCH','AFTER_TRACE_JOIN','BEFORE_OUTPUT')\n\ndef read_phases(raw, launch, terminal):\n    need(len(raw)<=65536, 'bounded full native stderr')\n    prefix=b'CONNECTED_DISCOVERY_PHASE '\n    phases=[];tail=[];stopped=False;last_index=-1\n    for line in raw.splitlines(keepends=True):\n        if not stopped and line.startswith(prefix) and line.endswith(b'\\n'):\n            need(len(line)<=96, 'bounded complete phase line')\n            parts=line[:-1].split(b' ')\n            need(len(parts)==3 and parts[0]==prefix[:-1], 'literal phase fields')\n            label=parts[1].decode('ascii');number=parts[2]\n            need(label in PHASES and PHASES.index(label)>last_index and number.isdigit()\n                 and (number==b'0' or not number.startswith(b'0')), 'unique ordered literal phase')\n            stamp=int(number);need(type(stamp)is int and launch<=stamp<=terminal<2**63, 'native phase clock join')\n            last_index=PHASES.index(label);phases.append({'stage':label,'native_ns':stamp})\n        else:\n            stopped=True;tail.append(line)\n    need(len(phases)<=6, 'finite fixed phase sites')\n    return phases,b''.join(tail)\n\n\ndef read_failure_diagnostic(owned,plan,plan_raw,contract,launch,terminal,phases):\n    if not owned.exists():\n        return {'complete_pair':False,'reason':'no owned diagnostic directory'}\n    names=sorted(p.name for p in owned.iterdir())\n    if names!=['diagnostic-completion.json','unknown-diagnostic.json']:\n        return {'complete_pair':False,'reason':'incomplete diagnostic pair','files':names}\n    diagnostic_raw=read(owned/'unknown-diagnostic.json',16384)\n    completion_raw=read(owned/'diagnostic-completion.json',1024)\n    need(diagnostic_raw.endswith(b'\\n')and completion_raw.endswith(b'\\n'), 'complete diagnostic LF')\n    marker=decode(completion_raw);diagnostic=decode(diagnostic_raw)\n    need(marker['schema']=='unit-row-controls-last-context-completion-v1'\n         and marker['file']=='unknown-diagnostic.json'\n         and marker['sha256']==raw_pin(diagnostic_raw)['sha256']and marker['bytes']==len(diagnostic_raw)\n         and marker['diagnostic_only']is True and marker['positive_joint_gate_accepted']is False\n         and marker['ROOT_resource_accepted']is False\n         and marker['terminal_exit2_and_external_failure_closure_required']is True,\n         'same complete builtin failure diagnostic bytes')\n    context,labels,slots=diagnostic['context'],diagnostic['diagnostic'],diagnostic['last_observations']\n    need(context['schema']=='ROOT-connected-discovery-diagnostic-context-v1'\n         and context['invocation_id']==plan['invocation_id']and context['purpose']==plan['purpose']\n         and context['plan']==raw_pin(plan_raw)and context['sources']==plan['sources']\n         and context['inputs']==plan['inputs']and context['source_contract']==plan['source_contract']\n         and context['original_model_binding']==contract['original_model_binding']\n         and context['reported_case_count']is None and type(context['qualified_case_count'])is int\n         and context['qualified_case_count']==0 and context['diagnostic_only']is True\n         and all(context[key]is False for key in ('positive_joint_gate_accepted','engine_qualified',\n             'logical_proof_accepted','complete_GCTS_model_accepted','RL_accepted','GCTS_advantage_claimed')),\n         'exact diagnostic original/current authority; zero qualification')\n    began,deadline=context['joint_began_ns'],context['joint_deadline_ns']\n    need(type(began)is int and type(deadline)is int and launch<=began<=terminal\n         and deadline==began+20000000000, 'exact original diagnostic window')\n    need(labels['schema']=='unit-row-controls-last-context-diagnostic-v1'\n         and labels['diagnostic_only']is True and labels['returned_control_record']is False\n         and labels['failure_kind']=='TimeoutError'\n         and all(labels[key]is False for key in ('last_observation_is_active_failure_frame',\n              'live_state_or_proof_trajectory_accepted','positive_joint_gate_accepted','logical_proof_accepted',\n              'exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted',\n              'RL_accepted','ROOT_resource_accepted')), 'raw scalar diagnostic has no proof or cause authority')\n    need(type(slots)is dict and set(slots)=={'proposer','fallback','completion','validator'}\n         and slots['validator']is None, 'fixed4 entry observations; validator unwrapped')\n    for role,value in slots.items():\n        if value is None:continue\n        need(set(value)=={'stage','row','selected_count','native_ns'}\n             and value['stage']==role.upper()+'_NATIVE_STEP'\n             and type(value['row'])is int and -1<=value['row']<24\n             and type(value['selected_count'])is int and -1<=value['selected_count']<=24\n             and type(value['native_ns'])is int and began<=value['native_ns']<deadline\n             and value['native_ns']<=terminal, 'literal bounded entry data')\n    need(all(began<=phase['native_ns']<deadline for phase in phases), 'complete phase samples within original20')\n    return {'complete_pair':True,'diagnostic':dict(path=str(owned/'unknown-diagnostic.json'),**raw_pin(diagnostic_raw)),\n        'completion':dict(path=str(owned/'diagnostic-completion.json'),**raw_pin(completion_raw)),\n        'context':context,'last_observations':slots,'last_observation_is_active_failure_frame':False,\n        'failure_cause_established':False,'qualified_case_count':0,'reported_case_count':None}\n\n\ndef main(argv):",
+      "old": "\ndef main(argv):",
+      "start": 1978
+    },
+    {
+      "label": "parse_charged_native_phases",
+      "new": "    phases,phase_tail=read_phases(raw['meter-stderr.txt'],launch,terminal)\n    summary = {'schema':'ROOT-connected-prefix-discovery-disposition-v1',",
+      "old": "    summary = {'schema':'ROOT-connected-prefix-discovery-disposition-v1',",
+      "start": 13621
+    },
+    {
+      "label": "summary_scope",
+      "new": "        'scientific_replay':False,'phase_observations':phases,\n        'stderr_tail_sha256':raw_pin(phase_tail),'failure_diagnostic':None,\n        'current_frontier_viability_checked':False,'collector_or_family_pipeline_executed':False,",
+      "old": "        'scientific_replay':False,",
+      "start": 14377
+    },
+    {
+      "label": "positive_phase_wire",
+      "new": "        need(probe-launch < 20000000000 and phase_tail==b'', 'strict whole positive20 and complete phase wire')",
+      "old": "        need(probe-launch < 20000000000 and raw['meter-stderr.txt'] == b'', 'strict whole positive20 window')",
+      "start": 14843
+    },
+    {
+      "label": "positive_phase_native_join",
+      "new": "        payload=evidence['connected_prefix_discovery'];pipeline=payload['discovery']\n        need(all(body['joint_began_ns']<=x['native_ns']<body['joint_deadline_ns']for x in phases), 'positive phase samples original20')\n        wanted=list(PHASES)if pipeline['status']=='CAPTURED_CONNECTED_PARTIAL_STATE'else [x for x in PHASES if x!='CAPTURED_CONNECTED']\n        need([x['stage']for x in phases]==wanted,'all reached positive fixed phase sites')",
+      "old": "        payload=evidence['connected_prefix_discovery'];pipeline=payload['discovery']",
+      "start": 18816
+    },
+    {
+      "label": "positive_scope_flags",
+      "new": "        need(pipeline['current_frontier_viability_checked']is pipeline['collector_or_family_pipeline_executed']is False\n             and pipeline['status']in ('UNKNOWN','CAPTURED_CONNECTED_PARTIAL_STATE')",
+      "old": "        need(pipeline['status']in ('UNKNOWN','CAPTURED_CONNECTED_PARTIAL_STATE')",
+      "start": 20389
+    },
+    {
+      "label": "failure_only_scope",
+      "new": "    else:\n        summary['failure_diagnostic']=read_failure_diagnostic(Path(plan['output_directory']),plan,plan_raw,contract,launch,terminal,phases)\n    print(json.dumps({'disposition':write(disposition_path,summary),'status':summary['status'],",
+      "old": "    print(json.dumps({'disposition':write(disposition_path,summary),'status':summary['status'],",
+      "start": 21349
+    }
+  ],
+  "parent_source": {
+    "bytes": 15303,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v2.py",
+    "sha256": "f7abedd0481bb826e31ebc75955a9a4ca44de30d07c29bfef7062925689c2c96"
+  },
+  "schema": "ROOT-connected-discovery-saved-Source-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21864,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v1.py",
+    "sha256": "807aecad970a9f2cd4add2a835dd7d2cbffbbd95dac8d7c378703549f8315bc2"
+  },
+  "whole_AST_inverse_exact": true,
+  "whole_raw_inverse_exact": true
+}

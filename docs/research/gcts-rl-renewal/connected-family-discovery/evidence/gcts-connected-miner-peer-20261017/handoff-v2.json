@@ -1,0 +1,40 @@
+{
+  "findings": {
+    "bytes": 4897,
+    "path": "/private/tmp/gcts-connected-miner-peer-20261017/findings-v2.json",
+    "sha256": "2280be669fde91bea570c0a4fe28d8b159df6eb3492caf4e8c98b9c9027d65b8"
+  },
+  "raw_Source_evidence": {
+    "bytes": 2431,
+    "path": "/private/tmp/gcts-connected-miner-peer-20261017/independent-raw-contract-audit-v2.json",
+    "sha256": "639ef91cfe7e552ea704508b90c136f57d61a7becb5848ae8f3d8fb3d34a4b3e"
+  },
+  "runtime_qualified": false,
+  "schema": "connected-miner-provider-independent-review-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 12960,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-contract-v2.json",
+    "sha256": "22e7dbb7f23bd8c8b224c7a7ebe0c5d0716f682bd6c306a9e5a48a7d72022b2c"
+  },
+  "source_only": true,
+  "sources": {
+    "miner": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "provider": {
+      "bytes": 37272,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+      "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+    }
+  },
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "typed_review": {
+    "bytes": 2462,
+    "path": "/private/tmp/gcts-connected-miner-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "b9fe4540150eb7b01c6da00970e8f655bdbbf1da2975a4636c3b6a67f8dbae4c"
+  }
+}

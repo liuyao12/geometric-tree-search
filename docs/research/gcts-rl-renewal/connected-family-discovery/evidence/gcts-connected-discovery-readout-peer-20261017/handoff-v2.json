@@ -1,0 +1,32 @@
+{
+  "actual_data_read": false,
+  "findings": {
+    "bytes": 7359,
+    "path": "/private/tmp/gcts-connected-discovery-readout-peer-20261017/review-findings-v2.json",
+    "sha256": "af19a6cacb279faba776d6314a3f73dd46ef5b7763684aa07ff725d2bd63a265"
+  },
+  "preserved_negative": {
+    "bytes": 1103,
+    "path": "/private/tmp/gcts-connected-discovery-readout-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "ea33cfa739d1e830fe946fd612dda0f41c55588586d89e00bf24d8303228b633"
+  },
+  "schema": "ROOT-connected-discovery-saved-peer-handoff-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22057,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v2.py",
+    "sha256": "d253225006f0a51c9bc2c6d8e1c249886898e62e959bac4a866f3a0d9277cc9f"
+  },
+  "source_contract": {
+    "bytes": 1756,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "0cbd6136475a5bee0968b89c1373aef8fa476871bbddf80c9fa3ef630e8d7478"
+  },
+  "source_only": true,
+  "typed_review": {
+    "bytes": 1727,
+    "path": "/private/tmp/gcts-connected-discovery-readout-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "9ef5791de519b5341151577f11cdbd30792c6a472b705d464f0bb6be84ca8936"
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS"
+}

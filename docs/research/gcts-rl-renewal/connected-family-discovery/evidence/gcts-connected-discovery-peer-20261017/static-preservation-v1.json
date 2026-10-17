@@ -1,0 +1,124 @@
+{
+  "pins_verified": [
+    {
+      "bytes": 53815,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v1.py",
+      "sha256": "cde3077a41039bd830ab00bcd6f6de850b609a4e320cae3787f76269ff14d376"
+    },
+    {
+      "bytes": 22804,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c"
+    },
+    {
+      "bytes": 22105,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-delta-v1.json",
+      "sha256": "288b89ecd938e066921d425221b183d5b6cb6c1586d70177d3586d701648a85c"
+    },
+    {
+      "bytes": 6767,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cases_v1.py",
+      "sha256": "0e9b5a4d029c32853fa72032385f005d5773969ccb4044b119cd4194eb35261f"
+    },
+    {
+      "bytes": 8208,
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-contract-v2.json",
+      "sha256": "37ebc4654f6619de56c6b797b45318d9bdb63638c2c775cf7eb3f606016019d8"
+    },
+    {
+      "bytes": 51791,
+      "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_engine_family_pipeline_cold_v1.py",
+      "sha256": "1f642912eea4a89523aad855d83e2f1d213c07945ae0bdc71bfb6b8c69cd3562"
+    },
+    {
+      "bytes": 24167,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/caller-forward.patch",
+      "sha256": "be4287478c3b2b15f9df558cfbd7ffe4e7b87bf1259295872386bffbf193cab1"
+    },
+    {
+      "bytes": 24167,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/caller-full-inverse.patch",
+      "sha256": "058f97ab76fbcedbbe0653cefc1468ac5d6cef8d3a70511dac55485e628babc2"
+    }
+  ],
+  "raw_edits": 12,
+  "full_forward_inverse_exact": true,
+  "whole_AST_inverse_exact": true,
+  "actual_patches_applied_both_directions": true,
+  "compile_without_evaluation": true,
+  "native_failure_tail_raw_exact": true,
+  "whole_maps_literal_exact": true,
+  "current_source_count": 16,
+  "input_count": 8,
+  "original_source_count": 17,
+  "original_input_count": 2,
+  "resident_raw_verified": {
+    "engine": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/lazy_unit_row_global_engine_v13.py",
+      "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10",
+      "bytes": 66670
+    },
+    "marked_adapter": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+      "bytes": 29316
+    },
+    "membership": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "bytes": 20112
+    },
+    "degree_checker": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    }
+  },
+  "unchanged_named_regions": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "all_function_anchors.retain",
+    "save_failure_diagnostic",
+    "save_failure_diagnostic.failure_gate",
+    "save_failure_diagnostic.encoded",
+    "save_failure_diagnostic.encoded.append",
+    "save_failure_diagnostic.encoded.visit",
+    "save_failure_diagnostic.write",
+    "encode_result_transport",
+    "ObservedCursor",
+    "ObservedCursor.__init__",
+    "ObservedCursor.context",
+    "ObservedCursor.advance",
+    "ObservedCursor.abort",
+    "ChildControlInterruption",
+    "main.tick",
+    "main.guard",
+    "main.boundary",
+    "main.call",
+    "main.fresh_language"
+  ],
+  "changed_named_regions": [
+    "main"
+  ],
+  "removed_named_regions": [
+    "main.run_pipeline"
+  ],
+  "added_named_regions": [
+    "main.phase",
+    "main.run_discovery"
+  ],
+  "all_project_scientific_helper_clock_calls": 0
+}

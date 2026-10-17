@@ -1,0 +1,35 @@
+--- connected_prefix_observer_v2.py
++++ connected_prefix_observer_v2.py
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-connected-prefix-observer-v1'
++VERSION = 'receptor-family-connected-prefix-observer-v2-native-ID-prefixes'
+ ENGINE_VERSION = 'lazy-unit-row-global-engine-v13-decision-local-checked-state'
+ CAPTURE_REASON = 'declared native-first connected selected-prefix capture'
+ DEFAULT_LIMITS = {'maximum_work': 2000000, 'maximum_depth': 128,
+@@ -99,7 +99,10 @@
+     if selected:
+         _require(type(value['generation']) is int and value['generation'] == 1,
+                  'original selected generation')
+-    _require(_hex(value['tile_type_id']), 'literal decorated type ID')
++    _require(type(value['tile_type_id']) is str
++             and value['tile_type_id'].startswith('row0-decorated-tile-')
++             and _hex(value['tile_type_id'][len('row0-decorated-tile-'):]),
++             'literal native prefixed decorated type ID')
+     translation = value['translation']
+     _require(type(translation) is list and len(translation) == 2
+              and type(translation[0]) is int and translation[0] == 0
+@@ -132,7 +135,10 @@
+     _require(type(state) is dict and set(state) == STATE_FIELDS
+              and state['schema'] == 'unit-row-channel4-private-state-v1'
+              and type(state['height']) is int and state['height'] == 24
+-             and _hex(state['input_epoch']) and _hex(state['marking_id']),
++             and _hex(state['input_epoch'])
++             and type(state['marking_id']) is str
++             and state['marking_id'].startswith('row0-marking-')
++             and _hex(state['marking_id'][len('row0-marking-'):]),
+              'full original-height marked state shape')
+     _require(all(type(state[key]) is list for key in ('t', 'm', 'selected', 'excluded', 'generation')),
+              'full point, selected, exclusion and generation arrays')

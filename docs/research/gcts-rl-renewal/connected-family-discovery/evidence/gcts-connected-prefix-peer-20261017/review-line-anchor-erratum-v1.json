@@ -1,0 +1,28 @@
+{
+  "correction": {
+    "actual_current_helper_lines": [
+      344,
+      356
+    ],
+    "descriptive_old_helper_lines": [
+      343,
+      361
+    ],
+    "finding": "CP07",
+    "reason": "Public join function begins344 and ends356. Scope, current Source/hash, semantic finding and verdict unchanged."
+  },
+  "findings": {
+    "bytes": 6410,
+    "path": "/private/tmp/gcts-connected-prefix-peer-20261017/findings-v2.json",
+    "sha256": "fa68319384836b9baa49fcac70518ce3b99e5225b10ae109f96755525f2f38f7"
+  },
+  "schema": "connected-prefix-observer-independent-review-line-anchor-erratum-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "typed_review": {
+    "bytes": 2423,
+    "path": "/private/tmp/gcts-connected-prefix-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "8bb05c6ba726b0c532770ef89aab0cd43fd3f39128efeaf026e356735b19464a"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "schema": "receptor-family-connected-prefix-observer-Source-contract-v1",
+  "scope": "receptor-family-connected-prefix-observer-Source",
+  "version": "receptor-family-connected-prefix-observer-v1",
+  "source": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v1.py",
+    "sha256": "e177e815059d8373b54fefdc4de9ddb9e478c81c4427274bd737cf73e81f934a",
+    "bytes": 20721
+  },
+  "sources": {
+    "connected_prefix_observer": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v1.py",
+      "sha256": "e177e815059d8373b54fefdc4de9ddb9e478c81c4427274bd737cf73e81f934a",
+      "bytes": 20721
+    }
+  },
+  "API_wire": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/API-wire-v1.json",
+    "sha256": "8536fd9080cde5fd7b3b7c9df74744ed6d6ed4af70efa5019c865a2710222619",
+    "bytes": 4825
+  },
+  "source_delta": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-delta-v1.json",
+    "sha256": "c28a134fefe56998b6e3e2d4113228f8a078f5d78303e5c2b4443658765b2a76",
+    "bytes": 22454
+  },
+  "static_audit": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/static-audit-v1.json",
+    "sha256": "a7c423671a8f452abeb70a73e89d8d2f547b4712b916505ebf4a3ee844c6b991",
+    "bytes": 7315
+  },
+  "references": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "engine13": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/lazy_unit_row_global_engine_v13.py",
+      "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10",
+      "bytes": 66670
+    },
+    "marked_adapter_ea300": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+      "bytes": 29316
+    },
+    "original_base_semantics": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    "API_wire": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/API-wire-v1.json",
+      "sha256": "8536fd9080cde5fd7b3b7c9df74744ed6d6ed4af70efa5019c865a2710222619",
+      "bytes": 4825
+    }
+  },
+  "author": "/root/arithmetic_induction",
+  "author_overlap": "Author of this helper and historical engine/collector/miner/expander. No independent self-review; Root owns current caller, grants, actuals and strict saved closure.",
+  "trust_and_scope": {
+    "inputs": "Untrusted builtin data. Root must separately authenticate exact current caller/source map, original17/input2/binding and actual measured events. Matching labels, refs and hashes alone are not origin authority.",
+    "tick": "Only synchronous pinned native callback; errors propagate. No hostile reentrancy/mutable-frame guarantee. Native_ns is an entry observation, not a cause or active frame.",
+    "meaning": "Structural selected-to-selected ordered read only. Interrupted global query has not established viability, degree completion, a theorem, universal lemma or accepted trajectory.",
+    "original_model": "No original17/input2/epoch/universe/primitive/canonical-order changes.",
+    "current_composition": "Exact engine13 plus ea300 public point interface. This explicit new composition is Source-only; no runtime qualification inherited from a197 collector or family components."
+  },
+  "integration": {
+    "branch_tie": "ASSIGNED-OUTPUT-THEN-ROW",
+    "public_callbacks": [
+      "degree_proposer",
+      "fallback opener",
+      "certify_fallback"
+    ],
+    "native_first": true,
+    "supplied_current_state_only": true,
+    "inspect_cursor_archive_as_current_state": false,
+    "full_query_log": false,
+    "Root_owns_fixed_scalar_diagnostics": true,
+    "collector_miner_provider_in_discovery_window": false,
+    "later_bridge": "Separately granted original20 window must freshly reconstruct state and obtain full global decision before inventory/preferences. DEAD/UNKNOWN must not be bypassed.",
+    "Root_draft_case_not_current_authority": "Root freezes and reviews its separate caller/case packet."
+  },
+  "trace_policy": {
+    "full_events_retained_outside_join": true,
+    "contiguous_recorded_event_indices": true,
+    "full_original_preimages_and_decorated_keys": true,
+    "original_type_IDs_synthesized": false,
+    "selected_insertion_order_distinct_from_dependency_row_order": true,
+    "all_repeated_ordered_edges_retained": true,
+    "prior_exclusions_allowed": true,
+    "normal_RESTORE_restores_exclusion_snapshot": true,
+    "capture_exception_unwind": "Exact engine13 rolls back in finally with no RESTORE events; require full root point/cursor/dependency/policy snapshot equality separately.",
+    "active_full_selected_excluded_arrays_required": true,
+    "trace_complete_accepted": false
+  },
+  "retention_and_cost": {
+    "caller_retains_full_capture_state_search_and_root_snapshots": true,
+    "join_retains_full_active_keys_and_all_ordered_edge_refs": true,
+    "opaque_future_origin": {
+      "schema": "receptor-family-opaque-origin-ref-v1",
+      "capture_ref": "caller_capture_id"
+    },
+    "opaque_ref_is_authentication": false,
+    "observation_copy_and_join_charged_to_same_native20": true,
+    "native_or_parser_counter_reset": false,
+    "joint_seconds": 20,
+    "aggregate_owned_bytes": 536870912,
+    "output_cap_changed": false,
+    "helper_finite_limits": {
+      "maximum_work": 2000000,
+      "maximum_depth": 128,
+      "maximum_events": 20000
+    },
+    "fit": "UNMEASURED",
+    "combined_discovery_bridge20_claim": false
+  },
+  "conformance_gaps": [
+    "No native membership, complete point union or whole-frontier viability checked; later collector/global decision required.",
+    "First observed selected edge need not be a useful or viable family; other selected nodes can be open or disconnected.",
+    "Callback need not occur immediately after the placement producing first edge; retained domains may avoid delegation.",
+    "Join is specific to pinned engine13, empty selected/excluded discovery root, adviser=None and existing MARK tie.",
+    "No actual, target result, theorem/library activation, timing gain, pruning, RL, engine or resource qualification."
+  ],
+  "Review_ABI": {
+    "schema": "receptor-family-connected-prefix-observer-typed-Source-review-v1",
+    "scope": "receptor-family-connected-prefix-observer-Source",
+    "required_fields": [
+      "schema",
+      "scope",
+      "status",
+      "source_contract",
+      "source",
+      "sources",
+      "scientific_calls",
+      "author_overlap",
+      "findings"
+    ],
+    "source_contract": "exact current pin",
+    "source_and_sources": "exact contract pins/map",
+    "status": "CONDITIONAL_SOURCE_PASS or SOURCE_BLOCKER"
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "all_runtime_acceptance": false
+}

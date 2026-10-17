@@ -1,0 +1,52 @@
+{
+  "schema": "receptor-family-connected-prefix-observer-handoff-v2",
+  "source": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+    "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338",
+    "bytes": 21076
+  },
+  "API_wire": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/API-wire-v2.json",
+    "sha256": "ba402c5fb87f8f03416a9bd28c394ed89fefdef6a3999b90f700f8b1c60ee67b",
+    "bytes": 5251
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-contract-v2.json",
+    "sha256": "37ebc4654f6619de56c6b797b45318d9bdb63638c2c775cf7eb3f606016019d8",
+    "bytes": 8208
+  },
+  "immediate_source_delta": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/immediate-Source-delta-v2.json",
+    "sha256": "cb110057266cfe20223a78772f61b32eb3642dafc14b8592734662deb5402e0d",
+    "bytes": 2412
+  },
+  "static_audit": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/static-audit-v2.json",
+    "sha256": "a6f48a76f8b8cea2c2787778abbdc7417da9a31d34a50959bab496b440dc8076",
+    "bytes": 2674
+  },
+  "actual_patch_files": {
+    "forward": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/immediate-forward-v2.patch",
+      "sha256": "0957047f04a22e63163dce452cfa012eaee85c23c9a5e8d04459499ac3a438b9",
+      "bytes": 1925
+    },
+    "inverse": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/immediate-inverse-v2.patch",
+      "sha256": "087e6c275a4d5cdc7c0ee68eb6cf1d8073bb16652f14cb54e922bf21ba2e1f28",
+      "bytes": 1925
+    }
+  },
+  "parent_handoff": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/handoff-v1.json",
+    "sha256": "61e209f8c471bed05b17af874fbe11fd8639133aee90c653713f827c196acc6f",
+    "bytes": 3062
+  },
+  "V1_negative_preserved": true,
+  "edit_count": 3,
+  "unchanged_named_regions": 17,
+  "scientific_calls": 0,
+  "execution_status": "NOT_EXECUTED",
+  "native_fit": "UNMEASURED",
+  "Root_action": "Whole current Source/contract and distinct peer review before grant; discovery only, no collector/miner/provider in same window."
+}

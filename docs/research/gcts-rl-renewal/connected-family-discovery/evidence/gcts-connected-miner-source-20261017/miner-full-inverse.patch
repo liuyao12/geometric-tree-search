@@ -1,0 +1,77 @@
+--- a/receptor_family_miner_v2.py
++++ b/receptor_family_miner_v1.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-primitive-DAG-miner-v2-connected-cut-selection'
++VERSION = 'receptor-family-primitive-DAG-miner-v1'
+ HOST_SCHEMA = 'receptor-family-host-v1'
+ DAG_SCHEMA = 'receptor-family-primitive-derivation-DAG-v1'
+ RESULT_SCHEMA = 'receptor-family-mining-prefix-v1'
+@@ -398,41 +398,7 @@
+                 'source_DAG_sha256':None,'node_count':None,'work':work.report(),'reason':str(error),'flags':dict(FLAGS)}
+ 
+ 
+-def _connected_cut(graph, cut):
+-    """Only an advisory emission predicate on the full induced primitive DAG.
+-
+-    Every internal ordered edge remains in graph.cut's unchanged wire. The
+-    undirected neighbor sets below test weak connectivity only, not legality,
+-    proof closure, generation, candidate-domain completeness or source authority.
+-    """
+-    graph.w.step()
+-    if len(cut) < 2:
+-        return False
+-    selected = set(cut)
+-    adjacent = {nid: set() for nid in cut}
+-    for nid in cut:
+-        graph.w.step()
+-        for ref in graph.nodes[nid]['ordered_inputs']:
+-            graph.w.step()
+-            if 'node' in ref and ref['node'] in selected:
+-                source = ref['node']
+-                adjacent[nid].add(source)
+-                adjacent[source].add(nid)
+-    queue, reached = [cut[0]], set()
+-    while queue:
+-        graph.w.step()
+-        nid = queue.pop(0)
+-        if nid not in reached:
+-            reached.add(nid)
+-            # Source-topological order makes this diagnostic traversal stable;
+-            # it never reorders primitive ports or the ancestor mining queue.
+-            queue.extend(sorted(adjacent[nid]-reached, key=graph.position.get))
+-    return reached == selected
+-
+-
+-def mine_families(*,host,derivation,tick,limits=None,cut_selection='ANY'):
+-    require(type(cut_selection) is str and cut_selection in ('ANY', 'CONNECTED_AT_LEAST_TWO'),
+-            'CUT_SELECTION', 'explicit generic advisory emission policy')
++def mine_families(*,host,derivation,tick,limits=None):
+     work=_Work(tick,limits);families=[];attempts=0;duplicates=0;request=None
+     reason='finite declared DAG/cut/fragment prefix ended; no substitution or family exhaustion claim'
+     try:
+@@ -457,8 +423,6 @@
+                 attempts+=1;cut=tuple(sorted(state['selected'],key=graph.position.get))
+                 if cut in seen_cuts:duplicates+=1;continue
+                 seen_cuts.add(cut)
+-                if cut_selection == 'CONNECTED_AT_LEAST_TWO' and not _connected_cut(graph, cut):
+-                    continue  # Unemitted syntax prefix, never a base-candidate exclusion.
+                 members,steps,boundary,edges,exposed=graph.cut(state['anchor'],cut)
+                 def variants():
+                     yield None  # Complete literal record retained before optional catalogue work.
+@@ -473,12 +437,9 @@
+                     fid=record['family_id'];pre=canonical(record['family_preimage'])
+                     require(fid not in family_names or family_names[fid]==pre,'COLLISION','same family digest requires identical complete preimage')
+                     family_names[fid]=pre;families.append(record)
+-                    if len(families) >= work.limits['families']:
+-                        reason='finite family proposal prefix bound; no exhaustion claim';stopped=True;break
+                 if stopped:break
+     except _CallbackFailure as error:raise error.error
+     except _Unfinished as error:reason=str(error)
+     return {'schema':RESULT_SCHEMA,'version':VERSION,'status':'PROPOSALS' if families else 'UNKNOWN',
+             'request':request,'families':families,'cut_attempts':attempts,'duplicate_cuts':duplicates,
+-            'mining_complete':False,'work':work.report(),
+-            'reason':'cut_selection='+cut_selection+'; '+reason,'flags':dict(FLAGS)}
++            'mining_complete':False,'work':work.report(),'reason':reason,'flags':dict(FLAGS)}

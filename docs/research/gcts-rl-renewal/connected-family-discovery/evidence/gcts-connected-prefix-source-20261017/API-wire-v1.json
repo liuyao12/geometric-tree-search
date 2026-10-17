@@ -1,0 +1,148 @@
+{
+  "schema": "receptor-family-connected-prefix-API-wire-v1",
+  "version": "receptor-family-connected-prefix-observer-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "exports": {
+    "CAPTURE_REASON": "declared native-first connected selected-prefix capture",
+    "ConnectedPrefixCaptured": "TimeoutError subclass; Root raises only after complete captured public-state copy",
+    "inspect_selected_edges": {
+      "keyword_only": [
+        "state",
+        "tick",
+        "limits=None"
+      ],
+      "result_fields": [
+        "schema",
+        "version",
+        "status",
+        "reason",
+        "state_sha256",
+        "input_epoch",
+        "marking_id",
+        "selected_count",
+        "selected_rows",
+        "nodes",
+        "edges",
+        "work",
+        "scope"
+      ],
+      "statuses": [
+        "CONNECTED_PREFIX_CANDIDATE",
+        "NO_CONNECTED_EDGE",
+        "UNKNOWN"
+      ],
+      "node_fields": [
+        "selected_index",
+        "row",
+        "selection_record",
+        "placement_key"
+      ],
+      "edge_fields": [
+        "consumer_node_index",
+        "source_node_index",
+        "premise_index",
+        "offset",
+        "consumer_row",
+        "source_row",
+        "premise_formula"
+      ],
+      "eligibility": "At least two actually selected rows and at least one ordered strict-prior read to another selected row. No formula/rule/output/goal filter. Repeated ordered edges remain distinct. No native admission or completed global-decision viability claim."
+    },
+    "join_active_search_trace": {
+      "keyword_only": [
+        "capture",
+        "search_result",
+        "root_before",
+        "root_after",
+        "tick",
+        "limits=None"
+      ],
+      "result_fields": [
+        "schema",
+        "version",
+        "status",
+        "reason",
+        "capture_id",
+        "callback_kind",
+        "query_row",
+        "native_ns",
+        "captured_state_sha256",
+        "root_snapshot_sha256",
+        "active_path",
+        "active_excluded_keys",
+        "edges",
+        "prior_exclusion_event_indices",
+        "trace_event_count",
+        "work",
+        "scope"
+      ],
+      "statuses": [
+        "JOINED_ACTIVE_PREFIX",
+        "UNKNOWN"
+      ],
+      "active_path_fields": [
+        "depth",
+        "row",
+        "placement_key",
+        "try_event_index",
+        "place_event_index",
+        "decision_event_index",
+        "mode"
+      ],
+      "semantics": "Returned public events only: reconstruct active TRY/PLACE stack through normal RESTORE and parent EXCLUDE events, restore exclusion snapshots, require exact full selected/excluded arrays at capture, allow prior backtracks/exclusions. Interrupted unwind has no emitted RESTORE events; require full root snapshot equality separately. Malformed joins raise ValueError; own finite-work ceiling returns UNKNOWN; callback errors propagate."
+    }
+  },
+  "capture": {
+    "exact_fields": [
+      "schema",
+      "capture_id",
+      "callback_kind",
+      "query_row",
+      "native_ns",
+      "state",
+      "edge_report"
+    ],
+    "schema_value": "receptor-family-connected-prefix-capture-v1",
+    "callback_kind_values": [
+      "PROPOSER",
+      "FALLBACK",
+      "COMPLETION"
+    ],
+    "capture_id": "nonempty opaque string, e.g. connected-prefix-0",
+    "native_ns": "exact int 0..2^63-1 returned by the existing native-first tick",
+    "state": "full current state supplied to that public callback; no extra snapshot query",
+    "edge_report": "complete CONNECTED_PREFIX_CANDIDATE return from inspect_selected_edges"
+  },
+  "limits": {
+    "maximum_work": 2000000,
+    "maximum_depth": 128,
+    "maximum_events": 20000
+  },
+  "integration_order": [
+    "Existing native-first tick at each public callback",
+    "Set fixed scalar latest-observation slot in Root-owned caller",
+    "Inspect only supplied current state; no proposal logs or engine snapshots",
+    "On first complete connected report save full capture then raise ConnectedPrefixCaptured(CAPTURE_REASON)",
+    "After engine UNKNOWN return, join full returned events and exact before/after root snapshots inside unchanged original20 window"
+  ],
+  "opaque_later_origin": {
+    "schema": "receptor-family-opaque-origin-ref-v1",
+    "capture_ref": "connected-prefix-0"
+  },
+  "scope": {
+    "discovery_only": true,
+    "collector_miner_provider_in_this_window": false,
+    "global_query_interrupted_before_viability_complete": true,
+    "unqualified_for_viability": true,
+    "later_bridge_requires_fresh_full_global_decision": true,
+    "root_proof_accepted": false,
+    "logical_proof_accepted": false,
+    "trajectory_accepted": false,
+    "engine_qualification_accepted": false,
+    "GCTS_advantage_accepted": false,
+    "RL_accepted": false,
+    "ROOT_resource_accepted": false,
+    "combined20_claim": false
+  }
+}

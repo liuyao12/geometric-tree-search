@@ -1,0 +1,263 @@
+{
+  "authorship": "Reviewer authored ea300 call-local point optimization,4358 expansion checker,9fd marked verifier,8f degree checker and earlier controls/diagnostics. Reviewer did not author collector9f0b,provider ec8c,consumerd680,host4bd6,miner75f4 or familyengine3da1. This is an explicit whole Source composition assessment, not independent self-review of ea300 mathematics or a runtime pass. Existing distinct ea300 peer059c105 remains separate.",
+  "compatibility_findings": [
+    {
+      "finding": "a197 to ea300 changes only IMPLEMENTATION_VERSION, factors the former private_state body into a call-local checked projection helper with the same public6tuple, and reuses that already fully checked original c354 projection inside _filter. Complete raw restoration and both actual patch directions hold;27 other inherited functions/methods are raw and AST exact.",
+      "id": "COMP01",
+      "lines": [
+        11,
+        18,
+        85,
+        104,
+        131,
+        183
+      ],
+      "source": "new_point"
+    },
+    {
+      "finding": "Original private_state rebuilds every full selected/excluded key, checks native membership, collisions, complete target/root generation, t totals and fixed-plus-selected m equality. Repeating it on its checked literal result preserves those values within the stable pinned original language. ea300 keeps this complete check once plus full9fd marked reconstruction, independent candidate rebuild/whole packet and both collision ledgers. It introduces no persistent/crosscall/shared context.",
+      "id": "COMP02",
+      "lines": [
+        102,
+        164
+      ],
+      "source": "base"
+    },
+    {
+      "finding": "Public class/module semantic VERSIONs, state/receipt/cursor/transition schemas, full keys, six-rule universe, legality and marking comparison are unchanged. Native work/callback count and deadline outcome can differ; compatible completed mathematics is not identical resource behavior. No hostile/reentrant tick mutation or ABA guarantee is inferred.",
+      "id": "COMP03",
+      "lines": [
+        118,
+        131,
+        158,
+        161,
+        169,
+        183,
+        222,
+        235,
+        285,
+        364
+      ],
+      "source": "new_point"
+    },
+    {
+      "finding": "Collector gates semantic point/base/verifier/host protocols and calls public private_state/base_state/rebuild/collision/check_marking only. Its native counter is correctly language.kernel.visits. The literal original host, epoch, whole selected state and open read obligations retain their prior meanings under ea300.",
+      "id": "COMP04",
+      "lines": [
+        144,
+        183,
+        202
+      ],
+      "source": "collector"
+    },
+    {
+      "finding": "Provider semantic gates/public current-state/native point APIs accept ea300 unchanged; it neither calls _filter nor accesses the new helper. It continues full source-ground roundtrip, current physical-source rebinding, actual all24 strict-prior row prefix, separate alternative point unions and one full cross-alternative collision census, fresh producer/checker/native adaptation and false fact/degree flags.",
+      "id": "COMP05",
+      "lines": [
+        320,
+        345,
+        378,
+        446,
+        556,
+        616
+      ],
+      "source": "provider"
+    },
+    {
+      "finding": "Consumer uses the same public point protocol. Every batch instance is freshly adapted; continuation rebuilds each full member and refreshes actual external-source key/occupancy before full re-expansion/checking. Explicit illegality alone invalidates hints, candidate preference remains one primitive at a real global BRANCH, future members stay uninstalled.",
+      "id": "COMP06",
+      "lines": [
+        54,
+        118,
+        130,
+        235
+      ],
+      "source": "consumer"
+    },
+    {
+      "finding": "Host adapter accepts unchanged point/verifier/base APIs, retains direct native six-rule checks, physical call sharing and complete marked hypothetical union. Exact packet/key/state/marking semantics remain unchanged. Neither syntax expansion nor occupied/open input becomes a theorem.",
+      "id": "COMP07",
+      "lines": [
+        156,
+        192,
+        260,
+        385
+      ],
+      "source": "host_adapter"
+    },
+    {
+      "finding": "Family engine still requires actual decision() BRANCH before provider/consumer, compares full current context and full original/decorated observed census, then adopts only inside its owned child checkpoint. Global DEAD/FORCED/earliest generation, original canonical fallback and rollback are not supplied by provider. Engine13 baseline10/12 and earlier onecell path are not family-engine or connected experiment qualification.",
+      "id": "COMP08",
+      "lines": [
+        217,
+        268,
+        1060,
+        1235
+      ],
+      "source": "family_engine"
+    }
+  ],
+  "conclusion": {
+    "can_use_ea300": true,
+    "component_Source_edits_needed_for_point_replacement": false,
+    "minimum_change": "Fresh Root caller/composite Source authority replaces the point-role a197 capsule with exact ea300 implementation capsule/tag and freshly constructs all delegated point/router/fallback/engine objects consistently. Preserve semantic versions and original model epoch. A new generic miner-selection policy is a separate implementation change, not required for point ABI compatibility.",
+    "performance_claim": false,
+    "runtime_inheritance": false,
+    "status": "PUBLIC_ABI_AND_COMPLETED_MATHEMATICAL_OUTPUT_COMPATIBLE_IN_DECLARED_SCOPE"
+  },
+  "connected_experiment_essential_joins": [
+    {
+      "gate": "ACTUAL_CAPTURE",
+      "requirement": "A fresh owned engine capture must retain full literal state, current model/marking and actual callback/trace/checkpoint provenance. Collector origin is opaque; separately join its entire request/state to that capture. No manual future placements, imported donor proof, target route or invented scheduler packet."
+    },
+    {
+      "gate": "CONNECTED_SOURCE_CUT",
+      "requirement": "Use an actual generic mined cut containing at least2 distinct selected primitive source nodes with an internal dependency edge and undirected connectivity over all cut nodes. Preserve every ordered/repeated edge and exposed boundary/output mapping, actual Gamma, full literal substitution and independent expansion. Merely2 independent roots is not a connected cut; node count alone is not physical placement count."
+    },
+    {
+      "gate": "PHYSICAL_MULTI_PLACEMENT",
+      "requirement": "From actual fresh host adaptation require at least2 distinct full member placement keys after duplicate/shared-placement dedup, and for a continuation experiment at least2 not-yet-selected members before adoption so a future member remains after the chosen one. Preserve full hypothetical union and unresolved interfaces; open input obligations are not facts."
+    },
+    {
+      "gate": "ACTUAL_CONSUMPTION",
+      "requirement": "At a genuine global BRANCH join provider full batch, current state/decision, consumer full receipt, chosen full member and owned checkpoint. To claim pending continuation, separately observe a later genuine current BRANCH and fresh CONTINUATION receipt selecting an exact remaining full member. Forced completion, invalidation or no eligible branch are distinct outcomes, never fabricated continuation."
+    },
+    {
+      "gate": "OWNED_RESTORATION",
+      "requirement": "Join full logical before/after snapshots and own token restoration, including pending family/member identity, original/decorated domains/cursors/receipts and markings. Operational event/cost counters may stay outside rollback only as already declared. A timeout or missing shape leaves that case unknown."
+    },
+    {
+      "gate": "GENERIC_POLICY_AND_GAPS",
+      "requirement": "A declared structural connected>=2 cut selector is generic and distinct from a formula/rule/rank/known-row proof route. Current miner75f4/provider ec8c are analyzed here. Root has separately authorized prospective minerV2 CONNECTED_AT_LEAST_TWO and a provider MINER_VERSION-only successor; those require their own frozen whole Source/delta review. No actual availability or native fit is predicted."
+    }
+  ],
+  "current_gate_requirements": [
+    "Authenticate retained whole raw Sources and review/composite contract for the exact current runtime map, including ea300 hash and module IMPLEMENTATION_VERSION unit-row-channel4-point-adapter-filter-local-projection-v3. MarkedSemantics.VERSION remains semantic filtered-v1; testing that VERSION alone does not identify the implementation. Old a197 contracts are ancestry, not current implementation authority.",
+    "Construct fresh original language from unchanged original Source17/input2 declaration/profile/binding and frozen marking. Keep runtime Source map separate; changing point-role implementation must not rebase language_epoch, primitive keys, Gamma, target or marking identity. Never relabel an old state, receipt, capture or proof as new runtime execution.",
+    "Build the live router.point, marked fallback closure, transition, engine, collector, provider, host adapter and consumer from the authenticated consistent point instance/module family. Do not seal ea300 while delegating to a retained a197 object. Existing CodeSeal and strong function anchors must cover current module/classes, including the added private helper, with original pre/post native guards.",
+    "Retain independent c354/9fd/4358 checking and current full key/packet equality, own-prefix UNKNOWN and exception propagation. Charge discovery, collection, mining, provider physical matching/admission, consumer rechecking and output to original cold native20/512 limits and existing once/meter. No new smaller candidate universe or theorem route.",
+    "A fresh narrow connected-path result may establish only its explicit composition/case concordance. No inherited baseline10/12, onecell success, complete graph/global conformance, trajectory, proof, acceleration, learned marking or RL acceptance. General engine gaps stay explicit."
+  ],
+  "engine_activated": false,
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "minimal_native_phase_protocol": {
+    "acceptance": "A diagnostic-only once purpose reports null scientific counts,0 qualification and false proof/engine/RL/gain even if exit0. Do not retrofit old pipeline/baseline/target evidence or promote incomplete markers to connected family success. A separately scoped full record still needs complete saved concordance.",
+    "clock": "Sample the existing direct main native tick exact int return; do not sample adapter ticks returning None, create a clock, or call semantic code for telemetry. Capture/validate native endpoint and builtin os.write identities as in the reviewed diagnostics. Native pre/partial-write/post charges stay inside original20; scalar formatting and bounded writes are not free.",
+    "core8_max_bytes": 602,
+    "framing": "Fixed whitelist, each site at most once, known order/ordered subsequence, finite line/total cap. Full-line recognition only; partial/malformed suffix pinned as uninterpreted raw bytes. Reuse existing native once/session/launch/terminal/wire and failure55 reconciliation, no new custody framework.",
+    "inference": "A phase line establishes only that write observation. Read-to-read elapsed includes guards, writes, nested calls and accumulated work; it is not an exclusive function timer or a timeout-cause certificate. Missing AFTER is not proof of a nonreturn/active failure frame, missing earlier work or case/move count. Numbers must be joined to the same external native window.",
+    "line": "fixed ASCII prefix + one space + exact whitelisted label + one space + canonical unsigned decimal signed64 native ns + LF",
+    "max_line_bytes": 77,
+    "optional_separate_consumer_pair": [
+      "BEFORE_CONSUMER",
+      "AFTER_CONSUMER"
+    ],
+    "prefix": "UNQUALIFIED_CONNECTED_PHASE_OBSERVATION",
+    "recommended_core_labels": [
+      "BEFORE_DISCOVERY",
+      "AFTER_DISCOVERY",
+      "BEFORE_COLLECTOR",
+      "AFTER_COLLECTOR",
+      "BEFORE_MINER",
+      "AFTER_MINER",
+      "BEFORE_PROVIDER",
+      "AFTER_PROVIDER"
+    ],
+    "sites": "At the caller only, immediately before/after each existing whole discovery-search, collect_derivation, miner and build_family_batch compound. Optional pair before/after standalone or callback consumer group if that group is actually called separately. Preserve each compound and its exception/stop/checkpoint behavior intact; no finally marker, loop emission, model/snapshot call or split semantic call. If groups occur nested, freeze the actual finite call-site order and single-use eligibility in current Source.",
+    "status": "PROSPECTIVE_NO_IMPLEMENTATION_OR_ACTUAL",
+    "with_consumer10_max_bytes": 753
+  },
+  "next_action": "Use exact ea300 in a fresh reviewed connected-composition caller/map; review the prospective structural minerV2/providerV2 pair separately. Run only a separately Root-granted original-budget experiment after those reviews. If connected capture/physical continuation is not observed, report that gap; do not synthesize a family/proof route or repeat unchanged measurements blindly.",
+  "no_execution": {
+    "actuals": 0,
+    "clock_calls": 0,
+    "models_imported": 0,
+    "operations": "Raw Source/metadata, AST and builtin compile without evaluation; actual patch over Source copies only.",
+    "saved_result_reads": 0,
+    "scientific_calls": 0,
+    "tests": 0
+  },
+  "performance_claim": false,
+  "proof_accepted": false,
+  "raw_Source_evidence": {
+    "bytes": 6989,
+    "path": "/private/tmp/gcts-connected-composition-review-source-20261017/raw-Source-evidence-v1.json",
+    "sha256": "11ec20647adc7559a5cc0539688f1d471debc0e752da5bc6383a3b48028ed3cd"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "connected-family-point-composition-Source-assessment-v1",
+  "scientific_acceptance": false,
+  "scope": "SOURCE_ONLY_COMPOSITION_AND_PROSPECTIVE_DIAGNOSTIC_DESIGN",
+  "source_refs": {
+    "base": {
+      "bytes": 27553,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "baseline_qualification_caller": {
+      "bytes": 78220,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/ROOT_call_local_projection_qualification_cold_v1.py",
+      "sha256": "0caecb1d5780f856f9a41461c09dc9eb539b428df78d20bc69e2d5b4245a5400"
+    },
+    "checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "collector": {
+      "bytes": 19556,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    },
+    "consumer": {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    },
+    "expander": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "family_engine": {
+      "bytes": 76668,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_search_engine_v3.py",
+      "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "manifest": {
+      "bytes": 4824,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/manifest.json",
+      "sha256": "5f4ded26569959aad5c5ce1abb015fa6e1435fd283315a68e744e1a314e59bab"
+    },
+    "miner": {
+      "bytes": 29018,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_miner_v1.py",
+      "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+    },
+    "new_point": {
+      "bytes": 29316,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e"
+    },
+    "old_point": {
+      "bytes": 29197,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v2.py",
+      "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+    },
+    "provider": {
+      "bytes": 37232,
+      "path": "/private/tmp/gcts-mined-family-provider-source-20261017/mined_family_physical_provider_v1.py",
+      "sha256": "ec8c0f9f8c4c1422d03d2266384221afe1b4196111646a8d652a06d5a246b821"
+    }
+  }
+}

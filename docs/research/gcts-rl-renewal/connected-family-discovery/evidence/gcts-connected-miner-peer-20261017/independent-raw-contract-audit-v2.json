@@ -1,0 +1,62 @@
+{
+  "author_delta": {
+    "bytes": 5749,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-delta-v2.json",
+    "sha256": "1915f1b7433e02eb8dfb3446aec4df4b4fdaab5e3edc01e80d443cf1ac7fcd1f"
+  },
+  "author_delta_checks": {
+    "miner": {
+      "author_actual_forward_full_inverse_patches": true,
+      "author_raw_forward_full_inverse": true,
+      "edit_count": 5,
+      "source": {
+        "bytes": 30862,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+        "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+      },
+      "whole_AST_compile_without_evaluation": true
+    },
+    "provider": {
+      "author_actual_forward_full_inverse_patches": true,
+      "author_raw_forward_full_inverse": true,
+      "edit_count": 2,
+      "source": {
+        "bytes": 37272,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+        "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+      },
+      "whole_AST_compile_without_evaluation": true
+    }
+  },
+  "handoff": {
+    "bytes": 5193,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/handoff-v2.json",
+    "sha256": "0dc760750701bb6b669edcd53ea8b042fa332f0c22ca03d41e1506466776a663"
+  },
+  "own_independent_code_delta_and_full_patches": {
+    "bytes": 7380,
+    "path": "/private/tmp/gcts-connected-miner-peer-20261017/independent-code-only-raw-audit-v1.json",
+    "sha256": "96eef7743315a34fb286ed1cc8d442a738ee019d146e132ee8b258026ee36c8f"
+  },
+  "schema": "connected-miner-provider-independent-raw-contract-audit-v2",
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 12960,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-contract-v2.json",
+    "sha256": "22e7dbb7f23bd8c8b224c7a7ebe0c5d0716f682bd6c306a9e5a48a7d72022b2c"
+  },
+  "source_only": true,
+  "sources": {
+    "miner": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "provider": {
+      "bytes": 37272,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+      "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+    }
+  },
+  "whole_contract_read": true
+}

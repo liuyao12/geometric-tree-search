@@ -1,0 +1,250 @@
+{
+  "schema": "receptor-family-connected-prefix-observer-static-audit-v1",
+  "source": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v1.py",
+    "sha256": "e177e815059d8373b54fefdc4de9ddb9e478c81c4427274bd737cf73e81f934a",
+    "bytes": 20721
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "model_calls": 0,
+  "helper_execution": false,
+  "clock_calls": 0,
+  "tests_run": false,
+  "compile_without_evaluation": true,
+  "py_compile_used": false,
+  "checks": [
+    {
+      "name": "AST parse and compile without evaluation",
+      "passed": true
+    },
+    {
+      "name": "Imports hashlib and json only",
+      "passed": true
+    },
+    {
+      "name": "Full new-addition raw and actual-patch forward/inverse",
+      "passed": true
+    },
+    {
+      "name": "Exact early API function names and keyword-only arguments",
+      "passed": true
+    },
+    {
+      "name": "No primitive rule or goal formula filter in selected-edge eligibility",
+      "passed": true
+    },
+    {
+      "name": "Repeated edges retained by ordered premise index",
+      "passed": true
+    },
+    {
+      "name": "Normal RESTORE exact TRY key and full parent state hash",
+      "passed": true
+    },
+    {
+      "name": "Active exclusion snapshots restored on nested child return",
+      "passed": true
+    },
+    {
+      "name": "Prior EXCLUDE allowed; no global noEXCLUDE shortcut",
+      "passed": true
+    },
+    {
+      "name": "Interrupted unwind requires full root snapshot equality without fabricated RESTORE",
+      "passed": true
+    },
+    {
+      "name": "Captured full selected/excluded arrays and last event/current state join",
+      "passed": true
+    },
+    {
+      "name": "Own bounded incomplete work returns UNKNOWN without partial accepted join",
+      "passed": true
+    },
+    {
+      "name": "Only own _Limit caught; native and malformed-data failures propagate",
+      "passed": true
+    },
+    {
+      "name": "No native verifier/collector/miner/provider/search invocation",
+      "passed": true
+    },
+    {
+      "name": "Viability and broad scientific acceptance flags remain false",
+      "passed": true
+    }
+  ],
+  "check_count": 15,
+  "named_regions": [
+    {
+      "name": "ConnectedPrefixCaptured",
+      "line": 21,
+      "end_line": 22,
+      "bytes": 126,
+      "sha256": "c5cdc15302b31888c76eae44e5ba5e41e9aeb21fb1d8b9a36bb2d1be60d9dc7b"
+    },
+    {
+      "name": "_Limit",
+      "line": 25,
+      "end_line": 26,
+      "bytes": 34,
+      "sha256": "3cd8990f6f2d46a5377638f9d8e42f32db5b8bd47d472ac5ca5e938ae2ed9d3c"
+    },
+    {
+      "name": "_require",
+      "line": 29,
+      "end_line": 31,
+      "bytes": 120,
+      "sha256": "4babc7f02bbbe38ac1816a58c2750b2909f5a58580f7b93b3cfd5118d0076445"
+    },
+    {
+      "name": "_canonical",
+      "line": 34,
+      "end_line": 36,
+      "bytes": 150,
+      "sha256": "10275d4f1106edba8e0e950cb5b4b153e2b494c067962a6e47c099813719f0d3"
+    },
+    {
+      "name": "_digest",
+      "line": 39,
+      "end_line": 40,
+      "bytes": 92,
+      "sha256": "cb272c6e34a633dc9550c1e6ebadd2da2405b7246da7ae438aa306df75d5b57f"
+    },
+    {
+      "name": "_Work",
+      "line": 43,
+      "end_line": 78,
+      "bytes": 1684,
+      "sha256": "cec64bbfb9c01200874d23f54eea7777656263ddc9245bb3ddb34c3c35ec7146"
+    },
+    {
+      "name": "_Work.__init__",
+      "line": 44,
+      "end_line": 54,
+      "bytes": 591,
+      "sha256": "fb7da4aa52fee5cd579f1aeb129aecf35163dbc49aab87937b6c1405506ec838"
+    },
+    {
+      "name": "_Work.step",
+      "line": 56,
+      "end_line": 60,
+      "bytes": 195,
+      "sha256": "ceced6249af62522edf3e065389d195fe20aa1ddfb8a8828d0a06685fd60cee2"
+    },
+    {
+      "name": "_Work.tree",
+      "line": 62,
+      "end_line": 74,
+      "bytes": 736,
+      "sha256": "603bfc1c18a8bad2c4bbcd3fbe6775a8baf4807a68b878edfec9f026e28ff3ae"
+    },
+    {
+      "name": "_Work.record",
+      "line": 76,
+      "end_line": 78,
+      "bytes": 146,
+      "sha256": "dfe88ab38388869febde034aa121e6974410495d449da8861840c6acfe3626ee"
+    },
+    {
+      "name": "_scope",
+      "line": 81,
+      "end_line": 89,
+      "bytes": 611,
+      "sha256": "12702d8092e822b918a1624cacff4087a2a7fd63fee6bc87142d81732e0fcd36"
+    },
+    {
+      "name": "_hex",
+      "line": 92,
+      "end_line": 93,
+      "bytes": 116,
+      "sha256": "26bcfad09f35c29abbf9039d055b03944bce0676e26c9f2b1fc9a90e8f618093"
+    },
+    {
+      "name": "_key",
+      "line": 96,
+      "end_line": 127,
+      "bytes": 2093,
+      "sha256": "17da0d10a3ed48735d0203832a2f5334bbcc0f8e9233ebf0527191d171d9a7d9"
+    },
+    {
+      "name": "_state",
+      "line": 130,
+      "end_line": 140,
+      "bytes": 676,
+      "sha256": "913fa902c8fff28833facb74e6d5e07989dec2a65343ed51cd2c1758c0576b78"
+    },
+    {
+      "name": "_inspect",
+      "line": 143,
+      "end_line": 175,
+      "bytes": 1920,
+      "sha256": "95fc99d9a2ff9776f3c3f23604fe818aa24df0ac355d68bd71f8341f8c26c85a"
+    },
+    {
+      "name": "inspect_selected_edges",
+      "line": 178,
+      "end_line": 187,
+      "bytes": 596,
+      "sha256": "3519724491630468569c03dc7f2201732c7a61e7861b36f09c5345d39c4825a5"
+    },
+    {
+      "name": "_same",
+      "line": 190,
+      "end_line": 191,
+      "bytes": 92,
+      "sha256": "0ae5a45169c9b14a7f61fc1c3360872b20d6bfc3564ad5dcdddb1acbd1e3eca2"
+    },
+    {
+      "name": "_join",
+      "line": 194,
+      "end_line": 335,
+      "bytes": 10597,
+      "sha256": "1628c6af3cbd0815ee5a13f3cfdcc26860c7ce1ef9942c08fa8e744cdadff6d6"
+    },
+    {
+      "name": "join_active_search_trace",
+      "line": 338,
+      "end_line": 350,
+      "bytes": 849,
+      "sha256": "507b124bdfa59f6009e6f777149803d1d26cdc0c399d2e99ce118fc0a3397266"
+    }
+  ],
+  "actual_patch_application": {
+    "command": "patch -E -p0 -i <pinned_patch>",
+    "forward_exit_code": 0,
+    "inverse_exit_code": 0,
+    "forward_bytes_exact": true,
+    "inverse_returns_to_absent_file": true,
+    "project_or_helper_executed": false
+  },
+  "references": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657
+    },
+    "engine13": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/lazy_unit_row_global_engine_v13.py",
+      "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10",
+      "bytes": 66670
+    },
+    "marked_adapter_ea300": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e",
+      "bytes": 29316
+    },
+    "original_base_semantics": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    "API_wire": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/API-wire-v1.json",
+      "sha256": "8536fd9080cde5fd7b3b7c9df74744ed6d6ed4af70efa5019c865a2710222619",
+      "bytes": 4825
+    }
+  },
+  "evidence_limit": "Author raw/AST audit only; no native observation, state validity, qualification or performance established."
+}

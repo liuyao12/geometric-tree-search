@@ -1,0 +1,15 @@
+--- a/source.py
++++ b/source.py
+@@ -7,10 +7,10 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-literal-ground-physical-provider-v2-connected-miner'
++VERSION = 'receptor-family-literal-ground-physical-provider-v1'
+ RESULT_SCHEMA = 'receptor-family-mined-physical-provider-v1'
+ BATCH_SCHEMA = 'receptor-family-primitive-preference-batch-v1'
+-MINER_VERSION = 'receptor-family-primitive-DAG-miner-v2-connected-cut-selection'
++MINER_VERSION = 'receptor-family-primitive-DAG-miner-v1'
+ PRODUCER_VERSION = 'receptor-family-typed-expander-v1'
+ CHECKER_VERSION = 'receptor-family-independent-expansion-checker-v1'
+ ADAPTER_VERSION = 'receptor-family-six-rule-point-adapter-v3-physical-call-sharing'

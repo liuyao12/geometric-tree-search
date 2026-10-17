@@ -1,0 +1,99 @@
+{
+  "schema": "receptor-family-connected-prefix-observer-static-audit-v2",
+  "source": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+    "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338",
+    "bytes": 21076
+  },
+  "parent_static_audit": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/static-audit-v1.json",
+    "sha256": "a7c423671a8f452abeb70a73e89d8d2f547b4712b916505ebf4a3ee844c6b991",
+    "bytes": 7315
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "compile_without_evaluation": true,
+  "helper_execution": false,
+  "tests_run": false,
+  "checks": [
+    {
+      "name": "AST parse/compile without evaluation only",
+      "passed": true
+    },
+    {
+      "name": "Exactly VERSION and native decorated/marking ID checks changed",
+      "passed": true
+    },
+    {
+      "name": "Exact native prefix and64 lowercasehex suffix grammar",
+      "passed": true
+    },
+    {
+      "name": "Original epoch barehex grammar unchanged",
+      "passed": true
+    },
+    {
+      "name": "All17 other named regions raw/AST exact",
+      "passed": true
+    },
+    {
+      "name": "Full raw and whole AST inverse exact",
+      "passed": true
+    },
+    {
+      "name": "Both actual unified patch applications exact",
+      "passed": true
+    },
+    {
+      "name": "API kwargs/result schemas/status strings unchanged",
+      "passed": true
+    },
+    {
+      "name": "All V1 trace/backtrack/exclusion/root/UNKNOWN semantics retained",
+      "passed": true
+    },
+    {
+      "name": "No callback/scientific/helper/model/clock/test execution",
+      "passed": true
+    }
+  ],
+  "check_count": 10,
+  "unchanged_named_regions": [
+    "ConnectedPrefixCaptured",
+    "_Limit",
+    "_require",
+    "_canonical",
+    "_digest",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "_Work.tree",
+    "_Work.record",
+    "_scope",
+    "_hex",
+    "_inspect",
+    "inspect_selected_edges",
+    "_same",
+    "_join",
+    "join_active_search_trace"
+  ],
+  "changed_named_regions": [
+    "_key",
+    "_state"
+  ],
+  "named_region_count": 19,
+  "raw_and_AST_inverse_exact": true,
+  "actual_patch_files": {
+    "forward": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/immediate-forward-v2.patch",
+      "sha256": "0957047f04a22e63163dce452cfa012eaee85c23c9a5e8d04459499ac3a438b9",
+      "bytes": 1925
+    },
+    "inverse": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/immediate-inverse-v2.patch",
+      "sha256": "087e6c275a4d5cdc7c0ee68eb6cf1d8073bb16652f14cb54e922bf21ba2e1f28",
+      "bytes": 1925
+    }
+  },
+  "native_fit": "UNMEASURED"
+}

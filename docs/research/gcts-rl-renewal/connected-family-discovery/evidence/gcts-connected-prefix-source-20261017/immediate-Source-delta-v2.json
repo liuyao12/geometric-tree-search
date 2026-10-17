@@ -1,0 +1,56 @@
+{
+  "schema": "receptor-family-connected-prefix-observer-immediate-Source-delta-v2",
+  "parent_source": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v1.py",
+    "sha256": "e177e815059d8373b54fefdc4de9ddb9e478c81c4427274bd737cf73e81f934a",
+    "bytes": 20721
+  },
+  "source": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+    "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338",
+    "bytes": 21076
+  },
+  "edits": [
+    {
+      "start_byte": 424,
+      "old_text": "VERSION = 'receptor-family-connected-prefix-observer-v1'",
+      "new_text": "VERSION = 'receptor-family-connected-prefix-observer-v2-native-ID-prefixes'"
+    },
+    {
+      "start_byte": 4252,
+      "old_text": "_require(_hex(value['tile_type_id']), 'literal decorated type ID')",
+      "new_text": "_require(type(value['tile_type_id']) is str\n             and value['tile_type_id'].startswith('row0-decorated-tile-')\n             and _hex(value['tile_type_id'][len('row0-decorated-tile-'):]),\n             'literal native prefixed decorated type ID')"
+    },
+    {
+      "start_byte": 6257,
+      "old_text": "and _hex(state['input_epoch']) and _hex(state['marking_id']),",
+      "new_text": "and _hex(state['input_epoch'])\n             and type(state['marking_id']) is str\n             and state['marking_id'].startswith('row0-marking-')\n             and _hex(state['marking_id'][len('row0-marking-'):]),"
+    }
+  ],
+  "edit_count": 3,
+  "forward_raw_exact": true,
+  "inverse_raw_exact": true,
+  "whole_AST_inverse_exact": true,
+  "actual_patch_files": {
+    "forward": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/immediate-forward-v2.patch",
+      "sha256": "0957047f04a22e63163dce452cfa012eaee85c23c9a5e8d04459499ac3a438b9",
+      "bytes": 1925
+    },
+    "inverse": {
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/immediate-inverse-v2.patch",
+      "sha256": "087e6c275a4d5cdc7c0ee68eb6cf1d8073bb16652f14cb54e922bf21ba2e1f28",
+      "bytes": 1925
+    }
+  },
+  "actual_patch_application": {
+    "working_basename": "connected_prefix_observer_v2.py",
+    "working_input": "exact parent bytes",
+    "forward_exit_code": 0,
+    "inverse_exit_code": 0,
+    "forward_exact": true,
+    "inverse_exact": true
+  },
+  "other_Source_changes": false,
+  "scientific_calls": 0
+}

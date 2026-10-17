@@ -1,0 +1,34 @@
+{
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 22804,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c"
+  },
+  "narrow_correction": "new summary keyword and captures-vs-joined UNKNOWN phase accounting only; V1 preserved",
+  "parent_reader_contract": {
+    "bytes": 1394,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "603f83c17aaa4e92aca2127df2d22100e0ad41c767b82a7b60350058e9306a4e"
+  },
+  "parent_reviewed_reader": {
+    "bytes": 15303,
+    "path": "/private/tmp/gcts-engine-family-pipeline-source-20261017/ROOT_read_pipeline_saved_v2.py",
+    "sha256": "f7abedd0481bb826e31ebc75955a9a4ca44de30d07c29bfef7062925689c2c96"
+  },
+  "schema": "ROOT-connected-discovery-saved-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Saved-only whole native/capsule/wire/phase/failure4slot joins; no semantic replay or clocks. Positive native20 allows connected-prefix provenance only, no current frontier viability/collector/lemma/proof/GCTS/RL/gain. Failurewindow55 retains diagnostic only.",
+  "source": {
+    "bytes": 22057,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v2.py",
+    "sha256": "d253225006f0a51c9bc2c6d8e1c249886898e62e959bac4a866f3a0d9277cc9f"
+  },
+  "source_delta": {
+    "bytes": 1921,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/reader-immediate-Source-delta-v2.json",
+    "sha256": "8c7b0c89d1c0f26d4bf24d99b3cd8a567e6382b38f041bd0f7d03d84b42b17e4"
+  },
+  "source_only": true
+}
