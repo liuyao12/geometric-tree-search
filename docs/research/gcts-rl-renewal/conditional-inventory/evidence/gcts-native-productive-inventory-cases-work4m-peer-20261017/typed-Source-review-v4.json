@@ -1,0 +1,57 @@
+{
+  "schema": "ROOT-native-productive-inventory-cases-typed-Source-review-v4",
+  "scope": "ROOT-native-productive-inventory-cases-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "bytes": 38803,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py",
+    "sha256": "d00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8"
+  },
+  "source_contract": {
+    "bytes": 7573,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/Source-contract-v4.json",
+    "sha256": "e0d635697bcf4959a79b9df3a751c84755343aaa501882e93b412df3e2cb13a6"
+  },
+  "sources": {
+    "cases": {
+      "bytes": 38803,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py",
+      "sha256": "d00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8"
+    }
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored expansion checker4358, marked verifier9fd/marked-aware checker8f and ea300 point ancestry, and whole-reviewed both productive parents. Controls authored this narrow budget successor and composer/host dependencies. This is distinct Source/API/contract review of the explicit ablation, not independent reacceptance of inherited checker mathematics or runtime evidence.",
+  "whole_current_source_API_contract_parent_reviewed": true,
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/handoff-v4.json",
+    "sha256": "9715473541fcede044c476c28a2113130ec8ad5a180f615d30fc0503b79fb539",
+    "bytes": 3026
+  },
+  "parent_whole_review": {
+    "bytes": 2639,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-peer-20261017/typed-Source-review-v3.json",
+    "sha256": "c349b7a7e71f11212321d5c0a42b65307070d775d9e9992fa21ed673ad2d8991"
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/findings-v4.json",
+    "sha256": "3331eae07cb5a0b96ffa0d38506b38aeaa1d0381b0bf207ceddbe228a3d476b1",
+    "bytes": 2631
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/independent-raw-AST-v4.json",
+    "sha256": "e920dc17223c0848e938dac9680e25cb43bd4694994cffdcc01c2dadfe354d83",
+    "bytes": 3530
+  },
+  "raw_edit_count": 3,
+  "all_named_regions_raw_AST_exact": 21,
+  "actual_patch_directions_verified": 2,
+  "blockers": [],
+  "runtime_qualification_inherited": false,
+  "actual_execution_authorized": false,
+  "runtime_fit": "UNMEASURED"
+}

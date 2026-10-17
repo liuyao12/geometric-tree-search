@@ -1,6 +1,558 @@
 {
   "files": [
     {
+      "bytes": 6049,
+      "path": "evidence/gcts-interface-coupled-miner-peer-20261017/findings-v3.json",
+      "sha256": "b2e89a8765f19964c159ecdb5c758a66bf95b8af0223beb4a51c9a7d444cdf64",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/findings-v3.json"
+    },
+    {
+      "bytes": 37218,
+      "path": "evidence/gcts-interface-coupled-miner-peer-20261017/forward-source-only.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/forward-source-only.py"
+    },
+    {
+      "bytes": 1030,
+      "path": "evidence/gcts-interface-coupled-miner-peer-20261017/handoff-v3.json",
+      "sha256": "d2542b84dbf0780eb1795bddf0b26f08acfc10cc0757caf9a2da8ba866ddfca4",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 7250,
+      "path": "evidence/gcts-interface-coupled-miner-peer-20261017/independent-raw-AST-v3.json",
+      "sha256": "a9013314561d4c5f63cd8b6ab9977e464b027e60732265d372a1ff10651473ad",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/independent-raw-AST-v3.json"
+    },
+    {
+      "bytes": 30862,
+      "path": "evidence/gcts-interface-coupled-miner-peer-20261017/inverse-source-only.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/inverse-source-only.py"
+    },
+    {
+      "bytes": 2638,
+      "path": "evidence/gcts-interface-coupled-miner-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "185aee71dd7358f6d3c4a21ded19a8750ebbccee8769aac445274fca861c019c",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 4880,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/API-wire-v3.json",
+      "sha256": "fdc3529521537b6f6313e92ad12a7034b63eb4a84c7c64b47da1bc66f6f395fe",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/API-wire-v3.json"
+    },
+    {
+      "bytes": 784,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "8f3c9111a78aee9695a53647f7142267c6433b9b17eb3061900dfa628d082a63",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/ROOT-raw-Source-audit-v1.json"
+    },
+    {
+      "bytes": 15343,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/Source-contract-v3.json",
+      "sha256": "47240d73bfc1f5b398c736aca1f4309cca7aecc7ef32ac5e16a0293446e768b3",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-contract-v3.json"
+    },
+    {
+      "bytes": 14886,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/Source-delta-v3.json",
+      "sha256": "7b863ed71a6733f336b238426c2295ca954a5e1d1ace100f04a6e9703ce3d1e2",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-delta-v3.json"
+    },
+    {
+      "bytes": 2087,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/actual-patch-evidence-v3.json",
+      "sha256": "87890bd4b3a15213c70aa8e000b8ab6bf176b2f64d8da51b4cf510ad447e2c73",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/actual-patch-evidence-v3.json"
+    },
+    {
+      "bytes": 10210,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/author-edit-record-v3.json",
+      "sha256": "d6767b73b92a18311a2b1ea1807690b695f961c62b336104b091246baf1f6051",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/author-edit-record-v3.json"
+    },
+    {
+      "bytes": 6010,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/handoff-v3.json",
+      "sha256": "532ba69a23f9cf5f6f795fccec24ddb942dbc4f2468d23ed4371d367cf7cf759",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 10514,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/miner-v2-to-v3.forward.patch",
+      "sha256": "520735538a7ed245fe285b8364e067a3db5feff32e958aac68e34f6c7168ed7e",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v2-to-v3.forward.patch"
+    },
+    {
+      "bytes": 10514,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/miner-v3-to-v2.inverse.patch",
+      "sha256": "31cda174b52a8c1d2287bdd83709cd2faf6238af5e3b1df5b15ddb7d426fda4e",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v3-to-v2.inverse.patch"
+    },
+    {
+      "bytes": 1689,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/packet-index-prepatch-v3.json",
+      "sha256": "7913873e35304fd3f48070cbab7c4f994a135d3741dbb9aac2774a00b7c4b034",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/packet-index-prepatch-v3.json"
+    },
+    {
+      "bytes": 37218,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py"
+    },
+    {
+      "bytes": 7509,
+      "path": "evidence/gcts-interface-coupled-miner-source-20261017/static-audit-v3.json",
+      "sha256": "56343366a66e67b5f1bc93d74d0729600dd38c72833dc0673229afd16adf8330",
+      "source_path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/static-audit-v3.json"
+    },
+    {
+      "bytes": 5268,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/findings-v1.json",
+      "sha256": "61b5de13341e39f2d082e9169b5aafbc4cb03464cd2db39f9a2d35042e1ddaaa",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 31038,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/forward-actual-patch-Source.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/forward-actual-patch-Source.py"
+    },
+    {
+      "bytes": 29308,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/full_inverse-actual-patch-Source.py",
+      "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/full_inverse-actual-patch-Source.py"
+    },
+    {
+      "bytes": 1863,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/handoff-v1.json",
+      "sha256": "cc5c26d8ae5c6a93cbb7964097071130a93488fb38f7cec184add01660195271",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 6611,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/independent-raw-AST-v1.json",
+      "sha256": "f41f2b24c556ce65fe76454ae05be328175a09f33fe4f3bffc81ed3fa4c339f5",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/independent-raw-AST-v1.json"
+    },
+    {
+      "bytes": 2474,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "95a2976498dd83a015b62478bfe41473246983345716f9dcc32d1a2563dd1088",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 3561,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/API-wire-v1.json",
+      "sha256": "68971214b106df41ad303850b889e2e01e89c30fc5932064c455e2cdc6cbb803",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/API-wire-v1.json"
+    },
+    {
+      "bytes": 23949,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+      "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 4657,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/Source-delta-v1.json",
+      "sha256": "7fb2832b2a4b57ba425610ebb849c9e77831ef50e6b5209a8c51fd5ac10d77f6",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-delta-v1.json"
+    },
+    {
+      "bytes": 3930,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/handoff-v1.json",
+      "sha256": "707af6aa570a7a4c2bbb7df2b11028896960f0bd9f11681a48b5d01f75d6718a",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 31038,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py"
+    },
+    {
+      "bytes": 2506,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/source-forward.patch",
+      "sha256": "dc0eb45fc791d9443003aaab941c4e4a4bcf0d3ef74f31be732cfc015b2ca0d6",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-forward.patch"
+    },
+    {
+      "bytes": 2506,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/source-full-inverse.patch",
+      "sha256": "6a038de3f3aafe9ef789511734e49d99821213032f3e187c0ac3c20539153116",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-full-inverse.patch"
+    },
+    {
+      "bytes": 5014,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/static-audit-v1.json",
+      "sha256": "bec933fe918bd06da0f7e6bfb61f59bddcc7a4e1cebf011099761ef176d5a435",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 4127,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/findings-v1.json",
+      "sha256": "a794ff498c51759381fc3cf514dae668ecfbd1b58f214dac7a2daea335fe9828",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 1047,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/handoff-v1.json",
+      "sha256": "afb8d24370abe56b83bf47247462ead3b7e190050be7eae0b1b29e75da0b64d1",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 2718,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/independent-raw-AST-v1.json",
+      "sha256": "f055746d6f94bc44b98a9c57f2b60892d13b90cd824d31f9cc061ee8c076baf5",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/independent-raw-AST-v1.json"
+    },
+    {
+      "bytes": 28607,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/patch-forward-source-only.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/patch-forward-source-only.py"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/patch-inverse-source-only.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/patch-inverse-source-only.py"
+    },
+    {
+      "bytes": 2504,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "4af9183d888a635a3029b2e57cd40eee93e9dc88be5c36dca094ae485947dbfe",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 7147,
+      "path": "evidence/gcts-native-component-composer-productive-peer-20261017/findings-v2.json",
+      "sha256": "6b27551fe23cb875107179c269e1c44ed4cd1199ec86bf5753f8d461cf7f02fe",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/findings-v2.json"
+    },
+    {
+      "bytes": 30565,
+      "path": "evidence/gcts-native-component-composer-productive-peer-20261017/forward-source-only.py",
+      "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/forward-source-only.py"
+    },
+    {
+      "bytes": 28607,
+      "path": "evidence/gcts-native-component-composer-productive-peer-20261017/full-inverse-source-only.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/full-inverse-source-only.py"
+    },
+    {
+      "bytes": 1092,
+      "path": "evidence/gcts-native-component-composer-productive-peer-20261017/handoff-v2.json",
+      "sha256": "6554f220da13f2122a6591f9ee46c462e9713e833b78611d715a65ad6a85251e",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 3992,
+      "path": "evidence/gcts-native-component-composer-productive-peer-20261017/independent-raw-AST-v2.json",
+      "sha256": "566f5b05ab759147aaa8648faff231e1851c78e001ea518abe0281c3a312a39f",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/independent-raw-AST-v2.json"
+    },
+    {
+      "bytes": 2974,
+      "path": "evidence/gcts-native-component-composer-productive-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "9046c8f23321159e143617a470f6fe59b9c3bb1f82c0ac110ffcc82d97cc434a",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 3186,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/API-wire-v2.json",
+      "sha256": "4e663e7eacc64f1d763c34b319e07aa5915342109bb4bddb0ffdaec119afbff5",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/API-wire-v2.json"
+    },
+    {
+      "bytes": 931,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "92013e8c41553a12d9a0a917dedc713d6b353fdce01ef12394f8f2f2768e19a3",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/ROOT-raw-Source-audit-v1.json"
+    },
+    {
+      "bytes": 15644,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/Source-contract-v2.json",
+      "sha256": "af6c12cb9f2ad1c2471246992193bce53b8e090ba93e730ddd157e886b1f91b9",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 5403,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/Source-delta-v2.json",
+      "sha256": "0745f886f6d017e0c9cf8df00f2d9d9c913b216b059699a9b48014861f920d41",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-delta-v2.json"
+    },
+    {
+      "bytes": 15597,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/build_source_metadata.py",
+      "sha256": "c0bf8a093de73a5cd750ac4dce278a6103e53ed8cf72bef3bf2088d523c94b97",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/build_source_metadata.py"
+    },
+    {
+      "bytes": 6103,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/forward-v2.patch",
+      "sha256": "d47e0b5546c1122fa809dd725535f23d489216edeba8321b231bc03694343dd4",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/forward-v2.patch"
+    },
+    {
+      "bytes": 6103,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/full-inverse-v2.patch",
+      "sha256": "11f2d4f5d95606c682ff15d134306aa9509d6ad51a49a868439ecef98bbe054b",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/full-inverse-v2.patch"
+    },
+    {
+      "bytes": 3443,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/handoff-v2.json",
+      "sha256": "e7e6b528c869a9a14dd5f9567fec84593ae9cedb50b5c18f0ab49bd592b558cd",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 30565,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+      "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py"
+    },
+    {
+      "bytes": 2842,
+      "path": "evidence/gcts-native-component-composer-productive-source-20261017/static-audit-v2.json",
+      "sha256": "6cfcba289850a90cb6876fd2189f8cf022d30e437d18de85417310d5491eae83",
+      "source_path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/static-audit-v2.json"
+    },
+    {
+      "bytes": 4463,
+      "path": "evidence/gcts-native-component-composer-source-20261017/API-wire-v1.json",
+      "sha256": "87373efe523859c20a03b314259bdf4aefa18030a6ab0ece61d1865800efe32c",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/API-wire-v1.json"
+    },
+    {
+      "bytes": 16821,
+      "path": "evidence/gcts-native-component-composer-source-20261017/Source-contract-v1.json",
+      "sha256": "9ab4557a06a7a862a1f0ee7c1fa84fb626a9d2c05fc9c02388355325bd584642",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 30229,
+      "path": "evidence/gcts-native-component-composer-source-20261017/Source-delta-v1.json",
+      "sha256": "91f6a2ff5704fa4bfbb559f4fd1025365cabe722f750e5a522d5be39b7fa727c",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-delta-v1.json"
+    },
+    {
+      "bytes": 29108,
+      "path": "evidence/gcts-native-component-composer-source-20261017/forward-v1.patch",
+      "sha256": "7b2050aed8cbc9d236773404c7c9218a5866a8e042c3b18a130c49411ba00dc1",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/forward-v1.patch"
+    },
+    {
+      "bytes": 29108,
+      "path": "evidence/gcts-native-component-composer-source-20261017/full-inverse-v1.patch",
+      "sha256": "7ce73233a6db36aff34f67a9301bad7702253835d813019fbe5fd0e9989ec8e7",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/full-inverse-v1.patch"
+    },
+    {
+      "bytes": 6236,
+      "path": "evidence/gcts-native-component-composer-source-20261017/handoff-v1.json",
+      "sha256": "30a5fb8d44cc5662182e06eeb0e51d2f2b98f2b38c03c2d6d886a96f312d4993",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 28607,
+      "path": "evidence/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py"
+    },
+    {
+      "bytes": 1823,
+      "path": "evidence/gcts-native-component-composer-source-20261017/static-audit-v1.json",
+      "sha256": "f0c2de29b30176637e0f55f861bb8365567004017488cf002bdf1c8a2cf7257e",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 2563,
+      "path": "evidence/gcts-native-component-composer-work4m-peer-20261017/findings-v3.json",
+      "sha256": "a4c315669f7f14dcae9d841c54a0b6fb044791051dab428e6a03c2f4f26cd72a",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/findings-v3.json"
+    },
+    {
+      "bytes": 30572,
+      "path": "evidence/gcts-native-component-composer-work4m-peer-20261017/forward-source-only.py",
+      "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/forward-source-only.py"
+    },
+    {
+      "bytes": 30565,
+      "path": "evidence/gcts-native-component-composer-work4m-peer-20261017/full-inverse-source-only.py",
+      "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/full-inverse-source-only.py"
+    },
+    {
+      "bytes": 1080,
+      "path": "evidence/gcts-native-component-composer-work4m-peer-20261017/handoff-v3.json",
+      "sha256": "5416ddecde05b594bcb3e6e26beded0372df450667246d3473318e01d709e176",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 3522,
+      "path": "evidence/gcts-native-component-composer-work4m-peer-20261017/independent-raw-AST-v3.json",
+      "sha256": "acafed71db949263a808c8df873609b2a3d7cbdcc340d11e6dfeefd2abc339ec",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/independent-raw-AST-v3.json"
+    },
+    {
+      "bytes": 2844,
+      "path": "evidence/gcts-native-component-composer-work4m-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "3dcefa7b79f3980db755d8a8812c925d681f25b85c6a0559f7557c29637ba8f4",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 3399,
+      "path": "evidence/gcts-native-component-composer-work4m-source-20261017/API-wire-v3.json",
+      "sha256": "ac9f6dfd5a56cf6667ab7e4723be0c3a4bda2cdcab0f6c7c9ebc27e2c68ebf53",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/API-wire-v3.json"
+    },
+    {
+      "bytes": 16254,
+      "path": "evidence/gcts-native-component-composer-work4m-source-20261017/Source-contract-v3.json",
+      "sha256": "7976d95bc7796a0ff4b523689940c782783b15590f4aea2525aeccf4c15fc30a",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-contract-v3.json"
+    },
+    {
+      "bytes": 1722,
+      "path": "evidence/gcts-native-component-composer-work4m-source-20261017/Source-delta-v3.json",
+      "sha256": "996d779d99a2cc886ac01dbae8d8470ab51198d6ec95a27fe2cc8ca329957f6e",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-delta-v3.json"
+    },
+    {
+      "bytes": 1044,
+      "path": "evidence/gcts-native-component-composer-work4m-source-20261017/forward.patch",
+      "sha256": "055efcb050605f27b4f3a6a423df2937cd817b4b5e079198d78e722aff69f245",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/forward.patch"
+    },
+    {
+      "bytes": 8656,
+      "path": "evidence/gcts-native-component-composer-work4m-source-20261017/freeze_ablation_metadata.py",
+      "sha256": "5a2adca94bd01439cfb99fcdcfde678a78fac3317c945a7062665db20192fb6a",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/freeze_ablation_metadata.py"
+    },
+    {
+      "bytes": 1044,
+      "path": "evidence/gcts-native-component-composer-work4m-source-20261017/full-inverse.patch",
+      "sha256": "d56c19a19d33709d08dd2d2795a3c869f2c091e2d6aed86bf36360bcfc036f21",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/full-inverse.patch"
+    },
+    {
+      "bytes": 2995,
+      "path": "evidence/gcts-native-component-composer-work4m-source-20261017/handoff-v3.json",
+      "sha256": "186bb543739edcac3d218082ff1b07e4d96b95becabdad1413a86b6d6222016e",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 30572,
+      "path": "evidence/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+      "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py"
+    },
+    {
+      "bytes": 1556,
+      "path": "evidence/gcts-native-component-composer-work4m-source-20261017/static-audit-v3.json",
+      "sha256": "a55a86bdc17fb97a98ef67ddc5c068f9bc75eccb7d9a7cc944bb5a1b490986a0",
+      "source_path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/static-audit-v3.json"
+    },
+    {
+      "bytes": 248,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/ONCE.json",
+      "sha256": "6e355e3304c995a6097f87de4d2a119da448a29aceff0d9ff655c4e76612f33f",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 277,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stderr.txt",
+      "sha256": "f5c89281aa9c45222bf92b017bef69fca3a897f6fb8979c3f5f44a9d8ddd0be8",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 710,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stdout.txt",
+      "sha256": "af49c3ee035af8c0d46dc6c2043b64e0e7428448931ddae5cd6971c5716f9b6f",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1553,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/native-terminal.json",
+      "sha256": "2de65cad872fb5c30a8367bcfb3e5250f3f9bed83539185a82b14bb3afef5403",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 465,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/observation.json",
+      "sha256": "cd605642ad49284a7d4f686bbdd4f3dd21322a8e7f342299f69f77dbb03bf70a",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "33bda5b269e54bc75a570032401bd08424d3ad3a17c4a38211ca698c1d3f3c3a",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 74993,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-owned-v1/engine-result.json",
+      "sha256": "8e632e4328fff39d543d04595119b96240ac2a5772ec8285f05caf3819ebb08a",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 8620,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-owned-v1/response.jsonl",
+      "sha256": "689bfeed611df43752c2df5daa147ae5f0800074d66ffff3fdae6c945531d6d6",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 7336,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "e6c59d1b3144cbe29601ae9c3bb9960f649e5386d39246da26b595bc18bf4603",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 10442,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "b108ad9868670e8b52c54cb89a06d1d45456d4d1b14804e27016623eb9bee4db",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 3554,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "42cf9655f78588c6ba95c2a5c924cfb08c4ea0a9c2198253fa63a42aab36f0bf",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 869074,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "3334dd4c9ed1b3d03f9863936fbc96e7aff22d60b52fc3fa300c5e22c64b19e7",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-expanded-result-v1.json"
+    },
+    {
+      "bytes": 8829,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "9c2df11464eb94854ec3d330ab524b717da53543804bfd2af52472c6b30bbcda",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 384,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "d4217782412f0d6c57e461e50d981959e7bd9a6e6ef6c8831ab140351dcebccd",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
       "bytes": 6734,
       "path": "evidence/gcts-native-inventory-ROOT-source-20261017/Q_native_terminal_meter_v2.py",
       "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
@@ -193,244 +745,76 @@
       "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v3-full-inverse.patch"
     },
     {
-      "bytes": 7336,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-Source-review-v1.json",
-      "sha256": "e6c59d1b3144cbe29601ae9c3bb9960f649e5386d39246da26b595bc18bf4603",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-Source-review-v1.json"
+      "bytes": 4585,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/findings-v1.json",
+      "sha256": "5d4e263f408169e5706ca6a5b3554250eae12057c9163b18ac6ff68780eb5c43",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/findings-v1.json"
     },
     {
-      "bytes": 10442,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-authorization-v1.json",
-      "sha256": "b108ad9868670e8b52c54cb89a06d1d45456d4d1b14804e27016623eb9bee4db",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-authorization-v1.json"
+      "bytes": 3529,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/findings-v2.json",
+      "sha256": "3f7dbde44cbb1778ae309986826319bc7c02e2979e60eec9741c8da0db7cbad2",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/findings-v2.json"
     },
     {
-      "bytes": 3554,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-disposition-v1.json",
-      "sha256": "42cf9655f78588c6ba95c2a5c924cfb08c4ea0a9c2198253fa63a42aab36f0bf",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-disposition-v1.json"
+      "bytes": 1033,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/handoff-v1.json",
+      "sha256": "f4a259d220d80a855c9e4ea938d6573f91ba87dbe9911417a8376592dc4345a2",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/handoff-v1.json"
     },
     {
-      "bytes": 869074,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-expanded-result-v1.json",
-      "sha256": "3334dd4c9ed1b3d03f9863936fbc96e7aff22d60b52fc3fa300c5e22c64b19e7",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-expanded-result-v1.json"
+      "bytes": 1033,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/handoff-v2.json",
+      "sha256": "d44caafceeb29d953472fe31f0fb1a2622229ae38d400dec0f9609c10c3eae08",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/handoff-v2.json"
     },
     {
-      "bytes": 8829,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-plan-v1.json",
-      "sha256": "9c2df11464eb94854ec3d330ab524b717da53543804bfd2af52472c6b30bbcda",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-plan-v1.json"
+      "bytes": 5575,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v1.json",
+      "sha256": "a6cf0df01c19f5aa85ab553ed9773de1e4d4405ac9f412c8e064fcb33d217b9a",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v1.json"
     },
     {
-      "bytes": 384,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
-      "sha256": "d4217782412f0d6c57e461e50d981959e7bd9a6e6ef6c8831ab140351dcebccd",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+      "bytes": 2237,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v2.json",
+      "sha256": "ec482aefb6a7b3d8795d59f2f8a4e7b00855964ac327ed4720c165f799277101",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v2.json"
     },
     {
-      "bytes": 7765,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-Source-review-v1.json",
-      "sha256": "5a3c11962c4ad01a3fbab0b69f192eb42670afcb6f47f3765e363314c6d76490",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-Source-review-v1.json"
-    },
-    {
-      "bytes": 10498,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-authorization-v1.json",
-      "sha256": "4ca55044c6f6afbe99b69e01dd8c4d292ade4d48d9b7beb7ba5d5b8af1ec77e3",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-authorization-v1.json"
-    },
-    {
-      "bytes": 2854,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-disposition-v1.json",
-      "sha256": "71ae4d28671a3fc5f6716044180ba6179a3855086bec024be2d36d4a481a8e97",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-disposition-v1.json"
-    },
-    {
-      "bytes": 8857,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-plan-v1.json",
-      "sha256": "a537a95f67ab15c173712bd12088844c5f23f8189517e2f25f53d7cc40152f6a",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-plan-v1.json"
-    },
-    {
-      "bytes": 384,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
-      "sha256": "8eece0f39f8024d30e95de9eaff4f2121ffdd0e5497507b939b2fb6d11916b66",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
-    },
-    {
-      "bytes": 6962,
-      "path": "evidence/gcts-native-inventory-cold-peer-20261017/findings-v1.json",
-      "sha256": "a880cd11e26babcde317f841e863a94b3760e7532c8fbbce14d34d42c384bdfd",
-      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/findings-v1.json"
-    },
-    {
-      "bytes": 2252,
-      "path": "evidence/gcts-native-inventory-cold-peer-20261017/findings-v2.json",
-      "sha256": "27689b36d4f45caaedcf47c181bcaacab615b4292382506d73de856eec81c4ac",
-      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/findings-v2.json"
-    },
-    {
-      "bytes": 1055,
-      "path": "evidence/gcts-native-inventory-cold-peer-20261017/handoff-v1.json",
-      "sha256": "01459a079523419a1fec26564fb45f9e6761a65a70379502e72622c772b0829c",
-      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/handoff-v1.json"
-    },
-    {
-      "bytes": 1028,
-      "path": "evidence/gcts-native-inventory-cold-peer-20261017/handoff-v2.json",
-      "sha256": "615fdc4ae57ae3166dbdbf23c3e3ead531b8b359b8c6b4797b2ee17d6d1a2b3c",
-      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/handoff-v2.json"
-    },
-    {
-      "bytes": 14369,
-      "path": "evidence/gcts-native-inventory-cold-peer-20261017/review_metadata.py",
-      "sha256": "b13e33e34cb85480ac9d4437449de7a5c484526df94531633e264839d10bf696",
-      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/review_metadata.py"
-    },
-    {
-      "bytes": 8880,
-      "path": "evidence/gcts-native-inventory-cold-peer-20261017/review_successors_metadata.py",
-      "sha256": "9afcb80f5fc87315b29c83e1a833dae020c917b36e778b8673e5f439a9089f24",
-      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/review_successors_metadata.py"
-    },
-    {
-      "bytes": 7026,
-      "path": "evidence/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v1.json",
-      "sha256": "d23e121af5e229a640c99e8f991d4226f02aa1f181e0b7743c91f09347f9bcba",
-      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v1.json"
-    },
-    {
-      "bytes": 5989,
-      "path": "evidence/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v2.json",
-      "sha256": "c69c49614d43dded760ded20bec2b3719677c369bc0d0c1e3a2bb95aee4aa4fc",
-      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v2.json"
-    },
-    {
-      "bytes": 3798,
-      "path": "evidence/gcts-native-inventory-readout-peer-20261017/findings-v2.json",
-      "sha256": "3e7c6ddbe0b51507cb0a5bd8e0b2362031f5913c66e1ca7851d87cbe5722260e",
-      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/findings-v2.json"
-    },
-    {
-      "bytes": 2328,
-      "path": "evidence/gcts-native-inventory-readout-peer-20261017/findings-v3.json",
-      "sha256": "57933f60967a6bc9998666a93d750d38193851de92961d4e2b3a0f13f2570ac2",
-      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/findings-v3.json"
-    },
-    {
-      "bytes": 1303,
-      "path": "evidence/gcts-native-inventory-readout-peer-20261017/handoff-v2.json",
-      "sha256": "805d8ed1295af3ca3f277db03a3919b311f51cb861911a9f92fe84418d4e209d",
-      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/handoff-v2.json"
-    },
-    {
-      "bytes": 1046,
-      "path": "evidence/gcts-native-inventory-readout-peer-20261017/handoff-v3.json",
-      "sha256": "b10a62386ea18121bdcab838c8a518672aeae5a3bd2aae3693398347f560f1d5",
-      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/handoff-v3.json"
-    },
-    {
-      "bytes": 1331,
-      "path": "evidence/gcts-native-inventory-readout-peer-20261017/source-negative-v1.json",
-      "sha256": "ade9a0a9caa2d38faf2eb1aa4a9e1d8736e8b0290b96f85bebbb82dc2336b809",
-      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/source-negative-v1.json"
-    },
-    {
-      "bytes": 2527,
-      "path": "evidence/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v2.json",
-      "sha256": "48674b977ca72cb068a3ec85b9604126a0eb004702ab0994ab59fdaedb4c08a5",
-      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v2.json"
-    },
-    {
-      "bytes": 1570,
-      "path": "evidence/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v3.json",
-      "sha256": "5451fd97429d816fe6898b1ad889a1a5802216337f35cbd5f1b41c11475d59b3",
-      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v3.json"
-    },
-    {
-      "bytes": 4463,
-      "path": "evidence/gcts-native-component-composer-source-20261017/API-wire-v1.json",
-      "sha256": "87373efe523859c20a03b314259bdf4aefa18030a6ab0ece61d1865800efe32c",
-      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/API-wire-v1.json"
-    },
-    {
-      "bytes": 16821,
-      "path": "evidence/gcts-native-component-composer-source-20261017/Source-contract-v1.json",
-      "sha256": "9ab4557a06a7a862a1f0ee7c1fa84fb626a9d2c05fc9c02388355325bd584642",
-      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-contract-v1.json"
-    },
-    {
-      "bytes": 30229,
-      "path": "evidence/gcts-native-component-composer-source-20261017/Source-delta-v1.json",
-      "sha256": "91f6a2ff5704fa4bfbb559f4fd1025365cabe722f750e5a522d5be39b7fa727c",
-      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-delta-v1.json"
-    },
-    {
-      "bytes": 29108,
-      "path": "evidence/gcts-native-component-composer-source-20261017/forward-v1.patch",
-      "sha256": "7b2050aed8cbc9d236773404c7c9218a5866a8e042c3b18a130c49411ba00dc1",
-      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/forward-v1.patch"
-    },
-    {
-      "bytes": 29108,
-      "path": "evidence/gcts-native-component-composer-source-20261017/full-inverse-v1.patch",
-      "sha256": "7ce73233a6db36aff34f67a9301bad7702253835d813019fbe5fd0e9989ec8e7",
-      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/full-inverse-v1.patch"
-    },
-    {
-      "bytes": 6236,
-      "path": "evidence/gcts-native-component-composer-source-20261017/handoff-v1.json",
-      "sha256": "30a5fb8d44cc5662182e06eeb0e51d2f2b98f2b38c03c2d6d886a96f312d4993",
-      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/handoff-v1.json"
-    },
-    {
-      "bytes": 28607,
-      "path": "evidence/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
-      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2",
-      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py"
-    },
-    {
-      "bytes": 1823,
-      "path": "evidence/gcts-native-component-composer-source-20261017/static-audit-v1.json",
-      "sha256": "f0c2de29b30176637e0f55f861bb8365567004017488cf002bdf1c8a2cf7257e",
-      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/static-audit-v1.json"
-    },
-    {
-      "bytes": 4127,
-      "path": "evidence/gcts-native-component-composer-peer-20261017/findings-v1.json",
-      "sha256": "a794ff498c51759381fc3cf514dae668ecfbd1b58f214dac7a2daea335fe9828",
-      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/findings-v1.json"
-    },
-    {
-      "bytes": 1047,
-      "path": "evidence/gcts-native-component-composer-peer-20261017/handoff-v1.json",
-      "sha256": "afb8d24370abe56b83bf47247462ead3b7e190050be7eae0b1b29e75da0b64d1",
-      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/handoff-v1.json"
-    },
-    {
-      "bytes": 2718,
-      "path": "evidence/gcts-native-component-composer-peer-20261017/independent-raw-AST-v1.json",
-      "sha256": "f055746d6f94bc44b98a9c57f2b60892d13b90cd824d31f9cc061ee8c076baf5",
-      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/independent-raw-AST-v1.json"
-    },
-    {
-      "bytes": 28607,
-      "path": "evidence/gcts-native-component-composer-peer-20261017/patch-forward-source-only.py",
-      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2",
-      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/patch-forward-source-only.py"
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/patch-forward-source-only.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/patch-forward-source-only.py"
     },
     {
       "bytes": 0,
-      "path": "evidence/gcts-native-component-composer-peer-20261017/patch-inverse-source-only.py",
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/patch-inverse-source-only.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/patch-inverse-source-only.py"
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/patch-inverse-source-only.py"
     },
     {
-      "bytes": 2504,
-      "path": "evidence/gcts-native-component-composer-peer-20261017/typed-Source-review-v1.json",
-      "sha256": "4af9183d888a635a3029b2e57cd40eee93e9dc88be5c36dca094ae485947dbfe",
-      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/typed-Source-review-v1.json"
+      "bytes": 2523,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "233973df49ba6c4039b78f73f7e44118cbcf123213aa13ea8969b5dae7322e70",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 2782,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "d019193b7b696f64f7384d15b7a131dfd6d8d9e6c82efff19905d02cf491a15f",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/v2-patch-forward-source-only.py",
+      "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/v2-patch-forward-source-only.py"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/v2-patch-inverse-source-only.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/v2-patch-inverse-source-only.py"
     },
     {
       "bytes": 3198,
@@ -541,256 +925,250 @@
       "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/static-v2-parent-reconstruction.py"
     },
     {
-      "bytes": 4585,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/findings-v1.json",
-      "sha256": "5d4e263f408169e5706ca6a5b3554250eae12057c9163b18ac6ff68780eb5c43",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/findings-v1.json"
+      "bytes": 6962,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/findings-v1.json",
+      "sha256": "a880cd11e26babcde317f841e863a94b3760e7532c8fbbce14d34d42c384bdfd",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/findings-v1.json"
     },
     {
-      "bytes": 3529,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/findings-v2.json",
-      "sha256": "3f7dbde44cbb1778ae309986826319bc7c02e2979e60eec9741c8da0db7cbad2",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/findings-v2.json"
+      "bytes": 2252,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/findings-v2.json",
+      "sha256": "27689b36d4f45caaedcf47c181bcaacab615b4292382506d73de856eec81c4ac",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/findings-v2.json"
     },
     {
-      "bytes": 1033,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/handoff-v1.json",
-      "sha256": "f4a259d220d80a855c9e4ea938d6573f91ba87dbe9911417a8376592dc4345a2",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/handoff-v1.json"
+      "bytes": 1055,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/handoff-v1.json",
+      "sha256": "01459a079523419a1fec26564fb45f9e6761a65a70379502e72622c772b0829c",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/handoff-v1.json"
     },
     {
-      "bytes": 1033,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/handoff-v2.json",
-      "sha256": "d44caafceeb29d953472fe31f0fb1a2622229ae38d400dec0f9609c10c3eae08",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/handoff-v2.json"
+      "bytes": 1028,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/handoff-v2.json",
+      "sha256": "615fdc4ae57ae3166dbdbf23c3e3ead531b8b359b8c6b4797b2ee17d6d1a2b3c",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/handoff-v2.json"
     },
     {
-      "bytes": 5575,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v1.json",
-      "sha256": "a6cf0df01c19f5aa85ab553ed9773de1e4d4405ac9f412c8e064fcb33d217b9a",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v1.json"
+      "bytes": 14369,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/review_metadata.py",
+      "sha256": "b13e33e34cb85480ac9d4437449de7a5c484526df94531633e264839d10bf696",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/review_metadata.py"
     },
     {
-      "bytes": 2237,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v2.json",
-      "sha256": "ec482aefb6a7b3d8795d59f2f8a4e7b00855964ac327ed4720c165f799277101",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v2.json"
+      "bytes": 8880,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/review_successors_metadata.py",
+      "sha256": "9afcb80f5fc87315b29c83e1a833dae020c917b36e778b8673e5f439a9089f24",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/review_successors_metadata.py"
     },
     {
-      "bytes": 31001,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/patch-forward-source-only.py",
-      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/patch-forward-source-only.py"
+      "bytes": 7026,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "d23e121af5e229a640c99e8f991d4226f02aa1f181e0b7743c91f09347f9bcba",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v1.json"
     },
     {
-      "bytes": 0,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/patch-inverse-source-only.py",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/patch-inverse-source-only.py"
+      "bytes": 5989,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "c69c49614d43dded760ded20bec2b3719677c369bc0d0c1e3a2bb95aee4aa4fc",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v2.json"
     },
     {
-      "bytes": 2523,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v1.json",
-      "sha256": "233973df49ba6c4039b78f73f7e44118cbcf123213aa13ea8969b5dae7322e70",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v1.json"
+      "bytes": 3798,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/findings-v2.json",
+      "sha256": "3e7c6ddbe0b51507cb0a5bd8e0b2362031f5913c66e1ca7851d87cbe5722260e",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/findings-v2.json"
     },
     {
-      "bytes": 2782,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v2.json",
-      "sha256": "d019193b7b696f64f7384d15b7a131dfd6d8d9e6c82efff19905d02cf491a15f",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v2.json"
+      "bytes": 2328,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/findings-v3.json",
+      "sha256": "57933f60967a6bc9998666a93d750d38193851de92961d4e2b3a0f13f2570ac2",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/findings-v3.json"
     },
     {
-      "bytes": 31001,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/v2-patch-forward-source-only.py",
-      "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/v2-patch-forward-source-only.py"
+      "bytes": 1303,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/handoff-v2.json",
+      "sha256": "805d8ed1295af3ca3f277db03a3919b311f51cb861911a9f92fe84418d4e209d",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/handoff-v2.json"
     },
     {
-      "bytes": 31001,
-      "path": "evidence/gcts-native-inventory-cases-peer-20261017/v2-patch-inverse-source-only.py",
-      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51",
-      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/v2-patch-inverse-source-only.py"
+      "bytes": 1046,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/handoff-v3.json",
+      "sha256": "b10a62386ea18121bdcab838c8a518672aeae5a3bd2aae3693398347f560f1d5",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/handoff-v3.json"
     },
     {
-      "bytes": 3561,
-      "path": "evidence/gcts-marked-prefix-census-source-20261017/API-wire-v1.json",
-      "sha256": "68971214b106df41ad303850b889e2e01e89c30fc5932064c455e2cdc6cbb803",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/API-wire-v1.json"
+      "bytes": 1331,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/source-negative-v1.json",
+      "sha256": "ade9a0a9caa2d38faf2eb1aa4a9e1d8736e8b0290b96f85bebbb82dc2336b809",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/source-negative-v1.json"
     },
     {
-      "bytes": 23949,
-      "path": "evidence/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
-      "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json"
+      "bytes": 2527,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "48674b977ca72cb068a3ec85b9604126a0eb004702ab0994ab59fdaedb4c08a5",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v2.json"
     },
     {
-      "bytes": 4657,
-      "path": "evidence/gcts-marked-prefix-census-source-20261017/Source-delta-v1.json",
-      "sha256": "7fb2832b2a4b57ba425610ebb849c9e77831ef50e6b5209a8c51fd5ac10d77f6",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-delta-v1.json"
+      "bytes": 1570,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "5451fd97429d816fe6898b1ad889a1a5802216337f35cbd5f1b41c11475d59b3",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v3.json"
     },
     {
-      "bytes": 3930,
-      "path": "evidence/gcts-marked-prefix-census-source-20261017/handoff-v1.json",
-      "sha256": "707af6aa570a7a4c2bbb7df2b11028896960f0bd9f11681a48b5d01f75d6718a",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/handoff-v1.json"
+      "bytes": 252,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/ONCE.json",
+      "sha256": "563c6598901f421c23a3e0b62c38c84d9bcbe17d4334aa849e5972f69eb5e121",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/ONCE.json"
     },
     {
-      "bytes": 31038,
-      "path": "evidence/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
-      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py"
+      "bytes": 798,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stderr.txt",
+      "sha256": "203cd5219e4b82d157d1ffcc13357e7c5be7446fe0d74c22dc156aa419e2ba96",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stderr.txt"
     },
     {
-      "bytes": 2506,
-      "path": "evidence/gcts-marked-prefix-census-source-20261017/source-forward.patch",
-      "sha256": "dc0eb45fc791d9443003aaab941c4e4a4bcf0d3ef74f31be732cfc015b2ca0d6",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-forward.patch"
+      "bytes": 735,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stdout.txt",
+      "sha256": "013474292d66174df7061814f322ea328226b5f6f138a83bba95f9e311f4688f",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stdout.txt"
     },
     {
-      "bytes": 2506,
-      "path": "evidence/gcts-marked-prefix-census-source-20261017/source-full-inverse.patch",
-      "sha256": "6a038de3f3aafe9ef789511734e49d99821213032f3e187c0ac3c20539153116",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-full-inverse.patch"
+      "bytes": 1578,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/native-terminal.json",
+      "sha256": "29e59de000373478fa5a9dfbf3b9a5fec2b7a50fbf19993b6519c291fbf2409b",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/native-terminal.json"
     },
     {
-      "bytes": 5014,
-      "path": "evidence/gcts-marked-prefix-census-source-20261017/static-audit-v1.json",
-      "sha256": "bec933fe918bd06da0f7e6bfb61f59bddcc7a4e1cebf011099761ef176d5a435",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/static-audit-v1.json"
-    },
-    {
-      "bytes": 5268,
-      "path": "evidence/gcts-marked-prefix-census-peer-20261017/findings-v1.json",
-      "sha256": "61b5de13341e39f2d082e9169b5aafbc4cb03464cd2db39f9a2d35042e1ddaaa",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/findings-v1.json"
-    },
-    {
-      "bytes": 31038,
-      "path": "evidence/gcts-marked-prefix-census-peer-20261017/forward-actual-patch-Source.py",
-      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/forward-actual-patch-Source.py"
-    },
-    {
-      "bytes": 29308,
-      "path": "evidence/gcts-marked-prefix-census-peer-20261017/full_inverse-actual-patch-Source.py",
-      "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/full_inverse-actual-patch-Source.py"
-    },
-    {
-      "bytes": 1863,
-      "path": "evidence/gcts-marked-prefix-census-peer-20261017/handoff-v1.json",
-      "sha256": "cc5c26d8ae5c6a93cbb7964097071130a93488fb38f7cec184add01660195271",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/handoff-v1.json"
-    },
-    {
-      "bytes": 6611,
-      "path": "evidence/gcts-marked-prefix-census-peer-20261017/independent-raw-AST-v1.json",
-      "sha256": "f41f2b24c556ce65fe76454ae05be328175a09f33fe4f3bffc81ed3fa4c339f5",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/independent-raw-AST-v1.json"
-    },
-    {
-      "bytes": 2474,
-      "path": "evidence/gcts-marked-prefix-census-peer-20261017/typed-Source-review-v1.json",
-      "sha256": "95a2976498dd83a015b62478bfe41473246983345716f9dcc32d1a2563dd1088",
-      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/typed-Source-review-v1.json"
-    },
-    {
-      "bytes": 74993,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-owned-v1/engine-result.json",
-      "sha256": "8e632e4328fff39d543d04595119b96240ac2a5772ec8285f05caf3819ebb08a",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/engine-result.json"
-    },
-    {
-      "bytes": 8620,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-owned-v1/response.jsonl",
-      "sha256": "689bfeed611df43752c2df5daa147ae5f0800074d66ffff3fdae6c945531d6d6",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/response.jsonl"
-    },
-    {
-      "bytes": 248,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/ONCE.json",
-      "sha256": "6e355e3304c995a6097f87de4d2a119da448a29aceff0d9ff655c4e76612f33f",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/ONCE.json"
-    },
-    {
-      "bytes": 277,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stderr.txt",
-      "sha256": "f5c89281aa9c45222bf92b017bef69fca3a897f6fb8979c3f5f44a9d8ddd0be8",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stderr.txt"
-    },
-    {
-      "bytes": 710,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stdout.txt",
-      "sha256": "af49c3ee035af8c0d46dc6c2043b64e0e7428448931ddae5cd6971c5716f9b6f",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stdout.txt"
-    },
-    {
-      "bytes": 1553,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/native-terminal.json",
-      "sha256": "2de65cad872fb5c30a8367bcfb3e5250f3f9bed83539185a82b14bb3afef5403",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/native-terminal.json"
-    },
-    {
-      "bytes": 465,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/observation.json",
-      "sha256": "cd605642ad49284a7d4f686bbdd4f3dd21322a8e7f342299f69f77dbb03bf70a",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/observation.json"
+      "bytes": 469,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/observation.json",
+      "sha256": "f60641fbc2037fea136a46a20a3bbe3c2751d43f8d6f968d0ae1d79fe7bd6f6b",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/observation.json"
     },
     {
       "bytes": 0,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt"
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt"
     },
     {
       "bytes": 16,
-      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
-      "sha256": "33bda5b269e54bc75a570032401bd08424d3ad3a17c4a38211ca698c1d3f3c3a",
-      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "85d829047b36455c0d5a26ccf649c363aa9490769764f60a4f95f38a2dd6a1ad",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
     },
     {
-      "bytes": 255,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/ONCE.json",
-      "sha256": "9e851086120cf28002caafd062d858181a869e50676fa27d2c8f7bbb97c16b44",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/ONCE.json"
+      "bytes": 153435,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/engine-result.json",
+      "sha256": "fc29b90c1f59f895931199572d24e4271617f3fc2a62618c864e85fad95ae590",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/engine-result.json"
     },
     {
-      "bytes": 111,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stderr.txt",
-      "sha256": "11b999bbbca8e1a1d53dc4a3e3eebfd565778f26c8bad1af22166756ce593f9b",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stderr.txt"
+      "bytes": 8646,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/response.jsonl",
+      "sha256": "fa5b52576f8539b80e665e0be1eb6245d9e5d494c9556b3250ef5e600d773732",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/response.jsonl"
     },
     {
-      "bytes": 0,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stdout.txt",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stdout.txt"
+      "bytes": 8320,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "b228b47c6e2cf0679a91d2a37de59915e9f7ae29b804d8b8bf38df7ed43dd983",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-Source-review-v1.json"
     },
     {
-      "bytes": 1563,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/native-terminal.json",
-      "sha256": "455aafd70a59974947a89cdc9531f0ebf05e965a478bdb0dc9f5669d16887541",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/native-terminal.json"
+      "bytes": 10605,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "e3edec45eab66f47197153ed8d4729cceed3c2dc1e62072c16a8470ba8180091",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-authorization-v1.json"
     },
     {
-      "bytes": 472,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/observation.json",
-      "sha256": "28c8fef7b8592286b448d18a5a456830f856dcf63acb77029101470e054a77cf",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/observation.json"
+      "bytes": 4192,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "8ef03802da46d12c90d12ffa7aa1bd940d5b2ab99a7807d6beeeedd5c93562f5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-disposition-v1.json"
     },
     {
-      "bytes": 0,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt"
+      "bytes": 1822121,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "2fe761011a701835eaca0824b00381fc192fd5cff1fd917181c60fba346eee2c",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-expanded-result-v1.json"
     },
     {
-      "bytes": 16,
-      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
-      "sha256": "221c42a5d26cd51850f21928ea08011485a009ca5f6f7db981a13864010e2faf",
-      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
+      "bytes": 8901,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "8e693d7e6c015c747d9192056c2154bda347b8f4a1f9a66dff2d270781217495",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 2024,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-source-ground-acceptance-v1.json",
+      "sha256": "abb3aa2df506a7a7d860566b756d1b00168e31f1de19bf0591b516659405f267",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-source-ground-acceptance-v1.json"
+    },
+    {
+      "bytes": 384,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "24b2de8d4a6eb1d4d5c0b326f086d94a2c743d89a8500edf7b346912d4d45388",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 53327,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-forward-source-only.py",
+      "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-forward-source-only.py"
+    },
+    {
+      "bytes": 52906,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-full-inverse-source-only.py",
+      "sha256": "bc1786bff287ad2d6eee60e9306d6d0d2ae35c21988534127d57c73fc0c18c7e",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-full-inverse-source-only.py"
+    },
+    {
+      "bytes": 6634,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/findings-v2.json",
+      "sha256": "3f9898c050a0ffad170aa186666c24870999f4e61b3e8a7978615bbf62a0ac90",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/findings-v2.json"
+    },
+    {
+      "bytes": 1321,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/handoff-v2.json",
+      "sha256": "4f737362a529005abdb21634bcbe2da801b1b71ebbb6acfe46cb5db45402dbed",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 4858,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v1.json",
+      "sha256": "b115e41d67c6ba1cf46e09f0f6cfb1a8ab5a14266e0ec7660cae8ae6df38cbd5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v1.json"
+    },
+    {
+      "bytes": 2444,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v2.json",
+      "sha256": "41f8342e05772de736740781750ae99001e0aac6370d477744582344f4ae12e5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v2.json"
+    },
+    {
+      "bytes": 21787,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-forward-source-only.py",
+      "sha256": "c2a6939f6bc99668cdaf18897bb130e24cd26cb4460e59826b0bcbf3bc1d73dc",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-forward-source-only.py"
+    },
+    {
+      "bytes": 21606,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-full-inverse-source-only.py",
+      "sha256": "91417266c7fd1287426e4ade124e074efaddbcdaae1fff48cdc0df0f11eae3ec",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-full-inverse-source-only.py"
+    },
+    {
+      "bytes": 2892,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-typed-Source-review-v2.json",
+      "sha256": "ed9d9a9ca8702638222baac9e11543c73369b149546d4f7ea053832609175261",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 7038,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "2dc990869834706b5968ef76b71b4c2d14d20df53fc0a5364e12df451f3f7007",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/typed-Source-review-v2.json"
     },
     {
       "bytes": 6734,
@@ -949,164 +1327,764 @@
       "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/static-audit-v1.json"
     },
     {
-      "bytes": 8320,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-Source-review-v1.json",
-      "sha256": "b228b47c6e2cf0679a91d2a37de59915e9f7ae29b804d8b8bf38df7ed43dd983",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-Source-review-v1.json"
+      "bytes": 255,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/ONCE.json",
+      "sha256": "9e851086120cf28002caafd062d858181a869e50676fa27d2c8f7bbb97c16b44",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/ONCE.json"
     },
     {
-      "bytes": 10605,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-authorization-v1.json",
-      "sha256": "e3edec45eab66f47197153ed8d4729cceed3c2dc1e62072c16a8470ba8180091",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-authorization-v1.json"
-    },
-    {
-      "bytes": 4192,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-disposition-v1.json",
-      "sha256": "8ef03802da46d12c90d12ffa7aa1bd940d5b2ab99a7807d6beeeedd5c93562f5",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-disposition-v1.json"
-    },
-    {
-      "bytes": 1822121,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-expanded-result-v1.json",
-      "sha256": "2fe761011a701835eaca0824b00381fc192fd5cff1fd917181c60fba346eee2c",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-expanded-result-v1.json"
-    },
-    {
-      "bytes": 8901,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-plan-v1.json",
-      "sha256": "8e693d7e6c015c747d9192056c2154bda347b8f4a1f9a66dff2d270781217495",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-plan-v1.json"
-    },
-    {
-      "bytes": 2024,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-source-ground-acceptance-v1.json",
-      "sha256": "abb3aa2df506a7a7d860566b756d1b00168e31f1de19bf0591b516659405f267",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-source-ground-acceptance-v1.json"
-    },
-    {
-      "bytes": 384,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
-      "sha256": "24b2de8d4a6eb1d4d5c0b326f086d94a2c743d89a8500edf7b346912d4d45388",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
-    },
-    {
-      "bytes": 53327,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-forward-source-only.py",
-      "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-forward-source-only.py"
-    },
-    {
-      "bytes": 52906,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-full-inverse-source-only.py",
-      "sha256": "bc1786bff287ad2d6eee60e9306d6d0d2ae35c21988534127d57c73fc0c18c7e",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-full-inverse-source-only.py"
-    },
-    {
-      "bytes": 6634,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/findings-v2.json",
-      "sha256": "3f9898c050a0ffad170aa186666c24870999f4e61b3e8a7978615bbf62a0ac90",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/findings-v2.json"
-    },
-    {
-      "bytes": 1321,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/handoff-v2.json",
-      "sha256": "4f737362a529005abdb21634bcbe2da801b1b71ebbb6acfe46cb5db45402dbed",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/handoff-v2.json"
-    },
-    {
-      "bytes": 4858,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v1.json",
-      "sha256": "b115e41d67c6ba1cf46e09f0f6cfb1a8ab5a14266e0ec7660cae8ae6df38cbd5",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v1.json"
-    },
-    {
-      "bytes": 2444,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v2.json",
-      "sha256": "41f8342e05772de736740781750ae99001e0aac6370d477744582344f4ae12e5",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v2.json"
-    },
-    {
-      "bytes": 21787,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-forward-source-only.py",
-      "sha256": "c2a6939f6bc99668cdaf18897bb130e24cd26cb4460e59826b0bcbf3bc1d73dc",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-forward-source-only.py"
-    },
-    {
-      "bytes": 21606,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-full-inverse-source-only.py",
-      "sha256": "91417266c7fd1287426e4ade124e074efaddbcdaae1fff48cdc0df0f11eae3ec",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-full-inverse-source-only.py"
-    },
-    {
-      "bytes": 2892,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-typed-Source-review-v2.json",
-      "sha256": "ed9d9a9ca8702638222baac9e11543c73369b149546d4f7ea053832609175261",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-typed-Source-review-v2.json"
-    },
-    {
-      "bytes": 7038,
-      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/typed-Source-review-v2.json",
-      "sha256": "2dc990869834706b5968ef76b71b4c2d14d20df53fc0a5364e12df451f3f7007",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/typed-Source-review-v2.json"
-    },
-    {
-      "bytes": 153435,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/engine-result.json",
-      "sha256": "fc29b90c1f59f895931199572d24e4271617f3fc2a62618c864e85fad95ae590",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/engine-result.json"
-    },
-    {
-      "bytes": 8646,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/response.jsonl",
-      "sha256": "fa5b52576f8539b80e665e0be1eb6245d9e5d494c9556b3250ef5e600d773732",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/response.jsonl"
-    },
-    {
-      "bytes": 252,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/ONCE.json",
-      "sha256": "563c6598901f421c23a3e0b62c38c84d9bcbe17d4334aa849e5972f69eb5e121",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/ONCE.json"
-    },
-    {
-      "bytes": 798,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stderr.txt",
-      "sha256": "203cd5219e4b82d157d1ffcc13357e7c5be7446fe0d74c22dc156aa419e2ba96",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stderr.txt"
-    },
-    {
-      "bytes": 735,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stdout.txt",
-      "sha256": "013474292d66174df7061814f322ea328226b5f6f138a83bba95f9e311f4688f",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stdout.txt"
-    },
-    {
-      "bytes": 1578,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/native-terminal.json",
-      "sha256": "29e59de000373478fa5a9dfbf3b9a5fec2b7a50fbf19993b6519c291fbf2409b",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/native-terminal.json"
-    },
-    {
-      "bytes": 469,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/observation.json",
-      "sha256": "f60641fbc2037fea136a46a20a3bbe3c2751d43f8d6f968d0ae1d79fe7bd6f6b",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/observation.json"
+      "bytes": 111,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stderr.txt",
+      "sha256": "11b999bbbca8e1a1d53dc4a3e3eebfd565778f26c8bad1af22166756ce593f9b",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stderr.txt"
     },
     {
       "bytes": 0,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stdout.txt",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt"
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1563,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/native-terminal.json",
+      "sha256": "455aafd70a59974947a89cdc9531f0ebf05e965a478bdb0dc9f5669d16887541",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 472,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/observation.json",
+      "sha256": "28c8fef7b8592286b448d18a5a456830f856dcf63acb77029101470e054a77cf",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt"
     },
     {
       "bytes": 16,
-      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
-      "sha256": "85d829047b36455c0d5a26ccf649c363aa9490769764f60a4f95f38a2dd6a1ad",
-      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "221c42a5d26cd51850f21928ea08011485a009ca5f6f7db981a13864010e2faf",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 7765,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "5a3c11962c4ad01a3fbab0b69f192eb42670afcb6f47f3765e363314c6d76490",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 10498,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "4ca55044c6f6afbe99b69e01dd8c4d292ade4d48d9b7beb7ba5d5b8af1ec77e3",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 2854,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "71ae4d28671a3fc5f6716044180ba6179a3855086bec024be2d36d4a481a8e97",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 8857,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "a537a95f67ab15c173712bd12088844c5f23f8189517e2f25f53d7cc40152f6a",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 384,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "8eece0f39f8024d30e95de9eaff4f2121ffdd0e5497507b939b2fb6d11916b66",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 258,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/ONCE.json",
+      "sha256": "78793b59d028a4c522de8078e8ed5f86799557cc4874e364679ea216461bf9c5",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 630,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/meter-stderr.txt",
+      "sha256": "0c4b35ddad6006ebca34d094c61a885ad2fd52eb8a802ac4394e857a523352cb",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 746,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/meter-stdout.txt",
+      "sha256": "1f3ae2ba9e70a7a22995cd99d1d888bf9ebace54271f188567741bf30f9149aa",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1569,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/native-terminal.json",
+      "sha256": "00820c306c7269404aaa512133c638ffd14b9e188da8083d77e0fa657fab762c",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 475,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/observation.json",
+      "sha256": "c3c05c704c0ee7ae9c263251f145facba2a15724a945ba223d2e33af60653183",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "ce0556cba66e26fd820ab6abbaa47e657fb2de26a5dc6e74cf5a9b31854d8989",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/NPI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 61281,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/NPI-owned-v1/engine-result.json",
+      "sha256": "e0fc03bbf10511e802ab6b94bf0aa71bbfc9f050b170ae71d6cc99a772f9dc89",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/NPI-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 8656,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/NPI-owned-v1/response.jsonl",
+      "sha256": "931ff04b21cd850f955c35b1b1bacb875ca634ddf9d258d699db9180a8009f8e",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/NPI-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 8408,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "da95e976f12fdbf4c8daad29274fa3bb865b9aa09c62d61d1fe0299b2f765e7e",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 10881,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "fdc2b612e7823d25b992e233c11614eac8aa6fb2faa8dce8dfdf8bca5eefce5a",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 4049,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "0d308e31e405f4509e49a99ba5bdeddd56b43f2e4fe10034aedc328a12805a7a",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 819289,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "1ee003e540f48cbb4640e517359731c4ad9ded49ac3d31c352c576796461ad3c",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/ROOT-expanded-result-v1.json"
+    },
+    {
+      "bytes": 8931,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "adadf77e5785b2e118977356087f8a768455746fe7c0bc8f40815fa06f13d3ee",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 385,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "ff15baeb2cef4f496af2561bacee6f83de55e9285497ff41a4b2c8f92580ac38",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 6734,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Q_native_terminal_meter_v2.py"
+    },
+    {
+      "bytes": 1701,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "5be7165d0d1e381505598319308e43731960de9d549f272121bc6cf81568af75",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json"
+    },
+    {
+      "bytes": 20126,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/ROOT-resident-byte-preflight-v1.json",
+      "sha256": "9d642e5ea3971bcd62ff1586b4e3f2eba6259714971ff61c07ba89bbb4489f08",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT-resident-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 4357,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_external_once_v1.py"
+    },
+    {
+      "bytes": 21776,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v1.py",
+      "sha256": "1ae2639876332a11902eba173124ad8143ef80e2b98dc87e8bddc820bb02d206",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v1.py"
+    },
+    {
+      "bytes": 27822,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "4bed060b7c636be461afa9d8c16612c3f58e0abf3c7e4a0acedc43d187745e50",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 12384,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/build_source_metadata.py",
+      "sha256": "078110f92ffad596bca20cd1acf30cc8e7693943d2fd908e42e3a5afb5372868",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/build_source_metadata.py"
+    },
+    {
+      "bytes": 10644,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/caller-Source-delta-v1.json",
+      "sha256": "0ca2041137523b164377bcd5ffda4575dbdd985483fcd18ba413ee6591a7b629",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/caller-Source-delta-v1.json"
+    },
+    {
+      "bytes": 12104,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/caller-forward.patch",
+      "sha256": "ad9f07cb36405d05bfe970cc72fdeed930383fff9968281b573ebe09409c058d",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/caller-forward.patch"
+    },
+    {
+      "bytes": 12104,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/caller-full-inverse.patch",
+      "sha256": "e10700cde40ca2b55583b3d563eb2c96b93b339cc26d2fff0b7486faf36705ae",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/caller-full-inverse.patch"
+    },
+    {
+      "bytes": 8587,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/handoff-v1.json",
+      "sha256": "e26113037bd3476f0ce3a5f14378300d7fa9c6930060496dbedc989a1e30257a",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 53358,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/native_productive_inventory_cold_v1.py",
+      "sha256": "978327235f539b4749ecb2ffbd9c376e7ae178576ccae02da8034c696fac95f9",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/native_productive_inventory_cold_v1.py"
+    },
+    {
+      "bytes": 7176,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/prepare_root_actual.py",
+      "sha256": "b43e62a54d951f8041294f57496b1c9f298a42467ee0690477d6d27c9466fc47",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/prepare_root_actual.py"
+    },
+    {
+      "bytes": 1419,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "71d8c0ccea871acd0a87b4afe688cc828e83f756dd2ca3772eb15092fbfcbecb",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-Source-contract-v1.json"
+    },
+    {
+      "bytes": 2861,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/reader-Source-delta-v1.json",
+      "sha256": "bc20a7d460b665ebff55c714cb652ba9784650201f220fd0373d2a3703a23521",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-Source-delta-v1.json"
+    },
+    {
+      "bytes": 3214,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "0320619756cebd55ed61a778cea30d36a0fd35d0ae705d50ef50cee83b333151",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-forward.patch"
+    },
+    {
+      "bytes": 3214,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "f13930370445cf6ef7f0641b27a46e502ad391eb639e2e66d69c501bc6e81afb",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-full-inverse.patch"
+    },
+    {
+      "bytes": 1945,
+      "path": "evidence/gcts-native-productive-inventory-ROOT-source-20261017/static-audit-v1.json",
+      "sha256": "2c01a212905c0c54b4429c9756baa91bf797e1cbc1919893380a2715ba53d59a",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 5045,
+      "path": "evidence/gcts-native-productive-inventory-cases-peer-20261017/findings-v3.json",
+      "sha256": "c4e697b614e1ce348e8e7dfa0fb42b6aa89cd23981e1ce82195e4307826099fc",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-peer-20261017/findings-v3.json"
+    },
+    {
+      "bytes": 38780,
+      "path": "evidence/gcts-native-productive-inventory-cases-peer-20261017/forward-source-only.py",
+      "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-peer-20261017/forward-source-only.py"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-productive-inventory-cases-peer-20261017/full-inverse-source-only.py",
+      "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-peer-20261017/full-inverse-source-only.py"
+    },
+    {
+      "bytes": 1076,
+      "path": "evidence/gcts-native-productive-inventory-cases-peer-20261017/handoff-v3.json",
+      "sha256": "5f871036f7080c874d9114090567ebaa62f6716815ecf6412de41dc5c021d87a",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-peer-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 5188,
+      "path": "evidence/gcts-native-productive-inventory-cases-peer-20261017/independent-raw-AST-v3.json",
+      "sha256": "89b26c24c8b7e122d408244c0156ff62db893a2c318d2a89c60eb0a210946648",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-peer-20261017/independent-raw-AST-v3.json"
+    },
+    {
+      "bytes": 2639,
+      "path": "evidence/gcts-native-productive-inventory-cases-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "c349b7a7e71f11212321d5c0a42b65307070d775d9e9992fa21ed673ad2d8991",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-peer-20261017/typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 2868,
+      "path": "evidence/gcts-native-productive-inventory-cases-source-20261017/API-wire-v3.json",
+      "sha256": "e9488f31d6385e963d0d693215ab9e86fca9ea3875c35fdcba4533c916827f32",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/API-wire-v3.json"
+    },
+    {
+      "bytes": 6576,
+      "path": "evidence/gcts-native-productive-inventory-cases-source-20261017/Source-contract-v3.json",
+      "sha256": "c8a9a14f7e18ebb0b2d2b1007b84e58e2fe191c6c34ba51e2db8db7904452c13",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-contract-v3.json"
+    },
+    {
+      "bytes": 37571,
+      "path": "evidence/gcts-native-productive-inventory-cases-source-20261017/Source-delta-v3.json",
+      "sha256": "4d73e1c903a16339252b82e4d30e6338f226fff5d5d6376fbc24e592538f6f27",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-delta-v3.json"
+    },
+    {
+      "bytes": 26676,
+      "path": "evidence/gcts-native-productive-inventory-cases-source-20261017/build_source_metadata.py",
+      "sha256": "f22e08ab7ff695a7a9ca7b522749535a50bf7b00e7275cc9d707e9561ba56854",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/build_source_metadata.py"
+    },
+    {
+      "bytes": 36050,
+      "path": "evidence/gcts-native-productive-inventory-cases-source-20261017/forward-v3.patch",
+      "sha256": "2c0e239ab91c68e0bffad0a0a208cc01ce6dd658ea14bdff8c2cdcacae7cfc6e",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/forward-v3.patch"
+    },
+    {
+      "bytes": 35974,
+      "path": "evidence/gcts-native-productive-inventory-cases-source-20261017/full-inverse-v3.patch",
+      "sha256": "2ee39ca5af3b4802626fac9d43f74ebc34d6e2ea67782e2776733e0a3c342139",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/full-inverse-v3.patch"
+    },
+    {
+      "bytes": 2931,
+      "path": "evidence/gcts-native-productive-inventory-cases-source-20261017/handoff-v3.json",
+      "sha256": "e65bec9fab01f2dc917981061d851a4fcf9609582de5e686de3c55cea6d29787",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 38780,
+      "path": "evidence/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+      "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py"
+    },
+    {
+      "bytes": 1584,
+      "path": "evidence/gcts-native-productive-inventory-cases-source-20261017/static-audit-v3.json",
+      "sha256": "fb743305d167547212ff8d6fd13cdcf462dbbb46c444b42d39522218cb91fd42",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/static-audit-v3.json"
+    },
+    {
+      "bytes": 2631,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-peer-20261017/findings-v4.json",
+      "sha256": "3331eae07cb5a0b96ffa0d38506b38aeaa1d0381b0bf207ceddbe228a3d476b1",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/findings-v4.json"
+    },
+    {
+      "bytes": 38803,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-peer-20261017/forward-source-only.py",
+      "sha256": "d00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/forward-source-only.py"
+    },
+    {
+      "bytes": 38780,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-peer-20261017/full-inverse-source-only.py",
+      "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/full-inverse-source-only.py"
+    },
+    {
+      "bytes": 1109,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-peer-20261017/handoff-v4.json",
+      "sha256": "1a57521c138c981a278ab443fba3b02843c9767a602d86c3fe50d3af58fa54b1",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/handoff-v4.json"
+    },
+    {
+      "bytes": 3530,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-peer-20261017/independent-raw-AST-v4.json",
+      "sha256": "e920dc17223c0848e938dac9680e25cb43bd4694994cffdcc01c2dadfe354d83",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/independent-raw-AST-v4.json"
+    },
+    {
+      "bytes": 2837,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-peer-20261017/typed-Source-review-v4.json",
+      "sha256": "d3302d9327f4e9ea01123ba64925ebbc7123098d39459e93c9e817952569deb0",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/typed-Source-review-v4.json"
+    },
+    {
+      "bytes": 3144,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-source-20261017/API-wire-v4.json",
+      "sha256": "4e58d7a46c74cabec644040bc43ec13da72fcb995d20fd1e18ab9511d7602c80",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/API-wire-v4.json"
+    },
+    {
+      "bytes": 7573,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-source-20261017/Source-contract-v4.json",
+      "sha256": "e0d635697bcf4959a79b9df3a751c84755343aaa501882e93b412df3e2cb13a6",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/Source-contract-v4.json"
+    },
+    {
+      "bytes": 2003,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-source-20261017/Source-delta-v4.json",
+      "sha256": "94f929d5ac036fafa83d39e516e749e3575d1ef33ae9587f1e1f020e117fa8d0",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/Source-delta-v4.json"
+    },
+    {
+      "bytes": 1283,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-source-20261017/forward.patch",
+      "sha256": "2551f11fbfcc42d0aa22cd9244fd40f2f7effa1aacf3a7ef6a5d0095f7a59fc1",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/forward.patch"
+    },
+    {
+      "bytes": 1283,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-source-20261017/full-inverse.patch",
+      "sha256": "1fbb8b9f44b2b06e61c43babffa533f28142192687a6861a882518d4022f9f8f",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/full-inverse.patch"
+    },
+    {
+      "bytes": 3026,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-source-20261017/handoff-v4.json",
+      "sha256": "9715473541fcede044c476c28a2113130ec8ad5a180f615d30fc0503b79fb539",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/handoff-v4.json"
+    },
+    {
+      "bytes": 38803,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py",
+      "sha256": "d00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py"
+    },
+    {
+      "bytes": 1505,
+      "path": "evidence/gcts-native-productive-inventory-cases-work4m-source-20261017/static-audit-v4.json",
+      "sha256": "c504130c64730cd45354b023a079eb3d9622d08225decf7b94ed2852e0225c97",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/static-audit-v4.json"
+    },
+    {
+      "bytes": 3069,
+      "path": "evidence/gcts-native-productive-inventory-cold-peer-20261017/findings-v1.json",
+      "sha256": "3a9f47b301042d79fa89d51a4c933081ecd718884a55f8c309d34e4fdc1fc4ed",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cold-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 1097,
+      "path": "evidence/gcts-native-productive-inventory-cold-peer-20261017/handoff-v1.json",
+      "sha256": "cbc7541f8bec8d57c953136e47e523645cc7b759ce7b38e396281cd77c1437f3",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cold-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 11412,
+      "path": "evidence/gcts-native-productive-inventory-cold-peer-20261017/review_metadata.py",
+      "sha256": "6e7182de1f4de3ceec68e87ab4c128c80b24becfb478881bf317f10a564398b5",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cold-peer-20261017/review_metadata.py"
+    },
+    {
+      "bytes": 6868,
+      "path": "evidence/gcts-native-productive-inventory-cold-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "693acf8b4a3997f7a187bf0815f07b716cc1cab01f7e00fbff03353abe9e619d",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-cold-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 2944,
+      "path": "evidence/gcts-native-productive-inventory-readout-peer-20261017/findings-v1.json",
+      "sha256": "da6f802e1cacfa024fadbf10eed9cb861c8ad524d179fa92dd5a3dcb6d8c77e9",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-readout-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 1123,
+      "path": "evidence/gcts-native-productive-inventory-readout-peer-20261017/handoff-v1.json",
+      "sha256": "da69754d76592701f82867fdac5a37665cd76785ffc7cff70c3fb22ecaf17429",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-readout-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 2357,
+      "path": "evidence/gcts-native-productive-inventory-readout-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "d3740de619be26edf8384785831c2be46130e3940a68ea853f12bacf72f558d9",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-readout-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 265,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/ONCE.json",
+      "sha256": "39e227f5dd2694b58bdd5c269fd7f814bbed458c9097c3b4e1c6758534e4715b",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 798,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/meter-stderr.txt",
+      "sha256": "94343f7154c40749de5a286e3c2e2060942b9c1200eb39f3ab62e21083321ead",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 768,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/meter-stdout.txt",
+      "sha256": "9659f9b1f76297033865e1afe76b65c3a685968b7a7830dc85747537f612d666",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1582,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/native-terminal.json",
+      "sha256": "f7262dfba2a7dc32325f0d29a2340918e8a066c49a596d29958cfe786bb8d8db",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 482,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/observation.json",
+      "sha256": "8f48330eba569a5794a0048549d611f9ae86634f4de19b4b7af13ecd085fa8f1",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "9e9ec514c589da93e6c1e95217791d37dc2aa6b4c1447f485b2f7dab3d132e68",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 303451,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-owned-v1/engine-result.json",
+      "sha256": "338ca85f6486f96bdd0ca5abe73c898b63f9af9091e034661013f3e73fd8fb24",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 8688,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-owned-v1/response.jsonl",
+      "sha256": "5142d45ffd8649e3b1114b68c35d4ff9cf301ff47d24e1c066782822a4ae605c",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/NPI-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 7551,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "eab7d47e90535800037a44d30cea37b500084c2bb51f43f927954055f4cdac1a",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 10950,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "4c8b453b17abe4a30fa0864c4e0d9a0403d62e2486cce277664b052783a62291",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 4325,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "9e95deb4839f58fe3b1819b5f5a64e24689da68c91789f0814d5d5bfadfa79fe",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 3433689,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json"
+    },
+    {
+      "bytes": 8983,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "9c3242dc9e49acd9a54c6c4b28dc6d1172ad436b3bda6fd4456c972a3b609fb5",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 2723,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json",
+      "sha256": "4ef4ebdcd431a284f73ded43caf1957b819d1ddd4e3180e212a619e3b736d817",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json"
+    },
+    {
+      "bytes": 383,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "a1b4ebe4d4bca9c6af15644794e55d80c57327946d217836c391902151d889b4",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 6734,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Q_native_terminal_meter_v2.py"
+    },
+    {
+      "bytes": 2130,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "4338ed1edb8ee310500ed10ab6bd973ee4d65995918f4f1c8575330eff4c31e2",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json"
+    },
+    {
+      "bytes": 23862,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT-resident-byte-preflight-v1.json",
+      "sha256": "f008641252d1df5a9f662038283395ab53315408f19082f339f85a9f32fce33f",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT-resident-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 4357,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_external_once_v1.py"
+    },
+    {
+      "bytes": 21790,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v2.py",
+      "sha256": "1f4ae893cd2811328f73726a97ee84e4ccc48f1706cfdfc2c3c7536fcb4b29d9",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v2.py"
+    },
+    {
+      "bytes": 28106,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json",
+      "sha256": "7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 5602,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/build_body.py",
+      "sha256": "194d5906fc6f0234adad86650e2e6e89580d4a1a51fb8aa125d1b2ec794a921b",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/build_body.py"
+    },
+    {
+      "bytes": 8841,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/build_source_metadata.py",
+      "sha256": "c90476672f71bc46c9b0bd270ff36409b99be6ac69837b7453240392070f44bf",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/build_source_metadata.py"
+    },
+    {
+      "bytes": 9611,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/caller-Source-delta-v1.json",
+      "sha256": "9c73ad64e1a1d8c554d96d7c4c7b836e2339ba03444a15f852442d226471dc26",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/caller-Source-delta-v1.json"
+    },
+    {
+      "bytes": 10877,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/caller-forward.patch",
+      "sha256": "4e85832a8ece6d8adabec1e2744fa74094ef17f9030582fea0abf9c608984045",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/caller-forward.patch"
+    },
+    {
+      "bytes": 10877,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/caller-full-inverse.patch",
+      "sha256": "36432715d90232c4634af9c46fbc69b52b191750d7a150e6bd26a2081c64dbc2",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/caller-full-inverse.patch"
+    },
+    {
+      "bytes": 8680,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/handoff-v2.json",
+      "sha256": "8fde9452dd55bfeca564e19bc91f96938a8a35d5c5f3f9b3e5b1361240c13e20",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 53368,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/native_productive_inventory_cold_v2.py",
+      "sha256": "7c76001ac0f48156732760d6e74daef87f0b7c67571dc4487936c8718627e197",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/native_productive_inventory_cold_v2.py"
+    },
+    {
+      "bytes": 13930,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/package_report.py",
+      "sha256": "f0743502551a0fa2078fc9cbde96de5575515ce67b015bb16582216688d081a7",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/package_report.py"
+    },
+    {
+      "bytes": 6262,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/prepare_root_actual.py",
+      "sha256": "7454063b04d8b7467e489916b6ba517d4ba9cabb93e73a419bccc9b4b39cc619",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/prepare_root_actual.py"
+    },
+    {
+      "bytes": 1386,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-Source-contract-v2.json",
+      "sha256": "84881bde80a0e2b3d56f7728f0ff4bdfcc7c839a8e1d1c6ef666a4fe910766aa",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-Source-contract-v2.json"
+    },
+    {
+      "bytes": 2104,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-Source-delta-v1.json",
+      "sha256": "b0526cd050a85e690ae398b59eaa4051c24aa8d0099a82080a0163d82c73d671",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-Source-delta-v1.json"
+    },
+    {
+      "bytes": 1254,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "e8ad3eeecc7f4cd6cb9657395e60617f7cdca93636c89535fccd5695fde4bde8",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-forward.patch"
+    },
+    {
+      "bytes": 1254,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "6fd168f045dc96d56b78ad75d6dc3e3ead7a32ed8ecf59aa1e803d1468ff5139",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-full-inverse.patch"
+    },
+    {
+      "bytes": 1007,
+      "path": "evidence/gcts-native-productive-inventory-work4m-ROOT-source-20261017/static-audit-v2.json",
+      "sha256": "42093f743964c7d9a0aa6a0ce21baa29d9de043e52adb6f283f649d5031623bf",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/static-audit-v2.json"
+    },
+    {
+      "bytes": 4003,
+      "path": "evidence/gcts-native-productive-inventory-work4m-cold-peer-20261017/findings-v2.json",
+      "sha256": "6973756c895b735b3906c36d7578f38f5633c89848200cc9eaf3582c46f09bb9",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-cold-peer-20261017/findings-v2.json"
+    },
+    {
+      "bytes": 1132,
+      "path": "evidence/gcts-native-productive-inventory-work4m-cold-peer-20261017/handoff-v2.json",
+      "sha256": "f871ff56a555776c82f30863cdc937c0cc4e18626cc247c82ca9994c868ae119",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-cold-peer-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 10049,
+      "path": "evidence/gcts-native-productive-inventory-work4m-cold-peer-20261017/review_metadata.py",
+      "sha256": "0778deb30f236ee17bef1f5b535f93d40c2a8cd93529194e97d937e3d6df6823",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-cold-peer-20261017/review_metadata.py"
+    },
+    {
+      "bytes": 6763,
+      "path": "evidence/gcts-native-productive-inventory-work4m-cold-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "e5b60839bb0ce4b39dc64d7a290b6715f69f79f65d4ae29ad6b09bfc12e2d067",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-cold-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 2813,
+      "path": "evidence/gcts-native-productive-inventory-work4m-readout-peer-20261017/findings-v2.json",
+      "sha256": "ea1763ee35178b53e66c1da4489d17469cc5187cd8f95c380a69946e27646908",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-readout-peer-20261017/findings-v2.json"
+    },
+    {
+      "bytes": 1158,
+      "path": "evidence/gcts-native-productive-inventory-work4m-readout-peer-20261017/handoff-v2.json",
+      "sha256": "9fb18f0c374036071321125663df2972cd4466fd6fc2e2f7b96e6efb06b74792",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-readout-peer-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 2362,
+      "path": "evidence/gcts-native-productive-inventory-work4m-readout-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "df7dba89296a118c0044c64b2400665ee37d5f5eaad12423995fb8a8468aa4e5",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-readout-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 19125,
+      "path": "evidence/gcts-receiver-consumption-design-source-20261017/receiver-consumption-design-v1.json",
+      "sha256": "3ff67e773d24efdd833ec2340223b6e2d84fb13cf566670dc1467786625cbc66",
+      "source_path": "/private/tmp/gcts-receiver-consumption-design-source-20261017/receiver-consumption-design-v1.json"
+    },
+    {
+      "bytes": 4435,
+      "path": "evidence/gcts-receiver-consumption-design-source-20261017/recommendation-v1.json",
+      "sha256": "16eb885699e4e450248db9494accaa784fc2cd3ccea4130c37dbbe30c99a6280",
+      "source_path": "/private/tmp/gcts-receiver-consumption-design-source-20261017/recommendation-v1.json"
     }
   ],
   "raw_bytes_preserved": true,
-  "schema": "ROOT-native-inventory-evidence-manifest-v1",
+  "schema": "ROOT-native-productive-inventory-evidence-manifest-v1",
   "scientific_replay": false,
   "shared_existing_files": [
     {

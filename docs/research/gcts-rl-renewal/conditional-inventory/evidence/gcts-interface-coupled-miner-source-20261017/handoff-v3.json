@@ -1,0 +1,124 @@
+{
+  "API": {
+    "bytes": 4880,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/API-wire-v3.json",
+    "sha256": "fdc3529521537b6f6313e92ad12a7034b63eb4a84c7c64b47da1bc66f6f395fe"
+  },
+  "API_summary": "mine_families(*,host,derivation,tick,limits=None,cut_selection='ANY',fragment_priority='LARGEST_REPEATED_FIRST'); OPEN_INPUT_OUTPUT_FIRST explicit new order. validate_derivation unchanged keyword API.",
+  "RL_accepted": false,
+  "Review_ABI": {
+    "required": [
+      "Whole current Source/API/contract and exact frozen parent",
+      "All seven raw edit regions/full raw+AST inverse/both actual patch directions",
+      "Default catalogue branch and new scope/cap probe",
+      "Actual post-build coupling vs prediction, physical open evidence limitation and literal shadowing",
+      "Downstream explicit version and one-component gates",
+      "Author overlap and no runtime/lemma/activation inheritance"
+    ],
+    "schema": "receptor-family-interface-coupled-miner-typed-Source-review-v3",
+    "scientific_calls": 0,
+    "scope": "receptor-family-interface-coupled-miner-Source",
+    "source": {
+      "bytes": 37218,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+    },
+    "sources": {
+      "miner": {
+        "bytes": 37218,
+        "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+        "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+      }
+    }
+  },
+  "actual_patch_evidence": {
+    "bytes": 2087,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/actual-patch-evidence-v3.json",
+    "sha256": "87890bd4b3a15213c70aa8e000b8ab6bf176b2f64d8da51b4cf510ad447e2c73"
+  },
+  "author": "/root/arithmetic_induction",
+  "engine_activated": false,
+  "key_scope": [
+    "Literal variant first; old default catalogue ranking and capacities preserved. Additive report cost means no full old finite-prefix/tick trace equivalence.",
+    "Newmode tracked-key probe recurses beneath untracked ancestors, retains exact free/bound scoped fragment identity, and never expands catalogue key cap.",
+    "Priority needs explicit source DAG input occupied=False; conditional cut port alone is not physical openness; supplied evidence remains untrusted.",
+    "Report actual built parameter identity across input/output including open-evidence subset, not predicted success. Literal binder shadowing can hide selected descendants.",
+    "No downstream module edited; old CASE and providers hardgate minerV2, and productive composer requires2slots against oldCASE1.",
+    "Original semantic Source17/input2/epoch/universe, fresh independent/native ground checks, complete candidate fallback/scheduler/rollback remain unchanged and are not qualified by this Source."
+  ],
+  "lemma_or_proof_accepted": false,
+  "next_action": "Independent whole Source peer after Diagnosis finishes its productive composer review; Root alone chooses any future explicit downstream/cold composition and actual grant.",
+  "parent_contract": {
+    "bytes": 12960,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-contract-v2.json",
+    "sha256": "22e7dbb7f23bd8c8b224c7a7ebe0c5d0716f682bd6c306a9e5a48a7d72022b2c"
+  },
+  "parent_source": {
+    "bytes": 30862,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+    "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 10514,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v2-to-v3.forward.patch",
+      "sha256": "520735538a7ed245fe285b8364e067a3db5feff32e958aac68e34f6c7168ed7e"
+    },
+    "inverse": {
+      "bytes": 10514,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v3-to-v2.inverse.patch",
+      "sha256": "31cda174b52a8c1d2287bdd83709cd2faf6238af5e3b1df5b15ddb7d426fda4e"
+    }
+  },
+  "pruning_accepted": false,
+  "runtime_qualified": false,
+  "schema": "receptor-family-interface-coupled-miner-Source-handoff-v3",
+  "scientific_calls": 0,
+  "scope": "receptor-family-interface-coupled-miner-Source",
+  "source": {
+    "bytes": 37218,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+    "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+  },
+  "source_contract": {
+    "bytes": 15343,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-contract-v3.json",
+    "sha256": "47240d73bfc1f5b398c736aca1f4309cca7aecc7ef32ac5e16a0293446e768b3"
+  },
+  "source_delta": {
+    "bytes": 14886,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-delta-v3.json",
+    "sha256": "7b863ed71a6733f336b238426c2295ca954a5e1d1ace100f04a6e9703ce3d1e2"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "miner": {
+      "bytes": 37218,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+    }
+  },
+  "static_audit": {
+    "bytes": 7509,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/static-audit-v3.json",
+    "sha256": "56343366a66e67b5f1bc93d74d0729600dd38c72833dc0673229afd16adf8330"
+  },
+  "static_summary": {
+    "actual_forward_and_inverse_text_patches": true,
+    "added_regions": [
+      "_Graph._probe_interface_fragments",
+      "_interface_coupling"
+    ],
+    "changed_existing_regions": [
+      "_Graph.catalogue",
+      "mine_families",
+      "mine_families.variants"
+    ],
+    "compile_without_evaluation": true,
+    "raw_edit_regions": 7,
+    "unchanged_callable_regions": 32,
+    "whole_raw_and_AST_inverse": true
+  },
+  "version": "receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue"
+}

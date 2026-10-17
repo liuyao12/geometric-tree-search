@@ -1,0 +1,70 @@
+{
+  "API_wire": {
+    "bytes": 3399,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/API-wire-v3.json",
+    "sha256": "ac9f6dfd5a56cf6667ab7e4723be0c3a4bda2cdcab0f6c7c9ebc27e2c68ebf53"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "receptor-family-native-component-composer-productive-slots-typed-Source-review-v3",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-native-component-composer-productive-slots-Source",
+    "source": {
+      "bytes": 30572,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+      "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1"
+    },
+    "source_contract": {
+      "bytes": 16254,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-contract-v3.json",
+      "sha256": "7976d95bc7796a0ff4b523689940c782783b15590f4aea2525aeccf4c15fc30a"
+    },
+    "source_only": true,
+    "sources": {
+      "composer": {
+        "bytes": 30572,
+        "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+        "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_patches": {
+    "forward": {
+      "bytes": 1044,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/forward.patch",
+      "sha256": "055efcb050605f27b4f3a6a423df2937cd817b4b5e079198d78e722aff69f245"
+    },
+    "full-inverse": {
+      "bytes": 1044,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/full-inverse.patch",
+      "sha256": "d56c19a19d33709d08dd2d2795a3c869f2c091e2d6aed86bf36360bcfc036f21"
+    }
+  },
+  "exact_change_count": 2,
+  "schema": "receptor-native-component-work4m-handoff-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 30572,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+    "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1"
+  },
+  "source_contract": {
+    "bytes": 16254,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-contract-v3.json",
+    "sha256": "7976d95bc7796a0ff4b523689940c782783b15590f4aea2525aeccf4c15fc30a"
+  },
+  "source_delta": {
+    "bytes": 1722,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-delta-v3.json",
+    "sha256": "996d779d99a2cc886ac01dbae8d8470ab51198d6ec95a27fe2cc8ca329957f6e"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 1556,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/static-audit-v3.json",
+    "sha256": "a55a86bdc17fb97a98ef67ddc5c068f9bc75eccb7d9a7cc944bb5a1b490986a0"
+  }
+}

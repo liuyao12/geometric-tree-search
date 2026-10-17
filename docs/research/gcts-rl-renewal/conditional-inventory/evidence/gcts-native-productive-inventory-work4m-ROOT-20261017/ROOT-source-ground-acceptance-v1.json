@@ -1,0 +1,58 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "added_marking_counts_on_complete_exposed_cursor_prefixes": {
+    "original": 29,
+    "removed": 1,
+    "survived": 28
+  },
+  "automatically_constructed_components": 2,
+  "complete_GCTS_model_accepted": false,
+  "component_ids": [
+    "automatic-component-949b28776e1ed5068dcf827e95b7663836afd9cc7a0140beffe095ae6737ad75",
+    "automatic-component-0d31d3425e36dc459a68fd1aeba4b5db49f82a1916689347ab133e1a3309462d"
+  ],
+  "descriptor_catalogue_entries": 4,
+  "descriptors_qualified": 4,
+  "disposition": {
+    "bytes": 4325,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-disposition-v1.json",
+    "sha256": "9e95deb4839f58fe3b1819b5f5a64e24689da68c91789f0814d5d5bfadfa79fe"
+  },
+  "distinct_native_members_per_component": 2,
+  "distinct_placements_across_alternatives": 3,
+  "engine_generated": false,
+  "expanded": {
+    "bytes": 3433689,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json",
+    "sha256": "26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38"
+  },
+  "family_ids": [
+    "980e1db6196239ce4902325885799ba62da390fbd276de2c7e1eee91334e0a1f",
+    "404100b0f896c21b3a006a34ba5175388ec5e51ca2a909f56392d033ac8b196a",
+    "87ec13d8ca839076ae117f615b7a3bf563564950842c5f89d8622d7fe58c5daa",
+    "22e8bc88962e1f71e46963dd6f4016abb784a913b760d2c2925d4ee8ef0b2109"
+  ],
+  "interface_coupled_descriptors": 1,
+  "native_launch_to_postprobe_ns": 5642960000,
+  "native_resources_qualified": true,
+  "new_theorem_discovered": false,
+  "peak_bytes": 48988160,
+  "plan": {
+    "bytes": 8983,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-plan-v1.json",
+    "sha256": "9c3242dc9e49acd9a54c6c4b28dc6d1172ad436b3bda6fd4456c972a3b609fb5"
+  },
+  "receiver_transfer_qualified": false,
+  "schema": "ROOT-native-productive-source-ground-inventory-acceptance-v1",
+  "scientific_replay": false,
+  "scope": "Current original-model source substitutions only. Two alternative clusters share one axiom placement; four descriptors are not four independent lemmas. The open implication remains unoccupied/factFalse. Its contradiction output is conditional, not a proved contradiction. No arbitrary formula replacement or genuinely reached receiver transfer qualified.",
+  "source_contract": {
+    "bytes": 28106,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json",
+    "sha256": "7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985"
+  },
+  "source_ground_inventory_qualified": true,
+  "target_proof_accepted": false,
+  "universal_lemma_accepted": false
+}

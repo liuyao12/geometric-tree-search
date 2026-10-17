@@ -1,0 +1,52 @@
+{
+  "checks": [
+    {
+      "delta": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/caller-Source-delta-v1.json",
+      "edits": 2,
+      "module_evaluated": false,
+      "source": {
+        "bytes": 53368,
+        "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/native_productive_inventory_cold_v2.py",
+        "sha256": "7c76001ac0f48156732760d6e74daef87f0b7c67571dc4487936c8718627e197"
+      },
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "delta": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-Source-delta-v1.json",
+      "edits": 2,
+      "module_evaluated": false,
+      "source": {
+        "bytes": 21790,
+        "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v2.py",
+        "sha256": "1f4ae893cd2811328f73726a97ee84e4ccc48f1706cfdfc2c3c7536fcb4b29d9"
+      },
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "delta": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-delta-v3.json",
+      "edits": 2,
+      "module_evaluated": false,
+      "source": {
+        "bytes": 30572,
+        "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+        "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1"
+      },
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "delta": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/Source-delta-v4.json",
+      "edits": 3,
+      "module_evaluated": false,
+      "source": {
+        "bytes": 38803,
+        "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py",
+        "sha256": "d00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8"
+      },
+      "whole_forward_inverse_AST": true
+    }
+  ],
+  "schema": "ROOT-productive-inventory-work4m-raw-Source-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

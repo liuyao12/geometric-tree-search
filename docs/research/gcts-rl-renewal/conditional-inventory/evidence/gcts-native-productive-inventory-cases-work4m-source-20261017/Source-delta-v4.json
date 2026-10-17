@@ -1,0 +1,51 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "edits": [
+    {
+      "label": "own_VERSION",
+      "new": "VERSION = 'ROOT-native-productive-conditional-inventory-cases-v4-composer-work4m'",
+      "old": "VERSION = 'ROOT-native-productive-conditional-inventory-cases-v3'",
+      "start": 350
+    },
+    {
+      "label": "COMPOSER_VERSION",
+      "new": "COMPOSER_VERSION = 'receptor-family-native-conditional-component-composer-v3-closed-open-slots-work4m'",
+      "old": "COMPOSER_VERSION = 'receptor-family-native-conditional-component-composer-v2-closed-open-slots'",
+      "start": 507
+    },
+    {
+      "label": "COMPOSER_LIMITS_own_work_only",
+      "new": "COMPOSER_LIMITS = {'work': 4000000,",
+      "old": "COMPOSER_LIMITS = {'work': 1000000,",
+      "start": 1081
+    }
+  ],
+  "parent_source": {
+    "bytes": 38780,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+    "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 1283,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/forward.patch",
+      "sha256": "2551f11fbfcc42d0aa22cd9244fd40f2f7effa1aacf3a7ef6a5d0095f7a59fc1"
+    },
+    "full-inverse": {
+      "bytes": 1283,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/full-inverse.patch",
+      "sha256": "1fbb8b9f44b2b06e61c43babffa533f28142192687a6861a882518d4022f9f8f"
+    }
+  },
+  "schema": "native-productive-work-ablation-Source-delta-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 38803,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py",
+    "sha256": "d00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8"
+  },
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_inverse_exact": true
+}

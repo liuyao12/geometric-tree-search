@@ -1,0 +1,81 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "edits": [
+    {
+      "label": "VERSION",
+      "new": "VERSION = 'receptor-family-native-conditional-component-composer-v2-closed-open-slots'",
+      "old": "VERSION = 'receptor-family-native-conditional-component-composer-v1'",
+      "start": 346
+    },
+    {
+      "label": "explicit_two_total_slots",
+      "new": "                  'quantum': 8, 'components': 2}",
+      "old": "                  'quantum': 8, 'components': 1}",
+      "start": 1146
+    },
+    {
+      "label": "fixed_two_slot_limit",
+      "new": "                self.limits[key] = value\n        require(self.limits['components'] == 2, 'LIMITS',\n                'productive allocation requires exactly one closed and one open slot')\n",
+      "old": "                self.limits[key] = value\n",
+      "start": 2833
+    },
+    {
+      "label": "slot_initialization",
+      "new": "    component_names = {}\n    slots = {'closed': None, 'open': None}\n    normal_prefix_finished = False\n",
+      "old": "    component_names = {}\n",
+      "start": 4559
+    },
+    {
+      "label": "retain_first_per_actual_port_class_and_stop_only_both",
+      "new": "                    # Classify only the fully rebuilt native two-member union.\n                    # Other proposals still completed the same census and checks.\n                    slot = 'open' if record['input_ports'] else 'closed'\n                    retain = slots[slot] is None\n                    order.append({'action': 'COMPONENT_SLOT', 'slot': slot,\n                        'component_id': record['component_id'], 'retained': retain,\n                        'identity_preimage': w.copy(record['identity_preimage'])})\n                    if retain:\n                        slots[slot] = record['component_id']\n                        components.append(record)\n                    if all(value is not None for value in slots.values()):break\n                if all(value is not None for value in slots.values()):break\n",
+      "old": "                    components.append(record)\n                    if len(components) >= w.limits['components']:break\n                if len(components) >= w.limits['components']:break\n",
+      "start": 26765
+    },
+    {
+      "label": "normal_prefix_and_goal_distinction",
+      "new": "        normal_prefix_finished = True\n        if all(value is not None for value in slots.values()):\n            status, reason = 'COMPONENT_PROPOSALS', 'CLOSED_AND_OPEN_SLOTS_FILLED'\n        else:\n            missing = [slot for slot, value in slots.items() if value is None]\n            reason = 'SLOT_AVAILABILITY_GAP_WITHIN_DECLARED_PREFIX:'+','.join(missing)\n",
+      "old": "        if components:\n            status, reason = 'COMPONENT_PROPOSALS', 'DECLARED_COMPLETE_COMPONENT_CAP_OR_PREFIX'\n",
+      "start": 28086
+    },
+    {
+      "label": "request_slot_policy",
+      "new": "                    'component_size': 2, 'full_rows': 24, 'rule_order': list(RULES),\n                    'component_slots': {'closed': 1, 'open': 1},\n                    'slot_policy': 'FIRST_CLOSED_AND_FIRST_OPEN_EXTERNAL_INPUT'},",
+      "old": "                    'component_size': 2, 'full_rows': 24, 'rule_order': list(RULES)},",
+      "start": 28875
+    },
+    {
+      "label": "explicit_availability_not_component_invalidity",
+      "new": "        'components': accepted,\n        'slot_availability': {\n            'policy': 'FIRST_CLOSED_AND_FIRST_OPEN_EXTERNAL_INPUT',\n            'observed_component_ids': dict(slots),\n            'missing_slots': [slot for slot, value in slots.items() if value is None],\n            'both_slots_observed': all(value is not None for value in slots.values()),\n            'normal_prefix_finished': normal_prefix_finished,\n            'proposal_goal_complete': status == 'COMPONENT_PROPOSALS' and not dirty,\n            'component_validity_scope': 'RETAINED_RECORD_CHECKS_ARE_LOCAL_NATIVE_UNION_ONLY',\n            'missing_slot_is_component_invalidity': False,\n            'availability_or_useful_transfer_proved': False},\n",
+      "old": "        'components': accepted,\n",
+      "start": 29487
+    }
+  ],
+  "parent_source": {
+    "bytes": 28607,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+    "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 6103,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/forward-v2.patch",
+      "sha256": "d47e0b5546c1122fa809dd725535f23d489216edeba8321b231bc03694343dd4"
+    },
+    "full-inverse": {
+      "bytes": 6103,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/full-inverse-v2.patch",
+      "sha256": "11f2d4f5d95606c682ff15d134306aa9509d6ad51a49a868439ecef98bbe054b"
+    }
+  },
+  "schema": "receptor-native-component-productive-slots-Source-delta-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 30565,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+    "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+  },
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_inverse_exact": true
+}

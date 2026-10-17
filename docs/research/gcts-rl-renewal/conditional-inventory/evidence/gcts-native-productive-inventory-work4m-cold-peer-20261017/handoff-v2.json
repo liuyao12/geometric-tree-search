@@ -1,0 +1,27 @@
+{
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 4003,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-cold-peer-20261017/findings-v2.json",
+    "sha256": "6973756c895b735b3906c36d7578f38f5633c89848200cc9eaf3582c46f09bb9"
+  },
+  "review": {
+    "bytes": 6763,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-cold-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "e5b60839bb0ce4b39dc64d7a290b6715f69f79f65d4ae29ad6b09bfc12e2d067"
+  },
+  "schema": "native-productive-inventory-work4m-cold-peer-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 53368,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/native_productive_inventory_cold_v2.py",
+    "sha256": "7c76001ac0f48156732760d6e74daef87f0b7c67571dc4487936c8718627e197"
+  },
+  "source_contract": {
+    "bytes": 28106,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json",
+    "sha256": "7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985"
+  },
+  "source_only": true
+}

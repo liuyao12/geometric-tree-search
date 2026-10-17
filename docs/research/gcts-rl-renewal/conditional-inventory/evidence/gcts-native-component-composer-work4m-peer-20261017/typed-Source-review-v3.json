@@ -1,0 +1,57 @@
+{
+  "schema": "receptor-family-native-component-composer-productive-slots-typed-Source-review-v3",
+  "scope": "receptor-family-native-component-composer-productive-slots-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "bytes": 30572,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+    "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1"
+  },
+  "source_contract": {
+    "bytes": 16254,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-contract-v3.json",
+    "sha256": "7976d95bc7796a0ff4b523689940c782783b15590f4aea2525aeccf4c15fc30a"
+  },
+  "sources": {
+    "composer": {
+      "bytes": 30572,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+      "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1"
+    }
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored expansion checker4358, marked verifier9fd/marked-aware checker8f and ea300 point ancestry, and whole-reviewed both productive parents. Controls authored this narrow budget successor and composer/host dependencies. This is distinct Source/API/contract review of the explicit ablation, not independent reacceptance of inherited checker mathematics or runtime evidence.",
+  "whole_current_source_API_contract_parent_reviewed": true,
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/handoff-v3.json",
+    "sha256": "186bb543739edcac3d218082ff1b07e4d96b95becabdad1413a86b6d6222016e",
+    "bytes": 2995
+  },
+  "parent_whole_review": {
+    "bytes": 2974,
+    "path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "9046c8f23321159e143617a470f6fe59b9c3bb1f82c0ac110ffcc82d97cc434a"
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/findings-v3.json",
+    "sha256": "a4c315669f7f14dcae9d841c54a0b6fb044791051dab428e6a03c2f4f26cd72a",
+    "bytes": 2563
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/independent-raw-AST-v3.json",
+    "sha256": "acafed71db949263a808c8df873609b2a3d7cbdcc340d11e6dfeefd2abc339ec",
+    "bytes": 3522
+  },
+  "raw_edit_count": 2,
+  "all_named_regions_raw_AST_exact": 20,
+  "actual_patch_directions_verified": 2,
+  "blockers": [],
+  "runtime_qualification_inherited": false,
+  "actual_execution_authorized": false,
+  "runtime_fit": "UNMEASURED"
+}

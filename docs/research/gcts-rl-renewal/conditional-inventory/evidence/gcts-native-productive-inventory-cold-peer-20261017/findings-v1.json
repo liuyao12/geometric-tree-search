@@ -1,0 +1,57 @@
+{
+  "actual_or_result_files_read": false,
+  "checks": {
+    "36_inherited_recursive_regions_raw_AST_exact": true,
+    "both_actual_patch_directions_exact": true,
+    "compile_without_evaluation": true,
+    "current17_input8_vs_original17_input2_epoch_exact": true,
+    "exact_productive_helper_API_and_evidence_schema": true,
+    "native20_512_internal500_once_CodeSeal_exceptional_finalguards_failure55_tail_exact": true,
+    "only_containing_main_changed_two_schema_literals": true,
+    "only_three_helper_refs_change_math_dependencies": true,
+    "same13_phase_protocol_75line850total": true,
+    "same_lossless_JSON_zlib_base64_responsecompletion_final_wire": true,
+    "six_exact_raw_AST_forward_fullinverse": true,
+    "whole_current_source_and_contract_pins": true
+  },
+  "findings": [
+    {
+      "disposition": "PASS",
+      "finding": "Six exact edits update VERSION/SCOPE/purpose, current composer2/miner3/CASE3 refs, contract schema and helper evidence gate only. Every other recursive region is raw/AST exact; current17/input8 remains separate from immutable original17/input2/epoch.",
+      "id": "NPI-CALLER-COMPOSITION"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Whole immediate call/invoke exceptional guards, CodeSeal/strong anchors/native20/internal500MiB reserve and original limits remain exact. Same fixed13 charged phase sites and signed64/builtin writer guard,75Bmaxline/850Btotal; no history or cause inference.",
+      "id": "NPI-CALLER-NATIVE"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Current productive result schema accepted without changing full canonical lossless output/response/completion/final native gates. Original optional failure55 builtin4slot path and exit2 tail are exact; no late census/model callback is added.",
+      "id": "NPI-CALLER-WIRE"
+    },
+    {
+      "disposition": "LIMITATION",
+      "finding": "Reviewer authored composer2/CASE3 and prior host/native/instrumentation ancestry, so this is distinct Root integration/authority/native/wire review only. Diagnosis separate whole CASE peer is required; no own-component self-review or current runtime/native inventory/engine/theorem/transfer/RL/GCTS benefit acceptance.",
+      "id": "NPI-CALLER-SCOPE"
+    }
+  ],
+  "parent_source": {
+    "bytes": 53327,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+    "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+  },
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 53358,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/native_productive_inventory_cold_v1.py",
+    "sha256": "978327235f539b4749ecb2ffbd9c376e7ae178576ccae02da8034c696fac95f9"
+  },
+  "source_contract": {
+    "bytes": 27822,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "4bed060b7c636be461afa9d8c16612c3f58e0abf3c7e4a0acedc43d187745e50"
+  },
+  "source_only": true
+}

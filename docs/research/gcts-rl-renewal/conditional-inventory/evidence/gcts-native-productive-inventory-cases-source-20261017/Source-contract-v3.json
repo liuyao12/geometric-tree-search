@@ -1,0 +1,128 @@
+{
+  "API": {
+    "bytes": 2868,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/API-wire-v3.json",
+    "sha256": "e9488f31d6385e963d0d693215ab9e86fca9ea3875c35fdcba4533c916827f32"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "ROOT-native-productive-inventory-cases-typed-Source-review-v3",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-native-productive-inventory-cases-Source",
+    "source": {
+      "bytes": 38780,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+      "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+    },
+    "source_contract": "current capsule",
+    "source_only": true,
+    "sources": {
+      "cases": {
+        "bytes": 38780,
+        "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+        "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_result_proofword_donor_reads": false,
+  "allocation": {
+    "case_depth": 128,
+    "case_work": 8000000,
+    "composer": {
+      "components": 2,
+      "depth": 128,
+      "extension_advances": 96,
+      "heads_per_rule": 1,
+      "quantum": 8,
+      "root_advances": 48,
+      "work": 1000000
+    },
+    "fragment_priority": "OPEN_INPUT_OUTPUT_FIRST",
+    "miner_per_component": {
+      "cuts": 48,
+      "families": 8,
+      "generalizations_per_cut": 1,
+      "members": 2
+    }
+  },
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_overlap": "Author wrote composer2 and prior host/provider/consumer/native ancestry, not independent self-review. Original CASE author Arithmetic; Root integration/actual ownership separate.",
+  "composer": {
+    "bytes": 30565,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+    "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+  },
+  "composer_contract": {
+    "bytes": 15644,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-contract-v2.json",
+    "sha256": "af6c12cb9f2ad1c2471246992193bce53b8e090ba93e730ddd157e886b1f91b9"
+  },
+  "flow": "compose BOTH/currentcensus; freshcollectALL and full actual portclass; mineALL with explicit interface-coupled catalogue policy; qualifyALL emitted occurrences at original root separately. Full source+rebound independent expansion and direct-native membership/point-union checks preserved. Shared full type census and full descriptor-preimage ledger do not authorize concatenating alternative placements.",
+  "future_scope_gaps": [
+    "No pool usefulness ranking/matched comparison performed.",
+    "No nonidentity receptor transfer, scheduler-authorized consumption, completeengine/runtime qualification or fullproofsearch claim.",
+    "Postbuild coupling metadata remains data; open parameter inferability and utility not promised.",
+    "All setup/construction/check/output costs require separate Root once/native20/512 reviewed caller and grant."
+  ],
+  "integration_design": {
+    "bytes": 4076,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT-productive-integration-design-v1.json",
+    "sha256": "8ec3fd9a5175a5c2cce38e9b38030ce528ba7b057e1053aa73f1dc110054ce3e"
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "miner": {
+    "bytes": 37218,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+    "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+  },
+  "miner_contract": {
+    "bytes": 15343,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-contract-v3.json",
+    "sha256": "47240d73bfc1f5b398c736aca1f4309cca7aecc7ef32ac5e16a0293446e768b3"
+  },
+  "module_import_or_Source_evaluation": false,
+  "operative_parent_contract": {
+    "bytes": 5924,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-contract-v2.json",
+    "sha256": "1c06e87beed7b2c2411c5340496a7b569733e9386f7bfed1b66fc19d8f3b8c75"
+  },
+  "qualification_inherited": false,
+  "result_schema": "ROOT-native-productive-conditional-inventory-evidence-v1",
+  "runtime_fit": "UNMEASURED",
+  "schema": "ROOT-native-productive-inventory-cases-Source-contract-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-native-productive-inventory-cases-Source",
+  "scope_statement": "Source-only staged qualification of two distinct alternative native component unions, closed/open. Original17/input2 model/epoch, six-rule domains and marking unchanged; no supplied receiver/Gamma/BRANCH/route or engine/provider activation. No model shrink, no descriptor/type digest injectivity or duplicate-lemma credit.",
+  "source": {
+    "bytes": 38780,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+    "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+  },
+  "source_delta": {
+    "bytes": 37571,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-delta-v3.json",
+    "sha256": "4d73e1c903a16339252b82e4d30e6338f226fff5d5d6376fbc24e592538f6f27"
+  },
+  "source_only": true,
+  "sources": {
+    "cases": {
+      "bytes": 38780,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+      "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+    }
+  },
+  "static_audit": {
+    "bytes": 1584,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/static-audit-v3.json",
+    "sha256": "fb743305d167547212ff8d6fd13cdcf462dbbb46c444b42d39522218cb91fd42"
+  },
+  "unknown": "ComposerUNKNOWN never yields operative component. Downstream own prefixes keep full available stage arrays and still check every emitted occurrence from complete collections; whole status staysUNKNOWN if any required stage unfinished. Native/malformed/collision errors propagate. No availability/absence/invalidity/proof/gain inference.",
+  "version": "ROOT-native-productive-conditional-inventory-cases-v3"
+}

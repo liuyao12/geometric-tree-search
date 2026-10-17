@@ -1,0 +1,43 @@
+{
+  "broad_runtime_qualification_inherited": false,
+  "checks": [
+    {
+      "delta": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/caller-Source-delta-v1.json",
+      "edits": 6,
+      "module_evaluated": false,
+      "source": {
+        "bytes": 53358,
+        "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/native_productive_inventory_cold_v1.py",
+        "sha256": "978327235f539b4749ecb2ffbd9c376e7ae178576ccae02da8034c696fac95f9"
+      },
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "delta": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-Source-delta-v1.json",
+      "edits": 5,
+      "module_evaluated": false,
+      "source": {
+        "bytes": 21776,
+        "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v1.py",
+        "sha256": "1ae2639876332a11902eba173124ad8143ef80e2b98dc87e8bddc820bb02d206"
+      },
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "delta": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-delta-v3.json",
+      "edits": 10,
+      "module_evaluated": false,
+      "source": {
+        "bytes": 38780,
+        "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+        "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+      },
+      "whole_forward_inverse_AST": true
+    }
+  ],
+  "inherited_original_model_changed": false,
+  "schema": "ROOT-productive-inventory-raw-Source-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

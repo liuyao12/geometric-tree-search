@@ -1,0 +1,46 @@
+{
+  "actual_or_result_files_read": false,
+  "author_identity": "/root",
+  "authorship_disclosure": "Root authored current cold integration; reviewer authored delegated composer2, CASE3, prior host/native and startup instrumentation. This reviews the integration boundary, not own components as independent mathematical peer; Diagnosis CASE review separately required.",
+  "checks": {
+    "all_other_reader_functions_raw_AST_exact": true,
+    "both_actual_patch_directions_exact": true,
+    "compile_without_evaluation": true,
+    "current_literal_contract_and_response_VERSION_match": true,
+    "five_exact_raw_AST_forward_fullinverse": true,
+    "native20_positive55failure512_Date_session_once_exit_concordance_exact": true,
+    "productive_fullpayload_opaque_no_semantic_replay": true,
+    "same13_phase_and_optional4slots_failure_no_cause_inference": true,
+    "same_buffer_pin_parse_and_complete_canonical_lossless_EOF_wire_exact": true,
+    "whole_main_exact_after_four_literal_restorations": true
+  },
+  "concrete_blockers": [],
+  "current_operative_contract": {
+    "bytes": 27822,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "4bed060b7c636be461afa9d8c16612c3f58e0abf3c7e4a0acedc43d187745e50"
+  },
+  "findings": {
+    "bytes": 2944,
+    "path": "/private/tmp/gcts-native-productive-inventory-readout-peer-20261017/findings-v1.json",
+    "sha256": "da6f802e1cacfa024fadbf10eed9cb861c8ad524d179fa92dd5a3dcb6d8c77e9"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "ROOT-native-productive-inventory-saved-reader-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-native-productive-inventory-saved-reader-Source",
+  "source": {
+    "bytes": 21776,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v1.py",
+    "sha256": "1ae2639876332a11902eba173124ad8143ef80e2b98dc87e8bddc820bb02d206"
+  },
+  "source_contract": {
+    "bytes": 1419,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "71d8c0ccea871acd0a87b4afe688cc828e83f756dd2ca3772eb15092fbfcbecb"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "status": "CONDITIONAL_SOURCE_PASS"
+}

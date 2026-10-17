@@ -1,0 +1,91 @@
+{
+  "schema": "receptor-interface-coupled-miner-findings-v3",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "blockers": [],
+  "findings": [
+    {
+      "id": "IC1",
+      "lines": [
+        205,
+        244
+      ],
+      "conclusion": "Full key is exactly kind/native_fragment/formal_names/external_free_names. Native free-name recursion, literal scope and FORMULA/TERM identity are unchanged. No alpha-equating or free/bound conflation; conservative literal shadow handling stays in the unchanged Builder."
+    },
+    {
+      "id": "IC2",
+      "lines": [
+        272,
+        286
+      ],
+      "conclusion": "New probe descends through untracked ancestors even at catalogue capacity and annotates only already-admitted exact keys. No extra key admission, cap expansion or changed native formula domain."
+    },
+    {
+      "id": "IC3",
+      "lines": [
+        288,
+        322
+      ],
+      "conclusion": "OPEN_INPUT_OUTPUT_FIRST ranks explicit source-DAG input occupied=False plus exposed-output shared key, then whole-output FORMULA, descending node count and complete key. Cut-out nodes and occupied source inputs are excluded from explicit-open priority. Input occupancy remains supplied/untrusted and every report says physical_occupancy_verified false."
+    },
+    {
+      "id": "IC4",
+      "lines": [
+        295,
+        297
+      ],
+      "conclusion": "Legacy default catalogue branch reconstructs the exact parent AST/order/occurrence predicate. All constants except VERSION, Builder and32 callable regions are exact. New report cost applies in both modes, so no old finite-work/callback/resource/exception-tail equivalence is claimed."
+    },
+    {
+      "id": "IC5",
+      "lines": [
+        448,
+        488
+      ],
+      "conclusion": "Post-build coupling records actual FORMULA/TERM parameter IDs and complete abstraction locations shared between input/output, separately counting the explicit-open subset. Chosen-fragment result is null for literal variant. Literal shadowing may hide a ranked descendant; no promised coupling, rescue build, full inference or useful receiver follows."
+    },
+    {
+      "id": "IC6",
+      "lines": [
+        516,
+        573
+      ],
+      "conclusion": "Exact-str optional enum preserves old default. Literal is built first; same cut round robin/connectivity, generalization slice, complete-record append and immediate family cap. Own work yields bounded PROPOSALS prefix/UNKNOWN, native callback errors propagate. No scientific admission or pruning enters this structural miner."
+    },
+    {
+      "id": "IC7",
+      "lines": [
+        541,
+        563
+      ],
+      "conclusion": "seen_cuts deduplicates source cuts. family_names preserves the full descriptor-preimage collision ledger: repeated ID requires identical full preimage, but equal descriptor IDs from different cuts can still append extraction records. No global unique/new-family count or hash-injectivity authority is claimed."
+    },
+    {
+      "id": "IC8",
+      "conclusion": "No engine/native/producer/checker module is imported or called. Every later grounding still requires fresh f32e all-port expansion,4358 independent check and4bd6 original/marked membership+whole union. Original17/input2/epoch/fallback/scheduler/rollback remain untouched."
+    }
+  ],
+  "downstream_pending_gates": [
+    "CASEc0d6 hardgates minerV2 and lacks fragment_priority. It also hardgates composerV1/components1/one component. Explicit reviewed CASE successor must handle both closed/open slot identities and partial availability; capsule rebinding alone is insufficient.",
+    "Transfer provider23da and literal providerf4a9 still hardgate minerV2. Later matched VISIBLE_RECEPTOR/LITERAL_GROUND composition needs explicit reviewed version/API updates; no provider is updated here.",
+    "Future cold map/contract/reviews/grant/reader must be freshly rebound while original semantic17/input2 epoch remains separate. No actual authorization or historical runtime outcome transfers.",
+    "Before any future preference acceptance join full original/decorated preimage census from all reached/rejected/partial/no-offer provider/adapter exposures with complete actual engine/public observations; READY-only census is insufficient."
+  ],
+  "required_future_negatives": [
+    "Default ordering versus V2 under complete available work, separately charging additive report cost",
+    "Malformed priority, scope-distinct/free-bound fragments, FORMULA/TERM distinction and whole-output tie behavior",
+    "At-capacity untracked ancestor with tracked interface descendant; no extra key admission",
+    "Cut-out-node input alone is not open occupancy; occupied source input is not open; absent or malformed evidence never promoted",
+    "Post-build shadow interception and actual same-parameter location reporting, with no fabricated coupling",
+    "Literal first/immediate cap/full preimage collision behavior retained",
+    "Own UNKNOWN prefix vs callback/native/guard/collision errors propagate",
+    "Fresh all-port independent/native current-ground admission and full exposure census before preferences; no receiver/target claim"
+  ],
+  "limitations": [
+    "Source-only; no imported/evaluated module/model/helper/checker, tests/enumeration/clock/actual/results/proofword/donor reads. Runtime fit/availability is unmeasured.",
+    "An external cut input can reference a physically occupied node outside the cut. Only explicit supplied source-DAG input occupied=false affects the new ranking; actual receiver occupancy/source/fullkey must later be freshly rebound.",
+    "Tracked-key probe cannot recover keys omitted by catalogue admission. Conservative scoped equality, shadowing and bounded cuts may miss useful generalizations. Additive report work may shorten default finite prefixes.",
+    "Actual shared parameter identity is not complete current-receptor inference, native legality, nonidentity transfer, universal lemma/proof, engine behavior, learned RL policy or timing/gain evidence."
+  ]
+}

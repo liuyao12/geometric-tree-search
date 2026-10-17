@@ -1,0 +1,45 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "edits": [
+    {
+      "label": "own_VERSION",
+      "new": "VERSION = 'receptor-family-native-conditional-component-composer-v3-closed-open-slots-work4m'",
+      "old": "VERSION = 'receptor-family-native-conditional-component-composer-v2-closed-open-slots'",
+      "start": 346
+    },
+    {
+      "label": "DEFAULT_LIMITS_own_work_only",
+      "new": "DEFAULT_LIMITS = {'work': 4000000,",
+      "old": "DEFAULT_LIMITS = {'work': 1000000,",
+      "start": 1018
+    }
+  ],
+  "parent_source": {
+    "bytes": 30565,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+    "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 1044,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/forward.patch",
+      "sha256": "055efcb050605f27b4f3a6a423df2937cd817b4b5e079198d78e722aff69f245"
+    },
+    "full-inverse": {
+      "bytes": 1044,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/full-inverse.patch",
+      "sha256": "d56c19a19d33709d08dd2d2795a3c869f2c091e2d6aed86bf36360bcfc036f21"
+    }
+  },
+  "schema": "native-productive-work-ablation-Source-delta-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 30572,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+    "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1"
+  },
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_inverse_exact": true
+}

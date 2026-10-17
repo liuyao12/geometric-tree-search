@@ -1,0 +1,53 @@
+{
+  "schema": "receptor-family-interface-coupled-miner-typed-Source-review-v3",
+  "scope": "receptor-family-interface-coupled-miner-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/arithmetic_induction",
+  "source": {
+    "bytes": 37218,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+    "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+  },
+  "source_contract": {
+    "bytes": 15343,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-contract-v3.json",
+    "sha256": "47240d73bfc1f5b398c736aca1f4309cca7aecc7ef32ac5e16a0293446e768b3"
+  },
+  "sources": {
+    "miner": {
+      "bytes": 37218,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+    }
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored expansion checker4358, marked verifier9fd, marked-aware checker8f and ea300 point ancestry; reviewed parent minerV2/provider, transfer provider, productive composer and current inventory CASE. Arithmetic authored current minerV3 and original miner/expander/collector ancestry; Controls authored V2 connected-cut selection and native host/provider dependencies. This is a distinct whole miner Source/API review, not self-review of checker mathematics or runtime/lemma acceptance.",
+  "whole_current_source_parent_API_contract_reviewed": true,
+  "source_handoff": {
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/handoff-v3.json",
+    "sha256": "532ba69a23f9cf5f6f795fccec24ddb942dbc4f2468d23ed4371d367cf7cf759",
+    "bytes": 6010
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/findings-v3.json",
+    "sha256": "b2e89a8765f19964c159ecdb5c758a66bf95b8af0223beb4a51c9a7d444cdf64",
+    "bytes": 6049
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/independent-raw-AST-v3.json",
+    "sha256": "a9013314561d4c5f63cd8b6ab9977e464b027e60732265d372a1ff10651473ad",
+    "bytes": 7250
+  },
+  "raw_edit_regions": 7,
+  "unchanged_callable_regions_raw_AST_exact": 32,
+  "actual_patch_directions_verified": 2,
+  "blockers": [],
+  "downstream_composition_qualified": false,
+  "runtime_qualification_inherited": false,
+  "actual_execution_authorized": false,
+  "runtime_fit": "UNMEASURED"
+}

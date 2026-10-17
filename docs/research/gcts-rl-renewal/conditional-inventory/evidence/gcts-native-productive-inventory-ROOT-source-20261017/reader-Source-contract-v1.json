@@ -1,0 +1,28 @@
+{
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 27822,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "4bed060b7c636be461afa9d8c16612c3f58e0abf3c7e4a0acedc43d187745e50"
+  },
+  "operative_parent_contract": {
+    "bytes": 5059,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "148f54b6caa5581e0071a6bb13eb8e485321f507b025c065ffefbc3735db08c6"
+  },
+  "schema": "ROOT-native-productive-inventory-saved-reader-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Same saved-only whole-byte/EOF/native20/512/once/Date/session/lossless/failure reconciliation; current productive Source capsule, response version and helper schema only. No scientific replay or semantic helper evaluation.",
+  "source": {
+    "bytes": 21776,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v1.py",
+    "sha256": "1ae2639876332a11902eba173124ad8143ef80e2b98dc87e8bddc820bb02d206"
+  },
+  "source_delta": {
+    "bytes": 2861,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-Source-delta-v1.json",
+    "sha256": "bc20a7d460b665ebff55c714cb652ba9784650201f220fd0373d2a3703a23521"
+  },
+  "source_only": true
+}

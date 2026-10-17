@@ -1,0 +1,101 @@
+--- before
++++ after
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-native-conditional-component-composer-v2-closed-open-slots'
++VERSION = 'receptor-family-native-conditional-component-composer-v1'
+ RESULT_SCHEMA = 'receptor-family-native-component-composition-v1'
+ POINT_IMPLEMENTATION = 'unit-row-channel4-point-adapter-public-prefix-census-v5'
+ POINT_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'
+@@ -18,7 +18,7 @@
+ RULES = ['axiom', 'assumption', 'instantiate', 'eq_subst', 'mp', 'generalize']
+ DEFAULT_LIMITS = {'work': 1000000, 'depth': 128, 'root_advances': 48,
+                   'extension_advances': 96, 'heads_per_rule': 1,
+-                  'quantum': 8, 'components': 2}
++                  'quantum': 8, 'components': 1}
+ FLAGS = {'proposal_only': True, 'engine_generated_accepted': False,
+          'fact_accepted': False, 'proof_accepted': False,
+          'target_completion_accepted': False, 'frontier_viability_checked': False,
+@@ -67,8 +67,6 @@
+                 require(type(value) is int and 0 < value <= self.limits[key],
+                         'LIMITS', 'positive exact integer not above declared cap')
+                 self.limits[key] = value
+-        require(self.limits['components'] == 2, 'LIMITS',
+-                'productive allocation requires exactly one closed and one open slot')
+ 
+     def step(self, depth=0):
+         try:
+@@ -105,8 +103,6 @@
+     host = binding = marking_check = root = None
+     names, cursors, heads, components, order = {}, [], [], [], []
+     component_names = {}
+-    slots = {'closed': None, 'open': None}
+-    normal_prefix_finished = False
+     root_calls = extension_calls = 0
+     rule_heads = {rule: 0 for rule in RULES}
+     dirty = False
+@@ -433,30 +429,17 @@
+                     holder = insert(item['holder'], tile)
+                     record = component(item['head'], member, holder)
+                     require(not dirty, 'CENSUS', 'no unreconciled cursor boundary before proposal')
+-                    # Classify only the fully rebuilt native two-member union.
+-                    # Other proposals still completed the same census and checks.
+-                    slot = 'open' if record['input_ports'] else 'closed'
+-                    retain = slots[slot] is None
+-                    order.append({'action': 'COMPONENT_SLOT', 'slot': slot,
+-                        'component_id': record['component_id'], 'retained': retain,
+-                        'identity_preimage': w.copy(record['identity_preimage'])})
+-                    if retain:
+-                        slots[slot] = record['component_id']
+-                        components.append(record)
+-                    if all(value is not None for value in slots.values()):break
+-                if all(value is not None for value in slots.values()):break
++                    components.append(record)
++                    if len(components) >= w.limits['components']:break
++                if len(components) >= w.limits['components']:break
+                 if not task['done']:extension_queue.append(item)
+         require(canonical(host_adapter.describe_host(language=language, tick=w.step)) == canonical(host)
+                 and canonical(language.binding) == canonical(binding), 'STABILITY', 'original host unchanged')
+         fresh_marking = point.check_marking(language, w.step)
+         require(canonical(fresh_marking['marking']) == canonical(marking_check['marking']),
+                 'STABILITY', 'full frozen marking unchanged')
+-        normal_prefix_finished = True
+-        if all(value is not None for value in slots.values()):
+-            status, reason = 'COMPONENT_PROPOSALS', 'CLOSED_AND_OPEN_SLOTS_FILLED'
+-        else:
+-            missing = [slot for slot, value in slots.items() if value is None]
+-            reason = 'SLOT_AVAILABILITY_GAP_WITHIN_DECLARED_PREFIX:'+','.join(missing)
++        if components:
++            status, reason = 'COMPONENT_PROPOSALS', 'DECLARED_COMPLETE_COMPONENT_CAP_OR_PREFIX'
+     except _NativeFailure as failure:
+         raise failure.error
+     except _OwnLimit as limit:
+@@ -465,25 +448,13 @@
+     accepted = components if status == 'COMPONENT_PROPOSALS' and not dirty else []
+     return {'schema': RESULT_SCHEMA, 'version': VERSION, 'status': status, 'reason': reason,
+         'request': {'limits': dict(w.limits), 'allocation': 'ALTERNATING_ROOT_EXTENSION_QUANTA',
+-                    'component_size': 2, 'full_rows': 24, 'rule_order': list(RULES),
+-                    'component_slots': {'closed': 1, 'open': 1},
+-                    'slot_policy': 'FIRST_CLOSED_AND_FIRST_OPEN_EXTERNAL_INPUT'},
++                    'component_size': 2, 'full_rows': 24, 'rule_order': list(RULES)},
+         'binding': binding, 'host': host, 'marking_check': marking_check,
+         'root': None if root is None else root['record'], 'heads': heads,
+         'cursor_records': cursors, 'construction_order': order,
+         'global_prototype_census': [[k, v] for k, v in sorted(names.items())],
+         'operative_global_join_complete': status == 'COMPONENT_PROPOSALS' and not dirty,
+         'components': accepted,
+-        'slot_availability': {
+-            'policy': 'FIRST_CLOSED_AND_FIRST_OPEN_EXTERNAL_INPUT',
+-            'observed_component_ids': dict(slots),
+-            'missing_slots': [slot for slot, value in slots.items() if value is None],
+-            'both_slots_observed': all(value is not None for value in slots.values()),
+-            'normal_prefix_finished': normal_prefix_finished,
+-            'proposal_goal_complete': status == 'COMPONENT_PROPOSALS' and not dirty,
+-            'component_validity_scope': 'RETAINED_RECORD_CHECKS_ARE_LOCAL_NATIVE_UNION_ONLY',
+-            'missing_slot_is_component_invalidity': False,
+-            'availability_or_useful_transfer_proved': False},
+         'unaccepted_complete_components': components if not accepted else [],
+         'work': {'steps': w.steps, 'root_advance_calls': root_calls,
+                  'extension_advance_calls': extension_calls, 'retained_heads_by_rule': rule_heads},

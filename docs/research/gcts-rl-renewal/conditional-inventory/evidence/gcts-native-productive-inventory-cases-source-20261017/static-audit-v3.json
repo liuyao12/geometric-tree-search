@@ -1,0 +1,48 @@
+{
+  "checks": {
+    "AST_compile_without_evaluation": true,
+    "all_emitted_occurrences_checked_no_descriptor_digestshortcut": true,
+    "all_other_tophelpers_raw_AST_exact": true,
+    "alternative_point_unions_never_concatenated": true,
+    "both_actualpatches_apply_exact": true,
+    "composer_own1m_full24_48_96_head1_quantum8_fixed2slots": true,
+    "five_unique_phase_sites_not_percomponent": true,
+    "miner3_explicit_OPEN_INPUT_OUTPUT_FIRST": true,
+    "raw_full_AST_inverse": true,
+    "same_case8m_depth128_native_exception_classes": true
+  },
+  "five_phase_literals": [
+    "BEFORE_COMPOSER",
+    "AFTER_COMPOSER",
+    "AFTER_DAG",
+    "AFTER_MINER",
+    "AFTER_QUALIFICATION"
+  ],
+  "module_imported_or_evaluated": false,
+  "schema": "ROOT-native-productive-inventory-cases-static-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 38780,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+    "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+  },
+  "source_delta": {
+    "bytes": 37571,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-delta-v3.json",
+    "sha256": "4d73e1c903a16339252b82e4d30e6338f226fff5d5d6376fbc24e592538f6f27"
+  },
+  "source_only": true,
+  "unchanged_helpers": [
+    "InventoryDataError",
+    "_OwnPrefix",
+    "_NativeFailure",
+    "require",
+    "canonical",
+    "ascii_digest",
+    "_Work",
+    "_key",
+    "_checked_expansion",
+    "_check_source_roundtrip"
+  ]
+}

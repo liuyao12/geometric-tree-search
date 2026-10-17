@@ -1,0 +1,154 @@
+--- source.py
++++ source.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-primitive-DAG-miner-v2-connected-cut-selection'
++VERSION = 'receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue'
+ HOST_SCHEMA = 'receptor-family-host-v1'
+ DAG_SCHEMA = 'receptor-family-primitive-derivation-DAG-v1'
+ RESULT_SCHEMA = 'receptor-family-mining-prefix-v1'
+@@ -269,15 +269,57 @@
+                 exposed.append({'port_id':'o'+str(len(exposed)),'source_node_id':nid,'source_output_ids':labels,'outgoing_uses':self.w.copy(uses)})
+         return members,steps,boundary,edges,exposed
+ 
+-    def catalogue(self,members,boundary):
++    def _probe_interface_fragments(self,a,kind,scope,location,catalog,field,depth=0):
++        # Probe only admitted keys, but never let an untracked ancestor hide an
++        # already catalogued descendant. The old catalogue capacity is unchanged.
++        self.w.step(depth);text=canonical(self.fragment_key(a,kind,scope))
++        if text in catalog:
++            catalog[text]['interface_probe'][field].append(self.w.copy(location))
++        tag=a[0]
++        if kind=='TERM':children=[(t,'TERM',scope,location+[2,i]) for i,t in enumerate(a[2])] if tag=='fun' else []
++        elif tag=='all':children=[(a[2],'FORMULA',set(scope)|{a[1]},location+[2])]
++        elif tag=='eq':children=[(a[i],'TERM',scope,location+[i]) for i in (1,2)]
++        elif tag=='pred':children=[(t,'TERM',scope,location+[2,i]) for i,t in enumerate(a[2])]
++        elif tag=='bot':children=[]
++        else:children=[(f,'FORMULA',scope,location+[i]) for i,f in enumerate(a[1:],1)]
++        for child,child_kind,child_scope,child_loc in children:
++            self._probe_interface_fragments(child,child_kind,child_scope,child_loc,catalog,field,depth+1)
++
++    def catalogue(self,members,boundary,exposed,fragment_priority):
+         catalog={}
+         for b in boundary:self.fragments(b['source']['formula'],'FORMULA',set(),['boundary',b['kind'],b['port_id'],'formula'],catalog)
+         for n in members:
+             self.fragments(n['formula'],'FORMULA',set(),['nodes',n['id'],'formula'],catalog)
+             for k,kind in self.host['rules'][n['rule']]['arguments'].items():
+                 if kind in ('FORMULA','TERM'):self.fragments(n['arguments'][k],kind,set(),['nodes',n['id'],'arguments',k],catalog)
+-        repeated=[v for v in catalog.values() if len(v['occurrences'])>=2]
+-        return sorted(repeated,key=lambda v:(-v['node_count'],canonical({k:v[k] for k in ('kind','native_fragment','formal_names','external_free_names')})))
++        if fragment_priority=='LARGEST_REPEATED_FIRST':
++            repeated=[v for v in catalog.values() if len(v['occurrences'])>=2]
++            return sorted(repeated,key=lambda v:(-v['node_count'],canonical({k:v[k] for k in ('kind','native_fragment','formal_names','external_free_names')})))
++        for entry in catalog.values():
++            self.w.step();entry['interface_probe']={'open_input_occurrences':[],'output_occurrences':[]}
++        for b in boundary:
++            self.w.step()
++            # A cut-out node becomes a conditional descriptor input; that alone
++            # says nothing about physical vacancy. Only explicit source-DAG input
++            # occupancy data is used here, and remains untrusted until rechecked.
++            if b['kind']=='input' and 'input' in b['reference'] and b['source']['occupied'] is False:
++                self._probe_interface_fragments(b['source']['formula'],'FORMULA',set(),
++                    ['boundary','input',b['port_id'],'formula'],catalog,'open_input_occurrences')
++        for p in exposed:
++            self.w.step()
++            self._probe_interface_fragments(self.nodes[p['source_node_id']]['formula'],'FORMULA',set(),
++                ['outputs',p['port_id'],'formula'],catalog,'output_occurrences')
++        repeated=[]
++        for entry in catalog.values():
++            self.w.step();probe=entry['interface_probe']
++            coupled=bool(probe['open_input_occurrences'] and probe['output_occurrences'])
++            probe['open_input_output_coupled']=coupled
++            probe['whole_output_formula']=entry['kind']=='FORMULA' and any(len(p)==3 for p in probe['output_occurrences'])
++            if len(entry['occurrences'])>=2 or coupled:repeated.append(entry)
++        return sorted(repeated,key=lambda v:(
++            0 if v['interface_probe']['open_input_output_coupled'] else 1,
++            0 if v['interface_probe']['open_input_output_coupled'] and v['interface_probe']['whole_output_formula'] else 1,
++            -v['node_count'],canonical({k:v[k] for k in ('kind','native_fragment','formal_names','external_free_names')})))
+ 
+ 
+ class _Builder:
+@@ -398,6 +440,47 @@
+                 'source_DAG_sha256':None,'node_count':None,'work':work.report(),'reason':str(error),'flags':dict(FLAGS)}
+ 
+ 
++def _interface_coupling(graph,boundary,record,fragment_priority):
++    """Describe actual built parameter uses, never template usefulness or facts."""
++    w=graph.w;open_inputs={};input_evidence=[]
++    for b in boundary:
++        w.step()
++        if b['kind']=='input':
++            explicit='input' in b['reference']
++            occupied=b['source']['occupied'] if explicit else None
++            is_open=explicit and occupied is False
++            open_inputs[b['port_id']]=is_open
++            input_evidence.append({'port_id':b['port_id'],'original_reference':w.copy(b['reference']),
++                'source_DAG_input_occupied':occupied,'explicit_open_input':is_open,
++                'physical_occupancy_verified':False})
++    uses={p['id']:{'parameter_id':p['id'],'kind':p['kind'],
++        'input_occurrences':[],'output_occurrences':[],'explicit_open_input_occurrences':[]}
++        for p in record['descriptor']['parameters'] if p['kind'] in ('FORMULA','TERM')}
++    chosen_parameters=set();fragment=record['fragment_generalization']
++    selected_key=None if fragment is None else {k:fragment[k] for k in ('kind','native_fragment','formal_names','external_free_names')}
++    for item in record['abstraction_map']:
++        w.step();pid=item['parameter_id'];loc=item['location'];use=uses[pid]
++        if selected_key is not None and {k:item[k] for k in selected_key}==selected_key:
++            chosen_parameters.add(pid)
++        if len(loc)>=4 and loc[:2]==['boundary','input'] and loc[3]=='formula':
++            use['input_occurrences'].append(w.copy(loc))
++            if open_inputs[loc[2]]:use['explicit_open_input_occurrences'].append(w.copy(loc))
++        elif len(loc)>=3 and loc[0]=='outputs' and loc[2]=='formula':
++            use['output_occurrences'].append(w.copy(loc))
++    coupled=[]
++    for use in uses.values():
++        w.step()
++        if use['input_occurrences'] and use['output_occurrences']:coupled.append(use)
++    open_coupled=[u for u in coupled if u['explicit_open_input_occurrences']]
++    return {'schema':'receptor-family-built-interface-coupling-v1','fragment_priority':fragment_priority,
++        'input_evidence':input_evidence,'coupled_parameters':coupled,
++        'input_output_parameter_count':len(coupled),'explicit_open_input_output_parameter_count':len(open_coupled),
++        'selected_fragment_coupled_after_build':None if fragment is None else any(u['parameter_id'] in chosen_parameters for u in open_coupled),
++        'literal_shadow_abstraction_count':record['costs']['literal_shadow_abstractions'],
++        'scope':'Actual FORMULA/TERM parameter identity and template locations only; source-DAG occupancy is untrusted supplied evidence, not fresh native physical acceptance.',
++        'shadowing_caveat':'Literal binder shadowing may abstract an enclosing formula and hide the chosen descendant; pre-build rank never guarantees post-build coupling, inferability or useful transfer.'}
++
++
+ def _connected_cut(graph, cut):
+     """Only an advisory emission predicate on the full induced primitive DAG.
+ 
+@@ -430,9 +513,11 @@
+     return reached == selected
+ 
+ 
+-def mine_families(*,host,derivation,tick,limits=None,cut_selection='ANY'):
++def mine_families(*,host,derivation,tick,limits=None,cut_selection='ANY',fragment_priority='LARGEST_REPEATED_FIRST'):
+     require(type(cut_selection) is str and cut_selection in ('ANY', 'CONNECTED_AT_LEAST_TWO'),
+             'CUT_SELECTION', 'explicit generic advisory emission policy')
++    require(type(fragment_priority) is str and fragment_priority in ('LARGEST_REPEATED_FIRST','OPEN_INPUT_OUTPUT_FIRST'),
++            'FRAGMENT_PRIORITY', 'explicit generic advisory catalogue order')
+     work=_Work(tick,limits);families=[];attempts=0;duplicates=0;request=None
+     reason='finite declared DAG/cut/fragment prefix ended; no substitution or family exhaustion claim'
+     try:
+@@ -462,12 +547,13 @@
+                 members,steps,boundary,edges,exposed=graph.cut(state['anchor'],cut)
+                 def variants():
+                     yield None  # Complete literal record retained before optional catalogue work.
+-                    yield from graph.catalogue(members,boundary)[:work.limits['generalizations_per_cut']]
++                    yield from graph.catalogue(members,boundary,exposed,fragment_priority)[:work.limits['generalizations_per_cut']]
+                 for fragment in variants():
+                     work.step()
+                     if len(families)>=work.limits['families']:
+                         reason='finite family proposal prefix bound; no exhaustion claim';stopped=True;break
+                     record=_Builder(graph,fragment).build(state['anchor'],members,steps,boundary,edges,exposed)
++                    record['costs']['interface_coupling']=_interface_coupling(graph,boundary,record,fragment_priority)
+                     if fragment is not None and record['costs']['actual_repeated_abstractions']==0:
+                         continue  # Conservative shadow fallback can hide a selected catalogue fragment.
+                     fid=record['family_id'];pre=canonical(record['family_preimage'])
+@@ -481,4 +567,4 @@
+     return {'schema':RESULT_SCHEMA,'version':VERSION,'status':'PROPOSALS' if families else 'UNKNOWN',
+             'request':request,'families':families,'cut_attempts':attempts,'duplicate_cuts':duplicates,
+             'mining_complete':False,'work':work.report(),
+-            'reason':'cut_selection='+cut_selection+'; '+reason,'flags':dict(FLAGS)}
++            'reason':'cut_selection='+cut_selection+'; fragment_priority='+fragment_priority+'; '+reason,'flags':dict(FLAGS)}

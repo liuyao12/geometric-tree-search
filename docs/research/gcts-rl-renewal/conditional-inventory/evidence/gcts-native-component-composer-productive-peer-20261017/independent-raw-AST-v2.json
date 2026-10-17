@@ -1,0 +1,98 @@
+{
+  "schema": "receptor-native-component-productive-slots-independent-raw-AST-v2",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "references": {
+    "source": {
+      "bytes": 30565,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+      "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+    },
+    "source_contract": {
+      "bytes": 15644,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-contract-v2.json",
+      "sha256": "af6c12cb9f2ad1c2471246992193bce53b8e090ba93e730ddd157e886b1f91b9"
+    },
+    "API_wire": {
+      "bytes": 3186,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/API-wire-v2.json",
+      "sha256": "4e663e7eacc64f1d763c34b319e07aa5915342109bb4bddb0ffdaec119afbff5"
+    },
+    "source_delta": {
+      "bytes": 5403,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-delta-v2.json",
+      "sha256": "0745f886f6d017e0c9cf8df00f2d9d9c913b216b059699a9b48014861f920d41"
+    },
+    "static_audit": {
+      "bytes": 2842,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/static-audit-v2.json",
+      "sha256": "6cfcba289850a90cb6876fd2189f8cf022d30e437d18de85417310d5491eae83"
+    },
+    "patch_forward": {
+      "bytes": 6103,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/forward-v2.patch",
+      "sha256": "d47e0b5546c1122fa809dd725535f23d489216edeba8321b231bc03694343dd4"
+    },
+    "patch_full-inverse": {
+      "bytes": 6103,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/full-inverse-v2.patch",
+      "sha256": "11f2d4f5d95606c682ff15d134306aa9509d6ad51a49a868439ecef98bbe054b"
+    },
+    "base_legality_Source": {
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "bytes": 27553
+    },
+    "native_fallback_Source": {
+      "path": "/private/tmp/gcts-proof-search-next-step-source-20261017/reviewed_unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "bytes": 24227
+    }
+  },
+  "parent_source": {
+    "bytes": 28607,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+    "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+  },
+  "checks": {
+    "whole_source_API_contract_and_operative_parent_read": true,
+    "all8_sequential_raw_forward_inverse_exact": true,
+    "whole_AST_inverse_exact": true,
+    "actual_forward_inverse_patch_application_exact": true,
+    "17_existing_regions_raw_AST_exact": true,
+    "only_Work_init_and_containing_compose_changed": true,
+    "all_noncomponent_caps_exact": true,
+    "original_binding_model_inputs_dependencies_exact": true,
+    "RULES_FLAGS_other_protocol_versions_exact": true,
+    "public_signature_exact": true,
+    "no_engine_place_decision_search_checkpoint_rollback": true,
+    "AST_compile_without_evaluation": true
+  },
+  "unchanged_regions": [
+    "ComposerDataError",
+    "ComposerDataError.__init__",
+    "_OwnLimit",
+    "_NativeFailure",
+    "_NativeFailure.__init__",
+    "require",
+    "canonical",
+    "digest",
+    "_Work.step",
+    "_Work.copy",
+    "compose_components.merge",
+    "compose_components.state_record",
+    "compose_components.insert",
+    "compose_components.export_cursor",
+    "compose_components.open_task",
+    "compose_components.advance",
+    "compose_components.component"
+  ],
+  "changed_regions": [
+    "_Work",
+    "_Work.__init__",
+    "compose_components"
+  ],
+  "no_scientific_module_helper_or_clock_execution": true,
+  "no_actual_result_donor_proofword_reads": true
+}

@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "ALL_existing_named_regions_raw_AST_exact": true,
+    "AST_compile_without_evaluation": true,
+    "all_scientific_native_census_slot_UNKNOWN_or_stage_validation_bodies_unchanged": true,
+    "both_actualpatch_directions_exact": true,
+    "exact_declared_literal_edit_count": 3,
+    "whole_raw_AST_inverse": true
+  },
+  "project_module_imported_or_evaluated": false,
+  "schema": "native-productive-work-ablation-static-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 38803,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py",
+    "sha256": "d00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8"
+  },
+  "source_delta": {
+    "bytes": 2003,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/Source-delta-v4.json",
+    "sha256": "94f929d5ac036fafa83d39e516e749e3575d1ef33ae9587f1e1f020e117fa8d0"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    "InventoryDataError",
+    "_OwnPrefix",
+    "_NativeFailure",
+    "_NativeFailure.__init__",
+    "require",
+    "canonical",
+    "ascii_digest",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "_Work.copy",
+    "_key",
+    "_checked_expansion",
+    "_check_source_roundtrip",
+    "run_inventory",
+    "run_inventory.signal",
+    "run_inventory.merge",
+    "run_inventory.merge_tile",
+    "run_inventory.merge_states",
+    "run_inventory.finish"
+  ]
+}

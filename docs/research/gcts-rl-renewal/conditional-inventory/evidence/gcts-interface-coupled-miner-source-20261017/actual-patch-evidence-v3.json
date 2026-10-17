@@ -1,0 +1,54 @@
+{
+  "forward": {
+    "command": "patch -s -F0 <copied-parent.py> <saved-forward.patch>",
+    "exact_current_AST": true,
+    "exact_current_bytes": true,
+    "exit_code": 0,
+    "output": {
+      "bytes": 37218,
+      "path": "/private/tmp/gcts-interface-miner-v3-actual-patch-check/forward.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+    },
+    "stderr": "",
+    "stdout": ""
+  },
+  "forward_patch": {
+    "bytes": 10514,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v2-to-v3.forward.patch",
+    "sha256": "520735538a7ed245fe285b8364e067a3db5feff32e958aac68e34f6c7168ed7e"
+  },
+  "full_original_sources_unchanged": true,
+  "inverse": {
+    "command": "patch -s -F0 <copied-current.py> <saved-inverse.patch>",
+    "exact_parent_AST": true,
+    "exact_parent_bytes": true,
+    "exit_code": 0,
+    "output": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-interface-miner-v3-actual-patch-check/inverse.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "stderr": "",
+    "stdout": ""
+  },
+  "inverse_patch": {
+    "bytes": 10514,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v3-to-v2.inverse.patch",
+    "sha256": "31cda174b52a8c1d2287bdd83709cd2faf6238af5e3b1df5b15ddb7d426fda4e"
+  },
+  "module_evaluation": false,
+  "parent": {
+    "bytes": 30862,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+    "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+  },
+  "schema": "receptor-family-interface-miner-actual-text-patch-evidence-v3",
+  "scientific_calls": 0,
+  "scope": "Real Unix text patch application to static byte copies only. This is not execution or testing of any miner function, fixture or model.",
+  "source": {
+    "bytes": 37218,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+    "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+  },
+  "source_only": true
+}

@@ -1,0 +1,68 @@
+{
+  "API": {
+    "mine_families": "(*,host,derivation,tick,limits=None,cut_selection='ANY',fragment_priority='LARGEST_REPEATED_FIRST')",
+    "registry_or_model_changes": null,
+    "validate_derivation": "(*,host,derivation,tick,limits=None), unchanged body; new module VERSION reported"
+  },
+  "fragment_priority": {
+    "LARGEST_REPEATED_FIRST": "Same original catalogue admission/traversal, repeated-occurrence predicate and (-node_count, complete scoped key) order. Additive post-build reporting costs apply in both modes; no historical work-prefix equivalence.",
+    "OPEN_INPUT_OUTPUT_FIRST": {
+      "admission": "Same bounded catalogue keys, no extra fragment admission. Independently traverse explicit-open source-DAG input and exposed-output formula trees and update only already catalogued keys, descending below untracked ancestors even at capacity.",
+      "eligibility": "Old repeated occurrence count >=2 OR tracked key actually probed at both an explicit-open source input and exposed output.",
+      "key": [
+        "kind",
+        "native_fragment",
+        "formal_names",
+        "external_free_names"
+      ],
+      "lexicographic_rank": [
+        "explicit-open input/output shared key first",
+        "within coupled entries, FORMULA equal to whole exposed output first",
+        "descending complete native subtree node_count",
+        "canonical complete scoped fragment key"
+      ],
+      "open_input_evidence": "Only a cut boundary whose original_reference is an actual source-DAG input and whose supplied occupied field is literal false. A cut-out node or conditional input alone is insufficient. This is supplied structural evidence, not fresh physical/native authority.",
+      "scope": "No alpha-equating or free/bound-name conflation; FORMULA and TERM remain distinct. Root input and output probes start in empty lexical scope; all-binders extend native-name scope."
+    },
+    "default": "LARGEST_REPEATED_FIRST",
+    "enum": [
+      "LARGEST_REPEATED_FIRST",
+      "OPEN_INPUT_OUTPUT_FIRST"
+    ],
+    "invalid": "Exact str enum or MiningDataError(code=FRAGMENT_PRIORITY); callback/native errors never converted to own UNKNOWN."
+  },
+  "native_obligations": "Fresh f32e all-port expansion + independent4358 full check + native4bd6 membership/point-union admission remain mandatory per actual grounding; no learned restriction, pruning, degree/EOF or search authority.",
+  "outcomes": "Inherited PROPOSALS if any complete retained records, otherwise UNKNOWN. mining_complete always false. Own finite work/depth gives only bounded proposal prefix; all broad FLAGS remain exact V2 false/proposal-only values.",
+  "post_build_metadata": {
+    "coupled_parameters": "Only actual built FORMULA/TERM parameter IDs occurring in input templates and exposed output templates, with full ordered abstraction locations and separate explicit-open subset. Never use pre-build rank as proof of coupling.",
+    "fields": [
+      "fragment_priority",
+      "input_evidence",
+      "coupled_parameters",
+      "input_output_parameter_count",
+      "explicit_open_input_output_parameter_count",
+      "selected_fragment_coupled_after_build",
+      "literal_shadow_abstraction_count",
+      "scope",
+      "shadowing_caveat"
+    ],
+    "location": "families[*].costs.interface_coupling",
+    "nulls": "source_DAG_input_occupied=null for cut-out-node inputs; selected_fragment_coupled_after_build=null for literal variant, even when conservative literal-shadow abstractions exist.",
+    "physical_caveat": "physical_occupancy_verified=false in every input evidence entry. Actual root/current occupancy must be independently rebound later.",
+    "schema": "receptor-family-built-interface-coupling-v1",
+    "shadowing_caveat": "LITERAL_BINDER_SHADOWING may abstract an enclosing expression and hide selected descendants. No promise of post-build coupling, full environment inference, useful transfer or theorem validity."
+  },
+  "retention": {
+    "caps": "All DEFAULT_LIMITS exact V2; advisory same generalizations_per_cut slice, immediate family cap and round-robin cuts preserved. No extra build-and-rerank/rescue work.",
+    "full_preimage_dedup": "Same ID requires same full descriptor family_preimage; no hash-injectivity assumption.",
+    "literal_first": true,
+    "wire": "Existing RESULT/EXTRACTION/descriptor schemas and record top-level fields unchanged. reason adds fragment_priority. New costs.interface_coupling metadata; optional newmode fragment_generalization.interface_probe."
+  },
+  "schema": "receptor-family-interface-coupled-miner-API-v3",
+  "source": {
+    "bytes": 37218,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+    "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+  },
+  "version": "receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue"
+}

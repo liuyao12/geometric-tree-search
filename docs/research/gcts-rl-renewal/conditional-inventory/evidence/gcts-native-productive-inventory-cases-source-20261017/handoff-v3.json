@@ -1,0 +1,69 @@
+{
+  "API": {
+    "bytes": 2868,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/API-wire-v3.json",
+    "sha256": "e9488f31d6385e963d0d693215ab9e86fca9ea3875c35fdcba4533c916827f32"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "ROOT-native-productive-inventory-cases-typed-Source-review-v3",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-native-productive-inventory-cases-Source",
+    "source": {
+      "bytes": 38780,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+      "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+    },
+    "source_contract": {
+      "bytes": 6576,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-contract-v3.json",
+      "sha256": "c8a9a14f7e18ebb0b2d2b1007b84e58e2fe191c6c34ba51e2db8db7904452c13"
+    },
+    "source_only": true,
+    "sources": {
+      "cases": {
+        "bytes": 38780,
+        "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+        "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_patches": {
+    "forward": {
+      "bytes": 36050,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/forward-v3.patch",
+      "sha256": "2c0e239ab91c68e0bffad0a0a208cc01ce6dd658ea14bdff8c2cdcacae7cfc6e"
+    },
+    "full-inverse": {
+      "bytes": 35974,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/full-inverse-v3.patch",
+      "sha256": "2ee39ca5af3b4802626fac9d43f74ebc34d6e2ea67782e2776733e0a3c342139"
+    }
+  },
+  "schema": "ROOT-native-productive-inventory-cases-handoff-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 38780,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+    "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+  },
+  "source_contract": {
+    "bytes": 6576,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-contract-v3.json",
+    "sha256": "c8a9a14f7e18ebb0b2d2b1007b84e58e2fe191c6c34ba51e2db8db7904452c13"
+  },
+  "source_delta": {
+    "bytes": 37571,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-delta-v3.json",
+    "sha256": "4d73e1c903a16339252b82e4d30e6338f226fff5d5d6376fbc24e592538f6f27"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 1584,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/static-audit-v3.json",
+    "sha256": "fb743305d167547212ff8d6fd13cdcf462dbbb46c444b42d39522218cb91fd42"
+  }
+}

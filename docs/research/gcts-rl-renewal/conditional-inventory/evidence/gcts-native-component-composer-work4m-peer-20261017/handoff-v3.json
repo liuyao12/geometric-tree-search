@@ -1,0 +1,27 @@
+{
+  "schema": "native-productive-work4m-independent-handoff-v3",
+  "role": "composer",
+  "typed_review": {
+    "path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/typed-Source-review-v3.json",
+    "sha256": "3dcefa7b79f3980db755d8a8812c925d681f25b85c6a0559f7557c29637ba8f4",
+    "bytes": 2844
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/findings-v3.json",
+    "sha256": "a4c315669f7f14dcae9d841c54a0b6fb044791051dab428e6a03c2f4f26cd72a",
+    "bytes": 2563
+  },
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/independent-raw-AST-v3.json",
+    "sha256": "acafed71db949263a808c8df873609b2a3d7cbdcc340d11e6dfeefd2abc339ec",
+    "bytes": 3522
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/handoff-v3.json",
+    "sha256": "186bb543739edcac3d218082ff1b07e4d96b95becabdad1413a86b6d6222016e",
+    "bytes": 2995
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false
+}

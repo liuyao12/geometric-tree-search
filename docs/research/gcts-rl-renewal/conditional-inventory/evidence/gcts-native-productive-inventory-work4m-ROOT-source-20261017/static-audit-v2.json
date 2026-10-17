@@ -1,0 +1,24 @@
+{
+  "actual_patch_both_directions": true,
+  "all_caller_function_class_regions_raw_AST_exact": true,
+  "caller_edits": 2,
+  "compile_without_evaluation": true,
+  "only_three_current_Source_roles_changed": true,
+  "original_full_model_inputs_native_limits_and_case_limit_unchanged": true,
+  "reader": {
+    "bytes": 21790,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v2.py",
+    "sha256": "1f4ae893cd2811328f73726a97ee84e4ccc48f1706cfdfc2c3c7536fcb4b29d9"
+  },
+  "reader_edits": 2,
+  "schema": "ROOT-native-productive-inventory-work4m-static-audit-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 53368,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/native_productive_inventory_cold_v2.py",
+    "sha256": "7c76001ac0f48156732760d6e74daef87f0b7c67571dc4487936c8718627e197"
+  },
+  "source_only": true,
+  "whole_forward_inverse_AST": true
+}

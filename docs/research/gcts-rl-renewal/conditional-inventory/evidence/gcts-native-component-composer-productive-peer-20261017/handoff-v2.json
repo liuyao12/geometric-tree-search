@@ -1,0 +1,26 @@
+{
+  "schema": "receptor-native-component-productive-slots-independent-handoff-v2",
+  "typed_review": {
+    "path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "9046c8f23321159e143617a470f6fe59b9c3bb1f82c0ac110ffcc82d97cc434a",
+    "bytes": 2974
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/findings-v2.json",
+    "sha256": "6b27551fe23cb875107179c269e1c44ed4cd1199ec86bf5753f8d461cf7f02fe",
+    "bytes": 7147
+  },
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-component-composer-productive-peer-20261017/independent-raw-AST-v2.json",
+    "sha256": "566f5b05ab759147aaa8648faff231e1851c78e001ea518abe0281c3a312a39f",
+    "bytes": 3992
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/handoff-v2.json",
+    "sha256": "e7e6b528c869a9a14dd5f9567fec84593ae9cedb50b5c18f0ab49bd592b558cd",
+    "bytes": 3443
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false
+}

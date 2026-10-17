@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "ALL_existing_named_regions_raw_AST_exact": true,
+    "AST_compile_without_evaluation": true,
+    "all_scientific_native_census_slot_UNKNOWN_or_stage_validation_bodies_unchanged": true,
+    "both_actualpatch_directions_exact": true,
+    "exact_declared_literal_edit_count": 2,
+    "whole_raw_AST_inverse": true
+  },
+  "project_module_imported_or_evaluated": false,
+  "schema": "native-productive-work-ablation-static-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 30572,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+    "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1"
+  },
+  "source_delta": {
+    "bytes": 1722,
+    "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-delta-v3.json",
+    "sha256": "996d779d99a2cc886ac01dbae8d8470ab51198d6ec95a27fe2cc8ca329957f6e"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    "ComposerDataError",
+    "ComposerDataError.__init__",
+    "_OwnLimit",
+    "_NativeFailure",
+    "_NativeFailure.__init__",
+    "require",
+    "canonical",
+    "digest",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "_Work.copy",
+    "compose_components",
+    "compose_components.merge",
+    "compose_components.state_record",
+    "compose_components.insert",
+    "compose_components.export_cursor",
+    "compose_components.open_task",
+    "compose_components.advance",
+    "compose_components.component"
+  ]
+}

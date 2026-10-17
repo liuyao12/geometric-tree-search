@@ -1,0 +1,272 @@
+{
+  "AST_parse": true,
+  "actual_or_result_or_donor_reads": false,
+  "callables": {
+    "added": [
+      "_Graph._probe_interface_fragments",
+      "_interface_coupling"
+    ],
+    "changed": [
+      {
+        "current_line": 288,
+        "name": "_Graph.catalogue",
+        "parent_line": 272
+      },
+      {
+        "current_line": 516,
+        "name": "mine_families",
+        "parent_line": 433
+      },
+      {
+        "current_line": 548,
+        "name": "mine_families.variants",
+        "parent_line": 463
+      }
+    ],
+    "removed": [],
+    "unchanged": [
+      {
+        "current_line": 27,
+        "name": "MiningDataError.__init__",
+        "parent_line": 27
+      },
+      {
+        "current_line": 326,
+        "name": "_Builder.__init__",
+        "parent_line": 284
+      },
+      {
+        "current_line": 337,
+        "name": "_Builder.abstract",
+        "parent_line": 295
+      },
+      {
+        "current_line": 375,
+        "name": "_Builder.argument",
+        "parent_line": 333
+      },
+      {
+        "current_line": 382,
+        "name": "_Builder.build",
+        "parent_line": 340
+      },
+      {
+        "current_line": 353,
+        "name": "_Builder.chosen",
+        "parent_line": 311
+      },
+      {
+        "current_line": 357,
+        "name": "_Builder.template",
+        "parent_line": 315
+      },
+      {
+        "current_line": 330,
+        "name": "_Builder.variable",
+        "parent_line": 288
+      },
+      {
+        "current_line": 37,
+        "name": "_CallbackFailure.__init__",
+        "parent_line": 37
+      },
+      {
+        "current_line": 100,
+        "name": "_Graph.__init__",
+        "parent_line": 100
+      },
+      {
+        "current_line": 149,
+        "name": "_Graph._host",
+        "parent_line": 149
+      },
+      {
+        "current_line": 188,
+        "name": "_Graph.argument",
+        "parent_line": 188
+      },
+      {
+        "current_line": 246,
+        "name": "_Graph.cut",
+        "parent_line": 246
+      },
+      {
+        "current_line": 214,
+        "name": "_Graph.fragment_key",
+        "parent_line": 214
+      },
+      {
+        "current_line": 219,
+        "name": "_Graph.fragments",
+        "parent_line": 219
+      },
+      {
+        "current_line": 205,
+        "name": "_Graph.free",
+        "parent_line": 205
+      },
+      {
+        "current_line": 194,
+        "name": "_Graph.gamma",
+        "parent_line": 194
+      },
+      {
+        "current_line": 167,
+        "name": "_Graph.native",
+        "parent_line": 167
+      },
+      {
+        "current_line": 198,
+        "name": "_Graph.resolve",
+        "parent_line": 198
+      },
+      {
+        "current_line": 237,
+        "name": "_Graph.size",
+        "parent_line": 237
+      },
+      {
+        "current_line": 70,
+        "name": "_Work.__init__",
+        "parent_line": 70
+      },
+      {
+        "current_line": 88,
+        "name": "_Work.copy",
+        "parent_line": 88
+      },
+      {
+        "current_line": 95,
+        "name": "_Work.report",
+        "parent_line": 95
+      },
+      {
+        "current_line": 79,
+        "name": "_Work.step",
+        "parent_line": 79
+      },
+      {
+        "current_line": 484,
+        "name": "_connected_cut",
+        "parent_line": 401
+      },
+      {
+        "current_line": 46,
+        "name": "canonical",
+        "parent_line": 46
+      },
+      {
+        "current_line": 51,
+        "name": "digest",
+        "parent_line": 51
+      },
+      {
+        "current_line": 64,
+        "name": "ident",
+        "parent_line": 64
+      },
+      {
+        "current_line": 55,
+        "name": "keys",
+        "parent_line": 55
+      },
+      {
+        "current_line": 59,
+        "name": "name",
+        "parent_line": 59
+      },
+      {
+        "current_line": 41,
+        "name": "require",
+        "parent_line": 41
+      },
+      {
+        "current_line": 430,
+        "name": "validate_derivation",
+        "parent_line": 388
+      }
+    ],
+    "unchanged_count": 32
+  },
+  "checks": [
+    {
+      "evidence": "Verified full SHA/length of frozen V2 and V3 raw bytes.",
+      "id": "IM01",
+      "passed": true
+    },
+    {
+      "evidence": "All seven author raw regions apply uniquely forward/reverse; full bytes and whole AST recover frozen parent.",
+      "id": "IM02",
+      "passed": true
+    },
+    {
+      "evidence": "Only hashlib/json Source imports remain; generated code object discarded, module never imported/evaluated.",
+      "id": "IM03",
+      "passed": true
+    },
+    {
+      "evidence": "DEFAULT_LIMITS, FLAGS, full _Work/native/argument/Gamma/ref/free/fragment-key/old catalogue fragments/size/cut/_Builder/_connected_cut/validate_derivation bodies unchanged.",
+      "id": "IM04",
+      "passed": true
+    },
+    {
+      "evidence": "Default catalogue early branch is the exact old repeated predicate/sort. No new interface probe in default branch.",
+      "id": "IM05",
+      "passed": true
+    },
+    {
+      "evidence": "New probe descends every native constructor independent of catalogue admission while adding occurrences only to existing full keys.",
+      "id": "IM06",
+      "passed": true
+    },
+    {
+      "evidence": "New priority guards original input reference plus literal occupied=False; cut-out node and hypothesis are not open evidence.",
+      "id": "IM07",
+      "passed": true
+    },
+    {
+      "evidence": "Full scoped keys include kind/native_fragment/formal_names/external_free_names; no alpha normalization or hash-only equality.",
+      "id": "IM08",
+      "passed": true
+    },
+    {
+      "evidence": "_Builder is raw/AST identical. Actual post-build map reports reused declared FORMULA/TERM parameter IDs and real location subsets, not catalogue prediction.",
+      "id": "IM09",
+      "passed": true
+    },
+    {
+      "evidence": "Literal-first yield, generalization slice, cut queue, connected filter, full preimage collision check, and immediate familycap stay unchanged outside declared signature/call/report/reason regions.",
+      "id": "IM10",
+      "passed": true
+    },
+    {
+      "evidence": "Own work is cumulative; probe/report steps and copies use same _Work. No new exception catches or callback suppression.",
+      "id": "IM11",
+      "passed": true
+    },
+    {
+      "evidence": "No downstream CASE, composer, provider, matcher, checker, adapter, model, scheduler, native window, original epoch or fallback Source changed.",
+      "id": "IM12",
+      "passed": true
+    }
+  ],
+  "compile_without_evaluation": true,
+  "exact_edit_regions": 7,
+  "limitations": "Author static evidence, not independent Source review or runtime/native fit/transfer/lemma qualification. Post-build metadata and optional probing can change bounded output prefix/callback counts. Actual shell patch application evidence is recorded separately after applying the saved patches to byte copies.",
+  "parent": {
+    "bytes": 30862,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+    "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+  },
+  "raw_forward_and_inverse": true,
+  "schema": "receptor-family-interface-miner-static-audit-v3",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 37218,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+    "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+  },
+  "source_evaluated": false,
+  "tests_or_fixtures_executed": false,
+  "whole_AST_inverse": true
+}

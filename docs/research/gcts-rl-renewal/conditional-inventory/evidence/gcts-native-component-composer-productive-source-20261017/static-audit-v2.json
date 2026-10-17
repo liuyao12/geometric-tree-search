@@ -1,0 +1,119 @@
+{
+  "changed_existing_regions": [
+    "_Work",
+    "_Work.__init__",
+    "compose_components"
+  ],
+  "checks": {
+    "AST_compile_without_evaluation": true,
+    "actual_forward_fullinverse_patch_application": true,
+    "all_native_candidate_membership_union_collision_public_census_helpers_raw_AST_exact": true,
+    "no_engine_search_place_decision_calls": true,
+    "old_noncomponent_caps_exact": true,
+    "only_Work_init_and_containing_compose_changes_existing_regions": true,
+    "original_RULES_FLAGS_and_allpublicversions_exact": true,
+    "whole8edit_raw_and_AST_inverse": true
+  },
+  "project_module_imported_or_evaluated": false,
+  "schema": "receptor-native-component-productive-slots-static-audit-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 30565,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+    "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+  },
+  "source_delta": {
+    "bytes": 5403,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-delta-v2.json",
+    "sha256": "0745f886f6d017e0c9cf8df00f2d9d9c913b216b059699a9b48014861f920d41"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    {
+      "end_line": 34,
+      "line": 31,
+      "name": "ComposerDataError"
+    },
+    {
+      "end_line": 34,
+      "line": 32,
+      "name": "ComposerDataError.__init__"
+    },
+    {
+      "end_line": 38,
+      "line": 37,
+      "name": "_OwnLimit"
+    },
+    {
+      "end_line": 43,
+      "line": 41,
+      "name": "_NativeFailure"
+    },
+    {
+      "end_line": 43,
+      "line": 42,
+      "name": "_NativeFailure.__init__"
+    },
+    {
+      "end_line": 48,
+      "line": 46,
+      "name": "require"
+    },
+    {
+      "end_line": 53,
+      "line": 51,
+      "name": "canonical"
+    },
+    {
+      "end_line": 57,
+      "line": 56,
+      "name": "digest"
+    },
+    {
+      "end_line": 80,
+      "line": 73,
+      "name": "_Work.step"
+    },
+    {
+      "end_line": 91,
+      "line": 82,
+      "name": "_Work.copy"
+    },
+    {
+      "end_line": 129,
+      "line": 114,
+      "name": "compose_components.merge"
+    },
+    {
+      "end_line": 154,
+      "line": 131,
+      "name": "compose_components.state_record"
+    },
+    {
+      "end_line": 175,
+      "line": 156,
+      "name": "compose_components.insert"
+    },
+    {
+      "end_line": 223,
+      "line": 177,
+      "name": "compose_components.export_cursor"
+    },
+    {
+      "end_line": 251,
+      "line": 225,
+      "name": "compose_components.open_task"
+    },
+    {
+      "end_line": 319,
+      "line": 253,
+      "name": "compose_components.advance"
+    },
+    {
+      "end_line": 368,
+      "line": 321,
+      "name": "compose_components.component"
+    }
+  ]
+}

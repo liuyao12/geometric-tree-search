@@ -1,0 +1,52 @@
+{
+  "ablation": "Only ownVERSION/composerVERSION/COMPOSER_LIMITS.work1m\u21924m change. Same CASE8m/depth128, miner3 OPEN_INPUT_OUTPUT_FIRST, all staged arrays/all emitted fresh checks/native tick/UNKNOWN semantics. Native20/512 unchanged outside this module.",
+  "allocation": {
+    "case_depth": 128,
+    "case_work": 8000000,
+    "composer": {
+      "components": 2,
+      "depth": 128,
+      "extension_advances": 96,
+      "heads_per_rule": 1,
+      "quantum": 8,
+      "root_advances": 48,
+      "work": 4000000
+    },
+    "fragment_priority": "OPEN_INPUT_OUTPUT_FIRST",
+    "miner_per_component": {
+      "cuts": 48,
+      "families": 8,
+      "generalizations_per_cut": 1,
+      "members": 2
+    }
+  },
+  "error_scope": "Only own CASE8m/depth128 prefix becomesUNKNOWN through existing guarded finish; native/callback/guard/malformed/collision errors propagate unchanged.",
+  "phase_order": [
+    "BEFORE_COMPOSER",
+    "AFTER_COMPOSER",
+    "AFTER_DAG",
+    "AFTER_MINER",
+    "AFTER_QUALIFICATION"
+  ],
+  "phase_scope": "Each site occurs once, outside all component/extraction loops. Early UNKNOWN/own-bound/native interruption may truncate this ordered subsequence; no repeated stage labels.",
+  "result_arrays": {
+    "census": "one global full original/decorated ID-preimage census across all alternative exposures/checks, never an aggregate point union",
+    "collections": "encounter-order [{component_index,component_id,slot,component_origin,collection,status}] independently checked per alternative",
+    "components": "whole composer2 packet; only actual BOTH slots/current global census are operative; UNKNOWN must havecomponents[]",
+    "descriptor_catalogue": "[{family_id,whole family_preimage excluding only declared ID/provenance,occurrences:[component_index/id/slot/record_index],independent_lemma_acceptedFalse}]. Same IDs require full preimage equality; no occurrence skipped or counted as independent lemma.",
+    "minings": "sameprovenance +mining,status,catalogue_indices; explicit no completeDAG gives miningNone/statusUNKNOWN_NO_COMPLETE_DAG",
+    "qualified_records": "every emitted physical occurrence; all old full sourceproposal/sourcecheck/roundtrip/portbindings/rowassignment/reboundproposal/check/adaptation fields plus component_index/id/slot/origin and catalogue_index"
+  },
+  "result_schema": "ROOT-native-productive-conditional-inventory-evidence-v1",
+  "schema": "ROOT-native-productive-inventory-cases-API-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "signature": "run_inventory(*,language,base_semantics,marked_semantics,point_module,base_fallback,host_adapter,composer,collector,miner,producer,expansion_checker,tick,phase=None)",
+  "source_only": true,
+  "statuses": [
+    "UNKNOWN",
+    "CHECKED_CONDITIONAL_INVENTORY"
+  ],
+  "success": "Both actual slots and every complete collected/mined/ground source+rebound/check/direct-native-adapt occurrence finish. Otherwise UNKNOWN retains honest full completed/unfinished arrays; no operative family preference, receiver, engine or theorem.",
+  "version": "ROOT-native-productive-conditional-inventory-cases-v4-composer-work4m"
+}

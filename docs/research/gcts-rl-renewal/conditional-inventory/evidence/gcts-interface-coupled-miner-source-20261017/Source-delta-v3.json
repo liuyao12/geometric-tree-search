@@ -1,0 +1,249 @@
+{
+  "added_callable_regions": [
+    "_Graph._probe_interface_fragments",
+    "_interface_coupling"
+  ],
+  "changed_callable_regions": [
+    {
+      "current_line": 288,
+      "name": "_Graph.catalogue",
+      "parent_line": 272
+    },
+    {
+      "current_line": 516,
+      "name": "mine_families",
+      "parent_line": 433
+    },
+    {
+      "current_line": 548,
+      "name": "mine_families.variants",
+      "parent_line": 463
+    }
+  ],
+  "edit_regions": 7,
+  "edits": [
+    {
+      "after": "VERSION = 'receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue'",
+      "before": "VERSION = 'receptor-family-primitive-DAG-miner-v2-connected-cut-selection'",
+      "label": "own VERSION"
+    },
+    {
+      "after": "    def _probe_interface_fragments(self,a,kind,scope,location,catalog,field,depth=0):\n        # Probe only admitted keys, but never let an untracked ancestor hide an\n        # already catalogued descendant. The old catalogue capacity is unchanged.\n        self.w.step(depth);text=canonical(self.fragment_key(a,kind,scope))\n        if text in catalog:\n            catalog[text]['interface_probe'][field].append(self.w.copy(location))\n        tag=a[0]\n        if kind=='TERM':children=[(t,'TERM',scope,location+[2,i]) for i,t in enumerate(a[2])] if tag=='fun' else []\n        elif tag=='all':children=[(a[2],'FORMULA',set(scope)|{a[1]},location+[2])]\n        elif tag=='eq':children=[(a[i],'TERM',scope,location+[i]) for i in (1,2)]\n        elif tag=='pred':children=[(t,'TERM',scope,location+[2,i]) for i,t in enumerate(a[2])]\n        elif tag=='bot':children=[]\n        else:children=[(f,'FORMULA',scope,location+[i]) for i,f in enumerate(a[1:],1)]\n        for child,child_kind,child_scope,child_loc in children:\n            self._probe_interface_fragments(child,child_kind,child_scope,child_loc,catalog,field,depth+1)\n\n    def catalogue(self,members,boundary,exposed,fragment_priority):\n        catalog={}\n        for b in boundary:self.fragments(b['source']['formula'],'FORMULA',set(),['boundary',b['kind'],b['port_id'],'formula'],catalog)\n        for n in members:\n            self.fragments(n['formula'],'FORMULA',set(),['nodes',n['id'],'formula'],catalog)\n            for k,kind in self.host['rules'][n['rule']]['arguments'].items():\n                if kind in ('FORMULA','TERM'):self.fragments(n['arguments'][k],kind,set(),['nodes',n['id'],'arguments',k],catalog)\n        if fragment_priority=='LARGEST_REPEATED_FIRST':\n            repeated=[v for v in catalog.values() if len(v['occurrences'])>=2]\n            return sorted(repeated,key=lambda v:(-v['node_count'],canonical({k:v[k] for k in ('kind','native_fragment','formal_names','external_free_names')})))\n        for entry in catalog.values():\n            self.w.step();entry['interface_probe']={'open_input_occurrences':[],'output_occurrences':[]}\n        for b in boundary:\n            self.w.step()\n            # A cut-out node becomes a conditional descriptor input; that alone\n            # says nothing about physical vacancy. Only explicit source-DAG input\n            # occupancy data is used here, and remains untrusted until rechecked.\n            if b['kind']=='input' and 'input' in b['reference'] and b['source']['occupied'] is False:\n                self._probe_interface_fragments(b['source']['formula'],'FORMULA',set(),\n                    ['boundary','input',b['port_id'],'formula'],catalog,'open_input_occurrences')\n        for p in exposed:\n            self.w.step()\n            self._probe_interface_fragments(self.nodes[p['source_node_id']]['formula'],'FORMULA',set(),\n                ['outputs',p['port_id'],'formula'],catalog,'output_occurrences')\n        repeated=[]\n        for entry in catalog.values():\n            self.w.step();probe=entry['interface_probe']\n            coupled=bool(probe['open_input_occurrences'] and probe['output_occurrences'])\n            probe['open_input_output_coupled']=coupled\n            probe['whole_output_formula']=entry['kind']=='FORMULA' and any(len(p)==3 for p in probe['output_occurrences'])\n            if len(entry['occurrences'])>=2 or coupled:repeated.append(entry)\n        return sorted(repeated,key=lambda v:(\n            0 if v['interface_probe']['open_input_output_coupled'] else 1,\n            0 if v['interface_probe']['open_input_output_coupled'] and v['interface_probe']['whole_output_formula'] else 1,\n            -v['node_count'],canonical({k:v[k] for k in ('kind','native_fragment','formal_names','external_free_names')})))\n",
+      "before": "    def catalogue(self,members,boundary):\n        catalog={}\n        for b in boundary:self.fragments(b['source']['formula'],'FORMULA',set(),['boundary',b['kind'],b['port_id'],'formula'],catalog)\n        for n in members:\n            self.fragments(n['formula'],'FORMULA',set(),['nodes',n['id'],'formula'],catalog)\n            for k,kind in self.host['rules'][n['rule']]['arguments'].items():\n                if kind in ('FORMULA','TERM'):self.fragments(n['arguments'][k],kind,set(),['nodes',n['id'],'arguments',k],catalog)\n        repeated=[v for v in catalog.values() if len(v['occurrences'])>=2]\n        return sorted(repeated,key=lambda v:(-v['node_count'],canonical({k:v[k] for k in ('kind','native_fragment','formal_names','external_free_names')})))\n",
+      "label": "tracked-key interface probing and explicit catalogue-order branch"
+    },
+    {
+      "after": "\n\ndef _interface_coupling(graph,boundary,record,fragment_priority):\n    \"\"\"Describe actual built parameter uses, never template usefulness or facts.\"\"\"\n    w=graph.w;open_inputs={};input_evidence=[]\n    for b in boundary:\n        w.step()\n        if b['kind']=='input':\n            explicit='input' in b['reference']\n            occupied=b['source']['occupied'] if explicit else None\n            is_open=explicit and occupied is False\n            open_inputs[b['port_id']]=is_open\n            input_evidence.append({'port_id':b['port_id'],'original_reference':w.copy(b['reference']),\n                'source_DAG_input_occupied':occupied,'explicit_open_input':is_open,\n                'physical_occupancy_verified':False})\n    uses={p['id']:{'parameter_id':p['id'],'kind':p['kind'],\n        'input_occurrences':[],'output_occurrences':[],'explicit_open_input_occurrences':[]}\n        for p in record['descriptor']['parameters'] if p['kind'] in ('FORMULA','TERM')}\n    chosen_parameters=set();fragment=record['fragment_generalization']\n    selected_key=None if fragment is None else {k:fragment[k] for k in ('kind','native_fragment','formal_names','external_free_names')}\n    for item in record['abstraction_map']:\n        w.step();pid=item['parameter_id'];loc=item['location'];use=uses[pid]\n        if selected_key is not None and {k:item[k] for k in selected_key}==selected_key:\n            chosen_parameters.add(pid)\n        if len(loc)>=4 and loc[:2]==['boundary','input'] and loc[3]=='formula':\n            use['input_occurrences'].append(w.copy(loc))\n            if open_inputs[loc[2]]:use['explicit_open_input_occurrences'].append(w.copy(loc))\n        elif len(loc)>=3 and loc[0]=='outputs' and loc[2]=='formula':\n            use['output_occurrences'].append(w.copy(loc))\n    coupled=[]\n    for use in uses.values():\n        w.step()\n        if use['input_occurrences'] and use['output_occurrences']:coupled.append(use)\n    open_coupled=[u for u in coupled if u['explicit_open_input_occurrences']]\n    return {'schema':'receptor-family-built-interface-coupling-v1','fragment_priority':fragment_priority,\n        'input_evidence':input_evidence,'coupled_parameters':coupled,\n        'input_output_parameter_count':len(coupled),'explicit_open_input_output_parameter_count':len(open_coupled),\n        'selected_fragment_coupled_after_build':None if fragment is None else any(u['parameter_id'] in chosen_parameters for u in open_coupled),\n        'literal_shadow_abstraction_count':record['costs']['literal_shadow_abstractions'],\n        'scope':'Actual FORMULA/TERM parameter identity and template locations only; source-DAG occupancy is untrusted supplied evidence, not fresh native physical acceptance.',\n        'shadowing_caveat':'Literal binder shadowing may abstract an enclosing formula and hide the chosen descendant; pre-build rank never guarantees post-build coupling, inferability or useful transfer.'}\n\n\ndef _connected_cut(graph, cut):",
+      "before": "\n\ndef _connected_cut(graph, cut):",
+      "label": "post-build actual interface-coupling report helper"
+    },
+    {
+      "after": "def mine_families(*,host,derivation,tick,limits=None,cut_selection='ANY',fragment_priority='LARGEST_REPEATED_FIRST'):\n    require(type(cut_selection) is str and cut_selection in ('ANY', 'CONNECTED_AT_LEAST_TWO'),\n            'CUT_SELECTION', 'explicit generic advisory emission policy')\n    require(type(fragment_priority) is str and fragment_priority in ('LARGEST_REPEATED_FIRST','OPEN_INPUT_OUTPUT_FIRST'),\n            'FRAGMENT_PRIORITY', 'explicit generic advisory catalogue order')",
+      "before": "def mine_families(*,host,derivation,tick,limits=None,cut_selection='ANY'):\n    require(type(cut_selection) is str and cut_selection in ('ANY', 'CONNECTED_AT_LEAST_TWO'),\n            'CUT_SELECTION', 'explicit generic advisory emission policy')",
+      "label": "public optional fragment-priority enum and default"
+    },
+    {
+      "after": "yield from graph.catalogue(members,boundary,exposed,fragment_priority)[:work.limits['generalizations_per_cut']]",
+      "before": "yield from graph.catalogue(members,boundary)[:work.limits['generalizations_per_cut']]",
+      "label": "pass existing interface data to optional catalogue after literal"
+    },
+    {
+      "after": "record=_Builder(graph,fragment).build(state['anchor'],members,steps,boundary,edges,exposed)\n                    record['costs']['interface_coupling']=_interface_coupling(graph,boundary,record,fragment_priority)\n                    if fragment is not None",
+      "before": "record=_Builder(graph,fragment).build(state['anchor'],members,steps,boundary,edges,exposed)\n                    if fragment is not None",
+      "label": "retain actual post-build coupling as additive costs metadata"
+    },
+    {
+      "after": "'reason':'cut_selection='+cut_selection+'; fragment_priority='+fragment_priority+'; '+reason,'flags':dict(FLAGS)}",
+      "before": "'reason':'cut_selection='+cut_selection+'; '+reason,'flags':dict(FLAGS)}",
+      "label": "report explicit advisory fragment policy in existing reason"
+    }
+  ],
+  "forward_patch": {
+    "bytes": 10514,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v2-to-v3.forward.patch",
+    "sha256": "520735538a7ed245fe285b8364e067a3db5feff32e958aac68e34f6c7168ed7e"
+  },
+  "inverse_patch": {
+    "bytes": 10514,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v3-to-v2.inverse.patch",
+    "sha256": "31cda174b52a8c1d2287bdd83709cd2faf6238af5e3b1df5b15ddb7d426fda4e"
+  },
+  "parent": {
+    "bytes": 30862,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+    "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+  },
+  "raw_forward_exact": true,
+  "raw_full_inverse_exact": true,
+  "removed_callable_regions": [],
+  "schema": "receptor-family-interface-miner-Source-delta-v3",
+  "scope": "Static literal reconstruction only, no project Source evaluation or scientific execution.",
+  "source": {
+    "bytes": 37218,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+    "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+  },
+  "unchanged_callable_regions": [
+    {
+      "current_line": 27,
+      "name": "MiningDataError.__init__",
+      "parent_line": 27
+    },
+    {
+      "current_line": 326,
+      "name": "_Builder.__init__",
+      "parent_line": 284
+    },
+    {
+      "current_line": 337,
+      "name": "_Builder.abstract",
+      "parent_line": 295
+    },
+    {
+      "current_line": 375,
+      "name": "_Builder.argument",
+      "parent_line": 333
+    },
+    {
+      "current_line": 382,
+      "name": "_Builder.build",
+      "parent_line": 340
+    },
+    {
+      "current_line": 353,
+      "name": "_Builder.chosen",
+      "parent_line": 311
+    },
+    {
+      "current_line": 357,
+      "name": "_Builder.template",
+      "parent_line": 315
+    },
+    {
+      "current_line": 330,
+      "name": "_Builder.variable",
+      "parent_line": 288
+    },
+    {
+      "current_line": 37,
+      "name": "_CallbackFailure.__init__",
+      "parent_line": 37
+    },
+    {
+      "current_line": 100,
+      "name": "_Graph.__init__",
+      "parent_line": 100
+    },
+    {
+      "current_line": 149,
+      "name": "_Graph._host",
+      "parent_line": 149
+    },
+    {
+      "current_line": 188,
+      "name": "_Graph.argument",
+      "parent_line": 188
+    },
+    {
+      "current_line": 246,
+      "name": "_Graph.cut",
+      "parent_line": 246
+    },
+    {
+      "current_line": 214,
+      "name": "_Graph.fragment_key",
+      "parent_line": 214
+    },
+    {
+      "current_line": 219,
+      "name": "_Graph.fragments",
+      "parent_line": 219
+    },
+    {
+      "current_line": 205,
+      "name": "_Graph.free",
+      "parent_line": 205
+    },
+    {
+      "current_line": 194,
+      "name": "_Graph.gamma",
+      "parent_line": 194
+    },
+    {
+      "current_line": 167,
+      "name": "_Graph.native",
+      "parent_line": 167
+    },
+    {
+      "current_line": 198,
+      "name": "_Graph.resolve",
+      "parent_line": 198
+    },
+    {
+      "current_line": 237,
+      "name": "_Graph.size",
+      "parent_line": 237
+    },
+    {
+      "current_line": 70,
+      "name": "_Work.__init__",
+      "parent_line": 70
+    },
+    {
+      "current_line": 88,
+      "name": "_Work.copy",
+      "parent_line": 88
+    },
+    {
+      "current_line": 95,
+      "name": "_Work.report",
+      "parent_line": 95
+    },
+    {
+      "current_line": 79,
+      "name": "_Work.step",
+      "parent_line": 79
+    },
+    {
+      "current_line": 484,
+      "name": "_connected_cut",
+      "parent_line": 401
+    },
+    {
+      "current_line": 46,
+      "name": "canonical",
+      "parent_line": 46
+    },
+    {
+      "current_line": 51,
+      "name": "digest",
+      "parent_line": 51
+    },
+    {
+      "current_line": 64,
+      "name": "ident",
+      "parent_line": 64
+    },
+    {
+      "current_line": 55,
+      "name": "keys",
+      "parent_line": 55
+    },
+    {
+      "current_line": 59,
+      "name": "name",
+      "parent_line": 59
+    },
+    {
+      "current_line": 41,
+      "name": "require",
+      "parent_line": 41
+    },
+    {
+      "current_line": 430,
+      "name": "validate_derivation",
+      "parent_line": 388
+    }
+  ],
+  "whole_AST_inverse_exact": true
+}

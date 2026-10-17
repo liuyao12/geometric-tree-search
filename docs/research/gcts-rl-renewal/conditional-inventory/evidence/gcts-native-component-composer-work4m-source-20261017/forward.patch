@@ -1,0 +1,20 @@
+--- before
++++ after
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-native-conditional-component-composer-v2-closed-open-slots'
++VERSION = 'receptor-family-native-conditional-component-composer-v3-closed-open-slots-work4m'
+ RESULT_SCHEMA = 'receptor-family-native-component-composition-v1'
+ POINT_IMPLEMENTATION = 'unit-row-channel4-point-adapter-public-prefix-census-v5'
+ POINT_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'
+@@ -16,7 +16,7 @@
+ BASE_FALLBACK_VERSION = 'unit-row-complete-lazy-six-rule-fallback-v1'
+ HOST_VERSION = 'receptor-family-six-rule-point-adapter-v3-physical-call-sharing'
+ RULES = ['axiom', 'assumption', 'instantiate', 'eq_subst', 'mp', 'generalize']
+-DEFAULT_LIMITS = {'work': 1000000, 'depth': 128, 'root_advances': 48,
++DEFAULT_LIMITS = {'work': 4000000, 'depth': 128, 'root_advances': 48,
+                   'extension_advances': 96, 'heads_per_rule': 1,
+                   'quantum': 8, 'components': 2}
+ FLAGS = {'proposal_only': True, 'engine_generated_accepted': False,

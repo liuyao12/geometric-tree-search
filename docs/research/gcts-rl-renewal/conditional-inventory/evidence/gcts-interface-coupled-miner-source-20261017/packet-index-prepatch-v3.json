@@ -1,0 +1,39 @@
+{
+  "API": {
+    "bytes": 4880,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/API-wire-v3.json",
+    "sha256": "fdc3529521537b6f6313e92ad12a7034b63eb4a84c7c64b47da1bc66f6f395fe"
+  },
+  "actual_patch_checks": "Pending literal patch application to static copies only.",
+  "contract": {
+    "bytes": 15343,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-contract-v3.json",
+    "sha256": "47240d73bfc1f5b398c736aca1f4309cca7aecc7ef32ac5e16a0293446e768b3"
+  },
+  "delta": {
+    "bytes": 14886,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-delta-v3.json",
+    "sha256": "7b863ed71a6733f336b238426c2295ca954a5e1d1ace100f04a6e9703ce3d1e2"
+  },
+  "forward_patch": {
+    "bytes": 10514,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v2-to-v3.forward.patch",
+    "sha256": "520735538a7ed245fe285b8364e067a3db5feff32e958aac68e34f6c7168ed7e"
+  },
+  "inverse_patch": {
+    "bytes": 10514,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v3-to-v2.inverse.patch",
+    "sha256": "31cda174b52a8c1d2287bdd83709cd2faf6238af5e3b1df5b15ddb7d426fda4e"
+  },
+  "schema": "receptor-family-interface-miner-prepatch-index-v3",
+  "source": {
+    "bytes": 37218,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+    "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+  },
+  "static_audit": {
+    "bytes": 7509,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/static-audit-v3.json",
+    "sha256": "56343366a66e67b5f1bc93d74d0729600dd38c72833dc0673229afd16adf8330"
+  }
+}

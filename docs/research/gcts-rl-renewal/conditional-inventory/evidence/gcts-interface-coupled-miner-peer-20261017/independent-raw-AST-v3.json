@@ -1,0 +1,172 @@
+{
+  "schema": "receptor-interface-coupled-miner-independent-raw-AST-v3",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "references": {
+    "source": {
+      "bytes": 37218,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+    },
+    "source_contract": {
+      "bytes": 15343,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-contract-v3.json",
+      "sha256": "47240d73bfc1f5b398c736aca1f4309cca7aecc7ef32ac5e16a0293446e768b3"
+    },
+    "API": {
+      "bytes": 4880,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/API-wire-v3.json",
+      "sha256": "fdc3529521537b6f6313e92ad12a7034b63eb4a84c7c64b47da1bc66f6f395fe"
+    },
+    "source_delta": {
+      "bytes": 14886,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/Source-delta-v3.json",
+      "sha256": "7b863ed71a6733f336b238426c2295ca954a5e1d1ace100f04a6e9703ce3d1e2"
+    },
+    "static_audit": {
+      "bytes": 7509,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/static-audit-v3.json",
+      "sha256": "56343366a66e67b5f1bc93d74d0729600dd38c72833dc0673229afd16adf8330"
+    },
+    "actual_patch_evidence": {
+      "bytes": 2087,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/actual-patch-evidence-v3.json",
+      "sha256": "87890bd4b3a15213c70aa8e000b8ab6bf176b2f64d8da51b4cf510ad447e2c73"
+    },
+    "parent_source": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "parent_contract": {
+      "bytes": 12960,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-contract-v2.json",
+      "sha256": "22e7dbb7f23bd8c8b224c7a7ebe0c5d0716f682bd6c306a9e5a48a7d72022b2c"
+    },
+    "patch_forward": {
+      "bytes": 10514,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v2-to-v3.forward.patch",
+      "sha256": "520735538a7ed245fe285b8364e067a3db5feff32e958aac68e34f6c7168ed7e"
+    },
+    "patch_inverse": {
+      "bytes": 10514,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/miner-v3-to-v2.inverse.patch",
+      "sha256": "31cda174b52a8c1d2287bdd83709cd2faf6238af5e3b1df5b15ddb7d426fda4e"
+    },
+    "evidence_current_inventory_CASE": {
+      "bytes": 31001,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+      "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+    },
+    "evidence_current_transfer_provider": {
+      "bytes": 41642,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+      "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+    },
+    "evidence_expander": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "evidence_expansion_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "evidence_literal_provider": {
+      "bytes": 37272,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+      "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+    },
+    "evidence_master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "evidence_native_family_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "evidence_parent_contract": {
+      "bytes": 12960,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-contract-v2.json",
+      "sha256": "22e7dbb7f23bd8c8b224c7a7ebe0c5d0716f682bd6c306a9e5a48a7d72022b2c"
+    },
+    "evidence_productive_composer": {
+      "bytes": 30565,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+      "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+    },
+    "evidence_productive_composer_API": {
+      "bytes": 3186,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/API-wire-v2.json",
+      "sha256": "4e663e7eacc64f1d763c34b319e07aa5915342109bb4bddb0ffdaec119afbff5"
+    },
+    "evidence_productive_composer_contract": {
+      "bytes": 15644,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-contract-v2.json",
+      "sha256": "af6c12cb9f2ad1c2471246992193bce53b8e090ba93e730ddd157e886b1f91b9"
+    }
+  },
+  "checks": {
+    "whole_current_parent_Source_API_contract_read": true,
+    "all7_sequential_raw_forward_inverse_exact": true,
+    "whole_AST_inverse_exact": true,
+    "actual_forward_inverse_patch_F0_exact": true,
+    "32_existing_callable_regions_raw_AST_exact": true,
+    "Builder_and_full_scoped_key_hygiene_unchanged": true,
+    "default_catalogue_AST_exact_legacy_branch": true,
+    "all_constants_except_VERSION_exact": true,
+    "all_declared_resident_evidence_Source_pins_exact": true,
+    "AST_compile_without_evaluation_only": true
+  },
+  "unchanged_callable_regions": [
+    "MiningDataError.__init__",
+    "_CallbackFailure.__init__",
+    "require",
+    "canonical",
+    "digest",
+    "keys",
+    "name",
+    "ident",
+    "_Work.__init__",
+    "_Work.step",
+    "_Work.copy",
+    "_Work.report",
+    "_Graph.__init__",
+    "_Graph._host",
+    "_Graph.native",
+    "_Graph.argument",
+    "_Graph.gamma",
+    "_Graph.resolve",
+    "_Graph.free",
+    "_Graph.fragment_key",
+    "_Graph.fragments",
+    "_Graph.size",
+    "_Graph.cut",
+    "_Builder.__init__",
+    "_Builder.variable",
+    "_Builder.abstract",
+    "_Builder.chosen",
+    "_Builder.template",
+    "_Builder.argument",
+    "_Builder.build",
+    "validate_derivation",
+    "_connected_cut"
+  ],
+  "changed_existing_callables": [
+    "_Graph.catalogue",
+    "mine_families",
+    "mine_families.variants"
+  ],
+  "added_callables": [
+    "_Graph._probe_interface_fragments",
+    "_interface_coupling"
+  ],
+  "audit_note": "Initial census walker omitted variants nested in control statements and stopped at its count assertion before any audit/review output. Correct current walker recursively covers control nodes and verifies the three declared changed callables. No project Source evaluation occurred.",
+  "actual_patch_directions_verified": 2,
+  "modules_helpers_or_science_executed": false,
+  "actual_results_or_clock_reads": false
+}

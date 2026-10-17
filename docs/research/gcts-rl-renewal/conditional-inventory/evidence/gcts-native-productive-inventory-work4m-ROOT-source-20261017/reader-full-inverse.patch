@@ -1,0 +1,20 @@
+--- before
++++ after
+@@ -10,7 +10,7 @@
+ import sys
+ import zlib
+ 
+-CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json', 'sha256': '7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985', 'bytes': 28106}
++CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '4bed060b7c636be461afa9d8c16612c3f58e0abf3c7e4a0acedc43d187745e50', 'bytes': 27822}
+ 
+ 
+ def need(ok, why):
+@@ -253,7 +253,7 @@
+              and completion['exit_zero_and_coordinator_deadline_required']is True
+              and completion['body_sha256']==raw_pin(lines[0])['sha256'] and completion['body_bytes']==len(lines[0])
+              and body['schema']=='ROOT-native-conditional-inventory-response-body-v1'
+-             and body['version']=='ROOT-native-productive-inventory-cold-v2-work4m'
++             and body['version']=='ROOT-native-productive-inventory-cold-v1'
+              and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+              and body['limits']==plan['limits'] and body['resource_rule']==plan['resource_rule']
+              and body['CLOCK_DOMAIN']=='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'

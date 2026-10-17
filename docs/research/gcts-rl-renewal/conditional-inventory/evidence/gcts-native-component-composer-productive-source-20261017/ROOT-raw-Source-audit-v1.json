@@ -1,0 +1,19 @@
+{
+  "actual_authorized": false,
+  "edit_offsets": "Sequential current-text offsets; invert in reverse order. Initial original-offset audit failed before metadata creation; no scientific execution.",
+  "edits": 8,
+  "runtime_qualified": false,
+  "schema": "ROOT-productive-composer-Source-audit-v1",
+  "scientific_execution": false,
+  "scope": "Future productive proposal slots only. Current one-component CASE/cold caller cannot be rebound as a drop-in.",
+  "source": {
+    "bytes": 30565,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+    "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+  },
+  "source_contract_sha256": "af6c12cb9f2ad1c2471246992193bce53b8e090ba93e730ddd157e886b1f91b9",
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_forward_exact": true,
+  "whole_raw_inverse_exact": true
+}

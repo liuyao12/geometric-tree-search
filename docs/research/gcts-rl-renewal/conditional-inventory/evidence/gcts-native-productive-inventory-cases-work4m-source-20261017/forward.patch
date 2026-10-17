@@ -1,0 +1,22 @@
+--- before
++++ after
+@@ -7,16 +7,16 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'ROOT-native-productive-conditional-inventory-cases-v3'
++VERSION = 'ROOT-native-productive-conditional-inventory-cases-v4-composer-work4m'
+ RESULT_SCHEMA = 'ROOT-native-productive-conditional-inventory-evidence-v1'
+-COMPOSER_VERSION = 'receptor-family-native-conditional-component-composer-v2-closed-open-slots'
++COMPOSER_VERSION = 'receptor-family-native-conditional-component-composer-v3-closed-open-slots-work4m'
+ COLLECTOR_VERSION = 'receptor-family-checked-engine-state-DAG-collector-v2-kernel-visit-counter'
+ MINER_VERSION = 'receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue'
+ PRODUCER_VERSION = 'receptor-family-typed-expander-v1'
+ CHECKER_VERSION = 'receptor-family-independent-expansion-checker-v1'
+ ADAPTER_VERSION = 'receptor-family-six-rule-point-adapter-v3-physical-call-sharing'
+ POINT_IMPLEMENTATION = 'unit-row-channel4-point-adapter-public-prefix-census-v5'
+-COMPOSER_LIMITS = {'work': 1000000, 'depth': 128, 'root_advances': 48,
++COMPOSER_LIMITS = {'work': 4000000, 'depth': 128, 'root_advances': 48,
+                    'extension_advances': 96, 'heads_per_rule': 1,
+                    'quantum': 8, 'components': 2}
+ FRAGMENT_PRIORITY = 'OPEN_INPUT_OUTPUT_FIRST'

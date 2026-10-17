@@ -1,0 +1,52 @@
+{
+  "schema": "ROOT-native-productive-inventory-cases-typed-Source-review-v3",
+  "scope": "ROOT-native-productive-inventory-cases-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "bytes": 38780,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+    "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+  },
+  "source_contract": {
+    "bytes": 6576,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-contract-v3.json",
+    "sha256": "c8a9a14f7e18ebb0b2d2b1007b84e58e2fe191c6c34ba51e2db8db7904452c13"
+  },
+  "sources": {
+    "cases": {
+      "bytes": 38780,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+      "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+    }
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored checker4358, marked verifier9fd, marked-aware checker8f and ea300 point ancestry; whole-reviewed parentCASEc0d6, composer2, miner3 and shared native interfaces. Controls authored this CASE/composer/native host/provider ancestry; Arithmetic authored parent CASE and collector/miner/expander ancestry. This is a distinct whole staged CASE Source review, not reacceptance of inherited checker mathematics or actual evidence.",
+  "whole_current_source_API_contract_parent_and_design_reviewed": true,
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/handoff-v3.json",
+    "sha256": "e65bec9fab01f2dc917981061d851a4fcf9609582de5e686de3c55cea6d29787",
+    "bytes": 2931
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-peer-20261017/findings-v3.json",
+    "sha256": "c4e697b614e1ce348e8e7dfa0fb42b6aa89cd23981e1ce82195e4307826099fc",
+    "bytes": 5045
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-peer-20261017/independent-raw-AST-v3.json",
+    "sha256": "89b26c24c8b7e122d408244c0156ff62db893a2c318d2a89c60eb0a210946648",
+    "bytes": 5188
+  },
+  "raw_edit_regions": 10,
+  "actual_patch_directions_verified": 2,
+  "unchanged_tophelper_class_regions_raw_AST_exact": 10,
+  "blockers": [],
+  "runtime_qualification_inherited": false,
+  "actual_execution_authorized": false,
+  "runtime_fit": "UNMEASURED"
+}

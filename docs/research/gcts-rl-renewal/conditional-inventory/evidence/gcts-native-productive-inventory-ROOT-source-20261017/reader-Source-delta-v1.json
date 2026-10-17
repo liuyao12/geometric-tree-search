@@ -1,0 +1,64 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "edits": [
+    {
+      "label": "operative_capsule",
+      "new": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '4bed060b7c636be461afa9d8c16612c3f58e0abf3c7e4a0acedc43d187745e50', 'bytes': 27822}",
+      "old": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json', 'sha256': 'ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99', 'bytes': 27094}",
+      "start": 329
+    },
+    {
+      "label": "contract_schema",
+      "new": "contract['schema'] == 'ROOT-native-productive-inventory-cold-Source-contract-v1'",
+      "old": "contract['schema'] == 'ROOT-native-inventory-startup-diagnostic-cold-Source-contract-v1'",
+      "start": 8334
+    },
+    {
+      "label": "review_scope",
+      "new": "review['scope'] == 'ROOT-native-productive-inventory-cold-Source'",
+      "old": "review['scope'] == 'ROOT-native-inventory-startup-diagnostic-cold-Source'",
+      "start": 9090
+    },
+    {
+      "label": "response_VERSION",
+      "new": "body['version']=='ROOT-native-productive-inventory-cold-v1'",
+      "old": "body['version']=='ROOT-native-inventory-startup-diagnostic-cold-v1'",
+      "start": 16615
+    },
+    {
+      "label": "productive_helper_evidence_schema",
+      "new": "pipeline['schema']=='ROOT-native-productive-conditional-inventory-evidence-v1'",
+      "old": "pipeline['schema']=='ROOT-native-conditional-inventory-evidence-v1'",
+      "start": 20625
+    }
+  ],
+  "parent_source": {
+    "bytes": 21792,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+    "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 3214,
+      "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "0320619756cebd55ed61a778cea30d36a0fd35d0ae705d50ef50cee83b333151"
+    },
+    "full-inverse": {
+      "bytes": 3214,
+      "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "f13930370445cf6ef7f0641b27a46e502ad391eb639e2e66d69c501bc6e81afb"
+    }
+  },
+  "schema": "ROOT-productive-inventory-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21776,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v1.py",
+    "sha256": "1ae2639876332a11902eba173124ad8143ef80e2b98dc87e8bddc820bb02d206"
+  },
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_forward_exact": true,
+  "whole_raw_inverse_exact": true
+}

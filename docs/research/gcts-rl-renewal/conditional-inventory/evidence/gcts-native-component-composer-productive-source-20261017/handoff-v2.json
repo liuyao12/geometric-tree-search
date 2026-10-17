@@ -1,0 +1,78 @@
+{
+  "API_wire": {
+    "bytes": 3186,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/API-wire-v2.json",
+    "sha256": "4e663e7eacc64f1d763c34b319e07aa5915342109bb4bddb0ffdaec119afbff5"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "receptor-family-native-component-composer-productive-slots-typed-Source-review-v2",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-native-component-composer-productive-slots-Source",
+    "source": {
+      "bytes": 30565,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+      "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+    },
+    "source_contract": {
+      "bytes": 15644,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-contract-v2.json",
+      "sha256": "af6c12cb9f2ad1c2471246992193bce53b8e090ba93e730ddd157e886b1f91b9"
+    },
+    "source_only": true,
+    "sources": {
+      "composer": {
+        "bytes": 30565,
+        "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+        "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_patches": {
+    "forward": {
+      "bytes": 6103,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/forward-v2.patch",
+      "sha256": "d47e0b5546c1122fa809dd725535f23d489216edeba8321b231bc03694343dd4"
+    },
+    "full-inverse": {
+      "bytes": 6103,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/full-inverse-v2.patch",
+      "sha256": "11f2d4f5d95606c682ff15d134306aa9509d6ad51a49a868439ecef98bbe054b"
+    }
+  },
+  "intended_behavior": "One closed+one open slot. No closed-only stop. Both goals permit COMPONENT_PROPOSALS; missing slot or ownbound UNKNOWN retains narrow valid local records only, no pruning/fact/availability proof.",
+  "original_limits_except_two_retained_slots": {
+    "depth": 128,
+    "extension_advances": 96,
+    "heads_per_rule": 1,
+    "quantum": 8,
+    "root_advances": 48,
+    "work": 1000000
+  },
+  "schema": "receptor-native-component-productive-slots-Source-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 30565,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+    "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+  },
+  "source_contract": {
+    "bytes": 15644,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-contract-v2.json",
+    "sha256": "af6c12cb9f2ad1c2471246992193bce53b8e090ba93e730ddd157e886b1f91b9"
+  },
+  "source_delta": {
+    "bytes": 5403,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-delta-v2.json",
+    "sha256": "0745f886f6d017e0c9cf8df00f2d9d9c913b216b059699a9b48014861f920d41"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 2842,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/static-audit-v2.json",
+    "sha256": "6cfcba289850a90cb6876fd2189f8cf022d30e437d18de85417310d5491eae83"
+  }
+}

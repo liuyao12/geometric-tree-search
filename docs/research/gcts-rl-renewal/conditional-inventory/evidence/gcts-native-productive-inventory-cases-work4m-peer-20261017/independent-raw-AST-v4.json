@@ -1,0 +1,91 @@
+{
+  "schema": "native-productive-work4m-independent-raw-AST-v4",
+  "role": "cases",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "references": {
+    "source": {
+      "bytes": 38803,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py",
+      "sha256": "d00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8"
+    },
+    "source_contract": {
+      "bytes": 7573,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/Source-contract-v4.json",
+      "sha256": "e0d635697bcf4959a79b9df3a751c84755343aaa501882e93b412df3e2cb13a6"
+    },
+    "source_delta": {
+      "bytes": 2003,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/Source-delta-v4.json",
+      "sha256": "94f929d5ac036fafa83d39e516e749e3575d1ef33ae9587f1e1f020e117fa8d0"
+    },
+    "static_audit": {
+      "bytes": 1505,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/static-audit-v4.json",
+      "sha256": "c504130c64730cd45354b023a079eb3d9622d08225decf7b94ed2852e0225c97"
+    },
+    "API": {
+      "bytes": 3144,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/API-wire-v4.json",
+      "sha256": "4e58d7a46c74cabec644040bc43ec13da72fcb995d20fd1e18ab9511d7602c80"
+    },
+    "patch_forward": {
+      "bytes": 1283,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/forward.patch",
+      "sha256": "2551f11fbfcc42d0aa22cd9244fd40f2f7effa1aacf3a7ef6a5d0095f7a59fc1"
+    },
+    "patch_full-inverse": {
+      "bytes": 1283,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/full-inverse.patch",
+      "sha256": "1fbb8b9f44b2b06e61c43babffa533f28142192687a6861a882518d4022f9f8f"
+    },
+    "parent_contract": {
+      "bytes": 6576,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/Source-contract-v3.json",
+      "sha256": "c8a9a14f7e18ebb0b2d2b1007b84e58e2fe191c6c34ba51e2db8db7904452c13"
+    }
+  },
+  "parent_source": {
+    "bytes": 38780,
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py",
+    "sha256": "11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2"
+  },
+  "checks": {
+    "whole_current_source_API_contract_operative_parent_reviewed": true,
+    "exact_declared_only_literal_edits": true,
+    "whole_raw_forward_fullinverse_exact": true,
+    "whole_AST_inverse_exact": true,
+    "actual_patch_forward_inverse_F0_exact": true,
+    "every_named_function_class_raw_AST_exact": true,
+    "all_other_constants_and_role_limits_exact": true,
+    "AST_compile_without_evaluation_only": true
+  },
+  "exact_edits": 3,
+  "all_named_regions": [
+    "InventoryDataError",
+    "_OwnPrefix",
+    "_NativeFailure",
+    "_NativeFailure.__init__",
+    "require",
+    "canonical",
+    "ascii_digest",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "_Work.copy",
+    "_key",
+    "_checked_expansion",
+    "_check_source_roundtrip",
+    "run_inventory",
+    "run_inventory.signal",
+    "run_inventory.merge",
+    "run_inventory.merge_tile",
+    "run_inventory.merge_states",
+    "run_inventory.finish",
+    "run_inventory.boundary_row"
+  ],
+  "named_region_count": 21,
+  "project_modules_or_scientific_helpers_executed": false,
+  "actual_result_proofword_model_or_clock_reads": false
+}

@@ -1,0 +1,90 @@
+{
+  "schema": "native-productive-work4m-independent-raw-AST-v3",
+  "role": "composer",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "references": {
+    "source": {
+      "bytes": 30572,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py",
+      "sha256": "4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1"
+    },
+    "source_contract": {
+      "bytes": 16254,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-contract-v3.json",
+      "sha256": "7976d95bc7796a0ff4b523689940c782783b15590f4aea2525aeccf4c15fc30a"
+    },
+    "source_delta": {
+      "bytes": 1722,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/Source-delta-v3.json",
+      "sha256": "996d779d99a2cc886ac01dbae8d8470ab51198d6ec95a27fe2cc8ca329957f6e"
+    },
+    "static_audit": {
+      "bytes": 1556,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/static-audit-v3.json",
+      "sha256": "a55a86bdc17fb97a98ef67ddc5c068f9bc75eccb7d9a7cc944bb5a1b490986a0"
+    },
+    "API": {
+      "bytes": 3399,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/API-wire-v3.json",
+      "sha256": "ac9f6dfd5a56cf6667ab7e4723be0c3a4bda2cdcab0f6c7c9ebc27e2c68ebf53"
+    },
+    "patch_forward": {
+      "bytes": 1044,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/forward.patch",
+      "sha256": "055efcb050605f27b4f3a6a423df2937cd817b4b5e079198d78e722aff69f245"
+    },
+    "patch_full-inverse": {
+      "bytes": 1044,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-source-20261017/full-inverse.patch",
+      "sha256": "d56c19a19d33709d08dd2d2795a3c869f2c091e2d6aed86bf36360bcfc036f21"
+    },
+    "parent_contract": {
+      "bytes": 15644,
+      "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-contract-v2.json",
+      "sha256": "af6c12cb9f2ad1c2471246992193bce53b8e090ba93e730ddd157e886b1f91b9"
+    }
+  },
+  "parent_source": {
+    "bytes": 30565,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+    "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+  },
+  "checks": {
+    "whole_current_source_API_contract_operative_parent_reviewed": true,
+    "exact_declared_only_literal_edits": true,
+    "whole_raw_forward_fullinverse_exact": true,
+    "whole_AST_inverse_exact": true,
+    "actual_patch_forward_inverse_F0_exact": true,
+    "every_named_function_class_raw_AST_exact": true,
+    "all_other_constants_and_role_limits_exact": true,
+    "AST_compile_without_evaluation_only": true
+  },
+  "exact_edits": 2,
+  "all_named_regions": [
+    "ComposerDataError",
+    "ComposerDataError.__init__",
+    "_OwnLimit",
+    "_NativeFailure",
+    "_NativeFailure.__init__",
+    "require",
+    "canonical",
+    "digest",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "_Work.copy",
+    "compose_components",
+    "compose_components.merge",
+    "compose_components.state_record",
+    "compose_components.insert",
+    "compose_components.export_cursor",
+    "compose_components.open_task",
+    "compose_components.advance",
+    "compose_components.component"
+  ],
+  "named_region_count": 20,
+  "project_modules_or_scientific_helpers_executed": false,
+  "actual_result_proofword_model_or_clock_reads": false
+}

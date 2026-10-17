@@ -1,0 +1,28 @@
+{
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 28106,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json",
+    "sha256": "7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985"
+  },
+  "operative_parent_contract": {
+    "bytes": 1419,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "71d8c0ccea871acd0a87b4afe688cc828e83f756dd2ca3772eb15092fbfcbecb"
+  },
+  "schema": "ROOT-native-productive-inventory-saved-reader-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Same complete saved-only native/wire/phase/failure reconciliation, with current own-work4m Source capsule/responseVERSION. No scientific replay or inherited qualification.",
+  "source": {
+    "bytes": 21790,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v2.py",
+    "sha256": "1f4ae893cd2811328f73726a97ee84e4ccc48f1706cfdfc2c3c7536fcb4b29d9"
+  },
+  "source_delta": {
+    "bytes": 2104,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-Source-delta-v1.json",
+    "sha256": "b0526cd050a85e690ae398b59eaa4051c24aa8d0099a82080a0163d82c73d671"
+  },
+  "source_only": true
+}

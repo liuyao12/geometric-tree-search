@@ -1,0 +1,55 @@
+{
+  "actual_or_result_files_read": false,
+  "checks": {
+    "all_other_reader_functions_raw_AST_exact": true,
+    "both_actual_patch_directions_exact": true,
+    "compile_without_evaluation": true,
+    "current_literal_contract_and_response_VERSION_match": true,
+    "five_exact_raw_AST_forward_fullinverse": true,
+    "native20_positive55failure512_Date_session_once_exit_concordance_exact": true,
+    "productive_fullpayload_opaque_no_semantic_replay": true,
+    "same13_phase_and_optional4slots_failure_no_cause_inference": true,
+    "same_buffer_pin_parse_and_complete_canonical_lossless_EOF_wire_exact": true,
+    "whole_main_exact_after_four_literal_restorations": true
+  },
+  "current_operative_contract": {
+    "bytes": 27822,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "4bed060b7c636be461afa9d8c16612c3f58e0abf3c7e4a0acedc43d187745e50"
+  },
+  "findings": [
+    {
+      "disposition": "PASS",
+      "finding": "Exact five changes bind current productive contract/reviewScope/responseVersion/helperSchema. Parent full main restores after four in-function literal substitutions; all other helpers raw/AST exact.",
+      "id": "NPI-READER-AUTH"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Unchanged same-buffer wholepin/response2/final1/canonical envelope/decompressionEOF/caps, nativeonce/meter2/postprobe20/512 positive and55 failure, exact same sessionpair/Date/exit/reap joins remain.",
+      "id": "NPI-READER-NATIVE-WIRE"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Status and narrow conditional_inventory_record_complete are literal CURRENT pinned helper record observations. No arrays flattened, joined into aggregate placements or semantically replayed. Complete current checked record can support narrow inventory status under separate Root acceptance; phases/failure/UNKNOWN cannot supply missing scientific evidence or broad authority.",
+      "id": "NPI-READER-INTERPRETATION"
+    },
+    {
+      "disposition": "LIMITATION",
+      "finding": "Root reader author differs from reviewer. Reviewer owns composer/CASE/instrumentation and prior native/readout ancestry; no own-component independent checker claim. Diagnosis CASE peer and Root measured acceptance remain separate; no actual data read.",
+      "id": "NPI-READER-OVERLAP"
+    }
+  ],
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21776,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v1.py",
+    "sha256": "1ae2639876332a11902eba173124ad8143ef80e2b98dc87e8bddc820bb02d206"
+  },
+  "source_contract": {
+    "bytes": 1419,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "71d8c0ccea871acd0a87b4afe688cc828e83f756dd2ca3772eb15092fbfcbecb"
+  },
+  "source_only": true
+}

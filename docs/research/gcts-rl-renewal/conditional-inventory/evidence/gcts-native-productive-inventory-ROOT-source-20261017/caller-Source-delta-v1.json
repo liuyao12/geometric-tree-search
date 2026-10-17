@@ -1,0 +1,70 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "edits": [
+    {
+      "label": "own_VERSION",
+      "new": "VERSION='ROOT-native-productive-inventory-cold-v1'",
+      "old": "VERSION='ROOT-native-inventory-startup-diagnostic-cold-v1'",
+      "start": 541
+    },
+    {
+      "label": "own_SCOPE",
+      "new": "SCOPE='ROOT-native-productive-inventory-cold-Source'",
+      "old": "SCOPE='ROOT-native-inventory-startup-diagnostic-cold-Source'",
+      "start": 592
+    },
+    {
+      "label": "purpose",
+      "new": "QUALIFICATION_CASES_BY_PURPOSE={'native-productive-conditional-inventory': ['NPI-01-closed-and-open-conditional-inventory']}",
+      "old": "QUALIFICATION_CASES_BY_PURPOSE={'native-conditional-inventory': ['NI-01-automatic-connected-conditional-pair']}",
+      "start": 720
+    },
+    {
+      "label": "current_three_helper_refs",
+      "new": "FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'collector': {'bytes': 19556, 'path': '/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py', 'sha256': '9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816'}, 'composer': {'path': '/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py', 'sha256': 'b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48', 'bytes': 30565}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'inventory_cases': {'path': '/private/tmp/gcts-native-productive-inventory-cases-source-20261017/native_productive_inventory_cases_v3.py', 'sha256': '11bb66beca775d56de8744bfa8ca0a28bf21f1c54168ae763e607b6c38092fe2', 'bytes': 38780}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'miner': {'path': '/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py', 'sha256': '7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c', 'bytes': 37218}, 'producer': {'bytes': 51898, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py', 'sha256': 'f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}}",
+      "old": "FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'collector': {'bytes': 19556, 'path': '/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py', 'sha256': '9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816'}, 'composer': {'bytes': 28607, 'path': '/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py', 'sha256': '9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'inventory_cases': {'path': '/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py', 'sha256': 'c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d', 'bytes': 31001}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'miner': {'bytes': 30862, 'path': '/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py', 'sha256': '482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689'}, 'producer': {'bytes': 51898, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py', 'sha256': 'f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}}",
+      "start": 845
+    },
+    {
+      "label": "current_contract_schema",
+      "new": "contract['schema']=='ROOT-native-productive-inventory-cold-Source-contract-v1'",
+      "old": "contract['schema']=='ROOT-native-inventory-startup-diagnostic-cold-Source-contract-v1'",
+      "start": 34284
+    },
+    {
+      "label": "productive_helper_evidence_schema",
+      "new": "inventory['schema']=='ROOT-native-productive-conditional-inventory-evidence-v1'",
+      "old": "inventory['schema']=='ROOT-native-conditional-inventory-evidence-v1'",
+      "start": 49353
+    }
+  ],
+  "parent_source": {
+    "bytes": 53327,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+    "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 12104,
+      "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/caller-forward.patch",
+      "sha256": "ad9f07cb36405d05bfe970cc72fdeed930383fff9968281b573ebe09409c058d"
+    },
+    "full-inverse": {
+      "bytes": 12104,
+      "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/caller-full-inverse.patch",
+      "sha256": "e10700cde40ca2b55583b3d563eb2c96b93b339cc26d2fff0b7486faf36705ae"
+    }
+  },
+  "schema": "ROOT-productive-inventory-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 53358,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/native_productive_inventory_cold_v1.py",
+    "sha256": "978327235f539b4749ecb2ffbd9c376e7ae178576ccae02da8034c696fac95f9"
+  },
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_forward_exact": true,
+  "whole_raw_inverse_exact": true
+}

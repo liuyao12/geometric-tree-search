@@ -1,0 +1,18 @@
+{
+  "actual_authorized": false,
+  "edits": 7,
+  "runtime_qualified": false,
+  "schema": "ROOT-interface-miner-Source-audit-v1",
+  "scientific_execution": false,
+  "scope": "Future advisory catalogue ordering and post-build parameter-location metadata only. No native model, proof or pruning authority. Explicit downstream gates remain.",
+  "source": {
+    "bytes": 37218,
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+    "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+  },
+  "source_contract_sha256": "47240d73bfc1f5b398c736aca1f4309cca7aecc7ef32ac5e16a0293446e768b3",
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_forward_exact": true,
+  "whole_raw_inverse_exact": true
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "native-productive-work4m-independent-handoff-v4",
+  "role": "cases",
+  "typed_review": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/typed-Source-review-v4.json",
+    "sha256": "d3302d9327f4e9ea01123ba64925ebbc7123098d39459e93c9e817952569deb0",
+    "bytes": 2837
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/findings-v4.json",
+    "sha256": "3331eae07cb5a0b96ffa0d38506b38aeaa1d0381b0bf207ceddbe228a3d476b1",
+    "bytes": 2631
+  },
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/independent-raw-AST-v4.json",
+    "sha256": "e920dc17223c0848e938dac9680e25cb43bd4694994cffdcc01c2dadfe354d83",
+    "bytes": 3530
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/handoff-v4.json",
+    "sha256": "9715473541fcede044c476c28a2113130ec8ad5a180f615d30fc0503b79fb539",
+    "bytes": 3026
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false
+}

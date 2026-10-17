@@ -1,0 +1,26 @@
+{
+  "schema": "receptor-interface-coupled-miner-independent-handoff-v3",
+  "typed_review": {
+    "path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/typed-Source-review-v3.json",
+    "sha256": "185aee71dd7358f6d3c4a21ded19a8750ebbccee8769aac445274fca861c019c",
+    "bytes": 2638
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/findings-v3.json",
+    "sha256": "b2e89a8765f19964c159ecdb5c758a66bf95b8af0223beb4a51c9a7d444cdf64",
+    "bytes": 6049
+  },
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-interface-coupled-miner-peer-20261017/independent-raw-AST-v3.json",
+    "sha256": "a9013314561d4c5f63cd8b6ab9977e464b027e60732265d372a1ff10651473ad",
+    "bytes": 7250
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/handoff-v3.json",
+    "sha256": "532ba69a23f9cf5f6f795fccec24ddb942dbc4f2468d23ed4371d367cf7cf759",
+    "bytes": 6010
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false
+}

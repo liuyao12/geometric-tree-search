@@ -1,0 +1,46 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "edits": [
+    {
+      "label": "operative_capsule",
+      "new": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json', 'sha256': '7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985', 'bytes': 28106}",
+      "old": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '4bed060b7c636be461afa9d8c16612c3f58e0abf3c7e4a0acedc43d187745e50', 'bytes': 27822}",
+      "start": 329
+    },
+    {
+      "label": "response_VERSION",
+      "new": "body['version']=='ROOT-native-productive-inventory-cold-v2-work4m'",
+      "old": "body['version']=='ROOT-native-productive-inventory-cold-v1'",
+      "start": 16622
+    }
+  ],
+  "parent_source": {
+    "bytes": 21776,
+    "path": "/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v1.py",
+    "sha256": "1ae2639876332a11902eba173124ad8143ef80e2b98dc87e8bddc820bb02d206"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 1254,
+      "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "e8ad3eeecc7f4cd6cb9657395e60617f7cdca93636c89535fccd5695fde4bde8"
+    },
+    "full-inverse": {
+      "bytes": 1254,
+      "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "6fd168f045dc96d56b78ad75d6dc3e3ead7a32ed8ecf59aa1e803d1468ff5139"
+    }
+  },
+  "schema": "ROOT-productive-inventory-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21790,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v2.py",
+    "sha256": "1f4ae893cd2811328f73726a97ee84e4ccc48f1706cfdfc2c3c7536fcb4b29d9"
+  },
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_forward_exact": true,
+  "whole_raw_inverse_exact": true
+}

@@ -1,0 +1,100 @@
+{
+  "actual_or_result_files_read": false,
+  "checks": {
+    "ALL37recursive_function_class_regions_including_main_raw_AST_exact": true,
+    "AST_compile_without_evaluation": true,
+    "both_actualpatch_directions_apply_exact": true,
+    "composer_work4m_CASE8m_other_allocation_unchanged": true,
+    "current17_input8_vs_original17_input2_epoch_model_unchanged": true,
+    "native20_512_internal500_once_CodeSeal_allguards_phases_transport_failure_tail_exact": true,
+    "only_composer_and_CASE_capsules_change_currentmap_values": true,
+    "separate_helper_peers_present_no_self_peer": true,
+    "two_exact_literal_edits_raw_AST_fullinverse": true
+  },
+  "findings": [
+    {
+      "disposition": "PASS",
+      "finding": "Exactly VERSION and wholeFIXED replacement; literalmap differs only composer/CASE capsules. All37 recursive regions including fullmain are rawASTexact, all other literals unchanged. No root/allocation/model/native/guard/phase/failure/output behavior changed in caller.",
+      "id": "NPI4-CALLER-DELTA"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Current source contracts explicitly request composer ownwork4m withCASE8m, same depth128/root48/ext96/head1/quantum8/two slots and native20/512 limits. Extra own-work allowance is not runtime fit, success, availability, transfer or advantage evidence.",
+      "id": "NPI4-CALLER-COST"
+    },
+    {
+      "disposition": "LIMITATION",
+      "finding": "Root authors current integration; reviewer authors delegated helper literal ablation/composer/CASE and prior host/native/instrumentation. This is integration Source review only; distinct Diagnosis helper peers separately bound. No own-helper self-review or scientific replay/acceptance.",
+      "id": "NPI4-CALLER-OVERLAP"
+    }
+  ],
+  "helper_peers": {
+    "cases": {
+      "bytes": 2837,
+      "path": "/private/tmp/gcts-native-productive-inventory-cases-work4m-peer-20261017/typed-Source-review-v4.json",
+      "sha256": "d3302d9327f4e9ea01123ba64925ebbc7123098d39459e93c9e817952569deb0"
+    },
+    "composer": {
+      "bytes": 2844,
+      "path": "/private/tmp/gcts-native-component-composer-work4m-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "3dcefa7b79f3980db755d8a8812c925d681f25b85c6a0559f7557c29637ba8f4"
+    }
+  },
+  "parent_review": {
+    "bytes": 6868,
+    "path": "/private/tmp/gcts-native-productive-inventory-cold-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "693acf8b4a3997f7a187bf0815f07b716cc1cab01f7e00fbff03353abe9e619d"
+  },
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 53368,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/native_productive_inventory_cold_v2.py",
+    "sha256": "7c76001ac0f48156732760d6e74daef87f0b7c67571dc4487936c8718627e197"
+  },
+  "source_contract": {
+    "bytes": 28106,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json",
+    "sha256": "7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985"
+  },
+  "source_only": true,
+  "unchanged_regions": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "all_function_anchors.retain",
+    "save_failure_diagnostic",
+    "save_failure_diagnostic.failure_gate",
+    "save_failure_diagnostic.encoded",
+    "save_failure_diagnostic.encoded.append",
+    "save_failure_diagnostic.encoded.visit",
+    "save_failure_diagnostic.write",
+    "encode_result_transport",
+    "ObservedCursor",
+    "ObservedCursor.__init__",
+    "ObservedCursor.context",
+    "ObservedCursor.advance",
+    "ObservedCursor.abort",
+    "ChildControlInterruption",
+    "main",
+    "main.tick",
+    "main.phase",
+    "main.guard",
+    "main.boundary",
+    "main.call",
+    "main.fresh_language",
+    "main.run_inventory"
+  ]
+}

@@ -1,0 +1,47 @@
+--- before
++++ after
+@@ -10,7 +10,7 @@
+ import sys
+ import zlib
+ 
+-CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json', 'sha256': 'ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99', 'bytes': 27094}
++CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-productive-inventory-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '4bed060b7c636be461afa9d8c16612c3f58e0abf3c7e4a0acedc43d187745e50', 'bytes': 27822}
+ 
+ 
+ def need(ok, why):
+@@ -149,7 +149,7 @@
+     for ref in plan['inputs'].values(): pinned(ref)
+     need(plan['source_contract']==CURRENT_CONTRACT, 'literal frozen current operative Source capsule')
+     contract = decode(pinned(plan['source_contract']))
+-    need(contract['schema'] == 'ROOT-native-inventory-startup-diagnostic-cold-Source-contract-v1'
++    need(contract['schema'] == 'ROOT-native-productive-inventory-cold-Source-contract-v1'
+          and contract['sources'] == plan['sources'] and contract['inputs'] == plan['inputs']
+          and contract['limits'] == plan['limits'], 'exact current operative contract')
+     grant = decode(pinned(plan['ROOT_authorization']))
+@@ -159,7 +159,7 @@
+          'whole once grant joins current plan')
+     for role, ref in plan['reviews'].items():
+         review = decode(pinned(ref))
+-        need(review['scope'] == 'ROOT-native-inventory-startup-diagnostic-cold-Source'
++        need(review['scope'] == 'ROOT-native-productive-inventory-cold-Source'
+              and review['source'] == plan['sources']['intake'] and review['sources'] == plan['sources']
+              and review['source_contract'] == plan['source_contract'] and review['source_only'] is True
+              and review['source_review_passed'] is True and review['scientific_calls'] == 0,
+@@ -253,7 +253,7 @@
+              and completion['exit_zero_and_coordinator_deadline_required']is True
+              and completion['body_sha256']==raw_pin(lines[0])['sha256'] and completion['body_bytes']==len(lines[0])
+              and body['schema']=='ROOT-native-conditional-inventory-response-body-v1'
+-             and body['version']=='ROOT-native-inventory-startup-diagnostic-cold-v1'
++             and body['version']=='ROOT-native-productive-inventory-cold-v1'
+              and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+              and body['limits']==plan['limits'] and body['resource_rule']==plan['resource_rule']
+              and body['CLOCK_DOMAIN']=='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+@@ -299,7 +299,7 @@
+              and all(item[key]is False for item in (evidence,body,final)
+                  for key in ('logical_proof_accepted','ROOT_resource_accepted')),
+              'original epoch and strong authority remain unchanged and false')
+-        need(pipeline['schema']=='ROOT-native-conditional-inventory-evidence-v1'
++        need(pipeline['schema']=='ROOT-native-productive-conditional-inventory-evidence-v1'
+              and pipeline['status']in ('UNKNOWN','CHECKED_CONDITIONAL_INVENTORY'),
+              'conditional inventory evidence only; no semantic replay by saved reader')
+         with expanded_path.open('xb')as stream:stream.write(expanded)

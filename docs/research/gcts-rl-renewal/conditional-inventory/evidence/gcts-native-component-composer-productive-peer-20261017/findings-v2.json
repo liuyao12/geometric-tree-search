@@ -1,0 +1,131 @@
+{
+  "schema": "receptor-native-component-productive-slots-findings-v2",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "blockers": [],
+  "source": {
+    "bytes": 30565,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/native_conditional_component_composer_v2.py",
+    "sha256": "b8293737f6a2d13554c6c0e774f4488c30c13c0dfc7f8e4e3cb63ddecd9d4a48"
+  },
+  "source_contract": {
+    "bytes": 15644,
+    "path": "/private/tmp/gcts-native-component-composer-productive-source-20261017/Source-contract-v2.json",
+    "sha256": "af6c12cb9f2ad1c2471246992193bce53b8e090ba93e730ddd157e886b1f91b9"
+  },
+  "findings": [
+    {
+      "id": "PS1",
+      "lines": [
+        19,
+        21
+      ],
+      "conclusion": "Exactly one closed and one open retained slot are the explicit human structural allocation. Only total retained capacity changes1to2; root48/extension96/headquota1/quantum8/work1m/depth128 remain identical. components1 is explicitly rejected; no silent caller compatibility is claimed."
+    },
+    {
+      "id": "PS2",
+      "lines": [
+        433,
+        449
+      ],
+      "conclusion": "A slot is classified only after unchanged full cursor-event rebuild/native membership, whole point legality, fresh union state and full global census join. Empty actual remaining input_ports means closed; nonempty means open. No fixed formula, native rule, row, theorem, atomics or donor route determines class."
+    },
+    {
+      "id": "PS3",
+      "lines": [
+        321,
+        368
+      ],
+      "conclusion": "Unchanged component relation requires exactly two occupied output rows and a genuine strict-prior ordered selected-to-selected read with literal source output equality. All remaining external rows preserve every ordered use/formula, occupied false and fact false; zero assigned mark and absent mark remain distinct. Alternative component states are never unioned together."
+    },
+    {
+      "id": "PS4",
+      "lines": [
+        433,
+        449
+      ],
+      "conclusion": "First fully checked component of each class is retained in encounter order. Later same-class connected candidates still pass fresh native/union/collision work and all exposed types remain in the global ledger before discard. COMPONENT_SLOT logs full component identity preimage and actual retain decision, not digest-only identity."
+    },
+    {
+      "id": "PS5",
+      "lines": [
+        450,
+        493
+      ],
+      "conclusion": "Construction stops on both classes, never closed-only or open-only. Success is assigned only after final full host/binding/marking stability. Normal missing class gives an availability-gap UNKNOWN; own work/depth interruption preserves old UNKNOWN/no operative component semantics. Native/callback/export/data/collision errors still escape unchanged without late census."
+    },
+    {
+      "id": "PS6",
+      "lines": [
+        464,
+        498
+      ],
+      "conclusion": "Observed IDs, missing classes, both-observed, normal-prefix-finished and operative proposal-goal-complete are separate. A valid retained component can remain in unaccepted_complete_components when the other goal or final checking is incomplete; missing class does not invalidate that local union or prove global unavailability."
+    },
+    {
+      "id": "PS7",
+      "lines": [
+        114,
+        319
+      ],
+      "conclusion": "All complete original/decorated selected/excluded and every reached public/base-yielded cursor preimage, including channel4-removed and discarded alternatives, still merge across all cursors before operative acceptance. Exactly17 inherited regions are raw/AST unchanged, including state/candidate/census/member/connectedness helpers."
+    },
+    {
+      "id": "PS8",
+      "conclusion": "Open-input conditional components are permitted by the existing relation. c354 rebuild_tile assigns premise m values at strict-prior reads, legality checks full capacity/m agreement without requiring source t occupancy, and with_obligations explicitly records occupied false/fact false. Unchanged69 generalize/mp streams already cover missing prior formulas. No new mathematical generator/model successor is required merely to retain an open class; finite prefix/head quotas may still miss it."
+    }
+  ],
+  "source_citations_for_open_interface": [
+    {
+      "source": {
+        "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+        "bytes": 27553
+      },
+      "lines": [
+        62,
+        101
+      ],
+      "purpose": "strict-prior ordered reads assign m values; selected output t only"
+    },
+    {
+      "source": {
+        "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+        "bytes": 27553
+      },
+      "lines": [
+        173,
+        194
+      ],
+      "purpose": "full legality does not require read occupancy; explicit pending obligations fact false"
+    },
+    {
+      "source": {
+        "path": "/private/tmp/gcts-proof-search-next-step-source-20261017/reviewed_unit_row_all_six_fallback_v1.py",
+        "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+        "bytes": 24227
+      },
+      "lines": [
+        366,
+        399
+      ],
+      "purpose": "original MP/generalize missing-source relation remains in six-rule streams"
+    }
+  ],
+  "future_integration_gates": [
+    "Current CASEc0d6 expects composerV1/components1/exactly one component. V2 is not a drop-in capsule rebind: a separately authored/reviewed CASE/cold must explicitly consume both slots, preserve each lineage and fresh qualification, and retain UNKNOWN/missing-class meaning.",
+    "Original17/input2/semantic epoch and whole Root native20/512/55/60/90+1 remain separately authenticated. No parent runtime/component/engine result transfers to this changed allocation."
+  ],
+  "future_controls": [
+    "Closed-first and open-first each continue until other slot or declared bound; neither same-class duplicates nor two records of one class satisfy both goals.",
+    "Missing-class normal prefix versus own dirty interruption versus native/export/collision error must remain distinguishable; observed both classes before an unfinished final guard still cannot produce operative success.",
+    "Retained and discarded types must continue complete cross-cursor original/decorated preimage equality, with no alternative t/m union."
+  ],
+  "limitations": [
+    "Source review only, no imports/evaluation/enumeration/model/checker/helper/clock/test/actual/result reads. Availability/runtime/native fit is UNMEASURED.",
+    "Structural allocation is a human heuristic, not learned RL, universal lemma, proof, viable global frontier, domain completeness/EOF/pruning/scheduler/rollback or GCTS advantage.",
+    "Open here means an actual conditional external obligation, not a proven fact or guarantee of nonidentity/useful future transfer."
+  ]
+}
