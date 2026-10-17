@@ -1,0 +1,166 @@
+{
+  "API": {
+    "early_wire": {
+      "bytes": 7697,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/API-wire-v1.json",
+      "sha256": "22dd6dea1942ebfc68e9b3fe43f0afde594311a108b27de62a226d609da2645a"
+    },
+    "errors": "MiningDataError(ValueError).code for definite malformed structural data only; caller callback exceptions propagate; own quotas unfinished.",
+    "mine_families": {
+      "kwargs": [
+        "host",
+        "derivation",
+        "tick",
+        "limits"
+      ],
+      "optional": [
+        "limits"
+      ],
+      "statuses": [
+        "PROPOSALS",
+        "UNKNOWN"
+      ]
+    },
+    "operative_clarifications": {
+      "bytes": 5920,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/API-clarifications-v1.json",
+      "sha256": "fc7ab587df991cbff63d917d26442f3b00bc88660dccfd3f71017f9ad4813c27"
+    },
+    "validate_derivation": {
+      "kwargs": [
+        "host",
+        "derivation",
+        "tick",
+        "limits"
+      ],
+      "optional": [
+        "limits"
+      ],
+      "statuses": [
+        "STRUCTURE_CHECKED",
+        "UNKNOWN"
+      ]
+    }
+  },
+  "Review_ABI": {
+    "required": [
+      "schema",
+      "scope",
+      "source",
+      "source_contract",
+      "sources",
+      "status",
+      "scientific_calls",
+      "author_overlap",
+      "findings"
+    ],
+    "schema": "receptor-family-miner-typed-Source-review-v1",
+    "scope": "receptor-family-miner-Source",
+    "sources": {
+      "miner": {
+        "bytes": 29018,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
+        "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+      }
+    }
+  },
+  "author_identity": "/root/arithmetic_induction authored this miner and prior generic producer/design/c354/engine ancestry; not independent checker/host adapter. Root alone scientific actual grant/execution.",
+  "author_static": {
+    "bytes": 8910,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/author-static-v1.json",
+    "sha256": "2c1c9d6da86c542daeef3074643ec71a8ede6b50eb13c30238a7827e9a8ffdfc"
+  },
+  "delta": {
+    "bytes": 32993,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/Source-delta-v1.json",
+    "sha256": "f9d2855ff18b6876dcfc8ecdd7c3559acb61113fa003fb11e5caab69855117cb"
+  },
+  "flags": {
+    "clocks_called": 0,
+    "compile_without_evaluation": true,
+    "library_activated": false,
+    "module_imported": false,
+    "proof_accepted": false,
+    "runtime_qualified": false,
+    "scientific_calls": 0,
+    "source_functions_executed": 0,
+    "source_only": true,
+    "tests_run": 0,
+    "universal_schema_proved": false
+  },
+  "future_acceptance": [
+    "Independent whole current Source review before any Root actual.",
+    "Fresh Root-supplied independently native-checked search DAGs, visibly separate from conditional component controls, under one cumulative native owning budget.",
+    "For each selected extraction independently expand original ground binding, compare complete primitive formulas/arguments and internal/boundary/order/output/Gamma maps; then fresh actual host admission.",
+    "Consumer freshly binds current input physical rows/keys/occupancy and explicit row_assignment before every independent expansion/native+marked union check; miner provenance never accepted as a fact.",
+    "Negative malformed DAG/host/ref/order/Gamma and capture/repeated-fragment/provenance/identity controls distinct from TimeoutError/UNKNOWN; no actual result inherited from bridge12/12."
+  ],
+  "implemented": [
+    "Generic structurally checked primitive DAG input with exact original host binding, typed native arguments/constructors, strict prior ordered references, original context occurrences and opaque origin.",
+    "Automatic bounded round-robin ancestor sub-DAG cuts, ordered receptor boundaries/repeated edge identity, exposed outputs and complete outgoing use/original label maps.",
+    "DescriptorV2 conversion with literal primitive semantics/arguments, explicit VARIABLE scope, conservative TERM/FORMULA repeated-fragment proposals and full ground bindings/actual abstraction maps.",
+    "Complete original request and all per-cut provenance/structural costs; equality-checked full preimages for digest reuse."
+  ],
+  "schema": "receptor-family-miner-Source-contract-v1",
+  "scope": "receptor-family-miner-Source",
+  "scope_and_gaps": [
+    "No native proof verification occurs. Even a caller-supplied independently-verified-origin claim is merely retained data. Conditional component fixture extraction is never a discovered proof.",
+    "A mined generalization is not a universally valid lemma/schema; every future ground instance must pass current independent full expansion and original host native membership/full marked point union.",
+    "No producer/checker/adapter import or call, library activation, engine advice, row placement, current physical binding, degree/cursor/EOF, scheduler/rollback or proof-word execution.",
+    "Bounded cut growth/catalogue is a proposal heuristic, not all cuts, all patterns, complete unification, family absence or base candidate pruning. Prefix UNKNOWN remains UNKNOWN/proposal-only.",
+    "All formula/term constructors and host primitive argument kinds supported structurally. Symbols and LITERAL arguments not generalized; nested source family calls require prior full primitive expansion, not silent block admission.",
+    "Original complete Gamma/authority remains in request; used context occurrences explicit. Selected body assumptions retain original index; cut assumption boundaries introduce visibly mapped real assumption nodes upon future expansion, never fake occupied premises.",
+    "Distinct cut node source IDs are conservatively distinct ports; original source input sharing policies preserved. Actual physical alias/overlap remains separately checked by host adapter.",
+    "Ground roundtrip preservation is a Source implementation obligation only, flag false. No module evaluation, tests, native runtime or fit claim in this packet.",
+    "Original Source17/input2/epoch never rewritten. New current executable map may add miner separately; existing producer/checker/adapter Sources and current engine/fallback/advice remain untouched."
+  ],
+  "source": {
+    "bytes": 29018,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
+    "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+  },
+  "sources": {
+    "miner": {
+      "bytes": 29018,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
+      "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+    }
+  },
+  "wire_dependencies_not_imports": {
+    "adapter_contract": {
+      "bytes": 24585,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-contract-v3.json",
+      "sha256": "1d56488b42aa5c19ffed1e58a86dc647062a14d79580c9c13e2e3ba08d3d209d"
+    },
+    "checker_contract": {
+      "bytes": 10672,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/Source-contract-v1.json",
+      "sha256": "816081b8b284bfab55aa6eb3017d816ea730c663255ab738750f210ed4bbde23"
+    },
+    "expansion_checker": {
+      "bytes": 56670,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "family_producer": {
+      "bytes": 51898,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "producer_contract": {
+      "bytes": 8217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-contract-v1.json",
+      "sha256": "da296cc6af40a83abd145efe3a534a816d10d9847175ab62fb535de5ae9790a4"
+    },
+    "six_rule_adapter": {
+      "bytes": 25205,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    }
+  }
+}

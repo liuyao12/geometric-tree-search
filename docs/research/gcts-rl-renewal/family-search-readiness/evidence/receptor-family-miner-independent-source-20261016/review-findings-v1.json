@@ -1,0 +1,220 @@
+{
+  "concrete_blockers": [],
+  "manual_findings": [
+    {
+      "finding": "Whole builtin copies of host and arbitrary flat primitive DAG are structurally checked: exact host binding, native constructors/signature/scope, separately namespaced opaque IDs, strict prior node refs, ordered primitive arity, exact original Gamma indexes, output formulas and opaque origins. No native inference/rule/proof verification occurs, so even SEARCH_DERIVATION or purported verified-origin metadata supplies no proof authority.",
+      "id": "MINER-01",
+      "lines": [
+        100,
+        158
+      ]
+    },
+    {
+      "finding": "Round-robin anchors grow backward ordered ancestor prefixes; source topology is restored for the descriptor body. Every ordered use remains in boundary_edge_map, including repeated edges. One external ref has one boundary port; repeated refs retain ordered multiplicity. Internal assumptions remain primitive body nodes; excluded assumptions/hypotheses become actual indexed Gamma ports, requiring real assumption materialization in future expansion.",
+      "id": "MINER-02",
+      "lines": [
+        242,
+        273,
+        401,
+        440
+      ]
+    },
+    {
+      "finding": "Anchor and every selected node consumed outside the cut or named by original outputs are exposed, with all output labels and outgoing ordered consumer uses. Complete original request retains pass-through external outputs. Deduplicated exact selected-node cuts do not erase a different anchor: each cut consists only of one anchor and its strict ancestors, making that anchor the unique maximal source-order node in the cut.",
+      "id": "MINER-03",
+      "lines": [
+        242,
+        273,
+        339,
+        387
+      ]
+    },
+    {
+      "finding": "TERM/FORMULA repeated fragments are grouped by full literal native fragment and bound/free name class; lexical bound IDs, explicit formal argument dependencies and external free allowances are retained. A native shadowing quantifier is placed in an opaque formula abstraction rather than silently alpha-renamed. Reusing a scope-class abstraction across lexical binder IDs passes the current binder IDs as explicit arguments. Symbols and LITERAL rule arguments remain literal. Fresh independent ground roundtrip remains required; no universal lemma claim follows.",
+      "id": "MINER-04",
+      "lines": [
+        187,
+        235,
+        286,
+        337
+      ]
+    },
+    {
+      "finding": "Emitted ordinary descriptorV2 uses fresh ASCII step/port/variable/meta IDs, dependency-free full primitive bodies, existing typed argument wrappers, original root binding, complete substitution, output bindings and full preimage equality census. This is schema-compatible in structure with f32e/4358, but no dynamic expansion/check is executed here. Same family ID occurrences retain separate origin/cut/maps rather than discarding provenance.",
+      "id": "MINER-05",
+      "lines": [
+        286,
+        387
+      ]
+    },
+    {
+      "finding": "Original external input sharing policies are preserved; distinct cut-node identities are conservative DISTINCT ports and repeated identical refs share one port. Physical full-key aliasing is outside syntax mining and must be rechecked in adapter3. source_port_bindings is origin-roundtrip data: mined-cut sources are not the actual six-rule row/source schema, and even occupied source metadata never has fact_accepted true.",
+      "id": "MINER-06",
+      "lines": [
+        339,
+        387
+      ]
+    },
+    {
+      "finding": "All proposal prefixes and catalogue/cut/family/fragment bounds remain heuristic. Literal extraction precedes optional repeated-fragment work; completed records can survive later own quota interruption. mining_complete is always false, so UNKNOWN/empty/prefix never establishes family absence, degree, EOF or pruning. _Work wraps external callback exceptions and public endpoints rethrow the identical original object; only private own unfinished work is converted to a proposal-only prefix.",
+      "id": "MINER-07",
+      "lines": [
+        64,
+        99,
+        389,
+        445
+      ]
+    },
+    {
+      "finding": "No actual engine batch or row_assignment is produced. A future authenticated caller must dedup a selected registry by full descriptor preimages while keeping occurrence records, choose physical rows, replace every current external source/occupancy from the real checked state, then freshly expand/check/adapt the full instance. Current consumer2 cannot consume miner records directly; origin source_port_bindings cannot be passed as current physical facts. This is a declared integration boundary, not a hidden native admission or proof route.",
+      "id": "MINER-08",
+      "lines": [
+        339,
+        445
+      ]
+    }
+  ],
+  "raw_refs": [
+    {
+      "bytes": 29018,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
+      "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+    },
+    {
+      "bytes": 32993,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/Source-delta-v1.json",
+      "sha256": "f9d2855ff18b6876dcfc8ecdd7c3559acb61113fa003fb11e5caab69855117cb"
+    },
+    {
+      "bytes": 8910,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/author-static-v1.json",
+      "sha256": "2c1c9d6da86c542daeef3074643ec71a8ede6b50eb13c30238a7827e9a8ffdfc"
+    },
+    {
+      "bytes": 7697,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/API-wire-v1.json",
+      "sha256": "22dd6dea1942ebfc68e9b3fe43f0afde594311a108b27de62a226d609da2645a"
+    },
+    {
+      "bytes": 5920,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/API-clarifications-v1.json",
+      "sha256": "fc7ab587df991cbff63d917d26442f3b00bc88660dccfd3f71017f9ad4813c27"
+    },
+    {
+      "bytes": 24585,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-contract-v3.json",
+      "sha256": "1d56488b42aa5c19ffed1e58a86dc647062a14d79580c9c13e2e3ba08d3d209d"
+    },
+    {
+      "bytes": 10672,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/Source-contract-v1.json",
+      "sha256": "816081b8b284bfab55aa6eb3017d816ea730c663255ab738750f210ed4bbde23"
+    },
+    {
+      "bytes": 56670,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    {
+      "bytes": 51898,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 8217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-contract-v1.json",
+      "sha256": "da296cc6af40a83abd145efe3a534a816d10d9847175ab62fb535de5ae9790a4"
+    },
+    {
+      "bytes": 25205,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    {
+      "bytes": 29527,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/module-addition.patch",
+      "sha256": "4eda846d7805f605ffb5c47965c162b510b7b5c6df93b25f4922a76b6f76aa18"
+    },
+    {
+      "bytes": 29527,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/module-removal.patch",
+      "sha256": "3bd11dabf7a8a21caec6b520220e36418fc93362064792359de0005a09cc6b88"
+    }
+  ],
+  "review_method": "Whole445-line Source, current contract/handoff/earlyAPI/operative clarifications read; full empty-parent addition/removal/actual patches and dependency capsules raw checked, AST and compile-without-evaluation only. Relevant producer template/abstraction/port syntax inspected as raw Source; no native, producer, checker, model, test, clock, actual or donor/target result call/read.",
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "receptor-family-miner-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 29018,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
+    "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+  },
+  "source_contract": {
+    "bytes": 9298,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/Source-contract-v1.json",
+    "sha256": "7b3f79d71eebccb0f61da51e0e79e2d68c74310d2e9796a5f2dc0ef0f1a13cd4"
+  },
+  "source_only": true,
+  "static_check_count": 13,
+  "static_checks": [
+    {
+      "name": "exact75f453_code_7b3f79_contract_e301_handoff",
+      "passed": true
+    },
+    {
+      "name": "full_Source_addition_empty_parent_removal",
+      "passed": true
+    },
+    {
+      "name": "both_actual_unified_addition_and_full_removal",
+      "passed": true
+    },
+    {
+      "name": "stdlib_only_no_native_producer_checker_engine_file_clock_calls",
+      "passed": true
+    },
+    {
+      "name": "exact_validate_derivation_API",
+      "passed": true
+    },
+    {
+      "name": "exact_mine_families_API",
+      "passed": true
+    },
+    {
+      "name": "strict_prior_topology_whole_ordered_refs_Gamma_and_outputs",
+      "passed": true
+    },
+    {
+      "name": "all_edges_boundary_source_output_occurrence_maps_retained",
+      "passed": true
+    },
+    {
+      "name": "canonical_family_preimage_full_collision_census_occurrences_not_discarded",
+      "passed": true
+    },
+    {
+      "name": "safe_literal_variant_before_bounded_fragment_catalogue",
+      "passed": true
+    },
+    {
+      "name": "external_callback_identity_propagates_not_UNKNOWN",
+      "passed": true
+    },
+    {
+      "name": "no_origin_proof_roundtrip_pruning_or_runtime_authority",
+      "passed": true
+    },
+    {
+      "name": "Source_compile_without_evaluation_only",
+      "passed": true
+    }
+  ]
+}

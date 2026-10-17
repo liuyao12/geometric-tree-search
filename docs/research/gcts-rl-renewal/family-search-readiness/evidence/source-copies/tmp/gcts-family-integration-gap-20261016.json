@@ -1,0 +1,162 @@
+{
+  "author_overlap": "Reviewer authored miner, producer/design, historical parent engine/kernel/checker dependencies; current consumer/family-engine additions and host adapter are separately authored. This plan is not an independent review of the reviewer-owned components.",
+  "engine_activated": false,
+  "evidence_basis": {
+    "current_turn": "Master whole raw read and miner Source excerpts (DAG validation/cut/descriptor/full provenance records) read. Integration uses the already whole-reviewed frozen current composition; no actual, result, donor or target proof-word data read.",
+    "io_scope": "Original blocked handles preserved without restart; Root instructed no repeated polling. No fresh hash or whole-read claim for the stalled rereads.",
+    "source_refs": {
+      "checker": {
+        "bytes": 56670,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+        "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+      },
+      "composition_contract": {
+        "bytes": 32707,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-search-consumer-source-20261016/Source-contract-v3.json",
+        "sha256": "0af4cf1dc7269323a159b664a78df6f7a041f0f2731f03a6d7bf6ebaa48ca2df"
+      },
+      "composition_review": {
+        "bytes": 9942,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-search-consumer-independent-source-20261016/typed-Source-review-v3.json",
+        "sha256": "7aea4ade7073d2b621b425d77815d5e550ca2261eb07024a871858a91d94e5a2"
+      },
+      "consumer": {
+        "bytes": 13040,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-search-consumer-source-20261016/receptor_family_preference_consumer_v2.py",
+        "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+      },
+      "engine": {
+        "bytes": 76668,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-search-consumer-source-20261016/receptor_family_search_engine_v3.py",
+        "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+      },
+      "expander": {
+        "bytes": 51898,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+        "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+      },
+      "family_adapter": {
+        "bytes": 25205,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+        "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+      },
+      "master": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      "miner": {
+        "bytes": 29018,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
+        "sha256": "75f453f90afcef7d740b36a0267e405dc35a00f14f6e9c20c5ca66e2a692edc8"
+      },
+      "miner_contract": {
+        "bytes": 9298,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-miner-source-20261016/Source-contract-v1.json",
+        "sha256": "7b3f79d71eebccb0f61da51e0e79e2d68c74310d2e9796a5f2dc0ef0f1a13cd4"
+      },
+      "point_adapter": {
+        "bytes": 29197,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py",
+        "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+      }
+    },
+    "unread_current_turn": [
+      "Miner API-wire-v1.json and API-clarifications-v1.json reread stalled after complete master output.",
+      "Host adapter/engine requested excerpts stalled after miner grep output; their prior whole Source review remains the available evidence.",
+      "Expander API-wire-v1.json and matcher-body reread stalled before output; exact candidate-binding iterator keyword details require confirmation before implementation."
+    ]
+  },
+  "family_engine_qualified": false,
+  "first_experiment": {
+    "bridge": "Mine the bounded generic cut prefix and take the first full-preimage-distinct eligible multi-node record by declared source/cut/variant order. First require exact source-ground roundtrip: expander+independent checker+native adapter reproduce every original primitive witness/read/output map and full point union. Then test a fresh compatible current receptor binding/row assignment through the ordinary consumer at an actual selected BRANCH; no forced attachment, hardcoded family nodes or synthetic scheduler decision. Missing actual attachment is an explicit unqualified gap.",
+    "discovery": "Run a separately declared ordinary familyengine3/a197 with callbacks None and the unchanged original language/marking/scheduler. Deterministically capture the first engine-generated coherent connected DAG with at least two primitive nodes in trace order; no supplied rule template, selected target route or successful-outcome selection. Obtain the whole native-checked source state/ancestry through a guarded public capture seam. If complete proof closure is unavailable, label it a conditional search-generated derivation with explicit boundary obligations; never a discovered theorem. If no eligible DAG is observed inside its original bound, report UNKNOWN/no mining opportunity.",
+    "interpretation": "A roundtrip/continuation pass establishes a local automatic extraction-and-use bridge. It establishes neither universal family validity nor search benefit. Conditional donor contexts remain conditional. Speed/branch effects require both independently accepted comparable endpoints; otherwise report unknown with literal outcomes. No RL or full GCTS-learning claim.",
+    "matched_baseline": "Use identical engine3/a197/runtime Sources, original17/input2 epoch, problem, frozen marking, branch policy, complete canonical fallback and original20/512 limits. Ordinary arm has family callbacks None; treatment enables only the fresh mined provider/consumer. Baseline is not the separately retested ea300 composition. Freeze the descriptor/mining provenance before both evaluation arms; discovery is a separate charged stage, and cold treatment includes matching/row enumeration/expansion/checking/output costs. Report discovery cost and per-arm total cost, not only search nodes.",
+    "minimum_observations": [
+      "Full source DAG and current binding, actual engine origin trace/state, native source recheck, complete mined record and descriptor/substitution/cut maps.",
+      "Fresh current all-port instance, row assignment, expansion/checker/adapter receipts, actual engine BRANCH and family/canonical event.",
+      "For integration beyond roundtrip, at least one genuine later continuation and full root/child rollback must be tested; already-qualified syntax cases cannot substitute for that evidence."
+    ],
+    "purpose": "Automatic extraction and current-receptor roundtrip from a fresh search-generated DAG, followed by a matched ordinary-search comparison only after current family composition controls qualify."
+  },
+  "implemented_chain": [
+    {
+      "component": "miner",
+      "evidence": "miner lines103-133,246-386,401-445",
+      "implemented": "Validates literal primitive-DAG shape/typed edges, proposes bounded generic cuts and conservative parameterizations, retains ordered boundary/body/output/provenance maps and a full descriptor/substitution. source_port_bindings describes source derivation provenance.",
+      "not_authority": "Origin metadata and accepted-looking source labels are untrusted; syntax extraction does not prove source derivation, universal validity or current attachment."
+    },
+    {
+      "component": "expander+checker",
+      "evidence": [
+        "expander",
+        "checker"
+      ],
+      "implemented": "Registry closure, typed/capture-safe simultaneous instantiation and complete primitive-DAG expansion with independent substantive reconstruction.",
+      "not_authority": "Syntax/conditional expansion is not native six-rule proof admission; incomplete binding remains UNKNOWN."
+    },
+    {
+      "component": "family_adapter",
+      "evidence": "family_adapter; independently reviewed current3",
+      "implemented": "Actual host compatibility, explicit physical rows, original/decorated membership, all ordered reads, per-frame physical sharing and complete marked union.",
+      "not_authority": "No candidate graph install or scheduler/degree authority."
+    },
+    {
+      "component": "consumer+engine",
+      "evidence": "consumer adapt/choose/CONTINUATION; engine _consume_family/_select_family_branch/_adopt_family_branch",
+      "implemented": "Fresh whole current expansion/adapter checks at actual global BRANCH; exact pending-member identity and input occupancy refresh; complete exposed original/decorated prototype census. One ordinary primitive placement inside owned child transaction.",
+      "not_authority": "No automatic mining, receptor-to-row search, facts from absent inputs, family-derived degree/EOF/pruning, or qualification inheritance."
+    }
+  ],
+  "missing_transformations": [
+    {
+      "from": "Fresh engine-generated candidate/selected records",
+      "id": "SEARCH_DAG_EXTRACTION",
+      "missing": "No automatic checked collector presently wired to miner.",
+      "required": "Capture one coherent full public state/returned trace before restoration; independently recheck native selected ancestry under the same original host. For each primitive preserve rule witness/arguments and ordered absolute source rows derived from original ordered offsets. Map occupied source placements to stable node IDs; assumptions to exact Gamma occurrences; unresolved reads to explicit INPUT obligations with fact_accepted false. Preserve seeds/fixed boundary separately from engine-generated PLACE origins. Do not treat a later last_observed_state or returned event prefix as a proof by label.",
+      "to": "receptor-family-primitive-derivation-DAG-v1"
+    },
+    {
+      "from": "miner families[*] descriptor/substitution/source_node_map/boundary maps",
+      "id": "CUT_TO_REGISTRY",
+      "missing": "No assembly/provenance policy currently feeds consumer instances.",
+      "required": "Retain all full descriptor identities, dependencies, cut/source maps and generalization scope. Flat miner dependencies are empty; later composition must explicitly retain acyclic closure. Do not deduplicate by conclusion/hash alone or call an abstracted family a universally proved lemma.",
+      "to": "registry list + family_id + complete literal preimages"
+    },
+    {
+      "from": "source_port_bindings",
+      "id": "CURRENT_RECEPTOR_BINDING",
+      "missing": "No bounded source-to-current receptor matcher/provider integrated.",
+      "required": "Source cut provenance cannot be copied as current physical provenance. Jointly bind all input/hypothesis/output formulas, parameters and repeated-port/source constraints. For each current root INPUT supply adapter source {schema:receptor-family-six-rule-input-source-v1,row,original_full_key}, true actual occupancy, and fact_accepted false; original_full_key is the actual selected bare key only when occupied, otherwise null. Hypotheses remain exact original Gamma occurrences, not fabricated earlier proof rows. Unbound/non-pattern/ambiguous remainder requires bounded candidate bindings and complete forward all-port confirmation or UNKNOWN.",
+      "to": "fresh host and all current port_bindings"
+    },
+    {
+      "from": "logical flat node/input refs and selected actual branch row",
+      "id": "PHYSICAL_ROW_ASSIGNMENT",
+      "missing": "No row-assignment generator; source rows are not automatically reusable current rows.",
+      "required": "Enumerate bounded candidate row assignments with every ordered read strictly earlier than its consumer, all actual current literals compatible, exact per-callframe DISTINCT/ALLOW sharing and duplicate full-key semantics. At least one unselected member must occupy the scheduler-selected BRANCH row; never select a different row or install the family as one cell. Existing placements may be reused only as identical complete checked packets.",
+      "to": "receptor-family-six-rule-row-assignment-v1 {node_rows,input_rows}"
+    },
+    {
+      "from": "completed substitution/current ports/row map",
+      "id": "FRESH_INSTANCE_AND_BATCH",
+      "missing": "No current provider performs these transformations or charges their complete cost.",
+      "required": "Re-expand with current host and completed bindings, freshly independently check/adapt. Instance exact fields: registry,family_id,host,substitution,port_bindings,proposal,row_assignment. Batch exact fields: schema,status,binding,marking_id,state_sha256,decision,instances; schema receptor-family-primitive-preference-batch-v1, maximum8 preferences, UNKNOWN with empty instances. Return via fixed family_proposer(state,decision,tick), with independently guarded family_consumer. Engine3 then repeats fresh checks/census; producer output is never a native receipt.",
+      "to": "ordinary consumer instance and preference batch"
+    }
+  ],
+  "next_action": "Root may authorize a narrow Source collector/provider design and fresh bridge component actual after confirming the unread matcher ABI; no implementation, model execution or actual grant is contained in this plan.",
+  "proof_discovered": false,
+  "qualification_boundary": {
+    "baseline_six_endpoint_retest": "Root reports actuals done once; final strict saved reconciliation pending at this note. No qualification inherited.",
+    "family_current": "Current composition is a197 + consumer2d680 + engine3da1 with Source-only conditional review. Family controls/activation remain unqualified.",
+    "old_scope": "Original current six-rule universe, original17/input2 binding/epoch, all full primitive admission checks and complete fallback remain unchanged.",
+    "required_before_search_comparison": "Fresh current-composition global priority/fallback, pending continuation/refreshed-source, collision/malformed-later-instance, actual interruption and exact owned rollback gates. Existing proofchecker/descriptor tests and baseline qualification are separate evidence."
+  },
+  "schema": "receptor-family-miner-integration-gap-plan-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "status": "PROPOSED_SOURCE_ONLY_NOT_IMPLEMENTED"
+}

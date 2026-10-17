@@ -1,0 +1,157 @@
+{
+  "endpoint_links": {
+    "child-UNKNOWN": {
+      "disposition": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-child-UNKNOWN-disposition-v1.json",
+      "native": "evidence/unit-row-call-local-ROOT-20261016/MR-child-UNKNOWN-external-v1/native-terminal.json",
+      "plan": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-child-UNKNOWN-plan-v1.json"
+    },
+    "global-forced-dead": {
+      "disposition": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-global-forced-dead-disposition-v1.json",
+      "native": "evidence/unit-row-call-local-ROOT-20261016/MR-global-forced-dead-external-v1/native-terminal.json",
+      "plan": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-global-forced-dead-plan-v1.json"
+    },
+    "router-protocol": {
+      "disposition": null,
+      "native": "evidence/unit-row-call-local-ROOT-20261016/MR-router-protocol-external-v1/native-terminal.json",
+      "plan": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-router-protocol-plan-v1.json"
+    },
+    "short-EOF": {
+      "disposition": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-short-EOF-disposition-v1.json",
+      "native": "evidence/unit-row-call-local-ROOT-20261016/MR-short-EOF-external-v1/native-terminal.json",
+      "plan": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-short-EOF-plan-v1.json"
+    },
+    "singleton-transfer": {
+      "disposition": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-singleton-transfer-disposition-v1.json",
+      "native": "evidence/unit-row-call-local-ROOT-20261016/MR-singleton-transfer-external-v1/native-terminal.json",
+      "plan": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-singleton-transfer-plan-v1.json"
+    },
+    "two-transfer": {
+      "disposition": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-two-transfer-disposition-v1.json",
+      "native": "evidence/unit-row-call-local-ROOT-20261016/MR-two-transfer-external-v1/native-terminal.json",
+      "plan": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-two-transfer-plan-v1.json"
+    }
+  },
+  "links": {
+    "adapter-contract": "evidence/unit-row-baseline-readiness-source-20261016/Source-contract-v1.json",
+    "adapter-review": "evidence/source-copies/gcts-call-local-recovery-20261016/adapter-peer-review-v1.json",
+    "adapter-root": "evidence/unit-row-call-local-ROOT-20261016/ROOT-adapter-Source-review-v1.json",
+    "baseline-adapter": "evidence/unit-row-baseline-readiness-source-20261016/marked_unit_row_adapter_v3.py",
+    "caller": "evidence/unit-row-call-local-qualification-cold-ROOT-source-20261016/ROOT_call_local_projection_qualification_cold_v1.py",
+    "caller-contract": "evidence/unit-row-call-local-qualification-cold-ROOT-source-20261016/Source-contract-v2.json",
+    "caller-peer": "evidence/unit-row-call-local-qualification-cold-independent-source-20261016/typed-Source-review-v2.json",
+    "caller-root": "evidence/unit-row-call-local-ROOT-20261016/ROOT-caller-Source-review-v1.json",
+    "consumer-code": "evidence/receptor-family-search-consumer-source-20261016/receptor_family_preference_consumer_v2.py",
+    "family-contract": "evidence/receptor-family-search-consumer-source-20261016/Source-contract-v3.json",
+    "family-engine": "evidence/receptor-family-search-consumer-source-20261016/receptor_family_search_engine_v3.py",
+    "family-negative": "evidence/receptor-family-search-consumer-independent-source-20261016/typed-Source-review-v2.json",
+    "family-review": "evidence/receptor-family-search-consumer-independent-source-20261016/typed-Source-review-v3.json",
+    "integration-plan": "evidence/source-copies/tmp/gcts-family-integration-gap-20261016.json",
+    "miner-code": "evidence/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
+    "miner-contract": "evidence/receptor-family-miner-source-20261016/Source-contract-v1.json",
+    "miner-findings": "evidence/receptor-family-miner-independent-source-20261016/review-findings-v1.json",
+    "miner-review": "evidence/source-copies/receptor-family-patch-recovery-20261016/miner-typed-Source-review-v1.json",
+    "partial-result": "evidence/unit-row-call-local-ROOT-20261016/ROOT-partial-qualification-readout-v1.json",
+    "saved-closer": "evidence/unit-row-call-local-qualification-saved-source-20261016/ROOT_close_call_local_qualification_saved_v1.py",
+    "saved-contract": "evidence/source-copies/gcts-call-local-saved-contract-20261016/Source-contract-v1.json",
+    "saved-decoder": "evidence/unit-row-call-local-qualification-saved-source-20261016/ROOT_decode_call_local_qualification_saved_v1.py",
+    "saved-peer": "evidence/source-copies/gcts-call-local-saved-peer-20261016/typed-Source-review-v1.json",
+    "saved-root": "evidence/unit-row-call-local-ROOT-20261016/ROOT-saved-reader-Source-review-v1.json"
+  },
+  "qualification": {
+    "GCTS_advantage_claimed": false,
+    "RL_accepted": false,
+    "aggregate_saved_closer_not_run": true,
+    "all_actuals_terminal_reaped": true,
+    "archive_blocker": {
+      "bytes": 8535,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/MR-router-protocol-owned-v1/response.jsonl",
+      "reason": "macOS cloud-dataless archive: read stalls. Decoded payload retained, but full saved wire closure is pending; no inferred case count or unchanged actual rerun."
+    },
+    "complete_GCTS_model_accepted": false,
+    "confirmed_qualified_case_count": 8,
+    "endpoint_summaries": [
+      {
+        "exit_code": 0,
+        "expected_cases": 2,
+        "mode": "router-protocol",
+        "native_ns": 2949681000,
+        "peak_bytes": 52805632,
+        "qualified_cases": null,
+        "status": "archive-pending"
+      },
+      {
+        "exit_code": 2,
+        "expected_cases": 2,
+        "mode": "global-forced-dead",
+        "native_ns": 20113752000,
+        "peak_bytes": 50872320,
+        "qualified_cases": 0,
+        "status": "native-timeout"
+      },
+      {
+        "exit_code": 0,
+        "expected_cases": 2,
+        "mode": "singleton-transfer",
+        "native_ns": 19000121000,
+        "peak_bytes": 51019776,
+        "qualified_cases": 2,
+        "status": "qualified"
+      },
+      {
+        "exit_code": 0,
+        "expected_cases": 2,
+        "mode": "two-transfer",
+        "native_ns": 18081130000,
+        "peak_bytes": 53985280,
+        "qualified_cases": 2,
+        "status": "qualified"
+      },
+      {
+        "exit_code": 0,
+        "expected_cases": 2,
+        "mode": "short-EOF",
+        "native_ns": 5376993000,
+        "peak_bytes": 50380800,
+        "qualified_cases": 2,
+        "status": "qualified"
+      },
+      {
+        "exit_code": 0,
+        "expected_cases": 2,
+        "mode": "child-UNKNOWN",
+        "native_ns": 4812240000,
+        "peak_bytes": 50544640,
+        "qualified_cases": 2,
+        "status": "qualified"
+      }
+    ],
+    "family_engine_qualified": false,
+    "logical_proof_accepted": false,
+    "new_theorem_accepted": false,
+    "pending_archive_case_count": 2,
+    "previous_8_of_12_not_inherited": true,
+    "qualification_complete": false,
+    "qualified_cases": [
+      "MR-05-native-singleton-full-origin-transfer",
+      "MR-06-current-sole-consumption-and-owned-rollback",
+      "MR-07-native-TWO-full-origin-transfer",
+      "MR-08-refreshed-witnesses-global-branch-and-owned-rollback",
+      "MR-09-real-short-stream-and-fresh-complete-keySET",
+      "MR-10-legacy-implication-EOF-remains-unaccepted",
+      "MR-11-actual-child-native-first-declared-UNKNOWN",
+      "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+    ],
+    "required_case_count": 12,
+    "routed_engine_qualification_accepted": false,
+    "schema": "ROOT-call-local-qualification-partial-readout-v1",
+    "scientific_actuals_once": 6,
+    "scientific_replay": false,
+    "source_contract": {
+      "bytes": 37873,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-qualification-cold-ROOT-source-20261016/Source-contract-v2.json",
+      "sha256": "2b893083d2e26fe8a7e2e78918cd23e1b1254001890c1da17d80bf6932f18052"
+    },
+    "unqualified_timeout_case_count": 2
+  },
+  "schema": "ROOT-family-search-readiness-report-v1"
+}

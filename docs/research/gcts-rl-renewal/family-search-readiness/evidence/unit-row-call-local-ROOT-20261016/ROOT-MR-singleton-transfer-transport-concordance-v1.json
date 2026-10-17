@@ -1,0 +1,32 @@
+{
+  "all_full_record_bytes_retained": true,
+  "compressed_bytes": 122307,
+  "compressed_sha256": "2edf71386daede3d29eb4232af4d126bcbcd25c1763b81a27ebd9c660ccc7b2f",
+  "encoded_cap_bytes": 4194304,
+  "encoded_file": {
+    "bytes": 163399,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/MR-singleton-transfer-owned-v1/engine-result.json",
+    "sha256": "19c5d225bcd1bcf95c41ada0d16aaf885146033cdfafaf30eb27a5aa3b861f8a"
+  },
+  "encoding": "zlib+base64",
+  "expanded_cap_bytes": 16777216,
+  "expanded_file": {
+    "bytes": 3149485,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/ROOT-MR-singleton-transfer-expanded-result-v1.json",
+    "sha256": "ebb49a5febbc53f55447e9abe58c159c138698e44b80a246a5c5f306260d4211"
+  },
+  "logical_proof_accepted": false,
+  "plan": {
+    "bytes": 8990,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/ROOT-MR-singleton-transfer-plan-v1.json",
+    "sha256": "da151fd14c60b6645d922ecc43fd7d2a947ce892e125fdc18960eba3441a3d95"
+  },
+  "resource_success_accepted": false,
+  "schema": "ROOT-lossless-saved-transport-concordance-v1",
+  "scientific_replay": false,
+  "single_complete_zlib_stream": true,
+  "strict_base64_reencoded": true,
+  "strict_canonical_JSON_LF": true,
+  "trailing_or_unconsumed_bytes": false,
+  "trajectory_accepted": false
+}
