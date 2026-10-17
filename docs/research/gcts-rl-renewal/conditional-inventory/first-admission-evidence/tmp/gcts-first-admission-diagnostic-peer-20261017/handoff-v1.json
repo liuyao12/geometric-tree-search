@@ -1,0 +1,22 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 4285,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-peer-20261017/findings-v1.json",
+    "sha256": "b2973b93a2a2eadfdfa0d267c8fad0ef347ae2a5b89cdd7af29a5107079b3931"
+  },
+  "review": {
+    "bytes": 2279,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "806cbcf0cbeefb9a5e35bdefbca1346d09ddea46dc0b81064068383ce27a1c12"
+  },
+  "schema": "first-admission-diagnostic-independent-review-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 9007,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-peer-20261017/static-review-v1.json",
+    "sha256": "1e2d3b3c3be4efe195c408dbdd24541b16ea43138a2284bf6e5e02df4f91df70"
+  }
+}

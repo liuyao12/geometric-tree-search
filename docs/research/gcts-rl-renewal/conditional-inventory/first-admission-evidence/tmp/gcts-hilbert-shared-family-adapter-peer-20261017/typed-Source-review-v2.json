@@ -1,0 +1,48 @@
+{
+  "Source_pass": true,
+  "actual_execution_authorized": false,
+  "author": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "Own generic checker4358 and arithmetic/engine ancestry; no authorship of this adapter. Full findings disclosure.",
+  "findings": {
+    "bytes": 2897,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/findings-v2.json",
+    "sha256": "b5c64095a84b1c490caf8a4ddae84822e08a9fc77a8737ee786f90c7f465fda6"
+  },
+  "no_actual_or_result_inputs_read": true,
+  "preserved_negative": {
+    "bytes": 1990,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "57bb9caaf865a62879bf21749575e7582fb8470225c23af66ca1b61cb23cf25f"
+  },
+  "resolved_blocker": "HILBERT-ADAPTER-UNKNOWN-REQUEST-1",
+  "review_kind": "genuine retained whole Source plus exact current repair/API/contract review",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "Hilbert-shared-family-native-adapter-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Hilbert-shared-family-native-adapter-Source",
+  "source": {
+    "bytes": 28354,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/hilbert_shared_family_admission_adapter_v2.py",
+    "sha256": "203cb24a4e29ccf1b06b9293d854b15fa96d25a0fa25b3abd5eecfdea05b0d99"
+  },
+  "source_contract": {
+    "bytes": 10299,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/Source-contract-v2.json",
+    "sha256": "78ae00f6a5bf6001a19ceece71b1ed5bd0d735d651da631ae968bd682ef12049"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "hilbert_native_adapter": {
+      "bytes": 28354,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/hilbert_shared_family_admission_adapter_v2.py",
+      "sha256": "203cb24a4e29ccf1b06b9293d854b15fa96d25a0fa25b3abd5eecfdea05b0d99"
+    }
+  },
+  "static_audit": {
+    "bytes": 11142,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/static-review-audit-v2.json",
+    "sha256": "a819026d14bb87dcae4f15dd79cce8a329696526387a288ecc4a9e0b12e78fb4"
+  }
+}

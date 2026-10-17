@@ -1,0 +1,98 @@
+{
+  "VERSION": "hilbert-shared-family-current-selected-DAG-collector-v1",
+  "collect_derivation": "collect_derivation(*,graph,point_core,host_adapter,context_checker,logical_oracle,closed_inputs,qualification,prototype_census,origin,tick,limits=None)",
+  "derivation": {
+    "fields": [
+      "schema",
+      "host_binding",
+      "inputs",
+      "hypotheses",
+      "nodes",
+      "outputs",
+      "origin"
+    ],
+    "hypotheses": "[]: selected assumptions remain primitive nodes with original indexed Gamma licenses. Full ordered Gamma occurrence map remains separately retained.",
+    "input_provenance_schema": "hilbert-collected-unoccupied-source-v1; exact current row/model_epoch/context_id/binding/state SHA and selected_key=None. Not a future adapter physical input-source binding.",
+    "inputs": "One i<row> per actual unoccupied read row, only after literal/code agreement across readers; sharing ALLOW_SAME_EXACT_PRIOR_SOURCE, occupiedFalse/factFalse.",
+    "nodes": "All actual selected nodes n<physicalRow> sorted by output row. Exact witness minus rule/formula forms arguments, all ordered/repeated native premise references retained.",
+    "origin": "Own collector/binding/state identity plus opaque caller_origin; all engine/proof claimsFalse.",
+    "outputs": "Every actual selected DAG sink o<row>, no target/formula/rule selection. Exact generic output three-field schema; maps mark occupied current point but factFalse.",
+    "schema": "receptor-family-primitive-derivation-DAG-v1"
+  },
+  "downstream": "Current generic miner3 accepts literal DAG wire/host. Root must still generate descriptors, fresh ordinary expand, independent4358 check, and Hilbert native adapter grounding using actual physical rows/source metadata. Arithmetic9f collector and arithmetic provider source schemas are not aliases. No consumer/engine activation in this module.",
+  "flags": {
+    "GCTS_advantage_accepted": false,
+    "RL_accepted": false,
+    "ROOT_resource_accepted": false,
+    "complete_GCTS_model_accepted": false,
+    "degree_or_EOF_accepted": false,
+    "engine_activated": false,
+    "engine_generated_accepted": false,
+    "marking_activated": false,
+    "native_accepted": false,
+    "origin_claims_untrusted": true,
+    "proof_accepted": false,
+    "proposal_only": true,
+    "pruning_accepted": false,
+    "root_proof_accepted": false,
+    "runtime_qualified": false,
+    "scheduler_or_rollback_accepted": false,
+    "trajectory_accepted": false,
+    "universal_family_proved": false
+  },
+  "inputs": {
+    "graph": "Actual current authenticated sealed Hilbert graph; state is captured freshly inside collector. No saved state/proof/ordered donor node list input.",
+    "host_adapter": "Exact repaired public VERSIONv2-unknown-prefix and describe_host; no private helper consumed.",
+    "origin": "Required builtin JSON dictionary, retained opaque; compact origin IDs recommended. No chronology/engine-produced/proof authority.",
+    "prototype_census": "Mandatory full prior exposed ID/preimage string pairs supplied by caller; selected/excluded packet exposures freshly merge. No inference of complete engine-private history.",
+    "qualification": "Exact unchanged original Hilbert admitted context; Root-owned ClosedInputs/module Source guards remain required.",
+    "tick": "Original cumulative native Root endpoint. Own work/depth counters do not reset its clock/heap."
+  },
+  "limits": {
+    "depth": 128,
+    "edges": 48,
+    "selected": 24,
+    "string_bytes": 1048576,
+    "work": 1000000
+  },
+  "own_limit_semantics": "Only finite collector work/depth/selected/read/string allowances return UNKNOWN. Original callback/native/membership/authority/collision/malformed errors propagate. On unfinished work derivation=None, checked_members empty, maps=None and census_join_completedFalse; partial request/state/census may remain raw unaccepted diagnostics.",
+  "result": {
+    "checked_members": "All selected members by row, full independently decoded recipe/current placement and distinct local primitive-check schema; no old arithmetic MEMBER receipt relabel.",
+    "fields": [
+      "schema",
+      "version",
+      "status",
+      "reason",
+      "request",
+      "host",
+      "binding",
+      "state_sha256",
+      "current_state",
+      "derivation",
+      "derivation_sha256",
+      "checked_members",
+      "maps",
+      "checks",
+      "prototype_census",
+      "census_join_completed",
+      "work",
+      "flags"
+    ],
+    "maps": [
+      "selection_order",
+      "nodes",
+      "reads",
+      "inputs",
+      "outputs",
+      "context_occurrences"
+    ],
+    "prototype_census": "Sorted full literal ID/preimage text pairs for supplied history plus every newly inspected recipe/prototype/aggregate placement. Complete only for declared successfully reconciled exposures, not full domain/global degree.",
+    "schema": "hilbert-shared-family-selected-DAG-collection-v1",
+    "statuses": [
+      "COLLECTED_CONDITIONAL_DAG",
+      "UNKNOWN"
+    ]
+  },
+  "schema": "Hilbert-shared-family-selected-collector-API-v1",
+  "source_only": true
+}

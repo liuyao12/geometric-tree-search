@@ -1,0 +1,76 @@
+{
+  "VERSION": "lazy-unit-row-global-engine-v13-receptor-family-preferences-v8-first-admission-journal",
+  "actual_execution_authorized": false,
+  "common_fields": [
+    "schema",
+    "stage",
+    "engine_version",
+    "depth",
+    "diagnostic_only",
+    "scientific_acceptance"
+  ],
+  "constructor": "LazyUnitRowEngine(*,language,degree_proposer,semantics,fallback,certify_fallback,transition_checker,tick,milestone_observer,initial_state=None,maximum_nodes=128,maximum_events=2000,branch_adviser=None,validate_advice=None,branch_tie=ROW,family_proposer=None,family_consumer=None,initial_prototype_census=None)",
+  "lifetime": "At most four callbacks per search(), only first root family branch; local diagnostic flags are not semantic state or checkpoint metadata. No callbacks for later root siblings/branches. Child callback only if matching root placement and its original observer post-tick returned.",
+  "parent": {
+    "bytes": 92154,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+    "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+  },
+  "payload_schema": "unit-row-first-family-engine-milestone-v1",
+  "payload_types": "Builtin JSON dict/list/str/int/bool/None; own fields are fresh wrappers, references point only to already-owned literal plans/state/census/individual events. No tuple/frozenset/function/private int-key map/live events list. No deep copy/hash/traversal/model call is introduced by packet construction.",
+  "phase_labels": {
+    "FIRST_CHILD_DECISION_READY": "M4_CHILD_DECISION",
+    "FIRST_ROOT_FAMILY_EVENT_READY": "M2_EVENT_READY",
+    "FIRST_ROOT_FAMILY_PLAN_READY": "M1_PLAN_READY",
+    "FIRST_ROOT_PRIMITIVE_PLACED": "M3_PLACE_RETURN"
+  },
+  "record_semantics": {
+    "FIRST_CHILD_DECISION_READY": "After first decision returned at depth1 beneath this root placement, before classifying or acting on the decision. Actual individual DECISION event owns statuses/evidence; no private int-key certificate dictionary.",
+    "FIRST_ROOT_FAMILY_EVENT_READY": "After unchanged _adopt_family_branch returns; individual full FAMILY_PREFERENCE event. No placement yet.",
+    "FIRST_ROOT_FAMILY_PLAN_READY": "Only first completed depth0 family selection; actual global DECISION event retained before selection delegate, since selection can emit fallback events. plan.mode explicitly distinguishes BATCH/CONTINUATION READY preference from CANONICAL_FALLBACK.",
+    "FIRST_ROOT_PRIMITIVE_PLACED": "After unchanged place returns; exact installed COW state, transition and individual preceding INVALIDATE/PLACE events; no child decision yet."
+  },
+  "required_observer": "Authenticated synchronous read-only milestone_observer(stage,payload), positional. Return ignored; native/Source/other errors are not masked.",
+  "schema": "first-admission-journal-engine-API-v1",
+  "scientific_authority": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 98533,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+    "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+  },
+  "source_only": true,
+  "stage_fields": {
+    "FIRST_CHILD_DECISION_READY": [
+      "state",
+      "decision",
+      "decision_event",
+      "prototype_census"
+    ],
+    "FIRST_ROOT_FAMILY_EVENT_READY": [
+      "state",
+      "pending_preferences",
+      "event"
+    ],
+    "FIRST_ROOT_FAMILY_PLAN_READY": [
+      "pre_state",
+      "decision",
+      "decision_event",
+      "plan",
+      "prototype_census"
+    ],
+    "FIRST_ROOT_PRIMITIVE_PLACED": [
+      "state",
+      "transition",
+      "invalidation_event",
+      "place_event"
+    ]
+  },
+  "stages": [
+    "FIRST_ROOT_FAMILY_PLAN_READY",
+    "FIRST_ROOT_FAMILY_EVENT_READY",
+    "FIRST_ROOT_PRIMITIVE_PLACED",
+    "FIRST_CHILD_DECISION_READY"
+  ],
+  "unchanged_provider_version": "receptor-family-observed-receptor-transfer-provider-v8-head-gated"
+}

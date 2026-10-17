@@ -1,0 +1,463 @@
+{
+  "actual_patch_outputs": {
+    "forward": "patching file target.py\n",
+    "inverse": "patching file target.py\n"
+  },
+  "checks": [
+    {
+      "check": "exact pin source",
+      "passed": true
+    },
+    {
+      "check": "exact pin contract",
+      "passed": true
+    },
+    {
+      "check": "exact pin api",
+      "passed": true
+    },
+    {
+      "check": "exact pin delta",
+      "passed": true
+    },
+    {
+      "check": "exact pin prior_negative",
+      "passed": true
+    },
+    {
+      "check": "exact pin parent",
+      "passed": true
+    },
+    {
+      "check": "exact pin parent_contract",
+      "passed": true
+    },
+    {
+      "check": "exact pin arithmetic_family_adapter",
+      "passed": true
+    },
+    {
+      "check": "exact pin compiler",
+      "passed": true
+    },
+    {
+      "check": "exact pin dynamic_graph",
+      "passed": true
+    },
+    {
+      "check": "exact pin fresh_final_checker",
+      "passed": true
+    },
+    {
+      "check": "exact pin generic_family_checker",
+      "passed": true
+    },
+    {
+      "check": "exact pin generic_family_expander",
+      "passed": true
+    },
+    {
+      "check": "exact pin independent_checker",
+      "passed": true
+    },
+    {
+      "check": "exact pin independent_grammar",
+      "passed": true
+    },
+    {
+      "check": "exact pin point_core",
+      "passed": true
+    },
+    {
+      "check": "old region at 18066",
+      "passed": true
+    },
+    {
+      "check": "old region at 18064",
+      "passed": true
+    },
+    {
+      "check": "old region at 18063",
+      "passed": true
+    },
+    {
+      "check": "old region at 18005",
+      "passed": true
+    },
+    {
+      "check": "old region at 16653",
+      "passed": true
+    },
+    {
+      "check": "old region at 16268",
+      "passed": true
+    },
+    {
+      "check": "old region at 16262",
+      "passed": true
+    },
+    {
+      "check": "old region at 16261",
+      "passed": true
+    },
+    {
+      "check": "old region at 16224",
+      "passed": true
+    },
+    {
+      "check": "old region at 16217",
+      "passed": true
+    },
+    {
+      "check": "old region at 16215",
+      "passed": true
+    },
+    {
+      "check": "old region at 16207",
+      "passed": true
+    },
+    {
+      "check": "old region at 16204",
+      "passed": true
+    },
+    {
+      "check": "old region at 16190",
+      "passed": true
+    },
+    {
+      "check": "old region at 16186",
+      "passed": true
+    },
+    {
+      "check": "old region at 16182",
+      "passed": true
+    },
+    {
+      "check": "old region at 16175",
+      "passed": true
+    },
+    {
+      "check": "old region at 16156",
+      "passed": true
+    },
+    {
+      "check": "old region at 493",
+      "passed": true
+    },
+    {
+      "check": "whole forward raw exact",
+      "passed": true
+    },
+    {
+      "check": "new region at 18878",
+      "passed": true
+    },
+    {
+      "check": "new region at 18877",
+      "passed": true
+    },
+    {
+      "check": "new region at 18865",
+      "passed": true
+    },
+    {
+      "check": "new region at 18730",
+      "passed": true
+    },
+    {
+      "check": "new region at 16727",
+      "passed": true
+    },
+    {
+      "check": "new region at 16338",
+      "passed": true
+    },
+    {
+      "check": "new region at 16331",
+      "passed": true
+    },
+    {
+      "check": "new region at 16321",
+      "passed": true
+    },
+    {
+      "check": "new region at 16290",
+      "passed": true
+    },
+    {
+      "check": "new region at 16271",
+      "passed": true
+    },
+    {
+      "check": "new region at 16217",
+      "passed": true
+    },
+    {
+      "check": "new region at 16213",
+      "passed": true
+    },
+    {
+      "check": "new region at 16210",
+      "passed": true
+    },
+    {
+      "check": "new region at 16207",
+      "passed": true
+    },
+    {
+      "check": "new region at 16195",
+      "passed": true
+    },
+    {
+      "check": "new region at 16187",
+      "passed": true
+    },
+    {
+      "check": "new region at 16185",
+      "passed": true
+    },
+    {
+      "check": "new region at 16171",
+      "passed": true
+    },
+    {
+      "check": "new region at 493",
+      "passed": true
+    },
+    {
+      "check": "whole inverse raw exact",
+      "passed": true
+    },
+    {
+      "check": "whole inverse AST exact",
+      "passed": true
+    },
+    {
+      "check": "compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "actual patch bytes adapter-v1-to-v2-forward.patch",
+      "passed": true
+    },
+    {
+      "check": "actual patch bytes adapter-v1-to-v2-inverse.patch",
+      "passed": true
+    },
+    {
+      "check": "safe patch target",
+      "passed": true
+    },
+    {
+      "check": "actual forward patch -F0",
+      "passed": true
+    },
+    {
+      "check": "actual forward full bytes",
+      "passed": true
+    },
+    {
+      "check": "actual inverse patch -F0",
+      "passed": true
+    },
+    {
+      "check": "actual inverse full bytes",
+      "passed": true
+    },
+    {
+      "check": "retained require raw",
+      "passed": true
+    },
+    {
+      "check": "retained require AST",
+      "passed": true
+    },
+    {
+      "check": "retained tree raw",
+      "passed": true
+    },
+    {
+      "check": "retained tree AST",
+      "passed": true
+    },
+    {
+      "check": "retained canonical raw",
+      "passed": true
+    },
+    {
+      "check": "retained canonical AST",
+      "passed": true
+    },
+    {
+      "check": "retained digest raw",
+      "passed": true
+    },
+    {
+      "check": "retained digest AST",
+      "passed": true
+    },
+    {
+      "check": "retained call raw",
+      "passed": true
+    },
+    {
+      "check": "retained call AST",
+      "passed": true
+    },
+    {
+      "check": "retained _context raw",
+      "passed": true
+    },
+    {
+      "check": "retained _context AST",
+      "passed": true
+    },
+    {
+      "check": "retained describe_host raw",
+      "passed": true
+    },
+    {
+      "check": "retained describe_host AST",
+      "passed": true
+    },
+    {
+      "check": "retained _rows raw",
+      "passed": true
+    },
+    {
+      "check": "retained _rows AST",
+      "passed": true
+    },
+    {
+      "check": "retained _merge raw",
+      "passed": true
+    },
+    {
+      "check": "retained _merge AST",
+      "passed": true
+    },
+    {
+      "check": "retained _record_key raw",
+      "passed": true
+    },
+    {
+      "check": "retained _record_key AST",
+      "passed": true
+    },
+    {
+      "check": "ten helper regions retained",
+      "passed": true
+    },
+    {
+      "check": "no catch/native coercion",
+      "passed": true
+    },
+    {
+      "check": "pinned None/five/six UNKNOWN-only guard",
+      "passed": true
+    },
+    {
+      "check": "successful full six request required",
+      "passed": true
+    }
+  ],
+  "clock_calls": 0,
+  "module_evaluations": 0,
+  "references": {
+    "api": {
+      "bytes": 5552,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/API-wire-v2.json",
+      "sha256": "257d0bc904376d8f33b3359dcfcdbe5fcb45eb4dd5a22546b6b7bb542b36b64f"
+    },
+    "arithmetic_family_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/arithmetic_family_adapter.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "compiler": {
+      "bytes": 46112,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/compiler.py",
+      "sha256": "57653bb27eaf3c4dd1e050c70ac360133f78e1f636cd1276a39a20fd64610a56"
+    },
+    "contract": {
+      "bytes": 10299,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/Source-contract-v2.json",
+      "sha256": "78ae00f6a5bf6001a19ceece71b1ed5bd0d735d651da631ae968bd682ef12049"
+    },
+    "delta": {
+      "bytes": 5159,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/Source-delta-v2.json",
+      "sha256": "95074385aee902996c09e613c89adb0945b2577d0c144b0bac21102c13d28f5f"
+    },
+    "dynamic_graph": {
+      "bytes": 35568,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/dynamic_graph.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    "fresh_final_checker": {
+      "bytes": 64540,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/fresh_final_checker.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    "generic_family_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_checker.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "generic_family_expander": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_expander.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "independent_checker": {
+      "bytes": 24588,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/independent_checker.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    "independent_grammar": {
+      "bytes": 14799,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/independent_grammar.py",
+      "sha256": "34322db5dc25cd3e0cc1dfa43f379f9f45107442c4f035d955b39f1e21b31db1"
+    },
+    "parent": {
+      "bytes": 27528,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+      "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+    },
+    "parent_contract": {
+      "bytes": 9836,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/Source-contract-v2.json",
+      "sha256": "a5a76b0d973fab00f85417ac569b8540d292d55d93d288622884d211f3f1a053"
+    },
+    "point_core": {
+      "bytes": 31300,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/point_core.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    "prior_negative": {
+      "bytes": 1990,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "57bb9caaf865a62879bf21749575e7582fb8470225c23af66ca1b61cb23cf25f"
+    },
+    "source": {
+      "bytes": 28354,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/hilbert_shared_family_admission_adapter_v2.py",
+      "sha256": "203cb24a4e29ccf1b06b9293d854b15fa96d25a0fa25b3abd5eecfdea05b0d99"
+    }
+  },
+  "retained_helpers": [
+    "require",
+    "tree",
+    "canonical",
+    "digest",
+    "call",
+    "_context",
+    "describe_host",
+    "_rows",
+    "_merge",
+    "_record_key"
+  ],
+  "schema": "Hilbert-shared-family-native-adapter-peer-static-v2",
+  "scientific_calls": 0,
+  "source_only": true
+}

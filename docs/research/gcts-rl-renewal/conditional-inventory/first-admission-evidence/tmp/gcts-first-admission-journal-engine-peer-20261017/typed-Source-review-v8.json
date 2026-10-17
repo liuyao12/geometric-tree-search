@@ -1,0 +1,93 @@
+{
+  "API": {
+    "bytes": 3986,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/API-wire-v8.json",
+    "sha256": "fdd7c3f43931a6f8c078bd8bfe1ebd2906dfd5ab6a3ab6833f7c7e6cc80da73e"
+  },
+  "actual_execution_authorized": false,
+  "audits": {
+    "independent-metadata-audit-v8.json": {
+      "bytes": 3165,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/independent-metadata-audit-v8.json",
+      "sha256": "247f05b4f97e27143c394e8c235563978397a5a377d0def31d81048b02799e3b"
+    },
+    "independent-patch-audit-v1.json": {
+      "bytes": 188,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/independent-patch-audit-v1.json",
+      "sha256": "cec540de030c4ec71d3dc31c0504a88c1b376c2239c5088a5b9e6264ae8e93b5"
+    },
+    "independent-static-audit-v1.json": {
+      "bytes": 13026,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/independent-static-audit-v1.json",
+      "sha256": "1a4359eb465e25cd9ce8a1d997356a5a1ead3e03f85e02cb3378c887a05cb665"
+    }
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_overlap": "Reviewer authored helper1685/parent150e, older engine/kernel/producer/residual/gate ancestry, but not Diagnosis engine8 implementation; shared wire coordination disclosed. No self-review of helper or claims of independent old primitive authorship.",
+  "conditions": [
+    "Root read-only sealed observer and whole Source/native authority; no reentrant/hostile payload mutation guarantee.",
+    "Future current helper/cold/observer/writer/reader composition requires separate exact reviews and Root grant.",
+    "Diagnostic prefix is not scientific evidence of admission/place/root restore/exhaustion/proof/resource acceptance without separately checked complete joins; canonical fallback remains explicit.",
+    "No nth-tick/error-prefix or runtime cost equivalence, no prior qualification inheritance."
+  ],
+  "coverage": {
+    "author_and_independent_actual_patch_F0_both_directions": true,
+    "observer_literal_sites": 4,
+    "raw_pinned_references": 12,
+    "raw_regions": 11,
+    "retained_named_regions_raw_AST_exact": 49,
+    "whole_current_Source_lines": 1611,
+    "whole_parent_AST_diagnostic_erasure": true,
+    "whole_raw_AST_forward_inverse": true,
+    "whole_source_API_contract_review": true
+  },
+  "current_handoff": {
+    "bytes": 5319,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/handoff-v8.json",
+    "sha256": "26c99dbe08958e09430b9d9f2f3086f0e66dc41be221568fa9aa1d64e79bda85"
+  },
+  "findings": {
+    "bytes": 6907,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/Source-review-findings-v8.json",
+    "sha256": "6cb437ed2ce2f44747f9c6fb7184a33ccaab7abc26442d77492675519197e987"
+  },
+  "reviewed_source_contracts": [
+    {
+      "bytes": 10938,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/Source-contract-v8.json",
+      "sha256": "8019d4d1b8ffeea79d9e3a68fb4e9abc829b2f4b9c7d2338a598f655e79d8f37"
+    },
+    {
+      "bytes": 12640,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-contract-v7.json",
+      "sha256": "dba45a064608275b17773e94722c5b2740b744329dd7265da66a2dd67f290132"
+    }
+  ],
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_qualified": false,
+  "schema": "receptor-family-first-admission-journal-engine-typed-Source-review-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-first-admission-journal-engine-Source",
+  "source": {
+    "bytes": 98533,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+    "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+  },
+  "source_contract": {
+    "bytes": 10938,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/Source-contract-v8.json",
+    "sha256": "8019d4d1b8ffeea79d9e3a68fb4e9abc829b2f4b9c7d2338a598f655e79d8f37"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "family_engine": {
+      "bytes": 98533,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+      "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+    }
+  },
+  "status": "PASS_SOURCE_ONLY_CONDITIONAL"
+}

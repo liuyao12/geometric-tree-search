@@ -1,0 +1,193 @@
+{
+  "actual_patch_F0_directions": 2,
+  "edits": [
+    {
+      "after": "2-unknown-prefix",
+      "before": "1",
+      "new_end": 509,
+      "new_start": 493,
+      "old_end": 494,
+      "old_start": 493
+    },
+    {
+      "after": "type",
+      "before": "canonical",
+      "new_end": 16175,
+      "new_start": 16171,
+      "old_end": 16165,
+      "old_start": 16156
+    },
+    {
+      "after": "",
+      "before": "reque",
+      "new_end": 16185,
+      "new_start": 16185,
+      "old_end": 16180,
+      "old_start": 16175
+    },
+    {
+      "after": "atus",
+      "before": "",
+      "new_end": 16191,
+      "new_start": 16187,
+      "old_end": 16182,
+      "old_start": 16182
+    },
+    {
+      "after": "is str and",
+      "before": "==",
+      "new_end": 16205,
+      "new_start": 16195,
+      "old_end": 16188,
+      "old_start": 16186
+    },
+    {
+      "after": "h",
+      "before": "anonical(exp",
+      "new_end": 16208,
+      "new_start": 16207,
+      "old_end": 16202,
+      "old_start": 16190
+    },
+    {
+      "after": "k",
+      "before": "t",
+      "new_end": 16211,
+      "new_start": 16210,
+      "old_end": 16205,
+      "old_start": 16204
+    },
+    {
+      "after": "['",
+      "before": "_reque",
+      "new_end": 16215,
+      "new_start": 16213,
+      "old_end": 16213,
+      "old_start": 16207
+    },
+    {
+      "after": "atus'] in ('UNKNOWN','CONDITIONAL_EXPANSION_CHECKED'",
+      "before": "",
+      "new_end": 16269,
+      "new_start": 16217,
+      "old_end": 16215,
+      "old_start": 16215
+    },
+    {
+      "after": "\n           ",
+      "before": "",
+      "new_end": 16283,
+      "new_start": 16271,
+      "old_end": 16217,
+      "old_start": 16217
+    },
+    {
+      "after": "",
+      "before": " whole",
+      "new_end": 16290,
+      "new_start": 16290,
+      "old_end": 16230,
+      "old_start": 16224
+    },
+    {
+      "after": "schema/ve",
+      "before": "",
+      "new_end": 16330,
+      "new_start": 16321,
+      "old_end": 16261,
+      "old_start": 16261
+    },
+    {
+      "after": "sion/",
+      "before": "eque",
+      "new_end": 16336,
+      "new_start": 16331,
+      "old_end": 16266,
+      "old_start": 16262
+    },
+    {
+      "after": "atus",
+      "before": "",
+      "new_end": 16342,
+      "new_start": 16338,
+      "old_end": 16268,
+      "old_start": 16268
+    },
+    {
+      "after": "\n        # Pinned checker4358 assigns its initial request only after the whole\n        # five-field copy, then adds proposal only after that copy completes.\n        # Own-limit UNKNOWN can therefore retain None, five or all six fields.\n        prefix = checked['request']\n        if prefix is not None:\n            prefix_fields = set(expected_request) - {'proposal'}\n            require(type(prefix) is dict and set(prefix) in (prefix_fields,set(expected_request))\n                    and canonical(prefix) == canonical({key:expected_request[key]for key in prefix}),\n                    'exact completed checker request prefix on unaccepted UNKNOWN')",
+      "before": "",
+      "new_end": 17378,
+      "new_start": 16727,
+      "old_end": 16653,
+      "old_start": 16653
+    },
+    {
+      "after": "\n            and canonical(checked['request']) == canonical(expected_request)",
+      "before": "",
+      "new_end": 18807,
+      "new_start": 18730,
+      "old_end": 18005,
+      "old_start": 18005
+    },
+    {
+      "after": "with the wh",
+      "before": "",
+      "new_end": 18876,
+      "new_start": 18865,
+      "old_end": 18063,
+      "old_start": 18063
+    },
+    {
+      "after": "",
+      "before": "n",
+      "new_end": 18877,
+      "new_start": 18877,
+      "old_end": 18065,
+      "old_start": 18064
+    },
+    {
+      "after": "e exact request",
+      "before": "y",
+      "new_end": 18893,
+      "new_start": 18878,
+      "old_end": 18067,
+      "old_start": 18066
+    }
+  ],
+  "forward_patch": {
+    "bytes": 3295,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/adapter-v1-to-v2-forward.patch",
+    "sha256": "e65b0390e455a5d5d6485c240b2dd74586c6966c245564e196156fe7c863a7bf"
+  },
+  "full_raw_forward_inverse": true,
+  "inverse_patch": {
+    "bytes": 3295,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/adapter-v1-to-v2-inverse.patch",
+    "sha256": "c45f2fca33705ccbf59bad6d4d2f28d9e5a441e8f829d2a351be6728f29fb10c"
+  },
+  "parent": {
+    "bytes": 27528,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+    "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+  },
+  "raw_AST_exact_regions": [
+    "require",
+    "tree",
+    "canonical",
+    "digest",
+    "call",
+    "_context",
+    "describe_host",
+    "_rows",
+    "_merge",
+    "_record_key"
+  ],
+  "schema": "Hilbert-shared-family-native-adapter-raw-delta-v2",
+  "source": {
+    "bytes": 28354,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/hilbert_shared_family_admission_adapter_v2.py",
+    "sha256": "203cb24a4e29ccf1b06b9293d854b15fa96d25a0fa25b3abd5eecfdea05b0d99"
+  },
+  "source_only": true,
+  "whole_AST_inverse": true
+}

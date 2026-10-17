@@ -1,0 +1,97 @@
+{
+  "VERSION": "hilbert-shared-parametric-family-native-admission-adapter-v1",
+  "adapt_expansion": "adapt_expansion(*,graph,point_core,context_checker,logical_oracle,closed_inputs,qualification,expansion_checker,registry,family_id,host,substitution,port_bindings,proposal,row_assignment,prototype_census,tick)",
+  "authority": "All proof/native/engine/degree/EOF/pruning/rollback/runtime/RL/resource flags false even READY; local construction checks only.",
+  "describe_host": "describe_host(*,graph,context_checker,closed_inputs,qualification,tick)",
+  "distinct_native_interfaces": [
+    "Five Hilbert rules, no generalize",
+    "Closed instantiate term and atomic one-hole eq_subst checked by GroundChecker",
+    "Catalogue recipe indices/full native identity/preimages/formula codes",
+    "Hilbert two-channel formula/ordered-offset point markings, no arithmetic channel4 or Source17 binding relabel"
+  ],
+  "errors": "Own definite malformed/foreign catalogue/point conflict raises ValueError. Independent checker exceptions, ClosedInputs/native constructor exceptions and original tick errors propagate; there is no exception-to-learned-absence or proof pruning.",
+  "host_schema": "receptor-family-host-v1",
+  "injected_dependencies": {
+    "context_checker": "Exact existing fresh_equality_context_and_final24_certificate_v3; admitted_context, SelectedWire, placement. Existing ClosedInputs owned by Root; all prerequisite static/current Source qualification stays required.",
+    "expansion_checker": "Existing independent4358 check_expansion; full rebuilt expansion is used, never a caller receipt label.",
+    "graph": "Exact current sealed DynamicCompactGraph, complete24 catalogue with original context and independent qualification; all public APIs remain unchanged.",
+    "logical_oracle": "Exact existing hilbert_fresh_catalog_oracle_v2.GroundChecker, all five commands. It deliberately retains native_accepted=False.",
+    "point_core": "Exact existing Key class/MARKING_VERSION belonging to the authenticated graph runtime.",
+    "tick": "Original cumulative native Root endpoint; no reset or own clock."
+  },
+  "input_source": {
+    "context_id": "actual original ordered context",
+    "model_epoch": "actual original model epoch",
+    "row": "actual absolute row",
+    "schema": "hilbert-shared-family-current-input-source-v1",
+    "selected_key": "null or actual complete [recipe_index,row,ordered_refs]",
+    "selected_placement": "null or whole native decorated current placement"
+  },
+  "result": {
+    "READY_fields": [
+      "status",
+      "reason",
+      "local_primitive_members_checked",
+      "local_current_point_union_checked",
+      "members",
+      "node_map",
+      "input_ports",
+      "hypothesis_ports",
+      "output_ports",
+      "physical_call_input_bindings",
+      "union",
+      "dependencies",
+      "prototype_census",
+      "costs"
+    ],
+    "UNKNOWN": "Independent expansion UNKNOWN only; whole unaccepted rebuilt current state/census retained, no members/union. Native, data, collision and callback errors propagate unchanged.",
+    "common_fields": [
+      "schema",
+      "version",
+      "host",
+      "request",
+      "request_sha256",
+      "expansion_check",
+      "current_state",
+      "prototype_census_schema",
+      "proposal_only",
+      "hypothetical_only",
+      "proof_accepted",
+      "root_proof_accepted",
+      "native_accepted",
+      "degree_or_EOF_accepted",
+      "scheduler_or_rollback_accepted",
+      "engine_activated",
+      "marking_activated",
+      "complete_GCTS_model_accepted",
+      "trajectory_accepted",
+      "RL_accepted",
+      "GCTS_advantage_accepted",
+      "ROOT_resource_accepted",
+      "runtime_qualified",
+      "pruning_accepted",
+      "full24_board_accepted"
+    ],
+    "members": "Distinct full placements; each has first_node, placement, already_selected_in_input. node_map retains every logical node, aliases and full ordered read evidence.",
+    "prototype_census": "Sorted [literalID,full canonical UTF8 JSON preimage text]; recipe, prototype and aggregate IDs; merges caller exposures/current selected/excluded/all rebuilt members. It is not a candidate set or domain completeness certificate.",
+    "schema": "hilbert-shared-family-local-cluster-v1",
+    "statuses": [
+      "READY_LOCAL_CLUSTER",
+      "UNKNOWN"
+    ],
+    "union": "Separate hypothetical schema; full current+new t/m/refcounts and selected placements. Explicitly not an engine state/checkpoint; no generations or complete domains fabricated."
+  },
+  "row_assignment": {
+    "input_rows": "Complete ordered list [root_input_port_id,physical_row] for all input ports",
+    "node_rows": "Complete ordered list [node_id,physical_row] for all rebuilt primitive nodes",
+    "rows": "Exact builtin integers0..23; references strict prior; duplicates only if eventual exact physical placement policy permits.",
+    "schema": "hilbert-shared-family-row-assignment-v1"
+  },
+  "schema": "Hilbert-shared-family-native-adapter-API-v1",
+  "source_only": true,
+  "unchanged_generic_interfaces": [
+    "DescriptorV2/all typed ports/native list AST",
+    "receptor-family-host-v1",
+    "independent conditional expansion checker request/receipt"
+  ]
+}

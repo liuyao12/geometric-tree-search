@@ -1,0 +1,45 @@
+{
+  "Source_pass": false,
+  "actual_execution_authorized": false,
+  "author": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "Own checker4358 and arithmetic/engine ancestry; distinct Hilbert adapter author. Full disclosure in findings.",
+  "blocker_ids": [
+    "HILBERT-ADAPTER-UNKNOWN-REQUEST-1"
+  ],
+  "findings": {
+    "bytes": 4880,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/findings-v1.json",
+    "sha256": "3b75d3672166c7c32fe43857a5ba0bbbfec9e527bc2e36911058becd9dd6903e"
+  },
+  "no_actual_or_result_inputs_read": true,
+  "review_kind": "whole Source/current contract/API and native dependency interface review; preserved negative",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "Hilbert-shared-family-native-adapter-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Hilbert-shared-family-native-adapter-Source",
+  "source": {
+    "bytes": 27528,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+    "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+  },
+  "source_contract": {
+    "bytes": 9836,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/Source-contract-v2.json",
+    "sha256": "a5a76b0d973fab00f85417ac569b8540d292d55d93d288622884d211f3f1a053"
+  },
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "hilbert_native_adapter": {
+      "bytes": 27528,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+      "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+    }
+  },
+  "static_audit": {
+    "bytes": 6814,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/static-review-audit-v1.json",
+    "sha256": "f5fe4259e8d38fd20cf4f3dc101d50ca3ba33f52e1e9e5ebdb2ab1531151b546"
+  }
+}

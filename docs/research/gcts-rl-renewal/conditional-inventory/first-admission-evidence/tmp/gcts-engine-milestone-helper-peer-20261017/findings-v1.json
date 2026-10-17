@@ -1,0 +1,38 @@
+{
+  "author_overlap": "Reviewer authored engine8 and engine/census/marked/checker ancestry and prior diagnostic proposals; reviewer did not author Arithmetic helper1685 or its parent150e. Shared API coordination disclosed. This review independently checks helper plumbing and unchanged science, not the reviewer own engine mathematics; engine has separate Arithmetic peer cd56b601.",
+  "blockers": [],
+  "distinct_engine_peer": {
+    "bytes": 4461,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/typed-Source-review-v8.json",
+    "sha256": "cd56b601286d33293295ea34af024454efce150a297e92bfe3bb520b036dcfd3"
+  },
+  "engine_API": {
+    "bytes": 3986,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/API-wire-v8.json",
+    "sha256": "fdd7c3f43931a6f8c078bd8bfe1ebd2906dfd5ab6a3ab6833f7c7e6cc80da73e"
+  },
+  "findings": [
+    "Whole8872-byte helper, current API/contract, parent and exact3regions read. Only VERSION, required helper argument and final constructor keyword differ. Whole raw/AST inverse and both actual -F0 patch applications exact; nine other function bodies raw+AST identical.",
+    "Observer identity is passed directly to new engine required milestone_observer. Helper adds no observer call, data walk, snapshot, model function, catch, science branch, pool/formula/row/candidate restriction or result authority. Existing provider/consumer calls,17 stages/summary hook, both arm policy, node2/event256, all limits and root-restoration/full-pool assertions remain unchanged.",
+    "Final event-based API matches engine8. Engine source/peer, Root sealed callback/current22 map, raw bounded failure writer and reader require distinct current composition review. Source pass does not inherit runtime qualification or authorize an actual."
+  ],
+  "schema": "engine-milestone-helper-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 8872,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+    "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+  },
+  "source_contract": {
+    "bytes": 5985,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/Source-contract-v1.json",
+    "sha256": "ddf51514ad7b4d2352dfd3d93e4e461deee710b0a9ae6353db28daf25c145068"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 4077,
+    "path": "/private/tmp/gcts-engine-milestone-helper-peer-20261017/static-review-v1.json",
+    "sha256": "246a7e26f5923dd9143f3f5e9b436265c22cfd0f1aa8f3c03a8134fb390dbcd9"
+  }
+}

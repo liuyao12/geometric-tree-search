@@ -1,0 +1,315 @@
+--- target.py
++++ target.py
+@@ -1,312 +0,0 @@
+-"""SOURCE ONLY: actual admitted Hilbert selected points to shared conditional DAG.
+-
+-No proof/donor input, source loader, engine search, clock or graph mutation.
+-The original static context and complete graph authority remain Root-owned.
+-A current selected point is not labelled an independently established theorem.
+-"""
+-import hashlib
+-import json
+-
+-VERSION = 'hilbert-shared-family-current-selected-DAG-collector-v1'
+-RESULT_SCHEMA = 'hilbert-shared-family-selected-DAG-collection-v1'
+-DAG_SCHEMA = 'receptor-family-primitive-derivation-DAG-v1'
+-HOST_ADAPTER_VERSION = 'hilbert-shared-parametric-family-native-admission-adapter-v2-unknown-prefix'
+-CONTEXT_VERSION = 'independent-compact24-primitive-advice-pair-final-certificate-v1'
+-MARKING = 'injective-formula-ordered-mp-offset-v1'
+-DEFAULT_LIMITS = {'work': 1000000, 'depth': 128, 'selected': 24, 'edges': 48, 'string_bytes': 1048576}
+-ARGUMENTS = {'axiom': ('name',), 'assumption': ('index',),
+-    'instantiate': ('universal','term'), 'eq_subst': ('variable','template','left','right'), 'mp': ()}
+-ARITY = {'axiom': 0, 'assumption': 0, 'instantiate': 0, 'eq_subst': 0, 'mp': 2}
+-FLAGS = {'proposal_only': True, 'origin_claims_untrusted': True,
+-    'engine_generated_accepted': False, 'root_proof_accepted': False, 'proof_accepted': False,
+-    'native_accepted': False, 'universal_family_proved': False, 'degree_or_EOF_accepted': False,
+-    'scheduler_or_rollback_accepted': False, 'engine_activated': False, 'marking_activated': False,
+-    'complete_GCTS_model_accepted': False, 'trajectory_accepted': False, 'pruning_accepted': False,
+-    'RL_accepted': False, 'GCTS_advantage_accepted': False, 'runtime_qualified': False, 'ROOT_resource_accepted': False}
+-
+-
+-class CollectionDataError(ValueError):
+-    def __init__(self, code, detail):
+-        self.code = code
+-        super().__init__('Hilbert selected DAG '+code+': '+detail)
+-
+-
+-class _Unfinished(Exception):
+-    pass
+-
+-
+-class _CallbackFailure(BaseException):
+-    def __init__(self, error):
+-        self.error = error
+-
+-
+-def require(value, code, detail):
+-    if not value:
+-        raise CollectionDataError(code, detail)
+-
+-
+-def canonical(value, ascii=False):
+-    return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=ascii, allow_nan=False)
+-
+-
+-def digest(value, ascii=False):
+-    return hashlib.sha256(canonical(value, ascii).encode('utf8')).hexdigest()
+-
+-
+-class _Work:
+-    def __init__(self, tick, limits):
+-        require(callable(tick), 'TICK', 'original cumulative native endpoint')
+-        self.tick = tick; self.steps = 0; self.limits = dict(DEFAULT_LIMITS)
+-        if limits is not None:
+-            require(type(limits) is dict and set(limits) <= set(self.limits), 'LIMITS', 'known fields only')
+-            for key, value in limits.items():
+-                require(type(value) is int and 0 < value <= self.limits[key], 'LIMITS', 'bounded exact positive allowance')
+-                self.limits[key] = value
+-
+-    def step(self, depth=0):
+-        if self.steps >= self.limits['work'] or depth > self.limits['depth']:
+-            raise _Unfinished('FINITE_COLLECTOR_WORK_OR_DEPTH')
+-        try:
+-            self.tick()
+-        except BaseException as error:
+-            raise _CallbackFailure(error) from error
+-        self.steps += 1
+-
+-    def copy(self, value, depth=0):
+-        self.step(depth)
+-        if value is None or type(value) in (bool, int): return value
+-        if type(value) is str:
+-            if len(value.encode('utf8')) > self.limits['string_bytes']:
+-                raise _Unfinished('FINITE_COLLECTOR_STRING_ALLOWANCE')
+-            return value
+-        if type(value) is list: return [self.copy(item, depth+1) for item in value]
+-        require(type(value) is dict and all(type(key) is str for key in value), 'JSON', 'strict builtin JSON data')
+-        return {self.copy(key, depth+1): self.copy(item, depth+1) for key, item in value.items()}
+-
+-    def call(self, function, *args, **kwargs):
+-        self.step(); value = function(*args, **kwargs); self.step(); return value
+-
+-    def report(self):
+-        return {'steps': self.steps, 'limits': dict(self.limits)}
+-
+-
+-def collect_derivation(*, graph, point_core, host_adapter, context_checker, logical_oracle,
+-                       closed_inputs, qualification, prototype_census, origin, tick, limits=None):
+-    """Collect the entire actual selected set, not a supplied proof or node list.
+-
+-    Native/current/callback/data/collision failures propagate. Only own bounded
+-    unfinished work returns UNKNOWN, with derivation=None and no accepted prefix.
+-    """
+-    work = _Work(tick, limits)
+-    host = state = request = binding = state_sha = None
+-    names = {}
+-    def result(status, reason, derivation=None, members=None, maps=None, checks=None):
+-        return {'schema': RESULT_SCHEMA, 'version': VERSION, 'status': status, 'reason': reason,
+-            'request': request, 'host': host, 'binding': binding, 'state_sha256': state_sha,
+-            'current_state': state, 'derivation': derivation,
+-            'derivation_sha256': None if derivation is None else digest(derivation, True),
+-            'checked_members': [] if members is None else members, 'maps': maps, 'checks': checks,
+-            'prototype_census': [[key, value] for key, value in sorted(names.items())],
+-            'census_join_completed': status == 'COLLECTED_CONDITIONAL_DAG',
+-            'work': work.report(), 'flags': dict(FLAGS)}
+-    try:
+-        request = {'origin': work.copy(origin), 'prototype_census': work.copy(prototype_census),
+-                   'qualification': work.copy(qualification)}
+-        require(type(request['origin']) is dict and type(request['prototype_census']) is list,
+-                'INPUT', 'opaque caller origin and explicit full prior exposure census')
+-        entry = canonical(request)
+-        require(host_adapter.VERSION == HOST_ADAPTER_VERSION and context_checker.VERSION == CONTEXT_VERSION
+-                and point_core.MARKING_VERSION == context_checker.MARKING == MARKING,
+-                'APIS', 'exact separate Hilbert host/native interfaces')
+-        host = work.copy(work.call(host_adapter.describe_host, graph=graph, context_checker=context_checker,
+-            closed_inputs=closed_inputs, qualification=qualification, tick=work.step))
+-        binding = work.copy(host['binding'])
+-        require(set(host['rules']) == set(ARITY), 'RULES', 'original Hilbert five-rule language')
+-        for rule in ARITY:
+-            require(set(host['rules'][rule]['arguments']) == set(ARGUMENTS[rule])
+-                    and host['rules'][rule]['input_count'] == ARITY[rule], 'RULES', 'complete ordered native ports')
+-        state = work.copy(work.call(graph.semantic_state));state_sha = digest(state)
+-        require(state['schema'] == 'compact-complete-dynamic-point-state-v2'
+-                and state['model_epoch'] == binding['model_epoch']
+-                and state['catalog_identity_sha256'] == binding['catalog_identity_sha256'], 'STATE', 'entire current original native state')
+-        admitted = work.call(context_checker.admitted_context, closed_inputs, qualification)
+-        header, gamma, target, theory, license_pin, audit = admitted
+-        require(canonical(header) == canonical(host['authority']['catalog_header'])
+-                and canonical(gamma) == canonical(host['ordered_Gamma'])
+-                and canonical(theory) == canonical(host['authority']['theory']), 'AUTHORITY', 'fresh same original host/context')
+-        wire = work.call(context_checker.SelectedWire, header)
+-        require(work.call(wire.model_epoch) == state['model_epoch'], 'EPOCH', 'whole original catalogue model epoch')
+-        checker = work.call(logical_oracle.GroundChecker, work.copy(theory))
+-        require(canonical(checker.theory) == canonical(theory), 'THEORY', 'fresh original native checker')
+-
+-        def merge(identifier, preimage):
+-            work.step()
+-            require(type(identifier) is str and type(preimage) is str, 'CENSUS', 'full literal identity/preimage pair')
+-            if identifier in names:require(names[identifier] == preimage, 'COLLISION', 'full preimage identity mismatch')
+-            else:names[identifier] = preimage
+-        for entry_pair in request['prototype_census']:
+-            require(type(entry_pair) is list and len(entry_pair) == 2, 'CENSUS', 'full prior exposure pair')
+-            merge(entry_pair[0], entry_pair[1])
+-
+-        def packet(value):
+-            work.step()
+-            require(type(value) is list and len(value) == 3
+-                    and type(value[0]) is int and 0 <= value[0] < wire.count
+-                    and type(value[1]) is int and 0 <= value[1] < 24
+-                    and type(value[2]) is list and all(type(row) is int and 0 <= row < value[1] for row in value[2]),
+-                    'KEY', 'exact current recipe/row/strict-prior ordered refs')
+-            index, row, refs = value
+-            recipe = work.copy(work.call(wire.recipe, index));native = graph.recipes[index]
+-            require(native.index == index and native.identifier == recipe['id'] and native.output == recipe['output']
+-                    and list(native.inputs) == recipe['inputs'] and canonical(native.witness) == canonical(recipe['witness'])
+-                    and canonical(native.formulas) == canonical(recipe['premises']), 'RECIPE', 'full original independently decoded native recipe')
+-            witness = recipe['witness'];rule = witness['rule']
+-            require(rule in ARITY and len(refs) == len(recipe['premises']) == ARITY[rule]
+-                    and set(witness) == {'rule','formula'} | set(ARGUMENTS[rule]), 'RULE', 'all and only native primitive fields')
+-            preimage = {'recipe': {'primitive_witness': witness, 'ordered_premise_formulas': recipe['premises']},
+-                'primitive_authority_epoch': header['authority']['epoch'],
+-                'recipient_theory_sha256': header['authority']['recipient_theory_sha256'],
+-                'marking_version': MARKING, 'formula_registry_sha256': header['formula_registry_sha256']}
+-            if rule == 'assumption':preimage['local_context_id'] = header['context_id']
+-            merge(recipe['id'], canonical(preimage))
+-            placement = work.copy(work.call(context_checker.placement, recipe, row, list(refs), header))
+-            prior = [None] * row
+-            for source_row, formula in zip(refs, recipe['premises']):
+-                require(prior[source_row] is None or canonical(prior[source_row]) == canonical(formula), 'ALIAS', 'same read row same formula')
+-                prior[source_row] = formula
+-            accepted_formula = work.call(checker.command, work.copy(placement['command']), work.copy(prior), work.copy(gamma))
+-            require(canonical(accepted_formula) == canonical(witness['formula']), 'COMMAND', 'fresh exact primitive output')
+-            key = point_core.Key(index, row, tuple(refs))
+-            actual = work.copy(work.call(graph.decorate, key))
+-            require(canonical(actual) == canonical(placement), 'PLACEMENT', 'whole actual native identity and point preimages')
+-            t, m = work.call(graph.point_data, key)
+-            require(canonical([t,m]) == canonical([placement['t'],placement['m']]), 'POINTS', 'all actual t/m remote support')
+-            merge(placement['identity_preimage']['prototype_id'], canonical(placement['identity_preimage']['prototype_preimage']))
+-            merge(placement['id'], canonical(placement['identity_preimage']))
+-            return recipe, placement
+-
+-        order = state['order']
+-        require(type(order) is list, 'STATE', 'whole selected-key order')
+-        if len(order) > work.limits['selected']:raise _Unfinished('FINITE_SELECTED_ALLOWANCE')
+-        rows = {}; selection_order = []; totals = [0] * 24; marks = {}; mark_refs = {}
+-        def agree(point, value):
+-            work.step();require(point not in marks or marks[point] == value, 'POINT_UNION', 'exact entire marking agreement')
+-            marks[point] = value;mark_refs[point] = mark_refs.get(point,0) + 1
+-        for x,y,value in header['boundary']['fixed_exterior_m'] + header['boundary']['fixed_target_m']:
+-            agree((x,y), value)
+-        selected_keys = set()
+-        for position, value in enumerate(order):
+-            recipe, placement = packet(value);row = value[1];text = canonical(value)
+-            require(row not in rows and text not in selected_keys, 'ROW', 'distinct unit-row selected placement')
+-            selected_keys.add(text)
+-            for x,y,contribution in placement['t']:
+-                require(x == 0 and contribution == 1, 'POINTS', 'native unit t support')
+-                totals[y] += contribution;require(totals[y] <= 1, 'POINT_UNION', 'current t capacity')
+-            for x,y,mark in placement['m']:agree((x,y), mark)
+-            rows[row] = {'row': row, 'source_selected_index': position, 'node_id': 'n'+str(row),
+-                'recipe': recipe, 'placement': placement,
+-                'primitive_check': {'schema': 'hilbert-collected-native-primitive-check-v1',
+-                    'command': work.copy(placement['command']), 'ordered_premise_formulas': work.copy(recipe['premises']),
+-                    'context_id': header['context_id'], 'local_primitive_checked': True,
+-                    'proof_accepted': False, 'native_accepted': False}}
+-            selection_order.append({'source_selected_index': position, 'row': row,
+-                'node_id': 'n'+str(row), 'full_native_key': work.copy(value), 'placement_id': placement['id']})
+-        require(canonical(totals) == canonical(state['totals'])
+-                and canonical([[*point,marks[point],mark_refs[point]]for point in sorted(marks)]) == canonical(state['marks']),
+-                'POINT_UNION', 'fresh full actual current t/m/reference counts')
+-        require(type(state['excluded']) is list and len(state['excluded']) == 24, 'EXCLUDED', 'all current excluded rows')
+-        for row, values in enumerate(state['excluded']):
+-            require(type(values) is list, 'EXCLUDED', 'literal complete excluded row')
+-            for value in values:
+-                recipe, placement = packet(value)
+-                require(value[1] == row and canonical(value) not in selected_keys, 'EXCLUDED', 'exact current branch-local excluded identity')
+-
+-        def finish_guard():
+-            fresh = work.call(host_adapter.describe_host, graph=graph, context_checker=context_checker,
+-                closed_inputs=closed_inputs, qualification=qualification, tick=work.step)
+-            require(canonical(fresh) == canonical(host)
+-                    and canonical(work.call(graph.semantic_state)) == canonical(state)
+-                    and canonical(checker.theory) == canonical(theory), 'MUTATION', 'entire authority/current point state/checker unchanged')
+-            require(canonical({'origin': work.copy(origin), 'prototype_census': work.copy(prototype_census),
+-                    'qualification': work.copy(qualification)}) == entry, 'MUTATION', 'all caller inputs unchanged')
+-            require(host_adapter.VERSION == HOST_ADAPTER_VERSION and context_checker.VERSION == CONTEXT_VERSION,
+-                    'APIS', 'same public native interface versions')
+-        if not rows:
+-            finish_guard();return result('UNKNOWN','EMPTY_SELECTED_STATE_NO_NONEMPTY_DAG')
+-        members = [rows[row] for row in sorted(rows)]
+-        inputs = []; input_rows = {}; nodes = []; reads = []; node_map = []; outgoing = set(); closed = {}
+-        occurrences = [{'gamma_index': index, 'formula': work.copy(formula), 'selected_assumption_nodes': []}
+-                       for index, formula in enumerate(gamma)]
+-        for item in members:
+-            work.step();row = item['row'];nid = item['node_id'];recipe = item['recipe'];witness = recipe['witness'];refs = []
+-            for ordinal, (source_row, formula, code) in enumerate(zip(item['placement']['key'][2],recipe['premises'],recipe['inputs'])):
+-                work.step()
+-                if len(reads) >= work.limits['edges']:raise _Unfinished('FINITE_ORDERED_READ_ALLOWANCE')
+-                require(0 <= source_row < row and marks.get((1,source_row)) == code,
+-                        'READ', 'strict-prior exact native formula mark on every ordered read')
+-                source = rows.get(source_row);occupied = totals[source_row] == 1
+-                require(occupied is (source is not None), 'READ', 'actual selected source occupancy')
+-                if source is not None:
+-                    require(canonical(source['recipe']['witness']['formula']) == canonical(formula), 'READ', 'actual selected literal premise')
+-                    ref = {'node': source['node_id']};outgoing.add(source['node_id'])
+-                else:
+-                    if source_row not in input_rows:
+-                        iid = 'i'+str(source_row)
+-                        provenance = {'schema': 'hilbert-collected-unoccupied-source-v1', 'row': source_row,
+-                            'model_epoch': state['model_epoch'], 'context_id': header['context_id'],
+-                            'binding': work.copy(binding), 'state_sha256': state_sha,
+-                            'selected_key': None, 'engine_generated_accepted': False}
+-                        inputs.append({'id': iid, 'formula': work.copy(formula),
+-                            'sharing': 'ALLOW_SAME_EXACT_PRIOR_SOURCE', 'source': provenance,
+-                            'occupied': False, 'fact_accepted': False})
+-                        input_rows[source_row] = {'input_id': iid, 'row': source_row, 'formula': work.copy(formula),
+-                            'source': work.copy(provenance), 'readers': []}
+-                    require(canonical(input_rows[source_row]['formula']) == canonical(formula), 'ALIAS', 'all repeated open-read formulas agree')
+-                    ref = {'input': input_rows[source_row]['input_id']}
+-                    input_rows[source_row]['readers'].append({'consumer_node_id': nid, 'ordered_index': ordinal})
+-                refs.append(ref)
+-                reads.append({'consumer_node_id': nid, 'ordered_index': ordinal, 'row': source_row,
+-                    'formula': work.copy(formula), 'formula_code': code, 'source': work.copy(ref),
+-                    'occupied': occupied, 'fact_accepted': False,
+-                    'full_native_key': None if source is None else work.copy(source['placement']['key']),
+-                    'full_source_placement': None if source is None else work.copy(source['placement'])})
+-            rule = witness['rule'];arguments = {key: work.copy(witness[key]) for key in ARGUMENTS[rule]}
+-            if rule == 'assumption':
+-                index = arguments['index']
+-                require(type(index) is int and 0 <= index < len(occurrences)
+-                        and canonical(gamma[index]) == canonical(witness['formula']), 'GAMMA', 'exact original indexed occurrence')
+-                occurrences[index]['selected_assumption_nodes'].append(nid)
+-            closed[nid] = all('node' in ref and closed[ref['node']] for ref in refs)
+-            nodes.append({'id': nid, 'rule': rule, 'formula': work.copy(witness['formula']),
+-                'arguments': arguments, 'ordered_inputs': refs,
+-                'origin': {'schema': 'hilbert-collected-selected-node-v1', 'row': row,
+-                    'source_selected_index': item['source_selected_index'], 'recipe_id': recipe['id'],
+-                    'full_native_key': work.copy(item['placement']['key']), 'placement_id': item['placement']['id'],
+-                    'engine_generated_accepted': False, 'fact_accepted': False}})
+-            node_map.append({'node_id': nid, 'row': row, 'rule': rule,
+-                'source_selected_index': item['source_selected_index'], 'full_native_key': work.copy(item['placement']['key']),
+-                'placement_id': item['placement']['id'], 'dependency_closed_relative_to_Gamma': closed[nid]})
+-        outputs = []; output_map = []
+-        for item in members:
+-            work.step()
+-            if item['node_id'] not in outgoing:
+-                oid = 'o'+str(item['row']);formula = item['recipe']['witness']['formula']
+-                outputs.append({'id': oid, 'formula': work.copy(formula), 'source': {'node': item['node_id']}})
+-                output_map.append({'output_id': oid, 'node_id': item['node_id'], 'row': item['row'],
+-                    'formula': work.copy(formula), 'occupied_in_current_state': True, 'fact_accepted': False})
+-        derivation = {'schema': DAG_SCHEMA, 'host_binding': work.copy(binding), 'inputs': inputs, 'hypotheses': [],
+-            'nodes': nodes, 'outputs': outputs, 'origin': {'schema': 'hilbert-checked-current-state-origin-v1',
+-                'collector_version': VERSION, 'binding': work.copy(binding), 'state_sha256': state_sha,
+-                'caller_origin': work.copy(request['origin']), 'engine_generated_accepted': False, 'root_proof_accepted': False}}
+-        maps = {'selection_order': selection_order, 'nodes': node_map, 'reads': reads,
+-            'inputs': [input_rows[row]for row in sorted(input_rows)], 'outputs': output_map, 'context_occurrences': occurrences}
+-        finish_guard()
+-        return result('COLLECTED_CONDITIONAL_DAG','FRESH_CURRENT_NATIVE_DAG_WITH_OPEN_OBLIGATIONS_NO_PROOF',
+-            derivation=derivation,members=members,maps=maps,
+-            checks={'every_selected_primitive_checked': True,'full_current_point_union_checked': True,
+-                'ordered_reads_checked': True,'context_occurrences_preserved': True,'all_selected_nodes_collected': True,
+-                'input_and_host_unchanged': True,'dependency_closed_relative_to_Gamma': not inputs})
+-    except _CallbackFailure as failure:
+-        raise failure.error
+-    except _Unfinished as unfinished:
+-        return result('UNKNOWN',str(unfinished))

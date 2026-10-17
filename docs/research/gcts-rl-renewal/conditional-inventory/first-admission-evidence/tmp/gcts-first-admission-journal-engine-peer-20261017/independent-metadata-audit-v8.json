@@ -1,0 +1,75 @@
+{
+  "actual_result_reads": false,
+  "all_raw_sha256_lengths_exact": true,
+  "author11_edit_forward_inverse_raw_AST_exact": true,
+  "author_actual_forward_inverse_F0_exact": true,
+  "checked_raw_references": [
+    {
+      "bytes": 3986,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/API-wire-v8.json",
+      "sha256": "fdd7c3f43931a6f8c078bd8bfe1ebd2906dfd5ab6a3ab6833f7c7e6cc80da73e"
+    },
+    {
+      "bytes": 98533,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+      "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+    },
+    {
+      "bytes": 10938,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/Source-contract-v8.json",
+      "sha256": "8019d4d1b8ffeea79d9e3a68fb4e9abc829b2f4b9c7d2338a598f655e79d8f37"
+    },
+    {
+      "bytes": 12640,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-contract-v7.json",
+      "sha256": "dba45a064608275b17773e94722c5b2740b744329dd7265da66a2dd67f290132"
+    },
+    {
+      "bytes": 3351,
+      "path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/typed-Source-review-v7.json",
+      "sha256": "534357dc7df3e9a8aa04a514de83e02db6230ddbbb14088851b6bd2e1e7f95c5"
+    },
+    {
+      "bytes": 6066,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/handoff-v7.json",
+      "sha256": "2a2e214e4483f2ec61e1d48e8f5612e4d6958d06893186ef368b6ce6132b5a69"
+    },
+    {
+      "bytes": 92154,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+    },
+    {
+      "bytes": 9652,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/engine-v8.forward.patch",
+      "sha256": "a9f8ab75d3611e4cd4f93b18746a20579461a3e86c7559a8452db4ffb71484a9"
+    },
+    {
+      "bytes": 9652,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/engine-v8.inverse.patch",
+      "sha256": "518a224e6174d5379ed40c3885023ef9b8bcc19b470adccfddbe0a76df8132e5"
+    },
+    {
+      "bytes": 10002,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/Source-delta-v8.json",
+      "sha256": "45c6a14d6413b3bfd6c697147ee4c97cb5a268c1a184ddc00d90f9b204f1a45f"
+    },
+    {
+      "bytes": 9060,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/static-Source-audit-v8.json",
+      "sha256": "579096271af1302b88d26bb67a3a858a11a56321e522b595e20f8b5835032003"
+    },
+    {
+      "bytes": 11509,
+      "path": "/private/tmp/gcts-postconsumer-cost-plan-20261017/Source-cost-plan-v1.json",
+      "sha256": "9d0a1d8a001d7cce3e08490277822fc6cd5b97a42111325e494f9d5417d65622"
+    }
+  ],
+  "helper_event_based_payload_ABI_exact": true,
+  "independent_actual_patches_also_exact": true,
+  "raw_reference_count": 12,
+  "schema": "receptor-family-first-admission-journal-engine-independent-metadata-audit-v8",
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}

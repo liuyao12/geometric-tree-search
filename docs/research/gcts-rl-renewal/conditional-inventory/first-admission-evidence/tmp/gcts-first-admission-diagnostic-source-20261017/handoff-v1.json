@@ -1,0 +1,69 @@
+{
+  "API": {
+    "bytes": 4724,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/API-wire-v1.json",
+    "sha256": "8470cf500702dba8d61c3a9f37061b0d21ea8fdd5ede1866d9bf46c9c6f1678f"
+  },
+  "Review_ABI": {
+    "reviewer_identity": "distinct from author; disclose engine/old seam overlap",
+    "schema": "ROOT-first-admission-diagnostic-seam-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-first-admission-diagnostic-seam-Source",
+    "source": {
+      "bytes": 23268,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/save_failure_diagnostic_v3.fragment.py",
+      "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26"
+    },
+    "source_contract": "EXACT_CURRENT_CONTRACT_PIN",
+    "source_only": true,
+    "source_review_passed": "bool",
+    "sources": {
+      "saved_reader_candidate": {
+        "bytes": 42910,
+        "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/first_admission_saved_reader_v3.py",
+        "sha256": "0d17ae4cef18f9aa03f65ea63c332707289eaaaac49e05f591f27a463553a350"
+      },
+      "writer_replacement": {
+        "bytes": 23268,
+        "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/save_failure_diagnostic_v3.fragment.py",
+        "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26"
+      }
+    }
+  },
+  "Root_integration": "Copy writer function raw into current main; rebind only reader authority/current schema/review scope/responseVERSION in separately reviewed Root composition. payload.engine_milestones is full fixed4 raw list. Existing original native20/55, Source/once/custody machinery unchanged.",
+  "actual_execution_authorized": false,
+  "author": "/root/hilbert_advice_controls",
+  "delta": {
+    "bytes": 25160,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/Source-delta-v1.json",
+    "sha256": "806e63f36caffc79ff7e4364a214a3abc5e28ab5256786f80002af1040b5f451"
+  },
+  "module_evaluations": 0,
+  "schema": "ROOT-first-admission-diagnostic-seam-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 13584,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/Source-contract-v1.json",
+    "sha256": "383b8b31b90d1c11979f8412c0744973c2b13371760ac46c93046b17188649f8"
+  },
+  "source_only": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 42910,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/first_admission_saved_reader_v3.py",
+      "sha256": "0d17ae4cef18f9aa03f65ea63c332707289eaaaac49e05f591f27a463553a350"
+    },
+    "writer_replacement": {
+      "bytes": 23268,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/save_failure_diagnostic_v3.fragment.py",
+      "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26"
+    }
+  },
+  "static_audit": {
+    "bytes": 2001,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/static-audit-v1.json",
+    "sha256": "27ee0a700cb30dc9e9d33adc2b535edba38980444cf9386736f59b21c0185760"
+  }
+}

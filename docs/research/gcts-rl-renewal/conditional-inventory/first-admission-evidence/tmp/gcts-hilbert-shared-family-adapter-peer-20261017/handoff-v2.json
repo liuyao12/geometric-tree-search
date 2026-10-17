@@ -1,0 +1,27 @@
+{
+  "findings": {
+    "bytes": 2897,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/findings-v2.json",
+    "sha256": "b5c64095a84b1c490caf8a4ddae84822e08a9fc77a8737ee786f90c7f465fda6"
+  },
+  "preserved_negative": {
+    "bytes": 1990,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "57bb9caaf865a62879bf21749575e7582fb8470225c23af66ca1b61cb23cf25f"
+  },
+  "review": {
+    "bytes": 2216,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "5f731ff142bf6f736c41119477e94ffcefbcc7468891c120cea9d35d6d922839"
+  },
+  "schema": "Hilbert-shared-family-native-adapter-peer-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "static_audit": {
+    "bytes": 11142,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/static-review-audit-v2.json",
+    "sha256": "a819026d14bb87dcae4f15dd79cce8a329696526387a288ecc4a9e0b12e78fb4"
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS"
+}

@@ -1,0 +1,112 @@
+{
+  "API": {
+    "bytes": 5080,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/API-wire-v1.json",
+    "sha256": "3cf646e1de93cbf6e6e99f418d89f00dc736251dac353fdd50e5f268ceae1d61"
+  },
+  "Review_ABI": {
+    "reviewer_identity": "distinct from author; disclose common native/host/miner dependencies",
+    "schema": "Hilbert-shared-family-selected-collector-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "Hilbert-shared-family-selected-collector-Source",
+    "source": {
+      "bytes": 21778,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/hilbert_shared_family_selected_dag_collector_v1.py",
+      "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd"
+    },
+    "source_contract": "EXACT_CURRENT_CONTRACT_PIN",
+    "source_only": true,
+    "source_review_passed": "bool",
+    "sources": {
+      "hilbert_selected_collector": {
+        "bytes": 21778,
+        "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/hilbert_shared_family_selected_dag_collector_v1.py",
+        "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "author": "/root/hilbert_advice_controls",
+  "authorship_overlap": "Controls authored repaired host adapter and earlier arithmetic collector/shared consumer/provider; this is a separately named Hilbert collector, not its independent peer. Root owns integration/actuals; native Hilbert/context and generic independent checker authorship remains separate.",
+  "clock_calls": 0,
+  "cost_boundary": "Fresh existing static admission/independent wire construction/actual current selected+excluded packets/whole t-m/refcounts/input copies/census are fully charged to cumulative Root tick. Own finite ceilings are proposal collection bounds; no resource grant, runtime fit, target success or benefit claim.",
+  "delta": {
+    "bytes": 23172,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/Source-delta-v1.json",
+    "sha256": "9c35e2b3cddfa4bd916072327b9303a921944a273bef78b25ff452a413ecc3b5"
+  },
+  "dependencies": {
+    "context_checker": {
+      "bytes": 64540,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/fresh_final_checker.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    "dynamic_graph": {
+      "bytes": 35568,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/dynamic_graph.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    "generic_miner_v3": {
+      "bytes": 37218,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+    },
+    "host_adapter": {
+      "bytes": 28354,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/hilbert_shared_family_admission_adapter_v2.py",
+      "sha256": "203cb24a4e29ccf1b06b9293d854b15fa96d25a0fa25b3abd5eecfdea05b0d99"
+    },
+    "logical_oracle": {
+      "bytes": 24588,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/independent_checker.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    "point_core": {
+      "bytes": 31300,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/point_core.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    }
+  },
+  "generic_wire_compatibility": "Exact miner DAG schema and five-rule host argument syntax accepted by miner3 _Graph; full expansion/native admission downstream remains mandatory. Generic miner input validation is structural and never turns origin labels into proof authority.",
+  "host_adapter_contract": {
+    "bytes": 10299,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-v2-source-20261017/Source-contract-v2.json",
+    "sha256": "78ae00f6a5bf6001a19ceece71b1ed5bd0d735d651da631ae968bd682ef12049"
+  },
+  "host_adapter_peer": {
+    "bytes": 2216,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "5f731ff142bf6f736c41119477e94ffcefbcc7468891c120cea9d35d6d922839"
+  },
+  "module_evaluations": 0,
+  "project_functions_executed": 0,
+  "remaining_gaps": [
+    "Hilbert-specific descriptor/physical receiver grounding and preference/continuation consumer remain separately reviewed composition work.",
+    "Current complete-domain/global priority/continuation/root rollback dynamic qualification stays separate from logical/point component checks.",
+    "Any automatically mined conditional fragment still requires source-ground and current receiver check; no selected-node count or closed DAG alone is a theorem certificate."
+  ],
+  "schema": "Hilbert-shared-family-selected-collector-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Hilbert-shared-family-selected-collector-Source",
+  "semantic_boundary": "Original admitted Hilbert catalogue/theory/ordered indexed Gamma/target/all24 boundary/root/exterior/target marks/formula codes/recipe indices/authority/model epoch remain unchanged. Arithmetic original17/input2 is separate. No graph mutation, global query/fallback enumeration or engine chronology is supplied by this collector.",
+  "source": {
+    "bytes": 21778,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/hilbert_shared_family_selected_dag_collector_v1.py",
+    "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd"
+  },
+  "source_only": true,
+  "sources": {
+    "hilbert_selected_collector": {
+      "bytes": 21778,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/hilbert_shared_family_selected_dag_collector_v1.py",
+      "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd"
+    }
+  },
+  "static_audit": {
+    "bytes": 2701,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/static-audit-v1.json",
+    "sha256": "8b6558307453d9e132677e2570167a075ff3c49e7db5a56c1d915af43e1f6013"
+  }
+}

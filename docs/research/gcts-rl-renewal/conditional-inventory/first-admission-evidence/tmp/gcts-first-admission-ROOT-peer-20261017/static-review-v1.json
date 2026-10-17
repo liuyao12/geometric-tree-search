@@ -1,0 +1,245 @@
+{
+  "checks": [
+    {
+      "check": "exact requested current packet",
+      "passed": true
+    },
+    {
+      "check": "nine raw regions",
+      "passed": true
+    },
+    {
+      "check": "region 1",
+      "passed": true
+    },
+    {
+      "check": "region 2",
+      "passed": true
+    },
+    {
+      "check": "region 3",
+      "passed": true
+    },
+    {
+      "check": "region 4",
+      "passed": true
+    },
+    {
+      "check": "region 5",
+      "passed": true
+    },
+    {
+      "check": "region 6",
+      "passed": true
+    },
+    {
+      "check": "region 7",
+      "passed": true
+    },
+    {
+      "check": "region 8",
+      "passed": true
+    },
+    {
+      "check": "region 9",
+      "passed": true
+    },
+    {
+      "check": "whole raw forward/inverse",
+      "passed": true
+    },
+    {
+      "check": "whole AST forward/inverse",
+      "passed": true
+    },
+    {
+      "check": "actual forward patch -F0 and cmp",
+      "passed": true
+    },
+    {
+      "check": "actual inverse patch -F0 and cmp",
+      "passed": true
+    },
+    {
+      "check": "all inherited regions exact outside declared writer/main wrapper",
+      "exact": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.phase",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language",
+        "main.capture_provider_summary"
+      ],
+      "passed": true
+    },
+    {
+      "check": "whole reviewed writer and capture exact insertion",
+      "passed": true
+    },
+    {
+      "check": "unchanged FIXED_INPUTS",
+      "passed": true
+    },
+    {
+      "check": "unchanged LIMITS",
+      "passed": true
+    },
+    {
+      "check": "unchanged ORIGINAL_SOURCES",
+      "passed": true
+    },
+    {
+      "check": "unchanged ORIGINAL_INPUTS",
+      "passed": true
+    },
+    {
+      "check": "unchanged ORIGINAL_BINDING",
+      "passed": true
+    },
+    {
+      "check": "unchanged SCOPE",
+      "passed": true
+    },
+    {
+      "check": "only engine and helper dependency capsules change",
+      "passed": true
+    },
+    {
+      "check": "current22/input10 separate original17/input2 exact contract",
+      "passed": true
+    },
+    {
+      "check": "34 literal sites exact and bounded75/2160",
+      "passed": true
+    },
+    {
+      "check": "positive result transport/native/error tail raw exact",
+      "passed": true
+    },
+    {
+      "check": "compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "engine current distinct/scoped peer",
+      "passed": true
+    },
+    {
+      "check": "helper current distinct/scoped peer",
+      "passed": true
+    },
+    {
+      "check": "seam current distinct/scoped peer",
+      "passed": true
+    },
+    {
+      "check": "reader current distinct/scoped peer",
+      "passed": true
+    },
+    {
+      "check": "engine/math author has separate independent review",
+      "passed": true
+    }
+  ],
+  "raw_references": [
+    {
+      "bytes": 14718,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/handoff-v1.json",
+      "sha256": "fdbce8f9e31c541c5811501d94b285e13ba125d9518847aa19ca8fbd47a023fe"
+    },
+    {
+      "bytes": 76794,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/first_admission_receiver_cold_v1.py",
+      "sha256": "8fd4ac50d08d0532465705713760daeadc0e7bef3ca60970db5f73e416ef6bfa"
+    },
+    {
+      "bytes": 23356,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "f9a243b08a2e83062df385e12f96a513aff32ce49a10ae7af58fef1dfddf5929"
+    },
+    {
+      "bytes": 66670,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+      "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91"
+    },
+    {
+      "bytes": 41938,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "2181b1b4ec8aa03e2cdebae046e934cd8217745380217e3aab4888b704443552"
+    },
+    {
+      "bytes": 29410,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/first_admission_receiver_cold_v1.py.forward.patch",
+      "sha256": "745b877eb4824ff2f226c7a3b932a0e83d2344da4e13542002817e304d2190fb"
+    },
+    {
+      "bytes": 29410,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/first_admission_receiver_cold_v1.py.inverse.patch",
+      "sha256": "de658baee10550682fb7415a6b7f3f17a64e42038d982e90a398d6e22a777603"
+    },
+    {
+      "bytes": 23268,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/save_failure_diagnostic_v3.fragment.py",
+      "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26"
+    },
+    {
+      "bytes": 1596,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/capture_engine_milestone.fragment.py",
+      "sha256": "410a1225cd4b978e686394f948b2e7b68a0382d68ac9f30789c2be7c1e79c2a0"
+    },
+    {
+      "bytes": 4461,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/typed-Source-review-v8.json",
+      "sha256": "cd56b601286d33293295ea34af024454efce150a297e92bfe3bb520b036dcfd3"
+    },
+    {
+      "bytes": 2256,
+      "path": "/private/tmp/gcts-engine-milestone-helper-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "ab69949907e73b1946f11112a3272b92200307edd1185a742c8583fc96293a8c"
+    },
+    {
+      "bytes": 2279,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "806cbcf0cbeefb9a5e35bdefbca1346d09ddea46dc0b81064068383ce27a1c12"
+    },
+    {
+      "bytes": 3987,
+      "path": "/private/tmp/gcts-first-admission-saved-reader-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "de3483d5aec068cce40499cf113df13f6cc9553dcfba8f8e31863be704555999"
+    }
+  ],
+  "schema": "first-admission-Root-caller-independent-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}

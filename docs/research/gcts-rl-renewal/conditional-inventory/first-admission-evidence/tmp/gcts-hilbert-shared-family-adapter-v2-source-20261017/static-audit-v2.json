@@ -1,0 +1,25 @@
+{
+  "actual_patch_F0_directions": 2,
+  "all_native_point_loops_unchanged": true,
+  "compile_without_evaluation": true,
+  "current_scope": "Only own VERSION plus schema/status dispatch, exact UNKNOWN request prefixes and full success request join. No new catch, no modified native/checker function, no semantic/resource/census change.",
+  "describe_host_unchanged": true,
+  "full_raw_AST_inverse": true,
+  "module_evaluations": 0,
+  "raw_AST_exact_regions": [
+    "require",
+    "tree",
+    "canonical",
+    "digest",
+    "call",
+    "_context",
+    "describe_host",
+    "_rows",
+    "_merge",
+    "_record_key"
+  ],
+  "raw_edit_count": 19,
+  "schema": "Hilbert-shared-family-native-adapter-static-audit-v2",
+  "scientific_calls": 0,
+  "source_only": true
+}

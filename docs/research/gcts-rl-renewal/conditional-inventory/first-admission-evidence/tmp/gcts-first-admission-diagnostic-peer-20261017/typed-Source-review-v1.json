@@ -1,0 +1,48 @@
+{
+  "Source_pass": true,
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_overlap": "Reviewer authored engine8, older engine/census/point/checker ancestry and diagnostic proposals; not author of Controls current writer/readout or Arithmetic helper. Shared API coordination and prior seam review disclosed. Engine mathematics is not independently self-reviewed: separate cd56b601 peer is bound.",
+  "blockers": [],
+  "findings": {
+    "bytes": 4285,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-peer-20261017/findings-v1.json",
+    "sha256": "b2973b93a2a2eadfdfa0d267c8fad0ef347ae2a5b89cdd7af29a5107079b3931"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "ROOT-first-admission-diagnostic-seam-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-first-admission-diagnostic-seam-Source",
+  "source": {
+    "bytes": 23268,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/save_failure_diagnostic_v3.fragment.py",
+    "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26"
+  },
+  "source_contract": {
+    "bytes": 13584,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/Source-contract-v1.json",
+    "sha256": "383b8b31b90d1c11979f8412c0744973c2b13371760ac46c93046b17188649f8"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 42910,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/first_admission_saved_reader_v3.py",
+      "sha256": "0d17ae4cef18f9aa03f65ea63c332707289eaaaac49e05f591f27a463553a350"
+    },
+    "writer_replacement": {
+      "bytes": 23268,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/save_failure_diagnostic_v3.fragment.py",
+      "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26"
+    }
+  },
+  "static_evidence": {
+    "bytes": 9007,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-peer-20261017/static-review-v1.json",
+    "sha256": "1e2d3b3c3be4efe195c408dbdd24541b16ea43138a2284bf6e5e02df4f91df70"
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS"
+}

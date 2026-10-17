@@ -1,0 +1,317 @@
+{
+  "checks": [
+    {
+      "added_named_regions": [
+        "main.capture_engine_milestone"
+      ],
+      "both_actual_patch_directions_byte_exact": true,
+      "changed_named_regions": [
+        "save_failure_diagnostic",
+        "main",
+        "main.run_receiver"
+      ],
+      "compile_without_evaluation": true,
+      "edits": [
+        {
+          "new": "VERSION='ROOT-receiver-inference-probe-cold-v5-first-admission-journal'\n",
+          "new_end": 26,
+          "new_start": 25,
+          "old": "VERSION='ROOT-receiver-inference-probe-cold-v4-callback-stages'\n",
+          "old_end": 26,
+          "old_start": 25
+        },
+        {
+          "new": "FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'degree_router': {'bytes': 12779, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'family_consumer': {'bytes': 13040, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py', 'sha256': 'd68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874'}, 'family_engine': {'bytes': 98533, 'path': '/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py', 'sha256': '9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f'}, 'head_gate': {'bytes': 15276, 'path': '/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py', 'sha256': '7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_aware_checker': {'bytes': 25783, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188'}, 'marked_aware_proposer': {'bytes': 14064, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'producer': {'bytes': 60281, 'path': '/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py', 'sha256': 'fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'receiver_cases': {'bytes': 8872, 'path': '/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py', 'sha256': '1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb'}, 'receiver_provider': {'bytes': 60912, 'path': '/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py', 'sha256': 'fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0'}, 'residual_policy': {'bytes': 12826, 'path': '/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py', 'sha256': '2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479'}}\n",
+          "new_end": 31,
+          "new_start": 30,
+          "old": "FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'degree_router': {'bytes': 12779, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'family_consumer': {'bytes': 13040, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py', 'sha256': 'd68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874'}, 'family_engine': {'bytes': 92154, 'path': '/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py', 'sha256': 'b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e'}, 'head_gate': {'bytes': 15276, 'path': '/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py', 'sha256': '7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_aware_checker': {'bytes': 25783, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188'}, 'marked_aware_proposer': {'bytes': 14064, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'producer': {'bytes': 60281, 'path': '/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py', 'sha256': 'fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'receiver_cases': {'bytes': 8772, 'path': '/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py', 'sha256': '150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094'}, 'receiver_provider': {'bytes': 60912, 'path': '/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py', 'sha256': 'fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0'}, 'residual_policy': {'bytes': 12826, 'path': '/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py', 'sha256': '2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479'}}\n",
+          "old_end": 31,
+          "old_start": 30
+        },
+        {
+          "new": "    elif failure_kind == 'CONTROLS_TIMEOUT_ENGINE_MILESTONES_V3':\n        roles = ('proposer','fallback','completion','validator')\n        counters = ('planned_assignments','attempted_assignments','binding_attempts',\n            'ground_environment_proposals','distinct_environment_attempts','full_expansions',\n            'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',\n            'checked_instances','duplicate_instances','offered_instances','head_gate_calls',\n            'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',\n            'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')\n        if (type(capture) is not dict or len(capture) != 3\n                or not all(type(key) is str for key in capture)\n                or set(capture) != {'legacy','provider_returns','engine_milestones'}):\n            raise ValueError('fixed builtin provider-return capture')\n        legacy = capture['legacy']; returned = capture['provider_returns']\n        if (type(legacy) is not dict or len(legacy) != 4\n                or not all(type(key) is str for key in legacy) or set(legacy) != set(roles)\n                or type(returned) is not list or len(returned) != 2):\n            raise ValueError('fixed legacy and two provider-return slots')\n        observations = {}\n        for role in roles:\n            failure_gate()\n            item = legacy[role]\n            if item is None:\n                observations[role] = None\n                continue\n            if type(item) is not tuple or len(item) != 4:\n                raise ValueError('fixed scalar last-context tuple')\n            stage,row,selected,native_ns = item\n            if (type(stage) is not str or stage != role.upper()+'_NATIVE_STEP'\n                    or type(row) is not int or not -1<=row<24\n                    or type(selected) is not int or not -1<=selected<=24\n                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000\n                    or not 0<=native_ns<=9223372036854775807):\n                raise ValueError('bounded builtin last-context fields')\n            observations[role] = {'stage':stage,'row':row,'selected_count':selected,'native_ns':native_ns}\n        summaries = []\n        for index in range(2):\n            failure_gate()\n            item = returned[index]\n            if item is None:\n                summaries.append(None)\n                continue\n            if (type(item) is not dict or len(item) != 7\n                    or not all(type(key) is str for key in item)\n                    or set(item) != {'ordinal','native_ns','batch_status','instance_count',\n                        'provider_reason','provider_steps','accounting'}):\n                raise ValueError('fixed builtin provider-return fields')\n            ordinal = item['ordinal']; native_ns = item['native_ns']; counts = item['accounting']\n            if (type(ordinal) is not int or ordinal != index+1\n                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000\n                    or not 0<=native_ns<=9223372036854775807\n                    or type(item['batch_status']) is not str or len(item['batch_status'])>64\n                    or type(item['instance_count']) is not int or not 0<=item['instance_count']<=1\n                    or type(item['provider_reason']) is not str or len(item['provider_reason'])>256\n                    or type(item['provider_steps']) is not int or not 0<=item['provider_steps']<=1000000\n                    or type(counts) is not dict or len(counts) != 20\n                    or not all(type(key) is str for key in counts) or set(counts) != set(counters)\n                    or not all(type(counts[key]) is int and 0<=counts[key]<=1000000 for key in counters)):\n                raise ValueError('bounded builtin provider-return scalars')\n            summaries.append({'ordinal':ordinal,'native_ns':native_ns,\n                'batch_status':item['batch_status'],'instance_count':item['instance_count'],\n                'provider_reason':item['provider_reason'],'provider_steps':item['provider_steps'],\n                'accounting':{key:counts[key] for key in counters}})\n        stages = ('FIRST_ROOT_FAMILY_PLAN_READY','FIRST_ROOT_FAMILY_EVENT_READY',\n            'FIRST_ROOT_PRIMITIVE_PLACED','FIRST_CHILD_DECISION_READY')\n        milestones = capture['engine_milestones']\n        if type(milestones) is not list or len(milestones) != 4:\n            raise ValueError('fixed four raw engine milestone slots')\n        headers = []; captured = 0; ended = False; previous_ns = began_ns\n        for index in range(4):\n            failure_gate()\n            item = milestones[index]\n            if item is None:\n                ended = True; headers.append(None); continue\n            if (ended or type(item) is not dict or len(item) != 4\n                    or not all(type(key) is str for key in item)\n                    or set(item) != {'ordinal','stage','native_ns','record'}\n                    or type(item['ordinal']) is not int or item['ordinal'] != index+1\n                    or type(item['stage']) is not str or item['stage'] != stages[index]\n                    or type(item['native_ns']) is not int\n                    or not previous_ns<=item['native_ns']<began_ns+20000000000\n                    or not 0<=item['native_ns']<=9223372036854775807\n                    or type(item['record']) is not dict):\n                raise ValueError('literal monotone-prefix raw milestone headers')\n            headers.append({'ordinal':index+1,'stage':item['stage'],'native_ns':item['native_ns']})\n            previous_ns=item['native_ns']; captured+=1\n        journal = [b'null',b'null',b'null',b'null']; journal_bytes = 21\n        serialized = 0; prefix_reason = 'ALL_CAPTURED_RECORDS_SAVED'\n        for index in range(captured):\n            failure_gate()\n            try:\n                item_raw = encoded(milestones[index],3*1048576)\n            except ValueError:\n                prefix_reason = 'NEXT_RECORD_OUTPUT_BOUND_OR_BUILTIN_TYPE'; break\n            if journal_bytes+len(item_raw)-4 > 3*1048576:\n                prefix_reason = 'ENGINE_JOURNAL_AGGREGATE_BYTE_LIMIT'; break\n            journal[index]=item_raw; journal_bytes+=len(item_raw)-4; serialized+=1\n        journal_raw=b'['+b','.join(journal)+b']'\n        if len(journal_raw)!=journal_bytes:raise ValueError('literal journal byte accounting')\n        labels = encoded({'schema':'unit-row-controls-engine-milestones-diagnostic-v3',\n            'diagnostic_only':True,'qualification':'UNQUALIFIED_LITERAL_ENGINE_MILESTONE_RECORDS',\n            'failure_kind':'TimeoutError','returned_control_record':False,\n            'callback_context':'LITERAL_RETURNED_SCALARS_AND_RAW_ENGINE_RECORDS_ONLY',\n            'provider_return_summaries_are_unvalidated_scalars':True,\n            'engine_milestone_records_are_unvalidated':True,\n            'captured_headers':headers,'captured_record_count':captured,\n            'serialized_record_count':serialized,'omitted_record_count':captured-serialized,\n            'next_omitted_ordinal':serialized+1 if serialized<captured else None,\n            'engine_record_prefix_reason':prefix_reason,'engine_journal_bytes':journal_bytes,\n            'last_observation_is_active_failure_frame':False,'callback_return_to_engine_proved':False,\n            'offers_accepted':False,'current_state_accepted':False,'failure_cause_established':False,\n            'live_state_or_proof_trajectory_accepted':False,\n            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,\n            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,\n            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False},65536)\n        raw = (b'{\"context\":'+context_raw+b',\"diagnostic\":'+labels\n               +b',\"last_observations\":'+encoded(observations,4096)\n               +b',\"provider_returns\":'+encoded(summaries,8192)\n               +b',\"engine_milestones\":'+journal_raw+b'}\\n')\n",
+          "new_end": 443,
+          "new_start": 325,
+          "old": "",
+          "old_end": 325,
+          "old_start": 325
+        },
+        {
+          "new": "    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-controls-provider-returns-completion-v2' if failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2' else 'unit-row-controls-engine-milestones-completion-v3' if failure_kind == 'CONTROLS_TIMEOUT_ENGINE_MILESTONES_V3' else 'unit-row-search-failure-diagnostic-completion-v1'),\n",
+          "new_end": 499,
+          "new_start": 498,
+          "old": "    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-controls-provider-returns-completion-v2' if failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2' else 'unit-row-search-failure-diagnostic-completion-v1'),\n",
+          "old_end": 381,
+          "old_start": 380
+        },
+        {
+          "new": "    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT', 'P1_ENTER', 'P1_DELEGATE_RETURN', 'P1_CALLBACK_READY', 'P2_ENTER', 'P2_DELEGATE_RETURN', 'P2_CALLBACK_READY', 'C1_ENTER', 'C1_DELEGATE_RETURN', 'C1_CALLBACK_READY', 'C2_ENTER', 'C2_DELEGATE_RETURN', 'C2_CALLBACK_READY', 'C3_ENTER', 'C3_DELEGATE_RETURN', 'C3_CALLBACK_READY', 'SEARCH_RETURN_OBSERVED', 'POSTSEARCH_SNAPSHOT_READY', 'M1_PLAN_READY', 'M2_EVENT_READY', 'M3_PLACE_RETURN', 'M4_CHILD_DECISION')\n",
+          "new_end": 560,
+          "new_start": 559,
+          "old": "    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT', 'P1_ENTER', 'P1_DELEGATE_RETURN', 'P1_CALLBACK_READY', 'P2_ENTER', 'P2_DELEGATE_RETURN', 'P2_CALLBACK_READY', 'C1_ENTER', 'C1_DELEGATE_RETURN', 'C1_CALLBACK_READY', 'C2_ENTER', 'C2_DELEGATE_RETURN', 'C2_CALLBACK_READY', 'C3_ENTER', 'C3_DELEGATE_RETURN', 'C3_CALLBACK_READY', 'SEARCH_RETURN_OBSERVED', 'POSTSEARCH_SNAPSHOT_READY')\n",
+          "old_end": 442,
+          "old_start": 441
+        },
+        {
+          "new": "    engine_milestone_records=[None,None,None,None]\n    milestone_stages=('FIRST_ROOT_FAMILY_PLAN_READY','FIRST_ROOT_FAMILY_EVENT_READY',\n        'FIRST_ROOT_PRIMITIVE_PLACED','FIRST_CHILD_DECISION_READY')\n    milestone_phases=('M1_PLAN_READY','M2_EVENT_READY','M3_PLACE_RETURN','M4_CHILD_DECISION')\n    def capture_engine_milestone(stage,record):\n        # Native20 metadata only; retain owned COW references without traversal.\n        # The late bounded journal is raw evidence, never scientific admission.\n        if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code\n                or phase_tick.__defaults__ is not phase_tick_defaults\n                or phase_tick.__kwdefaults__ is not phase_tick_kwdefaults):\n            raise RuntimeError('original milestone native endpoint changed')\n        phase_tick()\n        if type(stage)is not str or stage not in milestone_stages or type(record)is not dict:\n            return\n        ordinal=milestone_stages.index(stage)\n        if (engine_milestone_records[ordinal]is not None\n                or any(engine_milestone_records[i]is None for i in range(ordinal))\n                or record.get('schema')!='unit-row-first-family-engine-milestone-v1'\n                or record.get('stage')!=stage or record.get('diagnostic_only')is not True\n                or record.get('scientific_acceptance')is not False):\n            return\n        phase(milestone_phases[ordinal])\n        native_ns=phase_tick()\n        engine_milestone_records[ordinal]={'ordinal':ordinal+1,'stage':stage,\n            'native_ns':native_ns,'record':record}\n    diagnostic_capture['engine_milestones']=engine_milestone_records\n",
+          "new_end": 826,
+          "new_start": 800,
+          "old": "",
+          "old_end": 682,
+          "old_start": 682
+        },
+        {
+          "new": "            tick=tick,phase=phase,capture_provider_summary=capture_provider_summary,\n            engine_milestone_observer=capture_engine_milestone)\n",
+          "new_end": 873,
+          "new_start": 871,
+          "old": "            tick=tick,phase=phase,capture_provider_summary=capture_provider_summary)\n",
+          "old_end": 728,
+          "old_start": 727
+        },
+        {
+          "new": "                      'CONTROLS_TIMEOUT_ENGINE_MILESTONES_V3',EARLY_G)\n",
+          "new_end": 899,
+          "new_start": 898,
+          "old": "                      'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2',EARLY_G)\n",
+          "old_end": 754,
+          "old_start": 753
+        },
+        {
+          "new": "        'engine_milestones':engine_milestone_records,\n",
+          "new_end": 908,
+          "new_start": 907,
+          "old": "",
+          "old_end": 762,
+          "old_start": 762
+        }
+      ],
+      "named_regions_raw_AST_unchanged": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.phase",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language",
+        "main.capture_provider_summary"
+      ],
+      "parent": {
+        "bytes": 66670,
+        "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+        "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91"
+      },
+      "raw_regions": 9,
+      "removed_named_regions": [],
+      "source": {
+        "bytes": 76794,
+        "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/first_admission_receiver_cold_v1.py",
+        "sha256": "8fd4ac50d08d0532465705713760daeadc0e7bef3ca60970db5f73e416ef6bfa"
+      },
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "added_named_regions": [
+        "validate_engine_milestones"
+      ],
+      "both_actual_patch_directions_byte_exact": true,
+      "changed_named_regions": [
+        "read_phases",
+        "read_failure_diagnostic",
+        "main"
+      ],
+      "compile_without_evaluation": true,
+      "edits": [
+        {
+          "new": "CURRENT_CONTRACT={'path': '/private/tmp/gcts-first-admission-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'f9a243b08a2e83062df385e12f96a513aff32ce49a10ae7af58fef1dfddf5929', 'bytes': 23356}\n",
+          "new_end": 13,
+          "new_start": 12,
+          "old": "CURRENT_CONTRACT={'path': '/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d', 'bytes': 21574}\n",
+          "old_end": 13,
+          "old_start": 12
+        },
+        {
+          "new": "MILESTONE_PHASES=('M1_PLAN_READY','M2_EVENT_READY','M3_PLACE_RETURN','M4_CHILD_DECISION')\nMILESTONE_STAGES=('FIRST_ROOT_FAMILY_PLAN_READY','FIRST_ROOT_FAMILY_EVENT_READY',\n    'FIRST_ROOT_PRIMITIVE_PLACED','FIRST_CHILD_DECISION_READY')\nMILESTONE_FIELDS=(('pre_state','decision','decision_event','plan','prototype_census'),\n    ('state','pending_preferences','event'),('state','transition','invalidation_event','place_event'),\n    ('state','decision','decision_event','prototype_census'))\nMILESTONE_ENGINE_VERSION='lazy-unit-row-global-engine-v13-receptor-family-preferences-v8-first-admission-journal'\nMILESTONE_JOURNAL_MAX_BYTES=3*1048576\nDIAGNOSTIC_MAX_BYTES=4*1048576+131072\nPHASES=LEGACY_PHASES+CALLBACK_PHASES+SEARCH_PHASES+MILESTONE_PHASES\n",
+          "new_end": 83,
+          "new_start": 73,
+          "old": "PHASES=LEGACY_PHASES+CALLBACK_PHASES+SEARCH_PHASES\n",
+          "old_end": 74,
+          "old_start": 73
+        },
+        {
+          "new": "PHASE_TOTAL_MAX_BYTES=2160\n",
+          "new_end": 92,
+          "new_start": 91,
+          "old": "PHASE_TOTAL_MAX_BYTES=1913\n",
+          "old_end": 83,
+          "old_start": 82
+        },
+        {
+          "new": "                    if group in ('P2','C2','C3') and any(item in seen for item in MILESTONE_PHASES):\n                        need('M4_CHILD_DECISION' in seen, 'later callback follows the completed milestone prefix')\n",
+          "new_end": 138,
+          "new_start": 136,
+          "old": "",
+          "old_end": 127,
+          "old_start": 127
+        },
+        {
+          "new": "            elif label in MILESTONE_PHASES:\n                index=MILESTONE_PHASES.index(label)\n                need('BEFORE_ENGINE'in seen and 'C1_CALLBACK_READY'in seen and not stack\n                     and 'SEARCH_RETURN_OBSERVED'not in seen\n                     and not any(item+'_ENTER'in seen for item in ('P2','C2','C3'))\n                     and all(item in seen for item in MILESTONE_PHASES[:index]),\n                     'fixed first-root milestone prefix before later callbacks/search return')\n",
+          "new_end": 155,
+          "new_start": 148,
+          "old": "",
+          "old_end": 137,
+          "old_start": 137
+        },
+        {
+          "new": "    need(len(phases)<=34, 'finite fixed phase sites')\n",
+          "new_end": 182,
+          "new_start": 181,
+          "old": "    need(len(phases)<=30, 'finite fixed phase sites')\n",
+          "old_end": 164,
+          "old_start": 163
+        },
+        {
+          "new": "def validate_engine_milestones(slots, phases, began, deadline, terminal, headers=None):\n    # Literal wire structure only. No state/decision/plan is mathematically checked.\n    need(type(slots)is list and len(slots)==4, 'fixed four nullable raw milestone records')\n    need(all(type(value)is int for value in (began,deadline,terminal))\n         and deadline==began+20000000000, 'literal milestone original20 window')\n    stamps={item['stage']:item['native_ns']for item in phases}\n    supplied_headers=headers is not None\n    if supplied_headers:\n        need(type(headers)is list and len(headers)==4, 'fixed captured-header list')\n    else:\n        headers=[]\n        for value in slots:\n            if value is None:headers.append(None)\n            else:\n                need(type(value)is dict and all(type(key)is str for key in value), 'builtin raw record wrapper')\n                need(set(value)=={'ordinal','stage','native_ns','record'}, 'exact raw record wrapper fields')\n                headers.append({key:value[key]for key in ('ordinal','stage','native_ns')})\n    captured=0;ended=False;previous=began\n    for index,header in enumerate(headers):\n        if header is None:ended=True;continue\n        need(not ended and type(header)is dict and len(header)==3\n             and all(type(key)is str for key in header)\n             and set(header)=={'ordinal','stage','native_ns'}\n             and type(header['ordinal'])is int and header['ordinal']==index+1\n             and type(header['stage'])is str and header['stage']==MILESTONE_STAGES[index]\n             and type(header['native_ns'])is int\n             and previous<=header['native_ns']<deadline and header['native_ns']<=terminal,\n             'literal monotone captured milestone header prefix')\n        phase=MILESTONE_PHASES[index]\n        need(phase in stamps and stamps[phase]<=header['native_ns']\n             and (index==3 or MILESTONE_PHASES[index+1]not in stamps\n                  or header['native_ns']<=stamps[MILESTONE_PHASES[index+1]])\n             and ('SEARCH_RETURN_OBSERVED'not in stamps or header['native_ns']<=stamps['SEARCH_RETURN_OBSERVED']),\n             'nullable raw capture timestamp joins reached marker, next stage and search return')\n        previous=header['native_ns'];captured+=1\n    # A later marker requires the earlier capture to have returned, but its own\n    # post-marker native tick may fail before its raw slot is stored.\n    for index in range(1,4):\n        if MILESTONE_PHASES[index]in stamps:\n            need(all(headers[j]is not None for j in range(index)), 'prior captures before a later milestone marker')\n    serialized=0;ended=False\n    common={'schema','stage','engine_version','depth','diagnostic_only','scientific_acceptance'}\n    for index,value in enumerate(slots):\n        if value is None:ended=True;continue\n        need(not ended and type(value)is dict and len(value)==4\n             and all(type(key)is str for key in value)\n             and set(value)=={'ordinal','stage','native_ns','record'}, 'complete serialized wrapper prefix')\n        need(headers[index]is not None and all(type(value[key])is type(headers[index][key])\n             and value[key]==headers[index][key]for key in ('ordinal','stage','native_ns')),\n             'serialized wrapper retains exact captured scalar header')\n        record=value['record']\n        need(type(record)is dict and all(type(key)is str for key in record)\n             and set(record)==common|set(MILESTONE_FIELDS[index])\n             and type(record['schema'])is str and record['schema']=='unit-row-first-family-engine-milestone-v1'\n             and type(record['stage'])is str and record['stage']==MILESTONE_STAGES[index]\n             and type(record['engine_version'])is str and record['engine_version']==MILESTONE_ENGINE_VERSION\n             and type(record['depth'])is int and record['depth']==(1 if index==3 else 0)\n             and record['diagnostic_only']is True and record['scientific_acceptance']is False,\n             'literal current engine stage/version/depth/field schema only')\n        pending=[record]\n        while pending:\n            item=pending.pop();kind=type(item)\n            if item is None or kind in (bool,int,str):continue\n            if kind is list:pending.extend(item)\n            elif kind is dict:\n                need(all(type(key)is str for key in item), 'raw record string keys')\n                pending.extend(item.values())\n            else:need(False, 'raw milestone builtin JSON types only')\n        serialized+=1\n    need(serialized<=captured and (supplied_headers or serialized==captured), 'captured vs serialized literal prefixes')\n    return {'captured_headers':headers,'captured_record_count':captured,'serialized_record_count':serialized}\n\n\n",
+          "new_end": 290,
+          "new_start": 217,
+          "old": "",
+          "old_end": 199,
+          "old_start": 199
+        },
+        {
+          "new": "    diagnostic_raw=read(owned/'unknown-diagnostic.json',DIAGNOSTIC_MAX_BYTES)\n",
+          "new_end": 297,
+          "new_start": 296,
+          "old": "    diagnostic_raw=read(owned/'unknown-diagnostic.json',PROVIDER_DIAGNOSTIC_MAX_BYTES)\n",
+          "old_end": 206,
+          "old_start": 205
+        },
+        {
+          "new": "         ('unit-row-controls-last-context-completion-v1','unit-row-controls-provider-returns-completion-v2',\n          'unit-row-controls-engine-milestones-completion-v3'),\n",
+          "new_end": 308,
+          "new_start": 306,
+          "old": "         ('unit-row-controls-last-context-completion-v1','unit-row-controls-provider-returns-completion-v2'),\n",
+          "old_end": 216,
+          "old_start": 215
+        },
+        {
+          "new": "    engine_journal=marker['schema']=='unit-row-controls-engine-milestones-completion-v3'\n    provider_journal=engine_journal or marker['schema']=='unit-row-controls-provider-returns-completion-v2'\n",
+          "new_end": 311,
+          "new_start": 309,
+          "old": "    provider_journal=marker['schema']=='unit-row-controls-provider-returns-completion-v2'\n",
+          "old_end": 218,
+          "old_start": 217
+        },
+        {
+          "new": "         and (len(diagnostic_raw)<=DIAGNOSTIC_MAX_BYTES if engine_journal else\n              len(diagnostic_raw)<=PROVIDER_DIAGNOSTIC_MAX_BYTES if provider_journal else len(diagnostic_raw)<=16384),\n",
+          "new_end": 319,
+          "new_start": 317,
+          "old": "         and (provider_journal or len(diagnostic_raw)<=16384),\n",
+          "old_end": 225,
+          "old_start": 224
+        },
+        {
+          "new": "    if engine_journal:outer_keys.add('engine_milestones')\n",
+          "new_end": 323,
+          "new_start": 322,
+          "old": "",
+          "old_end": 228,
+          "old_start": 228
+        },
+        {
+          "new": "        if engine_journal:\n            expected_labels.update(schema='unit-row-controls-engine-milestones-diagnostic-v3',\n                qualification='UNQUALIFIED_LITERAL_ENGINE_MILESTONE_RECORDS',\n                callback_context='LITERAL_RETURNED_SCALARS_AND_RAW_ENGINE_RECORDS_ONLY',\n                engine_milestone_records_are_unvalidated=True)\n        metadata_keys={'captured_headers','captured_record_count','serialized_record_count',\n            'omitted_record_count','next_omitted_ordinal','engine_record_prefix_reason','engine_journal_bytes'} if engine_journal else set()\n        need(set(labels)==set(expected_labels)|metadata_keys\n",
+          "new_end": 363,
+          "new_start": 355,
+          "old": "        need(set(labels)==set(expected_labels)\n",
+          "old_end": 261,
+          "old_start": 260
+        },
+        {
+          "new": "    milestone_summary=None\n    if engine_journal:\n        milestone_summary=validate_engine_milestones(diagnostic['engine_milestones'],phases,began,deadline,terminal,\n            labels['captured_headers'])\n        captured=milestone_summary['captured_record_count'];serialized=milestone_summary['serialized_record_count']\n        journal_raw=json.dumps(diagnostic['engine_milestones'],ensure_ascii=True,separators=(',', ':'),allow_nan=False).encode('ascii')\n        need(all(type(labels[key])is int for key in ('captured_record_count','serialized_record_count',\n                  'omitted_record_count','engine_journal_bytes'))\n             and labels['captured_record_count']==captured and labels['serialized_record_count']==serialized\n             and labels['omitted_record_count']==captured-serialized\n             and type(labels['engine_record_prefix_reason'])is str\n             and labels['engine_record_prefix_reason']in ('ALL_CAPTURED_RECORDS_SAVED',\n                 'NEXT_RECORD_OUTPUT_BOUND_OR_BUILTIN_TYPE','ENGINE_JOURNAL_AGGREGATE_BYTE_LIMIT')\n             and labels['engine_journal_bytes']==len(journal_raw)<=MILESTONE_JOURNAL_MAX_BYTES,\n             'literal ASCII insertion-order whole journal bound/counts')\n        if captured==serialized:\n            need(labels['next_omitted_ordinal']is None\n                 and labels['engine_record_prefix_reason']=='ALL_CAPTURED_RECORDS_SAVED', 'no omitted captured records')\n        else:\n            need(type(labels['next_omitted_ordinal'])is int and labels['next_omitted_ordinal']==serialized+1\n                 and labels['engine_record_prefix_reason']!='ALL_CAPTURED_RECORDS_SAVED', 'explicit whole-record omitted suffix')\n",
+          "new_end": 434,
+          "new_start": 413,
+          "old": "",
+          "old_end": 311,
+          "old_start": 311
+        },
+        {
+          "new": "    if engine_journal:\n        result.update(engine_milestones=diagnostic['engine_milestones'],\n            engine_milestone_serialization={key:labels[key]for key in metadata_keys},\n            engine_milestone_records_are_unvalidated=True,engine_milestone_semantic_acceptance=False)\n",
+          "new_end": 446,
+          "new_start": 442,
+          "old": "",
+          "old_end": 319,
+          "old_start": 319
+        },
+        {
+          "new": "             and body['version']=='ROOT-receiver-inference-probe-cold-v5-first-admission-journal'\n",
+          "new_end": 562,
+          "new_start": 561,
+          "old": "             and body['version']=='ROOT-receiver-inference-probe-cold-v4-callback-stages'\n",
+          "old_end": 435,
+          "old_start": 434
+        },
+        {
+          "new": "        validate_engine_milestones(payload['engine_milestones'],phases,\n            body['joint_began_ns'],body['joint_deadline_ns'],terminal)\n",
+          "new_end": 594,
+          "new_start": 592,
+          "old": "",
+          "old_end": 465,
+          "old_start": 465
+        }
+      ],
+      "named_regions_raw_AST_unchanged": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write",
+        "validate_positive_callback_phases"
+      ],
+      "parent": {
+        "bytes": 33669,
+        "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+        "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+      },
+      "raw_regions": 17,
+      "removed_named_regions": [],
+      "source": {
+        "bytes": 42919,
+        "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/ROOT_read_first_admission_receiver_saved_v1.py",
+        "sha256": "ea735fae76d802de0cc1e9e20d708499deba45b3a6a9a4feeda752c790e78b73"
+      },
+      "whole_forward_inverse_AST": true
+    }
+  ],
+  "project_module_evaluated": false,
+  "schema": "ROOT-first-admission-source-audit-v1",
+  "scientific_calls": 0
+}

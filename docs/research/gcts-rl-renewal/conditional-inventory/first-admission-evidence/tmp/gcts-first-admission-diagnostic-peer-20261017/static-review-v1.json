@@ -1,0 +1,324 @@
+{
+  "checks": [
+    {
+      "check": "exact immutable metadata pins",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate source/parent exact",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate raw edit count",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 1",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 2",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 3",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 4",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 5",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 6",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 7",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 8",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 9",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 10",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 11",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 12",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 13",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 14",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 15",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 16",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 17",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 18",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 19",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate region 20",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate full raw inverse",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate full AST inverse",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate forward patch pin",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate actual forward patch and cmp",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate inverse patch pin",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate actual inverse patch and cmp",
+      "passed": true
+    },
+    {
+      "check": "saved_reader_candidate unchanged regions raw+AST",
+      "passed": true,
+      "regions": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write",
+        "validate_positive_callback_phases"
+      ]
+    },
+    {
+      "check": "saved_reader_candidate compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement source/parent exact",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement raw edit count",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement region 1",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement region 2",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement full raw inverse",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement full AST inverse",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement forward patch pin",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement actual forward patch and cmp",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement inverse patch pin",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement actual inverse patch and cmp",
+      "passed": true
+    },
+    {
+      "check": "writer_replacement unchanged regions raw+AST",
+      "passed": true,
+      "regions": [
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write"
+      ]
+    },
+    {
+      "check": "writer_replacement compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "exact34 distinct phases75/2160 bytes",
+      "passed": true
+    },
+    {
+      "check": "3MiB journal old whole diagnostic and fixed-null21 bytes",
+      "passed": true
+    },
+    {
+      "check": "final engine fields/version/stages",
+      "passed": true
+    },
+    {
+      "check": "capture fragment exact",
+      "passed": true
+    },
+    {
+      "check": "separate distinct engine peer",
+      "passed": true
+    },
+    {
+      "check": "new omission catches only encoder ValueError",
+      "passed": true
+    },
+    {
+      "check": "no original20/scientific delegate in late branch",
+      "passed": true
+    }
+  ],
+  "raw_references": [
+    {
+      "bytes": 3196,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/handoff-v1.json",
+      "sha256": "e3d84b8b7cc3ea1cbda520059fd7c3670e97a9d080cda5f2c347b326af7c1c28"
+    },
+    {
+      "bytes": 13584,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/Source-contract-v1.json",
+      "sha256": "383b8b31b90d1c11979f8412c0744973c2b13371760ac46c93046b17188649f8"
+    },
+    {
+      "bytes": 4724,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/API-wire-v1.json",
+      "sha256": "8470cf500702dba8d61c3a9f37061b0d21ea8fdd5ede1866d9bf46c9c6f1678f"
+    },
+    {
+      "bytes": 25160,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/Source-delta-v1.json",
+      "sha256": "806e63f36caffc79ff7e4364a214a3abc5e28ab5256786f80002af1040b5f451"
+    },
+    {
+      "bytes": 42910,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/first_admission_saved_reader_v3.py",
+      "sha256": "0d17ae4cef18f9aa03f65ea63c332707289eaaaac49e05f591f27a463553a350"
+    },
+    {
+      "bytes": 33669,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/parent-saved-reader.py",
+      "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+    },
+    {
+      "bytes": 16265,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/saved_reader_candidate-forward.patch",
+      "sha256": "331dd38461cd17d48ff37ea9c1c170355683cda022dbce36bd2746671fe6eeb3"
+    },
+    {
+      "bytes": 16265,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/saved_reader_candidate-inverse.patch",
+      "sha256": "19ca50ceefed5dbd9f7c7b95ae8c22acc9fdbd8395ef7c4ad8ce5d0e309acdd6"
+    },
+    {
+      "bytes": 23268,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/save_failure_diagnostic_v3.fragment.py",
+      "sha256": "cf4f5f001f788b4f38db22ef8a2401a2418d913e27f3f6ca5d300399afbbcd26"
+    },
+    {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/parent-writer.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    },
+    {
+      "bytes": 9800,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/writer_replacement-forward.patch",
+      "sha256": "89ee296907a2ef25a975a4a82a5b2ec098f97b526d716c6c2b6004ae3c0082f7"
+    },
+    {
+      "bytes": 9800,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/writer_replacement-inverse.patch",
+      "sha256": "f38a08b8eee77960fbfa118a5af0a37381a27e7ace9172d198f064215cfa4777"
+    },
+    {
+      "bytes": 3986,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/API-wire-v8.json",
+      "sha256": "fdd7c3f43931a6f8c078bd8bfe1ebd2906dfd5ab6a3ab6833f7c7e6cc80da73e"
+    },
+    {
+      "bytes": 1596,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/capture_engine_milestone.fragment.py",
+      "sha256": "410a1225cd4b978e686394f948b2e7b68a0382d68ac9f30789c2be7c1e79c2a0"
+    },
+    {
+      "bytes": 4461,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/typed-Source-review-v8.json",
+      "sha256": "cd56b601286d33293295ea34af024454efce150a297e92bfe3bb520b036dcfd3"
+    }
+  ],
+  "retained_regions": {
+    "saved_reader_candidate": [
+      "need",
+      "canonical",
+      "unique",
+      "decode",
+      "raw_pin",
+      "read",
+      "pinned",
+      "write",
+      "validate_positive_callback_phases"
+    ],
+    "writer_replacement": [
+      "save_failure_diagnostic.failure_gate",
+      "save_failure_diagnostic.encoded",
+      "save_failure_diagnostic.encoded.append",
+      "save_failure_diagnostic.encoded.visit",
+      "save_failure_diagnostic.write"
+    ]
+  },
+  "schema": "first-admission-diagnostic-independent-static-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}

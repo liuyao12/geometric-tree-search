@@ -1,0 +1,296 @@
+{
+  "changed_named_regions": [
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.search.walk"
+  ],
+  "checks": [
+    {
+      "check": "parent and current immutable raw pins",
+      "passed": true
+    },
+    {
+      "check": "AST and compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "whole raw forward and inverse",
+      "passed": true,
+      "regions": 11
+    },
+    {
+      "check": "whole AST forward and inverse",
+      "passed": true
+    },
+    {
+      "check": "actual forward text patch application and cmp",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "check": "actual inverse text patch application and cmp",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "changed": [
+        "LazyUnitRowEngine",
+        "LazyUnitRowEngine.__init__",
+        "LazyUnitRowEngine.search",
+        "LazyUnitRowEngine.search.walk"
+      ],
+      "check": "existing named regions only constructor/search/walk/class change",
+      "passed": true,
+      "unchanged": [
+        "Unresolved",
+        "need",
+        "canonical",
+        "digest",
+        "diagnostic_copy",
+        "select_schedule",
+        "validate_native_receipt",
+        "certify_by_current_cover",
+        "_Checkpoint",
+        "_Checkpoint.__init__",
+        "LazyUnitRowEngine.branch_tie",
+        "LazyUnitRowEngine._policy_snapshot",
+        "LazyUnitRowEngine._copy",
+        "LazyUnitRowEngine._reference_counts",
+        "LazyUnitRowEngine._emit",
+        "LazyUnitRowEngine._snapshot_value",
+        "LazyUnitRowEngine.state_snapshot",
+        "LazyUnitRowEngine.checkpoint",
+        "LazyUnitRowEngine.rollback",
+        "LazyUnitRowEngine._family_policy",
+        "LazyUnitRowEngine._check_authority",
+        "LazyUnitRowEngine._transfer_receipt",
+        "LazyUnitRowEngine._has_archived_context",
+        "LazyUnitRowEngine._archive_context",
+        "LazyUnitRowEngine._install",
+        "LazyUnitRowEngine._install.remember",
+        "LazyUnitRowEngine._candidate",
+        "LazyUnitRowEngine._candidate_from_decision_context",
+        "LazyUnitRowEngine._observe",
+        "LazyUnitRowEngine.place",
+        "LazyUnitRowEngine._exclude_exhausted",
+        "LazyUnitRowEngine._open",
+        "LazyUnitRowEngine._advance",
+        "LazyUnitRowEngine.next_alternative",
+        "LazyUnitRowEngine._fallback_degree",
+        "LazyUnitRowEngine._validate_receipt",
+        "LazyUnitRowEngine.decision",
+        "LazyUnitRowEngine.decision.current",
+        "LazyUnitRowEngine._word",
+        "LazyUnitRowEngine._checked_advice",
+        "LazyUnitRowEngine._select_branch",
+        "LazyUnitRowEngine._adopt_branch",
+        "LazyUnitRowEngine._join_prototype_census",
+        "LazyUnitRowEngine._record_family_tile_census",
+        "LazyUnitRowEngine._join_family_degree_census",
+        "LazyUnitRowEngine._join_family_cursor_census",
+        "LazyUnitRowEngine._consume_family",
+        "LazyUnitRowEngine._select_family_branch",
+        "LazyUnitRowEngine._adopt_family_branch"
+      ]
+    },
+    {
+      "check": "whole diagnostic erasure restores exact complete parent AST",
+      "passed": true
+    },
+    {
+      "check": "exactly four direct literal observer call sites",
+      "passed": true
+    },
+    {
+      "check": "exact builtin payload FIRST_CHILD_DECISION_READY",
+      "fields": [
+        "schema",
+        "stage",
+        "engine_version",
+        "depth",
+        "diagnostic_only",
+        "scientific_acceptance",
+        "state",
+        "decision",
+        "decision_event",
+        "prototype_census"
+      ],
+      "line": 1450,
+      "passed": true
+    },
+    {
+      "check": "exact builtin payload FIRST_ROOT_PRIMITIVE_PLACED",
+      "fields": [
+        "schema",
+        "stage",
+        "engine_version",
+        "depth",
+        "diagnostic_only",
+        "scientific_acceptance",
+        "state",
+        "transition",
+        "invalidation_event",
+        "place_event"
+      ],
+      "line": 1549,
+      "passed": true
+    },
+    {
+      "check": "exact builtin payload FIRST_ROOT_FAMILY_PLAN_READY",
+      "fields": [
+        "schema",
+        "stage",
+        "engine_version",
+        "depth",
+        "diagnostic_only",
+        "scientific_acceptance",
+        "pre_state",
+        "decision",
+        "decision_event",
+        "plan",
+        "prototype_census"
+      ],
+      "line": 1493,
+      "passed": true
+    },
+    {
+      "check": "exact builtin payload FIRST_ROOT_FAMILY_EVENT_READY",
+      "fields": [
+        "schema",
+        "stage",
+        "engine_version",
+        "depth",
+        "diagnostic_only",
+        "scientific_acceptance",
+        "state",
+        "pending_preferences",
+        "event"
+      ],
+      "line": 1529,
+      "passed": true
+    },
+    {
+      "check": "no imports added",
+      "passed": true
+    },
+    {
+      "check": "all degree/candidate/point/transition/census/cursor/scheduler/rollback bodies exact",
+      "passed": true
+    }
+  ],
+  "observer_call_sites": [
+    {
+      "line": 1450,
+      "stage": "FIRST_CHILD_DECISION_READY"
+    },
+    {
+      "line": 1549,
+      "stage": "FIRST_ROOT_PRIMITIVE_PLACED"
+    },
+    {
+      "line": 1493,
+      "stage": "FIRST_ROOT_FAMILY_PLAN_READY"
+    },
+    {
+      "line": 1529,
+      "stage": "FIRST_ROOT_FAMILY_EVENT_READY"
+    }
+  ],
+  "parent": {
+    "bytes": 92154,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+    "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+  },
+  "raw_references": [
+    {
+      "bytes": 92154,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+    },
+    {
+      "bytes": 98533,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+      "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+    },
+    {
+      "bytes": 9652,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/engine-v8.forward.patch",
+      "sha256": "a9f8ab75d3611e4cd4f93b18746a20579461a3e86c7559a8452db4ffb71484a9"
+    },
+    {
+      "bytes": 9652,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/engine-v8.inverse.patch",
+      "sha256": "518a224e6174d5379ed40c3885023ef9b8bcc19b470adccfddbe0a76df8132e5"
+    },
+    {
+      "bytes": 10002,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/Source-delta-v8.json",
+      "sha256": "45c6a14d6413b3bfd6c697147ee4c97cb5a268c1a184ddc00d90f9b204f1a45f"
+    }
+  ],
+  "schema": "first-admission-journal-engine-static-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 98533,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+    "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+  },
+  "source_evaluated": false,
+  "unchanged_named_regions": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "validate_native_receipt",
+    "certify_by_current_cover",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine._policy_snapshot",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._family_policy",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._candidate_from_decision_context",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine.decision.current",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine._join_prototype_census",
+    "LazyUnitRowEngine._record_family_tile_census",
+    "LazyUnitRowEngine._join_family_degree_census",
+    "LazyUnitRowEngine._join_family_cursor_census",
+    "LazyUnitRowEngine._consume_family",
+    "LazyUnitRowEngine._select_family_branch",
+    "LazyUnitRowEngine._adopt_family_branch"
+  ]
+}

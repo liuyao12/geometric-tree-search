@@ -1,0 +1,25 @@
+{
+  "blocker_ids": [
+    "HILBERT-ADAPTER-UNKNOWN-REQUEST-1"
+  ],
+  "findings": {
+    "bytes": 4880,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/findings-v1.json",
+    "sha256": "3b75d3672166c7c32fe43857a5ba0bbbfec9e527bc2e36911058becd9dd6903e"
+  },
+  "review": {
+    "bytes": 1990,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "57bb9caaf865a62879bf21749575e7582fb8470225c23af66ca1b61cb23cf25f"
+  },
+  "schema": "Hilbert-shared-family-native-adapter-peer-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "static_audit": {
+    "bytes": 6814,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/static-review-audit-v1.json",
+    "sha256": "f5fe4259e8d38fd20cf4f3dc101d50ca3ba33f52e1e9e5ebdb2ab1531151b546"
+  },
+  "verdict": "SOURCE_NEGATIVE"
+}

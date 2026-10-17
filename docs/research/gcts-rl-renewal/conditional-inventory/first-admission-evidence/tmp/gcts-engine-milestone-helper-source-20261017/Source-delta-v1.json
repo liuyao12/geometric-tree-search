@@ -1,0 +1,70 @@
+{
+  "actual_F0_both_directions_byte_exact": true,
+  "changed_named_regions": [
+    "run_receiver"
+  ],
+  "constructor_remaining_keywords_and_call_AST_exact": true,
+  "edits": [
+    {
+      "new": "VERSION='ROOT-receiver-inference-cases-v4-engine-milestones'\n",
+      "new_end": 10,
+      "new_start": 9,
+      "old": "VERSION='ROOT-receiver-inference-cases-v3-callback-stages'\n",
+      "old_end": 10,
+      "old_start": 9
+    },
+    {
+      "new": "                 frozen_inventory, matching_mode, tick, phase, capture_provider_summary,\n                 engine_milestone_observer):\n",
+      "new_end": 36,
+      "new_start": 34,
+      "old": "                 frozen_inventory, matching_mode, tick, phase, capture_provider_summary):\n",
+      "old_end": 35,
+      "old_start": 34
+    },
+    {
+      "new": "        initial_prototype_census=copy(frozen_inventory['census']),\n        milestone_observer=engine_milestone_observer)\n",
+      "new_end": 152,
+      "new_start": 150,
+      "old": "        initial_prototype_census=copy(frozen_inventory['census']))\n",
+      "old_end": 150,
+      "old_start": 149
+    }
+  ],
+  "parent_source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 1348,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/forward.patch",
+      "sha256": "4d32374556699c863ac3349cda5a4062cc1011d95ac3ab1c774cc17f31e258c1"
+    },
+    "inverse": {
+      "bytes": 1348,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/inverse.patch",
+      "sha256": "92b3646e4d2a1c76b61dd92d1c75c452af01d73e3b4e715691d3fe3fba78e383"
+    }
+  },
+  "raw_edit_count": 3,
+  "retained_named_regions_raw_AST_exact": [
+    "require",
+    "canonical",
+    "digest",
+    "run_receiver.copy",
+    "run_receiver.degree_proposer",
+    "run_receiver.filtered_fallback",
+    "run_receiver.certify_fallback",
+    "run_receiver.family_proposer",
+    "run_receiver.family_consumer"
+  ],
+  "schema": "ROOT-engine-milestone-receiver-helper-Source-delta-v1",
+  "source": {
+    "bytes": 8872,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+    "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+  },
+  "whole_diagnostic_erasure_AST_exact": true,
+  "whole_forward_inverse_raw_AST_exact": true
+}

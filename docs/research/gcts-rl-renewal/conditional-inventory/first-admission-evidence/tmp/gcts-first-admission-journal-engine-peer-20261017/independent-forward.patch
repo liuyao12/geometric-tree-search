@@ -1,0 +1,153 @@
+--- review-copy.py
++++ review-copy.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v13-receptor-family-preferences-v7-full-exposure-census-provider8-head-gated'
++VERSION = 'lazy-unit-row-global-engine-v13-receptor-family-preferences-v8-first-admission-journal'
+ FAMILY_PROVIDER_SCHEMA = 'receptor-family-observed-receptor-transfer-provider-v2'
+ FAMILY_PROVIDER_VERSION = 'receptor-family-observed-receptor-transfer-provider-v8-head-gated'
+ OBSERVED_PRODUCER_IMPLEMENTATION = 'receptor-family-observed-subset-inference-v2'
+@@ -215,7 +215,7 @@
+ 
+ class LazyUnitRowEngine:
+     def __init__(self, *, language, degree_proposer, semantics, fallback,
+-                 certify_fallback, transition_checker, tick, initial_state=None,
++                 certify_fallback, transition_checker, tick, milestone_observer, initial_state=None,
+                  maximum_nodes=128, maximum_events=2000,
+                  branch_adviser=None, validate_advice=None, branch_tie='ROW',
+                  family_proposer=None, family_consumer=None,
+@@ -242,6 +242,9 @@
+              'both optional checked family endpoints or neither')
+         self.family_proposer, self.family_consumer = family_proposer, family_consumer
+         self._family_callbacks = (family_proposer, family_consumer)
++        need(callable(milestone_observer), 'required raw milestone observer')
++        self._milestone_observer = milestone_observer
++        self._milestone_observer_anchor = milestone_observer
+         need(transition_checker.VERSION == TRANSITION_VERSION, 'selected transition checker')
+         self.transition_checker = transition_checker
+         self._authority = canonical(transition_checker.authority_snapshot(
+@@ -1420,15 +1423,43 @@
+         before = self.state_snapshot()
+         root = self.checkpoint()
+         found, reason, last_state = None, None, None
++        # Diagnostic lifetime is local to this search, outside semantic rollback.
++        # Current pinned Root observer only retains these owned builtin values.
++        # States/ledgers are COW; plan receipts are not subsequently mutated;
++        # _emit creates independent event objects and only appends to its list.
++        # Never pass that live list, an iterator, private cert map or callback.
++        milestone_observer = self._milestone_observer_anchor
++        first_root_family_journal = False
++        child_milestone_pending = False
+ 
+         def walk(depth):
+-            nonlocal found, last_state
++            nonlocal found, last_state, first_root_family_journal, child_milestone_pending
+             while True:
++                journal_this_root = False
+                 self.tick()
+                 if self.counts['nodes'] >= self.maximum_nodes:
+                     raise Unresolved('node ceiling; no exhausted conclusion')
+                 self.counts['nodes'] += 1
+                 decision = self.decision()
++                if depth == 1 and child_milestone_pending:
++                    child_milestone_pending = False
++                    self.tick()
++                    need(self._milestone_observer is milestone_observer
++                         and self._milestone_observer_anchor is milestone_observer,
++                         'fixed original milestone observer endpoint')
++                    milestone_observer('FIRST_CHILD_DECISION_READY', {
++                        'schema': 'unit-row-first-family-engine-milestone-v1',
++                        'stage': 'FIRST_CHILD_DECISION_READY', 'engine_version': VERSION,
++                        'depth': 1,
++                        'diagnostic_only': True, 'scientific_acceptance': False,
++                        'state': self._state, 'decision': decision,
++                        'decision_event': self.events[-1],
++                        'prototype_census': self._family_prototype_census,
++                    })
++                    need(self._milestone_observer is milestone_observer
++                         and self._milestone_observer_anchor is milestone_observer,
++                         'original milestone observer endpoint unchanged on return')
++                    self.tick()
+                 kind = decision['kind']
+                 if kind == 'DEAD':
+                     return 'EXHAUSTED'
+@@ -1446,8 +1477,32 @@
+                 else:
+                     self.counts['branches'] += 1
+                     if self.family_proposer is not None:
++                        # Selection may append fallback events; retain the actual
++                        # completed global DECISION event before that delegate.
++                        if depth == 0 and not first_root_family_journal:
++                            root_decision_event = self.events[-1]
+                         branch_plan = self._select_family_branch(decision)
+                         candidate = branch_plan['candidate']
++                        if depth == 0 and not first_root_family_journal:
++                            first_root_family_journal = True
++                            journal_this_root = True
++                            self.tick()
++                            need(self._milestone_observer is milestone_observer
++                                 and self._milestone_observer_anchor is milestone_observer,
++                                 'fixed original milestone observer endpoint')
++                            milestone_observer('FIRST_ROOT_FAMILY_PLAN_READY', {
++                                'schema': 'unit-row-first-family-engine-milestone-v1',
++                                'stage': 'FIRST_ROOT_FAMILY_PLAN_READY', 'engine_version': VERSION,
++                                'depth': 0,
++                                'diagnostic_only': True, 'scientific_acceptance': False,
++                                'pre_state': self._state, 'decision': decision,
++                                'decision_event': root_decision_event, 'plan': branch_plan,
++                                'prototype_census': self._family_prototype_census,
++                            })
++                            need(self._milestone_observer is milestone_observer
++                                 and self._milestone_observer_anchor is milestone_observer,
++                                 'original milestone observer endpoint unchanged on return')
++                            self.tick()
+                     elif self.branch_adviser is not None:
+                         branch_plan = self._select_branch(decision)
+                         candidate = branch_plan['candidate']
+@@ -1466,9 +1521,44 @@
+                     if branch_plan is not None:
+                         if self.family_proposer is not None:
+                             self._adopt_family_branch(branch_plan)
++                            if journal_this_root:
++                                self.tick()
++                                need(self._milestone_observer is milestone_observer
++                                     and self._milestone_observer_anchor is milestone_observer,
++                                     'fixed original milestone observer endpoint')
++                                milestone_observer('FIRST_ROOT_FAMILY_EVENT_READY', {
++                                    'schema': 'unit-row-first-family-engine-milestone-v1',
++                                    'stage': 'FIRST_ROOT_FAMILY_EVENT_READY', 'engine_version': VERSION,
++                                    'depth': 0,
++                                    'diagnostic_only': True, 'scientific_acceptance': False,
++                                    'state': self._state, 'pending_preferences': self._preferences,
++                                    'event': self.events[-1],
++                                })
++                                need(self._milestone_observer is milestone_observer
++                                     and self._milestone_observer_anchor is milestone_observer,
++                                     'original milestone observer endpoint unchanged on return')
++                                self.tick()
+                         else:
+                             self._adopt_branch(branch_plan)
+                     self.place(candidate)
++                    if journal_this_root:
++                        self.tick()
++                        need(self._milestone_observer is milestone_observer
++                             and self._milestone_observer_anchor is milestone_observer,
++                             'fixed original milestone observer endpoint')
++                        milestone_observer('FIRST_ROOT_PRIMITIVE_PLACED', {
++                            'schema': 'unit-row-first-family-engine-milestone-v1',
++                            'stage': 'FIRST_ROOT_PRIMITIVE_PLACED', 'engine_version': VERSION,
++                            'depth': 0,
++                            'diagnostic_only': True, 'scientific_acceptance': False,
++                            'state': self._state, 'transition': self._last_transition,
++                            'invalidation_event': self.events[-2], 'place_event': self.events[-1],
++                        })
++                        need(self._milestone_observer is milestone_observer
++                             and self._milestone_observer_anchor is milestone_observer,
++                             'original milestone observer endpoint unchanged on return')
++                        self.tick()
++                        child_milestone_pending = True
+                     child = walk(depth+1)
+                 except TimeoutError:
+                     if last_state is None:

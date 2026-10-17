@@ -1,0 +1,48 @@
+--- target.py
++++ target.py
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'hilbert-shared-parametric-family-native-admission-adapter-v2-unknown-prefix'
++VERSION = 'hilbert-shared-parametric-family-native-admission-adapter-v1'
+ HOST_SCHEMA = 'receptor-family-host-v1'
+ ROW_SCHEMA = 'hilbert-shared-family-row-assignment-v1'
+ INPUT_SOURCE_SCHEMA = 'hilbert-shared-family-current-input-source-v1'
+@@ -272,23 +272,13 @@
+     expected_request = {key: request[key] for key in
+         ('registry', 'family_id', 'host', 'substitution', 'port_bindings', 'proposal')}
+     require(checked['schema'] == CHECK_SCHEMA and checked['version'] == CHECKER_VERSION
+-            and type(checked['status']) is str and checked['status'] in ('UNKNOWN','CONDITIONAL_EXPANSION_CHECKED'),
+-            'fresh independent conditional-check schema/version/status')
++            and canonical(checked['request']) == canonical(expected_request), 'fresh whole independent conditional-check request')
+     common = {'schema': RESULT_SCHEMA, 'version': VERSION, 'host': actual_host,
+         'request': request, 'request_sha256': digest(request), 'expansion_check': checked,
+         'current_state': state, 'prototype_census_schema': CENSUS_SCHEMA,
+         'proposal_only': True, 'hypothetical_only': True,
+         **{key: False for key in FLAGS}}
+     if checked['status'] == 'UNKNOWN':
+-        # Pinned checker4358 assigns its initial request only after the whole
+-        # five-field copy, then adds proposal only after that copy completes.
+-        # Own-limit UNKNOWN can therefore retain None, five or all six fields.
+-        prefix = checked['request']
+-        if prefix is not None:
+-            prefix_fields = set(expected_request) - {'proposal'}
+-            require(type(prefix) is dict and set(prefix) in (prefix_fields,set(expected_request))
+-                    and canonical(prefix) == canonical({key:expected_request[key]for key in prefix}),
+-                    'exact completed checker request prefix on unaccepted UNKNOWN')
+         require(checked['conditional_expansion_checked'] is False and checked['expansion'] is None,
+                 'no partial independently checked expansion')
+         final = call(tick, context_checker.admitted_context, closed_inputs, qualification)
+@@ -302,9 +292,8 @@
+             members=[], node_map=[], input_ports=[], output_ports=[], physical_call_input_bindings=[],
+             union=None, local_primitive_members_checked=False, local_current_point_union_checked=False,
+             prototype_census=[[k, v] for k, v in sorted(names.items())])
+-    require(checked['status'] == 'CONDITIONAL_EXPANSION_CHECKED' and checked['conditional_expansion_checked'] is True
+-            and canonical(checked['request']) == canonical(expected_request),
+-            'complete independent conditional expansion with the whole exact request')
++    require(checked['status'] == 'CONDITIONAL_EXPANSION_CHECKED' and checked['conditional_expansion_checked'] is True,
++            'complete independent conditional expansion only')
+     expansion = checked['expansion']
+     require(expansion['family_id'] == family_id and canonical(expansion['request']) == canonical(
+         {key: request[key] for key in ('registry', 'host', 'substitution', 'port_bindings')}),

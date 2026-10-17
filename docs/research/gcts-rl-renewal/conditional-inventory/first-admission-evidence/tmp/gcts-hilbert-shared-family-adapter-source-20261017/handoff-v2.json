@@ -1,0 +1,70 @@
+{
+  "API": {
+    "bytes": 5212,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/API-wire-v1.json",
+    "sha256": "172afc85440ff67aedd6d4bef1e692287df59465d6130cb7d98e3ed01eb224f3"
+  },
+  "Review_ABI": {
+    "reviewer_identity": "distinct from author; disclose native/checker/shared interface overlap",
+    "schema": "Hilbert-shared-family-native-adapter-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "Hilbert-shared-family-native-adapter-Source",
+    "source": {
+      "bytes": 27528,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+      "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+    },
+    "source_contract": "EXACT_CURRENT_CONTRACT_PIN",
+    "source_only": true,
+    "source_review_passed": "bool",
+    "sources": {
+      "hilbert_native_adapter": {
+        "bytes": 27528,
+        "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+        "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "author": "/root/hilbert_advice_controls",
+  "delta": {
+    "bytes": 29098,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/Source-delta-v1.json",
+    "sha256": "bc84548a918dbccee1ea6ce309126f3a27d4a2d9d1d4a75761a2b62cd3ad07c0"
+  },
+  "glue_and_qualification_limits": {
+    "bytes": 6901,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/glue-and-qualification-limits-v2.json",
+    "sha256": "7000177e11badf5565ad646e993ef1a07930d2ef33463ec11ddec1c7f99e5eb7"
+  },
+  "metadata_correction": "The public method is graph.ordered_domain(decision,preferred) at dynamic_graph.py647, not current_ordered_domain. V1 code and metadata preserved; no Source function changed.",
+  "metadata_revision": 2,
+  "module_evaluations": 0,
+  "old_Sources_unchanged": true,
+  "preserved_prior_handoff": {
+    "bytes": 2781,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/handoff-v1.json",
+    "sha256": "3d1e3dbf341a6d6bf9681fbb466ac6033e32c1169e709d15d7fce80b42456427"
+  },
+  "schema": "Hilbert-shared-family-native-adapter-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 27528,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+    "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+  },
+  "source_contract": {
+    "bytes": 9836,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/Source-contract-v2.json",
+    "sha256": "a5a76b0d973fab00f85417ac569b8540d292d55d93d288622884d211f3f1a053"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 4744,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/static-audit-v1.json",
+    "sha256": "7235817745839df184fbaac21b0414885ec53ebfed8aa098c2d40234e6f239e6"
+  },
+  "status": "PROSPECTIVE_SOURCE_ONLY_COMPONENT; distinct review and Root composition/actual required"
+}

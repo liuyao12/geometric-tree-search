@@ -1,0 +1,112 @@
+{
+  "actual_result_model_reads": false,
+  "audits": {
+    "independent-metadata-audit-v8.json": {
+      "bytes": 3165,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/independent-metadata-audit-v8.json",
+      "sha256": "247f05b4f97e27143c394e8c235563978397a5a377d0def31d81048b02799e3b"
+    },
+    "independent-patch-audit-v1.json": {
+      "bytes": 188,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/independent-patch-audit-v1.json",
+      "sha256": "cec540de030c4ec71d3dc31c0504a88c1b376c2239c5088a5b9e6264ae8e93b5"
+    },
+    "independent-static-audit-v1.json": {
+      "bytes": 13026,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/independent-static-audit-v1.json",
+      "sha256": "1a4359eb465e25cd9ce8a1d997356a5a1ead3e03f85e02cb3378c887a05cb665"
+    }
+  },
+  "author_overlap": "Reviewer authored helper1685 and its parent150e, old engine/kernel/expander/residual/head-gate ancestry; did not implement Diagnosis engine8 journal. Shared primitive ancestry and final ABI coordination are disclosed. Helper receives its own separate distinct review; this review does not independently certify reviewer-authored helper.",
+  "clocks_read": false,
+  "disposition": "No concrete scoped Source blocker found; conditional Source-only pass. Root integration/observer/writer/reader/once/native actual and saved reconciliation remain separate.",
+  "findings": [
+    {
+      "finding": "Required callable milestone_observer is held as both endpoint and anchor. Parent constructor scientific work/default ceilings are unchanged after declared keyword/identity erasure. Helper1685 passes exact Root-owned object and does not call or inspect it.",
+      "id": "MILESTONE-01",
+      "lines": [
+        217,
+        247
+      ],
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "Search-local first-root and child-pending flags are outside semantic checkpoint. Journal emits at most four calls per search, only first completed root family-branch plan and that root placement's first returned child decision. Later roots/siblings/scientific callbacks continue normally; no journal guarantee if native work never returns.",
+      "id": "MILESTONE-02",
+      "lines": [
+        1420,
+        1462
+      ],
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "Actual completed root DECISION event is captured before _select_family_branch because canonical fallback can append events. PLAN_READY occurs only after the unchanged full selection/candidate/native/census gate returns. Full plan.mode/receipts preserve CANONICAL_FALLBACK versus READY family preference; stage name itself never proves admission.",
+      "id": "MILESTONE-03",
+      "lines": [
+        1479,
+        1505
+      ],
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "EVENT_READY follows unchanged _adopt_family_branch and its actual individual FAMILY_PREFERENCE event. PRIMITIVE_PLACED follows complete unchanged place, whose final events are INVALIDATE and PLACE with exact installed state/transition. No batch installation, alternative point union, degree/EOF authority or scientific policy is introduced.",
+      "id": "MILESTONE-04",
+      "lines": [
+        1518,
+        1562
+      ],
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "CHILD_DECISION_READY follows depth1 self.decision return and retains its actual DECISION event/state/census before the ordinary DEAD/UNKNOWN/FORCED/SOLVED/BRANCH handling. It cannot certify later search, restoration, exhaustion or proof.",
+      "id": "MILESTONE-05",
+      "lines": [
+        1443,
+        1462
+      ],
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "All four wrappers are fresh literal JSON dictionaries holding existing owned COW state/plan/census/preferences and detached individual events; no live events list, engine owner, iterator, callback or private int-key certificate map is passed. place copies state, _install/references/ledger/preferences replace COW owners, adoption copies plan family, _emit detaches payload, and no later pinned method mutates retained plan or event trees. This depends on synchronous authenticated read-only Root callback, not hostile mutation protection.",
+      "id": "MILESTONE-06",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "Native tick and endpoint identity checks surround each observer; return values do not gate science. TimeoutError retains original UNKNOWN and exact owned child/root finally unwind; other callback/native/Source errors propagate with root finally. Stage1 is before child checkpoint but inside outer root try/finally; stages2/3 and child4 are protected by existing owned parent checkpoint. No exception is swallowed as a positive diagnostic result.",
+      "id": "MILESTONE-07",
+      "lines": [
+        1562,
+        1611
+      ],
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "Independent eleven-region full forward/inverse, author and independent actual patch -F0 directions, and whole AST diagnostic erasure restore exact parent7. Forty-nine remaining named callable/class regions raw+AST exact. All native evidence, independent checker/router, complete universe, collision census including removed cursor/provider exposures, global scheduler, retention, fallback, primitive place/exclusion, checkpoint/root rollback and return science remain unchanged except explicit diagnostic/version effects.",
+      "id": "MILESTONE-08",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "Source pins/contract/API and all twelve direct raw references checked. Parent reviews and original17/input2 semantic epoch are ancestry/external prerequisites, never runtime inheritance. Root must independently pin current executable map, new helper/observer and builtin failure writer/reader under unchanged native20/512/once/failure55. No observed milestone, runtime fit, gain, exclusive cost/failure cause, current offer, full theorem, or RL outcome established.",
+      "id": "MILESTONE-09",
+      "status": "CONFORMANCE_LIMIT"
+    }
+  ],
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_qualified": false,
+  "schema": "receptor-family-first-admission-journal-engine-independent-findings-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 98533,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+    "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+  },
+  "source_contract": {
+    "bytes": 10938,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/Source-contract-v8.json",
+    "sha256": "8019d4d1b8ffeea79d9e3a68fb4e9abc829b2f4b9c7d2338a598f655e79d8f37"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "tests_executed": false
+}

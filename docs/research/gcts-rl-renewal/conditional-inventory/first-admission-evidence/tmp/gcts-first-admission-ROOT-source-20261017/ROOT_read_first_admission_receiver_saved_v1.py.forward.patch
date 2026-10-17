@@ -1,0 +1,258 @@
+--- a/source.py
++++ b/source.py
+@@ -10,7 +10,7 @@
+ import sys
+ import zlib
+ 
+-CURRENT_CONTRACT={'path': '/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d', 'bytes': 21574}
++CURRENT_CONTRACT={'path': '/private/tmp/gcts-first-admission-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'f9a243b08a2e83062df385e12f96a513aff32ce49a10ae7af58fef1dfddf5929', 'bytes': 23356}
+ 
+ 
+ def need(ok, why):
+@@ -71,7 +71,16 @@
+     'C2_ENTER','C2_DELEGATE_RETURN','C2_CALLBACK_READY',
+     'C3_ENTER','C3_DELEGATE_RETURN','C3_CALLBACK_READY')
+ SEARCH_PHASES=('SEARCH_RETURN_OBSERVED','POSTSEARCH_SNAPSHOT_READY')
+-PHASES=LEGACY_PHASES+CALLBACK_PHASES+SEARCH_PHASES
++MILESTONE_PHASES=('M1_PLAN_READY','M2_EVENT_READY','M3_PLACE_RETURN','M4_CHILD_DECISION')
++MILESTONE_STAGES=('FIRST_ROOT_FAMILY_PLAN_READY','FIRST_ROOT_FAMILY_EVENT_READY',
++    'FIRST_ROOT_PRIMITIVE_PLACED','FIRST_CHILD_DECISION_READY')
++MILESTONE_FIELDS=(('pre_state','decision','decision_event','plan','prototype_census'),
++    ('state','pending_preferences','event'),('state','transition','invalidation_event','place_event'),
++    ('state','decision','decision_event','prototype_census'))
++MILESTONE_ENGINE_VERSION='lazy-unit-row-global-engine-v13-receptor-family-preferences-v8-first-admission-journal'
++MILESTONE_JOURNAL_MAX_BYTES=3*1048576
++DIAGNOSTIC_MAX_BYTES=4*1048576+131072
++PHASES=LEGACY_PHASES+CALLBACK_PHASES+SEARCH_PHASES+MILESTONE_PHASES
+ PROVIDER_COUNTERS=('planned_assignments','attempted_assignments','binding_attempts',
+     'ground_environment_proposals','distinct_environment_attempts','full_expansions',
+     'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',
+@@ -80,7 +89,7 @@
+     'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')
+ PROVIDER_DIAGNOSTIC_MAX_BYTES=81988
+ PHASE_LINE_MAX_BYTES=75
+-PHASE_TOTAL_MAX_BYTES=1913
++PHASE_TOTAL_MAX_BYTES=2160
+ 
+ 
+ def read_phases(raw, launch, terminal):
+@@ -125,6 +134,8 @@
+                     need(not stack, 'synchronous callback groups do not nest')
+                     need(ordinal==ordinals[role]+1, 'per-role callback entry ordinal')
+                     if group=='P1':need('BEFORE_PROVIDER' in seen, 'first provider outer site precedes delegate')
++                    if group in ('P2','C2','C3') and any(item in seen for item in MILESTONE_PHASES):
++                        need('M4_CHILD_DECISION' in seen, 'later callback follows the completed milestone prefix')
+                     ordinals[role]=ordinal;stack.append(group);group_stage[group]='ENTER'
+                 elif stage=='DELEGATE_RETURN':
+                     need(stack and stack[-1]==group and group_stage[group]=='ENTER',
+@@ -135,6 +146,13 @@
+                          'nested callback ready order')
+                     if group=='P1':need('AFTER_PROVIDER' in seen, 'first provider old copied-return site')
+                     group_stage[group]='CALLBACK_READY';stack.pop()
++            elif label in MILESTONE_PHASES:
++                index=MILESTONE_PHASES.index(label)
++                need('BEFORE_ENGINE'in seen and 'C1_CALLBACK_READY'in seen and not stack
++                     and 'SEARCH_RETURN_OBSERVED'not in seen
++                     and not any(item+'_ENTER'in seen for item in ('P2','C2','C3'))
++                     and all(item in seen for item in MILESTONE_PHASES[:index]),
++                     'fixed first-root milestone prefix before later callbacks/search return')
+             elif label=='SEARCH_RETURN_OBSERVED':
+                 # search catches TimeoutError, including membership subclasses:
+                 # one entered callback may unwind without returning or logging.
+@@ -161,7 +179,7 @@
+                             possible=True
+                 need(possible and len(line)<PHASE_LINE_MAX_BYTES, 'literal incomplete phase prefix only')
+             stopped=True;tail.append(line)
+-    need(len(phases)<=30, 'finite fixed phase sites')
++    need(len(phases)<=34, 'finite fixed phase sites')
+     return phases,b''.join(tail)
+ 
+ 
+@@ -197,13 +215,86 @@
+          and labels<=set(PHASES), 'complete outer sites with truthful callback prefixes')
+ 
+ 
++def validate_engine_milestones(slots, phases, began, deadline, terminal, headers=None):
++    # Literal wire structure only. No state/decision/plan is mathematically checked.
++    need(type(slots)is list and len(slots)==4, 'fixed four nullable raw milestone records')
++    need(all(type(value)is int for value in (began,deadline,terminal))
++         and deadline==began+20000000000, 'literal milestone original20 window')
++    stamps={item['stage']:item['native_ns']for item in phases}
++    supplied_headers=headers is not None
++    if supplied_headers:
++        need(type(headers)is list and len(headers)==4, 'fixed captured-header list')
++    else:
++        headers=[]
++        for value in slots:
++            if value is None:headers.append(None)
++            else:
++                need(type(value)is dict and all(type(key)is str for key in value), 'builtin raw record wrapper')
++                need(set(value)=={'ordinal','stage','native_ns','record'}, 'exact raw record wrapper fields')
++                headers.append({key:value[key]for key in ('ordinal','stage','native_ns')})
++    captured=0;ended=False;previous=began
++    for index,header in enumerate(headers):
++        if header is None:ended=True;continue
++        need(not ended and type(header)is dict and len(header)==3
++             and all(type(key)is str for key in header)
++             and set(header)=={'ordinal','stage','native_ns'}
++             and type(header['ordinal'])is int and header['ordinal']==index+1
++             and type(header['stage'])is str and header['stage']==MILESTONE_STAGES[index]
++             and type(header['native_ns'])is int
++             and previous<=header['native_ns']<deadline and header['native_ns']<=terminal,
++             'literal monotone captured milestone header prefix')
++        phase=MILESTONE_PHASES[index]
++        need(phase in stamps and stamps[phase]<=header['native_ns']
++             and (index==3 or MILESTONE_PHASES[index+1]not in stamps
++                  or header['native_ns']<=stamps[MILESTONE_PHASES[index+1]])
++             and ('SEARCH_RETURN_OBSERVED'not in stamps or header['native_ns']<=stamps['SEARCH_RETURN_OBSERVED']),
++             'nullable raw capture timestamp joins reached marker, next stage and search return')
++        previous=header['native_ns'];captured+=1
++    # A later marker requires the earlier capture to have returned, but its own
++    # post-marker native tick may fail before its raw slot is stored.
++    for index in range(1,4):
++        if MILESTONE_PHASES[index]in stamps:
++            need(all(headers[j]is not None for j in range(index)), 'prior captures before a later milestone marker')
++    serialized=0;ended=False
++    common={'schema','stage','engine_version','depth','diagnostic_only','scientific_acceptance'}
++    for index,value in enumerate(slots):
++        if value is None:ended=True;continue
++        need(not ended and type(value)is dict and len(value)==4
++             and all(type(key)is str for key in value)
++             and set(value)=={'ordinal','stage','native_ns','record'}, 'complete serialized wrapper prefix')
++        need(headers[index]is not None and all(type(value[key])is type(headers[index][key])
++             and value[key]==headers[index][key]for key in ('ordinal','stage','native_ns')),
++             'serialized wrapper retains exact captured scalar header')
++        record=value['record']
++        need(type(record)is dict and all(type(key)is str for key in record)
++             and set(record)==common|set(MILESTONE_FIELDS[index])
++             and type(record['schema'])is str and record['schema']=='unit-row-first-family-engine-milestone-v1'
++             and type(record['stage'])is str and record['stage']==MILESTONE_STAGES[index]
++             and type(record['engine_version'])is str and record['engine_version']==MILESTONE_ENGINE_VERSION
++             and type(record['depth'])is int and record['depth']==(1 if index==3 else 0)
++             and record['diagnostic_only']is True and record['scientific_acceptance']is False,
++             'literal current engine stage/version/depth/field schema only')
++        pending=[record]
++        while pending:
++            item=pending.pop();kind=type(item)
++            if item is None or kind in (bool,int,str):continue
++            if kind is list:pending.extend(item)
++            elif kind is dict:
++                need(all(type(key)is str for key in item), 'raw record string keys')
++                pending.extend(item.values())
++            else:need(False, 'raw milestone builtin JSON types only')
++        serialized+=1
++    need(serialized<=captured and (supplied_headers or serialized==captured), 'captured vs serialized literal prefixes')
++    return {'captured_headers':headers,'captured_record_count':captured,'serialized_record_count':serialized}
++
++
+ def read_failure_diagnostic(owned,plan,plan_raw,contract,launch,terminal,phases):
+     if not owned.exists():
+         return {'complete_pair':False,'reason':'no owned diagnostic directory'}
+     names=sorted(p.name for p in owned.iterdir())
+     if names!=['diagnostic-completion.json','unknown-diagnostic.json']:
+         return {'complete_pair':False,'reason':'incomplete diagnostic pair','files':names}
+-    diagnostic_raw=read(owned/'unknown-diagnostic.json',PROVIDER_DIAGNOSTIC_MAX_BYTES)
++    diagnostic_raw=read(owned/'unknown-diagnostic.json',DIAGNOSTIC_MAX_BYTES)
+     completion_raw=read(owned/'diagnostic-completion.json',1024)
+     need(diagnostic_raw.endswith(b'\n')and completion_raw.endswith(b'\n'), 'complete diagnostic LF')
+     marker=decode(completion_raw);diagnostic=decode(diagnostic_raw)
+@@ -213,19 +304,23 @@
+          and all(type(key)is str for key in marker) and set(marker)==marker_keys,
+          'exact builtin diagnostic completion fields')
+     need(type(marker['schema'])is str and marker['schema']in
+-         ('unit-row-controls-last-context-completion-v1','unit-row-controls-provider-returns-completion-v2'),
++         ('unit-row-controls-last-context-completion-v1','unit-row-controls-provider-returns-completion-v2',
++          'unit-row-controls-engine-milestones-completion-v3'),
+          'explicit legacy or provider-return completion schema')
+-    provider_journal=marker['schema']=='unit-row-controls-provider-returns-completion-v2'
++    engine_journal=marker['schema']=='unit-row-controls-engine-milestones-completion-v3'
++    provider_journal=engine_journal or marker['schema']=='unit-row-controls-provider-returns-completion-v2'
+     need(type(marker['file'])is str and marker['file']=='unknown-diagnostic.json'
+          and type(marker['sha256'])is str and marker['sha256']==raw_pin(diagnostic_raw)['sha256']
+          and type(marker['bytes'])is int and marker['bytes']==len(diagnostic_raw)
+          and marker['diagnostic_only']is True and marker['positive_joint_gate_accepted']is False
+          and marker['ROOT_resource_accepted']is False
+          and marker['terminal_exit2_and_external_failure_closure_required']is True
+-         and (provider_journal or len(diagnostic_raw)<=16384),
++         and (len(diagnostic_raw)<=DIAGNOSTIC_MAX_BYTES if engine_journal else
++              len(diagnostic_raw)<=PROVIDER_DIAGNOSTIC_MAX_BYTES if provider_journal else len(diagnostic_raw)<=16384),
+          'same complete builtin failure diagnostic bytes')
+     outer_keys={'context','diagnostic','last_observations'}
+     if provider_journal:outer_keys.add('provider_returns')
++    if engine_journal:outer_keys.add('engine_milestones')
+     need(type(diagnostic)is dict and len(diagnostic)==len(outer_keys)
+          and all(type(key)is str for key in diagnostic) and set(diagnostic)==outer_keys,
+          'exact builtin diagnostic object')
+@@ -258,7 +353,14 @@
+             'positive_joint_gate_accepted':False,'logical_proof_accepted':False,
+             'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
+             'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}
+-        need(set(labels)==set(expected_labels)
++        if engine_journal:
++            expected_labels.update(schema='unit-row-controls-engine-milestones-diagnostic-v3',
++                qualification='UNQUALIFIED_LITERAL_ENGINE_MILESTONE_RECORDS',
++                callback_context='LITERAL_RETURNED_SCALARS_AND_RAW_ENGINE_RECORDS_ONLY',
++                engine_milestone_records_are_unvalidated=True)
++        metadata_keys={'captured_headers','captured_record_count','serialized_record_count',
++            'omitted_record_count','next_omitted_ordinal','engine_record_prefix_reason','engine_journal_bytes'} if engine_journal else set()
++        need(set(labels)==set(expected_labels)|metadata_keys
+              and all(type(labels[key])is type(value) and labels[key]==value
+                      for key,value in expected_labels.items()), 'literal V2 unqualified scalar-only labels')
+     else:
+@@ -309,6 +411,27 @@
+                  and (group+'_CALLBACK_READY'not in phase_stamps
+                       or value['native_ns']<=phase_stamps[group+'_CALLBACK_READY']),
+                  'nullable scalar timestamp joins reached delegate and optional ready sites')
++    milestone_summary=None
++    if engine_journal:
++        milestone_summary=validate_engine_milestones(diagnostic['engine_milestones'],phases,began,deadline,terminal,
++            labels['captured_headers'])
++        captured=milestone_summary['captured_record_count'];serialized=milestone_summary['serialized_record_count']
++        journal_raw=json.dumps(diagnostic['engine_milestones'],ensure_ascii=True,separators=(',', ':'),allow_nan=False).encode('ascii')
++        need(all(type(labels[key])is int for key in ('captured_record_count','serialized_record_count',
++                  'omitted_record_count','engine_journal_bytes'))
++             and labels['captured_record_count']==captured and labels['serialized_record_count']==serialized
++             and labels['omitted_record_count']==captured-serialized
++             and type(labels['engine_record_prefix_reason'])is str
++             and labels['engine_record_prefix_reason']in ('ALL_CAPTURED_RECORDS_SAVED',
++                 'NEXT_RECORD_OUTPUT_BOUND_OR_BUILTIN_TYPE','ENGINE_JOURNAL_AGGREGATE_BYTE_LIMIT')
++             and labels['engine_journal_bytes']==len(journal_raw)<=MILESTONE_JOURNAL_MAX_BYTES,
++             'literal ASCII insertion-order whole journal bound/counts')
++        if captured==serialized:
++            need(labels['next_omitted_ordinal']is None
++                 and labels['engine_record_prefix_reason']=='ALL_CAPTURED_RECORDS_SAVED', 'no omitted captured records')
++        else:
++            need(type(labels['next_omitted_ordinal'])is int and labels['next_omitted_ordinal']==serialized+1
++                 and labels['engine_record_prefix_reason']!='ALL_CAPTURED_RECORDS_SAVED', 'explicit whole-record omitted suffix')
+     need(all(began<=phase['native_ns']<deadline for phase in phases), 'complete phase samples within original20')
+     result={'complete_pair':True,'diagnostic':dict(path=str(owned/'unknown-diagnostic.json'),**raw_pin(diagnostic_raw)),
+         'completion':dict(path=str(owned/'diagnostic-completion.json'),**raw_pin(completion_raw)),
+@@ -317,6 +440,10 @@
+     if provider_journal:
+         result.update(provider_returns=returned,provider_return_summaries_are_unvalidated_scalars=True,
+             callback_return_to_engine_proved=False,offers_accepted=False,current_state_accepted=False)
++    if engine_journal:
++        result.update(engine_milestones=diagnostic['engine_milestones'],
++            engine_milestone_serialization={key:labels[key]for key in metadata_keys},
++            engine_milestone_records_are_unvalidated=True,engine_milestone_semantic_acceptance=False)
+     return result
+ 
+ 
+@@ -432,7 +559,7 @@
+              and completion['exit_zero_and_coordinator_deadline_required']is True
+              and completion['body_sha256']==raw_pin(lines[0])['sha256'] and completion['body_bytes']==len(lines[0])
+              and body['schema']=='ROOT-receptor-inference-probe-response-body-v1'
+-             and body['version']=='ROOT-receiver-inference-probe-cold-v4-callback-stages'
++             and body['version']=='ROOT-receiver-inference-probe-cold-v5-first-admission-journal'
+              and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+              and body['limits']==plan['limits'] and body['resource_rule']==plan['resource_rule']
+              and body['CLOCK_DOMAIN']=='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+@@ -463,6 +590,8 @@
+         payload=evidence['receiver_probe'];pipeline=payload['receiver']
+         need(all(body['joint_began_ns']<=x['native_ns']<body['joint_deadline_ns']for x in phases), 'positive phase samples original20')
+         validate_positive_callback_phases(phases,pipeline)
++        validate_engine_milestones(payload['engine_milestones'],phases,
++            body['joint_began_ns'],body['joint_deadline_ns'],terminal)
+         need(payload['schema']=='ROOT-receptor-inference-probe-payload-v1'
+              and payload['original_model_sources']==contract['original_model_sources']
+              and payload['original_model_inputs']==contract['original_model_inputs']

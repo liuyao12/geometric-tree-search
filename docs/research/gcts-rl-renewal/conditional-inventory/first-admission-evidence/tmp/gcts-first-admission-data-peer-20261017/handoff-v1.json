@@ -1,0 +1,23 @@
+{
+  "audit": {
+    "bytes": 14387,
+    "path": "/private/tmp/gcts-first-admission-data-peer-20261017/saved-data-audit-v2.json",
+    "sha256": "66a0bcdbac12d27c25e81bd9c423376c14e4de4395559c6b38546bd048b6cc9b"
+  },
+  "audit_passed": true,
+  "measured_summary": {
+    "bytes": 4266,
+    "path": "/private/tmp/gcts-first-admission-data-peer-20261017/measured-summary-v1.json",
+    "sha256": "c697457d7fc6abd5b21ae0b371d913bd626cdf5e99747c7c775ead1c84c766e9"
+  },
+  "original20_positive_gate": false,
+  "preserved_initial_audit": {
+    "bytes": 13943,
+    "path": "/private/tmp/gcts-first-admission-data-peer-20261017/saved-data-audit-v1.json",
+    "sha256": "c7af214bab398db3e6b877333dc81f5d4cec54a0428f7b073c4d64762e87b239"
+  },
+  "saved_data_only": true,
+  "schema": "GCTS-first-admission-independent-data-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0
+}

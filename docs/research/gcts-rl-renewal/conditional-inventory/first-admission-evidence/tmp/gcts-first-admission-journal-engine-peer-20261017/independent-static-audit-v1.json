@@ -1,0 +1,247 @@
+{
+  "actual_or_result_reads": false,
+  "changed_named_regions": [
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.search.walk"
+  ],
+  "clocks_read": false,
+  "compile_without_evaluation": true,
+  "edits": [
+    {
+      "new": "VERSION = 'lazy-unit-row-global-engine-v13-receptor-family-preferences-v8-first-admission-journal'\n",
+      "new_end": 10,
+      "new_start": 9,
+      "old": "VERSION = 'lazy-unit-row-global-engine-v13-receptor-family-preferences-v7-full-exposure-census-provider8-head-gated'\n",
+      "old_end": 10,
+      "old_start": 9,
+      "tag": "replace"
+    },
+    {
+      "new": "                 certify_fallback, transition_checker, tick, milestone_observer, initial_state=None,\n",
+      "new_end": 218,
+      "new_start": 217,
+      "old": "                 certify_fallback, transition_checker, tick, initial_state=None,\n",
+      "old_end": 218,
+      "old_start": 217,
+      "tag": "replace"
+    },
+    {
+      "new": "        need(callable(milestone_observer), 'required raw milestone observer')\n        self._milestone_observer = milestone_observer\n        self._milestone_observer_anchor = milestone_observer\n",
+      "new_end": 247,
+      "new_start": 244,
+      "old": "",
+      "old_end": 244,
+      "old_start": 244,
+      "tag": "insert"
+    },
+    {
+      "new": "        # Diagnostic lifetime is local to this search, outside semantic rollback.\n        # Current pinned Root observer only retains these owned builtin values.\n        # States/ledgers are COW; plan receipts are not subsequently mutated;\n        # _emit creates independent event objects and only appends to its list.\n        # Never pass that live list, an iterator, private cert map or callback.\n        milestone_observer = self._milestone_observer_anchor\n        first_root_family_journal = False\n        child_milestone_pending = False\n",
+      "new_end": 1433,
+      "new_start": 1425,
+      "old": "",
+      "old_end": 1422,
+      "old_start": 1422,
+      "tag": "insert"
+    },
+    {
+      "new": "            nonlocal found, last_state, first_root_family_journal, child_milestone_pending\n",
+      "new_end": 1436,
+      "new_start": 1435,
+      "old": "            nonlocal found, last_state\n",
+      "old_end": 1425,
+      "old_start": 1424,
+      "tag": "replace"
+    },
+    {
+      "new": "                journal_this_root = False\n",
+      "new_end": 1438,
+      "new_start": 1437,
+      "old": "",
+      "old_end": 1426,
+      "old_start": 1426,
+      "tag": "insert"
+    },
+    {
+      "new": "                if depth == 1 and child_milestone_pending:\n                    child_milestone_pending = False\n                    self.tick()\n                    need(self._milestone_observer is milestone_observer\n                         and self._milestone_observer_anchor is milestone_observer,\n                         'fixed original milestone observer endpoint')\n                    milestone_observer('FIRST_CHILD_DECISION_READY', {\n                        'schema': 'unit-row-first-family-engine-milestone-v1',\n                        'stage': 'FIRST_CHILD_DECISION_READY', 'engine_version': VERSION,\n                        'depth': 1,\n                        'diagnostic_only': True, 'scientific_acceptance': False,\n                        'state': self._state, 'decision': decision,\n                        'decision_event': self.events[-1],\n                        'prototype_census': self._family_prototype_census,\n                    })\n                    need(self._milestone_observer is milestone_observer\n                         and self._milestone_observer_anchor is milestone_observer,\n                         'original milestone observer endpoint unchanged on return')\n                    self.tick()\n",
+      "new_end": 1462,
+      "new_start": 1443,
+      "old": "",
+      "old_end": 1431,
+      "old_start": 1431,
+      "tag": "insert"
+    },
+    {
+      "new": "                        # Selection may append fallback events; retain the actual\n                        # completed global DECISION event before that delegate.\n                        if depth == 0 and not first_root_family_journal:\n                            root_decision_event = self.events[-1]\n",
+      "new_end": 1483,
+      "new_start": 1479,
+      "old": "",
+      "old_end": 1448,
+      "old_start": 1448,
+      "tag": "insert"
+    },
+    {
+      "new": "                        if depth == 0 and not first_root_family_journal:\n                            first_root_family_journal = True\n                            journal_this_root = True\n                            self.tick()\n                            need(self._milestone_observer is milestone_observer\n                                 and self._milestone_observer_anchor is milestone_observer,\n                                 'fixed original milestone observer endpoint')\n                            milestone_observer('FIRST_ROOT_FAMILY_PLAN_READY', {\n                                'schema': 'unit-row-first-family-engine-milestone-v1',\n                                'stage': 'FIRST_ROOT_FAMILY_PLAN_READY', 'engine_version': VERSION,\n                                'depth': 0,\n                                'diagnostic_only': True, 'scientific_acceptance': False,\n                                'pre_state': self._state, 'decision': decision,\n                                'decision_event': root_decision_event, 'plan': branch_plan,\n                                'prototype_census': self._family_prototype_census,\n                            })\n                            need(self._milestone_observer is milestone_observer\n                                 and self._milestone_observer_anchor is milestone_observer,\n                                 'original milestone observer endpoint unchanged on return')\n                            self.tick()\n",
+      "new_end": 1505,
+      "new_start": 1485,
+      "old": "",
+      "old_end": 1450,
+      "old_start": 1450,
+      "tag": "insert"
+    },
+    {
+      "new": "                            if journal_this_root:\n                                self.tick()\n                                need(self._milestone_observer is milestone_observer\n                                     and self._milestone_observer_anchor is milestone_observer,\n                                     'fixed original milestone observer endpoint')\n                                milestone_observer('FIRST_ROOT_FAMILY_EVENT_READY', {\n                                    'schema': 'unit-row-first-family-engine-milestone-v1',\n                                    'stage': 'FIRST_ROOT_FAMILY_EVENT_READY', 'engine_version': VERSION,\n                                    'depth': 0,\n                                    'diagnostic_only': True, 'scientific_acceptance': False,\n                                    'state': self._state, 'pending_preferences': self._preferences,\n                                    'event': self.events[-1],\n                                })\n                                need(self._milestone_observer is milestone_observer\n                                     and self._milestone_observer_anchor is milestone_observer,\n                                     'original milestone observer endpoint unchanged on return')\n                                self.tick()\n",
+      "new_end": 1540,
+      "new_start": 1523,
+      "old": "",
+      "old_end": 1468,
+      "old_start": 1468,
+      "tag": "insert"
+    },
+    {
+      "new": "                    if journal_this_root:\n                        self.tick()\n                        need(self._milestone_observer is milestone_observer\n                             and self._milestone_observer_anchor is milestone_observer,\n                             'fixed original milestone observer endpoint')\n                        milestone_observer('FIRST_ROOT_PRIMITIVE_PLACED', {\n                            'schema': 'unit-row-first-family-engine-milestone-v1',\n                            'stage': 'FIRST_ROOT_PRIMITIVE_PLACED', 'engine_version': VERSION,\n                            'depth': 0,\n                            'diagnostic_only': True, 'scientific_acceptance': False,\n                            'state': self._state, 'transition': self._last_transition,\n                            'invalidation_event': self.events[-2], 'place_event': self.events[-1],\n                        })\n                        need(self._milestone_observer is milestone_observer\n                             and self._milestone_observer_anchor is milestone_observer,\n                             'original milestone observer endpoint unchanged on return')\n                        self.tick()\n                        child_milestone_pending = True\n",
+      "new_end": 1561,
+      "new_start": 1543,
+      "old": "",
+      "old_end": 1471,
+      "old_start": 1471,
+      "tag": "insert"
+    }
+  ],
+  "four_direct_observer_calls": [
+    {
+      "fields": [
+        "schema",
+        "stage",
+        "engine_version",
+        "depth",
+        "diagnostic_only",
+        "scientific_acceptance",
+        "state",
+        "decision",
+        "decision_event",
+        "prototype_census"
+      ],
+      "line": 1450,
+      "stage": "FIRST_CHILD_DECISION_READY"
+    },
+    {
+      "fields": [
+        "schema",
+        "stage",
+        "engine_version",
+        "depth",
+        "diagnostic_only",
+        "scientific_acceptance",
+        "state",
+        "transition",
+        "invalidation_event",
+        "place_event"
+      ],
+      "line": 1549,
+      "stage": "FIRST_ROOT_PRIMITIVE_PLACED"
+    },
+    {
+      "fields": [
+        "schema",
+        "stage",
+        "engine_version",
+        "depth",
+        "diagnostic_only",
+        "scientific_acceptance",
+        "pre_state",
+        "decision",
+        "decision_event",
+        "plan",
+        "prototype_census"
+      ],
+      "line": 1493,
+      "stage": "FIRST_ROOT_FAMILY_PLAN_READY"
+    },
+    {
+      "fields": [
+        "schema",
+        "stage",
+        "engine_version",
+        "depth",
+        "diagnostic_only",
+        "scientific_acceptance",
+        "state",
+        "pending_preferences",
+        "event"
+      ],
+      "line": 1529,
+      "stage": "FIRST_ROOT_FAMILY_EVENT_READY"
+    }
+  ],
+  "parent_source": {
+    "bytes": 92154,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+    "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+  },
+  "project_evaluated": false,
+  "raw_regions": 11,
+  "retained_named_regions_count": 49,
+  "retained_named_regions_raw_AST_exact": [
+    "Unresolved",
+    "need",
+    "canonical",
+    "digest",
+    "diagnostic_copy",
+    "select_schedule",
+    "validate_native_receipt",
+    "certify_by_current_cover",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine._policy_snapshot",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine.state_snapshot",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine._family_policy",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._candidate_from_decision_context",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine.decision.current",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine._join_prototype_census",
+    "LazyUnitRowEngine._record_family_tile_census",
+    "LazyUnitRowEngine._join_family_degree_census",
+    "LazyUnitRowEngine._join_family_cursor_census",
+    "LazyUnitRowEngine._consume_family",
+    "LazyUnitRowEngine._select_family_branch",
+    "LazyUnitRowEngine._adopt_family_branch"
+  ],
+  "schema": "unit-row-first-admission-journal-engine-independent-static-audit-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 98533,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+    "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+  },
+  "source_only": true,
+  "whole_AST_diagnostic_erasure_exact": true,
+  "whole_raw_forward_inverse_exact": true
+}

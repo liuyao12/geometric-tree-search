@@ -1,0 +1,226 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual": {
+    "bytes": 15584,
+    "path": "/private/tmp/gcts-first-admission-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+    "sha256": "ca7a44a00c67be83392e4bfaebb2df1e7a222d6b2a71ddbd90ffe3ea03a79039"
+  },
+  "actual_closed": true,
+  "actual_family_placements_qualified": null,
+  "actual_session": 30204,
+  "all_reaped": true,
+  "captured_headers": 3,
+  "complete_failure_pair_verified": true,
+  "current_state_qualified": null,
+  "engine_milestone_serialization": {
+    "GCTS_search_trajectory_accepted": false,
+    "RL_accepted": false,
+    "ROOT_resource_accepted": false,
+    "callback_context": "LITERAL_RETURNED_SCALARS_AND_RAW_ENGINE_RECORDS_ONLY",
+    "callback_return_to_engine_proved": false,
+    "captured_headers": [
+      {
+        "native_ns": 606326059225000,
+        "ordinal": 1,
+        "stage": "FIRST_ROOT_FAMILY_PLAN_READY"
+      },
+      {
+        "native_ns": 606326110714000,
+        "ordinal": 2,
+        "stage": "FIRST_ROOT_FAMILY_EVENT_READY"
+      },
+      {
+        "native_ns": 606326373472000,
+        "ordinal": 3,
+        "stage": "FIRST_ROOT_PRIMITIVE_PLACED"
+      },
+      null
+    ],
+    "captured_record_count": 3,
+    "complete_GCTS_model_accepted": false,
+    "current_state_accepted": false,
+    "diagnostic_only": true,
+    "engine_journal_bytes": 21,
+    "engine_milestone_records_are_unvalidated": true,
+    "engine_record_prefix_reason": "NEXT_RECORD_OUTPUT_BOUND_OR_BUILTIN_TYPE",
+    "exact_point_board_accepted": false,
+    "failure_cause_established": false,
+    "failure_kind": "TimeoutError",
+    "last_observation_is_active_failure_frame": false,
+    "live_state_or_proof_trajectory_accepted": false,
+    "logical_proof_accepted": false,
+    "next_omitted_ordinal": 1,
+    "offers_accepted": false,
+    "omitted_record_count": 3,
+    "positive_joint_gate_accepted": false,
+    "provider_return_summaries_are_unvalidated_scalars": true,
+    "qualification": "UNQUALIFIED_LITERAL_ENGINE_MILESTONE_RECORDS",
+    "returned_control_record": false,
+    "schema": "unit-row-controls-engine-milestones-diagnostic-v3",
+    "serialized_record_count": 0
+  },
+  "engine_milestones": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "full_receiver_record": false,
+  "independent_saved_data_audit": {
+    "bytes": 14387,
+    "path": "/private/tmp/gcts-first-admission-data-peer-20261017/saved-data-audit-v2.json",
+    "sha256": "66a0bcdbac12d27c25e81bd9c423376c14e4de4395559c6b38546bd048b6cc9b"
+  },
+  "native_launch_to_postprobe_ns": 20558412000,
+  "native_positive_window_qualified": false,
+  "new_theorem_accepted": false,
+  "next_child_decision_recorded": false,
+  "offers_qualified": null,
+  "omission_reason_scope": "Disjunction of raw output/structure/type guards; exact guard and live failure cause are not determined from this saved record.",
+  "omitted_record_bodies": 3,
+  "original_model_unchanged": true,
+  "owned_peak_bytes": 115146752,
+  "phase_observations": [
+    {
+      "elapsed_ns": 92755000,
+      "native_ns": 606316007825000,
+      "stage": "BEFORE_PLAN_READ"
+    },
+    {
+      "elapsed_ns": 93560000,
+      "native_ns": 606316008630000,
+      "stage": "BEFORE_CURRENT_SOURCE_READS"
+    },
+    {
+      "elapsed_ns": 102701000,
+      "native_ns": 606316017771000,
+      "stage": "BEFORE_AUTHORITY_INPUT_READS"
+    },
+    {
+      "elapsed_ns": 116181000,
+      "native_ns": 606316031251000,
+      "stage": "BEFORE_MODULE_LOAD"
+    },
+    {
+      "elapsed_ns": 213670000,
+      "native_ns": 606316128740000,
+      "stage": "BEFORE_GUARD_CONSTRUCTION"
+    },
+    {
+      "elapsed_ns": 258461000,
+      "native_ns": 606316173531000,
+      "stage": "BEFORE_STAGEB_PROVENANCE"
+    },
+    {
+      "elapsed_ns": 319506000,
+      "native_ns": 606316234576000,
+      "stage": "BEFORE_MARKING_CHECK"
+    },
+    {
+      "elapsed_ns": 374442000,
+      "native_ns": 606316289512000,
+      "stage": "BEFORE_POOL_READ"
+    },
+    {
+      "elapsed_ns": 690510000,
+      "native_ns": 606316605580000,
+      "stage": "BEFORE_ENGINE"
+    },
+    {
+      "elapsed_ns": 8122871000,
+      "native_ns": 606324037941000,
+      "stage": "BEFORE_PROVIDER"
+    },
+    {
+      "elapsed_ns": 8124558000,
+      "native_ns": 606324039628000,
+      "stage": "P1_ENTER"
+    },
+    {
+      "elapsed_ns": 9261144000,
+      "native_ns": 606325176214000,
+      "stage": "P1_DELEGATE_RETURN"
+    },
+    {
+      "elapsed_ns": 9520497000,
+      "native_ns": 606325435567000,
+      "stage": "AFTER_PROVIDER"
+    },
+    {
+      "elapsed_ns": 9537930000,
+      "native_ns": 606325453000000,
+      "stage": "P1_CALLBACK_READY"
+    },
+    {
+      "elapsed_ns": 9670402000,
+      "native_ns": 606325585472000,
+      "stage": "C1_ENTER"
+    },
+    {
+      "elapsed_ns": 10006695000,
+      "native_ns": 606325921765000,
+      "stage": "C1_DELEGATE_RETURN"
+    },
+    {
+      "elapsed_ns": 10009949000,
+      "native_ns": 606325925019000,
+      "stage": "C1_CALLBACK_READY"
+    },
+    {
+      "elapsed_ns": 10144121000,
+      "native_ns": 606326059191000,
+      "stage": "M1_PLAN_READY"
+    },
+    {
+      "elapsed_ns": 10195603000,
+      "native_ns": 606326110673000,
+      "stage": "M2_EVENT_READY"
+    },
+    {
+      "elapsed_ns": 10458362000,
+      "native_ns": 606326373432000,
+      "stage": "M3_PLACE_RETURN"
+    }
+  ],
+  "provider_returns": [
+    {
+      "accounting": {
+        "attempted_assignments": 17,
+        "binding_attempts": 21,
+        "checked_expansions": 6,
+        "checked_instances": 1,
+        "distinct_environment_attempts": 6,
+        "duplicate_instances": 0,
+        "full_expansions": 6,
+        "ground_environment_proposals": 6,
+        "head_gate_absent_head_passes": 1,
+        "head_gate_calls": 17,
+        "head_gate_conflicting_plans": 2,
+        "head_gate_downstream_assignments": 15,
+        "head_gate_no_known_conflict": 15,
+        "head_gate_receipts_returned": 17,
+        "head_gate_unknown": 0,
+        "native_adaptations": 1,
+        "native_member_exclusions": 5,
+        "offered_instances": 1,
+        "planned_assignments": 30,
+        "preflight_checks": 6
+      },
+      "batch_status": "READY",
+      "instance_count": 1,
+      "native_ns": 606325176249000,
+      "ordinal": 1,
+      "provider_reason": "OWN_COMPLETED_INSTANCE_PREFIX",
+      "provider_steps": 427597
+    },
+    null
+  ],
+  "rollback_qualified": null,
+  "schema": "ROOT-first-admission-journal-saved-summary-v1",
+  "scientific_replay": false,
+  "serialized_record_bodies": 0,
+  "status": "UNKNOWN",
+  "terminal_exit": 2,
+  "tool_Date_seconds": 27.877
+}

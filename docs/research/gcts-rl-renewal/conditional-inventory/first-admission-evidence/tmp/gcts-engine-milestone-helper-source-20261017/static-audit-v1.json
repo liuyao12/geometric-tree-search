@@ -1,0 +1,40 @@
+{
+  "actual_result_or_model_reads": false,
+  "both_actual_F0_patch_applications_exact": true,
+  "clocks_read": false,
+  "compile_without_evaluation": true,
+  "existing17stage_provider_summary_delegation_checks_logs_snapshots_assertions_fallback_return_exact_after3erasure": true,
+  "no_helper_observer_call_or_payload_inspection": true,
+  "parent_source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "project_module_evaluated": false,
+  "raw3_fullinverse_AST_and_erasure_exact": true,
+  "retained9_other_named_regions_raw_AST_exact": [
+    "require",
+    "canonical",
+    "digest",
+    "run_receiver.copy",
+    "run_receiver.degree_proposer",
+    "run_receiver.filtered_fallback",
+    "run_receiver.certify_fallback",
+    "run_receiver.family_proposer",
+    "run_receiver.family_consumer"
+  ],
+  "schema": "ROOT-engine-milestone-receiver-helper-static-audit-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 8872,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+    "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+  },
+  "source_delta": {
+    "bytes": 2529,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/Source-delta-v1.json",
+    "sha256": "a6f10d4bb4d403ba4c770639100b5e378f06f71c6076991bb442506e2fe0d41c"
+  },
+  "source_only": true,
+  "tests_executed": false
+}

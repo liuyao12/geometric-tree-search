@@ -1,0 +1,31 @@
+--- source.py
++++ source.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION='ROOT-receiver-inference-cases-v3-callback-stages'
++VERSION='ROOT-receiver-inference-cases-v4-engine-milestones'
+ RESULT_SCHEMA = 'ROOT-receiver-inference-evidence-v1'
+ BRANCH_TIE = 'ASSIGNED-OUTPUT-THEN-ROW'
+ MAXIMUM_NODES = 2
+@@ -32,7 +32,8 @@
+ 
+ 
+ def run_receiver(*, language, base_semantics, marked_semantics, modules,
+-                 frozen_inventory, matching_mode, tick, phase, capture_provider_summary):
++                 frozen_inventory, matching_mode, tick, phase, capture_provider_summary,
++                 engine_milestone_observer):
+     """The same existing scheduler and full fallback run in both matched arms."""
+     tick()
+     require(matching_mode in ('VISIBLE_RECEPTOR', 'LITERAL_GROUND'), 'declared comparison arm')
+@@ -147,7 +148,8 @@
+         initial_state=copy(initial), maximum_nodes=MAXIMUM_NODES,
+         maximum_events=MAXIMUM_EVENTS, branch_tie=BRANCH_TIE,
+         family_proposer=family_proposer, family_consumer=family_consumer,
+-        initial_prototype_census=copy(frozen_inventory['census']))
++        initial_prototype_census=copy(frozen_inventory['census']),
++        milestone_observer=engine_milestone_observer)
+     before = engine.state_snapshot()
+     result = engine.search()
+     phase('SEARCH_RETURN_OBSERVED')

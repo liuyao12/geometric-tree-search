@@ -1,0 +1,169 @@
+{
+  "API": {
+    "bytes": 5212,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/API-wire-v1.json",
+    "sha256": "172afc85440ff67aedd6d4bef1e692287df59465d6130cb7d98e3ed01eb224f3"
+  },
+  "Review_ABI": {
+    "reviewer_identity": "distinct from author; disclose native/checker/shared interface overlap",
+    "schema": "Hilbert-shared-family-native-adapter-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "Hilbert-shared-family-native-adapter-Source",
+    "source": {
+      "bytes": 27528,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+      "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+    },
+    "source_contract": "EXACT_CURRENT_CONTRACT_PIN",
+    "source_only": true,
+    "source_review_passed": "bool",
+    "sources": {
+      "hilbert_native_adapter": {
+        "bytes": 27528,
+        "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+        "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "admission_profile": "hilbert-first-checked-equality-cohort-static-v1",
+  "author": "/root/hilbert_advice_controls",
+  "authorship_overlap": "Author wrote arithmetic4bd6/shared consumer/provider and current diagnostic seams; this new Hilbert adapter reuses common idioms only. Existing Hilbert native/context/point modules remain distinct dependencies, authored by others. No independent peer disposition is claimed by this author.",
+  "clock_calls": 0,
+  "delta": {
+    "bytes": 29098,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/Source-delta-v1.json",
+    "sha256": "bc84548a918dbccee1ea6ce309126f3a27d4a2d9d1d4a75761a2b62cd3ad07c0"
+  },
+  "dynamic_qualification": false,
+  "glue_and_qualification_limits": {
+    "bytes": 6440,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/glue-and-qualification-limits-v1.json",
+    "sha256": "dbddd82714e4024e32b45868aef6729f9c56824d2fbdfe1124032ab635fc2faa"
+  },
+  "limits": "No new budget, execution grant or benchmark case; only original cumulative tick injection. Fresh full construction/check costs must be included in future Root resource envelopes.",
+  "module_evaluations": 0,
+  "old_sources_modified": false,
+  "original_Hilbert_sources": {
+    "compiler": {
+      "archive_member": ".gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_compiler_v1.py",
+      "bytes": 46112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_compiler_v1.py",
+      "read_copy": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/reproduction.zip",
+      "sha256": "57653bb27eaf3c4dd1e050c70ac360133f78e1f636cd1276a39a20fd64610a56"
+    },
+    "dynamic_graph": {
+      "bytes": 35568,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    "fresh_final_checker": {
+      "bytes": 64540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    "independent_checker": {
+      "bytes": 24588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    "independent_grammar": {
+      "archive_member": ".gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_grammar_v1.py",
+      "bytes": 14799,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_grammar_v1.py",
+      "read_copy": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/reproduction.zip",
+      "sha256": "34322db5dc25cd3e0cc1dfa43f379f9f45107442c4f035d955b39f1e21b31db1"
+    },
+    "point_core": {
+      "archive_member": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "bytes": 31300,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "read_copy": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/reproduction.zip",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    }
+  },
+  "project_functions_executed": 0,
+  "resident_exact_Source_copies": {
+    "arithmetic_family_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/arithmetic_family_adapter.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "compiler": {
+      "bytes": 46112,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/compiler.py",
+      "sha256": "57653bb27eaf3c4dd1e050c70ac360133f78e1f636cd1276a39a20fd64610a56"
+    },
+    "dynamic_graph": {
+      "bytes": 35568,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/dynamic_graph.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    "fresh_final_checker": {
+      "bytes": 64540,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/fresh_final_checker.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    "generic_family_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_checker.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "generic_family_expander": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_expander.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "independent_checker": {
+      "bytes": 24588,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/independent_checker.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    "independent_grammar": {
+      "bytes": 14799,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/independent_grammar.py",
+      "sha256": "34322db5dc25cd3e0cc1dfa43f379f9f45107442c4f035d955b39f1e21b31db1"
+    },
+    "point_core": {
+      "bytes": 31300,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/point_core.py",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    }
+  },
+  "schema": "Hilbert-shared-family-native-adapter-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Hilbert-shared-family-native-adapter-Source",
+  "semantic_model": "Each admitted Hilbert context retains its full original catalogue/theory/ordered3Gamma/target/all24 rows/root generations/exterior+target marks/formula registry/recipe index order/authority/context/source binding/model epoch. Arithmetic original17/input2 is separate and never relabelled as Hilbert authority.",
+  "shared_source_dependencies": {
+    "generic_family_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_checker.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "generic_family_expander": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/dependencies/generic_family_expander.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    }
+  },
+  "source": {
+    "bytes": 27528,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+    "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+  },
+  "source_only": true,
+  "sources": {
+    "hilbert_native_adapter": {
+      "bytes": 27528,
+      "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+      "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+    }
+  },
+  "static_audit": {
+    "bytes": 4744,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/static-audit-v1.json",
+    "sha256": "7235817745839df184fbaac21b0414885ec53ebfed8aa098c2d40234e6f239e6"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 4540,
+    "path": "/private/tmp/gcts-first-admission-ROOT-peer-20261017/findings-v1.json",
+    "sha256": "a7a6b2528a4a745e9eff99a5aabe8128c5adc7f7d8d6ae3b8ed43abf21126fa6"
+  },
+  "review": {
+    "bytes": 8838,
+    "path": "/private/tmp/gcts-first-admission-ROOT-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "02bd93a3af4c206ab10071da49f9f32812dacb001ec421334d4d4c95d11a2cda"
+  },
+  "schema": "first-admission-Root-caller-independent-review-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 6803,
+    "path": "/private/tmp/gcts-first-admission-ROOT-peer-20261017/static-review-v1.json",
+    "sha256": "9881cca617f0bf83b40f3c297b0f3ace34009a87f86f31afe5f94e673c115005"
+  }
+}

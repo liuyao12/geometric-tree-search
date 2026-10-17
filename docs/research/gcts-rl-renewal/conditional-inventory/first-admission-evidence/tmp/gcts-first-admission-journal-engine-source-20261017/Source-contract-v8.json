@@ -1,0 +1,140 @@
+{
+  "API": {
+    "bytes": 3986,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/API-wire-v8.json",
+    "sha256": "fdd7c3f43931a6f8c078bd8bfe1ebd2906dfd5ab6a3ab6833f7c7e6cc80da73e"
+  },
+  "COW_nonmutation_argument": [
+    "Stage1 plan owns full engine-copied consumer receipt and copied provider report/census. `_adopt_family_branch` copies family into preferences, `_candidate` copies candidate, and original selection/adoption/place never mutate the retained plan or its owned receipts. Provider/consumer callbacks receive private copies, not this plan.",
+    "Current `_state` is replaced on prepared `_install`/exclusion and restored by pointer from owned checkpoint. No engine operation mutates an installed state dictionary or its nested arrays in place; place first makes a deep private copy. Retained pre/post state references remain stable.",
+    "`_family_prototype_census` is replaced with a fresh dictionary by `_join_prototype_census`; never updated in place. `_preferences` is copied/replaced, not mutated. Checkpoint tuple retains exact old semantic/cursor/dependency/ledger references; diagnostic flags/references remain outside that tuple.",
+    "Every event payload is detached by `_emit` JSON roundtrip before append. No engine operation mutates an existing event; subsequent append never changes the individual event object passed here. Root decision event is captured before selection because fallback can append. Stage2 last event is FAMILY_PREFERENCE; stage3 preceding events are successful INVALIDATE/PLACE; stage4 last event is actual completed DECISION.",
+    "All retained payload structures are builtin JSON data by unchanged fresh copy/native point/receipt pipelines or `_emit` JSON reconstruction. No private int-key `_certs` dictionary, live appendable event list, iterator, closure, owner engine or callback object is delegated. Root observer must only retain these objects read-only; later serialization belongs to bounded builtin writer.",
+    "These are Source facts under the same synchronous authenticated pinned Sources/nonreentrancy assumption as the parent. No hostile observer/frame mutation, arbitrary nth-tick trace equivalence, asynchronous mutation, or malicious callable guarantee is asserted. The observer can consume budget or fail; such failure remains UNKNOWN/error without pruning authority."
+  ],
+  "RL_accepted": false,
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "required": [
+      "Whole current Source/API/contract and unchanged operative engine7 ancestry; all raw edits/whole AST erasure/actual forward+inverse patches.",
+      "Exactly four first-root observer calls, native pre/post ticks and retained callback identity; no later science gating from return values.",
+      "Full literal plans/provider reports/consumer receipts/native state/census and existing events; original COW/nonmutation lifetime and no live list/private int-key map exposure.",
+      "All original scheduler/global DEAD/FORCED/earliest-generation/one-primitive/fallback/census/retention/owned rollback logic erasure exact.",
+      "Original17/input2 epoch/model and Root native20/512/once/Source guards remain external immutable prerequisites; no runtime or prior qualification inherited.",
+      "Disclose helper/engine/old primitive authorship overlap and no scientific execution; no author self-review."
+    ],
+    "schema": "receptor-family-first-admission-journal-engine-typed-Source-review-v8",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-first-admission-journal-engine-Source",
+    "source": {
+      "bytes": 98533,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+      "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+    },
+    "source_only": true,
+    "sources": {
+      "family_engine": {
+        "bytes": 98533,
+        "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+        "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_overlap": "Author owns census-engine4-7 and older checker/point/diagnostic ancestry. This is author Source audit only. Arithmetic authors separately required helper plumbing and performs distinct engine review; Root independently reviews/integrates observer/writer/reader/current Source map. Shared old primitives and schema coordination do not substitute for those peer gates.",
+  "engine_accepted": false,
+  "future_review_and_actual": [
+    "Distinct whole engine Source review before integration.",
+    "Fresh Root helper/cold/observer/writer/reader Source composition review with exact current executable/contract pins; preserve original semantic authority and all native once limits.",
+    "Actual measured Root diagnostic only after new explicit grant; no outcome/fit/cost improvement predicted and no inheritance from earlier incomplete windows."
+  ],
+  "implementation_scope": "New required diagnostic observer and four bounded first-root milestone calls only, explicit new VERSION. No scientific function/candidate/universe/marking/native-evidence/receipt policy change. No Root actual or new grant in this packet.",
+  "model_and_limits": "Original17/input2 semantic binding and epoch unchanged and separately authenticated from Root current executable map. Root passes original maximum_nodes2/maximum_events256 and same native20/512, internal500 reserve, failure55/owned60/caller90+1/once. Engine generic defaults and ceilings unchanged. Observer metadata time/memory and any phase writes consume the same original20/512; failure writer is Root-owned separate55 builtin-only path.",
+  "observer_protocol": {
+    "call_order": [
+      "FIRST_ROOT_FAMILY_PLAN_READY",
+      "FIRST_ROOT_FAMILY_EVENT_READY",
+      "FIRST_ROOT_PRIMITIVE_PLACED",
+      "FIRST_CHILD_DECISION_READY"
+    ],
+    "charges": "Every call has engine tick and endpoint identity check before and after; callback must use Root original tick/native phase endpoint and complete Source guards. No new clock here. Native/Source/other errors propagate; old TimeoutError catch/restoration remains unchanged.",
+    "constructor_required": true,
+    "maximum_calls_per_search": 4,
+    "no_late_calls": "This module contains no failure writer or postdeadline observer path. If a native tick fails, later milestones do not execute. Root writer may serialize bounded retained literals using its separately reviewed captured native55/builtin-only path.",
+    "prefix_semantics": "Markers/observer records may be incomplete due a postwrite/postobserver native tick. Even all four records cannot independently certify restoration, complete resource closure, theorem, trajectory, degree/fallback authority, runtime advantage or end-to-end gain. Later original search continues without a forced stop.",
+    "return_ignored": true,
+    "selection_status": "PLAN_READY is completion of engine branch-plan selection, not an asserted READY family; complete plan.mode/receipt.status remain explicit. A canonical fallback is never relabelled family admission.",
+    "signature": "milestone_observer(stage,payload)"
+  },
+  "operative_parent_contract": {
+    "bytes": 12640,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-contract-v7.json",
+    "sha256": "dba45a064608275b17773e94722c5b2740b744329dd7265da66a2dd67f290132"
+  },
+  "parent_handoff": {
+    "bytes": 6066,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/handoff-v7.json",
+    "sha256": "2a2e214e4483f2ec61e1d48e8f5612e4d6958d06893186ef368b6ce6132b5a69"
+  },
+  "parent_source": {
+    "bytes": 92154,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+    "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+  },
+  "patches": [
+    {
+      "bytes": 9652,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/engine-v8.forward.patch",
+      "sha256": "a9f8ab75d3611e4cd4f93b18746a20579461a3e86c7559a8452db4ffb71484a9"
+    },
+    {
+      "bytes": 9652,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/engine-v8.inverse.patch",
+      "sha256": "518a224e6174d5379ed40c3885023ef9b8bcc19b470adccfddbe0a76df8132e5"
+    }
+  ],
+  "preserved_parent_distinct_peer": {
+    "bytes": 3351,
+    "path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/typed-Source-review-v7.json",
+    "sha256": "534357dc7df3e9a8aa04a514de83e02db6230ddbbb14088851b6bd2e1e7f95c5"
+  },
+  "proof_accepted": false,
+  "pruning_accepted": false,
+  "runtime_qualified": false,
+  "schema": "receptor-family-first-admission-journal-engine-Source-contract-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-first-admission-journal-engine-Source",
+  "source": {
+    "bytes": 98533,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+    "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+  },
+  "source_cost_proposal": {
+    "bytes": 11509,
+    "path": "/private/tmp/gcts-postconsumer-cost-plan-20261017/Source-cost-plan-v1.json",
+    "sha256": "9d0a1d8a001d7cce3e08490277822fc6cd5b97a42111325e494f9d5417d65622"
+  },
+  "source_delta": {
+    "bytes": 10002,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/Source-delta-v8.json",
+    "sha256": "45c6a14d6413b3bfd6c697147ee4c97cb5a268c1a184ddc00d90f9b204f1a45f"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "family_engine": {
+      "bytes": 98533,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/receptor_family_search_engine_v8.py",
+      "sha256": "9fd543e42db1e8f657a36cd081c7f9bd4621bb22b97e4daabe5a8856e944eb7f"
+    }
+  },
+  "static_audit": {
+    "bytes": 9060,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/static-Source-audit-v8.json",
+    "sha256": "579096271af1302b88d26bb67a3a858a11a56321e522b595e20f8b5835032003"
+  },
+  "unchanged_math": "All native receipt validation, independent degree checker, whole original/decorated tile/state/membership checks, collision ledgers, complete candidate universe, selected/excluded domain dependency, fixed marking, generation/tie policy, complete fallback ordering/EOF/current keys, transitions/refresh, `_candidate`, `_observe`, `_install`, place/exclusion, checkpoint/rollback and root/native output behavior remain raw/AST exact except VERSION observations. Exact full diagnostic erasure restores parent entire AST, including original search compound statements/guards/caps/catches/finally."
+}

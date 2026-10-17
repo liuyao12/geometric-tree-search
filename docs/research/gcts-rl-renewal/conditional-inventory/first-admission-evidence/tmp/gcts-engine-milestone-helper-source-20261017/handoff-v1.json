@@ -1,0 +1,83 @@
+{
+  "API": {
+    "bytes": 3476,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/API-wire-v1.json",
+    "sha256": "ff1bd3444e1d9ea90a7944969843ad9a3167a912b0fadaef373615ca1c2334e7"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "required_fields": [
+      "reviewer_identity",
+      "source",
+      "source_contract",
+      "source_review_passed",
+      "source_only",
+      "scientific_calls",
+      "scientific_acceptance",
+      "author_overlap",
+      "findings"
+    ],
+    "schema": "ROOT-engine-milestone-receiver-helper-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-engine-milestone-receiver-helper-Source",
+    "source": {
+      "bytes": 8872,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+      "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+    },
+    "source_contract": "Exact current contract pin",
+    "source_only": true,
+    "sources": {
+      "receiver_cases": {
+        "bytes": 8872,
+        "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+        "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+      }
+    }
+  },
+  "engine_dependency": "Diagnosis engine journal implementation is separately owned and not yet bound here; Root must pin it and verify exact observer API.",
+  "parent_source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 1348,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/forward.patch",
+      "sha256": "4d32374556699c863ac3349cda5a4062cc1011d95ac3ab1c774cc17f31e258c1"
+    },
+    "inverse": {
+      "bytes": 1348,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/inverse.patch",
+      "sha256": "92b3646e4d2a1c76b61dd92d1c75c452af01d73e3b4e715691d3fe3fba78e383"
+    }
+  },
+  "ready_for": "Distinct whole Source review and separately frozen Root composition only; no execution grant.",
+  "runtime_qualified": false,
+  "schema": "ROOT-engine-milestone-receiver-helper-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 8872,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+    "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+  },
+  "source_contract": {
+    "bytes": 5985,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/Source-contract-v1.json",
+    "sha256": "ddf51514ad7b4d2352dfd3d93e4e461deee710b0a9ae6353db28daf25c145068"
+  },
+  "source_delta": {
+    "bytes": 2529,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/Source-delta-v1.json",
+    "sha256": "a6f10d4bb4d403ba4c770639100b5e378f06f71c6076991bb442506e2fe0d41c"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 1560,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/static-audit-v1.json",
+    "sha256": "638cfe10196323df54762b696202f49d6486e9213d0f77e574cbd512ce24c965"
+  }
+}

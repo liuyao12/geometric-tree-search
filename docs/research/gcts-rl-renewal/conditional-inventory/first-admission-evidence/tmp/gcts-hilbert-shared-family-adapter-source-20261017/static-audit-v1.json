@@ -1,0 +1,156 @@
+{
+  "Source": {
+    "bytes": 27528,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-source-20261017/hilbert_shared_family_admission_adapter_v1.py",
+    "sha256": "5f2a10c02d68e0e21a65d53297aaca93607324886e7b5eff4a3ac15b347a01f7"
+  },
+  "Source_anchors": {
+    "arithmetic_family_adapter": {
+      "def adapt_expansion": [
+        139
+      ],
+      "def describe_host": [
+        65
+      ]
+    },
+    "dynamic_graph": {
+      "class OrderedDomain": [
+        212
+      ],
+      "def compact_graph_binding": [
+        393
+      ],
+      "def legal_batch": [
+        512
+      ],
+      "def membership_binding": [
+        496
+      ],
+      "def ordered": [
+        647
+      ],
+      "def semantic_state": [
+        403
+      ]
+    },
+    "fresh_final_checker": {
+      "class SelectedWire": [
+        524
+      ],
+      "def admitted_context": [
+        347
+      ],
+      "def placement": [
+        679
+      ],
+      "def recipe": [
+        584
+      ]
+    },
+    "generic_family_checker": {
+      "def check_expansion": [
+        848
+      ],
+      "def host_check": [
+        193
+      ]
+    },
+    "generic_family_expander": {
+      "def _host": [
+        136
+      ],
+      "def expand_family": [
+        783
+      ],
+      "def match_family": [
+        794
+      ]
+    },
+    "independent_checker": {
+      "class GroundChecker": [
+        60
+      ],
+      "def command": [
+        108
+      ],
+      "def proof": [
+        138
+      ]
+    },
+    "point_core": {
+      "def candidates_with_preferences": [
+        473
+      ],
+      "def decision": [
+        341
+      ],
+      "def decorate": [
+        426
+      ],
+      "def point_data": [
+        230
+      ],
+      "def validate_cluster": [
+        449
+      ]
+    }
+  },
+  "actual_patch_F0_directions": 2,
+  "checks": [
+    "Whole new module AST parse and compile without evaluation.",
+    "Only hashlib/json imports; no project import, dispatcher, module evaluation or source loader.",
+    "No proof/search/apply/checkpoint/rollback/decision/ordered/exclusion call in candidate adapter.",
+    "Exact native five-rule rule table; generalization absent, instantiate/eq_subst remain zero-premise schema licenses.",
+    "Existing admitted_context is called freshly and again before READY/UNKNOWN returns.",
+    "Host binding carries complete original header/theory/ordered Gamma/target/stream pins/runtime and model identities.",
+    "Every native formula and recipe is compared to the independent SelectedWire; no formula-code or recipe identity quotient.",
+    "Every packet is independently rebuilt by existing placement and GroundChecker.command and compared with actual graph.decorate/point_data.",
+    "All selected/excluded/requested member recipe/prototype/aggregate identities merge full canonical preimages.",
+    "Exact selected t/m/refcounts are reconstructed with fixed remote exterior/target marks before adapting.",
+    "Indexed hypothesis nodes preserve each original occurrence and no occupied/pending input is labelled a fact.",
+    "Root and nested physical sharing is checked by actual rows under each independently rebuilt frame policy.",
+    "Each ordered native reference is strictly earlier, and aliased read formulas must agree.",
+    "Shared exact placements deduplicate; separate alternative calls never merge their point unions.",
+    "Whole current+new union is checked for every capacity and remote marking, including unused external interfaces.",
+    "Graph validate_cluster receives all distinct native keys; no member can disappear from returned validated tuple.",
+    "All graph semantic state, input JSON, qualification and native checker theory are rechecked before either normal return.",
+    "Full domain/degree/cursor/earliest-generation/continuation/rollback/target proof qualification remains outside this component.",
+    "Real unified addition and inverse patches apply with fuzz0 and recover full raw/AST data.",
+    "All dependency resident copies match previously pinned exact Source hashes; no actual/proof/certificate result opened."
+  ],
+  "clock_calls": 0,
+  "compile_without_evaluation": true,
+  "direct_called_attributes": [
+    "Key",
+    "add",
+    "append",
+    "data",
+    "dumps",
+    "encode",
+    "get",
+    "hexdigest",
+    "items",
+    "sha256",
+    "update"
+  ],
+  "module_evaluations": 0,
+  "named_functions": [
+    "require",
+    "tree",
+    "canonical",
+    "digest",
+    "call",
+    "_context",
+    "describe_host",
+    "_rows",
+    "_merge",
+    "_record_key",
+    "adapt_expansion"
+  ],
+  "project_functions_executed": 0,
+  "py_compile_used": false,
+  "schema": "Hilbert-shared-family-native-adapter-static-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

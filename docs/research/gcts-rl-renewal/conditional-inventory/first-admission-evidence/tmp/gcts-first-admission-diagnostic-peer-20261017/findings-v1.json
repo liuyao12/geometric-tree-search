@@ -1,0 +1,55 @@
+{
+  "author_overlap": "Reviewer authored engine8, older engine/census/point/checker ancestry and diagnostic proposals; not author of Controls current writer/readout or Arithmetic helper. Shared API coordination and prior seam review disclosed. Engine mathematics is not independently self-reviewed: separate cd56b601 peer is bound.",
+  "blockers": [],
+  "distinct_engine_peer": {
+    "bytes": 4461,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/typed-Source-review-v8.json",
+    "sha256": "cd56b601286d33293295ea34af024454efce150a297e92bfe3bb520b036dcfd3"
+  },
+  "findings": [
+    {
+      "detail": "Whole writer23268/reader42910/API/contract/parents read.2+20 full raw/AST inverses and four real -F0 patches exact; writer5 nested and reader9 regions exact. Captured native55/builtin-only serialization and native/resource error propagation preserved; new omission catches ValueError only. No late original20/project/scientific call.",
+      "id": "RAW-NATIVE",
+      "verdict": "PASS"
+    },
+    {
+      "detail": "Fixed4 captured-header prefix checked before serialization.21 initial bytes include brackets/nulls/commas; replace-null adjustment is record bytes minus4; aggregate3MiB includes whole list. Only complete wrappers enter output; first omission stops suffix. Captured/serialized/omitted counts/headers/next ordinal/reason distinguish absent from omitted. Reader reproduces insertion-order ensure_ascii=True/no-space JSON byte count. Old whole4MiB+131072 bound and exact two-file completion hashes persist.",
+      "id": "FULL-RECORD-PREFIX",
+      "verdict": "PASS"
+    },
+    {
+      "detail": "34 unique labels/75-byte line/2160-byte all-site bound recomputed. Canonical signed64/native monotone times, legacy relative order, sequential P/C groups and per-role ordinals preserved. M1-M4 form prefix outside callback group; M4 precedes P2/C2/C3. Own marker may lack capture; later marker requires prior header. Captures join current marker/next marker/search return; partial final line never counts completed.",
+      "id": "34-PHASE-PROTOCOL",
+      "verdict": "PASS"
+    },
+    {
+      "detail": "C1_READY before M1 holds even no offer: engine ctor preferences=None; first root selection unconditionally invokes fresh BATCH _consume_family consumer. UNKNOWN-empty returns UNKNOWN; READY-empty returns NO_MATCH. Helper emits C1_READY before returning either receipt. Failure prevents M1. This derives from Source, not prior READY1 observation; canonical fallback still has no family admission authority.",
+      "id": "NO-OFFER-TRACE",
+      "verdict": "PASS_IN_CURRENT_PINNED_SCOPE"
+    },
+    {
+      "detail": "Positive full4slot joins stage/version/depth/fields/native stamps with existing strict full native20/512/wire/envelope/current/original authority checks. Failure joins exact captured-vs-serialized prefix and native55 context/terminal/source metadata. Full state/plan/event-shaped values remain opaque builtin JSON; no semantic admission, move/current frame/restoration/theorem/runtime gain from journal or marker.",
+      "id": "RAW-ONLY-RECONCILIATION",
+      "verdict": "PASS"
+    },
+    {
+      "detail": "Candidate retains parent b444 CURRENT_CONTRACT and v4 response version for Root rebind; not final runnable Root authority. Whole current22/input10 versus original17/input2, cf4 writer insertion, helper1685/engine9fd/capture410a, native/CodeSeal/once/guard/writer anchors,34 whitelist and positive full4slot payload require separate Root composition peer. No actual/result/proofword/scientific input or reviewed function/clock read/evaluated.",
+      "id": "ROOT-ASSEMBLY",
+      "verdict": "CONDITIONAL"
+    }
+  ],
+  "schema": "first-admission-diagnostic-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 13584,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/Source-contract-v1.json",
+    "sha256": "383b8b31b90d1c11979f8412c0744973c2b13371760ac46c93046b17188649f8"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 9007,
+    "path": "/private/tmp/gcts-first-admission-diagnostic-peer-20261017/static-review-v1.json",
+    "sha256": "1e2d3b3c3be4efe195c408dbdd24541b16ea43138a2284bf6e5e02df4f91df70"
+  }
+}

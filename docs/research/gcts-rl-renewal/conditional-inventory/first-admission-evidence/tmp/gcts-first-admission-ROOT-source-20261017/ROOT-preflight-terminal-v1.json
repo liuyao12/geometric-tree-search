@@ -1,0 +1,18 @@
+{
+  "actual_grant_created": false,
+  "actual_invocations": 0,
+  "actual_plan_created": false,
+  "goal_status": "active",
+  "kind": "METADATA_ONLY_READ",
+  "preflight_exit": 130,
+  "preflight_pid": 48630,
+  "preflight_reaped": true,
+  "preflight_session": 43306,
+  "schema": "ROOT-first-admission-preflight-terminal-v1",
+  "scientific_calls": 0,
+  "secondary_read_exit": 142,
+  "secondary_read_reaped": true,
+  "secondary_read_session": 98206,
+  "source_file_unchanged": true,
+  "terminal": "KeyboardInterrupt at full file read after Root sent SIGINT to this exact owned metadata PID; no output preflight file exists."
+}

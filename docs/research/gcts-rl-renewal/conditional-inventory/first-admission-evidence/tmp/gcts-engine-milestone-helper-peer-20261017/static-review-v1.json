@@ -1,0 +1,139 @@
+{
+  "checks": [
+    {
+      "check": "whole exact current handoff/source/contract/API/delta/parent pins",
+      "passed": true
+    },
+    {
+      "check": "exactly three raw edits",
+      "passed": true
+    },
+    {
+      "check": "raw region 1",
+      "passed": true
+    },
+    {
+      "check": "raw region 2",
+      "passed": true
+    },
+    {
+      "check": "raw region 3",
+      "passed": true
+    },
+    {
+      "check": "full raw forward/inverse",
+      "passed": true
+    },
+    {
+      "check": "full AST forward/inverse",
+      "passed": true
+    },
+    {
+      "check": "patch pin forward",
+      "passed": true
+    },
+    {
+      "check": "actual patch -F0 and cmp forward",
+      "passed": true
+    },
+    {
+      "check": "patch pin inverse",
+      "passed": true
+    },
+    {
+      "check": "actual patch -F0 and cmp inverse",
+      "passed": true
+    },
+    {
+      "check": "nine retained function regions raw+AST exact",
+      "passed": true,
+      "regions": [
+        "require",
+        "canonical",
+        "digest",
+        "run_receiver.copy",
+        "run_receiver.degree_proposer",
+        "run_receiver.filtered_fallback",
+        "run_receiver.certify_fallback",
+        "run_receiver.family_proposer",
+        "run_receiver.family_consumer"
+      ]
+    },
+    {
+      "check": "observer is direct required helper kwarg",
+      "passed": true
+    },
+    {
+      "check": "helper does not call or inspect observer",
+      "passed": true
+    },
+    {
+      "check": "compile without evaluation",
+      "passed": true
+    },
+    {
+      "check": "exact final four-stage event-only field agreement",
+      "passed": true
+    },
+    {
+      "check": "engine separately distinct peer no self acceptance",
+      "passed": true
+    }
+  ],
+  "raw_references": [
+    {
+      "bytes": 3359,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/handoff-v1.json",
+      "sha256": "00fc5390d5aefdab4a6a35259f7d8c8a1f0104d0967d79ec5652fc9603faa798"
+    },
+    {
+      "bytes": 8872,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+      "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+    },
+    {
+      "bytes": 5985,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/Source-contract-v1.json",
+      "sha256": "ddf51514ad7b4d2352dfd3d93e4e461deee710b0a9ae6353db28daf25c145068"
+    },
+    {
+      "bytes": 3476,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/API-wire-v1.json",
+      "sha256": "ff1bd3444e1d9ea90a7944969843ad9a3167a912b0fadaef373615ca1c2334e7"
+    },
+    {
+      "bytes": 2529,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/Source-delta-v1.json",
+      "sha256": "a6f10d4bb4d403ba4c770639100b5e378f06f71c6076991bb442506e2fe0d41c"
+    },
+    {
+      "bytes": 8772,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+    },
+    {
+      "bytes": 1348,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/forward.patch",
+      "sha256": "4d32374556699c863ac3349cda5a4062cc1011d95ac3ab1c774cc17f31e258c1"
+    },
+    {
+      "bytes": 1348,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/inverse.patch",
+      "sha256": "92b3646e4d2a1c76b61dd92d1c75c452af01d73e3b4e715691d3fe3fba78e383"
+    },
+    {
+      "bytes": 3986,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/API-wire-v8.json",
+      "sha256": "fdd7c3f43931a6f8c078bd8bfe1ebd2906dfd5ab6a3ab6833f7c7e6cc80da73e"
+    },
+    {
+      "bytes": 4461,
+      "path": "/private/tmp/gcts-first-admission-journal-engine-peer-20261017/typed-Source-review-v8.json",
+      "sha256": "cd56b601286d33293295ea34af024454efce150a297e92bfe3bb520b036dcfd3"
+    }
+  ],
+  "schema": "engine-milestone-helper-independent-static-v1",
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}

@@ -1,0 +1,428 @@
+"""SOURCE ONLY: shared conditional families to admitted Hilbert primitive points.
+
+The Root caller authenticates every injected module and exact original context.
+No search, proof input, source loader, clock, graph mutation or advice activation.
+Native here means the existing Hilbert host dialect/point constructors; the
+historical GroundChecker deliberately retains native_accepted=False.
+"""
+import hashlib
+import json
+
+VERSION = 'hilbert-shared-parametric-family-native-admission-adapter-v2-unknown-prefix'
+HOST_SCHEMA = 'receptor-family-host-v1'
+ROW_SCHEMA = 'hilbert-shared-family-row-assignment-v1'
+INPUT_SOURCE_SCHEMA = 'hilbert-shared-family-current-input-source-v1'
+RESULT_SCHEMA = 'hilbert-shared-family-local-cluster-v1'
+CENSUS_SCHEMA = 'hilbert-shared-family-full-prototype-census-v1'
+CHECKER_VERSION = 'receptor-family-independent-expansion-checker-v1'
+CHECK_SCHEMA = 'receptor-family-conditional-expansion-check-v1'
+CONTEXT_VERSION = 'independent-compact24-primitive-advice-pair-final-certificate-v1'
+CONTEXT_PROFILE = 'hilbert-first-checked-equality-cohort-static-v1'
+GRAPH_SCHEMA = 'compact-complete-dynamic-point-state-v2'
+GRAPH_BINDING_SCHEMA = 'sealed-compact-dynamic-graph-binding-v2'
+MARKING = 'injective-formula-ordered-mp-offset-v1'
+RULES = {
+    'axiom': {'input_count': 0, 'arguments': {'name': 'LITERAL'}},
+    'assumption': {'input_count': 0, 'arguments': {'index': 'LITERAL'}},
+    'instantiate': {'input_count': 0, 'arguments': {'universal': 'FORMULA', 'term': 'TERM'}},
+    'eq_subst': {'input_count': 0, 'arguments': {'variable': 'VARIABLE',
+        'template': 'FORMULA', 'left': 'TERM', 'right': 'TERM'}},
+    'mp': {'input_count': 2, 'arguments': {}}}
+FLAGS = ('proof_accepted', 'root_proof_accepted', 'native_accepted',
+    'degree_or_EOF_accepted', 'scheduler_or_rollback_accepted', 'engine_activated',
+    'marking_activated', 'complete_GCTS_model_accepted', 'trajectory_accepted',
+    'RL_accepted', 'GCTS_advantage_accepted', 'ROOT_resource_accepted',
+    'runtime_qualified', 'pruning_accepted', 'full24_board_accepted')
+
+
+def require(ok, why):
+    if not ok:
+        raise ValueError('Hilbert shared-family adapter: '+why)
+
+
+def tree(value, tick):
+    tick()
+    if value is None or type(value) in (str, int, bool):
+        return value
+    if type(value) is list:
+        return [tree(item, tick) for item in value]
+    require(type(value) is dict and all(type(key) is str for key in value), 'builtin JSON data only')
+    return {key: tree(item, tick) for key, item in value.items()}
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False, allow_nan=False)
+
+
+def digest(value):
+    return hashlib.sha256(canonical(value).encode('utf8')).hexdigest()
+
+
+def call(tick, function, *args, **kwargs):
+    tick()
+    value = function(*args, **kwargs)
+    tick()
+    return value
+
+
+def _context(*, graph, context_checker, closed_inputs, qualification, tick):
+    require(context_checker.VERSION == CONTEXT_VERSION and context_checker.MARKING == MARKING,
+            'exact existing independent context/placement API')
+    require(type(qualification) is dict and qualification.get('declaration_profile') == CONTEXT_PROFILE,
+            'explicit original Hilbert context profile; no implicit new benchmark admission')
+    admitted = call(tick, context_checker.admitted_context, closed_inputs, qualification)
+    header, gamma, target, theory, license_pin, audit = admitted
+    header, gamma, target, theory = (tree(value, tick) for value in (header, gamma, target, theory))
+    binding = tree(call(tick, graph.compact_graph_binding), tick)
+    require(graph.fixture is False and type(graph.height) is int and graph.height == 24
+            and binding['schema'] == GRAPH_BINDING_SCHEMA and binding['marking_version'] == MARKING
+            and binding['orientation'] == 'identity'
+            and binding['native_accepted'] is False and binding['engine_authority_activated'] is False,
+            'full original24 sealed production point dialect')
+    require(canonical(graph.catalog.header) == canonical(header)
+            and canonical(graph.context) == canonical(header['context'])
+            and graph.context_id == header['context_id'] == binding['context_id']
+            and graph.registry_sha == header['formula_registry_sha256'] == binding['formula_registry_sha256']
+            and graph.authority_epoch == header['authority']['epoch'] == binding['authority_epoch']
+            and canonical(graph.authority) == canonical(header['authority'])
+            and canonical(graph.source_bindings) == canonical(header['source_bindings'])
+            and canonical(gamma) == canonical(header['context']['ordered_local_premises'])
+            and canonical(theory) == canonical(header['context']['theory'])
+            and canonical(target) == canonical(header['target'])
+            and canonical(binding['catalog_header_pin']) == canonical(qualification['catalog'])
+            and canonical(binding['complete_catalog_stream_pins']) == canonical(header['streams']),
+            'whole admitted catalogue/theory/ordered occurrences/target/source authority')
+    wire = call(tick, context_checker.SelectedWire, header)
+    require(call(tick, wire.model_epoch) == graph.model_epoch == binding['model_epoch'],
+            'unchanged complete original model epoch')
+    # Exact finite dialect names come from the full admitted native AST DAG,
+    # including schema holes. Function/predicate names are not variable names.
+    names = set()
+    for node in wire.nodes:
+        tick()
+        if node[0] in ('var', 'all'):
+            require(type(node[1]) is str and bool(node[1]), 'literal admitted variable name')
+            names.add(node[1])
+    host = {'schema': HOST_SCHEMA, 'host_id': 'admitted-Hilbert-compact24-five-rule',
+        'dialect': 'Hilbert-closed-instantiation-atomic-equality-ordered-MP-v1',
+        'binding': binding,
+        'authority': {'theory': theory, 'catalog_header': header,
+            'qualified_context': tree(qualification, tick), 'whole_license_pin': tree(license_pin, tick),
+            'context_checker_version': CONTEXT_VERSION, 'original_model_epoch': graph.model_epoch,
+            'native_accepted': False},
+        'functions': tree(theory['functions'], tick), 'predicates': tree(theory['predicates'], tick),
+        'variable_names': sorted(names),
+        'features': ['ATOMIC_EQ_SUBST', 'EQUALITY', 'FORMULA', 'IMPLICATION',
+            'INDEXED_ASSUMPTION', 'INSTANTIATION', 'NAMED_AXIOM', 'ORDERED_MP',
+            'PREDICATE_SYMBOL', 'QUANTIFIER', 'TERM', 'VARIABLE'],
+        'rules': tree(RULES, tick), 'ordered_Gamma': gamma}
+    return host, wire, header, gamma, theory
+
+
+def describe_host(*, graph, context_checker, closed_inputs, qualification, tick):
+    """Fresh existing static admission plus the actual sealed native graph binding.
+
+    This does not declare a new context, qualify the dynamic graph, or claim a
+    proof. Older I.2/receptor contexts need their own explicit admission profile.
+    """
+    return _context(graph=graph, context_checker=context_checker, closed_inputs=closed_inputs,
+                    qualification=qualification, tick=tick)[0]
+
+
+def _rows(entries, identifiers, tick):
+    require(type(entries) is list, 'literal row assignment list')
+    result = {}
+    for entry in entries:
+        tick()
+        require(type(entry) is list and len(entry) == 2 and type(entry[0]) is str
+                and entry[0] not in result and type(entry[1]) is int and 0 <= entry[1] < 24,
+                'unique exact identifier/physical row')
+        result[entry[0]] = entry[1]
+    require(set(result) == set(identifiers), 'all and only checked node/input rows')
+    return result
+
+
+def _merge(ledger, identifier, preimage, tick):
+    tick()
+    require(type(identifier) is str and type(preimage) is str, 'full literal ID/preimage census entry')
+    if identifier in ledger:
+        require(ledger[identifier] == preimage, 'full identity collision, no digest injectivity assumption')
+    else:
+        ledger[identifier] = preimage
+
+
+def _record_key(value, recipe_count, tick):
+    tick()
+    require(type(value) is list and len(value) == 3
+            and type(value[0]) is int and 0 <= value[0] < recipe_count
+            and type(value[1]) is int and 0 <= value[1] < 24
+            and type(value[2]) is list and all(type(row) is int and 0 <= row < value[1] for row in value[2]),
+            'literal complete recipe/row/ordered strict-prior key')
+    return (value[0], value[1], tuple(value[2]))
+
+
+def adapt_expansion(*, graph, point_core, context_checker, logical_oracle, closed_inputs,
+                    qualification, expansion_checker, registry, family_id, host,
+                    substitution, port_bindings, proposal, row_assignment,
+                    prototype_census, tick):
+    """Rebuild/check all primitive members and one hypothetical full current union.
+
+    No graph placement/rollback/decision is called. Pending reads are conditional
+    obligations; even occupied input nodes are never labelled accepted facts.
+    All own/callback/native/data/collision errors propagate; no learned pruning.
+    """
+    tick()
+    request_inputs = {'registry': registry, 'family_id': family_id, 'host': host,
+        'substitution': substitution, 'port_bindings': port_bindings, 'proposal': proposal,
+        'row_assignment': row_assignment, 'prototype_census': prototype_census}
+    request = tree(request_inputs, tick)
+    request_raw = canonical(request)
+    qualification_raw = canonical(tree(qualification, tick))
+    actual_host, wire, header, gamma, theory = _context(graph=graph,
+        context_checker=context_checker, closed_inputs=closed_inputs, qualification=qualification, tick=tick)
+    require(canonical(host) == canonical(actual_host), 'fresh entire actual host')
+    require(point_core.MARKING_VERSION == MARKING and expansion_checker.VERSION == CHECKER_VERSION,
+            'explicit pinned primitive key and independent conditional checker APIs')
+    state = tree(call(tick, graph.semantic_state), tick)
+    require(state['schema'] == GRAPH_SCHEMA and state['model_epoch'] == actual_host['binding']['model_epoch']
+            and state['catalog_identity_sha256'] == actual_host['binding']['catalog_identity_sha256'],
+            'actual complete current native state')
+    checker = call(tick, logical_oracle.GroundChecker, tree(theory, tick))
+    require(canonical(checker.theory) == canonical(theory), 'fresh original GroundChecker theory')
+    names = {}
+    require(type(prototype_census) is list, 'explicit complete caller exposure census list')
+    for entry in prototype_census:
+        require(type(entry) is list and len(entry) == 2, 'full census pair')
+        _merge(names, entry[0], entry[1], tick)
+    recipes = {}; catalog = {}; formula_codes = {}
+    for code in range(wire.formula_count):
+        formula = tree(call(tick, wire.formula, code), tick)
+        require(canonical(graph.formulas[code]) == canonical(formula), 'actual full formula registry projection')
+        text = canonical(formula)
+        require(text not in formula_codes, 'injective literal formula registry without digest assumption')
+        formula_codes[text] = code
+    for index in range(wire.count):
+        record = tree(call(tick, wire.recipe, index), tick)
+        native = graph.recipes[index]
+        require(native.index == index and native.identifier == record['id']
+                and native.output == record['output'] and list(native.inputs) == record['inputs']
+                and canonical(native.witness) == canonical(record['witness'])
+                and canonical(native.formulas) == canonical(record['premises']), 'full independently decoded original recipe')
+        pair = canonical([record['witness'], record['premises']])
+        require(pair not in catalog, 'unique full original primitive license, no recipe relabelling')
+        catalog[pair] = index; recipes[index] = record
+        preimage = {'recipe': {'primitive_witness': record['witness'], 'ordered_premise_formulas': record['premises']},
+            'primitive_authority_epoch': header['authority']['epoch'],
+            'recipient_theory_sha256': header['authority']['recipient_theory_sha256'],
+            'marking_version': MARKING, 'formula_registry_sha256': header['formula_registry_sha256']}
+        if record['rule'] == 'assumption':preimage['local_context_id'] = header['context_id']
+        _merge(names, record['id'], canonical(preimage), tick)
+
+    def packet(key_data):
+        index, row, refs = _record_key(key_data, wire.count, tick)
+        recipe = recipes[index]
+        require(len(refs) == len(recipe['inputs']), 'all ordered native premise ports')
+        prior = [None] * row
+        for ref, formula in zip(refs, recipe['premises']):
+            require(prior[ref] is None or canonical(prior[ref]) == canonical(formula), 'aliased read formula agreement')
+            prior[ref] = formula
+        value = tree(call(tick, context_checker.placement, recipe, row, list(refs), header), tick)
+        call(tick, checker.command, tree(value['command'], tick), tree(prior, tick), tree(gamma, tick))
+        key = point_core.Key(index, row, refs)
+        actual = tree(call(tick, graph.decorate, key), tick)
+        require(canonical(actual) == canonical(value), 'full actual native placement/command/preimage')
+        t, m = call(tick, graph.point_data, key)
+        require(canonical([t, m]) == canonical([value['t'], value['m']]), 'all actual t/m points including remote reads')
+        prototype = value['identity_preimage']['prototype_preimage']
+        _merge(names, value['identity_preimage']['prototype_id'], canonical(prototype), tick)
+        _merge(names, value['id'], canonical(value['identity_preimage']), tick)
+        return key, value
+
+    totals = [0] * 24; marks = {}; mark_refs = {}
+    def agree(point, value):
+        tick()
+        require(point not in marks or marks[point] == value, 'whole current/hypothetical marking agreement')
+        marks[point] = value; mark_refs[point] = mark_refs.get(point, 0) + 1
+    for x, y, value in header['boundary']['fixed_exterior_m'] + header['boundary']['fixed_target_m']:
+        agree((x, y), value)
+    selected = {}; selected_by_row = {}; all_current = []
+    for value in state['order']:
+        key, placement = packet(value); text = canonical(value)
+        require(text not in selected and key.row not in selected_by_row, 'exact distinct current selected placements')
+        selected[text] = placement; selected_by_row[key.row] = placement; all_current.append(placement)
+        for x, y, contribution in placement['t']:
+            require(x == 0 and contribution == 1, 'native unit row support')
+            totals[y] += contribution;require(totals[y] <= 1, 'full current t capacity')
+        for x, y, mark in placement['m']:agree((x, y), mark)
+    require(canonical(state['totals']) == canonical(totals)
+            and canonical(state['marks']) == canonical([[*p, marks[p], mark_refs[p]] for p in sorted(marks)]),
+            'fresh entire current t/m union and every marking reference count')
+    require(type(state['excluded']) is list and len(state['excluded']) == 24, 'complete current exclusion rows')
+    excluded = set()
+    for row, values in enumerate(state['excluded']):
+        require(type(values) is list, 'literal excluded row list')
+        for value in values:
+            require(value[1] == row, 'current exclusion row identity')
+            packet(value);excluded.add(canonical(value))
+    initial_totals, initial_marks = list(totals), dict(marks)
+    checked = tree(call(tick, expansion_checker.check_expansion,
+        registry=tree(registry, tick), family_id=family_id, host=tree(actual_host, tick),
+        substitution=tree(substitution, tick), port_bindings=tree(port_bindings, tick),
+        proposal=tree(proposal, tick), tick=tick), tick)
+    expected_request = {key: request[key] for key in
+        ('registry', 'family_id', 'host', 'substitution', 'port_bindings', 'proposal')}
+    require(checked['schema'] == CHECK_SCHEMA and checked['version'] == CHECKER_VERSION
+            and type(checked['status']) is str and checked['status'] in ('UNKNOWN','CONDITIONAL_EXPANSION_CHECKED'),
+            'fresh independent conditional-check schema/version/status')
+    common = {'schema': RESULT_SCHEMA, 'version': VERSION, 'host': actual_host,
+        'request': request, 'request_sha256': digest(request), 'expansion_check': checked,
+        'current_state': state, 'prototype_census_schema': CENSUS_SCHEMA,
+        'proposal_only': True, 'hypothetical_only': True,
+        **{key: False for key in FLAGS}}
+    if checked['status'] == 'UNKNOWN':
+        # Pinned checker4358 assigns its initial request only after the whole
+        # five-field copy, then adds proposal only after that copy completes.
+        # Own-limit UNKNOWN can therefore retain None, five or all six fields.
+        prefix = checked['request']
+        if prefix is not None:
+            prefix_fields = set(expected_request) - {'proposal'}
+            require(type(prefix) is dict and set(prefix) in (prefix_fields,set(expected_request))
+                    and canonical(prefix) == canonical({key:expected_request[key]for key in prefix}),
+                    'exact completed checker request prefix on unaccepted UNKNOWN')
+        require(checked['conditional_expansion_checked'] is False and checked['expansion'] is None,
+                'no partial independently checked expansion')
+        final = call(tick, context_checker.admitted_context, closed_inputs, qualification)
+        require(canonical(list(final[:5])) == canonical([header, gamma, header['target'], theory, actual_host['authority']['whole_license_pin']])
+                and canonical(call(tick, graph.compact_graph_binding)) == canonical(actual_host['binding'])
+                and canonical(call(tick, graph.semantic_state)) == canonical(state)
+                and canonical(tree(request_inputs, tick)) == request_raw
+                and canonical(tree(qualification, tick)) == qualification_raw
+                and canonical(checker.theory) == canonical(theory), 'native authority/state/request unchanged on UNKNOWN')
+        return dict(common, status='UNKNOWN', reason='INDEPENDENT_EXPANSION_UNRESOLVED',
+            members=[], node_map=[], input_ports=[], output_ports=[], physical_call_input_bindings=[],
+            union=None, local_primitive_members_checked=False, local_current_point_union_checked=False,
+            prototype_census=[[k, v] for k, v in sorted(names.items())])
+    require(checked['status'] == 'CONDITIONAL_EXPANSION_CHECKED' and checked['conditional_expansion_checked'] is True
+            and canonical(checked['request']) == canonical(expected_request),
+            'complete independent conditional expansion with the whole exact request')
+    expansion = checked['expansion']
+    require(expansion['family_id'] == family_id and canonical(expansion['request']) == canonical(
+        {key: request[key] for key in ('registry', 'host', 'substitution', 'port_bindings')}),
+        'whole rebuilt expansion and original family')
+    require(type(row_assignment) is dict and set(row_assignment) == {'schema', 'node_rows', 'input_rows'}
+            and row_assignment['schema'] == ROW_SCHEMA, 'explicit Hilbert row-assignment dialect')
+    nodes, ports = expansion['primitive_nodes'], expansion['input_ports']
+    node_rows = _rows(row_assignment['node_rows'], [node['id'] for node in nodes], tick)
+    input_rows = _rows(row_assignment['input_rows'], [port['port_id'] for port in ports], tick)
+    inputs = {}; input_records = []
+    for port in ports:
+        tick(); row = input_rows[port['port_id']]; current = selected_by_row.get(row)
+        source = {'schema': INPUT_SOURCE_SCHEMA, 'row': row, 'model_epoch': state['model_epoch'],
+            'context_id': header['context_id'], 'selected_key': None if current is None else current['key'],
+            'selected_placement': current}
+        require(type(port['occupied']) is bool and port['occupied'] is (totals[row] == 1)
+                and port['fact_accepted'] is False and canonical(port['source']) == canonical(source),
+                'actual current source/key/occupancy; never a premise fact')
+        code = formula_codes.get(canonical(port['formula']))
+        require(code is not None and ((1, row) not in marks or marks[(1, row)] == code),
+                'whole-registry literal external input formula/mark')
+        inputs[port['port_id']] = {'row': row, 'formula': port['formula']}
+        input_records.append(dict(tree(port, tick), row=row, fact_accepted=False))
+    descriptors = {item['family_id']: item for item in registry}
+    physical_calls = []
+    for frame in expansion['call_frames']:
+        policy = {port['id']: port['sharing'] for port in descriptors[frame['family_id']]['inputs']}
+        resolved = []
+        for port in frame['inputs']:
+            ref = port['source']; row = node_rows[ref['node']] if 'node' in ref else input_rows[ref['input']]
+            for old in resolved:
+                if old['row'] == row:
+                    require(policy[port['port_id']] == old['sharing'] == 'ALLOW_SAME_EXACT_PRIOR_SOURCE'
+                            and canonical(port['formula']) == canonical(old['formula']), 'physical nested DISTINCT/ALLOW policy')
+            resolved.append({'port_id': port['port_id'], 'row': row, 'formula': tree(port['formula'], tick),
+                'source': tree(ref, tick), 'sharing': policy[port['port_id']], 'fact_accepted': False})
+        physical_calls.append({'call_path': tree(frame['call_path'], tick), 'family_id': frame['family_id'], 'inputs': resolved})
+    processed = {}; members = []; node_map = []; unique = {}; keys = []
+    for node in nodes:
+        tick(); ident = node['id']; row = node_rows[ident]; rule = node['rule']
+        require(rule in RULES and set(node['arguments']) == set(RULES[rule]['arguments'])
+                and len(node['ordered_inputs']) == RULES[rule]['input_count'], 'all exact five-rule primitive ports/arguments')
+        premises, reads, edges = [], [], []
+        for ordinal, ref in enumerate(node['ordered_inputs']):
+            source = processed.get(ref['node']) if 'node' in ref else inputs.get(ref['input'])
+            require(source is not None and source['row'] < row, 'actual strict-prior full ordered input')
+            premises.append(source['formula']);reads.append(source['row'])
+            edges.append({'ordered_index': ordinal, 'source': tree(ref, tick), 'row': source['row'],
+                'formula': tree(source['formula'], tick), 'occupied_in_input': initial_totals[source['row']] == 1,
+                'fact_accepted': False})
+        witness = {'rule': rule, 'formula': node['formula'], **node['arguments']}
+        index = catalog.get(canonical([witness, premises]))
+        require(index is not None, 'fresh member belongs to complete unchanged native catalogue')
+        key, placement = packet([index, row, reads]);text = canonical(placement['key'])
+        require(text not in excluded, 'exact current branch-local exclusion')
+        duplicate = unique.get(text)
+        if duplicate is not None:
+            require(canonical(duplicate['placement']) == canonical(placement), 'shared full placement identity')
+        else:
+            reused = text in selected
+            require(reused or call(tick, graph.legal, key), 'actual complete current primitive-domain membership')
+            if not reused:
+                for x, y, contribution in placement['t']:
+                    totals[y] += contribution;require(totals[y] <= 1, 'hypothetical full current t capacity')
+                for x, y, mark in placement['m']:agree((x, y), mark)
+            entry = {'first_node': ident, 'placement': placement, 'already_selected_in_input': reused}
+            unique[text] = entry;members.append(entry);keys.append(key)
+        node_map.append({'node_id': ident, 'row': row, 'key': placement['key'],
+            'placement_id': placement['id'], 'shared_with_node': None if duplicate is None else duplicate['first_node'],
+            'ordered_reads': edges, 'fact_accepted': False})
+        processed[ident] = {'row': row, 'formula': node['formula'], 'placement': placement}
+    validated_keys = call(tick, graph.validate_cluster, keys, state['model_epoch'])
+    require([key.data() for key in validated_keys] == [key.data() for key in keys],
+            'native cluster validation retains every distinct full primitive key')
+    outputs = []
+    for output in expansion['outputs']:
+        ref = output['source']; source = processed[ref['node']] if 'node' in ref else inputs[ref['input']]
+        require(canonical(source['formula']) == canonical(output['formula']), 'exact checked output source')
+        outputs.append(dict(tree(output, tick), row=source['row'], fact_accepted=False))
+    for port in input_records + outputs:
+        row = port['row'];code = formula_codes.get(canonical(port['formula']))
+        require(code is not None and ((1, row) not in marks or marks[(1, row)] == code),
+                'every final interface mark including unused/unoccupied inputs')
+        port.update(occupied_in_input=initial_totals[row] == 1,
+            occupied_in_hypothetical_union=totals[row] == 1,
+            formula_mark_assigned_in_hypothetical_union=(1, row) in marks,
+            unresolved_in_hypothetical_union=totals[row] == 0)
+    for node in node_map:
+        for edge in node['ordered_reads']:edge['occupied_in_hypothetical_union'] = totals[edge['row']] == 1
+    support = sorted({(x, y) for member in members for x, y, _ in member['placement']['t'] + member['placement']['m']})
+    union = {'schema': 'hilbert-shared-family-hypothetical-point-union-v1',
+        'model_epoch': state['model_epoch'], 'context_id': header['context_id'],
+        'marking_version': MARKING, 'totals': totals,
+        'marks': [[*p, marks[p], mark_refs[p]] for p in sorted(marks)],
+        'existing_selected_placements': all_current,
+        'new_placements': [member['placement'] for member in members if not member['already_selected_in_input']],
+        'excluded': tree(state['excluded'], tick), 'hypothetical_only': True,
+        'not_an_engine_state_or_checkpoint': True}
+    # Re-admit every original byte/context and require literal unchanged semantic
+    # state. Metrics may record reconstruction; no domains/marks/trails are edited.
+    final = call(tick, context_checker.admitted_context, closed_inputs, qualification)
+    require(canonical(list(final[:5])) == canonical([header, gamma, header['target'], theory, actual_host['authority']['whole_license_pin']])
+            and canonical(call(tick, graph.compact_graph_binding)) == canonical(actual_host['binding'])
+            and canonical(call(tick, graph.semantic_state)) == canonical(state)
+            and canonical(tree(request_inputs, tick)) == request_raw
+            and canonical(tree(qualification, tick)) == qualification_raw
+            and canonical(checker.theory) == canonical(theory), 'all original authority/current state/request unchanged')
+    tick()
+    return dict(common, status='READY_LOCAL_CLUSTER', reason=None,
+        local_primitive_members_checked=True, local_current_point_union_checked=True,
+        members=members, node_map=node_map, input_ports=input_records,
+        hypothesis_ports=tree(expansion['hypothesis_ports'], tick), output_ports=outputs,
+        physical_call_input_bindings=physical_calls, union=union,
+        dependencies={'all_member_points': [list(point) for point in support],
+            'external_input_points': [[port['port_id'], [[0, port['row']], [1, port['row']]]] for port in input_records],
+            'current_state': state, 'current_state_sha256': digest(state), 'engine_retention_accepted': False},
+        prototype_census=[[key, value] for key, value in sorted(names.items())],
+        costs={'catalogue_recipes_checked': wire.count, 'registry_formulas_checked': wire.formula_count,
+            'expanded_nodes': len(nodes), 'unique_member_placements': len(members),
+            'new_placements': sum(not member['already_selected_in_input'] for member in members),
+            'shared_node_placements': len(nodes)-len(members), 'physical_call_frames_checked': len(physical_calls)})

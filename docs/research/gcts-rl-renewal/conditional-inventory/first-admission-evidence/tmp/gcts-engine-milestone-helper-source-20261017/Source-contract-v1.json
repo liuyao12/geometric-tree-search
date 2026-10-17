@@ -1,0 +1,118 @@
+{
+  "API": {
+    "bytes": 3476,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/API-wire-v1.json",
+    "sha256": "ff1bd3444e1d9ea90a7944969843ad9a3167a912b0fadaef373615ca1c2334e7"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "required_fields": [
+      "reviewer_identity",
+      "source",
+      "source_contract",
+      "source_review_passed",
+      "source_only",
+      "scientific_calls",
+      "scientific_acceptance",
+      "author_overlap",
+      "findings"
+    ],
+    "schema": "ROOT-engine-milestone-receiver-helper-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-engine-milestone-receiver-helper-Source",
+    "source": {
+      "bytes": 8872,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+      "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+    },
+    "source_contract": "Exact current contract pin",
+    "source_only": true,
+    "sources": {
+      "receiver_cases": {
+        "bytes": 8872,
+        "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+        "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_or_result_data_read": false,
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Author wrote parent helper150e, older engine/kernel and producer/residual/gate ancestry; not independent reviewer of this own helper and not author of Diagnosis new engine implementation.",
+  "clocks_read": false,
+  "conformance_limits": [
+    "Future engine packet/API, Root callback, writer, reader and current composition each require fresh exact Source review before any separately granted actual.",
+    "Journal is read-only existing COW references, not hostile-callback protection. Root callback must be sealed metadata-only; errors/native ticks propagate normally.",
+    "Original semantic17/input2 epoch, model B12N44/24 rows, full native20/512MiB positive and existing failure55 limits remain untouched; no budget or scheduler changes.",
+    "No causal or exclusive timing, active-frame, offer, move, restoration, exhaustion, theorem, RL or performance conclusion follows from helper Source or stage reachability.",
+    "Added diagnostic callback work can alter native error prefix; no arbitrary nth-tick equivalence promise.",
+    "Parent qualification/reviews are ancestry only; this implementation has no measured fit or scientific acceptance."
+  ],
+  "exact_change": "Three raw regions only: own VERSION, required helper argument, direct engine constructor keyword. Erase these three changes to recover whole parent raw bytes and AST.",
+  "historical_Root_composition_contract": {
+    "bytes": 21574,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d"
+  },
+  "historical_contract_role": "Ancestry only. Not a current engine-journal composition or runtime authority.",
+  "ownership": "Root-owned observer passed by identity. Engine alone selects four sites and payloads. Helper creates no new snapshot, scientific fact, journal event or acceptance.",
+  "parent_source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "parent_source_contract": {
+    "bytes": 5288,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-contract-v1.json",
+    "sha256": "555dd0cc08ead397e3d670674001b10d4e8fded1608b7ad28c7489a048fef6ce"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 1348,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/forward.patch",
+      "sha256": "4d32374556699c863ac3349cda5a4062cc1011d95ac3ab1c774cc17f31e258c1"
+    },
+    "inverse": {
+      "bytes": 1348,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/inverse.patch",
+      "sha256": "92b3646e4d2a1c76b61dd92d1c75c452af01d73e3b4e715691d3fe3fba78e383"
+    }
+  },
+  "preserved": "Nine other named regions raw and AST exact; same provider/consumer scientific calls, full report/census retention, 17 stage/scalar hooks, snapshots, assertions, canonical fallback, same actual model and full result structure.",
+  "runtime_qualified": false,
+  "schema": "ROOT-engine-milestone-receiver-helper-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-engine-milestone-receiver-helper-Source",
+  "source": {
+    "bytes": 8872,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+    "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+  },
+  "source_cost_plan": {
+    "bytes": 11509,
+    "path": "/private/tmp/gcts-postconsumer-cost-plan-20261017/Source-cost-plan-v1.json",
+    "sha256": "9d0a1d8a001d7cce3e08490277822fc6cd5b97a42111325e494f9d5417d65622"
+  },
+  "source_delta": {
+    "bytes": 2529,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/Source-delta-v1.json",
+    "sha256": "a6f10d4bb4d403ba4c770639100b5e378f06f71c6076991bb442506e2fe0d41c"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "receiver_cases": {
+      "bytes": 8872,
+      "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+      "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+    }
+  },
+  "static_audit": {
+    "bytes": 1560,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/static-audit-v1.json",
+    "sha256": "638cfe10196323df54762b696202f49d6486e9213d0f77e574cbd512ce24c965"
+  },
+  "tests_executed": false
+}

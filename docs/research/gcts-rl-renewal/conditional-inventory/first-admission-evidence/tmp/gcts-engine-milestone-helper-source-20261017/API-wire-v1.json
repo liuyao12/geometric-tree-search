@@ -1,0 +1,80 @@
+{
+  "VERSION": "ROOT-receiver-inference-cases-v4-engine-milestones",
+  "engine_composition_gate": "Requires a separately frozen and reviewed new engine accepting milestone_observer; no claim that parent engine7 accepts it.",
+  "function": "run_receiver",
+  "inherited_API": {
+    "all_other_arguments_results_and_scientific_compounds": "Unchanged after exact three-region erasure; parent API remains applicable except the new required argument and own VERSION.",
+    "contract": {
+      "bytes": 5288,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-contract-v1.json",
+      "sha256": "555dd0cc08ead397e3d670674001b10d4e8fded1608b7ad28c7489a048fef6ce"
+    }
+  },
+  "keyword_only_required": [
+    "language",
+    "base_semantics",
+    "marked_semantics",
+    "modules",
+    "frozen_inventory",
+    "matching_mode",
+    "tick",
+    "phase",
+    "capture_provider_summary",
+    "engine_milestone_observer"
+  ],
+  "observer": {
+    "bound": "Engine owns at most four first-root journal calls, one per fixed stage; helper adds no observer calls.",
+    "common_payload": {
+      "depth": "Actual search depth",
+      "diagnostic_only": true,
+      "engine_version": "Exact new engine VERSION",
+      "schema": "unit-row-first-family-engine-milestone-v1",
+      "scientific_acceptance": false,
+      "stage": "Exact stage argument"
+    },
+    "data_ownership": "Read-only references to existing copy-on-write state, decision, event, plan and ledger objects; DECISION event carries existing evidence. No _certs int-key dictionary is exposed and no new snapshot or mathematical callback is requested.",
+    "engine_constructor_keyword": "milestone_observer",
+    "helper_argument": "engine_milestone_observer",
+    "identity": "Passed directly and unchanged; helper neither invokes observer nor inspects payload.",
+    "native_scope": "Engine ticks before and after observer. Root supplies a sealed metadata-only callback; it may retain/read references but must not mutate them, run science or replace native authority.",
+    "ordered_stage_specific_fields": {
+      "FIRST_CHILD_DECISION_READY": [
+        "state",
+        "decision",
+        "decision_event",
+        "prototype_census"
+      ],
+      "FIRST_ROOT_FAMILY_EVENT_READY": [
+        "state",
+        "pending_preferences",
+        "event"
+      ],
+      "FIRST_ROOT_FAMILY_PLAN_READY": [
+        "pre_state",
+        "decision",
+        "decision_event",
+        "plan",
+        "prototype_census"
+      ],
+      "FIRST_ROOT_PRIMITIVE_PLACED": [
+        "state",
+        "transition",
+        "invalidation_event",
+        "place_event"
+      ]
+    },
+    "qualification": "Diagnostic observations only; stage reachability does not itself certify move/admission/restore/proof or exclusive failure cost.",
+    "return_value": "Ignored by engine; exception propagates.",
+    "signature": "observer(stage, payload)"
+  },
+  "runtime_qualified": false,
+  "schema": "ROOT-engine-milestone-receiver-helper-API-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 8872,
+    "path": "/private/tmp/gcts-engine-milestone-helper-source-20261017/engine_milestone_receiver_cases_v1.py",
+    "sha256": "1685db2acce5bf8425f45cbf58cf4d28944132e2309ba613689da1068d61fbfb"
+  },
+  "source_only": true,
+  "unchanged_diagnostics": "All parent 17 callback stages, first-only BEFORE_PROVIDER/AFTER_PROVIDER, scalar hook and ordinal caps remain byte-exact; science beyond diagnostic caps continues unchanged."
+}

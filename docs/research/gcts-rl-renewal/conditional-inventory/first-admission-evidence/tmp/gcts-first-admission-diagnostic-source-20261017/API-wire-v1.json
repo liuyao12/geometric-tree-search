@@ -1,0 +1,120 @@
+{
+  "callback_capture_source": {
+    "bytes": 1596,
+    "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/capture_engine_milestone.fragment.py",
+    "sha256": "410a1225cd4b978e686394f948b2e7b68a0382d68ac9f30789c2be7c1e79c2a0"
+  },
+  "engine_version": "lazy-unit-row-global-engine-v13-receptor-family-preferences-v8-first-admission-journal",
+  "flags": {
+    "RL_accepted": false,
+    "current_state_accepted": false,
+    "engine_admission_accepted": false,
+    "failure_cause_established": false,
+    "logical_proof_accepted": false,
+    "offers_accepted": false,
+    "raw_diagnostic_only": true,
+    "runtime_qualified": false
+  },
+  "reader": {
+    "authority_literals": "Current parent authority literals/schema/responseVERSION intentionally unchanged for Root rebinding",
+    "failure_join": "Exact captured headers vs complete serialized prefix and insertion-order ASCII byte length; captured headers may exceed serialized records, never manufacture missing records.",
+    "functions": [
+      "read_phases",
+      "validate_positive_callback_phases",
+      "validate_engine_milestones",
+      "read_failure_diagnostic",
+      "main"
+    ],
+    "marker_count": 34,
+    "marker_max_line_bytes": 75,
+    "marker_max_total_bytes": 2160,
+    "milestone_phases": [
+      "M1_PLAN_READY",
+      "M2_EVENT_READY",
+      "M3_PLACE_RETURN",
+      "M4_CHILD_DECISION"
+    ],
+    "original20_seconds": 20,
+    "phase_order": "Sequential P/C groups; M ordinal prefix after C1_READY and before later P2/C2/C3; one incomplete P/C group may remain when search catches TimeoutError. Reached marker alone does not require its own capture; a later M marker requires previous captured headers. Partial final marker is raw tail only.",
+    "positive_join": "Validate full raw fixed4 prefix independently of callback observation counts, exact stage/version/depth/field wire plus reached marker/timestamp bounds; no semantic replay",
+    "positive_payload_path": "evidence.receiver_probe.engine_milestones"
+  },
+  "schema": "ROOT-first-admission-diagnostic-seam-API-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "stage_API": {
+    "bytes": 3986,
+    "path": "/private/tmp/gcts-first-admission-journal-engine-source-20261017/API-wire-v8.json",
+    "sha256": "fdd7c3f43931a6f8c078bd8bfe1ebd2906dfd5ab6a3ab6833f7c7e6cc80da73e"
+  },
+  "stage_fields": {
+    "FIRST_CHILD_DECISION_READY": [
+      "state",
+      "decision",
+      "decision_event",
+      "prototype_census"
+    ],
+    "FIRST_ROOT_FAMILY_EVENT_READY": [
+      "state",
+      "pending_preferences",
+      "event"
+    ],
+    "FIRST_ROOT_FAMILY_PLAN_READY": [
+      "pre_state",
+      "decision",
+      "decision_event",
+      "plan",
+      "prototype_census"
+    ],
+    "FIRST_ROOT_PRIMITIVE_PLACED": [
+      "state",
+      "transition",
+      "invalidation_event",
+      "place_event"
+    ]
+  },
+  "writer": {
+    "capture_keys": [
+      "legacy",
+      "provider_returns",
+      "engine_milestones"
+    ],
+    "completion_schema": "unit-row-controls-engine-milestones-completion-v3",
+    "context_max_bytes": 65536,
+    "diagnostic_schema": "unit-row-controls-engine-milestones-diagnostic-v3",
+    "engine_capture": "Fixed four list, null or exact ordinal/stage/native_ns/record wrapper; monotone nonnull prefix. Native original20 stamps. Records remain full opaque builtin JSON data.",
+    "failure_kind": "CONTROLS_TIMEOUT_ENGINE_MILESTONES_V3",
+    "failure_window_seconds": 55,
+    "function": "save_failure_diagnostic",
+    "internal_peak_bound_bytes": 524288000,
+    "journal_budget_bytes": 3145728,
+    "journal_encoding": "ensure_ascii=True, separators comma/colon without spaces, insertion order, no sort; complete fixed4 list including null placeholders and brackets",
+    "journal_metadata_fields": [
+      "captured_headers",
+      "captured_record_count",
+      "serialized_record_count",
+      "omitted_record_count",
+      "next_omitted_ordinal",
+      "engine_record_prefix_reason",
+      "engine_journal_bytes"
+    ],
+    "legacy_and_provider_shapes": "Exactly unchanged from operative providerV2 branch",
+    "old_kinds_unchanged": true,
+    "outer_fields": [
+      "context",
+      "diagnostic",
+      "last_observations",
+      "provider_returns",
+      "engine_milestones"
+    ],
+    "prefix_reasons": [
+      "ALL_CAPTURED_RECORDS_SAVED",
+      "NEXT_RECORD_OUTPUT_BOUND_OR_BUILTIN_TYPE",
+      "ENGINE_JOURNAL_AGGREGATE_BYTE_LIMIT"
+    ],
+    "signature_unchanged": true,
+    "size_omissions": "Only own bounded builtin encoder ValueError or aggregate limit. Native/resource/endpoint exceptions propagate; complete diagnostic pair is never guaranteed.",
+    "whole_diagnostic_max_bytes": 4325376
+  }
+}

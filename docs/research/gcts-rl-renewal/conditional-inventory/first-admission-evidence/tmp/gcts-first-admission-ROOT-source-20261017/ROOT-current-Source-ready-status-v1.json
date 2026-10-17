@@ -1,0 +1,37 @@
+{
+  "actual_execution_authorized": false,
+  "affected_dependency": {
+    "bytes": 12779,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+    "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+  },
+  "handoff": {
+    "bytes": 14718,
+    "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/handoff-v1.json",
+    "sha256": "fdbce8f9e31c541c5811501d94b285e13ba125d9518847aa19ca8fbd47a023fe"
+  },
+  "independent_reviews": [
+    {
+      "bytes": 2279,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "806cbcf0cbeefb9a5e35bdefbca1346d09ddea46dc0b81064068383ce27a1c12"
+    },
+    {
+      "bytes": 8838,
+      "path": "/private/tmp/gcts-first-admission-ROOT-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "02bd93a3af4c206ab10071da49f9f32812dacb001ec421334d4d4c95d11a2cda"
+    },
+    {
+      "bytes": 3987,
+      "path": "/private/tmp/gcts-first-admission-saved-reader-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "de3483d5aec068cce40499cf113df13f6cc9553dcfba8f8e31863be704555999"
+    }
+  ],
+  "native_execution_ready": false,
+  "new_actuals": 0,
+  "next": "Restore availability of the exact original file bytes without replacing unknown user work, rerun metadata-only full-byte preflight, join scoped current peer reviews, then declare one separate native actual.",
+  "preflight": "Whole byte preflight did not finish: one frozen router source is macOS hidden/compressed/dataless. Its sandboxed read remained pending; a separate read-only30second hydration/read attempt exited142. No source bytes overwritten or authority rebased. This is an availability prerequisite, not a mathematical negative or model/runtime verdict.",
+  "schema": "ROOT-first-admission-current-Source-ready-status-v1",
+  "scientific_acceptance": false,
+  "source_review_only": true
+}

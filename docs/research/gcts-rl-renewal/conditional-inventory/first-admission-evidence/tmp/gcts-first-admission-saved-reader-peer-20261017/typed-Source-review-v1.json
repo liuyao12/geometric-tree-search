@@ -1,0 +1,82 @@
+{
+  "actual_execution_authorized": false,
+  "actual_or_result_bytes_read": false,
+  "additional_static_audit": {
+    "bytes": 319,
+    "path": "/private/tmp/gcts-first-admission-saved-reader-peer-20261017/additional-static-audit-v1.json",
+    "sha256": "05779b8f45299fc4a309c953b49912eb1f8f7a90dbfc9cf6f5321717627ab61d"
+  },
+  "all6_actual_F0_patch_directions_exact": true,
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored helper1685/150e and old engine/kernel/producer/residual/gate ancestry, but not Root reader/capture/cold or Controls writer/readout template. Shared engine API coordination disclosed. Separate Diagnosis whole current cold/writer/helper peers remain required; no self-peer of helper/math.",
+  "blocking_findings": [],
+  "clocks_read": false,
+  "conditions": [
+    "Exact fresh-engine/single-search synchronous Root source authority; C1 fallback grammar justified by real BATCH path, not assumed READY offers.",
+    "Current Source/native/once/transport caps and four-record omission/header gates remain mandatory.",
+    "Raw records, markers/scalars have no proof/admission/restore/failure-cause/benefit authority; complete positive native closure still only saved-wire/resource reconciliation."
+  ],
+  "current_operative_contract": {
+    "bytes": 23356,
+    "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "f9a243b08a2e83062df385e12f96a513aff32ce49a10ae7af58fef1dfddf5929"
+  },
+  "disposition": "CONDITIONAL_SOURCE_PASS",
+  "exact_template2_and_parent17_raw_AST_inverses": true,
+  "findings": {
+    "bytes": 7014,
+    "path": "/private/tmp/gcts-first-admission-saved-reader-peer-20261017/findings-v1.json",
+    "sha256": "6a55cad5144321849142882c08c75a7657ece5e63f1e9c218ba467de666de00c"
+  },
+  "reader_or_project_module_evaluated": false,
+  "reviewed_source_contracts": [
+    {
+      "bytes": 1051,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "18d156810083313efe4ae593c27dcb543e49a237f3f9529a8228aaf5f5253e14"
+    },
+    {
+      "bytes": 23356,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "f9a243b08a2e83062df385e12f96a513aff32ce49a10ae7af58fef1dfddf5929"
+    },
+    {
+      "bytes": 13584,
+      "path": "/private/tmp/gcts-first-admission-diagnostic-source-20261017/Source-contract-v1.json",
+      "sha256": "383b8b31b90d1c11979f8412c0744973c2b13371760ac46c93046b17188649f8"
+    }
+  ],
+  "reviewer_distinct_from_author": true,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_qualified": false,
+  "schema": "ROOT-receiver-inference-saved-reader-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-receiver-inference-saved-reader-Source",
+  "source": {
+    "bytes": 42919,
+    "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/ROOT_read_first_admission_receiver_saved_v1.py",
+    "sha256": "ea735fae76d802de0cc1e9e20d708499deba45b3a6a9a4feeda752c790e78b73"
+  },
+  "source_contract": {
+    "bytes": 1051,
+    "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "18d156810083313efe4ae593c27dcb543e49a237f3f9529a8228aaf5f5253e14"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "saved_reader": {
+      "bytes": 42919,
+      "path": "/private/tmp/gcts-first-admission-ROOT-source-20261017/ROOT_read_first_admission_receiver_saved_v1.py",
+      "sha256": "ea735fae76d802de0cc1e9e20d708499deba45b3a6a9a4feeda752c790e78b73"
+    }
+  },
+  "static_audit": {
+    "bytes": 4324,
+    "path": "/private/tmp/gcts-first-admission-saved-reader-peer-20261017/static-audit-v1.json",
+    "sha256": "c603047120c92a81ea75fdb58b928cbb485201aec689921e3dcb6960bc216101"
+  },
+  "whole_cold_caller_review_claimed": false,
+  "whole_current_reader_runtime_closure_and_raw_Source_seams_read": true
+}

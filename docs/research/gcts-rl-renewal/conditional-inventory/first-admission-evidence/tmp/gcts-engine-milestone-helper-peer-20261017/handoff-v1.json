@@ -1,0 +1,22 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 2635,
+    "path": "/private/tmp/gcts-engine-milestone-helper-peer-20261017/findings-v1.json",
+    "sha256": "f08358ec519a12b1ce2ce375771589fbe53ff0385da2f1cccacd584467162815"
+  },
+  "review": {
+    "bytes": 2256,
+    "path": "/private/tmp/gcts-engine-milestone-helper-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "ab69949907e73b1946f11112a3272b92200307edd1185a742c8583fc96293a8c"
+  },
+  "schema": "engine-milestone-helper-independent-review-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 4077,
+    "path": "/private/tmp/gcts-engine-milestone-helper-peer-20261017/static-review-v1.json",
+    "sha256": "246a7e26f5923dd9143f3f5e9b436265c22cfd0f1aa8f3c03a8134fb390dbcd9"
+  }
+}

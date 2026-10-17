@@ -1,0 +1,60 @@
+{
+  "API": {
+    "bytes": 5080,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/API-wire-v1.json",
+    "sha256": "3cf646e1de93cbf6e6e99f418d89f00dc736251dac353fdd50e5f268ceae1d61"
+  },
+  "Review_ABI": {
+    "reviewer_identity": "distinct from author; disclose common native/host/miner dependencies",
+    "schema": "Hilbert-shared-family-selected-collector-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "Hilbert-shared-family-selected-collector-Source",
+    "source": {
+      "bytes": 21778,
+      "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/hilbert_shared_family_selected_dag_collector_v1.py",
+      "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd"
+    },
+    "source_contract": "EXACT_CURRENT_CONTRACT_PIN",
+    "source_only": true,
+    "source_review_passed": "bool",
+    "sources": {
+      "hilbert_selected_collector": {
+        "bytes": 21778,
+        "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/hilbert_shared_family_selected_dag_collector_v1.py",
+        "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "delta": {
+    "bytes": 23172,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/Source-delta-v1.json",
+    "sha256": "9c35e2b3cddfa4bd916072327b9303a921944a273bef78b25ff452a413ecc3b5"
+  },
+  "host_adapter_peer": {
+    "bytes": 2216,
+    "path": "/private/tmp/gcts-hilbert-shared-family-adapter-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "5f731ff142bf6f736c41119477e94ffcefbcc7468891c120cea9d35d6d922839"
+  },
+  "module_evaluations": 0,
+  "schema": "Hilbert-shared-family-selected-collector-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21778,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/hilbert_shared_family_selected_dag_collector_v1.py",
+    "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd"
+  },
+  "source_contract": {
+    "bytes": 6390,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/Source-contract-v1.json",
+    "sha256": "c063875a9d001fb180cb1ff5f339a1e93b01005ae51b0880452ecbaf667faccb"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 2701,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/static-audit-v1.json",
+    "sha256": "8b6558307453d9e132677e2570167a075ff3c49e7db5a56c1d915af43e1f6013"
+  }
+}

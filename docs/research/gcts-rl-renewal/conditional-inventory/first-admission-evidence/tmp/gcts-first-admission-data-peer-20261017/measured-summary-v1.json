@@ -1,0 +1,96 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "Root_disposition": {
+    "bytes": 15584,
+    "path": "/private/tmp/gcts-first-admission-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+    "sha256": "ca7a44a00c67be83392e4bfaebb2df1e7a222d6b2a71ddbd90ffe3ea03a79039"
+  },
+  "all_reaped": true,
+  "audit": {
+    "bytes": 14387,
+    "path": "/private/tmp/gcts-first-admission-data-peer-20261017/saved-data-audit-v2.json",
+    "sha256": "66a0bcdbac12d27c25e81bd9c423376c14e4de4395559c6b38546bd048b6cc9b"
+  },
+  "authorship_disclosure": "Reviewer authored helper1685 and arithmetic/old engine/kernel ancestry and reviewed engine8 and current saved-reader Source; did not execute the actual or reader. This is independent saved-data reconciliation, not an independent new mathematical verifier.",
+  "child_decision_accepted": false,
+  "exit": 2,
+  "failure55_metadata_closure": true,
+  "full_receiver_record_available": false,
+  "interpretation": [
+    "Three captured headers are not three serialized records; zero saved bodies does not mean zero raw captures or zero mathematical work. Fourth capture is unavailable, not a checked negative child result.",
+    "The recorded omission reason is disjunctive. This audit does not establish byte-bound versus builtin-type cause, nor why M4 was not reached.",
+    "Shared tick TimeoutError line is observed; its text does not identify a unique clock/memory/cancellation cause.",
+    "Original20 positive closure failed; native115146752-byte peak and failure55 metadata closure do not grant positive resources, transfer, primitive use, root restoration, theorem, RL or gain."
+  ],
+  "invocation": "ROOT-first-admission-receiver-visible-20261017-v1",
+  "last_observed_Source_interval": "After the M3 source-site observer capture and before any observed M4 child-decision-return boundary. The interval includes remaining observer/native gates and possible first-child work; no active failure frame, successful current placement, child result, exclusive cost or cause is inferred without the omitted full records.",
+  "legacy_last_observations": {
+    "completion": null,
+    "fallback": null,
+    "proposer": null,
+    "validator": null
+  },
+  "measurements": {
+    "aggregate_B_bytes": 115146752,
+    "clocks": "All durations are differences of saved samples in their own domains; Date and native intervals are separate.",
+    "native_launch_to_postprobe_ns": 20558412000,
+    "native_launch_to_terminal_ns": 20471825000,
+    "tool_Date_seconds": 27.877
+  },
+  "milestones": {
+    "captured_header_count": 3,
+    "fourth_captured_header": null,
+    "journal_bytes": 21,
+    "last_header_from_launch_ns": 10458402000,
+    "last_header_native_ns": 606326373472000,
+    "next_omitted_ordinal": 1,
+    "omitted_captured_record_count": 3,
+    "prefix_reason": "NEXT_RECORD_OUTPUT_BOUND_OR_BUILTIN_TYPE",
+    "saved_records": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "serialized_complete_record_count": 0
+  },
+  "native_positive20_gate": false,
+  "once": true,
+  "phases": {
+    "last_marker": "M3_PLACE_RETURN",
+    "last_marker_from_launch_ns": 10458362000,
+    "last_marker_native_ns": 606326373432000,
+    "next_defined_marker": "M4_CHILD_DECISION",
+    "next_marker_observed": false,
+    "observed_complete_lines": 20,
+    "observed_phase_bytes": 1204,
+    "supported_whitelist_sites": 34
+  },
+  "primitive_accepted": false,
+  "proof_accepted": false,
+  "provider_summary": {
+    "authority": "UNVALIDATED_LITERAL_SCALARS_ONLY",
+    "first": {
+      "batch_status": "READY",
+      "instance_count": 1,
+      "provider_reason": "OWN_COMPLETED_INSTANCE_PREFIX",
+      "provider_steps": 427597
+    },
+    "full_batch_receipt_parameter_environment_available": false,
+    "second": null
+  },
+  "qualified_case_count": 0,
+  "reported_case_count": null,
+  "restarts": 0,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "root_restore_accepted": false,
+  "schema": "GCTS-first-admission-independent-measured-summary-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Independent saved-byte/metadata concordance, no semantic replay or scientific acceptance.",
+  "semantic_replay": false,
+  "session": 30204,
+  "status": "UNKNOWN",
+  "transfer_accepted": false
+}
