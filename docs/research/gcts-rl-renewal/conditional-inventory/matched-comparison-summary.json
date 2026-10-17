@@ -1,0 +1,2499 @@
+{
+  "GCTS_advantage_established": false,
+  "RL_training_or_advantage_established": false,
+  "all_four_independently_checked_logical_proofs": true,
+  "cost_scope": "Full cold leaf launch through exit/reap; identical union Source composition and reused catalogue. Historical catalogue construction is separate. Full owner/caller/readout retained; final Tool-poll wall is not process duration.",
+  "date": "2026-10-17",
+  "full_GCTS_conformance_established": false,
+  "goal_complete": false,
+  "identical_commands_within_each_pair": true,
+  "interpretation": "Conventional closure used less time in both single observations. Point pipeline proofs were completed conventional seed-forward source proposals before selected-point search. No marking/cluster/learning contribution is shown.",
+  "master_contract": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "new_actuals": 4,
+  "new_mathematical_statements": false,
+  "point_returned_before_primitive_selection": true,
+  "runs": [
+    {
+      "RL_accepted": false,
+      "actual_selected_ancestry": null,
+      "caller_observation_with_margin_seconds": 10.515,
+      "case_seconds": 2.299312209,
+      "catalog": {
+        "bytes": 10822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561"
+      },
+      "certificate": {
+        "bytes": 1801,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/matched-geometry-logical-point-chain-native-ROOT-20261017/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "c3fba0ac47a2a55c382d384dc4e36d67613b67b16fae23391a1def89843d4c79"
+      },
+      "cold_leaf_launch_through_reap_seconds": 3.053945541,
+      "commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "B",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "A",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "var",
+                "hole0"
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "B",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "B",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "var",
+              "hole0"
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "implication": 5,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 6,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "C",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        }
+      ],
+      "conservative_owned_peak_bytes": 46514176,
+      "context": {
+        "ordered_local_premises": [
+          [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "B",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ]
+        ],
+        "target": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "C",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "I.2": [
+              "all",
+              "P",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "P"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "P"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 0,
+            "u": 0,
+            "v": 0,
+            "w": 0
+          },
+          "predicates": {
+            "Incident": 2,
+            "Line": 1,
+            "Point": 1
+          },
+          "schemas": []
+        }
+      },
+      "disposition": {
+        "bytes": 4425,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/matched-geometry-logical-point-chain-native-ROOT-20261017/ROOT-saved-disposition-v1.json",
+        "sha256": "a748942e5a4fdd0a8d9b316fc8235072fe747333729d6704ac045d2ad009829a"
+      },
+      "full24_board_accepted": false,
+      "full_GCTS_accepted": false,
+      "initial_inventory": [],
+      "kernel_result": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "label": "point-chain-native",
+      "logical_proof_accepted": true,
+      "metadata_readout_seconds": 0.10648375,
+      "method": "NATIVE_CLOSURE",
+      "native_closure_logical_phase_seconds": 0.3760593750000001,
+      "native_queries": null,
+      "origin": "fresh_conventional_closure_DAG",
+      "owner_postwrite_seconds": 3.356132375,
+      "performance_comparison_accepted": false,
+      "point_attempts": null,
+      "selector": "fresh-inc-point-chain-w",
+      "training_updates": null
+    },
+    {
+      "RL_accepted": false,
+      "actual_selected_ancestry": false,
+      "caller_observation_with_margin_seconds": 11.263,
+      "case_seconds": 5.003300042,
+      "catalog": {
+        "bytes": 10822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561"
+      },
+      "certificate": {
+        "bytes": 19211,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/matched-geometry-logical-point-chain-point-ROOT-20261017/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "42c366d2bb313db9ce7c68800ef60ac40a07b152d6177b3c8e585e7f5ecf0bd5"
+      },
+      "cold_leaf_launch_through_reap_seconds": 5.795915125,
+      "commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "B",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "A",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "C",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "A",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "var",
+                "hole0"
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "B",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "B",
+                  []
+                ]
+              ],
+              [
+                "eq",
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "C",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "B",
+            []
+          ],
+          "right": [
+            "fun",
+            "C",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "var",
+              "hole0"
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "B",
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "C",
+                []
+              ]
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          "implication": 5,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 6,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "A",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "C",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "C",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        }
+      ],
+      "conservative_owned_peak_bytes": 46448640,
+      "context": {
+        "ordered_local_premises": [
+          [
+            "eq",
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "B",
+              []
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "B",
+              []
+            ],
+            [
+              "fun",
+              "C",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "A",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ]
+        ],
+        "target": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "C",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "I.2": [
+              "all",
+              "P",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "P"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "P"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 0,
+            "u": 0,
+            "v": 0,
+            "w": 0
+          },
+          "predicates": {
+            "Incident": 2,
+            "Line": 1,
+            "Point": 1
+          },
+          "schemas": []
+        }
+      },
+      "disposition": {
+        "bytes": 4394,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/matched-geometry-logical-point-chain-point-ROOT-20261017/ROOT-saved-disposition-v1.json",
+        "sha256": "c2834d025145dedbb452ad63c5274110c37ea622d43736c097be724b82f0205b"
+      },
+      "full24_board_accepted": false,
+      "full_GCTS_accepted": false,
+      "initial_inventory": [],
+      "kernel_result": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "label": "point-chain-point",
+      "logical_proof_accepted": true,
+      "metadata_readout_seconds": 0.13803866599999998,
+      "method": "POINT_INCIDENCE_SEARCH",
+      "native_closure_logical_phase_seconds": null,
+      "native_queries": 0,
+      "origin": "completed_source_proposal",
+      "owner_postwrite_seconds": 6.058660791,
+      "performance_comparison_accepted": false,
+      "point_attempts": 0,
+      "selector": "fresh-inc-point-chain-w",
+      "training_updates": 0
+    },
+    {
+      "RL_accepted": false,
+      "actual_selected_ancestry": null,
+      "caller_observation_with_margin_seconds": 9.437,
+      "case_seconds": 2.1779478329999997,
+      "catalog": {
+        "bytes": 10870,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "33a648a233a67463ebaa53fc1410b8894b8d5f9523d190df05cbb4459bdbdb15"
+      },
+      "certificate": {
+        "bytes": 1891,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/matched-geometry-logical-reversed-line-native-ROOT-20261017/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "7734d78d43cc45d7a3a3a905e110849204e3e81ade12ae80eb95057892f97789"
+      },
+      "cold_leaf_launch_through_reap_seconds": 2.741935875,
+      "commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "v",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "w",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "v",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "v",
+            []
+          ],
+          "right": [
+            "fun",
+            "u",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "w",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "w",
+            []
+          ],
+          "right": [
+            "fun",
+            "v",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ]
+          ],
+          "implication": 6,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 7,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ]
+          ],
+          "implication": 5,
+          "rule": "mp"
+        }
+      ],
+      "conservative_owned_peak_bytes": 49004544,
+      "context": {
+        "ordered_local_premises": [
+          [
+            "eq",
+            [
+              "fun",
+              "v",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "w",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ]
+        ],
+        "target": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "I.2": [
+              "all",
+              "P",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "P"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "P"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 0,
+            "u": 0,
+            "v": 0,
+            "w": 0
+          },
+          "predicates": {
+            "Incident": 2,
+            "Line": 1,
+            "Point": 1
+          },
+          "schemas": []
+        }
+      },
+      "disposition": {
+        "bytes": 4451,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/matched-geometry-logical-reversed-line-native-ROOT-20261017/ROOT-saved-disposition-v1.json",
+        "sha256": "171cd4785d62d9f5baf96063c62c04c2e65f309e70c69f074d97cbdef056150e"
+      },
+      "full24_board_accepted": false,
+      "full_GCTS_accepted": false,
+      "initial_inventory": [],
+      "kernel_result": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "label": "reversed-line-native",
+      "logical_proof_accepted": true,
+      "metadata_readout_seconds": 0.20437612500000002,
+      "method": "NATIVE_CLOSURE",
+      "native_closure_logical_phase_seconds": 0.26573995800000016,
+      "native_queries": null,
+      "origin": "fresh_conventional_closure_DAG",
+      "owner_postwrite_seconds": 2.90724625,
+      "performance_comparison_accepted": false,
+      "point_attempts": null,
+      "selector": "fresh-inc-reversed-line-chain",
+      "training_updates": null
+    },
+    {
+      "RL_accepted": false,
+      "actual_selected_ancestry": false,
+      "caller_observation_with_margin_seconds": 12.539,
+      "case_seconds": 4.3624655830000005,
+      "catalog": {
+        "bytes": 10870,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "33a648a233a67463ebaa53fc1410b8894b8d5f9523d190df05cbb4459bdbdb15"
+      },
+      "certificate": {
+        "bytes": 19399,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/matched-geometry-logical-reversed-line-point-ROOT-20261017/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "30247f0c8863aba4abaa37b478faa10580da73328fb0c0f80f71a50a68edf030"
+      },
+      "cold_leaf_launch_through_reap_seconds": 5.2510847080000005,
+      "commands": [
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "v",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ],
+          "index": 0,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "eq",
+            [
+              "fun",
+              "w",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          "index": 1,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ],
+          "index": 2,
+          "rule": "assumption"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "v",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "u",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "v",
+            []
+          ],
+          "right": [
+            "fun",
+            "u",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "eq",
+              [
+                "fun",
+                "w",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "w",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Incident",
+                [
+                  [
+                    "fun",
+                    "D",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "v",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "left": [
+            "fun",
+            "w",
+            []
+          ],
+          "right": [
+            "fun",
+            "v",
+            []
+          ],
+          "rule": "eq_subst",
+          "template": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "var",
+                "hole0"
+              ]
+            ]
+          ],
+          "variable": "hole0"
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "u",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 3,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 1,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "w",
+                  []
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Incident",
+              [
+                [
+                  "fun",
+                  "D",
+                  []
+                ],
+                [
+                  "fun",
+                  "v",
+                  []
+                ]
+              ]
+            ]
+          ],
+          "implication": 4,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 2,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "v",
+                []
+              ]
+            ]
+          ],
+          "implication": 6,
+          "rule": "mp"
+        },
+        {
+          "antecedent": 7,
+          "formula": [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "u",
+                []
+              ]
+            ]
+          ],
+          "implication": 5,
+          "rule": "mp"
+        }
+      ],
+      "conservative_owned_peak_bytes": 46710784,
+      "context": {
+        "ordered_local_premises": [
+          [
+            "eq",
+            [
+              "fun",
+              "v",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "w",
+              []
+            ],
+            [
+              "fun",
+              "v",
+              []
+            ]
+          ],
+          [
+            "pred",
+            "Incident",
+            [
+              [
+                "fun",
+                "D",
+                []
+              ],
+              [
+                "fun",
+                "w",
+                []
+              ]
+            ]
+          ]
+        ],
+        "target": [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "u",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "I.2": [
+              "all",
+              "P",
+              [
+                "all",
+                "Q",
+                [
+                  "all",
+                  "l",
+                  [
+                    "all",
+                    "m",
+                    [
+                      "imp",
+                      [
+                        "and",
+                        [
+                          "pred",
+                          "Point",
+                          [
+                            [
+                              "var",
+                              "P"
+                            ]
+                          ]
+                        ],
+                        [
+                          "and",
+                          [
+                            "pred",
+                            "Point",
+                            [
+                              [
+                                "var",
+                                "Q"
+                              ]
+                            ]
+                          ],
+                          [
+                            "and",
+                            [
+                              "pred",
+                              "Line",
+                              [
+                                [
+                                  "var",
+                                  "l"
+                                ]
+                              ]
+                            ],
+                            [
+                              "and",
+                              [
+                                "pred",
+                                "Line",
+                                [
+                                  [
+                                    "var",
+                                    "m"
+                                  ]
+                                ]
+                              ],
+                              [
+                                "and",
+                                [
+                                  "not",
+                                  [
+                                    "eq",
+                                    [
+                                      "var",
+                                      "P"
+                                    ],
+                                    [
+                                      "var",
+                                      "Q"
+                                    ]
+                                  ]
+                                ],
+                                [
+                                  "and",
+                                  [
+                                    "pred",
+                                    "Incident",
+                                    [
+                                      [
+                                        "var",
+                                        "P"
+                                      ],
+                                      [
+                                        "var",
+                                        "l"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "and",
+                                    [
+                                      "pred",
+                                      "Incident",
+                                      [
+                                        [
+                                          "var",
+                                          "Q"
+                                        ],
+                                        [
+                                          "var",
+                                          "l"
+                                        ]
+                                      ]
+                                    ],
+                                    [
+                                      "and",
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "P"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "pred",
+                                        "Incident",
+                                        [
+                                          [
+                                            "var",
+                                            "Q"
+                                          ],
+                                          [
+                                            "var",
+                                            "m"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "eq",
+                        [
+                          "var",
+                          "l"
+                        ],
+                        [
+                          "var",
+                          "m"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 0,
+            "u": 0,
+            "v": 0,
+            "w": 0
+          },
+          "predicates": {
+            "Incident": 2,
+            "Line": 1,
+            "Point": 1
+          },
+          "schemas": []
+        }
+      },
+      "disposition": {
+        "bytes": 4439,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/matched-geometry-logical-reversed-line-point-ROOT-20261017/ROOT-saved-disposition-v1.json",
+        "sha256": "0f0f9fc31fa61f3a35efde3dba4193e388d9821c1a79794d7206243aa6989a71"
+      },
+      "full24_board_accepted": false,
+      "full_GCTS_accepted": false,
+      "initial_inventory": [],
+      "kernel_result": {
+        "induction_commands": 0,
+        "native_accepted": false,
+        "original_ground_sequent_accepted": true,
+        "rows": 9
+      },
+      "label": "reversed-line-point",
+      "logical_proof_accepted": true,
+      "metadata_readout_seconds": 0.10058349999999999,
+      "method": "POINT_INCIDENCE_SEARCH",
+      "native_closure_logical_phase_seconds": null,
+      "native_queries": 0,
+      "origin": "completed_source_proposal",
+      "owner_postwrite_seconds": 5.70146975,
+      "performance_comparison_accepted": false,
+      "point_attempts": 0,
+      "selector": "fresh-inc-reversed-line-chain",
+      "training_updates": 0
+    }
+  ],
+  "schema": "GCTS-matched-logical-calibration-summary-v1",
+  "source_and_plan_scope": "Reproduction archive includes original raw Sources, plans, literal closure inputs and complete closed records. New research plans and Source reviews are proposals, never additional runtime evidence.",
+  "statements": 2,
+  "statistical_performance_ranking_established": false,
+  "system_runtime_binaries_bundled": false,
+  "useful_cluster_transfer_established": false
+}
