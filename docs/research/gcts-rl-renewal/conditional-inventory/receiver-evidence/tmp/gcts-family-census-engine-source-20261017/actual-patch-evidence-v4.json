@@ -1,0 +1,53 @@
+{
+  "forward_patch": {
+    "bytes": 23397,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/engine-v3-to-v4.forward.patch",
+    "sha256": "13ad6110871293f88acaa6f6b86e735be95008f16a61899360ec1d7cbae429c0"
+  },
+  "inverse_patch": {
+    "bytes": 23397,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/engine-v4-to-v3.inverse.patch",
+    "sha256": "b63b4ec3da0b20bc5c89d7e1a39fee02aedf0eb35e5319b6d80924958fa43e6d"
+  },
+  "operations": [
+    {
+      "AST_exact": true,
+      "bytes_exact": true,
+      "direction": "forward",
+      "exit_code": 0,
+      "result": {
+        "bytes": 92122,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/forward.py",
+        "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "AST_exact": true,
+      "bytes_exact": true,
+      "direction": "inverse",
+      "exit_code": 0,
+      "result": {
+        "bytes": 76668,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/inverse.py",
+        "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+      },
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "parent": {
+    "bytes": 76668,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_search_engine_v3.py",
+    "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+  },
+  "schema": "receptor-family-full-census-engine-actual-patch-evidence-v4",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92122,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+    "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+  },
+  "source_evaluated": false
+}

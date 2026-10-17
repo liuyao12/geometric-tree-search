@@ -1,0 +1,353 @@
+{
+  "case_compiles_without_evaluation": true,
+  "case_scope": "New generic real receiver probe; no supplied intermediate or proof route. Full native model and fallback retained.",
+  "checks": [
+    {
+      "added_named_regions": [
+        "main.run_receiver"
+      ],
+      "both_actual_patch_directions_byte_exact": true,
+      "changed_named_regions": [
+        "main"
+      ],
+      "compile_without_evaluation": true,
+      "edits": [
+        {
+          "new": "VERSION='ROOT-receiver-inference-probe-cold-v1'\nSCOPE='ROOT-receiver-inference-probe-Source'\n",
+          "new_end": 27,
+          "new_start": 25,
+          "old": "VERSION='ROOT-native-productive-inventory-cold-v2-work4m'\nSCOPE='ROOT-native-productive-inventory-cold-Source'\n",
+          "old_end": 27,
+          "old_start": 25
+        },
+        {
+          "new": "QUALIFICATION_CASES_BY_PURPOSE={'receptor-inference-visible-probe': ['RI-01-visible-observed-port-inference'], 'receptor-inference-literal-probe': ['RI-02-literal-origin-binding-control']}\nFIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'degree_router': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150', 'bytes': 12779}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'family_consumer': {'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py', 'sha256': 'd68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874', 'bytes': 13040}, 'family_engine': {'path': '/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v5.py', 'sha256': 'ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db', 'bytes': 92132}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_aware_checker': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188', 'bytes': 25783}, 'marked_aware_proposer': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d', 'bytes': 14064}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'producer': {'path': '/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py', 'sha256': 'fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18', 'bytes': 60281}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'receiver_cases': {'path': '/private/tmp/gcts-receiver-inference-ROOT-source-20261017/receiver_inference_cases_v1.py', 'sha256': 'bc42eb2012f6247a09b6a22ea513604c451ffb249d89b5c01d57dcd286983e8f', 'bytes': 7839}, 'receiver_provider': {'path': '/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py', 'sha256': 'ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0', 'bytes': 54172}, 'residual_policy': {'path': '/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py', 'sha256': '2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479', 'bytes': 12826}}\nFIXED_INPUTS={'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}, 'stageB_disposition': {'bytes': 4574, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json', 'sha256': 'ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e'}, 'stageB_encoded': {'bytes': 162591, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json', 'sha256': '3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca'}, 'stageB_expanded': {'bytes': 1926833, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json', 'sha256': 'bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93'}, 'stageB_plan': {'bytes': 7924, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json', 'sha256': '7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009'}, 'stageB_response': {'bytes': 7572, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl', 'sha256': '8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e'}, 'stageB_transport': {'bytes': 1502, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json', 'sha256': '8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b'}, 'frozen_inventory': {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json', 'sha256': '26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38', 'bytes': 3433689}, 'inventory_acceptance': {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json', 'sha256': '4ef4ebdcd431a284f73ded43caf1957b819d1ddd4e3180e212a619e3b736d817', 'bytes': 2723}}\n",
+          "new_end": 32,
+          "new_start": 29,
+          "old": "QUALIFICATION_CASES_BY_PURPOSE={'native-productive-conditional-inventory': ['NPI-01-closed-and-open-conditional-inventory']}\nFIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'collector': {'bytes': 19556, 'path': '/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py', 'sha256': '9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816'}, 'composer': {'bytes': 30572, 'path': '/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py', 'sha256': '4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'inventory_cases': {'bytes': 38803, 'path': '/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py', 'sha256': 'd00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'miner': {'bytes': 37218, 'path': '/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py', 'sha256': '7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c'}, 'producer': {'bytes': 51898, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py', 'sha256': 'f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}}\nFIXED_INPUTS={'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}, 'stageB_disposition': {'bytes': 4574, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json', 'sha256': 'ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e'}, 'stageB_encoded': {'bytes': 162591, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json', 'sha256': '3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca'}, 'stageB_expanded': {'bytes': 1926833, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json', 'sha256': 'bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93'}, 'stageB_plan': {'bytes': 7924, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json', 'sha256': '7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009'}, 'stageB_response': {'bytes': 7572, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl', 'sha256': '8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e'}, 'stageB_transport': {'bytes': 1502, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json', 'sha256': '8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b'}}\n",
+          "old_end": 32,
+          "old_start": 29
+        },
+        {
+          "new": "    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')\n",
+          "new_end": 364,
+          "new_start": 363,
+          "old": "    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_COMPOSER', 'AFTER_COMPOSER', 'AFTER_DAG', 'AFTER_MINER', 'AFTER_QUALIFICATION', 'BEFORE_OUTPUT')\n",
+          "old_end": 364,
+          "old_start": 363
+        },
+        {
+          "new": "    need(contract['schema']=='ROOT-receiver-inference-probe-Source-contract-v1'\n",
+          "new_end": 403,
+          "new_start": 402,
+          "old": "    need(contract['schema']=='ROOT-native-productive-inventory-cold-Source-contract-v1'\n",
+          "old_end": 403,
+          "old_start": 402
+        },
+        {
+          "new": "    phase('BEFORE_POOL_READ')\n    frozen = decode(inputs_raw['frozen_inventory'])\n    accepted_inventory = decode(inputs_raw['inventory_acceptance'])\n    need(frozen['schema']=='ROOT-native-conditional-inventory-result-v1'\n         and frozen['language_binding']==ORIGINAL_BINDING\n         and frozen['conditional_inventory']['original_model_binding']==ORIGINAL_BINDING\n         and frozen['conditional_inventory']['original_model_sources']==ORIGINAL_SOURCES\n         and frozen['conditional_inventory']['original_model_inputs']==ORIGINAL_INPUTS\n         and canonical(frozen['conditional_inventory']['marking'])==canonical(marking)\n         and accepted_inventory['schema']=='ROOT-native-productive-source-ground-inventory-acceptance-v1'\n         and accepted_inventory['expanded']==FIXED_INPUTS['frozen_inventory']\n         and accepted_inventory['source_ground_inventory_qualified'] is True\n         and accepted_inventory['native_resources_qualified'] is True\n         and accepted_inventory['descriptors_qualified']==4,\n         'same frozen qualified inventory and original model; prior receipts are data only')\n    old_inventory_contract=decode(read_pinned(accepted_inventory['source_contract']))\n    need(old_inventory_contract['sources']==frozen['sources']\n         and old_inventory_contract['inputs']==frozen['inputs']\n         and old_inventory_contract['original_model_sources']==ORIGINAL_SOURCES\n         and old_inventory_contract['original_model_binding']==ORIGINAL_BINDING,\n         'complete frozen original-model/current-Source contract joins')\n    inventory_data=frozen['conditional_inventory']['inventory']\n    prior_records=[]\n    for pool in inventory_data['minings']:\n        need(pool['status']=='PROPOSALS' and pool['mining']['status']=='PROPOSALS',\n             'complete frozen extraction data')\n        for record_index,record in enumerate(pool['mining']['families']):\n            entries=[e for e in inventory_data['qualified_records']\n                     if e['component_id']==pool['component_id'] and e['record_index']==record_index]\n            need(len(entries)==1 and canonical(entries[0]['record'])==canonical(record)\n                 and entries[0]['status']=='CHECKED_SOURCE_GROUND_CONDITIONAL_RECORD'\n                 and entries[0]['adaptation']['status']=='READY_LOCAL_CLUSTER',\n                 'every frozen mined record joined to its saved qualified occurrence')\n            prior_records.append(record['family_id'])\n    need(prior_records==accepted_inventory['family_ids']\n         and len(prior_records)==accepted_inventory['descriptors_qualified'],\n         'whole frozen library identity; fresh source/current checks still required')\n    def run_receiver():\n",
+          "new_end": 598,
+          "new_start": 560,
+          "old": "    def run_inventory():\n",
+          "old_end": 561,
+          "old_start": 560
+        },
+        {
+          "new": "        mode=('VISIBLE_RECEPTOR' if plan['purpose']=='receptor-inference-visible-probe' else 'LITERAL_GROUND')\n        return modules['receiver_cases'].run_receiver(language=language,\n            base_semantics=semantics,marked_semantics=marked,modules=modules,\n            frozen_inventory=copy.deepcopy(inventory_data),matching_mode=mode,\n",
+          "new_end": 605,
+          "new_start": 601,
+          "old": "        state=marked.initial_state(language,tick)\n        need(state['selected']==[] and state['excluded']==[], 'exact fresh native root, no proof route')\n        return modules['inventory_cases'].run_inventory(\n            language=language,base_semantics=semantics,marked_semantics=marked,\n            point_module=adapter,base_fallback=fallback,host_adapter=modules['host_adapter'],\n            composer=modules['composer'],collector=modules['collector'],miner=modules['miner'],\n            producer=modules['producer'],expansion_checker=modules['expansion_checker'],\n",
+          "old_end": 571,
+          "old_start": 564
+        },
+        {
+          "new": "    diagnostic_context_raw=canonical({'schema':'ROOT-receptor-inference-probe-diagnostic-context-v1',\n",
+          "new_end": 607,
+          "new_start": 606,
+          "old": "    diagnostic_context_raw=canonical({'schema':'ROOT-native-inventory-diagnostic-context-v1',\n",
+          "old_end": 573,
+          "old_start": 572
+        },
+        {
+          "new": "        receiver=call(run_receiver)\n",
+          "new_end": 619,
+          "new_start": 618,
+          "old": "        inventory=call(run_inventory)\n",
+          "old_end": 585,
+          "old_start": 584
+        },
+        {
+          "new": "    need(receiver['schema']=='ROOT-receiver-inference-evidence-v1'\n         and receiver['status']=='RECEIVER_PROBE_RECORDED',\n         'whole returned actual receiver probe; no theorem or broad engine authority')\n",
+          "new_end": 638,
+          "new_start": 635,
+          "old": "    need(inventory['schema']=='ROOT-native-productive-conditional-inventory-evidence-v1'\n         and inventory['status']in ('UNKNOWN','CHECKED_CONDITIONAL_INVENTORY'),\n         'whole returned conditional inventory; no engine/proof authority')\n",
+          "old_end": 604,
+          "old_start": 601
+        },
+        {
+          "new": "    payload={'schema':'ROOT-receptor-inference-probe-payload-v1','receiver':receiver,\n",
+          "new_end": 640,
+          "new_start": 639,
+          "old": "    payload={'schema':'ROOT-native-conditional-inventory-payload-v1','inventory':inventory,\n",
+          "old_end": 606,
+          "old_start": 605
+        },
+        {
+          "new": "        'frozen_inventory_input':FIXED_INPUTS['frozen_inventory'],\n        'inventory_acceptance_input':FIXED_INPUTS['inventory_acceptance'],\n        'inventory_reused':True,'construction_in_this_window':False,\n        'actual_engine_called':True,\n        'new_theorem_discovered':False,'logical_proof_accepted':False,\n",
+          "new_end": 647,
+          "new_start": 642,
+          "old": "        'target_model_search_started':False,'new_theorem_discovered':False,'logical_proof_accepted':False,\n",
+          "old_end": 609,
+          "old_start": 608
+        },
+        {
+          "new": "        'scheduler_or_rollback_accepted':False,'complete_GCTS_model_accepted':False,\n        'RL_accepted':False,'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}\n    result_raw=canonical({'schema':'ROOT-receptor-inference-probe-result-v1',\n",
+          "new_end": 651,
+          "new_start": 648,
+          "old": "        'current_frontier_viability_checked':False,'scheduler_or_rollback_accepted':False,\n        'complete_GCTS_model_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False,\n        'ROOT_resource_accepted':False}\n    result_raw=canonical({'schema':'ROOT-native-conditional-inventory-result-v1',\n",
+          "old_end": 614,
+          "old_start": 610
+        },
+        {
+          "new": "        'language_binding':ORIGINAL_BINDING,'receiver_probe':payload,\n",
+          "new_end": 653,
+          "new_start": 652,
+          "old": "        'language_binding':ORIGINAL_BINDING,'conditional_inventory':payload,\n",
+          "old_end": 616,
+          "old_start": 615
+        },
+        {
+          "new": "    body={'schema':'ROOT-receptor-inference-probe-response-body-v1','version':VERSION,\n",
+          "new_end": 659,
+          "new_start": 658,
+          "old": "    body={'schema':'ROOT-native-conditional-inventory-response-body-v1','version':VERSION,\n",
+          "old_end": 622,
+          "old_start": 621
+        },
+        {
+          "new": "    final_raw=canonical({'schema':'ROOT-receptor-inference-probe-final-observation-v1',\n",
+          "new_end": 673,
+          "new_start": 672,
+          "old": "    final_raw=canonical({'schema':'ROOT-native-conditional-inventory-final-observation-v1',\n",
+          "old_end": 636,
+          "old_start": 635
+        }
+      ],
+      "named_regions_raw_AST_unchanged": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.phase",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language"
+      ],
+      "parent": {
+        "bytes": 53368,
+        "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/native_productive_inventory_cold_v2.py",
+        "sha256": "7c76001ac0f48156732760d6e74daef87f0b7c67571dc4487936c8718627e197"
+      },
+      "raw_regions": 15,
+      "removed_named_regions": [
+        "main.run_inventory"
+      ],
+      "source": {
+        "bytes": 57520,
+        "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/receiver_inference_cold_v1.py",
+        "sha256": "c3a85bc63edd10b51f53b98b9cd61c22c61d2fa216444af674d22d09d9a47315"
+      },
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "added_named_regions": [],
+      "both_actual_patch_directions_byte_exact": true,
+      "changed_named_regions": [
+        "read_failure_diagnostic",
+        "main"
+      ],
+      "compile_without_evaluation": true,
+      "edits": [
+        {
+          "new": "CURRENT_CONTRACT={'path': '/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '8af2329d5a56c7aa0da665bf1152714bae9f5d8051d2e6a8507d94132d5491ad', 'bytes': 17884}\n",
+          "new_end": 13,
+          "new_start": 12,
+          "old": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json', 'sha256': '7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985', 'bytes': 28106}\n",
+          "old_end": 13,
+          "old_start": 12
+        },
+        {
+          "new": "PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')\n",
+          "new_end": 67,
+          "new_start": 66,
+          "old": "PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_COMPOSER', 'AFTER_COMPOSER', 'AFTER_DAG', 'AFTER_MINER', 'AFTER_QUALIFICATION', 'BEFORE_OUTPUT')\n",
+          "old_end": 67,
+          "old_start": 66
+        },
+        {
+          "new": "    need(context['schema']=='ROOT-receptor-inference-probe-diagnostic-context-v1'\n",
+          "new_end": 107,
+          "new_start": 106,
+          "old": "    need(context['schema']=='ROOT-native-inventory-diagnostic-context-v1'\n",
+          "old_end": 107,
+          "old_start": 106
+        },
+        {
+          "new": "    need(contract['schema'] == 'ROOT-receiver-inference-probe-Source-contract-v1'\n",
+          "new_end": 152,
+          "new_start": 151,
+          "old": "    need(contract['schema'] == 'ROOT-native-productive-inventory-cold-Source-contract-v1'\n",
+          "old_end": 152,
+          "old_start": 151
+        },
+        {
+          "new": "        need(review['scope'] == 'ROOT-receiver-inference-probe-Source'\n",
+          "new_end": 162,
+          "new_start": 161,
+          "old": "        need(review['scope'] == 'ROOT-native-productive-inventory-cold-Source'\n",
+          "old_end": 162,
+          "old_start": 161
+        },
+        {
+          "new": "    summary = {'schema':'ROOT-receptor-inference-probe-disposition-v1',\n",
+          "new_end": 223,
+          "new_start": 222,
+          "old": "    summary = {'schema':'ROOT-native-conditional-inventory-disposition-v1',\n",
+          "old_end": 223,
+          "old_start": 222
+        },
+        {
+          "new": "        'receiver_probe_record_complete':False,'reported_theorem_count':0,\n",
+          "new_end": 228,
+          "new_start": 227,
+          "old": "        'conditional_inventory_record_complete':False,'reported_theorem_count':0,\n",
+          "old_end": 228,
+          "old_start": 227
+        },
+        {
+          "new": "        need(final['schema']=='ROOT-receptor-inference-probe-final-observation-v1'\n",
+          "new_end": 241,
+          "new_start": 240,
+          "old": "        need(final['schema']=='ROOT-native-conditional-inventory-final-observation-v1'\n",
+          "old_end": 241,
+          "old_start": 240
+        },
+        {
+          "new": "             and body['schema']=='ROOT-receptor-inference-probe-response-body-v1'\n             and body['version']=='ROOT-receiver-inference-probe-cold-v1'\n",
+          "new_end": 256,
+          "new_start": 254,
+          "old": "             and body['schema']=='ROOT-native-conditional-inventory-response-body-v1'\n             and body['version']=='ROOT-native-productive-inventory-cold-v2-work4m'\n",
+          "old_end": 256,
+          "old_start": 254
+        },
+        {
+          "new": "        need(canonical(evidence)+b'\\n'==expanded and evidence['schema']=='ROOT-receptor-inference-probe-result-v1'\n",
+          "new_end": 281,
+          "new_start": 280,
+          "old": "        need(canonical(evidence)+b'\\n'==expanded and evidence['schema']=='ROOT-native-conditional-inventory-result-v1'\n",
+          "old_end": 281,
+          "old_start": 280
+        },
+        {
+          "new": "        payload=evidence['receiver_probe'];pipeline=payload['receiver']\n",
+          "new_end": 284,
+          "new_start": 283,
+          "old": "        payload=evidence['conditional_inventory'];pipeline=payload['inventory']\n",
+          "old_end": 284,
+          "old_start": 283
+        },
+        {
+          "new": "             and (pipeline['status']!='RECEIVER_PROBE_RECORDED' or [x['stage']for x in phases if x['stage'] not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]==[x for x in PHASES if x not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]),\n             'ordered reached sites; full inventory requires all required sites; provider sites are conditional')\n        need(payload['schema']=='ROOT-receptor-inference-probe-payload-v1'\n",
+          "new_end": 289,
+          "new_start": 286,
+          "old": "             and (pipeline['status']!='CHECKED_CONDITIONAL_INVENTORY' or [x['stage']for x in phases]==list(PHASES)),\n             'ordered reached sites; full inventory requires all thirteen sites')\n        need(payload['schema']=='ROOT-native-conditional-inventory-payload-v1'\n",
+          "old_end": 289,
+          "old_start": 286
+        },
+        {
+          "new": "        need(pipeline['schema']=='ROOT-receiver-inference-evidence-v1'\n             and pipeline['status']=='RECEIVER_PROBE_RECORDED',\n",
+          "new_end": 303,
+          "new_start": 301,
+          "old": "        need(pipeline['schema']=='ROOT-native-productive-conditional-inventory-evidence-v1'\n             and pipeline['status']in ('UNKNOWN','CHECKED_CONDITIONAL_INVENTORY'),\n",
+          "old_end": 303,
+          "old_start": 301
+        },
+        {
+          "new": "            receiver_probe_record_complete=pipeline['status']=='RECEIVER_PROBE_RECORDED',\n",
+          "new_end": 307,
+          "new_start": 306,
+          "old": "            conditional_inventory_record_complete=pipeline['status']=='CHECKED_CONDITIONAL_INVENTORY',\n",
+          "old_end": 307,
+          "old_start": 306
+        },
+        {
+          "new": "        'receiver_probe_record_complete':summary['receiver_probe_record_complete'],\n",
+          "new_end": 312,
+          "new_start": 311,
+          "old": "        'conditional_inventory_record_complete':summary['conditional_inventory_record_complete'],\n",
+          "old_end": 312,
+          "old_start": 311
+        }
+      ],
+      "named_regions_raw_AST_unchanged": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write",
+        "read_phases"
+      ],
+      "parent": {
+        "bytes": 21790,
+        "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v2.py",
+        "sha256": "1f4ae893cd2811328f73726a97ee84e4ccc48f1706cfdfc2c3c7536fcb4b29d9"
+      },
+      "raw_regions": 15,
+      "removed_named_regions": [],
+      "source": {
+        "bytes": 21794,
+        "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT_read_receiver_inference_saved_v1.py",
+        "sha256": "a450f67bda83c23e3153f0a28ab4b663ecc0a9798ea8e5464da5dafa50b7d897"
+      },
+      "whole_forward_inverse_AST": true
+    }
+  ],
+  "new_case_source": {
+    "bytes": 7839,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/receiver_inference_cases_v1.py",
+    "sha256": "bc42eb2012f6247a09b6a22ea513604c451ffb249d89b5c01d57dcd286983e8f"
+  },
+  "project_module_evaluated": false,
+  "schema": "ROOT-receiver-inference-raw-Source-audit-v1",
+  "scientific_calls": 0
+}

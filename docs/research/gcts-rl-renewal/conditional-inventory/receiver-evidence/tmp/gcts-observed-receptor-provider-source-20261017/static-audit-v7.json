@@ -1,0 +1,51 @@
+{
+  "checks": {
+    "AST_compile_without_evaluation": true,
+    "all_othertophelpersclassesrawASTexact": true,
+    "exact3rawregions_and_wholeASTinverse": true,
+    "exact_type_code_fullreason_only_no_generic_SCOPE_catch": true,
+    "four_actual_patch_directions_F0_exact": true,
+    "only_VERSION_constant_changed": true,
+    "same_planning_quotas_limits_report_fields_FLAGS_native_paths": true
+  },
+  "project_module_evaluated": false,
+  "schema": "observed-receptor-provider-static-v7",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54448,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+    "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+  },
+  "source_delta": {
+    "bytes": 76403,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-delta-v7.json",
+    "sha256": "afaf81c2d9cc708636a4ffe7b306fb04d9262a54658197327f646511cb8d9ab7"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    "ProviderDataError",
+    "ProviderDataError.__init__",
+    "_Unfinished",
+    "_AssignmentPrefix",
+    "_CallbackFailure",
+    "_CallbackFailure.__init__",
+    "require",
+    "canonical",
+    "digest",
+    "ascii_digest",
+    "fields",
+    "_Work",
+    "_Work.__init__",
+    "_Work.native",
+    "_Work.step",
+    "_Work.trial",
+    "_Work.copy",
+    "_key",
+    "_ready_checked",
+    "_ground_roundtrip",
+    "_constraints",
+    "_layout",
+    "_preflight"
+  ]
+}

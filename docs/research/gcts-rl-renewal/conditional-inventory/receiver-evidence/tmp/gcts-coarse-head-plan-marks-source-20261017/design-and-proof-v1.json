@@ -1,0 +1,93 @@
+{
+  "API": {
+    "bytes": 4873,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/API-wire-v1.json",
+    "sha256": "16243e76d72dc8be1a50f6e872645444c3127d2f53d73c563fa2f93dd362a8ed"
+  },
+  "Source_evidence": {
+    "base_point_checker": {
+      "bytes": 27553,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "observed_producer": {
+      "bytes": 60281,
+      "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+    },
+    "producer_parent": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "provider_layout": {
+      "bytes": 54448,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+      "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+    }
+  },
+  "argument": [
+    {
+      "case": "formula_meta",
+      "claim": "No invariant head follows from a FORMULA abstraction alone: its full native body may have any allowed formula constructor. The module does not accept/read its binding, origin-ground formula or old receipt, so it always omits this mark."
+    },
+    {
+      "case": "bot",
+      "claim": "Capture-safe instantiation returns the literal one-item bot formula, retaining bot."
+    },
+    {
+      "case": "pred/eq",
+      "claim": "Predicate substitution may change only the symbol and term instantiation may change arguments; pred/eq outer tags remain literal."
+    },
+    {
+      "case": "all",
+      "claim": "Instantiation may alpha-rename the binder and substitute its body; it retains literal all as outer tag."
+    },
+    {
+      "case": "not/imp/and/or",
+      "claim": "Only recursively instantiated child formulas are inserted; each literal outer connective remains the same."
+    },
+    {
+      "case": "known-mark conflict",
+      "claim": "Let H be the outer-tag projection of a native formula. For every later valid typed substitution sigma, H(instantiate(T,sigma))=the fixed template tag when T has a concrete outer constructor. If two such obligations at one assigned row have unequal heads, their native literal formulas cannot agree. Existing native tile output/read channel1 agreement plus host-adapter full input-source sharing/final input/output interface agreement require those literal equalities. Hence the THIS_PLAN rejection is a necessary obstruction to any accepted ground instance of this exact layout; it is not rejection of a base candidate, family, substitution domain, receiver branch or original problem."
+    },
+    {
+      "case": "unused ports",
+      "claim": "A declared input need not be read by any primitive. Its planning mark is an interface formula-equality obligation. Two root inputs at one physical row must agree under current4bd6 full physical-source sharing even if both unoccupied; input vs primitive output/read at that row is checked by current final-interface/native marking agreement. Do not claim every unused input inserts an active native m1 mark. Exposed output formula must equal its exact referenced input/node."
+    },
+    {
+      "case": "unknown/unsupported",
+      "claim": "Meta-root absence imposes no value; CALL/dependency/materialized-hypothesis unknown aborts this gate without rejection; own work/depth/bytes/requirements exhaustion discards partial comparisons. No positive/stale/prefix conflict is promoted."
+    }
+  ],
+  "cost_and_scope": "All future lookup/copy/template mapping/mark compilation and failed proposals must be charged to same existing caller tick/native bounds. No caching, semantic sharing, runtime gain, theorem discovery or learned mask. Typed features and proof argument are human-designed necessary conditions, not empirical auto-learning.",
+  "future_comparison": "Separate declared new provider integration required. Matched modes must use same frozen inventory/row allocation/native fallback/limits, charge full gate cost and report plans visited, definitive coarse conflicts, absent-head passes, ownUNKNOWN and downstream admissions. Do not alter universe/scheduler or infer speedup from local counts.",
+  "head_not_sufficient": "Two formulas can share a head and still disagree in symbols, arities, terms, variables, binding scope or deep structure. No known conflict never proves an admissible instance. Existing literal marking and all native membership remain mandatory.",
+  "implementation_or_actual_integration": false,
+  "mathematical_notation_latex": {
+    "invariance": "$H(\\operatorname{instantiate}(T,\\sigma))=h$",
+    "marks": "$m_5(5,r)=(\\mathrm{formula\\text{-}head},h)$",
+    "obstruction": "$h_1\\ne h_2\\Longrightarrow F_1\\ne F_2$",
+    "projection": "$H(F)=\\operatorname{head}(F)$"
+  },
+  "native_model": "Original17/input2/Gamma/theory/24rows/B12N44/target untouched. Channel5 exists only in returned planning data, not in native point state, base universe, degree, cursor or rollback. Missing never equals zero.",
+  "no_sourceground_environment_used": true,
+  "schema": "receptor-family-coarse-head-plan-marks-design-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15276,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+    "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+  },
+  "source_only": true
+}

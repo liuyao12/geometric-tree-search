@@ -1,0 +1,22 @@
+{
+  "Root_interpretation": {
+    "bytes": 204587,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT-receiver-pair-interpretation-v1.json",
+    "sha256": "190d36051ffd214a46cb294f77cbb535a1ce17a2ff60a6ec5b8be4b6dd3568c5"
+  },
+  "current_count_resource_callback_join_concordance": true,
+  "discrepancies": [],
+  "independent_findings": {
+    "bytes": 23169,
+    "path": "/private/tmp/gcts-receiver-pair-data-review-20261017/saved-pair-findings-v1.json",
+    "sha256": "fb6fc30224875996c2651d67deb2e5481210d41b8550bdbd2b79e5f30b164bab"
+  },
+  "not_independently_audited_here": [
+    "prior_inventory_cost_ns is external historical construction data; prior inventory actual was not reread",
+    "next_direction is an unexecuted Source design hypothesis, not evidence from this saved pair"
+  ],
+  "schema": "ROOT-receiver-pair-Root-interpretation-concordance-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replay": false
+}

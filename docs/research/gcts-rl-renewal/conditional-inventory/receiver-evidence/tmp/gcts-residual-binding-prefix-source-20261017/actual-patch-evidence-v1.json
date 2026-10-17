@@ -1,0 +1,45 @@
+{
+  "forward": {
+    "bytes_and_AST_exact": true,
+    "command": "patch -s -F0 <empty-copy.py> <addition.patch>",
+    "exit_code": 0,
+    "output": "",
+    "result": {
+      "bytes": 12776,
+      "path": "/private/tmp/gcts-residual-prefix-v1-text-patch-check/forward.py",
+      "sha256": "bed90fd51324281a8d34e4250a7d752d9ea5e1ec76f70924a8aa2295278b7769"
+    }
+  },
+  "inverse": {
+    "command": "patch -s -F0 <source-copy.py> <inverse.patch>",
+    "empty_bytes_and_AST_exact": true,
+    "exit_code": 0,
+    "output": "",
+    "result": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-residual-prefix-v1-text-patch-check/inverse.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "patches": [
+    {
+      "bytes": 13072,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/empty-to-residual-prefix.forward.patch",
+      "sha256": "d70032406aa80e1c9a86a1b445446d77fa22e06969f3d4605e2754119e458240"
+    },
+    {
+      "bytes": 13072,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual-prefix-to-empty.inverse.patch",
+      "sha256": "97aa61535f1e4664815bb588272a7d0bda75a88daee770dfbfe956f86914cce7"
+    }
+  ],
+  "schema": "residual-binding-prefix-actual-text-patch-evidence-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 12776,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v1.py",
+    "sha256": "bed90fd51324281a8d34e4250a7d752d9ea5e1ec76f70924a8aa2295278b7769"
+  },
+  "source_evaluated": false,
+  "source_only": true
+}

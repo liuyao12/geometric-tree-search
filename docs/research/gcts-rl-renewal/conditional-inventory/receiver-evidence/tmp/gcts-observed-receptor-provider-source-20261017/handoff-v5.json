@@ -1,0 +1,124 @@
+{
+  "API": {
+    "bytes": 5784,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/API-wire-v5.json",
+    "sha256": "5fa98e70e97705ef46fe2311cc3b6193ad913a649aae7eebb95f5a2a6171e511"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "receptor-family-observed-receptor-provider-typed-Source-review-v5",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-observed-receptor-provider-Source",
+    "source": {
+      "bytes": 51696,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v5.py",
+      "sha256": "3c546c3122706d6868130ecdfc5bf1c6ca747c605a9abfc827fc9ba274741d06"
+    },
+    "source_contract": {
+      "bytes": 7429,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v5.json",
+      "sha256": "e9e06a31a043b9a8d458090ff00d3ba6c6876e0b9f33afc41b899d4952313e86"
+    },
+    "source_only": true,
+    "sources": {
+      "provider": {
+        "bytes": 51696,
+        "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v5.py",
+        "sha256": "3c546c3122706d6868130ecdfc5bf1c6ca747c605a9abfc827fc9ba274741d06"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_patches": {
+    "forward": {
+      "bytes": 52119,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/parent-v3-to-current-v5-forward.patch",
+      "sha256": "ec85e8ea1624afb019f613ad051f99fd5b9d9fa28c5f5d9f0399940f5d1d5793"
+    },
+    "full-inverse": {
+      "bytes": 52083,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/parent-v3-to-current-v5-full-inverse.patch",
+      "sha256": "4d084859a037a5526cd0d12da623a13274231d6e9b19ba4ab280d99ee92577d0"
+    }
+  },
+  "binding_policies": {
+    "LITERAL_GROUND": "EXPLICIT_MINED_ORIGIN_ENVIRONMENT_V1",
+    "VISIBLE_RECEPTOR": "EMPTY_PROBE_THEN_THEORY_NAMES_MAX_INDEX_SHELLS_V2"
+  },
+  "immediate_patches": {
+    "forward": {
+      "bytes": 1998,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/unselected-v4-to-current-v5-forward.patch",
+      "sha256": "67addad7c36326f42f945380cca385a687e8c86dbb30885574747597c263869b"
+    },
+    "full-inverse": {
+      "bytes": 1998,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/unselected-v4-to-current-v5-full-inverse.patch",
+      "sha256": "37cb8841b3ecb0eb3c5525b9b8a5be4ca90ea2a77e9134ad6dfe176472966c6c"
+    }
+  },
+  "producer_implementation_version": "receptor-family-observed-subset-inference-v2",
+  "report_fields": [
+    "schema",
+    "version",
+    "matching_mode",
+    "binding_policy",
+    "batch",
+    "request",
+    "binding",
+    "marking_id",
+    "state_sha256",
+    "decision",
+    "producer_implementation_version",
+    "residual_policy_version",
+    "host",
+    "original_state",
+    "checked_state",
+    "branch_output_receptor",
+    "records",
+    "row_rejections",
+    "offers",
+    "physical_assignment_plan",
+    "accounting",
+    "prototype_census",
+    "reason",
+    "work",
+    "scope",
+    "flags"
+  ],
+  "report_schema": "receptor-family-observed-receptor-transfer-provider-v2",
+  "request_fields": [
+    "mined",
+    "state",
+    "decision",
+    "matching_mode",
+    "binding_policy",
+    "limits"
+  ],
+  "residual_policy_version": "receptor-family-residual-host-binding-prefix-v2-max-index-shells",
+  "schema": "receptor-family-observed-receptor-provider-handoff-v5",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51696,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v5.py",
+    "sha256": "3c546c3122706d6868130ecdfc5bf1c6ca747c605a9abfc827fc9ba274741d06"
+  },
+  "source_contract": {
+    "bytes": 7429,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v5.json",
+    "sha256": "e9e06a31a043b9a8d458090ff00d3ba6c6876e0b9f33afc41b899d4952313e86"
+  },
+  "source_delta": {
+    "bytes": 62551,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-delta-v5.json",
+    "sha256": "bffda9550458b94536cb3c562629e2653eeceb29e236e9fefa47701ddb46cd2e"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 2454,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/static-audit-v5.json",
+    "sha256": "04a79200475056aed89b49e54079ee8be67ea0bd9677bc1d0c30db2457f5c24a"
+  }
+}

@@ -1,0 +1,368 @@
+--- combined-before.py
++++ combined-after.py
+@@ -7,7 +7,11 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v13-receptor-family-preferences-v3-observed-census'
++VERSION = 'lazy-unit-row-global-engine-v13-receptor-family-preferences-v5-full-exposure-census-provider6'
++FAMILY_PROVIDER_SCHEMA = 'receptor-family-observed-receptor-transfer-provider-v2'
++FAMILY_PROVIDER_VERSION = 'receptor-family-observed-receptor-transfer-provider-v6'
++OBSERVED_PRODUCER_IMPLEMENTATION = 'receptor-family-observed-subset-inference-v2'
++CURSOR_CENSUS_IMPLEMENTATION = 'unit-row-channel4-point-adapter-public-prefix-census-v5'
+ VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION-ROUTED-NONIMP-EVIDENCE'
+ MARK_VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ASSIGNED-OUTPUT-THEN-ROW-SUPPORT-RETENTION-ROUTED-NONIMP-EVIDENCE'
+ BRANCH_TIES = ('ROW', 'ASSIGNED-OUTPUT-THEN-ROW')
+@@ -214,7 +218,8 @@
+                  certify_fallback, transition_checker, tick, initial_state=None,
+                  maximum_nodes=128, maximum_events=2000,
+                  branch_adviser=None, validate_advice=None, branch_tie='ROW',
+-                 family_proposer=None, family_consumer=None):
++                 family_proposer=None, family_consumer=None,
++                 initial_prototype_census=None):
+         tick()
+         need(type(branch_tie) is str and branch_tie in BRANCH_TIES, 'named branch tie')
+         self._branch_tie = branch_tie
+@@ -257,7 +262,18 @@
+                            family_choices=0, family_canonical_choices=0)
+         if initial_state is None:
+             initial_state = semantics.initial_state(language, tick)
+-        self._state = semantics.private_state(language, initial_state, tick)[0]
++        initial_checked = semantics.private_state(language, initial_state, tick)
++        self._state = initial_checked[0]
++        self._family_prototype_census = {} if family_proposer is not None else None
++        self._family_cursor_censuses = {}
++        if self._family_prototype_census is not None:
++            self._join_prototype_census([[name, pre] for name, pre in sorted(initial_checked[5].items())])
++        if initial_prototype_census is not None:
++            initial_prototype_census = self._copy(initial_prototype_census)
++            need(type(initial_prototype_census) is list
++                 and (family_proposer is not None or initial_prototype_census == []),
++                 'explicit exposure seed requires enabled family endpoints')
++            self._join_prototype_census(initial_prototype_census)
+         self._revision, self._versions = 0, (0,) * 24
+         self._certs, self._slots, self._observed, self._reverse = {}, {}, {}, {}
+         self._live = {}
+@@ -310,6 +326,9 @@
+             'pending_preferences': self._preferences,
+             'scheduler_policy': self._policy_snapshot(),
+             'family_preference_policy': self._family_policy(),
++            'family_prototype_census': (None if self._family_prototype_census is None else
++                [[name, pre] for name, pre in sorted(self._family_prototype_census.items())]),
++            'family_cursor_censuses': [[r, v] for r, v in sorted(self._family_cursor_censuses.items())],
+             'marking_id': self._state['marking_id'],
+             'authority_sha256': hashlib.sha256(self._authority.encode('utf8')).hexdigest(),
+             'implicit_dependencies': {'scope': 'ALL_POSSIBLE_UNIT_ROW_SUPPORT_PLUS_COLLISION_LEDGER',
+@@ -330,20 +349,25 @@
+         # These containers are copy-on-write. No mutable iterator is authority.
+         return _Checkpoint(self, (self._state, self._revision, self._versions,
+             self._refs, self._certs, self._slots, self._observed, self._reverse,
+-            self._last_transition, self._preferences))
++            self._last_transition, self._preferences,
++            self._family_prototype_census, self._family_cursor_censuses))
+ 
+     def rollback(self, token):
+         """No callback/replay needed for restoration after an exhausted budget."""
+         need(type(token) is _Checkpoint and token.owner is self, 'owned checkpoint')
+         (self._state, self._revision, self._versions, self._refs, self._certs,
+          self._slots, self._observed, self._reverse, self._last_transition,
+-         self._preferences) = token.payload
++         self._preferences, self._family_prototype_census,
++         self._family_cursor_censuses) = token.payload
+         self._live = {}  # Lazily reopen and verify the saved full prefix on use.
+ 
+     def _family_policy(self):
+-        return {'schema': 'receptor-family-owned-preference-policy-v1',
++        return {'schema': 'receptor-family-owned-preference-policy-v2-full-census',
+             'enabled': self.family_proposer is not None,
+             'consumer_version': 'receptor-family-primitive-preference-consumer-v2-batch-collision-ledger',
++            'provider_schema': FAMILY_PROVIDER_SCHEMA, 'provider_version': FAMILY_PROVIDER_VERSION,
++            'cursor_census_implementation': CURSOR_CENSUS_IMPLEMENTATION,
++            'type_census_policy': 'OWNED_COPY_ON_WRITE_FULL_PREIMAGE_EXPOSURES',
+             'atomic_family_moves': False, 'family_degree_or_exclusion_authority': False}
+ 
+     def _check_authority(self):
+@@ -535,6 +559,7 @@
+              'whole original point legality')
+         tile = self.semantics.with_obligations(tile, t, self.tick)
+         need(canonical(raw) == canonical(tile), 'exact entire candidate/member/point receipt')
++        self._record_family_tile_census(tile)
+         return tile
+ 
+     def _candidate_from_decision_context(self, raw, row, checked, current):
+@@ -561,6 +586,8 @@
+         current()
+         need(canonical(raw) == canonical(tile), 'exact entire candidate/member/point receipt')
+         current()
++        self._record_family_tile_census(tile)
++        current()
+         return tile
+ 
+     def _observe(self, tile):
+@@ -650,6 +677,7 @@
+         base = {'schema', 'kind', 'context_sha256'}
+         need(type(event) is dict and event.get('schema') == 'unit-row-channel4-fallback-event-v1'
+              and event.get('context_sha256') == context['context_sha256'], 'fallback event context')
++        self._join_family_cursor_census(cursor, context, event, ordinal)
+         if event.get('kind') == 'CANDIDATE':
+             need(set(event) == base | {'ordinal', 'candidate', 'independently_checked'}
+                  and type(event['ordinal']) is int and event['ordinal'] == ordinal
+@@ -763,10 +791,11 @@
+                  {canonical(k) for k in slot['keys']}, 'certified EOF agrees with complete checked stream')
+             return receipt
+ 
+-    def _validate_receipt(self, receipt, row, require_cover=False):
+-        return validate_native_receipt(receipt=receipt, language=self.language,
++    def _validate_receipt(self, receipt, row, require_cover=False, proposal=None):
++        validate_native_receipt(receipt=receipt, language=self.language,
+             semantics=self.semantics, state=self._state, row=row, tick=self.tick,
+             require_cover=require_cover)
++        self._join_family_degree_census(receipt, proposal)
+ 
+     def decision(self):
+         self.tick()
+@@ -831,7 +860,7 @@
+                     receipt = semantics.check_degree_evidence(language=language,
+                         state=receipt_state, row=row, proposal=proposal, tick=native_tick)
+                     current()
+-                    self._validate_receipt(receipt, row)
++                    self._validate_receipt(receipt, row, proposal=proposal)
+                     current()
+                     for raw in proposal['candidates']:
+                         tile = self._candidate_from_decision_context(raw, row, checked, current)
+@@ -1057,8 +1086,202 @@
+             rejected_keys=plan['rejected_keys'], retired_keys=plan['retired_keys'],
+             abandoned_family=plan['abandoned_family'], pending_preferences=self._preferences)
+ 
++    def _join_prototype_census(self, entries):
++        """Collision evidence only: no candidate, point union or domain insertion."""
++        if self._family_prototype_census is None:
++            return
++        need(type(entries) is list, 'full prototype census literal list')
++        names = dict(self._family_prototype_census)
++        for entry in entries:
++            self.tick()
++            need(type(entry) is list and len(entry) == 2
++                 and type(entry[0]) is str and type(entry[1]) is str,
++                 'full prototype census literal name/preimage pair')
++            name, encoded = entry
++            pre = json.loads(encoded)
++            need(type(pre) is dict and canonical(pre) == encoded,
++                 'canonical full literal prototype preimage, not digest-only authority')
++            base_fields = {'input_epoch','primitive_witness','ordered_premise_formulas','ordered_offsets'}
++            if set(pre) == base_fields:
++                need(pre['input_epoch'] == self._state['input_epoch']
++                     and name == 'bounded-point-tile-' + digest(pre),
++                     'reported original identity/current original epoch')
++            else:
++                need(set(pre) == {'schema','base_type_preimage','marking_id'}
++                     and pre['schema'] == 'unit-row-row0-decorated-type-v1'
++                     and pre['marking_id'] == self._state['marking_id']
++                     and type(pre['base_type_preimage']) is dict
++                     and set(pre['base_type_preimage']) == base_fields
++                     and pre['base_type_preimage']['input_epoch'] == self._state['input_epoch']
++                     and name == 'row0-decorated-tile-' + digest(pre),
++                     'reported decorated identity/current separate marking')
++            need(name not in names or names[name] == encoded,
++                 'family and entire exposed original/decorated prototype full-preimage census')
++            names[name] = encoded
++            self.tick()
++        # No in-place mutation: every owned checkpoint keeps its exact old ledger.
++        self._family_prototype_census = names
++
++    def _record_family_tile_census(self, tile):
++        if self._family_prototype_census is not None:
++            keys = (tile['base_tile']['placement_key'], tile['placement_key'])
++            self._join_prototype_census([[key['tile_type_id'], canonical(key['type_preimage'])]
++                                        for key in keys])
++
++    def _join_family_degree_census(self, receipt, proposal=None):
++        if self._family_prototype_census is None:
++            return
++        # Only after the unchanged fresh native receipt/context validator. This
++        # is identity comparison, not a second degree certificate or shortlist.
++        keys = list(receipt['candidate_keys'])
++        if receipt['schema'] == 'unit-row-channel4-degree-evidence-check-v1':
++            keys += receipt['original_base_receipt']['candidate_keys']
++            keys += [item['placement_key'] for item in receipt['marked_rejections']
++                     if 'placement_key' in item]
++            if proposal is not None:
++                for item in proposal['original_proposal']['rejections']:
++                    self.tick()
++                    if 'placement_key' in item:
++                        key = item['placement_key']
++                        tile = self.semantics.base.rebuild_tile(self.language, key['type_preimage'],
++                                                               key['translation'], self.tick)
++                        need(canonical(tile['placement_key']) == canonical(key),
++                             'public original rejection exact fresh native reconstruction')
++                        keys.append(tile['placement_key'])
++        else:
++            for tile in receipt['checked_candidates']:
++                self.tick()
++                self._record_family_tile_census(tile)
++            rejected = list(receipt['checked_root_rejections'])
++            if proposal is not None:
++                rejected += proposal['root_rejections']
++            seen_rejected = set()
++            for item in rejected:
++                self.tick()
++                if 'placement_key' in item:
++                    key = item['placement_key']
++                    encoded = canonical(key)
++                    if encoded in seen_rejected:
++                        continue
++                    seen_rejected.add(encoded)
++                    # The public rejected key has no original key packet.
++                    # Rebuild it through unchanged native point semantics rather
++                    # than manufacture an original type ID from its digest.
++                    tile = self.semantics.rebuild_tile(self.language, key['type_preimage'],
++                                                      key['translation'], self.tick)
++                    need(canonical(tile['placement_key']) == canonical(key),
++                         'public rejected degree key exact fresh reconstruction')
++                    self._record_family_tile_census(tile)
++                    keys.append(key)
++        self._join_prototype_census([[key['tile_type_id'], canonical(key['type_preimage'])]
++                                    for key in keys])
++
++    def _join_family_cursor_census(self, cursor, context, event, ordinal):
++        if self._family_prototype_census is None:
++            return
++        self.tick()
++        need(callable(getattr(cursor, 'prototype_census', None)),
++             'family lane requires public full marked cursor prefix census')
++        exported = self._copy(cursor.prototype_census())
++        fields = {'schema','version','implementation_version','context','context_sha256',
++            'input_epoch','marking_id','row','state_sha256','prototype_census',
++            'original_yielded_candidates','yielded_candidates','marked_removed',
++            'eof_reached','complete_prefix_census','scope','independently_checked',
++            'degree_zero_or_singleton_accepted','complete_candidate_graph_accepted',
++            'scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted'}
++        need(type(exported) is dict and set(exported) == fields
++             and exported['schema'] == 'unit-row-channel4-fallback-prototype-census-v1'
++             and exported['version'] == FALLBACK_VERSION
++             and exported['implementation_version'] == CURSOR_CENSUS_IMPLEMENTATION
++             and canonical(exported['context']) == canonical(context)
++             and exported['context_sha256'] == context['context_sha256']
++             and exported['input_epoch'] == self._state['input_epoch']
++             and exported['marking_id'] == self._state['marking_id']
++             and type(exported['row']) is int and exported['row'] == context['row']
++             and exported['state_sha256'] == context['state_sha256'] == digest(self._state)
++             and exported['complete_prefix_census'] is True
++             and exported['scope'] == 'CHECKED_STATE_AND_BASE_YIELDED_MARKED_CURSOR_PREFIX'
++             and all(exported[k] is False for k in ('independently_checked',
++                 'degree_zero_or_singleton_accepted','complete_candidate_graph_accepted',
++                 'scheduler_or_rollback_accepted','logical_proof_accepted','ROOT_resource_accepted')),
++             'public cursor census exact current context and separate false authority')
++        raw, shown, removed = (exported[k] for k in
++            ('original_yielded_candidates','yielded_candidates','marked_removed'))
++        need(all(type(n) is int and n >= 0 for n in (raw, shown, removed))
++             and raw == shown + removed
++             and event.get('kind') in ('CANDIDATE','EOF')
++             and shown == ordinal + (1 if event['kind'] == 'CANDIDATE' else 0)
++             and exported['eof_reached'] is (event['kind'] == 'EOF'),
++             'actual cursor prefix counters, never complete candidate authority')
++        entries = exported['prototype_census']
++        need(type(entries) is list and entries == sorted(entries)
++             and len({entry[0] for entry in entries}) == len(entries),
++             'sorted unique full public prefix census')
++        self._join_prototype_census(entries)
++        exports = dict(self._family_cursor_censuses)
++        exports[context['row']] = exported
++        self._family_cursor_censuses = exports
++        self.tick()
++
+     def _consume_family(self, decision, mode, payload):
+         self.tick()
++        provider_report = None
++        if mode == 'BATCH':
++            offered = self._copy(payload)
++            need(type(offered) is dict and set(offered) == {'batch','report'},
++                 'full provider batch/report wrapper required, including UNKNOWN/no offer')
++            payload, provider_report = offered['batch'], offered['report']
++            fields = {'schema','version','matching_mode','binding_policy','batch','request',
++                'binding','marking_id','state_sha256','decision','producer_implementation_version',
++                'residual_policy_version','host','original_state','checked_state','branch_output_receptor',
++                'records','row_rejections','offers','physical_assignment_plan','accounting',
++                'prototype_census','reason','work','scope','flags'}
++            need(type(provider_report) is dict and set(provider_report) == fields
++                 and provider_report['schema'] == FAMILY_PROVIDER_SCHEMA
++                 and provider_report['version'] == FAMILY_PROVIDER_VERSION
++                 and provider_report['producer_implementation_version'] == OBSERVED_PRODUCER_IMPLEMENTATION
++                 and provider_report['residual_policy_version'] == 'receptor-family-residual-host-binding-prefix-v2-max-index-shells'
++                 and type(provider_report['matching_mode']) is str
++                 and provider_report['matching_mode'] in ('VISIBLE_RECEPTOR','LITERAL_GROUND')
++                 and provider_report['binding_policy'] == ({
++                     'VISIBLE_RECEPTOR': 'EMPTY_PROBE_THEN_THEORY_NAMES_MAX_INDEX_SHELLS_V2',
++                     'LITERAL_GROUND': 'EXPLICIT_MINED_ORIGIN_ENVIRONMENT_V1'}[provider_report['matching_mode']])
++                 and canonical(provider_report['binding']) == canonical(self.language.binding)
++                 and provider_report['marking_id'] == self._state['marking_id']
++                 and provider_report['state_sha256'] == digest(self._state)
++                 and canonical(provider_report['decision']) == canonical(decision)
++                 and canonical(provider_report['batch']) == canonical(payload),
++                 'full current provider report/header/batch, not transferred authority')
++            source = provider_report['request']
++            need(type(source) is dict and set(source) ==
++                    {'mined','state','decision','matching_mode','binding_policy','limits'}
++                 and canonical(source['state']) == canonical(self._state)
++                 and canonical(source['decision']) == canonical(decision)
++                 and canonical(source['matching_mode']) == canonical(provider_report['matching_mode'])
++                 and canonical(source['binding_policy']) == canonical(provider_report['binding_policy'])
++                 and (provider_report['checked_state'] is None
++                      or canonical(provider_report['checked_state']) == canonical(self._state)),
++                 'whole provider request/current state/decision and declared policy')
++            flags = {'proposal_only': True, 'matching_complete': False,
++                 'fact_accepted': False, 'degree_or_EOF_accepted': False, 'engine_activated': False,
++                 'scheduler_accepted': False, 'pruning_accepted': False, 'proof_accepted': False,
++                 'trajectory_accepted': False, 'RL_accepted': False, 'runtime_qualified': False}
++            need(type(provider_report['flags']) is dict and set(provider_report['flags']) == set(flags)
++                 and all(provider_report['flags'][key] is value for key, value in flags.items()),
++                 'provider syntax/physical proposal has no scheduler or proof authority')
++            entries = provider_report['prototype_census']
++            need(type(entries) is list and entries == sorted(entries)
++                 and len({entry[0] for entry in entries}) == len(entries),
++                 'sorted unique full provider exposure census even without retained offer')
++            self._join_prototype_census(entries)
++        else:
++            need(mode == 'CONTINUATION', 'explicit unchanged family request modes')
++            # Every pending key was admitted with the prior full batch report.
++            # A continuation may not introduce an unreported prototype identity.
++            for key in payload['member_keys']:
++                self.tick()
++                need(self._family_prototype_census.get(key['tile_type_id']) == canonical(key['type_preimage']),
++                     'owned pending member already in complete exposure census')
+         request = {'schema': 'receptor-family-primitive-preference-request-v1',
+                    'mode': mode, 'payload': self._copy(payload)}
+         self.counts['family_checks'] += 1
+@@ -1098,13 +1321,8 @@
+                     self.tick()
+                     tile = member['tile']
+                     type_census.extend((tile['base_tile']['placement_key'], tile['placement_key']))
+-        names = {}
+-        for key in type_census:
+-            self.tick()
+-            name, preimage = key['tile_type_id'], canonical(key['type_preimage'])
+-            need(name not in names or names[name] == preimage,
+-                 'family and entire exposed original/decorated prototype full-preimage census')
+-            names[name] = preimage
++        self._join_prototype_census([[key['tile_type_id'], canonical(key['type_preimage'])]
++                                    for key in type_census])
+         selection = receipt['selection']
+         if receipt['status'] == 'READY':
+             need(type(selection) is dict and set(selection) == {'candidate','family'}
+@@ -1134,7 +1352,15 @@
+                      and canonical(family['initial_instance']) == canonical(payload['initial_instance'])
+                      and canonical(family['member_keys']) == canonical(payload['member_keys']),
+                      'continuation preserves full initial instance/member identity')
+-        return selection, receipt
++        checked_record = {'schema': 'receptor-family-engine-full-census-check-v1',
++            'version': VERSION, 'mode': mode, 'status': receipt['status'],
++            'binding': self._copy(self.language.binding), 'marking_id': self._state['marking_id'],
++            'state_sha256': digest(self._state), 'decision': self._copy(decision),
++            'consumer_receipt': receipt, 'provider_report': provider_report,
++            'prototype_census': [[name, pre] for name, pre in sorted(self._family_prototype_census.items())],
++            'census_is_collision_evidence_only': True,
++            **{k: False for k in ADVICE_FLAGS}}
++        return selection, checked_record
+ 
+     def _select_family_branch(self, decision):
+         """Preference plan only; decision() already completed global scheduling."""

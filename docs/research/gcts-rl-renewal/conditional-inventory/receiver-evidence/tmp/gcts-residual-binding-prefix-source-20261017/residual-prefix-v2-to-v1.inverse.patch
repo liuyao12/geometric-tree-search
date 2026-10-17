@@ -1,0 +1,80 @@
+--- source.py
++++ source.py
+@@ -6,7 +6,7 @@
+ """
+ import re
+ 
+-VERSION = 'receptor-family-residual-host-binding-prefix-v2-max-index-shells'
++VERSION = 'receptor-family-residual-host-binding-prefix-v1'
+ SCHEMA = 'receptor-family-residual-host-binding-prefix-v1'
+ DEFAULT_LIMITS = {'work': 100000, 'depth': 64, 'bindings': 64}
+ FLAGS = {'proposal_only': True, 'source_environment_used': False,
+@@ -201,39 +201,39 @@
+             reason = 'NO_RESIDUAL_NAME_PARAMETERS' if not domains else 'EMPTY_ARITY_COMPATIBLE_NAME_DOMAIN'
+         else:
+             lengths = [len(d['values']) for d in domains]
+-            shell, final_shell = 0, max(lengths)-1
+-            while len(bindings) < work.limits['bindings'] and shell <= final_shell:
++            diagonal, diagonal_end = 0, max(lengths)
++            cartesian, cartesian_done = [0] * len(domains), False
++            channel, seen = 'DIAGONAL', set()
++            while len(bindings) < work.limits['bindings'] and not cartesian_done:
+                 work.step()
+-                bounds = [min(size, shell+1) for size in lengths]
+-                indices, shell_done = [0] * len(domains), False
+-                while len(bindings) < work.limits['bindings'] and not shell_done:
+-                    work.step()
+-                    current = tuple(indices)
+-                    i = len(indices)-1
++                if channel == 'DIAGONAL' and diagonal < diagonal_end:
++                    indices = tuple(diagonal % size for size in lengths)
++                    diagonal += 1
++                    used_channel = 'DIAGONAL'
++                else:
++                    indices = tuple(cartesian)
++                    used_channel = 'CARTESIAN'
++                    i = len(cartesian)-1
+                     while i >= 0:
+-                        work.step(); indices[i] += 1
+-                        if indices[i] < bounds[i]:
++                        work.step(); cartesian[i] += 1
++                        if cartesian[i] < lengths[i]:
+                             break
+-                        indices[i] = 0; i -= 1
++                        cartesian[i] = 0; i -= 1
+                     if i < 0:
+-                        shell_done = True
+-                    # Exact max-index shells partition the full named product:
+-                    # finish all first-two-name tuples before any third name.
+-                    if max(current) != shell:
+-                        continue
+-                    binding = {}
+-                    for domain, index in zip(domains, current):
+-                        work.step(); binding[domain['parameter_id']] = domain['values'][index]
+-                    binding = work.copy(binding)
+-                    bindings.append(binding)
+-                    entries.append({'binding_index': len(bindings)-1, 'channel': 'MAX_INDEX_SHELL',
+-                                    'domain_indices': list(current)})
+-                if shell_done:
+-                    shell += 1
+-                else:
+-                    break
+-            named_exhausted = shell > final_shell
+-            reason = 'NAMED_MAX_INDEX_SHELL_DOMAIN_ENDED' if named_exhausted else 'BINDING_CAP_PREFIX_UNKNOWN'
++                        cartesian_done = True
++                channel = 'CARTESIAN' if used_channel == 'DIAGONAL' else 'DIAGONAL'
++                if indices in seen:
++                    continue
++                binding = {}
++                for domain, index in zip(domains, indices):
++                    work.step(); binding[domain['parameter_id']] = domain['values'][index]
++                binding = work.copy(binding)
++                seen.add(indices)
++                bindings.append(binding)
++                entries.append({'binding_index': len(bindings)-1, 'channel': used_channel,
++                                'domain_indices': list(indices)})
++            named_exhausted = cartesian_done
++            reason = 'NAMED_CARTESIAN_DOMAIN_ENDED' if cartesian_done else 'BINDING_CAP_PREFIX_UNKNOWN'
+     except _CallbackFailure as error:
+         raise error.error
+     except _Unfinished as error:

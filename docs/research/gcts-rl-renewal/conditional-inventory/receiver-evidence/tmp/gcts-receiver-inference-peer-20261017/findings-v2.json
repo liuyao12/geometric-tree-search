@@ -1,0 +1,281 @@
+{
+  "actual_or_result_bytes_read": false,
+  "author_overlap": "Reviewer authored observed producer fd3e, residual policy2925 and older kernel/engine/miner/provider ancestry. Root authored this caller/helper/reader integration. Controls authored current provider7/consumer/host adapter; Diagnosis authored current engine6 and independent checker4358/9fd/8f. Shared interface coordination is disclosed. This is genuine distinct review of Root integration, not an independent peer of reviewer-authored dependencies; those dependencies retain separately authored Source reviews.",
+  "blocking_findings": [],
+  "case_source": {
+    "bytes": 7839,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/receiver_inference_cases_v1.py",
+    "sha256": "bc42eb2012f6247a09b6a22ea513604c451ffb249d89b5c01d57dcd286983e8f"
+  },
+  "current_caller": {
+    "bytes": 57521,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/receiver_inference_cold_v2.py",
+    "sha256": "370c642e25f18e1eda8403dd67904bdf5139f5853a29dfe4c4f914e702bd8c2e"
+  },
+  "current_reader": {
+    "bytes": 21794,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT_read_receiver_inference_saved_v2.py",
+    "sha256": "d04a8d0f5c11bfab52a70eea398c5139b22c18d251a1bd84644fe50899bf7418"
+  },
+  "distinct_dependency_reviews": {
+    "engine": {
+      "bytes": 2957,
+      "path": "/private/tmp/gcts-family-census-engine-peer-20261017/typed-Source-review-v6.json",
+      "sha256": "bd16effb5dc2a56c63fab7cdd8b68a757ad6e3195355066fceca635a8692d4e9"
+    },
+    "provider": {
+      "bytes": 3099,
+      "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/typed-Source-review-v7.json",
+      "sha256": "516d6d4ded890f8f0dc9a3a5b3efa7fcd7cb3253caeb4017fd7062b1d1c0e234"
+    }
+  },
+  "findings": [
+    {
+      "detail": "Whole V1 caller/helper/reader and full native-inventory parent Sources reviewed; immediate V2 caller4/reader2 raw regions independently reconstructed forward and fullinverse, whole AST inverse and four real -F0 patch applications byte-exact. Caller36/reader10 named regions raw+AST exact to V1; earlier caller35/reader9 exact to native parent retained. No project module evaluated.",
+      "evidence": {
+        "V1": {
+          "bytes": 4181,
+          "path": "/private/tmp/gcts-receiver-inference-peer-20261017/V1-ancestry-findings.json",
+          "sha256": "101bdc9d6c7cc45a4405af9e84b291ec495b623a980a884e0af1045cbb12d837"
+        },
+        "V2": {
+          "bytes": 21516,
+          "path": "/private/tmp/gcts-receiver-inference-peer-20261017/V2-independent-static-audit.json",
+          "sha256": "b9f8333c681ec52a7abc27aa72a143d67a16d504de134ec7401ca39f283672e5"
+        }
+      },
+      "id": "RI02-ANCESTRY",
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Current executable21/input10, original semantic17/input2/full original binding and original limits kept separate. Current map differs only intake/provider/engine from V1. Fresh language constructed from pinned ORIGINAL_SOURCES; original epoch never rebased. Reader literal current operative contract joins exact current map. Actual inputs/profiles/marking/result files were not opened by reviewer; literal authority parity and retained ancestry are not a fresh input hash claim.",
+      "id": "RI02-AUTHORITY",
+      "source_lines": {
+        "caller": [
+          386,
+          402,
+          425,
+          471
+        ]
+      },
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Current provider7 exact full-reason SCOPE allowance repair has same kwargs/report/wire/row quota/policy; only ownVERSION plus two exact reason-classification sites. All other errors/native/callback/resource failures propagate. Engine6 only ownVERSION/provider7 gate vs5, retained Source ledger covers report.prototype_census including no-offer/rejected/preflight/partial-prefix exposures plus later engine degree/cursor original+decorated types. Distinct current provider7 and engine6 Source peers explicitly checked; no current runtime qualification inherited.",
+      "evidence": {
+        "engine": {
+          "contract": {
+            "bytes": 15881,
+            "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-contract-v6.json",
+            "sha256": "84319df96c2e50cfb931afbbfa50698d92cad1ab90ac192132a589d89bb095ce"
+          },
+          "handoff": {
+            "bytes": 5171,
+            "path": "/private/tmp/gcts-family-census-engine-source-20261017/handoff-v6.json",
+            "sha256": "518373b15c40112b4a0072e374cfce8c0c5b08aaee4c3cd7a55dbe06a4fe092f"
+          },
+          "source": {
+            "bytes": 92132,
+            "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v6.py",
+            "sha256": "eab17f2f9d1a083f6e72be7db1b12a17ef0a407ba6a9b28ec5e1c0a33454a78a"
+          }
+        },
+        "provider": {
+          "contract": {
+            "bytes": 9783,
+            "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v7.json",
+            "sha256": "dee233de9030c7baf9758a543b69aaa9bdeb86aec213fc27620918faabaa1f0a"
+          },
+          "handoff": {
+            "bytes": 4515,
+            "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/handoff-v7.json",
+            "sha256": "cecdc1a00797f170382ec3b780412dd53ab4d8e435a91bdd342e3fd97b90e859"
+          },
+          "source": {
+            "bytes": 54448,
+            "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+            "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+          }
+        }
+      },
+      "id": "RI02-COMPONENT-REBIND",
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Root caller authenticates frozen inventory and Root acceptance raw pins and full original-model/marking/Source joins, then joins every mined occurrence to full source-ground qualified record and family-ID list. Helper chooses same prior-qualified open pool (literal plus abstract), retaining full frozen pool and census. Prior source-ground checks are data provenance; each offered source/current instance still undergoes current fresh producer/checker/native adapter. Library construction is explicitly reused, not charged as cold construction in these receiver windows.",
+      "id": "RI02-POOL",
+      "source_lines": {
+        "caller": [
+          561,
+          576,
+          583
+        ],
+        "case": [
+          44,
+          54
+        ]
+      },
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Both arms start actual empty24row root with existing ASSIGNED-OUTPUT-THEN-ROW tie, maximum_nodes2/events256 and full native fallback. Node2 is search-allocation cap, not a smaller mathematical model. Point semantics goes to physical/native interfaces; routed semantics goes to engine degree/transition/fresh-cover path. Provider is actual engine callback after complete global BRANCH, never fabricated BRANCH; no supplied receiver formulas/proof route. One ordinary primitive per branch and subsequent global checks remain engine-owned.",
+      "id": "RI02-REAL-BRANCH",
+      "source_lines": {
+        "case": [
+          34,
+          59,
+          68,
+          75,
+          80,
+          84,
+          110,
+          120
+        ]
+      },
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Helper returns exact {batch,report} provider value unchanged, checks outer batch equals inner report.batch and logs digest of inner report with full supplied current state/decision. Engine receives complete census envelope and explicit frozen construction census. Provider7 mode is explicit: VISIBLE_RECEPTOR starts empty inference plus source-free residual name prefix; LITERAL_GROUND alone uses source environment. Both share equal per-record structural prefix quota32/record under row_trials64. Actual candidate attempts and native rejection costs are charged; no matching completeness or nonidentity/usefulness guarantee.",
+      "id": "RI02-ENVELOPE-AND-CENSUS",
+      "source_lines": {
+        "case": [
+          84,
+          91,
+          104,
+          129
+        ]
+      },
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Full engine before/after snapshots compared literally; returned root_restored and stack_restored true required; frozen pool/mined identities unchanged. Assertions can fail or timeout and then no positive returned record is accepted. No engine/private slot edits or fabricated rollback receipt.",
+      "id": "RI02-ROOT-RESTORE",
+      "source_lines": {
+        "case": [
+          130,
+          133
+        ]
+      },
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Whole current module CodeSeal/function anchors and immediate FunctionType guard enclose helper transaction. Fresh setup/imports/marking/pool reads/search/provider/checking/logging/output/exit remain inside native20/internal500MiB reserve with outer512MiB. Existing once/native-terminal/55failure/60owned/90+1caller boundary and complete final failure tail remain inherited. No arbitrary reentrancy/nth-tick/error-prefix/performance equivalence promise.",
+      "id": "RI02-NATIVE-GUARD",
+      "source_lines": {
+        "caller": [
+          350,
+          365,
+          442,
+          448,
+          463,
+          468,
+          598,
+          618,
+          676
+        ]
+      },
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Fixed13 phase sites in one native clock domain,11 mandatory successful-return sites and optional first provider pair; phases are inclusive entry observations, never active frame/cause/exclusive timing. Failure writer remains exact inherited builtinTimeoutError-only best effort fixed4slots; all are uninstrumented None in this helper. Failure-only55/no-owned/incomplete diagnostic never implies progress, proof, completed receiver or positive20 acceptance.",
+      "id": "RI02-PHASE-AND-FAILURE",
+      "source_lines": {
+        "caller": [
+          364,
+          608,
+          618
+        ],
+        "reader": [
+          69,
+          89,
+          223,
+          309
+        ]
+      },
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Saved reader imports only stdlib and parses saved bytes: whole canonical raw pin/EOF, exact once/tool positive integer same-session continuity, wait4/allreaped/native launch-terminal-postprobe/resource/Date gates, strict positive20 vs failure55, exact owned pair and2LF response, compressed4MiB and expanded16MiB one complete base64/zlib stream/SHA/canonicalJSON joins. No clock/model/helper replay. Literal V2 contract+bodyVERSION are its only immediate edits; inherited native/wire/session gate unchanged.",
+      "id": "RI02-SAVED-NATIVE-WIRE",
+      "source_lines": {
+        "reader": [
+          144,
+          180,
+          195,
+          207,
+          217,
+          236,
+          244,
+          251,
+          270
+        ]
+      },
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "Saved success records only complete returned receiver-probe/native resource/wire status; broad proof/wholeengine/GCTS/RL/benefit flags remain false. Reader does not reconstruct/match/native-check a candidate or infer useful/nonidentity transfer. Failure remains UNKNOWN, returned record false/nativepositive false, missing diagnostic stays missing. A later scientific interpretation must use measured full payload and separately declared gates.",
+      "id": "RI02-SAVED-SCOPE",
+      "source_lines": {
+        "reader": [
+          223,
+          285,
+          297,
+          304
+        ]
+      },
+      "status": "SOURCE_CHECKED"
+    },
+    {
+      "detail": "No actual, output, model or saved helper executed/read here. All current-runtime receiver inference, actual provider reach/offer/useful nonidentity transfer, census temporal/rollback behavior and native fit remain unmeasured for this composite. A two-node probe may timeout/UNKNOWN or make no useful offer; no completed theorem, generalized lemma validity, universal inference/physical completeness, full-engine conformance, RL or GCTS advantage accepted. Source review is required before a separate Root once grant, not such a grant.",
+      "id": "RI02-GAPS",
+      "status": "OPEN_RUNTIME_OBLIGATIONS"
+    }
+  ],
+  "independent_static_audit": {
+    "bytes": 21516,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/V2-independent-static-audit.json",
+    "sha256": "b9f8333c681ec52a7abc27aa72a143d67a16d504de134ec7401ca39f283672e5"
+  },
+  "retained_V1_ancestry": {
+    "bytes": 4181,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/V1-ancestry-findings.json",
+    "sha256": "101bdc9d6c7cc45a4405af9e84b291ec495b623a980a884e0af1045cbb12d837"
+  },
+  "reviewed_source_contracts": [
+    {
+      "bytes": 18134,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v2.json",
+      "sha256": "fe318fd43d3cc2ca4761b831ef012f7a4a47f948ec910f1df3059dc0a8d65a90"
+    },
+    {
+      "bytes": 1050,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/reader-Source-contract-v2.json",
+      "sha256": "7331d22bed6ee11660b538f84d808f57c1dc1201b93cc513897a197180f12e1d"
+    },
+    {
+      "bytes": 17884,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "8af2329d5a56c7aa0da665bf1152714bae9f5d8051d2e6a8507d94132d5491ad"
+    },
+    {
+      "bytes": 1075,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "ca072cf3ac072dc6b36468d20adc1d248895d0523516a98cc0b30ed58194c413"
+    },
+    {
+      "bytes": 9783,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v7.json",
+      "sha256": "dee233de9030c7baf9758a543b69aaa9bdeb86aec213fc27620918faabaa1f0a"
+    },
+    {
+      "bytes": 15881,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-contract-v6.json",
+      "sha256": "84319df96c2e50cfb931afbbfa50698d92cad1ab90ac192132a589d89bb095ce"
+    }
+  ],
+  "reviewer_identity": "/root/arithmetic_induction",
+  "schema": "ROOT-receiver-inference-peer-findings-v2",
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}

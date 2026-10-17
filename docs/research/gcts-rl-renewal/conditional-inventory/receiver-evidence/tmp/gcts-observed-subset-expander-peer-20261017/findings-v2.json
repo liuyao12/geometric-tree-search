@@ -1,0 +1,134 @@
+{
+  "API": {
+    "bytes": 6342,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/API-wire-v2.json",
+    "sha256": "91fb673972686af965200962b3c2fd8ff152cf48dcd2935454af7a7faa41e762"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_disclosure": "Reviewer authored independent expansion checker4358, marked verifier9fd, marked-aware checker8f and ea300 point-adapter ancestry; reviewed the original expander and coordinated this wire and residual-binding boundary. Arithmetic authored this producer extension. Shared schema/native primitives and previous component authorship are disclosed; this is a distinct Source review, not an unrelated mathematical implementation or runtime qualification.",
+  "blockers": [],
+  "disposition": "Conditional Source PASS within the stated untrusted root syntax-inference scope.",
+  "future_integration_gates": [
+    "Current provider23da still uses old match_family and minerV2; current CASE and receiver consumers do not acquire this endpoint merely from unchanged VERSION. Bind an explicit future current Source/implementation/API and declared inference/control policy.",
+    "After an environment proposal, allocate physical rows without formula-dependent model shrink, rebind all actual source keys/occupancy, preserve absent marks and fact_accepted false, then produce the ordinary complete expansion and freshly check4358/native4bd6/full point union under unchanged original17/input2 epoch. New prefix is not accepted by4358 as an expansion receipt.",
+    "Freshly join the complete offered/rejected/preflight/partial/no-offer original+decorated prototype census with the whole engine/public exposure ledger before any preference acceptance. Never merge alternative point unions.",
+    "Any future receiver experiment must charge construction, failed attempts, complete expansion/checking and ordinary fallback equally under its declared matched policy/caps; no current runtime, native fit, availability or benefit is inferred."
+  ],
+  "future_runtime_challenges_unexecuted": [
+    "Output-only observed subset with empty inputs, complete hypotheses, derived input obligations; all hidden parameters still required.",
+    "Duplicate, out-of-order or unknown subset IDs, mismatched Gamma or missing output, including empty candidate iterator; malformed observations must fail before iterator consumption.",
+    "Joint repeated FORMULA/TERM/predicate/VARIABLE constraints across visible ports; incompatible equations cannot emit a proposal.",
+    "A FORMULA meta absorbing an all-tree leaves a distinct internal BOUND/EIGEN parameter unresolved; explicit finite candidate supply is separately typed/forward checked.",
+    "Capture avoidance, external-free allowance and root eigen restrictions against all derived input formulas; nested/internal validity remains a later full-expansion challenge.",
+    "Rejected-attempt followed by a valid attempt: no renaming/condition/root-input leakage; native tick identity, external iterator error and own-limit prefix behavior remain distinct."
+  ],
+  "independent_static_audit": {
+    "bytes": 14155,
+    "path": "/private/tmp/gcts-observed-subset-expander-peer-20261017/independent-static-audit-v2.json",
+    "sha256": "a4c62f01eb8f63deff9956f3cf65a932c5b7e9d9f6511bcee1122394be9ac516"
+  },
+  "parent_source": {
+    "bytes": 51898,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+    "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "receptor-family-observed-subset-inference-independent-findings-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope_limits": "No project/helper/module evaluation, scientific calls, tests, enumeration, clocks, actual/result/proofword/donor reads, physical binding, native runtime acceptance, implementation grant or publication was performed.",
+  "source": {
+    "bytes": 60281,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+    "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+  },
+  "source_contract": {
+    "bytes": 10891,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/Source-contract-v2.json",
+    "sha256": "31b15808045d8760ac69678986cad103588b9a6cb887fd6cc190390061c952b4"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "whole_review": [
+    {
+      "finding": "The old protocol VERSION remains v1, while the new implementation tag and distinct environment-prefix/proposal schemas identify the additive endpoint. Exact Source plus implementation gate is required; old VERSION alone cannot authorize this endpoint or label its result an old expansion receipt.",
+      "id": "OE01",
+      "lines": [
+        12,
+        13,
+        832,
+        961
+      ]
+    },
+    {
+      "finding": "Before iter(candidate_bindings), the wrapper requires complete ordered hypothesis bindings with exact original Gamma occurrence and native formula, then ordered duplicate-free declared input/output subsets and at least one actually supplied output. Empty observed inputs are allowed. Physical source, occupancy and fact fields are excluded from these exact records.",
+      "id": "OE02",
+      "lines": [
+        914,
+        931
+      ]
+    },
+    {
+      "finding": "Supplied partial bindings use the original typed-value checks. All observed equations run to a monotone fixed point through the unchanged pattern inference; every declared parameter must then exist. Internal-only BOUND/EIGEN values are not inferred from a FORMULA-meta absorbing a quantified AST, guessed, or taken from a source environment. Missing values explicitly produce UNBOUND_UNKNOWN.",
+      "id": "OE03",
+      "lines": [
+        835,
+        856
+      ]
+    },
+    {
+      "finding": "The unchanged complete _binding checks abstraction arities and external free-variable allowances before projection. Every root hypothesis/input/output is re-instantiated using the existing capture-safe machinery, native syntax checked, and each observed literal compared exactly. Greedy pattern inference is incomplete; mismatch or finite candidate exhaustion is not logical absence or pruning evidence.",
+      "id": "OE04",
+      "lines": [
+        506,
+        526,
+        860,
+        876
+      ]
+    },
+    {
+      "finding": "Each attempt has a copied local environment. Renamings reset before inference and again before exported forward projection; conditions and current formula-only root inputs reset before root-side checks. Failed attempts cannot donate exported diagnostics or previous root inputs to a later proposal.",
+      "id": "OE05",
+      "lines": [
+        848,
+        860,
+        879,
+        894
+      ]
+    },
+    {
+      "finding": "Root distinct/eigen/side-condition checks include complete original Gamma and every required root input formula, including derived obligations. Full primitive body expansion, nested-frame conditions, physical sharing/rows, actual premise truth and native membership are explicitly unperformed. The full_internal_expansion_checked field is false; new code never calls expand/_frame or any host/scientific API.",
+      "id": "OE06",
+      "lines": [
+        617,
+        652,
+        877,
+        894
+      ]
+    },
+    {
+      "finding": "One cumulative unchanged _Work budget covers setup, observation validation, all candidate attempts and returned copies. Only per-candidate DescriptorError becomes a recorded syntax rejection. Tick failures are wrapped by original _Work and re-raised as the original exception; external iterator failures are outside the per-binding catch. Own work/depth and finite result/binding bounds leave an unqualified prefix with inference_complete false.",
+      "id": "OE07",
+      "lines": [
+        934,
+        961
+      ]
+    },
+    {
+      "finding": "Derived input formulas are labelled conditional obligations; observed labels are syntax provenance only. Neither a root-side check nor an observed output authenticates BRANCH, occupancy, selected source, theorem, point board, engine, pruning or learning. The unchanged false authority flags are preserved.",
+      "id": "OE08",
+      "lines": [
+        868,
+        894
+      ]
+    },
+    {
+      "finding": "Independent raw edit replay and complete reverse recover the entire frozen f32e Source. Erasing only the implementation assignment and two appended definitions recovers the whole parent AST. All 54 inherited class/function/nested regions are raw and AST exact. Both saved Unix patches were actually applied with -F0 to reviewer-owned raw copies and compared byte-for-byte; parent/current compile without evaluation.",
+      "id": "OE09",
+      "lines": [
+        1,
+        961
+      ]
+    }
+  ]
+}

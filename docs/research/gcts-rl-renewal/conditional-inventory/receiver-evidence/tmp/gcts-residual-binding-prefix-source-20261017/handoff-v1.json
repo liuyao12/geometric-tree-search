@@ -1,0 +1,97 @@
+{
+  "API": {
+    "bytes": 5811,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/API-wire-v1.json",
+    "sha256": "1046d24439cb3b8fd38474c008d450c1ad80ce4fb30c943c4abddbde0a83328c"
+  },
+  "API_summary": "build_residual_binding_prefix(*,descriptor,host,residual_parameters,tick,limits=None) -> bounded materialized bindings beginning {}, report and full syntax inputs.",
+  "Review_ABI": {
+    "required": [
+      "Whole Source/API/contract and actual addition/inverse patches",
+      "Generic theory-only priority/full name domains/fair finite tuples",
+      "No source env/physical/native authority and correct residual F/T accounting",
+      "Initial-empty probe remaining-attempt integration and cumulative resource scope",
+      "Errors/UNKNOWN/copy completion and author overlap"
+    ],
+    "schema": "receptor-family-residual-host-binding-prefix-typed-Source-review-v1",
+    "scientific_calls": 0,
+    "scope": "receptor-family-residual-host-binding-prefix-Source",
+    "source": {
+      "bytes": 12776,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v1.py",
+      "sha256": "bed90fd51324281a8d34e4250a7d752d9ea5e1ec76f70924a8aa2295278b7769"
+    },
+    "sources": {
+      "residual_policy": {
+        "bytes": 12776,
+        "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v1.py",
+        "sha256": "bed90fd51324281a8d34e4250a7d752d9ea5e1ec76f70924a8aa2295278b7769"
+      }
+    }
+  },
+  "actual_patch_evidence": {
+    "bytes": 1585,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/actual-patch-evidence-v1.json",
+    "sha256": "2964d14d0e35913e3511f977fb5f0f4f08ed4704a3c7566d2852a96c0b4df935"
+  },
+  "author": "/root/arithmetic_induction",
+  "engine_activated": false,
+  "integration": "Controls receives an explicit injected residual_policy module. Initial fd3e [{}] probe joins same host/descriptor and untrusted residualIDs; consume policy.bindings[1:] within remaining63 default attempts, same cumulative tick/native20/512 and charged failed work. Full forward/native/census gates stay separate.",
+  "next_action": "Root assigns distinct whole Source peer and any explicit future provider/cold composition. No scientific actual or runtime qualification authorized by Source packet.",
+  "patches": [
+    {
+      "bytes": 13072,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/empty-to-residual-prefix.forward.patch",
+      "sha256": "d70032406aa80e1c9a86a1b445446d77fa22e06969f3d4605e2754119e458240"
+    },
+    {
+      "bytes": 13072,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual-prefix-to-empty.inverse.patch",
+      "sha256": "97aa61535f1e4664815bb588272a7d0bda75a88daee770dfbfe956f86914cce7"
+    }
+  ],
+  "policy_summary": "Theory-axiom literal var/all names first then all host remainder; residual descriptor-order names only, predicate arity exact, interleaved diagonal/Cartesian duplicate-free tuples. FORMULA/TERM omitted for observed inference/UNKNOWN, not origin fallback.",
+  "proof_accepted": false,
+  "pruning_accepted": false,
+  "runtime_qualified": false,
+  "schema": "receptor-family-residual-host-binding-prefix-Source-handoff-v1",
+  "scientific_calls": 0,
+  "scope": "receptor-family-residual-host-binding-prefix-Source",
+  "source": {
+    "bytes": 12776,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v1.py",
+    "sha256": "bed90fd51324281a8d34e4250a7d752d9ea5e1ec76f70924a8aa2295278b7769"
+  },
+  "source_contract": {
+    "bytes": 7896,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/Source-contract-v1.json",
+    "sha256": "2e55147a635e7ecdcbe5f21cfdcbc4ed8498dc563b501ba8632c361a6b8dcea8"
+  },
+  "source_delta": {
+    "bytes": 14273,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/Source-delta-v1.json",
+    "sha256": "a6b5639294b537ba46da44d80663e41f0ca652cdc0846cfabef8d1d867527e23"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "residual_policy": {
+      "bytes": 12776,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v1.py",
+      "sha256": "bed90fd51324281a8d34e4250a7d752d9ea5e1ec76f70924a8aa2295278b7769"
+    }
+  },
+  "static_audit": {
+    "bytes": 4380,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/static-audit-v1.json",
+    "sha256": "1af90967507863c4b0bd9cf8fce4309faeca8d2250ea1135da5249b450363035"
+  },
+  "static_summary": {
+    "actual_text_patch_forward_inverse": true,
+    "compile_without_evaluation": true,
+    "full_raw_AST_inverse": true,
+    "no_scientific_tests": true,
+    "whole_addition_regions": 1
+  },
+  "version": "receptor-family-residual-host-binding-prefix-v1"
+}

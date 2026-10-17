@@ -1,0 +1,185 @@
+--- before
++++ after
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-observed-receptor-transfer-provider-v5'
++VERSION = 'receptor-family-observed-receptor-transfer-provider-v6'
+ RESULT_SCHEMA = 'receptor-family-observed-receptor-transfer-provider-v2'
+ BATCH_SCHEMA = 'receptor-family-primitive-preference-batch-v1'
+ MINER_VERSION = 'receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue'
+@@ -397,7 +397,8 @@
+     policy = INFERENCE_BINDING_POLICY if matching_mode == 'VISIBLE_RECEPTOR' else LITERAL_BINDING_POLICY
+     instances, records, rejections, offers = [], [], [], []
+     names, seen_instances, family_names = {}, set(), {}
+-    plans, physical = [], []
++    plans, physical, record_allocations = [], [], []
++    allocated_record_count = record_trial_quota = 0
+     planning_complete, planning_reason = False, None
+     accounting = {'planned_assignments': 0, 'attempted_assignments': 0,
+         'binding_attempts': 0, 'ground_environment_proposals': 0,
+@@ -462,12 +463,21 @@
+                 'output_port': output_id, 'assignment': [[list(k), v] for k, v in assignment.items()],
+                 'detail': extra, 'scope': 'THIS_ADVISORY_BINDING_OR_ASSIGNMENT_ONLY', 'pruning_accepted': False})
+ 
++        # Each eligible record receives the same finite structural trial share.
++        # Unused shares/remainders are not reassigned using matching outcomes.
++        allocated_record_count = min(work.limits['records'], len(mined['families']))
++        record_trial_quota = work.limits['row_trials'] // allocated_record_count if allocated_record_count else 0
++        record_allocations = [{'record_index': i, 'row_trial_quota': record_trial_quota,
++            'row_trials': 0, 'planned_assignments': 0, 'status': 'NOT_STARTED',
++            'bounded_reason': None} for i in range(allocated_record_count)]
+         # This entire plan is built before any mode-dependent receptor inference.
+         try:
+             for record_index, record in enumerate(mined['families']):
+                 work.step()
+                 if record_index >= work.limits['records']:
+                     raise _AssignmentPrefix('OWN_RECORD_PLANNING_PREFIX')
++                allocation = record_allocations[record_index]
++                allocation['status'] = 'SOURCE_GROUND_CHECKING'
+                 fields(record, ('schema','cut','descriptor','family_preimage','family_id','substitution',
+                     'source_port_bindings','source_node_map','boundary_source_map','abstraction_map',
+                     'boundary_edge_map','output_map','fragment_generalization','costs','flags'), 'EXTRACTION')
+@@ -491,13 +501,19 @@
+                     'source_roundtrip': None, 'source_native_membership': [],
+                     'anchors': [], 'matches': [], 'checks': [], 'preflights': [], 'adaptations': []}
+                 records.append(observation)
+-                if ground['status'] == 'UNKNOWN':continue
++                if ground['status'] == 'UNKNOWN':
++                    allocation['status'] = 'SOURCE_GROUND_UNKNOWN'
++                    allocation['bounded_reason'] = 'SOURCE_GROUND_UNKNOWN'
++                    continue
+                 require(ground['status'] == 'READY_PROPOSAL', 'EXPAND_PROTOCOL', 'whole source-ground expansion')
+                 checked = expansion_checker.check_expansion(registry=work.copy(registry), family_id=fid,
+                     host=work.copy(host), substitution=work.copy(record['substitution']),
+                     port_bindings=work.copy(record['source_port_bindings']), proposal=work.copy(ground), tick=work.step)
+                 checked = work.copy(checked);observation['source_ground_check'] = checked
+-                if not _ready_checked(checked, ground):continue
++                if not _ready_checked(checked, ground):
++                    allocation['status'] = 'SOURCE_CHECK_UNKNOWN'
++                    allocation['bounded_reason'] = 'SOURCE_CHECK_UNKNOWN'
++                    continue
+                 origin = checked['expansion'];observation['source_roundtrip'] = _ground_roundtrip(record, mined, origin, work)
+                 nodes = origin['primitive_nodes'];require(bool(nodes), 'EXTRACTION', 'nonempty primitive cut')
+                 if len(nodes) > 24:raise _Unfinished('OWN_EXPANDED_MEMBER_PREFIX')
+@@ -521,49 +537,62 @@
+                     require(type(index) is int and 0 <= index < len(host['ordered_Gamma']), 'GAMMA', 'original occurrence')
+                     hypotheses.append({'port_id': p['port_id'], 'gamma_index': index,
+                                        'formula': work.copy(host['ordered_Gamma'][index])})
+-                for output in origin['outputs']:
+-                    work.step();fields(output['source'], ('node',), 'ANCHOR')
+-                    anchor = output['source']['node'];require(anchor in node_table, 'ANCHOR', 'actual exposed primitive')
+-                    domains = _constraints(origin, anchor, decision['row'], work)
+-                    observation['anchors'].append({'output_port': output['port_id'], 'node_id': anchor,
+-                        'row': decision['row'], 'current_formula': work.copy(branch_formula),
+-                        'strict_prior_domains': None if domains is None else [[list(k), v] for k, v in domains.items()]})
+-                    if domains is None:continue
+-                    def visit(index, assignment):
+-                        work.step(index)
+-                        if index == len(keys):
+-                            observed = {'hypotheses': work.copy(hypotheses), 'inputs': [], 'outputs': []}
+-                            for p in origin['input_ports']:
+-                                f = row_formulas[assignment[('input', p['port_id'])]]
+-                                if f is not None:observed['inputs'].append({'port_id': p['port_id'], 'formula': work.copy(f)})
+-                            for p in origin['outputs']:
+-                                f = row_formulas[assignment[('node', p['source']['node'])]]
+-                                if f is not None:observed['outputs'].append({'port_id': p['port_id'], 'formula': work.copy(f)})
+-                            require(any(p['port_id'] == output['port_id'] and p['formula'] == branch_formula
+-                                        for p in observed['outputs']), 'RECEPTOR', 'actual assigned BRANCH output')
+-                            item = {'plan_index': len(plans), 'record_index': record_index,
+-                                'output_port': output['port_id'], 'assignment': [[list(k), v] for k, v in assignment.items()],
+-                                'observed_receptors': observed}
+-                            plans.append(item)
+-                            physical.append({'plan': item, 'assignment': dict(assignment), 'observation': observation,
+-                                'record': record, 'registry': registry, 'origin': origin, 'shape': shape})
+-                            return
+-                        key = keys[index];low, high = domains[key]
+-                        for row in range(low, high+1):
+-                            work.trial();current = dict(assignment);current[key] = row
+-                            if key[0] == 'input':
+-                                if any(other[0] == 'input' and other_row == row and not
+-                                       (input_policy[key[1]] == input_policy[other[1]] == 'ALLOW_SAME_EXACT_PRIOR_SOURCE')
+-                                       for other, other_row in assignment.items()):
+-                                    reject('SHARING', 'physical_root_input_sharing_policy', current, record_index, output['port_id'])
+-                                    continue
+-                            else:
+-                                refs = [(next(iter(r)), next(iter(r.values()))) for r in node_table[key[1]]['ordered_inputs']]
+-                                if any(current[r] >= row for r in refs):
+-                                    reject('ORDERED_READS', 'strict_earlier_row', current, record_index, output['port_id']);continue
+-                            visit(index+1, current)
+-                    visit(0, {})
+-            planning_complete = True
++                allocation['status'] = 'ENUMERATING_STRUCTURAL_PREFIX'
++                try:
++                    for output in origin['outputs']:
++                        work.step();fields(output['source'], ('node',), 'ANCHOR')
++                        anchor = output['source']['node'];require(anchor in node_table, 'ANCHOR', 'actual exposed primitive')
++                        domains = _constraints(origin, anchor, decision['row'], work)
++                        observation['anchors'].append({'output_port': output['port_id'], 'node_id': anchor,
++                            'row': decision['row'], 'current_formula': work.copy(branch_formula),
++                            'strict_prior_domains': None if domains is None else [[list(k), v] for k, v in domains.items()]})
++                        if domains is None:continue
++                        def visit(index, assignment):
++                            work.step(index)
++                            if index == len(keys):
++                                observed = {'hypotheses': work.copy(hypotheses), 'inputs': [], 'outputs': []}
++                                for p in origin['input_ports']:
++                                    f = row_formulas[assignment[('input', p['port_id'])]]
++                                    if f is not None:observed['inputs'].append({'port_id': p['port_id'], 'formula': work.copy(f)})
++                                for p in origin['outputs']:
++                                    f = row_formulas[assignment[('node', p['source']['node'])]]
++                                    if f is not None:observed['outputs'].append({'port_id': p['port_id'], 'formula': work.copy(f)})
++                                require(any(p['port_id'] == output['port_id'] and p['formula'] == branch_formula
++                                            for p in observed['outputs']), 'RECEPTOR', 'actual assigned BRANCH output')
++                                item = {'plan_index': len(plans), 'record_index': record_index,
++                                    'output_port': output['port_id'], 'assignment': [[list(k), v] for k, v in assignment.items()],
++                                    'observed_receptors': observed}
++                                plans.append(item);allocation['planned_assignments'] += 1
++                                physical.append({'plan': item, 'assignment': dict(assignment), 'observation': observation,
++                                    'record': record, 'registry': registry, 'origin': origin, 'shape': shape})
++                                return
++                            key = keys[index];low, high = domains[key]
++                            for row in range(low, high+1):
++                                if allocation['row_trials'] >= record_trial_quota:
++                                    raise _AssignmentPrefix('OWN_PER_RECORD_PHYSICAL_ROW_TRIAL_PREFIX')
++                                work.trial();allocation['row_trials'] += 1
++                                current = dict(assignment);current[key] = row
++                                if key[0] == 'input':
++                                    if any(other[0] == 'input' and other_row == row and not
++                                           (input_policy[key[1]] == input_policy[other[1]] == 'ALLOW_SAME_EXACT_PRIOR_SOURCE')
++                                           for other, other_row in assignment.items()):
++                                        reject('SHARING', 'physical_root_input_sharing_policy', current, record_index, output['port_id'])
++                                        continue
++                                else:
++                                    refs = [(next(iter(r)), next(iter(r.values()))) for r in node_table[key[1]]['ordered_inputs']]
++                                    if any(current[r] >= row for r in refs):
++                                        reject('ORDERED_READS', 'strict_earlier_row', current, record_index, output['port_id']);continue
++                                visit(index+1, current)
++                        visit(0, {})
++                except _AssignmentPrefix as error:
++                    allocation['status'] = 'BOUNDED_STRUCTURAL_PREFIX'
++                    allocation['bounded_reason'] = str(error)
++                else:
++                    allocation['status'] = 'STRUCTURAL_ENUMERATION_FINISHED'
++            planning_complete = all(a['status'] == 'STRUCTURAL_ENUMERATION_FINISHED' for a in record_allocations)
++            if not planning_complete:
++                planning_reason = 'EQUAL_PER_RECORD_STRUCTURAL_PLAN_PREFIX'
++                reason = planning_reason
+         except _AssignmentPrefix as error:
+             planning_reason = str(error);reason = planning_reason
+         accounting['planned_assignments'] = len(plans)
+@@ -776,9 +805,11 @@
+             'residual_policy_version': RESIDUAL_POLICY_VERSION,
+             'host': host, 'original_state': original_state, 'checked_state': checked_state,
+             'branch_output_receptor': branch_formula, 'records': records, 'row_rejections': rejections,
+-            'offers': offers, 'physical_assignment_plan': {'policy': 'MODE_INDEPENDENT_STRUCTURAL_PREFIX',
++            'offers': offers, 'physical_assignment_plan': {'policy': 'MODE_INDEPENDENT_EQUAL_PER_RECORD_STRUCTURAL_PREFIX',
+                 'complete_within_declared_limits': planning_complete, 'bounded_reason': planning_reason,
+-                'plans': plans}, 'accounting': accounting,
++                'allocated_record_count': allocated_record_count, 'row_trials_per_record': record_trial_quota,
++                'unallocated_remainder': work.limits['row_trials'] - allocated_record_count * record_trial_quota,
++                'record_allocations': record_allocations, 'plans': plans}, 'accounting': accounting,
+             'prototype_census': [[k, v] for k, v in sorted(names.items())],
+             'reason': reason, 'work': {'steps': work.steps, 'row_trials': work.trials,
+                 'limits': dict(work.limits), 'completed_instances': len(instances)},

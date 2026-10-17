@@ -1,0 +1,20 @@
+--- a/source.py
++++ b/source.py
+@@ -10,7 +10,7 @@
+ import sys
+ import zlib
+ 
+-CURRENT_CONTRACT={'path': '/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v2.json', 'sha256': 'fe318fd43d3cc2ca4761b831ef012f7a4a47f948ec910f1df3059dc0a8d65a90', 'bytes': 18134}
++CURRENT_CONTRACT={'path': '/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '8af2329d5a56c7aa0da665bf1152714bae9f5d8051d2e6a8507d94132d5491ad', 'bytes': 17884}
+ 
+ 
+ def need(ok, why):
+@@ -253,7 +253,7 @@
+              and completion['exit_zero_and_coordinator_deadline_required']is True
+              and completion['body_sha256']==raw_pin(lines[0])['sha256'] and completion['body_bytes']==len(lines[0])
+              and body['schema']=='ROOT-receptor-inference-probe-response-body-v1'
+-             and body['version']=='ROOT-receiver-inference-probe-cold-v2'
++             and body['version']=='ROOT-receiver-inference-probe-cold-v1'
+              and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+              and body['limits']==plan['limits'] and body['resource_rule']==plan['resource_rule']
+              and body['CLOCK_DOMAIN']=='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'

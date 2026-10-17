@@ -1,0 +1,99 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_execution_authorized": false,
+  "actual_or_result_bytes_read": false,
+  "all10_other_named_regions_raw_AST_exact": true,
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored observed producer fd3e, residual policy2925 and older kernel/engine/miner/provider ancestry. Root authored this caller/helper/reader integration. Controls authored current provider7/consumer/host adapter; Diagnosis authored current engine6 and independent checker4358/9fd/8f. Shared interface coordination is disclosed. This is genuine distinct review of Root integration, not an independent peer of reviewer-authored dependencies; those dependencies retain separately authored Source reviews.",
+  "blocking_findings": [],
+  "complete_GCTS_model_accepted": false,
+  "conditions": [
+    "Run only with exact reviewed Root current plan/grant/source maps and original saved native files after Root grants/owns the actual.",
+    "Reader verifies saved native/wire completeness and preserves measured payload; it does not infer proof/useful transfer/full-engine acceptance.",
+    "No reader or output decoding was executed during this review."
+  ],
+  "current_operative_contract": {
+    "bytes": 18134,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v2.json",
+    "sha256": "fe318fd43d3cc2ca4761b831ef012f7a4a47f948ec910f1df3059dc0a8d65a90"
+  },
+  "declared_scope": "Saved complete bytes, original once/native terminal/wire and resource reconciliation only. No scientific imports, replay, semantic proof or target/transfer acceptance.",
+  "disposition": "CONDITIONAL_SOURCE_PASS",
+  "findings": {
+    "bytes": 14390,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/findings-v2.json",
+    "sha256": "ac6076cf202ea532ecb38fa6d092231324aa059ff1515b6f4f649ed321a5d077"
+  },
+  "full_immediate_2raw_AST_inverse_and_both_actual_patch_directions": true,
+  "independent_static_audit": {
+    "bytes": 21516,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/V2-independent-static-audit.json",
+    "sha256": "b9f8333c681ec52a7abc27aa72a143d67a16d504de134ec7401ca39f283672e5"
+  },
+  "proof_accepted": false,
+  "reviewed_source_contracts": [
+    {
+      "bytes": 18134,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v2.json",
+      "sha256": "fe318fd43d3cc2ca4761b831ef012f7a4a47f948ec910f1df3059dc0a8d65a90"
+    },
+    {
+      "bytes": 1050,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/reader-Source-contract-v2.json",
+      "sha256": "7331d22bed6ee11660b538f84d808f57c1dc1201b93cc513897a197180f12e1d"
+    },
+    {
+      "bytes": 17884,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "8af2329d5a56c7aa0da665bf1152714bae9f5d8051d2e6a8507d94132d5491ad"
+    },
+    {
+      "bytes": 1075,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "ca072cf3ac072dc6b36468d20adc1d248895d0523516a98cc0b30ed58194c413"
+    },
+    {
+      "bytes": 9783,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v7.json",
+      "sha256": "dee233de9030c7baf9758a543b69aaa9bdeb86aec213fc27620918faabaa1f0a"
+    },
+    {
+      "bytes": 15881,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-contract-v6.json",
+      "sha256": "84319df96c2e50cfb931afbbfa50698d92cad1ab90ac192132a589d89bb095ce"
+    }
+  ],
+  "reviewer_distinct_from_author": true,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_qualified": false,
+  "saved_data_replayed": false,
+  "schema": "ROOT-receiver-inference-saved-reader-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_semantic_reconciliation": false,
+  "scope": "ROOT-receiver-inference-saved-reader-Source",
+  "source": {
+    "bytes": 21794,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT_read_receiver_inference_saved_v2.py",
+    "sha256": "d04a8d0f5c11bfab52a70eea398c5139b22c18d251a1bd84644fe50899bf7418"
+  },
+  "source_contract": {
+    "bytes": 1050,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "7331d22bed6ee11660b538f84d808f57c1dc1201b93cc513897a197180f12e1d"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "saved_reader": {
+      "bytes": 21794,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT_read_receiver_inference_saved_v2.py",
+      "sha256": "d04a8d0f5c11bfab52a70eea398c5139b22c18d251a1bd84644fe50899bf7418"
+    }
+  },
+  "tests_executed": false,
+  "whole_current_reader_and_parent_Source_reviewed": true,
+  "whole_engine_qualified": false
+}

@@ -1,0 +1,108 @@
+{
+  "API": {
+    "bytes": 6820,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/API-wire-v6.json",
+    "sha256": "93b8ec528d12b30c8f27c9d68014742ff1859343643c1e49c587901c00a57993"
+  },
+  "Review_ABI": {
+    "required": [
+      "Whole Source/current API/contract and frozen parent; exact full forward/inverse and real patches.",
+      "COW initial-state/explicit seed ledger, snapshot/checkpoint/rollback exact ownership; no domain/point insertion.",
+      "Full provider report gate on every status and later exposures checked both directions; unchanged fresh bare d680 consumer and distinct wrapper.",
+      "Public degree original/decorated/rejected keys and public cursor removed-prefix/current-context joins; no hidden internals claim.",
+      "Scheduler/base domains/one primitive/canonical fallback/native evidence/retention semantics unchanged except declared ledger calls.",
+      "Trusted pinned Source/Root original17/currentmap separation, charged errors/resources, scientific calls0 and author overlap."
+    ],
+    "schema": "receptor-family-full-exposure-census-engine-typed-Source-review-v6",
+    "scope": "receptor-family-full-exposure-census-engine-Source",
+    "source": {
+      "bytes": 92132,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v6.py",
+      "sha256": "eab17f2f9d1a083f6e72be7db1b12a17ef0a407ba6a9b28ec5e1c0a33454a78a"
+    },
+    "sources": {
+      "family_engine": {
+        "bytes": 92132,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v6.py",
+        "sha256": "eab17f2f9d1a083f6e72be7db1b12a17ef0a407ba6a9b28ec5e1c0a33454a78a"
+      }
+    }
+  },
+  "actual_patch_evidence": {
+    "bytes": 1741,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/actual-patch-evidence-v6.json",
+    "sha256": "78a9356216b788335819ee8d32cbdf2ae7d5737a8b3dbd6ac5baeb63ca7d4d56"
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "base_parent_source": {
+    "bytes": 76668,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_search_engine_v3.py",
+    "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+  },
+  "next_action": "Controls genuine current thin6/whole5 retained Source peer; independent Root current composition review/grant. Author has no actual authority.",
+  "parent_source": {
+    "bytes": 92132,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v5.py",
+    "sha256": "ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db"
+  },
+  "patches": {
+    "combined_forward": {
+      "bytes": 23372,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/combined-v6.forward.patch",
+      "sha256": "dc245a5175b8c86d849a15c3a58a56d3d1d63a4425b6c65bcabd72abef9e0057"
+    },
+    "combined_inverse": {
+      "bytes": 23372,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/combined-v6.inverse.patch",
+      "sha256": "733485ebda91ddbf8b912c9a9bc8d7af77b8cc89fe9cc5035dee564c4da66816"
+    },
+    "immediate_forward": {
+      "bytes": 833,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/immediate-v6.forward.patch",
+      "sha256": "33e0d762e492a6a775c30f404e0f278c59ee1578c858f40eb638f0063cc5ce03"
+    },
+    "immediate_inverse": {
+      "bytes": 833,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/immediate-v6.inverse.patch",
+      "sha256": "d82d37f69be43153f799bfd941b10e3be47c19b9983d4a4901ead90f87b75014"
+    }
+  },
+  "retained_v5_handoff": {
+    "bytes": 5190,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/handoff-v5.json",
+    "sha256": "59efc26167488eef778d26183483adcb648aae8e9fd2e6576d498393da2eb6d8"
+  },
+  "runtime_qualified": false,
+  "schema": "receptor-family-full-exposure-census-engine-Source-handoff-v6",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92132,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v6.py",
+    "sha256": "eab17f2f9d1a083f6e72be7db1b12a17ef0a407ba6a9b28ec5e1c0a33454a78a"
+  },
+  "source_contract": {
+    "bytes": 15881,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-contract-v6.json",
+    "sha256": "84319df96c2e50cfb931afbbfa50698d92cad1ab90ac192132a589d89bb095ce"
+  },
+  "source_delta": {
+    "bytes": 66802,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-delta-v6.json",
+    "sha256": "1f1b7acae461aa322e84a8bae8021fafdc72920cc05134ed53e54f81b76f278d"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "family_engine": {
+      "bytes": 92132,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v6.py",
+      "sha256": "eab17f2f9d1a083f6e72be7db1b12a17ef0a407ba6a9b28ec5e1c0a33454a78a"
+    }
+  },
+  "static_audit": {
+    "bytes": 1355,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/static-audit-v6.json",
+    "sha256": "dae754a5154dcd9f91d4b4ba690ca7cdd41dcb43efb8495245c91fc1394bb1ce"
+  }
+}

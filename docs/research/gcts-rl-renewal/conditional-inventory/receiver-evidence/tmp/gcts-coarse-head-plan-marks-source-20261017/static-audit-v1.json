@@ -1,0 +1,55 @@
+{
+  "API": {
+    "bytes": 4873,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/API-wire-v1.json",
+    "sha256": "16243e76d72dc8be1a50f6e872645444c3127d2f53d73c563fa2f93dd362a8ed"
+  },
+  "actual_patch_F0_both_directions_exact": true,
+  "actual_result_model_or_donor_files_read": false,
+  "checks": [
+    "Only descriptor/layout/assignment/limits accepted; no environment/receiver/state/source formula argument.",
+    "Concrete8 outer heads and formula_meta absence; every known mark is channel5, never zero.",
+    "Exact full descriptor ID/preimage and root flat step-origin/ref mapping before any conflict result.",
+    "All repeated ordered reads retained; strict prior rows; exact input/output maps; no positional flatten.",
+    "Unsupported calls/dependencies/materialized hypotheses UNKNOWN/pass-through.",
+    "Complete supported structural validation before mark grouping/conflict; own work/copy/requirement UNKNOWN drops all partial marks/conflicts.",
+    "Callback errors wrapped then re-raised unchanged; no broad ValueError/native timeout catch.",
+    "Native/independent checker/interface/census/fallback gates remain external; all authority flags false."
+  ],
+  "compile_without_evaluation": true,
+  "design": {
+    "bytes": 6182,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/design-and-proof-v1.json",
+    "sha256": "869976cde593ff4dff6fd05c08142ca3b066292b202993fee693bea31433dd14"
+  },
+  "imports_only": [
+    "hashlib",
+    "json"
+  ],
+  "patches": {
+    "forward": {
+      "bytes": 15612,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/addition.forward.patch",
+      "sha256": "08f8415c3ac445b45d6c7617035c88c65c8cb462bfba99bda1c00abda8387bc1"
+    },
+    "inverse": {
+      "bytes": 15612,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/addition.inverse.patch",
+      "sha256": "c9d98737813768d7061d0f4bd34b0943bf874f4004785b193b3f06f763e22fee"
+    }
+  },
+  "project_or_generated_module_evaluated": false,
+  "project_scientific_calls": 0,
+  "schema": "receptor-family-coarse-head-plan-marks-static-audit-v1",
+  "source": {
+    "bytes": 15276,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+    "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+  },
+  "source_addition_inverse_empty_parent": true,
+  "source_delta": {
+    "bytes": 16642,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-delta-v1.json",
+    "sha256": "94ac309f4dda505157b341914c286db261ee7e116d27c9eeaf472926d6978e27"
+  }
+}

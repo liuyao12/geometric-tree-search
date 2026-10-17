@@ -1,0 +1,734 @@
+{
+  "arms": {
+    "literal": {
+      "aggregate_B_bytes": 91570176,
+      "aggregate_MiB": 87.328125,
+      "all_reaped": true,
+      "authorization": {
+        "bytes": 12470,
+        "path": "/private/tmp/gcts-receiver-inference-literal-ROOT-20261017/ROOT-authorization-v1.json",
+        "sha256": "52264cb6122a7ad61829aacbad3e9b73a1ac7486f7bf3559934c41c7822d2444"
+      },
+      "consumer_callback_receipt_sha256": "89c797fa23a7670926bad662de65fa8549393a9e56c8e4bd11aa1b7cc32160b2",
+      "consumer_request_sha256": "58e01d3a7304c50eaaeff129b7ae6e0b61ea49ef46c5d3555a1a162ef23e432a",
+      "engine_counts": {
+        "advice_calls": 0,
+        "advice_selected": 0,
+        "advice_unknown": 0,
+        "backtracks": 1,
+        "branches": 1,
+        "cursor_replays": 0,
+        "fallback_advances": 1,
+        "fallback_branch_choices": 0,
+        "family_abandonments": 0,
+        "family_batches": 1,
+        "family_canonical_choices": 1,
+        "family_checks": 1,
+        "family_choices": 0,
+        "family_invalidated": 0,
+        "family_unknown": 1,
+        "forced": 0,
+        "global_scans": 2,
+        "invalidated_domains": 48,
+        "nodes": 2,
+        "pending_checks": 0,
+        "pending_rejected": 0,
+        "pending_retired": 0,
+        "pending_selected": 0,
+        "placements": 1,
+        "restores": 1,
+        "retained_domains": 0,
+        "retained_prefixes": 0,
+        "retained_queries": 0
+      },
+      "engine_reason": "node ceiling; no exhausted conclusion",
+      "engine_status": "UNKNOWN",
+      "engine_wrapper_census_entries": 28,
+      "engine_wrapper_decorated_types": 14,
+      "engine_wrapper_original_types": 14,
+      "engine_wrapper_sha256": "b36a58c719e491a31da096bb5269fe9b7a2608b103303816143f62cc07eaf8fe",
+      "expanded_result": {
+        "bytes": 2071439,
+        "path": "/private/tmp/gcts-receiver-inference-literal-ROOT-20261017/ROOT-expanded-result-v1.json",
+        "sha256": "9bdfdf2d046981bea47acfe60130dcb5132a5b63da4e514eb3980ae48bd72890"
+      },
+      "final_snapshot_sha256": "5ef94243f06396eea2ff0fb31803bb746b2546345b56a38444d4e745fe95176e",
+      "matching_mode": "LITERAL_GROUND",
+      "native_exit": 0,
+      "native_launch_to_postprobe_ns": 5816551000,
+      "native_seconds": 5.816551,
+      "phase_records_sha256": "c48252a43a029fd4c57cc3f0123decbf5cd998f6256f82d9d41760e25b65a80f",
+      "phases_joined": 13,
+      "plan": {
+        "bytes": 10600,
+        "path": "/private/tmp/gcts-receiver-inference-literal-ROOT-20261017/ROOT-plan-v1.json",
+        "sha256": "4259fd36eb20c2f233ba288bc3b6b3e79fe6bef5372be69ed16a7696993a2b90"
+      },
+      "provider_accounting": {
+        "attempted_assignments": 30,
+        "binding_attempts": 30,
+        "checked_expansions": 0,
+        "checked_instances": 0,
+        "distinct_environment_attempts": 0,
+        "duplicate_instances": 0,
+        "full_expansions": 0,
+        "ground_environment_proposals": 0,
+        "native_adaptations": 0,
+        "native_member_exclusions": 0,
+        "offered_instances": 0,
+        "planned_assignments": 30,
+        "preflight_checks": 0
+      },
+      "provider_callback_report_sha256": "8021d0faf4e5aa2d6a381aed2f5db3dbabca3f99d7a385530929bb983905a396",
+      "provider_census_entries": 0,
+      "provider_reason": "EQUAL_PER_RECORD_STRUCTURAL_PLAN_PREFIX",
+      "provider_work": {
+        "completed_instances": 0,
+        "limits": {
+          "depth": 128,
+          "input_bytes": 4194304,
+          "instances": 1,
+          "records": 2,
+          "row_trials": 64,
+          "work": 1000000
+        },
+        "row_trials": 64,
+        "steps": 129586
+      },
+      "root_snapshot_sha256": "5ef94243f06396eea2ff0fb31803bb746b2546345b56a38444d4e745fe95176e",
+      "saved_disposition": {
+        "bytes": 4191,
+        "path": "/private/tmp/gcts-receiver-inference-literal-ROOT-20261017/ROOT-disposition-v1.json",
+        "sha256": "6eeb42a1c9c4ec57ace438a302f26c115750bff59f3b5b64e3b07ba6edc7738f"
+      },
+      "saved_grounding_status_counts": {},
+      "saved_preflight_status_counts": {},
+      "source_contract": {
+        "bytes": 18134,
+        "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v2.json",
+        "sha256": "fe318fd43d3cc2ca4761b831ef012f7a4a47f948ec910f1df3059dc0a8d65a90"
+      },
+      "tool_Date_seconds": 15.647,
+      "tool_session_id": 24150
+    },
+    "visible": {
+      "aggregate_B_bytes": 212189184,
+      "aggregate_MiB": 202.359375,
+      "all_reaped": true,
+      "authorization": {
+        "bytes": 12470,
+        "path": "/private/tmp/gcts-receiver-inference-visible-ROOT-20261017/ROOT-authorization-v1.json",
+        "sha256": "c55617c12b4dc534cbca5878ab41b3447df246b8cba4cc6a9a6e548cccf860d0"
+      },
+      "consumer_callback_receipt_sha256": "89c797fa23a7670926bad662de65fa8549393a9e56c8e4bd11aa1b7cc32160b2",
+      "consumer_request_sha256": "58e01d3a7304c50eaaeff129b7ae6e0b61ea49ef46c5d3555a1a162ef23e432a",
+      "engine_counts": {
+        "advice_calls": 0,
+        "advice_selected": 0,
+        "advice_unknown": 0,
+        "backtracks": 1,
+        "branches": 1,
+        "cursor_replays": 0,
+        "fallback_advances": 1,
+        "fallback_branch_choices": 0,
+        "family_abandonments": 0,
+        "family_batches": 1,
+        "family_canonical_choices": 1,
+        "family_checks": 1,
+        "family_choices": 0,
+        "family_invalidated": 0,
+        "family_unknown": 1,
+        "forced": 0,
+        "global_scans": 2,
+        "invalidated_domains": 48,
+        "nodes": 2,
+        "pending_checks": 0,
+        "pending_rejected": 0,
+        "pending_retired": 0,
+        "pending_selected": 0,
+        "placements": 1,
+        "restores": 1,
+        "retained_domains": 0,
+        "retained_prefixes": 0,
+        "retained_queries": 0
+      },
+      "engine_reason": "node ceiling; no exhausted conclusion",
+      "engine_status": "UNKNOWN",
+      "engine_wrapper_census_entries": 28,
+      "engine_wrapper_decorated_types": 14,
+      "engine_wrapper_original_types": 14,
+      "engine_wrapper_sha256": "51f5cb3df9d1a0ab46c466f618cf28e40b9c1d8df9aeafdfe97afe6e25a4724d",
+      "expanded_result": {
+        "bytes": 9965934,
+        "path": "/private/tmp/gcts-receiver-inference-visible-ROOT-20261017/ROOT-expanded-result-v1.json",
+        "sha256": "221337fbf2e583576951a1e9b2452521f1c2f105b35fd6556458a809cf3a823b"
+      },
+      "final_snapshot_sha256": "5ef94243f06396eea2ff0fb31803bb746b2546345b56a38444d4e745fe95176e",
+      "matching_mode": "VISIBLE_RECEPTOR",
+      "native_exit": 0,
+      "native_launch_to_postprobe_ns": 9342562000,
+      "native_seconds": 9.342562,
+      "phase_records_sha256": "96187983b6f96ae73a05759b57587bd062973837657a0b436bcfdf91a82e4f8b",
+      "phases_joined": 13,
+      "plan": {
+        "bytes": 10600,
+        "path": "/private/tmp/gcts-receiver-inference-visible-ROOT-20261017/ROOT-plan-v1.json",
+        "sha256": "955989a7afabc250a373e2533c809ba358bf888a194a7cadeb7b3221e759f96c"
+      },
+      "provider_accounting": {
+        "attempted_assignments": 16,
+        "binding_attempts": 60,
+        "checked_expansions": 43,
+        "checked_instances": 0,
+        "distinct_environment_attempts": 44,
+        "duplicate_instances": 0,
+        "full_expansions": 44,
+        "ground_environment_proposals": 44,
+        "native_adaptations": 0,
+        "native_member_exclusions": 42,
+        "offered_instances": 0,
+        "planned_assignments": 30,
+        "preflight_checks": 43
+      },
+      "provider_callback_report_sha256": "c51103fca3a5f8fe09ff5668f71f06fa0c5bc483c376c42efebeb231c1c5f84a",
+      "provider_census_entries": 2,
+      "provider_reason": "OWN_WORK_OR_DEPTH_PREFIX",
+      "provider_work": {
+        "completed_instances": 0,
+        "limits": {
+          "depth": 128,
+          "input_bytes": 4194304,
+          "instances": 1,
+          "records": 2,
+          "row_trials": 64,
+          "work": 1000000
+        },
+        "row_trials": 64,
+        "steps": 1000000
+      },
+      "root_snapshot_sha256": "5ef94243f06396eea2ff0fb31803bb746b2546345b56a38444d4e745fe95176e",
+      "saved_disposition": {
+        "bytes": 4192,
+        "path": "/private/tmp/gcts-receiver-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+        "sha256": "3d59ad7349400c5cc88eb9f8e80da2c4c7ce7d32209e8f837d79e8b8c7d826c3"
+      },
+      "saved_grounding_status_counts": {
+        "COMPLETED_NATIVE_MEMBER_EXCLUSION": 42,
+        "UNKNOWN": 2
+      },
+      "saved_preflight_status_counts": {
+        "INCOMPATIBLE_ASSIGNMENT": 1,
+        "NATIVE_MEMBER_EXCLUDED": 42,
+        "NOT_RETURNED": 1
+      },
+      "source_contract": {
+        "bytes": 18134,
+        "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v2.json",
+        "sha256": "fe318fd43d3cc2ca4761b831ef012f7a4a47f948ec910f1df3059dc0a8d65a90"
+      },
+      "tool_Date_seconds": 24.652,
+      "tool_session_id": 93452
+    }
+  },
+  "authorization": "Root explicitly authorized current saved JSON/raw transport/native record reads only; earlier Source-only result-read ban lifted for these two runs.",
+  "authorship_disclosure": "Reviewer authored provider7 and earlier host/consumer/engine ancestry; this is a distinct saved-data concordance/interpretation audit of Root records, NOT a second independent mathematical implementation or semantic replay.",
+  "common": {
+    "both_event_count": 10,
+    "current_executable_sources": 21,
+    "current_inputs": 10,
+    "engine_counts_literal_equal": true,
+    "frozen_inventory_input": {
+      "bytes": 3433689,
+      "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38"
+    },
+    "inventory_acceptance_input": {
+      "bytes": 2723,
+      "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json",
+      "sha256": "4ef4ebdcd431a284f73ded43caf1957b819d1ddd4e3180e212a619e3b736d817"
+    },
+    "inventory_construction_charged_in_receiver_windows": false,
+    "inventory_reused": true,
+    "original_model_binding": {
+      "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+      "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+      "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+      "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+    },
+    "original_semantic_inputs": 2,
+    "original_semantic_sources": 17,
+    "planning_counts": {
+      "plans_each": 15,
+      "records": 2,
+      "row_trials_each": 32,
+      "total_plans": 30,
+      "total_row_trials": 64,
+      "unallocated_remainder": 0
+    },
+    "same_actual_decision": {
+      "kind": "BRANCH",
+      "row": 23
+    },
+    "same_all30_physical_plans_sha256": "573f0c0c486f8f88327b85fb3c61cedb03cc14af5c7592063251c0f5069fb157",
+    "same_branch_tie": "ASSIGNED-OUTPUT-THEN-ROW",
+    "same_closed_wrapper_census_count": 28,
+    "same_engine_owned_full_census_sha256": "abc245a77ae0121b4877ed010f3a1ab5e073c15cf453a0ced4af39e7cf8b6f4c",
+    "same_full_canonical_fallback_key": {
+      "tile_type_id": "row0-decorated-tile-0bfd4fbb8396d7a7d6bbf719157878097bd00f388e46d1e6e2e7ec0324eb3e94",
+      "translation": [
+        0,
+        23
+      ],
+      "type_preimage": {
+        "base_type_preimage": {
+          "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+          "ordered_offsets": [
+            -23,
+            -22
+          ],
+          "ordered_premise_formulas": [
+            [
+              "not",
+              [
+                "bot"
+              ]
+            ],
+            [
+              "imp",
+              [
+                "not",
+                [
+                  "bot"
+                ]
+              ],
+              [
+                "all",
+                "n",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "fun",
+                                "zero",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "primitive_witness": {
+            "formula": [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "mp"
+          }
+        },
+        "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+        "schema": "unit-row-row0-decorated-type-v1"
+      }
+    },
+    "same_initial_state_sha256": "bf9127799bb31434833fee66daae8b52b0e269dba862207affc5010fbd9a2c50",
+    "same_literal_consumer_receipt_sha256": "89c797fa23a7670926bad662de65fa8549393a9e56c8e4bd11aa1b7cc32160b2",
+    "same_provider_caps": {
+      "depth": 128,
+      "input_bytes": 4194304,
+      "instances": 1,
+      "records": 2,
+      "row_trials": 64,
+      "work": 1000000
+    },
+    "same_whole_mined_pool_sha256": "879ef523325d07361b9da31fb868efd57d1405cec598f61795bf036ae9c20460",
+    "same_wrapper_decorated_count": 14,
+    "same_wrapper_original_count": 14,
+    "trace": [
+      "actual global BRANCH23",
+      "family/provider UNKNOWN and zero offers",
+      "same actual canonical primitive PLACE23",
+      "actual checked DEAD0",
+      "child EXHAUSTED and owned RESTORE",
+      "same full-key CHILD_EXHAUSTED EXCLUDE",
+      "maximum_nodes2 UNKNOWN",
+      "recorded exact root snapshot digest restoration"
+    ]
+  },
+  "denominator_cautions": [
+    "Thirty identical materialized physical plans is not thirty completed inference plans: visible attempts16, literal attempts30.",
+    "Inference44 ground environments includes43 returned independent checks/preflights plus one unfinished grounding at own1m;42 completed native exclusions plus one point conflict, zero native adaptations/instances/offers.",
+    "Literal30 explicit-origin bindings produce no environment at this receiver; this is a bounded-prefix no-offer observation, not an impossibility or completeness result.",
+    "Provider census2 versus0 and engine wrapper census28 versus28 are literal FULL-preimage data, not candidate/degree/proof counts.",
+    "Native resource success and reached ordered phases do not imply semantic usefulness, source-level correctness from timing, exclusive costs, speedup or whole-engine qualification.",
+    "Recorded root/final snapshot digest equality and root_restored flags are joined saved evidence; no independent engine rollback or mathematical recheck was performed."
+  ],
+  "discrepancies": [],
+  "first_abstract_plan_point_conflict": {
+    "assignment": [
+      [
+        [
+          "input",
+          "i0"
+        ],
+        0
+      ],
+      [
+        [
+          "node",
+          "n0"
+        ],
+        0
+      ],
+      [
+        [
+          "node",
+          "n1"
+        ],
+        23
+      ]
+    ],
+    "external_occupied": false,
+    "fact_accepted": false,
+    "family_id": "22e8bc88962e1f71e46963dd6f4016abb784a913b760d2c2925d4ee8ef0b2109",
+    "grounding_index": 5,
+    "independent_expansion_status": "CONDITIONAL_EXPANSION_CHECKED",
+    "interpretation": "Same assigned row for the proposed AX output and external implication obligation gives unequal complete formula values. The saved preflight rejects this physical assignment; neither input occupancy nor syntax matching qualifies a transfer.",
+    "native_member_output_formula": [
+      "all",
+      "x",
+      [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "native_members": [
+      {
+        "node_id": "n0",
+        "rule": "axiom",
+        "status": "MEMBER"
+      },
+      {
+        "node_id": "n1",
+        "rule": "mp",
+        "status": "MEMBER"
+      }
+    ],
+    "plan_index": 15,
+    "point": [
+      1,
+      0
+    ],
+    "preceding_trials": "The first five groundings in this same plan are completed native exclusions; this is the first whole-point-conflict observation, not the first grounding.",
+    "reason": "literal_repeated_or_remote_formula_mark_conflict",
+    "record_index": 1,
+    "status": "INCOMPATIBLE_ASSIGNMENT",
+    "unoccupied_external_input_formula_obligation": [
+      "imp",
+      [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "all",
+        "n",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  },
+  "flags": {
+    "GCTS_advantage_claimed": false,
+    "RL_accepted": false,
+    "complete_GCTS_model_accepted": false,
+    "logical_proof_accepted": false,
+    "new_actuals": 0,
+    "new_theorems": 0,
+    "project_module_evaluated": false,
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scientific_replay": false,
+    "useful_transfer_accepted": false,
+    "whole_engine_qualified": false
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "root_interpretation_author": "/root",
+  "saved_data_review_passed": true,
+  "schema": "ROOT-receiver-pair-saved-data-interpretation-review-v1",
+  "substituted_parameter_difference": {
+    "current_inferred_body": [
+      "all",
+      "n",
+      [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "difference": "Complete FORMULA body changed from literal bot to actual assigned all-formula at the receiver; the four VARIABLE bindings in this particular trial remain source-literal x/y.",
+    "formal_names": [],
+    "kind": "FORMULA",
+    "parameter": "F0",
+    "qualified_transfer": false,
+    "source_body": [
+      "bot"
+    ]
+  }
+}

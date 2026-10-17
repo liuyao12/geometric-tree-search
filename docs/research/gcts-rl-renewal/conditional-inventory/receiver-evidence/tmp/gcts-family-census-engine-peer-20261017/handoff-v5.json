@@ -1,0 +1,32 @@
+{
+  "findings": {
+    "bytes": 6744,
+    "path": "/private/tmp/gcts-family-census-engine-peer-20261017/findings-v5.json",
+    "sha256": "f7d3541aa38aeba6892c806b4028b68f6aca53e305b099e596e404abb26e1ec3"
+  },
+  "independent_raw_audit": {
+    "bytes": 8755,
+    "path": "/private/tmp/gcts-family-census-engine-peer-20261017/independent-raw-AST-audit-v5.json",
+    "sha256": "9a3d7d8fe21e57ab85693bb20d353241ca49939c0370b344e0f56985f2aa07bf"
+  },
+  "schema": "receptor-family-full-census-engine-independent-handoff-v5",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92132,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v5.py",
+    "sha256": "ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db"
+  },
+  "source_contract": {
+    "bytes": 14970,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-contract-v5.json",
+    "sha256": "c8773a729e3fd8b474db5710a816b9517ecff3eaa0b78cb8d11ca2315456d388"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "typed_review": {
+    "bytes": 2839,
+    "path": "/private/tmp/gcts-family-census-engine-peer-20261017/typed-Source-review-v5.json",
+    "sha256": "dd4902381e71a8623941a0457a8d1f815846c966ce7907a94d9e294c9a44e2fc"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "4358/9fd/8f/ea300/family-census-engine authorship and wire coordination disclosed; provider author is distinct.",
+  "blockers": [
+    "OBSERVED-BINDING-FREE-ALLOWANCE-1"
+  ],
+  "disposition": "Source negative before any actual; preserve6 and review the separately authorized narrow7 repair.",
+  "findings": {
+    "bytes": 4716,
+    "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/findings-v6.json",
+    "sha256": "b812120e8c99c8fc098587b9885002c16a734e9c385d77b1ad1e7b329b21aa54"
+  },
+  "independent_static_audit": {
+    "bytes": 3563,
+    "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/independent-static-audit-v6.json",
+    "sha256": "0bf56f6a9ab42a52b06cfa9de590756bc9e437d8b876b321c9a599b7c9edf619"
+  },
+  "pass": false,
+  "reviewed_handoff": {
+    "bytes": 5123,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/handoff-v6.json",
+    "sha256": "9886ca882a3abfa51e6dfd8e12b7b7ce1c3d29d2003514be35b132afac7f5cb8"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "receptor-family-observed-receptor-provider-typed-Source-review-v6",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-observed-receptor-provider-Source",
+  "source": {
+    "bytes": 54172,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+    "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+  },
+  "source_contract": {
+    "bytes": 9057,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v6.json",
+    "sha256": "a72651277fa05bd75193a932e24f3547bf7bafedc15f265c7f8230389b21f849"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "provider": {
+      "bytes": 54172,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+      "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+    }
+  },
+  "tests_executed": false
+}

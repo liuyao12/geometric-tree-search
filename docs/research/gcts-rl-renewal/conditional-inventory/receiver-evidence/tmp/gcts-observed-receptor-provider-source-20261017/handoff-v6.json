@@ -1,0 +1,125 @@
+{
+  "API": {
+    "bytes": 6727,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/API-wire-v6.json",
+    "sha256": "242f64b1bc430145098111b9709e066046fc5fec8709687105424ce54d25bf34"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "receptor-family-observed-receptor-provider-typed-Source-review-v6",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-observed-receptor-provider-Source",
+    "source": {
+      "bytes": 54172,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+      "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+    },
+    "source_contract": {
+      "bytes": 9057,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v6.json",
+      "sha256": "a72651277fa05bd75193a932e24f3547bf7bafedc15f265c7f8230389b21f849"
+    },
+    "source_only": true,
+    "sources": {
+      "provider": {
+        "bytes": 54172,
+        "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+        "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_patches": {
+    "forward": {
+      "bytes": 14292,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/provider-v5-to-v6-forward.patch",
+      "sha256": "fed3e917154a3e6128dfaf7bda056e6c0956f0a949c0064438aabda01ef72199"
+    },
+    "full-inverse": {
+      "bytes": 14292,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/provider-v5-to-v6-full-inverse.patch",
+      "sha256": "1b0540d1e8b66d0c8d6f8ec168728fb71ec4cea7f4efdfde2b830c2a55c2e6d3"
+    }
+  },
+  "binding_policies": {
+    "LITERAL_GROUND": "EXPLICIT_MINED_ORIGIN_ENVIRONMENT_V1",
+    "VISIBLE_RECEPTOR": "EMPTY_PROBE_THEN_THEORY_NAMES_MAX_INDEX_SHELLS_V2"
+  },
+  "fair_per_record_planning": "Materialize BEFORE matching. Allocate floor(row_trials/min(records,len(families))) trial calls to EACH eligible record; same both modes. Each record has its own nested finite structural prefix stop; the next record still runs. No redistribution from incomplete/short/unknown records or remainder; total trials <= declared row_trials. Root records2/row_trials64 means quota32 each. Record/output/root-sharing/strict-prior/full24row policy unchanged. Full work/depth/native/callback/collision errors retain original behavior; only scoped _AssignmentPrefix is caught locally.",
+  "producer_implementation_version": "receptor-family-observed-subset-inference-v2",
+  "report_fields": [
+    "schema",
+    "version",
+    "matching_mode",
+    "binding_policy",
+    "batch",
+    "request",
+    "binding",
+    "marking_id",
+    "state_sha256",
+    "decision",
+    "producer_implementation_version",
+    "residual_policy_version",
+    "host",
+    "original_state",
+    "checked_state",
+    "branch_output_receptor",
+    "records",
+    "row_rejections",
+    "offers",
+    "physical_assignment_plan",
+    "accounting",
+    "prototype_census",
+    "reason",
+    "work",
+    "scope",
+    "flags"
+  ],
+  "report_schema": "receptor-family-observed-receptor-transfer-provider-v2",
+  "request_fields": [
+    "mined",
+    "state",
+    "decision",
+    "matching_mode",
+    "binding_policy",
+    "limits"
+  ],
+  "residual_policy_version": "receptor-family-residual-host-binding-prefix-v2-max-index-shells",
+  "schema": "receptor-family-observed-receptor-provider-handoff-v6",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54172,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+    "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+  },
+  "source_contract": {
+    "bytes": 9057,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v6.json",
+    "sha256": "a72651277fa05bd75193a932e24f3547bf7bafedc15f265c7f8230389b21f849"
+  },
+  "source_delta": {
+    "bytes": 85652,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-delta-v6.json",
+    "sha256": "ba247a9012ce2710b4daf739e15a6a499e71e1acdc17abc202fbca3cbaf388c3"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 1913,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/static-audit-v6.json",
+    "sha256": "9692c98852d3da88d14a929e29542729d2ecfd411164ad4fd6992ecbbca0928c"
+  },
+  "whole_v3_patches": {
+    "forward": {
+      "bytes": 54626,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/parent-v3-to-current-v6-forward.patch",
+      "sha256": "7f4f5a14422c3cbf772dcafbc2fef6992db9b0fa656eb2421dcd81c0d4eb571b"
+    },
+    "full-inverse": {
+      "bytes": 54560,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/parent-v3-to-current-v6-full-inverse.patch",
+      "sha256": "c57049d028c3a819e48b514ce8628d9bee9e2ba35fbaf886c1e3c7086570fd73"
+    }
+  }
+}

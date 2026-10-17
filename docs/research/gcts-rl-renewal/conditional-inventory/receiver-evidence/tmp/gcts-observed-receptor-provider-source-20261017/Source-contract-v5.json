@@ -1,0 +1,141 @@
+{
+  "API": {
+    "bytes": 5784,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/API-wire-v5.json",
+    "sha256": "5fa98e70e97705ef46fe2311cc3b6193ad913a649aae7eebb95f5a2a6171e511"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "receptor-family-observed-receptor-provider-typed-Source-review-v5",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-observed-receptor-provider-Source",
+    "source": {
+      "bytes": 51696,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v5.py",
+      "sha256": "3c546c3122706d6868130ecdfc5bf1c6ca747c605a9abfc827fc9ba274741d06"
+    },
+    "source_contract": "current capsule",
+    "source_only": true,
+    "sources": {
+      "provider": {
+        "bytes": 51696,
+        "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v5.py",
+        "sha256": "3c546c3122706d6868130ecdfc5bf1c6ca747c605a9abfc827fc9ba274741d06"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_result_proofword_donor_reads": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "author_overlap": "Author wrote old physical/visible providers, host4bd6, consumer and prior native/caller ancestry. Arithmetic owns fd3e/policy2925; Diagnosis owns independent4358 and engine census successor. No own-code independent peer or scientific acceptance.",
+  "completeness_limits": [
+    "Not complete inverse unification, formula/term residual enumeration, physical placement search or candidate-domain/degree/EOF proof. Bounded structural plan/advisoryname prefixes and optional instance cap retain UNKNOWN/residual/failure observations.",
+    "Same structural assignment prefix for matching modes, but actual processed/binding/qualification denominators may differ; all costs charged and no inferred speedup/runtimefit.",
+    "No direct receiver/engine/provider activation or theorem/trajectory/generalizedlemma/RL/GCTS gain. Root must integrate fresh censusengine publicprefix API, wholecurrent Source guard, separate once/native20/512 grant and strictsavedclosure.",
+    "Every OFFER requires complete fresh independent/native/point union acceptance; no partialreceipt/complete-coverage relabel. UNKNOWN/nooffer fullcensus is identitydata only, never learned pruning."
+  ],
+  "dependency_sources": {
+    "expansion_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "miner": {
+      "bytes": 37218,
+      "path": "/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py",
+      "sha256": "7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c"
+    },
+    "producer": {
+      "bytes": 60281,
+      "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+    },
+    "residual_policy": {
+      "bytes": 12826,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+      "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479"
+    }
+  },
+  "limits": {
+    "depth": 128,
+    "input_bytes": 4194304,
+    "instances": 8,
+    "records": 16,
+    "row_trials": 256,
+    "work": 1000000
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "operative_parent_contract": {
+    "bytes": 22587,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/Source-contract-v2.json",
+    "sha256": "7e16bea8b04333e83b7cf5225ed7ddf83fcabac950d20a0ce75ee31efbfebd7b"
+  },
+  "output_error_scope": "API exact report/context/26fields/request6 and statuses/census/error taxonomy authoritative; no scientific module executed during authoring.",
+  "parent_source": {
+    "bytes": 41642,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+    "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+  },
+  "producer_contract": {
+    "bytes": 10891,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/Source-contract-v2.json",
+    "sha256": "31b15808045d8760ac69678986cad103588b9a6cb887fd6cc190390061c952b4"
+  },
+  "producer_peer": {
+    "bytes": 4905,
+    "path": "/private/tmp/gcts-observed-subset-expander-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "e50e7f06448fa1c613a15113a52441ffda928504d33817a1347345ab1a81b4bb"
+  },
+  "project_module_evaluated": false,
+  "qualification_inherited": false,
+  "runtime_fit": "UNMEASURED",
+  "schema": "receptor-family-observed-receptor-provider-Source-contract-v5",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-observed-receptor-provider-Source",
+  "scope_statement": "Generic finite observed-receptor proposal prefix within unchanged original24row/Source17/input2/B12N44 model and marking. Real receiverBRANCH/global propagation/earliest-generation/fallback remain externalmandatory, not supplied by this module. Sourceground origin is separate from current fullgroundvalidation; no factpromotion from occupancy or syntax. No targetproofroute, inventedGamma, private cache or engine activation.",
+  "source": {
+    "bytes": 51696,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v5.py",
+    "sha256": "3c546c3122706d6868130ecdfc5bf1c6ca747c605a9abfc827fc9ba274741d06"
+  },
+  "source_delta": {
+    "bytes": 62551,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-delta-v5.json",
+    "sha256": "bffda9550458b94536cb3c562629e2653eeceb29e236e9fefa47701ddb46cd2e"
+  },
+  "source_only": true,
+  "sources": {
+    "provider": {
+      "bytes": 51696,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v5.py",
+      "sha256": "3c546c3122706d6868130ecdfc5bf1c6ca747c605a9abfc827fc9ba274741d06"
+    }
+  },
+  "static_audit": {
+    "bytes": 2454,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/static-audit-v5.json",
+    "sha256": "04a79200475056aed89b49e54079ee8be67ea0bd9677bc1d0c30db2457f5c24a"
+  },
+  "unselected_v4_preserved": {
+    "bytes": 51600,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/observed_receptor_physical_provider_v4.py",
+    "sha256": "6667954bb6dffc1cd810ebc7cf4f3634cb1b5e43128dfb165558d5d5a03799f2"
+  },
+  "version": "receptor-family-observed-receptor-transfer-provider-v5"
+}

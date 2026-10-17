@@ -1,0 +1,83 @@
+{
+  "AST_parse": true,
+  "actual_result_donor_model_clock_reads": false,
+  "changed_named_regions": [
+    "build_residual_binding_prefix"
+  ],
+  "checks": [
+    {
+      "evidence": "Parentbed90/current2925 hash+length checked; exact two raw regions forward and inverse.",
+      "id": "RS01",
+      "passed": true
+    },
+    {
+      "evidence": "All helper/class/name scanner/parameter validation/copy/tick/error/flags/default caps unchanged; only build enumeration block changes.",
+      "id": "RS02",
+      "passed": true
+    },
+    {
+      "evidence": "Empty-first retained, all allowed host domains unchanged, no source/target/env restriction added.",
+      "id": "RS03",
+      "passed": true
+    },
+    {
+      "evidence": "Each emitted tuple has maxindex==current shell; disjoint shells and unique per-shell odometer eliminate duplicate named assignments.",
+      "id": "RS04",
+      "passed": true
+    },
+    {
+      "evidence": "Earlier shells complete before larger max index; four two-name parameters have sixteen named assignments before shell2, seventeen total incl{}; symbolic Source argument only, no executed tuple example.",
+      "id": "RS05",
+      "passed": true
+    },
+    {
+      "evidence": "Every traversal/copy stays under same cumulative work/tick and finite64 binding cap; cap can cut a shell, no completeness claim.",
+      "id": "RS06",
+      "passed": true
+    },
+    {
+      "evidence": "FT residual deferral/callback errors/own UNKNOWN/complete-binding copy semantics unchanged.",
+      "id": "RS07",
+      "passed": true
+    },
+    {
+      "evidence": "No old Source/provider/engine/cold/math files modified; exact Source/version successors required.",
+      "id": "RS08",
+      "passed": true
+    }
+  ],
+  "compile_without_evaluation": true,
+  "full_raw_AST_inverse": true,
+  "limits": "Static author evidence only; native availability, useful env, timing or runtime behavior not exercised. Actual text-patch results recorded separately.",
+  "parent": {
+    "bytes": 12776,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v1.py",
+    "sha256": "bed90fd51324281a8d34e4250a7d752d9ea5e1ec76f70924a8aa2295278b7769"
+  },
+  "raw_regions": 2,
+  "schema": "residual-host-binding-prefix-static-audit-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 12826,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+    "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "tests_or_fixtures_executed": false,
+  "unchanged_named_regions": [
+    "BindingPrefixDataError",
+    "BindingPrefixDataError.__init__",
+    "_Unfinished",
+    "_CallbackFailure",
+    "_CallbackFailure.__init__",
+    "require",
+    "fields",
+    "identifier",
+    "_Work",
+    "_Work.__init__",
+    "_Work.step",
+    "_Work.copy",
+    "_theory_variable_names"
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "API": {
+    "bytes": 6507,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/API-wire-v4.json",
+    "sha256": "201b1c35238c7ece38403350e2edc4df62cb86f7ed75ee0d417a0b161d071006"
+  },
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "Review_ABI": {
+    "required": [
+      "Whole Source/current API/contract and frozen parent; exact full forward/inverse and real patches.",
+      "COW initial-state/explicit seed ledger, snapshot/checkpoint/rollback exact ownership; no domain/point insertion.",
+      "Full provider report gate on every status and later exposures checked both directions; unchanged fresh bare d680 consumer and distinct wrapper.",
+      "Public degree original/decorated/rejected keys and public cursor removed-prefix/current-context joins; no hidden internals claim.",
+      "Scheduler/base domains/one primitive/canonical fallback/native evidence/retention semantics unchanged except declared ledger calls.",
+      "Trusted pinned Source/Root original17/currentmap separation, charged errors/resources, scientific calls0 and author overlap."
+    ],
+    "schema": "receptor-family-full-exposure-census-engine-typed-Source-review-v4",
+    "scope": "receptor-family-full-exposure-census-engine-Source",
+    "source": {
+      "bytes": 92122,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+      "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+    },
+    "sources": {
+      "family_engine": {
+        "bytes": 92122,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+        "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+      }
+    }
+  },
+  "actual_patch_evidence": {
+    "bytes": 1840,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/actual-patch-evidence-v4.json",
+    "sha256": "f4992a87c1b3412ecedf7794e757e44ec25372dd9bb6aaef2d953ffc1b1f8440"
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_overlap": "Author previously wrote independent expansion4358, marked state9fd, nonimp checker8f, ea300 point-adapter ancestry and some controls/diagnostics; engine3 parent is Controls/Arithmetic ancestry. Shared schemas/native primitives and API coordination are disclosed. This author packet is not a distinct peer review.",
+  "change_summary": {
+    "added_methods": 4,
+    "changed_methods": [
+      "__init__",
+      "_snapshot_value",
+      "checkpoint",
+      "rollback",
+      "_family_policy",
+      "_candidate",
+      "_candidate_from_decision_context",
+      "_advance",
+      "_validate_receipt",
+      "decision",
+      "_consume_family"
+    ],
+    "inherited_named_regions_raw_AST_exact": 37,
+    "raw_regions": 12,
+    "scientific_erasures": "Candidate, checked-context candidate, advance and decision bodies recover parent raw exact after declared ledger-only calls/argument erasure. Existing full consumer call/header validation and selection/family identity tail raw exact. All global schedule/native validators, install/observe/place/exclude/open/next_alternative/fallback_degree/select_family/adopt_family/search bodies raw+AST exact."
+  },
+  "coverage": [
+    "Freshly checked initial original/decorated selected/excluded types; explicit externally authenticated census seed.",
+    "All full provider report.prototype_census entries, including types only exposed by rejected/preflight/own-prefix/no-offer/UNKNOWN paths; full copied report stays in engine-owned check record.",
+    "Fresh consumer READY members across every offered adaptation, plus frozen owned pending member identities.",
+    "Existing and future full engine-observed candidate packets, public checked degree candidates and public rejected full keys received by the engine.",
+    "Every successful public adapter5 cursor prefix census, including original base-yielded types removed by channel4 before a later survivor/EOF. Ledger persists across transitions so checking is in both temporal directions."
+  ],
+  "coverage_boundary": "No claim about never-yielded private base69 internals, private non-enumerated fibre attempts represented only by hashes/counts, arbitrary late introspection after native failure, or external Root log packets never passed into the engine. Such objects are not silently treated as complete exposed data.",
+  "engine_accepted": false,
+  "forward_patch": {
+    "bytes": 23397,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/engine-v3-to-v4.forward.patch",
+    "sha256": "13ad6110871293f88acaa6f6b86e735be95008f16a61899360ec1d7cbae429c0"
+  },
+  "future_qualification_obligations": [
+    "Distinct whole current engine Source/API/contract peer plus independent Root current composition/CodeSeal/grant before any actual. No self-review of this author packet.",
+    "Canonical full seed/header/current-state/marking/epoch/policy/report.batch mismatch negatives; copied old receipt or bare batch cannot substitute for fresh wrapped provider output. Malformed data errors are never timeout-as-negative.",
+    "UNKNOWN/no-offer/rejected/preflight census must persist and compare against later degree/fallback/placement exposures; complete input/open closed alternative unions remain separate.",
+    "Public cursor removed-only progress then survivor/EOF, repeated replay prefixes, current full context and counters; full ledger snapshots/inner/outer exact rollback.",
+    "Fresh current global branch plus native single-primitive preference and fresh next decision under declared same scheduler/budget; no prior 10/12 or RF result inheritance, no all-engine/proof claim.",
+    "Root must bind actual providerV5/observed/residualV2/helper/current Source maps and raw prior inventory provenance separately; construction reuse/cost and matched policy differences must remain explicit."
+  ],
+  "identity_semantics": [
+    "Every entry carries the existing literal type ID and full canonical UTF8/ensure_ascii=False preimage text. Parsing/canonical roundtrip, exact original/decorated preimage outer shape, original epoch/separate marking and existing Source ID-definition check precede full same-ID/preimage equality. Digests do not replace preimages or assume injectivity.",
+    "No original ID is manufactured for a rejected decorated key lacking an original packet: unchanged native point rebuild supplies the actual full original/decorated packet. Legacy original public rejection keys similarly rebuild through unchanged base before recording.",
+    "The ledger never adds a candidate, incidence, dependency edge, point value, exclusion, local evidence, degree or EOF certificate. A malformed/collision error propagates; it is not a family invalidation, candidate removal, learned negative, no-family claim or reason to try a different hint. Alternative point unions are never merged."
+  ],
+  "inverse_patch": {
+    "bytes": 23397,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/engine-v4-to-v3.inverse.patch",
+    "sha256": "b63b4ec3da0b20bc5c89d7e1a39fee02aedf0eb35e5319b6d80924958fa43e6d"
+  },
+  "model_and_cost": {
+    "limits_of_equivalence": "No identical tick count, callback nth-call failure prefix, error timing, event/snapshot byte identity across versions or performance equivalence is claimed. Trusted synchronous pinned current Root scope only; no hostile mutable-frame or arbitrary reentrancy guarantee.",
+    "resources": "Original native20s/512MiB/internal500MiB reserve/failure55s/owned60s/caller90+1 and node128/event2000 ceilings stay. Extra copying/JSON/census exports/rejected-key native reconstruction are charged to the same Root tick/outer native accounting. No reset, new clock, late model call or predicted fit/benefit.",
+    "scheduler": "Unchanged global DEAD then UNKNOWN barrier then FORCED then earliest generation with explicitly selected existing ROW or ASSIGNED-OUTPUT-THEN-ROW tie. Family proposer remains post-real-BRANCH only; one legal primitive placement then fresh decision, no atomic family installation.",
+    "unchanged": "Original17/input2 language epoch, declaration/policy/theory/Gamma/parameters/B12N44/24row universe, frozen channel4 model and rule inventory. Current executable Source map remains separately authenticated. No rebase or epoch override."
+  },
+  "ownership_argument": [
+    "Only new dictionaries are assigned; no existing owned ledger/export dictionary is mutated. Strings and old export objects are owned fresh copies; snapshots return through existing semantic tree copy.",
+    "Checkpoint payload stores census and latest-export dictionaries; rollback restores them with the original state/row versions/certs/slots/observed/reverse/preferences and drops live cursors as before, without callbacks.",
+    "_install leaves collision metadata intact while old domain/transition/retention math remains exact. An old per-row public export is provenance only; its context is retained literally and is never SHA-relabeled to a new state.",
+    "Every provider report and later candidate/native/cursor exposure joins the same branch-owned full ledger; rollback drops child-only exposures exactly as existing observed metadata does. Events/reports retain reached history outside semantic rollback, with no cross-branch authority."
+  ],
+  "parent_source": {
+    "bytes": 76668,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_search_engine_v3.py",
+    "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+  },
+  "problem": "Engine3 only joined READY adaptations with current observed candidates, losing provider rejected/preflight/partial/UNKNOWN exposure data and all provider-only types on the next call. Current Source adds identity-only persistent ledger composition, not an extra candidate filter or point model.",
+  "proof_accepted": false,
+  "prospective_provider": {
+    "schema": "receptor-family-observed-receptor-transfer-provider-v2",
+    "status": "Protocol coordinated with Controls; final exact Source/contract/peer must be pinned by Root before composition/actual. Not fabricated as an already reviewed dependency in this packet.",
+    "version": "receptor-family-observed-receptor-transfer-provider-v5"
+  },
+  "pruning_accepted": false,
+  "runtime_qualified": false,
+  "schema": "receptor-family-full-exposure-census-engine-Source-contract-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-full-exposure-census-engine-Source",
+  "source": {
+    "bytes": 92122,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+    "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+  },
+  "source_delta": {
+    "bytes": 71409,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-delta-v4.json",
+    "sha256": "9ce893faf8e48079c89639070202d93febcf42af989416c17cc2b4e099558fd8"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "family_engine": {
+      "bytes": 92122,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+      "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+    }
+  },
+  "static_audit": {
+    "bytes": 1861,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/static-audit-v4.json",
+    "sha256": "fae4466a54c0d12615c21010217228be3f6d6ad37be53b31fd4392103e9309fa"
+  },
+  "tests_executed": false,
+  "trusted_origin_seam": "These are protocol/current-context and full identity gates over fresh pinned Sources. They do not independently replay the entire provider or treat arbitrary forged report/consumer headers as native proof certificates. Report census completeness relies on whole audited current provider Source plus Root original17/current executable map authentication and CodeSeal/native callback guards. d680 remains fresh and independently expands/checks/adapts all offered instances; its receipt is nested literally. A continuation rebuilds the fixed owned instance/member identities; no arbitrary hidden extra UNKNOWN exposure claim is made.",
+  "unchanged_components": {
+    "base_semantics": {
+      "bytes": 27553,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "consumer": {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    },
+    "observed_producer": {
+      "bytes": 60281,
+      "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+    },
+    "point_adapter5": {
+      "bytes": 31038,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    },
+    "residual_policy2": {
+      "bytes": 12826,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+      "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479"
+    }
+  }
+}

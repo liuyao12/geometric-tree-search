@@ -1,0 +1,56 @@
+{
+  "RL_accepted": false,
+  "actual_result_proofword_donor_reads": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_disclosure": "Reviewer authored host4bd6, unchanged d680 consumer, parent family engine3 and provider6; also prior c960/fallback/membership and caller/native ancestry. Diagnosis authored current engine4/5 ledger work and independent4358/9fd/8f plus point-adapter ancestry. Wire coordination/shared primitives disclosed. This is distinct review of current engine additions, not an independent peer of own provider or own older helpers.",
+  "blocking_findings": [],
+  "checks_passed": 12,
+  "conditions": [
+    "Root fresh whole executable-map/original17/input2 authentication, CodeSeal and unchanged native once grant remain mandatory.",
+    "Runtime engine/provider/census/rollback controls not executed or inherited. Future qualification obligations remain open.",
+    "Ledger is full identity consistency evidence over specified public exposures, never candidate/point/degree/proof authority."
+  ],
+  "disposition": "CONDITIONAL_SOURCE_PASS",
+  "engine_accepted": false,
+  "findings": {
+    "bytes": 6744,
+    "path": "/private/tmp/gcts-family-census-engine-peer-20261017/findings-v5.json",
+    "sha256": "f7d3541aa38aeba6892c806b4028b68f6aca53e305b099e596e404abb26e1ec3"
+  },
+  "independent_raw_audit": {
+    "bytes": 8755,
+    "path": "/private/tmp/gcts-family-census-engine-peer-20261017/independent-raw-AST-audit-v5.json",
+    "sha256": "9a3d7d8fe21e57ab85693bb20d353241ca49939c0370b344e0f56985f2aa07bf"
+  },
+  "proof_accepted": false,
+  "pruning_accepted": false,
+  "reviewer_distinct_from_author": true,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_qualified": false,
+  "schema": "receptor-family-full-exposure-census-engine-typed-Source-review-v5",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-full-exposure-census-engine-Source",
+  "source": {
+    "bytes": 92132,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v5.py",
+    "sha256": "ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db"
+  },
+  "source_contract": {
+    "bytes": 14970,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-contract-v5.json",
+    "sha256": "c8773a729e3fd8b474db5710a816b9517ecff3eaa0b78cb8d11ca2315456d388"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "family_engine": {
+      "bytes": 92132,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v5.py",
+      "sha256": "ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db"
+    }
+  },
+  "tests_executed": false,
+  "whole_current_source_contract_API_and_parent_delta_read": true
+}

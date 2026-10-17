@@ -1,0 +1,157 @@
+{
+  "AST_parse": true,
+  "checks": [
+    {
+      "evidence": "Full new-module addition and empty inverse declared; no existing Source edited.",
+      "id": "RB01",
+      "passed": true
+    },
+    {
+      "evidence": "Only builtin syntax data/re imported; no expander/native/checker/engine/provider call or source-environment argument.",
+      "id": "RB02",
+      "passed": true
+    },
+    {
+      "evidence": "Complete parameter ID/reference syntax; host names/predicate arities exact types; duplicates/reserved IDs rejected.",
+      "id": "RB03",
+      "passed": true
+    },
+    {
+      "evidence": "Only host authority theory axioms scanned for literal var/all name preference; no target/receiver/body formula selection or source substitution initializer.",
+      "id": "RB04",
+      "passed": true
+    },
+    {
+      "evidence": "Full allowed variable names retained, predicates arity exact; parameter order always descriptor declaration order.",
+      "id": "RB05",
+      "passed": true
+    },
+    {
+      "evidence": "Empty env emitted first after validation; diagonal and Cartesian channels interleave, full tuple dedup, same finite binding cap.",
+      "id": "RB06",
+      "passed": true
+    },
+    {
+      "evidence": "FORMULA/TERM params deliberately left absent but do not suppress variable trials; fresh observed equations must resolve them or UNKNOWN.",
+      "id": "RB07",
+      "passed": true
+    },
+    {
+      "evidence": "Whole input/metadata copies and every enumeration traversal share bounded work/depth/native callback; own bounds do not yield partial binding object.",
+      "id": "RB08",
+      "passed": true
+    },
+    {
+      "evidence": "Callback failures rethrow same error object; malformed data errors propagate, own Unfinished only supplies bounded advisory prefix.",
+      "id": "RB09",
+      "passed": true
+    },
+    {
+      "evidence": "Named-domain exhaustion separate from full substitutions/native membership; all broad flags false.",
+      "id": "RB10",
+      "passed": true
+    }
+  ],
+  "compile_without_evaluation": true,
+  "definitions": [
+    {
+      "end_line": 22,
+      "kind": "ClassDef",
+      "line": 19,
+      "name": "BindingPrefixDataError"
+    },
+    {
+      "end_line": 26,
+      "kind": "ClassDef",
+      "line": 25,
+      "name": "_Unfinished"
+    },
+    {
+      "end_line": 31,
+      "kind": "ClassDef",
+      "line": 29,
+      "name": "_CallbackFailure"
+    },
+    {
+      "end_line": 36,
+      "kind": "FunctionDef",
+      "line": 34,
+      "name": "require"
+    },
+    {
+      "end_line": 40,
+      "kind": "FunctionDef",
+      "line": 39,
+      "name": "fields"
+    },
+    {
+      "end_line": 46,
+      "kind": "FunctionDef",
+      "line": 43,
+      "name": "identifier"
+    },
+    {
+      "end_line": 77,
+      "kind": "ClassDef",
+      "line": 49,
+      "name": "_Work"
+    },
+    {
+      "end_line": 91,
+      "kind": "FunctionDef",
+      "line": 80,
+      "name": "_theory_variable_names"
+    },
+    {
+      "end_line": 250,
+      "kind": "FunctionDef",
+      "line": 94,
+      "name": "build_residual_binding_prefix"
+    },
+    {
+      "end_line": 22,
+      "kind": "FunctionDef",
+      "line": 20,
+      "name": "__init__"
+    },
+    {
+      "end_line": 31,
+      "kind": "FunctionDef",
+      "line": 30,
+      "name": "__init__"
+    },
+    {
+      "end_line": 59,
+      "kind": "FunctionDef",
+      "line": 50,
+      "name": "__init__"
+    },
+    {
+      "end_line": 68,
+      "kind": "FunctionDef",
+      "line": 61,
+      "name": "step"
+    },
+    {
+      "end_line": 77,
+      "kind": "FunctionDef",
+      "line": 70,
+      "name": "copy"
+    }
+  ],
+  "imports": [
+    "re"
+  ],
+  "limitations": "Author Source-only evidence, not peer review, runtime bound fit, successful environment or native/transfer availability. Finite tuple cap can still miss every usable assignment; duplicate-free name candidates do not imply distinct valid primitive instances.",
+  "model_actual_result_donor_clock_reads": false,
+  "schema": "receptor-family-residual-prefix-static-audit-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 12776,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v1.py",
+    "sha256": "bed90fd51324281a8d34e4250a7d752d9ea5e1ec76f70924a8aa2295278b7769"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "tests_or_fixtures_executed": false
+}

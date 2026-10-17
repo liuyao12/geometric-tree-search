@@ -1,0 +1,57 @@
+{
+  "actual_execution_authorized": false,
+  "blockers": [],
+  "caller_review": {
+    "bytes": 10810,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "31b5b17b11ab03cde62aecd8c5e389715eaab9be12048ad3a16ab5fd07697181"
+  },
+  "current_Root_handoff": {
+    "bytes": 14202,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/handoff-v2.json",
+    "sha256": "e7d9c5c643ad38769eacdd2cf479abfc87d2f07035eabab6ea377458b9e20b37"
+  },
+  "findings": {
+    "bytes": 14390,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/findings-v2.json",
+    "sha256": "ac6076cf202ea532ecb38fa6d092231324aa059ff1515b6f4f649ed321a5d077"
+  },
+  "parent_ancestry_findings": {
+    "bytes": 4181,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/V1-ancestry-findings.json",
+    "sha256": "101bdc9d6c7cc45a4405af9e84b291ec495b623a980a884e0af1045cbb12d837"
+  },
+  "reader": {
+    "bytes": 21794,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT_read_receiver_inference_saved_v2.py",
+    "sha256": "d04a8d0f5c11bfab52a70eea398c5139b22c18d251a1bd84644fe50899bf7418"
+  },
+  "reader_source_contract": {
+    "bytes": 1050,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "7331d22bed6ee11660b538f84d808f57c1dc1201b93cc513897a197180f12e1d"
+  },
+  "saved_reader_review": {
+    "bytes": 4915,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/saved-reader-typed-Source-review-v2.json",
+    "sha256": "4e83fbcf3897179ce57bb61539ce25a763a84c2871fc3a2b90e2ef94ce9c2a6f"
+  },
+  "schema": "ROOT-receiver-inference-peer-handoff-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 57521,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/receiver_inference_cold_v2.py",
+    "sha256": "370c642e25f18e1eda8403dd67904bdf5139f5853a29dfe4c4f914e702bd8c2e"
+  },
+  "source_contract": {
+    "bytes": 18134,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v2.json",
+    "sha256": "fe318fd43d3cc2ca4761b831ef012f7a4a47f948ec910f1df3059dc0a8d65a90"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 21516,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/V2-independent-static-audit.json",
+    "sha256": "b9f8333c681ec52a7abc27aa72a143d67a16d504de134ec7401ca39f283672e5"
+  }
+}

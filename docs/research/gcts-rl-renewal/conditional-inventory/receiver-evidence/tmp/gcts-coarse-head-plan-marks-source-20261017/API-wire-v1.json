@@ -1,0 +1,94 @@
+{
+  "arguments": {
+    "descriptor": "Whole receptor-lemma-family-v2, descriptor ID recomputed with original canonical ASCII preimage excluding family_id/provenance. No substitution/environment accepted. Full typed descriptor/admission still required independently.",
+    "layout_shape": {
+      "inputs": "Ordered root input port ID strings.",
+      "nodes": "Ordered exact flat nodes each {id,rule,ordered_inputs,origin}; origin exact {family_id,call_path,step_id,hypothesis_port,gamma_index}. Same shape returned by provider7._layout; no origin formula/witness/substitution included.",
+      "outputs": "Ordered {port_id,source}, source exactly {input:ID}|{node:flatID}."
+    },
+    "limits": {
+      "depth": 128,
+      "input_bytes": 1048576,
+      "override": "Only positive exact integer reductions of known caps.",
+      "requirements": 4096,
+      "work": 100000
+    },
+    "row_assignment": {
+      "input_rows": "[[rootPortID,literal-int-row],...] every root input once",
+      "node_rows": "[[flatID, literal-int-row],...] every exact flat node once",
+      "range": "0<=row<24; bool is not int. Every ordered read strictly prior.",
+      "schema": "receptor-family-six-rule-row-assignment-v1"
+    },
+    "tick": "Owned native tick supplied later by Root; every callback exception propagated unchanged. No tick executed during Source authoring."
+  },
+  "downstream": "Fresh complete observed matching/expansion, independent4358, original primitive membership, marked full union4bd6, full offered/engine-exposure census and ordinary fallback remain mandatory. No provider/engine/caller integration performed.",
+  "errors": {
+    "PlanHeadError": "ValueError subclass with literal code; invalid data/protocol, not HEAD_CONFLICT or learned negative.",
+    "callback": "Every BaseException from tick wrapped only to preserve identity across own-prefix catch then re-raised; never counted negative/UNKNOWN.",
+    "other_errors": "Propagate. No native/checker call exists in this module."
+  },
+  "formula_heads": {
+    "absent": "A root formula_meta assigns no mark, independent of every source/current substitution. No unrecognized tag is silently treated as known.",
+    "conditional": "Known head invariance is conditional on later valid typed/capture-safe instantiation; the gate is not full descriptor/host membership validation.",
+    "known": [
+      "bot",
+      "pred",
+      "eq",
+      "all",
+      "not",
+      "imp",
+      "and",
+      "or"
+    ]
+  },
+  "output": {
+    "HEAD_CONFLICT": "Only after complete supported structural validation; unequal known values at same [5,row]; reject THIS proposed advisory layout only.",
+    "NO_KNOWN_HEAD_CONFLICT": "Pass-through, possibly all absent. No compatibility/proof/native union/coverage claim.",
+    "UNKNOWN": "Unsupported form or own finite resource prefix; no partial requirements/conflicts/negative authority returned.",
+    "fields": [
+      "schema",
+      "version",
+      "status",
+      "reason",
+      "scope",
+      "request",
+      "request_sha256",
+      "planning_channel",
+      "gate_completed",
+      "advisory_plan_rejected",
+      "requirements",
+      "known_marks",
+      "conflicts",
+      "unknown_requirement_indices",
+      "work",
+      "flags"
+    ],
+    "schema": "receptor-family-coarse-head-plan-check-v1",
+    "statuses": [
+      "HEAD_CONFLICT",
+      "NO_KNOWN_HEAD_CONFLICT",
+      "UNKNOWN"
+    ]
+  },
+  "planning_marks": {
+    "absence": "mark:null on unknown requirement, no assigned zero or wildcard value.",
+    "assigned_value": [
+      "formula-head",
+      "<literal known head>"
+    ],
+    "point": "[5,assigned_row]",
+    "requirements": "Ordered root input interfaces, each primitive output then each repeated ordered premise read, exposed output interfaces. Full descriptor template_path/source/point retained.",
+    "union": "known_marks retains all per-point head groups; multiple values are a conflict, never silently merged into a valid state. Root interfaces are planning formula-equality obligations; unused input ports are not claimed to insert native marks."
+  },
+  "schema": "receptor-family-coarse-head-plan-marks-API-v1",
+  "scientific_calls": 0,
+  "signature": "check_plan_heads(*, descriptor, layout_shape, row_assignment, tick, limits=None)",
+  "source": {
+    "bytes": 15276,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+    "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+  },
+  "source_only": true,
+  "supported_scope": "Primitive-only deps[] and root hypotheses[]; origin maps each flat node to unique exact root body step_id, with empty call_path and no hypothesis_port. Never zip by position. CALL/dependencies/materialized hypotheses return UNKNOWN/pass-through, not conflict.",
+  "version": "receptor-family-coarse-formula-head-plan-marks-v1"
+}

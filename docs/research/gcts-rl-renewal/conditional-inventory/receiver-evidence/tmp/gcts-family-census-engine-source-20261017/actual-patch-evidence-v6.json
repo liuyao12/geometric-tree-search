@@ -1,0 +1,56 @@
+{
+  "operations": [
+    {
+      "bytes_exact": true,
+      "direction": "immediate_forward",
+      "exit_code": 0,
+      "result": {
+        "bytes": 92132,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/immediate-v6-forward.py",
+        "sha256": "eab17f2f9d1a083f6e72be7db1b12a17ef0a407ba6a9b28ec5e1c0a33454a78a"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "immediate_inverse",
+      "exit_code": 0,
+      "result": {
+        "bytes": 92132,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/immediate-v6-inverse.py",
+        "sha256": "ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "combined_forward",
+      "exit_code": 0,
+      "result": {
+        "bytes": 92132,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/combined-v6-forward.py",
+        "sha256": "eab17f2f9d1a083f6e72be7db1b12a17ef0a407ba6a9b28ec5e1c0a33454a78a"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "combined_inverse",
+      "exit_code": 0,
+      "result": {
+        "bytes": 76668,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/combined-v6-inverse.py",
+        "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+      },
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "schema": "receptor-family-full-census-engine-actual-patch-evidence-v6",
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}

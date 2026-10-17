@@ -1,0 +1,372 @@
+{
+  "added_named_regions": [
+    "_observed_environment",
+    "infer_observed_ports"
+  ],
+  "changed_or_removed_inherited_regions": [],
+  "edit_regions": 2,
+  "edits": [
+    {
+      "after": "VERSION = 'receptor-family-typed-expander-v1'\nIMPLEMENTATION_VERSION = 'receptor-family-observed-subset-inference-v2'",
+      "before": "VERSION = 'receptor-family-typed-expander-v1'",
+      "label": "explicit additive implementation tag"
+    },
+    {
+      "after": "\n\ndef _observed_environment(core, fid, candidate, ports, constraints):\n    \"\"\"Complete a syntax environment, without inventing physical input facts.\"\"\"\n    w=core.w;d=core.by_id[fid];ps=core.params[fid]\n    require(type(candidate)is dict and set(candidate)<=set(ps),'BINDING','partial candidate has declared parameter IDs only')\n    env=w.copy(candidate)\n    # Match the old inference candidate checks, including explicit abstraction\n    # formals; a literal all-tree bound to F does not bind other declared IDs.\n    for pid,value in env.items():\n        p=ps[pid];kind=p['kind']\n        if kind=='VARIABLE': require(type(value)is str and value in core.host['variable_names'],'SCOPE','candidate variable')\n        elif kind=='PREDICATE_SYMBOL': require(type(value)is str and core.host['predicates'].get(value)==p['arity'],'ARITY','candidate predicate')\n        else:\n            _keys(value,('formal_names','body'));fs=value['formal_names']\n            require(type(fs)is list and len(fs)==len(p['formal_variables']),'BINDING','candidate abstraction arity')\n            for name in fs:_name(name)\n            _unique(fs);core._native(value['body'],kind,set(fs))\n    core.renamings=[]\n    while True:\n        before=len(env)\n        for template,actual,location in constraints:\n            core._infer_template(template,actual,env,ps,location)\n        if len(env)==before:break\n    missing=[pid for pid in ps if pid not in env]\n    if missing:return None,missing\n    core._binding(fid,env)  # Complete types, formal arities and external-free scope.\n    observed={field:{p['port_id']:p for p in ports[field]}\n              for field in ('hypotheses','inputs','outputs')}\n    required={field:[] for field in observed}\n    core.renamings=[]\n    for field in ('hypotheses','inputs','outputs'):\n        for i,p in enumerate(d[field]):\n            w.step();formula=core._instantiate(p['formula'],env,[],[field,i,'formula'])\n            core._native(formula,'FORMULA',set())\n            actual=observed[field].get(p['id'])\n            if actual is not None:\n                require(actual['formula']==formula,'PORT_MISMATCH','forward literal '+field+' receptor')\n            if field=='hypotheses':\n                basis='ORIGINAL_GAMMA_OCCURRENCE'\n            elif actual is not None:\n                basis='OBSERVED_FORMULA_CONSTRAINT'\n            else:\n                basis='DERIVED_CONDITIONAL_OBLIGATION' if field=='inputs' else 'DERIVED_OUTPUT_FORMULA'\n            item={'port_id':p['id'],'formula':formula,'basis':basis}\n            if field=='hypotheses':item['gamma_index']=actual['gamma_index']\n            required[field].append(item)\n    # These are root formula-only syntax checks. Nested bodies/child conditions\n    # still require the existing full forward expansion and independent checker.\n    core.conditions=[]\n    core.root_inputs={p['port_id']:{'formula':p['formula']} for p in required['inputs']}\n    outputs={p['port_id']:{'formula':p['formula']} for p in required['outputs']}\n    core._side_conditions(d,env,[],core.root_inputs,outputs)\n    return {'schema':'receptor-family-observed-environment-proposal-v1',\n            'version':VERSION,'implementation_version':IMPLEMENTATION_VERSION,\n            'status':'GROUND_ENVIRONMENT_PROPOSAL','family_id':fid,\n            'request':{'registry':w.copy(core.registry),'family_id':fid,'host':w.copy(core.host),\n                       'observed_receptors':w.copy(ports),'initial_binding':w.copy(candidate)},\n            'substitution':w.copy(env),'required_port_formulas':required,\n            'forward_port_renamings':w.copy(core.renamings),\n            'root_side_condition_checks':w.copy(core.conditions),\n            'missing_parameters':[],'root_port_forward_checked':True,\n            'full_internal_expansion_checked':False,\n            'scope':'Untrusted syntax environment and root port formulas only; no physical row, source, occupancy, premise truth, BRANCH or native authority.',\n            'flags':dict(FLAGS)},[]\n\n\ndef infer_observed_ports(*, registry, family_id, host, observed_receptors,\n                         candidate_bindings, tick, limits=None):\n    \"\"\"Infer from an ordered visible subset, derive formula obligations only.\n\n    Every declared parameter must become ground, including internal-only BOUND\n    or EIGEN IDs. No source substitution or residual value is guessed. Complete\n    root hypotheses and at least one output are required; input/output subsets\n    are ordered and duplicate-free. Full expansion/native admission follows\n    separately with actual physical bindings; this endpoint cannot supply them.\n    \"\"\"\n    work=_Work(tick,limits);proposals=[];rejected=[];attempts=0;request=None\n    reason='supplied finite binding prefix ended; no absence claim'\n    try:\n        core=_Core(registry,host,work)\n        require(type(family_id)is str and family_id in core.by_id,'FAMILY','root family available')\n        ports=work.copy(observed_receptors);_keys(ports,('hypotheses','inputs','outputs'),'PORT_BINDING')\n        d=core.by_id[family_id];constraints=[]\n        for field in ('hypotheses','inputs','outputs'):\n            require(type(ports[field])is list,'PORT_BINDING','ordered observed lists')\n        require(len(ports['hypotheses'])==len(d['hypotheses']),'PORT_BINDING','complete ordered hypotheses')\n        for i,(p,b) in enumerate(zip(d['hypotheses'],ports['hypotheses'])):\n            work.step();_keys(b,('port_id','gamma_index','formula'),'PORT_BINDING')\n            require(b['port_id']==p['id'],'PORT_BINDING','same ordered hypothesis')\n            core._native(b['formula'],'FORMULA',set());index=b['gamma_index']\n            require(type(index)is int and 0<=index<len(core.host['ordered_Gamma'])\n                    and core.host['ordered_Gamma'][index]==b['formula'],'GAMMA','exact original context occurrence')\n            constraints.append((p['formula'],b['formula'],['hypotheses',i,'formula']))\n        for field in ('inputs','outputs'):\n            order={p['id']:(i,p) for i,p in enumerate(d[field])};previous=-1\n            for b in ports[field]:\n                work.step();_keys(b,('port_id','formula'),'PORT_BINDING');pid=_identifier(b['port_id'])\n                require(pid in order and order[pid][0]>previous,'PORT_BINDING','distinct declared ports in descriptor order')\n                i,p=order[pid];previous=i;core._native(b['formula'],'FORMULA',set())\n                constraints.append((p['formula'],b['formula'],[field,i,'formula']))\n        require(bool(ports['outputs']),'PORT_BINDING','at least one observed output')\n        request={'registry':work.copy(core.registry),'family_id':family_id,\n                 'host':work.copy(core.host),'observed_receptors':work.copy(ports)}\n        iterator=iter(candidate_bindings)\n        while attempts<work.limits['binding_attempts'] and len(proposals)<work.limits['results']:\n            work.step()\n            try:binding=next(iterator)\n            except StopIteration:break\n            attempts+=1\n            try:\n                proposal,missing=_observed_environment(core,family_id,work.copy(binding),ports,constraints)\n            except DescriptorError as exc:\n                rejected.append({'binding_index':attempts-1,'code':exc.code,'reason':str(exc),\n                                 'missing_parameters':[]})\n                continue\n            if missing:\n                rejected.append({'binding_index':attempts-1,'code':'UNBOUND_UNKNOWN',\n                    'reason':'residual parameters need declared bindings: '+','.join(missing),\n                    'missing_parameters':work.copy(missing)})\n                continue\n            proposal['binding_index']=attempts-1\n            proposals.append(proposal)\n        else:reason='finite binding/result prefix bound; no absence claim'\n    except _CallbackFailure as exc:\n        raise exc.error\n    except _Unfinished as exc:reason=str(exc)\n    return {'schema':'receptor-family-observed-environment-prefix-v1',\n            'version':VERSION,'implementation_version':IMPLEMENTATION_VERSION,\n            'status':'PROPOSALS' if proposals else 'UNKNOWN','request':request,\n            'proposals':proposals,'binding_attempts':attempts,'rejected_bindings':rejected,\n            'inference_complete':False,'work':work.report(),'reason':reason,'flags':dict(FLAGS)}\n",
+      "append_at_parent_EOF": true,
+      "before": "",
+      "label": "private inference/projection helper and public observed-subset prefix API",
+      "parent_EOF_byte": 51898
+    }
+  ],
+  "forward_patch": {
+    "bytes": 9045,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/expander-v1-to-v2.forward.patch",
+    "sha256": "32e7fa9a32e4c874e956b5e5fdd6588b2ba1137b0642328558216743023ff1da"
+  },
+  "inherited_named_regions": [
+    {
+      "current_line": 26,
+      "kind": "ClassDef",
+      "name": "DescriptorError",
+      "parent_line": 25
+    },
+    {
+      "current_line": 28,
+      "kind": "FunctionDef",
+      "name": "DescriptorError.__init__",
+      "parent_line": 27
+    },
+    {
+      "current_line": 33,
+      "kind": "ClassDef",
+      "name": "_Unfinished",
+      "parent_line": 32
+    },
+    {
+      "current_line": 37,
+      "kind": "ClassDef",
+      "name": "_CallbackFailure",
+      "parent_line": 36
+    },
+    {
+      "current_line": 38,
+      "kind": "FunctionDef",
+      "name": "_CallbackFailure.__init__",
+      "parent_line": 37
+    },
+    {
+      "current_line": 42,
+      "kind": "ClassDef",
+      "name": "_Unbound",
+      "parent_line": 41
+    },
+    {
+      "current_line": 46,
+      "kind": "FunctionDef",
+      "name": "require",
+      "parent_line": 45
+    },
+    {
+      "current_line": 51,
+      "kind": "FunctionDef",
+      "name": "canonical",
+      "parent_line": 50
+    },
+    {
+      "current_line": 56,
+      "kind": "FunctionDef",
+      "name": "family_preimage",
+      "parent_line": 55
+    },
+    {
+      "current_line": 60,
+      "kind": "FunctionDef",
+      "name": "family_identity",
+      "parent_line": 59
+    },
+    {
+      "current_line": 64,
+      "kind": "ClassDef",
+      "name": "_Work",
+      "parent_line": 63
+    },
+    {
+      "current_line": 65,
+      "kind": "FunctionDef",
+      "name": "_Work.__init__",
+      "parent_line": 64
+    },
+    {
+      "current_line": 76,
+      "kind": "FunctionDef",
+      "name": "_Work.step",
+      "parent_line": 75
+    },
+    {
+      "current_line": 85,
+      "kind": "FunctionDef",
+      "name": "_Work.copy",
+      "parent_line": 84
+    },
+    {
+      "current_line": 94,
+      "kind": "FunctionDef",
+      "name": "_Work.report",
+      "parent_line": 93
+    },
+    {
+      "current_line": 98,
+      "kind": "FunctionDef",
+      "name": "_keys",
+      "parent_line": 97
+    },
+    {
+      "current_line": 102,
+      "kind": "FunctionDef",
+      "name": "_name",
+      "parent_line": 101
+    },
+    {
+      "current_line": 107,
+      "kind": "FunctionDef",
+      "name": "_identifier",
+      "parent_line": 106
+    },
+    {
+      "current_line": 113,
+      "kind": "FunctionDef",
+      "name": "_unique",
+      "parent_line": 112
+    },
+    {
+      "current_line": 118,
+      "kind": "ClassDef",
+      "name": "_Core",
+      "parent_line": 117
+    },
+    {
+      "current_line": 119,
+      "kind": "FunctionDef",
+      "name": "_Core.__init__",
+      "parent_line": 118
+    },
+    {
+      "current_line": 137,
+      "kind": "FunctionDef",
+      "name": "_Core._host",
+      "parent_line": 136
+    },
+    {
+      "current_line": 164,
+      "kind": "FunctionDef",
+      "name": "_Core._native",
+      "parent_line": 163
+    },
+    {
+      "current_line": 194,
+      "kind": "FunctionDef",
+      "name": "_Core._free",
+      "parent_line": 193
+    },
+    {
+      "current_line": 207,
+      "kind": "FunctionDef",
+      "name": "_Core._parameters",
+      "parent_line": 206
+    },
+    {
+      "current_line": 240,
+      "kind": "FunctionDef",
+      "name": "_Core._symbol",
+      "parent_line": 239
+    },
+    {
+      "current_line": 252,
+      "kind": "FunctionDef",
+      "name": "_Core._template",
+      "parent_line": 251
+    },
+    {
+      "current_line": 298,
+      "kind": "FunctionDef",
+      "name": "_Core._ref",
+      "parent_line": 297
+    },
+    {
+      "current_line": 310,
+      "kind": "FunctionDef",
+      "name": "_Core._descriptor",
+      "parent_line": 309
+    },
+    {
+      "current_line": 381,
+      "kind": "FunctionDef",
+      "name": "_Core._descriptor.var_id",
+      "parent_line": 380
+    },
+    {
+      "current_line": 382,
+      "kind": "FunctionDef",
+      "name": "_Core._descriptor.free_selector",
+      "parent_line": 381
+    },
+    {
+      "current_line": 391,
+      "kind": "FunctionDef",
+      "name": "_Core._argument_template",
+      "parent_line": 390
+    },
+    {
+      "current_line": 405,
+      "kind": "FunctionDef",
+      "name": "_Core._call_binding_templates",
+      "parent_line": 404
+    },
+    {
+      "current_line": 418,
+      "kind": "FunctionDef",
+      "name": "_Core._infer_set",
+      "parent_line": 417
+    },
+    {
+      "current_line": 425,
+      "kind": "FunctionDef",
+      "name": "_Core._infer_template",
+      "parent_line": 424
+    },
+    {
+      "current_line": 469,
+      "kind": "FunctionDef",
+      "name": "_Core.infer",
+      "parent_line": 468
+    },
+    {
+      "current_line": 506,
+      "kind": "FunctionDef",
+      "name": "_Core._binding",
+      "parent_line": 505
+    },
+    {
+      "current_line": 528,
+      "kind": "FunctionDef",
+      "name": "_Core._fresh",
+      "parent_line": 527
+    },
+    {
+      "current_line": 535,
+      "kind": "FunctionDef",
+      "name": "_Core._subst",
+      "parent_line": 534
+    },
+    {
+      "current_line": 557,
+      "kind": "FunctionDef",
+      "name": "_Core._external",
+      "parent_line": 556
+    },
+    {
+      "current_line": 570,
+      "kind": "FunctionDef",
+      "name": "_Core._instantiate",
+      "parent_line": 569
+    },
+    {
+      "current_line": 595,
+      "kind": "FunctionDef",
+      "name": "_Core._arg",
+      "parent_line": 594
+    },
+    {
+      "current_line": 602,
+      "kind": "FunctionDef",
+      "name": "_Core._node",
+      "parent_line": 601
+    },
+    {
+      "current_line": 611,
+      "kind": "FunctionDef",
+      "name": "_Core._resolve",
+      "parent_line": 610
+    },
+    {
+      "current_line": 617,
+      "kind": "FunctionDef",
+      "name": "_Core._side_conditions",
+      "parent_line": 616
+    },
+    {
+      "current_line": 619,
+      "kind": "FunctionDef",
+      "name": "_Core._side_conditions.frees",
+      "parent_line": 618
+    },
+    {
+      "current_line": 625,
+      "kind": "FunctionDef",
+      "name": "_Core._side_conditions.variable",
+      "parent_line": 624
+    },
+    {
+      "current_line": 654,
+      "kind": "FunctionDef",
+      "name": "_Core._frame",
+      "parent_line": 653
+    },
+    {
+      "current_line": 706,
+      "kind": "FunctionDef",
+      "name": "_Core.expand",
+      "parent_line": 705
+    },
+    {
+      "current_line": 744,
+      "kind": "FunctionDef",
+      "name": "_Core.expand.visit",
+      "parent_line": 743
+    },
+    {
+      "current_line": 763,
+      "kind": "FunctionDef",
+      "name": "_unknown",
+      "parent_line": 762
+    },
+    {
+      "current_line": 770,
+      "kind": "FunctionDef",
+      "name": "validate_registry",
+      "parent_line": 769
+    },
+    {
+      "current_line": 784,
+      "kind": "FunctionDef",
+      "name": "expand_family",
+      "parent_line": 783
+    },
+    {
+      "current_line": 795,
+      "kind": "FunctionDef",
+      "name": "match_family",
+      "parent_line": 794
+    }
+  ],
+  "inverse_patch": {
+    "bytes": 9045,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/expander-v2-to-v1.inverse.patch",
+    "sha256": "bc80ea30349aeb627e9de22c8e00cf0baba26de44c360ccba4f810676b473721"
+  },
+  "parent": {
+    "bytes": 51898,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+    "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+  },
+  "raw_forward_exact": true,
+  "raw_full_inverse_exact": true,
+  "schema": "receptor-family-observed-subset-Source-delta-v2",
+  "source": {
+    "bytes": 60281,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+    "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+  },
+  "whole_AST_inverse_exact": true
+}

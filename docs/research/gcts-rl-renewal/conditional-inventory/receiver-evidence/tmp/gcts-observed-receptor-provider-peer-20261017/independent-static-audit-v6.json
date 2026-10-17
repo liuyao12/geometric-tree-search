@@ -1,0 +1,97 @@
+{
+  "actual_four_patch_directions": [
+    {
+      "bytes_exact": true,
+      "direction": "immediate forward",
+      "exit_code": 0,
+      "result": {
+        "bytes": 54172,
+        "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/raw-v6-immediate-forward.py",
+        "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "immediate full-inverse",
+      "exit_code": 0,
+      "result": {
+        "bytes": 51696,
+        "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/raw-v6-immediate-full-inverse.py",
+        "sha256": "3c546c3122706d6868130ecdfc5bf1c6ca747c605a9abfc827fc9ba274741d06"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "combined forward",
+      "exit_code": 0,
+      "result": {
+        "bytes": 54172,
+        "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/raw-v6-combined-forward.py",
+        "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "combined full-inverse",
+      "exit_code": 0,
+      "result": {
+        "bytes": 41642,
+        "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/raw-v6-combined-full-inverse.py",
+        "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+      },
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "checked_refs": {
+    "API": {
+      "bytes": 6727,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/API-wire-v6.json",
+      "sha256": "242f64b1bc430145098111b9709e066046fc5fec8709687105424ce54d25bf34"
+    },
+    "source": {
+      "bytes": 54172,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+      "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+    },
+    "source_contract": {
+      "bytes": 9057,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v6.json",
+      "sha256": "a72651277fa05bd75193a932e24f3547bf7bafedc15f265c7f8230389b21f849"
+    },
+    "source_delta": {
+      "bytes": 85652,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-delta-v6.json",
+      "sha256": "ba247a9012ce2710b4daf739e15a6a499e71e1acdc17abc202fbca3cbaf388c3"
+    },
+    "static_audit": {
+      "bytes": 1913,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/static-audit-v6.json",
+      "sha256": "9692c98852d3da88d14a929e29542729d2ecfd411164ad4fd6992ecbbca0928c"
+    }
+  },
+  "immediate9_combined22_raw_full_AST_inverse": true,
+  "parse_compile_without_evaluation": true,
+  "report26_request6_flags_join": true,
+  "schema": "observed-receptor-provider-independent-static-audit-v6",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54172,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+    "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+  },
+  "source_contract": {
+    "bytes": 9057,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v6.json",
+    "sha256": "a72651277fa05bd75193a932e24f3547bf7bafedc15f265c7f8230389b21f849"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "tests_executed": false
+}

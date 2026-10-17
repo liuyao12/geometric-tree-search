@@ -1,0 +1,124 @@
+{
+  "API": {
+    "bytes": 7243,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/API-wire-v7.json",
+    "sha256": "79e5c107fa870afe768a9577ddd207472cba2c4b230a2e45c69e77782ba073fd"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "receptor-family-observed-receptor-provider-typed-Source-review-v7",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-observed-receptor-provider-Source",
+    "source": {
+      "bytes": 54448,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+      "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+    },
+    "source_contract": {
+      "bytes": 9783,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v7.json",
+      "sha256": "dee233de9030c7baf9758a543b69aaa9bdeb86aec213fc27620918faabaa1f0a"
+    },
+    "source_only": true,
+    "sources": {
+      "provider": {
+        "bytes": 54448,
+        "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+        "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_patches": {
+    "forward": {
+      "bytes": 1755,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/provider-v6-to-v7-forward.patch",
+      "sha256": "d944b867d2dcd4706fe142f105ca934ad864fdf3f448e5fba679913e1274ec8d"
+    },
+    "full-inverse": {
+      "bytes": 1755,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/provider-v6-to-v7-full-inverse.patch",
+      "sha256": "a4a8b1150ad213e9c5f04a33d5733f269f5001df39bef6d837e258c9dc81cf0d"
+    }
+  },
+  "binding_policies": {
+    "LITERAL_GROUND": "EXPLICIT_MINED_ORIGIN_ENVIRONMENT_V1",
+    "VISIBLE_RECEPTOR": "EMPTY_PROBE_THEN_THEORY_NAMES_MAX_INDEX_SHELLS_V2"
+  },
+  "producer_implementation_version": "receptor-family-observed-subset-inference-v2",
+  "report_fields": [
+    "schema",
+    "version",
+    "matching_mode",
+    "binding_policy",
+    "batch",
+    "request",
+    "binding",
+    "marking_id",
+    "state_sha256",
+    "decision",
+    "producer_implementation_version",
+    "residual_policy_version",
+    "host",
+    "original_state",
+    "checked_state",
+    "branch_output_receptor",
+    "records",
+    "row_rejections",
+    "offers",
+    "physical_assignment_plan",
+    "accounting",
+    "prototype_census",
+    "reason",
+    "work",
+    "scope",
+    "flags"
+  ],
+  "report_schema": "receptor-family-observed-receptor-transfer-provider-v2",
+  "request_fields": [
+    "mined",
+    "state",
+    "decision",
+    "matching_mode",
+    "binding_policy",
+    "limits"
+  ],
+  "residual_policy_version": "receptor-family-residual-host-binding-prefix-v2-max-index-shells",
+  "schema": "receptor-family-observed-receptor-provider-handoff-v7",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54448,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+    "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+  },
+  "source_contract": {
+    "bytes": 9783,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v7.json",
+    "sha256": "dee233de9030c7baf9758a543b69aaa9bdeb86aec213fc27620918faabaa1f0a"
+  },
+  "source_delta": {
+    "bytes": 76403,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-delta-v7.json",
+    "sha256": "afaf81c2d9cc708636a4ffe7b306fb04d9262a54658197327f646511cb8d9ab7"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 1531,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/static-audit-v7.json",
+    "sha256": "7ede78a10801d4ed9f9e257284f884bf9b19c9def24152c81302ce9570d23087"
+  },
+  "whole_v3_patches": {
+    "forward": {
+      "bytes": 54904,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/parent-v3-to-current-v7-forward.patch",
+      "sha256": "b031fe3a895d6a1e9af72ae3610ec282ce23e9c116e5489c9fd8193c2248dcf3"
+    },
+    "full-inverse": {
+      "bytes": 54838,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/parent-v3-to-current-v7-full-inverse.patch",
+      "sha256": "ba4b2f7a54e3704fb5b58d85b8c6e62d287c2a84018a3b9777348e814d2cbf63"
+    }
+  }
+}

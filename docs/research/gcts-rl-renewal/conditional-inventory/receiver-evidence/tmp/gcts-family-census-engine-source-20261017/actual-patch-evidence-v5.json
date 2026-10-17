@@ -1,0 +1,60 @@
+{
+  "operations": [
+    {
+      "bytes_exact": true,
+      "direction": "immediate_forward",
+      "exit_code": 0,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/immediate-v5-forward.py",
+      "result": {
+        "bytes": 92132,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/immediate-v5-forward.py",
+        "sha256": "ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "immediate_inverse",
+      "exit_code": 0,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/immediate-v5-inverse.py",
+      "result": {
+        "bytes": 92122,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/immediate-v5-inverse.py",
+        "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "combined_forward",
+      "exit_code": 0,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/combined-v5-forward.py",
+      "result": {
+        "bytes": 92132,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/combined-v5-forward.py",
+        "sha256": "ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "combined_inverse",
+      "exit_code": 0,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/combined-v5-inverse.py",
+      "result": {
+        "bytes": 76668,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/raw-patch-copies/combined-v5-inverse.py",
+        "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+      },
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "schema": "receptor-family-full-census-engine-actual-patch-evidence-v5",
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}

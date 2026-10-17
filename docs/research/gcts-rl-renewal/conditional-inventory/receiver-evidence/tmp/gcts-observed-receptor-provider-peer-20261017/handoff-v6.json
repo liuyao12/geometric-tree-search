@@ -1,0 +1,32 @@
+{
+  "findings": {
+    "bytes": 4716,
+    "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/findings-v6.json",
+    "sha256": "b812120e8c99c8fc098587b9885002c16a734e9c385d77b1ad1e7b329b21aa54"
+  },
+  "independent_static_audit": {
+    "bytes": 3563,
+    "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/independent-static-audit-v6.json",
+    "sha256": "0bf56f6a9ab42a52b06cfa9de590756bc9e437d8b876b321c9a599b7c9edf619"
+  },
+  "pass": false,
+  "review": {
+    "bytes": 2149,
+    "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/typed-Source-review-v6.json",
+    "sha256": "71b21c393709c339e9759da902decc5185513708a1d021ca7348b5aaedcd95be"
+  },
+  "schema": "observed-receptor-provider-independent-handoff-v6",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54172,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+    "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+  },
+  "source_contract": {
+    "bytes": 9057,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v6.json",
+    "sha256": "a72651277fa05bd75193a932e24f3547bf7bafedc15f265c7f8230389b21f849"
+  },
+  "source_only": true
+}

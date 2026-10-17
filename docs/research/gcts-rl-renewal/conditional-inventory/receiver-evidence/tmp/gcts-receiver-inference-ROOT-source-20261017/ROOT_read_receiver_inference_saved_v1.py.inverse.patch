@@ -1,0 +1,125 @@
+--- a/source.py
++++ b/source.py
+@@ -10,7 +10,7 @@
+ import sys
+ import zlib
+ 
+-CURRENT_CONTRACT={'path': '/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '8af2329d5a56c7aa0da665bf1152714bae9f5d8051d2e6a8507d94132d5491ad', 'bytes': 17884}
++CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json', 'sha256': '7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985', 'bytes': 28106}
+ 
+ 
+ def need(ok, why):
+@@ -64,7 +64,7 @@
+     return dict(path=str(path), **raw_pin(raw))
+ 
+ 
+-PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')
++PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_COMPOSER', 'AFTER_COMPOSER', 'AFTER_DAG', 'AFTER_MINER', 'AFTER_QUALIFICATION', 'BEFORE_OUTPUT')
+ 
+ def read_phases(raw, launch, terminal):
+     need(len(raw)<=65536, 'bounded full native stderr')
+@@ -104,7 +104,7 @@
+          and marker['terminal_exit2_and_external_failure_closure_required']is True,
+          'same complete builtin failure diagnostic bytes')
+     context,labels,slots=diagnostic['context'],diagnostic['diagnostic'],diagnostic['last_observations']
+-    need(context['schema']=='ROOT-receptor-inference-probe-diagnostic-context-v1'
++    need(context['schema']=='ROOT-native-inventory-diagnostic-context-v1'
+          and context['invocation_id']==plan['invocation_id']and context['purpose']==plan['purpose']
+          and context['plan']==raw_pin(plan_raw)and context['sources']==plan['sources']
+          and context['inputs']==plan['inputs']and context['source_contract']==plan['source_contract']
+@@ -149,7 +149,7 @@
+     for ref in plan['inputs'].values(): pinned(ref)
+     need(plan['source_contract']==CURRENT_CONTRACT, 'literal frozen current operative Source capsule')
+     contract = decode(pinned(plan['source_contract']))
+-    need(contract['schema'] == 'ROOT-receiver-inference-probe-Source-contract-v1'
++    need(contract['schema'] == 'ROOT-native-productive-inventory-cold-Source-contract-v1'
+          and contract['sources'] == plan['sources'] and contract['inputs'] == plan['inputs']
+          and contract['limits'] == plan['limits'], 'exact current operative contract')
+     grant = decode(pinned(plan['ROOT_authorization']))
+@@ -159,7 +159,7 @@
+          'whole once grant joins current plan')
+     for role, ref in plan['reviews'].items():
+         review = decode(pinned(ref))
+-        need(review['scope'] == 'ROOT-receiver-inference-probe-Source'
++        need(review['scope'] == 'ROOT-native-productive-inventory-cold-Source'
+              and review['source'] == plan['sources']['intake'] and review['sources'] == plan['sources']
+              and review['source_contract'] == plan['source_contract'] and review['source_only'] is True
+              and review['source_review_passed'] is True and review['scientific_calls'] == 0,
+@@ -220,12 +220,12 @@
+          and observation['probe_returncode'] == 0 and type(meter['wait4_status'])is int
+          and meter['wait4_status']==meter['caller_returncode']*256, 'native/tool exit concordance')
+     phases,phase_tail=read_phases(raw['meter-stderr.txt'],launch,terminal)
+-    summary = {'schema':'ROOT-receptor-inference-probe-disposition-v1',
++    summary = {'schema':'ROOT-native-conditional-inventory-disposition-v1',
+         'plan':dict(path=str(plan_path), **raw_pin(plan_raw)),
+         'source_contract':plan['source_contract'], 'actual_closed':True, 'all_reaped':True,
+         'native_launch_to_postprobe_ns':probe-launch, 'aggregate_B_bytes':meter['caller_kernel_peak_bytes'],
+         'status':'UNKNOWN', 'complete_wire_verified':False, 'native_resources_qualified':False,
+-        'receiver_probe_record_complete':False,'reported_theorem_count':0,
++        'conditional_inventory_record_complete':False,'reported_theorem_count':0,
+         'logical_proof_accepted':False,'whole_engine_qualified':False,
+         'complete_GCTS_model_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False,
+         'scientific_replay':False,'phase_observations':phases,
+@@ -238,7 +238,7 @@
+         final_lines = raw['meter-stdout.txt'].splitlines(keepends=True)
+         need(len(final_lines)==1 and final_lines[0].endswith(b'\n'), 'whole final line')
+         final = decode(final_lines[0])
+-        need(final['schema']=='ROOT-receptor-inference-probe-final-observation-v1'
++        need(final['schema']=='ROOT-native-conditional-inventory-final-observation-v1'
+              and final['pending_external']is True
+              and canonical(final)+b'\n'==final_lines[0], 'current canonical final wire')
+         owned = Path(plan['output_directory'])
+@@ -252,8 +252,8 @@
+         need(completion['schema']=='Q-clean-verifier-response-completion-v1'
+              and completion['exit_zero_and_coordinator_deadline_required']is True
+              and completion['body_sha256']==raw_pin(lines[0])['sha256'] and completion['body_bytes']==len(lines[0])
+-             and body['schema']=='ROOT-receptor-inference-probe-response-body-v1'
+-             and body['version']=='ROOT-receiver-inference-probe-cold-v1'
++             and body['schema']=='ROOT-native-conditional-inventory-response-body-v1'
++             and body['version']=='ROOT-native-productive-inventory-cold-v2-work4m'
+              and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+              and body['limits']==plan['limits'] and body['resource_rule']==plan['resource_rule']
+              and body['CLOCK_DOMAIN']=='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+@@ -278,15 +278,15 @@
+         need(envelope['expanded_sha256']==raw_pin(expanded)['sha256']
+              and envelope['expanded_bytes']==len(expanded), 'whole expanded SHA/length')
+         evidence=decode(expanded)
+-        need(canonical(evidence)+b'\n'==expanded and evidence['schema']=='ROOT-receptor-inference-probe-result-v1'
++        need(canonical(evidence)+b'\n'==expanded and evidence['schema']=='ROOT-native-conditional-inventory-result-v1'
+              and evidence['sources']==plan['sources'] and evidence['inputs']==plan['inputs']
+              and evidence['purpose']==plan['purpose'], 'full canonical current payload')
+-        payload=evidence['receiver_probe'];pipeline=payload['receiver']
++        payload=evidence['conditional_inventory'];pipeline=payload['inventory']
+         need(all(body['joint_began_ns']<=x['native_ns']<body['joint_deadline_ns']for x in phases), 'positive phase samples original20')
+         need(phases[0]['stage']=='BEFORE_PLAN_READ' and phases[-1]['stage']=='BEFORE_OUTPUT'
+-             and (pipeline['status']!='RECEIVER_PROBE_RECORDED' or [x['stage']for x in phases if x['stage'] not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]==[x for x in PHASES if x not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]),
+-             'ordered reached sites; full inventory requires all required sites; provider sites are conditional')
+-        need(payload['schema']=='ROOT-receptor-inference-probe-payload-v1'
++             and (pipeline['status']!='CHECKED_CONDITIONAL_INVENTORY' or [x['stage']for x in phases]==list(PHASES)),
++             'ordered reached sites; full inventory requires all thirteen sites')
++        need(payload['schema']=='ROOT-native-conditional-inventory-payload-v1'
+              and payload['original_model_sources']==contract['original_model_sources']
+              and payload['original_model_inputs']==contract['original_model_inputs']
+              and payload['original_model_binding']==contract['original_model_binding']
+@@ -299,17 +299,17 @@
+              and all(item[key]is False for item in (evidence,body,final)
+                  for key in ('logical_proof_accepted','ROOT_resource_accepted')),
+              'original epoch and strong authority remain unchanged and false')
+-        need(pipeline['schema']=='ROOT-receiver-inference-evidence-v1'
+-             and pipeline['status']=='RECEIVER_PROBE_RECORDED',
++        need(pipeline['schema']=='ROOT-native-productive-conditional-inventory-evidence-v1'
++             and pipeline['status']in ('UNKNOWN','CHECKED_CONDITIONAL_INVENTORY'),
+              'conditional inventory evidence only; no semantic replay by saved reader')
+         with expanded_path.open('xb')as stream:stream.write(expanded)
+         summary.update(status=pipeline['status'],complete_wire_verified=True,native_resources_qualified=True,
+-            receiver_probe_record_complete=pipeline['status']=='RECEIVER_PROBE_RECORDED',
++            conditional_inventory_record_complete=pipeline['status']=='CHECKED_CONDITIONAL_INVENTORY',
+             expanded=dict(path=str(expanded_path),**raw_pin(expanded)),outputs=final['outputs'])
+     else:
+         summary['failure_diagnostic']=read_failure_diagnostic(Path(plan['output_directory']),plan,plan_raw,contract,launch,terminal,phases)
+     print(json.dumps({'disposition':write(disposition_path,summary),'status':summary['status'],
+-        'receiver_probe_record_complete':summary['receiver_probe_record_complete'],
++        'conditional_inventory_record_complete':summary['conditional_inventory_record_complete'],
+         'native_launch_to_postprobe_ns':probe-launch,'aggregate_B_bytes':meter['caller_kernel_peak_bytes']},sort_keys=True))
+ 
+ 

@@ -1,0 +1,95 @@
+{
+  "blocking_findings": [],
+  "findings": [
+    {
+      "detail": "Whole current contract/API and two literal Source changes read. Own VERSION/provider7 gate only; all53 named regions raw+AST exact. Immediate2 and combined16 fullraw/AST inverses independently reconstructed, all4 actual frozenpatch directions apply-F0 exactly.",
+      "id": "THIN-ENGINE6-VERSION-JOIN",
+      "passed": true
+    },
+    {
+      "detail": "Provider7 exact schemaV2/report26/request6/flags/producer implementation/max-index-shell policy join as frozen Source data. No inferred provider peer or scientific acceptance; Root current composite authentication remains mandatory.",
+      "id": "CURRENT-PROTOCOL-CONCORDANCE",
+      "passed": true
+    },
+    {
+      "detail": "Whole prior engine5 review dd490 remains literal and its unchanged COW/fullpublic-prefix/candidate/report/receipt/rollback/scheduler/fallback scope carries through byte-exact engine methods. No broader exposure, hostile-frame or runtime claim.",
+      "id": "RETAINED-CENSUS-AND-ROLLBACK-SCOPE",
+      "passed": true
+    }
+  ],
+  "project_module_evaluated": false,
+  "retained_whole_v5_review": {
+    "bytes": 2839,
+    "path": "/private/tmp/gcts-family-census-engine-peer-20261017/typed-Source-review-v5.json",
+    "sha256": "dd4902381e71a8623941a0457a8d1f815846c966ce7907a94d9e294c9a44e2fc"
+  },
+  "schema": "receptor-family-census-engine-thin-current-findings-v6",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92132,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v6.py",
+    "sha256": "eab17f2f9d1a083f6e72be7db1b12a17ef0a407ba6a9b28ec5e1c0a33454a78a"
+  },
+  "source_contract": {
+    "bytes": 15881,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-contract-v6.json",
+    "sha256": "84319df96c2e50cfb931afbbfa50698d92cad1ab90ac192132a589d89bb095ce"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine._adopt_family_branch",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._candidate_from_decision_context",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._consume_family",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._family_policy",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._join_family_cursor_census",
+    "LazyUnitRowEngine._join_family_degree_census",
+    "LazyUnitRowEngine._join_prototype_census",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._policy_snapshot",
+    "LazyUnitRowEngine._record_family_tile_census",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._select_family_branch",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine.decision.current",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.search.walk",
+    "LazyUnitRowEngine.state_snapshot",
+    "Unresolved",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "canonical",
+    "certify_by_current_cover",
+    "diagnostic_copy",
+    "digest",
+    "need",
+    "select_schedule",
+    "validate_native_receipt"
+  ]
+}

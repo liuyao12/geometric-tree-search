@@ -1,0 +1,77 @@
+{
+  "API": {
+    "bytes": 6596,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/API-wire-v2.json",
+    "sha256": "f0a0664e2b434cba80873dca737b94364681379198642128f8a3d2acc014e4d8"
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Reviewer authored independent4358/9fd/8f and point ea300 ancestry, reviewed fd3e and coordinated its residual-boundary API, and now authors engine census5. Arithmetic authored this name policy. Shared schemas/primitives and composition overlap are disclosed; no self-review of policy or runtime result.",
+  "blockers": [],
+  "findings": [
+    {
+      "finding": "Whole current Source/API/current and parent contracts read. Input descriptor/body identity and host authority are deliberately not mathematically authenticated by this data policy; it checks declared parameter/reference/name syntax only. Full fd3e/4358/native validation remains mandatory.",
+      "id": "RB01"
+    },
+    {
+      "finding": "All residual IDs are unique declared IDs and reordered by descriptor parameter order. Every VARIABLE role uses the entire declared host name set. Literal var/all names appearing in the supplied complete theory axiom data form a source-free preferred subset; all other declared names remain present. Predicates use every declared arity-compatible symbol. No source environment, target, receiver formula or descriptor body is used to pick names.",
+      "id": "RB02"
+    },
+    {
+      "finding": "Each named index tuple has exactly one maximum coordinate index. Shells traverse the full truncated Cartesian rectangle in odometer order, emitting exactly tuples whose maximum equals that shell. This partitions the complete finite named product without duplicate emitted bindings; mixed first-two-name tuples precede every index2 tuple. For four domains containing at least two entries, the first two shells contain sixteen named tuples plus the initial empty probe. This is a Source-level argument; no tuple enumeration/test or native success was run.",
+      "id": "RB03"
+    },
+    {
+      "finding": "Every complete binding is copied before append, then one aligned entry is appended without an intervening callback. A work/depth interruption cannot expose a partial binding or phantom entry. Own cap may end a shell and still leave named_domain_exhausted false; even true named exhaustion never asserts formula/term or native substitution completeness.",
+      "id": "RB04"
+    },
+    {
+      "finding": "Empty environment is first and counts inside the maximum64 bindings. Provider must join the already charged fd3e empty probe, consume only bindings[1:] within the remaining63 attempt cap, and share cumulative Root/provider work/tick. Separate helper limits do not reset native20/512 or authorize more per-assignment attempts.",
+      "id": "RB05"
+    },
+    {
+      "finding": "FORMULA/TERM residuals are explicitly deferred rather than enumerated, guessed from source data, or used to suppress name trials. Name bindings can unlock later observed inference or leave UNKNOWN. Root distinct/eigen/free scope and all internal/native obligations are still unchecked here.",
+      "id": "RB06"
+    },
+    {
+      "finding": "Tick exceptions are wrapped and rethrown as the same original object; only private own-prefix _Unfinished becomes an unresolved prefix. Malformed data is BindingPrefixDataError, not an exhausted/negative family. First-empty/no-name/empty-arity product, null setup state and false named-exhaustion are explicitly distinguished.",
+      "id": "RB07"
+    },
+    {
+      "finding": "V1 mixed-name starvation is a proposal utility limitation found before an actual, not a mathematical false proof. V2 has the same full domains/caps and only changes tuple order, VERSION and channel/completion labels. The old wire SCHEMA remains v1; exact current VERSION/Source gates are mandatory.",
+      "id": "RB08"
+    }
+  ],
+  "future_controls_unexecuted": [
+    "Empty probe counted once across provider; default64/remaining63 and smaller explicit caps.",
+    "Joint multi-role names/predicate arities and deferred F/T unlock versus continued UNKNOWN.",
+    "Malformed residual refs, overlapping allowed-formal/free references, duplicate/out-of-order identities and empty domains.",
+    "Own cap at shell boundary/interior, callback identity, no partial bindings and no timeout-as-negative.",
+    "Fresh complete observed/root forward checks then ordinary expansion4358/native4bd6/current full ID census and real global branch before preference."
+  ],
+  "independent_static_audit": {
+    "bytes": 4378,
+    "path": "/private/tmp/gcts-residual-binding-prefix-peer-20261017/independent-static-audit-v2.json",
+    "sha256": "7872f7855eaabb3ffd9dc9fc79195338e009da7b53ce0c14c26f6b88ff444ee3"
+  },
+  "limits": "No actual/result/proofword/donor reads, module/helper/model evaluation, binding enumeration, tests, clocks or native execution. No fit, availability, receiver/engine/proof qualification or gain inference.",
+  "parent_contract": {
+    "bytes": 7896,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/Source-contract-v1.json",
+    "sha256": "2e55147a635e7ecdcbe5f21cfdcbc4ed8498dc563b501ba8632c361a6b8dcea8"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "residual-host-binding-prefix-independent-findings-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 12826,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+    "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479"
+  },
+  "source_contract": {
+    "bytes": 6252,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/Source-contract-v2.json",
+    "sha256": "3a72a8f14f323f0c719e4998332167dfee04f409d4938ea99d1673c96ee9a647"
+  },
+  "source_only": true
+}

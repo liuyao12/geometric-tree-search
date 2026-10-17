@@ -1,0 +1,162 @@
+--- source.py
++++ source.py
+@@ -23,13 +23,13 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='ROOT-native-productive-inventory-cold-v2-work4m'
+-SCOPE='ROOT-native-productive-inventory-cold-Source'
++VERSION='ROOT-receiver-inference-probe-cold-v1'
++SCOPE='ROOT-receiver-inference-probe-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+-QUALIFICATION_CASES_BY_PURPOSE={'native-productive-conditional-inventory': ['NPI-01-closed-and-open-conditional-inventory']}
+-FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'collector': {'bytes': 19556, 'path': '/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py', 'sha256': '9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816'}, 'composer': {'bytes': 30572, 'path': '/private/tmp/gcts-native-component-composer-work4m-source-20261017/native_conditional_component_composer_v3.py', 'sha256': '4149f71d2d05c6579d35679fc718a8f6dc328be2a62606e255e52a4d898f0ce1'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'inventory_cases': {'bytes': 38803, 'path': '/private/tmp/gcts-native-productive-inventory-cases-work4m-source-20261017/native_productive_inventory_cases_v4.py', 'sha256': 'd00bde657c91a819dc375b371008f125af967e116d987e7f8fbd879e53f0ccc8'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'miner': {'bytes': 37218, 'path': '/private/tmp/gcts-interface-coupled-miner-source-20261017/receptor_family_miner_v3.py', 'sha256': '7873c8a071079726151020191d574fcc3289a7e56b6ef91ccac244a1d003013c'}, 'producer': {'bytes': 51898, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py', 'sha256': 'f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}}
+-FIXED_INPUTS={'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}, 'stageB_disposition': {'bytes': 4574, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json', 'sha256': 'ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e'}, 'stageB_encoded': {'bytes': 162591, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json', 'sha256': '3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca'}, 'stageB_expanded': {'bytes': 1926833, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json', 'sha256': 'bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93'}, 'stageB_plan': {'bytes': 7924, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json', 'sha256': '7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009'}, 'stageB_response': {'bytes': 7572, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl', 'sha256': '8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e'}, 'stageB_transport': {'bytes': 1502, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json', 'sha256': '8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b'}}
++QUALIFICATION_CASES_BY_PURPOSE={'receptor-inference-visible-probe': ['RI-01-visible-observed-port-inference'], 'receptor-inference-literal-probe': ['RI-02-literal-origin-binding-control']}
++FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'degree_router': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150', 'bytes': 12779}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'family_consumer': {'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py', 'sha256': 'd68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874', 'bytes': 13040}, 'family_engine': {'path': '/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v5.py', 'sha256': 'ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db', 'bytes': 92132}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_aware_checker': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188', 'bytes': 25783}, 'marked_aware_proposer': {'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d', 'bytes': 14064}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'producer': {'path': '/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py', 'sha256': 'fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18', 'bytes': 60281}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'receiver_cases': {'path': '/private/tmp/gcts-receiver-inference-ROOT-source-20261017/receiver_inference_cases_v1.py', 'sha256': 'bc42eb2012f6247a09b6a22ea513604c451ffb249d89b5c01d57dcd286983e8f', 'bytes': 7839}, 'receiver_provider': {'path': '/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py', 'sha256': 'ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0', 'bytes': 54172}, 'residual_policy': {'path': '/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py', 'sha256': '2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479', 'bytes': 12826}}
++FIXED_INPUTS={'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}, 'stageB_disposition': {'bytes': 4574, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json', 'sha256': 'ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e'}, 'stageB_encoded': {'bytes': 162591, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json', 'sha256': '3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca'}, 'stageB_expanded': {'bytes': 1926833, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json', 'sha256': 'bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93'}, 'stageB_plan': {'bytes': 7924, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json', 'sha256': '7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009'}, 'stageB_response': {'bytes': 7572, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl', 'sha256': '8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e'}, 'stageB_transport': {'bytes': 1502, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json', 'sha256': '8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b'}, 'frozen_inventory': {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json', 'sha256': '26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38', 'bytes': 3433689}, 'inventory_acceptance': {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json', 'sha256': '4ef4ebdcd431a284f73ded43caf1957b819d1ddd4e3180e212a619e3b736d817', 'bytes': 2723}}
+ LIMITS={'aggregate_owned_bytes': 536870912, 'caller_finish_reserve_seconds': 1, 'caller_seconds': 90, 'failure_only_seconds': 55, 'joint_seconds': 20, 'owned_seconds': 60}
+ 
+ ORIGINAL_SOURCES={'advice_controls': {'bytes': 130156, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py', 'sha256': '0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3'}, 'advice_validator': {'bytes': 16299, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py', 'sha256': '8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1'}, 'adviser': {'bytes': 26007, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py', 'sha256': '6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98'}, 'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'controls': {'bytes': 31931, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py', 'sha256': '50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a'}, 'converter': {'bytes': 5528, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py', 'sha256': 'baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'engine': {'bytes': 55152, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py', 'sha256': '54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'intake': {'bytes': 55852, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py', 'sha256': '652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'point_checker': {'bytes': 10201, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py', 'sha256': '99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'retained_controls': {'bytes': 25338, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py', 'sha256': 'd1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb'}, 'transition': {'bytes': 8134, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py', 'sha256': '2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491'}, 'word_checker': {'bytes': 46514, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py', 'sha256': '1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3'}}
+@@ -361,7 +361,7 @@
+     phase_tick,phase_tick_code=tick,tick.__code__
+     phase_tick_defaults,phase_tick_kwdefaults=tick.__defaults__,tick.__kwdefaults__
+     phase_write,phase_write_type=os.write,types.BuiltinFunctionType
+-    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_COMPOSER', 'AFTER_COMPOSER', 'AFTER_DAG', 'AFTER_MINER', 'AFTER_QUALIFICATION', 'BEFORE_OUTPUT')
++    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')
+     def phase(stage):
+         if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code
+                 or phase_tick.__defaults__ is not phase_tick_defaults
+@@ -400,7 +400,7 @@
+     phase('BEFORE_CURRENT_SOURCE_READS')
+     source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract=decode(read_pinned(plan['source_contract']))
+-    need(contract['schema']=='ROOT-native-productive-inventory-cold-Source-contract-v1'
++    need(contract['schema']=='ROOT-receiver-inference-probe-Source-contract-v1'
+          and contract['sources']==plan['sources'] and contract['inputs']==FIXED_INPUTS
+          and contract['limits']==LIMITS and contract['original_model_sources']==ORIGINAL_SOURCES
+          and contract['original_model_inputs']==ORIGINAL_INPUTS
+@@ -558,19 +558,53 @@
+     need(definition_check['marking_checked'] is True and definition_check['marking_id'] == marking['marking_id'],
+          'fresh independent whole marking check')
+     latest_observations={'proposer':None,'fallback':None,'completion':None,'validator':None}
+-    def run_inventory():
++    phase('BEFORE_POOL_READ')
++    frozen = decode(inputs_raw['frozen_inventory'])
++    accepted_inventory = decode(inputs_raw['inventory_acceptance'])
++    need(frozen['schema']=='ROOT-native-conditional-inventory-result-v1'
++         and frozen['language_binding']==ORIGINAL_BINDING
++         and frozen['conditional_inventory']['original_model_binding']==ORIGINAL_BINDING
++         and frozen['conditional_inventory']['original_model_sources']==ORIGINAL_SOURCES
++         and frozen['conditional_inventory']['original_model_inputs']==ORIGINAL_INPUTS
++         and canonical(frozen['conditional_inventory']['marking'])==canonical(marking)
++         and accepted_inventory['schema']=='ROOT-native-productive-source-ground-inventory-acceptance-v1'
++         and accepted_inventory['expanded']==FIXED_INPUTS['frozen_inventory']
++         and accepted_inventory['source_ground_inventory_qualified'] is True
++         and accepted_inventory['native_resources_qualified'] is True
++         and accepted_inventory['descriptors_qualified']==4,
++         'same frozen qualified inventory and original model; prior receipts are data only')
++    old_inventory_contract=decode(read_pinned(accepted_inventory['source_contract']))
++    need(old_inventory_contract['sources']==frozen['sources']
++         and old_inventory_contract['inputs']==frozen['inputs']
++         and old_inventory_contract['original_model_sources']==ORIGINAL_SOURCES
++         and old_inventory_contract['original_model_binding']==ORIGINAL_BINDING,
++         'complete frozen original-model/current-Source contract joins')
++    inventory_data=frozen['conditional_inventory']['inventory']
++    prior_records=[]
++    for pool in inventory_data['minings']:
++        need(pool['status']=='PROPOSALS' and pool['mining']['status']=='PROPOSALS',
++             'complete frozen extraction data')
++        for record_index,record in enumerate(pool['mining']['families']):
++            entries=[e for e in inventory_data['qualified_records']
++                     if e['component_id']==pool['component_id'] and e['record_index']==record_index]
++            need(len(entries)==1 and canonical(entries[0]['record'])==canonical(record)
++                 and entries[0]['status']=='CHECKED_SOURCE_GROUND_CONDITIONAL_RECORD'
++                 and entries[0]['adaptation']['status']=='READY_LOCAL_CLUSTER',
++                 'every frozen mined record joined to its saved qualified occurrence')
++            prior_records.append(record['family_id'])
++    need(prior_records==accepted_inventory['family_ids']
++         and len(prior_records)==accepted_inventory['descriptors_qualified'],
++         'whole frozen library identity; fresh source/current checks still required')
++    def run_receiver():
+         language=fresh_language()
+         marked=adapter.MarkedSemantics(language=language,base_semantics=semantics,
+             decorator=decorator,verifier=verifier,marking=copy.deepcopy(marking),tick=tick)
+-        state=marked.initial_state(language,tick)
+-        need(state['selected']==[] and state['excluded']==[], 'exact fresh native root, no proof route')
+-        return modules['inventory_cases'].run_inventory(
+-            language=language,base_semantics=semantics,marked_semantics=marked,
+-            point_module=adapter,base_fallback=fallback,host_adapter=modules['host_adapter'],
+-            composer=modules['composer'],collector=modules['collector'],miner=modules['miner'],
+-            producer=modules['producer'],expansion_checker=modules['expansion_checker'],
++        mode=('VISIBLE_RECEPTOR' if plan['purpose']=='receptor-inference-visible-probe' else 'LITERAL_GROUND')
++        return modules['receiver_cases'].run_receiver(language=language,
++            base_semantics=semantics,marked_semantics=marked,modules=modules,
++            frozen_inventory=copy.deepcopy(inventory_data),matching_mode=mode,
+             tick=tick,phase=phase)
+-    diagnostic_context_raw=canonical({'schema':'ROOT-native-inventory-diagnostic-context-v1',
++    diagnostic_context_raw=canonical({'schema':'ROOT-receptor-inference-probe-diagnostic-context-v1',
+         'invocation_id':plan['invocation_id'],'purpose':plan['purpose'],'plan':raw_pin(plan_raw),
+         'sources':plan['sources'],'inputs':plan['inputs'],'source_contract':plan['source_contract'],
+         'original_model_binding':ORIGINAL_BINDING,'joint_began_ns':EARLY_G,'joint_deadline_ns':end,
+@@ -582,7 +616,7 @@
+     diagnostic_writer=save_failure_diagnostic
+     diagnostic_writer_anchor=anchor_fn(diagnostic_writer)
+     try:
+-        inventory=call(run_inventory)
++        receiver=call(run_receiver)
+     except TimeoutError as diagnostic_error:
+         if type(diagnostic_error)is TimeoutError:
+             try:
+@@ -599,27 +633,30 @@
+             except BaseException:
+                 pass
+         raise
+-    need(inventory['schema']=='ROOT-native-productive-conditional-inventory-evidence-v1'
+-         and inventory['status']in ('UNKNOWN','CHECKED_CONDITIONAL_INVENTORY'),
+-         'whole returned conditional inventory; no engine/proof authority')
++    need(receiver['schema']=='ROOT-receiver-inference-evidence-v1'
++         and receiver['status']=='RECEIVER_PROBE_RECORDED',
++         'whole returned actual receiver probe; no theorem or broad engine authority')
+     phase('BEFORE_OUTPUT')
+-    payload={'schema':'ROOT-native-conditional-inventory-payload-v1','inventory':inventory,
++    payload={'schema':'ROOT-receptor-inference-probe-payload-v1','receiver':receiver,
+         'original_model_sources':ORIGINAL_SOURCES,'original_model_inputs':ORIGINAL_INPUTS,
+         'original_model_binding':ORIGINAL_BINDING,'marking':marking,'definition_check':definition_check,
+-        'target_model_search_started':False,'new_theorem_discovered':False,'logical_proof_accepted':False,
++        'frozen_inventory_input':FIXED_INPUTS['frozen_inventory'],
++        'inventory_acceptance_input':FIXED_INPUTS['inventory_acceptance'],
++        'inventory_reused':True,'construction_in_this_window':False,
++        'actual_engine_called':True,
++        'new_theorem_discovered':False,'logical_proof_accepted':False,
+         'engine_activated':False,'family_library_activated':False,'whole_engine_qualified':False,
+-        'current_frontier_viability_checked':False,'scheduler_or_rollback_accepted':False,
+-        'complete_GCTS_model_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False,
+-        'ROOT_resource_accepted':False}
+-    result_raw=canonical({'schema':'ROOT-native-conditional-inventory-result-v1',
++        'scheduler_or_rollback_accepted':False,'complete_GCTS_model_accepted':False,
++        'RL_accepted':False,'GCTS_advantage_claimed':False,'ROOT_resource_accepted':False}
++    result_raw=canonical({'schema':'ROOT-receptor-inference-probe-result-v1',
+         'purpose':plan['purpose'],'sources':plan['sources'],'inputs':plan['inputs'],
+-        'language_binding':ORIGINAL_BINDING,'conditional_inventory':payload,
++        'language_binding':ORIGINAL_BINDING,'receiver_probe':payload,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     result_raw=call(encode_result_transport,(result_raw,))
+     run=Path(plan['output_directory']);need(run.is_absolute()and run==run.resolve()and not run.exists(),
+         'fresh canonical owned component output')
+     run.mkdir(mode=0o700);result_pin=call(write_new,(run/'engine-result.json',result_raw))
+-    body={'schema':'ROOT-native-conditional-inventory-response-body-v1','version':VERSION,
++    body={'schema':'ROOT-receptor-inference-probe-response-body-v1','version':VERSION,
+         'status':'COMPLETE_WORKER_PENDING_EXTERNAL','invocation_id':plan['invocation_id'],'plan':raw_pin(plan_raw),
+         'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,
+         'original_model_binding':ORIGINAL_BINDING,'outputs':[result_pin],
+@@ -633,7 +670,7 @@
+         'exit_zero_and_coordinator_deadline_required':True}
+     response_pin=call(write_new,(run/'response.jsonl',body_raw+canonical(completion)+b'\n'))
+     need(sorted(p.name for p in run.iterdir())==['engine-result.json','response.jsonl'],'whole component output2')
+-    final_raw=canonical({'schema':'ROOT-native-conditional-inventory-final-observation-v1',
++    final_raw=canonical({'schema':'ROOT-receptor-inference-probe-final-observation-v1',
+         'outputs':[result_pin,response_pin],'response':response_pin,'pending_external':True,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     boundary();offset=0

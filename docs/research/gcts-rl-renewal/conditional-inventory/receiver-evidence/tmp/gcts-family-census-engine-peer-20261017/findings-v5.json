@@ -1,0 +1,88 @@
+{
+  "blocking_findings": [],
+  "checks": [
+    {
+      "finding": "Current5/parent4/parent3, contracts/API, retained author metadata, dependency Sources and all patches authenticated as bytes. Two immediate and fourteen combined raw forward/inverse edits plus whole AST inverses independently reconstructed.",
+      "id": "EXACT-SOURCE-ANCESTRY",
+      "passed": true
+    },
+    {
+      "finding": "All four frozen unified patches independently applied with /usr/bin/patch --batch -F0 to Source scratch and compared to exact whole destination bytes.",
+      "id": "ACTUAL-PATCH-DIRECTIONS",
+      "passed": true
+    },
+    {
+      "finding": "All53 parent4 named regions raw+AST exact.37 parent3 named regions raw+AST exact, including global scheduler/native receipt validators/cover join/install/observe/place/exclude/open/cursor replay/fallback degree/retention/family selection+adoption/search. Declared ledger additions and enclosing current methods read in full.",
+      "id": "DECLARED-CORE-UNCHANGED",
+      "passed": true
+    },
+    {
+      "finding": "Canonical preimage parsing, original epoch/decorated marking and existing ID-definition gates precede same-ID FULL-preimage equality. Fresh copied seed and initial selected/excluded names only constrain identity consistency. No semantic membership authority, incidence, candidate, point union, exclusion, degree or EOF is created by ledger entries.",
+      "id": "FULL-IDENTITY-NOT-FACT",
+      "passed": true
+    },
+    {
+      "finding": "Exact outer batch/report, report26/request6/current state/decision/binding/marking/schema/V6/producer implementation/policyV2/falseflags join precedes full sorted unique census merge on READY and UNKNOWN/no-offer. checked_state may be null only as nonauthoritative data. Audited pinned provider supplies whole census completeness; engine is not a second provider replay.",
+      "id": "PROVIDER-EVERY-STATUS",
+      "passed": true
+    },
+    {
+      "finding": "Candidate packets and checked-context candidates join both original/decorated IDs; public native degree candidate/rejected keys are joined after unchanged native validation, with unchanged native reconstruction for public rejected keys. Later exposures compare against provider-only entries retained across installs; no private never-yielded base69 coverage claim.",
+      "id": "TEMPORAL-CENSUS",
+      "passed": true
+    },
+    {
+      "finding": "After successful event-context check, public adapter5 prefix export must match whole actual context, state, marking, implementation, raw=shown+removed counters, ordinal and EOF flag. Full prefix includes channel4-removed base-yielded types and merges before event use; no extra advance/private cursor access/late timeout export/EOF authority.",
+      "id": "PUBLIC-CURSOR-ONLY",
+      "passed": true
+    },
+    {
+      "finding": "Bare seven-field batch delegated to unchanged fresh d680. Full literal fresh consumer receipt retained inside DISTINCT engine-owned census-check wrapper together with provider report and census. All READY adapted members and observed types merged, continuation identities checked against owned ledger, current candidate independently rebuilt. No old receipt relabel.",
+      "id": "LITERAL-CONSUMER-RECEIPT",
+      "passed": true
+    },
+    {
+      "finding": "Ledger and latest-public-export dictionaries are copy-on-write. Checkpoint stores both and rollback restores references without callback; _install leaves identity metadata intact. Snapshot copies them. Root search exact-before/after rollback remains unchanged; history events do not become cross-branch authority.",
+      "id": "EXACT-OWNED-RESTORATION",
+      "passed": true
+    },
+    {
+      "finding": "Family proposer remains after actual completed BRANCH only, after global DEAD/UNKNOWN/FORCED and earliest-generation tie. Exactly one primitive preference then fresh decision. Pending families freshly rechecked; canonical stream/order and fresh independent full keySET cover gating remain unchanged.",
+      "id": "GLOBAL-POLICY-AND-FALLBACK",
+      "passed": true
+    },
+    {
+      "finding": "New reconstruction/export/JSON/copy operations charged through existing tick; malformed/collision/native/callback errors propagate. No cache budget reset/new clock/bound easing, no equal nth-tick/error timing/performance claim. Current Source authentication and trusted synchronous pinned scope remain required; no hostile reentrancy guarantee.",
+      "id": "COST-ERROR-AND-SCOPE",
+      "passed": true
+    },
+    {
+      "finding": "Original Source17/input2 epoch/model/marking separate from executable map. Frozen provider6/policy2925 wire concordance checked as Source only. No engine/proof/trajectory/pruning/GCTS/RL/resource qualification, runtime fit or prior result transfer asserted.",
+      "id": "NO-RUNTIME-INHERITANCE",
+      "passed": true
+    }
+  ],
+  "qualification_obligations": [
+    "Distinct whole current engine Source/API/contract peer plus independent Root current composition/CodeSeal/grant before any actual. No self-review of this author packet.",
+    "Canonical full seed/header/current-state/marking/epoch/policy/report.batch mismatch negatives; copied old receipt or bare batch cannot substitute for fresh wrapped provider output. Malformed data errors are never timeout-as-negative.",
+    "UNKNOWN/no-offer/rejected/preflight census must persist and compare against later degree/fallback/placement exposures; complete input/open closed alternative unions remain separate.",
+    "Public cursor removed-only progress then survivor/EOF, repeated replay prefixes, current full context and counters; full ledger snapshots/inner/outer exact rollback.",
+    "Fresh current global branch plus native single-primitive preference and fresh next decision under declared same scheduler/budget; no prior 10/12 or RF result inheritance, no all-engine/proof claim.",
+    "Root must bind actual providerV6/observed/residualV2/helper/current Source maps and raw prior inventory provenance separately; construction reuse/cost and matched policy differences must remain explicit."
+  ],
+  "schema": "receptor-family-full-census-engine-independent-findings-v5",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92132,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v5.py",
+    "sha256": "ebb4f7c808f5f4e24ac3e59a6c2a05f7e8af932b4b040eb158513ec750ac12db"
+  },
+  "source_contract": {
+    "bytes": 14970,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-contract-v5.json",
+    "sha256": "c8773a729e3fd8b474db5710a816b9517ecff3eaa0b78cb8d11ca2315456d388"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

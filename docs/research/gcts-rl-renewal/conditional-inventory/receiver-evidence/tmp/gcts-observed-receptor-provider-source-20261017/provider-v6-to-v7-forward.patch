@@ -1,0 +1,27 @@
+--- before
++++ after
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-observed-receptor-transfer-provider-v6'
++VERSION = 'receptor-family-observed-receptor-transfer-provider-v7'
+ RESULT_SCHEMA = 'receptor-family-observed-receptor-transfer-provider-v2'
+ BATCH_SCHEMA = 'receptor-family-primitive-preference-batch-v1'
+ MINER_VERSION = 'receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue'
+@@ -600,6 +600,7 @@
+         def semantic_descriptor_rejection(error):
+             if type(error) is not producer.DescriptorError:return False
+             if error.code in ('PORT_MISMATCH','OUTPUT_MISMATCH','DISTINCT','EIGEN'):return True
++            if error.code == 'SCOPE' and str(error) == 'receptor family SCOPE: abstraction free external allowance':return True
+             return error.code == 'SIDE_CONDITION' and 'unsatisfied ' in str(error)
+ 
+         # Matching modes consume the same completed structural plan prefix.
+@@ -634,6 +635,7 @@
+                         'host': host, 'observed_receptors': observed}), 'INFERENCE_PROTOCOL', 'full observed request')
+                 for exclusion in prefix['rejected_bindings']:
+                     require(exclusion['code'] in ('UNBOUND_UNKNOWN','PORT_MISMATCH','OUTPUT_MISMATCH','DISTINCT','EIGEN')
++                            or exclusion['code'] == 'SCOPE' and exclusion['reason'] == 'receptor family SCOPE: abstraction free external allowance'
+                             or exclusion['code'] == 'SIDE_CONDITION' and 'unsatisfied ' in exclusion['reason'],
+                             'INFERENCE_REJECTION', 'unexpected malformed-data/scope rejection propagates')
+                 require(prefix['status'] == ('PROPOSALS' if prefix['proposals'] else 'UNKNOWN'),

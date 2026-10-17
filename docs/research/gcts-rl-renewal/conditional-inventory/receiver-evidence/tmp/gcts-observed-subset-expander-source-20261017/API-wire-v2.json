@@ -1,0 +1,78 @@
+{
+  "IMPLEMENTATION_VERSION": "receptor-family-observed-subset-inference-v2",
+  "candidate_bindings": "External finite iterator of explicit partial or full typed environments. Known first-order pattern equations jointly infer missing bindings. No default source environment, variable/eigen guess or formula enumeration. Bad candidate DescriptorError becomes per-binding code/reason like old match; iterator/callback errors propagate.",
+  "completion": [
+    "Validate each supplied value exactly as original infer; all repeated observed parameter equations reach fixed point.",
+    "Require EVERY declared parameter including BOUND/EIGEN/internal-only VARIABLE/PREDICATE_SYMBOL/FORMULA/TERM. _binding enforces full types, abstraction arities and free-external allowances.",
+    "Reset renamings, forward instantiate every root hypothesis/input/output using unchanged capture-safe routine and compare every observed formula literally; syntax-check every resulting formula.",
+    "Reset conditions and formula-only root_inputs, check root declared distinct/eigen/side conditions against complete original Gamma and ALL required root input formulas, including derived obligations.",
+    "No core.expand, primitive body expansion, nested-frame side-condition check, native membership, physical source or point union occurs. Existing complete expansion/checker/native stage remains mandatory."
+  ],
+  "errors": "External native/callback exceptions wrapped by original _Work and rethrown identically, never counted as negatives. Own work/depth produces UNKNOWN/prefix; observation/registry malformed data outside binding loop propagates DescriptorError. Root supplied synchronous tick/Source guard scope unchanged.",
+  "generic_hidden_binder_edge": "An observed FORMULA-meta may absorb a complete all-tree and bind F0 without constraining a separate declared binder ID used only inside a body axiom. Emptyenv then yields UNBOUND_UNKNOWN containing that binder ID. It succeeds only when the external finite candidate prefix explicitly supplies a valid value or another actual observed equation determines it; no source-binder fallback.",
+  "limits": "Original _Work/DEFAULT_LIMITS unchanged: work200000/depth64/expanded_nodes4096/binding_attempts64/results16, reductions only; one cumulative work/tick across registry, observations, attempts, projection and output. expanded_nodes cap unused by new projection because no DAG is expanded. Complete earlier records may remain in a bounded prefix; never infer exhaustion.",
+  "new_public_API": "infer_observed_ports(*,registry,family_id,host,observed_receptors,candidate_bindings,tick,limits=None)",
+  "observed_receptors": {
+    "authority": "All registry/host/observation syntax is untrusted. The endpoint cannot authenticate that an output came from BRANCH or that an input mark physically exists.",
+    "exact_keys": [
+      "hypotheses",
+      "inputs",
+      "outputs"
+    ],
+    "hypotheses": "Complete ordered descriptor list, each exact {port_id,gamma_index,formula}; formula must literally equal actual original host.ordered_Gamma[gamma_index]. Repeated context occurrence is allowed where descriptor permits; no new premise fact/physical row.",
+    "inputs": "Ordered duplicate-free descriptor subset, exact {port_id,formula}; no source/row/occupied/fact fields accepted. Zero observed inputs allowed.",
+    "outputs": "Nonempty ordered duplicate-free descriptor subset, exact {port_id,formula}. Descriptor IDs/order and all native AST syntax checked before consuming candidate iterator, even if empty."
+  },
+  "old_public_APIs": "validate_registry/expand_family/match_family and every inherited helper/class/nested body raw+AST unchanged, including VERSION. New API uses distinct prefix/proposal schema IDs plus implementation_version; exact Source pin distinguishes implementation.",
+  "prefix_wire": {
+    "fields": [
+      "schema",
+      "version",
+      "implementation_version",
+      "status",
+      "request",
+      "proposals",
+      "binding_attempts",
+      "rejected_bindings",
+      "inference_complete",
+      "work",
+      "reason",
+      "flags"
+    ],
+    "flags": "Exact inherited FLAGS; syntax-only proposal true, all native/proof/point/activation/pruning/RL/runtime authority false.",
+    "inference_complete": false,
+    "rejections": "binding_index/code/reason/missing_parameters; UNBOUND_UNKNOWN explicitly lists residual IDs. Definite invalid candidate is not logical no-family/no-tiling evidence.",
+    "request": "Full copied registry/family_id/host/observed_receptors after complete observation validation, otherwise null on own setup bound. Candidate iterator itself is not serialized.",
+    "schema": "receptor-family-observed-environment-prefix-v1",
+    "status": "PROPOSALS iff any complete record else UNKNOWN",
+    "version": "VERSION v1 plus implementation_version v2"
+  },
+  "proposal_wire": {
+    "other_fields": [
+      "version",
+      "implementation_version",
+      "family_id",
+      "forward_port_renamings",
+      "root_side_condition_checks",
+      "missing_parameters=[]",
+      "root_port_forward_checked=true",
+      "full_internal_expansion_checked=false",
+      "scope",
+      "flags",
+      "binding_index"
+    ],
+    "request": "Full registry/family_id/host/observed subset/initial_binding; binding_index labels external prefix entry.",
+    "required_port_formulas": "All ordered hypotheses/inputs/outputs, each {port_id,formula,basis}, hypotheses additionally gamma_index. basis ORIGINAL_GAMMA_OCCURRENCE, OBSERVED_FORMULA_CONSTRAINT, DERIVED_CONDITIONAL_OBLIGATION or DERIVED_OUTPUT_FORMULA. No operative physical fields.",
+    "schema": "receptor-family-observed-environment-proposal-v1",
+    "scope": "Observed/derived labels are syntax provenance only, not premise truth or physical occupancy. Full request may retain opaque user provenance, never authenticate it.",
+    "status": "GROUND_ENVIRONMENT_PROPOSAL",
+    "substitution": "Complete ground native typed environment only"
+  },
+  "protocol_VERSION": "receptor-family-typed-expander-v1",
+  "schema": "receptor-family-observed-subset-inference-API-v2",
+  "source": {
+    "bytes": 60281,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+    "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+  }
+}

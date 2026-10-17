@@ -1,0 +1,167 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_closed": true,
+  "aggregate_B_bytes": 37044224,
+  "all_reaped": true,
+  "broad_goal_complete": false,
+  "complete_Date_seconds": 15.706,
+  "complete_GCTS_model_accepted": false,
+  "complete_wire_verified": true,
+  "current_goal_turn": "progress",
+  "cursor_contexts": 6,
+  "cursors": [
+    {
+      "fixture": "UG-many",
+      "fresh_complete_cover_status": "MANY",
+      "marked_cursor_count": 2,
+      "original_cursor_count": 2
+    },
+    {
+      "fixture": "UG-one",
+      "fresh_complete_cover_status": "SINGLETON",
+      "marked_cursor_count": 1,
+      "original_cursor_count": 1
+    },
+    {
+      "fixture": "UG-zero",
+      "fresh_complete_cover_status": "ZERO",
+      "marked_cursor_count": 0,
+      "original_cursor_count": 0
+    },
+    {
+      "fixture": "target-complete-filtered-zero",
+      "fresh_complete_cover_status": "ZERO",
+      "marked_cursor_count": 0,
+      "original_cursor_count": 1
+    },
+    {
+      "fixture": "deep42-row2",
+      "fresh_complete_cover_status": null,
+      "marked_cursor_count": 1,
+      "original_cursor_count": 2
+    },
+    {
+      "fixture": "deep42-row3",
+      "fresh_complete_cover_status": null,
+      "marked_cursor_count": 4,
+      "original_cursor_count": 6
+    }
+  ],
+  "fixture_count": 7,
+  "fixtures": [
+    {
+      "complete_cover_checked": true,
+      "fixture": "UG-many",
+      "marked_status": "MANY",
+      "marked_survivors": 2,
+      "original_offered": 2,
+      "original_status": "MANY",
+      "row": 2
+    },
+    {
+      "complete_cover_checked": true,
+      "fixture": "UG-one",
+      "marked_status": "SINGLETON",
+      "marked_survivors": 1,
+      "original_offered": 1,
+      "original_status": "SINGLETON",
+      "row": 2
+    },
+    {
+      "complete_cover_checked": true,
+      "fixture": "UG-zero",
+      "marked_status": "ZERO",
+      "marked_survivors": 0,
+      "original_offered": 0,
+      "original_status": "ZERO",
+      "row": 2
+    },
+    {
+      "complete_cover_checked": true,
+      "fixture": "deep43-zero",
+      "marked_status": "ZERO",
+      "marked_survivors": 0,
+      "original_offered": 0,
+      "original_status": "ZERO",
+      "row": 2
+    },
+    {
+      "complete_cover_checked": true,
+      "fixture": "target-complete-filtered-zero",
+      "marked_status": "ZERO",
+      "marked_survivors": 0,
+      "original_offered": 1,
+      "original_status": "SINGLETON",
+      "row": 1
+    },
+    {
+      "complete_cover_checked": false,
+      "fixture": "deep42-row2",
+      "marked_status": "UNKNOWN",
+      "marked_survivors": 1,
+      "original_offered": 2,
+      "original_status": "TWO_OR_MORE",
+      "row": 2
+    },
+    {
+      "complete_cover_checked": false,
+      "fixture": "deep42-row3",
+      "marked_status": "UNKNOWN",
+      "marked_survivors": 0,
+      "original_offered": 2,
+      "original_status": "TWO_OR_MORE",
+      "row": 3
+    }
+  ],
+  "later_engine_stages_qualified": false,
+  "local_degree_cursor_controls_accepted": true,
+  "logical_proof_accepted": false,
+  "lossless_transport_concordance": {
+    "bytes": 1479,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-transport-concordance-v1.json",
+    "sha256": "c94cc2516c9817215fdb516e6b7c64913e25fabdea16aacff5b56f7bcd4ac87f"
+  },
+  "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+  "native_launch_to_postprobe_ns": 15577502000,
+  "native_resources_qualified": true,
+  "native_worker_lifetime_ns": 15525414000,
+  "original_model_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "outputs": [
+    {
+      "bytes": 76302,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/engine-result.json",
+      "sha256": "bbfe3f3f87bead3f90f23e9ab2cb801f3fa6d5c2cd88bccc9506c88cf49be891"
+    },
+    {
+      "bytes": 7541,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/response.jsonl",
+      "sha256": "3e0951b1a5a37152579ee69db0effc4f255d78767f1f7b5fed3868f7156df3a5"
+    }
+  ],
+  "passed_cases": 23,
+  "plan": {
+    "bytes": 7866,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-plan-v1.json",
+    "sha256": "cca9f6f918436fe7e02374775462c86c66445f16703941b4d803437f113b4664"
+  },
+  "previous_goal_turn": "progress",
+  "reconciliation_scope": "Whole saved bytes/native/wire/proposal/receipt/context/candidate-key joins only; no matcher/model/checker or scientific replay.",
+  "remaining_gaps": [
+    "Possible-support transitions, reference counts, retained archives and exact rollback controls remain pending.",
+    "Global engine decisions and UNKNOWN-child restoration remain unqualified.",
+    "No marked target proof, matched search advantage, trained RL, full reference conformance or universal finite Wang palette."
+  ],
+  "resource_rule": "single-owned-process-native-terminal-v1; B=T",
+  "schema": "ROOT-channel4-stageA-disposition-v1",
+  "skipped_cases": 0,
+  "target_search_performed": false,
+  "terminal_T_bytes": 37044224
+}

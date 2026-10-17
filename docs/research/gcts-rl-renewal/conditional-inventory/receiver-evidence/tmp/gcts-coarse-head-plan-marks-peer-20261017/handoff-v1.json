@@ -1,0 +1,38 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 8531,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/findings-v1.json",
+    "sha256": "bfa25e2f671ef861dc596b8cff93815f6fff2324e64cbb6abbcb9952f52e7b6c"
+  },
+  "pass": true,
+  "review": {
+    "bytes": 3745,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "7094f6df12ed9150102ee2a6adc1f9f016f2c0c460e2750fd7fd9b1ad86fa1fd"
+  },
+  "schema": "receptor-family-coarse-head-plan-marks-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15276,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+    "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+  },
+  "source_contract": {
+    "bytes": 6196,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-contract-v1.json",
+    "sha256": "e3e8105434dab1b06f3ff7673f00d2627c9f27b3df9584428f99f49212fc1d80"
+  },
+  "source_only": true,
+  "static_review": {
+    "bytes": 9926,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/static-review-v1.json",
+    "sha256": "15b0cf133077f52cf222f7afa9df41a85820ef6c1a154c7011bcbf0f6e989159"
+  },
+  "theory_note": {
+    "bytes": 5382,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/theory-note-v1.json",
+    "sha256": "db3d8088decca38c45d9573704d3e5898967d88ee11549171902ee0255710904"
+  }
+}

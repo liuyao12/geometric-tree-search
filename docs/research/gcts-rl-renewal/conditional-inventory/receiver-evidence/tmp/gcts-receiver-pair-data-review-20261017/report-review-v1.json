@@ -1,0 +1,56 @@
+{
+  "RL_accepted": false,
+  "basis": {
+    "bytes": 23169,
+    "path": "/private/tmp/gcts-receiver-pair-data-review-20261017/saved-pair-findings-v1.json",
+    "sha256": "fb6fc30224875996c2651d67deb2e5481210d41b8550bdbd2b79e5f30b164bab"
+  },
+  "checked_claims": [
+    {
+      "area": "Receiver comparison table",
+      "finding": "Counts30/30 plans,16/30 attempted layouts,60/30 binding attempts,43/0 independently checked expansions,42/0 completed native exclusions and0/0 offers/placements agree with saved pair. Native9.34/5.82seconds and202.4/87.3MiB round correctly; native-clock definition and reused construction cost scope are stated."
+    },
+    {
+      "area": "Failed physical-layout visual",
+      "finding": "Correctly locates hypothetical AX output and missing implication obligation at point(1,0), with proposed MP output at row23 reading both premises atrow0. Sixth grounding/index5 in first abstract plan has both completed native MEMBER checks, then INCOMPATIBLE_ASSIGNMENT/literal_repeated_or_remote_formula_mark_conflict at node n1/row23. Dashed input stays unfilled, and caption does not claim a qualified physical union."
+    },
+    {
+      "area": "Exact formulas and inferred parameter",
+      "finding": "Displayed successor-addition A and receiver G agree with saved literal ASTs. Formula parameter changes source bot to G in this grounding; missing implication remains unproved. All notation uses established LaTeX/MathJax."
+    },
+    {
+      "area": "UNKNOWN and no-transfer scope",
+      "finding": "Same canonical fallback placement, DEAD0, restoration and node-cap2 UNKNOWN match saved events. Zero checked current transfer/new theorem and unfinished broad goals are explicit. Same30 planned layouts is distinguished from mode-dependent actual processing; capped work is not learned pruning."
+    },
+    {
+      "area": "Coarse-head future section boundary",
+      "finding": "Clearly labelled Source-only/unmeasured and planning data outside native point state. No report claim that this filter was activated or improved the measured pair. Mathematical design review belongs to Diagnosis and is not duplicated here."
+    }
+  ],
+  "edits_made": false,
+  "errors_found": [],
+  "limits": [
+    "Report-only raw HTML/JS plus already frozen saved-data findings; no browser layout or external-link availability test was requested/performed.",
+    "Historical source-inventory construction statistics and previous attempts were not independently reread/requalified in this small receiver report review.",
+    "Provider/host/consumer authorship overlap disclosed; this is not a second mathematical checker or runtime conformance test."
+  ],
+  "new_actuals": 0,
+  "report": {
+    "bytes": 15393,
+    "path": "/private/tmp/gcts-receiver-probe-reader-source-20261017/reader.html",
+    "sha256": "c5ee8bfdf722b87663bafe2aee9db8d54476c1963b962b0b0681f18d768bf169"
+  },
+  "report_review_passed": true,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "ROOT-receiver-report-saved-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replay": false,
+  "supporting_reader_source": {
+    "bytes": 7265,
+    "path": "/private/tmp/gcts-receiver-probe-reader-source-20261017/reader.js",
+    "sha256": "6f5a5a469fea906fdcb645e992f5d30e6c9fb7a182ad6822ceeb6d8c8f319e5a"
+  },
+  "useful_transfer_accepted": false,
+  "whole_engine_qualified": false
+}

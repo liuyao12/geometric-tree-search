@@ -1,0 +1,148 @@
+{
+  "blocking_findings": [],
+  "findings": [
+    {
+      "blocker": false,
+      "evidence": [
+        {
+          "lines": [
+            535,
+            555,
+            570,
+            593
+          ],
+          "source": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py"
+        }
+      ],
+      "finding": "All eight concrete FORMULA constructors keep their literal outer tag under every successful well-typed capture-safe instantiation. The all case may rename the binder but keeps all. Predicate-symbol and term substitutions cannot change pred or eq into another formula constructor.",
+      "id": "HEAD-INVARIANCE",
+      "lines": [
+        95,
+        114
+      ],
+      "mathematical_statement": "$H(\\operatorname{instantiate}(T,\\sigma))=h$ for a concrete outer template head $h$, conditional on successful typed instantiation.",
+      "source": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Root formula_meta creates head:null and mark:null, excluded from assigned groups. No source substitution, old ground formula, environment, receiver state, assigned zero or default bot is consulted. An enclosing fixed constructor remains known even if its child is meta.",
+      "id": "META-ABSENCE",
+      "lines": [
+        101,
+        105,
+        258,
+        260
+      ],
+      "source": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Whole descriptor ID is recomputed from its full original ASCII preimage; exact root step-origin bijection, matching family/rule, every ordered repeated reference, prior descriptor/flat dependency, literal row bounds and strict-prior physical read are joined before requirements are returned. Complete exact ordered input/output maps precede grouping. Flat nodes are not position-zipped with descriptor steps. This is a supported topology check, not full descriptor type/arity/native validation.",
+      "id": "FULL-TOPOLOGY-BEFORE-CONFLICT",
+      "lines": [
+        130,
+        215,
+        249,
+        252
+      ],
+      "source": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py"
+    },
+    {
+      "blocker": false,
+      "evidence": [
+        {
+          "lines": [
+            210,
+            226,
+            326,
+            347
+          ],
+          "source": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py"
+        },
+        {
+          "lines": [
+            728,
+            733
+          ],
+          "source": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py"
+        }
+      ],
+      "finding": "All root input interfaces and exposed output templates are retained as formula-equality requirements. Repeated ordered premise reads are retained separately. A declared unused input is not an active native mark: same-row input/input obstruction relies on the current host adapter full physical source-sharing/formula check, and input/node obstruction relies on the final full interface check against the actual union. These downstream obligations remain mandatory. No open input becomes a fact.",
+      "id": "INTERFACE-SHARING-PREMISE",
+      "lines": [
+        230,
+        237
+      ],
+      "mathematical_statement": "If two required literal formulas at the same physical row have heads $h_1\\ne h_2$, then $F_1\\ne F_2$; thus the exact advisory layout cannot pass the mandatory full sharing/interface admission.",
+      "source": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Any dependency, root hypothesis/materialization or nonprimitive body makes the entire gate UNKNOWN/pass-through. Partial copy/work/depth/bytes/requirements exhaustion clears requirements, marks and conflicts. Conflict is assigned only after full supported requirements and grouping finish. NO_KNOWN_HEAD_CONFLICT is not native compatibility, finite coverage or a proof.",
+      "id": "COMPLETE-NEGATIVE-ONLY",
+      "lines": [
+        145,
+        155,
+        262,
+        290
+      ],
+      "source": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Only descriptor/topology/assignment/reduced limits and caller tick are inputs; copied literal request is retained and SHA-bound. Public defaults are work100000/depth128/input_bytes1048576/requirements4096, rows0..23. Only stdlib hashlib/json imports exist; no model/checker/producer/native state call or cache. Channel5 is returned planning data only. All native/proof/engine/pruning/runtime authority flags stay false.",
+      "id": "BOUNDED-STATE-FREE-PROTOCOL",
+      "lines": [
+        15,
+        17,
+        61,
+        92,
+        241,
+        290
+      ],
+      "source": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Tick BaseException is wrapped and re-raised by identity, distinct from private own-prefix UNKNOWN. Other exceptions propagate. The contract phrase malformed data is PlanHeadError is not exhaustive normalization: an unhashable malformed reference value may raise builtin TypeError during dictionary membership. This remains fatal/fail-closed, never a conflict or accepted UNKNOWN; no comprehensive typed-malformed exception guarantee is included in this pass.",
+      "id": "ERROR-TAXONOMY-BOUNDARY",
+      "lines": [
+        184,
+        192,
+        281,
+        290
+      ],
+      "source": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Current provider/engine/caller and original17/input2 semantic epoch/model/candidate universe/scheduler/ordinary fallback/rollback are unchanged. This Source introduces no executed integration, activated mark, learned pruning, empirical speed claim or runtime inheritance. Any later provider successor must preserve fair shared allocation/caps and charge the entire gate cost, then still perform full observed inference/expansion, independent checker4358, native six-rule membership, marked host union and complete original/decorated exposure census before preference acceptance.",
+      "id": "NEW-INTEGRATION-AND-QUALIFICATION-REQUIRED"
+    }
+  ],
+  "no_actual_or_result_data_read": true,
+  "required_future_integration_controls": [
+    "All eight fixed heads must be distinguished from formula_meta absence; a meta bound to bot in source data must still have no gate mark.",
+    "Alpha-renamed all and term/predicate substitutions must preserve the coarse result while full downstream equality remains independently required.",
+    "Same known head but unequal full formula must pass this necessary gate and be rejected downstream when actual equality is required.",
+    "Origin-map permutation, ordered duplicate reads, strict-prior row failures and forged full descriptor identity must remain distinct from an advisory head conflict.",
+    "Unused same-row open input interfaces must exercise actual host sharing/final-interface checks, without fabricated native marks or premise facts.",
+    "CALL/materialized hypothesis and own-bound paths must return UNKNOWN with no partial conflict authority; native/tick errors remain fatal.",
+    "Future matched comparisons must use the same frozen inventory, finite physical planning policy, full current independent/native checks and original native resource limits; report gate cost and outcomes without treating absent heads as successful unification."
+  ],
+  "schema": "receptor-family-coarse-head-plan-marks-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15276,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+    "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+  },
+  "source_contract": {
+    "bytes": 6196,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-contract-v1.json",
+    "sha256": "e3e8105434dab1b06f3ff7673f00d2627c9f27b3df9584428f99f49212fc1d80"
+  },
+  "source_only": true,
+  "whole_source_api_contract_and_theory_read": true
+}

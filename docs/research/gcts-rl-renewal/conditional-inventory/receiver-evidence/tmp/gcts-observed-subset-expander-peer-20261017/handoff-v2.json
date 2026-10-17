@@ -1,0 +1,35 @@
+{
+  "author_identity": "/root/arithmetic_induction",
+  "findings": {
+    "bytes": 8864,
+    "path": "/private/tmp/gcts-observed-subset-expander-peer-20261017/findings-v2.json",
+    "sha256": "10c0ca2a254bb2466ef16a159db45853c757746061acf78516d7e88f7ae73dcb"
+  },
+  "independent_static_audit": {
+    "bytes": 14155,
+    "path": "/private/tmp/gcts-observed-subset-expander-peer-20261017/independent-static-audit-v2.json",
+    "sha256": "a4c62f01eb8f63deff9956f3cf65a932c5b7e9d9f6511bcee1122394be9ac516"
+  },
+  "pass": true,
+  "review": {
+    "bytes": 4905,
+    "path": "/private/tmp/gcts-observed-subset-expander-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "e50e7f06448fa1c613a15113a52441ffda928504d33817a1347345ab1a81b4bb"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "receptor-family-observed-subset-inference-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 60281,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+    "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+  },
+  "source_contract": {
+    "bytes": 10891,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/Source-contract-v2.json",
+    "sha256": "31b15808045d8760ac69678986cad103588b9a6cb887fd6cc190390061c952b4"
+  },
+  "source_only": true
+}

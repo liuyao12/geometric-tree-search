@@ -1,0 +1,22 @@
+{
+  "current_operative_contract": {
+    "bytes": 17884,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "8af2329d5a56c7aa0da665bf1152714bae9f5d8051d2e6a8507d94132d5491ad"
+  },
+  "parent_source": {
+    "bytes": 21790,
+    "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v2.py",
+    "sha256": "1f4ae893cd2811328f73726a97ee84e4ccc48f1706cfdfc2c3c7536fcb4b29d9"
+  },
+  "schema": "ROOT-receiver-inference-saved-reader-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Saved complete bytes, original once/native terminal/wire and resource reconciliation only. No scientific imports, replay, semantic proof or target/transfer acceptance.",
+  "source": {
+    "bytes": 21794,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT_read_receiver_inference_saved_v1.py",
+    "sha256": "a450f67bda83c23e3153f0a28ab4b663ecc0a9798ea8e5464da5dafa50b7d897"
+  },
+  "source_only": true
+}

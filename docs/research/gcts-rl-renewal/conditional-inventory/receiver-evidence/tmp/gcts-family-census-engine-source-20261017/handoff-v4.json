@@ -1,0 +1,86 @@
+{
+  "API": {
+    "bytes": 6507,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/API-wire-v4.json",
+    "sha256": "201b1c35238c7ece38403350e2edc4df62cb86f7ed75ee0d417a0b161d071006"
+  },
+  "Review_ABI": {
+    "required": [
+      "Whole Source/current API/contract and frozen parent; exact full forward/inverse and real patches.",
+      "COW initial-state/explicit seed ledger, snapshot/checkpoint/rollback exact ownership; no domain/point insertion.",
+      "Full provider report gate on every status and later exposures checked both directions; unchanged fresh bare d680 consumer and distinct wrapper.",
+      "Public degree original/decorated/rejected keys and public cursor removed-prefix/current-context joins; no hidden internals claim.",
+      "Scheduler/base domains/one primitive/canonical fallback/native evidence/retention semantics unchanged except declared ledger calls.",
+      "Trusted pinned Source/Root original17/currentmap separation, charged errors/resources, scientific calls0 and author overlap."
+    ],
+    "schema": "receptor-family-full-exposure-census-engine-typed-Source-review-v4",
+    "scope": "receptor-family-full-exposure-census-engine-Source",
+    "source": {
+      "bytes": 92122,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+      "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+    },
+    "sources": {
+      "family_engine": {
+        "bytes": 92122,
+        "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+        "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+      }
+    }
+  },
+  "actual_patch_evidence": {
+    "bytes": 1840,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/actual-patch-evidence-v4.json",
+    "sha256": "f4992a87c1b3412ecedf7794e757e44ec25372dd9bb6aaef2d953ffc1b1f8440"
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "forward_patch": {
+    "bytes": 23397,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/engine-v3-to-v4.forward.patch",
+    "sha256": "13ad6110871293f88acaa6f6b86e735be95008f16a61899360ec1d7cbae429c0"
+  },
+  "inverse_patch": {
+    "bytes": 23397,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/engine-v4-to-v3.inverse.patch",
+    "sha256": "b63b4ec3da0b20bc5c89d7e1a39fee02aedf0eb35e5319b6d80924958fa43e6d"
+  },
+  "next_action": "Controls distinct whole Source peer and Root independent current composition review. Author does not grant actuals or scientific acceptance.",
+  "parent_source": {
+    "bytes": 76668,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_search_engine_v3.py",
+    "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+  },
+  "runtime_qualified": false,
+  "schema": "receptor-family-full-exposure-census-engine-Source-handoff-v4",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92122,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+    "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+  },
+  "source_contract": {
+    "bytes": 13421,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-contract-v4.json",
+    "sha256": "7386c681a7a99ac727bae9aeee4e34fc384768282cf0eb11dc6986b3a0973027"
+  },
+  "source_delta": {
+    "bytes": 71409,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/Source-delta-v4.json",
+    "sha256": "9ce893faf8e48079c89639070202d93febcf42af989416c17cc2b4e099558fd8"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "family_engine": {
+      "bytes": 92122,
+      "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+      "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+    }
+  },
+  "static_audit": {
+    "bytes": 1861,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/static-audit-v4.json",
+    "sha256": "fae4466a54c0d12615c21010217228be3f6d6ad37be53b31fd4392103e9309fa"
+  }
+}

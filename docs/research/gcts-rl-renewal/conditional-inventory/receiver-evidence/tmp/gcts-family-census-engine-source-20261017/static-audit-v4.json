@@ -1,0 +1,47 @@
+{
+  "actual_results_proofword_donor_reads": false,
+  "added_helpers": [
+    "LazyUnitRowEngine._join_family_cursor_census",
+    "LazyUnitRowEngine._join_family_degree_census",
+    "LazyUnitRowEngine._join_prototype_census",
+    "LazyUnitRowEngine._record_family_tile_census"
+  ],
+  "changed_named_regions_count": 12,
+  "checks": {
+    "Source_parent_pins": true,
+    "both_actual_F0_patch_directions_exact": true,
+    "candidate_advance_decision_ledger_erasure_raw_exact": true,
+    "four_helpers_added_only": true,
+    "parse_compile_without_evaluation": true,
+    "raw_forward_full_inverse_exact": true,
+    "search_family_selection_adoption_place_install_rollback_policy_preserved": true,
+    "unchanged_global_scheduler_and_native_validators": true,
+    "whole_AST_inverse_exact": true,
+    "whole_consumer_call_header_and_selection_tail_raw_exact": true
+  },
+  "consumer_common_call_and_selection_tail_raw_exact": true,
+  "edit_regions": 12,
+  "ledger_erasure_methods": [
+    "_candidate",
+    "_candidate_from_decision_context",
+    "_advance",
+    "decision"
+  ],
+  "parent": {
+    "bytes": 76668,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_search_engine_v3.py",
+    "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+  },
+  "schema": "receptor-family-full-census-engine-static-audit-v4",
+  "scientific_calls": 0,
+  "scope": "Author raw/AST/compile-without-evaluation and Unix text patches only, never an independent peer or runtime qualification.",
+  "source": {
+    "bytes": 92122,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v4.py",
+    "sha256": "ca5f2bc1f20b73c2627c9c08ee8ff8de0ca28930000b64036fc9f17036f64a03"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "tests_executed": false,
+  "unchanged_named_regions_count": 37
+}

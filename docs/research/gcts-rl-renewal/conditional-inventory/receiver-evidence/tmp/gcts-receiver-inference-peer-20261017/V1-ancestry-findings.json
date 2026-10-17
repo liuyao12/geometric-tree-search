@@ -1,0 +1,93 @@
+{
+  "actual_F0_patch_checks": [
+    {
+      "bytes_exact": true,
+      "forward": {
+        "bytes": 57520,
+        "path": "/private/tmp/gcts-receiver-inference-peer-20261017/cold-V1-forward-copy.py",
+        "sha256": "c3a85bc63edd10b51f53b98b9cd61c22c61d2fa216444af674d22d09d9a47315"
+      },
+      "forward_exit": 0,
+      "inverse": {
+        "bytes": 53368,
+        "path": "/private/tmp/gcts-receiver-inference-peer-20261017/cold-V1-inverse-copy.py",
+        "sha256": "7c76001ac0f48156732760d6e74daef87f0b7c67571dc4487936c8718627e197"
+      },
+      "inverse_exit": 0,
+      "kind": "cold",
+      "outputs": ""
+    },
+    {
+      "bytes_exact": true,
+      "forward": {
+        "bytes": 21794,
+        "path": "/private/tmp/gcts-receiver-inference-peer-20261017/reader-V1-forward-copy.py",
+        "sha256": "a450f67bda83c23e3153f0a28ab4b663ecc0a9798ea8e5464da5dafa50b7d897"
+      },
+      "forward_exit": 0,
+      "inverse": {
+        "bytes": 21790,
+        "path": "/private/tmp/gcts-receiver-inference-peer-20261017/reader-V1-inverse-copy.py",
+        "sha256": "1f4ae893cd2811328f73726a97ee84e4ccc48f1706cfdfc2c3c7536fcb4b29d9"
+      },
+      "inverse_exit": 0,
+      "kind": "reader",
+      "outputs": ""
+    }
+  ],
+  "actual_results_read": false,
+  "ancestry_audit": {
+    "bytes": 5499,
+    "path": "/private/tmp/gcts-receiver-inference-peer-20261017/V1-ancestry-static-audit.json",
+    "sha256": "cdabca3291c7fc67c0e55e9ae1710f4f8808c61983408acda329a69b28cde547"
+  },
+  "author_overlap": "Reviewer authored fd3e observedproducer,2925residual,oldkernel/engine/miner/provider ancestry. Rootauthorofcold/helper/reader; Controlsprovidercurrent andDiagnosisenginecurrent remainseparategenuinepeerrequirements. This reviewnotindependentofownresidual logic.",
+  "current_full_composition_accepted": false,
+  "findings": [
+    {
+      "detail": "Caller15 and reader15 exact raw edit regions independently reconstructed forward/fullinverse, whole AST inverse, actualpatchbothdirections; inherited35 and9namedregions unchanged.",
+      "disposition": "SOURCE_CHECKED",
+      "id": "RI-PARENT-RAW-AST-1"
+    },
+    {
+      "detail": "Full original17/input2/binding separate fromcurrent21/input10; same native20/512/failure55; originalfixedmodel construction neverrebased; newhelperactualBRANCH only/point-vs-router and canonicalfallback/2nodecomputecap reviewed.",
+      "disposition": "SOURCE_CHECKED",
+      "id": "RI-CALLER-SCOPE-1"
+    },
+    {
+      "detail": "Whole frozenpoolrawacceptance/model/marking/qualificationrecordjoins plusfreshchosenSource/currentcheck; report envelopefixed and exactouterbatch/innerreportbatch; no source-origin/native/theorem authority inherited.",
+      "disposition": "SOURCE_CHECKED",
+      "id": "RI-POOL-AND-ENVELOPE-1"
+    },
+    {
+      "detail": "No replay: nativeonce/tool-session/wait4/nativepostprobe/original20positive/55failure/canonicalLF/base64+zlib/caps/SHA+EOF; all11mandatoryphase sites withconditionalprovider sites, allfalsebroadacceptance.",
+      "disposition": "SOURCE_CHECKED",
+      "id": "RI-READER-SCOPE-1"
+    },
+    {
+      "detail": "Inherited cold docstring says noengine/branch and diagnostic Source17/input8 wording; executablefullmapsare21/10 andcontractactualsearchscopeaccurate. No gate/schema/mathrelaxation requested.",
+      "disposition": "NONBLOCKING_WORDING",
+      "id": "RI-STALENARRATIVE-1"
+    },
+    {
+      "detail": "Rootreportsprovider6 welltypedcandidate exactfreeexternal SCOPE error taxonomyfinding; provider7/engine6 narrowcurrentSource successors required. V1unrunpreserved; no currentcompositionPASS/activation fromthisancestryfinding.",
+      "disposition": "MUST_REBIND_BEFORE_ANY_ACTUAL",
+      "id": "RI-COMPONENT-V6-UNSELECTED-1"
+    }
+  ],
+  "full_current_Source_read": [
+    "caller",
+    "helper",
+    "reader",
+    "operative_contract",
+    "reader_contract",
+    "componentAPI_and_contract_engine5",
+    "componentAPI_and_contract_provider6"
+  ],
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_qualified": false,
+  "schema": "ROOT-receiver-inference-peer-V1-ancestry-findings",
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}

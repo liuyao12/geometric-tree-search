@@ -1,0 +1,29 @@
+{
+  "API": {
+    "bytes": 6342,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/API-wire-v2.json",
+    "sha256": "91fb673972686af965200962b3c2fd8ff152cf48dcd2935454af7a7faa41e762"
+  },
+  "actual_patch_evidence": "Pending actual text patch application to raw copies.",
+  "contract": {
+    "bytes": 10891,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/Source-contract-v2.json",
+    "sha256": "31b15808045d8760ac69678986cad103588b9a6cb887fd6cc190390061c952b4"
+  },
+  "delta": {
+    "bytes": 16991,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/Source-delta-v2.json",
+    "sha256": "8042cc14874d69a87cfbf3009c2a9a87042d2daa03e8309b3b8505897ddb3e71"
+  },
+  "schema": "observed-subset-prepatch-index-v2",
+  "source": {
+    "bytes": 60281,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+    "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+  },
+  "static_audit": {
+    "bytes": 10473,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/static-audit-v2.json",
+    "sha256": "32f92e235059a5c2d7f08cfa844ba7cd7daadbcebac8094d0040ac8b986d4f87"
+  }
+}

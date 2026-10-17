@@ -1,0 +1,65 @@
+{
+  "API": "build_residual_binding_prefix(*,descriptor,host,residual_parameters,tick,limits=None)",
+  "VERSION": "receptor-family-residual-host-binding-prefix-v1",
+  "errors": "Malformed parameter/host/residual/limits raises BindingPrefixDataError(ValueError with code). Callback/native errors propagate unchanged through owned wrapper. Own work/depth becomes bounded prefix reason, never a negative test. No module/producer/native/engine function calls occur inside policy.",
+  "inputs": {
+    "descriptor": "Full ordinary receptor-lemma-family-v2 object. Policy checks shape/parameter declarations/references only; family identity/body/registry/native validity must still be freshly checked by fd3e and later independent/native stages.",
+    "host": "Full receptor-family-host-v1 object. Only declared variable_names/predicate signature and optional authority.theory.axioms data determine ordering. Other host data retained opaque in request; never authenticate host or inspect target for selection.",
+    "limits": {
+      "bindings": 64,
+      "depth": 64,
+      "rule": "Reductions only, exact positive ints; bindings includes empty env.",
+      "work": 100000
+    },
+    "residual_parameters": "Unique declared IDs, ordinarily from the first fd3e [{}] UNBOUND_UNKNOWN missing_parameters. Untrusted syntax, not a proof receipt. Reordered into descriptor parameter order to avoid caller reordering hints."
+  },
+  "integration": {
+    "additional_prefix": "Join initial probe and policy request/current descriptor+host. Consume bindings[1:] only, with remaining attempt cap63 default (or bindingscap-1); do not repeat first probe or exceed shared declared candidate attempt count. If initial probe already grounds, no residual policy is required.",
+    "budget": "Same cumulative Root native tick and provider own accounting across probe, policy, failed attempts, full expansion and independent/native checks. Never reset native20/512 or per-assignment budget.",
+    "first_probe": "fd3e infer_observed_ports(candidate_bindings=[{}], limits binding_attempts1/results1). Only UNBOUND_UNKNOWN residual list authorizes this additional proposal-policy path; other errors retain established taxonomy.",
+    "unknown": "Policy own work/cap may retain complete earlier candidate bindings but cannot claim absent family. All missing/residual/incomplete cases remain advisory UNKNOWN and canonical fallback stays complete."
+  },
+  "policy": {
+    "first_binding": {},
+    "formula_term": "No FORMULA/TERM AST enumeration. Those parameters remain absent from candidate env; fresh fd3e may infer them once formal variable names are bound, or return UNKNOWN. An initial residual FORMULA/TERM must not itself suppress the name trials.",
+    "no_semantic_prefilter": "Distinct/eigen/capture/current receptor and named-axiom formula membership are not decided by this prefix. Fresh fd3e/full forward/native admission follows. Generic theory-literal AX preflight is a separate provider obligation, not implemented here.",
+    "predicates": "Lexical declared host predicate symbols with exact matching parameter arity; no origin-symbol preference.",
+    "tuples": "Residual name parameters in descriptor order. Alternate synchronous diagonal tuple k modulo each domain size with next Cartesian odometer tuple; skip full duplicate index tuples before emitting. Once diagonal ends, Cartesian continues. Empty plus at most63 distinct named assignments by default; no complete substitution-universe promise.",
+    "variables": "All VARIABLE roles FREE_PARAMETER/BOUND/EIGEN/EQUALITY_HOLE use the same complete declared host.variable_names domain. Preferred set is lexical literal var/all names found in host.authority.theory.axioms data, filtered to declared names; remaining declared host names lexical. No source-env/descriptor-body/receiver/target names guide priority."
+  },
+  "schema": "receptor-family-residual-host-binding-prefix-API-v1",
+  "source": {
+    "bytes": 12776,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v1.py",
+    "sha256": "bed90fd51324281a8d34e4250a7d752d9ea5e1ec76f70924a8aa2295278b7769"
+  },
+  "wire": {
+    "domains": "Full parameter_id/kind/role/ordered allowed names for all residual name parameters; optional partial data before syntax validation finishes is never a binding.",
+    "entries": "One binding_index/channel(EMPTY|DIAGONAL|CARTESIAN)/domain_indices per retained binding; no phantom candidate on incomplete copy.",
+    "fields": [
+      "schema",
+      "version",
+      "status",
+      "request",
+      "bindings",
+      "entries",
+      "domains",
+      "unassigned_formula_term_parameters",
+      "preferred_axiom_variable_names",
+      "variable_name_order",
+      "parameter_domain_syntax_checked",
+      "named_domain_exhausted",
+      "substitution_enumeration_complete",
+      "work",
+      "reason",
+      "flags"
+    ],
+    "flags": "proposal_only true, source_environment_used false; descriptor/ground/native/point/proof/engine/pruning/runtime false.",
+    "named_domain_exhausted": "null before validated enumeration, false for bounded/incomplete named prefix, true only no named parameters/empty product or complete Cartesian traversal. This says nothing about formula/term substitutions or native existence.",
+    "reason": "NO_RESIDUAL_NAME_PARAMETERS / EMPTY_ARITY_COMPATIBLE_NAME_DOMAIN / NAMED_CARTESIAN_DOMAIN_ENDED / BINDING_CAP_PREFIX_UNKNOWN / OWN_WORK_OR_DEPTH_PREFIX.",
+    "request": "Full copied descriptor/host/residual list; may be null on own copy bound.",
+    "schema": "receptor-family-residual-host-binding-prefix-v1",
+    "status": "BINDING_PREFIX if any complete binding objects retained, otherwise UNKNOWN. Either is advisory; prefix is not proof.",
+    "substitution_enumeration_complete": false
+  }
+}

@@ -1,0 +1,414 @@
+{
+  "AST_parse": true,
+  "actual_result_donor_reads": false,
+  "all_inherited_named_regions_raw_AST_exact": true,
+  "checks": [
+    {
+      "evidence": "Frozen f32e parent and fd3e current hashes/lengths checked; exact tag insertion plus EOF two-function addition.",
+      "id": "OS01",
+      "passed": true
+    },
+    {
+      "evidence": "Every old public/helper/class/nested function source and AST exact; original VERSION/schema/default limits/FLAGS/imports untouched.",
+      "id": "OS02",
+      "passed": true
+    },
+    {
+      "evidence": "All complete hypothesis Gamma/formula and partial input/output order/uniqueness/native AST validation happens before iterator, >=1 output required.",
+      "id": "OS03",
+      "passed": true
+    },
+    {
+      "evidence": "Joint _infer_template fixed point then EVERY declared parameter required; no implicit environment/default/residual variable source.",
+      "id": "OS04",
+      "passed": true
+    },
+    {
+      "evidence": "Complete original _binding validates free external allowance before port projection.",
+      "id": "OS05",
+      "passed": true
+    },
+    {
+      "evidence": "Every root port forward instantiated with original native capture-safe routine; all observed literals compared, all derived formulas syntax checked.",
+      "id": "OS06",
+      "passed": true
+    },
+    {
+      "evidence": "Per-attempt renamings reset before inference and projection; conditions/root formula inputs reset before root side checks; no stale attempt diagnostics exported.",
+      "id": "OS07",
+      "passed": true
+    },
+    {
+      "evidence": "Root distinct/eigen/side checks use complete Gamma and derived required input formula dependencies, without physical facts.",
+      "id": "OS08",
+      "passed": true
+    },
+    {
+      "evidence": "New code has no core.expand call, native language or engine parameter, full port_bindings, fabricated source/occupancy or model import.",
+      "id": "OS09",
+      "passed": true
+    },
+    {
+      "evidence": "Original CallbackFailure identity propagation and own finite prefix semantics reused; iterator exceptions not swallowed; only per-binding DescriptorError becomes rejection.",
+      "id": "OS10",
+      "passed": true
+    },
+    {
+      "evidence": "Separate new schema+implementation tag; old v1 wire remains literal and cannot qualify new projection output as old expansion/checker receipt.",
+      "id": "OS11",
+      "passed": true
+    },
+    {
+      "evidence": "Root-port syntax status explicitly false for full internal expansion and all native/proof/union/activation authority; no downstream code changes.",
+      "id": "OS12",
+      "passed": true
+    }
+  ],
+  "compile_without_evaluation": true,
+  "edit_regions": 2,
+  "inherited_named_region_count": 54,
+  "limitations": "Static author evidence only; no candidate/fixture/model/helper execution, native check, inferred binding runtime result, timing or acceptance claim. Actual patch application to raw copies recorded separately.",
+  "parent": {
+    "bytes": 51898,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+    "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+  },
+  "raw_full_forward_inverse": true,
+  "regions": [
+    {
+      "current_line": 26,
+      "kind": "ClassDef",
+      "name": "DescriptorError",
+      "parent_line": 25
+    },
+    {
+      "current_line": 28,
+      "kind": "FunctionDef",
+      "name": "DescriptorError.__init__",
+      "parent_line": 27
+    },
+    {
+      "current_line": 33,
+      "kind": "ClassDef",
+      "name": "_Unfinished",
+      "parent_line": 32
+    },
+    {
+      "current_line": 37,
+      "kind": "ClassDef",
+      "name": "_CallbackFailure",
+      "parent_line": 36
+    },
+    {
+      "current_line": 38,
+      "kind": "FunctionDef",
+      "name": "_CallbackFailure.__init__",
+      "parent_line": 37
+    },
+    {
+      "current_line": 42,
+      "kind": "ClassDef",
+      "name": "_Unbound",
+      "parent_line": 41
+    },
+    {
+      "current_line": 46,
+      "kind": "FunctionDef",
+      "name": "require",
+      "parent_line": 45
+    },
+    {
+      "current_line": 51,
+      "kind": "FunctionDef",
+      "name": "canonical",
+      "parent_line": 50
+    },
+    {
+      "current_line": 56,
+      "kind": "FunctionDef",
+      "name": "family_preimage",
+      "parent_line": 55
+    },
+    {
+      "current_line": 60,
+      "kind": "FunctionDef",
+      "name": "family_identity",
+      "parent_line": 59
+    },
+    {
+      "current_line": 64,
+      "kind": "ClassDef",
+      "name": "_Work",
+      "parent_line": 63
+    },
+    {
+      "current_line": 65,
+      "kind": "FunctionDef",
+      "name": "_Work.__init__",
+      "parent_line": 64
+    },
+    {
+      "current_line": 76,
+      "kind": "FunctionDef",
+      "name": "_Work.step",
+      "parent_line": 75
+    },
+    {
+      "current_line": 85,
+      "kind": "FunctionDef",
+      "name": "_Work.copy",
+      "parent_line": 84
+    },
+    {
+      "current_line": 94,
+      "kind": "FunctionDef",
+      "name": "_Work.report",
+      "parent_line": 93
+    },
+    {
+      "current_line": 98,
+      "kind": "FunctionDef",
+      "name": "_keys",
+      "parent_line": 97
+    },
+    {
+      "current_line": 102,
+      "kind": "FunctionDef",
+      "name": "_name",
+      "parent_line": 101
+    },
+    {
+      "current_line": 107,
+      "kind": "FunctionDef",
+      "name": "_identifier",
+      "parent_line": 106
+    },
+    {
+      "current_line": 113,
+      "kind": "FunctionDef",
+      "name": "_unique",
+      "parent_line": 112
+    },
+    {
+      "current_line": 118,
+      "kind": "ClassDef",
+      "name": "_Core",
+      "parent_line": 117
+    },
+    {
+      "current_line": 119,
+      "kind": "FunctionDef",
+      "name": "_Core.__init__",
+      "parent_line": 118
+    },
+    {
+      "current_line": 137,
+      "kind": "FunctionDef",
+      "name": "_Core._host",
+      "parent_line": 136
+    },
+    {
+      "current_line": 164,
+      "kind": "FunctionDef",
+      "name": "_Core._native",
+      "parent_line": 163
+    },
+    {
+      "current_line": 194,
+      "kind": "FunctionDef",
+      "name": "_Core._free",
+      "parent_line": 193
+    },
+    {
+      "current_line": 207,
+      "kind": "FunctionDef",
+      "name": "_Core._parameters",
+      "parent_line": 206
+    },
+    {
+      "current_line": 240,
+      "kind": "FunctionDef",
+      "name": "_Core._symbol",
+      "parent_line": 239
+    },
+    {
+      "current_line": 252,
+      "kind": "FunctionDef",
+      "name": "_Core._template",
+      "parent_line": 251
+    },
+    {
+      "current_line": 298,
+      "kind": "FunctionDef",
+      "name": "_Core._ref",
+      "parent_line": 297
+    },
+    {
+      "current_line": 310,
+      "kind": "FunctionDef",
+      "name": "_Core._descriptor",
+      "parent_line": 309
+    },
+    {
+      "current_line": 381,
+      "kind": "FunctionDef",
+      "name": "_Core._descriptor.var_id",
+      "parent_line": 380
+    },
+    {
+      "current_line": 382,
+      "kind": "FunctionDef",
+      "name": "_Core._descriptor.free_selector",
+      "parent_line": 381
+    },
+    {
+      "current_line": 391,
+      "kind": "FunctionDef",
+      "name": "_Core._argument_template",
+      "parent_line": 390
+    },
+    {
+      "current_line": 405,
+      "kind": "FunctionDef",
+      "name": "_Core._call_binding_templates",
+      "parent_line": 404
+    },
+    {
+      "current_line": 418,
+      "kind": "FunctionDef",
+      "name": "_Core._infer_set",
+      "parent_line": 417
+    },
+    {
+      "current_line": 425,
+      "kind": "FunctionDef",
+      "name": "_Core._infer_template",
+      "parent_line": 424
+    },
+    {
+      "current_line": 469,
+      "kind": "FunctionDef",
+      "name": "_Core.infer",
+      "parent_line": 468
+    },
+    {
+      "current_line": 506,
+      "kind": "FunctionDef",
+      "name": "_Core._binding",
+      "parent_line": 505
+    },
+    {
+      "current_line": 528,
+      "kind": "FunctionDef",
+      "name": "_Core._fresh",
+      "parent_line": 527
+    },
+    {
+      "current_line": 535,
+      "kind": "FunctionDef",
+      "name": "_Core._subst",
+      "parent_line": 534
+    },
+    {
+      "current_line": 557,
+      "kind": "FunctionDef",
+      "name": "_Core._external",
+      "parent_line": 556
+    },
+    {
+      "current_line": 570,
+      "kind": "FunctionDef",
+      "name": "_Core._instantiate",
+      "parent_line": 569
+    },
+    {
+      "current_line": 595,
+      "kind": "FunctionDef",
+      "name": "_Core._arg",
+      "parent_line": 594
+    },
+    {
+      "current_line": 602,
+      "kind": "FunctionDef",
+      "name": "_Core._node",
+      "parent_line": 601
+    },
+    {
+      "current_line": 611,
+      "kind": "FunctionDef",
+      "name": "_Core._resolve",
+      "parent_line": 610
+    },
+    {
+      "current_line": 617,
+      "kind": "FunctionDef",
+      "name": "_Core._side_conditions",
+      "parent_line": 616
+    },
+    {
+      "current_line": 619,
+      "kind": "FunctionDef",
+      "name": "_Core._side_conditions.frees",
+      "parent_line": 618
+    },
+    {
+      "current_line": 625,
+      "kind": "FunctionDef",
+      "name": "_Core._side_conditions.variable",
+      "parent_line": 624
+    },
+    {
+      "current_line": 654,
+      "kind": "FunctionDef",
+      "name": "_Core._frame",
+      "parent_line": 653
+    },
+    {
+      "current_line": 706,
+      "kind": "FunctionDef",
+      "name": "_Core.expand",
+      "parent_line": 705
+    },
+    {
+      "current_line": 744,
+      "kind": "FunctionDef",
+      "name": "_Core.expand.visit",
+      "parent_line": 743
+    },
+    {
+      "current_line": 763,
+      "kind": "FunctionDef",
+      "name": "_unknown",
+      "parent_line": 762
+    },
+    {
+      "current_line": 770,
+      "kind": "FunctionDef",
+      "name": "validate_registry",
+      "parent_line": 769
+    },
+    {
+      "current_line": 784,
+      "kind": "FunctionDef",
+      "name": "expand_family",
+      "parent_line": 783
+    },
+    {
+      "current_line": 795,
+      "kind": "FunctionDef",
+      "name": "match_family",
+      "parent_line": 794
+    }
+  ],
+  "schema": "receptor-family-observed-subset-static-audit-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 60281,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+    "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "tests_executed": false,
+  "whole_AST_inverse": true
+}

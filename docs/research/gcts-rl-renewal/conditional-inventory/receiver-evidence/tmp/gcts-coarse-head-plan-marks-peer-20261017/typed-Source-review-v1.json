@@ -1,0 +1,69 @@
+{
+  "API": {
+    "bytes": 4873,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/API-wire-v1.json",
+    "sha256": "16243e76d72dc8be1a50f6e872645444c3127d2f53d73c563fa2f93dd362a8ed"
+  },
+  "AST_and_compile_without_evaluation_only": true,
+  "actual_execution_authorized": false,
+  "actual_results_or_proofwords_read": false,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_and_dependency_overlap": "Reviewer authored independent expansion checker4358, marked verifier9fd, marked-aware fibre checker8f, older point-adapter ancestry and full-census engine6, plus the preliminary head theory note. Reviewer did not author this standalone gate or its contract/API. Shared schemas/native primitives and paired dependency review are disclosed; this is distinct implementation/conditional theory review, not unrelated mathematics or runtime reacceptance.",
+  "blocking_findings": [],
+  "design_and_proof": {
+    "bytes": 6182,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/design-and-proof-v1.json",
+    "sha256": "869976cde593ff4dff6fd05c08142ca3b066292b202993fee693bea31433dd14"
+  },
+  "findings": {
+    "bytes": 8531,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/findings-v1.json",
+    "sha256": "bfa25e2f671ef861dc596b8cff93815f6fff2324e64cbb6abbcb9952f52e7b6c"
+  },
+  "future_integration_not_authorized": true,
+  "pass": true,
+  "raw_forward_inverse_and_actual_patch_both_directions_exact": true,
+  "reviewed_handoff": {
+    "bytes": 3042,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/handoff-v1.json",
+    "sha256": "fbc95ba6b13bd232765fdf339e0d10c5584afc464062bea30f1ff9b9e691db2d"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "receptor-family-coarse-head-plan-marks-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-coarse-head-plan-marks-Source",
+  "scope_condition": "Necessary obstruction for the exact supported advisory physical plan, conditional on valid typed/capture-safe downstream instantiation and the mandatory exact source-sharing/full interface/native checks. No theorem, native mark activation, base pruning, degree/EOF, engine, search, availability or performance acceptance. Generic malformed inputs may fail with propagated other exceptions; no exhaustive PlanHeadError normalization claim.",
+  "source": {
+    "bytes": 15276,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+    "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+  },
+  "source_contract": {
+    "bytes": 6196,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-contract-v1.json",
+    "sha256": "e3e8105434dab1b06f3ff7673f00d2627c9f27b3df9584428f99f49212fc1d80"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "coarse_head_plan_gate": {
+      "bytes": 15276,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+    }
+  },
+  "static_review": {
+    "bytes": 9926,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/static-review-v1.json",
+    "sha256": "15b0cf133077f52cf222f7afa9df41a85820ef6c1a154c7011bcbf0f6e989159"
+  },
+  "theory_note": {
+    "bytes": 5382,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/theory-note-v1.json",
+    "sha256": "db3d8088decca38c45d9573704d3e5898967d88ee11549171902ee0255710904"
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "whole_source_api_contract_theory_review": true
+}

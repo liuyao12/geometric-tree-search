@@ -1,0 +1,161 @@
+{
+  "Root_author_audit": {
+    "bytes": 34318,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+    "sha256": "fa3b6a556429bc00ea39ff584621e8abe9491b545ee627020be7bf1fa396b362"
+  },
+  "actual_input_output_results_read": false,
+  "author": "/root/arithmetic_induction",
+  "current_input_count": 10,
+  "current_source_count": 21,
+  "helper_source": {
+    "bytes": 7839,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/receiver_inference_cases_v1.py",
+    "sha256": "bc42eb2012f6247a09b6a22ea513604c451ffb249d89b5c01d57dcd286983e8f"
+  },
+  "independent_checks": [
+    {
+      "added_named_regions": [
+        "main.run_receiver"
+      ],
+      "changed_named_regions": [
+        "main"
+      ],
+      "compile_without_evaluation": true,
+      "inherited_named_regions": [
+        "ChildControlInterruption",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.abort",
+        "ObservedCursor.advance",
+        "ObservedCursor.context",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "anchor",
+        "cancel",
+        "canonical",
+        "decode",
+        "encode_result_transport",
+        "finite_float",
+        "invoke",
+        "load_module",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language",
+        "main.guard",
+        "main.phase",
+        "main.tick",
+        "need",
+        "raw_pin",
+        "read_pinned",
+        "reject_constant",
+        "same",
+        "save_failure_diagnostic",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.write",
+        "unique",
+        "write_new"
+      ],
+      "kind": "cold",
+      "parent": {
+        "bytes": 53368,
+        "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/native_productive_inventory_cold_v2.py",
+        "sha256": "7c76001ac0f48156732760d6e74daef87f0b7c67571dc4487936c8718627e197"
+      },
+      "patches": [
+        {
+          "bytes": 30237,
+          "path": "/private/tmp/gcts-receiver-inference-peer-20261017/cold-V1-peer.forward.patch",
+          "sha256": "11879440964ee637267da41e7287d08858bf0e43de003481050edd6a03a7393e"
+        },
+        {
+          "bytes": 30237,
+          "path": "/private/tmp/gcts-receiver-inference-peer-20261017/cold-V1-peer.inverse.patch",
+          "sha256": "a09e58e2768d2b601d70d3ff7f30382c8bb4ca50e36376c735726863b9305087"
+        }
+      ],
+      "raw_forward_inverse": true,
+      "raw_regions": 15,
+      "removed_named_regions": [
+        "main.run_inventory"
+      ],
+      "source": {
+        "bytes": 57520,
+        "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/receiver_inference_cold_v1.py",
+        "sha256": "c3a85bc63edd10b51f53b98b9cd61c22c61d2fa216444af674d22d09d9a47315"
+      },
+      "whole_AST_inverse": true
+    },
+    {
+      "added_named_regions": [],
+      "changed_named_regions": [
+        "main",
+        "read_failure_diagnostic"
+      ],
+      "compile_without_evaluation": true,
+      "inherited_named_regions": [
+        "canonical",
+        "decode",
+        "need",
+        "pinned",
+        "raw_pin",
+        "read",
+        "read_phases",
+        "unique",
+        "write"
+      ],
+      "kind": "reader",
+      "parent": {
+        "bytes": 21790,
+        "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/ROOT_read_native_productive_inventory_saved_v2.py",
+        "sha256": "1f4ae893cd2811328f73726a97ee84e4ccc48f1706cfdfc2c3c7536fcb4b29d9"
+      },
+      "patches": [
+        {
+          "bytes": 9618,
+          "path": "/private/tmp/gcts-receiver-inference-peer-20261017/reader-V1-peer.forward.patch",
+          "sha256": "b95bc510d962ce5ef659789c9e12a5556956138a6ea478c7c2e120be90c4ee96"
+        },
+        {
+          "bytes": 9618,
+          "path": "/private/tmp/gcts-receiver-inference-peer-20261017/reader-V1-peer.inverse.patch",
+          "sha256": "657f948bc76564a175cd1eecd9797d44a22c010b59f507eec104b63687621999"
+        }
+      ],
+      "raw_forward_inverse": true,
+      "raw_regions": 15,
+      "removed_named_regions": [],
+      "source": {
+        "bytes": 21794,
+        "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT_read_receiver_inference_saved_v1.py",
+        "sha256": "a450f67bda83c23e3153f0a28ab4b663ecc0a9798ea8e5464da5dafa50b7d897"
+      },
+      "whole_AST_inverse": true
+    }
+  ],
+  "known_scope": "V1 remains unselected/unrun due separately reported provider6 candidate SCOPE taxonomy issue; this is ancestry audit, not current full-composition activation. Final typed reviews will bind explicit V2.",
+  "literal_maps_equal": true,
+  "original_input_count": 2,
+  "original_source_count": 17,
+  "other_roles": "Literal map/pin parity with retained reviewed ancestry; no fresh actual input/profile/marking record reads.",
+  "private_tmp_Source_roles_rehashed": [
+    "expansion_checker",
+    "family_consumer",
+    "family_engine",
+    "host_adapter",
+    "intake",
+    "marked_adapter",
+    "producer",
+    "receiver_cases",
+    "receiver_provider",
+    "residual_policy"
+  ],
+  "reader_operative_contract_exact": true,
+  "schema": "ROOT-receiver-inference-peer-V1-ancestry-static-audit",
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}

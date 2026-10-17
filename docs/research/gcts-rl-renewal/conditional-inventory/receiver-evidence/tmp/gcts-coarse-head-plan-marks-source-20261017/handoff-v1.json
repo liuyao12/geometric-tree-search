@@ -1,0 +1,74 @@
+{
+  "API": {
+    "bytes": 4873,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/API-wire-v1.json",
+    "sha256": "16243e76d72dc8be1a50f6e872645444c3127d2f53d73c563fa2f93dd362a8ed"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "schema": "receptor-family-coarse-head-plan-marks-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-coarse-head-plan-marks-Source",
+    "source": {
+      "bytes": 15276,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+    },
+    "source_contract": {
+      "bytes": 6196,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-contract-v1.json",
+      "sha256": "e3e8105434dab1b06f3ff7673f00d2627c9f27b3df9584428f99f49212fc1d80"
+    },
+    "source_only": true,
+    "sources": {
+      "coarse_head_plan_gate": {
+        "bytes": 15276,
+        "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+        "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "design_and_proof": {
+    "bytes": 6182,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/design-and-proof-v1.json",
+    "sha256": "869976cde593ff4dff6fd05c08142ca3b066292b202993fee693bea31433dd14"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 15612,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/addition.forward.patch",
+      "sha256": "08f8415c3ac445b45d6c7617035c88c65c8cb462bfba99bda1c00abda8387bc1"
+    },
+    "inverse": {
+      "bytes": 15612,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/addition.inverse.patch",
+      "sha256": "c9d98737813768d7061d0f4bd34b0943bf874f4004785b193b3f06f763e22fee"
+    }
+  },
+  "runtime_qualified": false,
+  "schema": "receptor-family-coarse-head-plan-marks-handoff-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15276,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+    "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+  },
+  "source_contract": {
+    "bytes": 6196,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-contract-v1.json",
+    "sha256": "e3e8105434dab1b06f3ff7673f00d2627c9f27b3df9584428f99f49212fc1d80"
+  },
+  "source_delta": {
+    "bytes": 16642,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-delta-v1.json",
+    "sha256": "94ac309f4dda505157b341914c286db261ee7e116d27c9eeaf472926d6978e27"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 2621,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/static-audit-v1.json",
+    "sha256": "346f11703ec412cd3b4f9fb203494469f499d1d8a947f77b3104cbebb8b21a4b"
+  }
+}

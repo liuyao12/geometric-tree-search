@@ -1,0 +1,146 @@
+--- source.py
++++ source.py
+@@ -10,6 +10,7 @@
+ import re
+ 
+ VERSION = 'receptor-family-typed-expander-v1'
++IMPLEMENTATION_VERSION = 'receptor-family-observed-subset-inference-v2'
+ DESCRIPTOR_SCHEMA = 'receptor-lemma-family-v2'
+ HOST_SCHEMA = 'receptor-family-host-v1'
+ PROPOSAL_SCHEMA = 'receptor-family-expansion-proposal-v1'
+@@ -826,3 +827,135 @@
+             'status':'PROPOSALS' if proposals else 'UNKNOWN','proposals':proposals,
+             'binding_attempts':attempts,'rejected_bindings':rejected,'matching_complete':False,
+             'work':work.report(),'reason':reason,'flags':dict(FLAGS)}
++
++
++def _observed_environment(core, fid, candidate, ports, constraints):
++    """Complete a syntax environment, without inventing physical input facts."""
++    w=core.w;d=core.by_id[fid];ps=core.params[fid]
++    require(type(candidate)is dict and set(candidate)<=set(ps),'BINDING','partial candidate has declared parameter IDs only')
++    env=w.copy(candidate)
++    # Match the old inference candidate checks, including explicit abstraction
++    # formals; a literal all-tree bound to F does not bind other declared IDs.
++    for pid,value in env.items():
++        p=ps[pid];kind=p['kind']
++        if kind=='VARIABLE': require(type(value)is str and value in core.host['variable_names'],'SCOPE','candidate variable')
++        elif kind=='PREDICATE_SYMBOL': require(type(value)is str and core.host['predicates'].get(value)==p['arity'],'ARITY','candidate predicate')
++        else:
++            _keys(value,('formal_names','body'));fs=value['formal_names']
++            require(type(fs)is list and len(fs)==len(p['formal_variables']),'BINDING','candidate abstraction arity')
++            for name in fs:_name(name)
++            _unique(fs);core._native(value['body'],kind,set(fs))
++    core.renamings=[]
++    while True:
++        before=len(env)
++        for template,actual,location in constraints:
++            core._infer_template(template,actual,env,ps,location)
++        if len(env)==before:break
++    missing=[pid for pid in ps if pid not in env]
++    if missing:return None,missing
++    core._binding(fid,env)  # Complete types, formal arities and external-free scope.
++    observed={field:{p['port_id']:p for p in ports[field]}
++              for field in ('hypotheses','inputs','outputs')}
++    required={field:[] for field in observed}
++    core.renamings=[]
++    for field in ('hypotheses','inputs','outputs'):
++        for i,p in enumerate(d[field]):
++            w.step();formula=core._instantiate(p['formula'],env,[],[field,i,'formula'])
++            core._native(formula,'FORMULA',set())
++            actual=observed[field].get(p['id'])
++            if actual is not None:
++                require(actual['formula']==formula,'PORT_MISMATCH','forward literal '+field+' receptor')
++            if field=='hypotheses':
++                basis='ORIGINAL_GAMMA_OCCURRENCE'
++            elif actual is not None:
++                basis='OBSERVED_FORMULA_CONSTRAINT'
++            else:
++                basis='DERIVED_CONDITIONAL_OBLIGATION' if field=='inputs' else 'DERIVED_OUTPUT_FORMULA'
++            item={'port_id':p['id'],'formula':formula,'basis':basis}
++            if field=='hypotheses':item['gamma_index']=actual['gamma_index']
++            required[field].append(item)
++    # These are root formula-only syntax checks. Nested bodies/child conditions
++    # still require the existing full forward expansion and independent checker.
++    core.conditions=[]
++    core.root_inputs={p['port_id']:{'formula':p['formula']} for p in required['inputs']}
++    outputs={p['port_id']:{'formula':p['formula']} for p in required['outputs']}
++    core._side_conditions(d,env,[],core.root_inputs,outputs)
++    return {'schema':'receptor-family-observed-environment-proposal-v1',
++            'version':VERSION,'implementation_version':IMPLEMENTATION_VERSION,
++            'status':'GROUND_ENVIRONMENT_PROPOSAL','family_id':fid,
++            'request':{'registry':w.copy(core.registry),'family_id':fid,'host':w.copy(core.host),
++                       'observed_receptors':w.copy(ports),'initial_binding':w.copy(candidate)},
++            'substitution':w.copy(env),'required_port_formulas':required,
++            'forward_port_renamings':w.copy(core.renamings),
++            'root_side_condition_checks':w.copy(core.conditions),
++            'missing_parameters':[],'root_port_forward_checked':True,
++            'full_internal_expansion_checked':False,
++            'scope':'Untrusted syntax environment and root port formulas only; no physical row, source, occupancy, premise truth, BRANCH or native authority.',
++            'flags':dict(FLAGS)},[]
++
++
++def infer_observed_ports(*, registry, family_id, host, observed_receptors,
++                         candidate_bindings, tick, limits=None):
++    """Infer from an ordered visible subset, derive formula obligations only.
++
++    Every declared parameter must become ground, including internal-only BOUND
++    or EIGEN IDs. No source substitution or residual value is guessed. Complete
++    root hypotheses and at least one output are required; input/output subsets
++    are ordered and duplicate-free. Full expansion/native admission follows
++    separately with actual physical bindings; this endpoint cannot supply them.
++    """
++    work=_Work(tick,limits);proposals=[];rejected=[];attempts=0;request=None
++    reason='supplied finite binding prefix ended; no absence claim'
++    try:
++        core=_Core(registry,host,work)
++        require(type(family_id)is str and family_id in core.by_id,'FAMILY','root family available')
++        ports=work.copy(observed_receptors);_keys(ports,('hypotheses','inputs','outputs'),'PORT_BINDING')
++        d=core.by_id[family_id];constraints=[]
++        for field in ('hypotheses','inputs','outputs'):
++            require(type(ports[field])is list,'PORT_BINDING','ordered observed lists')
++        require(len(ports['hypotheses'])==len(d['hypotheses']),'PORT_BINDING','complete ordered hypotheses')
++        for i,(p,b) in enumerate(zip(d['hypotheses'],ports['hypotheses'])):
++            work.step();_keys(b,('port_id','gamma_index','formula'),'PORT_BINDING')
++            require(b['port_id']==p['id'],'PORT_BINDING','same ordered hypothesis')
++            core._native(b['formula'],'FORMULA',set());index=b['gamma_index']
++            require(type(index)is int and 0<=index<len(core.host['ordered_Gamma'])
++                    and core.host['ordered_Gamma'][index]==b['formula'],'GAMMA','exact original context occurrence')
++            constraints.append((p['formula'],b['formula'],['hypotheses',i,'formula']))
++        for field in ('inputs','outputs'):
++            order={p['id']:(i,p) for i,p in enumerate(d[field])};previous=-1
++            for b in ports[field]:
++                work.step();_keys(b,('port_id','formula'),'PORT_BINDING');pid=_identifier(b['port_id'])
++                require(pid in order and order[pid][0]>previous,'PORT_BINDING','distinct declared ports in descriptor order')
++                i,p=order[pid];previous=i;core._native(b['formula'],'FORMULA',set())
++                constraints.append((p['formula'],b['formula'],[field,i,'formula']))
++        require(bool(ports['outputs']),'PORT_BINDING','at least one observed output')
++        request={'registry':work.copy(core.registry),'family_id':family_id,
++                 'host':work.copy(core.host),'observed_receptors':work.copy(ports)}
++        iterator=iter(candidate_bindings)
++        while attempts<work.limits['binding_attempts'] and len(proposals)<work.limits['results']:
++            work.step()
++            try:binding=next(iterator)
++            except StopIteration:break
++            attempts+=1
++            try:
++                proposal,missing=_observed_environment(core,family_id,work.copy(binding),ports,constraints)
++            except DescriptorError as exc:
++                rejected.append({'binding_index':attempts-1,'code':exc.code,'reason':str(exc),
++                                 'missing_parameters':[]})
++                continue
++            if missing:
++                rejected.append({'binding_index':attempts-1,'code':'UNBOUND_UNKNOWN',
++                    'reason':'residual parameters need declared bindings: '+','.join(missing),
++                    'missing_parameters':work.copy(missing)})
++                continue
++            proposal['binding_index']=attempts-1
++            proposals.append(proposal)
++        else:reason='finite binding/result prefix bound; no absence claim'
++    except _CallbackFailure as exc:
++        raise exc.error
++    except _Unfinished as exc:reason=str(exc)
++    return {'schema':'receptor-family-observed-environment-prefix-v1',
++            'version':VERSION,'implementation_version':IMPLEMENTATION_VERSION,
++            'status':'PROPOSALS' if proposals else 'UNKNOWN','request':request,
++            'proposals':proposals,'binding_attempts':attempts,'rejected_bindings':rejected,
++            'inference_complete':False,'work':work.report(),'reason':reason,'flags':dict(FLAGS)}

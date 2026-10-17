@@ -1,0 +1,46 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_disclosure": "Reviewer authored4358/9fd/8f/ea300 ancestry and current family census engine5; coordinated fd3e wire and reviewed residual2. Controls authored this provider, old host/consumer and provider ancestry. This is distinct provider Source review, not self-review of engine or independent unrelated mathematics.",
+  "blockers": [
+    {
+      "finding": "The provider treats all producer SCOPE codes as malformed fatal errors. The unchanged producer _binding uses SCOPE with exact reason receptor family SCOPE: abstraction free external allowance for an ordinary failed residual-name binding. A complete candidate can bind declared allowed-external VARIABLE A to native name x while a receptor-inferred abstraction contains free native name y; both names and types are declared, but that candidate allowance fails. Later candidate A bound to y could satisfy it. Current infer rejection whitelist aborts the provider at the first failure instead of continuing the finite advisory prefix; the full-expansion classifier has the same missing distinction. This is Source reasoning about the public relation, not an executed fixture, inferred current path or proof claim.",
+      "id": "OBSERVED-BINDING-FREE-ALLOWANCE-1",
+      "lines": [
+        600,
+        603,
+        635,
+        638
+      ],
+      "required_repair": "Recognize only exact producer.DescriptorError with code SCOPE and full exact reason receptor family SCOPE: abstraction free external allowance as a well-formed advisory binding exclusion, in the recorded inference whitelist and full-expansion predicate. Preserve every other SCOPE/type/native/callback/guard error as fatal. Root authorized a separate V7, preserving this packet."
+    }
+  ],
+  "independent_static_audit": {
+    "bytes": 3563,
+    "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/independent-static-audit-v6.json",
+    "sha256": "0bf56f6a9ab42a52b06cfa9de590756bc9e437d8b876b321c9a599b7c9edf619"
+  },
+  "other_whole_review_findings": [
+    "Whole Source/API/current and operative parent contracts read; full source-ground expansion4358/roundtrip/original primitive admission remains separate from current inference and physical row assignment.",
+    "Physical plan built before either matching mode: equal floor per-record row trial quota, no redistribution, same full24 structural/strict-prior/sharing constraints; only local _AssignmentPrefix advances to next record. Source/check UNKNOWN, whole work/depth, native callback and true errors stay distinct.",
+    "Observed ports contain all hypotheses and actual assigned input/output formula marks only; absent inputs become derived conditional obligations. Full environment root forward check is followed by ordinary complete expansion4358/current original primitive preflight and fresh4bd6 full union. Physical source/occupancy and actual member keys are rebuilt current, never inherited source receipts.",
+    "Every successful preflight point rebuild enters global original/decorated full-preimage names before copy/legality/rejection/own-prefix. Entire report census survives no-offer/UNKNOWN; alternatives share identity ledger and never point unions.",
+    "Only exact pinned OutsideLanguage around current native primitive membership is an advisory member rejection. Source-ground native failures are fatal. Provider callback wrapper preserves native/tick error identity through producer nesting.",
+    "Inference mode starts empty and uses residual max-index-shell policy bindings after its initial empty entry, at most64 total attempts per assignment. F/T remains unenumerated; literal mode explicitly uses source env on the same planned layouts. No fallthrough to source env or candidate-domain authority."
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "observed-receptor-provider-independent-findings-v6",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope_limits": "No imports/evaluation of project modules/helpers, scientific functions, model/checker calls, enumeration, tests, clocks, actual/result/proofword/donor reads, actual grant or runtime/availability/benefit qualification.",
+  "source": {
+    "bytes": 54172,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+    "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+  },
+  "source_contract": {
+    "bytes": 9057,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v6.json",
+    "sha256": "a72651277fa05bd75193a932e24f3547bf7bafedc15f265c7f8230389b21f849"
+  },
+  "source_only": true
+}

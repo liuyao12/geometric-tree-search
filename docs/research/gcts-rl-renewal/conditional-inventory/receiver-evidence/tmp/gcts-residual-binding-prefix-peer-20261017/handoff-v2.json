@@ -1,0 +1,32 @@
+{
+  "findings": {
+    "bytes": 5895,
+    "path": "/private/tmp/gcts-residual-binding-prefix-peer-20261017/findings-v2.json",
+    "sha256": "9dc69bf2db59bfe1621d553dac928c06b470aad18664721e6036da6bb969c5ad"
+  },
+  "independent_static_audit": {
+    "bytes": 4378,
+    "path": "/private/tmp/gcts-residual-binding-prefix-peer-20261017/independent-static-audit-v2.json",
+    "sha256": "7872f7855eaabb3ffd9dc9fc79195338e009da7b53ce0c14c26f6b88ff444ee3"
+  },
+  "pass": true,
+  "review": {
+    "bytes": 2633,
+    "path": "/private/tmp/gcts-residual-binding-prefix-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "92109113eadf8388d38f5c9b16442d1d391dd1261b7ab951d60034bda6de06fe"
+  },
+  "schema": "residual-host-binding-prefix-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 12826,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+    "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479"
+  },
+  "source_contract": {
+    "bytes": 6252,
+    "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/Source-contract-v2.json",
+    "sha256": "3a72a8f14f323f0c719e4998332167dfee04f409d4938ea99d1673c96ee9a647"
+  },
+  "source_only": true
+}

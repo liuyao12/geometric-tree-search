@@ -1,0 +1,108 @@
+{
+  "actual_four_patch_directions": [
+    {
+      "bytes_exact": true,
+      "direction": "immediate forward",
+      "exit_code": 0,
+      "result": {
+        "bytes": 54448,
+        "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/raw-v7-immediate-forward.py",
+        "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "immediate full-inverse",
+      "exit_code": 0,
+      "result": {
+        "bytes": 54172,
+        "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/raw-v7-immediate-full-inverse.py",
+        "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "combined forward",
+      "exit_code": 0,
+      "result": {
+        "bytes": 54448,
+        "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/raw-v7-combined-forward.py",
+        "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+      },
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "bytes_exact": true,
+      "direction": "combined full-inverse",
+      "exit_code": 0,
+      "result": {
+        "bytes": 41642,
+        "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/raw-v7-combined-full-inverse.py",
+        "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+      },
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "immediate3_combined25_full_raw_AST_inverse": true,
+  "immediate_changed_regions": [
+    "build_family_batch",
+    "build_family_batch.semantic_descriptor_rejection",
+    "build_family_batch.infer"
+  ],
+  "immediate_named_regions_unchanged": 26,
+  "own_engine_ref_disclosed": {
+    "bytes": 92132,
+    "path": "/private/tmp/gcts-family-census-engine-source-20261017/receptor_family_search_engine_v6.py",
+    "sha256": "eab17f2f9d1a083f6e72be7db1b12a17ef0a407ba6a9b28ec5e1c0a33454a78a"
+  },
+  "parse_compile_without_evaluation": true,
+  "refs": {
+    "API": {
+      "bytes": 7243,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/API-wire-v7.json",
+      "sha256": "79e5c107fa870afe768a9577ddd207472cba2c4b230a2e45c69e77782ba073fd"
+    },
+    "source": {
+      "bytes": 54448,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+      "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+    },
+    "source_contract": {
+      "bytes": 9783,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v7.json",
+      "sha256": "dee233de9030c7baf9758a543b69aaa9bdeb86aec213fc27620918faabaa1f0a"
+    },
+    "source_delta": {
+      "bytes": 76403,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-delta-v7.json",
+      "sha256": "afaf81c2d9cc708636a4ffe7b306fb04d9262a54658197327f646511cb8d9ab7"
+    },
+    "static_audit": {
+      "bytes": 1531,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/static-audit-v7.json",
+      "sha256": "7ede78a10801d4ed9f9e257284f884bf9b19c9def24152c81302ce9570d23087"
+    }
+  },
+  "report26_request6_current_engine6_literal_joins": true,
+  "schema": "observed-receptor-provider-independent-static-audit-v7",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54448,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+    "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+  },
+  "source_contract": {
+    "bytes": 9783,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v7.json",
+    "sha256": "dee233de9030c7baf9758a543b69aaa9bdeb86aec213fc27620918faabaa1f0a"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "tests_executed": false
+}

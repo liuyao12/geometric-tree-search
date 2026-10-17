@@ -1,0 +1,49 @@
+{
+  "forward": {
+    "command": "patch -s -F0 <parent-byte-copy.py> <saved-forward.patch>",
+    "current_bytes_and_AST_exact": true,
+    "exit_code": 0,
+    "output": "",
+    "result": {
+      "bytes": 60281,
+      "path": "/private/tmp/gcts-observed-subset-v2-text-patch-check/forward.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+    }
+  },
+  "forward_patch": {
+    "bytes": 9045,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/expander-v1-to-v2.forward.patch",
+    "sha256": "32e7fa9a32e4c874e956b5e5fdd6588b2ba1137b0642328558216743023ff1da"
+  },
+  "inverse": {
+    "command": "patch -s -F0 <current-byte-copy.py> <saved-inverse.patch>",
+    "exit_code": 0,
+    "output": "",
+    "parent_bytes_and_AST_exact": true,
+    "result": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-observed-subset-v2-text-patch-check/inverse.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    }
+  },
+  "inverse_patch": {
+    "bytes": 9045,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/expander-v2-to-v1.inverse.patch",
+    "sha256": "bc80ea30349aeb627e9de22c8e00cf0baba26de44c360ccba4f810676b473721"
+  },
+  "parent": {
+    "bytes": 51898,
+    "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+    "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+  },
+  "schema": "receptor-family-observed-subset-actual-text-patch-evidence-v2",
+  "scientific_calls": 0,
+  "scope": "Actual Unix text patch operations on raw copies only, not scientific tests or execution.",
+  "source": {
+    "bytes": 60281,
+    "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+    "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+  },
+  "source_evaluated": false,
+  "source_only": true
+}

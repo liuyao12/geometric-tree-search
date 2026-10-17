@@ -1,0 +1,58 @@
+{
+  "changed_named_regions": [
+    "build_family_batch"
+  ],
+  "checks": {
+    "9_exact_raw_regions_and_whole_AST_inverse": true,
+    "AST_compile_without_evaluation": true,
+    "both_immediate_and_whole_parent_actual_patch_directions_F0": true,
+    "equal_floor_allocation_before_mode_matching_no_redistribution": true,
+    "nested_assignment_prefix_only_no_ownwork_native_error_catch": true,
+    "only_VERSION_constant_changed": true,
+    "only_build_family_batch_named_region_changed": true,
+    "original_trial_work_and_preflight_functions_raw_AST_exact": true,
+    "same_DEFAULT_LIMITS_FLAGS_report26_request6": true,
+    "source_ground_and_check_UNKNOWN_allocation_status_explicit": true,
+    "strict_total_trial_bound_quota_times_record_count_le_total": true
+  },
+  "project_module_imported_or_evaluated": false,
+  "schema": "observed-receptor-provider-static-v6",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 54172,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v6.py",
+    "sha256": "ba536c6738559f140c5e5bc33d03660c020d0925480909d9cf3bc186688791e0"
+  },
+  "source_delta": {
+    "bytes": 85652,
+    "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-delta-v6.json",
+    "sha256": "ba247a9012ce2710b4daf739e15a6a499e71e1acdc17abc202fbca3cbaf388c3"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    "ProviderDataError",
+    "ProviderDataError.__init__",
+    "_Unfinished",
+    "_AssignmentPrefix",
+    "_CallbackFailure",
+    "_CallbackFailure.__init__",
+    "require",
+    "canonical",
+    "digest",
+    "ascii_digest",
+    "fields",
+    "_Work",
+    "_Work.__init__",
+    "_Work.native",
+    "_Work.step",
+    "_Work.trial",
+    "_Work.copy",
+    "_key",
+    "_ready_checked",
+    "_ground_roundtrip",
+    "_constraints",
+    "_layout",
+    "_preflight"
+  ]
+}

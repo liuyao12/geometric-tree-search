@@ -1,0 +1,31 @@
+--- before
++++ after
+@@ -8,15 +8,16 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-observed-receptor-transfer-provider-v4'
++VERSION = 'receptor-family-observed-receptor-transfer-provider-v5'
+ RESULT_SCHEMA = 'receptor-family-observed-receptor-transfer-provider-v2'
+ BATCH_SCHEMA = 'receptor-family-primitive-preference-batch-v1'
+ MINER_VERSION = 'receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue'
+ PRODUCER_VERSION = 'receptor-family-typed-expander-v1'
+ PRODUCER_IMPLEMENTATION = 'receptor-family-observed-subset-inference-v2'
+-RESIDUAL_POLICY_VERSION = 'receptor-family-residual-host-binding-prefix-v1'
++RESIDUAL_POLICY_VERSION = 'receptor-family-residual-host-binding-prefix-v2-max-index-shells'
++RESIDUAL_POLICY_SCHEMA = 'receptor-family-residual-host-binding-prefix-v1'
+ MEMBERSHIP_VERSION = 'shared-bounded-six-rule-language-v2'
+-INFERENCE_BINDING_POLICY = 'EMPTY_PROBE_THEN_THEORY_NAMES_INTERLEAVED_V1'
++INFERENCE_BINDING_POLICY = 'EMPTY_PROBE_THEN_THEORY_NAMES_MAX_INDEX_SHELLS_V2'
+ LITERAL_BINDING_POLICY = 'EXPLICIT_MINED_ORIGIN_ENVIRONMENT_V1'
+ CHECKER_VERSION = 'receptor-family-independent-expansion-checker-v1'
+ ADAPTER_VERSION = 'receptor-family-six-rule-point-adapter-v3-physical-call-sharing'
+@@ -731,7 +732,7 @@
+                 host=work.copy(host), residual_parameters=work.copy(residual), tick=work.step,
+                 limits={'bindings': 64})
+             prefix = work.copy(prefix);attempt['residual_binding_prefix'] = prefix
+-            require(prefix['schema'] == RESIDUAL_POLICY_VERSION and prefix['version'] == RESIDUAL_POLICY_VERSION
++            require(prefix['schema'] == RESIDUAL_POLICY_SCHEMA and prefix['version'] == RESIDUAL_POLICY_VERSION
+                     and prefix['substitution_enumeration_complete'] is False and type(prefix['bindings']) is list
+                     and len(prefix['bindings']) <= 64, 'RESIDUAL_PROTOCOL', 'explicit bounded source-free name candidates')
+             if prefix['status'] == 'UNKNOWN':
