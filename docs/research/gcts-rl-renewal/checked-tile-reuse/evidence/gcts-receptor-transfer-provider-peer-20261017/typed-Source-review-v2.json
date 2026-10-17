@@ -1,0 +1,60 @@
+{
+  "schema": "receptor-family-receptor-transfer-provider-typed-Source-review-v2",
+  "scope": "receptor-family-receptor-transfer-provider-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/arithmetic_induction",
+  "source": {
+    "bytes": 41642,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+    "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/Source-contract-v2.json",
+    "sha256": "7e16bea8b04333e83b7cf5225ed7ddf83fcabac950d20a0ce75ee31efbfebd7b",
+    "bytes": 22587
+  },
+  "sources": {
+    "provider": {
+      "bytes": 41642,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+      "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+    }
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored independent expansion checker4358, independent marked verifier9fd/degree checker8f and ea300 point-adapter ancestry, and reviewed parent provider/miner/collector/consumer seams. Arithmetic authors this provider successor and producer/miner/native ancestry; Controls authored parent physical provider/host adapter/consumer and design806d. Shared wire/primitive/schema coordination is disclosed; this review is independent of the new provider author but is not self-independent certification or runtime reacceptance of inherited checker mathematics.",
+  "whole_source_operative_contract_API_design_reviewed": true,
+  "findings": {
+    "path": "/private/tmp/gcts-receptor-transfer-provider-peer-20261017/findings-v2.json",
+    "sha256": "f260375dc309f6f572f5b1f896804e89802b760c141d38b539f863c8f97e653d",
+    "bytes": 12039
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/handoff-v2.json",
+    "sha256": "d567fef6866910cd3988bc59d50b6e485463a0b1cc8bbc32b5e067d5ad124849",
+    "bytes": 4724
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-receptor-transfer-provider-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "afd7f300a9e1d3b6bcce912aed900de1f22c075b853d0e3722b67e3b1feab9c6",
+    "bytes": 8376
+  },
+  "independent_metadata_audit": {
+    "path": "/private/tmp/gcts-receptor-transfer-provider-peer-20261017/independent-metadata-audit-v2.json",
+    "sha256": "4e322e4eea49c30573955da26b8753f0c8f541a53b02a2161565b8ae3c0ad17a",
+    "bytes": 4743
+  },
+  "standalone_blockers": [],
+  "source_regions": 44,
+  "metadata_regions": 6,
+  "actual_patch_directions_verified": 4,
+  "preserved_exact_helper_class_regions": 13,
+  "scope_condition": "Standalone provider only. Mandatory V2 full provider-report-census versus complete engine-observed full-preimage join remains unimplemented and is required even on no-offer/UNKNOWN/prefix paths before future preference acceptance. New matched literal mode is not parent-prefix/runtime equivalence.",
+  "complete_composition_accepted": false,
+  "runtime_qualification_inherited": false,
+  "actual_execution_authorized": false,
+  "runtime_fit": "UNMEASURED"
+}

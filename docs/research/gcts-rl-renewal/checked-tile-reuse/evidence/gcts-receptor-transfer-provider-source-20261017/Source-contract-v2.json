@@ -1,0 +1,327 @@
+{
+  "API": {
+    "batch_exact_fields": [
+      "schema",
+      "status",
+      "binding",
+      "marking_id",
+      "state_sha256",
+      "decision",
+      "instances"
+    ],
+    "batch_schema": "receptor-family-primitive-preference-batch-v1",
+    "changed_compatibility": "Keyword addition has a new explicit default and Source/version. Historical callers omitting matching_mode now request visible transfer; this is not behavior equivalence or historical literal-prefix requalification. Root future matched arms must explicitly bind modes/current whole Source.",
+    "instance_exact_fields": [
+      "registry",
+      "family_id",
+      "host",
+      "substitution",
+      "port_bindings",
+      "proposal",
+      "row_assignment"
+    ],
+    "malformed_mode": "Exact str enum; ProviderDataError MATCHING_MODE propagates before proposal work.",
+    "matching_modes": [
+      "VISIBLE_RECEPTOR",
+      "LITERAL_GROUND"
+    ],
+    "report_schema": "receptor-family-receptor-transfer-provider-v1",
+    "return": "{batch,report}; only batch is fed to existing consumer. Report never confers authority.",
+    "row_assignment_schema": "receptor-family-six-rule-row-assignment-v1",
+    "signature": "build_family_batch(*,language,base_semantics,marked_semantics,producer,expansion_checker,host_adapter,mined,state,decision,tick,limits=None,matching_mode='VISIBLE_RECEPTOR')",
+    "unchanged_injected_versions": {
+      "ADAPTER_VERSION": "receptor-family-six-rule-point-adapter-v3-physical-call-sharing",
+      "CHECKER_VERSION": "receptor-family-independent-expansion-checker-v1",
+      "MINER_VERSION": "receptor-family-primitive-DAG-miner-v2-connected-cut-selection",
+      "POINT_VERSION": "unit-row-channel4-filtered-degree-semantics-v1",
+      "PRODUCER_VERSION": "receptor-family-typed-expander-v1"
+    },
+    "version": "receptor-family-visible-receptor-transfer-provider-v3",
+    "wire": {
+      "bytes": 2404,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/API-wire-v1.json",
+      "sha256": "463e4d554ccac00527b5c60ce6b35fd8dbee6f7bf3a5949d1b15322fb98e0447"
+    }
+  },
+  "Review_ABI": {
+    "required": [
+      "status",
+      "scientific_calls",
+      "author_overlap",
+      "whole Source/operative contract/API",
+      "raw/AST/actual patch inverses",
+      "findings and explicit runtime/conformance gaps"
+    ],
+    "schema": "receptor-family-receptor-transfer-provider-typed-Source-review-v2",
+    "scope": "receptor-family-receptor-transfer-provider-Source",
+    "source": {
+      "bytes": 41642,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+      "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+    },
+    "source_contract": "exact current Source-contract-v2.json capsule",
+    "sources": {
+      "provider": {
+        "bytes": 41642,
+        "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+        "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+      }
+    }
+  },
+  "Source_anchors": {
+    "_constraints": {
+      "end_line": 285,
+      "line": 260
+    },
+    "_ground_roundtrip": {
+      "end_line": 257,
+      "line": 130
+    },
+    "_key": {
+      "end_line": 113,
+      "line": 112
+    },
+    "_layout": {
+      "end_line": 295,
+      "line": 288
+    },
+    "_preflight": {
+      "end_line": 361,
+      "line": 298
+    },
+    "_ready_checked": {
+      "end_line": 127,
+      "line": 116
+    },
+    "ascii_digest": {
+      "end_line": 64,
+      "line": 61
+    },
+    "build_family_batch": {
+      "end_line": 670,
+      "line": 364
+    },
+    "canonical": {
+      "end_line": 54,
+      "line": 52
+    },
+    "digest": {
+      "end_line": 58,
+      "line": 57
+    },
+    "fields": {
+      "end_line": 68,
+      "line": 67
+    },
+    "require": {
+      "end_line": 49,
+      "line": 47
+    }
+  },
+  "actual_or_result_or_donor_or_proofword_reads": false,
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Author owns producer/miner/base and parent engine/checker ancestry, not original physical provider/host adapter/consumer. This is author Source evidence, not independent review.",
+  "binding_algorithm": {
+    "all_current_receptors": "At a complete physical assignment, bind every ordered root input from its current whole formula/source row, original selected full key or null, actual occupancy, fact_acceptedFalse; bind exact actual original Gamma occurrences; bind EVERY assigned exposed output jointly in descriptor order, including the anchored branch output. Other unmarked outputs are unconstrained until complete forward expansion/full final point-interface checks.",
+    "entry": "Only actual caller-engine global BRANCH is eligible. Shape validation is not scheduler authority. Fresh marked private_state + base_state + describe_host reconstruct and validate current state/authority, with actual branch t=0.",
+    "fresh_admission": "Independent 4358 recomputes the full current expansion. Require topology equality only. Then fresh native primitive membership, all actual ordered read offsets, full original/decorated tile rebuild, whole current and hypothetical point legality/union, all final input/node marks, per-alternative preflight and fresh 4bd6 adapter/4358/native full union. Only these new checked current packets can populate instances.",
+    "inference": "Existing f32e jointly infers first-order pattern parameters. A completed proposal must have a full exact declared environment and entire current registry/host/port request. Preserve full original/current environments and nonidentity_transfer literal comparison, not a generality/proof certificate.",
+    "initializer_difference": "VISIBLE_RECEPTOR passes exactly [{}] to f32e match_family. It never copies/appends source substitution as a fallback initializer. LITERAL_GROUND passes exactly [record.substitution]. Both use identical shared row/receptor enumeration and caps; literal mode is a new matched environment ablation, not the historical any-node/unmarked-input provider prefix.",
+    "order": "Supplied mined family order, then descriptor exposed output order, then complete input-then-topological-node ascending physical row domains. Every exposed output is anchored at actual BRANCH; no goal/formula/rule/source-node route is supplied. Strict-prior fixpoint constraints remove only impossible physical assignments, never native candidate alternatives.",
+    "sharing": "Root DISTINCT/ALLOW physical row policy is checked before matching and separately by producer/checker/adapter; repeated whole formulas/source identities remain exact. All call-frame physical sharing/capture/eigenvariable/Gamma conditions are still independently checked. No alternatives have their t/m unions merged.",
+    "source_ground": "Every reached record preserves its full descriptor/preimage/source substitution/source-port and cut maps. Expand original environment, independently check it, roundtrip every original node/argument/ordered edge/boundary/output, then native-check each conditional original primitive. This establishes neither source proof nor engine-generated origin. The full source receipts remain separate objects.",
+    "topology_only_reuse": "The source-independent checked layout retains flat primitive node IDs/rules/ordered refs/origins, root port IDs and exposed-output sources. No source formula or argument enters receiver row matching or is assumed true. Mined records remain flat primitive cuts with no FAMILY_CALL/dependencies, as parent; manually arbitrary nested registries are not a new supported input.",
+    "visible_current_formulas": "base.formula_at freshly decodes/validates every assigned current formula mark. Branch output must be assigned. Missing remains absent: a required input without a formula abstains for that advisory assignment; it is not a conflicting mark or canonical-domain exclusion."
+  },
+  "boundedness_and_errors": {
+    "bounds": "Same finite work/depth/input byte/record/row trial/instance caps apply in both modes. Domains span all24 original rows subject to actual strict-prior and source-sharing conditions. Bounds do not restrict the native language/universe; expensive prefixes may return UNKNOWN. All attempted/failed matching/validation/copying/native output remains in future Root cumulative20/512 window.",
+    "callback": "_Work passes the SAME cumulative Root native-first callback to producer/checker/adapter/native work, preserving callback errors through its _CallbackFailure wrapper. No clock, reset, cache, deadline extension or nth-tick equivalence guarantee.",
+    "exit_stability": "Full offered input/mode, whole state, language binding and independently described original host checked unchanged before return.",
+    "expected_matcher_rejections": [
+      "PORT_MISMATCH",
+      "OUTPUT_MISMATCH",
+      "UNBOUND_UNKNOWN"
+    ],
+    "limits": {
+      "depth": 128,
+      "input_bytes": 4194304,
+      "instances": 8,
+      "records": 16,
+      "row_trials": 256,
+      "work": 1000000
+    },
+    "own_prefix": "Only _Unfinished is converted to advisory finite-prefix reason; complete retained instances may still produce READY. Own copied input/record/callback interruption never creates an unfinished instance or full proof/degree claim.",
+    "point_rejections": "Only explicit actual sharing/strict-row/formula disagreement or standard whole_support_capacity/branch_excluded_complete_key/whole_remote_or_metadata_mark_conflict abstains for that physical assignment. Native membership failures are never converted to incompatibility. Already-selected reuse must be the same exact current key; alternative union state is never installed.",
+    "unexpected_matcher_rejection": "Any encoded scope/data/authority/other rejection raises ProviderDataError MATCH_REJECTION; no silent generic invalid-data gap. Malformed matcher protocol raises fail-closed data error. Native/callback/guard/collision/other direct errors propagate; no ValueError catch or message-based negative inference."
+  },
+  "design": {
+    "bytes": 20534,
+    "path": "/private/tmp/gcts-proof-search-next-step-source-20261017/next-step-design-v1.json",
+    "sha256": "806d561076fa0727b431d29283e33c528147e7cdffa64f2218c9f6f4f176cdf1"
+  },
+  "evidence": {
+    "API": {
+      "bytes": 2404,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/API-wire-v1.json",
+      "sha256": "463e4d554ccac00527b5c60ce6b35fd8dbee6f7bf3a5949d1b15322fb98e0447"
+    },
+    "actual_forward_patch": {
+      "bytes": 44320,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/source-forward.patch",
+      "sha256": "a3f37d808f49e4f370a2bb51cd36c454323a04a193b3c25562e88e0cb5d5c58b"
+    },
+    "actual_inverse_patch": {
+      "bytes": 44320,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/source-full-inverse.patch",
+      "sha256": "6c8de428e6254a5e945b14f3d0ae6ac8a4820c932bba0ffedb9803805874e674"
+    },
+    "delta": {
+      "bytes": 50180,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/Source-delta-v1.json",
+      "sha256": "a6cbf89583cc70189cb697e5b9fed64efa91cba59c3c5d8935fa66127222012c"
+    },
+    "static": {
+      "bytes": 2689,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/static-audit-v1.json",
+      "sha256": "7aa8846aab8839827e9611898bc616915499f972a0253237c0a3e5f6235d2711"
+    }
+  },
+  "flags": {
+    "RL_accepted": false,
+    "degree_or_EOF_accepted": false,
+    "engine_activated": false,
+    "fact_accepted": false,
+    "matching_complete": false,
+    "proof_accepted": false,
+    "proposal_only": true,
+    "pruning_accepted": false,
+    "runtime_qualified": false,
+    "scheduler_accepted": false,
+    "trajectory_accepted": false
+  },
+  "future_negative_and_control_obligations": [
+    "Fresh automatic connected inventory with repeated-fragment variant, independently admitted origin conditional DAG; no handwritten route/selected node proof.",
+    "At least one fully current nonidentity inferred environment with >=2 distinct native member keys/internal edge; literal-ground matched mode on the SAME predeclared inventory, allocation/limits/current context and all full costs.",
+    "Missing branch/root input receptor => UNKNOWN advisory; repeated conflicting input/output receptors, nonpattern or residual parameters => no completed offer; native malformed witness/collision/guard/timeout propagates.",
+    "Forged origin cut/boundary/output mapping, changed original binding/host, source receipt substituted for current receipt, mismatched current environment/request or topology => fail closed.",
+    "Distinct/ALLOW repeated physical source tests, capture/eigen/Gamma side conditions and full native final interface; copied key/digest without equal full preimage rejected across selected/excluded/offered and engine-observed census.",
+    "Point-illegal assignment discarded only as hint; canonical fallback/degrees/EOF/exclusions/global decision unchanged; chosen primitive continuation/invalidations and exact owned rollback need current engine qualification.",
+    "No combined20 claim if discovery and transfer use separate declared windows; count full discovery/catalogue/failed matching/check/import/model/output costs and UNKNOWN honestly. No actual granted here."
+  ],
+  "mandatory_future_census_join": {
+    "comparison": "One common full ID-to-literal-preimage ledger. Parse provider canonical preimage strings with the existing ensure_ascii=False convention, require full literal canonical equality on repeated IDs; do not assume digest injectivity, generate replacement IDs, or merge alternative t/m unions",
+    "complete_composition_accepted": false,
+    "current_engine3_READY_check_sufficient": false,
+    "engine_side": "Complete actual public/fresh engine-observed original and decorated full ID/type-preimage inventory, together with selected/excluded/current/offered full identities where applicable",
+    "errors": "Collision/malformed-data/native/guard failures propagate; do not prune, suppress, or convert them to ordinary no-match",
+    "implemented_here": false,
+    "no_offer": "An empty/UNKNOWN batch is not an exemption. Available rejected/preflight/prefix identities still require collision comparison before caller regards this provider attempt as safe for preference integration",
+    "provider_side": "Entire report.prototype_census, including current selected/excluded plus ALL reached preflight/adapted original+decorated type identities, whether candidate/assignment/offer survives or not",
+    "reference_only": "Earlier connected bridgeV2 public-census precedent is design guidance, not current composed Source/runtime qualification",
+    "required_before": "ANY preference acceptance; including no-retained-offer and own finite-prefix/UNKNOWN paths"
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "metadata_revision": {
+    "API_code_changed": false,
+    "Source_code_changed": false,
+    "kind": "METADATA_ONLY_INTEGRATION_OBLIGATION_CLARIFICATION",
+    "parent_handoff": {
+      "bytes": 3410,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/handoff-v1.json",
+      "sha256": "3db25eeeeae4d0f03a71af06605b61e066b4e416053c64c8ef4ba378c231ec8d"
+    },
+    "parent_source_contract": {
+      "bytes": 19696,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/Source-contract-v1.json",
+      "sha256": "93d1e662c66d7dc67335751b86b64f71b4e8c07142011dac7a7dada2e932ae4f"
+    },
+    "preserved": "All V1 Source/API/delta/static/patch records remain immutable. The current23da provider remains standalone Source-only, with no complete integration or runtime acceptance.",
+    "reason": "Root and distinct reviewer Diagnosis identified that engine3 READY-only census does not cover every exposed type retained by standalone provider report",
+    "science_executed": false
+  },
+  "module_import_or_evaluation": false,
+  "parent_contract": {
+    "bytes": 12960,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/Source-contract-v2.json",
+    "sha256": "22e7dbb7f23bd8c8b224c7a7ebe0c5d0716f682bd6c306a9e5a48a7d72022b2c"
+  },
+  "parent_source": {
+    "bytes": 37272,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+    "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+  },
+  "preserved_and_unqualified": {
+    "composition": "point_reference ea300 documents a reviewed public API. Family engine3 still has its independently pinned a197 composition. This packet does NOT silently compose ea300 or newer prospective adapter4 into that engine, inherit baseline controls, or authorize any engine activation.",
+    "not_certified": "No generalized universal lemma, root/source proof, target theorem/route, new redundant marking/pruning, degree/EOF, search completeness, scheduler trajectory, RL, family availability/nonidentity occurrence or performance/fit acceptance.",
+    "original_model": "Original Source17/input2/theory/Gamma/epoch/B12N44/24rows/six-rule inventory remains frozen. A future executable Source map separately adds this module; no model epoch rebasing.",
+    "same_prefix_caveat": "Modes share the new physical allocation/limits but may reach different work/native boundaries because matching/admission costs and successful instance caps differ. Whole runtime/output/tick/error-trace equivalence is not asserted.",
+    "unchanged_system": "No producer/checker/host adapter/miner/consumer/engine/point/current cold/native framework/publication code is edited. Existing public math VERSION gates are not evidence of a composed Source qualification."
+  },
+  "retention_and_reports": {
+    "census": "One names ledger starts with actual selected/excluded full original+decorated type identities and accumulates every freshly rebuilt preflight/adapted member, including candidates later rejected by current/hypothetical point legality. Family IDs also require full preimage equality; digest injectivity is never assumed.",
+    "engine_observed": "MANDATORY FUTURE INTEGRATION GAP: Before accepting ANY preference, the future caller/composition must compare the FULL report.prototype_census against the COMPLETE actual engine-observed original AND decorated ID/full-preimage census. Include provider-rejected/preflight exposures and every retained partial-prefix exposure, not only READY members or offered instances. Perform this join even when no offer is retained or batch.status is UNKNOWN. The unchanged engine3 _consume_family READY-member census alone is insufficient. The standalone provider has no access to the engine ledger and this Source packet does not implement or qualify that missing composition join.",
+    "full_current": "matches retain full assignment, current ordered receptors/source keys/occupancy, initial binding and matcher output; accepted attempts add inferred_substitution/nonidentity_transfer. checks/preflights/adaptations retain whole independent current expansion/native membership/tiles/point union. Offers retain indices and full inferred substitution.",
+    "full_origin": "report.request retains the whole supplied untrusted mined/state/decision/mode input; per-record source_ground_proposal/source_ground_check/source_roundtrip/source_native_membership retain all source data. No origin assertion is native verification authority.",
+    "no_atomic_install": "Batch contains ordinary preferences only. Consumer d680 freshly checks ALL offered instances/current provenance and returns only one legal member after actual global BRANCH; engine canonical search/propagation/rollback remains separate."
+  },
+  "schema": "receptor-family-receptor-transfer-provider-Source-contract-v2",
+  "scientific_calls": 0,
+  "scope": "receptor-family-receptor-transfer-provider-Source",
+  "source": {
+    "bytes": 41642,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+    "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+  },
+  "sources": {
+    "base_semantics": {
+      "bytes": 27553,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "consumer": {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    },
+    "expansion_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "family_engine_reference": {
+      "bytes": 76668,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_search_engine_v3.py",
+      "sha256": "3da1f4e2ad5a3be82bc49a67724dab07fe75526a6a3f05e105f5271fdbf10025"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "miner": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "point_reference": {
+      "bytes": 29316,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e"
+    },
+    "producer": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "provider": {
+      "bytes": 41642,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+      "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+    }
+  },
+  "status": "FROZEN_SOURCE_ONLY_UNMEASURED_PROSPECTIVE_COMPONENT"
+}

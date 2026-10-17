@@ -337,6 +337,26 @@
     [
       "Previous attempts",
       "previous"
+    ],
+    [
+      "Unexecuted receptor-transfer provider source",
+      "future-provider"
+    ],
+    [
+      "Provider scope and mandatory integration gap",
+      "future-contract"
+    ],
+    [
+      "Provider Source-only handoff",
+      "future-handoff"
+    ],
+    [
+      "Separate standalone provider Source review",
+      "future-peer"
+    ],
+    [
+      "Detailed Source findings and future controls",
+      "future-findings"
     ]
   ],
   "last_observations": {
@@ -364,6 +384,11 @@
     "contract": "evidence/gcts-all-checked-discovery-ROOT-source-20261017/Source-contract-v1.json",
     "diagnostic": "evidence/gcts-all-checked-discovery-ROOT-20261017/CD-all-checked-owned-v1/unknown-diagnostic.json",
     "disposition": "evidence/gcts-all-checked-discovery-ROOT-20261017/ROOT-disposition-v1.json",
+    "future-contract": "evidence/gcts-receptor-transfer-provider-source-20261017/Source-contract-v2.json",
+    "future-findings": "evidence/gcts-receptor-transfer-provider-peer-20261017/findings-v2.json",
+    "future-handoff": "evidence/gcts-receptor-transfer-provider-source-20261017/handoff-v2.json",
+    "future-peer": "evidence/gcts-receptor-transfer-provider-peer-20261017/typed-Source-review-v2.json",
+    "future-provider": "evidence/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
     "memo-disposition": "../negative-memo-discovery/evidence/gcts-negative-memo-discovery-ROOT-20261017/ROOT-disposition-v1.json",
     "native": "evidence/gcts-all-checked-discovery-ROOT-20261017/CD-all-checked-external-v1/native-terminal.json",
     "original-disposition": "../connected-family-discovery/evidence/gcts-connected-discovery-ROOT-20261017/ROOT-disposition-v1.json",
@@ -392,6 +417,14 @@
     "current_source_count": 16,
     "executable_adapter_changed": true,
     "failure_cause_established": false,
+    "future_provider": {
+      "Root_whole_provider_code_review_pending": true,
+      "full_provider_engine_census_join_implemented": false,
+      "runtime_qualified": false,
+      "scope": "Current receptors infer a new environment; literal-ground mode is a matched ablation. Full census join, integration, automatically generated connected inventory and fresh negative/runtime controls remain required.",
+      "status": "SOURCE_ONLY_STANDALONE_REVIEWED_UNEXECUTED",
+      "used_in_this_actual": false
+    },
     "latest_entries_are_active_failure_frame": false,
     "mathematical_model_and_scheduler_changed": false,
     "memo_counters_returned": false,

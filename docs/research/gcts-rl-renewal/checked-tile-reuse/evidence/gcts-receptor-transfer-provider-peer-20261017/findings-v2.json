@@ -1,0 +1,166 @@
+{
+  "schema": "receptor-transfer-provider-independent-findings-v2",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "scope": "receptor-family-receptor-transfer-provider-Source",
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/arithmetic_induction",
+  "source": {
+    "bytes": 41642,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+    "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/Source-contract-v2.json",
+    "sha256": "7e16bea8b04333e83b7cf5225ed7ddf83fcabac950d20a0ce75ee31efbfebd7b",
+    "bytes": 22587
+  },
+  "preserved_contract_v1": {
+    "bytes": 19696,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/Source-contract-v1.json",
+    "sha256": "93d1e662c66d7dc67335751b86b64f71b4e8c07142011dac7a7dada2e932ae4f"
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/handoff-v2.json",
+    "sha256": "d567fef6866910cd3988bc59d50b6e485463a0b1cc8bbc32b5e067d5ad124849",
+    "bytes": 4724
+  },
+  "source_only": true,
+  "whole_source_operative_contract_API_design_read": true,
+  "findings": [
+    {
+      "id": "RT01",
+      "status": "NO_STANDALONE_BLOCKER",
+      "lines": [
+        364,
+        416,
+        480,
+        523
+      ],
+      "finding": "VISIBLE_RECEPTOR supplies exactly one empty initializer; LITERAL_GROUND supplies exactly one full source environment. Both execute the same exposed-output anchor ordering, full24 structural strict-prior allocation, row trial/record/work/instance caps and current receptor construction. The new default and matched literal control deliberately change the historical provider prefix; they are not byte/tick/prefix or runtime-equivalent to parentf4a9. Matching costs and successful-instance caps can produce different reached prefixes between arms."
+    },
+    {
+      "id": "RT02",
+      "status": "NO_STANDALONE_BLOCKER",
+      "lines": [
+        384,
+        416,
+        464,
+        518
+      ],
+      "finding": "Full marked state and separately original state/host are freshly checked. Branch row must be unoccupied and have an actual assigned output formula; real global BRANCH authority remains external. Every ordered root input comes from a current assigned whole formula, physical row, exact original selected key or null, actual occupancy and factFalse. Actual original Gamma occurrences and every assigned exposed output are supplied jointly; missing required receptors abstain without inserting marks or facts. Unmarked/internal interfaces can leave residual inference UNKNOWN; no inverse-search completeness is promised."
+    },
+    {
+      "id": "RT03",
+      "status": "NO_STANDALONE_BLOCKER",
+      "lines": [
+        418,
+        473,
+        501,
+        568
+      ],
+      "finding": "Source-ground expansion/check/native memberships and full cut/edge/boundary/output roundtrip remain distinct from current inference. Source formulas/arguments are not receiver row constraints: only independently checked flat topology is reused. Current request must bind complete declared environment, registry/host/all-port data; literal mode additionally equals the origin environment. Fresh4358 independently rebuilds the current expansion, and complete topology is compared before native point preflight. Source receipts are not transferred mathematical authority."
+    },
+    {
+      "id": "RT04",
+      "status": "NO_STANDALONE_BLOCKER",
+      "lines": [
+        260,
+        361,
+        619,
+        639
+      ],
+      "finding": "Row domains span all original24 rows subject to structural strict-prior constraints, then actual physical root DISTINCT/ALLOW sharing. Full current native witnesses/premises, marked rebuilds, whole present-state and hypothetical t/m legality, selected-key reuse/dedup and every final assigned interface are checked. Each assignment has a separate point union. Fresh4bd6 adaptation repeats independent/native/whole-union work; exact member-key order and a new legal branch-row member are required. No atomic placement, schedule change, degree, EOF or base-universe restriction is introduced."
+    },
+    {
+      "id": "RT05",
+      "status": "NO_STANDALONE_BLOCKER",
+      "lines": [
+        313,
+        361,
+        594,
+        669
+      ],
+      "finding": "One provider names ledger begins with checked selected/excluded original+decorated identities and accumulates every reached full preflight tile before point-legality rejection, plus accepted adapter members. Its full canonical preimages survive in report.prototype_census even for rejected alternatives or an own-prefix interruption after a tile was checked. Alternatives never merge their t/m arrays. Family full-preimage collision identity is separately checked; no digest injectivity assumption is needed."
+    },
+    {
+      "id": "RT06",
+      "status": "MANDATORY_FUTURE_INTEGRATION_GAP",
+      "lines": [
+        664,
+        669
+      ],
+      "finding": "The standalone API has no complete engine-observed ledger input. Engine3 checking only READY offered members does not compare provider-rejected/preflight/prefix exposures against prior native degree/fallback exposures. ContractV2 now explicitly requires the ENTIRE report.prototype_census to join the COMPLETE current engine-observed original+decorated ID/full-preimage inventory before ANY preference acceptance, including no-offer/UNKNOWN paths. Exact canonical full-string equality, selected/excluded/current/offered identities and failure propagation are required. This join is not implemented or qualified by this packet; bridgeV2 is precedent only."
+    },
+    {
+      "id": "RT07",
+      "status": "NO_STANDALONE_BLOCKER",
+      "lines": [
+        72,
+        108,
+        519,
+        545,
+        641,
+        670
+      ],
+      "finding": "Only own finite _Unfinished prefixes become advisory bounded reasons; partial instances cannot be appended. Native/callback/guard/collision/malformed failures propagate, with original callback error unwrapped. Matcher PORT_MISMATCH/OUTPUT_MISMATCH/UNBOUND_UNKNOWN allow no completed offer; unexpected encoded scope/data errors fail closed through MATCH_REJECTION. There is no generic ValueError catch or error-as-point-conflict conversion. Whole input/mode, full binding/state and independently described host are checked stable before return."
+    },
+    {
+      "id": "RT08",
+      "status": "SCOPE_LIMITATION",
+      "lines": [
+        11,
+        29,
+        655,
+        670
+      ],
+      "finding": "Ordinary seven-field BATCH/instance wires remain preference-only; caller sends batch rather than report to d680. Full whole-batch consumer/native revalidation and one primitive selection after actual global BRANCH remain necessary. Source-generated conditional expansions are not universal lemmas or proofs. Current code edits no producer/checker/miner/consumer/engine/point/cold model, changes no original17/input2 epoch and supplies no activation, fallback, continuation, rollback or performance qualification."
+    }
+  ],
+  "standalone_blockers": [],
+  "required_future_integration_gap": {
+    "comparison": "One common full ID-to-literal-preimage ledger. Parse provider canonical preimage strings with the existing ensure_ascii=False convention, require full literal canonical equality on repeated IDs; do not assume digest injectivity, generate replacement IDs, or merge alternative t/m unions",
+    "complete_composition_accepted": false,
+    "current_engine3_READY_check_sufficient": false,
+    "engine_side": "Complete actual public/fresh engine-observed original and decorated full ID/type-preimage inventory, together with selected/excluded/current/offered full identities where applicable",
+    "errors": "Collision/malformed-data/native/guard failures propagate; do not prune, suppress, or convert them to ordinary no-match",
+    "implemented_here": false,
+    "no_offer": "An empty/UNKNOWN batch is not an exemption. Available rejected/preflight/prefix identities still require collision comparison before caller regards this provider attempt as safe for preference integration",
+    "provider_side": "Entire report.prototype_census, including current selected/excluded plus ALL reached preflight/adapted original+decorated type identities, whether candidate/assignment/offer survives or not",
+    "reference_only": "Earlier connected bridgeV2 public-census precedent is design guidance, not current composed Source/runtime qualification",
+    "required_before": "ANY preference acceptance; including no-retained-offer and own finite-prefix/UNKNOWN paths"
+  },
+  "required_future_controls": [
+    "Essential fresh availability: automatically obtained connected/repeated-fragment inventory; at least one nonidentity current inferred environment, at least two distinct physical member keys and an actual internal edge. Missing availability or exhausted caps stays UNKNOWN, never a fabricated route or pass.",
+    "Both explicitly selected modes must receive the same frozen inventory/state/tie/limits/row allocation and pay discovery/catalogue/source-ground/inference/independent/native/union/output costs; do not treat this new literal ablation as historical parent outcome or equal reached work.",
+    "Absent branch or root-input receptor, conflicting simultaneous repeated input/output receptors, residual/nonpattern bindings: no completed offer; malformed mode/request/origin/host/cut/edges/output/preimage and unexpected errors fail closed.",
+    "Actual Gamma occurrence, lexical capture/eigenvariable scope, DISTINCT versus ALLOW shared physical rows, full original selected-source keys/occupancy/factFalse, current selected/excluded/membership/mark agreement and dedup need meaningful fresh positive/negative controls.",
+    "Whole report names must include offered/rejected/preflight and own-prefix exposures. Fresh integration must compare all of them with complete observed/selected/excluded engine types before acceptance even if the batch is empty, with copied/preimage disagreement failing closed. No private hook, replacement ID or cross-alternative point union.",
+    "Actual global DEAD/FORCED/earliest-generation gate, unchanged canonical fallback/current EOF and selected continuation invalidation/owned rollback remain separate current engine qualifications. A standalone BRANCH-shaped packet or component success cannot establish them.",
+    "No actual result, target/donor proofword, inventory instance or theorem route was read in this review. No fit, speedup, generality, GCTS/RL or source-history acceptance can be inferred."
+  ],
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-receptor-transfer-provider-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "afd7f300a9e1d3b6bcce912aed900de1f22c075b853d0e3722b67e3b1feab9c6",
+    "bytes": 8376
+  },
+  "metadata_audit": {
+    "path": "/private/tmp/gcts-receptor-transfer-provider-peer-20261017/independent-metadata-audit-v2.json",
+    "sha256": "4e322e4eea49c30573955da26b8753f0c8f541a53b02a2161565b8ae3c0ad17a",
+    "bytes": 4743
+  },
+  "source_edit_regions": 44,
+  "metadata_edit_regions": 6,
+  "actual_patch_directions_verified": 4,
+  "unchanged_parent_helper_class_regions_raw_AST": 13,
+  "review_limits": "Standalone conditional/current instance validation only. Reused producer/native/independent-checker mathematics is not newly executed. Original model/raw authority and current dependency pins require a fresh composed caller; no current engine observed-census join, runtime or activation is accepted.",
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "complete_composition_accepted": false,
+  "engine_qualified": false,
+  "actual_execution_authorized": false,
+  "clock_calls": 0,
+  "project_or_helper_evaluation": false,
+  "tests_run": false,
+  "actual_result_proofword_donor_inventory_reads": false,
+  "runtime_fit": "UNMEASURED"
+}

@@ -1,0 +1,102 @@
+{
+  "API": {
+    "bytes": 2404,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/API-wire-v1.json",
+    "sha256": "463e4d554ccac00527b5c60ce6b35fd8dbee6f7bf3a5949d1b15322fb98e0447"
+  },
+  "Review_ABI": {
+    "required": [
+      "status",
+      "scientific_calls",
+      "author_overlap",
+      "whole Source/operative contract/API",
+      "raw/AST/actual patch inverses",
+      "findings and explicit runtime/conformance gaps"
+    ],
+    "schema": "receptor-family-receptor-transfer-provider-typed-Source-review-v2",
+    "scope": "receptor-family-receptor-transfer-provider-Source",
+    "source": {
+      "bytes": 41642,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+      "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+    },
+    "source_contract": "exact current Source-contract-v2.json capsule",
+    "sources": {
+      "provider": {
+        "bytes": 41642,
+        "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+        "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+      }
+    }
+  },
+  "actual_forward_patch": {
+    "bytes": 44320,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/source-forward.patch",
+    "sha256": "a3f37d808f49e4f370a2bb51cd36c454323a04a193b3c25562e88e0cb5d5c58b"
+  },
+  "actual_inverse_patch": {
+    "bytes": 44320,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/source-full-inverse.patch",
+    "sha256": "6c8de428e6254a5e945b14f3d0ae6ac8a4820c932bba0ffedb9803805874e674"
+  },
+  "delta": {
+    "bytes": 50180,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/Source-delta-v1.json",
+    "sha256": "a6cbf89583cc70189cb697e5b9fed64efa91cba59c3c5d8935fa66127222012c"
+  },
+  "design": {
+    "bytes": 20534,
+    "path": "/private/tmp/gcts-proof-search-next-step-source-20261017/next-step-design-v1.json",
+    "sha256": "806d561076fa0727b431d29283e33c528147e7cdffa64f2218c9f6f4f176cdf1"
+  },
+  "metadata_delta": {
+    "bytes": 7068,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/metadata-delta-v2.json",
+    "sha256": "1e0ccebda1ee7e81c073591bcf0ce5b07697c918fc9ee8289ded0ddbb10256ef"
+  },
+  "metadata_forward_patch": {
+    "bytes": 6841,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/metadata-forward-v2.patch",
+    "sha256": "9de209755aed8e316295c9de4784a66f5e2cff6f6b27b3b3ad4753fba9465b9b"
+  },
+  "metadata_inverse_patch": {
+    "bytes": 6841,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/metadata-full-inverse-v2.patch",
+    "sha256": "05da30acb05fb1a68cc1b8c13acb18e97ff12d70c6ae4613c001cc3a10183e7f"
+  },
+  "metadata_static": {
+    "bytes": 1442,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/static-metadata-audit-v2.json",
+    "sha256": "7bf3bfba7fa6f4beb35b9bdf3079ba3484101781320e43db52516faa022152eb"
+  },
+  "parent_handoff": {
+    "bytes": 3410,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/handoff-v1.json",
+    "sha256": "3db25eeeeae4d0f03a71af06605b61e066b4e416053c64c8ef4ba378c231ec8d"
+  },
+  "parent_source": {
+    "bytes": 37272,
+    "path": "/private/tmp/gcts-connected-miner-source-20261017/mined_family_physical_provider_v2.py",
+    "sha256": "f4a9e44d859082b5e1cb6641ef3ca740f5e9746a557e04cfd3dd620aa6641e07"
+  },
+  "qualification": "None; standalone Source code23da unchanged. Mandatory full report-census to complete engine-observed original/decorated preimage join is still future integration work, including no-offer/UNKNOWN/prefix paths. Engine3 READY-only comparison is insufficient; no composed acceptance or actual granted.",
+  "schema": "receptor-family-receptor-transfer-provider-handoff-v2",
+  "scientific_calls": 0,
+  "scope": "receptor-family-receptor-transfer-provider-Source",
+  "source": {
+    "bytes": 41642,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+    "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+  },
+  "source_contract": {
+    "bytes": 22587,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/Source-contract-v2.json",
+    "sha256": "7e16bea8b04333e83b7cf5225ed7ddf83fcabac950d20a0ce75ee31efbfebd7b"
+  },
+  "static": {
+    "bytes": 2689,
+    "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/static-audit-v1.json",
+    "sha256": "7aa8846aab8839827e9611898bc616915499f972a0253237c0a3e5f6235d2711"
+  },
+  "status": "FROZEN_SOURCE_ONLY_READY_FOR_DISTINCT_REVIEW"
+}

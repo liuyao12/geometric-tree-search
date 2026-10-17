@@ -335,6 +335,36 @@
       "path": "evidence/gcts-all-checked-discovery-ROOT-20261017/CD-all-checked-external-v1/postterminal-probe-stdout.txt",
       "sha256": "6bfca23cdf99c783bf68881b55a31e473fa93549eb27116b55156ab032127404",
       "source_path": "/private/tmp/gcts-all-checked-discovery-ROOT-20261017/CD-all-checked-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 41642,
+      "path": "evidence/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+      "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa",
+      "source_path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py"
+    },
+    {
+      "bytes": 22587,
+      "path": "evidence/gcts-receptor-transfer-provider-source-20261017/Source-contract-v2.json",
+      "sha256": "7e16bea8b04333e83b7cf5225ed7ddf83fcabac950d20a0ce75ee31efbfebd7b",
+      "source_path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 4724,
+      "path": "evidence/gcts-receptor-transfer-provider-source-20261017/handoff-v2.json",
+      "sha256": "d567fef6866910cd3988bc59d50b6e485463a0b1cc8bbc32b5e067d5ad124849",
+      "source_path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 3363,
+      "path": "evidence/gcts-receptor-transfer-provider-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "3e3c5986140396c8c8b30011928a7c750d0ac082064fa43d5df863124c42a3b0",
+      "source_path": "/private/tmp/gcts-receptor-transfer-provider-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 12039,
+      "path": "evidence/gcts-receptor-transfer-provider-peer-20261017/findings-v2.json",
+      "sha256": "f260375dc309f6f572f5b1f896804e89802b760c141d38b539f863c8f97e653d",
+      "source_path": "/private/tmp/gcts-receptor-transfer-provider-peer-20261017/findings-v2.json"
     }
   ],
   "raw_bytes_preserved": true,
