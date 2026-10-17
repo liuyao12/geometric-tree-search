@@ -1,0 +1,86 @@
+{
+  "author_overlap": "Reviewer authored checker4358 and older9fd6/8f7a/advice/control components, coordinated wire and reviewed producer/cases. Reviewer did not author this saved helper; review is distinct raw Source/ABI/transport consistency, not reacceptance of own component mathematics.",
+  "closed_findings": [
+    {
+      "finding": "Plan and bracket each have one bounded retained raw buffer used both for decode and raw hash/byte pins. Readout stores those same-buffer references; no second independent pin read.",
+      "id": "RF-SAVED-SAME-BUFFER-1"
+    },
+    {
+      "finding": "Envelope now requires exactly the seven standard fields and canonical JSON+LF; validated base64 bytes must re-encode to the exact supplied string. Original bounded single zlib EOF/no tails/no flush and full compressed/expanded hash/byte joins remain unchanged.",
+      "id": "RF-SAVED-ENVELOPE-WIRE-1"
+    },
+    {
+      "finding": "Nonzero-exit stdout is kept as the bounded opaque native-evidence capsule, never decoded as a positive final. Zero qualification, resource false, no cause inference and no owned-output acceptance remain unchanged.",
+      "id": "RF-SAVED-FAILURE-STDOUT-1"
+    }
+  ],
+  "concrete_blockers": [],
+  "pins": {
+    "delta": {
+      "bytes": 3448,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-delta-v2.json",
+      "sha256": "ec44494f5f3f0e5c30b6a9d9abcce93809a18d7999fd7a11a90f2fcc3bdfd292"
+    },
+    "handoff": {
+      "bytes": 916,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-handoff-v2.json",
+      "sha256": "b3d42d41ae5c412b486dca0488464ce2870b51980567820d3a9a814bb47afae3"
+    },
+    "preserved_negative": {
+      "bytes": 2097,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "fb8bcc8d70d76fcfbe05de21ecc015d392679487447b15e88e85d4d4bc3292e9"
+    },
+    "raw_evidence": {
+      "bytes": 5277,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/raw-evidence-v2.json",
+      "sha256": "7302f42721e79a6091ad84dcacd1c68282bff47b01dd9b0dd27f90a297be056a"
+    },
+    "source": {
+      "bytes": 19885,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+      "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+    },
+    "source_contract": {
+      "bytes": 3259,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v2.json",
+      "sha256": "84b18bdfb6252b6d002770cc59487aa5e796158b182a42ac4434570a5a87c918"
+    }
+  },
+  "schema": "ROOT-receptor-family-component-saved-independent-findings-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+    "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+  },
+  "source_contract": {
+    "bytes": 3259,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v2.json",
+    "sha256": "84b18bdfb6252b6d002770cc59487aa5e796158b182a42ac4434570a5a87c918"
+  },
+  "source_only": true,
+  "whole_review": [
+    {
+      "finding": "Whole current Source/contract read. Six literal replacements, full forward/reverse byte recovery, both actual unified patch applications and whole AST inverse independently verified. Fourteen of15 function regions raw/AST exact; only main changed. Eight Source/contract/delta/patch capsules authenticated; no actual output read.",
+      "topic": "Raw delta and metadata"
+    },
+    {
+      "finding": "Unchanged fixed invocation/purpose, current caller contract, plan/grant/review pair/once/session/runtime argv/pid/exit/native clock ordering/probe/peak512/Date60/caller90+1/failure55 conditions reviewed. Current18/input9 maps and original17/input2/binding remain separate. Positive requires zero exit, full native launch-to-postprobe below20s and complete wire.",
+      "topic": "Native and authority joins"
+    },
+    {
+      "finding": "Unchanged stdout canonical oneLF, response canonical2LF/body checksum, current caller response/version/Source/input/binding/limits, exact owned2 files, envelope4MiB/expanded16MiB limits and complete expanded canonical payload join reviewed. Current repaired cases VERSION and12 ordered PASSED records/flags, five original native paths/empty-Gamma assumption limitation, conditional expansion full offered/rebuilt packets and local-cluster state metadata retain original scope.",
+      "topic": "Output and case concordance"
+    },
+    {
+      "finding": "This helper reconciles bytes and assertions already executed under the source-authenticated native actual. It performs no mathematical replay and is not an independent theorem/point/engine verifier. Failure qualification stays0; positive component acceptance is limited to12 infrastructure cases. Historical engine8/12 stays unchanged, and theorem/target/search/scheduler/rollback/library/RL/GCTS-gain flags remain false.",
+      "topic": "Qualification boundary"
+    },
+    {
+      "finding": "Expanded/readout derived files use exclusive creation only. Root reported native actual terminal exit0 while review occurred; helper remained unexecuted pending this review. Reviewer did not read actual outputs, decode payloads, execute helper/scientific code, inspect models, call clocks or launch actuals.",
+      "topic": "Writes and timing disclosure"
+    }
+  ]
+}

@@ -1,0 +1,878 @@
+{
+  "$defs": {
+    "formula_template": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "node": {
+              "const": "bot"
+            }
+          },
+          "required": [
+            "node"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "arguments": {
+              "items": {
+                "$ref": "#/$defs/term_template"
+              },
+              "type": "array"
+            },
+            "node": {
+              "const": "formula_meta"
+            },
+            "parameter": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "node",
+            "parameter",
+            "arguments"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "arguments": {
+              "items": {
+                "$ref": "#/$defs/term_template"
+              },
+              "type": "array"
+            },
+            "node": {
+              "const": "pred"
+            },
+            "symbol": {
+              "oneOf": [
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "literal": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "literal"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "parameter": {
+                      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "parameter"
+                  ],
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "required": [
+            "node",
+            "symbol",
+            "arguments"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "left": {
+              "$ref": "#/$defs/term_template"
+            },
+            "node": {
+              "const": "eq"
+            },
+            "right": {
+              "$ref": "#/$defs/term_template"
+            }
+          },
+          "required": [
+            "node",
+            "left",
+            "right"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "body": {
+              "$ref": "#/$defs/formula_template"
+            },
+            "node": {
+              "const": "not"
+            }
+          },
+          "required": [
+            "node",
+            "body"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "left": {
+              "$ref": "#/$defs/formula_template"
+            },
+            "node": {
+              "enum": [
+                "imp",
+                "and",
+                "or"
+              ]
+            },
+            "right": {
+              "$ref": "#/$defs/formula_template"
+            }
+          },
+          "required": [
+            "node",
+            "left",
+            "right"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "binder_id": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+              "type": "string"
+            },
+            "body": {
+              "$ref": "#/$defs/formula_template"
+            },
+            "node": {
+              "const": "all"
+            }
+          },
+          "required": [
+            "node",
+            "binder_id",
+            "body"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "literal_data": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/literal_data"
+          },
+          "type": "array"
+        },
+        {
+          "additionalProperties": {
+            "$ref": "#/$defs/literal_data"
+          },
+          "type": "object"
+        }
+      ]
+    },
+    "reference": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "input"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "hypothesis": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "hypothesis"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "step": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "step"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "output": {
+              "type": "string"
+            },
+            "step": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "step",
+            "output"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "term_template": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "node": {
+              "const": "var"
+            },
+            "variable_id": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "node",
+            "variable_id"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "arguments": {
+              "items": {
+                "$ref": "#/$defs/term_template"
+              },
+              "type": "array"
+            },
+            "node": {
+              "const": "fun"
+            },
+            "symbol": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "node",
+            "symbol",
+            "arguments"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "arguments": {
+              "items": {
+                "$ref": "#/$defs/term_template"
+              },
+              "type": "array"
+            },
+            "node": {
+              "const": "term_meta"
+            },
+            "parameter": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "node",
+            "parameter",
+            "arguments"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "typed_argument": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "FORMULA"
+            },
+            "value": {
+              "$ref": "#/$defs/formula_template"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "TERM"
+            },
+            "value": {
+              "$ref": "#/$defs/term_template"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "VARIABLE"
+            },
+            "value": {
+              "additionalProperties": false,
+              "properties": {
+                "variable_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "variable_id"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "PREDICATE_SYMBOL"
+            },
+            "value": {
+              "oneOf": [
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "literal": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "literal"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "parameter": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "parameter"
+                  ],
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "LITERAL"
+            },
+            "value": {
+              "$ref": "#/$defs/literal_data"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "body": {
+      "items": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "arguments": {
+                "additionalProperties": {
+                  "$ref": "#/$defs/typed_argument"
+                },
+                "type": "object"
+              },
+              "formula": {
+                "$ref": "#/$defs/formula_template"
+              },
+              "id": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+                "type": "string"
+              },
+              "kind": {
+                "const": "PRIMITIVE"
+              },
+              "ordered_inputs": {
+                "items": {
+                  "$ref": "#/$defs/reference"
+                },
+                "type": "array"
+              },
+              "rule": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "rule",
+              "formula",
+              "ordered_inputs",
+              "arguments"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "family_ref": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "id": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+                "type": "string"
+              },
+              "kind": {
+                "const": "FAMILY_CALL"
+              },
+              "ordered_hypotheses": {
+                "items": {
+                  "$ref": "#/$defs/reference"
+                },
+                "type": "array"
+              },
+              "ordered_inputs": {
+                "items": {
+                  "$ref": "#/$defs/reference"
+                },
+                "type": "array"
+              },
+              "substitution": {
+                "additionalProperties": {
+                  "oneOf": [
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "variable_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "variable_id"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "literal": {
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "literal"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "parameter": {
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "parameter"
+                          ],
+                          "type": "object"
+                        }
+                      ]
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "body": {
+                          "oneOf": [
+                            {
+                              "$ref": "#/$defs/formula_template"
+                            },
+                            {
+                              "$ref": "#/$defs/term_template"
+                            }
+                          ]
+                        },
+                        "formal_variables": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array",
+                          "uniqueItems": true
+                        }
+                      },
+                      "required": [
+                        "formal_variables",
+                        "body"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "family_ref",
+              "substitution",
+              "ordered_inputs",
+              "ordered_hypotheses"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "type": "array"
+    },
+    "dependencies": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "family_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "hypotheses": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "discharge": {
+            "const": "NONE_UNLESS_EXPLICIT_HOST_RULE"
+          },
+          "formula": {
+            "$ref": "#/$defs/formula_template"
+          },
+          "id": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+            "type": "string"
+          },
+          "ordered_context_role": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "formula",
+          "ordered_context_role",
+          "discharge"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "inputs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "formula": {
+            "$ref": "#/$defs/formula_template"
+          },
+          "id": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+            "type": "string"
+          },
+          "ordered_role": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sharing": {
+            "enum": [
+              "ALLOW_SAME_EXACT_PRIOR_SOURCE",
+              "DISTINCT_SOURCE_REQUIRED"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "formula",
+          "ordered_role",
+          "sharing"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "origin": {
+      "enum": [
+        "HUMAN_SPECIFIED",
+        "SEARCH_EXTRACTED",
+        "LEARNED_PROPOSAL"
+      ]
+    },
+    "outputs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "formula": {
+            "$ref": "#/$defs/formula_template"
+          },
+          "id": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+            "type": "string"
+          },
+          "source": {
+            "$ref": "#/$defs/reference"
+          }
+        },
+        "required": [
+          "id",
+          "formula",
+          "source"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "parameters": {
+      "items": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "allowed_external_free_variables": {
+                "items": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "formal_variables": {
+                "items": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "id": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "FORMULA",
+                  "TERM"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "formal_variables",
+              "allowed_external_free_variables"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "allowed_names_policy": {
+                "const": "HOST_DECLARED_SCOPE"
+              },
+              "distinct_from": {
+                "items": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "id": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+                "type": "string"
+              },
+              "kind": {
+                "const": "VARIABLE"
+              },
+              "role": {
+                "enum": [
+                  "FREE_PARAMETER",
+                  "BOUND",
+                  "EIGEN",
+                  "EQUALITY_HOLE"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "role",
+              "distinct_from",
+              "allowed_names_policy"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "arity": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "id": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+                "type": "string"
+              },
+              "kind": {
+                "const": "PREDICATE_SYMBOL"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "arity"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "type": "array"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "required_host_features": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "schema": {
+      "const": "receptor-lemma-family-v2"
+    },
+    "side_conditions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "arguments": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "relation": {
+            "enum": [
+              "DISTINCT",
+              "NOT_FREE_IN",
+              "FREE_SUBSET",
+              "DECLARED_SYMBOL_ARITY",
+              "HOST_PROFILE_MEMBER"
+            ]
+          }
+        },
+        "required": [
+          "relation",
+          "arguments"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema",
+    "family_id",
+    "origin",
+    "provenance",
+    "required_host_features",
+    "parameters",
+    "hypotheses",
+    "inputs",
+    "outputs",
+    "body",
+    "side_conditions",
+    "dependencies"
+  ],
+  "title": "Receptor family descriptor v2 (semantic checks additionally required)",
+  "type": "object"
+}

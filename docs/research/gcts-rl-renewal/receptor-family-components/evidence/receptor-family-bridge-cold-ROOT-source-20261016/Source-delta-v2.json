@@ -1,0 +1,27 @@
+{
+  "own_VERSION_and_component_cases_capsule_only": true,
+  "parent": {
+    "bytes": 51685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/ROOT_receptor_family_bridge_cold_v1.py",
+    "sha256": "c2399d271732f48d1fde73eb12834528a273f8a9f444b36bf3de08de7dc5be14"
+  },
+  "patches": [
+    {
+      "bytes": 13733,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/caller-v1-to-v2-forward.patch",
+      "sha256": "6053715673a61620cfa2d27941e38e12261ed75923936e7817f03eb47987461e"
+    },
+    {
+      "bytes": 13733,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/caller-v2-to-v1-full-inverse.patch",
+      "sha256": "6bd44137e6ddd5c2137129d5ea11308bfa5991d25ecd1f1cc181583a6c94e06b"
+    }
+  ],
+  "schema": "ROOT-receptor-family-caller-repair-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/ROOT_receptor_family_bridge_cold_v2.py",
+    "sha256": "912489c3f82bf21b0efc60d14ec7c4448793dd41e2d80050a9278a110fe6415b"
+  }
+}

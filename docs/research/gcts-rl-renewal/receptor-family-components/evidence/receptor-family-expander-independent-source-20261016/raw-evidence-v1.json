@@ -1,0 +1,74 @@
+{
+  "AST_parse_and_compile_without_evaluation": true,
+  "actual_patches": [
+    {
+      "full_raw_payload_exact": true,
+      "role": "forward_patch"
+    },
+    {
+      "full_raw_payload_exact": true,
+      "role": "inverse_patch"
+    }
+  ],
+  "capsules": [
+    {
+      "bytes": 51898,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    {
+      "bytes": 8217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-contract-v1.json",
+      "sha256": "da296cc6af40a83abd145efe3a534a816d10d9847175ab62fb535de5ae9790a4"
+    },
+    {
+      "bytes": 21695,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor-family-v2.schema.json",
+      "sha256": "37cc4051402aee4c840014b75a071d8079876ae61690d1be8886396ceef3ca11"
+    },
+    {
+      "bytes": 105598,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-delta-v1.json",
+      "sha256": "c032a2991902b353a6c5ac9d31ab914d04f2a5f5dc91a7cb54304739b34c0329"
+    },
+    {
+      "bytes": 9245,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/author-static-v1.json",
+      "sha256": "dcc34d763aab0ac98a2e4096bfd41a63f8e17749962ebb9c054348e0d34656aa"
+    },
+    {
+      "bytes": 7265,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-clarifications-v1.json",
+      "sha256": "d541a39c19c9185ed6ac5e926d89a19984c9133c4f0f1ed230bb5c28828942b5"
+    },
+    {
+      "bytes": 8411,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-wire-v1.json",
+      "sha256": "6ba537d763ec9d2c753866fadd81cb7bc946463a51f930cde1d23f1e68fd9ba5"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 2877,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/human-two-mp-family-v1.json",
+      "sha256": "65bcfcc307158bd09005694da629206e96c4f5e967bce84ebce8578ef9595628"
+    },
+    {
+      "bytes": 41188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/receptor-family-contract-v1.json",
+      "sha256": "d7539763be595f241728313e4815f34480c8f589990940be90e4c03d8c9511b9"
+    },
+    {
+      "bytes": 10386,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/routing-and-receptors-report-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+      "sha256": "680880875cab48ba9b44c4ba9b7caf67c2460572a0f969cf1a1c4362bceb2b3a"
+    }
+  ],
+  "module_evaluation": false,
+  "raw_addition_and_removal_exact": true,
+  "raw_source_capsules_checked": 11,
+  "scientific_calls": 0
+}

@@ -1,0 +1,285 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "aggregate_B_bytes": 73023488,
+  "complete_Date_seconds": 5.913,
+  "component_controls_accepted": true,
+  "current_engine_qualification": [
+    8,
+    12
+  ],
+  "evidence": [
+    {
+      "bytes": 8032312,
+      "href": "evidence/receptor-family-bridge-ROOT-20261016/ROOT-RF-component-readout-v1.json",
+      "label": "Root bounded component result and coverage limits",
+      "sha256": "cd2b16232874d847c7db53a4122062f2f72d284225876272da78aab10c26c3a4"
+    },
+    {
+      "bytes": 7851,
+      "href": "evidence/receptor-family-bridge-ROOT-20261016/ROOT-caller-Source-review-v1.json",
+      "label": "Complete current composition Source review",
+      "sha256": "0e7f9a09b3668444553f13c0c03b571fa7d86940590ab972c9e063a30c7238e6"
+    },
+    {
+      "bytes": 8281,
+      "href": "evidence/receptor-family-bridge-cold-independent-source-20261016/typed-Source-review-v2.json",
+      "label": "Independent caller Source review",
+      "sha256": "e6a07e52abaaa244160f2f93a1051bc194bad2212ac823e846811c880f394b68"
+    },
+    {
+      "bytes": 51898,
+      "href": "evidence/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+      "label": "Generic matcher and primitive expander",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    {
+      "bytes": 56670,
+      "href": "evidence/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+      "label": "Independent expansion checker",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    {
+      "bytes": 25205,
+      "href": "evidence/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+      "label": "Current native six-rule point adapter",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    {
+      "bytes": 27926,
+      "href": "evidence/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v2.py",
+      "label": "All twelve executable component cases",
+      "sha256": "92e875fc583fc6d2ceb96eed0b1ac3d52a85c34fcfbf8b342fa3a773cdf14742"
+    },
+    {
+      "bytes": 3020,
+      "href": "evidence/receptor-family-six-rule-adapter-independent-source-20261016/source-negative-v2.json",
+      "label": "Preserved adapter negative: physical distinctness",
+      "sha256": "9ceb29b7a92873ec2180501e5bd842917a02eaee7c56cd0d96c70f3047880d1c"
+    },
+    {
+      "bytes": 3351,
+      "href": "evidence/receptor-family-bridge-controls-independent-source-20261016/typed-Source-review-v2.json",
+      "label": "Preserved test-helper negative and repaired review",
+      "sha256": "38fa0ed0ab9dc16e6fbb9225c41049467071e05e9e0ddade7cba7b0bb82a0b5d"
+    },
+    {
+      "bytes": 3374,
+      "href": "evidence/receptor-family-bridge-saved-independent-source-20261016/typed-Source-review-v2.json",
+      "label": "Independent saved-result reader review",
+      "sha256": "68fde17ee97bc3939e642eab24d8e6ad0efa2648f576646b6c139c37bcb2ec05"
+    },
+    {
+      "bytes": 1679,
+      "href": "evidence/receptor-family-bridge-ROOT-20261016/RF-external-v1/native-terminal.json",
+      "label": "Native terminal measurement",
+      "sha256": "ce305180750c93cddf8297007835649e962263d4fae374b647b4f3e7d411e6c4"
+    }
+  ],
+  "expanded_result_href": "evidence/receptor-family-bridge-ROOT-20261016/ROOT-RF-expanded-result-v1.json",
+  "native_launch_to_postprobe_ns": 1749559000,
+  "new_theorem_accepted": false,
+  "point_fixture": {
+    "formula_A": [
+      "all",
+      "x",
+      [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "members": [
+      {
+        "global_m_values": [
+          [
+            [
+              1,
+              3
+            ],
+            [
+              "formula",
+              "[\"bot\"]"
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              2,
+              3
+            ],
+            [
+              "offset",
+              -3
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]],[\"bot\"]]"
+            ]
+          ],
+          [
+            [
+              3,
+              3
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              4,
+              3
+            ],
+            1
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              3
+            ],
+            1
+          ]
+        ]
+      },
+      {
+        "global_m_values": [
+          [
+            [
+              1,
+              4
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              1,
+              3
+            ],
+            [
+              "formula",
+              "[\"bot\"]"
+            ]
+          ],
+          [
+            [
+              2,
+              4
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ],
+          [
+            [
+              1,
+              2
+            ],
+            [
+              "formula",
+              "[\"imp\",[\"bot\"],[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              3,
+              4
+            ],
+            [
+              "offset",
+              -2
+            ]
+          ],
+          [
+            [
+              4,
+              3
+            ],
+            1
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              4
+            ],
+            1
+          ]
+        ]
+      }
+    ],
+    "source_record": "actual-pending-cluster",
+    "source_result": {
+      "bytes": 6778324,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-RF-expanded-result-v1.json",
+      "sha256": "70082aefa102ae8e923e103bb2feb2f9451db408bb6f49f83e2c7dbbc2de0004"
+    }
+  },
+  "qualified_component_case_count": 12,
+  "schema": "ROOT-receptor-family-components-public-report-v1"
+}

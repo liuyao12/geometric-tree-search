@@ -1,0 +1,87 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v2.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-six-rule-point-adapter-v3-physical-call-sharing'
++VERSION = 'receptor-family-six-rule-point-adapter-v2-interfaces-and-point-key'
+ CHECKER_VERSION = 'receptor-family-independent-expansion-checker-v1'
+ CHECK_SCHEMA = 'receptor-family-conditional-expansion-check-v1'
+ HOST_SCHEMA = 'receptor-family-host-v1'
+@@ -177,8 +177,7 @@
+         return dict(common, status='UNKNOWN', reason='INDEPENDENT_EXPANSION_UNRESOLVED',
+                     members=[], node_map=[], input_ports=[], output_ports=[],
+                     union_state=None, union_state_check=None, dependencies=None, costs=None,
+-                    local_member_membership_checked=False, local_point_union_checked=False,
+-                    physical_call_input_bindings=[])
++                    local_member_membership_checked=False, local_point_union_checked=False)
+     require(checked['status'] == 'CONDITIONAL_EXPANSION_CHECKED'
+             and checked['conditional_expansion_checked'] is True,
+             'fresh conditional expansion required')
+@@ -224,29 +223,6 @@
+                 require(sharing[p['port_id']] == sharing[q['port_id']] == 'ALLOW_SAME_EXACT_PRIOR_SOURCE'
+                         and canonical(p['formula']) == canonical(q['formula'])
+                         and canonical(p['source']) == canonical(q['source']), 'physical input sharing policy')
+-    descriptors = {d['family_id']: d for d in registry}
+-    physical_call_inputs = []
+-    for frame in expansion['call_frames']:
+-        tick()
+-        policy = {p['id']: p['sharing'] for p in descriptors[frame['family_id']]['inputs']}
+-        resolved = []
+-        for port in frame['inputs']:
+-            tick()
+-            ref = port['source']
+-            require(type(ref) is dict and set(ref) in ({'node'}, {'input'}), 'call input physical reference')
+-            row = node_rows[ref['node']] if 'node' in ref else input_rows[ref['input']]
+-            value = {'port_id': port['port_id'], 'source': tree(ref, tick), 'row': row,
+-                     'formula': tree(port['formula'], tick), 'sharing': policy[port['port_id']],
+-                     'fact_accepted': False}
+-            for other in resolved:
+-                tick()
+-                if row == other['row']:
+-                    require(value['sharing'] == other['sharing'] == 'ALLOW_SAME_EXACT_PRIOR_SOURCE'
+-                            and canonical(value['formula']) == canonical(other['formula']),
+-                            'physical call input sharing policy')
+-            resolved.append(value)
+-        physical_call_inputs.append({'call_path': tree(frame['call_path'], tick),
+-            'family_id': frame['family_id'], 'inputs': resolved})
+     union = tree(s, tick)
+     union_selected = set(selected)
+     members, node_map, processed, by_key = [], [], {}, {}
+@@ -347,13 +323,6 @@
+         port['occupied_in_hypothetical_union'] = totals[(0, input_row)] == 1
+         port['formula_mark_assigned_in_hypothetical_union'] = (1, input_row) in marks
+         port['unresolved_in_hypothetical_union'] = totals[(0, input_row)] == 0
+-    original_union_keys = {v['translation'][1]: _key(v) for v in base_union['selected']}
+-    decorated_union_keys = {v['translation'][1]: _key(v) for v in checked_union['selected']}
+-    for frame in physical_call_inputs:
+-        for port in frame['inputs']:
+-            port['original_full_key_in_hypothetical_union'] = original_union_keys.get(port['row'])
+-            port['decorated_full_key_in_hypothetical_union'] = decorated_union_keys.get(port['row'])
+-            port['unresolved_in_hypothetical_union'] = totals[(0, port['row'])] == 0
+     after_visits = language.kernel.visits
+     require(type(after_visits) is int and after_visits >= before_visits, 'monotone native visits')
+     require(canonical(describe_host(language=language, tick=tick)) == canonical(actual_host)
+@@ -363,8 +332,7 @@
+         local_member_membership_checked=True, local_point_union_checked=True,
+         original_state=original_state, marking_check=marking_check, members=members, node_map=node_map,
+         input_ports=input_records, hypothesis_ports=tree(expansion['hypothesis_ports'], tick),
+-        output_ports=outputs, physical_call_input_bindings=physical_call_inputs,
+-        union_state=checked_union, union_packet=full_packet, union_state_check=union_check,
++        output_ports=outputs, union_state=checked_union, union_packet=full_packet, union_state_check=union_check,
+         original_member_keys=[m['base_tile']['placement_key'] for m in members],
+         decorated_member_keys=[m['tile']['placement_key'] for m in members],
+         dependencies={'current_state_sha256': digest(s), 'host_sha256': digest(actual_host),
+@@ -375,10 +343,7 @@
+         costs={'expanded_nodes': len(nodes), 'unique_member_placements': len(members),
+             'new_placements_in_hypothetical_union': len(checked_union['selected'])-len(s['selected']),
+             'reused_existing_placements': len(reused_existing), 'duplicate_node_placements': len(nodes)-len(members),
+-            'ordered_edge_uses': ordered_edges,
+-            'physical_call_frames_checked': len(physical_call_inputs),
+-            'physical_call_input_uses': sum(len(f['inputs']) for f in physical_call_inputs),
+-            'direct_expansion_checker_calls': 1,
++            'ordered_edge_uses': ordered_edges, 'direct_expansion_checker_calls': 1,
+             'direct_language_primitive_calls': len(nodes), 'direct_base_rebuild_calls': len(nodes),
+             'direct_marked_rebuild_calls': len(nodes)+len(checked_union['selected']),
+             'direct_marked_private_state_calls': 2, 'direct_base_projection_calls': 2,

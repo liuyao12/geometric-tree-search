@@ -1,0 +1,143 @@
+{
+  "concrete_blockers": [],
+  "findings": [
+    {
+      "finding": "Full supplied registry copied and validated, including unreachable descriptors; exact v2 fields and family full identity, separately scoped IDs, native constructors/typed arguments, host features, strict earlier ordered refs, explicit child output refs, exact called dependency set and guarded acyclic recursion. Full descriptor retained in request/closure; no digest-only registry shortcut.",
+      "id": "RFEP-01",
+      "lines": [
+        117,
+        388
+      ],
+      "topic": "Whole descriptor and dependency relation"
+    },
+    {
+      "finding": "All design native constructors and four parameter kinds handled generically. Complete simultaneous binding validates native signature/allowed free names. Lexical BOUND IDs plus explicit abstraction arguments distinguish intentional dependence from capture; deterministic native/template alpha-renaming uses finite declared names and records actual changes. Fresh-name/work/depth/node exhaustion remains UNKNOWN.",
+      "id": "RFEP-02",
+      "lines": [
+        163,
+        295,
+        505,
+        592
+      ],
+      "topic": "Typed FOL and capture hygiene"
+    },
+    {
+      "finding": "Partial binding inference is deliberately restricted to literal VARIABLE/predicate matches and abstractions over distinct actual variable arguments, followed by full forward expansion of every interface. Residual unbound/non-pattern candidates are UNKNOWN; finite iterator exhaustion/empty prefix/top-k never complete family absence. Supplied complete substitutions receive the same full expansion checks.",
+      "id": "RFEP-03",
+      "lines": [
+        415,
+        503,
+        794,
+        828
+      ],
+      "topic": "Joint finite matching and limits"
+    },
+    {
+      "finding": "Complete original Gamma and root input dependencies constrain EIGEN. Hypotheses preserve indexed Gamma formula occurrences as actual assumption nodes, including unused root ports; nested hypotheses reuse exact Gamma-provenance nodes. Ordered repeated input uses remain explicit. Current full external identity sharing fixes the draft standardized-ref gap; one source cannot carry unequal formulas and DISTINCT propagates through nested aliases.",
+      "id": "RFEP-04",
+      "lines": [
+        616,
+        759
+      ],
+      "topic": "Original context, ports and source identity"
+    },
+    {
+      "finding": "Topological primitive IDs, all ordered refs, native typed arguments, full origins, nested preorder frames, dependency-first full descriptors, renaming/scope checks, actual source formula outputs and structural costs retained. No automatic dedup by formula, no hardcoded two-MP accept path, no extra inference. These are syntax proposals; genuine primitive admission is the separate host adapter duty.",
+      "id": "RFEP-05",
+      "lines": [
+        594,
+        759
+      ],
+      "topic": "Full output and primitive expansion"
+    },
+    {
+      "finding": "External tick exceptions are wrapped before binding-level DescriptorError handling and unwrapped unchanged at public boundaries; iterator errors other than genuine StopIteration escape. Only own unfinished work/fresh/name/depth prefixes yield UNKNOWN. Binding mismatch records never become pruning. Trusted synchronous pinned tick/iterator scope is explicit, with no arbitrary hostile/reentrant promise.",
+      "id": "RFEP-06",
+      "lines": [
+        26,
+        94,
+        769,
+        828
+      ],
+      "topic": "Resource/error separation"
+    },
+    {
+      "finding": "Full host binding/authority preserved but not authenticated by generic syntax code; exact original17/input2/Gamma/profile/epoch authentication and native membership/whole marked point union remain mandatory. Proposal flags deny theorem/point/engine/pruning/RL/runtime qualification. Current engine, fallback, scheduler, markings, rollback and budgets unchanged.",
+      "id": "RFEP-07",
+      "lines": [
+        12,
+        24,
+        749,
+        828
+      ],
+      "topic": "Authority and no engine promotion"
+    },
+    {
+      "finding": "Independently verified full raw addition/removal plus both actual unified patch payloads, 11 raw reference capsules, and whole AST parse/compile without evaluation. No producer/checker/module/helper/test/clock/actual call, donor word/result or target proof read.",
+      "id": "RFEP-08",
+      "topic": "New Source addition/inverse"
+    }
+  ],
+  "pins": {
+    "clarifications": {
+      "bytes": 7265,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-clarifications-v1.json",
+      "sha256": "d541a39c19c9185ed6ac5e926d89a19984c9133c4f0f1ed230bb5c28828942b5"
+    },
+    "delta": {
+      "bytes": 105598,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-delta-v1.json",
+      "sha256": "c032a2991902b353a6c5ac9d31ab914d04f2a5f5dc91a7cb54304739b34c0329"
+    },
+    "descriptor_schema": {
+      "bytes": 21695,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor-family-v2.schema.json",
+      "sha256": "37cc4051402aee4c840014b75a071d8079876ae61690d1be8886396ceef3ca11"
+    },
+    "handoff": {
+      "bytes": 2586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/handoff-v1.json",
+      "sha256": "10354d475c76265746c01b926f145dbc046f7ee611a20950fa7255ed0636c4bf"
+    },
+    "raw_evidence": {
+      "bytes": 3397,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-independent-source-20261016/raw-evidence-v1.json",
+      "sha256": "d2e35b96e76fbc35366be996b2cfe90f208956ec88cde001f662020ae29f62a0"
+    },
+    "source": {
+      "bytes": 51898,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "source_contract": {
+      "bytes": 8217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-contract-v1.json",
+      "sha256": "da296cc6af40a83abd145efe3a534a816d10d9847175ab62fb535de5ae9790a4"
+    },
+    "wire": {
+      "bytes": 8411,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-wire-v1.json",
+      "sha256": "6ba537d763ec9d2c753866fadd81cb7bc946463a51f930cde1d23f1e68fd9ba5"
+    }
+  },
+  "pre_freeze_coordination": "Reviewer identified actual-source DISTINCT sharing gap in mutable draft; author corrected before current f32e freeze. No negative frozen producer packet existed for that draft. Reviewer also clarified repeated actual source formula agreement.",
+  "remaining_gates": [
+    "Genuine distinct review of independent checker and host adapter, then Root-only measured component actual.",
+    "Source reasoning does not establish a useful automatic inventory, empirical fit, theorem/target proof, complete higher-order matcher, point/engine/rollback conformance or search improvement.",
+    "Current marked engine adviceNone remains unchanged; conditional expansion must not supply degree/EOF/fallback authority."
+  ],
+  "schema": "receptor-family-expander-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51898,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+    "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+  },
+  "source_contract": {
+    "bytes": 8217,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-contract-v1.json",
+    "sha256": "da296cc6af40a83abd145efe3a534a816d10d9847175ab62fb535de5ae9790a4"
+  },
+  "source_only": true
+}

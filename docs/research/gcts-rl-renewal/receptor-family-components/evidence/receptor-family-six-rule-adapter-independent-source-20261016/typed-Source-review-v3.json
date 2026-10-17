@@ -1,0 +1,54 @@
+{
+  "author_overlap": "/root/arithmetic_induction authored generic producer/design and historical c354/kernel/engine/caller dependencies. Did not author current host adapter; this review is scoped to that adapter and its integration seams, not a self-review of producer/engine.",
+  "blockers": [],
+  "check_count": 27,
+  "clocks_called": 0,
+  "closed_findings": [
+    "NESTED-PHYSICAL-SOURCE-DISTINCT-1"
+  ],
+  "conditions": [
+    "Generic checker/producer remain syntax-only and are not self-reviewed here. Their independent whole current Source reviews remain separate.",
+    "Caller must authenticate fresh original model and current modules and guard the complete transaction; adapter version strings alone are not arbitrary object authentication.",
+    "Full assumption positive is unavailable with actual empty Gamma; do not fabricate Gamma to fill coverage.",
+    "No current-state candidate graph, degree/EOF, scheduler, exact live rollback or engine-advice activation is provided. Pending interfaces are obligations, never accepted facts.",
+    "Future Root cold native20 qualification must cover the new current composition; no runtime fit or mathematical theorem follows from this Source pass."
+  ],
+  "engine_activated": false,
+  "findings": {
+    "bytes": 17597,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/findings-v3.json",
+    "sha256": "29904d83b345e3ff162b067eb7c37dfa6024de8855bfd5b6fd5987e160f222b2"
+  },
+  "native_or_model_execution": false,
+  "point_union_runtime_accepted": false,
+  "preserved_negative": {
+    "bytes": 3020,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/source-negative-v2.json",
+    "sha256": "9ceb29b7a92873ec2180501e5bd842917a02eaee7c56cd0d96c70f3047880d1c"
+  },
+  "proof_accepted": false,
+  "raw_reference_count": 28,
+  "runtime_qualified": false,
+  "schema": "receptor-family-six-rule-adapter-typed-Source-review-v3",
+  "scientific_calls": 0,
+  "scope": "receptor-family-six-rule-adapter-Source",
+  "source": {
+    "bytes": 25205,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+    "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+  },
+  "source_contract": {
+    "bytes": 24585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-contract-v3.json",
+    "sha256": "1d56488b42aa5c19ffed1e58a86dc647062a14d79580c9c13e2e3ba08d3d209d"
+  },
+  "sources": {
+    "adapter": {
+      "bytes": 25205,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    }
+  },
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "tests_run": 0
+}

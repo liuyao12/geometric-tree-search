@@ -1,0 +1,27 @@
+{
+  "disposition": "CONDITIONAL_SOURCE_PASS_NOT_RUNTIME_OR_ACTIVATION",
+  "findings": {
+    "bytes": 8223,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-independent-source-20261016/review-findings-v1.json",
+    "sha256": "06e06f0ce305a4537396279474a72baf3e84329f70ae7c8a4ec754ca13d98d0e"
+  },
+  "review": {
+    "bytes": 2869,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "8da6e3a805fc9553013d4f87055dd77d596a26807076a5242c1f5c1209ff4250"
+  },
+  "schema": "receptor-family-expander-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51898,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+    "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+  },
+  "source_contract": {
+    "bytes": 8217,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-contract-v1.json",
+    "sha256": "da296cc6af40a83abd145efe3a534a816d10d9847175ab62fb535de5ae9790a4"
+  },
+  "source_only": true
+}

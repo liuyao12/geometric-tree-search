@@ -1,0 +1,22 @@
+{
+  "actual_execution_authorized": false,
+  "peer_review_required": true,
+  "schema": "ROOT-receptor-family-component-cases-handoff-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 27926,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v2.py",
+    "sha256": "92e875fc583fc6d2ceb96eed0b1ac3d52a85c34fcfbf8b342fa3a773cdf14742"
+  },
+  "source_contract": {
+    "bytes": 6438,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "4219a63d754bce09193305e1daeddf16552d4d88ee4c9ea668fadb3d93067fa2"
+  },
+  "source_delta": {
+    "bytes": 2846,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/Source-delta-v2.json",
+    "sha256": "ab8b1dc6c3215eb5e9de86c573bf026424e2b236cb2b04e30412fb2011c825d5"
+  },
+  "source_only": true
+}

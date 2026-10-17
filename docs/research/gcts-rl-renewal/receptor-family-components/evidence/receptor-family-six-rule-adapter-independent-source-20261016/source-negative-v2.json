@@ -1,0 +1,52 @@
+{
+  "API": {
+    "bytes": 8411,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-wire-v1.json",
+    "sha256": "6ba537d763ec9d2c753866fadd81cb7bc946463a51f930cde1d23f1e68fd9ba5"
+  },
+  "author_overlap": "Reviewer authored design and paired generic producer/current c354 ancestry, not current adapter. Historical shared mathematical code is a dependency, not independent authorship of this adapter.",
+  "clocks_called": 0,
+  "contract_scope": "No v2 contract was frozen; this is a full-code scoped negative, not a fabricated capsule/whole-contract review.",
+  "delta": {
+    "bytes": 3978,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-delta-v2.json",
+    "sha256": "93cd6a1c25292aa441e89d2e04225abd73c7c16c265597132ddd0540e6f1a05c"
+  },
+  "finding": {
+    "cause": "Root input sharing compares real rows, but nested call_frames are not checked after row_assignment. Different logical primitive node IDs may map to one identical physical placement and be deduplicated, violating a nested descriptor input DISTINCT_SOURCE_REQUIRED.",
+    "discovery": "Adapter author reported the gap before final metadata; independently confirmed by this reviewer whole Source read.",
+    "id": "NESTED-PHYSICAL-SOURCE-DISTINCT-1",
+    "impact": "False acceptance of that descriptor sharing obligation. No proof, state mutation, engine activation or actual result inferred.",
+    "owning_source_regions": [
+      "adapt_expansion root sharing loop",
+      "adapt_expansion exact key duplicate branch",
+      "absence of per-call-frame physical sharing loop"
+    ],
+    "required_repair": "Resolve every call frame input to actual assigned row/full original or decorated source identity and enforce that frame descriptor sharing policy before READY. Preserve legitimate ALLOW exact-key/fullpacket overlap."
+  },
+  "module_functions_executed": 0,
+  "runtime_qualified": false,
+  "schema": "receptor-family-six-rule-adapter-Source-negative-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 23063,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v2.py",
+    "sha256": "2371f01560cc458cb8675aea486c7169648f56c53da0f0089b126f775795c4a4"
+  },
+  "source_contract": null,
+  "source_only": true,
+  "static_checks": {
+    "AST_parse_and_compile_without_evaluation": true,
+    "raw_delta_forward_inverse": true,
+    "seven_non_adapt_functions_AST_exact": true
+  },
+  "status": "CONCRETE_SOURCE_BLOCKER",
+  "tests_run": 0,
+  "whole_read_scope": [
+    "all adapter-v2 functions and constants",
+    "full v1-to-v2 raw forward/inverse and AST census",
+    "original c354 rebuild/state/keytext/legality",
+    "marked fresh projection/rebuild/collision/legality/full verifier union",
+    "membership exact original six-rule primitive adapter"
+  ]
+}

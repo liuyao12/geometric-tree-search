@@ -1,0 +1,298 @@
+{
+  "ast_parse_only": true,
+  "check_count": 16,
+  "checks": [
+    {
+      "name": "stdlib_hashlib_json_only",
+      "passed": true
+    },
+    {
+      "name": "one_keyword_only_checker",
+      "passed": true
+    },
+    {
+      "name": "no_dynamic_or_project_loader",
+      "passed": true
+    },
+    {
+      "name": "only_own_incomplete_caught",
+      "passed": true
+    },
+    {
+      "name": "all_FOL_constructors_present",
+      "passed": true
+    },
+    {
+      "name": "all_four_parameter_kinds",
+      "passed": true
+    },
+    {
+      "name": "full_literal_packet_comparison",
+      "passed": true
+    },
+    {
+      "name": "only_work_excluded",
+      "passed": true
+    },
+    {
+      "name": "cycle_and_prior_refs",
+      "passed": true
+    },
+    {
+      "name": "source_identity_not_port_alias",
+      "passed": true
+    },
+    {
+      "name": "original_Gamma_materialized",
+      "passed": true
+    },
+    {
+      "name": "scope_and_renaming_records",
+      "passed": true
+    },
+    {
+      "name": "UNKNOWN_has_no_expansion",
+      "passed": true
+    },
+    {
+      "name": "raw_AST_compile_without_evaluation",
+      "passed": true
+    },
+    {
+      "name": "forward_addition_full_source",
+      "passed": true
+    },
+    {
+      "name": "inverse_removes_full_source",
+      "passed": true
+    }
+  ],
+  "compile_without_evaluation": true,
+  "module_evaluation": false,
+  "named_regions": [
+    {
+      "end_line": 28,
+      "line": 25,
+      "name": "ExpansionCheckError"
+    },
+    {
+      "end_line": 32,
+      "line": 31,
+      "name": "_Incomplete"
+    },
+    {
+      "end_line": 37,
+      "line": 35,
+      "name": "_require"
+    },
+    {
+      "end_line": 42,
+      "line": 40,
+      "name": "_canonical"
+    },
+    {
+      "end_line": 46,
+      "line": 45,
+      "name": "_digest"
+    },
+    {
+      "end_line": 845,
+      "line": 49,
+      "name": "_Audit"
+    },
+    {
+      "end_line": 897,
+      "line": 848,
+      "name": "check_expansion"
+    },
+    {
+      "end_line": 28,
+      "line": 26,
+      "name": "__init__"
+    },
+    {
+      "end_line": 62,
+      "line": 50,
+      "name": "__init__"
+    },
+    {
+      "end_line": 68,
+      "line": 64,
+      "name": "visit"
+    },
+    {
+      "end_line": 84,
+      "line": 70,
+      "name": "data"
+    },
+    {
+      "end_line": 88,
+      "line": 86,
+      "name": "fields"
+    },
+    {
+      "end_line": 93,
+      "line": 90,
+      "name": "name"
+    },
+    {
+      "end_line": 99,
+      "line": 95,
+      "name": "identifier"
+    },
+    {
+      "end_line": 104,
+      "line": 101,
+      "name": "unique"
+    },
+    {
+      "end_line": 140,
+      "line": 106,
+      "name": "native"
+    },
+    {
+      "end_line": 166,
+      "line": 142,
+      "name": "free"
+    },
+    {
+      "end_line": 191,
+      "line": 168,
+      "name": "all_names"
+    },
+    {
+      "end_line": 220,
+      "line": 193,
+      "name": "host_check"
+    },
+    {
+      "end_line": 286,
+      "line": 222,
+      "name": "template"
+    },
+    {
+      "end_line": 295,
+      "line": 288,
+      "name": "symbol"
+    },
+    {
+      "end_line": 322,
+      "line": 297,
+      "name": "parameters"
+    },
+    {
+      "end_line": 338,
+      "line": 324,
+      "name": "reference"
+    },
+    {
+      "end_line": 439,
+      "line": 340,
+      "name": "registry_check"
+    },
+    {
+      "end_line": 452,
+      "line": 441,
+      "name": "argument_template"
+    },
+    {
+      "end_line": 470,
+      "line": 454,
+      "name": "call_template"
+    },
+    {
+      "end_line": 493,
+      "line": 472,
+      "name": "bindings"
+    },
+    {
+      "end_line": 500,
+      "line": 495,
+      "name": "fresh"
+    },
+    {
+      "end_line": 505,
+      "line": 502,
+      "name": "renamed"
+    },
+    {
+      "end_line": 520,
+      "line": 507,
+      "name": "alpha_body"
+    },
+    {
+      "end_line": 550,
+      "line": 522,
+      "name": "substitute_native"
+    },
+    {
+      "end_line": 577,
+      "line": 552,
+      "name": "template_external"
+    },
+    {
+      "end_line": 617,
+      "line": 579,
+      "name": "instantiate"
+    },
+    {
+      "end_line": 627,
+      "line": 619,
+      "name": "argument"
+    },
+    {
+      "end_line": 683,
+      "line": 629,
+      "name": "condition_checks"
+    },
+    {
+      "end_line": 709,
+      "line": 685,
+      "name": "node"
+    },
+    {
+      "end_line": 718,
+      "line": 711,
+      "name": "resolve"
+    },
+    {
+      "end_line": 781,
+      "line": 720,
+      "name": "expand_frame"
+    },
+    {
+      "end_line": 845,
+      "line": 783,
+      "name": "expansion"
+    },
+    {
+      "end_line": 437,
+      "line": 429,
+      "name": "acyclic"
+    },
+    {
+      "end_line": 648,
+      "line": 630,
+      "name": "free_of"
+    },
+    {
+      "end_line": 652,
+      "line": 649,
+      "name": "record"
+    },
+    {
+      "end_line": 833,
+      "line": 828,
+      "name": "dependencies"
+    }
+  ],
+  "no_runtime_concordance_claim": true,
+  "schema": "receptor-family-expansion-checker-author-static-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 56670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+    "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+  },
+  "tests_or_actuals": 0
+}

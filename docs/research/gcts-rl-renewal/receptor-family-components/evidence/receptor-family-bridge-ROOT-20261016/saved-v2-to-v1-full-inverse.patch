@@ -1,0 +1,57 @@
+--- ROOT_close_component_saved_v2.py
++++ ROOT_close_component_saved_v1.py
+@@ -75,8 +75,7 @@
+     return dict(path=str(path),**raw_pin(raw))
+ 
+ def main():
+-    plan_path=HERE/'ROOT-RF-plan-v1.json';plan_raw=read_raw(plan_path);plan=decode(plan_raw)
+-    pr=dict(path=str(plan_path),**raw_pin(plan_raw))
++    plan_path=HERE/'ROOT-RF-plan-v1.json';plan=saved('ROOT-RF-plan-v1.json');pr=pin(plan_path)
+     need(set(plan)=={'schema','invocation_id','purpose','output_directory','sources','inputs',
+         'source_contract','reviews','ROOT_authorization','runtime','limits','resource_rule'},'plan12')
+     need(plan['schema']=='ROOT-routed-engine-qualification-plan-v1'and plan['purpose']==PURPOSE
+@@ -101,9 +100,7 @@
+          and grant['maximum_actual_invocations']==1,'once grant')
+     for key in('invocation_id','purpose','sources','inputs','source_contract','reviews','runtime','limits','resource_rule','output_directory'):same(grant[key],plan[key])
+     need(plan['resource_rule']=='single-owned-process-native-terminal-v1','same native rule')
+-    bracket_path=HERE/'ROOT-RF-tool-bracket-v1.json';bracket_raw=read_raw(bracket_path)
+-    bracket=decode(bracket_raw);bracket_ref=dict(path=str(bracket_path),**raw_pin(bracket_raw))
+-    code=bracket['tool_exit_code']
++    bracket=saved('ROOT-RF-tool-bracket-v1.json');code=bracket['tool_exit_code']
+     need(bracket['schema']=='ROOT-complete-tool-Date-bracket-v1'and bracket['plan_sha256']==pr['sha256']
+          and bracket['plan_bytes']==pr['bytes']and bracket['unchanged_actual_restarted']is False,'tool bracket same once plan')
+     need(integer(code,0,255)and integer(bracket['began_Date_ms'])and integer(bracket['ended_Date_ms']),'literal bracket')
+@@ -141,16 +138,15 @@
+     peak=native['caller_kernel_peak_bytes'];need(integer(peak,1,536870912)and peak==native['wait4_usage'][2],'native owned peak512')
+     readout=dict(schema='ROOT-receptor-family-component-readout-v1',plan=pr,source_contract=CONTRACT,
+         sources=plan['sources'],inputs=plan['inputs'],original_model_binding=c['original_model_binding'],
+-        tool_bracket=bracket_ref,native_evidence=refs,terminal_exit_code=code,
++        tool_bracket=pin(HERE/'ROOT-RF-tool-bracket-v1.json'),native_evidence=refs,terminal_exit_code=code,
+         native_launch_to_postprobe_ns=probe-start,native_worker_lifetime_ns=terminal-start,
+         aggregate_B_bytes=peak,complete_Date_seconds=seconds,all_reaped=True,
+         current_engine_qualified_case_count=8,current_engine_required_case_count=12,engine_promoted=False,
+         new_theorem_accepted=False,logical_proof_accepted=False,scheduler_or_rollback_accepted=False,
+         family_library_activated=False,RL_accepted=False,GCTS_advantage_claimed=False,scientific_replay=False)
+     if code!=0:
+-        # Any failed run's partial/final stdout stays opaque and cannot qualify.
+-        readout.update(failure_stdout_opaque=refs['meter-stdout.txt'],
+-            classification='UNQUALIFIED_COMPONENT_FAILURE_OR_UNKNOWN',qualified_component_case_count=0,
++        need(raw['meter-stdout.txt']==b'','no positive final on failure')
++        readout.update(classification='UNQUALIFIED_COMPONENT_FAILURE_OR_UNKNOWN',qualified_component_case_count=0,
+             component_controls_accepted=False,ROOT_resource_accepted=False,
+             raw_error=raw['meter-stderr.txt'].decode('utf-8',errors='replace'),failure_cause_established=False,
+             owned_directory_exists=owned.exists())
+@@ -174,12 +170,9 @@
+         need(body['resource_rule']==plan['resource_rule']and integer(body['joint_began_ns'])and integer(body['joint_deadline_ns'])
+              and start<=body['joint_began_ns']<terminal and body['joint_deadline_ns']==body['joint_began_ns']+20000000000,'internal deadline metadata')
+         for key in('ROOT_resource_accepted','logical_proof_accepted','complete_GCTS_model_accepted','failure_marking_activated','family_library_activated','engine_activated','RL_accepted','GCTS_advantage_claimed'):need(body[key]is False,'body strong flags')
+-        envelope=decode(encoded);need(type(envelope)is dict and set(envelope)=={'schema','encoding',
+-             'expanded_bytes','expanded_sha256','compressed_bytes','compressed_sha256','payload_base64'}
+-             and canonical(envelope)+b'\n'==encoded and envelope['schema']=='ROOT-unit-row-lossless-result-envelope-v1'
++        envelope=decode(encoded);need(canonical(envelope)+b'\n'==encoded and envelope['schema']=='ROOT-unit-row-lossless-result-envelope-v1'
+              and envelope['encoding']=='zlib+base64'and integer(envelope['expanded_bytes'],1,16*1048576),'bounded full envelope')
+         compressed=base64.b64decode(envelope['payload_base64'],validate=True)
+-        need(base64.b64encode(compressed).decode('ascii')==envelope['payload_base64'],'canonical base64 identity')
+         same(raw_pin(compressed),{'sha256':envelope['compressed_sha256'],'bytes':envelope['compressed_bytes']})
+         stream=zlib.decompressobj();expanded=stream.decompress(compressed,16*1048576+1)
+         need(stream.eof and not stream.unused_data and not stream.unconsumed_tail and len(expanded)<=16*1048576,'complete zlib EOF no tail')

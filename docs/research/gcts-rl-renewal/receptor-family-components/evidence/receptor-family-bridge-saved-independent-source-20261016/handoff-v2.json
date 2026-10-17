@@ -1,0 +1,37 @@
+{
+  "findings": {
+    "bytes": 6065,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/review-findings-v2.json",
+    "sha256": "6d667fe88f538496e00c47b132ad10fc42e10ed232f773fe05d054ab6e156cb8"
+  },
+  "preserved_negative": {
+    "bytes": 2097,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "fb8bcc8d70d76fcfbe05de21ecc015d392679487447b15e88e85d4d4bc3292e9"
+  },
+  "raw_evidence": {
+    "bytes": 5277,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/raw-evidence-v2.json",
+    "sha256": "7302f42721e79a6091ad84dcacd1c68282bff47b01dd9b0dd27f90a297be056a"
+  },
+  "review": {
+    "bytes": 3374,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "68fde17ee97bc3939e642eab24d8e6ad0efa2648f576646b6c139c37bcb2ec05"
+  },
+  "schema": "ROOT-receptor-family-component-saved-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+    "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+  },
+  "source_contract": {
+    "bytes": 3259,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v2.json",
+    "sha256": "84b18bdfb6252b6d002770cc59487aa5e796158b182a42ac4434570a5a87c918"
+  },
+  "source_only": true,
+  "status": "CONDITIONAL_SOURCE_PASS_SAVED_BYTE_CONCORDANCE_ONLY"
+}

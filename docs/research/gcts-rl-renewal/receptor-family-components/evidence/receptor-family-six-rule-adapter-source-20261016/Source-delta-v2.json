@@ -1,0 +1,69 @@
+{
+  "edit_count": 4,
+  "edits": [
+    {
+      "label": "own_version",
+      "new_end": 425,
+      "new_start": 347,
+      "new_utf8": "VERSION = 'receptor-family-six-rule-point-adapter-v2-interfaces-and-point-key'",
+      "old_end": 400,
+      "old_start": 347,
+      "old_utf8": "VERSION = 'receptor-family-six-rule-point-adapter-v1'"
+    },
+    {
+      "label": "native_point_key_set_canonical_convention",
+      "new_end": 15821,
+      "new_start": 15765,
+      "new_utf8": "        key = base_semantics.text(tile['placement_key'])",
+      "old_end": 15786,
+      "old_start": 15740,
+      "old_utf8": "        key = canonical(tile['placement_key'])"
+    },
+    {
+      "label": "all_final_output_interfaces_literal_agreement_and_unresolved_flags",
+      "new_end": 19905,
+      "new_start": 19280,
+      "new_utf8": "        output_row = source['row']\n        if (1, output_row) in marks:\n            require(canonical(marks[(1, output_row)]) == canonical(\n                ['formula', base_semantics.text(output['formula'])]), 'literal final output marking')\n        outputs.append(dict(tree(output, tick), row=output_row,\n            occupied_in_input=initial_totals[(0, output_row)] == 1,\n            occupied_in_hypothetical_union=totals[(0, output_row)] == 1,\n            formula_mark_assigned_in_hypothetical_union=(1, output_row) in marks,\n            unresolved_in_hypothetical_union=totals[(0, output_row)] == 0, fact_accepted=False))",
+      "old_end": 19404,
+      "old_start": 19245,
+      "old_utf8": "        outputs.append(dict(tree(output, tick), row=source['row'],\n            occupied_in_input=initial_totals[(0, source['row'])] == 1, fact_accepted=False))"
+    },
+    {
+      "label": "all_final_external_inputs_literal_agreement_and_unresolved_flags",
+      "new_end": 20573,
+      "new_start": 20058,
+      "new_utf8": "    for port in input_records:\n        input_row = port['row']\n        if (1, input_row) in marks:\n            require(canonical(marks[(1, input_row)]) == canonical(\n                ['formula', base_semantics.text(port['formula'])]), 'literal final external input marking')\n        port['occupied_in_hypothetical_union'] = totals[(0, input_row)] == 1\n        port['formula_mark_assigned_in_hypothetical_union'] = (1, input_row) in marks\n        port['unresolved_in_hypothetical_union'] = totals[(0, input_row)] == 0",
+      "old_end": 19666,
+      "old_start": 19557,
+      "old_utf8": "    for port in input_records:\n        port['occupied_in_hypothetical_union'] = totals[(0, port['row'])] == 1"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "parent": {
+    "bytes": 22156,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v1.py",
+    "sha256": "eafdb3a12f2bf9733f54afb9ceeddbfe5cafaee725653c2655a0baaaddcaf4e9"
+  },
+  "patches": [
+    {
+      "bytes": 3325,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v1-to-v2-forward.patch",
+      "sha256": "b3f706d47d114515a5588f0404b247537a56a78f1906b59c05bd8cb9ba193cf5"
+    },
+    {
+      "bytes": 3325,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v2-to-v1-full-inverse.patch",
+      "sha256": "73e91b4680c961066a9a4f7acb7b68eb7bdc64f7ee41e3864111f9c60624cb23"
+    }
+  ],
+  "schema": "receptor-family-six-rule-adapter-Source-delta-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 23063,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v2.py",
+    "sha256": "2371f01560cc458cb8675aea486c7169648f56c53da0f0089b126f775795c4a4"
+  },
+  "source_only": true,
+  "whole_AST_inverse_verified": true
+}

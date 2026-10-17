@@ -1,0 +1,902 @@
+--- /dev/null
++++ independent_receptor_family_expansion_checker_v1.py
+@@ -0,0 +1,899 @@
++"""Independent finite typed-family expansion audit; conditional syntax only.
++
++Source-only prospective implementation. No producer, kernel or host module is
++imported. Native rule admission and point matching belong to the host adapter.
++"""
++import hashlib
++import json
++
++VERSION = 'receptor-family-independent-expansion-checker-v1'
++PRODUCER_VERSION = 'receptor-family-typed-expander-v1'
++SCHEMA = 'receptor-family-conditional-expansion-check-v1'
++LIMITS = {'work': 200000, 'depth': 64, 'expanded_nodes': 4096}
++FLAGS = {'syntax_expansion_only': True, 'conditional_expansion_only': True,
++         'host_membership_accepted': False, 'point_union_accepted': False,
++         'proof_accepted': False, 'engine_activated': False,
++         'pruning_accepted': False, 'RL_learned': False,
++         'runtime_qualified': False}
++PROPOSAL_FLAGS = {'syntax_expansion_only': True, 'proposal_only': True,
++                  'host_membership_accepted': False, 'point_union_accepted': False,
++                  'proof_accepted': False, 'engine_activated': False,
++                  'pruning_accepted': False, 'RL_learned': False,
++                  'runtime_qualified': False}
++
++
++class ExpansionCheckError(ValueError):
++    def __init__(self, code):
++        self.code = code
++        super().__init__('family expansion check: ' + code)
++
++
++class _Incomplete(Exception):
++    pass
++
++
++def _require(ok, code):
++    if not ok:
++        raise ExpansionCheckError(code)
++
++
++def _canonical(value):
++    return json.dumps(value, sort_keys=True, separators=(',', ':'),
++                      ensure_ascii=True, allow_nan=False)
++
++
++def _digest(value):
++    return hashlib.sha256(_canonical(value).encode('ascii')).hexdigest()
++
++
++class _Audit:
++    def __init__(self, tick, limits):
++        self.tick = tick
++        self.limits = dict(LIMITS)
++        if limits is not None:
++            _require(type(limits) is dict and all(type(key) is str for key in limits) and set(limits) <= set(LIMITS), 'limits fields')
++            for name, value in limits.items():
++                _require(type(value) is int and 0 < value <= LIMITS[name], 'limits literal bound')
++                self.limits[name] = value
++        self.steps = 0
++        self.nodes = []
++        self.frames = []
++        self.renamings = []
++        self.conditions = []
++
++    def visit(self, depth=0):
++        self.tick()
++        self.steps += 1
++        if self.steps > self.limits['work'] or depth > self.limits['depth']:
++            raise _Incomplete('independent syntax work/depth unfinished')
++
++    def data(self, value, depth=0, active=None):
++        self.visit(depth)
++        if value is None or type(value) in (str, bool, int):
++            return value
++        _require(type(value) in (list, dict), 'literal JSON data')
++        active = set() if active is None else active
++        _require(id(value) not in active, 'cyclic JSON data')
++        active.add(id(value))
++        try:
++            if type(value) is list:
++                return [self.data(item, depth + 1, active) for item in value]
++            _require(all(type(key) is str for key in value), 'literal JSON keys')
++            return {key: self.data(item, depth + 1, active) for key, item in value.items()}
++        finally:
++            active.remove(id(value))
++
++    def fields(self, value, names, code):
++        self.visit()
++        _require(type(value) is dict and set(value) == set(names), code)
++
++    def name(self, value):
++        self.visit()
++        _require(type(value) is str and value != '', 'nonempty literal name')
++        return value
++
++    def identifier(self, value):
++        self.name(value)
++        _require(value[0].isascii() and value[0].isalpha() and
++                 all(c.isascii() and (c.isalnum() or c in '_-') for c in value), 'template identifier')
++        return value
++
++    def unique(self, values, code):
++        _require(type(values) is list and all(type(v) is str for v in values), code)
++        _require(len(values) == len(set(values)), code)
++        return values
++
++    def native(self, value, kind, placeholders=(), depth=0):
++        self.visit(depth)
++        _require(type(value) is list and value and type(value[0]) is str, 'native AST fields')
++        tag = value[0]
++        if kind == 'TERM':
++            if tag == 'var':
++                _require(len(value) == 2 and type(value[1]) is str and
++                         value[1] in self.names | set(placeholders), 'native variable scope')
++            else:
++                _require(tag == 'fun' and len(value) == 3 and type(value[2]) is list and
++                         type(value[1]) is str and value[1] in self.host['functions'] and
++                         len(value[2]) == self.host['functions'][value[1]], 'native function arity')
++                for child in value[2]:
++                    self.native(child, 'TERM', placeholders, depth + 1)
++        elif tag == 'bot':
++            _require(len(value) == 1, 'native bot fields')
++        elif tag == 'eq':
++            _require(len(value) == 3, 'native equality fields')
++            self.native(value[1], 'TERM', placeholders, depth + 1)
++            self.native(value[2], 'TERM', placeholders, depth + 1)
++        elif tag == 'pred':
++            _require(len(value) == 3 and type(value[2]) is list and type(value[1]) is str and
++                     value[1] in self.host['predicates'] and
++                     len(value[2]) == self.host['predicates'][value[1]], 'native predicate arity')
++            for child in value[2]:
++                self.native(child, 'TERM', placeholders, depth + 1)
++        elif tag == 'all':
++            _require(len(value) == 3 and type(value[1]) is str and value[1] in self.names,
++                     'native binder scope')
++            self.native(value[2], 'FORMULA', placeholders, depth + 1)
++        else:
++            _require((tag == 'not' and len(value) == 2) or
++                     (tag in ('imp', 'and', 'or') and len(value) == 3), 'native connective arity')
++            for child in value[1:]:
++                self.native(child, 'FORMULA', placeholders, depth + 1)
++
++    def free(self, value, kind='FORMULA', bound=frozenset(), depth=0):
++        self.visit(depth)
++        tag = value[0]
++        if kind == 'TERM':
++            if tag == 'var':
++                return set() if value[1] in bound else {value[1]}
++            result = set()
++            for term in value[2]:
++                result |= self.free(term, 'TERM', bound, depth + 1)
++            return result
++        if tag == 'all':
++            return self.free(value[2], 'FORMULA', bound | {value[1]}, depth + 1)
++        if tag == 'bot':
++            return set()
++        if tag == 'eq':
++            return self.free(value[1], 'TERM', bound, depth + 1) | self.free(value[2], 'TERM', bound, depth + 1)
++        if tag == 'pred':
++            result = set()
++            for term in value[2]:
++                result |= self.free(term, 'TERM', bound, depth + 1)
++            return result
++        result = set()
++        for child in value[1:]:
++            result |= self.free(child, 'FORMULA', bound, depth + 1)
++        return result
++
++    def all_names(self, value, kind='FORMULA'):
++        self.visit()
++        if kind == 'TERM':
++            if value[0] == 'var':
++                return {value[1]}
++            out = set()
++            for item in value[2]:
++                out |= self.all_names(item, 'TERM')
++            return out
++        if value[0] == 'bot':
++            return set()
++        if value[0] == 'all':
++            return {value[1]} | self.all_names(value[2])
++        if value[0] == 'eq':
++            return self.all_names(value[1], 'TERM') | self.all_names(value[2], 'TERM')
++        if value[0] == 'pred':
++            out = set()
++            for item in value[2]:
++                out |= self.all_names(item, 'TERM')
++            return out
++        out = set()
++        for item in value[1:]:
++            out |= self.all_names(item)
++        return out
++
++    def host_check(self, host):
++        self.fields(host, ('schema', 'host_id', 'dialect', 'binding', 'authority',
++                          'functions', 'predicates', 'variable_names', 'features', 'rules', 'ordered_Gamma'), 'host fields')
++        _require(host['schema'] == 'receptor-family-host-v1', 'host schema')
++        self.name(host['host_id']); self.name(host['dialect'])
++        _require(type(host['binding']) is dict and host['binding'] and type(host['authority']) is dict, 'full host binding/authority objects')
++        for field in ('functions', 'predicates'):
++            _require(type(host[field]) is dict, 'host signature table')
++            for symbol, arity in host[field].items():
++                self.name(symbol)
++                _require(type(arity) is int and arity >= 0, 'host signature arity')
++        for value in self.unique(host['variable_names'], 'host variable names'):
++            self.name(value)
++        for value in self.unique(host['features'], 'host feature names'):
++            self.name(value)
++        _require(type(host['rules']) is dict, 'host rule table')
++        for rule, specification in host['rules'].items():
++            self.name(rule); self.fields(specification, ('input_count', 'arguments'), 'host rule fields')
++            _require(type(specification['input_count']) is int and specification['input_count'] >= 0 and
++                     type(specification['arguments']) is dict, 'host rule arity')
++            for name, kind in specification['arguments'].items():
++                self.name(name)
++                _require(kind in ('FORMULA', 'TERM', 'VARIABLE', 'PREDICATE_SYMBOL', 'LITERAL'), 'host rule argument kind')
++        self.host = host
++        self.names = set(host['variable_names'])
++        _require(type(host['ordered_Gamma']) is list, 'whole ordered Gamma')
++        for formula in host['ordered_Gamma']:
++            self.native(formula, 'FORMULA')
++
++    def template(self, tree, kind, params, lexical=(), depth=0):
++        self.visit(depth)
++        _require(type(tree) is dict and type(tree.get('node')) is str, 'template node')
++        tag = tree['node']
++        if kind == 'TERM':
++            if tag == 'var':
++                self.fields(tree, ('node', 'variable_id'), 'variable template fields')
++                ident = self.identifier(tree['variable_id'])
++                _require(ident in params and params[ident]['kind'] == 'VARIABLE', 'variable template declaration')
++                _require(params[ident]['role'] != 'BOUND' or ident in lexical, 'bound variable lexical scope')
++                return
++            if tag == 'fun':
++                self.fields(tree, ('node', 'symbol', 'arguments'), 'function template fields')
++                _require(type(tree['symbol']) is str and tree['symbol'] in self.host['functions'], 'function template symbol')
++                arity = self.host['functions'][tree['symbol']]
++            else:
++                self.fields(tree, ('node', 'parameter', 'arguments'), 'term abstraction fields')
++                ident = self.identifier(tree['parameter'])
++                _require(tag == 'term_meta' and ident in params and params[ident]['kind'] == 'TERM', 'term abstraction declaration')
++                arity = len(params[ident]['formal_variables'])
++            _require(type(tree['arguments']) is list and len(tree['arguments']) == arity, 'term template arity')
++            for item in tree['arguments']:
++                self.template(item, 'TERM', params, lexical, depth + 1)
++            return
++        if tag == 'bot':
++            self.fields(tree, ('node',), 'bot template fields')
++        elif tag == 'formula_meta':
++            self.fields(tree, ('node', 'parameter', 'arguments'), 'formula abstraction fields')
++            ident = self.identifier(tree['parameter'])
++            _require(ident in params and params[ident]['kind'] == 'FORMULA' and type(tree['arguments']) is list and
++                     len(tree['arguments']) == len(params[ident]['formal_variables']), 'formula abstraction arity')
++            for term in tree['arguments']:
++                self.template(term, 'TERM', params, lexical, depth + 1)
++        elif tag == 'pred':
++            self.fields(tree, ('node', 'symbol', 'arguments'), 'predicate template fields')
++            symbol = tree['symbol']; _require(type(symbol) is dict and len(symbol) == 1, 'predicate symbol reference')
++            if set(symbol) == {'literal'}:
++                _require(type(symbol['literal']) is str and symbol['literal'] in self.host['predicates'], 'declared predicate literal')
++                arity = self.host['predicates'][symbol['literal']]
++            else:
++                self.fields(symbol, ('parameter',), 'predicate parameter reference')
++                ident = self.identifier(symbol['parameter'])
++                _require(ident in params and params[ident]['kind'] == 'PREDICATE_SYMBOL', 'predicate parameter declaration')
++                arity = params[ident]['arity']
++            _require(type(tree['arguments']) is list and len(tree['arguments']) == arity, 'predicate template arity')
++            for term in tree['arguments']:
++                self.template(term, 'TERM', params, lexical, depth + 1)
++        elif tag == 'eq':
++            self.fields(tree, ('node', 'left', 'right'), 'equality template fields')
++            self.template(tree['left'], 'TERM', params, lexical, depth + 1)
++            self.template(tree['right'], 'TERM', params, lexical, depth + 1)
++        elif tag == 'all':
++            self.fields(tree, ('node', 'binder_id', 'body'), 'universal template fields')
++            ident = self.identifier(tree['binder_id'])
++            _require(ident in params and params[ident]['kind'] == 'VARIABLE' and
++                     params[ident]['role'] == 'BOUND' and ident not in lexical, 'distinct lexical binder ID')
++            self.template(tree['body'], 'FORMULA', params, lexical + (ident,), depth + 1)
++        elif tag == 'not':
++            self.fields(tree, ('node', 'body'), 'negation template fields')
++            self.template(tree['body'], 'FORMULA', params, lexical, depth + 1)
++        else:
++            self.fields(tree, ('node', 'left', 'right'), 'binary template fields')
++            _require(tag in ('imp', 'and', 'or'), 'known formula template')
++            self.template(tree['left'], 'FORMULA', params, lexical, depth + 1)
++            self.template(tree['right'], 'FORMULA', params, lexical, depth + 1)
++
++    def symbol(self, value, params):
++        _require(type(value) is dict and len(value) == 1, 'predicate argument reference')
++        if set(value) == {'literal'}:
++            _require(type(value['literal']) is str and value['literal'] in self.host['predicates'], 'predicate argument literal')
++        else:
++            self.fields(value, ('parameter',), 'predicate argument parameter')
++            ident = self.identifier(value['parameter'])
++            _require(ident in params and params[ident]['kind'] == 'PREDICATE_SYMBOL', 'predicate argument declaration')
++
++    def parameters(self, descriptor):
++        _require(type(descriptor['parameters']) is list, 'ordered parameters')
++        params = {}
++        for item in descriptor['parameters']:
++            _require(type(item) is dict and 'id' in item and 'kind' in item, 'parameter fields')
++            ident = self.identifier(item['id']); kind = item['kind']
++            _require(ident not in params and ident not in ('GAMMA', 'INPUTS', 'OUTPUTS', 'ROOT_INPUTS'), 'duplicate or reserved parameter ID')
++            if kind in ('TERM', 'FORMULA'):
++                self.fields(item, ('id', 'kind', 'formal_variables', 'allowed_external_free_variables'), 'abstraction parameter fields')
++                self.unique(item['formal_variables'], 'formal variable IDs')
++                self.unique(item['allowed_external_free_variables'], 'external free variable IDs')
++            elif kind == 'VARIABLE':
++                self.fields(item, ('id', 'kind', 'role', 'distinct_from', 'allowed_names_policy'), 'variable parameter fields')
++                _require(item['role'] in ('FREE_PARAMETER', 'BOUND', 'EIGEN', 'EQUALITY_HOLE') and
++                         item['allowed_names_policy'] == 'HOST_DECLARED_SCOPE', 'variable parameter role')
++                self.unique(item['distinct_from'], 'distinct variable IDs')
++            else:
++                self.fields(item, ('id', 'kind', 'arity'), 'predicate parameter fields')
++                _require(kind == 'PREDICATE_SYMBOL' and type(item['arity']) is int and item['arity'] >= 0, 'predicate parameter arity')
++            params[ident] = item
++        for item in params.values():
++            references = item.get('formal_variables', []) + item.get('allowed_external_free_variables', []) + item.get('distinct_from', [])
++            for ident in references:
++                _require(ident in params and params[ident]['kind'] == 'VARIABLE', 'declared variable ID dependency')
++            _require(item['id'] not in item.get('distinct_from', []), 'self variable distinctness')
++        return params
++
++    def reference(self, ref, inputs, hypotheses, earlier):
++        _require(type(ref) is dict, 'ordered reference object')
++        if set(ref) == {'input'}:
++            _require(self.identifier(ref['input']) in inputs, 'declared input reference')
++        elif set(ref) == {'hypothesis'}:
++            _require(self.identifier(ref['hypothesis']) in hypotheses, 'declared hypothesis reference')
++        else:
++            _require(set(ref) in ({'step'}, {'step', 'output'}), 'step reference fields')
++            _require(self.identifier(ref['step']) in earlier, 'strict earlier step reference')
++            definition = earlier[ref['step']]
++            if definition['kind'] == 'PRIMITIVE':
++                _require(set(ref) == {'step'}, 'primitive has one implicit output')
++            else:
++                _require(set(ref) == {'step', 'output'} and self.identifier(ref['output']) in
++                         [out['id'] for out in self.registry[definition['family_ref']]['outputs']], 'explicit family output reference')
++
++    def registry_check(self, registry):
++        _require(type(registry) is list and registry, 'full descriptor registry list')
++        self.registry = {}
++        self.params = {}
++        for descriptor in registry:
++            self.fields(descriptor, ('schema', 'family_id', 'origin', 'provenance', 'required_host_features',
++                                    'parameters', 'hypotheses', 'inputs', 'outputs', 'body', 'side_conditions', 'dependencies'), 'descriptor fields')
++            _require(descriptor['schema'] == 'receptor-lemma-family-v2', 'descriptor v2 schema')
++            _require(descriptor['origin'] in ('HUMAN_SPECIFIED', 'SEARCH_EXTRACTED', 'LEARNED_PROPOSAL') and
++                     type(descriptor['provenance']) is dict, 'descriptor provenance')
++            preimage = {key: value for key, value in descriptor.items() if key not in ('family_id', 'provenance')}
++            ident = _digest(preimage)
++            _require(descriptor['family_id'] == ident and ident not in self.registry, 'full descriptor identity or duplicate')
++            self.registry[ident] = descriptor
++        for ident, descriptor in self.registry.items():
++            params = self.parameters(descriptor); self.params[ident] = params
++            for feature in self.unique(descriptor['required_host_features'], 'required features'):
++                _require(feature in self.host['features'], 'unsupported host feature')
++            self.unique(descriptor['dependencies'], 'exact dependency list')
++            for dep in descriptor['dependencies']:
++                _require(dep in self.registry, 'registered dependency descriptor')
++            for field, extra in (('hypotheses', ('ordered_context_role', 'discharge')), ('inputs', ('ordered_role', 'sharing'))):
++                _require(type(descriptor[field]) is list, 'ordered interface list')
++                namespace = set()
++                for port in descriptor[field]:
++                    self.fields(port, ('id', 'formula') + extra, 'interface descriptor fields')
++                    pid = self.identifier(port['id']); _require(pid not in namespace, 'unique descriptor ID')
++                    namespace.add(pid); self.template(port['formula'], 'FORMULA', params)
++                    self.name(port[extra[0]])
++                    _require(port[extra[1]] in (('NONE_UNLESS_EXPLICIT_HOST_RULE',) if field == 'hypotheses' else
++                             ('ALLOW_SAME_EXACT_PRIOR_SOURCE', 'DISTINCT_SOURCE_REQUIRED')), 'interface port policy')
++            _require(type(descriptor['body']) is list and type(descriptor['outputs']) is list and descriptor['outputs'], 'body and outputs')
++            inputs = {x['id'] for x in descriptor['inputs']}; hypotheses = {x['id'] for x in descriptor['hypotheses']}
++            earlier = {}; called = []; namespace = set()
++            for item in descriptor['body']:
++                _require(type(item) is dict and 'id' in item and 'kind' in item, 'body node fields')
++                nodeid = self.identifier(item['id']); _require(nodeid not in namespace, 'unique body node ID')
++                if item['kind'] == 'PRIMITIVE':
++                    self.fields(item, ('id', 'kind', 'rule', 'formula', 'ordered_inputs', 'arguments'), 'primitive descriptor fields')
++                    _require(type(item['rule']) is str and item['rule'] in self.host['rules'], 'unsupported primitive rule')
++                    rule = self.host['rules'][item['rule']]
++                    _require(type(item['arguments']) is dict and set(item['arguments']) == set(rule['arguments']), 'exact primitive arguments')
++                    self.template(item['formula'], 'FORMULA', params)
++                    for name, arg in item['arguments'].items():
++                        self.fields(arg, ('type', 'value'), 'typed primitive argument fields')
++                        _require(arg['type'] == rule['arguments'][name], 'typed primitive argument kind')
++                        self.argument_template(arg, params)
++                    _require(type(item['ordered_inputs']) is list and len(item['ordered_inputs']) == rule['input_count'], 'primitive ordered arity')
++                else:
++                    self.fields(item, ('id', 'kind', 'family_ref', 'substitution', 'ordered_inputs', 'ordered_hypotheses'), 'family call fields')
++                    _require(item['kind'] == 'FAMILY_CALL' and type(item['family_ref']) is str and item['family_ref'] in self.registry, 'registered family call')
++                    child = self.registry[item['family_ref']]
++                    _require(type(item['ordered_inputs']) is list and len(item['ordered_inputs']) == len(child['inputs']) and
++                             type(item['ordered_hypotheses']) is list and len(item['ordered_hypotheses']) == len(child['hypotheses']), 'nested interface arity')
++                    if item['family_ref'] not in called:
++                        called.append(item['family_ref'])
++                    self.call_template(item['substitution'], self.parameters(child), params)
++                    for ref in item['ordered_hypotheses']:
++                        self.reference(ref, inputs, hypotheses, earlier)
++                for ref in item['ordered_inputs']:
++                    self.reference(ref, inputs, hypotheses, earlier)
++                namespace.add(nodeid); earlier[nodeid] = item
++            _require(set(called) == set(descriptor['dependencies']), 'no missing or unused declared dependency')
++            namespace = set()
++            for output in descriptor['outputs']:
++                self.fields(output, ('id', 'formula', 'source'), 'output descriptor fields')
++                oid = self.identifier(output['id']); _require(oid not in namespace, 'unique output ID')
++                namespace.add(oid); self.template(output['formula'], 'FORMULA', params)
++                self.reference(output['source'], inputs, hypotheses, earlier)
++            _require(type(descriptor['side_conditions']) is list, 'side condition list')
++            for condition in descriptor['side_conditions']:
++                self.fields(condition, ('relation', 'arguments'), 'side condition fields')
++                _require(condition['relation'] in ('DISTINCT', 'NOT_FREE_IN', 'FREE_SUBSET', 'DECLARED_SYMBOL_ARITY', 'HOST_PROFILE_MEMBER') and
++                         type(condition['arguments']) is list and all(type(x) is str for x in condition['arguments']), 'typed side condition')
++                relation, args = condition['relation'], condition['arguments']
++                variable = lambda name: name in params and params[name]['kind'] == 'VARIABLE'
++                free_operand = lambda name: name in ('GAMMA', 'INPUTS', 'OUTPUTS') or (name in params and params[name]['kind'] in ('TERM', 'FORMULA'))
++                if relation == 'DISTINCT':
++                    _require(len(args) >= 2 and all(variable(name) for name in args), 'declared DISTINCT operands')
++                elif relation == 'NOT_FREE_IN':
++                    _require(len(args) == 2 and variable(args[0]) and free_operand(args[1]), 'declared NOT_FREE_IN operands')
++                elif relation == 'FREE_SUBSET':
++                    _require(len(args) >= 1 and free_operand(args[0]) and all(variable(name) for name in args[1:]), 'declared FREE_SUBSET operands')
++                elif relation == 'DECLARED_SYMBOL_ARITY':
++                    _require(len(args) == 2 and args[0] in params and params[args[0]]['kind'] == 'PREDICATE_SYMBOL' and
++                             args[1].isascii() and args[1].isdigit() and str(int(args[1])) == args[1], 'declared arity operands')
++                else:
++                    _require(len(args) == 1 and args[0] in params, 'declared profile operand')
++        visited = set(); active = set()
++        def acyclic(ident, depth):
++            self.visit(depth)
++            _require(ident not in active, 'cyclic dependency closure')
++            if ident in visited:
++                return
++            active.add(ident)
++            for dep in self.registry[ident]['dependencies']:
++                acyclic(dep, depth + 1)
++            active.remove(ident); visited.add(ident)
++        for ident in self.registry:
++            acyclic(ident, 0)
++
++    def argument_template(self, argument, params):
++        kind, value = argument['type'], argument['value']
++        if kind in ('TERM', 'FORMULA'):
++            self.template(value, kind, params)
++        elif kind == 'VARIABLE':
++            self.fields(value, ('variable_id',), 'variable argument fields')
++            ident = self.identifier(value['variable_id'])
++            _require(ident in params and params[ident]['kind'] == 'VARIABLE', 'variable argument declaration')
++        elif kind == 'PREDICATE_SYMBOL':
++            self.symbol(value, params)
++        else:
++            _require(kind == 'LITERAL', 'literal argument kind')
++
++    def call_template(self, substitution, child_params, params):
++        _require(type(substitution) is dict and set(substitution) == set(child_params), 'complete nested substitution')
++        for ident, spec in child_params.items():
++            value = substitution[ident]; kind = spec['kind']
++            if kind == 'VARIABLE':
++                self.fields(value, ('variable_id',), 'nested variable fields')
++                variable = self.identifier(value['variable_id'])
++                _require(variable in params and params[variable]['kind'] == 'VARIABLE', 'nested variable declaration')
++            elif kind == 'PREDICATE_SYMBOL':
++                self.symbol(value, params)
++            else:
++                self.fields(value, ('formal_variables', 'body'), 'nested abstraction fields')
++                self.unique(value['formal_variables'], 'nested abstraction formals')
++                _require(len(value['formal_variables']) == len(spec['formal_variables']), 'nested formal arity')
++                for variable in value['formal_variables']:
++                    _require(variable in params and params[variable]['kind'] == 'VARIABLE', 'nested formal variable declaration')
++                self.template(value['body'], kind, params, tuple(value['formal_variables']))
++
++    def bindings(self, values, params):
++        _require(type(values) is dict and set(values) == set(params), 'complete typed substitution')
++        for ident, specification in params.items():
++            value = values[ident]; kind = specification['kind']
++            if kind == 'VARIABLE':
++                _require(type(value) is str and value in self.names, 'mapped variable host scope')
++            elif kind == 'PREDICATE_SYMBOL':
++                _require(type(value) is str and value in self.host['predicates'] and
++                         self.host['predicates'][value] == specification['arity'], 'mapped predicate arity')
++            else:
++                self.fields(value, ('formal_names', 'body'), 'native abstraction binding fields')
++                self.unique(value['formal_names'], 'distinct native abstraction formals')
++                _require(len(value['formal_names']) == len(specification['formal_variables']), 'native abstraction formal arity')
++                for name in value['formal_names']:
++                    self.name(name)
++                self.native(value['body'], kind, value['formal_names'])
++        for ident, specification in params.items():
++            if specification['kind'] in ('TERM', 'FORMULA'):
++                value = values[ident]
++                permitted = {values[x] for x in specification['allowed_external_free_variables']}
++                _require(self.free(value['body'], specification['kind']) - set(value['formal_names']) <= permitted,
++                         'abstraction external free-variable scope')
++
++    def fresh(self, used):
++        for name in self.host['variable_names']:
++            self.visit()
++            if name not in used:
++                return name
++        raise _Incomplete('finite host name supply unfinished')
++
++    def renamed(self, path, location, variable, old, new, reason):
++        if old != new:
++            self.renamings.append({'call_path': list(path), 'location': list(location),
++                                  'variable_id': variable, 'from': old, 'to': new, 'reason': reason})
++
++    def alpha_body(self, value, old, new, kind='FORMULA'):
++        self.visit()
++        tag = value[0]
++        if kind == 'TERM':
++            if tag == 'var':
++                return ['var', new if value[1] == old else value[1]]
++            return ['fun', value[1], [self.alpha_body(t, old, new, 'TERM') for t in value[2]]]
++        if tag == 'all':
++            return value if value[1] == old else ['all', value[1], self.alpha_body(value[2], old, new)]
++        if tag == 'eq':
++            return ['eq', self.alpha_body(value[1], old, new, 'TERM'), self.alpha_body(value[2], old, new, 'TERM')]
++        if tag == 'pred':
++            return ['pred', value[1], [self.alpha_body(t, old, new, 'TERM') for t in value[2]]]
++        return [tag] + [self.alpha_body(t, old, new) for t in value[1:]]
++
++    def substitute_native(self, value, replacements, kind, path, location):
++        self.visit()
++        tag = value[0]
++        if kind == 'TERM':
++            if tag == 'var':
++                return replacements.get(value[1], value)
++            return ['fun', value[1], [self.substitute_native(term, replacements, 'TERM', path, location + [2, i])
++                                      for i, term in enumerate(value[2])]]
++        if tag == 'all':
++            old = value[1]; body = value[2]
++            remaining = {key: term for key, term in replacements.items() if key != old}
++            relevant = self.free(body) & set(remaining)
++            capture = set()
++            for name in relevant:
++                capture |= self.free(remaining[name], 'TERM')
++            new = old
++            if old in capture:
++                used = self.all_names(body) | capture | set(remaining)
++                new = self.fresh(used)
++                body = self.alpha_body(body, old, new)
++                self.renamed(path, location, None, old, new, 'ABSTRACTION_CAPTURE')
++            return ['all', new, self.substitute_native(body, remaining, 'FORMULA', path, location + [2])]
++        if tag == 'eq':
++            return ['eq'] + [self.substitute_native(value[i], replacements, 'TERM', path, location + [i]) for i in (1, 2)]
++        if tag == 'pred':
++            return ['pred', value[1], [self.substitute_native(term, replacements, 'TERM', path, location + [2, i])
++                                       for i, term in enumerate(value[2])]]
++        return [tag] + [self.substitute_native(child, replacements, 'FORMULA', path, location + [i])
++                        for i, child in enumerate(value[1:], 1)]
++
++    def template_external(self, tree, params, values, lexical):
++        self.visit()
++        tag = tree['node']
++        if tag == 'var':
++            return set() if tree['variable_id'] in lexical else {values[tree['variable_id']]}
++        if tag in ('formula_meta', 'term_meta'):
++            value = values[tree['parameter']]
++            kind = 'FORMULA' if tag == 'formula_meta' else 'TERM'
++            result = self.free(value['body'], kind) - set(value['formal_names'])
++            for term in tree['arguments']:
++                result |= self.template_external(term, params, values, lexical)
++            return result
++        if tag in ('fun', 'pred'):
++            children = tree['arguments']
++        elif tag == 'all':
++            return self.template_external(tree['body'], params, values, lexical | {tree['binder_id']})
++        elif tag == 'not':
++            children = [tree['body']]
++        elif tag == 'bot':
++            children = []
++        else:
++            children = [tree['left'], tree['right']]
++        result = set()
++        for child in children:
++            result |= self.template_external(child, params, values, lexical)
++        return result
++
++    def instantiate(self, tree, kind, params, values, path, location, lexical=None):
++        self.visit()
++        lexical = {} if lexical is None else lexical
++        tag = tree['node']
++        if tag == 'var':
++            return ['var', lexical.get(tree['variable_id'], values[tree['variable_id']])]
++        if tag in ('formula_meta', 'term_meta'):
++            abstraction = values[tree['parameter']]
++            args = [self.instantiate(term, 'TERM', params, values, path, location + ['arguments', i], lexical)
++                    for i, term in enumerate(tree['arguments'])]
++            replacements = dict(zip(abstraction['formal_names'], args))
++            return self.substitute_native(abstraction['body'], replacements, kind, path, location)
++        if tag == 'fun':
++            return ['fun', tree['symbol'], [self.instantiate(term, 'TERM', params, values, path, location + ['arguments', i], lexical)
++                                           for i, term in enumerate(tree['arguments'])]]
++        if tag == 'pred':
++            symbol = tree['symbol'].get('literal', values.get(tree['symbol'].get('parameter')))
++            return ['pred', symbol, [self.instantiate(term, 'TERM', params, values, path, location + ['arguments', i], lexical)
++                                    for i, term in enumerate(tree['arguments'])]]
++        if tag == 'all':
++            ident = tree['binder_id']; old = values[ident]
++            # Avoid accidental external capture; explicit abstraction arguments
++            # referring to this lexical ID remain intentional bound dependence.
++            capture = set(lexical.values()) | self.template_external(tree['body'], params, values, set(lexical) | {ident})
++            new = old
++            if old in capture:
++                new = self.fresh(capture)
++            self.renamed(path, location, ident, old, new, 'TEMPLATE_BINDER')
++            child_scope = dict(lexical); child_scope[ident] = new
++            return ['all', new, self.instantiate(tree['body'], 'FORMULA', params, values, path, location + ['body'], child_scope)]
++        if tag == 'bot':
++            return ['bot']
++        if tag == 'eq':
++            return ['eq', self.instantiate(tree['left'], 'TERM', params, values, path, location + ['left'], lexical),
++                    self.instantiate(tree['right'], 'TERM', params, values, path, location + ['right'], lexical)]
++        if tag == 'not':
++            return ['not', self.instantiate(tree['body'], 'FORMULA', params, values, path, location + ['body'], lexical)]
++        return [tag, self.instantiate(tree['left'], 'FORMULA', params, values, path, location + ['left'], lexical),
++                self.instantiate(tree['right'], 'FORMULA', params, values, path, location + ['right'], lexical)]
++
++    def argument(self, argument, params, values, path, location):
++        kind = argument['type']; value = argument['value']
++        if kind in ('TERM', 'FORMULA'):
++            return self.instantiate(value, kind, params, values, path, location)
++        if kind == 'VARIABLE':
++            return values[value['variable_id']]
++        if kind == 'PREDICATE_SYMBOL':
++            return value.get('literal', values.get(value.get('parameter')))
++        return value
++
++    def condition_checks(self, descriptor, params, values, hypotheses, inputs, outputs, path):
++        def free_of(reference):
++            self.visit()
++            if reference in params:
++                specification = params[reference]
++                _require(specification['kind'] in ('TERM', 'FORMULA'), 'free-variable relation operand kind')
++                binding = values[reference]
++                return self.free(binding['body'], specification['kind']) - set(binding['formal_names'])
++            if reference == 'GAMMA':
++                formulas = self.host['ordered_Gamma']
++            elif reference == 'INPUTS':
++                formulas = [port['formula'] for port in inputs]
++            elif reference == 'OUTPUTS':
++                formulas = [port['formula'] for port in outputs]
++            else:
++                raise ExpansionCheckError('unknown free-variable relation operand')
++            result = set()
++            for formula in formulas:
++                result |= self.free(formula)
++            return result
++        def record(index, relation, arguments, satisfied):
++            _require(satisfied, 'unsatisfied scope relation ' + relation)
++            self.conditions.append({'call_path': list(path), 'index': index, 'relation': relation,
++                                    'arguments': arguments, 'satisfied': True})
++        for ident, specification in params.items():
++            if specification['kind'] == 'VARIABLE':
++                distinct = specification['distinct_from']
++                if distinct:
++                    record(-1, 'AUTO_DISTINCT', [ident] + distinct, all(values[ident] != values[x] for x in distinct))
++                if specification['role'] == 'EIGEN':
++                    context = set()
++                    for formula in self.host['ordered_Gamma'] + self.root_input_formulas:
++                        context |= self.free(formula)
++                    record(-1, 'AUTO_EIGEN', [ident, 'GAMMA', 'ROOT_INPUTS'], values[ident] not in context)
++        for index, condition in enumerate(descriptor['side_conditions']):
++            relation = condition['relation']; args = condition['arguments']; self.visit()
++            if relation == 'DISTINCT':
++                _require(len(args) >= 2 and all(x in params and params[x]['kind'] == 'VARIABLE' for x in args), 'DISTINCT operands')
++                names = [values[x] for x in args]; ok = len(names) == len(set(names))
++            elif relation == 'NOT_FREE_IN':
++                _require(len(args) == 2 and args[0] in params and params[args[0]]['kind'] == 'VARIABLE', 'NOT_FREE_IN operands')
++                ok = values[args[0]] not in free_of(args[1])
++            elif relation == 'FREE_SUBSET':
++                _require(args and all(x in params and params[x]['kind'] == 'VARIABLE' for x in args[1:]), 'FREE_SUBSET operands')
++                ok = free_of(args[0]) <= {values[x] for x in args[1:]}
++            elif relation == 'DECLARED_SYMBOL_ARITY':
++                _require(len(args) == 2 and args[0] in params and params[args[0]]['kind'] == 'PREDICATE_SYMBOL' and
++                         args[1].isascii() and args[1].isdigit() and str(int(args[1])) == args[1], 'DECLARED_SYMBOL_ARITY operands')
++                ok = self.host['predicates'][values[args[0]]] == int(args[1])
++            else:
++                _require(relation == 'HOST_PROFILE_MEMBER' and len(args) == 1 and args[0] in params, 'HOST_PROFILE_MEMBER operand')
++                # This means only the signature/name syntax checked above.
++                # Finite native membership is deliberately not asserted.
++                ok = True
++            record(index, relation, args, ok)
++
++    def node(self, rule, formula, arguments, sources, origin):
++        self.visit()
++        if len(self.nodes) >= self.limits['expanded_nodes']:
++            raise _Incomplete('independent expanded-node budget unfinished')
++        specification = self.host['rules'][rule]
++        _require(len(sources) == specification['input_count'] and set(arguments) == set(specification['arguments']), 'expanded primitive shape')
++        self.native(formula, 'FORMULA')
++        for name, value in arguments.items():
++            kind = specification['arguments'][name]
++            if kind in ('TERM', 'FORMULA'):
++                self.native(value, kind)
++            elif kind == 'VARIABLE':
++                _require(type(value) is str and value in self.names, 'expanded variable argument')
++            elif kind == 'PREDICATE_SYMBOL':
++                _require(type(value) is str and value in self.host['predicates'], 'expanded predicate argument')
++        gamma_index = None
++        if rule == 'assumption':
++            gamma_index = arguments.get('index')
++            _require(type(gamma_index) is int and 0 <= gamma_index < len(self.host['ordered_Gamma']) and
++                     _canonical(self.host['ordered_Gamma'][gamma_index]) == _canonical(formula), 'expanded exact original assumption')
++        ident = 'n' + str(len(self.nodes))
++        self.nodes.append({'id': ident, 'rule': rule, 'formula': formula, 'arguments': arguments,
++                           'ordered_inputs': [source['source'] for source in sources], 'origin': origin})
++        return {'formula': formula, 'source': {'node': ident}, 'gamma_index': gamma_index,
++                'identity': {'node': ident}}
++
++    def resolve(self, reference, inputs, hypotheses, earlier):
++        self.visit()
++        if 'input' in reference:
++            return inputs[reference['input']]
++        if 'hypothesis' in reference:
++            return hypotheses[reference['hypothesis']]
++        value = earlier[reference['step']]
++        return value[reference['output']] if 'output' in reference else value
++
++    def expand_frame(self, ident, values, inputs, hypotheses, path):
++        self.visit(len(path))
++        descriptor = self.registry[ident]; params = self.params[ident]
++        self.bindings(values, params)
++        frame = {'call_path': list(path), 'family_id': ident, 'substitution': values,
++                 'hypotheses': [], 'inputs': [], 'outputs': []}
++        self.frames.append(frame)
++        for field, source_map in (('hypotheses', hypotheses), ('inputs', inputs)):
++            for index, port in enumerate(descriptor[field]):
++                actual = source_map[port['id']]
++                formula = self.instantiate(port['formula'], 'FORMULA', params, values, path, [field, index, 'formula'])
++                _require(_canonical(actual['formula']) == _canonical(formula), 'all ordered ' + field + ' formulas')
++                row = {'port_id': port['id'], 'formula': formula, 'source': actual['source']}
++                if field == 'hypotheses':
++                    occurrence = actual['gamma_index']
++                    _require(type(occurrence) is int and 0 <= occurrence < len(self.host['ordered_Gamma']) and
++                             _canonical(self.host['ordered_Gamma'][occurrence]) == _canonical(formula), 'nested original Gamma provenance')
++                    row['gamma_index'] = occurrence
++                frame[field].append(row)
++        for index, port in enumerate(descriptor['inputs']):
++            if port['sharing'] == 'DISTINCT_SOURCE_REQUIRED':
++                identity = _canonical(inputs[port['id']]['identity'])
++                _require(all(index == other or identity != _canonical(inputs[other_port['id']]['identity'])
++                             for other, other_port in enumerate(descriptor['inputs'])), 'exact external/internal source distinctness')
++        earlier = {}
++        for index, body in enumerate(descriptor['body']):
++            sources = [self.resolve(reference, inputs, hypotheses, earlier) for reference in body['ordered_inputs']]
++            if body['kind'] == 'PRIMITIVE':
++                formula = self.instantiate(body['formula'], 'FORMULA', params, values, path, ['body', index, 'formula'])
++                arguments = {key: self.argument(body['arguments'][key], params, values, path, ['body', index, 'arguments', key, 'value'])
++                             for key in sorted(body['arguments'])}
++                occurrence = arguments.get('index') if body['rule'] == 'assumption' else None
++                origin = {'family_id': ident, 'call_path': list(path), 'step_id': body['id'],
++                          'hypothesis_port': None, 'gamma_index': occurrence}
++                earlier[body['id']] = self.node(body['rule'], formula, arguments, sources, origin)
++            else:
++                child = self.registry[body['family_ref']]; child_values = {}
++                for pid, spec in self.params[body['family_ref']].items():
++                    binding = body['substitution'][pid]
++                    if spec['kind'] == 'VARIABLE':
++                        child_values[pid] = values[binding['variable_id']]
++                    elif spec['kind'] == 'PREDICATE_SYMBOL':
++                        child_values[pid] = binding.get('literal', values.get(binding.get('parameter')))
++                    else:
++                        formal_ids = binding['formal_variables']; names = [values[var] for var in formal_ids]
++                        _require(len(names) == len(set(names)), 'nested native formal names distinct')
++                        child_values[pid] = {'formal_names': names,
++                            'body': self.instantiate(binding['body'], spec['kind'], params, values, path,
++                                                     ['body', index, 'substitution', pid, 'body'], dict(zip(formal_ids, names)))}
++                child_inputs = {port['id']: actual for port, actual in zip(child['inputs'], sources)}
++                child_hypotheses = {port['id']: self.resolve(reference, inputs, hypotheses, earlier)
++                                    for port, reference in zip(child['hypotheses'], body['ordered_hypotheses'])}
++                earlier[body['id']] = self.expand_frame(body['family_ref'], child_values, child_inputs, child_hypotheses, path + [body['id']])
++        outputs = {}
++        for index, port in enumerate(descriptor['outputs']):
++            actual = self.resolve(port['source'], inputs, hypotheses, earlier)
++            formula = self.instantiate(port['formula'], 'FORMULA', params, values, path, ['outputs', index, 'formula'])
++            _require(_canonical(formula) == _canonical(actual['formula']), 'exact output source formula')
++            outputs[port['id']] = actual
++            frame['outputs'].append({'port_id': port['id'], 'formula': formula, 'source': actual['source']})
++        self.condition_checks(descriptor, params, values, hypotheses, list(inputs.values()), list(outputs.values()), path)
++        return outputs
++
++    def expansion(self, registry, ident, host, values, ports):
++        self.host_check(host); self.registry_check(registry)
++        _require(type(ident) is str and ident in self.registry, 'registered root family')
++        descriptor = self.registry[ident]; self.bindings(values, self.params[ident])
++        self.fields(ports, ('hypotheses', 'inputs', 'outputs'), 'all port binding lists')
++        _require(all(type(ports[field]) is list for field in ports), 'ordered port binding lists')
++        _require(len(ports['hypotheses']) == len(descriptor['hypotheses']) and
++                 len(ports['inputs']) == len(descriptor['inputs']), 'every ordered input and hypothesis bound')
++        hypotheses = {}; inputs = {}; root_hypotheses = []
++        for port, binding in zip(descriptor['hypotheses'], ports['hypotheses']):
++            self.fields(binding, ('port_id', 'gamma_index', 'formula'), 'root hypothesis binding fields')
++            _require(binding['port_id'] == port['id'], 'ordered root hypothesis ID')
++            self.native(binding['formula'], 'FORMULA')
++            occurrence = binding['gamma_index']
++            _require(type(occurrence) is int and 0 <= occurrence < len(host['ordered_Gamma']) and
++                     _canonical(binding['formula']) == _canonical(host['ordered_Gamma'][occurrence]), 'root original Gamma occurrence')
++            _require(host['rules'].get('assumption') == {'input_count': 0, 'arguments': {'index': 'LITERAL'}}, 'host assumption primitive syntax')
++            origin = {'family_id': ident, 'call_path': [], 'step_id': None,
++                      'hypothesis_port': port['id'], 'gamma_index': occurrence}
++            actual = self.node('assumption', binding['formula'], {'index': occurrence}, [], origin)
++            hypotheses[port['id']] = actual
++            root_hypotheses.append(dict(binding, source=actual['source']))
++        identities = {}
++        for port, binding in zip(descriptor['inputs'], ports['inputs']):
++            self.fields(binding, ('port_id', 'formula', 'source', 'occupied', 'fact_accepted'), 'root input binding fields')
++            _require(binding['port_id'] == port['id'] and type(binding['occupied']) is bool and
++                     binding['fact_accepted'] is False, 'ordered root input and pending scope')
++            self.native(binding['formula'], 'FORMULA')
++            identity = _canonical(binding['source'])
++            if identity in identities:
++                _require(identities[identity] == _canonical(binding['formula']), 'one exact source has one literal formula')
++            identities[identity] = _canonical(binding['formula'])
++            inputs[port['id']] = {'formula': binding['formula'], 'source': {'input': port['id']},
++                                  'gamma_index': None, 'identity': {'external': binding['source']}}
++        self.root_input_formulas = [binding['formula'] for binding in ports['inputs']]
++        outputs = self.expand_frame(ident, values, inputs, hypotheses, [])
++        order = {port['id']: index for index, port in enumerate(descriptor['outputs'])}; last = -1
++        for binding in ports['outputs']:
++            self.fields(binding, ('port_id', 'formula'), 'requested output binding fields')
++            pid = binding['port_id']
++            _require(type(pid) is str and pid in order and order[pid] > last, 'ordered distinct output receptor subset')
++            self.native(binding['formula'], 'FORMULA')
++            _require(_canonical(binding['formula']) == _canonical(outputs[pid]['formula']), 'all supplied output receptors')
++            last = order[pid]
++        closure = []; done = set()
++        def dependencies(fid):
++            self.visit()
++            if fid not in done:
++                for dep in self.registry[fid]['dependencies']:
++                    dependencies(dep)
++                done.add(fid); closure.append({'family_id': fid, 'descriptor': self.registry[fid]})
++        dependencies(ident)
++        costs = {'descriptor_count': len(closure), 'call_frames': len(self.frames), 'primitive_nodes': len(self.nodes),
++                 'ordered_input_edges': sum(len(node['ordered_inputs']) for node in self.nodes),
++                 'hypothesis_nodes': sum(node['origin']['hypothesis_port'] is not None for node in self.nodes),
++                 'root_input_ports': len(inputs), 'output_ports': len(outputs)}
++        return {'schema': 'receptor-family-expansion-proposal-v1', 'version': PRODUCER_VERSION, 'status': 'READY_PROPOSAL',
++                'request': {'registry': registry, 'host': host, 'substitution': values, 'port_bindings': ports},
++                'family_id': ident, 'family_preimage': {key: val for key, val in descriptor.items() if key not in ('family_id', 'provenance')},
++                'dependency_closure': closure, 'primitive_nodes': self.nodes, 'input_ports': ports['inputs'],
++                'hypothesis_ports': root_hypotheses, 'outputs': self.frames[0]['outputs'], 'call_frames': self.frames,
++                'binder_renamings': self.renamings, 'side_condition_checks': self.conditions, 'costs': costs,
++                'reason': None, 'flags': dict(PROPOSAL_FLAGS)}
++
++
++def check_expansion(*, registry, family_id, host, substitution, port_bindings, proposal, tick, limits=None):
++    """Re-enumerate this finite expansion, never call its producer or host.
++
++    A success is conditional syntax equality only. Every host primitive still
++    needs independent native membership and current whole point validation.
++    """
++    audit = _Audit(tick, limits)
++    request = None
++    try:
++        request = audit.data({'registry': registry, 'family_id': family_id, 'host': host,
++                              'substitution': substitution, 'port_bindings': port_bindings})
++        offered = audit.data(proposal)
++        request['proposal'] = offered
++        audit.fields(offered, ('schema', 'version', 'status', 'request', 'family_id', 'family_preimage',
++                              'dependency_closure', 'primitive_nodes', 'input_ports', 'hypothesis_ports', 'outputs',
++                              'call_frames', 'binder_renamings', 'side_condition_checks', 'costs', 'work', 'reason', 'flags'), 'whole proposal fields')
++        _require(offered['schema'] == 'receptor-family-expansion-proposal-v1' and
++                 offered['version'] == PRODUCER_VERSION, 'proposal schema/version')
++        audit.fields(offered['work'], ('steps', 'limit'), 'producer work diagnostic fields')
++        work = offered['work']
++        _require(type(work['steps']) is int and type(work['limit']) is int and
++                 0 < work['steps'] <= work['limit'] <= 200000, 'producer work literal diagnostic bounds')
++        _require(_canonical(offered['flags']) == _canonical(PROPOSAL_FLAGS), 'strong proposal flags')
++        if offered['status'] == 'UNKNOWN':
++            _require(offered['request'] is None and offered['family_id'] is None and offered['family_preimage'] is None and
++                     offered['costs'] is None and type(offered['reason']) is str and offered['reason'] != '' and
++                     all(offered[field] == [] for field in ('dependency_closure', 'primitive_nodes', 'input_ports',
++                         'hypothesis_ports', 'outputs', 'call_frames', 'binder_renamings', 'side_condition_checks')),
++                     'UNKNOWN carries no partial expansion')
++            return {'schema': SCHEMA, 'version': VERSION, 'status': 'UNKNOWN', 'conditional_expansion_checked': False,
++                    'request': request, 'input_sha256': _digest(request), 'expansion': None,
++                    'producer_work': work, 'independent_work': {'steps': audit.steps, 'limit': audit.limits['work']},
++                    'reason': 'producer UNKNOWN; no expansion checked', 'flags': dict(FLAGS)}
++        _require(offered['status'] == 'READY_PROPOSAL', 'proposal status')
++        rebuilt = audit.expansion(request['registry'], request['family_id'], request['host'],
++                                  request['substitution'], request['port_bindings'])
++        actual = {key: value for key, value in offered.items() if key != 'work'}
++        _require(_canonical(actual) == _canonical(rebuilt), 'whole independently rebuilt expansion equality')
++        rebuilt['work'] = work  # Retained untrusted diagnostic, never admission.
++        return {'schema': SCHEMA, 'version': VERSION, 'status': 'CONDITIONAL_EXPANSION_CHECKED',
++                'conditional_expansion_checked': True, 'request': request, 'input_sha256': _digest(request),
++                'expansion': rebuilt, 'producer_work': work,
++                'independent_work': {'steps': audit.steps, 'limit': audit.limits['work']},
++                'reason': None, 'flags': dict(FLAGS)}
++    except _Incomplete as error:
++        return {'schema': SCHEMA, 'version': VERSION, 'status': 'UNKNOWN', 'conditional_expansion_checked': False,
++                'request': request, 'input_sha256': _digest(request) if request is not None else None,
++                'expansion': None, 'producer_work': None,
++                'independent_work': {'steps': min(audit.steps, audit.limits['work']), 'limit': audit.limits['work']},
++                'reason': str(error), 'flags': dict(FLAGS)}
++
++

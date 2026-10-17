@@ -1,0 +1,109 @@
+{
+  "APIs": {
+    "run_component_cases": {
+      "kwargs": [
+        "producer",
+        "checker",
+        "host_adapter",
+        "language",
+        "base_semantics",
+        "marked_semantics",
+        "state",
+        "human_descriptor",
+        "tick"
+      ],
+      "result_schema": "ROOT-receptor-family-component-cases-v1"
+    }
+  },
+  "Review_ABI": {
+    "author_identity": "/root",
+    "schema": "ROOT-receptor-family-component-cases-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-receptor-family-component-cases-Source",
+    "source": {
+      "bytes": 27669,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v1.py",
+      "sha256": "ce7c5dcad45a1e6b8ce49308953b79c945bd9c76eca88e0e60416c7713f81236"
+    },
+    "source_contract": "Exact frozen current cases contract capsule",
+    "source_only": true,
+    "sources": {
+      "cases": {
+        "bytes": 27669,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v1.py",
+        "sha256": "ce7c5dcad45a1e6b8ce49308953b79c945bd9c76eca88e0e60416c7713f81236"
+      }
+    }
+  },
+  "Source_executed": false,
+  "author_identity": "/root",
+  "case_count": 12,
+  "case_plan": {
+    "bytes": 3377,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-component-case-plan-v1.json",
+    "sha256": "bfdfb36a60c0410394a61b54924b62086ee0381573c8196300baf07ea9d86d58"
+  },
+  "compile_without_evaluation_only": true,
+  "component_contracts": {
+    "adapter": {
+      "bytes": 24585,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-contract-v3.json",
+      "sha256": "1d56488b42aa5c19ffed1e58a86dc647062a14d79580c9c13e2e3ba08d3d209d"
+    },
+    "checker": {
+      "bytes": 10672,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/Source-contract-v1.json",
+      "sha256": "816081b8b284bfab55aa6eb3017d816ea730c663255ab738750f210ed4bbde23"
+    },
+    "current_original_components": {
+      "bytes": 35295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/Source-contract-v1.json",
+      "sha256": "8db81c755e0ade5eae2aa5d04ec68eb012be05a89b4ef092616a4343340fc040"
+    },
+    "producer": {
+      "bytes": 8217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-contract-v1.json",
+      "sha256": "da296cc6af40a83abd145efe3a534a816d10d9847175ab62fb535de5ae9790a4"
+    }
+  },
+  "expected_cases": [
+    "RF-01-joint-interface-and-full-two-MP-expansion",
+    "RF-02-wrong-port-order-and-repeated-binding-rejected",
+    "RF-03-typed-abstractions-and-capture-hygiene",
+    "RF-04-eigenvariable-context-and-symbol-scope-rejected",
+    "RF-05-nested-output-references-and-hypothesis-maps",
+    "RF-06-cycle-identity-and-expansion-forgery-rejected",
+    "RF-07-original-host-pending-port-point-cluster",
+    "RF-08-original-six-rule-adapter-paths",
+    "RF-09-host-epoch-and-port-provenance-rejected",
+    "RF-10-shared-placement-union-and-remote-mark-conflict",
+    "RF-11-unknown-and-resource-interruption-preserved",
+    "RF-12-input-state-preservation-and-honest-costs"
+  ],
+  "schema": "ROOT-receptor-family-component-cases-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-receptor-family-component-cases-Source",
+  "scope_limits": [
+    "Synthetic syntax-only host metadata never creates native language or receives native proof authority.",
+    "Human two-MP illustration and derived fixtures test infrastructure, not discovered target proofs.",
+    "Five original positive adapter rules; assumption positive unavailable in unchanged empty original Gamma, with separate genuine native negative admission.",
+    "Nested physical DISTINCT and unused external port regressions are included; no scheduler/rollback or engine advice activation.",
+    "Own work limits and declared native-first callback seam keep UNKNOWN distinct; no real deadline-exhaustion test claim.",
+    "One actual language/kernel/native resource envelope, full aggregate costs and full requests/receipts; Root actual not authorized by this packet."
+  ],
+  "source": {
+    "bytes": 27669,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v1.py",
+    "sha256": "ce7c5dcad45a1e6b8ce49308953b79c945bd9c76eca88e0e60416c7713f81236"
+  },
+  "source_only": true,
+  "sources": {
+    "cases": {
+      "bytes": 27669,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v1.py",
+      "sha256": "ce7c5dcad45a1e6b8ce49308953b79c945bd9c76eca88e0e60416c7713f81236"
+    }
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "author_overlap": "/root/arithmetic_induction authored generic producer/design and historical c354/kernel/engine/caller dependencies. Did not author current host adapter; this review is scoped to that adapter and its integration seams, not a self-review of producer/engine.",
+  "blockers": [],
+  "check_count": 27,
+  "checks": [
+    {
+      "finding": "All v3 module constants/functions read; dependency point/member paths traced. No Source execution.",
+      "id": "WHOLE_CURRENT_SOURCE",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Full v3 contract/handoff and exact Review_ABI/current adapter-only map checked; no fabricated v2 contract.",
+      "id": "WHOLE_CURRENT_CONTRACT_HANDOFF",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Current adapter, 8 dependency Sources and selected metadata caps raw hashed; original model maps equal fresh13 ancestor.",
+      "id": "CURRENT_RAW_PINS",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Independent4-edit1\u21922 and6-edit2\u21923 raw forward/inverse, whole AST inverses exact.",
+      "id": "TWO_COMPLETE_RAW_INVERSES",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Applied real unified patch bytes in both directions for both transitions; no author-only boolean trust.",
+      "id": "FOUR_ACTUAL_PATCH_DIRECTIONS",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "require/tree/canonical/digest/describe_host/rows/_key raw and AST exact across1/2/3; only adapt_expansion changed.",
+      "id": "SEVEN_HELPERS_UNCHANGED",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Both public keyword-only signatures exactly match current contract.",
+      "id": "KEYWORD_API",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Only hashlib/json imports; no loader/exec/eval/file/clock/engine import or entrypoint.",
+      "id": "NO_SCIENTIFIC_LOADING",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "describe_host preserves original17/input2 epoch and derives full binding/theory/Gamma/finite names; caller raw authentication retained.",
+      "id": "ORIGINAL_HOST_AUTHORITY",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Exact six-rule argument/ordered arity table matches original membership/kernel; richer block/tautology/refl/induction unavailable.",
+      "id": "NO_LEGACY_BLOCK_DIALECT",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Calls current independent check_expansion fresh; full request/family checked; no offered receipt or producer helper authority.",
+      "id": "FRESH_INDEPENDENT_CHECK",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Hypotheses are actual assumption primitive nodes; native indexed original Gamma check, no artificial earlier premise row or changed Gamma.",
+      "id": "GENUINE_GAMMA_NODES",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Unique literal int0..23 assignments for every node/input; every consumed ordered reference strictly earlier.",
+      "id": "ACTUAL_ROW_COMPLETENESS",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Repeated ordered reads preserved, actual premise formulas/offsets reconstructed into original full preimage.",
+      "id": "ALL_ORDERED_PREMISES",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Each ground witness calls original language.primitive, c354 rebuild and marked independent tile rebuild; literal base projection equality.",
+      "id": "MEMBERSHIP_REBUILD",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Uses base_semantics.text for native decorated selected/excluded identity, rather than ASCII metadata serialization.",
+      "id": "POINT_KEY_FIX",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "marked check_collision includes original and decorated preimages across current selected/excluded and all new members; unequal preimages never merged by hash.",
+      "id": "FULL_COLLISION_LEDGERS",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Whole t support capacity and every base/extra marking agree; full hypothetical state independently rebuilt and9fd6 checked.",
+      "id": "FULL_COMPATIBLE_UNION",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Shared placement only exact native full key and entire packet, selected reuse no duplicate contribution; ordered edge uses remain counted.",
+      "id": "EXACT_OVERLAP_DEDUP",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Actual original source metadata/occupancy/formula and root DISTINCT/ALLOW policies checked against physical rows.",
+      "id": "ROOT_PHYSICAL_SHARING",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Every checked call frame resolves to actual node/input rows and enforces its descriptor DISTINCT/ALLOW policy before READY. Closes negative NESTED-PHYSICAL-SOURCE-DISTINCT-1.",
+      "id": "NESTED_PHYSICAL_SHARING",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Each frame input exposes final original/decorated full physical keys or null plus unresolved flag; no hash-only alias authority.",
+      "id": "FULL_SOURCE_INSPECTION",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "All final root external inputs including unused ones and outputs checked against any assigned literal marks; unresolved ports remain explicit/no invented m facts.",
+      "id": "UNUSED_INTERFACE_FIX",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Deep copied hypothetical union only, full request/original authority equality at return, monotone kernel visits; no visit reset/native language constructor.",
+      "id": "NO_MUTATION_OR_COUNTER_RESET",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "No adapter exception handlers; all native/checker/tick errors propagate. Fresh checker UNKNOWN returns no partial members/union/physical bindings.",
+      "id": "ERROR_UNKNOWN_SCOPE",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Only local_member_membership_checked/local_point_union_checked narrow booleans; proof/degree/EOF/engine/scheduler/trajectory/pruning/RL/resource/runtime flags false.",
+      "id": "HONEST_ACCEPTANCE_SCOPE",
+      "status": "SOURCE_CHECK_CLOSED"
+    },
+    {
+      "finding": "Fresh13 baseline pins authenticate dependencies only; no actual, grammar, old8/12 or original17 result promoted to this new composition.",
+      "id": "NO_QUALIFICATION_INHERITANCE",
+      "status": "SOURCE_CHECK_CLOSED"
+    }
+  ],
+  "clocks_called": 0,
+  "closed_findings": [
+    {
+      "closed_by": {
+        "bytes": 25205,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+        "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+      },
+      "id": "NESTED-PHYSICAL-SOURCE-DISTINCT-1",
+      "scope": "Author-discovered before metadata, independently confirmed Source2 negative; v3 per-call physical enforcement."
+    }
+  ],
+  "compile_without_evaluation": true,
+  "helper_execution": false,
+  "independent_static": {
+    "bytes": 3547,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/independent-static-v3.json",
+    "sha256": "2fe0ef0c96806c913503a601c3aa77060fa29dd47b228212bfaa96a6691711b3"
+  },
+  "models_constructed": 0,
+  "nonblocking_limits": [
+    "Generic checker/producer remain syntax-only and are not self-reviewed here. Their independent whole current Source reviews remain separate.",
+    "Caller must authenticate fresh original model and current modules and guard the complete transaction; adapter version strings alone are not arbitrary object authentication.",
+    "Full assumption positive is unavailable with actual empty Gamma; do not fabricate Gamma to fill coverage.",
+    "No current-state candidate graph, degree/EOF, scheduler, exact live rollback or engine-advice activation is provided. Pending interfaces are obligations, never accepted facts.",
+    "Future Root cold native20 qualification must cover the new current composition; no runtime fit or mathematical theorem follows from this Source pass."
+  ],
+  "preserved_negative": {
+    "bytes": 3020,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/source-negative-v2.json",
+    "sha256": "9ceb29b7a92873ec2180501e5bd842917a02eaee7c56cd0d96c70f3047880d1c"
+  },
+  "raw_refs": [
+    {
+      "bytes": 25205,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    {
+      "bytes": 24585,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-contract-v3.json",
+      "sha256": "1d56488b42aa5c19ffed1e58a86dc647062a14d79580c9c13e2e3ba08d3d209d"
+    },
+    {
+      "bytes": 11101,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/handoff-v3.json",
+      "sha256": "133d10af302668dd020c60daac8df2504f58fc5dd9e4466d5ecf6e4187071886"
+    },
+    {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 51898,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    {
+      "bytes": 56670,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 29197,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py",
+      "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+    },
+    {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 3978,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-delta-v2.json",
+      "sha256": "93cd6a1c25292aa441e89d2e04225abd73c7c16c265597132ddd0540e6f1a05c"
+    },
+    {
+      "bytes": 5753,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-delta-v3.json",
+      "sha256": "b97f82d1478de628b174f2696141bd08b25fb41ea1811b81137dc0682d0f60d1"
+    },
+    {
+      "bytes": 2489,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/author-static-v3.json",
+      "sha256": "b0ca73ad68142df8ffdc583b196af82c4b1528d04ace503721716ebbd7067aa0"
+    },
+    {
+      "bytes": 8411,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-wire-v1.json",
+      "sha256": "6ba537d763ec9d2c753866fadd81cb7bc946463a51f930cde1d23f1e68fd9ba5"
+    },
+    {
+      "bytes": 7265,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-clarifications-v1.json",
+      "sha256": "d541a39c19c9185ed6ac5e926d89a19984c9133c4f0f1ed230bb5c28828942b5"
+    },
+    {
+      "bytes": 8217,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/Source-contract-v1.json",
+      "sha256": "da296cc6af40a83abd145efe3a534a816d10d9847175ab62fb535de5ae9790a4"
+    },
+    {
+      "bytes": 2586,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/handoff-v1.json",
+      "sha256": "10354d475c76265746c01b926f145dbc046f7ee611a20950fa7255ed0636c4bf"
+    },
+    {
+      "bytes": 3051,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/preserved-preactivation-issues-v1.json",
+      "sha256": "9ee5f5bd8f28df11afaf541cca9b9e20e1917c1aa7c991c8223c0b361b11115d"
+    },
+    {
+      "bytes": 3020,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/source-negative-v2.json",
+      "sha256": "9ceb29b7a92873ec2180501e5bd842917a02eaee7c56cd0d96c70f3047880d1c"
+    },
+    {
+      "bytes": 35295,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/Source-contract-v1.json",
+      "sha256": "8db81c755e0ade5eae2aa5d04ec68eb012be05a89b4ef092616a4343340fc040"
+    },
+    {
+      "bytes": 22156,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v1.py",
+      "sha256": "eafdb3a12f2bf9733f54afb9ceeddbfe5cafaee725653c2655a0baaaddcaf4e9"
+    },
+    {
+      "bytes": 23063,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v2.py",
+      "sha256": "2371f01560cc458cb8675aea486c7169648f56c53da0f0089b126f775795c4a4"
+    },
+    {
+      "bytes": 3325,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v1-to-v2-forward.patch",
+      "sha256": "b3f706d47d114515a5588f0404b247537a56a78f1906b59c05bd8cb9ba193cf5"
+    },
+    {
+      "bytes": 3325,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v2-to-v1-full-inverse.patch",
+      "sha256": "73e91b4680c961066a9a4f7acb7b68eb7bdc64f7ee41e3864111f9c60624cb23"
+    },
+    {
+      "bytes": 6056,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v2-to-v3-forward.patch",
+      "sha256": "c4d66a69a644c843c420f8c3a7075701196a56822aae259bbcc5d6ccd9ce2bad"
+    },
+    {
+      "bytes": 6056,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v3-to-v2-full-inverse.patch",
+      "sha256": "cd98ff1960f659c59326b08e12a157a9b7ca0dcb71de275296959e4edf6bb984"
+    },
+    {
+      "bytes": 3547,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/independent-static-v3.json",
+      "sha256": "2fe0ef0c96806c913503a601c3aa77060fa29dd47b228212bfaa96a6691711b3"
+    }
+  ],
+  "runtime_qualified": false,
+  "schema": "receptor-family-six-rule-adapter-independent-findings-v3",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 25205,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+    "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+  },
+  "source_contract": {
+    "bytes": 24585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-contract-v3.json",
+    "sha256": "1d56488b42aa5c19ffed1e58a86dc647062a14d79580c9c13e2e3ba08d3d209d"
+  },
+  "source_functions_executed": 0,
+  "source_only": true,
+  "tests_run": 0
+}

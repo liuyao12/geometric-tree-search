@@ -1,0 +1,60 @@
+{
+  "AST_parse_only": true,
+  "actual_outputs_read": false,
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored checker4358 and older9fd6/8f7a/advice/control components, coordinated wire and reviewed producer/cases. Reviewer did not author this saved helper; review is distinct raw Source/ABI/transport consistency, not reacceptance of own component mathematics.",
+  "clocks_tests_models_actuals_by_reviewer": 0,
+  "closed_findings": [
+    "RF-SAVED-SAME-BUFFER-1",
+    "RF-SAVED-ENVELOPE-WIRE-1",
+    "RF-SAVED-FAILURE-STDOUT-1"
+  ],
+  "concrete_blockers": [],
+  "conditions": [
+    "Pass applies to this fixed Root source-authenticated saved actual/transport/case-assertion reconciliation, no semantic replay or arbitrary copied-receipt proof authority.",
+    "Positive component scope12 only; historical engine8/12 and all theorem/search/rollback/library/RL/GCTS-gain claims unchanged.",
+    "No actual output was read or helper/scientific function executed by reviewer. Root native actual had terminated; saved helper execution/closure was still prospective.",
+    "Pass itself is not native measurement, actual admission or new-run authorization."
+  ],
+  "findings": {
+    "bytes": 6065,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/review-findings-v2.json",
+    "sha256": "6d667fe88f538496e00c47b132ad10fc42e10ed232f773fe05d054ab6e156cb8"
+  },
+  "helper_or_project_evaluation": false,
+  "preserved_negative": {
+    "bytes": 2097,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "fb8bcc8d70d76fcfbe05de21ecc015d392679487447b15e88e85d4d4bc3292e9"
+  },
+  "raw_evidence": {
+    "bytes": 5277,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/raw-evidence-v2.json",
+    "sha256": "7302f42721e79a6091ad84dcacd1c68282bff47b01dd9b0dd27f90a297be056a"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "ROOT-receptor-family-component-saved-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-receptor-family-component-saved-Source",
+  "source": {
+    "bytes": 19885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+    "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+  },
+  "source_contract": {
+    "bytes": 3259,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v2.json",
+    "sha256": "84b18bdfb6252b6d002770cc59487aa5e796158b182a42ac4434570a5a87c918"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "saved_reader": {
+      "bytes": 19885,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+      "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+    }
+  },
+  "status": "CONDITIONAL_SOURCE_PASS_SAVED_BYTE_CONCORDANCE_ONLY"
+}

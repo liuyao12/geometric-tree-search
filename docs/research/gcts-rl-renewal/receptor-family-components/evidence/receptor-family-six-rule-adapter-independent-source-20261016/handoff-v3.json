@@ -1,0 +1,37 @@
+{
+  "findings": {
+    "bytes": 17597,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/findings-v3.json",
+    "sha256": "29904d83b345e3ff162b067eb7c37dfa6024de8855bfd5b6fd5987e160f222b2"
+  },
+  "independent_static": {
+    "bytes": 3547,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/independent-static-v3.json",
+    "sha256": "2fe0ef0c96806c913503a601c3aa77060fa29dd47b228212bfaa96a6691711b3"
+  },
+  "next": "Root own review and any separately granted native component actual; reviewer executes no Source.",
+  "preserved_negative": {
+    "bytes": 3020,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/source-negative-v2.json",
+    "sha256": "9ceb29b7a92873ec2180501e5bd842917a02eaee7c56cd0d96c70f3047880d1c"
+  },
+  "review": {
+    "bytes": 3122,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/typed-Source-review-v3.json",
+    "sha256": "d56f696e72da33bab27f3e15560d48ab41f7a2042946d14c541a39e888d64b4a"
+  },
+  "runtime_qualified": false,
+  "schema": "receptor-family-six-rule-adapter-independent-handoff-v3",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 25205,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+    "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+  },
+  "source_contract": {
+    "bytes": 24585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-contract-v3.json",
+    "sha256": "1d56488b42aa5c19ffed1e58a86dc647062a14d79580c9c13e2e3ba08d3d209d"
+  },
+  "status": "CONDITIONAL_SOURCE_PASS"
+}

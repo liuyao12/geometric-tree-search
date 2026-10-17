@@ -1,0 +1,58 @@
+{
+  "actual_executed": false,
+  "issues": [
+    {
+      "author_confirmed": true,
+      "closed_in": {
+        "bytes": 23063,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v2.py",
+        "sha256": "2371f01560cc458cb8675aea486c7169648f56c53da0f0089b126f775795c4a4"
+      },
+      "delta": {
+        "bytes": 3978,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-delta-v2.json",
+        "sha256": "93cd6a1c25292aa441e89d2e04225abd73c7c16c265597132ddd0540e6f1a05c"
+      },
+      "issues": [
+        "ASCII versus native UTF8 point-key set convention",
+        "Final unused external/input-output interface conflict not checked"
+      ],
+      "reported_by": "/root",
+      "source": {
+        "bytes": 22156,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v1.py",
+        "sha256": "eafdb3a12f2bf9733f54afb9ceeddbfe5cafaee725653c2655a0baaaddcaf4e9"
+      }
+    },
+    {
+      "closed_in": {
+        "bytes": 25205,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+        "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+      },
+      "delta": {
+        "bytes": 5753,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-delta-v3.json",
+        "sha256": "b97f82d1478de628b174f2696141bd08b25fb41ea1811b81137dc0682d0f60d1"
+      },
+      "genuine_negative": {
+        "bytes": 3020,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/source-negative-v2.json",
+        "sha256": "9ceb29b7a92873ec2180501e5bd842917a02eaee7c56cd0d96c70f3047880d1c"
+      },
+      "independently_confirmed_by": "/root/arithmetic_induction",
+      "issue": "Nested DISTINCT logical source IDs could collapse to one physical full placement after row assignment/dedup.",
+      "reported_by": "/root/hilbert_advice_controls",
+      "source": {
+        "bytes": 23063,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v2.py",
+        "sha256": "2371f01560cc458cb8675aea486c7169648f56c53da0f0089b126f775795c4a4"
+      }
+    }
+  ],
+  "note": "Original code files immutable. No v1/v2 actual or frozen Sourcecontract/handoff existed. This author record is not a fabricated independent v1 review.",
+  "schema": "receptor-family-six-rule-adapter-preserved-issues-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

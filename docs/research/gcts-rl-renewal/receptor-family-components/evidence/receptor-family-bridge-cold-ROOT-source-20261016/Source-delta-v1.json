@@ -1,0 +1,35 @@
+{
+  "Source18_input9_original17_input2_distinct": true,
+  "changed_scope": "OwnIDs and Source/input maps; one component purpose/12cases; callerRoot author; discard old6 family handlers/unused fixture helpers; new guarded component suite and unique result/wire schemas. Original native/Source/StageB authentication prefix and17tophelpers/2classes retained; no old control rerun or engine state/search call.",
+  "native_final_exit_and_failure_suffix_raw_exact": true,
+  "parent": {
+    "bytes": 78278,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/fresh_projection_qualification_cold_v1.py",
+    "sha256": "007b29ef99c45d5d94cb29ff7a3b9659e3584164b9da825362e1b6ceacc262bb"
+  },
+  "parent_source_contract": {
+    "bytes": 41202,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-qualification-cold-source-20261016/Source-contract-v1.json",
+    "sha256": "d87bdb1f449e8c06d994b2801210ad6998a6977ef91fa48f0184ac661de21282"
+  },
+  "patches": [
+    {
+      "bytes": 59518,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/parent-to-current-forward.patch",
+      "sha256": "ca8a4b8f79496196fadad103b51829be9cf3658bb6586ac5139a52870cf45f62"
+    },
+    {
+      "bytes": 59518,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/current-to-parent-full-inverse.patch",
+      "sha256": "caf77651959c6eb150170830cfda825857a48b37c898850860769fa81c42988a"
+    }
+  ],
+  "schema": "ROOT-family-component-caller-Source-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/ROOT_receptor_family_bridge_cold_v1.py",
+    "sha256": "c2399d271732f48d1fde73eb12834528a273f8a9f444b36bf3de08de7dc5be14"
+  },
+  "top17_helpers_and2classes_raw_exact": true
+}

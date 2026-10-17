@@ -1,0 +1,52 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v1.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v2.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION='ROOT-receptor-family-component-cases-v1'
++VERSION='ROOT-receptor-family-component-cases-v2-retained-checks-and-exceptions'
+ CASES=[
+  'RF-01-joint-interface-and-full-two-MP-expansion',
+  'RF-02-wrong-port-order-and-repeated-binding-rejected',
+@@ -80,7 +80,7 @@
+         tick()
+         try:fn()
+         except BaseException as error:
+-            require(type(error)is kind,'negative exact declared data error '+label)
++            if type(error)is not kind:raise
+             if codes is not None:require(getattr(error,'code',None)in codes,'negative exact code '+label)
+             if prefix is not None:require(str(error).startswith(prefix),'negative exact reason family '+label)
+             packet={'label':label,'request':copy.deepcopy(request),'exception_type':type(error).__name__,
+@@ -136,8 +136,10 @@
+             and len(matched['proposals'])==1,'joint inferred binding produces checked proposal')
+     require(canonical(matched['proposals'][0]['request']['substitution'])==canonical(subst),
+             'inferred repeated parameters fit all ports')
+-    checker.check_expansion(**core['request'],proposal=matched['proposals'][0],tick=tick)
+-    passed(0,{'core':core,'matching':matched})
++    matched_check=checker.check_expansion(**core['request'],proposal=matched['proposals'][0],tick=tick)
++    require(matched_check['status']=='CONDITIONAL_EXPANSION_CHECKED'
++       and matched_check['conditional_expansion_checked']is True,'fresh matched proposal independently checked')
++    passed(0,{'core':core,'matching':matched,'matched_check':matched_check})
+     wrong=copy.deepcopy(ports);wrong['inputs'][2]['formula']=['imp',A,C]
+     bad_req=dict(core['request'],port_bindings=wrong)
+     failures=[rejected('incompatible-third-port',lambda:producer.expand_family(**bad_req,tick=tick),
+@@ -359,7 +361,8 @@
+     def interrupted_tick():
+         tick();raise marker
+     try:producer.expand_family(**core['request'],tick=interrupted_tick)
+-    except BaseException as error:require(error is marker,'external timeout propagated unchanged')
++    except BaseException as error:
++        if error is not marker:raise
+     else:raise ValueError('Root receptor component: injected callback interruption swallowed')
+     passed(10,{'own_work_limit':unknown,'checker_work_limit':checker_unknown,
+       'adapter_unresolved_expansion':adapter_unknown,'empty_candidate_prefix':empty,
+@@ -378,7 +381,7 @@
+     passed(11,{'input_state_unchanged':True,'kernel_visits_before':visits_before,
+        'kernel_visits_after':language.kernel.visits,'engine_search_or_rollback_exercised':False,
+        'all_direct_costs_preserved':True})
+-    tick();return {'schema':VERSION,'controls':controls,'records':records,'negative_cases':negative,
++    tick();return {'schema':'ROOT-receptor-family-component-cases-v1','implementation_version':VERSION,'controls':controls,'records':records,'negative_cases':negative,
+       'original_host':host,'original_state':copy.deepcopy(state),'all_controls_completed':True,
+       'proof_accepted':False,'engine_activated':False,'library_activated':False,
+       'RL_accepted':False,'GCTS_advantage_claimed':False}

@@ -1,0 +1,27 @@
+{
+  "findings": {
+    "bytes": 4110,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/review-findings-v1.json",
+    "sha256": "bae05e1c5fc94b24c5ab21a7d3c6632f6a8cb76f7ca97569c645c39a6de1cd82"
+  },
+  "review": {
+    "bytes": 2097,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-saved-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "fb8bcc8d70d76fcfbe05de21ecc015d392679487447b15e88e85d4d4bc3292e9"
+  },
+  "schema": "ROOT-receptor-family-component-saved-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19358,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v1.py",
+    "sha256": "f67c1a7f7acd6e43f162294c43b1f45a0fa9cfabefc90555915d7b76a8476ca9"
+  },
+  "source_contract": {
+    "bytes": 2603,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v1.json",
+    "sha256": "2ac495b974af2a22f74542356b806eb9d8c81cb37010d14773a87e8b47850d1a"
+  },
+  "source_only": true,
+  "status": "SOURCE_NEGATIVE_PENDING_SAME_BUFFER_WIRE_FAILURE_REPAIR"
+}

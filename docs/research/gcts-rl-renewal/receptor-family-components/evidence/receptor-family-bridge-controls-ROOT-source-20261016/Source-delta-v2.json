@@ -1,0 +1,53 @@
+{
+  "literal_replacements": [
+    {
+      "new": "VERSION='ROOT-receptor-family-component-cases-v2-retained-checks-and-exceptions'",
+      "old": "VERSION='ROOT-receptor-family-component-cases-v1'"
+    },
+    {
+      "new": "            if type(error)is not kind:raise",
+      "old": "            require(type(error)is kind,'negative exact declared data error '+label)"
+    },
+    {
+      "new": "    matched_check=checker.check_expansion(**core['request'],proposal=matched['proposals'][0],tick=tick)\n    require(matched_check['status']=='CONDITIONAL_EXPANSION_CHECKED'\n       and matched_check['conditional_expansion_checked']is True,'fresh matched proposal independently checked')",
+      "old": "    checker.check_expansion(**core['request'],proposal=matched['proposals'][0],tick=tick)"
+    },
+    {
+      "new": "    passed(0,{'core':core,'matching':matched,'matched_check':matched_check})",
+      "old": "    passed(0,{'core':core,'matching':matched})"
+    },
+    {
+      "new": "    except BaseException as error:\n        if error is not marker:raise",
+      "old": "    except BaseException as error:require(error is marker,'external timeout propagated unchanged')"
+    },
+    {
+      "new": "    tick();return {'schema':'ROOT-receptor-family-component-cases-v1','implementation_version':VERSION,",
+      "old": "    tick();return {'schema':VERSION,"
+    }
+  ],
+  "parent": {
+    "bytes": 27669,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v1.py",
+    "sha256": "ce7c5dcad45a1e6b8ce49308953b79c945bd9c76eca88e0e60416c7713f81236"
+  },
+  "patches": [
+    {
+      "bytes": 3535,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/cases-v1-to-v2-forward.patch",
+      "sha256": "b4994167cd39b89cb87174f1c89e512bccbe035065aa09359971c3ee1b31c96e"
+    },
+    {
+      "bytes": 3535,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/cases-v2-to-v1-full-inverse.patch",
+      "sha256": "ba9a7ad39ce3a9f38fb5e22bbac53ad5ab67b8f56bf53be96a827bb34074d638"
+    }
+  ],
+  "schema": "ROOT-receptor-family-cases-repair-delta-v1",
+  "scientific_calls": 0,
+  "scope": "Propagate unexpected errors unchanged, retain/assert fresh matcher receipt, own implementation ID with unchanged wire schema. No scientific fixture or native limit change.",
+  "source": {
+    "bytes": 27926,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v2.py",
+    "sha256": "92e875fc583fc6d2ceb96eed0b1ac3d52a85c34fcfbf8b342fa3a773cdf14742"
+  }
+}

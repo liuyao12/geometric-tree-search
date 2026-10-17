@@ -1,0 +1,53 @@
+{
+  "checks_performed": [
+    "Whole384-line raw Source and5310-byte contract read",
+    "AST parsed and compiled without evaluation only",
+    "Six raw contract capsules verified",
+    "Exact12 CASES literal and keyword-only API checked",
+    "Current f32e/4358/adapter3 API/receipt and fixture relations reviewed statically"
+  ],
+  "concrete_blockers": [
+    {
+      "finding": "The negative helper catches every BaseException and replaces any unexpected exception type with a new ValueError assertion. A genuine injected native TimeoutError or guard error therefore loses its original identity/type instead of propagating. The separate declared-interruption catch also replaces an actual native tick failure if it occurs before the marker. Neither path can count a timeout as a successful negative; the defect concerns preservation of genuine failure taxonomy, not false theorem acceptance.",
+      "id": "RF-CONTROLS-RESOURCE-TAXONOMY-1",
+      "lines": [
+        81,
+        83,
+        361,
+        362
+      ],
+      "minimal_repair": "Before negative type/code/prefix assertions, re-raise unchanged when type(error) is not kind. In injected control catch, re-raise unchanged when error is not marker. Preserve all12 fixtures/counts/API/budgets and frozen v1.",
+      "reachable_path": "A negative delegate calls the real native tick, which may raise before the expected invalid-data error; the helper catches it and require(type(error)is kind) raises a new ValueError. interrupted_tick calls the original tick before raising marker, so a genuine error there reaches the same identity-assertion replacement.",
+      "severity": "NARROW_PRE_EXECUTION_ERROR_PROPAGATION_GAP"
+    }
+  ],
+  "no_execution": "No producer/checker/adapter/language/kernel/point/test/clock/helper/model invocation or donor/result/proofword read.",
+  "schema": "ROOT-receptor-family-component-cases-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 27669,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v1.py",
+    "sha256": "ce7c5dcad45a1e6b8ce49308953b79c945bd9c76eca88e0e60416c7713f81236"
+  },
+  "source_contract": {
+    "bytes": 5310,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "a3ccd43e92560ab1eca641ea8d7e31c0eb5a950add219656a5e7a1177a02aadb"
+  },
+  "source_only": true,
+  "whole_case_assessment": [
+    "RF01 complete two-MP conditional environment and bounded inference align current full packet; matching_complete remains false. Extra matched-proposal checker return is discarded, while identical core expansion has a retained accepted receipt; no matching completeness implied.",
+    "RF02 wrong third formula and ordered port IDs produce the intended typed mismatch families.",
+    "RF03 synthetic host is clearly separate; manually derived native abstraction capture renames x to y in the declared finite name order, all typed constructor paths remain syntax only.",
+    "RF04 full synthetic Gamma/eigen and foreign predicate scope checks do not create native original context.",
+    "RF05 nested explicit multioutputs and indexed hypothesis maps remain syntax-only; real assumption nodes and original Gamma identity are preserved.",
+    "RF06 forged self-dependency is intentionally rejected at IDENTITY before cycle guard; it does not dynamically execute the internal cycle guard or exhibit a consistent content-addressed cycle. Root confirmed this boundary.",
+    "RF07 pending local point cluster uses original host, unoccupied inputs false for fact acceptance, full adapter membership and union.",
+    "RF08 declaration-derived AS/zero/hole/n give five positive original primitive paths; empty original Gamma gives a genuine negative assumption admission, not a fabricated positive.",
+    "RF09 host epoch and changed physical input provenance use fresh syntax reconstruction before adapter rejection.",
+    "RF10 shared physical duplicate, remote row-zero conflict, unused final input inconsistency and nested logical-ID collapse exercise separate current adapter checks.",
+    "RF11 own work-bound UNKNOWN/empty matching/adapter unresolved expansion stay nonnegative; genuine external failure preservation needs the narrow repair above.",
+    "RF12 input state, cumulative native visits and direct expansion/unique placement accounting preserve component-only scope; no engine, scheduler or rollback exercised."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "AST_parse_compile_without_evaluation": true,
+  "actual_all_four_patch_directions_exact": true,
+  "changed_function": {
+    "end_line": 389,
+    "line": 139,
+    "name": "adapt_expansion"
+  },
+  "imports": [
+    "hashlib",
+    "json"
+  ],
+  "module_or_helper_execution": false,
+  "no_exception_handlers": true,
+  "raw_both_delta_inverses": true,
+  "raw_refs": [
+    {
+      "bytes": 22156,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v1.py",
+      "sha256": "eafdb3a12f2bf9733f54afb9ceeddbfe5cafaee725653c2655a0baaaddcaf4e9"
+    },
+    {
+      "bytes": 23063,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v2.py",
+      "sha256": "2371f01560cc458cb8675aea486c7169648f56c53da0f0089b126f775795c4a4"
+    },
+    {
+      "bytes": 25205,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    {
+      "bytes": 3978,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-delta-v2.json",
+      "sha256": "93cd6a1c25292aa441e89d2e04225abd73c7c16c265597132ddd0540e6f1a05c"
+    },
+    {
+      "bytes": 3325,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v1-to-v2-forward.patch",
+      "sha256": "b3f706d47d114515a5588f0404b247537a56a78f1906b59c05bd8cb9ba193cf5"
+    },
+    {
+      "bytes": 3325,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v2-to-v1-full-inverse.patch",
+      "sha256": "73e91b4680c961066a9a4f7acb7b68eb7bdc64f7ee41e3864111f9c60624cb23"
+    },
+    {
+      "bytes": 5753,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-delta-v3.json",
+      "sha256": "b97f82d1478de628b174f2696141bd08b25fb41ea1811b81137dc0682d0f60d1"
+    },
+    {
+      "bytes": 6056,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v2-to-v3-forward.patch",
+      "sha256": "c4d66a69a644c843c420f8c3a7075701196a56822aae259bbcc5d6ccd9ce2bad"
+    },
+    {
+      "bytes": 6056,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v3-to-v2-full-inverse.patch",
+      "sha256": "cd98ff1960f659c59326b08e12a157a9b7ca0dcb71de275296959e4edf6bb984"
+    }
+  ],
+  "runtime_qualified": false,
+  "schema": "receptor-family-six-rule-adapter-independent-static-v3",
+  "scientific_calls": 0,
+  "seven_helpers_raw_AST_exact": [
+    "require",
+    "tree",
+    "canonical",
+    "digest",
+    "describe_host",
+    "rows",
+    "_key"
+  ],
+  "source": {
+    "bytes": 25205,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+    "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+  },
+  "whole_AST_both_inverses": true
+}

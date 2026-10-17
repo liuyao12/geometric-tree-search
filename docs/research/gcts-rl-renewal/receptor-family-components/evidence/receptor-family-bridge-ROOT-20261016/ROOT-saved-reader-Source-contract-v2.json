@@ -1,0 +1,59 @@
+{
+  "API": "Fixed Root RF plan/grant/bracket/external native files; complete lossless output reconciliation only. No project imports/semantics/replay/clocks. Both successful and failing actuals retained; at most one actual separately granted.",
+  "Review_ABI": {
+    "author_identity": "/root",
+    "schema": "ROOT-receptor-family-component-saved-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-receptor-family-component-saved-Source",
+    "source": {
+      "bytes": 19885,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+      "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+    },
+    "source_contract": "Exact current saved-reader contract capsule",
+    "source_only": true,
+    "sources": {
+      "saved_reader": {
+        "bytes": 19885,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+        "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+      }
+    }
+  },
+  "Source_evaluated": false,
+  "author_identity": "/root",
+  "caller_contract": {
+    "bytes": 27889,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "4d2387f7d343ebe4606ccf1a4aa897c0b2842f83a95ffb99e2e0b04f280d7c2e"
+  },
+  "parent_source_contract": {
+    "bytes": 2603,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v1.json",
+    "sha256": "2ac495b974af2a22f74542356b806eb9d8c81cb37010d14773a87e8b47850d1a"
+  },
+  "positive_scope": "Only12 infrastructure cases; current engine8/12 unchanged; no theorem/library/RL/GCTS/gain acceptance. Positive requires native launch-to-postprobe <20s, peak<=512MiB, Date<=60s with1s caller reserve<=90s, zeroexit and complete full saved records.",
+  "schema": "ROOT-receptor-family-component-saved-Source-contract-v1",
+  "scientific_calls": 0,
+  "scope": "ROOT-receptor-family-component-saved-Source",
+  "source": {
+    "bytes": 19885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+    "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+  },
+  "source_delta": {
+    "bytes": 3448,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-delta-v2.json",
+    "sha256": "ec44494f5f3f0e5c30b6a9d9abcce93809a18d7999fd7a11a90f2fcc3bdfd292"
+  },
+  "source_only": true,
+  "sources": {
+    "saved_reader": {
+      "bytes": 19885,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+      "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+    }
+  },
+  "version": "ROOT-receptor-family-component-saved-reader-v2"
+}

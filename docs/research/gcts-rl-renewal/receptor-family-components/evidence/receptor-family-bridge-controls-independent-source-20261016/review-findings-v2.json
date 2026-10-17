@@ -1,0 +1,94 @@
+{
+  "closed_findings": [
+    {
+      "finding": "Negative helper now bare re-raises unexpected exact error types before any diagnostic type/code/prefix assertions. The declared callback seam bare re-raises every error object other than its own marker. Native TimeoutError, guard exceptions and other unexpected errors retain identity/type instead of becoming assertion ValueError. Exact intended data rejection and marker success remain checked.",
+      "id": "RF-CONTROLS-RESOURCE-TAXONOMY-1",
+      "status": "CLOSED_IN_CURRENT_SOURCE_ONLY"
+    }
+  ],
+  "concrete_blockers": [],
+  "current_findings": [
+    {
+      "finding": "RF01 now binds matched_check, requires CONDITIONAL_EXPANSION_CHECKED and conditional_expansion_checked True, and retains the full returned receipt in the case evidence. A returned UNKNOWN cannot silently qualify this check. The actual checker call/request/proposal count and fixture are unchanged.",
+      "id": "RF-V2-01",
+      "topic": "Retained independent matcher receipt"
+    },
+    {
+      "finding": "Independently verified six sequential literal replacements in both directions, applied both actual unified patches to the declared old/new full buffers, and recovered the complete original AST. Eighteen of20 named function/class regions are raw and AST exact; only main and its negative helper contain declared changes. Source AST compiled without module evaluation.",
+      "id": "RF-V2-02",
+      "topic": "Six exact edits and full inverse"
+    },
+    {
+      "finding": "Whole current Source and contract read. CASES names/order remain exact12. Existing typed FOL/capture, original-host pending ports/five native positive rules, empty-Gamma assumption negative, nested output/Gamma maps, full point duplicate/distinct/unused-port/remote regressions, own UNKNOWN and readonly/cost assertions retain the reviewed v1 meanings. No synthetic host is passed as original native authority.",
+      "id": "RF-V2-03",
+      "topic": "Whole current12 fixture meanings"
+    },
+    {
+      "finding": "Own implementation VERSION advances explicitly; returned schema remains ROOT-receptor-family-component-cases-v1 with separate implementation_version. Public keyword ABI, original host/component authorities, scientific fixtures and limits do not change. Retained matching receipt output remains charged to future Root output/native caps; no fit is inferred.",
+      "id": "RF-V2-04",
+      "topic": "Implementation versus wire version"
+    },
+    {
+      "finding": "All13 current/ancestry raw capsules verified, including unmodified v1 negative e926 and v1 Source/contract. Current contract identifies the RF06 IDENTITY-before-cycle-guard limitation explicitly. No old review/runtime outcome is promoted.",
+      "id": "RF-V2-05",
+      "topic": "Preserved negative and current metadata"
+    }
+  ],
+  "pins": {
+    "delta": {
+      "bytes": 2846,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/Source-delta-v2.json",
+      "sha256": "ab8b1dc6c3215eb5e9de86c573bf026424e2b236cb2b04e30412fb2011c825d5"
+    },
+    "handoff": {
+      "bytes": 1068,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/handoff-v2.json",
+      "sha256": "1c27a4c74b1da730de29d22f9720bca4ac027e4b82b34795ae6120ca10387351"
+    },
+    "preserved_negative": {
+      "bytes": 2173,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "e926c4541314a4cc5c578a4fa8104c4cb4073966002511cdac7077f40e319821"
+    },
+    "raw_evidence": {
+      "bytes": 8161,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-independent-source-20261016/raw-evidence-v2.json",
+      "sha256": "0ca1bc7dc736944c374baa3d130e54f9ff391acb1f7f8db21541afafe0590030"
+    },
+    "retained_whole_findings": {
+      "bytes": 4641,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-independent-source-20261016/review-findings-v1.json",
+      "sha256": "ea8a577416a8bfcd87566679040affca4bf76e6ce4648e94b2a3b8169446f5c8"
+    },
+    "source": {
+      "bytes": 27926,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v2.py",
+      "sha256": "92e875fc583fc6d2ceb96eed0b1ac3d52a85c34fcfbf8b342fa3a773cdf14742"
+    },
+    "source_contract": {
+      "bytes": 6438,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/Source-contract-v2.json",
+      "sha256": "4219a63d754bce09193305e1daeddf16552d4d88ee4c9ea668fadb3d93067fa2"
+    }
+  },
+  "schema": "ROOT-receptor-family-component-cases-independent-findings-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope_boundaries": [
+    "RF06 exercises forged cyclic-input identity rejection, not the internal cycle branch or a consistent content-addressed dependency cycle.",
+    "Synthetic syntax-only predicate/Gamma fixtures do not create a native host or admit original assumption positives. Original Gamma remains empty, so five positive primitive paths plus assumption negative are the declared coverage.",
+    "This cases review is distinct from authoring/reaccepting checker mathematics. Conditional expansion and local point compatibility are not facts, target proof, point-board/engine/degree/scheduler/rollback/learned-library or RL/GCTS gain acceptance.",
+    "No Source/module/helper/scientific function/test/model/clock/actual execution; future Root native caller/guards/once grant, full closure and resource fit remain external."
+  ],
+  "source": {
+    "bytes": 27926,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v2.py",
+    "sha256": "92e875fc583fc6d2ceb96eed0b1ac3d52a85c34fcfbf8b342fa3a773cdf14742"
+  },
+  "source_contract": {
+    "bytes": 6438,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "4219a63d754bce09193305e1daeddf16552d4d88ee4c9ea668fadb3d93067fa2"
+  },
+  "source_only": true
+}

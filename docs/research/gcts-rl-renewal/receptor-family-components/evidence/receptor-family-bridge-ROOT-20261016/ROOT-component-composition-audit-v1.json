@@ -1,0 +1,61 @@
+{
+  "AST_compile_without_evaluation_only": true,
+  "adapter_v1_v2_v3_four_and_six_regions_exact": true,
+  "cases_six_literal_replacements_exact": true,
+  "component_review_cycle": {
+    "component_cases": {
+      "bytes": 3351,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-independent-source-20261016/typed-Source-review-v2.json",
+      "sha256": "38fa0ed0ab9dc16e6fbb9225c41049467071e05e9e0ddade7cba7b0bb82a0b5d"
+    },
+    "family_adapter": {
+      "bytes": 3122,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/typed-Source-review-v3.json",
+      "sha256": "d56f696e72da33bab27f3e15560d48ab41f7a2042946d14c541a39e888d64b4a"
+    },
+    "family_checker": {
+      "bytes": 2981,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "f69a6ae95a71d4c7456a5bad482de9213e5d76f0fe4fa2686a215a4a529ef113"
+    },
+    "family_expander": {
+      "bytes": 2869,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "8da6e3a805fc9553013d4f87055dd77d596a26807076a5242c1f5c1209ff4250"
+    }
+  },
+  "conformance": "Proposal-only typed family/point bridge in specialized24row/sixrule model. No candidate graph, fallback, live scheduler/rollback, theorem, automatic lemma extraction, RL or gain acceptance.",
+  "current_source18_input9_original17_input2_distinct": true,
+  "disclosure": "Root read whole producer and operative API/contract, whole adapterV1 plus every currentV2/V3 delta and contract, whole cases/caller and contracts. Root checker read public/critical boundary, not whole checker; whole checker peer review is Controls f69. Shared wire/old native authorship is disclosed by each component peer. This audit binds their exact current caps and does not relabel metadata as a second mathematical implementation.",
+  "raw_forward_and_full_inverse_patch_directions": 10,
+  "schema": "ROOT-receptor-family-component-composition-audit-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/ROOT_receptor_family_bridge_cold_v2.py",
+    "sha256": "912489c3f82bf21b0efc60d14ec7c4448793dd41e2d80050a9278a110fe6415b"
+  },
+  "source_contract": {
+    "bytes": 27889,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "4d2387f7d343ebe4606ccf1a4aa897c0b2842f83a95ffb99e2e0b04f280d7c2e"
+  },
+  "top_helpers17_classes2_native_suffix_raw_exact": true,
+  "unchanged_component_reviews": {
+    "ROOT": {
+      "bytes": 6944,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-ROOT-20261016/ROOT-adapter-composite-Source-review-v1.json",
+      "sha256": "e363e684ad88039e3bd8c679e5befe6387717bef28523781991e707db9d3c58a"
+    },
+    "peer": {
+      "bytes": 6956,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "3c77320f1aa512cd3c3e4cfff2d1959b7cca376656f801f9308ef16cf8a4e72d"
+    }
+  },
+  "whole_caller_peer": {
+    "bytes": 8281,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "e6a07e52abaaa244160f2f93a1051bc194bad2212ac823e846811c880f394b68"
+  }
+}

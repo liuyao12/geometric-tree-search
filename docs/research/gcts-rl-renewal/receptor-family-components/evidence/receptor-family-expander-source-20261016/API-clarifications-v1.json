@@ -1,0 +1,96 @@
+{
+  "binder_algorithm": {
+    "fresh_exhausted": "UNKNOWN, never forced capture or profile name invention",
+    "log": "only actual from!=to changes; TEMPLATE_BINDER variable_id ID, ABSTRACTION_CAPTURE variable_id null; include call_path and full location",
+    "native_abstraction": "simultaneous substitution removes shadowed binder mapping. Active replacements only keys free in body. If binder in union of active replacement free names, first allowed host variable outside all_names(body)|replacement_free_names|mapping_keys; rename bound occurrences capture-safely then apply original reduced map simultaneously",
+    "template": "desired=env[binder_id]. Forbidden is body external free names under lexical template BOUND IDs plus active native bound names. Meta body free names exclude formal_names; recurse actual arguments, free template VARIABLEs and all constructors. Keep desired if allowed; otherwise first host.variable_names outside forbidden. Variable uses resolve nearest lexical ID, not matching literal strings"
+  },
+  "callback_scope": "trusted synchronous caller tick and candidate iterator; external exceptions propagate. No clocks/cancellation conversion, hidden visits reset or fresh native language construction",
+  "costs": "hypothesis_nodes counts root materialized ports only; explicit body assumption nodes counted in primitive_nodes. No unique physical placement/marking cost claim before host row/key union validation",
+  "descriptor_version": "receptor-lemma-family-v2 is additive and intentionally not auto-converted from frozen design-v1; typed argument wrappers, child ordered_hypotheses and explicit call-output refs required",
+  "deterministic_order": {
+    "automatic_arguments": {
+      "AUTO_DISTINCT": "[variable_ID]+declared distinct_from",
+      "AUTO_EIGEN": "[variable_ID,GAMMA,ROOT_INPUTS]",
+      "automatic_index": -1
+    },
+    "call_frames": "preorder, root call_path=[], child appends call step ID; substitutions and every ordered port/output retained",
+    "nested_hypotheses": "reuse passed original Gamma node; child mappings must retain exact original occurrence and literal formula. Inputs never become hypotheses/facts",
+    "nodes": "n0,n1,...; root hypothesis assumption nodes first in declared order, then recursive body order; no automatic primitive/node dedup",
+    "primitive_arguments": "instantiated in sorted argument-name order; child parameter bindings in child declaration order",
+    "recursive_locations": "template fields append field names/index; native substitution appends native AST integer indices. Call path disambiguates nested frames",
+    "root_hypotheses": "always materialized once per original root hypothesis port, even unused, rule assumption/arguments index; origin step_id=null, hypothesis_port ID, gamma_index int",
+    "side_checks": "postorder per completed call frame (child before parent), automatic VARIABLE checks in parameter declaration order (AUTO_DISTINCT then AUTO_EIGEN for that parameter), then explicit condition indices in declaration order",
+    "template_locations": [
+      [
+        "hypotheses",
+        "i",
+        "formula"
+      ],
+      [
+        "inputs",
+        "i",
+        "formula"
+      ],
+      [
+        "outputs",
+        "i",
+        "formula"
+      ],
+      [
+        "body",
+        "i",
+        "formula"
+      ],
+      [
+        "body",
+        "i",
+        "arguments",
+        "argumentName",
+        "value"
+      ],
+      [
+        "body",
+        "i",
+        "substitution",
+        "childParameter",
+        "body"
+      ]
+    ]
+  },
+  "matching_update": {
+    "confirmation": "every complete inferred/supplied environment passes complete expand() including exact all-port native literal matching, every body/output/scope condition; failed candidate never excludes a base placement",
+    "errors": "registry/host errors propagate; each binding-level DescriptorError yields its code. UNBOUND_UNKNOWN is unfinished, despite historical list key rejected_bindings. External iterator and tick exceptions propagate; wrapped ticks cannot be mistaken for internal DescriptorError",
+    "inference": "native VARIABLE names, predicate names, TERM/FORMULA abstractions only when explicit argument terms instantiate to distinct native variables, including zero-arity; literal constructor matching throughout",
+    "nonpattern": "no inverse guess through non-variable/repeated actual arguments. Candidate iterator can supply full abstractions; unresolved parameters get UNBOUND_UNKNOWN and no expansion",
+    "order": "hypothesis patterns, input patterns, then supplied ordered output subset; repeat until no new parameter is bound",
+    "signature": "unchanged from early API; candidate_bindings iterable may now supply PARTIAL or COMPLETE parameter maps; [{}] requests inference without supplied residual bindings",
+    "statuses": "matching status PROPOSALS if at least one READY_PROPOSAL else UNKNOWN; matching_complete always false; finite iterator exhaustion/prefix/work bounds never absence"
+  },
+  "parent_API": {
+    "bytes": 8411,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-wire-v1.json",
+    "sha256": "6ba537d763ec9d2c753866fadd81cb7bc946463a51f930cde1d23f1e68fd9ba5"
+  },
+  "profile_condition": "HOST_PROFILE_MEMBER means generic syntax/signature/name check only and never native bounded membership; packet host_membership_accepted=false. Host adapter must perform actual declaration/profile membership",
+  "registry": "nonempty list[full descriptor], unique IDs even for identical duplicates; validates whole supplied registry including unreachable descriptors, exact actual called dependencies, cycles rejected",
+  "reserved_parameter_ids": [
+    "GAMMA",
+    "INPUTS",
+    "OUTPUTS",
+    "ROOT_INPUTS"
+  ],
+  "runtime_qualified": false,
+  "schema": "receptor-family-expander-API-clarifications-v1",
+  "scientific_calls": 0,
+  "scope_selectors": "reserved parameter IDs avoid ambiguous context selectors; ordinary port/step IDs are independently namespaced",
+  "side_condition_scope": "NOT_FREE_IN/FREE_SUBSET on abstraction parameters use external free variables excluding formal_names; INPUTS/OUTPUTS are current frame formulas, GAMMA complete original host list. EIGEN additionally absent from every root input formula. No implicit discharge",
+  "source": {
+    "bytes": 51898,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+    "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+  },
+  "source_identity": "root input source is full literal provenance identity, not standardized {input:portID}. DISTINCT compares external full source JSON or primitive node IDs through nested aliases. Same external source with unequal literal formulas rejects. Metadata is still unauthenticated until host adapter",
+  "source_only": true,
+  "work": "own guarded syntax steps, independent checker need not reproduce implementation-specific work count. Compare all substantive proposal fields EXCEPT work; verify work shape/bounds and retain as untrusted diagnostic. Structural costs independently reproducible"
+}

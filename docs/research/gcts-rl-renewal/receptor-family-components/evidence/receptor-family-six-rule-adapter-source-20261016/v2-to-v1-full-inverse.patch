@@ -1,0 +1,50 @@
+--- /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v2.py
++++ /Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v1.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-six-rule-point-adapter-v2-interfaces-and-point-key'
++VERSION = 'receptor-family-six-rule-point-adapter-v1'
+ CHECKER_VERSION = 'receptor-family-independent-expansion-checker-v1'
+ CHECK_SCHEMA = 'receptor-family-conditional-expansion-check-v1'
+ HOST_SCHEMA = 'receptor-family-host-v1'
+@@ -254,7 +254,7 @@
+         tile = marked_semantics.rebuild_tile(language, decorated_preimage, [0, row], tick)
+         require(canonical(tile['base_tile']) == canonical(bare), 'complete original member projection')
+         marked_semantics.check_collision(tile, names)
+-        key = base_semantics.text(tile['placement_key'])
++        key = canonical(tile['placement_key'])
+         duplicate = by_key.get(key)
+         if duplicate is not None:
+             require(canonical(duplicate['tile']) == canonical(tile), 'shared placement full packet identity')
+@@ -303,26 +303,13 @@
+     for output in expansion['outputs']:
+         ref = output['source']; source = processed[ref['node']] if 'node' in ref else inputs[ref['input']]
+         require(canonical(output['formula']) == canonical(source['formula']), 'literal output node binding')
+-        output_row = source['row']
+-        if (1, output_row) in marks:
+-            require(canonical(marks[(1, output_row)]) == canonical(
+-                ['formula', base_semantics.text(output['formula'])]), 'literal final output marking')
+-        outputs.append(dict(tree(output, tick), row=output_row,
+-            occupied_in_input=initial_totals[(0, output_row)] == 1,
+-            occupied_in_hypothetical_union=totals[(0, output_row)] == 1,
+-            formula_mark_assigned_in_hypothetical_union=(1, output_row) in marks,
+-            unresolved_in_hypothetical_union=totals[(0, output_row)] == 0, fact_accepted=False))
++        outputs.append(dict(tree(output, tick), row=source['row'],
++            occupied_in_input=initial_totals[(0, source['row'])] == 1, fact_accepted=False))
+     for node in node_map:
+         for edge in node['ordered_reads']:
+             edge['occupied_in_hypothetical_union'] = totals[(0, edge['row'])] == 1
+     for port in input_records:
+-        input_row = port['row']
+-        if (1, input_row) in marks:
+-            require(canonical(marks[(1, input_row)]) == canonical(
+-                ['formula', base_semantics.text(port['formula'])]), 'literal final external input marking')
+-        port['occupied_in_hypothetical_union'] = totals[(0, input_row)] == 1
+-        port['formula_mark_assigned_in_hypothetical_union'] = (1, input_row) in marks
+-        port['unresolved_in_hypothetical_union'] = totals[(0, input_row)] == 0
++        port['occupied_in_hypothetical_union'] = totals[(0, port['row'])] == 1
+     after_visits = language.kernel.visits
+     require(type(after_visits) is int and after_visits >= before_visits, 'monotone native visits')
+     require(canonical(describe_host(language=language, tick=tick)) == canonical(actual_host)

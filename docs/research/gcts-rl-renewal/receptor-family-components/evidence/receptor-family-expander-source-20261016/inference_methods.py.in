@@ -1,0 +1,88 @@
+    def _infer_set(self, env, pid, value):
+        if pid in env:
+            require(env[pid] == value, 'PORT_MISMATCH', 'one simultaneous repeated parameter binding')
+            return False
+        env[pid] = self.w.copy(value)
+        return True
+
+    def _infer_template(self, a, actual, env, ps, path):
+        """First-order pattern inference only; non-pattern abstractions defer."""
+        self.w.step(); tag=a['node']; changed=False
+        if tag == 'var':
+            require(actual[0]=='var','PORT_MISMATCH','variable receptor term')
+            return self._infer_set(env,a['variable_id'],actual[1])
+        if tag in ('formula_meta','term_meta'):
+            pid=a['parameter']; kind='TERM' if tag=='term_meta' else 'FORMULA'
+            if pid in env:
+                try: expected=self._instantiate(a,env,[],path)
+                except KeyError: return False
+                require(expected==actual,'PORT_MISMATCH','repeated abstraction receptor')
+                return False
+            arguments=[]
+            for i,argument in enumerate(a['arguments']):
+                try: value=self._instantiate(argument,env,[],path+['arguments',i])
+                except KeyError: return False
+                if value[0]!='var': return False
+                arguments.append(value[1])
+            if len(arguments)!=len(set(arguments)): return False
+            # Abstract only explicit distinct variable arguments; no inverse substitution guess.
+            return self._infer_set(env,pid,{'formal_names':arguments,'body':actual})
+        require(actual[0]==tag,'PORT_MISMATCH','literal constructor match')
+        if tag=='bot': return False
+        if tag=='fun':
+            require(actual[1]==a['symbol'] and len(actual[2])==len(a['arguments']), 'PORT_MISMATCH','literal function match')
+            for i,(part,value) in enumerate(zip(a['arguments'],actual[2])):
+                changed=self._infer_template(part,value,env,ps,path+['arguments',i]) or changed
+            return changed
+        if tag=='pred':
+            require(len(actual[2])==len(a['arguments']),'PORT_MISMATCH','predicate arity')
+            symbol=a['symbol']
+            if 'literal' in symbol: require(symbol['literal']==actual[1],'PORT_MISMATCH','literal predicate')
+            else: changed=self._infer_set(env,symbol['parameter'],actual[1]) or changed
+            for i,(part,value) in enumerate(zip(a['arguments'],actual[2])):
+                changed=self._infer_template(part,value,env,ps,path+['arguments',i]) or changed
+            return changed
+        if tag=='all':
+            changed=self._infer_set(env,a['binder_id'],actual[1]) or changed
+            return self._infer_template(a['body'],actual[2],env,ps,path+['body']) or changed
+        if tag=='not': return self._infer_template(a['body'],actual[1],env,ps,path+['body'])
+        changed=self._infer_template(a['left'],actual[1],env,ps,path+['left']) or changed
+        return self._infer_template(a['right'],actual[2],env,ps,path+['right']) or changed
+
+    def infer(self, fid, candidate, ports):
+        require(type(candidate)is dict and set(candidate)<=set(self.params[fid]),'BINDING','partial candidate has declared parameter IDs only')
+        env=self.w.copy(candidate);d=self.by_id[fid];ps=self.params[fid]
+        # Validate supplied values before they can guide any pattern inference.
+        for pid,value in env.items():
+            p=ps[pid];kind=p['kind']
+            if kind=='VARIABLE': require(type(value)is str and value in self.host['variable_names'],'SCOPE','candidate variable')
+            elif kind=='PREDICATE_SYMBOL': require(type(value)is str and self.host['predicates'].get(value)==p['arity'],'ARITY','candidate predicate')
+            else:
+                _keys(value,('formal_names','body'));fs=value['formal_names']
+                require(type(fs)is list and len(fs)==len(p['formal_variables']),'BINDING','candidate abstraction arity')
+                for name in fs:_name(name)
+                _unique(fs);self._native(value['body'],kind,set(fs))
+        _keys(ports,('hypotheses','inputs','outputs'),'PORT_BINDING')
+        constraints=[]
+        for field in ('hypotheses','inputs'):
+            require(type(ports[field])is list and len(ports[field])==len(d[field]),'PORT_BINDING','all ordered ports')
+            for i,(p,b) in enumerate(zip(d[field],ports[field])):
+                require(type(b)is dict and b.get('port_id')==p['id'],'PORT_BINDING','same ordered port')
+                self._native(b.get('formula'),'FORMULA',set())
+                constraints.append((p['formula'],b['formula'],[field,i,'formula']))
+        require(type(ports['outputs'])is list,'PORT_BINDING','ordered output subset')
+        output_by_id={p['id']:(i,p) for i,p in enumerate(d['outputs'])}
+        for b in ports['outputs']:
+            require(type(b)is dict and b.get('port_id') in output_by_id,'PORT_BINDING','declared output')
+            i,p=output_by_id[b['port_id']];self._native(b.get('formula'),'FORMULA',set())
+            constraints.append((p['formula'],b['formula'],['outputs',i,'formula']))
+        self.renamings=[]
+        while True:
+            before=len(env)
+            for template,actual,location in constraints:
+                self._infer_template(template,actual,env,ps,location)
+            if len(env)==before:break
+        missing=[pid for pid in ps if pid not in env]
+        if missing: raise _Unbound('residual parameters need declared bindings: '+','.join(missing))
+        return env
+

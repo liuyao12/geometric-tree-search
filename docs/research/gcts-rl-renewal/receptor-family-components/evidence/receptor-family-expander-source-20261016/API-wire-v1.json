@@ -1,0 +1,145 @@
+{
+  "APIs": {
+    "expand_family": "(*,registry,family_id,host,substitution,port_bindings,tick,limits=None) -> expansion proposal",
+    "match_family": "(*,registry,family_id,host,receptors,candidate_bindings,tick,limits=None) -> bounded matching packet; candidate_bindings iterable of COMPLETE substitution dicts; zero candidates/nonmatches never prove absence",
+    "validate_registry": "(*,registry,host,tick,limits=None) -> validation packet READY_PROPOSAL or UNKNOWN"
+  },
+  "descriptor_schema": "receptor-lemma-family-v2",
+  "descriptor_v2": {
+    "call_hypotheses": "ordered refs, must resolve to actual original Gamma occurrences; materialize real assumption primitives",
+    "call_substitution": "exact child parameter map: VARIABLE={variable_id:parentVARIABLE}; PREDICATE_SYMBOL={literal:name}|{parameter:parentPRED}; TERM/FORMULA={formal_variables:[parentVARIABLE IDs],body:parent term/formula template}; no preencoded executable/native payload",
+    "dependencies": "distinct exact family IDs actually called, acyclic entire supplied registry, no unused declared dependency",
+    "family_call_extra_required": [
+      "ordered_hypotheses"
+    ],
+    "family_identity": "sha256 canonical descriptor excluding only family_id and provenance, ensure_ascii=True sort_keys=True separators=(comma,colon); full preimage retained and compared",
+    "inherits": "all v1 design fields/constructors/parameter kinds",
+    "output_sources": "may use any explicit reference; family-call output ID required even for one output",
+    "primitive_arguments": "dict name->{type:FORMULA|TERM|VARIABLE|PREDICATE_SYMBOL|LITERAL,value:template or literal}; VARIABLE value={variable_id:ID}; PREDICATE_SYMBOL value={literal:name}|{parameter:ID}; LITERAL value JSON",
+    "references": [
+      "{input:portID}",
+      "{hypothesis:portID}",
+      "{step:primitiveStepID}",
+      "{step:familyCallStepID,output:childOutputPortID}"
+    ]
+  },
+  "flags": {
+    "RL_learned": false,
+    "engine_activated": false,
+    "host_membership_accepted": false,
+    "point_union_accepted": false,
+    "proof_accepted": false,
+    "proposal_only": true,
+    "pruning_accepted": false,
+    "runtime_qualified": false,
+    "syntax_expansion_only": true
+  },
+  "host": {
+    "authority": "full JSON host declaration/profile/Source authority, preserved verbatim; syntax code does not authenticate it",
+    "binding": "full JSON original binding, preserved verbatim",
+    "exact_keys": [
+      "schema",
+      "host_id",
+      "dialect",
+      "binding",
+      "authority",
+      "functions",
+      "predicates",
+      "variable_names",
+      "features",
+      "rules",
+      "ordered_Gamma"
+    ],
+    "features": "distinct strings",
+    "functions": "name->nonnegative arity",
+    "ordered_Gamma": "ordered full native formula list; repeated occurrences retained",
+    "predicates": "name->nonnegative arity",
+    "rules": "name->{input_count:int,arguments:{name:FORMULA|TERM|VARIABLE|PREDICATE_SYMBOL|LITERAL}}",
+    "schema": "receptor-family-host-v1",
+    "variable_names": "finite ordered distinct allowed native names; fresh choice is first allowed unused"
+  },
+  "invalid_data": "DescriptorError(ValueError) with .code; only definite data/scope/port mismatch. Callback exceptions including TimeoutError propagate unchanged. Own finite work/name/depth cutoff returns UNKNOWN; no negative/pruning/theorem authority.",
+  "limits": {
+    "binding_attempts": 64,
+    "depth": 64,
+    "expanded_nodes": 4096,
+    "results": 16,
+    "work": 200000
+  },
+  "matching": "bounded complete binding iteration and forward simultaneous literal matching, not claim complete unifier. A mismatch candidate is only rejected for that literal binding; zero returned matches remains UNKNOWN.",
+  "native_AST": {
+    "formulas": [
+      "[bot]",
+      "[eq,term,term]",
+      "[pred,symbol,[term,...]]",
+      "[not,formula]",
+      "[imp|and|or,formula,formula]",
+      "[all,name,formula]"
+    ],
+    "literal_identity": "exact JSON lists, not alpha-equivalence",
+    "terms": [
+      "[var,name]",
+      "[fun,symbol,[term,...]]"
+    ]
+  },
+  "port_bindings": {
+    "exact_keys": [
+      "hypotheses",
+      "inputs",
+      "outputs"
+    ],
+    "hypotheses": "ordered [{port_id,gamma_index,formula}] exactly all descriptor hypotheses, exact original Gamma occurrence",
+    "inputs": "ordered [{port_id,formula,source:<full JSON provenance>,occupied:bool,fact_accepted:false}] exactly all inputs; occupied does not accept a proof",
+    "outputs": "ordered subset [{port_id,formula}] of requested literal output receptors; all descriptor outputs still emitted"
+  },
+  "proposal": {
+    "UNKNOWN": "status UNKNOWN, reason explicit, partial arrays cleared; no partial expansion admitted",
+    "binder_renamings": "ordered [{call_path,location:[string|int,...],variable_id:null|ID,from,to,reason:TEMPLATE_BINDER|ABSTRACTION_CAPTURE}] full native name changes",
+    "call_frames": "preorder [{call_path,family_id,substitution,hypotheses:[{port_id,formula,source,gamma_index}],inputs:[{port_id,formula,source}],outputs:[{port_id,formula,source}]}]",
+    "costs": "structural exact {descriptor_count,call_frames,primitive_nodes,ordered_input_edges,hypothesis_nodes,root_input_ports,output_ports}; diagnostic work separately not independently exact timing",
+    "dependency_closure": "dependency-first [{family_id,descriptor}] for reachable root, full descriptors",
+    "exact_keys": [
+      "schema",
+      "version",
+      "status",
+      "request",
+      "family_id",
+      "family_preimage",
+      "dependency_closure",
+      "primitive_nodes",
+      "input_ports",
+      "hypothesis_ports",
+      "outputs",
+      "call_frames",
+      "binder_renamings",
+      "side_condition_checks",
+      "costs",
+      "work",
+      "reason",
+      "flags"
+    ],
+    "hypothesis_ports": "ordered root binding packets plus {source:{node:actual_assumption_nodeID}}; actual assumption node once per root hypothesis occurrence (including unused ports)",
+    "input_ports": "ordered root input binding packets; fact_accepted remains false",
+    "origin": "{family_id,call_path:[stepID,...],step_id,hypothesis_port:null|ID,gamma_index:null|int}; paths namespaced, ids n0,n1,...",
+    "outputs": "ordered [{port_id,formula,source:{node:flatID}|{input:rootPortID}}] every root output",
+    "primitive_nodes": "topological [{id,rule,formula,arguments,ordered_inputs,origin}]; arguments instantiated native values, ordered_inputs refs {node:flatID}|{input:rootPortID}; no hidden facts",
+    "request": "{registry,host,substitution,port_bindings}; full literal copied input data",
+    "schema": "receptor-family-expansion-proposal-v1",
+    "side_condition_checks": "ordered [{call_path,index,relation,arguments,satisfied:true}] plus automatic VARIABLE distinctness and EIGEN context checks recorded at relation AUTO_DISTINCT/AUTO_EIGEN",
+    "work": "{steps,limit}; producer-local guarded syntax traversal only, no time/semantic evidence"
+  },
+  "receptors": "same port_bindings shape; matching validates EVERY supplied hypothesis/input/output under one complete substitution. General inverse higher-order unification not claimed; declared bounded candidate iterator supplies complete bindings for all four kinds.",
+  "schema": "receptor-family-expander-API-v1",
+  "scientific_calls": 0,
+  "scope_side_conditions": {
+    "DECLARED_SYMBOL_ARITY": "[PREDICATE_PARAMETER_ID,decimal_arity]",
+    "DISTINCT": "arguments VARIABLE IDs pairwise distinct native names",
+    "EIGEN": "each EIGEN VARIABLE absent from complete original Gamma plus every external root input dependency formula; no hidden discharge",
+    "FREE_SUBSET": "[FORMULA_or_TERM_parameter_ID|GAMMA|INPUTS|OUTPUTS,VARIABLE_ID,...]",
+    "HOST_PROFILE_MEMBER": "[parameter_ID] syntax/signature/name only; native depth/finite membership remains adapter obligation",
+    "NOT_FREE_IN": "[VARIABLE_ID, FORMULA_or_TERM_parameter_ID|GAMMA|INPUTS|OUTPUTS]"
+  },
+  "source_only": true,
+  "substitution": "exact parameter map. VARIABLE and PREDICATE_SYMBOL are native strings. TERM/FORMULA={formal_names:[distinct placeholder strings],body:native AST}; formal_names arity matches descriptor formal_variables. Free external names limited by mapped allowed_external_free_variables. All binding simultaneous; explicit formula/term abstractions handle intentional bound dependence.",
+  "version": "receptor-family-typed-expander-v1"
+}

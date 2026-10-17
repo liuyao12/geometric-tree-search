@@ -1,0 +1,265 @@
+{
+  "API": {
+    "adapt_expansion": {
+      "kwargs": [
+        "language",
+        "base_semantics",
+        "marked_semantics",
+        "expansion_checker",
+        "registry",
+        "family_id",
+        "host",
+        "substitution",
+        "port_bindings",
+        "proposal",
+        "state",
+        "row_assignment",
+        "tick"
+      ],
+      "receipt_schema": "receptor-family-six-rule-local-cluster-v1",
+      "statuses": [
+        "READY_LOCAL_CLUSTER",
+        "UNKNOWN"
+      ]
+    },
+    "describe_host": {
+      "kwargs": [
+        "language",
+        "tick"
+      ],
+      "returns": "Exact11-key receptor-family-host-v1 derived from actual original BoundedLanguage; no caller-maintained host authority, raw custody still caller-owned."
+    },
+    "exceptions": {
+      "adapter": "Exact ValueError prefix six-rule receptor adapter: ",
+      "delegates": "Independent ExpansionCheckError(code), native OutsideLanguage/MembershipUnknown, c354/marked verifier ValueError and all tick/resource/callback errors propagate unchanged. No exception is treated as successful rejection or proof.",
+      "dynamic_reasons": [
+        "effective original theory",
+        "effective original parameters",
+        "effective original gamma",
+        "effective original target",
+        "current whole point legality: already_selected",
+        "current whole point legality: branch_excluded_complete_key",
+        "current whole point legality: whole_support_capacity",
+        "current whole point legality: whole_remote_or_metadata_mark_conflict"
+      ],
+      "literal_reasons": [
+        "actual input occupancy without fact authority",
+        "actual original and marked point APIs",
+        "builtin JSON only",
+        "call input physical reference",
+        "complete node/input row assignment",
+        "complete original member projection",
+        "complete union t capacity",
+        "effective finite name census",
+        "effective original kernel authority",
+        "effective parameter scope",
+        "exact actual input source",
+        "exact actual original host",
+        "exact unique node/input row assignment",
+        "fresh conditional checker protocol",
+        "fresh conditional expansion required",
+        "fresh independent whole union check",
+        "full checked expansion request and family",
+        "full checked primitive nodes and input ports",
+        "full original binding without epoch rebasing",
+        "host primitive rule and argument fields",
+        "independent expansion checker API",
+        "literal external input marking",
+        "literal final external input marking",
+        "literal final output marking",
+        "literal output node binding",
+        "monotone native visits",
+        "native cumulative visit counter",
+        "no partial independent expansion",
+        "only exact current selected member reuse",
+        "original Source17 height/profile",
+        "original authority and all adapter inputs unchanged",
+        "original kernel API",
+        "original primitive Source pin",
+        "physical call input sharing policy",
+        "physical input sharing policy",
+        "primitive ordered reference",
+        "row assignment list",
+        "row assignment protocol",
+        "shared placement full packet identity",
+        "strict earlier actual primitive read",
+        "unique expansion identifiers"
+      ]
+    },
+    "host_rule_map": {
+      "assumption": {
+        "arguments": {
+          "index": "LITERAL"
+        },
+        "input_count": 0
+      },
+      "axiom": {
+        "arguments": {
+          "name": "LITERAL"
+        },
+        "input_count": 0
+      },
+      "eq_subst": {
+        "arguments": {
+          "left": "TERM",
+          "right": "TERM",
+          "template": "FORMULA",
+          "variable": "VARIABLE"
+        },
+        "input_count": 0
+      },
+      "generalize": {
+        "arguments": {
+          "variable": "VARIABLE"
+        },
+        "input_count": 1
+      },
+      "instantiate": {
+        "arguments": {
+          "term": "TERM",
+          "universal": "FORMULA"
+        },
+        "input_count": 0
+      },
+      "mp": {
+        "arguments": {},
+        "input_count": 2
+      }
+    },
+    "root_input_source": {
+      "exact_keys": [
+        "schema",
+        "row",
+        "original_full_key"
+      ],
+      "original_full_key": "Exact bare original placement key from checked current selected row if occupied, otherwise null; generation omitted. occupied exactly actual checked t, fact_accepted false always.",
+      "schema": "receptor-family-six-rule-input-source-v1"
+    },
+    "row_assignment": {
+      "exact_keys": [
+        "schema",
+        "node_rows",
+        "input_rows"
+      ],
+      "input_rows": "Exactly one [root external input port ID, literal row0..23] per independently checked root input. All node reads are strictly earlier.",
+      "node_rows": "Exactly one [flat primitive node ID, literal row0..23] per independently checked node.",
+      "schema": "receptor-family-six-rule-row-assignment-v1"
+    }
+  },
+  "Review_ABI": {
+    "required": [
+      "schema",
+      "scope",
+      "source",
+      "source_contract",
+      "sources",
+      "status",
+      "scientific_calls",
+      "author_overlap",
+      "findings"
+    ],
+    "schema": "receptor-family-six-rule-adapter-typed-Source-review-v3",
+    "scope": "receptor-family-six-rule-adapter-Source",
+    "sources": {
+      "adapter": {
+        "bytes": 25205,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+        "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+      }
+    }
+  },
+  "author_static": {
+    "bytes": 2489,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/author-static-v3.json",
+    "sha256": "b0ca73ad68142df8ffdc583b196af82c4b1528d04ace503721716ebbd7067aa0"
+  },
+  "dependency_sources": {
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "expander": {
+      "bytes": 51898,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "expansion_checker": {
+      "bytes": 56670,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 29197,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-fresh-projection-adapter-source-20261016/marked_unit_row_adapter_v2.py",
+      "sha256": "a1971d01cc1291af4b5508c81e3ef06bec17ee794d0a5d95b102d730ce0a3f7c"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    }
+  },
+  "engine_activated": false,
+  "module_imported": false,
+  "next": "Root and genuine distinct whole current Source review; Root alone owns future actuals/publication. No project/module/helper/model/test/clock/actual evaluated.",
+  "preserved_issues": {
+    "bytes": 3051,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/preserved-preactivation-issues-v1.json",
+    "sha256": "9ee5f5bd8f28df11afaf541cca9b9e20e1917c1aa7c991c8223c0b361b11115d"
+  },
+  "preserved_v2_genuine_negative": {
+    "bytes": 3020,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-independent-source-20261016/source-negative-v2.json",
+    "sha256": "9ceb29b7a92873ec2180501e5bd842917a02eaee7c56cd0d96c70f3047880d1c"
+  },
+  "proof_accepted": false,
+  "runtime_qualified": false,
+  "schema": "receptor-family-six-rule-adapter-handoff-v3",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 25205,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+    "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+  },
+  "source_contract": {
+    "bytes": 24585,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-contract-v3.json",
+    "sha256": "1d56488b42aa5c19ffed1e58a86dc647062a14d79580c9c13e2e3ba08d3d209d"
+  },
+  "source_delta_chain": [
+    {
+      "bytes": 3978,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-delta-v2.json",
+      "sha256": "93cd6a1c25292aa441e89d2e04225abd73c7c16c265597132ddd0540e6f1a05c"
+    },
+    {
+      "bytes": 5753,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/Source-delta-v3.json",
+      "sha256": "b97f82d1478de628b174f2696141bd08b25fb41ea1811b81137dc0682d0f60d1"
+    }
+  ],
+  "source_only": true,
+  "sources": {
+    "adapter": {
+      "bytes": 25205,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    }
+  }
+}

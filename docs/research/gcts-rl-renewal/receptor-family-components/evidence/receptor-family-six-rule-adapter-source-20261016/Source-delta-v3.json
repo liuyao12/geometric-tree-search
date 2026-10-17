@@ -1,0 +1,87 @@
+{
+  "edit_count": 6,
+  "edits": [
+    {
+      "label": "own_version",
+      "new_end": 422,
+      "new_start": 347,
+      "new_utf8": "VERSION = 'receptor-family-six-rule-point-adapter-v3-physical-call-sharing'",
+      "old_end": 425,
+      "old_start": 347,
+      "old_utf8": "VERSION = 'receptor-family-six-rule-point-adapter-v2-interfaces-and-point-key'"
+    },
+    {
+      "label": "unknown_no_partial_physical_bindings",
+      "new_end": 10398,
+      "new_start": 10254,
+      "new_utf8": "                    local_member_membership_checked=False, local_point_union_checked=False,\n                    physical_call_input_bindings=[])",
+      "old_end": 10348,
+      "old_start": 10257,
+      "old_utf8": "                    local_member_membership_checked=False, local_point_union_checked=False)"
+    },
+    {
+      "label": "every_checked_call_frame_physical_input_sharing",
+      "new_end": 14812,
+      "new_start": 13472,
+      "new_utf8": "    descriptors = {d['family_id']: d for d in registry}\n    physical_call_inputs = []\n    for frame in expansion['call_frames']:\n        tick()\n        policy = {p['id']: p['sharing'] for p in descriptors[frame['family_id']]['inputs']}\n        resolved = []\n        for port in frame['inputs']:\n            tick()\n            ref = port['source']\n            require(type(ref) is dict and set(ref) in ({'node'}, {'input'}), 'call input physical reference')\n            row = node_rows[ref['node']] if 'node' in ref else input_rows[ref['input']]\n            value = {'port_id': port['port_id'], 'source': tree(ref, tick), 'row': row,\n                     'formula': tree(port['formula'], tick), 'sharing': policy[port['port_id']],\n                     'fact_accepted': False}\n            for other in resolved:\n                tick()\n                if row == other['row']:\n                    require(value['sharing'] == other['sharing'] == 'ALLOW_SAME_EXACT_PRIOR_SOURCE'\n                            and canonical(value['formula']) == canonical(other['formula']),\n                            'physical call input sharing policy')\n            resolved.append(value)\n        physical_call_inputs.append({'call_path': tree(frame['call_path'], tick),\n            'family_id': frame['family_id'], 'inputs': resolved})\n    union = tree(s, tick)\n",
+      "old_end": 13448,
+      "old_start": 13422,
+      "old_utf8": "    union = tree(s, tick)\n"
+    },
+    {
+      "label": "physical_call_source_full_key_inspection_after_checked_union",
+      "new_end": 22523,
+      "new_start": 21938,
+      "new_utf8": "    original_union_keys = {v['translation'][1]: _key(v) for v in base_union['selected']}\n    decorated_union_keys = {v['translation'][1]: _key(v) for v in checked_union['selected']}\n    for frame in physical_call_inputs:\n        for port in frame['inputs']:\n            port['original_full_key_in_hypothetical_union'] = original_union_keys.get(port['row'])\n            port['decorated_full_key_in_hypothetical_union'] = decorated_union_keys.get(port['row'])\n            port['unresolved_in_hypothetical_union'] = totals[(0, port['row'])] == 0\n    after_visits = language.kernel.visits\n",
+      "old_end": 20616,
+      "old_start": 20574,
+      "old_utf8": "    after_visits = language.kernel.visits\n"
+    },
+    {
+      "label": "physical_call_bindings_output",
+      "new_end": 23346,
+      "new_start": 23174,
+      "new_utf8": "        output_ports=outputs, physical_call_input_bindings=physical_call_inputs,\n        union_state=checked_union, union_packet=full_packet, union_state_check=union_check,",
+      "old_end": 21380,
+      "old_start": 21267,
+      "old_utf8": "        output_ports=outputs, union_state=checked_union, union_packet=full_packet, union_state_check=union_check,"
+    },
+    {
+      "label": "physical_call_binding_cost_counts",
+      "new_end": 24553,
+      "new_start": 24293,
+      "new_utf8": "            'ordered_edge_uses': ordered_edges,\n            'physical_call_frames_checked': len(physical_call_inputs),\n            'physical_call_input_uses': sum(len(f['inputs']) for f in physical_call_inputs),\n            'direct_expansion_checker_calls': 1,",
+      "old_end": 22411,
+      "old_start": 22327,
+      "old_utf8": "            'ordered_edge_uses': ordered_edges, 'direct_expansion_checker_calls': 1,"
+    }
+  ],
+  "full_raw_forward_inverse_verified": true,
+  "parent": {
+    "bytes": 23063,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v2.py",
+    "sha256": "2371f01560cc458cb8675aea486c7169648f56c53da0f0089b126f775795c4a4"
+  },
+  "patches": [
+    {
+      "bytes": 6056,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v2-to-v3-forward.patch",
+      "sha256": "c4d66a69a644c843c420f8c3a7075701196a56822aae259bbcc5d6ccd9ce2bad"
+    },
+    {
+      "bytes": 6056,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/v3-to-v2-full-inverse.patch",
+      "sha256": "cd98ff1960f659c59326b08e12a157a9b7ca0dcb71de275296959e4edf6bb984"
+    }
+  ],
+  "schema": "receptor-family-six-rule-adapter-Source-delta-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 25205,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+    "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+  },
+  "source_only": true,
+  "whole_AST_inverse_verified": true
+}

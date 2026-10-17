@@ -1,0 +1,35 @@
+{
+  "concrete_blockers": [],
+  "engine_activated": false,
+  "findings": {
+    "bytes": 21289,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-independent-source-20261016/review-findings-v2.json",
+    "sha256": "7b23ad751b34b5f4b4e9d18791ccd462abfb102c864a43f0c510bfdf298fd5c5"
+  },
+  "review": {
+    "bytes": 8281,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-independent-source-20261016/typed-Source-review-v2.json",
+    "sha256": "e6a07e52abaaa244160f2f93a1051bc194bad2212ac823e846811c880f394b68"
+  },
+  "reviewed_handoff": {
+    "bytes": 1022,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/handoff-v2.json",
+    "sha256": "db617a70084e41f2122ee26fc11eb769626ec7546d212f2ae2293c224b29e973"
+  },
+  "runtime_qualified": false,
+  "schema": "receptor-family-bridge-cold-independent-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/ROOT_receptor_family_bridge_cold_v2.py",
+    "sha256": "912489c3f82bf21b0efc60d14ec7c4448793dd41e2d80050a9278a110fe6415b"
+  },
+  "source_contract": {
+    "bytes": 27889,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/Source-contract-v2.json",
+    "sha256": "4d2387f7d343ebe4606ccf1a4aa897c0b2842f83a95ffb99e2e0b04f280d7c2e"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

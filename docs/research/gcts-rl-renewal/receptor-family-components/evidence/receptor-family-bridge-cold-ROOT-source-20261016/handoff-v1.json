@@ -1,0 +1,21 @@
+{
+  "actual_execution_authorized": false,
+  "schema": "ROOT-receptor-family-bridge-cold-handoff-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51685,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/ROOT_receptor_family_bridge_cold_v1.py",
+    "sha256": "c2399d271732f48d1fde73eb12834528a273f8a9f444b36bf3de08de7dc5be14"
+  },
+  "source_contract": {
+    "bytes": 27554,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "39945cba84b2c9e91b3c7d75d68f52e3b97dad71d88a9e17d24fa870f881472b"
+  },
+  "source_delta": {
+    "bytes": 2122,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/Source-delta-v1.json",
+    "sha256": "11903ae0c6f1891d83a4ea30812b3e57e8ab90b68c235324af2c2ef511c28b18"
+  },
+  "source_only": true
+}

@@ -1,0 +1,27 @@
+{
+  "findings": {
+    "bytes": 4641,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-independent-source-20261016/review-findings-v1.json",
+    "sha256": "ea8a577416a8bfcd87566679040affca4bf76e6ce4648e94b2a3b8169446f5c8"
+  },
+  "review": {
+    "bytes": 2173,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "e926c4541314a4cc5c578a4fa8104c4cb4073966002511cdac7077f40e319821"
+  },
+  "schema": "ROOT-receptor-family-component-cases-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 27669,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/receptor_family_component_cases_v1.py",
+    "sha256": "ce7c5dcad45a1e6b8ce49308953b79c945bd9c76eca88e0e60416c7713f81236"
+  },
+  "source_contract": {
+    "bytes": 5310,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-controls-ROOT-source-20261016/Source-contract-v1.json",
+    "sha256": "a3ccd43e92560ab1eca641ea8d7e31c0eb5a950add219656a5e7a1177a02aadb"
+  },
+  "source_only": true,
+  "status": "NARROW_SOURCE_NEGATIVE_PENDING_ERROR_PROPAGATION_REPAIR"
+}

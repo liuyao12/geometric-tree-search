@@ -1,0 +1,144 @@
+{
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "required_fields": [
+      "schema",
+      "scope",
+      "author_identity",
+      "reviewer_identity",
+      "source",
+      "source_contract",
+      "sources",
+      "source_only",
+      "source_review_passed",
+      "scientific_calls",
+      "scientific_acceptance"
+    ],
+    "schema": "receptor-family-expansion-checker-typed-Source-review-v1",
+    "scope": "receptor-family-expansion-checker-Source"
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_metadata_note": "Initial metadata builder stopped before any writes because guessed schema filename descriptor-v2.schema.json did not exist; corrected after inventory to actual receptor-family-v2.schema.json. Source was not changed/evaluated.",
+  "authorship_disclosure": "Independent checker author previously authored marked-state verifier9fd6, marked-aware fibre checker8f7a, advice consumers and controls/saved closures. Shared descriptor/wire/hygiene conventions coordinated with producer arithmetic_induction and host adapter hilbert_advice_controls. Producer draft frame/output code read to settle ABI and identify full-source sharing bug; producer is never imported/invoked/reused as checking authority. Independent reconstruction of the agreed finite relation, not unrelated mathematics.",
+  "gaps": [
+    "Source not imported/called; static parsing/compile is not dynamic conformance.",
+    "Checker rechecks final complete binding, not inverse inference completeness; no absent-family/pruning claim.",
+    "HOST_PROFILE_MEMBER is signature/name syntax only, never exact native finite membership.",
+    "No engine hook/advice integration/target search/automatic inventory/fit/speed claim.",
+    "Future Root component controls should challenge all-port/repetition/order/capture/arity/eigen/Gamma/freshness/nested outputs/cycle/ref/source-sharing/descriptor/host/version forgery and callback exhaustion before point integration."
+  ],
+  "public_API": {
+    "UNKNOWN": "status UNKNOWN, expansion None, conditional_expansion_checked False; no partial nodes admitted; reason explicit. Producer UNKNOWN does not imply invalidity/exhaustion.",
+    "VERSION": "receptor-family-independent-expansion-checker-v1",
+    "check_expansion": "(*,registry,family_id,host,substitution,port_bindings,proposal,tick,limits=None)",
+    "definite_rejection": "ExpansionCheckError(ValueError), .code. No generic exception catch.",
+    "receipt_fields": [
+      "schema",
+      "version",
+      "status",
+      "conditional_expansion_checked",
+      "request",
+      "input_sha256",
+      "expansion",
+      "producer_work",
+      "independent_work",
+      "reason",
+      "flags"
+    ],
+    "resources": "Injected tick exceptions propagate unchanged. Only own private bounded work/depth/node/name unfinished becomes UNKNOWN. Optional limits may only reduce work200000/depth64/expanded_nodes4096; no pruning authority.",
+    "schema": "receptor-family-conditional-expansion-check-v1",
+    "success": "Full independently rebuilt producer-format expansion under expansion; whole substantive offered packet compared literally except implementation-specific work, which is shape/bounds checked and retained untrusted. Request retains all six explicit data inputs including full proposal; digest supplements full request.",
+    "success_status": "CONDITIONAL_EXPANSION_CHECKED"
+  },
+  "refs": {
+    "API": {
+      "bytes": 8411,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-wire-v1.json",
+      "sha256": "6ba537d763ec9d2c753866fadd81cb7bc946463a51f930cde1d23f1e68fd9ba5"
+    },
+    "API_clarifications": {
+      "bytes": 7265,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/API-clarifications-v1.json",
+      "sha256": "d541a39c19c9185ed6ac5e926d89a19984c9133c4f0f1ed230bb5c28828942b5"
+    },
+    "Root_choice": {
+      "bytes": 3196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-implementation-choice-v1.json",
+      "sha256": "1064df9fa25a868e3b9cbc622f62c85e98683b7133f851527f103e8073bab74a"
+    },
+    "audit": {
+      "bytes": 16383,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/audit-findings-v1.json",
+      "sha256": "2b56d3a8a616c85d6dc92f1781d6175036793be750a674f05fc7676d1b85e8ca"
+    },
+    "checkpoint": {
+      "bytes": 10386,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/routing-and-receptors-report-ROOT-20261016/ROOT-progress-checkpoint-v1.json",
+      "sha256": "680880875cab48ba9b44c4ba9b7caf67c2460572a0f969cf1a1c4362bceb2b3a"
+    },
+    "descriptor_schema": {
+      "bytes": 21695,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor-family-v2.schema.json",
+      "sha256": "37cc4051402aee4c840014b75a071d8079876ae61690d1be8886396ceef3ca11"
+    },
+    "design": {
+      "bytes": 41188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/receptor-family-contract-v1.json",
+      "sha256": "d7539763be595f241728313e4815f34480c8f589990940be90e4c03d8c9511b9"
+    },
+    "illustration": {
+      "bytes": 2877,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-lemma-family-design-source-20261016/human-two-mp-family-v1.json",
+      "sha256": "65bcfcc307158bd09005694da629206e96c4f5e967bce84ebce8578ef9595628"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "original_kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "paired_producer": {
+      "bytes": 51898,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    }
+  },
+  "relation": {
+    "all_ports": "Complete simultaneous typed environment. Every input/hypothesis/requested-output receptor matched literally. Repeated ordered edges retained. Same exact source cannot have unequal formulas; DISTINCT propagates full original source/internal node identity through nested aliases.",
+    "expansion": "Full dependency-first descriptors, preorder call frames, topological n0.. nodes, native typed arguments, all ordered edges/origins/outputs, exact original assumption occurrences and independently recomputed structural costs. No implicit primitive dedup/physical placement count.",
+    "hygiene": "Lexical BOUND IDs and explicit abstraction argument dependence. Independently derived deterministic capture avoidance from finite host name order and full alpha log. Declared free-variable allowances, DISTINCT/EIGEN and all explicit side conditions. EIGEN checks complete original Gamma and every root input formula. Relevant output restrictions remain explicit side conditions/native host admission.",
+    "hypotheses": "Every root hypothesis emits actual assumption node with exact original Gamma index/formula, including unused ports. Child hypotheses reuse only exact Gamma-provenance nodes. Inputs never become hypotheses/facts.",
+    "identity": "Whole canonical JSON equality, preserving bool/int, order, scope, host binding/authority and full request. Hashes supplement full literals; finite builtin-only copy rejects cycles/custom objects.",
+    "registry": "Nonempty full descriptor list. Exact v2 fields/full identity preimage (exclude family_id/provenance only), unique IDs, whole supplied registry including unreachable entries, exact actual dependency set, acyclic closure, explicit named multi-output refs and separately namespaced IDs.",
+    "syntax": "All native var/fun and bot/eq/pred/not/imp/and/or/all constructors; exact declared signature arities/finite variable names; typed TERM/FORMULA abstractions, VARIABLE roles and PREDICATE_SYMBOL arities. No hardcoded two-MP path, theorem/donor/proofword/target route."
+  },
+  "schema": "receptor-family-expansion-checker-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-expansion-checker-Source",
+  "source": {
+    "bytes": 56670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+    "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+  },
+  "source_only": true,
+  "sources": {
+    "checker": {
+      "bytes": 56670,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    }
+  },
+  "status": "SOURCE_ONLY_UNEXECUTED_NOT_ACTIVATED",
+  "trust_boundary": {
+    "callback": "Trusted synchronous pinned caller tick; no arbitrary hostile frame/reentrant mutation guarantee. No persistent cache, shared producer authority, cursor, state or checkpoint.",
+    "host": "Adapter/caller must authenticate and construct original declaration/signature/Gamma/profile/Source map/epoch separately from current executable map. Checker preserves supplied host metadata but does not authenticate files.",
+    "primitive_and_point": "Host rule table specifies syntax only. Every expanded original primitive, finite native membership, logical rule relation, selected/excluded collision preimages and whole marked t/m union require fresh host adapter checks.",
+    "scope": "Conditional syntax expansion, not sequent theorem/target proof/point board/engine/scheduler/rollback/degree/EOF/universal schema/library/RL/GCTS advantage. Pending/occupied input is never accepted fact."
+  },
+  "unchanged": "All frozen old design, Sources, inputs, Root/publication files and clocks/helpers/native limits untouched."
+}

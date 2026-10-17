@@ -1,0 +1,53 @@
+{
+  "literal_replacements": [
+    {
+      "new": "    plan_path=HERE/'ROOT-RF-plan-v1.json';plan_raw=read_raw(plan_path);plan=decode(plan_raw)\n    pr=dict(path=str(plan_path),**raw_pin(plan_raw))",
+      "old": "    plan_path=HERE/'ROOT-RF-plan-v1.json';plan=saved('ROOT-RF-plan-v1.json');pr=pin(plan_path)"
+    },
+    {
+      "new": "    bracket_path=HERE/'ROOT-RF-tool-bracket-v1.json';bracket_raw=read_raw(bracket_path)\n    bracket=decode(bracket_raw);bracket_ref=dict(path=str(bracket_path),**raw_pin(bracket_raw))\n    code=bracket['tool_exit_code']",
+      "old": "    bracket=saved('ROOT-RF-tool-bracket-v1.json');code=bracket['tool_exit_code']"
+    },
+    {
+      "new": "        tool_bracket=bracket_ref,native_evidence=refs,terminal_exit_code=code,",
+      "old": "        tool_bracket=pin(HERE/'ROOT-RF-tool-bracket-v1.json'),native_evidence=refs,terminal_exit_code=code,"
+    },
+    {
+      "new": "        # Any failed run's partial/final stdout stays opaque and cannot qualify.\n        readout.update(failure_stdout_opaque=refs['meter-stdout.txt'],\n            classification=",
+      "old": "        need(raw['meter-stdout.txt']==b'','no positive final on failure')\n        readout.update(classification="
+    },
+    {
+      "new": "        envelope=decode(encoded);need(type(envelope)is dict and set(envelope)=={'schema','encoding',\n             'expanded_bytes','expanded_sha256','compressed_bytes','compressed_sha256','payload_base64'}\n             and canonical(envelope)+b'\\n'==encoded and envelope['schema']=='ROOT-unit-row-lossless-result-envelope-v1'",
+      "old": "        envelope=decode(encoded);need(canonical(envelope)+b'\\n'==encoded and envelope['schema']=='ROOT-unit-row-lossless-result-envelope-v1'"
+    },
+    {
+      "new": "        compressed=base64.b64decode(envelope['payload_base64'],validate=True)\n        need(base64.b64encode(compressed).decode('ascii')==envelope['payload_base64'],'canonical base64 identity')",
+      "old": "        compressed=base64.b64decode(envelope['payload_base64'],validate=True)"
+    }
+  ],
+  "parent": {
+    "bytes": 19358,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v1.py",
+    "sha256": "f67c1a7f7acd6e43f162294c43b1f45a0fa9cfabefc90555915d7b76a8476ca9"
+  },
+  "patches": [
+    {
+      "bytes": 5176,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/saved-v1-to-v2-forward.patch",
+      "sha256": "87dbd97ca34ba05bd848245404b949666ee26d2a5f62a4106ea8141548c6045b"
+    },
+    {
+      "bytes": 5176,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/saved-v2-to-v1-full-inverse.patch",
+      "sha256": "59f5ad918116455dc4919da2cd2da165486f1a3c1ac82a3ecd939fe7dd24cbb7"
+    }
+  ],
+  "schema": "ROOT-receptor-family-saved-reader-repair-delta-v1",
+  "scientific_calls": 0,
+  "scope": "Same-buffer plan/bracket identity, exact lossless wire/canonical base64, and opaque failed stdout; no scientific replay or native limits change.",
+  "source": {
+    "bytes": 19885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+    "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+  }
+}

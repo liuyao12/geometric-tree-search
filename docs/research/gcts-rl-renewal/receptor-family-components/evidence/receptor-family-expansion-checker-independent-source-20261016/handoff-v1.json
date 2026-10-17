@@ -1,0 +1,37 @@
+{
+  "concrete_blockers": [],
+  "engine_activated": false,
+  "findings": {
+    "bytes": 9860,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-independent-source-20261016/review-findings-v1.json",
+    "sha256": "412caa14cb2573ca26423387fbad203d8aa8835a1ff3a0136cc4b04ecf7d6ff7"
+  },
+  "review": {
+    "bytes": 2981,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-independent-source-20261016/typed-Source-review-v1.json",
+    "sha256": "f69a6ae95a71d4c7456a5bad482de9213e5d76f0fe4fa2686a215a4a529ef113"
+  },
+  "reviewed_handoff": {
+    "bytes": 4466,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/handoff-v1.json",
+    "sha256": "e7337f4c52707e27db97a70e2a830497956f341086ecb8f0ae873cb0dd8aaeb9"
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "runtime_qualified": false,
+  "schema": "receptor-family-expansion-checker-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-expansion-checker-Source",
+  "source": {
+    "bytes": 56670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+    "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+  },
+  "source_contract": {
+    "bytes": 10672,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/Source-contract-v1.json",
+    "sha256": "816081b8b284bfab55aa6eb3017d816ea730c663255ab738750f210ed4bbde23"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

@@ -1,0 +1,91 @@
+{
+  "author_identity": "/root/hilbert_advice_controls",
+  "check_count": 18,
+  "checks": [
+    {
+      "name": "compile_AST_only_no_module_evaluation",
+      "passed": true
+    },
+    {
+      "name": "stdlib_hash_json_only_no_engine_clock_loader_file_or_project_import",
+      "passed": true
+    },
+    {
+      "name": "all_six_real_rule_fields_arities_not_MP_only",
+      "passed": true
+    },
+    {
+      "name": "API_signatures_exact_no_offered_receipt",
+      "passed": true
+    },
+    {
+      "name": "fresh_checker_one_call_no_producer_delegation",
+      "passed": true
+    },
+    {
+      "name": "strict_exact_integer_rows_and_earlier_reads",
+      "passed": true
+    },
+    {
+      "name": "native_point_key_canonical_and_full_packet_collision_dedup",
+      "passed": true
+    },
+    {
+      "name": "full_primitive_rebuild_marked_projection_and_independent_union_paths",
+      "passed": true
+    },
+    {
+      "name": "all_initial_and_final_interfaces_literal_checks_no_inserted_interface_marks",
+      "passed": true
+    },
+    {
+      "name": "every_checked_frame_physical_sharing_not_just_IDs",
+      "passed": true
+    },
+    {
+      "name": "no_exception_masking_or_altered_budget_counters",
+      "passed": true
+    },
+    {
+      "name": "UNKNOWN_not_partial_READY_and_flags_false",
+      "passed": true
+    },
+    {
+      "name": "private_input_and_original_authority_before_after_equality",
+      "passed": true
+    },
+    {
+      "name": "v2_full_4_region_raw_AST_and_actual_patch_inverses",
+      "passed": true
+    },
+    {
+      "name": "v2_seven_other_helpers_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "v3_full_6_region_raw_AST_and_actual_patch_inverses",
+      "passed": true
+    },
+    {
+      "name": "v3_seven_other_helpers_raw_AST_exact",
+      "passed": true
+    },
+    {
+      "name": "all_injected_dependency_capsules_exact",
+      "passed": true
+    }
+  ],
+  "compile_without_evaluation": true,
+  "independent_review": false,
+  "module_imported": false,
+  "schema": "receptor-family-six-rule-adapter-author-static-v3",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 25205,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+    "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+  },
+  "source_functions_executed": 0,
+  "source_only": true,
+  "tests_or_clocks_or_actuals": 0
+}

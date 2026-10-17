@@ -1,0 +1,89 @@
+{
+  "API": {
+    "UNKNOWN": "status UNKNOWN, expansion None, conditional_expansion_checked False; no partial nodes admitted; reason explicit. Producer UNKNOWN does not imply invalidity/exhaustion.",
+    "VERSION": "receptor-family-independent-expansion-checker-v1",
+    "check_expansion": "(*,registry,family_id,host,substitution,port_bindings,proposal,tick,limits=None)",
+    "definite_rejection": "ExpansionCheckError(ValueError), .code. No generic exception catch.",
+    "receipt_fields": [
+      "schema",
+      "version",
+      "status",
+      "conditional_expansion_checked",
+      "request",
+      "input_sha256",
+      "expansion",
+      "producer_work",
+      "independent_work",
+      "reason",
+      "flags"
+    ],
+    "resources": "Injected tick exceptions propagate unchanged. Only own private bounded work/depth/node/name unfinished becomes UNKNOWN. Optional limits may only reduce work200000/depth64/expanded_nodes4096; no pruning authority.",
+    "schema": "receptor-family-conditional-expansion-check-v1",
+    "success": "Full independently rebuilt producer-format expansion under expansion; whole substantive offered packet compared literally except implementation-specific work, which is shape/bounds checked and retained untrusted. Request retains all six explicit data inputs including full proposal; digest supplements full request.",
+    "success_status": "CONDITIONAL_EXPANSION_CHECKED"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_ordering_diagnosis",
+    "required_fields": [
+      "schema",
+      "scope",
+      "author_identity",
+      "reviewer_identity",
+      "source",
+      "source_contract",
+      "sources",
+      "source_only",
+      "source_review_passed",
+      "scientific_calls",
+      "scientific_acceptance"
+    ],
+    "schema": "receptor-family-expansion-checker-typed-Source-review-v1",
+    "scope": "receptor-family-expansion-checker-Source"
+  },
+  "addition": {
+    "bytes": 58815,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/Source-addition-v1.json",
+    "sha256": "78fe1af50f2624e957d487147d40e72f3a583f020efa19d603075023f688a0d3"
+  },
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "author_static": {
+    "bytes": 5345,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/author-static-v1.json",
+    "sha256": "7d07bf98003066bb03edaadf972a59a8158cf67458a897a8dc8ec9da8392f89e"
+  },
+  "patches": {
+    "Source-addition-v1.patch": {
+      "bytes": 57657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/Source-addition-v1.patch",
+      "sha256": "16b6fddc2568d8814d360dbdc17c3cc52fc379dc15a294415893bd37eda9309c"
+    },
+    "Source-inverse-v1.patch": {
+      "bytes": 57657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/Source-inverse-v1.patch",
+      "sha256": "6e92e58f732d84e769b7a1aa55d1a9e867b896a7631b0a2458f86e60e04e972e"
+    }
+  },
+  "required_next": "Genuine distinct Source review, Root host/composition review and separately authorized component actual; no actual grant here.",
+  "schema": "receptor-family-expansion-checker-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 56670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+    "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+  },
+  "source_contract": {
+    "bytes": 10672,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/Source-contract-v1.json",
+    "sha256": "816081b8b284bfab55aa6eb3017d816ea730c663255ab738750f210ed4bbde23"
+  },
+  "source_only": true,
+  "sources": {
+    "checker": {
+      "bytes": 56670,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expansion-checker-source-20261016/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    }
+  },
+  "status": "SOURCE_ONLY_UNEXECUTED_NOT_ACTIVATED"
+}

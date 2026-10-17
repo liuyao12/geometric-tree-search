@@ -1,0 +1,435 @@
+{
+  "checks": [
+    {
+      "evidence": "raw frozen code pin",
+      "id": "CODE_PIN",
+      "passed": true
+    },
+    {
+      "evidence": "ast.parse only",
+      "id": "AST_PARSE",
+      "passed": true
+    },
+    {
+      "evidence": "compile(...,exec) only; no resulting code execution",
+      "id": "COMPILE_NO_EVALUATION",
+      "passed": true
+    },
+    {
+      "evidence": "stdlib syntax only",
+      "id": "NO_PROJECT_IMPORT",
+      "passed": true
+    },
+    {
+      "evidence": "AST excludes eval/exec/compile/import/open calls in module",
+      "id": "NO_DYNAMIC_EXECUTION",
+      "passed": true
+    },
+    {
+      "evidence": "all three public work APIs keyword-only",
+      "id": "KEYWORD_ONLY_APIS",
+      "passed": true
+    },
+    {
+      "evidence": "full new raw bytes and both actual patch directions reconstruct empty/new",
+      "id": "SOURCE_ADDITION_INVERSE",
+      "passed": true
+    },
+    {
+      "evidence": "raw branches for entire design constructor set; not a runtime check",
+      "id": "CONSTRUCTOR_COVERAGE",
+      "passed": true
+    },
+    {
+      "evidence": "all four parameter kind parsers",
+      "id": "PARAMETER_KIND_COVERAGE",
+      "passed": true
+    },
+    {
+      "evidence": "explicit ordered child context and multi-output refs",
+      "id": "NESTED_CALL_WIRE",
+      "passed": true
+    },
+    {
+      "evidence": "whole Source read: template lexical IDs and simultaneous capture-safe native substitution, deterministic finite fresh names",
+      "id": "CAPTURE_SCOPE",
+      "passed": true
+    },
+    {
+      "evidence": "infer() result always expand() with all ordered hypotheses/inputs and supplied outputs",
+      "id": "ALL_PORT_CONFIRMATION",
+      "passed": true
+    },
+    {
+      "evidence": "source identity separately propagated, not root port IDs",
+      "id": "ACTUAL_SOURCE_IDENTITY",
+      "passed": true
+    },
+    {
+      "evidence": "real assumption nodes and exact index/formula, nested reuse",
+      "id": "FULL_GAMMA_ASSUMPTIONS",
+      "passed": true
+    },
+    {
+      "evidence": "BaseException from tick wrapped, bypasses binding-negative catch, rethrown at public boundary",
+      "id": "CALLBACK_EXCEPTION_SCOPE",
+      "passed": true
+    },
+    {
+      "evidence": "own quota/fresh name limits UNKNOWN; matching_complete false and fact_accepted false",
+      "id": "UNKNOWN_IS_NOT_PRUNING",
+      "passed": true
+    },
+    {
+      "evidence": "flags all false; syntax descriptor rule arity only",
+      "id": "NO_NATIVE_OR_POINT_ADMISSION",
+      "passed": true
+    },
+    {
+      "evidence": "only frozen generic design illustration read as metadata; no ground instances emitted or evaluated",
+      "id": "NO_TARGET_OR_DONOR_INSTANCE",
+      "passed": true
+    }
+  ],
+  "clocks_called": 0,
+  "independent_review": false,
+  "named_regions": 54,
+  "native_or_model_execution": false,
+  "regions": [
+    {
+      "end_line": 29,
+      "kind": "ClassDef",
+      "line": 25,
+      "name": "DescriptorError"
+    },
+    {
+      "end_line": 33,
+      "kind": "ClassDef",
+      "line": 32,
+      "name": "_Unfinished"
+    },
+    {
+      "end_line": 38,
+      "kind": "ClassDef",
+      "line": 36,
+      "name": "_CallbackFailure"
+    },
+    {
+      "end_line": 42,
+      "kind": "ClassDef",
+      "line": 41,
+      "name": "_Unbound"
+    },
+    {
+      "end_line": 47,
+      "kind": "FunctionDef",
+      "line": 45,
+      "name": "require"
+    },
+    {
+      "end_line": 52,
+      "kind": "FunctionDef",
+      "line": 50,
+      "name": "canonical"
+    },
+    {
+      "end_line": 56,
+      "kind": "FunctionDef",
+      "line": 55,
+      "name": "family_preimage"
+    },
+    {
+      "end_line": 60,
+      "kind": "FunctionDef",
+      "line": 59,
+      "name": "family_identity"
+    },
+    {
+      "end_line": 94,
+      "kind": "ClassDef",
+      "line": 63,
+      "name": "_Work"
+    },
+    {
+      "end_line": 98,
+      "kind": "FunctionDef",
+      "line": 97,
+      "name": "_keys"
+    },
+    {
+      "end_line": 103,
+      "kind": "FunctionDef",
+      "line": 101,
+      "name": "_name"
+    },
+    {
+      "end_line": 109,
+      "kind": "FunctionDef",
+      "line": 106,
+      "name": "_identifier"
+    },
+    {
+      "end_line": 114,
+      "kind": "FunctionDef",
+      "line": 112,
+      "name": "_unique"
+    },
+    {
+      "end_line": 759,
+      "kind": "ClassDef",
+      "line": 117,
+      "name": "_Core"
+    },
+    {
+      "end_line": 766,
+      "kind": "FunctionDef",
+      "line": 762,
+      "name": "_unknown"
+    },
+    {
+      "end_line": 780,
+      "kind": "FunctionDef",
+      "line": 769,
+      "name": "validate_registry"
+    },
+    {
+      "end_line": 791,
+      "kind": "FunctionDef",
+      "line": 783,
+      "name": "expand_family"
+    },
+    {
+      "end_line": 828,
+      "kind": "FunctionDef",
+      "line": 794,
+      "name": "match_family"
+    },
+    {
+      "end_line": 29,
+      "kind": "FunctionDef",
+      "line": 27,
+      "name": "__init__"
+    },
+    {
+      "end_line": 38,
+      "kind": "FunctionDef",
+      "line": 37,
+      "name": "__init__"
+    },
+    {
+      "end_line": 73,
+      "kind": "FunctionDef",
+      "line": 64,
+      "name": "__init__"
+    },
+    {
+      "end_line": 82,
+      "kind": "FunctionDef",
+      "line": 75,
+      "name": "step"
+    },
+    {
+      "end_line": 91,
+      "kind": "FunctionDef",
+      "line": 84,
+      "name": "copy"
+    },
+    {
+      "end_line": 94,
+      "kind": "FunctionDef",
+      "line": 93,
+      "name": "report"
+    },
+    {
+      "end_line": 134,
+      "kind": "FunctionDef",
+      "line": 118,
+      "name": "__init__"
+    },
+    {
+      "end_line": 161,
+      "kind": "FunctionDef",
+      "line": 136,
+      "name": "_host"
+    },
+    {
+      "end_line": 191,
+      "kind": "FunctionDef",
+      "line": 163,
+      "name": "_native"
+    },
+    {
+      "end_line": 204,
+      "kind": "FunctionDef",
+      "line": 193,
+      "name": "_free"
+    },
+    {
+      "end_line": 237,
+      "kind": "FunctionDef",
+      "line": 206,
+      "name": "_parameters"
+    },
+    {
+      "end_line": 249,
+      "kind": "FunctionDef",
+      "line": 239,
+      "name": "_symbol"
+    },
+    {
+      "end_line": 295,
+      "kind": "FunctionDef",
+      "line": 251,
+      "name": "_template"
+    },
+    {
+      "end_line": 307,
+      "kind": "FunctionDef",
+      "line": 297,
+      "name": "_ref"
+    },
+    {
+      "end_line": 388,
+      "kind": "FunctionDef",
+      "line": 309,
+      "name": "_descriptor"
+    },
+    {
+      "end_line": 402,
+      "kind": "FunctionDef",
+      "line": 390,
+      "name": "_argument_template"
+    },
+    {
+      "end_line": 415,
+      "kind": "FunctionDef",
+      "line": 404,
+      "name": "_call_binding_templates"
+    },
+    {
+      "end_line": 422,
+      "kind": "FunctionDef",
+      "line": 417,
+      "name": "_infer_set"
+    },
+    {
+      "end_line": 466,
+      "kind": "FunctionDef",
+      "line": 424,
+      "name": "_infer_template"
+    },
+    {
+      "end_line": 503,
+      "kind": "FunctionDef",
+      "line": 468,
+      "name": "infer"
+    },
+    {
+      "end_line": 525,
+      "kind": "FunctionDef",
+      "line": 505,
+      "name": "_binding"
+    },
+    {
+      "end_line": 532,
+      "kind": "FunctionDef",
+      "line": 527,
+      "name": "_fresh"
+    },
+    {
+      "end_line": 554,
+      "kind": "FunctionDef",
+      "line": 534,
+      "name": "_subst"
+    },
+    {
+      "end_line": 567,
+      "kind": "FunctionDef",
+      "line": 556,
+      "name": "_external"
+    },
+    {
+      "end_line": 592,
+      "kind": "FunctionDef",
+      "line": 569,
+      "name": "_instantiate"
+    },
+    {
+      "end_line": 599,
+      "kind": "FunctionDef",
+      "line": 594,
+      "name": "_arg"
+    },
+    {
+      "end_line": 608,
+      "kind": "FunctionDef",
+      "line": 601,
+      "name": "_node"
+    },
+    {
+      "end_line": 614,
+      "kind": "FunctionDef",
+      "line": 610,
+      "name": "_resolve"
+    },
+    {
+      "end_line": 651,
+      "kind": "FunctionDef",
+      "line": 616,
+      "name": "_side_conditions"
+    },
+    {
+      "end_line": 703,
+      "kind": "FunctionDef",
+      "line": 653,
+      "name": "_frame"
+    },
+    {
+      "end_line": 759,
+      "kind": "FunctionDef",
+      "line": 705,
+      "name": "expand"
+    },
+    {
+      "end_line": 623,
+      "kind": "FunctionDef",
+      "line": 618,
+      "name": "frees"
+    },
+    {
+      "end_line": 626,
+      "kind": "FunctionDef",
+      "line": 624,
+      "name": "variable"
+    },
+    {
+      "end_line": 747,
+      "kind": "FunctionDef",
+      "line": 743,
+      "name": "visit"
+    },
+    {
+      "end_line": 380,
+      "kind": "FunctionDef",
+      "line": 380,
+      "name": "var_id"
+    },
+    {
+      "end_line": 381,
+      "kind": "FunctionDef",
+      "line": 381,
+      "name": "free_selector"
+    }
+  ],
+  "runtime_qualified": false,
+  "schema": "receptor-family-expander-author-static-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 51898,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-expander-source-20261016/receptor_family_expander_v1.py",
+    "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+  },
+  "source_functions_executed": 0,
+  "source_module_imports_executed": 0,
+  "tests_run": 0
+}

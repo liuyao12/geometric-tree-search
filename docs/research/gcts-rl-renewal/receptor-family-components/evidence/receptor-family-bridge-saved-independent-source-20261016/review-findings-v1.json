@@ -1,0 +1,57 @@
+{
+  "Root_disposition": "Root accepted all three findings and is preserving V1 while preparing additive V2.",
+  "authorship_disclosure": "Reviewer authored checker4358 and older9fd6/8f7a/advice/control components and reviewed Root cases; not author of this saved helper. This is raw Source/ABI/transport review, not independent reacceptance of own checker mathematics.",
+  "concrete_blockers": [
+    {
+      "finding": "Plan and tool bracket are decoded through saved() and later independently reread through pin(). The advertised pins therefore do not necessarily describe the same bytes used for field/native joins. Existing pinned contract/review/grant and native external/output paths do use retained buffers.",
+      "id": "RF-SAVED-SAME-BUFFER-1",
+      "lines": [
+        78,
+        103,
+        141
+      ],
+      "minimal_repair": "Read each plan/bracket once with bounded read_raw; decode and raw_pin those same retained bytes, retaining path separately."
+    },
+    {
+      "finding": "Positive envelope parsing checks canonical JSON, selected header values and bounded zlib/hashes, but omits the standard exact seven-field set and canonical base64 re-encode equality. validate=True alone accepts some noncanonical padded spellings.",
+      "id": "RF-SAVED-ENVELOPE-WIRE-1",
+      "lines": [
+        173,
+        175
+      ],
+      "minimal_repair": "Require exact standard seven envelope keys and exact payload string == base64.b64encode(decoded compressed).decode(ascii); preserve all bounded EOF/hash checks."
+    },
+    {
+      "finding": "All terminal nonzero exits are intended unqualified, but any partial or complete final stdout makes the helper abort rather than retain a failure-only readout. A final write before a later failed boundary can legitimately leave stdout without exit0. This is a failure reconciliation gap, not positive acceptance.",
+      "id": "RF-SAVED-FAILURE-STDOUT-1",
+      "lines": [
+        147,
+        148
+      ],
+      "minimal_repair": "Keep bounded raw stdout opaque/pinned on nonzero exit with zero qualified cases and no interpretation, output decoding or positive wire acceptance."
+    }
+  ],
+  "execution_status": "No saved helper or project function executed and no actual outputs read by reviewer. Root reported native actual closed exit0 while this Source-only review was underway; helper remains unexecuted pending successor review.",
+  "retained_positive_findings": [
+    "Whole225-line Source/current contract read; no project imports, semantics, replay or clock paths.",
+    "Current18/input9 and original17/input2 identities remain separate via exact current caller contract and original binding.",
+    "Plan/grant/current Source review/once/session/native pid/exit/probe/Date/native20/512/failure55/twoLF/canonical envelope/expanded hash and case-record field joins are coherent aside from narrow issues above.",
+    "Bounded zlib single-stream EOF, no tails/no flush, full compressed and expanded hashes and canonical JSON+LF already enforced.",
+    "Current repaired component implementation and all12 ordered PASSED records plus flags checked; conditional expansion exact proposal fields and local-cluster flags remain distinct from theorem/engine qualification.",
+    "Nonzero branch already sets zero qualification/resource false/cause false; no work count, proof, restore or timeout cause inferred."
+  ],
+  "schema": "ROOT-receptor-family-component-saved-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19358,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v1.py",
+    "sha256": "f67c1a7f7acd6e43f162294c43b1f45a0fa9cfabefc90555915d7b76a8476ca9"
+  },
+  "source_contract": {
+    "bytes": 2603,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v1.json",
+    "sha256": "2ac495b974af2a22f74542356b806eb9d8c81cb37010d14773a87e8b47850d1a"
+  },
+  "source_only": true
+}

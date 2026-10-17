@@ -1,0 +1,160 @@
+{
+  "AST_parse_only": true,
+  "actual_output_reads": false,
+  "actual_patches": [
+    {
+      "patch": {
+        "bytes": 5176,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/saved-v1-to-v2-forward.patch",
+        "sha256": "87dbd97ca34ba05bd848245404b949666ee26d2a5f62a4106ea8141548c6045b"
+      },
+      "whole_raw_application_exact": true
+    },
+    {
+      "patch": {
+        "bytes": 5176,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/saved-v2-to-v1-full-inverse.patch",
+        "sha256": "59f5ad918116455dc4919da2cd2da165486f1a3c1ac82a3ecd939fe7dd24cbb7"
+      },
+      "whole_raw_application_exact": true
+    }
+  ],
+  "clocks_or_tests": 0,
+  "full_raw_forward_inverse_exact": true,
+  "function_regions": [
+    {
+      "AST_exact": true,
+      "name": "need",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "canonical",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "unique",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "reject",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "finite",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "decode",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "raw_pin",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "read_raw",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "pin",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "pinned",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "same",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "integer",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "saved",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": true,
+      "name": "save",
+      "raw_exact": true
+    },
+    {
+      "AST_exact": false,
+      "name": "main",
+      "raw_exact": false
+    }
+  ],
+  "literal_replacement_count": 6,
+  "module_or_helper_execution": false,
+  "raw_AST_exact_helpers": 14,
+  "raw_capsule_count": 8,
+  "raw_capsules": [
+    {
+      "bytes": 19885,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+      "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+    },
+    {
+      "bytes": 3448,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-delta-v2.json",
+      "sha256": "ec44494f5f3f0e5c30b6a9d9abcce93809a18d7999fd7a11a90f2fcc3bdfd292"
+    },
+    {
+      "bytes": 2603,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v1.json",
+      "sha256": "2ac495b974af2a22f74542356b806eb9d8c81cb37010d14773a87e8b47850d1a"
+    },
+    {
+      "bytes": 27889,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-cold-ROOT-source-20261016/Source-contract-v2.json",
+      "sha256": "4d2387f7d343ebe4606ccf1a4aa897c0b2842f83a95ffb99e2e0b04f280d7c2e"
+    },
+    {
+      "bytes": 3259,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v2.json",
+      "sha256": "84b18bdfb6252b6d002770cc59487aa5e796158b182a42ac4434570a5a87c918"
+    },
+    {
+      "bytes": 5176,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/saved-v2-to-v1-full-inverse.patch",
+      "sha256": "59f5ad918116455dc4919da2cd2da165486f1a3c1ac82a3ecd939fe7dd24cbb7"
+    },
+    {
+      "bytes": 5176,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/saved-v1-to-v2-forward.patch",
+      "sha256": "87dbd97ca34ba05bd848245404b949666ee26d2a5f62a4106ea8141548c6045b"
+    },
+    {
+      "bytes": 19358,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v1.py",
+      "sha256": "f67c1a7f7acd6e43f162294c43b1f45a0fa9cfabefc90555915d7b76a8476ca9"
+    }
+  ],
+  "schema": "ROOT-receptor-family-component-saved-raw-evidence-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 19885,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT_close_component_saved_v2.py",
+    "sha256": "8f905fd53c8ba6a19c874fca384a28da0cd19f53b6f49ac149805e80e7b4f0d4"
+  },
+  "source_contract": {
+    "bytes": 3259,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-bridge-ROOT-20261016/ROOT-saved-reader-Source-contract-v2.json",
+    "sha256": "84b18bdfb6252b6d002770cc59487aa5e796158b182a42ac4434570a5a87c918"
+  },
+  "whole_AST_inverse_exact": true
+}
