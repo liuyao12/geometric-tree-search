@@ -1,0 +1,110 @@
+{
+  "VERSION": "lazy-unit-row-global-engine-v13-receptor-family-preferences-v7-full-exposure-census-provider8-head-gated",
+  "constructor": "LazyUnitRowEngine(*, language, degree_proposer, semantics, fallback, certify_fallback, transition_checker, tick, initial_state=None, maximum_nodes=128, maximum_events=2000, branch_adviser=None, validate_advice=None, branch_tie=ROW, family_proposer=None, family_consumer=None, initial_prototype_census=None)",
+  "consumer": "Existing consume_preferences protocol/version/schema unchanged. Root authenticates and calls fresh d680, with full current state/decision/request, and old full receipt/context/selection checks remain exact.",
+  "engine_owned_check_record": {
+    "consumer_receipt": "Full literal freshly returned and checked d680 receipt, nested without schema/header normalization.",
+    "fields": [
+      "schema",
+      "version",
+      "mode",
+      "status",
+      "binding",
+      "marking_id",
+      "state_sha256",
+      "decision",
+      "consumer_receipt",
+      "provider_report",
+      "prototype_census",
+      "census_is_collision_evidence_only",
+      "all original ADVICE_FLAGS=false"
+    ],
+    "prototype_census": "Complete current owned ID/full-preimage ledger; collision metadata only.",
+    "provider_report": "Full exact copied report for BATCH, null for CONTINUATION.",
+    "schema": "receptor-family-engine-full-census-check-v1",
+    "status": "Unchanged literal consumer status, used by unchanged selection/fallback logic."
+  },
+  "family_proposer_return": {
+    "batch": "Unchanged exact seven-field receptor-family-primitive-preference-batch-v1, delegated bare to unchanged d680 consumer. Bare batch alone is rejected by the new enabled engine.",
+    "exact_fields": [
+      "batch",
+      "report"
+    ],
+    "report": {
+      "binding_policies": {
+        "LITERAL_GROUND": "EXPLICIT_MINED_ORIGIN_ENVIRONMENT_V1",
+        "VISIBLE_RECEPTOR": "EMPTY_PROBE_THEN_THEORY_NAMES_MAX_INDEX_SHELLS_V2"
+      },
+      "exact_fields": [
+        "schema",
+        "version",
+        "matching_mode",
+        "binding_policy",
+        "batch",
+        "request",
+        "binding",
+        "marking_id",
+        "state_sha256",
+        "decision",
+        "producer_implementation_version",
+        "residual_policy_version",
+        "host",
+        "original_state",
+        "checked_state",
+        "branch_output_receptor",
+        "records",
+        "row_rejections",
+        "offers",
+        "physical_assignment_plan",
+        "accounting",
+        "prototype_census",
+        "reason",
+        "work",
+        "scope",
+        "flags"
+      ],
+      "nested_head_gate": "The new pinned provider retains full advisory gate request/receipt/outcome per attempted common structural plan in existing physical_assignment_plan.head_gate. No top-level report or request fields change. The engine copies and retains this literal nested data in its unchanged full provider report; it does not execute the gate, classify its statuses, or derive native/degree/EOF/point/pruning/proof authority from it.",
+      "nullable_early_prefix": "checked_state/original_state may be null on early own prefix; binding/marking/stateSHA/decision/request/batch remain current context. Null conveys no point authority. Engine requires any nonnull checked_state to equal its whole current state.",
+      "producer_implementation_version": "receptor-family-observed-subset-inference-v2",
+      "request_fields": [
+        "mined",
+        "state",
+        "decision",
+        "matching_mode",
+        "binding_policy",
+        "limits"
+      ],
+      "residual_policy_version": "receptor-family-residual-host-binding-prefix-v2-max-index-shells",
+      "schema": "receptor-family-observed-receptor-transfer-provider-v2",
+      "version": "receptor-family-observed-receptor-transfer-provider-v8-head-gated"
+    }
+  },
+  "new_constructor_argument": {
+    "default": null,
+    "name": "initial_prototype_census",
+    "wire": "Optional strict copied list [[existing_literal_type_id, FULL_canonical_preimage_text], ...]. Explicit empty default; nonempty seed requires enabled family callbacks. Seed joins freshly checked selected/excluded names and only constrains full identity consistency. Root authenticates prior-data provenance separately; this does not authenticate a native type, theorem, degree, fact or family."
+  },
+  "owned_snapshot_additions": {
+    "family_cursor_censuses": "Latest successful public prefix export per row. Contexts may be old after valid placement/retention; provenance only, never a current domain receipt.",
+    "family_prototype_census": "Sorted full merged list or null when family callbacks disabled.",
+    "lifetime": "Both are copy-on-write, persist across placement/exclusion install, and restore by reference in exact owned checkpoint rollback. Existing event/count histories stay outside rollback as before."
+  },
+  "public_cursor_exposure": "Enabled family lane requires adapter5 FilteredCursor.prototype_census after each successful advance/event-context check. Exact full context/header/implementation/counters/eof flag and full sorted unique census join; includes base-yielded channel4-removed types. No extra advance, private cursor access, EOF authority or call after native failure.",
+  "public_degree_exposure": "After unchanged fresh native protocol/context checking, record actual checked original/decorated candidate keys and public rejection keys. The decision call passes its literal current proposal solely to expose original rejection data; new root rejected decorated keys are freshly rebuilt through unchanged point semantics to obtain both actual IDs. Public original rejection keys are freshly rebuilt through unchanged base. Rejections never become available candidates or proof of degree.",
+  "report_census_gate": "Every successful BATCH wrapper, including UNKNOWN/no offer/rejected/preflight/partial-prefix report, is copied and its full report.prototype_census merged before fresh consumer invocation/any preference. Whole report request/current state/decision, batch, binding, marking, exact versions/policies and literal false flags join. No raw report acceptance or old degree receipt relabelling.",
+  "revision": "Exactly own VERSION and FAMILY_PROVIDER_VERSION constants differ from frozen engine6. All53 named class/function/nested regions, constructor/public signatures, scheduler/degree/fallback/cursor/census/retention/rollback/one-primitive behavior and native validator bodies are raw+AST exact. Parent engine6 complete contract/API remain the inherited logic scope. A new current composition/CodeSeal and distinct peer are required; no runtime qualification is inherited.",
+  "schema": "receptor-family-full-exposure-census-engine-API-v7",
+  "scientific_calls": 0,
+  "scope_exclusions": [
+    "Private never-yielded base69 internals or non-enumerated/hashed fibre-internal attempts without a public full key.",
+    "Arbitrary forged provider/consumer receipts as mathematical certificates; current pinned implementations plus Root CodeSeal/callback guards are required.",
+    "Engine/proof/degree/learning/resource qualification or benefit from this Source-only packet."
+  ],
+  "source": {
+    "bytes": 92154,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+    "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+  },
+  "source_evaluated": false,
+  "source_only": true
+}

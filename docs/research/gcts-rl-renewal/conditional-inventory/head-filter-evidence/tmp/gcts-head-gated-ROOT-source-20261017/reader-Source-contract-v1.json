@@ -1,0 +1,22 @@
+{
+  "current_operative_contract": {
+    "bytes": 19869,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe"
+  },
+  "parent_source": {
+    "bytes": 21794,
+    "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/ROOT_read_receiver_inference_saved_v2.py",
+    "sha256": "d04a8d0f5c11bfab52a70eea398c5139b22c18d251a1bd84644fe50899bf7418"
+  },
+  "schema": "ROOT-receiver-inference-saved-reader-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Saved complete bytes, original once/native terminal/wire and resource reconciliation only. No scientific imports, replay, semantic proof or target/transfer acceptance.",
+  "source": {
+    "bytes": 21797,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py",
+    "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9"
+  },
+  "source_only": true
+}

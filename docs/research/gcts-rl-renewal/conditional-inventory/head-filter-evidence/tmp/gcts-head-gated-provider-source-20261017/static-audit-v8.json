@@ -1,0 +1,60 @@
+{
+  "added_named_regions": [
+    "_check_plan_head_gate"
+  ],
+  "checks": {
+    "9_declared_raw_edits_whole_raw_AST_inverse": true,
+    "AST_compile_without_evaluation": true,
+    "DEFAULT_LIMITS_FLAGS_report26_request6_and_bare_batch_unchanged": true,
+    "all_old_constants_except_VERSION_exact": true,
+    "all_original_tophelpers_raw_AST_exact": true,
+    "all_plan_materialization_and_record_quota_code_raw_exact": true,
+    "four_actual_patch_directions_F0_exact": true,
+    "gate_after_attempted_plan_count_before_inference_both_modes": true,
+    "gate_flags_protocol_default_limits_exact_to7595": true,
+    "literal_gate_return_retained_before_charged_copy_or_validation": true,
+    "no_GATE_call_in_structural_materialization_or_native_preflight": true,
+    "no_new_exception_catch_native_membership_census_fallback_engine_calls": true,
+    "only_build_family_batch_changed_new_gate_helper": true
+  },
+  "project_module_evaluated": false,
+  "schema": "receptor-family-head-gated-provider-static-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 60912,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+    "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+  },
+  "source_delta": {
+    "bytes": 93149,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-delta-v8.json",
+    "sha256": "067e6912f39aee6512eab901f466b29e61d65a4c9fd108a3055c4302c759a03a"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    "ProviderDataError",
+    "ProviderDataError.__init__",
+    "_Unfinished",
+    "_AssignmentPrefix",
+    "_CallbackFailure",
+    "_CallbackFailure.__init__",
+    "require",
+    "canonical",
+    "digest",
+    "ascii_digest",
+    "fields",
+    "_Work",
+    "_Work.__init__",
+    "_Work.native",
+    "_Work.step",
+    "_Work.trial",
+    "_Work.copy",
+    "_key",
+    "_ready_checked",
+    "_ground_roundtrip",
+    "_constraints",
+    "_layout",
+    "_preflight"
+  ]
+}

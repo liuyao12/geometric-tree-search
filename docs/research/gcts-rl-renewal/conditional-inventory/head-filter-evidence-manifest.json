@@ -1,0 +1,1094 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "bytes": 5289369,
+  "current_executable_inputs": 10,
+  "current_executable_sources": 22,
+  "current_raw_dependencies": [
+    {
+      "bytes": 48584,
+      "path": "receiver-evidence/project/gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py"
+    },
+    {
+      "bytes": 46514,
+      "path": "receiver-evidence/project/gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py"
+    },
+    {
+      "bytes": 10323,
+      "path": "receiver-evidence/project/gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py"
+    },
+    {
+      "bytes": 2925,
+      "path": "receiver-evidence/project/gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json"
+    },
+    {
+      "bytes": 8773,
+      "path": "receiver-evidence/project/gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json"
+    },
+    {
+      "bytes": 20112,
+      "path": "receiver-evidence/project/gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py"
+    },
+    {
+      "bytes": 10201,
+      "path": "receiver-evidence/project/gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py"
+    },
+    {
+      "bytes": 5528,
+      "path": "receiver-evidence/project/gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py"
+    },
+    {
+      "bytes": 24227,
+      "path": "receiver-evidence/project/gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py"
+    },
+    {
+      "bytes": 12619,
+      "path": "receiver-evidence/project/gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py"
+    },
+    {
+      "bytes": 56207,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+      "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py"
+    },
+    {
+      "bytes": 28980,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py"
+    },
+    {
+      "bytes": 5803,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-disposition-v1.json",
+      "sha256": "79edfc98d428edbe89e564cb6bb98e0f89fc7ee004335d15c4d55cd33e5d949e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-disposition-v1.json"
+    },
+    {
+      "bytes": 1031675,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-expanded-result-v1.json",
+      "sha256": "82fe3136954b74a945b891f224632174ee82eb41090477cb3976a8dc727a58f8",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-expanded-result-v1.json"
+    },
+    {
+      "bytes": 7866,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-plan-v1.json",
+      "sha256": "cca9f6f918436fe7e02374775462c86c66445f16703941b4d803437f113b4664",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-plan-v1.json"
+    },
+    {
+      "bytes": 1479,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-transport-concordance-v1.json",
+      "sha256": "c94cc2516c9817215fdb516e6b7c64913e25fabdea16aacff5b56f7bcd4ac87f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-transport-concordance-v1.json"
+    },
+    {
+      "bytes": 76302,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/engine-result.json",
+      "sha256": "bbfe3f3f87bead3f90f23e9ab2cb801f3fa6d5c2cd88bccc9506c88cf49be891",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 7541,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/response.jsonl",
+      "sha256": "3e0951b1a5a37152579ee69db0effc4f255d78767f1f7b5fed3868f7156df3a5",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 5985,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-cold-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "3eff4bd0cb8534e47c18b7587324d6f08d94040893d70ab01790cbfac1e764c9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-independent-source-20261016/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 31660,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-cold-source-20261016/Source-contract-v1.json",
+      "sha256": "b621e8776b81228510615ed7c36de103162e6460be3ac410aaad323ea6f1c851",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/Source-contract-v1.json"
+    },
+    {
+      "bytes": 66733,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-cold-source-20261016/channel4_stageB_cold_v1.py",
+      "sha256": "f2c7a08fb57973e707c6a694a2dbc6a45945b8758c1b3d57408828da28395d1d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/channel4_stageB_cold_v1.py"
+    },
+    {
+      "bytes": 8664,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-authorization-v1.json",
+      "sha256": "43931003a41636485b0a83e5ffef326d5025b9c587ad6476d4c226da2b08f335",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-authorization-v1.json"
+    },
+    {
+      "bytes": 6862,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-caller-Source-review-v1.json",
+      "sha256": "a85123a1560ecc03771e0a43ce477e3018cc319ee050df5c9ec2c85cf669cf64",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-caller-Source-review-v1.json"
+    },
+    {
+      "bytes": 4574,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json",
+      "sha256": "ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json"
+    },
+    {
+      "bytes": 1926833,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json",
+      "sha256": "bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json"
+    },
+    {
+      "bytes": 7924,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json",
+      "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json"
+    },
+    {
+      "bytes": 1502,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json",
+      "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json"
+    },
+    {
+      "bytes": 162591,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json",
+      "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 7572,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl",
+      "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 18475,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py"
+    },
+    {
+      "bytes": 26007,
+      "path": "receiver-evidence/project/gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py"
+    },
+    {
+      "bytes": 16299,
+      "path": "receiver-evidence/project/gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py"
+    },
+    {
+      "bytes": 25783,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py"
+    },
+    {
+      "bytes": 14064,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py"
+    },
+    {
+      "bytes": 12779,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py"
+    },
+    {
+      "bytes": 55852,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py"
+    },
+    {
+      "bytes": 31931,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py"
+    },
+    {
+      "bytes": 55152,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py"
+    },
+    {
+      "bytes": 27553,
+      "path": "receiver-evidence/project/gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py"
+    },
+    {
+      "bytes": 22030,
+      "path": "receiver-evidence/project/gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py"
+    },
+    {
+      "bytes": 25338,
+      "path": "receiver-evidence/project/gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py"
+    },
+    {
+      "bytes": 8134,
+      "path": "receiver-evidence/project/gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py"
+    },
+    {
+      "bytes": 130156,
+      "path": "receiver-evidence/project/gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py"
+    },
+    {
+      "bytes": 15276,
+      "path": "receiver-evidence/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738",
+      "source_path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py"
+    },
+    {
+      "bytes": 56670,
+      "path": "receiver-evidence/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1",
+      "source_path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py"
+    },
+    {
+      "bytes": 13040,
+      "path": "receiver-evidence/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874",
+      "source_path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py"
+    },
+    {
+      "bytes": 25205,
+      "path": "receiver-evidence/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9",
+      "source_path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py"
+    },
+    {
+      "bytes": 7899,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py"
+    },
+    {
+      "bytes": 57736,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py"
+    },
+    {
+      "bytes": 92154,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py"
+    },
+    {
+      "bytes": 60912,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "bytes": 31038,
+      "path": "receiver-evidence/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py"
+    },
+    {
+      "bytes": 3433689,
+      "path": "receiver-evidence/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json"
+    },
+    {
+      "bytes": 2723,
+      "path": "receiver-evidence/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json",
+      "sha256": "4ef4ebdcd431a284f73ded43caf1957b819d1ddd4e3180e212a619e3b736d817",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json"
+    },
+    {
+      "bytes": 28106,
+      "path": "receiver-evidence/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json",
+      "sha256": "7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 60281,
+      "path": "receiver-evidence/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18",
+      "source_path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py"
+    },
+    {
+      "bytes": 12826,
+      "path": "receiver-evidence/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+      "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479",
+      "source_path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 7899,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/case-author-forward-source.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/case-author-forward-source.py"
+    },
+    {
+      "bytes": 7839,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/case-author-inverse-source.py",
+      "sha256": "bc42eb2012f6247a09b6a22ea513604c451ffb249d89b5c01d57dcd286983e8f",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/case-author-inverse-source.py"
+    },
+    {
+      "bytes": 7899,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/case-peer-forward-source.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/case-peer-forward-source.py"
+    },
+    {
+      "bytes": 7839,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/case-peer-inverse-source.py",
+      "sha256": "bc42eb2012f6247a09b6a22ea513604c451ffb249d89b5c01d57dcd286983e8f",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/case-peer-inverse-source.py"
+    },
+    {
+      "bytes": 952,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/case-peer.forward.patch",
+      "sha256": "4baadec954fa540302aa1b3a79609488a9ef26b887e07e0660ccfa86a6d9f4d2",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/case-peer.forward.patch"
+    },
+    {
+      "bytes": 952,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/case-peer.inverse.patch",
+      "sha256": "a5082f2c021262942b8947d9e0556a2bcd40328ca65b1fe504010036d16839e5",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/case-peer.inverse.patch"
+    },
+    {
+      "bytes": 57736,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/cold-author-forward-source.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/cold-author-forward-source.py"
+    },
+    {
+      "bytes": 57521,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/cold-author-inverse-source.py",
+      "sha256": "370c642e25f18e1eda8403dd67904bdf5139f5853a29dfe4c4f914e702bd8c2e",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/cold-author-inverse-source.py"
+    },
+    {
+      "bytes": 57736,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/cold-peer-forward-source.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/cold-peer-forward-source.py"
+    },
+    {
+      "bytes": 57521,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/cold-peer-inverse-source.py",
+      "sha256": "370c642e25f18e1eda8403dd67904bdf5139f5853a29dfe4c4f914e702bd8c2e",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/cold-peer-inverse-source.py"
+    },
+    {
+      "bytes": 13785,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/cold-peer.forward.patch",
+      "sha256": "e68836f007f504a61f67eea449b4494654929b270d73bc2d94e86d9b4b96c16a",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/cold-peer.forward.patch"
+    },
+    {
+      "bytes": 13785,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/cold-peer.inverse.patch",
+      "sha256": "52bebb9d60458662ff3bfbe02ad5994ebd41b58e1b82a5d3c51c51c184c2d886",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/cold-peer.inverse.patch"
+    },
+    {
+      "bytes": 17523,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/findings-v1.json",
+      "sha256": "7cb7eac0d00c74853b8980b02236cc0c8296cb48f8973b04be374a75a6cab4c6",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 2896,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/handoff-v1.json",
+      "sha256": "3a3ada746eaa3f8f66cd16f24b7730bcb856d3aef0795f8010a6e237ff7842b4",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 33740,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/independent-static-audit-v1.json",
+      "sha256": "ef2b81a25f308f313ce291eec63a8a3dc74b997870187f50bf0caa4aa1c383ac",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/independent-static-audit-v1.json"
+    },
+    {
+      "bytes": 8125,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/offer-path-preflight-v1.json",
+      "sha256": "096237184ad9e0d883c4b975fcb70448f946874dce46ea8e0e01139e51bf9573",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/offer-path-preflight-v1.json"
+    },
+    {
+      "bytes": 21797,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/reader-author-forward-source.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/reader-author-forward-source.py"
+    },
+    {
+      "bytes": 21794,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/reader-author-inverse-source.py",
+      "sha256": "d04a8d0f5c11bfab52a70eea398c5139b22c18d251a1bd84644fe50899bf7418",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/reader-author-inverse-source.py"
+    },
+    {
+      "bytes": 21797,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/reader-peer-forward-source.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/reader-peer-forward-source.py"
+    },
+    {
+      "bytes": 21794,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/reader-peer-inverse-source.py",
+      "sha256": "d04a8d0f5c11bfab52a70eea398c5139b22c18d251a1bd84644fe50899bf7418",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/reader-peer-inverse-source.py"
+    },
+    {
+      "bytes": 1218,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/reader-peer.forward.patch",
+      "sha256": "fb43c5b4475398aa03dba22f10d30c904fe52321c713c68e03bfc9ba12d07b21",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/reader-peer.forward.patch"
+    },
+    {
+      "bytes": 1218,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/reader-peer.inverse.patch",
+      "sha256": "77e75bdce50486f4e82d047c7ba7e1678a4a02c929613a61bccb9c8b75853854",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/reader-peer.inverse.patch"
+    },
+    {
+      "bytes": 5877,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/saved-reader-typed-Source-review-v1.json",
+      "sha256": "2d6aa3bed8ce5b1a1e133fff49cf30c85161b1515a3cb127598653d5ea243140",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/saved-reader-typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 11937,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "31cea5bf401a796694f14888d6860bb6d68d913646f516592caf3156adddbc85",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 16085,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/ROOT-direct-byte-preflight-v1.json",
+      "sha256": "d5edeb0b6061f601b9e96f15fbb3403c8f85d4cc62d9af0225e4d6eb5f3e5d71",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT-direct-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 1079867,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/ROOT-head-filter-summary-v1.json",
+      "sha256": "3b599d61e20d7a752331bd64c628fb6e4ee34fbf8068838c6d2a0fca414ffe05",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT-head-filter-summary-v1.json"
+    },
+    {
+      "bytes": 16383,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "fec6a0f0e35d51238dd263db3d7da89617af208f03085af09d6c937e135caba9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json"
+    },
+    {
+      "bytes": 4357,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_external_once_v1.py"
+    },
+    {
+      "bytes": 21797,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py"
+    },
+    {
+      "bytes": 1222,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py.forward.patch",
+      "sha256": "a0d5af814902c323e80de7b1598dab1b27249ce23c1b345ccc55c3dd00baa7a3",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py.forward.patch"
+    },
+    {
+      "bytes": 1222,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py.inverse.patch",
+      "sha256": "8f1d3cea10f887fd5ca49b415213eb7625b5df457790d709add23da9f32fe71b",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py.inverse.patch"
+    },
+    {
+      "bytes": 19869,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 7389,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/build_source_v1.py",
+      "sha256": "59fb2c87763441388416de4950d10589cb3c33d065250faf68e4f982a7f879fe",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/build_source_v1.py"
+    },
+    {
+      "bytes": 1533,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/direct_byte_preflight_v1.py",
+      "sha256": "f320432d82d22ca0d489952a317b12e7ba95bb93abb749ef993b4f2125aeb4e6",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/direct_byte_preflight_v1.py"
+    },
+    {
+      "bytes": 14617,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/handoff-v1.json",
+      "sha256": "bbf9184b3c7026bfb083398cfafda9484fd229b1725f7cf27c8bdd9c25a66103",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 7899,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py"
+    },
+    {
+      "bytes": 956,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py.forward.patch",
+      "sha256": "163255baa73260e4c1ed99b04adc6044ccc3fa30c6300089239c767f7eec0016",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py.forward.patch"
+    },
+    {
+      "bytes": 956,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py.inverse.patch",
+      "sha256": "badf98629eb9a1e817425b74fc9334c6526c032a4f58b022b4635ba30a0d050f",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py.inverse.patch"
+    },
+    {
+      "bytes": 57736,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py"
+    },
+    {
+      "bytes": 13789,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py.forward.patch",
+      "sha256": "a7258010ba2bdf4ba0ee0e6491d3e0dc8d36253b1de97b5e00dd285ed5a0d771",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py.forward.patch"
+    },
+    {
+      "bytes": 13789,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py.inverse.patch",
+      "sha256": "d8594f7525f56e94a26b3f6728abd49a9fbf6a067b6ec7e1b6c0da72c1f50ffa",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py.inverse.patch"
+    },
+    {
+      "bytes": 6446,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/prepare_actual_metadata_v1.py",
+      "sha256": "7d38748babbaafa76f9444b7b33c0cc17cf5a4d94502a902be53ea8ceae69990",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/prepare_actual_metadata_v1.py"
+    },
+    {
+      "bytes": 21797,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_head_gated_receiver_saved_v1.py/forward/source.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_head_gated_receiver_saved_v1.py/forward/source.py"
+    },
+    {
+      "bytes": 21794,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_head_gated_receiver_saved_v1.py/inverse/source.py",
+      "sha256": "d04a8d0f5c11bfab52a70eea398c5139b22c18d251a1bd84644fe50899bf7418",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_head_gated_receiver_saved_v1.py/inverse/source.py"
+    },
+    {
+      "bytes": 7899,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/head_gated_receiver_cases_v1.py/forward/source.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/head_gated_receiver_cases_v1.py/forward/source.py"
+    },
+    {
+      "bytes": 7839,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/head_gated_receiver_cases_v1.py/inverse/source.py",
+      "sha256": "bc42eb2012f6247a09b6a22ea513604c451ffb249d89b5c01d57dcd286983e8f",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/head_gated_receiver_cases_v1.py/inverse/source.py"
+    },
+    {
+      "bytes": 57736,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/head_gated_receiver_cold_v1.py/forward/source.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/head_gated_receiver_cold_v1.py/forward/source.py"
+    },
+    {
+      "bytes": 57521,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/head_gated_receiver_cold_v1.py/inverse/source.py",
+      "sha256": "370c642e25f18e1eda8403dd67904bdf5139f5853a29dfe4c4f914e702bd8c2e",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/raw-patch-audit-v1/head_gated_receiver_cold_v1.py/inverse/source.py"
+    },
+    {
+      "bytes": 1035,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "179b8ad38d354a1d863d0868b710f57c366d219b3215a6193b48faeae01235fc",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/reader-Source-contract-v1.json"
+    },
+    {
+      "bytes": 5915,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-ROOT-source-20261017/summarize_saved_v1.py",
+      "sha256": "292fbdc4a1af6820556e263c19690c5c0d565fc46b21273621601a5646787d71",
+      "source_path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/summarize_saved_v1.py"
+    },
+    {
+      "bytes": 1544,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-data-review-20261017/Root-summary-concordance-v1.json",
+      "sha256": "b37f8fd026ef9980ddbc706b50b152dc07feccc0a145e045cd3d86d7723d9ea5",
+      "source_path": "/private/tmp/gcts-head-gated-data-review-20261017/Root-summary-concordance-v1.json"
+    },
+    {
+      "bytes": 432,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-data-review-20261017/handoff-v1.json",
+      "sha256": "a2433cb1c65719b748c1053434a032e79c4bb2568cbc72cd2fea2611ce62d940",
+      "source_path": "/private/tmp/gcts-head-gated-data-review-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 4215,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-data-review-20261017/report-review-v1.json",
+      "sha256": "79bdb5a1a0da8c01ff036cdeca711fca1afc31102901228673568802cf85b010",
+      "source_path": "/private/tmp/gcts-head-gated-data-review-20261017/report-review-v1.json"
+    },
+    {
+      "bytes": 24936,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-data-review-20261017/review_saved_data.py",
+      "sha256": "a234452cc04c4a1030a1e09ba68f95150ddf81ca7a8353ea38675841022f8ae8",
+      "source_path": "/private/tmp/gcts-head-gated-data-review-20261017/review_saved_data.py"
+    },
+    {
+      "bytes": 38712,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-data-review-20261017/saved-head-gated-findings-v1.json",
+      "sha256": "0db5f53df4581e4f69d1d26c3e1bb7dc1c6909bafa07ad1fb5bd3f021b1955a4",
+      "source_path": "/private/tmp/gcts-head-gated-data-review-20261017/saved-head-gated-findings-v1.json"
+    },
+    {
+      "bytes": 2755,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-peer-20261017/findings-v7.json",
+      "sha256": "5f009daa15325285cdb154d1e14d89a13a388cf530f49fb771b975798dee1a58",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/findings-v7.json"
+    },
+    {
+      "bytes": 1310,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-peer-20261017/handoff-v7.json",
+      "sha256": "63145fd2f0e5d090885adc8a02dde4c1237d39ac1bddeb5ec98b2bf51b95be45",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/handoff-v7.json"
+    },
+    {
+      "bytes": 4500,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-peer-20261017/independent-raw-AST-audit-v7.json",
+      "sha256": "97997c5d77b44600c064c70a0dcbc3643eb7ea435b57c2a634362c8fd6c72715",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/independent-raw-AST-audit-v7.json"
+    },
+    {
+      "bytes": 3351,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-peer-20261017/typed-Source-review-v7.json",
+      "sha256": "534357dc7df3e9a8aa04a514de83e02db6230ddbbb14088851b6bd2e1e7f95c5",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/typed-Source-review-v7.json"
+    },
+    {
+      "bytes": 7475,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/API-wire-v7.json",
+      "sha256": "82dba007396dfe5c1da7521864c8ebeaa64e4acdd6d6d3ef108916001b7452d2",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/API-wire-v7.json"
+    },
+    {
+      "bytes": 12640,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/Source-contract-v7.json",
+      "sha256": "dba45a064608275b17773e94722c5b2740b744329dd7265da66a2dd67f290132",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-contract-v7.json"
+    },
+    {
+      "bytes": 67462,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/Source-delta-v7.json",
+      "sha256": "2f24ca817ec581665b4732b349e1dde0c6eb115726cbeae64780d0c3766becdd",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-delta-v7.json"
+    },
+    {
+      "bytes": 2569,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/actual-patch-evidence-v7.json",
+      "sha256": "fc8abe3da1949bebe093133e11ae1afa7a0dcd49b9e35d6b5ce22e81e246e480",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/actual-patch-evidence-v7.json"
+    },
+    {
+      "bytes": 23377,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.forward.patch",
+      "sha256": "79c01416dbfd70834f5f35d9ec8f1bf3082ef6e94305290bb6f866adb62a3cdc",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.forward.patch"
+    },
+    {
+      "bytes": 23377,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.inverse.patch",
+      "sha256": "3801443e54d97ea92069b34e30bcad72daed38519e1ff2290f96f0f48fab00eb",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.inverse.patch"
+    },
+    {
+      "bytes": 6066,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/handoff-v7.json",
+      "sha256": "2a2e214e4483f2ec61e1d48e8f5612e4d6958d06893186ef368b6ce6132b5a69",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/handoff-v7.json"
+    },
+    {
+      "bytes": 836,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.forward.patch",
+      "sha256": "5327d100d6f99f2d7747d181df639a54d90eadea84f2c7f646939b09892fac08",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.forward.patch"
+    },
+    {
+      "bytes": 836,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.inverse.patch",
+      "sha256": "dae2762ce82fc6ce7a6d0ea81b80d811d67cb0c96e3306c78c62848540da6cd8",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.inverse.patch"
+    },
+    {
+      "bytes": 92154,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py"
+    },
+    {
+      "bytes": 7625,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/static-audit-v7.json",
+      "sha256": "436f0a7356e564c4c51d9c7c6fa7ba5f1cc6d26f1807d339e5cb4f8a6363cac9",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/static-audit-v7.json"
+    },
+    {
+      "bytes": 252,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/ONCE.json",
+      "sha256": "9e6c23b9308df8f8b1ad0d83908554e13adfacaa5ad72d2e069fb0ed4a4222e0",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 800,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/meter-stderr.txt",
+      "sha256": "af20339d8dd00085bcad397b72306d5914de9caf5b0df8f96c42ffc285dc9069",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 745,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/meter-stdout.txt",
+      "sha256": "bb7e3b94b9448733818ab40ccfcab6070059147d0db375105e62fd96c6f285e2",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1548,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/native-terminal.json",
+      "sha256": "258a35e839c86343cf00e838caa8e6d8638de5814db81e094f084182c83706d2",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 469,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/observation.json",
+      "sha256": "bba9ab3b2773f30b41d74f300029c15cfe4e04d358f02df05528fe0b1d461c34",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "9ffe295879d2c0ab3df0113b46f9015501e4940cf7b9c91b5e6ed1a2f18fe2a6",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 136003,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-owned-v1/engine-result.json",
+      "sha256": "19541d723759f255a239a974eceacb1538d0f15159692419c11d0bdb3f6e0f5f",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 10346,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-owned-v1/response.jsonl",
+      "sha256": "5378a9e7fce4c67bd7158f8e85b73e798c8f2d04099f728d498621b135d129f2",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/RI-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 9367,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "dc3b103c5a955e73e9fb569bdcff01aefa93da110459a9a236befbe68b52f4fa",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 12894,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "b9abf1e2d1111ec130db7ffe7e8e076be34cc48bbe1e07dfb2c34fe44c5ccd18",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 4207,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "ddb4dbfa5ef299bdc2d14a6acc8a917822c190ec9f9320bc9de43603921748f1",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 2366300,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "7eef8ce8cf833a50d43c1d07b60456c4d64657a046d31f7b7d03841e6d0203a6",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-expanded-result-v1.json"
+    },
+    {
+      "bytes": 10821,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "6f4b0513dfe808c4113b0cade09a9d933a7dd39f78e972828c5645dc1dfb3503",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 344,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "2a946bb817f97cf4f9f9269457f3a1aa35f6b632b4591750c054f62619cd20bf",
+      "source_path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 252,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/ONCE.json",
+      "sha256": "1edcdb7c9ce286be47526d36144e7249dacf226204c99cbbda97da67a74dc511",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 800,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/meter-stderr.txt",
+      "sha256": "13e08df3835b3e8eb56722e428e0ff576335f3a4f064e49a2e20b8c31925e2e7",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1551,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/native-terminal.json",
+      "sha256": "03e450f10f573a42d1e4275f784b9e49899358a557f8b7e619d2aa38f0f3a45e",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 469,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/observation.json",
+      "sha256": "920b0984456c1766c9d9aae54cffa526b0965be7fdbde8d4a529e48836e98b9a",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "0756e4ea1f9b047a6a405051fb27c5e942fe1041a144693f235afc47e22711a3",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 332,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-owned-v1/diagnostic-completion.json",
+      "sha256": "dbd5665bb4eda17bd2e4b26e59f2f671179d04530be8754a326f990a703ef79b",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-owned-v1/diagnostic-completion.json"
+    },
+    {
+      "bytes": 10043,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-owned-v1/unknown-diagnostic.json",
+      "sha256": "3cc0576f73ae430520adcf1f297ef39f6e976b29dd9ae2c24a374906221d08d8",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-owned-v1/unknown-diagnostic.json"
+    },
+    {
+      "bytes": 9367,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "dc3b103c5a955e73e9fb569bdcff01aefa93da110459a9a236befbe68b52f4fa",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 12894,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "ca4e18647fd495f70b7f7653d25b7a8f56e0faa4c7c84e6715457b6be3ba7ad0",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 13459,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "5a39a68a322b9eec5df24c7bcc8b4fd30c3f127fa74bc6958e51c65ea5c9dfc6",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 10821,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "7aadbe8a2ab54847231154bf9a2dbf2a471b8ff6935657770e6171290313e352",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 345,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "6739b98478c2f811386449ec23d08ebdedb3445efebdaee41e116e5679702cf5",
+      "source_path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 13630,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-performance-source-20261017/Source-phase-note-v1.json",
+      "sha256": "09f6adc5be5cd89f43a78398e6e5143db875cdd44b5bd066aa77e439ccdb74df",
+      "source_path": "/private/tmp/gcts-head-gated-performance-source-20261017/Source-phase-note-v1.json"
+    },
+    {
+      "bytes": 2030,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-performance-source-20261017/allowed-phase-scalars-v1.json",
+      "sha256": "ba4dfdc8d2bf22fd8ced7d473df303a6333e37aa66433398d5a6f242160b472a",
+      "source_path": "/private/tmp/gcts-head-gated-performance-source-20261017/allowed-phase-scalars-v1.json"
+    },
+    {
+      "bytes": 715,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-performance-source-20261017/handoff-v1.json",
+      "sha256": "4a75d537793757c305a7fd168988ef3c36bbfbb943fd62fc299b99a074409b21",
+      "source_path": "/private/tmp/gcts-head-gated-performance-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 8992,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-peer-20261017/findings-v8.json",
+      "sha256": "c07e4aae4ba44ce04ebfba1506587722b832c18e14d2f4bd47ecb120baa8dcf3",
+      "source_path": "/private/tmp/gcts-head-gated-provider-peer-20261017/findings-v8.json"
+    },
+    {
+      "bytes": 1305,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-peer-20261017/handoff-v8.json",
+      "sha256": "7ffcb2d7b8d2a60b73bcc2a4abdec169c07f7c6b39959a14edd9960e34785bc0",
+      "source_path": "/private/tmp/gcts-head-gated-provider-peer-20261017/handoff-v8.json"
+    },
+    {
+      "bytes": 12187,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-peer-20261017/static-review-v8.json",
+      "sha256": "ee5e61819ca5c559195fd0f3cb28cef23b5aa92185ce69cb1c39442303509ce0",
+      "source_path": "/private/tmp/gcts-head-gated-provider-peer-20261017/static-review-v8.json"
+    },
+    {
+      "bytes": 4558,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-peer-20261017/typed-Source-review-v8.json",
+      "sha256": "52196db9a7c1adcd2df9739110a00770eb590624d4f488a9b526fa4a8fa9e0f2",
+      "source_path": "/private/tmp/gcts-head-gated-provider-peer-20261017/typed-Source-review-v8.json"
+    },
+    {
+      "bytes": 11214,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/API-wire-v8-2.json",
+      "sha256": "7725721d47e1f2c2119e8a76133f402a5212dacc006b63a58db03d0a7c0f91b8",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/API-wire-v8-2.json"
+    },
+    {
+      "bytes": 10970,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/API-wire-v8.json",
+      "sha256": "0a8837f7636e8347a3ea017aed704c2a89eb5db114b48e18c38685dc1d349308",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/API-wire-v8.json"
+    },
+    {
+      "bytes": 10511,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+      "sha256": "8390496834dffd80bbaf0397e788d8c0a9c5c52490173f0cc40c9c3dc49b404e",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json"
+    },
+    {
+      "bytes": 10049,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8.json",
+      "sha256": "76ef1f1422a7eef10edef463a60ab00ed3e4a801d85ef1cf5c5ce7a618799e47",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8.json"
+    },
+    {
+      "bytes": 93149,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/Source-delta-v8.json",
+      "sha256": "067e6912f39aee6512eab901f466b29e61d65a4c9fd108a3055c4302c759a03a",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-delta-v8.json"
+    },
+    {
+      "bytes": 22794,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/freeze_provider_v8.py",
+      "sha256": "5caf95716240023a88acb342be7ceeac7cce7f5dbd531095ad0a74ecfcfe2702",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/freeze_provider_v8.py"
+    },
+    {
+      "bytes": 5174,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/handoff-v8-2.json",
+      "sha256": "09a5af87f0f8b08f87783f90e95e26f881b12623e36a330c22378ed3f1824a19",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/handoff-v8-2.json"
+    },
+    {
+      "bytes": 4916,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/handoff-v8.json",
+      "sha256": "62bb7ea64d2920236e7becfc2aaf19522d6f809946126bdb37db9da63d99d0d6",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/handoff-v8.json"
+    },
+    {
+      "bytes": 61455,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-forward.patch",
+      "sha256": "180771e16bf53ade6ea3b10a54175b0b89999ed403f57066a234f0a4036385dd",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-forward.patch"
+    },
+    {
+      "bytes": 61415,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-full-inverse.patch",
+      "sha256": "390b1a760cfcd3e7c22c4b927b3995628d923591ae94a37688292b4bf6ca5a9c",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-full-inverse.patch"
+    },
+    {
+      "bytes": 11048,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-forward.patch",
+      "sha256": "8c4e3150dd506296a5325916ac91e87ce7df5833ae2b4926afd1e26e82b33327",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-forward.patch"
+    },
+    {
+      "bytes": 11048,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-full-inverse.patch",
+      "sha256": "eefdfc47f87ded995b4d2d49739664a204af5e06593fa8dccdee6022cdde5f70",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-full-inverse.patch"
+    },
+    {
+      "bytes": 60912,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "bytes": 2036,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/static-audit-v8.json",
+      "sha256": "adccbd910125fb1880cb0a161c58c84075e5a8417250c0be20c140984dc454c9",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/static-audit-v8.json"
+    }
+  ],
+  "files_count": 120,
+  "inference_counts": "UNKNOWN/unavailable: no complete receiver/provider record; never zero.",
+  "literal_conflicts": 2,
+  "literal_gate_receipts": 30,
+  "literal_offers": 0,
+  "new_theorem_accepted": false,
+  "original_model_inputs": 2,
+  "original_model_sources": 17,
+  "prior_receiver_manifest": "receiver-evidence-manifest.json",
+  "schema": "ROOT-head-filter-public-evidence-v1",
+  "scientific_actuals": 2,
+  "scientific_replay": false,
+  "scope": "Two head-filtered current native attempts; complete literal record and inference failure-only diagnostics. New sources/peers/rawdeltas plus reused57current/raw-authority dependency refs. No scientific replay.",
+  "source_versions": {
+    "caller": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9",
+    "engine": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e",
+    "head_gate": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738",
+    "provider": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+  },
+  "useful_transfer_accepted": false,
+  "whole_GCTS_accepted": false
+}

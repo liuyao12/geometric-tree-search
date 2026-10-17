@@ -1,0 +1,77 @@
+{
+  "actual_closed": true,
+  "aggregate_B_bytes": 94683136,
+  "all_reaped": true,
+  "complete_wire_verified": false,
+  "disposition": {
+    "bytes": 13459,
+    "path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+    "sha256": "5a39a68a322b9eec5df24c7bcc8b4fd30c3f127fa74bc6958e51c65ea5c9dfc6"
+  },
+  "last_observations": {
+    "basis": "Root-supplied saved scalar fact; no failure payload/result/report file opened.",
+    "value": {
+      "completion": null,
+      "fallback": null,
+      "proposer": null,
+      "validator": null
+    }
+  },
+  "native_launch_to_postprobe_ns": 20203157000,
+  "native_resources_qualified": false,
+  "no_dependent_actual_or_result_file_opened": true,
+  "phase_observations": [
+    {
+      "native_ns": 600643736264000,
+      "stage": "BEFORE_PLAN_READ"
+    },
+    {
+      "native_ns": 600643736737000,
+      "stage": "BEFORE_CURRENT_SOURCE_READS"
+    },
+    {
+      "native_ns": 600643748020000,
+      "stage": "BEFORE_AUTHORITY_INPUT_READS"
+    },
+    {
+      "native_ns": 600643769630000,
+      "stage": "BEFORE_MODULE_LOAD"
+    },
+    {
+      "native_ns": 600643838347000,
+      "stage": "BEFORE_GUARD_CONSTRUCTION"
+    },
+    {
+      "native_ns": 600643860165000,
+      "stage": "BEFORE_STAGEB_PROVENANCE"
+    },
+    {
+      "native_ns": 600643911070000,
+      "stage": "BEFORE_MARKING_CHECK"
+    },
+    {
+      "native_ns": 600643951687000,
+      "stage": "BEFORE_POOL_READ"
+    },
+    {
+      "native_ns": 600644295185000,
+      "stage": "BEFORE_ENGINE"
+    },
+    {
+      "native_ns": 600650154768000,
+      "stage": "BEFORE_PROVIDER"
+    },
+    {
+      "native_ns": 600651171979000,
+      "stage": "AFTER_PROVIDER"
+    }
+  ],
+  "receiver_probe_record_complete": false,
+  "schema": "receptor-family-head-gated-allowed-scalar-evidence-v1",
+  "scientific_replay": false,
+  "selected_group_reading_differences_ns": {
+    "BEFORE_ENGINE_to_BEFORE_PROVIDER": 5859583000,
+    "BEFORE_PROVIDER_to_AFTER_PROVIDER": 1017211000
+  },
+  "status": "UNKNOWN"
+}

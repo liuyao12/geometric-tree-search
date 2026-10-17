@@ -1,0 +1,123 @@
+{
+  "all53_named_regions_raw_AST_exact": [
+    "LazyUnitRowEngine",
+    "LazyUnitRowEngine.__init__",
+    "LazyUnitRowEngine._adopt_branch",
+    "LazyUnitRowEngine._adopt_family_branch",
+    "LazyUnitRowEngine._advance",
+    "LazyUnitRowEngine._archive_context",
+    "LazyUnitRowEngine._candidate",
+    "LazyUnitRowEngine._candidate_from_decision_context",
+    "LazyUnitRowEngine._check_authority",
+    "LazyUnitRowEngine._checked_advice",
+    "LazyUnitRowEngine._consume_family",
+    "LazyUnitRowEngine._copy",
+    "LazyUnitRowEngine._emit",
+    "LazyUnitRowEngine._exclude_exhausted",
+    "LazyUnitRowEngine._fallback_degree",
+    "LazyUnitRowEngine._family_policy",
+    "LazyUnitRowEngine._has_archived_context",
+    "LazyUnitRowEngine._install",
+    "LazyUnitRowEngine._install.remember",
+    "LazyUnitRowEngine._join_family_cursor_census",
+    "LazyUnitRowEngine._join_family_degree_census",
+    "LazyUnitRowEngine._join_prototype_census",
+    "LazyUnitRowEngine._observe",
+    "LazyUnitRowEngine._open",
+    "LazyUnitRowEngine._policy_snapshot",
+    "LazyUnitRowEngine._record_family_tile_census",
+    "LazyUnitRowEngine._reference_counts",
+    "LazyUnitRowEngine._select_branch",
+    "LazyUnitRowEngine._select_family_branch",
+    "LazyUnitRowEngine._snapshot_value",
+    "LazyUnitRowEngine._transfer_receipt",
+    "LazyUnitRowEngine._validate_receipt",
+    "LazyUnitRowEngine._word",
+    "LazyUnitRowEngine.branch_tie",
+    "LazyUnitRowEngine.checkpoint",
+    "LazyUnitRowEngine.decision",
+    "LazyUnitRowEngine.decision.current",
+    "LazyUnitRowEngine.next_alternative",
+    "LazyUnitRowEngine.place",
+    "LazyUnitRowEngine.rollback",
+    "LazyUnitRowEngine.search",
+    "LazyUnitRowEngine.search.walk",
+    "LazyUnitRowEngine.state_snapshot",
+    "Unresolved",
+    "_Checkpoint",
+    "_Checkpoint.__init__",
+    "canonical",
+    "certify_by_current_cover",
+    "diagnostic_copy",
+    "digest",
+    "need",
+    "select_schedule",
+    "validate_native_receipt"
+  ],
+  "combined_regions": 18,
+  "current_provider_source": {
+    "bytes": 60912,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+    "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+  },
+  "immediate_regions": 2,
+  "patches": [
+    {
+      "actual_F0_bytes_exact": true,
+      "direction": "immediate_forward",
+      "patch": {
+        "bytes": 836,
+        "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.forward.patch",
+        "sha256": "5327d100d6f99f2d7747d181df639a54d90eadea84f2c7f646939b09892fac08"
+      }
+    },
+    {
+      "actual_F0_bytes_exact": true,
+      "direction": "immediate_inverse",
+      "patch": {
+        "bytes": 836,
+        "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.inverse.patch",
+        "sha256": "dae2762ce82fc6ce7a6d0ea81b80d811d67cb0c96e3306c78c62848540da6cd8"
+      }
+    },
+    {
+      "actual_F0_bytes_exact": true,
+      "direction": "combined_forward",
+      "patch": {
+        "bytes": 23377,
+        "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.forward.patch",
+        "sha256": "79c01416dbfd70834f5f35d9ec8f1bf3082ef6e94305290bb6f866adb62a3cdc"
+      }
+    },
+    {
+      "actual_F0_bytes_exact": true,
+      "direction": "combined_inverse",
+      "patch": {
+        "bytes": 23377,
+        "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.inverse.patch",
+        "sha256": "3801443e54d97ea92069b34e30bcad72daed38519e1ff2290f96f0f48fab00eb"
+      }
+    }
+  ],
+  "schema": "receptor-family-engine-independent-raw-AST-audit-v7",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92154,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+    "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+  },
+  "source_contract": {
+    "bytes": 12640,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-contract-v7.json",
+    "sha256": "dba45a064608275b17773e94722c5b2740b744329dd7265da66a2dd67f290132"
+  },
+  "source_delta": {
+    "bytes": 67462,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-delta-v7.json",
+    "sha256": "2f24ca817ec581665b4732b349e1dde0c6eb115726cbeae64780d0c3766becdd"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "whole_raw_AST_inverse_exact": true
+}

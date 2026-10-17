@@ -1,0 +1,1064 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "arms": {
+    "literal": {
+      "actual_branch": {
+        "kind": "BRANCH",
+        "row": 23
+      },
+      "actual_initial_state_sha256": "bf9127799bb31434833fee66daae8b52b0e269dba862207affc5010fbd9a2c50",
+      "aggregate_B_bytes": 82657280,
+      "aggregate_MiB": 78.828125,
+      "all_reaped": true,
+      "authorization": {
+        "bytes": 12894,
+        "path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-authorization-v1.json",
+        "sha256": "b9abf1e2d1111ec130db7ffe7e8e076be34cc48bbe1e07dfb2c34fe44c5ccd18"
+      },
+      "canonical_fallback_key": {
+        "tile_type_id": "row0-decorated-tile-0bfd4fbb8396d7a7d6bbf719157878097bd00f388e46d1e6e2e7ec0324eb3e94",
+        "translation": [
+          0,
+          23
+        ],
+        "type_preimage": {
+          "base_type_preimage": {
+            "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+            "ordered_offsets": [
+              -23,
+              -22
+            ],
+            "ordered_premise_formulas": [
+              [
+                "not",
+                [
+                  "bot"
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "not",
+                  [
+                    "bot"
+                  ]
+                ],
+                [
+                  "all",
+                  "n",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "fun",
+                                  "zero",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "n"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "primitive_witness": {
+              "formula": [
+                "all",
+                "n",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "fun",
+                                "zero",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "rule": "mp"
+            }
+          },
+          "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+          "schema": "unit-row-row0-decorated-type-v1"
+        }
+      },
+      "complete_tool_Date_seconds": 50.59,
+      "complete_wire_verified": true,
+      "consumer_receipt_sha256": "89c797fa23a7670926bad662de65fa8549393a9e56c8e4bd11aa1b7cc32160b2",
+      "consumer_request_sha256": "58e01d3a7304c50eaaeff129b7ae6e0b61ea49ef46c5d3555a1a162ef23e432a",
+      "disposition": {
+        "bytes": 4207,
+        "path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-disposition-v1.json",
+        "sha256": "ddb4dbfa5ef299bdc2d14a6acc8a917822c190ec9f9320bc9de43603921748f1"
+      },
+      "engine_counts": {
+        "advice_calls": 0,
+        "advice_selected": 0,
+        "advice_unknown": 0,
+        "backtracks": 1,
+        "branches": 1,
+        "cursor_replays": 0,
+        "fallback_advances": 1,
+        "fallback_branch_choices": 0,
+        "family_abandonments": 0,
+        "family_batches": 1,
+        "family_canonical_choices": 1,
+        "family_checks": 1,
+        "family_choices": 0,
+        "family_invalidated": 0,
+        "family_unknown": 1,
+        "forced": 0,
+        "global_scans": 2,
+        "invalidated_domains": 48,
+        "nodes": 2,
+        "pending_checks": 0,
+        "pending_rejected": 0,
+        "pending_retired": 0,
+        "pending_selected": 0,
+        "placements": 1,
+        "restores": 1,
+        "retained_domains": 0,
+        "retained_prefixes": 0,
+        "retained_queries": 0
+      },
+      "engine_reason": "node ceiling; no exhausted conclusion",
+      "engine_status": "UNKNOWN",
+      "engine_wrapper_census_entries": 28,
+      "engine_wrapper_census_sha256": "abc245a77ae0121b4877ed010f3a1ab5e073c15cf453a0ced4af39e7cf8b6f4c",
+      "engine_wrapper_decorated_types": 14,
+      "engine_wrapper_original_types": 14,
+      "engine_wrapper_sha256": "577c8d9725745077853bd740532a4211317e5a6a6b107ea2501e8ed028b06d7e",
+      "event_kinds": [
+        "DECISION",
+        "FALLBACK",
+        "TRY",
+        "FAMILY_PREFERENCE",
+        "INVALIDATE",
+        "PLACE",
+        "DECISION",
+        "RESTORE",
+        "INVALIDATE",
+        "EXCLUDE"
+      ],
+      "expanded": {
+        "bytes": 2366300,
+        "path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-expanded-result-v1.json",
+        "sha256": "7eef8ce8cf833a50d43c1d07b60456c4d64657a046d31f7b7d03841e6d0203a6"
+      },
+      "final_snapshot_sha256": "f5f34179e24525c4b6ebde787472d3a0e3e0749f608a888e6d862fcaaf8a4d2c",
+      "full_gate_prefix_sha256": "7155eab06b21c8053d327e4f1f369f79d92df438e648e02461f2d074c0ccb585",
+      "gate_conflict_plans": [
+        {
+          "absent_requirements": [],
+          "plan": {
+            "assignment": [
+              [
+                [
+                  "input",
+                  "i0"
+                ],
+                0
+              ],
+              [
+                [
+                  "node",
+                  "n0"
+                ],
+                0
+              ],
+              [
+                [
+                  "node",
+                  "n1"
+                ],
+                23
+              ]
+            ],
+            "observed_receptors": {
+              "hypotheses": [],
+              "inputs": [],
+              "outputs": [
+                {
+                  "formula": [
+                    "all",
+                    "n",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "fun",
+                                "succ",
+                                [
+                                  [
+                                    "fun",
+                                    "zero",
+                                    []
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "n"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "port_id": "o0"
+                }
+              ]
+            },
+            "output_port": "o0",
+            "plan_index": 0,
+            "record_index": 0
+          },
+          "receipt_conflicts": [
+            {
+              "point": [
+                5,
+                0
+              ],
+              "values": [
+                {
+                  "requirement_indices": [
+                    0,
+                    4
+                  ],
+                  "value": [
+                    "formula-head",
+                    "imp"
+                  ]
+                },
+                {
+                  "requirement_indices": [
+                    1,
+                    3
+                  ],
+                  "value": [
+                    "formula-head",
+                    "all"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "absent_requirements": [
+            2,
+            5
+          ],
+          "plan": {
+            "assignment": [
+              [
+                [
+                  "input",
+                  "i0"
+                ],
+                0
+              ],
+              [
+                [
+                  "node",
+                  "n0"
+                ],
+                0
+              ],
+              [
+                [
+                  "node",
+                  "n1"
+                ],
+                23
+              ]
+            ],
+            "observed_receptors": {
+              "hypotheses": [],
+              "inputs": [],
+              "outputs": [
+                {
+                  "formula": [
+                    "all",
+                    "n",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "fun",
+                                "succ",
+                                [
+                                  [
+                                    "fun",
+                                    "zero",
+                                    []
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "n"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "port_id": "o0"
+                }
+              ]
+            },
+            "output_port": "o0",
+            "plan_index": 15,
+            "record_index": 1
+          },
+          "receipt_conflicts": [
+            {
+              "point": [
+                5,
+                0
+              ],
+              "values": [
+                {
+                  "requirement_indices": [
+                    0,
+                    4
+                  ],
+                  "value": [
+                    "formula-head",
+                    "imp"
+                  ]
+                },
+                {
+                  "requirement_indices": [
+                    1,
+                    3
+                  ],
+                  "value": [
+                    "formula-head",
+                    "all"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gate_receipt_summaries": [
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [
+            [
+              5,
+              0
+            ]
+          ],
+          "literal_receipt_sha256": "763284c0807244a18f05dac2481a43c96aad036b3a8df57f694525fc2e621599",
+          "outcome": "SKIP_THIS_PHYSICAL_PLAN",
+          "plan_index": 0,
+          "record_index": 0,
+          "request_ascii_sha256": "302f4fd86d4f3608d539789640882e51c1d75de16b4e80246ed232ca73f8c5d6",
+          "status": "HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "abf8c3eba5cf6f229f3f27fc33ad57a580cbe2cb4d5756fe1906bdecf503804b",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 1,
+          "record_index": 0,
+          "request_ascii_sha256": "9be69eb9c39c56bba8b427d5286a205e83afeccf631d8d1b13692649baf0252f",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "c67ec22e0d02828092754b0cd14b42ebe23ab63630547fb2a4186969246fee4c",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 2,
+          "record_index": 0,
+          "request_ascii_sha256": "aff5394fb83753e56b3c1625bf8b616c785b4ee10d3654608039c0f836f9e6a3",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "01cda8b82ddf0d24e5ab641cd95300b507fc413a15a580297d32fb30efcf96c1",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 3,
+          "record_index": 0,
+          "request_ascii_sha256": "8d61848eee9ae3b4ea00940e6f6f890ae7dc03fab15a33569b9273b97242a0f8",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "22ead184ad65687fa547830d4736dcff461f7a51ed623cc3764cfcc974c01cf2",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 4,
+          "record_index": 0,
+          "request_ascii_sha256": "59baef1b227126196d75c6691292230f8c879384e8dc243ca7c5209fdf62e3ab",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "1ebdbc9d0b83db7c846e5149d699c226b976cd134fbbb5b13f9e68a9e746c9ea",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 5,
+          "record_index": 0,
+          "request_ascii_sha256": "bfc4838ab5823169d6e89a521bbf7a26ba80f62cd88c838bc6eff8d49b7e089c",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "d20fc67a5356d88aa4cd49688ca170389abca73dcd89daa95ab10935361c6019",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 6,
+          "record_index": 0,
+          "request_ascii_sha256": "88418de4382d32ffb68e27b5e07970529f06c2d25d0a7b6b8f89e53ff3793b01",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "a1540434a0bf66fc55abd92496b7328ab3eed50834da3e2e3d022f7037dd23c1",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 7,
+          "record_index": 0,
+          "request_ascii_sha256": "9464fb45cd1a48cdc78e9dc88da4937c3bde36f21d9d5f9444c764cf3f960362",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "0c9edcf0f122f3e8407ec48b15fbcf73d0e49ce491376c05c3bb88cd41af1c4a",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 8,
+          "record_index": 0,
+          "request_ascii_sha256": "5b1ec9104f3cbadc9efeef7e41efa65da42e559cea2769a69e132936ad04c2b5",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "64363c155541218c306c53cc0983aba82231926b13c8328d078c524ea56e0c29",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 9,
+          "record_index": 0,
+          "request_ascii_sha256": "4c83a92d87763d7b99cdb32440350f5812dc180d2bf5cf4f1ba47aaff44d4d2e",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "0f0501140300afeec88f0b738856186c49ea1c758389e88001ba71fa18243a3d",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 10,
+          "record_index": 0,
+          "request_ascii_sha256": "6ec259ad4a7123b989232657bbf14488af8975b5161db0fb54409db37ec89a76",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "3e06c3d8b4970953cd4e90b6292fa492d42f90e09ad096abc362a6d3d60d5ea0",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 11,
+          "record_index": 0,
+          "request_ascii_sha256": "eb504e0576e90d71269ee7b8135227c82325936c88e3986f0fa43b24de3e7e36",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "63cb984b0a7d35325813cecdc9fcd8b9c685dbbee24c9d4bd304c4a251dcbc77",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 12,
+          "record_index": 0,
+          "request_ascii_sha256": "808acc56960b1c307f2284309ddbfa8f12776eaafb43ebfea3c9c90eb6c8a140",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "262bdc2caee6f568d6c461a45fb543857aa02ad6aaa26e49f6e619280fbaeebb",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 13,
+          "record_index": 0,
+          "request_ascii_sha256": "afc96d3c784783758c215ce9ee76efffac30bad540bed3470a92ba1f1a68aeb6",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 0,
+          "conflict_points": [],
+          "literal_receipt_sha256": "a05ddc445a9d1df97a7701788ab6ce5e535800e6cda240ca5526fd782a9b0bb4",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 14,
+          "record_index": 0,
+          "request_ascii_sha256": "f8f7d41acb4c6fff203b8aedb7624ec9e1db6ec54b6ba8fea5c7b1f729458295",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [
+            [
+              5,
+              0
+            ]
+          ],
+          "literal_receipt_sha256": "9e289fb89bfd30cd9ed6f4e3169096551f6d619aa4495f8fb9d2f83250537bdf",
+          "outcome": "SKIP_THIS_PHYSICAL_PLAN",
+          "plan_index": 15,
+          "record_index": 1,
+          "request_ascii_sha256": "ca7251ff149f95ebaab918ef8a968aa7cc7002b96d85ad3ad3ed2f68998998c8",
+          "status": "HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "8cdb54ed304ef0c61a156f48f8a5f9ab7181d8c077e49560bd15732832555081",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 16,
+          "record_index": 1,
+          "request_ascii_sha256": "ecbb68f546039b4af84869f8828cd4a2b9a58e75047aa439825c3ae339ce0979",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "ef920434065d8819e01af425f0e55a59aa29a752247388958388ef5067332ebc",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 17,
+          "record_index": 1,
+          "request_ascii_sha256": "4f077dd816ca3f3f2092223e5477ce4cf09a73e8507dbff45f6d71aaed17d1ca",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "904c8963725599a9b6898e8cf2d3e10ebd8396e3a4b0d60e5f156aff68c4625e",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 18,
+          "record_index": 1,
+          "request_ascii_sha256": "a7b2a3af1a30073fbaf0bf1e2d3150615d6bd4478b8c226ec3c644f54e2f4e47",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "da8ff163eddbdea7fab6ca407c2eeacd8e5a96481e0ce268d10d594a47896093",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 19,
+          "record_index": 1,
+          "request_ascii_sha256": "fd80acf641c6cb697cb3aca492f30da14312bdac770d333b5a456440effa1739",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "1ee98f3bd4680ae0be0201b05cddd7eeb89503dc83473a040e61708ac01dfe6c",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 20,
+          "record_index": 1,
+          "request_ascii_sha256": "78864a9ea7b4f2860b30784ecc5a110f4ebefa1034ab1ccf0aa6fba0eb0bdd9f",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "f7bd787b95054bf5cd9255e04df355a972eafd27ee62643b807eb58190cc67be",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 21,
+          "record_index": 1,
+          "request_ascii_sha256": "bd853efbcc63d5256c20d377bba819142f21faf96f2f39d38f3f7808b0c63092",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "b28e11f4ca43b03e01ffe4133090ca09712c473e8d85958c740acc13fa0a7daf",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 22,
+          "record_index": 1,
+          "request_ascii_sha256": "ec217f9da4453d15236483c978e8c658b17ae4f00e0af39e209c0e3a5ef6f10d",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "d62a18f722c45b617a915bb68a062822a504a50ec8d7e28784f9a0342b6d2e69",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 23,
+          "record_index": 1,
+          "request_ascii_sha256": "2482ad90594ca95005416ded2758f46ab8bf5b3799165fe2e037731ca80ec78e",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "16908a9d56096664a3e63722e1313261260c066931913cf3f9000bb640eaafd9",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 24,
+          "record_index": 1,
+          "request_ascii_sha256": "22e81ce5f11c058c0bed8099bc15bf5de00de97747cb075a47066980d7a0900d",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "62af66116d16978605a71065bffe23533996933283aa722ad0402ccb14d71a9c",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 25,
+          "record_index": 1,
+          "request_ascii_sha256": "b3693ba94980cbb1b90231727eeb02f57a28bfedba85174804d6824d5b0bdcbd",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "afe740f754fb1062f9e877420dc66a9d418dfbdb74d84377fbfa12795c877953",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 26,
+          "record_index": 1,
+          "request_ascii_sha256": "d4a31ae0841596344572c495ee597a62c6c08d76e55f8cf08a9b8c79480df465",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "8f59f090e3b8d9aed990c548895c4ea590af7b41807eea4539589b8792c0f00f",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 27,
+          "record_index": 1,
+          "request_ascii_sha256": "a51cc31afc7e695b63af6b236071b0af8db17eb856bfdc1ce7f87d2920ec7d5f",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "e03095601076e56cce956ac3a318c3cb4c1f60fea79ae3c7936683e63793ff6f",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 28,
+          "record_index": 1,
+          "request_ascii_sha256": "f505e45bb1f3d8820154e5e4bc27ce8988cba256aa8e2c2621b8ae39051d2df8",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        },
+        {
+          "absent_requirement_count": 2,
+          "conflict_points": [],
+          "literal_receipt_sha256": "567b089f1b87aff571612f25afe427711eb8c2af2297581c5cdae038d493abf4",
+          "outcome": "PASS_TO_OBSERVED_MATCHING",
+          "plan_index": 29,
+          "record_index": 1,
+          "request_ascii_sha256": "b4a02fd61169dbc3baa84296c050716a1cfead11614cc7f9ecac624b720648de",
+          "status": "NO_KNOWN_HEAD_CONFLICT"
+        }
+      ],
+      "gate_work_steps_sum": 8128,
+      "native_channel5_in_state": false,
+      "native_exit": 0,
+      "native_launch_to_postprobe_ns": 8448856000,
+      "native_resources_qualified": true,
+      "native_seconds": 8.448856,
+      "phase_records": [
+        {
+          "native_ns": 600721511887000,
+          "stage": "BEFORE_PLAN_READ"
+        },
+        {
+          "native_ns": 600721512299000,
+          "stage": "BEFORE_CURRENT_SOURCE_READS"
+        },
+        {
+          "native_ns": 600721521608000,
+          "stage": "BEFORE_AUTHORITY_INPUT_READS"
+        },
+        {
+          "native_ns": 600721538657000,
+          "stage": "BEFORE_MODULE_LOAD"
+        },
+        {
+          "native_ns": 600721664454000,
+          "stage": "BEFORE_GUARD_CONSTRUCTION"
+        },
+        {
+          "native_ns": 600721717298000,
+          "stage": "BEFORE_STAGEB_PROVENANCE"
+        },
+        {
+          "native_ns": 600721857858000,
+          "stage": "BEFORE_MARKING_CHECK"
+        },
+        {
+          "native_ns": 600721902042000,
+          "stage": "BEFORE_POOL_READ"
+        },
+        {
+          "native_ns": 600722152654000,
+          "stage": "BEFORE_ENGINE"
+        },
+        {
+          "native_ns": 600728275528000,
+          "stage": "BEFORE_PROVIDER"
+        },
+        {
+          "native_ns": 600728611308000,
+          "stage": "AFTER_PROVIDER"
+        },
+        {
+          "native_ns": 600729685006000,
+          "stage": "AFTER_ENGINE"
+        },
+        {
+          "native_ns": 600729693538000,
+          "stage": "BEFORE_OUTPUT"
+        }
+      ],
+      "physical_structural_plans_sha256": "ceef2826d5b3671de09a9faae540e52b05e58f23256e4bd4b5529325007368e0",
+      "plan": {
+        "bytes": 10821,
+        "path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-plan-v1.json",
+        "sha256": "6f4b0513dfe808c4113b0cade09a9d933a7dd39f78e972828c5645dc1dfb3503"
+      },
+      "provider_accounting": {
+        "attempted_assignments": 30,
+        "binding_attempts": 28,
+        "checked_expansions": 0,
+        "checked_instances": 0,
+        "distinct_environment_attempts": 0,
+        "duplicate_instances": 0,
+        "full_expansions": 0,
+        "ground_environment_proposals": 0,
+        "head_gate_absent_head_passes": 14,
+        "head_gate_calls": 30,
+        "head_gate_conflicting_plans": 2,
+        "head_gate_downstream_assignments": 28,
+        "head_gate_no_known_conflict": 28,
+        "head_gate_receipts_returned": 30,
+        "head_gate_unknown": 0,
+        "native_adaptations": 0,
+        "native_member_exclusions": 0,
+        "offered_instances": 0,
+        "planned_assignments": 30,
+        "preflight_checks": 0
+      },
+      "provider_census_entries": 0,
+      "provider_reason": "EQUAL_PER_RECORD_STRUCTURAL_PLAN_PREFIX",
+      "provider_report_sha256": "d4f508a988e87ab5dcd7888993dd0dff77a6c8a7054f831722c2c7e67f5ab03f",
+      "provider_work": {
+        "completed_instances": 0,
+        "limits": {
+          "depth": 128,
+          "input_bytes": 4194304,
+          "instances": 1,
+          "records": 2,
+          "row_trials": 64,
+          "work": 1000000
+        },
+        "row_trials": 64,
+        "steps": 150611
+      },
+      "receiver_probe_record_complete": true,
+      "recorded_root_restored": true,
+      "root_snapshot_sha256": "f5f34179e24525c4b6ebde787472d3a0e3e0749f608a888e6d862fcaaf8a4d2c",
+      "same_frozen_pool_sha256": "879ef523325d07361b9da31fb868efd57d1405cec598f61795bf036ae9c20460",
+      "source_contract": {
+        "bytes": 19869,
+        "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json",
+        "sha256": "e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe"
+      },
+      "status": "RECEIVER_PROBE_RECORDED",
+      "stderr_tail_bytes": 0,
+      "tool_bracket": {
+        "bytes": 344,
+        "path": "/private/tmp/gcts-head-gated-inference-literal-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+        "sha256": "2a946bb817f97cf4f9f9269457f3a1aa35f6b632b4591750c054f62619cd20bf"
+      },
+      "tool_session_id": 99721
+    },
+    "visible": {
+      "active_failure_frame_established": false,
+      "actual_branch": null,
+      "administrative_qualified_case_count": 0,
+      "aggregate_B_bytes": 94683136,
+      "aggregate_MiB": 90.296875,
+      "all_reaped": true,
+      "authorization": {
+        "bytes": 12894,
+        "path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-authorization-v1.json",
+        "sha256": "ca4e18647fd495f70b7f7653d25b7a8f56e0faa4c7c84e6715457b6be3ba7ad0"
+      },
+      "census": null,
+      "complete_tool_Date_seconds": 22.673,
+      "complete_wire_verified": false,
+      "consumer_receipt": null,
+      "diagnostic_pair_complete": true,
+      "disposition": {
+        "bytes": 13459,
+        "path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+        "sha256": "5a39a68a322b9eec5df24c7bcc8b4fd30c3f127fa74bc6958e51c65ea5c9dfc6"
+      },
+      "engine_trace": null,
+      "exact_root_rollback": null,
+      "failure_cause_established": false,
+      "failure_pair": {
+        "completion": {
+          "bytes": 332,
+          "path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-owned-v1/diagnostic-completion.json",
+          "sha256": "dbd5665bb4eda17bd2e4b26e59f2f671179d04530be8754a326f990a703ef79b"
+        },
+        "diagnostic": {
+          "bytes": 10043,
+          "path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/RI-owned-v1/unknown-diagnostic.json",
+          "sha256": "3cc0576f73ae430520adcf1f297ef39f6e976b29dd9ae2c24a374906221d08d8"
+        }
+      },
+      "last_observations": {
+        "completion": null,
+        "fallback": null,
+        "proposer": null,
+        "validator": null
+      },
+      "native_exit": 2,
+      "native_launch_to_postprobe_ns": 20203157000,
+      "native_resources_qualified": false,
+      "native_seconds": 20.203157,
+      "offers": null,
+      "phase_meaning": "Reached fixed writes through AFTER_PROVIDER only. No AFTER_ENGINE or BEFORE_OUTPUT write. This does not recover report contents, status, counters, current state/branch, an active fault frame or exclusive failure cause. All unreturned scientific observations remain UNKNOWN.",
+      "phase_records": [
+        {
+          "native_ns": 600643736264000,
+          "stage": "BEFORE_PLAN_READ"
+        },
+        {
+          "native_ns": 600643736737000,
+          "stage": "BEFORE_CURRENT_SOURCE_READS"
+        },
+        {
+          "native_ns": 600643748020000,
+          "stage": "BEFORE_AUTHORITY_INPUT_READS"
+        },
+        {
+          "native_ns": 600643769630000,
+          "stage": "BEFORE_MODULE_LOAD"
+        },
+        {
+          "native_ns": 600643838347000,
+          "stage": "BEFORE_GUARD_CONSTRUCTION"
+        },
+        {
+          "native_ns": 600643860165000,
+          "stage": "BEFORE_STAGEB_PROVENANCE"
+        },
+        {
+          "native_ns": 600643911070000,
+          "stage": "BEFORE_MARKING_CHECK"
+        },
+        {
+          "native_ns": 600643951687000,
+          "stage": "BEFORE_POOL_READ"
+        },
+        {
+          "native_ns": 600644295185000,
+          "stage": "BEFORE_ENGINE"
+        },
+        {
+          "native_ns": 600650154768000,
+          "stage": "BEFORE_PROVIDER"
+        },
+        {
+          "native_ns": 600651171979000,
+          "stage": "AFTER_PROVIDER"
+        }
+      ],
+      "plan": {
+        "bytes": 10821,
+        "path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-plan-v1.json",
+        "sha256": "7aadbe8a2ab54847231154bf9a2dbf2a471b8ff6935657770e6171290313e352"
+      },
+      "provider_counts": null,
+      "receiver_probe_record_complete": false,
+      "reported_case_count": null,
+      "returned_control_record": false,
+      "source_contract": {
+        "bytes": 19869,
+        "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json",
+        "sha256": "e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe"
+      },
+      "state": null,
+      "status": "UNKNOWN",
+      "stderr_tail_bytes": 111,
+      "tool_bracket": {
+        "bytes": 345,
+        "path": "/private/tmp/gcts-head-gated-inference-visible-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+        "sha256": "6739b98478c2f811386449ec23d08ebdedb3445efebdaee41e116e5679702cf5"
+      },
+      "tool_session_id": 32103,
+      "whole_physical_plans": null
+    }
+  },
+  "authorship_disclosure": "Reviewer authored provider8 and earlier host/consumer/engine ancestry; this is independent saved-data interpretation/concordance of Root records, not a second mathematical implementation or scientific replay.",
+  "configured_pair_joins": {
+    "original_semantic_sources17_inputs2_epoch_unchanged_in_returned_literal_payload_and_failure_context": true,
+    "reason": "Visible full provider/engine result was not returned. Shared configuration is observed; scientific path equality is UNKNOWN.",
+    "same_actual_branch_across_arms": null,
+    "same_actual_initial_state_across_arms": null,
+    "same_actual_whole30plans_across_arms": null,
+    "same_executable_sources22": true,
+    "same_frozen_inventory_input": {
+      "bytes": 3433689,
+      "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38"
+    },
+    "same_inputs10": true,
+    "same_native_limits_and_runtime": true,
+    "same_source_contract": {
+      "bytes": 19869,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe"
+    }
+  },
+  "discrepancies": [],
+  "interpretation": [
+    "Literal completed30 gate receipts with full request/preimage data and original ASCII request SHA joins:2 completed plan conflicts,28 no-known conflicts,14 of those pass with absent meta heads,0 gateUNKNOWN.",
+    "The two skipped advisory layouts are plans0/15, both with imp and all requirements at planning point(5,0). These are no native candidate/degree/EOF exclusions and channel5 is absent from returned native state.",
+    "Literal performed28 explicit-origin binding attempts after gate; no complete environment, current independent expansion, native preflight, adaptation or offer. Same canonical primitive then recorded DEAD0/child restoration/exclusion and node-capUNKNOWN.",
+    "Visible exited2 after20.203157 native seconds and returned only the completed diagnostic pair. Eleven reached writes end withAFTER_PROVIDER; all4 last-entry slots are null. Counts/offers/state/branch/census/rollback are unreturned UNKNOWN, never zero or inferred equal to literal.",
+    "Literal native8.448856seconds/82657280bytes qualifies its native resource window under original bounds. Its complete toolDate50.59seconds is separately recorded, not replaced by native interval.",
+    "These data do not establish a timing bottleneck, gate speedup, useful transfer, theorem, learned marking, full-engine/GCTS/RL qualification or current-source correctness from timing. No third actual or scientific replay occurred."
+  ],
+  "new_actuals": 0,
+  "project_module_evaluated": false,
+  "proof_accepted": false,
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "root_interpretation_author": "/root",
+  "saved_data_review_passed": true,
+  "schema": "ROOT-head-gated-receiver-saved-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replay": false,
+  "useful_transfer_accepted": false,
+  "whole_engine_qualified": false
+}

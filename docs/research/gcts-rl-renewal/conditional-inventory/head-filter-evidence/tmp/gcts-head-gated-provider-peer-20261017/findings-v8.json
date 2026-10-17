@@ -1,0 +1,142 @@
+{
+  "actual_results_or_proofwords_read": false,
+  "blocking_findings": [],
+  "findings": [
+    {
+      "blocker": false,
+      "finding": "Full source-ground check/native reconstruction and identical fair per-record structural assignment materialization occur before the new gate. The gate runs once per actually attempted materialized plan before either visible empty/residual inference or literal-origin matching. Its skip cannot change construction order, per-record quotas or reallocate trials. Denominators/cumulative cost/error prefixes may change; no claim of byte/tick/runtime equality.",
+      "id": "COMMON-PLAN-BOTH-MODES",
+      "lines": [
+        555,
+        686,
+        694,
+        703,
+        842,
+        847
+      ],
+      "source": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "blocker": false,
+      "finding": "The helper derives exact node/input row pairs from actual topology IDs and assignment, retains descriptor/layout/row assignment/default gate limits, calls the frozen gate without any source/current environment or concrete receptor formula, compares full request when present, and checks the request digest with original ensure_ascii=True ASCII canonicalization. No source-ground bot or other binding becomes an invariant head.",
+      "id": "FULL-CURRENT-PLAN-REQUEST",
+      "lines": [
+        393,
+        411,
+        426,
+        440
+      ],
+      "source": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Exact schema/version/scope/channel5, false authority flags, bounded work/defaults, full literal lists and request joins are required. HEAD_CONFLICT must be completed, advisory_plan_rejected True, reason null and nonempty conflicts before this physical plan alone is skipped. NO_KNOWN_HEAD_CONFLICT and gate-own UNKNOWN explicitly pass. An early UNKNOWN with null internal request/digest is allowed only as nonnegative empty-comparison output; provider retains the full supplied request separately.",
+      "id": "COMPLETE-CONFLICT-ONLY-SKIP",
+      "lines": [
+        413,
+        466,
+        699,
+        703
+      ],
+      "source": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Every successful gate return is retained before charged provider copy/validation; outcome remains PENDING until validation authorizes SKIP_THIS_PHYSICAL_PLAN or PASS_TO_OBSERVED_MATCHING. Full receipt is then replaced with the strict owned copy. Seven counters distinguish calls/returns/completed conflicts/no-known/ownUNKNOWN/absent passes/downstream routes. Own/provider/native prefixes can prevent later counts and do not qualify incomplete observations or infer native moves, offers, exhaustion, branch viability or failure cause.",
+      "id": "LITERAL-PREFIX-AND-COUNTERS",
+      "lines": [
+        399,
+        417,
+        447,
+        466,
+        487,
+        492,
+        900,
+        912
+      ],
+      "source": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "blocker": false,
+      "finding": "New gate helper adds no exception catch. Gate tick is the existing provider work.step, charged inside same own1m/depth128 and external original native20/512. Gate-own100k/other bounds produce gate UNKNOWN/pass-through; provider-own exhaustion stops the existing provider prefix. Native/callback identity propagates through the existing nested wrappers, while PlanHeadError/other true malformed/guard errors remain fatal rather than advisory negatives. Exact arbitrary nth-callback/timing equivalence is not claimed.",
+      "id": "ERROR-AND-RESOURCE-BOUNDARY",
+      "lines": [
+        98,
+        132,
+        393,
+        466,
+        867,
+        916
+      ],
+      "source": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Original _preflight and all other top helpers, native primitive rule rejection policy, separate original+decorated collision checks before copying/rejection, current full independent4358 expansion and fresh4bd6 union chain are raw/AST exact. Full names census is returned on nooffer/UNKNOWN prefixes. The gate constructs no native tile, so a skipped impossible advisory plan has no unrecorded newly exposed native type. Alternative point unions are never merged.",
+      "id": "FRESH-NATIVE-AND-CENSUS-EXACT",
+      "lines": [
+        316,
+        390,
+        724,
+        840,
+        907,
+        913
+      ],
+      "source": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Only required head_gate_module is added to the provider callable. Public report schemaV2/exact26 fields, request6, bare seven-field BATCH, existing inference/literal/residualV2 policy strings and false flags remain unchanged; planning receipt prefix is nested and explicitly versioned. Engine7 changes only own/provider version gates, retains the whole report literally and merges all provider exposure types before the unchanged fresh d680 consumer. This protocol gate is not independent replay of arbitrary forged gate/provider receipts: exact frozen modules, separate original17 authority, current Root22 map and full CodeSeal/native guards remain required.",
+      "id": "PROTOCOL-COMPOSITION",
+      "lines": [
+        11,
+        38,
+        469,
+        494,
+        510,
+        520,
+        887,
+        916
+      ],
+      "source": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "blocker": false,
+      "finding": "This integration uses the separately reviewed necessary outer-head obstruction for an exact supported plan. Concrete template constructors remain invariant under successful capture-safe instantiation; root formula_meta is absence. Unused interface head conflicts depend on mandatory full source-sharing/final interface equalities. No native channel5 state value, premise fact, base candidate removal, learned family theorem, complete matching/degree/EOF, engine/search/proof/RL/gain or runtime acceptance is introduced. Same known heads and UNKNOWN remain insufficient admission.",
+      "id": "CONDITIONAL-THEORY-AND-NATIVE-ABSENCE",
+      "lines": [
+        20,
+        27,
+        393,
+        466
+      ],
+      "source": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "blocker": false,
+      "finding": "Operative Source-contract-v8-2/API-wire-v8-2/handoff-v8-2 bind the same frozen Source as metadata1 and explicitly include nested physical_assignment_plan.head_gate in the declared field list. Metadata1 is preserved as historical. This review binds only effective metadata2 and does not silently rewrite an old capsule.",
+      "id": "CURRENT-METADATA2"
+    }
+  ],
+  "future_integration_obligations": [
+    "Root must freeze/review/authenticate the full current22-source composition, original17/input2 and reused inventory provenance separately, then own any once/native actual; no prior runtime qualification or construction-cost inheritance.",
+    "Future saved controls should distinguish completed HEAD_CONFLICT skip from meta/no-known and gate-own UNKNOWN pass, exact full Unicode request ASCII digest joins, unsupported hypotheses/CALL pass-through, and PENDING/own-provider budget/native error paths without treating them as negatives or invented counts.",
+    "Both matched arms must receive the same declared common structural allocation and gate at the same seam, retain full receipts/counters and charge all gate/copy/check cost under original limits. No fit or speed claim follows from Source structure.",
+    "Downstream exact independent expansion/native member/full marked union checks and the complete selected/excluded/offered/rejected/preflight/public engine/cursor original+decorated preimage census remain mandatory before any primitive preference. No gate receipt or copied historical acceptance replaces these."
+  ],
+  "schema": "receptor-family-head-gated-provider-independent-findings-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 60912,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+    "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+  },
+  "source_contract": {
+    "bytes": 10511,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+    "sha256": "8390496834dffd80bbaf0397e788d8c0a9c5c52490173f0cc40c9c3dc49b404e"
+  },
+  "source_only": true,
+  "whole_source_api_contract_parent_gate_theory_review": true
+}

@@ -1,0 +1,85 @@
+{
+  "API": {
+    "bytes": 11214,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/API-wire-v8-2.json",
+    "sha256": "7725721d47e1f2c2119e8a76133f402a5212dacc006b63a58db03d0a7c0f91b8"
+  },
+  "AST_and_compile_without_evaluation_only": true,
+  "actual_execution_authorized": false,
+  "actual_four_patch_applications_exact": true,
+  "actual_results_or_proofwords_read": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_and_dependency_overlap": "Reviewer authored independent expansion4358, marked verifier9fd, marked-aware fibre checker8f, ea300 point ancestry and census engine4-7, plus preliminary coarse-head theory note; reviewer distinctly reviewed Arithmetic gate7595 and parent provider7. Did not author Controls provider8 or gate implementation. Shared schemas, native primitives, paired dependency reviews and current engine authorship are disclosed. This is a distinct provider implementation/conditional theory Source review, not self-review of engine7 or unrelated mathematics/runtime acceptance.",
+  "blocking_findings": [],
+  "findings": {
+    "bytes": 8992,
+    "path": "/private/tmp/gcts-head-gated-provider-peer-20261017/findings-v8.json",
+    "sha256": "c07e4aae4ba44ce04ebfba1506587722b832c18e14d2f4bd47ecb120baa8dcf3"
+  },
+  "gate_contract": {
+    "bytes": 6196,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-contract-v1.json",
+    "sha256": "e3e8105434dab1b06f3ff7673f00d2627c9f27b3df9584428f99f49212fc1d80"
+  },
+  "gate_distinct_peer": {
+    "bytes": 3745,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "7094f6df12ed9150102ee2a6adc1f9f016f2c0c460e2750fd7fd9b1ad86fa1fd"
+  },
+  "gate_source": {
+    "bytes": 15276,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+    "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+  },
+  "gate_theory_note": {
+    "bytes": 5382,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/theory-note-v1.json",
+    "sha256": "db3d8088decca38c45d9573704d3e5898967d88ee11549171902ee0255710904"
+  },
+  "pass": true,
+  "raw_AST_immediate9_and_whole34_inverse_exact": true,
+  "retained_parent_peer": {
+    "bytes": 3099,
+    "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/typed-Source-review-v7.json",
+    "sha256": "516d6d4ded890f8f0dc9a3a5b3efa7fcd7cb3253caeb4017fd7062b1d1c0e234"
+  },
+  "reviewed_handoff": {
+    "bytes": 5174,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/handoff-v8-2.json",
+    "sha256": "09a5af87f0f8b08f87783f90e95e26f881b12623e36a330c22378ed3f1824a19"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "receptor-family-head-gated-provider-typed-Source-review-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "receptor-family-head-gated-provider-Source",
+  "scope_condition": "Pinned synchronous current Root composition only. Necessary advisory THIS_PLAN obstruction, no native/model/channel5/universe/scheduler/fallback/degree/EOF/rollback authority change. Complete literal gate receipts are protocol/context checked, not arbitrary untrusted mathematical certificates. Source pass establishes no execution, fit, speed, branch viability, transfer, proof or empirical benefit.",
+  "source": {
+    "bytes": 60912,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+    "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+  },
+  "source_contract": {
+    "bytes": 10511,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+    "sha256": "8390496834dffd80bbaf0397e788d8c0a9c5c52490173f0cc40c9c3dc49b404e"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "provider": {
+      "bytes": 60912,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+    }
+  },
+  "static_review": {
+    "bytes": 12187,
+    "path": "/private/tmp/gcts-head-gated-provider-peer-20261017/static-review-v8.json",
+    "sha256": "ee5e61819ca5c559195fd0f3cb28cef23b5aa92185ce69cb1c39442303509ce0"
+  },
+  "unchanged_inherited_named_regions_raw_AST_exact": 28,
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "whole_source_api_contract_parent_and_theory_read": true
+}

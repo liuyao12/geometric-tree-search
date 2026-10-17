@@ -1,0 +1,385 @@
+{
+  "actual_patch_commands": [
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-head-gated-provider-peer-20261017/immediate-patch-copy.py",
+        "/private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-forward.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-head-gated-provider-peer-20261017/immediate-patch-copy.py",
+        "/private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-full-inverse.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-head-gated-provider-peer-20261017/whole_base3-patch-copy.py",
+        "/private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-forward.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-head-gated-provider-peer-20261017/whole_base3-patch-copy.py",
+        "/private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-full-inverse.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "actual_results_or_proofwords_read": false,
+  "added_named_regions": [
+    "_check_plan_head_gate"
+  ],
+  "changed_named_regions": [
+    "build_family_batch"
+  ],
+  "checks": [
+    {
+      "name": "raw pin /private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-head-gated-provider-source-20261017/API-wire-v8-2.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-head-gated-provider-source-20261017/Source-delta-v8.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-head-gated-provider-source-20261017/static-audit-v8.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-forward.patch",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-full-inverse.patch",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-forward.patch",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-full-inverse.patch",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-contract-v1.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-coarse-head-plan-marks-source-20261017/API-wire-v1.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-coarse-head-plan-marks-peer-20261017/typed-Source-review-v1.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v7.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-observed-receptor-provider-peer-20261017/typed-Source-review-v7.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /private/tmp/gcts-coarse-head-plan-marks-source-20261017/design-and-proof-v1.json",
+      "pass": true
+    },
+    {
+      "name": "raw pin /Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "pass": true
+    },
+    {
+      "name": "nine declared forward regions exact",
+      "pass": true
+    },
+    {
+      "name": "nine declared full inverse exact",
+      "pass": true
+    },
+    {
+      "name": "whole34 base3 forward exact",
+      "pass": true
+    },
+    {
+      "name": "whole34 base3 inverse exact",
+      "pass": true
+    },
+    {
+      "name": "compile without evaluation",
+      "pass": true
+    },
+    {
+      "name": "whole immediate inverse AST exact",
+      "pass": true
+    },
+    {
+      "name": "whole base3 inverse AST exact",
+      "pass": true
+    },
+    {
+      "name": "only new gate helper named region",
+      "pass": true
+    },
+    {
+      "name": "all28 other inherited named regions raw exact",
+      "pass": true
+    },
+    {
+      "name": "all28 other inherited named regions AST exact",
+      "pass": true
+    },
+    {
+      "name": "only stdlib imports",
+      "pass": true
+    },
+    {
+      "name": "all old constants except VERSION literal exact",
+      "pass": true
+    },
+    {
+      "name": "gate exact literal VERSION/schema/flags",
+      "pass": true
+    },
+    {
+      "name": "same provider defaults and false flags",
+      "pass": true
+    },
+    {
+      "name": "only one required added keyword",
+      "pass": true
+    },
+    {
+      "name": "new gate helper no error catches",
+      "pass": true
+    },
+    {
+      "name": "entire common structural allocation block raw exact",
+      "pass": true
+    },
+    {
+      "name": "gate before every matching mode and residual path",
+      "pass": true
+    },
+    {
+      "name": "receipt retained before charged copy",
+      "pass": true
+    },
+    {
+      "name": "gate digest ASCII not UTF8 provider digest",
+      "pass": true
+    },
+    {
+      "name": "report exact26/current API",
+      "pass": true
+    },
+    {
+      "name": "request exact6/current API",
+      "pass": true
+    },
+    {
+      "name": "immediate actual forward patch exact",
+      "pass": true
+    },
+    {
+      "name": "immediate actual inverse patch exact",
+      "pass": true
+    },
+    {
+      "name": "whole_base3 actual forward patch exact",
+      "pass": true
+    },
+    {
+      "name": "whole_base3 actual inverse patch exact",
+      "pass": true
+    }
+  ],
+  "compile_without_evaluation": true,
+  "no_author_builder_or_generated_project_function_executed": true,
+  "raw_refs": [
+    {
+      "bytes": 60912,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+    },
+    {
+      "bytes": 10511,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+      "sha256": "8390496834dffd80bbaf0397e788d8c0a9c5c52490173f0cc40c9c3dc49b404e"
+    },
+    {
+      "bytes": 11214,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/API-wire-v8-2.json",
+      "sha256": "7725721d47e1f2c2119e8a76133f402a5212dacc006b63a58db03d0a7c0f91b8"
+    },
+    {
+      "bytes": 93149,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-delta-v8.json",
+      "sha256": "067e6912f39aee6512eab901f466b29e61d65a4c9fd108a3055c4302c759a03a"
+    },
+    {
+      "bytes": 2036,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/static-audit-v8.json",
+      "sha256": "adccbd910125fb1880cb0a161c58c84075e5a8417250c0be20c140984dc454c9"
+    },
+    {
+      "bytes": 15276,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+    },
+    {
+      "bytes": 11048,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-forward.patch",
+      "sha256": "8c4e3150dd506296a5325916ac91e87ce7df5833ae2b4926afd1e26e82b33327"
+    },
+    {
+      "bytes": 11048,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-full-inverse.patch",
+      "sha256": "eefdfc47f87ded995b4d2d49739664a204af5e06593fa8dccdee6022cdde5f70"
+    },
+    {
+      "bytes": 61455,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-forward.patch",
+      "sha256": "180771e16bf53ade6ea3b10a54175b0b89999ed403f57066a234f0a4036385dd"
+    },
+    {
+      "bytes": 61415,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-full-inverse.patch",
+      "sha256": "390b1a760cfcd3e7c22c4b927b3995628d923591ae94a37688292b4bf6ca5a9c"
+    },
+    {
+      "bytes": 54448,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/receptor_transfer_physical_provider_v7.py",
+      "sha256": "9dac79b739dc3e22bd90fa80b4f31e6ef11bf9f927055b04d6355ad96ed730c1"
+    },
+    {
+      "bytes": 41642,
+      "path": "/private/tmp/gcts-receptor-transfer-provider-source-20261017/receptor_transfer_physical_provider_v3.py",
+      "sha256": "23daab1085b7ddc04e447f069b2ceb0271ad307abab81ff560549f8b346460aa"
+    },
+    {
+      "bytes": 6196,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-contract-v1.json",
+      "sha256": "e3e8105434dab1b06f3ff7673f00d2627c9f27b3df9584428f99f49212fc1d80"
+    },
+    {
+      "bytes": 4873,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/API-wire-v1.json",
+      "sha256": "16243e76d72dc8be1a50f6e872645444c3127d2f53d73c563fa2f93dd362a8ed"
+    },
+    {
+      "bytes": 3745,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "7094f6df12ed9150102ee2a6adc1f9f016f2c0c460e2750fd7fd9b1ad86fa1fd"
+    },
+    {
+      "bytes": 9783,
+      "path": "/private/tmp/gcts-observed-receptor-provider-source-20261017/Source-contract-v7.json",
+      "sha256": "dee233de9030c7baf9758a543b69aaa9bdeb86aec213fc27620918faabaa1f0a"
+    },
+    {
+      "bytes": 3099,
+      "path": "/private/tmp/gcts-observed-receptor-provider-peer-20261017/typed-Source-review-v7.json",
+      "sha256": "516d6d4ded890f8f0dc9a3a5b3efa7fcd7cb3253caeb4017fd7062b1d1c0e234"
+    },
+    {
+      "bytes": 6182,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/design-and-proof-v1.json",
+      "sha256": "869976cde593ff4dff6fd05c08142ca3b066292b202993fee693bea31433dd14"
+    },
+    {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    }
+  ],
+  "schema": "receptor-family-head-gated-provider-independent-static-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 60912,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+    "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+  },
+  "source_contract": {
+    "bytes": 10511,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+    "sha256": "8390496834dffd80bbaf0397e788d8c0a9c5c52490173f0cc40c9c3dc49b404e"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "unchanged_named_regions": [
+    "ProviderDataError",
+    "ProviderDataError.__init__",
+    "_AssignmentPrefix",
+    "_CallbackFailure",
+    "_CallbackFailure.__init__",
+    "_Unfinished",
+    "_Work",
+    "_Work.__init__",
+    "_Work.copy",
+    "_Work.native",
+    "_Work.step",
+    "_Work.trial",
+    "_constraints",
+    "_ground_roundtrip",
+    "_key",
+    "_layout",
+    "_preflight",
+    "_ready_checked",
+    "ascii_digest",
+    "build_family_batch.ground_and_offer",
+    "build_family_batch.infer",
+    "build_family_batch.reject",
+    "build_family_batch.semantic_descriptor_rejection",
+    "build_family_batch.visit",
+    "canonical",
+    "digest",
+    "fields",
+    "require"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "actual_execution_authorized": false,
+  "allowed_scalar_evidence": {
+    "bytes": 2030,
+    "path": "/private/tmp/gcts-head-gated-performance-source-20261017/allowed-phase-scalars-v1.json",
+    "sha256": "ba4dfdc8d2bf22fd8ced7d473df303a6333e37aa66433398d5a6f242160b472a"
+  },
+  "code_modified": false,
+  "implementation_authorized": false,
+  "note": {
+    "bytes": 13630,
+    "path": "/private/tmp/gcts-head-gated-performance-source-20261017/Source-phase-note-v1.json",
+    "sha256": "09f6adc5be5cd89f43a78398e6e5143db875cdd44b5bd066aa77e439ccdb74df"
+  },
+  "schema": "receptor-family-head-gated-performance-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

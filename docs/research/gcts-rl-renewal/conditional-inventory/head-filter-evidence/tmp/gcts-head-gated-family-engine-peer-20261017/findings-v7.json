@@ -1,0 +1,50 @@
+{
+  "blocking_findings": [],
+  "checks": [
+    {
+      "detail": "Whole current contract/API and both changed Source literals read; current metadata2 provider8 pins authenticated. Exact original17/input2 versus fresh Root22 map distinction retained.",
+      "id": "CURRENT-SOURCE-AND-CONTRACT",
+      "passed": true
+    },
+    {
+      "detail": "Exactly2 immediate constants; all53 named classes/functions/nested regions raw+AST exact to fully reviewed engine6. Combined18/full raw/AST inverse to original familyengine3 and all4 actual frozen text patches independently applied with-F0 exact.",
+      "id": "EXACT-ANCESTRY",
+      "passed": true
+    },
+    {
+      "detail": "Current reportV2 exact26/request6/header/flags/census checks unchanged, including UNKNOWN/nooffer. Entire literal nested head_gate request/receipt/outcome retained in full provider_report; fullpreimage census merges before unchanged barebatch7 goes to fresh d680. Engine neither interprets gate statuses nor promotes them to native/degree/EOF authority.",
+      "id": "FULL-REPORT-CONSUMER-BOUNDARY",
+      "passed": true
+    },
+    {
+      "detail": "Selected/excluded/provider/observed/degree/publiccursor removed-prefix ledger, COW state/snapshots/checkpoint/exact rollback and old origin retention remain raw+AST exact. Global scheduler, one primitive preference, full native checks/canonical fallback and independent current-cover keySET join unchanged.",
+      "id": "OWNERSHIP-MATH-CORE-UNCHANGED",
+      "passed": true
+    },
+    {
+      "detail": "Own provider/consumer/host/parent ancestry disclosed. Gate7595/provider8 distinct review, Root full22-source CodeSeal/once/native resource grant and actual saved closure remain separate; no model/cache/nativechannel5/bound/clock/semantic claim or historical runtime inheritance.",
+      "id": "INTEGRATION-CONDITIONS",
+      "passed": true
+    }
+  ],
+  "retained_whole_parent_review": {
+    "bytes": 2957,
+    "path": "/private/tmp/gcts-family-census-engine-peer-20261017/typed-Source-review-v6.json",
+    "sha256": "bd16effb5dc2a56c63fab7cdd8b68a757ad6e3195355066fceca635a8692d4e9"
+  },
+  "schema": "receptor-family-engine-independent-findings-v7",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92154,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+    "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+  },
+  "source_contract": {
+    "bytes": 12640,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-contract-v7.json",
+    "sha256": "dba45a064608275b17773e94722c5b2740b744329dd7265da66a2dd67f290132"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

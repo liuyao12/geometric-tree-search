@@ -1,0 +1,35 @@
+{
+  "Source_order_boundary": {
+    "AFTER_PROVIDER_after_provider_and_one_copy": true,
+    "AFTER_PROVIDER_before_hash_observerappend_and_return": true,
+    "callback_return_proved": false,
+    "helper": {
+      "bytes": 7899,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d"
+    },
+    "scientific_counts_or_state_inferred_from_marker": false
+  },
+  "basis": {
+    "bytes": 38712,
+    "path": "/private/tmp/gcts-head-gated-data-review-20261017/saved-head-gated-findings-v1.json",
+    "sha256": "0db5f53df4581e4f69d1d26c3e1bb7dc1c6909bafa07ad1fb5bd3f021b1955a4"
+  },
+  "discrepancies": [],
+  "new_actuals": 0,
+  "review_passed": true,
+  "schema": "ROOT-head-gated-summary-interpretation-concordance-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replay": false,
+  "scope_limits": [
+    "Prior inventory native cost is separately reported Root history; it was not reread or independently requalified here.",
+    "No active-frame/failure-cause/exclusive-stage-cost/returned-inference-offer claim follows from phase or all-null unwired scalar slots.",
+    "All literal joins are saved data; gate mathematics/native checks/engine search were not replayed."
+  ],
+  "summary": {
+    "bytes": 1079867,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT-head-filter-summary-v1.json",
+    "sha256": "3b599d61e20d7a752331bd64c628fb6e4ee34fbf8068838c6d2a0fca414ffe05"
+  }
+}

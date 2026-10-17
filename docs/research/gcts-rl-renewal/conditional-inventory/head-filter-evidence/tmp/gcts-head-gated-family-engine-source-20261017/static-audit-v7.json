@@ -1,0 +1,349 @@
+{
+  "actual_patch_evidence": {
+    "bytes": 2569,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/actual-patch-evidence-v7.json",
+    "sha256": "fc8abe3da1949bebe093133e11ae1afa7a0dcd49b9e35d6b5ce22e81e246e480"
+  },
+  "checks": [
+    {
+      "name": "immediate2 forward raw exact",
+      "pass": true
+    },
+    {
+      "name": "immediate2 inverse raw exact",
+      "pass": true
+    },
+    {
+      "name": "combined18 forward raw exact",
+      "pass": true
+    },
+    {
+      "name": "combined18 inverse raw exact",
+      "pass": true
+    },
+    {
+      "name": "compile without evaluation",
+      "pass": true
+    },
+    {
+      "name": "whole immediate inverse AST exact",
+      "pass": true
+    },
+    {
+      "name": "whole combined inverse AST exact",
+      "pass": true
+    },
+    {
+      "name": "all53 inherited named regions same names",
+      "pass": true
+    },
+    {
+      "name": "all53 inherited named regions raw exact",
+      "pass": true
+    },
+    {
+      "name": "all53 inherited named regions AST exact",
+      "pass": true
+    },
+    {
+      "name": "immediate actual forward patch exit0/raw exact",
+      "pass": true
+    },
+    {
+      "name": "immediate actual inverse patch exit0/raw exact",
+      "pass": true
+    },
+    {
+      "name": "combined actual forward patch exit0/raw exact",
+      "pass": true
+    },
+    {
+      "name": "combined actual inverse patch exit0/raw exact",
+      "pass": true
+    }
+  ],
+  "compile_without_evaluation": true,
+  "named_regions": [
+    {
+      "end_line": 33,
+      "line": 32,
+      "name": "Unresolved"
+    },
+    {
+      "end_line": 38,
+      "line": 36,
+      "name": "need"
+    },
+    {
+      "end_line": 43,
+      "line": 41,
+      "name": "canonical"
+    },
+    {
+      "end_line": 47,
+      "line": 46,
+      "name": "digest"
+    },
+    {
+      "end_line": 52,
+      "line": 50,
+      "name": "diagnostic_copy"
+    },
+    {
+      "end_line": 87,
+      "line": 55,
+      "name": "select_schedule"
+    },
+    {
+      "end_line": 180,
+      "line": 90,
+      "name": "validate_native_receipt"
+    },
+    {
+      "end_line": 206,
+      "line": 183,
+      "name": "certify_by_current_cover"
+    },
+    {
+      "end_line": 213,
+      "line": 209,
+      "name": "_Checkpoint"
+    },
+    {
+      "end_line": 213,
+      "line": 212,
+      "name": "_Checkpoint.__init__"
+    },
+    {
+      "end_line": 1521,
+      "line": 216,
+      "name": "LazyUnitRowEngine"
+    },
+    {
+      "end_line": 280,
+      "line": 217,
+      "name": "LazyUnitRowEngine.__init__"
+    },
+    {
+      "end_line": 285,
+      "line": 283,
+      "name": "LazyUnitRowEngine.branch_tie"
+    },
+    {
+      "end_line": 291,
+      "line": 287,
+      "name": "LazyUnitRowEngine._policy_snapshot"
+    },
+    {
+      "end_line": 294,
+      "line": 293,
+      "name": "LazyUnitRowEngine._copy"
+    },
+    {
+      "end_line": 307,
+      "line": 296,
+      "name": "LazyUnitRowEngine._reference_counts"
+    },
+    {
+      "end_line": 314,
+      "line": 309,
+      "name": "LazyUnitRowEngine._emit"
+    },
+    {
+      "end_line": 342,
+      "line": 316,
+      "name": "LazyUnitRowEngine._snapshot_value"
+    },
+    {
+      "end_line": 346,
+      "line": 344,
+      "name": "LazyUnitRowEngine.state_snapshot"
+    },
+    {
+      "end_line": 353,
+      "line": 348,
+      "name": "LazyUnitRowEngine.checkpoint"
+    },
+    {
+      "end_line": 362,
+      "line": 355,
+      "name": "LazyUnitRowEngine.rollback"
+    },
+    {
+      "end_line": 371,
+      "line": 364,
+      "name": "LazyUnitRowEngine._family_policy"
+    },
+    {
+      "end_line": 385,
+      "line": 373,
+      "name": "LazyUnitRowEngine._check_authority"
+    },
+    {
+      "end_line": 431,
+      "line": 387,
+      "name": "LazyUnitRowEngine._transfer_receipt"
+    },
+    {
+      "end_line": 442,
+      "line": 433,
+      "name": "LazyUnitRowEngine._has_archived_context"
+    },
+    {
+      "end_line": 467,
+      "line": 444,
+      "name": "LazyUnitRowEngine._archive_context"
+    },
+    {
+      "end_line": 545,
+      "line": 469,
+      "name": "LazyUnitRowEngine._install"
+    },
+    {
+      "end_line": 485,
+      "line": 480,
+      "name": "LazyUnitRowEngine._install.remember"
+    },
+    {
+      "end_line": 563,
+      "line": 547,
+      "name": "LazyUnitRowEngine._candidate"
+    },
+    {
+      "end_line": 591,
+      "line": 565,
+      "name": "LazyUnitRowEngine._candidate_from_decision_context"
+    },
+    {
+      "end_line": 617,
+      "line": 593,
+      "name": "LazyUnitRowEngine._observe"
+    },
+    {
+      "end_line": 642,
+      "line": 619,
+      "name": "LazyUnitRowEngine.place"
+    },
+    {
+      "end_line": 652,
+      "line": 644,
+      "name": "LazyUnitRowEngine._exclude_exhausted"
+    },
+    {
+      "end_line": 671,
+      "line": 654,
+      "name": "LazyUnitRowEngine._open"
+    },
+    {
+      "end_line": 708,
+      "line": 673,
+      "name": "LazyUnitRowEngine._advance"
+    },
+    {
+      "end_line": 762,
+      "line": 710,
+      "name": "LazyUnitRowEngine.next_alternative"
+    },
+    {
+      "end_line": 792,
+      "line": 764,
+      "name": "LazyUnitRowEngine._fallback_degree"
+    },
+    {
+      "end_line": 798,
+      "line": 794,
+      "name": "LazyUnitRowEngine._validate_receipt"
+    },
+    {
+      "end_line": 898,
+      "line": 800,
+      "name": "LazyUnitRowEngine.decision"
+    },
+    {
+      "end_line": 832,
+      "line": 818,
+      "name": "LazyUnitRowEngine.decision.current"
+    },
+    {
+      "end_line": 917,
+      "line": 900,
+      "name": "LazyUnitRowEngine._word"
+    },
+    {
+      "end_line": 977,
+      "line": 919,
+      "name": "LazyUnitRowEngine._checked_advice"
+    },
+    {
+      "end_line": 1074,
+      "line": 979,
+      "name": "LazyUnitRowEngine._select_branch"
+    },
+    {
+      "end_line": 1087,
+      "line": 1076,
+      "name": "LazyUnitRowEngine._adopt_branch"
+    },
+    {
+      "end_line": 1123,
+      "line": 1089,
+      "name": "LazyUnitRowEngine._join_prototype_census"
+    },
+    {
+      "end_line": 1129,
+      "line": 1125,
+      "name": "LazyUnitRowEngine._record_family_tile_census"
+    },
+    {
+      "end_line": 1177,
+      "line": 1131,
+      "name": "LazyUnitRowEngine._join_family_degree_census"
+    },
+    {
+      "end_line": 1224,
+      "line": 1179,
+      "name": "LazyUnitRowEngine._join_family_cursor_census"
+    },
+    {
+      "end_line": 1363,
+      "line": 1226,
+      "name": "LazyUnitRowEngine._consume_family"
+    },
+    {
+      "end_line": 1406,
+      "line": 1365,
+      "name": "LazyUnitRowEngine._select_family_branch"
+    },
+    {
+      "end_line": 1416,
+      "line": 1408,
+      "name": "LazyUnitRowEngine._adopt_family_branch"
+    },
+    {
+      "end_line": 1521,
+      "line": 1418,
+      "name": "LazyUnitRowEngine.search"
+    },
+    {
+      "end_line": 1486,
+      "line": 1424,
+      "name": "LazyUnitRowEngine.search.walk"
+    }
+  ],
+  "schema": "receptor-family-full-exposure-census-engine-static-audit-v7",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Two version constants only; no engine/provider/collector/checker or model function invoked; raw Source metadata only.",
+  "source": {
+    "bytes": 92154,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+    "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+  },
+  "source_delta": {
+    "bytes": 67462,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-delta-v7.json",
+    "sha256": "2f24ca817ec581665b4732b349e1dde0c6eb115726cbeae64780d0c3766becdd"
+  },
+  "source_evaluated": false,
+  "source_only": true
+}

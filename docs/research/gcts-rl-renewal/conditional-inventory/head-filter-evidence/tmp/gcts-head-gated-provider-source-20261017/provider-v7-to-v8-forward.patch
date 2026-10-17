@@ -1,0 +1,164 @@
+--- before
++++ after
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'receptor-family-observed-receptor-transfer-provider-v7'
++VERSION = 'receptor-family-observed-receptor-transfer-provider-v8-head-gated'
+ RESULT_SCHEMA = 'receptor-family-observed-receptor-transfer-provider-v2'
+ BATCH_SCHEMA = 'receptor-family-primitive-preference-batch-v1'
+ MINER_VERSION = 'receptor-family-primitive-DAG-miner-v3-interface-coupled-catalogue'
+@@ -17,6 +17,14 @@
+ RESIDUAL_POLICY_VERSION = 'receptor-family-residual-host-binding-prefix-v2-max-index-shells'
+ RESIDUAL_POLICY_SCHEMA = 'receptor-family-residual-host-binding-prefix-v1'
+ MEMBERSHIP_VERSION = 'shared-bounded-six-rule-language-v2'
++HEAD_GATE_VERSION = 'receptor-family-coarse-formula-head-plan-marks-v1'
++HEAD_GATE_SCHEMA = 'receptor-family-coarse-head-plan-check-v1'
++HEAD_GATE_PREFIX_SCHEMA = 'receptor-family-provider-plan-head-gate-prefix-v1'
++HEAD_GATE_FLAGS = {'advisory_cluster_plan_only': True, 'native_validation_required': True,
++    'native_state_modified': False, 'native_membership_accepted': False, 'point_union_accepted': False,
++    'base_candidate_pruning_accepted': False, 'degree_or_EOF_accepted': False,
++    'engine_activated': False, 'proof_accepted': False, 'universal_lemma_accepted': False,
++    'runtime_qualified': False, 'speedup_claimed': False}
+ INFERENCE_BINDING_POLICY = 'EMPTY_PROBE_THEN_THEORY_NAMES_MAX_INDEX_SHELLS_V2'
+ LITERAL_BINDING_POLICY = 'EXPLICIT_MINED_ORIGIN_ENVIRONMENT_V1'
+ CHECKER_VERSION = 'receptor-family-independent-expansion-checker-v1'
+@@ -382,8 +390,82 @@
+     return result
+ 
+ 
++def _check_plan_head_gate(*, descriptor, shape, assignment, plan, head_gate_module,
++                          gate_checks, accounting, work):
++    """A completed coarse conflict skips only this advisory physical plan."""
++    work.step()
++    row_assignment = {'schema': ROW_SCHEMA,
++        'node_rows': [[n['id'], assignment[('node', n['id'])]] for n in shape['nodes']],
++        'input_rows': [[pid, assignment[('input', pid)]] for pid in shape['inputs']]}
++    entry = {'plan_index': plan['plan_index'], 'record_index': plan['record_index'],
++        'output_port': plan['output_port'], 'request': None, 'receipt': None, 'outcome': 'PENDING'}
++    gate_checks.append(entry)
++    expected = {'descriptor': work.copy(descriptor), 'layout_shape': work.copy(shape),
++        'row_assignment': work.copy(row_assignment), 'limits': work.copy(head_gate_module.DEFAULT_LIMITS)}
++    entry['request'] = expected
++    accounting['head_gate_calls'] += 1
++    receipt = head_gate_module.check_plan_heads(descriptor=expected['descriptor'],
++        layout_shape=expected['layout_shape'], row_assignment=expected['row_assignment'], tick=work.step)
++    # Preserve every literal successful return even if the provider's subsequent
++    # charged copy/validation reaches its own limit. PENDING is never authority.
++    entry['receipt'] = receipt
++    accounting['head_gate_receipts_returned'] += 1
++    receipt = work.copy(receipt);entry['receipt'] = receipt
++    fields(receipt, ('schema','version','status','reason','scope','request','request_sha256',
++        'planning_channel','gate_completed','advisory_plan_rejected','requirements','known_marks',
++        'conflicts','unknown_requirement_indices','work','flags'), 'HEAD_GATE_PROTOCOL')
++    require(receipt['schema'] == HEAD_GATE_SCHEMA and receipt['version'] == HEAD_GATE_VERSION
++            and receipt['status'] in ('HEAD_CONFLICT','NO_KNOWN_HEAD_CONFLICT','UNKNOWN')
++            and receipt['scope'] == 'THIS_PHYSICAL_CLUSTER_PLAN_ONLY'
++            and type(receipt['planning_channel']) is int and receipt['planning_channel'] == 5,
++            'HEAD_GATE_PROTOCOL', 'exact fresh advisory gate protocol only')
++    require(type(receipt['flags']) is dict and set(receipt['flags']) == set(HEAD_GATE_FLAGS)
++            and all(receipt['flags'][k] is v for k, v in HEAD_GATE_FLAGS.items()),
++            'HEAD_GATE_PROTOCOL', 'no native or base-candidate authority')
++    fields(receipt['work'], ('steps','limits'), 'HEAD_GATE_PROTOCOL')
++    require(type(receipt['work']['steps']) is int and receipt['work']['steps'] >= 0
++            and canonical(receipt['work']['limits']) == canonical(expected['limits'])
++            and receipt['work']['steps'] <= expected['limits']['work'],
++            'HEAD_GATE_PROTOCOL', 'existing gate own bounds inside same provider/native work')
++    if receipt['request'] is not None:
++        require(canonical(receipt['request']) == canonical(expected),
++                'HEAD_GATE_PROTOCOL', 'whole descriptor/topology/physical rows/default limits join')
++    else:
++        require(receipt['status'] == 'UNKNOWN' and receipt['request_sha256'] is None,
++                'HEAD_GATE_PROTOCOL', 'early gate UNKNOWN is never a partial conflict')
++    if receipt['request_sha256'] is not None:
++        require(receipt['request'] is not None and receipt['request_sha256'] == ascii_digest(expected),
++                'HEAD_GATE_PROTOCOL', 'exact original ASCII gate request digest')
++    require(all(type(receipt[k]) is list for k in
++                ('requirements','known_marks','conflicts','unknown_requirement_indices')),
++            'HEAD_GATE_PROTOCOL', 'literal full planning receipt lists')
++    if receipt['status'] == 'UNKNOWN':
++        require(receipt['gate_completed'] is False and receipt['advisory_plan_rejected'] is False
++                and all(receipt[k] == [] for k in
++                    ('requirements','known_marks','conflicts','unknown_requirement_indices')),
++                'HEAD_GATE_PROTOCOL', 'no partial comparison or negative authority from UNKNOWN')
++        accounting['head_gate_unknown'] += 1
++    else:
++        conflict = receipt['status'] == 'HEAD_CONFLICT'
++        require(receipt['gate_completed'] is True and receipt['advisory_plan_rejected'] is conflict
++                and receipt['reason'] is None and receipt['request'] is not None
++                and receipt['request_sha256'] == ascii_digest(expected)
++                and bool(receipt['conflicts']) is conflict,
++                'HEAD_GATE_PROTOCOL', 'only complete exact current-plan conflict may skip')
++        if conflict:
++            accounting['head_gate_conflicting_plans'] += 1
++            entry['outcome'] = 'SKIP_THIS_PHYSICAL_PLAN'
++            return True
++        accounting['head_gate_no_known_conflict'] += 1
++        if receipt['unknown_requirement_indices']:
++            accounting['head_gate_absent_head_passes'] += 1
++    accounting['head_gate_downstream_assignments'] += 1
++    entry['outcome'] = 'PASS_TO_OBSERVED_MATCHING'
++    return False
++
++
+ def build_family_batch(*, language, base_semantics, marked_semantics, producer,
+-                       expansion_checker, host_adapter, membership_module, residual_policy,
++                       expansion_checker, host_adapter, membership_module, residual_policy, head_gate_module,
+                        mined, state, decision, tick, limits=None, matching_mode='VISIBLE_RECEPTOR'):
+     """Plan a common structural prefix, then infer or explicitly replay source env.
+ 
+@@ -397,7 +479,7 @@
+     policy = INFERENCE_BINDING_POLICY if matching_mode == 'VISIBLE_RECEPTOR' else LITERAL_BINDING_POLICY
+     instances, records, rejections, offers = [], [], [], []
+     names, seen_instances, family_names = {}, set(), {}
+-    plans, physical, record_allocations = [], [], []
++    plans, physical, record_allocations, gate_checks = [], [], [], []
+     allocated_record_count = record_trial_quota = 0
+     planning_complete, planning_reason = False, None
+     accounting = {'planned_assignments': 0, 'attempted_assignments': 0,
+@@ -405,7 +487,10 @@
+         'distinct_environment_attempts': 0, 'full_expansions': 0,
+         'checked_expansions': 0, 'preflight_checks': 0,
+         'native_member_exclusions': 0, 'native_adaptations': 0,
+-        'checked_instances': 0, 'duplicate_instances': 0, 'offered_instances': 0}
++        'checked_instances': 0, 'duplicate_instances': 0, 'offered_instances': 0,
++        'head_gate_calls': 0, 'head_gate_receipts_returned': 0, 'head_gate_conflicting_plans': 0,
++        'head_gate_no_known_conflict': 0, 'head_gate_unknown': 0,
++        'head_gate_absent_head_passes': 0, 'head_gate_downstream_assignments': 0}
+     input_raw = None
+     host = checked_state = original_state = binding = marking_id = branch_formula = None
+     reason = 'FINITE_OBSERVED_RECEPTOR_PREFIX_ENDED'
+@@ -430,7 +515,9 @@
+                 and host_adapter.VERSION == ADAPTER_VERSION
+                 and membership_module.VERSION == MEMBERSHIP_VERSION
+                 and type(language) is membership_module.BoundedLanguage
+-                and residual_policy.VERSION == RESIDUAL_POLICY_VERSION,
++                and residual_policy.VERSION == RESIDUAL_POLICY_VERSION
++                and head_gate_module.VERSION == HEAD_GATE_VERSION
++                and head_gate_module.SCHEMA == HEAD_GATE_SCHEMA,
+                 'API', 'exact explicit injected original and observed-inference protocols')
+         mined, state, decision = offered['mined'], offered['state'], offered['decision']
+         binding = work.copy(language.binding);marking_id = state['marking_id']
+@@ -609,6 +696,10 @@
+             plan, assignment, observation = item['plan'], item['assignment'], item['observation']
+             record, registry, origin, shape = item['record'], item['registry'], item['origin'], item['shape']
+             fid = record['family_id'];observed = plan['observed_receptors']
++            if _check_plan_head_gate(descriptor=record['descriptor'], shape=shape, assignment=assignment,
++                    plan=plan, head_gate_module=head_gate_module, gate_checks=gate_checks,
++                    accounting=accounting, work=work):
++                continue
+             attempt = {'plan_index': plan['plan_index'], 'observed_receptors': observed,
+                 'origin_binding_used_as_initializer': matching_mode == 'LITERAL_GROUND',
+                 'empty_probe': None, 'residual_binding_prefix': None, 'inference_prefixes': [],
+@@ -811,7 +902,9 @@
+                 'complete_within_declared_limits': planning_complete, 'bounded_reason': planning_reason,
+                 'allocated_record_count': allocated_record_count, 'row_trials_per_record': record_trial_quota,
+                 'unallocated_remainder': work.limits['row_trials'] - allocated_record_count * record_trial_quota,
+-                'record_allocations': record_allocations, 'plans': plans}, 'accounting': accounting,
++                'record_allocations': record_allocations, 'plans': plans,
++                'head_gate': {'schema': HEAD_GATE_PREFIX_SCHEMA, 'module_version': HEAD_GATE_VERSION,
++                    'checks': gate_checks}}, 'accounting': accounting,
+             'prototype_census': [[k, v] for k, v in sorted(names.items())],
+             'reason': reason, 'work': {'steps': work.steps, 'row_trials': work.trials,
+                 'limits': dict(work.limits), 'completed_instances': len(instances)},

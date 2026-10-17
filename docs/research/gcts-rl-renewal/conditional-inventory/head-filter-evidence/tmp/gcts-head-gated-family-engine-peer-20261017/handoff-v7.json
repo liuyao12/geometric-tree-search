@@ -1,0 +1,32 @@
+{
+  "findings": {
+    "bytes": 2755,
+    "path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/findings-v7.json",
+    "sha256": "5f009daa15325285cdb154d1e14d89a13a388cf530f49fb771b975798dee1a58"
+  },
+  "independent_raw_audit": {
+    "bytes": 4500,
+    "path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/independent-raw-AST-audit-v7.json",
+    "sha256": "97997c5d77b44600c064c70a0dcbc3643eb7ea435b57c2a634362c8fd6c72715"
+  },
+  "schema": "receptor-family-engine-independent-handoff-v7",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 92154,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+    "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+  },
+  "source_contract": {
+    "bytes": 12640,
+    "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-contract-v7.json",
+    "sha256": "dba45a064608275b17773e94722c5b2740b744329dd7265da66a2dd67f290132"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "typed_review": {
+    "bytes": 3351,
+    "path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/typed-Source-review-v7.json",
+    "sha256": "534357dc7df3e9a8aa04a514de83e02db6230ddbbb14088851b6bd2e1e7f95c5"
+  }
+}

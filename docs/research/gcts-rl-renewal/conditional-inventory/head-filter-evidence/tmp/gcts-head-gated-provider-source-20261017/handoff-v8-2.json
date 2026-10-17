@@ -1,0 +1,153 @@
+{
+  "API": {
+    "bytes": 11214,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/API-wire-v8-2.json",
+    "sha256": "7725721d47e1f2c2119e8a76133f402a5212dacc006b63a58db03d0a7c0f91b8"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "receptor-family-head-gated-provider-typed-Source-review-v8",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-head-gated-provider-Source",
+    "source": {
+      "bytes": 60912,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+    },
+    "source_contract": {
+      "bytes": 10511,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+      "sha256": "8390496834dffd80bbaf0397e788d8c0a9c5c52490173f0cc40c9c3dc49b404e"
+    },
+    "source_only": true,
+    "sources": {
+      "provider": {
+        "bytes": 60912,
+        "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+        "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_patches": {
+    "forward": {
+      "bytes": 11048,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-forward.patch",
+      "sha256": "8c4e3150dd506296a5325916ac91e87ce7df5833ae2b4926afd1e26e82b33327"
+    },
+    "full-inverse": {
+      "bytes": 11048,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/provider-v7-to-v8-full-inverse.patch",
+      "sha256": "eefdfc47f87ded995b4d2d49739664a204af5e06593fa8dccdee6022cdde5f70"
+    }
+  },
+  "gate_source": {
+    "bytes": 15276,
+    "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+    "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+  },
+  "head_gate_prefix": {
+    "each_check": [
+      "plan_index",
+      "record_index",
+      "output_port",
+      "request",
+      "receipt",
+      "outcome"
+    ],
+    "fields": [
+      "schema",
+      "module_version",
+      "checks"
+    ],
+    "outcomes": [
+      "PENDING",
+      "SKIP_THIS_PHYSICAL_PLAN",
+      "PASS_TO_OBSERVED_MATCHING"
+    ],
+    "path": "report.physical_assignment_plan.head_gate",
+    "schema": "receptor-family-provider-plan-head-gate-prefix-v1"
+  },
+  "metadata_revision": 2,
+  "preserved_metadata_revision1": {
+    "bytes": 4916,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/handoff-v8.json",
+    "sha256": "62bb7ea64d2920236e7becfc2aaf19522d6f809946126bdb37db9da63d99d0d6"
+  },
+  "provider_VERSION": "receptor-family-observed-receptor-transfer-provider-v8-head-gated",
+  "report_fields": [
+    "schema",
+    "version",
+    "matching_mode",
+    "binding_policy",
+    "batch",
+    "request",
+    "binding",
+    "marking_id",
+    "state_sha256",
+    "decision",
+    "producer_implementation_version",
+    "residual_policy_version",
+    "host",
+    "original_state",
+    "checked_state",
+    "branch_output_receptor",
+    "records",
+    "row_rejections",
+    "offers",
+    "physical_assignment_plan",
+    "accounting",
+    "prototype_census",
+    "reason",
+    "work",
+    "scope",
+    "flags"
+  ],
+  "report_schema": "receptor-family-observed-receptor-transfer-provider-v2",
+  "request_fields": [
+    "mined",
+    "state",
+    "decision",
+    "matching_mode",
+    "binding_policy",
+    "limits"
+  ],
+  "required_kwarg": "head_gate_module",
+  "schema": "receptor-family-head-gated-provider-handoff-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 60912,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+    "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+  },
+  "source_contract": {
+    "bytes": 10511,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+    "sha256": "8390496834dffd80bbaf0397e788d8c0a9c5c52490173f0cc40c9c3dc49b404e"
+  },
+  "source_delta": {
+    "bytes": 93149,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-delta-v8.json",
+    "sha256": "067e6912f39aee6512eab901f466b29e61d65a4c9fd108a3055c4302c759a03a"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 2036,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/static-audit-v8.json",
+    "sha256": "adccbd910125fb1880cb0a161c58c84075e5a8417250c0be20c140984dc454c9"
+  },
+  "whole_v3_patches": {
+    "forward": {
+      "bytes": 61455,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-forward.patch",
+      "sha256": "180771e16bf53ade6ea3b10a54175b0b89999ed403f57066a234f0a4036385dd"
+    },
+    "full-inverse": {
+      "bytes": 61415,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/parent-v3-to-head-gated-v8-full-inverse.patch",
+      "sha256": "390b1a760cfcd3e7c22c4b927b3995628d923591ae94a37688292b4bf6ca5a9c"
+    }
+  }
+}

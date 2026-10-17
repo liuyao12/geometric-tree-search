@@ -1,0 +1,14 @@
+--- source.py
++++ source.py
+@@ -7,9 +7,9 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'lazy-unit-row-global-engine-v13-receptor-family-preferences-v7-full-exposure-census-provider8-head-gated'
++VERSION = 'lazy-unit-row-global-engine-v13-receptor-family-preferences-v6-full-exposure-census-provider7'
+ FAMILY_PROVIDER_SCHEMA = 'receptor-family-observed-receptor-transfer-provider-v2'
+-FAMILY_PROVIDER_VERSION = 'receptor-family-observed-receptor-transfer-provider-v8-head-gated'
++FAMILY_PROVIDER_VERSION = 'receptor-family-observed-receptor-transfer-provider-v7'
+ OBSERVED_PRODUCER_IMPLEMENTATION = 'receptor-family-observed-subset-inference-v2'
+ CURSOR_CENSUS_IMPLEMENTATION = 'unit-row-channel4-point-adapter-public-prefix-census-v5'
+ VARIANT = 'GLOBAL-DEAD-FORCED-EARLIEST-GENERATION-ROW-TIE-SUPPORT-RETENTION-ROUTED-NONIMP-EVIDENCE'

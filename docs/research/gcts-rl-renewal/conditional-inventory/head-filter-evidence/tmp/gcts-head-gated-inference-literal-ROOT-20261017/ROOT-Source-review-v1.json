@@ -1,0 +1,149 @@
+{
+  "author_identity": "/root",
+  "blockers": [],
+  "findings": [],
+  "raw_audit": {
+    "bytes": 16383,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+    "sha256": "fec6a0f0e35d51238dd263db3d7da89617af208f03085af09d6c937e135caba9"
+  },
+  "review_type": "Whole current composition and exact successor raw/AST seam review; component peers separately joined",
+  "reviewed_source": [
+    "Original semantic Source17/input2/epoch/theory/emptyGamma/full24rows/B12N44/target/frozenmarking unchanged; current22executable/10inputs is separate implementation metadata.",
+    "Caller ownVERSION/FIXED only; every named function raw/AST identical to prior370c. Helper ownVERSION/explicit head_gate_module injection only. Reader currentcontract/responseVERSION only. Whole inverse/forward AST and actualpatch directions exact; native once/meter/runtime/20/512/500reserve/55/60/90+1/CodeSeal/strictclosure untouched.",
+    "Gate7595/conditionalpeer7094 uses descriptor-only invariant heads, never sourceground FORMULA value or occupiedfact. Unknown heads remain absent; unknown/capped/nested unsupported checks pass through. No deep/native/proof admission from matching heads. Completed conflict rejects only current advisory layout.",
+    "Provider successor applies gate after identical common full structural plan materialization and attempt accounting before binding, both matching modes. Literal receipt/fullrequest retained for every reached plan including UNKNOWN; callback/guard/errors propagate. Gate cost charged to existing1m allowance. Full preflight/source/current membership/4358/4bd6/census remain mandatory.",
+    "Current engine successor changes own/provider VERSION metadata only; all53 named regions raw/AST unchanged, full provider report/census retained through fresh consumer/primitive selection. No domains, degrees, scheduler, fallback, legal-placement checks or rollback changed.",
+    "Same reused frozen qualified open inventory,2records/32trialquota each/30plans, same provider caps/node2/event256 and assigned-output tie within earliest generation; real engine reaches its own BRANCH. No fabricated receiver, premisefact, supplied proof, source route or target change.",
+    "An offer is conditional native point data, not a completed theorem or useful search continuation. Reader is full saved wire/native resource reconciliation only. Capped/UNKNOWN prefixes never supply learned negatives or original impossibility. No trainedRL/GCTSgain/fullconformance/universalpalette claim."
+  ],
+  "reviewer_identity": "/root",
+  "schema": "ROOT-receiver-inference-probe-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-receiver-inference-probe-Source",
+  "source": {
+    "bytes": 57736,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py",
+    "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9"
+  },
+  "source_contract": {
+    "bytes": 19869,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_router": {
+      "bytes": 12779,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    },
+    "expansion_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "family_consumer": {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    },
+    "family_engine": {
+      "bytes": 92154,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+    },
+    "head_gate": {
+      "bytes": 15276,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "intake": {
+      "bytes": 57736,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 31038,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    },
+    "marked_aware_checker": {
+      "bytes": 25783,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+    },
+    "marked_aware_proposer": {
+      "bytes": 14064,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "producer": {
+      "bytes": 60281,
+      "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "receiver_cases": {
+      "bytes": 7899,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d"
+    },
+    "receiver_provider": {
+      "bytes": 60912,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+    },
+    "residual_policy": {
+      "bytes": 12826,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+      "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479"
+    }
+  }
+}

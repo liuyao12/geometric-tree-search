@@ -1,0 +1,121 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_execution_authorized": false,
+  "actual_or_result_bytes_read": false,
+  "all10_other_named_regions_raw_AST_exact": true,
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored gate7595, observed producerfd3e, residual2925 and older kernel/engine/miner/provider ancestry. Root authored this caller/helper/reader integration. Controls authored provider8/consumer/host adapter; Diagnosis authored engine7 and independent4358/9fd/8f. This genuine review concerns Root composition and exact delegated Source bindings; it is not independent peer review of own gate/producer/residual. Gate7094/provider52196/engine534357 distinct current Source peers are separately bound; shared wire/native ancestry is disclosed.",
+  "blocking_findings": [],
+  "complete_GCTS_model_accepted": false,
+  "conditions": [
+    "Only exact new current22/inputs10 Root plan/grant/contract/nativefiles after Root actual; same original17/input2.",
+    "Byte/native completeness retains full new nested gate evidence; no gate/semantic/model replay or automatic offer/usefulness qualification.",
+    "All native/wire/session/caps/strict positive20/failure55 gates unchanged; no actual or saved data examined during review."
+  ],
+  "current_operative_contract": {
+    "bytes": 19869,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe"
+  },
+  "declared_scope": "Saved complete bytes, original once/native terminal/wire and resource reconciliation only. No scientific imports, replay, semantic proof or target/transfer acceptance.",
+  "disposition": "CONDITIONAL_SOURCE_PASS",
+  "findings": {
+    "bytes": 17523,
+    "path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/findings-v1.json",
+    "sha256": "7cb7eac0d00c74853b8980b02236cc0c8296cb48f8973b04be374a75a6cab4c6"
+  },
+  "full_2raw_AST_inverse_and_all4_author_peer_actual_patch_directions_exact": true,
+  "independent_static_audit": {
+    "bytes": 33740,
+    "path": "/private/tmp/gcts-head-gated-ROOT-peer-20261017/independent-static-audit-v1.json",
+    "sha256": "ef2b81a25f308f313ce291eec63a8a3dc74b997870187f50bf0caa4aa1c383ac"
+  },
+  "proof_accepted": false,
+  "reviewed_source_contracts": [
+    {
+      "bytes": 19869,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe"
+    },
+    {
+      "bytes": 1035,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "179b8ad38d354a1d863d0868b710f57c366d219b3215a6193b48faeae01235fc"
+    },
+    {
+      "bytes": 10511,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+      "sha256": "8390496834dffd80bbaf0397e788d8c0a9c5c52490173f0cc40c9c3dc49b404e"
+    },
+    {
+      "bytes": 12640,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/Source-contract-v7.json",
+      "sha256": "dba45a064608275b17773e94722c5b2740b744329dd7265da66a2dd67f290132"
+    },
+    {
+      "bytes": 6196,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/Source-contract-v1.json",
+      "sha256": "e3e8105434dab1b06f3ff7673f00d2627c9f27b3df9584428f99f49212fc1d80"
+    },
+    {
+      "bytes": 18134,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/Source-contract-v2.json",
+      "sha256": "fe318fd43d3cc2ca4761b831ef012f7a4a47f948ec910f1df3059dc0a8d65a90"
+    },
+    {
+      "bytes": 1050,
+      "path": "/private/tmp/gcts-receiver-inference-ROOT-source-20261017/reader-Source-contract-v2.json",
+      "sha256": "7331d22bed6ee11660b538f84d808f57c1dc1201b93cc513897a197180f12e1d"
+    }
+  ],
+  "reviewer_distinct_from_author": true,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_qualified": false,
+  "saved_data_replayed": false,
+  "schema": "ROOT-receiver-inference-saved-reader-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-receiver-inference-saved-reader-Source",
+  "separate_current_dependency_peers": {
+    "engine": {
+      "bytes": 3351,
+      "path": "/private/tmp/gcts-head-gated-family-engine-peer-20261017/typed-Source-review-v7.json",
+      "sha256": "534357dc7df3e9a8aa04a514de83e02db6230ddbbb14088851b6bd2e1e7f95c5"
+    },
+    "gate": {
+      "bytes": 3745,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "7094f6df12ed9150102ee2a6adc1f9f016f2c0c460e2750fd7fd9b1ad86fa1fd"
+    },
+    "provider": {
+      "bytes": 4558,
+      "path": "/private/tmp/gcts-head-gated-provider-peer-20261017/typed-Source-review-v8.json",
+      "sha256": "52196db9a7c1adcd2df9739110a00770eb590624d4f488a9b526fa4a8fa9e0f2"
+    }
+  },
+  "source": {
+    "bytes": 21797,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py",
+    "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9"
+  },
+  "source_contract": {
+    "bytes": 1035,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "179b8ad38d354a1d863d0868b710f57c366d219b3215a6193b48faeae01235fc"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "saved_reader": {
+      "bytes": 21797,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9"
+    }
+  },
+  "tests_executed": false,
+  "useful_transfer_accepted": false,
+  "whole_current_reader_and_parent_Source_reviewed": true,
+  "whole_engine_qualified": false
+}

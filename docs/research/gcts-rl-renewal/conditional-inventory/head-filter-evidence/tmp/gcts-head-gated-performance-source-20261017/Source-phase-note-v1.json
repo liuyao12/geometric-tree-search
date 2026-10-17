@@ -1,0 +1,166 @@
+{
+  "actual_execution_authorized": false,
+  "allowed_scalar_evidence": {
+    "bytes": 2030,
+    "path": "/private/tmp/gcts-head-gated-performance-source-20261017/allowed-phase-scalars-v1.json",
+    "sha256": "ba4dfdc8d2bf22fd8ced7d473df303a6333e37aa66433398d5a6f242160b472a"
+  },
+  "authorship_and_limits": "Author owns census engine7 and prior checker/point/diagnostic ancestry, distinctly reviewed provider8/gate7595; Root authored current case/cold wrappers. This is Source/scalar reasoning, no semantic replay or performance attribution. Only the explicitly allowed disposition phase/scalar metadata and pinned current Source were read; no actual provider/result/proofword/donor data or dependent actual files were opened.",
+  "code_modified": false,
+  "concrete_Source_boundaries": [
+    {
+      "finding": "AFTER_PROVIDER is emitted after the provider delegate AND a full point.tree copy of its return, before envelope equality, SHA of the entire report, observation append and actual callback return. It is not an engine acknowledgement of the report.",
+      "lines": [
+        84,
+        109
+      ],
+      "source": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py"
+    },
+    {
+      "finding": "The pair is first-call-only via provider_started. The unmarked tail can include a later provider invocation. Engine maximum_nodes2 permits a second node BRANCH/provider call before the next walk checks the node ceiling. This is a reachable Source path, not evidence that it happened.",
+      "lines": [
+        86,
+        102
+      ],
+      "source": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py"
+    },
+    {
+      "finding": "The four latest_observations slots are only initialized and passed to the failure writer; these actual case callbacks never receive or update them. Their null values are uninformative by construction, not evidence of no degree/fallback/consumer work.",
+      "lines": [
+        560,
+        603,
+        631
+      ],
+      "source": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py"
+    },
+    {
+      "finding": "AFTER_ENGINE follows search(), a fresh engine state_snapshot(), exact before/after/restoration checks and frozen-pool identity checks. Missing it does not establish that search() failed to return.",
+      "lines": [
+        131,
+        138
+      ],
+      "source": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py"
+    },
+    {
+      "finding": "The retained invoke post-boundary/CodeSeal guard follows the whole case return. It is a separate later closure cost; current missing AFTER_ENGINE cannot identify this guard as the failure site.",
+      "lines": [
+        107,
+        135,
+        449,
+        470,
+        620,
+        644
+      ],
+      "source": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py"
+    }
+  ],
+  "hypotheses_and_discriminators": [
+    "Provider DELEGATE_RETURN but no CALLBACK_READY localizes an unfinished wrapper copy/hash/log group, not a CPU profile or exact frame.",
+    "Provider CALLBACK_READY but no CONSUMER_ENTER narrows the next observed gap to engine report copy/protocol/census/request preparation, while a later provider ordinal would independently reveal recurrence.",
+    "CONSUMER_ENTER but no DELEGATE_RETURN distinguishes the delegate group from wrapper observation work; no returned status may be inferred.",
+    "CONSUMER_CALLBACK_READY with no next provider/SEARCH_RETURN leaves engine acceptance/adoption/fallback/place/child queries/unwind/result work open. Latest callback scalars help choose the next narrow seam without asserting moves.",
+    "SEARCH_RETURN_OBSERVED followed by missing POSTSEARCH_SNAPSHOT_READY or AFTER_ENGINE separates existing result/snapshot/final checks. A returned search result remains unqualified until the full unchanged Root output/native closure.",
+    "Standard whole-run cProfile would add per-call cost under the strict20 window; fixed charged groups and literal summaries are the lower-intrusion first choice. No profiling or diagnostic execution is authorized here."
+  ],
+  "implementation_authorized": false,
+  "minimal_prospective_diagnostic": {
+    "clock_and_cost": "Only original direct Root main.tick return is the native reading; do not sample nested callbacks that return None, add a clock or reset a timer. Preserve captured endpoint/function/code/default/builtin-write identities. Validate exact non-bool signed64 ns; charge all sampling/partial writes/checks within original20, pre/post guarded. Elapsed stage intervals include checks/copies/IO and cannot attribute exclusive method time.",
+    "failure_only_optional_full_report": "If full report recovery is needed, keep its fresh returned reference without an extra positive-window deep copy/hash. A separately reviewed explicit failure-kind branch of the existing captured builtin-only55 writer may serialize the exact literal object under fixed byte/depth/node bounds, hash/parse the same retained buffer and produce the existing complete two-file completion join. Over-limit or partial data stays explicitly omitted/incomplete; no truncated report is promoted. No original20 tick, project function, CodeSeal replay, semantic checker or late model call is allowed after timeout. Failure-only work never rehabilitates the positive20 window.",
+    "finite_wire": "Use the existing captured native phase tick/write implementation with a reviewed fixed whitelist: literal stage names may encode ordinal1/2, or a strict ordinal field may be declared. At most14 new complete stage lines in this exact2-node probe; no unbounded history. Keep a conservative4KiB new-wire ceiling and compute exact line/total bounds when the successor freezes. Source-dependent conditional ordered subsequences, complete ASCII decimal grammar and partial-final-line rules must be explicit. Never stop the algorithm because a diagnostic cap was reached.",
+    "fixed_group_sites": [
+      "For provider invocation ordinals1..2: ENTER before current supplied/input copies, DELEGATE_RETURN immediately after build_family_batch before wrapper copy, CALLBACK_READY after current hash/log immediately before return.",
+      "For consumer invocation ordinals1..2: ENTER before consume_preferences, DELEGATE_RETURN before current receipt hash/log, CALLBACK_READY immediately before return.",
+      "Once: SEARCH_RETURN_OBSERVED immediately after actual search() returns; POSTSEARCH_SNAPSHOT_READY after the existing state_snapshot. Existing AFTER_ENGINE then fences the current unchanged restoration/pool checks."
+    ],
+    "last_query_scalar": "If callback context is also wanted, use a fixed Root-owned latest-entry tuple at existing degree/fallback/completion callbacks with role/phase/native_ns/row/diagnostic ordinal, using an existing direct entry tick where available. No extra snapshot/engine/model call, frame inspection or unbounded log. It reports last observed callback entry/return only, not an active frame, completed move or rollback. Wire this capture explicitly; the current unused slots do not supply it.",
+    "returned_provider_scalar": "At each actual successful delegate return, retain a strong literal result reference and/or copy a fixed typed scalar summary: invocation ordinal, actual batch status and literal instances length, exact report work/plan accounting and seven head-gate counters. Read only fields from that returned object, never reconstruct missing counts. Store at most2 slots, never overwrite a prior complete return with a partial current attempt. The future failure writer emits only observed values with provenance to the current invocation/context, all acceptance false; counters are not qualified scientific cases or evidence of a valid offer.",
+    "scope": "Root-owned changed diagnostic Source only, no implementation/grant here. Preserve every scientific compound/assertion and erasure inverse; original17/input2 epoch/theory/marks/model/universe/scheduler/fallback/census/rollback and native20/512/failure55/owned60/caller90+1 unchanged."
+  },
+  "observed_only": {
+    "failure": "Current record is UNKNOWN with only valid failure diagnostics: native launch-to-postprobe20.203157s, aggregate94683136B, all reaped; positive resource and complete receiver/wire qualification are false. Full provider report/counters/batch/consumer receipt are absent.",
+    "group_intervals": "BEFORE_ENGINE to BEFORE_PROVIDER is5.859583s; BEFORE_PROVIDER to AFTER_PROVIDER is1.017211s. These are elapsed between direct native readings, including copy/check/log/marker work in the bracket. They are not exclusive engine or provider timers. No AFTER_ENGINE reading exists; do not subtract an invented endpoint or turn the external20.203157s span into a method duration.",
+    "no_inference": "No offer, status/count, selected family, primitive move, child decision, restoration, exhaustion, active timeout frame, provider bottleneck or speed/gain is established by these observations."
+  },
+  "reachable_post_first_provider_groups_not_diagnosed": [
+    {
+      "group": "Wrapper return and engine report intake",
+      "lines": [
+        293,
+        295,
+        1226,
+        1286
+      ],
+      "source": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "work": "Case report hash/log, engine recursive full wrapper copy, full report/current request/header/batch equality and original+decorated census merge, then bare request/current state copies. All occur before consumer entry. No offer is required for this path."
+    },
+    {
+      "group": "Fresh consumer and wrapper observations",
+      "lines": [
+        44,
+        191
+      ],
+      "source": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "work": "Whole current state/request copy and independent point reconstruction; if READY, fresh adaptation of every offered instance before choosing; UNKNOWN still performs entry/finish guards. Wrapper then hashes/logs receipt. READY/adaptation is conditional, not observed."
+    },
+    {
+      "group": "Engine consumer acceptance and branch preparation",
+      "lines": [
+        1287,
+        1419
+      ],
+      "source": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "work": "Full receipt copy/header/context check, current exposure census, optional selected candidate rebuild, full wrapper construction, family selection or unchanged canonical fallback."
+    },
+    {
+      "group": "Adoption/event/place/child",
+      "lines": [
+        1421,
+        1472
+      ],
+      "source": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "work": "Even CANONICAL_FALLBACK branch plans carry their full checked provider report into FAMILY_PREFERENCE event serialization. Thereafter ordinary placement/transition, child global decision, possibly another provider/continuation, and native queries may occur. A large report may be copied/serialized repeatedly even with no offer; this is a Source cost hypothesis, not a measured cause."
+    },
+    {
+      "group": "Search unwind/result and post-search closure",
+      "lines": [
+        1473,
+        1521
+      ],
+      "source": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "work": "Owned child/root rollback, literal snapshot equality, copying returned events/reports; case snapshot/pool comparisons follow. These can still consume the remaining positive window and are not all covered by callback role observations."
+    }
+  ],
+  "recommendation": "Do not optimize or retry unchanged from this broad interval. A separately reviewed diagnostic successor should mark the bounded provider/consumer invocation groups, search-return/post-search checks, and retain only a small actual returned-provider scalar prefix on failure. Keep all original math/guards/limits and once ownership. Full literal-report failure retention is optional, bounded and non-authoritative; it is not needed for the first discriminating stage protocol.",
+  "schema": "receptor-family-head-gated-performance-Source-phase-note-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true,
+  "source_refs": {
+    "cold_intake": {
+      "bytes": 57736,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9"
+    },
+    "consumer": {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    },
+    "engine7": {
+      "bytes": 92154,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+    },
+    "provider8": {
+      "bytes": 60912,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+    },
+    "receiver_case": {
+      "bytes": 7899,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d"
+    }
+  }
+}

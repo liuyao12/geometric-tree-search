@@ -1,0 +1,21 @@
+--- a/source.py
++++ b/source.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'ROOT-receiver-inference-cases-v1'
++VERSION='ROOT-receiver-inference-cases-v2-head-gated'
+ RESULT_SCHEMA = 'ROOT-receiver-inference-evidence-v1'
+ BRANCH_TIE = 'ASSIGNED-OUTPUT-THEN-ROW'
+ MAXIMUM_NODES = 2
+@@ -93,7 +93,8 @@
+             language=language, base_semantics=base_semantics, marked_semantics=point,
+             producer=modules['producer'], expansion_checker=modules['expansion_checker'],
+             host_adapter=modules['host_adapter'], membership_module=modules['membership'],
+-            residual_policy=modules['residual_policy'], mined=copy(mined),
++            residual_policy=modules['residual_policy'], head_gate_module=modules['head_gate'],
++            mined=copy(mined),
+             state=copy(state), decision=copy(decision), matching_mode=matching_mode,
+             limits=dict(PROVIDER_LIMITS), tick=tick)
+         value = copy(value)

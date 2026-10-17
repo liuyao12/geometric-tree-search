@@ -1,0 +1,33 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 8992,
+    "path": "/private/tmp/gcts-head-gated-provider-peer-20261017/findings-v8.json",
+    "sha256": "c07e4aae4ba44ce04ebfba1506587722b832c18e14d2f4bd47ecb120baa8dcf3"
+  },
+  "pass": true,
+  "review": {
+    "bytes": 4558,
+    "path": "/private/tmp/gcts-head-gated-provider-peer-20261017/typed-Source-review-v8.json",
+    "sha256": "52196db9a7c1adcd2df9739110a00770eb590624d4f488a9b526fa4a8fa9e0f2"
+  },
+  "schema": "receptor-family-head-gated-provider-independent-handoff-v8",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 60912,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+    "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+  },
+  "source_contract": {
+    "bytes": 10511,
+    "path": "/private/tmp/gcts-head-gated-provider-source-20261017/Source-contract-v8-2.json",
+    "sha256": "8390496834dffd80bbaf0397e788d8c0a9c5c52490173f0cc40c9c3dc49b404e"
+  },
+  "source_only": true,
+  "static_review": {
+    "bytes": 12187,
+    "path": "/private/tmp/gcts-head-gated-provider-peer-20261017/static-review-v8.json",
+    "sha256": "ee5e61819ca5c559195fd0f3cb28cef23b5aa92185ce69cb1c39442303509ce0"
+  }
+}

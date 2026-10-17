@@ -1,0 +1,80 @@
+{
+  "all_four_applications_raw_exact": true,
+  "commands": [
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-patch-copy.py",
+        "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.forward.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-patch-copy.py",
+        "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.inverse.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-patch-copy.py",
+        "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.forward.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-patch-copy.py",
+        "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.inverse.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "copies_evaluated": false,
+  "patches": {
+    "combined_forward": {
+      "bytes": 23377,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.forward.patch",
+      "sha256": "79c01416dbfd70834f5f35d9ec8f1bf3082ef6e94305290bb6f866adb62a3cdc"
+    },
+    "combined_inverse": {
+      "bytes": 23377,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/combined-v7.inverse.patch",
+      "sha256": "3801443e54d97ea92069b34e30bcad72daed38519e1ff2290f96f0f48fab00eb"
+    },
+    "immediate_forward": {
+      "bytes": 836,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.forward.patch",
+      "sha256": "5327d100d6f99f2d7747d181df639a54d90eadea84f2c7f646939b09892fac08"
+    },
+    "immediate_inverse": {
+      "bytes": 836,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/immediate-v7.inverse.patch",
+      "sha256": "dae2762ce82fc6ce7a6d0ea81b80d811d67cb0c96e3306c78c62848540da6cd8"
+    }
+  },
+  "schema": "receptor-family-full-exposure-census-engine-actual-Source-patch-v7",
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true
+}
