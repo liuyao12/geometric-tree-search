@@ -1,0 +1,232 @@
+{
+  "Root_disposition": {
+    "bytes": 18027,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-ROOT-source-20261013/ROOT-actual-first-checked-geometry-proofs-v1.json",
+    "sha256": "a751d1806904489160b1b286aa2fedb10ba55044546db15b7dc196a7197e6513"
+  },
+  "actual_replays": 0,
+  "aggregate": {
+    "actual_once_only_trials": 4,
+    "all_initial_family_inventories_empty": true,
+    "checked_logical_derivations": 3,
+    "completed_unselected_source_proposals": 2,
+    "distinct_original_sequents": 2,
+    "preserved_UNKNOWN": 1,
+    "resource_accepted_trials": 4,
+    "restarts": 0,
+    "selected_derivations": 1,
+    "supplied_proof_sequences": false,
+    "terminal_exit0_trials": 4
+  },
+  "authorship": "Own arithmetic adapter/consumer and earlier compatibility note disclosed; saved interpretation only, not independent semantic replay.",
+  "contexts": [
+    {
+      "id": "fresh-inc-point-chain-w",
+      "ordered_hypothesis_occurrences": 3,
+      "qualified_context": {
+        "bytes": 10586,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/qualified-context-v1.json",
+        "sha256": "3cbd8b500eb73a412af010ad5f09e6b54d525a63bc2e4849806627b743f76c56"
+      },
+      "rows": 24,
+      "scope": "Exact original declared closed sequent; unsorted elementary equality transport, not new Hilbert geometry theorem or implicit sorts.",
+      "statement_latex": "\\(A=B,\\;B=C,\\;\\operatorname{Incident}(A,w)\\;\\vdash\\;\\operatorname{Incident}(C,w)\\)"
+    },
+    {
+      "id": "fresh-inc-reversed-line-chain",
+      "ordered_hypothesis_occurrences": 3,
+      "qualified_context": {
+        "bytes": 10652,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/qualified-context-v1.json",
+        "sha256": "47690792ccabca60caaf2e54409ca30d9d5dfeb51b33bad0664139fa5a2e60ef"
+      },
+      "rows": 24,
+      "scope": "Exact original declared closed sequent; unsorted elementary equality transport, not new Hilbert geometry theorem or implicit sorts.",
+      "statement_latex": "\\(v=u,\\;w=v,\\;\\operatorname{Incident}(D,w)\\;\\vdash\\;\\operatorname{Incident}(D,u)\\)"
+    }
+  ],
+  "correction": "The old static UNSEARCHED snapshot is superseded. Four once-only trials are terminal; Root accepted three scoped logical derivations across the two original sequents. The missing current milestone is shared-family/production engine qualification, not first logical derivation of these calibration cases.",
+  "detailed_raw_reference_audit": {
+    "bytes": 23474,
+    "path": "/private/tmp/gcts-hilbert-fresh-status-reconciliation-20261017/fresh-hilbert-status-v1.json",
+    "sha256": "dbf6f06680bba2085c490b4432c3bc18cf7256b7250232dae962c61af1f00fd0"
+  },
+  "live_handle_check": "All four exact saved actuals have exit0 terminal observations and workers/observers reaped. Historical canonical reversed-line session80566 is followed by a terminal exit0 observation in its sealed same-session record; it is not an outstanding handle. No stale handle polled or actual restarted. No claim about unlisted later attempts or a global process inventory.",
+  "metadata_verification": "Verified Root seal equals published qualification bytes;16 targeted archived metadata members match manifest hashes, with resource\u2192terminal\u2192owner/q joins; certificate export hashes match saved publication manifest and historical HTTP200 verification. No certificate/result/route contents opened, no scientific code evaluated.",
+  "new_actuals": 0,
+  "next_step": {
+    "existing_executable_control": "If Root wants a conventional comparator, prepare a fresh reviewed NativeClosure plan against these exact qualified catalogues/Gamma/targets, with no saved proof input. It remains logical-only; do not compare its historical logical/cold windows to a different GCTS/fullboard endpoint or call the repeat new theorem discovery. No new limits/grant here.",
+    "qualification_needed": "Production current-domain/census/guards/global priority/rollback evidence remains separate from45 synthetic controls and three logical patches; full cost and endpoint must be matched before benefit claims.",
+    "substantive_gap": "Build/review the Hilbert-specific admitted-catalogue host/native point adapter and shared family consumer seam. Existing arithmetic4bd6 is not that adapter. Then a newly declared family experiment may automatically collect connected all-port fragments from its own fresh search state and validate an actual receiver/primitive preference, retaining complete fallback/global scheduler. Exported proofs below are inspection artifacts, never supplied donor routes."
+  },
+  "preservation": "Original notes/Sources/actuals unchanged; own dataless Source read11000 reaped130. Root remains sole future actual owner.",
+  "prior_note": {
+    "bytes": 22365,
+    "path": "/private/tmp/gcts-hilbert-fresh-qualification-plan-20261017/fresh-hilbert-compatibility-plan-v1.json",
+    "sha256": "1ba1c0d0db88f3afec594a50d461893b0e78bdaf903b6da58e38f51c55749521"
+  },
+  "published_links": {
+    "Root_qualification": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/fresh-proofs/qualification.json",
+    "link_authority": {
+      "bytes": 14520,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-report-source-20261013/ROOT-notebook155-live-byte-verification-v1.json",
+      "sha256": "4408f6847e2a6b3cc1874a5de8536fdfd751c34c5de4e37eb1e14d00f6bab5e2"
+    },
+    "notebook155": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/index.html#fresh-proofs",
+    "reader": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/fresh-proofs/reader.html?v=n155#proof-reader",
+    "status": "Published paths and historical HTTP200/full-byte verification reconciled; no new network/live freshness check by this agent. Certificate export URLs are per accepted trial above; certificate/result contents were not read."
+  },
+  "qualification": {
+    "UNKNOWN": "Reversed-line canonical reached its2000-event trace cap; this is not failed/exhausted mathematics.",
+    "accepted_scope": "Three exact original-Gamma target derivations with timed independent GroundChecker and literal finite/current-point union. One actual-selected ancestry; two completed but unselected source-proposed patches. No proof commands were opened/rechecked here.",
+    "generic_controls": {
+      "accepted": true,
+      "checks": 45,
+      "production_q_G5_wire_scheduler_and_catalogue_qualified": false,
+      "ref": {
+        "bytes": 9485,
+        "path": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/controls-qualification.json",
+        "sha256": "4eeabbf9579b636e85d72e391698f83b9c610e14ec7b4f33b5a8aae72237dab1"
+      },
+      "scope": "synthetic-observer-semantics-only"
+    },
+    "remaining_false": [
+      "all_five_dynamic_qualification",
+      "full24_board_accepted",
+      "native_accepted",
+      "independent_full_trajectory_accepted",
+      "genuine_I2_use_in_found_derivations",
+      "performance_comparison_accepted",
+      "RL_accepted",
+      "universal_compiler_accepted",
+      "whole_plane_tiling_accepted"
+    ],
+    "static": "Both full original catalogues and initial24-row point models qualified; exact per-context pins above."
+  },
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "saved_metadata_only": true,
+  "schema": "Hilbert-fresh-status-reconciliation-v1",
+  "scientific_calls": 0,
+  "trials": [
+    {
+      "actual_terminal": {
+        "bytes": 2676,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/actual-terminal-v1.json",
+        "sha256": "6a06107647e7f0a4034299fd5691759a73069e9528ed98ba2619e6f6efdfa0b6"
+      },
+      "all_reaped": true,
+      "case": "fresh-inc-point-chain-w",
+      "certificate_export_URL": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/fresh-proofs/evidence/fresh-inc-point-chain-w/canonical/proof-v1.json",
+      "certificate_ref_not_read": {
+        "bytes": 21797,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "63d1cddabc15760164e0b3312f63ab941e803aa49be7f6fa698d667d4ad59d6a"
+      },
+      "lane": "canonical",
+      "logical_derivation_accepted_by_Root": true,
+      "origin_kind": "actual_selected",
+      "owner_terminal": {
+        "bytes": 4555,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "db9f5a53c3005496bc50791639a50eddf413ff4ef5a50aaf0cc46c707835474d"
+      },
+      "resource_disposition": {
+        "bytes": 4212,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "bd5121d3bbd0b934beda4e0ebf9b4e07a2b211342ae5db785e804e582e892040"
+      },
+      "restarts": 0,
+      "status": "first_checked_original_Gamma_target_proof",
+      "terminal_exit": 0
+    },
+    {
+      "actual_terminal": {
+        "bytes": 2759,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/actual-terminal-v1.json",
+        "sha256": "17e887d78c60f7479d4a92d33846a49d0074f4e90bad644e7f8ffaa93abce0fc"
+      },
+      "all_reaped": true,
+      "case": "fresh-inc-point-chain-w",
+      "certificate_export_URL": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/fresh-proofs/evidence/fresh-inc-point-chain-w/generic-incidence-ordering/proof-v1.json",
+      "certificate_ref_not_read": {
+        "bytes": 19085,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "f94cc2979abb5d9e4954d72eadb9c4b1b3b15c82fa351f155f13f9d4967f6c27"
+      },
+      "lane": "generic-incidence-ordering",
+      "logical_derivation_accepted_by_Root": true,
+      "origin_kind": "completed_source_proposal",
+      "owner_terminal": {
+        "bytes": 4704,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "fd39f38e68110726bcac67f33e9b0df7437dfe3f51b6df0cc4f9ba24dae15f3a"
+      },
+      "resource_disposition": {
+        "bytes": 4340,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-point-chain-w/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "e53e1307fef50894931707d8da405326b6db217d74f501c4363b744f2a75450d"
+      },
+      "restarts": 0,
+      "status": "first_checked_original_Gamma_target_proof",
+      "terminal_exit": 0
+    },
+    {
+      "actual_terminal": {
+        "bytes": 2791,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/actual-terminal-v1.json",
+        "sha256": "b2294660a84b8a45b4441ebba270ec3b05aedcfbfcace45b13cb3e0c2d27f28c"
+      },
+      "all_reaped": true,
+      "case": "fresh-inc-reversed-line-chain",
+      "certificate_export_URL": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/fresh-proofs/evidence/fresh-inc-reversed-line-chain/generic-incidence-ordering/proof-v1.json",
+      "certificate_ref_not_read": {
+        "bytes": 19193,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/worker-output-v1/first-proof-certificate-v1.json",
+        "sha256": "94916942de8e274c70ecfb6d92b0caeb9b0f81b4b0b7e2ac14563b47cd91082e"
+      },
+      "lane": "generic-incidence-ordering",
+      "logical_derivation_accepted_by_Root": true,
+      "origin_kind": "completed_source_proposal",
+      "owner_terminal": {
+        "bytes": 4746,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "f8cfb0e0195fa0e15cec8e6948de65b0fda226ec48a02f0468d64242d00c3591"
+      },
+      "resource_disposition": {
+        "bytes": 4386,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/generic-incidence-ordering/ROOT-resource-disposition-v1.json",
+        "sha256": "6144095e2efc40b8ca26b450ff4a15773eaf28c78b41d7381d842f2019f6d863"
+      },
+      "restarts": 0,
+      "status": "first_checked_original_Gamma_target_proof",
+      "terminal_exit": 0
+    },
+    {
+      "actual_terminal": {
+        "bytes": 2870,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/actual-terminal-v1.json",
+        "sha256": "52ddd13bea9979279152c8d3a4c0e9d4b5dd89d7505fc04f28494153c3182162"
+      },
+      "all_reaped": true,
+      "case": "fresh-inc-reversed-line-chain",
+      "certificate_export_URL": null,
+      "certificate_ref_not_read": null,
+      "lane": "canonical",
+      "logical_derivation_accepted_by_Root": false,
+      "origin_kind": null,
+      "owner_terminal": {
+        "bytes": 4622,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/owner-output-v1/ROOT-terminal-v1.json",
+        "sha256": "61ff0af373e56003c5200aafb6498bede0887c49eee10b1a10c62bb758b7fdf5"
+      },
+      "resource_disposition": {
+        "bytes": 3918,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-progress-20261013/fresh-inc-reversed-line-chain/canonical/ROOT-resource-disposition-v1.json",
+        "sha256": "27ace2679cb6baf7681cab15e02251f0550efe3f9df5a87410b78e464855325a"
+      },
+      "restarts": 0,
+      "status": "unknown_trace_budget",
+      "terminal_exit": 0
+    }
+  ]
+}
