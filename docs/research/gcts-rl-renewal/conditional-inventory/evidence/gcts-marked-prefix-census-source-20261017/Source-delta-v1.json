@@ -1,0 +1,91 @@
+{
+  "actual_forward_patch": {
+    "bytes": 2506,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-forward.patch",
+    "sha256": "dc0eb45fc791d9443003aaab941c4e4a4bcf0d3ef74f31be732cfc015b2ca0d6"
+  },
+  "actual_inverse_patch": {
+    "bytes": 2506,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-full-inverse.patch",
+    "sha256": "6a038de3f3aafe9ef789511734e49d99821213032f3e187c0ac3c20539153116"
+  },
+  "added_callable": "FilteredCursor.prototype_census",
+  "edits": [
+    {
+      "current_line_interval": [
+        12,
+        12
+      ],
+      "new": "IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-public-prefix-census-v5'\n",
+      "old": "IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-all-checked-tiles-local-reuse-v4'\n",
+      "operation": "replace",
+      "parent_line_interval": [
+        12,
+        12
+      ]
+    },
+    {
+      "current_line_interval": [
+        390,
+        421
+      ],
+      "new": "    def prototype_census(self):\n        \"\"\"Copy the complete checked ledger for this cursor's successful prefix.\n\n        Includes base-yielded original/decorated types even when channel4\n        removes them. Never-yielded base internals and degree/EOF acceptance\n        are outside this read-only export. Native/copy failure poisons it.\n        \"\"\"\n        if self._failed:\n            raise RuntimeError('marked fallback poisoned; no prefix census')\n        try:\n            self._tick()\n            entries = []\n            for name, preimage in sorted(self._names.items()):\n                self._tick()\n                entries.append([name, preimage])\n            return self._semantics.tree({\n                'schema': 'unit-row-channel4-fallback-prototype-census-v1',\n                'version': FALLBACK_VERSION, 'implementation_version': IMPLEMENTATION_VERSION,\n                'context': self._context, 'context_sha256': self._context['context_sha256'],\n                'input_epoch': self._context['input_epoch'], 'marking_id': self._context['marking_id'],\n                'row': self._context['row'], 'state_sha256': self._context['state_sha256'],\n                'prototype_census': entries,\n                'original_yielded_candidates': self._raw_count, 'yielded_candidates': self._count,\n                'marked_removed': self._removed, 'eof_reached': self._done,\n                'complete_prefix_census': True,\n                'scope': 'CHECKED_STATE_AND_BASE_YIELDED_MARKED_CURSOR_PREFIX',\n                'independently_checked': False, 'degree_zero_or_singleton_accepted': False,\n                **{k: False for k in FLAGS}}, self._tick)\n        except BaseException:\n            self._failed = True\n            raise\n\n",
+      "old": "",
+      "operation": "insert",
+      "parent_line_interval": [
+        390,
+        389
+      ]
+    }
+  ],
+  "parent_source": {
+    "bytes": 29308,
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+    "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c"
+  },
+  "raw_edit_count": 2,
+  "raw_forward_exact": true,
+  "raw_inverse_exact": true,
+  "schema": "unit-row-marked-prefix-census-raw-Source-delta-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 31038,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+    "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_callables": [
+    "require",
+    "canonical",
+    "sha",
+    "MarkedSemantics.__init__",
+    "MarkedSemantics.tree",
+    "MarkedSemantics.point_map",
+    "MarkedSemantics.agree",
+    "MarkedSemantics.check_marking",
+    "MarkedSemantics._base_key",
+    "MarkedSemantics._fresh_base_projection",
+    "MarkedSemantics.base_state",
+    "MarkedSemantics.initial_state",
+    "MarkedSemantics.rebuild_tile",
+    "MarkedSemantics._checked_state_projection",
+    "MarkedSemantics.private_state",
+    "MarkedSemantics.check_collision",
+    "MarkedSemantics.legality",
+    "MarkedSemantics.with_obligations",
+    "MarkedSemantics._filter_all_checked",
+    "MarkedSemantics._filter",
+    "MarkedSemantics.propose_degree",
+    "MarkedSemantics.check_degree_evidence",
+    "MarkedTransition.authority_snapshot",
+    "MarkedTransition._projection",
+    "MarkedTransition.check_transition",
+    "MarkedTransition.refresh_candidates",
+    "FilteredCursor.__init__",
+    "FilteredCursor.context",
+    "FilteredCursor.abort",
+    "FilteredCursor.advance",
+    "open_fallback"
+  ],
+  "whole_AST_inverse_exact": true
+}

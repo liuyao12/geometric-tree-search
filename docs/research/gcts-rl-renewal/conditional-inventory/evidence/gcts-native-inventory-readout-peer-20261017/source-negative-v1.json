@@ -1,0 +1,26 @@
+{
+  "finding": {
+    "closed_by": {
+      "bytes": 21594,
+      "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v2.py",
+      "sha256": "91608e61e47b1cc4ff88395d564a1b7a42096be0f09a6fdf832c71d9d3fae83a"
+    },
+    "finding": "V1 retains summary collector_or_family_pipeline_executed:false even on a successful inventory path that executes collector/miner/expansion/check/host. This is misleading metadata, not a mathematical result. Root discovered before execution. V2 removes the lone stale field and retains full pipeline evidence; no semantic replay added.",
+    "id": "NI-READER-STALE-PIPELINE-FLAG-1"
+  },
+  "schema": "ROOT-native-inventory-saved-reader-Source-negative-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21640,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v1.py",
+    "sha256": "ce0e9c5770cb410923e538b884d25c0e34aee199c07817c4c3376e0e694bdacf"
+  },
+  "source_contract": {
+    "bytes": 1393,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "26d8e91746074bc523e3346dd742a3577013ac65d42f14e81b94908a63823c66"
+  },
+  "source_only": true,
+  "source_review_passed": false
+}

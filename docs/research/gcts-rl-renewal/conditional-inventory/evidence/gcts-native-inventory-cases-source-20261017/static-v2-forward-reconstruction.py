@@ -1,0 +1,500 @@
+"""SOURCE ONLY: native conditional component to source-ground family inventory.
+
+No engine, BRANCH, provider, target route, proofword, loader or clock exists.
+Root owns raw Source/original17/input2 custody, grants and all future actuals.
+A ground conditional inventory is neither a source proof nor a universal lemma.
+"""
+import hashlib
+import json
+
+VERSION = 'ROOT-native-connected-conditional-inventory-cases-v2'
+RESULT_SCHEMA = 'ROOT-native-conditional-inventory-evidence-v1'
+COMPOSER_VERSION = 'receptor-family-native-conditional-component-composer-v1'
+COLLECTOR_VERSION = 'receptor-family-checked-engine-state-DAG-collector-v2-kernel-visit-counter'
+MINER_VERSION = 'receptor-family-primitive-DAG-miner-v2-connected-cut-selection'
+PRODUCER_VERSION = 'receptor-family-typed-expander-v1'
+CHECKER_VERSION = 'receptor-family-independent-expansion-checker-v1'
+ADAPTER_VERSION = 'receptor-family-six-rule-point-adapter-v3-physical-call-sharing'
+POINT_IMPLEMENTATION = 'unit-row-channel4-point-adapter-public-prefix-census-v5'
+COMPOSER_LIMITS = {'root_advances': 48, 'extension_advances': 96,
+                   'heads_per_rule': 1, 'quantum': 8, 'components': 1}
+MINER_LIMITS = {'cuts': 48, 'members': 2, 'families': 8, 'generalizations_per_cut': 1}
+FLAGS = ('engine_generated_accepted', 'fact_accepted', 'root_proof_accepted',
+         'proof_accepted', 'universal_lemma_accepted', 'new_theorem_discovered',
+         'target_completion_accepted', 'frontier_viability_checked',
+         'degree_or_EOF_accepted', 'scheduler_or_rollback_accepted',
+         'engine_activated', 'family_library_activated', 'whole_engine_qualified',
+         'complete_GCTS_model_accepted', 'RL_accepted', 'GCTS_advantage_claimed',
+         'ROOT_resource_accepted', 'runtime_qualified')
+
+
+class InventoryDataError(ValueError):
+    pass
+
+
+class _OwnPrefix(Exception):
+    pass
+
+
+class _NativeFailure(BaseException):
+    def __init__(self, error):
+        self.error = error
+
+
+def require(ok, code, detail):
+    if not ok:
+        raise InventoryDataError('native inventory ' + code + ': ' + detail)
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'),
+                      ensure_ascii=False, allow_nan=False)
+
+
+def ascii_digest(value):
+    raw = json.dumps(value, sort_keys=True, separators=(',', ':'),
+                     ensure_ascii=True, allow_nan=False).encode('ascii')
+    return hashlib.sha256(raw).hexdigest()
+
+
+class _Work:
+    def __init__(self, tick):
+        require(callable(tick), 'CALLBACK', 'same cumulative Root native tick')
+        self.tick, self.steps = tick, 0
+
+    def step(self, depth=0):
+        try:
+            self.tick()
+        except BaseException as error:
+            raise _NativeFailure(error) from error
+        if self.steps >= 8000000 or depth > 128:
+            raise _OwnPrefix('CASE_OWN_WORK_OR_DEPTH_UNKNOWN')
+        self.steps += 1
+
+    def copy(self, value, depth=0):
+        self.step(depth)
+        if value is None or type(value) in (str, bool, int):
+            return value
+        if type(value) is list:
+            return [self.copy(v, depth+1) for v in value]
+        require(type(value) is dict and all(type(k) is str for k in value), 'JSON', 'strict builtin values')
+        return {k: self.copy(v, depth+1) for k, v in value.items()}
+
+
+def _key(record):
+    return {k: v for k, v in record.items() if k != 'generation'}
+
+
+def _checked_expansion(receipt, proposal):
+    require(receipt['schema'] == 'receptor-family-conditional-expansion-check-v1'
+            and receipt['version'] == CHECKER_VERSION, 'CHECK', 'fresh independent checker protocol')
+    if receipt['status'] == 'UNKNOWN':
+        require(receipt['conditional_expansion_checked'] is False and receipt['expansion'] is None,
+                'CHECK', 'UNKNOWN has no partial expansion')
+        return False
+    require(receipt['status'] == 'CONDITIONAL_EXPANSION_CHECKED'
+            and receipt['conditional_expansion_checked'] is True
+            and canonical(receipt['expansion']) == canonical(proposal),
+            'CHECK', 'whole freshly independently rebuilt expansion equality')
+    return True
+
+
+def _check_source_roundtrip(record, mined, expansion, work):
+    """Join the entire cut's grounded primitive/edge/boundary/output data.
+
+    This is a data roundtrip, not authentication of the source DAG's origin or
+    a source proof. Native primitive admission still happens separately.
+    """
+    dag = mined['request']['derivation']
+    require(dag['schema'] == 'receptor-family-primitive-derivation-DAG-v1'
+            and canonical(dag['host_binding']) == canonical(mined['request']['host']['binding']),
+            'DAG', 'full original host binding')
+    source_nodes = {}
+    for node in dag['nodes']:
+        work.step()
+        require(type(node['id']) is str and node['id'] not in source_nodes, 'DAG', 'unique source nodes')
+        source_nodes[node['id']] = node
+    selected = record['cut']['selected_node_ids']
+    require(type(selected) is list and selected and len(selected) == len(set(selected))
+            and all(n in source_nodes for n in selected)
+            and selected == [n['id'] for n in dag['nodes'] if n['id'] in set(selected)],
+            'CUT', 'full topologically ordered selected source IDs')
+    require(record['cut']['anchor'] in selected
+            and record['cut']['source_DAG_sha256'] == ascii_digest(dag), 'CUT', 'complete source DAG preimage')
+    maps = record['source_node_map']
+    require(type(maps) is list and [m['source_node_id'] for m in maps] == selected
+            and len({m['descriptor_step_id'] for m in maps}) == len(maps),
+            'ROUNDTRIP', 'complete unique original node to descriptor-step map')
+    step_ids = {m['source_node_id']: m['descriptor_step_id'] for m in maps}
+    expanded = {}
+    root_hypotheses = {p['port_id']: p for p in expansion['hypothesis_ports']}
+    for node in expansion['primitive_nodes']:
+        work.step()
+        origin = node['origin']
+        if origin['call_path'] == [] and origin['step_id'] is not None:
+            require(origin['step_id'] not in expanded, 'ROUNDTRIP', 'unique root primitive step')
+            expanded[origin['step_id']] = node
+    require(set(expanded) == set(step_ids.values()), 'ROUNDTRIP', 'whole root body without hidden extra primitive steps')
+    boundary = {}
+    source_inputs = {p['id']: p for p in dag['inputs']}
+    source_hypotheses = {p['id']: p for p in dag['hypotheses']}
+    for item in record['boundary_source_map']:
+        work.step()
+        ref = item['original_reference']
+        name = canonical(ref)
+        require(name not in boundary and type(ref) is dict and len(ref) == 1,
+                'ROUNDTRIP', 'one unique full boundary reference')
+        if 'node' in ref:
+            require(ref['node'] in source_nodes and ref['node'] not in selected, 'ROUNDTRIP', 'cut-out source node')
+            source = source_nodes[ref['node']]
+        elif 'input' in ref:
+            require(ref['input'] in source_inputs, 'ROUNDTRIP', 'original input port')
+            source = source_inputs[ref['input']]
+        else:
+            require(set(ref) == {'hypothesis'} and ref['hypothesis'] in source_hypotheses,
+                    'ROUNDTRIP', 'original indexed hypothesis port')
+            source = source_hypotheses[ref['hypothesis']]
+        kind, pid = item['port_kind'], item['port_id']
+        expected_kind = 'hypothesis' if ('hypothesis' in ref or 'node' in ref and source['rule'] == 'assumption') else 'input'
+        require(kind == expected_kind, 'ROUNDTRIP', 'actual indexed hypothesis versus conditional input kind')
+        original_sharing = (source['sharing'] if 'input' in ref else 'DISTINCT_SOURCE_REQUIRED') if kind == 'input' else None
+        expected_item = {'port_kind': kind, 'port_id': pid, 'original_reference': ref,
+            'source_node_id': ref.get('node'), 'source_input_id': ref.get('input'),
+            'source_hypothesis_id': ref.get('hypothesis'), 'source_formula': source['formula'],
+            'original_origin': source.get('origin'), 'original_sharing': original_sharing}
+        require(canonical(item) == canonical(expected_item),
+                'ROUNDTRIP', 'full boundary formula/reference/sharing/opaque origin')
+        if kind == 'hypothesis':
+            require(pid in root_hypotheses, 'ROUNDTRIP', 'materialized actual Gamma port')
+            actual = root_hypotheses[pid]
+            index = source['gamma_index'] if 'hypothesis' in ref else source['arguments']['index']
+            require(actual['gamma_index'] == index and actual['formula'] == source['formula'],
+                    'ROUNDTRIP', 'same original Gamma occurrence')
+            rebuilt_ref = actual['source']
+        else:
+            require(kind == 'input', 'ROUNDTRIP', 'explicit boundary kind')
+            ports = [p for p in expansion['input_ports'] if p['port_id'] == pid]
+            require(len(ports) == 1 and ports[0]['formula'] == source['formula'],
+                    'ROUNDTRIP', 'full ground input port')
+            rebuilt_ref = {'input': pid}
+        boundary[name] = (kind, pid, rebuilt_ref)
+    edges = []
+    used_boundary = set()
+    for source_id in selected:
+        work.step()
+        original = source_nodes[source_id]
+        rebuilt = expanded[step_ids[source_id]]
+        require(all(canonical(original[k]) == canonical(rebuilt[k]) for k in ('rule', 'formula', 'arguments')),
+                'ROUNDTRIP', 'same complete native primitive witness')
+        expected_refs = []
+        for index, ref in enumerate(original['ordered_inputs']):
+            work.step()
+            if 'node' in ref and ref['node'] in step_ids:
+                expected_refs.append({'node': expanded[step_ids[ref['node']]]['id']})
+                descriptor_ref = {'step': step_ids[ref['node']]}
+            else:
+                name = canonical(ref)
+                require(name in boundary, 'ROUNDTRIP', 'every cut edge has a boundary map')
+                kind, pid, new_ref = boundary[name]
+                expected_refs.append(new_ref)
+                descriptor_ref = {kind: pid}
+                used_boundary.add(name)
+            edges.append({'source_node_id': source_id, 'ordered_index': index,
+                          'original_reference': ref, 'descriptor_reference': descriptor_ref})
+        require(rebuilt['ordered_inputs'] == expected_refs, 'ROUNDTRIP', 'all ordered/repeated edge uses')
+    require(used_boundary == set(boundary) and canonical(edges) == canonical(record['boundary_edge_map']),
+            'ROUNDTRIP', 'complete boundary edge census')
+    output_map = record['output_map']
+    expected_outputs = []
+    for source_id in selected:
+        work.step()
+        uses = [{'consumer_node_id': n['id'], 'ordered_index': i}
+                for n in dag['nodes'] if n['id'] not in selected
+                for i, ref in enumerate(n['ordered_inputs']) if ref == {'node': source_id}]
+        labels = [p['id'] for p in dag['outputs'] if p['source'] == {'node': source_id}]
+        if source_id == record['cut']['anchor'] or uses or labels:
+            expected_outputs.append({'port_id': 'o'+str(len(expected_outputs)), 'source_node_id': source_id,
+                                     'source_output_ids': labels, 'outgoing_uses': uses})
+    require(canonical(output_map) == canonical(expected_outputs)
+            and [v['port_id'] for v in output_map] == [v['port_id'] for v in expansion['outputs']],
+            'ROUNDTRIP', 'complete ordered output/outgoing-use map')
+    for item, output in zip(output_map, expansion['outputs']):
+        work.step()
+        source_id = item['source_node_id']
+        require(source_id in step_ids and output['source'] == {'node': expanded[step_ids[source_id]]['id']}
+                and output['formula'] == source_nodes[source_id]['formula'], 'ROUNDTRIP', 'full exposed output formula/source')
+    return {'source_DAG_sha256': ascii_digest(dag), 'selected_node_ids': selected,
+            'primitive_nodes_checked': len(selected), 'ordered_edges_checked': len(edges),
+            'boundary_references_checked': len(boundary), 'outputs_checked': len(output_map),
+            'source_origin_authenticated': False, 'source_proof_accepted': False}
+
+
+def run_inventory(*, language, base_semantics, marked_semantics, point_module,
+                  base_fallback, host_adapter, composer, collector, miner,
+                  producer, expansion_checker, tick, phase=None):
+    """Complete source-ground inventory qualification only; no live receiver.
+
+    Only the case's own finite work is caught. Native/callback/guard/collision/
+    malformed-data errors propagate. Every instantiated family is checked again.
+    """
+    tick()
+    require(phase is None or callable(phase), 'CALLBACK', 'optional Root phase callback')
+    work = _Work(tick)
+    original_binding = canonical(language.binding)
+    point = marked_semantics
+    names, joins = {}, []
+    host = None
+    result = {'schema': RESULT_SCHEMA, 'version': VERSION, 'status': 'UNKNOWN', 'reason': None,
+        'binding': json.loads(original_binding), 'components': None, 'collection': None, 'mining': None,
+        'qualified_records': [], 'census': [], 'census_joins': joins,
+        'scope': 'SOURCE_GROUND_CONDITIONAL_INVENTORY_ONLY_NO_TRANSFER_OR_ENGINE',
+        'descriptor_origin_enum_meaning': 'SEARCH_EXTRACTED is the fixed miner wire enum for syntax extraction, not authenticated engine/search/proof provenance; full automatic construction origin and false flags are retained.',
+        'flags': {k: False for k in FLAGS}}
+
+    def signal(label):
+        work.step()
+        if phase is not None:
+            phase(label)
+
+    def merge(entries, stage):
+        require(type(entries) is list, 'CENSUS', 'full pair list')
+        for pair in entries:
+            work.step()
+            require(type(pair) is list and len(pair) == 2 and type(pair[0]) is str
+                    and type(pair[1]) is str, 'CENSUS', 'literal type ID and full canonical preimage text')
+            name, text = pair
+            preimage = json.loads(text)
+            require(type(preimage) is dict and canonical(preimage) == text, 'CENSUS', 'full canonical preimage data')
+            require(name not in names or names[name] == text, 'COLLISION', 'whole original/decorated ID-preimage census')
+            names[name] = text
+        joins.append({'stage': stage, 'entries': len(entries), 'global_types_after': len(names)})
+
+    def merge_tile(tile, stage):
+        keys = [tile['base_tile']['placement_key'], tile['placement_key']]
+        merge([[k['tile_type_id'], canonical(k['type_preimage'])] for k in keys], stage)
+
+    def merge_states(original, marked, stage):
+        entries = []
+        for value in (original, marked):
+            for category in ('selected', 'excluded'):
+                for key in value[category]:
+                    work.step()
+                    entries.append([key['tile_type_id'], canonical(key['type_preimage'])])
+        merge(entries, stage)
+
+    def finish(reason):
+        tick()
+        require(canonical(language.binding) == original_binding, 'STABILITY', 'original model binding unchanged')
+        if host is not None:
+            require(canonical(host_adapter.describe_host(language=language, tick=tick)) == canonical(host),
+                    'STABILITY', 'whole original host unchanged')
+        result['reason'] = reason
+        result['census'] = [[k, v] for k, v in sorted(names.items())]
+        result['work'] = {'case_steps': work.steps, 'case_work_limit': 8000000, 'case_depth_limit': 128,
+                          'composer_limits': dict(COMPOSER_LIMITS), 'miner_limits': dict(MINER_LIMITS)}
+        tick()
+        return result
+
+    try:
+        work.step()
+        require(base_semantics.VERSION == 'independent-unit-row-missing-mark-degree-check-v2'
+                and point.VERSION == 'unit-row-channel4-filtered-degree-semantics-v1'
+                and point.base is base_semantics
+                and point_module.VERSION == 'unit-row-channel4-point-adapter-v1'
+                and point_module.IMPLEMENTATION_VERSION == POINT_IMPLEMENTATION
+                and composer.VERSION == COMPOSER_VERSION and collector.VERSION == COLLECTOR_VERSION
+                and miner.VERSION == MINER_VERSION and producer.VERSION == PRODUCER_VERSION
+                and expansion_checker.VERSION == CHECKER_VERSION and host_adapter.VERSION == ADAPTER_VERSION,
+                'API', 'exact explicit public component versions')
+        signal('BEFORE_COMPOSER')
+        composed = composer.compose_components(language=language, base_semantics=base_semantics,
+            marked_semantics=point, point_module=point_module, base_fallback=base_fallback,
+            host_adapter=host_adapter, tick=work.step, limits=dict(COMPOSER_LIMITS))
+        result['components'] = composed
+        signal('AFTER_COMPOSER')
+        require(composed['schema'] == 'receptor-family-native-component-composition-v1'
+                and composed['version'] == COMPOSER_VERSION
+                and composed['status'] in ('COMPONENT_PROPOSALS', 'UNKNOWN'), 'COMPOSER', 'whole fresh result protocol')
+        require(all(composed['request']['limits'][k] == v for k, v in COMPOSER_LIMITS.items())
+                and composed['request']['component_size'] == 2 and composed['request']['full_rows'] == 24,
+                'COMPOSER', 'same predeclared allocation without a smaller model')
+        merge(composed['global_prototype_census'], 'COMPOSER_ALL_REACHED_PREFIXES')
+        if composed['status'] == 'UNKNOWN':
+            require(composed['components'] == [], 'COMPOSER', 'UNKNOWN has no operative components')
+            return finish('COMPOSER_UNKNOWN_NO_OPERATIVE_COMPONENT')
+        require(composed['operative_global_join_complete'] is True and len(composed['components']) == 1,
+                'COMPOSER', 'exact declared one-component cap and full public prefix census joined')
+        host = work.copy(host_adapter.describe_host(language=language, tick=work.step))
+        require(canonical(composed['host']) == canonical(host)
+                and canonical(composed['binding']) == original_binding, 'COMPOSER', 'current full original host/binding')
+        root = composed['root']['state']
+        checked_root, totals, marks, selected, excluded, root_names = point.private_state(language, root, work.step)
+        require(canonical(checked_root) == canonical(root) and root['height'] == 24
+                and root['selected'] == [] and root['excluded'] == [], 'ROOT', 'actual complete empty original root')
+        root_original = point.base_state(language, root, work.step)
+        merge([[k, v] for k, v in sorted(root_names.items())], 'FRESH_ROOT')
+        originals = {r['translation'][1]: _key(r) for r in root_original['selected']}
+        component = composed['components'][0]
+        require(len(component['members']) == 2 and len(component['state']['selected']) == 2
+                and component['connected_edges'] and component['checks']['strict_prior_internal_edge'] is True,
+                'COMPONENT', 'complete native two-member connected construction')
+        checked_component, unused_t, unused_m, unused_s, unused_e, component_names = point.private_state(
+            language, component['state'], work.step)
+        require(canonical(checked_component) == canonical(component['state']), 'COMPONENT', 'fresh full state union')
+        merge([[k, v] for k, v in sorted(component_names.items())], 'FRESH_COMPONENT')
+        for member in component['members']:
+            merge_tile(member['tile'], 'COMPOSER_COMPONENT_MEMBER')
+        origin = {'kind': 'automatic_primitive_composition', 'engine_generated': False,
+                  'component_id': component['component_id'], 'composer_version': COMPOSER_VERSION,
+                  'root_proof_accepted': False}
+        collected = collector.collect_derivation(language=language, base_semantics=base_semantics,
+            marked_semantics=point, host_adapter=host_adapter, state=component['state'],
+            origin=origin, tick=work.step)
+        result['collection'] = collected
+        signal('AFTER_DAG')
+        require(collected['schema'] == 'receptor-family-checked-state-DAG-collection-v1'
+                and collected['version'] == COLLECTOR_VERSION, 'COLLECTOR', 'fresh public protocol')
+        if collected['status'] == 'UNKNOWN':
+            require(collected['derivation'] is None, 'COLLECTOR', 'UNKNOWN has no partial DAG')
+            return finish('COLLECTOR_OWN_PREFIX_UNKNOWN_NO_PARTIAL_DAG')
+        require(collected['status'] == 'COLLECTED_CONDITIONAL_DAG'
+                and len(collected['derivation']['nodes']) == 2
+                and collected['checks']['every_selected_native_member_checked'] is True,
+                'COLLECTOR', 'fresh whole two-member native DAG')
+        require(canonical(collected['host']) == canonical(host)
+                and canonical(collected['state_projections']['marked_state']) == canonical(component['state']),
+                'COLLECTOR', 'same whole component/model')
+        dag = collected['derivation']
+        require(any('node' in ref for node in dag['nodes'] for ref in node['ordered_inputs']),
+                'CONNECTED', 'actual strict-prior selected-source edge retained')
+        merge_states(collected['state_projections']['original_state'],
+                     collected['state_projections']['marked_state'], 'COLLECTOR_STATE_KEYS')
+        for member in collected['checked_members']:
+            merge_tile(member['marked_tile'], 'COLLECTOR_CHECKED_MEMBER')
+        mined = miner.mine_families(host=work.copy(host), derivation=work.copy(dag), tick=work.step,
+            limits=dict(MINER_LIMITS), cut_selection='CONNECTED_AT_LEAST_TWO')
+        result['mining'] = mined
+        signal('AFTER_MINER')
+        require(mined['schema'] == 'receptor-family-mining-prefix-v1'
+                and mined['version'] == MINER_VERSION, 'MINER', 'fresh bounded prefix protocol')
+        if mined['status'] == 'UNKNOWN':
+            require(mined['families'] == [], 'MINER', 'UNKNOWN has no completed extraction')
+            return finish('MINER_FINITE_PREFIX_UNKNOWN_NO_INVENTORY')
+        require(mined['status'] == 'PROPOSALS' and mined['mining_complete'] is False
+                and mined['families'] and canonical(mined['request']) == canonical({'host': host, 'derivation': dag}),
+                'MINER', 'full actual collected request and bounded automatic extraction')
+        node_rows = {v['node_id']: v['row'] for v in collected['maps']['nodes']}
+        node_keys = {v['node_id']: v['decorated_full_key'] for v in collected['maps']['nodes']}
+        input_rows = {v['input_id']: v['row'] for v in collected['maps']['inputs']}
+        complete = True
+        for record_index, record in enumerate(mined['families']):
+            work.step()
+            descriptor = record['descriptor']; registry = [work.copy(descriptor)]
+            require(descriptor['dependencies'] == [] and all(s['kind'] == 'PRIMITIVE' for s in descriptor['body'])
+                    and len(record['cut']['selected_node_ids']) == 2
+                    and set(record['cut']['selected_node_ids']) == set(node_rows), 'CUT', 'whole actual connected component cut')
+            entry = {'record_index': record_index, 'record': work.copy(record), 'status': 'UNKNOWN',
+                'source_proposal': None, 'source_check': None, 'source_roundtrip': None,
+                'port_bindings': None, 'row_assignment': None, 'proposal': None, 'check': None,
+                'rebound_roundtrip': None, 'adaptation': None, 'source_proof_accepted': False,
+                'universal_lemma_accepted': False}
+            result['qualified_records'].append(entry)
+            source = producer.expand_family(registry=work.copy(registry), family_id=record['family_id'],
+                host=work.copy(host), substitution=work.copy(record['substitution']),
+                port_bindings=work.copy(record['source_port_bindings']), tick=work.step)
+            entry['source_proposal'] = source
+            if source['status'] == 'UNKNOWN':
+                complete = False; continue
+            require(source['status'] == 'READY_PROPOSAL', 'EXPAND', 'whole source-ground proposal')
+            source_check = expansion_checker.check_expansion(registry=work.copy(registry), family_id=record['family_id'],
+                host=work.copy(host), substitution=work.copy(record['substitution']),
+                port_bindings=work.copy(record['source_port_bindings']), proposal=work.copy(source), tick=work.step)
+            entry['source_check'] = source_check
+            if not _checked_expansion(source_check, source):
+                complete = False; continue
+            entry['source_roundtrip'] = _check_source_roundtrip(record, mined, source_check['expansion'], work)
+            source = source_check['expansion']
+            source_steps = {v['descriptor_step_id']: v['source_node_id'] for v in record['source_node_map']}
+            boundaries = {v['port_id']: v for v in record['boundary_source_map']}
+
+            def boundary_row(port_id):
+                item = boundaries[port_id]; ref = item['original_reference']
+                if set(ref) == {'node'}:
+                    require(ref['node'] in node_rows, 'ROW_MAP', 'actual collected selected-source row')
+                    return node_rows[ref['node']]
+                require(set(ref) == {'input'} and ref['input'] in input_rows,
+                        'ROW_MAP', 'actual collected unoccupied row; no invented Gamma row')
+                return input_rows[ref['input']]
+
+            physical_nodes = []
+            expected_keys = []
+            for node in source['primitive_nodes']:
+                origin_node = node['origin']
+                require(origin_node['call_path'] == [], 'ROW_MAP', 'flat automatic primitive cut')
+                if origin_node['step_id'] is not None:
+                    sid = source_steps[origin_node['step_id']]
+                else:
+                    b = boundaries[origin_node['hypothesis_port']]
+                    require(set(b['original_reference']) == {'node'}, 'ROW_MAP', 'hypothesis materialization has an actual source row')
+                    sid = b['original_reference']['node']
+                require(sid in node_rows, 'ROW_MAP', 'actual native source node')
+                physical_nodes.append([node['id'], node_rows[sid]])
+                key = node_keys[sid]
+                if not any(canonical(key) == canonical(old) for old in expected_keys):
+                    expected_keys.append(work.copy(key))
+            physical_inputs = [[p['port_id'], boundary_row(p['port_id'])] for p in source['input_ports']]
+            ports = {'hypotheses': [{'port_id': p['port_id'], 'gamma_index': p['gamma_index'],
+                                    'formula': work.copy(p['formula'])} for p in source['hypothesis_ports']],
+                     'inputs': [], 'outputs': [{'port_id': p['port_id'], 'formula': work.copy(p['formula'])}
+                                              for p in source['outputs']]}
+            for port_id, row in physical_inputs:
+                formula = next(p['formula'] for p in source['input_ports'] if p['port_id'] == port_id)
+                ports['inputs'].append({'port_id': port_id, 'formula': work.copy(formula),
+                    'source': {'schema': 'receptor-family-six-rule-input-source-v1', 'row': row,
+                               'original_full_key': work.copy(originals.get(row))},
+                    'occupied': totals[(0, row)] == 1, 'fact_accepted': False})
+            assignment = {'schema': 'receptor-family-six-rule-row-assignment-v1',
+                          'node_rows': physical_nodes, 'input_rows': physical_inputs}
+            entry['port_bindings'], entry['row_assignment'] = ports, assignment
+            proposal = producer.expand_family(registry=work.copy(registry), family_id=record['family_id'],
+                host=work.copy(host), substitution=work.copy(record['substitution']),
+                port_bindings=work.copy(ports), tick=work.step)
+            entry['proposal'] = proposal
+            if proposal['status'] == 'UNKNOWN':
+                complete = False; continue
+            require(proposal['status'] == 'READY_PROPOSAL', 'EXPAND', 'fresh root-rebound source-ground proposal')
+            checked = expansion_checker.check_expansion(registry=work.copy(registry), family_id=record['family_id'],
+                host=work.copy(host), substitution=work.copy(record['substitution']),
+                port_bindings=work.copy(ports), proposal=work.copy(proposal), tick=work.step)
+            entry['check'] = checked
+            if not _checked_expansion(checked, proposal):
+                complete = False; continue
+            entry['rebound_roundtrip'] = _check_source_roundtrip(record, mined, checked['expansion'], work)
+            adapted = host_adapter.adapt_expansion(language=language, base_semantics=base_semantics,
+                marked_semantics=point, expansion_checker=expansion_checker,
+                registry=work.copy(registry), family_id=record['family_id'], host=work.copy(host),
+                substitution=work.copy(record['substitution']), port_bindings=work.copy(ports),
+                proposal=work.copy(proposal), state=work.copy(root), row_assignment=work.copy(assignment), tick=work.step)
+            entry['adaptation'] = adapted
+            if adapted['status'] == 'UNKNOWN':
+                complete = False; continue
+            require(adapted['status'] == 'READY_LOCAL_CLUSTER' and adapted['local_member_membership_checked'] is True
+                    and adapted['local_point_union_checked'] is True
+                    and adapted['union_state_check']['marked_state_checked'] is True,
+                    'ADAPT', 'fresh every-native-member and full independently checked point union')
+            require(canonical(adapted['decorated_member_keys']) == canonical(expected_keys)
+                    and canonical(adapted['union_state']) == canonical(component['state']),
+                    'ROUNDTRIP', 'same complete actual constructed member keys and full component union')
+            for member in adapted['members']:
+                merge_tile(member['tile'], 'DIRECT_NATIVE_ADAPTATION')
+            merge_states(adapted['original_state'], adapted['union_state'], 'ADAPTER_ROOT_AND_UNION_KEYS')
+            entry['status'] = 'CHECKED_SOURCE_GROUND_CONDITIONAL_RECORD'
+        signal('AFTER_QUALIFICATION')
+        if complete and len(result['qualified_records']) == len(mined['families']):
+            result['status'] = 'CHECKED_CONDITIONAL_INVENTORY'
+            return finish('FULL_AUTOMATIC_COMPONENT_AND_EVERY_EMITTED_SOURCE_GROUND_RECORD_CHECKED_NOT_A_PROOF')
+        return finish('UNFINISHED_SOURCE_GROUND_QUALIFICATION_UNKNOWN')
+    except _NativeFailure as error:
+        raise error.error
+    except _OwnPrefix as error:
+        return finish(str(error))

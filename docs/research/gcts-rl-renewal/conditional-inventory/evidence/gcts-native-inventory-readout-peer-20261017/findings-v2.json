@@ -1,0 +1,84 @@
+{
+  "checks": {
+    "18_parent_raw_AST_inverse_and_actual_patch_directions": true,
+    "Source_AST_compile_without_evaluation": true,
+    "all_other_reader_functions_raw_AST_exact_to_v1": true,
+    "complete_conditional_record_only_from_current_pinned_caller_fullpayload": true,
+    "current_once_plan_source_grant_review_runtime_and_native_exit_joins": true,
+    "full_canonical_output_envelope_zlibEOF_and_responsecompletion": true,
+    "no_semantic_replay_or_engine_proof_RL_GCTS_gain": true,
+    "one_immediate_field_removal_raw_AST_inverse_and_actual_patch_directions": true,
+    "phase6_prefix_and_failure4slots_remain_diagnostic_not_cause": true,
+    "same_buffer_pin_to_parse_response_and_lossless_envelope": true,
+    "strict_native20_positive_55failure_512MiB_Date91_and_same_sessionpair": true,
+    "whole_current_reader_contract_and_operative_capsule_pinned": true
+  },
+  "findings": [
+    {
+      "disposition": "PASS",
+      "finding": "Literal current capsule joins whole current sources/input8, grant/reviews/runtime, plan nonce and unchanged once/native meter/external observation. Exact integer sessions permit bothNone or equal positive IDs; exact exits/terminal/reap/Date bracket remain required.",
+      "id": "NI-SAVED-AUTH",
+      "lines": [
+        147,
+        222
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Positive branch requires launch\u2192postprobe strictly less than20seconds and peak below512MiB; exact owned2/final line/response2 canonical bytes and same pinned buffers, compressed+expanded hashes/EOF/caps are retained.",
+      "id": "NI-SAVED-WIRE",
+      "lines": [
+        236,
+        287
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Six bounded fixed phases form ordered reached-site subsequence, clock joined to original caller window. Exit2 remains UNKNOWN with zero qualified count and case-countNone in complete optional failure pair. Last scalar observation is not active frame/cause/state/proof. Caller leaves all slotsNone.",
+      "id": "NI-SAVED-DIAGNOSTIC",
+      "lines": [
+        65,
+        144,
+        223,
+        326
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Reader retains full current lossless inventory evidence and only reports its pinned caller status. No proof checker or replay. Completed conditional record is not target theorem, global viability, engine/scheduler/rollback, generalized lemma, RL/GCTS or speedup acceptance.",
+      "id": "NI-SAVED-SCOPE",
+      "lines": [
+        287,
+        324
+      ]
+    },
+    {
+      "disposition": "CLOSED",
+      "finding": "The exact V1 stale pipeline-false summary field is absent inV2; all other helper regions/native/wire/authority/flags unchanged.",
+      "id": "NI-READER-STALE-PIPELINE-FLAG-1"
+    }
+  ],
+  "negative_v1": {
+    "bytes": 1331,
+    "path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/source-negative-v1.json",
+    "sha256": "ade9a0a9caa2d38faf2eb1aa4a9e1d8736e8b0290b96f85bebbb82dc2336b809"
+  },
+  "operative_contract": {
+    "bytes": 22413,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "0454a81b0e5e37cfc549e170df58f4abdc7717d6b7328e5167aba05825466ca3"
+  },
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21594,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v2.py",
+    "sha256": "91608e61e47b1cc4ff88395d564a1b7a42096be0f09a6fdf832c71d9d3fae83a"
+  },
+  "source_contract": {
+    "bytes": 1862,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "3bcd43fded8483c499569dab83ec4dd59402b025e76337207080b67378572200"
+  },
+  "source_only": true
+}

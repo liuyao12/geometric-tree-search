@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "all_native20_55_512_Date_session_once_currentauthority_wire_failure_phase_joins_unchanged": true,
+    "all_other_reader_helper_regions_raw_AST_exact": true,
+    "both_actual_patch_directions_exact": true,
+    "compile_without_evaluation": true,
+    "current_literal_capsule_and_response_VERSION_match_caller": true,
+    "prior_stale_pipelinefalse_field_stays_absent": true,
+    "two_raw_forward_inverse_whole_AST_exact": true,
+    "whole_main_exact_after_response_VERSION_restoration": true
+  },
+  "current_operative_contract": {
+    "bytes": 22726,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v2.json",
+    "sha256": "308d4bf83851ea6ffa50e9f331811c9f5699f5989989f0210a433716b8d9fe20"
+  },
+  "findings": [
+    {
+      "disposition": "PASS",
+      "finding": "Literal current contract308d4bf8 and responseVERSION exactly bind current callerbc1786. All operative main logic restores byte-for-byte after soleVERSION substitution; other helpers raw/AST exact. Full native/Date/session/once/same-buffer canonical wire and diagnostic phase/failure checks inherited by exact raw preservation.",
+      "id": "NI-READER-V3-AUTHORITY"
+    },
+    {
+      "disposition": "LIMITATION",
+      "finding": "No semantic replay, actual reads, historical qualification, theorem/frontier/engine/RL/GCTS gain or predicted fit. Conditional record status remains exclusively the freshly pinned full caller payload; failure remainsUNKNOWN, not inferred progress.",
+      "id": "NI-READER-V3-SCOPE"
+    }
+  ],
+  "parent_review": {
+    "bytes": 2527,
+    "path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "48674b977ca72cb068a3ec85b9604126a0eb004702ab0994ab59fdaedb4c08a5"
+  },
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21606,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v3.py",
+    "sha256": "91417266c7fd1287426e4ade124e074efaddbcdaae1fff48cdc0df0f11eae3ec"
+  },
+  "source_contract": {
+    "bytes": 1576,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v3.json",
+    "sha256": "a73d6e19e9b5dce316223ed9d10b0e18d92eb439b911beeced86ab0d9129a273"
+  },
+  "source_only": true
+}

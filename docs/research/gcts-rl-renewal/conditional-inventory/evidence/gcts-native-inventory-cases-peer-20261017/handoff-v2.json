@@ -1,0 +1,26 @@
+{
+  "schema": "ROOT-native-conditional-inventory-cases-independent-handoff-v2",
+  "typed_review": {
+    "path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "d019193b7b696f64f7384d15b7a131dfd6d8d9e6c82efff19905d02cf491a15f",
+    "bytes": 2782
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/findings-v2.json",
+    "sha256": "3f7dbde44cbb1778ae309986826319bc7c02e2979e60eec9741c8da0db7cbad2",
+    "bytes": 3529
+  },
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v2.json",
+    "sha256": "ec482aefb6a7b3d8795d59f2f8a4e7b00855964ac327ed4720c165f799277101",
+    "bytes": 2237
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/handoff-v2.json",
+    "sha256": "43b0d67361accefbcf1b772c163b68c50e17351d11c44593f45705ed6faa5b2a",
+    "bytes": 3947
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false
+}

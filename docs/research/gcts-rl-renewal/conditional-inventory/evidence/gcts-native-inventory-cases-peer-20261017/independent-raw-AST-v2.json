@@ -1,0 +1,66 @@
+{
+  "schema": "ROOT-native-conditional-inventory-cases-independent-raw-AST-v2",
+  "source_only": true,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+    "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+  },
+  "parent": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+    "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+  },
+  "source_delta": {
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-delta-v2.json",
+    "sha256": "9ad0726908cfa974ccfeb2c0418abb4473b9f8709a58b8596ce337a4a525d23a",
+    "bytes": 2788
+  },
+  "actual_forward_patch": {
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-v1-to-v2-forward.patch",
+    "sha256": "9428d7b5377d6a3fd7d213d4645aaddc7e94a5d6a6935b55e38e7c9b5e4561c0",
+    "bytes": 1325
+  },
+  "actual_inverse_patch": {
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-v2-full-inverse.patch",
+    "sha256": "e0cb650b5480e31e5deaf43ed07a3e635e79ac6ad96cbf135e9b0b937f9a6fc6",
+    "bytes": 1325
+  },
+  "raw_edits": 3,
+  "exact_only_changes": [
+    "ownVERSION v1 to v2",
+    "own work threshold1000000 to8000000",
+    "emitted case_work_limit1000000 to8000000"
+  ],
+  "raw_forward_inverse_exact": true,
+  "whole_AST_inverse_exact": true,
+  "actual_patch_directions_exact": 2,
+  "compile_without_evaluation": true,
+  "unchanged_named_regions_raw_AST_exact": [
+    "InventoryDataError",
+    "_OwnPrefix",
+    "_NativeFailure",
+    "_NativeFailure.__init__",
+    "require",
+    "canonical",
+    "ascii_digest",
+    "_Work.__init__",
+    "_Work.copy",
+    "_key",
+    "_checked_expansion",
+    "_check_source_roundtrip",
+    "run_inventory.signal",
+    "run_inventory.merge",
+    "run_inventory.merge_tile",
+    "run_inventory.merge_states"
+  ],
+  "affected_containing_regions": [
+    "_Work",
+    "_Work.step",
+    "run_inventory",
+    "run_inventory.finish"
+  ],
+  "scientific_module_imported_or_evaluated": false,
+  "actual_results_or_proofword_reads": false
+}

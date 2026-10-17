@@ -1,0 +1,22 @@
+{
+  "schema": "ROOT-native-conditional-inventory-case-API-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "version": "ROOT-native-connected-conditional-inventory-cases-v1",
+  "signature": "run_inventory(*,language,base_semantics,marked_semantics,point_module,base_fallback,host_adapter,composer,collector,miner,producer,expansion_checker,tick,phase=None)",
+  "composer_limits": {"root_advances":48,"extension_advances":96,"heads_per_rule":1,"quantum":8,"components":1},
+  "miner_limits": {"cuts":48,"members":2,"families":8,"generalizations_per_cut":1},
+  "cut_selection": "CONNECTED_AT_LEAST_TWO",
+  "case_own_limits": {"work":1000000,"depth":128},
+  "phase_labels_in_site_order": ["BEFORE_COMPOSER","AFTER_COMPOSER","AFTER_DAG","AFTER_MINER","AFTER_QUALIFICATION"],
+  "phase_meaning": "Optional Root callback takes one literal label. Only reached sites are called, with a cumulative native tick first. AFTER_DAG/MINER/QUALIFICATION mean delegate/attempt returned, not positive scientific acceptance; status/full records remain authoritative. Root cold alone may add BEFORE_OUTPUT.",
+  "return_schema": "ROOT-native-conditional-inventory-evidence-v1",
+  "return_fields": ["schema","version","status","reason","binding","components","collection","mining","qualified_records","census","census_joins","scope","descriptor_origin_enum_meaning","flags","work"],
+  "status": ["CHECKED_CONDITIONAL_INVENTORY","UNKNOWN"],
+  "components": "Full composer result including native root/two-member state/cursor histories/global prefix census. No engine-generated or viability interpretation.",
+  "qualification": "Fresh collector then connected miner; every emitted literal/first automatic fragment record retains full origin-ground proposal/independent check/data roundtrip, root-rebound source metadata/derived physical rows, fresh full proposal/check and direct native adapter. Source substitution retained solely for conditional inventory qualification, never receiver transfer. Every emitted record must complete for overall checked status; partial records stay UNKNOWN.",
+  "census": "Full sorted original+decorated ID/canonical preimage text ledger merged across complete composer reached prefixes, fresh root/component/collector keys and every direct native adaptation. Alternative point unions are not merged.",
+  "origin": "Tiny opaque {kind:automatic_primitive_composition,engine_generated:false,component_id,composer_version,root_proof_accepted:false} passed to collector; complete construction proof-data remains outside it in components. SEARCH_EXTRACTED is a fixed descriptor wire enum meaning syntax extraction, not engine or finished-proof provenance.",
+  "errors": "Own bounded work and nested declared UNKNOWN retained as UNKNOWN. Native/callback/phase/guard/malformed/collision errors propagate; no ValueError catch, private provider calls, fake BRANCH, engine/search/place or donor route.",
+  "authority": "All broad flags false. No universal lemma, source/root proof, new theorem, target completion, engine/marking/RL/GCTS/runtime acceptance. Original17/input2/B12N44/24rows/current target/marking unchanged. Root alone grants any fresh native20/512 actual and cold composition."
+}

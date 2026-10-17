@@ -1,0 +1,65 @@
+{
+  "actual_addition_patch_apply_cmp_exact": true,
+  "actual_full_inverse_patch_apply_cmp_empty": true,
+  "anchors": {
+    "InventoryDataError": {
+      "end_line": 32,
+      "line": 31
+    },
+    "_NativeFailure": {
+      "end_line": 41,
+      "line": 39
+    },
+    "_OwnPrefix": {
+      "end_line": 36,
+      "line": 35
+    },
+    "_Work": {
+      "end_line": 81,
+      "line": 60
+    },
+    "_check_source_roundtrip": {
+      "end_line": 229,
+      "line": 102
+    },
+    "_checked_expansion": {
+      "end_line": 99,
+      "line": 88
+    },
+    "_key": {
+      "end_line": 85,
+      "line": 84
+    },
+    "ascii_digest": {
+      "end_line": 57,
+      "line": 54
+    },
+    "canonical": {
+      "end_line": 51,
+      "line": 49
+    },
+    "require": {
+      "end_line": 46,
+      "line": 44
+    },
+    "run_inventory": {
+      "end_line": 500,
+      "line": 232
+    }
+  },
+  "compile_without_evaluation": true,
+  "fixed_caps_literals_exact": true,
+  "no_engine_receiver_or_private_provider_call": true,
+  "project_imports_or_evaluation": false,
+  "raw_addition_inverse_exact": true,
+  "roundtrip_data_helper_name_only_inverse_exact": true,
+  "schema": "ROOT-native-inventory-case-author-static-audit-v1",
+  "scientific_calls": 0,
+  "scope": "Source/AST/literal metadata only; no phase callback, data checker, cases, fixtures or model functions were run.",
+  "source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+    "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+  },
+  "source_only": true
+}

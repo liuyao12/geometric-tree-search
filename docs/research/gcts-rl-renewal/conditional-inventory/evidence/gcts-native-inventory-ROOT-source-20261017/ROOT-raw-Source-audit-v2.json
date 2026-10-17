@@ -1,0 +1,24 @@
+{
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "checks": [
+    {
+      "delta": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/caller-v2-Source-delta-v1.json",
+      "edits": 2,
+      "whole_forward_inverse_AST": true,
+      "compile_without_evaluation": true
+    },
+    {
+      "delta": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v3-Source-delta-v1.json",
+      "edits": 2,
+      "whole_forward_inverse_AST": true,
+      "compile_without_evaluation": true
+    },
+    {
+      "delta": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-delta-v2.json",
+      "edits": 3,
+      "whole_forward_inverse_AST": true,
+      "compile_without_evaluation": true
+    }
+  ]
+}

@@ -1,0 +1,2726 @@
+{
+  "attempts": [
+    {
+      "cap": 1000000,
+      "disposition": {
+        "GCTS_advantage_claimed": false,
+        "RL_accepted": false,
+        "actual_closed": true,
+        "aggregate_B_bytes": 49758208,
+        "all_reaped": true,
+        "complete_GCTS_model_accepted": false,
+        "complete_wire_verified": true,
+        "conditional_inventory_record_complete": false,
+        "current_frontier_viability_checked": false,
+        "expanded": {
+          "bytes": 869074,
+          "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-expanded-result-v1.json",
+          "sha256": "3334dd4c9ed1b3d03f9863936fbc96e7aff22d60b52fc3fa300c5e22c64b19e7"
+        },
+        "failure_diagnostic": null,
+        "logical_proof_accepted": false,
+        "native_files": {
+          "ONCE.json": {
+            "bytes": 248,
+            "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/ONCE.json",
+            "sha256": "6e355e3304c995a6097f87de4d2a119da448a29aceff0d9ff655c4e76612f33f"
+          },
+          "meter-stderr.txt": {
+            "bytes": 277,
+            "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stderr.txt",
+            "sha256": "f5c89281aa9c45222bf92b017bef69fca3a897f6fb8979c3f5f44a9d8ddd0be8"
+          },
+          "meter-stdout.txt": {
+            "bytes": 710,
+            "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stdout.txt",
+            "sha256": "af49c3ee035af8c0d46dc6c2043b64e0e7428448931ddae5cd6971c5716f9b6f"
+          },
+          "native-terminal.json": {
+            "bytes": 1553,
+            "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/native-terminal.json",
+            "sha256": "2de65cad872fb5c30a8367bcfb3e5250f3f9bed83539185a82b14bb3afef5403"
+          },
+          "observation.json": {
+            "bytes": 465,
+            "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/observation.json",
+            "sha256": "cd605642ad49284a7d4f686bbdd4f3dd21322a8e7f342299f69f77dbb03bf70a"
+          },
+          "postterminal-probe-stderr.txt": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "postterminal-probe-stdout.txt": {
+            "bytes": 16,
+            "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
+            "sha256": "33bda5b269e54bc75a570032401bd08424d3ad3a17c4a38211ca698c1d3f3c3a"
+          }
+        },
+        "native_launch_to_postprobe_ns": 2182224000,
+        "native_resources_qualified": true,
+        "outputs": [
+          {
+            "bytes": 74993,
+            "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/engine-result.json",
+            "sha256": "8e632e4328fff39d543d04595119b96240ac2a5772ec8285f05caf3819ebb08a"
+          },
+          {
+            "bytes": 8620,
+            "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/response.jsonl",
+            "sha256": "689bfeed611df43752c2df5daa147ae5f0800074d66ffff3fdae6c945531d6d6"
+          }
+        ],
+        "phase_observations": [
+          {
+            "native_ns": 576721197157000,
+            "stage": "BEFORE_COMPOSER"
+          },
+          {
+            "native_ns": 576722685591000,
+            "stage": "AFTER_COMPOSER"
+          },
+          {
+            "native_ns": 576722973012000,
+            "stage": "AFTER_DAG"
+          },
+          {
+            "native_ns": 576722979926000,
+            "stage": "AFTER_MINER"
+          },
+          {
+            "native_ns": 576722986679000,
+            "stage": "BEFORE_OUTPUT"
+          }
+        ],
+        "plan": {
+          "bytes": 8829,
+          "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-plan-v1.json",
+          "sha256": "9c2df11464eb94854ec3d330ab524b717da53543804bfd2af52472c6b30bbcda"
+        },
+        "reported_theorem_count": 0,
+        "schema": "ROOT-native-conditional-inventory-disposition-v1",
+        "scientific_replay": false,
+        "source_contract": {
+          "bytes": 22413,
+          "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json",
+          "sha256": "0454a81b0e5e37cfc549e170df58f4abdc7717d6b7328e5167aba05825466ca3"
+        },
+        "status": "UNKNOWN",
+        "stderr_tail_sha256": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "tool_bracket": {
+          "bytes": 384,
+          "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+          "sha256": "d4217782412f0d6c57e461e50d981959e7bd9a6e6ef6c8831ab140351dcebccd"
+        },
+        "whole_engine_qualified": false
+      },
+      "label": "Initial helper allowance",
+      "record_returned": true
+    },
+    {
+      "cap": 8000000,
+      "disposition": {
+        "GCTS_advantage_claimed": false,
+        "RL_accepted": false,
+        "actual_closed": true,
+        "aggregate_B_bytes": 47398912,
+        "all_reaped": true,
+        "complete_GCTS_model_accepted": false,
+        "complete_wire_verified": false,
+        "conditional_inventory_record_complete": false,
+        "current_frontier_viability_checked": false,
+        "failure_diagnostic": {
+          "complete_pair": false,
+          "reason": "no owned diagnostic directory"
+        },
+        "logical_proof_accepted": false,
+        "native_files": {
+          "ONCE.json": {
+            "bytes": 255,
+            "path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/ONCE.json",
+            "sha256": "9e851086120cf28002caafd062d858181a869e50676fa27d2c8f7bbb97c16b44"
+          },
+          "meter-stderr.txt": {
+            "bytes": 111,
+            "path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stderr.txt",
+            "sha256": "11b999bbbca8e1a1d53dc4a3e3eebfd565778f26c8bad1af22166756ce593f9b"
+          },
+          "meter-stdout.txt": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stdout.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "native-terminal.json": {
+            "bytes": 1563,
+            "path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/native-terminal.json",
+            "sha256": "455aafd70a59974947a89cdc9531f0ebf05e965a478bdb0dc9f5669d16887541"
+          },
+          "observation.json": {
+            "bytes": 472,
+            "path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/observation.json",
+            "sha256": "28c8fef7b8592286b448d18a5a456830f856dcf63acb77029101470e054a77cf"
+          },
+          "postterminal-probe-stderr.txt": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "postterminal-probe-stdout.txt": {
+            "bytes": 16,
+            "path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
+            "sha256": "221c42a5d26cd51850f21928ea08011485a009ca5f6f7db981a13864010e2faf"
+          }
+        },
+        "native_launch_to_postprobe_ns": 31376104000,
+        "native_resources_qualified": false,
+        "phase_observations": [],
+        "plan": {
+          "bytes": 8857,
+          "path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-plan-v1.json",
+          "sha256": "a537a95f67ab15c173712bd12088844c5f23f8189517e2f25f53d7cc40152f6a"
+        },
+        "reported_theorem_count": 0,
+        "schema": "ROOT-native-conditional-inventory-disposition-v1",
+        "scientific_replay": false,
+        "source_contract": {
+          "bytes": 22726,
+          "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v2.json",
+          "sha256": "308d4bf83851ea6ffa50e9f331811c9f5699f5989989f0210a433716b8d9fe20"
+        },
+        "status": "UNKNOWN",
+        "stderr_tail_sha256": {
+          "bytes": 111,
+          "sha256": "11b999bbbca8e1a1d53dc4a3e3eebfd565778f26c8bad1af22166756ce593f9b"
+        },
+        "tool_bracket": {
+          "bytes": 384,
+          "path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+          "sha256": "8eece0f39f8024d30e95de9eaff4f2121ffdd0e5497507b939b2fb6d11916b66"
+        },
+        "whole_engine_qualified": false
+      },
+      "label": "Larger helper allowance",
+      "record_returned": false
+    }
+  ],
+  "disposition": {
+    "GCTS_advantage_claimed": false,
+    "RL_accepted": false,
+    "actual_closed": true,
+    "aggregate_B_bytes": 49758208,
+    "all_reaped": true,
+    "complete_GCTS_model_accepted": false,
+    "complete_wire_verified": true,
+    "conditional_inventory_record_complete": false,
+    "current_frontier_viability_checked": false,
+    "expanded": {
+      "bytes": 869074,
+      "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "3334dd4c9ed1b3d03f9863936fbc96e7aff22d60b52fc3fa300c5e22c64b19e7"
+    },
+    "failure_diagnostic": null,
+    "logical_proof_accepted": false,
+    "native_files": {
+      "ONCE.json": {
+        "bytes": 248,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/ONCE.json",
+        "sha256": "6e355e3304c995a6097f87de4d2a119da448a29aceff0d9ff655c4e76612f33f"
+      },
+      "meter-stderr.txt": {
+        "bytes": 277,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stderr.txt",
+        "sha256": "f5c89281aa9c45222bf92b017bef69fca3a897f6fb8979c3f5f44a9d8ddd0be8"
+      },
+      "meter-stdout.txt": {
+        "bytes": 710,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stdout.txt",
+        "sha256": "af49c3ee035af8c0d46dc6c2043b64e0e7428448931ddae5cd6971c5716f9b6f"
+      },
+      "native-terminal.json": {
+        "bytes": 1553,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/native-terminal.json",
+        "sha256": "2de65cad872fb5c30a8367bcfb3e5250f3f9bed83539185a82b14bb3afef5403"
+      },
+      "observation.json": {
+        "bytes": 465,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/observation.json",
+        "sha256": "cd605642ad49284a7d4f686bbdd4f3dd21322a8e7f342299f69f77dbb03bf70a"
+      },
+      "postterminal-probe-stderr.txt": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "postterminal-probe-stdout.txt": {
+        "bytes": 16,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
+        "sha256": "33bda5b269e54bc75a570032401bd08424d3ad3a17c4a38211ca698c1d3f3c3a"
+      }
+    },
+    "native_launch_to_postprobe_ns": 2182224000,
+    "native_resources_qualified": true,
+    "outputs": [
+      {
+        "bytes": 74993,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/engine-result.json",
+        "sha256": "8e632e4328fff39d543d04595119b96240ac2a5772ec8285f05caf3819ebb08a"
+      },
+      {
+        "bytes": 8620,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/response.jsonl",
+        "sha256": "689bfeed611df43752c2df5daa147ae5f0800074d66ffff3fdae6c945531d6d6"
+      }
+    ],
+    "phase_observations": [
+      {
+        "native_ns": 576721197157000,
+        "stage": "BEFORE_COMPOSER"
+      },
+      {
+        "native_ns": 576722685591000,
+        "stage": "AFTER_COMPOSER"
+      },
+      {
+        "native_ns": 576722973012000,
+        "stage": "AFTER_DAG"
+      },
+      {
+        "native_ns": 576722979926000,
+        "stage": "AFTER_MINER"
+      },
+      {
+        "native_ns": 576722986679000,
+        "stage": "BEFORE_OUTPUT"
+      }
+    ],
+    "plan": {
+      "bytes": 8829,
+      "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "9c2df11464eb94854ec3d330ab524b717da53543804bfd2af52472c6b30bbcda"
+    },
+    "reported_theorem_count": 0,
+    "schema": "ROOT-native-conditional-inventory-disposition-v1",
+    "scientific_replay": false,
+    "source_contract": {
+      "bytes": 22413,
+      "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "0454a81b0e5e37cfc549e170df58f4abdc7717d6b7328e5167aba05825466ca3"
+    },
+    "status": "UNKNOWN",
+    "stderr_tail_sha256": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tool_bracket": {
+      "bytes": 384,
+      "path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "d4217782412f0d6c57e461e50d981959e7bd9a6e6ef6c8831ab140351dcebccd"
+    },
+    "whole_engine_qualified": false
+  },
+  "evidence_links": [
+    [
+      "Whole saved disposition",
+      "evidence/gcts-native-inventory-ROOT-20261017/ROOT-disposition-v1.json"
+    ],
+    [
+      "Frozen plan and limits",
+      "evidence/gcts-native-inventory-ROOT-20261017/ROOT-plan-v1.json"
+    ],
+    [
+      "Native measurements",
+      "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/native-terminal.json"
+    ],
+    [
+      "Reached phase markers",
+      "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stderr.txt"
+    ],
+    [
+      "Current source contract",
+      "evidence/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json"
+    ],
+    [
+      "Larger-allowance attempt disposition",
+      "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-disposition-v1.json"
+    ],
+    [
+      "Larger-allowance attempt plan",
+      "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-plan-v1.json"
+    ],
+    [
+      "Larger-allowance native terminal",
+      "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/native-terminal.json"
+    ],
+    [
+      "Complete expanded evidence",
+      "evidence/gcts-native-inventory-ROOT-20261017/ROOT-expanded-result-v1.json"
+    ],
+    [
+      "Composer Source",
+      "evidence/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py"
+    ],
+    [
+      "Inventory cases Source",
+      "evidence/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py"
+    ],
+    [
+      "Marked adapter Source",
+      "evidence/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py"
+    ],
+    [
+      "Collector Source",
+      "../engine-family-pipeline/evidence/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py"
+    ],
+    [
+      "Miner Source",
+      "../connected-family-discovery/evidence/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py"
+    ],
+    [
+      "Producer Source",
+      "../engine-family-pipeline/evidence/current-sources/family_expander.py"
+    ],
+    [
+      "Expansion checker Source",
+      "../engine-family-pipeline/evidence/current-sources/family_checker.py"
+    ],
+    [
+      "Host adapter Source",
+      "../engine-family-pipeline/evidence/current-sources/family_adapter.py"
+    ]
+  ],
+  "launch_ns": 576720907862000,
+  "reader_intro": "Each line below translates an actual native tile in the returned conditional component.",
+  "records": [
+    {
+      "kind": "Literal descriptor",
+      "record": {
+        "adaptation": null,
+        "check": null,
+        "port_bindings": null,
+        "proposal": null,
+        "rebound_roundtrip": null,
+        "record": {
+          "abstraction_map": [],
+          "boundary_edge_map": [
+            {
+              "descriptor_reference": {
+                "step": "s0"
+              },
+              "ordered_index": 0,
+              "original_reference": {
+                "node": "n0"
+              },
+              "source_node_id": "n1"
+            }
+          ],
+          "boundary_source_map": [],
+          "costs": {
+            "actual_repeated_abstractions": 0,
+            "exposed_outputs": 1,
+            "external_inputs": 0,
+            "hypothesis_ports": 0,
+            "literal_shadow_abstractions": 0,
+            "ordered_edges": 1,
+            "parameters": 9,
+            "selected_members": 2
+          },
+          "cut": {
+            "anchor": "n1",
+            "selected_node_ids": [
+              "n0",
+              "n1"
+            ],
+            "source_DAG_sha256": "8c75bf82fc381ea63bf74a1b8c53be06bc32a5112a275873a9143a686a59a317"
+          },
+          "descriptor": {
+            "body": [
+              {
+                "arguments": {
+                  "name": {
+                    "type": "LITERAL",
+                    "value": "AS"
+                  }
+                },
+                "formula": {
+                  "binder_id": "b0",
+                  "body": {
+                    "binder_id": "b1",
+                    "body": {
+                      "left": {
+                        "arguments": [
+                          {
+                            "node": "var",
+                            "variable_id": "b0"
+                          },
+                          {
+                            "arguments": [
+                              {
+                                "node": "var",
+                                "variable_id": "b1"
+                              }
+                            ],
+                            "node": "fun",
+                            "symbol": "succ"
+                          }
+                        ],
+                        "node": "fun",
+                        "symbol": "add"
+                      },
+                      "node": "eq",
+                      "right": {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "node": "var",
+                                "variable_id": "b0"
+                              },
+                              {
+                                "node": "var",
+                                "variable_id": "b1"
+                              }
+                            ],
+                            "node": "fun",
+                            "symbol": "add"
+                          }
+                        ],
+                        "node": "fun",
+                        "symbol": "succ"
+                      }
+                    },
+                    "node": "all"
+                  },
+                  "node": "all"
+                },
+                "id": "s0",
+                "kind": "PRIMITIVE",
+                "ordered_inputs": [],
+                "rule": "axiom"
+              },
+              {
+                "arguments": {
+                  "variable": {
+                    "type": "VARIABLE",
+                    "value": {
+                      "variable_id": "v0"
+                    }
+                  }
+                },
+                "formula": {
+                  "binder_id": "b2",
+                  "body": {
+                    "binder_id": "b3",
+                    "body": {
+                      "binder_id": "b4",
+                      "body": {
+                        "left": {
+                          "arguments": [
+                            {
+                              "node": "var",
+                              "variable_id": "b3"
+                            },
+                            {
+                              "arguments": [
+                                {
+                                  "node": "var",
+                                  "variable_id": "b4"
+                                }
+                              ],
+                              "node": "fun",
+                              "symbol": "succ"
+                            }
+                          ],
+                          "node": "fun",
+                          "symbol": "add"
+                        },
+                        "node": "eq",
+                        "right": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "node": "var",
+                                  "variable_id": "b3"
+                                },
+                                {
+                                  "node": "var",
+                                  "variable_id": "b4"
+                                }
+                              ],
+                              "node": "fun",
+                              "symbol": "add"
+                            }
+                          ],
+                          "node": "fun",
+                          "symbol": "succ"
+                        }
+                      },
+                      "node": "all"
+                    },
+                    "node": "all"
+                  },
+                  "node": "all"
+                },
+                "id": "s1",
+                "kind": "PRIMITIVE",
+                "ordered_inputs": [
+                  {
+                    "step": "s0"
+                  }
+                ],
+                "rule": "generalize"
+              }
+            ],
+            "dependencies": [],
+            "family_id": "980e1db6196239ce4902325885799ba62da390fbd276de2c7e1eee91334e0a1f",
+            "hypotheses": [],
+            "inputs": [],
+            "origin": "SEARCH_EXTRACTED",
+            "outputs": [
+              {
+                "formula": {
+                  "binder_id": "b5",
+                  "body": {
+                    "binder_id": "b6",
+                    "body": {
+                      "binder_id": "b7",
+                      "body": {
+                        "left": {
+                          "arguments": [
+                            {
+                              "node": "var",
+                              "variable_id": "b6"
+                            },
+                            {
+                              "arguments": [
+                                {
+                                  "node": "var",
+                                  "variable_id": "b7"
+                                }
+                              ],
+                              "node": "fun",
+                              "symbol": "succ"
+                            }
+                          ],
+                          "node": "fun",
+                          "symbol": "add"
+                        },
+                        "node": "eq",
+                        "right": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "node": "var",
+                                  "variable_id": "b6"
+                                },
+                                {
+                                  "node": "var",
+                                  "variable_id": "b7"
+                                }
+                              ],
+                              "node": "fun",
+                              "symbol": "add"
+                            }
+                          ],
+                          "node": "fun",
+                          "symbol": "succ"
+                        }
+                      },
+                      "node": "all"
+                    },
+                    "node": "all"
+                  },
+                  "node": "all"
+                },
+                "id": "o0",
+                "source": {
+                  "step": "s1"
+                }
+              }
+            ],
+            "parameters": [
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b0",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b1",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b2",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b3",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b4",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "v0",
+                "kind": "VARIABLE",
+                "role": "FREE_PARAMETER"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b5",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b6",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b7",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              }
+            ],
+            "provenance": {
+              "discovered_proof": false,
+              "input_origin_claims_untrusted": {
+                "binding": {
+                  "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                  "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                  "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                  "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                  "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                  "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+                },
+                "caller_origin": {
+                  "component_id": "automatic-component-949b28776e1ed5068dcf827e95b7663836afd9cc7a0140beffe095ae6737ad75",
+                  "composer_version": "receptor-family-native-conditional-component-composer-v1",
+                  "engine_generated": false,
+                  "kind": "automatic_primitive_composition",
+                  "root_proof_accepted": false
+                },
+                "collector_version": "receptor-family-checked-engine-state-DAG-collector-v2-kernel-visit-counter",
+                "engine_generated_accepted": false,
+                "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+                "root_proof_accepted": false,
+                "schema": "receptor-family-checked-engine-state-origin-v1",
+                "state_sha256": "8e2804316d31ccc743bd1b0f2a6222608fa78dc3d1fc0f05744ab46f57b131a0"
+              },
+              "mechanism": "AUTOMATIC_PRIMITIVE_DAG_CUT",
+              "schema": "receptor-family-automatic-DAG-extraction-origin-v1",
+              "source_DAG_sha256": "8c75bf82fc381ea63bf74a1b8c53be06bc32a5112a275873a9143a686a59a317",
+              "source_node_ids": [
+                "n0",
+                "n1"
+              ],
+              "source_proof_verified": false,
+              "universal_schema_proved": false
+            },
+            "required_host_features": [],
+            "schema": "receptor-lemma-family-v2",
+            "side_conditions": []
+          },
+          "family_id": "980e1db6196239ce4902325885799ba62da390fbd276de2c7e1eee91334e0a1f",
+          "family_preimage": {
+            "body": [
+              {
+                "arguments": {
+                  "name": {
+                    "type": "LITERAL",
+                    "value": "AS"
+                  }
+                },
+                "formula": {
+                  "binder_id": "b0",
+                  "body": {
+                    "binder_id": "b1",
+                    "body": {
+                      "left": {
+                        "arguments": [
+                          {
+                            "node": "var",
+                            "variable_id": "b0"
+                          },
+                          {
+                            "arguments": [
+                              {
+                                "node": "var",
+                                "variable_id": "b1"
+                              }
+                            ],
+                            "node": "fun",
+                            "symbol": "succ"
+                          }
+                        ],
+                        "node": "fun",
+                        "symbol": "add"
+                      },
+                      "node": "eq",
+                      "right": {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "node": "var",
+                                "variable_id": "b0"
+                              },
+                              {
+                                "node": "var",
+                                "variable_id": "b1"
+                              }
+                            ],
+                            "node": "fun",
+                            "symbol": "add"
+                          }
+                        ],
+                        "node": "fun",
+                        "symbol": "succ"
+                      }
+                    },
+                    "node": "all"
+                  },
+                  "node": "all"
+                },
+                "id": "s0",
+                "kind": "PRIMITIVE",
+                "ordered_inputs": [],
+                "rule": "axiom"
+              },
+              {
+                "arguments": {
+                  "variable": {
+                    "type": "VARIABLE",
+                    "value": {
+                      "variable_id": "v0"
+                    }
+                  }
+                },
+                "formula": {
+                  "binder_id": "b2",
+                  "body": {
+                    "binder_id": "b3",
+                    "body": {
+                      "binder_id": "b4",
+                      "body": {
+                        "left": {
+                          "arguments": [
+                            {
+                              "node": "var",
+                              "variable_id": "b3"
+                            },
+                            {
+                              "arguments": [
+                                {
+                                  "node": "var",
+                                  "variable_id": "b4"
+                                }
+                              ],
+                              "node": "fun",
+                              "symbol": "succ"
+                            }
+                          ],
+                          "node": "fun",
+                          "symbol": "add"
+                        },
+                        "node": "eq",
+                        "right": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "node": "var",
+                                  "variable_id": "b3"
+                                },
+                                {
+                                  "node": "var",
+                                  "variable_id": "b4"
+                                }
+                              ],
+                              "node": "fun",
+                              "symbol": "add"
+                            }
+                          ],
+                          "node": "fun",
+                          "symbol": "succ"
+                        }
+                      },
+                      "node": "all"
+                    },
+                    "node": "all"
+                  },
+                  "node": "all"
+                },
+                "id": "s1",
+                "kind": "PRIMITIVE",
+                "ordered_inputs": [
+                  {
+                    "step": "s0"
+                  }
+                ],
+                "rule": "generalize"
+              }
+            ],
+            "dependencies": [],
+            "hypotheses": [],
+            "inputs": [],
+            "origin": "SEARCH_EXTRACTED",
+            "outputs": [
+              {
+                "formula": {
+                  "binder_id": "b5",
+                  "body": {
+                    "binder_id": "b6",
+                    "body": {
+                      "binder_id": "b7",
+                      "body": {
+                        "left": {
+                          "arguments": [
+                            {
+                              "node": "var",
+                              "variable_id": "b6"
+                            },
+                            {
+                              "arguments": [
+                                {
+                                  "node": "var",
+                                  "variable_id": "b7"
+                                }
+                              ],
+                              "node": "fun",
+                              "symbol": "succ"
+                            }
+                          ],
+                          "node": "fun",
+                          "symbol": "add"
+                        },
+                        "node": "eq",
+                        "right": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "node": "var",
+                                  "variable_id": "b6"
+                                },
+                                {
+                                  "node": "var",
+                                  "variable_id": "b7"
+                                }
+                              ],
+                              "node": "fun",
+                              "symbol": "add"
+                            }
+                          ],
+                          "node": "fun",
+                          "symbol": "succ"
+                        }
+                      },
+                      "node": "all"
+                    },
+                    "node": "all"
+                  },
+                  "node": "all"
+                },
+                "id": "o0",
+                "source": {
+                  "step": "s1"
+                }
+              }
+            ],
+            "parameters": [
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b0",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b1",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b2",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b3",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b4",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "v0",
+                "kind": "VARIABLE",
+                "role": "FREE_PARAMETER"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b5",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b6",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              },
+              {
+                "allowed_names_policy": "HOST_DECLARED_SCOPE",
+                "distinct_from": [],
+                "id": "b7",
+                "kind": "VARIABLE",
+                "role": "BOUND"
+              }
+            ],
+            "required_host_features": [],
+            "schema": "receptor-lemma-family-v2",
+            "side_conditions": []
+          },
+          "flags": {
+            "RL_accepted": false,
+            "discovered_proof": false,
+            "engine_activated": false,
+            "ground_roundtrip_checked": false,
+            "host_membership_accepted": false,
+            "origin_claims_untrusted": true,
+            "point_union_accepted": false,
+            "proposal_only": true,
+            "pruning_accepted": false,
+            "runtime_qualified": false,
+            "source_proof_verified": false,
+            "universal_schema_proved": false
+          },
+          "fragment_generalization": null,
+          "output_map": [
+            {
+              "outgoing_uses": [],
+              "port_id": "o0",
+              "source_node_id": "n1",
+              "source_output_ids": [
+                "o1"
+              ]
+            }
+          ],
+          "schema": "receptor-family-mined-extraction-v1",
+          "source_node_map": [
+            {
+              "descriptor_step_id": "s0",
+              "source_node_id": "n0"
+            },
+            {
+              "descriptor_step_id": "s1",
+              "source_node_id": "n1"
+            }
+          ],
+          "source_port_bindings": {
+            "hypotheses": [],
+            "inputs": [],
+            "outputs": [
+              {
+                "formula": [
+                  "all",
+                  "n",
+                  [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "port_id": "o0"
+              }
+            ]
+          },
+          "substitution": {
+            "b0": "x",
+            "b1": "y",
+            "b2": "n",
+            "b3": "x",
+            "b4": "y",
+            "b5": "n",
+            "b6": "x",
+            "b7": "y",
+            "v0": "n"
+          }
+        },
+        "record_index": 0,
+        "row_assignment": null,
+        "source_check": null,
+        "source_proof_accepted": false,
+        "source_proposal": null,
+        "source_roundtrip": null,
+        "status": "UNKNOWN",
+        "universal_lemma_accepted": false
+      },
+      "summary": "UNKNOWN. This checks the source substitution only; it is not a new-instance transfer or a universal lemma."
+    }
+  ],
+  "result_text": "The first run returned a checked connected pair, its collected dependency graph and mined proposals. Its helper work allowance ended during source-ground qualification. A separate run with a larger allowance returned no complete record or phase markers and failed the positive-result time limit. Both outcomes remain unknown for inventory admission.",
+  "result_title": "An automatic fragment returned; inventory qualification remains unfinished.",
+  "rows": [
+    {
+      "english": "Introduce this declared arithmetic axiom.",
+      "formula": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "premises": [],
+      "row": 0,
+      "rule": "axiom",
+      "tile": {
+        "GCTS_advantage_accepted": false,
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "added_global_m_values": [],
+        "added_local_m_values": [],
+        "base_tile": {
+          "global_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ]
+          ],
+          "global_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "local_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ]
+          ],
+          "local_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "membership": {
+            "binding": {
+              "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+              "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "identity_preimage": {
+              "binding": {
+                "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            },
+            "logical_acceptance": false,
+            "ordered_input_formula_ids": [],
+            "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+            "primitive_id": "1cc8e2d7983c34c26f01fb8f3516ac5fbee3470fb5f24f91b9b0cbcb8d8b5348",
+            "schema": "shared-bounded-primitive-member-v1",
+            "status": "MEMBER"
+          },
+          "placement_key": {
+            "tile_type_id": "bounded-point-tile-951e886bf24bd94acb9ec0ff82ec9c89bf86ef743008d55eac2b9a26ab8f0930",
+            "translation": [
+              0,
+              0
+            ],
+            "type_preimage": {
+              "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            }
+          },
+          "selection_record": {
+            "generation": 1,
+            "tile_type_id": "bounded-point-tile-951e886bf24bd94acb9ec0ff82ec9c89bf86ef743008d55eac2b9a26ab8f0930",
+            "translation": [
+              0,
+              0
+            ],
+            "type_preimage": {
+              "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            }
+          }
+        },
+        "complete_GCTS_model_accepted": false,
+        "exact_point_board_accepted": false,
+        "global_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "independently_checked": false,
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "logical_proof_accepted": false,
+        "marking_activated": false,
+        "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+        "placement_key": {
+          "tile_type_id": "row0-decorated-tile-dc98432d3c35659c7a7231e7f81f474bec8fa4532026a26dc25bfcc72156f784",
+          "translation": [
+            0,
+            0
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            },
+            "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+            "schema": "unit-row-row0-decorated-type-v1"
+          }
+        },
+        "read_obligations": [],
+        "schema": "unit-row-row0-decorated-tile-v1",
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "row0-decorated-tile-dc98432d3c35659c7a7231e7f81f474bec8fa4532026a26dc25bfcc72156f784",
+          "translation": [
+            0,
+            0
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "ordered_offsets": [],
+              "ordered_premise_formulas": [],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "name": "AS",
+                "rule": "axiom"
+              }
+            },
+            "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+            "schema": "unit-row-row0-decorated-type-v1"
+          }
+        },
+        "trajectory_accepted": false,
+        "version": "unit-row-certified-row0-point-mark-decorator-v1"
+      }
+    },
+    {
+      "english": "Universally quantify the recorded variable, after checking the scope conditions.",
+      "formula": [
+        "all",
+        "n",
+        [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "premises": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "internal": true,
+          "row": 0
+        }
+      ],
+      "row": 1,
+      "rule": "generalize",
+      "tile": {
+        "GCTS_advantage_accepted": false,
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "added_global_m_values": [],
+        "added_local_m_values": [],
+        "base_tile": {
+          "global_m_values": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                "formula",
+                "[\"all\",\"n\",[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]]"
+              ]
+            ],
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ],
+            [
+              [
+                2,
+                1
+              ],
+              [
+                "offset",
+                -1
+              ]
+            ]
+          ],
+          "global_t_values": [
+            [
+              [
+                0,
+                1
+              ],
+              1
+            ]
+          ],
+          "local_m_values": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                "formula",
+                "[\"all\",\"n\",[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]]"
+              ]
+            ],
+            [
+              [
+                1,
+                -1
+              ],
+              [
+                "formula",
+                "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+              ]
+            ],
+            [
+              [
+                2,
+                0
+              ],
+              [
+                "offset",
+                -1
+              ]
+            ]
+          ],
+          "local_t_values": [
+            [
+              [
+                0,
+                0
+              ],
+              1
+            ]
+          ],
+          "membership": {
+            "binding": {
+              "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+              "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+              "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+              "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+              "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+            },
+            "identity_preimage": {
+              "binding": {
+                "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "ordered_premise_formulas": [
+                [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "n",
+                  [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "rule": "generalize",
+                "variable": "n"
+              }
+            },
+            "logical_acceptance": false,
+            "ordered_input_formula_ids": [
+              "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553"
+            ],
+            "output_formula_id": "f660bcc5ddcf03887090ddf9c1dfe08c99e47264611c7b9839ed80c43589c23b",
+            "primitive_id": "9915f3f360d3ad5f4710a90112eeebefeee6ed12821bb3b361de767f9cb04a01",
+            "schema": "shared-bounded-primitive-member-v1",
+            "status": "MEMBER"
+          },
+          "placement_key": {
+            "tile_type_id": "bounded-point-tile-4b1bef951a0f26414e27b2f791e93a0893d171e30ef6de6987bf4c02dddcf171",
+            "translation": [
+              0,
+              1
+            ],
+            "type_preimage": {
+              "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "ordered_offsets": [
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "n",
+                  [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "rule": "generalize",
+                "variable": "n"
+              }
+            }
+          },
+          "selection_record": {
+            "generation": 1,
+            "tile_type_id": "bounded-point-tile-4b1bef951a0f26414e27b2f791e93a0893d171e30ef6de6987bf4c02dddcf171",
+            "translation": [
+              0,
+              1
+            ],
+            "type_preimage": {
+              "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "ordered_offsets": [
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "n",
+                  [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "rule": "generalize",
+                "variable": "n"
+              }
+            }
+          }
+        },
+        "complete_GCTS_model_accepted": false,
+        "exact_point_board_accepted": false,
+        "global_m_values": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              "formula",
+              "[\"all\",\"n\",[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              2,
+              1
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ]
+        ],
+        "global_t_values": [
+          [
+            [
+              0,
+              1
+            ],
+            1
+          ]
+        ],
+        "independently_checked": false,
+        "local_m_values": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              "formula",
+              "[\"all\",\"n\",[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              1,
+              -1
+            ],
+            [
+              "formula",
+              "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              "offset",
+              -1
+            ]
+          ]
+        ],
+        "local_t_values": [
+          [
+            [
+              0,
+              0
+            ],
+            1
+          ]
+        ],
+        "logical_proof_accepted": false,
+        "marking_activated": false,
+        "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+        "placement_key": {
+          "tile_type_id": "row0-decorated-tile-a011bfc091b27fa8cc956c54f6a6cf3d332ec8bb775abc52f7c2dc04f85cc174",
+          "translation": [
+            0,
+            1
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "ordered_offsets": [
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "n",
+                  [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "rule": "generalize",
+                "variable": "n"
+              }
+            },
+            "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+            "schema": "unit-row-row0-decorated-type-v1"
+          }
+        },
+        "read_obligations": [
+          {
+            "fact_accepted": false,
+            "formula": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "occupied": true,
+            "row": 0
+          }
+        ],
+        "schema": "unit-row-row0-decorated-tile-v1",
+        "selection_record": {
+          "generation": 1,
+          "tile_type_id": "row0-decorated-tile-a011bfc091b27fa8cc956c54f6a6cf3d332ec8bb775abc52f7c2dc04f85cc174",
+          "translation": [
+            0,
+            1
+          ],
+          "type_preimage": {
+            "base_type_preimage": {
+              "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+              "ordered_offsets": [
+                -1
+              ],
+              "ordered_premise_formulas": [
+                [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "primitive_witness": {
+                "formula": [
+                  "all",
+                  "n",
+                  [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "rule": "generalize",
+                "variable": "n"
+              }
+            },
+            "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+            "schema": "unit-row-row0-decorated-type-v1"
+          }
+        },
+        "trajectory_accepted": false,
+        "version": "unit-row-certified-row0-point-mark-decorator-v1"
+      }
+    }
+  ],
+  "run_details": {
+    "actuals_each_composition": 1,
+    "actuals_total": 2,
+    "complete_GCTS_model_accepted": false,
+    "component_members": 2,
+    "composer_work": {
+      "extension_advance_calls": 4,
+      "retained_heads_by_rule": {
+        "assumption": 0,
+        "axiom": 1,
+        "eq_subst": 1,
+        "generalize": 0,
+        "instantiate": 1,
+        "mp": 0
+      },
+      "root_advance_calls": 8,
+      "steps": 830435
+    },
+    "current_inputs": 8,
+    "current_sources": 17,
+    "emitted_records": 1,
+    "engine_generated": false,
+    "family_statuses": [
+      "UNKNOWN"
+    ],
+    "first_qualified_record_statuses": [
+      "UNKNOWN"
+    ],
+    "first_record_complete": true,
+    "global_type_census": 18,
+    "inventory_complete": false,
+    "new_theorems_claimed": 0,
+    "open_inputs_are_facts": false,
+    "original_model_inputs": 2,
+    "original_model_sources": 17,
+    "receiver_transfer": false,
+    "second_phase_count": 0,
+    "second_record_complete": false,
+    "second_timeout_cause_established": false,
+    "speedup_claimed": false,
+    "target_search": false,
+    "trained_RL": false,
+    "unchanged_actual_restarted": false
+  },
+  "schema": "ROOT-native-conditional-inventory-public-projection-v1",
+  "status_text": "Connected component returned \u00b7 inventory remains unknown in both attempts"
+}

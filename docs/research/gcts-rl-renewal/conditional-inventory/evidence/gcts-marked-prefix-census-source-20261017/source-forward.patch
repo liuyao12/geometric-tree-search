@@ -1,0 +1,50 @@
+--- parent.py
++++ current.py
+@@ -9,7 +9,7 @@
+ import json
+ 
+ VERSION = 'unit-row-channel4-point-adapter-v1'
+-IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-all-checked-tiles-local-reuse-v4'
++IMPLEMENTATION_VERSION = 'unit-row-channel4-point-adapter-public-prefix-census-v5'
+ SEMANTICS_VERSION = 'unit-row-channel4-filtered-degree-semantics-v1'
+ TRANSITION_VERSION = 'unit-row-channel4-support-transition-v1'
+ FALLBACK_VERSION = 'unit-row-channel4-filtered-six-rule-fallback-v1'
+@@ -383,6 +383,38 @@
+             raise RuntimeError('marked fallback poisoned')
+         try:
+             return self._semantics.tree(self._context, self._tick)
++        except BaseException:
++            self._failed = True
++            raise
++
++    def prototype_census(self):
++        """Copy the complete checked ledger for this cursor's successful prefix.
++
++        Includes base-yielded original/decorated types even when channel4
++        removes them. Never-yielded base internals and degree/EOF acceptance
++        are outside this read-only export. Native/copy failure poisons it.
++        """
++        if self._failed:
++            raise RuntimeError('marked fallback poisoned; no prefix census')
++        try:
++            self._tick()
++            entries = []
++            for name, preimage in sorted(self._names.items()):
++                self._tick()
++                entries.append([name, preimage])
++            return self._semantics.tree({
++                'schema': 'unit-row-channel4-fallback-prototype-census-v1',
++                'version': FALLBACK_VERSION, 'implementation_version': IMPLEMENTATION_VERSION,
++                'context': self._context, 'context_sha256': self._context['context_sha256'],
++                'input_epoch': self._context['input_epoch'], 'marking_id': self._context['marking_id'],
++                'row': self._context['row'], 'state_sha256': self._context['state_sha256'],
++                'prototype_census': entries,
++                'original_yielded_candidates': self._raw_count, 'yielded_candidates': self._count,
++                'marked_removed': self._removed, 'eof_reached': self._done,
++                'complete_prefix_census': True,
++                'scope': 'CHECKED_STATE_AND_BASE_YIELDED_MARKED_CURSOR_PREFIX',
++                'independently_checked': False, 'degree_zero_or_singleton_accepted': False,
++                **{k: False for k in FLAGS}}, self._tick)
+         except BaseException:
+             self._failed = True
+             raise

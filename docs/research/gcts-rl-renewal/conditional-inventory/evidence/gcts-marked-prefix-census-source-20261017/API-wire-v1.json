@@ -1,0 +1,24 @@
+{
+  "schema": "unit-row-marked-prefix-census-API-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "method": "FilteredCursor.prototype_census(self)",
+  "implementation_version": "unit-row-channel4-point-adapter-public-prefix-census-v5",
+  "unchanged_public_versions": {
+    "VERSION": "unit-row-channel4-point-adapter-v1",
+    "FALLBACK_VERSION": "unit-row-channel4-filtered-six-rule-fallback-v1",
+    "SEMANTICS_VERSION": "unit-row-channel4-filtered-degree-semantics-v1",
+    "TRANSITION_VERSION": "unit-row-channel4-support-transition-v1"
+  },
+  "return_exact_fields": ["schema", "version", "implementation_version", "context", "context_sha256", "input_epoch", "marking_id", "row", "state_sha256", "prototype_census", "original_yielded_candidates", "yielded_candidates", "marked_removed", "eof_reached", "complete_prefix_census", "scope", "independently_checked", "degree_zero_or_singleton_accepted", "complete_candidate_graph_accepted", "scheduler_or_rollback_accepted", "logical_proof_accepted", "ROOT_resource_accepted"],
+  "schema_literal": "unit-row-channel4-fallback-prototype-census-v1",
+  "version_literal": "unit-row-channel4-filtered-six-rule-fallback-v1",
+  "context": "Full fresh unchanged existing unit-row-channel4-fallback-context-v1 object, including complete marked entry state, original_context and original language_binding. The repeated headers join literally to its fields; no new model/epoch authority.",
+  "prototype_census": "Sorted list [[literal_type_id, full_existing_canonical_type_preimage_text], ...] copying the WHOLE existing original+decorated ledger. Canonical text uses ensure_ascii=False and must be parsed/compared as full literal data, not treated as a digest. Initial selected/excluded names plus every base-yielded original CANDIDATE processed, including channel4-removed types.",
+  "prefix_counts": "Exact builtin cursor counters: original_yielded_candidates=_raw_count, yielded_candidates=_count, marked_removed=_removed; eof_reached=_done. No advance or counter recomputation/reset. A newly opened cursor can have state ledger entries with all counts0.",
+  "authority": "complete_prefix_census=true means a full copy of this operative checked prefix ledger, NOT full candidate universe/completeness/degree/EOF certification. scope=CHECKED_STATE_AND_BASE_YIELDED_MARKED_CURSOR_PREFIX. All independent/degree/graph/scheduler/proof/resource acceptance fields false.",
+  "lifetime": "Public method may be called after opening and every successful advance/EOF. Success only reads cursor state and returns fresh mutable containers. Native-first tick, per-entry tick and existing semantics.tree copy are charged to the same cumulative Root callback/bounds; no new cap, cache, clock, budget reset or late deadline extension.",
+  "failure": "Already poisoned/aborted cursor raises RuntimeError before reading/export. Any callback/sort/copy/other BaseException during export sets the existing failed flag and propagates unchanged; no truncated successful packet. After failure no late export.",
+  "not_exported": "Never-yielded private lower69 reconstructed prototypes rejected before a base CANDIDATE. No base69 source, originalmodel, marking, event/order/EOF/abort/legality or ordinary old API change.",
+  "composer_obligation": "Merge the complete returned census into one selected/excluded/public/offer original+decorated ID/full-preimage ledger before retaining each head, extension, pair or preference. Do not merge alternatives' incompatible point unions. No composer or engine integration is implemented here."
+}

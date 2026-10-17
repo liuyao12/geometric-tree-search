@@ -1,0 +1,94 @@
+{
+  "actual_forward_patch": {
+    "bytes": 1325,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-v1-to-v2-forward.patch",
+    "sha256": "9428d7b5377d6a3fd7d213d4645aaddc7e94a5d6a6935b55e38e7c9b5e4561c0"
+  },
+  "actual_inverse_patch": {
+    "bytes": 1325,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-v2-full-inverse.patch",
+    "sha256": "e0cb650b5480e31e5deaf43ed07a3e635e79ac6ad96cbf135e9b0b937f9a6fc6"
+  },
+  "affected_containing_regions": [
+    "_Work",
+    "_Work.step",
+    "run_inventory",
+    "run_inventory.finish"
+  ],
+  "edits": [
+    {
+      "current_line_interval": [
+        10,
+        10
+      ],
+      "new": "VERSION = 'ROOT-native-connected-conditional-inventory-cases-v2'\n",
+      "old": "VERSION = 'ROOT-native-connected-conditional-inventory-cases-v1'\n",
+      "operation": "replace",
+      "parent_line_interval": [
+        10,
+        10
+      ]
+    },
+    {
+      "current_line_interval": [
+        70,
+        70
+      ],
+      "new": "        if self.steps >= 8000000 or depth > 128:\n",
+      "old": "        if self.steps >= 1000000 or depth > 128:\n",
+      "operation": "replace",
+      "parent_line_interval": [
+        70,
+        70
+      ]
+    },
+    {
+      "current_line_interval": [
+        293,
+        293
+      ],
+      "new": "        result['work'] = {'case_steps': work.steps, 'case_work_limit': 8000000, 'case_depth_limit': 128,\n",
+      "old": "        result['work'] = {'case_steps': work.steps, 'case_work_limit': 1000000, 'case_depth_limit': 128,\n",
+      "operation": "replace",
+      "parent_line_interval": [
+        293,
+        293
+      ]
+    }
+  ],
+  "parent_source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+    "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+  },
+  "raw_edit_count": 3,
+  "raw_forward_exact": true,
+  "raw_inverse_exact": true,
+  "schema": "ROOT-native-inventory-case-raw-Source-delta-v2",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+    "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_named_regions": [
+    "InventoryDataError",
+    "_OwnPrefix",
+    "_NativeFailure",
+    "_NativeFailure.__init__",
+    "require",
+    "canonical",
+    "ascii_digest",
+    "_Work.__init__",
+    "_Work.copy",
+    "_key",
+    "_checked_expansion",
+    "_check_source_roundtrip",
+    "run_inventory.signal",
+    "run_inventory.merge",
+    "run_inventory.merge_tile",
+    "run_inventory.merge_states"
+  ],
+  "whole_AST_inverse_exact": true
+}

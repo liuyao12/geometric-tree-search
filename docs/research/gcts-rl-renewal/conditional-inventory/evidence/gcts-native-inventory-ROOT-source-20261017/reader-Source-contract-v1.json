@@ -1,0 +1,28 @@
+{
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 22413,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "0454a81b0e5e37cfc549e170df58f4abdc7717d6b7328e5167aba05825466ca3"
+  },
+  "parent_reader": {
+    "bytes": 22113,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_read_all_checked_discovery_saved_v1.py",
+    "sha256": "3082fd32e9897533cf4674b80a6cfe915b061550bac1919e86efc57e95b30a09"
+  },
+  "schema": "ROOT-native-inventory-saved-reader-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Saved bytes/native/once/Date/wire closure only. Same full-byte lossless transport/native20positive55failure gates. New phases/result schemas; no proof checker/helper replay, no inference of provenance or transfer. Legacy4slots allNone if timeout.",
+  "source": {
+    "bytes": 21640,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v1.py",
+    "sha256": "ce0e9c5770cb410923e538b884d25c0e34aee199c07817c4c3376e0e694bdacf"
+  },
+  "source_delta": {
+    "bytes": 6777,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-delta-v1.json",
+    "sha256": "e5a2c08227a1bf0918cf3624254b183d4c706ef5227100a0ff9c4d836f47fd63"
+  },
+  "source_only": true
+}

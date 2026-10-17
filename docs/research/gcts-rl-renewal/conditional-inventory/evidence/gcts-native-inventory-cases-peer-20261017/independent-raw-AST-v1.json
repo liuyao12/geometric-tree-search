@@ -1,0 +1,116 @@
+{
+  "schema": "ROOT-native-conditional-inventory-cases-independent-raw-AST-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+    "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+  },
+  "references": {
+    "source": {
+      "bytes": 31001,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+    },
+    "source_contract": {
+      "bytes": 17097,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-contract-v1.json",
+      "sha256": "00f7968309fb98bdadead08929a4994fe90c3683a5e69383f22c7c13fdf54f89"
+    },
+    "API": {
+      "bytes": 3198,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/API-wire-v1.json",
+      "sha256": "c92bed792b5429f5041d7921fb4ce1ee59e0f745ac7239b47c650ca4e5413577"
+    },
+    "delta": {
+      "bytes": 33108,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-delta-v1.json",
+      "sha256": "2275f28a70581e22bcaf712c82a176128b6b8921c521973f0a62ef43c4a2471f"
+    },
+    "static": {
+      "bytes": 1614,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/static-audit-v1.json",
+      "sha256": "bbf247397c239b30c1865fafe3f1891dcd9badc371ce24cf0f62f5fd289e3b8c"
+    },
+    "actual_addition_patch": {
+      "bytes": 31555,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-addition-forward.patch",
+      "sha256": "192ea5cbbadf8c9a165e0690bd35cfc82e951fc1671d3b8a8c9848efa4172160"
+    },
+    "actual_inverse_patch": {
+      "bytes": 31555,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-full-inverse.patch",
+      "sha256": "d2d564abd03140e5d32f59ec15eed11df0588c77b59e0760327cda89482ffa90"
+    },
+    "dependency_base_fallback": {
+      "bytes": 24227,
+      "path": "/private/tmp/gcts-proof-search-next-step-source-20261017/reviewed_unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "dependency_base_semantics": {
+      "bytes": 27553,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "dependency_cases": {
+      "bytes": 31001,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+    },
+    "dependency_collector": {
+      "bytes": 19556,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    },
+    "dependency_composer": {
+      "bytes": 28607,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+    },
+    "dependency_expansion_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "dependency_host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "dependency_miner": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "dependency_point_module": {
+      "bytes": 31038,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    },
+    "dependency_producer": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    }
+  },
+  "checks": {
+    "whole_source_AST_parse_compile_without_evaluation": true,
+    "same_buffer_hash_metadata_joins": true,
+    "all_current_resident_Source_pins": true,
+    "full_addition_raw_AST_exact": true,
+    "actual_forward_patch_empty_to_source": true,
+    "actual_inverse_patch_source_to_empty": true,
+    "source_roundtrip_helper_definition_name_only_raw_AST": true,
+    "public_signature_exact": true,
+    "fixed_allocation_literal_exact": true,
+    "exact_five_phase_site_labels": true,
+    "no_engine_receiver_provider_private_API": true,
+    "only_hashlib_json_imports": true,
+    "whole_current_API_contract_and_six_injected_native_interface_shapes_read": true
+  },
+  "actual_patch_directions": 2,
+  "modules_imported_or_evaluated": false,
+  "compile_without_evaluation": true,
+  "author_audit_metadata_reader_correction": "A preliminary metadata listing assumed edits[] but this addition delta uses full_addition; it stopped before any review output was written. Correct current full_addition raw equality independently verified here."
+}

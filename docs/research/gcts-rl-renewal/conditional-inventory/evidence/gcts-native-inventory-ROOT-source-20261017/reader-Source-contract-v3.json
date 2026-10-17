@@ -1,0 +1,33 @@
+{
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 22726,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v2.json",
+    "sha256": "308d4bf83851ea6ffa50e9f331811c9f5699f5989989f0210a433716b8d9fe20"
+  },
+  "parent_contract": {
+    "bytes": 1862,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "3bcd43fded8483c499569dab83ec4dd59402b025e76337207080b67378572200"
+  },
+  "parent_reader": {
+    "bytes": 21594,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v2.py",
+    "sha256": "91608e61e47b1cc4ff88395d564a1b7a42096be0f09a6fdf832c71d9d3fae83a"
+  },
+  "schema": "ROOT-native-inventory-saved-reader-Source-contract-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Exact current capsule and response VERSION rebind only. All native/once/Date/session/wholewire/scope checks and failure interpretation unchanged. No scientific replay or qualification inherited.",
+  "source": {
+    "bytes": 21606,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v3.py",
+    "sha256": "91417266c7fd1287426e4ade124e074efaddbcdaae1fff48cdc0df0f11eae3ec"
+  },
+  "source_delta": {
+    "bytes": 2047,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v3-Source-delta-v1.json",
+    "sha256": "0e58403783a4126fbc839ee08e6f1bc630dc62e24592922d3c7e8df42d6523a3"
+  },
+  "source_only": true
+}

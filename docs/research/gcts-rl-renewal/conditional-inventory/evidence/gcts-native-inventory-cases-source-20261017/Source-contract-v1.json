@@ -1,0 +1,253 @@
+{
+  "API": {
+    "bytes": 3198,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/API-wire-v1.json",
+    "sha256": "c92bed792b5429f5041d7921fb4ce1ee59e0f745ac7239b47c650ca4e5413577"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "required": [
+      "status",
+      "reviewer_identity",
+      "source_only",
+      "scientific_calls",
+      "scientific_acceptance",
+      "author_overlap",
+      "whole Source/operative API/contract",
+      "addition/actual patch inverse",
+      "findings and explicit conformance gaps"
+    ],
+    "schema": "ROOT-native-conditional-inventory-cases-typed-Source-review-v1",
+    "scope": "ROOT-native-conditional-inventory-cases-Source",
+    "source": {
+      "bytes": 31001,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+    },
+    "source_contract": "exact current Source-contract-v1.json capsule",
+    "sources": {
+      "cases": {
+        "bytes": 31001,
+        "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+        "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+      }
+    }
+  },
+  "Source_ancestry": {
+    "data_roundtrip": "Local _check_source_roundtrip is the entire Controls f4a9 provider _ground_roundtrip data algorithm with definition-name-only change. It is copied into this new Source, never imported/invoked through a private provider API. Exact raw-body/normalized AST evidence in Source-delta.",
+    "origin_enum": "Miner descriptor origin SEARCH_EXTRACTED is a required existing wire enum for syntax extraction. This case does not authenticate engine/search-generated provenance. Full automatic construction origin and all false proof/engine flags remain visible.",
+    "parent": "This is a new standalone CASE module, not a cold caller or engine successor. Existing immutable Sources remain untouched; actual addition/inverse reconstructs from/to empty module."
+  },
+  "actual_addition_patch": {
+    "bytes": 31555,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-addition-forward.patch",
+    "sha256": "192ea5cbbadf8c9a165e0690bd35cfc82e951fc1671d3b8a8c9848efa4172160"
+  },
+  "actual_authorization": false,
+  "actual_inverse_patch": {
+    "bytes": 31555,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-full-inverse.patch",
+    "sha256": "d2d564abd03140e5d32f59ec15eed11df0588c77b59e0760327cda89482ffa90"
+  },
+  "actual_result_donor_proofword_reads": false,
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Author of collector/expander/miner ancestry, current point5 export and parent engine/base ancestry. Composer, physical provider and host adapter authored by Controls; independent expansion/state verifiers by Diagnosis. This is author static evidence, not independent self-review.",
+  "census_supplement": {
+    "bytes": 10881,
+    "path": "/private/tmp/gcts-connected-inventory-bootstrap-design-source-20261017/bootstrap-census-supplement-v2.json",
+    "sha256": "82eddb380f8286091a31a4783c2d3094ade18a3f59ece706eff60640159b6c0c"
+  },
+  "design": {
+    "bytes": 15915,
+    "path": "/private/tmp/gcts-connected-inventory-bootstrap-design-source-20261017/bootstrap-design-v1.json",
+    "sha256": "0b02d2714d34c2b074e072061bf8471bb40511537aee10047608fca9a0f4d9c9"
+  },
+  "fixed_allocation": {
+    "case": {
+      "depth": 128,
+      "work": 1000000
+    },
+    "composer": {
+      "components": 1,
+      "extension_advances": 96,
+      "heads_per_rule": 1,
+      "quantum": 8,
+      "root_advances": 48
+    },
+    "cut_selection": "CONNECTED_AT_LEAST_TWO",
+    "miner": {
+      "cuts": 48,
+      "families": 8,
+      "generalizations_per_cut": 1,
+      "members": 2
+    }
+  },
+  "flow_and_joins": [
+    "Use public composer9fee at exactly root_advances48/extension_advances96/heads_per_rule1/quantum8/components1. Retain its whole root/heads/components/cursor histories/construction order and public original+decorated global census. UNKNOWN has no operative component and cannot qualify a prior record.",
+    "Require one complete two-member component with an actual strict-prior selected-source read. Freshly check its full marked state, current native root and their full selected/excluded original/decorated type ledgers. No engine is created, global decision faked, primitive route prescribed or provider private API used.",
+    "Fresh collector9f0b rebuilds every selected native primitive, whole original/marked union and exact ordered/repeated read sources. Pass only a tiny opaque automatic_primitive_composition component reference with engine_generated=False/root_proof_accepted=False; retain complete actual construction evidence outside it.",
+    "Use unchanged miner2 connected-selection in original cut/literal/first repeated-fragment order, with cuts48/members2/families8/generalizations_per_cut1. No favorable source node/formula/axiom/template selection. Missing/unfinished family inventory is UNKNOWN, not domain absence.",
+    "For EVERY emitted record first freshly expand the source substitution and full original source ports, independently reconstruct the entire expansion with4358, and roundtrip all cut primitive fields/ordered edges/boundary/output maps against the actual collected DAG. This is conditional data/native relation evidence, never origin proof authority.",
+    "Derive physical rows solely from fresh collector maps and automatic source-node/boundary maps. No fixed proof rows. Every expanded primitive/hypothesis materialization must have an actual collected source row; no hypothetical Gamma row is invented. Materialized original context indices are never promoted to an unproved physical premise.",
+    "Rebind every external input to actual original root source schema/row/original selected key or null and actual t occupancy with fact_accepted=False. Keep the same source-ground substitution solely for this inventory check. Preserve all ordered outputs and exact context/formulas.",
+    "Freshly expand AGAIN under that root-bound port request, independently check4358 AGAIN, and complete the data roundtrip AGAIN. Then call public host_adapter4bd6 directly on the actual root, full current proposal/environment/ports and map-derived row assignment. No BRANCH or provider is needed.",
+    "Require every native member/full original-decorated key, ordered read, scope/eigen/Gamma/frame sharing/final interface and independently marked union checked. Native adapter member keys and whole union must literally equal the actual two-member component data. Retain full packets/receipts; a source receipt never authenticates a differently bound request.",
+    "One common full-ID/canonical-preimage ledger reconciles all composer reached cursor exposures (including removed/discarded prefixes), fresh root/component/state/key records, collector members and direct native adapted members. Alternatives never have their point unions merged. A collision propagates, not an advisory rejection."
+  ],
+  "future_negative_obligations": [
+    "Root actual must show a genuinely native-generated connected two-member construction with actual strict read/source key, not a conditional handpicked fixture relabelled proof.",
+    "Missing component/own interruption/unfinished collector/miner/check/adapter => UNKNOWN and no inventory admission; native errors/timeout/collision remain errors, not missing labels.",
+    "Wrong collector node/read/boundary/output/source maps, forged/omitted full canonical census, mismatched environment/port source/occupancy/root key or bad derived row => fail closed.",
+    "Repeated/shared ports, exact Gamma/eigen/capture/native membership and marked whole union retained, including open factFalse and source-ground versus receiver distinction.",
+    "Fresh literal/current-ground full records and all broad flags remain false. Future family transfer requires actual global receiver decision and separate checked provider/consumer/engine observed census; none is qualified here."
+  ],
+  "model_and_cost": {
+    "cost": "All model/setup/composition/cursor/discarded candidates/census/collection/mining/failed and successful source-ground expansion/check/native union/copy/phase/output/exit costs remain in a separately granted fresh native20/512 window with unchanged internal reserve and55/60/90+1 failure machinery. No combined inventory+receiver20 claim or free warm inventory.",
+    "native_actuals": "Only Root may compose/grant/execute actual. Runtime conformance/fit, abstract family availability, nonidentity receptor transfer, target completion and benefit remain unmeasured.",
+    "original_authority_reference": {
+      "bytes": 23949,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+      "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23"
+    },
+    "original_binding": {
+      "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+      "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+      "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+      "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+    },
+    "original_inputs": {
+      "declaration": {
+        "bytes": 2925,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+        "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+      },
+      "profile": {
+        "bytes": 8773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+        "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+      }
+    },
+    "scope": "Exact original17/input2/epoch, full B12N44/24row six-rule inventory, original target/boundaries/marking. Two selected cells and component cap are proposal bounds, not a reduced model. Source current executable map is separately owned/authenticated by Root cold; no epoch rewrite."
+  },
+  "module_import_or_Source_evaluation": false,
+  "output_and_error_scope": {
+    "boundedness": "Case own1e6 metadata/delegation steps/depth128 and existing composer/collector/miner/expander/checker finite allowances remain explicit. Same cumulative native-first Root tick is used everywhere; no fresh model/budget/parser reset. Own prefix may end sooner than native20; no fit/availability prediction.",
+    "errors": "Only private _OwnPrefix and downstream explicit UNKNOWN cause advisory UNKNOWN. Native/callback/phase/guard/malformed/collision/membership failures propagate, with original native exception unwrapped through _NativeFailure. No ValueError/timeout-to-negative catch or prechecked fake certificate.",
+    "fields": [
+      "schema",
+      "version",
+      "status",
+      "reason",
+      "binding",
+      "components",
+      "collection",
+      "mining",
+      "qualified_records",
+      "census",
+      "census_joins",
+      "scope",
+      "descriptor_origin_enum_meaning",
+      "flags",
+      "work"
+    ],
+    "no_receiver": "No engine/global scheduler/BRANCH/provider/consumer/search/placement/rollback operation is called. Current root/fragment acceptance supplies no degree/EOF, viable frontier, target proof or library activation.",
+    "qualified_records": "Field is a full ordered per-record evidence list, including UNKNOWN entries with explicit status; its name is not permission to count unfinished entries. Literal and first automatically ordered repeated-fragment entries are preserved as emitted, not synthesized to make a favorable count.",
+    "status": "CHECKED_CONDITIONAL_INVENTORY only when a complete component/DAG/mining packet exists and EVERY emitted source-ground record finishes fresh independent/native qualification. Any unfinished record or own case prefix leaves whole UNKNOWN; all partial completed/raw data stays retained, not relabelled accepted."
+  },
+  "phase_protocol": {
+    "labels": [
+      "BEFORE_COMPOSER",
+      "AFTER_COMPOSER",
+      "AFTER_DAG",
+      "AFTER_MINER",
+      "AFTER_QUALIFICATION"
+    ],
+    "meaning": "Optional Root callback takes one literal label. Only reached sites are called, with a cumulative native tick first. AFTER_DAG/MINER/QUALIFICATION mean delegate/attempt returned, not positive scientific acceptance; status/full records remain authoritative. Root cold alone may add BEFORE_OUTPUT.",
+    "wire_and_native_bounds": "Owned by Root cold; this CASE never prints/reads a clock. Optional phase(label) is an injected callback and all errors propagate. No BEFORE_OUTPUT site here."
+  },
+  "point_contract": {
+    "bytes": 23949,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+    "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23"
+  },
+  "qualification_inherited": false,
+  "result_schema": "ROOT-native-conditional-inventory-evidence-v1",
+  "runtime_fit": "UNMEASURED",
+  "schema": "ROOT-native-conditional-inventory-cases-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-native-conditional-inventory-cases-Source",
+  "signature": "run_inventory(*,language,base_semantics,marked_semantics,point_module,base_fallback,host_adapter,composer,collector,miner,producer,expansion_checker,tick,phase=None)",
+  "source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+    "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+  },
+  "source_delta": {
+    "bytes": 33108,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-delta-v1.json",
+    "sha256": "2275f28a70581e22bcaf712c82a176128b6b8921c521973f0a62ef43c4a2471f"
+  },
+  "source_only": true,
+  "sources": {
+    "base_fallback": {
+      "bytes": 24227,
+      "path": "/private/tmp/gcts-proof-search-next-step-source-20261017/reviewed_unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "base_semantics": {
+      "bytes": 27553,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "cases": {
+      "bytes": 31001,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+    },
+    "collector": {
+      "bytes": 19556,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    },
+    "composer": {
+      "bytes": 28607,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+    },
+    "expansion_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "miner": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "point_module": {
+      "bytes": 31038,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    },
+    "producer": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    }
+  },
+  "static_audit": {
+    "bytes": 1614,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/static-audit-v1.json",
+    "sha256": "bbf247397c239b30c1865fafe3f1891dcd9badc371ce24cf0f62f5fd289e3b8c"
+  },
+  "status": "FROZEN_SOURCE_ONLY_UNMEASURED_PROSPECTIVE_CASE",
+  "version": "ROOT-native-connected-conditional-inventory-cases-v1"
+}

@@ -1,0 +1,169 @@
+--- before
++++ after
+@@ -1,5 +1,5 @@
+-"""One separately granted cold discovery with exact negative structural memo and
+-call-local reuse of already checked marked tiles. Model and scheduler are unchanged."""
++"""One separately granted native conditional component/inventory experiment.
++Full original model; automatic native prefixes; no engine, branch or proof route."""
+ import time
+ CLOCK=time.clock_gettime_ns
+ CLOCK_ID=time.CLOCK_MONOTONIC
+@@ -23,12 +23,12 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='ROOT-connected-prefix-discovery-all-checked-tiles-cold-v3'
+-SCOPE='ROOT-connected-prefix-discovery-all-checked-tiles-cold-Source'
++VERSION='ROOT-native-connected-conditional-inventory-cold-v1'
++SCOPE='ROOT-native-connected-conditional-inventory-cold-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+-QUALIFICATION_CASES_BY_PURPOSE={'connected-prefix-discovery': ['CD-01-first-actual-selected-inference-edge']}
+-FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'degree_router': {'bytes': 12779, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150'}, 'discovery_cases': {'path': '/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py', 'sha256': '7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3', 'bytes': 11668}, 'engine': {'bytes': 66670, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py', 'sha256': '40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'path': '/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py', 'sha256': '1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c', 'bytes': 29308}, 'marked_aware_checker': {'bytes': 25783, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188'}, 'marked_aware_proposer': {'bytes': 14064, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'trace_helper': {'bytes': 21076, 'path': '/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py', 'sha256': 'ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338'}}
++QUALIFICATION_CASES_BY_PURPOSE={'native-conditional-inventory': ['NI-01-automatic-connected-conditional-pair']}
++FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'marked_adapter': {'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24', 'bytes': 31038}, 'composer': {'path': '/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py', 'sha256': '9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2', 'bytes': 28607}, 'collector': {'path': '/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py', 'sha256': '9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816', 'bytes': 19556}, 'miner': {'path': '/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py', 'sha256': '482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689', 'bytes': 30862}, 'producer': {'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py', 'sha256': 'f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2', 'bytes': 51898}, 'expansion_checker': {'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1', 'bytes': 56670}, 'host_adapter': {'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9', 'bytes': 25205}, 'inventory_cases': {'path': '/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py', 'sha256': '472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51', 'bytes': 31001}}
+ FIXED_INPUTS={'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}, 'stageB_disposition': {'bytes': 4574, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json', 'sha256': 'ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e'}, 'stageB_encoded': {'bytes': 162591, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json', 'sha256': '3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca'}, 'stageB_expanded': {'bytes': 1926833, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json', 'sha256': 'bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93'}, 'stageB_plan': {'bytes': 7924, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json', 'sha256': '7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009'}, 'stageB_response': {'bytes': 7572, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl', 'sha256': '8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e'}, 'stageB_transport': {'bytes': 1502, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json', 'sha256': '8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b'}}
+ LIMITS={'aggregate_owned_bytes': 536870912, 'caller_finish_reserve_seconds': 1, 'caller_seconds': 90, 'failure_only_seconds': 55, 'joint_seconds': 20, 'owned_seconds': 60}
+ 
+@@ -371,12 +371,12 @@
+     need(set(plan['sources'])=={'intake',*FIXED}
+          and all(plan['sources'][k]==v for k,v in FIXED.items())
+          and plan['sources']['intake']['path']==str(Path(__file__).resolve())
+-         and plan['inputs']==FIXED_INPUTS,'exact current executable Source16 and saved input8')
++         and plan['inputs']==FIXED_INPUTS,'exact current executable Source17 and saved input8')
+     need(sys.platform=='darwin' and Path(sys.executable).resolve()==Path(plan['runtime']['path']).resolve(),'native Darwin runtime')
+     read_pinned(plan['runtime'])
+     source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}
+     contract=decode(read_pinned(plan['source_contract']))
+-    need(contract['schema']=='ROOT-connected-prefix-discovery-all-checked-tiles-cold-Source-contract-v1'
++    need(contract['schema']=='ROOT-native-connected-conditional-inventory-cold-Source-contract-v1'
+          and contract['sources']==plan['sources'] and contract['inputs']==FIXED_INPUTS
+          and contract['limits']==LIMITS and contract['original_model_sources']==ORIGINAL_SOURCES
+          and contract['original_model_inputs']==ORIGINAL_INPUTS
+@@ -519,12 +519,11 @@
+     marking = copy.deepcopy(previous['marking'])
+     need(marking['marking_id'] == accepted['marking_id'],
+          'whole accepted frozen marking identity')
+-    adapter, engine, fallback = (modules[k] for k in ('marked_adapter','engine','fallback'))
++    adapter, fallback = (modules[k] for k in ('marked_adapter','fallback'))
+     decorator, verifier = modules['decorator'], modules['marked_verifier']
+-    need(engine.VERSION == 'lazy-unit-row-global-engine-v13-decision-local-checked-state'
+-         and adapter.VERSION == 'unit-row-channel4-point-adapter-v1'
+-         and adapter.IMPLEMENTATION_VERSION == 'unit-row-channel4-point-adapter-all-checked-tiles-local-reuse-v4',
+-         'current reviewed engine/adapter versions')
++    need(adapter.VERSION == 'unit-row-channel4-point-adapter-v1'
++         and adapter.IMPLEMENTATION_VERSION == 'unit-row-channel4-point-adapter-public-prefix-census-v5',
++         'current reviewed public-prefix adapter version')
+     definition_check = call(verifier.check_marking,kwargs={'language':fresh_language(),
+         'semantics':semantics,'marking':copy.deepcopy(marking),'tick':tick})
+     need(definition_check['marking_checked'] is True and definition_check['marking_id'] == marking['marking_id'],
+@@ -533,7 +532,7 @@
+     phase_tick,phase_tick_code=tick,tick.__code__
+     phase_tick_defaults,phase_tick_kwdefaults=tick.__defaults__,tick.__kwdefaults__
+     phase_write,phase_write_type=os.write,types.BuiltinFunctionType
+-    phase_labels=('BEFORE_ENGINE','BEFORE_SEARCH','CAPTURED_CONNECTED','AFTER_SEARCH','AFTER_TRACE_JOIN','BEFORE_OUTPUT')
++    phase_labels=('BEFORE_COMPOSER', 'AFTER_COMPOSER', 'AFTER_DAG', 'AFTER_MINER', 'AFTER_QUALIFICATION', 'BEFORE_OUTPUT')
+     def phase(stage):
+         if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code
+                 or phase_tick.__defaults__ is not phase_tick_defaults
+@@ -543,7 +542,7 @@
+         native_ns=phase_tick()
+         need(type(stage)is str and stage in phase_labels and type(native_ns)is int
+              and 0<=native_ns<=9223372036854775807,'fixed connected phase/native sample')
+-        raw=('CONNECTED_DISCOVERY_PHASE '+stage+' '+str(native_ns)+'\n').encode('ascii')
++        raw=('COMPONENT_INVENTORY_PHASE '+stage+' '+str(native_ns)+'\n').encode('ascii')
+         offset=0
+         while offset<len(raw):
+             phase_tick()
+@@ -552,20 +551,19 @@
+             count=phase_write(2,raw[offset:]);need(type(count)is int and count>0,'complete bounded phase write')
+             offset+=count
+         phase_tick()
+-    def run_discovery():
++    def run_inventory():
+         language=fresh_language()
+         marked=adapter.MarkedSemantics(language=language,base_semantics=semantics,
+             decorator=decorator,verifier=verifier,marking=copy.deepcopy(marking),tick=tick)
+         state=marked.initial_state(language,tick)
+         need(state['selected']==[] and state['excluded']==[], 'exact fresh native root, no proof route')
+-        return modules['discovery_cases'].run_discovery(
+-            language=language,marked_semantics=marked,engine_module=engine,
+-            router_module=modules['degree_router'],legacy_proposer=modules['proposer'],
+-            marked_aware_proposer=modules['marked_aware_proposer'],
+-            marked_aware_checker=modules['marked_aware_checker'],fallback_module=fallback,
+-            point_module=adapter,trace_helper=modules['trace_helper'],state=state,
+-            latest_observations=latest_observations,phase=phase,tick=tick)
+-    diagnostic_context_raw=canonical({'schema':'ROOT-connected-discovery-diagnostic-context-v1',
++        return modules['inventory_cases'].run_inventory(
++            language=language,base_semantics=semantics,marked_semantics=marked,
++            point_module=adapter,base_fallback=fallback,host_adapter=modules['host_adapter'],
++            composer=modules['composer'],collector=modules['collector'],miner=modules['miner'],
++            producer=modules['producer'],expansion_checker=modules['expansion_checker'],
++            tick=tick,phase=phase)
++    diagnostic_context_raw=canonical({'schema':'ROOT-native-inventory-diagnostic-context-v1',
+         'invocation_id':plan['invocation_id'],'purpose':plan['purpose'],'plan':raw_pin(plan_raw),
+         'sources':plan['sources'],'inputs':plan['inputs'],'source_contract':plan['source_contract'],
+         'original_model_binding':ORIGINAL_BINDING,'joint_began_ns':EARLY_G,'joint_deadline_ns':end,
+@@ -577,7 +575,7 @@
+     diagnostic_writer=save_failure_diagnostic
+     diagnostic_writer_anchor=anchor_fn(diagnostic_writer)
+     try:
+-        discovery=call(run_discovery)
++        inventory=call(run_inventory)
+     except TimeoutError as diagnostic_error:
+         if type(diagnostic_error)is TimeoutError:
+             try:
+@@ -594,33 +592,27 @@
+             except BaseException:
+                 pass
+         raise
+-    need(discovery['schema']=='ROOT-connected-prefix-discovery-evidence-v1'
+-         and discovery['case']==QUALIFICATION_CASES_BY_PURPOSE[plan['purpose']][0]
+-         and discovery['status']in ('UNKNOWN','CAPTURED_CONNECTED_PARTIAL_STATE')
+-         and all(discovery[k]is False for k in ('new_theorem_discovered','proof_accepted',
+-             'engine_activated','family_library_activated','degree_or_EOF_accepted','whole_engine_qualified',
+-             'current_frontier_viability_checked','collector_or_family_pipeline_executed',
+-             'complete_GCTS_model_accepted','RL_accepted','GCTS_advantage_claimed','ROOT_resource_accepted')),
+-         'whole discovery record; interrupted current query is not viable frontier or proof')
++    need(inventory['schema']=='ROOT-native-conditional-inventory-evidence-v1'
++         and inventory['status']in ('UNKNOWN','CHECKED_CONDITIONAL_INVENTORY'),
++         'whole returned conditional inventory; no engine/proof authority')
+     phase('BEFORE_OUTPUT')
+-    payload={'schema':'ROOT-connected-prefix-discovery-payload-v1','discovery':discovery,
++    payload={'schema':'ROOT-native-conditional-inventory-payload-v1','inventory':inventory,
+         'original_model_sources':ORIGINAL_SOURCES,'original_model_inputs':ORIGINAL_INPUTS,
+         'original_model_binding':ORIGINAL_BINDING,'marking':marking,'definition_check':definition_check,
+-        'target_model_search_started':discovery['target_model_search_started'],
+-        'new_theorem_discovered':False,'logical_proof_accepted':False,'engine_activated':False,
+-        'family_library_activated':False,'whole_engine_qualified':False,'complete_GCTS_model_accepted':False,
+-        'current_frontier_viability_checked':False,'collector_or_family_pipeline_executed':False,
+-        'scheduler_or_rollback_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False,
++        'target_model_search_started':False,'new_theorem_discovered':False,'logical_proof_accepted':False,
++        'engine_activated':False,'family_library_activated':False,'whole_engine_qualified':False,
++        'current_frontier_viability_checked':False,'scheduler_or_rollback_accepted':False,
++        'complete_GCTS_model_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False,
+         'ROOT_resource_accepted':False}
+-    result_raw=canonical({'schema':'ROOT-connected-prefix-discovery-result-v1',
++    result_raw=canonical({'schema':'ROOT-native-conditional-inventory-result-v1',
+         'purpose':plan['purpose'],'sources':plan['sources'],'inputs':plan['inputs'],
+-        'language_binding':ORIGINAL_BINDING,'connected_prefix_discovery':payload,
++        'language_binding':ORIGINAL_BINDING,'conditional_inventory':payload,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     result_raw=call(encode_result_transport,(result_raw,))
+     run=Path(plan['output_directory']);need(run.is_absolute()and run==run.resolve()and not run.exists(),
+         'fresh canonical owned component output')
+     run.mkdir(mode=0o700);result_pin=call(write_new,(run/'engine-result.json',result_raw))
+-    body={'schema':'ROOT-connected-prefix-discovery-response-body-v1','version':VERSION,
++    body={'schema':'ROOT-native-conditional-inventory-response-body-v1','version':VERSION,
+         'status':'COMPLETE_WORKER_PENDING_EXTERNAL','invocation_id':plan['invocation_id'],'plan':raw_pin(plan_raw),
+         'sources':plan['sources'],'inputs':plan['inputs'],'language_binding':ORIGINAL_BINDING,
+         'original_model_binding':ORIGINAL_BINDING,'outputs':[result_pin],
+@@ -634,7 +626,7 @@
+         'exit_zero_and_coordinator_deadline_required':True}
+     response_pin=call(write_new,(run/'response.jsonl',body_raw+canonical(completion)+b'\n'))
+     need(sorted(p.name for p in run.iterdir())==['engine-result.json','response.jsonl'],'whole component output2')
+-    final_raw=canonical({'schema':'ROOT-connected-prefix-discovery-final-observation-v1',
++    final_raw=canonical({'schema':'ROOT-native-conditional-inventory-final-observation-v1',
+         'outputs':[result_pin,response_pin],'response':response_pin,'pending_external':True,
+         'logical_proof_accepted':False,'ROOT_resource_accepted':False})+b'\n'
+     boundary();offset=0

@@ -1,0 +1,64 @@
+{
+  "schema": "receptor-family-native-component-composer-independent-raw-AST-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 28607,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+    "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+  },
+  "references": {
+    "source": {
+      "bytes": 28607,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+    },
+    "source_contract": {
+      "bytes": 16821,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-contract-v1.json",
+      "sha256": "9ab4557a06a7a862a1f0ee7c1fa84fb626a9d2c05fc9c02388355325bd584642"
+    },
+    "API_wire": {
+      "bytes": 4463,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/API-wire-v1.json",
+      "sha256": "87373efe523859c20a03b314259bdf4aefa18030a6ab0ece61d1865800efe32c"
+    },
+    "source_delta": {
+      "bytes": 30229,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-delta-v1.json",
+      "sha256": "91f6a2ff5704fa4bfbb559f4fd1025365cabe722f750e5a522d5be39b7fa727c"
+    },
+    "static_audit": {
+      "bytes": 1823,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/static-audit-v1.json",
+      "sha256": "f0c2de29b30176637e0f55f861bb8365567004017488cf002bdf1c8a2cf7257e"
+    },
+    "patch_forward": {
+      "bytes": 29108,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/forward-v1.patch",
+      "sha256": "7b2050aed8cbc9d236773404c7c9218a5866a8e042c3b18a130c49411ba00dc1"
+    },
+    "patch_full-inverse": {
+      "bytes": 29108,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/full-inverse-v1.patch",
+      "sha256": "7ce73233a6db36aff34f67a9301bad7702253835d813019fbe5fd0e9989ec8e7"
+    }
+  },
+  "checks": {
+    "full_source_AST_parse_compile_without_evaluation": true,
+    "same_retained_buffer_hash_metadata_joins": true,
+    "one_full_addition_exact": true,
+    "full_inverse_empty_exact": true,
+    "actual_patch_forward_inverse": true,
+    "public_signature_exact": true,
+    "default_caps_literal_exact": true,
+    "flags_literal_exact": true,
+    "only_hashlib_json_imports": true,
+    "no_engine_decision_search_place_checkpoint_rollback": true,
+    "public_cursor_surface_only": true,
+    "whole_API_contract_design_and_native_cursor_Source_read": true
+  },
+  "modules_imported_or_evaluated": false,
+  "actual_patch_directions": 2,
+  "compile_without_evaluation": true
+}

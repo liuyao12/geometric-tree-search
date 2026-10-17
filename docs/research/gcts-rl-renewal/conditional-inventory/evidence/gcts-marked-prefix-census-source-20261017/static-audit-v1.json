@@ -1,0 +1,191 @@
+{
+  "actual_forward_patch_apply_cmp_exact": true,
+  "actual_inverse_patch_apply_cmp_exact": true,
+  "all_existing_callables_raw_AST_exact": [
+    "require",
+    "canonical",
+    "sha",
+    "MarkedSemantics.__init__",
+    "MarkedSemantics.tree",
+    "MarkedSemantics.point_map",
+    "MarkedSemantics.agree",
+    "MarkedSemantics.check_marking",
+    "MarkedSemantics._base_key",
+    "MarkedSemantics._fresh_base_projection",
+    "MarkedSemantics.base_state",
+    "MarkedSemantics.initial_state",
+    "MarkedSemantics.rebuild_tile",
+    "MarkedSemantics._checked_state_projection",
+    "MarkedSemantics.private_state",
+    "MarkedSemantics.check_collision",
+    "MarkedSemantics.legality",
+    "MarkedSemantics.with_obligations",
+    "MarkedSemantics._filter_all_checked",
+    "MarkedSemantics._filter",
+    "MarkedSemantics.propose_degree",
+    "MarkedSemantics.check_degree_evidence",
+    "MarkedTransition.authority_snapshot",
+    "MarkedTransition._projection",
+    "MarkedTransition.check_transition",
+    "MarkedTransition.refresh_candidates",
+    "FilteredCursor.__init__",
+    "FilteredCursor.context",
+    "FilteredCursor.abort",
+    "FilteredCursor.advance",
+    "open_fallback"
+  ],
+  "all_old_protocol_constants_exact_except_implementation_tag": true,
+  "anchors": {
+    "FilteredCursor.__init__": {
+      "end_line": 379,
+      "line": 356
+    },
+    "FilteredCursor.abort": {
+      "end_line": 424,
+      "line": 422
+    },
+    "FilteredCursor.advance": {
+      "end_line": 494,
+      "line": 426
+    },
+    "FilteredCursor.context": {
+      "end_line": 388,
+      "line": 381
+    },
+    "FilteredCursor.prototype_census": {
+      "end_line": 420,
+      "line": 390
+    },
+    "MarkedSemantics.__init__": {
+      "end_line": 52,
+      "line": 44
+    },
+    "MarkedSemantics._base_key": {
+      "end_line": 85,
+      "line": 73
+    },
+    "MarkedSemantics._checked_state_projection": {
+      "end_line": 156,
+      "line": 131
+    },
+    "MarkedSemantics._filter": {
+      "end_line": 221,
+      "line": 219
+    },
+    "MarkedSemantics._filter_all_checked": {
+      "end_line": 217,
+      "line": 181
+    },
+    "MarkedSemantics._fresh_base_projection": {
+      "end_line": 102,
+      "line": 87
+    },
+    "MarkedSemantics.agree": {
+      "end_line": 61,
+      "line": 60
+    },
+    "MarkedSemantics.base_state": {
+      "end_line": 105,
+      "line": 104
+    },
+    "MarkedSemantics.check_collision": {
+      "end_line": 167,
+      "line": 161
+    },
+    "MarkedSemantics.check_degree_evidence": {
+      "end_line": 266,
+      "line": 233
+    },
+    "MarkedSemantics.check_marking": {
+      "end_line": 71,
+      "line": 63
+    },
+    "MarkedSemantics.initial_state": {
+      "end_line": 116,
+      "line": 107
+    },
+    "MarkedSemantics.legality": {
+      "end_line": 171,
+      "line": 169
+    },
+    "MarkedSemantics.point_map": {
+      "end_line": 58,
+      "line": 57
+    },
+    "MarkedSemantics.private_state": {
+      "end_line": 159,
+      "line": 158
+    },
+    "MarkedSemantics.propose_degree": {
+      "end_line": 231,
+      "line": 223
+    },
+    "MarkedSemantics.rebuild_tile": {
+      "end_line": 129,
+      "line": 118
+    },
+    "MarkedSemantics.tree": {
+      "end_line": 55,
+      "line": 54
+    },
+    "MarkedSemantics.with_obligations": {
+      "end_line": 179,
+      "line": 173
+    },
+    "MarkedTransition._projection": {
+      "end_line": 298,
+      "line": 285
+    },
+    "MarkedTransition.authority_snapshot": {
+      "end_line": 283,
+      "line": 272
+    },
+    "MarkedTransition.check_transition": {
+      "end_line": 330,
+      "line": 300
+    },
+    "MarkedTransition.refresh_candidates": {
+      "end_line": 349,
+      "line": 332
+    },
+    "canonical": {
+      "end_line": 34,
+      "line": 32
+    },
+    "open_fallback": {
+      "end_line": 499,
+      "line": 497
+    },
+    "require": {
+      "end_line": 29,
+      "line": 27
+    },
+    "sha": {
+      "end_line": 38,
+      "line": 37
+    }
+  },
+  "compile_without_evaluation": true,
+  "export_calls_no_advance_abort_or_semantic_recheck": true,
+  "failure_self_mutation": "_failed=True only",
+  "old_callable_count": 31,
+  "parent_Source_hash_unchanged_after_patch": true,
+  "parent_source": {
+    "bytes": 29308,
+    "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+    "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c"
+  },
+  "raw_edits": 2,
+  "raw_forward_inverse_exact": true,
+  "schema": "unit-row-marked-prefix-census-author-static-audit-v1",
+  "scientific_calls": 0,
+  "scope": "Static author Source metadata only; no cursor/helper/model calls, fixtures, result reads, import/evaluation, runtime/fit acceptance.",
+  "source": {
+    "bytes": 31038,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+    "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+  },
+  "source_only": true,
+  "success_path_self_mutation": false,
+  "whole_AST_inverse_exact": true
+}

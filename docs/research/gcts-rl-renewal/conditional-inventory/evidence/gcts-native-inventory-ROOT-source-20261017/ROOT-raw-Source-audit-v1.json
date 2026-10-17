@@ -1,0 +1,62 @@
+{
+  "changed_top_level_regions": [
+    "main"
+  ],
+  "compile_without_evaluation": true,
+  "edits": [
+    "prose",
+    "version",
+    "scope",
+    "purpose",
+    "current_map",
+    "source_count",
+    "schema",
+    "adapter_loading",
+    "versions",
+    "phase_labels",
+    "phase_prefix",
+    "scientific_body",
+    "diagnostic_schema",
+    "call",
+    "result",
+    "response",
+    "final"
+  ],
+  "parent_source": {
+    "bytes": 53806,
+    "path": "/private/tmp/gcts-all-checked-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v3.py",
+    "sha256": "c68fb15559459888b9225e9b28a212ae2d0e942627a4b5182ae1b9d52c844a12"
+  },
+  "schema": "ROOT-native-inventory-raw-Source-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52894,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v1.py",
+    "sha256": "47c8f9cafe61eb5cb9ad35aeabc98eae785adc3db71533167fb1b1d8bf606971"
+  },
+  "unchanged_top_level_raw_AST_regions": [
+    "need",
+    "canonical",
+    "raw_pin",
+    "unique",
+    "reject_constant",
+    "finite_float",
+    "decode",
+    "read_pinned",
+    "load_module",
+    "write_new",
+    "anchor",
+    "same",
+    "invoke",
+    "cancel",
+    "all_function_anchors",
+    "save_failure_diagnostic",
+    "encode_result_transport",
+    "ObservedCursor",
+    "ChildControlInterruption"
+  ],
+  "whole_AST_inverse_exact": true,
+  "whole_forward_exact": true,
+  "whole_inverse_exact": true
+}

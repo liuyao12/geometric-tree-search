@@ -1,0 +1,27 @@
+{
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 6962,
+    "path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/findings-v1.json",
+    "sha256": "a880cd11e26babcde317f841e863a94b3760e7532c8fbbce14d34d42c384bdfd"
+  },
+  "review": {
+    "bytes": 7026,
+    "path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "d23e121af5e229a640c99e8f991d4226f02aa1f181e0b7743c91f09347f9bcba"
+  },
+  "schema": "ROOT-native-inventory-caller-peer-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52894,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v1.py",
+    "sha256": "47c8f9cafe61eb5cb9ad35aeabc98eae785adc3db71533167fb1b1d8bf606971"
+  },
+  "source_contract": {
+    "bytes": 22413,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "0454a81b0e5e37cfc549e170df58f4abdc7717d6b7328e5167aba05825466ca3"
+  },
+  "source_only": true
+}

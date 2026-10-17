@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "all19_top_named_regions_including_main_raw_AST_exact": false,
+    "all_native_once_CodeSeal_failure_phase_wire_bodies_unchanged": true,
+    "all_other_constants_raw_literal_equal": true,
+    "both_actual_patch_directions_exact": true,
+    "compile_without_evaluation": true,
+    "only_CASE_changes_in_literal_FIXED_values": true,
+    "original17_input2_current17_input8_allocation_native_limits_preserved": true,
+    "two_raw_forward_inverse_whole_AST_exact": true
+  },
+  "findings": [
+    {
+      "disposition": "PASS",
+      "finding": "Only ownVERSION and fullFIXED literal changed. All19 top function/class regions, including whole main, are raw/AST identical. Current CASE pin c0d655 and responseVERSION are exact. CASE own work allowance8m is not a larger native or model limit; its correctness is covered by distinct CASE review.",
+      "id": "NI-CALLER-V2-CAPSULE"
+    },
+    {
+      "disposition": "DISCLOSURE",
+      "finding": "FIXED was rendered in sorted role order. Since existing module loading iterates FIXED, setup iteration order may differ. Full identical current module set except CASE, all setup charged; no runtime-cost/order-equivalence claim.",
+      "id": "NI-CALLER-V2-ORDER"
+    },
+    {
+      "disposition": "LIMITATION",
+      "finding": "No actual/result data read, no runtime fit or current qualification inherited. Original20/512, all full validation and conditional-only scope remain.",
+      "id": "NI-CALLER-V2-SCOPE"
+    }
+  ],
+  "parent_review": {
+    "bytes": 7026,
+    "path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "d23e121af5e229a640c99e8f991d4226f02aa1f181e0b7743c91f09347f9bcba"
+  },
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52906,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v2.py",
+    "sha256": "bc1786bff287ad2d6eee60e9306d6d0d2ae35c21988534127d57c73fc0c18c7e"
+  },
+  "source_contract": {
+    "bytes": 22726,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v2.json",
+    "sha256": "308d4bf83851ea6ffa50e9f331811c9f5699f5989989f0210a433716b8d9fe20"
+  },
+  "source_only": true
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "unit-row-marked-prefix-census-independent-review-handoff-v1",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "typed_review": {
+    "path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "95a2976498dd83a015b62478bfe41473246983345716f9dcc32d1a2563dd1088",
+    "bytes": 2474
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/findings-v1.json",
+    "sha256": "61b5de13341e39f2d082e9169b5aafbc4cb03464cd2db39f9a2d35042e1ddaaa",
+    "bytes": 5268
+  },
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "f41f2b24c556ce65fe76454ae05be328175a09f33fe4f3bffc81ed3fa4c339f5",
+    "bytes": 6611
+  },
+  "source": {
+    "bytes": 31038,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+    "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+  },
+  "source_contract": {
+    "bytes": 23949,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+    "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23"
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/handoff-v1.json",
+    "sha256": "707af6aa570a7a4c2bbb7df2b11028896960f0bd9f11681a48b5d01f75d6718a",
+    "bytes": 3930
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "actual_execution_authorized": false,
+  "summary": "Whole frozen export/API/contract reviewed; two exact raw/AST regions and both actual patches,31 inherited callables exact. No scoped blocker. Full copied operative prefix includes base-yielded removed types, never-yielded69 objects excluded; all composer/cross-cursor/runtime acceptance remains future."
+}

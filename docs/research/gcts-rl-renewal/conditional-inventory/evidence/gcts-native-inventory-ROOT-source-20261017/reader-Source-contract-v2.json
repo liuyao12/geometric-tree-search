@@ -1,0 +1,43 @@
+{
+  "author_identity": "/root",
+  "compile_without_evaluation": true,
+  "current_operative_contract": {
+    "bytes": 22413,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "0454a81b0e5e37cfc549e170df58f4abdc7717d6b7328e5167aba05825466ca3"
+  },
+  "edits": [
+    {
+      "new": "'current_frontier_viability_checked':False,",
+      "old": "'current_frontier_viability_checked':False,'collector_or_family_pipeline_executed':False,"
+    }
+  ],
+  "parent_reader": {
+    "bytes": 21640,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v1.py",
+    "sha256": "ce0e9c5770cb410923e538b884d25c0e34aee199c07817c4c3376e0e694bdacf"
+  },
+  "patches": {
+    "v2-forward": {
+      "bytes": 664,
+      "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v2-forward.patch",
+      "sha256": "166e657d291319bbf8d2c527b29dce9424e5a5a46a981283ba7bd8b778cdd167"
+    },
+    "v2-inverse": {
+      "bytes": 664,
+      "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v2-inverse.patch",
+      "sha256": "c0d7623b1ddcb6bc0ecd3f9edc0f04cf721d581ca3a5a5b72c383b9eb83f7cda"
+    }
+  },
+  "schema": "ROOT-native-inventory-saved-reader-Source-contract-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Same reviewed saved/native/wire closure. Remove only stale collector_or_family_pipeline_executed:false summary field. Execution evidence stays in complete helper packet; no late inspection/replay.",
+  "source": {
+    "bytes": 21594,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v2.py",
+    "sha256": "91608e61e47b1cc4ff88395d564a1b7a42096be0f09a6fdf832c71d9d3fae83a"
+  },
+  "source_only": true,
+  "whole_raw_inverse_exact": true
+}

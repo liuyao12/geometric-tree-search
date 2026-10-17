@@ -1,0 +1,11 @@
+--- before
++++ after
+@@ -230,7 +230,7 @@
+         'complete_GCTS_model_accepted':False,'RL_accepted':False,'GCTS_advantage_claimed':False,
+         'scientific_replay':False,'phase_observations':phases,
+         'stderr_tail_sha256':raw_pin(phase_tail),'failure_diagnostic':None,
+-        'current_frontier_viability_checked':False,
++        'current_frontier_viability_checked':False,'collector_or_family_pipeline_executed':False,
+         'native_files':{name:dict(path=str(external/name), **raw_pin(content))for name,content in raw.items()},
+         'tool_bracket':dict(path=str(bracket_path), **raw_pin(bracket_raw))}
+     if meter['caller_returncode'] == 0:

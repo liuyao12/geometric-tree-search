@@ -1,0 +1,265 @@
+{
+  "changed_existing_regions": [
+    "main",
+    "main.phase"
+  ],
+  "checks": {
+    "17_sequential_raw_forward_full_inverse_AST_and_actual_patch_directions": true,
+    "Source_AST_compile_without_evaluation": true,
+    "all_top_helpers_and_classes_except_main_raw_AST_exact": true,
+    "failure55_builtin_writer_and_outer_exit2_tail_raw_exact": true,
+    "fixed_current17_input8_original17_input2_maps_literal_exact": true,
+    "native_tick_fullguard_invoke_exceptional_finally_raw_exact": true,
+    "no_engine_provider_decision_or_search_in_current_modules": true,
+    "no_qualification_inherited_no_proof_RL_GCTS_or_frontier_viability": true,
+    "oldStageB_authentication_and_original_epoch_retained": true,
+    "one_call_guarded_inventory_with_fixed_cumulative_native_tick": true,
+    "six_phase_sites_native_only_original_writer_mechanism_retained": true,
+    "strict_result_encode_output_completion_final_guard_retained": true,
+    "whole_current_and_contract_pins": true
+  },
+  "findings": [
+    {
+      "disposition": "PASS",
+      "finding": "Current Source17/input8 is pinned before loading; original semantic Source17/input2 authority remains separately raw-pinned and epoch-equal. Current modules include composer/cases/collector/miner/expansion/native host, no engine/provider.",
+      "id": "NI-CALLER-AUTH",
+      "lines": [
+        329,
+        407
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Strong function/default/cell anchors plus CodeSeal surround delegated case entry and exceptional return; tick retains native20/internal500MiB reserve. Existing failure55 builtin writer only catches exact builtin TimeoutError escaping original call boundary; no late model/census call.",
+      "id": "NI-CALLER-BOUNDARY",
+      "lines": [
+        104,
+        153,
+        329,
+        448,
+        571,
+        591
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Fresh original language, independent marking check, empty native root and documented public CASE kwargs share cumulative native tick. Scientific acceptance is deferred to current injected cases and distinct composer/CASE reviews; this peer does not independently recheck its own composer.",
+      "id": "NI-CALLER-COMPOSITION",
+      "lines": [
+        545,
+        559,
+        589,
+        615
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Six fixed literal group sites use captured builtin os.write and native tick before/through/after write. At most one reached write per site; absence is not a cause, exclusive timing, trajectory or case result.",
+      "id": "NI-CALLER-PHASE",
+      "lines": [
+        532,
+        558,
+        597
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Complete canonical lossless output, response completion, owned file inventory, stdout final observation and original final native/Source guard remain charged. UNKNOWN returned evidence is not promoted to completed conditional inventory.",
+      "id": "NI-CALLER-WIRE",
+      "lines": [
+        592,
+        657
+      ]
+    },
+    {
+      "disposition": "LIMITATION",
+      "finding": "Only prospective conditional component/source-ground inventory. No engine activation, live frontier viability, generalized lemma or target theorem, scheduler/rollback/RL/GCTS gain or runtime fit is accepted by this Source review.",
+      "id": "NI-SCOPE"
+    }
+  ],
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 52894,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v1.py",
+    "sha256": "47c8f9cafe61eb5cb9ad35aeabc98eae785adc3db71533167fb1b1d8bf606971"
+  },
+  "source_contract": {
+    "bytes": 22413,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "0454a81b0e5e37cfc549e170df58f4abdc7717d6b7328e5167aba05825466ca3"
+  },
+  "source_only": true,
+  "unchanged_named_regions": [
+    {
+      "end_line": 343,
+      "line": 341,
+      "name": "ChildControlInterruption"
+    },
+    {
+      "end_line": 338,
+      "line": 326,
+      "name": "ObservedCursor"
+    },
+    {
+      "end_line": 329,
+      "line": 328,
+      "name": "ObservedCursor.__init__"
+    },
+    {
+      "end_line": 338,
+      "line": 337,
+      "name": "ObservedCursor.abort"
+    },
+    {
+      "end_line": 336,
+      "line": 332,
+      "name": "ObservedCursor.advance"
+    },
+    {
+      "end_line": 331,
+      "line": 330,
+      "name": "ObservedCursor.context"
+    },
+    {
+      "end_line": 157,
+      "line": 141,
+      "name": "all_function_anchors"
+    },
+    {
+      "end_line": 146,
+      "line": 144,
+      "name": "all_function_anchors.retain"
+    },
+    {
+      "end_line": 95,
+      "line": 91,
+      "name": "anchor"
+    },
+    {
+      "end_line": 139,
+      "line": 137,
+      "name": "cancel"
+    },
+    {
+      "end_line": 43,
+      "line": 42,
+      "name": "canonical"
+    },
+    {
+      "end_line": 59,
+      "line": 58,
+      "name": "decode"
+    },
+    {
+      "end_line": 323,
+      "line": 310,
+      "name": "encode_result_transport"
+    },
+    {
+      "end_line": 56,
+      "line": 55,
+      "name": "finite_float"
+    },
+    {
+      "end_line": 135,
+      "line": 107,
+      "name": "invoke"
+    },
+    {
+      "end_line": 80,
+      "line": 76,
+      "name": "load_module"
+    },
+    {
+      "end_line": 439,
+      "line": 436,
+      "name": "main.boundary"
+    },
+    {
+      "end_line": 442,
+      "line": 441,
+      "name": "main.call"
+    },
+    {
+      "end_line": 451,
+      "line": 444,
+      "name": "main.fresh_language"
+    },
+    {
+      "end_line": 434,
+      "line": 421,
+      "name": "main.guard"
+    },
+    {
+      "end_line": 359,
+      "line": 350,
+      "name": "main.tick"
+    },
+    {
+      "end_line": 40,
+      "line": 39,
+      "name": "need"
+    },
+    {
+      "end_line": 45,
+      "line": 45,
+      "name": "raw_pin"
+    },
+    {
+      "end_line": 74,
+      "line": 61,
+      "name": "read_pinned"
+    },
+    {
+      "end_line": 53,
+      "line": 53,
+      "name": "reject_constant"
+    },
+    {
+      "end_line": 105,
+      "line": 97,
+      "name": "same"
+    },
+    {
+      "end_line": 308,
+      "line": 159,
+      "name": "save_failure_diagnostic"
+    },
+    {
+      "end_line": 213,
+      "line": 178,
+      "name": "save_failure_diagnostic.encoded"
+    },
+    {
+      "end_line": 186,
+      "line": 182,
+      "name": "save_failure_diagnostic.encoded.append"
+    },
+    {
+      "end_line": 211,
+      "line": 187,
+      "name": "save_failure_diagnostic.encoded.visit"
+    },
+    {
+      "end_line": 177,
+      "line": 169,
+      "name": "save_failure_diagnostic.failure_gate"
+    },
+    {
+      "end_line": 300,
+      "line": 289,
+      "name": "save_failure_diagnostic.write"
+    },
+    {
+      "end_line": 51,
+      "line": 47,
+      "name": "unique"
+    },
+    {
+      "end_line": 89,
+      "line": 82,
+      "name": "write_new"
+    }
+  ]
+}

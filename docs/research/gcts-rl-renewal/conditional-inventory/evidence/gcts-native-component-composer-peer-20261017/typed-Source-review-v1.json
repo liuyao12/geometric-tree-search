@@ -1,0 +1,51 @@
+{
+  "schema": "receptor-family-native-component-composer-typed-Source-review-v1",
+  "scope": "receptor-family-native-component-composer-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/hilbert_advice_controls",
+  "source": {
+    "bytes": 28607,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+    "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+  },
+  "source_contract": {
+    "bytes": 16821,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-contract-v1.json",
+    "sha256": "9ab4557a06a7a862a1f0ee7c1fa84fb626a9d2c05fc9c02388355325bd584642"
+  },
+  "sources": {
+    "composer": {
+      "bytes": 28607,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+    }
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored marked verifier9fd, marked-aware checker8f, receptor expansion checker4358 and ea300 adapter ancestry, and reviewed v5 public prefix export/shared native primitives. Controls authored the new composer, design and earlier host/provider dependencies. This is a distinct whole composer Source review, not unrelated-mathematics independence or runtime reacceptance.",
+  "whole_current_source_contract_API_design_reviewed": true,
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/handoff-v1.json",
+    "sha256": "30a5fb8d44cc5662182e06eeb0e51d2f2b98f2b38c03c2d6d886a96f312d4993",
+    "bytes": 6236
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-component-composer-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "f055746d6f94bc44b98a9c57f2b60892d13b90cd824d31f9cc061ee8c076baf5",
+    "bytes": 2718
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-component-composer-peer-20261017/findings-v1.json",
+    "sha256": "a794ff498c51759381fc3cf514dae668ecfbd1b58f214dac7a2daea335fe9828",
+    "bytes": 4127
+  },
+  "blockers": [],
+  "actual_patch_directions_verified": 2,
+  "runtime_qualification_inherited": false,
+  "engine_or_proof_or_receiver_accepted": false,
+  "actual_execution_authorized": false,
+  "runtime_fit": "UNMEASURED"
+}

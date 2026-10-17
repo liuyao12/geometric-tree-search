@@ -1,0 +1,90 @@
+{
+  "API": {
+    "bytes": 3693,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/API-wire-v2.json",
+    "sha256": "31f4f710e72e59b0fd3cb7aa67ce7a1bc1563234069f73cb2e2ae3ce3a320e5c"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "required": [
+      "status",
+      "reviewer_identity",
+      "source_only",
+      "scientific_calls",
+      "scientific_acceptance",
+      "author_overlap",
+      "whole current3edit/operative parent contract",
+      "raw/AST/actual patch inverse",
+      "findings"
+    ],
+    "schema": "ROOT-native-conditional-inventory-cases-typed-Source-review-v2",
+    "scope": "ROOT-native-conditional-inventory-cases-Source",
+    "source": {
+      "bytes": 31001,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+      "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+    },
+    "source_contract": "exact current Source-contract-v2.json capsule",
+    "sources": {
+      "cases": {
+        "bytes": 31001,
+        "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+        "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+      }
+    }
+  },
+  "actual_forward_patch": {
+    "bytes": 1325,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-v1-to-v2-forward.patch",
+    "sha256": "9428d7b5377d6a3fd7d213d4645aaddc7e94a5d6a6935b55e38e7c9b5e4561c0"
+  },
+  "actual_inverse_patch": {
+    "bytes": 1325,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-v2-full-inverse.patch",
+    "sha256": "e0cb650b5480e31e5deaf43ed07a3e635e79ac6ad96cbf135e9b0b937f9a6fc6"
+  },
+  "case_source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+    "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+  },
+  "delta": {
+    "bytes": 2788,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-delta-v2.json",
+    "sha256": "9ad0726908cfa974ccfeb2c0418abb4473b9f8709a58b8596ce337a4a525d23a"
+  },
+  "parent_contract": {
+    "bytes": 17097,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-contract-v1.json",
+    "sha256": "00f7968309fb98bdadead08929a4994fe90c3683a5e69383f22c7c13fdf54f89"
+  },
+  "parent_handoff": {
+    "bytes": 5394,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/handoff-v1.json",
+    "sha256": "083d457af3101462f270fbc941be70bae8d318dc1cf648f16bedc5288ee9b68a"
+  },
+  "parent_source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+    "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+  },
+  "schema": "ROOT-native-conditional-inventory-cases-handoff-v2",
+  "scientific_calls": 0,
+  "scope": "Separate Root-informed changed own-work-cap experiment. No actual/runtime/control qualification inherited from V1. No actual/result files read; Source author relies only on requested literal cap change, not inferred progress/fit.",
+  "source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+    "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+  },
+  "source_contract": {
+    "bytes": 5924,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-contract-v2.json",
+    "sha256": "1c06e87beed7b2c2411c5340496a7b569733e9386f7bfed1b66fc19d8f3b8c75"
+  },
+  "static": {
+    "bytes": 1495,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/static-audit-v2.json",
+    "sha256": "98c7b27016d1df4a0b553466b552b5316c51f099b5f364efd655687c105440d8"
+  },
+  "status": "FROZEN_SOURCE_ONLY_READY_FOR_DISTINCT_REVIEW"
+}

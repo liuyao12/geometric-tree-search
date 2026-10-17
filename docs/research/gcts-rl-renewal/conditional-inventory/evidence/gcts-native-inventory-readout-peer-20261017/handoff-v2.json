@@ -1,0 +1,32 @@
+{
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 3798,
+    "path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/findings-v2.json",
+    "sha256": "3e7c6ddbe0b51507cb0a5bd8e0b2362031f5913c66e1ca7851d87cbe5722260e"
+  },
+  "preserved_negative_v1": {
+    "bytes": 1331,
+    "path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/source-negative-v1.json",
+    "sha256": "ade9a0a9caa2d38faf2eb1aa4a9e1d8736e8b0290b96f85bebbb82dc2336b809"
+  },
+  "review": {
+    "bytes": 2527,
+    "path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "48674b977ca72cb068a3ec85b9604126a0eb004702ab0994ab59fdaedb4c08a5"
+  },
+  "schema": "ROOT-native-inventory-reader-peer-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21594,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v2.py",
+    "sha256": "91608e61e47b1cc4ff88395d564a1b7a42096be0f09a6fdf832c71d9d3fae83a"
+  },
+  "source_contract": {
+    "bytes": 1862,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "3bcd43fded8483c499569dab83ec4dd59402b025e76337207080b67378572200"
+  },
+  "source_only": true
+}

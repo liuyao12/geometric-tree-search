@@ -1,0 +1,99 @@
+{
+  "schema": "unit-row-marked-prefix-census-independent-findings-v1",
+  "scope": "unit-row-marked-prefix-census-adapter-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source": {
+    "bytes": 31038,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+    "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+  },
+  "source_contract": {
+    "bytes": 23949,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+    "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/arithmetic_induction",
+  "findings": [
+    {
+      "id": "PC01",
+      "lines": [
+        390,
+        420
+      ],
+      "status": "NO_SCOPED_BLOCKER",
+      "text": "The export reads the complete stored names ledger, full entry context and literal raw/emitted/removed/done counters. Sorting/list construction/tree copy do not advance or reset the cursor; immutable full canonical strings are retained as data. All returned mutable containers, including nested context/state, are independently copied through unchanged c354 tree semantics."
+    },
+    {
+      "id": "PC02",
+      "lines": [
+        131,
+        167,
+        181,
+        217,
+        356,
+        379,
+        426,
+        494
+      ],
+      "status": "NO_SCOPED_BLOCKER",
+      "text": "The constructor seeds selected/excluded original and decorated full identities. Unchanged advance inserts all fully checked base-yielded tiles in its persistent both-ID ledger before counting or skipping channel4 removals. Thus removed-only work followed by a successful survivor/EOF is included. Type cardinality may differ from candidate/event cardinality; original69 private never-yielded prototypes are outside the operative scope."
+    },
+    {
+      "id": "PC03",
+      "lines": [
+        390,
+        420
+      ],
+      "status": "NO_SCOPED_BLOCKER",
+      "text": "Packet repeats full-context epoch/binding/marking/row/state joins and declares exact implementation identity. complete_prefix_census denotes full copy of that successfully observed prefix, with all independent/degree/graph/scheduler/proof/resource authority flags false. It supplies no current domain count, complete universe, EOF or fresh degree evidence and does not rerun membership/state certification."
+    },
+    {
+      "id": "PC04",
+      "lines": [
+        381,
+        424
+      ],
+      "status": "NO_SCOPED_BLOCKER",
+      "text": "Poisoned or aborted cursor refuses export. Native-first and per-entry ticks plus tree copy use the same cumulative callback. Any export BaseException sets only existing failed flag and rethrows unchanged; a failed advance is already poisoned, so no late apparently-complete export is available. No secondary budget, truncation or late failure55 scientific call is introduced."
+    },
+    {
+      "id": "PC05",
+      "lines": [
+        11,
+        24,
+        390,
+        420
+      ],
+      "status": "SCOPE_LIMITATION",
+      "text": "Two regions only; all31 old callable bodies and public protocol constants/signatures are exact apart from implementation tag. New source/map/tag must be authenticated. Calling the new method adds charged work; Source evidence supplies no old runtime, nth-tick, hostile-reentrancy, fit or speed equivalence."
+    },
+    {
+      "id": "PC06",
+      "lines": [
+        390,
+        420
+      ],
+      "status": "REQUIRED_FUTURE_COMPOSITION",
+      "text": "A composer must bind full packet/context/counts to each actual public cursor opening and successful advance/EOF, then merge all original/decorated full preimages with selected/excluded/other public and offered identities before retaining any head/extension/pair/preference. Export alone neither performs that cross-cursor join nor creates engine authority. Own-limit interruption before reconciliation cannot qualify an unreconciled boundary; native/export/collision errors propagate, with no late retry."
+    }
+  ],
+  "blockers": [],
+  "required_future_controls": [
+    "Fresh repeated export at opening/survivor/EOF preserves stream order/counters/context and proves caller-owned returned copies through public observations.",
+    "A real channel4-removed prefix followed by survivor/EOF exposes every removed original/decorated type; separate cursor/state/offer ledgers must reconcile full preimages.",
+    "Public callback/copy/native failure and abort poison/refuse export; malformed or incomplete returned census fails closed in composer. No fabricated real hash-collision claim.",
+    "Current composer/global decision/fallback EOF/current-keySET/owned rollback and all native20/512 claims need independent current composition/actuals. No inheritance from prior controls."
+  ],
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "f41f2b24c556ce65fe76454ae05be328175a09f33fe4f3bffc81ed3fa4c339f5",
+    "bytes": 6611
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "runtime_fit": "UNMEASURED",
+  "composer_or_engine_integration_accepted": false,
+  "actual_authorization": false
+}

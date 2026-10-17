@@ -1,0 +1,993 @@
+{
+  "files": [
+    {
+      "bytes": 6734,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Q_native_terminal_meter_v2.py"
+    },
+    {
+      "bytes": 1501,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "65ae6d78778f9b8dedb8fc9aceca843bb4060fcd8067224440e108d5cf522235",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json"
+    },
+    {
+      "bytes": 725,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/ROOT-raw-Source-audit-v2.json",
+      "sha256": "3969cb81e52416ba618322523053cdbf9581192e0e7bccae5d1d806b1666812c",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT-raw-Source-audit-v2.json"
+    },
+    {
+      "bytes": 14874,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/ROOT-resident-byte-preflight-v1.json",
+      "sha256": "627dfd6a4baa11dcf675d3dd5b9dddee1757bf3118c50726aa4b779b8926e972",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT-resident-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 4357,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_external_once_v1.py"
+    },
+    {
+      "bytes": 52894,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v1.py",
+      "sha256": "47c8f9cafe61eb5cb9ad35aeabc98eae785adc3db71533167fb1b1d8bf606971",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v1.py"
+    },
+    {
+      "bytes": 52906,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v2.py",
+      "sha256": "bc1786bff287ad2d6eee60e9306d6d0d2ae35c21988534127d57c73fc0c18c7e",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v2.py"
+    },
+    {
+      "bytes": 21640,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v1.py",
+      "sha256": "ce0e9c5770cb410923e538b884d25c0e34aee199c07817c4c3376e0e694bdacf",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v1.py"
+    },
+    {
+      "bytes": 21594,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v2.py",
+      "sha256": "91608e61e47b1cc4ff88395d564a1b7a42096be0f09a6fdf832c71d9d3fae83a",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v2.py"
+    },
+    {
+      "bytes": 21606,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v3.py",
+      "sha256": "91417266c7fd1287426e4ade124e074efaddbcdaae1fff48cdc0df0f11eae3ec",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v3.py"
+    },
+    {
+      "bytes": 22413,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "0454a81b0e5e37cfc549e170df58f4abdc7717d6b7328e5167aba05825466ca3",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 22726,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/Source-contract-v2.json",
+      "sha256": "308d4bf83851ea6ffa50e9f331811c9f5699f5989989f0210a433716b8d9fe20",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 18409,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/caller-Source-delta-v1.json",
+      "sha256": "af83583e2990c5f167ff739a78925ff13d2a8d0b65a0ddebaff66fcaf52622f0",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/caller-Source-delta-v1.json"
+    },
+    {
+      "bytes": 21901,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/caller-forward.patch",
+      "sha256": "163080516d72ec2432c997c9855bf9b7d422ab80242ec73767bf59c5af6a769b",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/caller-forward.patch"
+    },
+    {
+      "bytes": 21901,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/caller-full-inverse.patch",
+      "sha256": "fde2cf44ded9c3c9c5e635c2a6e6f113260fda1dd9a27bb6ef7aa32cb0dd9e1b",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/caller-full-inverse.patch"
+    },
+    {
+      "bytes": 9518,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/caller-v2-Source-delta-v1.json",
+      "sha256": "dfe5c07e4090ff8411e487eddd3153042d0c01615d266a8877aa86093abed462",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/caller-v2-Source-delta-v1.json"
+    },
+    {
+      "bytes": 10837,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/caller-v2-forward.patch",
+      "sha256": "a9671da161c37c0079b4eb4f993b47ef47f5a341f06b9aa52ee16561803dbf34",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/caller-v2-forward.patch"
+    },
+    {
+      "bytes": 10837,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/caller-v2-full-inverse.patch",
+      "sha256": "3301d0e2910a99e00288d0eed38489cb4e66423222061d31b9c1177607911838",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/caller-v2-full-inverse.patch"
+    },
+    {
+      "bytes": 14282,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/handoff-v1.json",
+      "sha256": "49ca6c797afab07a859729169996b6595a6826a922294a7bc10dec9f767bf7e0",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 14531,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/handoff-v2.json",
+      "sha256": "67f712267ce721f442bb9b1795c8529a7494f3e03eb16e15e8e88dc84f7d9a97",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 14287,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/handoff-v3.json",
+      "sha256": "14f8ce3e6ebcc3f9ce49a43557d2e8e428a7291ab5fc12cd7f3560d8b2f24d06",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 1393,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "26d8e91746074bc523e3346dd742a3577013ac65d42f14e81b94908a63823c66",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v1.json"
+    },
+    {
+      "bytes": 1862,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v2.json",
+      "sha256": "3bcd43fded8483c499569dab83ec4dd59402b025e76337207080b67378572200",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v2.json"
+    },
+    {
+      "bytes": 1576,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v3.json",
+      "sha256": "a73d6e19e9b5dce316223ed9d10b0e18d92eb439b911beeced86ab0d9129a273",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-contract-v3.json"
+    },
+    {
+      "bytes": 6777,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-Source-delta-v1.json",
+      "sha256": "e5a2c08227a1bf0918cf3624254b183d4c706ef5227100a0ff9c4d836f47fd63",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-Source-delta-v1.json"
+    },
+    {
+      "bytes": 10141,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "b1d910bd23b0b719dc9b008e5393fca4792358aaf916c2ef80766125634f8331",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-forward.patch"
+    },
+    {
+      "bytes": 10141,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "a73d440bf58c435bb832ca326c43f3880251aa51342704da3378ff96fcc63774",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-full-inverse.patch"
+    },
+    {
+      "bytes": 664,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-v2-forward.patch",
+      "sha256": "166e657d291319bbf8d2c527b29dce9424e5a5a46a981283ba7bd8b778cdd167",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v2-forward.patch"
+    },
+    {
+      "bytes": 664,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-v2-inverse.patch",
+      "sha256": "c0d7623b1ddcb6bc0ecd3f9edc0f04cf721d581ca3a5a5b72c383b9eb83f7cda",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v2-inverse.patch"
+    },
+    {
+      "bytes": 2047,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-v3-Source-delta-v1.json",
+      "sha256": "0e58403783a4126fbc839ee08e6f1bc630dc62e24592922d3c7e8df42d6523a3",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v3-Source-delta-v1.json"
+    },
+    {
+      "bytes": 1252,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-v3-forward.patch",
+      "sha256": "b076026ea6e281d7dfa537517c13e9b45a98a9eeaed86dbd99ec0c4f9b3842c6",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v3-forward.patch"
+    },
+    {
+      "bytes": 1252,
+      "path": "evidence/gcts-native-inventory-ROOT-source-20261017/reader-v3-full-inverse.patch",
+      "sha256": "f4bd61590c807e9a8cc39d82467a3ce62327c72a602c4b4f138c19aab432d2ce",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/reader-v3-full-inverse.patch"
+    },
+    {
+      "bytes": 7336,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "e6c59d1b3144cbe29601ae9c3bb9960f649e5386d39246da26b595bc18bf4603",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 10442,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "b108ad9868670e8b52c54cb89a06d1d45456d4d1b14804e27016623eb9bee4db",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 3554,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "42cf9655f78588c6ba95c2a5c924cfb08c4ea0a9c2198253fa63a42aab36f0bf",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 869074,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "3334dd4c9ed1b3d03f9863936fbc96e7aff22d60b52fc3fa300c5e22c64b19e7",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-expanded-result-v1.json"
+    },
+    {
+      "bytes": 8829,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "9c2df11464eb94854ec3d330ab524b717da53543804bfd2af52472c6b30bbcda",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 384,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "d4217782412f0d6c57e461e50d981959e7bd9a6e6ef6c8831ab140351dcebccd",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 7765,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "5a3c11962c4ad01a3fbab0b69f192eb42670afcb6f47f3765e363314c6d76490",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 10498,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "4ca55044c6f6afbe99b69e01dd8c4d292ade4d48d9b7beb7ba5d5b8af1ec77e3",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 2854,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "71ae4d28671a3fc5f6716044180ba6179a3855086bec024be2d36d4a481a8e97",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 8857,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "a537a95f67ab15c173712bd12088844c5f23f8189517e2f25f53d7cc40152f6a",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 384,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "8eece0f39f8024d30e95de9eaff4f2121ffdd0e5497507b939b2fb6d11916b66",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 6962,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/findings-v1.json",
+      "sha256": "a880cd11e26babcde317f841e863a94b3760e7532c8fbbce14d34d42c384bdfd",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 2252,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/findings-v2.json",
+      "sha256": "27689b36d4f45caaedcf47c181bcaacab615b4292382506d73de856eec81c4ac",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/findings-v2.json"
+    },
+    {
+      "bytes": 1055,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/handoff-v1.json",
+      "sha256": "01459a079523419a1fec26564fb45f9e6761a65a70379502e72622c772b0829c",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 1028,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/handoff-v2.json",
+      "sha256": "615fdc4ae57ae3166dbdbf23c3e3ead531b8b359b8c6b4797b2ee17d6d1a2b3c",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 14369,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/review_metadata.py",
+      "sha256": "b13e33e34cb85480ac9d4437449de7a5c484526df94531633e264839d10bf696",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/review_metadata.py"
+    },
+    {
+      "bytes": 8880,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/review_successors_metadata.py",
+      "sha256": "9afcb80f5fc87315b29c83e1a833dae020c917b36e778b8673e5f439a9089f24",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/review_successors_metadata.py"
+    },
+    {
+      "bytes": 7026,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "d23e121af5e229a640c99e8f991d4226f02aa1f181e0b7743c91f09347f9bcba",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 5989,
+      "path": "evidence/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "c69c49614d43dded760ded20bec2b3719677c369bc0d0c1e3a2bb95aee4aa4fc",
+      "source_path": "/private/tmp/gcts-native-inventory-cold-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 3798,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/findings-v2.json",
+      "sha256": "3e7c6ddbe0b51507cb0a5bd8e0b2362031f5913c66e1ca7851d87cbe5722260e",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/findings-v2.json"
+    },
+    {
+      "bytes": 2328,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/findings-v3.json",
+      "sha256": "57933f60967a6bc9998666a93d750d38193851de92961d4e2b3a0f13f2570ac2",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/findings-v3.json"
+    },
+    {
+      "bytes": 1303,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/handoff-v2.json",
+      "sha256": "805d8ed1295af3ca3f277db03a3919b311f51cb861911a9f92fe84418d4e209d",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 1046,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/handoff-v3.json",
+      "sha256": "b10a62386ea18121bdcab838c8a518672aeae5a3bd2aae3693398347f560f1d5",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 1331,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/source-negative-v1.json",
+      "sha256": "ade9a0a9caa2d38faf2eb1aa4a9e1d8736e8b0290b96f85bebbb82dc2336b809",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/source-negative-v1.json"
+    },
+    {
+      "bytes": 2527,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "48674b977ca72cb068a3ec85b9604126a0eb004702ab0994ab59fdaedb4c08a5",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 1570,
+      "path": "evidence/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "5451fd97429d816fe6898b1ad889a1a5802216337f35cbd5f1b41c11475d59b3",
+      "source_path": "/private/tmp/gcts-native-inventory-readout-peer-20261017/typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 4463,
+      "path": "evidence/gcts-native-component-composer-source-20261017/API-wire-v1.json",
+      "sha256": "87373efe523859c20a03b314259bdf4aefa18030a6ab0ece61d1865800efe32c",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/API-wire-v1.json"
+    },
+    {
+      "bytes": 16821,
+      "path": "evidence/gcts-native-component-composer-source-20261017/Source-contract-v1.json",
+      "sha256": "9ab4557a06a7a862a1f0ee7c1fa84fb626a9d2c05fc9c02388355325bd584642",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 30229,
+      "path": "evidence/gcts-native-component-composer-source-20261017/Source-delta-v1.json",
+      "sha256": "91f6a2ff5704fa4bfbb559f4fd1025365cabe722f750e5a522d5be39b7fa727c",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-delta-v1.json"
+    },
+    {
+      "bytes": 29108,
+      "path": "evidence/gcts-native-component-composer-source-20261017/forward-v1.patch",
+      "sha256": "7b2050aed8cbc9d236773404c7c9218a5866a8e042c3b18a130c49411ba00dc1",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/forward-v1.patch"
+    },
+    {
+      "bytes": 29108,
+      "path": "evidence/gcts-native-component-composer-source-20261017/full-inverse-v1.patch",
+      "sha256": "7ce73233a6db36aff34f67a9301bad7702253835d813019fbe5fd0e9989ec8e7",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/full-inverse-v1.patch"
+    },
+    {
+      "bytes": 6236,
+      "path": "evidence/gcts-native-component-composer-source-20261017/handoff-v1.json",
+      "sha256": "30a5fb8d44cc5662182e06eeb0e51d2f2b98f2b38c03c2d6d886a96f312d4993",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 28607,
+      "path": "evidence/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py"
+    },
+    {
+      "bytes": 1823,
+      "path": "evidence/gcts-native-component-composer-source-20261017/static-audit-v1.json",
+      "sha256": "f0c2de29b30176637e0f55f861bb8365567004017488cf002bdf1c8a2cf7257e",
+      "source_path": "/private/tmp/gcts-native-component-composer-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 4127,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/findings-v1.json",
+      "sha256": "a794ff498c51759381fc3cf514dae668ecfbd1b58f214dac7a2daea335fe9828",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 1047,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/handoff-v1.json",
+      "sha256": "afb8d24370abe56b83bf47247462ead3b7e190050be7eae0b1b29e75da0b64d1",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 2718,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/independent-raw-AST-v1.json",
+      "sha256": "f055746d6f94bc44b98a9c57f2b60892d13b90cd824d31f9cc061ee8c076baf5",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/independent-raw-AST-v1.json"
+    },
+    {
+      "bytes": 28607,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/patch-forward-source-only.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/patch-forward-source-only.py"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/patch-inverse-source-only.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/patch-inverse-source-only.py"
+    },
+    {
+      "bytes": 2504,
+      "path": "evidence/gcts-native-component-composer-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "4af9183d888a635a3029b2e57cd40eee93e9dc88be5c36dca094ae485947dbfe",
+      "source_path": "/private/tmp/gcts-native-component-composer-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 3198,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/API-wire-v1.json",
+      "sha256": "c92bed792b5429f5041d7921fb4ce1ee59e0f745ac7239b47c650ca4e5413577",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/API-wire-v1.json"
+    },
+    {
+      "bytes": 3693,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/API-wire-v2.json",
+      "sha256": "31f4f710e72e59b0fd3cb7aa67ce7a1bc1563234069f73cb2e2ae3ce3a320e5c",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/API-wire-v2.json"
+    },
+    {
+      "bytes": 17097,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/Source-contract-v1.json",
+      "sha256": "00f7968309fb98bdadead08929a4994fe90c3683a5e69383f22c7c13fdf54f89",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 5924,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/Source-contract-v2.json",
+      "sha256": "1c06e87beed7b2c2411c5340496a7b569733e9386f7bfed1b66fc19d8f3b8c75",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 33108,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/Source-delta-v1.json",
+      "sha256": "2275f28a70581e22bcaf712c82a176128b6b8921c521973f0a62ef43c4a2471f",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-delta-v1.json"
+    },
+    {
+      "bytes": 2788,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/Source-delta-v2.json",
+      "sha256": "9ad0726908cfa974ccfeb2c0418abb4473b9f8709a58b8596ce337a4a525d23a",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-delta-v2.json"
+    },
+    {
+      "bytes": 5394,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/handoff-v1.json",
+      "sha256": "083d457af3101462f270fbc941be70bae8d318dc1cf648f16bedc5288ee9b68a",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 3947,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/handoff-v2.json",
+      "sha256": "43b0d67361accefbcf1b772c163b68c50e17351d11c44593f45705ed6faa5b2a",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+      "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py"
+    },
+    {
+      "bytes": 31555,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/source-addition-forward.patch",
+      "sha256": "192ea5cbbadf8c9a165e0690bd35cfc82e951fc1671d3b8a8c9848efa4172160",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-addition-forward.patch"
+    },
+    {
+      "bytes": 31555,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/source-full-inverse.patch",
+      "sha256": "d2d564abd03140e5d32f59ec15eed11df0588c77b59e0760327cda89482ffa90",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-full-inverse.patch"
+    },
+    {
+      "bytes": 1325,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/source-v1-to-v2-forward.patch",
+      "sha256": "9428d7b5377d6a3fd7d213d4645aaddc7e94a5d6a6935b55e38e7c9b5e4561c0",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-v1-to-v2-forward.patch"
+    },
+    {
+      "bytes": 1325,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/source-v2-full-inverse.patch",
+      "sha256": "e0cb650b5480e31e5deaf43ed07a3e635e79ac6ad96cbf135e9b0b937f9a6fc6",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/source-v2-full-inverse.patch"
+    },
+    {
+      "bytes": 1614,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/static-audit-v1.json",
+      "sha256": "bbf247397c239b30c1865fafe3f1891dcd9badc371ce24cf0f62f5fd289e3b8c",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 1495,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/static-audit-v2.json",
+      "sha256": "98c7b27016d1df4a0b553466b552b5316c51f099b5f364efd655687c105440d8",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/static-audit-v2.json"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/static-v2-forward-reconstruction.py",
+      "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/static-v2-forward-reconstruction.py"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-source-20261017/static-v2-parent-reconstruction.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-source-20261017/static-v2-parent-reconstruction.py"
+    },
+    {
+      "bytes": 4585,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/findings-v1.json",
+      "sha256": "5d4e263f408169e5706ca6a5b3554250eae12057c9163b18ac6ff68780eb5c43",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 3529,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/findings-v2.json",
+      "sha256": "3f7dbde44cbb1778ae309986826319bc7c02e2979e60eec9741c8da0db7cbad2",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/findings-v2.json"
+    },
+    {
+      "bytes": 1033,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/handoff-v1.json",
+      "sha256": "f4a259d220d80a855c9e4ea938d6573f91ba87dbe9911417a8376592dc4345a2",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 1033,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/handoff-v2.json",
+      "sha256": "d44caafceeb29d953472fe31f0fb1a2622229ae38d400dec0f9609c10c3eae08",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 5575,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v1.json",
+      "sha256": "a6cf0df01c19f5aa85ab553ed9773de1e4d4405ac9f412c8e064fcb33d217b9a",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v1.json"
+    },
+    {
+      "bytes": 2237,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v2.json",
+      "sha256": "ec482aefb6a7b3d8795d59f2f8a4e7b00855964ac327ed4720c165f799277101",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/independent-raw-AST-v2.json"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/patch-forward-source-only.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/patch-forward-source-only.py"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/patch-inverse-source-only.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/patch-inverse-source-only.py"
+    },
+    {
+      "bytes": 2523,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "233973df49ba6c4039b78f73f7e44118cbcf123213aa13ea8969b5dae7322e70",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 2782,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "d019193b7b696f64f7384d15b7a131dfd6d8d9e6c82efff19905d02cf491a15f",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/v2-patch-forward-source-only.py",
+      "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/v2-patch-forward-source-only.py"
+    },
+    {
+      "bytes": 31001,
+      "path": "evidence/gcts-native-inventory-cases-peer-20261017/v2-patch-inverse-source-only.py",
+      "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51",
+      "source_path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/v2-patch-inverse-source-only.py"
+    },
+    {
+      "bytes": 3561,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/API-wire-v1.json",
+      "sha256": "68971214b106df41ad303850b889e2e01e89c30fc5932064c455e2cdc6cbb803",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/API-wire-v1.json"
+    },
+    {
+      "bytes": 23949,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+      "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 4657,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/Source-delta-v1.json",
+      "sha256": "7fb2832b2a4b57ba425610ebb849c9e77831ef50e6b5209a8c51fd5ac10d77f6",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-delta-v1.json"
+    },
+    {
+      "bytes": 3930,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/handoff-v1.json",
+      "sha256": "707af6aa570a7a4c2bbb7df2b11028896960f0bd9f11681a48b5d01f75d6718a",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 31038,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py"
+    },
+    {
+      "bytes": 2506,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/source-forward.patch",
+      "sha256": "dc0eb45fc791d9443003aaab941c4e4a4bcf0d3ef74f31be732cfc015b2ca0d6",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-forward.patch"
+    },
+    {
+      "bytes": 2506,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/source-full-inverse.patch",
+      "sha256": "6a038de3f3aafe9ef789511734e49d99821213032f3e187c0ac3c20539153116",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-full-inverse.patch"
+    },
+    {
+      "bytes": 5014,
+      "path": "evidence/gcts-marked-prefix-census-source-20261017/static-audit-v1.json",
+      "sha256": "bec933fe918bd06da0f7e6bfb61f59bddcc7a4e1cebf011099761ef176d5a435",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 5268,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/findings-v1.json",
+      "sha256": "61b5de13341e39f2d082e9169b5aafbc4cb03464cd2db39f9a2d35042e1ddaaa",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 31038,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/forward-actual-patch-Source.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/forward-actual-patch-Source.py"
+    },
+    {
+      "bytes": 29308,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/full_inverse-actual-patch-Source.py",
+      "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/full_inverse-actual-patch-Source.py"
+    },
+    {
+      "bytes": 1863,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/handoff-v1.json",
+      "sha256": "cc5c26d8ae5c6a93cbb7964097071130a93488fb38f7cec184add01660195271",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 6611,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/independent-raw-AST-v1.json",
+      "sha256": "f41f2b24c556ce65fe76454ae05be328175a09f33fe4f3bffc81ed3fa4c339f5",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/independent-raw-AST-v1.json"
+    },
+    {
+      "bytes": 2474,
+      "path": "evidence/gcts-marked-prefix-census-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "95a2976498dd83a015b62478bfe41473246983345716f9dcc32d1a2563dd1088",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 74993,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-owned-v1/engine-result.json",
+      "sha256": "8e632e4328fff39d543d04595119b96240ac2a5772ec8285f05caf3819ebb08a",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 8620,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-owned-v1/response.jsonl",
+      "sha256": "689bfeed611df43752c2df5daa147ae5f0800074d66ffff3fdae6c945531d6d6",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 248,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/ONCE.json",
+      "sha256": "6e355e3304c995a6097f87de4d2a119da448a29aceff0d9ff655c4e76612f33f",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 277,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stderr.txt",
+      "sha256": "f5c89281aa9c45222bf92b017bef69fca3a897f6fb8979c3f5f44a9d8ddd0be8",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 710,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stdout.txt",
+      "sha256": "af49c3ee035af8c0d46dc6c2043b64e0e7428448931ddae5cd6971c5716f9b6f",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1553,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/native-terminal.json",
+      "sha256": "2de65cad872fb5c30a8367bcfb3e5250f3f9bed83539185a82b14bb3afef5403",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 465,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/observation.json",
+      "sha256": "cd605642ad49284a7d4f686bbdd4f3dd21322a8e7f342299f69f77dbb03bf70a",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "evidence/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "33bda5b269e54bc75a570032401bd08424d3ad3a17c4a38211ca698c1d3f3c3a",
+      "source_path": "/private/tmp/gcts-native-inventory-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 255,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/ONCE.json",
+      "sha256": "9e851086120cf28002caafd062d858181a869e50676fa27d2c8f7bbb97c16b44",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 111,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stderr.txt",
+      "sha256": "11b999bbbca8e1a1d53dc4a3e3eebfd565778f26c8bad1af22166756ce593f9b",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1563,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/native-terminal.json",
+      "sha256": "455aafd70a59974947a89cdc9531f0ebf05e965a478bdb0dc9f5669d16887541",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 472,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/observation.json",
+      "sha256": "28c8fef7b8592286b448d18a5a456830f856dcf63acb77029101470e054a77cf",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "221c42a5d26cd51850f21928ea08011485a009ca5f6f7db981a13864010e2faf",
+      "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
+    }
+  ],
+  "raw_bytes_preserved": true,
+  "schema": "ROOT-native-inventory-evidence-manifest-v1",
+  "scientific_replay": false,
+  "shared_existing_files": [
+    {
+      "bytes": 48584,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/clean_support.py",
+      "role": "current-clean_support",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 19556,
+      "path": "docs/research/gcts-rl-renewal/engine-family-pipeline/evidence/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+      "role": "current-collector",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    },
+    {
+      "bytes": 12619,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/decorator.py",
+      "role": "current-decorator",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    {
+      "bytes": 27553,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/degree_checker.py",
+      "role": "current-degree_checker",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 56670,
+      "path": "docs/research/gcts-rl-renewal/engine-family-pipeline/evidence/current-sources/family_checker.py",
+      "role": "current-expansion_checker",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    {
+      "bytes": 24227,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/fallback.py",
+      "role": "current-fallback",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "bytes": 25205,
+      "path": "docs/research/gcts-rl-renewal/engine-family-pipeline/evidence/current-sources/family_adapter.py",
+      "role": "current-host_adapter",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    {
+      "bytes": 10323,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/kernel.py",
+      "role": "current-kernel",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 18475,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/marked_verifier.py",
+      "role": "current-marked_verifier",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    {
+      "bytes": 20112,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/membership.py",
+      "role": "current-membership",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 30862,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "role": "current-miner",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    {
+      "bytes": 51898,
+      "path": "docs/research/gcts-rl-renewal/engine-family-pipeline/evidence/current-sources/family_expander.py",
+      "role": "current-producer",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    {
+      "bytes": 22030,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/proposer.py",
+      "role": "current-proposer",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "bytes": 130156,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/advice_controls.py",
+      "role": "original-advice_controls",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    {
+      "bytes": 16299,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/advice_validator.py",
+      "role": "original-advice_validator",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    {
+      "bytes": 26007,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/adviser.py",
+      "role": "original-adviser",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    {
+      "bytes": 31931,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/controls.py",
+      "role": "original-controls",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    {
+      "bytes": 5528,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/converter.py",
+      "role": "original-converter",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    {
+      "bytes": 55152,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/engine.py",
+      "role": "original-engine",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    {
+      "bytes": 55852,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/intake.py",
+      "role": "original-intake",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    {
+      "bytes": 10201,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/point_checker.py",
+      "role": "original-point_checker",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    {
+      "bytes": 25338,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/retained_controls.py",
+      "role": "original-retained_controls",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    {
+      "bytes": 8134,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/transition.py",
+      "role": "original-transition",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    {
+      "bytes": 46514,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/word_checker.py",
+      "role": "original-word_checker",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 2925,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/declaration.json",
+      "role": "inputs-declaration",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/profile.json",
+      "role": "inputs-profile",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 4574,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_disposition.json",
+      "role": "inputs-stageB_disposition",
+      "sha256": "ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e"
+    },
+    {
+      "bytes": 162591,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_encoded.json",
+      "role": "inputs-stageB_encoded",
+      "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca"
+    },
+    {
+      "bytes": 1926833,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_expanded.json",
+      "role": "inputs-stageB_expanded",
+      "sha256": "bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93"
+    },
+    {
+      "bytes": 7924,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_plan.json",
+      "role": "inputs-stageB_plan",
+      "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009"
+    },
+    {
+      "bytes": 7572,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_response.jsonl",
+      "role": "inputs-stageB_response",
+      "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e"
+    },
+    {
+      "bytes": 1502,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_transport.json",
+      "role": "inputs-stageB_transport",
+      "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b"
+    }
+  ]
+}

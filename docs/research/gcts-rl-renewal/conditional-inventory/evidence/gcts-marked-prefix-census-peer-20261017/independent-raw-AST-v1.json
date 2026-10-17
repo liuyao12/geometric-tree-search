@@ -1,0 +1,160 @@
+{
+  "schema": "unit-row-marked-prefix-census-independent-raw-AST-v1",
+  "source_only": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "source": {
+    "bytes": 31038,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+    "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+  },
+  "source_contract": {
+    "bytes": 23949,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+    "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23"
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/handoff-v1.json",
+    "sha256": "707af6aa570a7a4c2bbb7df2b11028896960f0bd9f11681a48b5d01f75d6718a",
+    "bytes": 3930
+  },
+  "checks": [
+    "Whole current Source/contract/API/design/supplement read; named raw pins exact.",
+    "Two Source regions reconstruct full parent/current raw and AST; both actual patch directions exact.",
+    "All31 inherited functions/methods raw+AST exact; only new public prototype_census plus implementation tag.",
+    "Old public constants/signatures/schemas exact; original17/input2/binding/dependency and six-limit metadata literal-equal parent.",
+    "No self write on normal export; only existing failed flag written inside exception path.",
+    "No cursor advance/abort/fresh semantic reconstruction call in export.",
+    "Full existing ledger/context copied via old strict semantics.tree; no returned mutable container becomes cursor authority.",
+    "Full original/decorated base-yielded prefixes include removed tiles; never-yielded69 internals explicitly outside scope.",
+    "Prefix counts/EOF flag observational; independent/degree/graph/scheduler/proof/resource fields false.",
+    "No source/module evaluation, scientific call, actual/result/proofword read or clock execution."
+  ],
+  "check_count": 10,
+  "raw_regions": 2,
+  "whole_raw_AST_inverse": true,
+  "actual_patch_applications": [
+    {
+      "direction": "forward",
+      "patch": {
+        "bytes": 2506,
+        "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-forward.patch",
+        "sha256": "dc0eb45fc791d9443003aaab941c4e4a4bcf0d3ef74f31be732cfc015b2ca0d6"
+      },
+      "returncode": 0,
+      "whole_bytes_exact": true,
+      "output": ""
+    },
+    {
+      "direction": "full_inverse",
+      "patch": {
+        "bytes": 2506,
+        "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-full-inverse.patch",
+        "sha256": "6a038de3f3aafe9ef789511734e49d99821213032f3e187c0ac3c20539153116"
+      },
+      "returncode": 0,
+      "whole_bytes_exact": true,
+      "output": ""
+    }
+  ],
+  "unchanged_callables": [
+    "require",
+    "canonical",
+    "sha",
+    "MarkedSemantics.__init__",
+    "MarkedSemantics.tree",
+    "MarkedSemantics.point_map",
+    "MarkedSemantics.agree",
+    "MarkedSemantics.check_marking",
+    "MarkedSemantics._base_key",
+    "MarkedSemantics._fresh_base_projection",
+    "MarkedSemantics.base_state",
+    "MarkedSemantics.initial_state",
+    "MarkedSemantics.rebuild_tile",
+    "MarkedSemantics._checked_state_projection",
+    "MarkedSemantics.private_state",
+    "MarkedSemantics.check_collision",
+    "MarkedSemantics.legality",
+    "MarkedSemantics.with_obligations",
+    "MarkedSemantics._filter_all_checked",
+    "MarkedSemantics._filter",
+    "MarkedSemantics.propose_degree",
+    "MarkedSemantics.check_degree_evidence",
+    "MarkedTransition.authority_snapshot",
+    "MarkedTransition._projection",
+    "MarkedTransition.check_transition",
+    "MarkedTransition.refresh_candidates",
+    "FilteredCursor.__init__",
+    "FilteredCursor.context",
+    "FilteredCursor.abort",
+    "FilteredCursor.advance",
+    "open_fallback"
+  ],
+  "raw_references": [
+    {
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/handoff-v1.json",
+      "sha256": "707af6aa570a7a4c2bbb7df2b11028896960f0bd9f11681a48b5d01f75d6718a",
+      "bytes": 3930
+    },
+    {
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
+      "bytes": 31038
+    },
+    {
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+      "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23",
+      "bytes": 23949
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/marked_unit_row_adapter_v4.py",
+      "sha256": "1844f369734b95b556a6920112e78ea688bb97b9b2970f38b0fd889cc9472a7c",
+      "bytes": 29308
+    },
+    {
+      "path": "/private/tmp/gcts-all-checked-tile-reuse-source-20261017/Source-contract-v1.json",
+      "sha256": "69852968d29ec694ffe8691657baa9a1af3c015604e03b5f672f66fabae1ace3",
+      "bytes": 18422
+    },
+    {
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/API-wire-v1.json",
+      "sha256": "68971214b106df41ad303850b889e2e01e89c30fc5932064c455e2cdc6cbb803",
+      "bytes": 3561
+    },
+    {
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-delta-v1.json",
+      "sha256": "7fb2832b2a4b57ba425610ebb849c9e77831ef50e6b5209a8c51fd5ac10d77f6",
+      "bytes": 4657
+    },
+    {
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/static-audit-v1.json",
+      "sha256": "bec933fe918bd06da0f7e6bfb61f59bddcc7a4e1cebf011099761ef176d5a435",
+      "bytes": 5014
+    },
+    {
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-forward.patch",
+      "sha256": "dc0eb45fc791d9443003aaab941c4e4a4bcf0d3ef74f31be732cfc015b2ca0d6",
+      "bytes": 2506
+    },
+    {
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/source-full-inverse.patch",
+      "sha256": "6a038de3f3aafe9ef789511734e49d99821213032f3e187c0ac3c20539153116",
+      "bytes": 2506
+    },
+    {
+      "path": "/private/tmp/gcts-connected-inventory-bootstrap-design-source-20261017/bootstrap-design-v1.json",
+      "sha256": "0b02d2714d34c2b074e072061bf8471bb40511537aee10047608fca9a0f4d9c9",
+      "bytes": 15915
+    },
+    {
+      "path": "/private/tmp/gcts-connected-inventory-bootstrap-design-source-20261017/bootstrap-census-supplement-v2.json",
+      "sha256": "82eddb380f8286091a31a4783c2d3094ade18a3f59ece706eff60640159b6c0c",
+      "bytes": 10881
+    }
+  ],
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "clock_calls": 0,
+  "actual_or_result_reads": false,
+  "module_or_helper_evaluation": false,
+  "authoring_errors": []
+}

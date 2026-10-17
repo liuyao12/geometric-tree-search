@@ -1,0 +1,29 @@
+--- parent.py
++++ current.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'ROOT-native-connected-conditional-inventory-cases-v1'
++VERSION = 'ROOT-native-connected-conditional-inventory-cases-v2'
+ RESULT_SCHEMA = 'ROOT-native-conditional-inventory-evidence-v1'
+ COMPOSER_VERSION = 'receptor-family-native-conditional-component-composer-v1'
+ COLLECTOR_VERSION = 'receptor-family-checked-engine-state-DAG-collector-v2-kernel-visit-counter'
+@@ -67,7 +67,7 @@
+             self.tick()
+         except BaseException as error:
+             raise _NativeFailure(error) from error
+-        if self.steps >= 1000000 or depth > 128:
++        if self.steps >= 8000000 or depth > 128:
+             raise _OwnPrefix('CASE_OWN_WORK_OR_DEPTH_UNKNOWN')
+         self.steps += 1
+ 
+@@ -290,7 +290,7 @@
+                     'STABILITY', 'whole original host unchanged')
+         result['reason'] = reason
+         result['census'] = [[k, v] for k, v in sorted(names.items())]
+-        result['work'] = {'case_steps': work.steps, 'case_work_limit': 1000000, 'case_depth_limit': 128,
++        result['work'] = {'case_steps': work.steps, 'case_work_limit': 8000000, 'case_depth_limit': 128,
+                           'composer_limits': dict(COMPOSER_LIMITS), 'miner_limits': dict(MINER_LIMITS)}
+         tick()
+         return result

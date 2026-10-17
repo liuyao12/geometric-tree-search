@@ -1,0 +1,67 @@
+{
+  "schema": "ROOT-native-conditional-inventory-cases-findings-v2",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "blockers": [],
+  "parent_whole_review": {
+    "path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "233973df49ba6c4039b78f73f7e44118cbcf123213aa13ea8969b5dae7322e70",
+    "bytes": 2523
+  },
+  "parent_whole_findings": {
+    "path": "/private/tmp/gcts-native-inventory-cases-peer-20261017/findings-v1.json",
+    "sha256": "5d4e263f408169e5706ca6a5b3554250eae12057c9163b18ac6ff68780eb5c43",
+    "bytes": 4585
+  },
+  "current_source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+    "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+  },
+  "current_contract": {
+    "bytes": 5924,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/Source-contract-v2.json",
+    "sha256": "1c06e87beed7b2c2411c5340496a7b569733e9386f7bfed1b66fc19d8f3b8c75"
+  },
+  "findings": [
+    {
+      "id": "NI-V2-1",
+      "lines": [
+        10,
+        10
+      ],
+      "conclusion": "Only own VERSION changes v1 to v2; proposal/receipt/data/result schemas, injected API expectations and all semantic dependency versions are unchanged."
+    },
+    {
+      "id": "NI-V2-2",
+      "lines": [
+        65,
+        73
+      ],
+      "conclusion": "Only cumulative CASE own step threshold changes1000000 to8000000. Same native tick remains first at every step, same depth128, same native exception identity propagation and own-prefix UNKNOWN behavior. No downstream allowance, reset or native20/512 extension is added."
+    },
+    {
+      "id": "NI-V2-3",
+      "lines": [
+        285,
+        297
+      ],
+      "conclusion": "Emitted case_work_limit exactly matches the8m operative threshold; final current binding/host checks and direct native ticks remain byte-identical. Current API/contract explicitly supersede only parent CASE1m statement and retain parent rest."
+    },
+    {
+      "id": "NI-V2-4",
+      "conclusion": "Full inverse restores exactly all31001 parent bytes and whole AST; both actual unified patches apply exactly on separate Source copies. Sixteen unaffected named class/function regions raw+AST exact; containing _Work.step and run_inventory.finish have only the declared literals changed."
+    },
+    {
+      "id": "NI-V2-5",
+      "conclusion": "All parent scientific relation, whole census/packet/union/native membership, two independent expansion checks, source-ground row/port joins, fixed composer/miner allocation, five phase sites, flags and every emitted record requirement remain unchanged. Whole-parent review and its explicit gaps remain operative."
+    }
+  ],
+  "scope_gaps": [
+    "This is a changed own-work allowance experiment, not an unchanged rerun, performance improvement, predicted fit or runtime qualification. No actual/result files were read.",
+    "Parent V1 remains immutable; its actual administrative status is not promoted or reinterpreted by this Source review.",
+    "Original17/input2/epoch/B12N44/24rows/native20/512/55/60/90+1 and all downstream mathematical allowances are unchanged; Root must freshly bind/review/run the current cold composition separately.",
+    "Conditional source-ground inventory still supplies no theorem/proof, global viability, engine/receiver/marking/RL/gain authority. Parent future negative/control gaps remain unqualified."
+  ]
+}

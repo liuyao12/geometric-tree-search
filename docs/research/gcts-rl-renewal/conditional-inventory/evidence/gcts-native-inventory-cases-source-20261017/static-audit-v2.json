@@ -1,0 +1,46 @@
+{
+  "actual_forward_patch_apply_cmp_exact": true,
+  "actual_inverse_patch_apply_cmp_exact": true,
+  "affected_containing_regions": [
+    "_Work",
+    "_Work.step",
+    "run_inventory",
+    "run_inventory.finish"
+  ],
+  "compile_without_evaluation": true,
+  "exact_three_literal_edits": true,
+  "parent_V1_preserved": true,
+  "parent_source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v1.py",
+    "sha256": "472c1ba179ddbec4adf5e1732f3db3468e28f621fe830d545b79a55663f83e51"
+  },
+  "schema": "ROOT-native-inventory-case-author-static-audit-v2",
+  "scientific_calls": 0,
+  "scope": "No actual/output read, no scientific module import/helper/case/test/clock execution or qualification inheritance.",
+  "source": {
+    "bytes": 31001,
+    "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+    "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+  },
+  "source_only": true,
+  "unchanged_raw_AST_named_regions": [
+    "InventoryDataError",
+    "_OwnPrefix",
+    "_NativeFailure",
+    "_NativeFailure.__init__",
+    "require",
+    "canonical",
+    "ascii_digest",
+    "_Work.__init__",
+    "_Work.copy",
+    "_key",
+    "_checked_expansion",
+    "_check_source_roundtrip",
+    "run_inventory.signal",
+    "run_inventory.merge",
+    "run_inventory.merge_tile",
+    "run_inventory.merge_states"
+  ],
+  "whole_raw_AST_inverse_exact": true
+}

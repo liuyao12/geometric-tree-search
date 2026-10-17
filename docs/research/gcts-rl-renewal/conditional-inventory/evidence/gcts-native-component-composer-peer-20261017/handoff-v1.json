@@ -1,0 +1,26 @@
+{
+  "schema": "receptor-family-native-component-composer-independent-handoff-v1",
+  "typed_review": {
+    "path": "/private/tmp/gcts-native-component-composer-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "4af9183d888a635a3029b2e57cd40eee93e9dc88be5c36dca094ae485947dbfe",
+    "bytes": 2504
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-component-composer-peer-20261017/findings-v1.json",
+    "sha256": "a794ff498c51759381fc3cf514dae668ecfbd1b58f214dac7a2daea335fe9828",
+    "bytes": 4127
+  },
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-component-composer-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "f055746d6f94bc44b98a9c57f2b60892d13b90cd824d31f9cc061ee8c076baf5",
+    "bytes": 2718
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/handoff-v1.json",
+    "sha256": "30a5fb8d44cc5662182e06eeb0e51d2f2b98f2b38c03c2d6d886a96f312d4993",
+    "bytes": 6236
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false
+}

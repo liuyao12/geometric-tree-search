@@ -1,0 +1,53 @@
+{
+  "schema": "unit-row-marked-prefix-census-typed-Source-review-v1",
+  "scope": "unit-row-marked-prefix-census-adapter-Source",
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root/arithmetic_induction",
+  "source": {
+    "bytes": 31038,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+    "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+  },
+  "source_contract": {
+    "bytes": 23949,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+    "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23"
+  },
+  "sources": {
+    "marked_adapter": {
+      "bytes": 31038,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    }
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored ea300 ancestry and independent marked verifier9fd/marked-aware checker8f, reviewed parent1844 and shared source/data interfaces. Arithmetic authored this new export and prior point/engine primitives. This is a distinct source/API review of the additive method, not independent reacceptance or execution of inherited checker mathematics.",
+  "whole_current_source_contract_API_design_reviewed": true,
+  "findings": {
+    "path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/findings-v1.json",
+    "sha256": "61b5de13341e39f2d082e9169b5aafbc4cb03464cd2db39f9a2d35042e1ddaaa",
+    "bytes": 5268
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "f41f2b24c556ce65fe76454ae05be328175a09f33fe4f3bffc81ed3fa4c339f5",
+    "bytes": 6611
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/handoff-v1.json",
+    "sha256": "707af6aa570a7a4c2bbb7df2b11028896960f0bd9f11681a48b5d01f75d6718a",
+    "bytes": 3930
+  },
+  "blockers": [],
+  "raw_regions": 2,
+  "actual_patch_directions_verified": 2,
+  "inherited_callables_raw_AST_exact": 31,
+  "runtime_qualification_inherited": false,
+  "composer_or_engine_integration_accepted": false,
+  "actual_execution_authorized": false,
+  "runtime_fit": "UNMEASURED"
+}

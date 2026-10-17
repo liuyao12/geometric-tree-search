@@ -1,0 +1,132 @@
+{
+  "API_wire": {
+    "bytes": 4463,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/API-wire-v1.json",
+    "sha256": "87373efe523859c20a03b314259bdf4aefa18030a6ab0ece61d1865800efe32c"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/hilbert_advice_controls",
+    "schema": "receptor-family-native-component-composer-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "receptor-family-native-component-composer-Source",
+    "source": {
+      "bytes": 28607,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+    },
+    "source_contract": {
+      "bytes": 16821,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-contract-v1.json",
+      "sha256": "9ab4557a06a7a862a1f0ee7c1fa84fb626a9d2c05fc9c02388355325bd584642"
+    },
+    "source_only": true,
+    "sources": {
+      "composer": {
+        "bytes": 28607,
+        "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+        "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+      }
+    }
+  },
+  "Root_component_state_field": "components[0].state",
+  "Root_next_action": "Whole current Source/contract distinct review and Root review, then separately authored full once/native caller and fresh grant. No actual/native component/engine proof acceptance inherited.",
+  "actual_execution_authorized": false,
+  "actual_patches": {
+    "forward": {
+      "bytes": 29108,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/forward-v1.patch",
+      "sha256": "7b2050aed8cbc9d236773404c7c9218a5866a8e042c3b18a130c49411ba00dc1"
+    },
+    "full-inverse": {
+      "bytes": 29108,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/full-inverse-v1.patch",
+      "sha256": "7ce73233a6db36aff34f67a9301bad7702253835d813019fbe5fd0e9989ec8e7"
+    }
+  },
+  "dependency_sources": {
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receptor-family-six-rule-adapter-source-20261016/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 31038,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    }
+  },
+  "limits": {
+    "components": 1,
+    "depth": 128,
+    "extension_advances": 96,
+    "heads_per_rule": 1,
+    "quantum": 8,
+    "root_advances": 48,
+    "work": 1000000
+  },
+  "point_adapter_contract": {
+    "bytes": 23949,
+    "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/Source-contract-v1.json",
+    "sha256": "719401d74bb9a724d4eab9dc69746759ad17efdcc87bfb3462c8eefe3f6e8d23"
+  },
+  "point_adapter_peer": {
+    "bytes": 2474,
+    "path": "/private/tmp/gcts-marked-prefix-census-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "95a2976498dd83a015b62478bfe41473246983345716f9dcc32d1a2563dd1088"
+  },
+  "schema": "receptor-family-native-component-composer-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 28607,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+    "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+  },
+  "source_contract": {
+    "bytes": 16821,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-contract-v1.json",
+    "sha256": "9ab4557a06a7a862a1f0ee7c1fa84fb626a9d2c05fc9c02388355325bd584642"
+  },
+  "source_delta": {
+    "bytes": 30229,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-delta-v1.json",
+    "sha256": "91f6a2ff5704fa4bfbb559f4fd1025365cabe722f750e5a522d5be39b7fa727c"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 1823,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/static-audit-v1.json",
+    "sha256": "f0c2de29b30176637e0f55f861bb8365567004017488cf002bdf1c8a2cf7257e"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "checks": {
+    "AST_parse_compile_without_evaluation": true,
+    "actual_addition_and_full_inverse_patches": true,
+    "exact_defaults": true,
+    "no_engine_search_place_decision_calls": true,
+    "no_eval_exec_compile_or_file_calls": true,
+    "no_given_formula_or_node_or_seed_signature": true,
+    "no_importfrom": true,
+    "no_private_cursor_or_engine_attributes": true,
+    "only_hashlib_json_imports": true,
+    "v5_implementation_tag_bound": true
+  },
+  "module_imported_or_evaluated": false,
+  "named_Source_regions": [
+    {
+      "end_line": 34,
+      "line": 31,
+      "name": "ComposerDataError"
+    },
+    {
+      "end_line": 38,
+      "line": 37,
+      "name": "_OwnLimit"
+    },
+    {
+      "end_line": 43,
+      "line": 41,
+      "name": "_NativeFailure"
+    },
+    {
+      "end_line": 48,
+      "line": 46,
+      "name": "require"
+    },
+    {
+      "end_line": 53,
+      "line": 51,
+      "name": "canonical"
+    },
+    {
+      "end_line": 57,
+      "line": 56,
+      "name": "digest"
+    },
+    {
+      "end_line": 89,
+      "line": 60,
+      "name": "_Work"
+    },
+    {
+      "end_line": 462,
+      "line": 92,
+      "name": "compose_components"
+    }
+  ],
+  "runtime_fit": "UNMEASURED",
+  "schema": "receptor-family-native-composer-static-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 28607,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+    "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+  },
+  "source_delta": {
+    "bytes": 30229,
+    "path": "/private/tmp/gcts-native-component-composer-source-20261017/Source-delta-v1.json",
+    "sha256": "91f6a2ff5704fa4bfbb559f4fd1025365cabe722f750e5a522d5be39b7fa727c"
+  },
+  "source_only": true
+}
