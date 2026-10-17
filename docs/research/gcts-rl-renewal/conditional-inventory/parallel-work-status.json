@@ -1,6 +1,12 @@
 {
   "coordination": "Root integrates, declares and owns scientific actuals, preserves the original model and publishes. Authors work on separate frozen components; another agent reviews each changed component. Timed comparisons stay isolated unless an aggregate concurrent budget is declared prospectively.",
-  "current_checking_tasks": "Saved-data audits are closed for the native head controls, incomplete marked searches and completed conventional arithmetic proof. Final HTML translation/claim review is current; later donor-family integration and geometry runtime actuals will need fresh reviews and plans.",
+  "current_assignments": {
+    "arithmetic_induction": "Geometry selected-family empty cold caller, Source only",
+    "hilbert_advice_controls": "Independent saved-data audit of original-right-two proof and report",
+    "hilbert_ordering_diagnosis": "Independent saved-data audit of donor-pool UNKNOWN",
+    "root": "Integrate exact shared contracts, own isolated actuals, compare results, publish"
+  },
+  "current_checking_tasks": "Both new saved-data audits closed without mismatch. Geometry caller composition and report translation/claims are separately reviewed. Source-only progress is not counted as proof discovery.",
   "date": "2026-10-17",
   "geometry_reconciliation": {
     "bytes": 15205,
@@ -8,6 +14,18 @@
     "sha256": "9027ad21bad6c4013b693c13461cb9b0a59f1c711af8e97be79dde73004f3cc9"
   },
   "goal_complete": false,
+  "independent_new_result_audits": {
+    "pool": {
+      "bytes": 3264,
+      "path": "/private/tmp/gcts-logical-pool-saved-data-peer-20261017/typed-data-review-v1.json",
+      "sha256": "7005b3c26ac244433f8f1933232078939d42567c24f88649cce3599dc40aed07"
+    },
+    "proof": {
+      "bytes": 2823,
+      "path": "/private/tmp/gcts-right-two-equational-saved-data-peer-20261017/typed-data-review-v1.json",
+      "sha256": "851186ad0f561086eee888ad69c6189e2dfb1b915b5b51af7104b3a165bfab74"
+    }
+  },
   "limitations": [
     "Parallel agent throughput is not a GCTS or RL search advantage.",
     "Three geometry derivations are elementary equality transport, not genuine I.2-use proofs or a qualified complete tiling board.",
@@ -15,8 +33,10 @@
   ],
   "new_arithmetic_proof": "arithmetic-baseline-summary.json",
   "new_comparison": "Four new sequential once-only complete logical proof outcomes over two existing calibration statements; identical commands for both methods; source proposals precede primitive selection in point arms. See matched-comparison-summary.json.",
+  "new_logical_pool_outcome": "logical-pool-progress-summary.json",
   "new_native_marking_progress": "native-head-marking-summary.json",
-  "schema": "GCTS-parallel-research-status-v5",
+  "new_right_two_proof": "arithmetic-right-two-summary.json",
+  "schema": "GCTS-parallel-research-status-v6",
   "selected_arithmetic_progress": "selected-proof-progress-summary.json",
   "success_criteria": [
     "More independently checked theorems without supplied proof routes",
@@ -28,20 +48,20 @@
     {
       "agent": "arithmetic_induction",
       "aspect": "Arithmetic and reusable families",
-      "next_result": "Mine only the machine-found checked derivation into parameterized receptor families; test actual useful reuse on original right-two with matched conventional knowledge and charged construction/checking.",
-      "status": "Conventional automatic equational baseline found two rewrite edges, compiled12 essential primitive lines, full independent original-context proof accepted, native12-row marked partial-state checked in2.607985s. No supplied proof/route/inventory. Selected-point search remains incomplete UNKNOWN."
+      "next_result": "Smaller canonical mining batch or lossless shared evidence under the same gates, then checked conditional receiver instances and measured useful transfer with matched conventional knowledge.",
+      "status": "Two conventional automatic arithmetic proofs,12 and20 essential commands. First donor-pool run returned OWN_WHOLE_EVIDENCE_UNKNOWN within native20/512; accepted inventory empty, unavailable mining counts null. Selected-point search remains incomplete."
     },
     {
       "agent": "hilbert_advice_controls",
       "aspect": "Symbolic Hilbert geometry",
       "next_result": "Integrate BRANCH-only fresh provider through fresh consumer/full census/continuation/rollback, then native/point-empty/literal/parameterized matched held-out arms.",
-      "status": "Selected-family DFS integration V3 passed distinct conditional Source review after two V2 exception/cleanup blockers were repaired; no runtime integration or transfer result yet."
+      "status": "Selected-family DFS and CASE have distinct conditional Source reviews. A fresh empty-inventory cold caller is being prepared; no selected-family runtime or transfer result yet."
     },
     {
       "agent": "hilbert_ordering_diagnosis",
       "aspect": "Independent implementation checks",
       "next_result": "Audit complete source and actual records, enforce shared knowledge/endpoints/accounting and fresh checked actual cluster use.",
-      "status": "Distinct source reviews and saved-data audits closed for native head controls, incomplete marked search and completed conventional arithmetic proof. No independent codec or scientific replay is claimed. Independent report translation/claims review is separate."
+      "status": "Independent saved-wire audits of the new conventional proof and explicit pool UNKNOWN. Native terminal status and exact scopes are separated from scientific acceptance; no independent codec or scientific replay."
     }
   ],
   "user_authorized_parallel_work": true

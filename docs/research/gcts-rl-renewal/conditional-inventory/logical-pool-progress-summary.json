@@ -1,0 +1,53 @@
+{
+  "GCTS_advantage": false,
+  "RL": false,
+  "Root_reviewed_final": {
+    "bytes": 1291,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-logical-donor-pool-ROOT-20261017/ROOT-reviewed-final-v1.json",
+    "sha256": "8dc9037f12eeaf97de18ac7b1dc2900bf43c851b51239d7d09db07da1df2ffdc"
+  },
+  "accepted_inventory_count": 0,
+  "canonical_mining_limits": {
+    "cuts": 48,
+    "families": 64,
+    "generalizations_per_cut": 2
+  },
+  "combined_end_to_end20_claim": false,
+  "date": "2026-10-17",
+  "disposition": {
+    "bytes": 17363,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-logical-donor-pool-ROOT-20261017/ROOT-pool-disposition-v1.json",
+    "sha256": "8c2bb320a3ea9f95e42a437455a44eb7a07bc2ac4f9db3cc8bacdc47840a23e9"
+  },
+  "evidence_byte_limit": 16777216,
+  "expanded_result": {
+    "bytes": 275578,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-logical-donor-pool-ROOT-20261017/ROOT-expanded-result-v1.json",
+    "sha256": "e11e2af90be6d49535033f1076db29ac91b6a43828cebbdacd74304fc7ca21b4"
+  },
+  "external_launch_to_postprobe_seconds": 15.127565,
+  "fresh_donor_logical_certificate": null,
+  "goal_complete": false,
+  "historical_donor_discovery_seconds": 2.607985,
+  "independent_saved_data_review": {
+    "bytes": 3264,
+    "path": "/private/tmp/gcts-logical-pool-saved-data-peer-20261017/typed-data-review-v1.json",
+    "sha256": "7005b3c26ac244433f8f1933232078939d42567c24f88649cce3599dc40aed07"
+  },
+  "independent_saved_data_review_closed": true,
+  "mined_record_count": null,
+  "native_resource_gate_passed": true,
+  "new_theorem_discovered": false,
+  "next": "Use a prospectively declared smaller canonical batch or a lossless shared-evidence representation within the same native resource gate, then qualify every retained expansion before receiver use. Do not repeat the unchanged experiment.",
+  "original_donor_compiled_partial_state_checked": true,
+  "owned_peak_bytes": 171147264,
+  "physical_abstract_cut_accepted": false,
+  "qualified_prefix_count": null,
+  "reason": "OWN_WHOLE_EVIDENCE_UNKNOWN",
+  "receiver_transfer_accepted": false,
+  "schema": "GCTS-logical-donor-pool-progress-summary-v1",
+  "scope": "Closed20/512 run returned its own evidence-size UNKNOWN; no accepted pool, salvaged prefix or fabricated zero mining counters. Original donor whole marked partial state checked separately. Candidate logical recipes are conditional obligations, not arbitrary receiver facts or universally proved lemmas.",
+  "status": "UNKNOWN",
+  "universal_family_proved": false,
+  "work_steps": null
+}

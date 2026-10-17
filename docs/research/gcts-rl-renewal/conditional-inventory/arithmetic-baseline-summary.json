@@ -15756,9 +15756,11 @@
     "sha256": "782a7f13a52ad80b074d274769793f3bc77941a34e578f7b71de1a8c604cea7a"
   },
   "independent_saved_data_review_closed": true,
+  "later_right_two_logically_solved_conventionally": true,
+  "later_right_two_summary": "arithmetic-right-two-summary.json",
   "logical_proof_accepted": true,
   "origin_kind": "AUTOMATIC_CONVENTIONAL_ROOTED_EQUATIONAL_SEARCH",
-  "original_right_two_unresolved": true,
+  "original_right_two_unresolved_at_this_earlier_run": true,
   "owned_peak_bytes": 28180480,
   "performance_accepted": false,
   "primitive_DAG": {
