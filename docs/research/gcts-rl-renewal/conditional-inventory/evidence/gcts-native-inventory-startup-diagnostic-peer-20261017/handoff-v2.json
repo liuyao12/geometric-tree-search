@@ -1,0 +1,31 @@
+{
+  "schema": "ROOT-native-inventory-startup-independent-handoff-v2",
+  "caller_review": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "2dc990869834706b5968ef76b71b4c2d14d20df53fc0a5364e12df451f3f7007",
+    "bytes": 7038
+  },
+  "reader_review": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-typed-Source-review-v2.json",
+    "sha256": "ed9d9a9ca8702638222baac9e11543c73369b149546d4f7ea053832609175261",
+    "bytes": 2892
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/findings-v2.json",
+    "sha256": "3f9898c050a0ffad170aa186666c24870999f4e61b3e8a7978615bbf62a0ac90",
+    "bytes": 6634
+  },
+  "raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v2.json",
+    "sha256": "41f8342e05772de736740781750ae99001e0aac6370d477744582344f4ae12e5",
+    "bytes": 2444
+  },
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/handoff-v2.json",
+    "sha256": "dce9fc49cb7b0877732163a96ae28de1023d75ad33328ae733bf377233b7afe2",
+    "bytes": 12705
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false
+}

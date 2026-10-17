@@ -1,0 +1,65 @@
+--- before
++++ after
+@@ -10,7 +10,7 @@
+ import sys
+ import zlib
+ 
+-CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-inventory-ROOT-source-20261017/Source-contract-v2.json', 'sha256': '308d4bf83851ea6ffa50e9f331811c9f5699f5989989f0210a433716b8d9fe20', 'bytes': 22726}
++CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v1.json', 'sha256': '690870e9f207008a8d076a926329c2779d02dfcf3e98a4fa5821ee9549b186f4', 'bytes': 26001}
+ 
+ 
+ def need(ok, why):
+@@ -64,7 +64,7 @@
+     return dict(path=str(path), **raw_pin(raw))
+ 
+ 
+-PHASES=('BEFORE_COMPOSER', 'AFTER_COMPOSER', 'AFTER_DAG', 'AFTER_MINER', 'AFTER_QUALIFICATION', 'BEFORE_OUTPUT')
++PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_COMPOSER', 'AFTER_COMPOSER', 'AFTER_DAG', 'AFTER_MINER', 'AFTER_QUALIFICATION', 'BEFORE_OUTPUT')
+ 
+ def read_phases(raw, launch, terminal):
+     need(len(raw)<=65536, 'bounded full native stderr')
+@@ -82,7 +82,7 @@
+             last_index=PHASES.index(label);phases.append({'stage':label,'native_ns':stamp})
+         else:
+             stopped=True;tail.append(line)
+-    need(len(phases)<=6, 'finite fixed phase sites')
++    need(len(phases)<=13, 'finite fixed phase sites')
+     return phases,b''.join(tail)
+ 
+ 
+@@ -149,7 +149,7 @@
+     for ref in plan['inputs'].values(): pinned(ref)
+     need(plan['source_contract']==CURRENT_CONTRACT, 'literal frozen current operative Source capsule')
+     contract = decode(pinned(plan['source_contract']))
+-    need(contract['schema'] == 'ROOT-native-connected-conditional-inventory-cold-Source-contract-v1'
++    need(contract['schema'] == 'ROOT-native-inventory-startup-diagnostic-cold-Source-contract-v1'
+          and contract['sources'] == plan['sources'] and contract['inputs'] == plan['inputs']
+          and contract['limits'] == plan['limits'], 'exact current operative contract')
+     grant = decode(pinned(plan['ROOT_authorization']))
+@@ -159,7 +159,7 @@
+          'whole once grant joins current plan')
+     for role, ref in plan['reviews'].items():
+         review = decode(pinned(ref))
+-        need(review['scope'] == 'ROOT-native-connected-conditional-inventory-cold-Source'
++        need(review['scope'] == 'ROOT-native-inventory-startup-diagnostic-cold-Source'
+              and review['source'] == plan['sources']['intake'] and review['sources'] == plan['sources']
+              and review['source_contract'] == plan['source_contract'] and review['source_only'] is True
+              and review['source_review_passed'] is True and review['scientific_calls'] == 0,
+@@ -253,7 +253,7 @@
+              and completion['exit_zero_and_coordinator_deadline_required']is True
+              and completion['body_sha256']==raw_pin(lines[0])['sha256'] and completion['body_bytes']==len(lines[0])
+              and body['schema']=='ROOT-native-conditional-inventory-response-body-v1'
+-             and body['version']=='ROOT-native-connected-conditional-inventory-cold-v2-case-work8m'
++             and body['version']=='ROOT-native-inventory-startup-diagnostic-cold-v1'
+              and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+              and body['limits']==plan['limits'] and body['resource_rule']==plan['resource_rule']
+              and body['CLOCK_DOMAIN']=='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+@@ -283,7 +283,7 @@
+              and evidence['purpose']==plan['purpose'], 'full canonical current payload')
+         payload=evidence['conditional_inventory'];pipeline=payload['inventory']
+         need(all(body['joint_began_ns']<=x['native_ns']<body['joint_deadline_ns']for x in phases), 'positive phase samples original20')
+-        need(phases[0]['stage']=='BEFORE_COMPOSER' and phases[-1]['stage']=='BEFORE_OUTPUT'
++        need(phases[0]['stage']=='BEFORE_PLAN_READ' and phases[-1]['stage']=='BEFORE_OUTPUT'
+              and (pipeline['status']!='CHECKED_CONDITIONAL_INVENTORY' or [x['stage']for x in phases]==list(PHASES)),
+              'ordered reached sites; full inventory requires all six sites')
+         need(payload['schema']=='ROOT-native-conditional-inventory-payload-v1'

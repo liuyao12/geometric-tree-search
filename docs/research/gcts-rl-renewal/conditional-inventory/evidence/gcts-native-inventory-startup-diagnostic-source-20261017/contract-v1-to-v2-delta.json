@@ -1,0 +1,39 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "changes": [
+    "Remove ambiguous wholepacket diagnostic_only; retain instrumentation_diagnostic_onlyTrue",
+    "Clarify complete current record narrow source-ground inventory scope with no inherited/broad acceptance",
+    "Add explicit current producer-status/wire/resource observation interpretation and revision provenance"
+  ],
+  "parent_contract": {
+    "bytes": 26001,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v1.json",
+    "sha256": "690870e9f207008a8d076a926329c2779d02dfcf3e98a4fa5821ee9549b186f4"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 3629,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/contract-v1-to-v2-forward.patch",
+      "sha256": "aa8477932cb743a2982b5724decc51a0f01318d18497b8643966eca0e55435f6"
+    },
+    "full-inverse": {
+      "bytes": 3629,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/contract-v1-to-v2-full-inverse.patch",
+      "sha256": "24e68e08548f5e48cb1a44b86619f0c228c950ea473819f3d8fbf596b3d6b998"
+    }
+  },
+  "schema": "native-inventory-startup-contract-scope-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_contract": {
+    "bytes": 27094,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+  },
+  "source_only": true,
+  "source_unchanged": {
+    "bytes": 53327,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+    "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+  }
+}

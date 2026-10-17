@@ -1,0 +1,46 @@
+--- before
++++ after
+@@ -126,8 +126,8 @@
+   "author_identity": "/root",
+   "author_provenance": "Root owns integration/grants/actuals. Controls authored this exact startup instrumentation and saved-reader successor; reviewer must be distinct.",
+   "case_work_limit": 8000000,
++  "contract_revision": 2,
+   "delegated_Source_author": "/root/hilbert_advice_controls",
+-  "diagnostic_only": true,
+   "failure_protocol": "Unchanged builtin4 legacy scalar slots, all None in this caller. No observer wrapped; no late census or scientific callback after timeout. Successful phase sites only, not a state/proof trajectory.",
+   "inputs": {
+     "declaration": {
+@@ -171,6 +171,7 @@
+       "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b"
+     }
+   },
++  "instrumentation_diagnostic_only": true,
+   "limits": {
+     "aggregate_owned_bytes": 536870912,
+     "caller_finish_reserve_seconds": 1,
+@@ -361,12 +362,13 @@
+   },
+   "purpose": "native-conditional-inventory",
+   "qualification_inherited": false,
++  "returned_record_scope": "Reader status, complete_wire_verified, native_resources_qualified and conditional_inventory_record_complete are literal CURRENT producer-status/whole-wire/resource observations. Narrow source-ground inventory qualification requires the complete current checked record and Root acceptance. Markers alone never qualify inventory or cases; no new case-count framework is introduced.",
+   "schema": "ROOT-native-inventory-startup-diagnostic-cold-Source-contract-v1",
+   "scientific_acceptance": false,
+   "scientific_calls": 0,
+   "scientific_interpretation": "Fresh independently checked conditional two-member inventory only if complete. Open inputs remain fact_accepted:false. Source-ground re-instantiation is not held-out transfer, full proof, current global viability, RL or GCTS advantage. SEARCH_EXTRACTED is a miner wire enum, not engine provenance.",
+   "scope": "ROOT-native-inventory-startup-diagnostic-cold-Source",
+-  "scope_statement": "Startup localization only. Parent full original model/semantics, CASE8m/allocation, scientific assertions, guarded delegation, successful wire and failure tail are unchanged. No engine/provider or target route; no prior or current diagnostic record confers qualification, theorem, viability or gain.",
++  "scope_statement": "Markers provide diagnostic reached-site observations only. The full unchanged parent original model/semantics, CASE8m/allocation, scientific assertions, guarded delegation, successful wire and failure tail remain operative. A complete returned CURRENT authenticated Source/native20/512MiB-qualified helper record may support narrow source-ground conditional inventory qualification through its existing fresh independent checker/native full-union checks. No historical qualification is inherited. No marker or absent marker, incomplete/failed record, or saved metadata reader supplies scientific replay, theorem/frontier viability/engine/scheduler/rollback/generalized-lemma/RL/GCTS-gain authority.",
+   "source": {
+     "bytes": 53327,
+     "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+@@ -465,5 +467,10 @@
+       "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+     }
+   },
++  "supersedes_contract": {
++    "bytes": 26001,
++    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v1.json",
++    "sha256": "690870e9f207008a8d076a926329c2779d02dfcf3e98a4fa5821ee9549b186f4"
++  },
+   "version": "ROOT-native-inventory-startup-diagnostic-cold-v1"
+ }

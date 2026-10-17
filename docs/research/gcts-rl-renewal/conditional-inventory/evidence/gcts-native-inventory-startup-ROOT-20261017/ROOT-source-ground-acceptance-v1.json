@@ -1,0 +1,45 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "automatically_constructed_components": 1,
+  "complete_GCTS_model_accepted": false,
+  "descriptors_qualified": 2,
+  "disposition": {
+    "bytes": 4192,
+    "path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-disposition-v1.json",
+    "sha256": "8ef03802da46d12c90d12ffa7aa1bd940d5b2ab99a7807d6beeeedd5c93562f5"
+  },
+  "distinct_native_members": 2,
+  "engine_generated": false,
+  "expanded": {
+    "bytes": 1822121,
+    "path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-expanded-result-v1.json",
+    "sha256": "2fe761011a701835eaca0824b00381fc192fd5cff1fd917181c60fba346eee2c"
+  },
+  "family_ids": [
+    "980e1db6196239ce4902325885799ba62da390fbd276de2c7e1eee91334e0a1f",
+    "404100b0f896c21b3a006a34ba5175388ec5e51ca2a909f56392d033ac8b196a"
+  ],
+  "native_resources_qualified": true,
+  "new_theorem_discovered": false,
+  "physical_component_ids": [
+    "automatic-component-949b28776e1ed5068dcf827e95b7663836afd9cc7a0140beffe095ae6737ad75"
+  ],
+  "plan": {
+    "bytes": 8901,
+    "path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-plan-v1.json",
+    "sha256": "8e693d7e6c015c747d9192056c2154bda347b8f4a1f9a66dff2d270781217495"
+  },
+  "receiver_transfer_qualified": false,
+  "schema": "ROOT-native-source-ground-inventory-acceptance-v1",
+  "scientific_replay": false,
+  "scope": "Current original-model source-ground conditional instances only. Literal plus automatic FORMULA descriptor are two descriptions of one physical fragment. No receiver transfer, universal family lemma, target proof, live engine activation, GCTS/RL or speedup claim.",
+  "source_contract": {
+    "bytes": 27094,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+  },
+  "source_ground_inventory_qualified": true,
+  "target_proof_accepted": false,
+  "universal_lemma_accepted": false
+}

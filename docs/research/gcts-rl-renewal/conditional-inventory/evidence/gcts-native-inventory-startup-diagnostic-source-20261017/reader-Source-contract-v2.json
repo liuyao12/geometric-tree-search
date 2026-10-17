@@ -1,0 +1,92 @@
+{
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 27094,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+  },
+  "delegated_Source_author": "/root/hilbert_advice_controls",
+  "instrumentation_diagnostic_only": true,
+  "operative_parent_contract": {
+    "bytes": 4705,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "04f94a11d135c6a34a8dc9fda886b773838f33883547b1f2fcebb9a3afe2fc23"
+  },
+  "phase_protocol": {
+    "absence": "No marker/partial marker does not establish failure location or cause; startup failures occur before existing family-only failure-writer catch and may have no diagnostic pair.",
+    "clock_and_write": "Existing phase helper relocated immediately after original native tick+signal setup. Original helper instructions unchanged except literal whitelist. Native tick/os.write captured before any current Source read; same original20/500MiB tick before sample, through write and after. Resource/callback/write errors propagate.",
+    "labels": [
+      "BEFORE_PLAN_READ",
+      "BEFORE_CURRENT_SOURCE_READS",
+      "BEFORE_AUTHORITY_INPUT_READS",
+      "BEFORE_MODULE_LOAD",
+      "BEFORE_GUARD_CONSTRUCTION",
+      "BEFORE_STAGEB_PROVENANCE",
+      "BEFORE_MARKING_CHECK",
+      "BEFORE_COMPOSER",
+      "AFTER_COMPOSER",
+      "AFTER_DAG",
+      "AFTER_MINER",
+      "AFTER_QUALIFICATION",
+      "BEFORE_OUTPUT"
+    ],
+    "max_complete_sites": 13,
+    "max_line_bytes": 75,
+    "max_total_complete_phase_bytes": 850,
+    "native_integer": "Exact builtin non-bool signed64 nonnegative native nanoseconds; maximal19digits",
+    "prefix": "COMPONENT_INVENTORY_PHASE ",
+    "site_semantics": "Reached fixed writes only. Ordered runtime subsequence; phases omitted by legitimate helper UNKNOWN allowed. No exclusive cost, phase entry/return, cause, trajectory, or case inference. Pre-auth sites have no plan/case authority.",
+    "startup_groups": [
+      {
+        "from": "BEFORE_PLAN_READ",
+        "includes": "plan path/read/decode/shape/current map/limits/nonce/runtime validation and runtime raw pin",
+        "to": "BEFORE_CURRENT_SOURCE_READS"
+      },
+      {
+        "from": "BEFORE_CURRENT_SOURCE_READS",
+        "includes": "all current Source17 reads, operative contract, both Source reviews and once grant checks/reads",
+        "to": "BEFORE_AUTHORITY_INPUT_READS"
+      },
+      {
+        "from": "BEFORE_AUTHORITY_INPUT_READS",
+        "includes": "fixed input8 plus original Source17 reads, raw role equality, declaration/profile authority decoding and canonical private context",
+        "to": "BEFORE_MODULE_LOAD"
+      },
+      {
+        "from": "BEFORE_MODULE_LOAD",
+        "includes": "current pinned private module imports/compile/load plus role references",
+        "to": "BEFORE_GUARD_CONSTRUCTION"
+      },
+      {
+        "from": "BEFORE_GUARD_CONSTRUCTION",
+        "includes": "JSON decoder, CodeSeal/strong anchors/full native guards/delegation boundary and local deadline projection/fresh-language function declaration",
+        "to": "BEFORE_STAGEB_PROVENANCE"
+      },
+      {
+        "from": "BEFORE_STAGEB_PROVENANCE",
+        "includes": "whole inherited StageB saved provenance authentication, its oldSource/input/review/grant reads; accepted marking extraction and unchanged adapter version gate",
+        "to": "BEFORE_MARKING_CHECK"
+      },
+      {
+        "from": "BEFORE_MARKING_CHECK",
+        "includes": "fresh original language/native membership construction, independent marking definition check, unchanged guarded run_inventory entry/fresh language+root construction before CASE first phase",
+        "to": "BEFORE_COMPOSER"
+      }
+    ]
+  },
+  "schema": "ROOT-native-inventory-startup-saved-reader-Source-contract-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Same native/once/Date/session/completewire/failure-only saved reconciliation and13 literal phase protocol. Markers are diagnostic only. A complete current authenticated native20-qualified helper record may support narrow source-ground inventory status under existing fresh checker/native union validation and separate Root acceptance. Reader fields report literal current producer-status/wire/resource observations, with no saved scientific replay, inherited qualification or broader proof/engine/RL/GCTS claims.",
+  "source": {
+    "bytes": 21792,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+    "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d"
+  },
+  "source_delta": {
+    "bytes": 2059,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v2-Source-delta-v1.json",
+    "sha256": "acde6b9f2b013d0b2c28316688363b8765edfad454f021bd337dbe8bd410342f"
+  },
+  "source_only": true
+}

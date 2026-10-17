@@ -791,6 +791,318 @@
       "path": "evidence/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
       "sha256": "221c42a5d26cd51850f21928ea08011485a009ca5f6f7db981a13864010e2faf",
       "source_path": "/private/tmp/gcts-native-inventory-work8m-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 6734,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Q_native_terminal_meter_v2.py"
+    },
+    {
+      "bytes": 458,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "d209a9cfb7a67c54b2d6dc52d9932dea59f1f5852daba05fbc7a5daa9c15b46a",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT-raw-Source-audit-v1.json"
+    },
+    {
+      "bytes": 15532,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT-resident-byte-preflight-v1.json",
+      "sha256": "d49b27ab53cd71e65826f31a6a028def6fd479d0fab5879826b6583764cf208c",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT-resident-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 4357,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_external_once_v1.py"
+    },
+    {
+      "bytes": 21787,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v1.py",
+      "sha256": "c2a6939f6bc99668cdaf18897bb130e24cd26cb4460e59826b0bcbf3bc1d73dc",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v1.py"
+    },
+    {
+      "bytes": 21792,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+      "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py"
+    },
+    {
+      "bytes": 26001,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v1.json",
+      "sha256": "690870e9f207008a8d076a926329c2779d02dfcf3e98a4fa5821ee9549b186f4",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 27094,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+      "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 7528,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/caller-Source-delta-v1.json",
+      "sha256": "61e24a0fb0954a09c0ae5fe6b7d9cb0286ac000bb8bdc1ff88fa54dd36627885",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/caller-Source-delta-v1.json"
+    },
+    {
+      "bytes": 8175,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/caller-forward.patch",
+      "sha256": "43aff85a7f4ec4fe4856b4a8202fe18736dcbd93758bde6b7a5794eb64647e31",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/caller-forward.patch"
+    },
+    {
+      "bytes": 8175,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/caller-full-inverse.patch",
+      "sha256": "de8560e05dc3a3ee9000860577261c96beaaa84cc79211b2c5123519f51053d5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/caller-full-inverse.patch"
+    },
+    {
+      "bytes": 1791,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/contract-v1-to-v2-delta.json",
+      "sha256": "66cdae9db5f34cc596bd3361e59b7671b0f16458bcb716dc554fc8082544a56a",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/contract-v1-to-v2-delta.json"
+    },
+    {
+      "bytes": 3629,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/contract-v1-to-v2-forward.patch",
+      "sha256": "aa8477932cb743a2982b5724decc51a0f01318d18497b8643966eca0e55435f6",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/contract-v1-to-v2-forward.patch"
+    },
+    {
+      "bytes": 3629,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/contract-v1-to-v2-full-inverse.patch",
+      "sha256": "24e68e08548f5e48cb1a44b86619f0c228c950ea473819f3d8fbf596b3d6b998",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/contract-v1-to-v2-full-inverse.patch"
+    },
+    {
+      "bytes": 12041,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/handoff-v1.json",
+      "sha256": "0ce23a65a11e4a7da7ef78ff332e01187cff3c50d8ffbd09802d4e009a82dc22",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 12705,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/handoff-v2.json",
+      "sha256": "dce9fc49cb7b0877732163a96ae28de1023d75ad33328ae733bf377233b7afe2",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 53327,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+      "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py"
+    },
+    {
+      "bytes": 4705,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "04f94a11d135c6a34a8dc9fda886b773838f33883547b1f2fcebb9a3afe2fc23",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v1.json"
+    },
+    {
+      "bytes": 5059,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v2.json",
+      "sha256": "148f54b6caa5581e0071a6bb13eb8e485321f507b025c065ffefbc3735db08c6",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v2.json"
+    },
+    {
+      "bytes": 3478,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-delta-v1.json",
+      "sha256": "4bab474dca540275c403a6fb2fb2c403e03b9da92e676fd22befbfa0b7331800",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-delta-v1.json"
+    },
+    {
+      "bytes": 4265,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/reader-forward.patch",
+      "sha256": "bf236fd08fe76fe5054f00515a6da94d604e82accbc8183e3deab2a22d6086d3",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-forward.patch"
+    },
+    {
+      "bytes": 4265,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/reader-full-inverse.patch",
+      "sha256": "3528bbc8f4908fdc1be964fcb01dbf7ec45aee7d03e6fe7ffb478016e61b28ab",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-full-inverse.patch"
+    },
+    {
+      "bytes": 1314,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v1-to-v2-forward.patch",
+      "sha256": "a927de66ba256c7fc37ab5e581d70da9c8c644c8b47444c134f83d3b5f2c433c",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v1-to-v2-forward.patch"
+    },
+    {
+      "bytes": 1314,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v1-to-v2-full-inverse.patch",
+      "sha256": "d993210ee624f2b1b3984f41d800354c3bdb1ec4f1cac4247edb497d590e0f21",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v1-to-v2-full-inverse.patch"
+    },
+    {
+      "bytes": 2059,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v2-Source-delta-v1.json",
+      "sha256": "acde6b9f2b013d0b2c28316688363b8765edfad454f021bd337dbe8bd410342f",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v2-Source-delta-v1.json"
+    },
+    {
+      "bytes": 2236,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-source-20261017/static-audit-v1.json",
+      "sha256": "c00938bf6ff67bdaf23609b1275515e3f3abf3cd16a46c5a77ecd4ccc597486c",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 8320,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "b228b47c6e2cf0679a91d2a37de59915e9f7ae29b804d8b8bf38df7ed43dd983",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 10605,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "e3edec45eab66f47197153ed8d4729cceed3c2dc1e62072c16a8470ba8180091",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 4192,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "8ef03802da46d12c90d12ffa7aa1bd940d5b2ab99a7807d6beeeedd5c93562f5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 1822121,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "2fe761011a701835eaca0824b00381fc192fd5cff1fd917181c60fba346eee2c",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-expanded-result-v1.json"
+    },
+    {
+      "bytes": 8901,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "8e693d7e6c015c747d9192056c2154bda347b8f4a1f9a66dff2d270781217495",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 2024,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-source-ground-acceptance-v1.json",
+      "sha256": "abb3aa2df506a7a7d860566b756d1b00168e31f1de19bf0591b516659405f267",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-source-ground-acceptance-v1.json"
+    },
+    {
+      "bytes": 384,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "24b2de8d4a6eb1d4d5c0b326f086d94a2c743d89a8500edf7b346912d4d45388",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 53327,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-forward-source-only.py",
+      "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-forward-source-only.py"
+    },
+    {
+      "bytes": 52906,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-full-inverse-source-only.py",
+      "sha256": "bc1786bff287ad2d6eee60e9306d6d0d2ae35c21988534127d57c73fc0c18c7e",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/caller-full-inverse-source-only.py"
+    },
+    {
+      "bytes": 6634,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/findings-v2.json",
+      "sha256": "3f9898c050a0ffad170aa186666c24870999f4e61b3e8a7978615bbf62a0ac90",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/findings-v2.json"
+    },
+    {
+      "bytes": 1321,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/handoff-v2.json",
+      "sha256": "4f737362a529005abdb21634bcbe2da801b1b71ebbb6acfe46cb5db45402dbed",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 4858,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v1.json",
+      "sha256": "b115e41d67c6ba1cf46e09f0f6cfb1a8ab5a14266e0ec7660cae8ae6df38cbd5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v1.json"
+    },
+    {
+      "bytes": 2444,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v2.json",
+      "sha256": "41f8342e05772de736740781750ae99001e0aac6370d477744582344f4ae12e5",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v2.json"
+    },
+    {
+      "bytes": 21787,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-forward-source-only.py",
+      "sha256": "c2a6939f6bc99668cdaf18897bb130e24cd26cb4460e59826b0bcbf3bc1d73dc",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-forward-source-only.py"
+    },
+    {
+      "bytes": 21606,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-full-inverse-source-only.py",
+      "sha256": "91417266c7fd1287426e4ade124e074efaddbcdaae1fff48cdc0df0f11eae3ec",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-full-inverse-source-only.py"
+    },
+    {
+      "bytes": 2892,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-typed-Source-review-v2.json",
+      "sha256": "ed9d9a9ca8702638222baac9e11543c73369b149546d4f7ea053832609175261",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/reader-typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 7038,
+      "path": "evidence/gcts-native-inventory-startup-diagnostic-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "2dc990869834706b5968ef76b71b4c2d14d20df53fc0a5364e12df451f3f7007",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 153435,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/engine-result.json",
+      "sha256": "fc29b90c1f59f895931199572d24e4271617f3fc2a62618c864e85fad95ae590",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 8646,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/response.jsonl",
+      "sha256": "fa5b52576f8539b80e665e0be1eb6245d9e5d494c9556b3250ef5e600d773732",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 252,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/ONCE.json",
+      "sha256": "563c6598901f421c23a3e0b62c38c84d9bcbe17d4334aa849e5972f69eb5e121",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 798,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stderr.txt",
+      "sha256": "203cd5219e4b82d157d1ffcc13357e7c5be7446fe0d74c22dc156aa419e2ba96",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 735,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stdout.txt",
+      "sha256": "013474292d66174df7061814f322ea328226b5f6f138a83bba95f9e311f4688f",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1578,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/native-terminal.json",
+      "sha256": "29e59de000373478fa5a9dfbf3b9a5fec2b7a50fbf19993b6519c291fbf2409b",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 469,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/observation.json",
+      "sha256": "f60641fbc2037fea136a46a20a3bbe3c2751d43f8d6f968d0ae1d79fe7bd6f6b",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "evidence/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "85d829047b36455c0d5a26ccf649c363aa9490769764f60a4f95f38a2dd6a1ad",
+      "source_path": "/private/tmp/gcts-native-inventory-startup-ROOT-20261017/NI-external-v1/postterminal-probe-stdout.txt"
     }
   ],
   "raw_bytes_preserved": true,

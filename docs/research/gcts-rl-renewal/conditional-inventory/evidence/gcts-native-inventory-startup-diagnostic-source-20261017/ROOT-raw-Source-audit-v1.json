@@ -1,0 +1,22 @@
+{
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "checks": [
+    {
+      "delta": "caller-Source-delta-v1.json",
+      "edits": 11,
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "delta": "reader-Source-delta-v1.json",
+      "edits": 7,
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "delta": "reader-v2-Source-delta-v1.json",
+      "edits": 2,
+      "whole_forward_inverse_AST": true
+    }
+  ]
+}

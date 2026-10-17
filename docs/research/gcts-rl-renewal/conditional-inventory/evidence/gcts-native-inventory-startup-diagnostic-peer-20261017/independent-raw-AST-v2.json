@@ -1,0 +1,49 @@
+{
+  "schema": "ROOT-native-inventory-startup-independent-raw-AST-v2",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "parent_audit": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "b115e41d67c6ba1cf46e09f0f6cfb1a8ab5a14266e0ec7660cae8ae6df38cbd5",
+    "bytes": 4858
+  },
+  "current_handoff": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/handoff-v2.json",
+    "sha256": "dce9fc49cb7b0877732163a96ae28de1023d75ad33328ae733bf377233b7afe2",
+    "bytes": 12705
+  },
+  "current_caller": {
+    "bytes": 53327,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+    "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+  },
+  "current_contract": {
+    "bytes": 27094,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+  },
+  "current_reader": {
+    "bytes": 21792,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+    "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d"
+  },
+  "current_reader_contract": {
+    "bytes": 5059,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "148f54b6caa5581e0071a6bb13eb8e485321f507b025c065ffefbc3735db08c6"
+  },
+  "checks": {
+    "caller_bytes_unchanged_c03a": true,
+    "immediate_reader_two_literal_edits_raw_AST_inverse": true,
+    "actual_reader_forward_inverse_patches": true,
+    "actual_contract_forward_inverse_patches": true,
+    "only_six_descriptive_scope_fields_change_in_contract": true,
+    "all_sources_inputs_original_model_maps_limits_phase_protocol_unchanged": true,
+    "new_CURRENT_CONTRACT_literal_exact": true,
+    "compile_without_evaluation_only": true,
+    "no_module_helper_clock_or_result_read": true
+  },
+  "total_actual_patch_directions_in_this_review": 8,
+  "scope_resolution": "Markers alone diagnostic; strict complete current record retains narrow source-ground inventory eligibility under full current native gates and separate Root acceptance, no inherited/broad qualification."
+}

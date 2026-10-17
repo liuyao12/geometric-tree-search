@@ -1,0 +1,45 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "edits": [
+    {
+      "label": "current_contract",
+      "new": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json', 'sha256': 'ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99', 'bytes': 27094}",
+      "old": "CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v1.json', 'sha256': '690870e9f207008a8d076a926329c2779d02dfcf3e98a4fa5821ee9549b186f4', 'bytes': 26001}",
+      "start": 329
+    },
+    {
+      "label": "descriptive_phase_count",
+      "new": "full inventory requires all thirteen sites",
+      "old": "full inventory requires all six sites",
+      "start": 19467
+    }
+  ],
+  "parent_source": {
+    "bytes": 21787,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v1.py",
+    "sha256": "c2a6939f6bc99668cdaf18897bb130e24cd26cb4460e59826b0bcbf3bc1d73dc"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 1314,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v1-to-v2-forward.patch",
+      "sha256": "a927de66ba256c7fc37ab5e581d70da9c8c644c8b47444c134f83d3b5f2c433c"
+    },
+    "full-inverse": {
+      "bytes": 1314,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v1-to-v2-full-inverse.patch",
+      "sha256": "d993210ee624f2b1b3984f41d800354c3bdb1ec4f1cac4247edb497d590e0f21"
+    }
+  },
+  "schema": "native-inventory-startup-reader-Source-delta-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21792,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+    "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d"
+  },
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_inverse_exact": true
+}

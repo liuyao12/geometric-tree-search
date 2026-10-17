@@ -1,0 +1,133 @@
+{
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root",
+  "delegated_Source_author": "/root/hilbert_advice_controls",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored checker4358, marked verifier9fd, marked-aware checker8f and ea300 adapter ancestry; reviewed CASEc0d6/composer9fee and previous diagnostic/saved-helper dependencies. Root owns integration/authority; Controls authored current instrumentation and reader. This is a distinct whole caller/readout Source review, not self-reacceptance of inherited mathematics or runtime evidence.",
+  "whole_current_source_contract_reviewed": true,
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/handoff-v2.json",
+    "sha256": "dce9fc49cb7b0877732163a96ae28de1023d75ad33328ae733bf377233b7afe2",
+    "bytes": 12705
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/findings-v2.json",
+    "sha256": "3f9898c050a0ffad170aa186666c24870999f4e61b3e8a7978615bbf62a0ac90",
+    "bytes": 6634
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v2.json",
+    "sha256": "41f8342e05772de736740781750ae99001e0aac6370d477744582344f4ae12e5",
+    "bytes": 2444
+  },
+  "blockers": [],
+  "actual_execution_authorized": false,
+  "qualification_inherited": false,
+  "runtime_fit": "UNMEASURED",
+  "schema": "ROOT-native-inventory-startup-diagnostic-typed-Source-review-v1",
+  "scope": "ROOT-native-inventory-startup-diagnostic-cold-Source",
+  "source": {
+    "bytes": 53327,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+    "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+  },
+  "source_contract": {
+    "bytes": 27094,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+  },
+  "sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "collector": {
+      "bytes": 19556,
+      "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+      "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+    },
+    "composer": {
+      "bytes": 28607,
+      "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+      "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+    },
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "expansion_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "intake": {
+      "bytes": 53327,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+      "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+    },
+    "inventory_cases": {
+      "bytes": 31001,
+      "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+      "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 31038,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "miner": {
+      "bytes": 30862,
+      "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+      "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+    },
+    "producer": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    }
+  },
+  "raw_caller_edits": 11,
+  "unchanged_recursive_regions": 36,
+  "all_native_limits_and_math_bodies_erasure_exact": true
+}

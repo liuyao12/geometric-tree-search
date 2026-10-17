@@ -1,0 +1,244 @@
+{
+  "Review_ABI": {
+    "author_identity": "/root",
+    "schema": "ROOT-native-inventory-startup-diagnostic-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-native-inventory-startup-diagnostic-cold-Source",
+    "source": {
+      "bytes": 53327,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+      "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+    },
+    "source_contract": {
+      "bytes": 27094,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+      "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+    },
+    "source_only": true,
+    "sources": {
+      "clean_support": {
+        "bytes": 48584,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+        "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+      },
+      "collector": {
+        "bytes": 19556,
+        "path": "/private/tmp/gcts-search-dag-collector-source-20261017/checked_engine_state_dag_collector_v2.py",
+        "sha256": "9f0b04a7767d6c84217f67a7775008b14d7507f1c61e90ad2cf808f884196816"
+      },
+      "composer": {
+        "bytes": 28607,
+        "path": "/private/tmp/gcts-native-component-composer-source-20261017/native_conditional_component_composer_v1.py",
+        "sha256": "9fee14c1a5fc3e9e982ce78e0db1f83c8a89352c520d35938c92da307c41f3f2"
+      },
+      "decorator": {
+        "bytes": 12619,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+        "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+      },
+      "degree_checker": {
+        "bytes": 27553,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+        "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+      },
+      "expansion_checker": {
+        "bytes": 56670,
+        "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+        "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+      },
+      "fallback": {
+        "bytes": 24227,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+        "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+      },
+      "host_adapter": {
+        "bytes": 25205,
+        "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+        "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+      },
+      "intake": {
+        "bytes": 53327,
+        "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+        "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+      },
+      "inventory_cases": {
+        "bytes": 31001,
+        "path": "/private/tmp/gcts-native-inventory-cases-source-20261017/native_connected_inventory_cases_v2.py",
+        "sha256": "c0d6552f984abb98040c97867486b3441f89c8e40248b38452582834baadbb4d"
+      },
+      "kernel": {
+        "bytes": 10323,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+        "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+      },
+      "marked_adapter": {
+        "bytes": 31038,
+        "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+        "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+      },
+      "marked_verifier": {
+        "bytes": 18475,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+        "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+      },
+      "membership": {
+        "bytes": 20112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+        "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+      },
+      "miner": {
+        "bytes": 30862,
+        "path": "/private/tmp/gcts-connected-miner-source-20261017/receptor_family_miner_v2.py",
+        "sha256": "482ceb7d21990d56874caef74bd24ff83b025743c6bb449c3027560f6d136689"
+      },
+      "producer": {
+        "bytes": 51898,
+        "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+        "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+      },
+      "proposer": {
+        "bytes": 22030,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+        "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "author_provenance": "Root owns integration/grants/actuals. Controls authored this exact startup instrumentation and saved-reader successor; reviewer must be distinct.",
+  "contract_scope_delta": {
+    "bytes": 1791,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/contract-v1-to-v2-delta.json",
+    "sha256": "66cdae9db5f34cc596bd3361e59b7671b0f16458bcb716dc554fc8082544a56a"
+  },
+  "phase_protocol": {
+    "absence": "No marker/partial marker does not establish failure location or cause; startup failures occur before existing family-only failure-writer catch and may have no diagnostic pair.",
+    "clock_and_write": "Existing phase helper relocated immediately after original native tick+signal setup. Original helper instructions unchanged except literal whitelist. Native tick/os.write captured before any current Source read; same original20/500MiB tick before sample, through write and after. Resource/callback/write errors propagate.",
+    "labels": [
+      "BEFORE_PLAN_READ",
+      "BEFORE_CURRENT_SOURCE_READS",
+      "BEFORE_AUTHORITY_INPUT_READS",
+      "BEFORE_MODULE_LOAD",
+      "BEFORE_GUARD_CONSTRUCTION",
+      "BEFORE_STAGEB_PROVENANCE",
+      "BEFORE_MARKING_CHECK",
+      "BEFORE_COMPOSER",
+      "AFTER_COMPOSER",
+      "AFTER_DAG",
+      "AFTER_MINER",
+      "AFTER_QUALIFICATION",
+      "BEFORE_OUTPUT"
+    ],
+    "max_complete_sites": 13,
+    "max_line_bytes": 75,
+    "max_total_complete_phase_bytes": 850,
+    "native_integer": "Exact builtin non-bool signed64 nonnegative native nanoseconds; maximal19digits",
+    "prefix": "COMPONENT_INVENTORY_PHASE ",
+    "site_semantics": "Reached fixed writes only. Ordered runtime subsequence; phases omitted by legitimate helper UNKNOWN allowed. No exclusive cost, phase entry/return, cause, trajectory, or case inference. Pre-auth sites have no plan/case authority.",
+    "startup_groups": [
+      {
+        "from": "BEFORE_PLAN_READ",
+        "includes": "plan path/read/decode/shape/current map/limits/nonce/runtime validation and runtime raw pin",
+        "to": "BEFORE_CURRENT_SOURCE_READS"
+      },
+      {
+        "from": "BEFORE_CURRENT_SOURCE_READS",
+        "includes": "all current Source17 reads, operative contract, both Source reviews and once grant checks/reads",
+        "to": "BEFORE_AUTHORITY_INPUT_READS"
+      },
+      {
+        "from": "BEFORE_AUTHORITY_INPUT_READS",
+        "includes": "fixed input8 plus original Source17 reads, raw role equality, declaration/profile authority decoding and canonical private context",
+        "to": "BEFORE_MODULE_LOAD"
+      },
+      {
+        "from": "BEFORE_MODULE_LOAD",
+        "includes": "current pinned private module imports/compile/load plus role references",
+        "to": "BEFORE_GUARD_CONSTRUCTION"
+      },
+      {
+        "from": "BEFORE_GUARD_CONSTRUCTION",
+        "includes": "JSON decoder, CodeSeal/strong anchors/full native guards/delegation boundary and local deadline projection/fresh-language function declaration",
+        "to": "BEFORE_STAGEB_PROVENANCE"
+      },
+      {
+        "from": "BEFORE_STAGEB_PROVENANCE",
+        "includes": "whole inherited StageB saved provenance authentication, its oldSource/input/review/grant reads; accepted marking extraction and unchanged adapter version gate",
+        "to": "BEFORE_MARKING_CHECK"
+      },
+      {
+        "from": "BEFORE_MARKING_CHECK",
+        "includes": "fresh original language/native membership construction, independent marking definition check, unchanged guarded run_inventory entry/fresh language+root construction before CASE first phase",
+        "to": "BEFORE_COMPOSER"
+      }
+    ]
+  },
+  "preserved_handoff": {
+    "bytes": 12041,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/handoff-v1.json",
+    "sha256": "0ce23a65a11e4a7da7ef78ff332e01187cff3c50d8ffbd09802d4e009a82dc22"
+  },
+  "reader": {
+    "bytes": 21792,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+    "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d"
+  },
+  "reader_Review_ABI": {
+    "author_identity": "/root",
+    "current_operative_contract": {
+      "bytes": 27094,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+      "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+    },
+    "schema": "ROOT-native-inventory-startup-saved-reader-typed-Source-review-v2",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-native-inventory-startup-saved-reader-Source",
+    "source": {
+      "bytes": 21792,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+      "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d"
+    },
+    "source_contract": {
+      "bytes": 5059,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v2.json",
+      "sha256": "148f54b6caa5581e0071a6bb13eb8e485321f507b025c065ffefbc3735db08c6"
+    },
+    "source_only": true
+  },
+  "reader_delta": {
+    "bytes": 2059,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-v2-Source-delta-v1.json",
+    "sha256": "acde6b9f2b013d0b2c28316688363b8765edfad454f021bd337dbe8bd410342f"
+  },
+  "reader_source_contract": {
+    "bytes": 5059,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "148f54b6caa5581e0071a6bb13eb8e485321f507b025c065ffefbc3735db08c6"
+  },
+  "schema": "ROOT-native-inventory-startup-Source-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope_resolution": "Markers diagnostic-only; full current checked/natively qualified record retains narrow source-ground inventory eligibility. No caller/semantic flow changed.",
+  "source": {
+    "bytes": 53327,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+    "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+  },
+  "source_contract": {
+    "bytes": 27094,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+  },
+  "source_delta": {
+    "bytes": 7528,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/caller-Source-delta-v1.json",
+    "sha256": "61e24a0fb0954a09c0ae5fe6b7d9cb0286ac000bb8bdc1ff88fa54dd36627885"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 2236,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/static-audit-v1.json",
+    "sha256": "c00938bf6ff67bdaf23609b1275515e3f3abf3cd16a46c5a77ecd4ccc597486c"
+  }
+}

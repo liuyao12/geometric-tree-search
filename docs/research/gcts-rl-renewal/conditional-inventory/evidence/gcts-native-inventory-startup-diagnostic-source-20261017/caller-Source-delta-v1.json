@@ -1,0 +1,99 @@
+{
+  "actual_patch_both_directions_exact": true,
+  "edits": [
+    {
+      "label": "own_VERSION",
+      "new": "VERSION='ROOT-native-inventory-startup-diagnostic-cold-v1'",
+      "old": "VERSION='ROOT-native-connected-conditional-inventory-cold-v2-case-work8m'",
+      "start": 541
+    },
+    {
+      "label": "own_SCOPE",
+      "new": "SCOPE='ROOT-native-inventory-startup-diagnostic-cold-Source'",
+      "old": "SCOPE='ROOT-native-connected-conditional-inventory-cold-Source'",
+      "start": 600
+    },
+    {
+      "label": "operative_contract_schema",
+      "new": "contract['schema']=='ROOT-native-inventory-startup-diagnostic-cold-Source-contract-v1'",
+      "old": "contract['schema']=='ROOT-native-connected-conditional-inventory-cold-Source-contract-v1'",
+      "start": 32540
+    },
+    {
+      "label": "remove_late_phase_helper",
+      "new": "",
+      "old": "    phase_tick,phase_tick_code=tick,tick.__code__\n    phase_tick_defaults,phase_tick_kwdefaults=tick.__defaults__,tick.__kwdefaults__\n    phase_write,phase_write_type=os.write,types.BuiltinFunctionType\n    phase_labels=('BEFORE_COMPOSER', 'AFTER_COMPOSER', 'AFTER_DAG', 'AFTER_MINER', 'AFTER_QUALIFICATION', 'BEFORE_OUTPUT')\n    def phase(stage):\n        if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code\n                or phase_tick.__defaults__ is not phase_tick_defaults\n                or phase_tick.__kwdefaults__ is not phase_tick_kwdefaults\n                or os.write is not phase_write or type(phase_write)is not phase_write_type):\n            raise RuntimeError('original connected diagnostic native endpoints changed')\n        native_ns=phase_tick()\n        need(type(stage)is str and stage in phase_labels and type(native_ns)is int\n             and 0<=native_ns<=9223372036854775807,'fixed connected phase/native sample')\n        raw=('COMPONENT_INVENTORY_PHASE '+stage+' '+str(native_ns)+'\\n').encode('ascii')\n        offset=0\n        while offset<len(raw):\n            phase_tick()\n            if os.write is not phase_write or type(phase_write)is not phase_write_type:\n                raise RuntimeError('original connected diagnostic write endpoint changed')\n            count=phase_write(2,raw[offset:]);need(type(count)is int and count>0,'complete bounded phase write')\n            offset+=count\n        phase_tick()\n",
+      "start": 44592
+    },
+    {
+      "label": "early_captured_native_phase_helper",
+      "new": "    tick();signal.signal(signal.SIGINT,cancel);signal.signal(signal.SIGTERM,cancel)\n    phase_tick,phase_tick_code=tick,tick.__code__\n    phase_tick_defaults,phase_tick_kwdefaults=tick.__defaults__,tick.__kwdefaults__\n    phase_write,phase_write_type=os.write,types.BuiltinFunctionType\n    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_COMPOSER', 'AFTER_COMPOSER', 'AFTER_DAG', 'AFTER_MINER', 'AFTER_QUALIFICATION', 'BEFORE_OUTPUT')\n    def phase(stage):\n        if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code\n                or phase_tick.__defaults__ is not phase_tick_defaults\n                or phase_tick.__kwdefaults__ is not phase_tick_kwdefaults\n                or os.write is not phase_write or type(phase_write)is not phase_write_type):\n            raise RuntimeError('original connected diagnostic native endpoints changed')\n        native_ns=phase_tick()\n        need(type(stage)is str and stage in phase_labels and type(native_ns)is int\n             and 0<=native_ns<=9223372036854775807,'fixed connected phase/native sample')\n        raw=('COMPONENT_INVENTORY_PHASE '+stage+' '+str(native_ns)+'\\n').encode('ascii')\n        offset=0\n        while offset<len(raw):\n            phase_tick()\n            if os.write is not phase_write or type(phase_write)is not phase_write_type:\n                raise RuntimeError('original connected diagnostic write endpoint changed')\n            count=phase_write(2,raw[offset:]);need(type(count)is int and count>0,'complete bounded phase write')\n            offset+=count\n        phase_tick()\n    phase('BEFORE_PLAN_READ')\n",
+      "old": "    tick();signal.signal(signal.SIGINT,cancel);signal.signal(signal.SIGTERM,cancel)\n",
+      "start": 30911
+    },
+    {
+      "label": "BEFORE_CURRENT_SOURCE_READS",
+      "new": "    phase('BEFORE_CURRENT_SOURCE_READS')\n    source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}\n",
+      "old": "    source_raw={role:read_pinned(ref) for role,ref in plan['sources'].items()}\n",
+      "start": 34069
+    },
+    {
+      "label": "BEFORE_AUTHORITY_INPUT_READS",
+      "new": "    phase('BEFORE_AUTHORITY_INPUT_READS')\n    inputs_raw={role:read_pinned(ref,4*1048576+131072) for role,ref in FIXED_INPUTS.items()}\n",
+      "old": "    inputs_raw={role:read_pinned(ref,4*1048576+131072) for role,ref in FIXED_INPUTS.items()}\n",
+      "start": 36082
+    },
+    {
+      "label": "BEFORE_MODULE_LOAD",
+      "new": "    phase('BEFORE_MODULE_LOAD')\n    modules={role:load_module(role,source_raw[role]) for role in FIXED}\n",
+      "old": "    modules={role:load_module(role,source_raw[role]) for role in FIXED}\n",
+      "start": 37130
+    },
+    {
+      "label": "BEFORE_GUARD_CONSTRUCTION",
+      "new": "    phase('BEFORE_GUARD_CONSTRUCTION')\n    decoder=json.JSONDecoder(object_pairs_hook=unique,parse_float=finite_float,parse_constant=reject_constant)\n",
+      "old": "    decoder=json.JSONDecoder(object_pairs_hook=unique,parse_float=finite_float,parse_constant=reject_constant)\n",
+      "start": 37353
+    },
+    {
+      "label": "BEFORE_STAGEB_PROVENANCE",
+      "new": "    phase('BEFORE_STAGEB_PROVENANCE')\n    # Authenticate the WHOLE prior StageB result. Its receipts are inputs,\n",
+      "old": "    # Authenticate the WHOLE prior StageB result. Its receipts are inputs,\n",
+      "start": 40365
+    },
+    {
+      "label": "BEFORE_MARKING_CHECK",
+      "new": "    phase('BEFORE_MARKING_CHECK')\n    definition_check = call(verifier.check_marking,kwargs={'language':fresh_language(),\n",
+      "old": "    definition_check = call(verifier.check_marking,kwargs={'language':fresh_language(),\n",
+      "start": 46037
+    }
+  ],
+  "parent_source": {
+    "bytes": 52906,
+    "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v2.py",
+    "sha256": "bc1786bff287ad2d6eee60e9306d6d0d2ae35c21988534127d57c73fc0c18c7e"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 8175,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/caller-forward.patch",
+      "sha256": "43aff85a7f4ec4fe4856b4a8202fe18736dcbd93758bde6b7a5794eb64647e31"
+    },
+    "full-inverse": {
+      "bytes": 8175,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/caller-full-inverse.patch",
+      "sha256": "de8560e05dc3a3ee9000860577261c96beaaa84cc79211b2c5123519f51053d5"
+    }
+  },
+  "schema": "native-inventory-startup-Source-delta-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 53327,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+    "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+  },
+  "source_only": true,
+  "whole_AST_inverse_exact": true,
+  "whole_raw_inverse_exact": true
+}

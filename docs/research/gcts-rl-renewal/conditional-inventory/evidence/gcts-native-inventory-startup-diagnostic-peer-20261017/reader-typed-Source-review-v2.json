@@ -1,0 +1,58 @@
+{
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "source_review_passed": true,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "author_identity": "/root",
+  "delegated_Source_author": "/root/hilbert_advice_controls",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "author_overlap": "Reviewer authored checker4358, marked verifier9fd, marked-aware checker8f and ea300 adapter ancestry; reviewed CASEc0d6/composer9fee and previous diagnostic/saved-helper dependencies. Root owns integration/authority; Controls authored current instrumentation and reader. This is a distinct whole caller/readout Source review, not self-reacceptance of inherited mathematics or runtime evidence.",
+  "whole_current_source_contract_reviewed": true,
+  "source_handoff": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/handoff-v2.json",
+    "sha256": "dce9fc49cb7b0877732163a96ae28de1023d75ad33328ae733bf377233b7afe2",
+    "bytes": 12705
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/findings-v2.json",
+    "sha256": "3f9898c050a0ffad170aa186666c24870999f4e61b3e8a7978615bbf62a0ac90",
+    "bytes": 6634
+  },
+  "independent_raw_AST_audit": {
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-peer-20261017/independent-raw-AST-v2.json",
+    "sha256": "41f8342e05772de736740781750ae99001e0aac6370d477744582344f4ae12e5",
+    "bytes": 2444
+  },
+  "blockers": [],
+  "actual_execution_authorized": false,
+  "qualification_inherited": false,
+  "runtime_fit": "UNMEASURED",
+  "schema": "ROOT-native-inventory-startup-saved-reader-typed-Source-review-v2",
+  "scope": "ROOT-native-inventory-startup-saved-reader-Source",
+  "source": {
+    "bytes": 21792,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+    "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d"
+  },
+  "source_contract": {
+    "bytes": 5059,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "148f54b6caa5581e0071a6bb13eb8e485321f507b025c065ffefbc3735db08c6"
+  },
+  "current_operative_contract": {
+    "bytes": 27094,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+  },
+  "sources": {
+    "reader": {
+      "bytes": 21792,
+      "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+      "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d"
+    }
+  },
+  "initial_reader_edits": 7,
+  "immediate_reader_edits": 2,
+  "saved_only_no_semantic_replay": true
+}

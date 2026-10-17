@@ -1,0 +1,147 @@
+{
+  "schema": "ROOT-native-inventory-startup-independent-raw-AST-v1",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "checks": {
+    "caller_full_delta_raw_AST_and_actual_patches": true,
+    "reader_full_delta_raw_AST_and_actual_patches": true,
+    "whole_parent_current_caller_reader_contracts_read": true,
+    "all_fixed_maps_inputs_original_binding_limits_literal_exact": true,
+    "all36_inherited_caller_regions_raw_AST_exact": true,
+    "phase_function_instructions_raw_AST_exact": true,
+    "13_literal_labels_max75_total850": true,
+    "native_ticks_no_new_clock_or_scientific_calls": true,
+    "compile_without_evaluation": true,
+    "modules_or_helpers_evaluated": false,
+    "actual_result_reads": false
+  },
+  "details": {
+    "caller": {
+      "source": {
+        "bytes": 53327,
+        "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+        "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+      },
+      "parent": {
+        "bytes": 52906,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_native_conditional_inventory_cold_v2.py",
+        "sha256": "bc1786bff287ad2d6eee60e9306d6d0d2ae35c21988534127d57c73fc0c18c7e"
+      },
+      "delta": {
+        "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/caller-Source-delta-v1.json",
+        "sha256": "61e24a0fb0954a09c0ae5fe6b7d9cb0286ac000bb8bdc1ff88fa54dd36627885",
+        "bytes": 7528
+      },
+      "raw_edits": 11,
+      "actual_patch_directions": 2,
+      "whole_raw_AST_inverse": true,
+      "unchanged_regions": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language",
+        "main.phase",
+        "main.run_inventory"
+      ],
+      "changed_regions": [
+        "main"
+      ]
+    },
+    "wire": {
+      "labels": [
+        "BEFORE_PLAN_READ",
+        "BEFORE_CURRENT_SOURCE_READS",
+        "BEFORE_AUTHORITY_INPUT_READS",
+        "BEFORE_MODULE_LOAD",
+        "BEFORE_GUARD_CONSTRUCTION",
+        "BEFORE_STAGEB_PROVENANCE",
+        "BEFORE_MARKING_CHECK",
+        "BEFORE_COMPOSER",
+        "AFTER_COMPOSER",
+        "AFTER_DAG",
+        "AFTER_MINER",
+        "AFTER_QUALIFICATION",
+        "BEFORE_OUTPUT"
+      ],
+      "max_line_bytes": 75,
+      "max_total_complete_bytes": 850,
+      "direct_caller_literal_sites": [
+        "BEFORE_PLAN_READ",
+        "BEFORE_CURRENT_SOURCE_READS",
+        "BEFORE_AUTHORITY_INPUT_READS",
+        "BEFORE_MODULE_LOAD",
+        "BEFORE_GUARD_CONSTRUCTION",
+        "BEFORE_STAGEB_PROVENANCE",
+        "BEFORE_MARKING_CHECK",
+        "BEFORE_OUTPUT"
+      ],
+      "five_delegated_CASE_sites_unchanged": true
+    },
+    "reader": {
+      "source": {
+        "bytes": 21787,
+        "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v1.py",
+        "sha256": "c2a6939f6bc99668cdaf18897bb130e24cd26cb4460e59826b0bcbf3bc1d73dc"
+      },
+      "parent": {
+        "bytes": 21606,
+        "path": "/private/tmp/gcts-native-inventory-ROOT-source-20261017/ROOT_read_native_conditional_inventory_saved_v3.py",
+        "sha256": "91417266c7fd1287426e4ade124e074efaddbcdaae1fff48cdc0df0f11eae3ec"
+      },
+      "delta": {
+        "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-delta-v1.json",
+        "sha256": "4bab474dca540275c403a6fb2fb2c403e03b9da92e676fd22befbfa0b7331800",
+        "bytes": 3478
+      },
+      "raw_edits": 7,
+      "actual_patch_directions": 2,
+      "whole_raw_AST_inverse": true,
+      "unchanged_regions": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write",
+        "read_failure_diagnostic"
+      ],
+      "changed_regions": [
+        "read_phases",
+        "main"
+      ]
+    }
+  }
+}

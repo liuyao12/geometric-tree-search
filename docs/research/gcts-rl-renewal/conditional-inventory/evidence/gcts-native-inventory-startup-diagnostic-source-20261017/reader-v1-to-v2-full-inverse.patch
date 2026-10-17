@@ -1,0 +1,20 @@
+--- before
++++ after
+@@ -10,7 +10,7 @@
+ import sys
+ import zlib
+ 
+-CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json', 'sha256': 'ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99', 'bytes': 27094}
++CURRENT_CONTRACT = {'path': '/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v1.json', 'sha256': '690870e9f207008a8d076a926329c2779d02dfcf3e98a4fa5821ee9549b186f4', 'bytes': 26001}
+ 
+ 
+ def need(ok, why):
+@@ -285,7 +285,7 @@
+         need(all(body['joint_began_ns']<=x['native_ns']<body['joint_deadline_ns']for x in phases), 'positive phase samples original20')
+         need(phases[0]['stage']=='BEFORE_PLAN_READ' and phases[-1]['stage']=='BEFORE_OUTPUT'
+              and (pipeline['status']!='CHECKED_CONDITIONAL_INVENTORY' or [x['stage']for x in phases]==list(PHASES)),
+-             'ordered reached sites; full inventory requires all thirteen sites')
++             'ordered reached sites; full inventory requires all six sites')
+         need(payload['schema']=='ROOT-native-conditional-inventory-payload-v1'
+              and payload['original_model_sources']==contract['original_model_sources']
+              and payload['original_model_inputs']==contract['original_model_inputs']

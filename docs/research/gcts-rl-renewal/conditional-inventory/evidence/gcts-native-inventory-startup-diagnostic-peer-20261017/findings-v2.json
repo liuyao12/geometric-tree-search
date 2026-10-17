@@ -1,0 +1,81 @@
+{
+  "schema": "ROOT-native-inventory-startup-Source-findings-v2",
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "blockers": [],
+  "source": {
+    "bytes": 53327,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/native_inventory_startup_diagnostic_cold_v1.py",
+    "sha256": "c03a8dfd6ae89f02e500fa90abb98e4c836b2d6bb9a03e48a60b9b439de04ce5"
+  },
+  "source_contract": {
+    "bytes": 27094,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "ff90f74f5c7158f30721ac9036d5cf065871940fe0c0678102ac396a626d6a99"
+  },
+  "reader": {
+    "bytes": 21792,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/ROOT_read_native_inventory_startup_diagnostic_saved_v2.py",
+    "sha256": "11c1425c8a36a3d6b9884cd15d21973019ecef656c23a2173b68516d63f1b14d"
+  },
+  "reader_source_contract": {
+    "bytes": 5059,
+    "path": "/private/tmp/gcts-native-inventory-startup-diagnostic-source-20261017/reader-Source-contract-v2.json",
+    "sha256": "148f54b6caa5581e0071a6bb13eb8e485321f507b025c065ffefbc3735db08c6"
+  },
+  "findings": [
+    {
+      "id": "START1",
+      "scope": "caller",
+      "conclusion": "Whole parent/current Source and actual11 edit delta read. Seven new fixed startup sites surround existing plan/currentSource/originalinput/moduleload/guard/StageB/freshmarking groups; old five CASE plus output sites unchanged. Only main contains edits. All36 inherited named regions, including tick, invoke, guards, failure writer, phase function instructions and scientific run_inventory body, are raw/AST exact."
+    },
+    {
+      "id": "START2",
+      "scope": "caller",
+      "conclusion": "Phase helper is relocated after original native tick/signal setup, before plan read. Exact captured tick function/code/default/kwdefault and builtin os.write identities, exact nonbool signed64 native sample, native-first pre/post partial-write ticks remain unchanged. No new clock, model call, snapshot, persistent history, callback wrapper or scientific sequence is introduced."
+    },
+    {
+      "id": "START3",
+      "scope": "caller",
+      "conclusion": "Whitelist has13 unique single-use sites, maximum75 ASCII bytes per line and850 across complete lines. Seven literal direct early calls plus existing output call and five unchanged CASE sites establish ordered subsequence. Legitimate UNKNOWN can omit later sites. Pre-auth writes acquire no plan/scientific authority."
+    },
+    {
+      "id": "START4",
+      "scope": "caller",
+      "conclusion": "Current17 versus original17/input2/epoch, fixed input8, all Source/math dependency bytes by frozen map, CASE8m and composer/miner quotas, original native20/512/internalreserve/failure55/owned60/caller90+1 remain unchanged. Only intake Source changes; review checked literal map preservation, not fresh reads of original/prior-result inputs."
+    },
+    {
+      "id": "START5",
+      "scope": "failure",
+      "conclusion": "Existing catch covers only exact builtin TimeoutError escaping original guarded family invocation. Startup failures before it can have no owned pair. Failure writer and late-only captured builtin guards remain raw exact, all four legacy slots remain None, no late native20/model/census call is added, and original exception/exit2 path remains exact."
+    },
+    {
+      "id": "START6",
+      "scope": "reader",
+      "conclusion": "Whole saved reader/native/once/session/Date/source/grant/fullwire/error paths read. Seven parent edits rebind authority/phase whitelist and bounds; current two additional literals bind clarified contract and correct thirteen-site message. All other parsing, response/envelope/hash/boundedzlib/fullpayload/native limit and failure pair joins unchanged; no project import, mathematical replay or clock call."
+    },
+    {
+      "id": "START7",
+      "scope": "reader",
+      "conclusion": "Complete phase lines require exact whitelist order/unique canonical unsigned decimal/sample in original native launch-to-terminal. Partial/nonphase tail stops recognition and remains pinned by complete native-file/tail hashes. Failure summary stays UNKNOWN without complete helper return and cannot infer native timeout cause, active state, move, restore, case or old-path phase from absence."
+    },
+    {
+      "id": "START8",
+      "scope": "scope resolution",
+      "conclusion": "Preserved contractV1 said wholepacket diagnostic-only, ambiguous against unchanged reader positive record observations. Root explicitly resolved that markers alone are diagnostic, while a full current authenticated native20-qualified helper result may retain its narrow source-ground inventory status through existing fresh independent/native checks and separate Root acceptance. Current contractV2/readerV2 state that scope exactly. No Source scientific algorithm change or fabricated null-case framework was needed."
+    },
+    {
+      "id": "START9",
+      "scope": "actual patch audits",
+      "conclusion": "Independently applied caller forward/fullinverse, initial reader forward/fullinverse, current reader immediate forward/fullinverse and contract scope forward/fullinverse: all8 directions exact on separate raw Source/JSON copies. Caller11 and reader7+2 complete raw/AST inverses match frozen ancestors; author staticc009 is correctly treated as V1reader historical evidence, not currentV2 audit."
+    }
+  ],
+  "limitations": [
+    "No actual/grant/output/result/proofword/donor reads, module/helper/scientific execution or clock use occurred. Source conditional pass grants no actual authorization or runtime/cost conclusion.",
+    "Read-to-read phase intervals include writes/checks and intervening setup or multiple scientific operations; no exclusive method/phase timing, entry/return guarantee, causal attribution, speedup or retrospective path inference.",
+    "Positive reader wire/resource/status fields are literal current records only. Root still needs complete current native20/512 closure, actual full independent/native records and separate narrow acceptance; markers and historical qualification cannot supply them.",
+    "No engine/provider/receiver/BRANCH/search or full proof/theorem/generalized-lemma/frontier/scheduler/rollback/RL/GCTS-gain qualification arises from this Source review or startup observations.",
+    "Original and prior StageB bytes are referenced/pinned by unchanged custody code; they were not read as actual data by reviewer. Trust remains the existing synchronous pinned Source/native scope, without a new hostile-frame guarantee."
+  ]
+}
