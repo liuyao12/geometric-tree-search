@@ -1,0 +1,93 @@
+{
+  "actual_authorized": false,
+  "authority": {
+    "ROOT_resource_accepted": false,
+    "diagnostic_only": true,
+    "positive_joint_gate_accepted": false,
+    "qualified_case_count": 0,
+    "reported_case_count": null,
+    "scientific_acceptance": false
+  },
+  "caps_status": "Only prospective expanded-byte/compressed-wire addition is proposed. Existing node/string/depth/int limits stay explicit initially; raising them requires a distinct Root decision/version. Codec alone is not guaranteed to recover bodies.",
+  "diagnostic_metadata_additions": [
+    "captured_headers",
+    "captured_record_count",
+    "encoded_candidate_prefix_count",
+    "retained_complete_record_count",
+    "omitted_captured_record_count",
+    "next_omitted_ordinal",
+    "omission",
+    "expanded_bytes",
+    "encoded_envelope_bytes"
+  ],
+  "engine_milestones_envelope": {
+    "encoding": "zlib+base64",
+    "expanded_value": "Exact four-slot list of whole raw milestone wrappers, complete retained prefix then null suffix; no LF in expanded ASCII JSON.",
+    "fields": [
+      "schema",
+      "encoding",
+      "expanded_bytes",
+      "expanded_sha256",
+      "compressed_bytes",
+      "compressed_sha256",
+      "payload_base64"
+    ],
+    "nullable": "null only if no representable bounded envelope; exact cause metadata required",
+    "schema": "unit-row-engine-milestone-lossless-envelope-v1"
+  },
+  "omission": {
+    "code_enum": [
+      "EXPANDED_BYTE_LIMIT",
+      "STRING_LENGTH_LIMIT",
+      "NODE_LIMIT",
+      "DEPTH_LIMIT",
+      "INTEGER_BIT_LIMIT",
+      "NON_STRING_KEY",
+      "NON_BUILTIN_VALUE",
+      "ENCODED_ENVELOPE_BYTE_LIMIT"
+    ],
+    "fields": [
+      "phase",
+      "code",
+      "record_ordinal",
+      "limit",
+      "observed"
+    ],
+    "nullable": "null iff every captured body is retained",
+    "observed": "Bounded scalar counter/type-name only, no payload repr or inferred data. Exact primitive guard that stopped encoding, not generic ValueError.",
+    "phase_enum": [
+      "BUILTIN_SERIALIZATION",
+      "ENCODED_ENVELOPE"
+    ]
+  },
+  "outer_fields": [
+    "context",
+    "diagnostic",
+    "last_observations",
+    "provider_returns",
+    "engine_milestones_envelope"
+  ],
+  "proposed_limits": {
+    "encoded_envelope_bytes": 3145728,
+    "expanded_journal_bytes": 16777216,
+    "failure_only_seconds": 55,
+    "integer_bits": 4096,
+    "internal_peak_bytes": 524288000,
+    "maximum_record_node_total": 800000,
+    "maximum_records": 4,
+    "native_positive_seconds": 20,
+    "owned_peak_bytes": 536870912,
+    "per_record_depth": 128,
+    "per_record_nodes": 200000,
+    "per_string_codepoints": 262144,
+    "whole_diagnostic_bytes": 4325376
+  },
+  "prospective_completion_schema": "unit-row-controls-engine-milestones-completion-v4",
+  "prospective_diagnostic_schema": "unit-row-controls-engine-milestones-diagnostic-v4",
+  "prospective_failure_kind": "CONTROLS_TIMEOUT_ENGINE_MILESTONES_LOSSLESS_V4",
+  "schema": "unit-row-engine-milestone-lossless-wire-proposal-API-v1",
+  "scientific_calls": 0,
+  "scope": "New explicitly versioned failure-only wire; original engine observer/capture/helper/positive transport/API/model/ticks remain unchanged.",
+  "status": "DESIGN_ONLY_NOT_IMPLEMENTED",
+  "unchanged_headers": "Four nullable captured headers remain outside compressed envelope. Keep captured_record_count and retained_complete_record_count distinct. Uncaptured suffix is not an omitted captured suffix."
+}

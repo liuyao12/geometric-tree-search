@@ -1,0 +1,74 @@
+{
+  "bytes": 47808,
+  "collector_source_review": "CONDITIONAL_SOURCE_PASS",
+  "files": [
+    {
+      "bytes": 6140,
+      "path": "source-development-evidence/gcts-hilbert-shared-family-collector-peer-20261017/findings-v1.json",
+      "sha256": "3598f5dfe24a3cf389d69e051ec971bb0e74cdb8769607dd7465aacd7b717889",
+      "source_path": "/private/tmp/gcts-hilbert-shared-family-collector-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 1362,
+      "path": "source-development-evidence/gcts-hilbert-shared-family-collector-peer-20261017/handoff-v1.json",
+      "sha256": "792b360e4692d76861065a6fcc6f0c5a77b41b1fbc1e85759beb160e77c55965",
+      "source_path": "/private/tmp/gcts-hilbert-shared-family-collector-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 6262,
+      "path": "source-development-evidence/gcts-hilbert-shared-family-collector-peer-20261017/static-review-audit-v1.json",
+      "sha256": "5b375364d7f3b8f26051065d36cbdd1902bc11b3cf5f7616cc000736aef89e10",
+      "source_path": "/private/tmp/gcts-hilbert-shared-family-collector-peer-20261017/static-review-audit-v1.json"
+    },
+    {
+      "bytes": 2763,
+      "path": "source-development-evidence/gcts-hilbert-shared-family-collector-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "b90349d287794220f51bcc05ec67d26c2ffc9dc0de66e0023809ffe51510dd1f",
+      "source_path": "/private/tmp/gcts-hilbert-shared-family-collector-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 671,
+      "path": "source-development-evidence/gcts-two-witness-transfer-design-20261017/handoff-v1.json",
+      "sha256": "1f999e3c0937102c33f6dd0695cda44031fbe96053529a4b6047b76507196c61",
+      "source_path": "/private/tmp/gcts-two-witness-transfer-design-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 4330,
+      "path": "source-development-evidence/gcts-two-witness-transfer-design-20261017/prospective-API-v1.json",
+      "sha256": "90bf13d89050284858a687237c09eff460a334759e15fd0251bf490d71aa1db1",
+      "source_path": "/private/tmp/gcts-two-witness-transfer-design-20261017/prospective-API-v1.json"
+    },
+    {
+      "bytes": 13073,
+      "path": "source-development-evidence/gcts-two-witness-transfer-design-20261017/two-witness-transfer-design-v1.json",
+      "sha256": "0ae22816e0a941bc3c57124074755a32b45499022d21eaeeb05f80c25b97b113",
+      "source_path": "/private/tmp/gcts-two-witness-transfer-design-20261017/two-witness-transfer-design-v1.json"
+    },
+    {
+      "bytes": 598,
+      "path": "source-development-evidence/gcts-milestone-lossless-wire-design-20261017/handoff-v1.json",
+      "sha256": "d3ca158bca112c28b089b8db58fe6571c401d13475610ce8484b1f8d848f1fa2",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-design-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 9171,
+      "path": "source-development-evidence/gcts-milestone-lossless-wire-design-20261017/lossless-wire-design-v1.json",
+      "sha256": "683349c19c64c6114a80b0aa0e01e49ff96bfb48f07eb6ec1bc197f38dac0154",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-design-20261017/lossless-wire-design-v1.json"
+    },
+    {
+      "bytes": 3438,
+      "path": "source-development-evidence/gcts-milestone-lossless-wire-design-20261017/proposed-API-v1.json",
+      "sha256": "6b10a8e3d58afb57b3290c7accef47d270a9caa9ef02c11d63872d1ada0eac3d",
+      "source_path": "/private/tmp/gcts-milestone-lossless-wire-design-20261017/proposed-API-v1.json"
+    }
+  ],
+  "files_count": 10,
+  "lossless_journal": "DESIGN_ONLY_UNIMPLEMENTED",
+  "performance_accepted": false,
+  "schema": "GCTS-source-development-addendum-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Source review and unimplemented designs, not scientific qualification or new theorems.",
+  "two_witness_transfer": "DESIGN_ONLY_UNIMPLEMENTED"
+}

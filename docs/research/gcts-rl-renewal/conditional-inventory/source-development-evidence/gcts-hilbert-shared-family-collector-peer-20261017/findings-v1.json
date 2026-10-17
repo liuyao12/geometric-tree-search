@@ -1,0 +1,73 @@
+{
+  "authorship_disclosure": "Reviewer authored arithmetic/generic collector9f0b, producerf32e and generic miner/engine/kernel ancestry and reviewed related generic interfaces; did not implement Controls Hilbert collector or repaired Hilbert adapter. Shared DAG/native design ancestry disclosed. This is a distinct conditional Source review, not new Hilbert logical/native/runtime qualification.",
+  "blocking_findings": [],
+  "conformance_limits": [
+    "Root must authenticate actual sealed graph/closed inputs/modules and grant any future native actual; Source version checks alone do not establish OS resources or arbitrary hostile object safety.",
+    "Collector origin is opaque, engine_generatedFalse and all proof/trajectory/RL/GCTS benefit flags stayFalse. No supplied proof sequence/target route/result instance was read.",
+    "Hilbert physical receiver/consumer integration, full current-domain global priority/fallback/rollback qualification, and measured full cost remain future separate work."
+  ],
+  "disposition": "CONDITIONAL_SOURCE_PASS",
+  "findings": [
+    {
+      "finding": "Public repaired describe_host203cb rechecks exact admitted catalogue/theory/ordered Gamma/target/boundary/model epoch and current sealed graph binding. Collector independently calls admitted_context and SelectedWire, compares native indexed recipes to fresh independent decoding and fresh GroundChecker theory. Root ClosedInputs/current Source/nonreentrancy guards remain external prerequisites; no new admission profile is fabricated.",
+      "id": "HC01",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "Every selected and branch-excluded key has exact integer recipe/row and ordered strict-prior references, five-rule arguments/arity, independent canonical recipe ID/preimage, placement command, fresh native conditional primitive command check and complete native packet/t/m equality. Zero-premise native instantiate/atomic eq_subst stay the original Hilbert schemas; no arithmetic generalize or receipt alias.",
+      "id": "HC02",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "Full boundary fixed markings plus every selected t/m contribution and reference multiplicity reconstruct current totals and marks exactly. Selected rows/keys are unique; exclusions are not unioned into active marks. Recipe/prototype/aggregate identifiers retain full preimages, merging supplied prior exposure census without assuming hash injectivity. Caller must supply full prior exposed history; collector does not infer engine-private never-exposed domains.",
+      "id": "HC03",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "All selected nodes emitted by physical row order, while true insertion order/index retained separately. All ordered/repeated reads retain ordinal, formula code/literal and full occupied source key/packet. Strict prior rows guarantee topological order. Unoccupied rows become one shared exact-formula input with occupiedFalse/factFalse; missing marks are not zero. No current occupancy or provenance is promoted to proof.",
+      "id": "HC04",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "Each original Gamma occurrence retained at its exact index; selected assumptions remain checked primitive nodes. Every actual selected sink is exported without target/rule filtering; disconnected portions are not silently discarded. Relative-to-Gamma closure is explicit data, never root-proof acceptance. Generic miner3 _Graph accepts exact DAG/input/node/output fields and host five-rule argument grammar; downstream expansion4358/Hilbert current native grounding still mandatory.",
+      "id": "HC05",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "Only private finite work/depth/selected/read/string allowance or empty selected set yields UNKNOWN. On unfinished work there is no partial derivation/member/maps acceptance and census_join_completedFalse; native, guard, malformed, authority and collision errors propagate. Completed return rechecks whole host/current semantic state/theory and caller origin/census/qualification identity. Own work limits do not reset Root clock/heap.",
+      "id": "HC06",
+      "status": "PASS_SOURCE_ONLY"
+    },
+    {
+      "finding": "No graph mutation means no semantic state mutation in this scope. Existing graph.decorate increments diagnostic lazy_id_constructions metrics during fresh native checks; semantic_state intentionally excludes diagnostic metrics. Do not claim all graph object bytes or callback/tick counts remain unchanged. Future full dynamic scheduler/rollback/native cost qualification is separate.",
+      "id": "HC07",
+      "status": "SCOPE_DISCLOSURE"
+    },
+    {
+      "finding": "Whole current312-line Source/API/contract and relevant resident host/native/generic-miner seams read; current adapter203cb/peer5f731f and every declared raw dependency pin verified. Exact addition/full inverse, both actual patch -E -F0 directions and compile-without-evaluation completed. No semantic module/helper/test/result/clock execution or saved route input.",
+      "id": "HC08",
+      "status": "PASS_SOURCE_ONLY"
+    }
+  ],
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_qualified": false,
+  "schema": "Hilbert-shared-family-selected-collector-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 21778,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/hilbert_shared_family_selected_dag_collector_v1.py",
+    "sha256": "0bcdc7c04c4e86601d62c3196b21956909fb5b4bba9913c5eb9d77334fd2a5cd"
+  },
+  "source_contract": {
+    "bytes": 6390,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-source-20261017/Source-contract-v1.json",
+    "sha256": "c063875a9d001fb180cb1ff5f339a1e93b01005ae51b0880452ecbaf667faccb"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 6262,
+    "path": "/private/tmp/gcts-hilbert-shared-family-collector-peer-20261017/static-review-audit-v1.json",
+    "sha256": "5b375364d7f3b8f26051065d36cbdd1902bc11b3cf5f7616cc000736aef89e10"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "actual_execution_authorized": false,
+  "call_local_work": "One fresh checked original+marked before/after pair and complete literal authority check for this synchronous transaction; at most48 witness reconstructions. The checked tuple remains private to this function, never persisted/shared with a proposer or cache. All work/copy/identity comparisons uses original cumulative tick. No new clock/budget or persistent context.",
+  "census_inputs": "Sorted unique canonical [type_id,full_preimage_text] pairs for original AND decorated IDs. Merge both full state-derived ledgers, both complete owned exposure ledgers including selected/excluded/degree and cursor rejected/offered/provider-preflight types, and all two-witness reconstructed types. Every shared ID must have exactly equal literal preimage; addition/removal of keys alone is not inequality authority. Native constructors verify IDs against complete preimages, with no hash injectivity assumption.",
+  "integration": "Explicit successor engine-owned validator/protocol, not validate_native_receipt masquerading. Commit checked row receipts and merged ledger copy-on-write with state install; any error leaves all existing semantic/metadata checkpoints exact. Future Sources/peer/native actual required.",
+  "offers": "At most24 unique row records. Each contains row, exact engine-owned origin_receipt, and exactly two complete old candidate packets selected from its checked keys. Use literal origin order only to choose witnesses; this is never fallback order.",
+  "proposed_entry": "check_two_witness_transfers(*, language, semantics, before, after, offers, before_census, after_census, authority, tick)",
+  "result": {
+    "common_fields": [
+      "schema",
+      "version",
+      "before_state",
+      "after_state",
+      "before_state_sha256",
+      "after_state_sha256",
+      "language_binding",
+      "marking_id",
+      "authority",
+      "authority_sha256",
+      "before_prototype_census",
+      "after_prototype_census",
+      "merged_prototype_census",
+      "rows"
+    ],
+    "failure_to_establish_two": "Row status UNRESOLVED, no accepted local evidence. Zero or one surviving cached witness is not an exact degree. Clear this cache row and use unchanged fresh proposer/checker/canonical fallback.",
+    "flags": {
+      "ROOT_resource_accepted": false,
+      "complete_candidate_graph_accepted": false,
+      "logical_proof_accepted": false,
+      "scheduler_or_rollback_accepted": false
+    },
+    "no_cover_fields": "No original_base_receipt or marked/nonimp cover-checked flag is copied as current coverage; origin data remains nested provenance only. No EOF/cursor/prefix/order or complete graph authority.",
+    "row_success_fields": [
+      "row",
+      "status",
+      "origin_receipt",
+      "origin_state",
+      "checked_candidates",
+      "candidate_keys",
+      "support_and_current_agreement",
+      "read_occupancy_changes",
+      "accepted_local_evidence",
+      "complete_cover_checked",
+      "degree_exact",
+      "sole_candidate",
+      "scope"
+    ],
+    "schema": "unit-row-checked-two-witness-transition-v1",
+    "success_literals": {
+      "accepted_local_evidence": true,
+      "complete_cover_checked": false,
+      "degree_exact": null,
+      "sole_candidate": null,
+      "status": "TWO_OR_MORE"
+    },
+    "version": "separately pinned new implementation version, not an old native receipt version",
+    "witness_packets": "Exactly two distinct current complete independently rebuilt packets with exact unchanged placement keys/core; current read_obligations recomputed from after-state totals, fact_acceptedFalse. Each packet is legal individually against after-state; do not union the two alternatives."
+  },
+  "schema": "unit-row-two-witness-transfer-prospective-API-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "status": "DESIGN_ONLY_NOT_IMPLEMENTED",
+  "trusted_origin_boundary": "Only engine-owned checked native/owned-transferred or checked-fallback-prefix origins associated with the exact preceding state may be offered. Full origin receipt is retained as provenance. The actual new existence evidence is fresh current native membership and full point legality of both witnesses, not old coverage or its hash. No arbitrary caller-injected receipt/native header."
+}

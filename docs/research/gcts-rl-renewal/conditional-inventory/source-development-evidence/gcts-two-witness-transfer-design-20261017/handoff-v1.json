@@ -1,0 +1,18 @@
+{
+  "actual_execution_authorized": false,
+  "design": {
+    "bytes": 13073,
+    "path": "/private/tmp/gcts-two-witness-transfer-design-20261017/two-witness-transfer-design-v1.json",
+    "sha256": "0ae22816e0a941bc3c57124074755a32b45499022d21eaeeb05f80c25b97b113"
+  },
+  "implementation_changed": false,
+  "prospective_API": {
+    "bytes": 4330,
+    "path": "/private/tmp/gcts-two-witness-transfer-design-20261017/prospective-API-v1.json",
+    "sha256": "90bf13d89050284858a687237c09eff460a334759e15fd0251bf490d71aa1db1"
+  },
+  "schema": "unit-row-two-witness-transfer-design-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

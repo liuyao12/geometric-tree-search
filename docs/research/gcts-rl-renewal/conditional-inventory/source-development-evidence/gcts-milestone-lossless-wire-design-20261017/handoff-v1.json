@@ -1,0 +1,17 @@
+{
+  "API": {
+    "bytes": 3438,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-design-20261017/proposed-API-v1.json",
+    "sha256": "6b10a8e3d58afb57b3290c7accef47d270a9caa9ef02c11d63872d1ada0eac3d"
+  },
+  "actual_authorized": false,
+  "design": {
+    "bytes": 9171,
+    "path": "/private/tmp/gcts-milestone-lossless-wire-design-20261017/lossless-wire-design-v1.json",
+    "sha256": "683349c19c64c6114a80b0aa0e01e49ff96bfb48f07eb6ec1bc197f38dac0154"
+  },
+  "design_only": true,
+  "implemented": false,
+  "schema": "GCTS-milestone-lossless-wire-design-handoff-v1",
+  "scientific_calls": 0
+}
