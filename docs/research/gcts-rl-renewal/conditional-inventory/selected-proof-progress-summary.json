@@ -1,0 +1,136 @@
+{
+  "GCTS_advantage": false,
+  "RL_training": false,
+  "date": "2026-10-17",
+  "disposition_correction": "Root preserved phase dispositionV1 and explicitly superseded its overstrong CASE-reached/returned booleans with null in dispositionV2. Marker precedes guarded invocation; missing later marker alone does not establish body reach or non-return.",
+  "endpoint": "Only a completed independent primitive proof reconstructed from actual currently selected DAG ancestry qualifies; unselected source proposals do not.",
+  "endpoint_source_review": {
+    "bytes": 2694,
+    "path": "/private/tmp/gcts-arithmetic-first-proof-stop-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "db35cd13e361ec1f152ecf073b9184e15db209bb7740d129d3c7e6c08ad63796"
+  },
+  "first_actual": {
+    "caller_launch_to_wait4_seconds": 20.038092,
+    "complete_case_record": false,
+    "data_review": {
+      "bytes": 2348,
+      "path": "/private/tmp/gcts-arithmetic-selected-proof-data-peer-20261017/typed-data-review-v1.json",
+      "sha256": "7958b001f20e9e0a4d54d9e5afdb98943426193cf855b2137545023a23def77a"
+    },
+    "disposition": {
+      "bytes": 1134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-first-selected-proof-ROOT-20261017/ROOT-incomplete-disposition-v1.json",
+      "sha256": "6e883019a5c28e33ae3c59bdf8b0592dea9448d6cdeb0b1995f58a7a6457f57c"
+    },
+    "external_launch_to_postprobe_seconds": 20.308142,
+    "owned_peak_bytes": 24248320,
+    "proof_commands": null,
+    "root_restored": null,
+    "selected_nodes": null
+  },
+  "geometry_source_progress": "Consumer now retains complete returned native prototype census before its own work cap; BRANCH provider/consumer hook passed distinct Source review. Actual selected transfer and production integration remain unestablished.",
+  "goal_complete": false,
+  "grammar_B": 12,
+  "grammar_N": 44,
+  "initial_family_inventory": [],
+  "learned_markings": false,
+  "marking": "Fresh fixed independently certified redundant row-zero target-literal marking. Not learned and not an unmarked baseline.",
+  "maximum_events": 2000,
+  "maximum_nodes": 128,
+  "metadata_copy_repair": "An earlier unexecuted endpoint version rejected finite float timing metadata in valid checker certificates. Dedicated evidence copying now preserves full metadata while mathematical point copies remain strict; no proof acceptance follows from this Source fix.",
+  "model": "Bounded unit-row point-value first-order adaptation, not full PA or full geometric GCTS.",
+  "native_limits": {
+    "owned_peak_limit_bytes": 536870912,
+    "positive_joint_seconds": 20
+  },
+  "new_arithmetic_proof": false,
+  "next": "Source-backed search-cost repair within current CASE, then one genuinely new declared experiment; no unchanged timeout retry or extraction of an unreturned lemma.",
+  "original_right_two_unchanged": true,
+  "phase_actual": {
+    "before_engine_seconds_from_caller_launch": 0.338967,
+    "caller_launch_to_wait4_seconds": 20.034598,
+    "case_body_reached": null,
+    "case_returned": null,
+    "complete_case_record": false,
+    "data_review": {
+      "bytes": 3847,
+      "path": "/private/tmp/gcts-arithmetic-selected-proof-data-peer-20261017/typed-data-review-v2.json",
+      "sha256": "92e49769e582001bdf489193088fb40c46ce7768f384f1fa9fd3b3b87767653a"
+    },
+    "disposition": {
+      "bytes": 3250,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-selected-proof-phases-ROOT-20261017/ROOT-incomplete-disposition-v2.json",
+      "sha256": "924c397eeb098ecc4cf2b9515177fa25c06adf0af1e4be9044346caf54015cc0"
+    },
+    "external_launch_to_postprobe_seconds": 20.236021,
+    "last_reached_phase": "BEFORE_ENGINE",
+    "owned_peak_bytes": 27197440,
+    "phases": [
+      {
+        "label": "BEFORE_PLAN",
+        "native_ns": 614259307485000,
+        "seconds_from_caller_launch": 0.088123
+      },
+      {
+        "label": "INPUTS_READY",
+        "native_ns": 614259339811000,
+        "seconds_from_caller_launch": 0.120449
+      },
+      {
+        "label": "MODULES_READY",
+        "native_ns": 614259399820000,
+        "seconds_from_caller_launch": 0.180458
+      },
+      {
+        "label": "SEAL_READY",
+        "native_ns": 614259410413000,
+        "seconds_from_caller_launch": 0.191051
+      },
+      {
+        "label": "LANGUAGE_READY",
+        "native_ns": 614259457023000,
+        "seconds_from_caller_launch": 0.237661
+      },
+      {
+        "label": "PROJECTION_CERT_READY",
+        "native_ns": 614259478032000,
+        "seconds_from_caller_launch": 0.25867
+      },
+      {
+        "label": "PROJECTION_CHECK_READY",
+        "native_ns": 614259493748000,
+        "seconds_from_caller_launch": 0.274386
+      },
+      {
+        "label": "MARKING_FROZEN",
+        "native_ns": 614259509088000,
+        "seconds_from_caller_launch": 0.289726
+      },
+      {
+        "label": "INDEPENDENT_MARK_READY",
+        "native_ns": 614259534411000,
+        "seconds_from_caller_launch": 0.315049
+      },
+      {
+        "label": "MARKED_SEMANTICS_READY",
+        "native_ns": 614259558294000,
+        "seconds_from_caller_launch": 0.338932
+      },
+      {
+        "label": "BEFORE_ENGINE",
+        "native_ns": 614259558329000,
+        "seconds_from_caller_launch": 0.338967
+      }
+    ],
+    "proof_commands": null,
+    "root_restored": null,
+    "selected_nodes": null
+  },
+  "phase_interpretation": "Eleven fixed sites were reached through BEFORE_ENGINE. Its following interval includes invocation entry/final Source guards, CASE construction/search/checking/rollback, exception unwind and terminal overhead. No inner frame or exclusive cause is established. No phase evidence transfers to the earlier uninstrumented actual.",
+  "rows": 24,
+  "schema": "GCTS-selected-arithmetic-proof-progress-v1",
+  "scope": "New selected-DAG logical proof endpoint; two separate once-only actuals, both terminal/reaped incomplete UNKNOWN. Not a comparison of proof-search methods.",
+  "target_latex": "\\forall n\\;\\operatorname{add}(n,S(0))=S(n)",
+  "theory": "Named AS and AZ addition recursion axioms; empty ordered Gamma, no induction axiom or supplied proof route.",
+  "useful_family_transfer": false
+}
