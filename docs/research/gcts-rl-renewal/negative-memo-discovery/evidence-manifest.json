@@ -1,0 +1,564 @@
+{
+  "files": [
+    {
+      "bytes": 6734,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Q_native_terminal_meter_v2.py"
+    },
+    {
+      "bytes": 14998,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT-resident-byte-preflight-v1.json",
+      "sha256": "939804f318dffd8cb4da2b22d180ecc3796fc1daa790308ebe96275e93eb2dc9",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT-resident-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 53857,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py",
+      "sha256": "e88da1c944a6fedc61d2abf5f27e32279d5f37ca94e9e71cb602086ee864e439",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py"
+    },
+    {
+      "bytes": 4357,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_external_once_v1.py"
+    },
+    {
+      "bytes": 22103,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+      "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py"
+    },
+    {
+      "bytes": 23948,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 10641,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/caller-Source-delta-v1.json",
+      "sha256": "8494ee7e9ec98dc4688a6b9bb980bdd8a167d8dadc860756ad5bfde14a3080fb",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/caller-Source-delta-v1.json"
+    },
+    {
+      "bytes": 12262,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/caller-forward.patch",
+      "sha256": "0800232b2accb0d3e82863cd9b6fe30a52d70564dfb643be48716c8ffa5dfb8f",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/caller-forward.patch"
+    },
+    {
+      "bytes": 12262,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/caller-full-inverse.patch",
+      "sha256": "7bc357d984fee537740a75baacc40aaed3edf3284cf731e51ef17c7563f4c659",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/caller-full-inverse.patch"
+    },
+    {
+      "bytes": 14338,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/handoff-v1.json",
+      "sha256": "a183988824034672fec880471b20fe368532208f8851643dbbb05b14fd3cd15e",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 1404,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "906f66ed5a926fef23bbda19d53d01f97de69e8e4ad85d1d046b5bc953796c39",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-contract-v1.json"
+    },
+    {
+      "bytes": 2466,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-delta-v1.json",
+      "sha256": "321fbc6cc4924b6aafcc7f5a2d307c9a6270789a81490c1952c6011ae8403fd6",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-delta-v1.json"
+    },
+    {
+      "bytes": 2533,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "0faa931339c2d8fce43d864357c7a957602b0d94f210a6b3df1648075b495ba9",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-forward.patch"
+    },
+    {
+      "bytes": 2533,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "b243d42eb2e7ff1c0a9dc5bbb1152ed7abb02d4a39ab9e27f1f322be4cd4e3b0",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-full-inverse.patch"
+    },
+    {
+      "bytes": 7419,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "0d67cc34fda20fcdb7a21b4e4398e5395e99f2641d1a83475bb8b46afe098e98",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 10168,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "c135627852ba2ef361966eaaccddc989747f80e1f9cd6fd99cedc227b7148be8",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 11634,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "db0aef5a215db73f3905cf2db0d8e582765f9e7ae7d624b1878d5c639bf28dc1",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 8991,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "c1b3ce04cb39e0d6011846c96acc432ac6d4a5fee98647bccd3ebef47074f56a",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 385,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/ROOT-tool-bracket-v1.json",
+      "sha256": "16106bc435c79d1140eab1d7f654c94362235598973ae371d15afb7e7ba5ce38",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/ROOT-tool-bracket-v1.json"
+    },
+    {
+      "bytes": 2565,
+      "path": "evidence/gcts-negative-memo-discovery-source-20261017/API-wire-v1.json",
+      "sha256": "9b75cba8a7a0963999f622fd92486428733d84365fcea616937377deb050fd14",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/API-wire-v1.json"
+    },
+    {
+      "bytes": 11668,
+      "path": "evidence/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+      "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py"
+    },
+    {
+      "bytes": 16291,
+      "path": "evidence/gcts-negative-memo-discovery-source-20261017/Source-contract-v1.json",
+      "sha256": "ed80270e666c16a7228ce42c972c5d97357cf7e7f3edd22921441fe415909dc5",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 7906,
+      "path": "evidence/gcts-negative-memo-discovery-source-20261017/Source-delta-v1.json",
+      "sha256": "c7b4a5033e00bb27b72a429ad9147604ec83bb43a25b5695382a355a003b9b56",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-delta-v1.json"
+    },
+    {
+      "bytes": 6697,
+      "path": "evidence/gcts-negative-memo-discovery-source-20261017/forward-v1.patch",
+      "sha256": "f0b0cd46d87e4a0779e32fe8b37c10d01d2aea4821b608eeb2f931310665d59e",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/forward-v1.patch"
+    },
+    {
+      "bytes": 6697,
+      "path": "evidence/gcts-negative-memo-discovery-source-20261017/full-inverse-v1.patch",
+      "sha256": "40a39ac69f5e9001613ec132187dd781bf3af57b1df96138c8ebc0119c2d7a51",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/full-inverse-v1.patch"
+    },
+    {
+      "bytes": 2937,
+      "path": "evidence/gcts-negative-memo-discovery-source-20261017/handoff-v1.json",
+      "sha256": "84bfea20fa8956bcc6a165518b2206571f3c7b6a5215ce12dc167b4e87562c9a",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 4051,
+      "path": "evidence/gcts-negative-memo-discovery-source-20261017/static-audit-v1.json",
+      "sha256": "e3c3ec18ea973d93dae61ce856be3e7750ef6af08d1b029a4c4803ce1fba118c",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 2272,
+      "path": "evidence/gcts-negative-memo-discovery-peer-20261017/case-typed-Source-review-v1.json",
+      "sha256": "50c7f358734e12c5fe9eab33c21308839600ba4972c377241d6f704adc80a587",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-peer-20261017/case-typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 8083,
+      "path": "evidence/gcts-negative-memo-discovery-peer-20261017/findings-v1.json",
+      "sha256": "9235fed5f17ddab70a7c7f937400f0a9d191c7f480ba7a1a9658883f4be8cc0a",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 6412,
+      "path": "evidence/gcts-negative-memo-discovery-peer-20261017/handoff-v1.json",
+      "sha256": "feb238f6de0b7709156db17986eef0edc4990a3dc2dcc2897cd0fc340287931c",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 6999,
+      "path": "evidence/gcts-negative-memo-discovery-peer-20261017/independent-raw-AST-v1.json",
+      "sha256": "ef58e2bdbc5339986077d437e6e1f6b831ef49c8d7cc3bd9e1ae7f92de7ec380",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-peer-20261017/independent-raw-AST-v1.json"
+    },
+    {
+      "bytes": 8288,
+      "path": "evidence/gcts-negative-memo-discovery-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "10d68d860295cf80bda1ae75d6571117baa7208e9e10d9edb8abebc7730f5253",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 1478,
+      "path": "evidence/gcts-negative-memo-discovery-readout-peer-20261017/handoff-v1.json",
+      "sha256": "600e5bb37b75efc275699d0ce7cc02d1043861c11a7314d80d242c6c77c91dac",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-readout-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 13162,
+      "path": "evidence/gcts-negative-memo-discovery-readout-peer-20261017/review-findings-v1.json",
+      "sha256": "b635d9355cff3c92e3a69601320f2062927ade279188cbf891231853182821bf",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-readout-peer-20261017/review-findings-v1.json"
+    },
+    {
+      "bytes": 2063,
+      "path": "evidence/gcts-negative-memo-discovery-readout-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "4aa7314625448aa1c56db861a960e89777b325d05771226dc7871523997fceb5",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-readout-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 13183,
+      "path": "evidence/gcts-connected-discovery-cost-analysis-source-20261017/recommendation-v1.json",
+      "sha256": "cba8b85aa8b2d9036ee5316283a0ec8399d0f234fa241330462e69090292fe1c",
+      "source_path": "/private/tmp/gcts-connected-discovery-cost-analysis-source-20261017/recommendation-v1.json"
+    },
+    {
+      "bytes": 12779,
+      "path": "evidence/gcts-connected-discovery-cost-analysis-source-20261017/reviewed_marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150",
+      "source_path": "/private/tmp/gcts-connected-discovery-cost-analysis-source-20261017/reviewed_marked_degree_router_v1.py"
+    },
+    {
+      "bytes": 331,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-owned-v1/diagnostic-completion.json",
+      "sha256": "9a739cb608be1b842da0bc2e0faba1c19c27c06ac68a528ac82fe3a2992fc8e3",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-owned-v1/diagnostic-completion.json"
+    },
+    {
+      "bytes": 8648,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-owned-v1/unknown-diagnostic.json",
+      "sha256": "d8c9d9fe6a30a6176d689933d051f7af95895d26d2a61e9f05bfb952a8b28acb",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-owned-v1/unknown-diagnostic.json"
+    },
+    {
+      "bytes": 240,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/ONCE.json",
+      "sha256": "0e67d10bb9a80bad60764bf0ca1c8cb1adcbfa01c61a71011f69fe00e7c914df",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 223,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/meter-stderr.txt",
+      "sha256": "cf3733c50de5f47891f9ed174e3c3bc8436adf44cf3c558f6b37245a2aa35ad5",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1562,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/native-terminal.json",
+      "sha256": "4ae6e66f35e11e8b5f0bab5a47d4df13a17652fc1294d38aedc40c702b74d802",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 457,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/observation.json",
+      "sha256": "af031372181f3550e333d0a8f68a57c3cb54f2c301ab411f42a42cd0b983b04f",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "e82b444ceeaff011af7452e4f0eda639f4223b9b4968d7ec052a75eac108f8d4",
+      "source_path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/postterminal-probe-stdout.txt"
+    }
+  ],
+  "raw_bytes_preserved": true,
+  "schema": "ROOT-negative-memo-discovery-evidence-manifest-v1",
+  "scientific_replay": false,
+  "shared_existing_files": [
+    {
+      "bytes": 48584,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/clean_support.py",
+      "role": "clean_support",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 12619,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/decorator.py",
+      "role": "decorator",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    {
+      "bytes": 27553,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/degree_checker.py",
+      "role": "degree_checker",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 12779,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/degree_router.py",
+      "role": "degree_router",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    },
+    {
+      "bytes": 66670,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/engine.py",
+      "role": "engine",
+      "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+    },
+    {
+      "bytes": 24227,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/fallback.py",
+      "role": "fallback",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "bytes": 10323,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/kernel.py",
+      "role": "kernel",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 29316,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/marked_adapter.py",
+      "role": "marked_adapter",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e"
+    },
+    {
+      "bytes": 25783,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/marked_aware_checker.py",
+      "role": "marked_aware_checker",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+    },
+    {
+      "bytes": 14064,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/marked_aware_proposer.py",
+      "role": "marked_aware_proposer",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    },
+    {
+      "bytes": 18475,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/marked_verifier.py",
+      "role": "marked_verifier",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    {
+      "bytes": 20112,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/membership.py",
+      "role": "membership",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 22030,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/proposer.py",
+      "role": "proposer",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "bytes": 21076,
+      "group": "current-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-sources/trace_helper.py",
+      "role": "trace_helper",
+      "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338"
+    },
+    {
+      "bytes": 130156,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/advice_controls.py",
+      "role": "advice_controls",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    {
+      "bytes": 16299,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/advice_validator.py",
+      "role": "advice_validator",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    {
+      "bytes": 26007,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/adviser.py",
+      "role": "adviser",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    {
+      "bytes": 48584,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/clean_support.py",
+      "role": "clean_support",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "bytes": 31931,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/controls.py",
+      "role": "controls",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    {
+      "bytes": 5528,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/converter.py",
+      "role": "converter",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    {
+      "bytes": 27553,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/degree_checker.py",
+      "role": "degree_checker",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "bytes": 55152,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/engine.py",
+      "role": "engine",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    {
+      "bytes": 24227,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/fallback.py",
+      "role": "fallback",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "bytes": 55852,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/intake.py",
+      "role": "intake",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    {
+      "bytes": 10323,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/kernel.py",
+      "role": "kernel",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "bytes": 20112,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/membership.py",
+      "role": "membership",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "bytes": 10201,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/point_checker.py",
+      "role": "point_checker",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    {
+      "bytes": 22030,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/proposer.py",
+      "role": "proposer",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "bytes": 25338,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/retained_controls.py",
+      "role": "retained_controls",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    {
+      "bytes": 8134,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/transition.py",
+      "role": "transition",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    {
+      "bytes": 46514,
+      "group": "original-model-sources",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/original-model-sources/word_checker.py",
+      "role": "word_checker",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "bytes": 2925,
+      "group": "current-inputs",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/declaration.json",
+      "role": "declaration",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "bytes": 8773,
+      "group": "current-inputs",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/profile.json",
+      "role": "profile",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "bytes": 4574,
+      "group": "current-inputs",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_disposition.json",
+      "role": "stageB_disposition",
+      "sha256": "ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e"
+    },
+    {
+      "bytes": 162591,
+      "group": "current-inputs",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_encoded.json",
+      "role": "stageB_encoded",
+      "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca"
+    },
+    {
+      "bytes": 1926833,
+      "group": "current-inputs",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_expanded.json",
+      "role": "stageB_expanded",
+      "sha256": "bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93"
+    },
+    {
+      "bytes": 7924,
+      "group": "current-inputs",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_plan.json",
+      "role": "stageB_plan",
+      "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009"
+    },
+    {
+      "bytes": 7572,
+      "group": "current-inputs",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_response.jsonl",
+      "role": "stageB_response",
+      "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e"
+    },
+    {
+      "bytes": 1502,
+      "group": "current-inputs",
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/current-inputs/stageB_transport.json",
+      "role": "stageB_transport",
+      "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b"
+    },
+    {
+      "bytes": 11599,
+      "path": "docs/research/gcts-rl-renewal/connected-family-discovery/evidence/gcts-connected-discovery-ROOT-20261017/ROOT-disposition-v1.json",
+      "role": "previous_attempt_disposition",
+      "sha256": "497914c7d85ca71ecf1399ab004064d665bb0ee48fa9b75645ab9f70d93ca78f"
+    }
+  ]
+}

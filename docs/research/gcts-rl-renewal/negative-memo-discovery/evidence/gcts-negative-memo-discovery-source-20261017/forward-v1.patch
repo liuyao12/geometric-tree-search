@@ -1,0 +1,146 @@
+--- ROOT_connected_discovery_cases_v2.py
++++ ROOT_connected_discovery_cases_v2.py
+@@ -8,7 +8,7 @@
+ import hashlib
+ import json
+ 
+-VERSION = 'ROOT-first-connected-selected-prefix-discovery-v1'
++VERSION = 'ROOT-first-connected-selected-prefix-discovery-v2-exact-negative-memo'
+ CASE = 'CD-01-first-actual-selected-inference-edge'
+ 
+ 
+@@ -28,6 +28,60 @@
+ 
+ def digest(value):
+     return hashlib.sha256(canonical(value).encode('utf8')).hexdigest()
++
++
++MEMO_MAXIMUM_NODES = 20000
++MEMO_MAXIMUM_DEPTH = 128
++
++
++class _MemoIncomplete(Exception):
++    pass
++
++
++def _memo_step(tick, budget, depth):
++    tick()
++    budget[0] += 1
++    if budget[0] > MEMO_MAXIMUM_NODES or depth > MEMO_MAXIMUM_DEPTH:
++        raise _MemoIncomplete()
++
++
++def _memo_copy(value, tick, budget, depth=0):
++    _memo_step(tick, budget, depth)
++    kind = type(value)
++    if value is None or kind in (bool, int, str):
++        return value
++    if kind is list:
++        return [_memo_copy(item, tick, budget, depth+1) for item in value]
++    if kind is tuple:
++        return tuple(_memo_copy(item, tick, budget, depth+1) for item in value)
++    if kind is dict:
++        if any(type(key) is not str for key in value):
++            raise _MemoIncomplete()
++        return {key: _memo_copy(item, tick, budget, depth+1) for key, item in value.items()}
++    raise _MemoIncomplete()
++
++
++def _memo_equal(left, right, tick, budget, depth=0):
++    _memo_step(tick, budget, depth)
++    kind = type(left)
++    if kind is not type(right):
++        return False
++    if left is None:
++        return True
++    if kind in (bool, int, str):
++        return left == right
++    if kind is list or kind is tuple:
++        if len(left) != len(right):
++            return False
++        return all(_memo_equal(x, y, tick, budget, depth+1) for x, y in zip(left, right))
++    if kind is dict:
++        if len(left) != len(right):
++            return False
++        if any(type(key) is not str for key in left) or any(type(key) is not str for key in right):
++            raise _MemoIncomplete()
++        return all(key in right and _memo_equal(value, right[key], tick, budget, depth+1)
++                   for key, value in left.items())
++    raise _MemoIncomplete()
+ 
+ 
+ def run_discovery(*, language, marked_semantics, engine_module, router_module,
+@@ -58,13 +112,66 @@
+         legacy_proposer=legacy_proposer, marked_aware_proposer=marked_aware_proposer,
+         marked_aware_checker=marked_aware_checker, tick=tick)
+ 
++    # One private completed-negative data snapshot, never a helper receipt.
++    # Root's pinned native tick and whole Source pre/post guard remain required.
++    memo_entry = None
++    memo_counts = {'lookups':0,'hits':0,'misses':0,'full_inspections':0}
++    inspector = trace_helper.inspect_selected_edges
++    require(type(inspector) is type(run_discovery) and type(tick) is type(run_discovery),
++            'pinned Python helper and Root native tick functions')
++    inspector_code,inspector_globals = inspector.__code__,inspector.__globals__
++    inspector_defaults,inspector_kwdefaults = inspector.__defaults__,inspector.__kwdefaults__
++    inspector_closure,inspector_version = inspector.__closure__,trace_helper.VERSION
++    inspector_limits = trace_helper.DEFAULT_LIMITS
++    native_tick = tick
++    native_code,native_globals = tick.__code__,tick.__globals__
++    native_defaults,native_kwdefaults,native_closure = tick.__defaults__,tick.__kwdefaults__,tick.__closure__
++
++    def memo_guard():
++        require(trace_helper.inspect_selected_edges is inspector
++                and inspector.__code__ is inspector_code and inspector.__globals__ is inspector_globals
++                and inspector_globals is trace_helper.__dict__
++                and inspector.__defaults__ is inspector_defaults
++                and inspector.__kwdefaults__ is inspector_kwdefaults
++                and type(inspector_kwdefaults) is dict and set(inspector_kwdefaults) == {'limits'}
++                and inspector_kwdefaults['limits'] is None and inspector.__closure__ is inspector_closure
++                and type(trace_helper.VERSION) is str and trace_helper.VERSION == inspector_version
++                and trace_helper.DEFAULT_LIMITS is inspector_limits
++                and tick is native_tick and tick.__code__ is native_code and tick.__globals__ is native_globals
++                and tick.__defaults__ is native_defaults and tick.__kwdefaults__ is native_kwdefaults
++                and tick.__closure__ is native_closure,
++                'same Source-bound observer/default configuration and original Root native authority')
++
+     def observe(role, kwargs):
++        nonlocal memo_entry
+         native_ns = tick()
+         current, row = kwargs['state'], kwargs['row']
+         latest_observations[role] = (role.upper()+'_NATIVE_STEP',row,len(current['selected']),native_ns)
++        memo_guard()
++        memo_counts['lookups'] += 1
++        context = {'state':current,'helper_limits':trace_helper.DEFAULT_LIMITS,
++                   'original_binding':language.binding}
++        hit = False
++        if memo_entry is not None:
++            try:
++                hit = _memo_equal(memo_entry,context,tick,[0])
++            except _MemoIncomplete:
++                pass
++        if hit:
++            memo_counts['hits'] += 1
++            return  # No fabricated observation/work report; original delegate follows.
++        memo_counts['misses'] += 1
++        memo_counts['full_inspections'] += 1
++        memo_entry = None  # Clear old ownership before helper work or replacement copy.
+         observation = trace_helper.inspect_selected_edges(state=current,tick=tick)
+         require(observation['status'] in ('CONNECTED_PREFIX_CANDIDATE','NO_CONNECTED_EDGE','UNKNOWN'),
+                 'complete structural observation or own allowance UNKNOWN')
++        if observation['status'] == 'NO_CONNECTED_EDGE':
++            memo_guard()
++            try:
++                memo_entry = _memo_copy(context,tick,[0])
++            except _MemoIncomplete:
++                pass  # Complete negative remains usable now, but no memo is installed.
+         if observation['status'] == 'UNKNOWN':
+             raise StructuralInspectionUnresolved('connected-edge inspection allowance UNKNOWN; no firstness or absence claim')
+         if observation['status'] == 'CONNECTED_PREFIX_CANDIDATE':
+@@ -126,5 +233,6 @@
+         result['reason']='no connected selected prefix captured; search reason: '+str(searched['reason'])
+     phase('AFTER_TRACE_JOIN')
+     require(canonical(state)==initial_literal,'entire supplied native root unchanged')
++    result['structural_memo'] = dict(memo_counts)
+     tick()
+     return result

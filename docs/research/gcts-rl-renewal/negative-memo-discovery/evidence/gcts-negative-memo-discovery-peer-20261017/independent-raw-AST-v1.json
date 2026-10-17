@@ -1,0 +1,208 @@
+{
+  "case_contract": {
+    "bytes": 16291,
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-contract-v1.json",
+    "sha256": "ed80270e666c16a7228ce42c972c5d97357cf7e7f3edd22921441fe415909dc5"
+  },
+  "case_source": {
+    "bytes": 11668,
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+    "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3"
+  },
+  "checks": {
+    "case_AST_compile_without_evaluation": true,
+    "case_actual_forward_patch": true,
+    "case_actual_full_inverse_patch": true,
+    "case_and_cold_original_authority_agree": true,
+    "case_full_raw_forward": true,
+    "case_full_raw_inverse": true,
+    "case_only_own_memo_limit_caught": true,
+    "case_only_run_and_observe_changed": true,
+    "case_phase_calls_AST_exact": true,
+    "case_seven_common_named_regions_exact": true,
+    "case_source_contract_pin": true,
+    "case_source_delta_pin": true,
+    "case_source_pin": true,
+    "case_whole_AST_inverse": true,
+    "cold_AST_compile_without_evaluation": true,
+    "cold_actual_forward_patch": true,
+    "cold_actual_full-inverse_patch": true,
+    "cold_full_raw_forward": true,
+    "cold_full_raw_inverse": true,
+    "cold_only_main_schema_literal_in_inherited_callables": true,
+    "cold_original_authority_inputs_limits_unchanged": true,
+    "cold_seventeen_top_helpers_unchanged": true,
+    "cold_source_contract_pin": true,
+    "cold_source_delta_pin": true,
+    "cold_source_pin": true,
+    "cold_two_classes_unchanged": true,
+    "cold_whole_AST_inverse": true,
+    "cold_whole_main_one_contract_schema_literal_only": true,
+    "exact_Source16_input8": true,
+    "memo_binding_scope_literal_explicit": true,
+    "whole_current_map_and_case_contract_join": true
+  },
+  "cold_contract": {
+    "bytes": 23948,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb"
+  },
+  "cold_source": {
+    "bytes": 53857,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py",
+    "sha256": "e88da1c944a6fedc61d2abf5f27e32279d5f37ca94e9e71cb602086ee864e439"
+  },
+  "method": "Complete cold ancestor read and complete current5edit delta with whole raw/AST reconstruction; whole current CASE and contracts/API; actual patch copies. No model/helper/checker/CASE/cold execution/imports/evaluation/tests/clocks/actual/capture/results/proofword reads.",
+  "schema": "negative-memo-discovery-independent-raw-AST-v1",
+  "scientific_calls": 0,
+  "source_only": true,
+  "source_records": {
+    "case": {
+      "added_regions": [
+        "_MemoIncomplete",
+        "_memo_step",
+        "_memo_copy",
+        "_memo_equal",
+        "run_discovery.memo_guard"
+      ],
+      "changed_inherited_regions": [
+        "run_discovery",
+        "run_discovery.observe"
+      ],
+      "coordinate_checks": [
+        {
+          "actual_sequential": 346,
+          "declared": 346
+        },
+        {
+          "actual_sequential": 892,
+          "declared": 892
+        },
+        {
+          "actual_sequential": 4584,
+          "declared": 4584
+        },
+        {
+          "actual_sequential": 6688,
+          "declared": 6688
+        },
+        {
+          "actual_sequential": 7890,
+          "declared": 7890
+        },
+        {
+          "actual_sequential": 11589,
+          "declared": 11589
+        }
+      ],
+      "delta": {
+        "bytes": 7906,
+        "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-delta-v1.json",
+        "sha256": "c7b4a5033e00bb27b72a429ad9147604ec83bb43a25b5695382a355a003b9b56"
+      },
+      "edit_count": 6,
+      "parent": {
+        "bytes": 6767,
+        "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cases_v1.py",
+        "sha256": "0e9b5a4d029c32853fa72032385f005d5773969ccb4044b119cd4194eb35261f"
+      },
+      "source": {
+        "bytes": 11668,
+        "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+        "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3"
+      },
+      "unchanged_named_regions": [
+        "StructuralInspectionUnresolved",
+        "require",
+        "canonical",
+        "digest",
+        "run_discovery.proposer",
+        "run_discovery.fallback",
+        "run_discovery.certify"
+      ]
+    },
+    "cold": {
+      "added_regions": [],
+      "changed_inherited_regions": [
+        "main"
+      ],
+      "coordinate_checks": [
+        {
+          "actual_sequential": 3,
+          "declared": 3
+        },
+        {
+          "actual_sequential": 556,
+          "declared": 556
+        },
+        {
+          "actual_sequential": 620,
+          "declared": 620
+        },
+        {
+          "actual_sequential": 871,
+          "declared": 871
+        },
+        {
+          "actual_sequential": 32719,
+          "declared": 32719
+        }
+      ],
+      "delta": {
+        "bytes": 10641,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/caller-Source-delta-v1.json",
+        "sha256": "8494ee7e9ec98dc4688a6b9bb980bdd8a167d8dadc860756ad5bfde14a3080fb"
+      },
+      "edit_count": 5,
+      "parent": {
+        "bytes": 53815,
+        "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v1.py",
+        "sha256": "cde3077a41039bd830ab00bcd6f6de850b609a4e320cae3787f76269ff14d376"
+      },
+      "source": {
+        "bytes": 53857,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py",
+        "sha256": "e88da1c944a6fedc61d2abf5f27e32279d5f37ca94e9e71cb602086ee864e439"
+      },
+      "unchanged_named_regions": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language",
+        "main.phase",
+        "main.run_discovery"
+      ]
+    }
+  },
+  "whole_current_case_contract_and_cold_operative_contract_read": true
+}

@@ -1,0 +1,273 @@
+{
+  "schema": "ROOT-negative-memo-discovery-case-Source-contract-v1",
+  "scope": "ROOT-negative-memo-discovery-case-Source",
+  "version": "ROOT-first-connected-selected-prefix-discovery-v2-exact-negative-memo",
+  "author_identity": "/root/arithmetic_induction",
+  "source": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+    "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3",
+    "bytes": 11668
+  },
+  "case_source": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+    "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3",
+    "bytes": 11668
+  },
+  "sources": {
+    "discovery_cases": {
+      "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+      "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3",
+      "bytes": 11668
+    }
+  },
+  "API_wire": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/API-wire-v1.json",
+    "sha256": "9b75cba8a7a0963999f622fd92486428733d84365fcea616937377deb050fd14",
+    "bytes": 2565
+  },
+  "source_delta": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-delta-v1.json",
+    "sha256": "c7b4a5033e00bb27b72a429ad9147604ec83bb43a25b5695382a355a003b9b56",
+    "bytes": 7906
+  },
+  "static_audit": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/static-audit-v1.json",
+    "sha256": "e3c3ec18ea973d93dae61ce856be3e7750ef6af08d1b029a4c4803ce1fba118c",
+    "bytes": 4051
+  },
+  "parent_source": {
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cases_v1.py",
+    "sha256": "0e9b5a4d029c32853fa72032385f005d5773969ccb4044b119cd4194eb35261f",
+    "bytes": 6767
+  },
+  "parent_Root_cold_contract_Source_ancestry": {
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c",
+    "bytes": 22804
+  },
+  "recommendation": {
+    "path": "/private/tmp/gcts-connected-discovery-cost-analysis-source-20261017/recommendation-v1.json",
+    "sha256": "cba8b85aa8b2d9036ee5316283a0ec8399d0f234fa241330462e69090292fe1c",
+    "bytes": 13183
+  },
+  "helper_source": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+    "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338",
+    "bytes": 21076
+  },
+  "helper_contract": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-contract-v2.json",
+    "sha256": "37ebc4654f6619de56c6b797b45318d9bdb63638c2c775cf7eb3f606016019d8",
+    "bytes": 8208
+  },
+  "authorship": "Author of this new CASE, structural helper and historical native/engine/miner ancestry; Root authored original CASE/cold and owns later caller/grants/actuals. Independent peer required; Source-only author checks are not self-independent review.",
+  "memo_definition": {
+    "count": "At most one completed owned entry in run_discovery closure; no engine/object/privatecache state.",
+    "key": "Full type-sensitive builtin tree {state: whole callback state, helper_limits: full unchanged helper.DEFAULT_LIMITS, original_binding: full language.binding}. All selected/excluded, t/m, generations, input_epoch, marking_id and full preimages participate. No hash/projection/row/object-ID shortcut.",
+    "types": "Exact builtin None/bool/int/str/list/tuple/dict; list and tuple differ, bool and int differ. Dict keys must be exactstr and full key sets and values agree; absent/zero/None distinct. Unsupported types fall through to unchanged full helper.",
+    "stored_value": "Owned copied data tree only after complete NO_CONNECTED_EDGE; immutable leaves may be safely shared. No helper receipt/report/work record reused or emitted.",
+    "copy_lifetime": "Prior entry cleared on miss before full helper and replacement. Bounded partial copy remains local until discarded/completed; all memory/time charged. One complete state at most; context adds only tiny defaults/binding.",
+    "bounds": {
+      "maximum_nodes_per_lookup_or_copy": 20000,
+      "maximum_depth": 128
+    },
+    "unknown": "Only own _MemoIncomplete is handled as lookup miss or noninstallation on copy. Comparison unsupported/inconclusive/boundedout invokes unchanged full helper. Helper UNKNOWN throws original StructuralInspectionUnresolved; errors/native/guard exceptions propagate and are never cached.",
+    "positive": "Positive always goes through unchanged fresh full helper inspection, full report/hash/statecopy/capture and trace/root join. A memo hit merely returns from observer before the unchanged delegate; it does not fabricate NO_CONNECTED_EDGE or work fields."
+  },
+  "authority_scope": {
+    "actual_key_comparisons": "Complete state and full helper defaultlimits plus language.binding only. Binding is a literal metadata object containing original epoch/input/source digests/profile; the key does NOT rederive declaration/policy/theory/name sets or full mathematical authority.",
+    "Source_function_guards": "Same trace_helper module binding, inspector function/code/globals/defaults/kwdefaults/closure, VERSION/defaultlimit object, Root native function/code/globals/defaults/closure are checked. Full default values and full language.binding are compared in entry tree.",
+    "required_Root_guards": "Exact authenticated ddb4 helper/current complete Source map, unchanged original17/input2 model, Root whole CodeSeal/immediate pre-post authority and pinned synchronous original native tick remain mandatory. The memo adds no substitute mathematical check.",
+    "trust": "Current pinned synchronous Sources/native tick have no semantic mutation callback; no arbitrary hostile frames, reentrancy, ABA epoch promise or nth-tick callback/resource-timing equivalence is claimed.",
+    "native_resource": "Native-first tick/slots before lookup; comparison/copy themselves call the same cumulative native tick. Absolute original20/512/internal500 unchanged, no parser visit/native budget reset. A changed exact binding/state/default value misses or guard fails.",
+    "counter_scope": "Normal returned record only. lookups/hits/misses/full_inspections count calls/attempts, not proof or completed native math. Full inspections includes a call returning own UNKNOWN. No counter claim is made from missing/failurewriter outputs."
+  },
+  "inherited_API_and_semantics": {
+    "run_discovery_kwargs_unchanged": true,
+    "case": "CD-01-first-actual-selected-inference-edge",
+    "result_schema": "ROOT-connected-prefix-discovery-evidence-v1",
+    "status_union": [
+      "UNKNOWN",
+      "CAPTURED_CONNECTED_PARTIAL_STATE"
+    ],
+    "capture_schema": "receptor-family-connected-prefix-capture-v1",
+    "phases_exact_parent_AST": true,
+    "failure_writer_changed": false,
+    "fixed4_scalar_slots_changed": false,
+    "global_DEAD_UNKNOWN_FORCED_earliest_generation_MARK_tie": true,
+    "all_native_candidate_fallback_collision_EOF_and_rollback_paths_unchanged": true,
+    "node_limit": 128,
+    "event_limit": 2000,
+    "generic_first_structural_selected_edge_rule_unchanged": true,
+    "no_formula_rule_or_row_route": true,
+    "full_captured_preimages_keys_order_repeated_edges_trace_root_joins": true
+  },
+  "normal_result_addition": {
+    "field": "structural_memo",
+    "exact_keys": [
+      "lookups",
+      "hits",
+      "misses",
+      "full_inspections"
+    ],
+    "types": "exact nonnegative int",
+    "relations": [
+      "lookups == hits + misses",
+      "full_inspections == misses"
+    ],
+    "failurewriter_or_new_phase_fields": false
+  },
+  "original_model_sources": {
+    "advice_controls": {
+      "bytes": 130156,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    "advice_validator": {
+      "bytes": 16299,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    "adviser": {
+      "bytes": 26007,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "controls": {
+      "bytes": 31931,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    "converter": {
+      "bytes": 5528,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "engine": {
+      "bytes": 55152,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "intake": {
+      "bytes": 55852,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "point_checker": {
+      "bytes": 10201,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "retained_controls": {
+      "bytes": 25338,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    "transition": {
+      "bytes": 8134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    "word_checker": {
+      "bytes": 46514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    }
+  },
+  "original_model_inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    }
+  },
+  "original_model_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "original_model_unchanged": true,
+  "native_limits": {
+    "aggregate_owned_bytes": 536870912,
+    "caller_finish_reserve_seconds": 1,
+    "caller_seconds": 90,
+    "failure_only_seconds": 55,
+    "joint_seconds": 20,
+    "owned_seconds": 60
+  },
+  "runtime_fit": "UNMEASURED",
+  "qualification_inherited": false,
+  "actual_authorization": false,
+  "all_scientific_acceptance": false,
+  "conformance_gaps": [
+    "No empirical hit/miss/fit/performance/connected-state/viable-frontier/theorem/RL/gain result from Source.",
+    "Root must bind this CASE into separately reviewed current16 cold map while original17/input2 remain unchanged; no current cold code or grant authored here.",
+    "Source-only controls obligations remain: same-state completednegative hit; changed excluded/generation/t/m/epoch/marking/preimage miss; bool/int/list/tuple/absent distinctions; UNKNOWN/error no cache; Source/authority changes guard/miss; fresh positive fullreport. No such control was executed by author.",
+    "State-only structural equivalence in pinned native scope does not authorize mathematical receipt caching, candidate pruning or delegation changes.",
+    "True native interruption still produces UNKNOWN/raw diagnostic only under existing failure55/native terminal rule; no counters inferred when no normal record."
+  ],
+  "Review_ABI": {
+    "schema": "ROOT-negative-memo-discovery-case-typed-Source-review-v1",
+    "scope": "ROOT-negative-memo-discovery-case-Source",
+    "required_fields": [
+      "schema",
+      "scope",
+      "status",
+      "author_identity",
+      "reviewer_identity",
+      "source_contract",
+      "source",
+      "sources",
+      "source_only",
+      "scientific_calls",
+      "scientific_acceptance",
+      "author_overlap",
+      "findings"
+    ],
+    "author_identity": "/root/arithmetic_induction",
+    "source_contract": "exact current pin",
+    "source_and_sources": "exact own CASE source map",
+    "status": "CONDITIONAL_SOURCE_PASS or SOURCE_BLOCKER"
+  },
+  "source_only": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false
+}

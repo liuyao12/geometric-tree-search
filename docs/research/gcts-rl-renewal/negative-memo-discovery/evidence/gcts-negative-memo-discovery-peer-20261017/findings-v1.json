@@ -1,0 +1,88 @@
+{
+  "author_overlap": "Reviewer did not author current CASE or Root cold caller. Reviewer authored ea300 point adapter,4358 receptor checker,9fd marked verifier,8f degree checker and earlier controls/diagnostics, and reviewed ddb4 helper. Arithmetic authors new CASE/helper plus historical engine/router/native/collector/miner ancestry; Root authors cold wrapper and parent discovery CASE. Shared primitives/configuration are disclosed. This is a distinct current CASE/cold control-flow composition review, not self-independent proof of dependencies or any runtime acceptance.",
+  "blockers": [],
+  "case_contract": {
+    "bytes": 16291,
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-contract-v1.json",
+    "sha256": "ed80270e666c16a7228ce42c972c5d97357cf7e7f3edd22921441fe415909dc5"
+  },
+  "case_source": {
+    "bytes": 11668,
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+    "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3"
+  },
+  "cold_contract": {
+    "bytes": 23948,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb"
+  },
+  "cold_source": {
+    "bytes": 53857,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py",
+    "sha256": "e88da1c944a6fedc61d2abf5f27e32279d5f37ca94e9e71cb602086ee864e439"
+  },
+  "findings": [
+    {
+      "finding": "Comparison checks exact builtin type before values, complete dict exactstr key sets/values and ordered list/tuple shape, preserving bool/int, list/tuple, absent/None/assigned0 distinctions. Full callback state (including every m/t, generation, selected/excluded/full preimage, epoch/marking), helper limits and original binding participate. There is no hash, row, selected-count or identity shortcut.",
+      "id": "NM01",
+      "region": "CASE _memo_equal/_memo_copy"
+    },
+    {
+      "finding": "Only a complete fresh NO_CONNECTED_EDGE can be copied to the single run-owned memo entry. Miss clears the old entry before full inspection or replacement copy. The copied tree owns mutable containers; immutable leaves may share safely. Incomplete/unsupported comparison is a miss; incomplete copy does not install partial state. No helper report/work record, positive, own UNKNOWN or error is reused.",
+      "id": "NM02",
+      "region": "CASE observe ownership"
+    },
+    {
+      "finding": "Module/function/code/globals/defaults/kwdefaults/closure, semantic helper VERSION/default-limit object and original Root native function configuration are guarded; default values and complete language.binding are copied/compared. This is binding metadata only, not a fresh declaration/theory/name-set authority proof. Unchanged full Root CodeSeal/immediate guards and synchronous pinned native-only callback remain required, exactly as Root confirmed. No arbitrary nth-tick/hostile mutation/ABA equivalence is promised.",
+      "id": "NM03",
+      "region": "CASE memo_guard/context; operative authority_scope"
+    },
+    {
+      "finding": "The original native-first entry tick and fixed scalar slot update remain before lookup. A hit returns from observer only; unchanged proposer/fallback/completion delegates still execute once with the same kwargs/object path. Comparison/copy call the same cumulative native tick at each visited value, bounded20k nodes/depth128. No parser/native allowance reset or engine/domain/cursor/mathematical receipt cache is introduced.",
+      "id": "NM04",
+      "region": "CASE observe and inherited delegates"
+    },
+    {
+      "finding": "Only private _MemoIncomplete is caught, as miss/noninstallation. Source/authority/native/tick/data exceptions propagate. A miss always increments full_inspections before the unchanged actual helper call. Helper own UNKNOWN retains original StructuralInspectionUnresolved; positive always keeps the full fresh report, captured state/native observation, intentional stop, trace and exact root restoration path. Exact state-only negative equivalence cannot conceal a newly selected edge in the declared helper scope.",
+      "id": "NM05",
+      "region": "CASE fresh outcomes and exception scope"
+    },
+    {
+      "finding": "Normal returned counters are exact started0/incremented integers with lookups=hits+misses and full_inspections=misses. They count attempts, not completed math, proof cost or wall time. They are not added to failure writer or inferred from missing outputs. No receipt or old work record is fabricated on hit.",
+      "id": "NM06",
+      "region": "CASE result.structural_memo"
+    },
+    {
+      "finding": "Current cold consumes exact7ae1 CASE and unchanged ddb4/engine13/ea300 mathematical modules via current Source16 hash map. Separate original17/input2/binding remain byte-literal unchanged. Full Root review/grant/runtime/source/input/seal and original authority construction paths are retained. Source-only review is not an actual grant and no baseline/discovery result is inherited.",
+      "id": "NM07",
+      "region": "Root current Source16 and model split"
+    },
+    {
+      "finding": "Five raw changes are docstring, own VERSION/SCOPE, CASE capsule and consumed contract schema. All17 top helpers,2 classes and nested functions are raw/AST unchanged; main differs only the consumed schema literal. Exact actual forward/full inverse patches and complete raw/AST reconstruction preserve native clock, invoke pre/post guard, CodeSeal, current input/Source checks and final exit path.",
+      "id": "NM08",
+      "region": "Root five-edit successor and whole guard/error path"
+    },
+    {
+      "finding": "Original20/512/internal500 and failure55/owned60/caller90+1, fixed4 latest scalar slots,6 phase labels and captured builtin-only failure writer remain unchanged. No late model/Source/tick check is added after TimeoutError; exact builtin outer catch/write/rethrow exit2 scope remains. Positive complete2file lossless wire and final native guards remain unchanged. Phase scalars are observations, not active frames, cause, incomplete counts or accepted trajectory.",
+      "id": "NM09",
+      "region": "Root failure/output/diagnostic protocol"
+    },
+    {
+      "finding": "Global DEAD/UNKNOWN/FORCED/earliest generation with existing MARK tie, native candidate universe, markings, fallback/EOF, exclusions and rollback remain entirely in unchanged engine13/ea300/router. This changes structural observation work only. No collector/miner/provider, donor proofword, formula/rule/row route, hidden family, proof/library/RL/advantage or completed frontier viability is supplied or accepted.",
+      "id": "NM10",
+      "region": "whole composition and scientific scope"
+    }
+  ],
+  "limitations": [
+    "No scientific/project/model/CASE/cold/helper/checker module or function imported/evaluated/called, no tests, clocks, actuals, capture/result/proofword/donor reads. Raw/AST/literal metadata, builtin compile without evaluation and actual patches on Source copies only.",
+    "Fresh Root once actual/current native closure remains required; no fit, hit rate, speedup, connected-prefix or completed case predicted. All resource/scientific/engine acceptance remains false.",
+    "The CASE contract lists unrun same-state hit, full field/type changes miss, own-incomplete fallback, source/default/binding guard and fresh positive/error/UNKNOWN controls. This review reasons from full current Source; it does not invent runtime results for those controls.",
+    "An observed connected prefix still interrupts its global query and is unqualified for viability/proof. A later bridge requires a separately charged fresh complete global decision and native reconstruction."
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "negative-memo-discovery-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

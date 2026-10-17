@@ -1,0 +1,213 @@
+{
+  "actual_data_read": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship": "Author owns provider/host/consumer and earlier native/caller ancestry, reviewed ea300 and ddb4 integration. No independent runtime profiling or mathematical execution performed.",
+  "changes": [
+    {
+      "design": [
+        "Run native-first entry tick and update the same four bounded scalar slots before any lookup. Compare complete callback state, not selected count/projection, row, object identity or hash.",
+        "A hit requires full type-sensitive builtin tree equality to an owned copied state from a prior COMPLETE NO_CONNECTED_EDGE result under identical helper Source/function/limit configuration and original authority. Tuples versus lists and bool versus int must never alias the key even if JSON or Python equality does. All keys, values, t/m, selected/excluded, generation, epoch and marking are included.",
+        "If comparison is different, unsupported, inconclusive or over its own lookup allowance, take the unchanged full helper path. Malformed inputs must never be treated as cached negatives. Native/guard/callback errors propagate, not cache misses.",
+        "Store only a complete successful negative and an owned full state copy after that success. Never store errors, own-work/depth UNKNOWN, partial data or positive capture reports. On a positive/miss, original inspect/copy/hash, capture, stop and later full trace join remain fresh.",
+        "Do not emit a cached helper receipt or pretend its work fields are fresh. A negative hit merely avoids repeated structural work before the unchanged delegate. Lookup/copy work remains inside original20/512 with fresh native guards."
+      ],
+      "essential_controls": [
+        "Complete same-state negative hit; changed exclusion/generation/mark/key must miss even if selected count or selected array matches.",
+        "Tuple/list, bool/int, absent/zero and altered full preimages cannot hit; preserve original helper error on miss.",
+        "Own UNKNOWN and injected callback failure are never cached; actual marker/guard exceptions propagate.",
+        "Changed helper/limits/marking/authority must miss or fail guard. Positive capture always has a freshly computed full report for its exact current state."
+      ],
+      "id": "OBSERVER-EXACT-NEGATIVE-MEMO",
+      "limits": "One state plus a flag, space $O(|s|)$; full type-sensitive comparison worst-case $O(|s|)$. Native checkpoint/rollback has no cache authority: changed or restored data is compared in full. No whole callback/error-timing equivalence is claimed for arbitrary nth-tick callbacks; this optimization is restricted to the existing pinned native Root tick. Public helper errors/UNKNOWN remain unchanged on every miss, and UNKNOWN is never reused.",
+      "priority": "first, conditional on exact guard/lifetime review",
+      "safety": "For a fully validated immutable literal state and identical helper configuration, structural validation, ordered-edge predicate and deterministic own-work success are identical. Complete equality includes data irrelevant to edges, preserving the untrusted-data boundary. Previously successful NO_EDGE cannot become CONNECTED solely because a different frontier row is queried. No selected<2 bypass is authorized.",
+      "scope": "Caller-local observer optimization only; public ddb4 helper contract remains unchanged. One owned entry for this search, no engine/mathematical receipt cache."
+    },
+    {
+      "design": [
+        "Factor _filter body into a private helper that additionally returns every full decorated tile it just rebuilt and independently checked, in original input order, including candidates removed by actual channel4 disagreement.",
+        "Keep all original candidate reconstruction, native membership, independent9fd checks, literal packet equality, full marked legality and per-batch collision checks. Public _filter still returns the same checked/removed pair to existing callers.",
+        "In current cursor advance only, consume that helper result and run the unchanged check_collision(tile,self._names) for EVERY original candidate, including removed ones. Remove only the immediate second rebuild of the identical full preimage/translation. Do not use surviving candidates alone as the exposure census.",
+        "Return the same surviving full packet/ordinal, count all original/removed candidates identically, preserve poisoning/abort, original survivor order, all EOF fields and fresh complete-cover acceptance. Engine13 continues independently checking each returned candidate."
+      ],
+      "essential_controls": [
+        "Byte/full-field equality of surviving and removed packets/keys/counts/order against the old path at the same complete current state.",
+        "Original and decorated collisions spanning prior survivors AND prior removed candidates still reject.",
+        "Genuine cursor replay/full context/ordinal/EOF plus fresh whole survivor keySET cover, poison/abort and owned rollback remain exact.",
+        "New explicit implementation tag/source map and genuine current Root/peer reviews; changed composition requires its own conformance evidence under unchanged limits."
+      ],
+      "id": "FALLBACK-ALL-CHECKED-TILES-LOCAL-REUSE",
+      "limits": "At most one call-local returned tile for the existing per-advance singleton filter call, no cross-call cache. Full mathematical candidate lists/grammar remain. Parser visits/tick count and resource-limited prefixes may change because a duplicate check is removed; no original runtime/callback equivalence or prior qualification transfers.",
+      "priority": "separate substantive adapter successor; prospective composition",
+      "safety": "Under the current trusted synchronous pinned Sources, _filter has already rebuilt the exact original/decorated preimage at the same frozen marking and translation in this call. The same full tile suffices for the separate cursor-wide original+decorated full-preimage collision comparison. No alternative t/m unions are merged, and a removed tile is still fully censused.",
+      "scope": "New private call-local filter return, no stored context/receipt reuse and no engine/scheduler/cursor wire change. Preserve public _filter pair-return wrapper."
+    }
+  ],
+  "implementation_changed": false,
+  "line_anchors": {
+    "cases": {
+      "run_discovery.certify": {
+        "end": 94,
+        "start": 91
+      },
+      "run_discovery.fallback": {
+        "end": 89,
+        "start": 85
+      },
+      "run_discovery.observe": {
+        "end": 79,
+        "start": 61
+      },
+      "run_discovery.proposer": {
+        "end": 83,
+        "start": 81
+      }
+    },
+    "cold": {
+      "main.tick": {
+        "end": 360,
+        "start": 351
+      },
+      "save_failure_diagnostic": {
+        "end": 309,
+        "start": 160
+      }
+    },
+    "engine": {
+      "LazyUnitRowEngine._advance": {
+        "end": 661,
+        "start": 627
+      },
+      "LazyUnitRowEngine._fallback_degree": {
+        "end": 745,
+        "start": 717
+      },
+      "LazyUnitRowEngine._open": {
+        "end": 625,
+        "start": 608
+      },
+      "LazyUnitRowEngine.decision": {
+        "end": 850,
+        "start": 752
+      },
+      "certify_by_current_cover": {
+        "end": 202,
+        "start": 179
+      }
+    },
+    "observer": {
+      "_Work.tree": {
+        "end": 74,
+        "start": 62
+      },
+      "_inspect": {
+        "end": 181,
+        "start": 149
+      },
+      "_join": {
+        "end": 341,
+        "start": 200
+      },
+      "_key": {
+        "end": 130,
+        "start": 96
+      },
+      "_state": {
+        "end": 146,
+        "start": 133
+      },
+      "inspect_selected_edges": {
+        "end": 193,
+        "start": 184
+      }
+    },
+    "point": {
+      "FilteredCursor.advance": {
+        "end": 458,
+        "start": 388
+      },
+      "MarkedSemantics._checked_state_projection": {
+        "end": 156,
+        "start": 131
+      },
+      "MarkedSemantics._filter": {
+        "end": 215,
+        "start": 181
+      },
+      "MarkedSemantics.private_state": {
+        "end": 159,
+        "start": 158
+      }
+    },
+    "router": {
+      "RoutedMarkedSemantics._current_route": {
+        "end": 130,
+        "start": 124
+      },
+      "RoutedMarkedSemantics.check_degree_evidence": {
+        "end": 155,
+        "start": 140
+      },
+      "RoutedMarkedSemantics.propose_degree": {
+        "end": 138,
+        "start": 132
+      }
+    }
+  },
+  "method": "Raw Source/AST/literal inspection only. Router Source recovered with gitshow as bytes; no imports/eval/project/helper/test/model/checker/clock/benchmark execution.",
+  "next_decision": "Root chooses any changed Source implementation and required controls before a fresh bounded actual. This note alone authorizes no implementation or rerun.",
+  "not_recommended": [
+    "Do not skip helper validation merely because selected_count<2.",
+    "Do not memoize by full-state hash alone, selected keys/count, query row, prior receipt ID or object identity.",
+    "Do not reuse observer data as a mathematical degree/checker/fallback receipt or remove router/independent state checks without a separate source proof."
+  ],
+  "root_reported_context": "Root communicated one original20 UNKNOWN and last callback-entry scalars. No saved actual/result/proofword/native files were opened. Last entries are neither an active failure frame nor proof of time spent. No bottleneck/cause, speedup or fit conclusion is drawn.",
+  "schema": "connected-discovery-generic-cost-recommendation-v1",
+  "scientific_calls": 0,
+  "source_observations": [
+    "Every proposer/fallback/completion entry runs the full structural observer. _state first recursively validates/copies the entire point state; _key then revalidates and recopies each selected full key; _inspect traverses ordered reads and hashes the full state even for NO_CONNECTED_EDGE. _join appropriately repeats a fresh complete inspection only after an actual capture.",
+    "Engine13 decision performs full checked-state setup, then distinct proposer/checker calls for frontier rows before global dead/forced/branch selection. Within an unchanged point state, the observer function has identical state input across row queries; the query row is not an inspector argument. This is a source-level potential reuse condition, not an actual hit count.",
+    "Router performs current output-route and full point checks; ea300 already reuses its checked original projection within _filter. These independent native/state/marking checks and original candidate lists should not be bypassed using observer data.",
+    "ea300 cursor advance calls _filter on one original candidate. _filter rebuilds and independently checks its decorated tile. Advance then rebuilds the same decorated preimage/translation again only to compare it against the persistent cursor collision census; removed candidates also reach this second reconstruction."
+  ],
+  "sources": {
+    "cases": {
+      "bytes": 6767,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cases_v1.py",
+      "sha256": "0e9b5a4d029c32853fa72032385f005d5773969ccb4044b119cd4194eb35261f"
+    },
+    "cold": {
+      "bytes": 53815,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v1.py",
+      "sha256": "cde3077a41039bd830ab00bcd6f6de850b609a4e320cae3787f76269ff14d376"
+    },
+    "engine": {
+      "bytes": 66670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/lazy_unit_row_global_engine_v13.py",
+      "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+    },
+    "observer": {
+      "bytes": 21076,
+      "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+      "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338"
+    },
+    "point": {
+      "bytes": 29316,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/marked_unit_row_adapter_v3.py",
+      "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e"
+    },
+    "router": {
+      "bytes": 12779,
+      "path": "/private/tmp/gcts-connected-discovery-cost-analysis-source-20261017/reviewed_marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    }
+  },
+  "status": "SOURCE_ONLY_FUTURE_CONDITIONAL_RECOMMENDATION",
+  "unchanged_requirements": [
+    "Original semantic Source17/input2/epoch, full formula/term bounds and all six rules.",
+    "Global DEAD first, global FORCED, then earliest-generation existing MARK tie; no target/row/formula route or supplied proof.",
+    "All original candidate options, full canonical fallback/collision ledgers, strict EOF cover authority, exclusions and exact owned rollback.",
+    "Native20/512/internal500 and failure55/owned60/caller90+1; no warm donor state, late scientific work, benchmark reinterpretation or combined-window20 claim.",
+    "No source-only proposal implies a viable frontier, connected cluster, theorem, full engine/GCTS/RL acceptance or advantage."
+  ]
+}

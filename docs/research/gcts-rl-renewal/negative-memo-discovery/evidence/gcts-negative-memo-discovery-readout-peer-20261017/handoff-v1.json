@@ -1,0 +1,35 @@
+{
+  "checks": 45,
+  "concrete_blockers": [],
+  "findings": {
+    "bytes": 13162,
+    "path": "/private/tmp/gcts-negative-memo-discovery-readout-peer-20261017/review-findings-v1.json",
+    "sha256": "b635d9355cff3c92e3a69601320f2062927ade279188cbf891231853182821bf"
+  },
+  "operative_contract": {
+    "bytes": 23948,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb"
+  },
+  "review": {
+    "bytes": 2063,
+    "path": "/private/tmp/gcts-negative-memo-discovery-readout-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "4aa7314625448aa1c56db861a960e89777b325d05771226dc7871523997fceb5"
+  },
+  "schema": "ROOT-negative-memo-discovery-readout-peer-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Source-only saved reader; no actual data or scientific/helper evaluation",
+  "source": {
+    "bytes": 22103,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+    "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5"
+  },
+  "source_contract": {
+    "bytes": 1404,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "906f66ed5a926fef23bbda19d53d01f97de69e8e4ad85d1d046b5bc953796c39"
+  },
+  "source_only": true,
+  "unchanged_functions": 10
+}

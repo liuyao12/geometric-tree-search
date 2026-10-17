@@ -1,0 +1,43 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root/arithmetic_induction",
+  "author_overlap": "Reviewer did not author current CASE or Root cold caller. Reviewer authored ea300 point adapter,4358 receptor checker,9fd marked verifier,8f degree checker and earlier controls/diagnostics, and reviewed ddb4 helper. Arithmetic authors new CASE/helper plus historical engine/router/native/collector/miner ancestry; Root authors cold wrapper and parent discovery CASE. Shared primitives/configuration are disclosed. This is a distinct current CASE/cold control-flow composition review, not self-independent proof of dependencies or any runtime acceptance.",
+  "blockers": [],
+  "findings": {
+    "bytes": 8083,
+    "path": "/private/tmp/gcts-negative-memo-discovery-peer-20261017/findings-v1.json",
+    "sha256": "9235fed5f17ddab70a7c7f937400f0a9d191c7f480ba7a1a9658883f4be8cc0a"
+  },
+  "raw_Source_evidence": {
+    "bytes": 6999,
+    "path": "/private/tmp/gcts-negative-memo-discovery-peer-20261017/independent-raw-AST-v1.json",
+    "sha256": "ef58e2bdbc5339986077d437e6e1f6b831ef49c8d7cc3bd9e1ae7f92de7ec380"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "ROOT-negative-memo-discovery-case-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-negative-memo-discovery-case-Source",
+  "source": {
+    "bytes": 11668,
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+    "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3"
+  },
+  "source_contract": {
+    "bytes": 16291,
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-contract-v1.json",
+    "sha256": "ed80270e666c16a7228ce42c972c5d97357cf7e7f3edd22921441fe415909dc5"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "discovery_cases": {
+      "bytes": 11668,
+      "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+      "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3"
+    }
+  },
+  "status": "CONDITIONAL_SOURCE_PASS",
+  "whole_current_Source_contract_API_read": true
+}

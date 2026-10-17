@@ -1,0 +1,38 @@
+--- before
++++ after
+@@ -10,7 +10,7 @@
+ import sys
+ import zlib
+ 
+-CURRENT_CONTRACT = {'path': '/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c', 'bytes': 22804}
++CURRENT_CONTRACT = {'path': '/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json', 'sha256': '585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb', 'bytes': 23948}
+ 
+ 
+ def need(ok, why):
+@@ -149,7 +149,7 @@
+     for ref in plan['inputs'].values(): pinned(ref)
+     need(plan['source_contract']==CURRENT_CONTRACT, 'literal frozen current operative Source capsule')
+     contract = decode(pinned(plan['source_contract']))
+-    need(contract['schema'] == 'ROOT-connected-prefix-discovery-cold-Source-contract-v1'
++    need(contract['schema'] == 'ROOT-connected-prefix-discovery-negative-memo-cold-Source-contract-v1'
+          and contract['sources'] == plan['sources'] and contract['inputs'] == plan['inputs']
+          and contract['limits'] == plan['limits'], 'exact current operative contract')
+     grant = decode(pinned(plan['ROOT_authorization']))
+@@ -159,7 +159,7 @@
+          'whole once grant joins current plan')
+     for role, ref in plan['reviews'].items():
+         review = decode(pinned(ref))
+-        need(review['scope'] == 'ROOT-connected-prefix-discovery-cold-Source'
++        need(review['scope'] == 'ROOT-connected-prefix-discovery-negative-memo-cold-Source'
+              and review['source'] == plan['sources']['intake'] and review['sources'] == plan['sources']
+              and review['source_contract'] == plan['source_contract'] and review['source_only'] is True
+              and review['source_review_passed'] is True and review['scientific_calls'] == 0,
+@@ -253,7 +253,7 @@
+              and completion['exit_zero_and_coordinator_deadline_required']is True
+              and completion['body_sha256']==raw_pin(lines[0])['sha256'] and completion['body_bytes']==len(lines[0])
+              and body['schema']=='ROOT-connected-prefix-discovery-response-body-v1'
+-             and body['version']=='ROOT-connected-prefix-discovery-cold-v1'
++             and body['version']=='ROOT-connected-prefix-discovery-negative-memo-cold-v2'
+              and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+              and body['limits']==plan['limits'] and body['resource_rule']==plan['resource_rule']
+              and body['CLOCK_DOMAIN']=='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'

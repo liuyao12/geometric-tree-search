@@ -1,0 +1,59 @@
+{
+  "schema": "ROOT-connected-discovery-negative-memo-case-API-v1",
+  "version": "ROOT-first-connected-selected-prefix-discovery-v2-exact-negative-memo",
+  "case_filename": "ROOT_connected_discovery_cases_v2.py",
+  "case": "CD-01-first-actual-selected-inference-edge",
+  "function": "run_discovery",
+  "keyword_only": [
+    "language",
+    "marked_semantics",
+    "engine_module",
+    "router_module",
+    "legacy_proposer",
+    "marked_aware_proposer",
+    "marked_aware_checker",
+    "fallback_module",
+    "point_module",
+    "trace_helper",
+    "state",
+    "latest_observations",
+    "phase",
+    "tick"
+  ],
+  "public_result_schema": "ROOT-connected-prefix-discovery-evidence-v1",
+  "public_statuses_unchanged": [
+    "UNKNOWN",
+    "CAPTURED_CONNECTED_PARTIAL_STATE"
+  ],
+  "capture_schema_unchanged": "receptor-family-connected-prefix-capture-v1",
+  "memo_scope": "One owned complete NO_CONNECTED_EDGE whole-state snapshot per run, shared across the three observers only. No helper receipt or work report reused. Positive capture always freshly computed.",
+  "lookup_allowance": {
+    "maximum_nodes": 20000,
+    "maximum_depth": 128
+  },
+  "copy_allowance": "same per-operation finite allowance; unsupported or unfinished copy does not install an entry",
+  "equality": "Exact builtin type-sensitive whole tree. dict exactstr keys with same complete key set, list/tuple distinct, bool/int distinct, all state fields included. Unsupported or inconclusive comparison falls through to unchanged full helper. Native/authority exceptions propagate.",
+  "entry_order": [
+    "existing native-first tick",
+    "same fixed scalar slot update",
+    "lookup counters and owned completed-negative comparison",
+    "on miss unchanged full helper; only complete NO_CONNECTED_EDGE may be copied into one owned entry",
+    "on CONNECTED always unchanged full report/copy/capture/stop/trace join"
+  ],
+  "normal_result_additive_field": {
+    "structural_memo": {
+      "lookups": "exact nonnegative int",
+      "hits": "exact nonnegative int",
+      "misses": "exact nonnegative int",
+      "full_inspections": "exact nonnegative int"
+    }
+  },
+  "failure_writer_changed": false,
+  "failure_slots_changed": false,
+  "phase_sites_changed": false,
+  "Source_guard_scope": "Same helper module/function/code/default configuration and pinned Root native tick for memo lifetime; Root whole CodeSeal/prepost boundary unchanged. No arbitrary nth-tick callback equivalence.",
+  "scientific_calls": 0,
+  "source_only": true,
+  "runtime_fit": "UNMEASURED",
+  "actual_grant": false
+}

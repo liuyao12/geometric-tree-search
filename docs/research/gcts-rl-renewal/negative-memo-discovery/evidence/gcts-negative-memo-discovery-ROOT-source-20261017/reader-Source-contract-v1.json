@@ -1,0 +1,28 @@
+{
+  "author_identity": "/root",
+  "current_operative_contract": {
+    "bytes": 23948,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb"
+  },
+  "parent_reader": {
+    "bytes": 22057,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v2.py",
+    "sha256": "d253225006f0a51c9bc2c6d8e1c249886898e62e959bac4a866f3a0d9277cc9f"
+  },
+  "schema": "ROOT-negative-memo-discovery-saved-Source-contract-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Unchanged saved-only complete native/capsule/wire/phase/failure4slot joins, new exact current contract/version/scope. No semantic replay. Memo counters remain in whole measured payload; no cache-hit or speedup qualification from failure scalars.",
+  "source": {
+    "bytes": 22103,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+    "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5"
+  },
+  "source_delta": {
+    "bytes": 2466,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-delta-v1.json",
+    "sha256": "321fbc6cc4924b6aafcc7f5a2d307c9a6270789a81490c1952c6011ae8403fd6"
+  },
+  "source_only": true
+}

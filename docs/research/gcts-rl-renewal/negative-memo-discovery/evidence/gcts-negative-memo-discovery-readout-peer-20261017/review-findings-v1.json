@@ -1,0 +1,415 @@
+{
+  "actual_data_read": false,
+  "author_identity": "/root",
+  "checks": [
+    {
+      "detail": null,
+      "name": "raw pin: ROOT_read_negative_memo_discovery_saved_v1.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: reader-Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: ROOT_read_connected_discovery_saved_v2.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: reader-Source-delta-v1.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "reader contract, source and delta full identities",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "exact four declared edit labels",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "unique edit literal_current_contract",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "unique edit operative_contract_schema",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "unique edit review_scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "unique edit response_version",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "independent whole raw forward exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "inverse edit response_version",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "inverse edit review_scope",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "inverse edit operative_contract_schema",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "inverse edit literal_current_contract",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "independent whole raw inverse exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "both Sources AST and compile without evaluation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "independent whole AST literal inverse exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "all existing function names preserved",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function need",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function canonical",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function unique",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function decode",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function raw_pin",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function read",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function pinned",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function write",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function read_phases",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw and AST unchanged function read_failure_diagnostic",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: reader-forward.patch",
+      "passed": true
+    },
+    {
+      "detail": "patching file before\n",
+      "name": "actual unified forward application",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: reader-full-inverse.patch",
+      "passed": true
+    },
+    {
+      "detail": "patching file after\n",
+      "name": "actual unified full-inverse application",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "exact current Source16/input8 versus semantic Source17/input2",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "current maps change intake and cases only",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "whole inherited wire/native/semantic contracts exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "current Review ABI and current memo contract exact",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "literal current operative contract gate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: ROOT_connected_discovery_cold_v2.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: ROOT_connected_discovery_cases_v2.py",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "raw pin: Source-contract-v1.json",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "current case contract full source joins",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "new reader never interprets memo counters",
+      "passed": true
+    }
+  ],
+  "concrete_blockers": [],
+  "findings": [
+    {
+      "disposition": "PASS",
+      "finding": "Whole reader read; four authority/version literals bind the frozen new reader contract, operative cold contract585892, current Source16/input8 map and exact new response version. Original semantic Source17/input2 and epoch match the parent raw contract.",
+      "id": "CURRENT-CAPSULE",
+      "lines": [
+        13,
+        148,
+        151,
+        162,
+        251
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "All four sequential byte edits and reverse edits independently reconstruct whole files. Whole AST inversion exact; compile without evaluation succeeds. Both real unified patches apply exactly in temporary Source-only scratch; all ten non-main functions are raw/AST exact.",
+      "id": "RAW-AST-PATCH"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Unchanged whole current once grant/reviews, native wait4/reaping, exact int positive matching session pair or both None, exact exits/status/PID, monotonic native launch/terminal/postprobe and tool Date gates retained. Positive requires launch-to-probe strictly below20s and owned aggregate below512MiB; failure closure below55s does not promote resources.",
+      "id": "NATIVE-ONCE-SESSION",
+      "lines": [
+        156,
+        178,
+        188,
+        199,
+        216,
+        226,
+        246
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Same retained pinned output buffers drive exact paths/order, two canonical response lines/body completion hash, full canonical lossless envelope, bounded whole zlib+base64 and expanded full SHA/size. No second unpinned response/envelope read or semantic replay.",
+      "id": "WHOLE-WIRE",
+      "lines": [
+        230,
+        236,
+        244,
+        254,
+        263,
+        271,
+        278
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Unchanged six fixed ordered phase parser and native clock bounds. Successful phase list derives from literal captures0..1, not joined status; a captured state with trace-join own UNKNOWN remains legal. Connected status is conditional partial-prefix provenance only, never viable frontier or theorem.",
+      "id": "PHASE-CAPTURE-UNKNOWN",
+      "lines": [
+        66,
+        68,
+        286,
+        290,
+        318
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Exit2 keeps UNKNOWN/no complete wire/no positive resources. Complete fixed diagnostic pair is authenticated from same full raw buffers and current plan/capsule/original binding; counts remain None/0, validator None, last-entry slots not active frames. Incomplete/absent pair remains explicit and never proves phase absence/cause or memo activity.",
+      "id": "FAILURE4-NULL",
+      "lines": [
+        88,
+        106,
+        116,
+        127,
+        136,
+        322
+      ]
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Reader makes no structural_memo/hit/lookups/full-inspection assertions. New counters can survive only inside the complete authenticated opaque payload. No counters are manufactured from failure slots/phase prefixes; no cache-hit, equivalence, speedup or runtime-fit conclusion follows from this review.",
+      "id": "MEMO-OPAQUE"
+    },
+    {
+      "disposition": "DISCLOSED",
+      "finding": "Reader author is Root, reviewer is /root/hilbert_advice_controls. Reviewer recommended the negative-memo concept and owns older host/caller/proposer/native dependency ancestry, but did not author this reader or Arithmetic new memo case. This is distinct saved-data Source review, not an independent mathematical replay or runtime conformance test. No actual/result/proofword inputs read.",
+      "id": "SCOPE-AUTHORSHIP"
+    }
+  ],
+  "helper_executed": false,
+  "operative_contract": {
+    "bytes": 23948,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb"
+  },
+  "parent_operative_contract": {
+    "bytes": 22804,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c"
+  },
+  "parent_reader": {
+    "bytes": 22057,
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v2.py",
+    "sha256": "d253225006f0a51c9bc2c6d8e1c249886898e62e959bac4a866f3a0d9277cc9f"
+  },
+  "reviewed_raw_references": [
+    {
+      "bytes": 22103,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+      "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5"
+    },
+    {
+      "bytes": 1404,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "906f66ed5a926fef23bbda19d53d01f97de69e8e4ad85d1d046b5bc953796c39"
+    },
+    {
+      "bytes": 22057,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_read_connected_discovery_saved_v2.py",
+      "sha256": "d253225006f0a51c9bc2c6d8e1c249886898e62e959bac4a866f3a0d9277cc9f"
+    },
+    {
+      "bytes": 23948,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb"
+    },
+    {
+      "bytes": 22804,
+      "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "e4ab87d4c824bca0a4cdb9334277583b5d8d3b0a45489608b9aa5cfd742d655c"
+    },
+    {
+      "bytes": 2466,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-delta-v1.json",
+      "sha256": "321fbc6cc4924b6aafcc7f5a2d307c9a6270789a81490c1952c6011ae8403fd6"
+    },
+    {
+      "bytes": 2533,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-forward.patch",
+      "sha256": "0faa931339c2d8fce43d864357c7a957602b0d94f210a6b3df1648075b495ba9"
+    },
+    {
+      "bytes": 2533,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-full-inverse.patch",
+      "sha256": "b243d42eb2e7ff1c0a9dc5bbb1152ed7abb02d4a39ab9e27f1f322be4cd4e3b0"
+    },
+    {
+      "bytes": 53857,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py",
+      "sha256": "e88da1c944a6fedc61d2abf5f27e32279d5f37ca94e9e71cb602086ee864e439"
+    },
+    {
+      "bytes": 11668,
+      "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+      "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3"
+    },
+    {
+      "bytes": 16291,
+      "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-contract-v1.json",
+      "sha256": "ed80270e666c16a7228ce42c972c5d97357cf7e7f3edd22921441fe415909dc5"
+    }
+  ],
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "ROOT-negative-memo-discovery-readout-peer-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 22103,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_read_negative_memo_discovery_saved_v1.py",
+    "sha256": "484448b5e2d6de88f4b0b85f20e1150767425a0ee9990a6aa2e1e06da0e961f5"
+  },
+  "source_contract": {
+    "bytes": 1404,
+    "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "906f66ed5a926fef23bbda19d53d01f97de69e8e4ad85d1d046b5bc953796c39"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "unchanged_raw_AST_functions": [
+    "need",
+    "canonical",
+    "unique",
+    "decode",
+    "raw_pin",
+    "read",
+    "pinned",
+    "write",
+    "read_phases",
+    "read_failure_diagnostic"
+  ]
+}

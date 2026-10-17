@@ -1,0 +1,393 @@
+{
+  "comparison_status": "Unknown",
+  "disposition": {
+    "GCTS_advantage_claimed": false,
+    "RL_accepted": false,
+    "actual_closed": true,
+    "aggregate_B_bytes": 48250880,
+    "all_reaped": true,
+    "collector_or_family_pipeline_executed": false,
+    "complete_GCTS_model_accepted": false,
+    "complete_wire_verified": false,
+    "connected_prefix_provenance_joined": false,
+    "current_frontier_viability_checked": false,
+    "failure_diagnostic": {
+      "complete_pair": true,
+      "completion": {
+        "bytes": 331,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-owned-v1/diagnostic-completion.json",
+        "sha256": "9a739cb608be1b842da0bc2e0faba1c19c27c06ac68a528ac82fe3a2992fc8e3"
+      },
+      "context": {
+        "GCTS_advantage_claimed": false,
+        "RL_accepted": false,
+        "complete_GCTS_model_accepted": false,
+        "diagnostic_only": true,
+        "engine_qualified": false,
+        "inputs": {
+          "declaration": {
+            "bytes": 2925,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+            "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+          },
+          "profile": {
+            "bytes": 8773,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+            "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+          },
+          "stageB_disposition": {
+            "bytes": 4574,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json",
+            "sha256": "ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e"
+          },
+          "stageB_encoded": {
+            "bytes": 162591,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json",
+            "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca"
+          },
+          "stageB_expanded": {
+            "bytes": 1926833,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json",
+            "sha256": "bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93"
+          },
+          "stageB_plan": {
+            "bytes": 7924,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json",
+            "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009"
+          },
+          "stageB_response": {
+            "bytes": 7572,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl",
+            "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e"
+          },
+          "stageB_transport": {
+            "bytes": 1502,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json",
+            "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b"
+          }
+        },
+        "invocation_id": "ROOT-CD-exact-negative-memo-20261017-v1",
+        "joint_began_ns": 570987440974000,
+        "joint_deadline_ns": 571007440974000,
+        "logical_proof_accepted": false,
+        "original_model_binding": {
+          "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+          "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+          "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+          "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+          "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+          "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+        },
+        "plan": {
+          "bytes": 8991,
+          "sha256": "c1b3ce04cb39e0d6011846c96acc432ac6d4a5fee98647bccd3ebef47074f56a"
+        },
+        "positive_joint_gate_accepted": false,
+        "purpose": "connected-prefix-discovery",
+        "qualified_case_count": 0,
+        "reported_case_count": null,
+        "schema": "ROOT-connected-discovery-diagnostic-context-v1",
+        "source_contract": {
+          "bytes": 23948,
+          "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+          "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb"
+        },
+        "sources": {
+          "clean_support": {
+            "bytes": 48584,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+            "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+          },
+          "decorator": {
+            "bytes": 12619,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+            "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+          },
+          "degree_checker": {
+            "bytes": 27553,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+            "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+          },
+          "degree_router": {
+            "bytes": 12779,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+            "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+          },
+          "discovery_cases": {
+            "bytes": 11668,
+            "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+            "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3"
+          },
+          "engine": {
+            "bytes": 66670,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-decision-context-engine-source-20261016/lazy_unit_row_global_engine_v13.py",
+            "sha256": "40adc4fef7d5930ad49100149c1ca6390b1894f88c52f6fb38d97d914b00ce10"
+          },
+          "fallback": {
+            "bytes": 24227,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+            "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+          },
+          "intake": {
+            "bytes": 53857,
+            "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/ROOT_connected_discovery_cold_v2.py",
+            "sha256": "e88da1c944a6fedc61d2abf5f27e32279d5f37ca94e9e71cb602086ee864e439"
+          },
+          "kernel": {
+            "bytes": 10323,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+            "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+          },
+          "marked_adapter": {
+            "bytes": 29316,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-baseline-readiness-source-20261016/marked_unit_row_adapter_v3.py",
+            "sha256": "ea3004b3573ab746ad22d1eacf255d61489b2389c06f6ca178821c114288597e"
+          },
+          "marked_aware_checker": {
+            "bytes": 25783,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+            "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+          },
+          "marked_aware_proposer": {
+            "bytes": 14064,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+            "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+          },
+          "marked_verifier": {
+            "bytes": 18475,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+            "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+          },
+          "membership": {
+            "bytes": 20112,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+            "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+          },
+          "proposer": {
+            "bytes": 22030,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+            "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+          },
+          "trace_helper": {
+            "bytes": 21076,
+            "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+            "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338"
+          }
+        }
+      },
+      "diagnostic": {
+        "bytes": 8648,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-owned-v1/unknown-diagnostic.json",
+        "sha256": "d8c9d9fe6a30a6176d689933d051f7af95895d26d2a61e9f05bfb952a8b28acb"
+      },
+      "failure_cause_established": false,
+      "last_observation_is_active_failure_frame": false,
+      "last_observations": {
+        "completion": null,
+        "fallback": {
+          "native_ns": 571001239059000,
+          "row": 23,
+          "selected_count": 0,
+          "stage": "FALLBACK_NATIVE_STEP"
+        },
+        "proposer": {
+          "native_ns": 571007324884000,
+          "row": 7,
+          "selected_count": 0,
+          "stage": "PROPOSER_NATIVE_STEP"
+        },
+        "validator": null
+      },
+      "qualified_case_count": 0,
+      "reported_case_count": null
+    },
+    "logical_proof_accepted": false,
+    "native_files": {
+      "ONCE.json": {
+        "bytes": 240,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/ONCE.json",
+        "sha256": "0e67d10bb9a80bad60764bf0ca1c8cb1adcbfa01c61a71011f69fe00e7c914df"
+      },
+      "meter-stderr.txt": {
+        "bytes": 223,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/meter-stderr.txt",
+        "sha256": "cf3733c50de5f47891f9ed174e3c3bc8436adf44cf3c558f6b37245a2aa35ad5"
+      },
+      "meter-stdout.txt": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/meter-stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "native-terminal.json": {
+        "bytes": 1562,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/native-terminal.json",
+        "sha256": "4ae6e66f35e11e8b5f0bab5a47d4df13a17652fc1294d38aedc40c702b74d802"
+      },
+      "observation.json": {
+        "bytes": 457,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/observation.json",
+        "sha256": "af031372181f3550e333d0a8f68a57c3cb54f2c301ab411f42a42cd0b983b04f"
+      },
+      "postterminal-probe-stderr.txt": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/postterminal-probe-stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "postterminal-probe-stdout.txt": {
+        "bytes": 16,
+        "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/postterminal-probe-stdout.txt",
+        "sha256": "e82b444ceeaff011af7452e4f0eda639f4223b9b4968d7ec052a75eac108f8d4"
+      }
+    },
+    "native_launch_to_postprobe_ns": 20108157000,
+    "native_resources_qualified": false,
+    "phase_observations": [
+      {
+        "native_ns": 570987691356000,
+        "stage": "BEFORE_ENGINE"
+      },
+      {
+        "native_ns": 570987720618000,
+        "stage": "BEFORE_SEARCH"
+      }
+    ],
+    "plan": {
+      "bytes": 8991,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "c1b3ce04cb39e0d6011846c96acc432ac6d4a5fee98647bccd3ebef47074f56a"
+    },
+    "reported_theorem_count": 0,
+    "schema": "ROOT-connected-prefix-discovery-disposition-v1",
+    "scientific_replay": false,
+    "source_contract": {
+      "bytes": 23948,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "585892becb2134167730838ebfa80fe70887f552c7416eb1a92314002f03f8eb"
+    },
+    "status": "UNKNOWN",
+    "stderr_tail_sha256": {
+      "bytes": 111,
+      "sha256": "11b999bbbca8e1a1d53dc4a3e3eebfd565778f26c8bad1af22166756ce593f9b"
+    },
+    "tool_bracket": {
+      "bytes": 385,
+      "path": "/private/tmp/gcts-negative-memo-discovery-ROOT-20261017/ROOT-tool-bracket-v1.json",
+      "sha256": "16106bc435c79d1140eab1d7f654c94362235598973ae371d15afb7e7ba5ce38"
+    },
+    "whole_engine_qualified": false
+  },
+  "edges": [],
+  "evidence_links": [
+    [
+      "Whole saved disposition and scope",
+      "disposition"
+    ],
+    [
+      "Current frozen plan and limits",
+      "plan"
+    ],
+    [
+      "Native terminal measurements",
+      "native"
+    ],
+    [
+      "Complete raw failure diagnostic",
+      "diagnostic"
+    ],
+    [
+      "Raw reached phases and timeout tail",
+      "phases"
+    ],
+    [
+      "Current cold source contract",
+      "contract"
+    ],
+    [
+      "Exact memo implementation",
+      "case"
+    ],
+    [
+      "Memo semantics, bounds and control gaps",
+      "case-contract"
+    ],
+    [
+      "Distinct whole caller and case review",
+      "caller-peer"
+    ],
+    [
+      "Distinct whole reader review",
+      "reader-peer"
+    ],
+    [
+      "Source-only cost recommendations",
+      "recommendation"
+    ],
+    [
+      "Previous discovery disposition",
+      "previous"
+    ]
+  ],
+  "last_observations": {
+    "completion": null,
+    "fallback": {
+      "native_ns": 571001239059000,
+      "row": 23,
+      "selected_count": 0,
+      "stage": "FALLBACK_NATIVE_STEP"
+    },
+    "proposer": {
+      "native_ns": 571007324884000,
+      "row": 7,
+      "selected_count": 0,
+      "stage": "PROPOSER_NATIVE_STEP"
+    },
+    "validator": null
+  },
+  "links": {
+    "caller-peer": "evidence/gcts-negative-memo-discovery-peer-20261017/typed-Source-review-v1.json",
+    "case": "evidence/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+    "case-contract": "evidence/gcts-negative-memo-discovery-source-20261017/Source-contract-v1.json",
+    "contract": "evidence/gcts-negative-memo-discovery-ROOT-source-20261017/Source-contract-v1.json",
+    "diagnostic": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-owned-v1/unknown-diagnostic.json",
+    "disposition": "evidence/gcts-negative-memo-discovery-ROOT-20261017/ROOT-disposition-v1.json",
+    "native": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/native-terminal.json",
+    "phases": "evidence/gcts-negative-memo-discovery-ROOT-20261017/CD-negative-memo-external-v1/meter-stderr.txt",
+    "plan": "evidence/gcts-negative-memo-discovery-ROOT-20261017/ROOT-plan-v1.json",
+    "previous": "../connected-family-discovery/evidence/gcts-connected-discovery-ROOT-20261017/ROOT-disposition-v1.json",
+    "reader-peer": "evidence/gcts-negative-memo-discovery-readout-peer-20261017/typed-Source-review-v1.json",
+    "recommendation": "evidence/gcts-connected-discovery-cost-analysis-source-20261017/recommendation-v1.json"
+  },
+  "native_launch_ns": 570987401416000,
+  "reader_intro": "The last recorded proposer and fallback arguments each had no selected cells. These observations are not a complete state, proof trajectory or memo result.",
+  "reader_title": "The retained entry arguments",
+  "result_text": "The original positive-result window expired before a complete discovery record returned. No connected capture or memo counters are accepted. The separate native failure closure passed. The retained callback entries do not establish current state, selection identities, complete trajectory, rollback or a cause of timeout. The unchanged attempt was not restarted.",
+  "result_title": "The memo attempt remains unresolved.",
+  "rows": [],
+  "run_details": {
+    "RL_accepted": false,
+    "actuals_executed_this_composition": 1,
+    "adversarial_memo_controls_executed": false,
+    "baseline_unchanged": "Separate engine13+ea300 assertion qualification remains10/12.",
+    "collector_family_pipeline_executed": false,
+    "comparison_scope": "Two unresolved endpoints at the same original20 limit. No equal verified proof/fragment outcome or hit counters; no matched-outcome speedup result.",
+    "complete_GCTS_model_accepted": false,
+    "complete_discovery_record_returned": false,
+    "connected_capture_accepted": false,
+    "current_input_count": 8,
+    "current_source_count": 16,
+    "failure_cause_established": false,
+    "latest_entries_are_active_failure_frame": false,
+    "memo_counters_returned": false,
+    "native_engine_and_mathematical_model_changed": false,
+    "new_theorems_claimed": 0,
+    "next": "Separately review substantive adapter-local reuse of all already checked tiles, preserving removed-candidate collision census and every native check. A later actual needs a new whole-composition grant.",
+    "original_authority_unchanged": true,
+    "original_semantic_input_count": 2,
+    "original_semantic_source_count": 17,
+    "speedup_claimed": false,
+    "unchanged_actual_restarted": false
+  },
+  "schema": "ROOT-negative-memo-discovery-public-projection-v1",
+  "status_text": "Unknown \u00b7 memo counters not returned \u00b7 failure diagnostics only",
+  "structural_memo": null
+}

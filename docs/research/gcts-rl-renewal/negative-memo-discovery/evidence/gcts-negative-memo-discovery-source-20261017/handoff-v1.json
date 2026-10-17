@@ -1,0 +1,66 @@
+{
+  "schema": "ROOT-negative-memo-discovery-case-handoff-v1",
+  "source": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+    "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3",
+    "bytes": 11668
+  },
+  "case_source": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/ROOT_connected_discovery_cases_v2.py",
+    "sha256": "7ae1222169c20336278f106cc7e5a716b4265a42d38931cb5e4edf2144ad25d3",
+    "bytes": 11668
+  },
+  "API_wire": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/API-wire-v1.json",
+    "sha256": "9b75cba8a7a0963999f622fd92486428733d84365fcea616937377deb050fd14",
+    "bytes": 2565
+  },
+  "source_contract": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-contract-v1.json",
+    "sha256": "ed80270e666c16a7228ce42c972c5d97357cf7e7f3edd22921441fe415909dc5",
+    "bytes": 16291
+  },
+  "source_delta": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/Source-delta-v1.json",
+    "sha256": "c7b4a5033e00bb27b72a429ad9147604ec83bb43a25b5695382a355a003b9b56",
+    "bytes": 7906
+  },
+  "static_audit": {
+    "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/static-audit-v1.json",
+    "sha256": "e3c3ec18ea973d93dae61ce856be3e7750ef6af08d1b029a4c4803ce1fba118c",
+    "bytes": 4051
+  },
+  "actual_patch_files": {
+    "forward": {
+      "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/forward-v1.patch",
+      "sha256": "f0b0cd46d87e4a0779e32fe8b37c10d01d2aea4821b608eeb2f931310665d59e",
+      "bytes": 6697
+    },
+    "full_inverse": {
+      "path": "/private/tmp/gcts-negative-memo-discovery-source-20261017/full-inverse-v1.patch",
+      "sha256": "40a39ac69f5e9001613ec132187dd781bf3af57b1df96138c8ebc0119c2d7a51",
+      "bytes": 6697
+    }
+  },
+  "parent_source": {
+    "path": "/private/tmp/gcts-connected-discovery-ROOT-source-20261017/ROOT_connected_discovery_cases_v1.py",
+    "sha256": "0e9b5a4d029c32853fa72032385f005d5773969ccb4044b119cd4194eb35261f",
+    "bytes": 6767
+  },
+  "helper_source": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/connected_prefix_observer_v2.py",
+    "sha256": "ddb4becf7b08d110d2cdd62ba4148d55b48f66e1b3ff5a209843006923af1338",
+    "bytes": 21076
+  },
+  "helper_contract": {
+    "path": "/private/tmp/gcts-connected-prefix-source-20261017/Source-contract-v2.json",
+    "sha256": "37ebc4654f6619de56c6b797b45318d9bdb63638c2c775cf7eb3f606016019d8",
+    "bytes": 8208
+  },
+  "author_identity": "/root/arithmetic_induction",
+  "source_only": true,
+  "scientific_calls": 0,
+  "runtime_fit": "UNMEASURED",
+  "actual_authorization": false,
+  "Root_action": "Whole current CASE/cold composition and distinct peer Source review before any actual. No failure counters/fit/qualification inferred; original Root clocks/limits/Source authority unchanged."
+}
