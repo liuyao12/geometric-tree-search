@@ -514,8 +514,23 @@
       "bytes": 3006,
       "href": "evidence/source-copies/receptor-family-patch-recovery-20261016/miner-typed-Source-review-v1.json",
       "sha256": "e4f03b1f4fd84150da5e9a0034adffc9e9e196a71c94e40b34679ad42f00fc04"
+    },
+    {
+      "bytes": 5794,
+      "href": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-qualification-disposition-v1.json",
+      "sha256": "d82cb1d5707cb07d3ea55a32414b15ffcd2feade26c365390858ef1d770a7599"
+    },
+    {
+      "bytes": 14422,
+      "href": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-router-protocol-disposition-v1.json",
+      "sha256": "608da42239af02ecdbcf871a6b27dae44ab51188cf54d3a07fea7f78a349c759"
+    },
+    {
+      "bytes": 8535,
+      "href": "evidence/unit-row-call-local-ROOT-20261016/MR-router-protocol-owned-v1/response.jsonl",
+      "sha256": "30f932fdd3563e4c025fb2237d47c7c3bd86f20cfd232bfdb1b8f2c7c8b10c31"
     }
   ],
   "schema": "ROOT-family-search-readiness-evidence-manifest-v1",
-  "scope": "Task-owned exact Source and native records plus encoded lossless positive archives. Expanded payloads retained locally; pending router response explicitly absent. No scientific replay."
+  "scope": "Exact task-owned Source, complete six endpoint dispositions and native evidence, and lossless positive archives. The router response archive has been retrieved and its full wire checked. Expanded payloads remain local. No semantic replay."
 }

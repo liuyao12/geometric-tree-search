@@ -1,0 +1,133 @@
+{
+  "GCTS_advantage_claimed": false,
+  "GCTS_search_trajectory_accepted": false,
+  "RL_accepted": false,
+  "ROOT_resource_accepted": false,
+  "all_six_endpoints_closed": true,
+  "bounded_routed_engine_controls_qualified": false,
+  "closure_helper": {
+    "bytes": 56511,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-qualification-saved-source-20261016/ROOT_close_call_local_qualification_saved_v1.py",
+    "sha256": "d54726357ac5e6addd21736026dec6bb2ca9db856023c433c1592e84ea5c22e4"
+  },
+  "combined20_suite_claimed": false,
+  "complete_GCTS_model_accepted": false,
+  "endpoint_dispositions": {
+    "child-UNKNOWN": {
+      "bytes": 14408,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/ROOT-MR-child-UNKNOWN-disposition-v1.json",
+      "sha256": "25c8b13e1bff589989cb0004b57455521c088752f680fdb5b49621d9ab5743f8"
+    },
+    "global-forced-dead": {
+      "bytes": 13638,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/ROOT-MR-global-forced-dead-disposition-v1.json",
+      "sha256": "bc91917660c9769c6cee7ae8aeaa06e054af3ee4352709d51cdb35dfe7befe20"
+    },
+    "router-protocol": {
+      "bytes": 14422,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/ROOT-MR-router-protocol-disposition-v1.json",
+      "sha256": "608da42239af02ecdbcf871a6b27dae44ab51188cf54d3a07fea7f78a349c759"
+    },
+    "short-EOF": {
+      "bytes": 14345,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/ROOT-MR-short-EOF-disposition-v1.json",
+      "sha256": "bb7e2f485599be0cf33700d4c424dc8a5c675c6e0129ee8d3d568cdfdd2c48bf"
+    },
+    "singleton-transfer": {
+      "bytes": 14491,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/ROOT-MR-singleton-transfer-disposition-v1.json",
+      "sha256": "405767349f2e9a39ca0bb27745c95145a398975577a05e8da50cf22c2224f277"
+    },
+    "two-transfer": {
+      "bytes": 14398,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/ROOT-MR-two-transfer-disposition-v1.json",
+      "sha256": "4e5bc857aae586450b1a12e544d06bd7cf5bbe212c2820e9f5147b0632fc881d"
+    }
+  },
+  "endpoint_summaries": {
+    "child-UNKNOWN": {
+      "aggregate_B_bytes": 50544640,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 4812240000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-child-UNKNOWN-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    "global-forced-dead": {
+      "aggregate_B_bytes": 50872320,
+      "complete_wire_verified": false,
+      "native_launch_to_postprobe_ns": 20113752000,
+      "native_resources_qualified": false,
+      "purpose": "unit-row-marked-aware-global-forced-dead-controls",
+      "qualified_case_count": 0,
+      "unqualified_case_count": 2
+    },
+    "router-protocol": {
+      "aggregate_B_bytes": 52805632,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 2949681000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-router-protocol-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    "short-EOF": {
+      "aggregate_B_bytes": 50380800,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 5376993000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-short-EOF-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    "singleton-transfer": {
+      "aggregate_B_bytes": 51019776,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 19000121000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-singleton-transfer-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    },
+    "two-transfer": {
+      "aggregate_B_bytes": 53985280,
+      "complete_wire_verified": true,
+      "native_launch_to_postprobe_ns": 18081130000,
+      "native_resources_qualified": true,
+      "purpose": "unit-row-marked-aware-two-transfer-controls",
+      "qualified_case_count": 2,
+      "unqualified_case_count": 0
+    }
+  },
+  "exact_point_board_accepted": false,
+  "failure_marking_activated": false,
+  "logical_proof_accepted": false,
+  "marking_id": "row0-marking-685128812f9dc75285cfe1447b882a4f109133ee82baf650726234a3a14d23ca",
+  "prior_StageC_suite_qualified": false,
+  "qualified_case_count": 10,
+  "qualified_cases": [
+    "MR-01-new-and-legacy-route-consumption",
+    "MR-02-wrong-route-and-context-rejected",
+    "MR-05-native-singleton-full-origin-transfer",
+    "MR-06-current-sole-consumption-and-owned-rollback",
+    "MR-07-native-TWO-full-origin-transfer",
+    "MR-08-refreshed-witnesses-global-branch-and-owned-rollback",
+    "MR-09-real-short-stream-and-fresh-complete-keySET",
+    "MR-10-legacy-implication-EOF-remains-unaccepted",
+    "MR-11-actual-child-native-first-declared-UNKNOWN",
+    "MR-12-UNKNOWN-no-exclusion-full-owned-rollback"
+  ],
+  "required_case_count": 12,
+  "routed_engine_qualification_accepted": false,
+  "same_process_all_twelve_qualified": false,
+  "schema": "ROOT-routed-engine-qualification-disposition-v1",
+  "scientific_replay": false,
+  "separate_endpoint_count": 6,
+  "target_search_performed": false,
+  "unqualified_case_count": 2,
+  "unqualified_cases": [
+    "MR-03-global-forced-requery-dead-exhaustion",
+    "MR-04-owned-full-root-restoration"
+  ]
+}

@@ -11,7 +11,7 @@
       "plan": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-global-forced-dead-plan-v1.json"
     },
     "router-protocol": {
-      "disposition": null,
+      "disposition": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-router-protocol-disposition-v1.json",
       "native": "evidence/unit-row-call-local-ROOT-20261016/MR-router-protocol-external-v1/native-terminal.json",
       "plan": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-router-protocol-plan-v1.json"
     },
@@ -45,12 +45,13 @@
     "family-engine": "evidence/receptor-family-search-consumer-source-20261016/receptor_family_search_engine_v3.py",
     "family-negative": "evidence/receptor-family-search-consumer-independent-source-20261016/typed-Source-review-v2.json",
     "family-review": "evidence/receptor-family-search-consumer-independent-source-20261016/typed-Source-review-v3.json",
+    "historical-partial-result": "evidence/unit-row-call-local-ROOT-20261016/ROOT-partial-qualification-readout-v1.json",
     "integration-plan": "evidence/source-copies/tmp/gcts-family-integration-gap-20261016.json",
     "miner-code": "evidence/receptor-family-miner-source-20261016/receptor_family_miner_v1.py",
     "miner-contract": "evidence/receptor-family-miner-source-20261016/Source-contract-v1.json",
     "miner-findings": "evidence/receptor-family-miner-independent-source-20261016/review-findings-v1.json",
     "miner-review": "evidence/source-copies/receptor-family-patch-recovery-20261016/miner-typed-Source-review-v1.json",
-    "partial-result": "evidence/unit-row-call-local-ROOT-20261016/ROOT-partial-qualification-readout-v1.json",
+    "partial-result": "evidence/unit-row-call-local-ROOT-20261016/ROOT-MR-qualification-disposition-v1.json",
     "saved-closer": "evidence/unit-row-call-local-qualification-saved-source-20261016/ROOT_close_call_local_qualification_saved_v1.py",
     "saved-contract": "evidence/source-copies/gcts-call-local-saved-contract-20261016/Source-contract-v1.json",
     "saved-decoder": "evidence/unit-row-call-local-qualification-saved-source-20261016/ROOT_decode_call_local_qualification_saved_v1.py",
@@ -60,15 +61,17 @@
   "qualification": {
     "GCTS_advantage_claimed": false,
     "RL_accepted": false,
-    "aggregate_saved_closer_not_run": true,
+    "aggregate_saved_closer_not_run": false,
     "all_actuals_terminal_reaped": true,
-    "archive_blocker": {
-      "bytes": 8535,
-      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/MR-router-protocol-owned-v1/response.jsonl",
-      "reason": "macOS cloud-dataless archive: read stalls. Decoded payload retained, but full saved wire closure is pending; no inferred case count or unchanged actual rerun."
-    },
+    "all_saved_closures_complete": true,
+    "archive_followup": "Archived response retrieved; full routing wire and all six saved dispositions checked. The prior partial readout is retained as historical evidence.",
     "complete_GCTS_model_accepted": false,
-    "confirmed_qualified_case_count": 8,
+    "confirmed_qualified_case_count": 10,
+    "current_aggregate": {
+      "bytes": 5794,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-call-local-ROOT-20261016/ROOT-MR-qualification-disposition-v1.json",
+      "sha256": "d82cb1d5707cb07d3ea55a32414b15ffcd2feade26c365390858ef1d770a7599"
+    },
     "endpoint_summaries": [
       {
         "exit_code": 0,
@@ -76,8 +79,8 @@
         "mode": "router-protocol",
         "native_ns": 2949681000,
         "peak_bytes": 52805632,
-        "qualified_cases": null,
-        "status": "archive-pending"
+        "qualified_cases": 2,
+        "status": "qualified"
       },
       {
         "exit_code": 2,
@@ -128,10 +131,12 @@
     "family_engine_qualified": false,
     "logical_proof_accepted": false,
     "new_theorem_accepted": false,
-    "pending_archive_case_count": 2,
+    "pending_archive_case_count": 0,
     "previous_8_of_12_not_inherited": true,
     "qualification_complete": false,
     "qualified_cases": [
+      "MR-01-new-and-legacy-route-consumption",
+      "MR-02-wrong-route-and-context-rejected",
       "MR-05-native-singleton-full-origin-transfer",
       "MR-06-current-sole-consumption-and-owned-rollback",
       "MR-07-native-TWO-full-origin-transfer",
@@ -143,7 +148,7 @@
     ],
     "required_case_count": 12,
     "routed_engine_qualification_accepted": false,
-    "schema": "ROOT-call-local-qualification-partial-readout-v1",
+    "schema": "ROOT-call-local-qualification-public-readout-v2",
     "scientific_actuals_once": 6,
     "scientific_replay": false,
     "source_contract": {
