@@ -1,0 +1,165 @@
+{
+  "actual_execution_authorized": false,
+  "author": "/root/hilbert_advice_controls",
+  "authority": {
+    "callback_return_to_engine_proved": false,
+    "current_state_accepted": false,
+    "failure_cause_established": false,
+    "native_limits_changed": false,
+    "new_actual_authorized": false,
+    "offers_accepted": false,
+    "proof_accepted": false,
+    "scientific_acceptance": false
+  },
+  "module_evaluations": 0,
+  "phases": {
+    "bounds_source": {
+      "bytes": 2622,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/phase-wire-bounds-v2.json",
+      "sha256": "9ce36bfbf9b8d882f1cfa8b13ec133d4d13323ee257426cc05f20bcfc256cd96"
+    },
+    "callback_groups": [
+      "P1_ENTER",
+      "P1_DELEGATE_RETURN",
+      "P1_CALLBACK_READY",
+      "P2_ENTER",
+      "P2_DELEGATE_RETURN",
+      "P2_CALLBACK_READY",
+      "C1_ENTER",
+      "C1_DELEGATE_RETURN",
+      "C1_CALLBACK_READY",
+      "C2_ENTER",
+      "C2_DELEGATE_RETURN",
+      "C2_CALLBACK_READY",
+      "C3_ENTER",
+      "C3_DELEGATE_RETURN",
+      "C3_CALLBACK_READY"
+    ],
+    "legacy": [
+      "BEFORE_PLAN_READ",
+      "BEFORE_CURRENT_SOURCE_READS",
+      "BEFORE_AUTHORITY_INPUT_READS",
+      "BEFORE_MODULE_LOAD",
+      "BEFORE_GUARD_CONSTRUCTION",
+      "BEFORE_STAGEB_PROVENANCE",
+      "BEFORE_MARKING_CHECK",
+      "BEFORE_POOL_READ",
+      "BEFORE_ENGINE",
+      "BEFORE_PROVIDER",
+      "AFTER_PROVIDER",
+      "AFTER_ENGINE",
+      "BEFORE_OUTPUT"
+    ],
+    "maximum_complete_lines": 30,
+    "maximum_line_bytes": 75,
+    "maximum_total_complete_bytes": 1913,
+    "order": "Retain original13 relative order. Actual pinned callback groups are synchronous and sequential: ENTER requires no active group; each group then DELEGATE_RETURN then CALLBACK_READY. Per-role entry ordinals increase; C2 may precede P2 or vice versa across recursive search selections, without an artificial flat label index. Old BEFORE_PROVIDER precedes P1_ENTER; old AFTER_PROVIDER lies after P1_DELEGATE_RETURN and before P1_CALLBACK_READY. SEARCH_RETURN may retain one unfinished group because engine catches TimeoutError (including subclasses); POSTSEARCH follows SEARCH_RETURN, then old AFTER_ENGINE/output. No missing stage is invented.",
+    "positive_join": "Require all outer setup/search/snapshot/output sites. Each full logged ordinal requires ENTER+DELEGATE_RETURN; each CALLBACK_READY requires its already appended observation. At most one incomplete/unlogged final callback prefix is allowed. Observation append can precede a failing READY phase.",
+    "prefix": "COMPONENT_INVENTORY_PHASE ",
+    "scope": "Exact pinned fresh-engine single-search maximum_nodes2 synchronous case only: provider<=2, consumer<=3; diagnostic caps omit observations beyond caps only, never algorithmic callbacks.",
+    "search": [
+      "SEARCH_RETURN_OBSERVED",
+      "POSTSEARCH_SNAPSHOT_READY"
+    ]
+  },
+  "reader": {
+    "callback_phase_parser": {
+      "bytes": 8542,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/phase_reader_v3.fragment.py",
+      "sha256": "e5d17e72b49a53874a2b78c40ed56ca2c0d81f5cd96aa8efaa85030218926568"
+    },
+    "counts": "Only full authenticated observations.provider_calls/consumer_calls supply actual logged record counts on a positive full return. Failure journal scalars never qualify cases or establish offers/branch/state/rollback.",
+    "failure_reader": {
+      "bytes": 9462,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/failure_reader_v2.fragment.py",
+      "sha256": "67980535a348a192bd468520c95945f99eebd71aa0e3620bfe512056710ea9da"
+    },
+    "integration": "Source candidate preserves parent CURRENT_CONTRACT/scope/response-version literals. Root must bind its own final current cold composition before any saved execution. Replace parser/constants/read_failure_diagnostic and affected positive main clause; all other main/native/wire logic remains raw exact.",
+    "partial_final_line": "A canonical known-marker prefix may remain only as final raw tail, never a completed stage. Malformed complete marker or complete marker after any stderr tail fails closed. No missing stage yields inferred completion or cause.",
+    "positive_main_replacement": {
+      "bytes": 59,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/positive_phase_validation_v2.fragment.py",
+      "sha256": "60edb461d42378996581391302dbdb135ed2ad68964b4939000fc3a82aefb5a8"
+    },
+    "source": {
+      "bytes": 33660,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "sha256": "5978c1343542ad7c7e1e5fbdb31dddb22e3b33d49e4654b8a743065d357ea256"
+    },
+    "timestamp_join": "Every phase nondecreasing, launch<=sample<=terminal<2**63, then common original20 context/positive-body check. Nonnull return slots require their matching DELEGATE_RETURN and sample>=that marker, <=CALLBACK_READY if reached, <=terminal and within original20."
+  },
+  "schema": "ROOT-callback-stage-diagnostic-seam-API-v3",
+  "scientific_calls": 0,
+  "source_only": true,
+  "supersedes": "V2 allowed impossible nested callback groups; preserved V2 Source/metadata remain immutable. V3 adds only one no-open-group ENTER guard.",
+  "writer": {
+    "bounds": {
+      "completion_file": 1024,
+      "context_raw": 65536,
+      "encoded_labels": 4096,
+      "encoded_legacy_slots": 4096,
+      "encoded_provider_returns": 8192,
+      "exact_wrapper": 68,
+      "existing_controls_V1_diagnostic": 16384,
+      "whole_V2_diagnostic": 81988
+    },
+    "capture": {
+      "counter_order": [
+        "planned_assignments",
+        "attempted_assignments",
+        "binding_attempts",
+        "ground_environment_proposals",
+        "distinct_environment_attempts",
+        "full_expansions",
+        "checked_expansions",
+        "preflight_checks",
+        "native_member_exclusions",
+        "native_adaptations",
+        "checked_instances",
+        "duplicate_instances",
+        "offered_instances",
+        "head_gate_calls",
+        "head_gate_receipts_returned",
+        "head_gate_conflicting_plans",
+        "head_gate_no_known_conflict",
+        "head_gate_unknown",
+        "head_gate_absent_head_passes",
+        "head_gate_downstream_assignments"
+      ],
+      "exact_outer_keys": [
+        "legacy",
+        "provider_returns"
+      ],
+      "legacy": "Exact existing four role slots; each null or builtin tuple(stage,row,selected_count,native_ns). Validator remains unwrapped/null in this Root caller.",
+      "provider_returns": "Exact builtin list length2; each slot null or exact seven-field builtin dict. Nonconforming capture leaves a slot null and must not change the scientific callback.",
+      "provider_slot_fields": {
+        "accounting": "Exact builtin dict with all20 fixed counters; every value exact int0..1000000, bool excluded",
+        "batch_status": "Literal returned builtin str length<=64; no semantic status acceptance",
+        "instance_count": "Literal returned builtin list length observed as exact int0..1, not accepted offers",
+        "native_ns": "Exact int, signed64, original began<=sample<began+20s",
+        "ordinal": "Exact int; slot index+1,1..2; bool excluded",
+        "provider_reason": "Literal returned builtin str length<=256, no normalization/truncation",
+        "provider_steps": "Literal returned exact int0..1000000, not independently qualified work"
+      }
+    },
+    "diagnostic_outer_keys": [
+      "context",
+      "diagnostic",
+      "last_observations",
+      "provider_returns"
+    ],
+    "failure_kind": "CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2",
+    "integration": "Root replaces exactly save_failure_diagnostic in __main__ with this FunctionDef; it is not imported as a new module. Signature/defaults/native endpoints unchanged. Root retains original call/invoke/finally and captured late-writer code/default/kwvalue identity checks.",
+    "nullability": "Either/both return slots may be null. A fully written DELEGATE_RETURN may be followed by a failing phase post-tick before capture; that marker never requires a summary.",
+    "schemas": {
+      "completion": "unit-row-controls-provider-returns-completion-v2",
+      "diagnostic": "unit-row-controls-provider-returns-diagnostic-v2"
+    },
+    "scope": "Best effort builtin-only raw failure data under existing failure55 and internal500MiB; no original20 tick/project/model/CodeSeal helper after deadline. A missing/incomplete pair remains unaccepted. Old controls-kind branch is raw exact; generic returned-prefix branch retained.",
+    "source": {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    }
+  }
+}

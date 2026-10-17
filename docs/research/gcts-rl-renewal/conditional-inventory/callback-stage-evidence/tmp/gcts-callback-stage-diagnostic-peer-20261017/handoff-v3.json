@@ -1,0 +1,50 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 6261,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/findings-v3.json",
+    "sha256": "9056859525f8137f838b6f99ecad0d3ba6005f844f922db985186fa929b1d7f6"
+  },
+  "pass": true,
+  "preserved_v2_negative": {
+    "bytes": 2120,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "fd13d77f54cc31317eac1021fa9ef7bd3ac2cea1acde8034d9ba68789253bbc4"
+  },
+  "review": {
+    "bytes": 3500,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v3.json",
+    "sha256": "976ba708551c40b8e78d57c68d791b2a84d29b4c50adad409cd0353c9e63594a"
+  },
+  "schema": "ROOT-callback-stage-diagnostic-seam-independent-handoff-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15021,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+    "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+  },
+  "source_contract": {
+    "bytes": 13042,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v3.json",
+    "sha256": "20372a1d3a5abe9945337b7594db14dbdfcc8ff91390ddd76a92a8550539524c"
+  },
+  "source_only": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 33660,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "sha256": "5978c1343542ad7c7e1e5fbdb31dddb22e3b33d49e4654b8a743065d357ea256"
+    },
+    "writer_replacement": {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    }
+  },
+  "static_review": {
+    "bytes": 14428,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/static-review-v3.json",
+    "sha256": "93fb2863fb09d97da938309f431aef04f0772cac735aba9ddf3fc20276d5b705"
+  }
+}

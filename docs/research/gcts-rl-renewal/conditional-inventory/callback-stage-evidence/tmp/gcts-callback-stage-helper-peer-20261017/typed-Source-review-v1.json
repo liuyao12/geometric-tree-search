@@ -1,0 +1,60 @@
+{
+  "API": {
+    "bytes": 4741,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/API-wire-v1.json",
+    "sha256": "f6c87a9282d84a3b9c00d7c897766c998bdb8ea33c256bd0ba293354b94b0665"
+  },
+  "actual_execution_authorized": false,
+  "actual_results_or_clocks_read": false,
+  "all7_unchanged_named_regions_raw_AST_exact": true,
+  "author_identity": "/root/arithmetic_induction",
+  "authorship_overlap": "Own engine7/checker4358/markedverifier9fd/nonimp8f/point ancestry and diagnostic theory/erratum; did not author helper or Root parent. Shared schemas/native primitives and coordinated ABI disclosed.",
+  "blocking_findings": [],
+  "findings": {
+    "bytes": 4845,
+    "path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/findings-v1.json",
+    "sha256": "889e19c11b7eb9403e9f962077b6009a008607ba29b9b42db52d52a49345e057"
+  },
+  "full12_raw_AST_inverse_and_actual_both_patches_exact": true,
+  "pass": true,
+  "reviewed_handoff": {
+    "bytes": 2990,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/handoff-v1.json",
+    "sha256": "da5ed193edfedd630a69dcc159c11d2dcfb0c5720e2bc69d2c7340221dbf0551"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "ROOT-callback-stage-receiver-cases-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_calls_compounds_assertions_returns_retained": true,
+  "scope": "ROOT-callback-stage-receiver-cases-Source",
+  "scope_condition": "Exact current synchronous pinned2-node Root case, conditional on separate pure Root scalar-capture/phase/native/CodeSeal/writer/reader integration. Diagnostic sites change charged cost/error prefixes; no scientific protocol/model change, timing/availability/performance/active-frame/cause or runtime acceptance.",
+  "source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "source_contract": {
+    "bytes": 5288,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-contract-v1.json",
+    "sha256": "555dd0cc08ead397e3d670674001b10d4e8fded1608b7ad28c7489a048fef6ce"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "receiver_cases": {
+      "bytes": 8772,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+    }
+  },
+  "static_review": {
+    "bytes": 7645,
+    "path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/static-review-v1.json",
+    "sha256": "3b45f239bf048131209a67c0d97c38eb36a4c479302e2098db120ba44743e992"
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "whole_source_API_contract_parent_and_control_flow_read": true
+}

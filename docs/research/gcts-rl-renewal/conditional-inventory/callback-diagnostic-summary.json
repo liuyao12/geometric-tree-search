@@ -1,0 +1,167 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "actual_family_placements": null,
+  "all_native_handles_terminal": true,
+  "changed_sources": [
+    "intake",
+    "receiver_cases"
+  ],
+  "complete_failure_pair": true,
+  "disposition": {
+    "bytes": 14756,
+    "path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+    "sha256": "ab7799486e7cef0d45d586918fc025d81dc53726ce1821b9b1e00e150fc1784a"
+  },
+  "engine_counters": null,
+  "failure_cause_established": false,
+  "full_receiver_record": false,
+  "last_complete_stage": {
+    "native_ns": 603133725334000,
+    "seconds_after_native_launch": 5.597546,
+    "stage": "C1_CALLBACK_READY"
+  },
+  "literal_provider_reported_instances": 1,
+  "native_positive_result_qualified": false,
+  "native_seconds": 20.16288,
+  "new_theorem_accepted": false,
+  "peak_MiB": 113.015625,
+  "peak_bytes": 118505472,
+  "phase_observations": [
+    {
+      "native_ns": 603128199527000,
+      "seconds_after_native_launch": 0.071739,
+      "stage": "BEFORE_PLAN_READ"
+    },
+    {
+      "native_ns": 603128199904000,
+      "seconds_after_native_launch": 0.072116,
+      "stage": "BEFORE_CURRENT_SOURCE_READS"
+    },
+    {
+      "native_ns": 603128201573000,
+      "seconds_after_native_launch": 0.073785,
+      "stage": "BEFORE_AUTHORITY_INPUT_READS"
+    },
+    {
+      "native_ns": 603128208848000,
+      "seconds_after_native_launch": 0.08106,
+      "stage": "BEFORE_MODULE_LOAD"
+    },
+    {
+      "native_ns": 603128257204000,
+      "seconds_after_native_launch": 0.129416,
+      "stage": "BEFORE_GUARD_CONSTRUCTION"
+    },
+    {
+      "native_ns": 603128272014000,
+      "seconds_after_native_launch": 0.144226,
+      "stage": "BEFORE_STAGEB_PROVENANCE"
+    },
+    {
+      "native_ns": 603128309895000,
+      "seconds_after_native_launch": 0.182107,
+      "stage": "BEFORE_MARKING_CHECK"
+    },
+    {
+      "native_ns": 603128337652000,
+      "seconds_after_native_launch": 0.209864,
+      "stage": "BEFORE_POOL_READ"
+    },
+    {
+      "native_ns": 603128499082000,
+      "seconds_after_native_launch": 0.371294,
+      "stage": "BEFORE_ENGINE"
+    },
+    {
+      "native_ns": 603132644810000,
+      "seconds_after_native_launch": 4.517022,
+      "stage": "BEFORE_PROVIDER"
+    },
+    {
+      "native_ns": 603132645153000,
+      "seconds_after_native_launch": 4.517365,
+      "stage": "P1_ENTER"
+    },
+    {
+      "native_ns": 603133262320000,
+      "seconds_after_native_launch": 5.134532,
+      "stage": "P1_DELEGATE_RETURN"
+    },
+    {
+      "native_ns": 603133390256000,
+      "seconds_after_native_launch": 5.262468,
+      "stage": "AFTER_PROVIDER"
+    },
+    {
+      "native_ns": 603133405799000,
+      "seconds_after_native_launch": 5.278011,
+      "stage": "P1_CALLBACK_READY"
+    },
+    {
+      "native_ns": 603133507224000,
+      "seconds_after_native_launch": 5.379436,
+      "stage": "C1_ENTER"
+    },
+    {
+      "native_ns": 603133722064000,
+      "seconds_after_native_launch": 5.594276,
+      "stage": "C1_DELEGATE_RETURN"
+    },
+    {
+      "native_ns": 603133725334000,
+      "seconds_after_native_launch": 5.597546,
+      "stage": "C1_CALLBACK_READY"
+    }
+  ],
+  "plan": {
+    "bytes": 10862,
+    "path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-plan-v1.json",
+    "sha256": "7c0dfbfffc71b36b39a251906adeefe6adc6815db68c90d75fc58db106caa611"
+  },
+  "provider_returns_unvalidated": [
+    {
+      "accounting": {
+        "attempted_assignments": 17,
+        "binding_attempts": 21,
+        "checked_expansions": 6,
+        "checked_instances": 1,
+        "distinct_environment_attempts": 6,
+        "duplicate_instances": 0,
+        "full_expansions": 6,
+        "ground_environment_proposals": 6,
+        "head_gate_absent_head_passes": 1,
+        "head_gate_calls": 17,
+        "head_gate_conflicting_plans": 2,
+        "head_gate_downstream_assignments": 15,
+        "head_gate_no_known_conflict": 15,
+        "head_gate_receipts_returned": 17,
+        "head_gate_unknown": 0,
+        "native_adaptations": 1,
+        "native_member_exclusions": 5,
+        "offered_instances": 1,
+        "planned_assignments": 30,
+        "preflight_checks": 6
+      },
+      "batch_status": "READY",
+      "instance_count": 1,
+      "native_ns": 603133262352000,
+      "ordinal": 1,
+      "provider_reason": "OWN_COMPLETED_INSTANCE_PREFIX",
+      "provider_steps": 427597
+    },
+    null
+  ],
+  "qualified_family_offers": null,
+  "root_restoration": null,
+  "same_limits_and_inputs": true,
+  "same_original_mathematics_and_scientific_dependencies": true,
+  "schema": "ROOT-callback-stage-diagnostic-summary-v1",
+  "scientific_actuals": 1,
+  "scientific_replay": false,
+  "scope": "One separately declared instrumented inference attempt; literal returned scalars only, no scientific replay or qualified offer/transfer/proof.",
+  "second_provider_summary_absent_is_not_zero_calls": true,
+  "source_current_parameter_bindings": null,
+  "unchanged_actual_restarted": false,
+  "useful_transfer_accepted": false
+}

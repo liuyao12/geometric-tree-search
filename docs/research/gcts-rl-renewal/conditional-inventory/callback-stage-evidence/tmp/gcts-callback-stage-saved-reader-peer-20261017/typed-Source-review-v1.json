@@ -1,0 +1,82 @@
+{
+  "actual_execution_authorized": false,
+  "actual_or_result_bytes_read": false,
+  "all6_actual_F0_patch_directions_exact": true,
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored helper150e5, gate7595, observed producerfd3e/residual2925 and older kernel/engine/miner/provider ancestry; reviewed parentRoot readerc09c. Root authored current authority rebinding; Controls authored5978 V3 parser/writer/readout template, independently reviewed by Diagnosis976b. This is distinct review of Root saved-reader composition, not independent self-review of helper/math or whole current cold caller; Diagnosis reviews the caller separately.",
+  "blocking_findings": [],
+  "clocks_read": false,
+  "conditions": [
+    "Whole current cold/helper/writer composition and actual grant remain Root/Diagnosis responsibilities; this record is saved-reader Source scope only.",
+    "No reader/helper/model replay, actual result or clock was executed/read during this Source review.",
+    "Failure scalars/phase markers do not establish valid offers/state/return-to-engine/viability/restoration/theorem/cause/performance; all native/wire gates remain mandatory."
+  ],
+  "current_operative_contract": {
+    "bytes": 21574,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d"
+  },
+  "disposition": "CONDITIONAL_SOURCE_PASS",
+  "distinct_template_seam_peer": {
+    "bytes": 3500,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v3.json",
+    "sha256": "976ba708551c40b8e78d57c68d791b2a84d29b4c50adad409cd0353c9e63594a"
+  },
+  "exact_template2_and_parent20_raw_AST_inverses": true,
+  "findings": {
+    "bytes": 4565,
+    "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/findings-v1.json",
+    "sha256": "c20f48a2f6cf40dc7b4219c1f7e9c3a719f4af8e44ebeb9aa50fbd713f61c93f"
+  },
+  "reader_or_project_module_evaluated": false,
+  "reviewed_source_contracts": [
+    {
+      "bytes": 1040,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "948f563c78480a329963679df061d7f7db1c0dece7080873ad0aa0881a503999"
+    },
+    {
+      "bytes": 21574,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d"
+    },
+    {
+      "bytes": 13042,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v3.json",
+      "sha256": "20372a1d3a5abe9945337b7594db14dbdfcc8ff91390ddd76a92a8550539524c"
+    }
+  ],
+  "reviewer_distinct_from_author": true,
+  "reviewer_identity": "/root/arithmetic_induction",
+  "runtime_qualified": false,
+  "schema": "ROOT-receiver-inference-saved-reader-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-receiver-inference-saved-reader-Source",
+  "source": {
+    "bytes": 33669,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+    "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+  },
+  "source_contract": {
+    "bytes": 1040,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "948f563c78480a329963679df061d7f7db1c0dece7080873ad0aa0881a503999"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "saved_reader": {
+      "bytes": 33669,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+      "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+    }
+  },
+  "static_audit": {
+    "bytes": 12310,
+    "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/static-audit-v1.json",
+    "sha256": "1de464a3599d3dd4abc3bd648045110d27f42bb62f4c78359a155703404795e6"
+  },
+  "whole_cold_caller_review_claimed": false,
+  "whole_current_reader_runtime_closure_and_raw_Source_seams_read": true
+}

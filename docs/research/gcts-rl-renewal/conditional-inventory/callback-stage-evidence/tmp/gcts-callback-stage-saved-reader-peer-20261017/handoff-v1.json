@@ -1,0 +1,37 @@
+{
+  "actual_execution_authorized": false,
+  "blocking_findings": [],
+  "current_operative_contract": {
+    "bytes": 21574,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d"
+  },
+  "findings": {
+    "bytes": 4565,
+    "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/findings-v1.json",
+    "sha256": "c20f48a2f6cf40dc7b4219c1f7e9c3a719f4af8e44ebeb9aa50fbd713f61c93f"
+  },
+  "review": {
+    "bytes": 4144,
+    "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "daf7204890ae3eb239001d52599d37cdce97f073d127142f75138eb73c224976"
+  },
+  "schema": "ROOT-callback-stage-saved-reader-peer-handoff-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 33669,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+    "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+  },
+  "source_contract": {
+    "bytes": 1040,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "948f563c78480a329963679df061d7f7db1c0dece7080873ad0aa0881a503999"
+  },
+  "source_only": true,
+  "static_audit": {
+    "bytes": 12310,
+    "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/static-audit-v1.json",
+    "sha256": "1de464a3599d3dd4abc3bd648045110d27f42bb62f4c78359a155703404795e6"
+  }
+}

@@ -1,0 +1,1204 @@
+{
+  "GCTS_advantage_claimed": false,
+  "RL_accepted": false,
+  "bytes": 1497670,
+  "current_executable_inputs": {
+    "declaration": {
+      "bytes": 2925,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    "frozen_inventory": {
+      "bytes": 3433689,
+      "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38"
+    },
+    "inventory_acceptance": {
+      "bytes": 2723,
+      "path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json",
+      "sha256": "4ef4ebdcd431a284f73ded43caf1957b819d1ddd4e3180e212a619e3b736d817"
+    },
+    "profile": {
+      "bytes": 8773,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    "stageB_disposition": {
+      "bytes": 4574,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json",
+      "sha256": "ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e"
+    },
+    "stageB_encoded": {
+      "bytes": 162591,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json",
+      "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca"
+    },
+    "stageB_expanded": {
+      "bytes": 1926833,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json",
+      "sha256": "bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93"
+    },
+    "stageB_plan": {
+      "bytes": 7924,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json",
+      "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009"
+    },
+    "stageB_response": {
+      "bytes": 7572,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl",
+      "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e"
+    },
+    "stageB_transport": {
+      "bytes": 1502,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json",
+      "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b"
+    }
+  },
+  "current_executable_sources": {
+    "clean_support": {
+      "bytes": 48584,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    "decorator": {
+      "bytes": 12619,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895"
+    },
+    "degree_checker": {
+      "bytes": 27553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "degree_router": {
+      "bytes": 12779,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    },
+    "expansion_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "fallback": {
+      "bytes": 24227,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    "family_consumer": {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    },
+    "family_engine": {
+      "bytes": 92154,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+    },
+    "head_gate": {
+      "bytes": 15276,
+      "path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+    },
+    "host_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "intake": {
+      "bytes": 66670,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+      "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91"
+    },
+    "kernel": {
+      "bytes": 10323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    "marked_adapter": {
+      "bytes": 31038,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    },
+    "marked_aware_checker": {
+      "bytes": 25783,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188"
+    },
+    "marked_aware_proposer": {
+      "bytes": 14064,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d"
+    },
+    "marked_verifier": {
+      "bytes": 18475,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a"
+    },
+    "membership": {
+      "bytes": 20112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    "producer": {
+      "bytes": 60281,
+      "path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+    },
+    "proposer": {
+      "bytes": 22030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    "receiver_cases": {
+      "bytes": 8772,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+    },
+    "receiver_provider": {
+      "bytes": 60912,
+      "path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0"
+    },
+    "residual_policy": {
+      "bytes": 12826,
+      "path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+      "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479"
+    }
+  },
+  "current_raw_dependencies": [
+    {
+      "bytes": 48584,
+      "path": "receiver-evidence/project/gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py"
+    },
+    {
+      "bytes": 46514,
+      "path": "receiver-evidence/project/gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py"
+    },
+    {
+      "bytes": 10323,
+      "path": "receiver-evidence/project/gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py"
+    },
+    {
+      "bytes": 2925,
+      "path": "receiver-evidence/project/gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json"
+    },
+    {
+      "bytes": 8773,
+      "path": "receiver-evidence/project/gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json"
+    },
+    {
+      "bytes": 20112,
+      "path": "receiver-evidence/project/gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py"
+    },
+    {
+      "bytes": 10201,
+      "path": "receiver-evidence/project/gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py"
+    },
+    {
+      "bytes": 5528,
+      "path": "receiver-evidence/project/gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py"
+    },
+    {
+      "bytes": 24227,
+      "path": "receiver-evidence/project/gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py"
+    },
+    {
+      "bytes": 12619,
+      "path": "receiver-evidence/project/gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py",
+      "sha256": "fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py"
+    },
+    {
+      "bytes": 56207,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py",
+      "sha256": "fbd1455fbcb090045ae2a6ad151e4a5ae41d01e1549be135e8b8d7b64f597476",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/lazy_unit_row_global_engine_v11.py"
+    },
+    {
+      "bytes": 28980,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py",
+      "sha256": "821fe692dc7a118cdc3355d3128ecdf08287abf229365b97a04341e0dc4cb7f9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-engine-source-20261016/marked_unit_row_adapter_v1.py"
+    },
+    {
+      "bytes": 5803,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-disposition-v1.json",
+      "sha256": "79edfc98d428edbe89e564cb6bb98e0f89fc7ee004335d15c4d55cd33e5d949e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-disposition-v1.json"
+    },
+    {
+      "bytes": 1031675,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-expanded-result-v1.json",
+      "sha256": "82fe3136954b74a945b891f224632174ee82eb41090477cb3976a8dc727a58f8",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-expanded-result-v1.json"
+    },
+    {
+      "bytes": 7866,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-plan-v1.json",
+      "sha256": "cca9f6f918436fe7e02374775462c86c66445f16703941b4d803437f113b4664",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-plan-v1.json"
+    },
+    {
+      "bytes": 1479,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-transport-concordance-v1.json",
+      "sha256": "c94cc2516c9817215fdb516e6b7c64913e25fabdea16aacff5b56f7bcd4ac87f",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/ROOT-stageA-transport-concordance-v1.json"
+    },
+    {
+      "bytes": 76302,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/engine-result.json",
+      "sha256": "bbfe3f3f87bead3f90f23e9ab2cb801f3fa6d5c2cd88bccc9506c88cf49be891",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 7541,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/response.jsonl",
+      "sha256": "3e0951b1a5a37152579ee69db0effc4f255d78767f1f7b5fed3868f7156df3a5",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-qualification-ROOT-20261016/stageA-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 5985,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-cold-independent-source-20261016/typed-Source-review-v1.json",
+      "sha256": "3eff4bd0cb8534e47c18b7587324d6f08d94040893d70ab01790cbfac1e764c9",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-independent-source-20261016/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 31660,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-cold-source-20261016/Source-contract-v1.json",
+      "sha256": "b621e8776b81228510615ed7c36de103162e6460be3ac410aaad323ea6f1c851",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/Source-contract-v1.json"
+    },
+    {
+      "bytes": 66733,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-cold-source-20261016/channel4_stageB_cold_v1.py",
+      "sha256": "f2c7a08fb57973e707c6a694a2dbc6a45945b8758c1b3d57408828da28395d1d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-cold-source-20261016/channel4_stageB_cold_v1.py"
+    },
+    {
+      "bytes": 8664,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-authorization-v1.json",
+      "sha256": "43931003a41636485b0a83e5ffef326d5025b9c587ad6476d4c226da2b08f335",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-authorization-v1.json"
+    },
+    {
+      "bytes": 6862,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-caller-Source-review-v1.json",
+      "sha256": "a85123a1560ecc03771e0a43ce477e3018cc319ee050df5c9ec2c85cf669cf64",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-caller-Source-review-v1.json"
+    },
+    {
+      "bytes": 4574,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json",
+      "sha256": "ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json"
+    },
+    {
+      "bytes": 1926833,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json",
+      "sha256": "bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json"
+    },
+    {
+      "bytes": 7924,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json",
+      "sha256": "7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json"
+    },
+    {
+      "bytes": 1502,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json",
+      "sha256": "8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json"
+    },
+    {
+      "bytes": 162591,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json",
+      "sha256": "3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json"
+    },
+    {
+      "bytes": 7572,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl",
+      "sha256": "8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl"
+    },
+    {
+      "bytes": 18475,
+      "path": "receiver-evidence/project/gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py",
+      "sha256": "9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py"
+    },
+    {
+      "bytes": 26007,
+      "path": "receiver-evidence/project/gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py"
+    },
+    {
+      "bytes": 16299,
+      "path": "receiver-evidence/project/gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py"
+    },
+    {
+      "bytes": 25783,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py",
+      "sha256": "8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py"
+    },
+    {
+      "bytes": 14064,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py",
+      "sha256": "4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py"
+    },
+    {
+      "bytes": 12779,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py"
+    },
+    {
+      "bytes": 55852,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py"
+    },
+    {
+      "bytes": 31931,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py"
+    },
+    {
+      "bytes": 55152,
+      "path": "receiver-evidence/project/gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py"
+    },
+    {
+      "bytes": 27553,
+      "path": "receiver-evidence/project/gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py"
+    },
+    {
+      "bytes": 22030,
+      "path": "receiver-evidence/project/gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py"
+    },
+    {
+      "bytes": 25338,
+      "path": "receiver-evidence/project/gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py"
+    },
+    {
+      "bytes": 8134,
+      "path": "receiver-evidence/project/gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py"
+    },
+    {
+      "bytes": 130156,
+      "path": "receiver-evidence/project/gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3",
+      "source_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py"
+    },
+    {
+      "bytes": 66670,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-peer-20261017/caller-forward-patch-copy.py",
+      "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py"
+    },
+    {
+      "bytes": 8772,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/forward-source-copy.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py"
+    },
+    {
+      "bytes": 15276,
+      "path": "receiver-evidence/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738",
+      "source_path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py"
+    },
+    {
+      "bytes": 56670,
+      "path": "receiver-evidence/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1",
+      "source_path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py"
+    },
+    {
+      "bytes": 13040,
+      "path": "receiver-evidence/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874",
+      "source_path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py"
+    },
+    {
+      "bytes": 25205,
+      "path": "receiver-evidence/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9",
+      "source_path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py"
+    },
+    {
+      "bytes": 92154,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e",
+      "source_path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py"
+    },
+    {
+      "bytes": 60912,
+      "path": "head-filter-evidence/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py",
+      "sha256": "fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0",
+      "source_path": "/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py"
+    },
+    {
+      "bytes": 31038,
+      "path": "receiver-evidence/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24",
+      "source_path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py"
+    },
+    {
+      "bytes": 3433689,
+      "path": "receiver-evidence/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json"
+    },
+    {
+      "bytes": 2723,
+      "path": "receiver-evidence/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json",
+      "sha256": "4ef4ebdcd431a284f73ded43caf1957b819d1ddd4e3180e212a619e3b736d817",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json"
+    },
+    {
+      "bytes": 28106,
+      "path": "receiver-evidence/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json",
+      "sha256": "7a004471e92930a769aa00a983269cf9a6dd1a42bddfb638978791db45cc6985",
+      "source_path": "/private/tmp/gcts-native-productive-inventory-work4m-ROOT-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 60281,
+      "path": "receiver-evidence/tmp/gcts-observed-subset-expander-peer-20261017/raw-patch-forward.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18",
+      "source_path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py"
+    },
+    {
+      "bytes": 12826,
+      "path": "receiver-evidence/tmp/gcts-residual-binding-prefix-peer-20261017/raw-forward.py",
+      "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479",
+      "source_path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 5042,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT-callback-diagnostic-summary-v1.json",
+      "sha256": "9d681aff263b4a66570c8abab88fcdc426db8eb89f2bc1b75ee8269024e4a2a9",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT-callback-diagnostic-summary-v1.json"
+    },
+    {
+      "bytes": 16094,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT-direct-byte-preflight-v1.json",
+      "sha256": "721a0fab44644ecacfca57e6d2bbdffa3dcd34f92a3d6dc17095afc4b535734e",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT-direct-byte-preflight-v1.json"
+    },
+    {
+      "bytes": 47432,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "81920a4282aa49fa0d3012e6bcd716afb8a5c42c296a847b56eae73a859b20a0",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json"
+    },
+    {
+      "bytes": 4357,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_external_once_v1.py"
+    },
+    {
+      "bytes": 33669,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+      "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py"
+    },
+    {
+      "bytes": 22366,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py.forward.patch",
+      "sha256": "bf1d032ae73c01b25915098fb82f20602eb96d51c1353abd229ed3fe0ebc4703",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py.forward.patch"
+    },
+    {
+      "bytes": 22366,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py.inverse.patch",
+      "sha256": "d00dbda4020518d04ff588515b28777ca26d80b67ee3f0c19a680b6b47542258",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py.inverse.patch"
+    },
+    {
+      "bytes": 21574,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 7675,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/build_source_v1.py",
+      "sha256": "de8d6f3f7051a7d69710f72ee1182dc6874d95949d0aca781f382605e4efe079",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/build_source_v1.py"
+    },
+    {
+      "bytes": 66670,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+      "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py"
+    },
+    {
+      "bytes": 27053,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py.forward.patch",
+      "sha256": "61bf6635f5319094703420965083e3adacd51284ffcc462436ea1cdff13902c8",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py.forward.patch"
+    },
+    {
+      "bytes": 27053,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py.inverse.patch",
+      "sha256": "4370d420bc1339dfbd7b2ea911a2b7f5d92360202c55cc0a6192199e36cbbf8b",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py.inverse.patch"
+    },
+    {
+      "bytes": 2841,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/capture_provider_summary.fragment.py",
+      "sha256": "25a560802d724fdd5280d29cbeb5ea68285b26618ec64d8a2f50d8ee6f5ffd88",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/capture_provider_summary.fragment.py"
+    },
+    {
+      "bytes": 1491,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/direct_byte_preflight_v1.py",
+      "sha256": "e3638365ee066e81420750350417676cc01e9aaa5f00fa5171937f1808547044",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/direct_byte_preflight_v1.py"
+    },
+    {
+      "bytes": 14681,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/handoff-v1.json",
+      "sha256": "a0f81b29c2963b7ed75a6f19be4ffe4468973c984ba3d12d41e793909d4abcc5",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 3006,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/parallel-plan.fragment.html",
+      "sha256": "eaf190396fdf28ce537321f1518a9df9cecdac1283bddf7878bd8fc1f3360d0f",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/parallel-plan.fragment.html"
+    },
+    {
+      "bytes": 6470,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/prepare_actual_metadata_v1.py",
+      "sha256": "eacd54d92396bc43410bb1ce79e0405c381f5aa5f6f861b85a6918874771e464",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/prepare_actual_metadata_v1.py"
+    },
+    {
+      "bytes": 33669,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_callback_stage_receiver_saved_v1.py/forward/source.py",
+      "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_callback_stage_receiver_saved_v1.py/forward/source.py"
+    },
+    {
+      "bytes": 21797,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_callback_stage_receiver_saved_v1.py/inverse/source.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/raw-patch-audit-v1/ROOT_read_callback_stage_receiver_saved_v1.py/inverse/source.py"
+    },
+    {
+      "bytes": 66670,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/raw-patch-audit-v1/callback_stage_receiver_cold_v1.py/forward/source.py",
+      "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/raw-patch-audit-v1/callback_stage_receiver_cold_v1.py/forward/source.py"
+    },
+    {
+      "bytes": 57736,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/raw-patch-audit-v1/callback_stage_receiver_cold_v1.py/inverse/source.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/raw-patch-audit-v1/callback_stage_receiver_cold_v1.py/inverse/source.py"
+    },
+    {
+      "bytes": 1040,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-source-20261017/reader-Source-contract-v1.json",
+      "sha256": "948f563c78480a329963679df061d7f7db1c0dece7080873ad0aa0881a503999",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/reader-Source-contract-v1.json"
+    },
+    {
+      "bytes": 8722,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-peer-20261017/audit_source_v1.py",
+      "sha256": "91e8a47459ebdae998722ca99a33129c63b5fb7ad0e37bd479285bdfadcb1427",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/audit_source_v1.py"
+    },
+    {
+      "bytes": 66670,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-peer-20261017/caller-forward-patch-copy.py",
+      "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/caller-forward-patch-copy.py"
+    },
+    {
+      "bytes": 57736,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-peer-20261017/caller-inverse-patch-copy.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/caller-inverse-patch-copy.py"
+    },
+    {
+      "bytes": 5759,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-peer-20261017/findings-v1.json",
+      "sha256": "760dade2f45ae381017832bfdab084032e9699e5ff27e453ac63da6c49af961b",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 1325,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-peer-20261017/handoff-v1.json",
+      "sha256": "a3e8c903b62f0f799a9a289eba11a421fa2f1e2467f1a34fb74353e8ac13d147",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 7599,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-peer-20261017/static-review-v1.json",
+      "sha256": "958a0f67da807240642691b58550d9d62f5f23b93aeb648f288154d334355f5a",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/static-review-v1.json"
+    },
+    {
+      "bytes": 9081,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-ROOT-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "835f8d3877f40ff7bdfec1943d3744054dceee9a494d64ea129d149e4be90130",
+      "source_path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 4741,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/API-wire-v1.json",
+      "sha256": "f6c87a9282d84a3b9c00d7c897766c998bdb8ea33c256bd0ba293354b94b0665",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/API-wire-v1.json"
+    },
+    {
+      "bytes": 5288,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/Source-contract-v1.json",
+      "sha256": "555dd0cc08ead397e3d670674001b10d4e8fded1608b7ad28c7489a048fef6ce",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-contract-v1.json"
+    },
+    {
+      "bytes": 4570,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/Source-delta-v1.json",
+      "sha256": "234e291b71e671e9dd2e466cefe0b0776c63ad451a0de3c6832b62d341e87d3e",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-delta-v1.json"
+    },
+    {
+      "bytes": 8772,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py"
+    },
+    {
+      "bytes": 8772,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/forward-source-copy.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/forward-source-copy.py"
+    },
+    {
+      "bytes": 4291,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/forward.patch",
+      "sha256": "bc064b35b68846a257447e8f97fe30fde4084129bbb709b928e5191e6c4a8b58",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/forward.patch"
+    },
+    {
+      "bytes": 2990,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/handoff-v1.json",
+      "sha256": "da5ed193edfedd630a69dcc159c11d2dcfb0c5720e2bc69d2c7340221dbf0551",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 7899,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/inverse-source-copy.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/inverse-source-copy.py"
+    },
+    {
+      "bytes": 4291,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/inverse.patch",
+      "sha256": "f93d7a76c4e9e8418e74030b7a34ae663c52a9b350d39aa5ebf99063b0e9a14a",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/inverse.patch"
+    },
+    {
+      "bytes": 1835,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-source-20261017/static-audit-v1.json",
+      "sha256": "6f870023581ad1c10344c5ffd2b3ffb7e0b906e31855310b30958540fc4ef62d",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-source-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 4845,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-peer-20261017/findings-v1.json",
+      "sha256": "889e19c11b7eb9403e9f962077b6009a008607ba29b9b42db52d52a49345e057",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 1303,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-peer-20261017/handoff-v1.json",
+      "sha256": "755ee716909f7d57f0700ef1370e862637ff12588f7fdbefb10ee5ca88d73412",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 7645,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-peer-20261017/static-review-v1.json",
+      "sha256": "3b45f239bf048131209a67c0d97c38eb36a4c479302e2098db120ba44743e992",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/static-review-v1.json"
+    },
+    {
+      "bytes": 2948,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-helper-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "53429781ad66f677ff18d0261e3abe851fc313ca370dd3b84547f3a7478a59ac",
+      "source_path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 8571,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/API-wire-v2.json",
+      "sha256": "3e254e9cad661de0f070c0331566c820fbefc78fb045b99023bb299bb8f67c43",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/API-wire-v2.json"
+    },
+    {
+      "bytes": 8826,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/API-wire-v3.json",
+      "sha256": "53ff4cf0837ca2f5e2acca869f970ad4d6f77435dbc7396bee78fb16b9423a48",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/API-wire-v3.json"
+    },
+    {
+      "bytes": 12533,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v2.json",
+      "sha256": "14cf21049783074b10ffd72a3da63363a50f97bf1425d1b242d23e7b8257ed76",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v2.json"
+    },
+    {
+      "bytes": 13042,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v3.json",
+      "sha256": "20372a1d3a5abe9945337b7594db14dbdfcc8ff91390ddd76a92a8550539524c",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v3.json"
+    },
+    {
+      "bytes": 31433,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-delta-v2.json",
+      "sha256": "b5080cb6d45833332bbe9ae8e2442c772ff4389720b64b7809a30e1088fbfa85",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-delta-v2.json"
+    },
+    {
+      "bytes": 24663,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-delta-v3.json",
+      "sha256": "b6926f77a6ee9b4fd8020fd184e50f0ea38d9ac5ee15a473db90e06e89eeb17b",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-delta-v3.json"
+    },
+    {
+      "bytes": 21797,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v1.parent.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v1.parent.py"
+    },
+    {
+      "bytes": 33581,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v2.py",
+      "sha256": "05ad8d20dcac3ce7c8a3f782753e65dec8d4da90803b115bfbbaf2b51c48489f",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v2.py"
+    },
+    {
+      "bytes": 33660,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "sha256": "5978c1343542ad7c7e1e5fbdb31dddb22e3b33d49e4654b8a743065d357ea256",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py"
+    },
+    {
+      "bytes": 9462,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/failure_reader_v2.fragment.py",
+      "sha256": "67980535a348a192bd468520c95945f99eebd71aa0e3620bfe512056710ea9da",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/failure_reader_v2.fragment.py"
+    },
+    {
+      "bytes": 2447,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/handoff-v2.json",
+      "sha256": "55900f59c911ba53b8ba10c6d7e294fdf68a3390e839f5a73d7a1e57bc349edc",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/handoff-v2.json"
+    },
+    {
+      "bytes": 2927,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/handoff-v3.json",
+      "sha256": "4896d6460998635e17b1f280720f41c73b6c2da528562300fd230219e20c0016",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 5578,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/new_provider_return_branch.fragment.txt",
+      "sha256": "67e6e3289b9838b448a0f40a35ddc0a84d3134296bea1500799d5ccb90c9ae22",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/new_provider_return_branch.fragment.txt"
+    },
+    {
+      "bytes": 2622,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/phase-wire-bounds-v2.json",
+      "sha256": "9ce36bfbf9b8d882f1cfa8b13ec133d4d13323ee257426cc05f20bcfc256cd96",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/phase-wire-bounds-v2.json"
+    },
+    {
+      "bytes": 8463,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/phase_reader_v2.fragment.py",
+      "sha256": "54c31445dbb1be83d792b35891ff84d5cf0d8519fee479464a99ab96888da9ff",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/phase_reader_v2.fragment.py"
+    },
+    {
+      "bytes": 8542,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/phase_reader_v3.fragment.py",
+      "sha256": "e5d17e72b49a53874a2b78c40ed56ca2c0d81f5cd96aa8efaa85030218926568",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/phase_reader_v3.fragment.py"
+    },
+    {
+      "bytes": 59,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/positive_phase_validation_v2.fragment.py",
+      "sha256": "60edb461d42378996581391302dbdb135ed2ad68964b4939000fc3a82aefb5a8",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/positive_phase_validation_v2.fragment.py"
+    },
+    {
+      "bytes": 21084,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-forward.patch",
+      "sha256": "91ac72c8b53572f027ca7eb5184f9c57d0879f18977474e5fcf8ff55f78315b5",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-forward.patch"
+    },
+    {
+      "bytes": 21084,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-inverse.patch",
+      "sha256": "5f04583c9cae781b816d61289193b9ae1cd9f1067a6800572adeec0366ebdcd7",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-inverse.patch"
+    },
+    {
+      "bytes": 21164,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-forward.patch",
+      "sha256": "c7261a0665a07db67825326e702a6f04214a4a76b0c179665faf9cc83d54c88f",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-forward.patch"
+    },
+    {
+      "bytes": 21164,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-inverse.patch",
+      "sha256": "97e50cea7b62da54794e904bcf40e82b1df792de358fc6a098d257aa12544e76",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-inverse.patch"
+    },
+    {
+      "bytes": 563,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-forward.patch",
+      "sha256": "0e3952177959e0aa25e3821879cb3d4700a0d40bafa157f7d89ac7380f371e58",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-forward.patch"
+    },
+    {
+      "bytes": 563,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-inverse.patch",
+      "sha256": "d5ad7c9670ead26524c88d277b432514f4db5c3f61d9408155d996d0a34273be",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-inverse.patch"
+    },
+    {
+      "bytes": 9329,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v1.parent.fragment.py",
+      "sha256": "b0f44bcdc67732d95016f7b0592a8698eb5e2c0256be018ae86e5ef99d7dbda7",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v1.parent.fragment.py"
+    },
+    {
+      "bytes": 15021,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py"
+    },
+    {
+      "bytes": 1306,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/static-Source-audit-v2.json",
+      "sha256": "2d4126d864ca325294a755fe40ee4d5a6311f88f5e0635b6be9d15a50adf81a2",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/static-Source-audit-v2.json"
+    },
+    {
+      "bytes": 855,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/static-Source-audit-v3.json",
+      "sha256": "10f3c6d61696a7bbe7f37586cf0feb782c1d822e1e00ca7e7cc1bf7c4b1e9f45",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/static-Source-audit-v3.json"
+    },
+    {
+      "bytes": 7057,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-forward.patch",
+      "sha256": "88e4c788e1fc66a995b063bca0ad85dfdb78986ffa2585b45b489bbc54a79faf",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-forward.patch"
+    },
+    {
+      "bytes": 7057,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-inverse.patch",
+      "sha256": "409aedb8ef4ca06e32181fccde52c0b35fe122877d5139edc0ddd50f5df094b4",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-inverse.patch"
+    },
+    {
+      "bytes": 6261,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-peer-20261017/findings-v3.json",
+      "sha256": "9056859525f8137f838b6f99ecad0d3ba6005f844f922db985186fa929b1d7f6",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/findings-v3.json"
+    },
+    {
+      "bytes": 2095,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-peer-20261017/handoff-v3.json",
+      "sha256": "c555cc737eaded5c94dae521574be1af46f14e8b826b43dcf2d1330fb5ceef89",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/handoff-v3.json"
+    },
+    {
+      "bytes": 2945,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-peer-20261017/negative-findings-v2.json",
+      "sha256": "71c1c56a799c8c3d056742e16c883b49c6442d961529954d4e8d6e2e9401ebc3",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/negative-findings-v2.json"
+    },
+    {
+      "bytes": 14428,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-peer-20261017/static-review-v3.json",
+      "sha256": "93fb2863fb09d97da938309f431aef04f0772cac735aba9ddf3fc20276d5b705",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/static-review-v3.json"
+    },
+    {
+      "bytes": 2120,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "fd13d77f54cc31317eac1021fa9ef7bd3ac2cea1acde8034d9ba68789253bbc4",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v2.json"
+    },
+    {
+      "bytes": 3500,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "976ba708551c40b8e78d57c68d791b2a84d29b4c50adad409cd0353c9e63594a",
+      "source_path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v3.json"
+    },
+    {
+      "bytes": 33669,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/author-forward-copy.py",
+      "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/author-forward-copy.py"
+    },
+    {
+      "bytes": 21797,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/author-inverse-copy.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/author-inverse-copy.py"
+    },
+    {
+      "bytes": 4565,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/findings-v1.json",
+      "sha256": "c20f48a2f6cf40dc7b4219c1f7e9c3a719f4af8e44ebeb9aa50fbd713f61c93f",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/findings-v1.json"
+    },
+    {
+      "bytes": 1535,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/handoff-v1.json",
+      "sha256": "1c4ecaa3f82519c22427a747858b2a1c2d45ea82afbb6977f1d4f3ba247e7823",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 33669,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent-forward-copy.py",
+      "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent-forward-copy.py"
+    },
+    {
+      "bytes": 21797,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent-inverse-copy.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent-inverse-copy.py"
+    },
+    {
+      "bytes": 22362,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent.forward.patch",
+      "sha256": "7be1f42fc6a8702d270d0db5aa6e259c80dfcbf5ac6ae01570ab1ae9e7357e53",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent.forward.patch"
+    },
+    {
+      "bytes": 22362,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent.inverse.patch",
+      "sha256": "7bcafa7054669836478f92e81ecc7123cd08c55fbd100fd9934da22c9986a9b8",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent.inverse.patch"
+    },
+    {
+      "bytes": 12310,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/static-audit-v1.json",
+      "sha256": "1de464a3599d3dd4abc3bd648045110d27f42bb62f4c78359a155703404795e6",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/static-audit-v1.json"
+    },
+    {
+      "bytes": 33669,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/template-forward-copy.py",
+      "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/template-forward-copy.py"
+    },
+    {
+      "bytes": 33660,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/template-inverse-copy.py",
+      "sha256": "5978c1343542ad7c7e1e5fbdb31dddb22e3b33d49e4654b8a743065d357ea256",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/template-inverse-copy.py"
+    },
+    {
+      "bytes": 1230,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/template.forward.patch",
+      "sha256": "2bea19c4a149b51acfec5f93c1fed787508508e0cd6f477b3d36674f9cce489b",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/template.forward.patch"
+    },
+    {
+      "bytes": 1230,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/template.inverse.patch",
+      "sha256": "7accd80165925c8acb09b7409e852a3782ea006e134680d8170d3f93ada8c806",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/template.inverse.patch"
+    },
+    {
+      "bytes": 4144,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-saved-reader-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "daf7204890ae3eb239001d52599d37cdce97f073d127142f75138eb73c224976",
+      "source_path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/typed-Source-review-v1.json"
+    },
+    {
+      "bytes": 256,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/ONCE.json",
+      "sha256": "fa00c2b6d0cb6a4d1d7f271512f507d5d5812ae06bed2542550e85eb01d2487b",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/ONCE.json"
+    },
+    {
+      "bytes": 1144,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/meter-stderr.txt",
+      "sha256": "eaf2366f67dd7d53baccdebf208cb1eb6238ff8bc8216d1f58ddf05527f39a98",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/meter-stderr.txt"
+    },
+    {
+      "bytes": 0,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/meter-stdout.txt"
+    },
+    {
+      "bytes": 1564,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/native-terminal.json",
+      "sha256": "e6cbd02f82da4da00e09d84c2647a52cbec9b890cd536f4c25f0a7b8917c8d78",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/native-terminal.json"
+    },
+    {
+      "bytes": 473,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/observation.json",
+      "sha256": "ea0b3a106f7de4ff0bc9aea14439b27ec7cdfc2f9d0da5844cd6a828aeae57ad",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/observation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stderr.txt"
+    },
+    {
+      "bytes": 16,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stdout.txt",
+      "sha256": "7e3215445695ac89da61c710d36a42ce49087bb4d40f866b12fbd1e597c8dbe3",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-external-v1/postterminal-probe-stdout.txt"
+    },
+    {
+      "bytes": 336,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-owned-v1/diagnostic-completion.json",
+      "sha256": "08135f64696302c48ee698a454d6709db6e5a68a8d39d29afcbed7aa90a1b1dd",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-owned-v1/diagnostic-completion.json"
+    },
+    {
+      "bytes": 10964,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-owned-v1/unknown-diagnostic.json",
+      "sha256": "39754314daac0751096550326bbcbfffb965d1ed9cfe476f036e1bf4b75ea7f0",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-owned-v1/unknown-diagnostic.json"
+    },
+    {
+      "bytes": 9109,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-Source-review-v1.json",
+      "sha256": "b8324cd22761fdf6bb93bbab0c8b6cae3976930dd3a2b4ee0c7793e25a480620",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-Source-review-v1.json"
+    },
+    {
+      "bytes": 13202,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "be736a89fc9f867113d9d8b9d6fd3f1d2b1b3b592dc6796b2549ff2ce46f5348",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-authorization-v1.json"
+    },
+    {
+      "bytes": 14756,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+      "sha256": "ab7799486e7cef0d45d586918fc025d81dc53726ce1821b9b1e00e150fc1784a",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-disposition-v1.json"
+    },
+    {
+      "bytes": 10862,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "7c0dfbfffc71b36b39a251906adeefe6adc6815db68c90d75fc58db106caa611",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-plan-v1.json"
+    },
+    {
+      "bytes": 384,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-tool-Date-bracket-v1.json",
+      "sha256": "dab222234d41e80f716194d79c501fab1487c6e8b54d2c4268220b9f25ad1a77",
+      "source_path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-tool-Date-bracket-v1.json"
+    },
+    {
+      "bytes": 2872,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-data-review-20261017/report-review-v1.json",
+      "sha256": "461e2ee1c5ee5960fd7ecbb079373f39b84a37a5b8ddb01101fddd1b0f3252e1",
+      "source_path": "/private/tmp/gcts-callback-stage-data-review-20261017/report-review-v1.json"
+    },
+    {
+      "bytes": 8915,
+      "path": "callback-stage-evidence/tmp/gcts-callback-stage-data-review-20261017/saved-callback-stage-findings-v1.json",
+      "sha256": "af73b5771343d8ffa6371c045f71866f344c1788f25bc8b2f2038bc425adce07",
+      "source_path": "/private/tmp/gcts-callback-stage-data-review-20261017/saved-callback-stage-findings-v1.json"
+    },
+    {
+      "bytes": 10300,
+      "path": "callback-stage-evidence/tmp/gcts-parallel-research-plan-20261017/parallel-research-plan-v1.json",
+      "sha256": "5c4ec5d7a157f18fcaa18a828fe07856bfa7ebbc698a8d5ce181beea88a8642c",
+      "source_path": "/private/tmp/gcts-parallel-research-plan-20261017/parallel-research-plan-v1.json"
+    },
+    {
+      "bytes": 22365,
+      "path": "callback-stage-evidence/tmp/gcts-hilbert-fresh-qualification-plan-20261017/fresh-hilbert-compatibility-plan-v1.json",
+      "sha256": "1ba1c0d0db88f3afec594a50d461893b0e78bdaf903b6da58e38f51c55749521",
+      "source_path": "/private/tmp/gcts-hilbert-fresh-qualification-plan-20261017/fresh-hilbert-compatibility-plan-v1.json"
+    },
+    {
+      "bytes": 11509,
+      "path": "callback-stage-evidence/tmp/gcts-postconsumer-cost-plan-20261017/Source-cost-plan-v1.json",
+      "sha256": "9d0a1d8a001d7cce3e08490277822fc6cd5b97a42111325e494f9d5417d65622",
+      "source_path": "/private/tmp/gcts-postconsumer-cost-plan-20261017/Source-cost-plan-v1.json"
+    },
+    {
+      "bytes": 424,
+      "path": "callback-stage-evidence/tmp/gcts-postconsumer-cost-plan-20261017/handoff-v1.json",
+      "sha256": "b48fc22504e6057657123ef2ed74798bafddf2e97af837b0711e65452c3a1809",
+      "source_path": "/private/tmp/gcts-postconsumer-cost-plan-20261017/handoff-v1.json"
+    },
+    {
+      "bytes": 6584,
+      "path": "callback-stage-evidence/tmp/gcts-head-gated-performance-source-20261017/diagnostic-bound-erratum-v2.json",
+      "sha256": "46effab35ad48abdaa07a1aff2aec7dae185c04e95eff1d0f9132448e77658f2",
+      "source_path": "/private/tmp/gcts-head-gated-performance-source-20261017/diagnostic-bound-erratum-v2.json"
+    }
+  ],
+  "files_count": 113,
+  "full_receiver_record": false,
+  "new_theorem_accepted": false,
+  "qualified_family_offers": null,
+  "raw_provider_reported_instances": 1,
+  "schema": "ROOT-callback-stage-evidence-manifest-v1",
+  "scientific_actuals": 1,
+  "scientific_replay": false,
+  "scope": "Instrumented inference failure diagnostics, Source reviews and parallel research plans. Raw scalars are not an offer/transfer/proof certificate.",
+  "unchanged_actual_restarted": false,
+  "useful_transfer_accepted": false
+}

@@ -1,0 +1,331 @@
+{
+  "checks": [
+    {
+      "added_named_regions": [
+        "main.capture_provider_summary"
+      ],
+      "both_actual_patch_directions_byte_exact": true,
+      "changed_named_regions": [
+        "save_failure_diagnostic",
+        "main",
+        "main.run_receiver"
+      ],
+      "compile_without_evaluation": true,
+      "edits": [
+        {
+          "new": "VERSION='ROOT-receiver-inference-probe-cold-v4-callback-stages'\n",
+          "new_end": 26,
+          "new_start": 25,
+          "old": "VERSION='ROOT-receiver-inference-probe-cold-v3-head-gated'\n",
+          "old_end": 26,
+          "old_start": 25
+        },
+        {
+          "new": "FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'degree_router': {'bytes': 12779, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'family_consumer': {'bytes': 13040, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py', 'sha256': 'd68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874'}, 'family_engine': {'bytes': 92154, 'path': '/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py', 'sha256': 'b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e'}, 'head_gate': {'bytes': 15276, 'path': '/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py', 'sha256': '7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_aware_checker': {'bytes': 25783, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188'}, 'marked_aware_proposer': {'bytes': 14064, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'producer': {'bytes': 60281, 'path': '/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py', 'sha256': 'fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'receiver_cases': {'bytes': 8772, 'path': '/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py', 'sha256': '150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094'}, 'receiver_provider': {'bytes': 60912, 'path': '/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py', 'sha256': 'fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0'}, 'residual_policy': {'bytes': 12826, 'path': '/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py', 'sha256': '2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479'}}\n",
+          "new_end": 31,
+          "new_start": 30,
+          "old": "FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'degree_router': {'bytes': 12779, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'family_consumer': {'bytes': 13040, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py', 'sha256': 'd68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874'}, 'family_engine': {'bytes': 92154, 'path': '/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py', 'sha256': 'b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_aware_checker': {'bytes': 25783, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188'}, 'marked_aware_proposer': {'bytes': 14064, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'producer': {'bytes': 60281, 'path': '/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py', 'sha256': 'fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'receiver_cases': {'path': '/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py', 'sha256': '35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d', 'bytes': 7899}, 'receiver_provider': {'bytes': 60912, 'path': '/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py', 'sha256': 'fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0'}, 'residual_policy': {'bytes': 12826, 'path': '/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py', 'sha256': '2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479'}, 'head_gate': {'path': '/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py', 'sha256': '7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738', 'bytes': 15276}}\n",
+          "old_end": 31,
+          "old_start": 30
+        },
+        {
+          "new": "    elif failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2':\n        roles = ('proposer','fallback','completion','validator')\n        counters = ('planned_assignments','attempted_assignments','binding_attempts',\n            'ground_environment_proposals','distinct_environment_attempts','full_expansions',\n            'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',\n            'checked_instances','duplicate_instances','offered_instances','head_gate_calls',\n            'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',\n            'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')\n        if (type(capture) is not dict or len(capture) != 2\n                or not all(type(key) is str for key in capture)\n                or set(capture) != {'legacy','provider_returns'}):\n            raise ValueError('fixed builtin provider-return capture')\n        legacy = capture['legacy']; returned = capture['provider_returns']\n        if (type(legacy) is not dict or len(legacy) != 4\n                or not all(type(key) is str for key in legacy) or set(legacy) != set(roles)\n                or type(returned) is not list or len(returned) != 2):\n            raise ValueError('fixed legacy and two provider-return slots')\n        observations = {}\n        for role in roles:\n            failure_gate()\n            item = legacy[role]\n            if item is None:\n                observations[role] = None\n                continue\n            if type(item) is not tuple or len(item) != 4:\n                raise ValueError('fixed scalar last-context tuple')\n            stage,row,selected,native_ns = item\n            if (type(stage) is not str or stage != role.upper()+'_NATIVE_STEP'\n                    or type(row) is not int or not -1<=row<24\n                    or type(selected) is not int or not -1<=selected<=24\n                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000\n                    or not 0<=native_ns<=9223372036854775807):\n                raise ValueError('bounded builtin last-context fields')\n            observations[role] = {'stage':stage,'row':row,'selected_count':selected,'native_ns':native_ns}\n        summaries = []\n        for index in range(2):\n            failure_gate()\n            item = returned[index]\n            if item is None:\n                summaries.append(None)\n                continue\n            if (type(item) is not dict or len(item) != 7\n                    or not all(type(key) is str for key in item)\n                    or set(item) != {'ordinal','native_ns','batch_status','instance_count',\n                        'provider_reason','provider_steps','accounting'}):\n                raise ValueError('fixed builtin provider-return fields')\n            ordinal = item['ordinal']; native_ns = item['native_ns']; counts = item['accounting']\n            if (type(ordinal) is not int or ordinal != index+1\n                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000\n                    or not 0<=native_ns<=9223372036854775807\n                    or type(item['batch_status']) is not str or len(item['batch_status'])>64\n                    or type(item['instance_count']) is not int or not 0<=item['instance_count']<=1\n                    or type(item['provider_reason']) is not str or len(item['provider_reason'])>256\n                    or type(item['provider_steps']) is not int or not 0<=item['provider_steps']<=1000000\n                    or type(counts) is not dict or len(counts) != 20\n                    or not all(type(key) is str for key in counts) or set(counts) != set(counters)\n                    or not all(type(counts[key]) is int and 0<=counts[key]<=1000000 for key in counters)):\n                raise ValueError('bounded builtin provider-return scalars')\n            summaries.append({'ordinal':ordinal,'native_ns':native_ns,\n                'batch_status':item['batch_status'],'instance_count':item['instance_count'],\n                'provider_reason':item['provider_reason'],'provider_steps':item['provider_steps'],\n                'accounting':{key:counts[key] for key in counters}})\n        labels = encoded({'schema':'unit-row-controls-provider-returns-diagnostic-v2',\n            'diagnostic_only':True,'qualification':'UNQUALIFIED_LITERAL_PROVIDER_RETURN_SCALARS',\n            'failure_kind':'TimeoutError','returned_control_record':False,\n            'callback_context':'LITERAL_RETURNED_SCALARS_ONLY_NOT_FULL_RECEIPTS',\n            'provider_return_summaries_are_unvalidated_scalars':True,\n            'last_observation_is_active_failure_frame':False,'callback_return_to_engine_proved':False,\n            'offers_accepted':False,'current_state_accepted':False,'failure_cause_established':False,\n            'live_state_or_proof_trajectory_accepted':False,\n            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,\n            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,\n            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False},4096)\n        raw = (b'{\"context\":'+context_raw+b',\"diagnostic\":'+labels\n               +b',\"last_observations\":'+encoded(observations,4096)\n               +b',\"provider_returns\":'+encoded(summaries,8192)+b'}\\n')\n        # Sum of the four independently bounded values and their exact JSON wrapper.\n        if len(raw)>81988:raise ValueError('whole provider-return diagnostic byte bound')\n",
+          "new_end": 325,
+          "new_start": 247,
+          "old": "",
+          "old_end": 247,
+          "old_start": 247
+        },
+        {
+          "new": "    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-controls-provider-returns-completion-v2' if failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2' else 'unit-row-search-failure-diagnostic-completion-v1'),\n",
+          "new_end": 381,
+          "new_start": 380,
+          "old": "    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-search-failure-diagnostic-completion-v1'),\n",
+          "old_end": 303,
+          "old_start": 302
+        },
+        {
+          "new": "    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT', 'P1_ENTER', 'P1_DELEGATE_RETURN', 'P1_CALLBACK_READY', 'P2_ENTER', 'P2_DELEGATE_RETURN', 'P2_CALLBACK_READY', 'C1_ENTER', 'C1_DELEGATE_RETURN', 'C1_CALLBACK_READY', 'C2_ENTER', 'C2_DELEGATE_RETURN', 'C2_CALLBACK_READY', 'C3_ENTER', 'C3_DELEGATE_RETURN', 'C3_CALLBACK_READY', 'SEARCH_RETURN_OBSERVED', 'POSTSEARCH_SNAPSHOT_READY')\n",
+          "new_end": 442,
+          "new_start": 441,
+          "old": "    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')\n",
+          "old_end": 364,
+          "old_start": 363
+        },
+        {
+          "new": "    provider_return_slots=[None,None]\n    diagnostic_capture={'legacy':latest_observations,'provider_returns':provider_return_slots}\n    summary_counters=('planned_assignments','attempted_assignments','binding_attempts',\n        'ground_environment_proposals','distinct_environment_attempts','full_expansions',\n        'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',\n        'checked_instances','duplicate_instances','offered_instances','head_gate_calls',\n        'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',\n        'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')\n    def capture_provider_summary(ordinal,value):\n        # Original20 metadata only. Never traverse/copy/hash or mutate the report.\n        # An absent slot never blocks the existing scientific callback.\n        if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code\n                or phase_tick.__defaults__ is not phase_tick_defaults\n                or phase_tick.__kwdefaults__ is not phase_tick_kwdefaults):\n            raise RuntimeError('original summary native endpoint changed')\n        native_ns=phase_tick()\n        if type(ordinal)is not int or not 1<=ordinal<=2 or type(value)is not dict:\n            return\n        batch=value.get('batch');report=value.get('report')\n        if type(batch)is not dict or type(report)is not dict:\n            return\n        status=batch.get('status');instances=batch.get('instances')\n        reason=report.get('reason');work=report.get('work');accounting=report.get('accounting')\n        if (type(status)is not str or len(status)>64 or type(instances)is not list\n                or len(instances)>1 or type(reason)is not str or len(reason)>256\n                or type(work)is not dict or type(accounting)is not dict\n                or len(accounting)!=len(summary_counters)):\n            return\n        steps=work.get('steps')\n        if type(steps)is not int or not 0<=steps<=1000000:\n            return\n        for key in summary_counters:\n            count=accounting.get(key)\n            if type(count)is not int or not 0<=count<=1000000:\n                return\n        summary={'ordinal':ordinal,'native_ns':native_ns,'batch_status':status,\n            'instance_count':len(instances),'provider_reason':reason,'provider_steps':steps,\n            'accounting':{key:accounting[key]for key in summary_counters}}\n        if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code\n                or phase_tick.__defaults__ is not phase_tick_defaults\n                or phase_tick.__kwdefaults__ is not phase_tick_kwdefaults):\n            raise RuntimeError('original summary native endpoint changed')\n        phase_tick()\n        provider_return_slots[ordinal-1]=summary\n",
+          "new_end": 682,
+          "new_start": 638,
+          "old": "",
+          "old_end": 560,
+          "old_start": 560
+        },
+        {
+          "new": "            tick=tick,phase=phase,capture_provider_summary=capture_provider_summary)\n",
+          "new_end": 728,
+          "new_start": 727,
+          "old": "            tick=tick,phase=phase)\n",
+          "old_end": 606,
+          "old_start": 605
+        },
+        {
+          "new": "                    f(diagnostic_output_path,diagnostic_context_raw,diagnostic_capture,\n                      'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2',EARLY_G)\n",
+          "new_end": 754,
+          "new_start": 752,
+          "old": "                    f(diagnostic_output_path,diagnostic_context_raw,latest_observations,\n                      'CONTROLS_TIMEOUT_LAST_SCALARS',EARLY_G)\n",
+          "old_end": 632,
+          "old_start": 630
+        }
+      ],
+      "named_regions_raw_AST_unchanged": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.phase",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language"
+      ],
+      "parent": {
+        "bytes": 57736,
+        "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py",
+        "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9"
+      },
+      "raw_regions": 8,
+      "removed_named_regions": [],
+      "source": {
+        "bytes": 66670,
+        "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+        "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91"
+      },
+      "whole_forward_inverse_AST": true
+    },
+    {
+      "added_named_regions": [
+        "validate_positive_callback_phases"
+      ],
+      "both_actual_patch_directions_byte_exact": true,
+      "changed_named_regions": [
+        "read_phases",
+        "read_failure_diagnostic",
+        "main"
+      ],
+      "compile_without_evaluation": true,
+      "edits": [
+        {
+          "new": "CURRENT_CONTRACT={'path': '/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d', 'bytes': 21574}\n",
+          "new_end": 13,
+          "new_start": 12,
+          "old": "CURRENT_CONTRACT={'path': '/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe', 'bytes': 19869}\n",
+          "old_end": 13,
+          "old_start": 12
+        },
+        {
+          "new": "LEGACY_PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')\nCALLBACK_PHASES=('P1_ENTER','P1_DELEGATE_RETURN','P1_CALLBACK_READY',\n    'P2_ENTER','P2_DELEGATE_RETURN','P2_CALLBACK_READY',\n    'C1_ENTER','C1_DELEGATE_RETURN','C1_CALLBACK_READY',\n    'C2_ENTER','C2_DELEGATE_RETURN','C2_CALLBACK_READY',\n    'C3_ENTER','C3_DELEGATE_RETURN','C3_CALLBACK_READY')\nSEARCH_PHASES=('SEARCH_RETURN_OBSERVED','POSTSEARCH_SNAPSHOT_READY')\nPHASES=LEGACY_PHASES+CALLBACK_PHASES+SEARCH_PHASES\nPROVIDER_COUNTERS=('planned_assignments','attempted_assignments','binding_attempts',\n    'ground_environment_proposals','distinct_environment_attempts','full_expansions',\n    'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',\n    'checked_instances','duplicate_instances','offered_instances','head_gate_calls',\n    'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',\n    'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')\nPROVIDER_DIAGNOSTIC_MAX_BYTES=81988\nPHASE_LINE_MAX_BYTES=75\nPHASE_TOTAL_MAX_BYTES=1913\n\n",
+          "new_end": 84,
+          "new_start": 66,
+          "old": "PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')\n",
+          "old_end": 67,
+          "old_start": 66
+        },
+        {
+          "new": "    need(type(raw)is bytes and len(raw)<=65536, 'bounded full native stderr')\n    need(type(launch)is int and type(terminal)is int and 0<=launch<=terminal<2**63,\n         'literal phase external clock bounds')\n",
+          "new_end": 89,
+          "new_start": 86,
+          "old": "    need(len(raw)<=65536, 'bounded full native stderr')\n",
+          "old_end": 70,
+          "old_start": 69
+        },
+        {
+          "new": "    phases=[];tail=[];stopped=False;last_index=-1;last_stamp=launch;wire_bytes=0\n    seen=set();stack=[];ordinals={'P':0,'C':0};group_stage={}\n    lines=raw.splitlines(keepends=True)\n    for line_index,line in enumerate(lines):\n        if line.startswith(prefix) and line.endswith(b'\\n'):\n            need(not stopped, 'no complete phase after stderr tail')\n            need(len(line)<=PHASE_LINE_MAX_BYTES, 'bounded complete phase line')\n",
+          "new_end": 97,
+          "new_start": 90,
+          "old": "    phases=[];tail=[];stopped=False;last_index=-1\n    for line in raw.splitlines(keepends=True):\n        if not stopped and line.startswith(prefix) and line.endswith(b'\\n'):\n            need(len(line)<=96, 'bounded complete phase line')\n",
+          "old_end": 75,
+          "old_start": 71
+        },
+        {
+          "new": "            need(label in PHASES and label not in seen and 1<=len(number)<=19\n                 and number.isdigit() and (number==b'0' or not number.startswith(b'0')),\n                 'unique literal phase and canonical signed64 timestamp')\n            stamp=int(number)\n            need(last_stamp<=stamp<=terminal and stamp<2**63, 'nondecreasing native phase clock join')\n            if label in LEGACY_PHASES:\n                index=LEGACY_PHASES.index(label)\n                need(index>last_index, 'inherited reached-site order')\n                if label=='BEFORE_PROVIDER':\n                    need(not stack and 'P1_ENTER' not in seen\n                         and 'SEARCH_RETURN_OBSERVED' not in seen, 'first-only provider entry site')\n                elif label=='AFTER_PROVIDER':\n                    need('P1_DELEGATE_RETURN' in seen and 'P1_CALLBACK_READY' not in seen\n                         and stack and stack[-1]=='P1', 'first-only provider copied-return site')\n                elif label in ('AFTER_ENGINE','BEFORE_OUTPUT'):\n                    need('POSTSEARCH_SNAPSHOT_READY' in seen,\n                         'completed search/snapshot reached before outer site')\n                last_index=index\n            elif label in CALLBACK_PHASES:\n                need('BEFORE_ENGINE' in seen and 'SEARCH_RETURN_OBSERVED' not in seen,\n                     'callback stages occur in the search interval')\n                group,stage=label.split('_',1)\n                role=group[0];ordinal=int(group[1])\n                if stage=='ENTER':\n                    need(not stack, 'synchronous callback groups do not nest')\n                    need(ordinal==ordinals[role]+1, 'per-role callback entry ordinal')\n                    if group=='P1':need('BEFORE_PROVIDER' in seen, 'first provider outer site precedes delegate')\n                    ordinals[role]=ordinal;stack.append(group);group_stage[group]='ENTER'\n                elif stage=='DELEGATE_RETURN':\n                    need(stack and stack[-1]==group and group_stage[group]=='ENTER',\n                         'nested callback delegate-return order')\n                    group_stage[group]='DELEGATE_RETURN'\n                else:\n                    need(stack and stack[-1]==group and group_stage[group]=='DELEGATE_RETURN',\n                         'nested callback ready order')\n                    if group=='P1':need('AFTER_PROVIDER' in seen, 'first provider old copied-return site')\n                    group_stage[group]='CALLBACK_READY';stack.pop()\n            elif label=='SEARCH_RETURN_OBSERVED':\n                # search catches TimeoutError, including membership subclasses:\n                # one entered callback may unwind without returning or logging.\n                need('BEFORE_ENGINE' in seen and len(stack)<=1,\n                     'search return may retain one unfinished callback group')\n            else:\n                need('SEARCH_RETURN_OBSERVED' in seen, 'postsearch snapshot follows search return')\n            wire_bytes+=len(line)\n            need(wire_bytes<=PHASE_TOTAL_MAX_BYTES, 'bounded complete fixed phase wire')\n            seen.add(label);last_stamp=stamp;phases.append({'stage':label,'native_ns':stamp})\n",
+          "new_end": 147,
+          "new_start": 100,
+          "old": "            need(label in PHASES and PHASES.index(label)>last_index and number.isdigit()\n                 and (number==b'0' or not number.startswith(b'0')), 'unique ordered literal phase')\n            stamp=int(number);need(type(stamp)is int and launch<=stamp<=terminal<2**63, 'native phase clock join')\n            last_index=PHASES.index(label);phases.append({'stage':label,'native_ns':stamp})\n",
+          "old_end": 82,
+          "old_start": 78
+        },
+        {
+          "new": "            # A partial final phase can be retained as raw tail, never completed.\n            if line.startswith(prefix) or (line and prefix.startswith(line)):\n                need(line_index==len(lines)-1 and not line.endswith(b'\\n'), 'only a final incomplete phase tail')\n                possible=False\n                for label in PHASES:\n                    head=prefix+label.encode('ascii')+b' '\n                    if head.startswith(line):possible=True\n                    elif line.startswith(head):\n                        number=line[len(head):]\n                        if (len(number)<=19 and (not number or number.isdigit())\n                                and (not number or number==b'0' or not number.startswith(b'0'))\n                                and (not number or int(number)<2**63)):\n                            possible=True\n                need(possible and len(line)<PHASE_LINE_MAX_BYTES, 'literal incomplete phase prefix only')\n",
+          "new_end": 162,
+          "new_start": 148,
+          "old": "",
+          "old_end": 83,
+          "old_start": 83
+        },
+        {
+          "new": "    need(len(phases)<=30, 'finite fixed phase sites')\n",
+          "new_end": 164,
+          "new_start": 163,
+          "old": "    need(len(phases)<=13, 'finite fixed phase sites')\n",
+          "old_end": 85,
+          "old_start": 84
+        },
+        {
+          "new": "\n\ndef validate_positive_callback_phases(phases, pipeline):\n    # Counts come only from the full authenticated returned record, never failure slots.\n    need(type(pipeline)is dict and type(pipeline.get('observations'))is dict,\n         'full returned callback observations')\n    observations=pipeline['observations']\n    providers=observations.get('provider_calls');consumers=observations.get('consumer_calls')\n    need(type(providers)is list and type(consumers)is list\n         and len(providers)<=2 and len(consumers)<=3, 'exact current full-record callback count bounds')\n    labels={item['stage']for item in phases}\n    wanted=set(LEGACY_PHASES)-{'BEFORE_PROVIDER','AFTER_PROVIDER'}\n    wanted.update(SEARCH_PHASES)\n    need(wanted<=labels, 'full returned outer setup/search/snapshot/output sites')\n    unfinished=[]\n    for role,count in (('P',len(providers)),('C',len(consumers))):\n        maximum=2 if role=='P' else 3\n        for ordinal in range(1,maximum+1):\n            group=role+str(ordinal)\n            entered=group+'_ENTER'in labels\n            delegated=group+'_DELEGATE_RETURN'in labels\n            ready=group+'_CALLBACK_READY'in labels\n            if ordinal<=count:\n                need(entered and delegated, 'full logged ordinal follows actual delegate-return site')\n            if ready:need(ordinal<=count, 'ready site has an already appended full observation')\n            if entered and not ready:unfinished.append(group)\n            if entered and ordinal>count:\n                need(ordinal==count+1 and not ready, 'one unlogged final callback prefix only')\n    need(len(unfinished)<=1, 'at most one unwound incomplete callback in full returned record')\n    if providers:need('AFTER_PROVIDER'in labels, 'first logged provider passed old copied-return site')\n    need(phases and phases[0]['stage']=='BEFORE_PLAN_READ' and phases[-1]['stage']=='BEFORE_OUTPUT'\n         and labels<=set(PHASES), 'complete outer sites with truthful callback prefixes')\n",
+          "new_end": 197,
+          "new_start": 165,
+          "old": "",
+          "old_end": 86,
+          "old_start": 86
+        },
+        {
+          "new": "    diagnostic_raw=read(owned/'unknown-diagnostic.json',PROVIDER_DIAGNOSTIC_MAX_BYTES)\n",
+          "new_end": 206,
+          "new_start": 205,
+          "old": "    diagnostic_raw=read(owned/'unknown-diagnostic.json',16384)\n",
+          "old_end": 95,
+          "old_start": 94
+        },
+        {
+          "new": "    marker_keys={'schema','file','sha256','bytes','diagnostic_only','positive_joint_gate_accepted',\n                 'ROOT_resource_accepted','terminal_exit2_and_external_failure_closure_required'}\n    need(type(marker)is dict and len(marker)==len(marker_keys)\n         and all(type(key)is str for key in marker) and set(marker)==marker_keys,\n         'exact builtin diagnostic completion fields')\n    need(type(marker['schema'])is str and marker['schema']in\n         ('unit-row-controls-last-context-completion-v1','unit-row-controls-provider-returns-completion-v2'),\n         'explicit legacy or provider-return completion schema')\n    provider_journal=marker['schema']=='unit-row-controls-provider-returns-completion-v2'\n    need(type(marker['file'])is str and marker['file']=='unknown-diagnostic.json'\n         and type(marker['sha256'])is str and marker['sha256']==raw_pin(diagnostic_raw)['sha256']\n         and type(marker['bytes'])is int and marker['bytes']==len(diagnostic_raw)\n",
+          "new_end": 221,
+          "new_start": 209,
+          "old": "    need(marker['schema']=='unit-row-controls-last-context-completion-v1'\n         and marker['file']=='unknown-diagnostic.json'\n         and marker['sha256']==raw_pin(diagnostic_raw)['sha256']and marker['bytes']==len(diagnostic_raw)\n",
+          "old_end": 101,
+          "old_start": 98
+        },
+        {
+          "new": "         and marker['terminal_exit2_and_external_failure_closure_required']is True\n         and (provider_journal or len(diagnostic_raw)<=16384),\n",
+          "new_end": 225,
+          "new_start": 223,
+          "old": "         and marker['terminal_exit2_and_external_failure_closure_required']is True,\n",
+          "old_end": 104,
+          "old_start": 103
+        },
+        {
+          "new": "    outer_keys={'context','diagnostic','last_observations'}\n    if provider_journal:outer_keys.add('provider_returns')\n    need(type(diagnostic)is dict and len(diagnostic)==len(outer_keys)\n         and all(type(key)is str for key in diagnostic) and set(diagnostic)==outer_keys,\n         'exact builtin diagnostic object')\n",
+          "new_end": 231,
+          "new_start": 226,
+          "old": "",
+          "old_end": 105,
+          "old_start": 105
+        },
+        {
+          "new": "    need(type(context)is dict and all(type(key)is str for key in context)\n         and type(labels)is dict and all(type(key)is str for key in labels),\n         'builtin context and labels before field access')\n",
+          "new_end": 235,
+          "new_start": 232,
+          "old": "",
+          "old_end": 106,
+          "old_start": 106
+        },
+        {
+          "new": "    if provider_journal:\n        expected_labels={'schema':'unit-row-controls-provider-returns-diagnostic-v2',\n            'diagnostic_only':True,'qualification':'UNQUALIFIED_LITERAL_PROVIDER_RETURN_SCALARS',\n            'failure_kind':'TimeoutError','returned_control_record':False,\n            'callback_context':'LITERAL_RETURNED_SCALARS_ONLY_NOT_FULL_RECEIPTS',\n            'provider_return_summaries_are_unvalidated_scalars':True,\n            'last_observation_is_active_failure_frame':False,'callback_return_to_engine_proved':False,\n            'offers_accepted':False,'current_state_accepted':False,'failure_cause_established':False,\n            'live_state_or_proof_trajectory_accepted':False,\n            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,\n            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,\n            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}\n        need(set(labels)==set(expected_labels)\n             and all(type(labels[key])is type(value) and labels[key]==value\n                     for key,value in expected_labels.items()), 'literal V2 unqualified scalar-only labels')\n    else:\n        need(labels['schema']=='unit-row-controls-last-context-diagnostic-v1'\n             and labels['diagnostic_only']is True and labels['returned_control_record']is False\n             and labels['failure_kind']=='TimeoutError'\n             and all(labels[key]is False for key in ('last_observation_is_active_failure_frame',\n                  'live_state_or_proof_trajectory_accepted','positive_joint_gate_accepted','logical_proof_accepted',\n                  'exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted',\n                  'RL_accepted','ROOT_resource_accepted')), 'raw scalar diagnostic has no proof or cause authority')\n    need(type(slots)is dict and len(slots)==4 and all(type(key)is str for key in slots)\n         and set(slots)=={'proposer','fallback','completion','validator'}\n",
+          "new_end": 273,
+          "new_start": 248,
+          "old": "    need(labels['schema']=='unit-row-controls-last-context-diagnostic-v1'\n         and labels['diagnostic_only']is True and labels['returned_control_record']is False\n         and labels['failure_kind']=='TimeoutError'\n         and all(labels[key]is False for key in ('last_observation_is_active_failure_frame',\n              'live_state_or_proof_trajectory_accepted','positive_joint_gate_accepted','logical_proof_accepted',\n              'exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted',\n              'RL_accepted','ROOT_resource_accepted')), 'raw scalar diagnostic has no proof or cause authority')\n    need(type(slots)is dict and set(slots)=={'proposer','fallback','completion','validator'}\n",
+          "old_end": 127,
+          "old_start": 119
+        },
+        {
+          "new": "        need(type(value)is dict and len(value)==4 and all(type(key)is str for key in value)\n             and set(value)=={'stage','row','selected_count','native_ns'}\n             and type(value['stage'])is str and value['stage']==role.upper()+'_NATIVE_STEP'\n",
+          "new_end": 279,
+          "new_start": 276,
+          "old": "        need(set(value)=={'stage','row','selected_count','native_ns'}\n             and value['stage']==role.upper()+'_NATIVE_STEP'\n",
+          "old_end": 132,
+          "old_start": 130
+        },
+        {
+          "new": "    returned=None\n    if provider_journal:\n        returned=diagnostic['provider_returns']\n        need(type(returned)is list and len(returned)==2, 'two nullable builtin provider-return slots')\n        phase_stamps={item['stage']:item['native_ns']for item in phases}\n        keys={'ordinal','native_ns','batch_status','instance_count','provider_reason','provider_steps','accounting'}\n        for index,value in enumerate(returned):\n            if value is None:continue\n            need(type(value)is dict and len(value)==7 and all(type(key)is str for key in value)\n                 and set(value)==keys, 'exact builtin provider-return fields')\n            counts=value['accounting']\n            need(type(value['ordinal'])is int and value['ordinal']==index+1\n                 and type(value['native_ns'])is int and began<=value['native_ns']<deadline\n                 and value['native_ns']<=terminal\n                 and type(value['batch_status'])is str and len(value['batch_status'])<=64\n                 and type(value['instance_count'])is int and 0<=value['instance_count']<=1\n                 and type(value['provider_reason'])is str and len(value['provider_reason'])<=256\n                 and type(value['provider_steps'])is int and 0<=value['provider_steps']<=1000000\n                 and type(counts)is dict and len(counts)==20 and all(type(key)is str for key in counts)\n                 and set(counts)==set(PROVIDER_COUNTERS)\n                 and all(type(counts[key])is int and 0<=counts[key]<=1000000 for key in PROVIDER_COUNTERS),\n                 'literal bounded unvalidated provider-return scalars')\n            group='P'+str(index+1)\n            need(group+'_DELEGATE_RETURN'in phase_stamps\n                 and phase_stamps[group+'_DELEGATE_RETURN']<=value['native_ns']\n                 and (group+'_CALLBACK_READY'not in phase_stamps\n                      or value['native_ns']<=phase_stamps[group+'_CALLBACK_READY']),\n                 'nullable scalar timestamp joins reached delegate and optional ready sites')\n",
+          "new_end": 311,
+          "new_start": 283,
+          "old": "",
+          "old_end": 136,
+          "old_start": 136
+        },
+        {
+          "new": "    result={'complete_pair':True,'diagnostic':dict(path=str(owned/'unknown-diagnostic.json'),**raw_pin(diagnostic_raw)),\n",
+          "new_end": 313,
+          "new_start": 312,
+          "old": "    return {'complete_pair':True,'diagnostic':dict(path=str(owned/'unknown-diagnostic.json'),**raw_pin(diagnostic_raw)),\n",
+          "old_end": 138,
+          "old_start": 137
+        },
+        {
+          "new": "    if provider_journal:\n        result.update(provider_returns=returned,provider_return_summaries_are_unvalidated_scalars=True,\n            callback_return_to_engine_proved=False,offers_accepted=False,current_state_accepted=False)\n    return result\n",
+          "new_end": 320,
+          "new_start": 316,
+          "old": "",
+          "old_end": 141,
+          "old_start": 141
+        },
+        {
+          "new": "             and body['version']=='ROOT-receiver-inference-probe-cold-v4-callback-stages'\n",
+          "new_end": 435,
+          "new_start": 434,
+          "old": "             and body['version']=='ROOT-receiver-inference-probe-cold-v3-head-gated'\n",
+          "old_end": 256,
+          "old_start": 255
+        },
+        {
+          "new": "        validate_positive_callback_phases(phases,pipeline)\n",
+          "new_end": 465,
+          "new_start": 464,
+          "old": "        need(phases[0]['stage']=='BEFORE_PLAN_READ' and phases[-1]['stage']=='BEFORE_OUTPUT'\n             and (pipeline['status']!='RECEIVER_PROBE_RECORDED' or [x['stage']for x in phases if x['stage'] not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]==[x for x in PHASES if x not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]),\n             'ordered reached sites; full inventory requires all required sites; provider sites are conditional')\n",
+          "old_end": 288,
+          "old_start": 285
+        }
+      ],
+      "named_regions_raw_AST_unchanged": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write"
+      ],
+      "parent": {
+        "bytes": 21797,
+        "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py",
+        "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9"
+      },
+      "raw_regions": 20,
+      "removed_named_regions": [],
+      "source": {
+        "bytes": 33669,
+        "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+        "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+      },
+      "whole_forward_inverse_AST": true
+    }
+  ],
+  "project_module_evaluated": false,
+  "schema": "ROOT-callback-stage-source-audit-v1",
+  "scientific_calls": 0
+}

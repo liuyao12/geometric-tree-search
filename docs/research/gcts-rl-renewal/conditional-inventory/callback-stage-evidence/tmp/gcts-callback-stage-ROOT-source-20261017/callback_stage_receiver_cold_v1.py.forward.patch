@@ -1,0 +1,191 @@
+--- a/source.py
++++ b/source.py
+@@ -23,12 +23,12 @@
+ import sys
+ import types
+ EXIT=os._exit
+-VERSION='ROOT-receiver-inference-probe-cold-v3-head-gated'
++VERSION='ROOT-receiver-inference-probe-cold-v4-callback-stages'
+ SCOPE='ROOT-receiver-inference-probe-Source'
+ CLOCK_DOMAIN='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+ CANCELLED=False
+ QUALIFICATION_CASES_BY_PURPOSE={'receptor-inference-visible-probe': ['RI-01-visible-observed-port-inference'], 'receptor-inference-literal-probe': ['RI-02-literal-origin-binding-control']}
+-FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'degree_router': {'bytes': 12779, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'family_consumer': {'bytes': 13040, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py', 'sha256': 'd68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874'}, 'family_engine': {'bytes': 92154, 'path': '/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py', 'sha256': 'b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_aware_checker': {'bytes': 25783, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188'}, 'marked_aware_proposer': {'bytes': 14064, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'producer': {'bytes': 60281, 'path': '/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py', 'sha256': 'fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'receiver_cases': {'path': '/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py', 'sha256': '35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d', 'bytes': 7899}, 'receiver_provider': {'bytes': 60912, 'path': '/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py', 'sha256': 'fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0'}, 'residual_policy': {'bytes': 12826, 'path': '/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py', 'sha256': '2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479'}, 'head_gate': {'path': '/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py', 'sha256': '7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738', 'bytes': 15276}}
++FIXED={'clean_support': {'bytes': 48584, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py', 'sha256': '464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba'}, 'decorator': {'bytes': 12619, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-certified-mark-decorator-source-20261016/certified_row0_point_mark_decorator_v1.py', 'sha256': 'fcc4aeb3275f47cbdba26436e2224bffad91e80974e873d2d57d9263151a3895'}, 'degree_checker': {'bytes': 27553, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py', 'sha256': 'c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d'}, 'degree_router': {'bytes': 12779, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py', 'sha256': 'a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150'}, 'expansion_checker': {'bytes': 56670, 'path': '/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py', 'sha256': '4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1'}, 'fallback': {'bytes': 24227, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py', 'sha256': '69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae'}, 'family_consumer': {'bytes': 13040, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py', 'sha256': 'd68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874'}, 'family_engine': {'bytes': 92154, 'path': '/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py', 'sha256': 'b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e'}, 'head_gate': {'bytes': 15276, 'path': '/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py', 'sha256': '7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738'}, 'host_adapter': {'bytes': 25205, 'path': '/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py', 'sha256': '4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9'}, 'kernel': {'bytes': 10323, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py', 'sha256': '43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9'}, 'marked_adapter': {'bytes': 31038, 'path': '/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py', 'sha256': '7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24'}, 'marked_aware_checker': {'bytes': 25783, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-checker-source-20261016/independent_marked_aware_fibre_checker_v1.py', 'sha256': '8f7a06a28bebb2558a4d2acdae58be4c793d0179f1616b2625d5cb1ee80e9188'}, 'marked_aware_proposer': {'bytes': 14064, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-fibre-proposer-source-20261016/marked_aware_nonimp_fibre_proposer_v1.py', 'sha256': '4316adcc791b8e078cd2bc5ebade234ae24936c2195b6be9addc25b12a0cbd1d'}, 'marked_verifier': {'bytes': 18475, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-state-verifier-source-20261016/independent_channel4_state_verifier_v1.py', 'sha256': '9fd60cad12881e3519c785c417b3348bd013a5ff0b8aa993399276e266da9a6a'}, 'membership': {'bytes': 20112, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py', 'sha256': '5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332'}, 'producer': {'bytes': 60281, 'path': '/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py', 'sha256': 'fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18'}, 'proposer': {'bytes': 22030, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py', 'sha256': 'c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90'}, 'receiver_cases': {'bytes': 8772, 'path': '/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py', 'sha256': '150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094'}, 'receiver_provider': {'bytes': 60912, 'path': '/private/tmp/gcts-head-gated-provider-source-20261017/receptor_transfer_physical_provider_v8.py', 'sha256': 'fd38402191e68567f62029dc19391942b4cdd3f0d1d23dcd9df5d4b1e3c268e0'}, 'residual_policy': {'bytes': 12826, 'path': '/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py', 'sha256': '2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479'}}
+ FIXED_INPUTS={'declaration': {'bytes': 2925, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json', 'sha256': 'a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df'}, 'profile': {'bytes': 8773, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json', 'sha256': '227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02'}, 'stageB_disposition': {'bytes': 4574, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-disposition-v1.json', 'sha256': 'ecb994c6ada2835db51c7a2d8ada6f7833d9945635449ba9be448da0dee6193e'}, 'stageB_encoded': {'bytes': 162591, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/engine-result.json', 'sha256': '3515e77e2554df1b588311772e38f12a401039ca9e2c106227ff0a16e7a149ca'}, 'stageB_expanded': {'bytes': 1926833, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-expanded-result-v1.json', 'sha256': 'bb64b73377940ae6833ae2b30d1bd96396dabffe3e7f773bdfaa640327d8ad93'}, 'stageB_plan': {'bytes': 7924, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-plan-v1.json', 'sha256': '7047504acb8527a7476a7cb24c8031d6b5796150f9f0ce07b914bbd955e5d009'}, 'stageB_response': {'bytes': 7572, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/stageB-owned-v1/response.jsonl', 'sha256': '8ca1ac71fa5a4c1734b68460cf029cfa2e1da0cf7e0670ab53e956f43d95435e'}, 'stageB_transport': {'bytes': 1502, 'path': '/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-channel4-stageB-qualification-ROOT-20261016/ROOT-stageB-transport-concordance-v1.json', 'sha256': '8704567e955cab88e42cd867a4cd28d2911e4afffa286b87b2b27b1b5afda08b'}, 'frozen_inventory': {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-expanded-result-v1.json', 'sha256': '26a3898bf0266621193c6320f64e8446d518f44123a21a7115ef10bd07153b38', 'bytes': 3433689}, 'inventory_acceptance': {'path': '/private/tmp/gcts-native-productive-inventory-work4m-ROOT-20261017/ROOT-source-ground-acceptance-v1.json', 'sha256': '4ef4ebdcd431a284f73ded43caf1957b819d1ddd4e3180e212a619e3b736d817', 'bytes': 2723}}
+ LIMITS={'aggregate_owned_bytes': 536870912, 'caller_finish_reserve_seconds': 1, 'caller_seconds': 90, 'failure_only_seconds': 55, 'joint_seconds': 20, 'owned_seconds': 60}
+ 
+@@ -245,6 +245,84 @@
+             'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False},4096)
+         raw = b'{"context":'+context_raw+b',"diagnostic":'+labels+b',"last_observations":'+encoded(observations,4096)+b'}\n'
+         if len(raw)>16384:raise ValueError('whole controls-context diagnostic16KiB bound')
++    elif failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2':
++        roles = ('proposer','fallback','completion','validator')
++        counters = ('planned_assignments','attempted_assignments','binding_attempts',
++            'ground_environment_proposals','distinct_environment_attempts','full_expansions',
++            'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',
++            'checked_instances','duplicate_instances','offered_instances','head_gate_calls',
++            'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',
++            'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')
++        if (type(capture) is not dict or len(capture) != 2
++                or not all(type(key) is str for key in capture)
++                or set(capture) != {'legacy','provider_returns'}):
++            raise ValueError('fixed builtin provider-return capture')
++        legacy = capture['legacy']; returned = capture['provider_returns']
++        if (type(legacy) is not dict or len(legacy) != 4
++                or not all(type(key) is str for key in legacy) or set(legacy) != set(roles)
++                or type(returned) is not list or len(returned) != 2):
++            raise ValueError('fixed legacy and two provider-return slots')
++        observations = {}
++        for role in roles:
++            failure_gate()
++            item = legacy[role]
++            if item is None:
++                observations[role] = None
++                continue
++            if type(item) is not tuple or len(item) != 4:
++                raise ValueError('fixed scalar last-context tuple')
++            stage,row,selected,native_ns = item
++            if (type(stage) is not str or stage != role.upper()+'_NATIVE_STEP'
++                    or type(row) is not int or not -1<=row<24
++                    or type(selected) is not int or not -1<=selected<=24
++                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000
++                    or not 0<=native_ns<=9223372036854775807):
++                raise ValueError('bounded builtin last-context fields')
++            observations[role] = {'stage':stage,'row':row,'selected_count':selected,'native_ns':native_ns}
++        summaries = []
++        for index in range(2):
++            failure_gate()
++            item = returned[index]
++            if item is None:
++                summaries.append(None)
++                continue
++            if (type(item) is not dict or len(item) != 7
++                    or not all(type(key) is str for key in item)
++                    or set(item) != {'ordinal','native_ns','batch_status','instance_count',
++                        'provider_reason','provider_steps','accounting'}):
++                raise ValueError('fixed builtin provider-return fields')
++            ordinal = item['ordinal']; native_ns = item['native_ns']; counts = item['accounting']
++            if (type(ordinal) is not int or ordinal != index+1
++                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000
++                    or not 0<=native_ns<=9223372036854775807
++                    or type(item['batch_status']) is not str or len(item['batch_status'])>64
++                    or type(item['instance_count']) is not int or not 0<=item['instance_count']<=1
++                    or type(item['provider_reason']) is not str or len(item['provider_reason'])>256
++                    or type(item['provider_steps']) is not int or not 0<=item['provider_steps']<=1000000
++                    or type(counts) is not dict or len(counts) != 20
++                    or not all(type(key) is str for key in counts) or set(counts) != set(counters)
++                    or not all(type(counts[key]) is int and 0<=counts[key]<=1000000 for key in counters)):
++                raise ValueError('bounded builtin provider-return scalars')
++            summaries.append({'ordinal':ordinal,'native_ns':native_ns,
++                'batch_status':item['batch_status'],'instance_count':item['instance_count'],
++                'provider_reason':item['provider_reason'],'provider_steps':item['provider_steps'],
++                'accounting':{key:counts[key] for key in counters}})
++        labels = encoded({'schema':'unit-row-controls-provider-returns-diagnostic-v2',
++            'diagnostic_only':True,'qualification':'UNQUALIFIED_LITERAL_PROVIDER_RETURN_SCALARS',
++            'failure_kind':'TimeoutError','returned_control_record':False,
++            'callback_context':'LITERAL_RETURNED_SCALARS_ONLY_NOT_FULL_RECEIPTS',
++            'provider_return_summaries_are_unvalidated_scalars':True,
++            'last_observation_is_active_failure_frame':False,'callback_return_to_engine_proved':False,
++            'offers_accepted':False,'current_state_accepted':False,'failure_cause_established':False,
++            'live_state_or_proof_trajectory_accepted':False,
++            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,
++            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
++            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False},4096)
++        raw = (b'{"context":'+context_raw+b',"diagnostic":'+labels
++               +b',"last_observations":'+encoded(observations,4096)
++               +b',"provider_returns":'+encoded(summaries,8192)+b'}\n')
++        # Sum of the four independently bounded values and their exact JSON wrapper.
++        if len(raw)>81988:raise ValueError('whole provider-return diagnostic byte bound')
+     else:
+         available = capture['returned'] is True
+         value = capture['payload'] if available else None
+@@ -300,7 +378,7 @@
+         failure_gate()
+     failure_gate(); _mkdir(output_path, 0o700)
+     write('unknown-diagnostic.json',raw)
+-    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-search-failure-diagnostic-completion-v1'),
++    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-controls-provider-returns-completion-v2' if failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2' else 'unit-row-search-failure-diagnostic-completion-v1'),
+         'file':'unknown-diagnostic.json','sha256':_hash(raw).hexdigest(),'bytes':len(raw),
+         'diagnostic_only':True,'positive_joint_gate_accepted':False,
+         'ROOT_resource_accepted':False,'terminal_exit2_and_external_failure_closure_required':True}, 1024)+b'\n'
+@@ -361,7 +439,7 @@
+     phase_tick,phase_tick_code=tick,tick.__code__
+     phase_tick_defaults,phase_tick_kwdefaults=tick.__defaults__,tick.__kwdefaults__
+     phase_write,phase_write_type=os.write,types.BuiltinFunctionType
+-    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')
++    phase_labels=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT', 'P1_ENTER', 'P1_DELEGATE_RETURN', 'P1_CALLBACK_READY', 'P2_ENTER', 'P2_DELEGATE_RETURN', 'P2_CALLBACK_READY', 'C1_ENTER', 'C1_DELEGATE_RETURN', 'C1_CALLBACK_READY', 'C2_ENTER', 'C2_DELEGATE_RETURN', 'C2_CALLBACK_READY', 'C3_ENTER', 'C3_DELEGATE_RETURN', 'C3_CALLBACK_READY', 'SEARCH_RETURN_OBSERVED', 'POSTSEARCH_SNAPSHOT_READY')
+     def phase(stage):
+         if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code
+                 or phase_tick.__defaults__ is not phase_tick_defaults
+@@ -558,6 +636,50 @@
+     need(definition_check['marking_checked'] is True and definition_check['marking_id'] == marking['marking_id'],
+          'fresh independent whole marking check')
+     latest_observations={'proposer':None,'fallback':None,'completion':None,'validator':None}
++    provider_return_slots=[None,None]
++    diagnostic_capture={'legacy':latest_observations,'provider_returns':provider_return_slots}
++    summary_counters=('planned_assignments','attempted_assignments','binding_attempts',
++        'ground_environment_proposals','distinct_environment_attempts','full_expansions',
++        'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',
++        'checked_instances','duplicate_instances','offered_instances','head_gate_calls',
++        'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',
++        'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')
++    def capture_provider_summary(ordinal,value):
++        # Original20 metadata only. Never traverse/copy/hash or mutate the report.
++        # An absent slot never blocks the existing scientific callback.
++        if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code
++                or phase_tick.__defaults__ is not phase_tick_defaults
++                or phase_tick.__kwdefaults__ is not phase_tick_kwdefaults):
++            raise RuntimeError('original summary native endpoint changed')
++        native_ns=phase_tick()
++        if type(ordinal)is not int or not 1<=ordinal<=2 or type(value)is not dict:
++            return
++        batch=value.get('batch');report=value.get('report')
++        if type(batch)is not dict or type(report)is not dict:
++            return
++        status=batch.get('status');instances=batch.get('instances')
++        reason=report.get('reason');work=report.get('work');accounting=report.get('accounting')
++        if (type(status)is not str or len(status)>64 or type(instances)is not list
++                or len(instances)>1 or type(reason)is not str or len(reason)>256
++                or type(work)is not dict or type(accounting)is not dict
++                or len(accounting)!=len(summary_counters)):
++            return
++        steps=work.get('steps')
++        if type(steps)is not int or not 0<=steps<=1000000:
++            return
++        for key in summary_counters:
++            count=accounting.get(key)
++            if type(count)is not int or not 0<=count<=1000000:
++                return
++        summary={'ordinal':ordinal,'native_ns':native_ns,'batch_status':status,
++            'instance_count':len(instances),'provider_reason':reason,'provider_steps':steps,
++            'accounting':{key:accounting[key]for key in summary_counters}}
++        if (tick is not phase_tick or phase_tick.__code__ is not phase_tick_code
++                or phase_tick.__defaults__ is not phase_tick_defaults
++                or phase_tick.__kwdefaults__ is not phase_tick_kwdefaults):
++            raise RuntimeError('original summary native endpoint changed')
++        phase_tick()
++        provider_return_slots[ordinal-1]=summary
+     phase('BEFORE_POOL_READ')
+     frozen = decode(inputs_raw['frozen_inventory'])
+     accepted_inventory = decode(inputs_raw['inventory_acceptance'])
+@@ -603,7 +725,7 @@
+         return modules['receiver_cases'].run_receiver(language=language,
+             base_semantics=semantics,marked_semantics=marked,modules=modules,
+             frozen_inventory=copy.deepcopy(inventory_data),matching_mode=mode,
+-            tick=tick,phase=phase)
++            tick=tick,phase=phase,capture_provider_summary=capture_provider_summary)
+     diagnostic_context_raw=canonical({'schema':'ROOT-receptor-inference-probe-diagnostic-context-v1',
+         'invocation_id':plan['invocation_id'],'purpose':plan['purpose'],'plan':raw_pin(plan_raw),
+         'sources':plan['sources'],'inputs':plan['inputs'],'source_contract':plan['source_contract'],
+@@ -628,8 +750,8 @@
+                         and tuple((k,id(v))for k,v in sorted((f.__kwdefaults__ or {}).items()))
+                             ==tuple((k,token)for k,token,v in a[6])
+                         and all(f.__kwdefaults__[k]is v for k,token,v in a[6])):
+-                    f(diagnostic_output_path,diagnostic_context_raw,latest_observations,
+-                      'CONTROLS_TIMEOUT_LAST_SCALARS',EARLY_G)
++                    f(diagnostic_output_path,diagnostic_context_raw,diagnostic_capture,
++                      'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2',EARLY_G)
+             except BaseException:
+                 pass
+         raise

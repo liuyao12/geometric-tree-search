@@ -1,0 +1,33 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 5759,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/findings-v1.json",
+    "sha256": "760dade2f45ae381017832bfdab084032e9699e5ff27e453ac63da6c49af961b"
+  },
+  "review": {
+    "bytes": 9081,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "835f8d3877f40ff7bdfec1943d3744054dceee9a494d64ea129d149e4be90130"
+  },
+  "schema": "callback-stage-integrated-caller-independent-review-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 66670,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+    "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91"
+  },
+  "source_contract": {
+    "bytes": 21574,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 7599,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/static-review-v1.json",
+    "sha256": "958a0f67da807240642691b58550d9d62f5f23b93aeb648f288154d334355f5a"
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS"
+}

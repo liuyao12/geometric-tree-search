@@ -1,0 +1,251 @@
+{
+  "schema": "ROOT-callback-stage-diagnostic-Source-delta-v2",
+  "roles": {
+    "writer": {
+      "parent": {
+        "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v1.parent.fragment.py",
+        "sha256": "b0f44bcdc67732d95016f7b0592a8698eb5e2c0256be018ae86e5ef99d7dbda7",
+        "bytes": 9329
+      },
+      "source": {
+        "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+        "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205",
+        "bytes": 15021
+      },
+      "edits": [
+        {
+          "old_line_start": 90,
+          "old_line_end_exclusive": 90,
+          "new_line_start": 90,
+          "new_line_end_exclusive": 168,
+          "old": "",
+          "new": "    elif failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2':\n        roles = ('proposer','fallback','completion','validator')\n        counters = ('planned_assignments','attempted_assignments','binding_attempts',\n            'ground_environment_proposals','distinct_environment_attempts','full_expansions',\n            'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',\n            'checked_instances','duplicate_instances','offered_instances','head_gate_calls',\n            'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',\n            'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')\n        if (type(capture) is not dict or len(capture) != 2\n                or not all(type(key) is str for key in capture)\n                or set(capture) != {'legacy','provider_returns'}):\n            raise ValueError('fixed builtin provider-return capture')\n        legacy = capture['legacy']; returned = capture['provider_returns']\n        if (type(legacy) is not dict or len(legacy) != 4\n                or not all(type(key) is str for key in legacy) or set(legacy) != set(roles)\n                or type(returned) is not list or len(returned) != 2):\n            raise ValueError('fixed legacy and two provider-return slots')\n        observations = {}\n        for role in roles:\n            failure_gate()\n            item = legacy[role]\n            if item is None:\n                observations[role] = None\n                continue\n            if type(item) is not tuple or len(item) != 4:\n                raise ValueError('fixed scalar last-context tuple')\n            stage,row,selected,native_ns = item\n            if (type(stage) is not str or stage != role.upper()+'_NATIVE_STEP'\n                    or type(row) is not int or not -1<=row<24\n                    or type(selected) is not int or not -1<=selected<=24\n                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000\n                    or not 0<=native_ns<=9223372036854775807):\n                raise ValueError('bounded builtin last-context fields')\n            observations[role] = {'stage':stage,'row':row,'selected_count':selected,'native_ns':native_ns}\n        summaries = []\n        for index in range(2):\n            failure_gate()\n            item = returned[index]\n            if item is None:\n                summaries.append(None)\n                continue\n            if (type(item) is not dict or len(item) != 7\n                    or not all(type(key) is str for key in item)\n                    or set(item) != {'ordinal','native_ns','batch_status','instance_count',\n                        'provider_reason','provider_steps','accounting'}):\n                raise ValueError('fixed builtin provider-return fields')\n            ordinal = item['ordinal']; native_ns = item['native_ns']; counts = item['accounting']\n            if (type(ordinal) is not int or ordinal != index+1\n                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000\n                    or not 0<=native_ns<=9223372036854775807\n                    or type(item['batch_status']) is not str or len(item['batch_status'])>64\n                    or type(item['instance_count']) is not int or not 0<=item['instance_count']<=1\n                    or type(item['provider_reason']) is not str or len(item['provider_reason'])>256\n                    or type(item['provider_steps']) is not int or not 0<=item['provider_steps']<=1000000\n                    or type(counts) is not dict or len(counts) != 20\n                    or not all(type(key) is str for key in counts) or set(counts) != set(counters)\n                    or not all(type(counts[key]) is int and 0<=counts[key]<=1000000 for key in counters)):\n                raise ValueError('bounded builtin provider-return scalars')\n            summaries.append({'ordinal':ordinal,'native_ns':native_ns,\n                'batch_status':item['batch_status'],'instance_count':item['instance_count'],\n                'provider_reason':item['provider_reason'],'provider_steps':item['provider_steps'],\n                'accounting':{key:counts[key] for key in counters}})\n        labels = encoded({'schema':'unit-row-controls-provider-returns-diagnostic-v2',\n            'diagnostic_only':True,'qualification':'UNQUALIFIED_LITERAL_PROVIDER_RETURN_SCALARS',\n            'failure_kind':'TimeoutError','returned_control_record':False,\n            'callback_context':'LITERAL_RETURNED_SCALARS_ONLY_NOT_FULL_RECEIPTS',\n            'provider_return_summaries_are_unvalidated_scalars':True,\n            'last_observation_is_active_failure_frame':False,'callback_return_to_engine_proved':False,\n            'offers_accepted':False,'current_state_accepted':False,'failure_cause_established':False,\n            'live_state_or_proof_trajectory_accepted':False,\n            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,\n            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,\n            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False},4096)\n        raw = (b'{\"context\":'+context_raw+b',\"diagnostic\":'+labels\n               +b',\"last_observations\":'+encoded(observations,4096)\n               +b',\"provider_returns\":'+encoded(summaries,8192)+b'}\\n')\n        # Sum of the four independently bounded values and their exact JSON wrapper.\n        if len(raw)>81988:raise ValueError('whole provider-return diagnostic byte bound')\n"
+        },
+        {
+          "old_line_start": 145,
+          "old_line_end_exclusive": 146,
+          "new_line_start": 223,
+          "new_line_end_exclusive": 224,
+          "old": "    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-search-failure-diagnostic-completion-v1'),\n",
+          "new": "    marker = encoded({'schema':('unit-row-controls-last-context-completion-v1' if failure_kind == 'CONTROLS_TIMEOUT_LAST_SCALARS' else 'unit-row-controls-provider-returns-completion-v2' if failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2' else 'unit-row-search-failure-diagnostic-completion-v1'),\n"
+        }
+      ],
+      "forward_patch": {
+        "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-forward.patch",
+        "sha256": "88e4c788e1fc66a995b063bca0ad85dfdb78986ffa2585b45b489bbc54a79faf",
+        "bytes": 7057
+      },
+      "inverse_patch": {
+        "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-inverse.patch",
+        "sha256": "409aedb8ef4ca06e32181fccde52c0b35fe122877d5139edc0ddd50f5df094b4",
+        "bytes": 7057
+      },
+      "raw_forward_inverse_exact": true,
+      "actual_patch_forward_inverse_exact": true,
+      "AST_compiles_without_evaluation": true,
+      "unchanged_named_regions": [
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write"
+      ],
+      "changed_existing_named_regions": [
+        "save_failure_diagnostic"
+      ],
+      "new_named_regions": []
+    },
+    "reader": {
+      "parent": {
+        "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v1.parent.py",
+        "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9",
+        "bytes": 21797
+      },
+      "source": {
+        "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v2.py",
+        "sha256": "05ad8d20dcac3ce7c8a3f782753e65dec8d4da90803b115bfbbaf2b51c48489f",
+        "bytes": 33581
+      },
+      "edits": [
+        {
+          "old_line_start": 67,
+          "old_line_end_exclusive": 68,
+          "new_line_start": 67,
+          "new_line_end_exclusive": 85,
+          "old": "PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')\n",
+          "new": "LEGACY_PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')\nCALLBACK_PHASES=('P1_ENTER','P1_DELEGATE_RETURN','P1_CALLBACK_READY',\n    'P2_ENTER','P2_DELEGATE_RETURN','P2_CALLBACK_READY',\n    'C1_ENTER','C1_DELEGATE_RETURN','C1_CALLBACK_READY',\n    'C2_ENTER','C2_DELEGATE_RETURN','C2_CALLBACK_READY',\n    'C3_ENTER','C3_DELEGATE_RETURN','C3_CALLBACK_READY')\nSEARCH_PHASES=('SEARCH_RETURN_OBSERVED','POSTSEARCH_SNAPSHOT_READY')\nPHASES=LEGACY_PHASES+CALLBACK_PHASES+SEARCH_PHASES\nPROVIDER_COUNTERS=('planned_assignments','attempted_assignments','binding_attempts',\n    'ground_environment_proposals','distinct_environment_attempts','full_expansions',\n    'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',\n    'checked_instances','duplicate_instances','offered_instances','head_gate_calls',\n    'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',\n    'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')\nPROVIDER_DIAGNOSTIC_MAX_BYTES=81988\nPHASE_LINE_MAX_BYTES=75\nPHASE_TOTAL_MAX_BYTES=1913\n\n"
+        },
+        {
+          "old_line_start": 70,
+          "old_line_end_exclusive": 71,
+          "new_line_start": 87,
+          "new_line_end_exclusive": 90,
+          "old": "    need(len(raw)<=65536, 'bounded full native stderr')\n",
+          "new": "    need(type(raw)is bytes and len(raw)<=65536, 'bounded full native stderr')\n    need(type(launch)is int and type(terminal)is int and 0<=launch<=terminal<2**63,\n         'literal phase external clock bounds')\n"
+        },
+        {
+          "old_line_start": 72,
+          "old_line_end_exclusive": 76,
+          "new_line_start": 91,
+          "new_line_end_exclusive": 98,
+          "old": "    phases=[];tail=[];stopped=False;last_index=-1\n    for line in raw.splitlines(keepends=True):\n        if not stopped and line.startswith(prefix) and line.endswith(b'\\n'):\n            need(len(line)<=96, 'bounded complete phase line')\n",
+          "new": "    phases=[];tail=[];stopped=False;last_index=-1;last_stamp=launch;wire_bytes=0\n    seen=set();stack=[];ordinals={'P':0,'C':0};group_stage={}\n    lines=raw.splitlines(keepends=True)\n    for line_index,line in enumerate(lines):\n        if line.startswith(prefix) and line.endswith(b'\\n'):\n            need(not stopped, 'no complete phase after stderr tail')\n            need(len(line)<=PHASE_LINE_MAX_BYTES, 'bounded complete phase line')\n"
+        },
+        {
+          "old_line_start": 79,
+          "old_line_end_exclusive": 83,
+          "new_line_start": 101,
+          "new_line_end_exclusive": 147,
+          "old": "            need(label in PHASES and PHASES.index(label)>last_index and number.isdigit()\n                 and (number==b'0' or not number.startswith(b'0')), 'unique ordered literal phase')\n            stamp=int(number);need(type(stamp)is int and launch<=stamp<=terminal<2**63, 'native phase clock join')\n            last_index=PHASES.index(label);phases.append({'stage':label,'native_ns':stamp})\n",
+          "new": "            need(label in PHASES and label not in seen and 1<=len(number)<=19\n                 and number.isdigit() and (number==b'0' or not number.startswith(b'0')),\n                 'unique literal phase and canonical signed64 timestamp')\n            stamp=int(number)\n            need(last_stamp<=stamp<=terminal and stamp<2**63, 'nondecreasing native phase clock join')\n            if label in LEGACY_PHASES:\n                index=LEGACY_PHASES.index(label)\n                need(index>last_index, 'inherited reached-site order')\n                if label=='BEFORE_PROVIDER':\n                    need(not stack and 'P1_ENTER' not in seen\n                         and 'SEARCH_RETURN_OBSERVED' not in seen, 'first-only provider entry site')\n                elif label=='AFTER_PROVIDER':\n                    need('P1_DELEGATE_RETURN' in seen and 'P1_CALLBACK_READY' not in seen\n                         and stack and stack[-1]=='P1', 'first-only provider copied-return site')\n                elif label in ('AFTER_ENGINE','BEFORE_OUTPUT'):\n                    need('POSTSEARCH_SNAPSHOT_READY' in seen,\n                         'completed search/snapshot reached before outer site')\n                last_index=index\n            elif label in CALLBACK_PHASES:\n                need('BEFORE_ENGINE' in seen and 'SEARCH_RETURN_OBSERVED' not in seen,\n                     'callback stages occur in the search interval')\n                group,stage=label.split('_',1)\n                role=group[0];ordinal=int(group[1])\n                if stage=='ENTER':\n                    need(ordinal==ordinals[role]+1, 'per-role callback entry ordinal')\n                    if group=='P1':need('BEFORE_PROVIDER' in seen, 'first provider outer site precedes delegate')\n                    ordinals[role]=ordinal;stack.append(group);group_stage[group]='ENTER'\n                elif stage=='DELEGATE_RETURN':\n                    need(stack and stack[-1]==group and group_stage[group]=='ENTER',\n                         'nested callback delegate-return order')\n                    group_stage[group]='DELEGATE_RETURN'\n                else:\n                    need(stack and stack[-1]==group and group_stage[group]=='DELEGATE_RETURN',\n                         'nested callback ready order')\n                    if group=='P1':need('AFTER_PROVIDER' in seen, 'first provider old copied-return site')\n                    group_stage[group]='CALLBACK_READY';stack.pop()\n            elif label=='SEARCH_RETURN_OBSERVED':\n                # search catches TimeoutError, including membership subclasses:\n                # one entered callback may unwind without returning or logging.\n                need('BEFORE_ENGINE' in seen and len(stack)<=1,\n                     'search return may retain one unfinished callback group')\n            else:\n                need('SEARCH_RETURN_OBSERVED' in seen, 'postsearch snapshot follows search return')\n            wire_bytes+=len(line)\n            need(wire_bytes<=PHASE_TOTAL_MAX_BYTES, 'bounded complete fixed phase wire')\n            seen.add(label);last_stamp=stamp;phases.append({'stage':label,'native_ns':stamp})\n"
+        },
+        {
+          "old_line_start": 84,
+          "old_line_end_exclusive": 84,
+          "new_line_start": 148,
+          "new_line_end_exclusive": 162,
+          "old": "",
+          "new": "            # A partial final phase can be retained as raw tail, never completed.\n            if line.startswith(prefix) or (line and prefix.startswith(line)):\n                need(line_index==len(lines)-1 and not line.endswith(b'\\n'), 'only a final incomplete phase tail')\n                possible=False\n                for label in PHASES:\n                    head=prefix+label.encode('ascii')+b' '\n                    if head.startswith(line):possible=True\n                    elif line.startswith(head):\n                        number=line[len(head):]\n                        if (len(number)<=19 and (not number or number.isdigit())\n                                and (not number or number==b'0' or not number.startswith(b'0'))\n                                and (not number or int(number)<2**63)):\n                            possible=True\n                need(possible and len(line)<PHASE_LINE_MAX_BYTES, 'literal incomplete phase prefix only')\n"
+        },
+        {
+          "old_line_start": 85,
+          "old_line_end_exclusive": 86,
+          "new_line_start": 163,
+          "new_line_end_exclusive": 164,
+          "old": "    need(len(phases)<=13, 'finite fixed phase sites')\n",
+          "new": "    need(len(phases)<=30, 'finite fixed phase sites')\n"
+        },
+        {
+          "old_line_start": 87,
+          "old_line_end_exclusive": 87,
+          "new_line_start": 165,
+          "new_line_end_exclusive": 197,
+          "old": "",
+          "new": "\n\ndef validate_positive_callback_phases(phases, pipeline):\n    # Counts come only from the full authenticated returned record, never failure slots.\n    need(type(pipeline)is dict and type(pipeline.get('observations'))is dict,\n         'full returned callback observations')\n    observations=pipeline['observations']\n    providers=observations.get('provider_calls');consumers=observations.get('consumer_calls')\n    need(type(providers)is list and type(consumers)is list\n         and len(providers)<=2 and len(consumers)<=3, 'exact current full-record callback count bounds')\n    labels={item['stage']for item in phases}\n    wanted=set(LEGACY_PHASES)-{'BEFORE_PROVIDER','AFTER_PROVIDER'}\n    wanted.update(SEARCH_PHASES)\n    need(wanted<=labels, 'full returned outer setup/search/snapshot/output sites')\n    unfinished=[]\n    for role,count in (('P',len(providers)),('C',len(consumers))):\n        maximum=2 if role=='P' else 3\n        for ordinal in range(1,maximum+1):\n            group=role+str(ordinal)\n            entered=group+'_ENTER'in labels\n            delegated=group+'_DELEGATE_RETURN'in labels\n            ready=group+'_CALLBACK_READY'in labels\n            if ordinal<=count:\n                need(entered and delegated, 'full logged ordinal follows actual delegate-return site')\n            if ready:need(ordinal<=count, 'ready site has an already appended full observation')\n            if entered and not ready:unfinished.append(group)\n            if entered and ordinal>count:\n                need(ordinal==count+1 and not ready, 'one unlogged final callback prefix only')\n    need(len(unfinished)<=1, 'at most one unwound incomplete callback in full returned record')\n    if providers:need('AFTER_PROVIDER'in labels, 'first logged provider passed old copied-return site')\n    need(phases and phases[0]['stage']=='BEFORE_PLAN_READ' and phases[-1]['stage']=='BEFORE_OUTPUT'\n         and labels<=set(PHASES), 'complete outer sites with truthful callback prefixes')\n"
+        },
+        {
+          "old_line_start": 95,
+          "old_line_end_exclusive": 96,
+          "new_line_start": 205,
+          "new_line_end_exclusive": 206,
+          "old": "    diagnostic_raw=read(owned/'unknown-diagnostic.json',16384)\n",
+          "new": "    diagnostic_raw=read(owned/'unknown-diagnostic.json',PROVIDER_DIAGNOSTIC_MAX_BYTES)\n"
+        },
+        {
+          "old_line_start": 99,
+          "old_line_end_exclusive": 102,
+          "new_line_start": 209,
+          "new_line_end_exclusive": 221,
+          "old": "    need(marker['schema']=='unit-row-controls-last-context-completion-v1'\n         and marker['file']=='unknown-diagnostic.json'\n         and marker['sha256']==raw_pin(diagnostic_raw)['sha256']and marker['bytes']==len(diagnostic_raw)\n",
+          "new": "    marker_keys={'schema','file','sha256','bytes','diagnostic_only','positive_joint_gate_accepted',\n                 'ROOT_resource_accepted','terminal_exit2_and_external_failure_closure_required'}\n    need(type(marker)is dict and len(marker)==len(marker_keys)\n         and all(type(key)is str for key in marker) and set(marker)==marker_keys,\n         'exact builtin diagnostic completion fields')\n    need(type(marker['schema'])is str and marker['schema']in\n         ('unit-row-controls-last-context-completion-v1','unit-row-controls-provider-returns-completion-v2'),\n         'explicit legacy or provider-return completion schema')\n    provider_journal=marker['schema']=='unit-row-controls-provider-returns-completion-v2'\n    need(type(marker['file'])is str and marker['file']=='unknown-diagnostic.json'\n         and type(marker['sha256'])is str and marker['sha256']==raw_pin(diagnostic_raw)['sha256']\n         and type(marker['bytes'])is int and marker['bytes']==len(diagnostic_raw)\n"
+        },
+        {
+          "old_line_start": 104,
+          "old_line_end_exclusive": 105,
+          "new_line_start": 223,
+          "new_line_end_exclusive": 225,
+          "old": "         and marker['terminal_exit2_and_external_failure_closure_required']is True,\n",
+          "new": "         and marker['terminal_exit2_and_external_failure_closure_required']is True\n         and (provider_journal or len(diagnostic_raw)<=16384),\n"
+        },
+        {
+          "old_line_start": 106,
+          "old_line_end_exclusive": 106,
+          "new_line_start": 226,
+          "new_line_end_exclusive": 231,
+          "old": "",
+          "new": "    outer_keys={'context','diagnostic','last_observations'}\n    if provider_journal:outer_keys.add('provider_returns')\n    need(type(diagnostic)is dict and len(diagnostic)==len(outer_keys)\n         and all(type(key)is str for key in diagnostic) and set(diagnostic)==outer_keys,\n         'exact builtin diagnostic object')\n"
+        },
+        {
+          "old_line_start": 107,
+          "old_line_end_exclusive": 107,
+          "new_line_start": 232,
+          "new_line_end_exclusive": 235,
+          "old": "",
+          "new": "    need(type(context)is dict and all(type(key)is str for key in context)\n         and type(labels)is dict and all(type(key)is str for key in labels),\n         'builtin context and labels before field access')\n"
+        },
+        {
+          "old_line_start": 120,
+          "old_line_end_exclusive": 128,
+          "new_line_start": 248,
+          "new_line_end_exclusive": 273,
+          "old": "    need(labels['schema']=='unit-row-controls-last-context-diagnostic-v1'\n         and labels['diagnostic_only']is True and labels['returned_control_record']is False\n         and labels['failure_kind']=='TimeoutError'\n         and all(labels[key]is False for key in ('last_observation_is_active_failure_frame',\n              'live_state_or_proof_trajectory_accepted','positive_joint_gate_accepted','logical_proof_accepted',\n              'exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted',\n              'RL_accepted','ROOT_resource_accepted')), 'raw scalar diagnostic has no proof or cause authority')\n    need(type(slots)is dict and set(slots)=={'proposer','fallback','completion','validator'}\n",
+          "new": "    if provider_journal:\n        expected_labels={'schema':'unit-row-controls-provider-returns-diagnostic-v2',\n            'diagnostic_only':True,'qualification':'UNQUALIFIED_LITERAL_PROVIDER_RETURN_SCALARS',\n            'failure_kind':'TimeoutError','returned_control_record':False,\n            'callback_context':'LITERAL_RETURNED_SCALARS_ONLY_NOT_FULL_RECEIPTS',\n            'provider_return_summaries_are_unvalidated_scalars':True,\n            'last_observation_is_active_failure_frame':False,'callback_return_to_engine_proved':False,\n            'offers_accepted':False,'current_state_accepted':False,'failure_cause_established':False,\n            'live_state_or_proof_trajectory_accepted':False,\n            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,\n            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,\n            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}\n        need(set(labels)==set(expected_labels)\n             and all(type(labels[key])is type(value) and labels[key]==value\n                     for key,value in expected_labels.items()), 'literal V2 unqualified scalar-only labels')\n    else:\n        need(labels['schema']=='unit-row-controls-last-context-diagnostic-v1'\n             and labels['diagnostic_only']is True and labels['returned_control_record']is False\n             and labels['failure_kind']=='TimeoutError'\n             and all(labels[key]is False for key in ('last_observation_is_active_failure_frame',\n                  'live_state_or_proof_trajectory_accepted','positive_joint_gate_accepted','logical_proof_accepted',\n                  'exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted',\n                  'RL_accepted','ROOT_resource_accepted')), 'raw scalar diagnostic has no proof or cause authority')\n    need(type(slots)is dict and len(slots)==4 and all(type(key)is str for key in slots)\n         and set(slots)=={'proposer','fallback','completion','validator'}\n"
+        },
+        {
+          "old_line_start": 131,
+          "old_line_end_exclusive": 133,
+          "new_line_start": 276,
+          "new_line_end_exclusive": 279,
+          "old": "        need(set(value)=={'stage','row','selected_count','native_ns'}\n             and value['stage']==role.upper()+'_NATIVE_STEP'\n",
+          "new": "        need(type(value)is dict and len(value)==4 and all(type(key)is str for key in value)\n             and set(value)=={'stage','row','selected_count','native_ns'}\n             and type(value['stage'])is str and value['stage']==role.upper()+'_NATIVE_STEP'\n"
+        },
+        {
+          "old_line_start": 137,
+          "old_line_end_exclusive": 137,
+          "new_line_start": 283,
+          "new_line_end_exclusive": 311,
+          "old": "",
+          "new": "    returned=None\n    if provider_journal:\n        returned=diagnostic['provider_returns']\n        need(type(returned)is list and len(returned)==2, 'two nullable builtin provider-return slots')\n        phase_stamps={item['stage']:item['native_ns']for item in phases}\n        keys={'ordinal','native_ns','batch_status','instance_count','provider_reason','provider_steps','accounting'}\n        for index,value in enumerate(returned):\n            if value is None:continue\n            need(type(value)is dict and len(value)==7 and all(type(key)is str for key in value)\n                 and set(value)==keys, 'exact builtin provider-return fields')\n            counts=value['accounting']\n            need(type(value['ordinal'])is int and value['ordinal']==index+1\n                 and type(value['native_ns'])is int and began<=value['native_ns']<deadline\n                 and value['native_ns']<=terminal\n                 and type(value['batch_status'])is str and len(value['batch_status'])<=64\n                 and type(value['instance_count'])is int and 0<=value['instance_count']<=1\n                 and type(value['provider_reason'])is str and len(value['provider_reason'])<=256\n                 and type(value['provider_steps'])is int and 0<=value['provider_steps']<=1000000\n                 and type(counts)is dict and len(counts)==20 and all(type(key)is str for key in counts)\n                 and set(counts)==set(PROVIDER_COUNTERS)\n                 and all(type(counts[key])is int and 0<=counts[key]<=1000000 for key in PROVIDER_COUNTERS),\n                 'literal bounded unvalidated provider-return scalars')\n            group='P'+str(index+1)\n            need(group+'_DELEGATE_RETURN'in phase_stamps\n                 and phase_stamps[group+'_DELEGATE_RETURN']<=value['native_ns']\n                 and (group+'_CALLBACK_READY'not in phase_stamps\n                      or value['native_ns']<=phase_stamps[group+'_CALLBACK_READY']),\n                 'nullable scalar timestamp joins reached delegate and optional ready sites')\n"
+        },
+        {
+          "old_line_start": 138,
+          "old_line_end_exclusive": 139,
+          "new_line_start": 312,
+          "new_line_end_exclusive": 313,
+          "old": "    return {'complete_pair':True,'diagnostic':dict(path=str(owned/'unknown-diagnostic.json'),**raw_pin(diagnostic_raw)),\n",
+          "new": "    result={'complete_pair':True,'diagnostic':dict(path=str(owned/'unknown-diagnostic.json'),**raw_pin(diagnostic_raw)),\n"
+        },
+        {
+          "old_line_start": 142,
+          "old_line_end_exclusive": 142,
+          "new_line_start": 316,
+          "new_line_end_exclusive": 320,
+          "old": "",
+          "new": "    if provider_journal:\n        result.update(provider_returns=returned,provider_return_summaries_are_unvalidated_scalars=True,\n            callback_return_to_engine_proved=False,offers_accepted=False,current_state_accepted=False)\n    return result\n"
+        },
+        {
+          "old_line_start": 286,
+          "old_line_end_exclusive": 289,
+          "new_line_start": 464,
+          "new_line_end_exclusive": 465,
+          "old": "        need(phases[0]['stage']=='BEFORE_PLAN_READ' and phases[-1]['stage']=='BEFORE_OUTPUT'\n             and (pipeline['status']!='RECEIVER_PROBE_RECORDED' or [x['stage']for x in phases if x['stage'] not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]==[x for x in PHASES if x not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]),\n             'ordered reached sites; full inventory requires all required sites; provider sites are conditional')\n",
+          "new": "        validate_positive_callback_phases(phases,pipeline)\n"
+        }
+      ],
+      "forward_patch": {
+        "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-forward.patch",
+        "sha256": "91ac72c8b53572f027ca7eb5184f9c57d0879f18977474e5fcf8ff55f78315b5",
+        "bytes": 21084
+      },
+      "inverse_patch": {
+        "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-inverse.patch",
+        "sha256": "5f04583c9cae781b816d61289193b9ae1cd9f1067a6800572adeec0366ebdcd7",
+        "bytes": 21084
+      },
+      "raw_forward_inverse_exact": true,
+      "actual_patch_forward_inverse_exact": true,
+      "AST_compiles_without_evaluation": true,
+      "unchanged_named_regions": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write"
+      ],
+      "changed_existing_named_regions": [
+        "read_phases",
+        "read_failure_diagnostic",
+        "main"
+      ],
+      "new_named_regions": [
+        "validate_positive_callback_phases"
+      ]
+    }
+  },
+  "scope": "Source replacements only; Root owns final main integration and current authority rebinding.",
+  "scientific_calls": 0,
+  "source_evaluated": false
+}

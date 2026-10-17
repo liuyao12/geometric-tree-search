@@ -1,0 +1,69 @@
+{
+  "API": {
+    "bytes": 8826,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/API-wire-v3.json",
+    "sha256": "53ff4cf0837ca2f5e2acca869f970ad4d6f77435dbc7396bee78fb16b9423a48"
+  },
+  "actual_execution_authorized": false,
+  "actual_results_or_clocks_read": false,
+  "actual_writer2_reader18_and_immediate1_inverses_all6_real_patch_applications_exact": true,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_overlap": "Own engine7/checker/point/diagnostic theory ancestry; distinct helper/gate/provider review and field coordination; no writer/reader authorship or own engine self-review.",
+  "blocking_findings": [],
+  "findings": {
+    "bytes": 6261,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/findings-v3.json",
+    "sha256": "9056859525f8137f838b6f99ecad0d3ba6005f844f922db985186fa929b1d7f6"
+  },
+  "pass": true,
+  "preserved_v2_negative": {
+    "bytes": 2120,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "fd13d77f54cc31317eac1021fa9ef7bd3ac2cea1acde8034d9ba68789253bbc4"
+  },
+  "reviewed_handoff": {
+    "bytes": 2927,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/handoff-v3.json",
+    "sha256": "4896d6460998635e17b1f280720f41c73b6c2da528562300fd230219e20c0016"
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "runtime_qualified": false,
+  "schema": "ROOT-callback-stage-diagnostic-seam-typed-Source-review-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-callback-stage-diagnostic-seam-Source",
+  "scope_condition": "Pure failure-only builtins and saved-byte protocol seams under exact current synchronous pinned Root scope, requiring fresh complete Root composition rebind/CodeSeal/once/native authority. No scientific/model/callback route/limits change or frame/cause/offers/qualification/performance authority. Parent reader authority literals are historical templates, not actual-ready.",
+  "source": {
+    "bytes": 15021,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+    "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+  },
+  "source_contract": {
+    "bytes": 13042,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v3.json",
+    "sha256": "20372a1d3a5abe9945337b7594db14dbdfcc8ff91390ddd76a92a8550539524c"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 33660,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "sha256": "5978c1343542ad7c7e1e5fbdb31dddb22e3b33d49e4654b8a743065d357ea256"
+    },
+    "writer_replacement": {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    }
+  },
+  "static_review": {
+    "bytes": 14428,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/static-review-v3.json",
+    "sha256": "93fb2863fb09d97da938309f431aef04f0772cac735aba9ddf3fc20276d5b705"
+  },
+  "verdict": "CONDITIONAL_SOURCE_PASS",
+  "whole_writer_reader_API_contract_parent_helper_control_flow_read": true,
+  "writer_nested5_and_reader_unrelated8_raw_AST_exact": true
+}

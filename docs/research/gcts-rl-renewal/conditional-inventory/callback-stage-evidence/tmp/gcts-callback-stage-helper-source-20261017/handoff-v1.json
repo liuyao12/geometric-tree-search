@@ -1,0 +1,74 @@
+{
+  "API": {
+    "bytes": 4741,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/API-wire-v1.json",
+    "sha256": "f6c87a9282d84a3b9c00d7c897766c998bdb8ea33c256bd0ba293354b94b0665"
+  },
+  "Review_ABI": {
+    "author_identity": "/root/arithmetic_induction",
+    "schema": "ROOT-callback-stage-receiver-cases-typed-Source-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "ROOT-callback-stage-receiver-cases-Source",
+    "source": {
+      "bytes": 8772,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+    },
+    "source_contract": {
+      "bytes": 5288,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-contract-v1.json",
+      "sha256": "555dd0cc08ead397e3d670674001b10d4e8fded1608b7ad28c7489a048fef6ce"
+    },
+    "source_only": true,
+    "sources": {
+      "receiver_cases": {
+        "bytes": 8772,
+        "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+        "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "case_source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 4291,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/forward.patch",
+      "sha256": "bc064b35b68846a257447e8f97fe30fde4084129bbb709b928e5191e6c4a8b58"
+    },
+    "inverse": {
+      "bytes": 4291,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/inverse.patch",
+      "sha256": "f93d7a76c4e9e8418e74030b7a34ae663c52a9b350d39aa5ebf99063b0e9a14a"
+    }
+  },
+  "schema": "ROOT-callback-stage-receiver-cases-handoff-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "source_contract": {
+    "bytes": 5288,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-contract-v1.json",
+    "sha256": "555dd0cc08ead397e3d670674001b10d4e8fded1608b7ad28c7489a048fef6ce"
+  },
+  "source_delta": {
+    "bytes": 4570,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-delta-v1.json",
+    "sha256": "234e291b71e671e9dd2e466cefe0b0776c63ad451a0de3c6832b62d341e87d3e"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "static_audit": {
+    "bytes": 1835,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/static-audit-v1.json",
+    "sha256": "6f870023581ad1c10344c5ffd2b3ffb7e0b906e31855310b30958540fc4ef62d"
+  }
+}

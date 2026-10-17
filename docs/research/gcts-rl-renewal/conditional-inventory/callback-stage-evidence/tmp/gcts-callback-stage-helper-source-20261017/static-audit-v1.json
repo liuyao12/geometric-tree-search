@@ -1,0 +1,50 @@
+{
+  "actual_delegate_constructor_search_snapshot_AST_exact": true,
+  "actual_result_or_model_reads": false,
+  "both_actual_F0_patch_applications_exact": true,
+  "clocks_read": false,
+  "combined_Root_stage_cap": 30,
+  "compile_without_evaluation": true,
+  "erratum": {
+    "bytes": 6584,
+    "path": "/private/tmp/gcts-head-gated-performance-source-20261017/diagnostic-bound-erratum-v2.json",
+    "sha256": "46effab35ad48abdaa07a1aff2aec7dae185c04e95eff1d0f9132448e77658f2"
+  },
+  "imports_only": [
+    "hashlib",
+    "json"
+  ],
+  "new_stage_count": 17,
+  "no_exception_catches_or_added_raises": true,
+  "original_return_value_statements_unchanged": true,
+  "parent_source": {
+    "bytes": 7899,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py",
+    "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d"
+  },
+  "project_module_evaluated": false,
+  "provider_and_consumer_delegates_are_unconditional_callback_body_assignments": true,
+  "retained_named_regions_raw_AST_exact": [
+    "require",
+    "canonical",
+    "digest",
+    "run_receiver.copy",
+    "run_receiver.degree_proposer",
+    "run_receiver.filtered_fallback",
+    "run_receiver.certify_fallback"
+  ],
+  "schema": "ROOT-callback-stage-receiver-cases-static-audit-v1",
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "source_delta": {
+    "bytes": 4570,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-delta-v1.json",
+    "sha256": "234e291b71e671e9dd2e466cefe0b0776c63ad451a0de3c6832b62d341e87d3e"
+  },
+  "tests_executed": false,
+  "whole_raw_AST_inverse_exact": true
+}

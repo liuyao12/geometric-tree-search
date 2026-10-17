@@ -1,0 +1,417 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authority_boundary": "These contexts use their own original complete Hilbert fixture/catalogue/theory/ordered-Gamma/model epoch. The arithmetic original-Source17/input2 epoch and adapter acceptance do not transfer to Hilbert.",
+  "authorship_disclosure": "Reviewer authored arithmetic family adapter/consumer and previous caller instrumentation; this is a Source-only Hilbert compatibility design, not an independent review of those own implementations or fresh dynamic acceptance.",
+  "clock_calls": 0,
+  "contexts": [
+    {
+      "catalogue": {
+        "bytes": 10822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-point-chain-w-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "25267716d36cd8a0d762def75b39c278b1ea1557e52f41baf38114a3f9746561"
+      },
+      "dimensions": {
+        "formula_count": 5112,
+        "logical_rows": 24,
+        "non_assumption_witness_count": 2918,
+        "primitive_license_count": 2921,
+        "source_body_count": 0
+      },
+      "hypothesis_occurrences": 3,
+      "id": "fresh-inc-point-chain-w",
+      "inventory": [],
+      "ordered_hypotheses": [
+        [
+          "eq",
+          [
+            "fun",
+            "A",
+            []
+          ],
+          [
+            "fun",
+            "B",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "B",
+            []
+          ],
+          [
+            "fun",
+            "C",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "A",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "reported_dynamic_qualified": false,
+      "reported_search_status": "UNSEARCHED",
+      "reported_static_qualified": true,
+      "rows": 24,
+      "statement_latex": "\\(A=B,\\;B=C,\\;\\operatorname{Incident}(A,w)\\;\\vdash\\;\\operatorname{Incident}(C,w)\\)",
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "C",
+            []
+          ],
+          [
+            "fun",
+            "w",
+            []
+          ]
+        ]
+      ]
+    },
+    {
+      "catalogue": {
+        "bytes": 10870,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-progress-20261013/fresh-inc-reversed-line-chain-preparation-v1/catalog-v1/catalog-v1.json",
+        "sha256": "33a648a233a67463ebaa53fc1410b8894b8d5f9523d190df05cbb4459bdbdb15"
+      },
+      "dimensions": {
+        "formula_count": 5112,
+        "logical_rows": 24,
+        "non_assumption_witness_count": 2918,
+        "primitive_license_count": 2921,
+        "source_body_count": 0
+      },
+      "hypothesis_occurrences": 3,
+      "id": "fresh-inc-reversed-line-chain",
+      "inventory": [],
+      "ordered_hypotheses": [
+        [
+          "eq",
+          [
+            "fun",
+            "v",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "w",
+            []
+          ],
+          [
+            "fun",
+            "v",
+            []
+          ]
+        ],
+        [
+          "pred",
+          "Incident",
+          [
+            [
+              "fun",
+              "D",
+              []
+            ],
+            [
+              "fun",
+              "w",
+              []
+            ]
+          ]
+        ]
+      ],
+      "reported_dynamic_qualified": false,
+      "reported_search_status": "UNSEARCHED",
+      "reported_static_qualified": true,
+      "rows": 24,
+      "statement_latex": "\\(v=u,\\;w=v,\\;\\operatorname{Incident}(D,w)\\;\\vdash\\;\\operatorname{Incident}(D,u)\\)",
+      "target": [
+        "pred",
+        "Incident",
+        [
+          [
+            "fun",
+            "D",
+            []
+          ],
+          [
+            "fun",
+            "u",
+            []
+          ]
+        ]
+      ]
+    }
+  ],
+  "dynamic_qualification_checklist": [
+    "Admit the exact two declaration IDs through the existing fresh cohort gate; preserve ordered three Gamma occurrences, target, full24 boundary/root generations, target mark, complete immutable catalogue and empty initial family inventory. Compare full context/epoch/preimages, not a renamed target or digest-only substitute.",
+    "On the actual fresh context, compare current incremental domains with independently reconstructed complete original row domains after real public placements/exclusions and rollback, including remote read marks and full ordered strict-prior MP references. Sampling/family lists cannot certify zero/singleton/EOF.",
+    "Exercise global late dead over earlier forced, global forced over branching, earliest generation before smaller later degree, current-domain preference membership, no advice absence pruning and unchanged canonical full fallback.",
+    "Verify exact transaction/root restoration: totals, markings/refcounts, domains/incidence/dependencies, generations, exclusions, cursor/order state and any family continuation. Observer own/resource failure means UNKNOWN, never failed child or mathematical exhaustion.",
+    "Require whole current Source/observer/callback guards and a single predeclared same-cost comparison envelope covering setup/catalogue loading/construction/matching/checking/search/rollback/output/reap; preserve and disclose separately qualified static catalogue costs. No budget reset or borrowed historical cheaper phase.",
+    "Predeclare distinct result endpoints: an independently checked original ground target ancestry with its exact compatible finite point union; an actually selected ancestry; and full24 exact tiling are different. The fresh contract already distinguishes completed source-proposed patch from selected proof and full24. A native logical-only certificate cannot stand in for the point certificate."
+  ],
+  "io_note": "One workspace Source read stalled on a dataless point-core file; own handle35628 interrupted and reaped130. Exact pinned Source bytes were then read from the resident reproduction.zip member; no original rewritten.",
+  "located_seams": [
+    {
+      "anchors": "compiler.compile_to_directory lines589-894; grammar.recipe276-289; independent audit main539-724. Static report binds complete licence/DAG/formula scans and all24 initial domain streams; this is not dynamic domain equivalence.",
+      "refs": [
+        "compiler",
+        "independent_grammar",
+        "independent_audit_worker",
+        "qualified_initial_board_metadata"
+      ],
+      "role": "complete preparation/independent initial qualification"
+    },
+    {
+      "anchors": "NativeClosure constructor28-108, _recipe_for110+, _dag119+, worker main64+: complete recipe output/ordered-premise AND dependencies, original Gamma seed mapping, no saved proof input. Worker reconstructs commands and calls GroundChecker.proof.",
+      "gap": "Existing worker is logical-only: geometric_placement/point_certificate false. Its logical20/cold170/caller180 envelope is historical and cannot be advertised as the arithmetic whole20 or compared against an unequal GCTS window. No limits changed here.",
+      "refs": [
+        "native_prover",
+        "native_worker"
+      ],
+      "role": "conventional native prover"
+    },
+    {
+      "anchors": "GroundChecker60-146; command108-136; proof138-146. Checks exact five-rule fields, original named axiom, indexed Gamma, closed capture-free instantiate/atomic equality template and ordered strict-prior MP; returns native_accepted false by design.",
+      "refs": [
+        "independent_checker"
+      ],
+      "role": "independent primitive checker"
+    },
+    {
+      "anchors": "Runner RECIPIENT_IDS29/profile30 exact fresh pair; static_admission194-272; preflight275-378; work487-748. Runtime contract-v5 APIs already name FirstCheckedProofObserver and full24 checker. Fresh final checker admitted_context347+, verify_saved_certificate774+.",
+      "gap": "Current Source closure/reviews and generic observer controls plus actual per-case dynamic qualification remain gates; existing Source is not runtime acceptance. Old batched worker selects different next-inc cases, and I.2 first-proof worker selects different fresh-i2-CD-vw cases.",
+      "refs": [
+        "fresh_runtime_contract",
+        "fresh_runner",
+        "fresh_final_checker"
+      ],
+      "role": "existing fresh dynamic composition"
+    },
+    {
+      "anchors": "Point core decision341-353: global dead, global forced, then generation/count/row; checkpoint355; _apply_legal358+. Dynamic graph decision449+, guarded current membership binding456-510, full-guard membership batch516+, apply/exclude/rollback618-634.",
+      "gap": "Source alignment here does not establish complete dynamic conformance or validate the whole historical benchmark. Guard/schema and every remote marking dependency must be requalified on the exact fresh composition.",
+      "refs": [
+        "point_core",
+        "dynamic_graph"
+      ],
+      "role": "scheduler and rollback"
+    }
+  ],
+  "metadata_status_boundary": {
+    "cutoff": "2026-10-14T03:53:40.625897+00:00",
+    "freshness": "Pinned static report says UNSEARCHED/dynamic false. Later fresh runner/observer Sources exist; this note did not read their actual results and does not assert no later run occurred. Root must reconcile current saved disposition before a new grant.",
+    "read_limits": "Only Source, declaration/qualification metadata and Source-archive bytes read. No proof/certificate/trajectory/donor word or actual search instance file read or replayed.",
+    "scope": "The two exact declared finite rule catalogues and complete initial24-row point models only. All original syntax seeds, all five rules and empty inventory retained. No proof discovery, dynamic search/observer qualification, native/universal checker, learned marking, RL, comparison gain, substitution or plane-tiling acceptance."
+  },
+  "module_evaluations": 0,
+  "native_dialect": {
+    "catalogue": "Both retain formula_count5112, primitive_license_count2921, non_assumption_witness_count2918, source_body_count0. All syntax seeds and five rule families remain present.",
+    "named_axiom": "I.2 unchanged",
+    "primitive_ports": "MP has ordered antecedent/implication strict-prior inputs; instantiate and atomic eq_subst are zero-premise implication-schema licences, not new derived rules. Assumption uses the exact original Gamma occurrence index. No added generalization/reflexivity/conjunction rule.",
+    "rules": [
+      "axiom",
+      "instantiate",
+      "eq_subst",
+      "mp",
+      "assumption"
+    ],
+    "signature": {
+      "functions": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "u": 0,
+        "v": 0,
+        "w": 0
+      },
+      "predicates": {
+        "Incident": 2,
+        "Line": 1,
+        "Point": 1
+      }
+    },
+    "theory": "hilbert-incidence; unsorted elementary equality calibration, not a new geometry theorem or an implicit point/line sort"
+  },
+  "nonclaims": {
+    "RL_accepted": false,
+    "dynamic_qualification_accepted": false,
+    "family_adapter_integrated": false,
+    "new_budget_or_benchmark_authorized": false,
+    "new_proof_written": false,
+    "proof_discovered": false,
+    "proof_route_supplied": false,
+    "speedup_claimed": false,
+    "whole_engine_accepted": false
+  },
+  "schema": "Hilbert-fresh-context-compatibility-and-dynamic-qualification-plan-v1",
+  "scientific_calls": 0,
+  "scope": "Read-only compatibility/checklist for the two exact fresh symbolic Hilbert contexts. No new proof, proof route, inventory, Source implementation, budget or benchmark mutation.",
+  "shared_family_adapter_gaps": [
+    {
+      "gap": "native host/authority",
+      "needed": "New Hilbert describe_host/admission binding from actual admitted catalogue/theory/ordered Gamma/finite grammar/full formula registry and model epoch. Existing generic host-v1 rule table and list-AST syntax can represent the five rules, but adapter4bd6 describe_host65-119 hard-pins arithmetic KERNEL_VERSION/profile/original17; it must not be bypassed or relabelled."
+    },
+    {
+      "gap": "all primitive/physical ports",
+      "needed": "Map checked full expansion to exact catalogue recipe/witness plus native ordered input rows and actual current points, preserving assumption occurrence, native syntax/capture/closed-term checks and every nested DISTINCT/ALLOW_SAME physical sharing rule. No new generalize rule, fake Gamma or implicit sorted geometry."
+    },
+    {
+      "gap": "point identity and complete exposure census",
+      "needed": "Preserve original recipe/prototype/placement full preimages, injective formula-registry mapping, unit row support, formula channel and ordered offset channels, remote marking/refcounts and full alternative-specific union. Reconcile offered/exposed identities without merging incompatible alternative unions. Arithmetic channel4 state/row schema is not a Hilbert point decoder."
+    },
+    {
+      "gap": "collector/matching/consumer seam",
+      "needed": "An actual Hilbert selected-recipe reader must provide the primitive DAG/provenance; arithmetic collector/provider APIs cannot simply consume this graph. Derive all current ordered input/output bindings fresh; unoccupied receptors remain conditional fact_false. Shared generic expansion/checking is conditional syntax authority only; fresh GroundChecker and whole point union remain mandatory."
+    },
+    {
+      "gap": "engine use and qualification",
+      "needed": "Attach only matching primitive preferences after the actual global dead/forced and earliest-generation branch; retain full canonical fallback. Independently verify current-domain membership, continuation invalidation and owned rollback. Component validity is not logical target discovery, viable fullboard, actual preference use, useful transfer, RL or benefit."
+    }
+  ],
+  "smallest_missing_substantive_experiment": {
+    "first": "After Root reconciles current saved status and closes exact fresh dynamic/observer controls, a predeclared native-conjunctive versus ordinary GCTS search pair for each exact fresh case, empty initial library and no supplied route. Use freshly reconstructed original catalogue/context in both; independently check every returned proof and its appropriate original point endpoint. UNKNOWN remains useful negative availability evidence, not impossibility.",
+    "next_family_arm": "Only after Hilbert host adapter and shared consumer are independently qualified: automatically extract connected all-port primitive DAGs from newly generated in-scope search data, then test a separately fresh receiver with independent ground instantiation and current point admission, ordinary fallback unchanged. Charge inventory construction/checks and reused costs explicitly. No published/human proof route or authored transport sequence enters the pool.",
+    "why_first": "This tests previously unqualified fresh target search without making a new family adapter a prerequisite for basic search readiness. Do not claim matched acceleration from historical controls or unequal logical/fullboard endpoints."
+  },
+  "source_only": true,
+  "sources": {
+    "arithmetic_family_adapter": {
+      "bytes": 25205,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_six_rule_adapter_v3.py",
+      "sha256": "4bd6c6fe723b17da0afec54fb0409f33dcb01e699e774f673e8de12c33efeba9"
+    },
+    "compiler": {
+      "archive_member": ".gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_compiler_v1.py",
+      "bytes": 46112,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_compiler_v1.py",
+      "read_copy": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/reproduction.zip",
+      "sha256": "57653bb27eaf3c4dd1e050c70ac360133f78e1f636cd1276a39a20fd64610a56"
+    },
+    "dynamic_graph": {
+      "bytes": 35568,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-batched-membership-source-20261013/compact_dynamic_graph_batched_v7.py",
+      "sha256": "4ff74a120327ed7e75ff844038e1c75650530c4434a2054b3c956264ea279423"
+    },
+    "fixture": {
+      "archive_member": ".gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+      "bytes": 43532,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/fresh-equality-fixtures-v1.json",
+      "read_copy": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/reproduction.zip",
+      "sha256": "b60869d015f5f60caa726864595a6293a4566ffdf04403c2499ade76987ef831"
+    },
+    "fresh_final_checker": {
+      "bytes": 64540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/fresh_equality_context_and_final24_certificate_v3.py",
+      "sha256": "5d03d088c2d1b7f90e98fb7e28819ab0643b74f6786953c6107d4d2535c2377b"
+    },
+    "fresh_runner": {
+      "bytes": 58190,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runner-source-v2-20261013/fresh_equality_worker_v2.py",
+      "sha256": "14bfc7f89d8830cb278760cf2dbf8821316bb628aea891b589d59d1ae78b01e2"
+    },
+    "fresh_runtime_contract": {
+      "bytes": 21570,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fresh-equality-first-proof-runtime-source-20261013/source-contract-v5.json",
+      "sha256": "3f7b3d2d992aa0dac5b6881a18140aece296f8b066bc7afec2e253d6abbfad44"
+    },
+    "generic_family_checker": {
+      "bytes": 56670,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    "generic_family_expander": {
+      "bytes": 51898,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_expander_v1.py",
+      "sha256": "f32e069a65ba21903cb6211772334e5b36ea8598bd189ca06800a8d9030d12a2"
+    },
+    "independent_audit_worker": {
+      "bytes": 47959,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_audit_worker_v1.py",
+      "sha256": "7b25d902b69398d5d71c450ee9e63021df6d3b4e967b4c47b7d6e6b563d55fe6"
+    },
+    "independent_checker": {
+      "bytes": 24588,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-next-independent-oracles-source-20261013/hilbert_fresh_catalog_oracle_v2.py",
+      "sha256": "3b6aee8d9b0c1668f2ccf4e0d3b5e7e87dc9e0dd6579e55308e74c3992d6b3cc"
+    },
+    "independent_grammar": {
+      "archive_member": ".gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_grammar_v1.py",
+      "bytes": 14799,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/hilbert_fresh_equality_grammar_v1.py",
+      "read_copy": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/reproduction.zip",
+      "sha256": "34322db5dc25cd3e0cc1dfa43f379f9f45107442c4f035d955b39f1e21b31db1"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "native_prover": {
+      "bytes": 7288,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-native-symbolic-control-source-20261013/native_conjunctive_closure_v1.py",
+      "sha256": "4ddf3df47188d838561e5108f25479dc549aa443548ebd370f2d0a14766da7e2"
+    },
+    "native_worker": {
+      "bytes": 15277,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-native-symbolic-control-source-20261013/native_symbolic_worker_v2.py",
+      "sha256": "6a492336dad816dc125d611eefc6eff000970d0e4c79debc23010027e2f2905d"
+    },
+    "parallel_research_plan": {
+      "bytes": 10300,
+      "path": "/private/tmp/gcts-parallel-research-plan-20261017/parallel-research-plan-v1.json",
+      "sha256": "5c4ec5d7a157f18fcaa18a828fe07856bfa7ebbc698a8d5ce181beea88a8642c"
+    },
+    "point_core": {
+      "archive_member": ".gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "bytes": 31300,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-primitive-executor-20261011/hilbert_primitive_graph_v2.py",
+      "read_copy": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/reproduction.zip",
+      "sha256": "e415664386b93cf9bbfeba92d6c35f40ca4cb25eb239de093134133b22c8adbd"
+    },
+    "profile": {
+      "bytes": 5565,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/hilbert-fresh-equality-static-source-20261013/static-profile-plan-v1.json",
+      "sha256": "91ed32762629eb127319d3710b9f7fab8d05a87226b203497d346bb6104cfbc7"
+    },
+    "qualified_initial_board_metadata": {
+      "bytes": 57884,
+      "path": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/static-qualification.json",
+      "sha256": "d87c6169a18a769a2e90b59f9809aae8dd1ebbe6324c8c39450fcd646047ed5a"
+    },
+    "static_report_metadata": {
+      "bytes": 69869,
+      "path": "/private/tmp/gcts-family-router-publish-20261010/docs/research/gcts-rl-renewal/fresh-geometry/summary.json",
+      "sha256": "d2730572eea5b29401f1d2fea6354eb3a5b803ee3ac60d0d581b74e9fc0910cd"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root/hilbert_ordering_diagnosis",
+  "authorship_overlap": "Reviewer authored engine7/census and point/checker ancestry plus earlier diagnostic design; this is an explicit Source diagnosis/proposal, not an independent self-review or runtime conformance certificate.",
+  "charges": "Provider ownwork1m ended at provider return and does not cover later engine work. All callback/engine/point/tree ticks use the same Root original20 native resource gate; tree checks every value, census/native/transition loops tick explicitly. maximum_nodes2 bounds counted decisions, not query cost; maximum_events256 bounds event count, not bytes. Canonical JSON/hash/diagnostic-copy work is charged wall time/memory even where no inner tick occurs; surrounding native/Source/final gates must still pass. Original17/input2/epoch, 24 roots, six rules, marking and full candidate universe remain fixed.",
+  "conclusion": "There is a large reachable post-consumer path before another provider or search-return marker. The supplied prefix does not establish admission, placement, child decision, restoration, active failure frame or failure cause. Do not call the remainder consumer time.",
+  "concrete_conservative_invalidation": {
+    "deduction": "If the first legal primitive transaction completes from that root, before ledger is empty and after ledger is nonempty. Router same_names199 is false, therefore retain203-207 is false for all24 rows. _install retains no root certificates or cursor slots; child decision freshly inspects the23 unfilled rows. Engine/provider exposure census is a separate collision ledger and does not make these transition ledgers equal.",
+    "limits": "This is a Source implication conditional on first placement completion, not an observation of the current attempt and not a demonstrated timing bottleneck. Do not weaken the collision-ledger dependency or reuse the root certificates merely because the candidate was previously observed; that would need a new independent completeness argument.",
+    "premises": "Helper starts selected=[] and excluded=[]; c354 private_state100-138 builds its prototype ledger only from those inventories; point private projection130-159 adds the corresponding decorated names."
+  },
+  "evidence_boundary": "Only current Sources and Root-supplied scalar-stage description were read. No actual/result/report/receipt/offer/state/proofword file was opened; no reviewed function, checker, model, search, clock, helper or test ran.",
+  "implementation_changed": false,
+  "one_recommended_next_contribution": {
+    "acceptance": "Markers alone admit nothing. A bounded raw failure journal is unqualified literal data even when it contains a checked-record-shaped value. Any eventual admission/primitive-continuation claim must join full provider request/report, fresh consumer/engine receipt, exact selected key/candidate, current census and before/after native point states, actual child decision if claimed, owned restoration and current Source/native resource closure. If the new full20-window record still fails, report only reached stages and retained literal evidence, with qualification/counts null or zero as applicable. No guarantee this measurement fits or completes; matched performance/gain claims require both complete current arms and all prior construction/checking cost.",
+    "fixed_sites": [
+      "Immediately after first root _select_family_branch returns: retain complete engine plan/checked records and exact pre-state; READY must be explicit, fallback is labelled separately.",
+      "Immediately after first root _adopt_family_branch returns: records full FAMILY_PREFERENCE event emission completion before place.",
+      "Immediately after that actual place returns: retain exact installed COW state, existing transition and actual full candidate/PLACE event.",
+      "Immediately after the first child decision returns, before acting on its kind: retain the actual full DECISION event/evidence."
+    ],
+    "mechanism": "A single separately versioned diagnostic successor with four fixed charged sites and one bounded journal, not a history/profiler framework. Reuse already engine-owned literal objects/state references only after reviewing their COW/no-mutation lifetime; do not call a model, state_snapshot, checker or matcher to sample. Use existing original20 native ticks/builtin writes; no forced stop, omitted search/check, smaller pool/universe, altered scheduler, extra nodes/time or uncharged mathematical work. A Root-owned failure55 pure-builtin writer may preserve only the first complete bounded journal (for example the existing generic4MiB raw-prefix cap); oversize/partial records remain explicitly incomplete. No new implementation is supplied or authorized by this note.",
+    "name": "One bounded first-admission-to-child-decision milestone journal under unchanged search",
+    "purpose": "Obtain full literal evidence of whether a family was actually admitted and its primitive transaction/continuation completed, while distinguishing admission/event-copy/placement/child-global intervals. Do not optimize a guessed active site or repeat the unchanged attempt."
+  },
+  "reported_prefix_not_independently_reconciled_here": {
+    "C1_CALLBACK_READY_seconds": 5.598,
+    "C1_DELEGATE_RETURN_seconds": 5.594,
+    "C1_ENTER_seconds": 5.379,
+    "P1_CALLBACK_READY_seconds": 5.278,
+    "external_terminal_seconds": 20.16,
+    "next_provider_or_search_return_observed": false,
+    "raw_provider_slot": "READY with instance_count1; unvalidated provider-return scalar only"
+  },
+  "schema": "postconsumer-source-cost-and-next-measurement-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true,
+  "source_paths": [
+    {
+      "operations": "Helper phase performs a native post-tick after writing READY; that tick may fail before the receipt reaches the engine. If the callback returns, engine ticks then structurally copies the whole receipt. Base tree23-31 ticks once per recursive value, so this copy is charged work, not an O(1) handoff.",
+      "stage": "Callback ready is still before return",
+      "where": "helper family_consumer; engine _consume_family1294-1304"
+    },
+    {
+      "operations": "Validate complete current receipt/request/binding/state/decision hashes and literals; scan every observed candidate and every READY adaptation member; parse/canonicalize/digest both original and decorated full preimages and compare the owned ledger. READY additionally calls full _candidate547-563: checked current state, native member/tile rebuild, independent marked tile checks, full legality and exact packet equality; then family identity/lineage checks. NO_MATCH/UNKNOWN does not imply an admitted family. Invalid headers/collisions and native/Source errors propagate.",
+      "stage": "Fresh receipt admission and collision ledger",
+      "where": "engine _consume_family1305-1362; _join_prototype_census1089-1125"
+    },
+    {
+      "operations": "READY selects that checked primitive; otherwise canonical existing slot/ordered fallback is used, with genuine cursor/context/census/fresh EOF rules. COW child checkpoint is O(1), but TRY hashes state; adoption copies pending family, scans observed collision keys, then FAMILY_PREFERENCE event JSON-roundtrips full checked records, including provider report, consumer receipt and full census. _emit309-314 has entry tick/event cap; its serialization has no per-node tick but remains inside the common time/memory window.",
+      "stage": "Select, checkpoint and adopt",
+      "where": "engine _select_family_branch1365-1406; search1463-1471; _adopt_family_branch1408-1416"
+    },
+    {
+      "operations": "place independently rechecks candidate/state/points again, copies state and updates its full point union. _install checks full authority and both states, all24 possible-support projections and complete selected/excluded prototype ledger equality; rechecks state and selected refcounts; refreshes kept known candidates; copies original receipt/transfer chains and archives; rebuilds dependencies; installs atomically only after preparation; then emits INVALIDATE and PLACE. No proof can be inferred from merely reaching this code in Source.",
+      "stage": "Primitive transaction",
+      "where": "engine place619-643; _install468-545; router check_transition190-220 and refresh_candidates222-239"
+    },
+    {
+      "operations": "After successful place, recursive walk charges node tick/count and the next full global decision. It independently checks authority/current marked state, queries/checks every unfilled row or current retained certificate, joins all public exposures, and resolves UNKNOWN via canonical fallback before global DEAD/UNKNOWN/FORCED/earliest-generation BRANCH. Only child BRANCH reaches P2; DEAD/UNKNOWN, forced placement followed by node ceiling, an unresolved degree, errors, or timeout can occur without P2. After any normal/exhausted child, owned rollback/RESTORE and possibly exclusion/recheck remain; TimeoutError also triggers root restoration but final snapshot comparison, full event JSON copy and helper postsearch snapshot/checks still precede SEARCH_RETURN or AFTER_ENGINE. Non-timeout errors propagate through finally restoration; neither restoration nor completed events is established by this observed prefix.",
+      "stage": "Child global decision or earlier failure",
+      "where": "engine search1424-1438 and1463-1519; decision800-906"
+    }
+  ],
+  "sources": {
+    "base": {
+      "bytes": 27553,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    "caller": {
+      "bytes": 66670,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+      "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91"
+    },
+    "consumer": {
+      "bytes": 13040,
+      "path": "/private/tmp/gcts-current-source-pool-20261017/receptor_family_preference_consumer_v2.py",
+      "sha256": "d68095aae1855c2469cf3b160818e202231cb0883c7242a8f0b6ee130903e874"
+    },
+    "engine": {
+      "bytes": 92154,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+    },
+    "helper": {
+      "bytes": 8772,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "point": {
+      "bytes": 31038,
+      "path": "/private/tmp/gcts-marked-prefix-census-source-20261017/marked_unit_row_adapter_v5.py",
+      "sha256": "7e508c4a099a20b250e7e679277a1e0dc3346207256c4660106b220ffc697b24"
+    },
+    "router": {
+      "bytes": 12779,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-aware-router-engine-source-20261016/marked_degree_router_v1.py",
+      "sha256": "a56d7f08779bb0f47c23a1bb8f1ce73cd9f214154dbc1d7efa6be99d2748c150"
+    }
+  }
+}

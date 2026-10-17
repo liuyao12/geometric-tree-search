@@ -1,0 +1,442 @@
+{
+  "AST_compile_without_evaluation": true,
+  "actual_patch_commands": [
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/writer-patch-copy.py",
+        "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-forward.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/writer-patch-copy.py",
+        "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-inverse.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/reader-v1-v3-patch-copy.py",
+        "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-forward.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/reader-v1-v3-patch-copy.py",
+        "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-inverse.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/reader-v2-v3-patch-copy.py",
+        "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-forward.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "patch",
+        "-s",
+        "-F0",
+        "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/reader-v2-v3-patch-copy.py",
+        "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-inverse.patch"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "actual_results_or_clocks_read": false,
+  "checks": [
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v3.json",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/API-wire-v3.json",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-delta-v3.json",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/static-Source-audit-v3.json",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/handoff-v2.json",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-helper-source-20261017/API-wire-v1.json",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-head-gated-performance-source-20261017/diagnostic-bound-erratum-v2.json",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v1.parent.fragment.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-forward.patch",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-inverse.patch",
+      "pass": true
+    },
+    {
+      "name": "writer forward raw exact",
+      "pass": true
+    },
+    {
+      "name": "writer inverse raw exact",
+      "pass": true
+    },
+    {
+      "name": "writer inverse AST exact",
+      "pass": true
+    },
+    {
+      "name": "writer compile without evaluation",
+      "pass": true
+    },
+    {
+      "name": "writer actual forward patch exact",
+      "pass": true
+    },
+    {
+      "name": "writer actual inverse patch exact",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v1.parent.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-forward.patch",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-inverse.patch",
+      "pass": true
+    },
+    {
+      "name": "reader-v1-v3 forward raw exact",
+      "pass": true
+    },
+    {
+      "name": "reader-v1-v3 inverse raw exact",
+      "pass": true
+    },
+    {
+      "name": "reader-v1-v3 inverse AST exact",
+      "pass": true
+    },
+    {
+      "name": "reader-v1-v3 compile without evaluation",
+      "pass": true
+    },
+    {
+      "name": "reader-v1-v3 actual forward patch exact",
+      "pass": true
+    },
+    {
+      "name": "reader-v1-v3 actual inverse patch exact",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v2.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-forward.patch",
+      "pass": true
+    },
+    {
+      "name": "rawpin /private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-inverse.patch",
+      "pass": true
+    },
+    {
+      "name": "reader-v2-v3 forward raw exact",
+      "pass": true
+    },
+    {
+      "name": "reader-v2-v3 inverse raw exact",
+      "pass": true
+    },
+    {
+      "name": "reader-v2-v3 inverse AST exact",
+      "pass": true
+    },
+    {
+      "name": "reader-v2-v3 compile without evaluation",
+      "pass": true
+    },
+    {
+      "name": "reader-v2-v3 actual forward patch exact",
+      "pass": true
+    },
+    {
+      "name": "reader-v2-v3 actual inverse patch exact",
+      "pass": true
+    },
+    {
+      "name": "five writer nested functions raw exact",
+      "pass": true
+    },
+    {
+      "name": "five writer nested functions AST exact",
+      "pass": true
+    },
+    {
+      "name": "writer signature/defaults AST exact",
+      "pass": true
+    },
+    {
+      "name": "eight unrelated reader functions raw+AST exact",
+      "pass": true
+    },
+    {
+      "name": "writer parent exact original cold FunctionDef AST",
+      "pass": true
+    },
+    {
+      "name": "V3 only one ENTER guard edit",
+      "pass": true
+    },
+    {
+      "name": "thirty distinct fixed stage labels",
+      "pass": true
+    },
+    {
+      "name": "exact max75 and total1913 ASCII stage bytes",
+      "pass": true
+    },
+    {
+      "name": "new diagnostic cap exact81988",
+      "pass": true
+    },
+    {
+      "name": "twenty fixed distinct summary counters",
+      "pass": true
+    },
+    {
+      "name": "late writer no original20/project/named helper callback",
+      "pass": true
+    },
+    {
+      "name": "reader imports no project/clock modules",
+      "pass": true
+    }
+  ],
+  "limits_arithmetic_only": {
+    "V2_diagnostic_max_bytes": 81988,
+    "fixed_stages": 30,
+    "max_all_complete_lines_bytes": 1913,
+    "max_complete_line_bytes": 75
+  },
+  "raw_refs": [
+    {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    },
+    {
+      "bytes": 13042,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v3.json",
+      "sha256": "20372a1d3a5abe9945337b7594db14dbdfcc8ff91390ddd76a92a8550539524c"
+    },
+    {
+      "bytes": 8826,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/API-wire-v3.json",
+      "sha256": "53ff4cf0837ca2f5e2acca869f970ad4d6f77435dbc7396bee78fb16b9423a48"
+    },
+    {
+      "bytes": 24663,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-delta-v3.json",
+      "sha256": "b6926f77a6ee9b4fd8020fd184e50f0ea38d9ac5ee15a473db90e06e89eeb17b"
+    },
+    {
+      "bytes": 855,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/static-Source-audit-v3.json",
+      "sha256": "10f3c6d61696a7bbe7f37586cf0feb782c1d822e1e00ca7e7cc1bf7c4b1e9f45"
+    },
+    {
+      "bytes": 2447,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/handoff-v2.json",
+      "sha256": "55900f59c911ba53b8ba10c6d7e294fdf68a3390e839f5a73d7a1e57bc349edc"
+    },
+    {
+      "bytes": 57736,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9"
+    },
+    {
+      "bytes": 21797,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9"
+    },
+    {
+      "bytes": 8772,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+    },
+    {
+      "bytes": 4741,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/API-wire-v1.json",
+      "sha256": "f6c87a9282d84a3b9c00d7c897766c998bdb8ea33c256bd0ba293354b94b0665"
+    },
+    {
+      "bytes": 6584,
+      "path": "/private/tmp/gcts-head-gated-performance-source-20261017/diagnostic-bound-erratum-v2.json",
+      "sha256": "46effab35ad48abdaa07a1aff2aec7dae185c04e95eff1d0f9132448e77658f2"
+    },
+    {
+      "bytes": 33660,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "sha256": "5978c1343542ad7c7e1e5fbdb31dddb22e3b33d49e4654b8a743065d357ea256"
+    },
+    {
+      "bytes": 9329,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v1.parent.fragment.py",
+      "sha256": "b0f44bcdc67732d95016f7b0592a8698eb5e2c0256be018ae86e5ef99d7dbda7"
+    },
+    {
+      "bytes": 7057,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-forward.patch",
+      "sha256": "88e4c788e1fc66a995b063bca0ad85dfdb78986ffa2585b45b489bbc54a79faf"
+    },
+    {
+      "bytes": 7057,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/writer-inverse.patch",
+      "sha256": "409aedb8ef4ca06e32181fccde52c0b35fe122877d5139edc0ddd50f5df094b4"
+    },
+    {
+      "bytes": 21797,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v1.parent.py",
+      "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9"
+    },
+    {
+      "bytes": 21164,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-forward.patch",
+      "sha256": "c7261a0665a07db67825326e702a6f04214a4a76b0c179665faf9cc83d54c88f"
+    },
+    {
+      "bytes": 21164,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v1-v3-inverse.patch",
+      "sha256": "97e50cea7b62da54794e904bcf40e82b1df792de358fc6a098d257aa12544e76"
+    },
+    {
+      "bytes": 33581,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v2.py",
+      "sha256": "05ad8d20dcac3ce7c8a3f782753e65dec8d4da90803b115bfbbaf2b51c48489f"
+    },
+    {
+      "bytes": 563,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-forward.patch",
+      "sha256": "0e3952177959e0aa25e3821879cb3d4700a0d40bafa157f7d89ac7380f371e58"
+    },
+    {
+      "bytes": 563,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/reader-v2-v3-inverse.patch",
+      "sha256": "d5ad7c9670ead26524c88d277b432514f4db5c3f61d9408155d996d0a34273be"
+    }
+  ],
+  "reader_unrelated_functions_unchanged": 8,
+  "schema": "ROOT-callback-stage-diagnostic-seam-independent-static-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15021,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+    "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+  },
+  "source_contract": {
+    "bytes": 13042,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v3.json",
+    "sha256": "20372a1d3a5abe9945337b7594db14dbdfcc8ff91390ddd76a92a8550539524c"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 33660,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "sha256": "5978c1343542ad7c7e1e5fbdb31dddb22e3b33d49e4654b8a743065d357ea256"
+    },
+    "writer_replacement": {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    }
+  },
+  "writer_nested_unchanged": 5
+}

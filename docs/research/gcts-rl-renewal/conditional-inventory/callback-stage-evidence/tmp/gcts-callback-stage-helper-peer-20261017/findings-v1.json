@@ -1,0 +1,66 @@
+{
+  "authorship_overlap": "Reviewer authored censusengine7, independent4358/9fd/8f and point ancestry, diagnostic proposal/erratum46effab, and parent provider/gate Source reviews. Arithmetic authored this helper; Root authored parent helper/cold. Shared native primitives and API/protocol coordination disclosed; no helper self-authorship.",
+  "blocking_findings": [],
+  "findings": [
+    {
+      "finding": "Only ownVERSION/new required capture callback, local diagnostic ordinals, bounded stage/capture calls and two search/snapshot stage calls differ. Every original scientific delegate/constructor/search/snapshot call, require assertion, return expression and seven other named regions are raw/AST retained. Reverse all12 edits restores the whole frozen parent35e2 raw and AST exactly; no model, native semantics, allocation, global scheduling, fallback, census, rollback or positive/failure native cap is relaxed.",
+      "id": "SCIENCE-ERASURE",
+      "lines": [
+        34,
+        36,
+        68,
+        84,
+        97,
+        105,
+        127,
+        133,
+        142,
+        155
+      ],
+      "source": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py"
+    },
+    {
+      "finding": "Exact current fresh-engine single-search2-node scope has at most2 provider callbacks and3 consumer callbacks, since the second decision can consume CONTINUATION then BATCH. New labels total17 plus13 inherited=30. Counter caps govern only extra diagnostics/hooks; scientific callbacks/copy/hash/log/return remain unconditional even if the diagnostic ordinal is larger. No observed path or callback count is inferred.",
+      "id": "CORRECT-BOUNDS"
+    },
+    {
+      "finding": "Pj_ENTER follows unchanged supplied state/decision copy and precedes build argument evaluation/delegate; DELEGATE_RETURN immediately follows actual return. The exact raw return object goes to the Root capture hook before old copy/hash/envelope/log, then CALLBACK_READY immediately precedes the unchanged return. Consumer groups likewise bracket the direct delegate and original hashes/log; search-return precedes the unchanged aftersnapshot, then post-snapshot stage precedes unchanged restoration/pool assertions. These are group observations, not exclusive method timers or accepted native receipts.",
+      "id": "SEAMS-AND-RETURN-IDENTITY",
+      "lines": [
+        87,
+        119,
+        122,
+        139,
+        151,
+        155
+      ],
+      "source": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py"
+    },
+    {
+      "finding": "Helper gives raw provider value by reference to the new Root hook. Conditional Source pass requires the separately reviewed current Root implementation to read only bounded fixed scalar fields, never mutate or retain the complete object, call science, reset native timing or alter any current receipt. Helper does not authenticate this promise by itself. Hook/phase/native/guard errors are uncaught and propagate; no arbitrary hostile/reentrant callback equivalence or nthtick/error-prefix equivalence is claimed.",
+      "id": "PURE-HOOK-CONDITION"
+    },
+    {
+      "finding": "The reader must model nested per-callback stage states and actual order, not one PHASES.index total ordering: C2 CONTINUATION can precede P2/C3 BATCH, or P2 can precede C2 without continuation. A complete DELEGATE_RETURN line can precede phase post-tick failure, leaving capture absent; a complete CALLBACK_READY line can precede post-tick failure before the caller actually receives the return. Partial lines do not complete stages. Missing stage/summary is not zero, absent call, offer, active frame, move, restoration or cause.",
+      "id": "PREFIX-AND-PARSER"
+    },
+    {
+      "finding": "The helper alone supplies no phase clock/writer/failure journal or actual. Root must bind fresh current Source22/original17/input2 separately, reviewed pure capture hook, captured native phase implementation, writer/reader bounds and exact once/native20/512/failure55 ownership. Current engine7/provider8 remain unchanged; no prior actual or broad proof/engine/RL/gain qualification is inherited.",
+      "id": "CURRENT-COMPOSITION-PENDING"
+    }
+  ],
+  "schema": "ROOT-callback-stage-receiver-cases-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "source_contract": {
+    "bytes": 5288,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-contract-v1.json",
+    "sha256": "555dd0cc08ead397e3d670674001b10d4e8fded1608b7ad28c7489a048fef6ce"
+  },
+  "source_only": true
+}

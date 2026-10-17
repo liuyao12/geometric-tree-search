@@ -1,0 +1,77 @@
+{
+  "actual_execution_authorized": false,
+  "caps_and_model": "No change to actual full24row/B12N44/original17/input2 epoch, same frozen pool/2node/256events/provider1m/records2/row_trials64/instances1, matching modes, fullfallback or native20/512/failure55/once. Diagnostic copy/write/hook costs charged in same future Root window.",
+  "error_semantics": "No catches added. Native/guard/provider/consumer/hash/copy/phase/capture errors propagate. Missing stage/summary never means zero or absent call. No per-callback budget reset.",
+  "new_required_kwarg": {
+    "call": "capture_provider_summary(ordinal, value)",
+    "name": "capture_provider_summary",
+    "ordinal": "Exact locally incremented provider callback ordinal1 or2. No hook beyond2; scientific callbacks never capped.",
+    "scope": "Diagnostic returned-scalar observation only, not a fresh full provider receipt/offer/consumer admission/state/proof or runtime acceptance. Callback failures propagate unchanged.",
+    "value": "EXACT raw object returned by provider build_family_batch, passed directly: no copy/hash/protocol/envelope inspection before hook. Root-owned callback reads only fixed bounded scalar metadata; no mutation/retention of returned full object, scientific calls or unbounded traversal."
+  },
+  "parent_source": {
+    "bytes": 7899,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py",
+    "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d"
+  },
+  "result_wire": "Exact existing ROOT-receiver-inference-evidence-v1 and all inherited fields/statuses, only version changed. No counter/summary/output/failurewriter field added by helper. Root owns separate bounded capture slots/readout.",
+  "schema": "ROOT-callback-stage-receiver-cases-API-v1",
+  "scientific_calls": 0,
+  "signature": "run_receiver(*, language, base_semantics, marked_semantics, modules, frozen_inventory, matching_mode, tick, phase, capture_provider_summary)",
+  "source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "source_only": true,
+  "stages": {
+    "beyond_limits": "Only extra diagnostic phase/hook writes omitted. Actual provider/consumer call, old copies/hash/log/envelope/return and all errors unchanged and unconditional.",
+    "clock": "Helper never reads a clock; Root phase is sole native sample/writer endpoint. Stage entry is not exclusive timing, active frame, accepted receipt, completed snapshot assertions or failure cause.",
+    "combined_maximum_complete_lines": 30,
+    "consumer_ordinal_limit": 3,
+    "consumer_placement": [
+      "Ordinal increments at entry.",
+      "Cj_ENTER directly before consume_preferences.",
+      "Cj_DELEGATE_RETURN directly after raw delegate return.",
+      "Unchanged current state/request/receipt hash/log.",
+      "Cj_CALLBACK_READY immediately before original return value."
+    ],
+    "inherited_Root_phase_sites": 13,
+    "maximum_new_complete_lines": 17,
+    "new_literals": [
+      "P1_ENTER",
+      "P1_DELEGATE_RETURN",
+      "P1_CALLBACK_READY",
+      "P2_ENTER",
+      "P2_DELEGATE_RETURN",
+      "P2_CALLBACK_READY",
+      "C1_ENTER",
+      "C1_DELEGATE_RETURN",
+      "C1_CALLBACK_READY",
+      "C2_ENTER",
+      "C2_DELEGATE_RETURN",
+      "C2_CALLBACK_READY",
+      "C3_ENTER",
+      "C3_DELEGATE_RETURN",
+      "C3_CALLBACK_READY",
+      "SEARCH_RETURN_OBSERVED",
+      "POSTSEARCH_SNAPSHOT_READY"
+    ],
+    "order_scope": "Not one artificial total ordering: C2 CONTINUATION may precede P2 thenC3 BATCH in second selection; noContinuation may reach P2 beforeC2. Keep native observed order and per-callback groups/ordinal evidence.",
+    "provider_ordinal_limit": 2,
+    "provider_placement": [
+      "Ordinal increments at entry, no clock read by helper.",
+      "Old first-only BEFORE_PROVIDER remains before supplied current-state/decision copy.",
+      "Pj_ENTER directly before build_family_batch (after supplied copy).",
+      "Pj_DELEGATE_RETURN next statement after actual delegate return, before copy/hash.",
+      "capture_provider_summary(j,rawvalue), onlyj<=2.",
+      "Unchanged copy(value), old first-only AFTER_PROVIDER, envelope check and provider report hash/log.",
+      "Pj_CALLBACK_READY immediately before original return value."
+    ],
+    "search_placement": [
+      "SEARCH_RETURN_OBSERVED immediately after engine.search returns, before afterSnapshot.",
+      "POSTSEARCH_SNAPSHOT_READY immediately after afterSnapshot, before unchanged full root/stack/pool assertions."
+    ]
+  },
+  "version": "ROOT-receiver-inference-cases-v3-callback-stages"
+}

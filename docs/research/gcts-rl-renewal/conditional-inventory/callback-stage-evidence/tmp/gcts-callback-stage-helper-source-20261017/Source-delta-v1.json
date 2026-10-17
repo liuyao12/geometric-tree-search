@@ -1,0 +1,143 @@
+{
+  "actual_F0_both_directions_byte_exact": true,
+  "added_or_removed_named_regions": [],
+  "changed_named_regions": [
+    "run_receiver",
+    "run_receiver.family_proposer",
+    "run_receiver.family_consumer"
+  ],
+  "edits": [
+    {
+      "new": "VERSION='ROOT-receiver-inference-cases-v3-callback-stages'\n",
+      "new_end": 10,
+      "new_start": 9,
+      "old": "VERSION='ROOT-receiver-inference-cases-v2-head-gated'\n",
+      "old_end": 10,
+      "old_start": 9
+    },
+    {
+      "new": "                 frozen_inventory, matching_mode, tick, phase, capture_provider_summary):\n",
+      "new_end": 35,
+      "new_start": 34,
+      "old": "                 frozen_inventory, matching_mode, tick, phase):\n",
+      "old_end": 35,
+      "old_start": 34
+    },
+    {
+      "new": "    provider_ordinal = 0\n    consumer_ordinal = 0\n",
+      "new_end": 68,
+      "new_start": 66,
+      "old": "",
+      "old_end": 66,
+      "old_start": 66
+    },
+    {
+      "new": "        nonlocal provider_started, provider_ordinal\n        provider_ordinal += 1\n        ordinal = provider_ordinal\n",
+      "new_end": 90,
+      "new_start": 87,
+      "old": "        nonlocal provider_started\n",
+      "old_end": 86,
+      "old_start": 85
+    },
+    {
+      "new": "        if ordinal <= 2:\n            phase('P' + str(ordinal) + '_ENTER')\n",
+      "new_end": 97,
+      "new_start": 95,
+      "old": "",
+      "old_end": 91,
+      "old_start": 91
+    },
+    {
+      "new": "        if ordinal <= 2:\n            phase('P' + str(ordinal) + '_DELEGATE_RETURN')\n            capture_provider_summary(ordinal, value)\n",
+      "new_end": 108,
+      "new_start": 105,
+      "old": "",
+      "old_end": 99,
+      "old_start": 99
+    },
+    {
+      "new": "        if ordinal <= 2:\n            phase('P' + str(ordinal) + '_CALLBACK_READY')\n",
+      "new_end": 119,
+      "new_start": 117,
+      "old": "",
+      "old_end": 108,
+      "old_start": 108
+    },
+    {
+      "new": "        nonlocal consumer_ordinal\n        consumer_ordinal += 1\n        ordinal = consumer_ordinal\n        if ordinal <= 3:\n            phase('C' + str(ordinal) + '_ENTER')\n",
+      "new_end": 127,
+      "new_start": 122,
+      "old": "",
+      "old_end": 111,
+      "old_start": 111
+    },
+    {
+      "new": "        if ordinal <= 3:\n            phase('C' + str(ordinal) + '_DELEGATE_RETURN')\n",
+      "new_end": 134,
+      "new_start": 132,
+      "old": "",
+      "old_end": 116,
+      "old_start": 116
+    },
+    {
+      "new": "        if ordinal <= 3:\n            phase('C' + str(ordinal) + '_CALLBACK_READY')\n",
+      "new_end": 139,
+      "new_start": 137,
+      "old": "",
+      "old_end": 119,
+      "old_start": 119
+    },
+    {
+      "new": "    phase('SEARCH_RETURN_OBSERVED')\n",
+      "new_end": 153,
+      "new_start": 152,
+      "old": "",
+      "old_end": 132,
+      "old_start": 132
+    },
+    {
+      "new": "    phase('POSTSEARCH_SNAPSHOT_READY')\n",
+      "new_end": 155,
+      "new_start": 154,
+      "old": "",
+      "old_end": 133,
+      "old_start": 133
+    }
+  ],
+  "erasure_definition": "Reverse every exact declared diagnostic/counter/signature/VERSION edit above; complete original module is restored, not a semantic replay.",
+  "full_forward_inverse_raw_AST_exact": true,
+  "parent_source": {
+    "bytes": 7899,
+    "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py",
+    "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d"
+  },
+  "patches": {
+    "forward": {
+      "bytes": 4291,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/forward.patch",
+      "sha256": "bc064b35b68846a257447e8f97fe30fde4084129bbb709b928e5191e6c4a8b58"
+    },
+    "inverse": {
+      "bytes": 4291,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/inverse.patch",
+      "sha256": "f93d7a76c4e9e8418e74030b7a34ae663c52a9b350d39aa5ebf99063b0e9a14a"
+    }
+  },
+  "raw_edit_count": 12,
+  "retained_named_regions_raw_AST_exact": [
+    "require",
+    "canonical",
+    "digest",
+    "run_receiver.copy",
+    "run_receiver.degree_proposer",
+    "run_receiver.filtered_fallback",
+    "run_receiver.certify_fallback"
+  ],
+  "schema": "ROOT-callback-stage-receiver-cases-Source-delta-v1",
+  "scientific_body_erasure_recovers_parent_byte_and_AST_exact": true,
+  "source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  }
+}

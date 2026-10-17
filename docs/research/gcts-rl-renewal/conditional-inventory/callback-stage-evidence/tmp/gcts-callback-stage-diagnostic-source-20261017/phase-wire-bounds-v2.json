@@ -1,0 +1,129 @@
+{
+  "prefix": "COMPONENT_INVENTORY_PHASE ",
+  "timestamp": "canonical decimal signed64 nonnegative; at most19 digits",
+  "complete_sites": 30,
+  "maximum_line_bytes": 75,
+  "maximum_total_complete_bytes": 1913,
+  "lines": [
+    {
+      "stage": "BEFORE_PLAN_READ",
+      "maximum_line_bytes": 63
+    },
+    {
+      "stage": "BEFORE_CURRENT_SOURCE_READS",
+      "maximum_line_bytes": 74
+    },
+    {
+      "stage": "BEFORE_AUTHORITY_INPUT_READS",
+      "maximum_line_bytes": 75
+    },
+    {
+      "stage": "BEFORE_MODULE_LOAD",
+      "maximum_line_bytes": 65
+    },
+    {
+      "stage": "BEFORE_GUARD_CONSTRUCTION",
+      "maximum_line_bytes": 72
+    },
+    {
+      "stage": "BEFORE_STAGEB_PROVENANCE",
+      "maximum_line_bytes": 71
+    },
+    {
+      "stage": "BEFORE_MARKING_CHECK",
+      "maximum_line_bytes": 67
+    },
+    {
+      "stage": "BEFORE_POOL_READ",
+      "maximum_line_bytes": 63
+    },
+    {
+      "stage": "BEFORE_ENGINE",
+      "maximum_line_bytes": 60
+    },
+    {
+      "stage": "BEFORE_PROVIDER",
+      "maximum_line_bytes": 62
+    },
+    {
+      "stage": "AFTER_PROVIDER",
+      "maximum_line_bytes": 61
+    },
+    {
+      "stage": "AFTER_ENGINE",
+      "maximum_line_bytes": 59
+    },
+    {
+      "stage": "BEFORE_OUTPUT",
+      "maximum_line_bytes": 60
+    },
+    {
+      "stage": "P1_ENTER",
+      "maximum_line_bytes": 55
+    },
+    {
+      "stage": "P1_DELEGATE_RETURN",
+      "maximum_line_bytes": 65
+    },
+    {
+      "stage": "P1_CALLBACK_READY",
+      "maximum_line_bytes": 64
+    },
+    {
+      "stage": "P2_ENTER",
+      "maximum_line_bytes": 55
+    },
+    {
+      "stage": "P2_DELEGATE_RETURN",
+      "maximum_line_bytes": 65
+    },
+    {
+      "stage": "P2_CALLBACK_READY",
+      "maximum_line_bytes": 64
+    },
+    {
+      "stage": "C1_ENTER",
+      "maximum_line_bytes": 55
+    },
+    {
+      "stage": "C1_DELEGATE_RETURN",
+      "maximum_line_bytes": 65
+    },
+    {
+      "stage": "C1_CALLBACK_READY",
+      "maximum_line_bytes": 64
+    },
+    {
+      "stage": "C2_ENTER",
+      "maximum_line_bytes": 55
+    },
+    {
+      "stage": "C2_DELEGATE_RETURN",
+      "maximum_line_bytes": 65
+    },
+    {
+      "stage": "C2_CALLBACK_READY",
+      "maximum_line_bytes": 64
+    },
+    {
+      "stage": "C3_ENTER",
+      "maximum_line_bytes": 55
+    },
+    {
+      "stage": "C3_DELEGATE_RETURN",
+      "maximum_line_bytes": 65
+    },
+    {
+      "stage": "C3_CALLBACK_READY",
+      "maximum_line_bytes": 64
+    },
+    {
+      "stage": "SEARCH_RETURN_OBSERVED",
+      "maximum_line_bytes": 69
+    },
+    {
+      "stage": "POSTSEARCH_SNAPSHOT_READY",
+      "maximum_line_bytes": 72
+    }
+  ]
+}

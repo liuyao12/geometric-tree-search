@@ -1,0 +1,53 @@
+{
+  "actual_results_or_clocks_read": false,
+  "blocking_findings": [
+    {
+      "counterexample_basis": "Pure Source control-flow walk with hypothetical increasing valid native timestamps; parser/helper not called, no tests or actual data. Existing stack-top checks accept this overlap by inspection.",
+      "id": "CALLBACK-STAGE-OVERLAP-1",
+      "line": 128,
+      "problem": "ENTER advances the per-role ordinal and appends a new group without requiring the stack to be empty. This accepts overlapping provider/consumer groups that cannot occur in the pinned synchronous helper150e: its two callback functions do not call each other. CONTINUATION then fresh BATCH in one decision are sequential returns, not nested callbacks.",
+      "required_repair": "Require no open group on each ENTER, alongside the existing next per-role ordinal check. Keep both legitimate sequential C2-before-P2/C3 and P2-before-C2 alternatives, and the explicitly permitted one unfinished group at SEARCH_RETURN without fabricating completion.",
+      "scope": "Diagnostic grammar blocker only; no native model, engine, mathematical callback or current actual inference.",
+      "source": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v2.py",
+      "static_counterexample": [
+        "valid outer setup through BEFORE_ENGINE and BEFORE_PROVIDER",
+        "P1_ENTER",
+        "C1_ENTER",
+        "C1_DELEGATE_RETURN",
+        "C1_CALLBACK_READY",
+        "P1_DELEGATE_RETURN",
+        "AFTER_PROVIDER",
+        "P1_CALLBACK_READY"
+      ]
+    }
+  ],
+  "preservation": "V2 Source/contract/handoff preserved. Root separately authorized a narrow V3 guard successor; a fresh current review is required.",
+  "schema": "ROOT-callback-stage-diagnostic-seam-independent-negative-findings-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15021,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+    "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+  },
+  "source_contract": {
+    "bytes": 12533,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "14cf21049783074b10ffd72a3da63363a50f97bf1425d1b242d23e7b8257ed76"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 33581,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v2.py",
+      "sha256": "05ad8d20dcac3ce7c8a3f782753e65dec8d4da90803b115bfbbaf2b51c48489f"
+    },
+    "writer_replacement": {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    }
+  },
+  "writer_scoped_blockers": []
+}

@@ -1,0 +1,331 @@
+{
+  "actual_or_result_bytes_read": false,
+  "checks": [
+    {
+      "actual_F0_patch_directions_byte_exact": true,
+      "added_named_regions": [],
+      "changed_named_regions": [
+        "main"
+      ],
+      "edits": [
+        {
+          "new_end": 13,
+          "new_sha256": "823950a4a83ce4e7815aea24f4611abb71dd5a9568aebfaaec3ab9d102d14b45",
+          "new_start": 12,
+          "old_end": 13,
+          "old_sha256": "d666019baaeea6e9317fea20a998a4f1e72c60786c5c307aa531246f10aea884",
+          "old_start": 12
+        },
+        {
+          "new_end": 435,
+          "new_sha256": "8a7e9191169a246cfafbf68738a201b2a168cc3f9ddd89b7d91c272bf5b52cc1",
+          "new_start": 434,
+          "old_end": 435,
+          "old_sha256": "3f955fcda7bf4af9eadd9c82f8ce411d5881551ca4f0dfdcf93df3e686ca1b61",
+          "old_start": 434
+        }
+      ],
+      "parent": {
+        "bytes": 33660,
+        "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+        "sha256": "5978c1343542ad7c7e1e5fbdb31dddb22e3b33d49e4654b8a743065d357ea256"
+      },
+      "patches": {
+        "forward": {
+          "bytes": 1230,
+          "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/template.forward.patch",
+          "sha256": "2bea19c4a149b51acfec5f93c1fed787508508e0cd6f477b3d36674f9cce489b"
+        },
+        "inverse": {
+          "bytes": 1230,
+          "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/template.inverse.patch",
+          "sha256": "7accd80165925c8acb09b7409e852a3782ea006e134680d8170d3f93ada8c806"
+        }
+      },
+      "raw_edit_count": 2,
+      "relation": "template",
+      "removed_named_regions": [],
+      "retained_named_regions_raw_AST_exact": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write",
+        "read_phases",
+        "validate_positive_callback_phases",
+        "read_failure_diagnostic"
+      ],
+      "source": {
+        "bytes": 33669,
+        "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+        "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+      },
+      "whole_forward_inverse_raw_AST_exact": true
+    },
+    {
+      "actual_F0_patch_directions_byte_exact": true,
+      "added_named_regions": [
+        "validate_positive_callback_phases"
+      ],
+      "changed_named_regions": [
+        "read_phases",
+        "read_failure_diagnostic",
+        "main"
+      ],
+      "edits": [
+        {
+          "new_end": 13,
+          "new_sha256": "823950a4a83ce4e7815aea24f4611abb71dd5a9568aebfaaec3ab9d102d14b45",
+          "new_start": 12,
+          "old_end": 13,
+          "old_sha256": "d666019baaeea6e9317fea20a998a4f1e72c60786c5c307aa531246f10aea884",
+          "old_start": 12
+        },
+        {
+          "new_end": 84,
+          "new_sha256": "647bff5acb51743c194be26af58006ca27f4409902f341f3e69108f3d5c30e12",
+          "new_start": 66,
+          "old_end": 67,
+          "old_sha256": "21b0ec4cc282df90bb31756170d38321e7c55cc9a7696b16da5b0bccd962ff33",
+          "old_start": 66
+        },
+        {
+          "new_end": 89,
+          "new_sha256": "6dbccf848c9b85aded945807b5e785d4dd63341c3995eb72b4217c2edc714876",
+          "new_start": 86,
+          "old_end": 70,
+          "old_sha256": "67eafd8d559272710241ac7aeb027a6ee5023365aceb1b07f038d9af6f160638",
+          "old_start": 69
+        },
+        {
+          "new_end": 97,
+          "new_sha256": "a6f2479d9ad6b542ea343640e4357cefee0e8ff45893d1358e9e4b42aaa71b1a",
+          "new_start": 90,
+          "old_end": 75,
+          "old_sha256": "1d9e381e2e2bf803d2231560dfde6a4fa6859872a621218efd52ac9289546d24",
+          "old_start": 71
+        },
+        {
+          "new_end": 147,
+          "new_sha256": "ce14f0b49798b3ef4de32a8d0d2693f38d35beb3259fccb9ce2342050c9a6699",
+          "new_start": 100,
+          "old_end": 82,
+          "old_sha256": "3632fb67222464c0843ccd7e8bacb97f29c1c79740571c1ef70535b5805ba3b8",
+          "old_start": 78
+        },
+        {
+          "new_end": 162,
+          "new_sha256": "86da0d86e69de9d89df9bc697ff5f771bc23843934c4621a0511f8e12867ac3d",
+          "new_start": 148,
+          "old_end": 83,
+          "old_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "old_start": 83
+        },
+        {
+          "new_end": 164,
+          "new_sha256": "9c00f7bae27b9e8fb103f53b02f90be652b47198b70c199e15da4900d190dc4e",
+          "new_start": 163,
+          "old_end": 85,
+          "old_sha256": "c7bd4f687599bb50ee04dc83babc0dca58465b1fe54f5d8c4c1ed5fa89cab824",
+          "old_start": 84
+        },
+        {
+          "new_end": 197,
+          "new_sha256": "b42f08cd3d089c3783829ddb23c5f7b1f8f06d032c39f6385d663c239f2787fb",
+          "new_start": 165,
+          "old_end": 86,
+          "old_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "old_start": 86
+        },
+        {
+          "new_end": 206,
+          "new_sha256": "1471969064af9b84f0d4d09b6de7db68f52ec13cc5a918f4a832d06797228c95",
+          "new_start": 205,
+          "old_end": 95,
+          "old_sha256": "3f35dbfe767cb560533aed9dc86ad3e24bb5a8502ecfa26a8456349789dc0a8f",
+          "old_start": 94
+        },
+        {
+          "new_end": 221,
+          "new_sha256": "8aee7afb07ae1b0c37e99285e148f32db3bec71ef5c4416e4b5961b9498e9f9c",
+          "new_start": 209,
+          "old_end": 101,
+          "old_sha256": "0d63250358d91f5a0b8cbe1db53adaad3dcf7453b78316c3a3d1a5d1a32cfbc3",
+          "old_start": 98
+        },
+        {
+          "new_end": 225,
+          "new_sha256": "84fab88c1aa1f79ce80fa0226aa0b413c446d35d0f86782367e869b39f3f23e7",
+          "new_start": 223,
+          "old_end": 104,
+          "old_sha256": "a4fcdd78a07a46ec5eed40365dee5c48861e5d53e353e75e76f2cba621b1a21c",
+          "old_start": 103
+        },
+        {
+          "new_end": 231,
+          "new_sha256": "18064f374af3fd0e73d791643ca24c84934195121421372c7dcf2e8b65e7cb47",
+          "new_start": 226,
+          "old_end": 105,
+          "old_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "old_start": 105
+        },
+        {
+          "new_end": 235,
+          "new_sha256": "38afff460e397bbd490354dae9c8d86950f9e75d49bd1b36804bfdf654104369",
+          "new_start": 232,
+          "old_end": 106,
+          "old_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "old_start": 106
+        },
+        {
+          "new_end": 273,
+          "new_sha256": "333026663f9327934e4f271c410fd0bf8732e0dfd8787742e331b139bab03f9c",
+          "new_start": 248,
+          "old_end": 127,
+          "old_sha256": "252a31dc794db64942e6b9247faf7d40d69160392cab575479666680865bc1d2",
+          "old_start": 119
+        },
+        {
+          "new_end": 279,
+          "new_sha256": "cf5283eda09c26d3cd68b4927abd94c47cc48fe494a84770272f18b4832c4ecf",
+          "new_start": 276,
+          "old_end": 132,
+          "old_sha256": "c2e56e19d41bd1c81be6af6ae33431e0ce8a6d6fbbc14d13722cb5249b03e76c",
+          "old_start": 130
+        },
+        {
+          "new_end": 311,
+          "new_sha256": "0b53dcdf9e300a420ecc55fd143453428a7f7dc5124a5c9826ed7caf138b354c",
+          "new_start": 283,
+          "old_end": 136,
+          "old_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "old_start": 136
+        },
+        {
+          "new_end": 313,
+          "new_sha256": "d847a01d4a0cde755e3de4cb860fbd49f0b02bc21f4d5fbfabeed6c0143ebee7",
+          "new_start": 312,
+          "old_end": 138,
+          "old_sha256": "ff121605ab8d03530059dda2b54952942be69bde0a1c4c3ea1987d6ec5016270",
+          "old_start": 137
+        },
+        {
+          "new_end": 320,
+          "new_sha256": "5e4de9d615b9912dc0220edc68479af37f5446b5ec5c582e051d00e7f573c70e",
+          "new_start": 316,
+          "old_end": 141,
+          "old_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "old_start": 141
+        },
+        {
+          "new_end": 435,
+          "new_sha256": "8a7e9191169a246cfafbf68738a201b2a168cc3f9ddd89b7d91c272bf5b52cc1",
+          "new_start": 434,
+          "old_end": 256,
+          "old_sha256": "3f955fcda7bf4af9eadd9c82f8ce411d5881551ca4f0dfdcf93df3e686ca1b61",
+          "old_start": 255
+        },
+        {
+          "new_end": 465,
+          "new_sha256": "60edb461d42378996581391302dbdb135ed2ad68964b4939000fc3a82aefb5a8",
+          "new_start": 464,
+          "old_end": 288,
+          "old_sha256": "5e84d1d72ce0bc1959a4f85800fdd9c9271bcc427ebcaddda8197de18ddaa64e",
+          "old_start": 285
+        }
+      ],
+      "parent": {
+        "bytes": 21797,
+        "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/ROOT_read_head_gated_receiver_saved_v1.py",
+        "sha256": "c09cdf0b7958959f73ded9fdbd5fd2e3c11b0f2653d1ccab256bfcf3aa77bad9"
+      },
+      "patches": {
+        "forward": {
+          "bytes": 22362,
+          "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent.forward.patch",
+          "sha256": "7be1f42fc6a8702d270d0db5aa6e259c80dfcbf5ac6ae01570ab1ae9e7357e53"
+        },
+        "forward_author": {
+          "bytes": 22366,
+          "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py.forward.patch",
+          "sha256": "bf1d032ae73c01b25915098fb82f20602eb96d51c1353abd229ed3fe0ebc4703"
+        },
+        "inverse": {
+          "bytes": 22362,
+          "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/native_parent.inverse.patch",
+          "sha256": "7bcafa7054669836478f92e81ecc7123cd08c55fbd100fd9934da22c9986a9b8"
+        },
+        "inverse_author": {
+          "bytes": 22366,
+          "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py.inverse.patch",
+          "sha256": "d00dbda4020518d04ff588515b28777ca26d80b67ee3f0c19a680b6b47542258"
+        }
+      },
+      "raw_edit_count": 20,
+      "relation": "native_parent",
+      "removed_named_regions": [],
+      "retained_named_regions_raw_AST_exact": [
+        "need",
+        "canonical",
+        "unique",
+        "decode",
+        "raw_pin",
+        "read",
+        "pinned",
+        "write"
+      ],
+      "source": {
+        "bytes": 33669,
+        "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+        "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+      },
+      "whole_forward_inverse_raw_AST_exact": true
+    }
+  ],
+  "clocks_read": false,
+  "compile_without_evaluation": true,
+  "current_original_map_parity_literal_only": true,
+  "imports_only": [
+    "base64",
+    "hashlib",
+    "json",
+    "pathlib",
+    "sys",
+    "zlib"
+  ],
+  "no_fresh_actual_input_or_profile_hash_claim": true,
+  "operative_contract": {
+    "bytes": 21574,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d"
+  },
+  "phase_bound_checks": {
+    "counters": 20,
+    "line_bytes": 75,
+    "provider_diagnostic_bytes": 81988,
+    "sites": 30,
+    "total_complete_phase_bytes": 1913
+  },
+  "reader_contract": {
+    "bytes": 1040,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/reader-Source-contract-v1.json",
+    "sha256": "948f563c78480a329963679df061d7f7db1c0dece7080873ad0aa0881a503999"
+  },
+  "reader_or_project_module_evaluated": false,
+  "schema": "ROOT-callback-stage-saved-reader-independent-audit-v1",
+  "scientific_calls": 0,
+  "seam_peer": {
+    "bytes": 3500,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v3.json",
+    "sha256": "976ba708551c40b8e78d57c68d791b2a84d29b4c50adad409cd0353c9e63594a"
+  },
+  "source": {
+    "bytes": 33669,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+    "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+  },
+  "source_only": true
+}

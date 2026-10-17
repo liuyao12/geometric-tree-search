@@ -1,0 +1,123 @@
+{
+  "actual_execution_authorized": false,
+  "actual_or_result_data_read": false,
+  "code_modified": false,
+  "control_flow_argument": [
+    {
+      "claim": "Fresh engine begins with _preferences None and counts.nodes0. Root case constructs that fresh engine and calls search once; initial state/census does not install a pending preference.",
+      "lines": [
+        239,
+        255,
+        256
+      ],
+      "source": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py"
+    },
+    {
+      "claim": "This exact Root case sets MAXIMUM_NODES2 and passes it to the fresh engine.",
+      "lines": [
+        13,
+        123,
+        132
+      ],
+      "source": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py"
+    },
+    {
+      "claim": "Each search.walk while iteration checks the node ceiling, then increments nodes before decision and at most one _select_family_branch call. At most two selections can be reached, including siblings or children; recursion depth alone is not the bound.",
+      "lines": [
+        1424,
+        1431,
+        1446,
+        1449
+      ],
+      "source": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py"
+    },
+    {
+      "claim": "Each selection has at most one CONTINUATION and at most one provider plus BATCH check. CONTINUATION READY returns immediately; INVALIDATED clears pending; NO_MATCH clears pending only when selection is None. Clearing permits fresh BATCH in the same selection. UNKNOWN retaining pending does not add BATCH.",
+      "lines": [
+        1368,
+        1393
+      ],
+      "source": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py"
+    },
+    {
+      "claim": "Each _consume_family calls the consumer once; branch adoption may carry pending preferences into the next counted selection. Initial empty preferences excludes CONTINUATION at the first selection.",
+      "lines": [
+        1287,
+        1289,
+        1408,
+        1410
+      ],
+      "source": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py"
+    }
+  ],
+  "corrected_bounds": {
+    "consumer_invocations_max": 3,
+    "mathematical_statement": "$N_{\\mathrm{provider}}\\le 2$ and $N_{\\mathrm{consumer}}\\le 1+2=3$.",
+    "pattern_is_observed": false,
+    "provider_invocations_max": 2,
+    "scope": "Exact current pinned synchronous non-reentrant Root fresh-engine single-search case only; no arbitrary caller/engine version guarantee.",
+    "structurally_permitted_maximal_pattern": [
+      "first counted selection: BATCH consumer",
+      "second counted selection: CONTINUATION consumer",
+      "same second selection after pending cleared: fresh BATCH consumer"
+    ]
+  },
+  "credit_and_limit": "Root reported the reachable-control-flow error. Reviewer checked the exact pinned Source lines only; no current actual/results/science/clock or callback execution, and no assertion that this path occurred in the measured attempt.",
+  "finding": "Root identified and reviewer independently confirmed that the proposed consumer ordinals1..2 cap in V1 was too small. One _select_family_branch decision may invoke CONTINUATION followed by fresh BATCH after INVALIDATED or NO_MATCH with selection None. Correct the future instrumentation design before implementation. No current code or actual is changed.",
+  "implementation_authorized": false,
+  "preservation": "V1 note/handoff and implementation files are not modified. Their historical proposed consumer cap is non-authoritative and superseded by this explicit erratum for any future instrumentation. Other V1 Source diagnoses and measured-scalar interpretations are unchanged.",
+  "preserved_historical_handoff": {
+    "bytes": 715,
+    "path": "/private/tmp/gcts-head-gated-performance-source-20261017/handoff-v1.json",
+    "sha256": "4a75d537793757c305a7fd168988ef3c36bbfbb943fd62fc299b99a074409b21"
+  },
+  "preserved_historical_note": {
+    "bytes": 13630,
+    "path": "/private/tmp/gcts-head-gated-performance-source-20261017/Source-phase-note-v1.json",
+    "sha256": "09f6adc5be5cd89f43a78398e6e5143db875cdd44b5bd066aa77e439ccdb74df"
+  },
+  "prospective_protocol_correction": {
+    "arithmetic": "Two provider invocations times three groups, plus three consumer invocations times three groups, plus two once-only groups.",
+    "captures": "Two retained successful provider-return slots remain sufficient for this exact case. Any consumer ordinal/latest-return capture must allow three invocations. A diagnostic cap may drop diagnostic writes only; it must never stop, skip or change an algorithmic callback.",
+    "consumer_group_ordinals": [
+      1,
+      2,
+      3
+    ],
+    "groups_per_invocation": [
+      "ENTER",
+      "DELEGATE_RETURN",
+      "CALLBACK_READY"
+    ],
+    "maximum_new_complete_stage_lines": 17,
+    "once_only_groups": [
+      "SEARCH_RETURN_OBSERVED",
+      "POSTSEARCH_SNAPSHOT_READY"
+    ],
+    "provider_group_ordinals": [
+      1,
+      2
+    ],
+    "superseded_V1_maximum_new_complete_stage_lines": 14,
+    "unchanged_scope": "All observations remain literal stage/entry/return diagnostics, not exclusive timers, active-frame evidence, valid offers, moves, restore/completion counts, exhaustion, qualification or failure-cause attribution. Full scientific compound bodies/guards/native20/512/failure55/once/model/epoch/scheduler/fallback/rollback remain unchanged until a separately authorized and reviewed Source successor.",
+    "wire_limit": "The proposed conservative4KiB new-wire ceiling remains a design suggestion only. Future author must compute the exact full whitelist/line/total grammar and bounds from frozen Source, including all inherited phase sites and partial final line handling."
+  },
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "receptor-family-head-gated-diagnostic-bound-erratum-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_evaluated": false,
+  "source_only": true,
+  "source_refs": {
+    "Root_receiver_case": {
+      "bytes": 7899,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cases_v1.py",
+      "sha256": "35e2db01caee94470a5321a326a4679bd0370a728a540887c603fd6c81b7837d"
+    },
+    "engine7": {
+      "bytes": 92154,
+      "path": "/private/tmp/gcts-head-gated-family-engine-source-20261017/receptor_family_search_engine_v7.py",
+      "sha256": "b53dbb82f8f06f6b844eaeaedbe2ec646b77e88c40473016d16adf894c8ead9e"
+    }
+  }
+}

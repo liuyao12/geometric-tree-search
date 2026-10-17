@@ -1,0 +1,312 @@
+--- a/source.py
++++ b/source.py
+@@ -10,7 +10,7 @@
+ import sys
+ import zlib
+ 
+-CURRENT_CONTRACT={'path': '/private/tmp/gcts-head-gated-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'e14d41aa80c624b67238e6511f27e519b6dcf8d24041be05fd82a0e498fb4afe', 'bytes': 19869}
++CURRENT_CONTRACT={'path': '/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json', 'sha256': 'b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d', 'bytes': 21574}
+ 
+ 
+ def need(ok, why):
+@@ -64,26 +64,137 @@
+     return dict(path=str(path), **raw_pin(raw))
+ 
+ 
+-PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')
++LEGACY_PHASES=('BEFORE_PLAN_READ', 'BEFORE_CURRENT_SOURCE_READS', 'BEFORE_AUTHORITY_INPUT_READS', 'BEFORE_MODULE_LOAD', 'BEFORE_GUARD_CONSTRUCTION', 'BEFORE_STAGEB_PROVENANCE', 'BEFORE_MARKING_CHECK', 'BEFORE_POOL_READ', 'BEFORE_ENGINE', 'BEFORE_PROVIDER', 'AFTER_PROVIDER', 'AFTER_ENGINE', 'BEFORE_OUTPUT')
++CALLBACK_PHASES=('P1_ENTER','P1_DELEGATE_RETURN','P1_CALLBACK_READY',
++    'P2_ENTER','P2_DELEGATE_RETURN','P2_CALLBACK_READY',
++    'C1_ENTER','C1_DELEGATE_RETURN','C1_CALLBACK_READY',
++    'C2_ENTER','C2_DELEGATE_RETURN','C2_CALLBACK_READY',
++    'C3_ENTER','C3_DELEGATE_RETURN','C3_CALLBACK_READY')
++SEARCH_PHASES=('SEARCH_RETURN_OBSERVED','POSTSEARCH_SNAPSHOT_READY')
++PHASES=LEGACY_PHASES+CALLBACK_PHASES+SEARCH_PHASES
++PROVIDER_COUNTERS=('planned_assignments','attempted_assignments','binding_attempts',
++    'ground_environment_proposals','distinct_environment_attempts','full_expansions',
++    'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',
++    'checked_instances','duplicate_instances','offered_instances','head_gate_calls',
++    'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',
++    'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')
++PROVIDER_DIAGNOSTIC_MAX_BYTES=81988
++PHASE_LINE_MAX_BYTES=75
++PHASE_TOTAL_MAX_BYTES=1913
++
+ 
+ def read_phases(raw, launch, terminal):
+-    need(len(raw)<=65536, 'bounded full native stderr')
++    need(type(raw)is bytes and len(raw)<=65536, 'bounded full native stderr')
++    need(type(launch)is int and type(terminal)is int and 0<=launch<=terminal<2**63,
++         'literal phase external clock bounds')
+     prefix=b'COMPONENT_INVENTORY_PHASE '
+-    phases=[];tail=[];stopped=False;last_index=-1
+-    for line in raw.splitlines(keepends=True):
+-        if not stopped and line.startswith(prefix) and line.endswith(b'\n'):
+-            need(len(line)<=96, 'bounded complete phase line')
++    phases=[];tail=[];stopped=False;last_index=-1;last_stamp=launch;wire_bytes=0
++    seen=set();stack=[];ordinals={'P':0,'C':0};group_stage={}
++    lines=raw.splitlines(keepends=True)
++    for line_index,line in enumerate(lines):
++        if line.startswith(prefix) and line.endswith(b'\n'):
++            need(not stopped, 'no complete phase after stderr tail')
++            need(len(line)<=PHASE_LINE_MAX_BYTES, 'bounded complete phase line')
+             parts=line[:-1].split(b' ')
+             need(len(parts)==3 and parts[0]==prefix[:-1], 'literal phase fields')
+             label=parts[1].decode('ascii');number=parts[2]
+-            need(label in PHASES and PHASES.index(label)>last_index and number.isdigit()
+-                 and (number==b'0' or not number.startswith(b'0')), 'unique ordered literal phase')
+-            stamp=int(number);need(type(stamp)is int and launch<=stamp<=terminal<2**63, 'native phase clock join')
+-            last_index=PHASES.index(label);phases.append({'stage':label,'native_ns':stamp})
++            need(label in PHASES and label not in seen and 1<=len(number)<=19
++                 and number.isdigit() and (number==b'0' or not number.startswith(b'0')),
++                 'unique literal phase and canonical signed64 timestamp')
++            stamp=int(number)
++            need(last_stamp<=stamp<=terminal and stamp<2**63, 'nondecreasing native phase clock join')
++            if label in LEGACY_PHASES:
++                index=LEGACY_PHASES.index(label)
++                need(index>last_index, 'inherited reached-site order')
++                if label=='BEFORE_PROVIDER':
++                    need(not stack and 'P1_ENTER' not in seen
++                         and 'SEARCH_RETURN_OBSERVED' not in seen, 'first-only provider entry site')
++                elif label=='AFTER_PROVIDER':
++                    need('P1_DELEGATE_RETURN' in seen and 'P1_CALLBACK_READY' not in seen
++                         and stack and stack[-1]=='P1', 'first-only provider copied-return site')
++                elif label in ('AFTER_ENGINE','BEFORE_OUTPUT'):
++                    need('POSTSEARCH_SNAPSHOT_READY' in seen,
++                         'completed search/snapshot reached before outer site')
++                last_index=index
++            elif label in CALLBACK_PHASES:
++                need('BEFORE_ENGINE' in seen and 'SEARCH_RETURN_OBSERVED' not in seen,
++                     'callback stages occur in the search interval')
++                group,stage=label.split('_',1)
++                role=group[0];ordinal=int(group[1])
++                if stage=='ENTER':
++                    need(not stack, 'synchronous callback groups do not nest')
++                    need(ordinal==ordinals[role]+1, 'per-role callback entry ordinal')
++                    if group=='P1':need('BEFORE_PROVIDER' in seen, 'first provider outer site precedes delegate')
++                    ordinals[role]=ordinal;stack.append(group);group_stage[group]='ENTER'
++                elif stage=='DELEGATE_RETURN':
++                    need(stack and stack[-1]==group and group_stage[group]=='ENTER',
++                         'nested callback delegate-return order')
++                    group_stage[group]='DELEGATE_RETURN'
++                else:
++                    need(stack and stack[-1]==group and group_stage[group]=='DELEGATE_RETURN',
++                         'nested callback ready order')
++                    if group=='P1':need('AFTER_PROVIDER' in seen, 'first provider old copied-return site')
++                    group_stage[group]='CALLBACK_READY';stack.pop()
++            elif label=='SEARCH_RETURN_OBSERVED':
++                # search catches TimeoutError, including membership subclasses:
++                # one entered callback may unwind without returning or logging.
++                need('BEFORE_ENGINE' in seen and len(stack)<=1,
++                     'search return may retain one unfinished callback group')
++            else:
++                need('SEARCH_RETURN_OBSERVED' in seen, 'postsearch snapshot follows search return')
++            wire_bytes+=len(line)
++            need(wire_bytes<=PHASE_TOTAL_MAX_BYTES, 'bounded complete fixed phase wire')
++            seen.add(label);last_stamp=stamp;phases.append({'stage':label,'native_ns':stamp})
+         else:
++            # A partial final phase can be retained as raw tail, never completed.
++            if line.startswith(prefix) or (line and prefix.startswith(line)):
++                need(line_index==len(lines)-1 and not line.endswith(b'\n'), 'only a final incomplete phase tail')
++                possible=False
++                for label in PHASES:
++                    head=prefix+label.encode('ascii')+b' '
++                    if head.startswith(line):possible=True
++                    elif line.startswith(head):
++                        number=line[len(head):]
++                        if (len(number)<=19 and (not number or number.isdigit())
++                                and (not number or number==b'0' or not number.startswith(b'0'))
++                                and (not number or int(number)<2**63)):
++                            possible=True
++                need(possible and len(line)<PHASE_LINE_MAX_BYTES, 'literal incomplete phase prefix only')
+             stopped=True;tail.append(line)
+-    need(len(phases)<=13, 'finite fixed phase sites')
++    need(len(phases)<=30, 'finite fixed phase sites')
+     return phases,b''.join(tail)
++
++
++def validate_positive_callback_phases(phases, pipeline):
++    # Counts come only from the full authenticated returned record, never failure slots.
++    need(type(pipeline)is dict and type(pipeline.get('observations'))is dict,
++         'full returned callback observations')
++    observations=pipeline['observations']
++    providers=observations.get('provider_calls');consumers=observations.get('consumer_calls')
++    need(type(providers)is list and type(consumers)is list
++         and len(providers)<=2 and len(consumers)<=3, 'exact current full-record callback count bounds')
++    labels={item['stage']for item in phases}
++    wanted=set(LEGACY_PHASES)-{'BEFORE_PROVIDER','AFTER_PROVIDER'}
++    wanted.update(SEARCH_PHASES)
++    need(wanted<=labels, 'full returned outer setup/search/snapshot/output sites')
++    unfinished=[]
++    for role,count in (('P',len(providers)),('C',len(consumers))):
++        maximum=2 if role=='P' else 3
++        for ordinal in range(1,maximum+1):
++            group=role+str(ordinal)
++            entered=group+'_ENTER'in labels
++            delegated=group+'_DELEGATE_RETURN'in labels
++            ready=group+'_CALLBACK_READY'in labels
++            if ordinal<=count:
++                need(entered and delegated, 'full logged ordinal follows actual delegate-return site')
++            if ready:need(ordinal<=count, 'ready site has an already appended full observation')
++            if entered and not ready:unfinished.append(group)
++            if entered and ordinal>count:
++                need(ordinal==count+1 and not ready, 'one unlogged final callback prefix only')
++    need(len(unfinished)<=1, 'at most one unwound incomplete callback in full returned record')
++    if providers:need('AFTER_PROVIDER'in labels, 'first logged provider passed old copied-return site')
++    need(phases and phases[0]['stage']=='BEFORE_PLAN_READ' and phases[-1]['stage']=='BEFORE_OUTPUT'
++         and labels<=set(PHASES), 'complete outer sites with truthful callback prefixes')
+ 
+ 
+ def read_failure_diagnostic(owned,plan,plan_raw,contract,launch,terminal,phases):
+@@ -92,18 +203,36 @@
+     names=sorted(p.name for p in owned.iterdir())
+     if names!=['diagnostic-completion.json','unknown-diagnostic.json']:
+         return {'complete_pair':False,'reason':'incomplete diagnostic pair','files':names}
+-    diagnostic_raw=read(owned/'unknown-diagnostic.json',16384)
++    diagnostic_raw=read(owned/'unknown-diagnostic.json',PROVIDER_DIAGNOSTIC_MAX_BYTES)
+     completion_raw=read(owned/'diagnostic-completion.json',1024)
+     need(diagnostic_raw.endswith(b'\n')and completion_raw.endswith(b'\n'), 'complete diagnostic LF')
+     marker=decode(completion_raw);diagnostic=decode(diagnostic_raw)
+-    need(marker['schema']=='unit-row-controls-last-context-completion-v1'
+-         and marker['file']=='unknown-diagnostic.json'
+-         and marker['sha256']==raw_pin(diagnostic_raw)['sha256']and marker['bytes']==len(diagnostic_raw)
++    marker_keys={'schema','file','sha256','bytes','diagnostic_only','positive_joint_gate_accepted',
++                 'ROOT_resource_accepted','terminal_exit2_and_external_failure_closure_required'}
++    need(type(marker)is dict and len(marker)==len(marker_keys)
++         and all(type(key)is str for key in marker) and set(marker)==marker_keys,
++         'exact builtin diagnostic completion fields')
++    need(type(marker['schema'])is str and marker['schema']in
++         ('unit-row-controls-last-context-completion-v1','unit-row-controls-provider-returns-completion-v2'),
++         'explicit legacy or provider-return completion schema')
++    provider_journal=marker['schema']=='unit-row-controls-provider-returns-completion-v2'
++    need(type(marker['file'])is str and marker['file']=='unknown-diagnostic.json'
++         and type(marker['sha256'])is str and marker['sha256']==raw_pin(diagnostic_raw)['sha256']
++         and type(marker['bytes'])is int and marker['bytes']==len(diagnostic_raw)
+          and marker['diagnostic_only']is True and marker['positive_joint_gate_accepted']is False
+          and marker['ROOT_resource_accepted']is False
+-         and marker['terminal_exit2_and_external_failure_closure_required']is True,
++         and marker['terminal_exit2_and_external_failure_closure_required']is True
++         and (provider_journal or len(diagnostic_raw)<=16384),
+          'same complete builtin failure diagnostic bytes')
++    outer_keys={'context','diagnostic','last_observations'}
++    if provider_journal:outer_keys.add('provider_returns')
++    need(type(diagnostic)is dict and len(diagnostic)==len(outer_keys)
++         and all(type(key)is str for key in diagnostic) and set(diagnostic)==outer_keys,
++         'exact builtin diagnostic object')
+     context,labels,slots=diagnostic['context'],diagnostic['diagnostic'],diagnostic['last_observations']
++    need(type(context)is dict and all(type(key)is str for key in context)
++         and type(labels)is dict and all(type(key)is str for key in labels),
++         'builtin context and labels before field access')
+     need(context['schema']=='ROOT-receptor-inference-probe-diagnostic-context-v1'
+          and context['invocation_id']==plan['invocation_id']and context['purpose']==plan['purpose']
+          and context['plan']==raw_pin(plan_raw)and context['sources']==plan['sources']
+@@ -117,28 +246,78 @@
+     began,deadline=context['joint_began_ns'],context['joint_deadline_ns']
+     need(type(began)is int and type(deadline)is int and launch<=began<=terminal
+          and deadline==began+20000000000, 'exact original diagnostic window')
+-    need(labels['schema']=='unit-row-controls-last-context-diagnostic-v1'
+-         and labels['diagnostic_only']is True and labels['returned_control_record']is False
+-         and labels['failure_kind']=='TimeoutError'
+-         and all(labels[key]is False for key in ('last_observation_is_active_failure_frame',
+-              'live_state_or_proof_trajectory_accepted','positive_joint_gate_accepted','logical_proof_accepted',
+-              'exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted',
+-              'RL_accepted','ROOT_resource_accepted')), 'raw scalar diagnostic has no proof or cause authority')
+-    need(type(slots)is dict and set(slots)=={'proposer','fallback','completion','validator'}
++    if provider_journal:
++        expected_labels={'schema':'unit-row-controls-provider-returns-diagnostic-v2',
++            'diagnostic_only':True,'qualification':'UNQUALIFIED_LITERAL_PROVIDER_RETURN_SCALARS',
++            'failure_kind':'TimeoutError','returned_control_record':False,
++            'callback_context':'LITERAL_RETURNED_SCALARS_ONLY_NOT_FULL_RECEIPTS',
++            'provider_return_summaries_are_unvalidated_scalars':True,
++            'last_observation_is_active_failure_frame':False,'callback_return_to_engine_proved':False,
++            'offers_accepted':False,'current_state_accepted':False,'failure_cause_established':False,
++            'live_state_or_proof_trajectory_accepted':False,
++            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,
++            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
++            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False}
++        need(set(labels)==set(expected_labels)
++             and all(type(labels[key])is type(value) and labels[key]==value
++                     for key,value in expected_labels.items()), 'literal V2 unqualified scalar-only labels')
++    else:
++        need(labels['schema']=='unit-row-controls-last-context-diagnostic-v1'
++             and labels['diagnostic_only']is True and labels['returned_control_record']is False
++             and labels['failure_kind']=='TimeoutError'
++             and all(labels[key]is False for key in ('last_observation_is_active_failure_frame',
++                  'live_state_or_proof_trajectory_accepted','positive_joint_gate_accepted','logical_proof_accepted',
++                  'exact_point_board_accepted','complete_GCTS_model_accepted','GCTS_search_trajectory_accepted',
++                  'RL_accepted','ROOT_resource_accepted')), 'raw scalar diagnostic has no proof or cause authority')
++    need(type(slots)is dict and len(slots)==4 and all(type(key)is str for key in slots)
++         and set(slots)=={'proposer','fallback','completion','validator'}
+          and slots['validator']is None, 'fixed4 entry observations; validator unwrapped')
+     for role,value in slots.items():
+         if value is None:continue
+-        need(set(value)=={'stage','row','selected_count','native_ns'}
+-             and value['stage']==role.upper()+'_NATIVE_STEP'
++        need(type(value)is dict and len(value)==4 and all(type(key)is str for key in value)
++             and set(value)=={'stage','row','selected_count','native_ns'}
++             and type(value['stage'])is str and value['stage']==role.upper()+'_NATIVE_STEP'
+              and type(value['row'])is int and -1<=value['row']<24
+              and type(value['selected_count'])is int and -1<=value['selected_count']<=24
+              and type(value['native_ns'])is int and began<=value['native_ns']<deadline
+              and value['native_ns']<=terminal, 'literal bounded entry data')
++    returned=None
++    if provider_journal:
++        returned=diagnostic['provider_returns']
++        need(type(returned)is list and len(returned)==2, 'two nullable builtin provider-return slots')
++        phase_stamps={item['stage']:item['native_ns']for item in phases}
++        keys={'ordinal','native_ns','batch_status','instance_count','provider_reason','provider_steps','accounting'}
++        for index,value in enumerate(returned):
++            if value is None:continue
++            need(type(value)is dict and len(value)==7 and all(type(key)is str for key in value)
++                 and set(value)==keys, 'exact builtin provider-return fields')
++            counts=value['accounting']
++            need(type(value['ordinal'])is int and value['ordinal']==index+1
++                 and type(value['native_ns'])is int and began<=value['native_ns']<deadline
++                 and value['native_ns']<=terminal
++                 and type(value['batch_status'])is str and len(value['batch_status'])<=64
++                 and type(value['instance_count'])is int and 0<=value['instance_count']<=1
++                 and type(value['provider_reason'])is str and len(value['provider_reason'])<=256
++                 and type(value['provider_steps'])is int and 0<=value['provider_steps']<=1000000
++                 and type(counts)is dict and len(counts)==20 and all(type(key)is str for key in counts)
++                 and set(counts)==set(PROVIDER_COUNTERS)
++                 and all(type(counts[key])is int and 0<=counts[key]<=1000000 for key in PROVIDER_COUNTERS),
++                 'literal bounded unvalidated provider-return scalars')
++            group='P'+str(index+1)
++            need(group+'_DELEGATE_RETURN'in phase_stamps
++                 and phase_stamps[group+'_DELEGATE_RETURN']<=value['native_ns']
++                 and (group+'_CALLBACK_READY'not in phase_stamps
++                      or value['native_ns']<=phase_stamps[group+'_CALLBACK_READY']),
++                 'nullable scalar timestamp joins reached delegate and optional ready sites')
+     need(all(began<=phase['native_ns']<deadline for phase in phases), 'complete phase samples within original20')
+-    return {'complete_pair':True,'diagnostic':dict(path=str(owned/'unknown-diagnostic.json'),**raw_pin(diagnostic_raw)),
++    result={'complete_pair':True,'diagnostic':dict(path=str(owned/'unknown-diagnostic.json'),**raw_pin(diagnostic_raw)),
+         'completion':dict(path=str(owned/'diagnostic-completion.json'),**raw_pin(completion_raw)),
+         'context':context,'last_observations':slots,'last_observation_is_active_failure_frame':False,
+         'failure_cause_established':False,'qualified_case_count':0,'reported_case_count':None}
++    if provider_journal:
++        result.update(provider_returns=returned,provider_return_summaries_are_unvalidated_scalars=True,
++            callback_return_to_engine_proved=False,offers_accepted=False,current_state_accepted=False)
++    return result
+ 
+ 
+ def main(argv):
+@@ -253,7 +432,7 @@
+              and completion['exit_zero_and_coordinator_deadline_required']is True
+              and completion['body_sha256']==raw_pin(lines[0])['sha256'] and completion['body_bytes']==len(lines[0])
+              and body['schema']=='ROOT-receptor-inference-probe-response-body-v1'
+-             and body['version']=='ROOT-receiver-inference-probe-cold-v3-head-gated'
++             and body['version']=='ROOT-receiver-inference-probe-cold-v4-callback-stages'
+              and body['status']=='COMPLETE_WORKER_PENDING_EXTERNAL'
+              and body['limits']==plan['limits'] and body['resource_rule']==plan['resource_rule']
+              and body['CLOCK_DOMAIN']=='time.clock_gettime_ns(time.CLOCK_MONOTONIC)'
+@@ -283,9 +462,7 @@
+              and evidence['purpose']==plan['purpose'], 'full canonical current payload')
+         payload=evidence['receiver_probe'];pipeline=payload['receiver']
+         need(all(body['joint_began_ns']<=x['native_ns']<body['joint_deadline_ns']for x in phases), 'positive phase samples original20')
+-        need(phases[0]['stage']=='BEFORE_PLAN_READ' and phases[-1]['stage']=='BEFORE_OUTPUT'
+-             and (pipeline['status']!='RECEIVER_PROBE_RECORDED' or [x['stage']for x in phases if x['stage'] not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]==[x for x in PHASES if x not in ('BEFORE_PROVIDER','AFTER_PROVIDER')]),
+-             'ordered reached sites; full inventory requires all required sites; provider sites are conditional')
++        validate_positive_callback_phases(phases,pipeline)
+         need(payload['schema']=='ROOT-receptor-inference-probe-payload-v1'
+              and payload['original_model_sources']==contract['original_model_sources']
+              and payload['original_model_inputs']==contract['original_model_inputs']

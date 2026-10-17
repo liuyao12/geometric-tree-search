@@ -1,0 +1,261 @@
+{
+  "checks": [
+    {
+      "check": "current handoff exact requested pin",
+      "passed": true
+    },
+    {
+      "check": "current source and contract full bytes",
+      "passed": true
+    },
+    {
+      "check": "current exact review ABI",
+      "passed": true
+    },
+    {
+      "check": "parent exact source pin",
+      "passed": true
+    },
+    {
+      "check": "caller audit identity and eight complete raw regions",
+      "passed": true
+    },
+    {
+      "check": "raw old/new region 1",
+      "passed": true
+    },
+    {
+      "check": "raw old/new region 2",
+      "passed": true
+    },
+    {
+      "check": "raw old/new region 3",
+      "passed": true
+    },
+    {
+      "check": "raw old/new region 4",
+      "passed": true
+    },
+    {
+      "check": "raw old/new region 5",
+      "passed": true
+    },
+    {
+      "check": "raw old/new region 6",
+      "passed": true
+    },
+    {
+      "check": "raw old/new region 7",
+      "passed": true
+    },
+    {
+      "check": "raw old/new region 8",
+      "passed": true
+    },
+    {
+      "check": "independent whole raw forward and inverse",
+      "passed": true
+    },
+    {
+      "check": "independent whole AST forward and inverse",
+      "passed": true
+    },
+    {
+      "check": "actual forward patch application and exact cmp",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "check": "actual inverse patch application and exact cmp",
+      "passed": true,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "check": "current caller compiles without evaluation",
+      "passed": true
+    },
+    {
+      "added": [
+        "main.capture_provider_summary"
+      ],
+      "changed": [
+        "save_failure_diagnostic",
+        "main",
+        "main.run_receiver"
+      ],
+      "check": "all unchanged named regions independently exact",
+      "passed": true,
+      "unchanged": [
+        "need",
+        "canonical",
+        "raw_pin",
+        "unique",
+        "reject_constant",
+        "finite_float",
+        "decode",
+        "read_pinned",
+        "load_module",
+        "write_new",
+        "anchor",
+        "same",
+        "invoke",
+        "cancel",
+        "all_function_anchors",
+        "all_function_anchors.retain",
+        "save_failure_diagnostic.failure_gate",
+        "save_failure_diagnostic.encoded",
+        "save_failure_diagnostic.encoded.append",
+        "save_failure_diagnostic.encoded.visit",
+        "save_failure_diagnostic.write",
+        "encode_result_transport",
+        "ObservedCursor",
+        "ObservedCursor.__init__",
+        "ObservedCursor.context",
+        "ObservedCursor.advance",
+        "ObservedCursor.abort",
+        "ChildControlInterruption",
+        "main.tick",
+        "main.phase",
+        "main.guard",
+        "main.boundary",
+        "main.call",
+        "main.fresh_language"
+      ]
+    },
+    {
+      "check": "reviewed writer embedded raw exact",
+      "passed": true
+    },
+    {
+      "check": "reviewed capture fragment inserted raw exact",
+      "passed": true
+    },
+    {
+      "check": "unchanged literal FIXED_INPUTS",
+      "passed": true
+    },
+    {
+      "check": "unchanged literal LIMITS",
+      "passed": true
+    },
+    {
+      "check": "unchanged literal ORIGINAL_SOURCES",
+      "passed": true
+    },
+    {
+      "check": "unchanged literal ORIGINAL_INPUTS",
+      "passed": true
+    },
+    {
+      "check": "unchanged literal ORIGINAL_BINDING",
+      "passed": true
+    },
+    {
+      "check": "unchanged literal SCOPE",
+      "passed": true
+    },
+    {
+      "check": "only current helper changes in executable dependency map",
+      "passed": true
+    },
+    {
+      "check": "source22 versus original17 and input10/input2 contract joins",
+      "passed": true
+    },
+    {
+      "check": "exact current reviewed helper pin",
+      "passed": true
+    },
+    {
+      "check": "prior independent helper/seam reviews and preserved negative",
+      "passed": true
+    },
+    {
+      "check": "integrated exact phase whitelist and finite wire bound",
+      "passed": true
+    },
+    {
+      "check": "unchanged final transport/native error tail raw",
+      "passed": true
+    }
+  ],
+  "notes": [
+    "No author builder, model, checker, helper or reviewed module imported or evaluated.",
+    "No actual/result/plan/grant contents or scientific inputs read. All work limited to listed Sources/contracts/prior Source reviews and real patch applications on reviewer-owned Source copies."
+  ],
+  "raw_references": [
+    {
+      "bytes": 14681,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/handoff-v1.json",
+      "sha256": "a0f81b29c2963b7ed75a6f19be4ffe4468973c984ba3d12d41e793909d4abcc5"
+    },
+    {
+      "bytes": 66670,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+      "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91"
+    },
+    {
+      "bytes": 21574,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d"
+    },
+    {
+      "bytes": 57736,
+      "path": "/private/tmp/gcts-head-gated-ROOT-source-20261017/head_gated_receiver_cold_v1.py",
+      "sha256": "def69dddf38107e78c14f9fc5e509d7c9bede008533850a427b08b1d1b2b4ac9"
+    },
+    {
+      "bytes": 47432,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT-raw-Source-audit-v1.json",
+      "sha256": "81920a4282aa49fa0d3012e6bcd716afb8a5c42c296a847b56eae73a859b20a0"
+    },
+    {
+      "bytes": 27053,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py.forward.patch",
+      "sha256": "61bf6635f5319094703420965083e3adacd51284ffcc462436ea1cdff13902c8"
+    },
+    {
+      "bytes": 27053,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py.inverse.patch",
+      "sha256": "4370d420bc1339dfbd7b2ea911a2b7f5d92360202c55cc0a6192199e36cbbf8b"
+    },
+    {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    },
+    {
+      "bytes": 2841,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/capture_provider_summary.fragment.py",
+      "sha256": "25a560802d724fdd5280d29cbeb5ea68285b26618ec64d8a2f50d8ee6f5ffd88"
+    },
+    {
+      "bytes": 8772,
+      "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+      "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+    },
+    {
+      "bytes": 2948,
+      "path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "53429781ad66f677ff18d0261e3abe851fc313ca370dd3b84547f3a7478a59ac"
+    },
+    {
+      "bytes": 3500,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v3.json",
+      "sha256": "976ba708551c40b8e78d57c68d791b2a84d29b4c50adad409cd0353c9e63594a"
+    },
+    {
+      "bytes": 2120,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v2.json",
+      "sha256": "fd13d77f54cc31317eac1021fa9ef7bd3ac2cea1acde8034d9ba68789253bbc4"
+    }
+  ],
+  "schema": "callback-stage-integrated-caller-independent-source-audit-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only": true
+}

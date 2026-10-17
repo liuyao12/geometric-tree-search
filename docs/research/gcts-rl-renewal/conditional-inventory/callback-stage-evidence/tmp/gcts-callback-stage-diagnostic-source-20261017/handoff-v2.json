@@ -1,0 +1,51 @@
+{
+  "API": {
+    "bytes": 8571,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/API-wire-v2.json",
+    "sha256": "3e254e9cad661de0f070c0331566c820fbefc78fb045b99023bb299bb8f67c43"
+  },
+  "actual_execution_authorized": false,
+  "author": "/root/hilbert_advice_controls",
+  "delta": {
+    "bytes": 31433,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-delta-v2.json",
+    "sha256": "b5080cb6d45833332bbe9ae8e2442c772ff4389720b64b7809a30e1088fbfa85"
+  },
+  "integration_steps": [
+    "Root copies exact writer FunctionDef into original __main__, preserves original guarded invoke and late captured writer checks, passes new capture dict and exact new failure kind.",
+    "Root rebinds full-reader authority literals to its new executable composition; reader seam itself has no actual authorization.",
+    "Distinct Diagnosis whole Source review and Root final composition review precede any separately granted once actual."
+  ],
+  "module_evaluations": 0,
+  "notes": "No existing frozen Source or Root publication/plan/grant/actual files modified.",
+  "schema": "ROOT-callback-stage-diagnostic-seam-handoff-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 15021,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+    "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+  },
+  "source_contract": {
+    "bytes": 12533,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "14cf21049783074b10ffd72a3da63363a50f97bf1425d1b242d23e7b8257ed76"
+  },
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 33581,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v2.py",
+      "sha256": "05ad8d20dcac3ce7c8a3f782753e65dec8d4da90803b115bfbbaf2b51c48489f"
+    },
+    "writer_replacement": {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    }
+  },
+  "static_audit": {
+    "bytes": 1306,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/static-Source-audit-v2.json",
+    "sha256": "2d4126d864ca325294a755fe40ee4d5a6311f88f5e0635b6be9d15a50adf81a2"
+  }
+}

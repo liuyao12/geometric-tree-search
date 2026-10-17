@@ -1,0 +1,48 @@
+{
+  "schema": "ROOT-callback-stage-diagnostic-static-Source-audit-v2",
+  "checks": [
+    {
+      "check": "writer raw/AST/actual-patch reconstruction",
+      "passed": true,
+      "raw_edit_regions": 2,
+      "unchanged_named_regions": 5,
+      "changed_existing_named_regions": [
+        "save_failure_diagnostic"
+      ]
+    },
+    {
+      "check": "reader raw/AST/actual-patch reconstruction",
+      "passed": true,
+      "raw_edit_regions": 18,
+      "unchanged_named_regions": 8,
+      "changed_existing_named_regions": [
+        "read_phases",
+        "read_failure_diagnostic",
+        "main"
+      ]
+    },
+    {
+      "check": "old controls kind branch raw exact",
+      "passed": true,
+      "bytes": 2184,
+      "sha256": "ce0074bd61195065f895e1b9ec653f1563be96b91c3f74963d1f271db4e14dc2"
+    },
+    {
+      "check": "writer signature/defaults exact",
+      "passed": true
+    },
+    {
+      "check": "phase whitelist/bounds and diagnostic wrapper arithmetic",
+      "passed": true,
+      "complete_lines": 30,
+      "maximum_line_bytes": 75,
+      "maximum_total_complete_bytes": 1913,
+      "new_diagnostic_max_bytes": 81988
+    }
+  ],
+  "all_checks_passed": true,
+  "scientific_calls": 0,
+  "module_evaluations": 0,
+  "scientific_acceptance": false,
+  "checks_are_author_static_only": true
+}

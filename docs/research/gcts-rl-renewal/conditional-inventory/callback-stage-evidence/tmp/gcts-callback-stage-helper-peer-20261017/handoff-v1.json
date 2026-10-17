@@ -1,0 +1,33 @@
+{
+  "actual_execution_authorized": false,
+  "findings": {
+    "bytes": 4845,
+    "path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/findings-v1.json",
+    "sha256": "889e19c11b7eb9403e9f962077b6009a008607ba29b9b42db52d52a49345e057"
+  },
+  "pass": true,
+  "review": {
+    "bytes": 2948,
+    "path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/typed-Source-review-v1.json",
+    "sha256": "53429781ad66f677ff18d0261e3abe851fc313ca370dd3b84547f3a7478a59ac"
+  },
+  "schema": "ROOT-callback-stage-receiver-cases-independent-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source": {
+    "bytes": 8772,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/callback_stage_receiver_cases_v1.py",
+    "sha256": "150e5eb32dd4bbfbb44e19554072d2fdc0412f9f1faba228bac8e414a868b094"
+  },
+  "source_contract": {
+    "bytes": 5288,
+    "path": "/private/tmp/gcts-callback-stage-helper-source-20261017/Source-contract-v1.json",
+    "sha256": "555dd0cc08ead397e3d670674001b10d4e8fded1608b7ad28c7489a048fef6ce"
+  },
+  "source_only": true,
+  "static_review": {
+    "bytes": 7645,
+    "path": "/private/tmp/gcts-callback-stage-helper-peer-20261017/static-review-v1.json",
+    "sha256": "3b45f239bf048131209a67c0d97c38eb36a4c479302e2098db120ba44743e992"
+  }
+}

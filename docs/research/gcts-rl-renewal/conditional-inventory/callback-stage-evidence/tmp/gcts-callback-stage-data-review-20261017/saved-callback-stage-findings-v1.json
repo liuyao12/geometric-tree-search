@@ -1,0 +1,262 @@
+{
+  "Root_disposition": {
+    "bytes": 14756,
+    "path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-disposition-v1.json",
+    "sha256": "ab7799486e7cef0d45d586918fc025d81dc53726ce1821b9b1e00e150fc1784a"
+  },
+  "audit_passed": true,
+  "authority": {
+    "Source_counts": {
+      "current": 22,
+      "current_inputs": 10,
+      "original": 17,
+      "original_inputs": 2
+    },
+    "Source_reviews": {
+      "ROOT": {
+        "bytes": 9109,
+        "path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-Source-review-v1.json",
+        "sha256": "b8324cd22761fdf6bb93bbab0c8b6cae3976930dd3a2b4ee0c7793e25a480620"
+      },
+      "peer": {
+        "bytes": 9081,
+        "path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/typed-Source-review-v1.json",
+        "sha256": "835f8d3877f40ff7bdfec1943d3744054dceee9a494d64ea129d149e4be90130"
+      }
+    },
+    "all_literal_joins_passed": true,
+    "authorization": {
+      "bytes": 13202,
+      "path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-authorization-v1.json",
+      "sha256": "be736a89fc9f867113d9d8b9d6fd3f1d2b1b3b592dc6796b2549ff2ce46f5348"
+    },
+    "component_review_pins_verified": [
+      "family_engine",
+      "head_gate",
+      "producer",
+      "receiver_cases",
+      "receiver_provider",
+      "residual_policy"
+    ],
+    "contract": {
+      "bytes": 21574,
+      "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+      "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d"
+    },
+    "dataless_not_read": [],
+    "plan": {
+      "bytes": 10862,
+      "path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/ROOT-plan-v1.json",
+      "sha256": "7c0dfbfffc71b36b39a251906adeefe6adc6815db68c90d75fc58db106caa611"
+    },
+    "raw_input_pins_verified": 10,
+    "raw_source_pins_verified": 22,
+    "reader": {
+      "peer": {
+        "bytes": 4144,
+        "path": "/private/tmp/gcts-callback-stage-saved-reader-peer-20261017/typed-Source-review-v1.json",
+        "sha256": "daf7204890ae3eb239001d52599d37cdce97f073d127142f75138eb73c224976"
+      },
+      "source": {
+        "bytes": 33669,
+        "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/ROOT_read_callback_stage_receiver_saved_v1.py",
+        "sha256": "70dfa42f0aa153fc918ff8277a2f5f2147db4459ce31639f7c3d95c6cb4c0a8c"
+      },
+      "source_contract": {
+        "bytes": 1040,
+        "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/reader-Source-contract-v1.json",
+        "sha256": "948f563c78480a329963679df061d7f7db1c0dece7080873ad0aa0881a503999"
+      }
+    },
+    "runtime_pin_verified": true
+  },
+  "authorship_overlap": "Authored writer/seam and provider/consumer/adapter ancestry. Root owns current integration/actual; this is a saved interpretation audit, not own algorithm review.",
+  "concordance": "UNKNOWN; fullreceiverFalse; complete diagnostic pairTrue; exact literal counters agree. No discrepancy.",
+  "diagnostic": {
+    "bounds_and_hashes_joined": true,
+    "completion": {
+      "bytes": 336,
+      "path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-owned-v1/diagnostic-completion.json",
+      "sha256": "08135f64696302c48ee698a454d6709db6e5a68a8d39d29afcbed7aa90a1b1dd"
+    },
+    "legacy_slots": {
+      "completion": null,
+      "fallback": null,
+      "proposer": null,
+      "validator": null
+    },
+    "pair_complete": true,
+    "provider_returns": [
+      {
+        "accounting": {
+          "attempted_assignments": 17,
+          "binding_attempts": 21,
+          "checked_expansions": 6,
+          "checked_instances": 1,
+          "distinct_environment_attempts": 6,
+          "duplicate_instances": 0,
+          "full_expansions": 6,
+          "ground_environment_proposals": 6,
+          "head_gate_absent_head_passes": 1,
+          "head_gate_calls": 17,
+          "head_gate_conflicting_plans": 2,
+          "head_gate_downstream_assignments": 15,
+          "head_gate_no_known_conflict": 15,
+          "head_gate_receipts_returned": 17,
+          "head_gate_unknown": 0,
+          "native_adaptations": 1,
+          "native_member_exclusions": 5,
+          "offered_instances": 1,
+          "planned_assignments": 30,
+          "preflight_checks": 6
+        },
+        "batch_status": "READY",
+        "instance_count": 1,
+        "native_ns": 603133262352000,
+        "ordinal": 1,
+        "provider_reason": "OWN_COMPLETED_INSTANCE_PREFIX",
+        "provider_steps": 427597
+      },
+      null
+    ],
+    "qualified_case_count": 0,
+    "raw": {
+      "bytes": 10964,
+      "path": "/private/tmp/gcts-callback-stage-inference-visible-ROOT-20261017/RI-owned-v1/unknown-diagnostic.json",
+      "sha256": "39754314daac0751096550326bbcbfffb965d1ed9cfe476f036e1bf4b75ea7f0"
+    },
+    "reported_case_count": null,
+    "schema": "unit-row-controls-provider-returns-diagnostic-v2"
+  },
+  "discrepancies": [],
+  "execution": {
+    "clock_calls": 0,
+    "module_evaluations": 0,
+    "new_actuals": 0,
+    "project_or_saved_reader_functions_executed": false,
+    "scientific_acceptance": false,
+    "scientific_replays": 0
+  },
+  "native": {
+    "all_reaped": true,
+    "complete_Tool_Date_seconds": 20.326,
+    "failure55_and512MiB_closure": true,
+    "launch_to_postprobe_ns": 20162880000,
+    "launch_to_postprobe_seconds": 20.16288,
+    "launch_to_terminal_ns": 20108320000,
+    "no_restart_recorded": true,
+    "once_maximum": 1,
+    "peak_MiB": 113.015625,
+    "peak_bytes": 118505472,
+    "positive20_qualification": false,
+    "session": 8437,
+    "terminal_exit": 2
+  },
+  "phases": {
+    "absent": [
+      "P2_ENTER",
+      "SEARCH_RETURN_OBSERVED",
+      "POSTSEARCH_SNAPSHOT_READY",
+      "AFTER_ENGINE",
+      "BEFORE_OUTPUT"
+    ],
+    "complete_count": 17,
+    "interpretation": "Only reached writes are proved. Ready writes precede phase post-tick and actual callback return; no full provider/consumer receipt, engine selection/current state/root restore or cause is supplied. Missing sites or null/unwired slots never mean zero calls.",
+    "last_complete": "C1_CALLBACK_READY",
+    "last_complete_since_launch_seconds": 5.597546,
+    "observations": [
+      {
+        "native_ns": 603128199527000,
+        "stage": "BEFORE_PLAN_READ"
+      },
+      {
+        "native_ns": 603128199904000,
+        "stage": "BEFORE_CURRENT_SOURCE_READS"
+      },
+      {
+        "native_ns": 603128201573000,
+        "stage": "BEFORE_AUTHORITY_INPUT_READS"
+      },
+      {
+        "native_ns": 603128208848000,
+        "stage": "BEFORE_MODULE_LOAD"
+      },
+      {
+        "native_ns": 603128257204000,
+        "stage": "BEFORE_GUARD_CONSTRUCTION"
+      },
+      {
+        "native_ns": 603128272014000,
+        "stage": "BEFORE_STAGEB_PROVENANCE"
+      },
+      {
+        "native_ns": 603128309895000,
+        "stage": "BEFORE_MARKING_CHECK"
+      },
+      {
+        "native_ns": 603128337652000,
+        "stage": "BEFORE_POOL_READ"
+      },
+      {
+        "native_ns": 603128499082000,
+        "stage": "BEFORE_ENGINE"
+      },
+      {
+        "native_ns": 603132644810000,
+        "stage": "BEFORE_PROVIDER"
+      },
+      {
+        "native_ns": 603132645153000,
+        "stage": "P1_ENTER"
+      },
+      {
+        "native_ns": 603133262320000,
+        "stage": "P1_DELEGATE_RETURN"
+      },
+      {
+        "native_ns": 603133390256000,
+        "stage": "AFTER_PROVIDER"
+      },
+      {
+        "native_ns": 603133405799000,
+        "stage": "P1_CALLBACK_READY"
+      },
+      {
+        "native_ns": 603133507224000,
+        "stage": "C1_ENTER"
+      },
+      {
+        "native_ns": 603133722064000,
+        "stage": "C1_DELEGATE_RETURN"
+      },
+      {
+        "native_ns": 603133725334000,
+        "stage": "C1_CALLBACK_READY"
+      }
+    ],
+    "partial_phase": false,
+    "tail": {
+      "bytes": 111,
+      "sha256": "11b999bbbca8e1a1d53dc4a3e3eebfd565778f26c8bad1af22166756ce593f9b"
+    }
+  },
+  "preservation": "Original Sources, saved actuals, grants, dispositions and publication unchanged.",
+  "reviewer_identity": "/root/hilbert_advice_controls",
+  "schema": "callback-stage-saved-data-independent-audit-v1",
+  "scope": "Literal saved-byte/authority/native/stage/scalar concordance only. No scientific replay, receipt admission or independent semantic validation.",
+  "typed_limits": {
+    "accepted_offers": null,
+    "actual_family_or_primitive_placement": null,
+    "branch_or_current_state": null,
+    "current_environment": null,
+    "failure_cause_established": false,
+    "full_provider_or_consumer_receipt_available": false,
+    "full_receiver_record_available": false,
+    "literal_proposed_instance_is_accepted_offer": false,
+    "proof_accepted": false,
+    "root_restoration": null,
+    "source_environment": null,
+    "speedup_or_bottleneck_claimed": false,
+    "useful_transfer_accepted": false
+  }
+}

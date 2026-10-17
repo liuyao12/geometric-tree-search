@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "name": "one reader guard only vs frozen V2",
+      "passed": true
+    },
+    {
+      "name": "whole raw/AST exact after guard erasure",
+      "passed": true
+    },
+    {
+      "name": "immediate and full-parent actual patches forward/inverse -F0",
+      "passed": true
+    },
+    {
+      "name": "AST and compile without evaluation",
+      "passed": true
+    },
+    {
+      "name": "writer bytes unchanged",
+      "passed": true
+    }
+  ],
+  "module_evaluations": 0,
+  "retained_audit": {
+    "bytes": 1306,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/static-Source-audit-v2.json",
+    "sha256": "2d4126d864ca325294a755fe40ee4d5a6311f88f5e0635b6be9d15a50adf81a2"
+  },
+  "schema": "ROOT-callback-stage-diagnostic-static-Source-audit-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0
+}

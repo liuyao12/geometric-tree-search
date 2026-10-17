@@ -1,0 +1,101 @@
+{
+  "author_identity": "/root",
+  "authorship_overlap": "Reviewer /root/hilbert_ordering_diagnosis authored the marked-state/fibre/expansion checkers, point-adapter ancestry, family-census engine ancestry including engine7, and earlier performance/diagnostic proposals and saved helpers. Reviewer did not author this Root caller assembly, Arithmetic helper150e, or Controls writer48b6/readerV3. Shared protocol coordination and primitive ancestry are disclosed; no self-review of those mathematical dependencies is asserted.",
+  "blockers": [],
+  "findings": [
+    {
+      "detail": "Whole 66,670-byte caller and operative contract read. Exactly eight declared parent-to-current regions reconstruct the whole current and original Sources in both directions. Both real patch -F0 applications compare exactly. Thirty-four inherited function/class regions, including native tick, phase writer, invoke, all guard functions, fresh_language, writer builtin helpers and transport, remain raw/AST exact. The sole added named function is main.capture_provider_summary.",
+      "id": "INTEGRATED-ERASURE",
+      "lines": [
+        26,
+        31,
+        248,
+        381,
+        442,
+        639,
+        728,
+        753
+      ],
+      "result": "PASS"
+    },
+    {
+      "detail": "Current Source22/input10 remains authenticated separately from fixed original17/input2/binding; only receiver_cases changes in the non-intake executable map. Original20/512 with internal500 reserve, failure55/owned60/caller90+1, native endpoint identities, CodeSeal, immediate invoke pre/post guards, original epoch, full current Source reviews and Root once grant requirements remain unchanged. No old mathematical result or runtime qualification is promoted by this Source pass.",
+      "id": "NATIVE-AND-AUTHORITY",
+      "lines": [
+        421,
+        430,
+        463,
+        484,
+        513,
+        536,
+        551,
+        809
+      ],
+      "result": "PASS"
+    },
+    {
+      "detail": "The pre-reviewed 2,841-byte capture fragment is inserted byte-for-byte and explicitly supplied to helper150e. It uses only exact builtin shape guards and fixed20 scalar lookups, retains fresh small dictionaries/scalars, never copies/hashes/traverses or mutates the whole provider report, and performs original native tick identity checks and charged ticks before/after successful capture. Malformed diagnostic shapes leave a nullable slot without becoming semantic rejection. Native errors propagate. Scope is synchronous pinned current provider data; no arbitrary hostile dictionary or reentrant callback guarantee.",
+      "id": "CAPTURE-OWNERSHIP",
+      "lines": [
+        638,
+        648,
+        654,
+        676,
+        680,
+        728
+      ],
+      "result": "PASS"
+    },
+    {
+      "detail": "Embedded writer48b6 is raw exact to the separately reviewed replacement. Bounded context is encoded and writer function/code/globals/default/closure tokens retained before guarded delegation. Only an exact builtin TimeoutError escaping that call enters the inline retained-writer identity gate; late path calls only the original captured-builtin failure55 writer, then rethrows. No late original20 tick/CodeSeal/project/model call is introduced. Two-file completion and partial-pair acceptance remain saved-reader duties; writer errors cannot turn a failure positive.",
+      "id": "FAILURE-PATH",
+      "lines": [
+        178,
+        248,
+        374,
+        734,
+        740,
+        753,
+        816
+      ],
+      "result": "PASS"
+    },
+    {
+      "detail": "Exact integrated 30-label whitelist agrees with contract and helper/seam: provider ordinals<=2, consumer<=3, maximum75-byte line/1913 bytes across all complete labels. Marker bytes/partial writes are charged to original20. Complete delegate/ready line is an observation before the phase post-tick, not proof that capture or callback return to engine completed. Null slots do not establish no callback. Group intervals are inclusive observations, not exclusive profiles or failure-frame/cause/offer/count/proof authority.",
+      "id": "OBSERVATION-SCOPE",
+      "lines": [
+        442,
+        648,
+        734,
+        759
+      ],
+      "result": "PASS"
+    },
+    {
+      "detail": "Current reader composition is separately assigned to Arithmetic. This caller review consumes the independent helper534297 and seam976ba V3 reviews; it does not replace whole-current-reader authority/wire/native reconciliation. Genuine V2 parser negative fd13d77f is preserved, repaired by V3 no-open-group ENTER guard. No current plans, grants, actual output, inventory instances, scientific inputs or results read; no project/helper/model/checker imports, function evaluation, clocks, tests, py_compile or actual execution.",
+      "id": "REVIEW-BOUNDARY",
+      "result": "CONDITIONAL"
+    }
+  ],
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "callback-stage-integrated-caller-independent-findings-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_or_runtime_acceptance": false,
+  "source": {
+    "bytes": 66670,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/callback_stage_receiver_cold_v1.py",
+    "sha256": "4be85a71b068e5fb9a3c6c70549a8b5f3eba57c85b9510272c8bab5f345bcc91"
+  },
+  "source_contract": {
+    "bytes": 21574,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-source-20261017/Source-contract-v1.json",
+    "sha256": "b44454064d158f203646223c8e19a6f1512289af7a8e75ddbb95bec8fcc88d6d"
+  },
+  "source_only": true,
+  "static_evidence": {
+    "bytes": 7599,
+    "path": "/private/tmp/gcts-callback-stage-ROOT-peer-20261017/static-review-v1.json",
+    "sha256": "958a0f67da807240642691b58550d9d62f5f23b93aeb648f288154d334355f5a"
+  }
+}

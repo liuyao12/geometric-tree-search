@@ -1,0 +1,78 @@
+    elif failure_kind == 'CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2':
+        roles = ('proposer','fallback','completion','validator')
+        counters = ('planned_assignments','attempted_assignments','binding_attempts',
+            'ground_environment_proposals','distinct_environment_attempts','full_expansions',
+            'checked_expansions','preflight_checks','native_member_exclusions','native_adaptations',
+            'checked_instances','duplicate_instances','offered_instances','head_gate_calls',
+            'head_gate_receipts_returned','head_gate_conflicting_plans','head_gate_no_known_conflict',
+            'head_gate_unknown','head_gate_absent_head_passes','head_gate_downstream_assignments')
+        if (type(capture) is not dict or len(capture) != 2
+                or not all(type(key) is str for key in capture)
+                or set(capture) != {'legacy','provider_returns'}):
+            raise ValueError('fixed builtin provider-return capture')
+        legacy = capture['legacy']; returned = capture['provider_returns']
+        if (type(legacy) is not dict or len(legacy) != 4
+                or not all(type(key) is str for key in legacy) or set(legacy) != set(roles)
+                or type(returned) is not list or len(returned) != 2):
+            raise ValueError('fixed legacy and two provider-return slots')
+        observations = {}
+        for role in roles:
+            failure_gate()
+            item = legacy[role]
+            if item is None:
+                observations[role] = None
+                continue
+            if type(item) is not tuple or len(item) != 4:
+                raise ValueError('fixed scalar last-context tuple')
+            stage,row,selected,native_ns = item
+            if (type(stage) is not str or stage != role.upper()+'_NATIVE_STEP'
+                    or type(row) is not int or not -1<=row<24
+                    or type(selected) is not int or not -1<=selected<=24
+                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000
+                    or not 0<=native_ns<=9223372036854775807):
+                raise ValueError('bounded builtin last-context fields')
+            observations[role] = {'stage':stage,'row':row,'selected_count':selected,'native_ns':native_ns}
+        summaries = []
+        for index in range(2):
+            failure_gate()
+            item = returned[index]
+            if item is None:
+                summaries.append(None)
+                continue
+            if (type(item) is not dict or len(item) != 7
+                    or not all(type(key) is str for key in item)
+                    or set(item) != {'ordinal','native_ns','batch_status','instance_count',
+                        'provider_reason','provider_steps','accounting'}):
+                raise ValueError('fixed builtin provider-return fields')
+            ordinal = item['ordinal']; native_ns = item['native_ns']; counts = item['accounting']
+            if (type(ordinal) is not int or ordinal != index+1
+                    or type(native_ns) is not int or not began_ns<=native_ns<began_ns+20000000000
+                    or not 0<=native_ns<=9223372036854775807
+                    or type(item['batch_status']) is not str or len(item['batch_status'])>64
+                    or type(item['instance_count']) is not int or not 0<=item['instance_count']<=1
+                    or type(item['provider_reason']) is not str or len(item['provider_reason'])>256
+                    or type(item['provider_steps']) is not int or not 0<=item['provider_steps']<=1000000
+                    or type(counts) is not dict or len(counts) != 20
+                    or not all(type(key) is str for key in counts) or set(counts) != set(counters)
+                    or not all(type(counts[key]) is int and 0<=counts[key]<=1000000 for key in counters)):
+                raise ValueError('bounded builtin provider-return scalars')
+            summaries.append({'ordinal':ordinal,'native_ns':native_ns,
+                'batch_status':item['batch_status'],'instance_count':item['instance_count'],
+                'provider_reason':item['provider_reason'],'provider_steps':item['provider_steps'],
+                'accounting':{key:counts[key] for key in counters}})
+        labels = encoded({'schema':'unit-row-controls-provider-returns-diagnostic-v2',
+            'diagnostic_only':True,'qualification':'UNQUALIFIED_LITERAL_PROVIDER_RETURN_SCALARS',
+            'failure_kind':'TimeoutError','returned_control_record':False,
+            'callback_context':'LITERAL_RETURNED_SCALARS_ONLY_NOT_FULL_RECEIPTS',
+            'provider_return_summaries_are_unvalidated_scalars':True,
+            'last_observation_is_active_failure_frame':False,'callback_return_to_engine_proved':False,
+            'offers_accepted':False,'current_state_accepted':False,'failure_cause_established':False,
+            'live_state_or_proof_trajectory_accepted':False,
+            'positive_joint_gate_accepted':False,'logical_proof_accepted':False,
+            'exact_point_board_accepted':False,'complete_GCTS_model_accepted':False,
+            'GCTS_search_trajectory_accepted':False,'RL_accepted':False,'ROOT_resource_accepted':False},4096)
+        raw = (b'{"context":'+context_raw+b',"diagnostic":'+labels
+               +b',"last_observations":'+encoded(observations,4096)
+               +b',"provider_returns":'+encoded(summaries,8192)+b'}\n')
+        # Sum of the four independently bounded values and their exact JSON wrapper.
+        if len(raw)>81988:raise ValueError('whole provider-return diagnostic byte bound')

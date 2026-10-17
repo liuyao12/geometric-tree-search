@@ -1,0 +1,10 @@
+--- a/source.py
++++ b/source.py
+@@ -122,7 +122,6 @@
+                 group,stage=label.split('_',1)
+                 role=group[0];ordinal=int(group[1])
+                 if stage=='ENTER':
+-                    need(not stack, 'synchronous callback groups do not nest')
+                     need(ordinal==ordinals[role]+1, 'per-role callback entry ordinal')
+                     if group=='P1':need('BEFORE_PROVIDER' in seen, 'first provider outer site precedes delegate')
+                     ordinals[role]=ordinal;stack.append(group);group_stage[group]='ENTER'

@@ -1,0 +1,96 @@
+--- source.py
++++ source.py
+@@ -7,7 +7,7 @@
+ import hashlib
+ import json
+ 
+-VERSION='ROOT-receiver-inference-cases-v3-callback-stages'
++VERSION='ROOT-receiver-inference-cases-v2-head-gated'
+ RESULT_SCHEMA = 'ROOT-receiver-inference-evidence-v1'
+ BRANCH_TIE = 'ASSIGNED-OUTPUT-THEN-ROW'
+ MAXIMUM_NODES = 2
+@@ -32,7 +32,7 @@
+ 
+ 
+ def run_receiver(*, language, base_semantics, marked_semantics, modules,
+-                 frozen_inventory, matching_mode, tick, phase, capture_provider_summary):
++                 frozen_inventory, matching_mode, tick, phase):
+     """The same existing scheduler and full fallback run in both matched arms."""
+     tick()
+     require(matching_mode in ('VISIBLE_RECEPTOR', 'LITERAL_GROUND'), 'declared comparison arm')
+@@ -64,8 +64,6 @@
+             'actual original empty24row root; no supplied proof or receiver')
+     observations = {'degree_queries': [], 'provider_calls': [], 'consumer_calls': []}
+     provider_started = False
+-    provider_ordinal = 0
+-    consumer_ordinal = 0
+ 
+     def degree_proposer(**kw):
+         tick()
+@@ -85,16 +83,12 @@
+ 
+     def family_proposer(*, state, decision, tick):
+         # Called only by the real engine after its completed global BRANCH.
+-        nonlocal provider_started, provider_ordinal
+-        provider_ordinal += 1
+-        ordinal = provider_ordinal
++        nonlocal provider_started
+         first_call = not provider_started
+         if first_call:
+             phase('BEFORE_PROVIDER')
+             provider_started = True
+         supplied = {'state': copy(state), 'decision': copy(decision)}
+-        if ordinal <= 2:
+-            phase('P' + str(ordinal) + '_ENTER')
+         value = modules['receiver_provider'].build_family_batch(
+             language=language, base_semantics=base_semantics, marked_semantics=point,
+             producer=modules['producer'], expansion_checker=modules['expansion_checker'],
+@@ -103,9 +97,6 @@
+             mined=copy(mined),
+             state=copy(state), decision=copy(decision), matching_mode=matching_mode,
+             limits=dict(PROVIDER_LIMITS), tick=tick)
+-        if ordinal <= 2:
+-            phase('P' + str(ordinal) + '_DELEGATE_RETURN')
+-            capture_provider_summary(ordinal, value)
+         value = copy(value)
+         if first_call:
+             phase('AFTER_PROVIDER')
+@@ -115,28 +106,17 @@
+                 and canonical(value['batch']) == canonical(value['report']['batch']),
+                 'literal complete provider envelope')
+         observations['provider_calls'].append(dict(supplied, report_sha256=digest(value['report'])))
+-        if ordinal <= 2:
+-            phase('P' + str(ordinal) + '_CALLBACK_READY')
+         return value
+ 
+     def family_consumer(*, state, decision, request, tick):
+-        nonlocal consumer_ordinal
+-        consumer_ordinal += 1
+-        ordinal = consumer_ordinal
+-        if ordinal <= 3:
+-            phase('C' + str(ordinal) + '_ENTER')
+         value = modules['family_consumer'].consume_preferences(language=language,
+             base_semantics=base_semantics, marked_semantics=point,
+             producer=modules['producer'], expansion_checker=modules['expansion_checker'],
+             host_adapter=modules['host_adapter'], state=state, decision=decision,
+             request=request, tick=tick)
+-        if ordinal <= 3:
+-            phase('C' + str(ordinal) + '_DELEGATE_RETURN')
+         observations['consumer_calls'].append({'state_sha256': digest(state),
+             'decision': copy(decision), 'request_sha256': digest(request),
+             'receipt_sha256': digest(value), 'status': value['status']})
+-        if ordinal <= 3:
+-            phase('C' + str(ordinal) + '_CALLBACK_READY')
+         return value
+ 
+     phase('BEFORE_ENGINE')
+@@ -150,9 +130,7 @@
+         initial_prototype_census=copy(frozen_inventory['census']))
+     before = engine.state_snapshot()
+     result = engine.search()
+-    phase('SEARCH_RETURN_OBSERVED')
+     after = engine.state_snapshot()
+-    phase('POSTSEARCH_SNAPSHOT_READY')
+     require(canonical(before) == canonical(after) and result['root_restored'] is True
+             and result['stack_restored'] is True, 'exact engine-owned root restoration')
+     require(canonical(frozen_inventory) == origin and digest(mined) == pool_identity,

@@ -1,0 +1,73 @@
+{
+  "Source_checks": {
+    "bytes": 14428,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/static-review-v3.json",
+    "sha256": "93fb2863fb09d97da938309f431aef04f0772cac735aba9ddf3fc20276d5b705"
+  },
+  "authorship_overlap": "Reviewer owns engine7/checker4358/marked verifier9fd/nonimp8f/point ancestry and diagnostic proposal/erratum; distinctly reviewed Arithmetic helper150e and gate/provider. Did not author Controls writer/reader. Shared native primitives/protocol coordination disclosed; this is not self-review or runtime acceptance.",
+  "blocking_findings": [],
+  "findings": [
+    {
+      "finding": "V3 adds exactly one no-open-group ENTER guard. The V2 impossible overlapping P/C group path is now rejected. Both legitimate sequential continuation-before-freshBatch and provider-before-consumer ordinal alternatives remain allowed; one unfinished group may remain at SEARCH_RETURN because engine catches TimeoutError subclasses. Search/snapshot does not finish an incomplete group.",
+      "id": "READER-OVERLAP-REPAIRED",
+      "line": 125,
+      "source": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py"
+    },
+    {
+      "finding": "Full writer signature/captured defaults, failure_gate, encoded/append/visit and write functions remain raw/AST exact. New explicit CONTROLS_TIMEOUT_PROVIDER_RETURNS_V2 branch admits only exact builtin dict/list/tuple/string/int scalars, guards string keys before set operations, fixes two nullable ordinal-indexed slots and20 counter names, rejects bool-as-int and invalid bounds. No late original20 tick, project/model/checker/CodeSeal callback, Path or arbitrary encoder is added. Existing captured55/500MiB failure-only gates and safe O_EXCL/O_NOFOLLOW two-file SHA/LF completion remain mandatory. Old controls and generic failure routes are retained.",
+      "id": "NATIVE-FAILURE-WRITER"
+    },
+    {
+      "finding": "Independently recomputed30 unique labels, maximum75-byte complete ASCII line and1913 bytes across all possible complete labels. New writer cap is exactly65536 context+4096 labels+4096 legacy+8192 provider scalars+68 wrapper=81988; reader uses the same bound, completion1024 and legacy16KiB stay explicit. No native/math resource cap changes.",
+      "id": "BOUNDS-EXACT"
+    },
+    {
+      "finding": "Literal returned status, instances length, reason, steps and20 counters are unvalidated scalar observations, not full provider/offer/native admission. Nullable slots are legal even after a complete DELEGATE_RETURN line because phase post-tick can fail before Root capture; nonnull slots require the matching delegate marker and timestamp bounded by it, optional CALLBACK_READY, external terminal and original20 context. All frame/callback-to-engine/state/offer/proof/qualification/cause flags remain false.",
+      "id": "JOURNAL-NONAUTHORITY"
+    },
+    {
+      "finding": "New reader uses exact whitelist/unique labels, per-role increasing ordinals and sequential per-group ENTER/DELEGATE_RETURN/READY rather than artificial whole-list ordering. Legacy13 relative order, first-provider old markers and search/snapshot fences remain. Timestamps are exact canonical decimal int64 and nondecreasing within external launch/terminal. Malformed complete markers or complete phases after a stderr tail fail; only a canonical final incomplete marker prefix is retained raw and never counted as completed. Original20 eligibility is checked against the positive full body or a complete failure context; absent/incomplete diagnostic pair supplies no such qualification.",
+      "id": "STAGE-PARSER"
+    },
+    {
+      "finding": "Positive callback counts come from full authenticated observations arrays, with entered/delegate lower bounds and READY requiring a prior logged observation; one final incomplete callback prefix remains possible. No missing stage is invented from a later search/snapshot or full record. Failure journal never qualifies cases. Strict parent native once/session/toolDate/20-positive/55-failure/512 aggregate/transport/full original binding/output scopes remain unchanged outside declared seams; no scientific replay is performed.",
+      "id": "POSITIVE-RECORD-VS-PREFIX"
+    },
+    {
+      "finding": "This packet is writer/reader replacement Source only. Reader retains historical parent CURRENT_CONTRACT/response-version literals for Root to rebind. Root must embed exact writer FunctionDef, preserve invoke/finally/late writer identity guards, supply separately reviewed pure bounded capture hook and current Source22/original17/input2/once authority, then freeze new full caller/readout and obtain distinct Source peers before any actual. No component pass authenticates that future composition.",
+      "id": "ROOT-INTEGRATION-PENDING"
+    }
+  ],
+  "preserved_negative": {
+    "bytes": 2120,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/typed-Source-review-v2.json",
+    "sha256": "fd13d77f54cc31317eac1021fa9ef7bd3ac2cea1acde8034d9ba68789253bbc4"
+  },
+  "schema": "ROOT-callback-stage-diagnostic-seam-independent-findings-v3",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_or_actual_or_result_or_clock_execution": false,
+  "source": {
+    "bytes": 15021,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+    "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+  },
+  "source_contract": {
+    "bytes": 13042,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v3.json",
+    "sha256": "20372a1d3a5abe9945337b7594db14dbdfcc8ff91390ddd76a92a8550539524c"
+  },
+  "source_only": true,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 33660,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v3.py",
+      "sha256": "5978c1343542ad7c7e1e5fbdb31dddb22e3b33d49e4654b8a743065d357ea256"
+    },
+    "writer_replacement": {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    }
+  }
+}

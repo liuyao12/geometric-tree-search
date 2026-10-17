@@ -1,0 +1,48 @@
+{
+  "actual_execution_authorized": false,
+  "actual_results_or_clocks_read": false,
+  "author_identity": "/root/hilbert_advice_controls",
+  "authorship_overlap": "Reviewer owns engine7/checker/point ancestry, diagnostic proposal/erratum and distinct helper/gate/provider peers, not Controls writer/reader. Protocol coordination disclosed. No self/runtime acceptance.",
+  "blocking_findings": [
+    "CALLBACK-STAGE-OVERLAP-1"
+  ],
+  "findings": {
+    "bytes": 2945,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-peer-20261017/negative-findings-v2.json",
+    "sha256": "71c1c56a799c8c3d056742e16c883b49c6442d961529954d4e8d6e2e9401ebc3"
+  },
+  "pass": false,
+  "reviewer_identity": "/root/hilbert_ordering_diagnosis",
+  "schema": "ROOT-callback-stage-diagnostic-seam-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "ROOT-callback-stage-diagnostic-seam-Source",
+  "source": {
+    "bytes": 15021,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+    "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+  },
+  "source_contract": {
+    "bytes": 12533,
+    "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/Source-contract-v2.json",
+    "sha256": "14cf21049783074b10ffd72a3da63363a50f97bf1425d1b242d23e7b8257ed76"
+  },
+  "source_evaluated": false,
+  "source_only": true,
+  "source_review_passed": false,
+  "sources": {
+    "saved_reader_candidate": {
+      "bytes": 33581,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/callback_stage_saved_reader_v2.py",
+      "sha256": "05ad8d20dcac3ce7c8a3f782753e65dec8d4da90803b115bfbbaf2b51c48489f"
+    },
+    "writer_replacement": {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-callback-stage-diagnostic-source-20261017/save_failure_diagnostic_v2.fragment.py",
+      "sha256": "48b6514df2ec19a99916c066b7317817f77917a663def90bf6a38e6f61baa205"
+    }
+  },
+  "verdict": "SOURCE_NEGATIVE_READER_GRAMMAR",
+  "whole_writer_reader_and_parent_read": true,
+  "writer_scoped_blockers": []
+}
