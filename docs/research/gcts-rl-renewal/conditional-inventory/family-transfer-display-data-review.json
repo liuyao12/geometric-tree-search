@@ -1,0 +1,127 @@
+{
+  "schema": "semantic-family-saved-proof-HTML-spacing-delta-review-v1",
+  "reviewer_identity": "/root/receiver_driver_review",
+  "author_identity": "/root",
+  "author_overlap": false,
+  "saved_data_only": true,
+  "source_only": true,
+  "data_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "rendering_record": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-rendering-record-v2.json",
+    "sha256": "9769daaaeaf5cba60743551c53923001657744043b78453d4da40ff69c285793",
+    "bytes": 3716
+  },
+  "renderer_source": {
+    "bytes": 23778,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/semantic_proof_renderer_v2.py",
+    "sha256": "bd929c531205dfd9fcfd6732c9de554d71e2abdd492a80aac1dd094965b77e77"
+  },
+  "parent_saved_data_review": {
+    "path": "/private/tmp/gcts-semantic-family-saved-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "bb7bd627581d9376dd95da7bee1232bd02fa60185bd0d24a9d3729a9722e970c",
+    "bytes": 13106
+  },
+  "checks": [
+    {
+      "mode": "base",
+      "before": {
+        "bytes": 614702,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v2/family-transfer-proof-base.html",
+        "sha256": "3d86a86e5c15fc5217c514ab92bd9975dcb23a5d2bb7e6314ea1db8f4a89d3ae"
+      },
+      "after": {
+        "bytes": 614747,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-proof-base.html",
+        "sha256": "b1b7af6bbbdb9e1dcd77909eb493db2af528960ea5c8bc39069637225c937458"
+      },
+      "raw": {
+        "bytes": 3295555,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-r1-base-result.json",
+        "sha256": "dac3c59bd048a8a87ae2b9963dc087414cec9d0304f22fa5f5dc1d88df1107cf"
+      },
+      "admitted_actual": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/result.json",
+        "sha256": "dac3c59bd048a8a87ae2b9963dc087414cec9d0304f22fa5f5dc1d88df1107cf",
+        "bytes": 3295555
+      },
+      "full_HTML_normalization_exact": true,
+      "operator_tokens": {
+        "Rightarrow": 45,
+        "land": 0,
+        "lor": 0
+      },
+      "exact_same_old_and_new_and_actual_saved_JSON": true
+    },
+    {
+      "mode": "fixed",
+      "before": {
+        "bytes": 631377,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v2/family-transfer-proof-fixed.html",
+        "sha256": "8fabbccae33c9a266e1be2bfed6f8501da8f2a8bffbe86043032e74bb83c8aa8"
+      },
+      "after": {
+        "bytes": 631421,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-proof-fixed.html",
+        "sha256": "bece710aa54c1a3bd22564cada60778625bc6d1c1605ef5107e9c8059599168c"
+      },
+      "raw": {
+        "bytes": 2753720,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-r1-fixed-result.json",
+        "sha256": "68099b68d8f1fd7d04f05992b8dce9d59c53a2479a5a3f459eeb0492a3c7118f"
+      },
+      "admitted_actual": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/result.json",
+        "sha256": "68099b68d8f1fd7d04f05992b8dce9d59c53a2479a5a3f459eeb0492a3c7118f",
+        "bytes": 2753720
+      },
+      "full_HTML_normalization_exact": true,
+      "operator_tokens": {
+        "Rightarrow": 44,
+        "land": 0,
+        "lor": 0
+      },
+      "exact_same_old_and_new_and_actual_saved_JSON": true
+    },
+    {
+      "mode": "z3",
+      "before": {
+        "bytes": 615177,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v2/family-transfer-proof-z3.html",
+        "sha256": "b952666ee0fe62c86e076ed0d29d3c4e99ca13dae2326756ff76a05a1da8e5d1"
+      },
+      "after": {
+        "bytes": 615222,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-proof-z3.html",
+        "sha256": "7d35984baf720ad931b9bb24fb3dac26dd28ef6f6243de467664cff113c098e3"
+      },
+      "raw": {
+        "bytes": 4725865,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-r1-z3-result.json",
+        "sha256": "e8d2ef5519d45b18e215c911bb8e8b69698ac7963d6c7a14765a79280187e26e"
+      },
+      "admitted_actual": {
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/result.json",
+        "sha256": "e8d2ef5519d45b18e215c911bb8e8b69698ac7963d6c7a14765a79280187e26e",
+        "bytes": 4725865
+      },
+      "full_HTML_normalization_exact": true,
+      "operator_tokens": {
+        "Rightarrow": 45,
+        "land": 0,
+        "lor": 0
+      },
+      "exact_same_old_and_new_and_actual_saved_JSON": true
+    }
+  ],
+  "findings": [],
+  "scope": "Three complete saved HTML files normalize exactly to their preserved predecessors after only LaTeX binary-operator terminator spaces and one renderer VERSION literal are reverted. Full copied JSON bytes equal both old copies and admitted actuals; no additional formulas/English/markings/metrics/data differences.",
+  "limitations": [
+    "No renderer/project/scientific/native/checker/solver/clock/codec import/evaluation or replay.",
+    "Renderer Source review belongs to distinct current Source reviewer; this is only saved HTML/raw-data delta evidence.",
+    "No browser/render/screenshot/live/deployment claim by this reviewer.",
+    "Prior full saved-data audit scope/limitations unchanged; no new actual or proof acceptance."
+  ],
+  "authorship_disclosure": "Authored prior independent Source/data/report review receipts, none of actuals or renderer implementation; source-review and live QA remain separately owned."
+}

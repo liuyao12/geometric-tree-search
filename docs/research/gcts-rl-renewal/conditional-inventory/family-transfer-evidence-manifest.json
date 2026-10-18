@@ -5,12 +5,12 @@
     "sha256": "00e099eeae9942030ff9d603945b1020215d9bc162935615efda44804432979e"
   },
   "archive": {
-    "bytes": 5034733,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v2/family-transfer-reproduction.zip",
-    "sha256": "a9406b1d6674292db972bf0e34cb5ff069ae1de70a33518c0456000f9a0b6b69"
+    "bytes": 5167887,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-reproduction.zip",
+    "sha256": "3723688f1036ef6e3d3d56b4135d1dca307ee48955912ccb3899319970076f8e"
   },
   "completed_matched_actuals": 6,
-  "distinct_objects": 324,
+  "distinct_objects": 342,
   "files": [
     {
       "bytes": 22775,
@@ -3371,13 +3371,244 @@
       "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v2/reader.html",
       "role": "public-admitted-result-report-or-raw-data",
       "sha256": "9a0a3e68916062b753e9bdc3ad2a1b9ab6326c8c45b76444e438a416159771a7"
+    },
+    {
+      "bytes": 1476,
+      "object": "objects/b45eb618c36989669c73272e2e2b62af432df33a22ece3c8f647be921f5ee2e2",
+      "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/Source-contract-v2.json",
+      "role": "saved-data-display-adapter-Source-not-independent-checker",
+      "sha256": "b45eb618c36989669c73272e2e2b62af432df33a22ece3c8f647be921f5ee2e2"
+    },
+    {
+      "bytes": 922,
+      "object": "objects/fc8867b5a97828ec326861df04f67070cf8ebd8c7db75f1b0e194ac6012793a6",
+      "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/forward-v2.patch",
+      "role": "saved-data-display-adapter-Source-not-independent-checker",
+      "sha256": "fc8867b5a97828ec326861df04f67070cf8ebd8c7db75f1b0e194ac6012793a6"
+    },
+    {
+      "bytes": 922,
+      "object": "objects/2816e02c94243182b2f1f1587ebf595defd076658213c4f13d60b1ad78f0f33e",
+      "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/inverse-v2.patch",
+      "role": "saved-data-display-adapter-Source-not-independent-checker",
+      "sha256": "2816e02c94243182b2f1f1587ebf595defd076658213c4f13d60b1ad78f0f33e"
+    },
+    {
+      "bytes": 23778,
+      "object": "objects/bd929c531205dfd9fcfd6732c9de554d71e2abdd492a80aac1dd094965b77e77",
+      "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/semantic_proof_renderer_v2.py",
+      "role": "saved-data-display-adapter-Source-not-independent-checker",
+      "sha256": "bd929c531205dfd9fcfd6732c9de554d71e2abdd492a80aac1dd094965b77e77"
+    },
+    {
+      "bytes": 2551,
+      "object": "objects/0776eaea03dc044a100c6fa731352f91d39a10d4f5c0eafe2272157e167940cc",
+      "path": "/private/tmp/gcts-semantic-proof-renderer-peer-20261018/delta-audit-v2.json",
+      "role": "independent-display-adapter-Source-review",
+      "sha256": "0776eaea03dc044a100c6fa731352f91d39a10d4f5c0eafe2272157e167940cc"
+    },
+    {
+      "bytes": 587,
+      "object": "objects/6d607edbd74ab02e520398899053951ee706ea5c494217181053cdb72791dc33",
+      "path": "/private/tmp/gcts-semantic-proof-renderer-peer-20261018/handoff-v2.json",
+      "role": "independent-display-adapter-Source-review",
+      "sha256": "6d607edbd74ab02e520398899053951ee706ea5c494217181053cdb72791dc33"
+    },
+    {
+      "bytes": 4311,
+      "object": "objects/6f74d114ff23ae33caa0481550727ccc6441c97ff0aac62410b12f59379b975f",
+      "path": "/private/tmp/gcts-semantic-proof-renderer-peer-20261018/typed-Source-delta-review-v2.json",
+      "role": "independent-display-adapter-Source-review",
+      "sha256": "6f74d114ff23ae33caa0481550727ccc6441c97ff0aac62410b12f59379b975f"
+    },
+    {
+      "bytes": 6508,
+      "object": "objects/d3b0d9c267a5f438eef0cf7e110318080cb67be1a706d310d575699ef2f38ea8",
+      "path": "/private/tmp/gcts-semantic-family-saved-data-peer-20261018/typed-rendering-spacing-delta-review-v1.json",
+      "role": "independent-semantic-saved-data-review",
+      "sha256": "d3b0d9c267a5f438eef0cf7e110318080cb67be1a706d310d575699ef2f38ea8"
+    },
+    {
+      "bytes": 3716,
+      "object": "objects/9769daaaeaf5cba60743551c53923001657744043b78453d4da40ff69c285793",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-rendering-record-v2.json",
+      "role": "Root-actual-admission-and-report-projection",
+      "sha256": "9769daaaeaf5cba60743551c53923001657744043b78453d4da40ff69c285793"
+    },
+    {
+      "bytes": 1000,
+      "object": "objects/a018fdca3de1c595d91b97789ae50f972191d869ad1190b45562ac57e4f2ed49",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-live-display-erratum-v1.json",
+      "role": "Root-actual-admission-and-report-projection",
+      "sha256": "a018fdca3de1c595d91b97789ae50f972191d869ad1190b45562ac57e4f2ed49"
+    },
+    {
+      "bytes": 8703,
+      "object": "objects/4371a46ff291bef486b2b8fe2b12c2c4fba45852944ad65965c348a758f3a544",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-live-bytes-v2.json",
+      "role": "Root-actual-admission-and-report-projection",
+      "sha256": "4371a46ff291bef486b2b8fe2b12c2c4fba45852944ad65965c348a758f3a544"
+    },
+    {
+      "bytes": 8857,
+      "object": "objects/1383bd8629e7010f5d435e1b26ba3c5167ac83ae39b4c4ab3d25563990575108",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-live-bytes-v3.json",
+      "role": "Root-actual-admission-and-report-projection",
+      "sha256": "1383bd8629e7010f5d435e1b26ba3c5167ac83ae39b4c4ab3d25563990575108"
+    },
+    {
+      "bytes": 6183,
+      "object": "objects/3d9e9d36e86ed17400374eb8013746069b29d7d4d35b8817cc18d2cd348aaeb7",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/package_actual_evidence_v2.py",
+      "role": "Root-actual-admission-and-report-projection",
+      "sha256": "3d9e9d36e86ed17400374eb8013746069b29d7d4d35b8817cc18d2cd348aaeb7"
+    },
+    {
+      "bytes": 60119,
+      "object": "objects/00e099eeae9942030ff9d603945b1020215d9bc162935615efda44804432979e",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-admission.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "00e099eeae9942030ff9d603945b1020215d9bc162935615efda44804432979e"
+    },
+    {
+      "bytes": 13106,
+      "object": "objects/bb7bd627581d9376dd95da7bee1232bd02fa60185bd0d24a9d3729a9722e970c",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-data-review.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "bb7bd627581d9376dd95da7bee1232bd02fa60185bd0d24a9d3729a9722e970c"
+    },
+    {
+      "bytes": 6508,
+      "object": "objects/d3b0d9c267a5f438eef0cf7e110318080cb67be1a706d310d575699ef2f38ea8",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-display-data-review.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "d3b0d9c267a5f438eef0cf7e110318080cb67be1a706d310d575699ef2f38ea8"
+    },
+    {
+      "bytes": 1000,
+      "object": "objects/a018fdca3de1c595d91b97789ae50f972191d869ad1190b45562ac57e4f2ed49",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-display-erratum.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "a018fdca3de1c595d91b97789ae50f972191d869ad1190b45562ac57e4f2ed49"
+    },
+    {
+      "bytes": 4311,
+      "object": "objects/6f74d114ff23ae33caa0481550727ccc6441c97ff0aac62410b12f59379b975f",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-display-source-review.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "6f74d114ff23ae33caa0481550727ccc6441c97ff0aac62410b12f59379b975f"
+    },
+    {
+      "bytes": 614747,
+      "object": "objects/b1b7af6bbbdb9e1dcd77909eb493db2af528960ea5c8bc39069637225c937458",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-proof-base.html",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "b1b7af6bbbdb9e1dcd77909eb493db2af528960ea5c8bc39069637225c937458"
+    },
+    {
+      "bytes": 631421,
+      "object": "objects/bece710aa54c1a3bd22564cada60778625bc6d1c1605ef5107e9c8059599168c",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-proof-fixed.html",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "bece710aa54c1a3bd22564cada60778625bc6d1c1605ef5107e9c8059599168c"
+    },
+    {
+      "bytes": 615222,
+      "object": "objects/7d35984baf720ad931b9bb24fb3dac26dd28ef6f6243de467664cff113c098e3",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-proof-z3.html",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "7d35984baf720ad931b9bb24fb3dac26dd28ef6f6243de467664cff113c098e3"
+    },
+    {
+      "bytes": 3295555,
+      "object": "objects/dac3c59bd048a8a87ae2b9963dc087414cec9d0304f22fa5f5dc1d88df1107cf",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-r1-base-result.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "dac3c59bd048a8a87ae2b9963dc087414cec9d0304f22fa5f5dc1d88df1107cf"
+    },
+    {
+      "bytes": 2753720,
+      "object": "objects/68099b68d8f1fd7d04f05992b8dce9d59c53a2479a5a3f459eeb0492a3c7118f",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-r1-fixed-result.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "68099b68d8f1fd7d04f05992b8dce9d59c53a2479a5a3f459eeb0492a3c7118f"
+    },
+    {
+      "bytes": 4725865,
+      "object": "objects/e8d2ef5519d45b18e215c911bb8e8b69698ac7963d6c7a14765a79280187e26e",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-r1-z3-result.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "e8d2ef5519d45b18e215c911bb8e8b69698ac7963d6c7a14765a79280187e26e"
+    },
+    {
+      "bytes": 3295562,
+      "object": "objects/28156bdbc013c1883bda3e4486b1454a74cc81805a8758ffd903688f5a67f062",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-r2-base-result.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "28156bdbc013c1883bda3e4486b1454a74cc81805a8758ffd903688f5a67f062"
+    },
+    {
+      "bytes": 2753706,
+      "object": "objects/e1e6efd53c2c3640cecbd69b05407e605c19ff28e557402f0c5ef361c4374fe0",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-r2-fixed-result.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "e1e6efd53c2c3640cecbd69b05407e605c19ff28e557402f0c5ef361c4374fe0"
+    },
+    {
+      "bytes": 4725868,
+      "object": "objects/3eaea2a53b37ad4473add697b412cc9beae3219231d29e43a68b76fbab8cf70f",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-r2-z3-result.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "3eaea2a53b37ad4473add697b412cc9beae3219231d29e43a68b76fbab8cf70f"
+    },
+    {
+      "bytes": 11690,
+      "object": "objects/fdffe70eb38e3c073a69ee34ed45893edcce0f46c1b317d86571be21b2aa30b2",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-report-review.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "fdffe70eb38e3c073a69ee34ed45893edcce0f46c1b317d86571be21b2aa30b2"
+    },
+    {
+      "bytes": 142615,
+      "object": "objects/f60951d177304379b663961354c167a1a749aabeadc17617df9c17bf96b7818d",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-resource-review.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "f60951d177304379b663961354c167a1a749aabeadc17617df9c17bf96b7818d"
+    },
+    {
+      "bytes": 67823,
+      "object": "objects/71d2495e6fbdfc9628895cd1da3b7e99cf48b9c12b65b6131125cdfe86c0f83f",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer-summary.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "71d2495e6fbdfc9628895cd1da3b7e99cf48b9c12b65b6131125cdfe86c0f83f"
+    },
+    {
+      "bytes": 20321,
+      "object": "objects/63055c7574c0c00d03e7f3a501764895b797dbe36e80e7620a3cf305cf947633",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/family-transfer.html",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "63055c7574c0c00d03e7f3a501764895b797dbe36e80e7620a3cf305cf947633"
+    },
+    {
+      "bytes": 12566,
+      "object": "objects/b841239797728f573c6f03e5fd39de75f8d818e0d192e54f2b9af433ce15e8f4",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/parallel-work-status.json",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "b841239797728f573c6f03e5fd39de75f8d818e0d192e54f2b9af433ce15e8f4"
+    },
+    {
+      "bytes": 77454,
+      "object": "objects/9a0a3e68916062b753e9bdc3ad2a1b9ab6326c8c45b76444e438a416159771a7",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v3/reader.html",
+      "role": "public-admitted-result-report-or-raw-data",
+      "sha256": "9a0a3e68916062b753e9bdc3ad2a1b9ab6326c8c45b76444e438a416159771a7"
     }
   ],
   "fresh_scientific_acceptance": true,
   "goal_complete": false,
   "prior_Q_capsule": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/closed-root-search-reproduction.zip",
   "retained_setup_failures": 1,
-  "schema": "GCTS-semantic-family-actual-evidence-manifest-v2",
+  "schema": "GCTS-semantic-family-actual-evidence-manifest-v3",
   "scope": "Exact six fresh native-accepted finite proofs, Sources, all retained result and final native bytes, full resource/worker/final terminal receipts, independent Source/data/report reviews and preserved negatives. ZIP is an evidence archive, not a grant to rerun a consumed directory. Fresh replication needs a new declared plan, new owned directories and grants, compatible pinned runtime and full gates. Third-party Python/Z3 runtime binaries/wheel are referenced by URL/hash in closure/acquisition records rather than republished. Bundled stdlib/OS loader trust assumptions apply.",
   "withdrawn_unrun_cases": 5
 }

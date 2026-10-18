@@ -1,0 +1,68 @@
+{
+  "audit": {
+    "bytes": 2551,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-peer-20261018/delta-audit-v2.json",
+    "sha256": "0776eaea03dc044a100c6fa731352f91d39a10d4f5c0eafe2272157e167940cc"
+  },
+  "author_identity": "/root",
+  "author_reviewer_identity_overlap": false,
+  "check_count": 24,
+  "findings": [
+    "Exact complete Source delta is VERSION v2 and one trailing ASCII space in each of the three imp/and/or LaTeX operator string literals. Entire Python AST is unchanged after normalizing precisely those four string constants.",
+    "At the existing concatenation site each space terminates its alphabetic TeX control word before the following formula text. A following letter therefore cannot become part of RightarrowB, RightarrowD, landB or lorB. This is a Source-derived lexical conclusion, not a MathJax execution result.",
+    "Both provided genuine F0 text-patch directions produce the exact expected complete raw Source and AST; both Source files compile without evaluation.",
+    "No formula input AST interpretation, rule selection, rows, marks, numeric evidence, native/search/checker behavior or proof-admission code changes in this narrow successor."
+  ],
+  "limitations": [
+    "No renderer execution, saved-result transformation, MathJax/browser evaluation, native calls, replay, project imports or mathematical proof checking were performed.",
+    "Root must regenerate from the same admitted saved data, preserve the prior files/erratum, and verify the new live display. Those operations are outside this receipt.",
+    "The contract phrase no AST change is read as no mathematical input-AST/rule change; four Python AST string constants do change exactly as enumerated above."
+  ],
+  "mismatch_count": 0,
+  "native_search_solver_evaluations": 0,
+  "parent": {
+    "bytes": 23775,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/semantic_proof_renderer_v1.py",
+    "sha256": "673fe9aa3c8dbdbea74d8850d5fd24a0101542bd20310784a177f8e49b035c47"
+  },
+  "parent_renderer_author_identity": "/root/conventional_library",
+  "patches": [
+    {
+      "bytes": 922,
+      "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/forward-v2.patch",
+      "sha256": "fc8867b5a97828ec326861df04f67070cf8ebd8c7db75f1b0e194ac6012793a6"
+    },
+    {
+      "bytes": 922,
+      "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/inverse-v2.patch",
+      "sha256": "2816e02c94243182b2f1f1587ebf595defd076658213c4f13d60b1ad78f0f33e"
+    }
+  ],
+  "prior_review": {
+    "bytes": 4602,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-peer-20261018/typed-Source-review-v1.json",
+    "sha256": "638cd97581cad275611798327dbe55696da8f2c79146a22ee5816d11c09f4698"
+  },
+  "prior_review_correction": "The reviewer's preserved V1 static review missed this TeX lexical adjacency bug. Root reports that the earlier browser mjx-merror query was empty despite visible unknown commands; absence of those DOM nodes did not validate semantic formula display. This addendum does not retroactively claim complete display validation of V1.",
+  "project_imports": 0,
+  "renderer_evaluations": 0,
+  "reviewer_ancestry": "Reviewer authored earlier independent verifier398acd, several research checkers and CASEs, and the semantic bounded broker/once runner, and reviewed V1 renderer. Reviewer authored neither renderer V1 nor Root V2 repair. No independent re-audit of reviewer-authored science/transport components is claimed.",
+  "reviewer_identity": "/root/conventional_control_review",
+  "runtime_or_browser_acceptance": false,
+  "schema": "semantic-family-saved-result-renderer-typed-Source-delta-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Narrow Source-only display lexical delta; no whole-program re-audit",
+  "source": {
+    "bytes": 23778,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/semantic_proof_renderer_v2.py",
+    "sha256": "bd929c531205dfd9fcfd6732c9de554d71e2abdd492a80aac1dd094965b77e77"
+  },
+  "source_contract": {
+    "bytes": 1476,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/Source-contract-v2.json",
+    "sha256": "b45eb618c36989669c73272e2e2b62af432df33a22ece3c8f647be921f5ee2e2"
+  },
+  "source_only": true,
+  "source_review_passed": true
+}

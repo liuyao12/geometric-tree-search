@@ -1,0 +1,15 @@
+{
+  "affected": "Three generated proof reader HTML files; underlying raw formulas/AST/proof/nativeadmission/timings/markings unchanged.",
+  "browser_observations": {
+    "fresh_tab": 3,
+    "merror_selector_count": 0,
+    "merror_selector_scope": "Insufficient detector; red literal unknown-command text was visibly observed despite no mjx-merror node.",
+    "screenshot_observed": true,
+    "tile_glyphs": 35
+  },
+  "goal_complete": false,
+  "prior_publication_commit": "b27f21b8be24bd50989cc7ca87838ab0dbf8ea10",
+  "problem": "Live MathJax screenshot shows red literal RightarrowB/RightarrowD instead of implication arrows. Renderer binaryoperator controlwords concatenate rightoperand letters without terminating whitespace.",
+  "remedy": "RendererV2 appends lexicaldelimiter whitespace afterRightarrow/land/lor only; regeneratefromsameRootadmittedsavedJSON. PreserveoriginalSource/reviews/readers in predecessorarchive; no scientificrerun.",
+  "schema": "ROOT-semantic-live-display-erratum-v1"
+}

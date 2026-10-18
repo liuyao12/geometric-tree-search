@@ -19,6 +19,19 @@
   },
   "current_data_review_scope": "The current_data_review and current_resource_review descriptors concern the completed six semantic-family actuals and preserved setupfailure. historical_Q_data_review concerns the preceding Q study.",
   "current_data_review_url": "family-transfer-data-review.json",
+  "current_display_data_review": {
+    "bytes": 6508,
+    "path": "/private/tmp/gcts-semantic-family-saved-data-peer-20261018/typed-rendering-spacing-delta-review-v1.json",
+    "sha256": "d3b0d9c267a5f438eef0cf7e110318080cb67be1a706d310d575699ef2f38ea8"
+  },
+  "current_display_data_review_url": "family-transfer-display-data-review.json",
+  "current_display_scope": "V2 adds lexical delimiter whitespace after binary TeX controls only; existing proof, English, markings, nativeadmissions and metrics unchanged by wholeHTMLnormalization. V1staticreviews misseddisplaylexing; Source/V2delta reviewed separately; livevisualverification recorded by Root.",
+  "current_display_source_review": {
+    "bytes": 4311,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-peer-20261018/typed-Source-delta-review-v2.json",
+    "sha256": "6f74d114ff23ae33caa0481550727ccc6441c97ff0aac62410b12f59379b975f"
+  },
+  "current_display_source_review_url": "family-transfer-display-source-review.json",
   "current_human_report_review": {
     "bytes": 11690,
     "path": "/private/tmp/gcts-semantic-family-human-report-peer-20261018/typed-human-report-review-v1.json",
@@ -34,6 +47,7 @@
   "current_result": "One elementary propositional receiver, fixedseed,2opposite-order repetitions. Fixed hints consume an essential compound instance but do not reorder its original alternatives; an atomic instance does change order. Fewer search placements are observed, no general wall-time/solver/RL advantage or higher-level dependent-family result. Full PA/Hilbert geometry, universal primitive-square execution, Turtle/Penrose and plane extension remain open.",
   "current_source_progress": [],
   "date": "2026-10-18",
+  "display_erratum_url": "family-transfer-display-erratum.json",
   "frontier_optimization_stop_rule_triggered": true,
   "geometry_reconciliation": {
     "bytes": 15205,
