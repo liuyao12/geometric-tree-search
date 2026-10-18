@@ -1,0 +1,2047 @@
+{
+  "actual_execution_authorized": false,
+  "case_count": 10,
+  "cases": [
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-001",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{a=b,\\ P(a)\\}\\ \\vdash\\ P(b)",
+        "group": "ground-equality-predicate-transport",
+        "input": {
+          "bytes": 970,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-001.json",
+          "sha256": "1f3ff3f240cb1b80a4692029e0c11d3a035fb28822995ef958837843d72f395a"
+        },
+        "input_only": true,
+        "renaming_control_of": null,
+        "shape": {
+          "axioms": [
+            [
+              "eq",
+              [
+                "fun",
+                [
+                  0,
+                  0
+                ],
+                []
+              ],
+              [
+                "fun",
+                [
+                  1,
+                  0
+                ],
+                []
+              ]
+            ],
+            [
+              "pred",
+              [
+                0,
+                1
+              ],
+              [
+                [
+                  "fun",
+                  [
+                    0,
+                    0
+                  ],
+                  []
+                ]
+              ]
+            ]
+          ],
+          "target": [
+            "pred",
+            [
+              0,
+              1
+            ],
+            [
+              [
+                "fun",
+                [
+                  1,
+                  0
+                ],
+                []
+              ]
+            ]
+          ]
+        },
+        "source_shape_sha256": "472a7c342568ccab2a1833ef3c1ad932ef872aab0a19ac75dca58e7517cb5831",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "eq": 1,
+            "pred": 2
+          },
+          "initial_binder_names": [],
+          "input_AST_nodes": 7,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": true
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-001",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "pred",
+          "P",
+          [
+            [
+              "fun",
+              "b",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0": [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ],
+            "a1": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "a": 0,
+            "b": 0
+          },
+          "predicates": {
+            "P": 1
+          },
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 01"
+      }
+    },
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-002",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{a=b\\}\\ \\vdash\\ f(a)=f(b)",
+        "group": "unary-function-congruence",
+        "input": {
+          "bytes": 976,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-002.json",
+          "sha256": "1ba60ee7357bc87c606d9d7816834b64703979e84db0782f41683158b55ab869"
+        },
+        "input_only": true,
+        "renaming_control_of": null,
+        "shape": {
+          "axioms": [
+            [
+              "eq",
+              [
+                "fun",
+                [
+                  0,
+                  0
+                ],
+                []
+              ],
+              [
+                "fun",
+                [
+                  1,
+                  0
+                ],
+                []
+              ]
+            ]
+          ],
+          "target": [
+            "eq",
+            [
+              "fun",
+              [
+                2,
+                1
+              ],
+              [
+                [
+                  "fun",
+                  [
+                    0,
+                    0
+                  ],
+                  []
+                ]
+              ]
+            ],
+            [
+              "fun",
+              [
+                2,
+                1
+              ],
+              [
+                [
+                  "fun",
+                  [
+                    1,
+                    0
+                  ],
+                  []
+                ]
+              ]
+            ]
+          ]
+        },
+        "source_shape_sha256": "4e49d969f702fe0224b672c05c4b2102da36ac7603ec3fe860dd3fc76d1a0643",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "eq": 2
+          },
+          "initial_binder_names": [],
+          "input_AST_nodes": 8,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": true
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-002",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "eq",
+          [
+            "fun",
+            "f",
+            [
+              [
+                "fun",
+                "a",
+                []
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "f",
+            [
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0": [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ]
+          },
+          "functions": {
+            "a": 0,
+            "b": 0,
+            "f": 1
+          },
+          "predicates": {},
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 02"
+      }
+    },
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-003",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{a=b,\\ b=c\\}\\ \\vdash\\ a=c",
+        "group": "ground-equality-chain",
+        "input": {
+          "bytes": 1000,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-003.json",
+          "sha256": "c7e9e9c3dadd6cd7f36bd9b30ca85f0bcd03ebcb97c64b0511a84c7e80f01b1f"
+        },
+        "input_only": true,
+        "renaming_control_of": null,
+        "shape": {
+          "axioms": [
+            [
+              "eq",
+              [
+                "fun",
+                [
+                  0,
+                  0
+                ],
+                []
+              ],
+              [
+                "fun",
+                [
+                  1,
+                  0
+                ],
+                []
+              ]
+            ],
+            [
+              "eq",
+              [
+                "fun",
+                [
+                  1,
+                  0
+                ],
+                []
+              ],
+              [
+                "fun",
+                [
+                  2,
+                  0
+                ],
+                []
+              ]
+            ]
+          ],
+          "target": [
+            "eq",
+            [
+              "fun",
+              [
+                0,
+                0
+              ],
+              []
+            ],
+            [
+              "fun",
+              [
+                2,
+                0
+              ],
+              []
+            ]
+          ]
+        },
+        "source_shape_sha256": "550f5180ee21f1b1297cff476e6bff136376be0f7ac8cd2a69b5ec685dda9d96",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "eq": 3
+          },
+          "initial_binder_names": [],
+          "input_AST_nodes": 9,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": true
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-003",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "eq",
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "c",
+            []
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0": [
+              "eq",
+              [
+                "fun",
+                "a",
+                []
+              ],
+              [
+                "fun",
+                "b",
+                []
+              ]
+            ],
+            "a1": [
+              "eq",
+              [
+                "fun",
+                "b",
+                []
+              ],
+              [
+                "fun",
+                "c",
+                []
+              ]
+            ]
+          },
+          "functions": {
+            "a": 0,
+            "b": 0,
+            "c": 0
+          },
+          "predicates": {},
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 03"
+      }
+    },
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-004",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{\\forall x\\,(P(x)\\Rightarrow Q(f(x))),\\ P(a)\\}\\ \\vdash\\ Q(f(a))",
+        "group": "functional-universal-horn",
+        "input": {
+          "bytes": 1445,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-004.json",
+          "sha256": "421a5517c94d5f79642a273566d8e5816bdb65b61a0ca93acdaf85e992803b06"
+        },
+        "input_only": true,
+        "renaming_control_of": null,
+        "shape": {
+          "axioms": [
+            [
+              "all",
+              [
+                "imp",
+                [
+                  "pred",
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    [
+                      "fun",
+                      [
+                        0,
+                        1
+                      ],
+                      [
+                        [
+                          "bound",
+                          0
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              [
+                0,
+                1
+              ],
+              [
+                [
+                  "fun",
+                  [
+                    1,
+                    0
+                  ],
+                  []
+                ]
+              ]
+            ]
+          ],
+          "target": [
+            "pred",
+            [
+              1,
+              1
+            ],
+            [
+              [
+                "fun",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    "fun",
+                    [
+                      1,
+                      0
+                    ],
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        "source_shape_sha256": "181e54881b5b35891bc9a5ad0aba5582654cdef7ccda64798c14d0b0961e68a3",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "all": 1,
+            "imp": 1,
+            "pred": 4
+          },
+          "initial_binder_names": [
+            "x"
+          ],
+          "input_AST_nodes": 12,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": true
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-004",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "pred",
+          "Q",
+          [
+            [
+              "fun",
+              "f",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "fun",
+                      "f",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a1": [
+              "pred",
+              "P",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "a": 0,
+            "f": 1
+          },
+          "predicates": {
+            "P": 1,
+            "Q": 1
+          },
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 04"
+      }
+    },
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-005",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{\\forall x\\,\\forall y\\,(R(x,y)\\Rightarrow S(y,x)),\\ R(a,b)\\}\\ \\vdash\\ S(b,a)",
+        "group": "binary-relational-permutation",
+        "input": {
+          "bytes": 1631,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-005.json",
+          "sha256": "775d49ae224c07590302c0e71dafc7292a136e07f5459b709648df4c4ded6690"
+        },
+        "input_only": true,
+        "renaming_control_of": null,
+        "shape": {
+          "axioms": [
+            [
+              "all",
+              [
+                "all",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    [
+                      0,
+                      2
+                    ],
+                    [
+                      [
+                        "bound",
+                        1
+                      ],
+                      [
+                        "bound",
+                        0
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    [
+                      1,
+                      2
+                    ],
+                    [
+                      [
+                        "bound",
+                        0
+                      ],
+                      [
+                        "bound",
+                        1
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              [
+                0,
+                2
+              ],
+              [
+                [
+                  "fun",
+                  [
+                    0,
+                    0
+                  ],
+                  []
+                ],
+                [
+                  "fun",
+                  [
+                    1,
+                    0
+                  ],
+                  []
+                ]
+              ]
+            ]
+          ],
+          "target": [
+            "pred",
+            [
+              1,
+              2
+            ],
+            [
+              [
+                "fun",
+                [
+                  1,
+                  0
+                ],
+                []
+              ],
+              [
+                "fun",
+                [
+                  0,
+                  0
+                ],
+                []
+              ]
+            ]
+          ]
+        },
+        "source_shape_sha256": "6d20525bc8c0ff506e78c6dc26337a9997cee4765a04ce9a2aab97dce2989c72",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "all": 2,
+            "imp": 1,
+            "pred": 4
+          },
+          "initial_binder_names": [
+            "x",
+            "y"
+          ],
+          "input_AST_nodes": 15,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": true
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-005",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "pred",
+          "S",
+          [
+            [
+              "fun",
+              "b",
+              []
+            ],
+            [
+              "fun",
+              "a",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "S",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ],
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a1": [
+              "pred",
+              "R",
+              [
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "a": 0,
+            "b": 0
+          },
+          "predicates": {
+            "R": 2,
+            "S": 2
+          },
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 05"
+      }
+    },
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-006",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{\\forall x\\,(P(x)\\Rightarrow Q(x)),\\ \\forall x\\,(P(x)\\Rightarrow R(x)),\\ \\forall x\\,(Q(x)\\Rightarrow(R(x)\\Rightarrow S(x))),\\ \\forall x\\,P(x)\\}\\ \\vdash\\ \\forall x\\,S(x)",
+        "group": "quantified-shared-premise-fork-join",
+        "input": {
+          "bytes": 2395,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-006.json",
+          "sha256": "e488d2152352671290bcc1fdc5a6f51b18fa456aacb0423ff6d0c41c22a566a4"
+        },
+        "input_only": true,
+        "renaming_control_of": null,
+        "shape": {
+          "axioms": [
+            [
+              "all",
+              [
+                "imp",
+                [
+                  "pred",
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              [
+                "imp",
+                [
+                  "pred",
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  [
+                    2,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              [
+                "imp",
+                [
+                  "pred",
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    [
+                      2,
+                      1
+                    ],
+                    [
+                      [
+                        "bound",
+                        0
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    [
+                      3,
+                      1
+                    ],
+                    [
+                      [
+                        "bound",
+                        0
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              [
+                "pred",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    "bound",
+                    0
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "target": [
+            "all",
+            [
+              "pred",
+              [
+                3,
+                1
+              ],
+              [
+                [
+                  "bound",
+                  0
+                ]
+              ]
+            ]
+          ]
+        },
+        "source_shape_sha256": "9ba046a92bd754efc2c51b750d73f8890d6b3c32b24cb639bf0f55a32db83067",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "all": 5,
+            "imp": 4,
+            "pred": 9
+          },
+          "initial_binder_names": [
+            "x"
+          ],
+          "input_AST_nodes": 27,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": true
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-006",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "all",
+          "x",
+          [
+            "pred",
+            "S",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a1": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a2": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "S",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a3": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {},
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 1,
+            "S": 1
+          },
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 06"
+      }
+    },
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-007",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{\\forall x\\,(P(x)\\Rightarrow Q(x)),\\ \\forall x\\,(Q(x)\\Rightarrow R(x))\\}\\ \\vdash\\ \\forall x\\,(P(x)\\Rightarrow R(x))",
+        "group": "quantified-hypothetical-composition",
+        "input": {
+          "bytes": 1691,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-007.json",
+          "sha256": "ca7dc05395c95a872772a41b411a369d84bd33cd2039cc1b5b7b632313eda3a4"
+        },
+        "input_only": true,
+        "renaming_control_of": null,
+        "shape": {
+          "axioms": [
+            [
+              "all",
+              [
+                "imp",
+                [
+                  "pred",
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              [
+                "imp",
+                [
+                  "pred",
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  [
+                    2,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "target": [
+            "all",
+            [
+              "imp",
+              [
+                "pred",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    "bound",
+                    0
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                [
+                  2,
+                  1
+                ],
+                [
+                  [
+                    "bound",
+                    0
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        "source_shape_sha256": "d64a4b387161f4f211b5b9b89bc93f8ddbf9b42a6150f354680cf85f56ab199b",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "all": 3,
+            "imp": 3,
+            "pred": 6
+          },
+          "initial_binder_names": [
+            "x"
+          ],
+          "input_AST_nodes": 18,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": true
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-007",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "all",
+          "x",
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "a1": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {},
+          "predicates": {
+            "P": 1,
+            "Q": 1,
+            "R": 1
+          },
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 07"
+      }
+    },
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-008",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{\\forall x\\,(P(x)\\Rightarrow Q(x))\\}\\ \\vdash\\ \\forall x\\,(\\neg Q(x)\\Rightarrow\\neg P(x))",
+        "group": "quantified-contraposition",
+        "input": {
+          "bytes": 1362,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-008.json",
+          "sha256": "4fadbfa2f980ff4361ad72aaf7ab05c9ed769d138f4d51519e7671ea2fb542a6"
+        },
+        "input_only": true,
+        "renaming_control_of": null,
+        "shape": {
+          "axioms": [
+            [
+              "all",
+              [
+                "imp",
+                [
+                  "pred",
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "target": [
+            "all",
+            [
+              "imp",
+              [
+                "not",
+                [
+                  "pred",
+                  [
+                    1,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "not",
+                [
+                  "pred",
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    [
+                      "bound",
+                      0
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        "source_shape_sha256": "0fc9c97777da4ef4214a70612011468414d8829dcb643ee7749d1f649b46e531",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "all": 2,
+            "imp": 2,
+            "not": 2,
+            "pred": 4
+          },
+          "initial_binder_names": [
+            "x"
+          ],
+          "input_AST_nodes": 14,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": true
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-008",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "all",
+          "x",
+          [
+            "imp",
+            [
+              "not",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "not",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "a0": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "functions": {},
+          "predicates": {
+            "P": 1,
+            "Q": 1
+          },
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 08"
+      }
+    },
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-009",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{c_0=c_1,\\ U(c_0)\\}\\ \\vdash\\ U(c_1)",
+        "group": "ground-equality-predicate-transport",
+        "input": {
+          "bytes": 976,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-009.json",
+          "sha256": "fec5a5fb6ac32ac107033bb63c4f94bf78418736649211b4516732ff7be62b97"
+        },
+        "input_only": true,
+        "renaming_control_of": "prospective-fol-20261018-001",
+        "renaming_map": {
+          "axioms": {
+            "a0": "h0",
+            "a1": "h1"
+          },
+          "functions": {
+            "a": "c0",
+            "b": "c1"
+          },
+          "predicates": {
+            "P": "U"
+          },
+          "variables": {}
+        },
+        "shape": {
+          "axioms": [
+            [
+              "eq",
+              [
+                "fun",
+                [
+                  0,
+                  0
+                ],
+                []
+              ],
+              [
+                "fun",
+                [
+                  1,
+                  0
+                ],
+                []
+              ]
+            ],
+            [
+              "pred",
+              [
+                0,
+                1
+              ],
+              [
+                [
+                  "fun",
+                  [
+                    0,
+                    0
+                  ],
+                  []
+                ]
+              ]
+            ]
+          ],
+          "target": [
+            "pred",
+            [
+              0,
+              1
+            ],
+            [
+              [
+                "fun",
+                [
+                  1,
+                  0
+                ],
+                []
+              ]
+            ]
+          ]
+        },
+        "source_shape_sha256": "472a7c342568ccab2a1833ef3c1ad932ef872aab0a19ac75dca58e7517cb5831",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "eq": 1,
+            "pred": 2
+          },
+          "initial_binder_names": [],
+          "input_AST_nodes": 7,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": false
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-009",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "pred",
+          "U",
+          [
+            [
+              "fun",
+              "c1",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "h0": [
+              "eq",
+              [
+                "fun",
+                "c0",
+                []
+              ],
+              [
+                "fun",
+                "c1",
+                []
+              ]
+            ],
+            "h1": [
+              "pred",
+              "U",
+              [
+                [
+                  "fun",
+                  "c0",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "c0": 0,
+            "c1": 0
+          },
+          "predicates": {
+            "U": 1
+          },
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 09"
+      }
+    },
+    {
+      "metadata": {
+        "case_id": "prospective-fol-20261018-010",
+        "expected_basis_or_inventory_counts": null,
+        "expected_proof_rows": null,
+        "expected_runtime_status": null,
+        "formula_latex": "\\{\\forall m\\,\\forall n\\,(V(m,n)\\Rightarrow W(n,m)),\\ V(d_0,d_1)\\}\\ \\vdash\\ W(d_1,d_0)",
+        "group": "binary-relational-permutation",
+        "input": {
+          "bytes": 1637,
+          "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-010.json",
+          "sha256": "6e2cf334ad0a643d8eca7e75349d3a31156f31221668a0ee6d45fe534a142bb6"
+        },
+        "input_only": true,
+        "renaming_control_of": "prospective-fol-20261018-005",
+        "renaming_map": {
+          "axioms": {
+            "a0": "k0",
+            "a1": "k1"
+          },
+          "functions": {
+            "a": "d0",
+            "b": "d1"
+          },
+          "predicates": {
+            "R": "V",
+            "S": "W"
+          },
+          "variables": {
+            "x": "m",
+            "y": "n"
+          }
+        },
+        "shape": {
+          "axioms": [
+            [
+              "all",
+              [
+                "all",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    [
+                      0,
+                      2
+                    ],
+                    [
+                      [
+                        "bound",
+                        1
+                      ],
+                      [
+                        "bound",
+                        0
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    [
+                      1,
+                      2
+                    ],
+                    [
+                      [
+                        "bound",
+                        0
+                      ],
+                      [
+                        "bound",
+                        1
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              [
+                0,
+                2
+              ],
+              [
+                [
+                  "fun",
+                  [
+                    0,
+                    0
+                  ],
+                  []
+                ],
+                [
+                  "fun",
+                  [
+                    1,
+                    0
+                  ],
+                  []
+                ]
+              ]
+            ]
+          ],
+          "target": [
+            "pred",
+            [
+              1,
+              2
+            ],
+            [
+              [
+                "fun",
+                [
+                  1,
+                  0
+                ],
+                []
+              ],
+              [
+                "fun",
+                [
+                  0,
+                  0
+                ],
+                []
+              ]
+            ]
+          ]
+        },
+        "source_shape_sha256": "6d20525bc8c0ff506e78c6dc26337a9997cee4765a04ce9a2aab97dce2989c72",
+        "static_authoring": {
+          "all_axioms_closed": true,
+          "compiled_catalog": null,
+          "formula_tag_occurrences": {
+            "all": 2,
+            "imp": 1,
+            "pred": 4
+          },
+          "initial_binder_names": [
+            "m",
+            "n"
+          ],
+          "input_AST_nodes": 15,
+          "model": null,
+          "native_status": null,
+          "proof": null,
+          "static_envelope_checked": true,
+          "target_closed": true
+        },
+        "structural_primary": false
+      },
+      "spec": {
+        "id": "prospective-fol-20261018-010",
+        "instantiation_rounds": 2,
+        "length": 12,
+        "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+        "target": [
+          "pred",
+          "W",
+          [
+            [
+              "fun",
+              "d1",
+              []
+            ],
+            [
+              "fun",
+              "d0",
+              []
+            ]
+          ]
+        ],
+        "theory": {
+          "axioms": {
+            "k0": [
+              "all",
+              "m",
+              [
+                "all",
+                "n",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "V",
+                    [
+                      [
+                        "var",
+                        "m"
+                      ],
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "W",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "var",
+                        "m"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "k1": [
+              "pred",
+              "V",
+              [
+                [
+                  "fun",
+                  "d0",
+                  []
+                ],
+                [
+                  "fun",
+                  "d1",
+                  []
+                ]
+              ]
+            ]
+          },
+          "functions": {
+            "d0": 0,
+            "d1": 0
+          },
+          "predicates": {
+            "V": 2,
+            "W": 2
+          },
+          "schemas": []
+        },
+        "title": "Prospective first-order assertion 10"
+      }
+    }
+  ],
+  "schema": "ROOT-complete-authored-first-order-input-values-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Complete original JSON values with exact original descriptors; raw original files are separately published and bundled. Static envelope/signature/closure/renaming checks are not native admission or entailment checks.",
+  "source_index": {
+    "bytes": 31857,
+    "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/suite-input-index-v1.json",
+    "sha256": "63e2e0d650a281080d4d763e730f7ca742a5c4d5edfb53ada3fb5c0ec54a666c"
+  },
+  "structural_groups": 8
+}

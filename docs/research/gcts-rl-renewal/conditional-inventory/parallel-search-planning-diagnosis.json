@@ -1,0 +1,463 @@
+{
+  "ROOT_original_admission": {
+    "bytes": 107412,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "43980d1d838c877c02ca23dce7162a6ad29dec9d92057b2862377a6e118e937a"
+  },
+  "Source_regions": {
+    "native_inference_inventory": {
+      "Join": {
+        "end_line": 152,
+        "line": 56
+      },
+      "aggregate": {
+        "end_line": 54,
+        "line": 38
+      },
+      "combine": {
+        "end_line": 36,
+        "line": 30
+      },
+      "mine": {
+        "end_line": 28,
+        "line": 11
+      }
+    },
+    "native_inventory_policy": {
+      "choose": {
+        "end_line": 24,
+        "line": 16
+      },
+      "reward": {
+        "end_line": 27,
+        "line": 25
+      },
+      "update": {
+        "end_line": 34,
+        "line": 28
+      },
+      "vector": {
+        "end_line": 15,
+        "line": 6
+      }
+    },
+    "quantified_family_points_v2": {
+      "Model": {
+        "end_line": 78,
+        "line": 14
+      }
+    },
+    "quantified_receptors_v1": {
+      "Model": {
+        "end_line": 173,
+        "line": 141
+      },
+      "compile_guards": {
+        "end_line": 139,
+        "line": 123
+      },
+      "domains": {
+        "end_line": 121,
+        "line": 106
+      },
+      "frozen": {
+        "end_line": 20,
+        "line": 20
+      },
+      "syntax": {
+        "end_line": 104,
+        "line": 21
+      },
+      "thaw": {
+        "end_line": 19,
+        "line": 19
+      }
+    },
+    "quantified_symbolic_control_v1": {
+      "SymbolicDataError": {
+        "end_line": 24,
+        "line": 23
+      },
+      "_Budget": {
+        "end_line": 74,
+        "line": 47
+      },
+      "_Stop": {
+        "end_line": 31,
+        "line": 27
+      },
+      "_backward_distances": {
+        "end_line": 129,
+        "line": 113
+      },
+      "_distances_from_target": {
+        "end_line": 144,
+        "line": 132
+      },
+      "_intake": {
+        "end_line": 110,
+        "line": 77
+      },
+      "_json": {
+        "end_line": 36,
+        "line": 34
+      },
+      "_key_projection": {
+        "end_line": 194,
+        "line": 180
+      },
+      "_owned": {
+        "end_line": 40,
+        "line": 39
+      },
+      "_primitive_guard": {
+        "end_line": 177,
+        "line": 147
+      },
+      "_sha": {
+        "end_line": 44,
+        "line": 43
+      },
+      "search_symbolic": {
+        "end_line": 385,
+        "line": 197
+      }
+    },
+    "semantic_inventory_guidance": {
+      "Join": {
+        "end_line": 121,
+        "line": 54
+      },
+      "known_rows": {
+        "end_line": 35,
+        "line": 28
+      },
+      "row_requirements": {
+        "end_line": 26,
+        "line": 9
+      },
+      "vector": {
+        "end_line": 52,
+        "line": 37
+      }
+    },
+    "semantic_inventory_search": {
+      "search": {
+        "end_line": 55,
+        "line": 9
+      }
+    },
+    "semantic_lemma_inventory": {
+      "bindings": {
+        "end_line": 81,
+        "line": 65
+      },
+      "mine": {
+        "end_line": 41,
+        "line": 20
+      },
+      "replace": {
+        "end_line": 50,
+        "line": 43
+      },
+      "specialize": {
+        "end_line": 113,
+        "line": 83
+      },
+      "transform": {
+        "end_line": 18,
+        "line": 10
+      },
+      "unify": {
+        "end_line": 63,
+        "line": 52
+      },
+      "used_definitions": {
+        "end_line": 141,
+        "line": 115
+      }
+    },
+    "turtle": {
+      "Graph": {
+        "end_line": 193,
+        "line": 134
+      },
+      "Limit": {
+        "end_line": 324,
+        "line": 324
+      },
+      "Model": {
+        "end_line": 95,
+        "line": 65
+      },
+      "Placement": {
+        "end_line": 63,
+        "line": 59
+      },
+      "Policy": {
+        "end_line": 275,
+        "line": 246
+      },
+      "State": {
+        "end_line": 132,
+        "line": 98
+      },
+      "UnionFind": {
+        "end_line": 555,
+        "line": 546
+      },
+      "action_features": {
+        "end_line": 346,
+        "line": 342
+      },
+      "add": {
+        "end_line": 23,
+        "line": 23
+      },
+      "check_failure_certificate": {
+        "end_line": 544,
+        "line": 518
+      },
+      "cluster_rollout": {
+        "end_line": 468,
+        "line": 418
+      },
+      "compose": {
+        "end_line": 26,
+        "line": 26
+      },
+      "exhaustive_domains": {
+        "end_line": 216,
+        "line": 201
+      },
+      "features": {
+        "end_line": 244,
+        "line": 235
+      },
+      "growth_search": {
+        "end_line": 402,
+        "line": 348
+      },
+      "inside": {
+        "end_line": 42,
+        "line": 32
+      },
+      "inverse": {
+        "end_line": 30,
+        "line": 27
+      },
+      "mine_clusters": {
+        "end_line": 416,
+        "line": 404
+      },
+      "one_corona": {
+        "end_line": 510,
+        "line": 470
+      },
+      "pair_catalog": {
+        "end_line": 516,
+        "line": 512
+      },
+      "point_data": {
+        "end_line": 54,
+        "line": 44
+      },
+      "rollout": {
+        "end_line": 322,
+        "line": 277
+      },
+      "rooted": {
+        "end_line": 199,
+        "line": 195
+      },
+      "sequence_actions": {
+        "end_line": 340,
+        "line": 326
+      },
+      "sub": {
+        "end_line": 24,
+        "line": 24
+      },
+      "synthesize": {
+        "end_line": 633,
+        "line": 586
+      },
+      "transform": {
+        "end_line": 25,
+        "line": 25
+      },
+      "verify_patch": {
+        "end_line": 233,
+        "line": 218
+      },
+      "verify_redundancy_scope": {
+        "end_line": 584,
+        "line": 557
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "ancestry": {
+    "author_identity": "/root/conventional_control_review",
+    "authored_prior_components": [
+      "quantified_symbolic_control_v1",
+      "structural quantified benchmark cases",
+      "quantified receiver driver",
+      "bounded native broker and earlier outer runners",
+      "compact-model cold once runner v1/v2",
+      "earlier finite checkers/CASEs and reports"
+    ],
+    "independence_limit": "This is a Source-backed diagnosis by an original control author, not an independent Source certificate of that control. Root alone executed and admitted the retained actuals.",
+    "parent_identity": "/root"
+  },
+  "common_completed_problem": {
+    "arity": 3,
+    "basis_formulas": 13,
+    "compiler_status": "complete",
+    "model_placements": 11440,
+    "registered_exported_interfaces": 8,
+    "registry_status": "native_accepted",
+    "root_rows": 12,
+    "scope": "All three old c3 runs reached the same completed compiled and registered finite problem. This does not imply equal search traces or method-specific work units.",
+    "syntax_rounds": 2
+  },
+  "conformance": {
+    "control_scope": "Symbolic chronological DFS is a conventional specialized control with the same completed logical language; it is not the geometric scheduler.",
+    "existing_point_route": "Graph decision remains global dead then forced then earliest generation. Hints only reorder incident alternatives; each constituent uses current legality, graph update and reversible state copies.",
+    "gaps": [
+      "No runtime counterfactual ordering ablation has occurred.",
+      "The saved cutoff paths are partial historical branches, not complete proofs.",
+      "The current bounded Join proposal pool can omit a useful row; ordering cannot guarantee its availability.",
+      "Repeated output/ref/padding multiplicity is retained. No duplicate elimination is proposed without a separate equivalence argument.",
+      "No failed branch, memory diagnostic or native UNKNOWN is a mathematical refutation."
+    ]
+  },
+  "current_runtime_closure": {
+    "bytes": 69562,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+    "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+  },
+  "declaration": {
+    "bytes": 21453,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/experiment-declaration-v2.json",
+    "sha256": "19fab9173cf52ebd9e0d5517fd4dbbb44ed9d72f3737676d9701fd6a4c8bde5d"
+  },
+  "findings": [
+    {
+      "counts": {
+        "backtracks": 4990,
+        "dead_prefixes": 4677,
+        "events_at_row10": 4677,
+        "events_at_row11": 0,
+        "extensions": 5000,
+        "first_seven_choices_not_backtracked": 7
+      },
+      "id": "SYMBOLIC_PREFIX_LIMIT",
+      "interpretation": "Chronological depth-first suffix enumeration consumed the limit under an early prefix. The last-row target restriction generated no successful row-11 extension in visited prefixes. Neither this nor dead-prefix counts establish complete grammar exhaustion or target nonprovability.",
+      "observation": "Symbolic search returned unknown_search_budget with reason prefix_extension_budget after 5000 extensions in 6.709443915984593 seconds, not the nominal 30-second limit."
+    },
+    {
+      "Source_evidence": "The control flattens all alternative implication and exported-interface prerequisite sets into a reverse dependency graph, then sorts novel outputs by unweighted backward BFS distance and original skeleton index.",
+      "id": "CYCLE_BLIND_ORDER",
+      "limit": "This exhibits an ordering weakness and a concrete self-supporting relevance path. It is not an unsound guard, unavailable native rule, or causal demonstration that another order solves the case.",
+      "retained_evidence": "Event 3 writes a legal zero-read UI implication licence whose universal operand is the receiver target. Its saved backward distance is 2; the curried theory axiom has distance 4. The target is not an available fact at that event."
+    },
+    {
+      "base": {
+        "backtracks": 1984,
+        "branches": 249,
+        "dead": 556,
+        "forced": 1226,
+        "placements": 2030,
+        "seconds": 30.173799750045873
+      },
+      "fixed": {
+        "backtracks": 2689,
+        "branches": 419,
+        "dead": 803,
+        "forced": 1518,
+        "placements": 2739,
+        "seconds": 30.027331374934874
+      },
+      "id": "POINT_WALL_LIMIT",
+      "interpretation": "Both point searches hit their wall-time condition below 5000 placements. These are placement units, not symbolic row extensions. Both are old out-of-memory-profile diagnostic observations, with no admitted proof."
+    },
+    {
+      "Source_evidence": "Join constructs one completed command/guard/input-role row at a time plus sampled clusters of at most three placements. It does not recursively acquire missing receptor premises. Existing new_fact and direct target_output features do not measure marginal target support.",
+      "id": "LOCAL_HINTS_NOT_DEPENDENCY_PLANS",
+      "limit": "Hint phase counts are visits, not distinct proof-relevant successes or unique invalid proposals. Repeated known facts in saved partial paths are legal duplicate words; they are not all necessarily removable under exact bounded-word semantics.",
+      "retained_evidence": "Fixed starts 350 hints; 120 completed-phase visits and 808 invalid-phase visits are recorded. Proposal construction/scoring consumes 4.233819758053869 seconds. The first policy event prefers a smaller-marking novel axiom over the larger curried axiom; no prerequisite-support feature is present."
+    },
+    {
+      "id": "CURRENT_PROOF_SEARCH_SCOPE",
+      "limit": "No evidence here establishes a GCTS speed advantage, necessity of geometry, learned markings, reinforcement learning, new theorem, or generic transfer success.",
+      "observation": "The point lane performs real complete-domain point search and validated cluster ordering; the conventional lane performs direct symbolic row search. Neither old c3 run found a proof. All three report unknown, and the point diagnostics failed the old full resource envelope."
+    }
+  ],
+  "implementation_proposed_only": true,
+  "literal_evidence": {
+    "bytes": 403280,
+    "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/retained-evidence-preimages-v1.json",
+    "sha256": "1490f0c6d60db7c07b41483110dc39d870def1707a08e784d02ba72af8f8b5c6"
+  },
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "proof_route_supplied": false,
+  "receiver_statement_latex": "\\(\\forall x\\,(P(x)\\Rightarrow(Q(x)\\Rightarrow R(x))),\\;\\forall x\\,P(x),\\;\\forall x\\,Q(x)\\;\\vdash\\;\\forall x\\,R(x)\\)",
+  "schema": "curried-search-source-retained-diagnosis-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "source_and_retained_data_only": true,
+  "sources": {
+    "native_inference_inventory": {
+      "bytes": 10594,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "native_inventory_policy": {
+      "bytes": 2746,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "quantified_family_points_v2": {
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    "quantified_receptors_v1": {
+      "bytes": 11060,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    "quantified_symbolic_control_v1": {
+      "bytes": 20067,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    "semantic_inventory_guidance": {
+      "bytes": 6942,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "semantic_inventory_search": {
+      "bytes": 5318,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "semantic_lemma_inventory": {
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "turtle": {
+      "bytes": 28533,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    }
+  },
+  "target_imports": 0
+}

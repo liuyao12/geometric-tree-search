@@ -1,0 +1,173 @@
+{
+  "actual_execution_authorized": false,
+  "audit": {
+    "bytes": 59530,
+    "path": "/private/tmp/gcts-parallel-search-planning-report-peer-20261018/audit-v1.json",
+    "sha256": "ad37014efe40eb4f6eff8aedb99f7a78dcd9d8e45d2e902a61a491fd8a1b5a9d"
+  },
+  "audit_Source": {
+    "bytes": 21749,
+    "path": "/private/tmp/gcts-parallel-search-planning-report-peer-20261018/audit_report_v1.py",
+    "sha256": "4500f5694f98bda8402e517ba56e1b454dbb19f7bb2ec28cc1c5709a11ef63a3"
+  },
+  "author_identity": "/root",
+  "authorship_disclosure": "Reviewer authored the ten input-only specs and an older separate qualification harness, and reviewed prior Sources/data. Report is Root-authored. Display/copy review is distinct from report author; this is NOT independent certification of own corpus selection/authorship or prior harness implementation.",
+  "bounded_evidence": {
+    "archive_members": 57,
+    "case_inputs": 10,
+    "checks": 352,
+    "formula_rows": 30,
+    "mismatches": 0,
+    "published_assets": 21,
+    "renaming_controls": 2,
+    "structural_groups": 8
+  },
+  "conditional_report_pass": true,
+  "distinct_report_reviewer": true,
+  "evidence_manifest": {
+    "bytes": 26761,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-evidence-manifest.json",
+    "sha256": "94451d299aeb5a5919a0ba4600edcc982df6b1b33aa5ce258588e49a81923f13"
+  },
+  "findings": [],
+  "implementation_source_review": false,
+  "independent_corpus_authorship_certificate": false,
+  "limitations": [
+    "Exact current HTML/report-data scope only. No search/native/proof result produced or independently rechecked by executing a mathematical checker.",
+    "Historical c3 interpretation compared retained extracts, original Root admission and distinct authors notes; not a new exhaustive audit or counterfactual intervention.",
+    "Thirty displayed formulas parsed syntactically back to the full original ASTs. This validates display fidelity, not entailment or finite catalog feasibility.",
+    "CASC/TPTP/SZS links are benchmark-practice sources; corpus is authored synthetic, unexecuted, visible and not an official/blind/ranked benchmark.",
+    "Publication ZIP inspected only as report transport; no Native codec or scientific archive replay. No live rendering/browser check performed."
+  ],
+  "publication_assets": [
+    {
+      "bytes": 24376,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-benchmark-manifest.json",
+      "sha256": "cd2ccf543607753145b9224bfe4752e1ec62220bc0041f7eae27995c6d49d358"
+    },
+    {
+      "bytes": 50247,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-benchmark-suite.json",
+      "sha256": "b81ac7d2dd03691de9db143340b7413bd11d81c442ee22b428f2cb0a739bd737"
+    },
+    {
+      "bytes": 15169,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-diagnosis.json",
+      "sha256": "1a54102ee4316575c927058d539c7cfb53a0c5f73cccb447dd9b31292fa53d33"
+    },
+    {
+      "bytes": 26761,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-evidence-manifest.json",
+      "sha256": "94451d299aeb5a5919a0ba4600edcc982df6b1b33aa5ce258588e49a81923f13"
+    },
+    {
+      "bytes": 254646,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-evidence.zip",
+      "sha256": "2ab5caa743ec8f0a01adb9f78f22711e6df06d13a439c2284483640ba281d901"
+    },
+    {
+      "bytes": 30361,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-family-design.json",
+      "sha256": "555d5b909214463cbbe63359461cbbe7a6597eb68ffe3e7b2b671332a760f29e"
+    },
+    {
+      "bytes": 7488,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-family-observations.json",
+      "sha256": "f6aebfc12ff86b323b9a934c4ca4f4dfd4341605c8f25915ca2a3937754ff43b"
+    },
+    {
+      "bytes": 970,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-001.json",
+      "sha256": "1f3ff3f240cb1b80a4692029e0c11d3a035fb28822995ef958837843d72f395a"
+    },
+    {
+      "bytes": 976,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-002.json",
+      "sha256": "1ba60ee7357bc87c606d9d7816834b64703979e84db0782f41683158b55ab869"
+    },
+    {
+      "bytes": 1000,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-003.json",
+      "sha256": "c7e9e9c3dadd6cd7f36bd9b30ca85f0bcd03ebcb97c64b0511a84c7e80f01b1f"
+    },
+    {
+      "bytes": 1445,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-004.json",
+      "sha256": "421a5517c94d5f79642a273566d8e5816bdb65b61a0ca93acdaf85e992803b06"
+    },
+    {
+      "bytes": 1631,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-005.json",
+      "sha256": "775d49ae224c07590302c0e71dafc7292a136e07f5459b709648df4c4ded6690"
+    },
+    {
+      "bytes": 2395,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-006.json",
+      "sha256": "e488d2152352671290bcc1fdc5a6f51b18fa456aacb0423ff6d0c41c22a566a4"
+    },
+    {
+      "bytes": 1691,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-007.json",
+      "sha256": "ca7dc05395c95a872772a41b411a369d84bd33cd2039cc1b5b7b632313eda3a4"
+    },
+    {
+      "bytes": 1362,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-008.json",
+      "sha256": "4fadbfa2f980ff4361ad72aaf7ab05c9ed769d138f4d51519e7671ea2fb542a6"
+    },
+    {
+      "bytes": 976,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-009.json",
+      "sha256": "fec5a5fb6ac32ac107033bb63c4f94bf78418736649211b4516732ff7be62b97"
+    },
+    {
+      "bytes": 1637,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-prospective-fol-20261018-010.json",
+      "sha256": "6e2cf334ad0a643d8eca7e75349d3a31156f31221668a0ee6d45fe534a142bb6"
+    },
+    {
+      "bytes": 403280,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-search-observations.json",
+      "sha256": "1490f0c6d60db7c07b41483110dc39d870def1707a08e784d02ba72af8f8b5c6"
+    },
+    {
+      "bytes": 5375,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-summary.json",
+      "sha256": "aeacf903a79d766eb2c9b4c1be43aa02557daf4d59bb577ed0eec5a5e2f503dc"
+    },
+    {
+      "bytes": 7018,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-support-design.json",
+      "sha256": "0ba7d8434c7e2b4f30c1dc125636f1424d8a06f8b2d69427e2e00b7da12b62f5"
+    },
+    {
+      "bytes": 43130,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning.html",
+      "sha256": "fdec15f0e00929b3dbe96dd6b1b78d18155bcf9b61b2b1350365ff3d600e1c93"
+    }
+  ],
+  "publication_ready": false,
+  "report": {
+    "bytes": 43130,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning.html",
+    "sha256": "fdec15f0e00929b3dbe96dd6b1b78d18155bcf9b61b2b1350365ff3d600e1c93"
+  },
+  "report_review_passed": true,
+  "required_final_metadata_closure": [
+    "Publish this exact typed receipt at the declared report-review asset and set report_review_pending false using a new manifest; do not overwrite frozen V1 evidence.",
+    "Add and verify reader.html#parallel-search-planning and the final publication bindings. Root owns deployed-byte and visual verification."
+  ],
+  "reviewer_identity": "/root/receiver_driver_review",
+  "schema": "parallel-search-planning-human-report-and-static-input-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "source_only": true,
+  "static_input_copy_and_display_review_passed": true,
+  "status": "CONDITIONAL_HUMAN_REPORT_AND_STATIC_DISPLAY_PASS_NO_SCIENCE",
+  "summary": {
+    "bytes": 5375,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-summary.json",
+    "sha256": "aeacf903a79d766eb2c9b4c1be43aa02557daf4d59bb577ed0eec5a5e2f503dc"
+  }
+}

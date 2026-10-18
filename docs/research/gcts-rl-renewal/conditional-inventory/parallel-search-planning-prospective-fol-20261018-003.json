@@ -1,0 +1,57 @@
+{
+  "id": "prospective-fol-20261018-003",
+  "instantiation_rounds": 2,
+  "length": 12,
+  "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+  "target": [
+    "eq",
+    [
+      "fun",
+      "a",
+      []
+    ],
+    [
+      "fun",
+      "c",
+      []
+    ]
+  ],
+  "theory": {
+    "axioms": {
+      "a0": [
+        "eq",
+        [
+          "fun",
+          "a",
+          []
+        ],
+        [
+          "fun",
+          "b",
+          []
+        ]
+      ],
+      "a1": [
+        "eq",
+        [
+          "fun",
+          "b",
+          []
+        ],
+        [
+          "fun",
+          "c",
+          []
+        ]
+      ]
+    },
+    "functions": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "predicates": {},
+    "schemas": []
+  },
+  "title": "Prospective first-order assertion 03"
+}

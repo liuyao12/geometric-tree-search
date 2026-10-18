@@ -1,0 +1,426 @@
+{
+  "actual_execution_authorized": false,
+  "agent_handoff": {
+    "bytes": 6522,
+    "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/handoff-v1.json",
+    "sha256": "a064d501be9b31bc0fb6ebfba04760be13ca768319e7e11f60970df5d30aded2"
+  },
+  "author_input_index": {
+    "bytes": 31857,
+    "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/suite-input-index-v1.json",
+    "sha256": "63e2e0d650a281080d4d763e730f7ca742a5c4d5edfb53ada3fb5c0ec54a666c"
+  },
+  "case_groups": {
+    "binary-relational-permutation": [
+      "prospective-fol-20261018-005",
+      "prospective-fol-20261018-010"
+    ],
+    "functional-universal-horn": [
+      "prospective-fol-20261018-004"
+    ],
+    "ground-equality-chain": [
+      "prospective-fol-20261018-003"
+    ],
+    "ground-equality-predicate-transport": [
+      "prospective-fol-20261018-001",
+      "prospective-fol-20261018-009"
+    ],
+    "quantified-contraposition": [
+      "prospective-fol-20261018-008"
+    ],
+    "quantified-hypothetical-composition": [
+      "prospective-fol-20261018-007"
+    ],
+    "quantified-shared-premise-fork-join": [
+      "prospective-fol-20261018-006"
+    ],
+    "unary-function-congruence": [
+      "prospective-fol-20261018-002"
+    ]
+  },
+  "coverage": {
+    "author_identity": "/root/receiver_driver_review",
+    "case_status": "All ten unexecuted; no native admission, catalog census, Model, proof, result or timing exists. All intended as classical theorem candidates; logical intent is author judgment, not a Native-certified status.",
+    "development_only": [
+      {
+        "id": "quantified-universal-commutation-001",
+        "shape_sha256": "c1b575d21e30fdc85d89c4340d17d2902b98af35f384d5496bbe1569efef7c9f"
+      },
+      {
+        "id": "quantified-diagonal-specialization-001",
+        "shape_sha256": "436264c30452952008a20e57eade6833764415b7a1e4b627bf989f60bdf8c2d1"
+      },
+      {
+        "id": "quantified-curried-two-premise-001",
+        "shape_sha256": "29a37c04a55f3ee41c25eab1e9227022bd02f49d88b523ddac7572eb39ae3cab"
+      }
+    ],
+    "finite_search_limits": [
+      "Frozen target-free input/target subterms plus explicit variable term for every initial binder. Because every target here is closed, only closed subterms plus binder variables enter the fixed pool. No arbitrary fresh ground-term closure.",
+      "Two UI catalog construction snapshots, not a global limit of two UI inference steps. Later capture-renamed names may enter variable metadata but do not grow the term pool. No percase source substitution is evaluated here.",
+      "Current generated equality schemes use one atomic-template layer and closed operand pairs from existing equality subformulas; no general equational saturation. Equality specimens use closed ground operands deliberately within that declared syntax lane.",
+      "Native tautology rule is broader than finite basis admission. Composition/contraposition may lack required intermediate propositional formulas in current subformula/UI/EQ catalog; no bridge formulas/axioms/helper lemmas are supplied and no finite-grammar impossibility is asserted.",
+      "All four old formula-family templates and all newly natively admitted specializations retained without filtering; derived physical arity covers every admitted interface. Grammar,registry,query,memory or search stops remain outcomes."
+    ],
+    "novelty_scope": "Eight primary input AST shapes differ from each other and the declared three development shapes under bound-variable/symbol renaming. Two controls intentionally share parent shapes. No all-history logical independence or blind sampling claim.",
+    "prior_probes_development_only": [
+      "capture-distinguishing-UI-syntax-001",
+      "conjunction-projection-coverage-001",
+      "open-theory-scope-negative-001"
+    ],
+    "schema": "authored-first-order-suite-coverage-provenance-v1",
+    "scientific_calls": 0,
+    "scope_exclusions": [
+      "No official TPTP problem IDs/content, CASC ratings or external solver results.",
+      "No truth/eigenvariable/substitution/Native/template/codec evaluation, benchmark trials or handwritten proof command sequence.",
+      "No additional rule, axiom schema, natural-number induction or Euclidean/Hilbert geometry theory.",
+      "No current cold activation compatibility: existing frozen cold/outer bind the earlier structural declaration and six selected-receiver subjects. A new genuinely reviewed declaration/selection/closure/cohort/grant composition is required."
+    ],
+    "source_only": true,
+    "source_refs": {
+      "compact_model": {
+        "bytes": 4311,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      },
+      "compiler": {
+        "bytes": 11060,
+        "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      },
+      "complete_prior_library": {
+        "bytes": 4502,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-policy-001.json",
+        "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+      },
+      "current_profile_declaration": {
+        "bytes": 9760,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+        "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+      },
+      "driver": {
+        "bytes": 52750,
+        "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+        "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+      },
+      "master": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      },
+      "native_checker_Source": {
+        "bytes": 17577,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree",
+        "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+      },
+      "ordinary_model": {
+        "bytes": 6472,
+        "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+        "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+      },
+      "parent_development_declaration": {
+        "bytes": 21453,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/experiment-declaration-v2.json",
+        "sha256": "19fab9173cf52ebd9e0d5517fd4dbbb44ed9d72f3737676d9701fd6a4c8bde5d"
+      },
+      "prior_coverage_probes": {
+        "bytes": 5746,
+        "path": "/private/tmp/gcts-quantified-structural-benchmark-source-20261018/scope-and-coverage-probes-v1.json",
+        "sha256": "e4714307e91bd3469fd79cb006016062351c65dffb87896451852a492cfb3f23"
+      },
+      "runtime_closure": {
+        "bytes": 69562,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+        "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+      },
+      "symbolic_control": {
+        "bytes": 20067,
+        "path": "/private/tmp/gcts-symbolic-control-source-20261018/quantified_symbolic_control_v1.py",
+        "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+      }
+    },
+    "suite": {
+      "bytes": 31857,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/suite-input-index-v1.json",
+      "sha256": "63e2e0d650a281080d4d763e730f7ca742a5c4d5edfb53ada3fb5c0ec54a666c"
+    },
+    "supported_input_lane": [
+      "Closed untyped first-order terms var/fun with declared finite arity; constants are zero-arity function applications.",
+      "Native formula tags bot/not/imp/and/or/all/pred/eq are available; this suite uses pred/eq/imp/not/all, constants and one unary function.",
+      "All named axioms and targets closed; schemas empty, no open root assumptions or predicate/function variables. Same exact receiver envelope,12rows,2catalog UI rounds.",
+      "Native supports axiom/tautology/refl/instantiate/eq_subst/mp/generalize/block and additional rules; current search catalog is narrower. No primitive exists, PA/Hilbert/geometry/typed or arithmetic assertion is introduced."
+    ],
+    "unresolved_cases": [
+      {
+        "case_id": "prospective-fol-20261018-005",
+        "reason": "Nested binary universal instance/argument-order/capture catalog may incur substantial setup/registry cost; no full catalog computed."
+      },
+      {
+        "case_id": "prospective-fol-20261018-006",
+        "reason": "Shared-premise branching and multiple quantified premises may exceed finite12-row/macro/domain/resource lane; no proof length or solvability claim."
+      },
+      {
+        "case_id": "prospective-fol-20261018-007",
+        "reason": "Hypothetical composition tests missing intermediate propositional synthesis coverage, not only exploration order."
+      },
+      {
+        "case_id": "prospective-fol-20261018-008",
+        "reason": "Negative polarity/contraposition tests finite propositional bridge coverage, not only exploration order."
+      }
+    ]
+  },
+  "design": {
+    "actual_execution_authorized": false,
+    "author_identity": "/root/receiver_driver_review",
+    "authorship": "Reviewer authored a separate qualification harness and prior Source/data reviews, not the current search engines. This is new synthetic INPUT authorship, not independent own-input validation or a new proof-search implementation. Distinct Source/declaration review required.",
+    "benchmark_practice_mapping": [
+      {
+        "application": "We use explicit axioms plus a target conjecture, but our JSON envelope is not TPTP syntax and no official library problem was imported.",
+        "source": "TPTP_PROBLEMS"
+      },
+      {
+        "application": "Freeze general strategies and test inputs before trials, retain complete acceptable solution output under declared bounds, group near-duplicate controls and disclose timing/measurement scope. This is methodological guidance, not CASC compliance/eligibility/ranking.",
+        "source": "CASC_J13_DESIGN"
+      },
+      {
+        "application": "Require source-bound acyclic ordered premise links and final target/proof provenance; any future external transformation/proof format needs separate validation. Our native proof format remains distinct.",
+        "source": "TPTP_DERIVATIONS"
+      },
+      {
+        "application": "Keep theorem/proof acceptance separate from no-success reasons such as timeout,incompleteness,error. Our retained resource diagnostic is not automatically an SZS success or countermodel certificate.",
+        "source": "SZS_ONTOLOGIES"
+      }
+    ],
+    "coverage": {
+      "bytes": 8104,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/coverage-provenance-v1.json",
+      "sha256": "0c98eccf9eb0098a082275fc3c2ad31f6c999040efe1782ad46db910f9afe44f"
+    },
+    "method_comparison": {
+      "current_symbolic_control": "Chronological finite proof-word prefix control over same compiled grammar/ordered prior ports, no GCTS points during its search; common point model construction and verification remain charged. It is not a complete dedicated FOL saturation prover or no-encoding-cost baseline.",
+      "future_external_control": "A separately reviewed TPTP translation and an established external FOL prover can test mathematical/corpus coverage. Such a prover has a different calculus/search space. Charge translation/library/preprocessing/proof production and independently validate accepted proof/translation; do not call it an exact finite-grammar control or invoke it now.",
+      "initial_methods": [
+        "base",
+        "fixed",
+        "symbolic"
+      ],
+      "knowledge": "Same full spec, complete compiler/admitted guards, full four-template prior policy and complete registered definitions/interfaces/native_blocks, full Model/initial state in every arm.",
+      "operation_units": "Point placement attempts and symbolic prefix extensions are different units; same numeric cap is a profile choice, not equal computational work or a speed ratio. Native queries/microsteps and complete wall/resource costs reported separately."
+    },
+    "primary_sources": {
+      "bytes": 1852,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/primary-sources-v1.json",
+      "sha256": "c06aa669d4978e8bc1f2054941b19c9287a19170b9e5cdc8653611ebf1969884"
+    },
+    "profile": {
+      "complete_output": true,
+      "conservative_peak_scope": "Exact scientific worker+CPP wait4 high-water sum, may doublecount and excludes observer/parent; posthoc bound not live aggregate cap.",
+      "instantiation_rounds": 2,
+      "limits_literal": {
+        "check_steps": 2048,
+        "compile_queries": 512,
+        "conservative_worker_plus_native_peak_bytes": 1073741824,
+        "guard_steps": 1000000000,
+        "overall_seconds": 210,
+        "proposal_steps": 24,
+        "registry_steps": 5000000000,
+        "result_bytes": 134217728,
+        "search_max_nodes": 5000,
+        "search_seconds": 30,
+        "seed": 64000,
+        "work_seconds": 180
+      },
+      "parent": {
+        "bytes": 9760,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+        "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+      },
+      "rows": 12,
+      "timing": "Whole setup/import/compile/native-registry/full model+all candidates/search/native final/full point/output/reader/inverse/custody charged;180work/210overall. Same compact representation/common23-module setup initially in all methods."
+    },
+    "prospective_schedule_requirements": [
+      "Root separately freezes complete allcase/method subjects and unique fresh dirs/oncegrants after independent input/Source/composition review. No slots/grants/actuals are created here.",
+      "Use same strategy/profile for every input, no case IDs/titles/expected solutions in policies or special branches. Method order should be balanced/counterbalanced prospectively, with all seeds and any repetitions fixed before outcomes.",
+      "No handwritten proofs/rowcommands/routes/registered instance IDs in inputs. Posthoc line-by-line human proofs must be generated only from discovered admitted output.",
+      "All agents idle during Root sequential measurement windows; preserve failures and full records. Any Source repair or later larger-budget study gets a distinct prospective version, not relabeling old runs."
+    ],
+    "schema": "authored-first-order-suite-design-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "source_only": true,
+    "split_policy": {
+      "blindness": "Prospective held-fixed synthetic evaluation, not a hidden blind test, random sample or official benchmark. Architecture and development results were known to author; formulas become visible on publication.",
+      "development": "All prior arithmetic/semantic cases, especially commutation/diagonal/curried and previously published coverage probes; prior outcomes were known and used only to exclude these inputs from the new structural list.",
+      "evaluation": "Ten fixed inputs/eight groups authored before any of these cases were executed. Agent selected cases without consulting the parallel current-search diagnosis outcomes. No anticipated success/census/resource filter.",
+      "promotion": "After any outcome is used for tuning/mining, mark that case/group as development in subsequent claims and require a new independently fixed evaluation corpus. Preserve every old outcome/version.",
+      "training": "Only preexisting declared training/development proofs and frozen prior four-family library. Do not mine/train/tune on any new-suite outcome before cohort closure."
+    },
+    "success_and_reporting": {
+      "all_outcomes": "Retain input rejection, compile/registry/native space/timeout, model/transport/whole-point/resource failures and search UNKNOWN. Bounded failure is not theorem refutation or CounterSatisfiable; no outcome dropped/retried/recapped or fitted by grammar reduction.",
+      "grouping": "Report10case slots and8structural groups separately; renaming controls are correlated tests, never independent new theorem families. For conservative group success require all group members to pass, not whichever rename succeeds.",
+      "inference": "No significance/general superiority/RL benefit from one run per method/case. Prior storage engineering success on a familiar case is not this suite result.",
+      "primary": "Fresh whole Native-accepted proof of the exact target, full selected finite t/m/row verification, complete output/custody and declared resource/terminal gates. Report all three conjuncts separately.",
+      "secondary": "Actual essential UI,GEN,equality,registered-family/cluster use and exact selected-path hint consumption are observations. Ground equality cases need not have UI or GEN; do not require the old UI+GEN milestone for their primary proof success."
+    },
+    "suite": {
+      "bytes": 31857,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/suite-input-index-v1.json",
+      "sha256": "63e2e0d650a281080d4d763e730f7ca742a5c4d5edfb53ada3fb5c0ec54a666c"
+    }
+  },
+  "input_descriptors": [
+    {
+      "case_id": "prospective-fol-20261018-001",
+      "group": "ground-equality-predicate-transport",
+      "input": {
+        "bytes": 970,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-001.json",
+        "sha256": "1f3ff3f240cb1b80a4692029e0c11d3a035fb28822995ef958837843d72f395a"
+      },
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-002",
+      "group": "unary-function-congruence",
+      "input": {
+        "bytes": 976,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-002.json",
+        "sha256": "1ba60ee7357bc87c606d9d7816834b64703979e84db0782f41683158b55ab869"
+      },
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-003",
+      "group": "ground-equality-chain",
+      "input": {
+        "bytes": 1000,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-003.json",
+        "sha256": "c7e9e9c3dadd6cd7f36bd9b30ca85f0bcd03ebcb97c64b0511a84c7e80f01b1f"
+      },
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-004",
+      "group": "functional-universal-horn",
+      "input": {
+        "bytes": 1445,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-004.json",
+        "sha256": "421a5517c94d5f79642a273566d8e5816bdb65b61a0ca93acdaf85e992803b06"
+      },
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-005",
+      "group": "binary-relational-permutation",
+      "input": {
+        "bytes": 1631,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-005.json",
+        "sha256": "775d49ae224c07590302c0e71dafc7292a136e07f5459b709648df4c4ded6690"
+      },
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-006",
+      "group": "quantified-shared-premise-fork-join",
+      "input": {
+        "bytes": 2395,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-006.json",
+        "sha256": "e488d2152352671290bcc1fdc5a6f51b18fa456aacb0423ff6d0c41c22a566a4"
+      },
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-007",
+      "group": "quantified-hypothetical-composition",
+      "input": {
+        "bytes": 1691,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-007.json",
+        "sha256": "ca7dc05395c95a872772a41b411a369d84bd33cd2039cc1b5b7b632313eda3a4"
+      },
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-008",
+      "group": "quantified-contraposition",
+      "input": {
+        "bytes": 1362,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-008.json",
+        "sha256": "4fadbfa2f980ff4361ad72aaf7ab05c9ed769d138f4d51519e7671ea2fb542a6"
+      },
+      "renaming_control_of": null,
+      "structural_primary": true
+    },
+    {
+      "case_id": "prospective-fol-20261018-009",
+      "group": "ground-equality-predicate-transport",
+      "input": {
+        "bytes": 976,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-009.json",
+        "sha256": "fec5a5fb6ac32ac107033bb63c4f94bf78418736649211b4516732ff7be62b97"
+      },
+      "renaming_control_of": "prospective-fol-20261018-001",
+      "structural_primary": false
+    },
+    {
+      "case_id": "prospective-fol-20261018-010",
+      "group": "binary-relational-permutation",
+      "input": {
+        "bytes": 1637,
+        "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-010.json",
+        "sha256": "6e2cf334ad0a643d8eca7e75349d3a31156f31221668a0ee6d45fe534a142bb6"
+      },
+      "renaming_control_of": "prospective-fol-20261018-005",
+      "structural_primary": false
+    }
+  ],
+  "primary_sources": {
+    "schema": "authored-first-order-primary-source-map-v1",
+    "scientific_calls": 0,
+    "source_content_use": "Short paraphrases and direct links only. No official theorem/problem/proof file imported, no external prover or online problem-processing service invoked.",
+    "sources": [
+      {
+        "id": "TPTP_PROBLEMS",
+        "primary": true,
+        "supports": "FOF problem organization uses axioms and a conjecture; not an official import for this corpus.",
+        "title": "TPTP Format for Problems",
+        "url": "https://tptp.org/UserDocs/QuickGuide/Problems.html",
+        "verified_online_date": "2026-10-18"
+      },
+      {
+        "id": "TPTP_DERIVATIONS",
+        "primary": true,
+        "supports": "Acyclic, traceable proof output ending in the requested conclusion and explicit premise/dependency provenance; any future external translation requires its own validation.",
+        "title": "TPTP Format for Derivations",
+        "url": "https://tptp.org/UserDocs/QuickGuide/Derivations.html",
+        "verified_online_date": "2026-10-18"
+      },
+      {
+        "id": "CASC_J13_DESIGN",
+        "primary": true,
+        "supports": "General-purpose strategy freeze, limited similar-problem duplication, bounded execution, accepted complete solution output, and clear timing/resource accounting; this suite is not CASC eligible or ranked data.",
+        "title": "CASC-J13 Design and Organization",
+        "url": "https://tptp.org/CASC/J13/Design.html",
+        "verified_online_date": "2026-10-18"
+      },
+      {
+        "id": "SZS_ONTOLOGIES",
+        "primary": true,
+        "supports": "Separate semantic success from no-success causes and justifying proof data. UNKNOWN/time/resource/error is not CounterSatisfiable.",
+        "title": "The SZS Ontologies",
+        "url": "https://szs.tptp.org/",
+        "verified_online_date": "2026-10-18"
+      }
+    ],
+    "web_browsing_only": true
+  },
+  "schema": "ROOT-authored-first-order-benchmark-manifest-v1",
+  "scientific_calls": 0,
+  "scope": "Prospectively fixed authored synthetic inputs. No official problem import, scientific execution or grants."
+}

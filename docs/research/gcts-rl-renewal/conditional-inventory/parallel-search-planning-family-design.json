@@ -1,0 +1,525 @@
+{
+  "Source_citations": {
+    "actual_ports": {
+      "finding": "Derived maximum arity covers every admitted interface. Ordered independent input roles enumerate every strict-earlier source, including repeated equal source choices; G/C and unused input fillers are point tiles.",
+      "lines": [
+        15,
+        69
+      ],
+      "source": {
+        "bytes": 6472,
+        "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+        "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+      }
+    },
+    "dependency_expansion": {
+      "finding": "Dependency-first recursively expanded ground block definitions; exact family/argument collision check and cycles rejected. used_definitions selects certificate dependency closure, not search interfaces.",
+      "lines": [
+        83,
+        141
+      ],
+      "source": {
+        "bytes": 7196,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+        "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+      }
+    },
+    "formula_lifting": {
+      "finding": "Only nullary predicate formulas become uniform formula metavariables. Axioms are converted to deduplicated ordinary premise ports; actual donor proof commands remain.",
+      "lines": [
+        10,
+        41
+      ],
+      "source": {
+        "bytes": 7196,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+        "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+      }
+    },
+    "generic_driver": {
+      "finding": "Full four-family specialization/registration then current Model; fixed search uses stochastic=False, weights=None. Native final request and essential/hint observations follow a discovered proof. Driver does not mine new families or update weights during these receivers.",
+      "lines": [
+        673,
+        895
+      ],
+      "source": {
+        "bytes": 52750,
+        "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+        "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+      }
+    },
+    "global_scheduler": {
+      "finding": "Exact legal state, copies, full m-dependencies and incidence; global DEAD, global FORCED, then generation/count/key. Proposed plugin must leave this authority unchanged.",
+      "lines": [
+        98,
+        189
+      ],
+      "source": {
+        "bytes": 28533,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    "inactive_other_family_join": {
+      "finding": "A separate topology-fragment miner exists, but active semantic search imports only aggregate from this module. Its multi-node Join is not the active semantic Join and is not evidence the current receiver acquired missing premises.",
+      "lines": [
+        11,
+        36
+      ],
+      "source": {
+        "bytes": 10594,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+        "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+      }
+    },
+    "literal_bindings": {
+      "finding": "Structural list unification, repeated metavariable equality and complete finite interface matching to basis. No TERM/VARIABLE/formula-context roles, binder alpha-equivalence or explicit capture-aware formula-metavariable scoping.",
+      "lines": [
+        43,
+        81
+      ],
+      "source": {
+        "bytes": 7196,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+        "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+      }
+    },
+    "native_registry": {
+      "finding": "All ground definitions are sent in one whole native inventory request. Unknown/rejected admission does not establish active inventory.",
+      "lines": [
+        25,
+        30
+      ],
+      "source": {
+        "bytes": 2180,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+        "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+      }
+    },
+    "quantifier_catalog": {
+      "finding": "Frozen target-free subterms plus every initial declared binder variable, two UI syntax rounds; closed atomic EQ fragments only. All theory/tautology/scheme admissions and query cap complete before Model.",
+      "lines": [
+        21,
+        139
+      ],
+      "source": {
+        "bytes": 11060,
+        "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      }
+    },
+    "row_local_proposals": {
+      "finding": "Anchors current selected point; enumerates compatible C/G and all input tiles for one row. It does not recursively find producers of unresolved formula requirements. Additional sampled clusters have at most three tiles.",
+      "lines": [
+        54,
+        121
+      ],
+      "source": {
+        "bytes": 6942,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+        "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+      }
+    },
+    "search_preserves_graph": {
+      "finding": "Graph.decision first, proposals only at BRANCH, exact aggregate check, pending-hint review and full original alternatives retained, child State/Graph copies/root restoration. Cooperative attempt/time cutoffs return UNKNOWN.",
+      "lines": [
+        13,
+        55
+      ],
+      "source": {
+        "bytes": 5318,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+        "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+      }
+    },
+    "soft_features": {
+      "finding": "known_rows and target-output/new-fact/justified-input features guide ordering; a compatible unproved receptor is not made a known fact.",
+      "lines": [
+        28,
+        52
+      ],
+      "source": {
+        "bytes": 6942,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+        "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+      }
+    }
+  },
+  "actual_execution_authorized": false,
+  "actual_launches": 0,
+  "author_ancestry": "Author wrote current bridge/Model and earlier generic driver/adapters/renderer. This is a capability/design Source inspection plus saved-data analysis, not an independent Source certification of those implementations.",
+  "author_identity": "/root/conventional_library",
+  "capabilities": [
+    {
+      "capability": "Reusable parameterized families",
+      "gap": "Only nullary donor atoms are abstracted. Predicate arguments/terms/binder variables/unary contexts are not independently parameterized. Replacement is syntactic; native admission of each ground definition remains mandatory.",
+      "implemented": "Yes: whole FORMULA metavariables can bind compound or quantified ASTs; literal repeated bindings must agree."
+    },
+    {
+      "capability": "Higher-level dependency DAG",
+      "gap": "Active c3 has eight level1 interfaces only. The supplied level2 family does not match its finite basis; no current c3 level2 use or automatic ongoing promotion is shown.",
+      "implemented": "Yes: block calls within a family recursively instantiate earlier families, preserving native definition order and explicit proof bodies."
+    },
+    {
+      "capability": "Typed receptors and sharing",
+      "gap": "These are ground logical/formula/row types, not a general dependent type or binding calculus. mine deduplicates equal donor axiom formulas into one premise; that contraction is not a linear/resource-sensitive logic interface.",
+      "implemented": "Current ground interface has ordered formula premises and conclusion. Source row, formula word and block mode are exact marked values; same earlier row may serve multiple compatible ordered ports."
+    },
+    {
+      "capability": "Validated physical proposals",
+      "gap": "Current active semantic Join closes a row, not its premise derivation. Partial sampled clusters can be multirow but do not constitute logical proof acquisition.",
+      "implemented": "Exact t/m aggregate of existing placements and current-state legality. Full rows include C/G plus every input/filler role; hints reorder only."
+    },
+    {
+      "capability": "Sound proof acceptance",
+      "gap": "Ground acceptance is not a universal metatheorem about arbitrary formula substitution or binder scope; factored block rows are not primitive-square macro inlining. No proof found means no essential-family-use claim.",
+      "implemented": "Fresh unchanged native inventory admission plus final full native certificate; full point region is separately checked. Family calls are explicit defined proof macros."
+    },
+    {
+      "capability": "Learning",
+      "gap": "Current fixed mode uses code FIXED weights, not the archived learned weights, and weights=None/stochastic=False. No live mining, promotion or RL updates happen in current driver. Archive not decompressed/replayed in this audit.",
+      "implemented": "Policy file records historical proof-donor provenance and archived REINFORCE weights."
+    }
+  ],
+  "codec_or_archive_decompression_calls": 0,
+  "compiler_calls": 0,
+  "current_runtime_closure": {
+    "bytes": 69562,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+    "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+  },
+  "findings": [
+    {
+      "finding": "Current code already has uniform FORMULA parameter families, native-checked ground interfaces, ordered receptor ports, and recursive family dependency expansion. The main proposal gap is not absence of a family language.",
+      "id": "F1_FAMILIES_EXIST"
+    },
+    {
+      "finding": "Current active Join builds one complete semantic row, leaving its earlier logical input rows to base search. Partial sampled fragments do not recursively solve those receptors. A separate topology-family Join exists but is not used by semantic search.",
+      "id": "F2_SINGLE_ROW_JOIN"
+    },
+    {
+      "finding": "Old c3 base/fixed reached30second cooperative search cutoffs at2030/2739 placements, not5000 placements. Symbolic used5000prefix extensions in6.709s and also returned UNKNOWN. None proves finite exhaustion or absent proof in the declared grammar.",
+      "id": "F3_BOUNDING_NOT_UNPROVABILITY"
+    },
+    {
+      "finding": "Saved fixed c3 selected350hints:194lemma,16primitive,140sampled;115tree nodes changed canonical alternative order. hint_completed120 counts completed-phase node visits, not120 unique proved lemmas. There is no target proof or essential winning-hint use.",
+      "id": "F4_PROPOSALS_USED_NOT_SUCCESS"
+    },
+    {
+      "finding": "Saved c3 complete inventory has8level1 interfaces:6MP-family and2two-hop; no level2 dependent instance. All19 native compile/registry queries finished; failure is search/resource UNKNOWN, not inventory admission failure. Point memory failures separately remain1120.015625/1388.53125MiB; symbolic790.265625MiB was within profile.",
+      "id": "F5_CURRENT_HIERARCHY_SCOPE"
+    },
+    {
+      "finding": "Evidence supports investigating premise-aware multirow/AND receptor guidance. It does not isolate a unique cause, certify a bounded12row route, prove counterfactual success, or show learned-RL benefit. No new target proof/route is supplied.",
+      "id": "F6_CAUSAL_LIMIT"
+    }
+  ],
+  "goal_complete": false,
+  "limitations": [
+    "Only plain saved JSON was parsed. No Model/logic/compiler/solver/native/prover/codec/search/renderer or archived training data was executed/decompressed; no scientific trial occurred.",
+    "Historical donor automatic-search/native provenance is retained policy metadata and the mine Source path, not a fresh independent replay of the archived training experiment. Ground native acceptance records are from prior actuals only.",
+    "Current finite closed receiver is not unrestricted first-order/deduction/induction proof search. Formula replacement is not a universally sound binder-aware schema merely because some ground instances pass.",
+    "Source and saved hints cannot establish a new GCTS-specific advantage; matched same-knowledge semantic control and whole-cost essential-proof success are required.",
+    "Root publication/protected overview and all consumed actuals/Sources remain untouched. This packet is not a launch request or engine implementation."
+  ],
+  "master": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "old_c3_controls": [
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": true,
+      "attempt_unit": "proof_row_extension",
+      "basis_count": 13,
+      "compile_status": "complete",
+      "interface_count": 8,
+      "invocation_id": "structural-quantified-c3-symbolic-ROOT-20261018-v1",
+      "metrics": {
+        "backtracks": 4990,
+        "block_port_tuples": 986,
+        "dead_prefixes": 4677,
+        "prefix_extensions": 5000,
+        "prefix_nodes": 5001,
+        "primitive_guard_rejections": 1103586,
+        "skeleton_tests": 1178111,
+        "unavailable_block_skeletons": 69819
+      },
+      "mode": "symbolic",
+      "model_placements": 11440,
+      "observed_conservative_peak_MiB": 790.265625,
+      "register_status": "native_accepted",
+      "result": {
+        "bytes": 39374524,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "f878d48de2e84101c2de4b98b4c878dd648f86d82e9274745e4db7405afc040c"
+      },
+      "search_seconds": 6.709443915984593,
+      "status": "unknown_search_budget"
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": false,
+      "attempt_unit": "base_point_placement",
+      "basis_count": 13,
+      "compile_status": "complete",
+      "interface_count": 8,
+      "invocation_id": "structural-quantified-c3-base-ROOT-20261018-v1",
+      "metrics": {
+        "attempts": 2030,
+        "backtracks": 1984,
+        "branch": 249,
+        "dead": 556,
+        "forced": 1226,
+        "nodes": 2031
+      },
+      "mode": "base",
+      "model_placements": 11440,
+      "observed_conservative_peak_MiB": 1120.015625,
+      "register_status": "native_accepted",
+      "result": {
+        "bytes": 66981169,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-base-ROOT-20261018-v1/result.json",
+        "sha256": "fd5353bcf0c49052499b1a05d11bb9f950cf7f267e18842601b60957a1d2c5b2"
+      },
+      "search_seconds": 30.173799750045873,
+      "status": "unknown_search_budget"
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": false,
+      "attempt_unit": "base_point_placement",
+      "basis_count": 13,
+      "compile_status": "complete",
+      "interface_count": 8,
+      "invocation_id": "structural-quantified-c3-fixed-ROOT-20261018-v1",
+      "metrics": {
+        "anchors_omitted": 0,
+        "attempts": 2739,
+        "backtracks": 2689,
+        "branch": 419,
+        "dead": 803,
+        "forced": 1518,
+        "hint_completed": 120,
+        "hint_eligible": 368,
+        "hint_invalid": 808,
+        "hint_waiting": 360,
+        "hints_started": 350,
+        "items": 2726,
+        "nodes": 2740,
+        "proposal_seconds": 4.233819758053869,
+        "row_pool": 1150,
+        "row_quota_stops": 66,
+        "sample_pair_tests": 17671,
+        "sample_validation_checks": 1576,
+        "validation_checks": 5819
+      },
+      "mode": "fixed",
+      "model_placements": 11440,
+      "observed_conservative_peak_MiB": 1388.53125,
+      "register_status": "native_accepted",
+      "result": {
+        "bytes": 78204773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+      },
+      "search_seconds": 30.027331374934874,
+      "status": "unknown_search_budget"
+    }
+  ],
+  "old_structural_admission": {
+    "bytes": 107412,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "43980d1d838c877c02ca23dce7162a6ad29dec9d92057b2862377a6e118e937a"
+  },
+  "policy": {
+    "bytes": 4502,
+    "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-policy-001.json",
+    "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+  },
+  "policy_family_provenance": [
+    {
+      "dependencies": [],
+      "id": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+      "parameters": 2,
+      "provenance": {
+        "case": "two-premise",
+        "query": 3,
+        "request_sha256": "d3b3083d3a71ac86d3feddb658ee9873541d57cebf5fd4a08ca067ff56ca07e0"
+      }
+    },
+    {
+      "dependencies": [],
+      "id": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+      "parameters": 3,
+      "provenance": {
+        "case": "chain-2",
+        "query": 9,
+        "request_sha256": "9a106df622d5b1c6b5f498a00eba9447e00ffd0372b58a04db9be82ea2b7c2d9"
+      }
+    },
+    {
+      "dependencies": [],
+      "id": "8a035116a4e2ca64655bef36a63030f6267acd58a97630881b6255b1e3a460d5",
+      "parameters": 0,
+      "provenance": {
+        "case": "pa-universal-equality",
+        "query": 12,
+        "request_sha256": "74b98fcc2294407408838583da22fd001dacdf7a1288e1c3afc0cf18b0deb415"
+      }
+    },
+    {
+      "dependencies": [
+        "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da"
+      ],
+      "id": "4d18d55b21511961a09163eb1bb1fca35e64f17062c1d8aa97c384806916d166",
+      "parameters": 5,
+      "provenance": {
+        "case": "promotion-four",
+        "query": 23,
+        "request_sha256": "6cb09d0597410b6addc4bfbc0c5582a0d6a1bc0fecb947bd8d4bbf58fdeed5e8"
+      }
+    }
+  ],
+  "project_imports": 0,
+  "proposed_design": {
+    "algorithm": [
+      "Build the same immutable literal output-row/formula→existing guard index in both contemporary arms. Read only current complete Model domains/metadata/interfaces; do not synthesize a new formula, term, rule or candidate.",
+      "After Graph returns the genuine selected BRANCH point, anchor an actual current incident candidate. Complete its C/G and every input/filler role with current legal original keys, using exact existing row_requirements and block modes.",
+      "Collect ordered unresolved (strict-earlier source row,literal formula) receptors. Reuse a selected complete matching row; otherwise recursively enumerate actual producer guards at that row/formula and complete their row roles. Allow repeated ordered ports to share a matching producer and deduplicate physical keys only.",
+      "Use finite target/root demand and current receptor structure to order compatible producer alternatives, never hardcode rule sequences/source IDs/axiom names/terms/bindings/rows from c3. Demand distance/absence is a heuristic, never a rejection of a base candidate or a proof of impossibility.",
+      "Stop bounded closure expansion at the declared row/work cap, retaining explicit unresolved boundary obligations. Validate the whole unique tile union against state and all original marks/occupancy; require at least one pending member incident to the actual selected BRANCH point.",
+      "Emit a continuation preference only. Existing search places one currently legal constituent through its unchanged graph scheduler, rechecks hints after each change, and tries every original remaining alternative on failure. No bulk install, forced-degree claim, phantom source fact or inventory pruning.",
+      "All speculative assignments and open obligations are local owned data. No State/Graph/model mutation or path-dependent global cache. Callback/resource faults propagate; cap exhaustion yields an incomplete proposal prefix, never a negative/pruning certificate."
+    ],
+    "initial_caps": {
+      "closure_reserved_proposals": 12,
+      "closure_reserved_validation_work": 1024,
+      "legacy_reserved_remainder": "Unused closure quota returns to legacy rows deterministically; all shared work is counted once.",
+      "max_distinct_semantic_rows": 4,
+      "row_proposal_limit_total": 24,
+      "row_validation_work_total": 2048,
+      "sampled_existing_cluster_allowance": "Retain existing at-most8 sampled items/64 pair tests separately as currently disclosed. No extra free oracle or native budget."
+    },
+    "name": "BOUNDED_TYPED_RECEPTOR_CLOSURE_JOIN_V1",
+    "observer_requirement": "Record each closure with exact member keys/row producer/receptor provenance and open boundary. Report offered/validated/selected/changed-order separately. After a proof exists, join the SAME hint/selected member to actual essential root rows and recursive primitive expansion; distinguish nested definition use from the enclosing point-row hint. If current observer cannot express that closure kind, add only a separately reviewed read-only observation successor; it must not affect acceptance.",
+    "policy": "Retain current FIXED feature vector and weights initially, no training. New kind receptor_closure is not mislabeled lemma for the family feature. Existing generic growth/input/target/completed-row features apply to the expanded members. Goal-demand ordering of proposals is disclosed as a deterministic semantic heuristic, not learned GCTS markings or RL.",
+    "promotion_scope": "A successful new complete proof could later be mined and independently ground-checked for reusable families. This first intervention neither invents a quantifier-family lifting theorem nor automatically promotes partial closures. Higher-order TERM/VARIABLE/context lifting remains a separate representation program.",
+    "public_ABI": {
+      "Join": "Join(model, enable_lemmas=True, receptor_mode=LEGACY_ROW); __call__(state, graph, point, limit=24, checks=2048) -> ([None]+items, work).",
+      "engine": "Only construction/import/mode dispatch changes; decision/placement/forced/global graph/full fallback/copy rollback bodies remain raw+AST equal.",
+      "items": "Preserve members,pending,aggregate_sha256,new_occupancy,new_marks,level. New kind receptor_closure with explicit producer/receptor edges, open obligations, full source/ordered-port map and incomplete-prefix disposition. Never call an unproved closure a native lemma.",
+      "modes": [
+        "LEGACY_ROW",
+        "TYPED_RECEPTOR_CLOSURE"
+      ],
+      "search": "Existing search signature retained; optional keyword-only receptor_mode=LEGACY_ROW may be added. Root future plan/epoch must require its explicit value."
+    },
+    "single_intervention": "Replace only the proposal Join with a mode-declared successor that can close a bounded multirow dependency fragment using existing native-admitted ground interfaces and primitive guards. No new family/schema/term/axiom/Model candidate/native rule.",
+    "status": "PROPOSED_NOT_IMPLEMENTED",
+    "validation_layers": [
+      "Exact literal source/port provenance and original-key membership",
+      "Fresh full current t/m aggregate and no duplicates/overcapacity/disagreeing marks",
+      "Original native-admitted ground block bodies/primitive guard provenance retained; no unproved boundary receptor becomes a fact",
+      "Whole discovered proof requires fresh unchanged native checking and full selected point certificate; no local proposal validates a theorem"
+    ]
+  },
+  "proposed_experiment": {
+    "ablations": [
+      "Existing full inventory with legacy one-row hints, same model",
+      "Closure expansion on, goal-demand ordering off (canonical producer order), same total caps",
+      "If later studying RL: freeze donor provenance/training work and weights before evaluation; zero/fixed/learned scoring compare identical acquired inventory/proposal support and whole cost"
+    ],
+    "benchmark_scope": "The old c3 is a familiar development failure useful for debugging the intervention, not a fresh blind theorem. Root/benchmark agent should predeclare a genuinely new structural receiver and all cases/outcomes before training/selection; no authored target proof is input.",
+    "common_knowledge": "All arms acquire/compile/register the exact same complete four-family source library and admitted ground inventory/full Model. Current compact storage may be common in a newly declared cohort, never reuse old c3 grants or assume a fit from prior qualification.",
+    "conventional_control": "Give the symbolic row-search control the same literal ground definitions/interfaces and, for an attribution study, the same generic receptor-demand/support computation or logical closure recipes without a supplied physical route. Otherwise any gain could be generic semantic backward guidance rather than GCTS. Keep row-extension versus tile-placement units separate.",
+    "costs": "Charge all index construction, source acquisition, native compilation/registration, closure enumeration/union/revalidation, Graph work, actual base placements, serialization/trace/native checks and cleanup. Count expanded primitive proof cost, root rows and factored tiles separately. Retain all UNKNOWN/resource failures; no target-route/cap changes after trace.",
+    "next_decision": "Root should choose this stronger multirow proposal experiment OR Control's lighter acyclic AND-support ordering after comparing the two design notes; do not silently combine them and lose attribution.",
+    "primary_matched_pair": [
+      "Contemporary LEGACY_ROW fixed Join",
+      "TYPED_RECEPTOR_CLOSURE with identical FIXED scoring, full primitive fallback and common index/setup"
+    ],
+    "status": "PROPOSED_NOT_IMPLEMENTED",
+    "success": "A fresh selected proof within the complete declared resource profile, fresh whole native and finite-point checks, exact root rollback, and SAME validated closure hint actually contributing a changed selected alternative on essential target ancestry. Merely more offers, 120 completed-phase visits or smaller branch counts is not the objective."
+  },
+  "renderer_calls": 0,
+  "retained_c3_observation": {
+    "bytes": 7488,
+    "path": "/private/tmp/gcts-receptor-family-next-design-20261018/retained-c3-observation-v2.json",
+    "sha256": "f6aebfc12ff86b323b9a934c4ca4f4dfd4341605c8f25915ca2a3937754ff43b"
+  },
+  "schema": "receptor-family-next-design-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "sources": {
+    "certificate_boundary_search": {
+      "bytes": 7089,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "generic_driver": {
+      "bytes": 52750,
+      "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+      "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+    },
+    "native_inference_inventory": {
+      "bytes": 10594,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "native_inventory_policy": {
+      "bytes": 2746,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "quantified_family_points_v2": {
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    "quantified_receptors_v1": {
+      "bytes": 11060,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    "semantic_inventory_guidance": {
+      "bytes": 6942,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "semantic_inventory_oracle": {
+      "bytes": 2180,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "semantic_inventory_search": {
+      "bytes": 5318,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "semantic_lemma_inventory": {
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "semantic_receptor_points": {
+      "bytes": 7409,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "turtle": {
+      "bytes": 28533,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    }
+  },
+  "status": "PROPOSED_NOT_IMPLEMENTED"
+}

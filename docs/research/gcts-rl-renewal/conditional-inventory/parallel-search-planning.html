@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parallel proof-search investigations — GCTS research</title>
+<link rel="stylesheet" href="reader.css?v=native-head-20261017">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+.roles article{padding:18px;background:white;border:1px solid var(--line);border-top:5px solid #327d83}.roles h3{margin-top:0}.role-output{font-size:13px}.table-wrap{overflow-x:auto}table{table-layout:auto;min-width:580px}.evidence-bar{display:flex;height:34px;margin:22px 0 10px;border:1px solid #6a8b91}.evidence-bar .late{background:#875eaf;width:93.54%}.evidence-bar .other{background:#cad9dd;flex:1}.legend-key{display:inline-block;width:12px;height:12px;margin-right:7px}.closure-design{background:#edf3f6;padding:22px;border:1px solid #bdcfd7}.design-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.design-steps article{background:white;padding:16px;border-top:6px solid}.design-steps article:nth-child(1){border-color:#3677ba}.design-steps article:nth-child(2){border-color:#8c58b8}.design-steps article:nth-child(3){border-color:#268c6b}.design-steps p{font-size:14px}.suite-case{padding:16px 22px;background:white;border:1px solid var(--line);margin:14px 0}.suite-case summary{font-size:16px}.suite-case .formula{font-size:17px;padding:12px 0}.suite-case pre{max-height:420px;overflow:auto}.group-label{font-size:12px;color:var(--muted)}.input-filter{display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:#eaf1f3;padding:14px;margin:25px 0}select{font:inherit;max-width:100%;padding:8px;border:1px solid #799ea7;background:white;color:var(--ink)}.proposal{border-left:4px solid #b3832d;background:#fff7e9;padding:16px 20px}.result-label{font-weight:700;color:#6c4b91}@media(max-width:750px){.design-steps{grid-template-columns:1fr}.closure-design{padding:15px}.suite-case{padding:14px}.suite-case .formula{font-size:15px}}
+</style></head><body><main>
+<nav><a href="reader.html#parallel-search-planning">Research notebook</a><a href="#diagnosis">Search diagnosis</a><a href="#families">Receptor families</a><a href="#benchmarks">Frozen test inputs</a></nav>
+<p class="eyebrow">PARALLEL RESEARCH · 18 OCTOBER 2026</p>
+<h1>Three investigations, one proof-search test.</h1>
+<p class="lead">Parallel work is useful when agents investigate different claims and leave inspectable evidence. We have separated failed-search diagnosis, reusable cluster design, and prospective benchmark preparation. The next test must distinguish a better general heuristic from a benefit specific to the point-and-marking representation.</p>
+<p class="status">This update contains Source inspection, analysis of retained results, and frozen input specifications. It reports \(0\) new scientific runs, \(0\) new proofs and no new RL training. The proposed search changes have not been implemented or evaluated.</p>
+<section id="roles"><h2>What each agent contributes</h2>
+<div class="roles">
+<article><h3>Diagnose the failure</h3><p>Inspect the complete retained search record and ordering code. Identify where the budget went and propose a generic change without writing the target’s proof.</p><p class="role-output"><code>conventional_control_review</code><br><a href="parallel-search-planning-diagnosis.json">Frozen diagnosis and proposal</a></p></article>
+<article><h3>Develop receptor families</h3><p>Separate the reusable checked lemma inventory from the current proposer. Specify how a proposal could recursively acquire missing premises across several rows.</p><p class="role-output"><code>conventional_library</code><br><a href="parallel-search-planning-family-design.json">Frozen capability assessment and design</a></p></article>
+<article><h3>Freeze the next tests</h3><p>Choose structurally varied inputs before running them. Record provenance and controls, keeping failures and renamed cases in the evaluation.</p><p class="role-output"><code>receiver_driver_review</code><br><a href="parallel-search-planning-benchmark-manifest.json">Corpus design and provenance</a></p></article>
+</div><p>Root integrates the work, retains the original checker and complete candidate model, owns prospective declarations and sequential measured runs, and publishes the evidence. A distinct agent reviews changed components before activation. Scientific resource measurements remain isolated with the other agents idle.</p></section>
+<section id="diagnosis"><h2>The curried case remains a useful development failure</h2>
+\[\forall x\bigl(P(x)\rightarrow(Q(x)\rightarrow R(x))\bigr),\quad\forall xP(x),\quad\forall xQ(x)\ \vdash\ \forall xR(x).\]
+<p>These were earlier consumed attempts on the declared finite grammar. They are retained results, not new runs. Every method returned search-budget UNKNOWN; none establishes that the assertion is unprovable.</p>
+<div class="table-wrap"><table><thead><tr><th>Earlier method</th><th>Search work</th><th>Search seconds</th><th>Binding search limit</th><th>Full resource outcome</th></tr></thead><tbody>
+<tr><th>Reference point search</th><td>\(2030\) placement attempts</td><td>\(30.174\)</td><td>Search wall limit</td><td>Above memory profile</td></tr>
+<tr><th>Frozen cluster advice</th><td>\(2739\) placement attempts</td><td>\(30.027\)</td><td>Search wall limit</td><td>Above memory profile</td></tr>
+<tr><th>Chronological symbolic control</th><td>\(5000\) row extensions</td><td>\(6.709\)</td><td>Extension count</td><td>Within full profile; UNKNOWN</td></tr>
+</tbody></table></div>
+<p class="caption">Placement attempts and row extensions are different operations. The times are the retained search stage, not complete pipeline times. The point arms did not exhaust their attempt allowance. <a href="structural-transfer.html#outcomes">All original structural outcomes and full costs</a>.</p>
+<h3>Where the symbolic extensions went</h3>
+<div class="evidence-bar" role="img" aria-label="Retained symbolic events: 4677 of 5000 extensions occurred at zero-based row 10; 323 elsewhere. No extension reached zero-based row 11."><span class="late"></span><span class="other"></span></div>
+<p class="caption"><span class="legend-key" style="background:#875eaf"></span>\(4677\) extensions at zero-based row \(10\), or human line \(11\). <span class="legend-key" style="background:#cad9dd"></span>\(323\) elsewhere. No extension reached the final row. This shows search concentration, not the effect of a tested repair.</p>
+<p>The backward-distance heuristic treats dependencies individually. It can give a short distance to the legal instantiation licence</p>
+\[(\forall xR(x))\rightarrow R(x),\]
+<p>even though using that licence requires the still-unproved universal. In this retained trace its distance is \(2\), while the curried theory axiom’s is \(4\). The licence is a valid formula; its antecedent is not thereby an available fact. The issue is ordering, not unsound proof admission.</p>
+<p class="proposal"><b>Proposed repair:</b> compute a generic support estimate that respects all premises and rejects circular support within a proposal. Use it to rank existing choices, with full fallback. Supply the same semantic heuristic to the conventional control. Until measured, this is a search hypothesis rather than a speedup result.</p>
+<p><a href="parallel-search-planning-search-observations.json">Extracted retained events, prefixes and counters</a> · <a href="structural-transfer-c3-symbolic-result.json.gz">Complete historical symbolic result</a> · <a href="parallel-search-planning-diagnosis.json">Exact Source and data bindings</a>.</p></section>
+<section id="families"><h2>Reusable lemmas exist; recursive receptor closure is missing</h2>
+<p>The current library mechanically abstracts searched proofs into formula-valued families, specializes their interfaces against the declared finite basis, and registers their complete expansions in dependency order. Each ground definition still requires native acceptance. This does not yet provide a general binder-aware theorem-schema language.</p>
+<p>The current proposer assembles complete single rows, plus small sampled fragments. It does not recursively fill those rows’ unresolved premise receptors. In the retained curried fixed-advice run it started \(350\) hints and recorded \(120\) completed-phase node visits; \(194\) selected hints were lemma rows. Completed-phase visits can revisit a hint and are not counts of distinct proved lemmas. All \(8\) admitted interfaces in this case were first-level instances; no second-level theorem inventory was demonstrated. There was no accepted target proof.</p>
+<figure class="closure-design"><figcaption><b>Proposed multirow closure, design only.</b> Colors distinguish stages of a proposal. These boxes are a schematic, not recorded Wang tiles or certified GCTS marking packets.</figcaption><div class="design-steps">
+<article><h3>Expose an interface</h3><p>Read the required conclusion and its typed premise receptors from the existing admitted inventory. Bind parameters consistently.</p></article>
+<article><h3>Find supporting rows</h3><p>Recursively search earlier legal rows that provide missing premises. Preserve ordered inputs, multiplicity, shared placements and scope. Reject cyclic proposal ancestry.</p></article>
+<article><h3>Validate and guide</h3><p>Expand to original base placements and validate their whole union. Reorder only the choices allowed by the next mandatory graph decision. Keep every primitive alternative.</p></article>
+</div></figure>
+<p>Global dead ends still precede forced moves, followed by the earliest generation. Cluster execution follows those decisions and rolls back exactly. Proposal failure or a bounded support search supplies no pruning theorem. Learned long-range markings would need a separate declared justification before eliminating candidates.</p>
+<p class="proposal">The first implementation should separate support ranking from multirow composition. Comparing both with an equivalent symbolic heuristic will reveal whether any improvement comes from semantic guidance, cluster reuse, the point graph, or their combination. New RL should be judged only after a trained policy, its training cost and held-out evaluation exist.</p>
+<p><a href="parallel-search-planning-family-design.json">Detailed binding, expansion, cost and ablation design</a> · <a href="parallel-search-planning-family-observations.json">Retained inventory and hint counts</a>.</p></section>
+<section id="benchmarks"><h2>The next inputs are fixed before execution</h2>
+<p>The authored corpus contains \(10\) input-only specifications in \(8\) structural groups, including two renaming controls grouped with their parents. These are synthetic first-order tests, not imported official TPTP problems. They were prepared without executing the new cases or seeing the other agents’ current diagnoses. The author knew the existing engine and its earlier results, so this is prospective evaluation rather than a blinded benchmark.</p>
+<p>Every case keeps the current \(12\)-row, two-instantiation-round grammar initially. Feasibility, finite-catalog coverage, native capacity, proof length and resource fit remain untested. Difficult or UNKNOWN cases will stay in the corpus. Equality cases need not use instantiation or generalization to count as checked proofs.</p>
+<div class="input-filter"><label for="group-filter">Show input group</label><select id="group-filter"><option value="all">All structural groups</option><option value="ground-equality-predicate-transport">ground equality predicate transport</option><option value="unary-function-congruence">unary function congruence</option><option value="ground-equality-chain">ground equality chain</option><option value="functional-universal-horn">functional universal horn</option><option value="binary-relational-permutation">binary relational permutation</option><option value="quantified-shared-premise-fork-join">quantified shared premise fork join</option><option value="quantified-hypothetical-composition">quantified hypothetical composition</option><option value="quantified-contraposition">quantified contraposition</option></select><span id="visible-count" aria-live="polite"></span></div>
+<div id="case-list"><details class="suite-case" data-group="ground-equality-predicate-transport"><summary>ground equality predicate transport · <code>prospective-fol-20261018-001</code></summary><p>Primary structural input; unexecuted.</p><div class="formula">\[\begin{aligned}\text{Axiom a0}&:\quad \mathrm{a}=\mathrm{b}\\\text{Axiom a1}&:\quad \mathrm{P}\left(\mathrm{a}\right)\\\text{Target}&:\quad \mathrm{P}\left(\mathrm{b}\right)\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-001.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-001&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;pred&quot;,
+    &quot;P&quot;,
+    [
+      [
+        &quot;fun&quot;,
+        &quot;b&quot;,
+        []
+      ]
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;a0&quot;: [
+        &quot;eq&quot;,
+        [
+          &quot;fun&quot;,
+          &quot;a&quot;,
+          []
+        ],
+        [
+          &quot;fun&quot;,
+          &quot;b&quot;,
+          []
+        ]
+      ],
+      &quot;a1&quot;: [
+        &quot;pred&quot;,
+        &quot;P&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;a&quot;,
+            []
+          ]
+        ]
+      ]
+    },
+    &quot;functions&quot;: {
+      &quot;a&quot;: 0,
+      &quot;b&quot;: 0
+    },
+    &quot;predicates&quot;: {
+      &quot;P&quot;: 1
+    },
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 01&quot;
+}</pre></details></details>
+<details class="suite-case" data-group="unary-function-congruence"><summary>unary function congruence · <code>prospective-fol-20261018-002</code></summary><p>Primary structural input; unexecuted.</p><div class="formula">\[\begin{aligned}\text{Axiom a0}&:\quad \mathrm{a}=\mathrm{b}\\\text{Target}&:\quad \mathrm{f}\left(\mathrm{a}\right)=\mathrm{f}\left(\mathrm{b}\right)\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-002.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-002&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;eq&quot;,
+    [
+      &quot;fun&quot;,
+      &quot;f&quot;,
+      [
+        [
+          &quot;fun&quot;,
+          &quot;a&quot;,
+          []
+        ]
+      ]
+    ],
+    [
+      &quot;fun&quot;,
+      &quot;f&quot;,
+      [
+        [
+          &quot;fun&quot;,
+          &quot;b&quot;,
+          []
+        ]
+      ]
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;a0&quot;: [
+        &quot;eq&quot;,
+        [
+          &quot;fun&quot;,
+          &quot;a&quot;,
+          []
+        ],
+        [
+          &quot;fun&quot;,
+          &quot;b&quot;,
+          []
+        ]
+      ]
+    },
+    &quot;functions&quot;: {
+      &quot;a&quot;: 0,
+      &quot;b&quot;: 0,
+      &quot;f&quot;: 1
+    },
+    &quot;predicates&quot;: {},
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 02&quot;
+}</pre></details></details>
+<details class="suite-case" data-group="ground-equality-chain"><summary>ground equality chain · <code>prospective-fol-20261018-003</code></summary><p>Primary structural input; unexecuted.</p><div class="formula">\[\begin{aligned}\text{Axiom a0}&:\quad \mathrm{a}=\mathrm{b}\\\text{Axiom a1}&:\quad \mathrm{b}=\mathrm{c}\\\text{Target}&:\quad \mathrm{a}=\mathrm{c}\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-003.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-003&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;eq&quot;,
+    [
+      &quot;fun&quot;,
+      &quot;a&quot;,
+      []
+    ],
+    [
+      &quot;fun&quot;,
+      &quot;c&quot;,
+      []
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;a0&quot;: [
+        &quot;eq&quot;,
+        [
+          &quot;fun&quot;,
+          &quot;a&quot;,
+          []
+        ],
+        [
+          &quot;fun&quot;,
+          &quot;b&quot;,
+          []
+        ]
+      ],
+      &quot;a1&quot;: [
+        &quot;eq&quot;,
+        [
+          &quot;fun&quot;,
+          &quot;b&quot;,
+          []
+        ],
+        [
+          &quot;fun&quot;,
+          &quot;c&quot;,
+          []
+        ]
+      ]
+    },
+    &quot;functions&quot;: {
+      &quot;a&quot;: 0,
+      &quot;b&quot;: 0,
+      &quot;c&quot;: 0
+    },
+    &quot;predicates&quot;: {},
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 03&quot;
+}</pre></details></details>
+<details class="suite-case" data-group="functional-universal-horn"><summary>functional universal horn · <code>prospective-fol-20261018-004</code></summary><p>Primary structural input; unexecuted.</p><div class="formula">\[\begin{aligned}\text{Axiom a0}&:\quad \forall \mathrm{x}\,\left(\left(\mathrm{P}\left(\mathrm{x}\right)\right)\rightarrow\left(\mathrm{Q}\left(\mathrm{f}\left(\mathrm{x}\right)\right)\right)\right)\\\text{Axiom a1}&:\quad \mathrm{P}\left(\mathrm{a}\right)\\\text{Target}&:\quad \mathrm{Q}\left(\mathrm{f}\left(\mathrm{a}\right)\right)\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-004.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-004&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;pred&quot;,
+    &quot;Q&quot;,
+    [
+      [
+        &quot;fun&quot;,
+        &quot;f&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;a&quot;,
+            []
+          ]
+        ]
+      ]
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;a0&quot;: [
+        &quot;all&quot;,
+        &quot;x&quot;,
+        [
+          &quot;imp&quot;,
+          [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ],
+          [
+            &quot;pred&quot;,
+            &quot;Q&quot;,
+            [
+              [
+                &quot;fun&quot;,
+                &quot;f&quot;,
+                [
+                  [
+                    &quot;var&quot;,
+                    &quot;x&quot;
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      &quot;a1&quot;: [
+        &quot;pred&quot;,
+        &quot;P&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;a&quot;,
+            []
+          ]
+        ]
+      ]
+    },
+    &quot;functions&quot;: {
+      &quot;a&quot;: 0,
+      &quot;f&quot;: 1
+    },
+    &quot;predicates&quot;: {
+      &quot;P&quot;: 1,
+      &quot;Q&quot;: 1
+    },
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 04&quot;
+}</pre></details></details>
+<details class="suite-case" data-group="binary-relational-permutation"><summary>binary relational permutation · <code>prospective-fol-20261018-005</code></summary><p>Primary structural input; unexecuted.</p><div class="formula">\[\begin{aligned}\text{Axiom a0}&:\quad \forall \mathrm{x}\,\left(\forall \mathrm{y}\,\left(\left(\mathrm{R}\left(\mathrm{x},\mathrm{y}\right)\right)\rightarrow\left(\mathrm{S}\left(\mathrm{y},\mathrm{x}\right)\right)\right)\right)\\\text{Axiom a1}&:\quad \mathrm{R}\left(\mathrm{a},\mathrm{b}\right)\\\text{Target}&:\quad \mathrm{S}\left(\mathrm{b},\mathrm{a}\right)\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-005.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-005&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;pred&quot;,
+    &quot;S&quot;,
+    [
+      [
+        &quot;fun&quot;,
+        &quot;b&quot;,
+        []
+      ],
+      [
+        &quot;fun&quot;,
+        &quot;a&quot;,
+        []
+      ]
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;a0&quot;: [
+        &quot;all&quot;,
+        &quot;x&quot;,
+        [
+          &quot;all&quot;,
+          &quot;y&quot;,
+          [
+            &quot;imp&quot;,
+            [
+              &quot;pred&quot;,
+              &quot;R&quot;,
+              [
+                [
+                  &quot;var&quot;,
+                  &quot;x&quot;
+                ],
+                [
+                  &quot;var&quot;,
+                  &quot;y&quot;
+                ]
+              ]
+            ],
+            [
+              &quot;pred&quot;,
+              &quot;S&quot;,
+              [
+                [
+                  &quot;var&quot;,
+                  &quot;y&quot;
+                ],
+                [
+                  &quot;var&quot;,
+                  &quot;x&quot;
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      &quot;a1&quot;: [
+        &quot;pred&quot;,
+        &quot;R&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;a&quot;,
+            []
+          ],
+          [
+            &quot;fun&quot;,
+            &quot;b&quot;,
+            []
+          ]
+        ]
+      ]
+    },
+    &quot;functions&quot;: {
+      &quot;a&quot;: 0,
+      &quot;b&quot;: 0
+    },
+    &quot;predicates&quot;: {
+      &quot;R&quot;: 2,
+      &quot;S&quot;: 2
+    },
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 05&quot;
+}</pre></details></details>
+<details class="suite-case" data-group="quantified-shared-premise-fork-join"><summary>quantified shared premise fork join · <code>prospective-fol-20261018-006</code></summary><p>Primary structural input; unexecuted.</p><div class="formula">\[\begin{aligned}\text{Axiom a0}&:\quad \forall \mathrm{x}\,\left(\left(\mathrm{P}\left(\mathrm{x}\right)\right)\rightarrow\left(\mathrm{Q}\left(\mathrm{x}\right)\right)\right)\\\text{Axiom a1}&:\quad \forall \mathrm{x}\,\left(\left(\mathrm{P}\left(\mathrm{x}\right)\right)\rightarrow\left(\mathrm{R}\left(\mathrm{x}\right)\right)\right)\\\text{Axiom a2}&:\quad \forall \mathrm{x}\,\left(\left(\mathrm{Q}\left(\mathrm{x}\right)\right)\rightarrow\left(\left(\mathrm{R}\left(\mathrm{x}\right)\right)\rightarrow\left(\mathrm{S}\left(\mathrm{x}\right)\right)\right)\right)\\\text{Axiom a3}&:\quad \forall \mathrm{x}\,\left(\mathrm{P}\left(\mathrm{x}\right)\right)\\\text{Target}&:\quad \forall \mathrm{x}\,\left(\mathrm{S}\left(\mathrm{x}\right)\right)\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-006.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-006&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;all&quot;,
+    &quot;x&quot;,
+    [
+      &quot;pred&quot;,
+      &quot;S&quot;,
+      [
+        [
+          &quot;var&quot;,
+          &quot;x&quot;
+        ]
+      ]
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;a0&quot;: [
+        &quot;all&quot;,
+        &quot;x&quot;,
+        [
+          &quot;imp&quot;,
+          [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ],
+          [
+            &quot;pred&quot;,
+            &quot;Q&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ]
+        ]
+      ],
+      &quot;a1&quot;: [
+        &quot;all&quot;,
+        &quot;x&quot;,
+        [
+          &quot;imp&quot;,
+          [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ],
+          [
+            &quot;pred&quot;,
+            &quot;R&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ]
+        ]
+      ],
+      &quot;a2&quot;: [
+        &quot;all&quot;,
+        &quot;x&quot;,
+        [
+          &quot;imp&quot;,
+          [
+            &quot;pred&quot;,
+            &quot;Q&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ],
+          [
+            &quot;imp&quot;,
+            [
+              &quot;pred&quot;,
+              &quot;R&quot;,
+              [
+                [
+                  &quot;var&quot;,
+                  &quot;x&quot;
+                ]
+              ]
+            ],
+            [
+              &quot;pred&quot;,
+              &quot;S&quot;,
+              [
+                [
+                  &quot;var&quot;,
+                  &quot;x&quot;
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      &quot;a3&quot;: [
+        &quot;all&quot;,
+        &quot;x&quot;,
+        [
+          &quot;pred&quot;,
+          &quot;P&quot;,
+          [
+            [
+              &quot;var&quot;,
+              &quot;x&quot;
+            ]
+          ]
+        ]
+      ]
+    },
+    &quot;functions&quot;: {},
+    &quot;predicates&quot;: {
+      &quot;P&quot;: 1,
+      &quot;Q&quot;: 1,
+      &quot;R&quot;: 1,
+      &quot;S&quot;: 1
+    },
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 06&quot;
+}</pre></details></details>
+<details class="suite-case" data-group="quantified-hypothetical-composition"><summary>quantified hypothetical composition · <code>prospective-fol-20261018-007</code></summary><p>Primary structural input; unexecuted.</p><div class="formula">\[\begin{aligned}\text{Axiom a0}&:\quad \forall \mathrm{x}\,\left(\left(\mathrm{P}\left(\mathrm{x}\right)\right)\rightarrow\left(\mathrm{Q}\left(\mathrm{x}\right)\right)\right)\\\text{Axiom a1}&:\quad \forall \mathrm{x}\,\left(\left(\mathrm{Q}\left(\mathrm{x}\right)\right)\rightarrow\left(\mathrm{R}\left(\mathrm{x}\right)\right)\right)\\\text{Target}&:\quad \forall \mathrm{x}\,\left(\left(\mathrm{P}\left(\mathrm{x}\right)\right)\rightarrow\left(\mathrm{R}\left(\mathrm{x}\right)\right)\right)\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-007.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-007&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;all&quot;,
+    &quot;x&quot;,
+    [
+      &quot;imp&quot;,
+      [
+        &quot;pred&quot;,
+        &quot;P&quot;,
+        [
+          [
+            &quot;var&quot;,
+            &quot;x&quot;
+          ]
+        ]
+      ],
+      [
+        &quot;pred&quot;,
+        &quot;R&quot;,
+        [
+          [
+            &quot;var&quot;,
+            &quot;x&quot;
+          ]
+        ]
+      ]
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;a0&quot;: [
+        &quot;all&quot;,
+        &quot;x&quot;,
+        [
+          &quot;imp&quot;,
+          [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ],
+          [
+            &quot;pred&quot;,
+            &quot;Q&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ]
+        ]
+      ],
+      &quot;a1&quot;: [
+        &quot;all&quot;,
+        &quot;x&quot;,
+        [
+          &quot;imp&quot;,
+          [
+            &quot;pred&quot;,
+            &quot;Q&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ],
+          [
+            &quot;pred&quot;,
+            &quot;R&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    &quot;functions&quot;: {},
+    &quot;predicates&quot;: {
+      &quot;P&quot;: 1,
+      &quot;Q&quot;: 1,
+      &quot;R&quot;: 1
+    },
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 07&quot;
+}</pre></details></details>
+<details class="suite-case" data-group="quantified-contraposition"><summary>quantified contraposition · <code>prospective-fol-20261018-008</code></summary><p>Primary structural input; unexecuted.</p><div class="formula">\[\begin{aligned}\text{Axiom a0}&:\quad \forall \mathrm{x}\,\left(\left(\mathrm{P}\left(\mathrm{x}\right)\right)\rightarrow\left(\mathrm{Q}\left(\mathrm{x}\right)\right)\right)\\\text{Target}&:\quad \forall \mathrm{x}\,\left(\left(\neg\left(\mathrm{Q}\left(\mathrm{x}\right)\right)\right)\rightarrow\left(\neg\left(\mathrm{P}\left(\mathrm{x}\right)\right)\right)\right)\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-008.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-008&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;all&quot;,
+    &quot;x&quot;,
+    [
+      &quot;imp&quot;,
+      [
+        &quot;not&quot;,
+        [
+          &quot;pred&quot;,
+          &quot;Q&quot;,
+          [
+            [
+              &quot;var&quot;,
+              &quot;x&quot;
+            ]
+          ]
+        ]
+      ],
+      [
+        &quot;not&quot;,
+        [
+          &quot;pred&quot;,
+          &quot;P&quot;,
+          [
+            [
+              &quot;var&quot;,
+              &quot;x&quot;
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;a0&quot;: [
+        &quot;all&quot;,
+        &quot;x&quot;,
+        [
+          &quot;imp&quot;,
+          [
+            &quot;pred&quot;,
+            &quot;P&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ],
+          [
+            &quot;pred&quot;,
+            &quot;Q&quot;,
+            [
+              [
+                &quot;var&quot;,
+                &quot;x&quot;
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    &quot;functions&quot;: {},
+    &quot;predicates&quot;: {
+      &quot;P&quot;: 1,
+      &quot;Q&quot;: 1
+    },
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 08&quot;
+}</pre></details></details>
+<details class="suite-case" data-group="ground-equality-predicate-transport"><summary>ground equality predicate transport · <code>prospective-fol-20261018-009</code></summary><p>Renaming control of <code>prospective-fol-20261018-001</code>; grouped with its parent.</p><div class="formula">\[\begin{aligned}\text{Axiom h0}&:\quad \mathrm{c0}=\mathrm{c1}\\\text{Axiom h1}&:\quad \mathrm{U}\left(\mathrm{c0}\right)\\\text{Target}&:\quad \mathrm{U}\left(\mathrm{c1}\right)\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-009.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-009&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;pred&quot;,
+    &quot;U&quot;,
+    [
+      [
+        &quot;fun&quot;,
+        &quot;c1&quot;,
+        []
+      ]
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;h0&quot;: [
+        &quot;eq&quot;,
+        [
+          &quot;fun&quot;,
+          &quot;c0&quot;,
+          []
+        ],
+        [
+          &quot;fun&quot;,
+          &quot;c1&quot;,
+          []
+        ]
+      ],
+      &quot;h1&quot;: [
+        &quot;pred&quot;,
+        &quot;U&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;c0&quot;,
+            []
+          ]
+        ]
+      ]
+    },
+    &quot;functions&quot;: {
+      &quot;c0&quot;: 0,
+      &quot;c1&quot;: 0
+    },
+    &quot;predicates&quot;: {
+      &quot;U&quot;: 1
+    },
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 09&quot;
+}</pre></details></details>
+<details class="suite-case" data-group="binary-relational-permutation"><summary>binary relational permutation · <code>prospective-fol-20261018-010</code></summary><p>Renaming control of <code>prospective-fol-20261018-005</code>; grouped with its parent.</p><div class="formula">\[\begin{aligned}\text{Axiom k0}&:\quad \forall \mathrm{m}\,\left(\forall \mathrm{n}\,\left(\left(\mathrm{V}\left(\mathrm{m},\mathrm{n}\right)\right)\rightarrow\left(\mathrm{W}\left(\mathrm{n},\mathrm{m}\right)\right)\right)\right)\\\text{Axiom k1}&:\quad \mathrm{V}\left(\mathrm{d0},\mathrm{d1}\right)\\\text{Target}&:\quad \mathrm{W}\left(\mathrm{d1},\mathrm{d0}\right)\end{aligned}\]</div><p class="result-label">No scientific result or proof yet.</p><p><a href="parallel-search-planning-prospective-fol-20261018-010.json">Exact original input JSON</a></p><details><summary>Inspect the complete input value</summary><pre>{
+  &quot;id&quot;: &quot;prospective-fol-20261018-010&quot;,
+  &quot;instantiation_rounds&quot;: 2,
+  &quot;length&quot;: 12,
+  &quot;scope&quot;: &quot;Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.&quot;,
+  &quot;target&quot;: [
+    &quot;pred&quot;,
+    &quot;W&quot;,
+    [
+      [
+        &quot;fun&quot;,
+        &quot;d1&quot;,
+        []
+      ],
+      [
+        &quot;fun&quot;,
+        &quot;d0&quot;,
+        []
+      ]
+    ]
+  ],
+  &quot;theory&quot;: {
+    &quot;axioms&quot;: {
+      &quot;k0&quot;: [
+        &quot;all&quot;,
+        &quot;m&quot;,
+        [
+          &quot;all&quot;,
+          &quot;n&quot;,
+          [
+            &quot;imp&quot;,
+            [
+              &quot;pred&quot;,
+              &quot;V&quot;,
+              [
+                [
+                  &quot;var&quot;,
+                  &quot;m&quot;
+                ],
+                [
+                  &quot;var&quot;,
+                  &quot;n&quot;
+                ]
+              ]
+            ],
+            [
+              &quot;pred&quot;,
+              &quot;W&quot;,
+              [
+                [
+                  &quot;var&quot;,
+                  &quot;n&quot;
+                ],
+                [
+                  &quot;var&quot;,
+                  &quot;m&quot;
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      &quot;k1&quot;: [
+        &quot;pred&quot;,
+        &quot;V&quot;,
+        [
+          [
+            &quot;fun&quot;,
+            &quot;d0&quot;,
+            []
+          ],
+          [
+            &quot;fun&quot;,
+            &quot;d1&quot;,
+            []
+          ]
+        ]
+      ]
+    },
+    &quot;functions&quot;: {
+      &quot;d0&quot;: 0,
+      &quot;d1&quot;: 0
+    },
+    &quot;predicates&quot;: {
+      &quot;V&quot;: 2,
+      &quot;W&quot;: 2
+    },
+    &quot;schemas&quot;: []
+  },
+  &quot;title&quot;: &quot;Prospective first-order assertion 10&quot;
+}</pre></details></details></div>
+<p><a href="parallel-search-planning-benchmark-suite.json">Exact frozen input JSON</a> · <a href="parallel-search-planning-benchmark-manifest.json">Hashes, grouping, provenance and evaluation rules</a>. Each entry supplies a theory and target only. No proof commands, chosen family identifiers, helper lemma routes or row sequences are supplied.</p>
+<h3>Relating this to established benchmarks</h3>
+<p>The <a href="https://www.tptp.org/">TPTP library</a> supplies established problem and syntax conventions. <a href="https://tptp.org/CASC/J13/Design.html">CASC design rules</a> provides useful precedent for common inputs, resource limits and independently checkable solutions. The <a href="https://szs.tptp.org/">SZS ontology</a> distinguishes logical outcomes from timeout or resource failure. The current synthetic suite is preparation for an auditable external import; it is not a TPTP/CASC score.</p>
+</section>
+<section id="next"><h2>The comparison that would establish a contribution</h2>
+<ol><li>Implement one generic support heuristic, then independently review its complete Source and bounded behavior. Keep the original full grammar and primitive universe.</li><li>Run the familiar curried assertion as development. Retain UNKNOWN, capacity and resource failures without retrying consumed slots.</li><li>Freeze the implementation before executing the new structural inputs. Compare hints off, the old advice, new support guidance, and a conventional symbolic control with the same knowledge and semantic heuristic.</li><li>Charge inventory construction, proposal search, validation, complete proof checking and output. Report success within the common profile, total cost and method-specific work units.</li><li>Only after those controls, train a cluster policy and measure its additional contribution, including training and reuse costs.</li></ol>
+<p class="scope">Parallel agents accelerate diagnosis, design and independent review. They do not multiply the evidence from one experiment. No superiority over existing proof search, new arithmetic or Hilbert theorem, universal fixed Wang palette, practical Turtle/Penrose solver or whole-plane tiling has been established by this update.</p></section>
+<section id="evidence"><h2>Inspect the evidence</h2><p><a href="parallel-search-planning-summary.json">Current scope and exact bindings</a> · <a href="parallel-search-planning-evidence-manifest.json">Published object hashes</a> · <a href="parallel-search-planning-evidence.zip">Notes, input suite, inspected Sources and retained-data extractors</a> · <a href="parallel-search-planning-report-review.json">Distinct report and input review</a>.</p><p>The most recent measured engineering result remains <a href="model-storage-integration.html#outcomes">three compact complete-pipeline proofs of the familiar diagonal assertion</a>. This update changes the research plan and freezes new inputs; it does not replace that cohort’s outcomes.</p></section>
+<footer>The research goal remains active. Source design and prospective inputs are separate from measured proof-search results.</footer>
+</main><script>
+const filter=document.getElementById('group-filter');const cases=Array.from(document.querySelectorAll('.suite-case'));function showCases(){let visible=0;for(const item of cases){item.hidden=filter.value!=='all'&&item.dataset.group!==filter.value;if(!item.hidden)visible++;}document.getElementById('visible-count').textContent=['No','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'][visible]+' input specifications shown';}filter.addEventListener('change',showCases);showCases();
+</script></body></html>

@@ -1,0 +1,549 @@
+{
+  "actual_execution_authorized": false,
+  "archive_objects": [
+    {
+      "archive_name": "Root/ROOT-scope-v1.json",
+      "bytes": 2224,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/ROOT-scope-v1.json",
+      "sha256": "b88e217bcf294008d2ec6926b30bcc6e90dbd7e1d61d6826eb1b088404e1f316"
+    },
+    {
+      "archive_name": "Root/build_publication_v1.py",
+      "bytes": 12379,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/build_publication_v1.py",
+      "sha256": "3c9e781b63fb971009637ff13ac675a5fdea3f7375d5b96c3c458d348b468527"
+    },
+    {
+      "archive_name": "Root/parallel-search-planning.template.html",
+      "bytes": 15515,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/parallel-search-planning.template.html",
+      "sha256": "ff6422e5bc8dc1988b7a0b9fcccdb015435e761cc30fea252e4ff63fdb3320f5"
+    },
+    {
+      "archive_name": "agents/gcts-curried-search-diagnosis-20261018/curried-search-diagnosis-v1.json",
+      "bytes": 15169,
+      "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/curried-search-diagnosis-v1.json",
+      "sha256": "1a54102ee4316575c927058d539c7cfb53a0c5f73cccb447dd9b31292fa53d33"
+    },
+    {
+      "archive_name": "agents/gcts-curried-search-diagnosis-20261018/freeze_diagnosis_v1.py",
+      "bytes": 21701,
+      "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/freeze_diagnosis_v1.py",
+      "sha256": "9f61af90b3306dab9d1d0f670570a27b1a1b5f4e6e2b6498d07e31ab54e70546"
+    },
+    {
+      "archive_name": "agents/gcts-curried-search-diagnosis-20261018/handoff-v1.json",
+      "bytes": 2894,
+      "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/handoff-v1.json",
+      "sha256": "3537e5935fa0da018990c2a93e70bac0c8a233c1216978a30c8224b7c39cbf49"
+    },
+    {
+      "archive_name": "agents/gcts-curried-search-diagnosis-20261018/html-ready-findings-v1.json",
+      "bytes": 4279,
+      "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/html-ready-findings-v1.json",
+      "sha256": "2e5b92dd37be2ca0dc4eded9a197e4f25b29470b7e067023729a7c31498cf5a8"
+    },
+    {
+      "archive_name": "agents/gcts-curried-search-diagnosis-20261018/ordering-design-v1.json",
+      "bytes": 7018,
+      "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/ordering-design-v1.json",
+      "sha256": "0ba7d8434c7e2b4f30c1dc125636f1424d8a06f8b2d69427e2e00b7da12b62f5"
+    },
+    {
+      "archive_name": "agents/gcts-curried-search-diagnosis-20261018/read_retained_v1.py",
+      "bytes": 4821,
+      "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/read_retained_v1.py",
+      "sha256": "a44b30a2752e835915607424c4d4d4e00bc166aa00e49775ca36279a3ccc3780"
+    },
+    {
+      "archive_name": "agents/gcts-curried-search-diagnosis-20261018/retained-evidence-preimages-v1.json",
+      "bytes": 403280,
+      "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/retained-evidence-preimages-v1.json",
+      "sha256": "1490f0c6d60db7c07b41483110dc39d870def1707a08e784d02ba72af8f8b5c6"
+    },
+    {
+      "archive_name": "agents/gcts-curried-search-diagnosis-20261018/retained-search-observations-v1.json",
+      "bytes": 602665,
+      "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/retained-search-observations-v1.json",
+      "sha256": "e331589e5b6f2fb622d92735b00f111de8c16c3faf9ed5e528d0c7b321c24559"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/author_inputs_v1.py",
+      "bytes": 24769,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/author_inputs_v1.py",
+      "sha256": "e78fc910b01a8f61947d4bd9e4bb0fdd83555e2f27df6b31eae5d28bd8626ed1"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/coverage-provenance-v1.json",
+      "bytes": 8104,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/coverage-provenance-v1.json",
+      "sha256": "0c98eccf9eb0098a082275fc3c2ad31f6c999040efe1782ad46db910f9afe44f"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/design-holdout-controls-v1.json",
+      "bytes": 8027,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/design-holdout-controls-v1.json",
+      "sha256": "61e4a1241d5aec7e4d68a9f9400ab6999edb8b3b0d2fee28eff81213e7b0fa51"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/final-input-envelope-audit-v1.json",
+      "bytes": 2956,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/final-input-envelope-audit-v1.json",
+      "sha256": "cbdb8887bd9900c3901a74ac9587ac179f0f00b3ee4bc1d4d6d19a4d8197b659"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/handoff-v1.json",
+      "bytes": 6522,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/handoff-v1.json",
+      "sha256": "a064d501be9b31bc0fb6ebfba04760be13ca768319e7e11f60970df5d30aded2"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/primary-sources-v1.json",
+      "bytes": 1852,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/primary-sources-v1.json",
+      "sha256": "c06aa669d4978e8bc1f2054941b19c9287a19170b9e5cdc8653611ebf1969884"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-001.json",
+      "bytes": 970,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-001.json",
+      "sha256": "1f3ff3f240cb1b80a4692029e0c11d3a035fb28822995ef958837843d72f395a"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-002.json",
+      "bytes": 976,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-002.json",
+      "sha256": "1ba60ee7357bc87c606d9d7816834b64703979e84db0782f41683158b55ab869"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-003.json",
+      "bytes": 1000,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-003.json",
+      "sha256": "c7e9e9c3dadd6cd7f36bd9b30ca85f0bcd03ebcb97c64b0511a84c7e80f01b1f"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-004.json",
+      "bytes": 1445,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-004.json",
+      "sha256": "421a5517c94d5f79642a273566d8e5816bdb65b61a0ca93acdaf85e992803b06"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-005.json",
+      "bytes": 1631,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-005.json",
+      "sha256": "775d49ae224c07590302c0e71dafc7292a136e07f5459b709648df4c4ded6690"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-006.json",
+      "bytes": 2395,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-006.json",
+      "sha256": "e488d2152352671290bcc1fdc5a6f51b18fa456aacb0423ff6d0c41c22a566a4"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-007.json",
+      "bytes": 1691,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-007.json",
+      "sha256": "ca7dc05395c95a872772a41b411a369d84bd33cd2039cc1b5b7b632313eda3a4"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-008.json",
+      "bytes": 1362,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-008.json",
+      "sha256": "4fadbfa2f980ff4361ad72aaf7ab05c9ed769d138f4d51519e7671ea2fb542a6"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-009.json",
+      "bytes": 976,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-009.json",
+      "sha256": "fec5a5fb6ac32ac107033bb63c4f94bf78418736649211b4516732ff7be62b97"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-010.json",
+      "bytes": 1637,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/prospective-fol-20261018-010.json",
+      "sha256": "6e2cf334ad0a643d8eca7e75349d3a31156f31221668a0ee6d45fe534a142bb6"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/static-input-authoring-audit-v1.json",
+      "bytes": 3772,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/static-input-authoring-audit-v1.json",
+      "sha256": "1f1445bbb465b2f4f826cf72e6971dbd68fb3ba51cb75e9ea798179a7e5b09b0"
+    },
+    {
+      "archive_name": "agents/gcts-first-order-next-benchmark-source-20261018/suite-input-index-v1.json",
+      "bytes": 31857,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/suite-input-index-v1.json",
+      "sha256": "63e2e0d650a281080d4d763e730f7ca742a5c4d5edfb53ada3fb5c0ec54a666c"
+    },
+    {
+      "archive_name": "agents/gcts-receptor-family-next-design-20261018/design-note-v1.html",
+      "bytes": 15563,
+      "path": "/private/tmp/gcts-receptor-family-next-design-20261018/design-note-v1.html",
+      "sha256": "42825ac239e0846a15756715f6cb1823112359df5dc7cd02a05a8a3b4a5654df"
+    },
+    {
+      "archive_name": "agents/gcts-receptor-family-next-design-20261018/design-note-v1.json",
+      "bytes": 30361,
+      "path": "/private/tmp/gcts-receptor-family-next-design-20261018/design-note-v1.json",
+      "sha256": "555d5b909214463cbbe63359461cbbe7a6597eb68ffe3e7b2b671332a760f29e"
+    },
+    {
+      "archive_name": "agents/gcts-receptor-family-next-design-20261018/freeze_design_v1.py",
+      "bytes": 28927,
+      "path": "/private/tmp/gcts-receptor-family-next-design-20261018/freeze_design_v1.py",
+      "sha256": "6cb207171db99cdcd631752af39571149012ed76dba718d88ec1032250e70d16"
+    },
+    {
+      "archive_name": "agents/gcts-receptor-family-next-design-20261018/handoff-v1.json",
+      "bytes": 1886,
+      "path": "/private/tmp/gcts-receptor-family-next-design-20261018/handoff-v1.json",
+      "sha256": "c92515514de5a8564820ed97c68e229dcb180ea753c3da06ce40d0e5dadd019c"
+    },
+    {
+      "archive_name": "agents/gcts-receptor-family-next-design-20261018/read_retained_c3_v1.py",
+      "bytes": 4434,
+      "path": "/private/tmp/gcts-receptor-family-next-design-20261018/read_retained_c3_v1.py",
+      "sha256": "788abc90a880e74207ae2941f9051f850bdffeb351939feaabdab61a37bbda49"
+    },
+    {
+      "archive_name": "agents/gcts-receptor-family-next-design-20261018/retained-c3-observation-v1.json",
+      "bytes": 7164,
+      "path": "/private/tmp/gcts-receptor-family-next-design-20261018/retained-c3-observation-v1.json",
+      "sha256": "3248a3ae7f2d9c230f7bfaa2ec9d0b42a7d43c96d8dfdffd10f6fb9b3ff260e3"
+    },
+    {
+      "archive_name": "agents/gcts-receptor-family-next-design-20261018/retained-c3-observation-v2.json",
+      "bytes": 7488,
+      "path": "/private/tmp/gcts-receptor-family-next-design-20261018/retained-c3-observation-v2.json",
+      "sha256": "f6aebfc12ff86b323b9a934c4ca4f4dfd4341605c8f25915ca2a3937754ff43b"
+    },
+    {
+      "archive_name": "inspected-sources/compact_model/interned_quantified_family_points_v1.py",
+      "bytes": 4311,
+      "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    },
+    {
+      "archive_name": "inspected-sources/compiler/quantified_receptors_v1.py",
+      "bytes": 11060,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "archive_name": "inspected-sources/complete_prior_library/semantic-inventory-policy-001.json",
+      "bytes": 4502,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-policy-001.json",
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+    },
+    {
+      "archive_name": "inspected-sources/current_profile_declaration/experiment-declaration-v1.json",
+      "bytes": 9760,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+      "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+    },
+    {
+      "archive_name": "inspected-sources/driver/storage_receiver_driver_v1.py",
+      "bytes": 52750,
+      "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+      "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+    },
+    {
+      "archive_name": "inspected-sources/master/basic-tiling-algorithm.md",
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "archive_name": "inspected-sources/native_checker_Source/fol_checker.tree",
+      "bytes": 17577,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree",
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+    },
+    {
+      "archive_name": "inspected-sources/native_inference_inventory/native_inference_inventory.py",
+      "bytes": 10594,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "archive_name": "inspected-sources/native_inventory_policy/native_inventory_policy.py",
+      "bytes": 2746,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "archive_name": "inspected-sources/ordinary_model/quantified_family_points_v2.py",
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "archive_name": "inspected-sources/parent_development_declaration/experiment-declaration-v2.json",
+      "bytes": 21453,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/experiment-declaration-v2.json",
+      "sha256": "19fab9173cf52ebd9e0d5517fd4dbbb44ed9d72f3737676d9701fd6a4c8bde5d"
+    },
+    {
+      "archive_name": "inspected-sources/prior_coverage_probes/scope-and-coverage-probes-v1.json",
+      "bytes": 5746,
+      "path": "/private/tmp/gcts-quantified-structural-benchmark-source-20261018/scope-and-coverage-probes-v1.json",
+      "sha256": "e4714307e91bd3469fd79cb006016062351c65dffb87896451852a492cfb3f23"
+    },
+    {
+      "archive_name": "inspected-sources/quantified_family_points_v2/quantified_family_points_v2.py",
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "archive_name": "inspected-sources/quantified_receptors_v1/quantified_receptors_v1.py",
+      "bytes": 11060,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "archive_name": "inspected-sources/quantified_symbolic_control_v1/quantified_symbolic_control_v1.py",
+      "bytes": 20067,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "archive_name": "inspected-sources/runtime_closure/runtime-closure-v1.json",
+      "bytes": 69562,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+      "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+    },
+    {
+      "archive_name": "inspected-sources/semantic_inventory_guidance/semantic_inventory_guidance.py",
+      "bytes": 6942,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "archive_name": "inspected-sources/semantic_inventory_search/semantic_inventory_search.py",
+      "bytes": 5318,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    {
+      "archive_name": "inspected-sources/semantic_lemma_inventory/semantic_lemma_inventory.py",
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "archive_name": "inspected-sources/symbolic_control/quantified_symbolic_control_v1.py",
+      "bytes": 20067,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "archive_name": "inspected-sources/turtle/turtle.py",
+      "bytes": 28533,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "archive_name": "Root/ROOT-static-input-and-report-checks-v1.json",
+      "bytes": 38026,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/ROOT-static-input-and-report-checks-v1.json",
+      "sha256": "8487367ca2232cef24d3f04e1f7adce5fc3be1e9f52bb0dcf0031c748b545c40"
+    },
+    {
+      "archive_name": "Root/ROOT-review-adoption-v1.json",
+      "bytes": 1418,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/ROOT-review-adoption-v1.json",
+      "sha256": "972adaeaa7a0481065083ba405d369f6d5824fefdd0fac632903fc101be28e88"
+    },
+    {
+      "archive_name": "Root/ROOT-next-work-v1.json",
+      "bytes": 5293,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/ROOT-next-work-v1.json",
+      "sha256": "95634cd35541c1f909b3eff7a3a678dd84b330380389017b13ca0a701785e7f9"
+    },
+    {
+      "archive_name": "Root/close_and_stage_v1.py",
+      "bytes": 9829,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/close_and_stage_v1.py",
+      "sha256": "093f11426ceac7723ceff771a83fc5f0c146721430b5e50498d447167006492d"
+    },
+    {
+      "archive_name": "review/typed-report-review-v1.json",
+      "bytes": 10651,
+      "path": "/private/tmp/gcts-parallel-search-planning-report-peer-20261018/typed-report-review-v1.json",
+      "sha256": "94b1df7934d173c1196f52c211eb7f031041ce93bc7ed8974ce71a1639942efd"
+    },
+    {
+      "archive_name": "Root/publication-manifest-v1-pending.json",
+      "bytes": 26761,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-evidence-manifest.json",
+      "sha256": "94451d299aeb5a5919a0ba4600edcc982df6b1b33aa5ce258588e49a81923f13"
+    },
+    {
+      "archive_name": "review/raw/audit-v1.json",
+      "bytes": 59530,
+      "path": "/private/tmp/gcts-parallel-search-planning-report-peer-20261018/audit-v1.json",
+      "sha256": "ad37014efe40eb4f6eff8aedb99f7a78dcd9d8e45d2e902a61a491fd8a1b5a9d"
+    },
+    {
+      "archive_name": "review/raw/audit_report_v1.py",
+      "bytes": 21749,
+      "path": "/private/tmp/gcts-parallel-search-planning-report-peer-20261018/audit_report_v1.py",
+      "sha256": "4500f5694f98bda8402e517ba56e1b454dbb19f7bb2ec28cc1c5709a11ef63a3"
+    },
+    {
+      "archive_name": "review/raw/handoff-v1.json",
+      "bytes": 803,
+      "path": "/private/tmp/gcts-parallel-search-planning-report-peer-20261018/handoff-v1.json",
+      "sha256": "4ca2f51afa9f461d24efaf47d6bfe6e9d6111624bbdbafbfba8ad3aa4a00c274"
+    }
+  ],
+  "closure_delta": "Same reviewed human HTML and frozen notes/inputs. Add exact review/adoption, close pending review, update summary/archive/manifest transport only. No scientific execution.",
+  "notes": "Paths in original frozen author artifacts are provenance. All ten exact original case files are published and included in archive. The full old actuals remain in the previous structural release, not replayed here.",
+  "objects": [
+    {
+      "bytes": 24376,
+      "name": "parallel-search-planning-benchmark-manifest.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-benchmark-manifest.json",
+      "sha256": "cd2ccf543607753145b9224bfe4752e1ec62220bc0041f7eae27995c6d49d358"
+    },
+    {
+      "bytes": 50247,
+      "name": "parallel-search-planning-benchmark-suite.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-benchmark-suite.json",
+      "sha256": "b81ac7d2dd03691de9db143340b7413bd11d81c442ee22b428f2cb0a739bd737"
+    },
+    {
+      "bytes": 15169,
+      "name": "parallel-search-planning-diagnosis.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-diagnosis.json",
+      "sha256": "1a54102ee4316575c927058d539c7cfb53a0c5f73cccb447dd9b31292fa53d33"
+    },
+    {
+      "bytes": 286146,
+      "name": "parallel-search-planning-evidence.zip",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-evidence.zip",
+      "sha256": "f11c2a33487f6d80acf089c7945006a05cd8bbb94aee020ad30cd4b84de5cab9"
+    },
+    {
+      "bytes": 30361,
+      "name": "parallel-search-planning-family-design.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-family-design.json",
+      "sha256": "555d5b909214463cbbe63359461cbbe7a6597eb68ffe3e7b2b671332a760f29e"
+    },
+    {
+      "bytes": 7488,
+      "name": "parallel-search-planning-family-observations.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-family-observations.json",
+      "sha256": "f6aebfc12ff86b323b9a934c4ca4f4dfd4341605c8f25915ca2a3937754ff43b"
+    },
+    {
+      "bytes": 970,
+      "name": "parallel-search-planning-prospective-fol-20261018-001.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-001.json",
+      "sha256": "1f3ff3f240cb1b80a4692029e0c11d3a035fb28822995ef958837843d72f395a"
+    },
+    {
+      "bytes": 976,
+      "name": "parallel-search-planning-prospective-fol-20261018-002.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-002.json",
+      "sha256": "1ba60ee7357bc87c606d9d7816834b64703979e84db0782f41683158b55ab869"
+    },
+    {
+      "bytes": 1000,
+      "name": "parallel-search-planning-prospective-fol-20261018-003.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-003.json",
+      "sha256": "c7e9e9c3dadd6cd7f36bd9b30ca85f0bcd03ebcb97c64b0511a84c7e80f01b1f"
+    },
+    {
+      "bytes": 1445,
+      "name": "parallel-search-planning-prospective-fol-20261018-004.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-004.json",
+      "sha256": "421a5517c94d5f79642a273566d8e5816bdb65b61a0ca93acdaf85e992803b06"
+    },
+    {
+      "bytes": 1631,
+      "name": "parallel-search-planning-prospective-fol-20261018-005.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-005.json",
+      "sha256": "775d49ae224c07590302c0e71dafc7292a136e07f5459b709648df4c4ded6690"
+    },
+    {
+      "bytes": 2395,
+      "name": "parallel-search-planning-prospective-fol-20261018-006.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-006.json",
+      "sha256": "e488d2152352671290bcc1fdc5a6f51b18fa456aacb0423ff6d0c41c22a566a4"
+    },
+    {
+      "bytes": 1691,
+      "name": "parallel-search-planning-prospective-fol-20261018-007.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-007.json",
+      "sha256": "ca7dc05395c95a872772a41b411a369d84bd33cd2039cc1b5b7b632313eda3a4"
+    },
+    {
+      "bytes": 1362,
+      "name": "parallel-search-planning-prospective-fol-20261018-008.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-008.json",
+      "sha256": "4fadbfa2f980ff4361ad72aaf7ab05c9ed769d138f4d51519e7671ea2fb542a6"
+    },
+    {
+      "bytes": 976,
+      "name": "parallel-search-planning-prospective-fol-20261018-009.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-009.json",
+      "sha256": "fec5a5fb6ac32ac107033bb63c4f94bf78418736649211b4516732ff7be62b97"
+    },
+    {
+      "bytes": 1637,
+      "name": "parallel-search-planning-prospective-fol-20261018-010.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-prospective-fol-20261018-010.json",
+      "sha256": "6e2cf334ad0a643d8eca7e75349d3a31156f31221668a0ee6d45fe534a142bb6"
+    },
+    {
+      "bytes": 10651,
+      "name": "parallel-search-planning-report-review.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-report-review.json",
+      "sha256": "94b1df7934d173c1196f52c211eb7f031041ce93bc7ed8974ce71a1639942efd"
+    },
+    {
+      "bytes": 403280,
+      "name": "parallel-search-planning-search-observations.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-search-observations.json",
+      "sha256": "1490f0c6d60db7c07b41483110dc39d870def1707a08e784d02ba72af8f8b5c6"
+    },
+    {
+      "bytes": 6043,
+      "name": "parallel-search-planning-summary.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-summary.json",
+      "sha256": "2507aeeaea75e6ec1b5f221d2078c88b9fc965b6afa1cf8f31481662e99bebf1"
+    },
+    {
+      "bytes": 7018,
+      "name": "parallel-search-planning-support-design.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning-support-design.json",
+      "sha256": "0ba7d8434c7e2b4f30c1dc125636f1424d8a06f8b2d69427e2e00b7da12b62f5"
+    },
+    {
+      "bytes": 43130,
+      "name": "parallel-search-planning.html",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v2/parallel-search-planning.html",
+      "sha256": "fdec15f0e00929b3dbe96dd6b1b78d18155bcf9b61b2b1350365ff3d600e1c93"
+    }
+  ],
+  "prior_pending_manifest": {
+    "bytes": 26761,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-evidence-manifest.json",
+    "sha256": "94451d299aeb5a5919a0ba4600edcc982df6b1b33aa5ce258588e49a81923f13"
+  },
+  "report_review": {
+    "bytes": 10651,
+    "path": "/private/tmp/gcts-parallel-search-planning-report-peer-20261018/typed-report-review-v1.json",
+    "sha256": "94b1df7934d173c1196f52c211eb7f031041ce93bc7ed8974ce71a1639942efd"
+  },
+  "report_review_pending": false,
+  "review_adoption": {
+    "bytes": 1418,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/ROOT-review-adoption-v1.json",
+    "sha256": "972adaeaa7a0481065083ba405d369f6d5824fefdd0fac632903fc101be28e88"
+  },
+  "schema": "ROOT-parallel-search-planning-evidence-manifest-v2",
+  "scientific_calls": 0
+}

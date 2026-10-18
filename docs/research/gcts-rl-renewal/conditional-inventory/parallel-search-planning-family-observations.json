@@ -1,0 +1,293 @@
+{
+  "catalog": {
+    "admitted_scheme_count": 4,
+    "basis_count": 13,
+    "rounds": 2,
+    "terms": [
+      [
+        "var",
+        "x"
+      ]
+    ],
+    "variables": [
+      "x"
+    ]
+  },
+  "count_scope": "Hint kinds count stored hints. Guard rules/families are occurrences in hint member lists (sampled hints may contain several guards). hint_completed is a node-visit phase metric, not unique proved lemmas. Changed order counts saved tree nodes whose actual alternatives differ from sorted full alternatives; no winning proof exists.",
+  "declaration": {
+    "id": "quantified-curried-two-premise-001",
+    "instantiation_rounds": 2,
+    "length": 12,
+    "scope": "Three closed theory axioms and closed target; assertion data only. No proof commands, root assumptions, blocks, family IDs, instance bindings or row route.",
+    "target": [
+      "all",
+      "x",
+      [
+        "pred",
+        "R",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ]
+    ],
+    "theory": {
+      "axioms": {
+        "universal_curried_implication": [
+          "all",
+          "x",
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "universal_left_premise": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "universal_right_premise": [
+          "all",
+          "x",
+          [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ]
+      },
+      "functions": {},
+      "predicates": {
+        "P": 1,
+        "Q": 1,
+        "R": 1
+      },
+      "schemas": []
+    },
+    "title": "Universal application of a curried implication to two premises"
+  },
+  "flags": {
+    "essential_hint_use_claimed": false,
+    "hint_completed_is_pending_tile_status_not_lemma_truth": true,
+    "no_proof_no_essential_ancestry": true
+  },
+  "hint_counts": {
+    "ground_family_counts": {
+      "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da": 95,
+      "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93": 238
+    },
+    "guard_output_rows": {
+      "0": 1,
+      "1": 1,
+      "10": 160,
+      "11": 4,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 2,
+      "7": 6,
+      "8": 21,
+      "9": 152
+    },
+    "guard_rules": {
+      "axiom": 2,
+      "block": 333,
+      "generalize": 6,
+      "instantiate": 4,
+      "mp": 6
+    },
+    "kinds": {
+      "lemma": 194,
+      "primitive": 16,
+      "sampled": 140
+    },
+    "levels": {
+      "0": 156,
+      "1": 194
+    },
+    "member_sizes": {
+      "1": 1,
+      "2": 128,
+      "3": 11,
+      "5": 210
+    }
+  },
+  "inventory": {
+    "definition_count": 8,
+    "interface_count": 8,
+    "interfaces": [
+      {
+        "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "level": 1,
+        "name": "lemma34ec7624c38344486d287c79a68dcfc32e84e89c1f1e0758a1213a9314a16bfe",
+        "premise_count": 2
+      },
+      {
+        "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "level": 1,
+        "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+        "premise_count": 2
+      },
+      {
+        "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "level": 1,
+        "name": "lemmae6707fedce30fa7792811eb891881bc39c54ae4afc381fd4efad90c6d26eb7de",
+        "premise_count": 2
+      },
+      {
+        "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "level": 1,
+        "name": "lemmab20cdde8eae09821ab0920d8681acbc76b66b13524c2bf866f4f1c78af96b652",
+        "premise_count": 2
+      },
+      {
+        "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "level": 1,
+        "name": "lemma4f6fb4fbc4e1b5777b6bb76bdb84abb382b4528ba9cf50b1e00376cfa678bd10",
+        "premise_count": 2
+      },
+      {
+        "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+        "level": 1,
+        "name": "lemma6101ea9950ba7944c85e124cf6231fbe53d013757259ac325c1143e7d51ac35b",
+        "premise_count": 2
+      },
+      {
+        "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+        "level": 1,
+        "name": "lemma98dccc45cee45eb67dd5d79f63997cc1a2a435a08d0f6d4e5bde065b352233f1",
+        "premise_count": 3
+      },
+      {
+        "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+        "level": 1,
+        "name": "lemma8ef55523edaa733d0fc7d0633a6a0590799deea76c4ca408cd91cd471071c927",
+        "premise_count": 3
+      }
+    ],
+    "status": "native_accepted"
+  },
+  "limits": {
+    "attempts": 5000,
+    "proposal_checks": 2048,
+    "proposal_limit": 24,
+    "seconds": 30
+  },
+  "metrics": {
+    "anchors_omitted": 0,
+    "attempts": 2739,
+    "backtracks": 2689,
+    "branch": 419,
+    "dead": 803,
+    "forced": 1518,
+    "hint_completed": 120,
+    "hint_eligible": 368,
+    "hint_invalid": 808,
+    "hint_waiting": 360,
+    "hints_started": 350,
+    "items": 2726,
+    "nodes": 2740,
+    "proposal_seconds": 4.233819758053869,
+    "row_pool": 1150,
+    "row_quota_stops": 66,
+    "sample_pair_tests": 17671,
+    "sample_validation_checks": 1576,
+    "validation_checks": 5819
+  },
+  "model": {
+    "arity": 3,
+    "placements": 11440,
+    "roots": 60
+  },
+  "native_proof_accepted": false,
+  "policy_counts": {
+    "chosen_hint_count": 350,
+    "selected": {
+      "lemma": 194,
+      "primitive": 16,
+      "sampled": 140
+    },
+    "tree_nodes_with_changed_canonical_alternative_order": 115
+  },
+  "project_imports": 0,
+  "raw_result": {
+    "bytes": 78204773,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+    "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+  },
+  "result_json_decodes": 1,
+  "root_restored": true,
+  "schema": "retained-c3-family-search-observation-v2",
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Static Source and saved JSON counts only, no model/proof/search replay. Counters do not prove absent routes or family usefulness.",
+  "search_proof_present": false,
+  "search_status": "unknown_search_budget",
+  "seconds": 30.027331374934874,
+  "status": "unknown_search_budget",
+  "tree_summary": {
+    "cutoffs": [
+      {
+        "candidate_count": 3,
+        "cutoff": "before_placement",
+        "depth": 50,
+        "kind": "branch",
+        "point": [
+          36,
+          2
+        ]
+      }
+    ],
+    "maximum_selected_depth": 58,
+    "nodes": 2740
+  }
+}

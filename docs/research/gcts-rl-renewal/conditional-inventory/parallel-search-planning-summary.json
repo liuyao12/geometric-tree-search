@@ -1,0 +1,125 @@
+{
+  "actual_execution_authorized": false,
+  "agent_handoffs": {
+    "benchmarks": {
+      "bytes": 6522,
+      "path": "/private/tmp/gcts-first-order-next-benchmark-source-20261018/handoff-v1.json",
+      "sha256": "a064d501be9b31bc0fb6ebfba04760be13ca768319e7e11f60970df5d30aded2"
+    },
+    "diagnosis": {
+      "bytes": 2894,
+      "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/handoff-v1.json",
+      "sha256": "3537e5935fa0da018990c2a93e70bac0c8a233c1216978a30c8224b7c39cbf49"
+    },
+    "families": {
+      "bytes": 1886,
+      "path": "/private/tmp/gcts-receptor-family-next-design-20261018/handoff-v1.json",
+      "sha256": "c92515514de5a8564820ed97c68e229dcb180ea753c3da06ce40d0e5dadd019c"
+    }
+  },
+  "benchmark_cases": 10,
+  "benchmark_groups": 8,
+  "benchmark_status": "FIXED_INPUT_ONLY_UNEXECUTED_NOT_BLIND_NOT_OFFICIAL_TPTP",
+  "clarification": "The frozen coverage note phrase No primitive exists means no exists formula tag; primitive inference rules remain present.",
+  "date": "2026-10-18",
+  "goal_complete": false,
+  "known_gaps": [
+    "New heuristic and recursive proposer unimplemented",
+    "Input-selection/closure/declaration composition needs new review before any run",
+    "No fresh mathematical assertion proved",
+    "No trained RL or GCTS advantage established"
+  ],
+  "new_RL_training": false,
+  "new_proofs": 0,
+  "new_scientific_runs": 0,
+  "published_bindings": [
+    {
+      "name": "parallel-search-planning-diagnosis.json",
+      "original": {
+        "bytes": 15169,
+        "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/curried-search-diagnosis-v1.json",
+        "sha256": "1a54102ee4316575c927058d539c7cfb53a0c5f73cccb447dd9b31292fa53d33"
+      },
+      "published": {
+        "bytes": 15169,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-diagnosis.json",
+        "sha256": "1a54102ee4316575c927058d539c7cfb53a0c5f73cccb447dd9b31292fa53d33"
+      }
+    },
+    {
+      "name": "parallel-search-planning-support-design.json",
+      "original": {
+        "bytes": 7018,
+        "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/ordering-design-v1.json",
+        "sha256": "0ba7d8434c7e2b4f30c1dc125636f1424d8a06f8b2d69427e2e00b7da12b62f5"
+      },
+      "published": {
+        "bytes": 7018,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-support-design.json",
+        "sha256": "0ba7d8434c7e2b4f30c1dc125636f1424d8a06f8b2d69427e2e00b7da12b62f5"
+      }
+    },
+    {
+      "name": "parallel-search-planning-search-observations.json",
+      "original": {
+        "bytes": 403280,
+        "path": "/private/tmp/gcts-curried-search-diagnosis-20261018/retained-evidence-preimages-v1.json",
+        "sha256": "1490f0c6d60db7c07b41483110dc39d870def1707a08e784d02ba72af8f8b5c6"
+      },
+      "published": {
+        "bytes": 403280,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-search-observations.json",
+        "sha256": "1490f0c6d60db7c07b41483110dc39d870def1707a08e784d02ba72af8f8b5c6"
+      }
+    },
+    {
+      "name": "parallel-search-planning-family-design.json",
+      "original": {
+        "bytes": 30361,
+        "path": "/private/tmp/gcts-receptor-family-next-design-20261018/design-note-v1.json",
+        "sha256": "555d5b909214463cbbe63359461cbbe7a6597eb68ffe3e7b2b671332a760f29e"
+      },
+      "published": {
+        "bytes": 30361,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-family-design.json",
+        "sha256": "555d5b909214463cbbe63359461cbbe7a6597eb68ffe3e7b2b671332a760f29e"
+      }
+    },
+    {
+      "name": "parallel-search-planning-family-observations.json",
+      "original": {
+        "bytes": 7488,
+        "path": "/private/tmp/gcts-receptor-family-next-design-20261018/retained-c3-observation-v2.json",
+        "sha256": "f6aebfc12ff86b323b9a934c4ca4f4dfd4341605c8f25915ca2a3937754ff43b"
+      },
+      "published": {
+        "bytes": 7488,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning-family-observations.json",
+        "sha256": "f6aebfc12ff86b323b9a934c4ca4f4dfd4341605c8f25915ca2a3937754ff43b"
+      }
+    }
+  ],
+  "report": {
+    "bytes": 43130,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/publication-source-v1/parallel-search-planning.html",
+    "sha256": "fdec15f0e00929b3dbe96dd6b1b78d18155bcf9b61b2b1350365ff3d600e1c93"
+  },
+  "report_review": {
+    "bytes": 10651,
+    "path": "/private/tmp/gcts-parallel-search-planning-report-peer-20261018/typed-report-review-v1.json",
+    "sha256": "94b1df7934d173c1196f52c211eb7f031041ce93bc7ed8974ce71a1639942efd"
+  },
+  "review_adoption": {
+    "bytes": 1418,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/ROOT-review-adoption-v1.json",
+    "sha256": "972adaeaa7a0481065083ba405d369f6d5824fefdd0fac632903fc101be28e88"
+  },
+  "schema": "ROOT-parallel-search-planning-summary-v1",
+  "scientific_calls": 0,
+  "selected_next_intervention": "ACYCLIC_RECEPTOR_SUPPORT_POTENTIAL_V1 ordering only in point and symbolic controls; multirow closure separately deferred",
+  "source_scope": {
+    "bytes": 2224,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/ROOT-scope-v1.json",
+    "sha256": "b88e217bcf294008d2ec6926b30bcc6e90dbd7e1d61d6826eb1b088404e1f316"
+  }
+}
