@@ -1,0 +1,100 @@
+{
+  "API": {
+    "bytes": 4623,
+    "path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/cases-API-wire-v1.json",
+    "sha256": "533dbc871240505ce044b48697c717fde77a2ee941db0f3bf39341ea0db5cf53"
+  },
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "author_ancestry": "Author of this new independent role-provenance checker and finite CASE, earlier licensed/two-witness/cache checkers/CASEs and verifier398acd. This is not an independent audit of own components. Authored neither role lifter, fd3 producer,4358 expansion checker, hostV5/native model, Root cold/grant/actual, nor distinct Source peer.",
+  "author_identity": "/root/conventional_control_review",
+  "case_count": 5,
+  "case_id_order": [
+    "source_ground_roles",
+    "left_only_instance",
+    "right_only_instance",
+    "context_only_instance",
+    "provenance_and_callback_regressions"
+  ],
+  "checker_source": {
+    "bytes": 20110,
+    "path": "/private/tmp/gcts-role-receptor-checker-source-20261018/independent_role_receptor_checker_v1.py",
+    "sha256": "ef8f34fb191bcd89f518dbec081f77508c06835c45515bbc8fde117bf7f1707c"
+  },
+  "clock_evaluations": 0,
+  "codec_evaluations": 0,
+  "entries": [
+    {
+      "case_id": "source_ground_roles",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Only the selected record is checked. Donor origin claims remain untrusted. The recorded context comes from the original equality-template argument, not from replacing equal terms in a displayed output. This supplies no universal schema or native proof.",
+      "runtime_result_attached": false,
+      "summary": "Recover the donor\u2019s argument roles",
+      "what_it_checks": "Take the first role-lifted record in a bounded source-order prefix. Independently reconstruct the equality license, both ordered modus-ponens steps, explicit context hole and every original input/output policy. Then check the full donor-ground expansion."
+    },
+    {
+      "case_id": "left_only_instance",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "The final context applied to the right term must remain unchanged. Output inequality is not required. This does not infer the unseen left term from an output receptor or prove either unresolved input.",
+      "runtime_result_attached": false,
+      "summary": "Change only the left-term role",
+      "what_it_checks": "Propose a different left term while preserving the right term, context, distinguished hole and external bindings literally. Require the complete ordered input/output tuple to match independent role evaluation, then check every original primitive and the hypothetical marked union."
+    },
+    {
+      "case_id": "right_only_instance",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "The finite signature-derived term prefix is not exhaustive. All external inputs remain unoccupied conditional obligations. A local instance is not a selected theorem proof or an actual search move.",
+      "runtime_result_attached": false,
+      "summary": "Change only the right-term role",
+      "what_it_checks": "Propose a changed right term while keeping every other role binding identical. Compare all ordered port formulas and retain a fresh complete expansion, native membership and hypothetical-union receipt."
+    },
+    {
+      "case_id": "context_only_instance",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "This is one bounded atomic context probe. It does not test every first-order context, capture or eigenvariable situation, and it does not establish validity of every possible family substitution.",
+      "runtime_result_attached": false,
+      "summary": "Change only the formula context",
+      "what_it_checks": "Use an explicit alternative atomic equality context with its declared formal hole. Preserve both term roles, the hole name and external bindings. Require every ordered port and original native primitive to check in the current host."
+    },
+    {
+      "case_id": "provenance_and_callback_regressions",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Rejecting the misleading source provenance does not mean that context is an illegal receiver proposal. These are finite provided corruptions, not all provenance attacks or callback interleavings. Saved JSON cannot independently re-observe exception object identity.",
+      "runtime_result_attached": false,
+      "summary": "Distinguish context provenance from receiver validity",
+      "what_it_checks": "Provide a misleading context obtained by abstracting every occurrence equal to the source right term in the instantiated output. Update its claimed hole paths and roles and recompute identity; require rejection as a mismatch with the original template. Also weaken sharing with a recomputed identity/ground proposal, and sample exact first guard/tick exception propagation."
+    }
+  ],
+  "independent_audit_claimed": false,
+  "kernel_or_checker_evaluations": 0,
+  "lifter_source": {
+    "bytes": 26184,
+    "path": "/private/tmp/gcts-role-receptor-lifter-source-20261018/equality_role_receptor_lifter_v1.py",
+    "sha256": "106afb1ffe8b15ad7416fab12e63e879102fd506b10fafbee071fc1b87b7f2a1"
+  },
+  "logical_proof_accepted": false,
+  "module_evaluations": 0,
+  "native_runs": 0,
+  "performance_accepted": false,
+  "preserved_V1_map": {
+    "bytes": 6257,
+    "path": "/private/tmp/gcts-role-receptor-checker-source-20261018/role-receptor-five-case-English-map-v1.json",
+    "sha256": "5dbb1e192bd92772f4003f4b2c4303235b9152393d63b12dfd7a99f25c689d17"
+  },
+  "returned_stage_retention": "Every completed returned stage, including source-ground/current expansion and native UNKNOWN packets, is retained on normal prefix UNKNOWN. Proposed environments/full ports/rows and partial regression evidence remain available. No after-interruption packet is promised when a genuine callback/resource exception is thrown.",
+  "runtime_PASS_claimed": false,
+  "runtime_results_included": false,
+  "schema": "role-receptor-five-case-English-map-v2",
+  "scientific_calls": 0,
+  "shared_scope": "Essential bounded role/port calibration with protected current factories. Full hypothetical unions keep inputs unfilled. No search scheduler, actual branch, complete tiling or selected proof runs. Any theorem claim requires a separate fresh selected proof and independent arithmetic verification.",
+  "source": {
+    "bytes": 23741,
+    "path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/role_receptor_finite_cases_v2.py",
+    "sha256": "8bb506fdb70e327ef55cf71ff2eda53a48010fd2779af0393f6c16fd6b868b6d"
+  },
+  "source_contract": {
+    "bytes": 8298,
+    "path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/cases-Source-contract-v1.json",
+    "sha256": "e0544d2cbd832e52010cae5b37112db41b8cd7ae9d336ddb97fcef39aece5d9b"
+  }
+}

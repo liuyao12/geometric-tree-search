@@ -1,0 +1,769 @@
+{
+  "ROOT_admission": {
+    "GCTS_advantage": false,
+    "accepted_instances": 3,
+    "all_declared_finite_cases_passed": true,
+    "bounded_role_families": 1,
+    "complete_board_accepted": false,
+    "declared_limits": {
+      "attempts_per_role": 4,
+      "families": 4,
+      "spine_trials": 16,
+      "term_candidates": 4
+    },
+    "distinct_literal_full_keys": 18,
+    "expanded": {
+      "bytes": 3146700,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+      "sha256": "76a3c71eb581f44634a5141fe81ea4a548a93f69cc68dff01488749294df4915"
+    },
+    "finite_cases_passed": 5,
+    "full_GCTS_conformance": false,
+    "full_current_type_key_occurrences_checked": 81,
+    "goal_complete": false,
+    "independent_saved_data_review_pending": true,
+    "instance_summaries": [
+      {
+        "anchor_output_unchanged": true,
+        "changed_role": "L",
+        "index": 0,
+        "native_membership_and_union_checked": true,
+        "primitive_nodes": 3,
+        "proof_accepted": false,
+        "receiver_port_tuple": {
+          "hypotheses": [],
+          "inputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "port_id": "i0"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "i1"
+            }
+          ],
+          "outputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "o0"
+            }
+          ]
+        },
+        "source_port_tuple": {
+          "hypotheses": [],
+          "inputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "port_id": "i0"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "i1"
+            }
+          ],
+          "outputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "o0"
+            }
+          ]
+        },
+        "unfilled_external_inputs": 2
+      },
+      {
+        "anchor_output_unchanged": false,
+        "changed_role": "R",
+        "index": 1,
+        "native_membership_and_union_checked": true,
+        "primitive_nodes": 3,
+        "proof_accepted": false,
+        "receiver_port_tuple": {
+          "hypotheses": [],
+          "inputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ],
+              "port_id": "i0"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "i1"
+            }
+          ],
+          "outputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "o0"
+            }
+          ]
+        },
+        "source_port_tuple": {
+          "hypotheses": [],
+          "inputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "port_id": "i0"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "i1"
+            }
+          ],
+          "outputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "o0"
+            }
+          ]
+        },
+        "unfilled_external_inputs": 2
+      },
+      {
+        "anchor_output_unchanged": false,
+        "changed_role": "C",
+        "index": 2,
+        "native_membership_and_union_checked": true,
+        "primitive_nodes": 3,
+        "proof_accepted": false,
+        "receiver_port_tuple": {
+          "hypotheses": [],
+          "inputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "port_id": "i0"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "i1"
+            }
+          ],
+          "outputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "port_id": "o0"
+            }
+          ]
+        },
+        "source_port_tuple": {
+          "hypotheses": [],
+          "inputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "var",
+                  "n"
+                ]
+              ],
+              "port_id": "i0"
+            },
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "i1"
+            }
+          ],
+          "outputs": [
+            {
+              "formula": [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ],
+              "port_id": "o0"
+            }
+          ]
+        },
+        "unfilled_external_inputs": 2
+      }
+    ],
+    "learned_marking": false,
+    "logical_proof_accepted": false,
+    "native_external_seconds": 4.136522,
+    "original_context_binding_preserved": true,
+    "owned_peak_bytes": 80855040,
+    "pending_case_ids": [],
+    "performance_accepted": false,
+    "plan": {
+      "bytes": 22276,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-finite-all-ROOT-20261018/ROOT-plan-v1.json",
+      "sha256": "91fcae1cadf54d1323e563e0cb52f135235e24da0152e6bb04a091ead98c52f1"
+    },
+    "point_search_executed": false,
+    "qualified_source_records": 1,
+    "schema": "ROOT-role-receptor-finite-admission-v1",
+    "scientific_replays": 0,
+    "status": "CLOSED_ROLE_RECEPTOR_FINITE_INVENTORY_PASS",
+    "trained_RL": false,
+    "transport": {
+      "bytes": 2318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-finite-all-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+      "sha256": "5e1687b7541a3910b393d33981e44d786dbbccaaafbd8fb6d82cd884495c3379"
+    },
+    "universal_family_validity_proved": false,
+    "whole_output_and_native_resources_closed": true,
+    "work_counts": {
+      "accepted_instances": 3,
+      "host_adaptations": 3,
+      "lifter_calls": 1,
+      "receiver_expansion_calls": 3,
+      "role_checks": 5,
+      "source_ground_expansion_calls": 2,
+      "term_or_context_attempts": 3
+    }
+  },
+  "ROOT_admission_preimage": {
+    "bytes": 16765,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-finite-all-ROOT-20261018/ROOT-case-admission-v1.json",
+    "sha256": "b6ceb59a2359bd1126f23455e92c3197b9b66e84033a5a4ad09895a32300111e"
+  },
+  "conditional_instances_only": true,
+  "exact_actual": {
+    "bytes": 3146700,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+    "sha256": "76a3c71eb581f44634a5141fe81ea4a548a93f69cc68dff01488749294df4915"
+  },
+  "goal_complete": false,
+  "independent_saved_data_review": {
+    "bytes": 7494,
+    "path": "/private/tmp/gcts-role-receptor-finite-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "555b977e743bec3a568e141c84939185c1f0de4f4d549a76832c1913e5ecb5b7"
+  },
+  "independent_saved_data_review_pending": false,
+  "new_theorem_discovered": false,
+  "next_search_policy_note": {
+    "bytes": 7807,
+    "path": "/private/tmp/gcts-role-receiver-policy-note-20261018/receiver-policy-diagnosis-v1.json",
+    "sha256": "fcd0b73470b48868d22c259c57ab3ae77d48b7595a533b112340fd461dd24d03"
+  },
+  "point_search_executed": false,
+  "schema": "role-receptor-reviewed-finite-summary-v1",
+  "source_English_map": {
+    "bytes": 6866,
+    "path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/role-receptor-five-case-English-map-v2.json",
+    "sha256": "d67ce6f8cd310143ae8a31145102b3c03a28fd9798ca0d2abc0f35364864c20f"
+  },
+  "status": "CLOSED_ROLE_RECEPTOR_FINITE_INVENTORY_PASS",
+  "trained_RL": false
+}
