@@ -1,8 +1,8 @@
 {
   "archive": {
-    "bytes": 2117182,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v1/licensed-clusters-reproduction.zip",
-    "sha256": "ebd4a184d2ae688de90f79d7cce390659fe1d878a7edee94676485d3c1548bec"
+    "bytes": 2129936,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v2/licensed-clusters-reproduction.zip",
+    "sha256": "70cfc6e65176f571df3b230029413093c3f0057026fefe354d57082491425688"
   },
   "closed_actuals": 1,
   "date_UTC": "2026-10-18",
@@ -148,6 +148,27 @@
       "sha256": "d18afc7f099add931c7288ca492cdb21503ab69650ef394b92d368c14c6ecb87"
     },
     {
+      "archive_member": "objects/66b4cbd1aca6ed15ae72cecf13e12ab818e934ace2c780224baee488a55406d8",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 584,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/ROOT-deployment-v1.json",
+      "sha256": "66b4cbd1aca6ed15ae72cecf13e12ab818e934ace2c780224baee488a55406d8"
+    },
+    {
+      "archive_member": "objects/c9ce5bf602165cbcc8988a9a05b3ee18c813fb1f4103bdc126c8c2ca81585626",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 2670,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/ROOT-installed-v2.json",
+      "sha256": "c9ce5bf602165cbcc8988a9a05b3ee18c813fb1f4103bdc126c8c2ca81585626"
+    },
+    {
+      "archive_member": "objects/bdf8d7244fb4fe06ace082786dd7b9f0934cdc84021eb4265a1248e1a635e2b3",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 3319,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/ROOT-live-bytes-v1.json",
+      "sha256": "bdf8d7244fb4fe06ace082786dd7b9f0934cdc84021eb4265a1248e1a635e2b3"
+    },
+    {
       "archive_member": "objects/67bd21ba448d769ee2d9b75a8f333cf27a67316c998aadfc1da9188782111eac",
       "binding_scope": "CURRENT_RESEARCH_RECORD",
       "bytes": 1961,
@@ -169,6 +190,20 @@
       "sha256": "e59a260862f629e4d58cc7257ed52146328c539b1fdde5365c6a904aa433c0e2"
     },
     {
+      "archive_member": "objects/6aafc5d04a9d8aa5813c0ee3b9cf1430d48c1909d524d0da68166ba06d9dd43d",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 368,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/ROOT-pushed-v1.json",
+      "sha256": "6aafc5d04a9d8aa5813c0ee3b9cf1430d48c1909d524d0da68166ba06d9dd43d"
+    },
+    {
+      "archive_member": "objects/3dfb6218e2491e719abbfd3768acb0cb8a9f8610dd89d67d04f2c487f2bf94bd",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 7588,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/ROOT-reviewed-publication-freeze-v1.json",
+      "sha256": "3dfb6218e2491e719abbfd3768acb0cb8a9f8610dd89d67d04f2c487f2bf94bd"
+    },
+    {
       "archive_member": "objects/5cad78214d473d01db04fcc7dfdc7e3406f0ac18f714c7a01c66c29213eaad5d",
       "binding_scope": "CURRENT_RESEARCH_RECORD",
       "bytes": 950,
@@ -176,52 +211,59 @@
       "sha256": "5cad78214d473d01db04fcc7dfdc7e3406f0ac18f714c7a01c66c29213eaad5d"
     },
     {
+      "archive_member": "objects/622b1dd2c9e493415423fa10badde64845c4b3cbf3a3e48cafa16b353e1e0fb8",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 1328,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/ROOT-reviewed-study-v2.json",
+      "sha256": "622b1dd2c9e493415423fa10badde64845c4b3cbf3a3e48cafa16b353e1e0fb8"
+    },
+    {
       "archive_member": "objects/197b0d20642003e98a95150d9207dd5395c7306ab131bfbc0b445287ae585497",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 8318,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v1/licensed-clusters-cases-English.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v2/licensed-clusters-cases-English.json",
       "sha256": "197b0d20642003e98a95150d9207dd5395c7306ab131bfbc0b445287ae585497"
     },
     {
       "archive_member": "objects/f2b567174b60832bfa1177b7265c29030f4eb95d067e6999907d14fc68b16637",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 7283,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v1/licensed-clusters-data-review.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v2/licensed-clusters-data-review.json",
       "sha256": "f2b567174b60832bfa1177b7265c29030f4eb95d067e6999907d14fc68b16637"
     },
     {
-      "archive_member": "objects/c7936e88525b105527c982f62725890cd3f9c709263d2d138b93c90ad1ded2e4",
+      "archive_member": "objects/310e352af4910e991c5bca181701986618a64f8cad3db40f60882ff78dd56f3d",
       "binding_scope": "CURRENT_PUBLICATION",
-      "bytes": 7537,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v1/licensed-clusters-report-review.json",
-      "sha256": "c7936e88525b105527c982f62725890cd3f9c709263d2d138b93c90ad1ded2e4"
+      "bytes": 5402,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v2/licensed-clusters-report-review.json",
+      "sha256": "310e352af4910e991c5bca181701986618a64f8cad3db40f60882ff78dd56f3d"
     },
     {
       "archive_member": "objects/dd9f0ade82ee3ecee451caf196e361e1191bd31f02ba4369e87af1fa858cb3ed",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 18243,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v1/licensed-clusters-summary.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v2/licensed-clusters-summary.json",
       "sha256": "dd9f0ade82ee3ecee451caf196e361e1191bd31f02ba4369e87af1fa858cb3ed"
     },
     {
-      "archive_member": "objects/5c0b9e321fe87dc2d920cb1f81e2f4e5ecd4a8ca30d0e161a962eb5aa397207b",
+      "archive_member": "objects/9ddc0f0458f69710a3b6e549feabddb488a7a4618d6aa1d30bfda9206dd58bf1",
       "binding_scope": "CURRENT_PUBLICATION",
-      "bytes": 32512,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v1/licensed-clusters.html",
-      "sha256": "5c0b9e321fe87dc2d920cb1f81e2f4e5ecd4a8ca30d0e161a962eb5aa397207b"
+      "bytes": 32785,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v2/licensed-clusters.html",
+      "sha256": "9ddc0f0458f69710a3b6e549feabddb488a7a4618d6aa1d30bfda9206dd58bf1"
     },
     {
       "archive_member": "objects/62c537fa7c858ee989640a2375dbdc98d0ca43458f7a7188d0ed5d4acbe2905d",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 7556,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v1/parallel-work-status.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v2/parallel-work-status.json",
       "sha256": "62c537fa7c858ee989640a2375dbdc98d0ca43458f7a7188d0ed5d4acbe2905d"
     },
     {
       "archive_member": "objects/f897d922f0af41599816a6f2a0fbd7307b6debbda7bae306cc1555d2d96a5f5a",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 71559,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v1/reader.html",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-study-progress-20261018/publication-draft-v2/reader.html",
       "sha256": "f897d922f0af41599816a6f2a0fbd7307b6debbda7bae306cc1555d2d96a5f5a"
     },
     {
@@ -1058,6 +1100,13 @@
       "sha256": "ed8871145fad03704777f1a13261f2f7c89c070185122b605229117960b848de"
     },
     {
+      "archive_member": "objects/7e210742265fd7bdf7df49911e0a841502977e14ff2cd11ddd32b0fa051b5141",
+      "binding_scope": "CURRENT_SOURCE_OR_REVIEW_PACKET",
+      "bytes": 5103,
+      "original_path": "/private/tmp/gcts-larger-cluster-root-v2-source-20261018/build_evidence_v2.py",
+      "sha256": "7e210742265fd7bdf7df49911e0a841502977e14ff2cd11ddd32b0fa051b5141"
+    },
+    {
       "archive_member": "objects/ffee40ad53fcb2c0ab53808bcbd769b504536cdd3c21a0bd40b1d1c550576bb3",
       "binding_scope": "CURRENT_SOURCE_OR_REVIEW_PACKET",
       "bytes": 17998,
@@ -1114,6 +1163,13 @@
       "sha256": "e42a77ed414905dd34f371dd1b814802ebe874d7c2ce8e1ff1fae3ed744350af"
     },
     {
+      "archive_member": "objects/936dd80bf5ad73dc6909d624cf334c0c2136b4036eb652ec6a009aabe76a529e",
+      "binding_scope": "CURRENT_SOURCE_OR_REVIEW_PACKET",
+      "bytes": 2011,
+      "original_path": "/private/tmp/gcts-larger-cluster-root-v2-source-20261018/freeze_publication_v2.py",
+      "sha256": "936dd80bf5ad73dc6909d624cf334c0c2136b4036eb652ec6a009aabe76a529e"
+    },
+    {
       "archive_member": "objects/5c177ea5e0f18e91a79e406b9a45758ce526a41b5e2f6996a4e957563cb0b0ac",
       "binding_scope": "CURRENT_SOURCES",
       "bytes": 52143,
@@ -1133,6 +1189,13 @@
       "bytes": 1449,
       "original_path": "/private/tmp/gcts-larger-cluster-root-v2-source-20261018/verify_live_v1.py",
       "sha256": "b1d870afa5e0e835f36539300c37cb1c1d6c20b09b918cf489e4b0a62355bb8d"
+    },
+    {
+      "archive_member": "objects/80e91e21fd4fc7db00cd4ef675d218cf80833942d6af1cf9130547e5074564b3",
+      "binding_scope": "CURRENT_SOURCE_OR_REVIEW_PACKET",
+      "bytes": 1449,
+      "original_path": "/private/tmp/gcts-larger-cluster-root-v2-source-20261018/verify_live_v2.py",
+      "sha256": "80e91e21fd4fc7db00cd4ef675d218cf80833942d6af1cf9130547e5074564b3"
     },
     {
       "archive_member": "objects/c9d0e21c2cc7e1bae1ead4f09f701fa4bb1466b4822902ec22999c7e425dea1a",
@@ -1273,6 +1336,13 @@
       "bytes": 7537,
       "original_path": "/private/tmp/gcts-licensed-cluster-human-report-review-20261018/typed-report-review-v1.json",
       "sha256": "c7936e88525b105527c982f62725890cd3f9c709263d2d138b93c90ad1ded2e4"
+    },
+    {
+      "archive_member": "objects/310e352af4910e991c5bca181701986618a64f8cad3db40f60882ff78dd56f3d",
+      "binding_scope": "CURRENT_SOURCE_OR_REVIEW_PACKET",
+      "bytes": 5402,
+      "original_path": "/private/tmp/gcts-licensed-cluster-human-report-review-20261018/typed-report-review-v2.json",
+      "sha256": "310e352af4910e991c5bca181701986618a64f8cad3db40f60882ff78dd56f3d"
     },
     {
       "archive_member": "objects/d241907901770f124c9676ef5383c5286081411c7e3ad2e7f736504f6810ffdc",
@@ -1493,7 +1563,7 @@
     }
   ],
   "goal_complete": false,
-  "original_binding_count": 212,
+  "original_binding_count": 222,
   "prior_public_archive": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/two-witness-reproduction.zip",
   "reproduction": "Select the exact current plan Source bindings. Preserved negative drafts are not approved alternatives. Use fresh paths/grants and the compatible declared Darwin/Python runtime; do not rerun consumed actuals. Embedded manifest omits external archive hash to avoid self-reference.",
   "runtime_binary_included": false,
@@ -1505,5 +1575,5 @@
   "schema": "licensed-cluster-evidence-manifest-v1",
   "scientific_replays_by_packaging": 0,
   "scope": "One closed finite generic mining/conditional-instance actual; current35 executable Sources, original17 model and full donor data, genuine Source/data/report peers and preserved negative pre-actual drafts. No point search, theorem, universal-family, RL or performance claim.",
-  "unique_object_count": 197
+  "unique_object_count": 207
 }
