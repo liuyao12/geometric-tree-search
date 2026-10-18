@@ -1,0 +1,310 @@
+{
+  "Root_admission": {
+    "bytes": 193827,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "8f97e9944cfc542911d7ebe9e95b4710d7dc0e80d63b4aab5c0775119962b5c6"
+  },
+  "actual_execution_authorized": false,
+  "authorship_disclosure": {
+    "reviewer_authored_Root_report_or_renderer": false,
+    "reviewer_authored_current_symbolic_control": true,
+    "reviewer_authored_earlier_CASE_checkers_and_398acd_verifier": true,
+    "reviewer_authored_native_broker_and_parent_outer_runner": true,
+    "reviewer_authored_quantified_parent_driver": true,
+    "scope": "Independent review of Root human-facing wording and retained-data display, not an independent re-audit of reviewer-authored control/driver/broker/runner/checker semantics. Distinct mathematical saved-data and resource/custody peers retain their own disclosed scopes."
+  },
+  "claim_scope": [
+    "The familiar development case, two repetitions, prospective strategy and common complete point-model cost are explicit. This is a mechanism comparison, not a held-out benchmark or standalone no-point-encoding measurement.",
+    "Symbolic row extensions and tile placement attempts are different units. Observed cold/search/peak differences on this case do not establish a statistical or general proof-search advantage.",
+    "Library use and matched fixed-hint consumption are observed; a no-library ablation was not run, so reusable-library benefit is not independently measured.",
+    "No new RL training, geometric advantage, general superiority or program completion is claimed. Native proof and quantified milestone observations rely on the separately admitted retained evidence."
+  ],
+  "completed_display_checks": {
+    "all_six_current_proof_readers": [
+      {
+        "case": "r1-base",
+        "definition_rows": 17,
+        "definitions": 5,
+        "math_spans": 11356,
+        "root_rows": 12,
+        "selected_mark_assignments": 5558,
+        "selected_tiles": 60
+      },
+      {
+        "case": "r1-fixed",
+        "definition_rows": 17,
+        "definitions": 5,
+        "math_spans": 11646,
+        "root_rows": 12,
+        "selected_mark_assignments": 5699,
+        "selected_tiles": 60
+      },
+      {
+        "case": "r1-symbolic",
+        "definition_rows": 17,
+        "definitions": 5,
+        "math_spans": 10936,
+        "root_rows": 12,
+        "selected_mark_assignments": 5344,
+        "selected_tiles": 60
+      },
+      {
+        "case": "r2-symbolic",
+        "definition_rows": 17,
+        "definitions": 5,
+        "math_spans": 10936,
+        "root_rows": 12,
+        "selected_mark_assignments": 5344,
+        "selected_tiles": 60
+      },
+      {
+        "case": "r2-fixed",
+        "definition_rows": 17,
+        "definitions": 5,
+        "math_spans": 11646,
+        "root_rows": 12,
+        "selected_mark_assignments": 5699,
+        "selected_tiles": 60
+      },
+      {
+        "case": "r2-base",
+        "definition_rows": 17,
+        "definitions": 5,
+        "math_spans": 11356,
+        "root_rows": 12,
+        "selected_mark_assignments": 5558,
+        "selected_tiles": 60
+      }
+    ],
+    "check_count": 140946,
+    "findings": [],
+    "mismatch_count": 0,
+    "scope": [
+      "Every displayed root and registered-definition body formula compared as literal AST to the retained data; English, ordered source references, port tables and essential highlighting compared to retained observations.",
+      "Every selected tile packet, positive occupancy, literal marking point/value/color and remote read label compared to the retained full packet. Assigned zero and negative sentinel values remain explicit.",
+      "Full displayed commands, definitions, native request and essential-observation JSON compared literally. All six gzip downloads are byte-lossless copies of the original retained results.",
+      "Overview schedule, proof/data links, search-unit labels, rounded times and conservative peak-memory units compared to saved summary/resource fields.",
+      "Historical memory payload scalars and tables independently counted from the retained historical outputs without profiling; the earlier GCTS/SMT cohort and unmeasured implementation proposals remain explicitly scoped.",
+      "Reader current and historical panels, status roles and limitations, local anchors and inherited saved public navigation targets checked."
+    ],
+    "totals": {
+      "definition_rows": 102,
+      "math_spans": 67876,
+      "root_rows": 72,
+      "selected_mark_assignments": 33202,
+      "selected_tiles": 360
+    },
+    "unexpected_broken_links": []
+  },
+  "corrected_prepublication_findings": [
+    "V1 overview static LaTeX was corrupted by shell-string escaping, including a control character. The original and failed V2 normalizer are preserved; V3 exact positioned correction is verified. The six dynamic proof readers were unchanged.",
+    "V4 changed benefit wording to observed reusable-library use, avoiding an unsupported no-library causal comparison.",
+    "V5 corrected five memory notation/spacing/type-identifier strings. Complete inverse/forward normalization and all other asset bytes are verified."
+  ],
+  "correction_records": {
+    "claim_precision": {
+      "bytes": 1148,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-report-claim-precision-v1.json",
+      "sha256": "0bd9166968bf7d85a90055c604aabfc22bc2b81e7f5e65cb2a338c731ee692ec"
+    },
+    "math": {
+      "bytes": 3990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-reporting-math-correction-v1.json",
+      "sha256": "19ffa23c41b4c6c57f14286429b70ffe7618188aa0a7f41e9b9f723b9dc629a9"
+    },
+    "memory_notation": {
+      "bytes": 1493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-memory-notation-delta-v1.json",
+      "sha256": "97c758a76967ecca8c4a93aeebd831a2910d3021ff4ee90e5ce6880faaaef86f"
+    }
+  },
+  "display_audit": {
+    "bytes": 14830864,
+    "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/audit-v2.json",
+    "sha256": "fef03db73dbb9740d1cf9b5c55e3a704d0e55c05a8cdca8b0b354b7c8ba8f63c"
+  },
+  "display_audit_Source": {
+    "bytes": 28207,
+    "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/audit_display_v2.py",
+    "sha256": "cd4ee6b69f72f06dd99c86a0efdce594d54b00f66ce7c879d83dc48e7c6a6fb2"
+  },
+  "final_metadata_Source": {
+    "bytes": 14214,
+    "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/freeze_review_v2.py",
+    "sha256": "84cf99dff62d7e71db9e02700baa36a580c204d1a7f28ebb94744295c50dba8f"
+  },
+  "final_metadata_checks": {
+    "bytes": 19805,
+    "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/final-display-metadata-checks-v1.json",
+    "sha256": "3f385aea95d5211ec05e6b49518775b697ebebeb626e4b1486645d419778f1ad"
+  },
+  "independent_reviews": {
+    "independent_mathematical_saved_data_review": {
+      "bytes": 133097,
+      "path": "/private/tmp/gcts-symbolic-comparison-saved-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "68c2dd53b6c255e721b927689abc4061359358af4d167f6f8ec77c5468db3c54"
+    },
+    "independent_resource_custody_review": {
+      "bytes": 27236,
+      "path": "/private/tmp/gcts-symbolic-resource-peer-20261018/typed-resource-custody-review-v1.json",
+      "sha256": "1f7e765dbb30da4f0c7303a7a1fbe802d55c8e1f522fdf6b286bc7e9b8de3e9b"
+    }
+  },
+  "inherited_navigation": {
+    "bytes": 1290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-inherited-navigation-remote-v1.json",
+    "sha256": "be9088c7f279137c5aeedacf9ef65fa09521b7734cfd47c7e1243cbdc19cbdc3"
+  },
+  "kernel_calls": 0,
+  "limitations": [
+    "No project, renderer, model, kernel, proof-search or solver code was imported or executed; no native or mathematical replay and no scientific acceptance performed.",
+    "Stdlib parsing, HTML inspection, raw hashing, literal retained-statistic counting and explicitly authorized retained-report gzip decompression only.",
+    "The independent formula parser checks display fidelity on these actual retained ASTs, not universal renderer correctness or logical validity.",
+    "Resource admission and native/proof acceptance remain Root decisions with their separately frozen peers. This review does not independently rederive the mathematical proofs or sealed runtime model.",
+    "No browser execution was performed by this reviewer; five future packaging objects are deliberate release conditions, not evidence already present."
+  ],
+  "native_calls": 0,
+  "prior_audit_metadata_correction": "V1 audit incorrectly ignored the outcome method th cell and used three placeholder future-artifact names. V2 uses the actual HTML table cells and exact five Root future names; reviewed outputs are unchanged. Per-reader seen-math IDs are reset and explicit hint/HTML memory table checks added.",
+  "prior_display_audit": {
+    "bytes": 14827776,
+    "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/audit-v1.json",
+    "sha256": "b1f25f34fda839a9c0c5faa48f46718eee30c77b96f1e50ac984c8c93d909061"
+  },
+  "prior_finalization_draft": {
+    "bytes": 13535,
+    "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/freeze_review_v1.py",
+    "sha256": "bc60dd73ae81199cca2368b5cb8d467804f2652f51ed8a96b7aa7b6f99cae735"
+  },
+  "prior_finalization_draft_limit": "The preserved first finalizer treated journal coordinates as original-order offsets. Raw repair Source shows they are sequential current-string coordinates; V2 applies the authenticated journal in order and reverses it in reverse order. The failed metadata assumption did not change any reviewed output or underlying scientific data.",
+  "project_imports": 0,
+  "proof_replays": 0,
+  "publication_authorized_by_this_review": false,
+  "release_conditions_owned_by_Root": {
+    "no_current_claim_assets_exist_or_are_live": true,
+    "pending_exact_objects": [
+      "symbolic-comparison-data-review.json",
+      "symbolic-comparison-evidence-manifest.json",
+      "symbolic-comparison-evidence.zip",
+      "symbolic-comparison-human-review.json",
+      "symbolic-comparison-resource-review.json"
+    ],
+    "required_before_completion": [
+      "Insert exact bytes of the independent data review, independent resource review and this human review at the three declared public copy names; bind them and all final publication assets in the evidence manifest.",
+      "Build and independently hash-check the evidence ZIP and manifest, preserve historic correction records/reviews, verify the archive roundtrip and all final local links after the five declared objects exist.",
+      "Publish only task-owned assets to the established destination and verify the live exact bytes and navigation.",
+      "Perform live browser MathJax glyph, formula overflow/clipping, proof tile/English/table layout and responsive checks. This Source/retained-display review does not substitute for rendered browser validation."
+    ]
+  },
+  "renderer_author_identity": "/root/conventional_library",
+  "renderer_evaluations": 0,
+  "report_author_identity": "/root",
+  "report_review_passed": true,
+  "reviewed_output_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5",
+  "reviewed_outputs": {
+    "parallel-work-status.json": {
+      "bytes": 19013,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/parallel-work-status.json",
+      "sha256": "40def1fe56b73860a7f69a9cc7ef8e28a5ec10818d1265f3afe1b1ca533e4e20"
+    },
+    "reader.html": {
+      "bytes": 80323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/reader.html",
+      "sha256": "5be53ecb39d872a5f7a7bd5e654d055af20e5dbaafa3f5b65b82d833197596d2"
+    },
+    "representation-memory-assessment-v1.json": {
+      "bytes": 17855,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/representation-memory-assessment-v1.json",
+      "sha256": "ca173ac7a9585c9032dd7942379c93f4797a4f2819a76b27d957542e3d8484f9"
+    },
+    "representation-memory-assessment.html": {
+      "bytes": 13420,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/representation-memory-assessment.html",
+      "sha256": "71ac551cca0d4765881efbb1ac73f0b15b3779ac91ecfbb2932ad42e511058ac"
+    },
+    "saved-payload-stats-v1.json": {
+      "bytes": 33194,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/saved-payload-stats-v1.json",
+      "sha256": "4ec0aa7dd1b35cd3b2cc744e0fdc7660587d6c4f6d81b1ad5ff604868d7eb604"
+    },
+    "symbolic-comparison-r1-base-proof.html": {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-base-proof.html",
+      "sha256": "8bb96f3d065e738eba0f1303e834e904c28f4077ef29337f315469e19eb9ed97"
+    },
+    "symbolic-comparison-r1-base-result.json.gz": {
+      "bytes": 1852145,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-base-result.json.gz",
+      "sha256": "64b807ebd479cf25ea21915194d9ffa53915ed25fc7f5058aa8d50ce1a5b1336"
+    },
+    "symbolic-comparison-r1-fixed-proof.html": {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-fixed-proof.html",
+      "sha256": "2e7273fae396d73dde282cfeabb5a595e7441ed9bc3a867750d0abd58aaa809c"
+    },
+    "symbolic-comparison-r1-fixed-result.json.gz": {
+      "bytes": 1430823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-fixed-result.json.gz",
+      "sha256": "2c5451210ad8496dd69a917a78be4274507b14a0d030ad987ab9a2001dd878f5"
+    },
+    "symbolic-comparison-r1-symbolic-proof.html": {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-symbolic-proof.html",
+      "sha256": "9077b6d3a36f6374f00d7bd4d3864fbd7532e809e568932e5d5fb70878d2fa6c"
+    },
+    "symbolic-comparison-r1-symbolic-result.json.gz": {
+      "bytes": 950332,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-symbolic-result.json.gz",
+      "sha256": "b5f15117c2d9cf8d8173769e6b7ffe76c6e30ad984b03eccb1882ebc2108ab0d"
+    },
+    "symbolic-comparison-r2-base-proof.html": {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-base-proof.html",
+      "sha256": "402eaf563ad599578382ee5b5c3f20afe6a324e6bb45bf3c91772e56987122f1"
+    },
+    "symbolic-comparison-r2-base-result.json.gz": {
+      "bytes": 1852140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-base-result.json.gz",
+      "sha256": "e9857580386d2e53727a7c71095951b28b7d3c3338df2179d7ba9e5c05c4836d"
+    },
+    "symbolic-comparison-r2-fixed-proof.html": {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-fixed-proof.html",
+      "sha256": "5410dc1803b9cddb81e68c706169e9cb53d9460bae670a41d1cf5a78fa8f79fc"
+    },
+    "symbolic-comparison-r2-fixed-result.json.gz": {
+      "bytes": 1430834,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-fixed-result.json.gz",
+      "sha256": "df126e77d4ad83677628e2bb439f7760234e6d7cdf1c8b5861d473dc8c724f4c"
+    },
+    "symbolic-comparison-r2-symbolic-proof.html": {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-symbolic-proof.html",
+      "sha256": "fdd11a7519edb34dbfddd1f8bdbe1387b43a0d5502ba91758d583b50046dd716"
+    },
+    "symbolic-comparison-r2-symbolic-result.json.gz": {
+      "bytes": 950360,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-symbolic-result.json.gz",
+      "sha256": "32a5a3388cf518696d5780a2218ced9041b651224ee981d7d0d720d0b8f48f34"
+    },
+    "symbolic-comparison-summary.json": {
+      "bytes": 199465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-summary.json",
+      "sha256": "e8b6e6d6c64b6eb48f9483b4f7e24dfced48088b78065caf743842ccef489049"
+    },
+    "symbolic-comparison.html": {
+      "bytes": 11836,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison.html",
+      "sha256": "429be61d55eb2bb7646268cab3ba0f2b9a2c4712e4efc5e84e224bfb67f94b93"
+    }
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "saved_data_only": true,
+  "saved_report_gzip_decompression_authorized": true,
+  "schema": "symbolic-comparison-human-report-typed-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "search_runs": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "wording_and_saved_data_review_passed": true
+}

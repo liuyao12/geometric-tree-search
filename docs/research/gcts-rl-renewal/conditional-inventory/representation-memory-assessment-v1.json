@@ -1,0 +1,194 @@
+{
+  "schema": "quantified-representation-memory-assessment-v1",
+  "status": "SOURCE_AND_RETAINED_DATA_ONLY_PROPOSALS_NOT_IMPLEMENTED",
+  "author_identity": "/root/conventional_library",
+  "authorship_disclosure": "Author wrote current quantified adapters and parent semantic driver/renderer and prior Q components. This is a Source/read-only data diagnosis, not an independent soundness review of own components, native proof admission or a measured allocation profile. Current Root-owned actuals/admission and distinct data/resource reviews remain separate.",
+  "scientific_calls": 0,
+  "project_imports": 0,
+  "native_calls": 0,
+  "solver_calls": 0,
+  "renderer_calls": 0,
+  "codec_or_decompression_calls": 0,
+  "profiler_calls": 0,
+  "Source_edits": 0,
+  "scientific_replay": false,
+  "scientific_acceptance": false,
+  "Root_admission": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "49c74134d88e5cf35cbde2a73a7286071fef9cf12643de07b9024acfe588345e",
+    "bytes": 175793
+  },
+  "saved_statistics": {
+    "path": "/private/tmp/gcts-quantified-memory-assessment-20261018/saved-payload-stats-v1.json",
+    "sha256": "4ec0aa7dd1b35cd3b2cc744e0fdc7660587d6c4f6d81b1ad5ff604868d7eb604",
+    "bytes": 33194
+  },
+  "stats_source": {
+    "path": "/private/tmp/gcts-quantified-memory-assessment-20261018/saved_payload_stats_v1.py",
+    "sha256": "731679fc1322e35f40719735a7eb455329600932d82e91fbf32a9dd3c387f794",
+    "bytes": 6348
+  },
+  "sources": {
+    "master": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "bytes": 21657,
+      "lines": "sections1\u20134,7\u20138"
+    },
+    "state_graph": {
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "bytes": 28533,
+      "lines": "98\u2013192: shallow State.copy, full Graph container copies, complete reverse incidence, decision priority"
+    },
+    "point_word_encoding": {
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "bytes": 8962,
+      "lines": "13\u201323: byte-point assignment and merge;89\u201390: full state fingerprint"
+    },
+    "current_model": {
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c",
+      "bytes": 6472,
+      "lines": "15\u201385: full command/guard/input placements and inherited record"
+    },
+    "point_model_storage": {
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+      "bytes": 7409,
+      "lines": "64\u201375,91\u201396: full marks, static dependencies and shallow model-record wrappers"
+    },
+    "search": {
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+      "bytes": 5318,
+      "lines": "9\u201358: recursive child State/Graph copies, census every node, events/hints retained"
+    },
+    "hint_aggregate": {
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+      "bytes": 10594,
+      "lines": "38\u201354: transient union dictionaries and canonical digest"
+    },
+    "driver": {
+      "path": "/private/tmp/gcts-quantified-driver-source-20261018/quantified_receiver_driver_v1.py",
+      "sha256": "d1df19ee83c1f248534b707bf1a3584ccc9c9df5a87470d4b90af5dc4c53071f",
+      "bytes": 45668,
+      "lines": "46\u201356,144\u2013151,546\u2013590,687\u2013708,761\u2013789: JSON copying/identity, model records, streaming output, native record ownership"
+    },
+    "smt": {
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+      "bytes": 4593,
+      "lines": "9\u201338,44\u201360: Boolean/mark/group containers, solver ASTs and retained complete SMT-LIB string"
+    },
+    "cold": {
+      "path": "/private/tmp/gcts-quantified-cold-root-source-20261018/quantified_cold_v1.py",
+      "sha256": "c3385662302b377da334e50e647c948884175e0abaad3d41af17bee224e6d47b",
+      "bytes": 23496,
+      "lines": "60\u201378,282\u2013319,325\u2013339,349\u2013366: raw-file buffers, loaded runtime, native tables and whole-result reparse"
+    },
+    "outer": {
+      "path": "/private/tmp/gcts-semantic-once-runner-source-20261018/semantic_once_runner_v1.py",
+      "sha256": "b002cf5ec78bc8d0fe106c612690204f0fa43fd726cd05c9beda278d7f205861",
+      "bytes": 18066,
+      "lines": "210\u2013239: external result reparse, observed worker/native peak sum;278\u2013293: external observer scope"
+    }
+  },
+  "reported_archive_compression_record": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/ROOT-report-compression-v1.json",
+    "sha256": "b06a66809ac2fe579554be7f17a198dc98b6d6e7b03d891a76b0840a2cc8b9a1",
+    "bytes": 11252
+  },
+  "compression_scope": "Optional retained Root reporting metadata only. No gzip encoder/decoder called by this assessment, and disk compression is not live RAM evidence.",
+  "measured_scope": "Canonical saved JSON sizes, literal saved structural counts, and already recorded terminal per-process highwaters. Field sizes are nested; parent and child fields cannot be summed together. Worker includes native Z3/library state; external instrument memory is outside historical owned-process sum.",
+  "findings": [
+    {
+      "id": "M1",
+      "evidence": "MEASURED_RETAINED_BYTES",
+      "text": "The identical common model is22,063,804 canonical JSON bytes per result. Its placement records occupy21,436,996 bytes, and their marks values alone19,588,844 bytes. These are serialized values, excluding their enclosing field-key overhead where stated. The model has7,441 placements,5,025 command rows,1,377,196 mark assignments,4,918 distinct mark points,4,978 total assigned coordinates, and1,384,637 static candidate-point dependency memberships. Only9 distinct formula words and1,096 distinct command words occur. The representation repeats literal word coordinates and value sequences extensively."
+    },
+    {
+      "id": "M2",
+      "evidence": "MEASURED_RETAINED_BYTES",
+      "text": "Base output is34,002,269/34,002,267 bytes; its search tree is11,839,212 bytes, of which census field values total11,606,759 bytes. It stores854 nodes and932,967 candidate-key occurrences in8,072 census rows. Fixed output is25,063,456/25,063,476 bytes; its61-node tree is2,837,012 bytes, with230,143 key occurrences. The fixed events/hints are only41,686/4,979 bytes in each repetition. The model dominates fixed serialization; repeated complete censuses dominate base trace serialization."
+    },
+    {
+      "id": "M3",
+      "evidence": "MEASURED_RETAINED_BYTES_AND_PEAKS",
+      "text": "SMT outputs45,294,400/45,294,374 bytes: the serialized SMT-LIB string alone23,130,465 bytes, alongside the same22,063,804-byte model. Yet recorded SMT peak sums are739.921875/667.25 MiB, below base935.5/955.078125 MiB. Thus saved file size is not a live-RAM estimator. Native CPP child peaks are12.296875\u201312.890625 MiB across the six records; most of each summed peak is the Python worker process, including its loaded native libraries/Z3 context, not necessarily Python heap alone."
+    },
+    {
+      "id": "M4",
+      "evidence": "SOURCE_INFERENCE_NOT_ALLOC_PROFILE",
+      "text": "Strong common-memory suspects are the materialized mark tuple/coordinate objects and the reverse dependency sets. assignment() creates one explicit point/value entry per JSON byte plus terminator; Model.add retains those marks and adds every candidate to the reverse point dependency sets. Their1.38 million memberships are not present as a separate serialized reverse index. This is a Source-derived scaling mechanism, not an allocation measurement or proof that it alone caused the observed peak."
+    },
+    {
+      "id": "M5",
+      "evidence": "SOURCE_INFERENCE_NOT_ALLOC_PROFILE",
+      "text": "Every recursive move copies all State dictionaries/lists/selected set, every graph domain set, every reverse-incidence set, and both graph dictionaries. Parents remain on the active DFS stack. Literal census sums along the largest saved active path reach250,471 legal-key occurrences for base and230,143 for fixed, both at depth60. Those counts support possible multiple-container pressure but are not byte allocations; immutable key/point objects can be shared. Independently, the tree retains sorted census lists for every explored node until return, so failed branches continue to cost trace storage."
+    },
+    {
+      "id": "M6",
+      "evidence": "SOURCE_INFERENCE_NOT_ALLOC_PROFILE",
+      "text": "The driver keeps the live model plus model_record and after_record wrappers. record() shares marks/occupancy and command references; these are not two complete deep copies of the immutable mark arrays. It nevertheless builds another7,441 placement dictionaries and repeatedly JSON-serializes the full semantic record for identity checks. _json/_owned create whole encoded bytes and, for _owned, a parsed owned object. Native records are small here(about21KB), so their copy is not the leading serialized factor. The recursive visit closure may remain until cyclic GC; exact lifetime/collector timing is unmeasured."
+    },
+    {
+      "id": "M7",
+      "evidence": "SOURCE_INFERENCE_NOT_ALLOC_PROFILE",
+      "text": "Output iterencode avoids one monolithic whole-result dump, but a large string such as SMT-LIB can still be one encoder part before the64KiB flush test. Root cold then reads the complete result and JSON-decodes it for raw whole-region verification while native tables/runtime remain live. The outer instrument separately parses the result after the worker exits; its own memory is explicitly excluded from the historical worker-plus-CPP peak sum. Python/Z3/table lifetime, allocator retention and peak phase were not recorded, so no exclusive peak attribution or claimed RAM reduction is justified."
+    }
+  ],
+  "proposals": [
+    {
+      "priority": "P1",
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "change": "One immutable literal catalog with stable point/candidate/formula/command IDs and contiguous support/dependency arrays.",
+      "preservation": "IDs are a bijection over the full original literal keys and typed values, with original t/m preimages and source epoch retained. Do not merge distinct inventory/provenance identities. Use exact presence masks: assigned0 and assigned-1 remain real values; missing is separate. Keep all7,441 candidates and all off-frontier marking dependencies. CSR/packed arrays may replace Python container overhead, not candidate coverage.",
+      "limits": "No current live-byte estimate. For this fixed catalog uint32 IDs suffice, but generic growth must have explicit bounds/extension and cannot recycle IDs across epochs/rollback."
+    },
+    {
+      "priority": "P2",
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "change": "Lossless transition trace with a catalog once, node/parent IDs, full initial state, delta events and periodic complete checkpoints.",
+      "preservation": "Each node records exact selected candidate, changed t/m assignments/reference counts, incidence additions/removals, generation/root metadata, ordered alternatives, failed-child cursor and hint/event references. Preserve all failed branches and UNKNOWN boundaries. Do not replace full candidate truth by top-k, hashes or hint members. An independent verifier must be able to reconstruct every complete census from the full catalog and literal state, check DEAD before FORCED before earliest generation, and inspect the whole fallback order.",
+      "limits": "For scale only,932,967 stored candidate IDs have a3,731,868-byte uint32 element body before container/point/node metadata and the catalog. This is a representation arithmetic example, not measured RSS or a frozen format. Delta encoding may save more but is not yet specified/certified."
+    },
+    {
+      "priority": "P3",
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "change": "Transactional state/incidence trail or persistent copy-on-write storage instead of deep sets at every child.",
+      "preservation": "Trail totals, explicit marking presence/value/reference counts, selected set/order, tile/point generations, roots, complete domains/reverse edges, branch cursor/exclusions and any inventory version. Restore the complete semantic state exactly; observational counters stay separate. Shared candidate incidence must stay one coherent graph.",
+      "limits": "This is the largest correctness risk; current copy-based rollback is the reference. Requires independent forward/inverse reconstruction and unchanged selected/failed decision traces before performance claims."
+    },
+    {
+      "priority": "P4",
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "change": "Stream full semantic identity/custody and artifact output; avoid duplicate model-record wrappers once the immutable representation is actually enforced.",
+      "preservation": "Keep before/after effective full model equality and exact raw Source/runtime/native custody; do not substitute object identity or a hash without literal preimages. Native certificates and whole-point verification still consume complete reconstructible data. Chunk large string serialization or place full SMT-LIB in an exact content-addressed sidecar, with atomic manifest and complete size/hash/EOF checks.",
+      "limits": "Changing monolithic packet structure needs a new protocol/Source review. Rejected/partial/truncated output remains UNKNOWN/unavailable; no proof salvage. Full sidecar set must be present before positive admission."
+    },
+    {
+      "priority": "OPTIONAL_DISTINCT_REPRESENTATION",
+      "status": "PROPOSED_NOT_IMPLEMENTED",
+      "change": "Intern complete canonical word spans as exact symbols instead of materializing one object per byte.",
+      "preservation": "An internal packed span representation can preserve every old byte-point value through a literal expansion dictionary. Collapsing a whole span to one abstract m-value is a different point representation and needs an explicit equivalence argument. In this grammar whole word assignments have a distinct256 terminator; exact symbol equality is safe only for checked complete-span writes. Partial/sparse overlays must use the original pointwise path.",
+      "limits": "Do not silently call a quotient model the unchanged physical point data; all compatibility graphs and original expanded t/m preimages must independently agree."
+    }
+  ],
+  "verification_and_comparison_requirements": [
+    "Future independent verifier starts from full literal model/initial state, treats trace deltas/hashes as untrusted, reconstructs all active domains and reverse incidence, validates exact generation and global decision priority, and checks whole target/marks after the discovered proof. It need not search for another proof, but must not trust engine census claims.",
+    "All conditional native family interfaces retain ordered/repeated earlier references, actual premises and free-variable/capture conditions. Compressing coordinates or labels creates no new axiom, premise or rule.",
+    "Every future comparison is a fresh, separately declared matched cohort with identical logical grammar/full knowledge, candidate universe, scheduler, hint policy, fallback, output completeness and native checking. No current consumed actual is replayed or re-admitted as an optimization result.",
+    "If phase memory instrumentation is later authorized, apply identical instrumentation/custody costs in every arm and state whether worker/native/outer-instrument memory is included. Current records contain terminal highwaters only, not phase or allocation profiles.",
+    "Keep current direct symbolic comparison and substantive proof-family research as the immediate priority. This note authorizes no further frontier/cache tuning or implementation. Archive gzip already reduces download size, not the live engine representation."
+  ],
+  "recommendation": "Representation cost is substantial and independently visible in saved data. First finish the direct symbolic comparison; if Root later authorizes memory engineering, prioritize immutable packed literal model/dependency storage and lossless trace encoding before attempting trail-based rollback. Preserve the current engine as the reference and measure full future peak/cost under a new protocol. No number here predicts the attainable RSS reduction or proof-search advantage.",
+  "limits": [
+    "No scientific code import/evaluation, search/model generation, native/solver/renderer call, codec operation, profiler or replay occurred.",
+    "Serialized bytes and container-entry counts do not establish live allocation sizes, live multiplicities, garbage-collection timing, allocator behavior or the time of the recorded peak.",
+    "The different peaks across two repetitions with identical model/trace are direct warning against a byte-to-RSS multiplier.",
+    "No current executable Source, actual, publication file or Root protected index was modified."
+  ]
+}

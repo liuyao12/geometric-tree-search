@@ -1,0 +1,2707 @@
+{
+  "Root_admission": {
+    "bytes": 193827,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "8f97e9944cfc542911d7ebe9e95b4710d7dc0e80d63b4aab5c0775119962b5c6"
+  },
+  "bindings": 488,
+  "data_reviews": [
+    {
+      "bytes": 133097,
+      "path": "/private/tmp/gcts-symbolic-comparison-saved-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "68c2dd53b6c255e721b927689abc4061359358af4d167f6f8ec77c5468db3c54"
+    },
+    {
+      "bytes": 27236,
+      "path": "/private/tmp/gcts-symbolic-resource-peer-20261018/typed-resource-custody-review-v1.json",
+      "sha256": "1f7e765dbb30da4f0c7303a7a1fbe802d55c8e1f522fdf6b286bc7e9b8de3e9b"
+    },
+    {
+      "bytes": 18552,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/typed-human-report-review-v1.json",
+      "sha256": "4e98f4a914cfd602093761d0fa0051f17fce1600e56b9b16f52bea7c54f24dff"
+    }
+  ],
+  "distinct_objects": 245,
+  "external_runtime_inputs": {
+    "Z3": {
+      "files": [
+        {
+          "bytes": 210,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/__init__.py",
+          "sha256": "53c4529a01f38e7c0d593b7548c79e0d7398aa09f7d7cbd1773470859ee2febd"
+        },
+        {
+          "bytes": 347383,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3.py",
+          "sha256": "a175fce3e5e6f7cbe7aefb54a5d01d63addc206811a9cbd3e58f87f48c10432b"
+        },
+        {
+          "bytes": 8062,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3consts.py",
+          "sha256": "59737a55612e9bddb33f7ec4a27db9fbc880a92053fa8a88919fcc934e1f7573"
+        },
+        {
+          "bytes": 202386,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3core.py",
+          "sha256": "c5859f1938aa7b5ce1c35ab52295ccb1405daa1ae224cb4ec292efbe98b1064e"
+        },
+        {
+          "bytes": 16090,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3num.py",
+          "sha256": "d7ad7cceb560867f55dcbd87c5866e1c365fddec92faa22321bf91b60c431dee"
+        },
+        {
+          "bytes": 1113,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3poly.py",
+          "sha256": "fd06029418e5899b300fe3b3a300d110c8e174e633cba8b751314f22a583394e"
+        },
+        {
+          "bytes": 46300,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3printer.py",
+          "sha256": "714f9fa34a1da9281bdc1a98d8e89d650daca6e99cd1839d325c4d3605a99730"
+        },
+        {
+          "bytes": 5039,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3rcf.py",
+          "sha256": "504e0339b1bb06075c19ca52e51457716671218a2f2191d0c9754e0b75bede87"
+        },
+        {
+          "bytes": 4883,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3types.py",
+          "sha256": "ba728354b4a9ee40bcfbd899f405d904bc4bb023e41807044c06c318548c3080"
+        },
+        {
+          "bytes": 11387,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3util.py",
+          "sha256": "7087f1bbb0119e0e8f545d70cba9a21446ff267cda1289e55b3c2e4e644effd9"
+        },
+        {
+          "bytes": 196419,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3++.h",
+          "sha256": "9fbeffe8be3e178f1ec5af06fa861ae19a1a659b9d2fe1440712cff9271930c8"
+        },
+        {
+          "bytes": 495,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3.h",
+          "sha256": "60cc2bb3e1df2c0fc6105b6a73c032b9d4f47487471616994ba63df8d81898a8"
+        },
+        {
+          "bytes": 7193,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_algebraic.h",
+          "sha256": "7659d6dec25e49e2dd6546a6ca6c05adb27437a989d857af0cbcc7191adb45a6"
+        },
+        {
+          "bytes": 271071,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_api.h",
+          "sha256": "02706214023c7e077ff11fc824a557f4d692ccd87e3c65c4231af9e24fedc563"
+        },
+        {
+          "bytes": 5735,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_ast_containers.h",
+          "sha256": "6687f3ec9483f3774b8951be0f9944ab47f61bedbd42193d075dd88c612fb248"
+        },
+        {
+          "bytes": 14123,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_fixedpoint.h",
+          "sha256": "cc8a424163dd6a92a1bfe07dea68edb8fc8dabb58f612b1e85a033a21178dedc"
+        },
+        {
+          "bytes": 43462,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_fpa.h",
+          "sha256": "f357754480a39788653f91063af53f2e054b2382a8486171a0a17a99e1354947"
+        },
+        {
+          "bytes": 389,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_macros.h",
+          "sha256": "9d92f8136abef10dd8429a28fd9068e9b3e4feb5696072763cd8d0edc1f00b24"
+        },
+        {
+          "bytes": 12936,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_optimization.h",
+          "sha256": "d6b857c21186f0710d8729ad3b7d9b39baa07b5c81855e106d3619c6423f48cc"
+        },
+        {
+          "bytes": 1056,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_polynomial.h",
+          "sha256": "e1894c40edb37115cf221a8ef2f7e5557c7360c3c0583f05582f849ebdd78c36"
+        },
+        {
+          "bytes": 9952,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_rcf.h",
+          "sha256": "5f2219157573043338df52808a2597f52cf9b179aa8b8006b4893571027632c7"
+        },
+        {
+          "bytes": 4459,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_spacer.h",
+          "sha256": "dd23be86e4fc74cd0adf6ca944834d165b93f6a6f3af81923116db97a7ee1ddd"
+        },
+        {
+          "bytes": 2220,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_v1.h",
+          "sha256": "30d1776dafddd426d06a4a737d51d37731b45790fc26573b361562e3758ebb04"
+        },
+        {
+          "bytes": 192,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_version.h",
+          "sha256": "98fe36ecc01c784e0039ca18b66e531038ecca89736e487c10f1ad53dc39253a"
+        },
+        {
+          "bytes": 25364904,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.4.15.dylib",
+          "sha256": "3164e079c221c23a843396a485a6e912ee423918ee64ea03943e584305439a98"
+        },
+        {
+          "bytes": 17477120,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.dll",
+          "sha256": "a86f051ce2e985857c7d53a635c3920742cb0053e04d61dd501215db533996f6"
+        },
+        {
+          "bytes": 25364904,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.dylib",
+          "sha256": "3164e079c221c23a843396a485a6e912ee423918ee64ea03943e584305439a98"
+        },
+        {
+          "bytes": 557728,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140.dll",
+          "sha256": "0f885b509a685d2bbfa652fed26b5fb31d88fbdab0a978c641d1c7b8aa460aa9"
+        },
+        {
+          "bytes": 35952,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_1.dll",
+          "sha256": "bfad5aef4c63a669e3c140655cdfdf395b6c979b400a447bd5dcb65ed8826c3d"
+        },
+        {
+          "bytes": 280200,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_2.dll",
+          "sha256": "3ea06f0ee098b4823cb79599df3780e7f23cce52c19aac31d2a0d47efe33a5e9"
+        },
+        {
+          "bytes": 50304,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_atomic_wait.dll",
+          "sha256": "640b2aefced484d0368eea5bdd06addd0658a3a70a49256e560d6923b404a479"
+        },
+        {
+          "bytes": 31872,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_codecvt_ids.dll",
+          "sha256": "f2069a52880ec885ee7f0511186100eb7fada0411a2b4948fafea7735b878a18"
+        },
+        {
+          "bytes": 193152,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcomp140.dll",
+          "sha256": "55aba23cdcd6484fbb06f4155b8ca75adfce7a881f10afd0c49457165e677164"
+        },
+        {
+          "bytes": 124544,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcruntime140.dll",
+          "sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066"
+        },
+        {
+          "bytes": 49792,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcruntime140_1.dll",
+          "sha256": "1f2d41c4aa5db0bc33ebf7b66d72943a817d7ce6cbe880502a9403823633093f"
+        },
+        {
+          "bytes": 38528,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcruntime140_threads.dll",
+          "sha256": "219915cf20822f34d5e7c1fdd4e21ae7f3396881096c51036225fb8f84b47afa"
+        },
+        {
+          "bytes": 25601056,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.data/data/bin/z3",
+          "sha256": "b93a874ccdeb27feb29e7c0a92b999f6531014a7a12976c96fc422b8202ac766"
+        },
+        {
+          "bytes": 778,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/METADATA",
+          "sha256": "2585c295b189883eea09c7eb95e3b692cb74caf2a29085abae40de69eb0bea13"
+        },
+        {
+          "bytes": 105,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/WHEEL",
+          "sha256": "3da3f83ef903ca249ce02e83870e9c71099fc6c585ad2bfe94942306c86ed21c"
+        },
+        {
+          "bytes": 3,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/top_level.txt",
+          "sha256": "5e1b3b203b8d9c1fe1424420b5d56a8244880e1a7539eb7e88b035ec0257fafe"
+        },
+        {
+          "bytes": 3209,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/RECORD",
+          "sha256": "bf34c15d433d827d8b3ad4597983d781df16ecbddaf4035b1ebc0f5a9edff82d"
+        }
+      ],
+      "library": {
+        "bytes": 25364904,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.dylib",
+        "sha256": "3164e079c221c23a843396a485a6e912ee423918ee64ea03943e584305439a98"
+      },
+      "root": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package"
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+    },
+    "runtime_closure": {
+      "bytes": 66757,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/runtime-closure-v1.json",
+      "sha256": "3662c45836100d1735f28a244c84a126b868748c4f30ecc179c222a19ba83de0"
+    }
+  },
+  "goal_complete": false,
+  "historical_quantified_archive": {
+    "bytes": 13584965,
+    "sha256": "9317fb4e787f676a144af6cd322eb1efbc6f4a005f680e854e9765b6f49d31d2",
+    "url": "quantified-transfer-evidence.zip"
+  },
+  "object_path_format": "objects/{sha256}",
+  "records": [
+    {
+      "bytes": 507,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/CONSUMED.json",
+      "sha256": "4f608e244a8672da4e23660ba62cf0fdecde2048601f3bf26dc207e207e76196"
+    },
+    {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 20067,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 49499,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/semantic_receiver_driver.py",
+      "sha256": "cb22fee42028fd3d76426f98cb7fa0a7acd8b653e498b8ca4897e526614c526d"
+    },
+    {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 671560,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/native/input.bin",
+      "sha256": "0506083cd353605e3561d52a30e36619e002092153ef97b2a4a037e87489e7d5"
+    },
+    {
+      "bytes": 671564,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/native/output.bin",
+      "sha256": "e7b803165a47d50400e6000cdd788020dba294e9043ec35260fb8a2d89b8d9e4"
+    },
+    {
+      "bytes": 34003498,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/result.json",
+      "sha256": "a86b953f8dd61623349c42bab941e4258e5c507624fe52fe479608b8487d6def"
+    },
+    {
+      "bytes": 53368,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/runner-receipt.json",
+      "sha256": "6d67ea54be87f327267c39de629743489d7ecf8ed3f860553e59ca3122d41614"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 43577,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-base-ROOT-20261018-v1/worker-receipt.json",
+      "sha256": "c14c306ac61b5c9b0d59dc90cc9ae00eb31a9e17e90c8bee2fbd294c8c7eafba"
+    },
+    {
+      "bytes": 510,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/CONSUMED.json",
+      "sha256": "78099fffc025731346aa8604950c80cd59d0744dcfb91c5ef871af59a6edd27f"
+    },
+    {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 20067,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 49499,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/semantic_receiver_driver.py",
+      "sha256": "cb22fee42028fd3d76426f98cb7fa0a7acd8b653e498b8ca4897e526614c526d"
+    },
+    {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 747592,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/native/input.bin",
+      "sha256": "df4087e5f23dcaac1066ee93c54ce79f795910792e7f0af8768d537f927eb508"
+    },
+    {
+      "bytes": 747596,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/native/output.bin",
+      "sha256": "e70b38abfc6f75f8320023f74a97cf1d28bad9e91dcf6d36cc1f6bdcb42adec2"
+    },
+    {
+      "bytes": 25064712,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/result.json",
+      "sha256": "052fcee979053a618ee450f72ee7837cd644c67572c83c31c3bb333e365e20e8"
+    },
+    {
+      "bytes": 53435,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/runner-receipt.json",
+      "sha256": "4f38319e1718dcfd27bb20c9ff3d728ebe6d7fa885b931a654ac838298510b29"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 43625,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-fixed-ROOT-20261018-v1/worker-receipt.json",
+      "sha256": "138f8050dd9c8e1429bf54eb3e92b803ace660f6653f58f541e140326a35cb44"
+    },
+    {
+      "bytes": 519,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/CONSUMED.json",
+      "sha256": "849415fb20955287628d30069745082d1b6e73aa19bdfe988fbb2e99b4beabcf"
+    },
+    {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 20067,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 49499,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/semantic_receiver_driver.py",
+      "sha256": "cb22fee42028fd3d76426f98cb7fa0a7acd8b653e498b8ca4897e526614c526d"
+    },
+    {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 712964,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/native/input.bin",
+      "sha256": "60ee844a76b69a4a8f93c6cc5437f10b572959652a0363bfc9b053f01bc4de89"
+    },
+    {
+      "bytes": 712968,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/native/output.bin",
+      "sha256": "3d8bc6543363fcf1c671a73a38b2c054ae570b56bd4b3ae0219741095915c4e1"
+    },
+    {
+      "bytes": 22799807,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/result.json",
+      "sha256": "14cfcd6db5fd49dd8ae335286c04ae7149619c30688d6b991845c67646574a0f"
+    },
+    {
+      "bytes": 53501,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/runner-receipt.json",
+      "sha256": "d604cdd96272f2e8d9dc6fa4dfa60ee99e9783b2a3ad925b42281c8fa44936df"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 43682,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r1-symbolic-ROOT-20261018-v1/worker-receipt.json",
+      "sha256": "189237c3018cad0bb8d8bcf7588c58d689c205baf1aca1b89cd588ce2b612559"
+    },
+    {
+      "bytes": 507,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/CONSUMED.json",
+      "sha256": "a036b5cd3df1c35e34e10cd4dccca7ac5a70e384f78db4cb44505b6dfa229b1e"
+    },
+    {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 20067,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 49499,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/semantic_receiver_driver.py",
+      "sha256": "cb22fee42028fd3d76426f98cb7fa0a7acd8b653e498b8ca4897e526614c526d"
+    },
+    {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 671560,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/native/input.bin",
+      "sha256": "0506083cd353605e3561d52a30e36619e002092153ef97b2a4a037e87489e7d5"
+    },
+    {
+      "bytes": 671564,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/native/output.bin",
+      "sha256": "e7b803165a47d50400e6000cdd788020dba294e9043ec35260fb8a2d89b8d9e4"
+    },
+    {
+      "bytes": 34003489,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/result.json",
+      "sha256": "4e8769b3183925c8d3bf5ed678bded126de937bc2977f16f235244efd87f8567"
+    },
+    {
+      "bytes": 53374,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/runner-receipt.json",
+      "sha256": "676abdd9016753ed9c2b94a9cefc7d2cff32757435ab709d5e183dbf541dd22a"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 43582,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-base-ROOT-20261018-v1/worker-receipt.json",
+      "sha256": "bc59844795cea319f58fcda2ed592815d49fcd4512f8aec00c6843737ae002c8"
+    },
+    {
+      "bytes": 510,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/CONSUMED.json",
+      "sha256": "b4615666f2e39f5d228db232f36fd34cb5666fb1a608339c6bd07d8bffc2a3e8"
+    },
+    {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 20067,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 49499,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/semantic_receiver_driver.py",
+      "sha256": "cb22fee42028fd3d76426f98cb7fa0a7acd8b653e498b8ca4897e526614c526d"
+    },
+    {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 747592,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/native/input.bin",
+      "sha256": "df4087e5f23dcaac1066ee93c54ce79f795910792e7f0af8768d537f927eb508"
+    },
+    {
+      "bytes": 747596,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/native/output.bin",
+      "sha256": "e70b38abfc6f75f8320023f74a97cf1d28bad9e91dcf6d36cc1f6bdcb42adec2"
+    },
+    {
+      "bytes": 25064717,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/result.json",
+      "sha256": "462b895fa63ae31205474e8aaadb2463a93bd4d2181910044ba7eff9fa3ca765"
+    },
+    {
+      "bytes": 53441,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/runner-receipt.json",
+      "sha256": "54f38695da3e6bd961f434ff8c24942ed19d9f76ffb8388a1ed3823bceffc2be"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 43630,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-fixed-ROOT-20261018-v1/worker-receipt.json",
+      "sha256": "9051db54af9f0791a1d1d8ed16b5b2574d4c86ab9a5370486b5d8bdb98acbab5"
+    },
+    {
+      "bytes": 519,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/CONSUMED.json",
+      "sha256": "30558472e8c1036940c6c70c624bb6605ca871db3090118aeaf32bffabb236a8"
+    },
+    {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 10808,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 6472,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 20067,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 49499,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/semantic_receiver_driver.py",
+      "sha256": "cb22fee42028fd3d76426f98cb7fa0a7acd8b653e498b8ca4897e526614c526d"
+    },
+    {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 7558192,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/native/code.bin",
+      "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+    },
+    {
+      "bytes": 712964,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/native/input.bin",
+      "sha256": "60ee844a76b69a4a8f93c6cc5437f10b572959652a0363bfc9b053f01bc4de89"
+    },
+    {
+      "bytes": 712968,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/native/output.bin",
+      "sha256": "3d8bc6543363fcf1c671a73a38b2c054ae570b56bd4b3ae0219741095915c4e1"
+    },
+    {
+      "bytes": 22799819,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/result.json",
+      "sha256": "a1e455ba1f8cc3139b9629b1cedcc431ba65955bfdab5c117b69bd18a9aacfec"
+    },
+    {
+      "bytes": 53510,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/runner-receipt.json",
+      "sha256": "9c6c32acef7e1ac8f32956efdd17ca2c02e6c48539a0c160dc115430762ca5e1"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 43688,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-comparison-r2-symbolic-ROOT-20261018-v1/worker-receipt.json",
+      "sha256": "ccb4655391773a85d2211a7e8a2dfed2b32f91b2ac6ee9a9e21003630e3a5425"
+    },
+    {
+      "bytes": 193827,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-actual-admission-v1.json",
+      "sha256": "8f97e9944cfc542911d7ebe9e95b4710d7dc0e80d63b4aab5c0775119962b5c6"
+    },
+    {
+      "bytes": 4359,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-contract-conformance-v1.json",
+      "sha256": "77b76bda068f13cfa49814fcf07b7d56fc4cc183ade7320f0720bef64a31d0c3"
+    },
+    {
+      "bytes": 1290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-inherited-navigation-remote-v1.json",
+      "sha256": "be9088c7f279137c5aeedacf9ef65fa09521b7734cfd47c7e1243cbdc19cbdc3"
+    },
+    {
+      "bytes": 1493,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-memory-notation-delta-v1.json",
+      "sha256": "97c758a76967ecca8c4a93aeebd831a2910d3021ff4ee90e5ce6880faaaef86f"
+    },
+    {
+      "bytes": 15628,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-release-reference-delta-v1.json",
+      "sha256": "c30c2b8ce3f5bfcb718ab027d673390992d62bc1651c1eb0232cd7ca81b73cc9"
+    },
+    {
+      "bytes": 10123,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-rendering-record-v1.json",
+      "sha256": "c98d2fbd4a78f3c652c152c9b35ef6d4267bca919f7d03d82cda0c9456552d8f"
+    },
+    {
+      "bytes": 1148,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-report-claim-precision-v1.json",
+      "sha256": "0bd9166968bf7d85a90055c604aabfc22bc2b81e7f5e65cb2a338c731ee692ec"
+    },
+    {
+      "bytes": 2019,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-report-supplement-record-v1.json",
+      "sha256": "911526398872c2f8db00fa65f0c9ee24198eebfd737e61f26571454f7381ff57"
+    },
+    {
+      "bytes": 3990,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-reporting-math-correction-v1.json",
+      "sha256": "19ffa23c41b4c6c57f14286429b70ffe7618188aa0a7f41e9b9f723b9dc629a9"
+    },
+    {
+      "bytes": 684,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/ROOT-reporting-preflight-observation-v1.json",
+      "sha256": "3a62ff841a9a2eeb704dedd7110a79e99da1a03dd33d99dc98f59ff214ea42ad"
+    },
+    {
+      "bytes": 12248,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/admit_actuals_v1.py",
+      "sha256": "7cff32df0f97e0372ec493339db229b94fb755eb93cc18df4225e2b083cf6985"
+    },
+    {
+      "bytes": 12252,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/admit_actuals_v2.py",
+      "sha256": "1808af6174fea6e1bebfbb8bc4ff27f503d10a5086fc8f6e224e2f6146056633"
+    },
+    {
+      "bytes": 14134,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/build_report_v1.py",
+      "sha256": "bdd113e8b6dd56f2a7b18cbc24c6c53c48dd34eed680928cc9ba67e2d2fe296c"
+    },
+    {
+      "bytes": 14170,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/build_report_v2.py",
+      "sha256": "95d960b9401e36d0cac0137290b06f9d0e4aabf041088edd6a2072490f4da7e0"
+    },
+    {
+      "bytes": 13405,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/experiment-declaration-v1.json",
+      "sha256": "c44e2d41301b06f344fe21f61ba9c522fdb6ec426fea407b8e9d60b48d84cf5a"
+    },
+    {
+      "bytes": 8628,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/legacy-fresh-proofs-reader.html",
+      "sha256": "30af58fc8a3918d278e1d3596a8b62b7cab6f1cb4c2c62d62009d1a197c2b14f"
+    },
+    {
+      "bytes": 9596,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/legacy-hilbert-i2-reader.html",
+      "sha256": "2f8fe90181943a7fda5378d2b3a5a2aa28bc62bb12ff6e82b829ee4848dd4a9e"
+    },
+    {
+      "bytes": 5912,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/package_evidence_v1.py",
+      "sha256": "c536555ea708c92aff63e5d8b68a73a63ee07c4db1f4bdc173e49332cf5180f6"
+    },
+    {
+      "bytes": 5963,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/package_evidence_v2.py",
+      "sha256": "fb63991e3d62ce81ff4f2ed0acaaa9a05b38515fb89a0f411062cc4a2d4e959f"
+    },
+    {
+      "bytes": 5963,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/package_evidence_v3.py",
+      "sha256": "f5cd33c92c3dc8bb5b5ab1b2338614ef8dcf8fa0dfcea45018b13307795e4566"
+    },
+    {
+      "bytes": 2582,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/prepare_release_v1.py",
+      "sha256": "5e71df65cd04ef638f3b84c0a29759f7d6375c1bd1695da2e0c6b04d691dc5b3"
+    },
+    {
+      "bytes": 2582,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/prepare_release_v2.py",
+      "sha256": "322baaef3ad649cf0f98efd27889586b913f82d7ba0c95efef92e161b14a35b1"
+    },
+    {
+      "bytes": 19013,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/parallel-work-status.json",
+      "sha256": "40def1fe56b73860a7f69a9cc7ef8e28a5ec10818d1265f3afe1b1ca533e4e20"
+    },
+    {
+      "bytes": 80323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/reader.html",
+      "sha256": "5be53ecb39d872a5f7a7bd5e654d055af20e5dbaafa3f5b65b82d833197596d2"
+    },
+    {
+      "bytes": 17855,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/representation-memory-assessment-v1.json",
+      "sha256": "ca173ac7a9585c9032dd7942379c93f4797a4f2819a76b27d957542e3d8484f9"
+    },
+    {
+      "bytes": 13364,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/representation-memory-assessment.html",
+      "sha256": "7aa23ecb5656eb36eaeb16a40bd17073d798b9b864ac97f9ac874aa30023e1d3"
+    },
+    {
+      "bytes": 33194,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/saved-payload-stats-v1.json",
+      "sha256": "4ec0aa7dd1b35cd3b2cc744e0fdc7660587d6c4f6d81b1ad5ff604868d7eb604"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r1-base-proof.html",
+      "sha256": "8bb96f3d065e738eba0f1303e834e904c28f4077ef29337f315469e19eb9ed97"
+    },
+    {
+      "bytes": 1852145,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r1-base-result.json.gz",
+      "sha256": "64b807ebd479cf25ea21915194d9ffa53915ed25fc7f5058aa8d50ce1a5b1336"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r1-fixed-proof.html",
+      "sha256": "2e7273fae396d73dde282cfeabb5a595e7441ed9bc3a867750d0abd58aaa809c"
+    },
+    {
+      "bytes": 1430823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r1-fixed-result.json.gz",
+      "sha256": "2c5451210ad8496dd69a917a78be4274507b14a0d030ad987ab9a2001dd878f5"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r1-symbolic-proof.html",
+      "sha256": "9077b6d3a36f6374f00d7bd4d3864fbd7532e809e568932e5d5fb70878d2fa6c"
+    },
+    {
+      "bytes": 950332,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r1-symbolic-result.json.gz",
+      "sha256": "b5f15117c2d9cf8d8173769e6b7ffe76c6e30ad984b03eccb1882ebc2108ab0d"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r2-base-proof.html",
+      "sha256": "402eaf563ad599578382ee5b5c3f20afe6a324e6bb45bf3c91772e56987122f1"
+    },
+    {
+      "bytes": 1852140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r2-base-result.json.gz",
+      "sha256": "e9857580386d2e53727a7c71095951b28b7d3c3338df2179d7ba9e5c05c4836d"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r2-fixed-proof.html",
+      "sha256": "5410dc1803b9cddb81e68c706169e9cb53d9460bae670a41d1cf5a78fa8f79fc"
+    },
+    {
+      "bytes": 1430834,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r2-fixed-result.json.gz",
+      "sha256": "df126e77d4ad83677628e2bb439f7760234e6d7cdf1c8b5861d473dc8c724f4c"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r2-symbolic-proof.html",
+      "sha256": "fdd11a7519edb34dbfddd1f8bdbe1387b43a0d5502ba91758d583b50046dd716"
+    },
+    {
+      "bytes": 950360,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-r2-symbolic-result.json.gz",
+      "sha256": "32a5a3388cf518696d5780a2218ced9041b651224ee981d7d0d720d0b8f48f34"
+    },
+    {
+      "bytes": 199465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison-summary.json",
+      "sha256": "e8b6e6d6c64b6eb48f9483b4f7e24dfced48088b78065caf743842ccef489049"
+    },
+    {
+      "bytes": 11831,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v1/symbolic-comparison.html",
+      "sha256": "b6b26a2ad05e6b9ea0d0094d9849550b018a42a89b886d1d1beab4994f2329b8"
+    },
+    {
+      "bytes": 19013,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/parallel-work-status.json",
+      "sha256": "40def1fe56b73860a7f69a9cc7ef8e28a5ec10818d1265f3afe1b1ca533e4e20"
+    },
+    {
+      "bytes": 80323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/reader.html",
+      "sha256": "5be53ecb39d872a5f7a7bd5e654d055af20e5dbaafa3f5b65b82d833197596d2"
+    },
+    {
+      "bytes": 17855,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/representation-memory-assessment-v1.json",
+      "sha256": "ca173ac7a9585c9032dd7942379c93f4797a4f2819a76b27d957542e3d8484f9"
+    },
+    {
+      "bytes": 13364,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/representation-memory-assessment.html",
+      "sha256": "7aa23ecb5656eb36eaeb16a40bd17073d798b9b864ac97f9ac874aa30023e1d3"
+    },
+    {
+      "bytes": 33194,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/saved-payload-stats-v1.json",
+      "sha256": "4ec0aa7dd1b35cd3b2cc744e0fdc7660587d6c4f6d81b1ad5ff604868d7eb604"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r1-base-proof.html",
+      "sha256": "8bb96f3d065e738eba0f1303e834e904c28f4077ef29337f315469e19eb9ed97"
+    },
+    {
+      "bytes": 1852145,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r1-base-result.json.gz",
+      "sha256": "64b807ebd479cf25ea21915194d9ffa53915ed25fc7f5058aa8d50ce1a5b1336"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r1-fixed-proof.html",
+      "sha256": "2e7273fae396d73dde282cfeabb5a595e7441ed9bc3a867750d0abd58aaa809c"
+    },
+    {
+      "bytes": 1430823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r1-fixed-result.json.gz",
+      "sha256": "2c5451210ad8496dd69a917a78be4274507b14a0d030ad987ab9a2001dd878f5"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r1-symbolic-proof.html",
+      "sha256": "9077b6d3a36f6374f00d7bd4d3864fbd7532e809e568932e5d5fb70878d2fa6c"
+    },
+    {
+      "bytes": 950332,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r1-symbolic-result.json.gz",
+      "sha256": "b5f15117c2d9cf8d8173769e6b7ffe76c6e30ad984b03eccb1882ebc2108ab0d"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r2-base-proof.html",
+      "sha256": "402eaf563ad599578382ee5b5c3f20afe6a324e6bb45bf3c91772e56987122f1"
+    },
+    {
+      "bytes": 1852140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r2-base-result.json.gz",
+      "sha256": "e9857580386d2e53727a7c71095951b28b7d3c3338df2179d7ba9e5c05c4836d"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r2-fixed-proof.html",
+      "sha256": "5410dc1803b9cddb81e68c706169e9cb53d9460bae670a41d1cf5a78fa8f79fc"
+    },
+    {
+      "bytes": 1430834,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r2-fixed-result.json.gz",
+      "sha256": "df126e77d4ad83677628e2bb439f7760234e6d7cdf1c8b5861d473dc8c724f4c"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r2-symbolic-proof.html",
+      "sha256": "fdd11a7519edb34dbfddd1f8bdbe1387b43a0d5502ba91758d583b50046dd716"
+    },
+    {
+      "bytes": 950360,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-r2-symbolic-result.json.gz",
+      "sha256": "32a5a3388cf518696d5780a2218ced9041b651224ee981d7d0d720d0b8f48f34"
+    },
+    {
+      "bytes": 199465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison-summary.json",
+      "sha256": "e8b6e6d6c64b6eb48f9483b4f7e24dfced48088b78065caf743842ccef489049"
+    },
+    {
+      "bytes": 11846,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v2/symbolic-comparison.html",
+      "sha256": "9fa7cfe0ae5e0e342170ef079f0719abb809a51e06e1e86090fd2f6242d9f49a"
+    },
+    {
+      "bytes": 19013,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/parallel-work-status.json",
+      "sha256": "40def1fe56b73860a7f69a9cc7ef8e28a5ec10818d1265f3afe1b1ca533e4e20"
+    },
+    {
+      "bytes": 80323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/reader.html",
+      "sha256": "5be53ecb39d872a5f7a7bd5e654d055af20e5dbaafa3f5b65b82d833197596d2"
+    },
+    {
+      "bytes": 17855,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/representation-memory-assessment-v1.json",
+      "sha256": "ca173ac7a9585c9032dd7942379c93f4797a4f2819a76b27d957542e3d8484f9"
+    },
+    {
+      "bytes": 13364,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/representation-memory-assessment.html",
+      "sha256": "7aa23ecb5656eb36eaeb16a40bd17073d798b9b864ac97f9ac874aa30023e1d3"
+    },
+    {
+      "bytes": 33194,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/saved-payload-stats-v1.json",
+      "sha256": "4ec0aa7dd1b35cd3b2cc744e0fdc7660587d6c4f6d81b1ad5ff604868d7eb604"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r1-base-proof.html",
+      "sha256": "8bb96f3d065e738eba0f1303e834e904c28f4077ef29337f315469e19eb9ed97"
+    },
+    {
+      "bytes": 1852145,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r1-base-result.json.gz",
+      "sha256": "64b807ebd479cf25ea21915194d9ffa53915ed25fc7f5058aa8d50ce1a5b1336"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r1-fixed-proof.html",
+      "sha256": "2e7273fae396d73dde282cfeabb5a595e7441ed9bc3a867750d0abd58aaa809c"
+    },
+    {
+      "bytes": 1430823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r1-fixed-result.json.gz",
+      "sha256": "2c5451210ad8496dd69a917a78be4274507b14a0d030ad987ab9a2001dd878f5"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r1-symbolic-proof.html",
+      "sha256": "9077b6d3a36f6374f00d7bd4d3864fbd7532e809e568932e5d5fb70878d2fa6c"
+    },
+    {
+      "bytes": 950332,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r1-symbolic-result.json.gz",
+      "sha256": "b5f15117c2d9cf8d8173769e6b7ffe76c6e30ad984b03eccb1882ebc2108ab0d"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r2-base-proof.html",
+      "sha256": "402eaf563ad599578382ee5b5c3f20afe6a324e6bb45bf3c91772e56987122f1"
+    },
+    {
+      "bytes": 1852140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r2-base-result.json.gz",
+      "sha256": "e9857580386d2e53727a7c71095951b28b7d3c3338df2179d7ba9e5c05c4836d"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r2-fixed-proof.html",
+      "sha256": "5410dc1803b9cddb81e68c706169e9cb53d9460bae670a41d1cf5a78fa8f79fc"
+    },
+    {
+      "bytes": 1430834,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r2-fixed-result.json.gz",
+      "sha256": "df126e77d4ad83677628e2bb439f7760234e6d7cdf1c8b5861d473dc8c724f4c"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r2-symbolic-proof.html",
+      "sha256": "fdd11a7519edb34dbfddd1f8bdbe1387b43a0d5502ba91758d583b50046dd716"
+    },
+    {
+      "bytes": 950360,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-r2-symbolic-result.json.gz",
+      "sha256": "32a5a3388cf518696d5780a2218ced9041b651224ee981d7d0d720d0b8f48f34"
+    },
+    {
+      "bytes": 199465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison-summary.json",
+      "sha256": "e8b6e6d6c64b6eb48f9483b4f7e24dfced48088b78065caf743842ccef489049"
+    },
+    {
+      "bytes": 11846,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v3/symbolic-comparison.html",
+      "sha256": "9fa7cfe0ae5e0e342170ef079f0719abb809a51e06e1e86090fd2f6242d9f49a"
+    },
+    {
+      "bytes": 19013,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/parallel-work-status.json",
+      "sha256": "40def1fe56b73860a7f69a9cc7ef8e28a5ec10818d1265f3afe1b1ca533e4e20"
+    },
+    {
+      "bytes": 80323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/reader.html",
+      "sha256": "5be53ecb39d872a5f7a7bd5e654d055af20e5dbaafa3f5b65b82d833197596d2"
+    },
+    {
+      "bytes": 17855,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/representation-memory-assessment-v1.json",
+      "sha256": "ca173ac7a9585c9032dd7942379c93f4797a4f2819a76b27d957542e3d8484f9"
+    },
+    {
+      "bytes": 13364,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/representation-memory-assessment.html",
+      "sha256": "7aa23ecb5656eb36eaeb16a40bd17073d798b9b864ac97f9ac874aa30023e1d3"
+    },
+    {
+      "bytes": 33194,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/saved-payload-stats-v1.json",
+      "sha256": "4ec0aa7dd1b35cd3b2cc744e0fdc7660587d6c4f6d81b1ad5ff604868d7eb604"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r1-base-proof.html",
+      "sha256": "8bb96f3d065e738eba0f1303e834e904c28f4077ef29337f315469e19eb9ed97"
+    },
+    {
+      "bytes": 1852145,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r1-base-result.json.gz",
+      "sha256": "64b807ebd479cf25ea21915194d9ffa53915ed25fc7f5058aa8d50ce1a5b1336"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r1-fixed-proof.html",
+      "sha256": "2e7273fae396d73dde282cfeabb5a595e7441ed9bc3a867750d0abd58aaa809c"
+    },
+    {
+      "bytes": 1430823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r1-fixed-result.json.gz",
+      "sha256": "2c5451210ad8496dd69a917a78be4274507b14a0d030ad987ab9a2001dd878f5"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r1-symbolic-proof.html",
+      "sha256": "9077b6d3a36f6374f00d7bd4d3864fbd7532e809e568932e5d5fb70878d2fa6c"
+    },
+    {
+      "bytes": 950332,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r1-symbolic-result.json.gz",
+      "sha256": "b5f15117c2d9cf8d8173769e6b7ffe76c6e30ad984b03eccb1882ebc2108ab0d"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r2-base-proof.html",
+      "sha256": "402eaf563ad599578382ee5b5c3f20afe6a324e6bb45bf3c91772e56987122f1"
+    },
+    {
+      "bytes": 1852140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r2-base-result.json.gz",
+      "sha256": "e9857580386d2e53727a7c71095951b28b7d3c3338df2179d7ba9e5c05c4836d"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r2-fixed-proof.html",
+      "sha256": "5410dc1803b9cddb81e68c706169e9cb53d9460bae670a41d1cf5a78fa8f79fc"
+    },
+    {
+      "bytes": 1430834,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r2-fixed-result.json.gz",
+      "sha256": "df126e77d4ad83677628e2bb439f7760234e6d7cdf1c8b5861d473dc8c724f4c"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r2-symbolic-proof.html",
+      "sha256": "fdd11a7519edb34dbfddd1f8bdbe1387b43a0d5502ba91758d583b50046dd716"
+    },
+    {
+      "bytes": 950360,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-r2-symbolic-result.json.gz",
+      "sha256": "32a5a3388cf518696d5780a2218ced9041b651224ee981d7d0d720d0b8f48f34"
+    },
+    {
+      "bytes": 199465,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison-summary.json",
+      "sha256": "e8b6e6d6c64b6eb48f9483b4f7e24dfced48088b78065caf743842ccef489049"
+    },
+    {
+      "bytes": 11836,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v4/symbolic-comparison.html",
+      "sha256": "429be61d55eb2bb7646268cab3ba0f2b9a2c4712e4efc5e84e224bfb67f94b93"
+    },
+    {
+      "bytes": 19795,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/parallel-work-status.json",
+      "sha256": "84f05344cb2997e6631b30286a1d7072831c2f57cb3b66d98d5cc0026b8e58aa"
+    },
+    {
+      "bytes": 80323,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/reader.html",
+      "sha256": "5be53ecb39d872a5f7a7bd5e654d055af20e5dbaafa3f5b65b82d833197596d2"
+    },
+    {
+      "bytes": 17855,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/representation-memory-assessment-v1.json",
+      "sha256": "ca173ac7a9585c9032dd7942379c93f4797a4f2819a76b27d957542e3d8484f9"
+    },
+    {
+      "bytes": 13420,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/representation-memory-assessment.html",
+      "sha256": "71ac551cca0d4765881efbb1ac73f0b15b3779ac91ecfbb2932ad42e511058ac"
+    },
+    {
+      "bytes": 33194,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/saved-payload-stats-v1.json",
+      "sha256": "4ec0aa7dd1b35cd3b2cc744e0fdc7660587d6c4f6d81b1ad5ff604868d7eb604"
+    },
+    {
+      "bytes": 133097,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-data-review.json",
+      "sha256": "68c2dd53b6c255e721b927689abc4061359358af4d167f6f8ec77c5468db3c54"
+    },
+    {
+      "bytes": 18552,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-human-review.json",
+      "sha256": "4e98f4a914cfd602093761d0fa0051f17fce1600e56b9b16f52bea7c54f24dff"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-base-proof.html",
+      "sha256": "8bb96f3d065e738eba0f1303e834e904c28f4077ef29337f315469e19eb9ed97"
+    },
+    {
+      "bytes": 1852145,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-base-result.json.gz",
+      "sha256": "64b807ebd479cf25ea21915194d9ffa53915ed25fc7f5058aa8d50ce1a5b1336"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-fixed-proof.html",
+      "sha256": "2e7273fae396d73dde282cfeabb5a595e7441ed9bc3a867750d0abd58aaa809c"
+    },
+    {
+      "bytes": 1430823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-fixed-result.json.gz",
+      "sha256": "2c5451210ad8496dd69a917a78be4274507b14a0d030ad987ab9a2001dd878f5"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-symbolic-proof.html",
+      "sha256": "9077b6d3a36f6374f00d7bd4d3864fbd7532e809e568932e5d5fb70878d2fa6c"
+    },
+    {
+      "bytes": 950332,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r1-symbolic-result.json.gz",
+      "sha256": "b5f15117c2d9cf8d8173769e6b7ffe76c6e30ad984b03eccb1882ebc2108ab0d"
+    },
+    {
+      "bytes": 1576690,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-base-proof.html",
+      "sha256": "402eaf563ad599578382ee5b5c3f20afe6a324e6bb45bf3c91772e56987122f1"
+    },
+    {
+      "bytes": 1852140,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-base-result.json.gz",
+      "sha256": "e9857580386d2e53727a7c71095951b28b7d3c3338df2179d7ba9e5c05c4836d"
+    },
+    {
+      "bytes": 1629823,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-fixed-proof.html",
+      "sha256": "5410dc1803b9cddb81e68c706169e9cb53d9460bae670a41d1cf5a78fa8f79fc"
+    },
+    {
+      "bytes": 1430834,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-fixed-result.json.gz",
+      "sha256": "df126e77d4ad83677628e2bb439f7760234e6d7cdf1c8b5861d473dc8c724f4c"
+    },
+    {
+      "bytes": 1533404,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-symbolic-proof.html",
+      "sha256": "fdd11a7519edb34dbfddd1f8bdbe1387b43a0d5502ba91758d583b50046dd716"
+    },
+    {
+      "bytes": 950360,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-r2-symbolic-result.json.gz",
+      "sha256": "32a5a3388cf518696d5780a2218ced9041b651224ee981d7d0d720d0b8f48f34"
+    },
+    {
+      "bytes": 27236,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-resource-review.json",
+      "sha256": "1f7e765dbb30da4f0c7303a7a1fbe802d55c8e1f522fdf6b286bc7e9b8de3e9b"
+    },
+    {
+      "bytes": 200456,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison-summary.json",
+      "sha256": "2a7bb9ffe769c6b22adae750f21213dbe2e7189ad372193071926de90c82a29d"
+    },
+    {
+      "bytes": 11836,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/publication-source-v5/symbolic-comparison.html",
+      "sha256": "429be61d55eb2bb7646268cab3ba0f2b9a2c4712e4efc5e84e224bfb67f94b93"
+    },
+    {
+      "bytes": 2689,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/repair_report_math_v1.py",
+      "sha256": "4b46d283b4acb6475f8e8785f94382cb96076f281404f89e0ab1663e372a8ad8"
+    },
+    {
+      "bytes": 3171,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/repair_report_math_v2.py",
+      "sha256": "92bac1386831d5cac24dc37bf9e1d6e185c8fcda705863c257447ec03d2bf842"
+    },
+    {
+      "bytes": 3633,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/stage_publication_v1.py",
+      "sha256": "a2a8ae209a9c47acf9b301bc420b67cf8b0f8e0f2517574089470cb797795007"
+    },
+    {
+      "bytes": 3633,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/stage_publication_v2.py",
+      "sha256": "8ea7b7eda4cac5d36af7af83ddc462a67e9540064447ddff2a34d593a14738d5"
+    },
+    {
+      "bytes": 8350,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/supplement_report_v1.py",
+      "sha256": "4a12e20fa5337373ebe0f08499b22c3790928664de0c258d6518d27e7a86a1c6"
+    },
+    {
+      "bytes": 2203,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/symbolic-control-progress-20261018/verify_live_v1.py",
+      "sha256": "72c853926c51181fccd79736066ab0d201129a4dec606d369a16ee02ac8a9f5d"
+    },
+    {
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    {
+      "bytes": 11060,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    {
+      "bytes": 23496,
+      "path": "/private/tmp/gcts-quantified-cold-root-source-20261018/quantified_cold_v1.py",
+      "sha256": "c3385662302b377da334e50e647c948884175e0abaad3d41af17bee224e6d47b"
+    },
+    {
+      "bytes": 65248,
+      "path": "/private/tmp/gcts-quantified-cold-root-source-20261018/runtime-closure-v1.json",
+      "sha256": "89387d13e740ed971ff8f5a30431150941e5b5c66495ba2500190bd4f697a296"
+    },
+    {
+      "bytes": 45668,
+      "path": "/private/tmp/gcts-quantified-driver-source-20261018/quantified_receiver_driver_v1.py",
+      "sha256": "d1df19ee83c1f248534b707bf1a3584ccc9c9df5a87470d4b90af5dc4c53071f"
+    },
+    {
+      "bytes": 8582,
+      "path": "/private/tmp/gcts-quantified-independent-peer-20261018/typed-adapter-Source-review-v2.json",
+      "sha256": "3d8b4575e3a40c4bfe4828d9247310695859d481da9613c4193e3bf16ef7afe7"
+    },
+    {
+      "bytes": 22384,
+      "path": "/private/tmp/gcts-quantified-memory-assessment-20261018/freeze_assessment_v1.py",
+      "sha256": "bf70bb1e80fd35cb7c51dd8bc9978a93411c55233f9a9072c73b8658dfb6b049"
+    },
+    {
+      "bytes": 1705,
+      "path": "/private/tmp/gcts-quantified-memory-assessment-20261018/handoff-v1.json",
+      "sha256": "897460283b470311d7917b8eb1f77dcb8b2125f4362a6adcef23e2fc8c1d8acc"
+    },
+    {
+      "bytes": 13438,
+      "path": "/private/tmp/gcts-quantified-memory-assessment-20261018/representation-memory-assessment-v1.html",
+      "sha256": "cd179eff2119c9d054665ffa30bd3761b10614d693b8159d8b0175b28a468d0a"
+    },
+    {
+      "bytes": 17855,
+      "path": "/private/tmp/gcts-quantified-memory-assessment-20261018/representation-memory-assessment-v1.json",
+      "sha256": "ca173ac7a9585c9032dd7942379c93f4797a4f2819a76b27d957542e3d8484f9"
+    },
+    {
+      "bytes": 33194,
+      "path": "/private/tmp/gcts-quantified-memory-assessment-20261018/saved-payload-stats-v1.json",
+      "sha256": "4ec0aa7dd1b35cd3b2cc744e0fdc7660587d6c4f6d81b1ad5ff604868d7eb604"
+    },
+    {
+      "bytes": 6348,
+      "path": "/private/tmp/gcts-quantified-memory-assessment-20261018/saved_payload_stats_v1.py",
+      "sha256": "731679fc1322e35f40719735a7eb455329600932d82e91fbf32a9dd3c387f794"
+    },
+    {
+      "bytes": 4270,
+      "path": "/private/tmp/gcts-semantic-cold-root-source-20261018/observe_runner_v1.py",
+      "sha256": "1c83131e314ef7dc5a789c590fdb61d56cc91bdbff447155e37ef5726525edb5"
+    },
+    {
+      "bytes": 8343,
+      "path": "/private/tmp/gcts-semantic-component-peer-20261018/typed-transport-Source-review-v1.json",
+      "sha256": "ab21a54ca4d176db7997c4452f13d7d94d6e15dd275a8c98875731acde577229"
+    },
+    {
+      "bytes": 3547,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/boundary_oracle.cpp",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+    },
+    {
+      "bytes": 7089,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 10808,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 8962,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 6992,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 4502,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-policy-001.json",
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+    },
+    {
+      "bytes": 6942,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 5318,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    {
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 7409,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 3756,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 13290,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 20424,
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 18066,
+      "path": "/private/tmp/gcts-semantic-once-runner-source-20261018/semantic_once_runner_v1.py",
+      "sha256": "b002cf5ec78bc8d0fe106c612690204f0fa43fd726cd05c9beda278d7f205861"
+    },
+    {
+      "bytes": 4311,
+      "path": "/private/tmp/gcts-semantic-proof-renderer-peer-20261018/typed-Source-delta-review-v2.json",
+      "sha256": "6f74d114ff23ae33caa0481550727ccc6441c97ff0aac62410b12f59379b975f"
+    },
+    {
+      "bytes": 1476,
+      "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/Source-contract-v2.json",
+      "sha256": "b45eb618c36989669c73272e2e2b62af432df33a22ece3c8f647be921f5ee2e2"
+    },
+    {
+      "bytes": 23778,
+      "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/semantic_proof_renderer_v2.py",
+      "sha256": "bd929c531205dfd9fcfd6732c9de554d71e2abdd492a80aac1dd094965b77e77"
+    },
+    {
+      "bytes": 41808,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/boundary-oracle-v2",
+      "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+    },
+    {
+      "bytes": 1120,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/native-build-v2.json",
+      "sha256": "b98e6f5d1366a741ce94d43ad261834019ffc9e673e4b1d54747f6719db4e365"
+    },
+    {
+      "bytes": 1494417,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-001.json",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+    },
+    {
+      "bytes": 1114802,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-microcode-001.json.gz",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+    },
+    {
+      "bytes": 19188,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 2143,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorization-drafts/symbolic-comparison-r1-base-ROOT-20261018-v1.json",
+      "sha256": "cfaa45bac8cc93d96c0d4bbb43d72fec124d54bf01d28f6224506ca935784bd6"
+    },
+    {
+      "bytes": 2147,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorization-drafts/symbolic-comparison-r1-fixed-ROOT-20261018-v1.json",
+      "sha256": "c4b173ee85f52db142956c417d662e848f3ef3cc7e48797299cc13a80def6d2a"
+    },
+    {
+      "bytes": 2159,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorization-drafts/symbolic-comparison-r1-symbolic-ROOT-20261018-v1.json",
+      "sha256": "c65dbe325dc7e2a1a682e1b49688468506e992d5a9ec608043b24db033e2a87c"
+    },
+    {
+      "bytes": 2143,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorization-drafts/symbolic-comparison-r2-base-ROOT-20261018-v1.json",
+      "sha256": "1a4b47cbeec0cc64c98511b5fde752a442fd3e371274aaed80c5d7431afda739"
+    },
+    {
+      "bytes": 2147,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorization-drafts/symbolic-comparison-r2-fixed-ROOT-20261018-v1.json",
+      "sha256": "9733531a7b46b4ded64ea2f0249d335a14c5978311346aa14786d9ca14b335e2"
+    },
+    {
+      "bytes": 2159,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorization-drafts/symbolic-comparison-r2-symbolic-ROOT-20261018-v1.json",
+      "sha256": "8f080e0ae53afacc2673116be53ddb239d26169509e78a212e44aced901413d6"
+    },
+    {
+      "bytes": 4007,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorizations/symbolic-comparison-r1-base-ROOT-20261018-v1.json",
+      "sha256": "5d0bed54dfeaac618ec61224ceda6420a0e7d52090363b89057d1fbbf01dab23"
+    },
+    {
+      "bytes": 4011,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorizations/symbolic-comparison-r1-fixed-ROOT-20261018-v1.json",
+      "sha256": "3e93eec97e54c7c798b2759c71b7f9e678d5cc0d566bae3d41cd760d41cca675"
+    },
+    {
+      "bytes": 4023,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorizations/symbolic-comparison-r1-symbolic-ROOT-20261018-v1.json",
+      "sha256": "085df8f5abfd2f35e79b9b1f68f63b34c35154df965bec064acdec9c43cc615d"
+    },
+    {
+      "bytes": 4007,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorizations/symbolic-comparison-r2-base-ROOT-20261018-v1.json",
+      "sha256": "a0bfc189c855ceb8c24238c071c2a03b2a4126289ff3dd84608e65f552cfc3bc"
+    },
+    {
+      "bytes": 4011,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorizations/symbolic-comparison-r2-fixed-ROOT-20261018-v1.json",
+      "sha256": "c78805245d550d44550e91cc812211c9807198c4a1a66a18ce80c497dbbf3119"
+    },
+    {
+      "bytes": 4023,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorizations/symbolic-comparison-r2-symbolic-ROOT-20261018-v1.json",
+      "sha256": "333d28d5bee991f5e2f90964a59af9ae040b6ac3b8d81b5852cfdea24c3c98be"
+    },
+    {
+      "bytes": 9940,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/authorized-plan-index-v1.json",
+      "sha256": "b4a11fe543109ca79e0033c51095365f24f8b6d276f022c543f025eecd62dca8"
+    },
+    {
+      "bytes": 8365,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/prospective-plan-index-v1.json",
+      "sha256": "84c98be7e0b304513f101726f07b6041ea0c5fad32ae661729911c1d65fc2908"
+    },
+    {
+      "bytes": 1895,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plan-drafts/symbolic-comparison-r1-base-ROOT-20261018-v1.json",
+      "sha256": "23c58c8383930fc7f8a15e305f9a912d2057b1cb3a93e3393e18fc159d0652c3"
+    },
+    {
+      "bytes": 1900,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plan-drafts/symbolic-comparison-r1-fixed-ROOT-20261018-v1.json",
+      "sha256": "61e1cb1cfb438cdc77447e1b89a87e841c85e29c51028becd6478a0199a33ffb"
+    },
+    {
+      "bytes": 1915,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plan-drafts/symbolic-comparison-r1-symbolic-ROOT-20261018-v1.json",
+      "sha256": "3ce680b4838bbd6c3f23f2f0007a16d6ec3ce93c5079c3e3838d9523a247f8b5"
+    },
+    {
+      "bytes": 1895,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plan-drafts/symbolic-comparison-r2-base-ROOT-20261018-v1.json",
+      "sha256": "99ff4211eaa8a71bdf6f39e5c04f8d7c56f462d11efb99b2daada7299da626eb"
+    },
+    {
+      "bytes": 1900,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plan-drafts/symbolic-comparison-r2-fixed-ROOT-20261018-v1.json",
+      "sha256": "b9962abce8d37d3e07b3e11a5e6fd27a6d56a0ae1ef31c0551d780565f75b601"
+    },
+    {
+      "bytes": 1915,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plan-drafts/symbolic-comparison-r2-symbolic-ROOT-20261018-v1.json",
+      "sha256": "c9442c476d4d57c4ef0bce07552a47753a9791077641ec8be121d4fd0610c827"
+    },
+    {
+      "bytes": 320,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-base-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+      "sha256": "33dd127b4e63fc079c44c5550e7234fe71b60f529e6b0c8a90d03f9a3e6ebebb"
+    },
+    {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-base-ROOT-20261018-v1-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 306,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-base-ROOT-20261018-v1-terminal-observation/stdout.bin",
+      "sha256": "b833d4ddb1f9e4e2cffa249a2e16b7553c829d12fe05ee0f9fb1a4bd0d5d0daf"
+    },
+    {
+      "bytes": 1562,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+      "sha256": "7ad19da56e3a78d9a2b2db01519f0480233e50bec259513d49f2e89ca0a44376"
+    },
+    {
+      "bytes": 1889,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-base-ROOT-20261018-v1.json",
+      "sha256": "4224b957a1f7410d8b4f138a3130bd1945a65f6b5eab2c07ee0a9973ccb3bfea"
+    },
+    {
+      "bytes": 321,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-fixed-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+      "sha256": "9066d09032ceeda3b3909810e816fb01725c1e8255669de0de4e23b2146bf769"
+    },
+    {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-fixed-ROOT-20261018-v1-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 307,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-fixed-ROOT-20261018-v1-terminal-observation/stdout.bin",
+      "sha256": "e8add4912c22a24a11337c2c5a44805a930dd131d7333b7b044c606a40f859e3"
+    },
+    {
+      "bytes": 1566,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+      "sha256": "206ca7ea806ec686be5bed045bb8ef11ee4e6ab90e4b1450166b34bea57b009f"
+    },
+    {
+      "bytes": 1894,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-fixed-ROOT-20261018-v1.json",
+      "sha256": "5c7b7b59c049910852635a5ce3a94014ec73090d030ee61178572345ecbc5ab4"
+    },
+    {
+      "bytes": 324,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-symbolic-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+      "sha256": "586ec91cae877bf56c2c66f56814f483aa234a315521430e10f76bbfb9ec7cee"
+    },
+    {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-symbolic-ROOT-20261018-v1-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 310,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-symbolic-ROOT-20261018-v1-terminal-observation/stdout.bin",
+      "sha256": "760acfa66872401c7b3ebee860ca2ad9412a066004848d574319bb4a1ba46f71"
+    },
+    {
+      "bytes": 1575,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-symbolic-ROOT-20261018-v1-terminal-observation/terminal.json",
+      "sha256": "4eda04f75d54ecfc9699ffe9884faff67125741da5ae4546afb5b6d71d15f024"
+    },
+    {
+      "bytes": 1909,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r1-symbolic-ROOT-20261018-v1.json",
+      "sha256": "dc3a8d39d74520976809ee30bf01a8b46a6a0135ee20b766c8a989871ed9522a"
+    },
+    {
+      "bytes": 320,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-base-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+      "sha256": "a5a0c8e02c2348e3d927715f55366668020a64d7c8f5a7cde623f67fd6290698"
+    },
+    {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-base-ROOT-20261018-v1-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 306,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-base-ROOT-20261018-v1-terminal-observation/stdout.bin",
+      "sha256": "c47ee189826059dfaf2a0786137ba8f16bcf050ac4a506ce237d773ee19355e1"
+    },
+    {
+      "bytes": 1563,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+      "sha256": "93ecd09babe064bd7d095be09fdf5c09d03609103aa887639fc384d9c7d83672"
+    },
+    {
+      "bytes": 1889,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-base-ROOT-20261018-v1.json",
+      "sha256": "92e6084a19eac8367052c63d0f8867e33d9d5ed0e05ec79ed6c4b7e509af194b"
+    },
+    {
+      "bytes": 321,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-fixed-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+      "sha256": "c8327939adb795b02ad1be27e0ffb8d2f168cebfaf4ad713a11c5e83ba6b6d10"
+    },
+    {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-fixed-ROOT-20261018-v1-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 307,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-fixed-ROOT-20261018-v1-terminal-observation/stdout.bin",
+      "sha256": "0dad0eb27b209bffe0a65c4d2933da343486611e1851bac1242653b68a71616d"
+    },
+    {
+      "bytes": 1566,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+      "sha256": "f707ecc65b5ee0012d22ee2b9d07e645537228c7208fc8f0a97fffe77c82028c"
+    },
+    {
+      "bytes": 1894,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-fixed-ROOT-20261018-v1.json",
+      "sha256": "f5b69568d33c64a4eba43fb9b4dd4b18bd294073131b56b51a4c0761f220a90d"
+    },
+    {
+      "bytes": 324,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-symbolic-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+      "sha256": "de8935b4127c5b242dd9cc5983b6d753e86fdefc0bbb28dc2977d546abc79d91"
+    },
+    {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-symbolic-ROOT-20261018-v1-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 310,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-symbolic-ROOT-20261018-v1-terminal-observation/stdout.bin",
+      "sha256": "db821597461f00ee6b25fb90c8a1d0994dbc250ab8064b1439dc532a30767436"
+    },
+    {
+      "bytes": 1575,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-symbolic-ROOT-20261018-v1-terminal-observation/terminal.json",
+      "sha256": "0859fb725c333347d315376c43401aab0a4a2bc2aa69e0fdec710c74391fbd5a"
+    },
+    {
+      "bytes": 1909,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/runner-plans/symbolic-comparison-r2-symbolic-ROOT-20261018-v1.json",
+      "sha256": "499a9c1c7c5280562e45c7c94bda74caf452e8c80619ca18f93c3cea478a78f5"
+    },
+    {
+      "bytes": 16961,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/worker-plans/symbolic-comparison-r1-base-ROOT-20261018-v1.json",
+      "sha256": "fddbf284d6a82c537032481652e92ba28a427faede02d64eec3a7c4a5489cc89"
+    },
+    {
+      "bytes": 16964,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/worker-plans/symbolic-comparison-r1-fixed-ROOT-20261018-v1.json",
+      "sha256": "decaee17926530075fc3a4959d09db4054f5022d8bf4f21f2e58d44a691586e3"
+    },
+    {
+      "bytes": 16973,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/worker-plans/symbolic-comparison-r1-symbolic-ROOT-20261018-v1.json",
+      "sha256": "a79b45e26974d283aba85dca0c68268e5cf2aa95b1dba5c6ad4fb886085b4d6f"
+    },
+    {
+      "bytes": 16961,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/worker-plans/symbolic-comparison-r2-base-ROOT-20261018-v1.json",
+      "sha256": "fba2ffe5a56b71d360d4dbabc3846312cab08f8d8e1b1a3b5bcee3df1b498827"
+    },
+    {
+      "bytes": 16964,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/worker-plans/symbolic-comparison-r2-fixed-ROOT-20261018-v1.json",
+      "sha256": "8fb8c7181a63654ea09a13e9b941bac642e7233fc85c46ed8e2203e08655b500"
+    },
+    {
+      "bytes": 16973,
+      "path": "/private/tmp/gcts-symbolic-actual-plans-ROOT-20261018-v1/worker-plans/symbolic-comparison-r2-symbolic-ROOT-20261018-v1.json",
+      "sha256": "ccdf74df987cfd6d27bdb13053c8e9b93858ad49a9670ee421ebed67f5c8f1a2"
+    },
+    {
+      "bytes": 36605,
+      "path": "/private/tmp/gcts-symbolic-comparison-saved-data-peer-20261018/audit_saved_data_v1.py",
+      "sha256": "564ee6a2e3d80091e005f7ddcc2f82e4fb2c195b8de61c4245543b18982b8b14"
+    },
+    {
+      "bytes": 11962,
+      "path": "/private/tmp/gcts-symbolic-comparison-saved-data-peer-20261018/prepare_audit_script_v1.py",
+      "sha256": "4cf136772040d0f9ff3437a9db12361680643ce1fe47540a546915f4cdce9f8c"
+    },
+    {
+      "bytes": 243312,
+      "path": "/private/tmp/gcts-symbolic-comparison-saved-data-peer-20261018/saved-data-audit-v1.json",
+      "sha256": "35f00b8eff40e1c1c4280a0a5ad31fce9fc694dde62050b9bf7525cf381794c3"
+    },
+    {
+      "bytes": 133097,
+      "path": "/private/tmp/gcts-symbolic-comparison-saved-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "68c2dd53b6c255e721b927689abc4061359358af4d167f6f8ec77c5468db3c54"
+    },
+    {
+      "bytes": 2527,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/author_admission_v1.py",
+      "sha256": "8050134ff47e1b8831c8658d3b9a43ff1798d7508fc519852f5eae5fbe6c401b"
+    },
+    {
+      "bytes": 10340,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/author_driver_v1.py",
+      "sha256": "4d577aca1742e7992c1147c00c38d249fe76071a16af3d86d32bbdd5a9a0d3ea"
+    },
+    {
+      "bytes": 1952,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/author_plan_prep_v1.py",
+      "sha256": "11aa29a621f8c268a5ebae8c09f574836b709b8b7c1f9b3743d0f173c75171a1"
+    },
+    {
+      "bytes": 8312,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/composition-Source-contract-v1.json",
+      "sha256": "3e68d97197346df8cdc598b58c64ff527ff8cf657b17045e4fe56e96c2881ccc"
+    },
+    {
+      "bytes": 1827,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/composition-handoff-v1.json",
+      "sha256": "1550e6f08a025cae7d4527b1fc0c2b2dd8dc650741234d3cb996a2553864fd4c"
+    },
+    {
+      "bytes": 5763,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/declare_v1.py",
+      "sha256": "9cc4afefddafae01d743f243137f49b3c16e0295cc01737471d2d44e6e918e2c"
+    },
+    {
+      "bytes": 49499,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/driver-F0-forward/source.py",
+      "sha256": "cb22fee42028fd3d76426f98cb7fa0a7acd8b653e498b8ca4897e526614c526d"
+    },
+    {
+      "bytes": 45668,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/driver-F0-inverse/source.py",
+      "sha256": "d1df19ee83c1f248534b707bf1a3584ccc9c9df5a87470d4b90af5dc4c53071f"
+    },
+    {
+      "bytes": 3001,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/driver-Source-contract-v1.json",
+      "sha256": "651db9bc3b7062e9a355dd59060f568853eb6630d4d08aad39e00286fbe2df6d"
+    },
+    {
+      "bytes": 9667,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/driver-forward.patch",
+      "sha256": "3782cc477aa7b682fa829b4df8cc181b6ecca90a2b547d28dcc4df8df9a59028"
+    },
+    {
+      "bytes": 1123,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/driver-handoff-v1.json",
+      "sha256": "6caa02628fc8fbb9755f7cfac701f3bb26fd97146bffdb977486dd90c2d45348"
+    },
+    {
+      "bytes": 9667,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/driver-inverse.patch",
+      "sha256": "7a6cb7670c963d34f6b8781a8e798250da2fc33bc1f0d9f582f2b8fc48bbf780"
+    },
+    {
+      "bytes": 2973,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/grant_plans_v1.py",
+      "sha256": "fead21834986e7f74f8985ec3e73b1da8023dec6db76da68730733d0f80f606f"
+    },
+    {
+      "bytes": 4280,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/observe_symbolic_runner_v1.py",
+      "sha256": "720cc07b6f2766bb080d40c138c255d915f2806c2b4af83b21d82aaa7df702ae"
+    },
+    {
+      "bytes": 4280,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/observe_symbolic_runner_v1.py-F0-forward/source.py",
+      "sha256": "720cc07b6f2766bb080d40c138c255d915f2806c2b4af83b21d82aaa7df702ae"
+    },
+    {
+      "bytes": 4270,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/observe_symbolic_runner_v1.py-F0-inverse/source.py",
+      "sha256": "1c83131e314ef7dc5a789c590fdb61d56cc91bdbff447155e37ef5726525edb5"
+    },
+    {
+      "bytes": 898,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/observe_symbolic_runner_v1.py-forward.patch",
+      "sha256": "646d5c0a47e3772319b5a6b751e5d7a84bb55184edcc8ab3086f985df3484321"
+    },
+    {
+      "bytes": 898,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/observe_symbolic_runner_v1.py-inverse.patch",
+      "sha256": "3c175d220167d2374cbf7d158b3ccaa41930340c092dfa76e083ea8df15d1f4c"
+    },
+    {
+      "bytes": 8281,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/prepare_composition_v1.py",
+      "sha256": "886066383ddebb966d4b96032d0f4036037fe6c7f0e96d770f8a44b4fa92b331"
+    },
+    {
+      "bytes": 5441,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/prepare_plans_v1.py",
+      "sha256": "305c2fcdac9db16aba4139b8365251a7f4f0a011fed517f8b8dd54f667673cf1"
+    },
+    {
+      "bytes": 66757,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/runtime-closure-v1.json",
+      "sha256": "3662c45836100d1735f28a244c84a126b868748c4f30ecc179c222a19ba83de0"
+    },
+    {
+      "bytes": 23565,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_cold_v1.py",
+      "sha256": "4ca13c28ecf622a1056f48dcdac21c051a1c5fe53bc9acd200ab75a9ea0904f9"
+    },
+    {
+      "bytes": 23565,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_cold_v1.py-F0-forward/source.py",
+      "sha256": "4ca13c28ecf622a1056f48dcdac21c051a1c5fe53bc9acd200ab75a9ea0904f9"
+    },
+    {
+      "bytes": 23496,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_cold_v1.py-F0-inverse/source.py",
+      "sha256": "c3385662302b377da334e50e647c948884175e0abaad3d41af17bee224e6d47b"
+    },
+    {
+      "bytes": 3411,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_cold_v1.py-forward.patch",
+      "sha256": "9d82c896fc104f03b950570698c54204f6e2c858817202da947ce994f040428b"
+    },
+    {
+      "bytes": 3411,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_cold_v1.py-inverse.patch",
+      "sha256": "1f7f4f690b73a7a03f22a318e95e451767518fa827745344ffda763fe86d4584"
+    },
+    {
+      "bytes": 49499,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_comparison_driver_v1.py",
+      "sha256": "cb22fee42028fd3d76426f98cb7fa0a7acd8b653e498b8ca4897e526614c526d"
+    },
+    {
+      "bytes": 18080,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_once_runner_v1.py",
+      "sha256": "8ecbee2e55e5c64d05c08cfcddc675544939e42c70596ca7e453782548b2e7cb"
+    },
+    {
+      "bytes": 18080,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_once_runner_v1.py-F0-forward/source.py",
+      "sha256": "8ecbee2e55e5c64d05c08cfcddc675544939e42c70596ca7e453782548b2e7cb"
+    },
+    {
+      "bytes": 18066,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_once_runner_v1.py-F0-inverse/source.py",
+      "sha256": "b002cf5ec78bc8d0fe106c612690204f0fa43fd726cd05c9beda278d7f205861"
+    },
+    {
+      "bytes": 709,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_once_runner_v1.py-forward.patch",
+      "sha256": "eace3c740b1bb6c4a893bb93f8805b34842e4278eb8bb03d7c225aa397653ece"
+    },
+    {
+      "bytes": 709,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_once_runner_v1.py-inverse.patch",
+      "sha256": "137e30fd293378b0772a73af15fcdc8576d38ae5101011e7fc74ad9149809233"
+    },
+    {
+      "bytes": 17151,
+      "path": "/private/tmp/gcts-symbolic-control-independent-design-peer-20261018/build_static_note_v1.py",
+      "sha256": "1b99d7f4f7844d44c833558f890fd10d2ed85122358699d606b001635ddfac50"
+    },
+    {
+      "bytes": 3077,
+      "path": "/private/tmp/gcts-symbolic-control-independent-design-peer-20261018/selected-comparison-design-addendum-v1.json",
+      "sha256": "b517c2b5a2168add3e5473d00639193c75c83f0b1b79b62cd60ba8d0ddf19384"
+    },
+    {
+      "bytes": 19315,
+      "path": "/private/tmp/gcts-symbolic-control-independent-design-peer-20261018/symbolic-control-static-design-assessment-v1.json",
+      "sha256": "59eaa1943ba6fea7da913958f47a4b38d1ef4e1e525538e47e138ba27f937788"
+    },
+    {
+      "bytes": 26491,
+      "path": "/private/tmp/gcts-symbolic-control-independent-source-peer-20261018/raw-static-audit-v1.json",
+      "sha256": "803e4b6360528d2a710e51f842274198ffbe522b8ca4ad14a7855836d926e1ad"
+    },
+    {
+      "bytes": 15514,
+      "path": "/private/tmp/gcts-symbolic-control-independent-source-peer-20261018/review_source_v1.py",
+      "sha256": "09df106df197bc196c9cf7f0484d977db2aba52deb701a3a833f11cc9738f5b0"
+    },
+    {
+      "bytes": 8367,
+      "path": "/private/tmp/gcts-symbolic-control-independent-source-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "d6374c20662bcdf6e8f335c7a45532406f13309b48ccf10bd33f33a031bce51b"
+    },
+    {
+      "bytes": 3494,
+      "path": "/private/tmp/gcts-symbolic-control-independent-source-peer-20261018/typed-declaration-review-v1.json",
+      "sha256": "2ae59fe284369341c28e442a449e70091a4396814a81960c17333a91f03f22f6"
+    },
+    {
+      "bytes": 4503,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/API-v1.json",
+      "sha256": "15b6a12b8b7912748befeda65f36e709ff07f7fde695a3c3b635c1e00de8aa34"
+    },
+    {
+      "bytes": 7917,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/Source-contract-v1.json",
+      "sha256": "c0552ac9dd01d3f85bfe5a53a561d33105502232826b580ab40bb31177ff70d6"
+    },
+    {
+      "bytes": 1386,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/Source-static-v1.json",
+      "sha256": "ca785c84666523dd7925f9fdef37642a629f3e3e8156a3dcb46c6cd185ca653a"
+    },
+    {
+      "bytes": 20067,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/actual-F0-patches/forward/symbolic.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "bytes": 8732,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/completed-language-and-cost-scope-v1.json",
+      "sha256": "92c1d4cf72f939e181b1c1014ee1a99a6072afa5f9afa75df2a33082111f14d2"
+    },
+    {
+      "bytes": 20502,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/forward.patch",
+      "sha256": "194e8453a2b67021b633072eed20993447d74002459d87c51e1a4def3e4c952b"
+    },
+    {
+      "bytes": 19071,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/freeze_Source_v1.py",
+      "sha256": "aebd753863d02549370b2efbf4f5cc78bca35c98864fbd695de0745305776983"
+    },
+    {
+      "bytes": 2436,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/handoff-v1.json",
+      "sha256": "9eb198d4e71e61fd177e019316fb8f42288a7c4a1f6fabae8c8df02064b4da5a"
+    },
+    {
+      "bytes": 20502,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/inverse.patch",
+      "sha256": "e2602d10da13a7cbced02fb85b2eff1438def22eb9ea3cef08e68cb26e5f8eff"
+    },
+    {
+      "bytes": 20067,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    {
+      "bytes": 12614,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/freeze_reviews_v1.py",
+      "sha256": "c368cd648c9e64ac87db71ad26d5789adf60cc40b0dcc97c4862104acb9c2df8"
+    },
+    {
+      "bytes": 3172,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/handoff-v1.json",
+      "sha256": "58e2703520836091f9d125608349cdc11306974b0d9867726a2555b5db512887"
+    },
+    {
+      "bytes": 23496,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/patch-cold/source.py",
+      "sha256": "c3385662302b377da334e50e647c948884175e0abaad3d41af17bee224e6d47b"
+    },
+    {
+      "bytes": 45668,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/patch-driver/source.py",
+      "sha256": "d1df19ee83c1f248534b707bf1a3584ccc9c9df5a87470d4b90af5dc4c53071f"
+    },
+    {
+      "bytes": 4270,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/patch-observer/source.py",
+      "sha256": "1c83131e314ef7dc5a789c590fdb61d56cc91bdbff447155e37ef5726525edb5"
+    },
+    {
+      "bytes": 18066,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/patch-runner/source.py",
+      "sha256": "b002cf5ec78bc8d0fe106c612690204f0fa43fd726cd05c9beda278d7f205861"
+    },
+    {
+      "bytes": 13084,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/review_source_v1.py",
+      "sha256": "c65cb6498ce29166410bce76b18567bc6f990b5bd3435703c78fdadf0d502fde"
+    },
+    {
+      "bytes": 50653,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/static-audit-v1.json",
+      "sha256": "90e7e6648476af55fb9619628c0468d3cd3f309795ced65f2e1c5db3a8f96704"
+    },
+    {
+      "bytes": 10916,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/typed-composition-Source-review-v1.json",
+      "sha256": "fa77e0f7d882049812fd930c78bdf008314bb1b2e6862ed0ba7ee10821383365"
+    },
+    {
+      "bytes": 9530,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/typed-driver-Source-review-v1.json",
+      "sha256": "ff364f28af67e0caab78c7663f0bea36b8fd4975f094625f9c9d9a7a304fb3ee"
+    },
+    {
+      "bytes": 47628,
+      "path": "/private/tmp/gcts-symbolic-final-grant-peer-20261018/audit-v1.json",
+      "sha256": "66746a8fe7466b6502d64f44e47f12c580b4f5cd01ab79c3be78a84758466331"
+    },
+    {
+      "bytes": 587,
+      "path": "/private/tmp/gcts-symbolic-final-grant-peer-20261018/handoff-v1.json",
+      "sha256": "c0a6ca7654aae02c2e1ca063bff02989128d8bc19be526bf478b7602377229b1"
+    },
+    {
+      "bytes": 7286,
+      "path": "/private/tmp/gcts-symbolic-final-grant-peer-20261018/review_grant_delta_v1.py",
+      "sha256": "e44449ffb20e7cfd7dd5d1eb3fb3a7611eef8b6f4946833eb8f2ca72b00dd36f"
+    },
+    {
+      "bytes": 17444,
+      "path": "/private/tmp/gcts-symbolic-final-grant-peer-20261018/typed-final-grant-delta-review-v1.json",
+      "sha256": "45e739eb9770caad282f50b1b671985a984b0c6fd30a1a8b7d030608791218e1"
+    },
+    {
+      "bytes": 14827776,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/audit-v1.json",
+      "sha256": "b1f25f34fda839a9c0c5faa48f46718eee30c77b96f1e50ac984c8c93d909061"
+    },
+    {
+      "bytes": 14830864,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/audit-v2.json",
+      "sha256": "fef03db73dbb9740d1cf9b5c55e3a704d0e55c05a8cdca8b0b354b7c8ba8f63c"
+    },
+    {
+      "bytes": 25680,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/audit_display_v1.py",
+      "sha256": "7fe75a364c7af19d171e899faec60420a4786ba5f910f94f748605b8f8ae54c1"
+    },
+    {
+      "bytes": 28207,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/audit_display_v2.py",
+      "sha256": "cd4ee6b69f72f06dd99c86a0efdce594d54b00f66ce7c879d83dc48e7c6a6fb2"
+    },
+    {
+      "bytes": 19805,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/final-display-metadata-checks-v1.json",
+      "sha256": "3f385aea95d5211ec05e6b49518775b697ebebeb626e4b1486645d419778f1ad"
+    },
+    {
+      "bytes": 13535,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/freeze_review_v1.py",
+      "sha256": "bc60dd73ae81199cca2368b5cb8d467804f2652f51ed8a96b7aa7b6f99cae735"
+    },
+    {
+      "bytes": 14214,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/freeze_review_v2.py",
+      "sha256": "84cf99dff62d7e71db9e02700baa36a580c204d1a7f28ebb94744295c50dba8f"
+    },
+    {
+      "bytes": 913,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/handoff-v1.json",
+      "sha256": "204b456197101909cd047d8fa9d37392478bf783e3fc284169b5357ed551d755"
+    },
+    {
+      "bytes": 18552,
+      "path": "/private/tmp/gcts-symbolic-human-report-peer-20261018/typed-human-report-review-v1.json",
+      "sha256": "4e98f4a914cfd602093761d0fa0051f17fce1600e56b9b16f52bea7c54f24dff"
+    },
+    {
+      "bytes": 118743,
+      "path": "/private/tmp/gcts-symbolic-prospective-plan-peer-20261018/audit-v1.json",
+      "sha256": "982211e8b8d6dc945ff395b757339b9e7886e288d98c4937ffaafcca5d9753fd"
+    },
+    {
+      "bytes": 639,
+      "path": "/private/tmp/gcts-symbolic-prospective-plan-peer-20261018/handoff-v1.json",
+      "sha256": "f6cb6f62c8bcd809326dd869f84e3304c49ec366e78b45f6839a522b6b0fe66f"
+    },
+    {
+      "bytes": 12439,
+      "path": "/private/tmp/gcts-symbolic-prospective-plan-peer-20261018/review_plans_v1.py",
+      "sha256": "b3999d6964eb1829e6853e20d33c431788979c0136ed126d3d5bddd223953cc6"
+    },
+    {
+      "bytes": 32927,
+      "path": "/private/tmp/gcts-symbolic-prospective-plan-peer-20261018/typed-six-prospective-plan-review-v1.json",
+      "sha256": "7fdfa296e07ea25bd188504cd9ccca5ab3c3b52e2db5bf8ee876ae7f051c2ddf"
+    },
+    {
+      "bytes": 572628,
+      "path": "/private/tmp/gcts-symbolic-resource-peer-20261018/audit-v1.json",
+      "sha256": "e767e40ef73e7708cb294152d0c8fd160915920792eb2b8af3aa22c781e1bb9d"
+    },
+    {
+      "bytes": 20399,
+      "path": "/private/tmp/gcts-symbolic-resource-peer-20261018/audit_retained_resources_v1.py",
+      "sha256": "9d735e69908b49470e21bf0ec77adaa0c15f565ce4a0b807a2889723ed35610b"
+    },
+    {
+      "bytes": 9039,
+      "path": "/private/tmp/gcts-symbolic-resource-peer-20261018/freeze_resource_review_v1.py",
+      "sha256": "ec9f8dffb112384bd07c413dd2ade6a0e6e8e02b22465b0f1968bc4d33abf59a"
+    },
+    {
+      "bytes": 1681,
+      "path": "/private/tmp/gcts-symbolic-resource-peer-20261018/handoff-v1.json",
+      "sha256": "860766dc9ab8ba793fd4ccd80e3234b25b0665ec33c8902bf9a164188e6278bd"
+    },
+    {
+      "bytes": 27236,
+      "path": "/private/tmp/gcts-symbolic-resource-peer-20261018/typed-resource-custody-review-v1.json",
+      "sha256": "1f7e765dbb30da4f0c7303a7a1fbe802d55c8e1f522fdf6b286bc7e9b8de3e9b"
+    }
+  ],
+  "schema": "GCTS-symbolic-mechanism-retained-evidence-manifest-v1",
+  "scientific_replays": 0,
+  "scope": "Whole file content objects for all6new once-only actuals, Source/plan/declaration/reviews/native receipts/results and report. Original raw JSON included alongside losslessdownloads. Exact Python/Z3 external runtime dependencies identified, not embedded. Native checker binary/source/fixedinputs/actualmachinebytes included. Memoryassessment countspriorcohort with separatelylinkedhistoricalarchive. No execution/soundness/generalization claim follows from packaging.",
+  "total_bound_bytes": 347120121,
+  "unique_object_bytes": 229987216
+}
