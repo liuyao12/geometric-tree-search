@@ -1,0 +1,442 @@
+{
+  "Source_callgraph": [
+    {
+      "lines": [
+        308,
+        318
+      ],
+      "source_role": "family_engine",
+      "statement": "Constructor initializes _family_prototype_census={} unconditionally in BOTH modes, then joins actual empty checked-state names. It does not gate this census on family_proposer."
+    },
+    {
+      "lines": [
+        1123,
+        1239
+      ],
+      "source_role": "family_engine",
+      "statement": "decision() first checks authority and full current state, scans all frontier rows, obtains and validates native degree receipts, joins full collision census, then handles unresolved fallback and global DEAD/FORCED/earliest-generation scheduling. No family proposal is requested inside this method."
+    },
+    {
+      "lines": [
+        1117,
+        1121,
+        1472,
+        1518
+      ],
+      "source_role": "family_engine",
+      "statement": "Each native receipt validation calls _join_family_degree_census. Its gate is census is None, not callbacks enabled. Shared paths rebuild public rejected keys when needed and compare complete original/decorated prototype preimages. They are not a treatment-only cost."
+    },
+    {
+      "lines": [
+        1466,
+        1470,
+        1520,
+        1565
+      ],
+      "source_role": "family_engine",
+      "statement": "Candidate and fallback cursor exposure paths also join the same non-None collision census in both modes. This census provides collision evidence only, not candidates/degree authority."
+    },
+    {
+      "lines": [
+        1932,
+        1944,
+        1789,
+        1811
+      ],
+      "source_role": "family_engine",
+      "statement": "Only after a completed branch decision does search increment branches and dispatch treatment-only _select_family_branch; that calls family_proposer only after family_batches increment. Treatment branches0/family_batches0 and no events place the saved stop before that dispatch."
+    },
+    {
+      "lines": [
+        201,
+        233,
+        275,
+        287
+      ],
+      "source_role": "closed_root_point_cases",
+      "statement": "Both family callback closures are defined unconditionally in BOTH arms; the engine receives closures only for eligible treatment, otherwise None. Source-view capture alone does not establish execution of those callbacks."
+    },
+    {
+      "lines": [
+        400,
+        430,
+        454,
+        474
+      ],
+      "source_role": "family_engine",
+      "statement": "Authority checks compare family endpoint object identities; snapshot stores policy enabled boolean and census, not callback closure objects. No pre-provider recursive serialization of captured full source_view was identified."
+    },
+    {
+      "lines": [
+        158,
+        174,
+        344,
+        384
+      ],
+      "source_role": "intake",
+      "statement": "Root strong function anchors inventory module/class definitions before CASE; this does not traverse per-run nested family closure contents. Full current Source guards are shared. Their timing is not separately measured by the current ledger."
+    }
+  ],
+  "author_overlap": false,
+  "bounded_interpretation": [
+    "Both point runs did acquire and structurally qualify the same exact full four-record source view. This common preparation cost was reached in both.",
+    "Neither run started family.propose or family.consume. In treatment, the first global decision scan did not complete; no branch event, family dispatch, current donor-record matching, row-embedding enumeration or current native family adaptation was reached.",
+    "The last treatment diagnostic is DEGREE_CHECK_BEGIN row21; query.check has22entries/21returns/1raise. This bounds the visible interrupted stage, not the exact inner instruction, census subcall or native error origin.",
+    "Empty completed28queryproposals/27checks before its last row2 checker interruption after one branch/place/backtrack; treatment completed22proposals/21checks. These single wall-clock runs do not establish why shared pre-provider progress differed.",
+    "The case.total exclusive remainder includes all uninstrumented work inside that measured span; it is not a measurement of guard time, census time, closure-custody time or zero-cost validation. DirectV9 innerpoint labels are unused, not free.",
+    "No inference about donor matching quality, lemma usefulness, learned marking, RL, proof-search advantage, treatment-specific census regression or statistical speed follows from a provider that was never called.",
+    "Fourth conventional arm raised Root4MiB completed-packet overflow after the control returned. No complete returned case/proof packet was retained or admitted. Its proof outcome/word length are unavailable, not positive and not a theorem refutation. Thus no complete four-arm or conventional-pair comparison is available."
+  ],
+  "causal_explanation_established": false,
+  "comparison": {
+    "bytes": 9826,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/ROOT-comparison-v4.json",
+    "sha256": "9b148750087dd29817b40e892b141e0c6b30544721ef58802f68b720b2344d73"
+  },
+  "fourth_arm_failure": {
+    "elapsed_time_is_failure_telemetry_only": true,
+    "native_unfinished": {
+      "bytes": 4060,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/ROOT-native-unfinished-v1.json",
+      "sha256": "b676a56ab45ce3ba943938cffbe5dc5beb8717ff235759fc01d18d86e57130f3"
+    },
+    "no_admitted_case_or_proof": true,
+    "stderr": {
+      "bytes": 836,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/external-v1/meter-stderr.txt",
+      "sha256": "ff7e27d30be3cebb65ce6b666570ab02b8ad412c6a8a24e0d7e3dda470de0379"
+    },
+    "worker_path_source": "intake493\u2013518: control returns before progress507; progress cap can throw before case/schema/proof handling"
+  },
+  "interpretation_review_passed": true,
+  "limitations": [
+    "This is a narrow Source-plus-saved-counter interpretation note, not the full independent native/current44/original17/admission data audit or proof revalidation.",
+    "No project/module/kernel/native/checker/clock/codec execution, replay or decompression. Only current exact Source bytes and already decoded saved JSON/raw stderr read.",
+    "Reviewer previously Source-reviewed these components/cold and missed the V2 constructor invocation mismatch; failedpilot history remains explicit. Reviewer authored no scientific implementation or actual.",
+    "No changed executable, new grant, actual, budget adjustment or deployment is authorized by this note."
+  ],
+  "module_evaluations": 0,
+  "next_priority": [
+    "Close/report this failed-to-reach-provider experiment honestly; preserve all5consumed attempts, including failedV2 pilot. No cap increase, route change, hidden retry or salvage of the failed conventional case.",
+    "Before another scientific run, design prospective bounded observations for shared pre-provider current-state validation, degree proposal/check, rejected-key reconstruction/census, and full Source guards. Apply the same instrumentation to both modes and preserve exact global DEAD/FORCED/earliest-generation scheduling, complete fallback, authority checks and rollback. Current remainder is insufficient for causal attribution.",
+    "Separately design a whole-evidence transport/protocol whose declared bounded storage can preserve complete control returns. Review it before any new matched experiment; do not relabel or rerun consumed artifacts. Only after a completed branch/provider/current primitive-use milestone can this ground inventory search policy be evaluated."
+  ],
+  "no_executable_changes": true,
+  "point_results": [
+    {
+      "admission": {
+        "bytes": 3104,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/ROOT-case-admission-v1.json",
+        "sha256": "189bc67e98f9c1c369fddf58f046d72ba1f236f9f99933e26d98394df7821b46"
+      },
+      "complete_diagnostic_notices": true,
+      "cost_records": {
+        "case.total": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            9
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 5514247000,
+            "inclusive_ns": 16741701000,
+            "label": "case.total",
+            "maximum_depth": 1
+          }
+        },
+        "family.consume": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            21
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 0,
+            "calls_started": 0,
+            "exclusive_ns": 0,
+            "inclusive_ns": 0,
+            "label": "family.consume",
+            "maximum_depth": 0
+          }
+        },
+        "family.propose": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            20
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 0,
+            "calls_started": 0,
+            "exclusive_ns": 0,
+            "inclusive_ns": 0,
+            "label": "family.propose",
+            "maximum_depth": 0
+          }
+        },
+        "pool.prepare": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            8
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 757551000,
+            "inclusive_ns": 757551000,
+            "label": "pool.prepare",
+            "maximum_depth": 2
+          }
+        },
+        "query.check": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            18
+          ],
+          "value": {
+            "calls_raised": 1,
+            "calls_returned": 27,
+            "calls_started": 28,
+            "exclusive_ns": 4328868000,
+            "inclusive_ns": 4328868000,
+            "label": "query.check",
+            "maximum_depth": 2
+          }
+        },
+        "query.propose": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            17
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 28,
+            "calls_started": 28,
+            "exclusive_ns": 6061752000,
+            "inclusive_ns": 6061752000,
+            "label": "query.propose",
+            "maximum_depth": 2
+          }
+        }
+      },
+      "counter_paths": [
+        "case.engine_result.counts",
+        "case.engine_result.events",
+        "case.provider_packets",
+        "case.consumer_packets",
+        "case.diagnostics.notices",
+        "cost_ledger.labels"
+      ],
+      "events": 9,
+      "expanded": {
+        "bytes": 3214394,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/ROOT-expanded-result-v1.json",
+        "sha256": "38efcb4abaacb7419c56099da9fbe2a735343cc571a41ad9ac307f45e0583731"
+      },
+      "family_preferences_enabled": false,
+      "full_literal_root_equal_and_stack_restored": true,
+      "kind": "POINT_EMPTY",
+      "last_query_notice": {
+        "data": {
+          "row": 2
+        },
+        "diagnostic_only": true,
+        "index": 119,
+        "schema": "right-two-CASE-diagnostic-notice-v1",
+        "scientific_acceptance": false,
+        "stage": "DEGREE_CHECK_BEGIN"
+      },
+      "provider_and_consumer_packets": 0,
+      "reason": "declared cumulative receiver work17 unfinished",
+      "saved_counts": {
+        "backtracks": 1,
+        "branches": 1,
+        "family_batches": 0,
+        "family_checks": 0,
+        "global_scans": 3,
+        "nodes": 3,
+        "placements": 1
+      },
+      "status": "UNKNOWN",
+      "unclassified_case_exclusive_ns": 5514247000
+    },
+    {
+      "admission": {
+        "bytes": 3001,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/ROOT-case-admission-v1.json",
+        "sha256": "474a45471defd5ce3e01720676ca2aab3599609a25217697fd7fb67eb05d3b5e"
+      },
+      "complete_diagnostic_notices": true,
+      "cost_records": {
+        "case.total": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            9
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 8857055000,
+            "inclusive_ns": 16670355000,
+            "label": "case.total",
+            "maximum_depth": 1
+          }
+        },
+        "family.consume": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            21
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 0,
+            "calls_started": 0,
+            "exclusive_ns": 0,
+            "inclusive_ns": 0,
+            "label": "family.consume",
+            "maximum_depth": 0
+          }
+        },
+        "family.propose": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            20
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 0,
+            "calls_started": 0,
+            "exclusive_ns": 0,
+            "inclusive_ns": 0,
+            "label": "family.propose",
+            "maximum_depth": 0
+          }
+        },
+        "pool.prepare": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            8
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 776069000,
+            "inclusive_ns": 776069000,
+            "label": "pool.prepare",
+            "maximum_depth": 2
+          }
+        },
+        "query.check": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            18
+          ],
+          "value": {
+            "calls_raised": 1,
+            "calls_returned": 21,
+            "calls_started": 22,
+            "exclusive_ns": 2907520000,
+            "inclusive_ns": 2907520000,
+            "label": "query.check",
+            "maximum_depth": 2
+          }
+        },
+        "query.propose": {
+          "path": [
+            "cost_ledger",
+            "labels",
+            17
+          ],
+          "value": {
+            "calls_raised": 0,
+            "calls_returned": 22,
+            "calls_started": 22,
+            "exclusive_ns": 4129711000,
+            "inclusive_ns": 4129711000,
+            "label": "query.propose",
+            "maximum_depth": 2
+          }
+        }
+      },
+      "counter_paths": [
+        "case.engine_result.counts",
+        "case.engine_result.events",
+        "case.provider_packets",
+        "case.consumer_packets",
+        "case.diagnostics.notices",
+        "cost_ledger.labels"
+      ],
+      "events": 0,
+      "expanded": {
+        "bytes": 3047009,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/ROOT-expanded-result-v1.json",
+        "sha256": "927689ca993a4d37eaeceefeb40dbc60757a61f31a9c0267ce0fb431a103135d"
+      },
+      "family_preferences_enabled": true,
+      "full_literal_root_equal_and_stack_restored": true,
+      "kind": "POINT_CLOSED_ROOT",
+      "last_query_notice": {
+        "data": {
+          "row": 21
+        },
+        "diagnostic_only": true,
+        "index": 93,
+        "schema": "right-two-CASE-diagnostic-notice-v1",
+        "scientific_acceptance": false,
+        "stage": "DEGREE_CHECK_BEGIN"
+      },
+      "provider_and_consumer_packets": 0,
+      "reason": "declared cumulative receiver work17 unfinished",
+      "saved_counts": {
+        "backtracks": 0,
+        "branches": 0,
+        "family_batches": 0,
+        "family_checks": 0,
+        "global_scans": 1,
+        "nodes": 1,
+        "placements": 0
+      },
+      "status": "UNKNOWN",
+      "unclassified_case_exclusive_ns": 8857055000
+    }
+  ],
+  "reviewer_identity": "/root/receiver_driver_review",
+  "same_complete_point_view_literal_equality": true,
+  "schema": "ROOT-closed-root-pre-provider-Source-saved-data-interpretation-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "source_only_and_saved_JSON_raw_metadata_only": true,
+  "sources": {
+    "closed_root_point_cases": {
+      "bytes": 25591,
+      "path": "/private/tmp/gcts-closed-root-point-case-source-20261018/closed_root_point_search_case_v1.py",
+      "sha256": "75a32f4daca74d29146fbc626fcf851d2983ba9f8a65c1347d04cf6b23744d8b"
+    },
+    "family_engine": {
+      "bytes": 129052,
+      "path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/receptor_family_search_engine_v18.py",
+      "sha256": "142e25e29348a09e24741c550ca92fc343bc05dbf2de98aa77dd41b393153c73"
+    },
+    "intake": {
+      "bytes": 72806,
+      "path": "/private/tmp/gcts-closed-root-search-root-source-20261018/closed_root_search_cold_v3.py",
+      "sha256": "4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a"
+    }
+  }
+}

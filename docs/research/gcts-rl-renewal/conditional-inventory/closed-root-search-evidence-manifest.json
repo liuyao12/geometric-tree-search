@@ -1,0 +1,2736 @@
+{
+  "actual_invocations_consumed": 5,
+  "archive": {
+    "bytes": 4300445,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v5/closed-root-search-reproduction.zip",
+    "sha256": "e122d33e64c6c9b64e356f3f8bb6e040ac4624018d8f14b98884bf7bba8ae72a"
+  },
+  "date_UTC": "2026-10-18",
+  "failed_V2_integration_pilots": 1,
+  "files": [
+    {
+      "archive_member": "objects/0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+      "binding_scope": "UNCHANGED_NATIVE_HARNESS",
+      "bytes": 6734,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    },
+    {
+      "archive_member": "objects/464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 48584,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "archive_member": "objects/1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 46514,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "archive_member": "objects/43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 10323,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "archive_member": "objects/a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "binding_scope": "CURRENT_INPUTS",
+      "bytes": 2925,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "archive_member": "objects/e020ab902a00871416a31fa1502267e0e4ae902b7d15edcf245656fe20c0d5aa",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 24998,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/ROOT-authorization-v1.json",
+      "sha256": "e020ab902a00871416a31fa1502267e0e4ae902b7d15edcf245656fe20c0d5aa"
+    },
+    {
+      "archive_member": "objects/b676a56ab45ce3ba943938cffbe5dc5beb8717ff235759fc01d18d86e57130f3",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 4060,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/ROOT-native-unfinished-v1.json",
+      "sha256": "b676a56ab45ce3ba943938cffbe5dc5beb8717ff235759fc01d18d86e57130f3"
+    },
+    {
+      "archive_member": "objects/f5b440805911d2c7f14932e6d12fdc760c0c422fdab0d83944fa551b007eb889",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 25194,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/ROOT-plan-v1.json",
+      "sha256": "f5b440805911d2c7f14932e6d12fdc760c0c422fdab0d83944fa551b007eb889"
+    },
+    {
+      "archive_member": "objects/d6f84c95922760a113bbf5a287b8ca222445c08b8ee67ec43c988575a165fae9",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 2090,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/ROOT-prelaunch-v1.json",
+      "sha256": "d6f84c95922760a113bbf5a287b8ca222445c08b8ee67ec43c988575a165fae9"
+    },
+    {
+      "archive_member": "objects/1d20a1b3c188c1e1dd191f05f7481fc4873a20231d15cbcf780aaa8e7a715d5d",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 254,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/external-v1/ONCE.json",
+      "sha256": "1d20a1b3c188c1e1dd191f05f7481fc4873a20231d15cbcf780aaa8e7a715d5d"
+    },
+    {
+      "archive_member": "objects/ff7e27d30be3cebb65ce6b666570ab02b8ad412c6a8a24e0d7e3dda470de0379",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 836,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/external-v1/meter-stderr.txt",
+      "sha256": "ff7e27d30be3cebb65ce6b666570ab02b8ad412c6a8a24e0d7e3dda470de0379"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/3f43387180a688e8666204083d276cb142f04ffeaa32a85d04d21c2a490f0c7f",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 1629,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/external-v1/native-terminal.json",
+      "sha256": "3f43387180a688e8666204083d276cb142f04ffeaa32a85d04d21c2a490f0c7f"
+    },
+    {
+      "archive_member": "objects/14c9ac78bcb8a389ee128fd22beac2406a64c67cd15c4689aa4e1a587875701e",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 471,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/external-v1/observation.json",
+      "sha256": "14c9ac78bcb8a389ee128fd22beac2406a64c67cd15c4689aa4e1a587875701e"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/6630121f59fac0b6cf9654cc133237f7cc828924ef50787b44a238906d1694f4",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-closed-root-ROOT-20261018-v3/external-v1/postterminal-probe-stdout.txt",
+      "sha256": "6630121f59fac0b6cf9654cc133237f7cc828924ef50787b44a238906d1694f4"
+    },
+    {
+      "archive_member": "objects/a5c0cbfe044630aab35827e1ec586fe256f8c33b27c54985835c04077baff2f7",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 24974,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/ROOT-authorization-v1.json",
+      "sha256": "a5c0cbfe044630aab35827e1ec586fe256f8c33b27c54985835c04077baff2f7"
+    },
+    {
+      "archive_member": "objects/f019cf3f5f4ef2eeb0f40496c1dbc36270612d1a16314041c2bb078da09e0bdf",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 3323,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/ROOT-case-admission-v1.json",
+      "sha256": "f019cf3f5f4ef2eeb0f40496c1dbc36270612d1a16314041c2bb078da09e0bdf"
+    },
+    {
+      "archive_member": "objects/e150662f83fc9432b5ae760a24c7c193f93dc7a09d20831bf88556fb1a659361",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 3335241,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/ROOT-expanded-result-v1.json",
+      "sha256": "e150662f83fc9432b5ae760a24c7c193f93dc7a09d20831bf88556fb1a659361"
+    },
+    {
+      "archive_member": "objects/dacf71b92d31d470ebdd1a79b081d48bd374a1b3431bb9fdfd2cac2477824a33",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 25164,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/ROOT-plan-v1.json",
+      "sha256": "dacf71b92d31d470ebdd1a79b081d48bd374a1b3431bb9fdfd2cac2477824a33"
+    },
+    {
+      "archive_member": "objects/9993a0828ab5b945bb7a70fa9386804dc1e37d503e105e14ef268d989eee5981",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 2072,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/ROOT-prelaunch-v1.json",
+      "sha256": "9993a0828ab5b945bb7a70fa9386804dc1e37d503e105e14ef268d989eee5981"
+    },
+    {
+      "archive_member": "objects/76b17193a146ebed7431235f0a267d7ccf345339be4eb8ddcc7d6b82b7c3c1cd",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 2512,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/ROOT-transport-native-closure-v1.json",
+      "sha256": "76b17193a146ebed7431235f0a267d7ccf345339be4eb8ddcc7d6b82b7c3c1cd"
+    },
+    {
+      "archive_member": "objects/e5efda973a9e03ff78f58096a8729b5aebf016f4018b922757a66e73233945bb",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 248,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/external-v1/ONCE.json",
+      "sha256": "e5efda973a9e03ff78f58096a8729b5aebf016f4018b922757a66e73233945bb"
+    },
+    {
+      "archive_member": "objects/3de1fcc9001178935516da5c735443c24ac56390220ecbbbcd3a34bfcf1596a5",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 893,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/external-v1/meter-stderr.txt",
+      "sha256": "3de1fcc9001178935516da5c735443c24ac56390220ecbbbcd3a34bfcf1596a5"
+    },
+    {
+      "archive_member": "objects/0ceaec7584d8ee46fc8e20938af2bcfc0a169c0731d9bdb8539ad16af64bae63",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 829,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/external-v1/meter-stdout.txt",
+      "sha256": "0ceaec7584d8ee46fc8e20938af2bcfc0a169c0731d9bdb8539ad16af64bae63"
+    },
+    {
+      "archive_member": "objects/e9a19b82109690ebcbe5ca62a4ecd96bbaaafcca40388617c08e36956934caaa",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 1622,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/external-v1/native-terminal.json",
+      "sha256": "e9a19b82109690ebcbe5ca62a4ecd96bbaaafcca40388617c08e36956934caaa"
+    },
+    {
+      "archive_member": "objects/25e874332af175b0cb399f6ad0c1d25be64560c204bb2f178cfc3fd16fc0aea8",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 465,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/external-v1/observation.json",
+      "sha256": "25e874332af175b0cb399f6ad0c1d25be64560c204bb2f178cfc3fd16fc0aea8"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/61d00f0ccb9a3ac738bb18e476e25aef9e3097e61f0a2c6b710961f28186f54b",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/external-v1/postterminal-probe-stdout.txt",
+      "sha256": "61d00f0ccb9a3ac738bb18e476e25aef9e3097e61f0a2c6b710961f28186f54b"
+    },
+    {
+      "archive_member": "objects/8d16f84905e527741c3ed31559c8d117b5cddc8b9a210d5c9d322c0a99c2986b",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 522679,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/owned-v1/engine-result.json",
+      "sha256": "8d16f84905e527741c3ed31559c8d117b5cddc8b9a210d5c9d322c0a99c2986b"
+    },
+    {
+      "archive_member": "objects/cd8093ec0e3b277fef5e58828c27fada0918217cbc866901277ca636a99f77a9",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 1757,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-conventional-empty-ROOT-20261018-v3/owned-v1/response.jsonl",
+      "sha256": "cd8093ec0e3b277fef5e58828c27fada0918217cbc866901277ca636a99f77a9"
+    },
+    {
+      "archive_member": "objects/5b389e72140b46ff3bf91da7c48c86f1ed400a6f445dc8b515e1af728454a894",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 24984,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/ROOT-authorization-v1.json",
+      "sha256": "5b389e72140b46ff3bf91da7c48c86f1ed400a6f445dc8b515e1af728454a894"
+    },
+    {
+      "archive_member": "objects/474a45471defd5ce3e01720676ca2aab3599609a25217697fd7fb67eb05d3b5e",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 3001,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/ROOT-case-admission-v1.json",
+      "sha256": "474a45471defd5ce3e01720676ca2aab3599609a25217697fd7fb67eb05d3b5e"
+    },
+    {
+      "archive_member": "objects/927689ca993a4d37eaeceefeb40dbc60757a61f31a9c0267ce0fb431a103135d",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 3047009,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/ROOT-expanded-result-v1.json",
+      "sha256": "927689ca993a4d37eaeceefeb40dbc60757a61f31a9c0267ce0fb431a103135d"
+    },
+    {
+      "archive_member": "objects/815d2456513e471eb294fbe07fe14a9faf6e85bff8a9c41070e176913e642221",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 25173,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/ROOT-plan-v1.json",
+      "sha256": "815d2456513e471eb294fbe07fe14a9faf6e85bff8a9c41070e176913e642221"
+    },
+    {
+      "archive_member": "objects/11b22f8561b998051b9db326715f16d7a040cc0de5dcdb06b1f868dc70b945cf",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 2069,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/ROOT-prelaunch-v1.json",
+      "sha256": "11b22f8561b998051b9db326715f16d7a040cc0de5dcdb06b1f868dc70b945cf"
+    },
+    {
+      "archive_member": "objects/e6622d6cf806727e534a4117e0bc9e5671cd05bbec0f43c18d03e313b3cbedcd",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 24915,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/ROOT-transport-native-closure-v1.json",
+      "sha256": "e6622d6cf806727e534a4117e0bc9e5671cd05bbec0f43c18d03e313b3cbedcd"
+    },
+    {
+      "archive_member": "objects/6df06cbea45b05e24da277ec1b3468c77f51e9a9fb6f0cf8c2d037d067614b2c",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 247,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/external-v1/ONCE.json",
+      "sha256": "6df06cbea45b05e24da277ec1b3468c77f51e9a9fb6f0cf8c2d037d067614b2c"
+    },
+    {
+      "archive_member": "objects/4e1068cbf597ed0f42966598df7dc15c9ecc62bfc7affa1671b819318acd5277",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 17084,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/external-v1/meter-stderr.txt",
+      "sha256": "4e1068cbf597ed0f42966598df7dc15c9ecc62bfc7affa1671b819318acd5277"
+    },
+    {
+      "archive_member": "objects/c7782ba60b9869062df937530488f36a1aee09fb46c50463df35fce2f8c4299c",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 840,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/external-v1/meter-stdout.txt",
+      "sha256": "c7782ba60b9869062df937530488f36a1aee09fb46c50463df35fce2f8c4299c"
+    },
+    {
+      "archive_member": "objects/51863a0e4bc938993e783b129ea6fdc4ce56b007cbeabc2c88ee96c46baddcc5",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 1623,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/external-v1/native-terminal.json",
+      "sha256": "51863a0e4bc938993e783b129ea6fdc4ce56b007cbeabc2c88ee96c46baddcc5"
+    },
+    {
+      "archive_member": "objects/8081dc2fc5ac82df7420e8b82bad128c756dd7443d975e145547050c1347b709",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 464,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/external-v1/observation.json",
+      "sha256": "8081dc2fc5ac82df7420e8b82bad128c756dd7443d975e145547050c1347b709"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/2778062f64d0056fe5756284f4a7ca0676a5450661c4d10e9d4de7bb67511d6e",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/external-v1/postterminal-probe-stdout.txt",
+      "sha256": "2778062f64d0056fe5756284f4a7ca0676a5450661c4d10e9d4de7bb67511d6e"
+    },
+    {
+      "archive_member": "objects/ece13dccc1554e7f623cb3bdd35187d212a4b7a719158102dce7b2dfdb29922d",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 448523,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/owned-v1/engine-result.json",
+      "sha256": "ece13dccc1554e7f623cb3bdd35187d212a4b7a719158102dce7b2dfdb29922d"
+    },
+    {
+      "archive_member": "objects/281c36d0eee4b6e4adc539b11bdf2baceead051555d1e4f83a95f2dcc7de7be7",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 1768,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-closed-root-ROOT-20261018-v3/owned-v1/response.jsonl",
+      "sha256": "281c36d0eee4b6e4adc539b11bdf2baceead051555d1e4f83a95f2dcc7de7be7"
+    },
+    {
+      "archive_member": "objects/9931ed244d79745d354f722460e346afe5f7a5beeb99e6f4a8425085dafdfc41",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 24953,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/ROOT-authorization-v1.json",
+      "sha256": "9931ed244d79745d354f722460e346afe5f7a5beeb99e6f4a8425085dafdfc41"
+    },
+    {
+      "archive_member": "objects/189bc67e98f9c1c369fddf58f046d72ba1f236f9f99933e26d98394df7821b46",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 3104,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/ROOT-case-admission-v1.json",
+      "sha256": "189bc67e98f9c1c369fddf58f046d72ba1f236f9f99933e26d98394df7821b46"
+    },
+    {
+      "archive_member": "objects/38efcb4abaacb7419c56099da9fbe2a735343cc571a41ad9ac307f45e0583731",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 3214394,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/ROOT-expanded-result-v1.json",
+      "sha256": "38efcb4abaacb7419c56099da9fbe2a735343cc571a41ad9ac307f45e0583731"
+    },
+    {
+      "archive_member": "objects/e090ed6904629d9d230f8368efdbf3afa618499d90af2cfe134c214c29d2892d",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 25136,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/ROOT-plan-v1.json",
+      "sha256": "e090ed6904629d9d230f8368efdbf3afa618499d90af2cfe134c214c29d2892d"
+    },
+    {
+      "archive_member": "objects/a3234312b33eeef65371b2e70e85e3807c38f833248aa30f599b9bcadaff2b8a",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 2051,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/ROOT-prelaunch-v1.json",
+      "sha256": "a3234312b33eeef65371b2e70e85e3807c38f833248aa30f599b9bcadaff2b8a"
+    },
+    {
+      "archive_member": "objects/14502a7cc95044a7cf35289362c5a3ed6d549d5b8902973782af51c2da13f0ee",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 31125,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/ROOT-transport-native-closure-v1.json",
+      "sha256": "14502a7cc95044a7cf35289362c5a3ed6d549d5b8902973782af51c2da13f0ee"
+    },
+    {
+      "archive_member": "objects/aa635d88977c4729bad7641f5b00c65aa1e3c99ad729709436b2318e694ae344",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 241,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/external-v1/ONCE.json",
+      "sha256": "aa635d88977c4729bad7641f5b00c65aa1e3c99ad729709436b2318e694ae344"
+    },
+    {
+      "archive_member": "objects/72c5d0591b65a3997bd1573b0088e6129edabddab23273812b8329608dfbb273",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 21570,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/external-v1/meter-stderr.txt",
+      "sha256": "72c5d0591b65a3997bd1573b0088e6129edabddab23273812b8329608dfbb273"
+    },
+    {
+      "archive_member": "objects/0a58a38f790d3e397f1b0c1b7499f7b9bee0387d797430efa5a7c960efcf7b96",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 809,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/external-v1/meter-stdout.txt",
+      "sha256": "0a58a38f790d3e397f1b0c1b7499f7b9bee0387d797430efa5a7c960efcf7b96"
+    },
+    {
+      "archive_member": "objects/3282713476700a4e0b4618f7d615baa3a14c416d44587710a2d92e09b70b1890",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 1615,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/external-v1/native-terminal.json",
+      "sha256": "3282713476700a4e0b4618f7d615baa3a14c416d44587710a2d92e09b70b1890"
+    },
+    {
+      "archive_member": "objects/b5e72fcea65db2e82d15da7f02adbdccf48f4bac003b7084011ca966b80d3012",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 458,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/external-v1/observation.json",
+      "sha256": "b5e72fcea65db2e82d15da7f02adbdccf48f4bac003b7084011ca966b80d3012"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/1f78050491d66bac1d72ce170ca0de478b54a0d26f3f8b694280e9b2fdca25d2",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/external-v1/postterminal-probe-stdout.txt",
+      "sha256": "1f78050491d66bac1d72ce170ca0de478b54a0d26f3f8b694280e9b2fdca25d2"
+    },
+    {
+      "archive_member": "objects/5a972f11a950a8cf1e32ad287587d639f4f71a418f8bf79b93981359eb70ef30",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 461399,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/owned-v1/engine-result.json",
+      "sha256": "5a972f11a950a8cf1e32ad287587d639f4f71a418f8bf79b93981359eb70ef30"
+    },
+    {
+      "archive_member": "objects/6c9d3c65e33580c7dc4c8c93392c876d64e46db4caf40222eb4ccb05eb65700a",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 1737,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018-v3/owned-v1/response.jsonl",
+      "sha256": "6c9d3c65e33580c7dc4c8c93392c876d64e46db4caf40222eb4ccb05eb65700a"
+    },
+    {
+      "archive_member": "objects/6ab620dc492fbf74af29011de4512631ee9010a6cb8f2e9df2998533b6ea3ea1",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 24950,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/ROOT-authorization-v1.json",
+      "sha256": "6ab620dc492fbf74af29011de4512631ee9010a6cb8f2e9df2998533b6ea3ea1"
+    },
+    {
+      "archive_member": "objects/8cc8e98c51e33f741ec49497f7fe835e4bad16389aa83a2596ff39ebc578c558",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 3956,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/ROOT-native-unfinished-v1.json",
+      "sha256": "8cc8e98c51e33f741ec49497f7fe835e4bad16389aa83a2596ff39ebc578c558"
+    },
+    {
+      "archive_member": "objects/223b61e55c03e7e03120d67fadd76c5ef36f1368b8019bd5a42fa953f9d568d1",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 25130,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/ROOT-plan-v1.json",
+      "sha256": "223b61e55c03e7e03120d67fadd76c5ef36f1368b8019bd5a42fa953f9d568d1"
+    },
+    {
+      "archive_member": "objects/edf31b4c90eb950e8e5308949c7eb9cc1a19f683afbe83757dd10e644e04b936",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 2045,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/ROOT-prelaunch-v1.json",
+      "sha256": "edf31b4c90eb950e8e5308949c7eb9cc1a19f683afbe83757dd10e644e04b936"
+    },
+    {
+      "archive_member": "objects/ef8a5997dc67a9fb11d37f4f45c29078d96964c3850f5b16319523c5692c4533",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 241,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/external-v1/ONCE.json",
+      "sha256": "ef8a5997dc67a9fb11d37f4f45c29078d96964c3850f5b16319523c5692c4533"
+    },
+    {
+      "archive_member": "objects/aabd1450008ae676d622fbca02c013b4bf084483dc5cfc19c77589bf4df780c4",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 697,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/external-v1/meter-stderr.txt",
+      "sha256": "aabd1450008ae676d622fbca02c013b4bf084483dc5cfc19c77589bf4df780c4"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/external-v1/meter-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/8a607f185ef488ca4b7e4d832f1db1dd9cfbb40e8770e56bb814e1252c70ffdb",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 1612,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/external-v1/native-terminal.json",
+      "sha256": "8a607f185ef488ca4b7e4d832f1db1dd9cfbb40e8770e56bb814e1252c70ffdb"
+    },
+    {
+      "archive_member": "objects/17f8289a036d073baa9438048f03f7d21e69f73dfe05d5264546c9ab5fe20b39",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 458,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/external-v1/observation.json",
+      "sha256": "17f8289a036d073baa9438048f03f7d21e69f73dfe05d5264546c9ab5fe20b39"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/654d68cebfd55be758a33cb544b9621a3a75aef7f25b90fcc1d07657aa9a160f",
+      "binding_scope": "FAILED_PILOT_OR_ONCE_ONLY_MATCHED_ACTUAL",
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-point-empty-ROOT-20261018/external-v1/postterminal-probe-stdout.txt",
+      "sha256": "654d68cebfd55be758a33cb544b9621a3a75aef7f25b90fcc1d07657aa9a160f"
+    },
+    {
+      "archive_member": "objects/62c49f8bd03008ca296ca75c2b377f22e2a23d3bcf6ce9aa78fab6ac23cdb2e3",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 6116,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/ROOT-comparison-v3.json",
+      "sha256": "62c49f8bd03008ca296ca75c2b377f22e2a23d3bcf6ce9aa78fab6ac23cdb2e3"
+    },
+    {
+      "archive_member": "objects/9b148750087dd29817b40e892b141e0c6b30544721ef58802f68b720b2344d73",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 9826,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/ROOT-comparison-v4.json",
+      "sha256": "9b148750087dd29817b40e892b141e0c6b30544721ef58802f68b720b2344d73"
+    },
+    {
+      "archive_member": "objects/748da2ead1203c49e4ba13a94a1153100f1c47ee084ac6b9ebbc40df25e0e6fa",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 2924,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/ROOT-next-work-v1.json",
+      "sha256": "748da2ead1203c49e4ba13a94a1153100f1c47ee084ac6b9ebbc40df25e0e6fa"
+    },
+    {
+      "archive_member": "objects/ebcb702d2694e9c452a6e5b046f7d5cb88353691c02cba624cde3f782a481624",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 1474,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/ROOT-reader-updates-v4.json",
+      "sha256": "ebcb702d2694e9c452a6e5b046f7d5cb88353691c02cba624cde3f782a481624"
+    },
+    {
+      "archive_member": "objects/7533862d73a3037be5dcfa7831af119ca0a972912a5e701e826724419bee79b2",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 1508,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/ROOT-report-prose-repair-v5.json",
+      "sha256": "7533862d73a3037be5dcfa7831af119ca0a972912a5e701e826724419bee79b2"
+    },
+    {
+      "archive_member": "objects/a1936d56f5b83134765258ceb3cc79c82068cbde49a0813cbeadd6e25ce002c5",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 328,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/ROOT-report-static-v1.json",
+      "sha256": "a1936d56f5b83134765258ceb3cc79c82068cbde49a0813cbeadd6e25ce002c5"
+    },
+    {
+      "archive_member": "objects/3f15b1d9b2393fb74794320a91b5ff86572af50dba0c39331060dd13285302aa",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 570416,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/closed-root-search.html.actual-forward",
+      "sha256": "3f15b1d9b2393fb74794320a91b5ff86572af50dba0c39331060dd13285302aa"
+    },
+    {
+      "archive_member": "objects/dd0b5d9690fc087bdb06f6b32405effdbf9d04c9dfe5133ec16fdf5cf8e94de1",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 570113,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/closed-root-search.html.actual-reverse",
+      "sha256": "dd0b5d9690fc087bdb06f6b32405effdbf9d04c9dfe5133ec16fdf5cf8e94de1"
+    },
+    {
+      "archive_member": "objects/dd0b5d9690fc087bdb06f6b32405effdbf9d04c9dfe5133ec16fdf5cf8e94de1",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 570113,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/closed-root-search.html.before",
+      "sha256": "dd0b5d9690fc087bdb06f6b32405effdbf9d04c9dfe5133ec16fdf5cf8e94de1"
+    },
+    {
+      "archive_member": "objects/f2a7df60a39e8d063db430151ec540d3d17e5846d46b7b339368ce9220453878",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 4273,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/closed-root-search.html.forward.patch",
+      "sha256": "f2a7df60a39e8d063db430151ec540d3d17e5846d46b7b339368ce9220453878"
+    },
+    {
+      "archive_member": "objects/0abc5374c85872c60ee7a64a79c96907d7a56c3c78814d1ad26330b72401c065",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 4273,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/closed-root-search.html.reverse.patch",
+      "sha256": "0abc5374c85872c60ee7a64a79c96907d7a56c3c78814d1ad26330b72401c065"
+    },
+    {
+      "archive_member": "objects/6c24cdd9a36144e84a1807f9b44742d7f70715c1035ef991dfad907d89ba66d0",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 76078,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/reader.html.actual-forward",
+      "sha256": "6c24cdd9a36144e84a1807f9b44742d7f70715c1035ef991dfad907d89ba66d0"
+    },
+    {
+      "archive_member": "objects/fbed3668aa9836a2dbba5d141b688eb08e0dbebcebd656de3f4ac32d536114ea",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 75582,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/reader.html.actual-reverse",
+      "sha256": "fbed3668aa9836a2dbba5d141b688eb08e0dbebcebd656de3f4ac32d536114ea"
+    },
+    {
+      "archive_member": "objects/fbed3668aa9836a2dbba5d141b688eb08e0dbebcebd656de3f4ac32d536114ea",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 75582,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/reader.html.before",
+      "sha256": "fbed3668aa9836a2dbba5d141b688eb08e0dbebcebd656de3f4ac32d536114ea"
+    },
+    {
+      "archive_member": "objects/f8662392a8201490a6260a3d51ce825067b558ae84a30eb3a13464af7ecaf468",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 20741,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/reader.html.forward.patch",
+      "sha256": "f8662392a8201490a6260a3d51ce825067b558ae84a30eb3a13464af7ecaf468"
+    },
+    {
+      "archive_member": "objects/9943d2ee3343dffee91d25f6ed7e7ca72dee08e91c117bb67ea2d05a019e412c",
+      "binding_scope": "REAL_PROSE_PATCH_OR_PREIMAGE",
+      "bytes": 20741,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/prose-preimages-v5/reader.html.reverse.patch",
+      "sha256": "9943d2ee3343dffee91d25f6ed7e7ca72dee08e91c117bb67ea2d05a019e412c"
+    },
+    {
+      "archive_member": "objects/db0131c5b98c15e148a1ce64b9ffa3a42f6339bf4f3fe8738cbcf0fb165ba4d8",
+      "binding_scope": "PRESERVED_REJECTED_REPORT_PROSE_PREIMAGE",
+      "bytes": 62938,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v4/closed-root-search-data-review.json",
+      "sha256": "db0131c5b98c15e148a1ce64b9ffa3a42f6339bf4f3fe8738cbcf0fb165ba4d8"
+    },
+    {
+      "archive_member": "objects/713595c924c319f040a5efa8d3991023bf0af858b2f3e6b5c902c8742376b170",
+      "binding_scope": "PRESERVED_REJECTED_REPORT_PROSE_PREIMAGE",
+      "bytes": 17357,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v4/closed-root-search-interpretation.json",
+      "sha256": "713595c924c319f040a5efa8d3991023bf0af858b2f3e6b5c902c8742376b170"
+    },
+    {
+      "archive_member": "objects/dd2ada5557489d2d153d5c98daafbd3b7e2a8685cb1554c7d19f25d2a5b3fd8a",
+      "binding_scope": "PRESERVED_REJECTED_REPORT_PROSE_PREIMAGE",
+      "bytes": 11125,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v4/closed-root-search-summary.json",
+      "sha256": "dd2ada5557489d2d153d5c98daafbd3b7e2a8685cb1554c7d19f25d2a5b3fd8a"
+    },
+    {
+      "archive_member": "objects/dd0b5d9690fc087bdb06f6b32405effdbf9d04c9dfe5133ec16fdf5cf8e94de1",
+      "binding_scope": "PRESERVED_REJECTED_REPORT_PROSE_PREIMAGE",
+      "bytes": 570113,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v4/closed-root-search.html",
+      "sha256": "dd0b5d9690fc087bdb06f6b32405effdbf9d04c9dfe5133ec16fdf5cf8e94de1"
+    },
+    {
+      "archive_member": "objects/6d9475e9be056e0f38097741009a5f0cf35c90eaab3318b844739f6dfabbc431",
+      "binding_scope": "PRESERVED_REJECTED_REPORT_PROSE_PREIMAGE",
+      "bytes": 9853,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v4/parallel-work-status.json",
+      "sha256": "6d9475e9be056e0f38097741009a5f0cf35c90eaab3318b844739f6dfabbc431"
+    },
+    {
+      "archive_member": "objects/fbed3668aa9836a2dbba5d141b688eb08e0dbebcebd656de3f4ac32d536114ea",
+      "binding_scope": "PRESERVED_REJECTED_REPORT_PROSE_PREIMAGE",
+      "bytes": 75582,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v4/reader.html",
+      "sha256": "fbed3668aa9836a2dbba5d141b688eb08e0dbebcebd656de3f4ac32d536114ea"
+    },
+    {
+      "archive_member": "objects/db0131c5b98c15e148a1ce64b9ffa3a42f6339bf4f3fe8738cbcf0fb165ba4d8",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 62938,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v5/closed-root-search-data-review.json",
+      "sha256": "db0131c5b98c15e148a1ce64b9ffa3a42f6339bf4f3fe8738cbcf0fb165ba4d8"
+    },
+    {
+      "archive_member": "objects/713595c924c319f040a5efa8d3991023bf0af858b2f3e6b5c902c8742376b170",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 17357,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v5/closed-root-search-interpretation.json",
+      "sha256": "713595c924c319f040a5efa8d3991023bf0af858b2f3e6b5c902c8742376b170"
+    },
+    {
+      "archive_member": "objects/9b283c5873608ea965de3e0da8aa31e5ffba86cdcd4f52fd46ce631eda81ee77",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 7404,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v5/closed-root-search-report-review.json",
+      "sha256": "9b283c5873608ea965de3e0da8aa31e5ffba86cdcd4f52fd46ce631eda81ee77"
+    },
+    {
+      "archive_member": "objects/dd2ada5557489d2d153d5c98daafbd3b7e2a8685cb1554c7d19f25d2a5b3fd8a",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 11125,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v5/closed-root-search-summary.json",
+      "sha256": "dd2ada5557489d2d153d5c98daafbd3b7e2a8685cb1554c7d19f25d2a5b3fd8a"
+    },
+    {
+      "archive_member": "objects/3f15b1d9b2393fb74794320a91b5ff86572af50dba0c39331060dd13285302aa",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 570416,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v5/closed-root-search.html",
+      "sha256": "3f15b1d9b2393fb74794320a91b5ff86572af50dba0c39331060dd13285302aa"
+    },
+    {
+      "archive_member": "objects/6d9475e9be056e0f38097741009a5f0cf35c90eaab3318b844739f6dfabbc431",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 9853,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v5/parallel-work-status.json",
+      "sha256": "6d9475e9be056e0f38097741009a5f0cf35c90eaab3318b844739f6dfabbc431"
+    },
+    {
+      "archive_member": "objects/6c24cdd9a36144e84a1807f9b44742d7f70715c1035ef991dfad907d89ba66d0",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 76078,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/publication-source-v5/reader.html",
+      "sha256": "6c24cdd9a36144e84a1807f9b44742d7f70715c1035ef991dfad907d89ba66d0"
+    },
+    {
+      "archive_member": "objects/fbed3668aa9836a2dbba5d141b688eb08e0dbebcebd656de3f4ac32d536114ea",
+      "binding_scope": "EXACT_PUBLICATION_PREIMAGE_AND_REAL_TEXT_PATCH",
+      "bytes": 75582,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/reader-preimages-v4/actual-forward.html",
+      "sha256": "fbed3668aa9836a2dbba5d141b688eb08e0dbebcebd656de3f4ac32d536114ea"
+    },
+    {
+      "archive_member": "objects/da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d",
+      "binding_scope": "EXACT_PUBLICATION_PREIMAGE_AND_REAL_TEXT_PATCH",
+      "bytes": 74431,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/reader-preimages-v4/actual-reverse.html",
+      "sha256": "da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d"
+    },
+    {
+      "archive_member": "objects/f8b188223a1103faec1774fbf975f76fb396a8cb8a53a9715a5aad48165aba44",
+      "binding_scope": "EXACT_PUBLICATION_PREIMAGE_AND_REAL_TEXT_PATCH",
+      "bytes": 8891,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/reader-preimages-v4/parallel-work-status-before.json",
+      "sha256": "f8b188223a1103faec1774fbf975f76fb396a8cb8a53a9715a5aad48165aba44"
+    },
+    {
+      "archive_member": "objects/da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d",
+      "binding_scope": "EXACT_PUBLICATION_PREIMAGE_AND_REAL_TEXT_PATCH",
+      "bytes": 74431,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/reader-preimages-v4/reader-before.html",
+      "sha256": "da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d"
+    },
+    {
+      "archive_member": "objects/d757ace5289dea0164b35f64ad58a6efbd1f9afc303b54089b8ca011a3772497",
+      "binding_scope": "EXACT_PUBLICATION_PREIMAGE_AND_REAL_TEXT_PATCH",
+      "bytes": 27256,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/reader-preimages-v4/reader-forward.patch",
+      "sha256": "d757ace5289dea0164b35f64ad58a6efbd1f9afc303b54089b8ca011a3772497"
+    },
+    {
+      "archive_member": "objects/df2dbd51e4cb49b97e28efec1866814959501146bb4e72beb25674a22035a1bd",
+      "binding_scope": "EXACT_PUBLICATION_PREIMAGE_AND_REAL_TEXT_PATCH",
+      "bytes": 27256,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-search-progress-20261018/reader-preimages-v4/reader-reverse.patch",
+      "sha256": "df2dbd51e4cb49b97e28efec1866814959501146bb4e72beb25674a22035a1bd"
+    },
+    {
+      "archive_member": "objects/611ff599aad6d038f0b96a6e495bb5c697b92e1d93024c6a758b678d89230237",
+      "binding_scope": "CURRENT_DATA_INPUTS",
+      "bytes": 3503853,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-logical-donor-eight-pool-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "611ff599aad6d038f0b96a6e495bb5c697b92e1d93024c6a758b678d89230237"
+    },
+    {
+      "archive_member": "objects/227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "binding_scope": "CURRENT_INPUTS",
+      "bytes": 8773,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "archive_member": "objects/5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 20112,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "archive_member": "objects/99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 10201,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    {
+      "archive_member": "objects/baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 5528,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    {
+      "archive_member": "objects/69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 24227,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "archive_member": "objects/6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 26007,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    {
+      "archive_member": "objects/8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 16299,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    {
+      "archive_member": "objects/652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 55852,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    {
+      "archive_member": "objects/50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 31931,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    {
+      "archive_member": "objects/54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 55152,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    {
+      "archive_member": "objects/c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 27553,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "archive_member": "objects/c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 22030,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "archive_member": "objects/d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 25338,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    {
+      "archive_member": "objects/2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 8134,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    {
+      "archive_member": "objects/cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 11074,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+    },
+    {
+      "archive_member": "objects/0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 130156,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    {
+      "archive_member": "objects/c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "binding_scope": "MASTER_ALGORITHM_CONTRACT",
+      "bytes": 21657,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "archive_member": "objects/50d8220e0e84ea2342b6ae4b1ebc72b69ae0593ccd64657cb595d2b90a74a7c6",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5581,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-case-peer-20261018/typed-Source-review-v2.json",
+      "sha256": "50d8220e0e84ea2342b6ae4b1ebc72b69ae0593ccd64657cb595d2b90a74a7c6"
+    },
+    {
+      "archive_member": "objects/a78764628a99161845f9eb0ee4d50c2bb60198f4a38e5255616e0141c1984d6c",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 11958,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-case-v2-source-20261018/Source-contract-v2.json",
+      "sha256": "a78764628a99161845f9eb0ee4d50c2bb60198f4a38e5255616e0141c1984d6c"
+    },
+    {
+      "archive_member": "objects/ee2fc8112b6e33dd57bab5e57f52cacbb30dac99c4a52610f5c8e1dfa9a33b24",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 37934,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-case-v2-source-20261018/independent_cache_adversarial_cases_v2.py",
+      "sha256": "ee2fc8112b6e33dd57bab5e57f52cacbb30dac99c4a52610f5c8e1dfa9a33b24"
+    },
+    {
+      "archive_member": "objects/1429f9c3dd3b8560ddb9ee33ce040fc9f550d0801cef2060767b7d8d05b2a3bf",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5229,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-peer-20261018/typed-Source-review-v9.json",
+      "sha256": "1429f9c3dd3b8560ddb9ee33ce040fc9f550d0801cef2060767b7d8d05b2a3bf"
+    },
+    {
+      "archive_member": "objects/8a0c51a44379d181655b810c94e96d394334c0b95e1dfb0813673ed51c8a268d",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 9276,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-v9-source-20261018/Source-contract-v1.json",
+      "sha256": "8a0c51a44379d181655b810c94e96d394334c0b95e1dfb0813673ed51c8a268d"
+    },
+    {
+      "archive_member": "objects/08479b26f9535fa0083a6cd2e99a1634914c850a508dbfd71948bc660d99ddbd",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 49470,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-v9-source-20261018/marked_unit_row_adapter_v9.py",
+      "sha256": "08479b26f9535fa0083a6cd2e99a1634914c850a508dbfd71948bc660d99ddbd"
+    },
+    {
+      "archive_member": "objects/b72a37662285d94bbaad98974d9b6252e5cc18e3e49cde0e01cd1883755e8e7f",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 12825,
+      "original_path": "/private/tmp/gcts-closed-root-checker-cases-peer-20261018/cases-typed-Source-review-v1.json",
+      "sha256": "b72a37662285d94bbaad98974d9b6252e5cc18e3e49cde0e01cd1883755e8e7f"
+    },
+    {
+      "archive_member": "objects/1caf80498a20f2725d4db10e192725900a458e6097a0019f061f2fb96d10b53a",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 10238,
+      "original_path": "/private/tmp/gcts-closed-root-checker-cases-peer-20261018/checker-typed-Source-review-v1.json",
+      "sha256": "1caf80498a20f2725d4db10e192725900a458e6097a0019f061f2fb96d10b53a"
+    },
+    {
+      "archive_member": "objects/630d55649f782e8b080521686bbc037d81f8f5dfe060401f0a5186310a4cdd4e",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2876,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-API-wire-v1.json",
+      "sha256": "630d55649f782e8b080521686bbc037d81f8f5dfe060401f0a5186310a4cdd4e"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 0,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-F0-empty.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/341c2d8d2143009edaef950603d9415e18c2d575fc934e6eca97e53e4113ce68",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 13268,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-Source-contract-v1.json",
+      "sha256": "341c2d8d2143009edaef950603d9415e18c2d575fc934e6eca97e53e4113ce68"
+    },
+    {
+      "archive_member": "objects/5af44065be01a1ed04be69df89d44417fa9ccfc1a1271a30ed34ca181c3b15bf",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1936,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-Source-delta-v1.json",
+      "sha256": "5af44065be01a1ed04be69df89d44417fa9ccfc1a1271a30ed34ca181c3b15bf"
+    },
+    {
+      "archive_member": "objects/5245f4e132a5c8b2fc9f4d30d07bbe51b2e5af7696311e097c970bda08e6d998",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 19770,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-forward.patch",
+      "sha256": "5245f4e132a5c8b2fc9f4d30d07bbe51b2e5af7696311e097c970bda08e6d998"
+    },
+    {
+      "archive_member": "objects/8f1af8fd97e5c73cbace51d5f2ec78176eabe6c3e0aa0b6703f72e9d8e5fd97c",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 5435,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-handoff-v1.json",
+      "sha256": "8f1af8fd97e5c73cbace51d5f2ec78176eabe6c3e0aa0b6703f72e9d8e5fd97c"
+    },
+    {
+      "archive_member": "objects/72b6e1a1765acdc08a3546d424499d921333d48d6d4e89cff544a6fca74ae6a0",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 19770,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-inverse.patch",
+      "sha256": "72b6e1a1765acdc08a3546d424499d921333d48d6d4e89cff544a6fca74ae6a0"
+    },
+    {
+      "archive_member": "objects/bd9e49a349c01bf364e1e385246b34d6454301cfbec5bb4a729a140d2910afbb",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3588,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-static-audit-v1.json",
+      "sha256": "bd9e49a349c01bf364e1e385246b34d6454301cfbec5bb4a729a140d2910afbb"
+    },
+    {
+      "archive_member": "objects/e9618fd97fc06812323d4d2598e040cfe4065f99a8b560cefeac4056ce750533",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1944,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-API-wire-v1.json",
+      "sha256": "e9618fd97fc06812323d4d2598e040cfe4065f99a8b560cefeac4056ce750533"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 0,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-F0-empty.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/28da9cec1254f36168ea254216e848e65a07ce91eb7996359cae3589933ac121",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 10525,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-Source-contract-v1.json",
+      "sha256": "28da9cec1254f36168ea254216e848e65a07ce91eb7996359cae3589933ac121"
+    },
+    {
+      "archive_member": "objects/5af26d18d5c5cd05892245089a64b97338f2caa7d7553ff644b27fe0d2031a40",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1969,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-Source-delta-v1.json",
+      "sha256": "5af26d18d5c5cd05892245089a64b97338f2caa7d7553ff644b27fe0d2031a40"
+    },
+    {
+      "archive_member": "objects/53b780fc5a8634beed7715458dda2a8d654d31562331a365c29c2da0aa8ecc17",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 33345,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-forward.patch",
+      "sha256": "53b780fc5a8634beed7715458dda2a8d654d31562331a365c29c2da0aa8ecc17"
+    },
+    {
+      "archive_member": "objects/b7f02ca2d6becdd662d6f9b4990052226ac9b5ee348bb5c36801df40ea346c78",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2822,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-handoff-v1.json",
+      "sha256": "b7f02ca2d6becdd662d6f9b4990052226ac9b5ee348bb5c36801df40ea346c78"
+    },
+    {
+      "archive_member": "objects/67f0436bc3ffa1a2eb266cc77beffd3f2658cce3d214ed9a2f4412269ee716c7",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 33345,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-inverse.patch",
+      "sha256": "67f0436bc3ffa1a2eb266cc77beffd3f2658cce3d214ed9a2f4412269ee716c7"
+    },
+    {
+      "archive_member": "objects/5c6bb8f28e26c881be9cd7e920f395cb85b7eb64864ee0ab9160c0cc2a80915f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3798,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-static-audit-v1.json",
+      "sha256": "5c6bb8f28e26c881be9cd7e920f395cb85b7eb64864ee0ab9160c0cc2a80915f"
+    },
+    {
+      "archive_member": "objects/6c76b690c10f072c6520b9374c535a04811482944a8210ca2502603d9985e33f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3606,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/closed-root-three-case-English-map-v1.json",
+      "sha256": "6c76b690c10f072c6520b9374c535a04811482944a8210ca2502603d9985e33f"
+    },
+    {
+      "archive_member": "objects/e26d2132f3da5d65bc7a27ececa6d8e3db8d5eea619efdcb8b91cbbd6254052c",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 19396,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/closed_root_finite_cases_v1.py",
+      "sha256": "e26d2132f3da5d65bc7a27ececa6d8e3db8d5eea619efdcb8b91cbbd6254052c"
+    },
+    {
+      "archive_member": "objects/4d0cd7056da6d01740558699a514e0872e5e15be9fd367b8727aba4465490395",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 16772,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/freeze_Source_metadata_v1.py",
+      "sha256": "4d0cd7056da6d01740558699a514e0872e5e15be9fd367b8727aba4465490395"
+    },
+    {
+      "archive_member": "objects/cee7492fbc2791eec1b7ef0aebfde53f4e55199325aea6e32d53245192d70466",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1596,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/handoff-v1.json",
+      "sha256": "cee7492fbc2791eec1b7ef0aebfde53f4e55199325aea6e32d53245192d70466"
+    },
+    {
+      "archive_member": "objects/17c38ff7b9395f5b467ef462e33bdd438d93c373d9d966334d989c24a1ea09d6",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 32689,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/independent_closed_root_checker_v1.py",
+      "sha256": "17c38ff7b9395f5b467ef462e33bdd438d93c373d9d966334d989c24a1ea09d6"
+    },
+    {
+      "archive_member": "objects/9c97e267a7980bb6a89ca6aa30834adb640e3560f32b869051a9fda9f46210e9",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 15165,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-peer-20261018/Source-audit-v1.json",
+      "sha256": "9c97e267a7980bb6a89ca6aa30834adb640e3560f32b869051a9fda9f46210e9"
+    },
+    {
+      "archive_member": "objects/d95ef728d185da183ff8abfda4220f9bc9608ea1d06690e2c7c0d2f8639a8cc9",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 70070,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-peer-20261018/control-forward-copy.py",
+      "sha256": "d95ef728d185da183ff8abfda4220f9bc9608ea1d06690e2c7c0d2f8639a8cc9"
+    },
+    {
+      "archive_member": "objects/32188da1b824c0f7b898537039de8e863107851cd23e8deacc1be427a3b24fae",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72328,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-peer-20261018/control-inverse-copy.py",
+      "sha256": "32188da1b824c0f7b898537039de8e863107851cd23e8deacc1be427a3b24fae"
+    },
+    {
+      "archive_member": "objects/87d1952efcafbf14123e4947ac11755a3c7b188e3a47b0fc6ba14afd157ffd93",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 7404,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "87d1952efcafbf14123e4947ac11755a3c7b188e3a47b0fc6ba14afd157ffd93"
+    },
+    {
+      "archive_member": "objects/e4459045696e010a47fc1671566b46c7166e09b9f9bbf83bd012b8dd953cb720",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2558,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/API-wire-v1.json",
+      "sha256": "e4459045696e010a47fc1671566b46c7166e09b9f9bbf83bd012b8dd953cb720"
+    },
+    {
+      "archive_member": "objects/247f9a852c8e1365a86059a3e0f04f0e6063168fc01458a3188663b15ae90240",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 12521,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/Source-contract-v1.json",
+      "sha256": "247f9a852c8e1365a86059a3e0f04f0e6063168fc01458a3188663b15ae90240"
+    },
+    {
+      "archive_member": "objects/81f722689665f11583cf909482178f93cdaf83d2a754b878cb0e1e50f67de690",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2731,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/Source-delta-v1.json",
+      "sha256": "81f722689665f11583cf909482178f93cdaf83d2a754b878cb0e1e50f67de690"
+    },
+    {
+      "archive_member": "objects/d95ef728d185da183ff8abfda4220f9bc9608ea1d06690e2c7c0d2f8639a8cc9",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 70070,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/author-applied-forward-v1.py",
+      "sha256": "d95ef728d185da183ff8abfda4220f9bc9608ea1d06690e2c7c0d2f8639a8cc9"
+    },
+    {
+      "archive_member": "objects/32188da1b824c0f7b898537039de8e863107851cd23e8deacc1be427a3b24fae",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72328,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/author-applied-inverse-v1.py",
+      "sha256": "32188da1b824c0f7b898537039de8e863107851cd23e8deacc1be427a3b24fae"
+    },
+    {
+      "archive_member": "objects/5eafdc6418005038026eb1f6bae2135a5f051349ace9520cb009b16233722946",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 6021,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/author_control_v1.py",
+      "sha256": "5eafdc6418005038026eb1f6bae2135a5f051349ace9520cb009b16233722946"
+    },
+    {
+      "archive_member": "objects/d95ef728d185da183ff8abfda4220f9bc9608ea1d06690e2c7c0d2f8639a8cc9",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 70070,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/closed_root_equational_control_v1.py",
+      "sha256": "d95ef728d185da183ff8abfda4220f9bc9608ea1d06690e2c7c0d2f8639a8cc9"
+    },
+    {
+      "archive_member": "objects/ee2df507cb643739918502eec76a69c04f0dda1146630711cee20857f5cc4e63",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 38353,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/control-forward-v1.patch",
+      "sha256": "ee2df507cb643739918502eec76a69c04f0dda1146630711cee20857f5cc4e63"
+    },
+    {
+      "archive_member": "objects/b37796a33a2ecebab530fefef0645f0b0769ef825d6ec427fc489c230a753ff7",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 38353,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/control-inverse-v1.patch",
+      "sha256": "b37796a33a2ecebab530fefef0645f0b0769ef825d6ec427fc489c230a753ff7"
+    },
+    {
+      "archive_member": "objects/96b5550c00e5c46329ad6b2373e40b70aaac5e1a26f2c1584fc3b28ec4ee976b",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 19936,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/freeze_packet_v1.py",
+      "sha256": "96b5550c00e5c46329ad6b2373e40b70aaac5e1a26f2c1584fc3b28ec4ee976b"
+    },
+    {
+      "archive_member": "objects/44d14d0ed41dcb8ea4185c1854286803b0d96a54849ddb3b9d1c2ab6fbf0a9f3",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 5871,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/handoff-v1.json",
+      "sha256": "44d14d0ed41dcb8ea4185c1854286803b0d96a54849ddb3b9d1c2ab6fbf0a9f3"
+    },
+    {
+      "archive_member": "objects/e70871393475a6c5fbb033a662faad3ba4f3dd9b5eb62b19720c6e8f311eaf29",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 11842,
+      "original_path": "/private/tmp/gcts-closed-root-conventional-control-source-20261018/static-audit-v1.json",
+      "sha256": "e70871393475a6c5fbb033a662faad3ba4f3dd9b5eb62b19720c6e8f311eaf29"
+    },
+    {
+      "archive_member": "objects/667a759978a233b1c8f7a62a353da663a791e01f2158312d0cf715a6e99d8e8d",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 6377,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "667a759978a233b1c8f7a62a353da663a791e01f2158312d0cf715a6e99d8e8d"
+    },
+    {
+      "archive_member": "objects/3217e768208d97c3949d1100eb5bcac264287be1a2210ca7b074771cb4f059e5",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3817,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/API-wire-v1.json",
+      "sha256": "3217e768208d97c3949d1100eb5bcac264287be1a2210ca7b074771cb4f059e5"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 0,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/F0-empty.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/581c11f1a34474d3778d4e6ad047058d759608acf6e2a9eb97b76cd27898bdfe",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 6815,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/Source-contract-v1.json",
+      "sha256": "581c11f1a34474d3778d4e6ad047058d759608acf6e2a9eb97b76cd27898bdfe"
+    },
+    {
+      "archive_member": "objects/91d22c5b62bd4a6aac061e80fd24c1f10dd8dbfb019ddb50daab20badaa11a5d",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 4712,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/Source-delta-v1.json",
+      "sha256": "91d22c5b62bd4a6aac061e80fd24c1f10dd8dbfb019ddb50daab20badaa11a5d"
+    },
+    {
+      "archive_member": "objects/8c7cc3fe6b01ce6d91329d6f71d592ac7974a6166498a6acbcfa8700a19a9e1b",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 10802,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/closed_root_ancestry_inventory_v1.py",
+      "sha256": "8c7cc3fe6b01ce6d91329d6f71d592ac7974a6166498a6acbcfa8700a19a9e1b"
+    },
+    {
+      "archive_member": "objects/be6b33534defbc6a10cb22805c292bdb6197af6c8d36118ba4ca0749d43dde72",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 11130,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/forward.patch",
+      "sha256": "be6b33534defbc6a10cb22805c292bdb6197af6c8d36118ba4ca0749d43dde72"
+    },
+    {
+      "archive_member": "objects/13d78ea7fcb88f55d3c494893ba954e860d77fc4c3a687b4f04912ee2567c74b",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 15852,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/freeze_packet_v1.py",
+      "sha256": "13d78ea7fcb88f55d3c494893ba954e860d77fc4c3a687b4f04912ee2567c74b"
+    },
+    {
+      "archive_member": "objects/be3d3c5fa882633d1c41480a4b6345989d31d0e0cb307519dca16fbd42847bf9",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 4087,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/handoff-v1.json",
+      "sha256": "be3d3c5fa882633d1c41480a4b6345989d31d0e0cb307519dca16fbd42847bf9"
+    },
+    {
+      "archive_member": "objects/f3fbf040031fe003ecb6675543a1c99154f415e02fef2ec178b12ab2430c9d4f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 11130,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/inverse.patch",
+      "sha256": "f3fbf040031fe003ecb6675543a1c99154f415e02fef2ec178b12ab2430c9d4f"
+    },
+    {
+      "archive_member": "objects/7e19d1850908d1e7a351259b5632d84f4ae6cfa065cbaed750c5e2be2835edc6",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 7843,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/static-audit-v1.json",
+      "sha256": "7e19d1850908d1e7a351259b5632d84f4ae6cfa065cbaed750c5e2be2835edc6"
+    },
+    {
+      "archive_member": "objects/c195222b4e2530ce3f6c0be9a645c5f71c9c878c95227aa3d4cfdc09c4d972fe",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 26943,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-peer-20261018/Source-audit-v1.json",
+      "sha256": "c195222b4e2530ce3f6c0be9a645c5f71c9c878c95227aa3d4cfdc09c4d972fe"
+    },
+    {
+      "archive_member": "objects/75a32f4daca74d29146fbc626fcf851d2983ba9f8a65c1347d04cf6b23744d8b",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 25591,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-peer-20261018/forward-copy.py",
+      "sha256": "75a32f4daca74d29146fbc626fcf851d2983ba9f8a65c1347d04cf6b23744d8b"
+    },
+    {
+      "archive_member": "objects/4ae6a559313e68cbe35682bcfcbca14f427fa4f752d1b6a00fe284905948773c",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 17548,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-peer-20261018/inverse-copy.py",
+      "sha256": "4ae6a559313e68cbe35682bcfcbca14f427fa4f752d1b6a00fe284905948773c"
+    },
+    {
+      "archive_member": "objects/2f7bbf526ab6b65143a02a56782b361c06f21299326dc95db07f09a6328979fc",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 15715,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "2f7bbf526ab6b65143a02a56782b361c06f21299326dc95db07f09a6328979fc"
+    },
+    {
+      "archive_member": "objects/b7c0bc4b96612a66264a789507e3b35d4d267b97cde7a4d3cac4434e8c7667b4",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 5806,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/API-wire-v1.json",
+      "sha256": "b7c0bc4b96612a66264a789507e3b35d4d267b97cde7a4d3cac4434e8c7667b4"
+    },
+    {
+      "archive_member": "objects/5f7fadc92e38ff18402e1c7090a7eb979e0dd81f7f777de7591701a5153ecbff",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 18186,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/Source-contract-v1.json",
+      "sha256": "5f7fadc92e38ff18402e1c7090a7eb979e0dd81f7f777de7591701a5153ecbff"
+    },
+    {
+      "archive_member": "objects/e0d2f97c602cd4bb7f8457aa15134131f16dbfc25fe3550b1aba4226459ddbf7",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 4713,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/Source-delta-v1.json",
+      "sha256": "e0d2f97c602cd4bb7f8457aa15134131f16dbfc25fe3550b1aba4226459ddbf7"
+    },
+    {
+      "archive_member": "objects/75a32f4daca74d29146fbc626fcf851d2983ba9f8a65c1347d04cf6b23744d8b",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 25591,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/closed_root_point_search_case_v1.py",
+      "sha256": "75a32f4daca74d29146fbc626fcf851d2983ba9f8a65c1347d04cf6b23744d8b"
+    },
+    {
+      "archive_member": "objects/2458831f31513d83361474d92186c4192a402f9c72eb46675ba134af1b7527a8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 14939,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/create_driver_text_v1.py",
+      "sha256": "2458831f31513d83361474d92186c4192a402f9c72eb46675ba134af1b7527a8"
+    },
+    {
+      "archive_member": "objects/1a232861d85dfdd529095c98520cb98b5b2842e9d854c460f921eb7269f2c838",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 24323,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/forward-v1.patch",
+      "sha256": "1a232861d85dfdd529095c98520cb98b5b2842e9d854c460f921eb7269f2c838"
+    },
+    {
+      "archive_member": "objects/0f3592b711db09cb354efadbbb5744ab6cd29dfdfddced6b856dfa64e089c85a",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 17746,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/freeze_Source_metadata_v1.py",
+      "sha256": "0f3592b711db09cb354efadbbb5744ab6cd29dfdfddced6b856dfa64e089c85a"
+    },
+    {
+      "archive_member": "objects/71ed3d8619e490d76a737be0494e6984b687209fd4b2ec8bfe2fb1cd972ba64a",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 8445,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/handoff-v1.json",
+      "sha256": "71ed3d8619e490d76a737be0494e6984b687209fd4b2ec8bfe2fb1cd972ba64a"
+    },
+    {
+      "archive_member": "objects/526a9324f774464ecec39a0f40b857343ac850e191805798fc1b750cd1f7dd90",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 24323,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/inverse-v1.patch",
+      "sha256": "526a9324f774464ecec39a0f40b857343ac850e191805798fc1b750cd1f7dd90"
+    },
+    {
+      "archive_member": "objects/c9b888284239c29aa8f190345d441d58708e9a8cd13c526fec1d429dbff1810d",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2121,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/point-arm-English-map-v1.json",
+      "sha256": "c9b888284239c29aa8f190345d441d58708e9a8cd13c526fec1d429dbff1810d"
+    },
+    {
+      "archive_member": "objects/27037613d8d5f90c03098808c2b3ef55125f69419a1c84271085f5d4fdbf04d3",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 5597,
+      "original_path": "/private/tmp/gcts-closed-root-point-case-source-20261018/static-audit-v1.json",
+      "sha256": "27037613d8d5f90c03098808c2b3ef55125f69419a1c84271085f5d4fdbf04d3"
+    },
+    {
+      "archive_member": "objects/64a704e1d372ff4d8012df3b6a86ba1c4efd5cee5ab9d3a7e1467b117c7d97af",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 18979,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/Source-audit-v1.json",
+      "sha256": "64a704e1d372ff4d8012df3b6a86ba1c4efd5cee5ab9d3a7e1467b117c7d97af"
+    },
+    {
+      "archive_member": "objects/11e2da1f230ea48c97c761515568cab84d6ffcebd4f1f4c863f5d0ee795ae948",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 19828,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/Source-audit-v2.json",
+      "sha256": "11e2da1f230ea48c97c761515568cab84d6ffcebd4f1f4c863f5d0ee795ae948"
+    },
+    {
+      "archive_member": "objects/a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 129024,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/engine-forward-copy.py",
+      "sha256": "a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af"
+    },
+    {
+      "archive_member": "objects/142e25e29348a09e24741c550ca92fc343bc05dbf2de98aa77dd41b393153c73",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 129052,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/engine-forward-v2-copy.py",
+      "sha256": "142e25e29348a09e24741c550ca92fc343bc05dbf2de98aa77dd41b393153c73"
+    },
+    {
+      "archive_member": "objects/692cb903fce9dc3fe2911dcaeb5f242655b871eb5bf7bf103a6e5e892fa617ef",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 123504,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/engine-inverse-copy.py",
+      "sha256": "692cb903fce9dc3fe2911dcaeb5f242655b871eb5bf7bf103a6e5e892fa617ef"
+    },
+    {
+      "archive_member": "objects/a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 129024,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/engine-inverse-v2-copy.py",
+      "sha256": "a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af"
+    },
+    {
+      "archive_member": "objects/1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 44552,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/provider-forward-copy.py",
+      "sha256": "1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799"
+    },
+    {
+      "archive_member": "objects/10ea28e2b42373967b81c6fa9cfadd4cb15d36ef9cbd13000401080c4a9e25b8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 45650,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/provider-forward-v2-copy.py",
+      "sha256": "10ea28e2b42373967b81c6fa9cfadd4cb15d36ef9cbd13000401080c4a9e25b8"
+    },
+    {
+      "archive_member": "objects/3e27688b659a3291690b6046b9028b1d2230c2ae062717b24f26a0ca127f29d5",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 79580,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/provider-inverse-copy.py",
+      "sha256": "3e27688b659a3291690b6046b9028b1d2230c2ae062717b24f26a0ca127f29d5"
+    },
+    {
+      "archive_member": "objects/1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 44552,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/provider-inverse-v2-copy.py",
+      "sha256": "1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799"
+    },
+    {
+      "archive_member": "objects/5ad71776b629ee9b95b501f1e499baa282a83bcac56d471e77f16f1e5561a22e",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 10038,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/typed-Source-review-v1-negative.json",
+      "sha256": "5ad71776b629ee9b95b501f1e499baa282a83bcac56d471e77f16f1e5561a22e"
+    },
+    {
+      "archive_member": "objects/d584172934d78d65644be135aa639ef0ce57c99ff66aeb47dea8d3d96c93f1f8",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 9708,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-peer-20261018/typed-Source-review-v2.json",
+      "sha256": "d584172934d78d65644be135aa639ef0ce57c99ff66aeb47dea8d3d96c93f1f8"
+    },
+    {
+      "archive_member": "objects/6513bc0c0b898b6fb2ff1c4d16aa695047975701bd73c784dea96cc08f8c3476",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3876,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/API-wire-v1.json",
+      "sha256": "6513bc0c0b898b6fb2ff1c4d16aa695047975701bd73c784dea96cc08f8c3476"
+    },
+    {
+      "archive_member": "objects/dd8982655e6db6ae601c8a9ecf2ecf33907a2e19ca67bd5d8e3fc3eb0fac383a",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 14548,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/Source-contract-v1.json",
+      "sha256": "dd8982655e6db6ae601c8a9ecf2ecf33907a2e19ca67bd5d8e3fc3eb0fac383a"
+    },
+    {
+      "archive_member": "objects/e2383fb21a0d873fa7f4160c19a467417cd921d65b563ceb9c133885c4112a9b",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 4206,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/Source-delta-v1.json",
+      "sha256": "e2383fb21a0d873fa7f4160c19a467417cd921d65b563ceb9c133885c4112a9b"
+    },
+    {
+      "archive_member": "objects/60c2e05af5cdd62b136d4a41729f7fa955f65a93d2816aa493faf3939ec1aa8f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1322,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/author_engine_v17.py",
+      "sha256": "60c2e05af5cdd62b136d4a41729f7fa955f65a93d2816aa493faf3939ec1aa8f"
+    },
+    {
+      "archive_member": "objects/cdb468fce27dc482c9c331c5969ea06c8b474803f155f4f4ac6e63a869362b1e",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 4328,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/author_provider_v1.py",
+      "sha256": "cdb468fce27dc482c9c331c5969ea06c8b474803f155f4f4ac6e63a869362b1e"
+    },
+    {
+      "archive_member": "objects/7ec2fb16f15a2c6baebd91ca10b5bf52698bf945e14b57423fc3894a395f4105",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 14081,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/engine-forward-v1.patch",
+      "sha256": "7ec2fb16f15a2c6baebd91ca10b5bf52698bf945e14b57423fc3894a395f4105"
+    },
+    {
+      "archive_member": "objects/03416b0733dc0ea450fcbee2c0f98eef207152a0651669427d19caafa53d8c3d",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 14081,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/engine-inverse-v1.patch",
+      "sha256": "03416b0733dc0ea450fcbee2c0f98eef207152a0651669427d19caafa53d8c3d"
+    },
+    {
+      "archive_member": "objects/112a76e02f9ed29201a13eaf8b98d4eec4bd8883b5774530c47ff51ddec2af2e",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 20198,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/freeze_source_v1.py",
+      "sha256": "112a76e02f9ed29201a13eaf8b98d4eec4bd8883b5774530c47ff51ddec2af2e"
+    },
+    {
+      "archive_member": "objects/1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 44552,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/ground_closed_root_point_provider_v1.py",
+      "sha256": "1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799"
+    },
+    {
+      "archive_member": "objects/f3d8e612eab73349b8f910086fd1551e51fd2634714fff81dd7abb6a7a8968d6",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 7321,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/handoff-v1.json",
+      "sha256": "f3d8e612eab73349b8f910086fd1551e51fd2634714fff81dd7abb6a7a8968d6"
+    },
+    {
+      "archive_member": "objects/a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 129024,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/independent-author-engine-forward-v1.py",
+      "sha256": "a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af"
+    },
+    {
+      "archive_member": "objects/692cb903fce9dc3fe2911dcaeb5f242655b871eb5bf7bf103a6e5e892fa617ef",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 123504,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/independent-author-engine-inverse-v1.py",
+      "sha256": "692cb903fce9dc3fe2911dcaeb5f242655b871eb5bf7bf103a6e5e892fa617ef"
+    },
+    {
+      "archive_member": "objects/1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 44552,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/independent-author-provider-forward-v1.py",
+      "sha256": "1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799"
+    },
+    {
+      "archive_member": "objects/3e27688b659a3291690b6046b9028b1d2230c2ae062717b24f26a0ca127f29d5",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 79580,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/independent-author-provider-inverse-v1.py",
+      "sha256": "3e27688b659a3291690b6046b9028b1d2230c2ae062717b24f26a0ca127f29d5"
+    },
+    {
+      "archive_member": "objects/fd1c5882e602fabfd8d71e379aee3d28ef44614e2d01197ecf09bbe05b3fade7",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 103400,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/provider-forward-v1.patch",
+      "sha256": "fd1c5882e602fabfd8d71e379aee3d28ef44614e2d01197ecf09bbe05b3fade7"
+    },
+    {
+      "archive_member": "objects/b56ecd866bc1dceda30ba767d4a285b2562dd47866dd4b1e98c6f90ccbd8c197",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 103409,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/provider-inverse-v1.patch",
+      "sha256": "b56ecd866bc1dceda30ba767d4a285b2562dd47866dd4b1e98c6f90ccbd8c197"
+    },
+    {
+      "archive_member": "objects/a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 129024,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/receptor_family_search_engine_v17.py",
+      "sha256": "a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af"
+    },
+    {
+      "archive_member": "objects/51114bbbf4652407ac6cb371c9b092510f0a14b09914957a7880d0f14361bd5c",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 18830,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-source-20261018/static-audit-v1.json",
+      "sha256": "51114bbbf4652407ac6cb371c9b092510f0a14b09914957a7880d0f14361bd5c"
+    },
+    {
+      "archive_member": "objects/e6359fd1fd14a830a1f30774756cacef196825457d0273b3e53bbc4858af78a8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 4400,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/API-wire-v2.json",
+      "sha256": "e6359fd1fd14a830a1f30774756cacef196825457d0273b3e53bbc4858af78a8"
+    },
+    {
+      "archive_member": "objects/1fe65a8136db81c74dfdd613c1249c33fbb28d72767e5585eef8be15648bbe0e",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 17506,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/Source-contract-v2.json",
+      "sha256": "1fe65a8136db81c74dfdd613c1249c33fbb28d72767e5585eef8be15648bbe0e"
+    },
+    {
+      "archive_member": "objects/7cde0f78467420d53db72d8ad33c72218397bf8b164b799eb5df512ce6ba1e9d",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 5068,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/Source-delta-v2.json",
+      "sha256": "7cde0f78467420d53db72d8ad33c72218397bf8b164b799eb5df512ce6ba1e9d"
+    },
+    {
+      "archive_member": "objects/142e25e29348a09e24741c550ca92fc343bc05dbf2de98aa77dd41b393153c73",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 129052,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/author-applied-engine-forward-v2.py",
+      "sha256": "142e25e29348a09e24741c550ca92fc343bc05dbf2de98aa77dd41b393153c73"
+    },
+    {
+      "archive_member": "objects/a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 129024,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/author-applied-engine-inverse-v2.py",
+      "sha256": "a639ae1589ecb73f9d30a33fc56e0086938733e9fe1b729637c573cfbdf4e8af"
+    },
+    {
+      "archive_member": "objects/10ea28e2b42373967b81c6fa9cfadd4cb15d36ef9cbd13000401080c4a9e25b8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 45650,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/author-applied-provider-forward-v2.py",
+      "sha256": "10ea28e2b42373967b81c6fa9cfadd4cb15d36ef9cbd13000401080c4a9e25b8"
+    },
+    {
+      "archive_member": "objects/1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 44552,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/author-applied-provider-inverse-v2.py",
+      "sha256": "1819850a8391b48e52ba751666f497be89e8f57d34aa35fa762b662ce7a5f799"
+    },
+    {
+      "archive_member": "objects/d0612d5e9f7e9e13e314561cfed980011cbc98e720c8cfe8331a6800673d4ea8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1452,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/engine-forward-v2.patch",
+      "sha256": "d0612d5e9f7e9e13e314561cfed980011cbc98e720c8cfe8331a6800673d4ea8"
+    },
+    {
+      "archive_member": "objects/26e1ff24275df163d1960cf827c45b11358432b48b48c1ffe7303ae6222d620c",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1452,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/engine-inverse-v2.patch",
+      "sha256": "26e1ff24275df163d1960cf827c45b11358432b48b48c1ffe7303ae6222d620c"
+    },
+    {
+      "archive_member": "objects/f7476b81e421e78920226e5a63b8bb5e9984d39c6ca8dfa43cf690b7261f5d25",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 11781,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/freeze_source_v2.py",
+      "sha256": "f7476b81e421e78920226e5a63b8bb5e9984d39c6ca8dfa43cf690b7261f5d25"
+    },
+    {
+      "archive_member": "objects/10ea28e2b42373967b81c6fa9cfadd4cb15d36ef9cbd13000401080c4a9e25b8",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 45650,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/ground_closed_root_point_provider_v2.py",
+      "sha256": "10ea28e2b42373967b81c6fa9cfadd4cb15d36ef9cbd13000401080c4a9e25b8"
+    },
+    {
+      "archive_member": "objects/9a910af3635054fb87f7faa5bfa8a205f4707e08cf2851eecadd7d49be701a7b",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 8871,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/handoff-v2.json",
+      "sha256": "9a910af3635054fb87f7faa5bfa8a205f4707e08cf2851eecadd7d49be701a7b"
+    },
+    {
+      "archive_member": "objects/d2bef7ccd0ea9ba26178aa9ed1f4a2d6a39f9151fbaac270a879668303ab72cc",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2193,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/inherited-policy-label-scope-v1.json",
+      "sha256": "d2bef7ccd0ea9ba26178aa9ed1f4a2d6a39f9151fbaac270a879668303ab72cc"
+    },
+    {
+      "archive_member": "objects/b4ffd4d51e142285a7fe2b1759bd86215919efd720e08e7a9c76c718e6f1d1c6",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3952,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/provider-forward-v2.patch",
+      "sha256": "b4ffd4d51e142285a7fe2b1759bd86215919efd720e08e7a9c76c718e6f1d1c6"
+    },
+    {
+      "archive_member": "objects/de4e3f1536b476f59e154c6f6ed6268fad07ae6607c936b66b7f774f178a21dc",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3952,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/provider-inverse-v2.patch",
+      "sha256": "de4e3f1536b476f59e154c6f6ed6268fad07ae6607c936b66b7f774f178a21dc"
+    },
+    {
+      "archive_member": "objects/142e25e29348a09e24741c550ca92fc343bc05dbf2de98aa77dd41b393153c73",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 129052,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/receptor_family_search_engine_v18.py",
+      "sha256": "142e25e29348a09e24741c550ca92fc343bc05dbf2de98aa77dd41b393153c73"
+    },
+    {
+      "archive_member": "objects/9d696cd2d9801b4b73b5a6a29010bbb82fd72dfb587703436ee7221ec158a037",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 20974,
+      "original_path": "/private/tmp/gcts-closed-root-point-integration-v2-source-20261018/static-audit-v2.json",
+      "sha256": "9d696cd2d9801b4b73b5a6a29010bbb82fd72dfb587703436ee7221ec158a037"
+    },
+    {
+      "archive_member": "objects/713595c924c319f040a5efa8d3991023bf0af858b2f3e6b5c902c8742376b170",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 17357,
+      "original_path": "/private/tmp/gcts-closed-root-pre-provider-forensic-peer-20261018/interpretation-v1.json",
+      "sha256": "713595c924c319f040a5efa8d3991023bf0af858b2f3e6b5c902c8742376b170"
+    },
+    {
+      "archive_member": "objects/e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 55881,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/actual-cold-forward-v1.py",
+      "sha256": "e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38"
+    },
+    {
+      "archive_member": "objects/535277e01b1a176f8c36bf886de56e65e69c30412ab72f9dc4d1960473224f30",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 53837,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/actual-cold-reverse-v1.py",
+      "sha256": "535277e01b1a176f8c36bf886de56e65e69c30412ab72f9dc4d1960473224f30"
+    },
+    {
+      "archive_member": "objects/ba07c082383cffb782b29cf79ef27a40621b599f605bba1f43e7b77645e34384",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 9933,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/admit_actual_v1.py",
+      "sha256": "ba07c082383cffb782b29cf79ef27a40621b599f605bba1f43e7b77645e34384"
+    },
+    {
+      "archive_member": "objects/3eae82f06f7c20b00c616e62d67f7e4f4aef12cb05330e52a834c18757eb1735",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 8323,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_cold_v1.py",
+      "sha256": "3eae82f06f7c20b00c616e62d67f7e4f4aef12cb05330e52a834c18757eb1735"
+    },
+    {
+      "archive_member": "objects/ef3b5b1bac7c0ca8847c9d7f09d33e70aa7f64ee40db7e670fcb8408d63bfe61",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 6105,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_evidence_v1.py",
+      "sha256": "ef3b5b1bac7c0ca8847c9d7f09d33e70aa7f64ee40db7e670fcb8408d63bfe61"
+    },
+    {
+      "archive_member": "objects/7494de270283a0508bf4650d94c9f2ffb82f31f20e9b091cfb99f6e14dc266be",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 6210,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_evidence_v2.py",
+      "sha256": "7494de270283a0508bf4650d94c9f2ffb82f31f20e9b091cfb99f6e14dc266be"
+    },
+    {
+      "archive_member": "objects/a9e41f73250d8491b7a402250e22676e93613761b52ea00f400c584dcc96ba5e",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 18461,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_report_v1.py",
+      "sha256": "a9e41f73250d8491b7a402250e22676e93613761b52ea00f400c584dcc96ba5e"
+    },
+    {
+      "archive_member": "objects/dcd30d44a553b1a9ea042a52b373f948a76782309cb20b7291e57336dc34583b",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 18542,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_report_v2.py",
+      "sha256": "dcd30d44a553b1a9ea042a52b373f948a76782309cb20b7291e57336dc34583b"
+    },
+    {
+      "archive_member": "objects/7932d876a8bda671921b74d8ce38d6d133f89dd1ff49679e4c33e26519974f8d",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 18542,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_report_v3.py",
+      "sha256": "7932d876a8bda671921b74d8ce38d6d133f89dd1ff49679e4c33e26519974f8d"
+    },
+    {
+      "archive_member": "objects/588fa6a24178fd71b8a7a0508c20a21788be4aa1877f9e0ddb8be6647f6ffd56",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 18549,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_report_v4.py",
+      "sha256": "588fa6a24178fd71b8a7a0508c20a21788be4aa1877f9e0ddb8be6647f6ffd56"
+    },
+    {
+      "archive_member": "objects/e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 55881,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/closed_root_cold_v1.py",
+      "sha256": "e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38"
+    },
+    {
+      "archive_member": "objects/c3cc1e6f31c4d2eba30c38cd1d976c464851365b0d40311c09d9f77569cadff6",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 31482,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/cold-Source-contract-v1.json",
+      "sha256": "c3cc1e6f31c4d2eba30c38cd1d976c464851365b0d40311c09d9f77569cadff6"
+    },
+    {
+      "archive_member": "objects/e671d0f1bfaad0c4e8c2d008515673e49bbc88884f14eed9ab66c6a1fe5de18f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 50265,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/cold-forward-v1.patch",
+      "sha256": "e671d0f1bfaad0c4e8c2d008515673e49bbc88884f14eed9ab66c6a1fe5de18f"
+    },
+    {
+      "archive_member": "objects/82f2f9441113c478388f76e7d397d1a66debef09c96b3928a449e9b90644d602",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 50265,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/cold-reverse-v1.patch",
+      "sha256": "82f2f9441113c478388f76e7d397d1a66debef09c96b3928a449e9b90644d602"
+    },
+    {
+      "archive_member": "objects/be237f12819d58f918a7f1fffda3b2c8ca30c13bf877c84c27201aa31c033ec9",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2306,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/current-review-index-v1.json",
+      "sha256": "be237f12819d58f918a7f1fffda3b2c8ca30c13bf877c84c27201aa31c033ec9"
+    },
+    {
+      "archive_member": "objects/ebb98a1edb11af7d3727edcad4d2d268e1da3bdcc966a057003444f440864204",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 6179,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/decode_actual_v1.py",
+      "sha256": "ebb98a1edb11af7d3727edcad4d2d268e1da3bdcc966a057003444f440864204"
+    },
+    {
+      "archive_member": "objects/258cd49076c24f0177ea9feeb9eb1ecb29a40aae47e4a14fd01be2ba0f78fbcd",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 4613,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/freeze_actual_v1.py",
+      "sha256": "258cd49076c24f0177ea9feeb9eb1ecb29a40aae47e4a14fd01be2ba0f78fbcd"
+    },
+    {
+      "archive_member": "objects/b5c168c7f051b36f24a93d83ffd940bbe609bc00cec051661ac20cd74aa5cbbb",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 7921,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/update_readers_v1.py",
+      "sha256": "b5c168c7f051b36f24a93d83ffd940bbe609bc00cec051661ac20cd74aa5cbbb"
+    },
+    {
+      "archive_member": "objects/e513e448aafc1a550d46717c0ec7b147be9194f1c412033980f3c8395e74a3f5",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 7914,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/update_readers_v3.py",
+      "sha256": "e513e448aafc1a550d46717c0ec7b147be9194f1c412033980f3c8395e74a3f5"
+    },
+    {
+      "archive_member": "objects/07ce2ce78569a6257ecb315154665ae845a64b51f9008374448ff222d4307703",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1578,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/verify_live_v1.py",
+      "sha256": "07ce2ce78569a6257ecb315154665ae845a64b51f9008374448ff222d4307703"
+    },
+    {
+      "archive_member": "objects/0ead678fdf2f8b023478210755d201223084e93d5a83f569d85eda89e3d1ec4c",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1578,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/verify_live_v2.py",
+      "sha256": "0ead678fdf2f8b023478210755d201223084e93d5a83f569d85eda89e3d1ec4c"
+    },
+    {
+      "archive_member": "objects/b94d2e2f9e74dcc0cb8ff9b162fa4b1c2472dcb62d7d0d966d8012262a332c8e",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 93971,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/Source-audit-v1.json",
+      "sha256": "b94d2e2f9e74dcc0cb8ff9b162fa4b1c2472dcb62d7d0d966d8012262a332c8e"
+    },
+    {
+      "archive_member": "objects/687cbd3ad9807898e4209938b5ef9cf0bb8fae081b4c8b1af7e0ed89574e41f5",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 67725,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/Source-audit-v2.json",
+      "sha256": "687cbd3ad9807898e4209938b5ef9cf0bb8fae081b4c8b1af7e0ed89574e41f5"
+    },
+    {
+      "archive_member": "objects/6f81e96416ce05206d03c1a19c6df8ddaf8beca8f775f3038be5098d6b76c168",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 75028,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/Source-audit-v3-working-metadata-v0.json",
+      "sha256": "6f81e96416ce05206d03c1a19c6df8ddaf8beca8f775f3038be5098d6b76c168"
+    },
+    {
+      "archive_member": "objects/1b6f75c79afbd47b042fef120d38ea0bfefadb9b8be0cf0cfdac0933dfa4a368",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 75028,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/Source-audit-v3.json",
+      "sha256": "1b6f75c79afbd47b042fef120d38ea0bfefadb9b8be0cf0cfdac0933dfa4a368"
+    },
+    {
+      "archive_member": "objects/66b596984de9a24159025036891e13b5168d855dab78902f305f2f738c961e75",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 1229,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/Source-scope-addendum-v2.json",
+      "sha256": "66b596984de9a24159025036891e13b5168d855dab78902f305f2f738c961e75"
+    },
+    {
+      "archive_member": "objects/a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72730,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/cold-forward-v1-copy.py",
+      "sha256": "a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8"
+    },
+    {
+      "archive_member": "objects/e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72754,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/cold-forward-v2-copy.py",
+      "sha256": "e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f"
+    },
+    {
+      "archive_member": "objects/4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72806,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/cold-forward-v3-copy.py",
+      "sha256": "4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a"
+    },
+    {
+      "archive_member": "objects/e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 55881,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/cold-reverse-v1-copy.py",
+      "sha256": "e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38"
+    },
+    {
+      "archive_member": "objects/a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72730,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/cold-reverse-v2-copy.py",
+      "sha256": "a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8"
+    },
+    {
+      "archive_member": "objects/e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72754,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/cold-reverse-v3-copy.py",
+      "sha256": "e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f"
+    },
+    {
+      "archive_member": "objects/5159d8cf3c2b41935b013c5d6902979845b8dc4cb6ea89998f7e63c2a6f5425d",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 20178,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/typed-Source-review-v1-negative.json",
+      "sha256": "5159d8cf3c2b41935b013c5d6902979845b8dc4cb6ea89998f7e63c2a6f5425d"
+    },
+    {
+      "archive_member": "objects/f1cf5704918177ac6c0ada22dffc14e4f08d0ccda627728ae9cc32acced4537d",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 20554,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/typed-Source-review-v2.json",
+      "sha256": "f1cf5704918177ac6c0ada22dffc14e4f08d0ccda627728ae9cc32acced4537d"
+    },
+    {
+      "archive_member": "objects/9f45f0ec6c4847402266794421e00cd6beb300b94c3d4ec2f3425369d1ab48c5",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 21720,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/typed-Source-review-v3-working-metadata-v0.json",
+      "sha256": "9f45f0ec6c4847402266794421e00cd6beb300b94c3d4ec2f3425369d1ab48c5"
+    },
+    {
+      "archive_member": "objects/34793cad90c99efce105a9a45e2c8228edc845da7a244a911a8654360ae54bea",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 21720,
+      "original_path": "/private/tmp/gcts-closed-root-search-cold-peer-20261018/typed-Source-review-v3.json",
+      "sha256": "34793cad90c99efce105a9a45e2c8228edc845da7a244a911a8654360ae54bea"
+    },
+    {
+      "archive_member": "objects/f76c29bdc218d14e4385b215951d8f0fb180a1fda115c789daac8175a813b7f3",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 284898,
+      "original_path": "/private/tmp/gcts-closed-root-search-five-actual-data-peer-20261018/audit-v1.json",
+      "sha256": "f76c29bdc218d14e4385b215951d8f0fb180a1fda115c789daac8175a813b7f3"
+    },
+    {
+      "archive_member": "objects/995bb94f045c7061eabae6a04382dc4cf93c38ef02b4df7c99ea89120842ad3e",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 281668,
+      "original_path": "/private/tmp/gcts-closed-root-search-five-actual-data-peer-20261018/audit-v2.json",
+      "sha256": "995bb94f045c7061eabae6a04382dc4cf93c38ef02b4df7c99ea89120842ad3e"
+    },
+    {
+      "archive_member": "objects/8cee1dcbc1ccb78e75433759d16903c7883475a624894bade198ecff31afabbe",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 287849,
+      "original_path": "/private/tmp/gcts-closed-root-search-five-actual-data-peer-20261018/audit-v3.json",
+      "sha256": "8cee1dcbc1ccb78e75433759d16903c7883475a624894bade198ecff31afabbe"
+    },
+    {
+      "archive_member": "objects/31d2171748242553f8489ef7bfbedf024ba29f579f0cbc2cca44eacbf22fb9dd",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 32552,
+      "original_path": "/private/tmp/gcts-closed-root-search-five-actual-data-peer-20261018/audit_saved_data_v1.py",
+      "sha256": "31d2171748242553f8489ef7bfbedf024ba29f579f0cbc2cca44eacbf22fb9dd"
+    },
+    {
+      "archive_member": "objects/61a9fcdb6383007b3ef4841a464d0b5520658e7644867ab149fca324af4b37b2",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 33086,
+      "original_path": "/private/tmp/gcts-closed-root-search-five-actual-data-peer-20261018/audit_saved_data_v2.py",
+      "sha256": "61a9fcdb6383007b3ef4841a464d0b5520658e7644867ab149fca324af4b37b2"
+    },
+    {
+      "archive_member": "objects/8347a8aee11696ff0cc677650236a1f5fc4f631f6988afad373af6f4cc97578c",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 10425,
+      "original_path": "/private/tmp/gcts-closed-root-search-five-actual-data-peer-20261018/finalize_saved_review_v1.py",
+      "sha256": "8347a8aee11696ff0cc677650236a1f5fc4f631f6988afad373af6f4cc97578c"
+    },
+    {
+      "archive_member": "objects/c158ca95236b083945cb6280fe5fcea5504f2e1016b00f5a44e676b2d4625a37",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 730,
+      "original_path": "/private/tmp/gcts-closed-root-search-five-actual-data-peer-20261018/handoff-v1.json",
+      "sha256": "c158ca95236b083945cb6280fe5fcea5504f2e1016b00f5a44e676b2d4625a37"
+    },
+    {
+      "archive_member": "objects/db0131c5b98c15e148a1ce64b9ffa3a42f6339bf4f3fe8738cbcf0fb165ba4d8",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 62938,
+      "original_path": "/private/tmp/gcts-closed-root-search-five-actual-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "db0131c5b98c15e148a1ce64b9ffa3a42f6339bf4f3fe8738cbcf0fb165ba4d8"
+    },
+    {
+      "archive_member": "objects/e0488b73f4d587663d1b2aa1e0109f5d068cb03237019686d0949f68d94ea8a3",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 18804,
+      "original_path": "/private/tmp/gcts-closed-root-search-report-peer-20261018/audit_report_v5.py",
+      "sha256": "e0488b73f4d587663d1b2aa1e0109f5d068cb03237019686d0949f68d94ea8a3"
+    },
+    {
+      "archive_member": "objects/488e029c6da585db5a692d338472b617a124af2d1eef7fb4252a2979258d6455",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 3524,
+      "original_path": "/private/tmp/gcts-closed-root-search-report-peer-20261018/handoff-v5.json",
+      "sha256": "488e029c6da585db5a692d338472b617a124af2d1eef7fb4252a2979258d6455"
+    },
+    {
+      "archive_member": "objects/5a8b029f7e7ef4f23ca98de09892a06364424338728035c5976401bc18fedce7",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 19232,
+      "original_path": "/private/tmp/gcts-closed-root-search-report-peer-20261018/human-report-audit-v5.json",
+      "sha256": "5a8b029f7e7ef4f23ca98de09892a06364424338728035c5976401bc18fedce7"
+    },
+    {
+      "archive_member": "objects/3f9dfd8dc8c3524864f9146098151417f336eb493fd4e678ce4e0182b150c0ac",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 3980,
+      "original_path": "/private/tmp/gcts-closed-root-search-report-peer-20261018/typed-report-review-v4-negative.json",
+      "sha256": "3f9dfd8dc8c3524864f9146098151417f336eb493fd4e678ce4e0182b150c0ac"
+    },
+    {
+      "archive_member": "objects/9b283c5873608ea965de3e0da8aa31e5ffba86cdcd4f52fd46ce631eda81ee77",
+      "binding_scope": "INDEPENDENT_DATA_OR_REPORT_REVIEW",
+      "bytes": 7404,
+      "original_path": "/private/tmp/gcts-closed-root-search-report-peer-20261018/typed-report-review-v5.json",
+      "sha256": "9b283c5873608ea965de3e0da8aa31e5ffba86cdcd4f52fd46ce631eda81ee77"
+    },
+    {
+      "archive_member": "objects/a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72730,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/actual-cold-forward-v1.py",
+      "sha256": "a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8"
+    },
+    {
+      "archive_member": "objects/e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72754,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/actual-cold-forward-v2.py",
+      "sha256": "e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f"
+    },
+    {
+      "archive_member": "objects/4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72806,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/actual-cold-forward-v3.py",
+      "sha256": "4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a"
+    },
+    {
+      "archive_member": "objects/e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 55881,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/actual-cold-reverse-v1.py",
+      "sha256": "e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38"
+    },
+    {
+      "archive_member": "objects/a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72730,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/actual-cold-reverse-v2.py",
+      "sha256": "a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8"
+    },
+    {
+      "archive_member": "objects/e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72754,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/actual-cold-reverse-v3.py",
+      "sha256": "e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f"
+    },
+    {
+      "archive_member": "objects/db488b78706298a6c4865ded0bac0bc4a7b6c476c85150a277a5c0b370a675d4",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 8062,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/admit_actual_v1.py",
+      "sha256": "db488b78706298a6c4865ded0bac0bc4a7b6c476c85150a277a5c0b370a675d4"
+    },
+    {
+      "archive_member": "objects/c3e003e8fff969f7217c5ac0e0f042afea5d7b15244d11a654bcb8fa32f9cd93",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 8065,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/admit_actual_v3.py",
+      "sha256": "c3e003e8fff969f7217c5ac0e0f042afea5d7b15244d11a654bcb8fa32f9cd93"
+    },
+    {
+      "archive_member": "objects/7100106cdb6b67a08c5509b515acb616b1fc6fa11c67dcce284543a97aaa079f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 20454,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_cold_v1.py",
+      "sha256": "7100106cdb6b67a08c5509b515acb616b1fc6fa11c67dcce284543a97aaa079f"
+    },
+    {
+      "archive_member": "objects/f5eacd92116e409480b5c029a72df0ccb5fa854968096a80a9d0a8246e59f146",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3411,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_cold_v2.py",
+      "sha256": "f5eacd92116e409480b5c029a72df0ccb5fa854968096a80a9d0a8246e59f146"
+    },
+    {
+      "archive_member": "objects/ccba2ef576349726f911a78c6b860eecbf56082f75210884faa6b82b47e4054d",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 4029,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_cold_v3.py",
+      "sha256": "ccba2ef576349726f911a78c6b860eecbf56082f75210884faa6b82b47e4054d"
+    },
+    {
+      "archive_member": "objects/d7c1eb42bf3c3967f89674e371a800cbcdd114a2443eebe66b0256f006efb0e5",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3569,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_comparison_v1.py",
+      "sha256": "d7c1eb42bf3c3967f89674e371a800cbcdd114a2443eebe66b0256f006efb0e5"
+    },
+    {
+      "archive_member": "objects/db9676e80422caa7b57beb897fd3c5c84f673de25689ae4e75f0da5206b367ba",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3715,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_comparison_v3.py",
+      "sha256": "db9676e80422caa7b57beb897fd3c5c84f673de25689ae4e75f0da5206b367ba"
+    },
+    {
+      "archive_member": "objects/9caecd098bf3f67d755dc8b26dc0ffa344b9a80d57de25e7ec9c8424773a0227",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 5829,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_evidence_v3.py",
+      "sha256": "9caecd098bf3f67d755dc8b26dc0ffa344b9a80d57de25e7ec9c8424773a0227"
+    },
+    {
+      "archive_member": "objects/2f08f7e58c4c85b27a878d7c883317710bef102014f114044a03816f2bcf8c2c",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 6025,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_evidence_v4.py",
+      "sha256": "2f08f7e58c4c85b27a878d7c883317710bef102014f114044a03816f2bcf8c2c"
+    },
+    {
+      "archive_member": "objects/a6c9cdddb9255488124a0062d0d0290c6cbcbb6d66555ec187d3e927af5f5da4",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 6254,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_evidence_v5.py",
+      "sha256": "a6c9cdddb9255488124a0062d0d0290c6cbcbb6d66555ec187d3e927af5f5da4"
+    },
+    {
+      "archive_member": "objects/15245479147292e2fee40ecf6b4e22f411841b9dde1ebc60bb2781fa9aa943ae",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 16208,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_report_v1.py",
+      "sha256": "15245479147292e2fee40ecf6b4e22f411841b9dde1ebc60bb2781fa9aa943ae"
+    },
+    {
+      "archive_member": "objects/a3142d2ef3e0bc2af765937e69dd1ff6dbf739c0b17cb6cff62aba36e175b55a",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 16653,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_report_v3.py",
+      "sha256": "a3142d2ef3e0bc2af765937e69dd1ff6dbf739c0b17cb6cff62aba36e175b55a"
+    },
+    {
+      "archive_member": "objects/158a3b2ff0704f375c779d88eda3b3f55dc9e89cc8296ffd10236c1c1ff39f81",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 18721,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/build_report_v4.py",
+      "sha256": "158a3b2ff0704f375c779d88eda3b3f55dc9e89cc8296ffd10236c1c1ff39f81"
+    },
+    {
+      "archive_member": "objects/a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72730,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/closed_root_search_cold_v1.py",
+      "sha256": "a2b32a221d28f06a2438139b5b494344cf43cd67a16516f07a6a42cec84a89d8"
+    },
+    {
+      "archive_member": "objects/e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 72754,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/closed_root_search_cold_v2.py",
+      "sha256": "e4690f724be5a9766fe1a0643776922dd8f21cb72e01b39d93a35246580b974f"
+    },
+    {
+      "archive_member": "objects/4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 72806,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/closed_root_search_cold_v3.py",
+      "sha256": "4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a"
+    },
+    {
+      "archive_member": "objects/b6caaa016fc3aa51a1afc4352fac17065788a6ed1ad2b9c864da5669d881e225",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 44087,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/cold-Source-contract-v1.json",
+      "sha256": "b6caaa016fc3aa51a1afc4352fac17065788a6ed1ad2b9c864da5669d881e225"
+    },
+    {
+      "archive_member": "objects/dfafc63db903c922adde3cbb2c44e149beeafc129744ee19fe30a0560b6c181b",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 44082,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/cold-Source-contract-v2.json",
+      "sha256": "dfafc63db903c922adde3cbb2c44e149beeafc129744ee19fe30a0560b6c181b"
+    },
+    {
+      "archive_member": "objects/46b6613819aeb608b027c82792210325866e7c7c67b46c6f94ef1591a82ef670",
+      "binding_scope": "CURRENT_FULL_COMPOSITION_CONTRACT",
+      "bytes": 44503,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/cold-Source-contract-v3.json",
+      "sha256": "46b6613819aeb608b027c82792210325866e7c7c67b46c6f94ef1591a82ef670"
+    },
+    {
+      "archive_member": "objects/836db57c677bdc7f2ebd608c1875b0231cd5d1d2690f785530dc076c284e4cd5",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 74522,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/cold-forward-v1.patch",
+      "sha256": "836db57c677bdc7f2ebd608c1875b0231cd5d1d2690f785530dc076c284e4cd5"
+    },
+    {
+      "archive_member": "objects/087a83d4af8ef1f7375e285ca921f28f7db0a15a419e74cfa96afcd9f911051a",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3546,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/cold-forward-v2.patch",
+      "sha256": "087a83d4af8ef1f7375e285ca921f28f7db0a15a419e74cfa96afcd9f911051a"
+    },
+    {
+      "archive_member": "objects/6ddd50bfb8aea31deae5dafd2f26107900db4c11864ccf7dfe16bb245b95c624",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3568,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/cold-forward-v3.patch",
+      "sha256": "6ddd50bfb8aea31deae5dafd2f26107900db4c11864ccf7dfe16bb245b95c624"
+    },
+    {
+      "archive_member": "objects/849ec0f31407341c63e8700ab95d536572b596264e76463f5054a7696c28fabc",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 74522,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/cold-reverse-v1.patch",
+      "sha256": "849ec0f31407341c63e8700ab95d536572b596264e76463f5054a7696c28fabc"
+    },
+    {
+      "archive_member": "objects/02c8d13035f84947ae58799ba9385de075b5b11191a1848e58e524b846e00c67",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3546,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/cold-reverse-v2.patch",
+      "sha256": "02c8d13035f84947ae58799ba9385de075b5b11191a1848e58e524b846e00c67"
+    },
+    {
+      "archive_member": "objects/977f66e57820d41611ad4ba447325ec8176cacb23c9d62c2f6e316b5914c0d36",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 3568,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/cold-reverse-v3.patch",
+      "sha256": "977f66e57820d41611ad4ba447325ec8176cacb23c9d62c2f6e316b5914c0d36"
+    },
+    {
+      "archive_member": "objects/05e70a5d0f9efc98e80f3294a3f50ada7e0164bb1b7d3f019ab94564bcece051",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2482,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/component-review-index-v1.json",
+      "sha256": "05e70a5d0f9efc98e80f3294a3f50ada7e0164bb1b7d3f019ab94564bcece051"
+    },
+    {
+      "archive_member": "objects/9559019989744847b9f166736a2b18b97561c7f587257f592bed8e88a1927afa",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2584,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/current-review-index-v1.json",
+      "sha256": "9559019989744847b9f166736a2b18b97561c7f587257f592bed8e88a1927afa"
+    },
+    {
+      "archive_member": "objects/6c5f89dd4c69f4c3175447411fa9c685e72540106ea07a1c1447ddd93456f12b",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2584,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/current-review-index-v3.json",
+      "sha256": "6c5f89dd4c69f4c3175447411fa9c685e72540106ea07a1c1447ddd93456f12b"
+    },
+    {
+      "archive_member": "objects/23b85d3f2aa99f47997eb0ef0701f0c58bfd95cfef8c06a115b276e2e6bf92dd",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 6869,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/decode_actual_v1.py",
+      "sha256": "23b85d3f2aa99f47997eb0ef0701f0c58bfd95cfef8c06a115b276e2e6bf92dd"
+    },
+    {
+      "archive_member": "objects/abc0979ad7039ac515dc7be8f8fa43ce4afd1c6e1a9f0db1182c718ee11be774",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 6872,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/decode_actual_v3.py",
+      "sha256": "abc0979ad7039ac515dc7be8f8fa43ce4afd1c6e1a9f0db1182c718ee11be774"
+    },
+    {
+      "archive_member": "objects/46dd8a1c5a68760a0b99889a6aa7e239eb008eda4659fb4bd26aeedf03971824",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 5020,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/freeze_actual_v1.py",
+      "sha256": "46dd8a1c5a68760a0b99889a6aa7e239eb008eda4659fb4bd26aeedf03971824"
+    },
+    {
+      "archive_member": "objects/211b452321a6701c8e9714cac2ef08731a7a50240ec172149d1d81540c2f3ffa",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 5023,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/freeze_actual_v3.py",
+      "sha256": "211b452321a6701c8e9714cac2ef08731a7a50240ec172149d1d81540c2f3ffa"
+    },
+    {
+      "archive_member": "objects/fa831a09945022e577f33de8be9f065a36ece83c01054a74d2994e5e8434c775",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 2963,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/refine_comparison_v4.py",
+      "sha256": "fa831a09945022e577f33de8be9f065a36ece83c01054a74d2994e5e8434c775"
+    },
+    {
+      "archive_member": "objects/f0d2e27c706a7878db6aa40e5b5b4794c2c69e39dd94dc56a3c203ae402b3d5c",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 4672,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/repair_report_v5.py",
+      "sha256": "f0d2e27c706a7878db6aa40e5b5b4794c2c69e39dd94dc56a3c203ae402b3d5c"
+    },
+    {
+      "archive_member": "objects/100563be79fff6d3e329bb5768a5ee36d466d44c1b2b5726afa2233ef70b4301",
+      "binding_scope": "TASK_SOURCE_OR_PRESERVED_DRAFT_AND_REVIEW",
+      "bytes": 6085,
+      "original_path": "/private/tmp/gcts-closed-root-search-root-source-20261018/update_readers_v4.py",
+      "sha256": "100563be79fff6d3e329bb5768a5ee36d466d44c1b2b5726afa2233ef70b4301"
+    },
+    {
+      "archive_member": "objects/7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 15276,
+      "original_path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+    },
+    {
+      "archive_member": "objects/a81b8390cedfa82d59cd084cd641c790a659e6073627584d94ecbfea8434ac34",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 3346,
+      "original_path": "/private/tmp/gcts-cross-host-channel45-consumer-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "a81b8390cedfa82d59cd084cd641c790a659e6073627584d94ecbfea8434ac34"
+    },
+    {
+      "archive_member": "objects/b2dcd4424e99249063d507319d6531f3e3d3a61609913cdfea4a69ac437a49bf",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 9521,
+      "original_path": "/private/tmp/gcts-cross-host-channel45-consumer-source-20261017/Source-contract-v1.json",
+      "sha256": "b2dcd4424e99249063d507319d6531f3e3d3a61609913cdfea4a69ac437a49bf"
+    },
+    {
+      "archive_member": "objects/36475627b4b8454666e4990b06ce3acfbef493b91338cd1902b4c068135eacfc",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 13016,
+      "original_path": "/private/tmp/gcts-cross-host-channel45-consumer-source-20261017/receptor_family_preference_consumer_v3.py",
+      "sha256": "36475627b4b8454666e4990b06ce3acfbef493b91338cd1902b4c068135eacfc"
+    },
+    {
+      "archive_member": "objects/22a72f532b5f62513b4e8845361848d377d9d736e1f9dcce9a4d8e1b4a6bebfb",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 2482,
+      "original_path": "/private/tmp/gcts-cross-host-pool-provider-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "22a72f532b5f62513b4e8845361848d377d9d736e1f9dcce9a4d8e1b4a6bebfb"
+    },
+    {
+      "archive_member": "objects/2915b2d0779ed231d327203aa29a39ce74d4416012fc0cb77a60fe8579dcb311",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 11407,
+      "original_path": "/private/tmp/gcts-cross-host-pool-provider-source-20261017/Source-contract-v1.json",
+      "sha256": "2915b2d0779ed231d327203aa29a39ce74d4416012fc0cb77a60fe8579dcb311"
+    },
+    {
+      "archive_member": "objects/3e27688b659a3291690b6046b9028b1d2230c2ae062717b24f26a0ca127f29d5",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 79580,
+      "original_path": "/private/tmp/gcts-cross-host-pool-provider-source-20261017/cross_host_conditional_pool_provider_v1.py",
+      "sha256": "3e27688b659a3291690b6046b9028b1d2230c2ae062717b24f26a0ca127f29d5"
+    },
+    {
+      "archive_member": "objects/4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 56670,
+      "original_path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    {
+      "archive_member": "objects/d8f962856a047aed10b4c11eab5077c5afe1723da69d694b304b8e021307a2e7",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 8293,
+      "original_path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/cases-Source-contract-v1.json",
+      "sha256": "d8f962856a047aed10b4c11eab5077c5afe1723da69d694b304b8e021307a2e7"
+    },
+    {
+      "archive_member": "objects/47c38cf1c8eac4a0d13676628b3641dd26e4a35fc700c2996fb622512c848eab",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 5618,
+      "original_path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/checker-Source-contract-v1.json",
+      "sha256": "47c38cf1c8eac4a0d13676628b3641dd26e4a35fc700c2996fb622512c848eab"
+    },
+    {
+      "archive_member": "objects/d5ac27c67977c5ba5a0093d9ba9909706460fff816023d893f8df04ef4c76351",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 27980,
+      "original_path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/independent_licensed_cut_checker_v2.py",
+      "sha256": "d5ac27c67977c5ba5a0093d9ba9909706460fff816023d893f8df04ef4c76351"
+    },
+    {
+      "archive_member": "objects/972cde6bc15db7d2b2610f1f5bff394e55a27b571b918177d4760dcdfee1fe25",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 31204,
+      "original_path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/licensed_cluster_finite_cases_v2.py",
+      "sha256": "972cde6bc15db7d2b2610f1f5bff394e55a27b571b918177d4760dcdfee1fe25"
+    },
+    {
+      "archive_member": "objects/8e1419f625fca27e0faf49e201cd62093e2b7f64bd0ebb05d91150c888f2261e",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 6966,
+      "original_path": "/private/tmp/gcts-larger-cluster-miner-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "8e1419f625fca27e0faf49e201cd62093e2b7f64bd0ebb05d91150c888f2261e"
+    },
+    {
+      "archive_member": "objects/910d9a364a3c47deda40a3c9ac60474f8ae9c58a54bd39a68cd613c7ccaebdcb",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 7506,
+      "original_path": "/private/tmp/gcts-larger-cluster-miner-source-20261018/Source-contract-v1.json",
+      "sha256": "910d9a364a3c47deda40a3c9ac60474f8ae9c58a54bd39a68cd613c7ccaebdcb"
+    },
+    {
+      "archive_member": "objects/31619db6656c8244de134f0551d4120cc3b3767040908f64ce7aff23182f21ca",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 55478,
+      "original_path": "/private/tmp/gcts-larger-cluster-miner-source-20261018/receptor_family_miner_v4.py",
+      "sha256": "31619db6656c8244de134f0551d4120cc3b3767040908f64ce7aff23182f21ca"
+    },
+    {
+      "archive_member": "objects/ba3bc0f93db452e39f288744f5e02c7b61088ddf8fd6430ea0335192422f389c",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 9136,
+      "original_path": "/private/tmp/gcts-licensed-cluster-checker-cases-peer-20261018/typed-cases-Source-review-v2.json",
+      "sha256": "ba3bc0f93db452e39f288744f5e02c7b61088ddf8fd6430ea0335192422f389c"
+    },
+    {
+      "archive_member": "objects/5d8d05daa9d1a6e6ce6965db82d1fb086bf0e41c3cc46a0b5928d01bf248c021",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5657,
+      "original_path": "/private/tmp/gcts-licensed-cluster-checker-cases-peer-20261018/typed-checker-Source-review-v2.json",
+      "sha256": "5d8d05daa9d1a6e6ce6965db82d1fb086bf0e41c3cc46a0b5928d01bf248c021"
+    },
+    {
+      "archive_member": "objects/9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "binding_scope": "UNCHANGED_NATIVE_HARNESS",
+      "bytes": 4357,
+      "original_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+    },
+    {
+      "archive_member": "objects/fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 60281,
+      "original_path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+    },
+    {
+      "archive_member": "objects/2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 12826,
+      "original_path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+      "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479"
+    },
+    {
+      "archive_member": "objects/e5abea1ad3fbebcb048de1f8d4db726f829409220c158c1500f6810251edf53f",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 8408,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-cases-peer-20261018/cases-typed-Source-review-v2.json",
+      "sha256": "e5abea1ad3fbebcb048de1f8d4db726f829409220c158c1500f6810251edf53f"
+    },
+    {
+      "archive_member": "objects/4ba34f5e039e71ddf490870b361a6b2feb3aad6cfd2e1b2712a2f7ca9fd9c12b",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 4814,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-cases-peer-20261018/checker-typed-Source-review-v1.json",
+      "sha256": "4ba34f5e039e71ddf490870b361a6b2feb3aad6cfd2e1b2712a2f7ca9fd9c12b"
+    },
+    {
+      "archive_member": "objects/e3d5b77fc7263c26814afd02e06c42e857088cb3f1df9838ec45864cb5b17160",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 4793,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-source-20261018/checker-Source-contract-v1.json",
+      "sha256": "e3d5b77fc7263c26814afd02e06c42e857088cb3f1df9838ec45864cb5b17160"
+    },
+    {
+      "archive_member": "objects/ef8f34fb191bcd89f518dbec081f77508c06835c45515bbc8fde117bf7f1707c",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 20110,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-source-20261018/independent_role_receptor_checker_v1.py",
+      "sha256": "ef8f34fb191bcd89f518dbec081f77508c06835c45515bbc8fde117bf7f1707c"
+    },
+    {
+      "archive_member": "objects/e0544d2cbd832e52010cae5b37112db41b8cd7ae9d336ddb97fcef39aece5d9b",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 8298,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/cases-Source-contract-v1.json",
+      "sha256": "e0544d2cbd832e52010cae5b37112db41b8cd7ae9d336ddb97fcef39aece5d9b"
+    },
+    {
+      "archive_member": "objects/8bb506fdb70e327ef55cf71ff2eda53a48010fd2779af0393f6c16fd6b868b6d",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 23741,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/role_receptor_finite_cases_v2.py",
+      "sha256": "8bb506fdb70e327ef55cf71ff2eda53a48010fd2779af0393f6c16fd6b868b6d"
+    },
+    {
+      "archive_member": "objects/9daf86e17a3b677d689061a330dbe5c0350e690530c2dd7f4e32f8591f3335ae",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 6659,
+      "original_path": "/private/tmp/gcts-role-receptor-lifter-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "9daf86e17a3b677d689061a330dbe5c0350e690530c2dd7f4e32f8591f3335ae"
+    },
+    {
+      "archive_member": "objects/0257148dc2f4a74d2e8d264e31b99d65afef4e6c6f35320355ccaafb6939db75",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 6371,
+      "original_path": "/private/tmp/gcts-role-receptor-lifter-source-20261018/Source-contract-v1.json",
+      "sha256": "0257148dc2f4a74d2e8d264e31b99d65afef4e6c6f35320355ccaafb6939db75"
+    },
+    {
+      "archive_member": "objects/106afb1ffe8b15ad7416fab12e63e879102fd506b10fafbee071fc1b87b7f2a1",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 26184,
+      "original_path": "/private/tmp/gcts-role-receptor-lifter-source-20261018/equality_role_receptor_lifter_v1.py",
+      "sha256": "106afb1ffe8b15ad7416fab12e63e879102fd506b10fafbee071fc1b87b7f2a1"
+    },
+    {
+      "archive_member": "objects/04b92a21e48c1c057427f190b30be089ec988aa29e7c6ba2759178fcc0be9204",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 14085,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_aware_nonimp_fibre_proposer_v2.py",
+      "sha256": "04b92a21e48c1c057427f190b30be089ec988aa29e7c6ba2759178fcc0be9204"
+    },
+    {
+      "archive_member": "objects/ad24a7114f8338f522591a43b95106e11bfe3c7bfff69dd6b5286e36059ac8e6",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 14802,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/selected_dag_first_proof_observer_v3.py",
+      "sha256": "ad24a7114f8338f522591a43b95106e11bfe3c7bfff69dd6b5286e36059ac8e6"
+    },
+    {
+      "archive_member": "objects/422393b14613d31f09ca766207eefda6a412073fbbfbee76dfab6ea11e9915d8",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5511,
+      "original_path": "/private/tmp/gcts-row01-head-producer-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "422393b14613d31f09ca766207eefda6a412073fbbfbee76dfab6ea11e9915d8"
+    },
+    {
+      "archive_member": "objects/6e5a6aad1e78ccb4bbb18c571499004fa73283cd3068110ad8cdd92f58b0de4f",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 31950,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/Source-contract-v1.json",
+      "sha256": "6e5a6aad1e78ccb4bbb18c571499004fa73283cd3068110ad8cdd92f58b0de4f"
+    },
+    {
+      "archive_member": "objects/40a856ce6fdf1614f6162af16e1ec0d4b25e88adab8110ab93974365baf880f1",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 18392,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/certified_early_row_channel45_point_mark_decorator_v2.py",
+      "sha256": "40a856ce6fdf1614f6162af16e1ec0d4b25e88adab8110ab93974365baf880f1"
+    },
+    {
+      "archive_member": "objects/55a6645186a1db8957e60329055915abdede7ffda070131cc7d7e25ab612de42",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 19635,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/checked_engine_state_dag_collector_v4.py",
+      "sha256": "55a6645186a1db8957e60329055915abdede7ffda070131cc7d7e25ab612de42"
+    },
+    {
+      "archive_member": "objects/17849ef44060547b99a5c8737c8e91153628dc3f34ce1f3dcb0359857bc4b74d",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 11663,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/early_row_head_projection_v2.py",
+      "sha256": "17849ef44060547b99a5c8737c8e91153628dc3f34ce1f3dcb0359857bc4b74d"
+    },
+    {
+      "archive_member": "objects/1a262936bb45f9ae6a4c642b9f2660743daba609e4891f3cccc8d1486fa6550c",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 26609,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/independent_marked_aware_fibre_checker_v3.py",
+      "sha256": "1a262936bb45f9ae6a4c642b9f2660743daba609e4891f3cccc8d1486fa6550c"
+    },
+    {
+      "archive_member": "objects/00a5937cc7591fb2e8fe7891feaa1e4f9a08aee900cf3e0bee8e1fdfaf913cc4",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 12916,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/marked_degree_router_v3.py",
+      "sha256": "00a5937cc7591fb2e8fe7891feaa1e4f9a08aee900cf3e0bee8e1fdfaf913cc4"
+    },
+    {
+      "archive_member": "objects/eb6d5299f14eb2611c786c3acf48e97ea21cb6555e8300d708f984284d464478",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 31406,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/marked_unit_row_adapter_v7.py",
+      "sha256": "eb6d5299f14eb2611c786c3acf48e97ea21cb6555e8300d708f984284d464478"
+    },
+    {
+      "archive_member": "objects/61b1830fc89be3cd3a9c0f4029387780a890d3440faab1e8cf6a1450026e7aeb",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 25319,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/receptor_family_six_rule_adapter_v5.py",
+      "sha256": "61b1830fc89be3cd3a9c0f4029387780a890d3440faab1e8cf6a1450026e7aeb"
+    },
+    {
+      "archive_member": "objects/837b8dfc7da20acc71f5d16c6a0a06818bf1388ba6c9fa16b8af37d24192b214",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 4840,
+      "original_path": "/private/tmp/gcts-row01-root-source-20261018/nested_cost_ledger_v1.py",
+      "sha256": "837b8dfc7da20acc71f5d16c6a0a06818bf1388ba6c9fa16b8af37d24192b214"
+    },
+    {
+      "archive_member": "objects/629cf2ec481f25bc52a98c00f3377c75d27dd020f770949b3ab3ffdf3c7a71df",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 4420,
+      "original_path": "/private/tmp/gcts-row1-head-independent-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "629cf2ec481f25bc52a98c00f3377c75d27dd020f770949b3ab3ffdf3c7a71df"
+    },
+    {
+      "archive_member": "objects/010588eadc59cd848370519eb7487214648a848ce0aea96c736a466982b065d1",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 7253,
+      "original_path": "/private/tmp/gcts-row1-head-independent-source-20261018/Source-contract-v1.json",
+      "sha256": "010588eadc59cd848370519eb7487214648a848ce0aea96c736a466982b065d1"
+    },
+    {
+      "archive_member": "objects/398acd6a49ce7495f88da845a5711845eed39be9ac8e05eff86aab626ee6be7d",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 30864,
+      "original_path": "/private/tmp/gcts-row1-head-independent-source-20261018/independent_channel45_state_verifier_v2.py",
+      "sha256": "398acd6a49ce7495f88da845a5711845eed39be9ac8e05eff86aab626ee6be7d"
+    },
+    {
+      "archive_member": "objects/1ba87cc408f4de4f7da1f925906a5b26248c8a5225b33aa40e7d6f5bf4edcaf3",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 6440,
+      "original_path": "/private/tmp/gcts-two-witness-checker-cases-peer-20261018/cases-typed-Source-review-v1.json",
+      "sha256": "1ba87cc408f4de4f7da1f925906a5b26248c8a5225b33aa40e7d6f5bf4edcaf3"
+    },
+    {
+      "archive_member": "objects/8c83b5e2137dd8a81d0db1ffc8d17cbc8f91b8e02a0ef8468fc1f1c381721537",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5944,
+      "original_path": "/private/tmp/gcts-two-witness-checker-cases-peer-20261018/checker-typed-Source-review-v1.json",
+      "sha256": "8c83b5e2137dd8a81d0db1ffc8d17cbc8f91b8e02a0ef8468fc1f1c381721537"
+    },
+    {
+      "archive_member": "objects/604c525e241e383a6d677416daa130c6d9dc26c710a5c07bd1d70dfc0cf5606f",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 8928,
+      "original_path": "/private/tmp/gcts-two-witness-checker-source-20261018/cases-Source-contract-v1.json",
+      "sha256": "604c525e241e383a6d677416daa130c6d9dc26c710a5c07bd1d70dfc0cf5606f"
+    },
+    {
+      "archive_member": "objects/3d47b164af6b53cd0d7011642645173e8b582d338d8a7d28e18c21597b336d6b",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 7654,
+      "original_path": "/private/tmp/gcts-two-witness-checker-source-20261018/checker-Source-contract-v1.json",
+      "sha256": "3d47b164af6b53cd0d7011642645173e8b582d338d8a7d28e18c21597b336d6b"
+    },
+    {
+      "archive_member": "objects/9f2dbcfac9944ab0bb5d5819ecf7fb2ce184e9e0d6d48cb70cf0025028498a62",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 12481,
+      "original_path": "/private/tmp/gcts-two-witness-checker-source-20261018/independent_two_witness_refresh_checker_v1.py",
+      "sha256": "9f2dbcfac9944ab0bb5d5819ecf7fb2ce184e9e0d6d48cb70cf0025028498a62"
+    },
+    {
+      "archive_member": "objects/279cdbcf469c17ba92dc9b7099b56759553844ad1ec1cdcb24c285f9f1685e56",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 25521,
+      "original_path": "/private/tmp/gcts-two-witness-checker-source-20261018/two_witness_refresh_cases_v1.py",
+      "sha256": "279cdbcf469c17ba92dc9b7099b56759553844ad1ec1cdcb24c285f9f1685e56"
+    },
+    {
+      "archive_member": "objects/094d93fd716b0918bdb022cf77a8de7d231452355c5ed21c3110382bf09682fb",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 19140,
+      "original_path": "/private/tmp/gcts-two-witness-root-peer-20261018/components-typed-Source-review-v1.json",
+      "sha256": "094d93fd716b0918bdb022cf77a8de7d231452355c5ed21c3110382bf09682fb"
+    },
+    {
+      "archive_member": "objects/4ae6a559313e68cbe35682bcfcbca14f427fa4f752d1b6a00fe284905948773c",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 17548,
+      "original_path": "/private/tmp/gcts-two-witness-root-source-20261018/arithmetic_right_two_inventory_cases_v6.py",
+      "sha256": "4ae6a559313e68cbe35682bcfcbca14f427fa4f752d1b6a00fe284905948773c"
+    },
+    {
+      "archive_member": "objects/b20cde1a26fa32ed89103d69e655943f459a6d942ff36f1b5469ee7ac8e9c88b",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 21023,
+      "original_path": "/private/tmp/gcts-two-witness-root-source-20261018/components-Source-contract-v1.json",
+      "sha256": "b20cde1a26fa32ed89103d69e655943f459a6d942ff36f1b5469ee7ac8e9c88b"
+    }
+  ],
+  "goal_complete": false,
+  "matched_V3_arm_invocations": 4,
+  "original_binding_count": 387,
+  "prior_public_archive": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/closed-roots-reproduction.zip",
+  "reproduction": "Preserved consumed directories cannot be rerun. Reproduction requires a fresh explicit once plan/grant and declared compatible Darwin runtime. Rebind original paths using exact capsule and input preimages. Rejected/historical sources are lineage data and must not be substituted for current bindings. Transitive metadata are not recursively hydrated. External archive digest excluded from embedded manifest to avoid self-reference.",
+  "runtime_binary_included": false,
+  "runtime_descriptor": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "closed-root-search-evidence-manifest-v1",
+  "scientific_replays_by_packaging": 0,
+  "scope": "Four matchedV3 once-only actual proof searches plus one preserved failedV2 integration pilot.44 executable Sources, original17 mathematical model, full donor, current component/cold peers, exact native closure and independent saved-data/report reviews. No scientific replays by packaging.",
+  "unique_object_count": 330
+}
