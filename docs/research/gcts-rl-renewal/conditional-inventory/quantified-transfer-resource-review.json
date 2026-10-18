@@ -1,0 +1,570 @@
+{
+  "actual_executor_identity": "/root",
+  "audit": {
+    "bytes": 395108,
+    "path": "/private/tmp/gcts-quantified-six-actual-resource-peer-20261018/audit-v2.json",
+    "sha256": "6eabf350a88d920bfe81e6cf3b94dc177a9f995e0342f5bd111512fa600eb153"
+  },
+  "audit_script": {
+    "bytes": 18402,
+    "path": "/private/tmp/gcts-quantified-six-actual-resource-peer-20261018/audit_saved_resources_v1.py",
+    "sha256": "07a8f121e0bda06d152f34ccdb2bac7eadb2cee276f88f72c485d15b15b55fdb"
+  },
+  "authorized_index": {
+    "bytes": 10027,
+    "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/authorized-plan-index-v1.json",
+    "sha256": "382275468e78bd98e02b735cb5f284a22a7f99405c2218efd538230a6f64cdb0"
+  },
+  "authorship_disclosure": "Reviewer authored the new quantified receiver driver d1df19ee, bounded native broker606e790f and external once runnerb002cf5e, as well as previous Q checkers/CASEs and verifier398acd. This review inspects retained data from Root execution and arithmetic/raw joins under those protocols. It is not an independent Source audit of reviewer-authored code. The distinct Source reviews are bound separately and remain the executable-methodology evidence.",
+  "broker": {
+    "bytes": 20424,
+    "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+    "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+  },
+  "cases": [
+    {
+      "authorization": {
+        "bytes": 4115,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/authorizations/quantified-family-r1-base-ROOT-20261018-v1.json",
+        "sha256": "d96e3e0dad87d6c8c0e425e2fb8e2c2a62d1cd8e623756b9df24bd124e071210"
+      },
+      "checks_closed_elapsed_seconds": 47.62805575,
+      "conservative_peak_sum_bytes": 980942848,
+      "consumed_marker": {
+        "bytes": 505,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-base-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "bcb991a197fd04437094a32284e3b6f5adec525d436a1a7787c7189434d75fc8"
+      },
+      "invocation_id": "quantified-family-r1-base-ROOT-20261018-v1",
+      "mathematical_acceptance_audited": false,
+      "mode": "base",
+      "native_completed_records": 15,
+      "native_peak_bytes": 13516800,
+      "native_pid": 49325,
+      "observer_consumed_marker": {
+        "bytes": 320,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-base-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+        "sha256": "24e7d43dd64c225dff8ca3e78dc7301f7d5f164377df7b0de11a6badfedc6f81"
+      },
+      "observer_terminal": {
+        "bytes": 1552,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "f46edc6665cb9f03a0584cbb3dd1795e1081d66e6ff1421e2efe07d452e6a2f5"
+      },
+      "parent_peak_bytes": 967426048,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 49324,
+      "repetition": 1,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 34002269,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-base-ROOT-20261018-v1/result.json",
+        "sha256": "0b19b38d9abba33bf75ec87237b80f52e6eede6e346418b2ca02b03e18e840b5"
+      },
+      "result_bytes": 34002269,
+      "runner_pid": 49323,
+      "runner_plan": {
+        "bytes": 1889,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-base-ROOT-20261018-v1.json",
+        "sha256": "f076421826dafcef258d57f99a3caacccd69c4610e44501e68e1bdc8834afc93"
+      },
+      "runner_receipt": {
+        "bytes": 52922,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-base-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "1984d56e3be6a362f0cbeab7ede947a2a2246ad4bfe5197fd12d919717f4a8ba"
+      },
+      "runner_terminal_elapsed_seconds": 47.696512417,
+      "terminal_gate_passed": true,
+      "worker_plan": {
+        "bytes": 16707,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/worker-plans/quantified-family-r1-base-ROOT-20261018-v1.json",
+        "sha256": "f3d57b2f4f788b47767f36e177a168c7aa6ea96a6a017a4117b1aabd7c5eb7f1"
+      },
+      "worker_receipt": {
+        "bytes": 43135,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-base-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "4258cfc2d91a5b2c92f3324cf02c3466a27befc757a3caa59b7e62e9f1023f8a"
+      },
+      "worker_terminal_elapsed_seconds": 46.40888375
+    },
+    {
+      "authorization": {
+        "bytes": 4119,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/authorizations/quantified-family-r1-fixed-ROOT-20261018-v1.json",
+        "sha256": "628d436db42a6a191a7e69a504d1a5de6dda34a181e213b7d0b463c821dbec08"
+      },
+      "checks_closed_elapsed_seconds": 31.002244875,
+      "conservative_peak_sum_bytes": 792035328,
+      "consumed_marker": {
+        "bytes": 508,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-fixed-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "38cdf26c2c057f83721492a5161848cbb3cfb3b23db540f61cab760bd96b6b5a"
+      },
+      "invocation_id": "quantified-family-r1-fixed-ROOT-20261018-v1",
+      "mathematical_acceptance_audited": false,
+      "mode": "fixed",
+      "native_completed_records": 15,
+      "native_peak_bytes": 12894208,
+      "native_pid": 49544,
+      "observer_consumed_marker": {
+        "bytes": 321,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-fixed-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+        "sha256": "85ee2cd52f46e37c9d01f2affdc947ae344c3933df9494991ee6d11452e19041"
+      },
+      "observer_terminal": {
+        "bytes": 1555,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "af02e33980b906a92c581983e36db27846640bb5f06fcb7038210f745e72c711"
+      },
+      "parent_peak_bytes": 779141120,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 49543,
+      "repetition": 1,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 25063456,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "888ac7952baa5bf8308797e8ad76cd00cfe266011fa627ae42634399e35ea929"
+      },
+      "result_bytes": 25063456,
+      "runner_pid": 49542,
+      "runner_plan": {
+        "bytes": 1894,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-fixed-ROOT-20261018-v1.json",
+        "sha256": "94b7fca461cb71e9e7f655953622c675121c934853f17bee3b26059b107993f0"
+      },
+      "runner_receipt": {
+        "bytes": 52921,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-fixed-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "154a3ae169dd9812b51d79cc485ce75cbab844b6ea8dc9bb6819c3c204c61812"
+      },
+      "runner_terminal_elapsed_seconds": 31.099844208,
+      "terminal_gate_passed": true,
+      "worker_plan": {
+        "bytes": 16710,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/worker-plans/quantified-family-r1-fixed-ROOT-20261018-v1.json",
+        "sha256": "7af68177dc4c2b42f5c51e93a86a7db4cc82cc581df3c1a34beeb496e6dcd2c7"
+      },
+      "worker_receipt": {
+        "bytes": 43136,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-fixed-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "809b721f2c1272f3387a99f7d43530c606799e093dd1e199e4da40b1f022bf41"
+      },
+      "worker_terminal_elapsed_seconds": 30.181531208
+    },
+    {
+      "authorization": {
+        "bytes": 4107,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/authorizations/quantified-family-r1-z3-ROOT-20261018-v1.json",
+        "sha256": "865f6bfc1cf56fc38764d158c73ec069f3b86dcc2d6f972c382757ef4efbf6cb"
+      },
+      "checks_closed_elapsed_seconds": 38.965795666,
+      "conservative_peak_sum_bytes": 775864320,
+      "consumed_marker": {
+        "bytes": 499,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-z3-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "4fd44b8ba0f510d877d55ce1b8376942e434c19b9e8ade1dcecc5d1fe5d072e0"
+      },
+      "invocation_id": "quantified-family-r1-z3-ROOT-20261018-v1",
+      "mathematical_acceptance_audited": false,
+      "mode": "z3",
+      "native_completed_records": 15,
+      "native_peak_bytes": 13238272,
+      "native_pid": 49609,
+      "observer_consumed_marker": {
+        "bytes": 318,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-z3-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+        "sha256": "d0d19d889f0c7541093b2113d96c05d543fffe97f8ab320c038f2fcfbf25d324"
+      },
+      "observer_terminal": {
+        "bytes": 1542,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-z3-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "d3b8f5dd3b2b818c2ef14b64a43aac3c9ead6131685bf09949d57abb02bf4b8a"
+      },
+      "parent_peak_bytes": 762626048,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 49608,
+      "repetition": 1,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 45294400,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-z3-ROOT-20261018-v1/result.json",
+        "sha256": "411e832300509b8caa0b8cb118344ec25e237be341df3aaf65da413035377753"
+      },
+      "result_bytes": 45294400,
+      "runner_pid": 49607,
+      "runner_plan": {
+        "bytes": 1879,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-z3-ROOT-20261018-v1.json",
+        "sha256": "7d5927c8499ed8339aa5f533bd89776cd7f4414f4b754e811fad33b795fdca62"
+      },
+      "runner_receipt": {
+        "bytes": 52851,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-z3-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "2ef08d6a11458d3ee2fac2a8a4225d9e7fc161b51faf62d48463078989e6372d"
+      },
+      "runner_terminal_elapsed_seconds": 39.048820416,
+      "terminal_gate_passed": true,
+      "worker_plan": {
+        "bytes": 16701,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/worker-plans/quantified-family-r1-z3-ROOT-20261018-v1.json",
+        "sha256": "dbc3bb012df636d76ca9b8fc795a8e2116917fbac89e7ffc8b5ba01f436fd6e0"
+      },
+      "worker_receipt": {
+        "bytes": 43080,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-z3-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "be02d637413957ec1d4ed9a4e9b5206cb9f71e59a41e32d967889820b8de8d01"
+      },
+      "worker_terminal_elapsed_seconds": 38.147491166
+    },
+    {
+      "authorization": {
+        "bytes": 4107,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/authorizations/quantified-family-r2-z3-ROOT-20261018-v1.json",
+        "sha256": "d8d79cc92ae87c36fad70b74a857a86341f718f9f53001af3a24b56569680261"
+      },
+      "checks_closed_elapsed_seconds": 39.96722475,
+      "conservative_peak_sum_bytes": 699662336,
+      "consumed_marker": {
+        "bytes": 499,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-z3-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "48d40b05a694905a8838143e489bab8e66ff81733f3973d92b05c0a3a2752d9c"
+      },
+      "invocation_id": "quantified-family-r2-z3-ROOT-20261018-v1",
+      "mathematical_acceptance_audited": false,
+      "mode": "z3",
+      "native_completed_records": 15,
+      "native_peak_bytes": 13336576,
+      "native_pid": 49669,
+      "observer_consumed_marker": {
+        "bytes": 318,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-z3-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+        "sha256": "70159bbc45bf25a2b1e4b0eced0c41c86c77d8513b2fdc149aa2eaef7abd017a"
+      },
+      "observer_terminal": {
+        "bytes": 1546,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-z3-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "e8f90978f7ab9d20fdda4ad7dac2b0215b3283935ecf3fb2b177507a4953d9e2"
+      },
+      "parent_peak_bytes": 686325760,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 49668,
+      "repetition": 2,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 45294374,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-z3-ROOT-20261018-v1/result.json",
+        "sha256": "07051181121d35c5ec519f07b657a8d125355ec1da2f6e1d66def84988109b8a"
+      },
+      "result_bytes": 45294374,
+      "runner_pid": 49667,
+      "runner_plan": {
+        "bytes": 1879,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-z3-ROOT-20261018-v1.json",
+        "sha256": "3b573e2b7f472d921274e1da7458b8a594b84b6266c58ec58a8a602c4fd90dac"
+      },
+      "runner_receipt": {
+        "bytes": 52807,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-z3-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "f0c4d1b3a57e7574764d9103a343e0844789331180510ab9c7e76e9c58fd933f"
+      },
+      "runner_terminal_elapsed_seconds": 40.047538125,
+      "terminal_gate_passed": true,
+      "worker_plan": {
+        "bytes": 16701,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/worker-plans/quantified-family-r2-z3-ROOT-20261018-v1.json",
+        "sha256": "a3a3c6c97676df1ba1072ab93a423c83844548b0d3863b02f5d6ee9b4f8bcf53"
+      },
+      "worker_receipt": {
+        "bytes": 43050,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-z3-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "1a7905b460982355a830807e8d8d35cefb6a798a887244d52c8d3209860b653f"
+      },
+      "worker_terminal_elapsed_seconds": 39.147886625
+    },
+    {
+      "authorization": {
+        "bytes": 4119,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/authorizations/quantified-family-r2-fixed-ROOT-20261018-v1.json",
+        "sha256": "e0f21d26ac84857c26a93d159e8be11e1a2ce25f8c0031d90fa6161cefa82a42"
+      },
+      "checks_closed_elapsed_seconds": 31.554998125,
+      "conservative_peak_sum_bytes": 833929216,
+      "consumed_marker": {
+        "bytes": 508,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-fixed-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "b0dafdfed15a092c343ca118edd10dae56d82af0746f1b0be410918f7906ad16"
+      },
+      "invocation_id": "quantified-family-r2-fixed-ROOT-20261018-v1",
+      "mathematical_acceptance_audited": false,
+      "mode": "fixed",
+      "native_completed_records": 15,
+      "native_peak_bytes": 13238272,
+      "native_pid": 49694,
+      "observer_consumed_marker": {
+        "bytes": 321,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-fixed-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+        "sha256": "fdb0acbda73bf473b628578b28b3ee1d38294a5eb9b59d9f80b0ef1f4e82b36c"
+      },
+      "observer_terminal": {
+        "bytes": 1555,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "365131d43af1575abe8c6373ce6c8f2d30a5a534024abd03d8e3684bd4e255dc"
+      },
+      "parent_peak_bytes": 820690944,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 49693,
+      "repetition": 2,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 25063476,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "3d428fda608b03b7c1ddf86a6d78bd69bea4e962603a9568382b5d9bf11f0075"
+      },
+      "result_bytes": 25063476,
+      "runner_pid": 49692,
+      "runner_plan": {
+        "bytes": 1894,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-fixed-ROOT-20261018-v1.json",
+        "sha256": "a10e11651c0d784d03e4efb0c700247384dcf5ce7f87ccc656a21c8792659b63"
+      },
+      "runner_receipt": {
+        "bytes": 52956,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-fixed-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "854683d9cc76c89e9d17f9132c6fea09b04dbf10dc26cd58abbc91d21337d31d"
+      },
+      "runner_terminal_elapsed_seconds": 31.612118709,
+      "terminal_gate_passed": true,
+      "worker_plan": {
+        "bytes": 16710,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/worker-plans/quantified-family-r2-fixed-ROOT-20261018-v1.json",
+        "sha256": "ab8bb0df6af511b71a7388ff4e274e675554d80d5ed9f742fc8cc4788035d5d6"
+      },
+      "worker_receipt": {
+        "bytes": 43160,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-fixed-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "a17e7849f2e8ad431247c5fecf3b2be2fd5779c773e1304463a09ed4aea099ff"
+      },
+      "worker_terminal_elapsed_seconds": 30.740451875
+    },
+    {
+      "authorization": {
+        "bytes": 4115,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/authorizations/quantified-family-r2-base-ROOT-20261018-v1.json",
+        "sha256": "89b81e8bf7bb80f815bbcccfd32dd62528dd4dffda5676cfbf12e28e3b0c9133"
+      },
+      "checks_closed_elapsed_seconds": 40.697121583,
+      "conservative_peak_sum_bytes": 1001472000,
+      "consumed_marker": {
+        "bytes": 505,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-base-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "ad2325ba1e33fae92233adcb8d0cefe1f43a48d6602e09c1f49d4f570a659496"
+      },
+      "invocation_id": "quantified-family-r2-base-ROOT-20261018-v1",
+      "mathematical_acceptance_audited": false,
+      "mode": "base",
+      "native_completed_records": 15,
+      "native_peak_bytes": 13336576,
+      "native_pid": 49727,
+      "observer_consumed_marker": {
+        "bytes": 320,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-base-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+        "sha256": "56ef4a1a5abf88db9202cb0a2603beaa1c4444edd89d5342fa13110a91a729ec"
+      },
+      "observer_terminal": {
+        "bytes": 1551,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "d412c8aa48bf9dd11f1db43f537a076b00fc95b674a309a42250c7c325121127"
+      },
+      "parent_peak_bytes": 988135424,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 49726,
+      "repetition": 2,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 34002267,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-base-ROOT-20261018-v1/result.json",
+        "sha256": "57801770c8049fd07943bad35d0785f76040a19f8dab46ff43d42326291043df"
+      },
+      "result_bytes": 34002267,
+      "runner_pid": 49725,
+      "runner_plan": {
+        "bytes": 1889,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-base-ROOT-20261018-v1.json",
+        "sha256": "6506692686c43535e38a6a2f950f45ad2fa3a1459207c64b10776c07a1db1cef"
+      },
+      "runner_receipt": {
+        "bytes": 52920,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-base-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "fce28a35755c9de5a4641a5d2603a6f3f7571c835a3c6f4563cedaf137a4c0f1"
+      },
+      "runner_terminal_elapsed_seconds": 40.772258625,
+      "terminal_gate_passed": true,
+      "worker_plan": {
+        "bytes": 16707,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/worker-plans/quantified-family-r2-base-ROOT-20261018-v1.json",
+        "sha256": "9e0aa8dc6a53f0e4765acb3f19a9ae8f74e069dc0ed2dca4a035f7e9f73cf3ce"
+      },
+      "worker_receipt": {
+        "bytes": 43133,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-base-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "de1bea91f499319666b759c7eec25f88e544818708e72e9c1f737c4cd671441d"
+      },
+      "worker_terminal_elapsed_seconds": 39.5511535
+    }
+  ],
+  "check_count": 2337,
+  "checked_observations": [
+    "All six invocation/mode/grant/plan/worker/runner/observer joins are literal and pinned. Each positive Root grant permits one launch; preserved prospective drafts remain false. Consumed-before-Popen markers and one-launch counters match each exact actual directory.",
+    "The six observed windows are sequential in the declared base/fixed/z3 then z3/fixed/base order. Every original endpoint is180 seconds for work and successful serialization,210 seconds for final closure, from the same before-startup monotonic origin.",
+    "Each worker terminates normally before its work endpoint; driver serialization/preflight, custody and return timestamps are ordered and in the work window. Runner file/hash/receipt checks and externally observed runner terminal are in the total closure window. All runner and worker exit codes and exact wait4 statuses are zero.",
+    "The exact waited Python PID is its owned process-group leader. Native receipts name a distinct direct CPP child in that same group and record exact wait4 status zero, closed/all_reaped, complete stdout/stderr EOF, no pending reply, no cleanup errors or termination signals. Group absence is recorded by the original runner.",
+    "The conservative separately captured Python and CPP Darwin high-water values sum below the prospectively declared1GiB limit in every arm. This does not assert an instantaneous operating-system aggregate memory ceiling; shared pages may be counted twice.",
+    "Every complete native request-stage ordinal joins its current record ID and full request/input/output hashes. There are15 complete records per arm,90 total, derived from saved data rather than inherited counts. Retained final input.bin/output.bin raw hashes match the last completed record. No native query or template decoding was performed by this reviewer.",
+    "Full result/worker/runner/observer and log raw files match their exact descriptors. Outputs are complete and below the original128MiB bound; logs are not truncated; no worker-failure or post-receipt-late marker is present.",
+    "The full Source epoch hash joins each worker. Its20 materialized aliases are raw-identical copies of the18 original project Sources plus the current driver and broker. Fresh quantified compiler/model aliases, old support modules, Python/native inputs and all41 Z3 package files match their declared raw descriptors; all20 project import origins are reported at the exact owned copies.",
+    "All six arms share the same raw acquisition/custody capsule, including Source closure and declaration2.1. Proof/quantifier/family-hint header values are checked for cross-receipt consistency only. Their mathematical truth and scientific tier admission are outside this review.",
+    "Additional metadata-only checks recompute every full saved request canonical SHA, join its transport/record digest, and verify all actual compiler requests obey the explicit1e9 cap and512-query ceiling while registry/final requests obey5e9. Requests are data, never evaluated or replayed."
+  ],
+  "codec_or_decompression_calls": 0,
+  "cold": {
+    "bytes": 23496,
+    "path": "/private/tmp/gcts-quantified-cold-root-source-20261018/quantified_cold_v1.py",
+    "sha256": "c3385662302b377da334e50e647c948884175e0abaad3d41af17bee224e6d47b"
+  },
+  "compiler": {
+    "bytes": 11060,
+    "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+    "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+  },
+  "data_review_passed": true,
+  "declaration": {
+    "bytes": 9415,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/experiment-declaration-v2.1.json",
+    "sha256": "bdfea774e836f9d57cb894652b272f4d5a824bb713f193f2fb04460c966a9655"
+  },
+  "driver": {
+    "bytes": 45668,
+    "path": "/private/tmp/gcts-quantified-driver-source-20261018/quantified_receiver_driver_v1.py",
+    "sha256": "d1df19ee83c1f248534b707bf1a3584ccc9c9df5a87470d4b90af5dc4c53071f"
+  },
+  "extension_script": {
+    "bytes": 3153,
+    "path": "/private/tmp/gcts-quantified-six-actual-resource-peer-20261018/extend_resource_audit_v2.py",
+    "sha256": "4d9480bdce421169fc6a0b05fbe56f6f7d2f70491719bf55381c7e87609e74f0"
+  },
+  "family_model": {
+    "bytes": 6472,
+    "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+    "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+  },
+  "findings": [],
+  "independent_Source_and_prospective_reviews": [
+    {
+      "bytes": 17355,
+      "path": "/private/tmp/gcts-quantified-cold-integration-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "201082384c3c379434fc006753b584691d50ad987caa0e8c48d0d534b85f2cbb"
+    },
+    {
+      "bytes": 3745,
+      "path": "/private/tmp/gcts-quantified-independent-peer-20261018/typed-declaration-review-v1.json",
+      "sha256": "e4cba6763b9450ce6f2789303460f2cf55050cd4425aeba2d251f35b76c6ab1d"
+    },
+    {
+      "bytes": 8582,
+      "path": "/private/tmp/gcts-quantified-independent-peer-20261018/typed-adapter-Source-review-v2.json",
+      "sha256": "3d8b4575e3a40c4bfe4828d9247310695859d481da9613c4193e3bf16ef7afe7"
+    },
+    {
+      "bytes": 9129,
+      "path": "/private/tmp/gcts-quantified-independent-peer-20261018/typed-driver-Source-review-v1.json",
+      "sha256": "0842cc7509b5b217dcecb5b91891eb922c5c3e5209b917b757d61fb8f3d1283e"
+    },
+    {
+      "bytes": 11176,
+      "path": "/private/tmp/gcts-quantified-independent-peer-20261018/typed-six-prospective-plan-review-v1.json",
+      "sha256": "86259a784148f98f3230b63722b422c121ee7e213ce2ff45a47d6ee4decc5734"
+    },
+    {
+      "bytes": 8343,
+      "path": "/private/tmp/gcts-semantic-component-peer-20261018/typed-transport-Source-review-v1.json",
+      "sha256": "ab21a54ca4d176db7997c4452f13d7d94d6e15dd275a8c98875731acde577229"
+    },
+    {
+      "bytes": 5726,
+      "path": "/private/tmp/gcts-semantic-cold-runner-peer-20261018/typed-runner-Source-review-v1.json",
+      "sha256": "aba81f6619836289cbadd1b5eecba715a3378ab3f0bcea5bff3074df5e852f52"
+    },
+    {
+      "bytes": 5284,
+      "path": "/private/tmp/gcts-semantic-cold-runner-peer-20261018/typed-observer-Source-review-v1.json",
+      "sha256": "9fd5dfe9729bb2578122c62de20b440ffca3595fec2b15ad9256d46f7d85dc74"
+    }
+  ],
+  "limitations": [
+    "No project/scientific/native/kernel/solver modules were imported or evaluated. No proof search, native requests, mathematical checker, replay, decompression, template decoding, renderer or browser evaluation occurred.",
+    "No UI/GEN essential-ancestry recount, point-tiling verification, family-hint use validation, theorem acceptance, speedup, learned GCTS/RL or statistical claim is made. Root and a distinct scientific saved-data reviewer own those gates.",
+    "Reaping, process-group absence and runtime behavior are retained observations under separately reviewed current Source protocols. Reviewer did not probe live processes or reconstruct an execution trace. Raw current-origin hashes do not constitute a newly activated runtime seal.",
+    "This is a fresh quantified six-arm cohort. Historical propositional failed setup/cohort records remain separate; this packet does not overwrite them or relabel their unrun grants as current outcomes.",
+    "The authorized index fields scientific_calls0 and no-launch prose are historical prospective metadata, not a denial that the six once-only Root actuals subsequently ran.",
+    "Independent evidence review occurs after the original measured windows; it is not folded into a proof-search speed claim."
+  ],
+  "mathematical_acceptance_audited": false,
+  "mismatch_count": 0,
+  "native_runs": 0,
+  "observed_counts": {
+    "Z3_package_files_per_arm": 41,
+    "actual_directories": 6,
+    "components_per_arm": 2,
+    "exclusive_actual_markers": 6,
+    "materialized_project_and_component_sources_per_arm": 20,
+    "native_completed_records_per_arm": [
+      15,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "native_completed_records_total": 90,
+    "original_project_sources_per_arm": 18
+  },
+  "observer": {
+    "bytes": 4270,
+    "path": "/private/tmp/gcts-semantic-cold-root-source-20261018/observe_runner_v1.py",
+    "sha256": "1c83131e314ef7dc5a789c590fdb61d56cc91bdbff447155e37ef5726525edb5"
+  },
+  "prior_metadata_audit_source": {
+    "bytes": 18368,
+    "path": "/private/tmp/gcts-semantic-six-actual-resource-peer-20261018/audit_saved_resources_v2.py",
+    "sha256": "619e69fbea63b6c2e2e2ab4e025722ec69722755761a6f3efe2abd3fc152ecd8"
+  },
+  "prior_review": {
+    "bytes": 30924,
+    "path": "/private/tmp/gcts-quantified-six-actual-resource-peer-20261018/typed-resource-data-review-v1.json",
+    "sha256": "d786ade5053711911a8f79b03d483f9785e3d06d19c7f958cbff75bd4d0fecfc"
+  },
+  "project_imports": 0,
+  "proof_replays": 0,
+  "renderer_evaluations": 0,
+  "resource_data_review_passed": true,
+  "reviewer_identity": "/root/conventional_control_review",
+  "runner": {
+    "bytes": 18066,
+    "path": "/private/tmp/gcts-semantic-once-runner-source-20261018/semantic_once_runner_v1.py",
+    "sha256": "b002cf5ec78bc8d0fe106c612690204f0fa43fd726cd05c9beda278d7f205861"
+  },
+  "runtime_closure": {
+    "bytes": 65248,
+    "path": "/private/tmp/gcts-quantified-cold-root-source-20261018/runtime-closure-v1.json",
+    "sha256": "89387d13e740ed971ff8f5a30431150941e5b5c66495ba2500190bd4f697a296"
+  },
+  "runtime_reexecution": false,
+  "saved_data_only": true,
+  "schema": "quantified-family-six-actual-retained-resource-data-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Saved raw resource, native transport, Source-custody and closure metadata only; no proof or scientific replay.",
+  "solver_or_kernel_evaluations": 0,
+  "source_only": true
+}

@@ -1,0 +1,238 @@
+{
+  "schema": "quantified-family-human-report-review-v1",
+  "reviewer_identity": "/root/conventional_library",
+  "report_author_identity": "/root",
+  "author_overlap": true,
+  "authorship_disclosure": "Reviewer authored current quantified adapters and parent semantic driver/renderer. Root authored report/actuals/admission and the narrow rendererV2 spacing successor. Review is saved-result/report literal reading only, not independent Source or mathematical proof checking of own work. Genuine distinct rendererV1 and rendererV2 peers remain separate.",
+  "status": "FORMULA_ENGLISH_FACTS_PASS_REQUIRED_NAV_AND_METADATA_SUCCESSOR",
+  "report_review_passed": false,
+  "formula_and_English_review_passed": true,
+  "factual_claim_review_passed": true,
+  "publication_ready": false,
+  "release_blockers": [
+    "N1:12brokennavlinks require the planned href-only successor.",
+    "D6:final current quantified status/review/admission/role descriptors and packaging require the planned metadata successor."
+  ],
+  "source_only": true,
+  "saved_data_only": true,
+  "scientific_calls": 0,
+  "renderer_calls": 0,
+  "project_or_solver_imports": 0,
+  "proof_replays": 0,
+  "native_runs": 0,
+  "codec_or_decompression_calls": 0,
+  "scientific_acceptance": false,
+  "resource_acceptance": false,
+  "live_visual_acceptance": false,
+  "report": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer.html",
+    "sha256": "d147b3b8878d0a0d9fc1009837eee0ea55b2c9d5f314a826dbc304767513022e",
+    "bytes": 12298
+  },
+  "sources": {
+    "parallel-work-status.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/parallel-work-status.json",
+      "sha256": "037d4925897f27b08ecca4acb4477d0a79dadcf9593046d890413f16441a3e40",
+      "bytes": 12822
+    },
+    "quantified-transfer-r1-base-proof.html": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r1-base-proof.html",
+      "sha256": "e04290002832447295ddf49b023063167eb01c062b5ca6a84cc85aa224984108",
+      "bytes": 1576521
+    },
+    "quantified-transfer-r1-base-result.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r1-base-result.json",
+      "sha256": "0b19b38d9abba33bf75ec87237b80f52e6eede6e346418b2ca02b03e18e840b5",
+      "bytes": 34002269
+    },
+    "quantified-transfer-r1-fixed-proof.html": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r1-fixed-proof.html",
+      "sha256": "0ea8996eac5b91e99a333aca6501f99c2c51b6e9567fc363d5b7f18f1bec23fc",
+      "bytes": 1629654
+    },
+    "quantified-transfer-r1-fixed-result.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r1-fixed-result.json",
+      "sha256": "888ac7952baa5bf8308797e8ad76cd00cfe266011fa627ae42634399e35ea929",
+      "bytes": 25063456
+    },
+    "quantified-transfer-r1-z3-proof.html": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r1-z3-proof.html",
+      "sha256": "4e3cdd1657f7597cc2e957e07de4aa102d879c844afac783f4ac4445eb1a01d9",
+      "bytes": 1449640
+    },
+    "quantified-transfer-r1-z3-result.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r1-z3-result.json",
+      "sha256": "411e832300509b8caa0b8cb118344ec25e237be341df3aaf65da413035377753",
+      "bytes": 45294400
+    },
+    "quantified-transfer-r2-base-proof.html": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r2-base-proof.html",
+      "sha256": "7363feaeedcaef1c6285f7c7e0585ec0e819b72e6116d027d8891052c34691ef",
+      "bytes": 1576521
+    },
+    "quantified-transfer-r2-base-result.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r2-base-result.json",
+      "sha256": "57801770c8049fd07943bad35d0785f76040a19f8dab46ff43d42326291043df",
+      "bytes": 34002267
+    },
+    "quantified-transfer-r2-fixed-proof.html": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r2-fixed-proof.html",
+      "sha256": "09632b0c8b0c819235f9da8c167a975401630df8fe14c1b16797b2100ada9c2c",
+      "bytes": 1629654
+    },
+    "quantified-transfer-r2-fixed-result.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r2-fixed-result.json",
+      "sha256": "3d428fda608b03b7c1ddf86a6d78bd69bea4e962603a9568382b5d9bf11f0075",
+      "bytes": 25063476
+    },
+    "quantified-transfer-r2-z3-proof.html": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r2-z3-proof.html",
+      "sha256": "c18550caffddf59008a8d7eebeb7e5b7a4aa47a6d23de9c050fa77b60f0a3b71",
+      "bytes": 1449640
+    },
+    "quantified-transfer-r2-z3-result.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-r2-z3-result.json",
+      "sha256": "07051181121d35c5ec519f07b657a8d125355ec1da2f6e1d66def84988109b8a",
+      "bytes": 45294374
+    },
+    "quantified-transfer-summary.json": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer-summary.json",
+      "sha256": "9c4d90695973ab207a07b26c88591b37aca43d91c0ae79fc14f38b5477ba242d",
+      "bytes": 177495
+    },
+    "quantified-transfer.html": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/quantified-transfer.html",
+      "sha256": "d147b3b8878d0a0d9fc1009837eee0ea55b2c9d5f314a826dbc304767513022e",
+      "bytes": 12298
+    },
+    "reader.html": {
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v1/reader.html",
+      "sha256": "484a71a248964cd416621670375badb848a8abeeecc53d421fc10fb440091e00",
+      "bytes": 78731
+    }
+  },
+  "input_snapshots": {
+    "path": "/private/tmp/gcts-quantified-human-report-peer-20261018/input-snapshot-map-v1.json",
+    "sha256": "55715ea21bdee943fe9ea500e2666d81327f132d440cccc9090336934009de1f",
+    "bytes": 10457
+  },
+  "Root_admission": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "49c74134d88e5cf35cbde2a73a7286071fef9cf12643de07b9024acfe588345e",
+    "bytes": 175793
+  },
+  "rendering_record": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/ROOT-rendering-record-v1.json",
+    "sha256": "9939b321898be26e06a9e5532a934bf2bb06b0d613a316eae2bdb20d169af50f",
+    "bytes": 5555
+  },
+  "renderer": {
+    "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/semantic_proof_renderer_v2.py",
+    "sha256": "bd929c531205dfd9fcfd6732c9de554d71e2abdd492a80aac1dd094965b77e77",
+    "bytes": 23778
+  },
+  "renderer_Source_review": {
+    "path": "/private/tmp/gcts-semantic-proof-renderer-peer-20261018/typed-Source-delta-review-v2.json",
+    "sha256": "6f74d114ff23ae33caa0481550727ccc6441c97ff0aac62410b12f59379b975f",
+    "bytes": 4311
+  },
+  "renderer_parent_Source_review": {
+    "path": "/private/tmp/gcts-semantic-proof-renderer-peer-20261018/typed-Source-review-v1.json",
+    "sha256": "638cd97581cad275611798327dbe55696da8f2c79146a22ee5816d11c09f4698",
+    "bytes": 4602
+  },
+  "independent_current_quantified_data_review": "Separately assigned to receiver_driver_review; not available to this freeze and not replaced by this report audit. Final successor must bind exact peer when ready.",
+  "audit": {
+    "path": "/private/tmp/gcts-quantified-human-report-peer-20261018/saved-display-audit-v1.json",
+    "sha256": "d6fa76f014aaf7cd882b00b760a8e78020871d069f7ede10aeda84cfbd7c2d40",
+    "bytes": 256017
+  },
+  "audit_Source": {
+    "path": "/private/tmp/gcts-quantified-human-report-peer-20261018/saved_display_audit_v1.py",
+    "sha256": "0f6bda02056f81eb15bcbe6555356a696318cf8085942344bc867f43eed4568e",
+    "bytes": 16218
+  },
+  "initial_reviewer_check_diagnostic": {
+    "path": "/private/tmp/gcts-quantified-human-report-peer-20261018/initial-reviewer-claim-check-v1.json",
+    "sha256": "ca31699c3467c36e745b32cda1e3fbe3f81fbc8c37b17ba623445441175858ae",
+    "bytes": 256349
+  },
+  "initial_check_resolution": "The initial reviewer predicate incorrectly required every changed hint link to be the report-described row6 instance. It was narrowed to the actual report claim that the qualifying changed row6 instance exists; literal data supports it. No report or scientific data changed.",
+  "static_check_count": 2027,
+  "failed_checks": [
+    {
+      "check": "r1-base internal href targets",
+      "passed": false,
+      "detail": [
+        "#outcomes",
+        "#evidence"
+      ]
+    },
+    {
+      "check": "r1-fixed internal href targets",
+      "passed": false,
+      "detail": [
+        "#outcomes",
+        "#evidence"
+      ]
+    },
+    {
+      "check": "r1-z3 internal href targets",
+      "passed": false,
+      "detail": [
+        "#outcomes",
+        "#evidence"
+      ]
+    },
+    {
+      "check": "r2-z3 internal href targets",
+      "passed": false,
+      "detail": [
+        "#outcomes",
+        "#evidence"
+      ]
+    },
+    {
+      "check": "r2-fixed internal href targets",
+      "passed": false,
+      "detail": [
+        "#outcomes",
+        "#evidence"
+      ]
+    },
+    {
+      "check": "r2-base internal href targets",
+      "passed": false,
+      "detail": [
+        "#outcomes",
+        "#evidence"
+      ]
+    }
+  ],
+  "display_or_numeric_mismatch_count": 0,
+  "navigation_defective_pages": 6,
+  "display_counts": {
+    "readers": 6,
+    "root_formula_rows": 72,
+    "registered_body_formula_rows": 102,
+    "literal_command_and_formula_rows": 174,
+    "English_ordered_reference_links": 126,
+    "UI_licence_explanations": 12,
+    "GEN_source_explanations": 6,
+    "ordered_input_formula_pairs": 40,
+    "selected_complete_tile_packets": 360,
+    "displayed_point_values": 32962
+  },
+  "findings": {
+    "path": "/private/tmp/gcts-quantified-human-report-peer-20261018/findings-v1.json",
+    "sha256": "a09297fa7824766bce96ac5f41d81c18257f14b4373a5707c88ca89a672798b6",
+    "bytes": 5378
+  },
+  "limitations": [
+    "LaTeX AST display formatter intentionally covers only the predicate/implication/universal and variable grammar actually present; this is no general FOL rendering theorem.",
+    "No proof, search, substitution, native kernel, solver, point-legality checker or renderer was executed. Static full point-value display comparisons are not fresh validity admission.",
+    "This review binds immutable16assetV1 bytes. Planned V2 gzip downloads, links, clarifications and metadata changes need an exact saved-data successor review.",
+    "Browser/MathJax rendering and live deployment verification remain Root duties.",
+    "One elementary quantified result does not establish dedicated FOL-prover competitiveness, all-FOL completeness, newly mined quantified-family validity, trained RL, primitive Wang execution, Hilbert/PA coverage or plane tiling."
+  ]
+}

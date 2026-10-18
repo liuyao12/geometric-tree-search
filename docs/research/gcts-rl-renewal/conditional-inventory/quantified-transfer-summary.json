@@ -1,0 +1,7913 @@
+{
+  "Root_admission": {
+    "bytes": 175793,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "49c74134d88e5cf35cbde2a73a7286071fef9cf12643de07b9024acfe588345e"
+  },
+  "actuals": [
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_hint_order": false,
+      "cold_worker_seconds": 46.40888375,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "8fac533988248e10fb04cb3899ddabe7b8c11f15a8ea3d365ec3e770048cd768",
+      "essential_family_calls": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0
+          ],
+          "essential_input_indices": [
+            0,
+            1,
+            2
+          ],
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "inputs": [
+            8,
+            9,
+            6
+          ],
+          "level": 1,
+          "name": "lemmafd26dee3337fc45e010cc9114e3d4951b76850874fb0a5edbc9c8f69d2379599",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemmafd26dee3337fc45e010cc9114e3d4951b76850874fb0a5edbc9c8f69d2379599",
+              "row": 10
+            }
+          ],
+          "primitive_use": 2,
+          "root_row": 10
+        }
+      ],
+      "essential_quantifier_occurrences": [
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "P",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "Q",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 7
+          },
+          "root_primitive": true,
+          "row": 7,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 8
+          },
+          "root_primitive": true,
+          "row": 8,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 10,
+            "variable": "x"
+          },
+          "references": {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          },
+          "root_primitive": true,
+          "row": 11,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "zero_input_implication_licence": false
+        }
+      ],
+      "essential_root": {
+        "all_recursive_primitive_commands": 13,
+        "all_recursive_primitive_rule_counts": {
+          "axiom": 7,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 3
+        },
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          10
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 6
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 7
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 8
+          },
+          {
+            "all_declared_references": [
+              0,
+              7
+            ],
+            "references": [
+              0,
+              7
+            ],
+            "row": 9
+          },
+          {
+            "all_declared_references": [
+              8,
+              9,
+              6
+            ],
+            "references": [
+              8,
+              9,
+              6
+            ],
+            "row": 10
+          },
+          {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          }
+        ],
+        "essential_recursive_primitive_commands": 8,
+        "essential_recursive_primitive_rule_counts": {
+          "axiom": 2,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 3
+        },
+        "essential_rows": [
+          0,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "fresh_native_proof": true,
+      "inventory_semantics_sha256": "f24d803e6923e9798e16a2e84b8bf6e53899242376c70f516069390de13469dc",
+      "invocation_id": "quantified-family-r1-base-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": {
+        "attempts": 853,
+        "backtracks": 793,
+        "branch": 115,
+        "dead": 226,
+        "forced": 512,
+        "nodes": 854
+      },
+      "mode": "base",
+      "model_arity": 3,
+      "model_placements": 7441,
+      "model_sha256": "d5a6b3a14b842a6941ce70ad3d1bb98081fe018ddd27f1156687434de71f8d91",
+      "native_queries": 15,
+      "observed_conservative_peak_MiB": 935.5,
+      "outer_terminal_seconds": 47.696512417,
+      "proof": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            9,
+            6
+          ],
+          "name": "lemmafd26dee3337fc45e010cc9114e3d4951b76850874fb0a5edbc9c8f69d2379599",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 10,
+          "variable": "x"
+        }
+      ],
+      "qualifying_hint_links": [],
+      "quantified_reasoning_success": true,
+      "register_status": "native_accepted",
+      "repetition": 1,
+      "result": {
+        "bytes": 34002269,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-base-ROOT-20261018-v1/result.json",
+        "sha256": "0b19b38d9abba33bf75ec87237b80f52e6eede6e346418b2ca02b03e18e840b5"
+      },
+      "runner_receipt": {
+        "bytes": 52922,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-base-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "1984d56e3be6a362f0cbeab7ede947a2a2246ad4bfe5197fd12d919717f4a8ba"
+      },
+      "search_seconds": 8.876995709026232,
+      "status": "native_proof_discovered",
+      "terminal": {
+        "bytes": 1552,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "f46edc6665cb9f03a0584cbb3dd1795e1081d66e6ff1421e2efe07d452e6a2f5"
+      },
+      "whole_region": {
+        "assigned_mark_points": 2569,
+        "completed_ns": 670521469034625,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "a4270f52e5f9419039b68d70723a72ced1fc48e72c012dbc393105457b1aafad"
+      },
+      "worker_receipt": {
+        "bytes": 43135,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-base-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "4258cfc2d91a5b2c92f3324cf02c3466a27befc757a3caa59b7e62e9f1023f8a"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_hint_order": true,
+      "cold_worker_seconds": 30.181531208,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "8fac533988248e10fb04cb3899ddabe7b8c11f15a8ea3d365ec3e770048cd768",
+      "essential_family_calls": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            2,
+            1
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+              "row": 6
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 6
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0
+          ],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            5,
+            0
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+              "row": 8
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 8
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            6,
+            8
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+              "row": 10
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 10
+        }
+      ],
+      "essential_quantifier_occurrences": [
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "P",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "Q",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          "root_primitive": true,
+          "row": 2,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 5
+          },
+          "root_primitive": true,
+          "row": 5,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 10,
+            "variable": "x"
+          },
+          "references": {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          },
+          "root_primitive": true,
+          "row": 11,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "zero_input_implication_licence": false
+        }
+      ],
+      "essential_root": {
+        "all_recursive_primitive_commands": 13,
+        "all_recursive_primitive_rule_counts": {
+          "axiom": 4,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 6
+        },
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          6,
+          8,
+          10
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 5
+          },
+          {
+            "all_declared_references": [
+              2,
+              1
+            ],
+            "references": [
+              2,
+              1
+            ],
+            "row": 6
+          },
+          {
+            "all_declared_references": [
+              5,
+              0
+            ],
+            "references": [
+              5,
+              0
+            ],
+            "row": 8
+          },
+          {
+            "all_declared_references": [
+              6,
+              8
+            ],
+            "references": [
+              6,
+              8
+            ],
+            "row": 10
+          },
+          {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          }
+        ],
+        "essential_recursive_primitive_commands": 8,
+        "essential_recursive_primitive_rule_counts": {
+          "axiom": 2,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 3
+        },
+        "essential_rows": [
+          0,
+          1,
+          2,
+          5,
+          6,
+          8,
+          10,
+          11
+        ]
+      },
+      "fresh_native_proof": true,
+      "inventory_semantics_sha256": "f24d803e6923e9798e16a2e84b8bf6e53899242376c70f516069390de13469dc",
+      "invocation_id": "quantified-family-r1-fixed-ROOT-20261018-v1",
+      "matched_hint_consumption": true,
+      "metrics": {
+        "anchors_omitted": 0,
+        "attempts": 60,
+        "branch": 16,
+        "forced": 44,
+        "hint_completed": 7,
+        "hint_eligible": 22,
+        "hint_invalid": 1,
+        "hint_waiting": 17,
+        "hints_started": 8,
+        "items": 117,
+        "nodes": 61,
+        "proposal_seconds": 0.25978537288028747,
+        "row_pool": 58,
+        "row_quota_stops": 7,
+        "sample_pair_tests": 209,
+        "sample_validation_checks": 59,
+        "validation_checks": 540
+      },
+      "mode": "fixed",
+      "model_arity": 3,
+      "model_placements": 7441,
+      "model_sha256": "d5a6b3a14b842a6941ce70ad3d1bb98081fe018ddd27f1156687434de71f8d91",
+      "native_queries": 15,
+      "observed_conservative_peak_MiB": 755.34375,
+      "outer_terminal_seconds": 31.099844208,
+      "proof": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "inputs": [
+            2,
+            1
+          ],
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            5,
+            6,
+            0
+          ],
+          "name": "lemmafd26dee3337fc45e010cc9114e3d4951b76850874fb0a5edbc9c8f69d2379599",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            5,
+            0
+          ],
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            5,
+            0
+          ],
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            6,
+            8
+          ],
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 10,
+          "variable": "x"
+        }
+      ],
+      "qualifying_hint_links": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": true,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            2,
+            1,
+            3
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              2,
+              0,
+              0
+            ],
+            [
+              6,
+              2,
+              1,
+              3
+            ],
+            [
+              6,
+              2,
+              1,
+              6
+            ],
+            [
+              6,
+              2,
+              2,
+              6
+            ],
+            [
+              6,
+              2,
+              3,
+              6
+            ],
+            [
+              6,
+              2,
+              4,
+              6
+            ],
+            [
+              6,
+              2,
+              5,
+              6
+            ]
+          ],
+          "path_depth": 33,
+          "preferred_order": [
+            [
+              6,
+              2,
+              1,
+              3
+            ],
+            [
+              6,
+              2,
+              0,
+              0
+            ],
+            [
+              6,
+              2,
+              1,
+              6
+            ],
+            [
+              6,
+              2,
+              2,
+              6
+            ],
+            [
+              6,
+              2,
+              3,
+              6
+            ],
+            [
+              6,
+              2,
+              4,
+              6
+            ],
+            [
+              6,
+              2,
+              5,
+              6
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            1,
+            49,
+            0
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              1,
+              49,
+              0
+            ]
+          ],
+          "path_depth": 34,
+          "preferred_order": [
+            [
+              6,
+              1,
+              49,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            0,
+            49,
+            0
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              0,
+              49,
+              0
+            ]
+          ],
+          "path_depth": 35,
+          "preferred_order": [
+            [
+              6,
+              0,
+              49,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            4,
+            1,
+            0
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              4,
+              1,
+              0
+            ]
+          ],
+          "path_depth": 36,
+          "preferred_order": [
+            [
+              6,
+              4,
+              1,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            3,
+            1,
+            2
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              3,
+              1,
+              2
+            ],
+            [
+              6,
+              3,
+              1,
+              4
+            ],
+            [
+              6,
+              3,
+              1,
+              5
+            ],
+            [
+              6,
+              3,
+              1,
+              6
+            ]
+          ],
+          "path_depth": 37,
+          "preferred_order": [
+            [
+              6,
+              3,
+              1,
+              2
+            ],
+            [
+              6,
+              3,
+              1,
+              4
+            ],
+            [
+              6,
+              3,
+              1,
+              5
+            ],
+            [
+              6,
+              3,
+              1,
+              6
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": true,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            2,
+            2,
+            6
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              2,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              1,
+              3
+            ],
+            [
+              8,
+              2,
+              2,
+              6
+            ],
+            [
+              8,
+              2,
+              4,
+              7
+            ],
+            [
+              8,
+              2,
+              5,
+              6
+            ]
+          ],
+          "path_depth": 45,
+          "preferred_order": [
+            [
+              8,
+              2,
+              2,
+              6
+            ],
+            [
+              8,
+              2,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              1,
+              3
+            ],
+            [
+              8,
+              2,
+              4,
+              7
+            ],
+            [
+              8,
+              2,
+              5,
+              6
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            1,
+            55,
+            0
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              1,
+              55,
+              0
+            ]
+          ],
+          "path_depth": 46,
+          "preferred_order": [
+            [
+              8,
+              1,
+              55,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            0,
+            55,
+            0
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              0,
+              55,
+              0
+            ]
+          ],
+          "path_depth": 47,
+          "preferred_order": [
+            [
+              8,
+              0,
+              55,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            3,
+            2,
+            1
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              3,
+              2,
+              1
+            ]
+          ],
+          "path_depth": 48,
+          "preferred_order": [
+            [
+              8,
+              3,
+              2,
+              1
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            4,
+            2,
+            0
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              4,
+              2,
+              0
+            ]
+          ],
+          "path_depth": 49,
+          "preferred_order": [
+            [
+              8,
+              4,
+              2,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            1,
+            58,
+            0
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              1,
+              58,
+              0
+            ],
+            [
+              10,
+              1,
+              61,
+              0
+            ],
+            [
+              10,
+              1,
+              62,
+              0
+            ],
+            [
+              10,
+              1,
+              1042,
+              6
+            ],
+            [
+              10,
+              1,
+              1052,
+              6
+            ]
+          ],
+          "path_depth": 55,
+          "preferred_order": [
+            [
+              10,
+              1,
+              58,
+              0
+            ],
+            [
+              10,
+              1,
+              61,
+              0
+            ],
+            [
+              10,
+              1,
+              62,
+              0
+            ],
+            [
+              10,
+              1,
+              1042,
+              6
+            ],
+            [
+              10,
+              1,
+              1052,
+              6
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            0,
+            58,
+            0
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              0,
+              58,
+              0
+            ]
+          ],
+          "path_depth": 56,
+          "preferred_order": [
+            [
+              10,
+              0,
+              58,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            2,
+            4,
+            7
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              2,
+              4,
+              7
+            ]
+          ],
+          "path_depth": 57,
+          "preferred_order": [
+            [
+              10,
+              2,
+              4,
+              7
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            4,
+            4,
+            0
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              4,
+              4,
+              0
+            ]
+          ],
+          "path_depth": 58,
+          "preferred_order": [
+            [
+              10,
+              4,
+              4,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            3,
+            4,
+            9
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              3,
+              4,
+              9
+            ],
+            [
+              10,
+              3,
+              4,
+              10
+            ]
+          ],
+          "path_depth": 59,
+          "preferred_order": [
+            [
+              10,
+              3,
+              4,
+              9
+            ],
+            [
+              10,
+              3,
+              4,
+              10
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "branch"
+        }
+      ],
+      "quantified_reasoning_success": true,
+      "register_status": "native_accepted",
+      "repetition": 1,
+      "result": {
+        "bytes": 25063456,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "888ac7952baa5bf8308797e8ad76cd00cfe266011fa627ae42634399e35ea929"
+      },
+      "runner_receipt": {
+        "bytes": 52921,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-fixed-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "154a3ae169dd9812b51d79cc485ce75cbab844b6ea8dc9bb6819c3c204c61812"
+      },
+      "search_seconds": 0.7548924590228125,
+      "status": "native_proof_discovered",
+      "terminal": {
+        "bytes": 1555,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "af02e33980b906a92c581983e36db27846640bb5f06fcb7038210f745e72c711"
+      },
+      "whole_region": {
+        "assigned_mark_points": 2482,
+        "completed_ns": 670609597763375,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "93ef1fcd99d68d1d909c6418e02e49df5fa72995e82b867d033b5da367a80d59"
+      },
+      "worker_receipt": {
+        "bytes": 43136,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-fixed-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "809b721f2c1272f3387a99f7d43530c606799e093dd1e199e4da40b1f022bf41"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_hint_order": false,
+      "cold_worker_seconds": 38.147491166,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "8fac533988248e10fb04cb3899ddabe7b8c11f15a8ea3d365ec3e770048cd768",
+      "essential_family_calls": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0
+          ],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            4,
+            1
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+              "row": 6
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 6
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            8,
+            6
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+              "row": 9
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 9
+        }
+      ],
+      "essential_quantifier_occurrences": [
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          "root_primitive": true,
+          "row": 4,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "P",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "Q",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 7
+          },
+          "root_primitive": true,
+          "row": 7,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 9,
+            "variable": "x"
+          },
+          "references": {
+            "all_declared_references": [
+              9
+            ],
+            "references": [
+              9
+            ],
+            "row": 11
+          },
+          "root_primitive": true,
+          "row": 11,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "zero_input_implication_licence": false
+        }
+      ],
+      "essential_root": {
+        "all_recursive_primitive_commands": 12,
+        "all_recursive_primitive_rule_counts": {
+          "axiom": 5,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 4
+        },
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          6,
+          9
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          {
+            "all_declared_references": [
+              4,
+              1
+            ],
+            "references": [
+              4,
+              1
+            ],
+            "row": 6
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 7
+          },
+          {
+            "all_declared_references": [
+              0,
+              7
+            ],
+            "references": [
+              0,
+              7
+            ],
+            "row": 8
+          },
+          {
+            "all_declared_references": [
+              8,
+              6
+            ],
+            "references": [
+              8,
+              6
+            ],
+            "row": 9
+          },
+          {
+            "all_declared_references": [
+              9
+            ],
+            "references": [
+              9
+            ],
+            "row": 11
+          }
+        ],
+        "essential_recursive_primitive_commands": 8,
+        "essential_recursive_primitive_rule_counts": {
+          "axiom": 2,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 3
+        },
+        "essential_rows": [
+          0,
+          1,
+          4,
+          6,
+          7,
+          8,
+          9,
+          11
+        ]
+      },
+      "fresh_native_proof": true,
+      "inventory_semantics_sha256": "f24d803e6923e9798e16a2e84b8bf6e53899242376c70f516069390de13469dc",
+      "invocation_id": "quantified-family-r1-z3-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": null,
+      "mode": "z3",
+      "model_arity": 3,
+      "model_placements": 7441,
+      "model_sha256": "d5a6b3a14b842a6941ce70ad3d1bb98081fe018ddd27f1156687434de71f8d91",
+      "native_queries": 15,
+      "observed_conservative_peak_MiB": 739.921875,
+      "outer_terminal_seconds": 39.048820416,
+      "proof": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            4,
+            1
+          ],
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            6
+          ],
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            6
+          ],
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 9,
+          "variable": "x"
+        }
+      ],
+      "qualifying_hint_links": [],
+      "quantified_reasoning_success": true,
+      "register_status": "native_accepted",
+      "repetition": 1,
+      "result": {
+        "bytes": 45294400,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-z3-ROOT-20261018-v1/result.json",
+        "sha256": "411e832300509b8caa0b8cb118344ec25e237be341df3aaf65da413035377753"
+      },
+      "runner_receipt": {
+        "bytes": 52851,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-z3-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "2ef08d6a11458d3ee2fac2a8a4225d9e7fc161b51faf62d48463078989e6372d"
+      },
+      "search_seconds": 11.205354040954262,
+      "status": "native_proof_discovered",
+      "terminal": {
+        "bytes": 1542,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r1-z3-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "d3b8f5dd3b2b818c2ef14b64a43aac3c9ead6131685bf09949d57abb02bf4b8a"
+      },
+      "whole_region": {
+        "assigned_mark_points": 2254,
+        "completed_ns": 670679130928416,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "51fbc594a3572501d8f15de5c3a34ddb921e16deec56a7f8174790fbbf12a58a"
+      },
+      "worker_receipt": {
+        "bytes": 43080,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r1-z3-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "be02d637413957ec1d4ed9a4e9b5206cb9f71e59a41e32d967889820b8de8d01"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_hint_order": false,
+      "cold_worker_seconds": 39.147886625,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "8fac533988248e10fb04cb3899ddabe7b8c11f15a8ea3d365ec3e770048cd768",
+      "essential_family_calls": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0
+          ],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            4,
+            1
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+              "row": 6
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 6
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            8,
+            6
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+              "row": 9
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 9
+        }
+      ],
+      "essential_quantifier_occurrences": [
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          "root_primitive": true,
+          "row": 4,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "P",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "Q",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 7
+          },
+          "root_primitive": true,
+          "row": 7,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 9,
+            "variable": "x"
+          },
+          "references": {
+            "all_declared_references": [
+              9
+            ],
+            "references": [
+              9
+            ],
+            "row": 11
+          },
+          "root_primitive": true,
+          "row": 11,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "zero_input_implication_licence": false
+        }
+      ],
+      "essential_root": {
+        "all_recursive_primitive_commands": 12,
+        "all_recursive_primitive_rule_counts": {
+          "axiom": 5,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 4
+        },
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          6,
+          9
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          {
+            "all_declared_references": [
+              4,
+              1
+            ],
+            "references": [
+              4,
+              1
+            ],
+            "row": 6
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 7
+          },
+          {
+            "all_declared_references": [
+              0,
+              7
+            ],
+            "references": [
+              0,
+              7
+            ],
+            "row": 8
+          },
+          {
+            "all_declared_references": [
+              8,
+              6
+            ],
+            "references": [
+              8,
+              6
+            ],
+            "row": 9
+          },
+          {
+            "all_declared_references": [
+              9
+            ],
+            "references": [
+              9
+            ],
+            "row": 11
+          }
+        ],
+        "essential_recursive_primitive_commands": 8,
+        "essential_recursive_primitive_rule_counts": {
+          "axiom": 2,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 3
+        },
+        "essential_rows": [
+          0,
+          1,
+          4,
+          6,
+          7,
+          8,
+          9,
+          11
+        ]
+      },
+      "fresh_native_proof": true,
+      "inventory_semantics_sha256": "f24d803e6923e9798e16a2e84b8bf6e53899242376c70f516069390de13469dc",
+      "invocation_id": "quantified-family-r2-z3-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": null,
+      "mode": "z3",
+      "model_arity": 3,
+      "model_placements": 7441,
+      "model_sha256": "d5a6b3a14b842a6941ce70ad3d1bb98081fe018ddd27f1156687434de71f8d91",
+      "native_queries": 15,
+      "observed_conservative_peak_MiB": 667.25,
+      "outer_terminal_seconds": 40.047538125,
+      "proof": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            4,
+            1
+          ],
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            6
+          ],
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            6
+          ],
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 9,
+          "variable": "x"
+        }
+      ],
+      "qualifying_hint_links": [],
+      "quantified_reasoning_success": true,
+      "register_status": "native_accepted",
+      "repetition": 2,
+      "result": {
+        "bytes": 45294374,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-z3-ROOT-20261018-v1/result.json",
+        "sha256": "07051181121d35c5ec519f07b657a8d125355ec1da2f6e1d66def84988109b8a"
+      },
+      "runner_receipt": {
+        "bytes": 52807,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-z3-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "f0c4d1b3a57e7574764d9103a343e0844789331180510ab9c7e76e9c58fd933f"
+      },
+      "search_seconds": 11.519358499906957,
+      "status": "native_proof_discovered",
+      "terminal": {
+        "bytes": 1546,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-z3-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "e8f90978f7ab9d20fdda4ad7dac2b0215b3283935ecf3fb2b177507a4953d9e2"
+      },
+      "whole_region": {
+        "assigned_mark_points": 2254,
+        "completed_ns": 670754859503916,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "51fbc594a3572501d8f15de5c3a34ddb921e16deec56a7f8174790fbbf12a58a"
+      },
+      "worker_receipt": {
+        "bytes": 43050,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-z3-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "1a7905b460982355a830807e8d8d35cefb6a798a887244d52c8d3209860b653f"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_hint_order": true,
+      "cold_worker_seconds": 30.740451875,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "8fac533988248e10fb04cb3899ddabe7b8c11f15a8ea3d365ec3e770048cd768",
+      "essential_family_calls": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            2,
+            1
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+              "row": 6
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 6
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0
+          ],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            5,
+            0
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+              "row": 8
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 8
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            6,
+            8
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+              "row": 10
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 10
+        }
+      ],
+      "essential_quantifier_occurrences": [
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "P",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "Q",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          "root_primitive": true,
+          "row": 2,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 5
+          },
+          "root_primitive": true,
+          "row": 5,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 10,
+            "variable": "x"
+          },
+          "references": {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          },
+          "root_primitive": true,
+          "row": 11,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "zero_input_implication_licence": false
+        }
+      ],
+      "essential_root": {
+        "all_recursive_primitive_commands": 13,
+        "all_recursive_primitive_rule_counts": {
+          "axiom": 4,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 6
+        },
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          6,
+          8,
+          10
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 5
+          },
+          {
+            "all_declared_references": [
+              2,
+              1
+            ],
+            "references": [
+              2,
+              1
+            ],
+            "row": 6
+          },
+          {
+            "all_declared_references": [
+              5,
+              0
+            ],
+            "references": [
+              5,
+              0
+            ],
+            "row": 8
+          },
+          {
+            "all_declared_references": [
+              6,
+              8
+            ],
+            "references": [
+              6,
+              8
+            ],
+            "row": 10
+          },
+          {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          }
+        ],
+        "essential_recursive_primitive_commands": 8,
+        "essential_recursive_primitive_rule_counts": {
+          "axiom": 2,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 3
+        },
+        "essential_rows": [
+          0,
+          1,
+          2,
+          5,
+          6,
+          8,
+          10,
+          11
+        ]
+      },
+      "fresh_native_proof": true,
+      "inventory_semantics_sha256": "f24d803e6923e9798e16a2e84b8bf6e53899242376c70f516069390de13469dc",
+      "invocation_id": "quantified-family-r2-fixed-ROOT-20261018-v1",
+      "matched_hint_consumption": true,
+      "metrics": {
+        "anchors_omitted": 0,
+        "attempts": 60,
+        "branch": 16,
+        "forced": 44,
+        "hint_completed": 7,
+        "hint_eligible": 22,
+        "hint_invalid": 1,
+        "hint_waiting": 17,
+        "hints_started": 8,
+        "items": 117,
+        "nodes": 61,
+        "proposal_seconds": 0.2878140409011394,
+        "row_pool": 58,
+        "row_quota_stops": 7,
+        "sample_pair_tests": 209,
+        "sample_validation_checks": 59,
+        "validation_checks": 540
+      },
+      "mode": "fixed",
+      "model_arity": 3,
+      "model_placements": 7441,
+      "model_sha256": "d5a6b3a14b842a6941ce70ad3d1bb98081fe018ddd27f1156687434de71f8d91",
+      "native_queries": 15,
+      "observed_conservative_peak_MiB": 795.296875,
+      "outer_terminal_seconds": 31.612118709,
+      "proof": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "inputs": [
+            2,
+            1
+          ],
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            5,
+            6,
+            0
+          ],
+          "name": "lemmafd26dee3337fc45e010cc9114e3d4951b76850874fb0a5edbc9c8f69d2379599",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            5,
+            0
+          ],
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            5,
+            0
+          ],
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            6,
+            8
+          ],
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 10,
+          "variable": "x"
+        }
+      ],
+      "qualifying_hint_links": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": true,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            2,
+            1,
+            3
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              2,
+              0,
+              0
+            ],
+            [
+              6,
+              2,
+              1,
+              3
+            ],
+            [
+              6,
+              2,
+              1,
+              6
+            ],
+            [
+              6,
+              2,
+              2,
+              6
+            ],
+            [
+              6,
+              2,
+              3,
+              6
+            ],
+            [
+              6,
+              2,
+              4,
+              6
+            ],
+            [
+              6,
+              2,
+              5,
+              6
+            ]
+          ],
+          "path_depth": 33,
+          "preferred_order": [
+            [
+              6,
+              2,
+              1,
+              3
+            ],
+            [
+              6,
+              2,
+              0,
+              0
+            ],
+            [
+              6,
+              2,
+              1,
+              6
+            ],
+            [
+              6,
+              2,
+              2,
+              6
+            ],
+            [
+              6,
+              2,
+              3,
+              6
+            ],
+            [
+              6,
+              2,
+              4,
+              6
+            ],
+            [
+              6,
+              2,
+              5,
+              6
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            1,
+            49,
+            0
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              1,
+              49,
+              0
+            ]
+          ],
+          "path_depth": 34,
+          "preferred_order": [
+            [
+              6,
+              1,
+              49,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            0,
+            49,
+            0
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              0,
+              49,
+              0
+            ]
+          ],
+          "path_depth": 35,
+          "preferred_order": [
+            [
+              6,
+              0,
+              49,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            4,
+            1,
+            0
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              4,
+              1,
+              0
+            ]
+          ],
+          "path_depth": 36,
+          "preferred_order": [
+            [
+              6,
+              4,
+              1,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 3,
+          "hint_kind": "lemma",
+          "key": [
+            6,
+            3,
+            1,
+            2
+          ],
+          "level": 1,
+          "name": "lemma8a51ae246337a3490725950ecb462c8aa60ac87d3b635b8334e8823edbbb0fbf",
+          "nonidentity": true,
+          "original_order": [
+            [
+              6,
+              3,
+              1,
+              2
+            ],
+            [
+              6,
+              3,
+              1,
+              4
+            ],
+            [
+              6,
+              3,
+              1,
+              5
+            ],
+            [
+              6,
+              3,
+              1,
+              6
+            ]
+          ],
+          "path_depth": 37,
+          "preferred_order": [
+            [
+              6,
+              3,
+              1,
+              2
+            ],
+            [
+              6,
+              3,
+              1,
+              4
+            ],
+            [
+              6,
+              3,
+              1,
+              5
+            ],
+            [
+              6,
+              3,
+              1,
+              6
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 6,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": true,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            2,
+            2,
+            6
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              2,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              1,
+              3
+            ],
+            [
+              8,
+              2,
+              2,
+              6
+            ],
+            [
+              8,
+              2,
+              4,
+              7
+            ],
+            [
+              8,
+              2,
+              5,
+              6
+            ]
+          ],
+          "path_depth": 45,
+          "preferred_order": [
+            [
+              8,
+              2,
+              2,
+              6
+            ],
+            [
+              8,
+              2,
+              0,
+              0
+            ],
+            [
+              8,
+              2,
+              1,
+              3
+            ],
+            [
+              8,
+              2,
+              4,
+              7
+            ],
+            [
+              8,
+              2,
+              5,
+              6
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            1,
+            55,
+            0
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              1,
+              55,
+              0
+            ]
+          ],
+          "path_depth": 46,
+          "preferred_order": [
+            [
+              8,
+              1,
+              55,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            0,
+            55,
+            0
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              0,
+              55,
+              0
+            ]
+          ],
+          "path_depth": 47,
+          "preferred_order": [
+            [
+              8,
+              0,
+              55,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            3,
+            2,
+            1
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              3,
+              2,
+              1
+            ]
+          ],
+          "path_depth": 48,
+          "preferred_order": [
+            [
+              8,
+              3,
+              2,
+              1
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 5,
+          "hint_kind": "lemma",
+          "key": [
+            8,
+            4,
+            2,
+            0
+          ],
+          "level": 1,
+          "name": "lemma994792b68017fa3cab7a5f4cc034a9875bdb78b8c966787c25b9561d53e9fd13",
+          "nonidentity": true,
+          "original_order": [
+            [
+              8,
+              4,
+              2,
+              0
+            ]
+          ],
+          "path_depth": 49,
+          "preferred_order": [
+            [
+              8,
+              4,
+              2,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 8,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            1,
+            58,
+            0
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              1,
+              58,
+              0
+            ],
+            [
+              10,
+              1,
+              61,
+              0
+            ],
+            [
+              10,
+              1,
+              62,
+              0
+            ],
+            [
+              10,
+              1,
+              1042,
+              6
+            ],
+            [
+              10,
+              1,
+              1052,
+              6
+            ]
+          ],
+          "path_depth": 55,
+          "preferred_order": [
+            [
+              10,
+              1,
+              58,
+              0
+            ],
+            [
+              10,
+              1,
+              61,
+              0
+            ],
+            [
+              10,
+              1,
+              62,
+              0
+            ],
+            [
+              10,
+              1,
+              1042,
+              6
+            ],
+            [
+              10,
+              1,
+              1052,
+              6
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            0,
+            58,
+            0
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              0,
+              58,
+              0
+            ]
+          ],
+          "path_depth": 56,
+          "preferred_order": [
+            [
+              10,
+              0,
+              58,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            2,
+            4,
+            7
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              2,
+              4,
+              7
+            ]
+          ],
+          "path_depth": 57,
+          "preferred_order": [
+            [
+              10,
+              2,
+              4,
+              7
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            4,
+            4,
+            0
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              4,
+              4,
+              0
+            ]
+          ],
+          "path_depth": 58,
+          "preferred_order": [
+            [
+              10,
+              4,
+              4,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 7,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            3,
+            4,
+            9
+          ],
+          "level": 1,
+          "name": "lemma754bac3b438bd46e79b4f7a597816542e3d5939da9f0c43ac0f66cc7c5d5a545",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              3,
+              4,
+              9
+            ],
+            [
+              10,
+              3,
+              4,
+              10
+            ]
+          ],
+          "path_depth": 59,
+          "preferred_order": [
+            [
+              10,
+              3,
+              4,
+              9
+            ],
+            [
+              10,
+              3,
+              4,
+              10
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 10,
+          "selection_kind": "branch"
+        }
+      ],
+      "quantified_reasoning_success": true,
+      "register_status": "native_accepted",
+      "repetition": 2,
+      "result": {
+        "bytes": 25063476,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "3d428fda608b03b7c1ddf86a6d78bd69bea4e962603a9568382b5d9bf11f0075"
+      },
+      "runner_receipt": {
+        "bytes": 52956,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-fixed-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "854683d9cc76c89e9d17f9132c6fea09b04dbf10dc26cd58abbc91d21337d31d"
+      },
+      "search_seconds": 0.8385609589749947,
+      "status": "native_proof_discovered",
+      "terminal": {
+        "bytes": 1555,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "365131d43af1575abe8c6373ce6c8f2d30a5a534024abd03d8e3684bd4e255dc"
+      },
+      "whole_region": {
+        "assigned_mark_points": 2482,
+        "completed_ns": 670792203206333,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "93ef1fcd99d68d1d909c6418e02e49df5fa72995e82b867d033b5da367a80d59"
+      },
+      "worker_receipt": {
+        "bytes": 43160,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-fixed-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "a17e7849f2e8ad431247c5fecf3b2be2fd5779c773e1304463a09ed4aea099ff"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_hint_order": false,
+      "cold_worker_seconds": 39.5511535,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "8fac533988248e10fb04cb3899ddabe7b8c11f15a8ea3d365ec3e770048cd768",
+      "essential_family_calls": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0
+          ],
+          "essential_input_indices": [
+            0,
+            1,
+            2
+          ],
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "inputs": [
+            8,
+            9,
+            6
+          ],
+          "level": 1,
+          "name": "lemmafd26dee3337fc45e010cc9114e3d4951b76850874fb0a5edbc9c8f69d2379599",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemmafd26dee3337fc45e010cc9114e3d4951b76850874fb0a5edbc9c8f69d2379599",
+              "row": 10
+            }
+          ],
+          "primitive_use": 2,
+          "root_row": 10
+        }
+      ],
+      "essential_quantifier_occurrences": [
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "imp",
+                  [
+                    "pred",
+                    "P",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ],
+                  [
+                    "pred",
+                    "Q",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 7
+          },
+          "root_primitive": true,
+          "row": 7,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 8
+          },
+          "root_primitive": true,
+          "row": 8,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 10,
+            "variable": "x"
+          },
+          "references": {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          },
+          "root_primitive": true,
+          "row": 11,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "zero_input_implication_licence": false
+        }
+      ],
+      "essential_root": {
+        "all_recursive_primitive_commands": 13,
+        "all_recursive_primitive_rule_counts": {
+          "axiom": 7,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 3
+        },
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          10
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 6
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 7
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 8
+          },
+          {
+            "all_declared_references": [
+              0,
+              7
+            ],
+            "references": [
+              0,
+              7
+            ],
+            "row": 9
+          },
+          {
+            "all_declared_references": [
+              8,
+              9,
+              6
+            ],
+            "references": [
+              8,
+              9,
+              6
+            ],
+            "row": 10
+          },
+          {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          }
+        ],
+        "essential_recursive_primitive_commands": 8,
+        "essential_recursive_primitive_rule_counts": {
+          "axiom": 2,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 3
+        },
+        "essential_rows": [
+          0,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "fresh_native_proof": true,
+      "inventory_semantics_sha256": "f24d803e6923e9798e16a2e84b8bf6e53899242376c70f516069390de13469dc",
+      "invocation_id": "quantified-family-r2-base-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": {
+        "attempts": 853,
+        "backtracks": 793,
+        "branch": 115,
+        "dead": 226,
+        "forced": 512,
+        "nodes": 854
+      },
+      "mode": "base",
+      "model_arity": 3,
+      "model_placements": 7441,
+      "model_sha256": "d5a6b3a14b842a6941ce70ad3d1bb98081fe018ddd27f1156687434de71f8d91",
+      "native_queries": 15,
+      "observed_conservative_peak_MiB": 955.078125,
+      "outer_terminal_seconds": 40.772258625,
+      "proof": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_implication",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_premise",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "Q",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "imp",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "antecedent": 0,
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "implication": 7,
+          "rule": "mp"
+        },
+        {
+          "formula": [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            9,
+            6
+          ],
+          "name": "lemmafd26dee3337fc45e010cc9114e3d4951b76850874fb0a5edbc9c8f69d2379599",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 10,
+          "variable": "x"
+        }
+      ],
+      "qualifying_hint_links": [],
+      "quantified_reasoning_success": true,
+      "register_status": "native_accepted",
+      "repetition": 2,
+      "result": {
+        "bytes": 34002267,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-base-ROOT-20261018-v1/result.json",
+        "sha256": "57801770c8049fd07943bad35d0785f76040a19f8dab46ff43d42326291043df"
+      },
+      "runner_receipt": {
+        "bytes": 52920,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-base-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "fce28a35755c9de5a4641a5d2603a6f3f7571c835a3c6f4563cedaf137a4c0f1"
+      },
+      "search_seconds": 6.9404075420461595,
+      "status": "native_proof_discovered",
+      "terminal": {
+        "bytes": 1551,
+        "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/runner-plans/quantified-family-r2-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "d412c8aa48bf9dd11f1db43f537a076b00fc95b674a309a42250c7c325121127"
+      },
+      "whole_region": {
+        "assigned_mark_points": 2569,
+        "completed_ns": 670836930149875,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "a4270f52e5f9419039b68d70723a72ced1fc48e72c012dbc393105457b1aafad"
+      },
+      "worker_receipt": {
+        "bytes": 43133,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-r2-base-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "de1bea91f499319666b759c7eec25f88e544818708e72e9c1f737c4cd671441d"
+      }
+    }
+  ],
+  "all_available_models_same_literal_projection": true,
+  "all_essential_family_calls_level1": true,
+  "author_identity": "/root",
+  "available_complete_models": 6,
+  "common_model_sha256": "d5a6b3a14b842a6941ce70ad3d1bb98081fe018ddd27f1156687434de71f8d91",
+  "dedicated_first_order_prover_comparison": false,
+  "fresh_native_proofs": 6,
+  "goal_complete": false,
+  "limitations": "One elementary quantified receiver, fixedpolicy and2opposite-order repetitions. All6freshnativeproofs containessentialUI2+GEN1; fixed2casesconsumeexactessentialchanged-orderfamilies,60attemptsvsbase853. No newRLtraining, newquantified-familymining, nested-familybenefit, generalor dedicatedFOLprover superiority, allFOLcompleteness, PAinduction/fullHilbertgeometry, universalprimitiveWangexecution or Turtle/Penroseplaneproof.",
+  "matched_hint_consumptions": 2,
+  "native_record_literal_checks": 360,
+  "native_request_joins": 90,
+  "nested_family_reuse_observed": false,
+  "new_RL_training": false,
+  "occupancy_normalization": {
+    "normalized_unit_capacity": 1,
+    "stored_unit_capacity": 12
+  },
+  "plans": {
+    "bytes": 10027,
+    "path": "/private/tmp/gcts-quantified-actual-plans-ROOT-20261018-v1/authorized-plan-index-v1.json",
+    "sha256": "382275468e78bd98e02b735cb5f284a22a7f99405c2218efd538230a6f64cdb0"
+  },
+  "proof_readers": [
+    {
+      "mode": "base",
+      "repetition": 1,
+      "url": "quantified-transfer-r1-base-proof.html"
+    },
+    {
+      "mode": "fixed",
+      "repetition": 1,
+      "url": "quantified-transfer-r1-fixed-proof.html"
+    },
+    {
+      "mode": "z3",
+      "repetition": 1,
+      "url": "quantified-transfer-r1-z3-proof.html"
+    },
+    {
+      "mode": "z3",
+      "repetition": 2,
+      "url": "quantified-transfer-r2-z3-proof.html"
+    },
+    {
+      "mode": "fixed",
+      "repetition": 2,
+      "url": "quantified-transfer-r2-fixed-proof.html"
+    },
+    {
+      "mode": "base",
+      "repetition": 2,
+      "url": "quantified-transfer-r2-base-proof.html"
+    }
+  ],
+  "publication_delta_review": {
+    "scope": "Exact19asset lossless-download/nav/metadata/scope successor review; base releaseconditions closed. Root archive/hash/live checks separate.",
+    "source": {
+      "bytes": 13836,
+      "path": "/private/tmp/gcts-quantified-publication-delta-peer-20261018/typed-publication-delta-review-v1.json",
+      "sha256": "12fd05c5d07a7e0049654ea569f42fa0f9aebfb581e08dbca60edda4be243511"
+    },
+    "url": "quantified-transfer-publication-review.json"
+  },
+  "publication_preflight_ready": true,
+  "quantifier_milestones": 6,
+  "raw_results": [
+    {
+      "download_bytes": 1851968,
+      "download_compression": "gzip",
+      "download_sha256": "0f996ca7be3cb4e3be2fc86b92e4253d07a39fc8c2123d8336f5229513ce6650",
+      "mode": "base",
+      "repetition": 1,
+      "uncompressed_bytes": 34002269,
+      "uncompressed_sha256": "0b19b38d9abba33bf75ec87237b80f52e6eede6e346418b2ca02b03e18e840b5",
+      "url": "quantified-transfer-r1-base-result.json.gz"
+    },
+    {
+      "download_bytes": 1430597,
+      "download_compression": "gzip",
+      "download_sha256": "45949a2e1e74fce0205b77a172c1974af1d91fb17ba0a3a3027bcaf22e998669",
+      "mode": "fixed",
+      "repetition": 1,
+      "uncompressed_bytes": 25063456,
+      "uncompressed_sha256": "888ac7952baa5bf8308797e8ad76cd00cfe266011fa627ae42634399e35ea929",
+      "url": "quantified-transfer-r1-fixed-result.json.gz"
+    },
+    {
+      "download_bytes": 1698074,
+      "download_compression": "gzip",
+      "download_sha256": "19ea17ec2925ff8d5bae5013f94eac158ff3b46607e8e6bba77ac01f307008c9",
+      "mode": "z3",
+      "repetition": 1,
+      "uncompressed_bytes": 45294400,
+      "uncompressed_sha256": "411e832300509b8caa0b8cb118344ec25e237be341df3aaf65da413035377753",
+      "url": "quantified-transfer-r1-z3-result.json.gz"
+    },
+    {
+      "download_bytes": 1698087,
+      "download_compression": "gzip",
+      "download_sha256": "556541d79d12ffb3e6ebd5f89cf85a0db2b9a3f22e483df4186d61292f0d0f74",
+      "mode": "z3",
+      "repetition": 2,
+      "uncompressed_bytes": 45294374,
+      "uncompressed_sha256": "07051181121d35c5ec519f07b657a8d125355ec1da2f6e1d66def84988109b8a",
+      "url": "quantified-transfer-r2-z3-result.json.gz"
+    },
+    {
+      "download_bytes": 1430599,
+      "download_compression": "gzip",
+      "download_sha256": "890974a18fa8590e9d734696e51bbf452c9b807cb0b26266eb10704b1b846d1f",
+      "mode": "fixed",
+      "repetition": 2,
+      "uncompressed_bytes": 25063476,
+      "uncompressed_sha256": "3d428fda608b03b7c1ddf86a6d78bd69bea4e962603a9568382b5d9bf11f0075",
+      "url": "quantified-transfer-r2-fixed-result.json.gz"
+    },
+    {
+      "download_bytes": 1851909,
+      "download_compression": "gzip",
+      "download_sha256": "0c97d914459eda9e4c65129c8c230e528e5af2c2c8de05e18feca5676608af12",
+      "mode": "base",
+      "repetition": 2,
+      "uncompressed_bytes": 34002267,
+      "uncompressed_sha256": "57801770c8049fd07943bad35d0785f76040a19f8dab46ff43d42326291043df",
+      "url": "quantified-transfer-r2-base-result.json.gz"
+    }
+  ],
+  "report_compression": {
+    "bytes": 11252,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/ROOT-report-compression-v2.json",
+    "sha256": "6812ee56e34442c72e2c17064401dfc4be4163ac8ed21ec71e43db4232c35fff"
+  },
+  "saved_data_reviews": [
+    {
+      "published": {
+        "bytes": 122606,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v3/quantified-transfer-data-review.json",
+        "sha256": "77c2c5ce015b34203e66fa47cbb0e14aa8d2080fc53187ab8153ff93351636e2"
+      },
+      "role": "data",
+      "source": {
+        "bytes": 122606,
+        "path": "/private/tmp/gcts-quantified-saved-data-peer-20261018/typed-data-review-v1.json",
+        "sha256": "77c2c5ce015b34203e66fa47cbb0e14aa8d2080fc53187ab8153ff93351636e2"
+      },
+      "url": "quantified-transfer-data-review.json"
+    },
+    {
+      "published": {
+        "bytes": 31694,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v3/quantified-transfer-resource-review.json",
+        "sha256": "67069ffeb374dfbc5fa625aea907229ab9ac0a18369853c5b927e8bc42d261fa"
+      },
+      "role": "resource",
+      "source": {
+        "bytes": 31694,
+        "path": "/private/tmp/gcts-quantified-six-actual-resource-peer-20261018/typed-resource-data-review-v2.json",
+        "sha256": "67069ffeb374dfbc5fa625aea907229ab9ac0a18369853c5b927e8bc42d261fa"
+      },
+      "url": "quantified-transfer-resource-review.json"
+    },
+    {
+      "published": {
+        "bytes": 12346,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/publication-source-v3/quantified-transfer-report-review.json",
+        "sha256": "f56d67ed96307d530eccf5304d18afcf195c704f727e23a1458f1b77f65a5967"
+      },
+      "role": "human",
+      "source": {
+        "bytes": 12346,
+        "path": "/private/tmp/gcts-quantified-human-report-peer-20261018/typed-human-report-review-v1.json",
+        "sha256": "f56d67ed96307d530eccf5304d18afcf195c704f727e23a1458f1b77f65a5967"
+      },
+      "url": "quantified-transfer-report-review.json"
+    }
+  ],
+  "schema": "GCTS-quantified-family-transfer-summary-v1",
+  "scientific_replays": 0,
+  "scope": "Root retained fullreceipt/raw projection admission only, zero proof/search/kernel replay. Native validity rests on current unchanged native checker within charged actuals; complete finitepoint region checked again by literal sums/markagreement/rowdecoding. Independentdatareview separate. UNKNOWN/failures are retained, never treated as proofrejection. Trusted bundled stdlib/OSloader; no allFOL/PA/Hilbert/universalWang/RL/speed/planeclaim."
+}
