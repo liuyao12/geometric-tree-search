@@ -1,0 +1,553 @@
+{
+  "Root_admission": {
+    "bytes": 45435,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/ROOT-reader-actual-admission-v1.json",
+    "sha256": "8052b2418c00e95178af0f02dc779a0e60ed1bb4a42fb7cbb5f5eda7a3fd1f21"
+  },
+  "Root_report_source_build": {
+    "bytes": 3670,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/ROOT-report-source-build-v1.json",
+    "sha256": "e20f15db347b0a487093bc8109960d4c25281932a9fdaa2827be8541dc4f5675"
+  },
+  "actual_execution_authorized": false,
+  "actual_launches": 0,
+  "all_reviewed_public_files": {
+    "compact-storage-capacity-review.json": {
+      "bytes": 10154,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-capacity-review.json",
+      "sha256": "dcc1922237a91808059b9abd5676026e948337000b09c139cfaff5c6ef6df3ba"
+    },
+    "compact-storage-final-grant-review.json": {
+      "bytes": 20529,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-final-grant-review.json",
+      "sha256": "fb65059a794045ed3f939747c4595894326b6b1963fe7ecedfe723aa27360fb5"
+    },
+    "compact-storage-harness-source-review.json": {
+      "bytes": 12747,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-harness-source-review.json",
+      "sha256": "5fcd0cbe7c37f0fa1c1bdb712efc3427185e52c3e1a4b3cad90a6020da9df674"
+    },
+    "compact-storage-model-source-review.json": {
+      "bytes": 8553,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-model-source-review.json",
+      "sha256": "aae2d27faa7255b911f2902041cfc17a2ecebed878519f1a70c46185b8f0631b"
+    },
+    "compact-storage-reader-source-review.json": {
+      "bytes": 5175,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-reader-source-review.json",
+      "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+    },
+    "compact-storage-summary.json": {
+      "bytes": 46522,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-summary.json",
+      "sha256": "98de51a7c592dfaba5b46f8f538dd019e6c4cfb86a2adb5b5e17bf79054836bb"
+    },
+    "compact-storage.html": {
+      "bytes": 16251,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage.html",
+      "sha256": "739fc6dd8c3119c489503997aa78441a455b03248a622e221c0e79d4c9cebeaa"
+    },
+    "parallel-work-status.json": {
+      "bytes": 25645,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/parallel-work-status.json",
+      "sha256": "e6eb5ff5f52fc88f12ccaa280c01d6430ae833dedc7c51e73b95f2aa111286ea"
+    },
+    "reader.html": {
+      "bytes": 82405,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/reader.html",
+      "sha256": "48e78f134a672cf967951f63749c005018ee7fb51c77c488d5a9c31bebec896c"
+    }
+  },
+  "author_identity": "/root",
+  "author_overlap_disclosure": "Reviewer authored the capacity Source assessment, structural benchmark cases/coverage, earlier symbolic control, quantified parent driver, broker/outer-runner and several earlier CASE/checkers, plus current prospective/final plan reviews. Reviewer did not author Root reader, current Root harness/observer, six actuals, compact Model or this HTML/report builder. Capacity arithmetic here is a display join to Root adoption and the genuinely distinct Receiver capacity reviewdcc192, not a new independent self-audit of this reviewer's own derivation. The current model and reader Source semantics are not re-evaluated. Root alone executed qualification and authored report.",
+  "check_count": 219,
+  "codec_calls": 0,
+  "compiler_calls": 0,
+  "displayed_outcomes": [
+    {
+      "decode_seconds": null,
+      "expected_display_row": [
+        "\\(1\\)",
+        "Synthetic fixtures",
+        "Synthetic",
+        "Pass \u00b7 Ten positive fixtures",
+        "\\(38.703\\)",
+        "Suite",
+        "\\(0.181\\)",
+        "\\(0.241\\)"
+      ],
+      "input": null,
+      "instrument_seconds": 0.241053875,
+      "label": "Synthetic fixtures",
+      "order": 1,
+      "runner": {
+        "bytes": 2676,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-suite-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "7569189490f568b22e4e739aa11d67b4908fec87d6398732fc0111474502ab71"
+      },
+      "runner_clock_seconds": 0.181264,
+      "terminal": {
+        "bytes": 1623,
+        "path": "/private/tmp/gcts-retained-reader-plans-ROOT-20261018-v2/runner-plans/retained-reader-suite-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "4dd5e1e1403c619fbb4896d26f925636c77c92ef61b615f23903b48f5eae30f4"
+      },
+      "worker": {
+        "bytes": 6267,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-suite-ROOT-20261018-v1/result.json",
+        "sha256": "a1c23fb50147cb0898ae8fbc6cbd31df6862d9ec420b26dde53aff7be4b1476a"
+      },
+      "worker_peak_MiB": 38.703125
+    },
+    {
+      "decode_seconds": 1.129422375,
+      "expected_display_row": [
+        "\\(2\\)",
+        "Diagonal \u00b7 ordinary",
+        "\\(62,143,358\\)",
+        "Pass \u00b7 \\(62,143,357\\) body bytes",
+        "\\(942.594\\)",
+        "\\(1.129\\)",
+        "\\(11.805\\)",
+        "\\(11.827\\)"
+      ],
+      "input": {
+        "bytes": 62143358,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "97c8ddfe4dd59fbf83b999bdcac641b877ff9e76580ed3bed47037f1d81c5baf"
+      },
+      "instrument_seconds": 11.826819208,
+      "label": "Diagonal \u00b7 ordinary",
+      "order": 2,
+      "runner": {
+        "bytes": 2701,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c2-builtin-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "3815305402055106d67ebfc6327342587b36f65623d9b1a91b49df8a5bc97935"
+      },
+      "runner_clock_seconds": 11.80530425,
+      "terminal": {
+        "bytes": 1642,
+        "path": "/private/tmp/gcts-retained-reader-plans-ROOT-20261018-v2/runner-plans/retained-reader-c2-builtin-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "79cb74c66d9706d5da0219bfbc87213c78ce323e8c93cb74aeb9aebb2a33dfd1"
+      },
+      "worker": {
+        "bytes": 1534,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c2-builtin-ROOT-20261018-v1/result.json",
+        "sha256": "6109b9e79d3e1a1e90539f084a9b7fe4b42c1686fbf7f256f2d5c8f7e5bf0478"
+      },
+      "worker_peak_MiB": 942.59375
+    },
+    {
+      "decode_seconds": 2.320956083,
+      "expected_display_row": [
+        "\\(3\\)",
+        "Diagonal \u00b7 shared",
+        "\\(62,143,358\\)",
+        "Pass \u00b7 \\(62,143,357\\) body bytes",
+        "\\(273.750\\)",
+        "\\(2.321\\)",
+        "\\(11.978\\)",
+        "\\(11.998\\)"
+      ],
+      "input": {
+        "bytes": 62143358,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "97c8ddfe4dd59fbf83b999bdcac641b877ff9e76580ed3bed47037f1d81c5baf"
+      },
+      "instrument_seconds": 11.997828667,
+      "label": "Diagonal \u00b7 shared",
+      "order": 3,
+      "runner": {
+        "bytes": 2700,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c2-interned-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "68dd11610ccf01d60947ee7c3e8f8caad3e4c0d4fd4432f4928a0f12e7934a36"
+      },
+      "runner_clock_seconds": 11.97789525,
+      "terminal": {
+        "bytes": 1645,
+        "path": "/private/tmp/gcts-retained-reader-plans-ROOT-20261018-v2/runner-plans/retained-reader-c2-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "c7b235eebfe17659045bf182ccc2ae6909bce25e47de79614e31307333cd7dca"
+      },
+      "worker": {
+        "bytes": 1862,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c2-interned-ROOT-20261018-v1/result.json",
+        "sha256": "e76b2798702ab2c1d38a6f5bfc9aff0dcce39954843b9c598b2f05e840acbe6e"
+      },
+      "worker_peak_MiB": 273.75
+    },
+    {
+      "decode_seconds": 3.170514791,
+      "expected_display_row": [
+        "\\(4\\)",
+        "Curried UNKNOWN \u00b7 shared",
+        "\\(78,204,773\\)",
+        "Pass \u00b7 \\(78,204,772\\) body bytes",
+        "\\(289.438\\)",
+        "\\(3.171\\)",
+        "\\(39.000\\)",
+        "\\(39.021\\)"
+      ],
+      "input": {
+        "bytes": 78204773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+      },
+      "instrument_seconds": 39.02142325,
+      "label": "Curried UNKNOWN \u00b7 shared",
+      "order": 4,
+      "runner": {
+        "bytes": 2700,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c3-interned-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "ece49a7d5f0157259397f7429a58e69c242c576a5df01a0877d15660c4774c53"
+      },
+      "runner_clock_seconds": 38.999914583,
+      "terminal": {
+        "bytes": 1645,
+        "path": "/private/tmp/gcts-retained-reader-plans-ROOT-20261018-v2/runner-plans/retained-reader-c3-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "c412e4c86ce15bcccd695484e6ac85821945b2c36d0b351a142fc046d534e001"
+      },
+      "worker": {
+        "bytes": 1861,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c3-interned-ROOT-20261018-v1/result.json",
+        "sha256": "2b26b58c58180d463c1d8ded6b750f6be59026293c0747fe2e05814ae16b61b7"
+      },
+      "worker_peak_MiB": 289.4375
+    },
+    {
+      "decode_seconds": 1.268210875,
+      "expected_display_row": [
+        "\\(5\\)",
+        "Curried UNKNOWN \u00b7 ordinary",
+        "\\(78,204,773\\)",
+        "Pass \u00b7 \\(78,204,772\\) body bytes",
+        "\\(974.766\\)",
+        "\\(1.268\\)",
+        "\\(35.691\\)",
+        "\\(35.710\\)"
+      ],
+      "input": {
+        "bytes": 78204773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+      },
+      "instrument_seconds": 35.710480792,
+      "label": "Curried UNKNOWN \u00b7 ordinary",
+      "order": 5,
+      "runner": {
+        "bytes": 2694,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c3-builtin-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "ba3b9d75b1c6adaccd5f16ba8379fbabf7dd7e62bca35fc04ed7f6832b290c57"
+      },
+      "runner_clock_seconds": 35.690857459,
+      "terminal": {
+        "bytes": 1643,
+        "path": "/private/tmp/gcts-retained-reader-plans-ROOT-20261018-v2/runner-plans/retained-reader-c3-builtin-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "3e26536f5df7ec4f0e9a7ab689f5347d6eb931773735ded0e4a155b34afefb11"
+      },
+      "worker": {
+        "bytes": 1531,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c3-builtin-ROOT-20261018-v1/result.json",
+        "sha256": "0c671e5f10ae37a89aac962ecb5d80af5b952ab6f0b109d5fe73707e059bcb74"
+      },
+      "worker_peak_MiB": 974.765625
+    },
+    {
+      "decode_seconds": 0.002109041,
+      "expected_display_row": [
+        "\\(6\\)",
+        "Registry UNKNOWN \u00b7 shared",
+        "\\(202,478\\)",
+        "Pass \u00b7 \\(202,477\\) body bytes",
+        "\\(41.516\\)",
+        "\\(0.002\\)",
+        "\\(0.128\\)",
+        "\\(0.149\\)"
+      ],
+      "input": {
+        "bytes": 202478,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/result.json",
+        "sha256": "fd2084ca02bb192af97147c81ac022fb90169f91fc40dd857f3cf54ff3dee2f6"
+      },
+      "instrument_seconds": 0.148648875,
+      "label": "Registry UNKNOWN \u00b7 shared",
+      "order": 6,
+      "runner": {
+        "bytes": 2697,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c1-interned-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "720a4517a22697ca762f57fb7275ddc7d20dcde3f4b82050b4e78af215a24119"
+      },
+      "runner_clock_seconds": 0.127957042,
+      "terminal": {
+        "bytes": 1644,
+        "path": "/private/tmp/gcts-retained-reader-plans-ROOT-20261018-v2/runner-plans/retained-reader-c1-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "d46afa3b0c3579168b5817f570a8c306989679fb3eb49d2406e2fc67c14dbae4"
+      },
+      "worker": {
+        "bytes": 1819,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/retained-reader-c1-interned-ROOT-20261018-v1/result.json",
+        "sha256": "1be9d03dd01f2f34ca96a00969088fa3ebc7958d32c615fadb2b846f83a1a5a3"
+      },
+      "worker_peak_MiB": 41.515625
+    }
+  ],
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "Every cell in the six-row result table equals its retained worker/runner/observer metadata at the displayed precision. Exact input/body byte counts, rounded worker MiB, decoding seconds, parent Source-entry and separate observer instrument durations match. All six chart widths equal the worker byte maximum divided by1GiB, and ordinary/shared colors and rounded labels agree.",
+      "id": "SIX_ROWS_AND_CHART",
+      "severity": "evidence"
+    },
+    {
+      "finding": "On the paired diagonal files the observed worker maxima are942.59375 and273.75MiB; on paired curried files974.765625 and289.4375MiB. Shared decoding is slower on both, and terminal measurements are displayed without statistical generalization. There is one observation per case/mode, author-selected reversed order across files. No full-pipeline savings, mathematical improvement or GCTS/RL contribution follows.",
+      "id": "LOWER_PEAK_HIGHER_DECODE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Public summary retains all original Root admission fields and all six actual records exactly. The complete original input raw sizes/hashes and retained body lengths/hashes/EOF match; paired body hashes and chunk counts agree. Worker literal-comparison flags are saved, with exact per-record packet bindings. This reviewer inspected raw metadata and ordinary data only; the new decoder or canonical reconstruction procedure was not executed.",
+      "id": "FULL_LITERAL_EVIDENCE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "The report's synthetic check means ten positive shapes, four malformed refusals, two outside-writer reconstruction refusals, direct RuntimeError/QualificationError exception identity, and two expected_refusal configurations. Both origin fixtures throw at the first delegated callback. They do not test arbitrary later decoder/reconstruction checkpoints, all interruption stages or all JSON/interleavings. The HTML does not assert that broader coverage.",
+      "id": "FINITE_CALLBACK_SCOPE",
+      "severity": "scope"
+    },
+    {
+      "finding": "HTML explicitly names parent Source entry after import time as the180/210 gated epoch and separately labels observer/earlier interpreter startup. Worker startup, custody/import/raw+text+data+pools/reencoding/metadata/reaping are charged in that scope. Darwin wait4 is worker-only, posthoc; parent/observer memory is excluded and no native child exists. The report forbids subtracting these peaks from historical proof-pipeline sums.",
+      "id": "CLOCK_AND_MEMORY_SCOPE",
+      "severity": "scope"
+    },
+    {
+      "finding": "Native heap numeric text/display equation match the adopted conditional Source diagnosis, with explicit RAW-symbol rather than cons-node/JSON/RAM units. The exact failing phase/opcode/tape is unavailable and the historical generator Source gap is stated. Native-wire aliases remain prospective total-bijection/inverse/current-native-check design only, no alias implementation, heap increase, capacity fit or accepted registry is claimed. Distinct capacity reviewdcc192 is reused, not this author's own derivation treated as independent evidence.",
+      "id": "CAPACITY_CONDITIONAL",
+      "severity": "scope"
+    },
+    {
+      "finding": "The compact point Model is accurately described as Source-reviewed but unevaluated/unintegrated. The report preserves the need for full dependency closure, list/tuple consumer review, unchanged candidates/frontier/fallback/global propagation/generation/rollback and fresh charged controls. No earlier failed/out-of-profile proof run is repaired or reclassified.",
+      "id": "MODEL_UNEVALUATED",
+      "severity": "scope"
+    },
+    {
+      "finding": "New reader qualification has no proof/native/model/search/compiler/solver/kernel/codec/renderer call or newly accepted theorem. Earlier nine proof-search results remain zero complete-profile admitted proofs, three native-accepted diagonal diagnostics and six UNKNOWN outcomes. The report makes no full-pipeline proof advantage, trained RL, universal Wang, PA/Hilbert completion or plane-tiling claim.",
+      "id": "OLD_OUTCOMES_AND_NONCLAIMS",
+      "severity": "scope"
+    },
+    {
+      "finding": "Report and updated reader have balanced established MathJax delimiters, no invalid C0 controls or Unicode mathematical-operator substitutions, and unique IDs. All existing main-report links and fragments, the new reader anchors and five already-present review copies resolve against the new output or existing publisher. The object-sharing SVG is explicitly conceptual, with a selector scoped to its diagram.",
+      "id": "MATH_AND_NAVIGATION",
+      "severity": "evidence"
+    },
+    {
+      "finding": "The immutable reviewed summary currently honestly says independent_reviews_pending:true. Current status review fields still contain old structural receipts while checking_tasks says current audits pending; historical copies remain available. Root must replace current review references and pending flags with the exact new genuine receipts at release, preserving actual rows, historical metadata and HTML. This receipt does not claim those future edits or archive/live checks have already occurred.",
+      "id": "PENDING_METADATA",
+      "severity": "required_release_condition"
+    }
+  ],
+  "harness_calls": 0,
+  "limitations": [
+    "This is human report and raw retained-metadata accuracy review, not replay of worker decoding, capacity diagnosis, compiler, native proof checking, mathematical proof admission or full process-resource remeasurement.",
+    "Current data and resource reviews are separately authoritative within their scoped evidence. No new science was run by any review action here.",
+    "Static HTML/MathJax delimiter and navigation checks do not prove browser visual layout or semantic rendering; Root owns live verification.",
+    "The standalone reader workload is distinct from original scientific proof-search acquisition/model/graph/solver/native costs. Lower observed reader peaks on two selected files do not establish pipeline savings, theorem-search gain or general performance distribution.",
+    "Future evidence packaging/current metadata/live deployment conditions have not been discharged by this frozen receipt."
+  ],
+  "logic_calls": 0,
+  "math_counts": {
+    "reader": {
+      "display": 16,
+      "inline": 341
+    },
+    "report": {
+      "display": 1,
+      "inline": 77
+    }
+  },
+  "mathematical_proof_accepted": false,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "navigation": [
+    {
+      "exists": true,
+      "fragment_present": null,
+      "href": "reader.css?v=native-head-20261017",
+      "target": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.css"
+    },
+    {
+      "exists": true,
+      "fragment_present": true,
+      "href": "reader.html#compact-storage",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/reader.html"
+    },
+    {
+      "exists": true,
+      "fragment_present": true,
+      "href": "structural-transfer.html#outcomes",
+      "target": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/structural-transfer.html"
+    },
+    {
+      "exists": true,
+      "fragment_present": true,
+      "href": "#outcomes",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage.html"
+    },
+    {
+      "exists": true,
+      "fragment_present": true,
+      "href": "#capacity",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage.html"
+    },
+    {
+      "exists": true,
+      "fragment_present": true,
+      "href": "#evidence",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage.html"
+    },
+    {
+      "exists": true,
+      "fragment_present": null,
+      "href": "compact-storage-summary.json",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-summary.json"
+    },
+    {
+      "future_release_asset": true,
+      "href": "compact-storage-data-review.json"
+    },
+    {
+      "future_release_asset": true,
+      "href": "compact-storage-resource-review.json"
+    },
+    {
+      "future_release_asset": true,
+      "href": "compact-storage-human-review.json"
+    },
+    {
+      "exists": true,
+      "fragment_present": null,
+      "href": "compact-storage-reader-source-review.json",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-reader-source-review.json"
+    },
+    {
+      "exists": true,
+      "fragment_present": null,
+      "href": "compact-storage-harness-source-review.json",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-harness-source-review.json"
+    },
+    {
+      "exists": true,
+      "fragment_present": null,
+      "href": "compact-storage-model-source-review.json",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-model-source-review.json"
+    },
+    {
+      "exists": true,
+      "fragment_present": null,
+      "href": "compact-storage-capacity-review.json",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-capacity-review.json"
+    },
+    {
+      "exists": true,
+      "fragment_present": null,
+      "href": "compact-storage-final-grant-review.json",
+      "target": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-final-grant-review.json"
+    },
+    {
+      "future_release_asset": true,
+      "href": "compact-storage-evidence-manifest.json"
+    },
+    {
+      "future_release_asset": true,
+      "href": "compact-storage-evidence.zip"
+    },
+    {
+      "exists": true,
+      "fragment_present": null,
+      "href": "structural-transfer-evidence.zip",
+      "target": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/structural-transfer-evidence.zip"
+    }
+  ],
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "raw_display_audit": {
+    "bytes": 58138,
+    "path": "/private/tmp/gcts-reader-qualification-human-peer-20261018/raw-human-display-audit-v1.json",
+    "sha256": "93a3dcee51f301706b8878559db15747385fb200963ca11da6653260cd90f801"
+  },
+  "reader": {
+    "bytes": 82405,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/reader.html",
+    "sha256": "48e78f134a672cf967951f63749c005018ee7fb51c77c488d5a9c31bebec896c"
+  },
+  "reader_calls": 0,
+  "release_conditions": [
+    {
+      "id": "FIVE_FUTURE_OBJECTS",
+      "objects": [
+        "compact-storage-data-review.json",
+        "compact-storage-evidence-manifest.json",
+        "compact-storage-evidence.zip",
+        "compact-storage-human-review.json",
+        "compact-storage-resource-review.json"
+      ],
+      "required": "Root must create exact current data/resource/human receipt copies plus whole-object manifest and evidence ZIP; verify complete existing and new local navigation and raw hash/size equality. The human copy is this frozen receipt, with no self-hash cycle requirement."
+    },
+    {
+      "id": "CURRENT_METADATA",
+      "required": "Only after all three scoped current reviews are frozen, set independent_reviews_pending:false and replace current data/resource/human descriptors and URLs with exact current bb2cff/7aaa2692/this receipt. Preserve old fields under historical_structural_current_fields and keep the all-six actual data literal. Any HTML/math/value change requires a new bounded review; reference-only final metadata updates remain Root release checks."
+    },
+    {
+      "id": "ARCHIVE_MANIFEST",
+      "required": "Root must verify archive and manifest whole-object hashes/sizes and contents covering exact reviewed Sources/plans/declarations/reviews, all six actual packets and complete original three corpus inputs. Preserve missing historical-generator and conditional custody limitations; do not manufacture unavailable bytes or infer unrun fit."
+    },
+    {
+      "id": "DEPLOY_AND_LIVE",
+      "required": "Task-only publish to the existing destination, preserve unrelated work and protected overview, and verify deployed exact assets/navigation/MathJax and visual layout. No browser/live/render execution was performed by this reviewer."
+    }
+  ],
+  "renderer_calls": 0,
+  "report": {
+    "bytes": 16251,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage.html",
+    "sha256": "739fc6dd8c3119c489503997aa78441a455b03248a622e221c0e79d4c9cebeaa"
+  },
+  "report_review_passed": true,
+  "resource_acceptance": false,
+  "reused_distinct_capacity_review": {
+    "bytes": 10154,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-capacity-review.json",
+    "sha256": "dcc1922237a91808059b9abd5676026e948337000b09c139cfaff5c6ef6df3ba"
+  },
+  "reused_distinct_saved_data_reviews": {
+    "data": {
+      "bytes": 42449,
+      "path": "/private/tmp/gcts-reader-qualification-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "bb2cff0974fc5340ae4737b57368ed845188773c3ae36baa2a96a7842006fcd0"
+    },
+    "resource": {
+      "bytes": 42501,
+      "path": "/private/tmp/gcts-reader-qualification-resource-peer-20261018/typed-resource-review-v1.json",
+      "sha256": "7aaa2692dd1ea7effe9e1581b50d0bcd179632f64597aca095072e1d1491b8a9"
+    }
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "saved_data_only": true,
+  "schema": "compact-storage-independent-human-report-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Independent Root human-facing HTML/numeric/claims/navigation and saved metadata comparison of six completed standalone retained-reader windows. This receipt reviews report accuracy within the admitted standalone scope; separate genuine data/resource peers supply their own retained-evidence authority. Five future evidence objects and final metadata/live release checks remain Root conditions.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "status": {
+    "bytes": 25645,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/parallel-work-status.json",
+    "sha256": "e6eb5ff5f52fc88f12ccaa280c01d6430ae833dedc7c51e73b95f2aa111286ea"
+  },
+  "summary": {
+    "bytes": 46522,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/publication-source-v1/compact-storage-summary.json",
+    "sha256": "98de51a7c592dfaba5b46f8f538dd019e6c4cfb86a2adb5b5e17bf79054836bb"
+  },
+  "wording_and_saved_data_review_passed": true
+}

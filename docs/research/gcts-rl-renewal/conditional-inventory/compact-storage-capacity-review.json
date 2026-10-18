@@ -1,0 +1,210 @@
+{
+  "Root_adoption": {
+    "bytes": 3332,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/ROOT-registry-capacity-adoption-v1.json",
+    "sha256": "5ff03b449166bd584e673a437962c08ebdf9e7972c4524830d8ca5da614940b8"
+  },
+  "actual_execution_authorized": false,
+  "actuals": [
+    {
+      "counts": {
+        "block_count": 20,
+        "block_name_lengths": [
+          69
+        ],
+        "block_proof_row_count": 76,
+        "block_rule_counts": {
+          "assumption": 48,
+          "mp": 28
+        },
+        "blocks_canonical_bytes": 16793,
+        "definition_metadata_count": 20,
+        "exported_interface_count": 20,
+        "formula_field_occurrences": 144,
+        "premise_arity_histogram": {
+          "2": 12,
+          "3": 8
+        },
+        "premise_count": 48,
+        "request_canonical_bytes": 17081,
+        "unique_block_name_UTF8_bytes": 1380,
+        "unique_block_names": 20,
+        "unique_literal_formula_field_values": 22
+      },
+      "host_peak_sum": 286556160,
+      "mode": "base",
+      "native_result": {
+        "micro_fnv64": "6316532567429423211",
+        "micro_steps": 819443851,
+        "peak_native_memory_bytes": 13500416,
+        "physical_head": 74896,
+        "physical_steps": 20151639384454,
+        "seconds": 6.40104,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "request_sha256": "63ad93de360026b4e708ce50e43a0730b8f990193c572bd11f02322c26ecc724",
+      "result": {
+        "bytes": 202478,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/result.json",
+        "sha256": "fd2084ca02bb192af97147c81ac022fb90169f91fc40dd857f3cf54ff3dee2f6"
+      }
+    },
+    {
+      "counts": {
+        "block_count": 20,
+        "block_name_lengths": [
+          69
+        ],
+        "block_proof_row_count": 76,
+        "block_rule_counts": {
+          "assumption": 48,
+          "mp": 28
+        },
+        "blocks_canonical_bytes": 16793,
+        "definition_metadata_count": 20,
+        "exported_interface_count": 20,
+        "formula_field_occurrences": 144,
+        "premise_arity_histogram": {
+          "2": 12,
+          "3": 8
+        },
+        "premise_count": 48,
+        "request_canonical_bytes": 17081,
+        "unique_block_name_UTF8_bytes": 1380,
+        "unique_block_names": 20,
+        "unique_literal_formula_field_values": 22
+      },
+      "host_peak_sum": 281903104,
+      "mode": "fixed",
+      "native_result": {
+        "micro_fnv64": "6316532567429423211",
+        "micro_steps": 819443851,
+        "peak_native_memory_bytes": 13205504,
+        "physical_head": 74896,
+        "physical_steps": 20151639384454,
+        "seconds": 6.36006,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "request_sha256": "63ad93de360026b4e708ce50e43a0730b8f990193c572bd11f02322c26ecc724",
+      "result": {
+        "bytes": 202509,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "86db7f844c6c0af3383c822334792da4406f78e8367ef88b81ce10e58ae1b1d1"
+      }
+    },
+    {
+      "counts": {
+        "block_count": 20,
+        "block_name_lengths": [
+          69
+        ],
+        "block_proof_row_count": 76,
+        "block_rule_counts": {
+          "assumption": 48,
+          "mp": 28
+        },
+        "blocks_canonical_bytes": 16793,
+        "definition_metadata_count": 20,
+        "exported_interface_count": 20,
+        "formula_field_occurrences": 144,
+        "premise_arity_histogram": {
+          "2": 12,
+          "3": 8
+        },
+        "premise_count": 48,
+        "request_canonical_bytes": 17081,
+        "unique_block_name_UTF8_bytes": 1380,
+        "unique_block_names": 20,
+        "unique_literal_formula_field_values": 22
+      },
+      "host_peak_sum": 280739840,
+      "mode": "symbolic",
+      "native_result": {
+        "micro_fnv64": "6316532567429423211",
+        "micro_steps": 819443851,
+        "peak_native_memory_bytes": 13336576,
+        "physical_head": 74896,
+        "physical_steps": 20151639384454,
+        "seconds": 6.62715,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "request_sha256": "63ad93de360026b4e708ce50e43a0730b8f990193c572bd11f02322c26ecc724",
+      "result": {
+        "bytes": 202588,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "30be23beb9f83cf31ebd1a2f50fd60f9b148e615609f5f7f6fef6323c73bcdbb"
+      }
+    }
+  ],
+  "assessment": {
+    "bytes": 10803,
+    "path": "/private/tmp/gcts-registry-capacity-source-assessment-20261018/registry-capacity-Source-assessment-v2.json",
+    "sha256": "f6206ea8f2bdc42ac09506215d7812587be4a2706d01a8b4b043d6c6284a0374"
+  },
+  "assessment_review_passed": true,
+  "audit": {
+    "bytes": 27322,
+    "path": "/private/tmp/gcts-registry-capacity-independent-peer-20261018/raw-assessment-audit-v2.json",
+    "sha256": "8bd113398a5920405219fd4a5577ee6121c340308a5a7c85170a2f92ede6114b"
+  },
+  "audit_Source": {
+    "bytes": 17327,
+    "path": "/private/tmp/gcts-registry-capacity-independent-peer-20261018/audit_assessment_v2.py",
+    "sha256": "5de9c06beff0fd3661bf3d4c30e73177b960860353694f3009fee0e8b229bdaa"
+  },
+  "author_identity": "/root/conventional_control_review",
+  "author_overlap": false,
+  "check_count": 101,
+  "codec_or_decompression_calls": 0,
+  "compiler_calls": 0,
+  "data_review_passed": true,
+  "distinct_reviewer": true,
+  "evidence": {
+    "bytes": 368982,
+    "path": "/private/tmp/gcts-registry-capacity-source-assessment-20261018/retained-capacity-evidence-v2.json",
+    "sha256": "35fdd6396515a0fcab00849e5123f09d41635fae0551d903ff88b84a88ded78f"
+  },
+  "findings": [],
+  "goal_complete": false,
+  "handoff": {
+    "bytes": 1969,
+    "path": "/private/tmp/gcts-registry-capacity-source-assessment-20261018/handoff-v2.json",
+    "sha256": "c2ddfc0b257e41e8e7261f667c1ba66082945d89111f9e65351b920ec74e9ab1"
+  },
+  "heap_arithmetic_latex": "\\(2+26(64+2)=1{,}718,\\quad1{,}718+73{,}178=74{,}896,\\quad73{,}178-7{,}642-1=65{,}535\\)",
+  "limitations": [
+    "Reviewer previously authored independent Source/coverage/declaration/data reviews of current baseline components and outcomes, not this assessment, Root adoption, scientific implementations or actuals. Assessment author Control disclosed its own benchmark/control/broker/driver/checker ancestry; this distinct review is not its self-audit.",
+    "The saved physical cursor identifies the heap right boundary conditional on pinned current CPP, template and selected-tape/generator custody. Raw bootstrap symbol length and alphabet membership were counted only. No heap records, native input/output binary, microcode/table gzip or program was decoded or regenerated; canonical program/microcode identities remain recorded custody, not a new compiler theorem.",
+    "The exact semantic phase, failing opcode/microstate and final tape contents are unavailable. It is not established whether boundary construction, wire validation, registry proof checking or semantic scratch was active at the last allocation. No exclusive name/formula/scratch allocation or minimum needed capacity is inferred.",
+    "The finite heap measure is RAW-symbol cells including marker, not cons nodes or ASCII request bytes. Variable-width ID records and temporary canonical cons data make a fixed node count/JSON-to-capacity formula unjustified. Host process peak/RSS, request microsteps, computed physical steps and finite tape cells are separate quantities.",
+    "The historical run_proof_boundary.py generator Source is recorded but unavailable here; no search/hydration or substitute reconstruction was attempted. Source/template deduction remains conditional, not end-to-end historical regeneration certification.",
+    "All three current registry record37 requests and complete inventory are retained and identical; all host resource gates passed, native returned UNKNOWN_SPACE_BUDGET below the5e9 microstep cap, and no point model/search/proof was activated. UNKNOWN is not a theorem refutation or proof-search weakness conclusion.",
+    "Native-wire-only total injective block-name aliases are prospective design only. Any implementation must preserve every definition/interface/dependency/order/primitive/body/formula/port, retain full inverse bijection and original/aliased preimages, use new explicit current native joins plus fresh bulk/final admission, and apply uniformly with all costs charged. Changing point command names would be a different encoding lane. No capacity fit, memory/time benefit, native acceptance, universal compiler equivalence theorem or alias activation is granted.",
+    "No actual, scientific Source, old output, main report, native capacity/program, palette or budget was changed. Root owns future plan/grant/activation and mathematical/resource admission.",
+    "Own raw metadata preflight checks were corrected to trace the broker captured writer/base-initial aliases rather than require a direct writer symbol, and to include premises/conclusions in the declared formula-field census. No scientific evaluation, new actual or mutation of reviewed artifacts occurred."
+  ],
+  "logic_calls": 0,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/receiver_driver_review",
+  "schema": "registry-capacity-independent-typed-assessment-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Pinned Source and retained-record conditional heap-band bounds diagnosis only; no table/tape decoding, historical regeneration or runtime proof.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_contract": null,
+  "source_only": true
+}

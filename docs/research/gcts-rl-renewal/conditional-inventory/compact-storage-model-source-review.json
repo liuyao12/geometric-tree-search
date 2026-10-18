@@ -1,0 +1,160 @@
+{
+  "API": {
+    "bytes": 2580,
+    "path": "/private/tmp/gcts-compact-point-representation-source-20261018/API-v1.json",
+    "sha256": "2e36fee617ab76555467665ed68337cd3707f54dee292d6c7485b6a9f2c2fa8b"
+  },
+  "actual_execution_authorized": false,
+  "audit": {
+    "bytes": 11918,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/compact-model-raw-Source-audit-v1.json",
+    "sha256": "cd90a376c0d51fe736f4162eba7d469d3f7c6a228cd329e8b896c5ed2082e5f3"
+  },
+  "audit_Source": {
+    "bytes": 12976,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/review_compact_model_Source_v1.py",
+    "sha256": "1eef8f91b637691adb1c692c475cca9f117c33c338bdf2a8c06bafce9cf5aca0"
+  },
+  "audit_checks": 42,
+  "author_identity": "/root/conventional_library",
+  "author_overlap": false,
+  "codec_or_decompression_calls": 0,
+  "compiled_without_evaluation": true,
+  "compiler_calls": 0,
+  "dependencies": {
+    "logical_parent": {
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    "native_point_values": {
+      "bytes": 8962,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "point_state_graph": {
+      "bytes": 28533,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    "storage_parent": {
+      "bytes": 7409,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    }
+  },
+  "design": {
+    "bytes": 19185,
+    "path": "/private/tmp/gcts-compact-point-representation-source-20261018/design-v1.json",
+    "sha256": "bcce4c307aa92b5e31a7d2de150cfed3cc9916d2f2217df9729489b1e84c5530"
+  },
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "The additional type checks are valid for the pinned generated finite integer-coordinate/integer-value model. They do not establish equivalence for arbitrary rational/float/bool/custom scalar add() inputs outside the declared scope. No generic point solver API expansion is claimed.",
+      "id": "GENERATED_INTEGER_STORAGE_ONLY",
+      "severity": "nonblocking_scope"
+    },
+    {
+      "finding": "Inherited record() intentionally retains the logical parent implementation_version. Future current Source closure/driver roles must explicitly authenticate compact module Source/VERSION and can save storage_record separately; old role descriptors or earlier timings cannot authenticate this new storage implementation.",
+      "id": "LOGICAL_VERSION_VS_STORAGE_PROVENANCE",
+      "severity": "required_composition_gate"
+    },
+    {
+      "finding": "No target constructor, add/interner, inverse, record, State/Graph/search or qualification was executed. Tables add indexing overhead and initial merge/tuple construction remains. Same full JSON records, graph copies and trace/census costs remain; no memory/time improvement or below1GiB success follows from this Source PASS.",
+      "id": "NO_RUNTIME_OR_MEMORY_IMPROVEMENT",
+      "severity": "not_tested"
+    }
+  ],
+  "goal_complete": false,
+  "handoff": {
+    "bytes": 2758,
+    "path": "/private/tmp/gcts-compact-point-representation-source-20261018/handoff-v1.json",
+    "sha256": "9e4af8016bf0cd7fc0edef12ef08d24233d89720c445c73ab8c8b624c2e0cdad"
+  },
+  "independent_design_requirements": {
+    "bytes": 25405,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/independent-design-requirements-v1.json",
+    "sha256": "7af15ab88da4b47a9e47762a8712125b8df61a4f25e531c6c95ebda5495a1f9f"
+  },
+  "limitations": [
+    "Reviewer previously authored independent design/Source/data reviews, including logical-parent Source review, but none of this adapter, its scientific dependencies, driver, reader/cold implementation or actuals. Source-review ancestry is disclosed; implementation author remains distinct.",
+    "AST/compile checks did not evaluate their compiled objects. Real text patches ran only in reviewer-owned scratch copies and created/deleted inert Source text; no scientific import or native/codec execution.",
+    "Conditional point-value representation equivalence is a Source argument under current frozen generated inputs and dependency custody. It is not independently observed runtime full-record equality, complete incremental domain replay, rollback/copy isolation test, proof acceptance, or resource acceptance.",
+    "All original assignments/candidates/metadata/alignments/dependencies and ordinary Placement type are retained. No learned pruning, restricted graph, changed generation/alternative order, supplied proof route, hidden axiom, inventory omission or cluster bulk step is approved.",
+    "Immutable tuple pool maps are private construction storage and retained for the model lifetime. Their overhead, sharing counts, temporary merge cost, allocator/GC lifetime and final parsed JSON costs require separate measurements. No capacity fallback or partial universe is introduced.",
+    "Root alone owns future exact composition/current Source map, declared qualification, once grants, native/resource execution, saved-data admission and publishing. All nine consumed structural outcomes remain unchanged."
+  ],
+  "logic_calls": 0,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "read_only_integration_sources": {
+    "actual_index": {
+      "bytes": 14951,
+      "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/authorized-plan-index-v1.json",
+      "sha256": "84484dc8662c47215922eb12e17f061fc96094d3da76c9478d118164a3823c52"
+    },
+    "cold": {
+      "bytes": 25637,
+      "path": "/private/tmp/gcts-structural-cold-root-source-20261018/structural_cold_v1.py",
+      "sha256": "587fa059eb0a3c3f8744822b337d252d364123634397e6c4d456dbfc90267f28"
+    },
+    "driver": {
+      "bytes": 52156,
+      "path": "/private/tmp/gcts-structural-generic-receiver-source-20261018/structural_receiver_driver_v1.py",
+      "sha256": "61cdf23b5513f8b2a5beebcc5cbc3559fc01e0b336bad31575f7a200a954ed28"
+    },
+    "family_search": {
+      "bytes": 5318,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "guidance": {
+      "bytes": 6942,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "runtime_closure": {
+      "bytes": 66775,
+      "path": "/private/tmp/gcts-structural-cold-root-source-20261018/runtime-closure-v1.json",
+      "sha256": "32256d81327b8e5d8bb11a7d4091a8a9818169a4d4ca4d987b3593552f811c6d"
+    }
+  },
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/receiver_driver_review",
+  "schema": "exact-literal-point-interning-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "exact-literal-point-interning-Source",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source": {
+    "bytes": 4311,
+    "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+    "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+  },
+  "source_contract": {
+    "bytes": 8119,
+    "path": "/private/tmp/gcts-compact-point-representation-source-20261018/Source-contract-v1.json",
+    "sha256": "2312a866d7927a8de5674525e522f60561c59d564839b3f1500623507f18fdb6"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "compact_point_model": {
+      "bytes": 4311,
+      "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "actual_execution_authorized": false,
+  "audit": {
+    "bytes": 4774,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/reader-raw-Source-audit-v2.json",
+    "sha256": "a8a735e3903bad23464a0fe5054fd2b8c987074cc48c907aa2443b33abdc86d6"
+  },
+  "audit_Source": {
+    "bytes": 9803,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/review_reader_Source_v2.py",
+    "sha256": "c4899c33d88de9efc7d9352fc07dda21182a46d7d9ff3a6bd91e822171832926"
+  },
+  "audit_checks": 20,
+  "author_identity": "/root",
+  "author_overlap": false,
+  "codec_or_decompression_calls": 0,
+  "compiled_without_evaluation": true,
+  "compiler_calls": 0,
+  "contract_declares_review_ABI": false,
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "parse_constant rejects NaN/Infinity tokens but is not a general finite-value validator: exponent overflow may produce infinity; escaped lone-surrogate cases are also outside the canonical UTF8 writer domain. PASS is conditional on pinned owned canonical writer/raw custody and future whole literal roundtrip qualification, not arbitrary JSON validation. Root explicitly accepted this boundary.",
+      "id": "CANONICAL_WRITER_DOMAIN_ONLY",
+      "severity": "nonblocking_scope"
+    },
+    {
+      "finding": "Only marks/new_marks and full key/keys fields change internal containers. Cold point(p) must explicitly accept list/tuple. Occupancy, formulas, commands and ordered input lists remain lists, preserving original exact comparisons. Future cold Source/current complete runtime closure and once plans require separate review.",
+      "id": "LIST_TUPLE_CONSUMERS",
+      "severity": "required_integration_gate"
+    },
+    {
+      "finding": "No target reader function was invoked. No retained output or adversarial JSON was decoded by the new reader. Whole canonical roundtrip, malformed/callback checks and independently measured cost qualification remain prospective Root-authorized work; no nine-run resource outcome changes.",
+      "id": "NO_RUNTIME_OR_MEMORY_CLAIM",
+      "severity": "not_tested"
+    }
+  ],
+  "goal_complete": false,
+  "handoff": {
+    "bytes": 866,
+    "path": "/private/tmp/gcts-interned-output-reader-source-20261018/handoff-v2.json",
+    "sha256": "f2483a7c728692e12c1f4a980354252d7467e83e0fe1ff5be70a538f506389a7"
+  },
+  "independent_design_requirements": {
+    "bytes": 25405,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/independent-design-requirements-v1.json",
+    "sha256": "7af15ab88da4b47a9e47762a8712125b8df61a4f25e531c6c95ebda5495a1f9f"
+  },
+  "limitations": [
+    "Reviewer authored prior independent Source/data/design notes, not this reader, writer, cold wrapper or actuals. No implementation/actual-author overlap.",
+    "Compile was only syntax/code-generation checking and its code object was discarded without evaluation. AST/text review did not execute JSON hook/interner functions.",
+    "No full field/candidate/trace omission, Source-custody bypass, hash-only value matching, palette reduction, native codec or GCTS policy change is approved.",
+    "Rawbytes and UTF8 text are still allocated; every dictionary is parsed; temporary pool tables add overhead; GC/live lifetime is unmeasured. Exact immutable sharing is not an observed RAM reduction.",
+    "The author-caught unactivated V1 occupancy mismatch is preserved author ancestry, not independent runtime failure or a prior reviewer verdict. This receipt reviews exactV2 only.",
+    "Initial ad hoc Source metadata check included the decode_result docstring in executable AST comparison. The check was corrected to disclose that documentation delta and compare executable AST separately; no target evaluation or file mutation occurred."
+  ],
+  "logic_calls": 0,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/receiver_driver_review",
+  "schema": "interned-result-reader-independent-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Independent Source-only review of exact Root readerV2 on the existing canonical full-result writer domain; no runtime, activation or general JSON validator acceptance.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source": {
+    "bytes": 4705,
+    "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+    "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+  },
+  "source_contract": {
+    "bytes": 3608,
+    "path": "/private/tmp/gcts-interned-output-reader-source-20261018/Source-contract-v2.json",
+    "sha256": "5b7f02ba13c1047342742e656d995c30736c061d371cf8ec01f51847a3bd6176"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "interned_result_reader": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    }
+  }
+}

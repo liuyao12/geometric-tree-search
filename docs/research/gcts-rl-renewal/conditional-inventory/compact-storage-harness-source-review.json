@@ -1,0 +1,185 @@
+{
+  "actual_execution_authorized": false,
+  "actual_text_patch_directions": 8,
+  "additional_author_forward_patches_applied": 2,
+  "audit": {
+    "bytes": 21522,
+    "path": "/private/tmp/gcts-reader-qualification-harness-peer-20261018/raw-AST-source-audit-v1.json",
+    "sha256": "748ed78a4fa579fdd1cd0d846fdd67800a58eae407efc00571cea980b406bea7"
+  },
+  "audit_Source": {
+    "bytes": 14883,
+    "path": "/private/tmp/gcts-reader-qualification-harness-peer-20261018/review_harness_source_v1.py",
+    "sha256": "25ae0ed9541fe2c7aab644c39450ec819d690989c6db97dedf2688bb6c4f90a3"
+  },
+  "audit_checks": 85,
+  "author_identity": "/root",
+  "author_overlap": false,
+  "author_overlap_disclosure": "Reviewer authored earlier quantified/compact Model adapters and a saved-result renderer, none imported or evaluated by this standalone harness. Reviewer did not author this runner, observer, reader or declaration. The unchanged reader has a distinct Receiver Source peer; this receipt is not a self-audit of prior adapters.",
+  "codec_or_decompression_calls": 0,
+  "compiled_without_evaluation": true,
+  "compiler_calls": 0,
+  "conditions_satisfied_at_Source_review": true,
+  "declaration": {
+    "bytes": 7816,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-representation-progress-20261018/reader-qualification-declaration-v2.json",
+    "sha256": "94c82ff226325c62b4f3a64afbe00b3d1db1f99a9b873e72c4ec82d51f0be9b6"
+  },
+  "dependencies": {
+    "distinct_reader_Source_review": {
+      "bytes": 5175,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-reader-Source-review-v2.json",
+      "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+    },
+    "interned_result_reader": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    }
+  },
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "expected_refusal wraps only the delegated checkpoint, retains its exact BaseException object, and re-raises faults[0] both from the ValueError/UnicodeError refusal handler and after a hypothetical swallowed callback. Other exception classes pass through unchanged. suite uses this helper for both malformed and reconstruction refusals and declares direct RuntimeError/QualificationError identity fixtures. The helper is judged by Source control flow, not executed here.",
+      "id": "P1_CALLBACK_ORIGIN_REPAIRED",
+      "location": "/private/tmp/gcts-retained-reader-qualification-source-20261018/reader_once_runner_v3.py:81",
+      "severity": "resolved"
+    },
+    {
+      "finding": "V2-to-V3 changes only VERSION, suite and added expected_refusal. Twelve inherited class/function regions are raw/AST exact; the whole AST outside those changes is exact. ObserverV2 changes only VERSION and exact runner SHA. Runner V1/V2, V2/V3 and observer parent/V1, V1/V2 each passed actual forward and inverse F0 text patches; both author-supplied runner forward patches also applied exactly.",
+      "id": "P2_NARROW_DELTA",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Closure reproduces literal AST imports of the runner, observer and reader exactly. All imports are declared bundled stdlib; the only Source loader is the pinned reader, under interned/suite modes. Builtin mode retains reader raw-custody checks without importing it. Pinned Python bytes, three current Source maps, declaration and Source contract joins match. No compact Model or other project module belongs to this closure.",
+      "id": "P3_CURRENT_CLOSURE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "The complete decoded ordinary value is streamed through the canonical JSON writer and every resulting UTF8 chunk is compared to the original literal byte slice, followed by exact EOF. Optional one writer newline is the only normalization. It is not merely a digest comparison or a selected-field/model projection. Writer-domain failures remain refusals, never mathematical negatives.",
+      "id": "P4_LITERAL_ACCEPTANCE",
+      "location": "/private/tmp/gcts-retained-reader-qualification-source-20261018/reader_once_runner_v3.py:72",
+      "severity": "evidence"
+    },
+    {
+      "finding": "One pinned fresh worker leads its own session/process group. Direct wait4 reaps that exact PID, records Darwin ru_maxrss bytes, and requires group absence. The 1GiB gate is a posthoc worker-only maximum; parent/observer memory is excluded, no native child is launched and no worker-plus-native or full-proof-pipeline peak is claimed. Worker imports, input/raw/text/data/pools and streamed reconstruction are inside the inherited parent Source-entry work epoch.",
+      "id": "P5_WORKER_PROFILE",
+      "location": "/private/tmp/gcts-retained-reader-qualification-source-20261018/reader_once_runner_v3.py:177",
+      "severity": "scope"
+    },
+    {
+      "finding": "ContractV2 and declarationV2 now explicitly match Source: parent _BEGAN follows import time and precedes remaining runner stdlib imports; its absolute 180/210s endpoints are passed to the worker without reset. Observer prelude/preparent Python startup are separately recorded instrument duration outside that epoch. Terminal acceptance checks exact parent overall endpoint and vetoes the late-receipt marker. This receipt does not recast it as a whole external cold-start gate.",
+      "id": "P6_CLOCK_SCOPE_ALIGNED",
+      "location": "/private/tmp/gcts-retained-reader-qualification-source-20261018/observe_reader_runner_v2.py:60",
+      "severity": "scope"
+    },
+    {
+      "finding": "Runtime review count/PASS checks remain generic. Before any grant, Root and a distinct final-plan/grant peer must establish at least three distinct raw review receipts and reviewer identities covering current reader, current harness and current declaration/all subjects. Contract/declaration state this precisely; Source PASS does not discharge that prospective external condition.",
+      "id": "P7_EXTERNAL_REVIEW_ROLES",
+      "location": "/private/tmp/gcts-retained-reader-qualification-source-20261018/reader_once_runner_v3.py:63",
+      "severity": "required_external_condition"
+    },
+    {
+      "finding": "Observer fresh folder/CONSUMED, parent fresh actual directory/CONSUMED and worker WORKER_CONSUMED enforce the single launch paths. Grant subject hashes bind the whole plan except its authorization descriptor; worker re-intake and result joins bind full plan/input/reader/original epoch. Final runner/reader/Python/declaration raw checks and input post-reconstruction raw hash are required. This review does not authorize or consume a grant.",
+      "id": "P8_ONCE_AND_CUSTODY",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Metadata cap is checked after exclusive result creation and then bounded again on parent read; an oversized/late file can remain diagnostic but cannot be accepted. Parent/worker Source/callback/schema errors propagate or cause nonzero/missing-result failure. Some early failures can lack a worker/runner receipt; external terminal/log evidence must stay unavailable where absent rather than be fabricated or salvaged.",
+      "id": "P9_FAILURE_METADATA_LIMITS",
+      "severity": "limitation"
+    },
+    {
+      "finding": "Parent sends TERM at the original 180s cutoff and KILL one second later, with exact-child wait4 cleanup; accepted results require successful reaping/group absence. Failure-only observer 225s timeout kills/reaps its direct runner and explicitly requires residual worker ownership inspection. OS scheduling/reap liveness is not formally guaranteed; no timeout path is resource-admitted merely from a parser success.",
+      "id": "P10_FAILURE_ONLY_CLEANUP",
+      "severity": "limitation"
+    },
+    {
+      "finding": "The suite is the declared finite ten positive shapes, four malformed refusals, two outside-writer reconstruction refusals, two direct callback classes and two helper-origin paths. Neither that future finite suite nor this Source review is a general arbitrary-JSON validator, adversarial runtime proof, mathematical proof check or full-pipeline performance result. Reader exponent overflow and lone-surrogate limits remain explicit.",
+      "id": "P11_CANONICAL_DOMAIN_AND_SUITE",
+      "severity": "limitation"
+    },
+    {
+      "finding": "Standalone data representation qualification does not alter GCTS scheduling, grammar, inventory, point/state semantics, fallback, native proof status or any of the nine retained structural actuals. The earlier compact Model and its runtime qualification are outside this harness.",
+      "id": "P12_NO_ENGINE_CHANGE",
+      "severity": "scope"
+    }
+  ],
+  "handoff": {
+    "bytes": 1069,
+    "path": "/private/tmp/gcts-retained-reader-qualification-source-20261018/handoff-v2.json",
+    "sha256": "96a660ad5adca0cf27ca7038c1a4d3ef968c8943713377ac5b1fa7480cb8f7c0"
+  },
+  "historical_negative": {
+    "bytes": 5182,
+    "path": "/private/tmp/gcts-reader-qualification-harness-peer-20261018/typed-Source-review-v1-negative.json",
+    "sha256": "2fea87b89512c60375349df7dbb54b395cc6c2c9ed37599617793d39b6062c7a"
+  },
+  "logic_calls": 0,
+  "methodology": "Full raw Source and control-flow reading, exact descriptor joins, AST import/region comparisons, compile-without-evaluation, and actual text patch applications in owned scratch files. No runner/observer/reader function or retained-output decoder was invoked.",
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "prospective_index_binding_only": {
+    "bytes": 8752,
+    "path": "/private/tmp/gcts-retained-reader-plans-ROOT-20261018-v2/prospective-index-v2.json",
+    "sha256": "ad71feac8b08b8eea8f8255e755cc3b873cb94003257805d3e2d7f4eec5cbb7e"
+  },
+  "prospective_requirements": [
+    "External exact distinct review-role/subject coverage and true-grant delta review before activation.",
+    "Root alone may perform once-only retained decoder qualification; preserve every failed/UNKNOWN/out-of-profile outcome without retry or salvage.",
+    "Current actual PID/PGID/reap/raw-input/terminal/epoch/cap/worker-only-peak evidence must be audited after any authorized run.",
+    "Any full proof-pipeline integration, consumer list/tuple compatibility or memory benefit requires a separately reviewed and measured composition."
+  ],
+  "reader_calls": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/conventional_library",
+  "runtime_closure": {
+    "bytes": 4468,
+    "path": "/private/tmp/gcts-retained-reader-qualification-source-20261018/runtime-closure-v2.json",
+    "sha256": "994be1c5a4ceb5836cd2d120db0d9a68321c29799895c2c5cf7516c41e6af320"
+  },
+  "runtime_or_fixture_evaluation": false,
+  "schema": "retained-reader-qualification-harness-independent-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Independent Source-only current runnerV3/observerV2 and exact standalone runtime closure/declaration alignment. Conditional implementation PASS only; no grant, actual, mathematical or resource admission.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source": {
+    "bytes": 15979,
+    "path": "/private/tmp/gcts-retained-reader-qualification-source-20261018/reader_once_runner_v3.py",
+    "sha256": "4ed5b5565d64f380f565c3ded7abc490aad5f75b845ea102ebeaede973fe8ac8"
+  },
+  "source_contract": {
+    "bytes": 4680,
+    "path": "/private/tmp/gcts-retained-reader-qualification-source-20261018/Source-contract-v2.json",
+    "sha256": "0e26672649f4d1cc4d86105a9b974e40774aefcbd06f557a4bdba35cd4abed0a"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "observer": {
+      "bytes": 4356,
+      "path": "/private/tmp/gcts-retained-reader-qualification-source-20261018/observe_reader_runner_v2.py",
+      "sha256": "ce5a6fe04382afb241a45d28afad36185df777a257c2c466354a715ff3776de6"
+    },
+    "runner": {
+      "bytes": 15979,
+      "path": "/private/tmp/gcts-retained-reader-qualification-source-20261018/reader_once_runner_v3.py",
+      "sha256": "4ed5b5565d64f380f565c3ded7abc490aad5f75b845ea102ebeaede973fe8ac8"
+    }
+  },
+  "target_evaluations": 0,
+  "unperformed": [
+    "No harness, observer or reader was imported or called.",
+    "No synthetic suite or retained corpus was decoded.",
+    "No model/search/prover/solver/native/kernel/codec/renderer or new scientific calculation was executed.",
+    "No runtime memory/time improvement was measured.",
+    "No plan was authorized, consumed, launched or altered."
+  ]
+}
