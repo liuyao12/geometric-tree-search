@@ -1,8 +1,8 @@
 {
   "archive": {
-    "bytes": 1762228,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-reproduction.zip",
-    "sha256": "526108426054f0ac03e1017feb0da31a2ece8f175629589067a42d7872cf3e75"
+    "bytes": 1796839,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v4/closed-roots-reproduction.zip",
+    "sha256": "ffee22cef90d05ef5631ed1a667a6835b19b2bf525e62693f1b6cf040f7db64f"
   },
   "closed_actuals": 1,
   "date_UTC": "2026-10-18",
@@ -148,11 +148,53 @@
       "sha256": "ac97dab3fd855ac6252b93db243c49ecb160ad5614788ff6642ab0688907cca5"
     },
     {
+      "archive_member": "objects/1d5656111cb8b56b3631f435816327bae92de603fa863d8a5a4f3ca7f91cc0ce",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 1039,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-committed-v1.json",
+      "sha256": "1d5656111cb8b56b3631f435816327bae92de603fa863d8a5a4f3ca7f91cc0ce"
+    },
+    {
+      "archive_member": "objects/219c8fa8e22834dead0793892dfe85e34350ba680c1965eeb3cba97e583c8e0e",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 4743,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-installed-v1.json",
+      "sha256": "219c8fa8e22834dead0793892dfe85e34350ba680c1965eeb3cba97e583c8e0e"
+    },
+    {
+      "archive_member": "objects/2c642891fb1a60f0605b571e0b98c4de4bd3e508fb438ed732b273165b618e09",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 939,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-live-UI-v1.json",
+      "sha256": "2c642891fb1a60f0605b571e0b98c4de4bd3e508fb438ed732b273165b618e09"
+    },
+    {
+      "archive_member": "objects/8d2cde3c7d5deb6c6f0bd60886f85c056c537ae1bb4c62a11bc56fd1082861df",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 4261,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-live-bytes-v1.json",
+      "sha256": "8d2cde3c7d5deb6c6f0bd60886f85c056c537ae1bb4c62a11bc56fd1082861df"
+    },
+    {
+      "archive_member": "objects/474478464424c7908cc375c208c737bdbb0e211a0872ce979771ce8491daa2ac",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 1499,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-live-layout-repair-v1.json",
+      "sha256": "474478464424c7908cc375c208c737bdbb0e211a0872ce979771ce8491daa2ac"
+    },
+    {
       "archive_member": "objects/a6a17b138d58dbfbba9e72df5475b0c390737d71a5280f77d8189ecb9fb8c6f9",
       "binding_scope": "CURRENT_RESEARCH_RECORD",
       "bytes": 3339,
       "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-next-research-v1.json",
       "sha256": "a6a17b138d58dbfbba9e72df5475b0c390737d71a5280f77d8189ecb9fb8c6f9"
+    },
+    {
+      "archive_member": "objects/973db98c8eb50583f4f876a9b20ff92bd2f4fe1c3fae76058c8ba6b3687c01c0",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 313,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-pushed-v1.json",
+      "sha256": "973db98c8eb50583f4f876a9b20ff92bd2f4fe1c3fae76058c8ba6b3687c01c0"
     },
     {
       "archive_member": "objects/b27cb37e1844b3ba4b34eba926967cfd9de8a7f3eff50ebba727e3d4443802ee",
@@ -169,6 +211,13 @@
       "sha256": "92eb621c51aab4f240f0efa95ef9981a9bc829f6c2be37db40bcc3018a94179a"
     },
     {
+      "archive_member": "objects/a0dff6243dc3e9aaa58bccb42cb1e06299593a1f339a9dae40c97cefcdd499ed",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 3980,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-reviewed-publication-freeze-v1.json",
+      "sha256": "a0dff6243dc3e9aaa58bccb42cb1e06299593a1f339a9dae40c97cefcdd499ed"
+    },
+    {
       "archive_member": "objects/8fae0e33f2f9c35a92de58a7aa0fbe90828b354a75549bcd68fa2fef1e622e65",
       "binding_scope": "CURRENT_RESEARCH_RECORD",
       "bytes": 1253,
@@ -176,53 +225,102 @@
       "sha256": "8fae0e33f2f9c35a92de58a7aa0fbe90828b354a75549bcd68fa2fef1e622e65"
     },
     {
+      "archive_member": "objects/5f78213cf8369af3eeb46e8a65f1fc570d3ce9f5cda29d998b2deca4b909a898",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 1252,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-reviewed-study-v2.json",
+      "sha256": "5f78213cf8369af3eeb46e8a65f1fc570d3ce9f5cda29d998b2deca4b909a898"
+    },
+    {
+      "archive_member": "objects/f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 47785,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/css-preimages-v1/closed-roots.html.before",
+      "sha256": "f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7"
+    },
+    {
+      "archive_member": "objects/8e20a02103d7929ef4afcdaedfaf6504a52c415ed6e028b29966d80109772c68",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 47792,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/css-preimages-v1/forward.actual",
+      "sha256": "8e20a02103d7929ef4afcdaedfaf6504a52c415ed6e028b29966d80109772c68"
+    },
+    {
+      "archive_member": "objects/b7960bdc579a3484ad759ff7d9bccdfd9a6bd7791e3ffe485a0287a97306d4e1",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 5205,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/css-preimages-v1/forward.patch",
+      "sha256": "b7960bdc579a3484ad759ff7d9bccdfd9a6bd7791e3ffe485a0287a97306d4e1"
+    },
+    {
+      "archive_member": "objects/f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 47785,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/css-preimages-v1/reverse.actual",
+      "sha256": "f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7"
+    },
+    {
+      "archive_member": "objects/c7d0afb21069a2eb2924e708d97b50e7874cdb9da7bc4324c659d34f0201d761",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 5205,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/css-preimages-v1/reverse.patch",
+      "sha256": "c7d0afb21069a2eb2924e708d97b50e7874cdb9da7bc4324c659d34f0201d761"
+    },
+    {
       "archive_member": "objects/531961c5d477e1949340c46fa5ca12234a87713d80b74a3b1d8c05aa4dce8587",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 6820,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-data-review.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v4/closed-roots-data-review.json",
       "sha256": "531961c5d477e1949340c46fa5ca12234a87713d80b74a3b1d8c05aa4dce8587"
     },
     {
       "archive_member": "objects/0ec122faa2cb90461998223bb4096bb6141d8ded0a4c53fbffbf773b0465d752",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 6594,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-next-search.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v4/closed-roots-next-search.json",
       "sha256": "0ec122faa2cb90461998223bb4096bb6141d8ded0a4c53fbffbf773b0465d752"
     },
     {
-      "archive_member": "objects/8304d7d5c3755a4dacadb3c62bc1924a212905177a795ac13ac12c7dde11020b",
+      "archive_member": "objects/bdec8439b96dc903c0db33d0a4bba63c0fff2e547090d39a99dfffd007fd7358",
       "binding_scope": "CURRENT_PUBLICATION",
-      "bytes": 12453,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-report-review.json",
-      "sha256": "8304d7d5c3755a4dacadb3c62bc1924a212905177a795ac13ac12c7dde11020b"
+      "bytes": 6585,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v4/closed-roots-report-review.json",
+      "sha256": "bdec8439b96dc903c0db33d0a4bba63c0fff2e547090d39a99dfffd007fd7358"
     },
     {
       "archive_member": "objects/d852ddeb7d5d8584b7b31c0e3c98c26a664798cb93c591dfe96c79b431e45e25",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 6139,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-summary.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v4/closed-roots-summary.json",
       "sha256": "d852ddeb7d5d8584b7b31c0e3c98c26a664798cb93c591dfe96c79b431e45e25"
     },
     {
-      "archive_member": "objects/f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7",
+      "archive_member": "objects/8e20a02103d7929ef4afcdaedfaf6504a52c415ed6e028b29966d80109772c68",
       "binding_scope": "CURRENT_PUBLICATION",
-      "bytes": 47785,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots.html",
-      "sha256": "f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7"
+      "bytes": 47792,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v4/closed-roots.html",
+      "sha256": "8e20a02103d7929ef4afcdaedfaf6504a52c415ed6e028b29966d80109772c68"
     },
     {
       "archive_member": "objects/f8b188223a1103faec1774fbf975f76fb396a8cb8a53a9715a5aad48165aba44",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 8891,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/parallel-work-status.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v4/parallel-work-status.json",
       "sha256": "f8b188223a1103faec1774fbf975f76fb396a8cb8a53a9715a5aad48165aba44"
     },
     {
       "archive_member": "objects/da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 74431,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/reader.html",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v4/reader.html",
       "sha256": "da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d"
+    },
+    {
+      "archive_member": "objects/f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7",
+      "binding_scope": "FIRST_DEPLOYED_REPORT_CSS_PREIMAGE",
+      "bytes": 47785,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-source-v1/closed-roots.html",
+      "sha256": "f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7"
     },
     {
       "archive_member": "objects/5d4fec112593a0e12455c2eac2079c6cf2a882cf935799cfd537815d19dd708d",
@@ -771,6 +869,13 @@
       "sha256": "8304d7d5c3755a4dacadb3c62bc1924a212905177a795ac13ac12c7dde11020b"
     },
     {
+      "archive_member": "objects/bdec8439b96dc903c0db33d0a4bba63c0fff2e547090d39a99dfffd007fd7358",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 6585,
+      "original_path": "/private/tmp/gcts-closed-root-human-report-review-20261018/typed-report-review-v2.json",
+      "sha256": "bdec8439b96dc903c0db33d0a4bba63c0fff2e547090d39a99dfffd007fd7358"
+    },
+    {
       "archive_member": "objects/a84dba9c233b4642795d9f21bf9fc98e66ba74d8aeeb3702c361963fd357c242",
       "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
       "bytes": 6838,
@@ -897,6 +1002,13 @@
       "sha256": "ef3b5b1bac7c0ca8847c9d7f09d33e70aa7f64ee40db7e670fcb8408d63bfe61"
     },
     {
+      "archive_member": "objects/7494de270283a0508bf4650d94c9f2ffb82f31f20e9b091cfb99f6e14dc266be",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 6210,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_evidence_v2.py",
+      "sha256": "7494de270283a0508bf4650d94c9f2ffb82f31f20e9b091cfb99f6e14dc266be"
+    },
+    {
       "archive_member": "objects/a9e41f73250d8491b7a402250e22676e93613761b52ea00f400c584dcc96ba5e",
       "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
       "bytes": 18461,
@@ -916,6 +1028,13 @@
       "bytes": 18542,
       "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_report_v3.py",
       "sha256": "7932d876a8bda671921b74d8ce38d6d133f89dd1ff49679e4c33e26519974f8d"
+    },
+    {
+      "archive_member": "objects/588fa6a24178fd71b8a7a0508c20a21788be4aa1877f9e0ddb8be6647f6ffd56",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 18549,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_report_v4.py",
+      "sha256": "588fa6a24178fd71b8a7a0508c20a21788be4aa1877f9e0ddb8be6647f6ffd56"
     },
     {
       "archive_member": "objects/e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38",
@@ -979,6 +1098,13 @@
       "bytes": 7914,
       "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/update_readers_v3.py",
       "sha256": "e513e448aafc1a550d46717c0ec7b147be9194f1c412033980f3c8395e74a3f5"
+    },
+    {
+      "archive_member": "objects/07ce2ce78569a6257ecb315154665ae845a64b51f9008374448ff222d4307703",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 1578,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/verify_live_v1.py",
+      "sha256": "07ce2ce78569a6257ecb315154665ae845a64b51f9008374448ff222d4307703"
     },
     {
       "archive_member": "objects/0ec122faa2cb90461998223bb4096bb6141d8ded0a4c53fbffbf773b0465d752",
@@ -1402,7 +1528,7 @@
     }
   ],
   "goal_complete": false,
-  "original_binding_count": 199,
+  "original_binding_count": 217,
   "prior_public_archive": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/licensed-clusters-reproduction.zip",
   "reproduction": "Use exact current plan Source bindings and the declared compatible Darwin/Python runtime. Preserved negative drafts are not approved alternatives. Rebind paths in a new explicit plan/grant, use a fresh once-only output directory and do not rerun the consumed actual. Historical transitive metadata paths are retained as data, not recursively hydrated. The embedded manifest omits the external archive hash to avoid self-reference.",
   "runtime_binary_included": false,
@@ -1414,5 +1540,5 @@
   "schema": "closed-root-evidence-manifest-v1",
   "scientific_replays_by_packaging": 0,
   "scope": "One closed-root inventory finite actual; current41 executable Sources, original17 mathematical model, full donor packet, distinct Source/data/report reviews. Every returned record source-ground checked; only first declared closed root freshly native and local-union checked. No exhaustive inventory, point search, new theorem, trained RL or performance claim.",
-  "unique_object_count": 183
+  "unique_object_count": 198
 }
