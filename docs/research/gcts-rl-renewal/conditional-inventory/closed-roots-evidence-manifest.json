@@ -1,0 +1,1418 @@
+{
+  "archive": {
+    "bytes": 1762228,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-reproduction.zip",
+    "sha256": "526108426054f0ac03e1017feb0da31a2ece8f175629589067a42d7872cf3e75"
+  },
+  "closed_actuals": 1,
+  "date_UTC": "2026-10-18",
+  "files": [
+    {
+      "archive_member": "objects/0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e",
+      "binding_scope": "UNCHANGED_NATIVE_HARNESS",
+      "bytes": 6734,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-full52-integration-source-20261015/Q_native_terminal_meter_v2.py",
+      "sha256": "0129830110b8f46a1cfd376ced0cd147aa2f224665b4a0cce36ae82f2106d67e"
+    },
+    {
+      "archive_member": "objects/464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 48584,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+      "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+    },
+    {
+      "archive_member": "objects/1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 46514,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+      "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+    },
+    {
+      "archive_member": "objects/43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 10323,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+      "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+    },
+    {
+      "archive_member": "objects/a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+      "binding_scope": "CURRENT_INPUTS",
+      "bytes": 2925,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-right-two-preparation-source-20261015/Q-right-two-declaration-v1.json",
+      "sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df"
+    },
+    {
+      "archive_member": "objects/1bb0148db869be09c8f49f48207ecc8c525791bd04794fd3a5e16e330ece6818",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 23570,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-authorization-v1.json",
+      "sha256": "1bb0148db869be09c8f49f48207ecc8c525791bd04794fd3a5e16e330ece6818"
+    },
+    {
+      "archive_member": "objects/8fb7ca9d23e9c0df2798d8a1185870ef8e9c4bb1583619430d1dc99a8b599371",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 4673,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-case-admission-v1.json",
+      "sha256": "8fb7ca9d23e9c0df2798d8a1185870ef8e9c4bb1583619430d1dc99a8b599371"
+    },
+    {
+      "archive_member": "objects/6beb7a9890a469a3b39f97501c4cb92c95efbba6283afe82627dc9ac7464ea15",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 2290609,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+      "sha256": "6beb7a9890a469a3b39f97501c4cb92c95efbba6283afe82627dc9ac7464ea15"
+    },
+    {
+      "archive_member": "objects/914fcf3ac17789ab092f3e77c2a90812e09d76a30102d9725b54d3a7554f9f0d",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 23742,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-plan-v1.json",
+      "sha256": "914fcf3ac17789ab092f3e77c2a90812e09d76a30102d9725b54d3a7554f9f0d"
+    },
+    {
+      "archive_member": "objects/7f2c46eee24bb46a60c511bdec86ef977aed4cdd71f9f016b9d0ddcb32b4bb1b",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 1800,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-prelaunch-v1.json",
+      "sha256": "7f2c46eee24bb46a60c511bdec86ef977aed4cdd71f9f016b9d0ddcb32b4bb1b"
+    },
+    {
+      "archive_member": "objects/aacebfa41c3eab3f4e3d9f4c634a8c26e559009b5b7b47b40c8e7d89f66c7a5d",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 2310,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+      "sha256": "aacebfa41c3eab3f4e3d9f4c634a8c26e559009b5b7b47b40c8e7d89f66c7a5d"
+    },
+    {
+      "archive_member": "objects/4a537790fd598b1a624484aaaa5f3d34b78711775296b4653d5bfcc286390315",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 226,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/external-v1/ONCE.json",
+      "sha256": "4a537790fd598b1a624484aaaa5f3d34b78711775296b4653d5bfcc286390315"
+    },
+    {
+      "archive_member": "objects/317e07f734a03cba958274669f62de8121742222457928d49736447f2a542670",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 793,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/external-v1/meter-stderr.txt",
+      "sha256": "317e07f734a03cba958274669f62de8121742222457928d49736447f2a542670"
+    },
+    {
+      "archive_member": "objects/82662c50bed56746f3bd8c4a1e57117156d3c297d5b4a4283b3c8867812b8fbd",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 789,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/external-v1/meter-stdout.txt",
+      "sha256": "82662c50bed56746f3bd8c4a1e57117156d3c297d5b4a4283b3c8867812b8fbd"
+    },
+    {
+      "archive_member": "objects/77ea55d5433102f5e286b14ae4bbf1afdefab097f74eba6a34cd8b078b532bca",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 1586,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/external-v1/native-terminal.json",
+      "sha256": "77ea55d5433102f5e286b14ae4bbf1afdefab097f74eba6a34cd8b078b532bca"
+    },
+    {
+      "archive_member": "objects/4d81d7e17ab0ea1b8ae627c6506b2fbb6aab9e38fd371ba1c600200cd71e1e68",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 443,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/external-v1/observation.json",
+      "sha256": "4d81d7e17ab0ea1b8ae627c6506b2fbb6aab9e38fd371ba1c600200cd71e1e68"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 0,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/external-v1/postterminal-probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/d057236b5c79a7fbcb4f61c8bd7389a5e3f75782fec9fd5ad283b024b0c2ca23",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 16,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/external-v1/postterminal-probe-stdout.txt",
+      "sha256": "d057236b5c79a7fbcb4f61c8bd7389a5e3f75782fec9fd5ad283b024b0c2ca23"
+    },
+    {
+      "archive_member": "objects/831d462aaafcae69ec7a8dec82664bd0e0c7da7da8a36bc2b758e2b770e60cd9",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 292179,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/owned-v1/engine-result.json",
+      "sha256": "831d462aaafcae69ec7a8dec82664bd0e0c7da7da8a36bc2b758e2b770e60cd9"
+    },
+    {
+      "archive_member": "objects/ac97dab3fd855ac6252b93db243c49ecb160ad5614788ff6642ab0688907cca5",
+      "binding_scope": "ONE_CONSUMED_TERMINAL_ACTUAL",
+      "bytes": 1720,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/owned-v1/response.jsonl",
+      "sha256": "ac97dab3fd855ac6252b93db243c49ecb160ad5614788ff6642ab0688907cca5"
+    },
+    {
+      "archive_member": "objects/a6a17b138d58dbfbba9e72df5475b0c390737d71a5280f77d8189ecb9fb8c6f9",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 3339,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-next-research-v1.json",
+      "sha256": "a6a17b138d58dbfbba9e72df5475b0c390737d71a5280f77d8189ecb9fb8c6f9"
+    },
+    {
+      "archive_member": "objects/b27cb37e1844b3ba4b34eba926967cfd9de8a7f3eff50ebba727e3d4443802ee",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 2689,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-reader-update-v1.json",
+      "sha256": "b27cb37e1844b3ba4b34eba926967cfd9de8a7f3eff50ebba727e3d4443802ee"
+    },
+    {
+      "archive_member": "objects/92eb621c51aab4f240f0efa95ef9981a9bc829f6c2be37db40bcc3018a94179a",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 1417,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-reader-update-v2.json",
+      "sha256": "92eb621c51aab4f240f0efa95ef9981a9bc829f6c2be37db40bcc3018a94179a"
+    },
+    {
+      "archive_member": "objects/8fae0e33f2f9c35a92de58a7aa0fbe90828b354a75549bcd68fa2fef1e622e65",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 1253,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/ROOT-reviewed-study-v1.json",
+      "sha256": "8fae0e33f2f9c35a92de58a7aa0fbe90828b354a75549bcd68fa2fef1e622e65"
+    },
+    {
+      "archive_member": "objects/531961c5d477e1949340c46fa5ca12234a87713d80b74a3b1d8c05aa4dce8587",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 6820,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-data-review.json",
+      "sha256": "531961c5d477e1949340c46fa5ca12234a87713d80b74a3b1d8c05aa4dce8587"
+    },
+    {
+      "archive_member": "objects/0ec122faa2cb90461998223bb4096bb6141d8ded0a4c53fbffbf773b0465d752",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 6594,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-next-search.json",
+      "sha256": "0ec122faa2cb90461998223bb4096bb6141d8ded0a4c53fbffbf773b0465d752"
+    },
+    {
+      "archive_member": "objects/8304d7d5c3755a4dacadb3c62bc1924a212905177a795ac13ac12c7dde11020b",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 12453,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-report-review.json",
+      "sha256": "8304d7d5c3755a4dacadb3c62bc1924a212905177a795ac13ac12c7dde11020b"
+    },
+    {
+      "archive_member": "objects/d852ddeb7d5d8584b7b31c0e3c98c26a664798cb93c591dfe96c79b431e45e25",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 6139,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots-summary.json",
+      "sha256": "d852ddeb7d5d8584b7b31c0e3c98c26a664798cb93c591dfe96c79b431e45e25"
+    },
+    {
+      "archive_member": "objects/f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 47785,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/closed-roots.html",
+      "sha256": "f999bd5d2396e1e32b3d6d7dc2df2bf7b4a4e3d1a28c296c6d64e489302155b7"
+    },
+    {
+      "archive_member": "objects/f8b188223a1103faec1774fbf975f76fb396a8cb8a53a9715a5aad48165aba44",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 8891,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/parallel-work-status.json",
+      "sha256": "f8b188223a1103faec1774fbf975f76fb396a8cb8a53a9715a5aad48165aba44"
+    },
+    {
+      "archive_member": "objects/da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d",
+      "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 74431,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/publication-draft-v3/reader.html",
+      "sha256": "da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d"
+    },
+    {
+      "archive_member": "objects/5d4fec112593a0e12455c2eac2079c6cf2a882cf935799cfd537815d19dd708d",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 8609,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/parallel-work-status.json.before",
+      "sha256": "5d4fec112593a0e12455c2eac2079c6cf2a882cf935799cfd537815d19dd708d"
+    },
+    {
+      "archive_member": "objects/f8b188223a1103faec1774fbf975f76fb396a8cb8a53a9715a5aad48165aba44",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 8891,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/parallel-work-status.json.forward.actual",
+      "sha256": "f8b188223a1103faec1774fbf975f76fb396a8cb8a53a9715a5aad48165aba44"
+    },
+    {
+      "archive_member": "objects/b803566ac0b4863b62e11ec1c761ec256a1fe2d9dce9eb1841f1c54ad44893fc",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 7341,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/parallel-work-status.json.forward.patch",
+      "sha256": "b803566ac0b4863b62e11ec1c761ec256a1fe2d9dce9eb1841f1c54ad44893fc"
+    },
+    {
+      "archive_member": "objects/5d4fec112593a0e12455c2eac2079c6cf2a882cf935799cfd537815d19dd708d",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 8609,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/parallel-work-status.json.reverse.actual",
+      "sha256": "5d4fec112593a0e12455c2eac2079c6cf2a882cf935799cfd537815d19dd708d"
+    },
+    {
+      "archive_member": "objects/c8c7ed709f4453e0d7072d16d1438df03efe975f035d2622b20382419a5aab8b",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 7341,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/parallel-work-status.json.reverse.patch",
+      "sha256": "c8c7ed709f4453e0d7072d16d1438df03efe975f035d2622b20382419a5aab8b"
+    },
+    {
+      "archive_member": "objects/3204d5fc2c047718125c631b826fd9d33d1ed3acd4c85de511014f81864af3d2",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 73161,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/reader.html.before",
+      "sha256": "3204d5fc2c047718125c631b826fd9d33d1ed3acd4c85de511014f81864af3d2"
+    },
+    {
+      "archive_member": "objects/052a08192b29acbab2a6e77f8452d83ba5eb8b767ced4b70723dbe1f1bcde627",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 74438,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/reader.html.forward.actual",
+      "sha256": "052a08192b29acbab2a6e77f8452d83ba5eb8b767ced4b70723dbe1f1bcde627"
+    },
+    {
+      "archive_member": "objects/8ba0b8040a16d5ebecb8fb06ad60d2d1ab4e480d7f056b8966598ddac5dce100",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 45042,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/reader.html.forward.patch",
+      "sha256": "8ba0b8040a16d5ebecb8fb06ad60d2d1ab4e480d7f056b8966598ddac5dce100"
+    },
+    {
+      "archive_member": "objects/3204d5fc2c047718125c631b826fd9d33d1ed3acd4c85de511014f81864af3d2",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 73161,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/reader.html.reverse.actual",
+      "sha256": "3204d5fc2c047718125c631b826fd9d33d1ed3acd4c85de511014f81864af3d2"
+    },
+    {
+      "archive_member": "objects/338f5a354a86d6ef16f98c1a52dad3520f95a142ba05d9b9913cca1868d9e6c7",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 45042,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v1/reader.html.reverse.patch",
+      "sha256": "338f5a354a86d6ef16f98c1a52dad3520f95a142ba05d9b9913cca1868d9e6c7"
+    },
+    {
+      "archive_member": "objects/052a08192b29acbab2a6e77f8452d83ba5eb8b767ced4b70723dbe1f1bcde627",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 74438,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v2/reader.html.before",
+      "sha256": "052a08192b29acbab2a6e77f8452d83ba5eb8b767ced4b70723dbe1f1bcde627"
+    },
+    {
+      "archive_member": "objects/da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 74431,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v2/reader.html.forward.actual",
+      "sha256": "da28ddb938a23685e1ddbfdb6071107d9a31620f66f7a79e0da49efc766af07d"
+    },
+    {
+      "archive_member": "objects/c02f8f2cb6ed765a1c247ba9481becd31b0834436ad4d895c6d7cd619c8b37c5",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 26088,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v2/reader.html.forward.patch",
+      "sha256": "c02f8f2cb6ed765a1c247ba9481becd31b0834436ad4d895c6d7cd619c8b37c5"
+    },
+    {
+      "archive_member": "objects/052a08192b29acbab2a6e77f8452d83ba5eb8b767ced4b70723dbe1f1bcde627",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 74438,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v2/reader.html.reverse.actual",
+      "sha256": "052a08192b29acbab2a6e77f8452d83ba5eb8b767ced4b70723dbe1f1bcde627"
+    },
+    {
+      "archive_member": "objects/19f4e72b2d4a5de49824e99015135ff65d2811a4a34b1c562eae982953c3ae46",
+      "binding_scope": "PUBLICATION_PREIMAGE_OR_REAL_PATCH",
+      "bytes": 26088,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-inventory-progress-20261018/reader-preimages-v2/reader.html.reverse.patch",
+      "sha256": "19f4e72b2d4a5de49824e99015135ff65d2811a4a34b1c562eae982953c3ae46"
+    },
+    {
+      "archive_member": "objects/611ff599aad6d038f0b96a6e495bb5c697b92e1d93024c6a758b678d89230237",
+      "binding_scope": "CURRENT_DATA_INPUTS",
+      "bytes": 3503853,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-one-logical-donor-eight-pool-ROOT-20261017/ROOT-expanded-result-v1.json",
+      "sha256": "611ff599aad6d038f0b96a6e495bb5c697b92e1d93024c6a758b678d89230237"
+    },
+    {
+      "archive_member": "objects/227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+      "binding_scope": "CURRENT_INPUTS",
+      "bytes": 8773,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v2.json",
+      "sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02"
+    },
+    {
+      "archive_member": "objects/5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 20112,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+      "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+    },
+    {
+      "archive_member": "objects/99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 10201,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+      "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+    },
+    {
+      "archive_member": "objects/baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 5528,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+      "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+    },
+    {
+      "archive_member": "objects/69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 24227,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+      "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+    },
+    {
+      "archive_member": "objects/6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 26007,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+      "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+    },
+    {
+      "archive_member": "objects/8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 16299,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+      "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+    },
+    {
+      "archive_member": "objects/652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 55852,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+      "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+    },
+    {
+      "archive_member": "objects/50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 31931,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+      "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+    },
+    {
+      "archive_member": "objects/54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 55152,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+      "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+    },
+    {
+      "archive_member": "objects/c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 27553,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+      "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+    },
+    {
+      "archive_member": "objects/c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 22030,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+      "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+    },
+    {
+      "archive_member": "objects/d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 25338,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+      "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+    },
+    {
+      "archive_member": "objects/2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 8134,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+      "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+    },
+    {
+      "archive_member": "objects/cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 11074,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-row-zero-projection-source-20261016/row_zero_rule_projection_v1.py",
+      "sha256": "cbd14dfbcd95daa216638eb91e5b4df832606c7b8dcf910b5e9bd89105f38bab"
+    },
+    {
+      "archive_member": "objects/0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3",
+      "binding_scope": "CURRENT_MODEL_SOURCES",
+      "bytes": 130156,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+      "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+    },
+    {
+      "archive_member": "objects/50d8220e0e84ea2342b6ae4b1ebc72b69ae0593ccd64657cb595d2b90a74a7c6",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5581,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-case-peer-20261018/typed-Source-review-v2.json",
+      "sha256": "50d8220e0e84ea2342b6ae4b1ebc72b69ae0593ccd64657cb595d2b90a74a7c6"
+    },
+    {
+      "archive_member": "objects/a78764628a99161845f9eb0ee4d50c2bb60198f4a38e5255616e0141c1984d6c",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 11958,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-case-v2-source-20261018/Source-contract-v2.json",
+      "sha256": "a78764628a99161845f9eb0ee4d50c2bb60198f4a38e5255616e0141c1984d6c"
+    },
+    {
+      "archive_member": "objects/ee2fc8112b6e33dd57bab5e57f52cacbb30dac99c4a52610f5c8e1dfa9a33b24",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 37934,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-case-v2-source-20261018/independent_cache_adversarial_cases_v2.py",
+      "sha256": "ee2fc8112b6e33dd57bab5e57f52cacbb30dac99c4a52610f5c8e1dfa9a33b24"
+    },
+    {
+      "archive_member": "objects/1429f9c3dd3b8560ddb9ee33ce040fc9f550d0801cef2060767b7d8d05b2a3bf",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5229,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-peer-20261018/typed-Source-review-v9.json",
+      "sha256": "1429f9c3dd3b8560ddb9ee33ce040fc9f550d0801cef2060767b7d8d05b2a3bf"
+    },
+    {
+      "archive_member": "objects/8a0c51a44379d181655b810c94e96d394334c0b95e1dfb0813673ed51c8a268d",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 9276,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-v9-source-20261018/Source-contract-v1.json",
+      "sha256": "8a0c51a44379d181655b810c94e96d394334c0b95e1dfb0813673ed51c8a268d"
+    },
+    {
+      "archive_member": "objects/08479b26f9535fa0083a6cd2e99a1634914c850a508dbfd71948bc660d99ddbd",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 49470,
+      "original_path": "/private/tmp/gcts-checked-prototype-cache-v9-source-20261018/marked_unit_row_adapter_v9.py",
+      "sha256": "08479b26f9535fa0083a6cd2e99a1634914c850a508dbfd71948bc660d99ddbd"
+    },
+    {
+      "archive_member": "objects/4f6a9a4b26d9c5d028175d399e4055075ba7c5c6daf43f64087d545a977d5ff7",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 13421,
+      "original_path": "/private/tmp/gcts-closed-root-checker-cases-peer-20261018/cases-Source-audit-v1.json",
+      "sha256": "4f6a9a4b26d9c5d028175d399e4055075ba7c5c6daf43f64087d545a977d5ff7"
+    },
+    {
+      "archive_member": "objects/b72a37662285d94bbaad98974d9b6252e5cc18e3e49cde0e01cd1883755e8e7f",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 12825,
+      "original_path": "/private/tmp/gcts-closed-root-checker-cases-peer-20261018/cases-typed-Source-review-v1.json",
+      "sha256": "b72a37662285d94bbaad98974d9b6252e5cc18e3e49cde0e01cd1883755e8e7f"
+    },
+    {
+      "archive_member": "objects/cd3056b56e44fc5d129bf9f2801d5afce340c6e1a9b91c8e0cbbd2d9c03875b8",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 10909,
+      "original_path": "/private/tmp/gcts-closed-root-checker-cases-peer-20261018/checker-Source-audit-v1.json",
+      "sha256": "cd3056b56e44fc5d129bf9f2801d5afce340c6e1a9b91c8e0cbbd2d9c03875b8"
+    },
+    {
+      "archive_member": "objects/1caf80498a20f2725d4db10e192725900a458e6097a0019f061f2fb96d10b53a",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 10238,
+      "original_path": "/private/tmp/gcts-closed-root-checker-cases-peer-20261018/checker-typed-Source-review-v1.json",
+      "sha256": "1caf80498a20f2725d4db10e192725900a458e6097a0019f061f2fb96d10b53a"
+    },
+    {
+      "archive_member": "objects/630d55649f782e8b080521686bbc037d81f8f5dfe060401f0a5186310a4cdd4e",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 2876,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-API-wire-v1.json",
+      "sha256": "630d55649f782e8b080521686bbc037d81f8f5dfe060401f0a5186310a4cdd4e"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 0,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-F0-empty.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/341c2d8d2143009edaef950603d9415e18c2d575fc934e6eca97e53e4113ce68",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 13268,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-Source-contract-v1.json",
+      "sha256": "341c2d8d2143009edaef950603d9415e18c2d575fc934e6eca97e53e4113ce68"
+    },
+    {
+      "archive_member": "objects/5af44065be01a1ed04be69df89d44417fa9ccfc1a1271a30ed34ca181c3b15bf",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 1936,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-Source-delta-v1.json",
+      "sha256": "5af44065be01a1ed04be69df89d44417fa9ccfc1a1271a30ed34ca181c3b15bf"
+    },
+    {
+      "archive_member": "objects/5245f4e132a5c8b2fc9f4d30d07bbe51b2e5af7696311e097c970bda08e6d998",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 19770,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-forward.patch",
+      "sha256": "5245f4e132a5c8b2fc9f4d30d07bbe51b2e5af7696311e097c970bda08e6d998"
+    },
+    {
+      "archive_member": "objects/8f1af8fd97e5c73cbace51d5f2ec78176eabe6c3e0aa0b6703f72e9d8e5fd97c",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 5435,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-handoff-v1.json",
+      "sha256": "8f1af8fd97e5c73cbace51d5f2ec78176eabe6c3e0aa0b6703f72e9d8e5fd97c"
+    },
+    {
+      "archive_member": "objects/72b6e1a1765acdc08a3546d424499d921333d48d6d4e89cff544a6fca74ae6a0",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 19770,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-inverse.patch",
+      "sha256": "72b6e1a1765acdc08a3546d424499d921333d48d6d4e89cff544a6fca74ae6a0"
+    },
+    {
+      "archive_member": "objects/bd9e49a349c01bf364e1e385246b34d6454301cfbec5bb4a729a140d2910afbb",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 3588,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/cases-static-audit-v1.json",
+      "sha256": "bd9e49a349c01bf364e1e385246b34d6454301cfbec5bb4a729a140d2910afbb"
+    },
+    {
+      "archive_member": "objects/e9618fd97fc06812323d4d2598e040cfe4065f99a8b560cefeac4056ce750533",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 1944,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-API-wire-v1.json",
+      "sha256": "e9618fd97fc06812323d4d2598e040cfe4065f99a8b560cefeac4056ce750533"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 0,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-F0-empty.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/28da9cec1254f36168ea254216e848e65a07ce91eb7996359cae3589933ac121",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 10525,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-Source-contract-v1.json",
+      "sha256": "28da9cec1254f36168ea254216e848e65a07ce91eb7996359cae3589933ac121"
+    },
+    {
+      "archive_member": "objects/5af26d18d5c5cd05892245089a64b97338f2caa7d7553ff644b27fe0d2031a40",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 1969,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-Source-delta-v1.json",
+      "sha256": "5af26d18d5c5cd05892245089a64b97338f2caa7d7553ff644b27fe0d2031a40"
+    },
+    {
+      "archive_member": "objects/53b780fc5a8634beed7715458dda2a8d654d31562331a365c29c2da0aa8ecc17",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 33345,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-forward.patch",
+      "sha256": "53b780fc5a8634beed7715458dda2a8d654d31562331a365c29c2da0aa8ecc17"
+    },
+    {
+      "archive_member": "objects/b7f02ca2d6becdd662d6f9b4990052226ac9b5ee348bb5c36801df40ea346c78",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 2822,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-handoff-v1.json",
+      "sha256": "b7f02ca2d6becdd662d6f9b4990052226ac9b5ee348bb5c36801df40ea346c78"
+    },
+    {
+      "archive_member": "objects/67f0436bc3ffa1a2eb266cc77beffd3f2658cce3d214ed9a2f4412269ee716c7",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 33345,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-inverse.patch",
+      "sha256": "67f0436bc3ffa1a2eb266cc77beffd3f2658cce3d214ed9a2f4412269ee716c7"
+    },
+    {
+      "archive_member": "objects/5c6bb8f28e26c881be9cd7e920f395cb85b7eb64864ee0ab9160c0cc2a80915f",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 3798,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/checker-static-audit-v1.json",
+      "sha256": "5c6bb8f28e26c881be9cd7e920f395cb85b7eb64864ee0ab9160c0cc2a80915f"
+    },
+    {
+      "archive_member": "objects/6c76b690c10f072c6520b9374c535a04811482944a8210ca2502603d9985e33f",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 3606,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/closed-root-three-case-English-map-v1.json",
+      "sha256": "6c76b690c10f072c6520b9374c535a04811482944a8210ca2502603d9985e33f"
+    },
+    {
+      "archive_member": "objects/e26d2132f3da5d65bc7a27ececa6d8e3db8d5eea619efdcb8b91cbbd6254052c",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 19396,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/closed_root_finite_cases_v1.py",
+      "sha256": "e26d2132f3da5d65bc7a27ececa6d8e3db8d5eea619efdcb8b91cbbd6254052c"
+    },
+    {
+      "archive_member": "objects/4d0cd7056da6d01740558699a514e0872e5e15be9fd367b8727aba4465490395",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 16772,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/freeze_Source_metadata_v1.py",
+      "sha256": "4d0cd7056da6d01740558699a514e0872e5e15be9fd367b8727aba4465490395"
+    },
+    {
+      "archive_member": "objects/cee7492fbc2791eec1b7ef0aebfde53f4e55199325aea6e32d53245192d70466",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 1596,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/handoff-v1.json",
+      "sha256": "cee7492fbc2791eec1b7ef0aebfde53f4e55199325aea6e32d53245192d70466"
+    },
+    {
+      "archive_member": "objects/17c38ff7b9395f5b467ef462e33bdd438d93c373d9d966334d989c24a1ea09d6",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 32689,
+      "original_path": "/private/tmp/gcts-closed-root-checker-source-20261018/independent_closed_root_checker_v1.py",
+      "sha256": "17c38ff7b9395f5b467ef462e33bdd438d93c373d9d966334d989c24a1ea09d6"
+    },
+    {
+      "archive_member": "objects/177d4e45493b66e7c17e9ce5b399bcbb05bb84b08ada98b36596b503596002ab",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 10212,
+      "original_path": "/private/tmp/gcts-closed-root-cold-peer-20261018/audit_cold_v1.py",
+      "sha256": "177d4e45493b66e7c17e9ce5b399bcbb05bb84b08ada98b36596b503596002ab"
+    },
+    {
+      "archive_member": "objects/9b98080a65fa685bad782dba38bf33545d3b60686af2b66a896eb471c877ca19",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 8081,
+      "original_path": "/private/tmp/gcts-closed-root-cold-peer-20261018/audit_composition_v1.py",
+      "sha256": "9b98080a65fa685bad782dba38bf33545d3b60686af2b66a896eb471c877ca19"
+    },
+    {
+      "archive_member": "objects/693f5e56c9824bc1b2bd825e23525d86364365e5010d265e809f7fc6372d3d99",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 10312,
+      "original_path": "/private/tmp/gcts-closed-root-cold-peer-20261018/composition-audit-v1.json",
+      "sha256": "693f5e56c9824bc1b2bd825e23525d86364365e5010d265e809f7fc6372d3d99"
+    },
+    {
+      "archive_member": "objects/b5dbd4c8c67c970a4ea7902b663f68e4ac006203401369c35f90f78ad7823f8f",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 7430,
+      "original_path": "/private/tmp/gcts-closed-root-cold-peer-20261018/freeze_review_v1.py",
+      "sha256": "b5dbd4c8c67c970a4ea7902b663f68e4ac006203401369c35f90f78ad7823f8f"
+    },
+    {
+      "archive_member": "objects/3f213107f7f3e78c9773c625812937b0775f2508bf46ebda2c85c182463e7cd5",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 2360,
+      "original_path": "/private/tmp/gcts-closed-root-cold-peer-20261018/handoff-v1.json",
+      "sha256": "3f213107f7f3e78c9773c625812937b0775f2508bf46ebda2c85c182463e7cd5"
+    },
+    {
+      "archive_member": "objects/e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 55881,
+      "original_path": "/private/tmp/gcts-closed-root-cold-peer-20261018/independent-cold-forward-v1.py",
+      "sha256": "e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38"
+    },
+    {
+      "archive_member": "objects/535277e01b1a176f8c36bf886de56e65e69c30412ab72f9dc4d1960473224f30",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 53837,
+      "original_path": "/private/tmp/gcts-closed-root-cold-peer-20261018/independent-cold-reverse-v1.py",
+      "sha256": "535277e01b1a176f8c36bf886de56e65e69c30412ab72f9dc4d1960473224f30"
+    },
+    {
+      "archive_member": "objects/9bd832deb71143156aeb8f3cc97ce45e6b54c740f4eb46daabf6ef806ce6854a",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 47269,
+      "original_path": "/private/tmp/gcts-closed-root-cold-peer-20261018/static-audit-v1.json",
+      "sha256": "9bd832deb71143156aeb8f3cc97ce45e6b54c740f4eb46daabf6ef806ce6854a"
+    },
+    {
+      "archive_member": "objects/826298b34e766346b6c62c25a06bd7c0aaf8dd6419c53bc311183320ac27bd0d",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 18278,
+      "original_path": "/private/tmp/gcts-closed-root-cold-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "826298b34e766346b6c62c25a06bd7c0aaf8dd6419c53bc311183320ac27bd0d"
+    },
+    {
+      "archive_member": "objects/9b1a039a64de65365ff3f2dc4e9ae3cda4818cf5d615be630d340b6d5e347d6d",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 44129,
+      "original_path": "/private/tmp/gcts-closed-root-finite-data-peer-20261018/saved-data-audit-v1.json",
+      "sha256": "9b1a039a64de65365ff3f2dc4e9ae3cda4818cf5d615be630d340b6d5e347d6d"
+    },
+    {
+      "archive_member": "objects/531961c5d477e1949340c46fa5ca12234a87713d80b74a3b1d8c05aa4dce8587",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 6820,
+      "original_path": "/private/tmp/gcts-closed-root-finite-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "531961c5d477e1949340c46fa5ca12234a87713d80b74a3b1d8c05aa4dce8587"
+    },
+    {
+      "archive_member": "objects/520da2f292baa83a5635357c9d8878d4bc1ea8f4dbd60e35162ef28bfecc15aa",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 15841,
+      "original_path": "/private/tmp/gcts-closed-root-human-report-review-20261018/compare_report_labels_v1.py",
+      "sha256": "520da2f292baa83a5635357c9d8878d4bc1ea8f4dbd60e35162ef28bfecc15aa"
+    },
+    {
+      "archive_member": "objects/daf37b2e083a1b2657e3a02dd1c42f9ab826a04a736f6efdcd324e06cce4fecd",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 78403,
+      "original_path": "/private/tmp/gcts-closed-root-human-report-review-20261018/expected-saved-labels-v1.json",
+      "sha256": "daf37b2e083a1b2657e3a02dd1c42f9ab826a04a736f6efdcd324e06cce4fecd"
+    },
+    {
+      "archive_member": "objects/7d4b5b0a9f71d015126c65a1afcf51eaa431ddc1bed27cbd5af599d6b82770fc",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 144657,
+      "original_path": "/private/tmp/gcts-closed-root-human-report-review-20261018/saved-comparison-v1.json",
+      "sha256": "7d4b5b0a9f71d015126c65a1afcf51eaa431ddc1bed27cbd5af599d6b82770fc"
+    },
+    {
+      "archive_member": "objects/8304d7d5c3755a4dacadb3c62bc1924a212905177a795ac13ac12c7dde11020b",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 12453,
+      "original_path": "/private/tmp/gcts-closed-root-human-report-review-20261018/typed-report-review-v1.json",
+      "sha256": "8304d7d5c3755a4dacadb3c62bc1924a212905177a795ac13ac12c7dde11020b"
+    },
+    {
+      "archive_member": "objects/a84dba9c233b4642795d9f21bf9fc98e66ba74d8aeeb3702c361963fd357c242",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 6838,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-methodology-peer-20261018/methodology-review-v1.json",
+      "sha256": "a84dba9c233b4642795d9f21bf9fc98e66ba74d8aeeb3702c361963fd357c242"
+    },
+    {
+      "archive_member": "objects/98d50efa609539d54b1dbf0fc513b609796f3fe846cdf55ede9742efe0c92327",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 7508,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-peer-20261018/Source-audit-v1.json",
+      "sha256": "98d50efa609539d54b1dbf0fc513b609796f3fe846cdf55ede9742efe0c92327"
+    },
+    {
+      "archive_member": "objects/667a759978a233b1c8f7a62a353da663a791e01f2158312d0cf715a6e99d8e8d",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 6377,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "667a759978a233b1c8f7a62a353da663a791e01f2158312d0cf715a6e99d8e8d"
+    },
+    {
+      "archive_member": "objects/3217e768208d97c3949d1100eb5bcac264287be1a2210ca7b074771cb4f059e5",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 3817,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/API-wire-v1.json",
+      "sha256": "3217e768208d97c3949d1100eb5bcac264287be1a2210ca7b074771cb4f059e5"
+    },
+    {
+      "archive_member": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 0,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/F0-empty.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "objects/581c11f1a34474d3778d4e6ad047058d759608acf6e2a9eb97b76cd27898bdfe",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 6815,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/Source-contract-v1.json",
+      "sha256": "581c11f1a34474d3778d4e6ad047058d759608acf6e2a9eb97b76cd27898bdfe"
+    },
+    {
+      "archive_member": "objects/91d22c5b62bd4a6aac061e80fd24c1f10dd8dbfb019ddb50daab20badaa11a5d",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 4712,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/Source-delta-v1.json",
+      "sha256": "91d22c5b62bd4a6aac061e80fd24c1f10dd8dbfb019ddb50daab20badaa11a5d"
+    },
+    {
+      "archive_member": "objects/8c7cc3fe6b01ce6d91329d6f71d592ac7974a6166498a6acbcfa8700a19a9e1b",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 10802,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/closed_root_ancestry_inventory_v1.py",
+      "sha256": "8c7cc3fe6b01ce6d91329d6f71d592ac7974a6166498a6acbcfa8700a19a9e1b"
+    },
+    {
+      "archive_member": "objects/be6b33534defbc6a10cb22805c292bdb6197af6c8d36118ba4ca0749d43dde72",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 11130,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/forward.patch",
+      "sha256": "be6b33534defbc6a10cb22805c292bdb6197af6c8d36118ba4ca0749d43dde72"
+    },
+    {
+      "archive_member": "objects/13d78ea7fcb88f55d3c494893ba954e860d77fc4c3a687b4f04912ee2567c74b",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 15852,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/freeze_packet_v1.py",
+      "sha256": "13d78ea7fcb88f55d3c494893ba954e860d77fc4c3a687b4f04912ee2567c74b"
+    },
+    {
+      "archive_member": "objects/be3d3c5fa882633d1c41480a4b6345989d31d0e0cb307519dca16fbd42847bf9",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 4087,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/handoff-v1.json",
+      "sha256": "be3d3c5fa882633d1c41480a4b6345989d31d0e0cb307519dca16fbd42847bf9"
+    },
+    {
+      "archive_member": "objects/f3fbf040031fe003ecb6675543a1c99154f415e02fef2ec178b12ab2430c9d4f",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 11130,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/inverse.patch",
+      "sha256": "f3fbf040031fe003ecb6675543a1c99154f415e02fef2ec178b12ab2430c9d4f"
+    },
+    {
+      "archive_member": "objects/7e19d1850908d1e7a351259b5632d84f4ae6cfa065cbaed750c5e2be2835edc6",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 7843,
+      "original_path": "/private/tmp/gcts-closed-root-inventory-source-20261018/static-audit-v1.json",
+      "sha256": "7e19d1850908d1e7a351259b5632d84f4ae6cfa065cbaed750c5e2be2835edc6"
+    },
+    {
+      "archive_member": "objects/e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 55881,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/actual-cold-forward-v1.py",
+      "sha256": "e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38"
+    },
+    {
+      "archive_member": "objects/535277e01b1a176f8c36bf886de56e65e69c30412ab72f9dc4d1960473224f30",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 53837,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/actual-cold-reverse-v1.py",
+      "sha256": "535277e01b1a176f8c36bf886de56e65e69c30412ab72f9dc4d1960473224f30"
+    },
+    {
+      "archive_member": "objects/ba07c082383cffb782b29cf79ef27a40621b599f605bba1f43e7b77645e34384",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 9933,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/admit_actual_v1.py",
+      "sha256": "ba07c082383cffb782b29cf79ef27a40621b599f605bba1f43e7b77645e34384"
+    },
+    {
+      "archive_member": "objects/3eae82f06f7c20b00c616e62d67f7e4f4aef12cb05330e52a834c18757eb1735",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 8323,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_cold_v1.py",
+      "sha256": "3eae82f06f7c20b00c616e62d67f7e4f4aef12cb05330e52a834c18757eb1735"
+    },
+    {
+      "archive_member": "objects/ef3b5b1bac7c0ca8847c9d7f09d33e70aa7f64ee40db7e670fcb8408d63bfe61",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 6105,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_evidence_v1.py",
+      "sha256": "ef3b5b1bac7c0ca8847c9d7f09d33e70aa7f64ee40db7e670fcb8408d63bfe61"
+    },
+    {
+      "archive_member": "objects/a9e41f73250d8491b7a402250e22676e93613761b52ea00f400c584dcc96ba5e",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 18461,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_report_v1.py",
+      "sha256": "a9e41f73250d8491b7a402250e22676e93613761b52ea00f400c584dcc96ba5e"
+    },
+    {
+      "archive_member": "objects/dcd30d44a553b1a9ea042a52b373f948a76782309cb20b7291e57336dc34583b",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 18542,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_report_v2.py",
+      "sha256": "dcd30d44a553b1a9ea042a52b373f948a76782309cb20b7291e57336dc34583b"
+    },
+    {
+      "archive_member": "objects/7932d876a8bda671921b74d8ce38d6d133f89dd1ff49679e4c33e26519974f8d",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 18542,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/build_report_v3.py",
+      "sha256": "7932d876a8bda671921b74d8ce38d6d133f89dd1ff49679e4c33e26519974f8d"
+    },
+    {
+      "archive_member": "objects/e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 55881,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/closed_root_cold_v1.py",
+      "sha256": "e2c4dc3c5afc777e7673e4e9159cb70b13e59c97aaa2bfa4a1a08f4137747f38"
+    },
+    {
+      "archive_member": "objects/c3cc1e6f31c4d2eba30c38cd1d976c464851365b0d40311c09d9f77569cadff6",
+      "binding_scope": "CURRENT_FULL_COMPOSITION_CONTRACT",
+      "bytes": 31482,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/cold-Source-contract-v1.json",
+      "sha256": "c3cc1e6f31c4d2eba30c38cd1d976c464851365b0d40311c09d9f77569cadff6"
+    },
+    {
+      "archive_member": "objects/e671d0f1bfaad0c4e8c2d008515673e49bbc88884f14eed9ab66c6a1fe5de18f",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 50265,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/cold-forward-v1.patch",
+      "sha256": "e671d0f1bfaad0c4e8c2d008515673e49bbc88884f14eed9ab66c6a1fe5de18f"
+    },
+    {
+      "archive_member": "objects/82f2f9441113c478388f76e7d397d1a66debef09c96b3928a449e9b90644d602",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 50265,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/cold-reverse-v1.patch",
+      "sha256": "82f2f9441113c478388f76e7d397d1a66debef09c96b3928a449e9b90644d602"
+    },
+    {
+      "archive_member": "objects/be237f12819d58f918a7f1fffda3b2c8ca30c13bf877c84c27201aa31c033ec9",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 2306,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/current-review-index-v1.json",
+      "sha256": "be237f12819d58f918a7f1fffda3b2c8ca30c13bf877c84c27201aa31c033ec9"
+    },
+    {
+      "archive_member": "objects/ebb98a1edb11af7d3727edcad4d2d268e1da3bdcc966a057003444f440864204",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 6179,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/decode_actual_v1.py",
+      "sha256": "ebb98a1edb11af7d3727edcad4d2d268e1da3bdcc966a057003444f440864204"
+    },
+    {
+      "archive_member": "objects/258cd49076c24f0177ea9feeb9eb1ecb29a40aae47e4a14fd01be2ba0f78fbcd",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 4613,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/freeze_actual_v1.py",
+      "sha256": "258cd49076c24f0177ea9feeb9eb1ecb29a40aae47e4a14fd01be2ba0f78fbcd"
+    },
+    {
+      "archive_member": "objects/b5c168c7f051b36f24a93d83ffd940bbe609bc00cec051661ac20cd74aa5cbbb",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 7921,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/update_readers_v1.py",
+      "sha256": "b5c168c7f051b36f24a93d83ffd940bbe609bc00cec051661ac20cd74aa5cbbb"
+    },
+    {
+      "archive_member": "objects/e513e448aafc1a550d46717c0ec7b147be9194f1c412033980f3c8395e74a3f5",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 7914,
+      "original_path": "/private/tmp/gcts-closed-root-root-source-20261018/update_readers_v3.py",
+      "sha256": "e513e448aafc1a550d46717c0ec7b147be9194f1c412033980f3c8395e74a3f5"
+    },
+    {
+      "archive_member": "objects/0ec122faa2cb90461998223bb4096bb6141d8ded0a4c53fbffbf773b0465d752",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 6594,
+      "original_path": "/private/tmp/gcts-closed-root-search-plan-20261018/next-selected-search-brief-v1.json",
+      "sha256": "0ec122faa2cb90461998223bb4096bb6141d8ded0a4c53fbffbf773b0465d752"
+    },
+    {
+      "archive_member": "objects/c68a7a67a7ae9118c6b76ff79864dc0a4a15b4f2ccc48e3123778edf72bfa1ee",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 16375,
+      "original_path": "/private/tmp/gcts-closed-root-search-plan-20261018/next-selected-search-plan-v1.json",
+      "sha256": "c68a7a67a7ae9118c6b76ff79864dc0a4a15b4f2ccc48e3123778edf72bfa1ee"
+    },
+    {
+      "archive_member": "objects/7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 15276,
+      "original_path": "/private/tmp/gcts-coarse-head-plan-marks-source-20261017/coarse_formula_head_plan_marks_v1.py",
+      "sha256": "7595f771bd09953ffb736cd18c66ebedb19e7b51407c977f61f5ea8108416738"
+    },
+    {
+      "archive_member": "objects/a81b8390cedfa82d59cd084cd641c790a659e6073627584d94ecbfea8434ac34",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 3346,
+      "original_path": "/private/tmp/gcts-cross-host-channel45-consumer-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "a81b8390cedfa82d59cd084cd641c790a659e6073627584d94ecbfea8434ac34"
+    },
+    {
+      "archive_member": "objects/b2dcd4424e99249063d507319d6531f3e3d3a61609913cdfea4a69ac437a49bf",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 9521,
+      "original_path": "/private/tmp/gcts-cross-host-channel45-consumer-source-20261017/Source-contract-v1.json",
+      "sha256": "b2dcd4424e99249063d507319d6531f3e3d3a61609913cdfea4a69ac437a49bf"
+    },
+    {
+      "archive_member": "objects/36475627b4b8454666e4990b06ce3acfbef493b91338cd1902b4c068135eacfc",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 13016,
+      "original_path": "/private/tmp/gcts-cross-host-channel45-consumer-source-20261017/receptor_family_preference_consumer_v3.py",
+      "sha256": "36475627b4b8454666e4990b06ce3acfbef493b91338cd1902b4c068135eacfc"
+    },
+    {
+      "archive_member": "objects/22a72f532b5f62513b4e8845361848d377d9d736e1f9dcce9a4d8e1b4a6bebfb",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 2482,
+      "original_path": "/private/tmp/gcts-cross-host-pool-provider-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "22a72f532b5f62513b4e8845361848d377d9d736e1f9dcce9a4d8e1b4a6bebfb"
+    },
+    {
+      "archive_member": "objects/2915b2d0779ed231d327203aa29a39ce74d4416012fc0cb77a60fe8579dcb311",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 11407,
+      "original_path": "/private/tmp/gcts-cross-host-pool-provider-source-20261017/Source-contract-v1.json",
+      "sha256": "2915b2d0779ed231d327203aa29a39ce74d4416012fc0cb77a60fe8579dcb311"
+    },
+    {
+      "archive_member": "objects/3e27688b659a3291690b6046b9028b1d2230c2ae062717b24f26a0ca127f29d5",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 79580,
+      "original_path": "/private/tmp/gcts-cross-host-pool-provider-source-20261017/cross_host_conditional_pool_provider_v1.py",
+      "sha256": "3e27688b659a3291690b6046b9028b1d2230c2ae062717b24f26a0ca127f29d5"
+    },
+    {
+      "archive_member": "objects/4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 56670,
+      "original_path": "/private/tmp/gcts-current-source-pool-20261017/independent_receptor_family_expansion_checker_v1.py",
+      "sha256": "4358026b3eeb9c96366d522c65b5f6d6d4acd7336a0816360da5cd44233a93b1"
+    },
+    {
+      "archive_member": "objects/d8f962856a047aed10b4c11eab5077c5afe1723da69d694b304b8e021307a2e7",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 8293,
+      "original_path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/cases-Source-contract-v1.json",
+      "sha256": "d8f962856a047aed10b4c11eab5077c5afe1723da69d694b304b8e021307a2e7"
+    },
+    {
+      "archive_member": "objects/47c38cf1c8eac4a0d13676628b3641dd26e4a35fc700c2996fb622512c848eab",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 5618,
+      "original_path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/checker-Source-contract-v1.json",
+      "sha256": "47c38cf1c8eac4a0d13676628b3641dd26e4a35fc700c2996fb622512c848eab"
+    },
+    {
+      "archive_member": "objects/d5ac27c67977c5ba5a0093d9ba9909706460fff816023d893f8df04ef4c76351",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 27980,
+      "original_path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/independent_licensed_cut_checker_v2.py",
+      "sha256": "d5ac27c67977c5ba5a0093d9ba9909706460fff816023d893f8df04ef4c76351"
+    },
+    {
+      "archive_member": "objects/972cde6bc15db7d2b2610f1f5bff394e55a27b571b918177d4760dcdfee1fe25",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 31204,
+      "original_path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/licensed_cluster_finite_cases_v2.py",
+      "sha256": "972cde6bc15db7d2b2610f1f5bff394e55a27b571b918177d4760dcdfee1fe25"
+    },
+    {
+      "archive_member": "objects/8e1419f625fca27e0faf49e201cd62093e2b7f64bd0ebb05d91150c888f2261e",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 6966,
+      "original_path": "/private/tmp/gcts-larger-cluster-miner-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "8e1419f625fca27e0faf49e201cd62093e2b7f64bd0ebb05d91150c888f2261e"
+    },
+    {
+      "archive_member": "objects/910d9a364a3c47deda40a3c9ac60474f8ae9c58a54bd39a68cd613c7ccaebdcb",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 7506,
+      "original_path": "/private/tmp/gcts-larger-cluster-miner-source-20261018/Source-contract-v1.json",
+      "sha256": "910d9a364a3c47deda40a3c9ac60474f8ae9c58a54bd39a68cd613c7ccaebdcb"
+    },
+    {
+      "archive_member": "objects/31619db6656c8244de134f0551d4120cc3b3767040908f64ce7aff23182f21ca",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 55478,
+      "original_path": "/private/tmp/gcts-larger-cluster-miner-source-20261018/receptor_family_miner_v4.py",
+      "sha256": "31619db6656c8244de134f0551d4120cc3b3767040908f64ce7aff23182f21ca"
+    },
+    {
+      "archive_member": "objects/ba3bc0f93db452e39f288744f5e02c7b61088ddf8fd6430ea0335192422f389c",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 9136,
+      "original_path": "/private/tmp/gcts-licensed-cluster-checker-cases-peer-20261018/typed-cases-Source-review-v2.json",
+      "sha256": "ba3bc0f93db452e39f288744f5e02c7b61088ddf8fd6430ea0335192422f389c"
+    },
+    {
+      "archive_member": "objects/5d8d05daa9d1a6e6ce6965db82d1fb086bf0e41c3cc46a0b5928d01bf248c021",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5657,
+      "original_path": "/private/tmp/gcts-licensed-cluster-checker-cases-peer-20261018/typed-checker-Source-review-v2.json",
+      "sha256": "5d8d05daa9d1a6e6ce6965db82d1fb086bf0e41c3cc46a0b5928d01bf248c021"
+    },
+    {
+      "archive_member": "objects/9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0",
+      "binding_scope": "UNCHANGED_NATIVE_HARNESS",
+      "bytes": 4357,
+      "original_path": "/private/tmp/gcts-lossless-first-admission-ROOT-source-20261017/ROOT_external_once_v1.py",
+      "sha256": "9ded650bc257a7c5bb02388098f92803743d42f40629908b98f864a562289ef0"
+    },
+    {
+      "archive_member": "objects/fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 60281,
+      "original_path": "/private/tmp/gcts-observed-subset-expander-source-20261017/receptor_family_expander_v2.py",
+      "sha256": "fd3eb85497b9845422d56ab3d734a84a8c0a358f4931bc8b61243d66eacaff18"
+    },
+    {
+      "archive_member": "objects/2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 12826,
+      "original_path": "/private/tmp/gcts-residual-binding-prefix-source-20261017/residual_binding_prefix_v2.py",
+      "sha256": "2925609b1ec3cb0957b1030bcfcf8a4bfc2ea4b29f35ec3b44e30ed776bdd479"
+    },
+    {
+      "archive_member": "objects/e5abea1ad3fbebcb048de1f8d4db726f829409220c158c1500f6810251edf53f",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 8408,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-cases-peer-20261018/cases-typed-Source-review-v2.json",
+      "sha256": "e5abea1ad3fbebcb048de1f8d4db726f829409220c158c1500f6810251edf53f"
+    },
+    {
+      "archive_member": "objects/4ba34f5e039e71ddf490870b361a6b2feb3aad6cfd2e1b2712a2f7ca9fd9c12b",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 4814,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-cases-peer-20261018/checker-typed-Source-review-v1.json",
+      "sha256": "4ba34f5e039e71ddf490870b361a6b2feb3aad6cfd2e1b2712a2f7ca9fd9c12b"
+    },
+    {
+      "archive_member": "objects/e3d5b77fc7263c26814afd02e06c42e857088cb3f1df9838ec45864cb5b17160",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 4793,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-source-20261018/checker-Source-contract-v1.json",
+      "sha256": "e3d5b77fc7263c26814afd02e06c42e857088cb3f1df9838ec45864cb5b17160"
+    },
+    {
+      "archive_member": "objects/ef8f34fb191bcd89f518dbec081f77508c06835c45515bbc8fde117bf7f1707c",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 20110,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-source-20261018/independent_role_receptor_checker_v1.py",
+      "sha256": "ef8f34fb191bcd89f518dbec081f77508c06835c45515bbc8fde117bf7f1707c"
+    },
+    {
+      "archive_member": "objects/e0544d2cbd832e52010cae5b37112db41b8cd7ae9d336ddb97fcef39aece5d9b",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 8298,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/cases-Source-contract-v1.json",
+      "sha256": "e0544d2cbd832e52010cae5b37112db41b8cd7ae9d336ddb97fcef39aece5d9b"
+    },
+    {
+      "archive_member": "objects/8bb506fdb70e327ef55cf71ff2eda53a48010fd2779af0393f6c16fd6b868b6d",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 23741,
+      "original_path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/role_receptor_finite_cases_v2.py",
+      "sha256": "8bb506fdb70e327ef55cf71ff2eda53a48010fd2779af0393f6c16fd6b868b6d"
+    },
+    {
+      "archive_member": "objects/9daf86e17a3b677d689061a330dbe5c0350e690530c2dd7f4e32f8591f3335ae",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 6659,
+      "original_path": "/private/tmp/gcts-role-receptor-lifter-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "9daf86e17a3b677d689061a330dbe5c0350e690530c2dd7f4e32f8591f3335ae"
+    },
+    {
+      "archive_member": "objects/0257148dc2f4a74d2e8d264e31b99d65afef4e6c6f35320355ccaafb6939db75",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 6371,
+      "original_path": "/private/tmp/gcts-role-receptor-lifter-source-20261018/Source-contract-v1.json",
+      "sha256": "0257148dc2f4a74d2e8d264e31b99d65afef4e6c6f35320355ccaafb6939db75"
+    },
+    {
+      "archive_member": "objects/106afb1ffe8b15ad7416fab12e63e879102fd506b10fafbee071fc1b87b7f2a1",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 26184,
+      "original_path": "/private/tmp/gcts-role-receptor-lifter-source-20261018/equality_role_receptor_lifter_v1.py",
+      "sha256": "106afb1ffe8b15ad7416fab12e63e879102fd506b10fafbee071fc1b87b7f2a1"
+    },
+    {
+      "archive_member": "objects/fe763a3c6feef960e2b685d1812a4fc5640bf40ea8e9da354575a9508c967461",
+      "binding_scope": "UNCHANGED_COLD_PARENT_FOR_TEXT_PATCH",
+      "bytes": 29406,
+      "original_path": "/private/tmp/gcts-role-receptor-root-v2-source-20261018/cold-Source-contract-v1.json",
+      "sha256": "fe763a3c6feef960e2b685d1812a4fc5640bf40ea8e9da354575a9508c967461"
+    },
+    {
+      "archive_member": "objects/535277e01b1a176f8c36bf886de56e65e69c30412ab72f9dc4d1960473224f30",
+      "binding_scope": "UNCHANGED_COLD_PARENT_FOR_TEXT_PATCH",
+      "bytes": 53837,
+      "original_path": "/private/tmp/gcts-role-receptor-root-v2-source-20261018/role_receptor_cold_v2.py",
+      "sha256": "535277e01b1a176f8c36bf886de56e65e69c30412ab72f9dc4d1960473224f30"
+    },
+    {
+      "archive_member": "objects/04b92a21e48c1c057427f190b30be089ec988aa29e7c6ba2759178fcc0be9204",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 14085,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/marked_aware_nonimp_fibre_proposer_v2.py",
+      "sha256": "04b92a21e48c1c057427f190b30be089ec988aa29e7c6ba2759178fcc0be9204"
+    },
+    {
+      "archive_member": "objects/ad24a7114f8338f522591a43b95106e11bfe3c7bfff69dd6b5286e36059ac8e6",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 14802,
+      "original_path": "/private/tmp/gcts-row0-head-channel5-source-20261017/selected_dag_first_proof_observer_v3.py",
+      "sha256": "ad24a7114f8338f522591a43b95106e11bfe3c7bfff69dd6b5286e36059ac8e6"
+    },
+    {
+      "archive_member": "objects/422393b14613d31f09ca766207eefda6a412073fbbfbee76dfab6ea11e9915d8",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5511,
+      "original_path": "/private/tmp/gcts-row01-head-producer-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "422393b14613d31f09ca766207eefda6a412073fbbfbee76dfab6ea11e9915d8"
+    },
+    {
+      "archive_member": "objects/6e5a6aad1e78ccb4bbb18c571499004fa73283cd3068110ad8cdd92f58b0de4f",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 31950,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/Source-contract-v1.json",
+      "sha256": "6e5a6aad1e78ccb4bbb18c571499004fa73283cd3068110ad8cdd92f58b0de4f"
+    },
+    {
+      "archive_member": "objects/40a856ce6fdf1614f6162af16e1ec0d4b25e88adab8110ab93974365baf880f1",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 18392,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/certified_early_row_channel45_point_mark_decorator_v2.py",
+      "sha256": "40a856ce6fdf1614f6162af16e1ec0d4b25e88adab8110ab93974365baf880f1"
+    },
+    {
+      "archive_member": "objects/55a6645186a1db8957e60329055915abdede7ffda070131cc7d7e25ab612de42",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 19635,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/checked_engine_state_dag_collector_v4.py",
+      "sha256": "55a6645186a1db8957e60329055915abdede7ffda070131cc7d7e25ab612de42"
+    },
+    {
+      "archive_member": "objects/17849ef44060547b99a5c8737c8e91153628dc3f34ce1f3dcb0359857bc4b74d",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 11663,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/early_row_head_projection_v2.py",
+      "sha256": "17849ef44060547b99a5c8737c8e91153628dc3f34ce1f3dcb0359857bc4b74d"
+    },
+    {
+      "archive_member": "objects/1a262936bb45f9ae6a4c642b9f2660743daba609e4891f3cccc8d1486fa6550c",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 26609,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/independent_marked_aware_fibre_checker_v3.py",
+      "sha256": "1a262936bb45f9ae6a4c642b9f2660743daba609e4891f3cccc8d1486fa6550c"
+    },
+    {
+      "archive_member": "objects/00a5937cc7591fb2e8fe7891feaa1e4f9a08aee900cf3e0bee8e1fdfaf913cc4",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 12916,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/marked_degree_router_v3.py",
+      "sha256": "00a5937cc7591fb2e8fe7891feaa1e4f9a08aee900cf3e0bee8e1fdfaf913cc4"
+    },
+    {
+      "archive_member": "objects/eb6d5299f14eb2611c786c3acf48e97ea21cb6555e8300d708f984284d464478",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 31406,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/marked_unit_row_adapter_v7.py",
+      "sha256": "eb6d5299f14eb2611c786c3acf48e97ea21cb6555e8300d708f984284d464478"
+    },
+    {
+      "archive_member": "objects/61b1830fc89be3cd3a9c0f4029387780a890d3440faab1e8cf6a1450026e7aeb",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 25319,
+      "original_path": "/private/tmp/gcts-row01-head-producer-source-20261018/receptor_family_six_rule_adapter_v5.py",
+      "sha256": "61b1830fc89be3cd3a9c0f4029387780a890d3440faab1e8cf6a1450026e7aeb"
+    },
+    {
+      "archive_member": "objects/837b8dfc7da20acc71f5d16c6a0a06818bf1388ba6c9fa16b8af37d24192b214",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 4840,
+      "original_path": "/private/tmp/gcts-row01-root-source-20261018/nested_cost_ledger_v1.py",
+      "sha256": "837b8dfc7da20acc71f5d16c6a0a06818bf1388ba6c9fa16b8af37d24192b214"
+    },
+    {
+      "archive_member": "objects/629cf2ec481f25bc52a98c00f3377c75d27dd020f770949b3ab3ffdf3c7a71df",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 4420,
+      "original_path": "/private/tmp/gcts-row1-head-independent-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "629cf2ec481f25bc52a98c00f3377c75d27dd020f770949b3ab3ffdf3c7a71df"
+    },
+    {
+      "archive_member": "objects/010588eadc59cd848370519eb7487214648a848ce0aea96c736a466982b065d1",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 7253,
+      "original_path": "/private/tmp/gcts-row1-head-independent-source-20261018/Source-contract-v1.json",
+      "sha256": "010588eadc59cd848370519eb7487214648a848ce0aea96c736a466982b065d1"
+    },
+    {
+      "archive_member": "objects/398acd6a49ce7495f88da845a5711845eed39be9ac8e05eff86aab626ee6be7d",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 30864,
+      "original_path": "/private/tmp/gcts-row1-head-independent-source-20261018/independent_channel45_state_verifier_v2.py",
+      "sha256": "398acd6a49ce7495f88da845a5711845eed39be9ac8e05eff86aab626ee6be7d"
+    },
+    {
+      "archive_member": "objects/1ba87cc408f4de4f7da1f925906a5b26248c8a5225b33aa40e7d6f5bf4edcaf3",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 6440,
+      "original_path": "/private/tmp/gcts-two-witness-checker-cases-peer-20261018/cases-typed-Source-review-v1.json",
+      "sha256": "1ba87cc408f4de4f7da1f925906a5b26248c8a5225b33aa40e7d6f5bf4edcaf3"
+    },
+    {
+      "archive_member": "objects/8c83b5e2137dd8a81d0db1ffc8d17cbc8f91b8e02a0ef8468fc1f1c381721537",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 5944,
+      "original_path": "/private/tmp/gcts-two-witness-checker-cases-peer-20261018/checker-typed-Source-review-v1.json",
+      "sha256": "8c83b5e2137dd8a81d0db1ffc8d17cbc8f91b8e02a0ef8468fc1f1c381721537"
+    },
+    {
+      "archive_member": "objects/604c525e241e383a6d677416daa130c6d9dc26c710a5c07bd1d70dfc0cf5606f",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 8928,
+      "original_path": "/private/tmp/gcts-two-witness-checker-source-20261018/cases-Source-contract-v1.json",
+      "sha256": "604c525e241e383a6d677416daa130c6d9dc26c710a5c07bd1d70dfc0cf5606f"
+    },
+    {
+      "archive_member": "objects/3d47b164af6b53cd0d7011642645173e8b582d338d8a7d28e18c21597b336d6b",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 7654,
+      "original_path": "/private/tmp/gcts-two-witness-checker-source-20261018/checker-Source-contract-v1.json",
+      "sha256": "3d47b164af6b53cd0d7011642645173e8b582d338d8a7d28e18c21597b336d6b"
+    },
+    {
+      "archive_member": "objects/9f2dbcfac9944ab0bb5d5819ecf7fb2ce184e9e0d6d48cb70cf0025028498a62",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 12481,
+      "original_path": "/private/tmp/gcts-two-witness-checker-source-20261018/independent_two_witness_refresh_checker_v1.py",
+      "sha256": "9f2dbcfac9944ab0bb5d5819ecf7fb2ce184e9e0d6d48cb70cf0025028498a62"
+    },
+    {
+      "archive_member": "objects/279cdbcf469c17ba92dc9b7099b56759553844ad1ec1cdcb24c285f9f1685e56",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 25521,
+      "original_path": "/private/tmp/gcts-two-witness-checker-source-20261018/two_witness_refresh_cases_v1.py",
+      "sha256": "279cdbcf469c17ba92dc9b7099b56759553844ad1ec1cdcb24c285f9f1685e56"
+    },
+    {
+      "archive_member": "objects/3ab833f2c54bcb0646957bafe97ec8f0cf2109f148e62856921b911accc26a56",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 17129,
+      "original_path": "/private/tmp/gcts-two-witness-engine-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "3ab833f2c54bcb0646957bafe97ec8f0cf2109f148e62856921b911accc26a56"
+    },
+    {
+      "archive_member": "objects/52555f36d6590861994db5b4f52fd270cbcebeee145e0a53224559ca7ec67038",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 28331,
+      "original_path": "/private/tmp/gcts-two-witness-engine-source-20261018/Source-contract-v1.json",
+      "sha256": "52555f36d6590861994db5b4f52fd270cbcebeee145e0a53224559ca7ec67038"
+    },
+    {
+      "archive_member": "objects/692cb903fce9dc3fe2911dcaeb5f242655b871eb5bf7bf103a6e5e892fa617ef",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 123504,
+      "original_path": "/private/tmp/gcts-two-witness-engine-source-20261018/receptor_family_search_engine_v16.py",
+      "sha256": "692cb903fce9dc3fe2911dcaeb5f242655b871eb5bf7bf103a6e5e892fa617ef"
+    },
+    {
+      "archive_member": "objects/094d93fd716b0918bdb022cf77a8de7d231452355c5ed21c3110382bf09682fb",
+      "binding_scope": "CURRENT_REVIEWS",
+      "bytes": 19140,
+      "original_path": "/private/tmp/gcts-two-witness-root-peer-20261018/components-typed-Source-review-v1.json",
+      "sha256": "094d93fd716b0918bdb022cf77a8de7d231452355c5ed21c3110382bf09682fb"
+    },
+    {
+      "archive_member": "objects/4ae6a559313e68cbe35682bcfcbca14f427fa4f752d1b6a00fe284905948773c",
+      "binding_scope": "CURRENT_SOURCES",
+      "bytes": 17548,
+      "original_path": "/private/tmp/gcts-two-witness-root-source-20261018/arithmetic_right_two_inventory_cases_v6.py",
+      "sha256": "4ae6a559313e68cbe35682bcfcbca14f427fa4f752d1b6a00fe284905948773c"
+    },
+    {
+      "archive_member": "objects/b20cde1a26fa32ed89103d69e655943f459a6d942ff36f1b5469ee7ac8e9c88b",
+      "binding_scope": "CURRENT_COMPONENT_CONTRACT",
+      "bytes": 21023,
+      "original_path": "/private/tmp/gcts-two-witness-root-source-20261018/components-Source-contract-v1.json",
+      "sha256": "b20cde1a26fa32ed89103d69e655943f459a6d942ff36f1b5469ee7ac8e9c88b"
+    }
+  ],
+  "goal_complete": false,
+  "original_binding_count": 199,
+  "prior_public_archive": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/licensed-clusters-reproduction.zip",
+  "reproduction": "Use exact current plan Source bindings and the declared compatible Darwin/Python runtime. Preserved negative drafts are not approved alternatives. Rebind paths in a new explicit plan/grant, use a fresh once-only output directory and do not rerun the consumed actual. Historical transitive metadata paths are retained as data, not recursively hydrated. The embedded manifest omits the external archive hash to avoid self-reference.",
+  "runtime_binary_included": false,
+  "runtime_descriptor": {
+    "bytes": 102352,
+    "path": "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3.9",
+    "sha256": "bdea59019a38eb6600cc9e71e984a97fedadc406448431281e7657030f54987e"
+  },
+  "schema": "closed-root-evidence-manifest-v1",
+  "scientific_replays_by_packaging": 0,
+  "scope": "One closed-root inventory finite actual; current41 executable Sources, original17 mathematical model, full donor packet, distinct Source/data/report reviews. Every returned record source-ground checked; only first declared closed root freshly native and local-union checked. No exhaustive inventory, point search, new theorem, trained RL or performance claim.",
+  "unique_object_count": 183
+}

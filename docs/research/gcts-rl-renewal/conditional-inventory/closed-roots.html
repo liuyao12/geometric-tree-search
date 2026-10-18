@@ -1,0 +1,744 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Complete lemma inventory · GCTS research</title>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>:root{font-family:system-ui,sans-serif;color:#23333d;background:#f6f7f4}*{box-sizing:border-box}body{margin:0}main{max-width:1160px;margin:auto;padding:32px 26px 90px}a{color:#225f91}h1{font-size:clamp(30px,5vw,48px);line-height:1.1;max-width:900px}h2{margin-top:48px}p{max-width:920px;line-height:1.65}nav{display:flex;gap:18px;flex-wrap:wrap}.eyebrow{color:#526f5c;font-size:12px;letter-spacing:.12em;font-weight:700}.callout{background:#e8f0e7;border-left:5px solid #658563;padding:16px 22px}.caution{background:#fff1d7;border-color:#b68b31}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:26px 0}.stat{background:white;border:1px solid #d6e0d8;border-radius:10px;padding:17px}.stat b{display:block;font-size:26px}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;background:white}th,td{border-bottom:1px solid #d6dfda;padding:12px;text-align:left;vertical-align:top}td p{margin:7px 0;font-size:14px;color:#476074}.formula{overflow-x:auto;overflow-y:visible;padding:8px 0;max-width:830px}small{display:block;line-height:1.5;margin-top:7px}.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}.tile{border:2px solid #738994;background:white;padding:9px;min-width:0;box-shadow:3px 3px #d6dfda}.tile header{padding:7px;font-weight:700}.band{font-size:12px;padding:8px;margin:4px 0;overflow-x:auto;overflow-y:visible}.gold{background:#f4dfa0}.blue{background:#d5e7fb}.green{background:#d9eddf}.purple{background:#e4d8f3}.rose{background:#f1d9e3}.legend{display:flex;flex-wrap:wrap;gap:8px}.legend span{padding:7px 10px;border-radius:5px}details{margin:18px 0;background:white;padding:15px}summary{cursor:pointer;font-weight:650}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}svg{display:block;width:100%;height:auto}code{font-size:.9em;overflow-wrap:anywhere}footer{margin-top:48px;font-size:13px;color:#4e626e}section{scroll-margin-top:20px}</style></head><body><main>
+<nav><a href="reader.html">Research notebook</a><a href="#inventory">Inventory</a><a href="#tiles">Colored tiles</a><a href="#proof">Every proof row</a><a href="#parallel">Parallel work</a><a href="#evidence">Evidence</a></nav>
+<p class="eyebrow">FINITE INVENTORY GATE · SOURCE LEMMA REUSE · 18 OCTOBER 2026</p><h1>Keep the complete lemma before mining its parts.</h1>
+<div class="callout"><p>\(4\) returned records passed independent source-ground structural checks. The first record, the full \(12\)-step donor lemma, also passed fresh membership checks for every primitive tile and an independent local point-union check. This repairs an inventory omission: the earlier bounded fragment pool could lose the complete proved lemma.</p></div>
+<div class="stats"><div class="stat"><b>\(4\)</b>Structurally checked records</div><div class="stat"><b>\(12\)</b>Primitive members in the native-checked record</div><div class="stat"><b>\(8\)</b>Scheduled roots omitted; UNKNOWN</div><div class="stat"><b>\(3\)</b>Finite protocol cases passed</div></div>
+<p>The source proof was found by the earlier conventional arithmetic search. This experiment extracts and checks its reusable inventory; it discovers no new theorem and runs no point search. The native check uses the original receiver theory and exact point markings, while leaving the actual selected board empty.</p>
+<section id="inventory"><h2>One fixed inventory policy.</h2><p>Reserve complete ancestry for each declared output first. Then consider ancestor nodes as roots in reverse source order. Every retained cut includes all earlier premises and logical licences needed by its root. Ordinary exposed outputs, original assumption context, ordered reads and sharing policies are preserved. The record allowance is fixed before execution; omitted roots remain UNKNOWN.</p>
+<div class="scroll"><table><thead><tr><th>Prefix index</th><th>Root</th><th>Primitive cost</th><th>Export and qualification</th></tr></thead><tbody><tr><th>\(0\)</th><td><code>DECLARED_OUTPUT</code><br>Source <code>n11</code></td><td>\(12\)</td><td><div class="formula">\(\forall n\;\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\mathit{n}\right)\)</div><small>Fresh native and local union checked</small></td></tr><tr><th>\(1\)</th><td><code>ANCESTOR_NODE</code><br>Source <code>n10</code></td><td>\(11\)</td><td><div class="formula">\(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\mathit{n}\right)\)</div><small>Structural source-ground check only; native use not yet qualified</small></td></tr><tr><th>\(2\)</th><td><code>ANCESTOR_NODE</code><br>Source <code>n9</code></td><td>\(5\)</td><td><div class="formula">\(\bigl(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\operatorname{add}\left(\mathit{n},0\right)\right)\bigr)\to\bigl(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\mathit{n}\right)\bigr)\)</div><small>Structural source-ground check only; native use not yet qualified</small></td></tr><tr><th>\(3\)</th><td><code>ANCESTOR_NODE</code><br>Source <code>n8</code></td><td>\(1\)</td><td><div class="formula">\(\bigl(\operatorname{add}\left(\mathit{n},0\right)=\mathit{n}\bigr)\to\bigl(\bigl(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\operatorname{add}\left(\mathit{n},0\right)\right)\bigr)\to\bigl(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\mathit{n}\right)\bigr)\bigr)\)</div><small>Structural source-ground check only; native use not yet qualified</small></td></tr></tbody></table></div>
+<p>There are \(12\) scheduled source roots; \(8\) are outside this returned prefix. A free-parameter subproof retains its parameter scope. A record that depends on an original hypothesis is conditional. Neither becomes an unconditional fact by entering the inventory.</p></section>
+<section id="tiles"><h2>The complete source lemma as tiles.</h2><p>These are translation-only point tiles, with colors distinguishing layers. Their shape is only a display convention. Blue bands show formula agreement, including distant rows; green bands show backward references. Rose bands are certified formula-head search markings. The certified-literal channel has no assignments on these twelve member tiles; its fixed boundary belongs to the initial state. Every primitive step remains present and charged. In the blue bands, \(F_r\) denotes the exact formula at saved row \(r\), decoded below.</p>
+<div class="legend"><span class="gold">Support</span><span class="blue">Formula</span><span class="green">References</span><span class="rose">Formula head</span></div><p>The diagram shows the actual expanded primitive dependencies. No macro is treated as a new axiom.</p><svg role="img" aria-label="Primitive proof dependencies; arrows point from premises to conclusions" viewBox="0 0 1000 170"><defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#386b8c"/></marker></defs><path d="M 52 40 Q 130 75 208 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 130 40 Q 169 70 208 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 208 40 Q 286 75 364 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 286 40 Q 325 70 364 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 442 40 Q 520 75 598 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 520 40 Q 559 70 598 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 598 40 Q 676 75 754 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 676 40 Q 715 70 754 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 364 40 Q 598 95 832 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 754 40 Q 793 70 832 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><path d="M 832 40 Q 871 70 910 40" fill="none" stroke="#386b8c" stroke-width="2" marker-end="url(#arr)"/><circle cx="52" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="52" y="45" text-anchor="middle" font-size="13">n0</text><circle cx="130" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="130" y="45" text-anchor="middle" font-size="13">n1</text><circle cx="208" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="208" y="45" text-anchor="middle" font-size="13">n2</text><circle cx="286" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="286" y="45" text-anchor="middle" font-size="13">n3</text><circle cx="364" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="364" y="45" text-anchor="middle" font-size="13">n4</text><circle cx="442" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="442" y="45" text-anchor="middle" font-size="13">n5</text><circle cx="520" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="520" y="45" text-anchor="middle" font-size="13">n6</text><circle cx="598" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="598" y="45" text-anchor="middle" font-size="13">n7</text><circle cx="676" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="676" y="45" text-anchor="middle" font-size="13">n8</text><circle cx="754" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="754" y="45" text-anchor="middle" font-size="13">n9</text><circle cx="832" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="832" y="45" text-anchor="middle" font-size="13">n10</text><circle cx="910" cy="40" r="18" fill="#fff" stroke="#386b8c"/><text x="910" y="45" text-anchor="middle" font-size="13">n11</text></svg><div class="tiles"><article class="tile"><header>Row \(0\) · <code>axiom</code></header><div class="band gold">\(t(0,0)=1\) · support</div><div class="band blue">\(m(1,0)=F_{0}\) · own formula</div><div class="band rose">\(m(5,0)=0\) · certified formula head</div></article><article class="tile"><header>Row \(1\) · <code>instantiate</code></header><div class="band gold">\(t(0,1)=1\) · support</div><div class="band blue">\(m(1,1)=F_{1}\) · own formula</div><div class="band rose">\(m(5,1)=0\) · certified formula head</div></article><article class="tile"><header>Row \(2\) · <code>mp</code></header><div class="band gold">\(t(0,2)=1\) · support</div><div class="band blue">\(m(1,0)=F_{0}\) · distant formula agreement</div><div class="band blue">\(m(1,1)=F_{1}\) · distant formula agreement</div><div class="band blue">\(m(1,2)=F_{2}\) · own formula</div><div class="band green">\(m(2,2)=\operatorname{offset}(-2)\) · backward reference</div><div class="band green">\(m(3,2)=\operatorname{offset}(-1)\) · backward reference</div><div class="band rose">\(m(5,0)=0\) · certified formula head</div><div class="band rose">\(m(5,1)=0\) · certified formula head</div><div class="band rose">\(m(5,2)=0\) · certified formula head</div></article><article class="tile"><header>Row \(3\) · <code>instantiate</code></header><div class="band gold">\(t(0,3)=1\) · support</div><div class="band blue">\(m(1,3)=F_{3}\) · own formula</div><div class="band rose">\(m(5,3)=0\) · certified formula head</div></article><article class="tile"><header>Row \(4\) · <code>mp</code></header><div class="band gold">\(t(0,4)=1\) · support</div><div class="band blue">\(m(1,2)=F_{2}\) · distant formula agreement</div><div class="band blue">\(m(1,3)=F_{3}\) · distant formula agreement</div><div class="band blue">\(m(1,4)=F_{4}\) · own formula</div><div class="band green">\(m(2,4)=\operatorname{offset}(-2)\) · backward reference</div><div class="band green">\(m(3,4)=\operatorname{offset}(-1)\) · backward reference</div><div class="band rose">\(m(5,2)=0\) · certified formula head</div><div class="band rose">\(m(5,3)=0\) · certified formula head</div><div class="band rose">\(m(5,4)=1\) · certified formula head</div></article><article class="tile"><header>Row \(5\) · <code>axiom</code></header><div class="band gold">\(t(0,5)=1\) · support</div><div class="band blue">\(m(1,5)=F_{5}\) · own formula</div><div class="band rose">\(m(5,5)=0\) · certified formula head</div></article><article class="tile"><header>Row \(6\) · <code>instantiate</code></header><div class="band gold">\(t(0,6)=1\) · support</div><div class="band blue">\(m(1,6)=F_{6}\) · own formula</div><div class="band rose">\(m(5,6)=0\) · certified formula head</div></article><article class="tile"><header>Row \(7\) · <code>mp</code></header><div class="band gold">\(t(0,7)=1\) · support</div><div class="band blue">\(m(1,5)=F_{5}\) · distant formula agreement</div><div class="band blue">\(m(1,6)=F_{6}\) · distant formula agreement</div><div class="band blue">\(m(1,7)=F_{7}\) · own formula</div><div class="band green">\(m(2,7)=\operatorname{offset}(-2)\) · backward reference</div><div class="band green">\(m(3,7)=\operatorname{offset}(-1)\) · backward reference</div><div class="band rose">\(m(5,5)=0\) · certified formula head</div><div class="band rose">\(m(5,6)=0\) · certified formula head</div><div class="band rose">\(m(5,7)=1\) · certified formula head</div></article><article class="tile"><header>Row \(8\) · <code>eq_subst</code></header><div class="band gold">\(t(0,8)=1\) · support</div><div class="band blue">\(m(1,8)=F_{8}\) · own formula</div><div class="band rose">\(m(5,8)=0\) · certified formula head</div></article><article class="tile"><header>Row \(9\) · <code>mp</code></header><div class="band gold">\(t(0,9)=1\) · support</div><div class="band blue">\(m(1,7)=F_{7}\) · distant formula agreement</div><div class="band blue">\(m(1,8)=F_{8}\) · distant formula agreement</div><div class="band blue">\(m(1,9)=F_{9}\) · own formula</div><div class="band green">\(m(2,9)=\operatorname{offset}(-2)\) · backward reference</div><div class="band green">\(m(3,9)=\operatorname{offset}(-1)\) · backward reference</div><div class="band rose">\(m(5,7)=1\) · certified formula head</div><div class="band rose">\(m(5,8)=0\) · certified formula head</div><div class="band rose">\(m(5,9)=0\) · certified formula head</div></article><article class="tile"><header>Row \(10\) · <code>mp</code></header><div class="band gold">\(t(0,10)=1\) · support</div><div class="band blue">\(m(1,4)=F_{4}\) · distant formula agreement</div><div class="band blue">\(m(1,9)=F_{9}\) · distant formula agreement</div><div class="band blue">\(m(1,10)=F_{10}\) · own formula</div><div class="band green">\(m(2,10)=\operatorname{offset}(-6)\) · backward reference</div><div class="band green">\(m(3,10)=\operatorname{offset}(-1)\) · backward reference</div><div class="band rose">\(m(5,4)=1\) · certified formula head</div><div class="band rose">\(m(5,9)=0\) · certified formula head</div><div class="band rose">\(m(5,10)=1\) · certified formula head</div></article><article class="tile"><header>Row \(11\) · <code>generalize</code></header><div class="band gold">\(t(0,11)=1\) · support</div><div class="band blue">\(m(1,10)=F_{10}\) · distant formula agreement</div><div class="band blue">\(m(1,11)=F_{11}\) · own formula</div><div class="band green">\(m(2,11)=\operatorname{offset}(-1)\) · backward reference</div><div class="band rose">\(m(5,10)=1\) · certified formula head</div><div class="band rose">\(m(5,11)=0\) · certified formula head</div></article></div></section>
+<section id="proof"><h2>Read every row as a formula and English inference.</h2><p>These rows decode the same native-checked primitive proposal shown above. They explain a previously discovered donor proof, rather than a newly searched receiver proof. Row numbers use the saved calibration placement.</p><div class="scroll"><table class="proof"><thead><tr><th>Row</th><th>Rule</th><th>Formula and reading</th></tr></thead><tbody><tr data-proof-row="0"><th>\(0\)</th><td><code>axiom</code></td><td><div class="formula">\(\forall x\;\forall y\;\operatorname{add}\left(\mathit{x},S\left(\mathit{y}\right)\right)=S\left(\operatorname{add}\left(\mathit{x},\mathit{y}\right)\right)\)</div><p>Use the original theory axiom AS.</p></td></tr><tr data-proof-row="1"><th>\(1\)</th><td><code>instantiate</code></td><td><div class="formula">\(\bigl(\forall x\;\forall y\;\operatorname{add}\left(\mathit{x},S\left(\mathit{y}\right)\right)=S\left(\operatorname{add}\left(\mathit{x},\mathit{y}\right)\right)\bigr)\to\bigl(\forall y\;\operatorname{add}\left(\mathit{n},S\left(\mathit{y}\right)\right)=S\left(\operatorname{add}\left(\mathit{n},\mathit{y}\right)\right)\bigr)\)</div><p>Form the universal-instantiation licence shown here. This implication is an original logical rule instance.</p></td></tr><tr data-proof-row="2"><th>\(2\)</th><td><code>mp</code></td><td><div class="formula">\(\forall y\;\operatorname{add}\left(\mathit{n},S\left(\mathit{y}\right)\right)=S\left(\operatorname{add}\left(\mathit{n},\mathit{y}\right)\right)\)</div><p>Apply modus ponens using rows \(0\), \(1\).</p></td></tr><tr data-proof-row="3"><th>\(3\)</th><td><code>instantiate</code></td><td><div class="formula">\(\bigl(\forall y\;\operatorname{add}\left(\mathit{n},S\left(\mathit{y}\right)\right)=S\left(\operatorname{add}\left(\mathit{n},\mathit{y}\right)\right)\bigr)\to\bigl(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\operatorname{add}\left(\mathit{n},0\right)\right)\bigr)\)</div><p>Form the universal-instantiation licence shown here. This implication is an original logical rule instance.</p></td></tr><tr data-proof-row="4"><th>\(4\)</th><td><code>mp</code></td><td><div class="formula">\(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\operatorname{add}\left(\mathit{n},0\right)\right)\)</div><p>Apply modus ponens using rows \(2\), \(3\).</p></td></tr><tr data-proof-row="5"><th>\(5\)</th><td><code>axiom</code></td><td><div class="formula">\(\forall x\;\operatorname{add}\left(\mathit{x},0\right)=\mathit{x}\)</div><p>Use the original theory axiom AZ.</p></td></tr><tr data-proof-row="6"><th>\(6\)</th><td><code>instantiate</code></td><td><div class="formula">\(\bigl(\forall x\;\operatorname{add}\left(\mathit{x},0\right)=\mathit{x}\bigr)\to\bigl(\operatorname{add}\left(\mathit{n},0\right)=\mathit{n}\bigr)\)</div><p>Form the universal-instantiation licence shown here. This implication is an original logical rule instance.</p></td></tr><tr data-proof-row="7"><th>\(7\)</th><td><code>mp</code></td><td><div class="formula">\(\operatorname{add}\left(\mathit{n},0\right)=\mathit{n}\)</div><p>Apply modus ponens using rows \(5\), \(6\).</p></td></tr><tr data-proof-row="8"><th>\(8\)</th><td><code>eq_subst</code></td><td><div class="formula">\(\bigl(\operatorname{add}\left(\mathit{n},0\right)=\mathit{n}\bigr)\to\bigl(\bigl(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\operatorname{add}\left(\mathit{n},0\right)\right)\bigr)\to\bigl(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\mathit{n}\right)\bigr)\bigr)\)</div><p>Form the original equality-substitution licence. The two later applications must still establish its premises.</p></td></tr><tr data-proof-row="9"><th>\(9\)</th><td><code>mp</code></td><td><div class="formula">\(\bigl(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\operatorname{add}\left(\mathit{n},0\right)\right)\bigr)\to\bigl(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\mathit{n}\right)\bigr)\)</div><p>Apply modus ponens using rows \(7\), \(8\).</p></td></tr><tr data-proof-row="10"><th>\(10\)</th><td><code>mp</code></td><td><div class="formula">\(\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\mathit{n}\right)\)</div><p>Apply modus ponens using rows \(4\), \(9\).</p></td></tr><tr data-proof-row="11"><th>\(11\)</th><td><code>generalize</code></td><td><div class="formula">\(\forall n\;\operatorname{add}\left(\mathit{n},S\left(0\right)\right)=S\left(\mathit{n}\right)\)</div><p>Universally quantify the indicated free parameter in row \(10\) under the original empty-assumption context.</p></td></tr></tbody></table></div></section>
+<section id="checks"><h2>What the finite gate checks.</h2><div class="scroll"><table><tbody><tr><td><code>complete_root_qualification</code></td><td>PASS_FINITE_CASE</td></tr><tr><td><code>closure_and_policy_regressions</code></td><td>PASS_FINITE_CASE</td></tr><tr><td><code>protected_callback_origins</code></td><td>PASS_FINITE_CASE</td></tr></tbody></table></div><p>The provided corruptions remove an ancestor, change the generalization variable role while recomputing the family identity, and falsify the original-context certificate. The checker rejected each. The callback samples check only the first guard and first tick exception; saved JSON alone cannot independently reobserve exception identity. The successful run did not exercise normal UNKNOWN return paths; support for those paths comes from source review.</p><details><summary>Inspect the native qualification summary; full packet is in the evidence archive</summary><pre>{
+  &quot;complete_packet_in_saved_result&quot;: {
+    &quot;bytes&quot;: 2290609,
+    &quot;path&quot;: &quot;/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json&quot;,
+    &quot;sha256&quot;: &quot;6beb7a9890a469a3b39f97501c4cb92c95efbba6283afe82627dc9ac7464ea15&quot;
+  },
+  &quot;costs&quot;: {
+    &quot;direct_base_projection_calls&quot;: 2,
+    &quot;direct_base_rebuild_calls&quot;: 12,
+    &quot;direct_counts_exclude_nested_delegations&quot;: true,
+    &quot;direct_expansion_checker_calls&quot;: 1,
+    &quot;direct_independent_union_check_calls&quot;: 1,
+    &quot;direct_language_primitive_calls&quot;: 12,
+    &quot;direct_marked_private_state_calls&quot;: 2,
+    &quot;direct_marked_rebuild_calls&quot;: 24,
+    &quot;duplicate_node_placements&quot;: 0,
+    &quot;expanded_nodes&quot;: 12,
+    &quot;native_kernel_visits_after&quot;: 6898,
+    &quot;native_kernel_visits_before&quot;: 186,
+    &quot;native_kernel_visits_delta&quot;: 6712,
+    &quot;new_placements_in_hypothetical_union&quot;: 12,
+    &quot;ordered_edge_uses&quot;: 11,
+    &quot;physical_call_frames_checked&quot;: 1,
+    &quot;physical_call_input_uses&quot;: 0,
+    &quot;point_data_bytes&quot;: 254433,
+    &quot;reused_existing_placements&quot;: 0,
+    &quot;unique_member_placements&quot;: 12
+  },
+  &quot;host_binding&quot;: {
+    &quot;declaration_sha256&quot;: &quot;a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df&quot;,
+    &quot;language_epoch&quot;: &quot;382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b&quot;,
+    &quot;logical_input_sha256&quot;: &quot;959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57&quot;,
+    &quot;profile_name&quot;: &quot;shared-bounded-six-rule-B12-N44-v2&quot;,
+    &quot;profile_sha256&quot;: &quot;227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02&quot;,
+    &quot;source_bindings_sha256&quot;: &quot;977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662&quot;
+  },
+  &quot;hypothesis_ports&quot;: [],
+  &quot;input_ports&quot;: [],
+  &quot;local_member_membership_checked&quot;: true,
+  &quot;local_point_union_checked&quot;: true,
+  &quot;members&quot;: [
+    {
+      &quot;first_node&quot;: &quot;n0&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            0
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;all\&quot;,\&quot;x\&quot;,[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            5,
+            0
+          ],
+          0
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            0
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 0
+    },
+    {
+      &quot;first_node&quot;: &quot;n1&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;all\&quot;,\&quot;x\&quot;,[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]]],[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            5,
+            1
+          ],
+          0
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            1
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 1
+    },
+    {
+      &quot;first_node&quot;: &quot;n2&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            1,
+            0
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;all\&quot;,\&quot;x\&quot;,[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            2,
+            2
+          ],
+          [
+            &quot;offset&quot;,
+            -2
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;all\&quot;,\&quot;x\&quot;,[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]]],[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            3,
+            2
+          ],
+          [
+            &quot;offset&quot;,
+            -1
+          ]
+        ],
+        [
+          [
+            5,
+            0
+          ],
+          0
+        ],
+        [
+          [
+            5,
+            1
+          ],
+          0
+        ],
+        [
+          [
+            5,
+            2
+          ],
+          0
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            2
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 2
+    },
+    {
+      &quot;first_node&quot;: &quot;n3&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            5,
+            3
+          ],
+          0
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            3
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 3
+    },
+    {
+      &quot;first_node&quot;: &quot;n4&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            1,
+            2
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            2,
+            4
+          ],
+          [
+            &quot;offset&quot;,
+            -2
+          ]
+        ],
+        [
+          [
+            1,
+            3
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;all\&quot;,\&quot;y\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;y\&quot;]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;var\&quot;,\&quot;y\&quot;]]]]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            3,
+            4
+          ],
+          [
+            &quot;offset&quot;,
+            -1
+          ]
+        ],
+        [
+          [
+            5,
+            2
+          ],
+          0
+        ],
+        [
+          [
+            5,
+            3
+          ],
+          0
+        ],
+        [
+          [
+            5,
+            4
+          ],
+          1
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            4
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 4
+    },
+    {
+      &quot;first_node&quot;: &quot;n5&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            5
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;all\&quot;,\&quot;x\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;x\&quot;]]]&quot;
+          ]
+        ],
+        [
+          [
+            5,
+            5
+          ],
+          0
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            5
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 5
+    },
+    {
+      &quot;first_node&quot;: &quot;n6&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            6
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;all\&quot;,\&quot;x\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;x\&quot;]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;n\&quot;]]]&quot;
+          ]
+        ],
+        [
+          [
+            5,
+            6
+          ],
+          0
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            6
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 6
+    },
+    {
+      &quot;first_node&quot;: &quot;n7&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            7
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;n\&quot;]]&quot;
+          ]
+        ],
+        [
+          [
+            1,
+            5
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;all\&quot;,\&quot;x\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;x\&quot;]]]&quot;
+          ]
+        ],
+        [
+          [
+            2,
+            7
+          ],
+          [
+            &quot;offset&quot;,
+            -2
+          ]
+        ],
+        [
+          [
+            1,
+            6
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;all\&quot;,\&quot;x\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;x\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;x\&quot;]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;n\&quot;]]]&quot;
+          ]
+        ],
+        [
+          [
+            3,
+            7
+          ],
+          [
+            &quot;offset&quot;,
+            -1
+          ]
+        ],
+        [
+          [
+            5,
+            5
+          ],
+          0
+        ],
+        [
+          [
+            5,
+            6
+          ],
+          0
+        ],
+        [
+          [
+            5,
+            7
+          ],
+          1
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            7
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 7
+    },
+    {
+      &quot;first_node&quot;: &quot;n8&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            8
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;n\&quot;]],[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            5,
+            8
+          ],
+          0
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            8
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 8
+    },
+    {
+      &quot;first_node&quot;: &quot;n9&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            9
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            1,
+            7
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;n\&quot;]]&quot;
+          ]
+        ],
+        [
+          [
+            2,
+            9
+          ],
+          [
+            &quot;offset&quot;,
+            -2
+          ]
+        ],
+        [
+          [
+            1,
+            8
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]],[\&quot;var\&quot;,\&quot;n\&quot;]],[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            3,
+            9
+          ],
+          [
+            &quot;offset&quot;,
+            -1
+          ]
+        ],
+        [
+          [
+            5,
+            7
+          ],
+          1
+        ],
+        [
+          [
+            5,
+            8
+          ],
+          0
+        ],
+        [
+          [
+            5,
+            9
+          ],
+          0
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            9
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 9
+    },
+    {
+      &quot;first_node&quot;: &quot;n10&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            10
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;]]]]&quot;
+          ]
+        ],
+        [
+          [
+            1,
+            4
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            2,
+            10
+          ],
+          [
+            &quot;offset&quot;,
+            -6
+          ]
+        ],
+        [
+          [
+            1,
+            9
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;imp\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]]],[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            3,
+            10
+          ],
+          [
+            &quot;offset&quot;,
+            -1
+          ]
+        ],
+        [
+          [
+            5,
+            4
+          ],
+          1
+        ],
+        [
+          [
+            5,
+            9
+          ],
+          0
+        ],
+        [
+          [
+            5,
+            10
+          ],
+          1
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            10
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 10
+    },
+    {
+      &quot;first_node&quot;: &quot;n11&quot;,
+      &quot;global_m_values&quot;: [
+        [
+          [
+            1,
+            11
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;all\&quot;,\&quot;n\&quot;,[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;]]]]]&quot;
+          ]
+        ],
+        [
+          [
+            1,
+            10
+          ],
+          [
+            &quot;formula&quot;,
+            &quot;[\&quot;eq\&quot;,[\&quot;fun\&quot;,\&quot;add\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;fun\&quot;,\&quot;zero\&quot;,[]]]]]],[\&quot;fun\&quot;,\&quot;succ\&quot;,[[\&quot;var\&quot;,\&quot;n\&quot;]]]]&quot;
+          ]
+        ],
+        [
+          [
+            2,
+            11
+          ],
+          [
+            &quot;offset&quot;,
+            -1
+          ]
+        ],
+        [
+          [
+            5,
+            10
+          ],
+          1
+        ],
+        [
+          [
+            5,
+            11
+          ],
+          0
+        ]
+      ],
+      &quot;global_t_values&quot;: [
+        [
+          [
+            0,
+            11
+          ],
+          1
+        ]
+      ],
+      &quot;row&quot;: 11
+    }
+  ],
+  &quot;proof_accepted&quot;: false,
+  &quot;state_is_hypothetical_only&quot;: true,
+  &quot;status&quot;: &quot;READY_LOCAL_CLUSTER&quot;
+}</pre></details></section>
+<section id="parallel"><h2>Distinct tasks, joined at explicit interfaces.</h2><p><code>conventional_library</code> authored the inventory wrapper. <code>conventional_control_review</code> authored its separate structural checker and finite cases. <code>receiver_driver_review</code> independently reviewed those sources and the saved result. Root integrated the frozen sources, owned the single timed execution, rendered this notebook and published it. The inventory author separately reviewed Root’s integration; the checker author separately reviewed the human report, with authorship disclosed.</p><p>Parallel work is useful here because implementation, mathematical checking and experimental assessment can progress independently. They must agree on the exact interfaces and evidence before a result is counted.</p></section>
+<section id="next"><h2>The next test must be actual proof search.</h2><div class="callout caution"><p>This is a library-retention result, not evidence of a GCTS search advantage. Only the first returned record received fresh native qualification. The other records cannot be used as free facts. The next integration needs an explicit provider for this new inventory, followed by matched empty-inventory and lemma-inventory point searches. Each proposed cluster must pass the same primitive scheduler, complete fallback and rollback rules.</p></div><p>A separate Source review identified a placement limitation: the current provider anchors a cluster’s output at the selected branch row. A large closed lemma may need its conclusion much later. The proposed next interface would enumerate eligible incident constituents uniformly, allowing an earlier constituent to meet that row while the rest of the validated cluster fits around it. It would still select primitives through the original scheduler. This search revision is not yet integrated or executed. <a href="closed-roots-next-search.json">Read the next-search plan</a>.</p><p>Success means a complete selected target derivation followed by fresh independent whole-proof verification. Conventional controls must receive identical acquired knowledge and cost accounting. No trained reinforcement-learning policy, learned failure marking, exhaustive inventory, full-board tiling or speedup is established here.</p></section>
+<section id="evidence"><h2>Reproduce and inspect.</h2><p>The single owned process finished in \(3.687626\) seconds with a peak of \(73.703\) MiB under the original work, time and memory limits. It is terminal and fully reaped. No scientific execution was repeated for reporting.</p><p><a href="closed-roots-summary.json">Reviewed result summary</a> · <a href="closed-roots-data-review.json">Saved-data audit</a> · <a href="closed-roots-report-review.json">Report audit</a> · <a href="closed-roots-evidence-manifest.json">Evidence manifest</a> · <a href="closed-roots-reproduction.zip">Pinned sources and complete result</a></p></section><footer>The research program remains active. Earlier finite qualifications: <a href="role-receptors.html">Independent term/context receptors</a> · <a href="licensed-clusters.html">Licensed fragments</a>.</footer></main></body></html>

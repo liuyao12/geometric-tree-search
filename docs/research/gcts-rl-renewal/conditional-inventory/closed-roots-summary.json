@@ -1,0 +1,184 @@
+{
+  "GCTS_advantage": false,
+  "ROOT_admission": {
+    "GCTS_advantage": false,
+    "all_declared_finite_cases_passed": true,
+    "all_scheduled_roots_qualified": false,
+    "complete_board_accepted": false,
+    "declared_limits": {
+      "members": 16,
+      "native_root_instances": 1,
+      "records": 4
+    },
+    "distinct_literal_full_keys": 24,
+    "expanded": {
+      "bytes": 2290609,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+      "sha256": "6beb7a9890a469a3b39f97501c4cb92c95efbba6283afe82627dc9ac7464ea15"
+    },
+    "finite_cases_passed": 3,
+    "freshly_native_qualified_instances": 1,
+    "full_GCTS_conformance": false,
+    "full_current_type_key_occurrences_checked": 108,
+    "goal_complete": false,
+    "independent_saved_data_review_pending": true,
+    "inventory_exhaustive": false,
+    "learned_marking": false,
+    "logical_proof_accepted": false,
+    "native_external_seconds": 3.687626,
+    "new_theorem": false,
+    "omitted_roots_UNKNOWN": 8,
+    "original_context_binding_preserved": true,
+    "owned_peak_bytes": 77283328,
+    "pending_case_ids": [],
+    "performance_accepted": false,
+    "plan": {
+      "bytes": 23742,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-plan-v1.json",
+      "sha256": "914fcf3ac17789ab092f3e77c2a90812e09d76a30102d9725b54d3a7554f9f0d"
+    },
+    "point_search_executed": false,
+    "prefix_records": 4,
+    "record_summaries": [
+      {
+        "closed_without_cut_inputs": true,
+        "exported_formula_scope": [
+          {
+            "fact_accepted": false,
+            "native_free_variables": [],
+            "port_id": "o0",
+            "source_node_id": "n11",
+            "universally_promoted": false
+          }
+        ],
+        "fresh_native_and_union_checked": true,
+        "original_Gamma_empty": true,
+        "phase": "DECLARED_OUTPUT",
+        "prefix_index": 0,
+        "primitive_nodes": 12,
+        "source_root": {
+          "node": "n11"
+        },
+        "structural_source_check_completed": true
+      },
+      {
+        "closed_without_cut_inputs": true,
+        "exported_formula_scope": [
+          {
+            "fact_accepted": false,
+            "native_free_variables": [
+              "n"
+            ],
+            "port_id": "o0",
+            "source_node_id": "n10",
+            "universally_promoted": false
+          }
+        ],
+        "fresh_native_and_union_checked": false,
+        "original_Gamma_empty": true,
+        "phase": "ANCESTOR_NODE",
+        "prefix_index": 1,
+        "primitive_nodes": 11,
+        "source_root": {
+          "node": "n10"
+        },
+        "structural_source_check_completed": true
+      },
+      {
+        "closed_without_cut_inputs": true,
+        "exported_formula_scope": [
+          {
+            "fact_accepted": false,
+            "native_free_variables": [
+              "n"
+            ],
+            "port_id": "o0",
+            "source_node_id": "n9",
+            "universally_promoted": false
+          }
+        ],
+        "fresh_native_and_union_checked": false,
+        "original_Gamma_empty": true,
+        "phase": "ANCESTOR_NODE",
+        "prefix_index": 2,
+        "primitive_nodes": 5,
+        "source_root": {
+          "node": "n9"
+        },
+        "structural_source_check_completed": true
+      },
+      {
+        "closed_without_cut_inputs": true,
+        "exported_formula_scope": [
+          {
+            "fact_accepted": false,
+            "native_free_variables": [
+              "n"
+            ],
+            "port_id": "o0",
+            "source_node_id": "n8",
+            "universally_promoted": false
+          }
+        ],
+        "fresh_native_and_union_checked": false,
+        "original_Gamma_empty": true,
+        "phase": "ANCESTOR_NODE",
+        "prefix_index": 3,
+        "primitive_nodes": 1,
+        "source_root": {
+          "node": "n8"
+        },
+        "structural_source_check_completed": true
+      }
+    ],
+    "schema": "ROOT-closed-root-finite-admission-v1",
+    "scientific_replays": 0,
+    "status": "CLOSED_ROOT_PREFIX_FINITE_GATE_PASS",
+    "structurally_qualified_records": 4,
+    "trained_RL": false,
+    "transport": {
+      "bytes": 2310,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+      "sha256": "aacebfa41c3eab3f4e3d9f4c634a8c26e559009b5b7b47b40c8e7d89f66c7a5d"
+    },
+    "universal_family_validity_proved": false,
+    "whole_output_and_native_resources_closed": true,
+    "work_counts": {
+      "callback_origin_checks": 2,
+      "host_adaptations": 1,
+      "inventory_calls": 1,
+      "negative_checks": 3,
+      "qualified_native_instances": 1,
+      "receiver_expansions": 1,
+      "source_checks": 4,
+      "source_ground_expansions": 4,
+      "structurally_qualified_records": 4
+    }
+  },
+  "all_returned_prefix_structurally_checked": true,
+  "exact_actual": {
+    "bytes": 2290609,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/closed-root-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+    "sha256": "6beb7a9890a469a3b39f97501c4cb92c95efbba6283afe82627dc9ac7464ea15"
+  },
+  "goal_complete": false,
+  "independent_saved_data_review": {
+    "bytes": 6820,
+    "path": "/private/tmp/gcts-closed-root-finite-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "531961c5d477e1949340c46fa5ca12234a87713d80b74a3b1d8c05aa4dce8587"
+  },
+  "independent_saved_data_review_pending": false,
+  "inventory_exhaustive": false,
+  "native_checked_prefix_indices": [
+    0
+  ],
+  "new_theorem_discovered": false,
+  "next_search_plan": {
+    "bytes": 6594,
+    "path": "/private/tmp/gcts-closed-root-search-plan-20261018/next-selected-search-brief-v1.json",
+    "sha256": "0ec122faa2cb90461998223bb4096bb6141d8ded0a4c53fbffbf773b0465d752"
+  },
+  "point_search_executed": false,
+  "schema": "closed-root-reviewed-finite-summary-v1",
+  "trained_RL": false
+}
