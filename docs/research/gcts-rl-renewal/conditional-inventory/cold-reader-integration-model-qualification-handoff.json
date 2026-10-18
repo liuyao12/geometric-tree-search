@@ -1,0 +1,73 @@
+{
+  "API": {
+    "bytes": 2792,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/API-v1.json",
+    "sha256": "02286cbd597fd4a109113df7ece368bbdaefa6b7789e3e985be9d64af5dd1fbe"
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root/receiver_driver_review",
+  "author_static": {
+    "bytes": 2372,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/author-Source-static-v1.json",
+    "sha256": "feff09f773267063a1098d529325bdf0899502e963fe84c40340484cf08fac8d"
+  },
+  "review_ABI": {
+    "author_identity": "/root/receiver_driver_review",
+    "genuine_distinct_reviewer_required": true,
+    "required": [
+      "source",
+      "sources",
+      "source_contract",
+      "author_identity",
+      "reviewer_identity",
+      "source_only",
+      "source_review_passed",
+      "scientific_calls",
+      "scientific_acceptance",
+      "actual_execution_authorized",
+      "findings",
+      "limitations"
+    ],
+    "schema": "compact-model-qualification-typed-Source-review-v1",
+    "scope": "compact-model-qualification-Source",
+    "source_map": {
+      "compact_model_qualification": {
+        "bytes": 19222,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py",
+        "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+      }
+    }
+  },
+  "runtime_closure_design": {
+    "bytes": 7129,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/runtime-closure-design-v1.json",
+    "sha256": "5d9d799c4cdb733cffbde769ac9980d460e78ac5fe314b4588c26e7dce8912af"
+  },
+  "schema": "compact-model-qualification-Source-handoff-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "separate_synthetic_adversarial_design": {
+    "bytes": 2637,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/synthetic-adversarial-design-v1.json",
+    "sha256": "4441ad2ebf85c4bce4e6350c5ed571dcec5530b3c4e161de028566e2c1ab4449"
+  },
+  "source": {
+    "bytes": 19222,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py",
+    "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+  },
+  "source_contract": {
+    "bytes": 11280,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/Source-contract-v1.json",
+    "sha256": "c4d9eb4a87f1f459dac585bd62935e23ad64b58aed0e03fcd8dcb75783190f9b"
+  },
+  "source_only": true,
+  "sources": {
+    "compact_model_qualification": {
+      "bytes": 19222,
+      "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py",
+      "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+    }
+  },
+  "status": "FROZEN_SOURCE_ONLY_PENDING_DISTINCT_REVIEW"
+}

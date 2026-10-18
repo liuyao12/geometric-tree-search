@@ -1,0 +1,174 @@
+{
+  "actual_F0_patch_directions": 2,
+  "actual_execution_authorized": false,
+  "audit": {
+    "bytes": 20646,
+    "path": "/private/tmp/gcts-cold-reader-compatibility-peer-20261018/cold-reader-raw-Source-audit-v1.json",
+    "sha256": "db6cce84ca07b9c1fa5c4c44987c55ce5d8f535e36434726da89f7206fa1f206"
+  },
+  "audit_Source": {
+    "bytes": 18957,
+    "path": "/private/tmp/gcts-cold-reader-compatibility-peer-20261018/review_cold_reader_Source_v1.py",
+    "sha256": "6763b78ee14b85707101628ee0740fba4750a8ad195ca37dbdecb2c4be52fcd7"
+  },
+  "audit_checks": 106,
+  "author_identity": "/root",
+  "author_overlap": false,
+  "author_overlap_disclosure": "Reviewer authored the unchanged historical generic receiver driver, quantified adapters and an unintegrated compact Model/renderer. Reviewer did not author current Root cold/closure/declaration, reader, runner or observer. This review audits only new Root composition and consumer representation; old own semantic components are pinned unchanged and rely on Receiver distinct Source peers rather than self-audit.",
+  "codec_or_decompression_calls": 0,
+  "compiled_without_evaluation": true,
+  "compiler_calls": 0,
+  "declaration": {
+    "bytes": 6911,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/experiment-declaration-v1.json",
+    "sha256": "4259a7769fbd30414d12417f635303f339126d3cbea8c0b846ab16ca93f847fb"
+  },
+  "dependencies": {
+    "reader": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    "reader_independent_Source_peer": {
+      "bytes": 5175,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-reader-Source-review-v2.json",
+      "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+    },
+    "unchanged_driver_independent_Source_peer": {
+      "bytes": 9753,
+      "path": "/private/tmp/gcts-structural-independent-peer-20261018/typed-generic-driver-Source-review-v1.json",
+      "sha256": "90f7f7dfdcd0e9c559c744cea33819406aa8fc777fb820b03d6259508627613f"
+    }
+  },
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "Whole verify_raw_region differs only by exact list-or-tuple point acceptance; reversing that comparison reproduces the full original raw body and AST. Occupancy shape/equality, exact-int checks, all support/capacity/mark agreement, derived arity, unique keys and full decoded proof/final-request checks remain identical.",
+      "id": "P1_EXACT_CONSUMER_CHANGE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "The original19project+2component Source descriptors are retained, with exact ReaderV2 as the sole new20th project/22nd materialized alias. All120 import sites equal119old sites plus readerjson. Shared copy/import/origin/seal paths run before reader-mode dispatch, so both arms acquire/seal it; all compiler/model/control/driver/broker/native/Z3/policy roles stay unchanged.",
+      "id": "P2_COMPLETE_SHARED_CLOSURE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Both builtin and interned branches feed the same full streaming canonical inverse. Each UTF8 chunk is compared literally with original raw bytes and exact EOF is required; outside canonical writer values reject, callback errors propagate. Parent strict duplicate/nonfinite/finite-float parser and external runner/observer are raw unchanged.",
+      "id": "P3_CANONICAL_INVERSE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Reader callbacks use original absolute overall deadline and additionally original work endpoint for positive results, without reset. Native close/reap is checked before result decode; full point proof check, postdecode Source guard, positive header/terminal gates and original rethrow/cleanup remain. UNKNOWN metadata may use only declared closure; no partial proof salvage is added.",
+      "id": "P4_TIME_AND_PROOF_GATES",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Exact new declaration/closure hash and six invocation/mode/reader/receiver/path bindings are explicit. All arms use the same original diagonal assertion, full4template policy and derived model roles, while epoch/header record representation mode. No compact Model, wire aliases, grammar shrink or route is added. Distinct cohort/plan and final true-grant review remains required.",
+      "id": "P5_NEW_IDENTITY_ONLY",
+      "severity": "scope"
+    },
+    {
+      "finding": "verify_literal_result creates body=raw[:-1] for newline-terminated results, a full additional byte slice while decoded data remains alive. This is common to both arms and charged, but may raise either worker peak. It is not a runtime improvement or memory-neutrality claim.",
+      "id": "N1_MATCHED_EXTRA_BYTE_COPY",
+      "location": "/private/tmp/gcts-compact-cold-reader-source-20261018/compact_reader_cold_v1.py:187",
+      "severity": "nonblocking_cost"
+    },
+    {
+      "finding": "The decoder is postsearch and cannot reduce earlier Model/Graph/trace/native highwater. Native/template/model locals remain alive as before. Earlier isolated decoder savings do not establish fullcold savings; no model, reader, search, native checker/codec or Source helper was evaluated here.",
+      "id": "N2_SCOPE_AND_UNMEASURED_LIFETIMES",
+      "severity": "limitation"
+    },
+    {
+      "finding": "Reader checkpoint directly checks clock endpoints; current callable/raw Source custody is checked by inherited seal/Source guards before and after the decode/inverse path. No general mid-large-JSON preemption or recursive mutable-pool sealing guarantee is claimed. Outer complete resource/custody/terminal evidence remains required after any future authorized actual.",
+      "id": "N3_CUSTODY_AND_COOPERATION",
+      "severity": "limitation"
+    }
+  ],
+  "goal_complete": false,
+  "handoff": {
+    "bytes": 1112,
+    "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/handoff-v1.json",
+    "sha256": "22c95edb2bc97588c0589fa2ffcdbe8b3565cd5fbceddd37229aba71b1bb898e"
+  },
+  "logic_calls": 0,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "parent_closure": {
+    "bytes": 66775,
+    "path": "/private/tmp/gcts-structural-cold-root-source-20261018/runtime-closure-v1.json",
+    "sha256": "32256d81327b8e5d8bb11a7d4091a8a9818169a4d4ca4d987b3593552f811c6d"
+  },
+  "parent_source": {
+    "bytes": 25637,
+    "path": "/private/tmp/gcts-structural-cold-root-source-20261018/structural_cold_v1.py",
+    "sha256": "587fa059eb0a3c3f8744822b337d252d364123634397e6c4d456dbfc90267f28"
+  },
+  "prior_compatibility_checklist": {
+    "bytes": 69211,
+    "path": "/private/tmp/gcts-cold-reader-compatibility-peer-20261018/compatibility-checklist-v1.json",
+    "sha256": "ebb5e5089a16b0e99c4fe5b3ff85a668f93dc31d3c8b8b1b981fad585636c61b"
+  },
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "prospective_requirements": [
+    "Distinct current cohort/worker-plan/once-grant review before activation.",
+    "Root-only fresh once measurements retain all6 outcomes, including any failure/UNKNOWN/profile miss.",
+    "Future independent retained audit must verify full result/native/point/timing/worker+CPP highwater/reap evidence; Source PASS is not an outcome filter."
+  ],
+  "reader_calls": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "retained_raw_AST_regions": [
+    "ColdError",
+    "need",
+    "canonical",
+    "descriptor",
+    "raw_file",
+    "write_new",
+    "seal_callables",
+    "select_receiver"
+  ],
+  "reviewer_identity": "/root/conventional_library",
+  "runtime_closure": {
+    "bytes": 67727,
+    "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/runtime-closure-v1.json",
+    "sha256": "a65f67a644e294e0ab0162b02ff3505237f96a382e293fbf3136000b7110baaf"
+  },
+  "schema": "compact-cold-reader-independent-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Independent exact Root cold-reader integration/closure/declaration alignment Source review only. No runtime, grant or mathematical/resource acceptance.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source": {
+    "bytes": 28879,
+    "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/compact_reader_cold_v1.py",
+    "sha256": "d77aba05d0c6f5e94f41997176936603f6f75ad1dcd59134a7fa3325773bdb06"
+  },
+  "source_contract": {
+    "bytes": 3617,
+    "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/Source-contract-v1.json",
+    "sha256": "e8ff211fbbe1fa55ba7703a1fd165f88e3593de63f085f352a8ded07ae2b1d0a"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "cold": {
+      "bytes": 28879,
+      "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/compact_reader_cold_v1.py",
+      "sha256": "d77aba05d0c6f5e94f41997176936603f6f75ad1dcd59134a7fa3325773bdb06"
+    }
+  },
+  "unchanged_observer": {
+    "bytes": 4280,
+    "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/observe_symbolic_runner_v1.py",
+    "sha256": "720cc07b6f2766bb080d40c138c255d915f2806c2b4af83b21d82aaa7df702ae"
+  },
+  "unchanged_runner": {
+    "bytes": 18080,
+    "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_once_runner_v1.py",
+    "sha256": "8ecbee2e55e5c64d05c08cfcddc675544939e42c70596ca7e453782548b2e7cb"
+  }
+}

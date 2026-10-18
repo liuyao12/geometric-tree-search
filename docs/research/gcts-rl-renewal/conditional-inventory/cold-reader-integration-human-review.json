@@ -1,0 +1,331 @@
+{
+  "Root_admission": {
+    "bytes": 306514,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/ROOT-actual-admission-v2.json",
+    "sha256": "934826da1d21aa19f2a0a2f82a3d6a46ceec49c7efc102582672e107c3adf582"
+  },
+  "Root_report_delta": {
+    "bytes": 14918,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/ROOT-six-count-cell-report-delta-v1.json",
+    "sha256": "663def6fbb2ca99cb2763dd8b54f5b64c2651e21c7f0bb767e588631b32b91f4"
+  },
+  "actual_execution_authorized": false,
+  "actual_launches": 0,
+  "all_reviewed_public_files": {
+    "cold-reader-integration-alias-source-review.json": {
+      "bytes": 10610,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-alias-source-review.json",
+      "sha256": "5e1306e78b6cbacc3f07a0f5adda0f57efb7e98e75a3db0f02827bbd25475440"
+    },
+    "cold-reader-integration-base-builtin-result.json.gz": {
+      "bytes": 3708271,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-base-builtin-result.json.gz",
+      "sha256": "3daa03499c886ab9687ad56148edfbfb205a03c4e647692ed07961da8fb3c35e"
+    },
+    "cold-reader-integration-base-interned-result.json.gz": {
+      "bytes": 3708267,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-base-interned-result.json.gz",
+      "sha256": "bc85d72282df50170e01504713440b405f218f8c619c003aad0db59fc82246cd"
+    },
+    "cold-reader-integration-base-proof.html": {
+      "bytes": 1665467,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-base-proof.html",
+      "sha256": "c5702242a2defabb3c4a54d7896a2e1189058d7920078401f12e639dd329970c"
+    },
+    "cold-reader-integration-final-grant-review.json": {
+      "bytes": 24581,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-final-grant-review.json",
+      "sha256": "f66c5c999d75e2d342e87b83b32bef96d3b27a654bf9a6b75a6e364eabd67dfc"
+    },
+    "cold-reader-integration-fixed-builtin-result.json.gz": {
+      "bytes": 3735561,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-fixed-builtin-result.json.gz",
+      "sha256": "ec550a29c17b219341d87e2bb3c2292290d1d224bf34d47a3054d440323fdeeb"
+    },
+    "cold-reader-integration-fixed-interned-result.json.gz": {
+      "bytes": 3735559,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-fixed-interned-result.json.gz",
+      "sha256": "b65a48f6eccd3682d9297e5c201d7474dc5e41c06d904aed5cc65b6729978bda"
+    },
+    "cold-reader-integration-fixed-proof.html": {
+      "bytes": 1970096,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-fixed-proof.html",
+      "sha256": "69903aee19933892d614fcc29ec0e37a8b4903e4f9b1c20ce42bbbfd5dfbc9cf"
+    },
+    "cold-reader-integration-model-qualification-handoff.json": {
+      "bytes": 2843,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-model-qualification-handoff.json",
+      "sha256": "50ed0013420e23bc13297fc4fc2967cc09d1c627da5481428a12befdbfb436cf"
+    },
+    "cold-reader-integration-source-review.json": {
+      "bytes": 9490,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-source-review.json",
+      "sha256": "3660e4d54cb2e0658ae8a06a8907e0fa89a7cf8b2cfdcf3edc840a07add169a6"
+    },
+    "cold-reader-integration-summary.json": {
+      "bytes": 312225,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-summary.json",
+      "sha256": "abb5155164b846e1c16530c789cb3106ad8f172bd6c4b9531b4cc868e28dd8f8"
+    },
+    "cold-reader-integration-symbolic-builtin-result.json.gz": {
+      "bytes": 2473492,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-symbolic-builtin-result.json.gz",
+      "sha256": "d6ba6d7a14ccb3fc6da11a5fefc7d0e5f3c0acfc8663cf405295b2ed014014fe"
+    },
+    "cold-reader-integration-symbolic-interned-result.json.gz": {
+      "bytes": 2473487,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-symbolic-interned-result.json.gz",
+      "sha256": "3e90fb952a361c98cc045b2f12e7e84ee864b4c5fed30a8a4ae68a40cc98939c"
+    },
+    "cold-reader-integration-symbolic-proof.html": {
+      "bytes": 2103675,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-symbolic-proof.html",
+      "sha256": "e66390a2ecb9c04dcaf331041c442b99b82ae3db08f1dec8a3beefcee40e95b1"
+    },
+    "cold-reader-integration.html": {
+      "bytes": 15955,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration.html",
+      "sha256": "43be22f47e695924ec0a46df2e231c5ef926324ae4d998425ac0174e713574b1"
+    },
+    "parallel-work-status.json": {
+      "bytes": 28551,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/parallel-work-status.json",
+      "sha256": "e6b82d2ae7e48ac42f23305ff2fdbc0bb5561542edabf544dbb2fd62b6ce67f9"
+    },
+    "reader.html": {
+      "bytes": 83510,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/reader.html",
+      "sha256": "4e16f4e3b3bc3bfe7846802b0b244ac7fda1bed0a599e6d71f9f57ac60055be7"
+    }
+  },
+  "author_identity": "/root",
+  "author_overlap_disclosure": "Reviewer authored original structural cases/coverage, unchanged symbolic control, earlier quantified driver/broker/outer/CASE/checkers, native capacity assessment, current reader/cold prospective and grant reviews, standalone-reader human report review, and the separate inactive native-wire alias prototype. Reviewer authored neither Root current cold/report/renderer, six actuals nor compact Model/qualification harness. This is independent of Root report production, not an independent re-audit of own control/capacity/alias semantics. Exact distinct Library alias Source review5e1306 and data/resource peers are reused within their separate scopes.",
+  "bounded_successor_audit": {
+    "bytes": 15532,
+    "path": "/private/tmp/gcts-compact-cold-human-peer-20261018/raw-human-successor-audit-v2.json",
+    "sha256": "37c78c201cae8de46feb41423f90fde8f104d3e636b11d469ce618823fcc53e9"
+  },
+  "cold_calls": 0,
+  "compiler_calls": 0,
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "The original V1 negative is preserved. Only six literal None count cells change to60/60/61/61/12/12. The complete HTML otherwise matches byte-for-byte. Root V2 adds verbatim nested search_counters while all old timing/status/raw/native/point/proof/resource fields remain literal, with original admission retained as parent. The distinct data peer verifies the raw metrics.",
+      "id": "COUNT_CELLS_REPAIRED",
+      "severity": "resolved"
+    },
+    {
+      "finding": "All3shared diagnostic readers match raw data:36root rows,132registered-definition rows,180selected positional tiles,18,966mark assignments and38,947math spans. Every formula/term is parsed from displayed LaTeX back to literal syntax; English rule/source references, ordered block ports, local assumptions, ground bindings, definition metadata/bodies, final native requests and saved essential observations match. Each full tile packet, role glyph/color, remote read label, every literal occupancy/mark point/value and layer dot census matches the actual selected model packet. No derivation rule was evaluated.",
+      "id": "FULL_DIAGNOSTIC_PROOF_READERS",
+      "severity": "evidence"
+    },
+    {
+      "finding": "All6rows/chart/precision/threshold/time/decode/unit labels match retained data. All6nativeaccepted wholepoint/literal-inverse results remain outside memory: ordinary sums1693.90625/1655.4375/1201.59375MiB and shared1127.09375/1115.046875/1061.578125MiB. Shared decode is slower in every pair. No bounded proof is admitted; groupabsence null/logcapturefalse remain unreported at the failed gate. Known process reaping is separately scoped.",
+      "id": "ALL_SIX_OUTCOMES",
+      "severity": "evidence"
+    },
+    {
+      "finding": "All6retained report gzip downloads compare byte-for-byte to complete raw results. All24compiler/inventory/model/initial semantic preimage files compare literally across arms; within-method proof/placement/union equality is explicit. The initial display audit compared path-bearing preimage descriptors, an audit expectation error resolved by whole-file comparison; no Root data changed.",
+      "id": "FULL_DATA_AND_PREIMAGES",
+      "severity": "evidence"
+    },
+    {
+      "finding": "The report preserves180/210 Source-entry time, separate worker/native1GiB highwater sum, parent/observer memory exclusion,128MiB wholeoutput, common full model/knowledge and both-arm literal-inverse/body-copy costs. It explicitly distinguishes known development engineering observations from general speed/memory guarantees, GCTS/RL benefit, repaired prior failures or broader theorem generalization. No exclusively identified remaining allocation cause or instantaneous group-usage claim.",
+      "id": "COST_AND_CLAIMS",
+      "severity": "scope"
+    },
+    {
+      "finding": "Native alias Source is an inactive syntax/inverse prototype with distinct Library Source review, no fit or native acceptance. This author's alias/capacity derivation is not independently re-audited here. The model qualification harness is correctly labelled authored, unreviewed and unevaluated at report freeze; compact Model/alias/harness are not part of these6scientific runs.",
+      "id": "INACTIVE_FUTURE_SOURCES",
+      "severity": "scope"
+    },
+    {
+      "finding": "New main/proof/reader navigation and existing local anchors resolve; all3proofHTML/6gzip/reader bytes are unchanged inV2. MathJax delimiters/IDs/C0 controls and binary operator terminators pass static checks. Five exact future review/archive objects and current review-reference metadata cleanup remain Root release duties, not currently published claims.",
+      "id": "MATH_NAV_AND_RELEASE",
+      "severity": "evidence"
+    }
+  ],
+  "harness_calls": 0,
+  "limitations": [
+    "Report accuracy PASS is not native truth/resource acceptance; those are separate retained evidence scopes. All6complete profiles fail memory and no bounded proof or GCTS/RL advantage is granted.",
+    "Only saved JSON/raw metadata and retained report gzip packaging were inspected. No reader/cold/harness/model/compiler/logic/native/kernel/solver/search/renderer/program/tape codec evaluation or proof replay occurred.",
+    "Static LaTeX-to-literal parsing and point packet inspection establish display fidelity, not mathematical derivation validity or browser rendering.",
+    "The Source-entry clock excludes earlier interpreter/observer prelude; memory is a sum of separate worker/native highs with parent/observer excluded. One observation perknowncase/method/reader is not a general distribution.",
+    "Exact5futureobjects/currentrefcleanup/archive/fullnavigation/deploy/live checks remain Root responsibilities after this freeze."
+  ],
+  "logic_calls": 0,
+  "mathematical_proof_accepted": false,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "native_codec_calls": 0,
+  "original_display_audit": {
+    "bytes": 13819262,
+    "path": "/private/tmp/gcts-compact-cold-human-peer-20261018/raw-human-display-audit-v1.json",
+    "sha256": "067cd73af556c8ba4342469b48f884dfbefda960e3bcc26e7815fddfad1db6bb"
+  },
+  "parent_V1_negative": {
+    "bytes": 9310,
+    "path": "/private/tmp/gcts-compact-cold-human-peer-20261018/typed-human-report-review-v1-negative.json",
+    "sha256": "d40b4cc0881ed6436f17e7a6fb5366f845cf6a124f30a4c6d2fc2f505c3305dd"
+  },
+  "preimage_addendum": {
+    "bytes": 12908,
+    "path": "/private/tmp/gcts-compact-cold-human-peer-20261018/raw-preimage-display-addendum-v1.json",
+    "sha256": "aa4178c76d2955dfc2d02110c0c767c973c2bafbae20c30f9f31ed3f9eb8af04"
+  },
+  "preserved_original_admission": {
+    "bytes": 303976,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "1407bf3eaf59feb9c1c085ad04696a69fd535bef415a120b8d350d64825f90dc"
+  },
+  "project_imports": 0,
+  "proof_display_totals": {
+    "definition_rows": 132,
+    "math_spans": 38947,
+    "root_rows": 36,
+    "selected_mark_assignments": 18966,
+    "selected_tiles": 180
+  },
+  "proof_kernel_calls": 0,
+  "proof_pages": [
+    {
+      "case": "base",
+      "definition_rows": 44,
+      "definitions": 12,
+      "math_spans": 11067,
+      "raw_search_metrics": {
+        "attempts": 60,
+        "branch": 12,
+        "forced": 48,
+        "nodes": 61
+      },
+      "root_rows": 12,
+      "selected_mark_assignments": 5368,
+      "selected_tiles": 60
+    },
+    {
+      "case": "fixed",
+      "definition_rows": 44,
+      "definitions": 12,
+      "math_spans": 13433,
+      "raw_search_metrics": {
+        "anchors_omitted": 0,
+        "attempts": 61,
+        "backtracks": 1,
+        "branch": 22,
+        "dead": 1,
+        "forced": 38,
+        "hint_completed": 6,
+        "hint_eligible": 16,
+        "hint_invalid": 2,
+        "hint_waiting": 28,
+        "hints_started": 8,
+        "items": 127,
+        "nodes": 62,
+        "proposal_seconds": 0.614724125014618,
+        "row_pool": 76,
+        "row_quota_stops": 6,
+        "sample_pair_tests": 126,
+        "sample_validation_checks": 51,
+        "validation_checks": 290
+      },
+      "root_rows": 12,
+      "selected_mark_assignments": 6547,
+      "selected_tiles": 60
+    },
+    {
+      "case": "symbolic",
+      "definition_rows": 44,
+      "definitions": 12,
+      "math_spans": 14447,
+      "raw_search_metrics": {
+        "backtracks": 0,
+        "block_port_tuples": 3,
+        "dead_prefixes": 0,
+        "prefix_extensions": 12,
+        "prefix_nodes": 13,
+        "primitive_guard_rejections": 820,
+        "skeleton_tests": 1288,
+        "unavailable_block_skeletons": 456
+      },
+      "root_rows": 12,
+      "selected_mark_assignments": 7051,
+      "selected_tiles": 60
+    }
+  ],
+  "reader": {
+    "bytes": 83510,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/reader.html",
+    "sha256": "4e16f4e3b3bc3bfe7846802b0b244ac7fda1bed0a599e6d71f9f57ac60055be7"
+  },
+  "reader_calls": 0,
+  "release_conditions": [
+    {
+      "objects": [
+        "cold-reader-integration-data-review.json",
+        "cold-reader-integration-evidence-manifest.json",
+        "cold-reader-integration-evidence.zip",
+        "cold-reader-integration-human-review.json",
+        "cold-reader-integration-resource-review.json"
+      ],
+      "required": "Create exact current data/resource/human receipt copies and whole-object manifest/evidenceZIP, verify bytes/pins and all local navigation. Human copy is this frozen receipt; no selfhashcycle requirement."
+    },
+    {
+      "required": "After all3genuine current reviews are frozen, update summary/status current review refs/URLs and pending flags, preserve historical metadata/admissions/actualrows, and retain V1 negative plus V2 correction. Reference-only release metadata does not authorize any formula/HTML/scientific change."
+    },
+    {
+      "required": "Root must verify full archive/manifest content and whole hashes including every raw actual, full semantic preimages, exact reviewed Sources/plans/declarations/reviews, both preserved report versions and inactive Source packet scope. Do not relabel memoryfailure as bounded proof, substitute later group probes, omit outcomes or rerun consumedgrants."
+    },
+    {
+      "required": "Publish task changes to existing web destination while preserving unrelated/protected overview. Verify deployed exact assets/links and live MathJax/visual proof layout; this reviewer used no browser or renderer."
+    }
+  ],
+  "renderer_calls": 0,
+  "report": {
+    "bytes": 15955,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration.html",
+    "sha256": "43be22f47e695924ec0a46df2e231c5ef926324ae4d998425ac0174e713574b1"
+  },
+  "report_review_passed": true,
+  "resource_acceptance": false,
+  "retained_report_gzip_literal_checks": 6,
+  "reused_distinct_reviews": {
+    "alias_Source": {
+      "bytes": 10610,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-alias-source-review.json",
+      "sha256": "5e1306e78b6cbacc3f07a0f5adda0f57efb7e98e75a3db0f02827bbd25475440"
+    },
+    "data": {
+      "bytes": 173226,
+      "path": "/private/tmp/gcts-compact-cold-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "ef20c5aca185eb522f2199a25467776fa965207463932902a601aa1cdbda96fa"
+    },
+    "resource": {
+      "bytes": 66954,
+      "path": "/private/tmp/gcts-compact-cold-resource-peer-20261018/typed-resource-review-v1.json",
+      "sha256": "466064d26dfd93340fd39df670e3e7e6bf0f2d8aea42d28f40a8920ccd12937b"
+    }
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "saved_data_only": true,
+  "schema": "compact-cold-independent-human-report-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Independent human HTML/numeric/formula/English/actualtile/claims/navigation and literal retained-download review of six completed fullcold engineering controls. Current exact V2 changes only six corrected work cells and supporting count metadata; proof HTML, raw results and scientific outcomes are unchanged. No runtime proof/resource admission is granted by report accuracy PASS.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "status": {
+    "bytes": 28551,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/parallel-work-status.json",
+    "sha256": "e6b82d2ae7e48ac42f23305ff2fdbc0bb5561542edabf544dbb2fd62b6ce67f9"
+  },
+  "summary": {
+    "bytes": 312225,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/publication-source-v2/cold-reader-integration-summary.json",
+    "sha256": "abb5155164b846e1c16530c789cb3106ad8f172bd6c4b9531b4cc868e28dd8f8"
+  },
+  "wording_and_saved_data_review_passed": true
+}

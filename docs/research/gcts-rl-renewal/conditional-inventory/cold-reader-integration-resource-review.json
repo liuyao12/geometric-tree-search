@@ -1,0 +1,1283 @@
+{
+  "Root_admission": {
+    "bytes": 303976,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "1407bf3eaf59feb9c1c085ad04696a69fd535bef415a120b8d350d64825f90dc"
+  },
+  "actual_count": 6,
+  "actual_execution_authorized": false,
+  "actual_launches": 0,
+  "all_bounded_profiles_passed": false,
+  "all_known_worker_native_PIDs_reaped": true,
+  "audit": {
+    "bytes": 1482984,
+    "path": "/private/tmp/gcts-compact-cold-resource-peer-20261018/raw-resource-audit-v1.json",
+    "sha256": "3ed4e6069e171b8fd2ffbf765cc3c2673e4ba43dd35535b463ef161d08f5c4e3"
+  },
+  "audit_Source": {
+    "bytes": 21855,
+    "path": "/private/tmp/gcts-compact-cold-resource-peer-20261018/audit_retained_fullcold_v1.py",
+    "sha256": "fa69eaede2d73ca027f69249bef704a31bdce6ff111e7f373b0f8057ed827e24"
+  },
+  "audit_checks": 1800,
+  "author_identity": "/root",
+  "author_overlap": false,
+  "author_overlap_disclosure": "Reviewer authored historical unchanged quantified/generic adapters and an inactive compact Model/renderer, and independently reviewed the current Root cold integration and alias prototype Sources. Reviewer authored neither Root current cold/runner/observer/grants/actuals/admission nor the reader. This is resource/custody classification from retained data, not a re-audit of own semantic Sources or a mathematical proof replay.",
+  "authoring_preflight": "First ad hoc metadata display assumed a nonexistent schedule label field and stopped with KeyError before any audit output or target action. The corrected review uses mode/result_reader; actuals unchanged.",
+  "authorized_index": {
+    "bytes": 14113,
+    "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "7e038fd113e80e407a10fb9ae537e76b2e60a750d881d0d1fc0b81a3f63dd974"
+  },
+  "codec_or_decompression_calls": 0,
+  "compiler_calls": 0,
+  "complete_native_request_stage_count": 168,
+  "current_Source_reviews": {
+    "cohort_plans": {
+      "bytes": 42317,
+      "path": "/private/tmp/gcts-compact-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+      "sha256": "761bfb41ab35c5404153145897d279d2f617d51a75e4e85f678ba40eca0a0507"
+    },
+    "cold_Source": {
+      "bytes": 9490,
+      "path": "/private/tmp/gcts-cold-reader-compatibility-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "3660e4d54cb2e0658ae8a06a8907e0fa89a7cf8b2cfdcf3edc840a07add169a6"
+    },
+    "reader_Source": {
+      "bytes": 5175,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-reader-Source-review-v2.json",
+      "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+    }
+  },
+  "current_sources": {
+    "cold": {
+      "bytes": 28879,
+      "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/compact_reader_cold_v1.py",
+      "sha256": "d77aba05d0c6f5e94f41997176936603f6f75ad1dcd59134a7fa3325773bdb06"
+    },
+    "declaration": {
+      "bytes": 6911,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/experiment-declaration-v1.json",
+      "sha256": "4259a7769fbd30414d12417f635303f339126d3cbea8c0b846ab16ca93f847fb"
+    },
+    "observer": {
+      "bytes": 4280,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/observe_symbolic_runner_v1.py",
+      "sha256": "720cc07b6f2766bb080d40c138c255d915f2806c2b4af83b21d82aaa7df702ae"
+    },
+    "reader": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    "runner": {
+      "bytes": 18080,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_once_runner_v1.py",
+      "sha256": "8ecbee2e55e5c64d05c08cfcddc675544939e42c70596ca7e453782548b2e7cb"
+    },
+    "runtime_closure": {
+      "bytes": 67727,
+      "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/runtime-closure-v1.json",
+      "sha256": "a65f67a644e294e0ab0162b02ff3505237f96a382e293fbf3136000b7110baaf"
+    }
+  },
+  "custody_review_passed": true,
+  "descriptive_pairs": [
+    {
+      "builtin_decode_seconds": 1.245688083,
+      "builtin_outer_terminal_seconds": 73.546761959,
+      "builtin_sum_MiB": 1693.90625,
+      "interned_decode_seconds": 2.922369333,
+      "interned_outer_terminal_seconds": 74.407974583,
+      "interned_sum_MiB": 1127.09375,
+      "mode": "base",
+      "observed_reduction_fraction": 0.33461857762199054,
+      "observed_sum_difference_MiB": -566.8125,
+      "scope": "One known-case pair, full pipeline includes matched inverse/body slice, all out of1GiB; no statistical/general/causal allocation attribution."
+    },
+    {
+      "builtin_decode_seconds": 1.23735625,
+      "builtin_outer_terminal_seconds": 84.460674084,
+      "builtin_sum_MiB": 1655.4375,
+      "interned_decode_seconds": 3.781596042,
+      "interned_outer_terminal_seconds": 83.521423292,
+      "interned_sum_MiB": 1115.046875,
+      "mode": "fixed",
+      "observed_reduction_fraction": 0.326433722203345,
+      "observed_sum_difference_MiB": -540.390625,
+      "scope": "One known-case pair, full pipeline includes matched inverse/body slice, all out of1GiB; no statistical/general/causal allocation attribution."
+    },
+    {
+      "builtin_decode_seconds": 1.169461875,
+      "builtin_outer_terminal_seconds": 78.422394,
+      "builtin_sum_MiB": 1201.59375,
+      "interned_decode_seconds": 2.670259,
+      "interned_outer_terminal_seconds": 76.44935675,
+      "interned_sum_MiB": 1061.578125,
+      "mode": "symbolic",
+      "observed_reduction_fraction": 0.1165249278302255,
+      "observed_sum_difference_MiB": -140.015625,
+      "scope": "One known-case pair, full pipeline includes matched inverse/body slice, all out of1GiB; no statistical/general/causal allocation attribution."
+    }
+  ],
+  "diagnostic_worker_proof_headers": 6,
+  "distinct_reviewer": true,
+  "established": [
+    "All six true max-one grants bind the exact reviewed worker/runner plans, modes, representation factors, selected assertion and current three distinct Source/cohort review roles. The final-grant peer and Root authorized index raw hashes join; draft and actual full runner subjects remain identical except authorization descriptors.",
+    "All six consumption markers precede the recorded worker launch and bind the original epoch, invocation/mode, maximum one worker and full runner plan. All observer consumption/terminal/runner receipt headers join. Eighteen retained runner/worker/native PIDs are distinct, and the six recorded measurement windows do not overlap.",
+    "All original shared22 project/component Sources and all22 per-arm copied/imported Sources match full literal size/hash descriptors, including readerV2 in BOTH arms. Python, declarations, policy, closure,41Z3 files and opaque native inputs retain exact current raw pins. Complete Source-epoch hashes were independently reconstructed from ordinary plan metadata, all copied Source pins and raw native code.bin pins; no model or codec evaluation was used.",
+    "Every worker exited zero and was reaped by exact wait4. Every native child has matching worker PGID/PPID ownership, exit0/status0/direct wait4 peak, closed/all_reaped, complete stdoutEOF/stderr and no pending bytes. Full repeated native transport receipts in worker, driver-output and runner headers agree; all168 recorded query stages complete in ordinal order and final binary input/output raw hashes match the final stage.",
+    "All absolute work/closure endpoints equal the original parent Source-entry plus180/210seconds with no reset. Worker result read/inverse, point-region diagnostic, positive header/worker exit, parent postterminal checks and observer terminal timestamps are ordered and timely. Clock/decode duration fields reproduce retained integer timestamps.",
+    "The exact conservative sums are independent Darwin worker ru_maxrss plus native ru_maxrss, not worker-only peaks or a live allocation cap. All six sums exceed1GiB and each runner reports exactly the memory-threshold error. All six runner resource/transport-proof and observer terminal gates are false. Root admission1407bf3e cost/reading/pin/flag fields match every audited retained value.",
+    "Original complete result files were streamed and hashed. Current full body byte count/SHA without an optional single writer newline matches the retained per-arm literal-inverse receipt; output and receipt caps and raw worker logs remain within declared limits. Proof/native/point header successes are retained diagnostics and not promoted through failed resource gates.",
+    "For all six failures, owned_group_absent remains null and log_capture_complete remains false exactly as saved. Known worker/native reaping and native EOF are reported separately. No external group probe, rerun, salvage, later marker, budget increase or replacement of unavailable telemetry was used."
+  ],
+  "failed_memory_profiles": 6,
+  "final_grant_delta": {
+    "bytes": 24581,
+    "path": "/private/tmp/gcts-compact-cold-prospective-peer-20261018/typed-final-grant-delta-review-v1.json",
+    "sha256": "f66c5c999d75e2d342e87b83b32bef96d3b27a654bf9a6b75a6e364eabd67dfc"
+  },
+  "findings": [],
+  "freeze_Source": {
+    "bytes": 10811,
+    "path": "/private/tmp/gcts-compact-cold-resource-peer-20261018/freeze_resource_review_v1.py",
+    "sha256": "32dbd53011d253b63e0024b1bcf0b117df2685fd577fed9753fe687cf9b36e7b"
+  },
+  "fresh_bounded_proofs_admitted": 0,
+  "goal_complete": false,
+  "harness_calls": 0,
+  "limitations": [
+    "No reader, harness, project module, compiler, model, search, solver, native checker, codec, renderer or new scientific function was called. Original large result JSON bodies were only hashed; this audit did not decode them into proof/model data or rerun point/native verification. Logical proof and semantic-equality data review is a separate audit.",
+    "Whole process-group absence is not established after the failed memory gate: all six runner fields are null because the check was not reached. Known exact worker/native PIDs are reaped, but that does not justify inventing a whole-group absence receipt. Likewise empty retained worker logs do not override the false log_capture_complete flag set on the failure path.",
+    "Resource scope is the conservative sum of separate worker/native highwaters, which may double-count shared pages. Parent/observer instrumentation memory, including unchanged strict parent full-result parsing, is excluded; its elapsed wall work remains in the Source-entry overall epoch. Pre-Source interpreter/observer prelude are separately observed rather than reclassified as gated cold work.",
+    "The complete canonical inverse and its full raw[:-1] body slice run in both arms and are charged. Existing driver/model/template/native locals remain live. This study measures whole recorded worker maxima; it does not isolate allocation lifetimes or establish how much of a peak is caused by a particular object family.",
+    "One known diagonal assertion was author-selected, with one observation per method/reader and mixed pair order. Observed interned sums are lower, and decode times longer, but all remain outside1GiB. There is no randomized/statistical/general GCTS/RL win, new theorem result or evidence that the inactive compact Model/native-wire alias was activated.",
+    "The prior diagnostic proofs/failed structural actuals and six standalone reader statuses are unchanged. This scoped review PASS is not a successful bounded pipeline result or research-program completion."
+  ],
+  "log_capture_complete_false_count": 6,
+  "logic_calls": 0,
+  "mathematical_proof_accepted": false,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "observations": [
+    {
+      "authorization": {
+        "bytes": 6639,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-base-builtin-ROOT-20261018-v1.json",
+        "sha256": "eaf149c561b2cbcdae3625b516e22e43d701bd588682e8b0a903c55488367463"
+      },
+      "classification": "OUTSIDE_MEMORY_PROFILE_DIAGNOSTIC_PROOF",
+      "complete_native_request_stage_count": 28,
+      "conservative_sum_MiB": 1693.90625,
+      "decode_seconds": 1.245688083,
+      "diagnostic_region_header": {
+        "assigned_mark_points": 2523,
+        "completed_ns": 685930106022875,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "b34a8f1f05847388dbcdc4ae43d8de945bd650f2555bc20f6a2f6ef3528fcec4"
+      },
+      "errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 685932733698083,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 507,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "1328a9e6d6ae09b9b7f2257e5af66b97fd181e4dcee741256781579619357872"
+        },
+        "result.json": {
+          "bytes": 67079112,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/result.json",
+          "sha256": "e505a0cf589f4e595660505f0a3205a52a6d37373db2d7d1224aea67e0c9725a"
+        },
+        "runner-receipt.json": {
+          "bytes": 69170,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "b6e18ff7a15b2a33eecf1c291f49da005f5158b5562a2c8e66a091fde56e9f1d"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "worker-receipt.json": {
+          "bytes": 54602,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "92d42224416f7590d6c62b211784d470bdf1e551eb01665e469a58404f507c45"
+        }
+      },
+      "fresh_bounded_proof_admitted": false,
+      "full_source_epoch_hash_reconstructed": "75ada36910da5b6e3f8f7e4f209670f2dac148dbd40c57f3356bfd8a6db5958c",
+      "invocation_id": "compact-cold-base-builtin-ROOT-20261018-v1",
+      "label": "base-builtin",
+      "log_capture_complete_in_runner": false,
+      "mode": "base",
+      "native_all_reaped": true,
+      "native_exit_code": 0,
+      "native_peak_MiB": 12.671875,
+      "native_pid": 81894,
+      "native_stderr_complete": true,
+      "native_stdout_eof": true,
+      "native_wait4_status": 0,
+      "native_wait4_usage": {
+        "ru_majflt": 3,
+        "ru_maxrss": 13287424,
+        "ru_minflt": 1825,
+        "ru_stime": 0.28102,
+        "ru_utime": 33.814787
+      },
+      "observed_worker_native_proof_flag": true,
+      "observer_file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 322,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-builtin-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "1812e9059f7d340761370f757a4be2a10f3f74cde8f252e8b7045849c6426af3"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-builtin-ROOT-20261018-v1-terminal-observation/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 304,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-builtin-ROOT-20261018-v1-terminal-observation/stdout.bin",
+          "sha256": "b2e3d696341d4cc38c24bd46dfd5c7d9876b369306993e67ecc5b6967ad85d1e"
+        },
+        "terminal.json": {
+          "bytes": 1563,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-builtin-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "ef2663a88e0b5a15ffaeb8a20a38836dbf44e8fa5e9be6fe3dd29174c160a0eb"
+        }
+      },
+      "order": 1,
+      "original_began_ns": 685859338682416,
+      "outer_terminal_seconds": 73.546761959,
+      "overall_deadline_ns": 686069338682416,
+      "owned_pgid": 81893,
+      "python_exit_code": 0,
+      "python_reaped": true,
+      "python_wait4_status": 0,
+      "reader_and_inverse_seconds": 11.777264167,
+      "resource_admitted": false,
+      "result": {
+        "bytes": 67079112,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/result.json",
+        "sha256": "e505a0cf589f4e595660505f0a3205a52a6d37373db2d7d1224aea67e0c9725a"
+      },
+      "result_reader": "builtin",
+      "result_reading": {
+        "completed_ns": 685928283237875,
+        "decode_seconds": 1.245688083,
+        "decoded_ns": 685917751661791,
+        "reader": "builtin",
+        "roundtrip": {
+          "body_bytes": 67079111,
+          "body_sha256": "20791dda3c73f6664f7a3497d4171a0686ec7b4e96ca936001bc2d47922a7cab",
+          "chunks": 31846096,
+          "literal_bytes_equal": true
+        },
+        "scope": "Complete result reading and literal reconstruction in original scientific worker with all old native/template/model lifetimes unchanged. Parent parser unchanged.",
+        "sharing": null,
+        "source": {
+          "bytes": 4705,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "started_ns": 685916505973708
+      },
+      "runner_plan": {
+        "bytes": 1895,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-builtin-ROOT-20261018-v1.json",
+        "sha256": "0804f15c41b443bc0dfcff26ca5050b1a2b00fefb87b5e2a7b75270922839cbd"
+      },
+      "runner_receipt": {
+        "bytes": 69170,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "b6e18ff7a15b2a33eecf1c291f49da005f5158b5562a2c8e66a091fde56e9f1d"
+      },
+      "terminal": {
+        "bytes": 1563,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-builtin-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "ef2663a88e0b5a15ffaeb8a20a38836dbf44e8fa5e9be6fe3dd29174c160a0eb"
+      },
+      "terminal_observed_ns": 685932885444375,
+      "whole_group_absent_in_runner": null,
+      "work_deadline_ns": 686039338682416,
+      "worker_peak_MiB": 1681.234375,
+      "worker_pid": 81893,
+      "worker_plan": {
+        "bytes": 17613,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-base-builtin-ROOT-20261018-v1.json",
+        "sha256": "2b90b4348dbcf07ae4494e7440be9d136678aaffa42471e47f26f3f95ff95f7e"
+      },
+      "worker_receipt": {
+        "bytes": 54602,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "92d42224416f7590d6c62b211784d470bdf1e551eb01665e469a58404f507c45"
+      },
+      "worker_terminal_observed_ns": 685930356854083,
+      "worker_wait4_usage": {
+        "ru_majflt": 5,
+        "ru_maxrss": 1762902016,
+        "ru_minflt": 564833,
+        "ru_stime": 6.423177,
+        "ru_utime": 70.829094
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 6643,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-base-interned-ROOT-20261018-v1.json",
+        "sha256": "fd3276ad4b46597293fa872f4e30d6e3a2c903de932ea50264fcf7062a118511"
+      },
+      "classification": "OUTSIDE_MEMORY_PROFILE_DIAGNOSTIC_PROOF",
+      "complete_native_request_stage_count": 28,
+      "conservative_sum_MiB": 1127.09375,
+      "decode_seconds": 2.922369333,
+      "diagnostic_region_header": {
+        "assigned_mark_points": 2523,
+        "completed_ns": 686043394072625,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "b34a8f1f05847388dbcdc4ae43d8de945bd650f2555bc20f6a2f6ef3528fcec4"
+      },
+      "errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 686046108439041,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 509,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "08a2065f1ffd80727380f48a5b769ad8c006410524beca765956250308db70ab"
+        },
+        "result.json": {
+          "bytes": 67079140,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/result.json",
+          "sha256": "7bd39187c12b67c9f8fc23bca8b59f6d5ee7a18141bbda2b53723da10a6e0445"
+        },
+        "runner-receipt.json": {
+          "bytes": 69569,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "5647d4d8280fc5f29bb43d31c4a70b928065f2bd39aa714b77388b55723178da"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "worker-receipt.json": {
+          "bytes": 54981,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "06d8143976fb291ce6dc30f4aad3503fafe56dd6675fc1536ba8b6c2cb9ab299"
+        }
+      },
+      "fresh_bounded_proof_admitted": false,
+      "full_source_epoch_hash_reconstructed": "cf13869e82977bef103b400cf27e98fa96ef405773577634952c7204ce425cee",
+      "invocation_id": "compact-cold-base-interned-ROOT-20261018-v1",
+      "label": "base-interned",
+      "log_capture_complete_in_runner": false,
+      "mode": "base",
+      "native_all_reaped": true,
+      "native_exit_code": 0,
+      "native_peak_MiB": 12.40625,
+      "native_pid": 82278,
+      "native_stderr_complete": true,
+      "native_stdout_eof": true,
+      "native_wait4_status": 0,
+      "native_wait4_usage": {
+        "ru_majflt": 2,
+        "ru_maxrss": 13008896,
+        "ru_minflt": 2090,
+        "ru_stime": 0.28595899999999996,
+        "ru_utime": 33.907345
+      },
+      "observed_worker_native_proof_flag": true,
+      "observer_file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 323,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-interned-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "08b5dba5a69213650b80bc9d8291cea673056411e1caf91ae9545eb5820d7427"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-interned-ROOT-20261018-v1-terminal-observation/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 305,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-interned-ROOT-20261018-v1-terminal-observation/stdout.bin",
+          "sha256": "273fcbe21a8e518ca9dd71f72b99ec805b29a4e8b317dddedb44759510a52a4e"
+        },
+        "terminal.json": {
+          "bytes": 1569,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "a3ad503956e572225dae839c0000cf25d0f684892b3994c74869d0ed43cc4dbd"
+        }
+      },
+      "order": 2,
+      "original_began_ns": 685971858040458,
+      "outer_terminal_seconds": 74.407974583,
+      "overall_deadline_ns": 686181858040458,
+      "owned_pgid": 82265,
+      "python_exit_code": 0,
+      "python_reaped": true,
+      "python_wait4_status": 0,
+      "reader_and_inverse_seconds": 14.071941541,
+      "resource_admitted": false,
+      "result": {
+        "bytes": 67079140,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/result.json",
+        "sha256": "7bd39187c12b67c9f8fc23bca8b59f6d5ee7a18141bbda2b53723da10a6e0445"
+      },
+      "result_reader": "interned",
+      "result_reading": {
+        "completed_ns": 686043253703416,
+        "decode_seconds": 2.922369333,
+        "decoded_ns": 686032104131208,
+        "reader": "interned",
+        "roundtrip": {
+          "body_bytes": 67079139,
+          "body_sha256": "5c8191dc21fe7ad1df7dce5f256f84636486af73bf287379ce690375d251433c",
+          "chunks": 31846096,
+          "literal_bytes_equal": true
+        },
+        "scope": "Complete result reading and literal reconstruction in original scientific worker with all old native/template/model lifetimes unchanged. Parent parser unchanged.",
+        "sharing": {
+          "checkpoints": 192,
+          "key_occurrences": 557628,
+          "objects": 48849,
+          "pair_occurrences": 3781803,
+          "scope": "Container sharing counts, not measured allocation or RAM savings.",
+          "unique_keys": 17934,
+          "unique_pairs": 50634,
+          "unique_points": 4557,
+          "unique_vectors": 17264,
+          "vector_occurrences": 17495,
+          "version": "literal-result-json-immutable-interning-v2"
+        },
+        "source": {
+          "bytes": 4705,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "started_ns": 686029181761875
+      },
+      "runner_plan": {
+        "bytes": 1899,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-interned-ROOT-20261018-v1.json",
+        "sha256": "be3e01f19b8d781649efb4c808031d8ace9e799a45a76b4a9acb6bb0abac6a07"
+      },
+      "runner_receipt": {
+        "bytes": 69569,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "5647d4d8280fc5f29bb43d31c4a70b928065f2bd39aa714b77388b55723178da"
+      },
+      "terminal": {
+        "bytes": 1569,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "a3ad503956e572225dae839c0000cf25d0f684892b3994c74869d0ed43cc4dbd"
+      },
+      "terminal_observed_ns": 686046266015041,
+      "whole_group_absent_in_runner": null,
+      "work_deadline_ns": 686151858040458,
+      "worker_peak_MiB": 1114.6875,
+      "worker_pid": 82265,
+      "worker_plan": {
+        "bytes": 17616,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-base-interned-ROOT-20261018-v1.json",
+        "sha256": "8bceda79fef1a0f2acd8e9c82a547da940de887958c3ad1547b8e1980437f3ab"
+      },
+      "worker_receipt": {
+        "bytes": 54981,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "06d8143976fb291ce6dc30f4aad3503fafe56dd6675fc1536ba8b6c2cb9ab299"
+      },
+      "worker_terminal_observed_ns": 686043493383083,
+      "worker_wait4_usage": {
+        "ru_majflt": 16,
+        "ru_maxrss": 1168834560,
+        "ru_minflt": 300533,
+        "ru_stime": 6.196044,
+        "ru_utime": 71.531397
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 6647,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-fixed-interned-ROOT-20261018-v1.json",
+        "sha256": "64aa8a875fb2133231e9c9cafa4b8bcab9f2379c9220be7f7dbc5ce0462da327"
+      },
+      "classification": "OUTSIDE_MEMORY_PROFILE_DIAGNOSTIC_PROOF",
+      "complete_native_request_stage_count": 28,
+      "conservative_sum_MiB": 1115.046875,
+      "decode_seconds": 3.781596042,
+      "diagnostic_region_header": {
+        "assigned_mark_points": 3020,
+        "completed_ns": 686136036516791,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "abed0a929ed97970293527145fef960e3a2c724e3ef92174e215ecf7b8609ecc"
+      },
+      "errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 686138993593500,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 512,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "3db2c4a24b4d1680df4e00325536510918201ce555578f1852139c9d57473ff9"
+        },
+        "result.json": {
+          "bytes": 67260280,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/result.json",
+          "sha256": "b32ef32c97f645438d55f13169f43091d9e711b53cb0b5cd954d5f7c389da1aa"
+        },
+        "runner-receipt.json": {
+          "bytes": 69569,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "d102deffd08c9e81f831cd14b28adea1ae56fb096d23f2c8e48c80e12dfb81b7"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "worker-receipt.json": {
+          "bytes": 54984,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "a456e0c39cee72f8ef61ea74db38fc62ddbc8e936d2973858687700b4fb9ded1"
+        }
+      },
+      "fresh_bounded_proof_admitted": false,
+      "full_source_epoch_hash_reconstructed": "26b1977c2933679e5dd7e6427816c4f693020807584f897d1181d0ac1f964408",
+      "invocation_id": "compact-cold-fixed-interned-ROOT-20261018-v1",
+      "label": "fixed-interned",
+      "log_capture_complete_in_runner": false,
+      "mode": "fixed",
+      "native_all_reaped": true,
+      "native_exit_code": 0,
+      "native_peak_MiB": 12.265625,
+      "native_pid": 82484,
+      "native_stderr_complete": true,
+      "native_stdout_eof": true,
+      "native_wait4_status": 0,
+      "native_wait4_usage": {
+        "ru_majflt": 3,
+        "ru_maxrss": 12861440,
+        "ru_minflt": 2313,
+        "ru_stime": 0.501566,
+        "ru_utime": 37.408233
+      },
+      "observed_worker_native_proof_flag": true,
+      "observer_file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 324,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-interned-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "6fa23b4a136fdec3695e0b7eb485f022e03d06d009132fabb7d7680254c8e2ad"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-interned-ROOT-20261018-v1-terminal-observation/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 306,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-interned-ROOT-20261018-v1-terminal-observation/stdout.bin",
+          "sha256": "1b1050eb9a4cb98fd3332cbaceb985279597090803fa03144fb981f06a84dc0e"
+        },
+        "terminal.json": {
+          "bytes": 1572,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "6724d6658879afd27486db017b0812e36ce5f0ea5168bfa185e44dfec4a50144"
+        }
+      },
+      "order": 3,
+      "original_began_ns": 686055827546541,
+      "outer_terminal_seconds": 83.521423292,
+      "overall_deadline_ns": 686265827546541,
+      "owned_pgid": 82478,
+      "python_exit_code": 0,
+      "python_reaped": true,
+      "python_wait4_status": 0,
+      "reader_and_inverse_seconds": 15.697111875,
+      "resource_admitted": false,
+      "result": {
+        "bytes": 67260280,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/result.json",
+        "sha256": "b32ef32c97f645438d55f13169f43091d9e711b53cb0b5cd954d5f7c389da1aa"
+      },
+      "result_reader": "interned",
+      "result_reading": {
+        "completed_ns": 686135918849208,
+        "decode_seconds": 3.781596042,
+        "decoded_ns": 686124003333375,
+        "reader": "interned",
+        "roundtrip": {
+          "body_bytes": 67260279,
+          "body_sha256": "a6a8c02f99f14c4427223bc740bd85cc2f86bee3b905519f243db9b9fc7269fb",
+          "chunks": 31919934,
+          "literal_bytes_equal": true
+        },
+        "scope": "Complete result reading and literal reconstruction in original scientific worker with all old native/template/model lifetimes unchanged. Parent parser unchanged.",
+        "sharing": {
+          "checkpoints": 193,
+          "key_occurrences": 566943,
+          "objects": 49060,
+          "pair_occurrences": 3781803,
+          "scope": "Container sharing counts, not measured allocation or RAM savings.",
+          "unique_keys": 17934,
+          "unique_pairs": 50634,
+          "unique_points": 4557,
+          "unique_vectors": 17264,
+          "vector_occurrences": 17495,
+          "version": "literal-result-json-immutable-interning-v2"
+        },
+        "source": {
+          "bytes": 4705,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "started_ns": 686120221737333
+      },
+      "runner_plan": {
+        "bytes": 1904,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-interned-ROOT-20261018-v1.json",
+        "sha256": "722beb88d9c3af2528dd4e89c5706897166a7666b15da096a4bb02a323c24664"
+      },
+      "runner_receipt": {
+        "bytes": 69569,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "d102deffd08c9e81f831cd14b28adea1ae56fb096d23f2c8e48c80e12dfb81b7"
+      },
+      "terminal": {
+        "bytes": 1572,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "6724d6658879afd27486db017b0812e36ce5f0ea5168bfa185e44dfec4a50144"
+      },
+      "terminal_observed_ns": 686139348969833,
+      "whole_group_absent_in_runner": null,
+      "work_deadline_ns": 686235827546541,
+      "worker_peak_MiB": 1102.78125,
+      "worker_pid": 82478,
+      "worker_plan": {
+        "bytes": 17619,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-fixed-interned-ROOT-20261018-v1.json",
+        "sha256": "2f0484e198762dbde869d0bdd8b674336e13e9013253f1a095419330e9b4d4a3"
+      },
+      "worker_receipt": {
+        "bytes": 54984,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "a456e0c39cee72f8ef61ea74db38fc62ddbc8e936d2973858687700b4fb9ded1"
+      },
+      "worker_terminal_observed_ns": 686136118638791,
+      "worker_wait4_usage": {
+        "ru_majflt": 17,
+        "ru_maxrss": 1156349952,
+        "ru_minflt": 327426,
+        "ru_stime": 7.950607,
+        "ru_utime": 80.042184
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 6643,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-fixed-builtin-ROOT-20261018-v1.json",
+        "sha256": "366680b553741a449ac5d9539e56138d0a5babed2952a41e5d6f545b27cdb7fd"
+      },
+      "classification": "OUTSIDE_MEMORY_PROFILE_DIAGNOSTIC_PROOF",
+      "complete_native_request_stage_count": 28,
+      "conservative_sum_MiB": 1655.4375,
+      "decode_seconds": 1.23735625,
+      "diagnostic_region_header": {
+        "assigned_mark_points": 3020,
+        "completed_ns": 686264148009916,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "abed0a929ed97970293527145fef960e3a2c724e3ef92174e215ecf7b8609ecc"
+      },
+      "errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 686267062766041,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 510,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "897dc62707576bd6ee28ed9b8e1f558aa767ba01e2e9b76a401cee05f8eb080e"
+        },
+        "result.json": {
+          "bytes": 67260254,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/result.json",
+          "sha256": "a2dbc126fdd599a6145582289015bc9fb0a4ac3ccaef09630cfd795ea6bb0c16"
+        },
+        "runner-receipt.json": {
+          "bytes": 69209,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "cb86e1d483cf6e830153d992f40498044a3824370521d8283c88c491d516014d"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "worker-receipt.json": {
+          "bytes": 54631,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "888508f0a9966e218479c408c29ea899c151c15cb868bf26badddc12a15f555f"
+        }
+      },
+      "fresh_bounded_proof_admitted": false,
+      "full_source_epoch_hash_reconstructed": "757563f7c2048b2fa919019d61a9abc52cc5706ef022f285c981e5820fd45e02",
+      "invocation_id": "compact-cold-fixed-builtin-ROOT-20261018-v1",
+      "label": "fixed-builtin",
+      "log_capture_complete_in_runner": false,
+      "mode": "fixed",
+      "native_all_reaped": true,
+      "native_exit_code": 0,
+      "native_peak_MiB": 12.28125,
+      "native_pid": 82736,
+      "native_stderr_complete": true,
+      "native_stdout_eof": true,
+      "native_wait4_status": 0,
+      "native_wait4_usage": {
+        "ru_majflt": 2,
+        "ru_maxrss": 12877824,
+        "ru_minflt": 2259,
+        "ru_stime": 0.555582,
+        "ru_utime": 37.182891
+      },
+      "observed_worker_native_proof_flag": true,
+      "observer_file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 323,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-builtin-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "038a8d32de50b8adb3f19b8f3c5ed3263e6628e631ff40ad555e5fce5851bc57"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-builtin-ROOT-20261018-v1-terminal-observation/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 305,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-builtin-ROOT-20261018-v1-terminal-observation/stdout.bin",
+          "sha256": "48d6229286a7c27f7421c04d33e610b87171c33b50af5bb326b8efe1c44526e8"
+        },
+        "terminal.json": {
+          "bytes": 1569,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-builtin-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "48dda89b946c3af0d57b51cf91d0c628ca6c0d2b55f71f18c94a38e221b20afe"
+        }
+      },
+      "order": 4,
+      "original_began_ns": 686182791119166,
+      "outer_terminal_seconds": 84.460674084,
+      "overall_deadline_ns": 686392791119166,
+      "owned_pgid": 82727,
+      "python_exit_code": 0,
+      "python_reaped": true,
+      "python_wait4_status": 0,
+      "reader_and_inverse_seconds": 12.984743375,
+      "resource_admitted": false,
+      "result": {
+        "bytes": 67260254,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/result.json",
+        "sha256": "a2dbc126fdd599a6145582289015bc9fb0a4ac3ccaef09630cfd795ea6bb0c16"
+      },
+      "result_reader": "builtin",
+      "result_reading": {
+        "completed_ns": 686262193789750,
+        "decode_seconds": 1.23735625,
+        "decoded_ns": 686250446402625,
+        "reader": "builtin",
+        "roundtrip": {
+          "body_bytes": 67260253,
+          "body_sha256": "41e7e98b1fffa8d2dc6dc76d030d39b19facd222010cb549b04f5efa4b5c8345",
+          "chunks": 31919934,
+          "literal_bytes_equal": true
+        },
+        "scope": "Complete result reading and literal reconstruction in original scientific worker with all old native/template/model lifetimes unchanged. Parent parser unchanged.",
+        "sharing": null,
+        "source": {
+          "bytes": 4705,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "started_ns": 686249209046375
+      },
+      "runner_plan": {
+        "bytes": 1900,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-builtin-ROOT-20261018-v1.json",
+        "sha256": "af9f2084658fd172df6737e7a130f3db2fc868eed989a2190ad294ac230dd182"
+      },
+      "runner_receipt": {
+        "bytes": 69209,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "cb86e1d483cf6e830153d992f40498044a3824370521d8283c88c491d516014d"
+      },
+      "terminal": {
+        "bytes": 1569,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-builtin-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "48dda89b946c3af0d57b51cf91d0c628ca6c0d2b55f71f18c94a38e221b20afe"
+      },
+      "terminal_observed_ns": 686267251793250,
+      "whole_group_absent_in_runner": null,
+      "work_deadline_ns": 686362791119166,
+      "worker_peak_MiB": 1643.15625,
+      "worker_pid": 82727,
+      "worker_plan": {
+        "bytes": 17616,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-fixed-builtin-ROOT-20261018-v1.json",
+        "sha256": "225ec00cbdbddef4e62fe81b468fa7cec6790b882cd61f93f2a2069f55c4e2c0"
+      },
+      "worker_receipt": {
+        "bytes": 54631,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "888508f0a9966e218479c408c29ea899c151c15cb868bf26badddc12a15f555f"
+      },
+      "worker_terminal_observed_ns": 686264369508875,
+      "worker_wait4_usage": {
+        "ru_majflt": 96,
+        "ru_maxrss": 1722974208,
+        "ru_minflt": 661801,
+        "ru_stime": 8.690509,
+        "ru_utime": 78.222716
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 6655,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-symbolic-builtin-ROOT-20261018-v1.json",
+        "sha256": "8c075141b411c99cd55bf0d64d0268db5e143bbce779039608294e7fb544a472"
+      },
+      "classification": "OUTSIDE_MEMORY_PROFILE_DIAGNOSTIC_PROOF",
+      "complete_native_request_stage_count": 28,
+      "conservative_sum_MiB": 1201.59375,
+      "decode_seconds": 1.169461875,
+      "diagnostic_region_header": {
+        "assigned_mark_points": 3111,
+        "completed_ns": 686356496155375,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "dad609f0556330fe41808256be6bca44184a8790eca72f91502c66792276d260"
+      },
+      "errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 686359377596875,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 519,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "ae5bdce345d43ac3e70f5f03ad6856a16c2ed231e5c826c986d4ab7c5259081f"
+        },
+        "result.json": {
+          "bytes": 62144069,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/result.json",
+          "sha256": "a1f01902d1d12190a575f470583e86e21826a6c8f1be2de70ec548a4fff137b9"
+        },
+        "runner-receipt.json": {
+          "bytes": 69320,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "af178f8a9cb9ea0a94fe482cbca3cf499832e62efb09b52f629c983bbb08b997"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "worker-receipt.json": {
+          "bytes": 54718,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "1785c5e3c4f3077e15fc598d0c3700daa482475619e6b0fd536d2811f4757b5d"
+        }
+      },
+      "fresh_bounded_proof_admitted": false,
+      "full_source_epoch_hash_reconstructed": "742f7007b27aa951abe12418ae58e8f9783df4dd2e98fa8d7c4bd02207bf8ccc",
+      "invocation_id": "compact-cold-symbolic-builtin-ROOT-20261018-v1",
+      "label": "symbolic-builtin",
+      "log_capture_complete_in_runner": false,
+      "mode": "symbolic",
+      "native_all_reaped": true,
+      "native_exit_code": 0,
+      "native_peak_MiB": 12.59375,
+      "native_pid": 83089,
+      "native_stderr_complete": true,
+      "native_stdout_eof": true,
+      "native_wait4_status": 0,
+      "native_wait4_usage": {
+        "ru_majflt": 7,
+        "ru_maxrss": 13205504,
+        "ru_minflt": 2414,
+        "ru_stime": 0.804082,
+        "ru_utime": 40.204054
+      },
+      "observed_worker_native_proof_flag": true,
+      "observer_file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 326,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "5d68ec2d94dacd41cb27afddbf7e87137abadbc6e6dcfb38079fa6a9a6cc2692"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1-terminal-observation/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 308,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1-terminal-observation/stdout.bin",
+          "sha256": "e447f99dee2a087c47a06754b6fedd6d4a01a0a48b656723b905a2357a0e4b81"
+        },
+        "terminal.json": {
+          "bytes": 1575,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "754343bf369acd68673412d7a8e308eaedbb473292c48d77b377571908fdd113"
+        }
+      },
+      "order": 5,
+      "original_began_ns": 686281105307333,
+      "outer_terminal_seconds": 78.422394,
+      "overall_deadline_ns": 686491105307333,
+      "owned_pgid": 83083,
+      "python_exit_code": 0,
+      "python_reaped": true,
+      "python_wait4_status": 0,
+      "reader_and_inverse_seconds": 9.758237791,
+      "resource_admitted": false,
+      "result": {
+        "bytes": 62144069,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/result.json",
+        "sha256": "a1f01902d1d12190a575f470583e86e21826a6c8f1be2de70ec548a4fff137b9"
+      },
+      "result_reader": "builtin",
+      "result_reading": {
+        "completed_ns": 686355090711416,
+        "decode_seconds": 1.169461875,
+        "decoded_ns": 686346501935500,
+        "reader": "builtin",
+        "roundtrip": {
+          "body_bytes": 62144068,
+          "body_sha256": "c4fe9909010c5ef21e07d292a3d3767e5aadd16f5a4bb16724d1fcfc2c51cd8b",
+          "chunks": 29097471,
+          "literal_bytes_equal": true
+        },
+        "scope": "Complete result reading and literal reconstruction in original scientific worker with all old native/template/model lifetimes unchanged. Parent parser unchanged.",
+        "sharing": null,
+        "source": {
+          "bytes": 4705,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "started_ns": 686345332473625
+      },
+      "runner_plan": {
+        "bytes": 1915,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1.json",
+        "sha256": "43192a0865d51ef5f982330707f2445c7b6de3dd9174a7b24da64cb6e26cdd71"
+      },
+      "runner_receipt": {
+        "bytes": 69320,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "af178f8a9cb9ea0a94fe482cbca3cf499832e62efb09b52f629c983bbb08b997"
+      },
+      "terminal": {
+        "bytes": 1575,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "754343bf369acd68673412d7a8e308eaedbb473292c48d77b377571908fdd113"
+      },
+      "terminal_observed_ns": 686359527701333,
+      "whole_group_absent_in_runner": null,
+      "work_deadline_ns": 686461105307333,
+      "worker_peak_MiB": 1189.0,
+      "worker_pid": 83083,
+      "worker_plan": {
+        "bytes": 17625,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1.json",
+        "sha256": "4cf7216498b7c914102f51a8f8beb3b64760a57d489ec62aa1e2449e7d1c54ac"
+      },
+      "worker_receipt": {
+        "bytes": 54718,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "1785c5e3c4f3077e15fc598d0c3700daa482475619e6b0fd536d2811f4757b5d"
+      },
+      "worker_terminal_observed_ns": 686356737648416,
+      "worker_wait4_usage": {
+        "ru_majflt": 99,
+        "ru_maxrss": 1246756864,
+        "ru_minflt": 447636,
+        "ru_stime": 8.783104,
+        "ru_utime": 75.070101
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 6659,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-symbolic-interned-ROOT-20261018-v1.json",
+        "sha256": "75068eb5bd3ff15426cf71ebb8cfd1dab60463fb9b74012f3c3785908a0186b0"
+      },
+      "classification": "OUTSIDE_MEMORY_PROFILE_DIAGNOSTIC_PROOF",
+      "complete_native_request_stage_count": 28,
+      "conservative_sum_MiB": 1061.578125,
+      "decode_seconds": 2.670259,
+      "diagnostic_region_header": {
+        "assigned_mark_points": 3111,
+        "completed_ns": 686462317619416,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "dad609f0556330fe41808256be6bca44184a8790eca72f91502c66792276d260"
+      },
+      "errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 686464835752416,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 521,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "52812c938d0902c728f06b575d6b551beaaf741d3f520b8f68b3b7e6ab1766e0"
+        },
+        "result.json": {
+          "bytes": 62144097,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/result.json",
+          "sha256": "38c18642bf7c0b14ad07aa1d7ce65576ad190c9fb84c61388c11df65c4ae730d"
+        },
+        "runner-receipt.json": {
+          "bytes": 69679,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "529ac33a99f1ba24457d243ce78bb2385f8b4046008e7e3d3f788e2156f88de4"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "worker-receipt.json": {
+          "bytes": 55071,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "12913732becc2515d1083fed168f160af49135a95abf16ac1f71b78594e100a9"
+        }
+      },
+      "fresh_bounded_proof_admitted": false,
+      "full_source_epoch_hash_reconstructed": "526e5096a8d61b100a03d062f60404a100d8b5f4ed1d7cea87459c8badc5f453",
+      "invocation_id": "compact-cold-symbolic-interned-ROOT-20261018-v1",
+      "label": "symbolic-interned",
+      "log_capture_complete_in_runner": false,
+      "mode": "symbolic",
+      "native_all_reaped": true,
+      "native_exit_code": 0,
+      "native_peak_MiB": 12.609375,
+      "native_pid": 83370,
+      "native_stderr_complete": true,
+      "native_stdout_eof": true,
+      "native_wait4_status": 0,
+      "native_wait4_usage": {
+        "ru_majflt": 1,
+        "ru_maxrss": 13221888,
+        "ru_minflt": 2184,
+        "ru_stime": 0.481326,
+        "ru_utime": 38.999515
+      },
+      "observed_worker_native_proof_flag": true,
+      "observer_file_inventory": {
+        "CONSUMED.json": {
+          "bytes": 327,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-interned-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "fc84e1c03aa4a8b55df044d05e83b3b3085942311d5f8289933f0bb66425c343"
+        },
+        "stderr.bin": {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-interned-ROOT-20261018-v1-terminal-observation/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout.bin": {
+          "bytes": 309,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-interned-ROOT-20261018-v1-terminal-observation/stdout.bin",
+          "sha256": "325fa4fdb03e03cab2dcf14ef25af053fcb809cebf0c6122cd69039180656ade"
+        },
+        "terminal.json": {
+          "bytes": 1580,
+          "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "86c5f3075f8756e5a2ece0ea97805509909310e0e8ea5441d5258a10b9fae6e7"
+        }
+      },
+      "order": 6,
+      "original_began_ns": 686388555669541,
+      "outer_terminal_seconds": 76.44935675,
+      "overall_deadline_ns": 686598555669541,
+      "owned_pgid": 83362,
+      "python_exit_code": 0,
+      "python_reaped": true,
+      "python_wait4_status": 0,
+      "reader_and_inverse_seconds": 12.053174541,
+      "resource_admitted": false,
+      "result": {
+        "bytes": 62144097,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/result.json",
+        "sha256": "38c18642bf7c0b14ad07aa1d7ce65576ad190c9fb84c61388c11df65c4ae730d"
+      },
+      "result_reader": "interned",
+      "result_reading": {
+        "completed_ns": 686462290823666,
+        "decode_seconds": 2.670259,
+        "decoded_ns": 686452907908125,
+        "reader": "interned",
+        "roundtrip": {
+          "body_bytes": 62144096,
+          "body_sha256": "13a0a894f53a0c96b30c1a8b68c3bd21a8b42bfd2c2fbd77b0b4e03c47d03040",
+          "chunks": 29097471,
+          "literal_bytes_equal": true
+        },
+        "scope": "Complete result reading and literal reconstruction in original scientific worker with all old native/template/model lifetimes unchanged. Parent parser unchanged.",
+        "sharing": {
+          "checkpoints": 234,
+          "key_occurrences": 17934,
+          "objects": 59488,
+          "pair_occurrences": 3781803,
+          "scope": "Container sharing counts, not measured allocation or RAM savings.",
+          "unique_keys": 17934,
+          "unique_pairs": 50634,
+          "unique_points": 4557,
+          "unique_vectors": 17264,
+          "vector_occurrences": 17495,
+          "version": "literal-result-json-immutable-interning-v2"
+        },
+        "source": {
+          "bytes": 4705,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        "started_ns": 686450237649125
+      },
+      "runner_plan": {
+        "bytes": 1919,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-interned-ROOT-20261018-v1.json",
+        "sha256": "2ee38b8224dd48662ab69dadac67ef89a08be74f0a1fc46f9c5a0bee9b1f3037"
+      },
+      "runner_receipt": {
+        "bytes": 69679,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "529ac33a99f1ba24457d243ce78bb2385f8b4046008e7e3d3f788e2156f88de4"
+      },
+      "terminal": {
+        "bytes": 1580,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "86c5f3075f8756e5a2ece0ea97805509909310e0e8ea5441d5258a10b9fae6e7"
+      },
+      "terminal_observed_ns": 686465005026291,
+      "whole_group_absent_in_runner": null,
+      "work_deadline_ns": 686568555669541,
+      "worker_peak_MiB": 1048.96875,
+      "worker_pid": 83362,
+      "worker_plan": {
+        "bytes": 17628,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-symbolic-interned-ROOT-20261018-v1.json",
+        "sha256": "ccf58c029f5dfb2f0fe0cd62172e68f0aece1b4d30599cb32ef15fb3590f0a5f"
+      },
+      "worker_receipt": {
+        "bytes": 55071,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "12913732becc2515d1083fed168f160af49135a95abf16ac1f71b78594e100a9"
+      },
+      "worker_terminal_observed_ns": 686462395744416,
+      "worker_wait4_usage": {
+        "ru_majflt": 1,
+        "ru_maxrss": 1099923456,
+        "ru_minflt": 273811,
+        "ru_stime": 7.351015,
+        "ru_utime": 74.540208
+      }
+    }
+  ],
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "raw_known_runner_worker_native_PIDs": 18,
+  "reader_calls": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "resource_review_passed": true,
+  "retained_data_only": true,
+  "reviewer_identity": "/root/conventional_library",
+  "schema": "compact-cold-reader-independent-retained-resource-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Independent retained resource/custody audit of all six fresh fullcold result-reader comparisons. PASS means the exact out-of-profile classifications/custody joins were verified; it does not admit any bounded proof or establish general memory/performance superiority.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": false,
+  "whole_owned_group_absence_unavailable_count": 6
+}

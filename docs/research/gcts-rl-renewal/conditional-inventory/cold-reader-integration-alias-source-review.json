@@ -1,0 +1,179 @@
+{
+  "API": {
+    "bytes": 2674,
+    "path": "/private/tmp/gcts-native-wire-alias-source-20261018/API-wire-v1.json",
+    "sha256": "bc61b0e40f835232260b056590f361aff1fdd401996a26242dc2b3db97be10d3"
+  },
+  "activated": false,
+  "actual_execution_authorized": false,
+  "actual_text_patch_directions": 2,
+  "audit": {
+    "bytes": 66516,
+    "path": "/private/tmp/gcts-native-wire-alias-independent-peer-20261018/raw-Source-audit-v1.json",
+    "sha256": "0b53536519fceae97ce44fa6bb329295a004537663ec5b7762ccaf2b9941269f"
+  },
+  "audit_Source": {
+    "bytes": 16322,
+    "path": "/private/tmp/gcts-native-wire-alias-independent-peer-20261018/review_alias_Source_v1.py",
+    "sha256": "a2ddbbd22101c5d661e707c4f3467690cb1b12c8804712e5395821abc0512b85"
+  },
+  "audit_checks": 59,
+  "author_identity": "/root/conventional_control_review",
+  "author_overlap": false,
+  "authorship_disclosure": "Reviewer authored older quantified/generic adapters, an unintegrated compact Model and a renderer; reviewer independently reviewed Root reader/cold harnesses. Reviewer authored neither this alias prototype, native compiler/checker, table policy nor its authoring packet. None of those scientific components was evaluated or self-audited here.",
+  "codec_or_decompression_calls": 0,
+  "compiled_without_evaluation": true,
+  "compiler_calls": 0,
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "Pinned native Source uses exact block registry name equality/lookup and prior-definition registration. Axiom lookup is a separate theory namespace. All11 command field sets match the literal native rule grammar. Native block commands have no inline proof body, so scanning every full definition body and root proof covers all supported dependency levels.",
+      "id": "P1_NATIVE_NAME_SCOPE",
+      "location": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree:359",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Every call clones and revalidates all supplied original blocks, prior dependency ordering, one original-order b+decimal alias per row, both uniqueness domains and the complete literal registry preimage. Request subsets must retain original order, exact whole definitions and all used prior dependencies; the adapter does not select such a subset.",
+      "id": "P2_TOTAL_TABLE_AND_SUBSETS",
+      "location": "/private/tmp/gcts-native-wire-alias-source-20261018/native_block_wire_alias_v1.py:116",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Only definition name and rule==block command name in each definition body/root proof are rewritten, with one exact map lookup per path. Primitive rule/axiom names, formulas, terms, binders, signatures, premises, inputs and reference integers are cloned literally. Original strings overlapping b0-style aliases are harmless because namespaces/maps are separate and substitution is one-pass by field.",
+      "id": "P3_PATH_REWRITE_ONLY",
+      "location": "/private/tmp/gcts-native-wire-alias-source-20261018/native_block_wire_alias_v1.py:203",
+      "severity": "evidence"
+    },
+    {
+      "finding": "The inverse independently scans actual wire definition/body/root paths and rechecks the restored request against the complete source table. Whole insertion-order ASCII JSON preimages, not digests or claimed flags, decide correspondence. Length/order or non-name changes fail whole inverse equality even though path census uses zip. All public inputs are deep-cloned into builtin owned mutable containers; aliases/scalars remain immutable literals.",
+      "id": "P4_INVERSE_AND_OWNERSHIP",
+      "location": "/private/tmp/gcts-native-wire-alias-source-20261018/native_block_wire_alias_v1.py:223",
+      "severity": "evidence"
+    },
+    {
+      "finding": "No exception handlers or activation/scientific imports exist. Delegated tick faults including ValueError/cancellation propagate unchanged; local syntax/recursion/serialization failures cannot be turned into native rejection. Every returned table/packet/check keeps logical/native/model/activation authority false.",
+      "id": "P5_FAULTS_AND_FLAGS",
+      "severity": "evidence"
+    },
+    {
+      "finding": "The standalone function cannot know whether its original_blocks argument is the entire acquired inventory or a caller-selected subset. Future Root composition must explicitly bind that argument to the whole current inventory.native_blocks and reuse the same literal table for bulk registry/final subset; neither self-consistent table nor this PASS supplies that provenance.",
+      "id": "C1_FULL_TABLE_CUSTODY",
+      "severity": "required_future_integration"
+    },
+    {
+      "finding": "Equality-only names support a conditional ideal name-renaming argument, not a proved compiler theorem or equivalence of bounded physical executions. Input heap sharing/layout/microsteps may change. Fresh unchanged native checks of every new full registry/final request remain mandatory; preserve accepted/rejected/UNKNOWN literally.",
+      "id": "C2_NATIVE_BUDGET_EQUIVARIANCE",
+      "severity": "required_future_integration"
+    },
+    {
+      "finding": "Empty table/primitive-only, overlapping source-alias namespaces, repeated calls, reordered/tampered maps, formula/port/order tampering, returned ownership and callback interruptions were traced in Source only. No prototype invocation or synthetic request experiment occurred.",
+      "id": "C3_EDGE_CASES_UNEXECUTED",
+      "severity": "not_tested"
+    },
+    {
+      "finding": "No registry bound, byte-to-heap fit, memory/time gain or mathematical acceptance follows from this inactive Source. Complete tables, duplicate original/wire/preimage packets and inverse validation add host work/memory. External Source/context custody, deadlines, native protocol records and original model/scheduler/fallback/rollback require a separate coherent reviewed composition.",
+      "id": "C4_COST_AND_CONTEXT",
+      "severity": "limitation"
+    }
+  ],
+  "goal_complete": false,
+  "handoff": {
+    "bytes": 4026,
+    "path": "/private/tmp/gcts-native-wire-alias-source-20261018/handoff-v1.json",
+    "sha256": "6c2c2089c4c8c43b2cc30df55a2feba936d0335a16f5d85f049a0925e00819a2"
+  },
+  "inverse_design": {
+    "bytes": 3835,
+    "path": "/private/tmp/gcts-native-wire-alias-source-20261018/inverse-design-v1.json",
+    "sha256": "878b0ace8c311c183a0cffdd5f1b879d8bee27b26e709c8c5102ecafe70ce70a"
+  },
+  "limitations": [
+    "Raw text/AST and compile-noeval are not runtime tests or machine-checked equivalence.",
+    "The current module is unimported/inactive; no capacity, native or logical result was recomputed.",
+    "Exact builtin integer JSON trees only: no float/custom object/cyclic input support is added; native formula/capture/strict-prior validity remains native authority.",
+    "Source reference pins establish current identities, not activation. Future table acquisition completeness and original/wire/native request receipt joins remain external conditions."
+  ],
+  "logic_calls": 0,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "prototype_calls": 0,
+  "reference_sources": {
+    "boundary_layout": {
+      "bytes": 6992,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "capacity_assessment": {
+      "bytes": 10803,
+      "path": "/private/tmp/gcts-registry-capacity-source-assessment-20261018/registry-capacity-Source-assessment-v2.json",
+      "sha256": "f6206ea8f2bdc42ac09506215d7812587be4a2706d01a8b4b043d6c6284a0374"
+    },
+    "independent_capacity_review": {
+      "bytes": 10154,
+      "path": "/private/tmp/gcts-registry-capacity-independent-peer-20261018/typed-assessment-review-v2.json",
+      "sha256": "dcc1922237a91808059b9abd5676026e948337000b09c139cfaff5c6ef6df3ba"
+    },
+    "master": {
+      "bytes": 21657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "native_checker": {
+      "bytes": 17577,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree",
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+    },
+    "registry_builder": {
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "request_oracle": {
+      "bytes": 2180,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "tree_adapter": {
+      "bytes": 13290,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "wire_checker": {
+      "bytes": 1739,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/boundary_syntax.tree",
+      "sha256": "b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c"
+    }
+  },
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/conventional_library",
+  "schema": "native-wire-block-alias-independent-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Genuine independent raw Source/schema/inverse-walk review of exact inactive alias prototype only. Conditional syntactic representation PASS; no native acceptance, capacity fit, full-pipeline integration or ideal compiler theorem.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source": {
+    "bytes": 15424,
+    "path": "/private/tmp/gcts-native-wire-alias-source-20261018/native_block_wire_alias_v1.py",
+    "sha256": "0caa7713d44f53518d3fc3772a9426c7843e7fb5b1ab6a6f59fa617bbf015ebc"
+  },
+  "source_contract": {
+    "bytes": 8994,
+    "path": "/private/tmp/gcts-native-wire-alias-source-20261018/Source-contract-v1.json",
+    "sha256": "b8eb6dfdacbcac5310a6e2c569a64cb9d1914adb0dc84b046a9b26b81ba2466b"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "native_wire_alias": {
+      "bytes": 15424,
+      "path": "/private/tmp/gcts-native-wire-alias-source-20261018/native_block_wire_alias_v1.py",
+      "sha256": "0caa7713d44f53518d3fc3772a9426c7843e7fb5b1ab6a6f59fa617bbf015ebc"
+    }
+  }
+}

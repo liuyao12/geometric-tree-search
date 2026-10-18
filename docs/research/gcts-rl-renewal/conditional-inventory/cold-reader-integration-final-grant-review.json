@@ -1,0 +1,414 @@
+{
+  "Root_metadata_grant_builder": {
+    "bytes": 4607,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/grant_v1.py",
+    "sha256": "6281eb637d88795af3690a042bef79b6d7836ab4751e32fecc93bec76407ab1c"
+  },
+  "actual_execution_authorized": false,
+  "actual_launches": 0,
+  "all_six_subjects": [
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 6639,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-base-builtin-ROOT-20261018-v1.json",
+        "sha256": "eaf149c561b2cbcdae3625b516e22e43d701bd588682e8b0a903c55488367463"
+      },
+      "false_authorization": {
+        "bytes": 2625,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorization-drafts/compact-cold-base-builtin-ROOT-20261018-v1.json",
+        "sha256": "cde53b2b0348a56361137a7746d34c9c4cfdd53bb4b9a27fa525ab81c3fc6fc8"
+      },
+      "fresh_paths_absent": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-builtin-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-builtin-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-base-builtin-ROOT-20261018-v1-terminal-observation"
+      ],
+      "full_runner_subject_without_auth_sha256": "62c150312fc13317ed270c37b52475dc9dab9a7aa160cb08b390959b6796a21b",
+      "full_worker_subject_sha256": "fa915a29fadfd4fd394e1ed32af66f3539be39dec47ffe64715b0be22d935504",
+      "invocation_id": "compact-cold-base-builtin-ROOT-20261018-v1",
+      "mode": "base",
+      "order": 1,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "builtin",
+      "runner_plan": {
+        "bytes": 1895,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-builtin-ROOT-20261018-v1.json",
+        "sha256": "0804f15c41b443bc0dfcff26ca5050b1a2b00fefb87b5e2a7b75270922839cbd"
+      },
+      "runner_plan_draft": {
+        "bytes": 1901,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-base-builtin-ROOT-20261018-v1.json",
+        "sha256": "e2f3ccb92359fe739c7bdf422276957ab1a602cd85424e3596c0df638cf0b84c"
+      },
+      "worker_plan": {
+        "bytes": 17613,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-base-builtin-ROOT-20261018-v1.json",
+        "sha256": "2b90b4348dbcf07ae4494e7440be9d136678aaffa42471e47f26f3f95ff95f7e"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 6643,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-base-interned-ROOT-20261018-v1.json",
+        "sha256": "fd3276ad4b46597293fa872f4e30d6e3a2c903de932ea50264fcf7062a118511"
+      },
+      "false_authorization": {
+        "bytes": 2629,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorization-drafts/compact-cold-base-interned-ROOT-20261018-v1.json",
+        "sha256": "bfb82e90122a09d3d21d057238476a02150f10c38cc496b05059e31f48964784"
+      },
+      "fresh_paths_absent": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-base-interned-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-interned-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-base-interned-ROOT-20261018-v1-terminal-observation"
+      ],
+      "full_runner_subject_without_auth_sha256": "4fa45cf3658bd635aae35a8f545b6846f59fdd6e7889e02c162136b7a0caaf38",
+      "full_worker_subject_sha256": "d39308949dd44932e8d33ad3dea9e1e3a8130964711b32439c0e7f4901e91cdf",
+      "invocation_id": "compact-cold-base-interned-ROOT-20261018-v1",
+      "mode": "base",
+      "order": 2,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "interned",
+      "runner_plan": {
+        "bytes": 1899,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-base-interned-ROOT-20261018-v1.json",
+        "sha256": "be3e01f19b8d781649efb4c808031d8ace9e799a45a76b4a9acb6bb0abac6a07"
+      },
+      "runner_plan_draft": {
+        "bytes": 1905,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-base-interned-ROOT-20261018-v1.json",
+        "sha256": "c247c2b5c873dc03ddabf8043f7339ea72621fd266f87e7d6995f4ce88eab7c4"
+      },
+      "worker_plan": {
+        "bytes": 17616,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-base-interned-ROOT-20261018-v1.json",
+        "sha256": "8bceda79fef1a0f2acd8e9c82a547da940de887958c3ad1547b8e1980437f3ab"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 6647,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-fixed-interned-ROOT-20261018-v1.json",
+        "sha256": "64aa8a875fb2133231e9c9cafa4b8bcab9f2379c9220be7f7dbc5ce0462da327"
+      },
+      "false_authorization": {
+        "bytes": 2633,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorization-drafts/compact-cold-fixed-interned-ROOT-20261018-v1.json",
+        "sha256": "54375f714d9765e92bed1b657e2e2f0a5cb75b85658c33c8e740818fa184e07c"
+      },
+      "fresh_paths_absent": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-interned-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-interned-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-fixed-interned-ROOT-20261018-v1-terminal-observation"
+      ],
+      "full_runner_subject_without_auth_sha256": "f4c8de71d1dd0c2b33cde44c2ae2f82ec84fb63ed9de8b0532105a041726a093",
+      "full_worker_subject_sha256": "07223c442a37768ecc862b63387d51b7bdfa61426cd895c21c6b60bf1b97bbd3",
+      "invocation_id": "compact-cold-fixed-interned-ROOT-20261018-v1",
+      "mode": "fixed",
+      "order": 3,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "interned",
+      "runner_plan": {
+        "bytes": 1904,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-interned-ROOT-20261018-v1.json",
+        "sha256": "722beb88d9c3af2528dd4e89c5706897166a7666b15da096a4bb02a323c24664"
+      },
+      "runner_plan_draft": {
+        "bytes": 1910,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-fixed-interned-ROOT-20261018-v1.json",
+        "sha256": "9e17e4b7b93d53f61e7a1c176f03743f80e0efd2139046b3bcc41c3547defd4f"
+      },
+      "worker_plan": {
+        "bytes": 17619,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-fixed-interned-ROOT-20261018-v1.json",
+        "sha256": "2f0484e198762dbde869d0bdd8b674336e13e9013253f1a095419330e9b4d4a3"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 6643,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-fixed-builtin-ROOT-20261018-v1.json",
+        "sha256": "366680b553741a449ac5d9539e56138d0a5babed2952a41e5d6f545b27cdb7fd"
+      },
+      "false_authorization": {
+        "bytes": 2629,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorization-drafts/compact-cold-fixed-builtin-ROOT-20261018-v1.json",
+        "sha256": "272af5623e1ab48ddda421541d0dc7b94a27bc057014547f89e867bf973efaf6"
+      },
+      "fresh_paths_absent": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-fixed-builtin-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-builtin-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-fixed-builtin-ROOT-20261018-v1-terminal-observation"
+      ],
+      "full_runner_subject_without_auth_sha256": "452ff9eac5733f45d91bfb69e8d16715212275e4833336952b53a64dac4db2b8",
+      "full_worker_subject_sha256": "a97026cc105d48e6c7a756d755ea0c303e8fdaa931edea816562ac31154c421d",
+      "invocation_id": "compact-cold-fixed-builtin-ROOT-20261018-v1",
+      "mode": "fixed",
+      "order": 4,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "builtin",
+      "runner_plan": {
+        "bytes": 1900,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-fixed-builtin-ROOT-20261018-v1.json",
+        "sha256": "af9f2084658fd172df6737e7a130f3db2fc868eed989a2190ad294ac230dd182"
+      },
+      "runner_plan_draft": {
+        "bytes": 1906,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-fixed-builtin-ROOT-20261018-v1.json",
+        "sha256": "3b97cbcd9a371e5165ea4da105321a19efc29180f367d24c522df7cc5434a5ad"
+      },
+      "worker_plan": {
+        "bytes": 17616,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-fixed-builtin-ROOT-20261018-v1.json",
+        "sha256": "225ec00cbdbddef4e62fe81b468fa7cec6790b882cd61f93f2a2069f55c4e2c0"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 6655,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-symbolic-builtin-ROOT-20261018-v1.json",
+        "sha256": "8c075141b411c99cd55bf0d64d0268db5e143bbce779039608294e7fb544a472"
+      },
+      "false_authorization": {
+        "bytes": 2641,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorization-drafts/compact-cold-symbolic-builtin-ROOT-20261018-v1.json",
+        "sha256": "2ff879484f4a0ed94d405516d8ab41567532df4e3f53dc7be937f6da149d7499"
+      },
+      "fresh_paths_absent": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-builtin-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-symbolic-builtin-ROOT-20261018-v1-terminal-observation"
+      ],
+      "full_runner_subject_without_auth_sha256": "aaf60b2cf8166456ec2413342717841f1c29636f6ff46a3180b5458bbcabf005",
+      "full_worker_subject_sha256": "e380b96abdf2af6d20f49ceb1ddd6e92bfaeff2b6b60175d77332cf456050e11",
+      "invocation_id": "compact-cold-symbolic-builtin-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "order": 5,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "builtin",
+      "runner_plan": {
+        "bytes": 1915,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1.json",
+        "sha256": "43192a0865d51ef5f982330707f2445c7b6de3dd9174a7b24da64cb6e26cdd71"
+      },
+      "runner_plan_draft": {
+        "bytes": 1921,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-symbolic-builtin-ROOT-20261018-v1.json",
+        "sha256": "b6a7011443f79b00cd619511d192b7391e4e1d1ac3f05f3eba9fd19e58866e0d"
+      },
+      "worker_plan": {
+        "bytes": 17625,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-symbolic-builtin-ROOT-20261018-v1.json",
+        "sha256": "4cf7216498b7c914102f51a8f8beb3b64760a57d489ec62aa1e2449e7d1c54ac"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 6659,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorizations/compact-cold-symbolic-interned-ROOT-20261018-v1.json",
+        "sha256": "75068eb5bd3ff15426cf71ebb8cfd1dab60463fb9b74012f3c3785908a0186b0"
+      },
+      "false_authorization": {
+        "bytes": 2645,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorization-drafts/compact-cold-symbolic-interned-ROOT-20261018-v1.json",
+        "sha256": "c325d3c2d0f9eda6d9a94caf8e0789ac45335261ed4ea4c1d698f06004669c27"
+      },
+      "fresh_paths_absent": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-interned-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-symbolic-interned-ROOT-20261018-v1-terminal-observation"
+      ],
+      "full_runner_subject_without_auth_sha256": "ced1242d36b5fc616bc593fb422bbbbd15b5b23935bb93f57713b067f26751f1",
+      "full_worker_subject_sha256": "0afd5f86363cd60957a3eab37f1120cc4f81cce2f7cdac32c833aaff34933925",
+      "invocation_id": "compact-cold-symbolic-interned-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "order": 6,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "interned",
+      "runner_plan": {
+        "bytes": 1919,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plans/compact-cold-symbolic-interned-ROOT-20261018-v1.json",
+        "sha256": "2ee38b8224dd48662ab69dadac67ef89a08be74f0a1fc46f9c5a0bee9b1f3037"
+      },
+      "runner_plan_draft": {
+        "bytes": 1925,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/runner-plan-drafts/compact-cold-symbolic-interned-ROOT-20261018-v1.json",
+        "sha256": "d8cd11ddf75246ffa0216ea2be015eb185b12ddefca4798a3201caf5cbeba22e"
+      },
+      "worker_plan": {
+        "bytes": 17628,
+        "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/worker-plans/compact-cold-symbolic-interned-ROOT-20261018-v1.json",
+        "sha256": "ccf58c029f5dfb2f0fe0cd62172e68f0aece1b4d30599cb32ef15fb3590f0a5f"
+      }
+    }
+  ],
+  "author_identity": "/root",
+  "author_overlap_disclosure": "Reviewer authored original structural benchmark cases, unchanged symbolic control140880, earlier driver/broker/outer and several CASE/checkers, capacity assessment, standalone reader prospective/final plan and human report reviews, and a separate inactive native-wire alias prototype. This known diagonal case is not newly heldout. This receipt is independent of Root new cohort/plans/cold composition, not a self-audit of own benchmark/control science. The alias prototype is not in the runtime closure; compact Model is also excluded. Reader and new cold Source semantics have two other genuine reviewers.",
+  "authorized_index": {
+    "bytes": 14113,
+    "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "7e038fd113e80e407a10fb9ae537e76b2e60a750d881d0d1fc0b81a3f63dd974"
+  },
+  "check_count": 516,
+  "codec_calls": 0,
+  "cold_calls": 0,
+  "compiler_calls": 0,
+  "current_distinct_reviewer_identities": [
+    "/root/receiver_driver_review",
+    "/root/conventional_library",
+    "/root/conventional_control_review"
+  ],
+  "current_three_Source_and_plan_reviews": {
+    "cohort_plans": {
+      "bytes": 42317,
+      "path": "/private/tmp/gcts-compact-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+      "sha256": "761bfb41ab35c5404153145897d279d2f617d51a75e4e85f678ba40eca0a0507"
+    },
+    "cold_Source": {
+      "bytes": 9490,
+      "path": "/private/tmp/gcts-cold-reader-compatibility-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "3660e4d54cb2e0658ae8a06a8907e0fa89a7cf8b2cfdcf3edc840a07add169a6"
+    },
+    "reader_Source": {
+      "bytes": 5175,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-reader-Source-review-v2.json",
+      "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+    }
+  },
+  "custody_after_freeze": "Reviewer now stops all tools and edits and remains idle for all six Root measured windows until explicitly resumed for retained-data work.",
+  "declaration": {
+    "bytes": 6911,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/experiment-declaration-v1.json",
+    "sha256": "4259a7769fbd30414d12417f635303f339126d3cbea8c0b846ab16ca93f847fb"
+  },
+  "distinct_reviewer": true,
+  "established": [
+    "All6worker plans are raw byte-identical to reviewed descriptors and full literal worker subject hashes; allrunner plans differ from their drafts only in the authorization descriptor.",
+    "All6grants retain all original binding/profile/case/Source/environment fields and maxone. Only trueflag/scope plus Rootauthor/current3reviewroles/identities and separately labelled oldcomponent ancestry are added or changed.",
+    "Exact new Reader950371/cold3660/cohort761bfb have3distinct raw hashes/reviewer identities and scoped PASS/zero-evaluation. Newcold/Reader/currentclosure/declaration/index/all6workerplan descriptors are explicitly covered; oldcomponent reviews do not substitute for the newcold role.",
+    "Current full Source/runtime/native/policy/Z3/assertion raw pins, original180/210summedworker+native1GiB/128MiB and allscientific caps remain unchanged. No compactModel or nativealiasprototype is in the composition.",
+    "All6fresh actual and runner-terminal-observation paths are absent at this final review. Root retains once-only grant and activation ownership."
+  ],
+  "final_grant_delta_review_passed": true,
+  "grant_delta_review_passed": true,
+  "harness_calls": 0,
+  "historical_unchanged_component_Source_reviews": [
+    {
+      "bytes": 9289,
+      "path": "/private/tmp/gcts-structural-independent-peer-20261018/typed-benchmark-Source-review-v1.json",
+      "sha256": "42e961329d7ec09252323e06658dc9dfccb663c740801be2d961d1660e443dcf"
+    },
+    {
+      "bytes": 2540,
+      "path": "/private/tmp/gcts-structural-independent-peer-20261018/typed-Root-cohort-declaration-review-v2.json",
+      "sha256": "fb03f584ddade9bb5a1bc6af96ad67beb7197873cd0b9eb7be55442037f936ad"
+    },
+    {
+      "bytes": 9753,
+      "path": "/private/tmp/gcts-structural-independent-peer-20261018/typed-generic-driver-Source-review-v1.json",
+      "sha256": "90f7f7dfdcd0e9c559c744cea33819406aa8fc777fb820b03d6259508627613f"
+    },
+    {
+      "bytes": 12327,
+      "path": "/private/tmp/gcts-structural-cold-integration-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "83ae0e882d6a3d1e210b692ebdaedae3c772177a36a37243faa824589a5509a4"
+    },
+    {
+      "bytes": 38507,
+      "path": "/private/tmp/gcts-structural-prospective-plan-peer-20261018/typed-nine-prospective-plan-review-v1.json",
+      "sha256": "036ece2de9fe39d89a2d0534c862c4487c3928466badb015b3464fccc7f8cce5"
+    },
+    {
+      "bytes": 8367,
+      "path": "/private/tmp/gcts-symbolic-control-independent-source-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "d6374c20662bcdf6e8f335c7a45532406f13309b48ccf10bd33f33a031bce51b"
+    },
+    {
+      "bytes": 8582,
+      "path": "/private/tmp/gcts-quantified-independent-peer-20261018/typed-adapter-Source-review-v2.json",
+      "sha256": "3d8b4575e3a40c4bfe4828d9247310695859d481da9613c4193e3bf16ef7afe7"
+    },
+    {
+      "bytes": 8343,
+      "path": "/private/tmp/gcts-semantic-component-peer-20261018/typed-transport-Source-review-v1.json",
+      "sha256": "ab21a54ca4d176db7997c4452f13d7d94d6e15dd275a8c98875731acde577229"
+    },
+    {
+      "bytes": 10916,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/typed-composition-Source-review-v1.json",
+      "sha256": "fa77e0f7d882049812fd930c78bdf008314bb1b2e6862ed0ba7ee10821383365"
+    }
+  ],
+  "limitations": [
+    "Actual whole literal reader inverse/native wholeproof/point/clock/resource/Source-custody/reaping/groupabsence/terminal evidence still requires separate retained Root admission; no success/fit/speed claim here.",
+    "The original Source-entry clock and conservative separate worker/native highwater sum remain; parent/observer memory excluded. Earlier standalone decoder savings do not predict fullpipeline savings.",
+    "Known development diagonal assertion with1observation percase/method/reader is engineering scope, not blind/generalization/statistical/RL or GCTSadvantage evidence.",
+    "Freshness is observed at freeze. Root must preserve allsix outcomes/failures/UNKNOWN/outprofile withoutretry/salvage/selection/envelopeincrease."
+  ],
+  "logic_calls": 0,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "prior_cohort_review": {
+    "bytes": 42317,
+    "path": "/private/tmp/gcts-compact-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+    "sha256": "761bfb41ab35c5404153145897d279d2f617d51a75e4e85f678ba40eca0a0507"
+  },
+  "project_imports": 0,
+  "prospective_index": {
+    "bytes": 9748,
+    "path": "/private/tmp/gcts-compact-cold-reader-plans-ROOT-20261018-v1/prospective-index-v1.json",
+    "sha256": "bf15b94d9d8da71ce5fbdbbf6e9aeb2320bfe052f28e019f44973d99b95d79df"
+  },
+  "raw_audit": {
+    "bytes": 122493,
+    "path": "/private/tmp/gcts-compact-cold-prospective-peer-20261018/raw-final-grant-delta-audit-v1.json",
+    "sha256": "ef246d46c77ea31d0f70c68fa220dfbe8d710e72558b9279e9d2b4df4bca85b5"
+  },
+  "reader_calls": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/conventional_control_review",
+  "runtime_closure": {
+    "bytes": 67727,
+    "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/runtime-closure-v1.json",
+    "sha256": "a65f67a644e294e0ab0162b02ff3505237f96a382e293fbf3136000b7110baaf"
+  },
+  "schema": "compact-cold-reader-independent-final-grant-delta-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Narrow independent raw false-to-true max-one grant delta and external role/scope check. No renewed scientific implementation review, target import/evaluation, runtime admission or new authorization by this reviewer.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "sources": {
+    "cold": {
+      "bytes": 28879,
+      "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/compact_reader_cold_v1.py",
+      "sha256": "d77aba05d0c6f5e94f41997176936603f6f75ad1dcd59134a7fa3325773bdb06"
+    },
+    "observer": {
+      "bytes": 4280,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/observe_symbolic_runner_v1.py",
+      "sha256": "720cc07b6f2766bb080d40c138c255d915f2806c2b4af83b21d82aaa7df702ae"
+    },
+    "reader": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    "runner": {
+      "bytes": 18080,
+      "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_once_runner_v1.py",
+      "sha256": "8ecbee2e55e5c64d05c08cfcddc675544939e42c70596ca7e453782548b2e7cb"
+    }
+  }
+}
