@@ -1,0 +1,68 @@
+{
+  "audit": {
+    "bytes": 19282,
+    "path": "/private/tmp/gcts-row01-human-report-review-20261018/wording-data-audit-v1.json",
+    "sha256": "39f0b436ee0ebee6829d525f92323810e9cac24d7a9dc7a87462c393f1295be5"
+  },
+  "audit_checks": 84,
+  "author_identity": "/root",
+  "author_overlap": "Reviewer authored independent marking/state verifier398acd and earlier conventional-control peers. Reviewer did not author this Root report builder, producer/decorator, actuals, admissions or receiver_driver_review saved-data audit. Current report review cannot serve as a second independent review of reviewer-authored checker Source.",
+  "browser_live_rendering_checked": false,
+  "clock_evaluations": 0,
+  "codec_evaluations": 0,
+  "evidence_archive_checked": false,
+  "findings": {
+    "bytes": 4801,
+    "path": "/private/tmp/gcts-row01-human-report-review-20261018/findings-v1.json",
+    "sha256": "cc6a713384879c7f02005fbd30448f8ba4c8fab0c9c1f0d7210d8edbef8aaeb3"
+  },
+  "goal_complete": false,
+  "independent_saved_data_peer": {
+    "bytes": 8086,
+    "path": "/private/tmp/gcts-row01-two-arm-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "0f5e9219cffb84c3117b5601400282d6ab1e63af96fc0155c846aaf9d3af5763"
+  },
+  "integration_review_files": [
+    {
+      "bytes": 68471,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "7aa961dcdc23f835a9c9704e9c50017607657ebd988b3e8ef636df076c54520a"
+    },
+    {
+      "bytes": 32695,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/receiver-transfer.html",
+      "sha256": "f0861bfdb937a511431e37d17706aaf88b3ac98ee29ac9090eed4ce700170c13"
+    },
+    {
+      "bytes": 5450,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/parallel-work-status.json",
+      "sha256": "8428933e158e5c5d1a0fa23ebf9b5ea42f7af59017925159d31f4ab18e8fcd92"
+    }
+  ],
+  "kernel_or_checker_evaluations": 0,
+  "mismatch_count": 0,
+  "native_harness_runs": 0,
+  "project_module_evaluations": 0,
+  "publisher_or_report_mutations": 0,
+  "report_files": [
+    {
+      "bytes": 14986,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/early-row.html",
+      "sha256": "05a867cac28f603b0416cde24a5f2ef17a7474c513772f21aa0caf6ed676896e"
+    },
+    {
+      "bytes": 178139,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/early-row-summary.json",
+      "sha256": "ff0f165729c302e65a3c0c3dc588ce2353dd74e3cd35bc7c57adbd140871bc8e"
+    }
+  ],
+  "report_wording_review_passed": true,
+  "reviewer_identity": "/root/conventional_control_review",
+  "saved_data_fidelity_checked": true,
+  "schema": "GCTS-early-row-human-report-wording-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Exact Root human-facing early-row HTML/summary and three narrow integration updates",
+  "verdict": "PASS_EXACT_REPORT_WORDING_AND_SAVED_DATA_PRESENTATION_ONLY"
+}

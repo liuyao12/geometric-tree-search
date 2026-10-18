@@ -1,0 +1,134 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "actuals": {
+    "ROW0_AND_ROW1": {
+      "admission": {
+        "bytes": 8505,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "b456834567b888091031cafd4f384c4788b3c418869bea9c4560b3ffd352db00"
+      },
+      "authorization": {
+        "bytes": 16783,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-authorization-v1.json",
+        "sha256": "f5553f0b8cab8c1d2a7b48cc1ccc6696a5de879ea6e5360aff286c248b116867"
+      },
+      "expanded": {
+        "bytes": 2433065,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "27b4c31b2094574315624b5d0b99a621ea387ed9660976f70b52ef4eacb40fab"
+      },
+      "native": {
+        "bytes": 1613,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/external-v1/native-terminal.json",
+        "sha256": "e8628e62aa6c341c5ab127db88867b349b1aabceaf369aa35449eefdd888a1a9"
+      },
+      "native_external_seconds": 17.484153,
+      "owned_peak_bytes": 87965696,
+      "permanent_seed_count": 27,
+      "plan": {
+        "bytes": 16966,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-plan-v1.json",
+        "sha256": "443be8e2e4da2ca265761566b8fc6c43cb1d3e3079ff37ef35012754b5af7b96"
+      },
+      "transport": {
+        "bytes": 33039,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "67e8d12e2c9771af800fcc5774f44ae20aa10a34d460b6e914f8f89615068645"
+      }
+    },
+    "ROW0_ONLY": {
+      "admission": {
+        "bytes": 8489,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "45b99450f93bb0b97cbe14374f9987a9494bd7b75320814be785e81a4f888428"
+      },
+      "authorization": {
+        "bytes": 16771,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-authorization-v1.json",
+        "sha256": "4cd0c9001435e899691ab0eb80364e0d101859da346e20cc196ab765f22c0075"
+      },
+      "expanded": {
+        "bytes": 2422412,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "2915cbab3898c64a35f69662b8a4977b586e0c20424ab4984eb6927abaf3e1d9"
+      },
+      "native": {
+        "bytes": 1609,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/external-v1/native-terminal.json",
+        "sha256": "c5684de3aa810cd4b94b59294aeb05ae8b153ccc4bd04a36bacc1b1536f01ef7"
+      },
+      "native_external_seconds": 17.418976,
+      "owned_peak_bytes": 87113728,
+      "permanent_seed_count": 26,
+      "plan": {
+        "bytes": 16950,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-plan-v1.json",
+        "sha256": "752ff7329b0472b0d2f81a929f8efef25238a718d9385f3b95a465725ebf0c32"
+      },
+      "transport": {
+        "bytes": 33031,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "d375bd504c22e8d3fbff15a35f023e87e57a7c06eb01cc95e13c937ea0b352d4"
+      }
+    }
+  },
+  "audit": {
+    "bytes": 251859,
+    "path": "/private/tmp/gcts-row01-two-arm-data-peer-20261018/saved-data-audit-v1.json",
+    "sha256": "ffade41c0110efa713812d188fb095456b6e032f030d0f3ff38de331c0501558"
+  },
+  "author_identity": "/root",
+  "author_overlap": false,
+  "check_count": 1375,
+  "complete_board_accepted": false,
+  "data_review_passed": true,
+  "decompressions": 0,
+  "findings": [
+    {
+      "finding": "Both exact once plans/grants/native terminal/probe/response protocols join the saved expanded/admission/transport bytes. Same28current executable Sources, original17model/2inputs/fullbinding/whole611ff data, EMPTY matching, fixed17work/20native/512MiB. Both terminal0/reaped with whole output recorded; no native or codec replay.",
+      "id": "D1",
+      "status": "PASS_SAVED_DATA_ONLY"
+    },
+    {
+      "finding": "Full certificate/check/marking/mode/definition hashes and literal state joins hold. Root before equals after literally and both engine snapshot hashes join. Permanent seed refs26 versus27 exactly match initial full mark support, allcount1, including explicit new[5,1]=0; absence in ROW0_ONLY retained.",
+      "id": "D2",
+      "status": "PASS_SAVED_DATA_ONLY"
+    },
+    {
+      "finding": "Oldactual UGrow23 reads Eqrow1, then recorded complete ZERO/DEADrow1. Newactual MProw23 reads row0 A=all(fresh0,bot) and row1 imp(A,G), then recorded complete ZERO/DEADrow0. TRY/PLACE/RESTORE/EXCLUDE full keys, actual partial selected state and finalexclusion/rootrollback join. Both return UNKNOWN/no proof after3scans/1placement/1backtrack/restore.",
+      "id": "D3",
+      "status": "PASS_SAVED_DATA_ONLY"
+    },
+    {
+      "finding": "All saved marked_rejections and checked_root_rejections arrays are empty. Literal oldpacket[5,1]=1 conflicts with new fixed0, supported by prior Source-reviewed identical prototype body; no separately logged current rejection receipt or fresh mathematical check is claimed. New rootdegree sample already omits UGread1, while actual fallback chooses a different MP.",
+      "id": "D4",
+      "status": "SCOPE_LIMIT"
+    },
+    {
+      "finding": "23ledger rows close and started=returned+raised; sumexclusive equals measuredroot union16.650758s/16.829964s. Rebuild506entries9.500885exclusive seconds versus405entries7.970049s. Native17.418976s/17.484153s, same search counts; these bounded single runs do not establish speedup. Shares are measured-root only and include wrappers/unclassified work.",
+      "id": "D5",
+      "status": "PASS_OBSERVATIONAL_TOTALS"
+    },
+    {
+      "finding": "Data audit only;1375checks,0mismatches. No project/module/kernel/checker/native/clock/codec evaluation, decompression or scientific replay. Expanded/envelope link uses Root saved lossless-decoding metadata plus raw hashes. Both runs remain no theorem/proof/completeboard/fullGCTS/learnedmarking/RL/performance/usefultransfer acceptance. EMPTY has zero family callback calls; cluster transfer was not tested by these two runs.",
+      "id": "D6",
+      "status": "LIMITATION"
+    }
+  ],
+  "goal_complete": false,
+  "logical_proof_accepted": false,
+  "mismatch_count": 0,
+  "performance_accepted": false,
+  "project_module_kernel_checker_native_clock_codec_evaluations": 0,
+  "reviewer_ancestry": "Previously reviewed exact current producer7/verifier1/Root3/coldV3 Source packets and earlier point saveddata/reports. Authored no changed scientific component, actual grant, actual run, saved decoder, Root admission or publication. Source-review ancestry is disclosed; this audit is independent saved JSON/raw metadata custody, not independent execution.",
+  "reviewer_identity": "/root/receiver_driver_review",
+  "saved_data_only": true,
+  "saved_data_review_passed": true,
+  "schema": "ROOT-person-independent-early-row-two-arm-saved-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Two closed matched EMPTY boundary-mode actuals only; no new proof/resource/scientific acceptance.",
+  "useful_transfer_accepted": false
+}

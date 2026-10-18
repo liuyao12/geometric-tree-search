@@ -1,0 +1,5114 @@
+{
+  "complete_GCTS_conformance": false,
+  "data_review": {
+    "bytes": 8086,
+    "path": "/private/tmp/gcts-row01-two-arm-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "0f5e9219cffb84c3117b5601400282d6ab1e63af96fc0155c846aaf9d3af5763"
+  },
+  "date": "2026-10-18",
+  "goal_complete": false,
+  "interpretation": "The new boundary removes the old UG\u2192equality-row1 branch and changes the actual primitive to MP from two still-unproved inputs. Both runs return UNKNOWN with equal counts; no demonstrated throughput or proof gain. Rebuilding checked prototypes is the largest exclusive observed category. Timing instrumentation is charged and is not uninstrumented performance.",
+  "learned_marking": false,
+  "manually_derived_certified_constraint": true,
+  "marked_point_proof_adaptation": true,
+  "matching_mode": "EMPTY",
+  "native_owned_limit_bytes": 536870912,
+  "native_total_limit_seconds": 20,
+  "next": "Investigate immutable full-preimage/current-epoch prototype reuse with independent invalidation/tamper checks, then run matched controls. Continue larger automatically mined clusters and separately qualified symbolic geometry benchmarks; no cache or new learned policy is implemented by this report.",
+  "original_model_sources": 17,
+  "performance_accepted": false,
+  "proof_search_advantage": false,
+  "question": "Does one additional certified boundary head marking improve original receiver search?",
+  "root_degree_witness_pairs_are_not_full_candidate_domains": true,
+  "runs": [
+    {
+      "admission": {
+        "bytes": 8489,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "45b99450f93bb0b97cbe14374f9987a9494bd7b75320814be785e81a4f888428"
+      },
+      "counts": {
+        "advice_calls": 0,
+        "advice_selected": 0,
+        "advice_unknown": 0,
+        "backtracks": 1,
+        "branches": 1,
+        "cursor_replays": 0,
+        "fallback_advances": 1,
+        "fallback_branch_choices": 0,
+        "family_abandonments": 0,
+        "family_batches": 0,
+        "family_canonical_choices": 0,
+        "family_checks": 0,
+        "family_choices": 0,
+        "family_invalidated": 0,
+        "family_unknown": 0,
+        "forced": 0,
+        "global_scans": 3,
+        "invalidated_domains": 48,
+        "nodes": 3,
+        "pending_checks": 0,
+        "pending_rejected": 0,
+        "pending_retired": 0,
+        "pending_selected": 0,
+        "placements": 1,
+        "restores": 1,
+        "retained_domains": 0,
+        "retained_prefixes": 0,
+        "retained_queries": 0
+      },
+      "decisions": [
+        {
+          "kind": "BRANCH",
+          "row": 23
+        },
+        {
+          "kind": "DEAD",
+          "row": 1
+        }
+      ],
+      "diagnostics": {
+        "attempted_notices": 176,
+        "complete": false,
+        "diagnostic_only": true,
+        "maximum_notices": 128,
+        "notices": [
+          {
+            "data": {
+              "matching_mode": "EMPTY",
+              "source_view_status": "SOURCE_RECORD_VIEW"
+            },
+            "diagnostic_only": true,
+            "index": 1,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "ENTRY_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 2,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "ROUTER_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 3,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "PROOF_OBSERVER_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 4,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "INITIAL_STATE_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 5,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "ENGINE_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 6,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "BEFORE_SEARCH"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 7,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 8,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 9,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 10,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 11,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 12,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 13,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 14,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 15,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 16,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 17,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 18,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 19,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 20,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 21,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 22,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 23,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 24,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 25,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 26,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 5
+            },
+            "diagnostic_only": true,
+            "index": 27,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 5
+            },
+            "diagnostic_only": true,
+            "index": 28,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 5
+            },
+            "diagnostic_only": true,
+            "index": 29,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 5
+            },
+            "diagnostic_only": true,
+            "index": 30,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 6
+            },
+            "diagnostic_only": true,
+            "index": 31,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 6
+            },
+            "diagnostic_only": true,
+            "index": 32,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 6
+            },
+            "diagnostic_only": true,
+            "index": 33,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 6
+            },
+            "diagnostic_only": true,
+            "index": 34,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 7
+            },
+            "diagnostic_only": true,
+            "index": 35,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 7
+            },
+            "diagnostic_only": true,
+            "index": 36,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 7
+            },
+            "diagnostic_only": true,
+            "index": 37,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 7
+            },
+            "diagnostic_only": true,
+            "index": 38,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 8
+            },
+            "diagnostic_only": true,
+            "index": 39,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 8
+            },
+            "diagnostic_only": true,
+            "index": 40,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 8
+            },
+            "diagnostic_only": true,
+            "index": 41,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 8
+            },
+            "diagnostic_only": true,
+            "index": 42,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 9
+            },
+            "diagnostic_only": true,
+            "index": 43,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 9
+            },
+            "diagnostic_only": true,
+            "index": 44,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 9
+            },
+            "diagnostic_only": true,
+            "index": 45,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 9
+            },
+            "diagnostic_only": true,
+            "index": 46,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 10
+            },
+            "diagnostic_only": true,
+            "index": 47,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 10
+            },
+            "diagnostic_only": true,
+            "index": 48,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 10
+            },
+            "diagnostic_only": true,
+            "index": 49,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 10
+            },
+            "diagnostic_only": true,
+            "index": 50,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 11
+            },
+            "diagnostic_only": true,
+            "index": 51,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 11
+            },
+            "diagnostic_only": true,
+            "index": 52,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 11
+            },
+            "diagnostic_only": true,
+            "index": 53,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 11
+            },
+            "diagnostic_only": true,
+            "index": 54,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 12
+            },
+            "diagnostic_only": true,
+            "index": 55,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 12
+            },
+            "diagnostic_only": true,
+            "index": 56,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 12
+            },
+            "diagnostic_only": true,
+            "index": 57,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 12
+            },
+            "diagnostic_only": true,
+            "index": 58,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 13
+            },
+            "diagnostic_only": true,
+            "index": 59,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 13
+            },
+            "diagnostic_only": true,
+            "index": 60,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 13
+            },
+            "diagnostic_only": true,
+            "index": 61,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 13
+            },
+            "diagnostic_only": true,
+            "index": 62,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 14
+            },
+            "diagnostic_only": true,
+            "index": 63,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 14
+            },
+            "diagnostic_only": true,
+            "index": 64,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 14
+            },
+            "diagnostic_only": true,
+            "index": 65,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 14
+            },
+            "diagnostic_only": true,
+            "index": 66,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 15
+            },
+            "diagnostic_only": true,
+            "index": 67,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 15
+            },
+            "diagnostic_only": true,
+            "index": 68,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 15
+            },
+            "diagnostic_only": true,
+            "index": 69,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 15
+            },
+            "diagnostic_only": true,
+            "index": 70,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 16
+            },
+            "diagnostic_only": true,
+            "index": 71,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 16
+            },
+            "diagnostic_only": true,
+            "index": 72,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 16
+            },
+            "diagnostic_only": true,
+            "index": 73,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 16
+            },
+            "diagnostic_only": true,
+            "index": 74,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 17
+            },
+            "diagnostic_only": true,
+            "index": 75,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 17
+            },
+            "diagnostic_only": true,
+            "index": 76,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 17
+            },
+            "diagnostic_only": true,
+            "index": 77,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 17
+            },
+            "diagnostic_only": true,
+            "index": 78,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 18
+            },
+            "diagnostic_only": true,
+            "index": 79,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 18
+            },
+            "diagnostic_only": true,
+            "index": 80,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 18
+            },
+            "diagnostic_only": true,
+            "index": 81,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 18
+            },
+            "diagnostic_only": true,
+            "index": 82,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 19
+            },
+            "diagnostic_only": true,
+            "index": 83,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 19
+            },
+            "diagnostic_only": true,
+            "index": 84,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 19
+            },
+            "diagnostic_only": true,
+            "index": 85,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 19
+            },
+            "diagnostic_only": true,
+            "index": 86,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 20
+            },
+            "diagnostic_only": true,
+            "index": 87,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 20
+            },
+            "diagnostic_only": true,
+            "index": 88,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 20
+            },
+            "diagnostic_only": true,
+            "index": 89,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 20
+            },
+            "diagnostic_only": true,
+            "index": 90,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 21
+            },
+            "diagnostic_only": true,
+            "index": 91,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 21
+            },
+            "diagnostic_only": true,
+            "index": 92,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 21
+            },
+            "diagnostic_only": true,
+            "index": 93,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 21
+            },
+            "diagnostic_only": true,
+            "index": 94,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 22
+            },
+            "diagnostic_only": true,
+            "index": 95,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 22
+            },
+            "diagnostic_only": true,
+            "index": 96,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 22
+            },
+            "diagnostic_only": true,
+            "index": 97,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 22
+            },
+            "diagnostic_only": true,
+            "index": 98,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 99,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 100,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 101,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 102,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 103,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "FALLBACK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 104,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "FALLBACK_OPENED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 105,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 106,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 107,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 108,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 109,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 110,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 111,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 112,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 113,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 114,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 115,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 116,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 117,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 118,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 119,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 120,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 121,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 122,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 123,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 124,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 125,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 126,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 127,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 128,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          }
+        ],
+        "scientific_acceptance": false
+      },
+      "event_kinds": [
+        "DECISION",
+        "FALLBACK",
+        "TRY",
+        "INVALIDATE",
+        "PLACE",
+        "DECISION",
+        "RESTORE",
+        "INVALIDATE",
+        "EXCLUDE"
+      ],
+      "expanded": {
+        "bytes": 2422412,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "2915cbab3898c64a35f69662b8a4977b586e0c20424ab4984eb6927abaf3e1d9"
+      },
+      "fixed_seed_count": 26,
+      "head_certificate": {
+        "GCTS_advantage_accepted": false,
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "allowed_outer_heads": [
+          "all",
+          "imp"
+        ],
+        "available_prior_absolute_rows": [],
+        "branch_exclusions_used": false,
+        "certified_rows": [
+          0
+        ],
+        "complete_GCTS_model_accepted": false,
+        "constructor_inventory": [
+          "bot",
+          "eq",
+          "pred",
+          "all",
+          "not",
+          "imp",
+          "and",
+          "or"
+        ],
+        "exact_point_board_accepted": false,
+        "full_original_exact_board_redundancy_proposed": true,
+        "head_mask": [
+          [
+            "bot",
+            1
+          ],
+          [
+            "eq",
+            1
+          ],
+          [
+            "pred",
+            1
+          ],
+          [
+            "all",
+            0
+          ],
+          [
+            "not",
+            1
+          ],
+          [
+            "imp",
+            0
+          ],
+          [
+            "and",
+            1
+          ],
+          [
+            "or",
+            1
+          ]
+        ],
+        "head_mode": "ROW0_ONLY",
+        "height": 24,
+        "independently_checked": false,
+        "logical_proof_accepted": false,
+        "marking_activation_accepted": false,
+        "model_authority": {
+          "binding": {
+            "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+            "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+            "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+            "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+            "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+            "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+          },
+          "declaration": {
+            "grammar": {
+              "equality_operand_pairs": "all_ordered_pairs",
+              "equality_template_other_terms": "complete_operand_pool",
+              "generalization_sources": "all_resulting_parameter_scoped_equality_atoms",
+              "hole_context_node_bound": 2,
+              "instantiation_rounds": 2,
+              "target_and_axiom_open_subterms": true,
+              "target_seed_is_formula_only": true,
+              "term_node_bound": 3
+            },
+            "height": 24,
+            "limits": {
+              "maximum_formulas": 50000,
+              "maximum_recipes": 20000,
+              "maximum_visits": 5000000
+            },
+            "ordered_Gamma": [],
+            "parameters": [
+              "n"
+            ],
+            "schema": "arithmetic-empty-Gamma-Q-declaration-v1",
+            "target": [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "theory": {
+              "axioms": {
+                "AS": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "AZ": [
+                  "all",
+                  "x",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              },
+              "functions": {
+                "add": 2,
+                "succ": 1,
+                "zero": 0
+              },
+              "predicates": {},
+              "schemas": []
+            }
+          },
+          "policy": {
+            "acceptance": {
+              "GCTS_advantage_or_RL_accepted": false,
+              "broad_goal_complete": false,
+              "complete_GCTS_model_accepted": false,
+              "complete_ground_counts_accepted": false,
+              "complete_legacy_embedding_accepted": false,
+              "new_language_implementation_accepted": false,
+              "new_right_two_proof_accepted": false,
+              "universal_finite_Wang_palette_accepted": false
+            },
+            "count_policy": {
+              "GCTS_gate": "No empty/singleton domain or reference scheduler decision may use an unexhausted syntax generator or unproved count. Ordinary positive word search can propose a word without admitting a complete point model. UNKNOWN is the only negative outcome without a separately checked exhaustive certificate.",
+              "meaning": "This separately named profile is bounded by finite syntax, rather than the old ground-cardinality ceilings. Virtual ground cardinalities are not schema/cache counts. Exact total counts remain an uncompleted milestone; do not claim old-ceiling conformance, a complete new catalogue/count certificate or legacy performance equivalence.",
+              "new_maximum_ground_formulas": null,
+              "new_maximum_ground_recipes": null,
+              "old_maximum_ground_formulas": 50000,
+              "old_maximum_ground_recipes": 20000,
+              "old_profile_unchanged": true
+            },
+            "implementation_sequence": [
+              "Implement an explicit generic membership/primitive decoder and on-demand ordinary proof producer. Do not encode an arithmetic proof route, selected intermediate or supplied word.",
+              "Independently review the membership and expansion semantics before Root activation. Check complete legacy embedding separately against every original formula and primitive recipe, preserving all old alternatives.",
+              "Attempt fresh automatic proof discovery on the unchanged right-two input and check the full expanded word with the unchanged independent endpoint.",
+              "Develop complete symbolic domain/count certificates, exact scheduler/rollback and matched point/family comparisons. No ordinary search success by itself establishes GCTS, learned marking, native Wang or RL contribution."
+            ],
+            "input": "The entire original theory, occurrence-ordered Gamma, declared parameters and target are data. Reuse the exact right-two declaration as the first input, interpreting only its logical input fields and height. Preserve the old declaration and profile unchanged.",
+            "ordinary_search_scope": "A conventional symbolic search control may prioritize actual known facts, unification, size, proof cost and goal similarity, and may construct generic equality-transport macros expanded to the same three primitives. It receives no saved donor word, learned body assignment, target-selected base rule restriction or supplied route. Heuristic exhaustion is not finite-language exhaustion; all proposal/time/fact/word bounds and incomplete search choices must be reported.",
+            "primitive_relation": {
+              "assumption": "Exactly an original occurrence-indexed Gamma formula, zero input.",
+              "axiom": "Exactly the original named closed axioms, zero input.",
+              "calculus": "The unchanged43b Q kernel and1717 independent word endpoint's six primitive rules only. No induction, equality shortcut, deduction or new connective rule is admitted.",
+              "eq_subst": "For every eligible atomic template and ordered pair of parameter terms, the exact existing equality-transport implication, zero input, if the entire witness/result passes the uniform bounds.",
+              "generalize": "For every eligible whole F and original parameter v absent from every original Gamma free-variable occurrence, the unary primitive F -> all(v,F), if the result passes bounds. No new eigenparameter or atom-only restriction.",
+              "identity": "Canonical literal JSON preimage of profile/input epochs, exact primitive witness and ordered premise formulas. Retain exact preimages with digests; no encounter-order codes or unproved alpha merging.",
+              "instantiate": "For every eligible universal U and every parameter term t, the exact capture-safe implication U -> U.body[U.variable:=t], zero input, if every witness/result passes the uniform bounds. Revisit all admissible universals independently of any old compiler phase.",
+              "membership_outcomes": "MEMBER with exact witness/premises/preimage; explicit OUT_OF_PROFILE with a complete syntactic or fresh-namespace reason; or UNKNOWN if computation/resource evidence is incomplete. Heuristics and budget failures cannot return OUT_OF_PROFILE.",
+              "mp": "For every eligible implication imp(A,B), the ordered two-input primitive [A,imp(A,B)] -> B.",
+              "word_endpoint": "At most24 primitive commands, strict prior references, same original Gamma and exact final target. Producer macros must expand into these commands; no pending obligation is a fact."
+            },
+            "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+            "purpose": "A principled implicit primitive language for the unchanged right-two arithmetic target, then shared symbolic theory inputs. Positive proof discovery is the first endpoint; complete GCTS domain/count admission is separate.",
+            "resource_policy": {
+              "aggregate_memory_bytes": 536870912,
+              "caller_seconds": 90,
+              "failure_evidence_seconds": 55,
+              "native_success_seconds_strict": 20,
+              "owned_wall_seconds": 60,
+              "root_owns_all_actuals": true,
+              "single_process_terminal_policy": "B=T; no children",
+              "termination_allowance_seconds": 1
+            },
+            "schema": "ROOT-shared-bounded-six-rule-language-policy-v2",
+            "status": "FROZEN_PROSPECTIVE_LANGUAGE_POLICY_NO_MODEL_OR_EXECUTION_ADMISSION",
+            "supersedes_unactivated_policy": {
+              "bytes": 7444,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v1.json",
+              "sha256": "09ca475758de1ef3463b5c33fe1606ef2812090b4f0361423db7d3210163a3df"
+            },
+            "syntax": {
+              "admissibility": "Apply bounds to all whole formulas and all complete terms in the primitive witness and premise/output formulas, including capture-safe substitution outputs. Bounds define the language uniformly. Out-of-language witnesses are not silently added on demand.",
+              "binder_names": "All literal variable names occurring anywhere in original theory, Gamma, target and parameter declarations, together with fresh0 through fresh31. Retain literal spelling and shadowing; no alpha-equivalence quotient.",
+              "finite_formula_carrier": "All signature-correct eligible whole formulas over the finite literal binder namespace and the existing kernel's bot/eq/pred/all/not/imp/and/or AST, within the exact declared term/formula/depth bounds. This is an implicit full syntax carrier, not a discovery-order registry.",
+              "fresh_exhaustion": "A primitive whose exact capture-safe substitution requires a fresh suffix32 or greater is explicitly OUT_OF_PROFILE_FRESH_NAMESPACE. A complete literal name-set census must justify this exclusion. No alpha merging, alternative spelling or fresh-name extension is allowed. Time, visit, depth or other computation exhaustion is UNKNOWN membership, never evidence of this exclusion; propagate it.",
+              "input_gate": "Validate every named axiom, every original Gamma occurrence and the target against the complete scoped syntax and uniform bounds before producing a language object. An out-of-profile input rejects this profile for that input; it is never silently dropped. This gate does not prove the target or any non-axiom formula.",
+              "maximum_atomic_template_nodes": 44,
+              "maximum_checker_visits": 5000000,
+              "maximum_depth": 64,
+              "maximum_fresh_names": 32,
+              "maximum_term_nodes": 12,
+              "maximum_whole_formula_nodes": 44,
+              "node_measure": "One node for each var, fun, bot, eq, pred, all, not, imp, and, or constructor; include all term nodes in formula size. Symbol spelling and argument arrays add no nodes.",
+              "parameter_terms": "Every signature-correct term of size at most12 whose variables are original declared parameters. This carrier is independent of target demand, known facts, family matches and search outcomes.",
+              "scoped_syntax": "Terms inside formulas may additionally mention lexically active bound variables. An extracted body retains its binder environment as syntax. Only whole formulas with free variables contained in original parameters are eligible proof labels; a subtree or target label is never automatically a fact.",
+              "template_hole": "The first hole0,hole1,... absent from the complete input variable-name set and parameters. A template is any declared atomic eq/pred formula within the same term and template bounds whose free variables are in parameters plus this distinguished hole. Zero, one or multiple hole occurrences are allowed. It is schema syntax, not a new proof parameter."
+            }
+          },
+          "source_bindings": {
+            "advice_controls": {
+              "bytes": 130156,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+              "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+            },
+            "advice_validator": {
+              "bytes": 16299,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+              "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+            },
+            "adviser": {
+              "bytes": 26007,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+              "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+            },
+            "clean_support": {
+              "bytes": 48584,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+              "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+            },
+            "controls": {
+              "bytes": 31931,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+              "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+            },
+            "converter": {
+              "bytes": 5528,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+              "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+            },
+            "degree_checker": {
+              "bytes": 27553,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+              "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+            },
+            "engine": {
+              "bytes": 55152,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+              "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+            },
+            "fallback": {
+              "bytes": 24227,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+              "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+            },
+            "intake": {
+              "bytes": 55852,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+              "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+            },
+            "kernel": {
+              "bytes": 10323,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+              "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+            },
+            "membership": {
+              "bytes": 20112,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+              "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+            },
+            "point_checker": {
+              "bytes": 10201,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+              "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+            },
+            "proposer": {
+              "bytes": 22030,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+              "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+            },
+            "retained_controls": {
+              "bytes": 25338,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+              "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+            },
+            "transition": {
+              "bytes": 8134,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+              "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+            },
+            "word_checker": {
+              "bytes": 46514,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+              "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+            }
+          }
+        },
+        "model_authority_sha256": "c27422db64eaa4cc0d992e64877ec262afb17bb1f61e9d6adf6dc8e8409bb575",
+        "named_axiom_census": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "head": "all",
+            "name": "AS",
+            "primitive_membership": {
+              "binding": {
+                "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "identity_preimage": {
+                "binding": {
+                  "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                  "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                  "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                  "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                  "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                  "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+                },
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              },
+              "logical_acceptance": false,
+              "ordered_input_formula_ids": [],
+              "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+              "primitive_id": "1cc8e2d7983c34c26f01fb8f3516ac5fbee3470fb5f24f91b9b0cbcb8d8b5348",
+              "schema": "shared-bounded-primitive-member-v1",
+              "status": "MEMBER"
+            }
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "head": "all",
+            "name": "AZ",
+            "primitive_membership": {
+              "binding": {
+                "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "identity_preimage": {
+                "binding": {
+                  "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                  "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                  "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                  "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                  "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                  "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+                },
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ],
+                  "name": "AZ",
+                  "rule": "axiom"
+                }
+              },
+              "logical_acceptance": false,
+              "ordered_input_formula_ids": [],
+              "output_formula_id": "c0b146418958279b2f2cba2aceba61da8a3fe353527375e324f89a03cbf497c8",
+              "primitive_id": "955cf8021800911369321f3a246000b333486397bd76dfbac5b73fbe3200e489",
+              "schema": "shared-bounded-primitive-member-v1",
+              "status": "MEMBER"
+            }
+          }
+        ],
+        "ordered_Gamma_census": [],
+        "point_recipe": {
+          "absent_value": "UNCONSTRAINED_NOT_ZERO",
+          "all_whole_output_and_ordered_premise_ports": true,
+          "allowed_head_value": 0,
+          "base_t_unchanged": true,
+          "channel": 5,
+          "existing_channel4_unchanged": true,
+          "fixed_boundary": [
+            [
+              [
+                5,
+                0
+              ],
+              0
+            ]
+          ],
+          "forbidden_head_value": 1,
+          "global_row_interval": [
+            0,
+            23
+          ],
+          "local_offset_interval": [
+            -23,
+            0
+          ],
+          "point_action": "[channel,d] -> [channel,d+row]",
+          "value_action": "IDENTITY"
+        },
+        "read_offset_bounds": [
+          -23,
+          -1
+        ],
+        "redundancy_scope": "ALL_COMPLETE_EXACT_BOARDS_OF_THIS_ORIGINAL_INPUT",
+        "remote_markings_used": false,
+        "row": 0,
+        "row1_occurs_certificate": null,
+        "row1_rule_census": null,
+        "row_zero_head_necessity_checked": true,
+        "saved_receipts_used": false,
+        "schema": "unit-row-early-row-head-redundancy-certificate-v2",
+        "selected_placements_used": false,
+        "six_rule_census": [
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [
+              "all"
+            ],
+            "reason": "COMPLETE_ORIGINAL_NAMED_AXIOM_HEAD_CENSUS",
+            "rule": "axiom"
+          },
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [],
+            "reason": "COMPLETE_ORIGINAL_GAMMA_IS_EMPTY",
+            "rule": "assumption"
+          },
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [
+              "imp"
+            ],
+            "reason": "ORIGINAL_UI_OUTPUT_IS_WHOLE_IMPLICATION",
+            "rule": "instantiate"
+          },
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [
+              "imp"
+            ],
+            "reason": "ORIGINAL_EQ_TRANSPORT_OUTPUT_IS_WHOLE_IMPLICATION",
+            "rule": "eq_subst"
+          },
+          {
+            "ordered_arity": 2,
+            "possible_outer_heads": [],
+            "reason": "NO_NONNEGATIVE_STRICT_PRIOR_READ_AT_ZERO",
+            "rule": "mp"
+          },
+          {
+            "ordered_arity": 1,
+            "possible_outer_heads": [],
+            "reason": "NO_NONNEGATIVE_STRICT_PRIOR_READ_AT_ZERO",
+            "rule": "generalize"
+          }
+        ],
+        "status": "CERTIFIED_NECESSARY_HEAD_UPPER_BOUND",
+        "strict_prior_condition": "0 <= row + offset < row; row = 0",
+        "target_impossibility_accepted": false,
+        "trajectory_accepted": false,
+        "version": "unit-row-early-row-head-redundancy-projection-v2"
+      },
+      "ledger": {
+        "all_costs_charged_to_original_window": true,
+        "exclusive_sum_ns": 16650758000,
+        "includes_instrumentation_overhead": true,
+        "labels": [
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 12179000,
+            "inclusive_ns": 12179000,
+            "label": "language.create",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 14972000,
+            "inclusive_ns": 14972000,
+            "label": "certificate.rule.producer",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 13374000,
+            "inclusive_ns": 13374000,
+            "label": "certificate.rule.checker",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 12433000,
+            "inclusive_ns": 12433000,
+            "label": "certificate.head.producer",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 13944000,
+            "inclusive_ns": 13944000,
+            "label": "certificate.head.checker",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 13495000,
+            "inclusive_ns": 13495000,
+            "label": "mark.freeze",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 20755000,
+            "inclusive_ns": 20755000,
+            "label": "mark.initial_check",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 14438000,
+            "inclusive_ns": 25975000,
+            "label": "point.construct",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 523096000,
+            "inclusive_ns": 523096000,
+            "label": "pool.prepare",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 800151000,
+            "inclusive_ns": 16000535000,
+            "label": "case.total",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 97,
+            "calls_started": 97,
+            "exclusive_ns": 1142531000,
+            "inclusive_ns": 1142531000,
+            "label": "point.check_marking",
+            "maximum_depth": 3
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 2,
+            "calls_started": 2,
+            "exclusive_ns": 69000,
+            "inclusive_ns": 21863000,
+            "label": "point.initial_state",
+            "maximum_depth": 2
+          },
+          {
+            "calls_raised": 1,
+            "calls_returned": 181,
+            "calls_started": 182,
+            "exclusive_ns": 2291000,
+            "inclusive_ns": 5615038000,
+            "label": "point.private_state",
+            "maximum_depth": 3
+          },
+          {
+            "calls_raised": 1,
+            "calls_returned": 348,
+            "calls_started": 349,
+            "exclusive_ns": 448826000,
+            "inclusive_ns": 3261989000,
+            "label": "point.base_projection",
+            "maximum_depth": 5
+          },
+          {
+            "calls_raised": 1,
+            "calls_returned": 146,
+            "calls_started": 147,
+            "exclusive_ns": 39469000,
+            "inclusive_ns": 2813163000,
+            "label": "point.base_key",
+            "maximum_depth": 6
+          },
+          {
+            "calls_raised": 1,
+            "calls_returned": 505,
+            "calls_started": 506,
+            "exclusive_ns": 9500885000,
+            "inclusive_ns": 9500885000,
+            "label": "point.rebuild",
+            "maximum_depth": 7
+          },
+          {
+            "calls_raised": 1,
+            "calls_returned": 264,
+            "calls_started": 265,
+            "exclusive_ns": 3603655000,
+            "inclusive_ns": 8153163000,
+            "label": "point.check_projection",
+            "maximum_depth": 4
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 42,
+            "calls_started": 42,
+            "exclusive_ns": 113705000,
+            "inclusive_ns": 6451176000,
+            "label": "query.propose",
+            "maximum_depth": 2
+          },
+          {
+            "calls_raised": 1,
+            "calls_returned": 41,
+            "calls_started": 42,
+            "exclusive_ns": 347487000,
+            "inclusive_ns": 6335953000,
+            "label": "query.check",
+            "maximum_depth": 2
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 1912000,
+            "inclusive_ns": 16364000,
+            "label": "fallback.open",
+            "maximum_depth": 2
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 0,
+            "calls_started": 0,
+            "exclusive_ns": 0,
+            "inclusive_ns": 0,
+            "label": "family.propose",
+            "maximum_depth": 0
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 0,
+            "calls_started": 0,
+            "exclusive_ns": 0,
+            "inclusive_ns": 0,
+            "label": "family.consume",
+            "maximum_depth": 0
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 11091000,
+            "inclusive_ns": 11091000,
+            "label": "proof.observe",
+            "maximum_depth": 2
+          }
+        ],
+        "measured_root_ns": 16650758000,
+        "open_spans": 0,
+        "performance_accepted": false,
+        "schema": "ROOT-nested-current-validation-cost-ledger-v1",
+        "scientific_acceptance": false,
+        "unmeasured_time_is_zero": false,
+        "version": "ROOT-nested-current-validation-cost-ledger-v1"
+      },
+      "logical_proof": false,
+      "marking_id": "early-row-channel45-marking-f31d7c64aded4e3d9408fca1018e3c5225655236fd62afb5999c132f857f635e",
+      "mode": "ROW0_ONLY",
+      "native_seconds": 17.418976,
+      "peak_bytes": 87113728,
+      "placements": [
+        {
+          "key": {
+            "tile_type_id": "row0-channel45-decorated-tile-a4b7b0f43295c38bf6459092d1367fe1faf146312b4aacb630991134f685441d",
+            "translation": [
+              0,
+              23
+            ],
+            "type_preimage": {
+              "base_type_preimage": {
+                "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                "ordered_offsets": [
+                  -22
+                ],
+                "ordered_premise_formulas": [
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "fun",
+                                  "zero",
+                                  []
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "var",
+                              "n"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "n",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "fun",
+                                "succ",
+                                [
+                                  [
+                                    "fun",
+                                    "zero",
+                                    []
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "n"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "rule": "generalize",
+                  "variable": "n"
+                }
+              },
+              "marking_id": "early-row-channel45-marking-f31d7c64aded4e3d9408fca1018e3c5225655236fd62afb5999c132f857f635e",
+              "schema": "unit-row-row0-channel45-decorated-type-v1"
+            }
+          },
+          "premises": [
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "read_rows": [
+            1
+          ],
+          "row": 23,
+          "rule": "generalize"
+        }
+      ],
+      "plan": {
+        "bytes": 16950,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-plan-v1.json",
+        "sha256": "752ff7329b0472b0d2f81a929f8efef25238a718d9385f3b95a465725ebf0c32"
+      },
+      "reviewed_final": {
+        "bytes": 1943,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-reviewed-final-v1.json",
+        "sha256": "137caf9f90f68c32accf5ab259237f53fc4a69417f65a03393ca252fee3e73b7"
+      },
+      "status": "UNKNOWN",
+      "transport": {
+        "bytes": 33031,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-only-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "d375bd504c22e8d3fbff15a35f023e87e57a7c06eb01cc95e13c937ea0b352d4"
+      }
+    },
+    {
+      "admission": {
+        "bytes": 8505,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "b456834567b888091031cafd4f384c4788b3c418869bea9c4560b3ffd352db00"
+      },
+      "counts": {
+        "advice_calls": 0,
+        "advice_selected": 0,
+        "advice_unknown": 0,
+        "backtracks": 1,
+        "branches": 1,
+        "cursor_replays": 0,
+        "fallback_advances": 1,
+        "fallback_branch_choices": 0,
+        "family_abandonments": 0,
+        "family_batches": 0,
+        "family_canonical_choices": 0,
+        "family_checks": 0,
+        "family_choices": 0,
+        "family_invalidated": 0,
+        "family_unknown": 0,
+        "forced": 0,
+        "global_scans": 3,
+        "invalidated_domains": 48,
+        "nodes": 3,
+        "pending_checks": 0,
+        "pending_rejected": 0,
+        "pending_retired": 0,
+        "pending_selected": 0,
+        "placements": 1,
+        "restores": 1,
+        "retained_domains": 0,
+        "retained_prefixes": 0,
+        "retained_queries": 0
+      },
+      "decisions": [
+        {
+          "kind": "BRANCH",
+          "row": 23
+        },
+        {
+          "kind": "DEAD",
+          "row": 0
+        }
+      ],
+      "diagnostics": {
+        "attempted_notices": 156,
+        "complete": false,
+        "diagnostic_only": true,
+        "maximum_notices": 128,
+        "notices": [
+          {
+            "data": {
+              "matching_mode": "EMPTY",
+              "source_view_status": "SOURCE_RECORD_VIEW"
+            },
+            "diagnostic_only": true,
+            "index": 1,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "ENTRY_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 2,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "ROUTER_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 3,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "PROOF_OBSERVER_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 4,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "INITIAL_STATE_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 5,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "ENGINE_READY"
+          },
+          {
+            "data": {},
+            "diagnostic_only": true,
+            "index": 6,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "BEFORE_SEARCH"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 7,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 8,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 9,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 10,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 11,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 12,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 13,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 14,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 15,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 16,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 17,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 18,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 19,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 20,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 21,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 22,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 23,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 24,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 25,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 26,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 5
+            },
+            "diagnostic_only": true,
+            "index": 27,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 5
+            },
+            "diagnostic_only": true,
+            "index": 28,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 5
+            },
+            "diagnostic_only": true,
+            "index": 29,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 5
+            },
+            "diagnostic_only": true,
+            "index": 30,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 6
+            },
+            "diagnostic_only": true,
+            "index": 31,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 6
+            },
+            "diagnostic_only": true,
+            "index": 32,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 6
+            },
+            "diagnostic_only": true,
+            "index": 33,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 6
+            },
+            "diagnostic_only": true,
+            "index": 34,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 7
+            },
+            "diagnostic_only": true,
+            "index": 35,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 7
+            },
+            "diagnostic_only": true,
+            "index": 36,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 7
+            },
+            "diagnostic_only": true,
+            "index": 37,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 7
+            },
+            "diagnostic_only": true,
+            "index": 38,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 8
+            },
+            "diagnostic_only": true,
+            "index": 39,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 8
+            },
+            "diagnostic_only": true,
+            "index": 40,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 8
+            },
+            "diagnostic_only": true,
+            "index": 41,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 8
+            },
+            "diagnostic_only": true,
+            "index": 42,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 9
+            },
+            "diagnostic_only": true,
+            "index": 43,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 9
+            },
+            "diagnostic_only": true,
+            "index": 44,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 9
+            },
+            "diagnostic_only": true,
+            "index": 45,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 9
+            },
+            "diagnostic_only": true,
+            "index": 46,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 10
+            },
+            "diagnostic_only": true,
+            "index": 47,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 10
+            },
+            "diagnostic_only": true,
+            "index": 48,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 10
+            },
+            "diagnostic_only": true,
+            "index": 49,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 10
+            },
+            "diagnostic_only": true,
+            "index": 50,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 11
+            },
+            "diagnostic_only": true,
+            "index": 51,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 11
+            },
+            "diagnostic_only": true,
+            "index": 52,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 11
+            },
+            "diagnostic_only": true,
+            "index": 53,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 11
+            },
+            "diagnostic_only": true,
+            "index": 54,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 12
+            },
+            "diagnostic_only": true,
+            "index": 55,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 12
+            },
+            "diagnostic_only": true,
+            "index": 56,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 12
+            },
+            "diagnostic_only": true,
+            "index": 57,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 12
+            },
+            "diagnostic_only": true,
+            "index": 58,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 13
+            },
+            "diagnostic_only": true,
+            "index": 59,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 13
+            },
+            "diagnostic_only": true,
+            "index": 60,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 13
+            },
+            "diagnostic_only": true,
+            "index": 61,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 13
+            },
+            "diagnostic_only": true,
+            "index": 62,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 14
+            },
+            "diagnostic_only": true,
+            "index": 63,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 14
+            },
+            "diagnostic_only": true,
+            "index": 64,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 14
+            },
+            "diagnostic_only": true,
+            "index": 65,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 14
+            },
+            "diagnostic_only": true,
+            "index": 66,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 15
+            },
+            "diagnostic_only": true,
+            "index": 67,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 15
+            },
+            "diagnostic_only": true,
+            "index": 68,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 15
+            },
+            "diagnostic_only": true,
+            "index": 69,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 15
+            },
+            "diagnostic_only": true,
+            "index": 70,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 16
+            },
+            "diagnostic_only": true,
+            "index": 71,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 16
+            },
+            "diagnostic_only": true,
+            "index": 72,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 16
+            },
+            "diagnostic_only": true,
+            "index": 73,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 16
+            },
+            "diagnostic_only": true,
+            "index": 74,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 17
+            },
+            "diagnostic_only": true,
+            "index": 75,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 17
+            },
+            "diagnostic_only": true,
+            "index": 76,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 17
+            },
+            "diagnostic_only": true,
+            "index": 77,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 17
+            },
+            "diagnostic_only": true,
+            "index": 78,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 18
+            },
+            "diagnostic_only": true,
+            "index": 79,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 18
+            },
+            "diagnostic_only": true,
+            "index": 80,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 18
+            },
+            "diagnostic_only": true,
+            "index": 81,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 18
+            },
+            "diagnostic_only": true,
+            "index": 82,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 19
+            },
+            "diagnostic_only": true,
+            "index": 83,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 19
+            },
+            "diagnostic_only": true,
+            "index": 84,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 19
+            },
+            "diagnostic_only": true,
+            "index": 85,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 19
+            },
+            "diagnostic_only": true,
+            "index": 86,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 20
+            },
+            "diagnostic_only": true,
+            "index": 87,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 20
+            },
+            "diagnostic_only": true,
+            "index": 88,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 20
+            },
+            "diagnostic_only": true,
+            "index": 89,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 20
+            },
+            "diagnostic_only": true,
+            "index": 90,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 21
+            },
+            "diagnostic_only": true,
+            "index": 91,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 21
+            },
+            "diagnostic_only": true,
+            "index": 92,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 21
+            },
+            "diagnostic_only": true,
+            "index": 93,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 21
+            },
+            "diagnostic_only": true,
+            "index": 94,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 22
+            },
+            "diagnostic_only": true,
+            "index": 95,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 22
+            },
+            "diagnostic_only": true,
+            "index": 96,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 22
+            },
+            "diagnostic_only": true,
+            "index": 97,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 22
+            },
+            "diagnostic_only": true,
+            "index": 98,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 99,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 100,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 101,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 102,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 103,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "FALLBACK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 23
+            },
+            "diagnostic_only": true,
+            "index": 104,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "FALLBACK_OPENED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 105,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 106,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 107,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 108,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 109,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 110,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 111,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 0
+            },
+            "diagnostic_only": true,
+            "index": 112,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 113,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 114,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 115,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 1
+            },
+            "diagnostic_only": true,
+            "index": 116,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 117,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 118,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 119,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 2
+            },
+            "diagnostic_only": true,
+            "index": 120,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 121,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 122,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 123,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 3
+            },
+            "diagnostic_only": true,
+            "index": 124,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 125,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_BEGIN"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 126,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_PROPOSER_RETURNED"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 127,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_BEGIN"
+          },
+          {
+            "data": {
+              "row": 4
+            },
+            "diagnostic_only": true,
+            "index": 128,
+            "schema": "right-two-CASE-diagnostic-notice-v1",
+            "scientific_acceptance": false,
+            "stage": "DEGREE_CHECK_RETURNED"
+          }
+        ],
+        "scientific_acceptance": false
+      },
+      "event_kinds": [
+        "DECISION",
+        "FALLBACK",
+        "TRY",
+        "INVALIDATE",
+        "PLACE",
+        "DECISION",
+        "RESTORE",
+        "INVALIDATE",
+        "EXCLUDE"
+      ],
+      "expanded": {
+        "bytes": 2433065,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "27b4c31b2094574315624b5d0b99a621ea387ed9660976f70b52ef4eacb40fab"
+      },
+      "fixed_seed_count": 27,
+      "head_certificate": {
+        "GCTS_advantage_accepted": false,
+        "RL_accepted": false,
+        "ROOT_resource_accepted": false,
+        "allowed_outer_heads": [
+          "all",
+          "imp"
+        ],
+        "available_prior_absolute_rows": [],
+        "branch_exclusions_used": false,
+        "certified_rows": [
+          0,
+          1
+        ],
+        "complete_GCTS_model_accepted": false,
+        "constructor_inventory": [
+          "bot",
+          "eq",
+          "pred",
+          "all",
+          "not",
+          "imp",
+          "and",
+          "or"
+        ],
+        "exact_point_board_accepted": false,
+        "full_original_exact_board_redundancy_proposed": true,
+        "head_mask": [
+          [
+            "bot",
+            1
+          ],
+          [
+            "eq",
+            1
+          ],
+          [
+            "pred",
+            1
+          ],
+          [
+            "all",
+            0
+          ],
+          [
+            "not",
+            1
+          ],
+          [
+            "imp",
+            0
+          ],
+          [
+            "and",
+            1
+          ],
+          [
+            "or",
+            1
+          ]
+        ],
+        "head_mode": "ROW0_AND_ROW1",
+        "height": 24,
+        "independently_checked": false,
+        "logical_proof_accepted": false,
+        "marking_activation_accepted": false,
+        "model_authority": {
+          "binding": {
+            "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+            "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+            "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+            "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+            "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+            "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+          },
+          "declaration": {
+            "grammar": {
+              "equality_operand_pairs": "all_ordered_pairs",
+              "equality_template_other_terms": "complete_operand_pool",
+              "generalization_sources": "all_resulting_parameter_scoped_equality_atoms",
+              "hole_context_node_bound": 2,
+              "instantiation_rounds": 2,
+              "target_and_axiom_open_subterms": true,
+              "target_seed_is_formula_only": true,
+              "term_node_bound": 3
+            },
+            "height": 24,
+            "limits": {
+              "maximum_formulas": 50000,
+              "maximum_recipes": 20000,
+              "maximum_visits": 5000000
+            },
+            "ordered_Gamma": [],
+            "parameters": [
+              "n"
+            ],
+            "schema": "arithmetic-empty-Gamma-Q-declaration-v1",
+            "target": [
+              "all",
+              "n",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "zero",
+                              []
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "theory": {
+              "axioms": {
+                "AS": [
+                  "all",
+                  "x",
+                  [
+                    "all",
+                    "y",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "add",
+                            [
+                              [
+                                "var",
+                                "x"
+                              ],
+                              [
+                                "var",
+                                "y"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "AZ": [
+                  "all",
+                  "x",
+                  [
+                    "eq",
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      "var",
+                      "x"
+                    ]
+                  ]
+                ]
+              },
+              "functions": {
+                "add": 2,
+                "succ": 1,
+                "zero": 0
+              },
+              "predicates": {},
+              "schemas": []
+            }
+          },
+          "policy": {
+            "acceptance": {
+              "GCTS_advantage_or_RL_accepted": false,
+              "broad_goal_complete": false,
+              "complete_GCTS_model_accepted": false,
+              "complete_ground_counts_accepted": false,
+              "complete_legacy_embedding_accepted": false,
+              "new_language_implementation_accepted": false,
+              "new_right_two_proof_accepted": false,
+              "universal_finite_Wang_palette_accepted": false
+            },
+            "count_policy": {
+              "GCTS_gate": "No empty/singleton domain or reference scheduler decision may use an unexhausted syntax generator or unproved count. Ordinary positive word search can propose a word without admitting a complete point model. UNKNOWN is the only negative outcome without a separately checked exhaustive certificate.",
+              "meaning": "This separately named profile is bounded by finite syntax, rather than the old ground-cardinality ceilings. Virtual ground cardinalities are not schema/cache counts. Exact total counts remain an uncompleted milestone; do not claim old-ceiling conformance, a complete new catalogue/count certificate or legacy performance equivalence.",
+              "new_maximum_ground_formulas": null,
+              "new_maximum_ground_recipes": null,
+              "old_maximum_ground_formulas": 50000,
+              "old_maximum_ground_recipes": 20000,
+              "old_profile_unchanged": true
+            },
+            "implementation_sequence": [
+              "Implement an explicit generic membership/primitive decoder and on-demand ordinary proof producer. Do not encode an arithmetic proof route, selected intermediate or supplied word.",
+              "Independently review the membership and expansion semantics before Root activation. Check complete legacy embedding separately against every original formula and primitive recipe, preserving all old alternatives.",
+              "Attempt fresh automatic proof discovery on the unchanged right-two input and check the full expanded word with the unchanged independent endpoint.",
+              "Develop complete symbolic domain/count certificates, exact scheduler/rollback and matched point/family comparisons. No ordinary search success by itself establishes GCTS, learned marking, native Wang or RL contribution."
+            ],
+            "input": "The entire original theory, occurrence-ordered Gamma, declared parameters and target are data. Reuse the exact right-two declaration as the first input, interpreting only its logical input fields and height. Preserve the old declaration and profile unchanged.",
+            "ordinary_search_scope": "A conventional symbolic search control may prioritize actual known facts, unification, size, proof cost and goal similarity, and may construct generic equality-transport macros expanded to the same three primitives. It receives no saved donor word, learned body assignment, target-selected base rule restriction or supplied route. Heuristic exhaustion is not finite-language exhaustion; all proposal/time/fact/word bounds and incomplete search choices must be reported.",
+            "primitive_relation": {
+              "assumption": "Exactly an original occurrence-indexed Gamma formula, zero input.",
+              "axiom": "Exactly the original named closed axioms, zero input.",
+              "calculus": "The unchanged43b Q kernel and1717 independent word endpoint's six primitive rules only. No induction, equality shortcut, deduction or new connective rule is admitted.",
+              "eq_subst": "For every eligible atomic template and ordered pair of parameter terms, the exact existing equality-transport implication, zero input, if the entire witness/result passes the uniform bounds.",
+              "generalize": "For every eligible whole F and original parameter v absent from every original Gamma free-variable occurrence, the unary primitive F -> all(v,F), if the result passes bounds. No new eigenparameter or atom-only restriction.",
+              "identity": "Canonical literal JSON preimage of profile/input epochs, exact primitive witness and ordered premise formulas. Retain exact preimages with digests; no encounter-order codes or unproved alpha merging.",
+              "instantiate": "For every eligible universal U and every parameter term t, the exact capture-safe implication U -> U.body[U.variable:=t], zero input, if every witness/result passes the uniform bounds. Revisit all admissible universals independently of any old compiler phase.",
+              "membership_outcomes": "MEMBER with exact witness/premises/preimage; explicit OUT_OF_PROFILE with a complete syntactic or fresh-namespace reason; or UNKNOWN if computation/resource evidence is incomplete. Heuristics and budget failures cannot return OUT_OF_PROFILE.",
+              "mp": "For every eligible implication imp(A,B), the ordered two-input primitive [A,imp(A,B)] -> B.",
+              "word_endpoint": "At most24 primitive commands, strict prior references, same original Gamma and exact final target. Producer macros must expand into these commands; no pending obligation is a fact."
+            },
+            "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+            "purpose": "A principled implicit primitive language for the unchanged right-two arithmetic target, then shared symbolic theory inputs. Positive proof discovery is the first endpoint; complete GCTS domain/count admission is separate.",
+            "resource_policy": {
+              "aggregate_memory_bytes": 536870912,
+              "caller_seconds": 90,
+              "failure_evidence_seconds": 55,
+              "native_success_seconds_strict": 20,
+              "owned_wall_seconds": 60,
+              "root_owns_all_actuals": true,
+              "single_process_terminal_policy": "B=T; no children",
+              "termination_allowance_seconds": 1
+            },
+            "schema": "ROOT-shared-bounded-six-rule-language-policy-v2",
+            "status": "FROZEN_PROSPECTIVE_LANGUAGE_POLICY_NO_MODEL_OR_EXECUTION_ADMISSION",
+            "supersedes_unactivated_policy": {
+              "bytes": 7444,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v1.json",
+              "sha256": "09ca475758de1ef3463b5c33fe1606ef2812090b4f0361423db7d3210163a3df"
+            },
+            "syntax": {
+              "admissibility": "Apply bounds to all whole formulas and all complete terms in the primitive witness and premise/output formulas, including capture-safe substitution outputs. Bounds define the language uniformly. Out-of-language witnesses are not silently added on demand.",
+              "binder_names": "All literal variable names occurring anywhere in original theory, Gamma, target and parameter declarations, together with fresh0 through fresh31. Retain literal spelling and shadowing; no alpha-equivalence quotient.",
+              "finite_formula_carrier": "All signature-correct eligible whole formulas over the finite literal binder namespace and the existing kernel's bot/eq/pred/all/not/imp/and/or AST, within the exact declared term/formula/depth bounds. This is an implicit full syntax carrier, not a discovery-order registry.",
+              "fresh_exhaustion": "A primitive whose exact capture-safe substitution requires a fresh suffix32 or greater is explicitly OUT_OF_PROFILE_FRESH_NAMESPACE. A complete literal name-set census must justify this exclusion. No alpha merging, alternative spelling or fresh-name extension is allowed. Time, visit, depth or other computation exhaustion is UNKNOWN membership, never evidence of this exclusion; propagate it.",
+              "input_gate": "Validate every named axiom, every original Gamma occurrence and the target against the complete scoped syntax and uniform bounds before producing a language object. An out-of-profile input rejects this profile for that input; it is never silently dropped. This gate does not prove the target or any non-axiom formula.",
+              "maximum_atomic_template_nodes": 44,
+              "maximum_checker_visits": 5000000,
+              "maximum_depth": 64,
+              "maximum_fresh_names": 32,
+              "maximum_term_nodes": 12,
+              "maximum_whole_formula_nodes": 44,
+              "node_measure": "One node for each var, fun, bot, eq, pred, all, not, imp, and, or constructor; include all term nodes in formula size. Symbol spelling and argument arrays add no nodes.",
+              "parameter_terms": "Every signature-correct term of size at most12 whose variables are original declared parameters. This carrier is independent of target demand, known facts, family matches and search outcomes.",
+              "scoped_syntax": "Terms inside formulas may additionally mention lexically active bound variables. An extracted body retains its binder environment as syntax. Only whole formulas with free variables contained in original parameters are eligible proof labels; a subtree or target label is never automatically a fact.",
+              "template_hole": "The first hole0,hole1,... absent from the complete input variable-name set and parameters. A template is any declared atomic eq/pred formula within the same term and template bounds whose free variables are in parameters plus this distinguished hole. Zero, one or multiple hole occurrences are allowed. It is schema syntax, not a new proof parameter."
+            }
+          },
+          "source_bindings": {
+            "advice_controls": {
+              "bytes": 130156,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-selective-C-controls-source-20261016/compatible_fibres_controls_v11.py",
+              "sha256": "0790868b3dfda92e55e9f0acdda674bb0abd0853e13eef7008d66ab16f5c09e3"
+            },
+            "advice_validator": {
+              "bytes": 16299,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-consumer-source-20261016/independent_advice_consumer_v3.py",
+              "sha256": "8116e9104a7bf431b2efefd08b38ebb607a0884d9ccf893626647edf9f37eca1"
+            },
+            "adviser": {
+              "bytes": 26007,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-compatible-fibres-adviser-source-20261016/goal_branch_adviser_v3.py",
+              "sha256": "6b1a8b24509d8379b9f3747494810f9721481b0d692c7e144f8bc8c389d31e98"
+            },
+            "clean_support": {
+              "bytes": 48584,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-global-clock-lane-A-source-20261015/Q_clean_word_verifier_global_clock_v4.py",
+              "sha256": "464537845c62478412270214589481ac34c55588d191df097686de09508ba9ba"
+            },
+            "controls": {
+              "bytes": 31931,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-controls-source-20261016/marking_aware_adversarial_controls_v2.py",
+              "sha256": "50faf07d85de3be6aa6f822f94f6d82f7fd6d103e60c2d96cb0c54cbb4f8567a"
+            },
+            "converter": {
+              "bytes": 5528,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-source-20261015/word_to_point_board_v1.py",
+              "sha256": "baefa732406c20087304643b16e812f0f1e4e0a62513f5069c6f30ba7f7b1e63"
+            },
+            "degree_checker": {
+              "bytes": 27553,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-checker-source-20261015/independent_unit_row_missing_mark_checker_v2.py",
+              "sha256": "c35484000d8ab924d089ace9a185132ef164cad1e24729123290215b8baf8f6d"
+            },
+            "engine": {
+              "bytes": 55152,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marking-aware-engine-source-20261016/lazy_unit_row_global_engine_v9.py",
+              "sha256": "54983466d2530ea56d8eb43704b9036966c9325caf8a7179f65a47a7780ed146"
+            },
+            "fallback": {
+              "bytes": 24227,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-all-six-fallback-source-20261015/unit_row_all_six_fallback_v1.py",
+              "sha256": "69b4a9170d931e01138f5d7f98514f26e47cbfe7ab8b7503b99f6a24934a4fae"
+            },
+            "intake": {
+              "bytes": 55852,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-marked-frontier-cold-ROOT-source-20261016/unit_row_marked_frontier_cold_v17.py",
+              "sha256": "652434adfb1951594b56689ebfece1a0fce3c1d40ad4a6338c58fa108cce51e5"
+            },
+            "kernel": {
+              "bytes": 10323,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-open-generalize-implementation-source-20261014/arithmetic_q_kernel_v1.py",
+              "sha256": "43bcd76ab1c672c5241f792cf898059a9f0157ace8f15b9684c7e48663db55a9"
+            },
+            "membership": {
+              "bytes": 20112,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-implementation-source-20261015/bounded_six_rule_language_v2.py",
+              "sha256": "5d1fb647626c952f4653dd8cffabdb3fe29be0be122ef7e73ef4a7759da43332"
+            },
+            "point_checker": {
+              "bytes": 10201,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-point-board-independent-source-20261015/independent_word_point_board_checker_v1.py",
+              "sha256": "99b3bdc393d4fbdc4bddf08b362ca58c80a06a129908e854b0303e495303c18d"
+            },
+            "proposer": {
+              "bytes": 22030,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-missing-mark-degree-source-20261015/unit_row_missing_mark_degree_v3.py",
+              "sha256": "c960e6e6560502f95f25611c9c85a72b32c67775aedc2e42e0300a366e3d7e90"
+            },
+            "retained_controls": {
+              "bytes": 25338,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-controls-source-20261015/retained_domain_controls_v2.py",
+              "sha256": "d1dcdfa9230ab1653c601ee2d769c64722d9ab0d0f292682bda214d8984488eb"
+            },
+            "transition": {
+              "bytes": 8134,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/unit-row-retained-domain-engine-source-20261015/unit_row_domain_transition_checker_v1.py",
+              "sha256": "2e2d66c3c5843ef086f073df09e2eda7a50d3972fa1900a8ecf33f5c92ab3491"
+            },
+            "word_checker": {
+              "bytes": 46514,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/arithmetic-Q-independent-mathematical-audit-source-20261014/independent_Q_semantics_v1.py",
+              "sha256": "1717c716842886935c838a825b9c088810935acf101943e15eba6c5af7aec1c3"
+            }
+          }
+        },
+        "model_authority_sha256": "c27422db64eaa4cc0d992e64877ec262afb17bb1f61e9d6adf6dc8e8409bb575",
+        "named_axiom_census": [
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "var",
+                            "y"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "head": "all",
+            "name": "AS",
+            "primitive_membership": {
+              "binding": {
+                "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "identity_preimage": {
+                "binding": {
+                  "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                  "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                  "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                  "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                  "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                  "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+                },
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "all",
+                      "y",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "x"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "add",
+                              [
+                                [
+                                  "var",
+                                  "x"
+                                ],
+                                [
+                                  "var",
+                                  "y"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "name": "AS",
+                  "rule": "axiom"
+                }
+              },
+              "logical_acceptance": false,
+              "ordered_input_formula_ids": [],
+              "output_formula_id": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+              "primitive_id": "1cc8e2d7983c34c26f01fb8f3516ac5fbee3470fb5f24f91b9b0cbcb8d8b5348",
+              "schema": "shared-bounded-primitive-member-v1",
+              "status": "MEMBER"
+            }
+          },
+          {
+            "formula": [
+              "all",
+              "x",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            "head": "all",
+            "name": "AZ",
+            "primitive_membership": {
+              "binding": {
+                "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+              },
+              "identity_preimage": {
+                "binding": {
+                  "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+                  "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                  "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+                  "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+                  "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+                  "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+                },
+                "ordered_premise_formulas": [],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "x",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "x"
+                          ],
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ],
+                      [
+                        "var",
+                        "x"
+                      ]
+                    ]
+                  ],
+                  "name": "AZ",
+                  "rule": "axiom"
+                }
+              },
+              "logical_acceptance": false,
+              "ordered_input_formula_ids": [],
+              "output_formula_id": "c0b146418958279b2f2cba2aceba61da8a3fe353527375e324f89a03cbf497c8",
+              "primitive_id": "955cf8021800911369321f3a246000b333486397bd76dfbac5b73fbe3200e489",
+              "schema": "shared-bounded-primitive-member-v1",
+              "status": "MEMBER"
+            }
+          }
+        ],
+        "ordered_Gamma_census": [],
+        "point_recipe": {
+          "absent_value": "UNCONSTRAINED_NOT_ZERO",
+          "all_whole_output_and_ordered_premise_ports": true,
+          "allowed_head_value": 0,
+          "base_t_unchanged": true,
+          "channel": 5,
+          "existing_channel4_unchanged": true,
+          "fixed_boundary": [
+            [
+              [
+                5,
+                0
+              ],
+              0
+            ],
+            [
+              [
+                5,
+                1
+              ],
+              0
+            ]
+          ],
+          "forbidden_head_value": 1,
+          "global_row_interval": [
+            0,
+            23
+          ],
+          "local_offset_interval": [
+            -23,
+            0
+          ],
+          "point_action": "[channel,d] -> [channel,d+row]",
+          "value_action": "IDENTITY"
+        },
+        "read_offset_bounds": [
+          -23,
+          -1
+        ],
+        "redundancy_scope": "ALL_COMPLETE_EXACT_BOARDS_OF_THIS_ORIGINAL_INPUT",
+        "remote_markings_used": false,
+        "row": 0,
+        "row1_occurs_certificate": {
+          "antecedent_proper_subformula_path": [
+            1
+          ],
+          "available_prior_absolute_rows": [
+            0
+          ],
+          "coincident_ports_require_identical_literal_formula": true,
+          "finite_well_founded_formula_AST": true,
+          "formula_mark_channel": 1,
+          "implication_node_count_latex": "\\(1+|A|+|C|>|A|\\)",
+          "mp_implication_constructor": "imp",
+          "native_enumeration_or_timeout_used": false,
+          "negative_proof_is_finite_occurs_argument": true,
+          "ordered_read_pairs": [
+            [
+              0,
+              0
+            ]
+          ],
+          "row": 1,
+          "same_formula_cannot_be_own_strict_superformula": true,
+          "schema": "unit-row-row1-mp-finite-ast-obstruction-v1",
+          "unit_row_capacity": 1
+        },
+        "row1_rule_census": [
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [
+              "all"
+            ],
+            "reason": "COMPLETE_ORIGINAL_NAMED_AXIOM_HEAD_CENSUS",
+            "rule": "axiom"
+          },
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [],
+            "reason": "COMPLETE_ORIGINAL_GAMMA_IS_EMPTY",
+            "rule": "assumption"
+          },
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [
+              "imp"
+            ],
+            "reason": "ORIGINAL_UI_OUTPUT_IS_WHOLE_IMPLICATION",
+            "rule": "instantiate"
+          },
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [
+              "imp"
+            ],
+            "reason": "ORIGINAL_EQ_TRANSPORT_OUTPUT_IS_WHOLE_IMPLICATION",
+            "rule": "eq_subst"
+          },
+          {
+            "ordered_arity": 2,
+            "possible_outer_heads": [],
+            "reason": "SOLE_PRIOR_ROW_REQUIRES_FINITE_AST_SELF_CONTAINMENT",
+            "rule": "mp"
+          },
+          {
+            "ordered_arity": 1,
+            "possible_outer_heads": [
+              "all"
+            ],
+            "reason": "ORIGINAL_GENERALIZATION_OUTPUT_IS_WHOLE_UNIVERSAL",
+            "rule": "generalize"
+          }
+        ],
+        "row_zero_head_necessity_checked": true,
+        "saved_receipts_used": false,
+        "schema": "unit-row-early-row-head-redundancy-certificate-v2",
+        "selected_placements_used": false,
+        "six_rule_census": [
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [
+              "all"
+            ],
+            "reason": "COMPLETE_ORIGINAL_NAMED_AXIOM_HEAD_CENSUS",
+            "rule": "axiom"
+          },
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [],
+            "reason": "COMPLETE_ORIGINAL_GAMMA_IS_EMPTY",
+            "rule": "assumption"
+          },
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [
+              "imp"
+            ],
+            "reason": "ORIGINAL_UI_OUTPUT_IS_WHOLE_IMPLICATION",
+            "rule": "instantiate"
+          },
+          {
+            "ordered_arity": 0,
+            "possible_outer_heads": [
+              "imp"
+            ],
+            "reason": "ORIGINAL_EQ_TRANSPORT_OUTPUT_IS_WHOLE_IMPLICATION",
+            "rule": "eq_subst"
+          },
+          {
+            "ordered_arity": 2,
+            "possible_outer_heads": [],
+            "reason": "NO_NONNEGATIVE_STRICT_PRIOR_READ_AT_ZERO",
+            "rule": "mp"
+          },
+          {
+            "ordered_arity": 1,
+            "possible_outer_heads": [],
+            "reason": "NO_NONNEGATIVE_STRICT_PRIOR_READ_AT_ZERO",
+            "rule": "generalize"
+          }
+        ],
+        "status": "CERTIFIED_NECESSARY_HEAD_UPPER_BOUND",
+        "strict_prior_condition": "0 <= row + offset < row; row = 0",
+        "target_impossibility_accepted": false,
+        "trajectory_accepted": false,
+        "version": "unit-row-early-row-head-redundancy-projection-v2"
+      },
+      "ledger": {
+        "all_costs_charged_to_original_window": true,
+        "exclusive_sum_ns": 16829964000,
+        "includes_instrumentation_overhead": true,
+        "labels": [
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 11391000,
+            "inclusive_ns": 11391000,
+            "label": "language.create",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 13752000,
+            "inclusive_ns": 13752000,
+            "label": "certificate.rule.producer",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 13459000,
+            "inclusive_ns": 13459000,
+            "label": "certificate.rule.checker",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 12521000,
+            "inclusive_ns": 12521000,
+            "label": "certificate.head.producer",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 14452000,
+            "inclusive_ns": 14452000,
+            "label": "certificate.head.checker",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 13858000,
+            "inclusive_ns": 13858000,
+            "label": "mark.freeze",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 20851000,
+            "inclusive_ns": 20851000,
+            "label": "mark.initial_check",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 14375000,
+            "inclusive_ns": 25601000,
+            "label": "point.construct",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 563643000,
+            "inclusive_ns": 563643000,
+            "label": "pool.prepare",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 2990380000,
+            "inclusive_ns": 16140436000,
+            "label": "case.total",
+            "maximum_depth": 1
+          },
+          {
+            "calls_raised": 1,
+            "calls_returned": 86,
+            "calls_started": 87,
+            "exclusive_ns": 1056616000,
+            "inclusive_ns": 1056616000,
+            "label": "point.check_marking",
+            "maximum_depth": 3
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 2,
+            "calls_started": 2,
+            "exclusive_ns": 92000,
+            "inclusive_ns": 30300000,
+            "label": "point.initial_state",
+            "maximum_depth": 2
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 160,
+            "calls_started": 160,
+            "exclusive_ns": 2009000,
+            "inclusive_ns": 4776366000,
+            "label": "point.private_state",
+            "maximum_depth": 3
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 308,
+            "calls_started": 308,
+            "exclusive_ns": 429227000,
+            "inclusive_ns": 2571877000,
+            "label": "point.base_projection",
+            "maximum_depth": 5
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 105,
+            "calls_started": 105,
+            "exclusive_ns": 33887000,
+            "inclusive_ns": 2142650000,
+            "label": "point.base_key",
+            "maximum_depth": 6
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 405,
+            "calls_started": 405,
+            "exclusive_ns": 7970049000,
+            "inclusive_ns": 7970049000,
+            "label": "point.rebuild",
+            "maximum_depth": 7
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 234,
+            "calls_started": 234,
+            "exclusive_ns": 3257784000,
+            "inclusive_ns": 6811031000,
+            "label": "point.check_projection",
+            "maximum_depth": 4
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 37,
+            "calls_started": 37,
+            "exclusive_ns": 101346000,
+            "inclusive_ns": 5513966000,
+            "label": "query.propose",
+            "maximum_depth": 2
+          },
+          {
+            "calls_raised": 1,
+            "calls_returned": 36,
+            "calls_started": 37,
+            "exclusive_ns": 297415000,
+            "inclusive_ns": 5181736000,
+            "label": "query.check",
+            "maximum_depth": 2
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 1949000,
+            "inclusive_ns": 16907000,
+            "label": "fallback.open",
+            "maximum_depth": 2
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 0,
+            "calls_started": 0,
+            "exclusive_ns": 0,
+            "inclusive_ns": 0,
+            "label": "family.propose",
+            "maximum_depth": 0
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 0,
+            "calls_started": 0,
+            "exclusive_ns": 0,
+            "inclusive_ns": 0,
+            "label": "family.consume",
+            "maximum_depth": 0
+          },
+          {
+            "calls_raised": 0,
+            "calls_returned": 1,
+            "calls_started": 1,
+            "exclusive_ns": 10908000,
+            "inclusive_ns": 10908000,
+            "label": "proof.observe",
+            "maximum_depth": 2
+          }
+        ],
+        "measured_root_ns": 16829964000,
+        "open_spans": 0,
+        "performance_accepted": false,
+        "schema": "ROOT-nested-current-validation-cost-ledger-v1",
+        "scientific_acceptance": false,
+        "unmeasured_time_is_zero": false,
+        "version": "ROOT-nested-current-validation-cost-ledger-v1"
+      },
+      "logical_proof": false,
+      "marking_id": "early-row-channel45-marking-f8b077d58def9d2417808e5f699217e34aebaabc2be317c1081f2118b6f6f5cb",
+      "mode": "ROW0_AND_ROW1",
+      "native_seconds": 17.484153,
+      "peak_bytes": 87965696,
+      "placements": [
+        {
+          "key": {
+            "tile_type_id": "row0-channel45-decorated-tile-09ed3e24c6a75bb83c1529832e154df1cd9360fddeb356829df873567b7167fa",
+            "translation": [
+              0,
+              23
+            ],
+            "type_preimage": {
+              "base_type_preimage": {
+                "input_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+                "ordered_offsets": [
+                  -23,
+                  -22
+                ],
+                "ordered_premise_formulas": [
+                  [
+                    "all",
+                    "fresh0",
+                    [
+                      "bot"
+                    ]
+                  ],
+                  [
+                    "imp",
+                    [
+                      "all",
+                      "fresh0",
+                      [
+                        "bot"
+                      ]
+                    ],
+                    [
+                      "all",
+                      "n",
+                      [
+                        "eq",
+                        [
+                          "fun",
+                          "add",
+                          [
+                            [
+                              "var",
+                              "n"
+                            ],
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "fun",
+                                  "succ",
+                                  [
+                                    [
+                                      "fun",
+                                      "zero",
+                                      []
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ],
+                        [
+                          "fun",
+                          "succ",
+                          [
+                            [
+                              "fun",
+                              "succ",
+                              [
+                                [
+                                  "var",
+                                  "n"
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                "primitive_witness": {
+                  "formula": [
+                    "all",
+                    "n",
+                    [
+                      "eq",
+                      [
+                        "fun",
+                        "add",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ],
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "fun",
+                                "succ",
+                                [
+                                  [
+                                    "fun",
+                                    "zero",
+                                    []
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "var",
+                                "n"
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "rule": "mp"
+                }
+              },
+              "marking_id": "early-row-channel45-marking-f8b077d58def9d2417808e5f699217e34aebaabc2be317c1081f2118b6f6f5cb",
+              "schema": "unit-row-row0-channel45-decorated-type-v1"
+            }
+          },
+          "premises": [
+            [
+              "all",
+              "fresh0",
+              [
+                "bot"
+              ]
+            ],
+            [
+              "imp",
+              [
+                "all",
+                "fresh0",
+                [
+                  "bot"
+                ]
+              ],
+              [
+                "all",
+                "n",
+                [
+                  "eq",
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "succ",
+                            [
+                              [
+                                "fun",
+                                "zero",
+                                []
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "read_rows": [
+            0,
+            1
+          ],
+          "row": 23,
+          "rule": "mp"
+        }
+      ],
+      "plan": {
+        "bytes": 16966,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-plan-v1.json",
+        "sha256": "443be8e2e4da2ca265761566b8fc6c43cb1d3e3079ff37ef35012754b5af7b96"
+      },
+      "reviewed_final": {
+        "bytes": 1963,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-reviewed-final-v1.json",
+        "sha256": "7f619685fc52bc3f990e3164f40c0b5cf247537f8fe78b71ef1f7bfb730fd5e8"
+      },
+      "status": "UNKNOWN",
+      "transport": {
+        "bytes": 33039,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-early-row-row0-and-row1-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "67e8d12e2c9771af800fcc5774f44ae20aa10a34d460b6e914f8f89615068645"
+      }
+    }
+  ],
+  "same_current_executable_sources": 28,
+  "schema": "GCTS-certified-early-row-profiled-study-v1",
+  "science_seconds": 17,
+  "separate_current_rejection_receipt_logged": false,
+  "trained_RL": false,
+  "useful_transfer": false,
+  "whole_pool_prepared_once_each": true
+}
