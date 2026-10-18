@@ -1,0 +1,800 @@
+{
+  "Root_admission": {
+    "bytes": 58556,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "bd3aa999fcf7be627b229a887e4174fe9d3ffb6b3c24fac3a3411ebe6ad19a10"
+  },
+  "Source_and_plan_reviews": {
+    "all_plans": {
+      "bytes": 25338,
+      "path": "/private/tmp/gcts-compact-model-qualification-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+      "sha256": "3f5e62b129ed036e749f2f7a085e81ab97939b124f4c23ba12ee96c99055a7e0"
+    },
+    "compact_Model_Source": {
+      "bytes": 8553,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-compact-model-Source-review-v1.json",
+      "sha256": "aae2d27faa7255b911f2902041cfc17a2ecebed878519f1a70c46185b8f0631b"
+    },
+    "preliminary_declaration": {
+      "bytes": 10700,
+      "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/typed-prospective-declaration-review-v1.json",
+      "sha256": "3c9722e44e58d70342e929e50c444738bb6fae329e5dbb2d72e149bbf8aaa214"
+    },
+    "qualification_harness_Source": {
+      "bytes": 10506,
+      "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/typed-Source-review-v1.json",
+      "sha256": "f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3"
+    },
+    "reader_Source": {
+      "bytes": 5175,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-reader-Source-review-v2.json",
+      "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+    },
+    "wrapper_Source": {
+      "bytes": 9234,
+      "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/typed-Source-review-v2.json",
+      "sha256": "4ad5c9f9ea5f6c53f9f8f2af0bf4f102a5d38264b9888beca054b003efe66b5b"
+    }
+  },
+  "actual_execution_authorized": false,
+  "actuals": [
+    {
+      "authorization": {
+        "bytes": 3793,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorizations/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "f00a9115507ce73fa9ad5ccac367ca4cbb13386e9880b4ba4a51eeaa43ddf6ec"
+      },
+      "case_id": "c2",
+      "checked_graph_states": 5,
+      "consumed": {
+        "bytes": 309,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "78bdd2a91cccd52baf31efa2e22e7ab6c2b94fe0b5c705a4a3c2817a6ac10c5f"
+      },
+      "data_qualification_diagnostic": true,
+      "full_inventory_counts": {
+        "alignment_memberships": 17494,
+        "alignment_points": 60,
+        "dependency_memberships": 3799246,
+        "dependency_points": 4617,
+        "ordinary_inverse_checks": 17494,
+        "placements": 17494
+      },
+      "graph_states": [
+        {
+          "current": {
+            "candidate_nodes": 17494,
+            "decision": [
+              "forced",
+              [
+                0,
+                2
+              ],
+              [
+                [
+                  0,
+                  2,
+                  0,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 17494,
+            "placement_tests": 17494,
+            "points": 60
+          },
+          "depth": 0,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 623297,
+            "chunks": 10,
+            "sha256": "8cebd2d00b4dd64f7c9a253963a5418d08058e89ce5169ea22e0fda50ec45b64"
+          },
+          "selected_child": [
+            0,
+            2,
+            0,
+            0
+          ],
+          "state": {
+            "bytes": 2538,
+            "chunks": 1,
+            "sha256": "2d7d4a94af3e58c6a8584a448925c640abdda8ea4523b6e669e12966c3f01b2f"
+          }
+        },
+        {
+          "current": {
+            "candidate_nodes": 17269,
+            "decision": [
+              "forced",
+              [
+                0,
+                3
+              ],
+              [
+                [
+                  0,
+                  3,
+                  0,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 17269,
+            "placement_tests": 17494,
+            "points": 59
+          },
+          "depth": 1,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 615843,
+            "chunks": 10,
+            "sha256": "3a84596dc919963b2fd77439e766da24c19bffe31ec0a8387951ec09674e4219"
+          },
+          "selected_child": [
+            0,
+            3,
+            0,
+            0
+          ],
+          "state": {
+            "bytes": 2591,
+            "chunks": 1,
+            "sha256": "2df77a53659e61abcaec976f11ae86da2a37a6b4ba278bba570f43bde597f5e7"
+          }
+        },
+        {
+          "current": {
+            "candidate_nodes": 17268,
+            "decision": [
+              "forced",
+              [
+                0,
+                4
+              ],
+              [
+                [
+                  0,
+                  4,
+                  0,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 17268,
+            "placement_tests": 17494,
+            "points": 58
+          },
+          "depth": 2,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 615803,
+            "chunks": 10,
+            "sha256": "5c4ed70e4b42e619a26ebc8c2b04a6a3aa04d49ad6a2e5dadd1536cc8c99ed89"
+          },
+          "selected_child": [
+            0,
+            4,
+            0,
+            0
+          ],
+          "state": {
+            "bytes": 2637,
+            "chunks": 1,
+            "sha256": "d6bc3d7996889d7a810ce1ca8c4cf95d2a7761c04db6254ef0de01ed1ce941d9"
+          }
+        },
+        {
+          "current": {
+            "candidate_nodes": 17267,
+            "decision": [
+              "branch",
+              [
+                0,
+                1
+              ],
+              [
+                [
+                  0,
+                  1,
+                  1,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  221,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  222,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  223,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  224,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  225,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  226,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  227,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  228,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 17267,
+            "placement_tests": 17494,
+            "points": 57
+          },
+          "depth": 3,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 615763,
+            "chunks": 10,
+            "sha256": "b4e6dbb9057e80bff355536b33590f115d57f6604443b162b223a3069e02a1f9"
+          },
+          "selected_child": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "state": {
+            "bytes": 2683,
+            "chunks": 1,
+            "sha256": "67ca21a13d8e89e5bbbecf23b94f17cd54cd13ae17427442bc4836fec9e5efa3"
+          }
+        },
+        {
+          "current": {
+            "candidate_nodes": 16287,
+            "decision": [
+              "forced",
+              [
+                0,
+                0
+              ],
+              [
+                [
+                  0,
+                  0,
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 16287,
+            "placement_tests": 17494,
+            "points": 56
+          },
+          "depth": 4,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 580948,
+            "chunks": 9,
+            "sha256": "f5fb5af7fbd9b973354705e26180e7ea4f962e080667bf82c0fffde9a8a834a0"
+          },
+          "selected_child": null,
+          "state": {
+            "bytes": 5137,
+            "chunks": 1,
+            "sha256": "5d99025a4f59771c22c2a50e46beda2c96ee4217d491b23af3b7af63b62a5a63"
+          }
+        }
+      ],
+      "input": {
+        "bytes": 62144097,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/result.json",
+        "sha256": "38c18642bf7c0b14ad07aa1d7ce65576ad190c9fb84c61388c11df65c4ae730d"
+      },
+      "input_inverse": {
+        "body_bytes": 62144096,
+        "body_sha256": "13a0a894f53a0c96b30c1a8b68c3bd21a8b42bfd2c2fbd77b0b4e03c47d03040",
+        "chunks": 29097471,
+        "literal_bytes_equal": true
+      },
+      "invocation_id": "compact-model-qual-c2-ROOT-20261018-v1",
+      "log_capture_complete": true,
+      "mathematical_proof_accepted": false,
+      "native_processes_reported": 0,
+      "owned_group_absent": true,
+      "plan": {
+        "bytes": 5667,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "3810ca4d8948c234a956dd1ddb7810cc6805125f31d0590be09b7afcf37858f4"
+      },
+      "resource_errors": [
+        "workerhighwater_above1GiB"
+      ],
+      "result": {
+        "bytes": 17756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/result.json",
+        "sha256": "edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7"
+      },
+      "rollback_checks": 4,
+      "root_restored": true,
+      "runner_exit_code": 2,
+      "runner_receipt": {
+        "bytes": 2843,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047"
+      },
+      "storage_observation": {
+        "assignment_sequences": 17323,
+        "coordinate_literals": 4617,
+        "implementation_version": "quantified-family-points-exact-literal-interning-v1",
+        "logical_model_version": "quantified-initial-binder-family-points-v2-derived-arity",
+        "ordinary_record_unchanged": true,
+        "placements": 17494,
+        "point_value_literals": 50694,
+        "schema": "quantified-point-literal-storage-observation-v1",
+        "scope": "Full integer point/pair/sequence equality. Dictionary hashes index full literal keys; collisions still require exact tuple equality. Pools are construction storage, never pruning, degree or rollback authority. Memory and complete output costs require separate measured evidence."
+      },
+      "terminal": {
+        "bytes": 1691,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae"
+      },
+      "terminal_seconds": 146.074519834,
+      "whole_expected_record": {
+        "bytes": 60179491,
+        "chunks": 919,
+        "sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5"
+      },
+      "whole_initial_state": {
+        "bytes": 2538,
+        "chunks": 1,
+        "sha256": "2d7d4a94af3e58c6a8584a448925c640abdda8ea4523b6e669e12966c3f01b2f"
+      },
+      "whole_input_metadata": {
+        "bytes": 39885,
+        "chunks": 1,
+        "sha256": "6cb6ba29e3afb4808deebddcfc51be2f8580f02342435e4a3320bce147e002d1"
+      },
+      "within_profile_qualification": false,
+      "work_completion_seconds": 145.74316725,
+      "worker_consumed": {
+        "bytes": 274,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "sha256": "c2db5db541006a972f8f48db6a487f20854cb329f9419e98dee32ded26d03cab"
+      },
+      "worker_exit_code": 0,
+      "worker_peak_MiB": 1162.046875,
+      "worker_peak_bytes": 1218494464,
+      "worker_reaped": true
+    },
+    {
+      "authorization": {
+        "bytes": 3793,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorizations/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "af9fbbc7fb301e50c7926ac83d8179a01a9b688d736e3d34dd148402f68b8876"
+      },
+      "case_id": "c3",
+      "checked_graph_states": 5,
+      "consumed": {
+        "bytes": 309,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "6a1ec1d6a2f2cf38ecd1f707bba6f814bf30ba486e6ad693fa7c608ac7d5528b"
+      },
+      "data_qualification_diagnostic": true,
+      "full_inventory_counts": {
+        "alignment_memberships": 11440,
+        "alignment_points": 60,
+        "dependency_memberships": 2327570,
+        "dependency_points": 6903,
+        "ordinary_inverse_checks": 11440,
+        "placements": 11440
+      },
+      "graph_states": [
+        {
+          "current": {
+            "candidate_nodes": 11440,
+            "decision": [
+              "forced",
+              [
+                0,
+                2
+              ],
+              [
+                [
+                  0,
+                  2,
+                  0,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 11440,
+            "placement_tests": 11440,
+            "points": 60
+          },
+          "depth": 0,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 402061,
+            "chunks": 7,
+            "sha256": "2a9aebf153fb563ced0acf25b9e28ee27dac3356c7ec8c58137024e332a0303b"
+          },
+          "selected_child": [
+            0,
+            2,
+            0,
+            0
+          ],
+          "state": {
+            "bytes": 2367,
+            "chunks": 1,
+            "sha256": "820e9d0d7b428d998f62dc951577214653a90fb87c34c3bedff159477b3d0ec0"
+          }
+        },
+        {
+          "current": {
+            "candidate_nodes": 11321,
+            "decision": [
+              "forced",
+              [
+                0,
+                3
+              ],
+              [
+                [
+                  0,
+                  3,
+                  0,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 11321,
+            "placement_tests": 11440,
+            "points": 59
+          },
+          "depth": 1,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 398155,
+            "chunks": 7,
+            "sha256": "c8ca0eb95bac5a25a6f178e4fdd25d9b6aecaaff26205e4d2a9d009f93525285"
+          },
+          "selected_child": [
+            0,
+            3,
+            0,
+            0
+          ],
+          "state": {
+            "bytes": 2420,
+            "chunks": 1,
+            "sha256": "fd214108af7d589a54bf92a5cc18d4f4252032287c540b433eec13744d4f804b"
+          }
+        },
+        {
+          "current": {
+            "candidate_nodes": 11320,
+            "decision": [
+              "forced",
+              [
+                0,
+                4
+              ],
+              [
+                [
+                  0,
+                  4,
+                  0,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 11320,
+            "placement_tests": 11440,
+            "points": 58
+          },
+          "depth": 2,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 398115,
+            "chunks": 7,
+            "sha256": "0e84282d7d5cd68c367242f3c78e3a825e33715ff3e9d364f6edc55c57b9f1b0"
+          },
+          "selected_child": [
+            0,
+            4,
+            0,
+            0
+          ],
+          "state": {
+            "bytes": 2466,
+            "chunks": 1,
+            "sha256": "844587d27b8a0a577d2e1ad4bad192764dcdd528e1bad40265f9dee45c24d9b2"
+          }
+        },
+        {
+          "current": {
+            "candidate_nodes": 11319,
+            "decision": [
+              "branch",
+              [
+                0,
+                1
+              ],
+              [
+                [
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  4,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  8,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  143,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  144,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  145,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  146,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 11319,
+            "placement_tests": 11440,
+            "points": 57
+          },
+          "depth": 3,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 398075,
+            "chunks": 7,
+            "sha256": "8937345059e2692ab389292d2e4a9fa6f475e6b25373d2c8d53d44beb3b31c56"
+          },
+          "selected_child": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "state": {
+            "bytes": 2512,
+            "chunks": 1,
+            "sha256": "0d96c12e1f0adb667e821b4b5deae839d89ac5f179595b1ce719a9f7c9845884"
+          }
+        },
+        {
+          "current": {
+            "candidate_nodes": 10521,
+            "decision": [
+              "forced",
+              [
+                0,
+                0
+              ],
+              [
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            ],
+            "incidences": 10521,
+            "placement_tests": 11440,
+            "points": 56
+          },
+          "depth": 4,
+          "evidence_scope": "Saved Source-backed comparison counts/digests/decision, not full exported state/graph or independent replay.",
+          "graph": {
+            "bytes": 370437,
+            "chunks": 6,
+            "sha256": "28cc4226b70f40051c8345dcdc1fe2ca3ca28765bc33f536f9cd68ba6662edf0"
+          },
+          "selected_child": null,
+          "state": {
+            "bytes": 6341,
+            "chunks": 1,
+            "sha256": "2eed71fd1c8b55a4c3359506c29e7625b52d6a3c71d2779c03954ea12feb9cba"
+          }
+        }
+      ],
+      "input": {
+        "bytes": 78204773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+      },
+      "input_inverse": {
+        "body_bytes": 78204772,
+        "body_sha256": "658ee6d35eb9c4d35f10d7144d2601793c0f3858011716c16cce9fb66a3f6000",
+        "chunks": 37359759,
+        "literal_bytes_equal": true
+      },
+      "invocation_id": "compact-model-qual-c3-ROOT-20261018-v1",
+      "log_capture_complete": true,
+      "mathematical_proof_accepted": false,
+      "native_processes_reported": 0,
+      "owned_group_absent": true,
+      "plan": {
+        "bytes": 5667,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "f5d59491d89b83ff7012739d34b6d2056ef302b137d75b5c219148442699c639"
+      },
+      "resource_errors": [],
+      "result": {
+        "bytes": 17728,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/result.json",
+        "sha256": "ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf"
+      },
+      "rollback_checks": 4,
+      "root_restored": true,
+      "runner_exit_code": 0,
+      "runner_receipt": {
+        "bytes": 2822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03"
+      },
+      "storage_observation": {
+        "assignment_sequences": 11335,
+        "coordinate_literals": 6903,
+        "implementation_version": "quantified-family-points-exact-literal-interning-v1",
+        "logical_model_version": "quantified-initial-binder-family-points-v2-derived-arity",
+        "ordinary_record_unchanged": true,
+        "placements": 11440,
+        "point_value_literals": 50614,
+        "schema": "quantified-point-literal-storage-observation-v1",
+        "scope": "Full integer point/pair/sequence equality. Dictionary hashes index full literal keys; collisions still require exact tuple equality. Pools are construction storage, never pruning, degree or rollback authority. Memory and complete output costs require separate measured evidence."
+      },
+      "terminal": {
+        "bytes": 1687,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22"
+      },
+      "terminal_seconds": 142.589073,
+      "whole_expected_record": {
+        "bytes": 36917374,
+        "chunks": 564,
+        "sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74"
+      },
+      "whole_initial_state": {
+        "bytes": 2367,
+        "chunks": 1,
+        "sha256": "820e9d0d7b428d998f62dc951577214653a90fb87c34c3bedff159477b3d0ec0"
+      },
+      "whole_input_metadata": {
+        "bytes": 27197,
+        "chunks": 1,
+        "sha256": "a4a89a047e401d205fa45885a2fb91c421ca081ba6cf3e9a4cc5095d678989f8"
+      },
+      "within_profile_qualification": true,
+      "work_completion_seconds": 142.493372583,
+      "worker_consumed": {
+        "bytes": 274,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "sha256": "985d7da63a84bba4d345c468573bd8d6cb31d9a7df52a0bebda6d327ee7643ce"
+      },
+      "worker_exit_code": 0,
+      "worker_peak_MiB": 784.484375,
+      "worker_peak_bytes": 822591488,
+      "worker_reaped": true
+    }
+  ],
+  "audit": {
+    "bytes": 61568,
+    "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/saved-data-audit-v1.json",
+    "sha256": "081449d4be87435a0d3a13aa39f59aa3d3c1b83a0a55d8692b3740c1b89de9dd"
+  },
+  "audit_Source": {
+    "bytes": 25509,
+    "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/audit_saved_data_v1.py",
+    "sha256": "e62d53fb5e1e95566dabf30e7ccbb4181308f750e6a4ab4fc5ff39c37fd49ba3"
+  },
+  "author_identity": "/root",
+  "authorized_index": {
+    "bytes": 8211,
+    "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "b8e31b531823fb6eb720ea451e7603c9516b5e6c55522ac24c1989a0882413ab"
+  },
+  "authorship_disclosure": "Reviewer authored the activated qualification harness821d73, and previously independently Source-reviewed compact Model/reader/new Control wrapper and earlier data. This is a distinct Root-actual/retained-metadata audit, NOT an independent Source or semantic correctness certification of own harness. Genuine Library harness Source peer f6380d is separately bound. Reviewer did not author wrapper/observer or execute any actual. Harness implementation-author overlap exists and is explicit; actual execution/Root admission-author overlap does not.",
+  "check_count": 112,
+  "codec_or_decompression_calls": 0,
+  "data_review_passed": true,
+  "declaration": {
+    "bytes": 5879,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/qualification-declaration-v1.json",
+    "sha256": "2bef8cffd32bc06898d287cc79e46068d4d047c186f19bd4a9f7fcf9ee161c93"
+  },
+  "final_grant_delta": null,
+  "findings": [],
+  "goal_complete": false,
+  "graph_calls": 0,
+  "harness_calls": 0,
+  "limitations": [
+    "This reviewer authored the harness, so this data receipt must not be advertised as a person-independent implementation/semantic re-audit of that harness. New whole input/record/counter/receipt comparisons are retained-data checks; distinct Library Source peer remains the separate implementation review.",
+    "Both diagnostic harness packets report complete ordinary/compact record/inverse/incidence and bounded state qualification. c2 exceeds1GiB and remains outside profile despite normal worker/reap/group/log closure; c3 alone passes this combined qualification profile. Neither is a new theorem/search/native/RL result or compact-only memory benchmark.",
+    "Full old logical model bytes independently canonicalized excluding ONLY compile_seconds; whole spec/compiler/inventory/initial/new Sourceepoch metadata summarized with every original field including original timing values. Saved before/post record comparison hashes/lengths and all expected inventory/storage counters join those full literal preimages. New constructed models/ordinary inverses were not exported, so actual equality assertions additionally rely on reviewed harness plus saved receipts; this audit did not recreate them.",
+    "Per-state full graph and intermediate State packets are NOT exported. The five states/four rollback counters, digest sizes/chunks, root initial digest, recorded decisions/first-key selected transitions and finite incidence scalar relations were checked as metadata. Current candidate legality, complete forward/reverse graph or intermediate rollback were NOT replayed/reconstructed. No independent per-state comparison or all-state conformance claim.",
+    "Whole reader inverse metadata body SHA/length independently matches original raw bytes minus one newline, before/after equal; no target reader invoked. Python baseline signature and raw pin still agree, and owned original/copy files were read/hash checked; runtime callable/default/cell custody remains reviewed-Source/saved-completion evidence with explicit trusted OS metadata and shallow seal limits.",
+    "Single Darwin worker wait4 high-water includes complete retained input, BOTH new Models, comparison records and bounded graph copies. Parent/observer peaks excluded and limit is posthoc, not live cap. Two different retained logical inputs are not an ordinary-versus-compact memory/speed comparison; passing c3 or failing c2 does not establish compact-only search fit/failure.",
+    "All declared outcomes remain; no failed gate is salvaged or rerun and no input candidate/grammar is trimmed to fit. Synthetic/adversarial design was not run. No target/project/logic/compiler/harness/Model/Graph/native/solver/kernel/codec/renderer execution, scientific replay, native decoding or actual mutation occurred.",
+    "Explicit current source/runtime/input/plan/grant/receipt refs only after materialization checks; no historical recursive/cloud path hydration. Own separate full old JSON canonicalization and integer/set literal counting are data analysis, not scientific module invocation."
+  ],
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "outcome_counts": {
+    "complete_data_qualifications": 2,
+    "new_native_calls_reported": 0,
+    "new_theorem_search_runs_reported": 0,
+    "outside_worker_memory_profile": 1,
+    "reported_graph_states": 10,
+    "reported_rollback_checks": 8,
+    "retained_actuals": 2,
+    "within_profile_qualifications": 1
+  },
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/receiver_driver_review",
+  "schema": "compact-model-qualification-independent-retained-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Two exact retained complete-model qualification packets and old raw input preimages; metadata/native-custody only, no target/model/harness/state replay.",
+  "solver_calls": 0,
+  "source_only": true
+}

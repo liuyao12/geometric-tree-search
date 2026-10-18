@@ -1,0 +1,148 @@
+{
+  "API": {
+    "bytes": 10008,
+    "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/API-v2.json",
+    "sha256": "81ed3504306d736d707a3688f8d7d84d0bf90eef496b1146929eb8d8b8489e28"
+  },
+  "Source_handoff": {
+    "bytes": 3405,
+    "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/handoff-v2.json",
+    "sha256": "83371d8c9b5fb5f10069d2994fa25750cd1bbeae2df6948d795ccd3db47014f1"
+  },
+  "actual_F0_patch_directions": 4,
+  "actual_execution_authorized": false,
+  "audit": {
+    "bytes": 25964,
+    "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/raw-Source-audit-v2.json",
+    "sha256": "2b09aa76c6ed69c3e05172974da41321100d2443b0219389140c2e9812d90c2f"
+  },
+  "audit_Source": {
+    "bytes": 23557,
+    "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/review_Source_v2.py",
+    "sha256": "3a53f52302b1b7b1d21d0b00bfc971ecbdc079f1431b5bc8fe717db5c7631541"
+  },
+  "author_identity": "/root/conventional_control_review",
+  "author_overlap": false,
+  "check_count": 77,
+  "codec_or_decompression_calls": 0,
+  "compiled_without_evaluation": true,
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "Exact new Control-authored wrapper/observer and full14Source closure remain separate from Receiver-authored harness; genuine Library harness Source PASS is relied upon, not independently reissued by harness author.",
+      "id": "S1_SCOPE_AND_IDENTITY",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Stable nofollow fd/path signature before/after whole baseline hash; unchanged signatures and captured native callables at source guards; full Python raw bytes at intake and final boundaries. Same OS metadata is trusted between boundaries, not formal continuous binary attestation or hostile-interpreter isolation.",
+      "id": "S2_PYTHON_METADATA_TRUST",
+      "severity": "conditional_limit"
+    },
+    {
+      "finding": "source_guard performs full original/copied module and callable seals during harness Source boundaries and brackets qualification. Reader/JSON roundtrip checkpoint callbacks are time-only; full Source checks bracket their use. Seal is shallow, does not deeply freeze mutable global/default/cell payloads or prohibit new namespace entries. No continuous/deep custody claim.",
+      "id": "S3_CUSTODY_CADENCE",
+      "severity": "conditional_limit"
+    },
+    {
+      "finding": "Runtime accepts at least3 authenticated PASS descriptors without enforcing unique reviewer identities or exact roles. Root prospective/final grant peer must separately require genuine current harness/Model/reader/wrapper/closure/declaration/plan scopes. This Source review grants no execution.",
+      "id": "S4_EXTERNAL_AUTHORITY_GATE",
+      "severity": "required_external"
+    },
+    {
+      "finding": "Parent Source-entry clock passed unchanged. Post-harness, input inverse, result cap/write/postwrite guards and actual worker exit must finish within180; raw custody/log/reap/owned-group/observer closure within210.225 observer fallback and indefinite pathological kill/reap branches are failure-only with no positive inference.",
+      "id": "S5_CLOCK_RESOURCE_AND_OUTPUT",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Complete old input+BOTH models+bounded Graph probes are combined qualification cost. Positive applies only supplied full records and bounded first-key states. UNKNOWN/failure is unqualified and cannot establish compact-only search failure or memory fit; no theorem/native/search/RL result.",
+      "id": "S6_NO_PERFORMANCE_THEOREM",
+      "severity": "scope"
+    }
+  ],
+  "goal_complete": false,
+  "graph_calls": 0,
+  "harness_calls": 0,
+  "harness_distinct_Source_peer": {
+    "bytes": 10506,
+    "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/typed-Source-review-v1.json",
+    "sha256": "f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3"
+  },
+  "input_result_decodes": 0,
+  "limitations": [
+    "Reviewer authored compact_model_qualification_v1.py and its API/contract, and previously independently reviewed Models/reader and saved-data. This receipt reviews only NEW Control-authored wrapper/observer, intake/custody/callback/resource gates and their boundary ABI. It is not a self-review or replacement of the genuine distinct Library harness peer f6380d. No current wrapper/observer authorship overlap.",
+    "Raw/AST/import-inventory, compile-without-evaluation, four actual inert Source text patches only. No target/project/harness/Model/Graph/logic/compiler/native/solver/kernel/codec/renderer or input-result decoding/trial occurred. Whole input result descriptors were compared as metadata only.",
+    "Pinned Python/bundled stdlib/import machinery/OS/filesystem metadata are trusted. Frequent Python signature policy is weaker than continuous byte hashing, explicit and no-rebaseline on change. Source/module/function/class seal is shallow; no deep mutation, adversarial runtime or formal OS isolation theorem.",
+    "Context false plans/current runtime closure were read for exact ABI and absent directories, not a substitute for distinct cohort/full final truegrant review. Root alone grants/executes/adopts results. Permissive runtime review-count gate requires external exact independent role/scope binding.",
+    "Bounded cooperative checkpoints do not preempt a constructor or one giant JSON scalar; parent absolute work kill and observer failure fallback limit admission only. A pathological nonreap can remain failure pending Root cleanup; no positive residual-group claim.",
+    "Qualification memory is SINGLE worker Darwin wait4 high-water posthoc, excluding parent and observer; not a live allocation cap. It holds entire retained input, both Models and comparison graphs, so no compact-only RAM/speed or proofsearch comparison. Late/missing/oversize/normalUNKNOWN/source/resource endpoints remain unqualified.",
+    "No source-only PASS is runtime conformance, proof validity, model fit, complete all-state GCTS equivalence, new RL/GCTS advantage or research-goal completion."
+  ],
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "prior_compact_Model_Source_peer": {
+    "bytes": 8553,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-compact-model-Source-review-v1.json",
+    "sha256": "aae2d27faa7255b911f2902041cfc17a2ecebed878519f1a70c46185b8f0631b"
+  },
+  "prior_reader_Source_peer": {
+    "bytes": 5175,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-reader-Source-review-v2.json",
+    "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+  },
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "prospective_index_context": {
+    "bytes": 6403,
+    "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/prospective-index-v1.json",
+    "sha256": "b21c14dd85df0bd6838bd3c9a60212bfaef191a6d64ea241f954cbd8c96630f9"
+  },
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "review_requirements": {
+    "bytes": 5963,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/qualification-wrapper-review-requirements-v1.json",
+    "sha256": "b8d1fba76c8d96fba2608a50fca43ca43f955b0a12c66adc6119448b4288addf"
+  },
+  "reviewer_identity": "/root/receiver_driver_review",
+  "runtime_closure_context": {
+    "bytes": 23624,
+    "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runtime-closure-v1.json",
+    "sha256": "3008fda65902d0a4c775735efba82f916f7bb15ab0532fcac172df3ce0055341"
+  },
+  "schema": "compact-model-qualification-wrapper-typed-Source-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "compact-model-qualification-wrapper-Source",
+  "solver_calls": 0,
+  "source": {
+    "bytes": 22998,
+    "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+    "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+  },
+  "source_contract": {
+    "bytes": 15096,
+    "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/Source-contract-v2.json",
+    "sha256": "6fc6a93d8557a0565467931e6613f61e625c9ea8b89c1b8af002b5291fcd6e5b"
+  },
+  "source_delta": {
+    "bytes": 6223,
+    "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/Source-delta-v2.json",
+    "sha256": "698a6c1fbe51a6884f05b8a117d492a0863cc342a08c37f78a0235cad60da2e8"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "qualification_observer": {
+      "bytes": 4423,
+      "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/observe_model_qualification_v2.py",
+      "sha256": "94612dc92e7c209dbbf6546d7281f4c87af3237c71bfda62dbd54561400d5abc"
+    },
+    "qualification_runner": {
+      "bytes": 22998,
+      "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+      "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+    }
+  }
+}

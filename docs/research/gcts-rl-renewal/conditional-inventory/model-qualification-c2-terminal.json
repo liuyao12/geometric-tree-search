@@ -1,0 +1,33 @@
+{
+  "ROOT_resource_accepted": false,
+  "command": [
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "-I",
+    "-S",
+    "-B",
+    "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+    "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1.json"
+  ],
+  "mathematical_proof_accepted": false,
+  "observed_instrument_elapsed_seconds": 146.102368292,
+  "observer_started_ns": 690529552440458,
+  "plan": {
+    "bytes": 5667,
+    "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1.json",
+    "sha256": "3810ca4d8948c234a956dd1ddb7810cc6805125f31d0590be09b7afcf37858f4"
+  },
+  "runner_clock_elapsed_seconds": 146.074519834,
+  "runner_exit_code": 2,
+  "runner_pid": 91930,
+  "runner_receipt": {
+    "bytes": 2843,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/runner-receipt.json",
+    "sha256": "6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047"
+  },
+  "schema": "compact-model-qualification-final-terminal-observation-v1",
+  "scientific_acceptance": false,
+  "scope": "Complete-model qualification terminal gate only. Root separately checks full input/current Source/literal qualification and singleworker profile. No native proof, complete search or fair memory benchmark.",
+  "terminal_gate_passed": false,
+  "terminal_observed_ns": 690675654808750,
+  "version": "compact-model-qualification-final-terminal-observer-v2-runtime-signature"
+}

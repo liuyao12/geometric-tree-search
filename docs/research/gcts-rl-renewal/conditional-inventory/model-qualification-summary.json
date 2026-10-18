@@ -1,0 +1,1711 @@
+{
+  "Root_admission": {
+    "bytes": 58556,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "bd3aa999fcf7be627b229a887e4174fe9d3ffb6b3c24fac3a3411ebe6ad19a10"
+  },
+  "actual_count": 2,
+  "actuals": [
+    {
+      "actual_files": [
+        {
+          "bytes": 309,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "78bdd2a91cccd52baf31efa2e22e7ab6c2b94fe0b5c705a4a3c2817a6ac10c5f"
+        },
+        {
+          "bytes": 274,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/WORKER_CONSUMED.json",
+          "sha256": "c2db5db541006a972f8f48db6a487f20854cb329f9419e98dee32ded26d03cab"
+        },
+        {
+          "bytes": 17756,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/result.json",
+          "sha256": "edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7"
+        },
+        {
+          "bytes": 2843,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047"
+        },
+        {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 7089,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/certificate_boundary_search.py",
+          "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+        },
+        {
+          "bytes": 19222,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/compact_model_qualification_v1.py",
+          "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+        },
+        {
+          "bytes": 4311,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/interned_quantified_family_points_v1.py",
+          "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+        },
+        {
+          "bytes": 4705,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        {
+          "bytes": 10808,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/logic.py",
+          "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+        },
+        {
+          "bytes": 8962,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/native_receptor_points.py",
+          "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+        },
+        {
+          "bytes": 6992,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/proof_boundary.py",
+          "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+        },
+        {
+          "bytes": 6472,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/quantified_family_points_v2.py",
+          "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+        },
+        {
+          "bytes": 11060,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/quantified_receptors_v1.py",
+          "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+        },
+        {
+          "bytes": 7409,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/semantic_receptor_points.py",
+          "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+        },
+        {
+          "bytes": 3756,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/tape_binary.py",
+          "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+        },
+        {
+          "bytes": 19188,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/tape_tree_machine.py",
+          "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+        },
+        {
+          "bytes": 13290,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/tree_machine.py",
+          "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+        },
+        {
+          "bytes": 28533,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/turtle.py",
+          "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+        }
+      ],
+      "all_custody_joins_consistent": true,
+      "authorization": {
+        "bytes": 3793,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorizations/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "f00a9115507ce73fa9ad5ccac367ca4cbb13386e9880b4ba4a51eeaa43ddf6ec"
+      },
+      "case_id": "c2",
+      "detail": {
+        "actual_execution_authorized": false,
+        "checked_graph_states": 5,
+        "completed_monotonic": 690665.6262885,
+        "initial_comparisons": [
+          {
+            "bytes": 2538,
+            "chunks": 1,
+            "label": "ordinary full initial State",
+            "literal_equal": true,
+            "sha256": "2d7d4a94af3e58c6a8584a448925c640abdda8ea4523b6e669e12966c3f01b2f"
+          },
+          {
+            "bytes": 2538,
+            "chunks": 1,
+            "label": "compact full initial State",
+            "literal_equal": true,
+            "sha256": "2d7d4a94af3e58c6a8584a448925c640abdda8ea4523b6e669e12966c3f01b2f"
+          }
+        ],
+        "input_binding": {
+          "complete_expected_record": {
+            "bytes": 60179491,
+            "chunks": 919,
+            "sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5"
+          },
+          "complete_metadata": {
+            "bytes": 39885,
+            "chunks": 1,
+            "sha256": "6cb6ba29e3afb4808deebddcfc51be2f8580f02342435e4a3320bce147e002d1"
+          },
+          "retained_input": {
+            "bytes": 62144097,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/result.json",
+            "sha256": "38c18642bf7c0b14ad07aa1d7ce65576ad190c9fb84c61388c11df65c4ae730d"
+          },
+          "runtime_closure": {
+            "bytes": 23624,
+            "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runtime-closure-v1.json",
+            "sha256": "3008fda65902d0a4c775735efba82f916f7bb15ab0532fcac172df3ce0055341"
+          }
+        },
+        "inventory_comparison": {
+          "alignment_memberships": 17494,
+          "alignment_points": 60,
+          "dependency_memberships": 3799246,
+          "dependency_points": 4617,
+          "ordinary_inverse_checks": 17494,
+          "placements": 17494
+        },
+        "literal_qualified": true,
+        "mathematical_proof_accepted": false,
+        "point_state_correspondence_qualified": true,
+        "post_record_comparisons": [
+          {
+            "bytes": 60179491,
+            "chunks": 919,
+            "label": "post ordinary full logical record",
+            "literal_equal": true,
+            "sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5"
+          },
+          {
+            "bytes": 60179491,
+            "chunks": 919,
+            "label": "post compact full logical record",
+            "literal_equal": true,
+            "sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5"
+          }
+        ],
+        "prefix": [
+          {
+            "current": {
+              "candidate_nodes": 17494,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  2
+                ],
+                [
+                  [
+                    0,
+                    2,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 17494,
+              "placement_tests": 17494,
+              "points": 60
+            },
+            "depth": 0,
+            "graph": {
+              "bytes": 623297,
+              "chunks": 10,
+              "sha256": "8cebd2d00b4dd64f7c9a253963a5418d08058e89ce5169ea22e0fda50ec45b64"
+            },
+            "selected_child": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "state": {
+              "bytes": 2538,
+              "chunks": 1,
+              "sha256": "2d7d4a94af3e58c6a8584a448925c640abdda8ea4523b6e669e12966c3f01b2f"
+            }
+          },
+          {
+            "current": {
+              "candidate_nodes": 17269,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  3
+                ],
+                [
+                  [
+                    0,
+                    3,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 17269,
+              "placement_tests": 17494,
+              "points": 59
+            },
+            "depth": 1,
+            "graph": {
+              "bytes": 615843,
+              "chunks": 10,
+              "sha256": "3a84596dc919963b2fd77439e766da24c19bffe31ec0a8387951ec09674e4219"
+            },
+            "selected_child": [
+              0,
+              3,
+              0,
+              0
+            ],
+            "state": {
+              "bytes": 2591,
+              "chunks": 1,
+              "sha256": "2df77a53659e61abcaec976f11ae86da2a37a6b4ba278bba570f43bde597f5e7"
+            }
+          },
+          {
+            "current": {
+              "candidate_nodes": 17268,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  4
+                ],
+                [
+                  [
+                    0,
+                    4,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 17268,
+              "placement_tests": 17494,
+              "points": 58
+            },
+            "depth": 2,
+            "graph": {
+              "bytes": 615803,
+              "chunks": 10,
+              "sha256": "5c4ed70e4b42e619a26ebc8c2b04a6a3aa04d49ad6a2e5dadd1536cc8c99ed89"
+            },
+            "selected_child": [
+              0,
+              4,
+              0,
+              0
+            ],
+            "state": {
+              "bytes": 2637,
+              "chunks": 1,
+              "sha256": "d6bc3d7996889d7a810ce1ca8c4cf95d2a7761c04db6254ef0de01ed1ce941d9"
+            }
+          },
+          {
+            "current": {
+              "candidate_nodes": 17267,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    1,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    221,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    222,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    223,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    224,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    225,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    226,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    227,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    228,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 17267,
+              "placement_tests": 17494,
+              "points": 57
+            },
+            "depth": 3,
+            "graph": {
+              "bytes": 615763,
+              "chunks": 10,
+              "sha256": "b4e6dbb9057e80bff355536b33590f115d57f6604443b162b223a3069e02a1f9"
+            },
+            "selected_child": [
+              0,
+              1,
+              1,
+              0
+            ],
+            "state": {
+              "bytes": 2683,
+              "chunks": 1,
+              "sha256": "67ca21a13d8e89e5bbbecf23b94f17cd54cd13ae17427442bc4836fec9e5efa3"
+            }
+          },
+          {
+            "current": {
+              "candidate_nodes": 16287,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    1,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 16287,
+              "placement_tests": 17494,
+              "points": 56
+            },
+            "depth": 4,
+            "graph": {
+              "bytes": 580948,
+              "chunks": 9,
+              "sha256": "f5fb5af7fbd9b973354705e26180e7ea4f962e080667bf82c0fffde9a8a834a0"
+            },
+            "state": {
+              "bytes": 5137,
+              "chunks": 1,
+              "sha256": "5d99025a4f59771c22c2a50e46beda2c96ee4217d491b23af3b7af63b62a5a63"
+            }
+          }
+        ],
+        "prefix_steps_requested": 4,
+        "prefix_stop": "declared_prefix_limit",
+        "record_comparisons": [
+          {
+            "bytes": 60179491,
+            "chunks": 919,
+            "label": "ordinary versus complete retained logical record",
+            "literal_equal": true,
+            "sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5"
+          },
+          {
+            "bytes": 60179491,
+            "chunks": 919,
+            "label": "compact versus complete retained logical record",
+            "literal_equal": true,
+            "sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5"
+          }
+        ],
+        "resource_accepted": false,
+        "rollback_checks": 4,
+        "root_restored": true,
+        "schema": "compact-model-complete-input-qualification-result-v1",
+        "scientific_acceptance": false,
+        "scope": "Complete literal storage and bounded current point-state correspondence only; no native/kernel proof or fullsearch/resource improvement.",
+        "stage": "full_post_custody",
+        "stages": [
+          {
+            "stage": "construct_ordinary",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "construct_compact",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "full_logical_record",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "all_placements_inverses_incidence",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "initial_state",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "complete_graph_prefix",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "full_post_custody",
+            "status": "COMPLETED"
+          }
+        ],
+        "status": "COMPLETE_LITERAL_MODELS_EQUAL_BOUNDED_STATE_CHECKED",
+        "storage_observation": {
+          "assignment_sequences": 17323,
+          "coordinate_literals": 4617,
+          "implementation_version": "quantified-family-points-exact-literal-interning-v1",
+          "logical_model_version": "quantified-initial-binder-family-points-v2-derived-arity",
+          "ordinary_record_unchanged": true,
+          "placements": 17494,
+          "point_value_literals": 50694,
+          "schema": "quantified-point-literal-storage-observation-v1",
+          "scope": "Full integer point/pair/sequence equality. Dictionary hashes index full literal keys; collisions still require exact tuple equality. Pools are construction storage, never pruning, degree or rollback authority. Memory and complete output costs require separate measured evidence."
+        },
+        "synthetic_adversarial_suite_run": false,
+        "version": "complete-literal-compact-model-qualification-v1"
+      },
+      "input": {
+        "bytes": 62144097,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/result.json",
+        "sha256": "38c18642bf7c0b14ad07aa1d7ce65576ad190c9fb84c61388c11df65c4ae730d"
+      },
+      "invocation_id": "compact-model-qual-c2-ROOT-20261018-v1",
+      "literal_models_and_bounded_states_diagnostic": true,
+      "log_capture_complete": true,
+      "mathematical_proof_accepted": false,
+      "observer_files": [
+        {
+          "bytes": 326,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "e726acdff38e70cd4ee82fee82e6050c20ba45d6467f9c2cc4348e7f33e0adad"
+        },
+        {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 191,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/stdout.bin",
+          "sha256": "21e19d1cdb5debcff945b2aa24ef87722ac64d98c00118b0c1fad648cdbf0a24"
+        },
+        {
+          "bytes": 1691,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae"
+        }
+      ],
+      "order": 1,
+      "owned_group_absent": true,
+      "plan": {
+        "bytes": 5667,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "3810ca4d8948c234a956dd1ddb7810cc6805125f31d0590be09b7afcf37858f4"
+      },
+      "qualification_profile_passed": false,
+      "resource_errors": [
+        "workerhighwater_above1GiB"
+      ],
+      "result": {
+        "bytes": 17756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/result.json",
+        "sha256": "edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7"
+      },
+      "runner_receipt": {
+        "bytes": 2843,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047"
+      },
+      "scope": "Source-backed full literal record/candidate comparison and root/bounded-prefix current incidence/copy correspondence only. Per-state graphs not exported/replayed; qualification peak includes BOTH models and whole input.",
+      "terminal": {
+        "bytes": 1691,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae"
+      },
+      "terminal_seconds": 146.074519834,
+      "work_completion_seconds": 145.74316725,
+      "worker_exit_code": 0,
+      "worker_peak_MiB": 1162.046875,
+      "worker_peak_bytes": 1218494464
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 309,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "6a1ec1d6a2f2cf38ecd1f707bba6f814bf30ba486e6ad693fa7c608ac7d5528b"
+        },
+        {
+          "bytes": 274,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/WORKER_CONSUMED.json",
+          "sha256": "985d7da63a84bba4d345c468573bd8d6cb31d9a7df52a0bebda6d327ee7643ce"
+        },
+        {
+          "bytes": 17728,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/result.json",
+          "sha256": "ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf"
+        },
+        {
+          "bytes": 2822,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03"
+        },
+        {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 7089,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/certificate_boundary_search.py",
+          "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+        },
+        {
+          "bytes": 19222,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/compact_model_qualification_v1.py",
+          "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+        },
+        {
+          "bytes": 4311,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/interned_quantified_family_points_v1.py",
+          "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+        },
+        {
+          "bytes": 4705,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/interned_result_reader_v2.py",
+          "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+        },
+        {
+          "bytes": 10808,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/logic.py",
+          "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+        },
+        {
+          "bytes": 8962,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/native_receptor_points.py",
+          "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+        },
+        {
+          "bytes": 6992,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/proof_boundary.py",
+          "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+        },
+        {
+          "bytes": 6472,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/quantified_family_points_v2.py",
+          "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+        },
+        {
+          "bytes": 11060,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/quantified_receptors_v1.py",
+          "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+        },
+        {
+          "bytes": 7409,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/semantic_receptor_points.py",
+          "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+        },
+        {
+          "bytes": 3756,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/tape_binary.py",
+          "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+        },
+        {
+          "bytes": 19188,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/tape_tree_machine.py",
+          "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+        },
+        {
+          "bytes": 13290,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/tree_machine.py",
+          "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+        },
+        {
+          "bytes": 28533,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/turtle.py",
+          "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+        }
+      ],
+      "all_custody_joins_consistent": true,
+      "authorization": {
+        "bytes": 3793,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorizations/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "af9fbbc7fb301e50c7926ac83d8179a01a9b688d736e3d34dd148402f68b8876"
+      },
+      "case_id": "c3",
+      "detail": {
+        "actual_execution_authorized": false,
+        "checked_graph_states": 5,
+        "completed_monotonic": 690808.096790375,
+        "initial_comparisons": [
+          {
+            "bytes": 2367,
+            "chunks": 1,
+            "label": "ordinary full initial State",
+            "literal_equal": true,
+            "sha256": "820e9d0d7b428d998f62dc951577214653a90fb87c34c3bedff159477b3d0ec0"
+          },
+          {
+            "bytes": 2367,
+            "chunks": 1,
+            "label": "compact full initial State",
+            "literal_equal": true,
+            "sha256": "820e9d0d7b428d998f62dc951577214653a90fb87c34c3bedff159477b3d0ec0"
+          }
+        ],
+        "input_binding": {
+          "complete_expected_record": {
+            "bytes": 36917374,
+            "chunks": 564,
+            "sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74"
+          },
+          "complete_metadata": {
+            "bytes": 27197,
+            "chunks": 1,
+            "sha256": "a4a89a047e401d205fa45885a2fb91c421ca081ba6cf3e9a4cc5095d678989f8"
+          },
+          "retained_input": {
+            "bytes": 78204773,
+            "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+            "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+          },
+          "runtime_closure": {
+            "bytes": 23624,
+            "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runtime-closure-v1.json",
+            "sha256": "3008fda65902d0a4c775735efba82f916f7bb15ab0532fcac172df3ce0055341"
+          }
+        },
+        "inventory_comparison": {
+          "alignment_memberships": 11440,
+          "alignment_points": 60,
+          "dependency_memberships": 2327570,
+          "dependency_points": 6903,
+          "ordinary_inverse_checks": 11440,
+          "placements": 11440
+        },
+        "literal_qualified": true,
+        "mathematical_proof_accepted": false,
+        "point_state_correspondence_qualified": true,
+        "post_record_comparisons": [
+          {
+            "bytes": 36917374,
+            "chunks": 564,
+            "label": "post ordinary full logical record",
+            "literal_equal": true,
+            "sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74"
+          },
+          {
+            "bytes": 36917374,
+            "chunks": 564,
+            "label": "post compact full logical record",
+            "literal_equal": true,
+            "sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74"
+          }
+        ],
+        "prefix": [
+          {
+            "current": {
+              "candidate_nodes": 11440,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  2
+                ],
+                [
+                  [
+                    0,
+                    2,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 11440,
+              "placement_tests": 11440,
+              "points": 60
+            },
+            "depth": 0,
+            "graph": {
+              "bytes": 402061,
+              "chunks": 7,
+              "sha256": "2a9aebf153fb563ced0acf25b9e28ee27dac3356c7ec8c58137024e332a0303b"
+            },
+            "selected_child": [
+              0,
+              2,
+              0,
+              0
+            ],
+            "state": {
+              "bytes": 2367,
+              "chunks": 1,
+              "sha256": "820e9d0d7b428d998f62dc951577214653a90fb87c34c3bedff159477b3d0ec0"
+            }
+          },
+          {
+            "current": {
+              "candidate_nodes": 11321,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  3
+                ],
+                [
+                  [
+                    0,
+                    3,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 11321,
+              "placement_tests": 11440,
+              "points": 59
+            },
+            "depth": 1,
+            "graph": {
+              "bytes": 398155,
+              "chunks": 7,
+              "sha256": "c8ca0eb95bac5a25a6f178e4fdd25d9b6aecaaff26205e4d2a9d009f93525285"
+            },
+            "selected_child": [
+              0,
+              3,
+              0,
+              0
+            ],
+            "state": {
+              "bytes": 2420,
+              "chunks": 1,
+              "sha256": "fd214108af7d589a54bf92a5cc18d4f4252032287c540b433eec13744d4f804b"
+            }
+          },
+          {
+            "current": {
+              "candidate_nodes": 11320,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  4
+                ],
+                [
+                  [
+                    0,
+                    4,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 11320,
+              "placement_tests": 11440,
+              "points": 58
+            },
+            "depth": 2,
+            "graph": {
+              "bytes": 398115,
+              "chunks": 7,
+              "sha256": "0e84282d7d5cd68c367242f3c78e3a825e33715ff3e9d364f6edc55c57b9f1b0"
+            },
+            "selected_child": [
+              0,
+              4,
+              0,
+              0
+            ],
+            "state": {
+              "bytes": 2466,
+              "chunks": 1,
+              "sha256": "844587d27b8a0a577d2e1ad4bad192764dcdd528e1bad40265f9dee45c24d9b2"
+            }
+          },
+          {
+            "current": {
+              "candidate_nodes": 11319,
+              "decision": [
+                "branch",
+                [
+                  0,
+                  1
+                ],
+                [
+                  [
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    4,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    8,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    143,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    144,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    145,
+                    0
+                  ],
+                  [
+                    0,
+                    1,
+                    146,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 11319,
+              "placement_tests": 11440,
+              "points": 57
+            },
+            "depth": 3,
+            "graph": {
+              "bytes": 398075,
+              "chunks": 7,
+              "sha256": "8937345059e2692ab389292d2e4a9fa6f475e6b25373d2c8d53d44beb3b31c56"
+            },
+            "selected_child": [
+              0,
+              1,
+              0,
+              0
+            ],
+            "state": {
+              "bytes": 2512,
+              "chunks": 1,
+              "sha256": "0d96c12e1f0adb667e821b4b5deae839d89ac5f179595b1ce719a9f7c9845884"
+            }
+          },
+          {
+            "current": {
+              "candidate_nodes": 10521,
+              "decision": [
+                "forced",
+                [
+                  0,
+                  0
+                ],
+                [
+                  [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              "incidences": 10521,
+              "placement_tests": 11440,
+              "points": 56
+            },
+            "depth": 4,
+            "graph": {
+              "bytes": 370437,
+              "chunks": 6,
+              "sha256": "28cc4226b70f40051c8345dcdc1fe2ca3ca28765bc33f536f9cd68ba6662edf0"
+            },
+            "state": {
+              "bytes": 6341,
+              "chunks": 1,
+              "sha256": "2eed71fd1c8b55a4c3359506c29e7625b52d6a3c71d2779c03954ea12feb9cba"
+            }
+          }
+        ],
+        "prefix_steps_requested": 4,
+        "prefix_stop": "declared_prefix_limit",
+        "record_comparisons": [
+          {
+            "bytes": 36917374,
+            "chunks": 564,
+            "label": "ordinary versus complete retained logical record",
+            "literal_equal": true,
+            "sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74"
+          },
+          {
+            "bytes": 36917374,
+            "chunks": 564,
+            "label": "compact versus complete retained logical record",
+            "literal_equal": true,
+            "sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74"
+          }
+        ],
+        "resource_accepted": false,
+        "rollback_checks": 4,
+        "root_restored": true,
+        "schema": "compact-model-complete-input-qualification-result-v1",
+        "scientific_acceptance": false,
+        "scope": "Complete literal storage and bounded current point-state correspondence only; no native/kernel proof or fullsearch/resource improvement.",
+        "stage": "full_post_custody",
+        "stages": [
+          {
+            "stage": "construct_ordinary",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "construct_compact",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "full_logical_record",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "all_placements_inverses_incidence",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "initial_state",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "complete_graph_prefix",
+            "status": "COMPLETED"
+          },
+          {
+            "stage": "full_post_custody",
+            "status": "COMPLETED"
+          }
+        ],
+        "status": "COMPLETE_LITERAL_MODELS_EQUAL_BOUNDED_STATE_CHECKED",
+        "storage_observation": {
+          "assignment_sequences": 11335,
+          "coordinate_literals": 6903,
+          "implementation_version": "quantified-family-points-exact-literal-interning-v1",
+          "logical_model_version": "quantified-initial-binder-family-points-v2-derived-arity",
+          "ordinary_record_unchanged": true,
+          "placements": 11440,
+          "point_value_literals": 50614,
+          "schema": "quantified-point-literal-storage-observation-v1",
+          "scope": "Full integer point/pair/sequence equality. Dictionary hashes index full literal keys; collisions still require exact tuple equality. Pools are construction storage, never pruning, degree or rollback authority. Memory and complete output costs require separate measured evidence."
+        },
+        "synthetic_adversarial_suite_run": false,
+        "version": "complete-literal-compact-model-qualification-v1"
+      },
+      "input": {
+        "bytes": 78204773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+      },
+      "invocation_id": "compact-model-qual-c3-ROOT-20261018-v1",
+      "literal_models_and_bounded_states_diagnostic": true,
+      "log_capture_complete": true,
+      "mathematical_proof_accepted": false,
+      "observer_files": [
+        {
+          "bytes": 326,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "4d24e0143c560022f8412f3e126570da0348f96053a4d78e999c5ba8c5989b38"
+        },
+        {
+          "bytes": 0,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 190,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/stdout.bin",
+          "sha256": "89db4e0797cdc8d32c064d65b1a8571e7cee3cf6bef24b51988d2ebdaac9db18"
+        },
+        {
+          "bytes": 1687,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22"
+        }
+      ],
+      "order": 2,
+      "owned_group_absent": true,
+      "plan": {
+        "bytes": 5667,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "f5d59491d89b83ff7012739d34b6d2056ef302b137d75b5c219148442699c639"
+      },
+      "qualification_profile_passed": true,
+      "resource_errors": [],
+      "result": {
+        "bytes": 17728,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/result.json",
+        "sha256": "ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf"
+      },
+      "runner_receipt": {
+        "bytes": 2822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03"
+      },
+      "scope": "Source-backed full literal record/candidate comparison and root/bounded-prefix current incidence/copy correspondence only. Per-state graphs not exported/replayed; qualification peak includes BOTH models and whole input.",
+      "terminal": {
+        "bytes": 1687,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22"
+      },
+      "terminal_seconds": 142.589073,
+      "work_completion_seconds": 142.493372583,
+      "worker_exit_code": 0,
+      "worker_peak_MiB": 784.484375,
+      "worker_peak_bytes": 822591488
+    }
+  ],
+  "authorized_index": {
+    "bytes": 8211,
+    "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "b8e31b531823fb6eb720ea451e7603c9516b5e6c55522ac24c1989a0882413ab"
+  },
+  "checks": [
+    {
+      "label": "exact final plan and maxone grant compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "whole retained original input unchanged compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "whole case/plan identity compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "current runner result version/case compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "all complete plan raw joins compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "owned exact once worker and runner compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "original absolute epoch compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "observer final whole receipt join compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "whole bounded worker log compact-model-qual-c2-ROOT-20261018-v1 stderr.bin",
+      "passed": true
+    },
+    {
+      "label": "whole bounded worker log compact-model-qual-c2-ROOT-20261018-v1 stdout.bin",
+      "passed": true
+    },
+    {
+      "label": "nonproof scope compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "complete bounded worker metadata compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "exact worker metadata identity compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "worker epoch/input joins compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "whole epoch closure/current14Source joins compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "both complete canonical byte inverses compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "honest runtime signature policy compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "all14ownedSource copies compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 certificate_boundary_search",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 compact_model_qualification_v1",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 interned_quantified_family_points_v1",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 interned_result_reader_v2",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 logic",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 native_receptor_points",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 proof_boundary",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 quantified_family_points_v2",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 quantified_receptors_v1",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 semantic_receptor_points",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 tape_binary",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 tape_tree_machine",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 tree_machine",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c2-ROOT-20261018-v1 turtle",
+      "passed": true
+    },
+    {
+      "label": "worker is not theorem acceptance compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c2-ROOT-20261018-v1 runner",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c2-ROOT-20261018-v1 observer",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c2-ROOT-20261018-v1 python",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c2-ROOT-20261018-v1 declaration",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c2-ROOT-20261018-v1 runtime_closure",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 certificate_boundary_search",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 compact_model_qualification_v1",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 interned_quantified_family_points_v1",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 interned_result_reader_v2",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 logic",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 native_receptor_points",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 proof_boundary",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 quantified_family_points_v2",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 quantified_receptors_v1",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 semantic_receptor_points",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 tape_binary",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 tape_tree_machine",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 tree_machine",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c2-ROOT-20261018-v1 turtle",
+      "passed": true
+    },
+    {
+      "label": "four full record byte comparisons before+after compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "every complete placement/inverse count compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "full cache scanned at every actually tested state compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "all observed copy parents restored compact-model-qual-c2-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "exact final plan and maxone grant compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "whole retained original input unchanged compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "whole case/plan identity compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "current runner result version/case compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "all complete plan raw joins compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "owned exact once worker and runner compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "original absolute epoch compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "observer final whole receipt join compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "whole bounded worker log compact-model-qual-c3-ROOT-20261018-v1 stderr.bin",
+      "passed": true
+    },
+    {
+      "label": "whole bounded worker log compact-model-qual-c3-ROOT-20261018-v1 stdout.bin",
+      "passed": true
+    },
+    {
+      "label": "nonproof scope compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "complete bounded worker metadata compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "exact worker metadata identity compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "worker epoch/input joins compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "whole epoch closure/current14Source joins compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "both complete canonical byte inverses compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "honest runtime signature policy compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "all14ownedSource copies compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 certificate_boundary_search",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 compact_model_qualification_v1",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 interned_quantified_family_points_v1",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 interned_result_reader_v2",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 logic",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 native_receptor_points",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 proof_boundary",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 quantified_family_points_v2",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 quantified_receptors_v1",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 semantic_receptor_points",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 tape_binary",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 tape_tree_machine",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 tree_machine",
+      "passed": true
+    },
+    {
+      "label": "full original/copiedSource join compact-model-qual-c3-ROOT-20261018-v1 turtle",
+      "passed": true
+    },
+    {
+      "label": "worker is not theorem acceptance compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c3-ROOT-20261018-v1 runner",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c3-ROOT-20261018-v1 observer",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c3-ROOT-20261018-v1 python",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c3-ROOT-20261018-v1 declaration",
+      "passed": true
+    },
+    {
+      "label": "final full closure compact-model-qual-c3-ROOT-20261018-v1 runtime_closure",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 certificate_boundary_search",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 compact_model_qualification_v1",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 interned_quantified_family_points_v1",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 interned_result_reader_v2",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 logic",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 native_receptor_points",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 proof_boundary",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 quantified_family_points_v2",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 quantified_receptors_v1",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 semantic_receptor_points",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 tape_binary",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 tape_tree_machine",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 tree_machine",
+      "passed": true
+    },
+    {
+      "label": "final fullSource compact-model-qual-c3-ROOT-20261018-v1 turtle",
+      "passed": true
+    },
+    {
+      "label": "four full record byte comparisons before+after compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "every complete placement/inverse count compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "full cache scanned at every actually tested state compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    },
+    {
+      "label": "all observed copy parents restored compact-model-qual-c3-ROOT-20261018-v1",
+      "passed": true
+    }
+  ],
+  "checks_passed": 112,
+  "complete_data_qualifications": 2,
+  "declaration": {
+    "bytes": 5879,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/qualification-declaration-v1.json",
+    "sha256": "2bef8cffd32bc06898d287cc79e46068d4d047c186f19bd4a9f7fcf9ee161c93"
+  },
+  "download_map": [
+    {
+      "case_id": "c2",
+      "field": "result",
+      "original": {
+        "bytes": 17756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/result.json",
+        "sha256": "edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7"
+      },
+      "url": "model-qualification-c2-result.json"
+    },
+    {
+      "case_id": "c2",
+      "field": "runner_receipt",
+      "original": {
+        "bytes": 2843,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047"
+      },
+      "url": "model-qualification-c2-runner-receipt.json"
+    },
+    {
+      "case_id": "c2",
+      "field": "terminal",
+      "original": {
+        "bytes": 1691,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae"
+      },
+      "url": "model-qualification-c2-terminal.json"
+    },
+    {
+      "case_id": "c3",
+      "field": "result",
+      "original": {
+        "bytes": 17728,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/result.json",
+        "sha256": "ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf"
+      },
+      "url": "model-qualification-c3-result.json"
+    },
+    {
+      "case_id": "c3",
+      "field": "runner_receipt",
+      "original": {
+        "bytes": 2822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03"
+      },
+      "url": "model-qualification-c3-runner-receipt.json"
+    },
+    {
+      "case_id": "c3",
+      "field": "terminal",
+      "original": {
+        "bytes": 1687,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22"
+      },
+      "url": "model-qualification-c3-terminal.json"
+    }
+  ],
+  "goal_complete": false,
+  "independent_reviews": {
+    "data": {
+      "source": {
+        "bytes": 30034,
+        "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/typed-data-review-v1.json",
+        "sha256": "a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882"
+      },
+      "url": "model-qualification-data-review.json"
+    },
+    "final-grant": {
+      "source": {
+        "bytes": 29948,
+        "path": "/private/tmp/gcts-compact-model-qualification-final-grant-peer-20261018/typed-final-grant-delta-review-v1.json",
+        "sha256": "f49dfb2f4152cc6b358ff18a440293ae8a4f59e4b5027813465e48787b2c536b"
+      },
+      "url": "model-qualification-final-grant-review.json"
+    },
+    "harness-source": {
+      "source": {
+        "bytes": 10506,
+        "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/typed-Source-review-v1.json",
+        "sha256": "f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3"
+      },
+      "url": "model-qualification-harness-source-review.json"
+    },
+    "human": {
+      "source": {
+        "bytes": 15619,
+        "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/typed-human-report-review-v2.json",
+        "sha256": "42ed10864a63fd314e3310f02e1bbc707f31a0164f1d341bb064a47866f1811d"
+      },
+      "url": "model-qualification-human-review.json"
+    },
+    "prospective-plans": {
+      "source": {
+        "bytes": 25338,
+        "path": "/private/tmp/gcts-compact-model-qualification-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+        "sha256": "3f5e62b129ed036e749f2f7a085e81ab97939b124f4c23ba12ee96c99055a7e0"
+      },
+      "url": "model-qualification-prospective-plans-review.json"
+    },
+    "resource": {
+      "source": {
+        "bytes": 32826,
+        "path": "/private/tmp/gcts-compact-model-qualification-resource-peer-20261018/typed-resource-review-v1.json",
+        "sha256": "9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22"
+      },
+      "url": "model-qualification-resource-review.json"
+    },
+    "wrapper-source": {
+      "source": {
+        "bytes": 9234,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/typed-Source-review-v2.json",
+        "sha256": "4ad5c9f9ea5f6c53f9f8f2af0bf4f102a5d38264b9888beca054b003efe66b5b"
+      },
+      "url": "model-qualification-wrapper-source-review.json"
+    }
+  },
+  "independent_reviews_pending": false,
+  "mathematical_proof_accepted": false,
+  "mismatch_count": 0,
+  "new_RL_training": false,
+  "new_native_calls": 0,
+  "new_theorem_search_runs": 0,
+  "review_urls": {
+    "data": "model-qualification-data-review.json",
+    "final-grant": "model-qualification-final-grant-review.json",
+    "harness-source": "model-qualification-harness-source-review.json",
+    "prospective-plans": "model-qualification-prospective-plans-review.json",
+    "resource": "model-qualification-resource-review.json",
+    "wrapper-source": "model-qualification-wrapper-source-review.json"
+  },
+  "schema": "ROOT-compact-model-qualification-actual-admission-v1",
+  "scientific_replays": 0,
+  "scope": "Closed packets only. Qualification is not an ordinary-vs-compact speed/memory benchmark or full proofpipeline admission; all previous failed actuals unchanged.",
+  "within_profile_qualifications": 1
+}

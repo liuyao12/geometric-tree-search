@@ -1,0 +1,614 @@
+{
+  "Root_admission": {
+    "bytes": 58556,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "bd3aa999fcf7be627b229a887e4174fe9d3ffb6b3c24fac3a3411ebe6ad19a10"
+  },
+  "actual_count": 2,
+  "actual_execution_authorized": false,
+  "actual_launches": 0,
+  "all_outcomes_preserved": true,
+  "audit": {
+    "bytes": 163981,
+    "path": "/private/tmp/gcts-compact-model-qualification-resource-peer-20261018/raw-resource-audit-v1.json",
+    "sha256": "d7972bd5d2822e5f49bb5f448979a1455a3d395f375df9ccee6d5e02ea473796"
+  },
+  "audit_Source": {
+    "bytes": 27473,
+    "path": "/private/tmp/gcts-compact-model-qualification-resource-peer-20261018/audit_retained_resources_v1.py",
+    "sha256": "79550c7f6d9900d95dd7f925297e9f04e7fcaf655e3eead4786cf8f48016f0bf"
+  },
+  "author_identity": "/root",
+  "author_overlap": "Reviewer authored inactive compact Model and earlier quantified adapters/renderer, and reviewed the Receiver-authored harness/preliminary declaration/final Root grant delta. Root authored the admission and owns actuals; Control authored wrapper, independently Source-reviewed by Receiver. This resource receipt uses their exact current Source bindings, not a self-audit of the compact Model.",
+  "authorized_index": {
+    "bytes": 8211,
+    "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "b8e31b531823fb6eb720ea451e7603c9516b5e6c55522ac24c1989a0882413ab"
+  },
+  "check_count": 679,
+  "codec_or_decompression_calls": 0,
+  "compiler_calls": 0,
+  "current_scoped_Source_and_plan_reviews": {
+    "all_plans": {
+      "bytes": 25338,
+      "path": "/private/tmp/gcts-compact-model-qualification-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+      "sha256": "3f5e62b129ed036e749f2f7a085e81ab97939b124f4c23ba12ee96c99055a7e0"
+    },
+    "compact_Model_Source": {
+      "bytes": 8553,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-compact-model-Source-review-v1.json",
+      "sha256": "aae2d27faa7255b911f2902041cfc17a2ecebed878519f1a70c46185b8f0631b"
+    },
+    "preliminary_declaration": {
+      "bytes": 10700,
+      "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/typed-prospective-declaration-review-v1.json",
+      "sha256": "3c9722e44e58d70342e929e50c444738bb6fae329e5dbb2d72e149bbf8aaa214"
+    },
+    "qualification_harness_Source": {
+      "bytes": 10506,
+      "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/typed-Source-review-v1.json",
+      "sha256": "f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3"
+    },
+    "reader_Source": {
+      "bytes": 5175,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-reader-Source-review-v2.json",
+      "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+    },
+    "wrapper_Source": {
+      "bytes": 9234,
+      "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/typed-Source-review-v2.json",
+      "sha256": "4ad5c9f9ea5f6c53f9f8f2af0bf4f102a5d38264b9888beca054b003efe66b5b"
+    }
+  },
+  "declaration": {
+    "bytes": 5879,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/qualification-declaration-v1.json",
+    "sha256": "2bef8cffd32bc06898d287cc79e46068d4d047c186f19bd4a9f7fcf9ee161c93"
+  },
+  "failed_resource_count": 1,
+  "final_grant_delta_review": {
+    "bytes": 29948,
+    "path": "/private/tmp/gcts-compact-model-qualification-final-grant-peer-20261018/typed-final-grant-delta-review-v1.json",
+    "sha256": "f49dfb2f4152cc6b358ff18a440293ae8a4f59e4b5027813465e48787b2c536b"
+  },
+  "findings": [
+    {
+      "finding": "c2 returned positive literal/bounded-state diagnostic metadata, but worker wait4 highwater1218494464B (1162.046875MiB) exceeds1073741824B. The runner correctly returned2 and terminal/profile gates remain false. Diagnostic metadata is not promoted to within-profile qualification.",
+      "id": "R1_C2_MEMORY_FAIL_PRESERVED",
+      "severity": "resource_failure"
+    },
+    {
+      "finding": "c3 has normal worker and runner exits0, full custody/log/reap/group evidence, original time gates and worker highwater822591488B (784.484375MiB); terminal and Root qualification profile gates pass. This is the complete-input/BOTH-model bounded conformance experiment only.",
+      "id": "R2_C3_WITHIN_PROFILE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Both normal worker exits follow Source203 result-write/final custody/checkpoint and were reaped before original parent Source-entry180 endpoint. All outer checks/terminal observations finish before210. completed_ns precedes serialization and was not used as sole postwrite evidence. Observer startup/prelude is recorded separately.",
+      "id": "R3_WORK_AND_CLOSURE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Highwaters are exact single-worker Darwin wait4 bytes measured posthoc. Parent/observer memory is excluded, native_processes is0 and conservative_parent_plus_native_peak_bytes remains null. This is not a live combined-process cap or fullcold memory measurement. The observer ROOT_resource_accepted false field is intentionally preserved even for c3; Root final qualification is separately derived.",
+      "id": "R4_TELEMETRY_SCOPE",
+      "severity": "limitation"
+    }
+  ],
+  "goal_complete": false,
+  "graph_calls": 0,
+  "harness_calls": 0,
+  "limitations": [
+    "No old raw input result was decoded; its full file and canonical body were stream-hashed only. No reader, Model, harness, Graph, syntax compiler, search, native checker, solver, codec or renderer was imported or executed by this audit.",
+    "Reported literal-model/state qualification flags are retained and cross-joined as diagnostic metadata. An independent data agent handles their Source-backed mathematical/data scope; this resource audit does not reconstruct intermediate graphs or reissue Model/harness Source reviews.",
+    "Whole original/owned Source hashes, epochs and saved normal exit/guard control flow provide retained custody evidence. This is not continuous formal execution attestation; the reviewed wrapper trusts pinned Python/stdlib and OS metadata and shallow callable identity guards.",
+    "Worker PPID/session check is Source-backed at entry; saved markers link exact parent/child/PGID. No new live process probe or retrospective group telemetry was performed; reported reaped/group-absent/log-complete evidence is preserved.",
+    "The experiment retains whole input plus BOTH newly built Models and comparison graphs. The c2 combined-cost memory failure is not compact-only failure; c3 combined-cost success is not full proofpipeline fit or a head-to-head memory/speed improvement.",
+    "Qualification covers complete supplied records and a bounded four-step prefix, not all states/master conformance or a new native proof/search/RL result. No retry, salvage, cap increase or previous result promotion occurred."
+  ],
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "observer": {
+    "bytes": 4423,
+    "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/observe_model_qualification_v2.py",
+    "sha256": "94612dc92e7c209dbbf6546d7281f4c87af3237c71bfda62dbd54561400d5abc"
+  },
+  "old_raw_input_result_decodes": 0,
+  "outcomes": [
+    {
+      "authorization": {
+        "bytes": 3793,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorizations/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "f00a9115507ce73fa9ad5ccac367ca4cbb13386e9880b4ba4a51eeaa43ddf6ec"
+      },
+      "began_ns": 690529580288916,
+      "case_id": "c2",
+      "checks_closed_ns": 690675518131458,
+      "input": {
+        "bytes": 62144097,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/result.json",
+        "sha256": "38c18642bf7c0b14ad07aa1d7ce65576ad190c9fb84c61388c11df65c4ae730d"
+      },
+      "invocation_id": "compact-model-qual-c2-ROOT-20261018-v1",
+      "kill_sent_ns": null,
+      "literal_models_and_bounded_states_reported_diagnostic": true,
+      "log_capture_complete": true,
+      "metadata_completion_seconds": 145.74316725,
+      "native_processes": 0,
+      "observed_instrument_elapsed_seconds": 146.102368292,
+      "observer_ROOT_resource_accepted": false,
+      "observer_prelude_seconds": 0.027848458,
+      "order": 1,
+      "overall_deadline_ns": 690739580288916,
+      "owned_group_absent": true,
+      "plan": {
+        "bytes": 5667,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "3810ca4d8948c234a956dd1ddb7810cc6805125f31d0590be09b7afcf37858f4"
+      },
+      "postwrite_gate_evidence": "Normal exit0 after runner Source203 final Source/Python/callback/checkpoint guards; worker reaped before original180 endpoint. completed_ns is before serialization and is not sole postwrite timing evidence.",
+      "qualification_profile_passed": false,
+      "raw_body_stream_hash": {
+        "body_bytes": 62144096,
+        "body_sha256": "13a0a894f53a0c96b30c1a8b68c3bd21a8b42bfd2c2fbd77b0b4e03c47d03040"
+      },
+      "resource_candidate_accepted": false,
+      "resource_errors": [
+        "workerhighwater_above1GiB"
+      ],
+      "result": {
+        "bytes": 17756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/result.json",
+        "sha256": "edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7"
+      },
+      "runner_exit_code": 2,
+      "runner_pid": 91930,
+      "runner_receipt": {
+        "bytes": 2843,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047"
+      },
+      "source_epoch": {
+        "declaration": {
+          "bytes": 5879,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/qualification-declaration-v1.json",
+          "sha256": "2bef8cffd32bc06898d287cc79e46068d4d047c186f19bd4a9f7fcf9ee161c93"
+        },
+        "imported_sources": {
+          "certificate_boundary_search": {
+            "bytes": 7089,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+            "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+          },
+          "compact_model_qualification_v1": {
+            "bytes": 19222,
+            "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py",
+            "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+          },
+          "interned_quantified_family_points_v1": {
+            "bytes": 4311,
+            "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+            "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+          },
+          "interned_result_reader_v2": {
+            "bytes": 4705,
+            "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+            "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+          },
+          "logic": {
+            "bytes": 10808,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+            "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+          },
+          "native_receptor_points": {
+            "bytes": 8962,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+            "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+          },
+          "proof_boundary": {
+            "bytes": 6992,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+            "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+          },
+          "quantified_family_points_v2": {
+            "bytes": 6472,
+            "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+            "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+          },
+          "quantified_receptors_v1": {
+            "bytes": 11060,
+            "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+            "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+          },
+          "semantic_receptor_points": {
+            "bytes": 7409,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+            "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+          },
+          "tape_binary": {
+            "bytes": 3756,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+            "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+          },
+          "tape_tree_machine": {
+            "bytes": 19188,
+            "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+            "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+          },
+          "tree_machine": {
+            "bytes": 13290,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+            "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+          },
+          "turtle": {
+            "bytes": 28533,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+            "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+          }
+        },
+        "observer": {
+          "bytes": 4423,
+          "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/observe_model_qualification_v2.py",
+          "sha256": "94612dc92e7c209dbbf6546d7281f4c87af3237c71bfda62dbd54561400d5abc"
+        },
+        "python": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+        },
+        "retained_input": {
+          "bytes": 62144097,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/result.json",
+          "sha256": "38c18642bf7c0b14ad07aa1d7ce65576ad190c9fb84c61388c11df65c4ae730d"
+        },
+        "runtime_closure": {
+          "bytes": 23624,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runtime-closure-v1.json",
+          "sha256": "3008fda65902d0a4c775735efba82f916f7bb15ab0532fcac172df3ce0055341"
+        },
+        "schema": "compact-point-model-qualification-epoch-v1",
+        "sources": {
+          "compact_point_model": {
+            "bytes": 4311,
+            "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+            "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+          },
+          "logical_parent": {
+            "bytes": 6472,
+            "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+            "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+          },
+          "native_point_values": {
+            "bytes": 8962,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+            "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+          },
+          "point_state_graph": {
+            "bytes": 28533,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+            "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+          },
+          "storage_parent": {
+            "bytes": 7409,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+            "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+          }
+        },
+        "wrapper": {
+          "bytes": 22998,
+          "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+          "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+        }
+      },
+      "terminal": {
+        "bytes": 1691,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae"
+      },
+      "terminal_gate_passed": false,
+      "terminal_observed_ns": 690675654808750,
+      "terminal_seconds": 146.074519834,
+      "terminate_sent_ns": null,
+      "work_deadline_ns": 690709580288916,
+      "worker_exit_code": 0,
+      "worker_metadata_completed_ns": 690675323456166,
+      "worker_peak_MiB": 1162.046875,
+      "worker_peak_bytes": 1218494464,
+      "worker_peak_limit_bytes": 1073741824,
+      "worker_peak_scope": "Exact single Python worker Darwin wait4 ru_maxrss bytes; parent and observer excluded; no native process.",
+      "worker_pid": 91931,
+      "worker_reap_seconds": 145.845975459,
+      "worker_reaped": true,
+      "worker_terminal_observed_ns": 690675426264375
+    },
+    {
+      "authorization": {
+        "bytes": 3793,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorizations/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "af9fbbc7fb301e50c7926ac83d8179a01a9b688d736e3d34dd148402f68b8876"
+      },
+      "began_ns": 690698153346208,
+      "case_id": "c3",
+      "checks_closed_ns": 690840714387708,
+      "input": {
+        "bytes": 78204773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+      },
+      "invocation_id": "compact-model-qual-c3-ROOT-20261018-v1",
+      "kill_sent_ns": null,
+      "literal_models_and_bounded_states_reported_diagnostic": true,
+      "log_capture_complete": true,
+      "metadata_completion_seconds": 142.493372583,
+      "native_processes": 0,
+      "observed_instrument_elapsed_seconds": 142.619164083,
+      "observer_ROOT_resource_accepted": false,
+      "observer_prelude_seconds": 0.030091083,
+      "order": 2,
+      "overall_deadline_ns": 690908153346208,
+      "owned_group_absent": true,
+      "plan": {
+        "bytes": 5667,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "f5d59491d89b83ff7012739d34b6d2056ef302b137d75b5c219148442699c639"
+      },
+      "postwrite_gate_evidence": "Normal exit0 after runner Source203 final Source/Python/callback/checkpoint guards; worker reaped before original180 endpoint. completed_ns is before serialization and is not sole postwrite timing evidence.",
+      "qualification_profile_passed": true,
+      "raw_body_stream_hash": {
+        "body_bytes": 78204772,
+        "body_sha256": "658ee6d35eb9c4d35f10d7144d2601793c0f3858011716c16cce9fb66a3f6000"
+      },
+      "resource_candidate_accepted": true,
+      "resource_errors": [],
+      "result": {
+        "bytes": 17728,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/result.json",
+        "sha256": "ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf"
+      },
+      "runner_exit_code": 0,
+      "runner_pid": 92116,
+      "runner_receipt": {
+        "bytes": 2822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03"
+      },
+      "source_epoch": {
+        "declaration": {
+          "bytes": 5879,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/qualification-declaration-v1.json",
+          "sha256": "2bef8cffd32bc06898d287cc79e46068d4d047c186f19bd4a9f7fcf9ee161c93"
+        },
+        "imported_sources": {
+          "certificate_boundary_search": {
+            "bytes": 7089,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+            "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+          },
+          "compact_model_qualification_v1": {
+            "bytes": 19222,
+            "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py",
+            "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+          },
+          "interned_quantified_family_points_v1": {
+            "bytes": 4311,
+            "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+            "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+          },
+          "interned_result_reader_v2": {
+            "bytes": 4705,
+            "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+            "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+          },
+          "logic": {
+            "bytes": 10808,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+            "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+          },
+          "native_receptor_points": {
+            "bytes": 8962,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+            "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+          },
+          "proof_boundary": {
+            "bytes": 6992,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+            "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+          },
+          "quantified_family_points_v2": {
+            "bytes": 6472,
+            "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+            "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+          },
+          "quantified_receptors_v1": {
+            "bytes": 11060,
+            "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+            "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+          },
+          "semantic_receptor_points": {
+            "bytes": 7409,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+            "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+          },
+          "tape_binary": {
+            "bytes": 3756,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+            "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+          },
+          "tape_tree_machine": {
+            "bytes": 19188,
+            "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+            "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+          },
+          "tree_machine": {
+            "bytes": 13290,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+            "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+          },
+          "turtle": {
+            "bytes": 28533,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+            "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+          }
+        },
+        "observer": {
+          "bytes": 4423,
+          "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/observe_model_qualification_v2.py",
+          "sha256": "94612dc92e7c209dbbf6546d7281f4c87af3237c71bfda62dbd54561400d5abc"
+        },
+        "python": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+        },
+        "retained_input": {
+          "bytes": 78204773,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+          "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+        },
+        "runtime_closure": {
+          "bytes": 23624,
+          "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runtime-closure-v1.json",
+          "sha256": "3008fda65902d0a4c775735efba82f916f7bb15ab0532fcac172df3ce0055341"
+        },
+        "schema": "compact-point-model-qualification-epoch-v1",
+        "sources": {
+          "compact_point_model": {
+            "bytes": 4311,
+            "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+            "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+          },
+          "logical_parent": {
+            "bytes": 6472,
+            "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+            "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+          },
+          "native_point_values": {
+            "bytes": 8962,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+            "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+          },
+          "point_state_graph": {
+            "bytes": 28533,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+            "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+          },
+          "storage_parent": {
+            "bytes": 7409,
+            "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+            "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+          }
+        },
+        "wrapper": {
+          "bytes": 22998,
+          "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+          "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+        }
+      },
+      "terminal": {
+        "bytes": 1687,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22"
+      },
+      "terminal_gate_passed": true,
+      "terminal_observed_ns": 690840742419208,
+      "terminal_seconds": 142.589073,
+      "terminate_sent_ns": null,
+      "work_deadline_ns": 690878153346208,
+      "worker_exit_code": 0,
+      "worker_metadata_completed_ns": 690840646718791,
+      "worker_peak_MiB": 784.484375,
+      "worker_peak_bytes": 822591488,
+      "worker_peak_limit_bytes": 1073741824,
+      "worker_peak_scope": "Exact single Python worker Darwin wait4 ru_maxrss bytes; parent and observer excluded; no native process.",
+      "worker_pid": 92118,
+      "worker_reap_seconds": 142.55216775,
+      "worker_reaped": true,
+      "worker_terminal_observed_ns": 690840705513958
+    }
+  ],
+  "profile": {
+    "input_bytes": 134217728,
+    "log_bytes": 4194304,
+    "overall_seconds": 210,
+    "result_bytes": 1048576,
+    "work_seconds": 180,
+    "worker_peak_bytes": 1073741824
+  },
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "python": {
+    "bytes": 18058560,
+    "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+  },
+  "reader_calls": 0,
+  "renderer_calls": 0,
+  "resource_review_passed": true,
+  "reviewer_identity": "/root/conventional_library",
+  "runner": {
+    "bytes": 22998,
+    "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+    "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+  },
+  "runtime_closure": {
+    "bytes": 23624,
+    "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runtime-closure-v1.json",
+    "sha256": "3008fda65902d0a4c775735efba82f916f7bb15ab0532fcac172df3ce0055341"
+  },
+  "schema": "compact-model-qualification-independent-typed-resource-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Independent retained resource/custody audit of both complete qualification windows, including failed outcome; not Model/harness semantics self-review or mathematical/proof/data qualification.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_gate_citations": [
+    {
+      "lines": "2-4,157-166,204-208",
+      "scope": "Source-entry parent epoch passed unchanged to worker; absolute180/210 limits, not worker-reset clock.",
+      "source": {
+        "bytes": 22998,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+        "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+      }
+    },
+    {
+      "lines": "98-118,169-199,249-250",
+      "scope": "Exact full Source/runtime/input/grant intake, original+owned Source and callable/origin guards, final raw custody; runtime generic review count is supplemented by final exact external review.",
+      "source": {
+        "bytes": 22998,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+        "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+      }
+    },
+    {
+      "lines": "201-203,248,251",
+      "scope": "Positive metadata alone insufficient: result serialization and final guards precede normal worker exit; posthoc parent rejects reap at/after180.",
+      "source": {
+        "bytes": 22998,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+        "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+      }
+    },
+    {
+      "lines": "208-258",
+      "scope": "O_EXCL once markers, exact worker process/session, direct wait4 bytes, bounded logs, noorphan check, posthoc1GiB worker gate and outer receipt gate.",
+      "source": {
+        "bytes": 22998,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+        "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+      }
+    },
+    {
+      "lines": "39-76",
+      "scope": "Once direct-runner observation/reaping and original overall terminal gate; ROOT_resource_accepted remains false for later Root admission.",
+      "source": {
+        "bytes": 4423,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/observe_model_qualification_v2.py",
+        "sha256": "94612dc92e7c209dbbf6546d7281f4c87af3237c71bfda62dbd54561400d5abc"
+      }
+    }
+  ],
+  "source_only": true,
+  "within_profile_qualification_count": 1
+}

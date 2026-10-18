@@ -1,43 +1,44 @@
 {
   "coordination": "Root integrates, declares and owns scientific actuals, preserves the original model and publishes. Authors work on separate frozen components; another agent reviews each changed component. Timed comparisons stay isolated unless an aggregate concurrent budget is declared prospectively.",
   "current_actual_admission": {
-    "bytes": 306514,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/ROOT-actual-admission-v2.json",
-    "sha256": "934826da1d21aa19f2a0a2f82a3d6a46ceec49c7efc102582672e107c3adf582"
+    "bytes": 58556,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "bd3aa999fcf7be627b229a887e4174fe9d3ffb6b3c24fac3a3411ebe6ad19a10"
   },
   "current_assignments": {
-    "ROOT": "Cold reader integration/once runs/admission/report/deployment",
-    "conventional_control_review": "Aliasauthor, independentcohort/finalgrants andreportreview",
-    "conventional_library": "Independentcold andaliasSource review, retainedresource audit",
-    "receiver_driver_review": "ModelqualificationSourceauthor, independentretaineddata audit"
+    "ROOT": "Complete model qualification grants/sequential actuals/admission/report/deployment",
+    "conventional_control_review": "Wrapper author; independent Root prospective composition and report audit",
+    "conventional_library": "Compact Model author; distinct qualification-harness peer, preliminary/finalgrant/resource audit in disclosed scopes",
+    "receiver_driver_review": "Qualification harness author; distinct wrapper Source and Root retained-data audit in disclosed scopes"
   },
-  "current_checking_tasks": "All6retainedfullpipeline native/point/byte checks arediagnostic only: all6 memoryfail,0bounded admissions. Independentdata/resource/humanV2reviews closed within scopes, sixcountdisplayerratum preserved/repaired. Fullmodel/alias activation stillunperformed; Rootwholearchive/navigation/live closure separate.",
+  "current_checking_tasks": "Bothcomplete-input data/prefix/rollback checks positive; c2combinedmemoryfail/c3qualificationprofilepass. Independentdata/resource/humanreview closed in scopes. No newnative/proofsearch/RL; nextwholecomposition separatelyfrozen.",
   "current_data_review": {
-    "bytes": 173226,
-    "path": "/private/tmp/gcts-compact-cold-data-peer-20261018/typed-data-review-v1.json",
-    "sha256": "ef20c5aca185eb522f2199a25467776fa965207463932902a601aa1cdbda96fa"
+    "bytes": 30034,
+    "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882"
   },
-  "current_data_review_url": "cold-reader-integration-data-review.json",
-  "current_display_scope": "Fullpipeline sixoutcomes/memorysums and3currentdiagnostic formula/English/actualtile readers; all6complete rawdownloads.",
+  "current_data_review_url": "model-qualification-data-review.json",
+  "current_display_scope": "Two complete-input qualifications: both data/prefix/rollback positive; c2memoryfailure/c3profilepass. Combinedqualification memory and actualprefix tables, fullmetadata downloads; proofreader historical.",
   "current_human_report_review": {
-    "bytes": 20172,
-    "path": "/private/tmp/gcts-compact-cold-human-peer-20261018/typed-human-report-review-v2.json",
-    "sha256": "7e3994f4467fd2183a94eeb8582a7af8c26436192b5394a34ae63988c01f7ecb"
+    "bytes": 15619,
+    "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/typed-human-report-review-v2.json",
+    "sha256": "42ed10864a63fd314e3310f02e1bbc707f31a0164f1d341bb064a47866f1811d"
   },
-  "current_human_report_review_url": "cold-reader-integration-human-review.json",
-  "current_internal_count_units": "GCTS point placements versus symbolic row extensions differ; no raw count speed comparison.",
-  "current_memory_assessment": "representation-memory-assessment.html",
+  "current_human_report_review_pending": false,
+  "current_human_report_review_url": "model-qualification-human-review.json",
+  "current_internal_count_units": "Per-model placement/cache scans, currentfrontier nodes/incidences and boundedcopy-prefix depths; qualification only, no search-method count/speed comparison.",
+  "current_memory_assessment": "model-qualification.html#outcomes",
   "current_proof": "cold-reader-integration-symbolic-proof.html",
-  "current_proof_scope": "Current diagnostic proof outsidefullmemoryprofile, identicalpairedordinaryproof/keys/union; notbounded success.",
-  "current_report": "cold-reader-integration.html#outcomes",
+  "current_proof_scope": "Earlier diagnostic proof only; this qualification performs no theorem search.",
+  "current_report": "model-qualification.html#outcomes",
   "current_resource_review": {
-    "bytes": 66954,
-    "path": "/private/tmp/gcts-compact-cold-resource-peer-20261018/typed-resource-review-v1.json",
-    "sha256": "466064d26dfd93340fd39df670e3e7e6bf0f2d8aea42d28f40a8920ccd12937b"
+    "bytes": 32826,
+    "path": "/private/tmp/gcts-compact-model-qualification-resource-peer-20261018/typed-resource-review-v1.json",
+    "sha256": "9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22"
   },
-  "current_resource_review_url": "cold-reader-integration-resource-review.json",
-  "current_result": "All6fullcold controlsNativeaccepted+wholepoint+bytes; all6memoryfail. Reader sharing lowers peaks, slowerdecode; no admittedboundedproof/generalGCTS/RL advantage.",
-  "current_summary": "cold-reader-integration-summary.json",
+  "current_resource_review_url": "model-qualification-resource-review.json",
+  "current_result": "1of2complete-model qualifications withinprofile; 2complete-data diagnostics. Bothmodels+fullinputcost, no fullpipelineRAMclaim/newproof/RLadvantage.",
+  "current_summary": "model-qualification-summary.json",
   "date": "2026-10-18",
   "display_erratum_url": "family-transfer-display-erratum.json",
   "frontier_optimization_stop_rule_triggered": true,
@@ -91,6 +92,46 @@
     "current_resource_review_url": "compact-storage-resource-review.json",
     "current_result": "All6 standalone retained-reader windows pass; exact literal reconstruction; lower worker peaks on2selected pairedfiles, slower decode. No proof/search/native replay or fullpipeline resource repair.",
     "current_summary": "compact-storage-summary.json"
+  },
+  "historical_fullcold_current_fields": {
+    "current_actual_admission": {
+      "bytes": 306514,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/ROOT-actual-admission-v2.json",
+      "sha256": "934826da1d21aa19f2a0a2f82a3d6a46ceec49c7efc102582672e107c3adf582"
+    },
+    "current_assignments": {
+      "ROOT": "Cold reader integration/once runs/admission/report/deployment",
+      "conventional_control_review": "Aliasauthor, independentcohort/finalgrants andreportreview",
+      "conventional_library": "Independentcold andaliasSource review, retainedresource audit",
+      "receiver_driver_review": "ModelqualificationSourceauthor, independentretaineddata audit"
+    },
+    "current_checking_tasks": "All6retainedfullpipeline native/point/byte checks arediagnostic only: all6 memoryfail,0bounded admissions. Independentdata/resource/humanV2reviews closed within scopes, sixcountdisplayerratum preserved/repaired. Fullmodel/alias activation stillunperformed; Rootwholearchive/navigation/live closure separate.",
+    "current_data_review": {
+      "bytes": 173226,
+      "path": "/private/tmp/gcts-compact-cold-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "ef20c5aca185eb522f2199a25467776fa965207463932902a601aa1cdbda96fa"
+    },
+    "current_data_review_url": "cold-reader-integration-data-review.json",
+    "current_display_scope": "Fullpipeline sixoutcomes/memorysums and3currentdiagnostic formula/English/actualtile readers; all6complete rawdownloads.",
+    "current_human_report_review": {
+      "bytes": 20172,
+      "path": "/private/tmp/gcts-compact-cold-human-peer-20261018/typed-human-report-review-v2.json",
+      "sha256": "7e3994f4467fd2183a94eeb8582a7af8c26436192b5394a34ae63988c01f7ecb"
+    },
+    "current_human_report_review_url": "cold-reader-integration-human-review.json",
+    "current_internal_count_units": "GCTS point placements versus symbolic row extensions differ; no raw count speed comparison.",
+    "current_memory_assessment": "representation-memory-assessment.html",
+    "current_proof": "cold-reader-integration-symbolic-proof.html",
+    "current_proof_scope": "Current diagnostic proof outsidefullmemoryprofile, identicalpairedordinaryproof/keys/union; notbounded success.",
+    "current_report": "cold-reader-integration.html#outcomes",
+    "current_resource_review": {
+      "bytes": 66954,
+      "path": "/private/tmp/gcts-compact-cold-resource-peer-20261018/typed-resource-review-v1.json",
+      "sha256": "466064d26dfd93340fd39df670e3e7e6bf0f2d8aea42d28f40a8920ccd12937b"
+    },
+    "current_resource_review_url": "cold-reader-integration-resource-review.json",
+    "current_result": "All6fullcold controlsNativeaccepted+wholepoint+bytes; all6memoryfail. Reader sharing lowers peaks, slowerdecode; no admittedboundedproof/generalGCTS/RL advantage.",
+    "current_summary": "cold-reader-integration-summary.json"
   },
   "historical_propositional_actual_admission": {
     "bytes": 60119,

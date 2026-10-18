@@ -1,0 +1,162 @@
+{
+  "API": {
+    "bytes": 2792,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/API-v1.json",
+    "sha256": "02286cbd597fd4a109113df7ece368bbdaefa6b7789e3e985be9d64af5dd1fbe"
+  },
+  "actual_F0_patch_directions": 2,
+  "actual_execution_authorized": false,
+  "audit": {
+    "bytes": 89125,
+    "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/raw-Source-audit-v1.json",
+    "sha256": "226d55687adb0e2cb8544e92e07fea41e9be366a59b571b3ffe0709989aa9acb"
+  },
+  "audit_Source": {
+    "bytes": 19583,
+    "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/review_harness_Source_v1.py",
+    "sha256": "b484df8e3e73be47656d9d2f35c0acb85689876f0aee3d9088f3bb5e0c334732"
+  },
+  "audit_checks": 76,
+  "author_identity": "/root/receiver_driver_review",
+  "author_overlap": false,
+  "author_overlap_disclosure": "Reviewer authored the compact Model fb376 and unchanged quantified/generic adapters/renderer. This receipt does NOT re-review or independently certify that own Model. It reviews only the new Receiver-authored qualification harness and prospective closure design; the prior distinct Receiver compact-Model Source peer aae2 remains separately bound. Root future wrapper/actuals are unreviewed here.",
+  "codec_or_decompression_calls": 0,
+  "compiled_without_evaluation": true,
+  "compiler_calls": 0,
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "Both constructors receive the entire same retained spec/compiler/registered inventory and no supplied proof route. Before and after state work, each whole logical record is compared by complete canonical byte streams against the retained ordinary record, excluding only top-level compile_seconds. Byte/length equality decides model correspondence, not a digest or sampled field subset.",
+      "id": "P1_COMPLETE_RECORD",
+      "location": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py:229",
+      "severity": "evidence"
+    },
+    {
+      "finding": "All cache keys, placements, full frozen occupancy/mark/vertex sequences, ordinary inverses and complete metadata are compared. All alignment points/order and dependency points/keysets are compared; full support inclusion plus cardinality totals rules out missing/extra memberships within the generated model. Placement/dependency limits stop with UNKNOWN rather than truncating the universe.",
+      "id": "P2_INVENTORY_AND_INCIDENCE",
+      "location": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py:143",
+      "severity": "evidence"
+    },
+    {
+      "finding": "At each actually visited bounded state, the harness independently tests every cached placement against current totals, allowed points, selected keys and all assigned marks, preserving assigned0 versus absence. It reconstructs complete frontier domains/reverse edges and applies globalDEAD, then globalFORCED, then earliest stored generation with count/key ties. It follows only the first actual incident key; no old selected proof/family/row route is read.",
+      "id": "P3_FULL_DOMAINS_AND_ORDER",
+      "location": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py:103",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Whole State/Graph fingerprints agree between ordinary/compact contexts. Child mutable state/graph/set identities must be fresh and child placement/update must leave all parent snapshots unchanged. Each saved parent and the root pointer/full snapshots are restored by the bounded copy stack. Immutable allowed_points sharing matches the current State frozenset contract.",
+      "id": "P4_COPY_ROLLBACK",
+      "location": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py:251",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Only this invocation owner-tagged _OwnStop is converted to UNKNOWN; delegated/mismatch/resource exceptions propagate. UNKNOWN explicitly clears literal/domain qualification and sets root_restored null; stack references are dropped without replaying science after stop. No partial model/domain or unobserved rollback is qualified.",
+      "id": "P5_STOP_AND_EXCEPTION_SCOPE",
+      "location": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py:289",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Runtime pin-shaped hashes/class-base checks and complete/native_accepted status strings do not authenticate supplied modules or input on their own. Root must bind the exact whole retained raw input/current13Source/runtime closure, import origins/class/callable code/default/cell authority and complete Source guard. A fabricated ModuleType/status cannot satisfy that external custody contract merely by passing these local shapes.",
+      "id": "C1_CALLER_AUTHENTICATION",
+      "severity": "required_future_wrapper"
+    },
+    {
+      "finding": "Root must check the original work deadline after harness return and through serialization/cleanup/terminal/resource gates. Last harness boundary precedes final result.update/return; constructor, large equality or scalar encoding may run between callbacks. This Source supplies cooperative stops, not guaranteed preemption or a self-contained clock/resource admission.",
+      "id": "C2_FINITE_GATE_AFTER_RETURN",
+      "severity": "required_future_wrapper"
+    },
+    {
+      "finding": "Success covers complete input representation and full domains on root plus the actually observed at-most16-step first-key prefix, not all states/exceptions/search. Scheduler ordering is independently computed from the actual stored generation metadata; State.place generation updates are shared frozen code rather than a second independent generation-transition oracle. Copy-stack restoration is checked, not a new universal rollback theorem.",
+      "id": "C3_BOUNDED_CONFORMANCE",
+      "severity": "limitation"
+    },
+    {
+      "finding": "Returned per-state digests/counters/decisions are Source-backed gate evidence; full constructed models and all intermediate domain packets are not exported. Saved-data reviewers must not claim they independently re-observed every per-state field from those summaries. Synthetic/adversarial fixtures remain a separate design-only manifest.",
+      "id": "C4_OUTPUT_REOBSERVABILITY",
+      "severity": "limitation"
+    },
+    {
+      "finding": "Future qualification retains old complete input plus BOTH new Models and graph/domain/snapshot copies. It is a combined equivalence probe, not a fair ordinary-versus-compact memory benchmark. Any combined resource failure remains UNKNOWN and says nothing by itself about compact-only search capacity.",
+      "id": "C5_COMBINED_COST",
+      "severity": "limitation"
+    },
+    {
+      "finding": "No harness, Model, Graph, syntax compiler, reader, native program/codec, solver or search was imported/called. Model construction and bounded graph transitions would be real prospective qualification work inside a new reviewed once wrapper, not source-only evidence or proof admission. Prior Model Source PASS is separate; no fullcold integration, capacity or RAM gain is established.",
+      "id": "C6_NO_OWN_MODEL_AUDIT_OR_ACTIVATION",
+      "severity": "scope"
+    }
+  ],
+  "goal_complete": false,
+  "graph_calls": 0,
+  "handoff": {
+    "bytes": 2843,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/handoff-v1.json",
+    "sha256": "50ed0013420e23bc13297fc4fc2967cc09d1c627da5481428a12befdbfb436cf"
+  },
+  "harness_calls": 0,
+  "limitations": [
+    "Generated finite scalar integer capacity12 model only; no rational/fractional/unbounded/geometric/reflection qualification.",
+    "No target Source was repaired and no actual/grant/retained-result decoding/trial window occurred.",
+    "Prospective closure design is raw import inventory, not a complete future Root execution wrapper or OS/runtime activation seal.",
+    "All mathematical/native/resource/activation flags remain false; no theorem, RL, universalWang/plane or program-completion claim."
+  ],
+  "limits": {
+    "canonical_chunk_bytes": 65536,
+    "comparison_bytes": 134217728,
+    "dependency_memberships": 20000000,
+    "input_metadata_bytes": 8388608,
+    "maximum_prefix_steps": 16,
+    "placements": 100000,
+    "prefix_steps": 4
+  },
+  "logic_calls": 0,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "prior_distinct_Model_Source_peer": {
+    "bytes": 8553,
+    "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-compact-model-Source-review-v1.json",
+    "sha256": "aae2d27faa7255b911f2902041cfc17a2ecebed878519f1a70c46185b8f0631b"
+  },
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/conventional_library",
+  "runtime_closure_design": {
+    "bytes": 7129,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/runtime-closure-design-v1.json",
+    "sha256": "5d9d799c4cdb733cffbde769ac9980d460e78ac5fe314b4588c26e7dce8912af"
+  },
+  "schema": "compact-model-qualification-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "compact-model-qualification-Source",
+  "search_calls": 0,
+  "separate_synthetic_design": {
+    "bytes": 2637,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/synthetic-adversarial-design-v1.json",
+    "sha256": "4441ad2ebf85c4bce4e6350c5ed571dcec5530b3c4e161de028566e2c1ab4449"
+  },
+  "solver_calls": 0,
+  "source": {
+    "bytes": 19222,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py",
+    "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+  },
+  "source_contract": {
+    "bytes": 11280,
+    "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/Source-contract-v1.json",
+    "sha256": "c4d9eb4a87f1f459dac585bd62935e23ad64b58aed0e03fcd8dcb75783190f9b"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "compact_model_qualification": {
+      "bytes": 19222,
+      "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py",
+      "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+    }
+  }
+}

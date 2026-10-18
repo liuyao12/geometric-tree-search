@@ -1,0 +1,1830 @@
+{
+  "binding_count": 225,
+  "bindings": [
+    {
+      "archive_entry": "objects/20d1aa60e351a52e1c5f691826f64c077a5608cc52174b6c3b6a9ece76f69049",
+      "original": {
+        "bytes": 6043,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-integration-progress-20261018/ROOT-live-final-v1.json",
+        "sha256": "20d1aa60e351a52e1c5f691826f64c077a5608cc52174b6c3b6a9ece76f69049"
+      }
+    },
+    {
+      "archive_entry": "objects/38c18642bf7c0b14ad07aa1d7ce65576ad190c9fb84c61388c11df65c4ae730d",
+      "original": {
+        "bytes": 62144097,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-cold-symbolic-interned-ROOT-20261018-v1/result.json",
+        "sha256": "38c18642bf7c0b14ad07aa1d7ce65576ad190c9fb84c61388c11df65c4ae730d"
+      }
+    },
+    {
+      "archive_entry": "objects/78bdd2a91cccd52baf31efa2e22e7ab6c2b94fe0b5c705a4a3c2817a6ac10c5f",
+      "original": {
+        "bytes": 309,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "78bdd2a91cccd52baf31efa2e22e7ab6c2b94fe0b5c705a4a3c2817a6ac10c5f"
+      }
+    },
+    {
+      "archive_entry": "objects/c2db5db541006a972f8f48db6a487f20854cb329f9419e98dee32ded26d03cab",
+      "original": {
+        "bytes": 274,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "sha256": "c2db5db541006a972f8f48db6a487f20854cb329f9419e98dee32ded26d03cab"
+      }
+    },
+    {
+      "archive_entry": "objects/113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+      "original": {
+        "bytes": 7089,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/certificate_boundary_search.py",
+        "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+      }
+    },
+    {
+      "archive_entry": "objects/821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275",
+      "original": {
+        "bytes": 19222,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/compact_model_qualification_v1.py",
+        "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+      }
+    },
+    {
+      "archive_entry": "objects/fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e",
+      "original": {
+        "bytes": 4311,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/interned_quantified_family_points_v1.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      }
+    },
+    {
+      "archive_entry": "objects/cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836",
+      "original": {
+        "bytes": 4705,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/interned_result_reader_v2.py",
+        "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+      }
+    },
+    {
+      "archive_entry": "objects/5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "original": {
+        "bytes": 10808,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/logic.py",
+        "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+      }
+    },
+    {
+      "archive_entry": "objects/f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "original": {
+        "bytes": 8962,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/native_receptor_points.py",
+        "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+      }
+    },
+    {
+      "archive_entry": "objects/36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+      "original": {
+        "bytes": 6992,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      }
+    },
+    {
+      "archive_entry": "objects/f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c",
+      "original": {
+        "bytes": 6472,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/quantified_family_points_v2.py",
+        "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+      }
+    },
+    {
+      "archive_entry": "objects/d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a",
+      "original": {
+        "bytes": 11060,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      }
+    },
+    {
+      "archive_entry": "objects/c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+      "original": {
+        "bytes": 7409,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/semantic_receptor_points.py",
+        "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+      }
+    },
+    {
+      "archive_entry": "objects/ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+      "original": {
+        "bytes": 3756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      }
+    },
+    {
+      "archive_entry": "objects/2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "original": {
+        "bytes": 19188,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      }
+    },
+    {
+      "archive_entry": "objects/8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "original": {
+        "bytes": 13290,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      }
+    },
+    {
+      "archive_entry": "objects/9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "original": {
+        "bytes": 28533,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/owned_modules/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    {
+      "archive_entry": "objects/edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7",
+      "original": {
+        "bytes": 17756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/result.json",
+        "sha256": "edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7"
+      }
+    },
+    {
+      "archive_entry": "objects/6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047",
+      "original": {
+        "bytes": 2843,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047"
+      }
+    },
+    {
+      "archive_entry": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_entry": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c2-ROOT-20261018-v1/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_entry": "objects/6a1ec1d6a2f2cf38ecd1f707bba6f814bf30ba486e6ad693fa7c608ac7d5528b",
+      "original": {
+        "bytes": 309,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/CONSUMED.json",
+        "sha256": "6a1ec1d6a2f2cf38ecd1f707bba6f814bf30ba486e6ad693fa7c608ac7d5528b"
+      }
+    },
+    {
+      "archive_entry": "objects/985d7da63a84bba4d345c468573bd8d6cb31d9a7df52a0bebda6d327ee7643ce",
+      "original": {
+        "bytes": 274,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "sha256": "985d7da63a84bba4d345c468573bd8d6cb31d9a7df52a0bebda6d327ee7643ce"
+      }
+    },
+    {
+      "archive_entry": "objects/113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+      "original": {
+        "bytes": 7089,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/certificate_boundary_search.py",
+        "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+      }
+    },
+    {
+      "archive_entry": "objects/821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275",
+      "original": {
+        "bytes": 19222,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/compact_model_qualification_v1.py",
+        "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+      }
+    },
+    {
+      "archive_entry": "objects/fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e",
+      "original": {
+        "bytes": 4311,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/interned_quantified_family_points_v1.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      }
+    },
+    {
+      "archive_entry": "objects/cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836",
+      "original": {
+        "bytes": 4705,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/interned_result_reader_v2.py",
+        "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+      }
+    },
+    {
+      "archive_entry": "objects/5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "original": {
+        "bytes": 10808,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/logic.py",
+        "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+      }
+    },
+    {
+      "archive_entry": "objects/f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "original": {
+        "bytes": 8962,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/native_receptor_points.py",
+        "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+      }
+    },
+    {
+      "archive_entry": "objects/36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+      "original": {
+        "bytes": 6992,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      }
+    },
+    {
+      "archive_entry": "objects/f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c",
+      "original": {
+        "bytes": 6472,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/quantified_family_points_v2.py",
+        "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+      }
+    },
+    {
+      "archive_entry": "objects/d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a",
+      "original": {
+        "bytes": 11060,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      }
+    },
+    {
+      "archive_entry": "objects/c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+      "original": {
+        "bytes": 7409,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/semantic_receptor_points.py",
+        "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+      }
+    },
+    {
+      "archive_entry": "objects/ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+      "original": {
+        "bytes": 3756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      }
+    },
+    {
+      "archive_entry": "objects/2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "original": {
+        "bytes": 19188,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      }
+    },
+    {
+      "archive_entry": "objects/8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "original": {
+        "bytes": 13290,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      }
+    },
+    {
+      "archive_entry": "objects/9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "original": {
+        "bytes": 28533,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/owned_modules/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    {
+      "archive_entry": "objects/ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf",
+      "original": {
+        "bytes": 17728,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/result.json",
+        "sha256": "ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf"
+      }
+    },
+    {
+      "archive_entry": "objects/47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03",
+      "original": {
+        "bytes": 2822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03"
+      }
+    },
+    {
+      "archive_entry": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_entry": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original": {
+        "bytes": 0,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qual-c3-ROOT-20261018-v1/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_entry": "objects/bd3aa999fcf7be627b229a887e4174fe9d3ffb6b3c24fac3a3411ebe6ad19a10",
+      "original": {
+        "bytes": 58556,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-actual-admission-v1.json",
+        "sha256": "bd3aa999fcf7be627b229a887e4174fe9d3ffb6b3c24fac3a3411ebe6ad19a10"
+      }
+    },
+    {
+      "archive_entry": "objects/894285e052f7cdd58a231ba3ba0fa36f653ded122a7cc519440dfb1153206599",
+      "original": {
+        "bytes": 2261,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-continuation-basis-v1.json",
+        "sha256": "894285e052f7cdd58a231ba3ba0fa36f653ded122a7cc519440dfb1153206599"
+      }
+    },
+    {
+      "archive_entry": "objects/32c53d971e8e408ffbbb20b69271cff852446f693dd3ce22876b0994bd3d4c56",
+      "original": {
+        "bytes": 2828,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-contract-conformance-v1.json",
+        "sha256": "32c53d971e8e408ffbbb20b69271cff852446f693dd3ce22876b0994bd3d4c56"
+      }
+    },
+    {
+      "archive_entry": "objects/e7cfe9fe1a6fb5332c02d9a91851f57248c21ce9061928bdb0c2c2dd3e20c386",
+      "original": {
+        "bytes": 959,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-final-grant-adoption-v1.json",
+        "sha256": "e7cfe9fe1a6fb5332c02d9a91851f57248c21ce9061928bdb0c2c2dd3e20c386"
+      }
+    },
+    {
+      "archive_entry": "objects/105be062c35b3dccd5a123e7257bd4291fab58b598e9d2c0463388d45dccc23e",
+      "original": {
+        "bytes": 4527,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-harness-Source-adoption-v1.json",
+        "sha256": "105be062c35b3dccd5a123e7257bd4291fab58b598e9d2c0463388d45dccc23e"
+      }
+    },
+    {
+      "archive_entry": "objects/8ef25d6a1aa71312258c61c1de5637256732c3664978b967d306ff53c1b9945f",
+      "original": {
+        "bytes": 1570,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-measured-window-custody-v1.json",
+        "sha256": "8ef25d6a1aa71312258c61c1de5637256732c3664978b967d306ff53c1b9945f"
+      }
+    },
+    {
+      "archive_entry": "objects/a82236c0b97b88d2585ba279327fcb4c21094eadb4dc6ab87d8dc4a8a6a6ac0f",
+      "original": {
+        "bytes": 3813,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-premeasurement-review-adoption-v1.json",
+        "sha256": "a82236c0b97b88d2585ba279327fcb4c21094eadb4dc6ab87d8dc4a8a6a6ac0f"
+      }
+    },
+    {
+      "archive_entry": "objects/1a18067e6dff3e886ced6569c9021c618936c144589efb1529657a61d9715724",
+      "original": {
+        "bytes": 2106,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-release-review-map-v1.json",
+        "sha256": "1a18067e6dff3e886ced6569c9021c618936c144589efb1529657a61d9715724"
+      }
+    },
+    {
+      "archive_entry": "objects/524071b310ceafaa15dbc70450b720474e56adebaecb41b94baa02425dba261f",
+      "original": {
+        "bytes": 14425,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-release-review-reference-delta-v1.json",
+        "sha256": "524071b310ceafaa15dbc70450b720474e56adebaecb41b94baa02425dba261f"
+      }
+    },
+    {
+      "archive_entry": "objects/e77c28fa5ad379102089dfbb7a6f38d112a4c528a0a655064fc719a8c0ef24d7",
+      "original": {
+        "bytes": 12432,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-status-current-field-correction-v1.json",
+        "sha256": "e77c28fa5ad379102089dfbb7a6f38d112a4c528a0a655064fc719a8c0ef24d7"
+      }
+    },
+    {
+      "archive_entry": "objects/d6f360b14dbff8316076fc2a74da68981e87a8ddad0e6efee54c5fcae180b503",
+      "original": {
+        "bytes": 9823,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/admit_v1.py",
+        "sha256": "d6f360b14dbff8316076fc2a74da68981e87a8ddad0e6efee54c5fcae180b503"
+      }
+    },
+    {
+      "archive_entry": "objects/6ceebb108e6899f6c64501abdd5865371fa8e7540fe3ccd21b468fdd329d92de",
+      "original": {
+        "bytes": 18818,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/build_report_v1.py",
+        "sha256": "6ceebb108e6899f6c64501abdd5865371fa8e7540fe3ccd21b468fdd329d92de"
+      }
+    },
+    {
+      "archive_entry": "objects/3081de011df48e3edbeeb7397c9541811195dde79c96c811f5bc8278ea23d943",
+      "original": {
+        "bytes": 4192,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/correct_status_v1.py",
+        "sha256": "3081de011df48e3edbeeb7397c9541811195dde79c96c811f5bc8278ea23d943"
+      }
+    },
+    {
+      "archive_entry": "objects/5cc99ff2d80cf4fb6511708663647bf3ae495389d48025774a896c064813538a",
+      "original": {
+        "bytes": 4331,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/grant_v1.py",
+        "sha256": "5cc99ff2d80cf4fb6511708663647bf3ae495389d48025774a896c064813538a"
+      }
+    },
+    {
+      "archive_entry": "objects/d175e1984b25554da4b5ef14938fb079eef4d2f4b67d4903d05b0550fb79fdab",
+      "original": {
+        "bytes": 9556,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/package_stage_v1.py",
+        "sha256": "d175e1984b25554da4b5ef14938fb079eef4d2f4b67d4903d05b0550fb79fdab"
+      }
+    },
+    {
+      "archive_entry": "objects/7b35afbe4db978dee618112feadc07c9deb89cb3f97abd7b1a47edf7aa12acc8",
+      "original": {
+        "bytes": 6021,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/prepare_plans_v1.py",
+        "sha256": "7b35afbe4db978dee618112feadc07c9deb89cb3f97abd7b1a47edf7aa12acc8"
+      }
+    },
+    {
+      "archive_entry": "objects/0412660e8d95494fa9866a21c5bafb7cad9f325bd6860fcbc8e2aab4ac486a79",
+      "original": {
+        "bytes": 19559,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/prospective-component-source-closure-v1.json",
+        "sha256": "0412660e8d95494fa9866a21c5bafb7cad9f325bd6860fcbc8e2aab4ac486a79"
+      }
+    },
+    {
+      "archive_entry": "objects/edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7",
+      "original": {
+        "bytes": 17756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-c2-result.json",
+        "sha256": "edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7"
+      }
+    },
+    {
+      "archive_entry": "objects/6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047",
+      "original": {
+        "bytes": 2843,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-c2-runner-receipt.json",
+        "sha256": "6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047"
+      }
+    },
+    {
+      "archive_entry": "objects/af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae",
+      "original": {
+        "bytes": 1691,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-c2-terminal.json",
+        "sha256": "af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae"
+      }
+    },
+    {
+      "archive_entry": "objects/ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf",
+      "original": {
+        "bytes": 17728,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-c3-result.json",
+        "sha256": "ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf"
+      }
+    },
+    {
+      "archive_entry": "objects/47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03",
+      "original": {
+        "bytes": 2822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-c3-runner-receipt.json",
+        "sha256": "47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03"
+      }
+    },
+    {
+      "archive_entry": "objects/473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22",
+      "original": {
+        "bytes": 1687,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-c3-terminal.json",
+        "sha256": "473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22"
+      }
+    },
+    {
+      "archive_entry": "objects/a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882",
+      "original": {
+        "bytes": 30034,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-data-review.json",
+        "sha256": "a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882"
+      }
+    },
+    {
+      "archive_entry": "objects/f49dfb2f4152cc6b358ff18a440293ae8a4f59e4b5027813465e48787b2c536b",
+      "original": {
+        "bytes": 29948,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-final-grant-review.json",
+        "sha256": "f49dfb2f4152cc6b358ff18a440293ae8a4f59e4b5027813465e48787b2c536b"
+      }
+    },
+    {
+      "archive_entry": "objects/f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3",
+      "original": {
+        "bytes": 10506,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-harness-source-review.json",
+        "sha256": "f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3"
+      }
+    },
+    {
+      "archive_entry": "objects/3f5e62b129ed036e749f2f7a085e81ab97939b124f4c23ba12ee96c99055a7e0",
+      "original": {
+        "bytes": 25338,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-prospective-plans-review.json",
+        "sha256": "3f5e62b129ed036e749f2f7a085e81ab97939b124f4c23ba12ee96c99055a7e0"
+      }
+    },
+    {
+      "archive_entry": "objects/9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22",
+      "original": {
+        "bytes": 32826,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-resource-review.json",
+        "sha256": "9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22"
+      }
+    },
+    {
+      "archive_entry": "objects/fbe87e8fa306c9d0ae233f1ef8afdfb6ae5c9178d6a4caabcf86ba228957fb22",
+      "original": {
+        "bytes": 61768,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-summary.json",
+        "sha256": "fbe87e8fa306c9d0ae233f1ef8afdfb6ae5c9178d6a4caabcf86ba228957fb22"
+      }
+    },
+    {
+      "archive_entry": "objects/4ad5c9f9ea5f6c53f9f8f2af0bf4f102a5d38264b9888beca054b003efe66b5b",
+      "original": {
+        "bytes": 9234,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification-wrapper-source-review.json",
+        "sha256": "4ad5c9f9ea5f6c53f9f8f2af0bf4f102a5d38264b9888beca054b003efe66b5b"
+      }
+    },
+    {
+      "archive_entry": "objects/4416ec0249483cf71c2764a2a0108a1e46a299c528e4142c46fdcd2f4c29cd30",
+      "original": {
+        "bytes": 14550,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/model-qualification.html",
+        "sha256": "4416ec0249483cf71c2764a2a0108a1e46a299c528e4142c46fdcd2f4c29cd30"
+      }
+    },
+    {
+      "archive_entry": "objects/1dd40b1cfa26c2b024479b1e7dbf4d308bd692ac3ba3ed566dc623fe1f5eb0b2",
+      "original": {
+        "bytes": 31473,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/parallel-work-status.json",
+        "sha256": "1dd40b1cfa26c2b024479b1e7dbf4d308bd692ac3ba3ed566dc623fe1f5eb0b2"
+      }
+    },
+    {
+      "archive_entry": "objects/7964d0ec95817d297d37d6f1db275d87fd52bebae80313d318b88c5046847b4b",
+      "original": {
+        "bytes": 84469,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v1/reader.html",
+        "sha256": "7964d0ec95817d297d37d6f1db275d87fd52bebae80313d318b88c5046847b4b"
+      }
+    },
+    {
+      "archive_entry": "objects/edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7",
+      "original": {
+        "bytes": 17756,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-c2-result.json",
+        "sha256": "edf5ea85b4fa879d749417e19ea88bda79bec54bbf1dd6bfc26d0e2798816ea7"
+      }
+    },
+    {
+      "archive_entry": "objects/6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047",
+      "original": {
+        "bytes": 2843,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-c2-runner-receipt.json",
+        "sha256": "6c6b85e5f4c0f135006a6a41309f6380ac9b6d9cb70bf9f9726d934e3fd06047"
+      }
+    },
+    {
+      "archive_entry": "objects/af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae",
+      "original": {
+        "bytes": 1691,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-c2-terminal.json",
+        "sha256": "af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae"
+      }
+    },
+    {
+      "archive_entry": "objects/ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf",
+      "original": {
+        "bytes": 17728,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-c3-result.json",
+        "sha256": "ed9bd4a8c0db571a3f416068f2da4f703bf8ce1a195d06823004c287acc915cf"
+      }
+    },
+    {
+      "archive_entry": "objects/47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03",
+      "original": {
+        "bytes": 2822,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-c3-runner-receipt.json",
+        "sha256": "47bddb22fc99531a7dcef40c0db563b8db577a1c12b415781e09814223a84a03"
+      }
+    },
+    {
+      "archive_entry": "objects/473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22",
+      "original": {
+        "bytes": 1687,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-c3-terminal.json",
+        "sha256": "473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22"
+      }
+    },
+    {
+      "archive_entry": "objects/a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882",
+      "original": {
+        "bytes": 30034,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-data-review.json",
+        "sha256": "a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882"
+      }
+    },
+    {
+      "archive_entry": "objects/f49dfb2f4152cc6b358ff18a440293ae8a4f59e4b5027813465e48787b2c536b",
+      "original": {
+        "bytes": 29948,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-final-grant-review.json",
+        "sha256": "f49dfb2f4152cc6b358ff18a440293ae8a4f59e4b5027813465e48787b2c536b"
+      }
+    },
+    {
+      "archive_entry": "objects/f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3",
+      "original": {
+        "bytes": 10506,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-harness-source-review.json",
+        "sha256": "f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3"
+      }
+    },
+    {
+      "archive_entry": "objects/42ed10864a63fd314e3310f02e1bbc707f31a0164f1d341bb064a47866f1811d",
+      "original": {
+        "bytes": 15619,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-human-review.json",
+        "sha256": "42ed10864a63fd314e3310f02e1bbc707f31a0164f1d341bb064a47866f1811d"
+      }
+    },
+    {
+      "archive_entry": "objects/3f5e62b129ed036e749f2f7a085e81ab97939b124f4c23ba12ee96c99055a7e0",
+      "original": {
+        "bytes": 25338,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-prospective-plans-review.json",
+        "sha256": "3f5e62b129ed036e749f2f7a085e81ab97939b124f4c23ba12ee96c99055a7e0"
+      }
+    },
+    {
+      "archive_entry": "objects/9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22",
+      "original": {
+        "bytes": 32826,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-resource-review.json",
+        "sha256": "9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22"
+      }
+    },
+    {
+      "archive_entry": "objects/8d23c9d903149a21554b0f9730fd45b93a7a036f02536255e64815c556ab4eda",
+      "original": {
+        "bytes": 64246,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-summary.json",
+        "sha256": "8d23c9d903149a21554b0f9730fd45b93a7a036f02536255e64815c556ab4eda"
+      }
+    },
+    {
+      "archive_entry": "objects/4ad5c9f9ea5f6c53f9f8f2af0bf4f102a5d38264b9888beca054b003efe66b5b",
+      "original": {
+        "bytes": 9234,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification-wrapper-source-review.json",
+        "sha256": "4ad5c9f9ea5f6c53f9f8f2af0bf4f102a5d38264b9888beca054b003efe66b5b"
+      }
+    },
+    {
+      "archive_entry": "objects/4416ec0249483cf71c2764a2a0108a1e46a299c528e4142c46fdcd2f4c29cd30",
+      "original": {
+        "bytes": 14550,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/model-qualification.html",
+        "sha256": "4416ec0249483cf71c2764a2a0108a1e46a299c528e4142c46fdcd2f4c29cd30"
+      }
+    },
+    {
+      "archive_entry": "objects/67d70a9b37f6f0b140f1172c41393896ebc7577cae0eb1a5a6f52ef9d9900b03",
+      "original": {
+        "bytes": 31951,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/parallel-work-status.json",
+        "sha256": "67d70a9b37f6f0b140f1172c41393896ebc7577cae0eb1a5a6f52ef9d9900b03"
+      }
+    },
+    {
+      "archive_entry": "objects/7964d0ec95817d297d37d6f1db275d87fd52bebae80313d318b88c5046847b4b",
+      "original": {
+        "bytes": 84469,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/publication-source-v2/reader.html",
+        "sha256": "7964d0ec95817d297d37d6f1db275d87fd52bebae80313d318b88c5046847b4b"
+      }
+    },
+    {
+      "archive_entry": "objects/2bef8cffd32bc06898d287cc79e46068d4d047c186f19bd4a9f7fcf9ee161c93",
+      "original": {
+        "bytes": 5879,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/qualification-declaration-v1.json",
+        "sha256": "2bef8cffd32bc06898d287cc79e46068d4d047c186f19bd4a9f7fcf9ee161c93"
+      }
+    },
+    {
+      "archive_entry": "objects/33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc",
+      "original": {
+        "bytes": 78204773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+      }
+    },
+    {
+      "archive_entry": "objects/43980d1d838c877c02ca23dce7162a6ad29dec9d92057b2862377a6e118e937a",
+      "original": {
+        "bytes": 107412,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/ROOT-actual-admission-v1.json",
+        "sha256": "43980d1d838c877c02ca23dce7162a6ad29dec9d92057b2862377a6e118e937a"
+      }
+    },
+    {
+      "archive_entry": "objects/c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "original": {
+        "bytes": 21657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      }
+    },
+    {
+      "archive_entry": "objects/e937aafb66ce49513bb8d10938442ceebbf8dc2041cfe7ece33bbcc6f5ccf6bc",
+      "original": {
+        "bytes": 322,
+        "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/audit-preflight-observations-v1.json",
+        "sha256": "e937aafb66ce49513bb8d10938442ceebbf8dc2041cfe7ece33bbcc6f5ccf6bc"
+      }
+    },
+    {
+      "archive_entry": "objects/e62d53fb5e1e95566dabf30e7ccbb4181308f750e6a4ab4fc5ff39c37fd49ba3",
+      "original": {
+        "bytes": 25509,
+        "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/audit_saved_data_v1.py",
+        "sha256": "e62d53fb5e1e95566dabf30e7ccbb4181308f750e6a4ab4fc5ff39c37fd49ba3"
+      }
+    },
+    {
+      "archive_entry": "objects/081449d4be87435a0d3a13aa39f59aa3d3c1b83a0a55d8692b3740c1b89de9dd",
+      "original": {
+        "bytes": 61568,
+        "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/saved-data-audit-v1.json",
+        "sha256": "081449d4be87435a0d3a13aa39f59aa3d3c1b83a0a55d8692b3740c1b89de9dd"
+      }
+    },
+    {
+      "archive_entry": "objects/a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882",
+      "original": {
+        "bytes": 30034,
+        "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/typed-data-review-v1.json",
+        "sha256": "a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882"
+      }
+    },
+    {
+      "archive_entry": "objects/ed8399f873536f31a17a47405502b79cbbc2716bbbb8bd5a17695dd8715d824c",
+      "original": {
+        "bytes": 531,
+        "path": "/private/tmp/gcts-compact-model-qualification-final-grant-peer-20261018/audit-preflight-v1.json",
+        "sha256": "ed8399f873536f31a17a47405502b79cbbc2716bbbb8bd5a17695dd8715d824c"
+      }
+    },
+    {
+      "archive_entry": "objects/1bb53e6f89af96f408c1872261f661528d214d5fd957b10ab4456a6623b147a9",
+      "original": {
+        "bytes": 474,
+        "path": "/private/tmp/gcts-compact-model-qualification-final-grant-peer-20261018/audit-preflight-v2.json",
+        "sha256": "1bb53e6f89af96f408c1872261f661528d214d5fd957b10ab4456a6623b147a9"
+      }
+    },
+    {
+      "archive_entry": "objects/47e0ec9b239bb559803e6a7ee36aacf5a6c274b036911fa431776ca7524192e4",
+      "original": {
+        "bytes": 23375,
+        "path": "/private/tmp/gcts-compact-model-qualification-final-grant-peer-20261018/audit_final_grants_v1.py",
+        "sha256": "47e0ec9b239bb559803e6a7ee36aacf5a6c274b036911fa431776ca7524192e4"
+      }
+    },
+    {
+      "archive_entry": "objects/e108889b9b58ae1b092312dfd3a098480da851469a1929391bacc1b025a4382d",
+      "original": {
+        "bytes": 23520,
+        "path": "/private/tmp/gcts-compact-model-qualification-final-grant-peer-20261018/audit_final_grants_v2.py",
+        "sha256": "e108889b9b58ae1b092312dfd3a098480da851469a1929391bacc1b025a4382d"
+      }
+    },
+    {
+      "archive_entry": "objects/3c9ffd831556cb6b69e5413035a8665913c522e3a7156e4c02e068e8fd1b4d45",
+      "original": {
+        "bytes": 23653,
+        "path": "/private/tmp/gcts-compact-model-qualification-final-grant-peer-20261018/audit_final_grants_v3.py",
+        "sha256": "3c9ffd831556cb6b69e5413035a8665913c522e3a7156e4c02e068e8fd1b4d45"
+      }
+    },
+    {
+      "archive_entry": "objects/003a075d76df031c287f953f59e270a87822e4fe83237d07724722c53936dea4",
+      "original": {
+        "bytes": 75537,
+        "path": "/private/tmp/gcts-compact-model-qualification-final-grant-peer-20261018/raw-audit-v1.json",
+        "sha256": "003a075d76df031c287f953f59e270a87822e4fe83237d07724722c53936dea4"
+      }
+    },
+    {
+      "archive_entry": "objects/f49dfb2f4152cc6b358ff18a440293ae8a4f59e4b5027813465e48787b2c536b",
+      "original": {
+        "bytes": 29948,
+        "path": "/private/tmp/gcts-compact-model-qualification-final-grant-peer-20261018/typed-final-grant-delta-review-v1.json",
+        "sha256": "f49dfb2f4152cc6b358ff18a440293ae8a4f59e4b5027813465e48787b2c536b"
+      }
+    },
+    {
+      "archive_entry": "objects/f4c0799117af2f1cef2ea9d0df291474d3287f395a34a8f4af59c27763f1e2b5",
+      "original": {
+        "bytes": 20091,
+        "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/audit_report_v1.py",
+        "sha256": "f4c0799117af2f1cef2ea9d0df291474d3287f395a34a8f4af59c27763f1e2b5"
+      }
+    },
+    {
+      "archive_entry": "objects/cb76d5292c4c071f4726e3758c4aca8161b83507d8891a5f787c45663b10897f",
+      "original": {
+        "bytes": 11404,
+        "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/audit_successor_v2.py",
+        "sha256": "cb76d5292c4c071f4726e3758c4aca8161b83507d8891a5f787c45663b10897f"
+      }
+    },
+    {
+      "archive_entry": "objects/f1e74f1e49b699e734bf252d4e899213d5d49cb95842357463f7df83349929a3",
+      "original": {
+        "bytes": 87704,
+        "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/raw-human-report-audit-v1.json",
+        "sha256": "f1e74f1e49b699e734bf252d4e899213d5d49cb95842357463f7df83349929a3"
+      }
+    },
+    {
+      "archive_entry": "objects/170a4b48a601a57d59a609998155c3dd7a34b42a23cf26fc675fa7283eba95a9",
+      "original": {
+        "bytes": 13998,
+        "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/raw-human-successor-audit-v2.json",
+        "sha256": "170a4b48a601a57d59a609998155c3dd7a34b42a23cf26fc675fa7283eba95a9"
+      }
+    },
+    {
+      "archive_entry": "objects/e2071cb3d9732731ef086798a57df8587566841828f26dd4395ee3b476dd3e7b",
+      "original": {
+        "bytes": 9134,
+        "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/typed-human-report-review-v1-negative.json",
+        "sha256": "e2071cb3d9732731ef086798a57df8587566841828f26dd4395ee3b476dd3e7b"
+      }
+    },
+    {
+      "archive_entry": "objects/42ed10864a63fd314e3310f02e1bbc707f31a0164f1d341bb064a47866f1811d",
+      "original": {
+        "bytes": 15619,
+        "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/typed-human-report-review-v2.json",
+        "sha256": "42ed10864a63fd314e3310f02e1bbc707f31a0164f1d341bb064a47866f1811d"
+      }
+    },
+    {
+      "archive_entry": "objects/b4ffb369b6cd3295f40bfebb91434b4e9fae5448f627b885c4ed71f208e51729",
+      "original": {
+        "bytes": 29731,
+        "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/prospective-declaration-raw-audit-v1.json",
+        "sha256": "b4ffb369b6cd3295f40bfebb91434b4e9fae5448f627b885c4ed71f208e51729"
+      }
+    },
+    {
+      "archive_entry": "objects/226d55687adb0e2cb8544e92e07fea41e9be366a59b571b3ffe0709989aa9acb",
+      "original": {
+        "bytes": 89125,
+        "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/raw-Source-audit-v1.json",
+        "sha256": "226d55687adb0e2cb8544e92e07fea41e9be366a59b571b3ffe0709989aa9acb"
+      }
+    },
+    {
+      "archive_entry": "objects/b484df8e3e73be47656d9d2f35c0acb85689876f0aee3d9088f3bb5e0c334732",
+      "original": {
+        "bytes": 19583,
+        "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/review_harness_Source_v1.py",
+        "sha256": "b484df8e3e73be47656d9d2f35c0acb85689876f0aee3d9088f3bb5e0c334732"
+      }
+    },
+    {
+      "archive_entry": "objects/81da32efb8406a64eca51baf1983d67a435ce3b7c4530d3524bf9b8da186ea5f",
+      "original": {
+        "bytes": 16095,
+        "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/review_prospective_declaration_v1.py",
+        "sha256": "81da32efb8406a64eca51baf1983d67a435ce3b7c4530d3524bf9b8da186ea5f"
+      }
+    },
+    {
+      "archive_entry": "objects/f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3",
+      "original": {
+        "bytes": 10506,
+        "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/typed-Source-review-v1.json",
+        "sha256": "f6380d4465197988a5d7d535793d4346b5690fc3541632acbf07efc4ea9807c3"
+      }
+    },
+    {
+      "archive_entry": "objects/3c9722e44e58d70342e929e50c444738bb6fae329e5dbb2d72e149bbf8aaa214",
+      "original": {
+        "bytes": 10700,
+        "path": "/private/tmp/gcts-compact-model-qualification-independent-peer-20261018-v1/typed-prospective-declaration-review-v1.json",
+        "sha256": "3c9722e44e58d70342e929e50c444738bb6fae329e5dbb2d72e149bbf8aaa214"
+      }
+    },
+    {
+      "archive_entry": "objects/006c2681f2792bd34860012b2aa9fb625d8a9204b9d0466e78d1cd9d9c7d5930",
+      "original": {
+        "bytes": 429,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorization-drafts/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "006c2681f2792bd34860012b2aa9fb625d8a9204b9d0466e78d1cd9d9c7d5930"
+      }
+    },
+    {
+      "archive_entry": "objects/8cb773ebe76efec5d28a30d72c9f5560dfac0929278140cb5a97de10ba47d6d1",
+      "original": {
+        "bytes": 429,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorization-drafts/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "8cb773ebe76efec5d28a30d72c9f5560dfac0929278140cb5a97de10ba47d6d1"
+      }
+    },
+    {
+      "archive_entry": "objects/f00a9115507ce73fa9ad5ccac367ca4cbb13386e9880b4ba4a51eeaa43ddf6ec",
+      "original": {
+        "bytes": 3793,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorizations/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "f00a9115507ce73fa9ad5ccac367ca4cbb13386e9880b4ba4a51eeaa43ddf6ec"
+      }
+    },
+    {
+      "archive_entry": "objects/af9fbbc7fb301e50c7926ac83d8179a01a9b688d736e3d34dd148402f68b8876",
+      "original": {
+        "bytes": 3793,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorizations/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "af9fbbc7fb301e50c7926ac83d8179a01a9b688d736e3d34dd148402f68b8876"
+      }
+    },
+    {
+      "archive_entry": "objects/b8e31b531823fb6eb720ea451e7603c9516b5e6c55522ac24c1989a0882413ab",
+      "original": {
+        "bytes": 8211,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/authorized-index-v1.json",
+        "sha256": "b8e31b531823fb6eb720ea451e7603c9516b5e6c55522ac24c1989a0882413ab"
+      }
+    },
+    {
+      "archive_entry": "objects/e8274eb8db81dc2776f203ef3f13f19294640c3e1131a50fed4827b927566ed5",
+      "original": {
+        "bytes": 5672,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/plan-drafts/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "e8274eb8db81dc2776f203ef3f13f19294640c3e1131a50fed4827b927566ed5"
+      }
+    },
+    {
+      "archive_entry": "objects/cdcc1fcdc118da1ee87f90157e3e32239908dbea2de2579ebb65a47091a9ebed",
+      "original": {
+        "bytes": 5672,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/plan-drafts/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "cdcc1fcdc118da1ee87f90157e3e32239908dbea2de2579ebb65a47091a9ebed"
+      }
+    },
+    {
+      "archive_entry": "objects/b21c14dd85df0bd6838bd3c9a60212bfaef191a6d64ea241f954cbd8c96630f9",
+      "original": {
+        "bytes": 6403,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/prospective-index-v1.json",
+        "sha256": "b21c14dd85df0bd6838bd3c9a60212bfaef191a6d64ea241f954cbd8c96630f9"
+      }
+    },
+    {
+      "archive_entry": "objects/e726acdff38e70cd4ee82fee82e6050c20ba45d6467f9c2cc4348e7f33e0adad",
+      "original": {
+        "bytes": 326,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+        "sha256": "e726acdff38e70cd4ee82fee82e6050c20ba45d6467f9c2cc4348e7f33e0adad"
+      }
+    },
+    {
+      "archive_entry": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_entry": "objects/21e19d1cdb5debcff945b2aa24ef87722ac64d98c00118b0c1fad648cdbf0a24",
+      "original": {
+        "bytes": 191,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/stdout.bin",
+        "sha256": "21e19d1cdb5debcff945b2aa24ef87722ac64d98c00118b0c1fad648cdbf0a24"
+      }
+    },
+    {
+      "archive_entry": "objects/af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae",
+      "original": {
+        "bytes": 1691,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "af3bc80dde07f4eeab0fa2b27d2f05cb5aab07bc6fa6311a6533ae5ecad977ae"
+      }
+    },
+    {
+      "archive_entry": "objects/3810ca4d8948c234a956dd1ddb7810cc6805125f31d0590be09b7afcf37858f4",
+      "original": {
+        "bytes": 5667,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c2-ROOT-20261018-v1.json",
+        "sha256": "3810ca4d8948c234a956dd1ddb7810cc6805125f31d0590be09b7afcf37858f4"
+      }
+    },
+    {
+      "archive_entry": "objects/4d24e0143c560022f8412f3e126570da0348f96053a4d78e999c5ba8c5989b38",
+      "original": {
+        "bytes": 326,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+        "sha256": "4d24e0143c560022f8412f3e126570da0348f96053a4d78e999c5ba8c5989b38"
+      }
+    },
+    {
+      "archive_entry": "objects/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "archive_entry": "objects/89db4e0797cdc8d32c064d65b1a8571e7cee3cf6bef24b51988d2ebdaac9db18",
+      "original": {
+        "bytes": 190,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/stdout.bin",
+        "sha256": "89db4e0797cdc8d32c064d65b1a8571e7cee3cf6bef24b51988d2ebdaac9db18"
+      }
+    },
+    {
+      "archive_entry": "objects/473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22",
+      "original": {
+        "bytes": 1687,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "473f5b8cf2fd294a91b5a353b43aeafc164683b1fc4b8c0bcdc013656b831a22"
+      }
+    },
+    {
+      "archive_entry": "objects/f5d59491d89b83ff7012739d34b6d2056ef302b137d75b5c219148442699c639",
+      "original": {
+        "bytes": 5667,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runner-plans/compact-model-qual-c3-ROOT-20261018-v1.json",
+        "sha256": "f5d59491d89b83ff7012739d34b6d2056ef302b137d75b5c219148442699c639"
+      }
+    },
+    {
+      "archive_entry": "objects/3008fda65902d0a4c775735efba82f916f7bb15ab0532fcac172df3ce0055341",
+      "original": {
+        "bytes": 23624,
+        "path": "/private/tmp/gcts-compact-model-qualification-plans-ROOT-20261018-v1/runtime-closure-v1.json",
+        "sha256": "3008fda65902d0a4c775735efba82f916f7bb15ab0532fcac172df3ce0055341"
+      }
+    },
+    {
+      "archive_entry": "objects/046d79e123b64a32c120de271b793a14977511470e08924b7609c015420f4d60",
+      "original": {
+        "bytes": 15540,
+        "path": "/private/tmp/gcts-compact-model-qualification-prospective-peer-20261018/audit_prospective_v1-initial.py",
+        "sha256": "046d79e123b64a32c120de271b793a14977511470e08924b7609c015420f4d60"
+      }
+    },
+    {
+      "archive_entry": "objects/eb6f86838fdca5b85c8d34974f300b70ef142d28c299b40cd9504a64228c6937",
+      "original": {
+        "bytes": 15789,
+        "path": "/private/tmp/gcts-compact-model-qualification-prospective-peer-20261018/audit_prospective_v1.py",
+        "sha256": "eb6f86838fdca5b85c8d34974f300b70ef142d28c299b40cd9504a64228c6937"
+      }
+    },
+    {
+      "archive_entry": "objects/08200ba7368ae0da9da23c0e68e1f10027b5ac94ea9d0322bb5ac191f0b06c2c",
+      "original": {
+        "bytes": 58000,
+        "path": "/private/tmp/gcts-compact-model-qualification-prospective-peer-20261018/raw-prospective-composition-audit-v1.json",
+        "sha256": "08200ba7368ae0da9da23c0e68e1f10027b5ac94ea9d0322bb5ac191f0b06c2c"
+      }
+    },
+    {
+      "archive_entry": "objects/3f5e62b129ed036e749f2f7a085e81ab97939b124f4c23ba12ee96c99055a7e0",
+      "original": {
+        "bytes": 25338,
+        "path": "/private/tmp/gcts-compact-model-qualification-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+        "sha256": "3f5e62b129ed036e749f2f7a085e81ab97939b124f4c23ba12ee96c99055a7e0"
+      }
+    },
+    {
+      "archive_entry": "objects/79550c7f6d9900d95dd7f925297e9f04e7fcaf655e3eead4786cf8f48016f0bf",
+      "original": {
+        "bytes": 27473,
+        "path": "/private/tmp/gcts-compact-model-qualification-resource-peer-20261018/audit_retained_resources_v1.py",
+        "sha256": "79550c7f6d9900d95dd7f925297e9f04e7fcaf655e3eead4786cf8f48016f0bf"
+      }
+    },
+    {
+      "archive_entry": "objects/d7972bd5d2822e5f49bb5f448979a1455a3d395f375df9ccee6d5e02ea473796",
+      "original": {
+        "bytes": 163981,
+        "path": "/private/tmp/gcts-compact-model-qualification-resource-peer-20261018/raw-resource-audit-v1.json",
+        "sha256": "d7972bd5d2822e5f49bb5f448979a1455a3d395f375df9ccee6d5e02ea473796"
+      }
+    },
+    {
+      "archive_entry": "objects/9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22",
+      "original": {
+        "bytes": 32826,
+        "path": "/private/tmp/gcts-compact-model-qualification-resource-peer-20261018/typed-resource-review-v1.json",
+        "sha256": "9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22"
+      }
+    },
+    {
+      "archive_entry": "objects/02286cbd597fd4a109113df7ece368bbdaefa6b7789e3e985be9d64af5dd1fbe",
+      "original": {
+        "bytes": 2792,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/API-v1.json",
+        "sha256": "02286cbd597fd4a109113df7ece368bbdaefa6b7789e3e985be9d64af5dd1fbe"
+      }
+    },
+    {
+      "archive_entry": "objects/c4d9eb4a87f1f459dac585bd62935e23ad64b58aed0e03fcd8dcb75783190f9b",
+      "original": {
+        "bytes": 11280,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/Source-contract-v1.json",
+        "sha256": "c4d9eb4a87f1f459dac585bd62935e23ad64b58aed0e03fcd8dcb75783190f9b"
+      }
+    },
+    {
+      "archive_entry": "objects/feff09f773267063a1098d529325bdf0899502e963fe84c40340484cf08fac8d",
+      "original": {
+        "bytes": 2372,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/author-Source-static-v1.json",
+        "sha256": "feff09f773267063a1098d529325bdf0899502e963fe84c40340484cf08fac8d"
+      }
+    },
+    {
+      "archive_entry": "objects/821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275",
+      "original": {
+        "bytes": 19222,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/compact_model_qualification_v1.py",
+        "sha256": "821d73fa1aaddd1429e95718fe4b5d8941b80fb497d1ea242da12f377c273275"
+      }
+    },
+    {
+      "archive_entry": "objects/0cb19bf6ad986345a7f32cc4e5bd643eb0e5147dbd2145f9dcaa82e1b0b877cb",
+      "original": {
+        "bytes": 19573,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/forward.patch",
+        "sha256": "0cb19bf6ad986345a7f32cc4e5bd643eb0e5147dbd2145f9dcaa82e1b0b877cb"
+      }
+    },
+    {
+      "archive_entry": "objects/7b34909e780813c02464ce3091f315538265e18654bc29a9ae4b8dbea13961dd",
+      "original": {
+        "bytes": 17811,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/freeze_Source_packet_v1.py",
+        "sha256": "7b34909e780813c02464ce3091f315538265e18654bc29a9ae4b8dbea13961dd"
+      }
+    },
+    {
+      "archive_entry": "objects/50ed0013420e23bc13297fc4fc2967cc09d1c627da5481428a12befdbfb436cf",
+      "original": {
+        "bytes": 2843,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/handoff-v1.json",
+        "sha256": "50ed0013420e23bc13297fc4fc2967cc09d1c627da5481428a12befdbfb436cf"
+      }
+    },
+    {
+      "archive_entry": "objects/8a7ff65b557e64fba17a537b93eca59771e461983ddd571a5e29223ccd637739",
+      "original": {
+        "bytes": 19573,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/inverse.patch",
+        "sha256": "8a7ff65b557e64fba17a537b93eca59771e461983ddd571a5e29223ccd637739"
+      }
+    },
+    {
+      "archive_entry": "objects/5d9d799c4cdb733cffbde769ac9980d460e78ac5fe314b4588c26e7dce8912af",
+      "original": {
+        "bytes": 7129,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/runtime-closure-design-v1.json",
+        "sha256": "5d9d799c4cdb733cffbde769ac9980d460e78ac5fe314b4588c26e7dce8912af"
+      }
+    },
+    {
+      "archive_entry": "objects/4441ad2ebf85c4bce4e6350c5ed571dcec5530b3c4e161de028566e2c1ab4449",
+      "original": {
+        "bytes": 2637,
+        "path": "/private/tmp/gcts-compact-model-qualification-source-20261018/synthetic-adversarial-design-v1.json",
+        "sha256": "4441ad2ebf85c4bce4e6350c5ed571dcec5530b3c4e161de028566e2c1ab4449"
+      }
+    },
+    {
+      "archive_entry": "objects/1a21cc41b68940a72b78538c70d2eedd3b85bdb5c142d9e2553c622e556ad1c8",
+      "original": {
+        "bytes": 595,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/audit-preflight-observations-v2.json",
+        "sha256": "1a21cc41b68940a72b78538c70d2eedd3b85bdb5c142d9e2553c622e556ad1c8"
+      }
+    },
+    {
+      "archive_entry": "objects/94612dc92e7c209dbbf6546d7281f4c87af3237c71bfda62dbd54561400d5abc",
+      "original": {
+        "bytes": 4423,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/inert-observer-forward/subject.py",
+        "sha256": "94612dc92e7c209dbbf6546d7281f4c87af3237c71bfda62dbd54561400d5abc"
+      }
+    },
+    {
+      "archive_entry": "objects/c3e485eb163ab827f3258961c802d64d8625e609adc6e1f1c0788824b7a8e877",
+      "original": {
+        "bytes": 4405,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/inert-observer-inverse/subject.py",
+        "sha256": "c3e485eb163ab827f3258961c802d64d8625e609adc6e1f1c0788824b7a8e877"
+      }
+    },
+    {
+      "archive_entry": "objects/d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf",
+      "original": {
+        "bytes": 22998,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/inert-runner-forward/subject.py",
+        "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+      }
+    },
+    {
+      "archive_entry": "objects/9f96c1543a2ddb3e2aa77bb5e8662232170b645cd0df1a641664abd3d865d308",
+      "original": {
+        "bytes": 20418,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/inert-runner-inverse/subject.py",
+        "sha256": "9f96c1543a2ddb3e2aa77bb5e8662232170b645cd0df1a641664abd3d865d308"
+      }
+    },
+    {
+      "archive_entry": "objects/2b09aa76c6ed69c3e05172974da41321100d2443b0219389140c2e9812d90c2f",
+      "original": {
+        "bytes": 25964,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/raw-Source-audit-v2.json",
+        "sha256": "2b09aa76c6ed69c3e05172974da41321100d2443b0219389140c2e9812d90c2f"
+      }
+    },
+    {
+      "archive_entry": "objects/3a53f52302b1b7b1d21d0b00bfc971ecbdc079f1431b5bc8fe717db5c7631541",
+      "original": {
+        "bytes": 23557,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/review_Source_v2.py",
+        "sha256": "3a53f52302b1b7b1d21d0b00bfc971ecbdc079f1431b5bc8fe717db5c7631541"
+      }
+    },
+    {
+      "archive_entry": "objects/4ad5c9f9ea5f6c53f9f8f2af0bf4f102a5d38264b9888beca054b003efe66b5b",
+      "original": {
+        "bytes": 9234,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-independent-peer-20261018/typed-Source-review-v2.json",
+        "sha256": "4ad5c9f9ea5f6c53f9f8f2af0bf4f102a5d38264b9888beca054b003efe66b5b"
+      }
+    },
+    {
+      "archive_entry": "objects/8f6bff93068826a8747f845f1edf67180abf41916981537e6cb6389cd0feee3b",
+      "original": {
+        "bytes": 9229,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/API-v1.json",
+        "sha256": "8f6bff93068826a8747f845f1edf67180abf41916981537e6cb6389cd0feee3b"
+      }
+    },
+    {
+      "archive_entry": "objects/2f9fe8bd737e1a751302f92bea6e2c577bebb53d80475db222de5a6e00a85aa5",
+      "original": {
+        "bytes": 13551,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/Source-contract-v1.json",
+        "sha256": "2f9fe8bd737e1a751302f92bea6e2c577bebb53d80475db222de5a6e00a85aa5"
+      }
+    },
+    {
+      "archive_entry": "objects/0748d8aade96a8db108980dd8eabd477ac5979af51b5be8455e9dabf312958d9",
+      "original": {
+        "bytes": 9025,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/author-Source-static-v1.json",
+        "sha256": "0748d8aade96a8db108980dd8eabd477ac5979af51b5be8455e9dabf312958d9"
+      }
+    },
+    {
+      "archive_entry": "objects/3f224c8e2972d79c8b85f001765d0e76c27d099b0e23445d1686e28d6096768e",
+      "original": {
+        "bytes": 13991,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/build_Source_v1.py",
+        "sha256": "3f224c8e2972d79c8b85f001765d0e76c27d099b0e23445d1686e28d6096768e"
+      }
+    },
+    {
+      "archive_entry": "objects/9f96c1543a2ddb3e2aa77bb5e8662232170b645cd0df1a641664abd3d865d308",
+      "original": {
+        "bytes": 20418,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/compact_model_once_runner_v1.py",
+        "sha256": "9f96c1543a2ddb3e2aa77bb5e8662232170b645cd0df1a641664abd3d865d308"
+      }
+    },
+    {
+      "archive_entry": "objects/569e9d3c3a0d985f42c41decbc21deb8e44435057be46b675d18c2ccd3aefeb2",
+      "original": {
+        "bytes": 3112,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/handoff-v1.json",
+        "sha256": "569e9d3c3a0d985f42c41decbc21deb8e44435057be46b675d18c2ccd3aefeb2"
+      }
+    },
+    {
+      "archive_entry": "objects/c3e485eb163ab827f3258961c802d64d8625e609adc6e1f1c0788824b7a8e877",
+      "original": {
+        "bytes": 4405,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/observe_model_qualification_v1.py",
+        "sha256": "c3e485eb163ab827f3258961c802d64d8625e609adc6e1f1c0788824b7a8e877"
+      }
+    },
+    {
+      "archive_entry": "objects/d9b9fd59d099e083af420664d2a4eaf656ea1a8b4f3f1ad93c4a510852b0fc03",
+      "original": {
+        "bytes": 3028,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/observer-forward.patch",
+        "sha256": "d9b9fd59d099e083af420664d2a4eaf656ea1a8b4f3f1ad93c4a510852b0fc03"
+      }
+    },
+    {
+      "archive_entry": "objects/17b7c745271795d66d6d5adb3c900a70211a5c69dd93639f8d0673764e72e0cf",
+      "original": {
+        "bytes": 3028,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/observer-inverse.patch",
+        "sha256": "17b7c745271795d66d6d5adb3c900a70211a5c69dd93639f8d0673764e72e0cf"
+      }
+    },
+    {
+      "archive_entry": "objects/8bea51febcb677b87b20934faf793b8151d6fc5cddf5e909e45e0f8245711715",
+      "original": {
+        "bytes": 16055,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/package_metadata_v1.py",
+        "sha256": "8bea51febcb677b87b20934faf793b8151d6fc5cddf5e909e45e0f8245711715"
+      }
+    },
+    {
+      "archive_entry": "objects/ce5a6fe04382afb241a45d28afad36185df777a257c2c466354a715ff3776de6",
+      "original": {
+        "bytes": 4356,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/patch-observer/subject.py",
+        "sha256": "ce5a6fe04382afb241a45d28afad36185df777a257c2c466354a715ff3776de6"
+      }
+    },
+    {
+      "archive_entry": "objects/4ed5b5565d64f380f565c3ded7abc490aad5f75b845ea102ebeaede973fe8ac8",
+      "original": {
+        "bytes": 15979,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/patch-runner/subject.py",
+        "sha256": "4ed5b5565d64f380f565c3ded7abc490aad5f75b845ea102ebeaede973fe8ac8"
+      }
+    },
+    {
+      "archive_entry": "objects/9b8ea4d7e9e7a94318c50cd4c0f78a85babb7be4af8c34ce3b2e1e41a677b818",
+      "original": {
+        "bytes": 26267,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/runner-forward.patch",
+        "sha256": "9b8ea4d7e9e7a94318c50cd4c0f78a85babb7be4af8c34ce3b2e1e41a677b818"
+      }
+    },
+    {
+      "archive_entry": "objects/1c5a9c7cc88c7368216ff6e7e34b5c87ebc40231907d8f4bffbeecca959256c4",
+      "original": {
+        "bytes": 26267,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/runner-inverse.patch",
+        "sha256": "1c5a9c7cc88c7368216ff6e7e34b5c87ebc40231907d8f4bffbeecca959256c4"
+      }
+    },
+    {
+      "archive_entry": "objects/d480aecbf323d06091e9002f0df524b0b0e73c142c5127361a6b99f0642600aa",
+      "original": {
+        "bytes": 5757,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-source-20261018/runtime-closure-design-v1.json",
+        "sha256": "d480aecbf323d06091e9002f0df524b0b0e73c142c5127361a6b99f0642600aa"
+      }
+    },
+    {
+      "archive_entry": "objects/81ed3504306d736d707a3688f8d7d84d0bf90eef496b1146929eb8d8b8489e28",
+      "original": {
+        "bytes": 10008,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/API-v2.json",
+        "sha256": "81ed3504306d736d707a3688f8d7d84d0bf90eef496b1146929eb8d8b8489e28"
+      }
+    },
+    {
+      "archive_entry": "objects/6fc6a93d8557a0565467931e6613f61e625c9ea8b89c1b8af002b5291fcd6e5b",
+      "original": {
+        "bytes": 15096,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/Source-contract-v2.json",
+        "sha256": "6fc6a93d8557a0565467931e6613f61e625c9ea8b89c1b8af002b5291fcd6e5b"
+      }
+    },
+    {
+      "archive_entry": "objects/698a6c1fbe51a6884f05b8a117d492a0863cc342a08c37f78a0235cad60da2e8",
+      "original": {
+        "bytes": 6223,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/Source-delta-v2.json",
+        "sha256": "698a6c1fbe51a6884f05b8a117d492a0863cc342a08c37f78a0235cad60da2e8"
+      }
+    },
+    {
+      "archive_entry": "objects/5b7969dd13be755849ef65959b0db7091439b20937e22930d033b7dae60aedf3",
+      "original": {
+        "bytes": 10611,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/author-Source-static-v2.json",
+        "sha256": "5b7969dd13be755849ef65959b0db7091439b20937e22930d033b7dae60aedf3"
+      }
+    },
+    {
+      "archive_entry": "objects/d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf",
+      "original": {
+        "bytes": 22998,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/compact_model_once_runner_v2.py",
+        "sha256": "d454494aa443d82f084c0949dbe1db01661d89c9cd1fb3413c51cf5a4b05ffbf"
+      }
+    },
+    {
+      "archive_entry": "objects/83371d8c9b5fb5f10069d2994fa25750cd1bbeae2df6948d795ccd3db47014f1",
+      "original": {
+        "bytes": 3405,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/handoff-v2.json",
+        "sha256": "83371d8c9b5fb5f10069d2994fa25750cd1bbeae2df6948d795ccd3db47014f1"
+      }
+    },
+    {
+      "archive_entry": "objects/94612dc92e7c209dbbf6546d7281f4c87af3237c71bfda62dbd54561400d5abc",
+      "original": {
+        "bytes": 4423,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/observe_model_qualification_v2.py",
+        "sha256": "94612dc92e7c209dbbf6546d7281f4c87af3237c71bfda62dbd54561400d5abc"
+      }
+    },
+    {
+      "archive_entry": "objects/f1532e901eb041fe6f81fedca976938cdaf16bac559420840bbc4ee361a3aea1",
+      "original": {
+        "bytes": 943,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/observer-forward.patch",
+        "sha256": "f1532e901eb041fe6f81fedca976938cdaf16bac559420840bbc4ee361a3aea1"
+      }
+    },
+    {
+      "archive_entry": "objects/6605a193ef3e0f9bbb615039212a964dd0e6aca99efe475b54b22e6fc29b7d5f",
+      "original": {
+        "bytes": 943,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/observer-inverse.patch",
+        "sha256": "6605a193ef3e0f9bbb615039212a964dd0e6aca99efe475b54b22e6fc29b7d5f"
+      }
+    },
+    {
+      "archive_entry": "objects/07050bdd99660726fd17276b4fe9be899fe0ddc9fac87be0493da30f738958cf",
+      "original": {
+        "bytes": 10727,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/package_metadata_v2.py",
+        "sha256": "07050bdd99660726fd17276b4fe9be899fe0ddc9fac87be0493da30f738958cf"
+      }
+    },
+    {
+      "archive_entry": "objects/c3e485eb163ab827f3258961c802d64d8625e609adc6e1f1c0788824b7a8e877",
+      "original": {
+        "bytes": 4405,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/patch-observer/subject.py",
+        "sha256": "c3e485eb163ab827f3258961c802d64d8625e609adc6e1f1c0788824b7a8e877"
+      }
+    },
+    {
+      "archive_entry": "objects/9f96c1543a2ddb3e2aa77bb5e8662232170b645cd0df1a641664abd3d865d308",
+      "original": {
+        "bytes": 20418,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/patch-runner/subject.py",
+        "sha256": "9f96c1543a2ddb3e2aa77bb5e8662232170b645cd0df1a641664abd3d865d308"
+      }
+    },
+    {
+      "archive_entry": "objects/413ff054b9459461dace50fd337a2f4aca11404ca56c2953ef56dc397f9efe03",
+      "original": {
+        "bytes": 9098,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/runner-forward.patch",
+        "sha256": "413ff054b9459461dace50fd337a2f4aca11404ca56c2953ef56dc397f9efe03"
+      }
+    },
+    {
+      "archive_entry": "objects/b3e79c0008fcdfae164a1f9b1fe1006bf2d471fef324267901fbf77629f63e38",
+      "original": {
+        "bytes": 9098,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/runner-inverse.patch",
+        "sha256": "b3e79c0008fcdfae164a1f9b1fe1006bf2d471fef324267901fbf77629f63e38"
+      }
+    },
+    {
+      "archive_entry": "objects/d02c0f221109c7adf4fce059464e3fcec3f1d6826b077537e162541c8aa850ee",
+      "original": {
+        "bytes": 6221,
+        "path": "/private/tmp/gcts-compact-model-qualification-wrapper-v2-source-20261018/runtime-closure-design-v2.json",
+        "sha256": "d02c0f221109c7adf4fce059464e3fcec3f1d6826b077537e162541c8aa850ee"
+      }
+    },
+    {
+      "archive_entry": "objects/2e36fee617ab76555467665ed68337cd3707f54dee292d6c7485b6a9f2c2fa8b",
+      "original": {
+        "bytes": 2580,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/API-v1.json",
+        "sha256": "2e36fee617ab76555467665ed68337cd3707f54dee292d6c7485b6a9f2c2fa8b"
+      }
+    },
+    {
+      "archive_entry": "objects/fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e",
+      "original": {
+        "bytes": 4311,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/F0-forward/adapter.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      }
+    },
+    {
+      "archive_entry": "objects/2312a866d7927a8de5674525e522f60561c59d564839b3f1500623507f18fdb6",
+      "original": {
+        "bytes": 8119,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/Source-contract-v1.json",
+        "sha256": "2312a866d7927a8de5674525e522f60561c59d564839b3f1500623507f18fdb6"
+      }
+    },
+    {
+      "archive_entry": "objects/1125cbdb06bcc7e4725a63bc1e8b556bde9279e407506601cc9b5bb52277d381",
+      "original": {
+        "bytes": 2316,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/Source-static-v1.json",
+        "sha256": "1125cbdb06bcc7e4725a63bc1e8b556bde9279e407506601cc9b5bb52277d381"
+      }
+    },
+    {
+      "archive_entry": "objects/34c0e7338baf71659a9160cf495e7419d617b84e0fe382b624303dfa7de9434a",
+      "original": {
+        "bytes": 4302,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/design-v1.html",
+        "sha256": "34c0e7338baf71659a9160cf495e7419d617b84e0fe382b624303dfa7de9434a"
+      }
+    },
+    {
+      "archive_entry": "objects/bcce4c307aa92b5e31a7d2de150cfed3cc9916d2f2217df9729489b1e84c5530",
+      "original": {
+        "bytes": 19185,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/design-v1.json",
+        "sha256": "bcce4c307aa92b5e31a7d2de150cfed3cc9916d2f2217df9729489b1e84c5530"
+      }
+    },
+    {
+      "archive_entry": "objects/dad17c87022c71eaa42f9bbcaa68ce72c394a59ea9869c118497ab192d46ed47",
+      "original": {
+        "bytes": 4440,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/forward.patch",
+        "sha256": "dad17c87022c71eaa42f9bbcaa68ce72c394a59ea9869c118497ab192d46ed47"
+      }
+    },
+    {
+      "archive_entry": "objects/036627f52ce9d5d15c223d0c31db69edcf789181afdc17963ed3e26f08f0351b",
+      "original": {
+        "bytes": 19218,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/freeze_contract_v1.py",
+        "sha256": "036627f52ce9d5d15c223d0c31db69edcf789181afdc17963ed3e26f08f0351b"
+      }
+    },
+    {
+      "archive_entry": "objects/f406f4bd8624d3d2625641d3dc474afbbadcfd452dd61118f7239895b84b8bb4",
+      "original": {
+        "bytes": 3388,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/freeze_source_v1.py",
+        "sha256": "f406f4bd8624d3d2625641d3dc474afbbadcfd452dd61118f7239895b84b8bb4"
+      }
+    },
+    {
+      "archive_entry": "objects/9e4af8016bf0cd7fc0edef12ef08d24233d89720c445c73ab8c8b624c2e0cdad",
+      "original": {
+        "bytes": 2758,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/handoff-v1.json",
+        "sha256": "9e4af8016bf0cd7fc0edef12ef08d24233d89720c445c73ab8c8b624c2e0cdad"
+      }
+    },
+    {
+      "archive_entry": "objects/fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e",
+      "original": {
+        "bytes": 4311,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      }
+    },
+    {
+      "archive_entry": "objects/36f08e4fceb4fb8b4452d3c38ad22465262e2ef5be8ea3eb2b5e5151d02f6e5e",
+      "original": {
+        "bytes": 4440,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/inverse.patch",
+        "sha256": "36f08e4fceb4fb8b4452d3c38ad22465262e2ef5be8ea3eb2b5e5151d02f6e5e"
+      }
+    },
+    {
+      "archive_entry": "objects/aae2d27faa7255b911f2902041cfc17a2ecebed878519f1a70c46185b8f0631b",
+      "original": {
+        "bytes": 8553,
+        "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-compact-model-Source-review-v1.json",
+        "sha256": "aae2d27faa7255b911f2902041cfc17a2ecebed878519f1a70c46185b8f0631b"
+      }
+    },
+    {
+      "archive_entry": "objects/950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223",
+      "original": {
+        "bytes": 5175,
+        "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-reader-Source-review-v2.json",
+        "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+      }
+    },
+    {
+      "archive_entry": "objects/f1d4d76d03d5e8cd78c22283c19ddbe29786c93b6ac2b6530a6d178e49040247",
+      "original": {
+        "bytes": 3167,
+        "path": "/private/tmp/gcts-interned-output-reader-source-20261018/Source-contract-v1.json",
+        "sha256": "f1d4d76d03d5e8cd78c22283c19ddbe29786c93b6ac2b6530a6d178e49040247"
+      }
+    },
+    {
+      "archive_entry": "objects/5b7f02ba13c1047342742e656d995c30736c061d371cf8ec01f51847a3bd6176",
+      "original": {
+        "bytes": 3608,
+        "path": "/private/tmp/gcts-interned-output-reader-source-20261018/Source-contract-v2.json",
+        "sha256": "5b7f02ba13c1047342742e656d995c30736c061d371cf8ec01f51847a3bd6176"
+      }
+    },
+    {
+      "archive_entry": "objects/d74252c5cb5e626b9008fa8126c9e6ec0f77a4d0be002084d9cfedc3e0cac0d2",
+      "original": {
+        "bytes": 1144,
+        "path": "/private/tmp/gcts-interned-output-reader-source-20261018/Source-delta-observation-v1.json",
+        "sha256": "d74252c5cb5e626b9008fa8126c9e6ec0f77a4d0be002084d9cfedc3e0cac0d2"
+      }
+    },
+    {
+      "archive_entry": "objects/b1b111555a022839d919c535dc7d64ea4a9c99988b8c551d5c898990e311c5cf",
+      "original": {
+        "bytes": 643,
+        "path": "/private/tmp/gcts-interned-output-reader-source-20261018/handoff-v1.json",
+        "sha256": "b1b111555a022839d919c535dc7d64ea4a9c99988b8c551d5c898990e311c5cf"
+      }
+    },
+    {
+      "archive_entry": "objects/f2483a7c728692e12c1f4a980354252d7467e83e0fe1ff5be70a538f506389a7",
+      "original": {
+        "bytes": 866,
+        "path": "/private/tmp/gcts-interned-output-reader-source-20261018/handoff-v2.json",
+        "sha256": "f2483a7c728692e12c1f4a980354252d7467e83e0fe1ff5be70a538f506389a7"
+      }
+    },
+    {
+      "archive_entry": "objects/0ed1b3fbac7fbbf877676a0c97ca5a3e8c34ec4caa6c3529b08da8ef2b88429a",
+      "original": {
+        "bytes": 4743,
+        "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v1.py",
+        "sha256": "0ed1b3fbac7fbbf877676a0c97ca5a3e8c34ec4caa6c3529b08da8ef2b88429a"
+      }
+    },
+    {
+      "archive_entry": "objects/cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836",
+      "original": {
+        "bytes": 4705,
+        "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+        "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+      }
+    },
+    {
+      "archive_entry": "objects/f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c",
+      "original": {
+        "bytes": 6472,
+        "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+        "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+      }
+    },
+    {
+      "archive_entry": "objects/d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a",
+      "original": {
+        "bytes": 11060,
+        "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      }
+    },
+    {
+      "archive_entry": "objects/113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+      "original": {
+        "bytes": 7089,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+        "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+      }
+    },
+    {
+      "archive_entry": "objects/5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "original": {
+        "bytes": 10808,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+        "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+      }
+    },
+    {
+      "archive_entry": "objects/f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "original": {
+        "bytes": 8962,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+        "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+      }
+    },
+    {
+      "archive_entry": "objects/36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+      "original": {
+        "bytes": 6992,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      }
+    },
+    {
+      "archive_entry": "objects/c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+      "original": {
+        "bytes": 7409,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+        "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+      }
+    },
+    {
+      "archive_entry": "objects/ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+      "original": {
+        "bytes": 3756,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      }
+    },
+    {
+      "archive_entry": "objects/8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "original": {
+        "bytes": 13290,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      }
+    },
+    {
+      "archive_entry": "objects/9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "original": {
+        "bytes": 28533,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    {
+      "archive_entry": "objects/2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "original": {
+        "bytes": 19188,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      }
+    }
+  ],
+  "external_runtime_dependencies": {
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+    },
+    "scope": "Pinned bundled Python/stdlib/OS are external platform prerequisites, not repackaged. All14ownedproject sources and complete original retained inputs are included. No Z3 or native prover runs in this qualification."
+  },
+  "historical_provenance": [
+    {
+      "bytes": 40700689,
+      "sha256": "b9a272387a376eb623d407df3d060ce2637b0a7329ff60bef9acf597c1aa2f5d",
+      "url": "cold-reader-integration-evidence.zip"
+    },
+    {
+      "bytes": 38734779,
+      "sha256": "50e1b16a54a05f381da6853b8dad09c81c9b95ff0a2465ee02c3c352d3136a16",
+      "url": "structural-transfer-evidence.zip"
+    }
+  ],
+  "schema": "ROOT-model-qualification-whole-object-evidence-manifest-v1",
+  "scientific_replays": 0,
+  "scope": "Whole raw twooriginalinputs, all2actualfolders/materialized14Sourcecopies/closedreceipts, Sources/contracts/patches/typedreviews/grants/declarations/report. Runtime checks are Source-backed; full constructed per-state graph packets are not invented. ZIP manifest separate and inside; ZIP hash outside avoids selfcycle.",
+  "total_uncompressed_object_bytes": 142717353,
+  "unique_objects": 158
+}
