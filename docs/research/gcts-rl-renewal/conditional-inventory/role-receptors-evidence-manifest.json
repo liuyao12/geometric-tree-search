@@ -1,8 +1,8 @@
 {
   "archive": {
-    "bytes": 1851771,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-reproduction.zip",
-    "sha256": "9104adb26c9a9521a62c4711b131f95a63e0b2eb2e35f5ec62ef86bc23c90c83"
+    "bytes": 1880187,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-reproduction.zip",
+    "sha256": "24c1f8bce4e35e7f44ead3fb051bcce4acad6648ffc40d0b0522c6addf2e3f0b"
   },
   "closed_actuals": 1,
   "date_UTC": "2026-10-18",
@@ -155,6 +155,27 @@
       "sha256": "09e3a4c5956c2bc6719abf756b543a4ae4da08f85bb04d8ec5fba9ea40b49147"
     },
     {
+      "archive_member": "objects/0b181ad1f49ebcbb3bb85e51114c45385518892c6f20dfee8c644db96ad86eec",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 4612,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/ROOT-installed-v1.json",
+      "sha256": "0b181ad1f49ebcbb3bb85e51114c45385518892c6f20dfee8c644db96ad86eec"
+    },
+    {
+      "archive_member": "objects/f6b01fc318ffc69090461e48ea2a8a12443b1721a43bccf742e3c2fc5fc73f48",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 4721,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/ROOT-live-bytes-v1.json",
+      "sha256": "f6b01fc318ffc69090461e48ea2a8a12443b1721a43bccf742e3c2fc5fc73f48"
+    },
+    {
+      "archive_member": "objects/1ce812cb80cbcdac5c933e29e63c16b2014ebbdfc891aca77878ae9f41c4ef0d",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 695,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/ROOT-live-layout-repair-v1.json",
+      "sha256": "1ce812cb80cbcdac5c933e29e63c16b2014ebbdfc891aca77878ae9f41c4ef0d"
+    },
+    {
       "archive_member": "objects/54dd90e16c64c15e19846cc0c97e0320476c6d21b99c5690419769478b565c75",
       "binding_scope": "CURRENT_RESEARCH_RECORD",
       "bytes": 3069,
@@ -167,6 +188,13 @@
       "bytes": 1236,
       "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/ROOT-pre-actual-repair-v1.json",
       "sha256": "e7ace69ca8a9f47dca7fb0b10bd5d763389466f3bfd514ffb7fa084e4e4c2666"
+    },
+    {
+      "archive_member": "objects/ce338922ee96a7dab7d6ece28544587c46661ac666d4dc8827b5ccdd0db8f417",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 382,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/ROOT-pushed-v1.json",
+      "sha256": "ce338922ee96a7dab7d6ece28544587c46661ac666d4dc8827b5ccdd0db8f417"
     },
     {
       "archive_member": "objects/5bbc6004ebde510a1d6dc95165094e4b8a47e48407c5c440b3f516427cfe65bf",
@@ -183,6 +211,13 @@
       "sha256": "22625431dd41d6658824b8485c0e84061be8f5ac3d1ff97eb45e203dd5dbdfc8"
     },
     {
+      "archive_member": "objects/6d9120145ebc9ec2613456376fa051c862c52f2af5e4aa8d626ba16148225d4c",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 4623,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/ROOT-reviewed-publication-freeze-v1.json",
+      "sha256": "6d9120145ebc9ec2613456376fa051c862c52f2af5e4aa8d626ba16148225d4c"
+    },
+    {
       "archive_member": "objects/01cd2de2a7d9895bcd0f720bd9565254c88e0570e61d7df031924c02f4044366",
       "binding_scope": "CURRENT_RESEARCH_RECORD",
       "bytes": 1256,
@@ -190,59 +225,73 @@
       "sha256": "01cd2de2a7d9895bcd0f720bd9565254c88e0570e61d7df031924c02f4044366"
     },
     {
+      "archive_member": "objects/70a5cca42ff0f81c385c70c0e821fd04f5148dd0171a58856e5c316fe8687173",
+      "binding_scope": "CURRENT_RESEARCH_RECORD",
+      "bytes": 1255,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/ROOT-reviewed-study-v2.json",
+      "sha256": "70a5cca42ff0f81c385c70c0e821fd04f5148dd0171a58856e5c316fe8687173"
+    },
+    {
       "archive_member": "objects/5d4fec112593a0e12455c2eac2079c6cf2a882cf935799cfd537815d19dd708d",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 8609,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/parallel-work-status.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/parallel-work-status.json",
       "sha256": "5d4fec112593a0e12455c2eac2079c6cf2a882cf935799cfd537815d19dd708d"
     },
     {
       "archive_member": "objects/3204d5fc2c047718125c631b826fd9d33d1ed3acd4c85de511014f81864af3d2",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 73161,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/reader.html",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/reader.html",
       "sha256": "3204d5fc2c047718125c631b826fd9d33d1ed3acd4c85de511014f81864af3d2"
     },
     {
       "archive_member": "objects/d67ce6f8cd310143ae8a31145102b3c03a28fd9798ca0d2abc0f35364864c20f",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 6866,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-cases-English.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-cases-English.json",
       "sha256": "d67ce6f8cd310143ae8a31145102b3c03a28fd9798ca0d2abc0f35364864c20f"
     },
     {
       "archive_member": "objects/555b977e743bec3a568e141c84939185c1f0de4f4d549a76832c1913e5ecb5b7",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 7494,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-data-review.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-data-review.json",
       "sha256": "555b977e743bec3a568e141c84939185c1f0de4f4d549a76832c1913e5ecb5b7"
     },
     {
       "archive_member": "objects/fcd0b73470b48868d22c259c57ab3ae77d48b7595a533b112340fd461dd24d03",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 7807,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-next-search.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-next-search.json",
       "sha256": "fcd0b73470b48868d22c259c57ab3ae77d48b7595a533b112340fd461dd24d03"
     },
     {
-      "archive_member": "objects/b0485e94221dbaa4345f1aef0b8798a1841210a60eab6fac5e514cfb3c807a41",
+      "archive_member": "objects/90f4ba6c732a2cf3f0473e082aafb1d22d586d66183646f1ccaa4d27bb36feed",
       "binding_scope": "CURRENT_PUBLICATION",
-      "bytes": 12157,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-report-review.json",
-      "sha256": "b0485e94221dbaa4345f1aef0b8798a1841210a60eab6fac5e514cfb3c807a41"
+      "bytes": 6630,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-report-review.json",
+      "sha256": "90f4ba6c732a2cf3f0473e082aafb1d22d586d66183646f1ccaa4d27bb36feed"
     },
     {
       "archive_member": "objects/ad4fb99acb845a4e74859baa62735434d9389359ac182cdc20cd4b3efce456ac",
       "binding_scope": "CURRENT_PUBLICATION",
       "bytes": 19881,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-summary.json",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-summary.json",
       "sha256": "ad4fb99acb845a4e74859baa62735434d9389359ac182cdc20cd4b3efce456ac"
     },
     {
-      "archive_member": "objects/012fd2ae96bb0a9ddadbfedfe79f19d43b36f5cd55a770b3880326deb1f79aeb",
+      "archive_member": "objects/d32ac85877d1b02f3c19384875c8268d1bba80b07f48d5855dfb57b92959ffff",
       "binding_scope": "CURRENT_PUBLICATION",
+      "bytes": 28621,
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors.html",
+      "sha256": "d32ac85877d1b02f3c19384875c8268d1bba80b07f48d5855dfb57b92959ffff"
+    },
+    {
+      "archive_member": "objects/012fd2ae96bb0a9ddadbfedfe79f19d43b36f5cd55a770b3880326deb1f79aeb",
+      "binding_scope": "PREVIOUS_REVIEWED_REPORT_FOR_CSS_DIFF",
       "bytes": 28559,
-      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors.html",
+      "original_path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-source-v1/role-receptors.html",
       "sha256": "012fd2ae96bb0a9ddadbfedfe79f19d43b36f5cd55a770b3880326deb1f79aeb"
     },
     {
@@ -1065,6 +1114,13 @@
       "sha256": "b0485e94221dbaa4345f1aef0b8798a1841210a60eab6fac5e514cfb3c807a41"
     },
     {
+      "archive_member": "objects/90f4ba6c732a2cf3f0473e082aafb1d22d586d66183646f1ccaa4d27bb36feed",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 6630,
+      "original_path": "/private/tmp/gcts-role-receptor-human-report-review-20261018/typed-report-review-v2.json",
+      "sha256": "90f4ba6c732a2cf3f0473e082aafb1d22d586d66183646f1ccaa4d27bb36feed"
+    },
+    {
       "archive_member": "objects/6722bb4b5d74d8a527e56683ac3e0b5ca6d1419d544e06804a268e21719d12a7",
       "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
       "bytes": 11257,
@@ -1261,11 +1317,25 @@
       "sha256": "e6a6273402a14d5c0f72cd5507e0d40d1ad07090b0a1a66c16b525a2c2d0101b"
     },
     {
+      "archive_member": "objects/0b5df3634b380d4282dc9d54ee0d3f9cd29b28702a91f18cf9ecdf931bb95290",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 6285,
+      "original_path": "/private/tmp/gcts-role-receptor-root-v2-source-20261018/build_evidence_v2.py",
+      "sha256": "0b5df3634b380d4282dc9d54ee0d3f9cd29b28702a91f18cf9ecdf931bb95290"
+    },
+    {
       "archive_member": "objects/855d0ea0626c8f758871989b4c7e82d9f8871cc6d43088805ab08426b23796bd",
       "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
       "bytes": 22484,
       "original_path": "/private/tmp/gcts-role-receptor-root-v2-source-20261018/build_report_v1.py",
       "sha256": "855d0ea0626c8f758871989b4c7e82d9f8871cc6d43088805ab08426b23796bd"
+    },
+    {
+      "archive_member": "objects/6f7d91a09cd8640935fb29b3d07e98cc6bda130666471c1dc20091c99b6cb6c7",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 22595,
+      "original_path": "/private/tmp/gcts-role-receptor-root-v2-source-20261018/build_report_v2.py",
+      "sha256": "6f7d91a09cd8640935fb29b3d07e98cc6bda130666471c1dc20091c99b6cb6c7"
     },
     {
       "archive_member": "objects/fe763a3c6feef960e2b685d1812a4fc5640bf40ea8e9da354575a9508c967461",
@@ -1329,6 +1399,13 @@
       "bytes": 8366,
       "original_path": "/private/tmp/gcts-role-receptor-root-v2-source-20261018/update_readers_v1.py",
       "sha256": "12256f9fb8fa13b761ef90c6c491ec958b74b7e670ff0d064c47f3155daf3bcf"
+    },
+    {
+      "archive_member": "objects/f1ec74c3c11755be25161be47e7e856417be88ce919ddf9628c9da8c1574e103",
+      "binding_scope": "CURRENT_SOURCE_REVIEW_OR_PRESERVED_PRE_ACTUAL_DRAFT",
+      "bytes": 1539,
+      "original_path": "/private/tmp/gcts-role-receptor-root-v2-source-20261018/verify_live_v1.py",
+      "sha256": "f1ec74c3c11755be25161be47e7e856417be88ce919ddf9628c9da8c1574e103"
     },
     {
       "archive_member": "objects/04b92a21e48c1c057427f190b30be089ec988aa29e7c6ba2759178fcc0be9204",
@@ -1521,7 +1598,7 @@
     }
   ],
   "goal_complete": false,
-  "original_binding_count": 216,
+  "original_binding_count": 227,
   "prior_public_archive": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/licensed-clusters-reproduction.zip",
   "reproduction": "Use exact current plan Source bindings and the declared compatible Darwin/Python runtime. Preserved negative drafts are not approved alternatives. Rebind paths in a new explicit plan/grant, use a fresh once-only output directory and do not rerun the consumed actual. Historical transitive metadata paths are retained as data, not recursively hydrated. The embedded manifest omits the external archive hash to avoid self-reference.",
   "runtime_binary_included": false,
@@ -1533,5 +1610,5 @@
   "schema": "role-receptor-evidence-manifest-v1",
   "scientific_replays_by_packaging": 0,
   "scope": "One finite equality-role interface actual; current38 executable Sources, original17 mathematical model, full donor packet, distinct Source/data/report reviews and preserved pre-actual negative drafts. No point search, theorem, useful transfer, universal family, trained RL or performance claim.",
-  "unique_object_count": 192
+  "unique_object_count": 203
 }

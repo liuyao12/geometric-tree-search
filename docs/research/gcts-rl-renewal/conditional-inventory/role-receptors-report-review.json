@@ -1,178 +1,151 @@
 {
   "GCTS_advantage_accepted": false,
   "RL_accepted": false,
-  "ROOT_plan": {
-    "bytes": 22276,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-finite-all-ROOT-20261018/ROOT-plan-v1.json",
-    "sha256": "91fcae1cadf54d1323e563e0cb52f135235e24da0152e6bb04a091ead98c52f1"
-  },
   "author_ancestry": "I authored the role-provenance checker, finite CASE V1/V2 and English map, and earlier licensed/two-witness/cache checkers/CASEs and independent verifier398acd. I authored neither the role lifter, fd3 expansion producer,4358 expansion checker, host61b/native model, Root cold/grant/actual/admission/report, nor the genuine current Source/data reviews. This is independent of Root/report authorship and is not a new independent audit of my own scientific components.",
   "author_identity": "/root",
   "author_overlap": false,
   "blockers": [],
+  "body_sha256": "ed4f30be17aa3f0943ed77994c4151d57830562a09434bad7986c07e36b92e78",
+  "check_count": 15,
   "checker_evaluations": 0,
-  "clock_evaluations": 0,
-  "codec_evaluations": 0,
-  "comparison_count": 289,
-  "complete_GCTS_model_accepted": false,
-  "decompressions": 0,
-  "deployment_checked": false,
-  "display_counts": {
-    "actual_marking_bands": 63,
-    "formula_rows": 15,
-    "tile_cards": 9,
-    "unfilled_input_rows": 6
-  },
-  "exact_actual": {
-    "bytes": 3146700,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
-    "sha256": "76a3c71eb581f44634a5141fe81ea4a548a93f69cc68dff01488749294df4915"
-  },
-  "findings": [
+  "checks": [
     {
-      "finding": "HTML012fd2, public summaryad4fb99, reader3204d5fc and status5d4fec are exact. Public summary preserves the original Root admission literally, including its historical pending field, while its current pending field is false and binds genuine555b977e. The copied data review, English map and next-policy note match their raw pins.",
-      "topic": "Exact public/raw evidence joins"
+      "label": "parent review exact and passed",
+      "passed": true
     },
     {
-      "finding": "All nine constituent cards and all63 displayed marking bands match saved global point values. Formula-channel payloads decode literally to the displayed absolute rows. Native ordered offsets match displayed remote read rows. Explicit head-channel zeros remain visible; no absent marking is invented. These are three hypothetical local unions, not search placements or one combined nine-tile proof.",
-      "topic": "Actual colored point values"
+      "label": "original HTML exact012fd2/28559",
+      "passed": true
     },
     {
-      "finding": "All15 formula rows match saved literals. Six rows are explicitly unoccupied input obligations; nine are primitive conditional rows. Equality-license English disclaims proof of the inputs; each modus-ponens sentence names its actual ordered read rows. The five case-purpose summaries agree with the authored English map and the five closed PASS records.",
-      "topic": "Formula rows and English"
+      "label": "current HTML exactd32ac858/28621",
+      "passed": true
     },
     {
-      "finding": "All three highlighted role bindings and all nine source/receiver port comparisons match literal saved tuples, including Changed/Identical labels. L-only leaves the output unchanged and makes its contextual premise equal to its conclusion. C-only uses a reflexive context and yields a reflexive equality. R-only uses zero; no compound-right-term positive is implied. The report explicitly says these are interface qualification, not useful proof-search success.",
-      "topic": "Independent role ports and trivial probes"
+      "label": "exact62byte addition only",
+      "passed": true
     },
     {
-      "finding": "Both displayed contexts match saved source/misleading literals. The outside variable and the distinguished formal hole are kept distinct in the actual source context. The rejection is correctly described as false donor provenance after recomputed identity, without declaring the other context illegal for a separately checked receiver.",
-      "topic": "Native context provenance"
+      "label": "whole new file equals old with sole head style insertion",
+      "passed": true
     },
     {
-      "finding": "One bounded emitted family/one spine trial, five cases, three changed instances,4.136522 seconds and80855040 peak bytes join the saved admission. The displayed77.109 MiB is the rounded binary-unit conversion. Source-ground has provenance plus forward checks; only the three changed instances have these fresh native/local-union receipts. The one trial and within-trial reuse supply no performance comparison.",
-      "topic": "Evidence and resource scope"
+      "label": "exact style occurs once only",
+      "passed": true
     },
     {
-      "finding": "The report describes normal unfinished-return retention after V2 repair, not snapshots after thrown errors. The successful actual does not establish runtime coverage of normal UNKNOWN branches. Exact first guard/tick propagation is a recorded finite assertion; JSON cannot independently re-observe Python object identity. Preserved V1 negative reviews and the successful current peers have separate scopes.",
-      "topic": "Pre-actual repair and callback scope"
+      "label": "entire body byte identical",
+      "passed": true
     },
     {
-      "finding": "The extraction grammar is explicitly human-designed and occurrence discovery automatic, with no trained RL. The prior three-to-five-node prefix and omitted closed twelve-node donor are described as a Source/data diagnosis. Closed-root inventory retention and subsequent generic premise search are proposed, not implemented. Complete selected-target DAG, fresh whole-proof check, equal acquired knowledge, charged costs, scheduler/fallback/rollback remain prospective requirements.",
-      "topic": "Contribution and next step"
+      "label": "removal restores entire old file",
+      "passed": true
     },
     {
-      "finding": "The task-owned teaser, current roles/counts/nonclaims and next-policy wording agree with this study. Final reader/status bytes match the saved actual forward patch outputs and reverse outputs match preimages. Mathematical text uses supported LaTeX delimiters and an installed MathJax script declaration; delimiters and local anchors are balanced/resolved in Source. This review did not assess live browser rendering.",
-      "topic": "Reader/status integration and mathematical formatting"
+      "label": "parallel-work-status.json byte identical",
+      "passed": true
+    },
+    {
+      "label": "reader.html byte identical",
+      "passed": true
+    },
+    {
+      "label": "role-receptors-cases-English.json byte identical",
+      "passed": true
+    },
+    {
+      "label": "role-receptors-data-review.json byte identical",
+      "passed": true
+    },
+    {
+      "label": "role-receptors-next-search.json byte identical",
+      "passed": true
+    },
+    {
+      "label": "role-receptors-summary.json byte identical",
+      "passed": true
+    },
+    {
+      "label": "all existing copied companions covered",
+      "passed": true
     }
   ],
-  "formatting_Source_inspected_not_executed": {
-    "bytes": 22484,
-    "path": "/private/tmp/gcts-role-receptor-root-v2-source-20261018/build_report_v1.py",
-    "sha256": "855d0ea0626c8f758871989b4c7e82d9f8871cc6d43088805ab08426b23796bd"
+  "clock_evaluations": 0,
+  "codec_evaluations": 0,
+  "complete_GCTS_model_accepted": false,
+  "current_report": {
+    "bytes": 28621,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors.html",
+    "sha256": "d32ac85877d1b02f3c19384875c8268d1bba80b07f48d5855dfb57b92959ffff"
   },
-  "genuine_independent_saved_data_review": {
-    "bytes": 7494,
-    "path": "/private/tmp/gcts-role-receptor-finite-data-peer-20261018/typed-data-review-v1.json",
-    "sha256": "555b977e743bec3a568e141c84939185c1f0de4f4d549a76832c1913e5ecb5b7"
-  },
+  "decompressions": 0,
+  "deployment_checked": false,
+  "entire_body_identical": true,
+  "finding": "The entire report is the reviewed parent plus the exact CSS rule in the head. Formula, marking, row, English, evidence, source and scope text is byte-identical. The six present companion files, including the current summary, reader and status, are byte-identical. CSS sets visible overflow and vertical padding for proof-formula blocks; this Source comparison does not establish its live visual effect.",
   "goal_complete": false,
-  "independent_saved_data_review_passed": true,
+  "header_delta": {
+    "bytes": 62,
+    "literal_addition": "<style>.proof .formula{overflow:visible;padding:4px 0}</style>",
+    "position": "immediately before closing head",
+    "sole_delta": true
+  },
   "kernel_evaluations": 0,
-  "limits": [
-    "No project/module/kernel/checker/miner/native/clock/codec or scientific Source was imported or evaluated; no actual or proof was replayed and no transport decompressed.",
-    "The document-only label printer formats existing literal syntax; it performs no substitution, inference, membership or proof validation.",
-    "Scientific/source-custody/native resource admission relies on the separately pinned Root admission and genuine saved-data peer; this report review adds no native/proof authority.",
-    "This pass applies only to the exact report, summary, reader and status pins listed. Manifest/archive/report-review links were prospectively awaiting Root packaging. Archive contents, deployment and live MathJax/layout remain Root responsibilities.",
-    "Only task-owned reader/status additions were semantically reviewed; historical sections retain their existing evidence and were not independently re-audited here."
-  ],
   "live_render_checked": false,
   "logical_proof_accepted": false,
-  "mining_evaluations": 0,
   "mismatches": 0,
   "module_evaluations": 0,
   "native_runs": 0,
-  "original_ROOT_admission": {
-    "bytes": 16765,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-finite-all-ROOT-20261018/ROOT-case-admission-v1.json",
-    "sha256": "b6ceb59a2359bd1126f23455e92c3197b9b66e84033a5a4ad09895a32300111e"
+  "parent_report": {
+    "bytes": 28559,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors.html",
+    "sha256": "012fd2ae96bb0a9ddadbfedfe79f19d43b36f5cd55a770b3880326deb1f79aeb"
   },
-  "own_sources_disclosed": {
-    "English_map": {
-      "bytes": 6866,
-      "path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/role-receptor-five-case-English-map-v2.json",
-      "sha256": "d67ce6f8cd310143ae8a31145102b3c03a28fd9798ca0d2abc0f35364864c20f"
-    },
-    "role_CASE2": {
-      "bytes": 23741,
-      "path": "/private/tmp/gcts-role-receptor-checker-v2-source-20261018/role_receptor_finite_cases_v2.py",
-      "sha256": "8bb506fdb70e327ef55cf71ff2eda53a48010fd2779af0393f6c16fd6b868b6d"
-    },
-    "role_checker": {
-      "bytes": 20110,
-      "path": "/private/tmp/gcts-role-receptor-checker-source-20261018/independent_role_receptor_checker_v1.py",
-      "sha256": "ef8f34fb191bcd89f518dbec081f77508c06835c45515bbc8fde117bf7f1707c"
-    }
+  "parent_review": {
+    "bytes": 12157,
+    "path": "/private/tmp/gcts-role-receptor-human-report-review-20261018/typed-report-review-v1.json",
+    "sha256": "b0485e94221dbaa4345f1aef0b8798a1841210a60eab6fac5e514cfb3c807a41"
   },
   "performance_accepted": false,
   "report_review_passed": true,
-  "review_metadata_helper": {
-    "bytes": 22874,
-    "path": "/private/tmp/gcts-role-receptor-human-report-review-20261018/freeze_report_review_v1.py",
-    "sha256": "0d4fd93a464b66ed4151df34b42b628536d946ce3ed0039670beeeae92b26a9e"
-  },
-  "reviewed_files": {
+  "reviewer_identity": "/root/conventional_control_review",
+  "schema": "role-receptor-human-report-CSS-addendum-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Narrow document Source/bytes comparison only. Parent review findings and scientific exclusions are inherited unchanged; the289 saved-label comparisons were not rerun. No new scientific/data admission, code evaluation, native/clock/codec/replay, UI automation or live verification. Root owns evidence repackaging, publication and live formula-height verification.",
+  "source_only": true,
+  "status": "PASS_EXACT_CSS_ONLY_SUCCESSOR",
+  "unchanged_companions": {
     "parallel-work-status.json": {
       "bytes": 8609,
-      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/parallel-work-status.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/parallel-work-status.json",
       "sha256": "5d4fec112593a0e12455c2eac2079c6cf2a882cf935799cfd537815d19dd708d"
     },
     "reader.html": {
       "bytes": 73161,
-      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/reader.html",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/reader.html",
       "sha256": "3204d5fc2c047718125c631b826fd9d33d1ed3acd4c85de511014f81864af3d2"
     },
     "role-receptors-cases-English.json": {
       "bytes": 6866,
-      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-cases-English.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-cases-English.json",
       "sha256": "d67ce6f8cd310143ae8a31145102b3c03a28fd9798ca0d2abc0f35364864c20f"
     },
     "role-receptors-data-review.json": {
       "bytes": 7494,
-      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-data-review.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-data-review.json",
       "sha256": "555b977e743bec3a568e141c84939185c1f0de4f4d549a76832c1913e5ecb5b7"
     },
     "role-receptors-next-search.json": {
       "bytes": 7807,
-      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-next-search.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-next-search.json",
       "sha256": "fcd0b73470b48868d22c259c57ab3ae77d48b7595a533b112340fd461dd24d03"
     },
     "role-receptors-summary.json": {
       "bytes": 19881,
-      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors-summary.json",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v2/role-receptors-summary.json",
       "sha256": "ad4fb99acb845a4e74859baa62735434d9389359ac182cdc20cd4b3efce456ac"
-    },
-    "role-receptors.html": {
-      "bytes": 28559,
-      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/role-receptor-progress-20261018/publication-draft-v1/role-receptors.html",
-      "sha256": "012fd2ae96bb0a9ddadbfedfe79f19d43b36f5cd55a770b3880326deb1f79aeb"
     }
   },
-  "reviewer_identity": "/root/conventional_control_review",
-  "saved_comparison": {
-    "bytes": 114770,
-    "path": "/private/tmp/gcts-role-receptor-human-report-review-20261018/saved-comparison-v1.json",
-    "sha256": "eefce18fb0202158d1008ea1041283fe621361c8b02fcff17f4d66c2510aaac8"
-  },
-  "saved_data_and_document_sources_only": true,
-  "schema": "role-receptor-human-report-review-v1",
-  "scientific_acceptance": false,
-  "scientific_calls": 0,
-  "scientific_replays": 0,
-  "source_only": true,
-  "source_only_meaning": "This human-report review inspected raw saved JSON, HTML, Source formatting and literal labels. It did not execute scientific Sources. It does not reclassify the distinct saved-data audit as Source-only or claim independent scientific admission.",
-  "status": "PASS_SCOPED_REPORT_WORDING_AND_SAVED_LABEL_FIDELITY",
-  "universal_schema_proved": false,
-  "useful_transfer_accepted": false,
   "wording_and_saved_data_review_passed": true
 }
