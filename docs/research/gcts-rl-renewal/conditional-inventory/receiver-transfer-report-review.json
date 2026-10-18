@@ -1,19 +1,15 @@
 {
   "GCTS_or_RL_advantage_accepted": false,
   "GCTS_selected_proof_accepted": false,
-  "Root_static_and_full_archive_verification": {
-    "bytes": 3834,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receiver-transfer-progress-20261018/ROOT-static-publication-audit-v1.json",
-    "sha256": "8c85ba8ead512479584197c2c210ae75e6ba66adc2da19a81c1b0ad0060985c6"
-  },
   "actuals": 0,
   "author_identity": "/root",
   "author_overlap": {
-    "current_report_authorship_overlap": false,
-    "prior_work": "Reviewer previously inspected Root CASE/cold Source, performed the closed point three-arm saved-data audit, and reviewed the earlier point-only report. Root authored all current report bytes/repairs. Conventional actual data has a separate review by conventional_control_review. No review here is a further native mathematical replay."
+    "current_CSS_authorship_overlap": false,
+    "prior_work": "Same reviewer authored V2 report peer after earlier Root CASE/cold and point saved-data reviews. Root alone authored this CSS fix. Prior conventional saved-data review remains separate; no scientific replay here."
   },
   "clock_calls": 0,
   "codec_calls": 0,
+  "data_or_math_changed": false,
   "decompressions": 0,
   "files": [
     {
@@ -52,9 +48,9 @@
       "sha256": "d7c02520fe0ea23d96e3413542948e32eb0cb7c70e0da04eef7b30d2bac66ffe"
     },
     {
-      "bytes": 32041,
+      "bytes": 32130,
       "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/receiver-transfer.html",
-      "sha256": "62911bd94d56537fa7096a2c1de5a765a244e56f7af3e740ad5b3368d96c0a05"
+      "sha256": "ca3b73201184756093eb0bf193ceeefeb84550f3948b3a31f3b1dc6d85ef0b40"
     },
     {
       "bytes": 80919,
@@ -73,44 +69,46 @@
     }
   ],
   "findings": {
-    "bytes": 4471,
-    "path": "/private/tmp/gcts-receiver-transfer-report-peer-20261018/findings-v2.json",
-    "sha256": "679f55398b0176409770d4e9d27ec731f068889e6db4b03c6aad5e53572e26cd"
+    "bytes": 1340,
+    "path": "/private/tmp/gcts-receiver-transfer-report-peer-20261018/findings-v3.json",
+    "sha256": "88c335b69bbd35ffa5016ef4d16088b4c582ab0853c6add3615488b82a1fc205"
   },
   "goal_complete": false,
   "independent_report_audit": {
-    "bytes": 138342,
-    "path": "/private/tmp/gcts-receiver-transfer-report-peer-20261018/independent-report-audit-v2.json",
-    "sha256": "2b3fb02c47ba6ecd703b4dce563f4c0b3d8c9fe43fb61542d21eb100fd54a1d2"
+    "bytes": 5905,
+    "path": "/private/tmp/gcts-receiver-transfer-report-peer-20261018/independent-report-audit-v3.json",
+    "sha256": "4243cdf78a7f3b6b677bd556d7331c76b55699a14103e48b8c415f720bfbd6da"
   },
   "module_evaluations": 0,
-  "prior_point_draft_review": {
-    "bytes": 2528,
-    "path": "/private/tmp/gcts-receiver-transfer-report-peer-20261018/typed-report-review-v1.json",
-    "sha256": "d478ba7bae818fe4fefa6005b38d9ef2ea7f65b9b882cc5b5277068996dd2bfd"
+  "parent_review": {
+    "bytes": 5704,
+    "path": "/private/tmp/gcts-receiver-transfer-report-peer-20261018/typed-report-review-v2.json",
+    "sha256": "2698566dc9b9fe145f0f16ce668449ddcbec6fedb68457e9c228699506000259"
   },
+  "presentation_only": true,
   "publication_content_ready": true,
   "release_gates_remaining": [
-    "Root task-only commit/publication to existing destination",
-    "Root live whole-byte verification and MathJax/layout inspection"
+    "Root republish only changed HTML and successor peer to existing destination",
+    "Root verify deployed whole bytes and actual proof-table formula/Origin geometry in live UI"
   ],
   "report_only": true,
   "report_review_passed": true,
   "reviewer_identity": "/root/receiver_driver_review",
-  "schema": "GCTS-right-two-receiver-transfer-typed-report-review-v2",
+  "schema": "GCTS-right-two-receiver-transfer-typed-report-review-v3",
   "scientific_acceptance": false,
   "scientific_calls": 0,
   "scientific_replays": 0,
-  "scope": "Exact final eleven publication files: dedicated six-run report, main/source-page current edits, JSON summaries/status and manifest/archive raw binding",
-  "successful_nonidentity_lemma_transfer_accepted": false,
+  "scope": "Narrow presentation successor of V2: exact proof-table CSS replacement and full eleven non-peer publication pins",
   "validation": {
     "archive_contents_independently_decompressed_by_peer": false,
-    "archive_raw_hash_verified": true,
     "content_mismatches": 0,
-    "independent_inverse_LaTex_formula_AST_comparisons": 20,
+    "eleven_full_publication_pins_verified": true,
     "live_UI_verified": false,
-    "publication_files_full_hash_bound": 11,
-    "static_data_checks": 773
+    "new_formula_translation_checks": 0,
+    "new_narrow_static_checks": 18,
+    "other_ten_assets_unchanged": true,
+    "prior773_checks_rerun": false,
+    "semantic_HTML_bytes_unchanged": true
   },
-  "verdict": "PASS_CURRENT_REPORT_CONTENT_AND_ARCHIVE_RAW_BINDING"
+  "verdict": "PASS_PRESENTATION_ONLY_SUCCESSOR_EXACT_SEMANTIC_BYTES_UNCHANGED"
 }
