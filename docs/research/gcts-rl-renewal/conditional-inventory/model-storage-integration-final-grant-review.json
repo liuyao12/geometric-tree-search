@@ -1,0 +1,1434 @@
+{
+  "actual_execution_authorized": false,
+  "actual_launches": 0,
+  "audit": {
+    "bytes": 212990,
+    "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/raw-final-grant-audit-v1.json",
+    "sha256": "c17099a72f05dc67045b751daf2eea626a1150e7d11f6cb47a7c812a7541821a"
+  },
+  "audit_Source": {
+    "bytes": 19010,
+    "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/audit_final_grant_delta_v1.py",
+    "sha256": "1d4de330e373147ed7a4a1b0cb19dd24a2587ff426f0587f8c4d9d613b83de8d"
+  },
+  "author_identity": "/root",
+  "author_overlap": "Reviewer authored bridge Driver/Cold and compact Model and wrote the frozen false-plan/declaration reviews. This receipt reviews only new Root grant flags/roles/scope, exact unchanged preimages/current raw bindings/fresh paths. It is not independent certification of own Sources or a replacement for the separate genuine Receiver bridge/Model/Reader/Control outer Source reviews.",
+  "authorized_index": {
+    "bytes": 15935,
+    "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "9b6f2276020ff64b5d7772c75063614639887857f5cd93c31ba79de2d3448a83"
+  },
+  "check_count": 561,
+  "codec_or_decompression_calls": 0,
+  "cold": {
+    "bytes": 31226,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+    "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+  },
+  "compiler_calls": 0,
+  "current_review_roles": {
+    "bridge_Source": {
+      "bytes": 7942,
+      "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+    },
+    "once_Source": {
+      "bytes": 7732,
+      "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/typed-Source-review-v2.json",
+      "sha256": "d1fed0448738dbe07efbd2482a6259dc58ecf21473a3cbf46bf09e61a242d4a2"
+    },
+    "prospective_plans": {
+      "bytes": 178322,
+      "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+      "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+    }
+  },
+  "declaration": {
+    "bytes": 9760,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+    "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+  },
+  "final_authorizations": [
+    {
+      "bytes": 3604,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-base-ordinary-ROOT-20261018-v1.json",
+      "sha256": "b53813aeae1784ed07c8822c0483cab074ebcde71b3a7f1dd95fd1eaa380a918"
+    },
+    {
+      "bytes": 3612,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+      "sha256": "1d4452097d24b5fc172cce5c47b4a40a0f9b819feeb63a450ee115822ae2848e"
+    },
+    {
+      "bytes": 3613,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+      "sha256": "505eee20837673ec71353b3bfcb1c9c82ded4f6d9775f5d4ec3a7cee79e8090c"
+    },
+    {
+      "bytes": 3605,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+      "sha256": "826a88f2b7f0f84ddebdb82aad790212cc0b4cbefc5316838f90f34a5c088ed4"
+    },
+    {
+      "bytes": 3608,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+      "sha256": "f6b6c1b204c384ad85fa16d4613d41fa3232e48f91bd80bf38ec276f12d1d6df"
+    },
+    {
+      "bytes": 3616,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+      "sha256": "488d3c98bcf4c204d1992c6d7ad197ccc1a99e21785498b2947adb8ffff664fa"
+    }
+  ],
+  "final_runner_plans": [
+    {
+      "bytes": 2875,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-ordinary-ROOT-20261018-v1.json",
+      "sha256": "97190fe4621014580f40988f60543fabadf5ed1debc0eee71f0299fe0177a9df"
+    },
+    {
+      "bytes": 2915,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+      "sha256": "eb29fb61a4ae8de1696ef8c5924b0e7462636c0996ab9c1a1cf9f721ea8871ec"
+    },
+    {
+      "bytes": 2920,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+      "sha256": "0a12b6ebcc85f6bee0047b490c3ef020665fcdea8068df0754df9af1182c8ad9"
+    },
+    {
+      "bytes": 2880,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+      "sha256": "aa133a3db58ff2908a126529b8f62dc835135e1ae752ce9d53e2cd2860f3599f"
+    },
+    {
+      "bytes": 2895,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+      "sha256": "9ebce8493f0eff97ce8c0df5a168b0b08b8686cf1a1d914f22c2c3942dd985a1"
+    },
+    {
+      "bytes": 2935,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+      "sha256": "d384215e15975141057d8e8a5d63b39dae39113172c54c3c90ff9ecb907a7920"
+    }
+  ],
+  "findings": [
+    {
+      "finding": "All six final once plans equal their exact frozen16field scientific preimages; only authorization descriptor changed. All seven-field auths change only false→true, empty→exact current3role bindings and scope wording. Complete worker plans/Source/raw native/runtime/policy/inputs/profile remain literal equal and every canonical subject hash joins.",
+      "id": "G1_NARROW_ROOT_DELTA",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Bridge e97a exactly reviews both current Cold/Driver Sources, Control outerV2 d1fed exactly reviews runner3e85/observere908 and current declaration/closure, and all-plan12a51 exactly binds falseindex/decl/closure/all6workers/preimages. Each role has a distinct author/reviewer for its reviewed object; Source roles use Receiver and Root plan composition uses Library. Receipt count or containment alone is not treated as mathematical authority.",
+      "id": "G2_CURRENT_GENUINE_ROLE_SCOPE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Six Root true max-one grants retain complete pair order and allreaderinterned. Final observer directories, actual directories and consumption/output/failure markers are absent. No grant was consumed or actual launched by this review.",
+      "id": "G3_FRESH_ONCE_ONLY",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Root must collect this exact receipt and confirm all agents idle before sequential once measurements. Every failure/UNKNOWN and all resource/custody/native/point/terminal evidence must be retained. No present storage fit, proof success, theorem or RL/GCTS gain is established.",
+      "id": "G4_ACTIVATION_AND_RESULT_GATES",
+      "severity": "required_future"
+    }
+  ],
+  "goal_complete": false,
+  "grant_delta_review_passed": true,
+  "limitations": [
+    "This receipt is prospective raw metadata/Source identity only. No project/driver/Cold/Model/native/codec/compiler/solver/search/renderer component, Root grant helper or target result was imported/evaluated.",
+    "Previous Source reviews remain separate genuine scopes; reviewer-authored bridge/Model are not self-certified. Reauthentication of the reviewer's frozen false-plan receipt checks Root's unchanged subject use, not a new independent scientific audit.",
+    "Raw whole Source, package and input map pins are current prelaunch observations, not a future filesystem lock or continuous hostile-runtime attestation. Actual Source/callback/origin/native/reaping/log/absolute180/210 and separate worker+native1GiB gates remain required.",
+    "The SourceV2 group-reappearance repair is current; preserved V1 negative remains historical/unactivated. Conditional final outer raw-custody loop after resource acceptance must be reported accurately for failures; later Root raw posthash is separate.",
+    "No retry, salvage, domain/output reduction, cap increase, native alias/body-copy optimization or old result promotion is authorized. Contemporary23ordinary is not a historical22 timing replication; this one known engineering case gives no general/storage-only/fullpipeline benefit conclusion."
+  ],
+  "limits": {
+    "aggregate_peak_bytes": 1073741824,
+    "failure_cleanup_seconds": 5,
+    "overall_seconds": 210,
+    "poll_milliseconds": 20,
+    "result_bytes": 134217728,
+    "runner_plan_bytes": 16777216,
+    "stderr_bytes": 4194304,
+    "stdout_bytes": 4194304,
+    "work_seconds": 180,
+    "worker_receipt_bytes": 4194304
+  },
+  "logic_calls": 0,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "observer": {
+    "bytes": 4844,
+    "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+    "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+  },
+  "parent_cohort_declaration": {
+    "bytes": 21453,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/experiment-declaration-v2.json",
+    "sha256": "19fab9173cf52ebd9e0d5517fd4dbbb44ed9d72f3737676d9701fd6a4c8bde5d"
+  },
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "prospective_index": {
+    "bytes": 11407,
+    "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/prospective-index-v1.json",
+    "sha256": "5d1c04b35531acd33b35f33409371f35c47c37008aa874484b3d78cecd0a7eb0"
+  },
+  "prospective_plan_review": {
+    "bytes": 178322,
+    "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+    "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+  },
+  "reader_calls": 0,
+  "renderer_calls": 0,
+  "required_before_any_actual": [
+    "Root binds this exact final-grant review receipt",
+    "Root confirms all three agents fully idle",
+    "Root alone executes the six exact final plans once in declared order, retaining every outcome"
+  ],
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/conventional_library",
+  "runner": {
+    "bytes": 30793,
+    "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+    "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+  },
+  "runtime_closure": {
+    "bytes": 69562,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+    "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+  },
+  "same_current_materialized_aliases": {
+    "bounded_request_oracle": {
+      "bytes": 20424,
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "certificate_boundary_search": {
+      "bytes": 7089,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "interned_quantified_family_points_v1": {
+      "bytes": 4311,
+      "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    },
+    "interned_result_reader_v2": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    "logic": {
+      "bytes": 10808,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    "native_inference_inventory": {
+      "bytes": 10594,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "native_inventory_policy": {
+      "bytes": 2746,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "native_receptor_points": {
+      "bytes": 8962,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "proof_boundary": {
+      "bytes": 6992,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "quantified_family_points_v2": {
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    "quantified_receptors_v1": {
+      "bytes": 11060,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    "quantified_symbolic_control_v1": {
+      "bytes": 20067,
+      "path": "/private/tmp/gcts-symbolic-control-source-20261018/quantified_symbolic_control_v1.py",
+      "sha256": "140880d1bb1cec17a1a9f1b3ebab73516f63ce447972d124698c0dccf23d033f"
+    },
+    "semantic_inventory_guidance": {
+      "bytes": 6942,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "semantic_inventory_oracle": {
+      "bytes": 2180,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "semantic_inventory_search": {
+      "bytes": 5318,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "semantic_lemma_inventory": {
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "semantic_point_smt": {
+      "bytes": 4593,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "semantic_receiver_driver": {
+      "bytes": 52750,
+      "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+      "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+    },
+    "semantic_receptor_points": {
+      "bytes": 7409,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "tape_binary": {
+      "bytes": 3756,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "tape_tree_machine": {
+      "bytes": 19188,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "tree_machine": {
+      "bytes": 13290,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "turtle": {
+      "bytes": 28533,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    }
+  },
+  "schema": "compact-model-cold-final-grant-delta-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_limits": {
+    "check_steps": 2048,
+    "compile_queries": 512,
+    "conservative_worker_plus_native_peak_bytes": 1073741824,
+    "guard_steps": 1000000000,
+    "overall_seconds": 210,
+    "proposal_steps": 24,
+    "registry_steps": 5000000000,
+    "result_bytes": 134217728,
+    "search_max_nodes": 5000,
+    "search_seconds": 30,
+    "seed": 64000,
+    "work_seconds": 180
+  },
+  "scientific_replays": 0,
+  "scope": "Independent Root final true-grant metadata delta/current role-subject binding only for six unchanged previously reviewed complete cold subjects.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "subjects": [
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 3604,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-base-ordinary-ROOT-20261018-v1.json",
+        "sha256": "b53813aeae1784ed07c8822c0483cab074ebcde71b3a7f1dd95fd1eaa380a918"
+      },
+      "authorization_draft": {
+        "bytes": 490,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorization-drafts/model-cold-base-ordinary-ROOT-20261018-v1.json",
+        "sha256": "475ffe997115f30b89c6e5414937d4da4454a6da7f50666a3ad63c649086476f"
+      },
+      "fresh_absent_paths": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-ordinary-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-base-ordinary-ROOT-20261018-v1-terminal-observation",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/worker-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/worker-failure.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/runner-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/result.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/POST_RECEIPT_DEADLINE_FAILURE.json"
+      ],
+      "invocation_id": "model-cold-base-ordinary-ROOT-20261018-v1",
+      "mode": "base",
+      "model_storage": "ordinary",
+      "order": 1,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "interned",
+      "review_roles": {
+        "bridge_Source": {
+          "receipt": {
+            "bytes": 7942,
+            "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/typed-Source-review-v1.json",
+            "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+          },
+          "required_subjects": [
+            {
+              "bytes": 31226,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+              "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+            },
+            {
+              "bytes": 52750,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+              "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "once_Source": {
+          "receipt": {
+            "bytes": 7732,
+            "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/typed-Source-review-v2.json",
+            "sha256": "d1fed0448738dbe07efbd2482a6259dc58ecf21473a3cbf46bf09e61a242d4a2"
+          },
+          "required_subjects": [
+            {
+              "bytes": 30793,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+              "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+            },
+            {
+              "bytes": 4844,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+              "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "prospective_plans": {
+          "receipt": {
+            "bytes": 178322,
+            "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+            "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+          },
+          "required_subjects": [
+            {
+              "bytes": 9760,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+              "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+            },
+            {
+              "bytes": 69562,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+              "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+            },
+            {
+              "bytes": 18002,
+              "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-base-ordinary-ROOT-20261018-v1.json",
+              "sha256": "4353549250a2162a49e83324750cb70c075b2d270e0bc5751958f27828cbdc94"
+            }
+          ],
+          "reviewer_identity": "/root/conventional_library"
+        }
+      },
+      "runner_plan": {
+        "bytes": 2875,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-ordinary-ROOT-20261018-v1.json",
+        "sha256": "97190fe4621014580f40988f60543fabadf5ed1debc0eee71f0299fe0177a9df"
+      },
+      "runner_plan_draft": {
+        "bytes": 2880,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-base-ordinary-ROOT-20261018-v1.json",
+        "sha256": "f897509cfa6f63f76c19de733816d5db4998dc52f838c37ee69103b7cf335624"
+      },
+      "subject_sha256": "8cf55c286b9c2afce6ce5b8d3f664b413d4e9945c8e5dca3f1651d1d13f1667e",
+      "terminal_directory": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-ordinary-ROOT-20261018-v1-terminal-observation",
+      "whole_subject": {
+        "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1",
+        "cold": {
+          "bytes": 31226,
+          "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+          "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+        },
+        "environment": {
+          "LANG": "en_US.UTF-8",
+          "LC_ALL": "en_US.UTF-8",
+          "TZ": "UTC"
+        },
+        "integration_declaration": {
+          "bytes": 9760,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+          "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+        },
+        "invocation_id": "model-cold-base-ordinary-ROOT-20261018-v1",
+        "limits": {
+          "aggregate_peak_bytes": 1073741824,
+          "failure_cleanup_seconds": 5,
+          "overall_seconds": 210,
+          "poll_milliseconds": 20,
+          "result_bytes": 134217728,
+          "runner_plan_bytes": 16777216,
+          "stderr_bytes": 4194304,
+          "stdout_bytes": 4194304,
+          "work_seconds": 180,
+          "worker_receipt_bytes": 4194304
+        },
+        "mode": "base",
+        "model_storage": "ordinary",
+        "observer": {
+          "bytes": 4844,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+          "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+        },
+        "python": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+        },
+        "receiver_id": "quantified-diagonal-specialization-001",
+        "result_reader": "interned",
+        "runner": {
+          "bytes": 30793,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+          "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+        },
+        "runtime_closure": {
+          "bytes": 69562,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+          "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+        },
+        "schema": "ROOT-compact-model-cold-once-plan-v1",
+        "worker_plan": {
+          "bytes": 18002,
+          "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-base-ordinary-ROOT-20261018-v1.json",
+          "sha256": "4353549250a2162a49e83324750cb70c075b2d270e0bc5751958f27828cbdc94"
+        }
+      },
+      "worker_plan": {
+        "bytes": 18002,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-base-ordinary-ROOT-20261018-v1.json",
+        "sha256": "4353549250a2162a49e83324750cb70c075b2d270e0bc5751958f27828cbdc94"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 3612,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "1d4452097d24b5fc172cce5c47b4a40a0f9b819feeb63a450ee115822ae2848e"
+      },
+      "authorization_draft": {
+        "bytes": 490,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorization-drafts/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "8feaefa9833f0a28e5cf30b0bd3c00bda437a7a664d29a204f07a08e71b7a3cb"
+      },
+      "fresh_absent_paths": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-literal-interned-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-base-literal-interned-ROOT-20261018-v1-terminal-observation",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/worker-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/worker-failure.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/runner-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/result.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/POST_RECEIPT_DEADLINE_FAILURE.json"
+      ],
+      "invocation_id": "model-cold-base-literal-interned-ROOT-20261018-v1",
+      "mode": "base",
+      "model_storage": "literal_interned",
+      "order": 2,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "interned",
+      "review_roles": {
+        "bridge_Source": {
+          "receipt": {
+            "bytes": 7942,
+            "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/typed-Source-review-v1.json",
+            "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+          },
+          "required_subjects": [
+            {
+              "bytes": 31226,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+              "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+            },
+            {
+              "bytes": 52750,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+              "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "once_Source": {
+          "receipt": {
+            "bytes": 7732,
+            "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/typed-Source-review-v2.json",
+            "sha256": "d1fed0448738dbe07efbd2482a6259dc58ecf21473a3cbf46bf09e61a242d4a2"
+          },
+          "required_subjects": [
+            {
+              "bytes": 30793,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+              "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+            },
+            {
+              "bytes": 4844,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+              "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "prospective_plans": {
+          "receipt": {
+            "bytes": 178322,
+            "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+            "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+          },
+          "required_subjects": [
+            {
+              "bytes": 9760,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+              "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+            },
+            {
+              "bytes": 69562,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+              "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+            },
+            {
+              "bytes": 18026,
+              "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+              "sha256": "16e2faa41bcdb38a5607f1df37e301f0b3096f2188e14f11cb670f760449e252"
+            }
+          ],
+          "reviewer_identity": "/root/conventional_library"
+        }
+      },
+      "runner_plan": {
+        "bytes": 2915,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "eb29fb61a4ae8de1696ef8c5924b0e7462636c0996ab9c1a1cf9f721ea8871ec"
+      },
+      "runner_plan_draft": {
+        "bytes": 2920,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "5d0b1175f235612d9a9c3db7dcc2c97654bab365eb1d70609634f74e305fe83c"
+      },
+      "subject_sha256": "5a38492599b901f05d9d5a79dddf9a1f145862c6a6001f2a8370700930809c14",
+      "terminal_directory": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-literal-interned-ROOT-20261018-v1-terminal-observation",
+      "whole_subject": {
+        "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1",
+        "cold": {
+          "bytes": 31226,
+          "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+          "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+        },
+        "environment": {
+          "LANG": "en_US.UTF-8",
+          "LC_ALL": "en_US.UTF-8",
+          "TZ": "UTC"
+        },
+        "integration_declaration": {
+          "bytes": 9760,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+          "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+        },
+        "invocation_id": "model-cold-base-literal-interned-ROOT-20261018-v1",
+        "limits": {
+          "aggregate_peak_bytes": 1073741824,
+          "failure_cleanup_seconds": 5,
+          "overall_seconds": 210,
+          "poll_milliseconds": 20,
+          "result_bytes": 134217728,
+          "runner_plan_bytes": 16777216,
+          "stderr_bytes": 4194304,
+          "stdout_bytes": 4194304,
+          "work_seconds": 180,
+          "worker_receipt_bytes": 4194304
+        },
+        "mode": "base",
+        "model_storage": "literal_interned",
+        "observer": {
+          "bytes": 4844,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+          "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+        },
+        "python": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+        },
+        "receiver_id": "quantified-diagonal-specialization-001",
+        "result_reader": "interned",
+        "runner": {
+          "bytes": 30793,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+          "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+        },
+        "runtime_closure": {
+          "bytes": 69562,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+          "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+        },
+        "schema": "ROOT-compact-model-cold-once-plan-v1",
+        "worker_plan": {
+          "bytes": 18026,
+          "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+          "sha256": "16e2faa41bcdb38a5607f1df37e301f0b3096f2188e14f11cb670f760449e252"
+        }
+      },
+      "worker_plan": {
+        "bytes": 18026,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "16e2faa41bcdb38a5607f1df37e301f0b3096f2188e14f11cb670f760449e252"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 3613,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "505eee20837673ec71353b3bfcb1c9c82ded4f6d9775f5d4ec3a7cee79e8090c"
+      },
+      "authorization_draft": {
+        "bytes": 490,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorization-drafts/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "f7ae60f461aca3c41efb7336b8136a247251ab72f15add5ee8aea4985cde91a5"
+      },
+      "fresh_absent_paths": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-literal-interned-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-fixed-literal-interned-ROOT-20261018-v1-terminal-observation",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/worker-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/worker-failure.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/runner-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/result.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/POST_RECEIPT_DEADLINE_FAILURE.json"
+      ],
+      "invocation_id": "model-cold-fixed-literal-interned-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 3,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "interned",
+      "review_roles": {
+        "bridge_Source": {
+          "receipt": {
+            "bytes": 7942,
+            "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/typed-Source-review-v1.json",
+            "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+          },
+          "required_subjects": [
+            {
+              "bytes": 31226,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+              "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+            },
+            {
+              "bytes": 52750,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+              "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "once_Source": {
+          "receipt": {
+            "bytes": 7732,
+            "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/typed-Source-review-v2.json",
+            "sha256": "d1fed0448738dbe07efbd2482a6259dc58ecf21473a3cbf46bf09e61a242d4a2"
+          },
+          "required_subjects": [
+            {
+              "bytes": 30793,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+              "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+            },
+            {
+              "bytes": 4844,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+              "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "prospective_plans": {
+          "receipt": {
+            "bytes": 178322,
+            "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+            "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+          },
+          "required_subjects": [
+            {
+              "bytes": 9760,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+              "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+            },
+            {
+              "bytes": 69562,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+              "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+            },
+            {
+              "bytes": 18029,
+              "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+              "sha256": "f254dbdc07d7e2c9b4363a75730041e49add5f1fe0da1e7be1317dabe838644f"
+            }
+          ],
+          "reviewer_identity": "/root/conventional_library"
+        }
+      },
+      "runner_plan": {
+        "bytes": 2920,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "0a12b6ebcc85f6bee0047b490c3ef020665fcdea8068df0754df9af1182c8ad9"
+      },
+      "runner_plan_draft": {
+        "bytes": 2925,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "18b002f79f9d609a6fd702b974049257515cfef3f3261d0e267106211e0f65fd"
+      },
+      "subject_sha256": "12832126276eac60f428a7da91cd0b9089846f702756044b7285b0d48488dd1f",
+      "terminal_directory": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-literal-interned-ROOT-20261018-v1-terminal-observation",
+      "whole_subject": {
+        "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1",
+        "cold": {
+          "bytes": 31226,
+          "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+          "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+        },
+        "environment": {
+          "LANG": "en_US.UTF-8",
+          "LC_ALL": "en_US.UTF-8",
+          "TZ": "UTC"
+        },
+        "integration_declaration": {
+          "bytes": 9760,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+          "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+        },
+        "invocation_id": "model-cold-fixed-literal-interned-ROOT-20261018-v1",
+        "limits": {
+          "aggregate_peak_bytes": 1073741824,
+          "failure_cleanup_seconds": 5,
+          "overall_seconds": 210,
+          "poll_milliseconds": 20,
+          "result_bytes": 134217728,
+          "runner_plan_bytes": 16777216,
+          "stderr_bytes": 4194304,
+          "stdout_bytes": 4194304,
+          "work_seconds": 180,
+          "worker_receipt_bytes": 4194304
+        },
+        "mode": "fixed",
+        "model_storage": "literal_interned",
+        "observer": {
+          "bytes": 4844,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+          "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+        },
+        "python": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+        },
+        "receiver_id": "quantified-diagonal-specialization-001",
+        "result_reader": "interned",
+        "runner": {
+          "bytes": 30793,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+          "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+        },
+        "runtime_closure": {
+          "bytes": 69562,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+          "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+        },
+        "schema": "ROOT-compact-model-cold-once-plan-v1",
+        "worker_plan": {
+          "bytes": 18029,
+          "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+          "sha256": "f254dbdc07d7e2c9b4363a75730041e49add5f1fe0da1e7be1317dabe838644f"
+        }
+      },
+      "worker_plan": {
+        "bytes": 18029,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "f254dbdc07d7e2c9b4363a75730041e49add5f1fe0da1e7be1317dabe838644f"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 3605,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+        "sha256": "826a88f2b7f0f84ddebdb82aad790212cc0b4cbefc5316838f90f34a5c088ed4"
+      },
+      "authorization_draft": {
+        "bytes": 490,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorization-drafts/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+        "sha256": "db21e3301b6460b493dda1a1d7893741488bdfd90f5a58d15420879890f49473"
+      },
+      "fresh_absent_paths": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-ordinary-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-fixed-ordinary-ROOT-20261018-v1-terminal-observation",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/worker-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/worker-failure.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/runner-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/result.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/POST_RECEIPT_DEADLINE_FAILURE.json"
+      ],
+      "invocation_id": "model-cold-fixed-ordinary-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "ordinary",
+      "order": 4,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "interned",
+      "review_roles": {
+        "bridge_Source": {
+          "receipt": {
+            "bytes": 7942,
+            "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/typed-Source-review-v1.json",
+            "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+          },
+          "required_subjects": [
+            {
+              "bytes": 31226,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+              "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+            },
+            {
+              "bytes": 52750,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+              "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "once_Source": {
+          "receipt": {
+            "bytes": 7732,
+            "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/typed-Source-review-v2.json",
+            "sha256": "d1fed0448738dbe07efbd2482a6259dc58ecf21473a3cbf46bf09e61a242d4a2"
+          },
+          "required_subjects": [
+            {
+              "bytes": 30793,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+              "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+            },
+            {
+              "bytes": 4844,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+              "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "prospective_plans": {
+          "receipt": {
+            "bytes": 178322,
+            "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+            "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+          },
+          "required_subjects": [
+            {
+              "bytes": 9760,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+              "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+            },
+            {
+              "bytes": 69562,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+              "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+            },
+            {
+              "bytes": 18005,
+              "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+              "sha256": "3b68da56ca9f52336a6a01dfdeb8ca446972bc38d8a828c2721da65c5e228429"
+            }
+          ],
+          "reviewer_identity": "/root/conventional_library"
+        }
+      },
+      "runner_plan": {
+        "bytes": 2880,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+        "sha256": "aa133a3db58ff2908a126529b8f62dc835135e1ae752ce9d53e2cd2860f3599f"
+      },
+      "runner_plan_draft": {
+        "bytes": 2885,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+        "sha256": "8c5ccb2ccde72f7b1e65f0c338210dc93e39825678490558515ceb7540595c5b"
+      },
+      "subject_sha256": "772c67c2ac4828131ea262efd9f3bbbc1c7d089993611ef604c41c11f7ca0132",
+      "terminal_directory": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-ordinary-ROOT-20261018-v1-terminal-observation",
+      "whole_subject": {
+        "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1",
+        "cold": {
+          "bytes": 31226,
+          "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+          "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+        },
+        "environment": {
+          "LANG": "en_US.UTF-8",
+          "LC_ALL": "en_US.UTF-8",
+          "TZ": "UTC"
+        },
+        "integration_declaration": {
+          "bytes": 9760,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+          "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+        },
+        "invocation_id": "model-cold-fixed-ordinary-ROOT-20261018-v1",
+        "limits": {
+          "aggregate_peak_bytes": 1073741824,
+          "failure_cleanup_seconds": 5,
+          "overall_seconds": 210,
+          "poll_milliseconds": 20,
+          "result_bytes": 134217728,
+          "runner_plan_bytes": 16777216,
+          "stderr_bytes": 4194304,
+          "stdout_bytes": 4194304,
+          "work_seconds": 180,
+          "worker_receipt_bytes": 4194304
+        },
+        "mode": "fixed",
+        "model_storage": "ordinary",
+        "observer": {
+          "bytes": 4844,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+          "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+        },
+        "python": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+        },
+        "receiver_id": "quantified-diagonal-specialization-001",
+        "result_reader": "interned",
+        "runner": {
+          "bytes": 30793,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+          "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+        },
+        "runtime_closure": {
+          "bytes": 69562,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+          "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+        },
+        "schema": "ROOT-compact-model-cold-once-plan-v1",
+        "worker_plan": {
+          "bytes": 18005,
+          "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+          "sha256": "3b68da56ca9f52336a6a01dfdeb8ca446972bc38d8a828c2721da65c5e228429"
+        }
+      },
+      "worker_plan": {
+        "bytes": 18005,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+        "sha256": "3b68da56ca9f52336a6a01dfdeb8ca446972bc38d8a828c2721da65c5e228429"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 3608,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+        "sha256": "f6b6c1b204c384ad85fa16d4613d41fa3232e48f91bd80bf38ec276f12d1d6df"
+      },
+      "authorization_draft": {
+        "bytes": 490,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorization-drafts/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+        "sha256": "cb363331e28c0674d27820cafade2152b8749ddd4aa17d350d3724752a351816"
+      },
+      "fresh_absent_paths": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-ordinary-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-symbolic-ordinary-ROOT-20261018-v1-terminal-observation",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/worker-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/worker-failure.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/runner-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/result.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/POST_RECEIPT_DEADLINE_FAILURE.json"
+      ],
+      "invocation_id": "model-cold-symbolic-ordinary-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "ordinary",
+      "order": 5,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "interned",
+      "review_roles": {
+        "bridge_Source": {
+          "receipt": {
+            "bytes": 7942,
+            "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/typed-Source-review-v1.json",
+            "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+          },
+          "required_subjects": [
+            {
+              "bytes": 31226,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+              "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+            },
+            {
+              "bytes": 52750,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+              "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "once_Source": {
+          "receipt": {
+            "bytes": 7732,
+            "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/typed-Source-review-v2.json",
+            "sha256": "d1fed0448738dbe07efbd2482a6259dc58ecf21473a3cbf46bf09e61a242d4a2"
+          },
+          "required_subjects": [
+            {
+              "bytes": 30793,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+              "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+            },
+            {
+              "bytes": 4844,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+              "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "prospective_plans": {
+          "receipt": {
+            "bytes": 178322,
+            "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+            "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+          },
+          "required_subjects": [
+            {
+              "bytes": 9760,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+              "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+            },
+            {
+              "bytes": 69562,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+              "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+            },
+            {
+              "bytes": 18014,
+              "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+              "sha256": "2e699ba02de1fa79960dbb2c88b2f67461579ffc744c534a37124c56025ab997"
+            }
+          ],
+          "reviewer_identity": "/root/conventional_library"
+        }
+      },
+      "runner_plan": {
+        "bytes": 2895,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+        "sha256": "9ebce8493f0eff97ce8c0df5a168b0b08b8686cf1a1d914f22c2c3942dd985a1"
+      },
+      "runner_plan_draft": {
+        "bytes": 2900,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+        "sha256": "cdee6e09ffabeb6c619a831e4702b1782c43944ba8b34cd15829450e08c06dc3"
+      },
+      "subject_sha256": "5acc56159c0ae5b6c75e6e2b9751755ca292daea33726216a92cc860ff9243f2",
+      "terminal_directory": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-ordinary-ROOT-20261018-v1-terminal-observation",
+      "whole_subject": {
+        "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1",
+        "cold": {
+          "bytes": 31226,
+          "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+          "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+        },
+        "environment": {
+          "LANG": "en_US.UTF-8",
+          "LC_ALL": "en_US.UTF-8",
+          "TZ": "UTC"
+        },
+        "integration_declaration": {
+          "bytes": 9760,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+          "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+        },
+        "invocation_id": "model-cold-symbolic-ordinary-ROOT-20261018-v1",
+        "limits": {
+          "aggregate_peak_bytes": 1073741824,
+          "failure_cleanup_seconds": 5,
+          "overall_seconds": 210,
+          "poll_milliseconds": 20,
+          "result_bytes": 134217728,
+          "runner_plan_bytes": 16777216,
+          "stderr_bytes": 4194304,
+          "stdout_bytes": 4194304,
+          "work_seconds": 180,
+          "worker_receipt_bytes": 4194304
+        },
+        "mode": "symbolic",
+        "model_storage": "ordinary",
+        "observer": {
+          "bytes": 4844,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+          "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+        },
+        "python": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+        },
+        "receiver_id": "quantified-diagonal-specialization-001",
+        "result_reader": "interned",
+        "runner": {
+          "bytes": 30793,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+          "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+        },
+        "runtime_closure": {
+          "bytes": 69562,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+          "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+        },
+        "schema": "ROOT-compact-model-cold-once-plan-v1",
+        "worker_plan": {
+          "bytes": 18014,
+          "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+          "sha256": "2e699ba02de1fa79960dbb2c88b2f67461579ffc744c534a37124c56025ab997"
+        }
+      },
+      "worker_plan": {
+        "bytes": 18014,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+        "sha256": "2e699ba02de1fa79960dbb2c88b2f67461579ffc744c534a37124c56025ab997"
+      }
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1",
+      "authorization": {
+        "bytes": 3616,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorizations/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "488d3c98bcf4c204d1992c6d7ad197ccc1a99e21785498b2947adb8ffff664fa"
+      },
+      "authorization_draft": {
+        "bytes": 490,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/authorization-drafts/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "4c31ec2cd8fac66a22f72800a80a653826ff53c004b01930707add80f2c051e7"
+      },
+      "fresh_absent_paths": [
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-literal-interned-ROOT-20261018-v1-terminal-observation",
+        "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-symbolic-literal-interned-ROOT-20261018-v1-terminal-observation",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/WORKER_CONSUMED.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/worker-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/worker-failure.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/runner-receipt.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/result.json",
+        "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/POST_RECEIPT_DEADLINE_FAILURE.json"
+      ],
+      "invocation_id": "model-cold-symbolic-literal-interned-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 6,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "result_reader": "interned",
+      "review_roles": {
+        "bridge_Source": {
+          "receipt": {
+            "bytes": 7942,
+            "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/typed-Source-review-v1.json",
+            "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+          },
+          "required_subjects": [
+            {
+              "bytes": 31226,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+              "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+            },
+            {
+              "bytes": 52750,
+              "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+              "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "once_Source": {
+          "receipt": {
+            "bytes": 7732,
+            "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/typed-Source-review-v2.json",
+            "sha256": "d1fed0448738dbe07efbd2482a6259dc58ecf21473a3cbf46bf09e61a242d4a2"
+          },
+          "required_subjects": [
+            {
+              "bytes": 30793,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+              "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+            },
+            {
+              "bytes": 4844,
+              "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+              "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+            }
+          ],
+          "reviewer_identity": "/root/receiver_driver_review"
+        },
+        "prospective_plans": {
+          "receipt": {
+            "bytes": 178322,
+            "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+            "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+          },
+          "required_subjects": [
+            {
+              "bytes": 9760,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+              "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+            },
+            {
+              "bytes": 69562,
+              "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+              "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+            },
+            {
+              "bytes": 18038,
+              "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+              "sha256": "22ec9f689b6efcdeeb2ad7357186426f189b4d38d3e91f70cacf260259be7096"
+            }
+          ],
+          "reviewer_identity": "/root/conventional_library"
+        }
+      },
+      "runner_plan": {
+        "bytes": 2935,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "d384215e15975141057d8e8a5d63b39dae39113172c54c3c90ff9ecb907a7920"
+      },
+      "runner_plan_draft": {
+        "bytes": 2940,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plan-drafts/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "12c8f6740c104fec86ae82cf763a2f1cbb86e0ae887d05bb2640874792c00f21"
+      },
+      "subject_sha256": "a5fc52bb2f28f5ce9213f41b7430a53d0b9bdfcbd740690b0271f31eb4f358b6",
+      "terminal_directory": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-literal-interned-ROOT-20261018-v1-terminal-observation",
+      "whole_subject": {
+        "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1",
+        "cold": {
+          "bytes": 31226,
+          "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+          "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+        },
+        "environment": {
+          "LANG": "en_US.UTF-8",
+          "LC_ALL": "en_US.UTF-8",
+          "TZ": "UTC"
+        },
+        "integration_declaration": {
+          "bytes": 9760,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+          "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+        },
+        "invocation_id": "model-cold-symbolic-literal-interned-ROOT-20261018-v1",
+        "limits": {
+          "aggregate_peak_bytes": 1073741824,
+          "failure_cleanup_seconds": 5,
+          "overall_seconds": 210,
+          "poll_milliseconds": 20,
+          "result_bytes": 134217728,
+          "runner_plan_bytes": 16777216,
+          "stderr_bytes": 4194304,
+          "stdout_bytes": 4194304,
+          "work_seconds": 180,
+          "worker_receipt_bytes": 4194304
+        },
+        "mode": "symbolic",
+        "model_storage": "literal_interned",
+        "observer": {
+          "bytes": 4844,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+          "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+        },
+        "python": {
+          "bytes": 18058560,
+          "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+        },
+        "receiver_id": "quantified-diagonal-specialization-001",
+        "result_reader": "interned",
+        "runner": {
+          "bytes": 30793,
+          "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+          "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+        },
+        "runtime_closure": {
+          "bytes": 69562,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+          "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+        },
+        "schema": "ROOT-compact-model-cold-once-plan-v1",
+        "worker_plan": {
+          "bytes": 18038,
+          "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+          "sha256": "22ec9f689b6efcdeeb2ad7357186426f189b4d38d3e91f70cacf260259be7096"
+        }
+      },
+      "worker_plan": {
+        "bytes": 18038,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+        "sha256": "22ec9f689b6efcdeeb2ad7357186426f189b4d38d3e91f70cacf260259be7096"
+      }
+    }
+  ],
+  "target_result_decodes": 0,
+  "worker_plans": [
+    {
+      "bytes": 18002,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-base-ordinary-ROOT-20261018-v1.json",
+      "sha256": "4353549250a2162a49e83324750cb70c075b2d270e0bc5751958f27828cbdc94"
+    },
+    {
+      "bytes": 18026,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-base-literal-interned-ROOT-20261018-v1.json",
+      "sha256": "16e2faa41bcdb38a5607f1df37e301f0b3096f2188e14f11cb670f760449e252"
+    },
+    {
+      "bytes": 18029,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-fixed-literal-interned-ROOT-20261018-v1.json",
+      "sha256": "f254dbdc07d7e2c9b4363a75730041e49add5f1fe0da1e7be1317dabe838644f"
+    },
+    {
+      "bytes": 18005,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-fixed-ordinary-ROOT-20261018-v1.json",
+      "sha256": "3b68da56ca9f52336a6a01dfdeb8ca446972bc38d8a828c2721da65c5e228429"
+    },
+    {
+      "bytes": 18014,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-symbolic-ordinary-ROOT-20261018-v1.json",
+      "sha256": "2e699ba02de1fa79960dbb2c88b2f67461579ffc744c534a37124c56025ab997"
+    },
+    {
+      "bytes": 18038,
+      "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/worker-plans/model-cold-symbolic-literal-interned-ROOT-20261018-v1.json",
+      "sha256": "22ec9f689b6efcdeeb2ad7357186426f189b4d38d3e91f70cacf260259be7096"
+    }
+  ]
+}

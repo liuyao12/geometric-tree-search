@@ -1,0 +1,128 @@
+{
+  "API": {
+    "bytes": 10156,
+    "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/API-v2.json",
+    "sha256": "6b93f350140c51743d2d7c517cd78c61c8c0da9ae22c89dbd2fa66fc306fca6e"
+  },
+  "V1_complete_Source_audit": {
+    "bytes": 16119,
+    "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/raw-Source-audit-v1-negative.json",
+    "sha256": "f1245a55dcf9b1fbd15c7512e5720c932284f629c9a06880a09cc2b0ed83de57"
+  },
+  "V1_negative": {
+    "bytes": 6923,
+    "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/typed-Source-review-v1-negative.json",
+    "sha256": "39d62e886afe349b9179b39f63cbab9e6fdeecbd7abdd88993b71f731333fccb"
+  },
+  "actual_F0_patch_directions": 4,
+  "actual_execution_authorized": false,
+  "audit": {
+    "bytes": 18341,
+    "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/raw-Source-audit-v2.json",
+    "sha256": "b0c756ae459f0498adcf98c96fc1ed3e1560ae65188f92ce705b189686c91835"
+  },
+  "audit_Source": {
+    "bytes": 14008,
+    "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/review_Source_v2.py",
+    "sha256": "afb1bdbc2bc9708ee44f9acc1753fb81dff05f9edab77a1b6d972cd7d78f30ef"
+  },
+  "author_identity": "/root/conventional_control_review",
+  "author_overlap": false,
+  "bridge_Source_peer": {
+    "bytes": 7942,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/typed-Source-review-v1.json",
+    "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+  },
+  "check_count": 73,
+  "codec_or_decompression_calls": 0,
+  "compiled_without_evaluation": true,
+  "compiler_calls": 0,
+  "current_Root_closure": {
+    "bytes": 69562,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/runtime-closure-v1.json",
+    "sha256": "63fa8e0d66175a925c61b38ff6c727f5d180f738e2735eb07a3317849c3ed5cf"
+  },
+  "current_Root_declaration": {
+    "bytes": 9760,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+    "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+  },
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "V2 records reappearance timestamp before raising; subsequent probes reject before altering state/calling killpg, and existing absence latch prohibits signals. Outer failure flags cannot be restored by cleanup. This closes the exact frozen V1 prospective control-flow defect; no process scenario was executed.",
+      "id": "V1_GROUP_REAPPEARANCE_CLOSED",
+      "severity": "resolved"
+    },
+    {
+      "finding": "Final outer full Python/source/input raw loop remains after aggregate acceptance. Memory/earlier-failure diagnostics cannot claim that skipped loop passed; worker earlier custody and Root external final raw checks remain separate. Metadata now states the condition.",
+      "id": "CONDITIONAL_FINAL_RAW_CUSTODY",
+      "severity": "scope"
+    },
+    {
+      "finding": "Full remaining runner/observer raw Source/AST unchanged after exact narrow inverse. Three auth-role/current raw subjects, strict parent whole parser, 17/7 schemas, original four cold args, 180positive/210UNKNOWN/resource/caps/EOF policies remain as reviewed in V1 audit. No worker/Model/scientific code change.",
+      "id": "UNCHANGED_SCIENTIFIC_PROTOCOL",
+      "severity": "evidence"
+    }
+  ],
+  "goal_complete": false,
+  "handoff": {
+    "bytes": 3260,
+    "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/handoff-v2.json",
+    "sha256": "df1ced2048be808cfc215da04514bfd2da3a39c1096fe1fb2f36b2b380db7258"
+  },
+  "harness_calls": 0,
+  "limitations": [
+    "Reviewer authored the separate821d qualification harness and prior independent bridge/Model/Reader/wrapper/data reviews, not this Control outer/observer. This is distinct new outer Source review, not self-harness certification. No scientific target invoked.",
+    "Frozen V1 genuine negative and complete53-check audit remain exact. V2 adds only permanent present-after-absence veto/timestamp and own/observer implementation identities; full remaining raw Source plus AST byte-equivalence checked. No V1/V2 measured failure or actual rerun occurred.",
+    "Raw/AST/compile-noeval and four genuinely inert textpatch applications only. No project/Model/native/compiler/solver/codec/search/renderer/harness import/evaluation, result decode or trial. Source PASS does not authorize activation.",
+    "Three runtime review roles authenticate raw receipt schema/identity/PASS/no-science/current complete minimum subjects; recursive descriptor containment is custody, not automatic scope/metatheory/ancestry reasoning. Root distinct prospective/full finalgrant/current23Source schedule review still required.",
+    "Parent-only stable fullPython baseline/stat polling/positive-candidate finalraw check trusts OS metadata, bundled Python/stdlib. No worker continuous/deep seal, arbitrary escaped-descendant or formal OS process attestation. Aftergroupabsence no signals; reappearance permanently invalidates candidate but need not complete reused-group EOF cleanup.",
+    "Positive proof worker exit/point/output must be before original180; ordinary workstop UNKNOWN with false proof flags may close210. Strict full128MiB result parse and original1GiB separate Python+CPP peak sum remain, parent/observer RAM excluded and no live cap.",
+    "Knownreap, actual authoritative groupabsence and bothEOF/logcapture remain separate from resource success. Failedmemory diagnostics may have complete logs/group while skipping later outer finalraw loop; report actual fields/Root external posthash only.225observerfallback failure requires residual ownership inspection.",
+    "No theorem proof/native result, resource fit, RL/GCTS performance advantage, publication or research-goal completion follows from Source review."
+  ],
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "project_imports": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/receiver_driver_review",
+  "schema": "compact-model-cold-once-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "compact-model-cold-once-Source",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source": {
+    "bytes": 30793,
+    "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+    "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+  },
+  "source_contract": {
+    "bytes": 12491,
+    "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/Source-contract-v2.json",
+    "sha256": "893756665657cb7e75e3d913f58e068b1847ea5f00491f4a83361c481f53a410"
+  },
+  "source_delta": {
+    "bytes": 6371,
+    "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/Source-delta-v2.json",
+    "sha256": "98e7aee0c17e0f960f5966e8374cc2d3affbb781902aa447d33f66b714ecd005"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "once_runner": {
+      "bytes": 30793,
+      "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+      "sha256": "3e85dcfc124bd9dd59f5e89c771b408f8c7340ecfa19ccb4057b94d1754bf485"
+    },
+    "terminal_observer": {
+      "bytes": 4844,
+      "path": "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/observe_compact_model_cold_runner_v2.py",
+      "sha256": "e9082453dd11b3c141f58833eebd709365a1ab120b1ae82bedf53fe857f3e4be"
+    }
+  }
+}

@@ -1,44 +1,44 @@
 {
   "coordination": "Root integrates, declares and owns scientific actuals, preserves the original model and publishes. Authors work on separate frozen components; another agent reviews each changed component. Timed comparisons stay isolated unless an aggregate concurrent budget is declared prospectively.",
   "current_actual_admission": {
-    "bytes": 58556,
-    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-actual-admission-v1.json",
-    "sha256": "bd3aa999fcf7be627b229a887e4174fe9d3ffb6b3c24fac3a3411ebe6ad19a10"
+    "bytes": 313281,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "943e70cbdba07c8ad72abbd65fe652fb1f07582f97ae51284c048ed9feaae675"
   },
   "current_assignments": {
-    "ROOT": "Complete model qualification grants/sequential actuals/admission/report/deployment",
-    "conventional_control_review": "Wrapper author; independent Root prospective composition and report audit",
-    "conventional_library": "Compact Model author; distinct qualification-harness peer, preliminary/finalgrant/resource audit in disclosed scopes",
-    "receiver_driver_review": "Qualification harness author; distinct wrapper Source and Root retained-data audit in disclosed scopes"
+    "ROOT": "Declaration/plans/grants, sequential actuals, admission and publication",
+    "conventional_control_review": "Outer wrapper author; independent human report audit in disclosed scopes",
+    "conventional_library": "Bridge/Model author; independent Root plan/finalgrant/resource audit in disclosed scopes",
+    "receiver_driver_review": "Independent bridge/outer Source and current retained-data review"
   },
-  "current_checking_tasks": "Bothcomplete-input data/prefix/rollback checks positive; c2combinedmemoryfail/c3qualificationprofilepass. Independentdata/resource/humanreview closed in scopes. No newnative/proofsearch/RL; nextwholecomposition separatelyfrozen.",
+  "current_checking_tasks": "Sixclosed complete-pipeline storage runs: threecompact admittedproofs, threeordinary memorydiagnostics. Fullrawdata/resource/humanreview closed in scopes. No newtheorem or RL/searchalgorithm gain; nextbroader controls separatelyfrozen.",
   "current_data_review": {
-    "bytes": 30034,
-    "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/typed-data-review-v1.json",
-    "sha256": "a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882"
+    "bytes": 181278,
+    "path": "/private/tmp/gcts-compact-model-cold-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "b39dafcff4b08de84ba50c3fa82fe85a21b19209d7f57f6b370616887d2fb7fb"
   },
-  "current_data_review_url": "model-qualification-data-review.json",
-  "current_display_scope": "Two complete-input qualifications: both data/prefix/rollback positive; c2memoryfailure/c3profilepass. Combinedqualification memory and actualprefix tables, fullmetadata downloads; proofreader historical.",
+  "current_data_review_url": "model-storage-integration-data-review.json",
+  "current_display_scope": "Six contemporary same23-module completepipeline runs, three methods by two Model storages, fixed interned Reader. Prior diagnostic proof readers reused only on literal proof/key equality.",
   "current_human_report_review": {
-    "bytes": 15619,
-    "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/typed-human-report-review-v2.json",
-    "sha256": "42ed10864a63fd314e3310f02e1bbc707f31a0164f1d341bb064a47866f1811d"
+    "bytes": 45310,
+    "path": "/private/tmp/gcts-compact-model-cold-human-peer-20261018/typed-human-report-review-v2.json",
+    "sha256": "9a8d05fc061d9d58940cff8dd03220e075c41f83ec6ec7deb3382c9bea6f224b"
   },
   "current_human_report_review_pending": false,
-  "current_human_report_review_url": "model-qualification-human-review.json",
-  "current_internal_count_units": "Per-model placement/cache scans, currentfrontier nodes/incidences and boundedcopy-prefix depths; qualification only, no search-method count/speed comparison.",
-  "current_memory_assessment": "model-qualification.html#outcomes",
+  "current_human_report_review_url": "model-storage-integration-human-review.json",
+  "current_internal_count_units": "Point placement attempts for base/fixed; chronological row extensions for symbolic; different units. All full Model candidates and selected point tiles retained.",
+  "current_memory_assessment": "model-storage-integration.html#outcomes",
   "current_proof": "cold-reader-integration-symbolic-proof.html",
-  "current_proof_scope": "Earlier diagnostic proof only; this qualification performs no theorem search.",
-  "current_report": "model-qualification.html#outcomes",
+  "current_proof_scope": "Historical reader with current literal proof/key equality when reported; fresh resource/native/point bindings remain current summary.",
+  "current_report": "model-storage-integration.html#outcomes",
   "current_resource_review": {
-    "bytes": 32826,
-    "path": "/private/tmp/gcts-compact-model-qualification-resource-peer-20261018/typed-resource-review-v1.json",
-    "sha256": "9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22"
+    "bytes": 36412,
+    "path": "/private/tmp/gcts-compact-model-cold-resource-peer-20261018/typed-resource-review-v1.json",
+    "sha256": "0757fd13545ded4df8043ea53ef03f4520aa34341e25f6e5f132188cb2dd907a"
   },
-  "current_resource_review_url": "model-qualification-resource-review.json",
-  "current_result": "1of2complete-model qualifications withinprofile; 2complete-data diagnostics. Bothmodels+fullinputcost, no fullpipelineRAMclaim/newproof/RLadvantage.",
-  "current_summary": "model-qualification-summary.json",
+  "current_resource_review_url": "model-storage-integration-resource-review.json",
+  "current_result": "Admitted complete-pipeline proofs: 3 of 6; 3 compact and 0 ordinary. Every consumed outcome is retained.",
+  "current_summary": "model-storage-integration-summary.json",
   "date": "2026-10-18",
   "display_erratum_url": "family-transfer-display-erratum.json",
   "frontier_optimization_stop_rule_triggered": true,
@@ -177,6 +177,47 @@
     "sha256": "f60951d177304379b663961354c167a1a749aabeadc17617df9c17bf96b7818d"
   },
   "historical_propositional_resource_review_url": "family-transfer-resource-review.json",
+  "historical_qualification_current_fields": {
+    "current_actual_admission": {
+      "bytes": 58556,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-qualification-progress-20261018/ROOT-actual-admission-v1.json",
+      "sha256": "bd3aa999fcf7be627b229a887e4174fe9d3ffb6b3c24fac3a3411ebe6ad19a10"
+    },
+    "current_assignments": {
+      "ROOT": "Complete model qualification grants/sequential actuals/admission/report/deployment",
+      "conventional_control_review": "Wrapper author; independent Root prospective composition and report audit",
+      "conventional_library": "Compact Model author; distinct qualification-harness peer, preliminary/finalgrant/resource audit in disclosed scopes",
+      "receiver_driver_review": "Qualification harness author; distinct wrapper Source and Root retained-data audit in disclosed scopes"
+    },
+    "current_checking_tasks": "Bothcomplete-input data/prefix/rollback checks positive; c2combinedmemoryfail/c3qualificationprofilepass. Independentdata/resource/humanreview closed in scopes. No newnative/proofsearch/RL; nextwholecomposition separatelyfrozen.",
+    "current_data_review": {
+      "bytes": 30034,
+      "path": "/private/tmp/gcts-compact-model-qualification-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "a71d629f7542d30f60154a7ff6f5f1ad9dcfc52fab856fbe0ee53d7f4cedf882"
+    },
+    "current_data_review_url": "model-qualification-data-review.json",
+    "current_display_scope": "Two complete-input qualifications: both data/prefix/rollback positive; c2memoryfailure/c3profilepass. Combinedqualification memory and actualprefix tables, fullmetadata downloads; proofreader historical.",
+    "current_human_report_review": {
+      "bytes": 15619,
+      "path": "/private/tmp/gcts-compact-model-qualification-human-peer-20261018/typed-human-report-review-v2.json",
+      "sha256": "42ed10864a63fd314e3310f02e1bbc707f31a0164f1d341bb064a47866f1811d"
+    },
+    "current_human_report_review_pending": false,
+    "current_human_report_review_url": "model-qualification-human-review.json",
+    "current_internal_count_units": "Per-model placement/cache scans, currentfrontier nodes/incidences and boundedcopy-prefix depths; qualification only, no search-method count/speed comparison.",
+    "current_memory_assessment": "model-qualification.html#outcomes",
+    "current_proof": "cold-reader-integration-symbolic-proof.html",
+    "current_proof_scope": "Earlier diagnostic proof only; this qualification performs no theorem search.",
+    "current_report": "model-qualification.html#outcomes",
+    "current_resource_review": {
+      "bytes": 32826,
+      "path": "/private/tmp/gcts-compact-model-qualification-resource-peer-20261018/typed-resource-review-v1.json",
+      "sha256": "9312e70eeb2ae8eecaf1be5caedd9f804d5e6bd28529b3b7be95b0d32cb1fb22"
+    },
+    "current_resource_review_url": "model-qualification-resource-review.json",
+    "current_result": "1of2complete-model qualifications withinprofile; 2complete-data diagnostics. Bothmodels+fullinputcost, no fullpipelineRAMclaim/newproof/RLadvantage.",
+    "current_summary": "model-qualification-summary.json"
+  },
   "historical_quantified_actual_admission": {
     "bytes": 175793,
     "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/quantified-family-progress-20261018/ROOT-actual-admission-v1.json",

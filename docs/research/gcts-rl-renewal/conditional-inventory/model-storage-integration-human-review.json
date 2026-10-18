@@ -1,0 +1,726 @@
+{
+  "Root_caption_correction": {
+    "bytes": 27290,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/ROOT-caption-scope-correction-v1.json",
+    "sha256": "0e3fc2defa0f4890a9521ff8933c876215120c6e4aed37f64306dc91cbfc0e23"
+  },
+  "Root_release_review_map": {
+    "bytes": 2174,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/ROOT-release-review-map-v1.json",
+    "sha256": "6f820670b6054a352824cc906b246147ea3e6f7e0da302f893bc5cab03dbdb8c"
+  },
+  "actual_execution_authorized": false,
+  "actual_launches": 0,
+  "admission": {
+    "bytes": 313281,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "943e70cbdba07c8ad72abbd65fe652fb1f07582f97ae51284c048ed9feaae675"
+  },
+  "all_current_assets": {
+    "model-storage-integration-base-literal-interned-result.json.gz": {
+      "bytes": 3618439,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-base-literal-interned-result.json.gz",
+      "sha256": "1e371b373136d0be82b2b941e4a8fa2c4bf2c8d5956a4d6f6baa3b7cb0ccd2b9"
+    },
+    "model-storage-integration-base-literal-interned-runner.json": {
+      "bytes": 75126,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-base-literal-interned-runner.json",
+      "sha256": "6021e28e29260f1d1bae4a0aba093c04718ee96e7f3b766b186848205c57f6ea"
+    },
+    "model-storage-integration-base-literal-interned-terminal.json": {
+      "bytes": 1718,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-base-literal-interned-terminal.json",
+      "sha256": "0dce9415c48aaaeb1e09977ec5a4a652944399a7a65359892855dc9a4a9ba3b5"
+    },
+    "model-storage-integration-base-literal-interned-worker.json": {
+      "bytes": 56310,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-base-literal-interned-worker.json",
+      "sha256": "c00a7871d48564b053b71230549dd86dd8d63cbd71e367cde6fdd7e36f024a8a"
+    },
+    "model-storage-integration-base-ordinary-result.json.gz": {
+      "bytes": 3618397,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-base-ordinary-result.json.gz",
+      "sha256": "ccba9a2a296f74b3d66c06fa04f22ce015c57c0ecb6a6edbe9544971f15a7214"
+    },
+    "model-storage-integration-base-ordinary-runner.json": {
+      "bytes": 74908,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-base-ordinary-runner.json",
+      "sha256": "713b474cc901ca93cc80d06432f27b04c8bdf8b706e0fd0c1aef97fd0b745fd0"
+    },
+    "model-storage-integration-base-ordinary-terminal.json": {
+      "bytes": 1695,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-base-ordinary-terminal.json",
+      "sha256": "e92fbeb576b4372b7cbd0caea796008d995a0f09c9c51e875249a99869311da2"
+    },
+    "model-storage-integration-base-ordinary-worker.json": {
+      "bytes": 56039,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-base-ordinary-worker.json",
+      "sha256": "e42259e585e85e4ca323b0bbd317bd5b476818d6118e5e95d1d530f96932ddb6"
+    },
+    "model-storage-integration-bridge-source-review.json": {
+      "bytes": 7942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-bridge-source-review.json",
+      "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+    },
+    "model-storage-integration-data-review.json": {
+      "bytes": 181278,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-data-review.json",
+      "sha256": "b39dafcff4b08de84ba50c3fa82fe85a21b19209d7f57f6b370616887d2fb7fb"
+    },
+    "model-storage-integration-final-grant-review.json": {
+      "bytes": 79448,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-final-grant-review.json",
+      "sha256": "c383dd7c958a6ed380e36dff6d2eeacb88320426ba96f924ac1a8bf9d429fb7c"
+    },
+    "model-storage-integration-fixed-literal-interned-result.json.gz": {
+      "bytes": 3648480,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-fixed-literal-interned-result.json.gz",
+      "sha256": "8630744fa97b811fd040c2e5d85f94e4d2bbf4feee6f283025f335e0856a048b"
+    },
+    "model-storage-integration-fixed-literal-interned-runner.json": {
+      "bytes": 75177,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-fixed-literal-interned-runner.json",
+      "sha256": "f78ccaa20eb3333bc45256de74821fe61f1e63bedbbd40043d5bd26eeb3059ab"
+    },
+    "model-storage-integration-fixed-literal-interned-terminal.json": {
+      "bytes": 1720,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-fixed-literal-interned-terminal.json",
+      "sha256": "06e15805636dfde4890a3fcfe96cf191369134d19e5ba895d0ccd0241dc033c6"
+    },
+    "model-storage-integration-fixed-literal-interned-worker.json": {
+      "bytes": 56347,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-fixed-literal-interned-worker.json",
+      "sha256": "729cb18fdfc2c81d91b7cd79acea312d9c84ac229ed99d84d87ecb80ca84d09b"
+    },
+    "model-storage-integration-fixed-ordinary-result.json.gz": {
+      "bytes": 3648460,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-fixed-ordinary-result.json.gz",
+      "sha256": "0cf13aefdce8b50e496ed3385c5181ef4b06825b752ce208e4f6db2779ddb408"
+    },
+    "model-storage-integration-fixed-ordinary-runner.json": {
+      "bytes": 74947,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-fixed-ordinary-runner.json",
+      "sha256": "352df751056808e8c5232067189e0674d52476e88f32d85efa942fc7f634c803"
+    },
+    "model-storage-integration-fixed-ordinary-terminal.json": {
+      "bytes": 1698,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-fixed-ordinary-terminal.json",
+      "sha256": "5539786b725c7ea0eb2614aa9091b0a9c6d9452d84a04de189c515c191e8eee3"
+    },
+    "model-storage-integration-fixed-ordinary-worker.json": {
+      "bytes": 56070,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-fixed-ordinary-worker.json",
+      "sha256": "4039d1acfeff084f073dceb7bf81a0df63079b450c47c2ff1a21b7e213328293"
+    },
+    "model-storage-integration-once-source-review.json": {
+      "bytes": 7732,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-once-source-review.json",
+      "sha256": "d1fed0448738dbe07efbd2482a6259dc58ecf21473a3cbf46bf09e61a242d4a2"
+    },
+    "model-storage-integration-prospective-plans-review.json": {
+      "bytes": 178322,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-prospective-plans-review.json",
+      "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+    },
+    "model-storage-integration-resource-review.json": {
+      "bytes": 36412,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-resource-review.json",
+      "sha256": "0757fd13545ded4df8043ea53ef03f4520aa34341e25f6e5f132188cb2dd907a"
+    },
+    "model-storage-integration-summary.json": {
+      "bytes": 335204,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-summary.json",
+      "sha256": "9f69f3415d1d6fdfffa61d3a3a6ac4a03067312c175d3afe670f1e83f5b2cbf3"
+    },
+    "model-storage-integration-symbolic-literal-interned-result.json.gz": {
+      "bytes": 2266417,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-symbolic-literal-interned-result.json.gz",
+      "sha256": "54d3c6a4ba5c8a4e2d7438b992d5ae307a47a8d9531e76421c2a0030221c1557"
+    },
+    "model-storage-integration-symbolic-literal-interned-runner.json": {
+      "bytes": 75303,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-symbolic-literal-interned-runner.json",
+      "sha256": "689d00ce89fe376c4513aa7b483f03d2fa091b60849b2766ab1dd1e493fe29e3"
+    },
+    "model-storage-integration-symbolic-literal-interned-terminal.json": {
+      "bytes": 1725,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-symbolic-literal-interned-terminal.json",
+      "sha256": "badd903ef2b7d61b3fa8abc5bbed4f8a3a6d3080e4caa1edec8e4cc29f47f663"
+    },
+    "model-storage-integration-symbolic-literal-interned-worker.json": {
+      "bytes": 56441,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-symbolic-literal-interned-worker.json",
+      "sha256": "e9dde4c1c484aca595d61e1b2bc533b233be203b3b4daabac135e0f4af6f4300"
+    },
+    "model-storage-integration-symbolic-ordinary-result.json.gz": {
+      "bytes": 2266442,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-symbolic-ordinary-result.json.gz",
+      "sha256": "c2105bcb60345b7fcff2a6254a178a37db5a79be8ba4388f268498595decf33f"
+    },
+    "model-storage-integration-symbolic-ordinary-runner.json": {
+      "bytes": 75104,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-symbolic-ordinary-runner.json",
+      "sha256": "45bfc9051bf799ff9ef6f82f01ae735bd130703e350c1a9f28bed88529302ea2"
+    },
+    "model-storage-integration-symbolic-ordinary-terminal.json": {
+      "bytes": 1707,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-symbolic-ordinary-terminal.json",
+      "sha256": "9e50e69609873f09de8c7f9c98ca69c5e001e1630a004f3d4c9997dde66ffd50"
+    },
+    "model-storage-integration-symbolic-ordinary-worker.json": {
+      "bytes": 56186,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-symbolic-ordinary-worker.json",
+      "sha256": "92a38249d52e52b1736032d16198b1bac3162bd18332d06b7a9b2f2aa2b6b573"
+    },
+    "model-storage-integration.html": {
+      "bytes": 14540,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration.html",
+      "sha256": "2cb0a1e22bcb6c25bb3860ddd0babc7c19afd740cb794ec4af15cb68ca5bd067"
+    },
+    "parallel-work-status.json": {
+      "bytes": 34766,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/parallel-work-status.json",
+      "sha256": "9f9cb00d283e13c32c49343d80d7147fe6fd2a25fe6a11af67aac1313f2ebf60"
+    },
+    "reader.html": {
+      "bytes": 85137,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/reader.html",
+      "sha256": "8d9161d473a201e7f974d3ca9cfb40dd1d9fe92b7cf45f57dc340f120d37c331"
+    }
+  },
+  "author_identity": "/root",
+  "author_overlap_disclosure": "Reviewer authored current outer/observer V1+V2 and earlier quantified/symbolic controls/structural benchmark/broker/capacity/alias/case/checker/prospective/report artifacts. Root authored report/builder and measured actuals; reviewer is distinct from that presentation and execution. Receiver separately reviewed current bridge/outer Source and current retained-data; Library separately reviewed Root composition/final grants/resources. Library authored bridge/compact Model, so its retained resource review is not an independent semantic re-review of those implementations. Old compact Model+Reader distinct Source authorities remain separately bound. This receipt does not self-certify own protocol Source or rediscover proof validity.",
+  "bridge_Source_review": {
+    "bytes": 7942,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/typed-Source-review-v1.json",
+    "sha256": "e97a586eac535e95f65e81ebe6514966af3c5c0c8624461a9ddfb8e06ae8dca3"
+  },
+  "compiler_calls": 0,
+  "current_report": {
+    "bytes": 14540,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration.html",
+    "sha256": "2cb0a1e22bcb6c25bb3860ddd0babc7c19afd740cb794ec4af15cb68ca5bd067"
+  },
+  "data_review": {
+    "bytes": 181278,
+    "path": "/private/tmp/gcts-compact-model-cold-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "b39dafcff4b08de84ba50c3fa82fe85a21b19209d7f57f6b370616887d2fb7fb"
+  },
+  "final_grant_review": {
+    "bytes": 79448,
+    "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-final-grant-delta-review-v1.json",
+    "sha256": "c383dd7c958a6ed380e36dff6d2eeacb88320426ba96f924ac1a8bf9d429fb7c"
+  },
+  "findings": [
+    {
+      "description": "Original memory caption could imply interpreter/observer prelude time was within the gated clock. FrozenV1negative retained; V2 replaces only that caption with exact parentSource-entry versus separatelyobservedprelude wording. Whole forward/inverse equality checked; other33assets/actuals unchanged.",
+      "status": "CORRECTED"
+    }
+  ],
+  "future_Root_release_conditions": [
+    {
+      "condition": "Copy THIS exact typedV2receipt bytes and bind descriptor/URL in summary/currentstatus with pendingfalse and truthful completedchecking status. These planned reference-only updates may change summary/status; HTML, actuals and all scientific/download bytes remain unchanged with preserved V1/V2/negative/caption lineage.",
+      "object": "model-storage-integration-human-review.json"
+    },
+    {
+      "condition": "Create exact whole-object manifest for current fullraw actuals/23Sources/Native/declarations/closure/plans/grants/reviews/proofreader provenance and archive, independently verify full object bindings without self-hash cycles. Keep all outcomes and untrimmed preimages.",
+      "object": "model-storage-integration-evidence-manifest.json"
+    },
+    {
+      "condition": "Create complete verified reproduction archive including all six fullraw results and Native/ownedmodule/terminal folders, negativeV1+repairedV2Source peers/current fullmetadata/humanreview/caption lineage; verify whole ZIP/member bytes/hash and all local/future nav targets.",
+      "object": "model-storage-integration-evidence.zip"
+    },
+    {
+      "condition": "Root alone stages/publishes task-owned assets to established destination, preserves protected root/unrelated files, verifies live exactmath/table/chart/proofreader/nav/layout and HTTP/raw-download bindings. This scoped PASS is neither publication nor new scientific acceptance.",
+      "object": "existing deployment/live checks"
+    }
+  ],
+  "harness_calls": 0,
+  "historical_proofreaders": [
+    {
+      "current_rows": [
+        "model-cold-base-ordinary-ROOT-20261018-v1",
+        "model-cold-base-literal-interned-ROOT-20261018-v1"
+      ],
+      "historical_packet_review_scope": "Whole old HTML unchanged with prior exact formula/English/allcoloredtile/literalpacket humanreview; current word+orderedkeys/union joins here. No renderer or native/state replay.",
+      "literal_root_command_rows": 12,
+      "mode": "base",
+      "prior_human_review": {
+        "bytes": 20172,
+        "path": "/private/tmp/gcts-compact-cold-human-peer-20261018/typed-human-report-review-v2.json",
+        "sha256": "7e3994f4467fd2183a94eeb8582a7af8c26436192b5394a34ae63988c01f7ecb"
+      },
+      "reader": {
+        "bytes": 1665467,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/cold-reader-integration-base-proof.html",
+        "sha256": "c5702242a2defabb3c4a54d7896a2e1189058d7920078401f12e639dd329970c"
+      },
+      "selected_packet_count": 60
+    },
+    {
+      "current_rows": [
+        "model-cold-fixed-literal-interned-ROOT-20261018-v1",
+        "model-cold-fixed-ordinary-ROOT-20261018-v1"
+      ],
+      "historical_packet_review_scope": "Whole old HTML unchanged with prior exact formula/English/allcoloredtile/literalpacket humanreview; current word+orderedkeys/union joins here. No renderer or native/state replay.",
+      "literal_root_command_rows": 12,
+      "mode": "fixed",
+      "prior_human_review": {
+        "bytes": 20172,
+        "path": "/private/tmp/gcts-compact-cold-human-peer-20261018/typed-human-report-review-v2.json",
+        "sha256": "7e3994f4467fd2183a94eeb8582a7af8c26436192b5394a34ae63988c01f7ecb"
+      },
+      "reader": {
+        "bytes": 1970096,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/cold-reader-integration-fixed-proof.html",
+        "sha256": "69903aee19933892d614fcc29ec0e37a8b4903e4f9b1c20ce42bbbfd5dfbc9cf"
+      },
+      "selected_packet_count": 60
+    },
+    {
+      "current_rows": [
+        "model-cold-symbolic-ordinary-ROOT-20261018-v1",
+        "model-cold-symbolic-literal-interned-ROOT-20261018-v1"
+      ],
+      "historical_packet_review_scope": "Whole old HTML unchanged with prior exact formula/English/allcoloredtile/literalpacket humanreview; current word+orderedkeys/union joins here. No renderer or native/state replay.",
+      "literal_root_command_rows": 12,
+      "mode": "symbolic",
+      "prior_human_review": {
+        "bytes": 20172,
+        "path": "/private/tmp/gcts-compact-cold-human-peer-20261018/typed-human-report-review-v2.json",
+        "sha256": "7e3994f4467fd2183a94eeb8582a7af8c26436192b5394a34ae63988c01f7ecb"
+      },
+      "reader": {
+        "bytes": 2103675,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/cold-reader-integration-symbolic-proof.html",
+        "sha256": "e66390a2ecb9c04dcaf331041c442b99b82ae3db08f1dec8a3beefcee40e95b1"
+      },
+      "selected_packet_count": 60
+    }
+  ],
+  "human_report_review_passed": true,
+  "initial_retained_checks": 445,
+  "initial_retained_mismatches": 0,
+  "limitations": [
+    "All current report/reader/formula/table/count/chart/claim/download data checked as retained Source/HTML/JSON/bytes only. Publication gzip streaming was explicitly authorized for six result downloads; no Native opaque microcode, project Reader, decoder, Model, compiler, solver, search, proof checker or renderer was invoked. No mathematical inference or state replay issues fresh Native validity here.",
+    "Historical proofreaders retain their old diagnostic labels and exact previous bytes/formula-English/packet body content. Current whole proof commands/ordered selectedkeys/pointunions match old retained readers and old humanreview; fresh current worker Native/wholepoint/resource receipts remain separately linked. These are not newly rendered current runtime proof pages.",
+    "Three compact complete pipeline profile successes and three ordinary memory diagnostics are engineering observations of one familiar development assertion with same23module imports/full inventory/Native/parser/output/reader bodycopy. No statistical speed estimate, new theorem, blind/generalization benchmark, learnedRL or GCTS-over-conventional proofsearch advantage.",
+    "Final outer wholePython/rawSource loop occurs only after aggregate pass. Memoryfailed ordinary diagnostics skip that loop; worker final artifacts and separate Root current raw hashes remain distinct, not retrospectively inferred as an outer-pass. Shallow runtime OS/metadata/loader trust and parentSource-entry clock excluding interpreter/observerprelude are explicit.",
+    "Darwin separate worker+Native highwaters sum conservatively and may doublecount; memory cap is posthoc and excludes outer/observerRAM. All original strict180positive output/knownworkerexit,210terminal,128MiB fullrawresult and method5000/30units remain. No hard live group cap or universal allstate/master generation oracle is claimed.",
+    "Static math-source/HTML/nav checking is not live MathJax/layout verification. Two inherited sparsecheckout links use retained historical HTTP200target copies; Root closes fresh deployed page and all futureobjects below."
+  ],
+  "logic_calls": 0,
+  "lossless_publication_result_joins": [
+    {
+      "decoded_bytes": 67079678,
+      "decoded_sha256": "7c25a7f4b7e53ce27c298661d238e5f0e5d5de3a55b2085acbd2ee3f3a16152d",
+      "original": {
+        "bytes": 67079678,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/result.json",
+        "sha256": "7c25a7f4b7e53ce27c298661d238e5f0e5d5de3a55b2085acbd2ee3f3a16152d"
+      },
+      "served": {
+        "bytes": 3618397,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-base-ordinary-result.json.gz",
+        "sha256": "ccba9a2a296f74b3d66c06fa04f22ce015c57c0ecb6a6edbe9544971f15a7214"
+      },
+      "whole_literal_equal": true
+    },
+    {
+      "decoded_bytes": 67079930,
+      "decoded_sha256": "8ba3d9b92dbffc4f8da2ff2b0f3ede4cc2e106b610cc5ac56c3a564251b9cdf2",
+      "original": {
+        "bytes": 67079930,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/result.json",
+        "sha256": "8ba3d9b92dbffc4f8da2ff2b0f3ede4cc2e106b610cc5ac56c3a564251b9cdf2"
+      },
+      "served": {
+        "bytes": 3618439,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-base-literal-interned-result.json.gz",
+        "sha256": "1e371b373136d0be82b2b941e4a8fa2c4bf2c8d5956a4d6f6baa3b7cb0ccd2b9"
+      },
+      "whole_literal_equal": true
+    },
+    {
+      "decoded_bytes": 67261081,
+      "decoded_sha256": "361dbcb5357f71c27e0568f14faf2e1e6e148ed690aaabf8e56b41fe1df317e6",
+      "original": {
+        "bytes": 67261081,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/result.json",
+        "sha256": "361dbcb5357f71c27e0568f14faf2e1e6e148ed690aaabf8e56b41fe1df317e6"
+      },
+      "served": {
+        "bytes": 3648480,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-fixed-literal-interned-result.json.gz",
+        "sha256": "8630744fa97b811fd040c2e5d85f94e4d2bbf4feee6f283025f335e0856a048b"
+      },
+      "whole_literal_equal": true
+    },
+    {
+      "decoded_bytes": 67260810,
+      "decoded_sha256": "cf7e889a8d50d99125a8c34b7b16ae8cbbb1a698c877bcf29528557fa9d5ed50",
+      "original": {
+        "bytes": 67260810,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/result.json",
+        "sha256": "cf7e889a8d50d99125a8c34b7b16ae8cbbb1a698c877bcf29528557fa9d5ed50"
+      },
+      "served": {
+        "bytes": 3648460,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-fixed-ordinary-result.json.gz",
+        "sha256": "0cf13aefdce8b50e496ed3385c5181ef4b06825b752ce208e4f6db2779ddb408"
+      },
+      "whole_literal_equal": true
+    },
+    {
+      "decoded_bytes": 62144675,
+      "decoded_sha256": "eb507140165867184539c1611cf26a6926954e8c66c2de849d3b8f7706839bf4",
+      "original": {
+        "bytes": 62144675,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/result.json",
+        "sha256": "eb507140165867184539c1611cf26a6926954e8c66c2de849d3b8f7706839bf4"
+      },
+      "served": {
+        "bytes": 2266442,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-symbolic-ordinary-result.json.gz",
+        "sha256": "c2105bcb60345b7fcff2a6254a178a37db5a79be8ba4388f268498595decf33f"
+      },
+      "whole_literal_equal": true
+    },
+    {
+      "decoded_bytes": 62144911,
+      "decoded_sha256": "a97cdefdc5a14cd8801abf756be69e2f67ff945d180395d674b808aa7fe86a49",
+      "original": {
+        "bytes": 62144911,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/result.json",
+        "sha256": "a97cdefdc5a14cd8801abf756be69e2f67ff945d180395d674b808aa7fe86a49"
+      },
+      "served": {
+        "bytes": 2266417,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-symbolic-literal-interned-result.json.gz",
+        "sha256": "54d3c6a4ba5c8a4e2d7438b992d5ae307a47a8d9531e76421c2a0030221c1557"
+      },
+      "whole_literal_equal": true
+    }
+  ],
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "native_codec_calls": 0,
+  "observed_outcomes": {
+    "admitted_compact_proofs": 3,
+    "admitted_ordinary_proofs": 0,
+    "all_six_fresh_native_positive": true,
+    "all_six_selected_point_tiles": 60,
+    "compact_peak_MiB": [
+      696.640625,
+      698.5625,
+      619.375
+    ],
+    "count_units": "point placement attempts vs chronological row extensions; not directly comparable",
+    "full_research_goal_complete": false,
+    "full_semantic_preimages_equal": true,
+    "method_attempt_counts": [
+      60,
+      60,
+      61,
+      61,
+      12,
+      12
+    ],
+    "native_positive_ordinary_memory_diagnostics": 3,
+    "new_RL": false,
+    "ordinary_peak_MiB": [
+      1127.015625,
+      1147.09375,
+      1035.90625
+    ],
+    "same_complete_candidate_count": 17494,
+    "theorem_novelty_claimed": false,
+    "within_method_full_nontiming_search_proof_hints_equal": true
+  },
+  "original_display_audit": {
+    "bytes": 134121,
+    "path": "/private/tmp/gcts-compact-model-cold-human-peer-20261018/raw-human-report-audit-v1.json",
+    "sha256": "456c946234a6778729af286a41932fa11eab3a4a83e991e052864bafa703569e"
+  },
+  "outer_Source_review": {
+    "bytes": 7732,
+    "path": "/private/tmp/gcts-compact-model-cold-once-independent-peer-20261018/typed-Source-review-v2.json",
+    "sha256": "d1fed0448738dbe07efbd2482a6259dc58ecf21473a3cbf46bf09e61a242d4a2"
+  },
+  "preserved_V1_negative": {
+    "bytes": 16171,
+    "path": "/private/tmp/gcts-compact-model-cold-human-peer-20261018/typed-human-report-review-v1-negative.json",
+    "sha256": "b897807b2d552978fe259b64cb8b8600956c2d1121f273ca43aacd3273e23b86"
+  },
+  "proof_kernel_calls": 0,
+  "prospective_plans_review": {
+    "bytes": 178322,
+    "path": "/private/tmp/gcts-compact-model-cold-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+    "sha256": "12a51ce319c63c0fca5b2e9b9e2f8c5b11826ffddd806e7c949ad2a5d9bc212a"
+  },
+  "publication_result_gzip_streams_compared": 6,
+  "reader": {
+    "bytes": 85137,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/reader.html",
+    "sha256": "8d9161d473a201e7f974d3ca9cfb40dd1d9fe92b7cf45f57dc340f120d37c331"
+  },
+  "reader_calls": 0,
+  "renderer_calls": 0,
+  "report": {
+    "bytes": 14540,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration.html",
+    "sha256": "2cb0a1e22bcb6c25bb3860ddd0babc7c19afd740cb794ec4af15cb68ca5bd067"
+  },
+  "resource_review": {
+    "bytes": 36412,
+    "path": "/private/tmp/gcts-compact-model-cold-resource-peer-20261018/typed-resource-review-v1.json",
+    "sha256": "0757fd13545ded4df8043ea53ef03f4520aa34341e25f6e5f132188cb2dd907a"
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "saved_data_only": true,
+  "schema": "compact-model-cold-human-report-independent-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Independent Root generated presentation/retained-metadata audit: six fullcold storage outcomes/tables/chart/units/cost/profile and scope claims, all34current assets including six lossless publication-gzip results/eighteenmetadata copies/six exact currentreviews, three unchanged historical formula/English/coloredtile readers with current literal word+orderedkeys+pointunion joins, reader/status/history/navigation. No scientific replay or own outer Source certification.",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "status": {
+    "bytes": 34766,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/parallel-work-status.json",
+    "sha256": "9f9cb00d283e13c32c49343d80d7147fe6fd2a25fe6a11af67aac1313f2ebf60"
+  },
+  "successor_audit": {
+    "bytes": 24304,
+    "path": "/private/tmp/gcts-compact-model-cold-human-peer-20261018/raw-human-successor-audit-v2.json",
+    "sha256": "fbb9a2c75573b895729eb7d9472752a15f43cc1a946eb59d1c6109d6ad833297"
+  },
+  "successor_checks": 79,
+  "summary": {
+    "bytes": 335204,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v2/model-storage-integration-summary.json",
+    "sha256": "9f69f3415d1d6fdfffa61d3a3a6ac4a03067312c175d3afe670f1e83f5b2cbf3"
+  },
+  "target_module_imports": 0,
+  "unresolved_findings": [],
+  "whole_metadata_download_joins": [
+    {
+      "original": {
+        "bytes": 56039,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "e42259e585e85e4ca323b0bbd317bd5b476818d6118e5e95d1d530f96932ddb6"
+      },
+      "served": {
+        "bytes": 56039,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-base-ordinary-worker.json",
+        "sha256": "e42259e585e85e4ca323b0bbd317bd5b476818d6118e5e95d1d530f96932ddb6"
+      }
+    },
+    {
+      "original": {
+        "bytes": 74908,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "713b474cc901ca93cc80d06432f27b04c8bdf8b706e0fd0c1aef97fd0b745fd0"
+      },
+      "served": {
+        "bytes": 74908,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-base-ordinary-runner.json",
+        "sha256": "713b474cc901ca93cc80d06432f27b04c8bdf8b706e0fd0c1aef97fd0b745fd0"
+      }
+    },
+    {
+      "original": {
+        "bytes": 1695,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-ordinary-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "e92fbeb576b4372b7cbd0caea796008d995a0f09c9c51e875249a99869311da2"
+      },
+      "served": {
+        "bytes": 1695,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-base-ordinary-terminal.json",
+        "sha256": "e92fbeb576b4372b7cbd0caea796008d995a0f09c9c51e875249a99869311da2"
+      }
+    },
+    {
+      "original": {
+        "bytes": 56310,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "c00a7871d48564b053b71230549dd86dd8d63cbd71e367cde6fdd7e36f024a8a"
+      },
+      "served": {
+        "bytes": 56310,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-base-literal-interned-worker.json",
+        "sha256": "c00a7871d48564b053b71230549dd86dd8d63cbd71e367cde6fdd7e36f024a8a"
+      }
+    },
+    {
+      "original": {
+        "bytes": 75126,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-literal-interned-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "6021e28e29260f1d1bae4a0aba093c04718ee96e7f3b766b186848205c57f6ea"
+      },
+      "served": {
+        "bytes": 75126,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-base-literal-interned-runner.json",
+        "sha256": "6021e28e29260f1d1bae4a0aba093c04718ee96e7f3b766b186848205c57f6ea"
+      }
+    },
+    {
+      "original": {
+        "bytes": 1718,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-literal-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "0dce9415c48aaaeb1e09977ec5a4a652944399a7a65359892855dc9a4a9ba3b5"
+      },
+      "served": {
+        "bytes": 1718,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-base-literal-interned-terminal.json",
+        "sha256": "0dce9415c48aaaeb1e09977ec5a4a652944399a7a65359892855dc9a4a9ba3b5"
+      }
+    },
+    {
+      "original": {
+        "bytes": 56347,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "729cb18fdfc2c81d91b7cd79acea312d9c84ac229ed99d84d87ecb80ca84d09b"
+      },
+      "served": {
+        "bytes": 56347,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-fixed-literal-interned-worker.json",
+        "sha256": "729cb18fdfc2c81d91b7cd79acea312d9c84ac229ed99d84d87ecb80ca84d09b"
+      }
+    },
+    {
+      "original": {
+        "bytes": 75177,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-literal-interned-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "f78ccaa20eb3333bc45256de74821fe61f1e63bedbbd40043d5bd26eeb3059ab"
+      },
+      "served": {
+        "bytes": 75177,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-fixed-literal-interned-runner.json",
+        "sha256": "f78ccaa20eb3333bc45256de74821fe61f1e63bedbbd40043d5bd26eeb3059ab"
+      }
+    },
+    {
+      "original": {
+        "bytes": 1720,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-literal-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "06e15805636dfde4890a3fcfe96cf191369134d19e5ba895d0ccd0241dc033c6"
+      },
+      "served": {
+        "bytes": 1720,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-fixed-literal-interned-terminal.json",
+        "sha256": "06e15805636dfde4890a3fcfe96cf191369134d19e5ba895d0ccd0241dc033c6"
+      }
+    },
+    {
+      "original": {
+        "bytes": 56070,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "4039d1acfeff084f073dceb7bf81a0df63079b450c47c2ff1a21b7e213328293"
+      },
+      "served": {
+        "bytes": 56070,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-fixed-ordinary-worker.json",
+        "sha256": "4039d1acfeff084f073dceb7bf81a0df63079b450c47c2ff1a21b7e213328293"
+      }
+    },
+    {
+      "original": {
+        "bytes": 74947,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-fixed-ordinary-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "352df751056808e8c5232067189e0674d52476e88f32d85efa942fc7f634c803"
+      },
+      "served": {
+        "bytes": 74947,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-fixed-ordinary-runner.json",
+        "sha256": "352df751056808e8c5232067189e0674d52476e88f32d85efa942fc7f634c803"
+      }
+    },
+    {
+      "original": {
+        "bytes": 1698,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-fixed-ordinary-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "5539786b725c7ea0eb2614aa9091b0a9c6d9452d84a04de189c515c191e8eee3"
+      },
+      "served": {
+        "bytes": 1698,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-fixed-ordinary-terminal.json",
+        "sha256": "5539786b725c7ea0eb2614aa9091b0a9c6d9452d84a04de189c515c191e8eee3"
+      }
+    },
+    {
+      "original": {
+        "bytes": 56186,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "92a38249d52e52b1736032d16198b1bac3162bd18332d06b7a9b2f2aa2b6b573"
+      },
+      "served": {
+        "bytes": 56186,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-symbolic-ordinary-worker.json",
+        "sha256": "92a38249d52e52b1736032d16198b1bac3162bd18332d06b7a9b2f2aa2b6b573"
+      }
+    },
+    {
+      "original": {
+        "bytes": 75104,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-ordinary-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "45bfc9051bf799ff9ef6f82f01ae735bd130703e350c1a9f28bed88529302ea2"
+      },
+      "served": {
+        "bytes": 75104,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-symbolic-ordinary-runner.json",
+        "sha256": "45bfc9051bf799ff9ef6f82f01ae735bd130703e350c1a9f28bed88529302ea2"
+      }
+    },
+    {
+      "original": {
+        "bytes": 1707,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-ordinary-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "9e50e69609873f09de8c7f9c98ca69c5e001e1630a004f3d4c9997dde66ffd50"
+      },
+      "served": {
+        "bytes": 1707,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-symbolic-ordinary-terminal.json",
+        "sha256": "9e50e69609873f09de8c7f9c98ca69c5e001e1630a004f3d4c9997dde66ffd50"
+      }
+    },
+    {
+      "original": {
+        "bytes": 56441,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "e9dde4c1c484aca595d61e1b2bc533b233be203b3b4daabac135e0f4af6f4300"
+      },
+      "served": {
+        "bytes": 56441,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-symbolic-literal-interned-worker.json",
+        "sha256": "e9dde4c1c484aca595d61e1b2bc533b233be203b3b4daabac135e0f4af6f4300"
+      }
+    },
+    {
+      "original": {
+        "bytes": 75303,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-symbolic-literal-interned-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "689d00ce89fe376c4513aa7b483f03d2fa091b60849b2766ab1dd1e493fe29e3"
+      },
+      "served": {
+        "bytes": 75303,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-symbolic-literal-interned-runner.json",
+        "sha256": "689d00ce89fe376c4513aa7b483f03d2fa091b60849b2766ab1dd1e493fe29e3"
+      }
+    },
+    {
+      "original": {
+        "bytes": 1725,
+        "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-symbolic-literal-interned-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "badd903ef2b7d61b3fa8abc5bbed4f8a3a6d3080e4caa1edec8e4cc29f47f663"
+      },
+      "served": {
+        "bytes": 1725,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/publication-source-v1/model-storage-integration-symbolic-literal-interned-terminal.json",
+        "sha256": "badd903ef2b7d61b3fa8abc5bbed4f8a3a6d3080e4caa1edec8e4cc29f47f663"
+      }
+    }
+  ]
+}

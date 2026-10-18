@@ -1,0 +1,33 @@
+{
+  "ROOT_resource_accepted": false,
+  "command": [
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "-I",
+    "-S",
+    "-B",
+    "/private/tmp/gcts-compact-model-cold-once-v2-source-20261018/compact_model_cold_once_runner_v2.py",
+    "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-ordinary-ROOT-20261018-v1.json"
+  ],
+  "mathematical_proof_accepted": false,
+  "observed_instrument_elapsed_seconds": 85.816706333,
+  "observer_started_ns": 693780629613083,
+  "plan": {
+    "bytes": 2875,
+    "path": "/private/tmp/gcts-compact-model-cold-plans-ROOT-20261018-v1/runner-plans/model-cold-base-ordinary-ROOT-20261018-v1.json",
+    "sha256": "97190fe4621014580f40988f60543fabadf5ed1debc0eee71f0299fe0177a9df"
+  },
+  "runner_clock_elapsed_seconds": 85.778381041,
+  "runner_exit_code": 2,
+  "runner_pid": 98596,
+  "runner_receipt": {
+    "bytes": 74908,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/model-cold-base-ordinary-ROOT-20261018-v1/runner-receipt.json",
+    "sha256": "713b474cc901ca93cc80d06432f27b04c8bdf8b706e0fd0c1aef97fd0b745fd0"
+  },
+  "schema": "ROOT-compact-model-cold-final-terminal-observation-v1",
+  "scientific_acceptance": false,
+  "scope": "Final compact-model cold outer terminal/group/EOF gate only. Parent Source-entry epoch excludes observer/Python prelude. Root separately admits exact native/point/knowledge/fullprofile evidence; no own mathematical acceptance.",
+  "terminal_gate_passed": false,
+  "terminal_observed_ns": 693866446319416,
+  "version": "ROOT-compact-model-cold-final-terminal-observer-v2-group-reappearance-latch"
+}

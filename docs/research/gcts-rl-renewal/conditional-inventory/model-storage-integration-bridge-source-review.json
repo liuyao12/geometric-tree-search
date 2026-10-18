@@ -1,0 +1,134 @@
+{
+  "API": {
+    "bytes": 8407,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/API-v1.json",
+    "sha256": "0953c6b64e1519f0ea07c07376983ee6ffc5f42d1338569f896daaa715f5123f"
+  },
+  "actual_execution_authorized": false,
+  "actual_text_F0_patch_directions": 4,
+  "audit": {
+    "bytes": 37256,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/raw-Source-audit-v1.json",
+    "sha256": "9f9f1759964f71fe449a94c2451555a8a0f18e3cff1f897cbd57dc706391390c"
+  },
+  "audit_Source": {
+    "bytes": 20158,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-independent-peer-20261018/review_Source_v1.py",
+    "sha256": "c80399e9cc233711c016c28ca029763e6fb81a42d996e497011362c8d90e78ed"
+  },
+  "author_identity": "/root/conventional_library",
+  "author_overlap": false,
+  "check_count": 108,
+  "codec_or_decompression_calls": 0,
+  "compiled_without_evaluation": true,
+  "compiler_calls": 0,
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "finding": "Only family_model role identity is dispatched by mandatory ordinary/literal_interned enum. No missing-field fallback. Full driver run_receiver/search/native/registry/whole point/observer/output bodies and compiler/domain/arity/policy dependency Sources remain unchanged.",
+      "id": "B1_EXPLICIT_SELECTION",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Both old and compact model aliases are included in same23 copy/import/origin/callable-seal map in all arms. Added old-parent closure intake/final checks are shared cost. Contemporary ordinary control is not an old22-module timing replication.",
+      "id": "B2_FULL_COMMON_ACQUISITION",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Future integration declaration is an authenticated whole plan/grant input; cold uses first invocation_id match. Root must prospectively enforce unique invocation IDs, intended paired schedule, identical profile/knowledge/cost and exact current component/outer reviews. This packet creates no actual declaration, plan or grant.",
+      "id": "B3_EXTERNAL_SCHEDULE_GATE",
+      "severity": "required_future_composition"
+    },
+    {
+      "finding": "Inherited shallow callable/default/closure identity guard and pinned Python/stdlib/native loader assumptions remain. Shared raw buffers/result parser/old native/template lifetimes remain. No deep pool freeze, continuous hostile-interpreter isolation, memory savings or fullpipeline fit follows.",
+      "id": "B4_RUNTIME_TRUST_LIMIT",
+      "severity": "scope"
+    },
+    {
+      "finding": "Earlier combined fullrecord/root+fourprefix qualification stays separate evidence, authored-harness overlap disclosed. New bridge has no runtime result; matching whole common model/input/point/native/unknown/rollback and resource admission remain future Root work.",
+      "id": "B5_SOURCE_NOT_RUNTIME",
+      "severity": "scope"
+    }
+  ],
+  "goal_complete": false,
+  "handoff": {
+    "bytes": 3574,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/handoff-v1.json",
+    "sha256": "4340eac2e568b3b3610adb5a7a8cbaf5b3fc796b178963b3f4e98e457ed2e209"
+  },
+  "harness_calls": 0,
+  "limitations": [
+    "Reviewer independently reviewed compact Model/Reader and earlier wrappers/data, and authored the separate qualification harness821d. Reviewer authored neither this new Library driver/cold bridge nor Model/Reader; this is not a self-review of the harness or a replacement of its genuine distinct Library peer. Earlier data/qualified-prefix evidence remains separate with ancestry.",
+    "Only raw Source/runtime bytes, AST inventory/delta, compile-without-evaluation and four genuinely inert Source patches in own scratch. No project/target/Model/harness/native/compiler/solver/codec/search/renderer was imported, invoked, decoded or evaluated; no actual was created, retried or altered.",
+    "Future Root declaration/complete closure/onceplans/outer runner/observer/current peers/grants need distinct exact composition and prospective reviews. Cold accepts a full authenticated integration declaration and first matching invocation; uniqueness/schedule/profile fairness is an external prerequisite. Source PASS is not activation permission.",
+    "Complete inherited runtime/native/Z3 maps compare literally to raw parent closurea65. Stdlib/bootstrap/OS/native loader trusted and existing shallow callable/default/cell custody remains; no deep immutable global or adversarial interpreter theorem. Current Sources alone do not qualify all live states.",
+    "Both arms acquire/import/seal same23 aliases and common parent closure; representation sharing alone dispatches Model class. No claim of equality to historical22 overhead/timing. Full raw output/body buffer/result read/ordinary parent parser and original native/template lifetimes remain; no native wire alias or serialization-copy optimization.",
+    "Whole common semantic record/native requests/selected t-m proof/rollback/caps/UNKNOWN and final resource profile still require future actual evidence. Earlier c2 memory-failed/c3 passed combined qualification is not compact-only search memory fit, speed benefit, new theorem, new RL/GCTS advantage or completion."
+  ],
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "parent_runtime_closure": {
+    "bytes": 67727,
+    "path": "/private/tmp/gcts-compact-cold-reader-source-20261018/runtime-closure-v1.json",
+    "sha256": "a65f67a644e294e0ab0162b02ff3505237f96a382e293fbf3136000b7110baaf"
+  },
+  "prior_distinct_Source_peers": {
+    "Reader": {
+      "bytes": 5175,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-reader-Source-review-v2.json",
+      "sha256": "950371e84a7b3b7fccbcd87f5a80a26607875c1b41895ededf6c4196107db223"
+    },
+    "compact_Model": {
+      "bytes": 8553,
+      "path": "/private/tmp/gcts-compact-representation-independent-peer-20261018/typed-compact-model-Source-review-v1.json",
+      "sha256": "aae2d27faa7255b911f2902041cfc17a2ecebed878519f1a70c46185b8f0631b"
+    }
+  },
+  "project_imports": 0,
+  "proof_kernel_calls": 0,
+  "renderer_calls": 0,
+  "resource_acceptance": false,
+  "reviewer_identity": "/root/receiver_driver_review",
+  "runtime_closure_design": {
+    "bytes": 69419,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/runtime-closure-design-v1.json",
+    "sha256": "d6b269dcf0fdcff3e404e4d460334ebac04b6494f9b8542ec764f0a3567274ba"
+  },
+  "schema": "compact-model-cold-bridge-typed-Source-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "compact-model-cold-bridge-Source",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source": {
+    "bytes": 52750,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+    "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+  },
+  "source_contract": {
+    "bytes": 22997,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/Source-contract-v1.json",
+    "sha256": "a4fae84dc8d4ec51f191d12bf28b24a0c34a4dcc98d877ae95459e815da9cd38"
+  },
+  "source_delta": {
+    "bytes": 41993,
+    "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/Source-delta-v1.json",
+    "sha256": "76e71c76fd6087603ee067202f9676c1ecb36c339d2ff61b295ff1f7e2299466"
+  },
+  "source_only": true,
+  "source_review_passed": true,
+  "sources": {
+    "cold_bridge": {
+      "bytes": 31226,
+      "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/compact_model_cold_bridge_v1.py",
+      "sha256": "5f1b1fe5f494dd472db399d9b6d843d6c75ee96c83a02f5949624f8bb26b6363"
+    },
+    "receiver_driver": {
+      "bytes": 52750,
+      "path": "/private/tmp/gcts-compact-model-cold-bridge-source-20261018/storage_receiver_driver_v1.py",
+      "sha256": "2f1eb0a0f18fa7a3907d16953e24c157bc3ff4de66d563775bb0d8909d827ba3"
+    }
+  }
+}
