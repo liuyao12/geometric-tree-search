@@ -1,0 +1,367 @@
+{
+  "GCTS_advantage": false,
+  "RL": false,
+  "actuals": {
+    "adversarial-all": {
+      "actual_kind": "ADVERSARIAL_ALL",
+      "cache_mode": "CHECKED_IMMUTABLE",
+      "native_seconds": 12.92309,
+      "owned_peak_bytes": 87523328,
+      "pins": {
+        "ROOT-authorization-v1.json": {
+          "bytes": 17925,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/ROOT-authorization-v1.json",
+          "sha256": "5440f8062b6f2f35be83eb5c9a81ebda7e80a89f1a7f1c968a357ca779818b66"
+        },
+        "ROOT-case-admission-v1.json": {
+          "bytes": 8721,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/ROOT-case-admission-v1.json",
+          "sha256": "a57410904a2d8b9ff9bdb64b6a4762a4356057647db6a7a5f5f1d284badde667"
+        },
+        "ROOT-expanded-result-v1.json": {
+          "bytes": 1180096,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+          "sha256": "f8046c9c8be141bc0a9c7dbe17bbb06c70b22a704a1b9db3844a9df3bf3a761a"
+        },
+        "ROOT-plan-v1.json": {
+          "bytes": 18116,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/ROOT-plan-v1.json",
+          "sha256": "243e4e1ab4d5ba7b669ba1c0c2bac78a2565848684d09841bd7bec3c966b776c"
+        },
+        "ROOT-prelaunch-v1.json": {
+          "bytes": 1375,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/ROOT-prelaunch-v1.json",
+          "sha256": "1b87ab711c561946b772a5c485ce2da91cc466cb19a6928c23a74594e2d7532c"
+        },
+        "ROOT-transport-native-closure-v1.json": {
+          "bytes": 2310,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+          "sha256": "1eafac3ba2164bbe41c46da34398d058f255c80f362fd16ad30cf60d8b85158c"
+        },
+        "external-v1/ONCE.json": {
+          "bytes": 267,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/external-v1/ONCE.json",
+          "sha256": "4214d075bc301f6d4f626e8d58686d52b6ca12a787f9de09dda690a896b3a6c3"
+        },
+        "external-v1/meter-stderr.txt": {
+          "bytes": 793,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/external-v1/meter-stderr.txt",
+          "sha256": "fad5bf74651b7ca5be7da56844731f56fb01bb171cb3c5f3450d8f3efea68e0f"
+        },
+        "external-v1/meter-stdout.txt": {
+          "bytes": 790,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/external-v1/meter-stdout.txt",
+          "sha256": "ed2b404c10dc55c5fc17c129b8b800ddb2215ca9e174d5d4159b1a9956e68bb3"
+        },
+        "external-v1/native-terminal.json": {
+          "bytes": 1636,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/external-v1/native-terminal.json",
+          "sha256": "26fdd32bb937c16941736d435e6973a239a124328862ed412b85100fdfa0537a"
+        },
+        "external-v1/observation.json": {
+          "bytes": 484,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/external-v1/observation.json",
+          "sha256": "dc70fa61760e7cb13f3c8f0b4a64ab177723783eaa41fb36343ab4ef1ae8388f"
+        },
+        "external-v1/postterminal-probe-stderr.txt": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/external-v1/postterminal-probe-stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "external-v1/postterminal-probe-stdout.txt": {
+          "bytes": 16,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/external-v1/postterminal-probe-stdout.txt",
+          "sha256": "b416d840ef91e02bc2fb79329d3043cc4f26eeb3d2866f17cad6c68b82a3557f"
+        },
+        "owned-v1/engine-result.json": {
+          "bytes": 74498,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/owned-v1/engine-result.json",
+          "sha256": "14195a854d295358389beab1cc0ac1bedab9299bbb67553478e9eebcf8a3408b"
+        },
+        "owned-v1/response.jsonl": {
+          "bytes": 1721,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/owned-v1/response.jsonl",
+          "sha256": "65c5f7d89535964da3d61097b4d4d906b3d76243aafe5dc701880e82b457df6b"
+        }
+      }
+    },
+    "checked-immutable": {
+      "actual_kind": "SEARCH",
+      "cache_mode": "CHECKED_IMMUTABLE",
+      "native_seconds": 19.289106,
+      "owned_peak_bytes": 85573632,
+      "pins": {
+        "ROOT-authorization-v1.json": {
+          "bytes": 17920,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/ROOT-authorization-v1.json",
+          "sha256": "82652ec537acf9365721fb5a3a44942b93d411e48eacc8b113bd01da076e57f9"
+        },
+        "ROOT-case-admission-v1.json": {
+          "bytes": 24575,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/ROOT-case-admission-v1.json",
+          "sha256": "4d66032e65892282ce6f3c6693beaee7fc95273113b2812fcabbdf671ad637fc"
+        },
+        "ROOT-expanded-result-v1.json": {
+          "bytes": 2458277,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/ROOT-expanded-result-v1.json",
+          "sha256": "e013596130ab1c3b69a08fe8bf7321ea71775973705c857902b7bf04982635c1"
+        },
+        "ROOT-plan-v1.json": {
+          "bytes": 18113,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/ROOT-plan-v1.json",
+          "sha256": "b5f86bef8d6b4303458d8cc5635be8043174c1529eccc131f7bd38c123ff3cd6"
+        },
+        "ROOT-prelaunch-v1.json": {
+          "bytes": 1370,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/ROOT-prelaunch-v1.json",
+          "sha256": "0ef6b9b85b3118eb106fa42fa93d2b2f07c55e6a6b57dcf32c01a744a4516898"
+        },
+        "ROOT-transport-native-closure-v1.json": {
+          "bytes": 33118,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+          "sha256": "7b93a2f25ae20ebd2e351fec0be3048a346f3d8caae5f3e7c70d827ee961bb46"
+        },
+        "external-v1/ONCE.json": {
+          "bytes": 269,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/external-v1/ONCE.json",
+          "sha256": "b0a2d194c0e44d41959fa38ce9deffd58adf575ff9da73d16ecb02f04ce44a83"
+        },
+        "external-v1/meter-stderr.txt": {
+          "bytes": 23018,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/external-v1/meter-stderr.txt",
+          "sha256": "9987ac3bb4612dc96cad91ed6dde6050f5c8e3f4aed7d7363b77260e7d5f678e"
+        },
+        "external-v1/meter-stdout.txt": {
+          "bytes": 786,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/external-v1/meter-stdout.txt",
+          "sha256": "03f3cf81af914983900ac8e5b900709fba6652e9455355882db2195caccc52d9"
+        },
+        "external-v1/native-terminal.json": {
+          "bytes": 1639,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/external-v1/native-terminal.json",
+          "sha256": "4bf44d49d46436240b37af4441b8cfbf8e66185903f39f9092079a68c0f59899"
+        },
+        "external-v1/observation.json": {
+          "bytes": 486,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/external-v1/observation.json",
+          "sha256": "7faa75d677c9f703868b66f922866fe5959e8a07425b7cc6a5674577652457ef"
+        },
+        "external-v1/postterminal-probe-stderr.txt": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/external-v1/postterminal-probe-stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "external-v1/postterminal-probe-stdout.txt": {
+          "bytes": 16,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/external-v1/postterminal-probe-stdout.txt",
+          "sha256": "72a8683c08c8d2b615ecc8c52d71ddd8caaf112d2a21397cebbef30d895f2e69"
+        },
+        "owned-v1/engine-result.json": {
+          "bytes": 288979,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/owned-v1/engine-result.json",
+          "sha256": "5d64eff956d581b3b4b8f003f79ca5f3a37c13f5dcf5efb1894eee7671d069c0"
+        },
+        "owned-v1/response.jsonl": {
+          "bytes": 1717,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/owned-v1/response.jsonl",
+          "sha256": "02bb18f38a3119e0c2e539df9c15c43c00a571f719e65cc81e9a549f44435322"
+        }
+      }
+    },
+    "uncached": {
+      "actual_kind": "SEARCH",
+      "cache_mode": "UNCACHED",
+      "native_seconds": 17.468408,
+      "owned_peak_bytes": 87818240,
+      "pins": {
+        "ROOT-authorization-v1.json": {
+          "bytes": 17893,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/ROOT-authorization-v1.json",
+          "sha256": "d15e13b08f5e217d5f70a1a5a105c29690abd9b5b8484ee1c3ecc426e9013a40"
+        },
+        "ROOT-case-admission-v1.json": {
+          "bytes": 24504,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/ROOT-case-admission-v1.json",
+          "sha256": "d0bac1b1d7759b32488af43035a1530b1e869d52af8cb3067419f67aff73e802"
+        },
+        "ROOT-expanded-result-v1.json": {
+          "bytes": 2457250,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/ROOT-expanded-result-v1.json",
+          "sha256": "04c681cf71c48bbf7a68cc245c67fabcee48b3fa37f79db1da5d67d18cc2075b"
+        },
+        "ROOT-plan-v1.json": {
+          "bytes": 18077,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/ROOT-plan-v1.json",
+          "sha256": "cba247f95464103624e8e70cd5ba184156d3eabc88dcf91467b6d66754e79ba7"
+        },
+        "ROOT-prelaunch-v1.json": {
+          "bytes": 1343,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/ROOT-prelaunch-v1.json",
+          "sha256": "599a67a0e360d5907fe8d360f317cc76b1e04d307dee40e6b278c329a1a1fef1"
+        },
+        "ROOT-transport-native-closure-v1.json": {
+          "bytes": 31656,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+          "sha256": "40c406062a25557fb51d5fbcb569bc46ee43f99fb8a65b004bb8a5db80f66629"
+        },
+        "external-v1/ONCE.json": {
+          "bytes": 260,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/external-v1/ONCE.json",
+          "sha256": "c825f44e0d7ecb4bc89b7d38ab68d8895569335156552a13822601e43bda3bf1"
+        },
+        "external-v1/meter-stderr.txt": {
+          "bytes": 21985,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/external-v1/meter-stderr.txt",
+          "sha256": "0f19878f05d7c5e89bef6beab9679c58908607773742035b4298b1107f207724"
+        },
+        "external-v1/meter-stdout.txt": {
+          "bytes": 759,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/external-v1/meter-stdout.txt",
+          "sha256": "e83adc16e461bc9fd5a143851721df31429fa30d066b2674fd368b82a0e22285"
+        },
+        "external-v1/native-terminal.json": {
+          "bytes": 1629,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/external-v1/native-terminal.json",
+          "sha256": "525ddaae168c700d483edc526f57846d19e92b2bb9c94d25c17436e1ebb40d1d"
+        },
+        "external-v1/observation.json": {
+          "bytes": 477,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/external-v1/observation.json",
+          "sha256": "74d2a8f3ca96973f6ea5a122dda488e03fde7531ab25245cd4bc67b88b7db1f1"
+        },
+        "external-v1/postterminal-probe-stderr.txt": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/external-v1/postterminal-probe-stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "external-v1/postterminal-probe-stdout.txt": {
+          "bytes": 16,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/external-v1/postterminal-probe-stdout.txt",
+          "sha256": "2fa08b9581fb1322c576d8f3feb921c29de9cf918edc6dd63885d80799c885d9"
+        },
+        "owned-v1/engine-result.json": {
+          "bytes": 288883,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/owned-v1/engine-result.json",
+          "sha256": "915794a62eeb601b1a63d22d66bfca0f0b82f96e03e9df2db250e3d912d0eb44"
+        },
+        "owned-v1/response.jsonl": {
+          "bytes": 1690,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/owned-v1/response.jsonl",
+          "sha256": "8d8aeabc0fbd2e9650b2271ed47c6cde4a0de5e6f204bb8f35e0b8496da2cd80"
+        }
+      }
+    }
+  },
+  "audit": {
+    "bytes": 314098,
+    "path": "/private/tmp/gcts-prototype-cache-three-actual-data-peer-20261018/saved-data-audit-v1.json",
+    "sha256": "550ce134ea862c5b390b8e989d7cba2f1071c22309c6dd676c2ecc68ab1d07bb"
+  },
+  "author_identity": "/root",
+  "author_overlap": false,
+  "authorship_disclosure": {
+    "adversarial_case_author": "/root/conventional_control_review; also authored reused independent verifier398acd; this receipt does not independently reaudit that checker or establish universal CASE coverage.",
+    "reviewer_authored_actuals_grants_decoders_admissions": false,
+    "reviewer_authored_changed_scientific_components": false,
+    "reviewer_prior_role": "Independently reviewed cache V8 negative disposition, V9 repair, adversarial CASE2, Root engine15/CASE5/profiler composition and current cold Source. Previously reviewed early-row and receiver-transfer Source, saved-data and report phases. No changed component or actual authored.",
+    "root_author": "/root; Root alone granted/executed/decoded/admitted these actuals."
+  },
+  "check_count": 2565,
+  "complete_board_accepted": false,
+  "current_raw_pins_verified_count": 77,
+  "data_review_passed": true,
+  "decompressions": 0,
+  "distinct_reviewer": true,
+  "findings": [
+    {
+      "detail": "Exact three plans/grants/once receipts/expanded/admissions/transports/native/whole-output hashes and current30Source/original17model/input2/fullpool/currentROW0_AND_ROW1 marking joins checked. All native handles terminal/reaped with zero exit and declared resource endpoints respected. Saved Root decoder linkage used; no payload decompression or replay.",
+      "disposition": "PASS",
+      "id": "CLOSED-CUSTODY",
+      "severity": "info"
+    },
+    {
+      "detail": "37 of37 declared finite CASEs passed, pending empty;89 instance observations and2 parent observations join. Includes returned nested-packet mutation, literal request/authority/source capsule changes, capacity fallback, current-state/remote marks, source-guard abort,8 targeted request ValueError origin subcases and12 calibrated interruption observations. Only explicitly valid packet subsets were hashed; deliberate poisoned fixtures excluded.",
+      "disposition": "PASS-FINITE-SCOPE",
+      "id": "FINITE-ADVERSARIAL-PASS",
+      "severity": "info"
+    },
+    {
+      "detail": "UNCACHED and CHECKED_IMMUTABLE share exact Sources/models/inputs/pool/marking and literal9 events/counts/root snapshot. Each has3 scans,1 placement,1 branch,1 backtrack,1 restore, no admitted family choice, UNKNOWN work17 and no proof. Full literal root before/after equality and restored stack checked.",
+      "disposition": "PASS-DATA-JOINS-NO-PROOF",
+      "id": "MATCHED-UNKNOWN",
+      "severity": "info"
+    },
+    {
+      "detail": "UNCACHED completed243 calls; checked cache completed359=306hits+53inserts with53 entries/447582 payloadbytes; each aborted1 and pending0. Cold cache starts0, source epoch binds whole current Sources/model17, caps/fallback counters respect each actual configuration. Query checks returned28 vs34. Cache is operational state outside mathematical snapshots.",
+      "disposition": "PASS-COUNTER-JOINS",
+      "id": "OPERATIONAL-CACHE",
+      "severity": "info"
+    },
+    {
+      "detail": "Native elapsed seconds12.92309 finite CASE inventory;17.468408 uncached versus19.289106 checked cache. More completed cache/degree work did not yield another placement/branch/proof; single trials with overhead and differing counters establish no statistical speedup or GCTS/RL advantage.",
+      "disposition": "NO-CLAIM",
+      "id": "NO-SPEED-OR-SEARCH-ADVANTAGE",
+      "severity": "info"
+    },
+    {
+      "detail": "One historical ROOT-profile-choice-v1.json was dataless locally. Reviewer checked its saved literal reference and local stat size only and did not trigger cloud hydration. Current actual Source/model/input pins and evidence raw hashes were checked; this historical profile-choice reference is not independently raw rehashed here.",
+      "disposition": "DISCLOSED",
+      "id": "HISTORICAL-DATALESS-REFERENCE",
+      "severity": "limitation"
+    }
+  ],
+  "full_GCTS_conformance": false,
+  "goal_complete": false,
+  "learned_marking": false,
+  "limitations": [
+    "No base64/decompression or scientific/project/module/kernel/checker/native/clock/codec replay. Expanded/envelope linkage uses saved Root decoder metadata.",
+    "Dataless historical references explicitly listed were checked only for saved literal pin joins and local stat size, not raw rehashed or cloud rehydrated.",
+    "Intentionally poisoned CASE packets, mutations, invalid states and invalid requests are not globally type-key hashed. Only explicitly Source-valid packet subsets and SEARCH engine records are checked.",
+    "Serialized data cannot independently re-observe Python object/sentinel identity; asserted records are joined to authenticated CASESource and terminal success.",
+    "89finite instances/37cases are not universal semantics/allinterleavings/engine transactions or checker reaudit.",
+    "Same search9events/counts/root; no extra completed placement/branch/proof. More cache/degree work does not establish speedup; native cached trial longer. Payloadbytes not RSS."
+  ],
+  "logical_proof_accepted": false,
+  "master_reference": {
+    "bytes": 21657,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+    "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+  },
+  "mismatch_count": 0,
+  "not_raw_rehashed_historical_references": [
+    {
+      "basis": "Saved literal reference plus local stat size; dataless historical file not rehydrated/rehashed by reviewer",
+      "reference": {
+        "bytes": 7444,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/shared-bounded-language-ROOT-20261015/ROOT-profile-choice-v1.json",
+        "sha256": "09ca475758de1ef3463b5c33fe1606ef2812090b4f0361423db7d3210163a3df"
+      }
+    }
+  ],
+  "performance_accepted": false,
+  "project_module_kernel_checker_native_clock_codec_evaluations": 0,
+  "proofs_discovered": 0,
+  "review_script": {
+    "bytes": 24553,
+    "path": "/private/tmp/audit_prototype_cache_saved_data_peer_20261018.py",
+    "sha256": "c667277760960fcd3923de5d9133c609c126e740411abdbe74139bda062c6341"
+  },
+  "reviewer_identity": "/root/receiver_driver_review",
+  "saved_data_only": true,
+  "schema": "ROOT-person-independent-prototype-cache-three-actual-saved-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Three closed prospective prototype-cache actuals; independent saved JSON, raw metadata, current Source-pin and receipt audit only",
+  "source_only": false,
+  "source_valid_packet_key_occurrences": {
+    "ADVvalid": 267,
+    "checked-immutable": 109,
+    "uncached": 109
+  },
+  "summary": {
+    "bytes": 1190443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/prototype-cache-study-progress-20261018/ROOT-study-summary-v1.json",
+    "sha256": "3ce42ad17d0f9e0fb357970324d1d71da09ebeb53f7024593e34553d80b9b8c9"
+  }
+}

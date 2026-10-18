@@ -1,0 +1,136 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "Root_reviewed_finals": [
+    {
+      "bytes": 2063,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-adversarial-all-ROOT-20261018/ROOT-reviewed-final-v1.json",
+      "sha256": "8be7174d674dda0159633402138580b155689f418355744b0098cd50cdae45d5"
+    },
+    {
+      "bytes": 2066,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-checked-immutable-ROOT-20261018/ROOT-reviewed-final-v1.json",
+      "sha256": "15c6722b6dbcc718c157a4961448a79692ec2717c948b20d70b11ab71fe2c8a4"
+    },
+    {
+      "bytes": 2012,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-prototype-cache-uncached-ROOT-20261018/ROOT-reviewed-final-v1.json",
+      "sha256": "0c8f208cddfcc7e320d6b544f37a593cce179a045e54da7120e957920f7c23e9"
+    }
+  ],
+  "Root_reviewed_study": {
+    "bytes": 2191,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/prototype-cache-study-progress-20261018/ROOT-reviewed-study-v1.json",
+    "sha256": "6298556abbc4bfd5b4b7410ef4e551c30f3250dfc52e91a66d7b6ff6464fd0a9"
+  },
+  "archive_decompressions": 0,
+  "author_ancestry": "Reviewer authored CASEV1/V2 and verifier398acd; authored neither cacheV9, Root report, actuals/grants/decoder/admissions, nor receiver_driver_review genuine data audit. This is not a re-audit of own CASE or checker.",
+  "check_count": 110,
+  "clock_evaluations": 0,
+  "codec_evaluations": 0,
+  "final_comparison": {
+    "bytes": 16652,
+    "path": "/private/tmp/gcts-prototype-cache-human-report-review-20261018/final-comparison-v1.json",
+    "sha256": "125d1e7f9993b4813dc178d608f787b2f21229b6f889c92c45ec14eebce268b9"
+  },
+  "findings": [
+    {
+      "detail": "Initial3401b3 draft lost static inline delimiters. Currentef5873 has97 balanced inline pairs and1 display pair, no TeX commands outside math. MathJax live rendering remains Root verification.",
+      "disposition": "RESOLVED",
+      "id": "INLINE-MATH-REPAIRED"
+    },
+    {
+      "detail": "Initial Root summary3ce42 retained its historical pending flag. Final public977c440 wrapper preserves all study data and adds genuine dd8cb data peer and Root-reviewed finals, with current pending false. No pending receipt is presented as PASS.",
+      "disposition": "RESOLVED",
+      "id": "PENDING-REVIEW-RESOLVED"
+    },
+    {
+      "detail": "Report matches37 finite cases,306 hits/53 insertions/359 completed versus243,34 versus28 degree checks, literal9 events/counts/restored snapshots, and both work17 UNKNOWN/no theorem. One observation per mode, longer cached native total and no speed/GCTS/RL/statistical gain stated.",
+      "disposition": "PASS-WORDING",
+      "id": "OBSERVED-NO-GAIN"
+    },
+    {
+      "detail": "Displayed MP23 and distant0/1 formula/head/support values match saved child states and full attempted key. Remote premises are labeled unproved; scoped DEAD0 and exact-key exclusion do not become a proof of the premises or target.",
+      "disposition": "PASS-WORDING",
+      "id": "ACTUAL-REMOTE-PORTS"
+    },
+    {
+      "detail": "This reviewer authored the37-case suite and verifier398acd and is independent of Root report/actual author and cache author only. This is not a new independent audit of those authored components.",
+      "disposition": "DISCLOSED",
+      "id": "CASE-AND-VERIFIER-ANCESTRY"
+    },
+    {
+      "detail": "No archive decompression or live browser rendering performed. Archive content/custody assertions depend on Root manifest; Root alone performs task-only deployment and live checks. Historical profile-v1 dataless reference limitation remains in genuine data peer.",
+      "disposition": "LIMITATION",
+      "id": "ARCHIVE-AND-LIVE-SCOPE"
+    }
+  ],
+  "genuine_saved_data_review": {
+    "bytes": 23321,
+    "path": "/private/tmp/gcts-prototype-cache-three-actual-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "dd8cb74f0b218af5f5b36852c3b276231befcc094ea0740cf9e2196651620584"
+  },
+  "goal_complete": false,
+  "independent_of_report_and_actual_author": true,
+  "independent_of_reported_all_components": false,
+  "integration_artifacts": [
+    {
+      "bytes": 69403,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "7b3e5e1507c1408078c158fdd16747f6772ff84d1eaa1814553e3cc3e9ea18b5"
+    },
+    {
+      "bytes": 33307,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/receiver-transfer.html",
+      "sha256": "86831bc02b05734db3cad1d9e050844dafeab46402d5f8180e496fb4198ae8bf"
+    },
+    {
+      "bytes": 15463,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/early-row.html",
+      "sha256": "c9d096af5ac58aa3b91fb56b8bb9dd96e4231bfbe6ac229c4b3f9fbbe8a7587f"
+    },
+    {
+      "bytes": 6670,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/parallel-work-status.json",
+      "sha256": "177d90430efe7f51170329c4daad591a0ead36108f00995ac02d27397e0d3c43"
+    }
+  ],
+  "kernel_or_checker_evaluations": 0,
+  "limits": "Scoped human-report PASS for exact bytes only. Root/data-peer terminal and custody evidence accepted as saved records, not re-executed. Serialized data cannot independently re-observe Python object identity. Finite fixtures do not prove all-input correctness, engine conformance or a theorem. Root owns manifest/deploy/live verification.",
+  "live_render_checked": false,
+  "logical_proof_accepted": false,
+  "module_evaluations": 0,
+  "native_runs": 0,
+  "original_Root_summary": {
+    "bytes": 1190443,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/prototype-cache-study-progress-20261018/ROOT-study-summary-v1.json",
+    "sha256": "3ce42ad17d0f9e0fb357970324d1d71da09ebeb53f7024593e34553d80b9b8c9"
+  },
+  "performance_accepted": false,
+  "public_summary": {
+    "bytes": 1192151,
+    "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/prototype-cache-summary.json",
+    "sha256": "977c44049ee37619a798d0c90acc91f599643b7a40ab1739b0b1d267eebd2e97"
+  },
+  "publication_or_project_mutations": 0,
+  "report": {
+    "bytes": 37604,
+    "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/prototype-cache.html",
+    "sha256": "ef5873b4c7ad3b7009015366b2dcd23a21d8a85dfa23e24689aa40a4f27f9996"
+  },
+  "report_author_identity": "/root",
+  "reviewer_identity": "/root/conventional_control_review",
+  "saved_comparison": {
+    "bytes": 10807,
+    "path": "/private/tmp/gcts-prototype-cache-human-report-review-20261018/saved-comparison-v1.json",
+    "sha256": "dcbeaf92d56251c71af5d3ec3bd4bbfd672e5808ae470d9fba2e31dd4acbef4c"
+  },
+  "saved_data_and_raw_HTML_only": true,
+  "schema": "checked-prototype-cache-human-report-typed-review-v1",
+  "scientific_acceptance": false,
+  "scientific_evaluations": 0,
+  "scientific_replays": 0,
+  "scope": "Human-report wording, mathematical notation and visual labels, task integration teasers, and literal comparison with saved Root/data-peer records only",
+  "unresolved_wording_blockers": [],
+  "wording_and_saved_data_review_passed": true
+}
