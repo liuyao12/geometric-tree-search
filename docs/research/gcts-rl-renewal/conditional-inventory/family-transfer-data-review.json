@@ -1,0 +1,240 @@
+{
+  "schema": "semantic-family-six-actuals-typed-data-review-v1",
+  "reviewer_identity": "/root/receiver_driver_review",
+  "author_identity": "/root",
+  "author_overlap": false,
+  "source_only": true,
+  "saved_data_only": true,
+  "data_review_passed": true,
+  "scientific_calls": 0,
+  "scientific_acceptance": false,
+  "audit": {
+    "path": "/private/tmp/gcts-semantic-family-saved-data-peer-20261018/saved-data-audit-v1.json",
+    "sha256": "de1c8959b467ad4b0f3e9ea53166b6e75c31d2d59904f0f6014c0d9b5e99ba98",
+    "bytes": 93419
+  },
+  "authorized_index": {
+    "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorized-plan-index-v1.json",
+    "sha256": "f8ecaa662bf16ac5d8b4fa0f9f5b5d727930c4b61152cd7d3076aa11aa23e34c",
+    "bytes": 12339
+  },
+  "Root_admission": {
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "00e099eeae9942030ff9d603945b1020215d9bc162935615efda44804432979e",
+    "bytes": 60119
+  },
+  "actual_refs": [
+    {
+      "invocation_id": "semantic-compound-r1-base-ROOT-20261018-v2",
+      "files": {
+        "result.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/result.json",
+          "sha256": "dac3c59bd048a8a87ae2b9963dc087414cec9d0304f22fa5f5dc1d88df1107cf",
+          "bytes": 3295555
+        },
+        "worker-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/worker-receipt.json",
+          "sha256": "352ac1874d2a1464a77bc16c0ea3922312755d7ab5dc945d8accb44962ac95c7",
+          "bytes": 37629
+        },
+        "runner-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/runner-receipt.json",
+          "sha256": "f921043889151b32b43132e3471045b4860d92fcb645be33b2249447d879f38c",
+          "bytes": 45278
+        },
+        "CONSUMED.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/CONSUMED.json",
+          "sha256": "f4e0bcf9b0f0b6764ddee71d53ecb6878693d01583f8402415c37a04764347fe",
+          "bytes": 503
+        }
+      },
+      "terminal": {
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-base-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "95c9f08a386390da8e7d281f505c233654db6da57410e261c20cb66447cffea0",
+        "bytes": 1546
+      }
+    },
+    {
+      "invocation_id": "semantic-compound-r1-fixed-ROOT-20261018-v2",
+      "files": {
+        "result.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/result.json",
+          "sha256": "68099b68d8f1fd7d04f05992b8dce9d59c53a2479a5a3f459eeb0492a3c7118f",
+          "bytes": 2753720
+        },
+        "worker-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/worker-receipt.json",
+          "sha256": "c93205beec3282095f5a2964b80eef9dc68ed6961b90073be04042911c87f174",
+          "bytes": 37657
+        },
+        "runner-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/runner-receipt.json",
+          "sha256": "f119bca0e7396d2fa5728dc12c963b114ac6822916e714222926862ffc73a80c",
+          "bytes": 45317
+        },
+        "CONSUMED.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/CONSUMED.json",
+          "sha256": "42ab9aab20f34c7b071789355dda6f950d98a7b7b66ee0c93e59bc4d5b4c839c",
+          "bytes": 506
+        }
+      },
+      "terminal": {
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-fixed-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "1e5f7853929b3fe78114f9d1a3bee431411e6ed4cb4bf0ef08c39e5205f445fa",
+        "bytes": 1550
+      }
+    },
+    {
+      "invocation_id": "semantic-compound-r1-z3-ROOT-20261018-v2",
+      "files": {
+        "result.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/result.json",
+          "sha256": "e8d2ef5519d45b18e215c911bb8e8b69698ac7963d6c7a14765a79280187e26e",
+          "bytes": 4725865
+        },
+        "worker-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/worker-receipt.json",
+          "sha256": "68dfb61157fdbf2fb7b129c7e66bf677863c7a8cdfc8355059afb79faf584a20",
+          "bytes": 37567
+        },
+        "runner-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/runner-receipt.json",
+          "sha256": "6862d35c1dd92528941a414ddb8ac5a15fc10e626619812fc8c77a2607064c68",
+          "bytes": 45191
+        },
+        "CONSUMED.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/CONSUMED.json",
+          "sha256": "43e0c5bb4957f97ed0e9cafb1a66d98bd88905a4e657d4c8d585c732ee4711e3",
+          "bytes": 497
+        }
+      },
+      "terminal": {
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-z3-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "8bb20d404d1f4d073493baac063323c75f229db1b96e3335eb6bdf264db6ff9e",
+        "bytes": 1542
+      }
+    },
+    {
+      "invocation_id": "semantic-compound-r2-z3-ROOT-20261018-v2",
+      "files": {
+        "result.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/result.json",
+          "sha256": "3eaea2a53b37ad4473add697b412cc9beae3219231d29e43a68b76fbab8cf70f",
+          "bytes": 4725868
+        },
+        "worker-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/worker-receipt.json",
+          "sha256": "080979f53430d3eb5a5b4ccc74b4cb559a17b0531bd65125e4d8ffbc4b7e8c0f",
+          "bytes": 37565
+        },
+        "runner-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/runner-receipt.json",
+          "sha256": "fc1d6d74bdca2655787819db6d1200ca14a7cbac34cf6023a6c7893e59fe7f06",
+          "bytes": 45189
+        },
+        "CONSUMED.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/CONSUMED.json",
+          "sha256": "97fbd15776a0c18013da54b84a3531394b8808f096c2b2da42b69fc8cf6fd4d8",
+          "bytes": 497
+        }
+      },
+      "terminal": {
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-z3-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "fed33a26343948282bf7dc7d28d826eafe9e526234faff19ab25850ff13be181",
+        "bytes": 1542
+      }
+    },
+    {
+      "invocation_id": "semantic-compound-r2-fixed-ROOT-20261018-v2",
+      "files": {
+        "result.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/result.json",
+          "sha256": "e1e6efd53c2c3640cecbd69b05407e605c19ff28e557402f0c5ef361c4374fe0",
+          "bytes": 2753706
+        },
+        "worker-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/worker-receipt.json",
+          "sha256": "8bc443c1c209fdb133be69087d5ced0b27b946062ed8cb7413acf92f4d4af410",
+          "bytes": 37636
+        },
+        "runner-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/runner-receipt.json",
+          "sha256": "6906d1fcce588362f400960d03072d48d77374fceb712632f693d4c508c9abd2",
+          "bytes": 45293
+        },
+        "CONSUMED.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/CONSUMED.json",
+          "sha256": "1b5c9b8280fc8e648278c63017a5e8cb29cbb474d7a5abdcdd3b872fafd74190",
+          "bytes": 506
+        }
+      },
+      "terminal": {
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-fixed-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "e02a914802fc7b6985ac2219bd727126f9108b16e557a25cbb3d4c7d743e632a",
+        "bytes": 1551
+      }
+    },
+    {
+      "invocation_id": "semantic-compound-r2-base-ROOT-20261018-v2",
+      "files": {
+        "result.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/result.json",
+          "sha256": "28156bdbc013c1883bda3e4486b1454a74cc81805a8758ffd903688f5a67f062",
+          "bytes": 3295562
+        },
+        "worker-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/worker-receipt.json",
+          "sha256": "627c33b6c3add96a4d73076e5eff6a5cb8ff62b90d969e80c2e6304460d9faf4",
+          "bytes": 37634
+        },
+        "runner-receipt.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/runner-receipt.json",
+          "sha256": "db3c409137c1d22d6d72600ce9e233bdf472cd1239984191ea2aa5b9ed893100",
+          "bytes": 45286
+        },
+        "CONSUMED.json": {
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/CONSUMED.json",
+          "sha256": "9642262ce0b7b867f1cb684cf8c98a11035e42e3b43c3f772a294c8b465c3ef6",
+          "bytes": 503
+        }
+      },
+      "terminal": {
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-base-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "2e1946e4479496e9d7a29bb44053dc1523fdb7cb94cedd6bb5b4b593ba54435d",
+        "bytes": 1548
+      }
+    }
+  ],
+  "literal_comparisons": {
+    "whole_model_excluding_only_compile_seconds": true,
+    "compiler_status_basis_variables_tautologies": true,
+    "register_definitions_interfaces_native_blocks": true,
+    "initial_state_all_fields": true,
+    "full_policy_and_declaration": true
+  },
+  "result_counts": {
+    "fresh_native_proof_receipts": 6,
+    "essential_compound_instances": 6,
+    "strong_same_instance_compound_hint_consumption": 2,
+    "changed_compound_hint_order": 0,
+    "changed_atomic_hint_order_runs": 2,
+    "base_attempts": [
+      238,
+      238
+    ],
+    "fixed_attempts": [
+      54,
+      54
+    ]
+  },
+  "findings": [],
+  "limitations": [
+    "Saved JSON/raw bytes and structural reference/interface/point-value joins only. No project/driver/checker/kernel/native/Z3/search/clock/codec evaluation, replay or independent logical kernel acceptance.",
+    "Root native accepted records and exact Source/runtime/owned process receipts remain logical/resource authority; reviewer compares the retained evidence and does not assert a new native execution.",
+    "No scheduler/Graph implementation replay or universal family/primitive-square/infinite-plane theorem; raw point-value sums check retained model agreement only.",
+    "Four full historical template families supplied; only4 applicable ground blocks from2 familyIDs; all essential calls level1, no level2 achievement.",
+    "Strong compound hint consumption is observed in2fixed runs, but compound candidate order unchanged. Atomic row3 MP hint does change order. Counts/timings from one7-row case and2repetitions do not establish general GCTS/RL/solver superiority or causal compound-hint speed benefit.",
+    "One previous consumed setup failure and5withdrawn unused grants belong to a separate stopped cohort; not reused or counted as these6 successful runs."
+  ],
+  "authorship_disclosure": "Reviewed the current driver/broker/cold/runner/observer/plans and authored those independent Source receipts; authored no current mathematical/search/transport components, actuals or Root admission. Earlier Source review missed deleted Z3 _lib global; stopped setup cohort and repaired Source ancestry retained explicitly."
+}

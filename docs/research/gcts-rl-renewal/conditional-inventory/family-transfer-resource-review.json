@@ -1,0 +1,2134 @@
+{
+  "actual_author_identity": "/root",
+  "all_reviewed_receipt_pins": {
+    "authorized_index": {
+      "bytes": 12339,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorized-plan-index-v1.json",
+      "sha256": "f8ecaa662bf16ac5d8b4fa0f9f5b5d727930c4b61152cd7d3076aa11aa23e34c"
+    },
+    "failed_cohort_closeout": {
+      "bytes": 2439,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-v3-cohort-closeout-v1.json",
+      "sha256": "bc75993ad6f0e36ec0f15aa851e2c98bd43b10e4cb60350249acbfe95b17d764"
+    },
+    "failed_cohort_index": {
+      "bytes": 12336,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v2/authorized-plan-index-v1.json",
+      "sha256": "28625bdd134a614ad290a1421060c32f0c7969c50015f246bb38705d7962d90a"
+    },
+    "failed_once": {
+      "bytes": 503,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v1/CONSUMED.json",
+      "sha256": "ea8c0766da36a97e68919ca14f375549dbb01beee4691b0d0df7eb79fa09eb3e"
+    },
+    "failed_runner": {
+      "bytes": 2908,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v1/runner-receipt.json",
+      "sha256": "26cd3b9a8e43e0d02d3c027531a6505c047db35106b58ef97195b4cfe93658fe"
+    },
+    "failed_worker": {
+      "bytes": 8062,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v1/worker-failure.json",
+      "sha256": "ddcfb0935f7d8aadb073c33b65c5f23c8f0c1f5012895a309350994a74ddfe4d"
+    },
+    "peer0": {
+      "bytes": 7677,
+      "path": "/private/tmp/gcts-semantic-cold-runner-peer-20261018/typed-cold-Source-review-v4.json",
+      "sha256": "1edfad581e419e57be6e67f2207f6898898174130ed2f80a82af6b99f78e592a"
+    },
+    "peer1": {
+      "bytes": 8717,
+      "path": "/private/tmp/gcts-semantic-cold-runner-peer-20261018/typed-six-prospective-plan-review-v3.json",
+      "sha256": "e901eb512059cefde28e277e81ac94f0ce88029ce3a3ffbfa825fe87e27122b3"
+    },
+    "peer2": {
+      "bytes": 5726,
+      "path": "/private/tmp/gcts-semantic-cold-runner-peer-20261018/typed-runner-Source-review-v1.json",
+      "sha256": "aba81f6619836289cbadd1b5eecba715a3378ab3f0bcea5bff3074df5e852f52"
+    },
+    "peer3": {
+      "bytes": 5284,
+      "path": "/private/tmp/gcts-semantic-cold-runner-peer-20261018/typed-observer-Source-review-v1.json",
+      "sha256": "9fd5dfe9729bb2578122c62de20b440ffca3595fec2b15ad9256d46f7d85dc74"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.authorization": {
+      "bytes": 3230,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorizations/semantic-compound-r1-base-ROOT-20261018-v2.json",
+      "sha256": "51647503a8f542b568ab7d7e0c25200fefc83b1c46aa2888d1838b652eebb174"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.authorization_draft": {
+      "bytes": 2127,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorization-drafts/semantic-compound-r1-base-ROOT-20261018-v2.json",
+      "sha256": "cd9a5079889a04672b728472214ce51e851ce17429328440c67068f0cfdb1455"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.consumed": {
+      "bytes": 503,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/CONSUMED.json",
+      "sha256": "f4e0bcf9b0f0b6764ddee71d53ecb6878693d01583f8402415c37a04764347fe"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.native.input.bin": {
+      "bytes": 643664,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/native/input.bin",
+      "sha256": "1bd52170dfad6fec52a3305b9db9de0511512b71842940556a3208a4a7e715a6"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.native.output.bin": {
+      "bytes": 643668,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/native/output.bin",
+      "sha256": "a1a1056d9188b8aa6a0f17dab2a4708e1108339410e5302a8b614fcdd7a3758f"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.observer": {
+      "bytes": 1546,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-base-ROOT-20261018-v2-terminal-observation/terminal.json",
+      "sha256": "95c9f08a386390da8e7d281f505c233654db6da57410e261c20cb66447cffea0"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.observer_consumed": {
+      "bytes": 318,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-base-ROOT-20261018-v2-terminal-observation/CONSUMED.json",
+      "sha256": "6a50a56f73f3b6687a16c83c88aa0b37062eea75f566fac5c3a1dbf378275d32"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.observer_stderr": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-base-ROOT-20261018-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.observer_stdout": {
+      "bytes": 304,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-base-ROOT-20261018-v2-terminal-observation/stdout.bin",
+      "sha256": "842fddd0e0dea741c2780a528c26b378e59181e1d161710f9da40298f07eee65"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.result": {
+      "bytes": 3295555,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/result.json",
+      "sha256": "dac3c59bd048a8a87ae2b9963dc087414cec9d0304f22fa5f5dc1d88df1107cf"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.runner": {
+      "bytes": 45278,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/runner-receipt.json",
+      "sha256": "f921043889151b32b43132e3471045b4860d92fcb645be33b2249447d879f38c"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.runner_plan": {
+      "bytes": 1881,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-base-ROOT-20261018-v2.json",
+      "sha256": "dee994c3fe0e5d4fb97031a1d87131261147f735a60956136db437d649314189"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.worker": {
+      "bytes": 37629,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/worker-receipt.json",
+      "sha256": "352ac1874d2a1464a77bc16c0ea3922312755d7ab5dc945d8accb44962ac95c7"
+    },
+    "semantic-compound-r1-base-ROOT-20261018-v2.worker_plan": {
+      "bytes": 16011,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/worker-plans/semantic-compound-r1-base-ROOT-20261018-v2.json",
+      "sha256": "6ca127410ca518cc3ddf18803804fb25615e9626390238e68fec6f685f3202c7"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.authorization": {
+      "bytes": 3234,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorizations/semantic-compound-r1-fixed-ROOT-20261018-v2.json",
+      "sha256": "8c3b27b67fa2f2c0b7067c301ab0cdbc113a65857ffc5f3f432f22ff20a26f08"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.authorization_draft": {
+      "bytes": 2131,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorization-drafts/semantic-compound-r1-fixed-ROOT-20261018-v2.json",
+      "sha256": "70c3c1f976fd26dbccf43165f0a4e3e339002f951c121734ef2e0d2b6a25f23e"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.consumed": {
+      "bytes": 506,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/CONSUMED.json",
+      "sha256": "42ab9aab20f34c7b071789355dda6f950d98a7b7b66ee0c93e59bc4d5b4c839c"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.native.input.bin": {
+      "bytes": 653828,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/native/input.bin",
+      "sha256": "e7abb647605b7a661e69557d62113198beb5774dc2d626e052e2fb47a7fba554"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.native.output.bin": {
+      "bytes": 653832,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/native/output.bin",
+      "sha256": "5d93f50f705991b672415d16b08edd1e150cd0113f522a2e8002b94fdd4a721b"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.observer": {
+      "bytes": 1550,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-fixed-ROOT-20261018-v2-terminal-observation/terminal.json",
+      "sha256": "1e5f7853929b3fe78114f9d1a3bee431411e6ed4cb4bf0ef08c39e5205f445fa"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.observer_consumed": {
+      "bytes": 319,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-fixed-ROOT-20261018-v2-terminal-observation/CONSUMED.json",
+      "sha256": "bda2f2838117089a15c918a47185a8b8c52b9d45d7598dd061e80301e9c57337"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.observer_stderr": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-fixed-ROOT-20261018-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.observer_stdout": {
+      "bytes": 305,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-fixed-ROOT-20261018-v2-terminal-observation/stdout.bin",
+      "sha256": "19a0da047a2c065fd1346e5741644e805b8c3f9363a53ea9626bf9f505e1a807"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.result": {
+      "bytes": 2753720,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/result.json",
+      "sha256": "68099b68d8f1fd7d04f05992b8dce9d59c53a2479a5a3f459eeb0492a3c7118f"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.runner": {
+      "bytes": 45317,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/runner-receipt.json",
+      "sha256": "f119bca0e7396d2fa5728dc12c963b114ac6822916e714222926862ffc73a80c"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.runner_plan": {
+      "bytes": 1886,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-fixed-ROOT-20261018-v2.json",
+      "sha256": "d8cd77dbea102e509de3abf6e32200837466add43beebb5a2e8fcc6394e16c7f"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.worker": {
+      "bytes": 37657,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/worker-receipt.json",
+      "sha256": "c93205beec3282095f5a2964b80eef9dc68ed6961b90073be04042911c87f174"
+    },
+    "semantic-compound-r1-fixed-ROOT-20261018-v2.worker_plan": {
+      "bytes": 16014,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/worker-plans/semantic-compound-r1-fixed-ROOT-20261018-v2.json",
+      "sha256": "5158e68903ef78d86158154aab600593d7db0ce7a0675d37a976743b141ace95"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.authorization": {
+      "bytes": 3222,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorizations/semantic-compound-r1-z3-ROOT-20261018-v2.json",
+      "sha256": "5edc89a8888e96b410f8e2cffd5d60b34e3d42580123134b5acab4e8be25d791"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.authorization_draft": {
+      "bytes": 2119,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorization-drafts/semantic-compound-r1-z3-ROOT-20261018-v2.json",
+      "sha256": "4c2e253b47d68276593051f13c934e55832ece25db0d0ee2a5e1d3fc044781b6"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.consumed": {
+      "bytes": 497,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/CONSUMED.json",
+      "sha256": "43e0c5bb4957f97ed0e9cafb1a66d98bd88905a4e657d4c8d585c732ee4711e3"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.native.input.bin": {
+      "bytes": 643708,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/native/input.bin",
+      "sha256": "829b702aefb07acfa5939a8a93dc2e645284ead040d221a041f4814be95bed5e"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.native.output.bin": {
+      "bytes": 643712,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/native/output.bin",
+      "sha256": "2709367ff494fda41de8b08d0717ff45ffa31a1002f30eb7992ac7c58fc20a4b"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.observer": {
+      "bytes": 1542,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-z3-ROOT-20261018-v2-terminal-observation/terminal.json",
+      "sha256": "8bb20d404d1f4d073493baac063323c75f229db1b96e3335eb6bdf264db6ff9e"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.observer_consumed": {
+      "bytes": 316,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-z3-ROOT-20261018-v2-terminal-observation/CONSUMED.json",
+      "sha256": "bda4b223454c628dedddd0c4482ef3cb7b41dbb7dbbe6dfa28c4e0d80797cb56"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.observer_stderr": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-z3-ROOT-20261018-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.observer_stdout": {
+      "bytes": 302,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-z3-ROOT-20261018-v2-terminal-observation/stdout.bin",
+      "sha256": "ac19b276cf443d31982ed793d3ef9c3d303164986dd4b6860c45098b11333221"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.result": {
+      "bytes": 4725865,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/result.json",
+      "sha256": "e8d2ef5519d45b18e215c911bb8e8b69698ac7963d6c7a14765a79280187e26e"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.runner": {
+      "bytes": 45191,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/runner-receipt.json",
+      "sha256": "6862d35c1dd92528941a414ddb8ac5a15fc10e626619812fc8c77a2607064c68"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.runner_plan": {
+      "bytes": 1871,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-z3-ROOT-20261018-v2.json",
+      "sha256": "4dbda0b0234775a7db0cb4903ed6eeaf9555d2ab06a74e88f68acd4c50c4e062"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.worker": {
+      "bytes": 37567,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/worker-receipt.json",
+      "sha256": "68dfb61157fdbf2fb7b129c7e66bf677863c7a8cdfc8355059afb79faf584a20"
+    },
+    "semantic-compound-r1-z3-ROOT-20261018-v2.worker_plan": {
+      "bytes": 16005,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/worker-plans/semantic-compound-r1-z3-ROOT-20261018-v2.json",
+      "sha256": "cfad9dee921e204febaea86d111f1dc51e0421e046eecb26a36f97fd9947136b"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.authorization": {
+      "bytes": 3230,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorizations/semantic-compound-r2-base-ROOT-20261018-v2.json",
+      "sha256": "06809124445804f340e2c295c78be50c95f185dfa5e246c3bebcda7602135aab"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.authorization_draft": {
+      "bytes": 2127,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorization-drafts/semantic-compound-r2-base-ROOT-20261018-v2.json",
+      "sha256": "5496c0d91d65a39fb0ec79ede494d0e24d3c3b081005278fc70d7dcda73c4d22"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.consumed": {
+      "bytes": 503,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/CONSUMED.json",
+      "sha256": "9642262ce0b7b867f1cb684cf8c98a11035e42e3b43c3f772a294c8b465c3ef6"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.native.input.bin": {
+      "bytes": 643664,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/native/input.bin",
+      "sha256": "1bd52170dfad6fec52a3305b9db9de0511512b71842940556a3208a4a7e715a6"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.native.output.bin": {
+      "bytes": 643668,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/native/output.bin",
+      "sha256": "a1a1056d9188b8aa6a0f17dab2a4708e1108339410e5302a8b614fcdd7a3758f"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.observer": {
+      "bytes": 1548,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-base-ROOT-20261018-v2-terminal-observation/terminal.json",
+      "sha256": "2e1946e4479496e9d7a29bb44053dc1523fdb7cb94cedd6bb5b4b593ba54435d"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.observer_consumed": {
+      "bytes": 318,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-base-ROOT-20261018-v2-terminal-observation/CONSUMED.json",
+      "sha256": "b7056bc1543786a7cdaa441ac1580dd9c3c129facaae9ae304479116b61db7c2"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.observer_stderr": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-base-ROOT-20261018-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.observer_stdout": {
+      "bytes": 304,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-base-ROOT-20261018-v2-terminal-observation/stdout.bin",
+      "sha256": "d4baf0cad2d76af6b093dd271aaabcda3bf6af3afb62d8a6e3ef46fa0723d5f7"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.result": {
+      "bytes": 3295562,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/result.json",
+      "sha256": "28156bdbc013c1883bda3e4486b1454a74cc81805a8758ffd903688f5a67f062"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.runner": {
+      "bytes": 45286,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/runner-receipt.json",
+      "sha256": "db3c409137c1d22d6d72600ce9e233bdf472cd1239984191ea2aa5b9ed893100"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.runner_plan": {
+      "bytes": 1881,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-base-ROOT-20261018-v2.json",
+      "sha256": "dce94aec803c831f4cb8d4046996537e805a25cf3790c53ed0ebc4e47f228a5b"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.worker": {
+      "bytes": 37634,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/worker-receipt.json",
+      "sha256": "627c33b6c3add96a4d73076e5eff6a5cb8ff62b90d969e80c2e6304460d9faf4"
+    },
+    "semantic-compound-r2-base-ROOT-20261018-v2.worker_plan": {
+      "bytes": 16011,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/worker-plans/semantic-compound-r2-base-ROOT-20261018-v2.json",
+      "sha256": "21e2f69a7a859a188a675bbe7b40be750aa32616cdf91f9e897a392449d249ac"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.authorization": {
+      "bytes": 3234,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorizations/semantic-compound-r2-fixed-ROOT-20261018-v2.json",
+      "sha256": "5202dc91266b2e7b2b0e35e0076f102fda2952ed1e395636113068d2f85045df"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.authorization_draft": {
+      "bytes": 2131,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorization-drafts/semantic-compound-r2-fixed-ROOT-20261018-v2.json",
+      "sha256": "f65875786b76d2f802467f3dda7c3cfcdd3437f857ba8605be1df9701ae03668"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.consumed": {
+      "bytes": 506,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/CONSUMED.json",
+      "sha256": "1b5c9b8280fc8e648278c63017a5e8cb29cbb474d7a5abdcdd3b872fafd74190"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.native.input.bin": {
+      "bytes": 653828,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/native/input.bin",
+      "sha256": "e7abb647605b7a661e69557d62113198beb5774dc2d626e052e2fb47a7fba554"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.native.output.bin": {
+      "bytes": 653832,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/native/output.bin",
+      "sha256": "5d93f50f705991b672415d16b08edd1e150cd0113f522a2e8002b94fdd4a721b"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.observer": {
+      "bytes": 1551,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-fixed-ROOT-20261018-v2-terminal-observation/terminal.json",
+      "sha256": "e02a914802fc7b6985ac2219bd727126f9108b16e557a25cbb3d4c7d743e632a"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.observer_consumed": {
+      "bytes": 319,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-fixed-ROOT-20261018-v2-terminal-observation/CONSUMED.json",
+      "sha256": "c71f885753d081dfe0cd9df7e48a6166e955c620ed52a3bced07d1f274d60b9a"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.observer_stderr": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-fixed-ROOT-20261018-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.observer_stdout": {
+      "bytes": 305,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-fixed-ROOT-20261018-v2-terminal-observation/stdout.bin",
+      "sha256": "c4114400ccfb8daa3c412630386ed1f99531de6df622e2aca5c99fa412c18093"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.result": {
+      "bytes": 2753706,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/result.json",
+      "sha256": "e1e6efd53c2c3640cecbd69b05407e605c19ff28e557402f0c5ef361c4374fe0"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.runner": {
+      "bytes": 45293,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/runner-receipt.json",
+      "sha256": "6906d1fcce588362f400960d03072d48d77374fceb712632f693d4c508c9abd2"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.runner_plan": {
+      "bytes": 1886,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-fixed-ROOT-20261018-v2.json",
+      "sha256": "9dda69a251dc7aeca23bec8e6b35472b246a7a5a24e08924badfaef783f2579c"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.worker": {
+      "bytes": 37636,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/worker-receipt.json",
+      "sha256": "8bc443c1c209fdb133be69087d5ced0b27b946062ed8cb7413acf92f4d4af410"
+    },
+    "semantic-compound-r2-fixed-ROOT-20261018-v2.worker_plan": {
+      "bytes": 16014,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/worker-plans/semantic-compound-r2-fixed-ROOT-20261018-v2.json",
+      "sha256": "11609256234cd36ccc24fd4d5973b85bd8ecbf71345436308a8b3f9ea72e29ea"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.authorization": {
+      "bytes": 3222,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorizations/semantic-compound-r2-z3-ROOT-20261018-v2.json",
+      "sha256": "630a1824bc147ca300bd620929ff29bcd92ad2bcc30e1214b59ae524d5d42a52"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.authorization_draft": {
+      "bytes": 2119,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorization-drafts/semantic-compound-r2-z3-ROOT-20261018-v2.json",
+      "sha256": "3291d8ea3ce8f16bd72e95a34599583ed19a9b236eba455617c678ad25fc21d7"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.consumed": {
+      "bytes": 497,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/CONSUMED.json",
+      "sha256": "97fbd15776a0c18013da54b84a3531394b8808f096c2b2da42b69fc8cf6fd4d8"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.native.input.bin": {
+      "bytes": 643708,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/native/input.bin",
+      "sha256": "829b702aefb07acfa5939a8a93dc2e645284ead040d221a041f4814be95bed5e"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.native.output.bin": {
+      "bytes": 643712,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/native/output.bin",
+      "sha256": "2709367ff494fda41de8b08d0717ff45ffa31a1002f30eb7992ac7c58fc20a4b"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.observer": {
+      "bytes": 1542,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-z3-ROOT-20261018-v2-terminal-observation/terminal.json",
+      "sha256": "fed33a26343948282bf7dc7d28d826eafe9e526234faff19ab25850ff13be181"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.observer_consumed": {
+      "bytes": 316,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-z3-ROOT-20261018-v2-terminal-observation/CONSUMED.json",
+      "sha256": "9770495a2d8aea611dcd39dd3f6e12463d879bbc2c4522b0a9718f2d9743eb40"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.observer_stderr": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-z3-ROOT-20261018-v2-terminal-observation/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.observer_stdout": {
+      "bytes": 302,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-z3-ROOT-20261018-v2-terminal-observation/stdout.bin",
+      "sha256": "7506836648e2f4d34164470ed1278910c4162b3a556866519f73fb6105b0c894"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.result": {
+      "bytes": 4725868,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/result.json",
+      "sha256": "3eaea2a53b37ad4473add697b412cc9beae3219231d29e43a68b76fbab8cf70f"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.runner": {
+      "bytes": 45189,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/runner-receipt.json",
+      "sha256": "fc1d6d74bdca2655787819db6d1200ca14a7cbac34cf6023a6c7893e59fe7f06"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.runner_plan": {
+      "bytes": 1871,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-z3-ROOT-20261018-v2.json",
+      "sha256": "61beee6d3daba238379a0b8fddf62a6b99304ae8becfaeb6519c8512a60c3bf6"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.worker": {
+      "bytes": 37565,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/worker-receipt.json",
+      "sha256": "080979f53430d3eb5a5b4ccc74b4cb559a17b0531bd65125e4d8ffbc4b7e8c0f"
+    },
+    "semantic-compound-r2-z3-ROOT-20261018-v2.worker_plan": {
+      "bytes": 16005,
+      "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/worker-plans/semantic-compound-r2-z3-ROOT-20261018-v2.json",
+      "sha256": "6d7ce33edcd0ac7e44002f29b2fc90c2242ba3ae62d614d1a921f4b0f2d499d7"
+    }
+  },
+  "audit": {
+    "bytes": 339345,
+    "path": "/private/tmp/gcts-semantic-six-actual-resource-peer-20261018/audit-v2.json",
+    "sha256": "8a32dbb2416c049e220f1097cb55d5f2b985ce76c7ff148027e5d4c968c4f8ef"
+  },
+  "author_overlap": true,
+  "authorized_plan_index": {
+    "bytes": 12339,
+    "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorized-plan-index-v1.json",
+    "sha256": "f8ecaa662bf16ac5d8b4fa0f9f5b5d727930c4b61152cd7d3076aa11aa23e34c"
+  },
+  "authorship_disclosure": "Reviewer authored bounded broker606e and external once runnerb002, rawruntimeclosure inventory and earlierQcheckers/CASEs/verifier398; this is a distinct saved-data review of Root-owned actual executions and raw evidence. It is not an independent Source re-review of own broker/runner. Genuine distinct ab21/aba81 Source peers and exact Rootcold/observer prospective reviews remain prior evidence. Reviewer authored neither currentRootcold/observer/execution nor library semanticdriver/oldsemantic/native/Z3 Sources.",
+  "case_resource_evidence": [
+    {
+      "checks_closed_elapsed_seconds": 16.236640375,
+      "conservative_peak_sum_bytes": 326025216,
+      "invocation_id": "semantic-compound-r1-base-ROOT-20261018-v2",
+      "mathematical_acceptance_audited": false,
+      "mode": "base",
+      "native_peak_bytes": 13008896,
+      "native_pid": 40083,
+      "observer_terminal": {
+        "bytes": 1546,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-base-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "95c9f08a386390da8e7d281f505c233654db6da57410e261c20cb66447cffea0"
+      },
+      "parent_peak_bytes": 313016320,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 40082,
+      "repetition": 1,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 3295555,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/result.json",
+        "sha256": "dac3c59bd048a8a87ae2b9963dc087414cec9d0304f22fa5f5dc1d88df1107cf"
+      },
+      "runner_pid": 40081,
+      "runner_receipt": {
+        "bytes": 45278,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "f921043889151b32b43132e3471045b4860d92fcb645be33b2249447d879f38c"
+      },
+      "runner_terminal_elapsed_seconds": 16.289276417,
+      "terminal_gate_passed": true,
+      "worker_receipt": {
+        "bytes": 37629,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "352ac1874d2a1464a77bc16c0ea3922312755d7ab5dc945d8accb44962ac95c7"
+      },
+      "worker_terminal_elapsed_seconds": 16.167938834
+    },
+    {
+      "checks_closed_elapsed_seconds": 13.939703917,
+      "conservative_peak_sum_bytes": 338427904,
+      "invocation_id": "semantic-compound-r1-fixed-ROOT-20261018-v2",
+      "mathematical_acceptance_audited": false,
+      "mode": "fixed",
+      "native_peak_bytes": 12877824,
+      "native_pid": 40257,
+      "observer_terminal": {
+        "bytes": 1550,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-fixed-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "1e5f7853929b3fe78114f9d1a3bee431411e6ed4cb4bf0ef08c39e5205f445fa"
+      },
+      "parent_peak_bytes": 325550080,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 40256,
+      "repetition": 1,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 2753720,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/result.json",
+        "sha256": "68099b68d8f1fd7d04f05992b8dce9d59c53a2479a5a3f459eeb0492a3c7118f"
+      },
+      "runner_pid": 40255,
+      "runner_receipt": {
+        "bytes": 45317,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "f119bca0e7396d2fa5728dc12c963b114ac6822916e714222926862ffc73a80c"
+      },
+      "runner_terminal_elapsed_seconds": 13.98502825,
+      "terminal_gate_passed": true,
+      "worker_receipt": {
+        "bytes": 37657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "c93205beec3282095f5a2964b80eef9dc68ed6961b90073be04042911c87f174"
+      },
+      "worker_terminal_elapsed_seconds": 13.879059792
+    },
+    {
+      "checks_closed_elapsed_seconds": 14.3244085,
+      "conservative_peak_sum_bytes": 396558336,
+      "invocation_id": "semantic-compound-r1-z3-ROOT-20261018-v2",
+      "mathematical_acceptance_audited": false,
+      "mode": "z3",
+      "native_peak_bytes": 12877824,
+      "native_pid": 40294,
+      "observer_terminal": {
+        "bytes": 1542,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-z3-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "8bb20d404d1f4d073493baac063323c75f229db1b96e3335eb6bdf264db6ff9e"
+      },
+      "parent_peak_bytes": 383680512,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 40292,
+      "repetition": 1,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 4725865,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/result.json",
+        "sha256": "e8d2ef5519d45b18e215c911bb8e8b69698ac7963d6c7a14765a79280187e26e"
+      },
+      "runner_pid": 40291,
+      "runner_receipt": {
+        "bytes": 45191,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "6862d35c1dd92528941a414ddb8ac5a15fc10e626619812fc8c77a2607064c68"
+      },
+      "runner_terminal_elapsed_seconds": 14.335832375,
+      "terminal_gate_passed": true,
+      "worker_receipt": {
+        "bytes": 37567,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "68dfb61157fdbf2fb7b129c7e66bf677863c7a8cdfc8355059afb79faf584a20"
+      },
+      "worker_terminal_elapsed_seconds": 14.277118542
+    },
+    {
+      "checks_closed_elapsed_seconds": 14.878319125,
+      "conservative_peak_sum_bytes": 376324096,
+      "invocation_id": "semantic-compound-r2-z3-ROOT-20261018-v2",
+      "mathematical_acceptance_audited": false,
+      "mode": "z3",
+      "native_peak_bytes": 13008896,
+      "native_pid": 40331,
+      "observer_terminal": {
+        "bytes": 1542,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-z3-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "fed33a26343948282bf7dc7d28d826eafe9e526234faff19ab25850ff13be181"
+      },
+      "parent_peak_bytes": 363315200,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 40328,
+      "repetition": 2,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 4725868,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/result.json",
+        "sha256": "3eaea2a53b37ad4473add697b412cc9beae3219231d29e43a68b76fbab8cf70f"
+      },
+      "runner_pid": 40327,
+      "runner_receipt": {
+        "bytes": 45189,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "fc1d6d74bdca2655787819db6d1200ca14a7cbac34cf6023a6c7893e59fe7f06"
+      },
+      "runner_terminal_elapsed_seconds": 14.925593167,
+      "terminal_gate_passed": true,
+      "worker_receipt": {
+        "bytes": 37565,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "080979f53430d3eb5a5b4ccc74b4cb559a17b0531bd65125e4d8ffbc4b7e8c0f"
+      },
+      "worker_terminal_elapsed_seconds": 14.834504958
+    },
+    {
+      "checks_closed_elapsed_seconds": 13.784238167,
+      "conservative_peak_sum_bytes": 360448000,
+      "invocation_id": "semantic-compound-r2-fixed-ROOT-20261018-v2",
+      "mathematical_acceptance_audited": false,
+      "mode": "fixed",
+      "native_peak_bytes": 12877824,
+      "native_pid": 40581,
+      "observer_terminal": {
+        "bytes": 1551,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-fixed-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "e02a914802fc7b6985ac2219bd727126f9108b16e557a25cbb3d4c7d743e632a"
+      },
+      "parent_peak_bytes": 347570176,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 40580,
+      "repetition": 2,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 2753706,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/result.json",
+        "sha256": "e1e6efd53c2c3640cecbd69b05407e605c19ff28e557402f0c5ef361c4374fe0"
+      },
+      "runner_pid": 40579,
+      "runner_receipt": {
+        "bytes": 45293,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "6906d1fcce588362f400960d03072d48d77374fceb712632f693d4c508c9abd2"
+      },
+      "runner_terminal_elapsed_seconds": 13.823835792,
+      "terminal_gate_passed": true,
+      "worker_receipt": {
+        "bytes": 37636,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "8bc443c1c209fdb133be69087d5ced0b27b946062ed8cb7413acf92f4d4af410"
+      },
+      "worker_terminal_elapsed_seconds": 13.726324875
+    },
+    {
+      "checks_closed_elapsed_seconds": 13.434274584,
+      "conservative_peak_sum_bytes": 340115456,
+      "invocation_id": "semantic-compound-r2-base-ROOT-20261018-v2",
+      "mathematical_acceptance_audited": false,
+      "mode": "base",
+      "native_peak_bytes": 12910592,
+      "native_pid": 40658,
+      "observer_terminal": {
+        "bytes": 1548,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-base-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "2e1946e4479496e9d7a29bb44053dc1523fdb7cb94cedd6bb5b4b593ba54435d"
+      },
+      "parent_peak_bytes": 327204864,
+      "provisional_status": "native_proof_discovered",
+      "python_pid": 40657,
+      "repetition": 2,
+      "resource_metadata_passed": true,
+      "result": {
+        "bytes": 3295562,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/result.json",
+        "sha256": "28156bdbc013c1883bda3e4486b1454a74cc81805a8758ffd903688f5a67f062"
+      },
+      "runner_pid": 40656,
+      "runner_receipt": {
+        "bytes": 45286,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "db3c409137c1d22d6d72600ce9e233bdf472cd1239984191ea2aa5b9ed893100"
+      },
+      "runner_terminal_elapsed_seconds": 13.491136959,
+      "terminal_gate_passed": true,
+      "worker_receipt": {
+        "bytes": 37634,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "627c33b6c3add96a4d73076e5eff6a5cb8ff62b90d969e80c2e6304460d9faf4"
+      },
+      "worker_terminal_elapsed_seconds": 13.364567292
+    }
+  ],
+  "check_count": 1967,
+  "codec_or_decompression_calls": 0,
+  "common_declared_acquisition_capsule": {
+    "cold": {
+      "bytes": 23402,
+      "path": "/private/tmp/gcts-semantic-cold-root-source-20261018/semantic_cold_v4.py",
+      "sha256": "4bd416d9ded9ed9ae287438d5e0c83f8011ff2d5040d1ed8bd3f11fc34beadcf"
+    },
+    "components": {
+      "bounded_transport": {
+        "bytes": 20424,
+        "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+        "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+      },
+      "receiver_driver": {
+        "bytes": 36357,
+        "path": "/private/tmp/gcts-semantic-receiver-driver-source-20261018/semantic_receiver_driver_v1.py",
+        "sha256": "0da2663546857ebd680a74a3c1a84ca56f3823517e0c7aa46b2e4293e5e7e824"
+      }
+    },
+    "declaration": {
+      "bytes": 4928,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/experiment-declaration-v2.json",
+      "sha256": "33f4002c58d2bf33028e1da51a7c80ac5f19648fb73d83f291c10cbb4674f90a"
+    },
+    "native_inputs": {
+      "native_cpp": {
+        "bytes": 41808,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/boundary-oracle-v2",
+        "sha256": "2b6bf8bb09a4e03d0cb1b4595dea1fe6d4432aa93d8f7eed72c30077fd9941a4"
+      },
+      "opaque_microcode_gzip": {
+        "bytes": 1114802,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-microcode-001.json.gz",
+        "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+      },
+      "program_and_template": {
+        "bytes": 1494417,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-001.json",
+        "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+      }
+    },
+    "policy": {
+      "bytes": 4502,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-policy-001.json",
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+    },
+    "project_sources": {
+      "certificate_boundary_search": {
+        "bytes": 7089,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+        "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+      },
+      "native_inference_inventory": {
+        "bytes": 10594,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+        "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+      },
+      "native_inventory_policy": {
+        "bytes": 2746,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+        "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+      },
+      "native_receptor_points": {
+        "bytes": 8962,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+        "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+      },
+      "proof_boundary": {
+        "bytes": 6992,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      },
+      "semantic_inventory_guidance": {
+        "bytes": 6942,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+        "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+      },
+      "semantic_inventory_oracle": {
+        "bytes": 2180,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+        "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+      },
+      "semantic_inventory_search": {
+        "bytes": 5318,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+        "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+      },
+      "semantic_lemma_inventory": {
+        "bytes": 7196,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+        "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+      },
+      "semantic_point_smt": {
+        "bytes": 4593,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+        "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+      },
+      "semantic_receptor_points": {
+        "bytes": 7409,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+        "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+      },
+      "tape_binary": {
+        "bytes": 3756,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      },
+      "tape_tree_machine": {
+        "bytes": 19188,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      },
+      "tree_machine": {
+        "bytes": 13290,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      },
+      "turtle": {
+        "bytes": 28533,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+    },
+    "z3": {
+      "files": [
+        {
+          "bytes": 210,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/__init__.py",
+          "sha256": "53c4529a01f38e7c0d593b7548c79e0d7398aa09f7d7cbd1773470859ee2febd"
+        },
+        {
+          "bytes": 347383,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3.py",
+          "sha256": "a175fce3e5e6f7cbe7aefb54a5d01d63addc206811a9cbd3e58f87f48c10432b"
+        },
+        {
+          "bytes": 8062,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3consts.py",
+          "sha256": "59737a55612e9bddb33f7ec4a27db9fbc880a92053fa8a88919fcc934e1f7573"
+        },
+        {
+          "bytes": 202386,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3core.py",
+          "sha256": "c5859f1938aa7b5ce1c35ab52295ccb1405daa1ae224cb4ec292efbe98b1064e"
+        },
+        {
+          "bytes": 16090,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3num.py",
+          "sha256": "d7ad7cceb560867f55dcbd87c5866e1c365fddec92faa22321bf91b60c431dee"
+        },
+        {
+          "bytes": 1113,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3poly.py",
+          "sha256": "fd06029418e5899b300fe3b3a300d110c8e174e633cba8b751314f22a583394e"
+        },
+        {
+          "bytes": 46300,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3printer.py",
+          "sha256": "714f9fa34a1da9281bdc1a98d8e89d650daca6e99cd1839d325c4d3605a99730"
+        },
+        {
+          "bytes": 5039,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3rcf.py",
+          "sha256": "504e0339b1bb06075c19ca52e51457716671218a2f2191d0c9754e0b75bede87"
+        },
+        {
+          "bytes": 4883,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3types.py",
+          "sha256": "ba728354b4a9ee40bcfbd899f405d904bc4bb023e41807044c06c318548c3080"
+        },
+        {
+          "bytes": 11387,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3util.py",
+          "sha256": "7087f1bbb0119e0e8f545d70cba9a21446ff267cda1289e55b3c2e4e644effd9"
+        },
+        {
+          "bytes": 196419,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3++.h",
+          "sha256": "9fbeffe8be3e178f1ec5af06fa861ae19a1a659b9d2fe1440712cff9271930c8"
+        },
+        {
+          "bytes": 495,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3.h",
+          "sha256": "60cc2bb3e1df2c0fc6105b6a73c032b9d4f47487471616994ba63df8d81898a8"
+        },
+        {
+          "bytes": 7193,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_algebraic.h",
+          "sha256": "7659d6dec25e49e2dd6546a6ca6c05adb27437a989d857af0cbcc7191adb45a6"
+        },
+        {
+          "bytes": 271071,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_api.h",
+          "sha256": "02706214023c7e077ff11fc824a557f4d692ccd87e3c65c4231af9e24fedc563"
+        },
+        {
+          "bytes": 5735,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_ast_containers.h",
+          "sha256": "6687f3ec9483f3774b8951be0f9944ab47f61bedbd42193d075dd88c612fb248"
+        },
+        {
+          "bytes": 14123,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_fixedpoint.h",
+          "sha256": "cc8a424163dd6a92a1bfe07dea68edb8fc8dabb58f612b1e85a033a21178dedc"
+        },
+        {
+          "bytes": 43462,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_fpa.h",
+          "sha256": "f357754480a39788653f91063af53f2e054b2382a8486171a0a17a99e1354947"
+        },
+        {
+          "bytes": 389,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_macros.h",
+          "sha256": "9d92f8136abef10dd8429a28fd9068e9b3e4feb5696072763cd8d0edc1f00b24"
+        },
+        {
+          "bytes": 12936,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_optimization.h",
+          "sha256": "d6b857c21186f0710d8729ad3b7d9b39baa07b5c81855e106d3619c6423f48cc"
+        },
+        {
+          "bytes": 1056,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_polynomial.h",
+          "sha256": "e1894c40edb37115cf221a8ef2f7e5557c7360c3c0583f05582f849ebdd78c36"
+        },
+        {
+          "bytes": 9952,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_rcf.h",
+          "sha256": "5f2219157573043338df52808a2597f52cf9b179aa8b8006b4893571027632c7"
+        },
+        {
+          "bytes": 4459,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_spacer.h",
+          "sha256": "dd23be86e4fc74cd0adf6ca944834d165b93f6a6f3af81923116db97a7ee1ddd"
+        },
+        {
+          "bytes": 2220,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_v1.h",
+          "sha256": "30d1776dafddd426d06a4a737d51d37731b45790fc26573b361562e3758ebb04"
+        },
+        {
+          "bytes": 192,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/include/z3_version.h",
+          "sha256": "98fe36ecc01c784e0039ca18b66e531038ecca89736e487c10f1ad53dc39253a"
+        },
+        {
+          "bytes": 25364904,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.4.15.dylib",
+          "sha256": "3164e079c221c23a843396a485a6e912ee423918ee64ea03943e584305439a98"
+        },
+        {
+          "bytes": 17477120,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.dll",
+          "sha256": "a86f051ce2e985857c7d53a635c3920742cb0053e04d61dd501215db533996f6"
+        },
+        {
+          "bytes": 25364904,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.dylib",
+          "sha256": "3164e079c221c23a843396a485a6e912ee423918ee64ea03943e584305439a98"
+        },
+        {
+          "bytes": 557728,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140.dll",
+          "sha256": "0f885b509a685d2bbfa652fed26b5fb31d88fbdab0a978c641d1c7b8aa460aa9"
+        },
+        {
+          "bytes": 35952,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_1.dll",
+          "sha256": "bfad5aef4c63a669e3c140655cdfdf395b6c979b400a447bd5dcb65ed8826c3d"
+        },
+        {
+          "bytes": 280200,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_2.dll",
+          "sha256": "3ea06f0ee098b4823cb79599df3780e7f23cce52c19aac31d2a0d47efe33a5e9"
+        },
+        {
+          "bytes": 50304,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_atomic_wait.dll",
+          "sha256": "640b2aefced484d0368eea5bdd06addd0658a3a70a49256e560d6923b404a479"
+        },
+        {
+          "bytes": 31872,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/msvcp140_codecvt_ids.dll",
+          "sha256": "f2069a52880ec885ee7f0511186100eb7fada0411a2b4948fafea7735b878a18"
+        },
+        {
+          "bytes": 193152,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcomp140.dll",
+          "sha256": "55aba23cdcd6484fbb06f4155b8ca75adfce7a881f10afd0c49457165e677164"
+        },
+        {
+          "bytes": 124544,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcruntime140.dll",
+          "sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066"
+        },
+        {
+          "bytes": 49792,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcruntime140_1.dll",
+          "sha256": "1f2d41c4aa5db0bc33ebf7b66d72943a817d7ce6cbe880502a9403823633093f"
+        },
+        {
+          "bytes": 38528,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/vcruntime140_threads.dll",
+          "sha256": "219915cf20822f34d5e7c1fdd4e21ae7f3396881096c51036225fb8f84b47afa"
+        },
+        {
+          "bytes": 25601056,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.data/data/bin/z3",
+          "sha256": "b93a874ccdeb27feb29e7c0a92b999f6531014a7a12976c96fc422b8202ac766"
+        },
+        {
+          "bytes": 778,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/METADATA",
+          "sha256": "2585c295b189883eea09c7eb95e3b692cb74caf2a29085abae40de69eb0bea13"
+        },
+        {
+          "bytes": 105,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/WHEEL",
+          "sha256": "3da3f83ef903ca249ce02e83870e9c71099fc6c585ad2bfe94942306c86ed21c"
+        },
+        {
+          "bytes": 3,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/top_level.txt",
+          "sha256": "5e1b3b203b8d9c1fe1424420b5d56a8244880e1a7539eb7e88b035ec0257fafe"
+        },
+        {
+          "bytes": 3209,
+          "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3_solver-4.15.3.0.dist-info/RECORD",
+          "sha256": "bf34c15d433d827d8b3ad4597983d781df16ecbddaf4035b1ebc0f5a9edff82d"
+        }
+      ],
+      "library": {
+        "bytes": 25364904,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/lib/libz3.dylib",
+        "sha256": "3164e079c221c23a843396a485a6e912ee423918ee64ea03943e584305439a98"
+      },
+      "root": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package"
+    }
+  },
+  "counting": {
+    "earlier_setup_actuals_consumed": 1,
+    "earlier_unrun_grants_withdrawn": 5,
+    "matched_current_actuals_consumed": 6,
+    "matched_current_normal_terminal_returns": 6,
+    "total_semantic_actual_invocations_consumed": 7
+  },
+  "current_raw_origin_pins": {
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/__future__.py": {
+      "bytes": 5218,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/__future__.py",
+      "sha256": "981d4c398849f9ebcab72300d9c1fe288fd6d7f28957b3b3fa3a493a5836d95c"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/_collections_abc.py": {
+      "bytes": 32089,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/_collections_abc.py",
+      "sha256": "d4945c8410c4bab351741b04bca3de066f7c27ed7e38df89e206a96617102ffb"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/_compression.py": {
+      "bytes": 5681,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/_compression.py",
+      "sha256": "3ad5d60627477a60939ee44fc1bb3a05dbe8fb52f0f75039b8f5d8f1a278b981"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/_weakrefset.py": {
+      "bytes": 5893,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/_weakrefset.py",
+      "sha256": "91895a451d06e9f521a1171b31b9b19bc9740f35af00d4fa106338ab7167c9ac"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/abc.py": {
+      "bytes": 6538,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/abc.py",
+      "sha256": "e558702a95cdce3febd289da021715d2b92bc43995b8a1bc58dfa1c3d8010287"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ast.py": {
+      "bytes": 64452,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ast.py",
+      "sha256": "b515c23dbbc459329d3b802a3aac742cc456d7472e66f7ed6e9dc97e40596d7d"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/bisect.py": {
+      "bytes": 3423,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/bisect.py",
+      "sha256": "f1cf7b85fc36b5da249813fc5ab97d9464f8cc1bc817f7146206fa2713e35999"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/bz2.py": {
+      "bytes": 11847,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/bz2.py",
+      "sha256": "76ab3252924e71e859d7d90e8d3db13b6554975cfcac0fdadced4de7f8779330"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/codecs.py": {
+      "bytes": 36870,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/codecs.py",
+      "sha256": "7b7839e53a77961153240aecfe11edc8054d05b1dedd83894450dae21ec05785"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/collections/__init__.py": {
+      "bytes": 52378,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/collections/__init__.py",
+      "sha256": "7fdb04dd248ab37909f46d2085bfee56b32d7e91e49ad3a2fad99c453295659b"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/collections/abc.py": {
+      "bytes": 119,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/collections/abc.py",
+      "sha256": "9cb4208f99128a0489b6c8e6c61637617dd7d4250c59e065491957eda084dd10"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py": {
+      "bytes": 27637,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py",
+      "sha256": "8b7a477f978a8532852fd81e241c78182516bc4975d672d580a5848a76e11eb6"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/copy.py": {
+      "bytes": 8412,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/copy.py",
+      "sha256": "cbd25547933176fcf6bb05c2adc9f4796d15ac20b9b82dcf890daea7203daeab"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/copyreg.py": {
+      "bytes": 7614,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/copyreg.py",
+      "sha256": "c8eda41f05c6bf95a4da4726a530409d2485ae060b8d019b3a8034389a15d3e9"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ctypes/__init__.py": {
+      "bytes": 18268,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ctypes/__init__.py",
+      "sha256": "e048845f8f5c14a5fc873526a27da4a19d4eed25ab2f2a01fa6e0b79faca78d0"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ctypes/_endian.py": {
+      "bytes": 2535,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ctypes/_endian.py",
+      "sha256": "c5d692bdce10dfee242752620061bab684633bc72445a3def484961ef1bdbf3a"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py": {
+      "bytes": 62085,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py",
+      "sha256": "d242aea5fcf6408b1c1f622442f88f68b9526ce1f8bd2890d74a144677c427d9"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/decimal.py": {
+      "bytes": 2805,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/decimal.py",
+      "sha256": "c3e37c55ef72b3dd6cb7b466a907b966467b6a9c58d85302193e64cbb5fd53d0"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dis.py": {
+      "bytes": 30227,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dis.py",
+      "sha256": "44c0b389c96124d8fb5cb0bc41c7a2aa7a6848ef4001b4000dcbd858efa4a1a2"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/encodings/__init__.py": {
+      "bytes": 5884,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/encodings/__init__.py",
+      "sha256": "78c4744d407690f321565488710b5aaf6486b5afa8d185637aa1e7633ab59cd8"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/encodings/aliases.py": {
+      "bytes": 15677,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/encodings/aliases.py",
+      "sha256": "6fdcc49ba23a0203ae6cf28e608f8e6297d7c4d77d52e651db3cb49b9564c6d2"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/encodings/utf_8.py": {
+      "bytes": 1005,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/encodings/utf_8.py",
+      "sha256": "ba0cac060269583523ca9506473a755203037c57d466a11aa89a30a5f6756f3d"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/enum.py": {
+      "bytes": 81540,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/enum.py",
+      "sha256": "f35e542d8c4c1d2b5e910138d726fa48774925f3c4dc5462793ebcb66aa55501"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/fnmatch.py": {
+      "bytes": 5999,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/fnmatch.py",
+      "sha256": "6683da36e47af523f3f41e18ad244d837783e19e98911cc0b7415dea81494ebc"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/fractions.py": {
+      "bytes": 38147,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/fractions.py",
+      "sha256": "d52d1ab9d5be26924e4914a5e40069c992bbfa68f773694c2e5ee8452d0766a0"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/functools.py": {
+      "bytes": 37940,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/functools.py",
+      "sha256": "de4a1d37c795e2a065124b5c49357893433bc6bb111b41277ccc9930ef08d4c9"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/genericpath.py": {
+      "bytes": 5572,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/genericpath.py",
+      "sha256": "2b0b35d2206778af4081cf81dd9b513876e72c35a55bec941402e1fa62b1f1aa"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/gzip.py": {
+      "bytes": 25402,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/gzip.py",
+      "sha256": "ea6e194b9df26398bf0d5215e63320c7b9d801b2d8b723fb9c80619df48076e9"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/hashlib.py": {
+      "bytes": 9349,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/hashlib.py",
+      "sha256": "6dbdebf270868b391080e21dc9687eddfaf321c965ad979f68d3f5c423c613ab"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py": {
+      "bytes": 4784,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py",
+      "sha256": "d540b5ac137fcb3e26a8d5f2939649e34373c6685f98a30a9f682cf231be5854"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/_abc.py": {
+      "bytes": 1354,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/_abc.py",
+      "sha256": "80aab7931dc999dee581c8b8b56fcd973fe156335a96ceeaf6acfc03cebf10e8"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/_bootstrap.py": {
+      "bytes": 57057,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/_bootstrap.py",
+      "sha256": "d112d54b7831cf4a818d4841d5ff8003b54df220a6dabafa61f67d7c7a5603f7"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/_bootstrap_external.py": {
+      "bytes": 69428,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/_bootstrap_external.py",
+      "sha256": "e6ad72f3f0f9b65c99ab52598cd02ab748511dcdce1dd51f18dace9be9a680c6"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/machinery.py": {
+      "bytes": 880,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/machinery.py",
+      "sha256": "d045cd7ecf2a12b6ecbfbef79eb114e87ef2ebd756f5b705f73e6f3266e3dede"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/readers.py": {
+      "bytes": 327,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/readers.py",
+      "sha256": "d0d57d118d64916f7e6edb04f8bd1a760a1abb879125899ef50a36d09ef54df4"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/__init__.py": {
+      "bytes": 532,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/__init__.py",
+      "sha256": "4146e1d00d56a783d4087f15257f0c284fae52e71fa3f20613fa268d911bf6d5"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/_adapters.py": {
+      "bytes": 4482,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/_adapters.py",
+      "sha256": "be9ac919b51e1db6a35fa5c2b8c3fa27794caea0a2f8ffcc4e5ce225447b8df9"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/_common.py": {
+      "bytes": 5486,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/_common.py",
+      "sha256": "a0de4a899a2aa787b052f92f516b39f80b183c3f0d409d1305cc6dc374f18870"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/_itertools.py": {
+      "bytes": 1277,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/_itertools.py",
+      "sha256": "7838ac57a46a88d64ea202d25dfe8b3861ce61cefd14680faca34bcc52e60ab5"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/_legacy.py": {
+      "bytes": 2949,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/_legacy.py",
+      "sha256": "79c566fdf1a61129683e38e8c11a660d6233dd84422456ae5dd230e658a7857f"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/abc.py": {
+      "bytes": 5203,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/abc.py",
+      "sha256": "a726c48590b21ba5532f0c654735991571bc0ecafe88145cb8891d82cd364e5e"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/readers.py": {
+      "bytes": 4370,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/resources/readers.py",
+      "sha256": "10884a02b4a97636887fcedc7bae248a4ff42f3e52abb80d613cc0b2190b6ce9"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/util.py": {
+      "bytes": 10994,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/util.py",
+      "sha256": "671f2995653f673f6d5056a1089debef473bc28ae7114f7a8db71475733d6876"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/inspect.py": {
+      "bytes": 127125,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/inspect.py",
+      "sha256": "5c54ebf0bfdc25397750e5d0f63800751650ee50e65325ff3ea4069c9bfa5f75"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/io.py": {
+      "bytes": 3582,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/io.py",
+      "sha256": "7cec3cb8ac004058dd0a5af246e6d950fb59c7ddd0058fda48bcb3fcb98d8822"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ipaddress.py": {
+      "bytes": 81414,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ipaddress.py",
+      "sha256": "ba8d3389ff084fcb232b48204ec04f2b3ea4bd0eadf7b18c814947d185de2c64"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py": {
+      "bytes": 14020,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py",
+      "sha256": "d5d41e2c29049515d295d81a6d40b4890fbec8d8482cfb401630f8ef2f77e4d5"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py": {
+      "bytes": 12525,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py",
+      "sha256": "382cd02af6f7efede5a6d4abbcda1015e5c7a75794b0016022878f9cf32a24f6"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py": {
+      "bytes": 16075,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py",
+      "sha256": "52bfb1b66029cc70fa3bd7fe11df9f2e03922d413407a341b387a22c987f24f8"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/scanner.py": {
+      "bytes": 2434,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/scanner.py",
+      "sha256": "572958017eae8842eeddd0e3d18d3c56cc0a197348224915e1d87ce937841764"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/keyword.py": {
+      "bytes": 1073,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/keyword.py",
+      "sha256": "18c2be738c04ad20ad375f6a71db34b3823c7f40b0340f5294d0e89f3c9b093b"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/linecache.py": {
+      "bytes": 5800,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/linecache.py",
+      "sha256": "9eb9194707991b49f9fea67a5222b0e6a0e49c865cdffc69fbc80a1f829e77fb"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/locale.py": {
+      "bytes": 78599,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/locale.py",
+      "sha256": "3988c5419552d5b9f0bef3695102376f79357f0f440e9cd1f32c501f966e6ef3"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/lzma.py": {
+      "bytes": 13277,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/lzma.py",
+      "sha256": "58fb9d2fdc8a8af7b25e218f17ea3b51bdfa53bdf40f440ab33c605974ca5c2e"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ntpath.py": {
+      "bytes": 30404,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ntpath.py",
+      "sha256": "6c0d55ee892f98ef87b1ed3c50c9dfc7e267a98d2db47e08d3dc67529af56725"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/numbers.py": {
+      "bytes": 11467,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/numbers.py",
+      "sha256": "ac381960a3dc1db0498b0bd43d8ef278d6599713121a186b153ff09d9552e0db"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/opcode.py": {
+      "bytes": 13174,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/opcode.py",
+      "sha256": "192f6008508f28d3273bff42eaea9b01c8394dab1607cd36aea778bdd166c3a6"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/operator.py": {
+      "bytes": 10965,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/operator.py",
+      "sha256": "b2af20f67667203c1730e686cc5d0427becc94db4c97f1d3efe3ed2158473f6a"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/os.py": {
+      "bytes": 40821,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/os.py",
+      "sha256": "54c43a1fc69c979c70d8f7d097174cee163bfe59937723ee353043dd4a0211e1"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py": {
+      "bytes": 51052,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+      "sha256": "10ba48ae8063cfe7589436041d0d4628c05f427c7709cf8e75e486f8930cc32c"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/platform.py": {
+      "bytes": 43388,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/platform.py",
+      "sha256": "f5ff83f15c841792be42709a6710dc8d7a9f72791c1ae4cad719b1fb0abe0a05"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/posixpath.py": {
+      "bytes": 17356,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/posixpath.py",
+      "sha256": "03825681086638649a43480954f7f6a16b4da3bd41ece956864ae96e4f795cd9"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/random.py": {
+      "bytes": 34689,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/random.py",
+      "sha256": "de48263a837339c7e01cf9f3c4d756696e0e0775f7778eb9cf81ad5b00134569"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/__init__.py": {
+      "bytes": 16315,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/__init__.py",
+      "sha256": "8ff3c37c63b917fcf8dc8d50993a502292a3dc159e41de4f4018c72a53d1c07b"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/_casefix.py": {
+      "bytes": 5444,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/_casefix.py",
+      "sha256": "1b12d9136f23db6c3f6f26053fefc15ca964b886838c7b9c1fabf8d2efc1e5c8"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/_compiler.py": {
+      "bytes": 26399,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/_compiler.py",
+      "sha256": "c75620761098a70ed75b9accef63ef2881d8abb6d4e5cbfd10074bd165eefe4d"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/_constants.py": {
+      "bytes": 5930,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/_constants.py",
+      "sha256": "fa4fdb200f238f9e7817b63892b0d69833d8165134801e775e10cc113348a375"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/_parser.py": {
+      "bytes": 41201,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/re/_parser.py",
+      "sha256": "a51a85b37cf3f44ba7ff25754da5f31306e4ccfa6eb3c017f9d37bdf4e770840"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/reprlib.py": {
+      "bytes": 7148,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/reprlib.py",
+      "sha256": "e177bc70da83a7fbcde6fd261dc15da34e8a20873b1cccd4f9a1f8f27cca3779"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/selectors.py": {
+      "bytes": 19671,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/selectors.py",
+      "sha256": "1eeb102373e18c96311203f30c516e785bd8642275aa0bd66e43a284c9692385"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py": {
+      "bytes": 56198,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/shutil.py",
+      "sha256": "53496e06742fe008fee2bccc8caeac77473e69923bec05358bd43eea467db1f8"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/signal.py": {
+      "bytes": 2495,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/signal.py",
+      "sha256": "0363c964c90ac0b3e515de5749205e6e6454051a1211058375d84d91eab6071a"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/stat.py": {
+      "bytes": 5485,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/stat.py",
+      "sha256": "052af0327eae6941b69b05c088b3e748f79995635f80ac4cc7125eb333eb4c77"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/struct.py": {
+      "bytes": 257,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/struct.py",
+      "sha256": "9c231f9497caf513a22dee8f790b07f969b0e45854a0bdd6dd84b492e08c2856"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py": {
+      "bytes": 88747,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py",
+      "sha256": "85d29b2bf0249f5436838298c9a60ee93508b1102e9ac43b001f8a7e7ae8f375"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/tempfile.py": {
+      "bytes": 32386,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/tempfile.py",
+      "sha256": "2eea4401f4f29d0d3647ed6fc8bcf6aa1daf879c8aa407a8ea310edac9dfc317"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/threading.py": {
+      "bytes": 60200,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/threading.py",
+      "sha256": "846f450ae794e4aab823a163f8c71d27751148af33e91dd3de886686a4e8ebfb"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/token.py": {
+      "bytes": 2511,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/token.py",
+      "sha256": "1a4d994ce9744f4bfe2d964fc24d112a1e76796a08c2e45a2d73c82a8587f922"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/tokenize.py": {
+      "bytes": 21570,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/tokenize.py",
+      "sha256": "026f566ac63e60d69c8185a3880831b657accc5eac984fadf271fc99a5e5825d"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/types.py": {
+      "bytes": 10993,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/types.py",
+      "sha256": "345474ef027a1273f353da9bdc1f7c18f65335e72e681bcc0376774cc51f2405"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/typing.py": {
+      "bytes": 118836,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/typing.py",
+      "sha256": "be92d60fb8382bb29ead21c128825d7c96d0e8c915b44f840791e49f5a8d554c"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/__init__.py": {
+      "bytes": 0,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/parse.py": {
+      "bytes": 45676,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/urllib/parse.py",
+      "sha256": "e6af7f475262f1de335bb2e41e26adb94d6103977cf5fe1ddc430dc6a3b1623f"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/warnings.py": {
+      "bytes": 21909,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/warnings.py",
+      "sha256": "6405e281882932205eae641b2d31fba7776f94517a206d289465a1caffbf310e"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/weakref.py": {
+      "bytes": 21513,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/weakref.py",
+      "sha256": "56f8d313fb74019e53eb9287400702fbce788b7fe30e097b0b6e06296f3f080c"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py": {
+      "bytes": 89520,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py",
+      "sha256": "83031a1582b84054fdde260a372f8ed25d9dedfbfcbedcef2bc015bcca7c5332"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/_path/__init__.py": {
+      "bytes": 10860,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/_path/__init__.py",
+      "sha256": "63fc930890d38a662253bcf7ae50a1bfa06ce38bade19084f9c89f964dcd0e12"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/_path/glob.py": {
+      "bytes": 1158,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/_path/glob.py",
+      "sha256": "64e27d3872da2ea18b901718c91297d32b9610ebdad058de8561344b0a10e8d7"
+    },
+    "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipimport.py": {
+      "bytes": 27840,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipimport.py",
+      "sha256": "a96f1d7a7b6aaf421a3cf382b94b1422f4f0ad452fdd0bb61d635b560d7a4e91"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/bounded_request_oracle.py": {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/certificate_boundary_search.py": {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/native_inference_inventory.py": {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/native_inventory_policy.py": {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/native_receptor_points.py": {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/proof_boundary.py": {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_inventory_guidance.py": {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_inventory_oracle.py": {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_inventory_search.py": {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_lemma_inventory.py": {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_point_smt.py": {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_receiver_driver.py": {
+      "bytes": 36357,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_receiver_driver.py",
+      "sha256": "0da2663546857ebd680a74a3c1a84ca56f3823517e0c7aa46b2e4293e5e7e824"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_receptor_points.py": {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/tape_binary.py": {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/tape_tree_machine.py": {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/tree_machine.py": {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/turtle.py": {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/bounded_request_oracle.py": {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/certificate_boundary_search.py": {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/native_inference_inventory.py": {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/native_inventory_policy.py": {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/native_receptor_points.py": {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/proof_boundary.py": {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_inventory_guidance.py": {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_inventory_oracle.py": {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_inventory_search.py": {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_lemma_inventory.py": {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_point_smt.py": {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_receiver_driver.py": {
+      "bytes": 36357,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_receiver_driver.py",
+      "sha256": "0da2663546857ebd680a74a3c1a84ca56f3823517e0c7aa46b2e4293e5e7e824"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_receptor_points.py": {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/tape_binary.py": {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/tape_tree_machine.py": {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/tree_machine.py": {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/turtle.py": {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/bounded_request_oracle.py": {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/certificate_boundary_search.py": {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/native_inference_inventory.py": {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/native_inventory_policy.py": {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/native_receptor_points.py": {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/proof_boundary.py": {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_inventory_guidance.py": {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_inventory_oracle.py": {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_inventory_search.py": {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_lemma_inventory.py": {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_point_smt.py": {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_receiver_driver.py": {
+      "bytes": 36357,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_receiver_driver.py",
+      "sha256": "0da2663546857ebd680a74a3c1a84ca56f3823517e0c7aa46b2e4293e5e7e824"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_receptor_points.py": {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/tape_binary.py": {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/tape_tree_machine.py": {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/tree_machine.py": {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/turtle.py": {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/bounded_request_oracle.py": {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/certificate_boundary_search.py": {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/native_inference_inventory.py": {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/native_inventory_policy.py": {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/native_receptor_points.py": {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/proof_boundary.py": {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_inventory_guidance.py": {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_inventory_oracle.py": {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_inventory_search.py": {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_lemma_inventory.py": {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_point_smt.py": {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_receiver_driver.py": {
+      "bytes": 36357,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_receiver_driver.py",
+      "sha256": "0da2663546857ebd680a74a3c1a84ca56f3823517e0c7aa46b2e4293e5e7e824"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_receptor_points.py": {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/tape_binary.py": {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/tape_tree_machine.py": {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/tree_machine.py": {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/turtle.py": {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/bounded_request_oracle.py": {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/certificate_boundary_search.py": {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/native_inference_inventory.py": {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/native_inventory_policy.py": {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/native_receptor_points.py": {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/proof_boundary.py": {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_inventory_guidance.py": {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_inventory_oracle.py": {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_inventory_search.py": {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_lemma_inventory.py": {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_point_smt.py": {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_receiver_driver.py": {
+      "bytes": 36357,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_receiver_driver.py",
+      "sha256": "0da2663546857ebd680a74a3c1a84ca56f3823517e0c7aa46b2e4293e5e7e824"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_receptor_points.py": {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/tape_binary.py": {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/tape_tree_machine.py": {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/tree_machine.py": {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/turtle.py": {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/bounded_request_oracle.py": {
+      "bytes": 20424,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/bounded_request_oracle.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/certificate_boundary_search.py": {
+      "bytes": 7089,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/native_inference_inventory.py": {
+      "bytes": 10594,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/native_inventory_policy.py": {
+      "bytes": 2746,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/native_receptor_points.py": {
+      "bytes": 8962,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/proof_boundary.py": {
+      "bytes": 6992,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_inventory_guidance.py": {
+      "bytes": 6942,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_inventory_oracle.py": {
+      "bytes": 2180,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_inventory_oracle.py",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_inventory_search.py": {
+      "bytes": 5318,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_inventory_search.py",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_lemma_inventory.py": {
+      "bytes": 7196,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_point_smt.py": {
+      "bytes": 4593,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_receiver_driver.py": {
+      "bytes": 36357,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_receiver_driver.py",
+      "sha256": "0da2663546857ebd680a74a3c1a84ca56f3823517e0c7aa46b2e4293e5e7e824"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_receptor_points.py": {
+      "bytes": 7409,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/tape_binary.py": {
+      "bytes": 3756,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/tape_tree_machine.py": {
+      "bytes": 19188,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/tree_machine.py": {
+      "bytes": 13290,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/turtle.py": {
+      "bytes": 28533,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/modules/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    "/private/tmp/gcts-semantic-cold-root-source-20261018/semantic_cold_v4.py": {
+      "bytes": 23402,
+      "path": "/private/tmp/gcts-semantic-cold-root-source-20261018/semantic_cold_v4.py",
+      "sha256": "4bd416d9ded9ed9ae287438d5e0c83f8011ff2d5040d1ed8bd3f11fc34beadcf"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/__init__.py": {
+      "bytes": 210,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/__init__.py",
+      "sha256": "53c4529a01f38e7c0d593b7548c79e0d7398aa09f7d7cbd1773470859ee2febd"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3.py": {
+      "bytes": 347383,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3.py",
+      "sha256": "a175fce3e5e6f7cbe7aefb54a5d01d63addc206811a9cbd3e58f87f48c10432b"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3consts.py": {
+      "bytes": 8062,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3consts.py",
+      "sha256": "59737a55612e9bddb33f7ec4a27db9fbc880a92053fa8a88919fcc934e1f7573"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3core.py": {
+      "bytes": 202386,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3core.py",
+      "sha256": "c5859f1938aa7b5ce1c35ab52295ccb1405daa1ae224cb4ec292efbe98b1064e"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3num.py": {
+      "bytes": 16090,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3num.py",
+      "sha256": "d7ad7cceb560867f55dcbd87c5866e1c365fddec92faa22321bf91b60c431dee"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3poly.py": {
+      "bytes": 1113,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3poly.py",
+      "sha256": "fd06029418e5899b300fe3b3a300d110c8e174e633cba8b751314f22a583394e"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3printer.py": {
+      "bytes": 46300,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3printer.py",
+      "sha256": "714f9fa34a1da9281bdc1a98d8e89d650daca6e99cd1839d325c4d3605a99730"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3rcf.py": {
+      "bytes": 5039,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3rcf.py",
+      "sha256": "504e0339b1bb06075c19ca52e51457716671218a2f2191d0c9754e0b75bede87"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3types.py": {
+      "bytes": 4883,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3types.py",
+      "sha256": "ba728354b4a9ee40bcfbd899f405d904bc4bb023e41807044c06c318548c3080"
+    },
+    "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3util.py": {
+      "bytes": 11387,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-package/z3/z3util.py",
+      "sha256": "7087f1bbb0119e0e8f545d70cba9a21446ff267cda1289e55b3c2e4e644effd9"
+    }
+  },
+  "data_review_passed": true,
+  "failed_cohort": {
+    "closeout": {
+      "bytes": 2439,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-v3-cohort-closeout-v1.json",
+      "sha256": "bc75993ad6f0e36ec0f15aa851e2c98bd43b10e4cb60350249acbfe95b17d764"
+    },
+    "failed_once": {
+      "bytes": 503,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v1/CONSUMED.json",
+      "sha256": "ea8c0766da36a97e68919ca14f375549dbb01beee4691b0d0df7eb79fa09eb3e"
+    },
+    "failed_runner": {
+      "bytes": 2908,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v1/runner-receipt.json",
+      "sha256": "26cd3b9a8e43e0d02d3c027531a6505c047db35106b58ef97195b4cfe93658fe"
+    },
+    "failed_worker": {
+      "bytes": 8062,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v1/worker-failure.json",
+      "sha256": "ddcfb0935f7d8aadb073c33b65c5f23c8f0c1f5012895a309350994a74ddfe4d"
+    },
+    "group39599_absence": "Root-attested in frozen closeout; not an additional reviewer OS probe",
+    "native_transport_receipt": null,
+    "proof_outcome_available": false,
+    "resource_accepted": false
+  },
+  "findings": [],
+  "historical_failed_metadata_attempt_preserved": true,
+  "kernel_or_proof_replays": 0,
+  "limitations": [
+    "No scientific/module/kernel/search/solver/native execution or imports, proof replay or binary/microcode decode. Metadata comparisons do not validate the mathematical theorem or the engine proof/familyhint claims.",
+    "Exact original180/210 endpoints were joined through once/worker/runner/native/observer records. Worker terminal observations include worker serialization/shutdown and all precede180; runner postterminal file/hash/check closure and outer final runner terminal observations precede210. The external observer is a measurement instrument; its later metadata-file write is not separately recorded as owned scientific work.",
+    "Resource admission here is saved exact Pythonwait4 plus CPPwait4 high-water sum under1GiB, Darwin byte units as declared. This is conservative post-hoc accounting and can doublecount, not an instantaneous aggregate allocation enforcement or independent OS remeasurement. Instrument memory is excluded as declared; its wall overhead remains charged in the runner endpoint.",
+    "Source and native/runtime custody joins use exact original and perarm materialized17 Sources, full epochs, copied file bytes, nativeCPP/code/template and41 Z3 files plus reported module origins. Standard runtime/loader is trusted under the frozen Root custody contract. Current raw origin hashes are evidence references, not a retrospective full OS seal or independent observation of every callable at execution time.",
+    "The index and false-grant drafts contain historical prospective scientific_calls:0/dirs-absent scope; those bytes are preserved, not reinterpreted as current outcome claims. Current executions are distinct max-one actual handles and no consumed handle was rerun.",
+    "The earlierV3 setup actual exited1 before oracle construction: native_transport:null, no result or normal worker receipt, no native request/search evidence. Its five unrun grants are withdrawn and actualdirectories absent. Root attested failed group39599 absent; the reviewer did not make a new signal/probe call.",
+    "No fresh mathematical acceptance, useful nonidentity family transfer, changed branch preference, speed benefit, trained RL, universal family validity, full PA/Hilbert result or program-goal completion follows from this resource-only audit."
+  ],
+  "mathematical_acceptance_reviewed": false,
+  "mismatch_count": 0,
+  "native_runs": 0,
+  "outcome_scope": "Six normal currentV4 case files are retained, headers say native_proof_discovered, and all six terminal/resource/custody joins pass. These status flags are provisional transport observations only. Root mathematical/point/family-essential/hint-use admission is separate.",
+  "project_or_solver_imports": 0,
+  "resource_custody_closure_review_passed": true,
+  "resource_replay_performed": false,
+  "reviewer_identity": "/root/conventional_control_review",
+  "saved_data_only": true,
+  "schema": "semantic-family-six-actual-resource-custody-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "six-V4-saved-resource-custody-closure-only",
+  "source_only": true
+}

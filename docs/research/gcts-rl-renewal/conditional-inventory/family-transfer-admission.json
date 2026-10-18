@@ -1,0 +1,2398 @@
+{
+  "actuals": [
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_compound_hint_order": false,
+      "cold_worker_seconds": 16.167938834,
+      "compound_hint_links": [],
+      "essential_compound_calls": [
+        {
+          "arguments": [
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            2
+          ],
+          "essential_input_indices": [
+            0,
+            1,
+            2
+          ],
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "inputs": [
+            0,
+            2,
+            3
+          ],
+          "level": 1,
+          "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+              "row": 5
+            }
+          ],
+          "primitive_use": 2,
+          "root_row": 5
+        }
+      ],
+      "essential_compound_family_use": true,
+      "essential_root": {
+        "all_recursive_primitive_commands": 8,
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          5,
+          6
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 3
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          {
+            "all_declared_references": [
+              0,
+              2,
+              3
+            ],
+            "references": [
+              0,
+              2,
+              3
+            ],
+            "row": 5
+          },
+          {
+            "all_declared_references": [
+              5,
+              4
+            ],
+            "references": [
+              5,
+              4
+            ],
+            "row": 6
+          }
+        ],
+        "essential_recursive_primitive_commands": 7,
+        "essential_rows": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "fresh_native_proof": true,
+      "invocation_id": "semantic-compound-r1-base-ROOT-20261018-v2",
+      "matched_hint_consumption": false,
+      "metrics": {
+        "attempts": 238,
+        "backtracks": 203,
+        "branch": 47,
+        "dead": 54,
+        "forced": 137,
+        "nodes": 239
+      },
+      "mode": "base",
+      "native_queries": 9,
+      "observed_conservative_peak_MiB": 310.921875,
+      "outer_terminal_seconds": 16.289276417,
+      "proof": [
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "name": "curried_edge",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "A",
+            []
+          ],
+          "name": "given_a",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "C",
+            []
+          ],
+          "name": "given_c",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "C",
+              []
+            ],
+            [
+              "pred",
+              "D",
+              []
+            ]
+          ],
+          "inputs": [
+            0,
+            2,
+            3
+          ],
+          "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "D",
+            []
+          ],
+          "inputs": [
+            5,
+            4
+          ],
+          "name": "lemma9745a4b5124a7aa40a25d976a467c0d8e18f7db9cfc7fb37248ec1806615e37f",
+          "rule": "block"
+        }
+      ],
+      "repetition": 1,
+      "result": {
+        "bytes": 3295555,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/result.json",
+        "sha256": "dac3c59bd048a8a87ae2b9963dc087414cec9d0304f22fa5f5dc1d88df1107cf"
+      },
+      "runner_receipt": {
+        "bytes": 45278,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "f921043889151b32b43132e3471045b4860d92fcb645be33b2249447d879f38c"
+      },
+      "search_seconds": 0.3101310839410871,
+      "terminal": {
+        "bytes": 1546,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-base-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "95c9f08a386390da8e7d281f505c233654db6da57410e261c20cb66447cffea0"
+      },
+      "whole_region": {
+        "assigned_mark_points": 929,
+        "completed_ns": 665976957023083,
+        "decoded_rows": 7,
+        "required_points": 35,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 35,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "5438ae2d71513068995def527c3cba2c9b5d615eb2317fa38bf680e9bdec07d2"
+      },
+      "worker_receipt": {
+        "bytes": 37629,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-base-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "352ac1874d2a1464a77bc16c0ea3922312755d7ab5dc945d8accb44962ac95c7"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_compound_hint_order": false,
+      "cold_worker_seconds": 13.879059792,
+      "compound_hint_links": [
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            1,
+            36,
+            0
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              1,
+              36,
+              0
+            ],
+            [
+              5,
+              1,
+              39,
+              0
+            ],
+            [
+              5,
+              1,
+              125,
+              1
+            ]
+          ],
+          "path_depth": 30,
+          "preferred_order": [
+            [
+              5,
+              1,
+              36,
+              0
+            ],
+            [
+              5,
+              1,
+              39,
+              0
+            ],
+            [
+              5,
+              1,
+              125,
+              1
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            0,
+            36,
+            0
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              0,
+              36,
+              0
+            ]
+          ],
+          "path_depth": 31,
+          "preferred_order": [
+            [
+              5,
+              0,
+              36,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            2,
+            2,
+            5
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              2,
+              2,
+              5
+            ]
+          ],
+          "path_depth": 32,
+          "preferred_order": [
+            [
+              5,
+              2,
+              2,
+              5
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            3,
+            2,
+            4
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              3,
+              2,
+              4
+            ]
+          ],
+          "path_depth": 33,
+          "preferred_order": [
+            [
+              5,
+              3,
+              2,
+              4
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            4,
+            2,
+            0
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              4,
+              2,
+              0
+            ]
+          ],
+          "path_depth": 34,
+          "preferred_order": [
+            [
+              5,
+              4,
+              2,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "forced"
+        }
+      ],
+      "essential_compound_calls": [
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            1
+          ],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            4,
+            3
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+              "row": 5
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 5
+        }
+      ],
+      "essential_compound_family_use": true,
+      "essential_root": {
+        "all_recursive_primitive_commands": 7,
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          3,
+          5,
+          6
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          {
+            "all_declared_references": [
+              2,
+              0
+            ],
+            "references": [
+              2,
+              0
+            ],
+            "row": 3
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          {
+            "all_declared_references": [
+              4,
+              3
+            ],
+            "references": [
+              4,
+              3
+            ],
+            "row": 5
+          },
+          {
+            "all_declared_references": [
+              5,
+              1
+            ],
+            "references": [
+              5,
+              1
+            ],
+            "row": 6
+          }
+        ],
+        "essential_recursive_primitive_commands": 7,
+        "essential_rows": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "fresh_native_proof": true,
+      "invocation_id": "semantic-compound-r1-fixed-ROOT-20261018-v2",
+      "matched_hint_consumption": true,
+      "metrics": {
+        "anchors_omitted": 0,
+        "attempts": 54,
+        "backtracks": 19,
+        "branch": 11,
+        "dead": 4,
+        "forced": 39,
+        "hint_completed": 9,
+        "hint_eligible": 24,
+        "hint_invalid": 4,
+        "hint_waiting": 2,
+        "hints_started": 11,
+        "items": 102,
+        "nodes": 55,
+        "proposal_seconds": 0.05324904073495418,
+        "row_pool": 36,
+        "sample_pair_tests": 395,
+        "sample_validation_checks": 66,
+        "validation_checks": 150
+      },
+      "mode": "fixed",
+      "native_queries": 9,
+      "observed_conservative_peak_MiB": 322.75,
+      "outer_terminal_seconds": 13.98502825,
+      "proof": [
+        {
+          "formula": [
+            "pred",
+            "A",
+            []
+          ],
+          "name": "given_a",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "C",
+            []
+          ],
+          "name": "given_c",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "B",
+            []
+          ],
+          "inputs": [
+            2,
+            0
+          ],
+          "name": "lemma9893aa26f1f6de386e1a381f9f684cf1353bf76802d9fcfc7ef4e9c9ac2609d6",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "name": "curried_edge",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "C",
+              []
+            ],
+            [
+              "pred",
+              "D",
+              []
+            ]
+          ],
+          "inputs": [
+            4,
+            3
+          ],
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "D",
+            []
+          ],
+          "inputs": [
+            5,
+            1
+          ],
+          "name": "lemma9745a4b5124a7aa40a25d976a467c0d8e18f7db9cfc7fb37248ec1806615e37f",
+          "rule": "block"
+        }
+      ],
+      "repetition": 1,
+      "result": {
+        "bytes": 2753720,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/result.json",
+        "sha256": "68099b68d8f1fd7d04f05992b8dce9d59c53a2479a5a3f459eeb0492a3c7118f"
+      },
+      "runner_receipt": {
+        "bytes": 45317,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "f119bca0e7396d2fa5728dc12c963b114ac6822916e714222926862ffc73a80c"
+      },
+      "search_seconds": 0.11259399994742125,
+      "terminal": {
+        "bytes": 1550,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-fixed-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "1e5f7853929b3fe78114f9d1a3bee431411e6ed4cb4bf0ef08c39e5205f445fa"
+      },
+      "whole_region": {
+        "assigned_mark_points": 943,
+        "completed_ns": 666015185409125,
+        "decoded_rows": 7,
+        "required_points": 35,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 35,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "7da20a01023363211485e13329a2e4533882289301bce9772aade3afcbfeb868"
+      },
+      "worker_receipt": {
+        "bytes": 37657,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-fixed-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "c93205beec3282095f5a2964b80eef9dc68ed6961b90073be04042911c87f174"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_compound_hint_order": false,
+      "cold_worker_seconds": 14.277118542,
+      "compound_hint_links": [],
+      "essential_compound_calls": [
+        {
+          "arguments": [
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            2
+          ],
+          "essential_input_indices": [
+            0,
+            1,
+            2
+          ],
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "inputs": [
+            2,
+            3,
+            1
+          ],
+          "level": 1,
+          "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+              "row": 5
+            }
+          ],
+          "primitive_use": 2,
+          "root_row": 5
+        }
+      ],
+      "essential_compound_family_use": true,
+      "essential_root": {
+        "all_recursive_primitive_commands": 8,
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          5,
+          6
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 3
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          {
+            "all_declared_references": [
+              2,
+              3,
+              1
+            ],
+            "references": [
+              2,
+              3,
+              1
+            ],
+            "row": 5
+          },
+          {
+            "all_declared_references": [
+              5,
+              4
+            ],
+            "references": [
+              5,
+              4
+            ],
+            "row": 6
+          }
+        ],
+        "essential_recursive_primitive_commands": 7,
+        "essential_rows": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "fresh_native_proof": true,
+      "invocation_id": "semantic-compound-r1-z3-ROOT-20261018-v2",
+      "matched_hint_consumption": false,
+      "metrics": null,
+      "mode": "z3",
+      "native_queries": 9,
+      "observed_conservative_peak_MiB": 378.1875,
+      "outer_terminal_seconds": 14.335832375,
+      "proof": [
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "A",
+            []
+          ],
+          "name": "given_a",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "name": "curried_edge",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "C",
+            []
+          ],
+          "name": "given_c",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "C",
+              []
+            ],
+            [
+              "pred",
+              "D",
+              []
+            ]
+          ],
+          "inputs": [
+            2,
+            3,
+            1
+          ],
+          "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "D",
+            []
+          ],
+          "inputs": [
+            5,
+            4
+          ],
+          "name": "lemma9745a4b5124a7aa40a25d976a467c0d8e18f7db9cfc7fb37248ec1806615e37f",
+          "rule": "block"
+        }
+      ],
+      "repetition": 1,
+      "result": {
+        "bytes": 4725865,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/result.json",
+        "sha256": "e8d2ef5519d45b18e215c911bb8e8b69698ac7963d6c7a14765a79280187e26e"
+      },
+      "runner_receipt": {
+        "bytes": 45191,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "6862d35c1dd92528941a414ddb8ac5a15fc10e626619812fc8c77a2607064c68"
+      },
+      "search_seconds": 1.2965665829833597,
+      "terminal": {
+        "bytes": 1542,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r1-z3-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "8bb20d404d1f4d073493baac063323c75f229db1b96e3335eb6bdf264db6ff9e"
+      },
+      "whole_region": {
+        "assigned_mark_points": 929,
+        "completed_ns": 666033231003583,
+        "decoded_rows": 7,
+        "required_points": 35,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 35,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "95dae9ec33c57f9014c6c52f5fe7002fa48ed564a867de2f0ce566c8119be44c"
+      },
+      "worker_receipt": {
+        "bytes": 37567,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r1-z3-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "68dfb61157fdbf2fb7b129c7e66bf677863c7a8cdfc8355059afb79faf584a20"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_compound_hint_order": false,
+      "cold_worker_seconds": 14.834504958,
+      "compound_hint_links": [],
+      "essential_compound_calls": [
+        {
+          "arguments": [
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            2
+          ],
+          "essential_input_indices": [
+            0,
+            1,
+            2
+          ],
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "inputs": [
+            2,
+            3,
+            1
+          ],
+          "level": 1,
+          "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+              "row": 5
+            }
+          ],
+          "primitive_use": 2,
+          "root_row": 5
+        }
+      ],
+      "essential_compound_family_use": true,
+      "essential_root": {
+        "all_recursive_primitive_commands": 8,
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          5,
+          6
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 3
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          {
+            "all_declared_references": [
+              2,
+              3,
+              1
+            ],
+            "references": [
+              2,
+              3,
+              1
+            ],
+            "row": 5
+          },
+          {
+            "all_declared_references": [
+              5,
+              4
+            ],
+            "references": [
+              5,
+              4
+            ],
+            "row": 6
+          }
+        ],
+        "essential_recursive_primitive_commands": 7,
+        "essential_rows": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "fresh_native_proof": true,
+      "invocation_id": "semantic-compound-r2-z3-ROOT-20261018-v2",
+      "matched_hint_consumption": false,
+      "metrics": null,
+      "mode": "z3",
+      "native_queries": 9,
+      "observed_conservative_peak_MiB": 358.890625,
+      "outer_terminal_seconds": 14.925593167,
+      "proof": [
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "A",
+            []
+          ],
+          "name": "given_a",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "name": "curried_edge",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "C",
+            []
+          ],
+          "name": "given_c",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "C",
+              []
+            ],
+            [
+              "pred",
+              "D",
+              []
+            ]
+          ],
+          "inputs": [
+            2,
+            3,
+            1
+          ],
+          "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "D",
+            []
+          ],
+          "inputs": [
+            5,
+            4
+          ],
+          "name": "lemma9745a4b5124a7aa40a25d976a467c0d8e18f7db9cfc7fb37248ec1806615e37f",
+          "rule": "block"
+        }
+      ],
+      "repetition": 2,
+      "result": {
+        "bytes": 4725868,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/result.json",
+        "sha256": "3eaea2a53b37ad4473add697b412cc9beae3219231d29e43a68b76fbab8cf70f"
+      },
+      "runner_receipt": {
+        "bytes": 45189,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "fc1d6d74bdca2655787819db6d1200ca14a7cbac34cf6023a6c7893e59fe7f06"
+      },
+      "search_seconds": 1.328737917006947,
+      "terminal": {
+        "bytes": 1542,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-z3-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "fed33a26343948282bf7dc7d28d826eafe9e526234faff19ab25850ff13be181"
+      },
+      "whole_region": {
+        "assigned_mark_points": 929,
+        "completed_ns": 666052396035750,
+        "decoded_rows": 7,
+        "required_points": 35,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 35,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "95dae9ec33c57f9014c6c52f5fe7002fa48ed564a867de2f0ce566c8119be44c"
+      },
+      "worker_receipt": {
+        "bytes": 37565,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-z3-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "080979f53430d3eb5a5b4ccc74b4cb559a17b0531bd65125e4d8ffbc4b7e8c0f"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_compound_hint_order": false,
+      "cold_worker_seconds": 13.726324875,
+      "compound_hint_links": [
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            1,
+            36,
+            0
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              1,
+              36,
+              0
+            ],
+            [
+              5,
+              1,
+              39,
+              0
+            ],
+            [
+              5,
+              1,
+              125,
+              1
+            ]
+          ],
+          "path_depth": 30,
+          "preferred_order": [
+            [
+              5,
+              1,
+              36,
+              0
+            ],
+            [
+              5,
+              1,
+              39,
+              0
+            ],
+            [
+              5,
+              1,
+              125,
+              1
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            0,
+            36,
+            0
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              0,
+              36,
+              0
+            ]
+          ],
+          "path_depth": 31,
+          "preferred_order": [
+            [
+              5,
+              0,
+              36,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            2,
+            2,
+            5
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              2,
+              2,
+              5
+            ]
+          ],
+          "path_depth": 32,
+          "preferred_order": [
+            [
+              5,
+              2,
+              2,
+              5
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            3,
+            2,
+            4
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              3,
+              2,
+              4
+            ]
+          ],
+          "path_depth": 33,
+          "preferred_order": [
+            [
+              5,
+              3,
+              2,
+              4
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "forced"
+        },
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 10,
+          "hint_kind": "lemma",
+          "key": [
+            5,
+            4,
+            2,
+            0
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "original_order": [
+            [
+              5,
+              4,
+              2,
+              0
+            ]
+          ],
+          "path_depth": 34,
+          "preferred_order": [
+            [
+              5,
+              4,
+              2,
+              0
+            ]
+          ],
+          "primitive_use": 1,
+          "row": 5,
+          "selection_kind": "forced"
+        }
+      ],
+      "essential_compound_calls": [
+        {
+          "arguments": [
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            1
+          ],
+          "essential_input_indices": [
+            0,
+            1
+          ],
+          "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+          "inputs": [
+            4,
+            3
+          ],
+          "level": 1,
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+              "row": 5
+            }
+          ],
+          "primitive_use": 1,
+          "root_row": 5
+        }
+      ],
+      "essential_compound_family_use": true,
+      "essential_root": {
+        "all_recursive_primitive_commands": 7,
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          3,
+          5,
+          6
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          {
+            "all_declared_references": [
+              2,
+              0
+            ],
+            "references": [
+              2,
+              0
+            ],
+            "row": 3
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          {
+            "all_declared_references": [
+              4,
+              3
+            ],
+            "references": [
+              4,
+              3
+            ],
+            "row": 5
+          },
+          {
+            "all_declared_references": [
+              5,
+              1
+            ],
+            "references": [
+              5,
+              1
+            ],
+            "row": 6
+          }
+        ],
+        "essential_recursive_primitive_commands": 7,
+        "essential_rows": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "fresh_native_proof": true,
+      "invocation_id": "semantic-compound-r2-fixed-ROOT-20261018-v2",
+      "matched_hint_consumption": true,
+      "metrics": {
+        "anchors_omitted": 0,
+        "attempts": 54,
+        "backtracks": 19,
+        "branch": 11,
+        "dead": 4,
+        "forced": 39,
+        "hint_completed": 9,
+        "hint_eligible": 24,
+        "hint_invalid": 4,
+        "hint_waiting": 2,
+        "hints_started": 11,
+        "items": 102,
+        "nodes": 55,
+        "proposal_seconds": 0.05353904201183468,
+        "row_pool": 36,
+        "sample_pair_tests": 395,
+        "sample_validation_checks": 66,
+        "validation_checks": 150
+      },
+      "mode": "fixed",
+      "native_queries": 9,
+      "observed_conservative_peak_MiB": 343.75,
+      "outer_terminal_seconds": 13.823835792,
+      "proof": [
+        {
+          "formula": [
+            "pred",
+            "A",
+            []
+          ],
+          "name": "given_a",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "C",
+            []
+          ],
+          "name": "given_c",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "B",
+            []
+          ],
+          "inputs": [
+            2,
+            0
+          ],
+          "name": "lemma9893aa26f1f6de386e1a381f9f684cf1353bf76802d9fcfc7ef4e9c9ac2609d6",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "name": "curried_edge",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "C",
+              []
+            ],
+            [
+              "pred",
+              "D",
+              []
+            ]
+          ],
+          "inputs": [
+            4,
+            3
+          ],
+          "name": "lemma41142ff512ec41fa8104c8e9a58f58c2792669b040df1eae7c87de64230c99eb",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "D",
+            []
+          ],
+          "inputs": [
+            5,
+            1
+          ],
+          "name": "lemma9745a4b5124a7aa40a25d976a467c0d8e18f7db9cfc7fb37248ec1806615e37f",
+          "rule": "block"
+        }
+      ],
+      "repetition": 2,
+      "result": {
+        "bytes": 2753706,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/result.json",
+        "sha256": "e1e6efd53c2c3640cecbd69b05407e605c19ff28e557402f0c5ef361c4374fe0"
+      },
+      "runner_receipt": {
+        "bytes": 45293,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "6906d1fcce588362f400960d03072d48d77374fceb712632f693d4c508c9abd2"
+      },
+      "search_seconds": 0.11366254207678139,
+      "terminal": {
+        "bytes": 1551,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-fixed-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "e02a914802fc7b6985ac2219bd727126f9108b16e557a25cbb3d4c7d743e632a"
+      },
+      "whole_region": {
+        "assigned_mark_points": 943,
+        "completed_ns": 666085565501833,
+        "decoded_rows": 7,
+        "required_points": 35,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 35,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "7da20a01023363211485e13329a2e4533882289301bce9772aade3afcbfeb868"
+      },
+      "worker_receipt": {
+        "bytes": 37636,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-fixed-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "8bc443c1c209fdb133be69087d5ced0b27b946062ed8cb7413acf92f4d4af410"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": true,
+      "ROOT_resource_admitted": true,
+      "changed_compound_hint_order": false,
+      "cold_worker_seconds": 13.364567292,
+      "compound_hint_links": [],
+      "essential_compound_calls": [
+        {
+          "arguments": [
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            2
+          ],
+          "essential_input_indices": [
+            0,
+            1,
+            2
+          ],
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "inputs": [
+            0,
+            2,
+            3
+          ],
+          "level": 1,
+          "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+              "row": 5
+            }
+          ],
+          "primitive_use": 2,
+          "root_row": 5
+        }
+      ],
+      "essential_compound_family_use": true,
+      "essential_root": {
+        "all_recursive_primitive_commands": 8,
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          5,
+          6
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 2
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 3
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          {
+            "all_declared_references": [
+              0,
+              2,
+              3
+            ],
+            "references": [
+              0,
+              2,
+              3
+            ],
+            "row": 5
+          },
+          {
+            "all_declared_references": [
+              5,
+              4
+            ],
+            "references": [
+              5,
+              4
+            ],
+            "row": 6
+          }
+        ],
+        "essential_recursive_primitive_commands": 7,
+        "essential_rows": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "fresh_native_proof": true,
+      "invocation_id": "semantic-compound-r2-base-ROOT-20261018-v2",
+      "matched_hint_consumption": false,
+      "metrics": {
+        "attempts": 238,
+        "backtracks": 203,
+        "branch": 47,
+        "dead": 54,
+        "forced": 137,
+        "nodes": 239
+      },
+      "mode": "base",
+      "native_queries": 9,
+      "observed_conservative_peak_MiB": 324.359375,
+      "outer_terminal_seconds": 13.491136959,
+      "proof": [
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "A",
+              []
+            ],
+            [
+              "pred",
+              "B",
+              []
+            ]
+          ],
+          "name": "edge_ab",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "B",
+              []
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "C",
+                []
+              ],
+              [
+                "pred",
+                "D",
+                []
+              ]
+            ]
+          ],
+          "name": "curried_edge",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "A",
+            []
+          ],
+          "name": "given_a",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "pred",
+            "C",
+            []
+          ],
+          "name": "given_c",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "pred",
+              "C",
+              []
+            ],
+            [
+              "pred",
+              "D",
+              []
+            ]
+          ],
+          "inputs": [
+            0,
+            2,
+            3
+          ],
+          "name": "lemmaef1a93b4b8151bf8b1824cc5e9fef7ea0fa02a4fcc3af9292dd07bc8a5feb178",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "D",
+            []
+          ],
+          "inputs": [
+            5,
+            4
+          ],
+          "name": "lemma9745a4b5124a7aa40a25d976a467c0d8e18f7db9cfc7fb37248ec1806615e37f",
+          "rule": "block"
+        }
+      ],
+      "repetition": 2,
+      "result": {
+        "bytes": 3295562,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/result.json",
+        "sha256": "28156bdbc013c1883bda3e4486b1454a74cc81805a8758ffd903688f5a67f062"
+      },
+      "runner_receipt": {
+        "bytes": 45286,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/runner-receipt.json",
+        "sha256": "db3c409137c1d22d6d72600ce9e233bdf472cd1239984191ea2aa5b9ed893100"
+      },
+      "search_seconds": 0.27281183295417577,
+      "terminal": {
+        "bytes": 1548,
+        "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/runner-plans/semantic-compound-r2-base-ROOT-20261018-v2-terminal-observation/terminal.json",
+        "sha256": "2e1946e4479496e9d7a29bb44053dc1523fdb7cb94cedd6bb5b4b593ba54435d"
+      },
+      "whole_region": {
+        "assigned_mark_points": 929,
+        "completed_ns": 666102899684125,
+        "decoded_rows": 7,
+        "required_points": 35,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 35,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "5438ae2d71513068995def527c3cba2c9b5d615eb2317fa38bf680e9bdec07d2"
+      },
+      "worker_receipt": {
+        "bytes": 37634,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-compound-r2-base-ROOT-20261018-v2/worker-receipt.json",
+        "sha256": "627c33b6c3add96a4d73076e5eff6a5cb8ff62b90d969e80c2e6304460d9faf4"
+      }
+    }
+  ],
+  "all_six_same_literal_model_inventory_initial_state": true,
+  "claim": "All6freshnativeproofs;2fixedsameinstanceessentialcompoundhintconsumptions,compoundhintalreadyfirst;fixed54attempts/55nodesvsbase238/239. Sameonecase/fixedseed repetitions,smallproof;no general speed or RL superiority. No dependent-family or universal primitive-square claim.",
+  "common_model_sha256": "bb609aa3eb78517599f622c0f5780837dab53fa9ae6e0ad6baf6173871e03c17",
+  "common_projection_sha256": "704570467487741f8a29e01c99bd19bb8f69bea0b4211a1294dc6c5b8bcbe8ba",
+  "failed_setup_cohort": {
+    "bytes": 2439,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-v3-cohort-closeout-v1.json",
+    "sha256": "bc75993ad6f0e36ec0f15aa851e2c98bd43b10e4cb60350249acbfe95b17d764"
+  },
+  "goal_complete": false,
+  "native_record_literal_checks": 216,
+  "native_request_joins": 54,
+  "plans": {
+    "bytes": 12339,
+    "path": "/private/tmp/gcts-semantic-actual-plans-ROOT-20261018-v3/authorized-plan-index-v1.json",
+    "sha256": "f8ecaa662bf16ac5d8b4fa0f9f5b5d727930c4b61152cd7d3076aa11aa23e34c"
+  },
+  "schema": "ROOT-semantic-family-actual-admission-v1",
+  "scientific_replays": 0,
+  "scope": "Root admits the fresh native accepted requests and finite retained point regions with exact recorded Sources/runtime and current full receipts. This metadata pass is no proof/kernel replay; mathematical validity rests on the unchanged native checker executed in each charged actual. Bundled stdlib/platform loader trusted. Observer/transport false flags describe their narrower roles, not rejection."
+}
