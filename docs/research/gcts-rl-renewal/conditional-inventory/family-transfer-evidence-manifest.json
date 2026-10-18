@@ -1,0 +1,813 @@
+{
+  "archive": {
+    "bytes": 2214524,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v1/family-transfer-reproduction.zip",
+    "sha256": "55f3e66d86bea05eb3cbcb60c1d879e1a7e3442db2ff8074c79d3377865634e6"
+  },
+  "distinct_objects": 110,
+  "files": [
+    {
+      "bytes": 22775,
+      "object": "objects/ea0e915f7b6c37186df6294f27827608bef8cbe1bd49adb9162c7f2f9cc7fcc7",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/audit_first_order_families.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "ea0e915f7b6c37186df6294f27827608bef8cbe1bd49adb9162c7f2f9cc7fcc7"
+    },
+    {
+      "bytes": 11238,
+      "object": "objects/b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/audit_proof_boundary.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "b3e303416d5de3c58b029bf6de9c79ec9ff547592ee452bca596698492cb2538"
+    },
+    {
+      "bytes": 58649,
+      "object": "objects/71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/audit_semantic_inventory.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "71f8e7d87f762dece93531c9fd06dbb9ab2a242c65b1d80970cdc25800340a6c"
+    },
+    {
+      "bytes": 3547,
+      "object": "objects/f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/boundary_oracle.cpp",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+    },
+    {
+      "bytes": 1739,
+      "object": "objects/b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/boundary_syntax.tree",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "b19efd9bb2b599c1eefb7a62b5b92257483c809e63a81431f683064acd60c25c"
+    },
+    {
+      "bytes": 7089,
+      "object": "objects/113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    {
+      "bytes": 11425,
+      "object": "objects/06a330b0905bb0d60ce8a82ca2677b1850956e4fa8e7c26df0af5a90031a52f4",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first-order-families-data-checks-001.json",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "06a330b0905bb0d60ce8a82ca2677b1850956e4fa8e7c26df0af5a90031a52f4"
+    },
+    {
+      "bytes": 4531912,
+      "object": "objects/38e96c0529672b0215de9735c4f5f3f6b758e3c61bfbe3a5d931188f20b38391",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first-order-families-reader-001.json",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "38e96c0529672b0215de9735c4f5f3f6b758e3c61bfbe3a5d931188f20b38391"
+    },
+    {
+      "bytes": 52186,
+      "object": "objects/fad8b0c6be60bfabac914336196caad2eaaa9e05929477b8221d4ace61d3fa49",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first-order-families-reader-checks-001.json",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "fad8b0c6be60bfabac914336196caad2eaaa9e05929477b8221d4ace61d3fa49"
+    },
+    {
+      "bytes": 14615,
+      "object": "objects/905de26f221dd6f86e0d8d2e668fc626d9296f47d5b7cfc1413968ba42cc2fd1",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first-order-families.html",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "905de26f221dd6f86e0d8d2e668fc626d9296f47d5b7cfc1413968ba42cc2fd1"
+    },
+    {
+      "bytes": 2887,
+      "object": "objects/ab16dd5558d2d0d00ef8c205694b6548d940bd931f8d3abd4edcc1c3bb256451",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first_order_cases.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "ab16dd5558d2d0d00ef8c205694b6548d940bd931f8d3abd4edcc1c3bb256451"
+    },
+    {
+      "bytes": 8801,
+      "object": "objects/4f3a58bed036ecac7e342fb794ef926fe5d5e0616e5c3a6a373d850c7ea131b1",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first_order_families.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "4f3a58bed036ecac7e342fb794ef926fe5d5e0616e5c3a6a373d850c7ea131b1"
+    },
+    {
+      "bytes": 2449,
+      "object": "objects/b6531e9a67cf4376113dbbdeab82c4b4321e278950dff9a10d6fbfd80302d94f",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first_order_family_cases.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "b6531e9a67cf4376113dbbdeab82c4b4321e278950dff9a10d6fbfd80302d94f"
+    },
+    {
+      "bytes": 4699,
+      "object": "objects/54c87bd5886c40cffd5ee8b5235c5f74ef124a5c03693c68bd0b7c193187eb3d",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first_order_family_points.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "54c87bd5886c40cffd5ee8b5235c5f74ef124a5c03693c68bd0b7c193187eb3d"
+    },
+    {
+      "bytes": 1003,
+      "object": "objects/41c05b8320ff3666b206ac32be19ca26f369a5826f7a0a55fe379d766dc01a02",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first_order_family_worker.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "41c05b8320ff3666b206ac32be19ca26f369a5826f7a0a55fe379d766dc01a02"
+    },
+    {
+      "bytes": 9139,
+      "object": "objects/bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/first_order_receptors.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "bf3350ca2ea7e033dd28824dceb45c54d1a8efd6dc7fde51df2f5f85f52a08be"
+    },
+    {
+      "bytes": 17577,
+      "object": "objects/8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+    },
+    {
+      "bytes": 9652,
+      "object": "objects/162fda8ef5e8c92e0d13985b71964da2ae2109676b4af0292c6275ad3e03c6ac",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/induction_proof_catalogs.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "162fda8ef5e8c92e0d13985b71964da2ae2109676b4af0292c6275ad3e03c6ac"
+    },
+    {
+      "bytes": 1658,
+      "object": "objects/ac91638fefc83f1dda09b7055bd2353f73e4192c004aebea028cdb6e00b7763b",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/induction_proof_problems.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "ac91638fefc83f1dda09b7055bd2353f73e4192c004aebea028cdb6e00b7763b"
+    },
+    {
+      "bytes": 7993,
+      "object": "objects/b8aa21c983c9ef3d8dc05575ec65e37e9acd9474c8741c2e18c5dd3ae5f74bbe",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/induction_proof_tiles.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "b8aa21c983c9ef3d8dc05575ec65e37e9acd9474c8741c2e18c5dd3ae5f74bbe"
+    },
+    {
+      "bytes": 10808,
+      "object": "objects/5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    {
+      "bytes": 10594,
+      "object": "objects/89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    {
+      "bytes": 2746,
+      "object": "objects/8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    {
+      "bytes": 1078,
+      "object": "objects/b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_cases.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "b1c1ae9ff74daf916670e0e5988f2c161b29a69e557d49857ec456123ac32e01"
+    },
+    {
+      "bytes": 8962,
+      "object": "objects/f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    {
+      "bytes": 31351,
+      "object": "objects/f9bdca62b65da79bc544984e68548f97b22d750efc458fc416973744262bcdaf",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/plan.json",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "f9bdca62b65da79bc544984e68548f97b22d750efc458fc416973744262bcdaf"
+    },
+    {
+      "bytes": 17252,
+      "object": "objects/6f2d8de49f51f8bbb480a2cb5eed13eca6bec50d12ca19bfafd2a359a9a322c3",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_block_search.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "6f2d8de49f51f8bbb480a2cb5eed13eca6bec50d12ca19bfafd2a359a9a322c3"
+    },
+    {
+      "bytes": 6992,
+      "object": "objects/36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    {
+      "bytes": 13031,
+      "object": "objects/854b27e87b43da3daa1eaf0503d3d70a761160acca00111d61955512f9c4d38e",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/propositional_receptors.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "854b27e87b43da3daa1eaf0503d3d70a761160acca00111d61955512f9c4d38e"
+    },
+    {
+      "bytes": 4011,
+      "object": "objects/567c6c7893e9cf0e4fb032a7521c6e82b5f3b0fea23519caa5948a30d37af506",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/quantified_proof_rules.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "567c6c7893e9cf0e4fb032a7521c6e82b5f3b0fea23519caa5948a30d37af506"
+    },
+    {
+      "bytes": 4543,
+      "object": "objects/286aa8bc2b9a08f264b2e9e8c7e53e343b6cb38ad2280a652e197237e705ed0c",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/reader-corruptions.json",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "286aa8bc2b9a08f264b2e9e8c7e53e343b6cb38ad2280a652e197237e705ed0c"
+    },
+    {
+      "bytes": 10202,
+      "object": "objects/d4af5c362ef5bb1366314218179dbe987585f57d1a601b630e28e03f5a0e2b6e",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/run_first_order_families.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "d4af5c362ef5bb1366314218179dbe987585f57d1a601b630e28e03f5a0e2b6e"
+    },
+    {
+      "bytes": 11330,
+      "object": "objects/a89d9a6cbdad3944cf76021c31d25a12bb17d4774dc5de54455079fbbb85a862",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/run_semantic_inventory.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "a89d9a6cbdad3944cf76021c31d25a12bb17d4774dc5de54455079fbbb85a862"
+    },
+    {
+      "bytes": 4502,
+      "object": "objects/f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-policy-001.json",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+    },
+    {
+      "bytes": 2227026,
+      "object": "objects/edbab285b9c2535957ff3dcc2ea03dff169458e2c36f358d3d666b71406fbb96",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-reader-001.json",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "edbab285b9c2535957ff3dcc2ea03dff169458e2c36f358d3d666b71406fbb96"
+    },
+    {
+      "bytes": 15753,
+      "object": "objects/1ff2aac808d99b293282498d2272bf737d2f40f3bba38ed3fdf7ede825eb26f7",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory.html",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "1ff2aac808d99b293282498d2272bf737d2f40f3bba38ed3fdf7ede825eb26f7"
+    },
+    {
+      "bytes": 3471,
+      "object": "objects/9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_cases.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "9f6ce87f367fcc3f17264d60b9c956d3e297613855b366a8075126386c9bdef4"
+    },
+    {
+      "bytes": 6942,
+      "object": "objects/744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    {
+      "bytes": 2180,
+      "object": "objects/f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_oracle.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "f41bfd56829b89b015fcf7a4dbd41dabd36110156e345353059980a66f6a4400"
+    },
+    {
+      "bytes": 479,
+      "object": "objects/4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_policy.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "4d47aebdae7b57ed72a7e70f840554b47c031f61f5b8b64abe55076c56765cf8"
+    },
+    {
+      "bytes": 5318,
+      "object": "objects/df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_search.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "df296cb1ac2398cee3c23eb9436a6c27906802360489b20a7bb0e6a59736b188"
+    },
+    {
+      "bytes": 8956,
+      "object": "objects/724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_worker.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "724fc73d1e607c75907159030ea8101a6d1fe463242c0fa0bffc1f05d87063ea"
+    },
+    {
+      "bytes": 7196,
+      "object": "objects/8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    {
+      "bytes": 4593,
+      "object": "objects/6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    {
+      "bytes": 7409,
+      "object": "objects/c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    {
+      "bytes": 13977,
+      "object": "objects/045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/serialized_kernel.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4"
+    },
+    {
+      "bytes": 3756,
+      "object": "objects/ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    {
+      "bytes": 13290,
+      "object": "objects/8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    {
+      "bytes": 28533,
+      "object": "objects/9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    },
+    {
+      "bytes": 21657,
+      "object": "objects/c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/docs/basic-tiling-algorithm.md",
+      "role": "historical-public-Source-or-saved-data",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    {
+      "bytes": 2208,
+      "object": "objects/aeb0c6e2138776be50cd1df3227b93069b7d184f1fc053a6ffbdb80af7d17276",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/handoff-v1.json",
+      "role": "primary-code-and-saved-data-audit",
+      "sha256": "aeb0c6e2138776be50cd1df3227b93069b7d184f1fc053a6ffbdb80af7d17276"
+    },
+    {
+      "bytes": 16013,
+      "object": "objects/65fc18963079165807fa3885428a92a6807cc2805bcd6f4ae35829a01a27a68e",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/research-audit-v1.json",
+      "role": "primary-code-and-saved-data-audit",
+      "sha256": "65fc18963079165807fa3885428a92a6807cc2805bcd6f4ae35829a01a27a68e"
+    },
+    {
+      "bytes": 9567,
+      "object": "objects/62a70dfafeb44cc7b3156b2c47abaa0eee8e80d8e227a370584548f75f6eb5fe",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/research-audit-v1.html",
+      "role": "primary-code-and-saved-data-audit",
+      "sha256": "62a70dfafeb44cc7b3156b2c47abaa0eee8e80d8e227a370584548f75f6eb5fe"
+    },
+    {
+      "bytes": 36304,
+      "object": "objects/c8628c87c12fdde6767155dc579c1a083cafa256bdfc04b303cff43e9e43b043",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/source-map-v3.json",
+      "role": "primary-code-and-saved-data-audit",
+      "sha256": "c8628c87c12fdde6767155dc579c1a083cafa256bdfc04b303cff43e9e43b043"
+    },
+    {
+      "bytes": 19401,
+      "object": "objects/90adbb1045dd110c0160bd4286aaf0bdf71d08dc95f4035f08f143e82dfc5df2",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/source-regions-v1.json",
+      "role": "primary-code-and-saved-data-audit",
+      "sha256": "90adbb1045dd110c0160bd4286aaf0bdf71d08dc95f4035f08f143e82dfc5df2"
+    },
+    {
+      "bytes": 63045,
+      "object": "objects/79fbda197ef30a476c055bad5c07acc0282f0ace074ed98302bb8631d4f2d85f",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/saved-evidence-observations-v1.json",
+      "role": "primary-code-and-saved-data-audit",
+      "sha256": "79fbda197ef30a476c055bad5c07acc0282f0ace074ed98302bb8631d4f2d85f"
+    },
+    {
+      "bytes": 3725,
+      "object": "objects/7f8d992da0598b393465804d735b01a35dde4576815659e5d17efe370f0edd76",
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proposed-receiver-v1.json",
+      "role": "primary-code-and-saved-data-audit",
+      "sha256": "7f8d992da0598b393465804d735b01a35dde4576815659e5d17efe370f0edd76"
+    },
+    {
+      "bytes": 5412,
+      "object": "objects/913248f9bb1d22c634f2a4e0660604492a5b29f1e25bf58b1431171f24a9a592",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/ROOT-raw-intake-v1.json",
+      "role": "Root-prospective-declaration-or-raw-intake",
+      "sha256": "913248f9bb1d22c634f2a4e0660604492a5b29f1e25bf58b1431171f24a9a592"
+    },
+    {
+      "bytes": 4259,
+      "object": "objects/02d77e256b76879cf24d88bc7fc7f9586dcde3d58bf442697a38b8cda01960c4",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/experiment-declaration-v1.json",
+      "role": "Root-prospective-declaration-or-raw-intake",
+      "sha256": "02d77e256b76879cf24d88bc7fc7f9586dcde3d58bf442697a38b8cda01960c4"
+    },
+    {
+      "bytes": 4928,
+      "object": "objects/33f4002c58d2bf33028e1da51a7c80ac5f19648fb73d83f291c10cbb4674f90a",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/experiment-declaration-v2.json",
+      "role": "Root-prospective-declaration-or-raw-intake",
+      "sha256": "33f4002c58d2bf33028e1da51a7c80ac5f19648fb73d83f291c10cbb4674f90a"
+    },
+    {
+      "bytes": 4576,
+      "object": "objects/0ffd98c1171f1d4bbcfd8cab158dc4996fe0aed270f774aab173a1bb2769296a",
+      "path": "/private/tmp/gcts-semantic-family-methodology-peer-20261018/declaration-review-v1.json",
+      "role": "independent-prospective-methodology",
+      "sha256": "0ffd98c1171f1d4bbcfd8cab158dc4996fe0aed270f774aab173a1bb2769296a"
+    },
+    {
+      "bytes": 9124,
+      "object": "objects/2180bb2287daa6d889e4095f866c5c13740955968696cf36384222ad5bdef08e",
+      "path": "/private/tmp/gcts-semantic-family-methodology-peer-20261018/methodology-review-v1.json",
+      "role": "independent-prospective-methodology",
+      "sha256": "2180bb2287daa6d889e4095f866c5c13740955968696cf36384222ad5bdef08e"
+    },
+    {
+      "bytes": 5217,
+      "object": "objects/fa7bf910ba4ecdd710ad69030ff85438f2a379209b5f26e3a763e9019dc1c894",
+      "path": "/private/tmp/gcts-semantic-family-prospective-report-peer-20261018/typed-report-review-v1.json",
+      "role": "independent-human-report-review",
+      "sha256": "fa7bf910ba4ecdd710ad69030ff85438f2a379209b5f26e3a763e9019dc1c894"
+    },
+    {
+      "bytes": 76675,
+      "object": "objects/fc45f8659f3904ae426bd539412afe153a0e73093c3d9ccfcefc4db3089ced42",
+      "path": "/private/tmp/gcts-result-subtree-transport-root-source-20261018/actual-cold-forward-v4.py",
+      "role": "prospective-Q-transport-repair-Source",
+      "sha256": "fc45f8659f3904ae426bd539412afe153a0e73093c3d9ccfcefc4db3089ced42"
+    },
+    {
+      "bytes": 72806,
+      "object": "objects/4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a",
+      "path": "/private/tmp/gcts-result-subtree-transport-root-source-20261018/actual-cold-reverse-v4.py",
+      "role": "prospective-Q-transport-repair-Source",
+      "sha256": "4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a"
+    },
+    {
+      "bytes": 11172,
+      "object": "objects/9ea85f9ba2a12de8af50f72161b0a3e7754546225bbf19c809809e83684fe735",
+      "path": "/private/tmp/gcts-result-subtree-transport-root-source-20261018/build_cold_v4.py",
+      "role": "prospective-Q-transport-repair-Source",
+      "sha256": "9ea85f9ba2a12de8af50f72161b0a3e7754546225bbf19c809809e83684fe735"
+    },
+    {
+      "bytes": 76675,
+      "object": "objects/fc45f8659f3904ae426bd539412afe153a0e73093c3d9ccfcefc4db3089ced42",
+      "path": "/private/tmp/gcts-result-subtree-transport-root-source-20261018/closed_root_search_cold_v4.py",
+      "role": "prospective-Q-transport-repair-Source",
+      "sha256": "fc45f8659f3904ae426bd539412afe153a0e73093c3d9ccfcefc4db3089ced42"
+    },
+    {
+      "bytes": 46875,
+      "object": "objects/7236530c1298f576b00799523b90b10965641c529bb6adf97bb2d2f5ed4ee41a",
+      "path": "/private/tmp/gcts-result-subtree-transport-root-source-20261018/cold-Source-contract-v4.1.json",
+      "role": "prospective-Q-transport-repair-Source",
+      "sha256": "7236530c1298f576b00799523b90b10965641c529bb6adf97bb2d2f5ed4ee41a"
+    },
+    {
+      "bytes": 46253,
+      "object": "objects/3dc123ce691a32eb77faeaf0247e0493d6e9c41d15fca391a682ab29ae76fbfe",
+      "path": "/private/tmp/gcts-result-subtree-transport-root-source-20261018/cold-Source-contract-v4.json",
+      "role": "prospective-Q-transport-repair-Source",
+      "sha256": "3dc123ce691a32eb77faeaf0247e0493d6e9c41d15fca391a682ab29ae76fbfe"
+    },
+    {
+      "bytes": 25665,
+      "object": "objects/5ef40a4a7963bf86fbb76743cae3781e65c7035847c0e54d174880dde5263082",
+      "path": "/private/tmp/gcts-result-subtree-transport-root-source-20261018/cold-forward-v4.patch",
+      "role": "prospective-Q-transport-repair-Source",
+      "sha256": "5ef40a4a7963bf86fbb76743cae3781e65c7035847c0e54d174880dde5263082"
+    },
+    {
+      "bytes": 25665,
+      "object": "objects/0bf3b12d1017349e58b8163ffaaba248e6e094ee0bd6597e404ea06de72d1333",
+      "path": "/private/tmp/gcts-result-subtree-transport-root-source-20261018/cold-reverse-v4.patch",
+      "role": "prospective-Q-transport-repair-Source",
+      "sha256": "0bf3b12d1017349e58b8163ffaaba248e6e094ee0bd6597e404ea06de72d1333"
+    },
+    {
+      "bytes": 2482,
+      "object": "objects/05e70a5d0f9efc98e80f3294a3f50ada7e0164bb1b7d3f019ab94564bcece051",
+      "path": "/private/tmp/gcts-result-subtree-transport-root-source-20261018/component-review-index-v4.json",
+      "role": "prospective-Q-transport-repair-Source",
+      "sha256": "05e70a5d0f9efc98e80f3294a3f50ada7e0164bb1b7d3f019ab94564bcece051"
+    },
+    {
+      "bytes": 72155,
+      "object": "objects/c35ec8296d707318145a1d829fc3bfcbf965a64e6f2e242b61df2c9a641ba1d6",
+      "path": "/private/tmp/gcts-result-subtree-transport-peer-20261018/Source-audit-v4.json",
+      "role": "independent-Q-transport-Source-review",
+      "sha256": "c35ec8296d707318145a1d829fc3bfcbf965a64e6f2e242b61df2c9a641ba1d6"
+    },
+    {
+      "bytes": 76675,
+      "object": "objects/fc45f8659f3904ae426bd539412afe153a0e73093c3d9ccfcefc4db3089ced42",
+      "path": "/private/tmp/gcts-result-subtree-transport-peer-20261018/cold-forward-v4-copy.py",
+      "role": "independent-Q-transport-Source-review",
+      "sha256": "fc45f8659f3904ae426bd539412afe153a0e73093c3d9ccfcefc4db3089ced42"
+    },
+    {
+      "bytes": 72806,
+      "object": "objects/4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a",
+      "path": "/private/tmp/gcts-result-subtree-transport-peer-20261018/cold-reverse-v4-copy.py",
+      "role": "independent-Q-transport-Source-review",
+      "sha256": "4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a"
+    },
+    {
+      "bytes": 12836,
+      "object": "objects/7290eabc0ead6deffbea8d6fa12d97da1499debe9350b828bcaf6a037d8c31b5",
+      "path": "/private/tmp/gcts-result-subtree-transport-peer-20261018/typed-Source-review-v4-original-metadata-negative.json",
+      "role": "independent-Q-transport-Source-review",
+      "sha256": "7290eabc0ead6deffbea8d6fa12d97da1499debe9350b828bcaf6a037d8c31b5"
+    },
+    {
+      "bytes": 21914,
+      "object": "objects/8f0f6104a65cb942e2273d7440e3ee3d3868838464d028e05203f147bea6097e",
+      "path": "/private/tmp/gcts-result-subtree-transport-peer-20261018/typed-Source-review-v4.json",
+      "role": "independent-Q-transport-Source-review",
+      "sha256": "8f0f6104a65cb942e2273d7440e3ee3d3868838464d028e05203f147bea6097e"
+    },
+    {
+      "bytes": 14899,
+      "object": "objects/7540b310ef81c957bf396aef5de841f2dd4faaed75ce7ab5ccf7f03fb1f1d6be",
+      "path": "/private/tmp/gcts-closed-root-transport-methodology-peer-20261018/freeze_note_v1.py",
+      "role": "Q-transport-bound-methodology",
+      "sha256": "7540b310ef81c957bf396aef5de841f2dd4faaed75ce7ab5ccf7f03fb1f1d6be"
+    },
+    {
+      "bytes": 510,
+      "object": "objects/a1094376666b27415caec4c336686c268806dd14bd0fce983417d5149687a576",
+      "path": "/private/tmp/gcts-closed-root-transport-methodology-peer-20261018/handoff-v1.json",
+      "role": "Q-transport-bound-methodology",
+      "sha256": "a1094376666b27415caec4c336686c268806dd14bd0fce983417d5149687a576"
+    },
+    {
+      "bytes": 510,
+      "object": "objects/a60389564fe5e9dd512eec6a1c25ec4f107af3883aaf60420713c91c47f81a4a",
+      "path": "/private/tmp/gcts-closed-root-transport-methodology-peer-20261018/handoff-v2.json",
+      "role": "Q-transport-bound-methodology",
+      "sha256": "a60389564fe5e9dd512eec6a1c25ec4f107af3883aaf60420713c91c47f81a4a"
+    },
+    {
+      "bytes": 17206,
+      "object": "objects/98c6ded5b0c0fc338b41107090975b6dbf3ad48a11cf8debbf2c0d0c5e8b1845",
+      "path": "/private/tmp/gcts-closed-root-transport-methodology-peer-20261018/transport-methodology-note-v1.json",
+      "role": "Q-transport-bound-methodology",
+      "sha256": "98c6ded5b0c0fc338b41107090975b6dbf3ad48a11cf8debbf2c0d0c5e8b1845"
+    },
+    {
+      "bytes": 17592,
+      "object": "objects/4c8f232b1868ed54a205349f209d0ed40fc00d7efc5d2ccc708ff0d228ba7935",
+      "path": "/private/tmp/gcts-closed-root-transport-methodology-peer-20261018/transport-methodology-note-v2.json",
+      "role": "Q-transport-bound-methodology",
+      "sha256": "4c8f232b1868ed54a205349f209d0ed40fc00d7efc5d2ccc708ff0d228ba7935"
+    },
+    {
+      "bytes": 4484,
+      "object": "objects/27b7f9bcd763871116e87b9d2514c304883f1009186b87e70f0d35e2b1224128",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/API-wire-v1.json",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "27b7f9bcd763871116e87b9d2514c304883f1009186b87e70f0d35e2b1224128"
+    },
+    {
+      "bytes": 6106,
+      "object": "objects/2728adc1a985f49e4ab4b3e532dcef8bb1ad80cf3fbd5943205b503ff5126a2f",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/Source-contract-v1.json",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "2728adc1a985f49e4ab4b3e532dcef8bb1ad80cf3fbd5943205b503ff5126a2f"
+    },
+    {
+      "bytes": 20424,
+      "object": "objects/606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    {
+      "bytes": 20878,
+      "object": "objects/91794a83e2649578f1a0c98255f668afdff940acd187338d1b156d9c6e6a2a82",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/forward-v1.patch",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "91794a83e2649578f1a0c98255f668afdff940acd187338d1b156d9c6e6a2a82"
+    },
+    {
+      "bytes": 16133,
+      "object": "objects/01462e44d52378cb8961d2304942fc2e6732e4d565a7e3c1457d118ad7d9f4df",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/freeze_Source_packet_v1.py",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "01462e44d52378cb8961d2304942fc2e6732e4d565a7e3c1457d118ad7d9f4df"
+    },
+    {
+      "bytes": 11892,
+      "object": "objects/01556334194d43dde22f4a2b97d0c91ddc4997002f96035550a511b1fb590267",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/freeze_runtime_closure_v2.py",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "01556334194d43dde22f4a2b97d0c91ddc4997002f96035550a511b1fb590267"
+    },
+    {
+      "bytes": 4193,
+      "object": "objects/4d7e75dc7a8a2ffda6a4eadbd98a6e491e8b65a76af6ca34bbe4d3de90fffa7a",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/handoff-v1.json",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "4d7e75dc7a8a2ffda6a4eadbd98a6e491e8b65a76af6ca34bbe4d3de90fffa7a"
+    },
+    {
+      "bytes": 20878,
+      "object": "objects/497dd24fb898a9af7247224b699d53cf525c7b036181977cc12a9b7552db3629",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/inverse-v1.patch",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "497dd24fb898a9af7247224b699d53cf525c7b036181977cc12a9b7552db3629"
+    },
+    {
+      "bytes": 7787,
+      "object": "objects/8c5330fa8a749ba0066dd849cd8aef3c8e994598fa08e3ae52a8185deb64892b",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/prospective-runtime-resource-plan-v1.json",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "8c5330fa8a749ba0066dd849cd8aef3c8e994598fa08e3ae52a8185deb64892b"
+    },
+    {
+      "bytes": 697,
+      "object": "objects/7d586b1b6275c8ee924459c6bb8736eb6c84686fdaf5eb57bda134b9a31ca5d3",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/runtime-closure-handoff-v2.json",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "7d586b1b6275c8ee924459c6bb8736eb6c84686fdaf5eb57bda134b9a31ca5d3"
+    },
+    {
+      "bytes": 53516,
+      "object": "objects/2acb35a9dfc97732a6f8cab889e266d7a30e18583a023b6ab2fe0022f0834eea",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/runtime-closure-v2.json",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "2acb35a9dfc97732a6f8cab889e266d7a30e18583a023b6ab2fe0022f0834eea"
+    },
+    {
+      "bytes": 3073,
+      "object": "objects/41a56a06d6dd5d398fabba159a95f3500063b29e43de67c420dba4b56c51cca5",
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/static-audit-v1.json",
+      "role": "prospective-bounded-native-transport",
+      "sha256": "41a56a06d6dd5d398fabba159a95f3500063b29e43de67c420dba4b56c51cca5"
+    },
+    {
+      "bytes": 72806,
+      "object": "objects/4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a",
+      "path": "/private/tmp/gcts-closed-root-search-root-source-20261018/closed_root_search_cold_v3.py",
+      "role": "Q-transport-repair-parent-Source",
+      "sha256": "4c54b1616b4eb1c2b322dfd9208a89e966b3463bf5d2750a3d3f5832f8be824a"
+    },
+    {
+      "bytes": 19188,
+      "object": "objects/2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f",
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+      "role": "common-runtime-intake-no-scientific-evaluation",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    {
+      "bytes": 1494417,
+      "object": "objects/977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54",
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-001.json",
+      "role": "common-runtime-intake-no-scientific-evaluation",
+      "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+    },
+    {
+      "bytes": 1114802,
+      "object": "objects/23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336",
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-microcode-001.json.gz",
+      "role": "common-runtime-intake-no-scientific-evaluation",
+      "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+    },
+    {
+      "bytes": 862,
+      "object": "objects/8608e0e00c815fefee344d94825cfad606a7f9fa20735d91c8af46e07ff38f89",
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/intake-v1.json",
+      "role": "common-runtime-intake-no-scientific-evaluation",
+      "sha256": "8608e0e00c815fefee344d94825cfad606a7f9fa20735d91c8af46e07ff38f89"
+    },
+    {
+      "bytes": 29632,
+      "object": "objects/8149deffc16da11355a64e358ac97ade8fb2d3fef287d06eee901c80c0a919c2",
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/native-build-v1.json",
+      "role": "common-runtime-intake-no-scientific-evaluation",
+      "sha256": "8149deffc16da11355a64e358ac97ade8fb2d3fef287d06eee901c80c0a919c2"
+    },
+    {
+      "bytes": 1120,
+      "object": "objects/b98e6f5d1366a741ce94d43ad261834019ffc9e673e4b1d54747f6719db4e365",
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/native-build-v2.json",
+      "role": "common-runtime-intake-no-scientific-evaluation",
+      "sha256": "b98e6f5d1366a741ce94d43ad261834019ffc9e673e4b1d54747f6719db4e365"
+    },
+    {
+      "bytes": 7431,
+      "object": "objects/1b38291db459c8f49eb0e34a36343b3b10439b2378c498a8c05855833a015cac",
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-release-4.15.3.0.json",
+      "role": "common-runtime-intake-no-scientific-evaluation",
+      "sha256": "1b38291db459c8f49eb0e34a36343b3b10439b2378c498a8c05855833a015cac"
+    },
+    {
+      "bytes": 7208,
+      "object": "objects/4fda1aaa029de5fd331ea6e45816bcc085673bddb3c016820b160e7e284afb8d",
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/z3-intake-v1.json",
+      "role": "common-runtime-intake-no-scientific-evaluation",
+      "sha256": "4fda1aaa029de5fd331ea6e45816bcc085673bddb3c016820b160e7e284afb8d"
+    },
+    {
+      "bytes": 5414,
+      "object": "objects/9630584567f9efa5857738d506c46ab6dfec5fe541fff9ffeb31247992b8e31c",
+      "path": "/private/tmp/gcts-semantic-receiver-driver-source-20261018/API-v1.json",
+      "role": "prospective-receiver-driver-Source-no-actual",
+      "sha256": "9630584567f9efa5857738d506c46ab6dfec5fe541fff9ffeb31247992b8e31c"
+    },
+    {
+      "bytes": 16865,
+      "object": "objects/6fe0fbc10ce007f535429c7d372df233be395b005074809226962f51c05895f5",
+      "path": "/private/tmp/gcts-semantic-receiver-driver-source-20261018/Source-contract-v1.json",
+      "role": "prospective-receiver-driver-Source-no-actual",
+      "sha256": "6fe0fbc10ce007f535429c7d372df233be395b005074809226962f51c05895f5"
+    },
+    {
+      "bytes": 6037,
+      "object": "objects/43b806223c88c1a48aef2727d71306d71bd08c76c53967fc0dda807fa1fd9dca",
+      "path": "/private/tmp/gcts-semantic-receiver-driver-source-20261018/Source-delta-v1.json",
+      "role": "prospective-receiver-driver-Source-no-actual",
+      "sha256": "43b806223c88c1a48aef2727d71306d71bd08c76c53967fc0dda807fa1fd9dca"
+    },
+    {
+      "bytes": 37077,
+      "object": "objects/2cdea25769e542a3a08ebcc5f401a0c65ed59030a3ecad95b6c45b177c3fd079",
+      "path": "/private/tmp/gcts-semantic-receiver-driver-source-20261018/forward.patch",
+      "role": "prospective-receiver-driver-Source-no-actual",
+      "sha256": "2cdea25769e542a3a08ebcc5f401a0c65ed59030a3ecad95b6c45b177c3fd079"
+    },
+    {
+      "bytes": 2385,
+      "object": "objects/719451e0c5b6ca9114c47f19b75b8fedc954cfed679aa33949e0ffd6a449c466",
+      "path": "/private/tmp/gcts-semantic-receiver-driver-source-20261018/handoff-v1.json",
+      "role": "prospective-receiver-driver-Source-no-actual",
+      "sha256": "719451e0c5b6ca9114c47f19b75b8fedc954cfed679aa33949e0ffd6a449c466"
+    },
+    {
+      "bytes": 3384,
+      "object": "objects/ac1bdd70a504c86cf2ed43ac8f226e160d75ecf2a93d68db330c5d023f26b0ba",
+      "path": "/private/tmp/gcts-semantic-receiver-driver-source-20261018/input-declaration-v1.json",
+      "role": "prospective-receiver-driver-Source-no-actual",
+      "sha256": "ac1bdd70a504c86cf2ed43ac8f226e160d75ecf2a93d68db330c5d023f26b0ba"
+    },
+    {
+      "bytes": 37077,
+      "object": "objects/4c318de93b29101b64573b1b3005cc60dd9f2f8499cabc159b5d8d1cce453212",
+      "path": "/private/tmp/gcts-semantic-receiver-driver-source-20261018/inverse.patch",
+      "role": "prospective-receiver-driver-Source-no-actual",
+      "sha256": "4c318de93b29101b64573b1b3005cc60dd9f2f8499cabc159b5d8d1cce453212"
+    },
+    {
+      "bytes": 36357,
+      "object": "objects/0da2663546857ebd680a74a3c1a84ca56f3823517e0c7aa46b2e4293e5e7e824",
+      "path": "/private/tmp/gcts-semantic-receiver-driver-source-20261018/semantic_receiver_driver_v1.py",
+      "role": "prospective-receiver-driver-Source-no-actual",
+      "sha256": "0da2663546857ebd680a74a3c1a84ca56f3823517e0c7aa46b2e4293e5e7e824"
+    },
+    {
+      "bytes": 2999,
+      "object": "objects/1dafda8b3f1b3dbf62d82ca0448f2d8f65925a93160e8168815645e4498eb0d4",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v1/family-transfer-summary.json",
+      "role": "public-progress-summary",
+      "sha256": "1dafda8b3f1b3dbf62d82ca0448f2d8f65925a93160e8168815645e4498eb0d4"
+    },
+    {
+      "bytes": 13841,
+      "object": "objects/dd4c82fad23f0349537007afe4d68171d2ef8ec01c5f8d0403d647b39eee7b8b",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/publication-source-v1/family-transfer.html",
+      "role": "public-human-report",
+      "sha256": "dd4c82fad23f0349537007afe4d68171d2ef8ec01c5f8d0403d647b39eee7b8b"
+    },
+    {
+      "bytes": 12933,
+      "object": "objects/8c522345b6bc3f915708ffe8fbe8b1de4d6e3f26924215b1bb058afa4b0c4c47",
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/semantic-family-progress-20261018/build_publication_v1.py",
+      "role": "publication-builder-not-scientific",
+      "sha256": "8c522345b6bc3f915708ffe8fbe8b1de4d6e3f26924215b1bb058afa4b0c4c47"
+    }
+  ],
+  "fresh_scientific_acceptance": false,
+  "prior_Q_capsule": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/closed-root-search-reproduction.zip",
+  "schema": "GCTS-semantic-family-Source-progress-manifest-v1",
+  "scientific_calls": 0,
+  "scope": "Exact Sources, raw public saved evidence, declarations and independent reviews;not a runnable accepted actual capsule. Third-party runtime binaries/wheel are referenced by URL/hash rather than republished. No private files or cloud placeholders included."
+}
