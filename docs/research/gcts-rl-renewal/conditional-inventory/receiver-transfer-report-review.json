@@ -1,0 +1,116 @@
+{
+  "GCTS_or_RL_advantage_accepted": false,
+  "GCTS_selected_proof_accepted": false,
+  "Root_static_and_full_archive_verification": {
+    "bytes": 3834,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/receiver-transfer-progress-20261018/ROOT-static-publication-audit-v1.json",
+    "sha256": "8c85ba8ead512479584197c2c210ae75e6ba66adc2da19a81c1b0ad0060985c6"
+  },
+  "actuals": 0,
+  "author_identity": "/root",
+  "author_overlap": {
+    "current_report_authorship_overlap": false,
+    "prior_work": "Reviewer previously inspected Root CASE/cold Source, performed the closed point three-arm saved-data audit, and reviewed the earlier point-only report. Root authored all current report bytes/repairs. Conventional actual data has a separate review by conventional_control_review. No review here is a further native mathematical replay."
+  },
+  "clock_calls": 0,
+  "codec_calls": 0,
+  "decompressions": 0,
+  "files": [
+    {
+      "bytes": 67473,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "9d07b4ae77f97b1aaf2d159c6cc63b8d38b14d8ef2b9c252317565b50819758f"
+    },
+    {
+      "bytes": 305607,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/report-data.json",
+      "sha256": "d95a7f603e40300ce69743668017c11e2703b8527f874d994de2a4668a5edc13"
+    },
+    {
+      "bytes": 5007,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/parallel-work-status.json",
+      "sha256": "eea192f89cff34ca4456b4df83e29f9e2a48a4b574563bf559429ac9769f0ea1"
+    },
+    {
+      "bytes": 2804,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/logical-pool-progress-summary.json",
+      "sha256": "2867b5239caa5f87e0276c53b78a9794470c86cc8370de023fda290d01fe6894"
+    },
+    {
+      "bytes": 210805,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/mined-families.html",
+      "sha256": "7af0d8dadad2bc066d68a8fee9bd7faadaf5e3032ee7d726b6d44d0035248cb0"
+    },
+    {
+      "bytes": 242301,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/mined-families-summary.json",
+      "sha256": "fb583c0f10b01026f39768dfbd7b92a40200d04cc008b13fff6c5ce7cd99f357"
+    },
+    {
+      "bytes": 21980,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/receiver-integration-plan.json",
+      "sha256": "d7c02520fe0ea23d96e3413542948e32eb0cb7c70e0da04eef7b30d2bac66ffe"
+    },
+    {
+      "bytes": 32041,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/receiver-transfer.html",
+      "sha256": "62911bd94d56537fa7096a2c1de5a765a244e56f7af3e740ad5b3368d96c0a05"
+    },
+    {
+      "bytes": 80919,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/receiver-transfer-summary.json",
+      "sha256": "74c87b86b6046bb33ce0ed48b4025ba55743c20ef6bb42e56964c107f9867718"
+    },
+    {
+      "bytes": 188220,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/receiver-transfer-evidence-manifest.json",
+      "sha256": "b4aba2c62e517d467b122c25fa164927e139216af11bc5b9204744418ec7a6a7"
+    },
+    {
+      "bytes": 8395103,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/receiver-transfer-reproduction.zip",
+      "sha256": "0b38cf3c1ee324bc7b4cc56a873d1a4cda91ea083309eb3ac78dd747d9203b4d"
+    }
+  ],
+  "findings": {
+    "bytes": 4471,
+    "path": "/private/tmp/gcts-receiver-transfer-report-peer-20261018/findings-v2.json",
+    "sha256": "679f55398b0176409770d4e9d27ec731f068889e6db4b03c6aad5e53572e26cd"
+  },
+  "goal_complete": false,
+  "independent_report_audit": {
+    "bytes": 138342,
+    "path": "/private/tmp/gcts-receiver-transfer-report-peer-20261018/independent-report-audit-v2.json",
+    "sha256": "2b3fb02c47ba6ecd703b4dce563f4c0b3d8c9fe43fb61542d21eb100fd54a1d2"
+  },
+  "module_evaluations": 0,
+  "prior_point_draft_review": {
+    "bytes": 2528,
+    "path": "/private/tmp/gcts-receiver-transfer-report-peer-20261018/typed-report-review-v1.json",
+    "sha256": "d478ba7bae818fe4fefa6005b38d9ef2ea7f65b9b882cc5b5277068996dd2bfd"
+  },
+  "publication_content_ready": true,
+  "release_gates_remaining": [
+    "Root task-only commit/publication to existing destination",
+    "Root live whole-byte verification and MathJax/layout inspection"
+  ],
+  "report_only": true,
+  "report_review_passed": true,
+  "reviewer_identity": "/root/receiver_driver_review",
+  "schema": "GCTS-right-two-receiver-transfer-typed-report-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Exact final eleven publication files: dedicated six-run report, main/source-page current edits, JSON summaries/status and manifest/archive raw binding",
+  "successful_nonidentity_lemma_transfer_accepted": false,
+  "validation": {
+    "archive_contents_independently_decompressed_by_peer": false,
+    "archive_raw_hash_verified": true,
+    "content_mismatches": 0,
+    "independent_inverse_LaTex_formula_AST_comparisons": 20,
+    "live_UI_verified": false,
+    "publication_files_full_hash_bound": 11,
+    "static_data_checks": 773
+  },
+  "verdict": "PASS_CURRENT_REPORT_CONTENT_AND_ARCHIVE_RAW_BINDING"
+}

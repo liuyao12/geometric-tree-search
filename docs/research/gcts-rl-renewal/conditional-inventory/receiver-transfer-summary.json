@@ -1,0 +1,3369 @@
+{
+  "GCTS_advantage": false,
+  "RL": false,
+  "actual_nonidentity_primitive_preference_and_placement": true,
+  "candidate_point_data": {
+    "global_m_values": [
+      [
+        [
+          1,
+          23
+        ],
+        [
+          "formula",
+          "[\"all\",\"n\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"n\"],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"fun\",\"zero\",[]]]]]]]],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"var\",\"n\"]]]]]]]"
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          "formula",
+          "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+        ]
+      ],
+      [
+        [
+          2,
+          23
+        ],
+        [
+          "offset",
+          -22
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          "formula",
+          "[\"imp\",[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]],[\"all\",\"n\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"n\"],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"fun\",\"zero\",[]]]]]]]],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"var\",\"n\"]]]]]]]]"
+        ]
+      ],
+      [
+        [
+          3,
+          23
+        ],
+        [
+          "offset",
+          -23
+        ]
+      ],
+      [
+        [
+          4,
+          23
+        ],
+        1
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          1
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          23
+        ],
+        0
+      ]
+    ],
+    "global_t_values": [
+      [
+        [
+          0,
+          23
+        ],
+        1
+      ]
+    ],
+    "local_m_values": [
+      [
+        [
+          1,
+          0
+        ],
+        [
+          "formula",
+          "[\"all\",\"n\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"n\"],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"fun\",\"zero\",[]]]]]]]],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"var\",\"n\"]]]]]]]"
+        ]
+      ],
+      [
+        [
+          1,
+          -22
+        ],
+        [
+          "formula",
+          "[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]]"
+        ]
+      ],
+      [
+        [
+          2,
+          0
+        ],
+        [
+          "offset",
+          -22
+        ]
+      ],
+      [
+        [
+          1,
+          -23
+        ],
+        [
+          "formula",
+          "[\"imp\",[\"all\",\"x\",[\"all\",\"y\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"x\"],[\"fun\",\"succ\",[[\"var\",\"y\"]]]]],[\"fun\",\"succ\",[[\"fun\",\"add\",[[\"var\",\"x\"],[\"var\",\"y\"]]]]]]]],[\"all\",\"n\",[\"eq\",[\"fun\",\"add\",[[\"var\",\"n\"],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"fun\",\"zero\",[]]]]]]]],[\"fun\",\"succ\",[[\"fun\",\"succ\",[[\"var\",\"n\"]]]]]]]]"
+        ]
+      ],
+      [
+        [
+          3,
+          0
+        ],
+        [
+          "offset",
+          -23
+        ]
+      ],
+      [
+        [
+          4,
+          0
+        ],
+        1
+      ],
+      [
+        [
+          5,
+          -23
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          -22
+        ],
+        0
+      ],
+      [
+        [
+          5,
+          0
+        ],
+        0
+      ]
+    ],
+    "local_t_values": [
+      [
+        [
+          0,
+          0
+        ],
+        1
+      ]
+    ],
+    "marking_id": "row0-channel45-marking-fbf419285fb050fd380e96f2cde6175cfc954598ae14d7024fd5551dac4458b2",
+    "read_obligations": [
+      {
+        "fact_accepted": false,
+        "formula": [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "occupied": false,
+        "row": 1
+      },
+      {
+        "fact_accepted": false,
+        "formula": [
+          "imp",
+          [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "eq",
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "x"
+                        ],
+                        [
+                          "var",
+                          "y"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "all",
+            "n",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "fun",
+                            "zero",
+                            []
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "occupied": false,
+        "row": 0
+      }
+    ]
+  },
+  "completed_GCTS_selected_proof": false,
+  "conventional_cold_Source_handoff": {
+    "bytes": 4798,
+    "path": "/private/tmp/gcts-right-two-conventional-pool-cold-source-20261018/handoff-v1.json",
+    "sha256": "4ffe4943c2174646435b230aac9778a2bac3b47da89e6f93244333774c8a1fab"
+  },
+  "conventional_cold_Source_review": {
+    "bytes": 5860,
+    "path": "/private/tmp/gcts-right-two-conventional-pool-cold-peer-20261018/typed-Source-review-v1.json",
+    "sha256": "4d1273f2828028036fafd95e6f64b421ae1c01da8eb9409f1602c4d3b4fd389c"
+  },
+  "conventional_component_Source_handoff": {
+    "bytes": 2046,
+    "path": "/private/tmp/gcts-right-two-equational-library-control-source-20261018/handoff-v2.json",
+    "sha256": "27138aa418db79820c5d66fee4f8208a81161e8cfdc1366e3261d8d4bf688a4b"
+  },
+  "conventional_component_Source_review": {
+    "bytes": 2848,
+    "path": "/private/tmp/gcts-right-two-equational-library-control-peer-20261018/typed-Source-review-v2.json",
+    "sha256": "7f70c4a20a71c31b7244a45eb6ecfd71e5fe276a4d2bbc0abad1066b417fdff3"
+  },
+  "conventional_independent_saved_data_review": {
+    "bytes": 4817,
+    "path": "/private/tmp/gcts-right-two-conventional-pool-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "63f7aae69d6e3f154937ff2afe11fb8325e9c4692a93e7b542a8273008af533d"
+  },
+  "conventional_independent_saved_data_review_closed": true,
+  "conventional_library_fresh_word_certificate": {
+    "ROOT_resource_accepted": false,
+    "commands_sha256": "7c34fa917ef61398936d6f9902fcbb64099789491e9c42e482ab791393960e06",
+    "completed": true,
+    "consumed_original_occurrence_indices": [],
+    "current_state_point_union_accepted": false,
+    "elapsed_seconds_before_final_guard": 0.018081292000000193,
+    "essential_rows": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "full24_accepted": false,
+    "full_PA_accepted": false,
+    "full_trajectory_accepted": false,
+    "induction_accepted": false,
+    "native_accepted": false,
+    "original_Gamma_target_sequent_accepted": true,
+    "original_ordered_Gamma": [],
+    "parameters": [
+      "n"
+    ],
+    "rows": [
+      {
+        "formula_sha256": "27eff9ca8de01b4bacdff8320142f87d390255fe671e5833a53043c902144278",
+        "ordered_prior_rows": [],
+        "row": 0,
+        "rule": "instantiate"
+      },
+      {
+        "formula_sha256": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+        "ordered_prior_rows": [],
+        "row": 1,
+        "rule": "axiom"
+      },
+      {
+        "formula_sha256": "2e548c44c97d41acd54098203ecf991ec3f77b9f6d161adf45e5e43d501b2030",
+        "ordered_prior_rows": [
+          1,
+          0
+        ],
+        "row": 2,
+        "rule": "mp"
+      },
+      {
+        "formula_sha256": "55b4fa2e90af4b3295ac17eca9d2e9ec82217ac7b9f916d95e9c63bced211cbd",
+        "ordered_prior_rows": [],
+        "row": 3,
+        "rule": "instantiate"
+      },
+      {
+        "formula_sha256": "2f0d8e5ba254d975b1c7145a3cee1b79505328eb38357d5706dbc2593ea93862",
+        "ordered_prior_rows": [
+          2,
+          3
+        ],
+        "row": 4,
+        "rule": "mp"
+      },
+      {
+        "formula_sha256": "1746b143735a120e87c0a4b6f3769ececffc1ff7db378c00ec7ae6439cc5a553",
+        "ordered_prior_rows": [],
+        "row": 5,
+        "rule": "axiom"
+      },
+      {
+        "formula_sha256": "27eff9ca8de01b4bacdff8320142f87d390255fe671e5833a53043c902144278",
+        "ordered_prior_rows": [],
+        "row": 6,
+        "rule": "instantiate"
+      },
+      {
+        "formula_sha256": "2e548c44c97d41acd54098203ecf991ec3f77b9f6d161adf45e5e43d501b2030",
+        "ordered_prior_rows": [
+          5,
+          6
+        ],
+        "row": 7,
+        "rule": "mp"
+      },
+      {
+        "formula_sha256": "848d714c05ea9f237e88377e0fffd1fc03b2a738d1cc90b0c2f68aed6a72a03e",
+        "ordered_prior_rows": [],
+        "row": 8,
+        "rule": "instantiate"
+      },
+      {
+        "formula_sha256": "531bdfa35a5415c24a3c86ed56f2f43d75cb1c5b575fd6dd13e05da232acf967",
+        "ordered_prior_rows": [
+          7,
+          8
+        ],
+        "row": 9,
+        "rule": "mp"
+      },
+      {
+        "formula_sha256": "734b655dfc0cedc30c59c3136a7b51a86a1403483f1db1fd2eedd7012da13d63",
+        "ordered_prior_rows": [],
+        "row": 10,
+        "rule": "eq_subst"
+      },
+      {
+        "formula_sha256": "f3b3f41003a994302eec17a20a5c0cb84527457d28abbe07737f20a7a1283aed",
+        "ordered_prior_rows": [
+          9,
+          10
+        ],
+        "row": 11,
+        "rule": "mp"
+      },
+      {
+        "formula_sha256": "21437e5cf4801721fe24581b399c0b242514bccef8785aec4cf381f624d145bf",
+        "ordered_prior_rows": [
+          4,
+          11
+        ],
+        "row": 12,
+        "rule": "mp"
+      },
+      {
+        "formula_sha256": "c0b146418958279b2f2cba2aceba61da8a3fe353527375e324f89a03cbf497c8",
+        "ordered_prior_rows": [],
+        "row": 13,
+        "rule": "axiom"
+      },
+      {
+        "formula_sha256": "3a3ec19e640556d9f00bf8154df39499b8abfcff72f0b318463cbd7b3522a343",
+        "ordered_prior_rows": [],
+        "row": 14,
+        "rule": "instantiate"
+      },
+      {
+        "formula_sha256": "08eb7f8ecc99d872c81737dd06d2549b04b27341f9cbc139560734b64bc8a4b4",
+        "ordered_prior_rows": [
+          13,
+          14
+        ],
+        "row": 15,
+        "rule": "mp"
+      },
+      {
+        "formula_sha256": "eef6eec62922be98a6ddbd1b8d61a237da77b27f12782fc06be515c79ded13fd",
+        "ordered_prior_rows": [],
+        "row": 16,
+        "rule": "eq_subst"
+      },
+      {
+        "formula_sha256": "58330ee7082871f23f35a3f2f6f8d2c85721494a65a47a83632ad087db61ae53",
+        "ordered_prior_rows": [
+          15,
+          16
+        ],
+        "row": 17,
+        "rule": "mp"
+      },
+      {
+        "formula_sha256": "2df139ec166e33006bae808873a1d273b537356ab4c2d005dd15e8c5b48f0297",
+        "ordered_prior_rows": [
+          12,
+          17
+        ],
+        "row": 18,
+        "rule": "mp"
+      },
+      {
+        "formula_sha256": "7ff8a79ebcd47927df1a12175ee1240b67302a3d28fc928338951fb8e37c94fc",
+        "ordered_prior_rows": [
+          18
+        ],
+        "row": 19,
+        "rule": "generalize"
+      }
+    ],
+    "schema": "independent-Q-primitive-word-certificate-v1",
+    "target": [
+      "all",
+      "n",
+      [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "theory_sha256": "d1911f3fee9cb65c79563b251dd8f245d99438adcb99d846bc184824e5f8cc44",
+    "universal_compiler_accepted": false,
+    "visits": 644
+  },
+  "conventional_library_proof_word": [
+    {
+      "formula": [
+        "imp",
+        [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "rule": "instantiate",
+      "term": [
+        "var",
+        "n"
+      ],
+      "universal": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "formula": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "name": "AS",
+      "rule": "axiom"
+    },
+    {
+      "antecedent": 1,
+      "formula": [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "implication": 0,
+      "rule": "mp"
+    },
+    {
+      "formula": [
+        "imp",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "rule": "instantiate",
+      "term": [
+        "fun",
+        "succ",
+        [
+          [
+            "fun",
+            "zero",
+            []
+          ]
+        ]
+      ],
+      "universal": [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "antecedent": 2,
+      "formula": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "implication": 3,
+      "rule": "mp"
+    },
+    {
+      "formula": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "name": "AS",
+      "rule": "axiom"
+    },
+    {
+      "formula": [
+        "imp",
+        [
+          "all",
+          "x",
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "rule": "instantiate",
+      "term": [
+        "var",
+        "n"
+      ],
+      "universal": [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "antecedent": 5,
+      "formula": [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "implication": 6,
+      "rule": "mp"
+    },
+    {
+      "formula": [
+        "imp",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "rule": "instantiate",
+      "term": [
+        "fun",
+        "zero",
+        []
+      ],
+      "universal": [
+        "all",
+        "y",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "antecedent": 7,
+      "formula": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "implication": 8,
+      "rule": "mp"
+    },
+    {
+      "formula": [
+        "imp",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "left": [
+        "fun",
+        "add",
+        [
+          [
+            "var",
+            "n"
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ]
+        ]
+      ],
+      "right": [
+        "fun",
+        "succ",
+        [
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ]
+        ]
+      ],
+      "rule": "eq_subst",
+      "template": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "var",
+              "hole0"
+            ]
+          ]
+        ]
+      ],
+      "variable": "hole0"
+    },
+    {
+      "antecedent": 9,
+      "formula": [
+        "imp",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "var",
+                    "n"
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "implication": 10,
+      "rule": "mp"
+    },
+    {
+      "antecedent": 4,
+      "formula": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ],
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "implication": 11,
+      "rule": "mp"
+    },
+    {
+      "formula": [
+        "all",
+        "x",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ],
+      "name": "AZ",
+      "rule": "axiom"
+    },
+    {
+      "formula": [
+        "imp",
+        [
+          "all",
+          "x",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ],
+            [
+              "var",
+              "x"
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "var",
+            "n"
+          ]
+        ]
+      ],
+      "rule": "instantiate",
+      "term": [
+        "var",
+        "n"
+      ],
+      "universal": [
+        "all",
+        "x",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ]
+    },
+    {
+      "antecedent": 13,
+      "formula": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "zero",
+              []
+            ]
+          ]
+        ],
+        [
+          "var",
+          "n"
+        ]
+      ],
+      "implication": 14,
+      "rule": "mp"
+    },
+    {
+      "formula": [
+        "imp",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "zero",
+                []
+              ]
+            ]
+          ],
+          [
+            "var",
+            "n"
+          ]
+        ],
+        [
+          "imp",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "add",
+                      [
+                        [
+                          "var",
+                          "n"
+                        ],
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "n"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "succ",
+                      [
+                        [
+                          "fun",
+                          "zero",
+                          []
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "left": [
+        "fun",
+        "add",
+        [
+          [
+            "var",
+            "n"
+          ],
+          [
+            "fun",
+            "zero",
+            []
+          ]
+        ]
+      ],
+      "right": [
+        "var",
+        "n"
+      ],
+      "rule": "eq_subst",
+      "template": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "var",
+                  "hole0"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "variable": "hole0"
+    },
+    {
+      "antecedent": 15,
+      "formula": [
+        "imp",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ],
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "implication": 16,
+      "rule": "mp"
+    },
+    {
+      "antecedent": 12,
+      "formula": [
+        "eq",
+        [
+          "fun",
+          "add",
+          [
+            [
+              "var",
+              "n"
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "fun",
+          "succ",
+          [
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "var",
+                  "n"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "implication": 17,
+      "rule": "mp"
+    },
+    {
+      "formula": [
+        "all",
+        "n",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "rule": "generalize",
+      "source": 18,
+      "variable": "n"
+    }
+  ],
+  "conventional_literal_cut_reuse_in_complete_proof": true,
+  "conventional_runs": [
+    {
+      "admission": {
+        "bytes": 2253,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-conventional-pool-empty-native-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "9c9e967da83add7df3402cd628e5f7aa3f1ea0dfb37d18e3a1ebc676050520d5"
+      },
+      "commands_sha256": "31fd6f8690dbed539d5e499ec24370eea83ae30f1c782a7e905880c32a838f92",
+      "essential_commands": 20,
+      "expanded": {
+        "bytes": 1817685,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-conventional-pool-empty-native-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "da7453c7bcaab7c585ac6550c193bda041c575a0360670c88262705c6b55a69d"
+      },
+      "library": null,
+      "logical_proof_accepted": true,
+      "mode": "EMPTY_NATIVE",
+      "native_seconds": 1.27739,
+      "owned_peak_bytes": 79052800,
+      "retained_recipe_primitive_commands": [],
+      "search_counters": {
+        "dominated_prefixes": 0,
+        "independent_word_checks": 1,
+        "match_attempts": 22,
+        "native_primitive_checks": 20,
+        "profile_rejected_prefixes": 0,
+        "queue_expansions": 3,
+        "states_admitted": 3,
+        "word_bound_rejected_prefixes": 0
+      },
+      "transport": {
+        "bytes": 2078,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-conventional-pool-empty-native-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "03b7ea69830f62712e0aae56f253a09b9becc316080bbd8f9c852f368d0150d7"
+      }
+    },
+    {
+      "admission": {
+        "bytes": 7388,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-conventional-pool-literal-ground-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "7bca7ed5ebf9552dfb1df764a1d76f90a47d3e66a3d385a44dff524e4dfdd3af"
+      },
+      "commands_sha256": "7c34fa917ef61398936d6f9902fcbb64099789491e9c42e482ab791393960e06",
+      "essential_commands": 20,
+      "expanded": {
+        "bytes": 7940340,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-conventional-pool-literal-ground-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "60f77723febf931b9912e4bc7a2e108a5d49c8e4b42ae3e87690197199c489e5"
+      },
+      "library": {
+        "counters": {
+          "current_expansions": 1,
+          "current_independent_checks": 1,
+          "inference_binding_attempts": 121,
+          "native_macro_attempts": 1,
+          "native_macro_rejections": 0,
+          "native_macro_successes": 1,
+          "nonidentity_macro_successes": 0,
+          "partial_assignment_trials": 236,
+          "planned_assignments": 143,
+          "queries": 8,
+          "rolled_back_macro_suffixes": 0,
+          "source_checks": 8,
+          "source_expansions": 8
+        },
+        "disabled_after_setup": true,
+        "matching_is_bounded": true,
+        "nonidentity_retained_recipe": false,
+        "proof_length_reduced": false,
+        "reason": "OWN_LIBRARY_WORK_OR_DEPTH_PREFIX",
+        "retained_recipe_commands": [
+          {
+            "command_index": 1,
+            "display_line": 2,
+            "expanded_node_id": "n0",
+            "family_id": "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "kind": "FULL_CONDITIONAL_RECIPE",
+            "nonidentity_substitution": false,
+            "query_id": 3,
+            "record_index": 0
+          },
+          {
+            "command_index": 2,
+            "display_line": 3,
+            "expanded_node_id": "n1",
+            "family_id": "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "kind": "FULL_CONDITIONAL_RECIPE",
+            "nonidentity_substitution": false,
+            "query_id": 3,
+            "record_index": 0
+          }
+        ],
+        "source_setup": {
+          "active_family_inventory": [],
+          "checked_observation_count": 8,
+          "checked_observation_record_ids": [
+            "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "f7d14a1bcff534b0cc0586a22d4a182eba2cca6da08d42652bcd17c46b2a3aec",
+            "4155dcb0b483d54c412f05629fb50375c78c14df63d4074425716b7e505453d2",
+            "5255da9b1080efb92eb0a8f2b5678eee3db4c232bf851ae4d0e0fe8ab9a17482",
+            "6b57c174e6b6cc810c155276d99020c1b2a9bc68a3e4851afd927826d5de75b4",
+            "3c49f3e9159bae3812dfdbb8e116fd1ee76d237e8ea1dd12dc39d553cf5033d0",
+            "f9df448c03ad68124d1787ea813820dae5c74d59ef4937a13eae4de32ff317c8",
+            "ef21548bb5d964d5d3df5336171d7f3d5e30f8723addcedbd9cc6642b2106b9c"
+          ],
+          "declared_record_count": 8,
+          "declared_source_record_ids": [
+            "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "f7d14a1bcff534b0cc0586a22d4a182eba2cca6da08d42652bcd17c46b2a3aec",
+            "4155dcb0b483d54c412f05629fb50375c78c14df63d4074425716b7e505453d2",
+            "5255da9b1080efb92eb0a8f2b5678eee3db4c232bf851ae4d0e0fe8ab9a17482",
+            "6b57c174e6b6cc810c155276d99020c1b2a9bc68a3e4851afd927826d5de75b4",
+            "3c49f3e9159bae3812dfdbb8e116fd1ee76d237e8ea1dd12dc39d553cf5033d0",
+            "f9df448c03ad68124d1787ea813820dae5c74d59ef4937a13eae4de32ff317c8",
+            "ef21548bb5d964d5d3df5336171d7f3d5e30f8723addcedbd9cc6642b2106b9c"
+          ],
+          "incomplete_observation_record_indices": [],
+          "reached_observation_count": 8,
+          "reached_observation_record_ids": [
+            "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "f7d14a1bcff534b0cc0586a22d4a182eba2cca6da08d42652bcd17c46b2a3aec",
+            "4155dcb0b483d54c412f05629fb50375c78c14df63d4074425716b7e505453d2",
+            "5255da9b1080efb92eb0a8f2b5678eee3db4c232bf851ae4d0e0fe8ab9a17482",
+            "6b57c174e6b6cc810c155276d99020c1b2a9bc68a3e4851afd927826d5de75b4",
+            "3c49f3e9159bae3812dfdbb8e116fd1ee76d237e8ea1dd12dc39d553cf5033d0",
+            "f9df448c03ad68124d1787ea813820dae5c74d59ef4937a13eae4de32ff317c8",
+            "ef21548bb5d964d5d3df5336171d7f3d5e30f8723addcedbd9cc6642b2106b9c"
+          ],
+          "reason": "COMPLETE_EIGHT_RECORD_SOURCE_PREFIX_CHECKED",
+          "required_record_count": 8,
+          "scope": "Declared IDs require a whole structurally checked source view; reached/checked IDs are observations only. Unavailable expected slots are not guessed outcomes. Original full raw input remains Root custody when own-copy setup is unavailable. Conditional recipes are never activated point or universal theorem inventory.",
+          "source_structure_checked": true,
+          "source_unknown_record_indices": [],
+          "source_view_copied": true,
+          "status": "COMPLETE_EIGHT_SOURCE_RECORDS_CHECKED",
+          "unavailable_expected_record_indices": [],
+          "universal_family_inventory": []
+        },
+        "work": {
+          "limits": {
+            "assignment_trials": 64,
+            "depth": 128,
+            "input_bytes": 4194304,
+            "residual_bindings": 64,
+            "string_bytes": 1048576,
+            "work": 1000000
+          },
+          "steps": 1000000
+        }
+      },
+      "logical_proof_accepted": true,
+      "mode": "LITERAL_GROUND",
+      "native_seconds": 3.670633,
+      "owned_peak_bytes": 106971136,
+      "retained_recipe_primitive_commands": [
+        {
+          "command_index": 1,
+          "display_line": 2,
+          "expanded_node_id": "n0",
+          "family_id": "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+          "kind": "FULL_CONDITIONAL_RECIPE",
+          "nonidentity_substitution": false,
+          "query_id": 3,
+          "record_index": 0
+        },
+        {
+          "command_index": 2,
+          "display_line": 3,
+          "expanded_node_id": "n1",
+          "family_id": "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+          "kind": "FULL_CONDITIONAL_RECIPE",
+          "nonidentity_substitution": false,
+          "query_id": 3,
+          "record_index": 0
+        }
+      ],
+      "search_counters": {
+        "dominated_prefixes": 0,
+        "independent_word_checks": 1,
+        "match_attempts": 22,
+        "native_primitive_checks": 34,
+        "profile_rejected_prefixes": 0,
+        "queue_expansions": 3,
+        "states_admitted": 3,
+        "word_bound_rejected_prefixes": 0
+      },
+      "transport": {
+        "bytes": 2086,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-conventional-pool-literal-ground-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "12d7db823b72c8ac60cb122fcc39ed0b181668a3e7fe8db202a4599295fda464"
+      }
+    },
+    {
+      "admission": {
+        "bytes": 7396,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-conventional-pool-visible-receptor-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "0640a5cba99bda028c9e6005898dd7a0273ab76a68958ff3c580faa17480b505"
+      },
+      "commands_sha256": "7c34fa917ef61398936d6f9902fcbb64099789491e9c42e482ab791393960e06",
+      "essential_commands": 20,
+      "expanded": {
+        "bytes": 8079283,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-conventional-pool-visible-receptor-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "78096cb5858fbc03f584749afaff6e777934b199c743ac30f212e188b960f10f"
+      },
+      "library": {
+        "counters": {
+          "current_expansions": 4,
+          "current_independent_checks": 2,
+          "inference_binding_attempts": 114,
+          "native_macro_attempts": 2,
+          "native_macro_rejections": 1,
+          "native_macro_successes": 1,
+          "nonidentity_macro_successes": 0,
+          "partial_assignment_trials": 236,
+          "planned_assignments": 143,
+          "queries": 8,
+          "rolled_back_macro_suffixes": 1,
+          "source_checks": 8,
+          "source_expansions": 8
+        },
+        "disabled_after_setup": true,
+        "matching_is_bounded": true,
+        "nonidentity_retained_recipe": false,
+        "proof_length_reduced": false,
+        "reason": "OWN_LIBRARY_WORK_OR_DEPTH_PREFIX",
+        "retained_recipe_commands": [
+          {
+            "command_index": 1,
+            "display_line": 2,
+            "expanded_node_id": "n0",
+            "family_id": "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "kind": "FULL_CONDITIONAL_RECIPE",
+            "nonidentity_substitution": false,
+            "query_id": 3,
+            "record_index": 0
+          },
+          {
+            "command_index": 2,
+            "display_line": 3,
+            "expanded_node_id": "n1",
+            "family_id": "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "kind": "FULL_CONDITIONAL_RECIPE",
+            "nonidentity_substitution": false,
+            "query_id": 3,
+            "record_index": 0
+          }
+        ],
+        "source_setup": {
+          "active_family_inventory": [],
+          "checked_observation_count": 8,
+          "checked_observation_record_ids": [
+            "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "f7d14a1bcff534b0cc0586a22d4a182eba2cca6da08d42652bcd17c46b2a3aec",
+            "4155dcb0b483d54c412f05629fb50375c78c14df63d4074425716b7e505453d2",
+            "5255da9b1080efb92eb0a8f2b5678eee3db4c232bf851ae4d0e0fe8ab9a17482",
+            "6b57c174e6b6cc810c155276d99020c1b2a9bc68a3e4851afd927826d5de75b4",
+            "3c49f3e9159bae3812dfdbb8e116fd1ee76d237e8ea1dd12dc39d553cf5033d0",
+            "f9df448c03ad68124d1787ea813820dae5c74d59ef4937a13eae4de32ff317c8",
+            "ef21548bb5d964d5d3df5336171d7f3d5e30f8723addcedbd9cc6642b2106b9c"
+          ],
+          "declared_record_count": 8,
+          "declared_source_record_ids": [
+            "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "f7d14a1bcff534b0cc0586a22d4a182eba2cca6da08d42652bcd17c46b2a3aec",
+            "4155dcb0b483d54c412f05629fb50375c78c14df63d4074425716b7e505453d2",
+            "5255da9b1080efb92eb0a8f2b5678eee3db4c232bf851ae4d0e0fe8ab9a17482",
+            "6b57c174e6b6cc810c155276d99020c1b2a9bc68a3e4851afd927826d5de75b4",
+            "3c49f3e9159bae3812dfdbb8e116fd1ee76d237e8ea1dd12dc39d553cf5033d0",
+            "f9df448c03ad68124d1787ea813820dae5c74d59ef4937a13eae4de32ff317c8",
+            "ef21548bb5d964d5d3df5336171d7f3d5e30f8723addcedbd9cc6642b2106b9c"
+          ],
+          "incomplete_observation_record_indices": [],
+          "reached_observation_count": 8,
+          "reached_observation_record_ids": [
+            "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+            "f7d14a1bcff534b0cc0586a22d4a182eba2cca6da08d42652bcd17c46b2a3aec",
+            "4155dcb0b483d54c412f05629fb50375c78c14df63d4074425716b7e505453d2",
+            "5255da9b1080efb92eb0a8f2b5678eee3db4c232bf851ae4d0e0fe8ab9a17482",
+            "6b57c174e6b6cc810c155276d99020c1b2a9bc68a3e4851afd927826d5de75b4",
+            "3c49f3e9159bae3812dfdbb8e116fd1ee76d237e8ea1dd12dc39d553cf5033d0",
+            "f9df448c03ad68124d1787ea813820dae5c74d59ef4937a13eae4de32ff317c8",
+            "ef21548bb5d964d5d3df5336171d7f3d5e30f8723addcedbd9cc6642b2106b9c"
+          ],
+          "reason": "COMPLETE_EIGHT_RECORD_SOURCE_PREFIX_CHECKED",
+          "required_record_count": 8,
+          "scope": "Declared IDs require a whole structurally checked source view; reached/checked IDs are observations only. Unavailable expected slots are not guessed outcomes. Original full raw input remains Root custody when own-copy setup is unavailable. Conditional recipes are never activated point or universal theorem inventory.",
+          "source_structure_checked": true,
+          "source_unknown_record_indices": [],
+          "source_view_copied": true,
+          "status": "COMPLETE_EIGHT_SOURCE_RECORDS_CHECKED",
+          "unavailable_expected_record_indices": [],
+          "universal_family_inventory": []
+        },
+        "work": {
+          "limits": {
+            "assignment_trials": 64,
+            "depth": 128,
+            "input_bytes": 4194304,
+            "residual_bindings": 64,
+            "string_bytes": 1048576,
+            "work": 1000000
+          },
+          "steps": 1000000
+        }
+      },
+      "logical_proof_accepted": true,
+      "mode": "VISIBLE_RECEPTOR",
+      "native_seconds": 4.274876,
+      "owned_peak_bytes": 102498304,
+      "retained_recipe_primitive_commands": [
+        {
+          "command_index": 1,
+          "display_line": 2,
+          "expanded_node_id": "n0",
+          "family_id": "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+          "kind": "FULL_CONDITIONAL_RECIPE",
+          "nonidentity_substitution": false,
+          "query_id": 3,
+          "record_index": 0
+        },
+        {
+          "command_index": 2,
+          "display_line": 3,
+          "expanded_node_id": "n1",
+          "family_id": "42ccad02d3fbcb12a3243b2f2d290b4147acd36e16b7c4f18d859f8d2bdf80de",
+          "kind": "FULL_CONDITIONAL_RECIPE",
+          "nonidentity_substitution": false,
+          "query_id": 3,
+          "record_index": 0
+        }
+      ],
+      "search_counters": {
+        "dominated_prefixes": 0,
+        "independent_word_checks": 1,
+        "match_attempts": 22,
+        "native_primitive_checks": 34,
+        "profile_rejected_prefixes": 0,
+        "queue_expansions": 3,
+        "states_admitted": 3,
+        "word_bound_rejected_prefixes": 0
+      },
+      "transport": {
+        "bytes": 2092,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-conventional-pool-visible-receptor-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "a31f99cb753176d979fcf837f2c360f0c76de93dd0ca5ca24cb1170b88dc856e"
+      }
+    }
+  ],
+  "date": "2026-10-18",
+  "diagnostic_prefix_not_search_cap": true,
+  "fixed_marking_not_learned": true,
+  "full_GCTS_conformance": false,
+  "full_board": false,
+  "goal_complete": false,
+  "host_id_label_is_shared_not_an_identity_certificate": true,
+  "independent_saved_data_review": {
+    "bytes": 14540,
+    "path": "/private/tmp/gcts-right-two-receptor-three-arm-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "a2aaf941da54449a9cb9e5eccb1ddcdbafb60d93cc727999935b719839315f14"
+  },
+  "independent_saved_data_review_closed": true,
+  "logical_vs_physical_search_spaces_different": true,
+  "measured_native_component_seconds": {
+    "all_six": 62.352926,
+    "combined_components": 89.92186,
+    "conventional_runs": 9.222899,
+    "point_runs": 53.130027,
+    "prior_donor_discovery_and_pool_attempts": 27.568934
+  },
+  "new_receiver_theorem_statement": false,
+  "new_theorem": false,
+  "observations_are_single_runs": true,
+  "overall_native_seconds": 20,
+  "owned_memory_limit_bytes": 536870912,
+  "point_runs": [
+    {
+      "admission": {
+        "bytes": 3129,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-receptor-empty-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "a43b962b35c61a1bdf70f2b924765400226c2e8ecac22c5393f8af69de7c6ee7"
+      },
+      "completed_decisions": [
+        {
+          "kind": "BRANCH",
+          "row": 23
+        },
+        {
+          "kind": "DEAD",
+          "row": 1
+        }
+      ],
+      "counts": {
+        "advice_calls": 0,
+        "advice_selected": 0,
+        "advice_unknown": 0,
+        "backtracks": 1,
+        "branches": 1,
+        "cursor_replays": 0,
+        "fallback_advances": 1,
+        "fallback_branch_choices": 0,
+        "family_abandonments": 0,
+        "family_batches": 0,
+        "family_canonical_choices": 0,
+        "family_checks": 0,
+        "family_choices": 0,
+        "family_invalidated": 0,
+        "family_unknown": 0,
+        "forced": 0,
+        "global_scans": 3,
+        "invalidated_domains": 48,
+        "nodes": 3,
+        "pending_checks": 0,
+        "pending_rejected": 0,
+        "pending_retired": 0,
+        "pending_selected": 0,
+        "placements": 1,
+        "restores": 1,
+        "retained_domains": 0,
+        "retained_prefixes": 0,
+        "retained_queries": 0
+      },
+      "events": 9,
+      "expanded": {
+        "bytes": 2169171,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-receptor-empty-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "e21a7252a90b4e9499ec0018b5e7bbcf163515beddcefa4e815272b58d638f39"
+      },
+      "label": "Empty preferences",
+      "mode": "EMPTY",
+      "name": "empty",
+      "native_seconds": 17.664856,
+      "outcome": "UNKNOWN_NO_PROOF",
+      "owned_peak_bytes": 80625664,
+      "trace_complete": false,
+      "transport": {
+        "bytes": 33017,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-receptor-empty-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "5842c896fc77951fb9eedcd5cc38d30a0db4fb43a8daa5276ba181224f60e060"
+      }
+    },
+    {
+      "admission": {
+        "bytes": 4202,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-receptor-literal-ground-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "9d287275659f642533a1dd7f808ed53fc44fabe2fbf79110ab80d38be4fc875d"
+      },
+      "completed_decisions": [
+        {
+          "kind": "BRANCH",
+          "row": 23
+        },
+        {
+          "kind": "DEAD",
+          "row": 1
+        }
+      ],
+      "counts": {
+        "advice_calls": 0,
+        "advice_selected": 0,
+        "advice_unknown": 0,
+        "backtracks": 1,
+        "branches": 1,
+        "cursor_replays": 0,
+        "fallback_advances": 1,
+        "fallback_branch_choices": 0,
+        "family_abandonments": 0,
+        "family_batches": 1,
+        "family_canonical_choices": 1,
+        "family_checks": 1,
+        "family_choices": 0,
+        "family_invalidated": 0,
+        "family_unknown": 1,
+        "forced": 0,
+        "global_scans": 3,
+        "invalidated_domains": 48,
+        "nodes": 3,
+        "pending_checks": 0,
+        "pending_rejected": 0,
+        "pending_retired": 0,
+        "pending_selected": 0,
+        "placements": 1,
+        "restores": 1,
+        "retained_domains": 0,
+        "retained_prefixes": 0,
+        "retained_queries": 0
+      },
+      "events": 10,
+      "expanded": {
+        "bytes": 7133892,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-receptor-literal-ground-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "9f78770832962fc261d4f202f4f763989c60bd41c072e7178b52da84f501bdd5"
+      },
+      "label": "Literal source substitution",
+      "mode": "LITERAL_GROUND",
+      "name": "literal-ground",
+      "native_seconds": 17.703216,
+      "outcome": "UNKNOWN_NO_PROOF",
+      "owned_peak_bytes": 129630208,
+      "trace_complete": false,
+      "transport": {
+        "bytes": 33959,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-receptor-literal-ground-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "72c460eb06f6e0c2db4c094a90831b42e920efadad5f04a61c2f072545d34cfe"
+      }
+    },
+    {
+      "admission": {
+        "bytes": 7261,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-receptor-visible-receptor-ROOT-20261018/ROOT-case-admission-v1.json",
+        "sha256": "28f49ced6161774406393bfaac914154c07a51f89b817fb55f4413b786544de1"
+      },
+      "completed_decisions": [
+        {
+          "kind": "BRANCH",
+          "row": 23
+        }
+      ],
+      "counts": {
+        "advice_calls": 0,
+        "advice_selected": 0,
+        "advice_unknown": 0,
+        "backtracks": 0,
+        "branches": 1,
+        "cursor_replays": 0,
+        "fallback_advances": 0,
+        "fallback_branch_choices": 0,
+        "family_abandonments": 0,
+        "family_batches": 1,
+        "family_canonical_choices": 0,
+        "family_checks": 1,
+        "family_choices": 1,
+        "family_invalidated": 0,
+        "family_unknown": 0,
+        "forced": 0,
+        "global_scans": 2,
+        "invalidated_domains": 24,
+        "nodes": 2,
+        "pending_checks": 0,
+        "pending_rejected": 0,
+        "pending_retired": 0,
+        "pending_selected": 0,
+        "placements": 1,
+        "restores": 1,
+        "retained_domains": 0,
+        "retained_prefixes": 0,
+        "retained_queries": 0
+      },
+      "events": 5,
+      "expanded": {
+        "bytes": 9690402,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-receptor-visible-receptor-ROOT-20261018/ROOT-expanded-result-v1.json",
+        "sha256": "98a58139b245f2c9ca704f918158aba215e9b18fbc3a49d6e3994678501d4b06"
+      },
+      "label": "Visible receptor inference",
+      "mode": "VISIBLE_RECEPTOR",
+      "name": "visible-receptor",
+      "native_seconds": 17.761955,
+      "outcome": "UNKNOWN_NO_PROOF",
+      "owned_peak_bytes": 178094080,
+      "trace_complete": false,
+      "transport": {
+        "bytes": 33772,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-receptor-visible-receptor-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+        "sha256": "b82e90f5d5ac52324b0b0b5c7e036b43090c84b3abf9631aedbc4971652f26c4"
+      }
+    }
+  ],
+  "receiver_binding": {
+    "declaration_sha256": "a1ce8237aca64485f94cbce0c909a055a74318ca0cc39b99cf0dc1990323d3df",
+    "language_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "logical_input_sha256": "959249f6ccc68a57589402df5555202daddb5bfb73f05a7b52baa4e4d5712b57",
+    "profile_name": "shared-bounded-six-rule-B12-N44-v2",
+    "profile_sha256": "227b3d4c1e8f5491365b5da580f59367300840d43d388d94e0657cf1b5f89c02",
+    "source_bindings_sha256": "977edd4149a2260e1babdc5096a18e32431810c1fa9573b0ee4eca4c0751c662"
+  },
+  "same_library_conventional_control": "THREE_COMPLETE_CHECKED_PROOF_RESULTS",
+  "schema": "GCTS-right-two-receiver-transfer-report-v1",
+  "scientific_replays_by_report": 0,
+  "selected_partial_instance": {
+    "actually_selected_members": 1,
+    "checked_cluster_members": 2,
+    "completed_child_dead": false,
+    "family_id": "4155dcb0b483d54c412f05629fb50375c78c14df63d4074425716b7e505453d2",
+    "input_fact_accepted": false,
+    "input_formula": [
+      "imp",
+      [
+        "all",
+        "x",
+        [
+          "all",
+          "y",
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "add",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "all",
+        "n",
+        [
+          "eq",
+          [
+            "fun",
+            "add",
+            [
+              [
+                "var",
+                "n"
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "var",
+                    "n"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ],
+    "input_occupied": false,
+    "instance_row_assignment": {
+      "input_rows": [
+        [
+          "i0",
+          0
+        ]
+      ],
+      "node_rows": [
+        [
+          "n0",
+          1
+        ],
+        [
+          "n1",
+          23
+        ]
+      ],
+      "schema": "receptor-family-six-rule-row-assignment-v1"
+    },
+    "nonidentity_instance_checked": true,
+    "open_input_row": 0,
+    "ordered_offsets": [
+      -22,
+      -23
+    ],
+    "planned_axiom_actually_selected": false,
+    "planned_axiom_row": 1,
+    "receiver_epoch": "382755b37139c6b57e694251f529a128003b50f518f2204535b3d8014cf9b11b",
+    "record_number": 3,
+    "selected_row": 23,
+    "selected_rule": "mp",
+    "source_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+    "useful_family_transfer": false,
+    "whole_family_completion": false
+  },
+  "source_context_preserved": true,
+  "source_epoch": "cdc3e630d4df4d4e4d3bc4f4cd3aca2ff3bab984de5ffe61905bf51b09628f1b",
+  "source_pool_read_and_prepared_once_in_every_arm": true,
+  "source_records": 8,
+  "statistical_or_speed_advantage": false,
+  "status": "SIX_CLOSED_RUNS_CONVENTIONAL_PROOFS_POINT_SEARCH_UNKNOWN",
+  "successful_conventional_nonidentity_recipe_reuse": false,
+  "summed_components_are_not_end_to_end_wall_or_single_run": true,
+  "target": [
+    "all",
+    "n",
+    [
+      "eq",
+      [
+        "fun",
+        "add",
+        [
+          [
+            "var",
+            "n"
+          ],
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "succ",
+        [
+          [
+            "fun",
+            "succ",
+            [
+              [
+                "var",
+                "n"
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "universally_admitted_families": [],
+  "useful_family_transfer": false,
+  "work_seconds": 17
+}
