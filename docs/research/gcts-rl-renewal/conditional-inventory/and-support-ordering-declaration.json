@@ -1,0 +1,223 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root",
+  "composition_Source_handoff": {
+    "bytes": 3074,
+    "path": "/private/tmp/gcts-and-support-cold-source-20261018/handoff-v1.json",
+    "sha256": "c00fd42acaf6353ac235a833c90863174c9f72304e6ad35843cf74d9d418380e"
+  },
+  "costs": "Charge original full setup, all imports/compile/native registry/completeModel, shared support graph/projection/rank/cache/validation, search, final wholeproof/pointchecks/output/readerinverse and closure. Parent/observer memory excluded, parentSourceentry wall charged and interpreter/observer prelude separately observed.",
+  "failure_policy": "Keep every consumed outcome, UNKNOWN/nativecapacity/exception/memory/output/time failure. No consumed reruns, newproof salvage outsideprofile, shortening grammar/output/candidateuniverse or outcome-dependent profile adjustment.",
+  "frozen_next_work": {
+    "bytes": 5293,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/parallel-search-planning-progress-20261018/ROOT-next-work-v1.json",
+    "sha256": "95634cd35541c1f909b3eff7a3a678dd84b330380389017b13ca0a701785e7f9"
+  },
+  "goal_complete": false,
+  "intervention": "Generic positive-cost joint-premise support ordering only, same helper in point/symbolic; no new marks, pruning, primitive, term/template, inventory, grammar, proof route or recursive multirow proposer.",
+  "legacy_controls": "Fresh contemporary controls import the exact same final closure as treatments and use legacy ordering. Not timing replications of historical runs.",
+  "limits": {
+    "check_steps": 2048,
+    "compile_queries": 512,
+    "conservative_worker_plus_native_peak_bytes": 1073741824,
+    "guard_steps": 1000000000,
+    "overall_seconds": 210,
+    "proposal_steps": 24,
+    "registry_steps": 5000000000,
+    "result_bytes": 134217728,
+    "search_max_nodes": 5000,
+    "search_seconds": 30,
+    "seed": 64000,
+    "work_seconds": 180
+  },
+  "measurement_policy": "Root only, sequential fresh max-one actuals with all agents idle after independent scientificSource/composition/outer/prospectiveplan/grantadoption gates.",
+  "model_storage": "literal_interned",
+  "new_suite_status": "The10case/eightgroup synthetic prospective corpus remains entirely unexecuted. This c3 assertion is development. Freeze search implementation before new-suite use, no tuning/mining/training on new outcomes before cohortclosure.",
+  "ordering_Source_handoff": {
+    "bytes": 3605,
+    "path": "/private/tmp/gcts-and-support-ordering-source-20261018/handoff-v1.json",
+    "sha256": "1090ed6c6b43f7141881f55526546aa05b63c3160d7c75739f0e9ea3e2720cf8"
+  },
+  "parent_storage_declaration": {
+    "bytes": 9760,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/compact-model-cold-integration-progress-20261018/experiment-declaration-v1.json",
+    "sha256": "b4a0453f40b242b92f3ad6a8567662b619eaa3e1574a83b68d465c77f9239c4c"
+  },
+  "parent_structural_declaration": {
+    "bytes": 21453,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/experiment-declaration-v2.json",
+    "sha256": "19fab9173cf52ebd9e0d5517fd4dbbb44ed9d72f3737676d9701fd6a4c8bde5d"
+  },
+  "point_Source_handoff": {
+    "bytes": 3284,
+    "path": "/private/tmp/gcts-and-support-point-source-20261018/handoff-v1.json",
+    "sha256": "8a01bbda5277ae845fdac53294ee10078d5fa6afcd05b3ac59b11a0fecacb55c"
+  },
+  "point_ranking": "New treatment changes ordering of existing validated Join items only after mandatory genuine branch selection; original frozen FIXED score/index ties, primitive incident fallback, all globaldead/forced/earliestgeneration decisions and exact rollback retained.",
+  "primary_endpoint": "Fresh whole Native-accepted proof of exact target, complete finite target/marking/row verification and full output+custody+resource+terminal admission. All conjuncts reported separately.",
+  "required_next": "Freeze full Source/API/contracts/pins, distinctly review changed scientific and orchestration components, derive exact complete closure and finalized experiment declaration+falseplans, reviewRootsubjects, then issue freshtruegrants. This design file grants no execution.",
+  "result_reader": "interned",
+  "runtime_closure": {
+    "bytes": 72661,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/runtime-closure-v1.json",
+    "sha256": "8246d2d2afdd3045067af2ae12b45f9fe6619451bbd33fd47e6b09d0ae5f06b8"
+  },
+  "schedule": [
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-c3-fixed-legacy-ROOT-20261018-v1",
+      "invocation_id": "and-support-c3-fixed-legacy-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 1,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "result_reader": "interned",
+      "search_ordering": "legacy"
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-c3-symbolic-and-support-ROOT-20261018-v1",
+      "invocation_id": "and-support-c3-symbolic-and-support-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 2,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "result_reader": "interned",
+      "search_ordering": "and_support"
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-c3-symbolic-legacy-ROOT-20261018-v1",
+      "invocation_id": "and-support-c3-symbolic-legacy-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 3,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "result_reader": "interned",
+      "search_ordering": "legacy"
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-c3-fixed-and-support-ROOT-20261018-v1",
+      "invocation_id": "and-support-c3-fixed-and-support-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 4,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "result_reader": "interned",
+      "search_ordering": "and_support"
+    }
+  ],
+  "schema": "ROOT-and-support-ordering-experiment-declaration-v1",
+  "scientific_calls": 0,
+  "selected_receiver": {
+    "id": "quantified-curried-two-premise-001",
+    "instantiation_rounds": 2,
+    "length": 12,
+    "scope": "Three closed theory axioms and closed target; assertion data only. No proof commands, root assumptions, blocks, family IDs, instance bindings or row route.",
+    "target": [
+      "all",
+      "x",
+      [
+        "pred",
+        "R",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ]
+    ],
+    "theory": {
+      "axioms": {
+        "universal_curried_implication": [
+          "all",
+          "x",
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "Q",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "universal_left_premise": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        "universal_right_premise": [
+          "all",
+          "x",
+          [
+            "pred",
+            "Q",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ]
+      },
+      "functions": {},
+      "predicates": {
+        "P": 1,
+        "Q": 1,
+        "R": 1
+      },
+      "schemas": []
+    },
+    "title": "Universal application of a curried implication to two premises"
+  },
+  "selected_receiver_id": "quantified-curried-two-premise-001",
+  "source_gate": "Current distinct ordering/composition/once/prospectiveplan receipts authenticated in fresh authorization before launch. This declaration alone grants no execution.",
+  "source_roles": {
+    "Root_plan_peer": "/root/conventional_library",
+    "composition_Source_peer": "/root/conventional_library",
+    "driver_cold_once_author": "/root/receiver_driver_review",
+    "helper_and_symbolic_author": "/root/conventional_control_review",
+    "once_Source_delta_peer": "/root/conventional_control_review",
+    "ordering_Source_peer": "/root/receiver_driver_review",
+    "point_author": "/root/conventional_library"
+  },
+  "source_state": "FROZEN_CODE_AND_EXACT_COMMON_CLOSURE_SUBJECT_TO_DISTINCT_AUTH_SOURCE_GATES",
+  "symbolic_ranking": "New treatment prospectively allows stable windows of64 actual legal row candidates, using same helper; remaining iterator, all ordered reference tuples, padding and duplicate word alternatives remain available. This bounded ranking application differs from the point existing24-item pool.",
+  "work_units": "Point base-placement attempts versus symbolic row extensions are distinct; equalnumeric5000 limits do not equate computational work."
+}

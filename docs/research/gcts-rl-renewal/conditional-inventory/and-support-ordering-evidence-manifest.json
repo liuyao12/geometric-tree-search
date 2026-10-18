@@ -1,0 +1,765 @@
+{
+  "Root_review_adoption": {
+    "bytes": 2386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/ROOT-retained-review-adoption-v1.json",
+    "sha256": "1de3234288f2d748f47532073dd3d598edd29a49d5c9200e6cb4e11e0729febc"
+  },
+  "admitted_instances": 2,
+  "all_archive_raw_hashes_verified": true,
+  "archive": {
+    "bytes": 24879923,
+    "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-evidence.zip",
+    "sha256": "ca83d01a06f6614a220fb86027ade4f1e6fc866e2be20f6d2a91342c948622a6"
+  },
+  "archive_members": 341,
+  "goal_complete": false,
+  "local_links": [
+    {
+      "href": "reader.html#and-support-ordering",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "#outcomes",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "#proofs",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "#parallel",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "#evidence",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-fixed-and-support-proof.html#proof-reader",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-symbolic-and-support-proof.html#proof-reader",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "parallel-search-planning.html#benchmarks",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-summary.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-admission.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-declaration.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-runtime-closure.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-evidence-manifest.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-evidence.zip",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-data-review.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-resource-review.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-comparison-review.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-ordering-report-review.json",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-fixed-legacy-result.json.gz",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-symbolic-and-support-result.json.gz",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-symbolic-legacy-result.json.gz",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "and-support-fixed-and-support-result.json.gz",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "parallel-search-planning.html#roles",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "structural-transfer.html#outcomes",
+      "source": "and-support-ordering.html"
+    },
+    {
+      "href": "reader.html#and-support-ordering",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#outcomes",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#proofs",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#parallel",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#evidence",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#outcomes",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "and-support-fixed-and-support-result.json.gz",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-5",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-4",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-5",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-4",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-7",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-2",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-6",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-2",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-6",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-8",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-3",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-7",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-3",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-7",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-2",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-2",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-2",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-8",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-3",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-7",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-3",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-7",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-10",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-2",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-3",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-4",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-5",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-6",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-7",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-8",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-9",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-10",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-root-line-11",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-1-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-1-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-2-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-2-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-3-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-3-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-4-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-4-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-5-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-5-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-6-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-6-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-7-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-7-line-2",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-7-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-7-line-3",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-8-line-0",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-8-line-2",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-8-line-1",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-843575b247c2f20d-definition-8-line-3",
+      "source": "and-support-fixed-and-support-proof.html"
+    },
+    {
+      "href": "reader.html#and-support-ordering",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#outcomes",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#proofs",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#parallel",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#evidence",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "and-support-ordering.html#outcomes",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#proof-reader",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "and-support-symbolic-and-support-result.json.gz",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-5",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-4",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-5",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-4",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-7",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-3",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-6",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-2",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-3",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-6",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-2",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-8",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-7",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-7",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-8",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-3",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-8",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-2",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-3",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-4",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-5",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-6",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-7",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-8",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-9",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-10",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-root-line-11",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-1-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-1-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-2-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-2-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-3-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-3-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-4-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-4-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-5-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-5-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-6-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-6-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-7-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-7-line-2",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-7-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-7-line-3",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-8-line-0",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-8-line-2",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-8-line-1",
+      "source": "and-support-symbolic-and-support-proof.html"
+    },
+    {
+      "href": "#semantic-proof-de060399c412899a-definition-8-line-3",
+      "source": "and-support-symbolic-and-support-proof.html"
+    }
+  ],
+  "local_links_checked": 162,
+  "mathematical_assertions": 1,
+  "new_RL_training": false,
+  "protected_overview_unchanged": true,
+  "published": {
+    "and-support-fixed-and-support-proof.html": {
+      "bytes": 1957552,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-fixed-and-support-proof.html",
+      "sha256": "42829788494cedf7d8b2d8b0b175a2f19c87096f81b5094022511c0f2bfe399d"
+    },
+    "and-support-fixed-and-support-result.json.gz": {
+      "bytes": 2335459,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-fixed-and-support-result.json.gz",
+      "sha256": "c65f782c5e4c0fe4316f1db6da939a26ffb8426fe832c92bb3d0ac5db1af69d4"
+    },
+    "and-support-fixed-legacy-result.json.gz": {
+      "bytes": 5342913,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-fixed-legacy-result.json.gz",
+      "sha256": "13ab95b73f4f9e575626b88efa5b43f605a6ba1dbc4ce52bbebe5b3f5f0363e8"
+    },
+    "and-support-ordering-admission.json": {
+      "bytes": 398509,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-admission.json",
+      "sha256": "992b19037bf368767b7f8ed56238c6eea4a231b76439f7eec82b689996d57d0c"
+    },
+    "and-support-ordering-comparison-review.json": {
+      "bytes": 14750,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-comparison-review.json",
+      "sha256": "ed8439e6bedc5697f5fc6d5133f2f0bbca7eb9613c2e160adfeef7541a72ba1e"
+    },
+    "and-support-ordering-data-review.json": {
+      "bytes": 88847,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-data-review.json",
+      "sha256": "764d7d49c28a12cb0735cba15edaccefc637e15a1a0f6b71d6bbb0c9b7d9cd6b"
+    },
+    "and-support-ordering-declaration.json": {
+      "bytes": 9763,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-declaration.json",
+      "sha256": "4b7fe1cb41ecaa11043b3ee5698912094833e4a9c5ea48614105462e49fca082"
+    },
+    "and-support-ordering-evidence.zip": {
+      "bytes": 24879923,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-evidence.zip",
+      "sha256": "ca83d01a06f6614a220fb86027ade4f1e6fc866e2be20f6d2a91342c948622a6"
+    },
+    "and-support-ordering-report-review.json": {
+      "bytes": 8285,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-report-review.json",
+      "sha256": "bcbbcb7e4fac177963da644056260ee6bdf343c1b38b4f8a170319526ab8967f"
+    },
+    "and-support-ordering-resource-review.json": {
+      "bytes": 7592,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-resource-review.json",
+      "sha256": "0d3423c80dc0c8eb685852c52f4cda4967b632a2b07325b9dde653bf19ad7ef6"
+    },
+    "and-support-ordering-runtime-closure.json": {
+      "bytes": 72661,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-runtime-closure.json",
+      "sha256": "8246d2d2afdd3045067af2ae12b45f9fe6619451bbd33fd47e6b09d0ae5f06b8"
+    },
+    "and-support-ordering-summary.json": {
+      "bytes": 398240,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-summary.json",
+      "sha256": "3df1a8a89f810d91f45d0f411da6361bf390218d7759a76bbe07be1043e85e71"
+    },
+    "and-support-ordering.html": {
+      "bytes": 15582,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering.html",
+      "sha256": "eb8fb1ed9db345f995ae72bacae3e582c16366c5e49ec636afea65e3d7f91b64"
+    },
+    "and-support-symbolic-and-support-proof.html": {
+      "bytes": 1903655,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-symbolic-and-support-proof.html",
+      "sha256": "dc36674f36c89850d3fd9bbd22d0c5f8c7918b1f0df3b2d16bac2201d61971e2"
+    },
+    "and-support-symbolic-and-support-result.json.gz": {
+      "bytes": 1466113,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-symbolic-and-support-result.json.gz",
+      "sha256": "71afc5a20b6129a28475d44356f714a5ef7ea46f2bef6ad984f32a7e09a773cc"
+    },
+    "and-support-symbolic-legacy-result.json.gz": {
+      "bytes": 1491549,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-symbolic-legacy-result.json.gz",
+      "sha256": "99f6643c8493390e81d373329320556710f4b9624e7eb488c2079b85c9e2f273"
+    },
+    "parallel-search-planning.html": {
+      "bytes": 43453,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/parallel-search-planning.html",
+      "sha256": "1381bb35fa22d6f00af6b7d53a03968a92806d9913887f52d39e714f948ff213"
+    },
+    "reader.html": {
+      "bytes": 87016,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "1b6385153a2991f02fd0b7fb0979db1d24d4041098743260e9db922ccdfb9324"
+    }
+  },
+  "retained_actuals": 4,
+  "schema": "and-support-public-evidence-manifest-v1",
+  "scope": "This manifest excludes its own raw identity; archive manifest separately covers internal objects. Report and proof display never replay Native/search."
+}

@@ -1,0 +1,136 @@
+{
+  "Root_admission": {
+    "bytes": 398509,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "992b19037bf368767b7f8ed56238c6eea4a231b76439f7eec82b689996d57d0c"
+  },
+  "actual_execution_authorized": false,
+  "ancestry": {
+    "actual_execution_author": "/root",
+    "authored_current_helper_and_symbolic": true,
+    "authored_inherited_outerV2": true,
+    "authored_prior_driver_broker_benchmark": true,
+    "current_outer_author": "/root/receiver_driver_review",
+    "distinct_current_Source_peers_relied_upon": true,
+    "own_Source_certification": false
+  },
+  "audit": {
+    "bytes": 409994,
+    "path": "/private/tmp/gcts-and-support-retained-resource-peer-20261018/raw-retained-resource-audit-v1.json",
+    "sha256": "03aa305bcdb4e7a710555617ba584487f200694266c83e121f1364fb5213b5e6"
+  },
+  "audit_Source": {
+    "bytes": 34774,
+    "path": "/private/tmp/gcts-and-support-retained-resource-peer-20261018/audit_retained_resources_v1.py",
+    "sha256": "0059b466b889fedc5efb36a10187460d7d3edbd43b1dab61f7f1f52118a31e7c"
+  },
+  "author_identity": "/root",
+  "check_count": 1458,
+  "cohort_closure": {
+    "bytes": 5871,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/ROOT-cohort-closure-v1.json",
+    "sha256": "d3e3c078bda2c11584bb76157d827f86085ee8d4355d7fe5b95f98dfc8368654"
+  },
+  "compiler_calls": 0,
+  "current_Source_and_plan_reviews": {
+    "composition_Source": {
+      "bytes": 6653,
+      "path": "/private/tmp/gcts-and-support-composition-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "11edcb6b066392f8b1332e035959a8448252b7b1b8935fcf42fcf501ba0eca29"
+    },
+    "once_Source": {
+      "bytes": 7311,
+      "path": "/private/tmp/gcts-and-support-once-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "4f05d69a2c09cb1594355ba96748f1fef0db0d39914c9b351f0a072cf3fb63e6"
+    },
+    "ordering_Source": {
+      "bytes": 8399,
+      "path": "/private/tmp/gcts-and-support-ordering-independent-peer-20261018/typed-ordering-components-Source-review-v1.json",
+      "sha256": "84c4e5e5b1528bafc12f8f957e89ea648b1e358ce888206879639cb954dc8f2e"
+    },
+    "prospective_plans": {
+      "bytes": 25757,
+      "path": "/private/tmp/gcts-and-support-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+      "sha256": "c01dc42d919f67642e4b3cf1c16011781ac16fef5b68a86276993b630985a172"
+    }
+  },
+  "declaration": {
+    "bytes": 9763,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/experiment-declaration-v1.json",
+    "sha256": "4b7fe1cb41ecaa11043b3ee5698912094833e4a9c5ea48614105462e49fca082"
+  },
+  "final_grant_adoption": {
+    "bytes": 3064,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/ROOT-final-grant-adoption-v1.json",
+    "sha256": "9b28b273fb1544bde363abce63b5f98799feb2b2909d6f295b28c1b197e02f1f"
+  },
+  "final_grant_review": {
+    "bytes": 47565,
+    "path": "/private/tmp/gcts-and-support-final-grant-peer-20261018/typed-final-grant-delta-review-v1.json",
+    "sha256": "1b58cf229038d397670cf9e9f17b6b30bcacd257f6e827aa95496149845f80d1"
+  },
+  "findings": [
+    {
+      "finding": "All four max-one grants/markers/current24alias/selected search+helper+compactModel/original and owned preimages join; every worker and native child has explicit terminal/reap/EOF/group data and no signal/reappearance/late failure.",
+      "id": "FOUR_CLOSED_CURRENT_SUBJECTS",
+      "severity": "evidence"
+    },
+    {
+      "finding": "All four conservative separate Darwin worker+native peak sums fit1GiB; full raw outputs fit128MiB. Both positive candidates completed output/Reader and known worker exit before180, and all outer/external terminal checks completed before210.",
+      "id": "ORIGINAL_PROFILE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "This receipt audits retained resource and custody records only. It does not evaluate proof rules, support scores, point legality, native machine semantics, causal performance or GCTS/RL advantage.",
+      "id": "NO_MATHEMATICAL_OR_COMPARATIVE_ADMISSION",
+      "severity": "scope"
+    }
+  ],
+  "index": {
+    "bytes": 13245,
+    "path": "/private/tmp/gcts-and-support-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "81a907b726aad1febb9b6781f7eadac519aeba6c073dd6dfade7cc5d03fdff33"
+  },
+  "limitations": [
+    "Reviewer authored inherited outerV2, current AND-support helper and symbolic control plus earlier protocol/benchmark components. This is independent of Root actual execution, not an independent Source certificate of those implementations. Genuine current Source/plan peers are separately bound.",
+    "Standard-library JSON parsing/canonical byte hashing/statistics and raw file hashes only. No research module/native/solver/compiler/Model/search/logic/kernel/renderer execution, replay, program or opaque microcode decoding, process launch or live group probe.",
+    "Stored logical/native/point flags remain separate mathematical admission evidence; this review does not accept proofs or infer nonprovability from UNKNOWN.",
+    "Conservative sum is separately captured process high-water RSS in bytes on declared Darwin, not simultaneous live aggregate RAM. Outer/observer memory excluded; no enforced live1GiB bound or escaped-descendant OS attestation.",
+    "Pinned Python/native loader/bundled stdlib and trusted OS metadata assumptions remain. Raw present-byte checks and saved callable guards are not a formal continuous worker seal. Parent Source-entry clocks exclude observer/Python prelude, separately recorded.",
+    "All current resource candidates passed, so no earlier aggregate-memory gate skipped the final outer whole raw loop in these four records. Earlier diagnostic runs remain unchanged and retain their conditional custody scope.",
+    "One familiar c3 instance, authorselected four-arm order, no repetitions/statistical speed/generalization/RL or uniquely geometric advantage claim. Both stored positive candidates and both UNKNOWN controls are retained without dropping or cap changes."
+  ],
+  "mathematical_proof_accepted": false,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "native_calls": 0,
+  "native_codec_or_decompression_calls": 0,
+  "project_imports": 0,
+  "renderer_calls": 0,
+  "resource_data_review_passed": true,
+  "resource_profile_pass_count": 4,
+  "resource_review_passed": true,
+  "result_table": {
+    "bytes": 13765,
+    "path": "/private/tmp/gcts-and-support-retained-resource-peer-20261018/four-result-resource-table-v1.json",
+    "sha256": "023364a1d4b042f6dc79dbcc2e80edea0749d03134688498be8aa8f0d087b545"
+  },
+  "retained_actuals": 4,
+  "reviewer_identity": "/root/conventional_control_review",
+  "runtime_closure": {
+    "bytes": 72661,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/runtime-closure-v1.json",
+    "sha256": "8246d2d2afdd3045067af2ae12b45f9fe6619451bbd33fd47e6b09d0ae5f06b8"
+  },
+  "saved_data_only": true,
+  "schema": "and-support-retained-resource-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Retained resource/terminal/transport/Source-custody only",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "stored_legacy_UNKNOWN": 2,
+  "stored_positive_candidates": 2
+}

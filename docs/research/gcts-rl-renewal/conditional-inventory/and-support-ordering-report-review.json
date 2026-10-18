@@ -1,0 +1,163 @@
+{
+  "Root_admission": {
+    "bytes": 398509,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "992b19037bf368767b7f8ed56238c6eea4a231b76439f7eec82b689996d57d0c"
+  },
+  "ancestry": {
+    "authored_parent_pure_renderer": true,
+    "authored_point_ordering_and_old_Model_driver_bridge": true,
+    "current_Source_peer": {
+      "bytes": 8399,
+      "path": "/private/tmp/gcts-and-support-ordering-independent-peer-20261018/typed-ordering-components-Source-review-v1.json",
+      "sha256": "84c4e5e5b1528bafc12f8f957e89ea648b1e358ce888206879639cb954dc8f2e"
+    },
+    "current_scope": "Saved raw HTML/JSON/LaTex/English/ports/point packets and publication delta only; not own Source audit, independent proof checking, rendering or Native replay.",
+    "report_author": "/root",
+    "reviewer_identity": "/root/conventional_library"
+  },
+  "assets": [
+    {
+      "bytes": 5342913,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-fixed-legacy-result.json.gz",
+      "sha256": "13ab95b73f4f9e575626b88efa5b43f605a6ba1dbc4ce52bbebe5b3f5f0363e8"
+    },
+    {
+      "bytes": 1466113,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-symbolic-and-support-result.json.gz",
+      "sha256": "71afc5a20b6129a28475d44356f714a5ef7ea46f2bef6ad984f32a7e09a773cc"
+    },
+    {
+      "bytes": 1903655,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-symbolic-and-support-proof.html",
+      "sha256": "dc36674f36c89850d3fd9bbd22d0c5f8c7918b1f0df3b2d16bac2201d61971e2"
+    },
+    {
+      "bytes": 1491549,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-symbolic-legacy-result.json.gz",
+      "sha256": "99f6643c8493390e81d373329320556710f4b9624e7eb488c2079b85c9e2f273"
+    },
+    {
+      "bytes": 2335459,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-fixed-and-support-result.json.gz",
+      "sha256": "c65f782c5e4c0fe4316f1db6da939a26ffb8426fe832c92bb3d0ac5db1af69d4"
+    },
+    {
+      "bytes": 1957552,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-fixed-and-support-proof.html",
+      "sha256": "42829788494cedf7d8b2d8b0b175a2f19c87096f81b5094022511c0f2bfe399d"
+    },
+    {
+      "bytes": 398240,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-summary.json",
+      "sha256": "3df1a8a89f810d91f45d0f411da6361bf390218d7759a76bbe07be1043e85e71"
+    },
+    {
+      "bytes": 398509,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-admission.json",
+      "sha256": "992b19037bf368767b7f8ed56238c6eea4a231b76439f7eec82b689996d57d0c"
+    },
+    {
+      "bytes": 9763,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-declaration.json",
+      "sha256": "4b7fe1cb41ecaa11043b3ee5698912094833e4a9c5ea48614105462e49fca082"
+    },
+    {
+      "bytes": 72661,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering-runtime-closure.json",
+      "sha256": "8246d2d2afdd3045067af2ae12b45f9fe6619451bbd33fd47e6b09d0ae5f06b8"
+    },
+    {
+      "bytes": 15582,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/and-support-ordering.html",
+      "sha256": "eb8fb1ed9db345f995ae72bacae3e582c16366c5e49ec636afea65e3d7f91b64"
+    },
+    {
+      "bytes": 87016,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "1b6385153a2991f02fd0b7fb0979db1d24d4041098743260e9db922ccdfb9324"
+    },
+    {
+      "bytes": 43453,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/parallel-search-planning.html",
+      "sha256": "1381bb35fa22d6f00af6b7d53a03968a92806d9913887f52d39e714f948ff213"
+    }
+  ],
+  "audit": {
+    "bytes": 2999666,
+    "path": "/private/tmp/gcts-and-support-report-peer-20261018/raw-report-audit-v3.json",
+    "sha256": "665920e28fd94e8d1a8310b7786e90f8ebbcde3104e8f3a538512db9e7780a13"
+  },
+  "author_identity": "/root",
+  "blocking_findings": [],
+  "check_count": 29149,
+  "closed_findings": [
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "comparison_analysis": {
+    "bytes": 14750,
+    "path": "/private/tmp/gcts-and-support-comparison-peer-20261018/typed-comparison-analysis-v1.json",
+    "sha256": "ed8439e6bedc5697f5fc6d5133f2f0bbca7eb9613c2e160adfeef7541a72ba1e"
+  },
+  "counts": {
+    "displayed_proof_rows": 80,
+    "lossless_publication_gzips": 4,
+    "ordered_port_rows": 23,
+    "point_value_rows": 13396,
+    "registered_bodies": 16,
+    "selected_tiles": 120
+  },
+  "data_review": {
+    "bytes": 88847,
+    "path": "/private/tmp/gcts-and-support-retained-data-peer-20261018/typed-data-review-v2.json",
+    "sha256": "764d7d49c28a12cb0735cba15edaccefc637e15a1a0f6b71d6bbb0c9b7d9cd6b"
+  },
+  "findings": [],
+  "limitations": [
+    "No renderer/Model/compiler/logic/helper/search/Native/solver/codec or scientific code evaluated. Ordinary publication gzip streams were decompressed only to compare whole raw result bytes, not opaque Native inputs.",
+    "Restricted displayed-LaTex parser compares literal formula AST syntax; it is not a proof rule checker. Mathematical validity and essentiality remain independently audited Native/Root evidence.",
+    "Point/parent-adapter/parent-renderer authorship disclosed. This is a distinct Root-authored report/display audit, not an independent Source certificate for own implementations.",
+    "Archive, final evidence/review-copy hashes and live browser/MathJax/layout inspection remain Root finalization/live-QA tasks. Six pending evidence links listed explicitly; no final publication/live update accepted here.",
+    "One familiar development assertion and four single observations. No statistical/general speed, GCTS superiority, RL, nested lemma promotion, external prover comparison, allFOL, PA/Hilbert geometry or plane-tiling claim."
+  ],
+  "metadata_revision": 3,
+  "mismatches": 0,
+  "negative_v1": {
+    "bytes": 3188,
+    "path": "/private/tmp/gcts-and-support-report-peer-20261018/typed-report-review-v1-negative.json",
+    "sha256": "2e6e704fe2bbb0f35f0e700018bb232216e32221e328f8c3e95e807030bf6847"
+  },
+  "pending_finalization_links": [
+    "and-support-ordering-evidence-manifest.json",
+    "and-support-ordering-evidence.zip",
+    "and-support-ordering-data-review.json",
+    "and-support-ordering-resource-review.json",
+    "and-support-ordering-comparison-review.json",
+    "and-support-ordering-report-review.json"
+  ],
+  "pure_renderer": {
+    "bytes": 23778,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/semantic_proof_renderer_v2.py",
+    "sha256": "bd929c531205dfd9fcfd6732c9de554d71e2abdd492a80aac1dd094965b77e77"
+  },
+  "report_review_passed": true,
+  "resource_review": {
+    "bytes": 7592,
+    "path": "/private/tmp/gcts-and-support-retained-resource-peer-20261018/typed-resource-review-v1.json",
+    "sha256": "0d3423c80dc0c8eb685852c52f4cda4967b632a2b07325b9dde653bf19ad7ef6"
+  },
+  "retained_data_only": true,
+  "reviewed_asset_index": {
+    "bytes": 4578,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/and-support-ordering-progress-20261018/report-draft-assets-v3.json",
+    "sha256": "b376052d1c6296c12ccfc1c62f932bb8ad28eee57745d36f0e5c61dcc6c7e0b6"
+  },
+  "reviewer_identity": "/root/conventional_library",
+  "schema": "and-support-human-report-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "source_only": true
+}
