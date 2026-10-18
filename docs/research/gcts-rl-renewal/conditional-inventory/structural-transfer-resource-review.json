@@ -1,0 +1,1061 @@
+{
+  "ROOT_resource_accepted": false,
+  "Root_admission": {
+    "bytes": 107412,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "43980d1d838c877c02ca23dce7162a6ad29dec9d92057b2862377a6e118e937a"
+  },
+  "Root_admission_join": {
+    "bytes": 17764,
+    "path": "/private/tmp/gcts-structural-resource-peer-20261018/Root-admission-join-v1.json",
+    "sha256": "5900a2e6255f09fe94a1d80407eca48b226a9ec9eaf98db48d5202c22047ed84"
+  },
+  "actual_author_identity": "/root",
+  "actuals": [
+    {
+      "bounded_proof_admissible": false,
+      "case_index": 1,
+      "check_count": 490,
+      "completed_outputs": [
+        "before_oracle",
+        "compile",
+        "compile_record_joins",
+        "inventory_record_join",
+        "register",
+        "specialize"
+      ],
+      "conservative_peak_MiB": 273.28125,
+      "conservative_peak_bytes": 286556160,
+      "failure_cleanup_signals": [],
+      "invocation_id": "structural-quantified-c1-base-ROOT-20261018-v1",
+      "known_worker_and_native_reaped": true,
+      "last_native_purpose": "check_generated_lemma_definitions",
+      "last_native_status": "unknown_space_budget",
+      "mismatch_count": 0,
+      "mode": "base",
+      "native_fullEOF": true,
+      "native_peak_MiB": 12.875,
+      "native_peak_bytes": 13500416,
+      "native_pid": 67477,
+      "native_proof_flag_observed": false,
+      "native_records": 38,
+      "observer_gate_passed": true,
+      "outer_log_capture_flag": true,
+      "outer_terminal_seconds": 32.918396292,
+      "receiver_id": "quantified-universal-commutation-001",
+      "resource_disposition": "RESOURCE_GATE_PASSED",
+      "result_bytes": 202478,
+      "retained_pins": {
+        "marker": {
+          "bytes": 513,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "d99d903dd41120806b1c48681406be94ae52f5987eac23666bc51caa6fa60a0c"
+        },
+        "observer_marker": {
+          "bytes": 324,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c1-base-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "9a5cf465a88d81e6e8cc21d96f44ef380e7a5f56c834222038e8ceaa981ae889"
+        },
+        "result": {
+          "bytes": 202478,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/result.json",
+          "sha256": "fd2084ca02bb192af97147c81ac022fb90169f91fc40dd857f3cf54ff3dee2f6"
+        },
+        "runner": {
+          "bytes": 77650,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "279af809f86ab803a5e06287220b7d40312aeb0d7f75e4edbcc48c741717a9c4"
+        },
+        "terminal": {
+          "bytes": 1573,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c1-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "d335df1c3b8cacd5a4208d6ea8ce0b8908392e5920a781f306c7f9a5036e6e5c"
+        },
+        "worker": {
+          "bytes": 59777,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "e7cbe6bd5e3290075d0dc7d7b72bec3f7ba51fa3a0b3e36ec2ca3165deabcc16"
+        }
+      },
+      "runner_errors": [],
+      "status": "unknown_native_inventory",
+      "whole_group_absence_observation": true,
+      "worker_custody_seconds": 32.807212083,
+      "worker_peak_MiB": 260.40625,
+      "worker_peak_bytes": 273055744,
+      "worker_pid": 67473
+    },
+    {
+      "bounded_proof_admissible": false,
+      "case_index": 1,
+      "check_count": 490,
+      "completed_outputs": [
+        "before_oracle",
+        "compile",
+        "compile_record_joins",
+        "inventory_record_join",
+        "register",
+        "specialize"
+      ],
+      "conservative_peak_MiB": 268.84375,
+      "conservative_peak_bytes": 281903104,
+      "failure_cleanup_signals": [],
+      "invocation_id": "structural-quantified-c1-fixed-ROOT-20261018-v1",
+      "known_worker_and_native_reaped": true,
+      "last_native_purpose": "check_generated_lemma_definitions",
+      "last_native_status": "unknown_space_budget",
+      "mismatch_count": 0,
+      "mode": "fixed",
+      "native_fullEOF": true,
+      "native_peak_MiB": 12.59375,
+      "native_peak_bytes": 13205504,
+      "native_pid": 67838,
+      "native_proof_flag_observed": false,
+      "native_records": 38,
+      "observer_gate_passed": true,
+      "outer_log_capture_flag": true,
+      "outer_terminal_seconds": 33.189721417,
+      "receiver_id": "quantified-universal-commutation-001",
+      "resource_disposition": "RESOURCE_GATE_PASSED",
+      "result_bytes": 202509,
+      "retained_pins": {
+        "marker": {
+          "bytes": 516,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-fixed-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "132bee7affe18af513ebbabda8897d24b4cebdfdb12a03083e2ee832f6e50cd3"
+        },
+        "observer_marker": {
+          "bytes": 325,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c1-fixed-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "693921e091f8a070a6449cae833d6db5b4de699edd65e9998b81bc896830e922"
+        },
+        "result": {
+          "bytes": 202509,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-fixed-ROOT-20261018-v1/result.json",
+          "sha256": "86db7f844c6c0af3383c822334792da4406f78e8367ef88b81ce10e58ae1b1d1"
+        },
+        "runner": {
+          "bytes": 77661,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-fixed-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "118e6d728f25691cc468ab6d63d0ec3c8149771f1e4653c665ed88e61f2a739d"
+        },
+        "terminal": {
+          "bytes": 1576,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c1-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "767c4e29b2a9377303ede2228c903b79247af7b29f41b2e5c2e8113898d5356b"
+        },
+        "worker": {
+          "bytes": 59787,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-fixed-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "7c74f71afdae06bb67f256ca10284dfb1a3727725a2eddd84ec4d37d49d792df"
+        }
+      },
+      "runner_errors": [],
+      "status": "unknown_native_inventory",
+      "whole_group_absence_observation": true,
+      "worker_custody_seconds": 33.089687958,
+      "worker_peak_MiB": 256.25,
+      "worker_peak_bytes": 268697600,
+      "worker_pid": 67837
+    },
+    {
+      "bounded_proof_admissible": false,
+      "case_index": 1,
+      "check_count": 490,
+      "completed_outputs": [
+        "before_oracle",
+        "compile",
+        "compile_record_joins",
+        "inventory_record_join",
+        "register",
+        "specialize"
+      ],
+      "conservative_peak_MiB": 267.734375,
+      "conservative_peak_bytes": 280739840,
+      "failure_cleanup_signals": [],
+      "invocation_id": "structural-quantified-c1-symbolic-ROOT-20261018-v1",
+      "known_worker_and_native_reaped": true,
+      "last_native_purpose": "check_generated_lemma_definitions",
+      "last_native_status": "unknown_space_budget",
+      "mismatch_count": 0,
+      "mode": "symbolic",
+      "native_fullEOF": true,
+      "native_peak_MiB": 12.71875,
+      "native_peak_bytes": 13336576,
+      "native_pid": 67924,
+      "native_proof_flag_observed": false,
+      "native_records": 38,
+      "observer_gate_passed": true,
+      "outer_log_capture_flag": true,
+      "outer_terminal_seconds": 35.010206458,
+      "receiver_id": "quantified-universal-commutation-001",
+      "resource_disposition": "RESOURCE_GATE_PASSED",
+      "result_bytes": 202588,
+      "retained_pins": {
+        "marker": {
+          "bytes": 525,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-symbolic-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "7581368e691340d40390da6b29b5d0de68e57a4f29ffd09d5904c3140bf9d4c8"
+        },
+        "observer_marker": {
+          "bytes": 328,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c1-symbolic-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "5118c210bc560ec9d0316e883b3c4f183d821927310625e7c8662405b9098487"
+        },
+        "result": {
+          "bytes": 202588,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-symbolic-ROOT-20261018-v1/result.json",
+          "sha256": "30be23beb9f83cf31ebd1a2f50fd60f9b148e615609f5f7f6fef6323c73bcdbb"
+        },
+        "runner": {
+          "bytes": 77761,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-symbolic-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "131cfcfb33ae11b07539ee5a4665fa620fc8120640e0f5f5f1bfd6cb6d99f117"
+        },
+        "terminal": {
+          "bytes": 1585,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c1-symbolic-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "d1513fae3803d782b0802e15a8483f90eb4f87a52bce172a366756c2fd78b324"
+        },
+        "worker": {
+          "bytes": 59864,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-symbolic-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "f3f679e47924c0fde5cd7090714733cb474a1ff3909ba5bcb6a4e71273a11a0d"
+        }
+      },
+      "runner_errors": [],
+      "status": "unknown_native_inventory",
+      "whole_group_absence_observation": true,
+      "worker_custody_seconds": 34.924097042,
+      "worker_peak_MiB": 255.015625,
+      "worker_peak_bytes": 267403264,
+      "worker_pid": 67923
+    },
+    {
+      "bounded_proof_admissible": false,
+      "case_index": 2,
+      "check_count": 451,
+      "completed_outputs": [
+        "before_oracle",
+        "compile",
+        "compile_record_joins",
+        "essential_ancestry",
+        "final_native",
+        "final_request",
+        "inventory_record_join",
+        "model",
+        "register",
+        "search",
+        "specialize",
+        "winning_hint_links"
+      ],
+      "conservative_peak_MiB": 1688.65625,
+      "conservative_peak_bytes": 1770684416,
+      "failure_cleanup_signals": [
+        {
+          "pgid": 68061,
+          "signal": 15,
+          "stamp_ns": 679472518306125
+        },
+        {
+          "pgid": 68061,
+          "signal": 9,
+          "stamp_ns": 679472518310666
+        }
+      ],
+      "invocation_id": "structural-quantified-c2-fixed-ROOT-20261018-v1",
+      "known_worker_and_native_reaped": true,
+      "last_native_purpose": "fresh_quantified_receiver_final",
+      "last_native_status": "accepted",
+      "mismatch_count": 0,
+      "mode": "fixed",
+      "native_fullEOF": true,
+      "native_peak_MiB": 12.5625,
+      "native_peak_bytes": 13172736,
+      "native_pid": 68062,
+      "native_proof_flag_observed": true,
+      "native_records": 28,
+      "observer_gate_passed": false,
+      "outer_log_capture_flag": false,
+      "outer_terminal_seconds": 72.41005625,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "resource_disposition": "RESOURCE_GATE_FAILED_CONSERVATIVE_PEAK",
+      "result_bytes": 67259550,
+      "retained_pins": {
+        "marker": {
+          "bytes": 516,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-fixed-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "88eed6349af167615a5c863f96216348ccec3287adba18295b4848d1557f57bd"
+        },
+        "observer_marker": {
+          "bytes": 325,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c2-fixed-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "4501c2793e6426a231aa3bee7f9d8bc935f3e84d5ea200c285e2f4082389a743"
+        },
+        "result": {
+          "bytes": 67259550,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-fixed-ROOT-20261018-v1/result.json",
+          "sha256": "984232e67f73da3ae54e9c4743bf5a76bca9643bc77b2fe5bd1ddb4ad6951dca"
+        },
+        "runner": {
+          "bytes": 67761,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-fixed-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "bb016487fea3372073e94b29fb984794773d10ea0dcff0b8f266256f3ed8f854"
+        },
+        "terminal": {
+          "bytes": 1576,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c2-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "8707539f06d942047754681aad3284e2019cd7befd13d72aac1ee52d50d22bf3"
+        },
+        "worker": {
+          "bytes": 53157,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-fixed-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "09ae2fcf9021956866a12cd669ceb4ffb9dd8fdb5e5c42750ee0a778e01dd955"
+        }
+      },
+      "runner_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679472518204333,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "status": "native_proof_discovered",
+      "whole_group_absence_observation": null,
+      "worker_custody_seconds": 64.654045209,
+      "worker_peak_MiB": 1676.09375,
+      "worker_peak_bytes": 1757511680,
+      "worker_pid": 68061
+    },
+    {
+      "bounded_proof_admissible": false,
+      "case_index": 2,
+      "check_count": 452,
+      "completed_outputs": [
+        "before_oracle",
+        "compile",
+        "compile_record_joins",
+        "essential_ancestry",
+        "final_native",
+        "final_request",
+        "inventory_record_join",
+        "model",
+        "register",
+        "search",
+        "specialize",
+        "symbolic_point_projection",
+        "winning_hint_links"
+      ],
+      "conservative_peak_MiB": 1351.078125,
+      "conservative_peak_bytes": 1416708096,
+      "failure_cleanup_signals": [
+        {
+          "pgid": 68280,
+          "signal": 15,
+          "stamp_ns": 679553199491500
+        },
+        {
+          "pgid": 68280,
+          "signal": 9,
+          "stamp_ns": 679553199495458
+        }
+      ],
+      "invocation_id": "structural-quantified-c2-symbolic-ROOT-20261018-v1",
+      "known_worker_and_native_reaped": true,
+      "last_native_purpose": "fresh_quantified_receiver_final",
+      "last_native_status": "accepted",
+      "mismatch_count": 0,
+      "mode": "symbolic",
+      "native_fullEOF": true,
+      "native_peak_MiB": 12.4375,
+      "native_peak_bytes": 13041664,
+      "native_pid": 68281,
+      "native_proof_flag_observed": true,
+      "native_records": 28,
+      "observer_gate_passed": false,
+      "outer_log_capture_flag": false,
+      "outer_terminal_seconds": 76.804490083,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "resource_disposition": "RESOURCE_GATE_FAILED_CONSERVATIVE_PEAK",
+      "result_bytes": 62143358,
+      "retained_pins": {
+        "marker": {
+          "bytes": 525,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "8006cae093b0bb27855b5d88efd104fd7d97b2a90a17491a3a3654f5edbd970a"
+        },
+        "observer_marker": {
+          "bytes": 328,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c2-symbolic-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "39f3562f921135a7348a6aacf10468c3d12b086aaeb5a619fc2c21ab44a53035"
+        },
+        "result": {
+          "bytes": 62143358,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/result.json",
+          "sha256": "97c8ddfe4dd59fbf83b999bdcac641b877ff9e76580ed3bed47037f1d81c5baf"
+        },
+        "runner": {
+          "bytes": 67851,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "4edb1545ea13b95777be52c6d62d5759ce5c695bc975e028be4844a3db8511a4"
+        },
+        "terminal": {
+          "bytes": 1586,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c2-symbolic-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "e7dfb8f55f11e653e87296d0eeb9ec93791f569a647bae02fbf143813159f39d"
+        },
+        "worker": {
+          "bytes": 53229,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "0579444ffdee88c04b179047133cc46c57d8c287ae91558eaa1e1add81a8bd3e"
+        }
+      },
+      "runner_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679553199448833,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "status": "native_proof_discovered",
+      "whole_group_absence_observation": null,
+      "worker_custody_seconds": 71.374492125,
+      "worker_peak_MiB": 1338.640625,
+      "worker_peak_bytes": 1403666432,
+      "worker_pid": 68280
+    },
+    {
+      "bounded_proof_admissible": false,
+      "case_index": 2,
+      "check_count": 451,
+      "completed_outputs": [
+        "before_oracle",
+        "compile",
+        "compile_record_joins",
+        "essential_ancestry",
+        "final_native",
+        "final_request",
+        "inventory_record_join",
+        "model",
+        "register",
+        "search",
+        "specialize",
+        "winning_hint_links"
+      ],
+      "conservative_peak_MiB": 1688.59375,
+      "conservative_peak_bytes": 1770618880,
+      "failure_cleanup_signals": [
+        {
+          "pgid": 68477,
+          "signal": 15,
+          "stamp_ns": 679628553055166
+        },
+        {
+          "pgid": 68477,
+          "signal": 9,
+          "stamp_ns": 679628553058625
+        }
+      ],
+      "invocation_id": "structural-quantified-c2-base-ROOT-20261018-v1",
+      "known_worker_and_native_reaped": true,
+      "last_native_purpose": "fresh_quantified_receiver_final",
+      "last_native_status": "accepted",
+      "mismatch_count": 0,
+      "mode": "base",
+      "native_fullEOF": true,
+      "native_peak_MiB": 12.71875,
+      "native_peak_bytes": 13336576,
+      "native_pid": 68478,
+      "native_proof_flag_observed": true,
+      "native_records": 28,
+      "observer_gate_passed": false,
+      "outer_log_capture_flag": false,
+      "outer_terminal_seconds": 71.082802208,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "resource_disposition": "RESOURCE_GATE_FAILED_CONSERVATIVE_PEAK",
+      "result_bytes": 67078386,
+      "retained_pins": {
+        "marker": {
+          "bytes": 513,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-base-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "43cb2a5fe09a3e54198a0095bacbeea04be9606a409ac514530cfef0b9e55501"
+        },
+        "observer_marker": {
+          "bytes": 324,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c2-base-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "be5a92f6d1cfcd1d69af8297a65e7a5da36bbe0f585c6d68e6875d7e5669a11a"
+        },
+        "result": {
+          "bytes": 67078386,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-base-ROOT-20261018-v1/result.json",
+          "sha256": "10c78a5d970c077c2a42c3af7d29502b0feae1102efe7501c596ef1c5b45d160"
+        },
+        "runner": {
+          "bytes": 67731,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-base-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "b41b543c2c7640548635347f328513ffa8920993b7c52a154ee75a2da7b8a6b8"
+        },
+        "terminal": {
+          "bytes": 1574,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c2-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "5e7c54a8d8047addde2296cfadfd390b04a1762f864ab4c81dad07e139d65c48"
+        },
+        "worker": {
+          "bytes": 53135,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-base-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "ffca4c05928208c227430c5f67a5bc3b9fcd9c77d77fec64f4bc3b3a992b035b"
+        }
+      },
+      "runner_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679628553007666,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "status": "native_proof_discovered",
+      "whole_group_absence_observation": null,
+      "worker_custody_seconds": 64.697745167,
+      "worker_peak_MiB": 1675.875,
+      "worker_peak_bytes": 1757282304,
+      "worker_pid": 68477
+    },
+    {
+      "bounded_proof_admissible": false,
+      "case_index": 3,
+      "check_count": 398,
+      "completed_outputs": [
+        "before_oracle",
+        "compile",
+        "compile_record_joins",
+        "inventory_record_join",
+        "model",
+        "register",
+        "search",
+        "specialize",
+        "symbolic_point_projection"
+      ],
+      "conservative_peak_MiB": 790.265625,
+      "conservative_peak_bytes": 828653568,
+      "failure_cleanup_signals": [],
+      "invocation_id": "structural-quantified-c3-symbolic-ROOT-20261018-v1",
+      "known_worker_and_native_reaped": true,
+      "last_native_purpose": "check_generated_lemma_definitions",
+      "last_native_status": "accepted",
+      "mismatch_count": 0,
+      "mode": "symbolic",
+      "native_fullEOF": true,
+      "native_peak_MiB": 12.3125,
+      "native_peak_bytes": 12910592,
+      "native_pid": 68738,
+      "native_proof_flag_observed": false,
+      "native_records": 19,
+      "observer_gate_passed": true,
+      "outer_log_capture_flag": true,
+      "outer_terminal_seconds": 46.218274417,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "resource_disposition": "RESOURCE_GATE_PASSED",
+      "result_bytes": 39374524,
+      "retained_pins": {
+        "marker": {
+          "bytes": 525,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-symbolic-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "e8223306d6e7edc5ae12e75786c76d6b9f8e10fd8f2c50647f62b24131735de4"
+        },
+        "observer_marker": {
+          "bytes": 328,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c3-symbolic-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "aab04e4a0b533cccca08a2cf86a261803cd61b7a4b8df1ad34ff591987d1c9da"
+        },
+        "result": {
+          "bytes": 39374524,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-symbolic-ROOT-20261018-v1/result.json",
+          "sha256": "f878d48de2e84101c2de4b98b4c878dd648f86d82e9274745e4db7405afc040c"
+        },
+        "runner": {
+          "bytes": 57767,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-symbolic-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "bbcc7d5e1c68783175d707e4ebcd319092df8e3e9327652501eae264e8819e2a"
+        },
+        "terminal": {
+          "bytes": 1582,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c3-symbolic-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "673b17fac3b6a509006362751de70737c76a16aebf346ebf33aa7b6ca70e12ad"
+        },
+        "worker": {
+          "bytes": 46530,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-symbolic-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "cc8b981587580cec75671c103d1283f13b304d62229f9e65aab6c1311fceaaa7"
+        }
+      },
+      "runner_errors": [],
+      "status": "unknown_search_budget",
+      "whole_group_absence_observation": true,
+      "worker_custody_seconds": 43.7774335,
+      "worker_peak_MiB": 777.953125,
+      "worker_peak_bytes": 815742976,
+      "worker_pid": 68735
+    },
+    {
+      "bounded_proof_admissible": false,
+      "case_index": 3,
+      "check_count": 401,
+      "completed_outputs": [
+        "before_oracle",
+        "compile",
+        "compile_record_joins",
+        "inventory_record_join",
+        "model",
+        "register",
+        "search",
+        "specialize"
+      ],
+      "conservative_peak_MiB": 1120.015625,
+      "conservative_peak_bytes": 1174421504,
+      "failure_cleanup_signals": [
+        {
+          "pgid": 68813,
+          "signal": 15,
+          "stamp_ns": 679773934877500
+        },
+        {
+          "pgid": 68813,
+          "signal": 9,
+          "stamp_ns": 679773934881000
+        }
+      ],
+      "invocation_id": "structural-quantified-c3-base-ROOT-20261018-v1",
+      "known_worker_and_native_reaped": true,
+      "last_native_purpose": "check_generated_lemma_definitions",
+      "last_native_status": "accepted",
+      "mismatch_count": 0,
+      "mode": "base",
+      "native_fullEOF": true,
+      "native_peak_MiB": 12.703125,
+      "native_peak_bytes": 13320192,
+      "native_pid": 68818,
+      "native_proof_flag_observed": false,
+      "native_records": 19,
+      "observer_gate_passed": false,
+      "outer_log_capture_flag": false,
+      "outer_terminal_seconds": 88.605144292,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "resource_disposition": "RESOURCE_GATE_FAILED_CONSERVATIVE_PEAK",
+      "result_bytes": 66981169,
+      "retained_pins": {
+        "marker": {
+          "bytes": 513,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-base-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "fdd224996c037467893d1e899319f84d66feb2fe22f5fa01e8118d17acbbf01e"
+        },
+        "observer_marker": {
+          "bytes": 324,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c3-base-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "21610156cefd2af06ccf6453a30cf1c167dd2691fd3d6bf4fa40439b5f8166ae"
+        },
+        "result": {
+          "bytes": 66981169,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-base-ROOT-20261018-v1/result.json",
+          "sha256": "fd5353bcf0c49052499b1a05d11bb9f950cf7f267e18842601b60957a1d2c5b2"
+        },
+        "runner": {
+          "bytes": 57855,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-base-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "bb091ad14c2aebd75fd89d6538d5a7fc26daaa7bb3ba0e3b8b94ac0c285b2fc2"
+        },
+        "terminal": {
+          "bytes": 1574,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c3-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "4a35b7ea280c02dd8dee4cfc62448f8c40ce3d767837144363a04a6b24795b79"
+        },
+        "worker": {
+          "bytes": 46423,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-base-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "f822f48fd00a0c4b2b3849f43e672942e85bb182af78ace60a2d71854ffe5a5e"
+        }
+      },
+      "runner_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679773934839916,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "status": "unknown_search_budget",
+      "whole_group_absence_observation": null,
+      "worker_custody_seconds": 84.863592875,
+      "worker_peak_MiB": 1107.3125,
+      "worker_peak_bytes": 1161101312,
+      "worker_pid": 68813
+    },
+    {
+      "bounded_proof_admissible": false,
+      "case_index": 3,
+      "check_count": 401,
+      "completed_outputs": [
+        "before_oracle",
+        "compile",
+        "compile_record_joins",
+        "inventory_record_join",
+        "model",
+        "register",
+        "search",
+        "specialize"
+      ],
+      "conservative_peak_MiB": 1388.53125,
+      "conservative_peak_bytes": 1455980544,
+      "failure_cleanup_signals": [
+        {
+          "pgid": 69087,
+          "signal": 15,
+          "stamp_ns": 679878954786416
+        },
+        {
+          "pgid": 69087,
+          "signal": 9,
+          "stamp_ns": 679878954789916
+        }
+      ],
+      "invocation_id": "structural-quantified-c3-fixed-ROOT-20261018-v1",
+      "known_worker_and_native_reaped": true,
+      "last_native_purpose": "check_generated_lemma_definitions",
+      "last_native_status": "accepted",
+      "mismatch_count": 0,
+      "mode": "fixed",
+      "native_fullEOF": true,
+      "native_peak_MiB": 12.625,
+      "native_peak_bytes": 13238272,
+      "native_pid": 69088,
+      "native_proof_flag_observed": false,
+      "native_records": 19,
+      "observer_gate_passed": false,
+      "outer_log_capture_flag": false,
+      "outer_terminal_seconds": 100.529152833,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "resource_disposition": "RESOURCE_GATE_FAILED_CONSERVATIVE_PEAK",
+      "result_bytes": 78204773,
+      "retained_pins": {
+        "marker": {
+          "bytes": 516,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "a91add73c7df2c7aa291b0e343e0ff3385ecb5601341e0899b06bf482517a146"
+        },
+        "observer_marker": {
+          "bytes": 325,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c3-fixed-ROOT-20261018-v1-terminal-observation/CONSUMED.json",
+          "sha256": "57b4163d7b0ade0bd2ca7895ec92c517fbd5b61f5c7034f2079587d8ac8d7c66"
+        },
+        "result": {
+          "bytes": 78204773,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+          "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+        },
+        "runner": {
+          "bytes": 57920,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "ee72a37a0a0886a5fff222c1de0d92205edd20e56995713fa95a15113b709608"
+        },
+        "terminal": {
+          "bytes": 1579,
+          "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c3-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "214c70051c0b96637738bda3bb27d1123b91ab4fa4f84e5af98fb34e92cf8279"
+        },
+        "worker": {
+          "bytes": 46471,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "e19840020dcfdacdf02f8fd9c36c37b50c861b749a596c8219f16b8d79ba9c34"
+        }
+      },
+      "runner_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679878954743875,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "status": "unknown_search_budget",
+      "whole_group_absence_observation": null,
+      "worker_custody_seconds": 95.888034792,
+      "worker_peak_MiB": 1375.90625,
+      "worker_peak_bytes": 1442742272,
+      "worker_pid": 69087
+    }
+  ],
+  "all_actual_resource_gates_passed": false,
+  "all_declared_actuals_preserved": true,
+  "audit": {
+    "bytes": 909811,
+    "path": "/private/tmp/gcts-structural-resource-peer-20261018/audit-v2.json",
+    "sha256": "5f72a1cf6e47f9da417fc91973f82d273a739bf34a6f15a65a855af73f25b614"
+  },
+  "audit_script": {
+    "bytes": 21397,
+    "path": "/private/tmp/gcts-structural-resource-peer-20261018/audit_retained_resources_v2.py",
+    "sha256": "bed10905abdb926fcc1e80324a23be8e00cd6c3aea34f17eb701c7402bbb71b6"
+  },
+  "authorized_index": {
+    "bytes": 14951,
+    "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/authorized-plan-index-v1.json",
+    "sha256": "84484dc8662c47215922eb12e17f061fc96094d3da76c9478d118164a3823c52"
+  },
+  "authorship_disclosure": "Reviewer authored the current generic driver61cdf, older unchanged quantified compiler/model adapters, parent renderer and historical Q Sources. Reviewer separately reviewed but did not author current Root cold/closure. This audit independently reads Root actual resource/custody receipts and raw saved data, not own Source semantics or native mathematics. Exact separate current Source peers remain bound by the nine Root grants.",
+  "authorship_overlap": true,
+  "check_count": 4159,
+  "codec_runs": 0,
+  "cold_source": {
+    "bytes": 25637,
+    "path": "/private/tmp/gcts-structural-cold-root-source-20261018/structural_cold_v1.py",
+    "sha256": "587fa059eb0a3c3f8744822b337d252d364123634397e6c4d456dbfc90267f28"
+  },
+  "compiler_runs": 0,
+  "current_nine_review_pins": [
+    {
+      "bytes": 9289,
+      "path": "/private/tmp/gcts-structural-independent-peer-20261018/typed-benchmark-Source-review-v1.json",
+      "sha256": "42e961329d7ec09252323e06658dc9dfccb663c740801be2d961d1660e443dcf"
+    },
+    {
+      "bytes": 2540,
+      "path": "/private/tmp/gcts-structural-independent-peer-20261018/typed-Root-cohort-declaration-review-v2.json",
+      "sha256": "fb03f584ddade9bb5a1bc6af96ad67beb7197873cd0b9eb7be55442037f936ad"
+    },
+    {
+      "bytes": 9753,
+      "path": "/private/tmp/gcts-structural-independent-peer-20261018/typed-generic-driver-Source-review-v1.json",
+      "sha256": "90f7f7dfdcd0e9c559c744cea33819406aa8fc777fb820b03d6259508627613f"
+    },
+    {
+      "bytes": 12327,
+      "path": "/private/tmp/gcts-structural-cold-integration-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "83ae0e882d6a3d1e210b692ebdaedae3c772177a36a37243faa824589a5509a4"
+    },
+    {
+      "bytes": 38507,
+      "path": "/private/tmp/gcts-structural-prospective-plan-peer-20261018/typed-nine-prospective-plan-review-v1.json",
+      "sha256": "036ece2de9fe39d89a2d0534c862c4487c3928466badb015b3464fccc7f8cce5"
+    },
+    {
+      "bytes": 8367,
+      "path": "/private/tmp/gcts-symbolic-control-independent-source-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "d6374c20662bcdf6e8f335c7a45532406f13309b48ccf10bd33f33a031bce51b"
+    },
+    {
+      "bytes": 8582,
+      "path": "/private/tmp/gcts-quantified-independent-peer-20261018/typed-adapter-Source-review-v2.json",
+      "sha256": "3d8b4575e3a40c4bfe4828d9247310695859d481da9613c4193e3bf16ef7afe7"
+    },
+    {
+      "bytes": 8343,
+      "path": "/private/tmp/gcts-semantic-component-peer-20261018/typed-transport-Source-review-v1.json",
+      "sha256": "ab21a54ca4d176db7997c4452f13d7d94d6e15dd275a8c98875731acde577229"
+    },
+    {
+      "bytes": 10916,
+      "path": "/private/tmp/gcts-symbolic-driver-integration-peer-20261018/typed-composition-Source-review-v1.json",
+      "sha256": "fa77e0f7d882049812fd930c78bdf008314bb1b2e6862ed0ba7ee10821383365"
+    }
+  ],
+  "custody_review_passed": true,
+  "declaration": {
+    "bytes": 21453,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/experiment-declaration-v2.json",
+    "sha256": "19fab9173cf52ebd9e0d5517fd4dbbb44ed9d72f3737676d9701fd6a4c8bde5d"
+  },
+  "expected_outcome_filter": false,
+  "final_grant_peer": {
+    "bytes": 19175,
+    "path": "/private/tmp/gcts-structural-final-grant-peer-20261018/typed-final-grant-delta-review-v1.json",
+    "sha256": "089dbb0d73f002ca1d17f6c12bf2956cc3f1c40411b2b112d95cf72f302dc4f8"
+  },
+  "findings": [
+    {
+      "finding": "All nine exact true max-one grants, nine current scoped Source/declaration/prospective reviews, final grant peer089dbb0d and authorized index84484dc8 join their unique consumption markers, worker/runner plans, complete raw results and terminal records. No consumed arm was rerun or omitted.",
+      "id": "R1",
+      "status": "PASS"
+    },
+    {
+      "finding": "All current full selected receiver preimages,21owned/original Source aliases, seven role pins, current cold/driver/closure/declaration, fixed Python/native/Z3 inputs, actual import-origin records and per-arm code.bin raw hashes join literally. Case-ID and qualification records are retained without supplied proof routes.",
+      "id": "R2",
+      "status": "PASS"
+    },
+    {
+      "finding": "The observed native record counts are38 per commutation arm,28 per diagonal arm and19 per curried arm:255 completed protocol records total. Every full request canonical SHA and sequential stage/input/output/purpose joins, plus compile/inventory/final receipts, were checked without executing the native checker or binary codec. Completed protocol delivery is separate from a logical native budget UNKNOWN.",
+      "id": "R3",
+      "status": "PASS"
+    },
+    {
+      "finding": "All nine native copies agree on complete stdoutEOF, zero pending bytes, stderr custody, constructor completion, exit0 and exact wait4 reaping. All nine workers exited0 and were exactly reaped. Eighteen known scientific PIDs are distinct; the retained windows are sequential. Historical whole-group absence is independently recorded only for the four passing resource gates.",
+      "id": "R4",
+      "status": "PASS"
+    },
+    {
+      "finding": "All five failed observer gates identify conservative Python+CPP high-water sum above1GiB, not walltime, output truncation or proof rejection. They are diagonal fixed/symbolic/base and curried base/fixed. Their sums are1688.65625,1351.078125,1688.59375,1120.015625 and1388.53125MiB. All remain outside the profile.",
+      "id": "R5",
+      "status": "FAILED_ACTUAL_GATES_CORRECTLY_RETAINED"
+    },
+    {
+      "finding": "For the five failed gates, runner.owned_group_absent is null because the resource exception preceded that probe. Failure-only SIGTERM/SIGKILL target the original owned group; known worker/native reaps are available. Neither signals nor later assumptions fill the missing whole-group observation. No retrospective live process probe was used.",
+      "id": "R6",
+      "status": "LIMITED_TELEMETRY_EXPLICIT"
+    },
+    {
+      "finding": "Every original absolute180scientific/successserialization and210closure epoch agrees across marker/worker/runner/native/driver receipts. All recorded intake/scientific stages, scientific stop, native close, full atomic output, cold custody, worker terminal and external terminal endpoints are timely. Timing success does not override memory failure.",
+      "id": "R7",
+      "status": "PASS"
+    },
+    {
+      "finding": "Four resource gates pass with UNKNOWN outcomes: all three commutation runs stop at native inventory admission, and curried symbolic stops at search budget. The three saved diagonal native-accepted proofs have timely diagnostic whole-point/native consistency records, but all three fail the memory profile; zero bounded proofs are admissible.",
+      "id": "R8",
+      "status": "PASS"
+    },
+    {
+      "finding": "All worker and native peak components are present in the retained wait4 fields. Their exact sums are checked separately; worker-only maxima are never mislabeled sums. Root admission43980 leaves the optional Python display field null; the audit supplies its available literal source values without changing that summary or any actual.",
+      "id": "R9",
+      "status": "PASS"
+    },
+    {
+      "finding": "Whole atomic128MiB result descriptors, raw output sizes/EOF/hashes, current native final files and source artifacts are retained. All results, including failed profiles and UNKNOWNs, remain diagnostic evidence; no proof/result salvage, budget increase or resource-success reinterpretation occurred.",
+      "id": "R10",
+      "status": "PASS"
+    }
+  ],
+  "kernel_runs": 0,
+  "limitations": [
+    "This review passes the accuracy/custody audit, not all actual gates: five of nine resource windows failed. It admits no mathematical proof or scientific result itself.",
+    "Conservative memory is the sum of separately recorded Darwin worker/native ru_maxrss high-water marks, which may double count and is not an instantaneous live aggregate allocation cap. External instrument memory is excluded; all its wall overhead remains charged.",
+    "Whole process-group absence remains unavailable for the five failed gates. Only the two known scientific process reaps are fully recorded there; no no-orphan whole-group certificate is invented.",
+    "Native input.bin/output.bin are overwritten per request. Only the surviving last pair can be independently raw-hash joined; historical request/input/output hashes are retained but no missing binary buffers or complete microstep trace were reconstructed.",
+    "No engine/project/native/logic/compiler/model/search/solver/kernel/codec/renderer was imported or evaluated. Only stdlib retained JSON/raw hashing/statistics and metadata joins were used. No independent proof validity, hint essentiality, model regeneration or source-semantic self-review is claimed.",
+    "A reporting preflight incorrectly assumed the historical final_grant_review_passed key. It stopped before actual-directory inspection; preserved preflight metadata and V2 correct only current peer field names. No scientific/actual rerun or frozen-input mutation occurred.",
+    "Pinned Python/recursive bundled standard library/OS/loader remain trusted scope. Source-byte/callable custody and raw receipt consistency do not prove arbitrary runtime integrity.",
+    "This single Latin-balanced structural cohort supplies no general speed, RL or dedicated-prover advantage claim. Native diagnostic positives outside the profile and incomplete admission/search remain distinct from admitted bounded target proofs."
+  ],
+  "logic_runs": 0,
+  "mathematical_proof_accepted": false,
+  "mismatch_count": 0,
+  "model_runs": 0,
+  "native_runs": 0,
+  "observer_source": {
+    "bytes": 4280,
+    "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/observe_symbolic_runner_v1.py",
+    "sha256": "720cc07b6f2766bb080d40c138c255d915f2806c2b4af83b21d82aaa7df702ae"
+  },
+  "optional_worker_display_omissions": [
+    {
+      "Root_optional_display": "python_peak_MiB:null",
+      "available_worker_peak_MiB": 260.40625,
+      "available_worker_peak_bytes": 273055744,
+      "invocation_id": "structural-quantified-c1-base-ROOT-20261018-v1",
+      "retained_source": "runner-receipt.json/python_wait4_usage/ru_maxrss",
+      "scope": "Optional Root display omission only. Retained worker telemetry is present. It is neither the native highwater nor their conservative sum."
+    },
+    {
+      "Root_optional_display": "python_peak_MiB:null",
+      "available_worker_peak_MiB": 256.25,
+      "available_worker_peak_bytes": 268697600,
+      "invocation_id": "structural-quantified-c1-fixed-ROOT-20261018-v1",
+      "retained_source": "runner-receipt.json/python_wait4_usage/ru_maxrss",
+      "scope": "Optional Root display omission only. Retained worker telemetry is present. It is neither the native highwater nor their conservative sum."
+    },
+    {
+      "Root_optional_display": "python_peak_MiB:null",
+      "available_worker_peak_MiB": 255.015625,
+      "available_worker_peak_bytes": 267403264,
+      "invocation_id": "structural-quantified-c1-symbolic-ROOT-20261018-v1",
+      "retained_source": "runner-receipt.json/python_wait4_usage/ru_maxrss",
+      "scope": "Optional Root display omission only. Retained worker telemetry is present. It is neither the native highwater nor their conservative sum."
+    },
+    {
+      "Root_optional_display": "python_peak_MiB:null",
+      "available_worker_peak_MiB": 1676.09375,
+      "available_worker_peak_bytes": 1757511680,
+      "invocation_id": "structural-quantified-c2-fixed-ROOT-20261018-v1",
+      "retained_source": "runner-receipt.json/python_wait4_usage/ru_maxrss",
+      "scope": "Optional Root display omission only. Retained worker telemetry is present. It is neither the native highwater nor their conservative sum."
+    },
+    {
+      "Root_optional_display": "python_peak_MiB:null",
+      "available_worker_peak_MiB": 1338.640625,
+      "available_worker_peak_bytes": 1403666432,
+      "invocation_id": "structural-quantified-c2-symbolic-ROOT-20261018-v1",
+      "retained_source": "runner-receipt.json/python_wait4_usage/ru_maxrss",
+      "scope": "Optional Root display omission only. Retained worker telemetry is present. It is neither the native highwater nor their conservative sum."
+    },
+    {
+      "Root_optional_display": "python_peak_MiB:null",
+      "available_worker_peak_MiB": 1675.875,
+      "available_worker_peak_bytes": 1757282304,
+      "invocation_id": "structural-quantified-c2-base-ROOT-20261018-v1",
+      "retained_source": "runner-receipt.json/python_wait4_usage/ru_maxrss",
+      "scope": "Optional Root display omission only. Retained worker telemetry is present. It is neither the native highwater nor their conservative sum."
+    },
+    {
+      "Root_optional_display": "python_peak_MiB:null",
+      "available_worker_peak_MiB": 777.953125,
+      "available_worker_peak_bytes": 815742976,
+      "invocation_id": "structural-quantified-c3-symbolic-ROOT-20261018-v1",
+      "retained_source": "runner-receipt.json/python_wait4_usage/ru_maxrss",
+      "scope": "Optional Root display omission only. Retained worker telemetry is present. It is neither the native highwater nor their conservative sum."
+    },
+    {
+      "Root_optional_display": "python_peak_MiB:null",
+      "available_worker_peak_MiB": 1107.3125,
+      "available_worker_peak_bytes": 1161101312,
+      "invocation_id": "structural-quantified-c3-base-ROOT-20261018-v1",
+      "retained_source": "runner-receipt.json/python_wait4_usage/ru_maxrss",
+      "scope": "Optional Root display omission only. Retained worker telemetry is present. It is neither the native highwater nor their conservative sum."
+    },
+    {
+      "Root_optional_display": "python_peak_MiB:null",
+      "available_worker_peak_MiB": 1375.90625,
+      "available_worker_peak_bytes": 1442742272,
+      "invocation_id": "structural-quantified-c3-fixed-ROOT-20261018-v1",
+      "retained_source": "runner-receipt.json/python_wait4_usage/ru_maxrss",
+      "scope": "Optional Root display omission only. Retained worker telemetry is present. It is neither the native highwater nor their conservative sum."
+    }
+  ],
+  "preflight_observation": {
+    "bytes": 630,
+    "path": "/private/tmp/gcts-structural-resource-peer-20261018/audit-preflight-v1.json",
+    "sha256": "c864443643bde7dad96db003eca819ba5e129b3abae3c9555ac40270526b3ae2"
+  },
+  "project_imports": 0,
+  "renderer_runs": 0,
+  "resource_review_passed": true,
+  "retained_data_only": true,
+  "retained_data_review_passed": true,
+  "reviewer_identity": "/root/conventional_library",
+  "reviewer_issued_authorization": false,
+  "runner_source": {
+    "bytes": 18080,
+    "path": "/private/tmp/gcts-symbolic-comparison-source-20261018/symbolic_once_runner_v1.py",
+    "sha256": "8ecbee2e55e5c64d05c08cfcddc675544939e42c70596ca7e453782548b2e7cb"
+  },
+  "runtime_closure": {
+    "bytes": 66775,
+    "path": "/private/tmp/gcts-structural-cold-root-source-20261018/runtime-closure-v1.json",
+    "sha256": "32256d81327b8e5d8bb11a7d4091a8a9818169a4d4ca4d987b3593552f811c6d"
+  },
+  "schema": "structural-quantified-nine-retained-resource-custody-typed-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "All nine frozen structural actuals: resource/custody classification, not mathematical replay",
+  "search_runs": 0,
+  "solver_runs": 0,
+  "source_only": false,
+  "source_review_performed": false,
+  "totals": {
+    "actuals": 9,
+    "bounded_proofs_admissible": 0,
+    "completed_native_protocol_records": 255,
+    "optional_Root_worker_display_omissions": 9,
+    "recorded_known_worker_and_native_reaps": 9,
+    "recorded_whole_group_absent": 4,
+    "resource_gate_failed": 5,
+    "resource_gate_passed": 4,
+    "saved_native_proofs_diagnostic_only": 3,
+    "whole_group_absence_not_recorded": 5,
+    "within_profile_unknowns": 4
+  }
+}

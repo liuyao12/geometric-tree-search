@@ -1,0 +1,4270 @@
+{
+  "Root_admission": {
+    "bytes": 107412,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "43980d1d838c877c02ca23dce7162a6ad29dec9d92057b2862377a6e118e937a"
+  },
+  "actuals": [
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": true,
+      "ROOT_retained_data_consistent": true,
+      "attempt_unit": "base_point_placement",
+      "basis_count": 24,
+      "case_index": 1,
+      "cold_worker_seconds": 32.866183167,
+      "compile_status": "complete",
+      "diagnostic_native_proof": false,
+      "fresh_native_proof": false,
+      "interface_count": 20,
+      "invocation_id": "structural-quantified-c1-base-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": null,
+      "mode": "base",
+      "native_peak_MiB": 12.875,
+      "native_queries": 38,
+      "observed_conservative_peak_MiB": 273.28125,
+      "outcome_class": "WITHIN_PROFILE_UNKNOWN",
+      "outer_terminal_seconds": 32.918396292,
+      "owned_group_absent_in_runner": true,
+      "proof": null,
+      "python_peak_MiB": null,
+      "quantified_reasoning_success": false,
+      "receiver_id": "quantified-universal-commutation-001",
+      "register_native_result": {
+        "micro_fnv64": "6316532567429423211",
+        "micro_steps": 819443851,
+        "peak_native_memory_bytes": 13500416,
+        "physical_head": 74896,
+        "physical_steps": 20151639384454,
+        "seconds": 6.40104,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "register_status": "unknown_native_inventory",
+      "repetition": 1,
+      "resource_errors": [],
+      "result": {
+        "bytes": 202478,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/result.json",
+        "sha256": "fd2084ca02bb192af97147c81ac022fb90169f91fc40dd857f3cf54ff3dee2f6"
+      },
+      "runner_receipt": {
+        "bytes": 77650,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "279af809f86ab803a5e06287220b7d40312aeb0d7f75e4edbcc48c741717a9c4"
+      },
+      "search_seconds": null,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 679076.315820291,
+          "stage": "before_oracle",
+          "started_monotonic": 679076.315815166
+        },
+        {
+          "returned_monotonic": 679100.473112958,
+          "stage": "compile",
+          "started_monotonic": 679076.473129666
+        },
+        {
+          "returned_monotonic": 679100.699858083,
+          "stage": "compile_record_joins",
+          "started_monotonic": 679100.483763666
+        },
+        {
+          "returned_monotonic": 679100.712076958,
+          "stage": "specialize",
+          "started_monotonic": 679100.710327666
+        },
+        {
+          "returned_monotonic": 679107.598137416,
+          "stage": "register",
+          "started_monotonic": 679100.72326425
+        },
+        {
+          "returned_monotonic": 679107.6145745,
+          "stage": "inventory_record_join",
+          "started_monotonic": 679107.608887416
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "symbolic_projection": null,
+      "terminal": {
+        "bytes": 1573,
+        "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c1-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "d335df1c3b8cacd5a4208d6ea8ce0b8908392e5920a781f306c7f9a5036e6e5c"
+      },
+      "whole_result_bytes": 202478,
+      "worker_receipt": {
+        "bytes": 59777,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "e7cbe6bd5e3290075d0dc7d7b72bec3f7ba51fa3a0b3e36ec2ca3165deabcc16"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": true,
+      "ROOT_retained_data_consistent": true,
+      "attempt_unit": "base_point_placement",
+      "basis_count": 24,
+      "case_index": 1,
+      "cold_worker_seconds": 33.13338925,
+      "compile_status": "complete",
+      "diagnostic_native_proof": false,
+      "fresh_native_proof": false,
+      "interface_count": 20,
+      "invocation_id": "structural-quantified-c1-fixed-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": null,
+      "mode": "fixed",
+      "native_peak_MiB": 12.59375,
+      "native_queries": 38,
+      "observed_conservative_peak_MiB": 268.84375,
+      "outcome_class": "WITHIN_PROFILE_UNKNOWN",
+      "outer_terminal_seconds": 33.189721417,
+      "owned_group_absent_in_runner": true,
+      "proof": null,
+      "python_peak_MiB": null,
+      "quantified_reasoning_success": false,
+      "receiver_id": "quantified-universal-commutation-001",
+      "register_native_result": {
+        "micro_fnv64": "6316532567429423211",
+        "micro_steps": 819443851,
+        "peak_native_memory_bytes": 13205504,
+        "physical_head": 74896,
+        "physical_steps": 20151639384454,
+        "seconds": 6.36006,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "register_status": "unknown_native_inventory",
+      "repetition": 1,
+      "resource_errors": [],
+      "result": {
+        "bytes": 202509,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "86db7f844c6c0af3383c822334792da4406f78e8367ef88b81ce10e58ae1b1d1"
+      },
+      "runner_receipt": {
+        "bytes": 77661,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-fixed-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "118e6d728f25691cc468ab6d63d0ec3c8149771f1e4653c665ed88e61f2a739d"
+      },
+      "search_seconds": null,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 679316.764613208,
+          "stage": "before_oracle",
+          "started_monotonic": 679316.764610708
+        },
+        {
+          "returned_monotonic": 679341.552727916,
+          "stage": "compile",
+          "started_monotonic": 679316.816361333
+        },
+        {
+          "returned_monotonic": 679341.777598916,
+          "stage": "compile_record_joins",
+          "started_monotonic": 679341.563352791
+        },
+        {
+          "returned_monotonic": 679341.792037208,
+          "stage": "specialize",
+          "started_monotonic": 679341.79032225
+        },
+        {
+          "returned_monotonic": 679348.772509375,
+          "stage": "register",
+          "started_monotonic": 679341.803998208
+        },
+        {
+          "returned_monotonic": 679348.788764333,
+          "stage": "inventory_record_join",
+          "started_monotonic": 679348.783052166
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "symbolic_projection": null,
+      "terminal": {
+        "bytes": 1576,
+        "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c1-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "767c4e29b2a9377303ede2228c903b79247af7b29f41b2e5c2e8113898d5356b"
+      },
+      "whole_result_bytes": 202509,
+      "worker_receipt": {
+        "bytes": 59787,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-fixed-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "7c74f71afdae06bb67f256ca10284dfb1a3727725a2eddd84ec4d37d49d792df"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": true,
+      "ROOT_retained_data_consistent": true,
+      "attempt_unit": "proof_row_extension",
+      "basis_count": 24,
+      "case_index": 1,
+      "cold_worker_seconds": 34.982100917,
+      "compile_status": "complete",
+      "diagnostic_native_proof": false,
+      "fresh_native_proof": false,
+      "interface_count": 20,
+      "invocation_id": "structural-quantified-c1-symbolic-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": null,
+      "mode": "symbolic",
+      "native_peak_MiB": 12.71875,
+      "native_queries": 38,
+      "observed_conservative_peak_MiB": 267.734375,
+      "outcome_class": "WITHIN_PROFILE_UNKNOWN",
+      "outer_terminal_seconds": 35.010206458,
+      "owned_group_absent_in_runner": true,
+      "proof": null,
+      "python_peak_MiB": null,
+      "quantified_reasoning_success": false,
+      "receiver_id": "quantified-universal-commutation-001",
+      "register_native_result": {
+        "micro_fnv64": "6316532567429423211",
+        "micro_steps": 819443851,
+        "peak_native_memory_bytes": 13336576,
+        "physical_head": 74896,
+        "physical_steps": 20151639384454,
+        "seconds": 6.62715,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "register_status": "unknown_native_inventory",
+      "repetition": 1,
+      "resource_errors": [],
+      "result": {
+        "bytes": 202588,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "30be23beb9f83cf31ebd1a2f50fd60f9b148e615609f5f7f6fef6323c73bcdbb"
+      },
+      "runner_receipt": {
+        "bytes": 77761,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-symbolic-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "131cfcfb33ae11b07539ee5a4665fa620fc8120640e0f5f5f1bfd6cb6d99f117"
+      },
+      "search_seconds": null,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 679354.346697541,
+          "stage": "before_oracle",
+          "started_monotonic": 679354.346693625
+        },
+        {
+          "returned_monotonic": 679380.746412333,
+          "stage": "compile",
+          "started_monotonic": 679354.413758208
+        },
+        {
+          "returned_monotonic": 679381.050094875,
+          "stage": "compile_record_joins",
+          "started_monotonic": 679380.768219708
+        },
+        {
+          "returned_monotonic": 679381.065239541,
+          "stage": "specialize",
+          "started_monotonic": 679381.062273916
+        },
+        {
+          "returned_monotonic": 679388.171043291,
+          "stage": "register",
+          "started_monotonic": 679381.0782285
+        },
+        {
+          "returned_monotonic": 679388.193636291,
+          "stage": "inventory_record_join",
+          "started_monotonic": 679388.186558125
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "symbolic_projection": null,
+      "terminal": {
+        "bytes": 1585,
+        "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c1-symbolic-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "d1513fae3803d782b0802e15a8483f90eb4f87a52bce172a366756c2fd78b324"
+      },
+      "whole_result_bytes": 202588,
+      "worker_receipt": {
+        "bytes": 59864,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-symbolic-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "f3f679e47924c0fde5cd7090714733cb474a1ff3909ba5bcb6a4e71273a11a0d"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": false,
+      "ROOT_retained_data_consistent": true,
+      "attempt_unit": "base_point_placement",
+      "basis_count": 17,
+      "case_index": 2,
+      "changed_hint_order": false,
+      "cold_worker_seconds": 69.290356875,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "d636005b281e64b0728a590e2cd09a043b777a97106976526daa006d558fb61e",
+      "diagnostic_native_proof": true,
+      "essential_family_calls": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "essential_input_indices": [
+            0,
+            1,
+            2
+          ],
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "inputs": [
+            8,
+            3,
+            0
+          ],
+          "level": 1,
+          "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+              "row": 10
+            }
+          ],
+          "primitive_use": 2,
+          "root_row": 10
+        }
+      ],
+      "essential_quantifier_occurrences": [
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 3
+          },
+          "root_primitive": true,
+          "row": 3,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 8
+          },
+          "root_primitive": true,
+          "row": 8,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 10,
+            "variable": "x"
+          },
+          "references": {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          },
+          "root_primitive": true,
+          "row": 11,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": [
+            "pred",
+            "R",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "zero_input_implication_licence": false
+        }
+      ],
+      "essential_root": {
+        "all_recursive_primitive_commands": 13,
+        "all_recursive_primitive_rule_counts": {
+          "axiom": 4,
+          "generalize": 1,
+          "instantiate": 5,
+          "mp": 3
+        },
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          10
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 3
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 8
+          },
+          {
+            "all_declared_references": [
+              8,
+              3,
+              0
+            ],
+            "references": [
+              8,
+              3,
+              0
+            ],
+            "row": 10
+          },
+          {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          }
+        ],
+        "essential_recursive_primitive_commands": 6,
+        "essential_recursive_primitive_rule_counts": {
+          "axiom": 1,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 2
+        },
+        "essential_rows": [
+          0,
+          3,
+          8,
+          10,
+          11
+        ]
+      },
+      "fresh_native_proof": false,
+      "interface_count": 12,
+      "inventory_semantics_sha256": "37763f792169406f9d5bdff018ea08c2fd50e2853e5242a20f24d47cd822cf0a",
+      "invocation_id": "structural-quantified-c2-fixed-ROOT-20261018-v1",
+      "matched_hint_consumption": true,
+      "metrics": {
+        "anchors_omitted": 0,
+        "attempts": 61,
+        "backtracks": 1,
+        "branch": 22,
+        "dead": 1,
+        "forced": 38,
+        "hint_completed": 6,
+        "hint_eligible": 16,
+        "hint_invalid": 2,
+        "hint_waiting": 28,
+        "hints_started": 8,
+        "items": 127,
+        "nodes": 62,
+        "proposal_seconds": 0.5770941257942468,
+        "row_pool": 76,
+        "row_quota_stops": 6,
+        "sample_pair_tests": 126,
+        "sample_validation_checks": 51,
+        "validation_checks": 290
+      },
+      "mode": "fixed",
+      "model_arity": 3,
+      "model_placements": 17494,
+      "model_sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5",
+      "native_peak_MiB": 12.5625,
+      "native_queries": 28,
+      "observed_conservative_peak_MiB": 1688.65625,
+      "outcome_class": "OUTSIDE_MEMORY_PROFILE_DIAGNOSTIC_PROOF",
+      "outer_terminal_seconds": 72.41005625,
+      "owned_group_absent_in_runner": null,
+      "proof": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "y"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "y"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "y",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "fresh0",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "y"
+                  ],
+                  [
+                    "var",
+                    "fresh0"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "y"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            "y",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            0
+          ],
+          "name": "lemma8e174432f84a3b2fe3959b98cbe328df4fe492c4e678a5a3c94b60a358548ccf",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "pred",
+            "R",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            3,
+            0
+          ],
+          "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 10,
+          "variable": "x"
+        }
+      ],
+      "python_peak_MiB": null,
+      "qualifying_hint_links": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 6,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            2,
+            11,
+            9
+          ],
+          "level": 1,
+          "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              2,
+              11,
+              9
+            ],
+            [
+              10,
+              2,
+              11,
+              10
+            ]
+          ],
+          "path_depth": 50,
+          "preferred_order": [
+            [
+              10,
+              2,
+              11,
+              9
+            ],
+            [
+              10,
+              2,
+              11,
+              10
+            ]
+          ],
+          "primitive_use": 2,
+          "row": 10,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 6,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "level": 1,
+          "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              3,
+              11,
+              4
+            ],
+            [
+              10,
+              3,
+              11,
+              10
+            ]
+          ],
+          "path_depth": 53,
+          "preferred_order": [
+            [
+              10,
+              3,
+              11,
+              4
+            ],
+            [
+              10,
+              3,
+              11,
+              10
+            ]
+          ],
+          "primitive_use": 2,
+          "row": 10,
+          "selection_kind": "branch"
+        },
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "changed_original_order": false,
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "exact_ordered_input_sources": true,
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "full_hint_members_on_winning_path": true,
+          "hint_id": 6,
+          "hint_kind": "lemma",
+          "key": [
+            10,
+            4,
+            11,
+            1
+          ],
+          "level": 1,
+          "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+          "nonidentity": true,
+          "original_order": [
+            [
+              10,
+              4,
+              11,
+              1
+            ],
+            [
+              10,
+              4,
+              11,
+              6
+            ],
+            [
+              10,
+              4,
+              11,
+              7
+            ],
+            [
+              10,
+              4,
+              11,
+              8
+            ],
+            [
+              10,
+              4,
+              11,
+              10
+            ]
+          ],
+          "path_depth": 54,
+          "preferred_order": [
+            [
+              10,
+              4,
+              11,
+              1
+            ],
+            [
+              10,
+              4,
+              11,
+              6
+            ],
+            [
+              10,
+              4,
+              11,
+              7
+            ],
+            [
+              10,
+              4,
+              11,
+              8
+            ],
+            [
+              10,
+              4,
+              11,
+              10
+            ]
+          ],
+          "primitive_use": 2,
+          "row": 10,
+          "selection_kind": "branch"
+        }
+      ],
+      "quantified_reasoning_success": true,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "register_native_result": {
+        "micro_fnv64": "9975705661278301643",
+        "micro_steps": 2621302926,
+        "peak_native_memory_bytes": 13172736,
+        "physical_head": 1456,
+        "physical_steps": 61640632229488,
+        "seconds": 20.6703,
+        "start": 88986,
+        "state": 0,
+        "status": "accepted"
+      },
+      "register_status": "native_accepted",
+      "repetition": 1,
+      "resource_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679472518204333,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "result": {
+        "bytes": 67259550,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "984232e67f73da3ae54e9c4743bf5a76bca9643bc77b2fe5bd1ddb4ad6951dca"
+      },
+      "runner_receipt": {
+        "bytes": 67761,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-fixed-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "bb016487fea3372073e94b29fb984794773d10ea0dcff0b8f266256f3ed8f854"
+      },
+      "search_seconds": 2.4813810830237344,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 679401.424656708,
+          "stage": "before_oracle",
+          "started_monotonic": 679401.42465125
+        },
+        {
+          "returned_monotonic": 679419.446088791,
+          "stage": "compile",
+          "started_monotonic": 679401.502442208
+        },
+        {
+          "returned_monotonic": 679419.614641791,
+          "stage": "compile_record_joins",
+          "started_monotonic": 679419.456651458
+        },
+        {
+          "returned_monotonic": 679419.627136458,
+          "stage": "specialize",
+          "started_monotonic": 679419.62611575
+        },
+        {
+          "returned_monotonic": 679440.606293083,
+          "stage": "register",
+          "started_monotonic": 679419.643958208
+        },
+        {
+          "returned_monotonic": 679440.623626708,
+          "stage": "inventory_record_join",
+          "started_monotonic": 679440.617699333
+        },
+        {
+          "returned_monotonic": 679442.869078625,
+          "stage": "model",
+          "started_monotonic": 679440.635052416
+        },
+        {
+          "returned_monotonic": 679446.186260916,
+          "stage": "search",
+          "started_monotonic": 679443.703469291
+        },
+        {
+          "returned_monotonic": 679454.3190755,
+          "stage": "final_native",
+          "started_monotonic": 679447.901132166
+        },
+        {
+          "returned_monotonic": 679454.332233791,
+          "stage": "essential_ancestry",
+          "started_monotonic": 679454.331489708
+        },
+        {
+          "returned_monotonic": 679454.353860958,
+          "stage": "winning_hint_links",
+          "started_monotonic": 679454.344295083
+        }
+      ],
+      "status": "native_proof_discovered",
+      "symbolic_projection": null,
+      "terminal": {
+        "bytes": 1576,
+        "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c2-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "8707539f06d942047754681aad3284e2019cd7befd13d72aac1ee52d50d22bf3"
+      },
+      "whole_region": {
+        "assigned_mark_points": 3020,
+        "completed_ns": 679468351934083,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "abed0a929ed97970293527145fef960e3a2c724e3ef92174e215ecf7b8609ecc"
+      },
+      "whole_result_bytes": 67259550,
+      "worker_receipt": {
+        "bytes": 53157,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-fixed-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "09ae2fcf9021956866a12cd669ceb4ffb9dd8fdb5e5c42750ee0a778e01dd955"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": false,
+      "ROOT_retained_data_consistent": true,
+      "attempt_unit": "proof_row_extension",
+      "basis_count": 17,
+      "case_index": 2,
+      "changed_hint_order": false,
+      "cold_worker_seconds": 73.7187055,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "d636005b281e64b0728a590e2cd09a043b777a97106976526daa006d558fb61e",
+      "diagnostic_native_proof": true,
+      "essential_family_calls": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "essential_input_indices": [
+            0,
+            1,
+            2
+          ],
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "inputs": [
+            1,
+            4,
+            0
+          ],
+          "level": 1,
+          "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+              "row": 5
+            }
+          ],
+          "primitive_use": 2,
+          "root_row": 5
+        }
+      ],
+      "essential_quantifier_occurrences": [
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          "root_primitive": true,
+          "row": 1,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          "root_primitive": true,
+          "row": 4,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 5,
+            "variable": "x"
+          },
+          "references": {
+            "all_declared_references": [
+              5
+            ],
+            "references": [
+              5
+            ],
+            "row": 11
+          },
+          "root_primitive": true,
+          "row": 11,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": [
+            "pred",
+            "R",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "zero_input_implication_licence": false
+        }
+      ],
+      "essential_root": {
+        "all_recursive_primitive_commands": 14,
+        "all_recursive_primitive_rule_counts": {
+          "axiom": 1,
+          "generalize": 2,
+          "instantiate": 6,
+          "mp": 5
+        },
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          5
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 1
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 4
+          },
+          {
+            "all_declared_references": [
+              1,
+              4,
+              0
+            ],
+            "references": [
+              1,
+              4,
+              0
+            ],
+            "row": 5
+          },
+          {
+            "all_declared_references": [
+              5
+            ],
+            "references": [
+              5
+            ],
+            "row": 11
+          }
+        ],
+        "essential_recursive_primitive_commands": 6,
+        "essential_recursive_primitive_rule_counts": {
+          "axiom": 1,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 2
+        },
+        "essential_rows": [
+          0,
+          1,
+          4,
+          5,
+          11
+        ]
+      },
+      "fresh_native_proof": false,
+      "interface_count": 12,
+      "inventory_semantics_sha256": "37763f792169406f9d5bdff018ea08c2fd50e2853e5242a20f24d47cd822cf0a",
+      "invocation_id": "structural-quantified-c2-symbolic-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": {
+        "backtracks": 0,
+        "block_port_tuples": 3,
+        "dead_prefixes": 0,
+        "prefix_extensions": 12,
+        "prefix_nodes": 13,
+        "primitive_guard_rejections": 820,
+        "skeleton_tests": 1288,
+        "unavailable_block_skeletons": 456
+      },
+      "mode": "symbolic",
+      "model_arity": 3,
+      "model_placements": 17494,
+      "model_sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5",
+      "native_peak_MiB": 12.4375,
+      "native_queries": 28,
+      "observed_conservative_peak_MiB": 1351.078125,
+      "outcome_class": "OUTSIDE_MEMORY_PROFILE_DIAGNOSTIC_PROOF",
+      "outer_terminal_seconds": 76.804490083,
+      "owned_group_absent_in_runner": null,
+      "proof": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            "y",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ],
+          "inputs": [
+            1,
+            0
+          ],
+          "name": "lemma8e174432f84a3b2fe3959b98cbe328df4fe492c4e678a5a3c94b60a358548ccf",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "y",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "pred",
+            "R",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            1,
+            4,
+            0
+          ],
+          "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 5,
+          "variable": "x"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "y"
+          ],
+          "universal": [
+            "all",
+            "y",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "pred",
+            "R",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "y"
+              ]
+            ]
+          ],
+          "inputs": [
+            1,
+            7,
+            0
+          ],
+          "name": "lemmab3e9f24b39723e75a275a8b2b8ac96b7055c68030ceb53454a5c1ae226c678b9",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "fresh0",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "y"
+                  ],
+                  [
+                    "var",
+                    "fresh0"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "y"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "fresh0",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "y"
+                ],
+                [
+                  "var",
+                  "fresh0"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "fresh0",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "y"
+                  ],
+                  [
+                    "var",
+                    "fresh0"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "y"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "y"
+          ],
+          "universal": [
+            "all",
+            "fresh0",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "y"
+                ],
+                [
+                  "var",
+                  "fresh0"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 5,
+          "variable": "x"
+        }
+      ],
+      "python_peak_MiB": null,
+      "qualifying_hint_links": [],
+      "quantified_reasoning_success": true,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "register_native_result": {
+        "micro_fnv64": "9975705661278301643",
+        "micro_steps": 2621302926,
+        "peak_native_memory_bytes": 13041664,
+        "physical_head": 1456,
+        "physical_steps": 61640632229488,
+        "seconds": 22.6156,
+        "start": 88986,
+        "state": 0,
+        "status": "accepted"
+      },
+      "register_status": "native_accepted",
+      "repetition": 1,
+      "resource_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679553199448833,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "result": {
+        "bytes": 62143358,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "97c8ddfe4dd59fbf83b999bdcac641b877ff9e76580ed3bed47037f1d81c5baf"
+      },
+      "runner_receipt": {
+        "bytes": 67851,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "4edb1545ea13b95777be52c6d62d5759ce5c695bc975e028be4844a3db8511a4"
+      },
+      "search_seconds": 0.2887176669901237,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 679477.600650875,
+          "stage": "before_oracle",
+          "started_monotonic": 679477.60064475
+        },
+        {
+          "returned_monotonic": 679495.41038725,
+          "stage": "compile",
+          "started_monotonic": 679477.660193458
+        },
+        {
+          "returned_monotonic": 679495.573717583,
+          "stage": "compile_record_joins",
+          "started_monotonic": 679495.422247875
+        },
+        {
+          "returned_monotonic": 679495.585858208,
+          "stage": "specialize",
+          "started_monotonic": 679495.584750333
+        },
+        {
+          "returned_monotonic": 679518.504523666,
+          "stage": "register",
+          "started_monotonic": 679495.596756041
+        },
+        {
+          "returned_monotonic": 679518.535871833,
+          "stage": "inventory_record_join",
+          "started_monotonic": 679518.526774958
+        },
+        {
+          "returned_monotonic": 679521.206908041,
+          "stage": "model",
+          "started_monotonic": 679518.551502708
+        },
+        {
+          "returned_monotonic": 679522.456582583,
+          "stage": "search",
+          "started_monotonic": 679522.167832833
+        },
+        {
+          "returned_monotonic": 679522.540535208,
+          "stage": "symbolic_point_projection",
+          "started_monotonic": 679522.470180833
+        },
+        {
+          "returned_monotonic": 679533.994493541,
+          "stage": "final_native",
+          "started_monotonic": 679524.63482275
+        },
+        {
+          "returned_monotonic": 679534.011818833,
+          "stage": "essential_ancestry",
+          "started_monotonic": 679534.011183
+        },
+        {
+          "returned_monotonic": 679534.03048975,
+          "stage": "winning_hint_links",
+          "started_monotonic": 679534.03046475
+        }
+      ],
+      "status": "native_proof_discovered",
+      "symbolic_projection": {
+        "complete_grammar_joined": true,
+        "decoded_rows": 12,
+        "region": {
+          "mark_points": 3111,
+          "points": 60
+        },
+        "root_path_restored": true,
+        "scope": "Common complete point model retained in all arms. Exact whole selected t/m region and literal row decoding; native mathematical acceptance remains separate. This is not standalone no-point-model cost or GCTS scheduler equivalence.",
+        "selected_placements": 60,
+        "status": "VERIFIED_SYMBOLIC_TO_COMMON_POINT_PROJECTION"
+      },
+      "terminal": {
+        "bytes": 1586,
+        "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c2-symbolic-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "e7dfb8f55f11e653e87296d0eeb9ec93791f569a647bae02fbf143813159f39d"
+      },
+      "whole_region": {
+        "assigned_mark_points": 3111,
+        "completed_ns": 679550156035208,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "dad609f0556330fe41808256be6bca44184a8790eca72f91502c66792276d260"
+      },
+      "whole_result_bytes": 62143358,
+      "worker_receipt": {
+        "bytes": 53229,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "0579444ffdee88c04b179047133cc46c57d8c287ae91558eaa1e1add81a8bd3e"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": false,
+      "ROOT_retained_data_consistent": true,
+      "attempt_unit": "base_point_placement",
+      "basis_count": 17,
+      "case_index": 2,
+      "changed_hint_order": false,
+      "cold_worker_seconds": 68.183385958,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "d636005b281e64b0728a590e2cd09a043b777a97106976526daa006d558fb61e",
+      "diagnostic_native_proof": true,
+      "essential_family_calls": [
+        {
+          "arguments": [
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "compound_argument_indices": [
+            0,
+            1
+          ],
+          "essential_input_indices": [
+            0,
+            1,
+            2
+          ],
+          "family": "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da",
+          "inputs": [
+            8,
+            9,
+            0
+          ],
+          "level": 1,
+          "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+          "nonidentity": true,
+          "path": [
+            {
+              "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+              "row": 10
+            }
+          ],
+          "primitive_use": 2,
+          "root_row": 10
+        }
+      ],
+      "essential_quantifier_occurrences": [
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "x",
+                [
+                  "all",
+                  "y",
+                  [
+                    "pred",
+                    "R",
+                    [
+                      [
+                        "var",
+                        "x"
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 8
+          },
+          "root_primitive": true,
+          "row": 8,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "imp",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "instantiate",
+            "term": [
+              "var",
+              "x"
+            ],
+            "universal": [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "references": {
+            "all_declared_references": [],
+            "references": [],
+            "row": 9
+          },
+          "root_primitive": true,
+          "row": 9,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": null,
+          "zero_input_implication_licence": true
+        },
+        {
+          "command": {
+            "formula": [
+              "all",
+              "x",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ],
+            "rule": "generalize",
+            "source": 10,
+            "variable": "x"
+          },
+          "references": {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          },
+          "root_primitive": true,
+          "row": 11,
+          "scope_assumptions": [],
+          "scope_path": [],
+          "source_formula": [
+            "pred",
+            "R",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "zero_input_implication_licence": false
+        }
+      ],
+      "essential_root": {
+        "all_recursive_primitive_commands": 13,
+        "all_recursive_primitive_rule_counts": {
+          "axiom": 8,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 2
+        },
+        "essential_assumption_indices": [],
+        "essential_block_rows": [
+          10
+        ],
+        "essential_ordered_references": [
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 0
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 8
+          },
+          {
+            "all_declared_references": [],
+            "references": [],
+            "row": 9
+          },
+          {
+            "all_declared_references": [
+              8,
+              9,
+              0
+            ],
+            "references": [
+              8,
+              9,
+              0
+            ],
+            "row": 10
+          },
+          {
+            "all_declared_references": [
+              10
+            ],
+            "references": [
+              10
+            ],
+            "row": 11
+          }
+        ],
+        "essential_recursive_primitive_commands": 6,
+        "essential_recursive_primitive_rule_counts": {
+          "axiom": 1,
+          "generalize": 1,
+          "instantiate": 2,
+          "mp": 2
+        },
+        "essential_rows": [
+          0,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "fresh_native_proof": false,
+      "interface_count": 12,
+      "inventory_semantics_sha256": "37763f792169406f9d5bdff018ea08c2fd50e2853e5242a20f24d47cd822cf0a",
+      "invocation_id": "structural-quantified-c2-base-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": {
+        "attempts": 60,
+        "branch": 12,
+        "forced": 48,
+        "nodes": 61
+      },
+      "mode": "base",
+      "model_arity": 3,
+      "model_placements": 17494,
+      "model_sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5",
+      "native_peak_MiB": 12.71875,
+      "native_queries": 28,
+      "observed_conservative_peak_MiB": 1688.59375,
+      "outcome_class": "OUTSIDE_MEMORY_PROFILE_DIAGNOSTIC_PROOF",
+      "outer_terminal_seconds": 71.082802208,
+      "owned_group_absent_in_runner": null,
+      "proof": [
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "name": "universal_relation",
+          "rule": "axiom"
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "x",
+              [
+                "all",
+                "y",
+                [
+                  "pred",
+                  "R",
+                  [
+                    [
+                      "var",
+                      "x"
+                    ],
+                    [
+                      "var",
+                      "y"
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "x",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "imp",
+            [
+              "all",
+              "y",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ],
+                  [
+                    "var",
+                    "y"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "instantiate",
+          "term": [
+            "var",
+            "x"
+          ],
+          "universal": [
+            "all",
+            "y",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "y"
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "formula": [
+            "pred",
+            "R",
+            [
+              [
+                "var",
+                "x"
+              ],
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ],
+          "inputs": [
+            8,
+            9,
+            0
+          ],
+          "name": "lemma0140c60deaa44ad566ed0d4fae87c245a5e6185f660c30eca177229b2d0134fc",
+          "rule": "block"
+        },
+        {
+          "formula": [
+            "all",
+            "x",
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ],
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ],
+          "rule": "generalize",
+          "source": 10,
+          "variable": "x"
+        }
+      ],
+      "python_peak_MiB": null,
+      "qualifying_hint_links": [],
+      "quantified_reasoning_success": true,
+      "receiver_id": "quantified-diagonal-specialization-001",
+      "register_native_result": {
+        "micro_fnv64": "9975705661278301643",
+        "micro_steps": 2621302926,
+        "peak_native_memory_bytes": 13336576,
+        "physical_head": 1456,
+        "physical_steps": 61640632229488,
+        "seconds": 20.8244,
+        "start": 88986,
+        "state": 0,
+        "status": "accepted"
+      },
+      "register_status": "native_accepted",
+      "repetition": 1,
+      "resource_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679628553007666,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "result": {
+        "bytes": 67078386,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-base-ROOT-20261018-v1/result.json",
+        "sha256": "10c78a5d970c077c2a42c3af7d29502b0feae1102efe7501c596ef1c5b45d160"
+      },
+      "runner_receipt": {
+        "bytes": 67731,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-base-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "b41b543c2c7640548635347f328513ffa8920993b7c52a154ee75a2da7b8a6b8"
+      },
+      "search_seconds": 1.6970755408983678,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 679558.803081,
+          "stage": "before_oracle",
+          "started_monotonic": 679558.803074458
+        },
+        {
+          "returned_monotonic": 679578.845539291,
+          "stage": "compile",
+          "started_monotonic": 679558.861513583
+        },
+        {
+          "returned_monotonic": 679579.027112291,
+          "stage": "compile_record_joins",
+          "started_monotonic": 679578.85991925
+        },
+        {
+          "returned_monotonic": 679579.04013875,
+          "stage": "specialize",
+          "started_monotonic": 679579.0391235
+        },
+        {
+          "returned_monotonic": 679600.180710208,
+          "stage": "register",
+          "started_monotonic": 679579.052616708
+        },
+        {
+          "returned_monotonic": 679600.199827875,
+          "stage": "inventory_record_join",
+          "started_monotonic": 679600.19270475
+        },
+        {
+          "returned_monotonic": 679602.520047208,
+          "stage": "model",
+          "started_monotonic": 679600.212472958
+        },
+        {
+          "returned_monotonic": 679605.1451855,
+          "stage": "search",
+          "started_monotonic": 679603.446653083
+        },
+        {
+          "returned_monotonic": 679611.348990958,
+          "stage": "final_native",
+          "started_monotonic": 679606.966758291
+        },
+        {
+          "returned_monotonic": 679611.363535125,
+          "stage": "essential_ancestry",
+          "started_monotonic": 679611.362085083
+        },
+        {
+          "returned_monotonic": 679611.38141425,
+          "stage": "winning_hint_links",
+          "started_monotonic": 679611.375652791
+        }
+      ],
+      "status": "native_proof_discovered",
+      "symbolic_projection": null,
+      "terminal": {
+        "bytes": 1574,
+        "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c2-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "5e7c54a8d8047addde2296cfadfd390b04a1762f864ab4c81dad07e139d65c48"
+      },
+      "whole_region": {
+        "assigned_mark_points": 2523,
+        "completed_ns": 679625418088958,
+        "decoded_rows": 12,
+        "required_points": 60,
+        "scope": "Separate raw whole-target occupancy, initial/selected marking agreement and literal C/G/input row decoding; no engine, solver or logical kernel call.",
+        "selected_placements": 60,
+        "status": "VERIFIED_WHOLE_FINITE_POINT_REGION",
+        "union_sha256": "b34a8f1f05847388dbcdc4ae43d8de945bd650f2555bc20f6a2f6ef3528fcec4"
+      },
+      "whole_result_bytes": 67078386,
+      "worker_receipt": {
+        "bytes": 53135,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-base-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "ffca4c05928208c227430c5f67a5bc3b9fcd9c77d77fec64f4bc3b3a992b035b"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": true,
+      "ROOT_retained_data_consistent": true,
+      "attempt_unit": "proof_row_extension",
+      "basis_count": 13,
+      "case_index": 3,
+      "cold_worker_seconds": 44.550273,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "cecea1dbac5d3a6a37859f36248945fcebddcbebe25c840d86c3b5917211418f",
+      "diagnostic_native_proof": false,
+      "fresh_native_proof": false,
+      "interface_count": 8,
+      "inventory_semantics_sha256": "c3ba2508d6cf7b3b55d6e5aa43ab74dfa216f5e4897f5db8b3f73478eb9d7ad5",
+      "invocation_id": "structural-quantified-c3-symbolic-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": {
+        "backtracks": 4990,
+        "block_port_tuples": 986,
+        "dead_prefixes": 4677,
+        "prefix_extensions": 5000,
+        "prefix_nodes": 5001,
+        "primitive_guard_rejections": 1103586,
+        "skeleton_tests": 1178111,
+        "unavailable_block_skeletons": 69819
+      },
+      "mode": "symbolic",
+      "model_arity": 3,
+      "model_placements": 11440,
+      "model_sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74",
+      "native_peak_MiB": 12.3125,
+      "native_queries": 19,
+      "observed_conservative_peak_MiB": 790.265625,
+      "outcome_class": "WITHIN_PROFILE_UNKNOWN",
+      "outer_terminal_seconds": 46.218274417,
+      "owned_group_absent_in_runner": true,
+      "proof": null,
+      "python_peak_MiB": null,
+      "quantified_reasoning_success": false,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "register_native_result": {
+        "micro_fnv64": "14558358126468483367",
+        "micro_steps": 1419881799,
+        "peak_native_memory_bytes": 12910592,
+        "physical_head": 1456,
+        "physical_steps": 26798759966784,
+        "seconds": 11.0392,
+        "start": 88986,
+        "state": 0,
+        "status": "accepted"
+      },
+      "register_status": "native_accepted",
+      "repetition": 1,
+      "resource_errors": [],
+      "result": {
+        "bytes": 39374524,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "f878d48de2e84101c2de4b98b4c878dd648f86d82e9274745e4db7405afc040c"
+      },
+      "runner_receipt": {
+        "bytes": 57767,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-symbolic-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "bbcc7d5e1c68783175d707e4ebcd319092df8e3e9327652501eae264e8819e2a"
+      },
+      "search_seconds": 6.709443915984593,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 679635.9505005,
+          "stage": "before_oracle",
+          "started_monotonic": 679635.950495333
+        },
+        {
+          "returned_monotonic": 679652.558087208,
+          "stage": "compile",
+          "started_monotonic": 679636.0114775
+        },
+        {
+          "returned_monotonic": 679652.675825375,
+          "stage": "compile_record_joins",
+          "started_monotonic": 679652.568921291
+        },
+        {
+          "returned_monotonic": 679652.6880615,
+          "stage": "specialize",
+          "started_monotonic": 679652.687393083
+        },
+        {
+          "returned_monotonic": 679664.003250208,
+          "stage": "register",
+          "started_monotonic": 679652.699685875
+        },
+        {
+          "returned_monotonic": 679664.0232915,
+          "stage": "inventory_record_join",
+          "started_monotonic": 679664.016909541
+        },
+        {
+          "returned_monotonic": 679665.282925916,
+          "stage": "model",
+          "started_monotonic": 679664.034937416
+        },
+        {
+          "returned_monotonic": 679672.527309125,
+          "stage": "search",
+          "started_monotonic": 679665.817842458
+        },
+        {
+          "returned_monotonic": 679672.594567083,
+          "stage": "symbolic_point_projection",
+          "started_monotonic": 679672.543958041
+        }
+      ],
+      "status": "unknown_search_budget",
+      "symbolic_projection": {
+        "complete_grammar_joined": true,
+        "root_path_restored": true,
+        "scope": "Returned partial metadata only; no whole-region or proof acceptance.",
+        "status": "NO_OPERATIVE_PROOF"
+      },
+      "terminal": {
+        "bytes": 1582,
+        "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c3-symbolic-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "673b17fac3b6a509006362751de70737c76a16aebf346ebf33aa7b6ca70e12ad"
+      },
+      "whole_result_bytes": 39374524,
+      "worker_receipt": {
+        "bytes": 46530,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-symbolic-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "cc8b981587580cec75671c103d1283f13b304d62229f9e65aab6c1311fceaaa7"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": false,
+      "ROOT_retained_data_consistent": true,
+      "attempt_unit": "base_point_placement",
+      "basis_count": 13,
+      "case_index": 3,
+      "cold_worker_seconds": 86.320592083,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "cecea1dbac5d3a6a37859f36248945fcebddcbebe25c840d86c3b5917211418f",
+      "diagnostic_native_proof": false,
+      "fresh_native_proof": false,
+      "interface_count": 8,
+      "inventory_semantics_sha256": "c3ba2508d6cf7b3b55d6e5aa43ab74dfa216f5e4897f5db8b3f73478eb9d7ad5",
+      "invocation_id": "structural-quantified-c3-base-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": {
+        "attempts": 2030,
+        "backtracks": 1984,
+        "branch": 249,
+        "dead": 556,
+        "forced": 1226,
+        "nodes": 2031
+      },
+      "mode": "base",
+      "model_arity": 3,
+      "model_placements": 11440,
+      "model_sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74",
+      "native_peak_MiB": 12.703125,
+      "native_queries": 19,
+      "observed_conservative_peak_MiB": 1120.015625,
+      "outcome_class": "OUTSIDE_MEMORY_PROFILE_UNKNOWN",
+      "outer_terminal_seconds": 88.605144292,
+      "owned_group_absent_in_runner": null,
+      "proof": null,
+      "python_peak_MiB": null,
+      "quantified_reasoning_success": false,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "register_native_result": {
+        "micro_fnv64": "14558358126468483367",
+        "micro_steps": 1419881799,
+        "peak_native_memory_bytes": 13320192,
+        "physical_head": 1456,
+        "physical_steps": 26798759966784,
+        "seconds": 10.444,
+        "start": 88986,
+        "state": 0,
+        "status": "accepted"
+      },
+      "register_status": "native_accepted",
+      "repetition": 1,
+      "resource_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679773934839916,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "result": {
+        "bytes": 66981169,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-base-ROOT-20261018-v1/result.json",
+        "sha256": "fd5353bcf0c49052499b1a05d11bb9f950cf7f267e18842601b60957a1d2c5b2"
+      },
+      "runner_receipt": {
+        "bytes": 57855,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-base-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "bb091ad14c2aebd75fd89d6538d5a7fc26daaa7bb3ba0e3b8b94ac0c285b2fc2"
+      },
+      "search_seconds": 30.173799750045873,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 679686.255306083,
+          "stage": "before_oracle",
+          "started_monotonic": 679686.25530075
+        },
+        {
+          "returned_monotonic": 679702.009236125,
+          "stage": "compile",
+          "started_monotonic": 679686.342894833
+        },
+        {
+          "returned_monotonic": 679702.113842416,
+          "stage": "compile_record_joins",
+          "started_monotonic": 679702.019426416
+        },
+        {
+          "returned_monotonic": 679702.12462225,
+          "stage": "specialize",
+          "started_monotonic": 679702.123963375
+        },
+        {
+          "returned_monotonic": 679712.790333875,
+          "stage": "register",
+          "started_monotonic": 679702.135011041
+        },
+        {
+          "returned_monotonic": 679712.805925333,
+          "stage": "inventory_record_join",
+          "started_monotonic": 679712.800630333
+        },
+        {
+          "returned_monotonic": 679713.914770416,
+          "stage": "model",
+          "started_monotonic": 679712.816308083
+        },
+        {
+          "returned_monotonic": 679744.68129275,
+          "stage": "search",
+          "started_monotonic": 679714.501627708
+        }
+      ],
+      "status": "unknown_search_budget",
+      "symbolic_projection": null,
+      "terminal": {
+        "bytes": 1574,
+        "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c3-base-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "4a35b7ea280c02dd8dee4cfc62448f8c40ce3d767837144363a04a6b24795b79"
+      },
+      "whole_result_bytes": 66981169,
+      "worker_receipt": {
+        "bytes": 46423,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-base-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "f822f48fd00a0c4b2b3849f43e672942e85bb182af78ace60a2d71854ffe5a5e"
+      }
+    },
+    {
+      "ROOT_mathematical_data_admitted": false,
+      "ROOT_resource_admitted": false,
+      "ROOT_retained_data_consistent": true,
+      "attempt_unit": "base_point_placement",
+      "basis_count": 13,
+      "case_index": 3,
+      "cold_worker_seconds": 97.452121833,
+      "compile_status": "complete",
+      "compiled_semantics_sha256": "cecea1dbac5d3a6a37859f36248945fcebddcbebe25c840d86c3b5917211418f",
+      "diagnostic_native_proof": false,
+      "fresh_native_proof": false,
+      "interface_count": 8,
+      "inventory_semantics_sha256": "c3ba2508d6cf7b3b55d6e5aa43ab74dfa216f5e4897f5db8b3f73478eb9d7ad5",
+      "invocation_id": "structural-quantified-c3-fixed-ROOT-20261018-v1",
+      "matched_hint_consumption": false,
+      "metrics": {
+        "anchors_omitted": 0,
+        "attempts": 2739,
+        "backtracks": 2689,
+        "branch": 419,
+        "dead": 803,
+        "forced": 1518,
+        "hint_completed": 120,
+        "hint_eligible": 368,
+        "hint_invalid": 808,
+        "hint_waiting": 360,
+        "hints_started": 350,
+        "items": 2726,
+        "nodes": 2740,
+        "proposal_seconds": 4.233819758053869,
+        "row_pool": 1150,
+        "row_quota_stops": 66,
+        "sample_pair_tests": 17671,
+        "sample_validation_checks": 1576,
+        "validation_checks": 5819
+      },
+      "mode": "fixed",
+      "model_arity": 3,
+      "model_placements": 11440,
+      "model_sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74",
+      "native_peak_MiB": 12.625,
+      "native_queries": 19,
+      "observed_conservative_peak_MiB": 1388.53125,
+      "outcome_class": "OUTSIDE_MEMORY_PROFILE_UNKNOWN",
+      "outer_terminal_seconds": 100.529152833,
+      "owned_group_absent_in_runner": null,
+      "proof": null,
+      "python_peak_MiB": null,
+      "quantified_reasoning_success": false,
+      "receiver_id": "quantified-curried-two-premise-001",
+      "register_native_result": {
+        "micro_fnv64": "14558358126468483367",
+        "micro_steps": 1419881799,
+        "peak_native_memory_bytes": 13238272,
+        "physical_head": 1456,
+        "physical_steps": 26798759966784,
+        "seconds": 10.4297,
+        "start": 88986,
+        "state": 0,
+        "status": "accepted"
+      },
+      "register_status": "native_accepted",
+      "repetition": 1,
+      "resource_errors": [
+        {
+          "message": "conservative Python+CPP high-water sum within1GiB",
+          "stamp_ns": 679878954743875,
+          "type": "OnceRunnerError"
+        }
+      ],
+      "result": {
+        "bytes": 78204773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+      },
+      "runner_receipt": {
+        "bytes": 57920,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "ee72a37a0a0886a5fff222c1de0d92205edd20e56995713fa95a15113b709608"
+      },
+      "search_seconds": 30.027331374934874,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 679779.327194666,
+          "stage": "before_oracle",
+          "started_monotonic": 679779.327187791
+        },
+        {
+          "returned_monotonic": 679794.601546541,
+          "stage": "compile",
+          "started_monotonic": 679779.384380083
+        },
+        {
+          "returned_monotonic": 679794.708366041,
+          "stage": "compile_record_joins",
+          "started_monotonic": 679794.61208225
+        },
+        {
+          "returned_monotonic": 679794.719390125,
+          "stage": "specialize",
+          "started_monotonic": 679794.718765416
+        },
+        {
+          "returned_monotonic": 679805.373641708,
+          "stage": "register",
+          "started_monotonic": 679794.7299315
+        },
+        {
+          "returned_monotonic": 679805.389859708,
+          "stage": "inventory_record_join",
+          "started_monotonic": 679805.384409375
+        },
+        {
+          "returned_monotonic": 679806.49125225,
+          "stage": "model",
+          "started_monotonic": 679805.400175375
+        },
+        {
+          "returned_monotonic": 679837.015825125,
+          "stage": "search",
+          "started_monotonic": 679806.987795041
+        }
+      ],
+      "status": "unknown_search_budget",
+      "symbolic_projection": null,
+      "terminal": {
+        "bytes": 1579,
+        "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/runner-plans/structural-quantified-c3-fixed-ROOT-20261018-v1-terminal-observation/terminal.json",
+        "sha256": "214c70051c0b96637738bda3bb27d1123b91ab4fa4f84e5af98fb34e92cf8279"
+      },
+      "whole_result_bytes": 78204773,
+      "worker_receipt": {
+        "bytes": 46471,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "e19840020dcfdacdf02f8fd9c36c37b50c861b749a596c8219f16b8d79ba9c34"
+      }
+    }
+  ],
+  "author_identity": "/root",
+  "declaration": {
+    "bytes": 21453,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/experiment-declaration-v2.json",
+    "sha256": "19fab9173cf52ebd9e0d5517fd4dbbb44ed9d72f3737676d9701fd6a4c8bde5d"
+  },
+  "diagnostic_native_proofs": 3,
+  "fresh_native_proofs": 0,
+  "goal_complete": false,
+  "held_out_blind": false,
+  "independent_reviews": {
+    "data": {
+      "source": {
+        "bytes": 107656,
+        "path": "/private/tmp/gcts-structural-saved-data-peer-20261018/typed-data-review-v1.json",
+        "sha256": "80fc6f238e5b11aac0a766a3483032d288ef64753df98c4cfc5cc576fec4c62d"
+      },
+      "url": "structural-transfer-data-review.json"
+    },
+    "human": {
+      "source": {
+        "bytes": 19544,
+        "path": "/private/tmp/gcts-structural-human-report-peer-20261018/typed-human-report-review-v2.json",
+        "sha256": "63e9140bb4678767d0decc17687ec13a529d0d1137664474eca743189a94912c"
+      },
+      "url": "structural-transfer-human-review.json"
+    },
+    "resource": {
+      "source": {
+        "bytes": 49953,
+        "path": "/private/tmp/gcts-structural-resource-peer-20261018/typed-resource-custody-review-v1.json",
+        "sha256": "6f0299a0214dd3383b804b451ae501e3cf5864a7a9407165af0af7a0eaf225ed"
+      },
+      "url": "structural-transfer-resource-review.json"
+    }
+  },
+  "matched_hint_consumptions": 0,
+  "native_record_literal_checks": 1020,
+  "native_request_joins": 255,
+  "new_RL_training": false,
+  "outside_memory_profile": 5,
+  "plans": {
+    "bytes": 14951,
+    "path": "/private/tmp/gcts-structural-actual-plans-ROOT-20261018-v1/authorized-plan-index-v1.json",
+    "sha256": "84484dc8662c47215922eb12e17f061fc96094d3da76c9478d118164a3823c52"
+  },
+  "proof_readers": [
+    {
+      "case_index": 2,
+      "mode": "fixed",
+      "outside_profile": true,
+      "url": "structural-transfer-c2-fixed-proof.html"
+    },
+    {
+      "case_index": 2,
+      "mode": "symbolic",
+      "outside_profile": true,
+      "url": "structural-transfer-c2-symbolic-proof.html"
+    },
+    {
+      "case_index": 2,
+      "mode": "base",
+      "outside_profile": true,
+      "url": "structural-transfer-c2-base-proof.html"
+    }
+  ],
+  "quantifier_milestones": 0,
+  "raw_results": [
+    {
+      "case_index": 1,
+      "compressed": {
+        "bytes": 30206,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v1/structural-transfer-c1-base-result.json.gz",
+        "sha256": "1d939d0bdba5e18e65f4e16aaddb94c372420fb52fcd14fc9513e0cef1646e12"
+      },
+      "mode": "base",
+      "uncompressed": {
+        "bytes": 202478,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-base-ROOT-20261018-v1/result.json",
+        "sha256": "fd2084ca02bb192af97147c81ac022fb90169f91fc40dd857f3cf54ff3dee2f6"
+      },
+      "url": "structural-transfer-c1-base-result.json.gz"
+    },
+    {
+      "case_index": 1,
+      "compressed": {
+        "bytes": 30224,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v1/structural-transfer-c1-fixed-result.json.gz",
+        "sha256": "11a5b6cdfbb3648d367f31bcb98ffa9abba4b69f58b1022d1e58374ff534e2bd"
+      },
+      "mode": "fixed",
+      "uncompressed": {
+        "bytes": 202509,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "86db7f844c6c0af3383c822334792da4406f78e8367ef88b81ce10e58ae1b1d1"
+      },
+      "url": "structural-transfer-c1-fixed-result.json.gz"
+    },
+    {
+      "case_index": 1,
+      "compressed": {
+        "bytes": 30194,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v1/structural-transfer-c1-symbolic-result.json.gz",
+        "sha256": "91af2b6790dfd68461cf570ac906e0da487e44264c936acb15513ab0c73e7eb6"
+      },
+      "mode": "symbolic",
+      "uncompressed": {
+        "bytes": 202588,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c1-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "30be23beb9f83cf31ebd1a2f50fd60f9b148e615609f5f7f6fef6323c73bcdbb"
+      },
+      "url": "structural-transfer-c1-symbolic-result.json.gz"
+    },
+    {
+      "case_index": 2,
+      "compressed": {
+        "bytes": 3735368,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v1/structural-transfer-c2-fixed-result.json.gz",
+        "sha256": "e5fa83d50e228da6b6765bad2d32a6fe09dbf8c609ce54366e7877055df7165d"
+      },
+      "mode": "fixed",
+      "uncompressed": {
+        "bytes": 67259550,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "984232e67f73da3ae54e9c4743bf5a76bca9643bc77b2fe5bd1ddb4ad6951dca"
+      },
+      "url": "structural-transfer-c2-fixed-result.json.gz"
+    },
+    {
+      "case_index": 2,
+      "compressed": {
+        "bytes": 2473291,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v1/structural-transfer-c2-symbolic-result.json.gz",
+        "sha256": "5ddd12726d66970b20eee387dbfb0fec9b3ac472e9e292db09b0adb6f0222ec9"
+      },
+      "mode": "symbolic",
+      "uncompressed": {
+        "bytes": 62143358,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "97c8ddfe4dd59fbf83b999bdcac641b877ff9e76580ed3bed47037f1d81c5baf"
+      },
+      "url": "structural-transfer-c2-symbolic-result.json.gz"
+    },
+    {
+      "case_index": 2,
+      "compressed": {
+        "bytes": 3708030,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v1/structural-transfer-c2-base-result.json.gz",
+        "sha256": "57e13b28a59055799d35ec160dc6fb0e9bceecd55d71eab587b56f3c7cdeff93"
+      },
+      "mode": "base",
+      "uncompressed": {
+        "bytes": 67078386,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c2-base-ROOT-20261018-v1/result.json",
+        "sha256": "10c78a5d970c077c2a42c3af7d29502b0feae1102efe7501c596ef1c5b45d160"
+      },
+      "url": "structural-transfer-c2-base-result.json.gz"
+    },
+    {
+      "case_index": 3,
+      "compressed": {
+        "bytes": 1639571,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v1/structural-transfer-c3-symbolic-result.json.gz",
+        "sha256": "ebbe5616bc5c7475948fe32cb94d708724cf6449e72f013638152dd919e88eb5"
+      },
+      "mode": "symbolic",
+      "uncompressed": {
+        "bytes": 39374524,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-symbolic-ROOT-20261018-v1/result.json",
+        "sha256": "f878d48de2e84101c2de4b98b4c878dd648f86d82e9274745e4db7405afc040c"
+      },
+      "url": "structural-transfer-c3-symbolic-result.json.gz"
+    },
+    {
+      "case_index": 3,
+      "compressed": {
+        "bytes": 3494642,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v1/structural-transfer-c3-base-result.json.gz",
+        "sha256": "e7d6a0c4159857d401e5ccc7b4966e58f994407f3b1d1505bb00ea4b1bcc619e"
+      },
+      "mode": "base",
+      "uncompressed": {
+        "bytes": 66981169,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-base-ROOT-20261018-v1/result.json",
+        "sha256": "fd5353bcf0c49052499b1a05d11bb9f950cf7f267e18842601b60957a1d2c5b2"
+      },
+      "url": "structural-transfer-c3-base-result.json.gz"
+    },
+    {
+      "case_index": 3,
+      "compressed": {
+        "bytes": 5262249,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v1/structural-transfer-c3-fixed-result.json.gz",
+        "sha256": "c9e9152d4fe2278e4b1928df24d48339daf5273971572239652e491844f8dce6"
+      },
+      "mode": "fixed",
+      "uncompressed": {
+        "bytes": 78204773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-c3-fixed-ROOT-20261018-v1/result.json",
+        "sha256": "33656cdc3810198b6413ea9428811811b170f7614c760e8e8b1782eb60fb7cdc"
+      },
+      "url": "structural-transfer-c3-fixed-result.json.gz"
+    }
+  ],
+  "repetitions_per_case_method": 1,
+  "schema": "GCTS-structural-transfer-summary-v1",
+  "scientific_replays": 0,
+  "scope": "Nine one-shot author-selected prospective structural transfer actuals, three cases and three mechanisms. Not blind/random/standard benchmark, no generalization or new RL claim. Different partial schedulers and attempt units. Root literal retained-data/native-record/whole finite point checks only; zero proof/search/kernel replay. All three native-accepted diagonal proofs exceed the declared conservative separate worker+native high-water sum limit and are diagnostic only, never admitted bounded successes. Failed runner whole-group absence fields stay null. UNKNOWN is not mathematical refutation. Common complete compiler/model/inventory/initial data compared only within each case; commutation never produces a complete model. Full common encoding costs charged even in symbolic arm. Trusted bundled stdlib/OSloader; no allFOL/PA/Hilbert/universalWang/plane/speed claim.",
+  "standard_benchmark": false,
+  "within_case_complete_model_comparisons": {
+    "quantified-curried-two-premise-001": {
+      "available_complete_models": 3,
+      "model_sha256": "7cd2ffd6201059e282e974334d40a8c48b251d51536e97511af703310fa20b74",
+      "same": true
+    },
+    "quantified-diagonal-specialization-001": {
+      "available_complete_models": 3,
+      "model_sha256": "3ea4aae09985e3d9725b2a54089cc9106a5e97d9f46bf2fadcfb42ab370abba5",
+      "same": true
+    },
+    "quantified-universal-commutation-001": {
+      "available_complete_models": 0,
+      "model_sha256": null,
+      "same": null
+    }
+  },
+  "within_profile_unknowns": 4
+}

@@ -1,0 +1,331 @@
+{
+  "Root_admission": {
+    "bytes": 107412,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "43980d1d838c877c02ca23dce7162a6ad29dec9d92057b2862377a6e118e937a"
+  },
+  "actual_launches": 0,
+  "authorship_disclosure": {
+    "reviewer_authored_benchmark_cases_and_Source_coverage": true,
+    "reviewer_authored_current_Root_report_or_renderer": false,
+    "reviewer_authored_earlier_CASE_checker_and398acd_verifier": true,
+    "reviewer_authored_symbolic_control_quantified_parent_driver_broker_parent_runner": true,
+    "scope": "Independent of Root report/actual author and renderer, not independent author of the cases/control/inherited components. This is not self-certification of those Sources. Separate Receiver data and Library resource peers preserve their own disclosed scopes."
+  },
+  "compiler_calls": 0,
+  "completed_comparisons": {
+    "all_nine_outcome_rows_scalar_units_links_and_memory_plot_values_match": true,
+    "all_nine_raw_downloads_literal_byte_equal": true,
+    "all_three_main_assertion_cards_match_frozen_literal_case_ASTs": true,
+    "diagnostic_reader_counts": [
+      {
+        "case": "c2-fixed",
+        "definition_rows": 44,
+        "definitions": 12,
+        "math_spans": 13433,
+        "root_rows": 12,
+        "selected_mark_assignments": 6547,
+        "selected_tiles": 60
+      },
+      {
+        "case": "c2-symbolic",
+        "definition_rows": 44,
+        "definitions": 12,
+        "math_spans": 14447,
+        "root_rows": 12,
+        "selected_mark_assignments": 7051,
+        "selected_tiles": 60
+      },
+      {
+        "case": "c2-base",
+        "definition_rows": 44,
+        "definitions": 12,
+        "math_spans": 11067,
+        "root_rows": 12,
+        "selected_mark_assignments": 5368,
+        "selected_tiles": 60
+      }
+    ],
+    "diagnostic_reader_totals": {
+      "definition_rows": 132,
+      "definitions": 36,
+      "math_spans": 38947,
+      "root_rows": 36,
+      "selected_mark_assignments": 18966,
+      "selected_tiles": 180
+    },
+    "future_link_objects_exact": [
+      "structural-transfer-data-review.json",
+      "structural-transfer-evidence-manifest.json",
+      "structural-transfer-evidence.zip",
+      "structural-transfer-human-review.json",
+      "structural-transfer-resource-review.json"
+    ],
+    "original_check_count": 81404,
+    "original_successful_checks": 81393,
+    "remaining_mismatches": 0,
+    "successor_metadata_check_count": 34,
+    "unexpected_missing_task_links": []
+  },
+  "goal_complete": false,
+  "independent_data_and_resource_reviews": {
+    "independent_resource_custody": {
+      "bytes": 49953,
+      "path": "/private/tmp/gcts-structural-resource-peer-20261018/typed-resource-custody-review-v1.json",
+      "sha256": "6f0299a0214dd3383b804b451ae501e3cf5864a7a9407165af0af7a0eaf225ed"
+    },
+    "independent_saved_data": {
+      "bytes": 107656,
+      "path": "/private/tmp/gcts-structural-saved-data-peer-20261018/typed-data-review-v1.json",
+      "sha256": "80fc6f238e5b11aac0a766a3483032d288ef64753df98c4cfc5cc576fec4c62d"
+    }
+  },
+  "initial_display_audit": {
+    "bytes": 8560312,
+    "path": "/private/tmp/gcts-structural-human-report-peer-20261018/display-audit-v1.json",
+    "sha256": "f6fe3a60a611a290e10c2e27e23f8c850ddc32ea79fd3fba9239a1d1688cace4"
+  },
+  "initial_display_audit_Source": {
+    "bytes": 28723,
+    "path": "/private/tmp/gcts-structural-human-report-peer-20261018/audit_display_v1.py",
+    "sha256": "6f65cf782b898a15ebe1abf76903662e1d164f1c0252248493dd4307173782d5"
+  },
+  "initial_scope_interpretation": {
+    "bytes": 10360,
+    "path": "/private/tmp/gcts-structural-human-report-peer-20261018/scope-outcome-interpretation-v1.json",
+    "sha256": "3f241609bceb08daa61a19dc0bce64e9c5bbf83f986d330bdcc60750863689ad"
+  },
+  "kernel_calls": 0,
+  "limitations": [
+    "No renderer/model/compiler/search/logic/kernel/native/solver imports or evaluation; no proof replay, machine decoding or actual rerun. Only stdlib raw JSON/HTML/hash/statistics and explicitly authorized retained-report gzip decompression.",
+    "The independent display parser covers these actual retained formulas, not universal renderer correctness or mathematical soundness. Mathematical proof and resource admission remain separate Root decisions with distinct saved-data peers.",
+    "No browser execution by this reviewer. Five packaging/review objects are deliberately future release conditions, not missing result evidence or already published objects."
+  ],
+  "logic_calls": 0,
+  "mathematical_proof_accepted": false,
+  "metadata_freezer_Source": {
+    "bytes": 10780,
+    "path": "/private/tmp/gcts-structural-human-report-peer-20261018/freeze_human_review_v2.py",
+    "sha256": "9a993fcd9ba890cb5ebf5fe1c64e46c0c1968bc0f0b616e36ec273b0e1be0870"
+  },
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "native_codec_calls": 0,
+  "outcome_and_claim_limits": [
+    "Zero admitted bounded proofs is correctly separated from the three retained native-accepted diagonal diagnostics. No resource-failed proof is salvaged into a benchmark success.",
+    "Commutation UNKNOWN is the shared native bulk-registry space result before model/search, distinct from host peak RAM and mathematical refutation. Curried search-budget UNKNOWN is not exhaustion or nonprovability.",
+    "Failed runners leave original whole-group absence and log-capture completion unreported/false as recorded. The report does not invent a later probe; known worker/native reaping is a narrower observation.",
+    "Fixed diagonal hint consumption is reuse evidence, not a causal speed or geometric benefit. Internal tile-placement and proof-row-extension units differ. The one-observation Latin schedule supplies neither replication nor statistical/broad generalization evidence.",
+    "The complete common point-model cost remains charged even to symbolic search. Conservative high-water sums are not simultaneous allocation profiles or live OS group caps. Proposed compact representations and trace savings are unmeasured.",
+    "No new RL, unique GCTS advantage, complete FOL/PA/Hilbert/Wang expressivity or plane-tiling result is claimed."
+  ],
+  "preserved_findings_and_resolution": {
+    "actual_V1_report_defect": "The phrase all seven primitive roles conflated grammar forms with point roles. Root V2 changes exactly that phrase to the same admitted primitive and lemma command language; complete forward/inverse equality and the other fifteen asset bytes are verified.",
+    "no_report_or_actual_bytes_changed_by_reviewer": true,
+    "prior_findings_preserved": [
+      {
+        "check": "main corrected primitive form/role distinction",
+        "id": 81179,
+        "passed": false
+      },
+      {
+        "check": "quantified-universal-commutation-001 card parse complete",
+        "id": 81187,
+        "passed": false
+      },
+      {
+        "check": "quantified-universal-commutation-001 card literal theory",
+        "id": 81188,
+        "passed": false
+      },
+      {
+        "check": "quantified-universal-commutation-001 card literal target",
+        "id": 81189,
+        "passed": false
+      },
+      {
+        "check": "quantified-diagonal-specialization-001 card parse complete",
+        "id": 81190,
+        "passed": false
+      },
+      {
+        "check": "quantified-diagonal-specialization-001 card literal theory",
+        "id": 81191,
+        "passed": false
+      },
+      {
+        "check": "quantified-diagonal-specialization-001 card literal target",
+        "id": 81192,
+        "passed": false
+      },
+      {
+        "check": "quantified-curried-two-premise-001 card parse complete",
+        "id": 81193,
+        "passed": false
+      },
+      {
+        "check": "quantified-curried-two-premise-001 card literal theory",
+        "id": 81194,
+        "passed": false
+      },
+      {
+        "check": "quantified-curried-two-premise-001 card literal target",
+        "id": 81195,
+        "passed": false
+      },
+      {
+        "check": "reader zero admitted/outside profile scope",
+        "id": 81198,
+        "passed": false
+      }
+    ],
+    "reviewer_metadata_failures": "Ten V1 review failures were parser/phrase assumptions: thin-space removal fused binder/predicate tokens, the special unparenthesized sequent binder parser consumed compound parentheses incorrectly, and the current reader uses None-of-nine-full-profile language rather than the guessed zero-admitted phrase. These are fixed only in reviewer metadata; all assertion/reader bytes remain exact. The eleventh is the actual primitive-role wording defect, corrected by the single Root V2 report delta."
+  },
+  "project_imports": 0,
+  "proof_replays": 0,
+  "release_conditions_owned_by_Root": {
+    "future_objects": [
+      "structural-transfer-data-review.json",
+      "structural-transfer-evidence-manifest.json",
+      "structural-transfer-evidence.zip",
+      "structural-transfer-human-review.json",
+      "structural-transfer-resource-review.json"
+    ],
+    "packaging_or_publication_already_claimed_by_this_review": false,
+    "required": [
+      "Copy the exact three frozen data/resource/human peer receipts to the declared public review names, preserving peer scope and all failed/UNKNOWN dispositions.",
+      "Create exact content-addressed evidence manifest and ZIP; retain current and historical Sources, plans/grants/actuals, V1 wording preimage/correction record and reviewer preimages. Verify every full hash and archive roundtrip.",
+      "Any final summary/status update is limited to exact peer references/pending-role metadata with all reviewed outcome/model/proof/scalar fields preserved; retain a precise before/after record. Main V2 and all three proof HTMLs remain the reviewed bytes unless separately reviewed.",
+      "After all five future objects exist, verify all final local links, downloads, manifest/archive hashes and intended destination files.",
+      "Publish task-owned assets to the established site and verify live exact bytes, LaTeX/MathJax glyphs, clipping/overflow, table/English/marking visibility and navigation, including all three diagnostic readers. Source parsing does not replace live UI validation."
+    ]
+  },
+  "renderer_author_identity": "/root/conventional_library",
+  "renderer_evaluations": 0,
+  "rendering_record": {
+    "bytes": 9831,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/ROOT-rendering-record-v1.json",
+    "sha256": "e6c0b71f9a43e3156c1a4594b5e4914262a328f8450a4c7d5a3f1d70ab40dbf4"
+  },
+  "report_author_identity": "/root",
+  "report_review_passed": true,
+  "resource_acceptance": false,
+  "review_details": [
+    "Every formula in all three diagnostic root proofs and all registered definition bodies/bindings/premises/conclusions was independently parsed from displayed LaTeX to the corresponding retained literal AST. English rule text, ordered source anchors and essential highlighting match saved data.",
+    "Every full registered definition/metadata object, ordered port and actual source formula, full literal command/native request and complete essential root/nested observation matches the retained packet. These are display joins, not independent logical validity checks.",
+    "All selected positional tile packets, occupancy values, assigned marking points/values, colors/layer counts, role glyphs/selected serials, remote read labels and explicit zero/negative sentinel values match the saved selection.",
+    "All nine gzip downloads decompress byte-for-byte to the exact original retained result files under explicit display-packaging permission. No native machine/microcode/program/request/input codec was used.",
+    "All nine outcome statuses, diagnostic versus admitted tiers, work-unit labels, three-decimal search/cold time and conservative peak values, plot widths/colors/threshold and diagnostic/raw links match current saved metadata.",
+    "The current reader panel, role/status metadata and task navigation preserve current zero bounded successes, three outside-profile proof artifacts, four within-profile UNKNOWNs, five memory failures and active broader goal. Historical material stays scoped."
+  ],
+  "reviewed_output_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2",
+  "reviewed_outputs": {
+    "parallel-work-status.json": {
+      "bytes": 21761,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/parallel-work-status.json",
+      "sha256": "ee4f0a2b0aa0960a2cbcb349551f1f15ad58f7d72672386001fb1d20d5c3ccf5"
+    },
+    "reader.html": {
+      "bytes": 81454,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/reader.html",
+      "sha256": "468fedf41c1df4fcd53db58169c3ccdb5e91dc7906888140f89f5c273980967a"
+    },
+    "structural-transfer-c1-base-result.json.gz": {
+      "bytes": 30206,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c1-base-result.json.gz",
+      "sha256": "1d939d0bdba5e18e65f4e16aaddb94c372420fb52fcd14fc9513e0cef1646e12"
+    },
+    "structural-transfer-c1-fixed-result.json.gz": {
+      "bytes": 30224,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c1-fixed-result.json.gz",
+      "sha256": "11a5b6cdfbb3648d367f31bcb98ffa9abba4b69f58b1022d1e58374ff534e2bd"
+    },
+    "structural-transfer-c1-symbolic-result.json.gz": {
+      "bytes": 30194,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c1-symbolic-result.json.gz",
+      "sha256": "91af2b6790dfd68461cf570ac906e0da487e44264c936acb15513ab0c73e7eb6"
+    },
+    "structural-transfer-c2-base-proof.html": {
+      "bytes": 1665027,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c2-base-proof.html",
+      "sha256": "628b0790fc981d37d11698446fc70f1395d0c087be1d262d73257b0e79edd969"
+    },
+    "structural-transfer-c2-base-result.json.gz": {
+      "bytes": 3708030,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c2-base-result.json.gz",
+      "sha256": "57e13b28a59055799d35ec160dc6fb0e9bceecd55d71eab587b56f3c7cdeff93"
+    },
+    "structural-transfer-c2-fixed-proof.html": {
+      "bytes": 1969656,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c2-fixed-proof.html",
+      "sha256": "cb8ad79262065172c5d521d93f9f5b06b029e05b3931b4d74b60e9d5131eae24"
+    },
+    "structural-transfer-c2-fixed-result.json.gz": {
+      "bytes": 3735368,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c2-fixed-result.json.gz",
+      "sha256": "e5fa83d50e228da6b6765bad2d32a6fe09dbf8c609ce54366e7877055df7165d"
+    },
+    "structural-transfer-c2-symbolic-proof.html": {
+      "bytes": 2103235,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c2-symbolic-proof.html",
+      "sha256": "232792b3a5c9acef39820fbbb13e3089f4fc351c064d7679e82580bc5737a786"
+    },
+    "structural-transfer-c2-symbolic-result.json.gz": {
+      "bytes": 2473291,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c2-symbolic-result.json.gz",
+      "sha256": "5ddd12726d66970b20eee387dbfb0fec9b3ac472e9e292db09b0adb6f0222ec9"
+    },
+    "structural-transfer-c3-base-result.json.gz": {
+      "bytes": 3494642,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c3-base-result.json.gz",
+      "sha256": "e7d6a0c4159857d401e5ccc7b4966e58f994407f3b1d1505bb00ea4b1bcc619e"
+    },
+    "structural-transfer-c3-fixed-result.json.gz": {
+      "bytes": 5262249,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c3-fixed-result.json.gz",
+      "sha256": "c9e9152d4fe2278e4b1928df24d48339daf5273971572239652e491844f8dce6"
+    },
+    "structural-transfer-c3-symbolic-result.json.gz": {
+      "bytes": 1639571,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-c3-symbolic-result.json.gz",
+      "sha256": "ebbe5616bc5c7475948fe32cb94d708724cf6449e72f013638152dd919e88eb5"
+    },
+    "structural-transfer-summary.json": {
+      "bytes": 115123,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer-summary.json",
+      "sha256": "6f69cc29d7dbefbe8b0f5747c4169befe7ac986707d63b038a3a43b053560f39"
+    },
+    "structural-transfer.html": {
+      "bytes": 17076,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/publication-source-v2/structural-transfer.html",
+      "sha256": "04628d4418ff05bb8f87189234d771731c03073d09beb900d781af029342c657"
+    }
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "reviewer_issued_authorization": false,
+  "saved_data_only": true,
+  "saved_report_gzip_decompressions": 9,
+  "schema": "structural-transfer-human-report-typed-review-v2",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Exact human-facing Source/retained-display review of immutable publication V2. Formula/English/tile/body/scalar fidelity is separate from the genuinely distinct mathematical and resource data reviews; no scientific replay.",
+  "solver_calls": 0,
+  "source_only": true,
+  "successor_display_audit": {
+    "bytes": 15521,
+    "path": "/private/tmp/gcts-structural-human-report-peer-20261018/display-audit-v2.json",
+    "sha256": "e727d178c4b1bffdbe6c46d0b721838704133c6adb2185e5105d079a4e01ebe8"
+  },
+  "successor_display_audit_Source": {
+    "bytes": 10692,
+    "path": "/private/tmp/gcts-structural-human-report-peer-20261018/audit_successor_v2.py",
+    "sha256": "8730fcb98691b8308397318ae57dd74583a52caee02026382893a82557b8188b"
+  },
+  "wording_and_saved_data_review_passed": true,
+  "wording_correction": {
+    "bytes": 11877,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/structural-quantified-progress-20261018/ROOT-report-wording-delta-v1.json",
+    "sha256": "53e126befda7e3e2ae254894fc95f3d7f9f7d97a2be89ccc399217268a9643ea"
+  }
+}
