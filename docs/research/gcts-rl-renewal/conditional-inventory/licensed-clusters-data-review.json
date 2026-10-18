@@ -1,0 +1,113 @@
+{
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "admission": {
+    "bytes": 15546,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/ROOT-case-admission-v1.json",
+    "sha256": "f5a1a143f6e1bf7fd07b6895bb47a6ae19b7a0f4e846c187d0007d6792c7e59a"
+  },
+  "audit": {
+    "bytes": 125986,
+    "path": "/private/tmp/gcts-licensed-cluster-finite-data-peer-20261018/saved-data-audit-v1.json",
+    "sha256": "25a76028e79fe8782e37b8828c38e933bf3848bea6d8298360efd87f9f5481ac"
+  },
+  "author_identity": "/root",
+  "author_overlap": false,
+  "authorship_disclosure": "Distinct Source/data reviewer; reviewed minerV4 and current coldV2 plus earlier phases, authored no changed scientific component, Root actual/grant/decoder/admission or native observer. Library separately reviewed checker/CASE; their author also authored398acd and related finite cases. This saved-data review does not erase that component authorship ancestry or execute those checkers.",
+  "check_count": 717,
+  "data_review_passed": true,
+  "decompressions": 0,
+  "expanded": {
+    "bytes": 5141311,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+    "sha256": "af0707683cbd22fb52412901c4acf138615afceeb63ba96abba6cbf3b68524bb"
+  },
+  "findings": [
+    {
+      "detail": "Exact current35/original17/input2/full611ff donor, original receiver binding, current Source epoch and all14 exact reviews join plan/contract/expanded. Exactonce grant and consumed marker, terminal exit0/reaped/no error, full raw output and response-completion hashes,15 native phases and fixed17/20/512 window checked. Root pre/post Source claim and expanded lossless relation are authenticated saved Root receipts; no independent codec/decompression replay.",
+      "id": "CURRENT-SOURCE-NATIVE-CLOSURE",
+      "status": "PASS_SAVED_DATA"
+    },
+    {
+      "detail": "One bounded miner call returned32 descriptor proposals after19 cut states,8 eligible cuts,64184 work steps. Full literal family IDs/preimages and selected3-node body counts join. mining_complete is false. Two selected records have fresh independent licence-closed donor-ground correspondence receipts; this is not qualification of all32 descriptors or verification of the original donor proof.",
+      "id": "BOUNDED-MINING",
+      "status": "PASS_SAVED_DATA"
+    },
+    {
+      "detail": "Four complete positive witnesses retained, two distinct nonidentity zero-arity free-variable TERM instances per selected UI/EQ family, four total term attempts. Current host binding, literal substitution, original keys/formulas/ordered offsets, native MEMBER receipts, full independent expansion and whole hypothetical union receipt hashes join.180 valid key occurrences were checked,22 distinct full keys; Root108 is a narrower saved admission traversal, not a contradiction.",
+      "id": "NONIDENTITY-NATIVE-INSTANCES",
+      "status": "PASS_SAVED_DATA"
+    },
+    {
+      "detail": "The UI pair has zero external inputs. Each EQ instance has two unresolved unoccupied input receptors with null original/decorated source keys and fact_accepted false; output formula assignments in the hypothetical union do not fill these obligations. All are local hypothetical unions on an empty point state, never scheduler transactions or selected target proofs.",
+      "id": "CLOSED-UI-VERSUS-CONDITIONAL-EQ",
+      "status": "LIMITATION"
+    },
+    {
+      "detail": "Saved sharing fixture recomputes identity and ground proposal and is rejected at the exact original-policy equality. Three other corruption fixtures retain non-isolated closure caveats. Two syntax-accepted corruptions receive exact native OutsideLanguage UI/EQ errors. Saved pristine/repeat receipts are equal; actual-return mutation and exception-object identity are runtime assertions of reviewed pinned CASE Source, not properties Python JSON can independently re-observe. Only first guard/tick callback positions and two nested mutation fields sampled.",
+      "id": "NEGATIVE-AND-OWNERSHIP-FIXTURES",
+      "status": "PASS_WITH_LIMITS"
+    },
+    {
+      "detail": "All6 declared finite cases pass within the native resource window. This qualifies a bounded conditional/local receptor interface. No point search, global candidate census/scheduler/rollback experiment, full board, fresh selected-DAG1717 goal proof, new theorem, universal substitution theorem, trained RL, learned marking, performance advantage or GCTS proof-search advantage is accepted.23-label ledger measures Root spans, with overhead/unclassified time explicit; no timing superiority inferred.",
+      "id": "CLAIM-BOUNDARY",
+      "status": "LIMITATION"
+    }
+  ],
+  "full_GCTS_conformance": false,
+  "goal_complete": false,
+  "logical_proof_accepted": false,
+  "mismatches": 0,
+  "module_evaluations": 0,
+  "native_observation": {
+    "bytes": 460,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/external-v1/observation.json",
+    "sha256": "bc24eaf6f363dc43b5be259ccdf2f74207fc7fec61e557731646e1406cc243d4"
+  },
+  "native_terminal": {
+    "bytes": 1613,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/external-v1/native-terminal.json",
+    "sha256": "8bb97b1273e51e6a0d371c895e597d9a2fb75b66cb623ef9d54339dbffd6136b"
+  },
+  "performance_accepted": false,
+  "plan": {
+    "bytes": 20855,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/ROOT-plan-v1.json",
+    "sha256": "c97884b47bfe3699a7c4bdbc1b0283f7cbd08aef16bb482ba0b7a620915e3f2a"
+  },
+  "project_kernel_checker_native_clock_codec_evaluations": 0,
+  "result": {
+    "EQ_instances_with_two_unresolved_inputs_each": 2,
+    "UI_closed_local_instances": 2,
+    "accepted_nonidentity_instances": 4,
+    "bounded_proposal_descriptors": 32,
+    "finite_cases_passed": 6,
+    "goal_complete": false,
+    "native_external_seconds": 4.950168,
+    "owned_peak_bytes": 99729408,
+    "point_search_executed": false,
+    "proof_accepted": false
+  },
+  "reviewer_identity": "/root/receiver_driver_review",
+  "saved_data_only": true,
+  "schema": "licensed-larger-cluster-independent-saved-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "source_contract": {
+    "bytes": 27662,
+    "path": "/private/tmp/gcts-larger-cluster-root-v2-source-20261018/cold-Source-contract-v1.json",
+    "sha256": "465a38c3a6965e010bd4089c8ec798fc57ddf596817d61fff59775b5559f5c44"
+  },
+  "source_only": false,
+  "source_peer": {
+    "bytes": 40503,
+    "path": "/private/tmp/gcts-larger-cluster-cold-v2-peer-20261018/typed-Source-review-v2.json",
+    "sha256": "afb1297d09cf40f4f40a1759636a9e36f6f526f0cae315f541ddbf975b849be9"
+  },
+  "transport": {
+    "bytes": 2330,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+    "sha256": "0045b34a0c25d2142dc249050db4f167b90f3b5b866c23ba128a4f70ec90a755"
+  }
+}

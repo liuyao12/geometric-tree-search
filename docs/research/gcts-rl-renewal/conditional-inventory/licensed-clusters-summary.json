@@ -1,0 +1,672 @@
+{
+  "ROOT_admission": {
+    "GCTS_advantage": false,
+    "RL": false,
+    "accepted_nonidentity_instances": 4,
+    "all_declared_finite_cases_passed": true,
+    "bounded_mined_descriptors": 32,
+    "complete_board_accepted": false,
+    "declared_limits": {
+      "cuts": 48,
+      "descriptors": 32,
+      "fragment_candidates": 64,
+      "generalizations_per_cut": 3,
+      "members": 16,
+      "positive_instances_per_rule": 2,
+      "term_attempts_per_rule": 8,
+      "term_candidates": 6
+    },
+    "distinct_literal_full_keys": 22,
+    "expanded": {
+      "bytes": 5141311,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+      "sha256": "af0707683cbd22fb52412901c4acf138615afceeb63ba96abba6cbf3b68524bb"
+    },
+    "finite_cases_passed": 6,
+    "full_GCTS_conformance": false,
+    "full_current_type_key_occurrences_checked": 108,
+    "goal_complete": false,
+    "independent_saved_data_review_pending": true,
+    "instance_summaries": [
+      {
+        "external_input_ports": 0,
+        "family_id": "1de70ffcf395ec8da25e9ca43c8a2db758ce935cf23ec9aa89978440ad1ca417",
+        "index": 0,
+        "native_membership_and_union_checked": true,
+        "output_formulas": [
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "zero",
+                    []
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "fun",
+                        "zero",
+                        []
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "primitive_nodes": 3,
+        "proof_accepted": false,
+        "proposed_term": [
+          "fun",
+          "zero",
+          []
+        ],
+        "row_assignment": {
+          "input_rows": [],
+          "node_rows": [
+            [
+              "n0",
+              2
+            ],
+            [
+              "n1",
+              3
+            ],
+            [
+              "n2",
+              4
+            ]
+          ],
+          "schema": "receptor-family-six-rule-row-assignment-v1"
+        },
+        "unresolved_external_ports": 0
+      },
+      {
+        "external_input_ports": 0,
+        "family_id": "1de70ffcf395ec8da25e9ca43c8a2db758ce935cf23ec9aa89978440ad1ca417",
+        "index": 1,
+        "native_membership_and_union_checked": true,
+        "output_formulas": [
+          [
+            "all",
+            "y",
+            [
+              "eq",
+              [
+                "fun",
+                "add",
+                [
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "n"
+                      ]
+                    ]
+                  ],
+                  [
+                    "fun",
+                    "succ",
+                    [
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "fun",
+                "succ",
+                [
+                  [
+                    "fun",
+                    "add",
+                    [
+                      [
+                        "fun",
+                        "succ",
+                        [
+                          [
+                            "var",
+                            "n"
+                          ]
+                        ]
+                      ],
+                      [
+                        "var",
+                        "y"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "primitive_nodes": 3,
+        "proof_accepted": false,
+        "proposed_term": [
+          "fun",
+          "succ",
+          [
+            [
+              "var",
+              "n"
+            ]
+          ]
+        ],
+        "row_assignment": {
+          "input_rows": [],
+          "node_rows": [
+            [
+              "n0",
+              2
+            ],
+            [
+              "n1",
+              3
+            ],
+            [
+              "n2",
+              4
+            ]
+          ],
+          "schema": "receptor-family-six-rule-row-assignment-v1"
+        },
+        "unresolved_external_ports": 0
+      },
+      {
+        "external_input_ports": 2,
+        "family_id": "c44fc83e44c55e05f182252462a48284ff10820988c70322bdfb1307a4c168d7",
+        "index": 2,
+        "native_membership_and_union_checked": true,
+        "output_formulas": [
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "fun",
+                  "zero",
+                  []
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "zero",
+                  []
+                ]
+              ]
+            ]
+          ]
+        ],
+        "primitive_nodes": 3,
+        "proof_accepted": false,
+        "proposed_term": [
+          "fun",
+          "zero",
+          []
+        ],
+        "row_assignment": {
+          "input_rows": [
+            [
+              "i0",
+              2
+            ],
+            [
+              "i1",
+              3
+            ]
+          ],
+          "node_rows": [
+            [
+              "n0",
+              4
+            ],
+            [
+              "n1",
+              5
+            ],
+            [
+              "n2",
+              6
+            ]
+          ],
+          "schema": "receptor-family-six-rule-row-assignment-v1"
+        },
+        "unresolved_external_ports": 2
+      },
+      {
+        "external_input_ports": 2,
+        "family_id": "c44fc83e44c55e05f182252462a48284ff10820988c70322bdfb1307a4c168d7",
+        "index": 3,
+        "native_membership_and_union_checked": true,
+        "output_formulas": [
+          [
+            "eq",
+            [
+              "fun",
+              "add",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ],
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "fun",
+                      "zero",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "fun",
+              "succ",
+              [
+                [
+                  "fun",
+                  "succ",
+                  [
+                    [
+                      "var",
+                      "n"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "primitive_nodes": 3,
+        "proof_accepted": false,
+        "proposed_term": [
+          "fun",
+          "succ",
+          [
+            [
+              "var",
+              "n"
+            ]
+          ]
+        ],
+        "row_assignment": {
+          "input_rows": [
+            [
+              "i0",
+              2
+            ],
+            [
+              "i1",
+              3
+            ]
+          ],
+          "node_rows": [
+            [
+              "n0",
+              4
+            ],
+            [
+              "n1",
+              5
+            ],
+            [
+              "n2",
+              6
+            ]
+          ],
+          "schema": "receptor-family-six-rule-row-assignment-v1"
+        },
+        "unresolved_external_ports": 2
+      }
+    ],
+    "learned_marking": false,
+    "ledger": {
+      "all_costs_charged_to_original_window": true,
+      "exclusive_sum_ns": 4341304000,
+      "includes_instrumentation_overhead": true,
+      "labels": [
+        {
+          "calls_raised": 0,
+          "calls_returned": 1,
+          "calls_started": 1,
+          "exclusive_ns": 15165000,
+          "inclusive_ns": 15165000,
+          "label": "language.create",
+          "maximum_depth": 1
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 1,
+          "calls_started": 1,
+          "exclusive_ns": 14356000,
+          "inclusive_ns": 14356000,
+          "label": "certificate.rule.producer",
+          "maximum_depth": 1
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 1,
+          "calls_started": 1,
+          "exclusive_ns": 14957000,
+          "inclusive_ns": 14957000,
+          "label": "certificate.rule.checker",
+          "maximum_depth": 1
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 1,
+          "calls_started": 1,
+          "exclusive_ns": 15920000,
+          "inclusive_ns": 15920000,
+          "label": "certificate.head.producer",
+          "maximum_depth": 1
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 1,
+          "calls_started": 1,
+          "exclusive_ns": 14849000,
+          "inclusive_ns": 14849000,
+          "label": "certificate.head.checker",
+          "maximum_depth": 1
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 1,
+          "calls_started": 1,
+          "exclusive_ns": 16927000,
+          "inclusive_ns": 16927000,
+          "label": "mark.freeze",
+          "maximum_depth": 1
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 1,
+          "calls_started": 1,
+          "exclusive_ns": 26583000,
+          "inclusive_ns": 26583000,
+          "label": "mark.initial_check",
+          "maximum_depth": 1
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "point.construct",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "pool.prepare",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 1,
+          "calls_started": 1,
+          "exclusive_ns": 4222547000,
+          "inclusive_ns": 4222547000,
+          "label": "case.total",
+          "maximum_depth": 1
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "point.check_marking",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "point.initial_state",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "point.private_state",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "point.base_projection",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "point.base_key",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "point.rebuild",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "point.check_projection",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "query.propose",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "query.check",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "fallback.open",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "family.propose",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "family.consume",
+          "maximum_depth": 0
+        },
+        {
+          "calls_raised": 0,
+          "calls_returned": 0,
+          "calls_started": 0,
+          "exclusive_ns": 0,
+          "inclusive_ns": 0,
+          "label": "proof.observe",
+          "maximum_depth": 0
+        }
+      ],
+      "measured_root_ns": 4341304000,
+      "open_spans": 0,
+      "performance_accepted": false,
+      "schema": "ROOT-nested-current-validation-cost-ledger-v1",
+      "scientific_acceptance": false,
+      "unmeasured_time_is_zero": false,
+      "version": "ROOT-nested-current-validation-cost-ledger-v1"
+    },
+    "logical_proof_accepted": false,
+    "native_external_seconds": 4.950168,
+    "original_context_binding_preserved": true,
+    "owned_peak_bytes": 99729408,
+    "pending_case_ids": [],
+    "performance_accepted": false,
+    "plan": {
+      "bytes": 20855,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/ROOT-plan-v1.json",
+      "sha256": "c97884b47bfe3699a7c4bdbc1b0283f7cbd08aef16bb482ba0b7a620915e3f2a"
+    },
+    "point_search_executed": false,
+    "schema": "ROOT-licensed-cluster-finite-case-admission-v1",
+    "scientific_replays": 0,
+    "scope_gaps": [
+      "Finite free-variable arity-zero TERM probes; not full higher-arity TERM/FORMULA, all capture/eigenvariable inputs or universal schema soundness.",
+      "Generic provided-corruption and first-callback fixtures, not all interleavings or a new independent audit of checker author.",
+      "Hypothetical local unions with unresolved receptors are not selected-DAG proofs, scheduler transactions or complete tilings.",
+      "No search engine runs here; a proof claim still requires a fresh selected proof and independent1717 under Root custody."
+    ],
+    "status": "CLOSED_FINITE_LICENSED_CLUSTER_INVENTORY_PASS",
+    "transport": {
+      "bytes": 2330,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+      "sha256": "0045b34a0c25d2142dc249050db4f167b90f3b5b866c23ba128a4f70ec90a755"
+    },
+    "universal_family_validity_proved": false,
+    "whole_output_and_native_resources_closed": true,
+    "work_counts": {
+      "accepted_nonidentity_instances": 4,
+      "ground_expansions": 3,
+      "host_adaptation_calls": 6,
+      "independent_cut_checks": 10,
+      "mining_calls": 1,
+      "term_attempts": 4
+    }
+  },
+  "ROOT_admission_preimage": {
+    "bytes": 15546,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/ROOT-case-admission-v1.json",
+    "sha256": "f5a1a143f6e1bf7fd07b6895bb47a6ae19b7a0f4e846c187d0007d6792c7e59a"
+  },
+  "conditional_instances_only": true,
+  "exact_actual": {
+    "bytes": 5141311,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/licensed-cluster-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+    "sha256": "af0707683cbd22fb52412901c4acf138615afceeb63ba96abba6cbf3b68524bb"
+  },
+  "goal_complete": false,
+  "independent_saved_data_review": {
+    "bytes": 7283,
+    "path": "/private/tmp/gcts-licensed-cluster-finite-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "f2b567174b60832bfa1177b7265c29030f4eb95d067e6999907d14fc68b16637"
+  },
+  "independent_saved_data_review_pending": false,
+  "new_theorem_discovered": false,
+  "point_search_executed": false,
+  "schema": "licensed-cluster-reviewed-finite-study-summary-v1",
+  "source_English_map": {
+    "bytes": 8318,
+    "path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/licensed-cluster-six-case-English-map-v2.json",
+    "sha256": "197b0d20642003e98a95150d9207dd5395c7306ab131bfbc0b445287ae585497"
+  },
+  "status": "CLOSED_FINITE_LICENSED_CLUSTER_INVENTORY_PASS"
+}

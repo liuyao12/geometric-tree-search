@@ -1,0 +1,121 @@
+{
+  "API": {
+    "bytes": 3908,
+    "path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/cases-API-wire-v1.json",
+    "sha256": "a0da6b7dca3345a45eb42f555a97fb721369b6c68e7f78e18276debe9fb75c32"
+  },
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "author_ancestry": "Author of this finite CASE and licensed-cut checker; earlier cache/two-witness CASEs/checker and verifier398acd. This map documents authored tests and is not an independent Source audit.",
+  "author_identity": "/root/conventional_control_review",
+  "case_count": 6,
+  "case_id_order": [
+    "bounded_mining",
+    "nonidentity_UI_instances",
+    "nonidentity_EQ_instances",
+    "closure_and_source_tampering",
+    "syntax_is_not_native_licence",
+    "owned_receipt_and_exception_origin"
+  ],
+  "checker_source": {
+    "bytes": 27980,
+    "path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/independent_licensed_cut_checker_v2.py",
+    "sha256": "d5ac27c67977c5ba5a0093d9ba9909706460fff816023d893f8df04ef4c76351"
+  },
+  "clock_evaluations": 0,
+  "codec_evaluations": 0,
+  "entries": [
+    {
+      "case_id": "bounded_mining",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "A finite proposal prefix is not exhaustive and its descriptors are not all independently admitted. The donor flag is not a proof graph. No receiver target or proof route selects these cuts.",
+      "runtime_result_attached": false,
+      "summary": "Mine a bounded larger-cluster prefix",
+      "what_it_checks": "Read the full donor derivation from its saved request and ask the separate miner for a declared prefix of connected larger cuts with implication-license closure. Retain the whole returned prefix and its costs."
+    },
+    {
+      "case_id": "nonidentity_UI_instances",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Only the declared free-variable term-probe class is searched. External receptors remain unfilled conditional obligations. Native local admission is not a selected proof, a new theorem or a universal family theorem. An insufficient prefix returns UNKNOWN with pending cases.",
+      "runtime_result_attached": false,
+      "summary": "Adapt instantiation clusters to two changed terms",
+      "what_it_checks": "Select the first admissible mined family with an included instantiation license and a free-variable term receptor. Try a bounded term prefix from the original signature. Require two distinct nonidentity instances of the same family, complete independent expansion, original primitive membership and a fresh hypothetical point union."
+    },
+    {
+      "case_id": "nonidentity_EQ_instances",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "The equality license remains an actual original primitive implication, not a new rewriting axiom. Conditional inputs are not facts. This does not establish all possible term or formula substitutions, global search or a theorem.",
+      "runtime_result_attached": false,
+      "summary": "Adapt equality-transport clusters to two changed terms",
+      "what_it_checks": "Apply the same target-blind bounded selection to a family containing an equality-transport license. Retain two distinct nonidentity same-family instances with full formula, ordered-read, original-rule and hypothetical-union receipts."
+    },
+    {
+      "case_id": "closure_and_source_tampering",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "The first three provided corruptions may fail earlier structural invariants. The additional sharing-policy variant must reach the exact policy mismatch. This remains a finite supplied-data regression, not every possible provenance attack.",
+      "runtime_result_attached": false,
+      "summary": "Reject corrupted extraction records",
+      "what_it_checks": "Provide separate corruptions of a source-node mapping, a selected license member and an ordered-edge index. Require rejection and retain the actual error reason. Additionally weaken the first selected original distinct-input sharing policy, recompute the family identity and ground proposal, and require rejection at the specific independent original-policy comparison."
+    },
+    {
+      "case_id": "syntax_is_not_native_licence",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "These deliberately supplied corruptions test a validation boundary. They are not mined discoveries, proofs of native unsoundness or a complete set of malformed-license cases. Genuine resource and delegated callback failures must propagate.",
+      "runtime_result_attached": false,
+      "summary": "Keep syntax expansion separate from native validity",
+      "what_it_checks": "Corrupt the output formula of an instantiation or equality-transport primitive in a supplied test descriptor. Require independent syntax expansion to succeed, followed by the specific original native-language rejection rather than a local-cluster result."
+    },
+    {
+      "case_id": "owned_receipt_and_exception_origin",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "This finite returned-packet mutation checks the sampled nested fields and a fresh repeat, not all aliases or all inputs. Only first callbacks are sampled. Saved JSON cannot independently re-observe object identity. Protected callbacks must also be used by the Root-created original context.",
+      "runtime_result_attached": false,
+      "summary": "Mutate an actual returned receipt and preserve first-callback errors",
+      "what_it_checks": "Keep a pristine receipt, obtain another fresh receipt directly from the checker and mutate that actual returned nested packet. Recompute once more and compare with the pristine result. Separately inject specific exceptions at the first source-guard and first tick callbacks and require propagation of the same objects."
+    }
+  ],
+  "independent_audit_claimed": false,
+  "kernel_or_checker_evaluations": 0,
+  "logical_proof_accepted": false,
+  "miner_source": {
+    "bytes": 55478,
+    "path": "/private/tmp/gcts-larger-cluster-miner-source-20261018/receptor_family_miner_v4.py",
+    "sha256": "31619db6656c8244de134f0551d4120cc3b3767040908f64ce7aff23182f21ca"
+  },
+  "module_evaluations": 0,
+  "native_runs": 0,
+  "performance_accepted": false,
+  "preserved_V1_map": {
+    "bytes": 7993,
+    "path": "/private/tmp/gcts-larger-cluster-checker-source-20261018/licensed-cluster-six-case-English-map-v1.json",
+    "sha256": "6d092b04c8792c2a26b5354022644822ec3836b9296f125a0dce80319d4b72b4"
+  },
+  "runtime_PASS_claimed": false,
+  "runtime_results_included": false,
+  "schema": "licensed-cluster-six-case-English-map-v2",
+  "scientific_calls": 0,
+  "shared_scope": {
+    "coverage_gaps": [
+      "Finite free-variable TERM probes do not cover all higher-arity TERM/FORMULA, capture or eigenvariable cases.",
+      "Only first source-guard and tick callback exception-origin positions are sampled; no all-interleaving theorem.",
+      "The checker accepts cuts with an actual included UI/EQ edge; generic vacuous-closure miner cuts may fall outside this narrower class.",
+      "Distinct peer review and Root actual admission remain required; this Source-derived map asserts no runtime PASS."
+    ],
+    "embedding": "Conditional external input rows begin after the two specially marked early rows; all primitives read strictly earlier rows. No marking is weakened and no input is promoted to a fact.",
+    "proof_requirement": "A theorem claim still requires an actual selected proof and fresh independent arithmetic verification under Root custody.",
+    "runtime_PASS_claimed": false,
+    "runtime_results_included": false,
+    "selection": "First admissible family in an explicit target-blind prefix, with all attempted and admitted instances charged and retained.",
+    "source_only": true
+  },
+  "source": {
+    "bytes": 31204,
+    "path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/licensed_cluster_finite_cases_v2.py",
+    "sha256": "972cde6bc15db7d2b2610f1f5bff394e55a27b571b918177d4760dcdfee1fe25"
+  },
+  "source_contract": {
+    "bytes": 8293,
+    "path": "/private/tmp/gcts-larger-cluster-checker-v2-source-20261018/cases-Source-contract-v1.json",
+    "sha256": "d8f962856a047aed10b4c11eab5077c5afe1723da69d694b304b8e021307a2e7"
+  }
+}
