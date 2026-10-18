@@ -1,0 +1,430 @@
+{
+  "GCTS_advantage": false,
+  "RL": false,
+  "Source_authors": {
+    "CASE_and_cold": "/root",
+    "checker_and_finite_cases": "/root/conventional_control_review",
+    "engine": "/root/conventional_library"
+  },
+  "Source_reviews": {
+    "adversarial_cases_peer": {
+      "bytes": 5581,
+      "path": "/private/tmp/gcts-checked-prototype-cache-case-peer-20261018/typed-Source-review-v2.json",
+      "sha256": "50d8220e0e84ea2342b6ae4b1ebc72b69ae0593ccd64657cb595d2b90a74a7c6"
+    },
+    "cold_peer": {
+      "bytes": 18059,
+      "path": "/private/tmp/gcts-two-witness-root-peer-20261018/cold-typed-Source-review-v1.json",
+      "sha256": "ed07a40699045e7bf397295566fb43c0e4d79ffd46947b8c03e75de2b475b545"
+    },
+    "consumer_peer": {
+      "bytes": 3346,
+      "path": "/private/tmp/gcts-cross-host-channel45-consumer-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "a81b8390cedfa82d59cd084cd641c790a659e6073627584d94ecbfea8434ac34"
+    },
+    "producer_peer": {
+      "bytes": 5511,
+      "path": "/private/tmp/gcts-row01-head-producer-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "422393b14613d31f09ca766207eefda6a412073fbbfbee76dfab6ea11e9915d8"
+    },
+    "prototype_cache_peer": {
+      "bytes": 5229,
+      "path": "/private/tmp/gcts-checked-prototype-cache-peer-20261018/typed-Source-review-v9.json",
+      "sha256": "1429f9c3dd3b8560ddb9ee33ce040fc9f550d0801cef2060767b7d8d05b2a3bf"
+    },
+    "provider_peer": {
+      "bytes": 2482,
+      "path": "/private/tmp/gcts-cross-host-pool-provider-peer-20261017/typed-Source-review-v1.json",
+      "sha256": "22a72f532b5f62513b4e8845361848d377d9d736e1f9dcce9a4d8e1b4a6bebfb"
+    },
+    "root_components_peer": {
+      "bytes": 19140,
+      "path": "/private/tmp/gcts-two-witness-root-peer-20261018/components-typed-Source-review-v1.json",
+      "sha256": "094d93fd716b0918bdb022cf77a8de7d231452355c5ed21c3110382bf09682fb"
+    },
+    "two_witness_cases_peer": {
+      "bytes": 6440,
+      "path": "/private/tmp/gcts-two-witness-checker-cases-peer-20261018/cases-typed-Source-review-v1.json",
+      "sha256": "1ba87cc408f4de4f7da1f925906a5b26248c8a5225b33aa40e7d6f5bf4edcaf3"
+    },
+    "two_witness_checker_peer": {
+      "bytes": 5944,
+      "path": "/private/tmp/gcts-two-witness-checker-cases-peer-20261018/checker-typed-Source-review-v1.json",
+      "sha256": "8c83b5e2137dd8a81d0db1ffc8d17cbc8f91b8e02a0ef8468fc1f1c381721537"
+    },
+    "two_witness_engine_peer": {
+      "bytes": 17129,
+      "path": "/private/tmp/gcts-two-witness-engine-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "3ab833f2c54bcb0646957bafe97ec8f0cf2109f148e62856921b911accc26a56"
+    },
+    "verifier_peer": {
+      "bytes": 4420,
+      "path": "/private/tmp/gcts-row1-head-independent-peer-20261018/typed-Source-review-v1.json",
+      "sha256": "629cf2ec481f25bc52a98c00f3377c75d27dd020f770949b3ab3ffdf3c7a71df"
+    }
+  },
+  "actuals": {
+    "finite-all": {
+      "mode": "CHECKED_TWO_WITNESS_REFRESH",
+      "native_seconds": 8.045458,
+      "owned_peak_bytes": 57753600,
+      "pins": {
+        "ROOT-authorization-v1.json": {
+          "bytes": 19199,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/ROOT-authorization-v1.json",
+          "sha256": "1503a326817b3a8e194fd592531493b5257604817a299cd59459f97115060181"
+        },
+        "ROOT-case-admission-v1.json": {
+          "bytes": 8638,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/ROOT-case-admission-v1.json",
+          "sha256": "65d3f38eb9413dec1e32bf4468f631a798cd7f5a70869d89bf610f97e749ac48"
+        },
+        "ROOT-expanded-result-v1.json": {
+          "bytes": 2734350,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/ROOT-expanded-result-v1.json",
+          "sha256": "7040c210d9386bce892ef21e9ca8bac96b9dd3ced88841727406fc1934e12900"
+        },
+        "ROOT-final-v1.json": {
+          "bytes": 1757,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/ROOT-final-v1.json",
+          "sha256": "859fb637bf8bc584efea238367665ff8b328bc9d74924f3bb4193fc063cc854c"
+        },
+        "ROOT-plan-v1.json": {
+          "bytes": 19381,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/ROOT-plan-v1.json",
+          "sha256": "d7253208852087b829822facd59699960bd4ef897caaef19cea79c48b88379c2"
+        },
+        "ROOT-prelaunch-v1.json": {
+          "bytes": 2007,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/ROOT-prelaunch-v1.json",
+          "sha256": "44282adc94e41e2cd55d14c14cf1ba0a698eef9e4106b6941be7b218425b36b7"
+        },
+        "ROOT-transport-native-closure-v1.json": {
+          "bytes": 2345,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+          "sha256": "1443b16353de479abad176ebe37a760a5078486d71957009ae6d59ed3e0b845d"
+        },
+        "external-v1/ONCE.json": {
+          "bytes": 254,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/external-v1/ONCE.json",
+          "sha256": "cba43d016bd0206dc2b50258ead19210b095473b0fa9ed2ee39a24332aaa45be"
+        },
+        "external-v1/meter-stderr.txt": {
+          "bytes": 793,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/external-v1/meter-stderr.txt",
+          "sha256": "0f680ed933bc99ce8787ba3ed1b80cb4c056a65cdef68b6193c7e0645d8b90ca"
+        },
+        "external-v1/meter-stdout.txt": {
+          "bytes": 830,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/external-v1/meter-stdout.txt",
+          "sha256": "401a3bb2a455e71ff62fdb03de0ce0e03d65aff27f40d2c83244d77661257943"
+        },
+        "external-v1/native-terminal.json": {
+          "bytes": 1617,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/external-v1/native-terminal.json",
+          "sha256": "6608d3c9ba1c1524062bfc238ee65e2f43987399b2f8fe6447d153e70453621f"
+        },
+        "external-v1/observation.json": {
+          "bytes": 471,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/external-v1/observation.json",
+          "sha256": "3fe5e60bd7f2214b7f0016aba2c792ac8fe603c72dd645aace5c4a51609fb10f"
+        },
+        "external-v1/postterminal-probe-stderr.txt": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/external-v1/postterminal-probe-stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "external-v1/postterminal-probe-stdout.txt": {
+          "bytes": 16,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/external-v1/postterminal-probe-stdout.txt",
+          "sha256": "4e64208607ebcda2cfcff37c10c89f57d5ae32c0bc7b1986ba44e6178870f0a1"
+        },
+        "owned-v1/engine-result.json": {
+          "bytes": 272519,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/owned-v1/engine-result.json",
+          "sha256": "e12fdcbd062d8023e9cb6923f434b4de1c2439c9c8c81b8f45cebf2d24f49095"
+        },
+        "owned-v1/response.jsonl": {
+          "bytes": 1761,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-finite-all-ROOT-20261018/owned-v1/response.jsonl",
+          "sha256": "0db917cbc814b3281cb903a51ddb554ae2a97b265a6078fb1993f862f34cfc71"
+        }
+      }
+    },
+    "legacy": {
+      "mode": "LEGACY_DOMAIN_TRANSITIONS",
+      "native_seconds": 17.494841,
+      "owned_peak_bytes": 80429056,
+      "pins": {
+        "ROOT-authorization-v1.json": {
+          "bytes": 19174,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/ROOT-authorization-v1.json",
+          "sha256": "69e69ed67ef1fc01e73a69b06f5b6b87a3eba96fd7565592dae6e883cb6df7bb"
+        },
+        "ROOT-case-admission-v1.json": {
+          "bytes": 25324,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/ROOT-case-admission-v1.json",
+          "sha256": "792e65c4a896f39fda27a5a0d9310fe75afe5d23914458caff739c6d8693ca95"
+        },
+        "ROOT-expanded-result-v1.json": {
+          "bytes": 2511090,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/ROOT-expanded-result-v1.json",
+          "sha256": "de92aaf01cda221d982085b4d54ae5e57bd656850d0021f2c3287891a826d7f9"
+        },
+        "ROOT-final-v1.json": {
+          "bytes": 1717,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/ROOT-final-v1.json",
+          "sha256": "e0a3e4f61db0b0264a70be927cb99b13c38cc13b3859a971730dfd62c1952f88"
+        },
+        "ROOT-plan-v1.json": {
+          "bytes": 19352,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/ROOT-plan-v1.json",
+          "sha256": "5034d269d888d8da958d00f7591fd4a8ad8e400fbba4e5105b5b4644ef0e557a"
+        },
+        "ROOT-prelaunch-v1.json": {
+          "bytes": 1982,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/ROOT-prelaunch-v1.json",
+          "sha256": "29c2f72dea645281611980c10f4c17e5baa9085f21be3540a203ae7e49d59608"
+        },
+        "ROOT-transport-native-closure-v1.json": {
+          "bytes": 33133,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+          "sha256": "8a3296443005785e49d2ac8c0616bd4399cde8e2174556db525b8979c187e5d1"
+        },
+        "external-v1/ONCE.json": {
+          "bytes": 250,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/external-v1/ONCE.json",
+          "sha256": "aaf4d8cd1036f29e7e5f1698640874cf02c360e9c1d5b07c2f4f7eb518c8888c"
+        },
+        "external-v1/meter-stderr.txt": {
+          "bytes": 23018,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/external-v1/meter-stderr.txt",
+          "sha256": "188e818b63775dfa0effdcfc6365c5d924534172ed6c20e91552061be509ca7f"
+        },
+        "external-v1/meter-stdout.txt": {
+          "bytes": 805,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/external-v1/meter-stdout.txt",
+          "sha256": "35276a8486dc64d5746e8a573a2c5a52605f8faa444c54fcc6d6194a835f8880"
+        },
+        "external-v1/native-terminal.json": {
+          "bytes": 1616,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/external-v1/native-terminal.json",
+          "sha256": "5cc618d65b366ec6519504731b4e2a7335d5724542ccc34d1b26d4ccb9d513bf"
+        },
+        "external-v1/observation.json": {
+          "bytes": 467,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/external-v1/observation.json",
+          "sha256": "af3da39786edf50414b6fc07d8eca91d82b9394c861ce1c2953e3cac2eb29bf7"
+        },
+        "external-v1/postterminal-probe-stderr.txt": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/external-v1/postterminal-probe-stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "external-v1/postterminal-probe-stdout.txt": {
+          "bytes": 16,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/external-v1/postterminal-probe-stdout.txt",
+          "sha256": "b273b60a29c3324b2555fe0179792d2ed177669edb3c178fd61d5e27f4f48bda"
+        },
+        "owned-v1/engine-result.json": {
+          "bytes": 299603,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/owned-v1/engine-result.json",
+          "sha256": "2d78b6d49c2abad77607614962c01d4938f0ed48b35b51892d303f8a0641463b"
+        },
+        "owned-v1/response.jsonl": {
+          "bytes": 1736,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-legacy-ROOT-20261018/owned-v1/response.jsonl",
+          "sha256": "3ab235a8adf233b48b13f368c30680c813c48ad6819c92cfd32a5858b8d114e3"
+        }
+      }
+    },
+    "refreshed": {
+      "mode": "CHECKED_TWO_WITNESS_REFRESH",
+      "native_seconds": 17.585792,
+      "owned_peak_bytes": 85934080,
+      "pins": {
+        "ROOT-authorization-v1.json": {
+          "bytes": 19182,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/ROOT-authorization-v1.json",
+          "sha256": "ea481a650457b92f574ff256f25c7860ac5e56aa3d567b08c636856566c8322e"
+        },
+        "ROOT-case-admission-v1.json": {
+          "bytes": 25336,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/ROOT-case-admission-v1.json",
+          "sha256": "07904201ee2692a2e5e7f5dc60994b6c48851d599c6dec758d5f816b53b60a4f"
+        },
+        "ROOT-expanded-result-v1.json": {
+          "bytes": 2508013,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/ROOT-expanded-result-v1.json",
+          "sha256": "53f344ad77c71bd20b427b55d64b7df93b660ff056dc7387740812a99e3047de"
+        },
+        "ROOT-final-v1.json": {
+          "bytes": 1731,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/ROOT-final-v1.json",
+          "sha256": "494c32ae1056b6353a70c8d5bb12bc596634e915434fd76ae074c633a363f731"
+        },
+        "ROOT-plan-v1.json": {
+          "bytes": 19363,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/ROOT-plan-v1.json",
+          "sha256": "a786e723a243fa62658d04c3ebd4a3f321a4146060262f0be2909f8c4a4681ba"
+        },
+        "ROOT-prelaunch-v1.json": {
+          "bytes": 1990,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/ROOT-prelaunch-v1.json",
+          "sha256": "9005a5d82067375004050008b1f7133305df493d85dc4457feab8b5aeda8cada"
+        },
+        "ROOT-transport-native-closure-v1.json": {
+          "bytes": 28586,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/ROOT-transport-native-closure-v1.json",
+          "sha256": "4dcced31ee0d72e8c8766e65b2acc7dfb105ba406f0ac8a7223b9799f9d8bab9"
+        },
+        "external-v1/ONCE.json": {
+          "bytes": 253,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/external-v1/ONCE.json",
+          "sha256": "0ab9abd047621d180554b8911e3ea57851f4a8602211fc73800f7126b8a19cdd"
+        },
+        "external-v1/meter-stderr.txt": {
+          "bytes": 19736,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/external-v1/meter-stderr.txt",
+          "sha256": "a0ba9e5b5a408110c6ddecb74096b6949bc8b0279ef292fdb0b7e2b105c7d62e"
+        },
+        "external-v1/meter-stdout.txt": {
+          "bytes": 813,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/external-v1/meter-stdout.txt",
+          "sha256": "4461fa99c6daf86fd4b8b9aec432057ba81dcefbbfe992349ed268340e35dafa"
+        },
+        "external-v1/native-terminal.json": {
+          "bytes": 1619,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/external-v1/native-terminal.json",
+          "sha256": "6f0cb6e09890186611b93d90b435b6db3202ce94aacc261fd7f8cf7e064d902a"
+        },
+        "external-v1/observation.json": {
+          "bytes": 470,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/external-v1/observation.json",
+          "sha256": "ede41320f04ba529c6b0e47c099df4f5cd654790ddb42cc83952e701d19efd9d"
+        },
+        "external-v1/postterminal-probe-stderr.txt": {
+          "bytes": 0,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/external-v1/postterminal-probe-stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "external-v1/postterminal-probe-stdout.txt": {
+          "bytes": 16,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/external-v1/postterminal-probe-stdout.txt",
+          "sha256": "1c7691f58f10a1a6d12c610b4b18e89c678194015fd80208abc88f5cb058638c"
+        },
+        "owned-v1/engine-result.json": {
+          "bytes": 299411,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/owned-v1/engine-result.json",
+          "sha256": "9d8a0d85009d8bb0bb70e9b8f2a5bf721b149a347e7602a15a3d0c5692ac71d5"
+        },
+        "owned-v1/response.jsonl": {
+          "bytes": 1744,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/right-two-two-witness-refreshed-ROOT-20261018/owned-v1/response.jsonl",
+          "sha256": "c48fe4b1df64e6fea2f5ae9f39b482aaa1a3b956a7b7e8f3b1ce5080551e9aa4"
+        }
+      }
+    }
+  },
+  "audit": {
+    "bytes": 185868,
+    "path": "/private/tmp/gcts-two-witness-three-actual-data-peer-20261018/saved-data-audit-v1.json",
+    "sha256": "38d1dbb4da9ef2bf5cbc8d57410dbd73e9793480d010db9b01c2cbeeac9edd05"
+  },
+  "author_identity": "/root",
+  "author_overlap": false,
+  "authorship_disclosure": {
+    "current_sources_unchanged": "Exact current Source32/model17/input2/data1 and11 typed Source peer pins joined; no arbitrary historical path expansion or cloud hydration.",
+    "overlap_of_other_authors": "Engine author conventional_library also authored fixed V9 and methodology. Checker/finiteCASE author conventional_control_review also authored cacheCASE2 and reused398acd verifier; finiteCASE is not their independent reaudit. Root alone owned these actual grants/native runs/decoding/admissions.",
+    "prior_reviewer_role": "Independent reviewer of preceding cache/early-row/receiver Source/data/report phases and current V16 engine/checker/finiteCASE/RootCASE6/cold Source. No Source-only pass treated as runtime or resource evidence.",
+    "reviewer_authored_actual_grant_decoder_or_admission": false,
+    "reviewer_authored_changed_scientific_component": false
+  },
+  "check_count": 1474,
+  "complete_board_accepted": false,
+  "current_explicit_raw_pins_verified": 73,
+  "data_review_passed": true,
+  "decompressions": 0,
+  "distinct_reviewer": true,
+  "evidence_scope_addendum": {
+    "bytes": 1386,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/two-witness-study-progress-20261018/ROOT-saved-evidence-scope-addendum-v1.json",
+    "sha256": "50c74da8c2677c4129d3cbbaf7822df2dbdd3d49ebb7f53435989f30cb59353d"
+  },
+  "findings": [
+    {
+      "detail": "Three separate plans/grants/once/native/output/Root admission/final receipts exactly pinned; all terminal/reaped/zero exit. Saved native intervals show finite-all, legacy, refreshed sequentially with no overlap. Same current Source32, original model17 and logical binding/input/fullpool/frozenROW01/EMPTY/V9 cache; mode differs as declared. Whole raw Source/input pre/post and bounded output metadata close; no reviewer decoding/replay.",
+      "disposition": "PASS-SAVED-DATA",
+      "id": "CLOSED-CURRENT-CUSTODY"
+    },
+    {
+      "detail": "All18 declared finite cases complete with no pending IDs. Full positive/abstention receipts and safe current key subsets examined; missing/zero, support/remote occupancy, selected/excluded fixtures, capsule/authority, ownership and refusal scopes join. Five guard and9 finite calibrated tick origin subcases record exact sentinel propagation/no returned bound. Serialized assertions tied to exact native CASESource, not independently re-observed object identity.",
+      "disposition": "PASS-FINITE-SAVED-EVIDENCE",
+      "id": "FINITE18"
+    },
+    {
+      "detail": "SEARCH counters under the exact reviewed guarded engine report23 proposals,17 attempts,16 admissions and0 abstentions; native degree checks returned25 versus33 legacy, so aggregate repeated row-evidence completions41 versus33. SEARCH retains no16 individual witness_refresh_check packets and no nonempty intermediate pool snapshot; no independent per-bound or intermediate-pool literal audit/replay claimed. Root scope addendum50c74da8 binds this limitation to original frozen95b summary. Finite checker receipts remain separate.",
+      "disposition": "QUALIFIED-SOURCE-AND-COUNTER-INFERENCE",
+      "id": "LIVE-REFRESH-EVIDENCE-LIMIT"
+    },
+    {
+      "detail": "Each SEARCH full saved before/after semantic snapshot is literally equal, including owned empty pool/context/policy/census; root/final hashes, restored stack flags and27 permanent reference seeds join. Operational counts remain outside semantic snapshot. Cross-arm full snapshot equality not claimed because policy modes intentionally differ.",
+      "disposition": "PASS-LITERAL-SAVED-EVIDENCE",
+      "id": "DIRECT-WHOLE-ROLLBACK"
+    },
+    {
+      "detail": "Both UNKNOWN work17 with identical literal9events/last observed state, one full-key TRY, one branch/placement/backtrack/restore, no forced/family choice and no proof. Same MP23 first alternative reads0,1 then childDEAD0, restores and excludes only exhausted child. More completed internal evidence checks did not reach another TRY/decision or target proof. Contemporary V16 collision census costs shared; not historicalV15 timing replication.",
+      "disposition": "DECLARED-CRITERION-NOT-MET",
+      "id": "NO-SEARCH-PROGRESS"
+    },
+    {
+      "detail": "Saved native seconds8.045458/17.494841/17.585792; peaks57753600/80429056/85934080bytes under native20/512 limits. Ledger23 disjoint exclusive sums/call partitions close; witness work included in outer residual and not isolated. Cache calls/partitions/cold starts and observation caps join. No statistical speedup, GCTS/RL advantage, learned marking, new theorem or full model conformance accepted.",
+      "disposition": "PASS-OBSERVED-BOUNDS-NO-SPEED-CLAIM",
+      "id": "RESOURCES-AND-PROFILING"
+    },
+    {
+      "detail": "Frozen next brief stops frontier/cache micro-optimization and proposes generic larger primitive proof clusters with full fallback and matched same-knowledge controls. No new scientific grants or executions arise from this audit or next brief.",
+      "disposition": "CONSISTENT-WITH-DECLARED-RESEARCH-DECISION",
+      "id": "STOP-RULE"
+    }
+  ],
+  "full_GCTS_conformance": false,
+  "goal_complete": false,
+  "learned_marking": false,
+  "limitations": [
+    "Source32/model17/input2/data1 and direct current review/Root/native refs only. No arbitrary historical path expansion/cloud hydration.",
+    "No codec/base64/decompression or project/module/kernel/checker/native/clock/scientific replay. Expanded linkage uses saved Root decoder/envelope hash metadata.",
+    "SEARCH23proposals/17attempts/16admissions are authenticated reviewed-Source+counter evidence. SEARCH saves no16per-bound witness_refresh_check receipts and no nonempty intermediate pool snapshot; independent per-bound or intermediate-pool literal audit is not claimed. Whole saved root before==after and stack restored flags directly checked.",
+    "Finite18 positive lower-bound receipts saved separately and examined; finite public engine fixtures retain disclosed empty-pool/certified-child-failure gaps. Serialization cannot independently re-observe exception object identity; saved assertions are bound to exact CASESource/native success.",
+    "Only explicitly Source-valid keys/packets checked; poisoned returned data, malformed witnesses/census/capsules and invalid supplied states skipped for cryptographic key validation.",
+    "Native33+0 vs25+16 completed evidence checks are aggregate repeated checks, not distinct proof rows. Same9events/oneTRY/oneplacement/backtrack/no proof; no performance/GCTS/RL/search-gain acceptance. Same contemporaryV16 census baseline is not historicalV15 timing."
+  ],
+  "logical_proof_accepted": false,
+  "mismatch_count": 0,
+  "module_evaluations": 0,
+  "performance_accepted": false,
+  "project_kernel_checker_native_clock_codec_evaluations": 0,
+  "proofs_discovered": 0,
+  "review_script": {
+    "bytes": 29377,
+    "path": "/private/tmp/audit_two_witness_saved_data_peer_20261018.py",
+    "sha256": "808822949d051548fcf488e18c0a7087f2501f5b04e6b393be82f66bb4790bea"
+  },
+  "reviewer_identity": "/root/receiver_driver_review",
+  "saved_data_only": true,
+  "schema": "ROOT-person-independent-two-witness-three-actual-saved-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Three closed prospective V16 finite/legacy/refreshed actuals; independent saved JSON/raw pin/receipt audit with explicit intermediate-evidence limits",
+  "source_valid_packet_key_occurrences": {
+    "finite-valid": 97,
+    "legacy": 109,
+    "refreshed": 109
+  },
+  "summary": {
+    "bytes": 1160439,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/two-witness-study-progress-20261018/ROOT-study-summary-v1.json",
+    "sha256": "95b5d71e45c4935879028404b45dcfa932f98cc08629e0f7d278d6dc827568f1"
+  }
+}

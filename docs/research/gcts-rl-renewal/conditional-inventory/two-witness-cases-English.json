@@ -1,0 +1,215 @@
+{
+  "API": {
+    "bytes": 3537,
+    "path": "/private/tmp/gcts-two-witness-checker-source-20261018/cases-API-wire-v1.json",
+    "sha256": "f30386bf6c53ab4616ef1e202a1f9e11e4309eb057c7f522dab6cd54b74efdba"
+  },
+  "GCTS_advantage_accepted": false,
+  "RL_accepted": false,
+  "author_ancestry": "Author of the new two-witness checker and finite CASE, prior cache CASE2 and verifier398acd. These are descriptions of authored tests, not an independent audit of those components. Authored neither engineV16 nor Root cold caller/actuals or the distinct Source peer.",
+  "author_identity": "/root/conventional_control_review",
+  "case_count": 18,
+  "case_id_order": [
+    "fresh_pair",
+    "same_support_global_ledger",
+    "fresh_read_occupancy",
+    "support_changed",
+    "selected_excluded_provided",
+    "remote_formula_conflict",
+    "explicit_zero_absence",
+    "duplicate_witness",
+    "malformed_stale_witness",
+    "malformed_collision_census",
+    "stale_source_capsule",
+    "effective_authority_error",
+    "returned_ownership",
+    "guard_exception_origin",
+    "tick_exception_origin",
+    "conservative_abstain",
+    "engine_public_transactions",
+    "engine_inspection_ownership"
+  ],
+  "checker_source": {
+    "bytes": 12481,
+    "path": "/private/tmp/gcts-two-witness-checker-source-20261018/independent_two_witness_refresh_checker_v1.py",
+    "sha256": "9f2dbcfac9944ab0bb5d5819ecf7fb2ce184e9e0d6d48cb70cf0025028498a62"
+  },
+  "clock_evaluations": 0,
+  "codec_evaluations": 0,
+  "entries": [
+    {
+      "case_id": "fresh_pair",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Two generic alternatives, not a cluster whose tiles are placed together. This is not a search result or an exhaustive candidate census.",
+      "runtime_result_attached": false,
+      "summary": "Two freshly checked alternatives",
+      "what_it_checks": "Rebuild two distinct original axiom placements in the current full state. Require a fresh positive lower bound and complete current packets, without exact degree, cover, EOF, sole-choice or proof authority."
+    },
+    {
+      "case_id": "same_support_global_ledger",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "The exclusion is explicitly supplied test-state data, not a certified failed branch. A positive local bound does not certify that exclusion or the search trajectory.",
+      "runtime_result_attached": false,
+      "summary": "Changed global ledger, unchanged query support",
+      "what_it_checks": "Provide an exclusion at another row that changes the state-derived collision ledger but leaves the full possible query support unchanged. Both proposed keys must still be rebuilt and checked against the current merged ledger."
+    },
+    {
+      "case_id": "fresh_read_occupancy",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "A remote formula is not automatically a proved premise. This checks finite state and read metadata, not an assembled target proof.",
+      "runtime_result_attached": false,
+      "summary": "Read occupancy must be refreshed",
+      "what_it_checks": "Start with an unoccupied remote receptor introduced by a generic generalization tile, then fill it with its original named axiom. The refreshed alternative must change its read-occupancy field while the full possible query support remains equal."
+    },
+    {
+      "case_id": "support_changed",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "One support-changing fixture; it does not enumerate every possible dependency or prove a negative degree.",
+      "runtime_result_attached": false,
+      "summary": "Changed support causes abstention",
+      "what_it_checks": "Place a generic axiom on an earlier row so the query can see changed formula support. Require different literal projections and abstention with no candidate or degree authority."
+    },
+    {
+      "case_id": "selected_excluded_provided",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Provided exclusion fixtures are not evidence of actual certified branch failure. Abstention cannot justify pruning or a forced move.",
+      "runtime_result_attached": false,
+      "summary": "Selection and exclusion are current data",
+      "what_it_checks": "Provide one state with a proposed tile selected and another with its key excluded at the query row. Changed frontier or local inventory must prevent reuse of the old proposal."
+    },
+    {
+      "case_id": "remote_formula_conflict",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "The conflict is checked in one full current state. Abstention says neither that the query has degree zero nor that the target is impossible.",
+      "runtime_result_attached": false,
+      "summary": "A conflicting remote formula removes an alternative",
+      "what_it_checks": "Give a generalization candidate a remote formula receptor that conflicts with a currently selected different original axiom. Fresh legality leaves fewer than two available alternatives, so the checker must abstain."
+    },
+    {
+      "case_id": "explicit_zero_absence",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "The valid changed state also changes formula support, so this is not an isolated causal marking ablation. Invalid states are supplied data, not failed branches.",
+      "runtime_result_attached": false,
+      "summary": "Assigned zero differs from absence",
+      "what_it_checks": "Inspect explicit present/value triples: a fixed head zero is assigned, an untouched later head is absent, and a new remote head zero is assigned. Missing or altered fixed zeros in deliberately invalid provided states must raise the exact whole-union validation error."
+    },
+    {
+      "case_id": "duplicate_witness",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Tests one duplicate pair; it does not establish an exact number of other available placements.",
+      "runtime_result_attached": false,
+      "summary": "One witness cannot count twice",
+      "what_it_checks": "Supply the same complete placement key twice. Require abstention and an empty checked-candidate list."
+    },
+    {
+      "case_id": "malformed_stale_witness",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Five declared structural variants, not a complete parser audit. An old receipt is never accepted as current evidence.",
+      "runtime_result_attached": false,
+      "summary": "Malformed or stale keys cannot supply a bound",
+      "what_it_checks": "Try an extra old-receipt field, wrong marking identity, stale input epoch, wrong translation and wrong type identifier. Each must abstain before it can authorize a two-choice result."
+    },
+    {
+      "case_id": "malformed_collision_census",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "No cryptographic collision is forged, and no hash function or protected Source is patched. Native membership of every unrelated census entry is not claimed.",
+      "runtime_result_attached": false,
+      "summary": "Malformed collision metadata cannot authorize reuse",
+      "what_it_checks": "Supply an unsorted census, a duplicate entry and a malformed serialized preimage. Require abstention rather than treating these as current collision authority."
+    },
+    {
+      "case_id": "stale_source_capsule",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Mutates descriptor data only. The changed copy is not authenticated new Source and no executable file is modified.",
+      "runtime_result_attached": false,
+      "summary": "A changed Source capsule cannot reuse the old context",
+      "what_it_checks": "Change a byte-length descriptor in an owned copy of the executable Source capsule. Require abstention with the explicit capsule-change reason."
+    },
+    {
+      "case_id": "effective_authority_error",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Classifies only an exact completed validation error of the declared type and message; unmatched Source, native or callback errors propagate. No alternative theory is accepted.",
+      "runtime_result_attached": false,
+      "summary": "Changed effective theory remains an error",
+      "what_it_checks": "Temporarily change the actual theory on a disposable language instance. Require the exact original whole-context validation error, restore the instance, and require a fresh valid pair on retry."
+    },
+    {
+      "case_id": "returned_ownership",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Touches caller-owned ordinary data only. It does not mutate private checker, engine or prototype-cache storage.",
+      "runtime_result_attached": false,
+      "summary": "Returned receipt data cannot poison another call",
+      "what_it_checks": "Mutate nested data in a returned positive result. A later identical call must return the pristine full result, while caller states, keys, census and capsule remain unchanged."
+    },
+    {
+      "case_id": "guard_exception_origin",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Stages are precheck, before the first rebuild, between witnesses, before result copying and after result copying before return. V9 retains its authentic original guard. This is not arbitrary executable-tampering coverage.",
+      "runtime_result_attached": false,
+      "summary": "Source-guard errors keep their identity",
+      "what_it_checks": "At five direct checker guard stages, run the authentic Root guard and then raise an exact dedicated ValueError object. Require that identical object to propagate without a lower-bound receipt."
+    },
+    {
+      "case_id": "tick_exception_origin",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Nine finite interruption subcases. These thresholds do not identify every internal failure stage or simulate genuine resource exhaustion; ordinary Root resource failures still propagate.",
+      "runtime_result_attached": false,
+      "summary": "Tick errors cannot become abstention or success",
+      "what_it_checks": "After warming and calibrating the actual callback count, raise dedicated ValueError, timeout and general exception objects at first, middle and last callbacks. Require exact exception-object identity and no returned lower-bound result."
+    },
+    {
+      "case_id": "conservative_abstain",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "This checks the checker protocol. It does not execute or independently qualify the engine's ordinary fallback enumeration.",
+      "runtime_result_attached": false,
+      "summary": "Insufficient proposals grant no degree fact",
+      "what_it_checks": "Supply no keys and then only one key. Require abstention with no candidates and every exact, negative, cover, EOF and proof flag false."
+    },
+    {
+      "case_id": "engine_public_transactions",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "An empty-pool public transaction fixture, not full search or scheduler coverage. Operational counters need not roll back. Refresh and rollback through a populated live witness pool remain untested here.",
+      "runtime_result_attached": false,
+      "summary": "A generic public transaction rolls back literally",
+      "what_it_checks": "In both declared engine modes, checkpoint the actual initial state, place a generic original axiom through the public transaction API, and roll back. Compare the complete state snapshot and owned pool, policy, context, byte count and bounds."
+    },
+    {
+      "case_id": "engine_inspection_ownership",
+      "evidence_kind": "SOURCE_DERIVED_DESCRIPTION",
+      "limits": "Exercises the initial empty pool. It does not run a full decision, populated-pool refresh, certified child failure or branch exclusion, and introduces no private writes or mocked receipts.",
+      "runtime_result_attached": false,
+      "summary": "Pool inspection returns owned data",
+      "what_it_checks": "In both declared engine modes, mutate nested data in the read-only inspection result. A fresh inspection and the complete engine state snapshot must remain unchanged."
+    }
+  ],
+  "independent_audit_claimed": false,
+  "kernel_or_checker_evaluations": 0,
+  "logical_proof_accepted": false,
+  "module_evaluations": 0,
+  "native_runs": 0,
+  "performance_accepted": false,
+  "runtime_PASS_claimed": false,
+  "runtime_results_included": false,
+  "schema": "two-witness-finite-cases-English-map-v1",
+  "scientific_calls": 0,
+  "shared_scope": [
+    "Source-derived descriptions only. No case execution, runtime PASS or new theorem is reported by this map.",
+    "All finite cases use original generic axiom and inference fixtures, with no supplied target proof or preferred route.",
+    "Two freshly legal alternatives give a lower bound only; no exact degree, zero, singleton, complete cover, EOF, pruning or proof follows.",
+    "Assigned zero is a value; absence is unconstrained. Literal full point data is compared rather than only its digest.",
+    "Provided exclusions and invalid states are labeled input fixtures, not actual certified failed branches.",
+    "No whole live-pool, scheduler or search runtime coverage. Populated-pool transition and rollback require separate Source analysis and matched actual evidence.",
+    "Five guard stages and nine tick interruption subcases are finite exception-origin tests, not all possible interleavings or hostile callback behavior.",
+    "Trusted pinned Root callbacks and Source custody are assumed. Root owns any later grants, native execution, resource admission and public results."
+  ],
+  "source": {
+    "bytes": 25521,
+    "path": "/private/tmp/gcts-two-witness-checker-source-20261018/two_witness_refresh_cases_v1.py",
+    "sha256": "279cdbcf469c17ba92dc9b7099b56759553844ad1ec1cdcb24c285f9f1685e56"
+  },
+  "source_contract": {
+    "bytes": 8928,
+    "path": "/private/tmp/gcts-two-witness-checker-source-20261018/cases-Source-contract-v1.json",
+    "sha256": "604c525e241e383a6d677416daa130c6d9dc26c710a5c07bd1d70dfc0cf5606f"
+  }
+}
