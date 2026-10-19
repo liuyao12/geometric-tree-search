@@ -1,0 +1,516 @@
+{
+  "Native_calls": 0,
+  "conclusions": [
+    "All16 inventory failures are unchanged Native simulated-space UNKNOWN with physical_head74896/state2, below the declared5e9 microstep cap.",
+    "Host high-water profiles passed; this does not identify the precise internal parser/checker phase.",
+    "No Model or search was constructed for these16 original runs.",
+    "Exact dependency closures are much smaller sets of bodies; fit and end-to-end cost remain unmeasured. No input/definition/interface filtering is justified by these records."
+  ],
+  "goal_complete": false,
+  "opaque_gzip_decodes": 0,
+  "prior_admission": {
+    "bytes": 2465113,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "da6088925e44be6ca4bcb7fb21573fc676c8706eb01cc59f5eb73ceb7998371c"
+  },
+  "records": [
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 39443,
+      "compiler_complete": true,
+      "definitions": 38,
+      "interfaces": 38,
+      "invocation_id": "fol-suite-002-symbolic-and-support-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "symbolic",
+      "native_result": {
+        "micro_fnv64": "15010669298979464606",
+        "micro_steps": 872854609,
+        "peak_native_memory_bytes": 12959744,
+        "physical_head": 74896,
+        "physical_steps": 23994308936408,
+        "seconds": 6.37055,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 271.03125,
+      "receiver_id": "prospective-fol-20261018-002",
+      "request_sha256": "f137f13b8ee002c2a7d9222d64440f09a44013699acb1698bb631c85de833e39",
+      "result": {
+        "bytes": 367861,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-symbolic-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "99a216363ff121d11d666d74f2d3cea725287a0210e1a1ec02476b86dbf113f6"
+      },
+      "search_ordering": "and_support",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 39443,
+      "compiler_complete": true,
+      "definitions": 38,
+      "interfaces": 38,
+      "invocation_id": "fol-suite-002-symbolic-legacy-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "symbolic",
+      "native_result": {
+        "micro_fnv64": "15010669298979464606",
+        "micro_steps": 872854609,
+        "peak_native_memory_bytes": 12976128,
+        "physical_head": 74896,
+        "physical_steps": 23994308936408,
+        "seconds": 6.40875,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 275.15625,
+      "receiver_id": "prospective-fol-20261018-002",
+      "request_sha256": "f137f13b8ee002c2a7d9222d64440f09a44013699acb1698bb631c85de833e39",
+      "result": {
+        "bytes": 367667,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-symbolic-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "7470a9deb581ad0cb5c95f2e14e9009ea8ece7577fd9104026af88204e6602b4"
+      },
+      "search_ordering": "legacy",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 39443,
+      "compiler_complete": true,
+      "definitions": 38,
+      "interfaces": 38,
+      "invocation_id": "fol-suite-002-fixed-and-support-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "fixed",
+      "native_result": {
+        "micro_fnv64": "15010669298979464606",
+        "micro_steps": 872854609,
+        "peak_native_memory_bytes": 12959744,
+        "physical_head": 74896,
+        "physical_steps": 23994308936408,
+        "seconds": 6.38244,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 271.171875,
+      "receiver_id": "prospective-fol-20261018-002",
+      "request_sha256": "f137f13b8ee002c2a7d9222d64440f09a44013699acb1698bb631c85de833e39",
+      "result": {
+        "bytes": 367738,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-fixed-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "4a4dba4704d6b543d61fe396911d9941d8124720ce8dcccacdfd56f9665bd06a"
+      },
+      "search_ordering": "and_support",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 39443,
+      "compiler_complete": true,
+      "definitions": 38,
+      "interfaces": 38,
+      "invocation_id": "fol-suite-002-fixed-legacy-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "fixed",
+      "native_result": {
+        "micro_fnv64": "15010669298979464606",
+        "micro_steps": 872854609,
+        "peak_native_memory_bytes": 12943360,
+        "physical_head": 74896,
+        "physical_steps": 23994308936408,
+        "seconds": 6.512,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 271.046875,
+      "receiver_id": "prospective-fol-20261018-002",
+      "request_sha256": "f137f13b8ee002c2a7d9222d64440f09a44013699acb1698bb631c85de833e39",
+      "result": {
+        "bytes": 367541,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-fixed-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "a8e4862bcc8f4a74f6c6a68a8aa2157508f5004c51706eb708c63641515a0ceb"
+      },
+      "search_ordering": "legacy",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 68901,
+      "compiler_complete": true,
+      "definitions": 72,
+      "interfaces": 72,
+      "invocation_id": "fol-suite-003-symbolic-legacy-ROOT-20261018-v1",
+      "maximum_dependency_closure": 3,
+      "mode": "symbolic",
+      "native_result": {
+        "micro_fnv64": "8836801217007940896",
+        "micro_steps": 637751583,
+        "peak_native_memory_bytes": 12926976,
+        "physical_head": 74896,
+        "physical_steps": 19984599554136,
+        "seconds": 4.75227,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 270.8125,
+      "receiver_id": "prospective-fol-20261018-003",
+      "request_sha256": "25233dfcb46f8e007e14e671cf429a296c29e1802ca8ad99f699409355b7c10f",
+      "result": {
+        "bytes": 523336,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-symbolic-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "8e4ea6c56c1fd0758045be65d5e69d22598c810bb2fdd3885d26aa9b1cb77790"
+      },
+      "search_ordering": "legacy",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 68901,
+      "compiler_complete": true,
+      "definitions": 72,
+      "interfaces": 72,
+      "invocation_id": "fol-suite-003-fixed-and-support-ROOT-20261018-v1",
+      "maximum_dependency_closure": 3,
+      "mode": "fixed",
+      "native_result": {
+        "micro_fnv64": "8836801217007940896",
+        "micro_steps": 637751583,
+        "peak_native_memory_bytes": 12926976,
+        "physical_head": 74896,
+        "physical_steps": 19984599554136,
+        "seconds": 4.65354,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 272.6875,
+      "receiver_id": "prospective-fol-20261018-003",
+      "request_sha256": "25233dfcb46f8e007e14e671cf429a296c29e1802ca8ad99f699409355b7c10f",
+      "result": {
+        "bytes": 523412,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-fixed-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "602e95cc0ba0aec73bc7cb703a3919ccb3cddbf8626410af01ffaa0e63cfe8bf"
+      },
+      "search_ordering": "and_support",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 68901,
+      "compiler_complete": true,
+      "definitions": 72,
+      "interfaces": 72,
+      "invocation_id": "fol-suite-003-fixed-legacy-ROOT-20261018-v1",
+      "maximum_dependency_closure": 3,
+      "mode": "fixed",
+      "native_result": {
+        "micro_fnv64": "8836801217007940896",
+        "micro_steps": 637751583,
+        "peak_native_memory_bytes": 12992512,
+        "physical_head": 74896,
+        "physical_steps": 19984599554136,
+        "seconds": 4.6436,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 272.40625,
+      "receiver_id": "prospective-fol-20261018-003",
+      "request_sha256": "25233dfcb46f8e007e14e671cf429a296c29e1802ca8ad99f699409355b7c10f",
+      "result": {
+        "bytes": 523250,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-fixed-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "fe9f16247cc1f4266324a724c9ac0b1fbe3decbb22d449c35ce1f3f55c768e12"
+      },
+      "search_ordering": "legacy",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 68901,
+      "compiler_complete": true,
+      "definitions": 72,
+      "interfaces": 72,
+      "invocation_id": "fol-suite-003-symbolic-and-support-ROOT-20261018-v1",
+      "maximum_dependency_closure": 3,
+      "mode": "symbolic",
+      "native_result": {
+        "micro_fnv64": "8836801217007940896",
+        "micro_steps": 637751583,
+        "peak_native_memory_bytes": 12910592,
+        "physical_head": 74896,
+        "physical_steps": 19984599554136,
+        "seconds": 4.62353,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 271.75,
+      "receiver_id": "prospective-fol-20261018-003",
+      "request_sha256": "25233dfcb46f8e007e14e671cf429a296c29e1802ca8ad99f699409355b7c10f",
+      "result": {
+        "bytes": 523518,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-symbolic-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "8acddd06b976c5cca9a63c769dd9798b4e93ec1ae824bb0728971ea79e6895aa"
+      },
+      "search_ordering": "and_support",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 59675,
+      "compiler_complete": true,
+      "definitions": 53,
+      "interfaces": 53,
+      "invocation_id": "fol-suite-005-fixed-legacy-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "fixed",
+      "native_result": {
+        "micro_fnv64": "5696635576699901382",
+        "micro_steps": 915798408,
+        "peak_native_memory_bytes": 13303808,
+        "physical_head": 74896,
+        "physical_steps": 27182867156390,
+        "seconds": 6.64668,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 271.5625,
+      "receiver_id": "prospective-fol-20261018-005",
+      "request_sha256": "2016f6ba0decad2d9fb13c34671b9173e24e1177099c78c9d45b53aad0ab8a31",
+      "result": {
+        "bytes": 581984,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-fixed-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "8bc4bd7d6a74ec778c28a5a9c4a7eb28fda494bad8cf6b489a52e630ecf6e1ee"
+      },
+      "search_ordering": "legacy",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 59675,
+      "compiler_complete": true,
+      "definitions": 53,
+      "interfaces": 53,
+      "invocation_id": "fol-suite-005-symbolic-and-support-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "symbolic",
+      "native_result": {
+        "micro_fnv64": "5696635576699901382",
+        "micro_steps": 915798408,
+        "peak_native_memory_bytes": 13484032,
+        "physical_head": 74896,
+        "physical_steps": 27182867156390,
+        "seconds": 6.7462,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 277.78125,
+      "receiver_id": "prospective-fol-20261018-005",
+      "request_sha256": "2016f6ba0decad2d9fb13c34671b9173e24e1177099c78c9d45b53aad0ab8a31",
+      "result": {
+        "bytes": 582276,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-symbolic-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "88a831e4c9703eaf7833dc078e930e39691d17feb627241403e986646502e43f"
+      },
+      "search_ordering": "and_support",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 59675,
+      "compiler_complete": true,
+      "definitions": 53,
+      "interfaces": 53,
+      "invocation_id": "fol-suite-005-symbolic-legacy-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "symbolic",
+      "native_result": {
+        "micro_fnv64": "5696635576699901382",
+        "micro_steps": 915798408,
+        "peak_native_memory_bytes": 12894208,
+        "physical_head": 74896,
+        "physical_steps": 27182867156390,
+        "seconds": 6.67277,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 271.0,
+      "receiver_id": "prospective-fol-20261018-005",
+      "request_sha256": "2016f6ba0decad2d9fb13c34671b9173e24e1177099c78c9d45b53aad0ab8a31",
+      "result": {
+        "bytes": 582090,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-symbolic-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "033984a028acf06ce5337cdf16ea1f29997a1a793ca1064d490e9dd90bf335f6"
+      },
+      "search_ordering": "legacy",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 59675,
+      "compiler_complete": true,
+      "definitions": 53,
+      "interfaces": 53,
+      "invocation_id": "fol-suite-005-fixed-and-support-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "fixed",
+      "native_result": {
+        "micro_fnv64": "5696635576699901382",
+        "micro_steps": 915798408,
+        "peak_native_memory_bytes": 12926976,
+        "physical_head": 74896,
+        "physical_steps": 27182867156390,
+        "seconds": 6.64074,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 270.96875,
+      "receiver_id": "prospective-fol-20261018-005",
+      "request_sha256": "2016f6ba0decad2d9fb13c34671b9173e24e1177099c78c9d45b53aad0ab8a31",
+      "result": {
+        "bytes": 582148,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-fixed-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "2b3c8a0fe8f151aac6c99bc91e3b137dc7a6bdf78e746d592e3649b95c74b14c"
+      },
+      "search_ordering": "and_support",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 60223,
+      "compiler_complete": true,
+      "definitions": 53,
+      "interfaces": 53,
+      "invocation_id": "fol-suite-010-symbolic-and-support-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "symbolic",
+      "native_result": {
+        "micro_fnv64": "5760766306622304760",
+        "micro_steps": 922604950,
+        "peak_native_memory_bytes": 12894208,
+        "physical_head": 74896,
+        "physical_steps": 27385826649062,
+        "seconds": 6.84738,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 271.640625,
+      "receiver_id": "prospective-fol-20261018-010",
+      "request_sha256": "a3bd891bb1982c86b703e716e0000e499f9abdef988b3a7ed9e2d602888c654b",
+      "result": {
+        "bytes": 586443,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-symbolic-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "b6a1e3057b4ea5fbcf58fd8429e959abc75b998e328a4798f1d42d666cd13de8"
+      },
+      "search_ordering": "and_support",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 60223,
+      "compiler_complete": true,
+      "definitions": 53,
+      "interfaces": 53,
+      "invocation_id": "fol-suite-010-symbolic-legacy-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "symbolic",
+      "native_result": {
+        "micro_fnv64": "5760766306622304760",
+        "micro_steps": 922604950,
+        "peak_native_memory_bytes": 12894208,
+        "physical_head": 74896,
+        "physical_steps": 27385826649062,
+        "seconds": 6.78454,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 270.90625,
+      "receiver_id": "prospective-fol-20261018-010",
+      "request_sha256": "a3bd891bb1982c86b703e716e0000e499f9abdef988b3a7ed9e2d602888c654b",
+      "result": {
+        "bytes": 586253,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-symbolic-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "09a74e36d623a77662ef78be03eb39d22b45f780f31e4950e258a7f265898409"
+      },
+      "search_ordering": "legacy",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 60223,
+      "compiler_complete": true,
+      "definitions": 53,
+      "interfaces": 53,
+      "invocation_id": "fol-suite-010-fixed-and-support-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "fixed",
+      "native_result": {
+        "micro_fnv64": "5760766306622304760",
+        "micro_steps": 922604950,
+        "peak_native_memory_bytes": 12910592,
+        "physical_head": 74896,
+        "physical_steps": 27385826649062,
+        "seconds": 7.19038,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 271.234375,
+      "receiver_id": "prospective-fol-20261018-010",
+      "request_sha256": "a3bd891bb1982c86b703e716e0000e499f9abdef988b3a7ed9e2d602888c654b",
+      "result": {
+        "bytes": 586340,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-fixed-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "472ec4730d4103e55501ac06bc359180e63c58ef8e39b6657eb71eaa20b3aa0d"
+      },
+      "search_ordering": "and_support",
+      "search_started": false
+    },
+    {
+      "Model_constructed": false,
+      "canonical_request_bytes": 60223,
+      "compiler_complete": true,
+      "definitions": 53,
+      "interfaces": 53,
+      "invocation_id": "fol-suite-010-fixed-legacy-ROOT-20261018-v1",
+      "maximum_dependency_closure": 1,
+      "mode": "fixed",
+      "native_result": {
+        "micro_fnv64": "5760766306622304760",
+        "micro_steps": 922604950,
+        "peak_native_memory_bytes": 13352960,
+        "physical_head": 74896,
+        "physical_steps": 27385826649062,
+        "seconds": 6.84406,
+        "start": 88986,
+        "state": 2,
+        "status": "unknown_space_budget"
+      },
+      "peak_sum_MiB": 271.265625,
+      "receiver_id": "prospective-fol-20261018-010",
+      "request_sha256": "a3bd891bb1982c86b703e716e0000e499f9abdef988b3a7ed9e2d602888c654b",
+      "result": {
+        "bytes": 586158,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-fixed-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "cfaf748598cb39cabbb36b4e94ced7e3fac0a990d115c681a1aced82267c830e"
+      },
+      "search_ordering": "legacy",
+      "search_started": false
+    }
+  ],
+  "schema": "ROOT-saved-inventory-heap-evidence-v1",
+  "scientific_calls": 0
+}

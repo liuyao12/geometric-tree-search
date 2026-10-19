@@ -1,0 +1,2919 @@
+{
+  "Native_calls": 0,
+  "Root_admission": {
+    "bytes": 212243,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "3652461f48873a7e669a18d458d5a255779300abbf2af15b8d2f217a5f2e5efc"
+  },
+  "Root_summary_join": {
+    "bytes": 17331,
+    "path": "/private/tmp/gcts-inventory-certification-retained-data-peer-20261018/Root-summary-join-v1.json",
+    "sha256": "a0d018f7128859da99fe046c8c3252dfa7779312a5010171531cfa143d10aa12"
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root",
+  "authorized_index": {
+    "bytes": 48702,
+    "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "419adfa495ea3f1a90be681deb3de25c0d4cf309b1d99437c01bdc2b343fb512"
+  },
+  "authorship_and_independence": {
+    "new_registry_driver_cold_and_actual_owner": "/root",
+    "reviewer_not_author_of_current_actuals_or_new_Root_certification_Source": true,
+    "reviewer_prior_authorship": [
+      "point-ordering adapter",
+      "quantified compiler and ordinary/compact Model",
+      "storage bridge",
+      "earlier parent driver/cold/renderer portions"
+    ],
+    "scope": "Retained data review only; no new independent Source certificate for my own prior modules or a soundness proof of Native. Existing independent Source peers and separate resource gates remain distinct."
+  },
+  "blockers": [],
+  "checks_passed": 11375,
+  "cohort_closure": {
+    "bytes": 26909,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-cohort-closure-v1.json",
+    "sha256": "78917aa47a3aaeb74de9b6687ae1b353cf39d394003f6487372dfc55e0ef193d"
+  },
+  "coverage": {
+    "Native_records": 1452,
+    "full_raw_bytes": 148656637,
+    "registration_queries": 228,
+    "root_rows": 48,
+    "selected_mark_pairs": 23626,
+    "selected_tiles": 240
+  },
+  "current20": [
+    {
+      "Native_records": 52,
+      "Native_total_micro_steps": 4694724623,
+      "accepted_definitions": 0,
+      "basis_count": 38,
+      "compiler_queries": 51,
+      "complete_inventory": false,
+      "definitions": 38,
+      "interfaces": 38,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-002-fixed-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "unknown_space_budget",
+      "mode": "fixed",
+      "model_present": false,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 38,
+      "queried_closure_sizes": [
+        38
+      ],
+      "receiver_id": "prospective-fol-20261018-002",
+      "region": null,
+      "registration_CPP_seconds": 6.16877,
+      "registration_micro_steps": 872854609,
+      "registration_queries": 1,
+      "registration_request_seconds": 6.63547416694928,
+      "registration_seconds": 6.63547416694928,
+      "result": {
+        "bytes": 367907,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "c8bc92e3d1035ef21d3fca88bc923e24308f8acfcfdef242747323911383292b"
+      },
+      "runner_receipt": {
+        "bytes": 103328,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "d257e755bcb46c40626d20b76f15b75d8447d8c41d6a16bc85bcb8d0243cbaf3"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724218.414559083,
+          "stage": "before_oracle",
+          "started_monotonic": 724218.414556583
+        },
+        {
+          "returned_monotonic": 724253.572086833,
+          "stage": "compile",
+          "started_monotonic": 724218.468021375
+        },
+        {
+          "returned_monotonic": 724253.953858791,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724253.58353575
+        },
+        {
+          "returned_monotonic": 724253.970295416,
+          "stage": "specialize",
+          "started_monotonic": 724253.96581375
+        },
+        {
+          "returned_monotonic": 724260.628548916,
+          "stage": "register",
+          "started_monotonic": 724253.981601708
+        },
+        {
+          "returned_monotonic": 724260.646163166,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724260.639584583
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_space_budget",
+      "worker_receipt": {
+        "bytes": 74355,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "14fe31948790be3a552c5037fce1e2b4110f52621ce99bb629c30212316af67e"
+      }
+    },
+    {
+      "Native_records": 78,
+      "Native_total_micro_steps": 8821870014,
+      "accepted_definitions": 26,
+      "basis_count": 38,
+      "compiler_queries": 51,
+      "complete_inventory": false,
+      "definitions": 38,
+      "interfaces": 38,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-002-symbolic-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma969ec1fc89735c1b6c349fd9080288bbd74b924a5f7411ad34b93aa4ed413e6d",
+      "last_result_status": "unknown_step_budget",
+      "mode": "symbolic",
+      "model_present": false,
+      "next_unqueried_definition": "lemma43e68c564d3e9f5ddb36580527fc9ffaad9bb6c239e1c9c685ec8ee963087b16",
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-002",
+      "region": null,
+      "registration_CPP_seconds": 34.97684,
+      "registration_micro_steps": 5000000000,
+      "registration_queries": 27,
+      "registration_request_seconds": 39.822304876171984,
+      "registration_seconds": 40.16637729201466,
+      "result": {
+        "bytes": 417300,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "7f71a9753fd5989ac19e76711b4f4562a251c5f0988569028925fc1dc8772792"
+      },
+      "runner_receipt": {
+        "bytes": 132582,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "ee4c5ee89b431bc773c175cf3bf4477f5d9fba8ab1634a8e53983765d56a41c4"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724261.729647208,
+          "stage": "before_oracle",
+          "started_monotonic": 724261.729644541
+        },
+        {
+          "returned_monotonic": 724296.798923583,
+          "stage": "compile",
+          "started_monotonic": 724261.781645041
+        },
+        {
+          "returned_monotonic": 724297.172735458,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724296.809654291
+        },
+        {
+          "returned_monotonic": 724297.187925083,
+          "stage": "specialize",
+          "started_monotonic": 724297.183531541
+        },
+        {
+          "returned_monotonic": 724337.365487,
+          "stage": "register",
+          "started_monotonic": 724297.199084291
+        },
+        {
+          "returned_monotonic": 724337.538845333,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724337.376706708
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_step_budget",
+      "worker_receipt": {
+        "bytes": 93889,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "4ce43e2950c14430fddd82e2b45d4d97550844903646bf36c4a5bb567023ece9"
+      }
+    },
+    {
+      "Native_records": 52,
+      "Native_total_micro_steps": 4694724623,
+      "accepted_definitions": 0,
+      "basis_count": 38,
+      "compiler_queries": 51,
+      "complete_inventory": false,
+      "definitions": 38,
+      "interfaces": 38,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-002-symbolic-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "unknown_space_budget",
+      "mode": "symbolic",
+      "model_present": false,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 38,
+      "queried_closure_sizes": [
+        38
+      ],
+      "receiver_id": "prospective-fol-20261018-002",
+      "region": null,
+      "registration_CPP_seconds": 6.10124,
+      "registration_micro_steps": 872854609,
+      "registration_queries": 1,
+      "registration_request_seconds": 6.555749165941961,
+      "registration_seconds": 6.555749165941961,
+      "result": {
+        "bytes": 367996,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "c9b8ad134f8b259d162ea08d9211f7606f9a332ebaaef4674fff0648db5e353d"
+      },
+      "runner_receipt": {
+        "bytes": 103439,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "23997b3257813df23eed58e0595d7fd9abd077e52cd53eb095b2521b9939ef9c"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724338.63757225,
+          "stage": "before_oracle",
+          "started_monotonic": 724338.637569875
+        },
+        {
+          "returned_monotonic": 724374.327224208,
+          "stage": "compile",
+          "started_monotonic": 724338.690222
+        },
+        {
+          "returned_monotonic": 724374.698620291,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724374.339303875
+        },
+        {
+          "returned_monotonic": 724374.7136505,
+          "stage": "specialize",
+          "started_monotonic": 724374.709244375
+        },
+        {
+          "returned_monotonic": 724381.2913465,
+          "stage": "register",
+          "started_monotonic": 724374.724360333
+        },
+        {
+          "returned_monotonic": 724381.308440416,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724381.302087291
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_space_budget",
+      "worker_receipt": {
+        "bytes": 74447,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "0096c9ffdf364e842c5a73e43198a9394edb71944e3c54555eedf6047ffc8827"
+      }
+    },
+    {
+      "Native_records": 78,
+      "Native_total_micro_steps": 8821870014,
+      "accepted_definitions": 26,
+      "basis_count": 38,
+      "compiler_queries": 51,
+      "complete_inventory": false,
+      "definitions": 38,
+      "interfaces": 38,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-002-fixed-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma969ec1fc89735c1b6c349fd9080288bbd74b924a5f7411ad34b93aa4ed413e6d",
+      "last_result_status": "unknown_step_budget",
+      "mode": "fixed",
+      "model_present": false,
+      "next_unqueried_definition": "lemma43e68c564d3e9f5ddb36580527fc9ffaad9bb6c239e1c9c685ec8ee963087b16",
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-002",
+      "region": null,
+      "registration_CPP_seconds": 35.279474,
+      "registration_micro_steps": 5000000000,
+      "registration_queries": 27,
+      "registration_request_seconds": 40.11188399908133,
+      "registration_seconds": 40.455409415997565,
+      "result": {
+        "bytes": 417206,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "fe94fbc3db1cf426cd827785785ccbb0aa1326614b97cccc4757ee7c93ece3c1"
+      },
+      "runner_receipt": {
+        "bytes": 132435,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "8bc5b909afdfdf63473b7a482113bd04041d76979a68063452845f9a0f714af3"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724382.394248958,
+          "stage": "before_oracle",
+          "started_monotonic": 724382.394245708
+        },
+        {
+          "returned_monotonic": 724417.70481925,
+          "stage": "compile",
+          "started_monotonic": 724382.443853791
+        },
+        {
+          "returned_monotonic": 724418.065449583,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724417.715581416
+        },
+        {
+          "returned_monotonic": 724418.080801291,
+          "stage": "specialize",
+          "started_monotonic": 724418.076561291
+        },
+        {
+          "returned_monotonic": 724458.54712625,
+          "stage": "register",
+          "started_monotonic": 724418.091702208
+        },
+        {
+          "returned_monotonic": 724458.7192105,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724458.557852666
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_step_budget",
+      "worker_receipt": {
+        "bytes": 93772,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "36c782f42384f345d3a4ff3590819bb7f5b4654c0a9b88f4554529508b1dca45"
+      }
+    },
+    {
+      "Native_records": 77,
+      "Native_total_micro_steps": 8071798262,
+      "accepted_definitions": 31,
+      "basis_count": 32,
+      "compiler_queries": 45,
+      "complete_inventory": false,
+      "definitions": 72,
+      "interfaces": 72,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-003-symbolic-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma15d48a61873caff6390b414b2cb6e150666f00aaf2683a990cefa2592fce8cd5",
+      "last_result_status": "unknown_step_budget",
+      "mode": "symbolic",
+      "model_present": false,
+      "next_unqueried_definition": "lemmaba247d19e9067157e83b4ce580631dd6a4568196e326154f4112f7e3757db2cf",
+      "planned_closure_max": 3,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-003",
+      "region": null,
+      "registration_CPP_seconds": 34.871069999999996,
+      "registration_micro_steps": 5000000000,
+      "registration_queries": 32,
+      "registration_request_seconds": 40.61014683370013,
+      "registration_seconds": 41.09125816705637,
+      "result": {
+        "bytes": 565865,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "4d4593ce3cbaafeb8bd3be5387b4f538d10db1f75ae101cbcd560455df02d24b"
+      },
+      "runner_receipt": {
+        "bytes": 131803,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "9ecf31c1299803abca66d702db1c0b5a6c4b0cff05def82b21eb2e877d18077a"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724459.858197916,
+          "stage": "before_oracle",
+          "started_monotonic": 724459.858195833
+        },
+        {
+          "returned_monotonic": 724489.574874291,
+          "stage": "compile",
+          "started_monotonic": 724459.911061083
+        },
+        {
+          "returned_monotonic": 724489.839988,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724489.586873833
+        },
+        {
+          "returned_monotonic": 724489.921894416,
+          "stage": "specialize",
+          "started_monotonic": 724489.8510435
+        },
+        {
+          "returned_monotonic": 724531.02543525,
+          "stage": "register",
+          "started_monotonic": 724489.934159625
+        },
+        {
+          "returned_monotonic": 724531.221420291,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724531.036578875
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_step_budget",
+      "worker_receipt": {
+        "bytes": 93369,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "3e049e051b03201d2f91fbc086f82c36c40a15f7c9e2bbabe3e3b5214991d21d"
+      }
+    },
+    {
+      "Native_records": 46,
+      "Native_total_micro_steps": 3709549845,
+      "accepted_definitions": 0,
+      "basis_count": 32,
+      "compiler_queries": 45,
+      "complete_inventory": false,
+      "definitions": 72,
+      "interfaces": 72,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-003-symbolic-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "unknown_space_budget",
+      "mode": "symbolic",
+      "model_present": false,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 3,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 72,
+      "queried_closure_sizes": [
+        72
+      ],
+      "receiver_id": "prospective-fol-20261018-003",
+      "region": null,
+      "registration_CPP_seconds": 4.7139,
+      "registration_micro_steps": 637751583,
+      "registration_queries": 1,
+      "registration_request_seconds": 5.407872708979994,
+      "registration_seconds": 5.407872708979994,
+      "result": {
+        "bytes": 523684,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "b5f17460e69617a2f2d8591d89a62c49b09527206bdb33a3ceb25ae69539b60d"
+      },
+      "runner_receipt": {
+        "bytes": 97123,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "f68023bd1eb925784ece87f543d0146437412b91307a6eacfd87e56a06827cf2"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724532.428430041,
+          "stage": "before_oracle",
+          "started_monotonic": 724532.42842475
+        },
+        {
+          "returned_monotonic": 724562.34446475,
+          "stage": "compile",
+          "started_monotonic": 724532.481292958
+        },
+        {
+          "returned_monotonic": 724562.607432,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724562.3554285
+        },
+        {
+          "returned_monotonic": 724562.6874865,
+          "stage": "specialize",
+          "started_monotonic": 724562.618308375
+        },
+        {
+          "returned_monotonic": 724568.117906375,
+          "stage": "register",
+          "started_monotonic": 724562.699053916
+        },
+        {
+          "returned_monotonic": 724568.136675625,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724568.129306833
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_space_budget",
+      "worker_receipt": {
+        "bytes": 70235,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "de46b3c6d162699895dc25f5d49e15d1c44e98b86e3049a633fcf3956295118a"
+      }
+    },
+    {
+      "Native_records": 77,
+      "Native_total_micro_steps": 8071798262,
+      "accepted_definitions": 31,
+      "basis_count": 32,
+      "compiler_queries": 45,
+      "complete_inventory": false,
+      "definitions": 72,
+      "interfaces": 72,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-003-fixed-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma15d48a61873caff6390b414b2cb6e150666f00aaf2683a990cefa2592fce8cd5",
+      "last_result_status": "unknown_step_budget",
+      "mode": "fixed",
+      "model_present": false,
+      "next_unqueried_definition": "lemmaba247d19e9067157e83b4ce580631dd6a4568196e326154f4112f7e3757db2cf",
+      "planned_closure_max": 3,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-003",
+      "region": null,
+      "registration_CPP_seconds": 36.328369,
+      "registration_micro_steps": 5000000000,
+      "registration_queries": 32,
+      "registration_request_seconds": 42.419399415142834,
+      "registration_seconds": 42.88748354208656,
+      "result": {
+        "bytes": 565759,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "9b36ec622ad50c7fcfb4df37dde13a48426026c44eb2704742f77ec9a480173c"
+      },
+      "runner_receipt": {
+        "bytes": 131660,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "b7552cdc3c6164840a4b353e7ad3f55066e8cd6ba0239226a830e147d43a271c"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724569.281555583,
+          "stage": "before_oracle",
+          "started_monotonic": 724569.281552791
+        },
+        {
+          "returned_monotonic": 724599.421925333,
+          "stage": "compile",
+          "started_monotonic": 724569.336209541
+        },
+        {
+          "returned_monotonic": 724599.698953458,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724599.43386225
+        },
+        {
+          "returned_monotonic": 724599.805261541,
+          "stage": "specialize",
+          "started_monotonic": 724599.710562458
+        },
+        {
+          "returned_monotonic": 724642.704939916,
+          "stage": "register",
+          "started_monotonic": 724599.817435333
+        },
+        {
+          "returned_monotonic": 724643.047452958,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724642.716664083
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_step_budget",
+      "worker_receipt": {
+        "bytes": 93257,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "6215b86b74a3c8d1726c81319bea800f3f00c518131c2472c43c76eed963d97d"
+      }
+    },
+    {
+      "Native_records": 46,
+      "Native_total_micro_steps": 3709549845,
+      "accepted_definitions": 0,
+      "basis_count": 32,
+      "compiler_queries": 45,
+      "complete_inventory": false,
+      "definitions": 72,
+      "interfaces": 72,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-003-fixed-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "unknown_space_budget",
+      "mode": "fixed",
+      "model_present": false,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 3,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 72,
+      "queried_closure_sizes": [
+        72
+      ],
+      "receiver_id": "prospective-fol-20261018-003",
+      "region": null,
+      "registration_CPP_seconds": 4.60978,
+      "registration_micro_steps": 637751583,
+      "registration_queries": 1,
+      "registration_request_seconds": 5.320611000061035,
+      "registration_seconds": 5.320611000061035,
+      "result": {
+        "bytes": 523554,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "af90428be5f5cd6a861f4b060d6302be1033c7e5e97d74b796bf155450352ab9"
+      },
+      "runner_receipt": {
+        "bytes": 96932,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "2eab70f7c8a010470fe9dffa290317ef2ed7805c34fb4405b286bafcb3ce43a1"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724645.001594541,
+          "stage": "before_oracle",
+          "started_monotonic": 724645.001588875
+        },
+        {
+          "returned_monotonic": 724676.293462333,
+          "stage": "compile",
+          "started_monotonic": 724645.063319166
+        },
+        {
+          "returned_monotonic": 724676.56501175,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724676.304996041
+        },
+        {
+          "returned_monotonic": 724676.660937041,
+          "stage": "specialize",
+          "started_monotonic": 724676.576094041
+        },
+        {
+          "returned_monotonic": 724682.005825,
+          "stage": "register",
+          "started_monotonic": 724676.673031083
+        },
+        {
+          "returned_monotonic": 724682.025591875,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724682.018223375
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_space_budget",
+      "worker_receipt": {
+        "bytes": 70091,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "5fdafdbc3543d82ed7aa7f7cebdcdf13944d0a47aced987938f2be68c9f805a4"
+      }
+    },
+    {
+      "Native_records": 98,
+      "Native_total_micro_steps": 9816760202,
+      "accepted_definitions": 0,
+      "basis_count": 76,
+      "compiler_queries": 97,
+      "complete_inventory": false,
+      "definitions": 53,
+      "interfaces": 53,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-005-symbolic-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "unknown_space_budget",
+      "mode": "symbolic",
+      "model_present": false,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 53,
+      "queried_closure_sizes": [
+        53
+      ],
+      "receiver_id": "prospective-fol-20261018-005",
+      "region": null,
+      "registration_CPP_seconds": 6.63494,
+      "registration_micro_steps": 915798408,
+      "registration_queries": 1,
+      "registration_request_seconds": 7.2854709579842165,
+      "registration_seconds": 7.2854709579842165,
+      "result": {
+        "bytes": 582440,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "a65d7c1c75cffb9e00c4c36a80ceec480ac285eb2b9d666d5bd3c71486273a94"
+      },
+      "runner_receipt": {
+        "bytes": 151946,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "89e77469231ae6f3376c72457923894bcdb88fe92e46d67ea3fa53bc6f81e0fc"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724683.178293583,
+          "stage": "before_oracle",
+          "started_monotonic": 724683.178290333
+        },
+        {
+          "returned_monotonic": 724769.333652291,
+          "stage": "compile",
+          "started_monotonic": 724683.230958875
+        },
+        {
+          "returned_monotonic": 724769.925695791,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724769.345652125
+        },
+        {
+          "returned_monotonic": 724769.946674458,
+          "stage": "specialize",
+          "started_monotonic": 724769.9381185
+        },
+        {
+          "returned_monotonic": 724777.25587125,
+          "stage": "register",
+          "started_monotonic": 724769.958569708
+        },
+        {
+          "returned_monotonic": 724777.275376333,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724777.267931166
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_space_budget",
+      "worker_receipt": {
+        "bytes": 106784,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "9337384791a698bb009b3e5c0cc0220422b5f9c7a749793a9fa5052d4678256c"
+      }
+    },
+    {
+      "Native_records": 117,
+      "Native_total_micro_steps": 13900961794,
+      "accepted_definitions": 19,
+      "basis_count": 76,
+      "compiler_queries": 97,
+      "complete_inventory": false,
+      "definitions": 53,
+      "interfaces": 53,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-005-fixed-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma8e6596d3aeef5f1cdce452c80f4c57d28c7e7e7ba495c441aab51b148d8a8d00",
+      "last_result_status": "unknown_step_budget",
+      "mode": "fixed",
+      "model_present": false,
+      "next_unqueried_definition": "lemmaaf3f31d672816b23623782aff1c9356b50c48cd714feb219cc2141e932af3ac5",
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-005",
+      "region": null,
+      "registration_CPP_seconds": 36.945319999999995,
+      "registration_micro_steps": 5000000000,
+      "registration_queries": 20,
+      "registration_request_seconds": 40.773821582784876,
+      "registration_seconds": 41.07057283294853,
+      "result": {
+        "bytes": 602526,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "b8da1f144be8c538f9aebedb9e503b32117e375c8ea8c68568a05ff0be17c6fc"
+      },
+      "runner_receipt": {
+        "bytes": 173261,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "90012824aab7efbf69695a8198328fe3bd247f5e87d4509ebbaae18ae57f2f39"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724778.472600333,
+          "stage": "before_oracle",
+          "started_monotonic": 724778.472597791
+        },
+        {
+          "returned_monotonic": 724862.957082041,
+          "stage": "compile",
+          "started_monotonic": 724778.525925916
+        },
+        {
+          "returned_monotonic": 724863.541683833,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724862.969147666
+        },
+        {
+          "returned_monotonic": 724863.562827541,
+          "stage": "specialize",
+          "started_monotonic": 724863.553911958
+        },
+        {
+          "returned_monotonic": 724904.646183541,
+          "stage": "register",
+          "started_monotonic": 724863.575588791
+        },
+        {
+          "returned_monotonic": 724904.794899333,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724904.658064166
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_step_budget",
+      "worker_receipt": {
+        "bytes": 120989,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "650388c9a6e5504536162b95b7b397f784d51d99b42417e09c155dbc7b92ded3"
+      }
+    },
+    {
+      "Native_records": 98,
+      "Native_total_micro_steps": 9816760202,
+      "accepted_definitions": 0,
+      "basis_count": 76,
+      "compiler_queries": 97,
+      "complete_inventory": false,
+      "definitions": 53,
+      "interfaces": 53,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-005-fixed-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "unknown_space_budget",
+      "mode": "fixed",
+      "model_present": false,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 53,
+      "queried_closure_sizes": [
+        53
+      ],
+      "receiver_id": "prospective-fol-20261018-005",
+      "region": null,
+      "registration_CPP_seconds": 6.64594,
+      "registration_micro_steps": 915798408,
+      "registration_queries": 1,
+      "registration_request_seconds": 7.2868708750465885,
+      "registration_seconds": 7.2868708750465885,
+      "result": {
+        "bytes": 582336,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "5e24e2ce52885e8cc43a4564e5d6200878719412b204023cb954621c84798b99"
+      },
+      "runner_receipt": {
+        "bytes": 151795,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "b3ba40e5291dbc513decad2fe432438aef3eeaa7b740789967d180afdc291c3d"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724906.115491583,
+          "stage": "before_oracle",
+          "started_monotonic": 724906.115485958
+        },
+        {
+          "returned_monotonic": 724990.873087166,
+          "stage": "compile",
+          "started_monotonic": 724906.171114083
+        },
+        {
+          "returned_monotonic": 724991.450715208,
+          "stage": "compile_record_joins",
+          "started_monotonic": 724990.884514791
+        },
+        {
+          "returned_monotonic": 724991.470833541,
+          "stage": "specialize",
+          "started_monotonic": 724991.462398875
+        },
+        {
+          "returned_monotonic": 724998.781687375,
+          "stage": "register",
+          "started_monotonic": 724991.483286625
+        },
+        {
+          "returned_monotonic": 724998.800804333,
+          "stage": "inventory_record_join",
+          "started_monotonic": 724998.793373208
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_space_budget",
+      "worker_receipt": {
+        "bytes": 106666,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "17c7c120f5eb3c6bfe79cebad9c1382d1a06619b34c46aa254f9f8fc49e6c8d6"
+      }
+    },
+    {
+      "Native_records": 117,
+      "Native_total_micro_steps": 13900961794,
+      "accepted_definitions": 19,
+      "basis_count": 76,
+      "compiler_queries": 97,
+      "complete_inventory": false,
+      "definitions": 53,
+      "interfaces": 53,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-005-symbolic-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma8e6596d3aeef5f1cdce452c80f4c57d28c7e7e7ba495c441aab51b148d8a8d00",
+      "last_result_status": "unknown_step_budget",
+      "mode": "symbolic",
+      "model_present": false,
+      "next_unqueried_definition": "lemmaaf3f31d672816b23623782aff1c9356b50c48cd714feb219cc2141e932af3ac5",
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-005",
+      "region": null,
+      "registration_CPP_seconds": 36.413579999999996,
+      "registration_micro_steps": 5000000000,
+      "registration_queries": 20,
+      "registration_request_seconds": 40.168826585053466,
+      "registration_seconds": 40.457314583007246,
+      "result": {
+        "bytes": 602641,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "70d198ab8f74b964d28a5a681315ec8cf33874cd1559e5939684f7e86ea7dcda"
+      },
+      "runner_receipt": {
+        "bytes": 173402,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "45d7b6e76f53b533868e072bee6410cda963ecb08ca2476c0db850098260a7bb"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 724999.982083875,
+          "stage": "before_oracle",
+          "started_monotonic": 724999.982081125
+        },
+        {
+          "returned_monotonic": 725085.815237541,
+          "stage": "compile",
+          "started_monotonic": 725000.035463583
+        },
+        {
+          "returned_monotonic": 725086.401841375,
+          "stage": "compile_record_joins",
+          "started_monotonic": 725085.826725833
+        },
+        {
+          "returned_monotonic": 725086.421356958,
+          "stage": "specialize",
+          "started_monotonic": 725086.413090125
+        },
+        {
+          "returned_monotonic": 725126.890158458,
+          "stage": "register",
+          "started_monotonic": 725086.432824208
+        },
+        {
+          "returned_monotonic": 725127.026291916,
+          "stage": "inventory_record_join",
+          "started_monotonic": 725126.902092708
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_step_budget",
+      "worker_receipt": {
+        "bytes": 121103,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "5ae3040369d93a8ec0ec1879492e6f7f71750f8da5197b612b9328fa2f6c135f"
+      }
+    },
+    {
+      "Native_records": 117,
+      "Native_total_micro_steps": 14044385563,
+      "accepted_definitions": 19,
+      "basis_count": 76,
+      "compiler_queries": 97,
+      "complete_inventory": false,
+      "definitions": 53,
+      "interfaces": 53,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-010-fixed-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma1bbd95515dd804ff53dee25b6791e0ccf99d15926099806092aacd0139de4875",
+      "last_result_status": "unknown_step_budget",
+      "mode": "fixed",
+      "model_present": false,
+      "next_unqueried_definition": "lemma60a87996d7e295565d3ef3e1456f91921d76c37bfb9a63e0cc3e0a98e345266e",
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-010",
+      "region": null,
+      "registration_CPP_seconds": 36.82011100000001,
+      "registration_micro_steps": 5000000000,
+      "registration_queries": 20,
+      "registration_request_seconds": 40.63068237400148,
+      "registration_seconds": 40.91820687497966,
+      "result": {
+        "bytes": 606442,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "36dc9ebf9cb26c3c3fbd66db53f3fb120c2e4d6be8996b911e837ac946e1b085"
+      },
+      "runner_receipt": {
+        "bytes": 173288,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "ff30b660fe535c684bdedb0d337a53f9ee545bf18f35c77c3e20e2f71d9dc03d"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 725128.254704875,
+          "stage": "before_oracle",
+          "started_monotonic": 725128.254701875
+        },
+        {
+          "returned_monotonic": 725212.840577666,
+          "stage": "compile",
+          "started_monotonic": 725128.308536916
+        },
+        {
+          "returned_monotonic": 725213.493115916,
+          "stage": "compile_record_joins",
+          "started_monotonic": 725212.852863541
+        },
+        {
+          "returned_monotonic": 725213.513401,
+          "stage": "specialize",
+          "started_monotonic": 725213.504817958
+        },
+        {
+          "returned_monotonic": 725254.443112583,
+          "stage": "register",
+          "started_monotonic": 725213.524872291
+        },
+        {
+          "returned_monotonic": 725254.586577,
+          "stage": "inventory_record_join",
+          "started_monotonic": 725254.455748583
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_step_budget",
+      "worker_receipt": {
+        "bytes": 121007,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "c4a27a0893cd07edea7787611cfaede4b4d6354c4425c5e858701ef2c3cbc75a"
+      }
+    },
+    {
+      "Native_records": 98,
+      "Native_total_micro_steps": 9966990513,
+      "accepted_definitions": 0,
+      "basis_count": 76,
+      "compiler_queries": 97,
+      "complete_inventory": false,
+      "definitions": 53,
+      "interfaces": 53,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-010-fixed-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "unknown_space_budget",
+      "mode": "fixed",
+      "model_present": false,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 53,
+      "queried_closure_sizes": [
+        53
+      ],
+      "receiver_id": "prospective-fol-20261018-010",
+      "region": null,
+      "registration_CPP_seconds": 6.83511,
+      "registration_micro_steps": 922604950,
+      "registration_queries": 1,
+      "registration_request_seconds": 7.489077957929112,
+      "registration_seconds": 7.489077957929112,
+      "result": {
+        "bytes": 586497,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "02f9efb85a1b5a5a62994b5d6a804884006c6e0be041fac5e8da823ef040e54a"
+      },
+      "runner_receipt": {
+        "bytes": 151800,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "f2b00137e2bd99967a481c9ec427de0fc41db3ae57cc2f9c522af2b2eff2acc1"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 725255.88755425,
+          "stage": "before_oracle",
+          "started_monotonic": 725255.88755025
+        },
+        {
+          "returned_monotonic": 725343.22987025,
+          "stage": "compile",
+          "started_monotonic": 725255.948925458
+        },
+        {
+          "returned_monotonic": 725343.842169458,
+          "stage": "compile_record_joins",
+          "started_monotonic": 725343.242131958
+        },
+        {
+          "returned_monotonic": 725343.862738375,
+          "stage": "specialize",
+          "started_monotonic": 725343.853994666
+        },
+        {
+          "returned_monotonic": 725351.3747245,
+          "stage": "register",
+          "started_monotonic": 725343.874238833
+        },
+        {
+          "returned_monotonic": 725351.393439583,
+          "stage": "inventory_record_join",
+          "started_monotonic": 725351.386194625
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_space_budget",
+      "worker_receipt": {
+        "bytes": 106670,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "9d0d07c32f966579b17843b4e38a1f3769e9dc5967408dcc0714b306d2210106"
+      }
+    },
+    {
+      "Native_records": 117,
+      "Native_total_micro_steps": 14044385563,
+      "accepted_definitions": 19,
+      "basis_count": 76,
+      "compiler_queries": 97,
+      "complete_inventory": false,
+      "definitions": 53,
+      "interfaces": 53,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-010-symbolic-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma1bbd95515dd804ff53dee25b6791e0ccf99d15926099806092aacd0139de4875",
+      "last_result_status": "unknown_step_budget",
+      "mode": "symbolic",
+      "model_present": false,
+      "next_unqueried_definition": "lemma60a87996d7e295565d3ef3e1456f91921d76c37bfb9a63e0cc3e0a98e345266e",
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-010",
+      "region": null,
+      "registration_CPP_seconds": 36.618438999999995,
+      "registration_micro_steps": 5000000000,
+      "registration_queries": 20,
+      "registration_request_seconds": 40.520269413944334,
+      "registration_seconds": 40.81825095799286,
+      "result": {
+        "bytes": 606540,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "7d4f6ef1401a8b9ae73023808b3c3a4904c924bc69fee60911c36d19009f4bc7"
+      },
+      "runner_receipt": {
+        "bytes": 173405,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "647956a9a5caaf1f1cfdac67e79c711bbe3c72138e8decd3ec6a3b653263a93d"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 725352.636351291,
+          "stage": "before_oracle",
+          "started_monotonic": 725352.636348625
+        },
+        {
+          "returned_monotonic": 725438.878490708,
+          "stage": "compile",
+          "started_monotonic": 725352.69022175
+        },
+        {
+          "returned_monotonic": 725439.546623125,
+          "stage": "compile_record_joins",
+          "started_monotonic": 725438.891692666
+        },
+        {
+          "returned_monotonic": 725439.569084458,
+          "stage": "specialize",
+          "started_monotonic": 725439.559476833
+        },
+        {
+          "returned_monotonic": 725480.400819708,
+          "stage": "register",
+          "started_monotonic": 725439.582541333
+        },
+        {
+          "returned_monotonic": 725480.544946583,
+          "stage": "inventory_record_join",
+          "started_monotonic": 725480.413092333
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_step_budget",
+      "worker_receipt": {
+        "bytes": 121103,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "44ce209923c6dee71aad5bccedfa5c52c43aa2c0702590c670257b59c2cff714"
+      }
+    },
+    {
+      "Native_records": 98,
+      "Native_total_micro_steps": 9966990513,
+      "accepted_definitions": 0,
+      "basis_count": 76,
+      "compiler_queries": 97,
+      "complete_inventory": false,
+      "definitions": 53,
+      "interfaces": 53,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-010-symbolic-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "unknown_space_budget",
+      "mode": "symbolic",
+      "model_present": false,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": false,
+      "proof": null,
+      "queried_closure_max": 53,
+      "queried_closure_sizes": [
+        53
+      ],
+      "receiver_id": "prospective-fol-20261018-010",
+      "region": null,
+      "registration_CPP_seconds": 6.89562,
+      "registration_micro_steps": 922604950,
+      "registration_queries": 1,
+      "registration_request_seconds": 7.591597249964252,
+      "registration_seconds": 7.591597249964252,
+      "result": {
+        "bytes": 586594,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "7f413bfc2b609b47155bf22959f7903a8894b052808f53649ff5fbcd84ffebd1"
+      },
+      "runner_receipt": {
+        "bytes": 151929,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "e717400ea7001ba5f5744b2e2c8b46153ce87bc2bb8db3833b1fdb19106efe62"
+      },
+      "search_present": false,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 725481.840207291,
+          "stage": "before_oracle",
+          "started_monotonic": 725481.840202416
+        },
+        {
+          "returned_monotonic": 725567.395760958,
+          "stage": "compile",
+          "started_monotonic": 725481.895724791
+        },
+        {
+          "returned_monotonic": 725567.981261291,
+          "stage": "compile_record_joins",
+          "started_monotonic": 725567.407242541
+        },
+        {
+          "returned_monotonic": 725568.001027541,
+          "stage": "specialize",
+          "started_monotonic": 725567.992518083
+        },
+        {
+          "returned_monotonic": 725575.616451,
+          "stage": "register",
+          "started_monotonic": 725568.0131575
+        },
+        {
+          "returned_monotonic": 725575.636660791,
+          "stage": "inventory_record_join",
+          "started_monotonic": 725575.629123958
+        }
+      ],
+      "status": "unknown_native_inventory",
+      "stop_reason": "unknown_space_budget",
+      "worker_receipt": {
+        "bytes": 106773,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "ce5b12f5dfa020babd8f39ea30e420b27d6fb600855cc728c7ed144ee4be5734"
+      }
+    },
+    {
+      "Native_records": 17,
+      "Native_total_micro_steps": 3501647558,
+      "accepted_definitions": 10,
+      "basis_count": 11,
+      "compiler_queries": 15,
+      "complete_inventory": true,
+      "definitions": 10,
+      "interfaces": 10,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-001-fixed-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "accepted",
+      "mode": "fixed",
+      "model_present": true,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": true,
+      "proof": {
+        "essential_calls": [
+          {
+            "arguments": [
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "compound_argument_indices": [
+              1
+            ],
+            "essential_input_indices": [
+              0,
+              1
+            ],
+            "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+            "inputs": [
+              2,
+              1
+            ],
+            "level": 1,
+            "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+            "nonidentity": true,
+            "path": [
+              {
+                "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+                "row": 3
+              }
+            ],
+            "primitive_use": 1,
+            "root_row": 3
+          },
+          {
+            "arguments": [
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "compound_argument_indices": [],
+            "essential_input_indices": [
+              0,
+              1
+            ],
+            "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+            "inputs": [
+              3,
+              0
+            ],
+            "level": 1,
+            "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+            "nonidentity": true,
+            "path": [
+              {
+                "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+                "row": 11
+              }
+            ],
+            "primitive_use": 1,
+            "root_row": 11
+          }
+        ],
+        "essential_quantifier_counts": {
+          "essential_generalize_count": 0,
+          "essential_instantiate_count": 0
+        },
+        "final_request_sha256": "3687ef2abb62f53f80c0f578b4fbc3b7669baee7fe0c52f05493fa204f8bebf1",
+        "proof_sha256": "dacd8c3a97b89bc5a1b9d1cd8a29070650a4e9efe9ed8419f79ec9be0f8bb48f",
+        "root_rules": {
+          "axiom": 2,
+          "block": 9,
+          "eq_subst": 1
+        },
+        "used_definitions": [
+          "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+          "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6"
+        ]
+      },
+      "queried_closure_max": 10,
+      "queried_closure_sizes": [
+        10
+      ],
+      "receiver_id": "prospective-fol-20261018-001",
+      "region": {
+        "assigned_mark_points": 2192,
+        "mark_pairs_compared": 5318,
+        "rows": 12,
+        "tiles": 60,
+        "union_sha256": "2ff056a7a43ae4b8f9bc3a52aec9984288456cf590395c0f9ceba2aba3b50592"
+      },
+      "registration_CPP_seconds": 14.0432,
+      "registration_micro_steps": 1876601674,
+      "registration_queries": 1,
+      "registration_request_seconds": 14.30091208301019,
+      "registration_seconds": 14.30091208301019,
+      "result": {
+        "bytes": 36482958,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "4e02917b4dffec237fbb13f5cc6949c8da1cbed5976e41914cef466baf053184"
+      },
+      "runner_receipt": {
+        "bytes": 66849,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "0ec8e30d2821d847f6e28e7cf2d96056bc8fe70463b4cf753e01311e036545b3"
+      },
+      "search_present": true,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 725576.893164458,
+          "stage": "before_oracle",
+          "started_monotonic": 725576.893160375
+        },
+        {
+          "returned_monotonic": 725586.58355625,
+          "stage": "compile",
+          "started_monotonic": 725576.952538708
+        },
+        {
+          "returned_monotonic": 725586.708757375,
+          "stage": "compile_record_joins",
+          "started_monotonic": 725586.597619291
+        },
+        {
+          "returned_monotonic": 725586.722086708,
+          "stage": "specialize",
+          "started_monotonic": 725586.721007833
+        },
+        {
+          "returned_monotonic": 725601.050069416,
+          "stage": "register",
+          "started_monotonic": 725586.736928416
+        },
+        {
+          "returned_monotonic": 725601.0674215,
+          "stage": "inventory_record_join",
+          "started_monotonic": 725601.061317125
+        },
+        {
+          "returned_monotonic": 725602.421683208,
+          "stage": "model",
+          "started_monotonic": 725601.079553625
+        },
+        {
+          "returned_monotonic": 725604.123976541,
+          "stage": "search",
+          "started_monotonic": 725602.868930625
+        },
+        {
+          "returned_monotonic": 725610.615937666,
+          "stage": "final_native",
+          "started_monotonic": 725604.996981416
+        },
+        {
+          "returned_monotonic": 725610.628584166,
+          "stage": "essential_ancestry",
+          "started_monotonic": 725610.628154666
+        },
+        {
+          "returned_monotonic": 725610.646424666,
+          "stage": "winning_hint_links",
+          "started_monotonic": 725610.64060025
+        }
+      ],
+      "status": "native_proof_discovered",
+      "stop_reason": null,
+      "worker_receipt": {
+        "bytes": 50169,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "fe56655a77b7398e89c4cc6cbaf1d9ad0dd2573fbc08f413667570ca4ca2e03e"
+      }
+    },
+    {
+      "Native_records": 26,
+      "Native_total_micro_steps": 3984746424,
+      "accepted_definitions": 10,
+      "basis_count": 11,
+      "compiler_queries": 15,
+      "complete_inventory": true,
+      "definitions": 10,
+      "interfaces": 10,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-001-symbolic-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma70a16e08df060333453975a59b0dce1a86e971b594b0266d19879dcd4ed15a94",
+      "last_result_status": "accepted",
+      "mode": "symbolic",
+      "model_present": true,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": true,
+      "proof": {
+        "essential_calls": [
+          {
+            "arguments": [
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "compound_argument_indices": [
+              1
+            ],
+            "essential_input_indices": [
+              0,
+              1
+            ],
+            "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+            "inputs": [
+              2,
+              1
+            ],
+            "level": 1,
+            "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+            "nonidentity": true,
+            "path": [
+              {
+                "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+                "row": 3
+              }
+            ],
+            "primitive_use": 1,
+            "root_row": 3
+          },
+          {
+            "arguments": [
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "compound_argument_indices": [],
+            "essential_input_indices": [
+              0,
+              1
+            ],
+            "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+            "inputs": [
+              3,
+              0
+            ],
+            "level": 1,
+            "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+            "nonidentity": true,
+            "path": [
+              {
+                "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+                "row": 11
+              }
+            ],
+            "primitive_use": 1,
+            "root_row": 11
+          }
+        ],
+        "essential_quantifier_counts": {
+          "essential_generalize_count": 0,
+          "essential_instantiate_count": 0
+        },
+        "final_request_sha256": "afbb46b7c9fd9aff64324d854d865e0c26f00aa05f4a84339901280d4f6ec2ce",
+        "proof_sha256": "e08a634913c0395a6154485342414f87417f396a39b1ec9758c2e8e10937ac13",
+        "root_rules": {
+          "axiom": 2,
+          "block": 6,
+          "eq_subst": 3,
+          "refl": 1
+        },
+        "used_definitions": [
+          "lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc",
+          "lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420",
+          "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+          "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+          "lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685"
+        ]
+      },
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-001",
+      "region": {
+        "assigned_mark_points": 2810,
+        "mark_pairs_compared": 6495,
+        "rows": 12,
+        "tiles": 60,
+        "union_sha256": "b9bc4f4d9d6d2402206bf2399b4a0fd11d5e69a02bd4b9adc41616ad40532363"
+      },
+      "registration_CPP_seconds": 12.26655,
+      "registration_micro_steps": 1690782155,
+      "registration_queries": 10,
+      "registration_request_seconds": 14.163112874841318,
+      "registration_seconds": 14.281524666934274,
+      "result": {
+        "bytes": 33592719,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "ac3792b31e07d7fb4a20d0512c5a313e0b5a365d330e4e246b31fb467c45ee66"
+      },
+      "runner_receipt": {
+        "bytes": 77226,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "ac8f89ad0c48e21a3f7411e8b600b873f4520011af8fcf201de80a5f3ca85607"
+      },
+      "search_present": true,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 725626.150516625,
+          "stage": "before_oracle",
+          "started_monotonic": 725626.150511958
+        },
+        {
+          "returned_monotonic": 725635.771210875,
+          "stage": "compile",
+          "started_monotonic": 725626.223103625
+        },
+        {
+          "returned_monotonic": 725635.868482416,
+          "stage": "compile_record_joins",
+          "started_monotonic": 725635.782661375
+        },
+        {
+          "returned_monotonic": 725635.880625041,
+          "stage": "specialize",
+          "started_monotonic": 725635.879815458
+        },
+        {
+          "returned_monotonic": 725650.173402125,
+          "stage": "register",
+          "started_monotonic": 725635.891863291
+        },
+        {
+          "returned_monotonic": 725650.247681291,
+          "stage": "inventory_record_join",
+          "started_monotonic": 725650.18474075
+        },
+        {
+          "returned_monotonic": 725651.487877875,
+          "stage": "model",
+          "started_monotonic": 725650.258819875
+        },
+        {
+          "returned_monotonic": 725652.059050583,
+          "stage": "search",
+          "started_monotonic": 725651.920817375
+        },
+        {
+          "returned_monotonic": 725652.100913583,
+          "stage": "symbolic_point_projection",
+          "started_monotonic": 725652.071279375
+        },
+        {
+          "returned_monotonic": 725663.347890458,
+          "stage": "final_native",
+          "started_monotonic": 725652.951305708
+        },
+        {
+          "returned_monotonic": 725663.35984925,
+          "stage": "essential_ancestry",
+          "started_monotonic": 725663.359482666
+        },
+        {
+          "returned_monotonic": 725663.371076291,
+          "stage": "winning_hint_links",
+          "started_monotonic": 725663.371074708
+        }
+      ],
+      "status": "native_proof_discovered",
+      "stop_reason": null,
+      "worker_receipt": {
+        "bytes": 57119,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "d9860c434f576e113b47d96e092501d7ed5e4bcd62b285d403f3aa7380ce62f5"
+      }
+    },
+    {
+      "Native_records": 17,
+      "Native_total_micro_steps": 4170565943,
+      "accepted_definitions": 10,
+      "basis_count": 11,
+      "compiler_queries": 15,
+      "complete_inventory": true,
+      "definitions": 10,
+      "interfaces": 10,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-001-symbolic-bulk-ROOT-20261018-v1",
+      "last_queried_definition": null,
+      "last_result_status": "accepted",
+      "mode": "symbolic",
+      "model_present": true,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": true,
+      "proof": {
+        "essential_calls": [
+          {
+            "arguments": [
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "compound_argument_indices": [
+              1
+            ],
+            "essential_input_indices": [
+              0,
+              1
+            ],
+            "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+            "inputs": [
+              2,
+              1
+            ],
+            "level": 1,
+            "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+            "nonidentity": true,
+            "path": [
+              {
+                "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+                "row": 3
+              }
+            ],
+            "primitive_use": 1,
+            "root_row": 3
+          },
+          {
+            "arguments": [
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "compound_argument_indices": [],
+            "essential_input_indices": [
+              0,
+              1
+            ],
+            "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+            "inputs": [
+              3,
+              0
+            ],
+            "level": 1,
+            "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+            "nonidentity": true,
+            "path": [
+              {
+                "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+                "row": 11
+              }
+            ],
+            "primitive_use": 1,
+            "root_row": 11
+          }
+        ],
+        "essential_quantifier_counts": {
+          "essential_generalize_count": 0,
+          "essential_instantiate_count": 0
+        },
+        "final_request_sha256": "afbb46b7c9fd9aff64324d854d865e0c26f00aa05f4a84339901280d4f6ec2ce",
+        "proof_sha256": "e08a634913c0395a6154485342414f87417f396a39b1ec9758c2e8e10937ac13",
+        "root_rules": {
+          "axiom": 2,
+          "block": 6,
+          "eq_subst": 3,
+          "refl": 1
+        },
+        "used_definitions": [
+          "lemma123dffc077304d6f5569591588aeb01e9aee4963a0675c39a01b279b772947dc",
+          "lemma5ca8e587ec6d3d665b95620c2edc1e66dcf2d25a98ac4efb752ac1b304aa6420",
+          "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+          "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+          "lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685"
+        ]
+      },
+      "queried_closure_max": 10,
+      "queried_closure_sizes": [
+        10
+      ],
+      "receiver_id": "prospective-fol-20261018-001",
+      "region": {
+        "assigned_mark_points": 2810,
+        "mark_pairs_compared": 6495,
+        "rows": 12,
+        "tiles": 60,
+        "union_sha256": "b9bc4f4d9d6d2402206bf2399b4a0fd11d5e69a02bd4b9adc41616ad40532363"
+      },
+      "registration_CPP_seconds": 13.3363,
+      "registration_micro_steps": 1876601674,
+      "registration_queries": 1,
+      "registration_request_seconds": 13.570020499988459,
+      "registration_seconds": 13.570020499988459,
+      "result": {
+        "bytes": 33569671,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "1a3dc26955c557130726ab5e3ee2323601bc664c9be20b0f04b9c6000b6b7fcd"
+      },
+      "runner_receipt": {
+        "bytes": 66987,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "868d8fa2208f39c0b4f8478fec23a99f8412fd147428baa27fde7dd7aacb0f6e"
+      },
+      "search_present": true,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 725674.842855666,
+          "stage": "before_oracle",
+          "started_monotonic": 725674.842852708
+        },
+        {
+          "returned_monotonic": 725684.237075666,
+          "stage": "compile",
+          "started_monotonic": 725674.9032315
+        },
+        {
+          "returned_monotonic": 725684.34479425,
+          "stage": "compile_record_joins",
+          "started_monotonic": 725684.24890725
+        },
+        {
+          "returned_monotonic": 725684.357278375,
+          "stage": "specialize",
+          "started_monotonic": 725684.356521
+        },
+        {
+          "returned_monotonic": 725697.950438416,
+          "stage": "register",
+          "started_monotonic": 725684.369112458
+        },
+        {
+          "returned_monotonic": 725697.96729975,
+          "stage": "inventory_record_join",
+          "started_monotonic": 725697.961515833
+        },
+        {
+          "returned_monotonic": 725699.227508708,
+          "stage": "model",
+          "started_monotonic": 725697.978340375
+        },
+        {
+          "returned_monotonic": 725699.781823208,
+          "stage": "search",
+          "started_monotonic": 725699.647336166
+        },
+        {
+          "returned_monotonic": 725699.822371125,
+          "stage": "symbolic_point_projection",
+          "started_monotonic": 725699.793460958
+        },
+        {
+          "returned_monotonic": 725710.874523,
+          "stage": "final_native",
+          "started_monotonic": 725700.656762166
+        },
+        {
+          "returned_monotonic": 725710.886130375,
+          "stage": "essential_ancestry",
+          "started_monotonic": 725710.885787708
+        },
+        {
+          "returned_monotonic": 725710.897458541,
+          "stage": "winning_hint_links",
+          "started_monotonic": 725710.897455541
+        }
+      ],
+      "status": "native_proof_discovered",
+      "stop_reason": null,
+      "worker_receipt": {
+        "bytes": 50280,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "eca63301623d733d4d69a691c1734fdc8ce4b875093f76a383b2e0b53aa209cb"
+      }
+    },
+    {
+      "Native_records": 26,
+      "Native_total_micro_steps": 3315828039,
+      "accepted_definitions": 10,
+      "basis_count": 11,
+      "compiler_queries": 15,
+      "complete_inventory": true,
+      "definitions": 10,
+      "interfaces": 10,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-001-fixed-closures-ROOT-20261018-v1",
+      "last_queried_definition": "lemma70a16e08df060333453975a59b0dce1a86e971b594b0266d19879dcd4ed15a94",
+      "last_result_status": "accepted",
+      "mode": "fixed",
+      "model_present": true,
+      "next_unqueried_definition": null,
+      "planned_closure_max": 1,
+      "positive": true,
+      "proof": {
+        "essential_calls": [
+          {
+            "arguments": [
+              [
+                "eq",
+                [
+                  "fun",
+                  "a",
+                  []
+                ],
+                [
+                  "fun",
+                  "b",
+                  []
+                ]
+              ],
+              [
+                "imp",
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "a",
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  "pred",
+                  "P",
+                  [
+                    [
+                      "fun",
+                      "b",
+                      []
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            "compound_argument_indices": [
+              1
+            ],
+            "essential_input_indices": [
+              0,
+              1
+            ],
+            "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+            "inputs": [
+              2,
+              1
+            ],
+            "level": 1,
+            "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+            "nonidentity": true,
+            "path": [
+              {
+                "name": "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+                "row": 3
+              }
+            ],
+            "primitive_use": 1,
+            "root_row": 3
+          },
+          {
+            "arguments": [
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "a",
+                    []
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "P",
+                [
+                  [
+                    "fun",
+                    "b",
+                    []
+                  ]
+                ]
+              ]
+            ],
+            "compound_argument_indices": [],
+            "essential_input_indices": [
+              0,
+              1
+            ],
+            "family": "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93",
+            "inputs": [
+              3,
+              0
+            ],
+            "level": 1,
+            "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+            "nonidentity": true,
+            "path": [
+              {
+                "name": "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6",
+                "row": 11
+              }
+            ],
+            "primitive_use": 1,
+            "root_row": 11
+          }
+        ],
+        "essential_quantifier_counts": {
+          "essential_generalize_count": 0,
+          "essential_instantiate_count": 0
+        },
+        "final_request_sha256": "3687ef2abb62f53f80c0f578b4fbc3b7669baee7fe0c52f05493fa204f8bebf1",
+        "proof_sha256": "dacd8c3a97b89bc5a1b9d1cd8a29070650a4e9efe9ed8419f79ec9be0f8bb48f",
+        "root_rules": {
+          "axiom": 2,
+          "block": 9,
+          "eq_subst": 1
+        },
+        "used_definitions": [
+          "lemma1696b5c541069ea05eefbfe62f7a08ed5924b032e5aed9eaa59beb9395cb4317",
+          "lemmae5cc6400c2dec1f53e31864fc169b5e8964c4b9e49e5664338f7fec66b9bd1b6"
+        ]
+      },
+      "queried_closure_max": 1,
+      "queried_closure_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "receiver_id": "prospective-fol-20261018-001",
+      "region": {
+        "assigned_mark_points": 2192,
+        "mark_pairs_compared": 5318,
+        "rows": 12,
+        "tiles": 60,
+        "union_sha256": "2ff056a7a43ae4b8f9bc3a52aec9984288456cf590395c0f9ceba2aba3b50592"
+      },
+      "registration_CPP_seconds": 12.147127,
+      "registration_micro_steps": 1690782155,
+      "registration_queries": 10,
+      "registration_request_seconds": 14.079808831913397,
+      "registration_seconds": 14.200269791064784,
+      "result": {
+        "bytes": 36506002,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "248622e6e17176ee300e33b81ea78243a8e99068470df867d564e9556dcf5105"
+      },
+      "runner_receipt": {
+        "bytes": 77078,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+        "sha256": "3640ed2dee9495e681ac04e2db242cb36e005fe8b288e122c11c4520af73cfda"
+      },
+      "search_present": true,
+      "stage_intervals": [
+        {
+          "returned_monotonic": 725722.176784666,
+          "stage": "before_oracle",
+          "started_monotonic": 725722.17678275
+        },
+        {
+          "returned_monotonic": 725731.175202916,
+          "stage": "compile",
+          "started_monotonic": 725722.2276795
+        },
+        {
+          "returned_monotonic": 725731.27128675,
+          "stage": "compile_record_joins",
+          "started_monotonic": 725731.186380958
+        },
+        {
+          "returned_monotonic": 725731.284235208,
+          "stage": "specialize",
+          "started_monotonic": 725731.283452333
+        },
+        {
+          "returned_monotonic": 725745.495979583,
+          "stage": "register",
+          "started_monotonic": 725731.295691541
+        },
+        {
+          "returned_monotonic": 725745.569282291,
+          "stage": "inventory_record_join",
+          "started_monotonic": 725745.507094291
+        },
+        {
+          "returned_monotonic": 725746.790667083,
+          "stage": "model",
+          "started_monotonic": 725745.58071525
+        },
+        {
+          "returned_monotonic": 725748.439147041,
+          "stage": "search",
+          "started_monotonic": 725747.219615583
+        },
+        {
+          "returned_monotonic": 725754.877206625,
+          "stage": "final_native",
+          "started_monotonic": 725749.291395041
+        },
+        {
+          "returned_monotonic": 725754.889199416,
+          "stage": "essential_ancestry",
+          "started_monotonic": 725754.888798083
+        },
+        {
+          "returned_monotonic": 725754.90682525,
+          "stage": "winning_hint_links",
+          "started_monotonic": 725754.901020875
+        }
+      ],
+      "status": "native_proof_discovered",
+      "stop_reason": null,
+      "worker_receipt": {
+        "bytes": 57002,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+        "sha256": "c81ae49980bfd7ca9d74fa6fecb06fa592478623beb8208c5bf3f52d89f62fca"
+      }
+    }
+  ],
+  "data_review_passed": true,
+  "findings": [
+    {
+      "classification": "VERIFIED",
+      "finding": "All20 retained results keep exactly the complete original specialization, definition metadata, ordered bodies and every exported interface. Compiler/theory/target and inventory literals equal all20 relevant former40-cohort results. No accepted prefix was promoted to a smaller search inventory.",
+      "id": "D01"
+    },
+    {
+      "classification": "VERIFIED",
+      "finding": "All1,452 Native records join exact current full request SHA/purpose/input/output hashes to their completed broker request stage. All1,220 compiler requests are original full-theory/empty-block guard requests with actual1e9 limits and exact catalog order/admission outcomes; all228 registration requests join their own true assigned allowances.",
+      "id": "D02"
+    },
+    {
+      "classification": "VERIFIED",
+      "finding": "Independent DFS reconstructs every full named recursive closure from actual original proof bodies, retaining original registry order. Each batch query has the entire original theory and its exact closure, with an unchanged closed tautology as request target. No previous acceptance appears as an extra axiom.",
+      "id": "D03"
+    },
+    {
+      "classification": "VERIFIED",
+      "finding": "All8 larger-input bulk arms stop unknown_space_budget before full inventory authority, with consumed steps872854609/637751583/915798408/922604950 per case002/003/005/010. They do not reveal which prefix/body was certified and do not reach Model/search.",
+      "id": "D04"
+    },
+    {
+      "classification": "VERIFIED",
+      "finding": "All8 corresponding closure arms instead stop unknown_step_budget at exactly5,000,000,000 aggregate steps. Cases002/003/005/010 query27/32/20/20 of38/72/53/53 planned definitions and accept26/31/19/19 before the final unfinished query. Every ACTUALLY queried closure has one definition; case003 planned maximum3 was not issued. No complete inventory, Model or search results from these arms.",
+      "id": "D05"
+    },
+    {
+      "classification": "INTERPRETATION_LIMIT",
+      "finding": "Avoiding a per-request space stop on an observed singleton prefix is a feasibility observation, not full inventory admission or success of a recursive3-definition request. Exact5e9 exhaustion is registration aggregate budget, not a proof-search failure, logical rejection or missing-theorem certificate.",
+      "id": "D06"
+    },
+    {
+      "classification": "VERIFIED",
+      "finding": "The known positive001 control keeps all10 definitions and interfaces in every arm. Bulk uses1,876,601,674 registration steps in one request; closures use1,690,782,155 across10 accepted singleton requests. Both finish registration at approximately13.57\u201314.30seconds. The evidence does not support a universal rule that splitting inherently takes more Native steps or wall time.",
+      "id": "D07"
+    },
+    {
+      "classification": "VERIFIED",
+      "finding": "Full Model fields except compile_seconds and every initial t/m/generation/root/selection field match across all4 current positive arms and all4 prior positive arms. All4 current proofs have a fresh accepted whole final Native query, exact original target/theory/proof and all-and-only actually called recursive block definitions; no certificate premise is supplied as a new fact.",
+      "id": "D08"
+    },
+    {
+      "classification": "VERIFIED",
+      "finding": "Independent saved-data union and literal row checks cover48 root rows,240 actual C/G/I tiles and23,626 selected mark pairs, preserving assigned0 versus absence and256 word terminators. Whole scaled occupancy reaches12 at every required point, all distant marks agree, all ordered block inputs are strict prior and match declared premises, C/G full words match commands/formulas, and decoded proof/whole union match worker summaries.",
+      "id": "D09"
+    },
+    {
+      "classification": "VERIFIED",
+      "finding": "Fixed proof literal SHA is identical across its two certification modes; symbolic proof SHA is identical across its two certification modes. Existing proof/cost differences between methods remain different internal paths and do not establish a search-ordering benefit from the certification change.",
+      "id": "D10"
+    },
+    {
+      "classification": "SCOPE_LIMITATION",
+      "finding": "This remains a selected nonblind known-input engineering cohort, with010 correlated to005 and001 already successful. It establishes no new theorem, solve-rate/search/RL advantage or universal-family theorem. Repeated setup/checking/serialization costs remain included; no retries or larger Native cap were used.",
+      "id": "D11"
+    },
+    {
+      "classification": "SCOPE_LIMITATION",
+      "finding": "Root admission metadata is cross-joined in120 additional checks. Its maximum_closure_definitions field must be interpreted with planned-versus-issued scope; this receipt explicitly exports both separate quantities. Resource/custody/timing admission has an independent resource peer scope, not recertified merely from Root booleans here.",
+      "id": "D12"
+    }
+  ],
+  "fixture_executions": 0,
+  "limitations": [
+    "No scientific replay, target proof generation, Native output/program decoding, encoded microcode gzip decoding, project imports or function evaluation.",
+    "Only final retained binary input/output artifacts exist per actual; their raw hashes are checked against the last record. Earlier requests are verified through full literal records and completed broker stages, not invented per-query binary files.",
+    "Complete Model/candidate inventory is compared as full ordinary canonical bytes where present. Partial inventory arms have no Model; nothing is reconstructed by rerunning compilation.",
+    "Fixed and symbolic extension/placement counts are different units. A Native microstep is a different measure again. No cross-unit speedup claim.",
+    "Data consistency does not independently establish OS/resource/prover soundness; publication and resource reviews remain separate."
+  ],
+  "method": "Independent stdlib retained JSON/text/hash/Source-literal analysis. Native requests and full point/word/port data are compared as literal data; no logical checker, compiler, model, solver, search, renderer, codec, fixture or Native program is called. Native mathematical authority remains the retained unchanged Native acceptance and its Source/runtime custody.",
+  "mismatches": 0,
+  "module_evaluations": 0,
+  "prior20": [
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize",
+        "model_except_compile_seconds",
+        "all_initial_fields"
+      ],
+      "invocation_id": "fol-suite-001-fixed-legacy-ROOT-20261018-v1",
+      "model_available": true,
+      "result": {
+        "bytes": 36281386,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-001-fixed-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "9129a608ae6e86487f3ed54456142d07393c77ed5186a0dfdac1df039285c3dd"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize",
+        "model_except_compile_seconds",
+        "all_initial_fields"
+      ],
+      "invocation_id": "fol-suite-001-symbolic-and-support-ROOT-20261018-v1",
+      "model_available": true,
+      "result": {
+        "bytes": 33569503,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-001-symbolic-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "bacdafbfc828e7a617ecf0b7658d7326596994df7184394a7e2d034a0886f6b4"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize",
+        "model_except_compile_seconds",
+        "all_initial_fields"
+      ],
+      "invocation_id": "fol-suite-001-symbolic-legacy-ROOT-20261018-v1",
+      "model_available": true,
+      "result": {
+        "bytes": 33236407,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-001-symbolic-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "31958567506719bea8e56a12bf5d9b3b447376cedb63b75bd569a8b0d7daf157"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize",
+        "model_except_compile_seconds",
+        "all_initial_fields"
+      ],
+      "invocation_id": "fol-suite-001-fixed-and-support-ROOT-20261018-v1",
+      "model_available": true,
+      "result": {
+        "bytes": 36482798,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-001-fixed-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "c3f56cfccd66cc3c41fe3696c24c6486020cc0d5e3bd69e75a69c04339ec7b50"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-002-symbolic-and-support-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 367861,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-symbolic-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "99a216363ff121d11d666d74f2d3cea725287a0210e1a1ec02476b86dbf113f6"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-002-symbolic-legacy-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 367667,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-symbolic-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "7470a9deb581ad0cb5c95f2e14e9009ea8ece7577fd9104026af88204e6602b4"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-002-fixed-and-support-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 367738,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-fixed-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "4a4dba4704d6b543d61fe396911d9941d8124720ce8dcccacdfd56f9665bd06a"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-002-fixed-legacy-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 367541,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-002-fixed-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "a8e4862bcc8f4a74f6c6a68a8aa2157508f5004c51706eb708c63641515a0ceb"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-003-symbolic-legacy-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 523336,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-symbolic-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "8e4ea6c56c1fd0758045be65d5e69d22598c810bb2fdd3885d26aa9b1cb77790"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-003-fixed-and-support-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 523412,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-fixed-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "602e95cc0ba0aec73bc7cb703a3919ccb3cddbf8626410af01ffaa0e63cfe8bf"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-003-fixed-legacy-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 523250,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-fixed-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "fe9f16247cc1f4266324a724c9ac0b1fbe3decbb22d449c35ce1f3f55c768e12"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-003-symbolic-and-support-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 523518,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-003-symbolic-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "8acddd06b976c5cca9a63c769dd9798b4e93ec1ae824bb0728971ea79e6895aa"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-005-fixed-legacy-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 581984,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-fixed-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "8bc4bd7d6a74ec778c28a5a9c4a7eb28fda494bad8cf6b489a52e630ecf6e1ee"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-005-symbolic-and-support-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 582276,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-symbolic-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "88a831e4c9703eaf7833dc078e930e39691d17feb627241403e986646502e43f"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-005-symbolic-legacy-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 582090,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-symbolic-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "033984a028acf06ce5337cdf16ea1f29997a1a793ca1064d490e9dd90bf335f6"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-005-fixed-and-support-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 582148,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-005-fixed-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "2b3c8a0fe8f151aac6c99bc91e3b137dc7a6bdf78e746d592e3649b95c74b14c"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-010-symbolic-and-support-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 586443,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-symbolic-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "b6a1e3057b4ea5fbcf58fd8429e959abc75b998e328a4798f1d42d666cd13de8"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-010-symbolic-legacy-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 586253,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-symbolic-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "09a74e36d623a77662ef78be03eb39d22b45f780f31e4950e258a7f265898409"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-010-fixed-and-support-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 586340,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-fixed-and-support-ROOT-20261018-v1/result.json",
+        "sha256": "472ec4730d4103e55501ac06bc359180e63c58ef8e39b6657eb71eaa20b3aa0d"
+      }
+    },
+    {
+      "full_literals_compared": [
+        "compiler",
+        "inventory",
+        "specialize"
+      ],
+      "invocation_id": "fol-suite-010-fixed-legacy-ROOT-20261018-v1",
+      "model_available": false,
+      "result": {
+        "bytes": 586158,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/fol-suite-010-fixed-legacy-ROOT-20261018-v1/result.json",
+        "sha256": "cfaf748598cb39cabbb36b4e94ced7e3fac0a990d115c681a1aced82267c830e"
+      }
+    }
+  ],
+  "prior_index": {
+    "bytes": 90732,
+    "path": "/private/tmp/gcts-first-order-suite-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "8892cb887508d87f0b6d7cf0091975f9654a70ecf60872437688ae76207544d0"
+  },
+  "raw_audit": {
+    "bytes": 1741256,
+    "path": "/private/tmp/gcts-inventory-certification-retained-data-peer-20261018/raw-data-audit-v1.json",
+    "sha256": "5c401821e7627250781d9c0be897cfea0794cd20300651471245f160066f4941"
+  },
+  "reviewer_identity": "/root/conventional_library",
+  "saved_data_only": true,
+  "schema": "inventory-certification-retained-data-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "source_only": false
+}

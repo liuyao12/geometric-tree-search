@@ -1,0 +1,1426 @@
+{
+  "Root_mathematical_admission_reference_only": {
+    "bytes": 212243,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "3652461f48873a7e669a18d458d5a255779300abbf2af15b8d2f217a5f2e5efc"
+  },
+  "actual_execution_authorized": false,
+  "ancestry": {
+    "actual_execution_author": "/root",
+    "authored_current_helper_and_symbolic": true,
+    "authored_inherited_original_outerV2": true,
+    "authored_prior_driver_broker_benchmark": true,
+    "current_genuine_Source_peers_relied_upon": true,
+    "current_outer_and_driver_registry_author": "/root",
+    "independent_of_Root_actual_execution": true,
+    "own_Source_certification": false,
+    "reviewed_current_Root_authored_outer_delta": true
+  },
+  "audit": {
+    "bytes": 2690882,
+    "path": "/private/tmp/gcts-inventory-certification-retained-resource-peer-20261018/raw-retained-resource-audit-v1.json",
+    "sha256": "cc043d2f5d75c5cc79ca51e68d5e5b37d525b720e5076e08e4bba99e781833ca"
+  },
+  "audit_Source": {
+    "bytes": 41468,
+    "path": "/private/tmp/gcts-inventory-certification-retained-resource-peer-20261018/audit_retained_resources_v1.py",
+    "sha256": "70c44b2d10b823b1ee21c025856a33086c8129caf828ff4fb7b00dce49e52e7d"
+  },
+  "audit_Source_preparation": {
+    "bytes": 17448,
+    "path": "/private/tmp/gcts-inventory-certification-retained-resource-peer-20261018/prepare_audit_Source_v1.py",
+    "sha256": "8f0173c30ab316a2555fcee33d31243dedf5847584493764246cc4efc99569f0"
+  },
+  "author_identity": "/root",
+  "case_declarations": {
+    "prospective-fol-20261018-001": {
+      "bytes": 5434,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/case-declarations/prospective-fol-20261018-001.json",
+      "sha256": "e178c2bbb2d8fdca86f243bd5ae802018f6ec5da3fa53c97848ceb03851beff2"
+    },
+    "prospective-fol-20261018-002": {
+      "bytes": 5440,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/case-declarations/prospective-fol-20261018-002.json",
+      "sha256": "638c17a4a296c671a42b575fc629b1ae83afda46fb7e6bf66794ea979db1a2c6"
+    },
+    "prospective-fol-20261018-003": {
+      "bytes": 5466,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/case-declarations/prospective-fol-20261018-003.json",
+      "sha256": "fcca9329f12ff4168a4a2ca12e22494a6845bfc71823fb74428800cbca3248b4"
+    },
+    "prospective-fol-20261018-005": {
+      "bytes": 6168,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/case-declarations/prospective-fol-20261018-005.json",
+      "sha256": "ecd023f7741cff048c8b16cff71cc5ecdf91c0ec70ac6d7ca51ed1b3d2bd5cb0"
+    },
+    "prospective-fol-20261018-010": {
+      "bytes": 6175,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/case-declarations/prospective-fol-20261018-010.json",
+      "sha256": "e8b1853340497e684b27c0303f20a0145ffea5424b3de04bd84bfefd9e126d8b"
+    }
+  },
+  "check_count": 11064,
+  "cohort_closure": {
+    "bytes": 26909,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-cohort-closure-v1.json",
+    "sha256": "78917aa47a3aaeb74de9b6687ae1b353cf39d394003f6487372dfc55e0ef193d"
+  },
+  "compiler_calls": 0,
+  "controller": {
+    "bytes": 9127,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/run_twenty_once_v1.py",
+    "sha256": "42622bd44ac7bfc2ded2edc07d84be4e2cc8a24cd33ef459ef0a15e641835663"
+  },
+  "current_Source_and_plan_reviews": {
+    "composition_Source": {
+      "bytes": 11740,
+      "path": "/private/tmp/gcts-inventory-batching-ROOT-peer-20261018/typed-driver-cold-Source-review-v1.json",
+      "sha256": "f9e30b79bf10bf098822d7b2177649862f72aee99ec653327ca6124c404eb20d"
+    },
+    "once_Source": {
+      "bytes": 11952,
+      "path": "/private/tmp/gcts-inventory-certification-once-peer-20261018/typed-once-Source-review-v1.json",
+      "sha256": "df6ced88c37337787caa574f16de862ff479ee5634bca27c0192eece56aa870f"
+    },
+    "ordering_Source": {
+      "bytes": 8399,
+      "path": "/private/tmp/gcts-and-support-ordering-independent-peer-20261018/typed-ordering-components-Source-review-v1.json",
+      "sha256": "84c4e5e5b1528bafc12f8f957e89ea648b1e358ce888206879639cb954dc8f2e"
+    },
+    "prospective_plans": {
+      "bytes": 130741,
+      "path": "/private/tmp/gcts-inventory-certification-prospective-peer-20261018/typed-prospective-plan-review-v1.json",
+      "sha256": "6f647b772eed2b9907ced92579ea5096c8233a0b49eb0cc5737245151e19de41"
+    },
+    "registry_Source": {
+      "bytes": 13073,
+      "path": "/private/tmp/gcts-inventory-batching-ROOT-peer-20261018/typed-registry-Source-review-v1.json",
+      "sha256": "7888512ae4a4d34f23c8b824605746f994ece08025136a44b4c27ffbc605cd39"
+    }
+  },
+  "current_all24_alias_sources": {
+    "bounded_request_oracle": {
+      "bytes": 20424,
+      "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+      "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+    },
+    "certificate_boundary_search": {
+      "bytes": 7089,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+      "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+    },
+    "interned_quantified_family_points_v1": {
+      "bytes": 4311,
+      "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+      "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+    },
+    "interned_result_reader_v2": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    "logic": {
+      "bytes": 10808,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+      "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+    },
+    "native_inference_inventory": {
+      "bytes": 10594,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+      "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+    },
+    "native_inventory_policy": {
+      "bytes": 2746,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+      "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+    },
+    "native_receptor_points": {
+      "bytes": 8962,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+      "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+    },
+    "proof_boundary": {
+      "bytes": 6992,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "quantified_family_points_v2": {
+      "bytes": 6472,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_family_points_v2.py",
+      "sha256": "f65eb38269db74ff5db0d9eb2096a38d7f07bbd6a579aa564acc692f84e4437c"
+    },
+    "quantified_receptors_v1": {
+      "bytes": 11060,
+      "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+      "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+    },
+    "quantified_symbolic_control_v2": {
+      "bytes": 26238,
+      "path": "/private/tmp/gcts-and-support-ordering-source-20261018/quantified_symbolic_control_v2.py",
+      "sha256": "740319d243cc2fd2eefe1d7ef1611d8bcfe6f0ff70a2ce2ed72771e78f64a391"
+    },
+    "receptor_support_ordering_v1": {
+      "bytes": 16868,
+      "path": "/private/tmp/gcts-and-support-ordering-source-20261018/receptor_support_ordering_v1.py",
+      "sha256": "18cf90ebd75d746db3eb251eaffa92cd6a25432b70f34653b57f3d58ef5d8adc"
+    },
+    "semantic_inventory_guidance": {
+      "bytes": 6942,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+      "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+    },
+    "semantic_inventory_oracle": {
+      "bytes": 12626,
+      "path": "/private/tmp/gcts-inventory-batching-ROOT-source-20261018/semantic_inventory_oracle_v2.py",
+      "sha256": "2010ca7cb6f3da0734efe03e5be0f7e166b7e4d5939078dea0451361cf5890f3"
+    },
+    "semantic_inventory_search_v2": {
+      "bytes": 15936,
+      "path": "/private/tmp/gcts-and-support-point-source-20261018/semantic_inventory_search_v2.py",
+      "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+    },
+    "semantic_lemma_inventory": {
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "semantic_point_smt": {
+      "bytes": 4593,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+      "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+    },
+    "semantic_receiver_driver": {
+      "bytes": 62044,
+      "path": "/private/tmp/gcts-inventory-batching-ROOT-source-20261018/inventory_certification_receiver_driver_v2.py",
+      "sha256": "2ba4a2de010da425e0f74f2c09b553d2051d7fc1a79fbe438845ec0a53c34466"
+    },
+    "semantic_receptor_points": {
+      "bytes": 7409,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+      "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+    },
+    "tape_binary": {
+      "bytes": 3756,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+      "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+    },
+    "tape_tree_machine": {
+      "bytes": 19188,
+      "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+      "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+    },
+    "tree_machine": {
+      "bytes": 13290,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+      "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+    },
+    "turtle": {
+      "bytes": 28533,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+      "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+    }
+  },
+  "current_instruments": {
+    "cold": {
+      "bytes": 35479,
+      "path": "/private/tmp/gcts-inventory-certification-intake-ROOT-source-20261018/inventory_certification_cold_v1.py",
+      "sha256": "f8cd51bc5a96191a7b8e0cb8a3eeeea62814d3d7951cb92225c4449031a13f62"
+    },
+    "observer": {
+      "bytes": 4988,
+      "path": "/private/tmp/gcts-inventory-certification-intake-ROOT-source-20261018/observe_inventory_certification_runner_v1.py",
+      "sha256": "f0d835aa9786c4d1f27677f4f23d7c18cfb8d4517b18b279b35d320ac3f61053"
+    },
+    "runner": {
+      "bytes": 33774,
+      "path": "/private/tmp/gcts-inventory-certification-intake-ROOT-source-20261018/inventory_certification_once_runner_v1.py",
+      "sha256": "d030e8a59113a5d0a8d6bacaba72208f3ca4480704d2f8acb7e3998f09e64968"
+    }
+  },
+  "current_subjects": [
+    {
+      "authorization": {
+        "bytes": 5709,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-002-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "58a486ca794c943fb232041e5452ffde85b8e39a50cf0df8ef7afe52f47ad70d"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-002-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-002",
+      "retained": {
+        "consumed": {
+          "bytes": 652,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "166b81e34768614cbdad21bc8fb07f5055d8c90253f5c3cadcaad1c9d4304d03"
+        },
+        "result": {
+          "bytes": 367907,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "c8bc92e3d1035ef21d3fca88bc923e24308f8acfcfdef242747323911383292b"
+        },
+        "runner": {
+          "bytes": 103328,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "d257e755bcb46c40626d20b76f15b75d8447d8c41d6a16bc85bcb8d0243cbaf3"
+        },
+        "terminal": {
+          "bytes": 1707,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-002-fixed-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "1fb02ac3208074dddc5efc62c1205b166964bf0fb4406061750974f46716b07d"
+        },
+        "worker": {
+          "bytes": 74355,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "14fe31948790be3a552c5037fce1e2b4110f52621ce99bb629c30212316af67e"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3035,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-002-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "5b5c2888f006908f9eb71d5d723450d737726ffe14f432df5c4a62f9ab458d5c"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "f5e585252ba91b947ebf416218f407d3ca0b5a6e90adb15f9fe8d26c6cdd1b55",
+      "worker_plan": {
+        "bytes": 18389,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-002-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "4a01d3e4db9d142c751f559342186ec2923d406ab1ced1a8bf437bc285bcc8f8"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5716,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-002-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "b8cd1d70256a45a67d1b921930269d94428a96ce97b376468ff1360e3ffb80db"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-002-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-002",
+      "retained": {
+        "consumed": {
+          "bytes": 684,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "b0c6f5011192379b7d285cd9c058ff5191ea5d629964f38a4a3d45cfc7a119e0"
+        },
+        "result": {
+          "bytes": 417300,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-closures-ROOT-20261018-v1/result.json",
+          "sha256": "7f71a9753fd5989ac19e76711b4f4562a251c5f0988569028925fc1dc8772792"
+        },
+        "runner": {
+          "bytes": 132582,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "ee4c5ee89b431bc773c175cf3bf4477f5d9fba8ab1634a8e53983765d56a41c4"
+        },
+        "terminal": {
+          "bytes": 1730,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-002-symbolic-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "074008a601e3bd76210d60d98a1904e84d170d8b4de466bd0bb244cd7d53d5de"
+        },
+        "worker": {
+          "bytes": 93889,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "4ce43e2950c14430fddd82e2b45d4d97550844903646bf36c4a5bb567023ece9"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3081,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-002-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "d3907fcc915652296ee812cb0831ab7aff7dd9f263b8161b994b298a8b7cacf3"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "cbd6f528d23f25464411217f90f21cd338a01483c2f1fa558f902bb22ee2024c",
+      "worker_plan": {
+        "bytes": 18421,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-002-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "ab7f4cb604bfe3619f7725e329351c2ea79c3484bb407dc8797d6bf59fa94045"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5712,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "a8155962a75d64193461a323bb6613d800c3d8fe3c24b99490ed192a6775fe5f"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-002-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-002",
+      "retained": {
+        "consumed": {
+          "bytes": 661,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "9d11f5c5db70fd6e72d0ad2337fbd1f42cff1c8700a97e8afb83c12ddd48bc03"
+        },
+        "result": {
+          "bytes": 367996,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "c9b8ad134f8b259d162ea08d9211f7606f9a332ebaaef4674fff0648db5e353d"
+        },
+        "runner": {
+          "bytes": 103439,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "23997b3257813df23eed58e0595d7fd9abd077e52cd53eb095b2521b9939ef9c"
+        },
+        "terminal": {
+          "bytes": 1716,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "881091531a408e5ce30ccaa2c5d6a1164ce780417b2b08c029f82beff4633f2c"
+        },
+        "worker": {
+          "bytes": 74447,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "0096c9ffdf364e842c5a73e43198a9394edb71944e3c54555eedf6047ffc8827"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3050,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "6b1397e05b51da8a392de7741bca9adadfa09a82aeacf2c823793cd1075ccb65"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "c95434f3598377b583831da70c07313096cfc27f7afbdad896633ffb93a9377d",
+      "worker_plan": {
+        "bytes": 18398,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "8b17162f3d43b5e2e144722abf4a2d5902c0829a8a693e716a473328c86ec6bf"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5713,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-002-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "4e424eae5526544920c37370de4b62672ead639d93cfa6e2365a4a62d82d657c"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-002-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-002",
+      "retained": {
+        "consumed": {
+          "bytes": 675,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "80ab5cb980cb4888019ddc84ecd0da6fe0a5e302acd0cec1457096e5f3d11707"
+        },
+        "result": {
+          "bytes": 417206,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-closures-ROOT-20261018-v1/result.json",
+          "sha256": "fe94fbc3db1cf426cd827785785ccbb0aa1326614b97cccc4757ee7c93ece3c1"
+        },
+        "runner": {
+          "bytes": 132435,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "8bc5b909afdfdf63473b7a482113bd04041d76979a68063452845f9a0f714af3"
+        },
+        "terminal": {
+          "bytes": 1721,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-002-fixed-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "bf872feca350e4b37013c637f0b6daf9e310a3140a6b93d863841fe85fe5658c"
+        },
+        "worker": {
+          "bytes": 93772,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "36c782f42384f345d3a4ff3590819bb7f5b4654c0a9b88f4554529508b1dca45"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3066,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-002-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "2661df645a16c4acd147bdb7a43bf3de08619cf0a167d1c9b8ff1e2ab64b0538"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "1452a3d90c650831a3629865cdd6ce14b555b9a3e513efc812865683cd9373a9",
+      "worker_plan": {
+        "bytes": 18412,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-002-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "2300982536fbf230ba55de3c7d0760a5721eff5c73809f4a25c5226c79e3f46a"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5716,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-003-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "fe24ffc01c42ffc9da785d8c9868bc2493307bf638ef3ba9f25772c49c433074"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-003-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-003",
+      "retained": {
+        "consumed": {
+          "bytes": 684,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "4c17191333a58ce5c599dc759f30f771e1dc09b1d6e364d841a5bf30897484bf"
+        },
+        "result": {
+          "bytes": 565865,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-closures-ROOT-20261018-v1/result.json",
+          "sha256": "4d4593ce3cbaafeb8bd3be5387b4f538d10db1f75ae101cbcd560455df02d24b"
+        },
+        "runner": {
+          "bytes": 131803,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "9ecf31c1299803abca66d702db1c0b5a6c4b0cff05def82b21eb2e877d18077a"
+        },
+        "terminal": {
+          "bytes": 1730,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-003-symbolic-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "413e7071b7df353e4a0267650706ce697e877af8f76f7abc33de955444de19f4"
+        },
+        "worker": {
+          "bytes": 93369,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "3e049e051b03201d2f91fbc086f82c36c40a15f7c9e2bbabe3e3b5214991d21d"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3081,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-003-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "668c437d03c07134ec92bdfd2d5a3403777fc8de1995f5ec8a9e8487dff42dfb"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "7651db1f72a30474a07563f31104c76a11e93d55fe5cc2f478a0b36720547fdb",
+      "worker_plan": {
+        "bytes": 18421,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-003-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "6fd7019962746827a2fca84efe77894761ad034f23bab7eedbe05e30d2cdf109"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5712,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "2062639cd6b17ca48be62ec4c6bcbe8e7fcff67d9dc35ca140a39e1c5b19a8dd"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-003-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-003",
+      "retained": {
+        "consumed": {
+          "bytes": 661,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "b7d7e7f8da0a55465b067f042ce716d3d9dda55e32d22ad29a29958886e493aa"
+        },
+        "result": {
+          "bytes": 523684,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "b5f17460e69617a2f2d8591d89a62c49b09527206bdb33a3ceb25ae69539b60d"
+        },
+        "runner": {
+          "bytes": 97123,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "f68023bd1eb925784ece87f543d0146437412b91307a6eacfd87e56a06827cf2"
+        },
+        "terminal": {
+          "bytes": 1717,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "c50fe3bc4c01861d3c60f71f33de7921f35f04feb4f59534a8365dd16111f9b0"
+        },
+        "worker": {
+          "bytes": 70235,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "de46b3c6d162699895dc25f5d49e15d1c44e98b86e3049a633fcf3956295118a"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3050,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "b0e57496afa6c32f818e2fba80364a12f17efd1da0fa08e7e3c41ab663452b7d"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "5c698210c6f5b51bd9f2e6afde63b8905d372e939415c840a854f0409aaa9d8c",
+      "worker_plan": {
+        "bytes": 18398,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "b46786fba4fbd024c55a52f79c22b584c9a1d99c7310ebd636f9d38c056371b6"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5713,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-003-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "4e048de0142531c58490c3c8ea75c9e93413a3b51b039754be591238ca0ee141"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-003-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-003",
+      "retained": {
+        "consumed": {
+          "bytes": 675,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "b4d9783b2feb1500e77371b7ecf0b2c5e9e354bcfda3c6c22e1f29ba96e24f55"
+        },
+        "result": {
+          "bytes": 565759,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-closures-ROOT-20261018-v1/result.json",
+          "sha256": "9b36ec622ad50c7fcfb4df37dde13a48426026c44eb2704742f77ec9a480173c"
+        },
+        "runner": {
+          "bytes": 131660,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "b7552cdc3c6164840a4b353e7ad3f55066e8cd6ba0239226a830e147d43a271c"
+        },
+        "terminal": {
+          "bytes": 1719,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-003-fixed-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "f7334ace265c6d6e6900257312ea293b033b270dc318c09970fd23d7361816fe"
+        },
+        "worker": {
+          "bytes": 93257,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "6215b86b74a3c8d1726c81319bea800f3f00c518131c2472c43c76eed963d97d"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3066,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-003-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "63ff6deb8d93ebd41cafd726404a3278452574551c9b79a2d7d51d569720ee87"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "56dbc4d8366b83066b84de8439c9c1719c10151286084002b220638f4b5f27f7",
+      "worker_plan": {
+        "bytes": 18412,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-003-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "2dd3b55043598f2ba27a65db8dbede6ec2f51ee02db3ee4016e03a0be80f7a91"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5709,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-003-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "55ddd2ebe37f8dd16621bc3c5907897b420225b00fb561b37be37d82c8b377b1"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-003-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-003",
+      "retained": {
+        "consumed": {
+          "bytes": 652,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "15ebee26966c8e75bc21ea240c75b5edc44e16daab334169d28f04b22ee76eda"
+        },
+        "result": {
+          "bytes": 523554,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "af90428be5f5cd6a861f4b060d6302be1033c7e5e97d74b796bf155450352ab9"
+        },
+        "runner": {
+          "bytes": 96932,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "2eab70f7c8a010470fe9dffa290317ef2ed7805c34fb4405b286bafcb3ce43a1"
+        },
+        "terminal": {
+          "bytes": 1708,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-003-fixed-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "e7158548f8b8261a7413f30498cbb758975fee5b00ace4bd7f15415fdfcbab18"
+        },
+        "worker": {
+          "bytes": 70091,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "5fdafdbc3543d82ed7aa7f7cebdcdf13944d0a47aced987938f2be68c9f805a4"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3035,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-003-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "03e160446616b415f736aeb60d7863da11aba33ea61b82e2a1ef3645e6fc8490"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "f7286811d61ed1346d96be9676db9ba9efde238bf66a0aa40706301f693d9c3f",
+      "worker_plan": {
+        "bytes": 18389,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-003-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "ac0d9609a2019614e7daddd15b4201130c0cff16fd4e34f82b8c7b6b9e2f45eb"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5712,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "f483a339b94a3f21728bcaef5a0c56e063f69a8b206b6201bcdb158da5078664"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-005-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-005",
+      "retained": {
+        "consumed": {
+          "bytes": 661,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "41b779b1583586d36e506c65b9a72ce96710425a688b586bf4429112438aac93"
+        },
+        "result": {
+          "bytes": 582440,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "a65d7c1c75cffb9e00c4c36a80ceec480ac285eb2b9d666d5bd3c71486273a94"
+        },
+        "runner": {
+          "bytes": 151946,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "89e77469231ae6f3376c72457923894bcdb88fe92e46d67ea3fa53bc6f81e0fc"
+        },
+        "terminal": {
+          "bytes": 1717,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "93d7c6aa2b329d40f7c46b2332778ba5755affe9e09d6acd80e33f019c416758"
+        },
+        "worker": {
+          "bytes": 106784,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "9337384791a698bb009b3e5c0cc0220422b5f9c7a749793a9fa5052d4678256c"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3050,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "b676e65fb7da0f2d2ce9fc368630b6b61a8f7ca2761e086785f4a7419c501326"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "f1a3d3d9ee4dc3a9e60e15b960dec16103f8f59327e94e5ccd3ed3470a9765e7",
+      "worker_plan": {
+        "bytes": 18398,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "340376428ffbcb9f64dcaa0e86312412ceaaa7893af701e86ee297281b171c48"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5713,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-005-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "26f42940e86de80aa6d5be0e9df3ef4a5895e61d1be041bbb3c13b1c35f5204f"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-005-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-005",
+      "retained": {
+        "consumed": {
+          "bytes": 675,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "691d3ca5e0b5b90407c169884879815107fe89d02cde4e72559f23ffc63ae845"
+        },
+        "result": {
+          "bytes": 602526,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-closures-ROOT-20261018-v1/result.json",
+          "sha256": "b8da1f144be8c538f9aebedb9e503b32117e375c8ea8c68568a05ff0be17c6fc"
+        },
+        "runner": {
+          "bytes": 173261,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "90012824aab7efbf69695a8198328fe3bd247f5e87d4509ebbaae18ae57f2f39"
+        },
+        "terminal": {
+          "bytes": 1721,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-005-fixed-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "343b3d6635c786582cb689f53faef384f0d20b26cf534c7aecee28256bd85ea4"
+        },
+        "worker": {
+          "bytes": 120989,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "650388c9a6e5504536162b95b7b397f784d51d99b42417e09c155dbc7b92ded3"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3066,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-005-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "b924ff3fae01299fbf66b147748d401b6e4eaca1a8a1ea79d29946a6ed857d53"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "3cf6cf58b263963301bbe18d32bb200ff7c6e8d7594b427005ad443b9c8b9fa6",
+      "worker_plan": {
+        "bytes": 18412,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-005-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "4a42d6e7cfc7e03de1bdc5d75f65824159ab0c9beb6cd21c46f4208a7412c76d"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5709,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-005-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "78fbb0f4d08b379affe78f79d977e70e2467da9ac9fbd56004a1bb930fac0660"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-005-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-005",
+      "retained": {
+        "consumed": {
+          "bytes": 652,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "51f203c247864e0fd0eea80fa552b223c1bbe7e6fe1ef600ca703fcfd258ae6b"
+        },
+        "result": {
+          "bytes": 582336,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "5e24e2ce52885e8cc43a4564e5d6200878719412b204023cb954621c84798b99"
+        },
+        "runner": {
+          "bytes": 151795,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "b3ba40e5291dbc513decad2fe432438aef3eeaa7b740789967d180afdc291c3d"
+        },
+        "terminal": {
+          "bytes": 1709,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-005-fixed-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "98d5935ee8ce0df84be9c37d86da04781ae5355b56058c0becda5ac6befa5dfe"
+        },
+        "worker": {
+          "bytes": 106666,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "17c7c120f5eb3c6bfe79cebad9c1382d1a06619b34c46aa254f9f8fc49e6c8d6"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3035,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-005-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "32d25e776a36a4e8086c74ede6ca8c43260d687ae48c60756aa037b1a6a8d7b7"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "e5ffa01efa205b250d2c456ce918fb6ec3f03e25fc97bd2c4cc3ae83f8d1bb16",
+      "worker_plan": {
+        "bytes": 18389,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-005-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "d3917786d470bd9ecc410bdeef71e9b447d4c934f537e6f18fa41558fbb64523"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5716,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-005-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "0d32de90c6b0cca2699e957f31042b7b2ec771f281c7759a0eedf5a59b82eb86"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-005-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-005",
+      "retained": {
+        "consumed": {
+          "bytes": 684,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "7c6e9a21f038e6639d8ead75c3109b12c55e52d1f4069976ce0d4ee4a1080286"
+        },
+        "result": {
+          "bytes": 602641,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-closures-ROOT-20261018-v1/result.json",
+          "sha256": "70d198ab8f74b964d28a5a681315ec8cf33874cd1559e5939684f7e86ea7dcda"
+        },
+        "runner": {
+          "bytes": 173402,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "45d7b6e76f53b533868e072bee6410cda963ecb08ca2476c0db850098260a7bb"
+        },
+        "terminal": {
+          "bytes": 1732,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-005-symbolic-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "b4cf81c372c8c4067081ce091ab802e21acf347807289f8aeb7ab14e47ceca9f"
+        },
+        "worker": {
+          "bytes": 121103,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "5ae3040369d93a8ec0ec1879492e6f7f71750f8da5197b612b9328fa2f6c135f"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3081,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-005-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "c8288225212b49f2732356804f7c74c575d01f81784d5038ca8ef9451f9f1602"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "bd6987aa3969ec451c04e721fc217b1c4dda36f5e9cf1373b68f43f983836477",
+      "worker_plan": {
+        "bytes": 18421,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-005-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "b8f29cff5ced5bdd976a51d0dba1b1517ef521e0c15cb028381797e78db25621"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5713,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-010-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "fb6eab03355f99283376dc3925ef96a62f86bf1cb592d8df490da4d527eb8728"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-010-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-010",
+      "retained": {
+        "consumed": {
+          "bytes": 675,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "48d099139e7700896c1fed1e58b31a30f288074c161f7c513420c6c92a14f7de"
+        },
+        "result": {
+          "bytes": 606442,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-closures-ROOT-20261018-v1/result.json",
+          "sha256": "36dc9ebf9cb26c3c3fbd66db53f3fb120c2e4d6be8996b911e837ac946e1b085"
+        },
+        "runner": {
+          "bytes": 173288,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "ff30b660fe535c684bdedb0d337a53f9ee545bf18f35c77c3e20e2f71d9dc03d"
+        },
+        "terminal": {
+          "bytes": 1723,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-010-fixed-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "6a5e70464cfdd0eccf2f2ddd6f43dddbd21c7758455b25ee3eb562493d1062e0"
+        },
+        "worker": {
+          "bytes": 121007,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "c4a27a0893cd07edea7787611cfaede4b4d6354c4425c5e858701ef2c3cbc75a"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3066,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-010-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "87fcbca3b09ad5a29f3f5e2d64eda4f5fca17f72958ad344e5faa02cfbbd37f2"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "ebc024108154c5645b30f44a957e2ed7c53fe78a088f268369c91b04a6800ff3",
+      "worker_plan": {
+        "bytes": 18412,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-010-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "d20246bafb076d74a69706824a2b71853d0aa501374baa8a8cb71f8101119106"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5709,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-010-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "911cf5309012bd1f8449fa14569073ff0602af0dced148c5349eef108716174c"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-010-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-010",
+      "retained": {
+        "consumed": {
+          "bytes": 652,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "4634573197a5a5f9a51f7a54e34dedfdc37f097586d86a0bd08cafc38f910141"
+        },
+        "result": {
+          "bytes": 586497,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "02f9efb85a1b5a5a62994b5d6a804884006c6e0be041fac5e8da823ef040e54a"
+        },
+        "runner": {
+          "bytes": 151800,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "f2b00137e2bd99967a481c9ec427de0fc41db3ae57cc2f9c522af2b2eff2acc1"
+        },
+        "terminal": {
+          "bytes": 1709,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-010-fixed-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "a7eda6c415d5fd512a8d271233fd70eb1154eae3f09f2932d3fb1a2fd93ad8f2"
+        },
+        "worker": {
+          "bytes": 106670,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "9d0d07c32f966579b17843b4e38a1f3769e9dc5967408dcc0714b306d2210106"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3035,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-010-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "6a0d5b1e634d41722b7d2058893494b7ce1970c79f7b2137ab327a67e96bc14c"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "8903df877d45071494ba867610598a9cc25a4e2a4f5e233fbbcf5fd01dc12051",
+      "worker_plan": {
+        "bytes": 18389,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-010-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "7d7dab0d6a92f8b268a757243cca50ba7f48fb4c30b3b9a076fa14c63da899a5"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5716,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-010-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "f505e08f23f985136e097608d72363f46f35cbc819aaba04ea891c545bfa3407"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-010-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-010",
+      "retained": {
+        "consumed": {
+          "bytes": 684,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "70553d3142010b6ce6c9069e818a97697ca09843e87ef30768a507ec75ff7e59"
+        },
+        "result": {
+          "bytes": 606540,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-closures-ROOT-20261018-v1/result.json",
+          "sha256": "7d4f6ef1401a8b9ae73023808b3c3a4904c924bc69fee60911c36d19009f4bc7"
+        },
+        "runner": {
+          "bytes": 173405,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "647956a9a5caaf1f1cfdac67e79c711bbe3c72138e8decd3ec6a3b653263a93d"
+        },
+        "terminal": {
+          "bytes": 1732,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-010-symbolic-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "4ffc3060b45ddfcafdd79bc64625c19570bba140eb5434cabde8fd58c30f1b70"
+        },
+        "worker": {
+          "bytes": 121103,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "44ce209923c6dee71aad5bccedfa5c52c43aa2c0702590c670257b59c2cff714"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3081,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-010-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "7aaac4cb2d6ba1502d37d2cd99009d76846c62a647b03cc63beba41ecc0cd9cf"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "d207ec7b0bc3ccba1154948c1b31e76dac3185f286650f5696dd89edcd4bd212",
+      "worker_plan": {
+        "bytes": 18421,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-010-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "cc719f06a82d9bccb8d107fe9eab6257e3a3152161bc15f153bcf35679a528aa"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5712,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "f32a9fbeffc0cc93aa81a89420e4007a59d9167bef94170906d576ff3abd1033"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-010-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-010",
+      "retained": {
+        "consumed": {
+          "bytes": 661,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "faf4addd6c683a6d49c3e84072c6431f6c5f3e6fe5a6e9ebbbc679ddfc8e12b5"
+        },
+        "result": {
+          "bytes": 586594,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "7f413bfc2b609b47155bf22959f7903a8894b052808f53649ff5fbcd84ffebd1"
+        },
+        "runner": {
+          "bytes": 151929,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "e717400ea7001ba5f5744b2e2c8b46153ce87bc2bb8db3833b1fdb19106efe62"
+        },
+        "terminal": {
+          "bytes": 1716,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "3bc76a6d475716d35d3bb7b0fa0caac61840c17e5582f0a6ecd28809c751da97"
+        },
+        "worker": {
+          "bytes": 106773,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "ce5b12f5dfa020babd8f39ea30e420b27d6fb600855cc728c7ed144ee4be5734"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3050,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "c2a9467a38b5c3e10692bb3bc444eb91e5050a65840edc08633c7700650c94e9"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "0fa83f957762f47b2e3750b237d68cf00638bfc828ae054213c9f8c9eba2d813",
+      "worker_plan": {
+        "bytes": 18398,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "17658adc5518416564c244abab5d3fff0a0d1a53deec4a8f3f81411f2df41b61"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5709,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-001-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "52fd3c64ee84b1b33fc3f66a1470ec5fff97beee71af51bc2c9591ba6d4781de"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-001-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-001",
+      "retained": {
+        "consumed": {
+          "bytes": 652,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "4b4d03a1c1397884ab048f63d46e241fe481e76785875c1bf9a81d2a74d0ad9f"
+        },
+        "result": {
+          "bytes": 36482958,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "4e02917b4dffec237fbb13f5cc6949c8da1cbed5976e41914cef466baf053184"
+        },
+        "runner": {
+          "bytes": 66849,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "0ec8e30d2821d847f6e28e7cf2d96056bc8fe70463b4cf753e01311e036545b3"
+        },
+        "terminal": {
+          "bytes": 1708,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-001-fixed-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "63299878c62748b648e6528b5e7c56b7eff9a5ec4baead0e5cc5af4317385aa3"
+        },
+        "worker": {
+          "bytes": 50169,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "fe56655a77b7398e89c4cc6cbaf1d9ad0dd2573fbc08f413667570ca4ca2e03e"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3035,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-001-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "15f7f61af73880de6cd055c3ebdc1bd2fb0f6fc9fe4d68f8d9291b99e783a299"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "5caf88b46c6b582c91e954a5688def44337440587030cf273c9a469481309933",
+      "worker_plan": {
+        "bytes": 18389,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-001-fixed-bulk-ROOT-20261018-v1.json",
+        "sha256": "6c1f88e6dd08db1667a1384c0f96c6095d3407b4acb730783d882d8502415446"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5716,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-001-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "56de71b6780b9bb610e10323dcada8a9a2538b4883d33110e7ce08d968ddd63f"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-001-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-001",
+      "retained": {
+        "consumed": {
+          "bytes": 684,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "6e4f30015a422956066f02dc5168168bd247734a6f679affcfafae0d5c7d82a4"
+        },
+        "result": {
+          "bytes": 33592719,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-closures-ROOT-20261018-v1/result.json",
+          "sha256": "ac3792b31e07d7fb4a20d0512c5a313e0b5a365d330e4e246b31fb467c45ee66"
+        },
+        "runner": {
+          "bytes": 77226,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "ac8f89ad0c48e21a3f7411e8b600b873f4520011af8fcf201de80a5f3ca85607"
+        },
+        "terminal": {
+          "bytes": 1729,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-001-symbolic-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "16085bb2c719b5305e4acc1d9f5c8df311d569d7e4d971918ffcf6692ba8f3f1"
+        },
+        "worker": {
+          "bytes": 57119,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "d9860c434f576e113b47d96e092501d7ed5e4bcd62b285d403f3aa7380ce62f5"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3081,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-001-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "9e09afcba28f35d47c9141b35ec432eac10f9be05baf51505550fe201b2d4ccb"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "c72163ae678916ff681c45292291fae8b60628ddcf856437af27ef30203329ac",
+      "worker_plan": {
+        "bytes": 18421,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-001-symbolic-closures-ROOT-20261018-v1.json",
+        "sha256": "142e2d79ba5c1ca97d45564c72c11c78bb128ce67afae6d8d7f84dce0dca9ceb"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5712,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "85f650701a241415e200201e8a16005e84fba6a32a25b2d5efd1c538fe3541d5"
+      },
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-001-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "receiver_id": "prospective-fol-20261018-001",
+      "retained": {
+        "consumed": {
+          "bytes": 661,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "cf1fbb501aa57a357560d36c77fa39625ce00758ac0655c6aee175b56aeff8d9"
+        },
+        "result": {
+          "bytes": 33569671,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1/result.json",
+          "sha256": "1a3dc26955c557130726ab5e3ee2323601bc664c9be20b0f04b9c6000b6b7fcd"
+        },
+        "runner": {
+          "bytes": 66987,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "868d8fa2208f39c0b4f8478fec23a99f8412fd147428baa27fde7dd7aacb0f6e"
+        },
+        "terminal": {
+          "bytes": 1715,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "861948c0ad050410c52b71d79c8f8b7dd715587013e9c03da8d331ca5b7dddf0"
+        },
+        "worker": {
+          "bytes": 50280,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "eca63301623d733d4d69a691c1734fdc8ce4b875093f76a383b2e0b53aa209cb"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3050,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "0ff1ca52c38f307dcd4dcd005bc0cc63c1d1e19d1a0ba9e3468bfb5f8d40b20a"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "a07576e98c04eb49067d2a97352745b0bf29f22f3c4c9991bf281bae65d68f6e",
+      "worker_plan": {
+        "bytes": 18398,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1.json",
+        "sha256": "82cb3a5214b1534dc9c9a6652530959bda319e41db0376396133859f3de2103b"
+      }
+    },
+    {
+      "authorization": {
+        "bytes": 5713,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorizations/inventory-cert-001-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "1d5c1e003fc3a9ca9b0988ca36290ab20fb65d39d7cad4a97bad7418d51d566e"
+      },
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-001-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "receiver_id": "prospective-fol-20261018-001",
+      "retained": {
+        "consumed": {
+          "bytes": 675,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-closures-ROOT-20261018-v1/CONSUMED.json",
+          "sha256": "2c4b018ec4748d5daad9eac368415ad6c8ff397182fbca5408f32bae5469e97d"
+        },
+        "result": {
+          "bytes": 36506002,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-closures-ROOT-20261018-v1/result.json",
+          "sha256": "248622e6e17176ee300e33b81ea78243a8e99068470df867d564e9556dcf5105"
+        },
+        "runner": {
+          "bytes": 77078,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-closures-ROOT-20261018-v1/runner-receipt.json",
+          "sha256": "3640ed2dee9495e681ac04e2db242cb36e005fe8b288e122c11c4520af73cfda"
+        },
+        "terminal": {
+          "bytes": 1720,
+          "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-001-fixed-closures-ROOT-20261018-v1-terminal-observation/terminal.json",
+          "sha256": "accd1e285d0621fe9bf96edb7cf2cfbb6da723385827307ae915b16470960dd0"
+        },
+        "worker": {
+          "bytes": 57002,
+          "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-closures-ROOT-20261018-v1/worker-receipt.json",
+          "sha256": "c81ae49980bfd7ca9d74fa6fecb06fa592478623beb8208c5bf3f52d89f62fca"
+        }
+      },
+      "runner_plan": {
+        "bytes": 3066,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/runner-plans/inventory-cert-001-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "2518ceab79b2d332f3ff1f0c3f2eb153497941178816454d475171e3140f484f"
+      },
+      "search_ordering": "and_support",
+      "subject_sha256": "ce5a7771499ef69864d8d8cacacfe6784f4924a5c7e2a3f563fee13ae8572a75",
+      "worker_plan": {
+        "bytes": 18412,
+        "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/worker-plans/inventory-cert-001-fixed-closures-ROOT-20261018-v1.json",
+        "sha256": "9825f21e68b893702175058c5449529092d12fb774dfedca23b7525e6b217f3c"
+      }
+    }
+  ],
+  "design": {
+    "bytes": 15021,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/prospective-design-v1.json",
+    "sha256": "a708caff12d578c999832a44ceca576794c1b183ab7c2350bad1bb173ea6d1c4"
+  },
+  "final_grant_adoption": {
+    "bytes": 2370,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-final-grant-adoption-v1.json",
+    "sha256": "b8aca39ac2ad241184d7c639dd00bba90f013bca925a1bd88da5261ca901ea33"
+  },
+  "final_metadata_delta": {
+    "bytes": 16836,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-final-metadata-delta-v1.json",
+    "sha256": "cb91c931d94db4ee5fda080f4181470e36a93b3224d6dc4d9a6e6449f92d68aa"
+  },
+  "findings": [
+    {
+      "finding": "Independently recomputed every original18-field subject, exact whole worker/runner pins, false-to-true grant delta, maximum0-to1 and five raw scoped review roles. Only authorization descriptor/grant flag/maximum/review roles/scope change; complete design order and all20 exclusive markers/launcher slots join without retries.",
+      "id": "TWENTY_UNCHANGED_SUBJECTS_ONCE_ONLY",
+      "severity": "evidence"
+    },
+    {
+      "finding": "All current24 original/owned raw files and recorded module origins join; previous suite differs only in registry project Source and receiver-driver component. Compiler, helper/symbolic/point search, Model, Reader, complete policy, Python, all41 Z3 files and Native program/template/opaque microcode/bin custody remain exact. Whole result JSON is independently re-encoded with stdlib and matches retained full Reader inverse byte/hash metadata.",
+      "id": "CURRENT24_SOURCE_CUSTODY",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Observer exit, runner exit and exact worker wait4 exit are separately joined; exact Native PID/group/wait4/EOF/cleanup data and conservative separate highwater sums agree. Every current arm has full logs, authoritative postreap absence, no signals/reappearance/late marker, and strict final externally observed terminal before210. All4 stored positives have output/Reader/current checks and known worker exit before180.",
+      "id": "ALL20_TERMINAL_RESOURCE_PROFILE",
+      "severity": "evidence"
+    },
+    {
+      "finding": "All1452 completed Native requests join recorded IDs/purposes/full request SHA and transport stage input/output hashes. Compiler requests use1e9 and remain within512; closure requests receive the exact unspent portion of one5e9 aggregate registration allowance. Aggregate counters are independently summed; last saved wire inputs/outputs are raw-hash joined only, never decoded.",
+      "id": "ASSIGNED_NATIVE_BUDGETS",
+      "severity": "evidence"
+    },
+    {
+      "finding": "Four stored positive flags occur only for control001. All16 larger-case inventoryUNKNOWN are retained; eight bulk records end unknown_space_budget, eight closure-mode records end unknown_step_budget at the5e9 aggregate allowance. This resource receipt neither accepts mathematical proofs nor infers refutation/algorithmic advantage from those flags.",
+      "id": "ALL_OUTCOMES_RETAINED",
+      "severity": "scope"
+    }
+  ],
+  "index": {
+    "bytes": 48702,
+    "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/authorized-index-v1.json",
+    "sha256": "419adfa495ea3f1a90be681deb3de25c0d4cf309b1d99437c01bdc2b343fb512"
+  },
+  "input_capsule": {
+    "bytes": 22422,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/input-capsule-v1.json",
+    "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+  },
+  "limitations": [
+    "Reviewer authored the inherited original outerV2, current AND-support helper and symbolic control, earlier driver/broker/benchmark and previous protocol components. This is a retained evidence audit independent of Root execution, not a new independent Source certificate of those implementations. Current Root-authored registry/driver/cold/outer deltas and full prospective subjects have separate scoped raw reviews.",
+    "Only standard-library raw hashing, retained JSON parsing/canonical byte re-encoding and scalar accounting occurred. No project, target, Native, compiler, Model, logic, kernel, solver, scientific Reader, search, renderer or fixture import/evaluation/replay; no opaque program/microcode/native-wire decoding, live process probe, grant or actual launch.",
+    "The5roles use3reviewer identities with appropriate scope, not5distinct authors. Exact schema/PASS/identity/full-descriptor custody and required subjects were checked from raw receipts. The genuine review scopes and disclosed ancestry remain required; raw descriptor containment itself is not a metatheory or arbitrary-code-safety proof.",
+    "Stored Native/point/proof/hint flags are descriptive data for separate mathematical admission. This receipt does not independently evaluate proof rules, final point legality, batching soundness, whole Native machine semantics, support heuristic causality or theorems. Root admission is pinned only as a separate reference after own resource checks.",
+    "Resource memory is the sum of separately observed Darwin worker and Native high-water RSS in bytes; it may double-count conservatively and is not a simultaneous live peak or OS-enforced aggregate bound. Cohort-controller, outer and observer RAM are excluded. Parent Source-entry wallclock excludes separately observed observer/interpreter prelude.",
+    "Pinned Python, bundled stdlib/native loader, captured callable checks and OS nofollow metadata are trusted. Present raw hashes and saved original/owned origins do not establish a formal continuous worker seal, prove absence between group probes, or attest arbitrary escaped descendants. No current process probes were performed.",
+    "For these20 records all aggregate resource gates pass, so the later conditional outer whole-Python/source loop is reached according to the pinned Source and successful receipt path. That is Source-backed custody evidence, not a separately saved per-file final-hash trace. Earlier memory-failed diagnostics retain the previously disclosed skipped-loop limitation and remain unchanged.",
+    "All actual work, repeated registration, output serialization, complete Reader inverse, worker/cold checks and known positive worker exit are charged to the original180-second work window; outer checks/receipt/known terminal close within210. Failed or resource-limited results could not be salvaged by this audit. Native microstep caps are distinct from host RAM and wallclock caps.",
+    "Five prospectively selected developmental inputs include four prior inventory failures plus one positive control, with fixed/symbolic by bulk/dependency_closures and shared and_support ordering. This is not a new held-out statistical cohort or no-library/learning comparison. All20 outcomes are retained; no RL, GCTS-specific superiority, speedup, generalization, Native-capacity fit, publication or goal-completion claim follows."
+  ],
+  "live_process_probes": 0,
+  "mathematical_proof_accepted": false,
+  "mismatch_count": 0,
+  "model_calls": 0,
+  "module_evaluations": 0,
+  "native_calls": 0,
+  "native_codec_or_decompression_calls": 0,
+  "prior_audit_Source_ancestry": {
+    "bytes": 36926,
+    "path": "/private/tmp/gcts-first-order-suite-retained-resource-peer-20261018/audit_suite_resources_v1.py",
+    "sha256": "a93534cbd0e51a94c6225bfe0e3212c9bd8909b94922e8ed5270b88766f5dd97"
+  },
+  "project_imports": 0,
+  "prospective_index": {
+    "bytes": 35467,
+    "path": "/private/tmp/gcts-inventory-certification-plans-ROOT-20261018-v1/prospective-index-v1.json",
+    "sha256": "440f05ef66b1fbfe6e751d9b693cd73e823ccd74428326dcc4c4f8ba386f6ff3"
+  },
+  "reader_evaluations": 0,
+  "renderer_calls": 0,
+  "resource_data_review_passed": true,
+  "resource_review_passed": true,
+  "result_table": {
+    "bytes": 72076,
+    "path": "/private/tmp/gcts-inventory-certification-retained-resource-peer-20261018/twenty-result-resource-table-v1.json",
+    "sha256": "6d8acc974a4be95afbf98b5528338c41cff9ecfe42f6836cb61dc913d3ae01c5"
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "runtime_closure": {
+    "bytes": 73601,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/runtime-closure-v1.json",
+    "sha256": "214e306b85ec29ea8863c32509c47649e4984c76498752d92d2b9756fcfe5c58"
+  },
+  "saved_data_only": true,
+  "schema": "inventory-certification-retained-resource-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "All20 retained resource/terminal/transport/Source-custody only",
+  "search_calls": 0,
+  "solver_calls": 0,
+  "source_only": true,
+  "summary": {
+    "external_terminal_seconds_range": [
+      36.840914333,
+      129.124214583
+    ],
+    "max_full_result_bytes": 36506002,
+    "peak_sum_MiB_range": [
+      288.484375,
+      744.171875
+    ],
+    "phase_ranges": {
+      "before_oracle": {
+        "count": 20,
+        "maximum": 5.666050128638744e-06,
+        "minimum": 1.91607978194952e-06
+      },
+      "compile": {
+        "count": 20,
+        "maximum": 87.2809447919717,
+        "minimum": 8.947523416019976
+      },
+      "compile_record_joins": {
+        "count": 20,
+        "maximum": 0.6549304589862004,
+        "minimum": 0.08490579202771187
+      },
+      "essential_ancestry": {
+        "count": 4,
+        "maximum": 0.0004295000107958913,
+        "minimum": 0.0003426669863983989
+      },
+      "final_native": {
+        "count": 4,
+        "maximum": 10.396584749920294,
+        "minimum": 5.5858115839073434
+      },
+      "inventory_record_join": {
+        "count": 20,
+        "maximum": 0.3307888749986887,
+        "minimum": 0.005783916916698217
+      },
+      "model": {
+        "count": 4,
+        "maximum": 1.342129583004862,
+        "minimum": 1.2099518330069259
+      },
+      "register": {
+        "count": 20,
+        "maximum": 42.887504582991824,
+        "minimum": 5.332793917041272
+      },
+      "search": {
+        "count": 4,
+        "maximum": 1.255045915953815,
+        "minimum": 0.13448704197071493
+      },
+      "specialize": {
+        "count": 20,
+        "maximum": 0.09469908301252872,
+        "minimum": 0.0007573749171569943
+      },
+      "symbolic_point_projection": {
+        "count": 2,
+        "maximum": 0.02963420795276761,
+        "minimum": 0.028910166933201253
+      },
+      "winning_hint_links": {
+        "count": 4,
+        "maximum": 0.005824416060931981,
+        "minimum": 1.5830155462026596e-06
+      }
+    },
+    "resource_profile_pass_count": 20,
+    "retained_actuals": 20,
+    "stored_native_inventory_UNKNOWN": 16,
+    "stored_positive_candidates": 4,
+    "total_native_completed_requests": 1452
+  },
+  "unique_current_raw_pins_checked": 1012
+}

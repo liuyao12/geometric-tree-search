@@ -1,0 +1,749 @@
+{
+  "Native_calls": 0,
+  "Root_admission": {
+    "bytes": 212243,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "3652461f48873a7e669a18d458d5a255779300abbf2af15b8d2f217a5f2e5efc"
+  },
+  "actual_execution_authorized": false,
+  "ancestry": {
+    "report_and_packager_author": "/root",
+    "reviewer_not_report_or_current_actual_author": true,
+    "reviewer_prior_authorship": [
+      "point-ordering adapter",
+      "quantified compiler/ordinary/compact Model",
+      "earlier driver/cold/storage bridge portions",
+      "earlier proof renderer"
+    ],
+    "scope": "Independent saved-data/report/package comparison only. This is not independent own-Source certification or a Native/kernel soundness proof. The pure renderer was not invoked; displayed text and formulas are parsed/compared directly against retained data."
+  },
+  "asset_draft_index": {
+    "bytes": 12882,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-report-draft-assets-v1.json",
+    "sha256": "c21b4d9d19eea9e1e2dd5321b36bf5f611d32e99e528ec1cc1da06ed640bb4fb"
+  },
+  "assets": [
+    {
+      "bytes": 46135,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-002-fixed-bulk-result.json.gz",
+      "sha256": "f6077da910ff5106505139b359b28ce9deb871554dbf82263d768e0fb8d697f8"
+    },
+    {
+      "bytes": 58000,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-002-symbolic-closures-result.json.gz",
+      "sha256": "e4365f350c524a6fc7a180b769ba594b1df1444c5ec5750fc519bbf9ed0af93d"
+    },
+    {
+      "bytes": 46140,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-002-symbolic-bulk-result.json.gz",
+      "sha256": "d4e50ee95f1a5c91c7d6d4e75a60fb736b7424085e5fb25a680e0583e1ce270d"
+    },
+    {
+      "bytes": 58005,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-002-fixed-closures-result.json.gz",
+      "sha256": "dbe2ebb601fdd6e2d210b355b1c57e392570753d8e4ca9df754cd4a3a4b72b95"
+    },
+    {
+      "bytes": 72266,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-003-symbolic-closures-result.json.gz",
+      "sha256": "f1e1332b08c28ee5d90108095afd0f7bd3b62f48c63fc5d7e3f38d9b92cf275f"
+    },
+    {
+      "bytes": 57530,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-003-symbolic-bulk-result.json.gz",
+      "sha256": "7315b2814773765fc0c76913daeacee7a1f88a95cd87521634d305d532ea324a"
+    },
+    {
+      "bytes": 72291,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-003-fixed-closures-result.json.gz",
+      "sha256": "cdacd33fd758b3c90b94c8b37c6cb7050db6a91c6089137f263a908f0b1e610f"
+    },
+    {
+      "bytes": 57522,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-003-fixed-bulk-result.json.gz",
+      "sha256": "40987386e1ce73b40b64f7f6ae7e8fb84c9d5690b7248db3e40493a83c5723d3"
+    },
+    {
+      "bytes": 71634,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-005-symbolic-bulk-result.json.gz",
+      "sha256": "a5ebebbec87d0336a508830b6bcd8ba51acdddb638be1bee0938572e832a4630"
+    },
+    {
+      "bytes": 80053,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-005-fixed-closures-result.json.gz",
+      "sha256": "a09d721ee00c889ed823b94e962dcc518a1c9958aa2cffe3ac567d37075b0d79"
+    },
+    {
+      "bytes": 71601,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-005-fixed-bulk-result.json.gz",
+      "sha256": "b1e2e6065b79726b57c8a254bed0419f80c6b5d0676db5e48794b0893d4b44ab"
+    },
+    {
+      "bytes": 80040,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-005-symbolic-closures-result.json.gz",
+      "sha256": "3f9b884853ee93dbd3f4221e14d93725cdcad904fc392cea121b39377696239e"
+    },
+    {
+      "bytes": 80248,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-010-fixed-closures-result.json.gz",
+      "sha256": "f79cb88a1d662d45f586bea9fdabbd4ca118f09366bac8fe03e8ab3e1b369985"
+    },
+    {
+      "bytes": 71833,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-010-fixed-bulk-result.json.gz",
+      "sha256": "cccf68857d4e237cc1e6546995effb11e1c3e51d205a211c49153b28ab5b228f"
+    },
+    {
+      "bytes": 80261,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-010-symbolic-closures-result.json.gz",
+      "sha256": "68e9b2c8463a7ae705e3c54ac08addbe6a2a47fb12d39ccc08b74482f1e7b56f"
+    },
+    {
+      "bytes": 71837,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-010-symbolic-bulk-result.json.gz",
+      "sha256": "e9a90d567f5cfc2870ade1b3204104ee693605071136a46365833b3eca30da4d"
+    },
+    {
+      "bytes": 2047991,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-fixed-bulk-result.json.gz",
+      "sha256": "0aa4a0e46c66a913ed15d0ea55ed2183f557e62fe4297880382ed85e886fbbca"
+    },
+    {
+      "bytes": 1603734,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-fixed-bulk-proof.html",
+      "sha256": "5357d4d9bd87a4dbf337aac2cffcf17f547ec099739c687c42a13b59720c5d6b"
+    },
+    {
+      "bytes": 1383894,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-symbolic-closures-result.json.gz",
+      "sha256": "17fafd6760cf5d8691e9206505bb772c360c20161f57e792446c33bc4ef74e08"
+    },
+    {
+      "bytes": 1910370,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-symbolic-closures-proof.html",
+      "sha256": "6bf3d77c846e0b9541cb1a5b2ab575f9ce38977e12c2b5dfda2b75c657d5e667"
+    },
+    {
+      "bytes": 1378750,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-symbolic-bulk-result.json.gz",
+      "sha256": "d6d9ef5275791c4e43ea14c39efb07117e8cbcb7fb30a9f852c066a9ceed9cc4"
+    },
+    {
+      "bytes": 1910362,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-symbolic-bulk-proof.html",
+      "sha256": "18fe968dfe2b714d7b97016a0b2760c26ec9491593cdd2d0eb240272f7c908bc"
+    },
+    {
+      "bytes": 2052890,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-fixed-closures-result.json.gz",
+      "sha256": "92f6732df59d7313723bb26b2ea4558f1f1b2a65212bbf8b80964a9bbdc72b69"
+    },
+    {
+      "bytes": 1603742,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-fixed-closures-proof.html",
+      "sha256": "31b9cf83022b0bc772d5afcb35617aab84fa9f95c598d78bb4148a42ea873671"
+    },
+    {
+      "bytes": 219924,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-summary.json",
+      "sha256": "b78fbf26cd0ca78de27a6193c85f2bda87f989875884b4cf0aa07f2509962f77"
+    },
+    {
+      "bytes": 212243,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-admission.json",
+      "sha256": "3652461f48873a7e669a18d458d5a255779300abbf2af15b8d2f217a5f2e5efc"
+    },
+    {
+      "bytes": 15021,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-design.json",
+      "sha256": "a708caff12d578c999832a44ceca576794c1b183ab7c2350bad1bb173ea6d1c4"
+    },
+    {
+      "bytes": 73601,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-runtime-closure.json",
+      "sha256": "214e306b85ec29ea8863c32509c47649e4984c76498752d92d2b9756fcfe5c58"
+    },
+    {
+      "bytes": 20004,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-heap-evidence.json",
+      "sha256": "adbddd7f2c1d02bd2bc9473bc002c3215128b3ce5dcae90b918e8b9cf0ee5d62"
+    },
+    {
+      "bytes": 22422,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-inputs.json",
+      "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+    },
+    {
+      "bytes": 26258,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification.html",
+      "sha256": "eb6d2e47e26926412ff8e303e64f08d6218fbf3fb3a2bd2c5b2f8ad40ac49bc6"
+    },
+    {
+      "bytes": 88442,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "0760fda25543a5da51ad0bdc4735216ced5015e6a401dc37f13a2894b1e0a67f"
+    },
+    {
+      "bytes": 40688,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/first-order-suite.html",
+      "sha256": "068f093832c232be5a9281590092d4cb7809d96ac599f82ebbaf5923f7d33ae4"
+    }
+  ],
+  "author_identity": "/root",
+  "blockers": [],
+  "case_archive_index": {
+    "bytes": 348842,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-case-archive-assets-v1.json",
+    "sha256": "a717cd1295083df4fc389d1c43e9f4c9d37bfc526a8fc3a5308dc5c9af0ccd26"
+  },
+  "case_archives": [
+    {
+      "archive": {
+        "bytes": 11935118,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-case-001-evidence.zip",
+        "sha256": "f453d30aab02a7fb9f1cb269c82b77c16071152ce7e1b13d7a668a978b78e0c9"
+      },
+      "raw_bytes": 178069600,
+      "raw_members": 164,
+      "receiver_id": "prospective-fol-20261018-001"
+    },
+    {
+      "archive": {
+        "bytes": 5581706,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-case-002-evidence.zip",
+        "sha256": "9c81d12455b3109718ab3030cd9116574f243c1e983e47de5a6407347a7127bf"
+      },
+      "raw_bytes": 44489006,
+      "raw_members": 164,
+      "receiver_id": "prospective-fol-20261018-002"
+    },
+    {
+      "archive": {
+        "bytes": 5762424,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-case-003-evidence.zip",
+        "sha256": "6adb4f439fc07217c9bf1c48c345dbe3d3a7bae907545daa92150278289c4fcd"
+      },
+      "raw_bytes": 49429326,
+      "raw_members": 164,
+      "receiver_id": "prospective-fol-20261018-003"
+    },
+    {
+      "archive": {
+        "bytes": 5918872,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-case-005-evidence.zip",
+        "sha256": "3f7d27c050961cbf33404d30a7c3938219f23bc8baee79683a4c23f01af673d7"
+      },
+      "raw_bytes": 48687374,
+      "raw_members": 164,
+      "receiver_id": "prospective-fol-20261018-005"
+    },
+    {
+      "archive": {
+        "bytes": 5926688,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification-case-010-evidence.zip",
+        "sha256": "a2b9b77ad1f205b8a0e3147cac1c0e6aadd9e50ae819e4728442236024b4cd3a"
+      },
+      "raw_bytes": 48800688,
+      "raw_members": 164,
+      "receiver_id": "prospective-fol-20261018-010"
+    }
+  ],
+  "checks_passed": 102953,
+  "coverage": {
+    "archive_raw_members": 820,
+    "displayed_proof_rows": 200,
+    "ordered_port_rows": 62,
+    "point_value_rows": 23866,
+    "registered_bodies": 40,
+    "selected_tiles": 240
+  },
+  "data_review": {
+    "bytes": 102743,
+    "path": "/private/tmp/gcts-inventory-certification-retained-data-peer-20261018/typed-data-review-v1.json",
+    "sha256": "01189805e09753826102710db284fc6cf02b0794be136e560ad3adb90e3def01"
+  },
+  "findings": [
+    {
+      "disposition": "PASS",
+      "finding": "All20 outcome/method/certification identities, registration microsteps, full recorded registration stage intervals, external terminal times, conservative peak sums and raw links match retained data/admission at displayed precision. Five size rows distinguish actual issued1-definition requests from case003 planned3 and preserve complete prefix/unknown counts.",
+      "id": "H01"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "All5 displayed hypotheses/targets parse from their LaTeX back to the exact frozen formula ASTs. Matrix outcomes match every arm; all16 inventory stops correctly have no fabricated Model/search/proof rows.",
+      "id": "H02"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "The4 positive proof readers retain all200 root/registered-body rows,40 complete lemma bodies,62 ordered input-port rows and every literal command/metadata packet. Every displayed LaTeX formula, English rule/source reference, one-based row number and essential highlight joins the actual saved proof or body.",
+      "id": "H03"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "All240 actual C/G/I glyphs match selected keys and full placement packets. Every23,866 occupancy/mark display row matches exact point/value, assigned0/256 values are retained, role colors and layer-count SVG dots match all underlying assignments. Glyphs explicitly represent factored point rows, not primitive-square macro inlining or rotated Wang squares.",
+      "id": "H04"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "All20 ordinary result gzip files decompress byte-for-byte to the complete raw actual outputs,148,656,637 uncompressed bytes. The7,938,921-byte report gzip set contains full results; no raw field or proof is omitted.",
+      "id": "H05"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "All5 case archive SHA/size pins, internal manifests and all820 raw members reconstruct exact source bytes. Archives contain35,124,808 compressed bytes for369,475,994 raw member bytes. The5 extra MANIFEST files are metadata; opaque Native code/input/output remain uninterpreted raw bytes.",
+      "id": "H06"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Heading refinement and current reader status repair have explicit frozen before/after records. Earlier40-run report is raw-exact after removing only its dated banner; reader earlier bodies/statistics are raw-exact after removing only new card and restoring its old eyebrow.",
+      "id": "H07"
+    },
+    {
+      "disposition": "RESOLVED_PRIOR_FINDING",
+      "finding": "The superseded reader called the old40-run card the latest measured cohort below the new20-run card. Root preserved it and changed only its eyebrow to EARLIER FORTY-RUN COHORT. Current0760 reader closes this finding; no statistics or scientific data changed.",
+      "id": "H08"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "Main claims truthfully distinguish8bulkspace stops from8batchaggregate-step stops, no Model/search on partial inventory,4known control proofs and no newly solved input. Control001 bulk1.8766b versusclosure1.6908b steps and approximately14second registration is scoped as observed data, with no general splitting cost law or GCTS/RL gain.",
+      "id": "H09"
+    },
+    {
+      "disposition": "PASS",
+      "finding": "All current inspected HTML IDs/owned anchors and new proof navigations are unique/resolvable, established MathJax delimiter/script configuration is present, and no Unicode replacements are used for mathematical operators. Live MathJax/browser visual QA remains Root-owned.",
+      "id": "H10"
+    },
+    {
+      "disposition": "PENDING_FINALIZATION_ONLY",
+      "finding": "Common evidence archive, final published member manifest and copied data/resource/report review JSON links intentionally await this receipt. They are finalization artifacts, not proof claims. Their final bytes/all links/live deployment are not accepted by this receipt and must receive Root final checks.",
+      "id": "H11"
+    }
+  ],
+  "fixture_executions": 0,
+  "gzip_downloads": [
+    {
+      "gzip": {
+        "bytes": 2047991,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-fixed-bulk-result.json.gz",
+        "sha256": "0aa4a0e46c66a913ed15d0ea55ed2183f557e62fe4297880382ed85e886fbbca"
+      },
+      "invocation_id": "inventory-cert-001-fixed-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 36482958,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "4e02917b4dffec237fbb13f5cc6949c8da1cbed5976e41914cef466baf053184"
+      },
+      "uncompressed_bytes": 36482958
+    },
+    {
+      "gzip": {
+        "bytes": 2052890,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-fixed-closures-result.json.gz",
+        "sha256": "92f6732df59d7313723bb26b2ea4558f1f1b2a65212bbf8b80964a9bbdc72b69"
+      },
+      "invocation_id": "inventory-cert-001-fixed-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 36506002,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "248622e6e17176ee300e33b81ea78243a8e99068470df867d564e9556dcf5105"
+      },
+      "uncompressed_bytes": 36506002
+    },
+    {
+      "gzip": {
+        "bytes": 1378750,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-symbolic-bulk-result.json.gz",
+        "sha256": "d6d9ef5275791c4e43ea14c39efb07117e8cbcb7fb30a9f852c066a9ceed9cc4"
+      },
+      "invocation_id": "inventory-cert-001-symbolic-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 33569671,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "1a3dc26955c557130726ab5e3ee2323601bc664c9be20b0f04b9c6000b6b7fcd"
+      },
+      "uncompressed_bytes": 33569671
+    },
+    {
+      "gzip": {
+        "bytes": 1383894,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-001-symbolic-closures-result.json.gz",
+        "sha256": "17fafd6760cf5d8691e9206505bb772c360c20161f57e792446c33bc4ef74e08"
+      },
+      "invocation_id": "inventory-cert-001-symbolic-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 33592719,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "ac3792b31e07d7fb4a20d0512c5a313e0b5a365d330e4e246b31fb467c45ee66"
+      },
+      "uncompressed_bytes": 33592719
+    },
+    {
+      "gzip": {
+        "bytes": 46135,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-002-fixed-bulk-result.json.gz",
+        "sha256": "f6077da910ff5106505139b359b28ce9deb871554dbf82263d768e0fb8d697f8"
+      },
+      "invocation_id": "inventory-cert-002-fixed-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 367907,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "c8bc92e3d1035ef21d3fca88bc923e24308f8acfcfdef242747323911383292b"
+      },
+      "uncompressed_bytes": 367907
+    },
+    {
+      "gzip": {
+        "bytes": 58005,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-002-fixed-closures-result.json.gz",
+        "sha256": "dbe2ebb601fdd6e2d210b355b1c57e392570753d8e4ca9df754cd4a3a4b72b95"
+      },
+      "invocation_id": "inventory-cert-002-fixed-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 417206,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "fe94fbc3db1cf426cd827785785ccbb0aa1326614b97cccc4757ee7c93ece3c1"
+      },
+      "uncompressed_bytes": 417206
+    },
+    {
+      "gzip": {
+        "bytes": 46140,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-002-symbolic-bulk-result.json.gz",
+        "sha256": "d4e50ee95f1a5c91c7d6d4e75a60fb736b7424085e5fb25a680e0583e1ce270d"
+      },
+      "invocation_id": "inventory-cert-002-symbolic-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 367996,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "c9b8ad134f8b259d162ea08d9211f7606f9a332ebaaef4674fff0648db5e353d"
+      },
+      "uncompressed_bytes": 367996
+    },
+    {
+      "gzip": {
+        "bytes": 58000,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-002-symbolic-closures-result.json.gz",
+        "sha256": "e4365f350c524a6fc7a180b769ba594b1df1444c5ec5750fc519bbf9ed0af93d"
+      },
+      "invocation_id": "inventory-cert-002-symbolic-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 417300,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "7f71a9753fd5989ac19e76711b4f4562a251c5f0988569028925fc1dc8772792"
+      },
+      "uncompressed_bytes": 417300
+    },
+    {
+      "gzip": {
+        "bytes": 57522,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-003-fixed-bulk-result.json.gz",
+        "sha256": "40987386e1ce73b40b64f7f6ae7e8fb84c9d5690b7248db3e40493a83c5723d3"
+      },
+      "invocation_id": "inventory-cert-003-fixed-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 523554,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "af90428be5f5cd6a861f4b060d6302be1033c7e5e97d74b796bf155450352ab9"
+      },
+      "uncompressed_bytes": 523554
+    },
+    {
+      "gzip": {
+        "bytes": 72291,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-003-fixed-closures-result.json.gz",
+        "sha256": "cdacd33fd758b3c90b94c8b37c6cb7050db6a91c6089137f263a908f0b1e610f"
+      },
+      "invocation_id": "inventory-cert-003-fixed-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 565759,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "9b36ec622ad50c7fcfb4df37dde13a48426026c44eb2704742f77ec9a480173c"
+      },
+      "uncompressed_bytes": 565759
+    },
+    {
+      "gzip": {
+        "bytes": 57530,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-003-symbolic-bulk-result.json.gz",
+        "sha256": "7315b2814773765fc0c76913daeacee7a1f88a95cd87521634d305d532ea324a"
+      },
+      "invocation_id": "inventory-cert-003-symbolic-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 523684,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "b5f17460e69617a2f2d8591d89a62c49b09527206bdb33a3ceb25ae69539b60d"
+      },
+      "uncompressed_bytes": 523684
+    },
+    {
+      "gzip": {
+        "bytes": 72266,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-003-symbolic-closures-result.json.gz",
+        "sha256": "f1e1332b08c28ee5d90108095afd0f7bd3b62f48c63fc5d7e3f38d9b92cf275f"
+      },
+      "invocation_id": "inventory-cert-003-symbolic-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 565865,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "4d4593ce3cbaafeb8bd3be5387b4f538d10db1f75ae101cbcd560455df02d24b"
+      },
+      "uncompressed_bytes": 565865
+    },
+    {
+      "gzip": {
+        "bytes": 71601,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-005-fixed-bulk-result.json.gz",
+        "sha256": "b1e2e6065b79726b57c8a254bed0419f80c6b5d0676db5e48794b0893d4b44ab"
+      },
+      "invocation_id": "inventory-cert-005-fixed-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 582336,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "5e24e2ce52885e8cc43a4564e5d6200878719412b204023cb954621c84798b99"
+      },
+      "uncompressed_bytes": 582336
+    },
+    {
+      "gzip": {
+        "bytes": 80053,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-005-fixed-closures-result.json.gz",
+        "sha256": "a09d721ee00c889ed823b94e962dcc518a1c9958aa2cffe3ac567d37075b0d79"
+      },
+      "invocation_id": "inventory-cert-005-fixed-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 602526,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "b8da1f144be8c538f9aebedb9e503b32117e375c8ea8c68568a05ff0be17c6fc"
+      },
+      "uncompressed_bytes": 602526
+    },
+    {
+      "gzip": {
+        "bytes": 71634,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-005-symbolic-bulk-result.json.gz",
+        "sha256": "a5ebebbec87d0336a508830b6bcd8ba51acdddb638be1bee0938572e832a4630"
+      },
+      "invocation_id": "inventory-cert-005-symbolic-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 582440,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "a65d7c1c75cffb9e00c4c36a80ceec480ac285eb2b9d666d5bd3c71486273a94"
+      },
+      "uncompressed_bytes": 582440
+    },
+    {
+      "gzip": {
+        "bytes": 80040,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-005-symbolic-closures-result.json.gz",
+        "sha256": "3f9b884853ee93dbd3f4221e14d93725cdcad904fc392cea121b39377696239e"
+      },
+      "invocation_id": "inventory-cert-005-symbolic-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 602641,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "70d198ab8f74b964d28a5a681315ec8cf33874cd1559e5939684f7e86ea7dcda"
+      },
+      "uncompressed_bytes": 602641
+    },
+    {
+      "gzip": {
+        "bytes": 71833,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-010-fixed-bulk-result.json.gz",
+        "sha256": "cccf68857d4e237cc1e6546995effb11e1c3e51d205a211c49153b28ab5b228f"
+      },
+      "invocation_id": "inventory-cert-010-fixed-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 586497,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "02f9efb85a1b5a5a62994b5d6a804884006c6e0be041fac5e8da823ef040e54a"
+      },
+      "uncompressed_bytes": 586497
+    },
+    {
+      "gzip": {
+        "bytes": 80248,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-010-fixed-closures-result.json.gz",
+        "sha256": "f79cb88a1d662d45f586bea9fdabbd4ca118f09366bac8fe03e8ab3e1b369985"
+      },
+      "invocation_id": "inventory-cert-010-fixed-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 606442,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-closures-ROOT-20261018-v1/result.json",
+        "sha256": "36dc9ebf9cb26c3c3fbd66db53f3fb120c2e4d6be8996b911e837ac946e1b085"
+      },
+      "uncompressed_bytes": 606442
+    },
+    {
+      "gzip": {
+        "bytes": 71837,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-010-symbolic-bulk-result.json.gz",
+        "sha256": "e9a90d567f5cfc2870ade1b3204104ee693605071136a46365833b3eca30da4d"
+      },
+      "invocation_id": "inventory-cert-010-symbolic-bulk-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 586594,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1/result.json",
+        "sha256": "7f413bfc2b609b47155bf22959f7903a8894b052808f53649ff5fbcd84ffebd1"
+      },
+      "uncompressed_bytes": 586594
+    },
+    {
+      "gzip": {
+        "bytes": 80261,
+        "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-cert-010-symbolic-closures-result.json.gz",
+        "sha256": "68e9b2c8463a7ae705e3c54ac08addbe6a2a47fb12d39ccc08b74482f1e7b56f"
+      },
+      "invocation_id": "inventory-cert-010-symbolic-closures-ROOT-20261018-v1",
+      "raw": {
+        "bytes": 606540,
+        "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-closures-ROOT-20261018-v1/result.json",
+        "sha256": "7d4f6ef1401a8b9ae73023808b3c3a4904c924bc69fee60911c36d19009f4bc7"
+      },
+      "uncompressed_bytes": 606540
+    }
+  ],
+  "heading_refinement": {
+    "bytes": 788,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-report-text-refinement-v1.json",
+    "sha256": "7ef152ca9f650f317db04882cb38d726c31985746f91d05aa48fc4a4c2bcb940"
+  },
+  "limitations": [
+    "No Native/proof/search/model/compiler/solver/Reader/renderer/codec/project imports or evaluations; no actual or fixture launched. Restricted displayed-LaTeX parsing and standard archive/report decompression are data checks only.",
+    "Every new proof/mark/body display and report figure is literal retained evidence; Native truth remains inherited and resource admission remains a distinct peer scope.",
+    "Ordinary20result gzip inverses and ZIP-container decompression were performed. Inner opaque Native gzip or binary programs were never decoded or executed.",
+    "Third-party CDN fetch/MathJax execution, browser rendering, archive publication/live bytes and not-yet-built common archive/final manifest are outside this receipt.",
+    "Unrelated inherited reader external/cloud links and entire historical theorem reports were not re-audited; only exact additive current/historical deltas and current owned anchors were checked.",
+    "One known five-input engineering cohort is not a general benchmark, new theorem search/RL gain, universal proof-tile result or estimate of unmeasured adaptive batching/recursive-cluster performance."
+  ],
+  "mismatches": 0,
+  "module_evaluations": 0,
+  "opaque_Native_gzip_decodes": 0,
+  "own_audit_preflight": {
+    "current_script": {
+      "bytes": 29986,
+      "path": "/private/tmp/gcts-inventory-certification-report-peer-20261018/audit_report_package_v2.py",
+      "sha256": "211c830aaeb73eadc4633ea94fa5e4e0c94240b8d8f7733776c1c8e4f53a8b3f"
+    },
+    "explanation": "V1 completed substantive display/archive checks then stopped at an overly literal canned-phrase assertion. It expected known successful/One deterministic run, whereas actual report says known-outcome engineering cohort/Twenty once-only sequential runs. V2 corrected only these own audit predicates and metadata output newline, then reran saved-data-only checks. No target report/Source/actual/renderer/Native was executed or changed by the reviewer.",
+    "preserved_script": {
+      "bytes": 29956,
+      "path": "/private/tmp/gcts-inventory-certification-report-peer-20261018/audit_report_package_v1.py",
+      "sha256": "19f4bfac5a5a281a2d5dd68a0e6a3c74a1dc20842d4d7d15e93884265cbea2c2"
+    }
+  },
+  "package_review_passed": true,
+  "pending_finalization_links": [
+    {
+      "href": "inventory-certification-evidence-manifest.json",
+      "page": "inventory-certification.html",
+      "status": "PENDING_FINALIZATION"
+    },
+    {
+      "href": "inventory-certification-data-review.json",
+      "page": "inventory-certification.html",
+      "status": "PENDING_FINALIZATION"
+    },
+    {
+      "href": "inventory-certification-resource-review.json",
+      "page": "inventory-certification.html",
+      "status": "PENDING_FINALIZATION"
+    },
+    {
+      "href": "inventory-certification-report-review.json",
+      "page": "inventory-certification.html",
+      "status": "PENDING_FINALIZATION"
+    },
+    {
+      "href": "inventory-certification-common-evidence.zip",
+      "page": "inventory-certification.html",
+      "status": "PENDING_FINALIZATION"
+    }
+  ],
+  "proof_details": [
+    {
+      "arity": 3,
+      "file": "inventory-cert-001-fixed-bulk-proof.html",
+      "invocation_id": "inventory-cert-001-fixed-bulk-ROOT-20261018-v1",
+      "lemma_rows": 38,
+      "point_value_rows": 5378,
+      "registered_bodies": 10,
+      "root_rows": 12,
+      "tiles": 60
+    },
+    {
+      "arity": 3,
+      "file": "inventory-cert-001-fixed-closures-proof.html",
+      "invocation_id": "inventory-cert-001-fixed-closures-ROOT-20261018-v1",
+      "lemma_rows": 38,
+      "point_value_rows": 5378,
+      "registered_bodies": 10,
+      "root_rows": 12,
+      "tiles": 60
+    },
+    {
+      "arity": 3,
+      "file": "inventory-cert-001-symbolic-bulk-proof.html",
+      "invocation_id": "inventory-cert-001-symbolic-bulk-ROOT-20261018-v1",
+      "lemma_rows": 38,
+      "point_value_rows": 6555,
+      "registered_bodies": 10,
+      "root_rows": 12,
+      "tiles": 60
+    },
+    {
+      "arity": 3,
+      "file": "inventory-cert-001-symbolic-closures-proof.html",
+      "invocation_id": "inventory-cert-001-symbolic-closures-ROOT-20261018-v1",
+      "lemma_rows": 38,
+      "point_value_rows": 6555,
+      "registered_bodies": 10,
+      "root_rows": 12,
+      "tiles": 60
+    }
+  ],
+  "pure_renderer": {
+    "bytes": 23778,
+    "path": "/private/tmp/gcts-semantic-proof-renderer-source-20261018/semantic_proof_renderer_v2.py",
+    "sha256": "bd929c531205dfd9fcfd6732c9de554d71e2abdd492a80aac1dd094965b77e77"
+  },
+  "raw_audit": {
+    "bytes": 13537706,
+    "path": "/private/tmp/gcts-inventory-certification-report-peer-20261018/raw-report-package-audit-v2.json",
+    "sha256": "6f4517e5560906244428c60beb7ae04594b5ab8943672e36bb8200b875508be4"
+  },
+  "reader": {
+    "bytes": 88442,
+    "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+    "sha256": "0760fda25543a5da51ad0bdc4735216ced5015e6a401dc37f13a2894b1e0a67f"
+  },
+  "reader_status_resolution": {
+    "bytes": 1211,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/ROOT-report-status-finding-v1.json",
+    "sha256": "bc63dc82d0fdd3bcf8eb6bec999381d2dc37994846fdc00185d6d32ff3e5e3c1"
+  },
+  "renderer_executions": 0,
+  "report_package_review_passed": true,
+  "report_review_passed": true,
+  "resource_review": {
+    "bytes": 79351,
+    "path": "/private/tmp/gcts-inventory-certification-retained-resource-peer-20261018/typed-resource-review-v1.json",
+    "sha256": "92104b205af2999361ec5f694d62e86a4ee9521b91f7a8b13ea766033cb29189"
+  },
+  "reviewer_identity": "/root/conventional_library",
+  "saved_data_only": true,
+  "schema": "inventory-certification-report-package-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "source": {
+    "bytes": 26258,
+    "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/inventory-certification.html",
+    "sha256": "eb6d2e47e26926412ff8e303e64f08d6218fbf3fb3a2bd2c5b2f8ad40ac49bc6"
+  },
+  "source_only": false,
+  "superseded_status_finding": {
+    "bytes": 1531,
+    "path": "/private/tmp/gcts-inventory-certification-report-peer-20261018/typed-reader-status-finding-v1.json",
+    "sha256": "f106a0343b6553e214c3b2033dd3ddfa19bf4c9c654ab994833c38898e36b822"
+  }
+}

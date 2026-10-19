@@ -1,0 +1,350 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root",
+  "factors": {
+    "inventory_certification_mode": [
+      "bulk",
+      "dependency_closures"
+    ],
+    "method": [
+      "fixed",
+      "symbolic"
+    ],
+    "search_ordering": [
+      "and_support"
+    ]
+  },
+  "goal_complete": false,
+  "intake_Source_handoff": {
+    "bytes": 2965,
+    "path": "/private/tmp/gcts-inventory-certification-intake-ROOT-source-20261018/intake-Source-handoff-v1.json",
+    "sha256": "4485aa9d52e5e591cb607c39257d35652ce66e6ffac25ce7d0b6343239b9c0a9"
+  },
+  "limits": {
+    "check_steps": 2048,
+    "compile_queries": 512,
+    "conservative_worker_plus_native_peak_bytes": 1073741824,
+    "guard_steps": 1000000000,
+    "inventory_registration_aggregate_micro_steps": 5000000000,
+    "overall_seconds": 210,
+    "proposal_steps": 24,
+    "registry_steps": 5000000000,
+    "result_bytes": 134217728,
+    "search_max_nodes": 5000,
+    "search_seconds": 30,
+    "seed": 64000,
+    "work_seconds": 180
+  },
+  "original_input_capsule": {
+    "bytes": 22422,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/input-capsule-v1.json",
+    "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+  },
+  "preregistered_comparisons": [
+    "All original compiler/inventory bodies unchanged for each case, including definitions not exported or used.",
+    "Complete original Model and initial t/m/generations identical wherever both certify, excluding the Model compile_seconds diagnostic only.",
+    "Every closure receipt joins exact Native request, full original theory, dependency-ordered block bodies, actual broker allowance, status and aggregate microsteps.",
+    "Final proof and whole t/m region checks unchanged; full worker/Native/terminal/whole output cost and all failures retained."
+  ],
+  "prior_cohort_admission": {
+    "bytes": 2465113,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/first-order-suite-progress-20261018/ROOT-actual-admission-v1.json",
+    "sha256": "da6088925e44be6ca4bcb7fb21573fc676c8706eb01cc59f5eb73ceb7998371c"
+  },
+  "purpose": "Full-inventory certification feasibility and end-to-end cost; no changed mathematical proof search, no general benchmark or speedup claim.",
+  "runtime_closure": {
+    "bytes": 73601,
+    "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/runtime-closure-v1.json",
+    "sha256": "214e306b85ec29ea8863c32509c47649e4984c76498752d92d2b9756fcfe5c58"
+  },
+  "schedule": [
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-bulk-ROOT-20261018-v1",
+      "case_order": 1,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-002-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 1,
+      "receiver_id": "prospective-fol-20261018-002",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-closures-ROOT-20261018-v1",
+      "case_order": 1,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-002-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 2,
+      "receiver_id": "prospective-fol-20261018-002",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-symbolic-bulk-ROOT-20261018-v1",
+      "case_order": 1,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-002-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 3,
+      "receiver_id": "prospective-fol-20261018-002",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-002-fixed-closures-ROOT-20261018-v1",
+      "case_order": 1,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-002-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 4,
+      "receiver_id": "prospective-fol-20261018-002",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-closures-ROOT-20261018-v1",
+      "case_order": 2,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-003-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 5,
+      "receiver_id": "prospective-fol-20261018-003",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-symbolic-bulk-ROOT-20261018-v1",
+      "case_order": 2,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-003-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 6,
+      "receiver_id": "prospective-fol-20261018-003",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-closures-ROOT-20261018-v1",
+      "case_order": 2,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-003-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 7,
+      "receiver_id": "prospective-fol-20261018-003",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-003-fixed-bulk-ROOT-20261018-v1",
+      "case_order": 2,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-003-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 8,
+      "receiver_id": "prospective-fol-20261018-003",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-bulk-ROOT-20261018-v1",
+      "case_order": 3,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-005-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 9,
+      "receiver_id": "prospective-fol-20261018-005",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-closures-ROOT-20261018-v1",
+      "case_order": 3,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-005-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 10,
+      "receiver_id": "prospective-fol-20261018-005",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-fixed-bulk-ROOT-20261018-v1",
+      "case_order": 3,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-005-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 11,
+      "receiver_id": "prospective-fol-20261018-005",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-005-symbolic-closures-ROOT-20261018-v1",
+      "case_order": 3,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-005-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 12,
+      "receiver_id": "prospective-fol-20261018-005",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-closures-ROOT-20261018-v1",
+      "case_order": 4,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-010-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 13,
+      "receiver_id": "prospective-fol-20261018-010",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-fixed-bulk-ROOT-20261018-v1",
+      "case_order": 4,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-010-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 14,
+      "receiver_id": "prospective-fol-20261018-010",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-closures-ROOT-20261018-v1",
+      "case_order": 4,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-010-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 15,
+      "receiver_id": "prospective-fol-20261018-010",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-010-symbolic-bulk-ROOT-20261018-v1",
+      "case_order": 4,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-010-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 16,
+      "receiver_id": "prospective-fol-20261018-010",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-bulk-ROOT-20261018-v1",
+      "case_order": 5,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-001-fixed-bulk-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 17,
+      "receiver_id": "prospective-fol-20261018-001",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 1
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-closures-ROOT-20261018-v1",
+      "case_order": 5,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-001-symbolic-closures-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 18,
+      "receiver_id": "prospective-fol-20261018-001",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 2
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-symbolic-bulk-ROOT-20261018-v1",
+      "case_order": 5,
+      "inventory_certification_mode": "bulk",
+      "invocation_id": "inventory-cert-001-symbolic-bulk-ROOT-20261018-v1",
+      "mode": "symbolic",
+      "model_storage": "literal_interned",
+      "order": 19,
+      "receiver_id": "prospective-fol-20261018-001",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 3
+    },
+    {
+      "actual_directory": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-cert-001-fixed-closures-ROOT-20261018-v1",
+      "case_order": 5,
+      "inventory_certification_mode": "dependency_closures",
+      "invocation_id": "inventory-cert-001-fixed-closures-ROOT-20261018-v1",
+      "mode": "fixed",
+      "model_storage": "literal_interned",
+      "order": 20,
+      "receiver_id": "prospective-fol-20261018-001",
+      "result_reader": "interned",
+      "search_ordering": "and_support",
+      "within_case_order": 4
+    }
+  ],
+  "schema": "ROOT-inventory-certification-prospective-design-v1",
+  "scientific_calls": 0,
+  "scientific_scope": "No new RL, learned pruning, new recursive cluster proposer, PA induction, Hilbert geometry, universal fixed tile palette, or infinite tiling result. Specialized symbolic control retains its existing semantics.",
+  "selection": {
+    "correlated_renaming_pair": [
+      5,
+      10
+    ],
+    "known_previous_outcomes": true,
+    "not_blind": true,
+    "omitted_cases_reason": "Other former successes/search-budget failures do not isolate the inventory heap bottleneck; not counted as a solve-rate benchmark.",
+    "ordered_cases": [
+      2,
+      3,
+      5,
+      10,
+      1
+    ],
+    "positive_same_Model_control": 1,
+    "previous_inventory_unknown_cases": [
+      2,
+      3,
+      5,
+      10
+    ]
+  },
+  "source_only": true,
+  "stop_semantics": "Each slot once, no outcome-dependent removal/retry. Stop controller only for ambiguous ownership/Source drift or explicit Root stop; retain all failures. Source changes require separate immutable successors and new experiment, never rescue a consumed slot."
+}
