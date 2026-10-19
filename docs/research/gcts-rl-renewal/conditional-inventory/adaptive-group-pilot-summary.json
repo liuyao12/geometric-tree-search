@@ -1,0 +1,219 @@
+{
+  "GCTS_or_RL_search_advantage_established": false,
+  "Root_admission": {
+    "bytes": 12879,
+    "path": "/private/tmp/gcts-adaptive-group-local-pilot-20261019/ROOT-actual-admission-v1.json",
+    "sha256": "6e19521d521bdd6f485b325e302ac4f4e1ba4e15dd5440ce1cde209718a509b5"
+  },
+  "accepted_complete_inventories": 0,
+  "compiler_inventory_full_prior_literal_equal": true,
+  "conservative_worker_plus_Native_peak_bytes": 285949952,
+  "date": "2026-10-19 UTC",
+  "first_full_group_prior_request_and_machine_match": true,
+  "goal_complete": false,
+  "independent_saved_review": {
+    "bytes": 16316,
+    "path": "/private/tmp/gcts-adaptive-group-local-peer-20261019/peer-saved-evidence-review-v2.json",
+    "sha256": "b0c145ac2feceda7fb40e6b08cb58b90cbc06d33d2a27e5afc8516d0d7247b21"
+  },
+  "limits": {
+    "check_steps": 2048,
+    "compile_queries": 512,
+    "conservative_worker_plus_native_peak_bytes": 1073741824,
+    "guard_steps": 1000000000,
+    "inventory_registration_aggregate_micro_steps": 5000000000,
+    "overall_seconds": 210,
+    "proposal_steps": 24,
+    "registry_steps": 5000000000,
+    "result_bytes": 134217728,
+    "search_max_nodes": 5000,
+    "search_seconds": 30,
+    "seed": 64000,
+    "work_seconds": 180
+  },
+  "native_queries": 55,
+  "new_RL_training": false,
+  "new_theorems": 0,
+  "next_decision": "Do not tune more batch variants. Investigate explicit schema-level certification as a separate unimplemented architecture; qualify recursive proposer separately before fair controls.",
+  "observer_launch_attempts": 2,
+  "outer_terminal_seconds": 77.84136775,
+  "policy": "Left-first binary midpoint split only after nonsingleton space UNKNOWN. Every request charged against one original5e9 allowance. All original38 definitions/interfaces retained; no prefix activation.",
+  "preworker_failures": 1,
+  "recursive_proposer_enabled": false,
+  "registration": {
+    "accepted_definitions": 9,
+    "complete": false,
+    "consumed_micro_steps": 5000000000,
+    "definitions": 38,
+    "group_walk": [
+      {
+        "action": "split_group",
+        "aggregate_used": 872854609,
+        "closure_definitions": 38,
+        "consumed_micro_steps": 872854609,
+        "native_status": "unknown_space_budget",
+        "path": [],
+        "query": 51,
+        "request_bytes": 39443,
+        "targets": 38
+      },
+      {
+        "action": "split_group",
+        "aggregate_used": 1933135766,
+        "closure_definitions": 19,
+        "consumed_micro_steps": 1060281157,
+        "native_status": "unknown_space_budget",
+        "path": [
+          0
+        ],
+        "query": 52,
+        "request_bytes": 16167,
+        "targets": 19
+      },
+      {
+        "action": "accept_group",
+        "aggregate_used": 3728365424,
+        "closure_definitions": 9,
+        "consumed_micro_steps": 1795229658,
+        "native_status": "accepted",
+        "path": [
+          0,
+          0
+        ],
+        "query": 53,
+        "request_bytes": 7235,
+        "targets": 9
+      },
+      {
+        "action": "stop_inventory",
+        "aggregate_used": 5000000000,
+        "closure_definitions": 10,
+        "consumed_micro_steps": 1271634576,
+        "native_status": "unknown_step_budget",
+        "path": [
+          0,
+          1
+        ],
+        "query": 54,
+        "request_bytes": 9191,
+        "targets": 10
+      }
+    ],
+    "interfaces": 38,
+    "maximum_closure_definitions": 38,
+    "maximum_request_bytes": 39443,
+    "mode": "adaptive_groups",
+    "native_status": "unknown_step_budget",
+    "pending_groups": [
+      {
+        "path": [
+          0,
+          1
+        ],
+        "target_names": [
+          "lemma1e824ea2d9d27d6745f3ca87aea41bf25cb01fb1856f0c315199a29847116ba0",
+          "lemmafb6a15227da45fde6803294c69060fafb64d297236ef77a7453e254ccb8b3afb",
+          "lemma1bd5bc24d22a101a0352ddb3cb73d711549a7d942dbcf3ebc4cd5b1a69207b2a",
+          "lemmace4d2f809f144059773d9b29ffe826076661db25eb7323b26c8b7b8af1f91464",
+          "lemma89ede6dd4d42ef7af72831e3230e6ad214ac5ed798a9665fba8e800b02746d5e",
+          "lemma4a2cd508487731142134789ad8e152271052173bbddbd227be5709315f85f688",
+          "lemma67a4dae047cf684509b8e5bead9930a8f3eb7b9865e70c6cd9e87e0948863836",
+          "lemmade9ccfdafcb45ca1aa0453c17b914f52cd334b482102d5056f88e9214dae1004",
+          "lemma656b6808cb7c933cb854e193dd91d073d9f0939a14d0ee4872d839c6f73fb55f",
+          "lemmab6d2d6e1ee84f46079276e7132b5afe002b834b15e96aa8d69ead6dad7373922"
+        ]
+      },
+      {
+        "path": [
+          1
+        ],
+        "target_names": [
+          "lemma7d45591621a8234013b3eaa863ddc2d7064cf1013ef4d69348e0f1aaebe12a64",
+          "lemma674575541d24c2d69622654c964e011d985f5bd149ab1ef6ad53c42dc08ca27f",
+          "lemma1c862f39f204f825476a6dc426fc49fe2136ecfc7b6ae2ecfc0d57a25fcb856d",
+          "lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685",
+          "lemmaa6fd2c3e2234d6e0a91acc063a3175b47a2f3c605c366fd61bcfb8ef02a60f62",
+          "lemma9dbe5a123d47d5671265bf71638b8c4ced88de4252064d99ea1c2aea8793ba83",
+          "lemma0795d7cfa379a7e4554c8e86f052dfd08b9d3810a2a94106de204dc214f10df9",
+          "lemma969ec1fc89735c1b6c349fd9080288bbd74b924a5f7411ad34b93aa4ed413e6d",
+          "lemma43e68c564d3e9f5ddb36580527fc9ffaad9bb6c239e1c9c685ec8ee963087b16",
+          "lemma711eebf6ec65f109c8a9011f3e2ab897c4f90a1e3f758ef1c8742dedbccbc63a",
+          "lemma21808c9540d03fadcb67f4c13cd9d0104342139f54c546b567d5062ec112e005",
+          "lemma5f785aade1675c55dec9a6235ee2942bf384fff8f3b4f7c3c7dc9ad2320b6941",
+          "lemma85fb4e47aa960d42eefa69c6a28e733bd17e4d76510fffa998835ea6d3d9f9b1",
+          "lemma532e8233fc7c8b0d5530749442d0cba485ceae2ff040b5088f00c4734162fa03",
+          "lemmaddaba892ca3909f72588c8a88706509a1eb299d4457acf8483fcffe7047b3fb8",
+          "lemma900c1a18019bec0657cea62dff2c52bf232a00d553e1d0e7b356fdb584949c16",
+          "lemmab5040b8a4abe50d0a53b75f52f7a17a9469476d6437b8c85baa5b906927af627",
+          "lemmaff7c7c9585887b682ba9d7a1eda93b02174c7233980b7975baba63ea8e974303",
+          "lemma7c017a1f40c4601db7d57e081ba98591cc22b5efa26f78dbb434540631dc4c9d"
+        ]
+      }
+    ],
+    "requests": 4,
+    "stop_reason": "unknown_step_budget"
+  },
+  "result_bytes": 426966,
+  "schema": "adaptive-group-pilot-public-summary-v1",
+  "scope": "Known-case engineering pilot, not blind benchmark, theorem falsity, new proof or independent kernel soundness proof.",
+  "searches_started": 0,
+  "status": "IN_PROFILE_INVENTORY_UNKNOWN",
+  "target": {
+    "id": "prospective-fol-20261018-002",
+    "instantiation_rounds": 2,
+    "length": 12,
+    "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+    "target": [
+      "eq",
+      [
+        "fun",
+        "f",
+        [
+          [
+            "fun",
+            "a",
+            []
+          ]
+        ]
+      ],
+      [
+        "fun",
+        "f",
+        [
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      ]
+    ],
+    "theory": {
+      "axioms": {
+        "a0": [
+          "eq",
+          [
+            "fun",
+            "a",
+            []
+          ],
+          [
+            "fun",
+            "b",
+            []
+          ]
+        ]
+      },
+      "functions": {
+        "a": 0,
+        "b": 0,
+        "f": 1
+      },
+      "predicates": {},
+      "schemas": []
+    },
+    "title": "Prospective first-order assertion 02"
+  },
+  "worker_scientific_pilots": 1,
+  "worker_seconds": 77.819762375
+}

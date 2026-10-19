@@ -1,0 +1,335 @@
+{
+  "actual_execution_authorized": false,
+  "author_identity": "/root/conventional_library",
+  "current_code_evidence": [
+    {
+      "claim": "Existing meta formula parameters are proposals; axiom donor leaves become explicit assumptions, interface binding is a complete finite join, and specialize materializes dependency-first ground definitions. used_definitions selects the exact recursive closure only for final certificates, not search-inventory trimming.",
+      "lines": [
+        1,
+        6,
+        10,
+        20,
+        43,
+        52,
+        65,
+        83,
+        88,
+        97,
+        105,
+        109,
+        115,
+        134
+      ],
+      "source": "family_miner_and_specializer"
+    },
+    {
+      "claim": "Closure mode sends full current theory and every requested recursive body anew; complete all-definition acceptance is required. Native budgets are aggregate across requests. Bulk and closure controls do not certify a symbolic family once.",
+      "lines": [
+        81,
+        102,
+        131,
+        160,
+        165,
+        186,
+        205,
+        218,
+        226
+      ],
+      "source": "ground_registry"
+    },
+    {
+      "claim": "check_blocks validates each ground premise/conclusion/body under the exact current signature/theory and adds its ground interface only after proof acceptance. Assumptions, MP, strict earlier references, generalization assumption-FV restriction and ordered block references are explicit.",
+      "lines": [
+        365,
+        373,
+        377,
+        379,
+        382,
+        390,
+        395,
+        408,
+        441,
+        445,
+        456,
+        459
+      ],
+      "source": "raw_kernel_source"
+    },
+    {
+      "claim": "The existing Native request is the five-field protocol/theory/target/blocks/proof boundary. This design does not alter that executable or decode its opaque microcode.",
+      "lines": [
+        13,
+        15,
+        17,
+        41,
+        45
+      ],
+      "source": "boundary_source"
+    }
+  ],
+  "full_library_policy": {
+    "completeness": "All original finite bindings, definitions, interfaces, dependency bodies, arity, full Model candidate marks/keys and base primitive alternatives remain. No target-specific schema selection, premise ordering, supplied theorem route or outcome filter.",
+    "eligible": "The single-MP, two-hop and dependent four-hop templates use the eligible implication/meta assumption+MP/certified-call class; the dependent family needs the explicit DAG composition argument.",
+    "retained_noneligible": "The existing zero-parameter reflexivity+generalize family remains present and receives ordinary current Native checking whenever it yields a ground definition. It is not silently omitted or relabeled as an MP schema.",
+    "unchanged_four_templates": true
+  },
+  "limitations": [
+    "This is bounded Source/retained-JSON reasoning only; no new Source implementation, scientific import/evaluation, Native/solver/search call, fixture run or opaque gzip decoding.",
+    "Only the current pilot and exact raw Sources were inspected. No claim that schema checking is fastest, that case002 will fit/reach a proof, or that batching is inherently inferior.",
+    "The current38 count is ground instance repetition of two existing families; it is not38 independently discovered parametric theorems.",
+    "Author wrote prior point/Model/bridge/recursive proposer and qualification Sources, but did not author the current grouping pilot/Native kernel. This note is not independent certification of this author's existing Sources."
+  ],
+  "observed_schema_repetition": {
+    "definitions": 38,
+    "families": {
+      "95b300a69e1d6ffc5ac2c404baed707bd84be1e37b4ae397836766c0ecdc39da": {
+        "command_rules": {
+          "assumption": 48,
+          "mp": 32
+        },
+        "ground_definitions": 16,
+        "levels": [
+          1
+        ]
+      },
+      "dcbb7c3cc73c69d42b4158eb3bb819bc4052c5b55569e40ac4f2c8f91aa81f93": {
+        "command_rules": {
+          "assumption": 44,
+          "mp": 22
+        },
+        "ground_definitions": 22,
+        "levels": [
+          1
+        ]
+      }
+    },
+    "interfaces": 38,
+    "interpretation": "All38 case002 definitions are22 single-MP and16 two-hop instances of two historically mined templates, alllevel1. The current instantiated bodies repeat92 assumption commands and54 MP commands. Repetition is a Source/data observation, not measured allocated RAM or a claimed speedup.",
+    "inventory": {
+      "bytes": 95082,
+      "path": "/private/tmp/gcts-adaptive-group-local-pilot-20261019/semantic-preimages/prospective-fol-20261018-002-inventory.json",
+      "sha256": "05481da0c08963f299cbe457583e0f8937f7b6250df418c0fb7d6308ff099945"
+    },
+    "total_rule_counts": {
+      "assumption": 92,
+      "mp": 54
+    }
+  },
+  "proposed_API": {
+    "certify_family": "certify_family(family, certified_dependencies, rule_semantics_epoch, check) -> complete proof-producing schema certificate | UNKNOWN | REJECTED",
+    "instantiate": "instantiate_certificate(certificate, complete_binding, receiver_signature, context_epoch, check) -> exact existing ground definition plus full primitive/dependency correspondence; no new descriptor syntax",
+    "scope": "Prospective interfaces only. Exact complete Source/runtime/certificate custody, callback-origin preservation, bounded work/canonical output and Native fallback must be separately frozen before implementation or execution."
+  },
+  "recommendation": "Investigate a narrow compositional admissibility certificate for the existing implication/meta-only assumption+MP families before another batch-shape search. Retain all ground interfaces and the unchanged fresh whole Native final proof gate. More batching remains an engineering control, not the main architectural answer to repeated parametric proof bodies.",
+  "references": {
+    "boundary_source": {
+      "bytes": 6992,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+      "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+    },
+    "current_runtime_closure": {
+      "bytes": 73601,
+      "path": "/Users/liuyao/Documents/Codex/projects/geometric-tree-search/.gcts-active/inventory-certification-progress-20261018/runtime-closure-v1.json",
+      "sha256": "214e306b85ec29ea8863c32509c47649e4984c76498752d92d2b9756fcfe5c58"
+    },
+    "family_miner_and_specializer": {
+      "bytes": 7196,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+      "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+    },
+    "ground_registry": {
+      "bytes": 12626,
+      "path": "/private/tmp/gcts-inventory-batching-ROOT-source-20261018/semantic_inventory_oracle_v2.py",
+      "sha256": "2010ca7cb6f3da0734efe03e5be0f7e166b7e4d5939078dea0451361cf5890f3"
+    },
+    "pilot_admission": {
+      "bytes": 12879,
+      "path": "/private/tmp/gcts-adaptive-group-local-pilot-20261019/ROOT-actual-admission-v1.json",
+      "sha256": "6e19521d521bdd6f485b325e302ac4f4e1ba4e15dd5440ce1cde209718a509b5"
+    },
+    "pilot_inventory": {
+      "bytes": 95082,
+      "path": "/private/tmp/gcts-adaptive-group-local-pilot-20261019/semantic-preimages/prospective-fol-20261018-002-inventory.json",
+      "sha256": "05481da0c08963f299cbe457583e0f8937f7b6250df418c0fb7d6308ff099945"
+    },
+    "policy": {
+      "bytes": 4502,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-policy-001.json",
+      "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+    },
+    "raw_kernel_source": {
+      "bytes": 17577,
+      "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree",
+      "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+    },
+    "recursive_proposer": {
+      "bytes": 29433,
+      "path": "/private/tmp/gcts-recursive-receptor-source-20261019/recursive_receptor_planner_v1.py",
+      "sha256": "66335c8cd72196c8527a91e61fd9bc6e70932e0bdb2623555b30f2be1e4e7e35"
+    },
+    "recursive_qualification": {
+      "bytes": 1743,
+      "path": "/private/tmp/gcts-recursive-qualification-source-20261019/handoff-v1.json",
+      "sha256": "d51a2460e3e60277a0c46f7b41c652251d7295f2d5c2716935c2c022cd30aff8"
+    }
+  },
+  "relation_to_recursive_track": "Schema certificates address repeated validity checking of a family. Recursive receptor-DAG advice addresses acquiring several missing premises jointly through ordinary scheduler steps. They are complementary axes and should be qualified and ablated separately; neither activates the other.",
+  "saved_evidence": {
+    "Model_search_started": false,
+    "interpretation": "Group splitting avoided space on a9-definition prefix but exhausted the shared exact5e9 steps at the next10. This is an inventory-admission bottleneck, not proof-search failure or evidence of impossible targets. It does not establish that no batching policy can finish, nor a general cost law.",
+    "pilot": {
+      "bytes": 12879,
+      "path": "/private/tmp/gcts-adaptive-group-local-pilot-20261019/ROOT-actual-admission-v1.json",
+      "sha256": "6e19521d521bdd6f485b325e302ac4f4e1ba4e15dd5440ce1cde209718a509b5"
+    },
+    "proofs": 0,
+    "registration": {
+      "accepted_definitions": 9,
+      "complete": false,
+      "consumed_micro_steps": 5000000000,
+      "definitions": 38,
+      "group_walk": [
+        {
+          "action": "split_group",
+          "aggregate_used": 872854609,
+          "closure_definitions": 38,
+          "consumed_micro_steps": 872854609,
+          "native_status": "unknown_space_budget",
+          "path": [],
+          "query": 51,
+          "request_bytes": 39443,
+          "targets": 38
+        },
+        {
+          "action": "split_group",
+          "aggregate_used": 1933135766,
+          "closure_definitions": 19,
+          "consumed_micro_steps": 1060281157,
+          "native_status": "unknown_space_budget",
+          "path": [
+            0
+          ],
+          "query": 52,
+          "request_bytes": 16167,
+          "targets": 19
+        },
+        {
+          "action": "accept_group",
+          "aggregate_used": 3728365424,
+          "closure_definitions": 9,
+          "consumed_micro_steps": 1795229658,
+          "native_status": "accepted",
+          "path": [
+            0,
+            0
+          ],
+          "query": 53,
+          "request_bytes": 7235,
+          "targets": 9
+        },
+        {
+          "action": "stop_inventory",
+          "aggregate_used": 5000000000,
+          "closure_definitions": 10,
+          "consumed_micro_steps": 1271634576,
+          "native_status": "unknown_step_budget",
+          "path": [
+            0,
+            1
+          ],
+          "query": 54,
+          "request_bytes": 9191,
+          "targets": 10
+        }
+      ],
+      "interfaces": 38,
+      "maximum_closure_definitions": 38,
+      "maximum_request_bytes": 39443,
+      "mode": "adaptive_groups",
+      "native_status": "unknown_step_budget",
+      "pending_groups": [
+        {
+          "path": [
+            0,
+            1
+          ],
+          "target_names": [
+            "lemma1e824ea2d9d27d6745f3ca87aea41bf25cb01fb1856f0c315199a29847116ba0",
+            "lemmafb6a15227da45fde6803294c69060fafb64d297236ef77a7453e254ccb8b3afb",
+            "lemma1bd5bc24d22a101a0352ddb3cb73d711549a7d942dbcf3ebc4cd5b1a69207b2a",
+            "lemmace4d2f809f144059773d9b29ffe826076661db25eb7323b26c8b7b8af1f91464",
+            "lemma89ede6dd4d42ef7af72831e3230e6ad214ac5ed798a9665fba8e800b02746d5e",
+            "lemma4a2cd508487731142134789ad8e152271052173bbddbd227be5709315f85f688",
+            "lemma67a4dae047cf684509b8e5bead9930a8f3eb7b9865e70c6cd9e87e0948863836",
+            "lemmade9ccfdafcb45ca1aa0453c17b914f52cd334b482102d5056f88e9214dae1004",
+            "lemma656b6808cb7c933cb854e193dd91d073d9f0939a14d0ee4872d839c6f73fb55f",
+            "lemmab6d2d6e1ee84f46079276e7132b5afe002b834b15e96aa8d69ead6dad7373922"
+          ]
+        },
+        {
+          "path": [
+            1
+          ],
+          "target_names": [
+            "lemma7d45591621a8234013b3eaa863ddc2d7064cf1013ef4d69348e0f1aaebe12a64",
+            "lemma674575541d24c2d69622654c964e011d985f5bd149ab1ef6ad53c42dc08ca27f",
+            "lemma1c862f39f204f825476a6dc426fc49fe2136ecfc7b6ae2ecfc0d57a25fcb856d",
+            "lemma8604f527b524d94fd44a794f01684bfe042c9fb7a815fd7455a5a20a993c4685",
+            "lemmaa6fd2c3e2234d6e0a91acc063a3175b47a2f3c605c366fd61bcfb8ef02a60f62",
+            "lemma9dbe5a123d47d5671265bf71638b8c4ced88de4252064d99ea1c2aea8793ba83",
+            "lemma0795d7cfa379a7e4554c8e86f052dfd08b9d3810a2a94106de204dc214f10df9",
+            "lemma969ec1fc89735c1b6c349fd9080288bbd74b924a5f7411ad34b93aa4ed413e6d",
+            "lemma43e68c564d3e9f5ddb36580527fc9ffaad9bb6c239e1c9c685ec8ee963087b16",
+            "lemma711eebf6ec65f109c8a9011f3e2ab897c4f90a1e3f758ef1c8742dedbccbc63a",
+            "lemma21808c9540d03fadcb67f4c13cd9d0104342139f54c546b567d5062ec112e005",
+            "lemma5f785aade1675c55dec9a6235ee2942bf384fff8f3b4f7c3c7dc9ad2320b6941",
+            "lemma85fb4e47aa960d42eefa69c6a28e733bd17e4d76510fffa998835ea6d3d9f9b1",
+            "lemma532e8233fc7c8b0d5530749442d0cba485ceae2ff040b5088f00c4734162fa03",
+            "lemmaddaba892ca3909f72588c8a88706509a1eb299d4457acf8483fcffe7047b3fb8",
+            "lemma900c1a18019bec0657cea62dff2c52bf232a00d553e1d0e7b356fdb584949c16",
+            "lemmab5040b8a4abe50d0a53b75f52f7a17a9469476d6437b8c85baa5b906927af627",
+            "lemmaff7c7c9585887b682ba9d7a1eda93b02174c7233980b7975baba63ea8e974303",
+            "lemma7c017a1f40c4601db7d57e081ba98591cc22b5efa26f78dbb434540631dc4c9d"
+          ]
+        }
+      ],
+      "requests": 4,
+      "stop_reason": "unknown_step_budget"
+    }
+  },
+  "schema": "schema-level-reusable-family-next-design-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "small_fair_future_test": {
+    "first_stage": "One shadow qualification on the already fully admitted frozen case001 inventory: preserve the complete four-template library and all10 ground definitions; build the schema certificates and show exact per-definition/interface/primitive correspondence while still requiring the unchanged complete Native ground-admission control. Include generic malformed parameter, changed MP reference, reordered premise and dependency-cycle negatives. Synthetic negatives are plumbing tests and do not become receiver facts.",
+    "later_comparison": "Only after independent soundness/Source review, predeclare a small two-case \u00d7 two-admission-lane study: case001 admitted control and blocked002 stress case, old ground certification versus explicit schema certification, same full candidate universe/profile and fresh final Native. Freeze cohort/caps before results; retain all failures. Keep recursive proposer disabled in both so admission and search-policy effects are not confounded.",
+    "metrics": "Report full cold wall/RAM, Native microsteps, schema-check operations as a distinct unit, full interface count, whether Model/search is reached, target proof/whole Native disposition, and all certification warm/cold reuse costs. No cross-unit speed ratio, hidden warm-certificate advantage, general solve-rate or RL/GCTS advantage.",
+    "success": "Complete literal ground inventory/interface/body equality and agreement with fresh Native results for every included ground definition; exact failure/UNKNOWN retention. Finite agreement is implementation qualification, not a proof of universal soundness or a benchmark win.",
+    "unchanged_limits": "Whole180work/210closure,1GiB conservative worker+Native sum,128MiB full output, original full theory/signature/library and5e9 aggregate registration Native steps. Charge certificate construction, validation, instantiation, cache setup, all Native calls and serialization. Any supplemental negative-test cost must be prospectively allocated rather than silently excluded or increasing the cap."
+  },
+  "soundness_obligation": {
+    "excluded_rules": "Axioms tied to receiver theory, generalization, instantiation, equality transport, induction and arbitrary formulas with metas under object binders need their own quantified side-condition/substitution proof. Do not infer them from the MP argument.",
+    "explanation": "For every well-formed uniform whole-formula binding over the receiver signature, the certificate must give an actual derivation in the unchanged kernel rules from the entire ordered premise interface to the instantiated conclusion. A successful donor, matching substitution, family hash or finite collection of ground successes is insufficient.",
+    "initial_eligible_grammar": "Schematic formulas generated only by meta(i) and imp(A,B); commands only exact assumption(index), MP(strict prior antecedent/implication), and calls to previously certified eligible families. Actual bound formulas may themselves contain quantifiers/equality/compound syntax but are treated as opaque whole formulas by these MP derivations. No object binder surrounds a meta in this first certified class.",
+    "local_obligations": [
+      "Validate parameter integer types/ranges and exact literal complete schema/identity, no hash-only equality; all occurrences bind uniformly.",
+      "An assumption command must equal its exact indexed declared premise; preserve ordered/repeated premise ports and sharing policy.",
+      "Each MP must read actual strictly prior derived schematic formulas A and imp(A,B), with its literal output B.",
+      "For dependency calls reconstruct all schematic argument substitutions and ordered inputs; certify the complete acyclic dependency DAG before accepting a parent.",
+      "After instantiation validate every whole formula against the current signature, reconstruct every primitive/reference and exact conclusion; renamed identifiers or changing contexts do not inherit authority.",
+      "Retain full input/schema/source/kernel-semantic preimages in a reusable certificate. Caller versions, exact scope and signature/context must be authenticated; resource UNKNOWN never becomes a cached negative or certificate."
+    ],
+    "proof_method": "A structural induction on assumption/MP derivation rows, with an induction over the dependency DAG. Uniform substitution preserves the exact MP syntactic equality. This note states the required argument; no independently checked formal proof or implemented certifier is supplied.",
+    "theorem_latex": "\\(\\forall\\sigma\\in\\mathrm{WF}(\\Sigma),\\quad \\sigma(\\Gamma_F)\\vdash_{K}\\sigma(C_F)\\)"
+  },
+  "source_only": true,
+  "status": "PROPOSED_NOT_IMPLEMENTED",
+  "trust_boundaries": {
+    "admission_vs_truth": "Structural schema certificates would replace repeated eager admission work only after review. They neither grant a new mathematical axiom nor prove that GCTS/RL searched better. An unchanged-kernel final proof remains mandatory even if a reviewed schema gate reduces presearch cost.",
+    "kernel_change": "Adding a schema-import primitive or trusting prior Native results directly inside the kernel would be a distinct trusted checker change. Not recommended for this first experiment, not implemented, and outside current Native protocol.",
+    "new_certificate_gate": "Skipping eager per-ground Native body checking would be an explicit NEW certification lane and constructor/gate change. A bug-free sound schema checker becomes part of the trusted basis for that lane's admitted-interface/search-model semantics and any exhaustion claims. It must NOT simply write the existing native_accepted status.",
+    "unchanged_final_authority": "Keep the unchanged Native executable as the sole final mathematical authority: any candidate target proof still carries exact recursively used original ground bodies or full primitive expansion, the exact current theory/target and strict ordered references, and gets a fresh whole Native check. A failed/UNKNOWN final check is not a bounded proof success.",
+    "untrusted_proposer": "The current recursive proposer may suggest schema instances or multirow constituent continuations, but cannot declare universal validity, Native acceptance, sound pruning or a reusable theorem. A schema certifier used only as advice does not remove the current all-or-none ground Native-admission barrier."
+  }
+}
