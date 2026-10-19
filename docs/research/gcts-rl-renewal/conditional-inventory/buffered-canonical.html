@@ -1,0 +1,748 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Parallel research progress — GCTS</title><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script><style>*{box-sizing:border-box}body{margin:0;background:#f3f6f4;color:#193940;font:17px/1.6 system-ui,sans-serif}main{max-width:1150px;margin:auto;padding:30px 26px 80px}nav{display:flex;flex-wrap:wrap;gap:22px;font-size:14px}a{color:#12656d}h1{font:600 clamp(34px,5vw,53px)/1.14 Georgia,serif;max-width:950px;margin:24px 0}h2{font:600 29px/1.3 Georgia,serif}h3{font-size:18px}.lead{font-size:21px;max-width:960px}.eyebrow{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#24696d;margin-top:38px}.boundary{padding:20px 24px;border-left:5px solid #a47731;background:#fff0d6}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:22px}article{background:white;border:1px solid #c0d1d3;padding:20px 24px}section{margin-top:48px;scroll-margin-top:24px}.metric{font:600 31px Georgia,serif;display:block;color:#166b69}.small{font-size:14px;color:#536c75}.table-wrap{overflow:auto}table{width:100%;min-width:720px;border-collapse:collapse;background:white;font-size:14px}td,th{text-align:left;vertical-align:top;padding:12px 16px;border-bottom:1px solid #cad7d9}th{max-width:310px}thead{background:#dce9e8}pre{background:#eaf0f0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;padding:16px;font-size:11px;max-width:680px}summary{cursor:pointer;color:#12656d}code{font-size:.87em;background:#e0ebeb;padding:2px 4px}.path{display:grid;grid-template-columns:1fr 35px 1fr 35px 1fr;align-items:stretch;margin:24px 0}.path article{border-top:5px solid #83639b}.arrow{align-self:center;text-align:center}.path p{font-size:14px}footer{margin-top:55px;border-top:1px solid #bacdce;padding-top:20px}@media(max-width:740px){main{padding:22px 16px 60px}.grid,.pair,.path{grid-template-columns:1fr}.arrow{transform:rotate(90deg);height:25px}pre{max-width:100%}}</style></head><body><main><nav><a href="reader.html#buffered-canonical">Research notebook</a><a href="universal-wang.html">Fixed Wang foundation</a><a href="#qualification">Qualification</a><a href="#benchmarks">Benchmark context</a><a href="#records">Evidence</a></nav><p class="eyebrow">19 October 2026 · Parallel work, shared claims</p><h1>Separate construction from the work that challenges it.</h1><p class="lead">Several agents help when their responsibilities are complementary: build an implementation, challenge its evidence, and develop the mathematical and benchmark specification. The current round produced a conditional Wang foundation, caught a missing failure test, and corrected a Hilbert context mismatch.</p><p class="boundary">No new theorem was discovered by GCTS+RL in this round. No trained-policy advantage, useful lemma-transfer advantage or proof-search advantage follows from these results. The <a href="finalization-integration.html#proof">previous admitted symbolic proof</a> remains an elementary control, not a new benchmark victory.</p><section id="team"><h2>Three roles, one integrated record.</h2><div class="grid"><article><h3>Implementation</h3><p>The implementation author prepared a bounded byte comparator and explicit interruption controls. It changes the evidence-checking seam; it adds no proof rule.</p></article><article><h3>Independent review</h3><p>A separate reviewer challenged the code, prospective run and saved output. The first review caught an unexercised fault branch. Three review scopes here belong to one reviewer, not three independent reviewers.</p></article><article><h3>Foundations and benchmarks</h3><p>The design author developed the conditional fixed-machine Wang construction and corrected the literal Hilbert source context. Root reconciles claims and publishes the shared record.</p></article></div><p>The implementation author does not independently certify their own change. Review records identify authorship and historical overlap. Timed experiments run serially with the other agents' tools stopped, so concurrent work does not contaminate their elapsed times.</p></section><section id="foundation"><h2>A fixed Wang core, with the missing pieces visible.</h2><p>The <a href="universal-wang.html">visual specification and proof sketch</a> derive a finite-strip equivalence: for a specified finite machine and valid one-head initial word, a rectangle of matching tiles exists exactly when that machine has an accepting in-strip run of the declared length. The independent prose review recorded \(51\) checks and no blocking finding. This is not a machine-checked theorem.</p><p>A four-state boundary grammar leaves the proposed proof word unknown while pinning the statement and context. The tile set would be frozen once the full proof checker is fixed; arithmetic and symbolic geometry would enter as data. The checker, complete machine table, serialized tile set, faithful codecs, source decoder and high-level lemma expansion remain missing.</p><p class="boundary">A row in this raw tableau is a machine configuration, not a line of mathematical deduction. A practical line-by-line reader needs a separately checked mapping from logical steps and reusable lemma clusters to the low-level configurations. The present boundary selectors are explicit point-model objects; they are not yet a uniform whole-plane Wang gadget.</p></section><section id="qualification"><h2>The finite comparator qualification passed.</h2><p>The previous full fixed run timed out in its canonical-result comparison. The candidate accumulates at most \(65536\) pending comparison bytes while preserving the original encoder, generated-part count and callback schedule. This is a payload bound, not a whole-process allocation or memory bound.</p><div class="grid"><article><span class="metric">\(29.279028125\,\mathrm{s}\)</span><p>Observed final outer terminal from runner Source entry.</p></article><article><span class="metric">\(166363136\)</span><p>Worker highwater in bytes, measured by Darwin <code>wait4</code>; outer and observer RAM excluded.</p></article><article><span class="metric">\(167\)</span><p>Comparator calls across exactly three helper qualifications, including the two unfinished controls.</p></article></div><p>One normal helper call checked all twenty groups and both complete saved ordinary preimages, in order. Two additional calls deliberately interrupted group seven before any repeated full-input reading. The result qualifies this finite helper scope only; it does not qualify the complete production pipeline or establish a speedup.</p><div class="path"><article><strong>Real checkpoint</strong><p>Run the clock and code-identity guards before interpreting a test result.</p></article><div class="arrow">→</div><article><strong>Planned interruption</strong><p>Raise a known exception inside an expected-mismatch test for each comparator.</p></article><div class="arrow">→</div><article><strong>Unfinished evidence</strong><p>Require the same exception object to escape. Save the completed prefix without calling it success.</p></article></div><p>The first static review found that normal negative tests inspected the fault latch without exercising this supplied-checkpoint path. The unexecuted first candidate was retained. The revised tests reach that path separately for the original and candidate comparators.</p><div class="pair"><article><h3>original expected mismatch</h3><p>Exact planned exception escaped at supplied checkpoint \(171\). The retained prefix has \(6\) completed groups; group seven is unfinished. This interruption control did not reread either complete input.</p><details><summary>Inspect unfinished prefix</summary><pre>{
+  &quot;actual_root_fault_observed&quot;: false,
+  &quot;exact_exception_identity&quot;: true,
+  &quot;helper_callable_bindings_unchanged&quot;: true,
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;original_expected_mismatch&quot;,
+  &quot;no_full_input_reread&quot;: true,
+  &quot;prefix&quot;: {
+    &quot;active_fixture&quot;: &quot;mismatch_first_middle_last&quot;,
+    &quot;authority&quot;: false,
+    &quot;comparator_calls&quot;: 29,
+    &quot;completed_diagnostics&quot;: [
+      {
+        &quot;comparator_calls_after&quot;: 2,
+        &quot;details&quot;: {
+          &quot;callback_calls&quot;: 2,
+          &quot;result&quot;: {
+            &quot;body_bytes&quot;: 43,
+            &quot;body_sha256&quot;: &quot;8d753e16f19ece3833fc77ae7fefcc296696bb6929be954a6abbd747f75bbe8d&quot;,
+            &quot;chunks&quot;: 13,
+            &quot;literal_bytes_equal&quot;: true
+          }
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;canonical_scalars_and_empty_containers&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 14,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 4,
+        &quot;details&quot;: {
+          &quot;absent_key_preserved&quot;: true,
+          &quot;typed_values&quot;: 5
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;typed_zero_and_missing&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 26,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 6,
+        &quot;details&quot;: {
+          &quot;UTF8_split_is_byte_preserving&quot;: true,
+          &quot;encoded_string_exceeds_buffer&quot;: true,
+          &quot;full_result&quot;: {
+            &quot;callback_calls&quot;: 2,
+            &quot;result&quot;: {
+              &quot;body_bytes&quot;: 80035,
+              &quot;body_sha256&quot;: &quot;0364341712d3c58b1801b22cb9e3f985d22e28452bb469978150fc42eac87f0d&quot;,
+              &quot;chunks&quot;: 13,
+              &quot;literal_bytes_equal&quot;: true
+            }
+          }
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;Unicode_key_order_and_UTF8_split&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 38,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 8,
+        &quot;details&quot;: {
+          &quot;callback_calls&quot;: 2,
+          &quot;result&quot;: {
+            &quot;body_bytes&quot;: 35,
+            &quot;body_sha256&quot;: &quot;09928801bdba5314531dc1cc7a4ef102269aa002a52ac3e81f9856899564d101&quot;,
+            &quot;chunks&quot;: 16,
+            &quot;literal_bytes_equal&quot;: true
+          }
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;tuple_reader_array_projection&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 50,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 16,
+        &quot;details&quot;: {
+          &quot;body_bytes&quot;: [
+            65537,
+            65538,
+            65539,
+            131075
+          ],
+          &quot;source_string_lengths&quot;: [
+            65535,
+            65536,
+            65537,
+            131073
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;long_part_and_buffer_edges&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 92,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 28,
+        &quot;details&quot;: {
+          &quot;actual_census&quot;: [
+            {
+              &quot;actual_parts&quot;: 65535,
+              &quot;callback_calls&quot;: 2,
+              &quot;expected_parts&quot;: 65535
+            },
+            {
+              &quot;actual_parts&quot;: 65536,
+              &quot;callback_calls&quot;: 3,
+              &quot;expected_parts&quot;: 65536
+            },
+            {
+              &quot;actual_parts&quot;: 65537,
+              &quot;callback_calls&quot;: 3,
+              &quot;expected_parts&quot;: 65537
+            },
+            {
+              &quot;actual_parts&quot;: 131071,
+              &quot;callback_calls&quot;: 3,
+              &quot;expected_parts&quot;: 131071
+            },
+            {
+              &quot;actual_parts&quot;: 131072,
+              &quot;callback_calls&quot;: 4,
+              &quot;expected_parts&quot;: 131072
+            },
+            {
+              &quot;actual_parts&quot;: 131073,
+              &quot;callback_calls&quot;: 4,
+              &quot;expected_parts&quot;: 131073
+            }
+          ],
+          &quot;final_periodic_collision_not_deduplicated&quot;: true
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;many_small_parts_checkpoint_census&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 168,
+        &quot;status&quot;: &quot;passed&quot;
+      }
+    ],
+    &quot;completed_inputs&quot;: [],
+    &quot;full_pipeline_qualified&quot;: false,
+    &quot;mathematical_authority&quot;: false,
+    &quot;root_checkpoint_calls&quot;: 170,
+    &quot;schema&quot;: &quot;buffered-canonical-qualification-prefix-v1&quot;,
+    &quot;stage&quot;: &quot;action&quot;,
+    &quot;status&quot;: &quot;FAILED_OR_UNFINISHED&quot;
+  },
+  &quot;reached_checkpoint&quot;: 171,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></article><article><h3>candidate expected mismatch</h3><p>Exact planned exception escaped at supplied checkpoint \(174\). The retained prefix has \(6\) completed groups; group seven is unfinished. This interruption control did not reread either complete input.</p><details><summary>Inspect unfinished prefix</summary><pre>{
+  &quot;actual_root_fault_observed&quot;: false,
+  &quot;exact_exception_identity&quot;: true,
+  &quot;helper_callable_bindings_unchanged&quot;: true,
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;candidate_expected_mismatch&quot;,
+  &quot;no_full_input_reread&quot;: true,
+  &quot;prefix&quot;: {
+    &quot;active_fixture&quot;: &quot;mismatch_first_middle_last&quot;,
+    &quot;authority&quot;: false,
+    &quot;comparator_calls&quot;: 30,
+    &quot;completed_diagnostics&quot;: [
+      {
+        &quot;comparator_calls_after&quot;: 2,
+        &quot;details&quot;: {
+          &quot;callback_calls&quot;: 2,
+          &quot;result&quot;: {
+            &quot;body_bytes&quot;: 43,
+            &quot;body_sha256&quot;: &quot;8d753e16f19ece3833fc77ae7fefcc296696bb6929be954a6abbd747f75bbe8d&quot;,
+            &quot;chunks&quot;: 13,
+            &quot;literal_bytes_equal&quot;: true
+          }
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;canonical_scalars_and_empty_containers&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 14,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 4,
+        &quot;details&quot;: {
+          &quot;absent_key_preserved&quot;: true,
+          &quot;typed_values&quot;: 5
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;typed_zero_and_missing&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 26,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 6,
+        &quot;details&quot;: {
+          &quot;UTF8_split_is_byte_preserving&quot;: true,
+          &quot;encoded_string_exceeds_buffer&quot;: true,
+          &quot;full_result&quot;: {
+            &quot;callback_calls&quot;: 2,
+            &quot;result&quot;: {
+              &quot;body_bytes&quot;: 80035,
+              &quot;body_sha256&quot;: &quot;0364341712d3c58b1801b22cb9e3f985d22e28452bb469978150fc42eac87f0d&quot;,
+              &quot;chunks&quot;: 13,
+              &quot;literal_bytes_equal&quot;: true
+            }
+          }
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;Unicode_key_order_and_UTF8_split&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 38,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 8,
+        &quot;details&quot;: {
+          &quot;callback_calls&quot;: 2,
+          &quot;result&quot;: {
+            &quot;body_bytes&quot;: 35,
+            &quot;body_sha256&quot;: &quot;09928801bdba5314531dc1cc7a4ef102269aa002a52ac3e81f9856899564d101&quot;,
+            &quot;chunks&quot;: 16,
+            &quot;literal_bytes_equal&quot;: true
+          }
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;tuple_reader_array_projection&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 50,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 16,
+        &quot;details&quot;: {
+          &quot;body_bytes&quot;: [
+            65537,
+            65538,
+            65539,
+            131075
+          ],
+          &quot;source_string_lengths&quot;: [
+            65535,
+            65536,
+            65537,
+            131073
+          ]
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;long_part_and_buffer_edges&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 92,
+        &quot;status&quot;: &quot;passed&quot;
+      },
+      {
+        &quot;comparator_calls_after&quot;: 28,
+        &quot;details&quot;: {
+          &quot;actual_census&quot;: [
+            {
+              &quot;actual_parts&quot;: 65535,
+              &quot;callback_calls&quot;: 2,
+              &quot;expected_parts&quot;: 65535
+            },
+            {
+              &quot;actual_parts&quot;: 65536,
+              &quot;callback_calls&quot;: 3,
+              &quot;expected_parts&quot;: 65536
+            },
+            {
+              &quot;actual_parts&quot;: 65537,
+              &quot;callback_calls&quot;: 3,
+              &quot;expected_parts&quot;: 65537
+            },
+            {
+              &quot;actual_parts&quot;: 131071,
+              &quot;callback_calls&quot;: 3,
+              &quot;expected_parts&quot;: 131071
+            },
+            {
+              &quot;actual_parts&quot;: 131072,
+              &quot;callback_calls&quot;: 4,
+              &quot;expected_parts&quot;: 131072
+            },
+            {
+              &quot;actual_parts&quot;: 131073,
+              &quot;callback_calls&quot;: 4,
+              &quot;expected_parts&quot;: 131073
+            }
+          ],
+          &quot;final_periodic_collision_not_deduplicated&quot;: true
+        },
+        &quot;mathematical_authority&quot;: false,
+        &quot;name&quot;: &quot;many_small_parts_checkpoint_census&quot;,
+        &quot;root_checkpoint_calls_after&quot;: 168,
+        &quot;status&quot;: &quot;passed&quot;
+      }
+    ],
+    &quot;completed_inputs&quot;: [],
+    &quot;full_pipeline_qualified&quot;: false,
+    &quot;mathematical_authority&quot;: false,
+    &quot;root_checkpoint_calls&quot;: 173,
+    &quot;schema&quot;: &quot;buffered-canonical-qualification-prefix-v1&quot;,
+    &quot;stage&quot;: &quot;action&quot;,
+    &quot;status&quot;: &quot;FAILED_OR_UNFINISHED&quot;
+  },
+  &quot;reached_checkpoint&quot;: 174,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></article></div><p class="small">All three calls share the same absolute deadline. Positive worker work, result/header and known reaped worker exit must finish within \(180\,\mathrm{s}\); later outer custody/resource/log/group checks and observed terminal within \(210\,\mathrm{s}\). The \(225\,\mathrm{s}\) observer fallback is failure cleanup only. Unlike an earlier standalone helper, this protocol does not require every outer check by \(180\,\mathrm{s}\). The worker cap is \(1073741824\,\mathrm{bytes}\), output cap \(134217728\,\mathrm{bytes}\), with explicit outer metadata reservations and individual log limits.</p><p class="small">Malformed direct inputs retain an explicit fail-closed error-precedence difference: a buffered byte mismatch can be reported after a later encoder error. This is not universal negative-path equivalence. The existing trusted loader and post-load identity checks are not a system-level seal. No full cold module, proof engine, Native process, model, inverse or opaque program decoder was invoked.</p><p class="small">The saved observer field <code>ROOT_resource_accepted</code> remains false as originally written. Its terminal and runner candidate gates are true. Root separately adopted only the finite helper qualification after the independent saved-data review; the <a href="buffered-canonical-summary.json">summary preserves that review and adoption</a>. No historical field or prior failed full attempt was rewritten.</p><div class="table-wrap"><table><thead><tr><th>Finite diagnostic group</th><th>Saved status</th><th>Inspect</th></tr></thead><tbody><tr><th>canonical scalars and empty containers</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 2,
+  &quot;details&quot;: {
+    &quot;callback_calls&quot;: 2,
+    &quot;result&quot;: {
+      &quot;body_bytes&quot;: 43,
+      &quot;body_sha256&quot;: &quot;8d753e16f19ece3833fc77ae7fefcc296696bb6929be954a6abbd747f75bbe8d&quot;,
+      &quot;chunks&quot;: 13,
+      &quot;literal_bytes_equal&quot;: true
+    }
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;canonical_scalars_and_empty_containers&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 14,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>typed zero and missing</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 4,
+  &quot;details&quot;: {
+    &quot;absent_key_preserved&quot;: true,
+    &quot;typed_values&quot;: 5
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;typed_zero_and_missing&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 26,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>Unicode key order and UTF8 split</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 6,
+  &quot;details&quot;: {
+    &quot;UTF8_split_is_byte_preserving&quot;: true,
+    &quot;encoded_string_exceeds_buffer&quot;: true,
+    &quot;full_result&quot;: {
+      &quot;callback_calls&quot;: 2,
+      &quot;result&quot;: {
+        &quot;body_bytes&quot;: 80035,
+        &quot;body_sha256&quot;: &quot;0364341712d3c58b1801b22cb9e3f985d22e28452bb469978150fc42eac87f0d&quot;,
+        &quot;chunks&quot;: 13,
+        &quot;literal_bytes_equal&quot;: true
+      }
+    }
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;Unicode_key_order_and_UTF8_split&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 38,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>tuple reader array projection</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 8,
+  &quot;details&quot;: {
+    &quot;callback_calls&quot;: 2,
+    &quot;result&quot;: {
+      &quot;body_bytes&quot;: 35,
+      &quot;body_sha256&quot;: &quot;09928801bdba5314531dc1cc7a4ef102269aa002a52ac3e81f9856899564d101&quot;,
+      &quot;chunks&quot;: 16,
+      &quot;literal_bytes_equal&quot;: true
+    }
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;tuple_reader_array_projection&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 50,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>long part and buffer edges</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 16,
+  &quot;details&quot;: {
+    &quot;body_bytes&quot;: [
+      65537,
+      65538,
+      65539,
+      131075
+    ],
+    &quot;source_string_lengths&quot;: [
+      65535,
+      65536,
+      65537,
+      131073
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;long_part_and_buffer_edges&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 92,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>many small parts checkpoint census</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 28,
+  &quot;details&quot;: {
+    &quot;actual_census&quot;: [
+      {
+        &quot;actual_parts&quot;: 65535,
+        &quot;callback_calls&quot;: 2,
+        &quot;expected_parts&quot;: 65535
+      },
+      {
+        &quot;actual_parts&quot;: 65536,
+        &quot;callback_calls&quot;: 3,
+        &quot;expected_parts&quot;: 65536
+      },
+      {
+        &quot;actual_parts&quot;: 65537,
+        &quot;callback_calls&quot;: 3,
+        &quot;expected_parts&quot;: 65537
+      },
+      {
+        &quot;actual_parts&quot;: 131071,
+        &quot;callback_calls&quot;: 3,
+        &quot;expected_parts&quot;: 131071
+      },
+      {
+        &quot;actual_parts&quot;: 131072,
+        &quot;callback_calls&quot;: 4,
+        &quot;expected_parts&quot;: 131072
+      },
+      {
+        &quot;actual_parts&quot;: 131073,
+        &quot;callback_calls&quot;: 4,
+        &quot;expected_parts&quot;: 131073
+      }
+    ],
+    &quot;final_periodic_collision_not_deduplicated&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;many_small_parts_checkpoint_census&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 168,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>mismatch first middle last</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 34,
+  &quot;details&quot;: {
+    &quot;mismatch_positions&quot;: [
+      0,
+      70007,
+      140013
+    ],
+    &quot;rejections&quot;: [
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ],
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ],
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ]
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;mismatch_first_middle_last&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 188,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>short truncated and extra data</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 40,
+  &quot;details&quot;: {
+    &quot;rejections&quot;: [
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ],
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ],
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ]
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;short_truncated_and_extra_data&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 208,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>single optional helper LF</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 46,
+  &quot;details&quot;: {
+    &quot;doubleLF&quot;: [
+      &quot;ColdError&quot;,
+      &quot;ColdError&quot;
+    ],
+    &quot;noLF_and_singleLF_same_parent_API&quot;: true,
+    &quot;production_externalLF_gate_tested&quot;: false
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;single_optional_helper_LF&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 236,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>noncanonical raw forms</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 54,
+  &quot;details&quot;: {
+    &quot;rejections&quot;: [
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ],
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ],
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ],
+      [
+        &quot;ColdError&quot;,
+        &quot;ColdError&quot;
+      ]
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;noncanonical_raw_forms&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 262,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>invalid UTF8 or surrogate data</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 58,
+  &quot;details&quot;: {
+    &quot;lone_surrogate&quot;: [
+      &quot;UnicodeEncodeError&quot;,
+      &quot;UnicodeEncodeError&quot;
+    ],
+    &quot;raw_invalid_UTF8&quot;: [
+      &quot;ColdError&quot;,
+      &quot;ColdError&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;invalid_UTF8_or_surrogate_data&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 276,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>nonfinite unsupported and legal subclasses</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 64,
+  &quot;details&quot;: {
+    &quot;blanket_subclass_rejection&quot;: false,
+    &quot;legal_encoder_subclasses_accepted&quot;: {
+      &quot;callback_calls&quot;: 2,
+      &quot;result&quot;: {
+        &quot;body_bytes&quot;: 18,
+        &quot;body_sha256&quot;: &quot;abe5679dac95f5549f22c82c8490516a33347e4a8a3dcba7ae9f30ce108032bf&quot;,
+        &quot;chunks&quot;: 11,
+        &quot;literal_bytes_equal&quot;: true
+      }
+    },
+    &quot;nonfinite&quot;: [
+      &quot;ValueError&quot;,
+      &quot;ValueError&quot;
+    ],
+    &quot;unsupported&quot;: [
+      &quot;TypeError&quot;,
+      &quot;TypeError&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;nonfinite_unsupported_and_legal_subclasses&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 300,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>initial callback identity three classes</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 70,
+  &quot;details&quot;: {
+    &quot;reached&quot;: [
+      &quot;_buffered_qualification_original:RuntimeError&quot;,
+      &quot;_buffered_qualification_original:ValueError&quot;,
+      &quot;_buffered_qualification_original:StopIteration&quot;,
+      &quot;_buffered_qualification_candidate:RuntimeError&quot;,
+      &quot;_buffered_qualification_candidate:ValueError&quot;,
+      &quot;_buffered_qualification_candidate:StopIteration&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;initial_callback_identity_three_classes&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 320,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>part boundary callback identity three classes</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 82,
+  &quot;details&quot;: {
+    &quot;boundary131072&quot;: [
+      &quot;_buffered_qualification_original:RuntimeError&quot;,
+      &quot;_buffered_qualification_original:ValueError&quot;,
+      &quot;_buffered_qualification_original:StopIteration&quot;,
+      &quot;_buffered_qualification_candidate:RuntimeError&quot;,
+      &quot;_buffered_qualification_candidate:ValueError&quot;,
+      &quot;_buffered_qualification_candidate:StopIteration&quot;
+    ],
+    &quot;boundary65536&quot;: [
+      &quot;_buffered_qualification_original:RuntimeError&quot;,
+      &quot;_buffered_qualification_original:ValueError&quot;,
+      &quot;_buffered_qualification_original:StopIteration&quot;,
+      &quot;_buffered_qualification_candidate:RuntimeError&quot;,
+      &quot;_buffered_qualification_candidate:ValueError&quot;,
+      &quot;_buffered_qualification_candidate:StopIteration&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;part_boundary_callback_identity_three_classes&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 376,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>final callback identity three classes</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 94,
+  &quot;details&quot;: {
+    &quot;boundary131072&quot;: [
+      &quot;_buffered_qualification_original:RuntimeError&quot;,
+      &quot;_buffered_qualification_original:ValueError&quot;,
+      &quot;_buffered_qualification_original:StopIteration&quot;,
+      &quot;_buffered_qualification_candidate:RuntimeError&quot;,
+      &quot;_buffered_qualification_candidate:ValueError&quot;,
+      &quot;_buffered_qualification_candidate:StopIteration&quot;
+    ],
+    &quot;boundary65536&quot;: [
+      &quot;_buffered_qualification_original:RuntimeError&quot;,
+      &quot;_buffered_qualification_original:ValueError&quot;,
+      &quot;_buffered_qualification_original:StopIteration&quot;,
+      &quot;_buffered_qualification_candidate:RuntimeError&quot;,
+      &quot;_buffered_qualification_candidate:ValueError&quot;,
+      &quot;_buffered_qualification_candidate:StopIteration&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;final_callback_identity_three_classes&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 444,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>mismatch flushed before boundary callback</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 96,
+  &quot;details&quot;: {
+    &quot;planned_checkpoint&quot;: 2,
+    &quot;planned_foreign_sentinel_reached&quot;: false,
+    &quot;rejections&quot;: [
+      &quot;ColdError&quot;,
+      &quot;ColdError&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;mismatch_flushed_before_boundary_callback&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 452,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>EOF flush before final callback</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 100,
+  &quot;details&quot;: {
+    &quot;final_callback_reached_on_equal_counterpart&quot;: true,
+    &quot;rejections&quot;: [
+      &quot;ColdError&quot;,
+      &quot;ColdError&quot;
+    ]
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;EOF_flush_before_final_callback&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 470,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>pending mismatch vs later encoder error</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 102,
+  &quot;details&quot;: {
+    &quot;all_negative_error_precedence_equal&quot;: false,
+    &quot;error_types&quot;: [
+      &quot;ColdError&quot;,
+      &quot;TypeError&quot;
+    ],
+    &quot;only_rejection_required&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;pending_mismatch_vs_later_encoder_error&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 478,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>input and callable custody</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 104,
+  &quot;details&quot;: {
+    &quot;callable_custody_is_worker_gate&quot;: true,
+    &quot;no_code_default_or_module_mutations&quot;: true,
+    &quot;ordinary_input_unchanged&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;input_and_callable_custody&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 490,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr><tr><th>whole retained preimage equivalence</th><td>passed</td><td><details><summary>Saved diagnostic</summary><pre>{
+  &quot;comparator_calls_after&quot;: 108,
+  &quot;details&quot;: {
+    &quot;complete_inputs&quot;: [
+      {
+        &quot;id&quot;: &quot;fixed&quot;,
+        &quot;input&quot;: {
+          &quot;bytes&quot;: 36913962,
+          &quot;path&quot;: &quot;/private/tmp/gcts-finalization-integration-ROOT-20261019/actual-fixed-v1/result.json&quot;,
+          &quot;sha256&quot;: &quot;c90b882b15bda78bcb062fe96124c2db7c22318829515e8b8608ce4f3ed90117&quot;
+        },
+        &quot;reader_version&quot;: &quot;literal-result-json-immutable-interning-v2&quot;,
+        &quot;representation_only&quot;: true,
+        &quot;result&quot;: {
+          &quot;callback_calls&quot;: 268,
+          &quot;result&quot;: {
+            &quot;body_bytes&quot;: 36913961,
+            &quot;body_sha256&quot;: &quot;e6f0bb58146c74f70ac3a6d910a1a30c4287cc7d34a5c17c8a88590d779c4e61&quot;,
+            &quot;chunks&quot;: 17473126,
+            &quot;literal_bytes_equal&quot;: true
+          }
+        }
+      },
+      {
+        &quot;id&quot;: &quot;symbolic&quot;,
+        &quot;input&quot;: {
+          &quot;bytes&quot;: 34001484,
+          &quot;path&quot;: &quot;/private/tmp/gcts-finalization-integration-ROOT-20261019/actual-symbolic-v1/result.json&quot;,
+          &quot;sha256&quot;: &quot;fe6c51574591aad2105b83fb18fbca6bdfce4f231f4dbabcae968ac0b87d514e&quot;
+        },
+        &quot;reader_version&quot;: &quot;literal-result-json-immutable-interning-v2&quot;,
+        &quot;representation_only&quot;: true,
+        &quot;result&quot;: {
+          &quot;callback_calls&quot;: 244,
+          &quot;result&quot;: {
+            &quot;body_bytes&quot;: 34001483,
+            &quot;body_sha256&quot;: &quot;29df18f3547213339c582424ba156bf09f9d7dedc12bd9579eb8208d36168b28&quot;,
+            &quot;chunks&quot;: 15901556,
+            &quot;literal_bytes_equal&quot;: true
+          }
+        }
+      }
+    ],
+    &quot;proof_replays&quot;: 0,
+    &quot;sequential&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;whole_retained_preimage_equivalence&quot;,
+  &quot;root_checkpoint_calls_after&quot;: 1832,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></td></tr></tbody></table></div></section><section id="benchmarks"><h2>Correct the task before comparing search.</h2><p>The geometry source snapshot uses <code>Hilbert_neutral_dimensionless</code> in <code>hilbert_to_tarski</code>, rather than the older generated-documentation shorthand. The corrected proposal preserves all \(52\) fields and fixed definitions, with points, lines and planes, separate line/plane equivalence relations, incidence, Prop-valued decidability disjunctions and dependent witness fields. The independent literal-source review passed \(282\) checks.</p><p>This verifies a source correction proposal. It does not establish an elaborated Coq/Rocq context, equivalence to the earlier two-dimensional shorthand, a faithful first-order translation, an accepted benchmark assumption contract or an executable checker. Proof exposure is recorded separately; source proofs and imported derived lemmas must not silently become solver input. The acquired benchmark sources are not yet a scored external-prover comparison.</p></section><section id="next"><h2>Return the effort to proof discovery.</h2><p>The immediate engineering step is independently reviewed integration of the comparator into a fresh full attempt. Then the search must move beyond the familiar elementary control to a new quantified receiver, with the original input and the same available lemmas in the conventional comparison. Full discovery, matching, expansion, rejection, decoding and checking costs must be charged.</p><p>For the Wang track, the next foundational artifact is the concrete source proof checker and its faithful fixed-machine/tile compilation. For reusable clusters, the needed evidence is a completed independently checked proof that actually uses a learned family on a new instance. These remain research tasks, not conclusions of this round.</p></section><section id="records"><h2>Inspect the saved record.</h2><ul><li><a href="buffered-canonical-summary.json">Complete ordinary qualification summary</a></li><li><a href="buffered-canonical-reproducibility.tar.gz">Comparator sources, reviews, plans, terminal records and both whole ordinary preimages</a></li><li><a href="universal-wang-summary.json">Wang declarative specification and conditional review</a></li><li><a href="universal-wang-reproducibility.tar.gz">Wang and Hilbert source-correction evidence</a></li><li><a href="buffered-canonical-manifest.json">Whole-file sizes and SHA-256 manifest</a></li></ul><details><summary>Final outer observation</summary><pre>{
+  &quot;ROOT_resource_accepted&quot;: false,
+  &quot;command&quot;: [
+    &quot;/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12&quot;,
+    &quot;-I&quot;,
+    &quot;-S&quot;,
+    &quot;-B&quot;,
+    &quot;/private/tmp/gcts-buffered-canonical-ROOT-20261019/run_comparator_qualification_once_v2.py&quot;,
+    &quot;/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2.json&quot;
+  ],
+  &quot;mathematical_proof_accepted&quot;: false,
+  &quot;observed_instrument_elapsed_seconds&quot;: 29.335917792,
+  &quot;observer_started_ns&quot;: 774288190118666,
+  &quot;plan&quot;: {
+    &quot;bytes&quot;: 4268,
+    &quot;path&quot;: &quot;/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2.json&quot;,
+    &quot;sha256&quot;: &quot;6cbcbc7963407aed218935b339b36c66114b28fe00bae4bc0a80b70226f1ed6e&quot;
+  },
+  &quot;runner_clock_elapsed_seconds&quot;: 29.279028125,
+  &quot;runner_exit_code&quot;: 0,
+  &quot;runner_pid&quot;: 99070,
+  &quot;runner_receipt&quot;: {
+    &quot;bytes&quot;: 2929,
+    &quot;path&quot;: &quot;/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/runner-receipt.json&quot;,
+    &quot;sha256&quot;: &quot;c91480a384097af4dcfe08443a609ae128afd782dadb3771ba98f0e74c88905c&quot;
+  },
+  &quot;schema&quot;: &quot;buffered-canonical-qualification-final-terminal-observation-v1&quot;,
+  &quot;scientific_acceptance&quot;: false,
+  &quot;scope&quot;: &quot;Standalone finite extracted-comparator final outer terminal/group/regular-log gate. Source-entry epoch excludes observer/Python prelude. No Native or proof search; all scientific acceptance remains false.&quot;,
+  &quot;terminal_gate_passed&quot;: true,
+  &quot;terminal_observed_ns&quot;: 774317526036458,
+  &quot;version&quot;: &quot;buffered-canonical-qualification-final-terminal-observer-v2&quot;
+}</pre></details></section><footer>Conditional reasoning, implementation correctness, automated theorem discovery and search advantage require separate evidence.</footer></main></body></html>

@@ -1,0 +1,112 @@
+{
+  "files": {
+    "buffered-canonical-reproducibility.tar.gz": {
+      "bytes": 3379931,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/publication-staging/buffered-canonical-reproducibility.tar.gz",
+      "sha256": "f66f142d91d26d9b423433df09fa009d8c1db55fdb43ea479fc78307580ac929"
+    },
+    "buffered-canonical-summary.json": {
+      "bytes": 64993,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/publication-staging/buffered-canonical-summary.json",
+      "sha256": "94e8407881a76056f0d826bb5c239198b1cdceb647c6a902a2568a9d8b52806d"
+    },
+    "buffered-canonical.html": {
+      "bytes": 42953,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/publication-staging/buffered-canonical.html",
+      "sha256": "d6ee6fd5f42cf8ee66db85567346d3a865f5da7ff5c90faf55ce276ba2606ab4"
+    },
+    "reader.html": {
+      "bytes": 95057,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/publication-staging/reader.html",
+      "sha256": "08a9aa2747ef77b6f7bb99de84dd64061b44b6a65f3d68974328a1592d13b9c2"
+    },
+    "universal-wang-reproducibility.tar.gz": {
+      "bytes": 57858,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/publication-staging/universal-wang-reproducibility.tar.gz",
+      "sha256": "28e47bec971af8fe2b9350dac0c88ab7708db3867fbb250edcf65ab42b7ecc3b"
+    },
+    "universal-wang-summary.json": {
+      "bytes": 37025,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/publication-staging/universal-wang-summary.json",
+      "sha256": "1b5332106e8989c0416b190114a90e83fbbd1825a011f3757f298c4150048be9"
+    },
+    "universal-wang.html": {
+      "bytes": 23392,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/publication-staging/universal-wang.html",
+      "sha256": "bba5d25535fdfd486037643f8a5ef4d658c2292b004a5305dd782c96b06b77dd"
+    }
+  },
+  "parent_commit": "8531cc48e987480f68b7f2eeb610224c6345398d",
+  "presentation_repair": {
+    "after": {
+      "bytes": 42953,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/publication-staging/buffered-canonical.html",
+      "sha256": "d6ee6fd5f42cf8ee66db85567346d3a865f5da7ff5c90faf55ce276ba2606ab4"
+    },
+    "before": {
+      "bytes": 42921,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/publication-staging/buffered-canonical.html",
+      "sha256": "d214e157feed9847abcb6a89e3d7bcb7a5260b6a609aff255cee92c2035a53a6"
+    },
+    "replacements": [
+      {
+        "after": "\\(51\\)",
+        "before": "(51)",
+        "count": 1
+      },
+      {
+        "after": "\\(65536\\)",
+        "before": "(65536)",
+        "count": 1
+      },
+      {
+        "after": "\\(29.279028125\\,\\mathrm{s}\\)",
+        "before": "\\(29.279028125\\)(,mathrm{s})",
+        "count": 1
+      },
+      {
+        "after": "\\(180\\,\\mathrm{s}\\)",
+        "before": "(180,mathrm{s})",
+        "count": 2
+      },
+      {
+        "after": "\\(210\\,\\mathrm{s}\\)",
+        "before": "(210,mathrm{s})",
+        "count": 1
+      },
+      {
+        "after": "\\(225\\,\\mathrm{s}\\)",
+        "before": "(225,mathrm{s})",
+        "count": 1
+      },
+      {
+        "after": "\\(1073741824\\,\\mathrm{bytes}\\)",
+        "before": "(1073741824,mathrm{bytes})",
+        "count": 1
+      },
+      {
+        "after": "\\(134217728\\,\\mathrm{bytes}\\)",
+        "before": "(134217728,mathrm{bytes})",
+        "count": 1
+      },
+      {
+        "after": "\\(52\\)",
+        "before": "(52)",
+        "count": 1
+      },
+      {
+        "after": "\\(282\\)",
+        "before": "(282)",
+        "count": 1
+      }
+    ],
+    "schema": "ROOT-report-math-presentation-repair-v3",
+    "scope": "HTML notation only; no qualification/summary/archive data changed, no subject evaluations. First negative packet retained as publication-staging-v2.",
+    "subject_evaluations": 0
+  },
+  "protected_overview_changed": false,
+  "reader_exact_removable_addition": "<section id=\"buffered-canonical\"><h2>Parallel research: fixed Wang foundation and checked evidence</h2><p>The <a href=\"buffered-canonical.html\">current parallel progress report</a> records a finite comparator qualification, a reviewed <a href=\"universal-wang.html\">conditional Wang encoding</a>, and the corrected literal Hilbert context. No new GCTS+RL theorem discovery or search advantage is claimed.</p></section>",
+  "refinement": "Preserved first packet privately; added explicit literal observer false versus Root narrow adoption, saved review, and clarified control-only no-reread scope. No subject evaluations.",
+  "schema": "parallel-progress-publication-manifest-v1",
+  "scope": "Exactly eight task-owned publication paths; archives are passive saved data, not an execution grant. Whole-body HTTP and live browser verification required after publication."
+}

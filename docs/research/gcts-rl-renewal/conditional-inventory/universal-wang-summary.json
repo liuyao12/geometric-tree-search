@@ -1,0 +1,719 @@
+{
+  "formal_kernel_certificate": false,
+  "implementation_qualified": false,
+  "new_theorems_discovered_by_search": 0,
+  "review": {
+    "HTML_candidate": {
+      "bytes": 21696,
+      "path": "/private/tmp/gcts-universal-wang-spec-20261019/review.html",
+      "sha256": "8c5949a168f2ed83b069909a19d5c42a32bb3b347f1ba1145d990bac1e7be4b8"
+    },
+    "Model_calls": 0,
+    "Native_calls": 0,
+    "TM_or_CA_evaluations": 0,
+    "actual_execution_authorized": false,
+    "artifact_requirements": [
+      {
+        "blocking_current_strip_lemma": false,
+        "id": "TOTAL-CENTER-ROLE-DATA",
+        "required_before_artifact": true,
+        "requirement": "Serialize an assigned center R-role on EVERY prototype: bulk for every core and collector tile, and the exact declared selector role otherwise. No role-absent wildcard prototype may bypass a fixed background role. The current prose relies on this role-compatible interpretation; its prototype offset and role descriptions should become full literal data when an inventory is supplied."
+      },
+      {
+        "blocking_implementation_or_universal_claim": true,
+        "id": "COMPLETE-MISSING-ARTIFACTS",
+        "requirement": "The full source policy, total proof predicate, faithful codecs, complete finite checker table, tile/color/boundary enumeration and independently checked source decoding remain absent. Do not replace them with a human-picked proof/route/lemma or inherited implementation status."
+      },
+      {
+        "blocking_engine_claim": true,
+        "id": "ENGINE-CONFORMANCE",
+        "requirement": "A future point engine must enumerate every complete candidate/dependency, apply graph-global dead then forced then earliest-generation decisions, preserve exact rollback and retain base alternatives. Background problem data are not learned acceleration markings."
+      },
+      {
+        "blocking_performance_or_GCTS_RL_claim": true,
+        "id": "FINITE-FOUNDATION-NOT-PERFORMANCE",
+        "requirement": "The generic conditional tableau argument supplies no practical FOL receptor inventory or search advantage. Validate every macro expansion/interface and all costs against matched original-input and matched-knowledge controls separately."
+      }
+    ],
+    "audit": {
+      "bytes": 12793,
+      "path": "/private/tmp/gcts-universal-wang-peer-20261019/mathematical-scope-audit-v1.json",
+      "sha256": "ab3a2d91b76ee7f00312180a7f0ab6d3818c610108d51be8feb5ab56e4621b8c"
+    },
+    "author_identity": "/root/benchmark_design",
+    "blocking_findings": [],
+    "check_count": 51,
+    "codec_or_inverse_calls": 0,
+    "component_calls": 0,
+    "conditional_lemma_review_passed": true,
+    "current_master": {
+      "bytes": 36240,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/basic-tiling-algorithm-HEAD.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "fixture_calls": 0,
+    "formal_kernel_certificate": false,
+    "handoff": {
+      "bytes": 3884,
+      "path": "/private/tmp/gcts-universal-wang-spec-20261019/handoff-v1.json",
+      "sha256": "67af277ef6cfaa16f6d004a866cb7443d12f79ffb996975b7bbc0d4931b90e15"
+    },
+    "implementation_Source_pass": false,
+    "implementation_qualified": false,
+    "limitations": [
+      "The conditional lemma is an informal mathematical proof, not a checked universal soundness theorem. It assumes exact declared finite machine and color conventions and a valid one-head initial row.",
+      "Every actual machine/table/checker/codec/boundary/tile artifact remains unset. No source theorem has been found and no result about the unresolved proof benchmark follows.",
+      "The proposed finite role/boundary point model is not an unconstrained whole-plane Wang system, an aperiodicity construction or an engine conformance result.",
+      "Control authored older specialized controls/helpers/outer code but no present benchmark author mathematical specification or implemented Wang system. This reasoning receipt does not self-certify inherited algorithms.",
+      "HTML was inspected as raw text only; typography/layout/scripts were not rendered. The official Berger references were not reverified because both retrievals failed."
+    ],
+    "mathematical_proof_admitted": false,
+    "mismatch_count": 0,
+    "primary_reference_review": [
+      {
+        "access": "Opened primary university-hosted original note PDF; three pages parsed. Read the final reduction/conclusion and decision-problem footnote.",
+        "id": "Church1936",
+        "supports": "General first-order decision limitation as background only; not this compiler or theory-specific claims.",
+        "url": "https://people.csail.mit.edu/brooks/idocs/church_ent.pdf",
+        "verbatim_words": 0
+      },
+      {
+        "access": "Opened primary university-hosted original PDF; sections6/7 universal-machine text and section11 context available.",
+        "id": "Turing1936",
+        "supports": "Historical fixed universal-machine framework and decision limitation only; no adoption or evaluation of its table.",
+        "url": "https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf",
+        "verbatim_words": 0
+      },
+      {
+        "access": "Opened official Bell Labs/Nokia publication entry, date/title/abstract available.",
+        "id": "Wang1961",
+        "supports": "Original predicate-calculus/decision/tiling historical context only; no equivalence to present construction asserted.",
+        "url": "https://www.nokia.com/bell-labs/publications-and-media/publications/proving-theorems-by-pattern-recognition-ii/",
+        "verbatim_words": 0
+      },
+      {
+        "access": "DOI and linked AMS publication notice returned tool internal errors during this peer review.",
+        "id": "Berger1966",
+        "supports": "Not independently reverified here. The present lemma does not rely on Berger or an infinite-plane/aperiodicity inference.",
+        "url": "https://doi.org/10.1090/memo/0066",
+        "verbatim_words": 0
+      }
+    ],
+    "primary_references": {
+      "bytes": 1960,
+      "path": "/private/tmp/gcts-universal-wang-spec-20261019/primary-references-v1.json",
+      "sha256": "327c7b80bb0f08e3debfdb3f0a88994b66d76b23d4c132bb991bd8cc4a789233"
+    },
+    "publication_authorized": false,
+    "reasoning": [
+      {
+        "argument": "For adjacent core tiles, pair equality gives \\((b_x,c_x)=(a_{x+1},b_{x+1})\\), so internal neighbors coincide with the north word. The external pair boundaries supply exactly the two wall neighbors. A wall in an internal neighbor position would force a north center outside \\(A\\), which is impossible. At \\(W=1\\), the two supplied neighbors are both walls.",
+        "conclusion": "Sound under the stated typed-color conventions.",
+        "id": "ROW-OVERLAP"
+      },
+      {
+        "argument": "Induct on one-head rows. The head-centered tile either writes the new headed symbol for displacement zero or writes the new plain symbol. Exactly the destination neighbor acquires the new head; all other plain centers remain unchanged. Undefined transitions or an outward move remove the required head-centered tile. Thus an existing complete core row is exactly one in-strip step and preserves one-head validity.",
+        "conclusion": "Sound conditional generic local-rule argument, not an evaluated transition table.",
+        "id": "LOCAL-ONE-HEAD-STEP"
+      },
+      {
+        "argument": "Disjoint pair/seen horizontal colors force each nontrivial-width row to be entirely core or collector. For width one, the bottom and vertical colors give the same conclusion without an adjacency assumption. Every collector emits stop, and no tile north reads stop, so the only possible collector is the last row; the stop bottom forces it there. Its flags begin zero, change exactly once on an accepting head, and finish one. Headless, second-head and nonaccepting-head rows cannot match.",
+        "conclusion": "No boundary counterexample found.",
+        "id": "ROW-KINDS-AND-COLLECTOR"
+      },
+      {
+        "argument": "The first \\(H\\) rows are core rows. Pair recovery plus the local step induction yields the unique in-strip \\(H\\)-step run. The final collector establishes acceptance. Conversely, a genuine such run supplies every core triple and the unique seen progression. With \\(H=0\\), the collector reads the specified initial row directly; it accepts exactly an already accepting row.",
+        "conclusion": "Conditional equivalence supported by the prose proof.",
+        "id": "H-STEP-BOTH-DIRECTIONS"
+      },
+      {
+        "argument": "The four-state grammar permits exactly left blanks, one head/start cell, binary public bits, separator, binary unknown certificate bits, end marker and right blanks. Pinned head/start, all public bits and the immediately following separator force the declared public word. The proof word and its length remain choices. Distinct fixed-top/top-grammar center roles are essential; they select from one fixed inventory rather than supplying a target proof.",
+        "conclusion": "No public-prefix or fixed-top bypass found under the required role assignments.",
+        "id": "UNKNOWN-WORD-GRAMMAR"
+      },
+      {
+        "argument": "Each allowed placement has singleton unit positive support at a required center. Capacity one selects one prototype there. Adjacent even centers share exactly the appropriate midpoint in channel \\(V\\) or \\(H\\); distinct channels prevent corner/selector interference. Required selector centers, fixed side flags and bottom stop reproduce the finite boundary relations. The master permits finite required sets and explicit admissible origins, so this does not assert coverage of every point of \\(\\mathbb Z^2\\).",
+        "conclusion": "Faithful finite required-point encoding conditional on complete prototype role assignments.",
+        "id": "POINT-EMBEDDING"
+      },
+      {
+        "argument": "Each fixed board has a finite complete placement universe and finite assignments. A finite accepting run has finite tape footprint; translating the start with adequate left padding fits some \\((W,H,\\ell)\\). Enumeration by total size eventually reaches it. An implementation must finish each finite search or dovetail fairly; runtime cutoffs, learned restrictions or finite-board failure never establish non-theoremhood.",
+        "conclusion": "Conditional semidecision statement only.",
+        "id": "FAIR-BOUNDS"
+      }
+    ],
+    "renderer_calls": 0,
+    "reviewer_identity": "/root/conventional_control_review",
+    "schema": "fixed-wang-mathematical-scope-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "Independent raw specification/HTML and mathematical prose review of the generic conditional finite-strip row lemma, accepting collector, public/unknown boundary grammar, finite exact-point embedding and claim boundaries. No machine example, transition rule table, tile set, renderer, checker, codec or search was executed. This is not a formal proof/kernel certification, implementation approval or experimental authorization.",
+    "solver_calls": 0,
+    "source_only": true,
+    "source_reasoning_only": true,
+    "specification": {
+      "bytes": 24059,
+      "path": "/private/tmp/gcts-universal-wang-spec-20261019/declarative-specification-v1.json",
+      "sha256": "0fef3f70eef76493368d0468d18be5815ee828f9dcec27414937f6cfe6ece590"
+    },
+    "tools_stopped_pending_new_source_packet": true
+  },
+  "root_adoption": "Conditional prose reasoning only. Every prototype must assign its exact center role; no wildcard. No implementation, fixed artifact, universal-checker or search claim.",
+  "schema": "fixed-wang-conditional-specification-summary-v1",
+  "scientific_calls": 0,
+  "specification": {
+    "acceptance_collector": {
+      "accept_tiles_as_formal_data": {
+        "E": [
+          "seen",
+          1
+        ],
+        "N": [
+          "cell",
+          [
+            "head",
+            "qacc",
+            "s"
+          ]
+        ],
+        "S": [
+          "stop"
+        ],
+        "W": [
+          "seen",
+          0
+        ],
+        "for": "each s in Gamma"
+      },
+      "all_plain_boundary": "An all-plain row can only carry a constant seen flag and cannot connect the required left zero to right one. It is not accepted.",
+      "no_other_collector_tile": "No tile reads a nonaccepting head. No tile can change seen 1 back to 0 or count a second accepting head.",
+      "plain_tiles_as_formal_data": {
+        "E": [
+          "seen",
+          "k"
+        ],
+        "N": [
+          "cell",
+          [
+            "plain",
+            "s"
+          ]
+        ],
+        "S": [
+          "stop"
+        ],
+        "W": [
+          "seen",
+          "k"
+        ],
+        "for": "each s in Gamma and k in {0,1}"
+      },
+      "position": "With \\(H\\) computation rows and one collector row, the collector reads \\(C_H\\). Stop has no north-edge match on any core/collector tile, so a complete rectangle cannot place a collector above another bulk row.",
+      "required_row_boundary": {
+        "left": [
+          "seen",
+          0
+        ],
+        "right": [
+          "seen",
+          1
+        ],
+        "south": [
+          "stop"
+        ]
+      }
+    },
+    "activity_boundary": {
+      "HTML_render_executed": false,
+      "TM_CA_solver_engine_Native_harness_helper_fixture_or_codec_calls": 0,
+      "actual_run_authority": false,
+      "fixed_set_implemented": false,
+      "future_caps_adopted": false,
+      "novel_target_theorem_found": false,
+      "ordinary_metadata_text_authoring_only": true,
+      "publication": false,
+      "scientific_or_component_execution": false,
+      "search_advantage_claim": false,
+      "universal_system_implemented": false
+    },
+    "central_claim": "For any one fixed finite deterministic TM table satisfying the declared machine convention, its specified finite Wang tile family represents exactly the finite in-strip computation prefixes from a valid one-head initial row; the separate collector accepts exactly accepting final configurations. This generic compilation lemma has a mathematical proof sketch in review.html, not a mechanized proof. It is not a newly discovered source theorem or an implemented universal proof system.",
+    "conditional_lemma": {
+      "hypotheses": [
+        "All cells and boundary conditions are exact and the complete specified tile family is available.",
+        "Top colors are exactly \\(C_0\\), side colors satisfy the declared finite side relations, and bottom colors are stop.",
+        "A zero-step run is allowed only when \\(C_0\\) itself is already accepting."
+      ],
+      "parameters": "One frozen finite table \\(\\delta\\); \\(W\\ge1\\); \\(H\\ge0\\); and a fixed valid one-head \\(C_0\\in A^W\\).",
+      "proof_status": "Own standard mathematical derivation for independent review; no proof assistant, checker, simulator, example table or execution. No novelty or performance claim.",
+      "proof_steps": [
+        "Horizontal pair matching forces every tile triple to be the left/current/right neighbors of its north row, with wall only at strip ends.",
+        "The local \\(F\\) cases agree with exactly one legal \\(\\delta\\) step on a one-head row. Escape or a halt makes the head-centered tile absent. One-head validity is preserved.",
+        "Vertical cell colors compose those rows, establishing finite-strip soundness by induction. A genuine in-strip run supplies every triple tile, establishing completeness.",
+        "The collector flag begins at zero, changes to one exactly on an accepting head, and ends at one; it therefore requires exactly one accepting head and rejects every other head. Conversely such a row supplies a compatible seen-flag progression."
+      ],
+      "statement_latex": "\\(\\text{the specified }W\\times(H+1)\\text{ accepting rectangle exists}\\iff C_0\\text{ has an in-strip }H\\text{-step run ending in }q_{\\mathrm{acc}}\\)"
+    },
+    "date": "2026-10-19",
+    "exact_point_model": {
+      "arithmetic": "Exact integer coordinates and unit capacities; finite injective integer codes for typed colors. Value transforms are identity under translations.",
+      "bulk_centers_latex": "\\(B=\\{(2x,2y):0\\le x<W,\\ 0\\le y\\le H\\}\\)",
+      "channels": "V at north/south, H at west/east, R for center role. Only declared components are assigned; other components are absent (*), never silently assigned zero.",
+      "domain_latex": "\\(L=\\mathbb Z^2,\\quad G=2\\mathbb Z^2\\)",
+      "equivalence_argument": "Unit center occupancy selects exactly one role-compatible prototype at each target center. Equality at each shared edge midpoint is exactly the relevant Wang edge match. In top-fixed mode, public clamps fix arbitrary specified \\(C_0\\); in top-grammar mode, the automaton plus public pins selects exactly the declared initial language. Every finite Wang solution with its chosen top mode extends to selectors, and every exact point solution restricts to that boundary-conditioned Wang solution.",
+      "fixed_background": "Roles and public source-word pins are problem-defining markings and are part of the requested finite instance. They are not learned acceleration constraints.",
+      "prototype_m_offsets_as_formal_data": {
+        "E": [
+          1,
+          0
+        ],
+        "N": [
+          0,
+          -1
+        ],
+        "S": [
+          0,
+          1
+        ],
+        "W": [
+          -1,
+          0
+        ],
+        "role": [
+          0,
+          0
+        ]
+      },
+      "prototype_t_as_formal_data": {
+        "elsewhere": 0,
+        "support": [
+          [
+            0,
+            0
+          ]
+        ],
+        "value": 1
+      },
+      "scope": "Finite required centers with explicit boundary data and restricted allowed origins, translations only. This does not establish an unconstrained whole-plane tiling, an aperiodic tile set, or an implemented point-search engine.",
+      "selector_centers_latex": "\\(Q_{\\mathrm{sel}}=\\{(-2,2y),(2W,2y):0\\le y\\le H\\}\\cup\\{(2x,-2),(2x,2H+2):0\\le x<W\\}\\cup\\{(-2,-2),(2W,-2)\\}\\)",
+      "selector_families": [
+        "Left role selector assigns its east \\(H\\) component one of the wall/current pair colors, or the assigned seen-zero color.",
+        "Right role selector assigns its west \\(H\\) component one of the current/wall pair colors, or the assigned seen-one color.",
+        "Each bottom selector assigns its north \\(V\\) component stop.",
+        "For each \\(b\\in A\\), a fixed-top selector has role top-fixed and assigns only its south \\(V\\) component the cell color \\(b\\). For the known-row lemma all those shared vertical colors are clamped to \\(C_0\\).",
+        "Top-grammar selectors are the fixed automaton-transition family; they assign south \\(V\\) and west/east init states. Distinct top roles prevent the fixed-top family from bypassing the unknown-certificate grammar.",
+        "The two top-corner selectors assign the initial left and final right automaton states. They enforce the grammar in top-grammar mode and impose no extra condition on fixed-top selectors whose horizontal components are absent.",
+        "Unused selector edge components are genuinely absent; selectors are explicit boundary point objects, not a claim of a completed uniform-plane Wang boundary gadget."
+      ],
+      "target": "Every center in \\(B\\cup Q_{\\mathrm{sel}}\\) is required at total \\(t\\)-value one. All placements have their center in this finite declared target; tile types remain fixed. A problem-defining background role marking assigns bulk, left, right, top-fixed, top-grammar, bottom, init-left or init-right to the corresponding centers. The chosen top mode is uniform across that row.",
+      "top_mode_is_data_not_new_grammar": "Both finite top-selector families belong to the same fixed prototype inventory. The finite background selects a mode; no machine table, tile family or proof-step grammar is regenerated per theorem."
+    },
+    "expressive_FOL_bridge": {
+      "configuration_not_proof_line": "A core row is one entire checker tape configuration after one TM step. It is not a human logical proof line or one reusable mathematical lemma.",
+      "implementation_status": "Unimplemented bridge. No high-level macro expansion, interface checker, reusable receptor family, RL advantage or end-to-end proof-search benefit is demonstrated.",
+      "macro_obligations": [
+        "Every high-level proof-step/cluster proposal needs a checkable expansion into this exact frozen core and an exact interface certificate, including pre/post tape data, head state/position, space/time bounds and marking version.",
+        "A reusable lemma also needs a source proof under its precise assumptions, parameter/scope/capture conditions and validated transport; recurrence in samples is not such a proof.",
+        "Composition must replay or certify expansions with the same source kernel and point constraints, exact placement identity and rollback; proposal absence cannot remove a base candidate.",
+        "Learning, expansion construction, failed proposals, interface validation, decoding and independent source checking are charged. Matched-knowledge conventional baselines receive the same source-valid library; unavailable faithful export prevents GCTS-specific attribution."
+      ],
+      "role_of_baseline": "The uniform computation encoding is a conditional faithful foundational baseline. It is not the practical expressive FOL receptor/lemma inventory and supplies no search advantage claim."
+    },
+    "fair_bounds_and_halting": {
+      "conditional_semidecision": "If a frozen total correct proof checker accepts some finite \\(v\\), its finite accepting run visits finitely many tape cells. Sufficient left/right padding, \\(W\\) and \\(H\\) occur in the fair schedule, and an accepting rectangle exists. A decoded accepting rectangle gives an accepted candidate only conditional on the missing source/checker correspondence.",
+      "fair_schedule": "Mathematically enumerate triples by increasing \\(W+H+\\ell\\), breaking ties lexicographically, and finish each finite-board enumeration. Interruptible unknown subsearch requires dovetailing so no fixed finite triple is starved. No permanently fixed width, time, proof-word, term-depth or proof-length bound yields the general claim.",
+      "finite_search": "For each \\((W,H,\\ell)\\) with enough public-prefix room, the declared board, alphabet, candidates and assignments are finite. Abstract exhaustive enumeration of that finite set terminates; no such enumeration is executed here.",
+      "known_limit": "General first-order theoremhood/validity has no total decision procedure; the cited original Church/Turing work supplies that background. Which additional fixed theories have which limits requires their own exact assumptions. No aperiodicity-to-universality or finite-patch-to-infinite-tiling implication is used.",
+      "negative_boundary": "A fixed-bound exhausted board says only no accepting run for that board and boundary instance. Timeouts, memory cutoffs or learned restrictions mean unknown. Unbounded proof search need not halt for a non-theorem even when every candidate check halts."
+    },
+    "fixed_checker_and_theory_policy": {
+      "build_time_only_parameters": [
+        "one fixed source theory/kernel policy P_star",
+        "one total syntactic proof predicate Check_P_star(u,v)",
+        "one complete finite TM table M_star realizing that predicate",
+        "one fixed tile/color/boundary family compiled from that table"
+      ],
+      "checker_table": null,
+      "claim_gate": "Before any actual universal/FOL system claim, choose and pin P_star, syntax, codecs and M_star, prove the source-to-checker and checker-to-source correspondence, generate/freeze the entire fixed tile artifact, and independently validate decoding. This artifact does not choose or implement those objects.",
+      "intended_kernel": "One full first-order proof checker with equality, arbitrary finite formula/term encodings, quantifier/eigenvariable/substitution conditions, exact source assumptions and independently auditable inference checking. This is a requirements contract, not a supplied checker.",
+      "nonlogical_policy": "Finite original assumptions may vary only as explicit public source-instance data shared identically by every lane. Generic schema recognizers, such as full PA induction, must be part of a frozen audited kernel/profile, not hand-picked target instances. The corrected Hilbert dependent context is not automatically first-orderized by this construction.",
+      "per_instance_parameters": [
+        "the public source statement and declared context encoded as u",
+        "finite board bounds and padding",
+        "unknown candidate proof v"
+      ],
+      "proof_syntax_or_codec": null,
+      "selected_P_star": null
+    },
+    "initial_unknown_certificate_boundary": {
+      "additional_fixed_tape_symbols": [
+        "blank",
+        "0",
+        "1",
+        "START",
+        "SEP",
+        "END"
+      ],
+      "fixed_regular_grammar": {
+        "accepting": [
+          "R"
+        ],
+        "start": "L",
+        "states": [
+          "L",
+          "U",
+          "P",
+          "R"
+        ],
+        "transitions_as_formal_data": [
+          [
+            "L",
+            [
+              "plain",
+              "blank"
+            ],
+            "L"
+          ],
+          [
+            "L",
+            [
+              "head",
+              "q0",
+              "START"
+            ],
+            "U"
+          ],
+          [
+            "U",
+            [
+              "plain",
+              "0"
+            ],
+            "U"
+          ],
+          [
+            "U",
+            [
+              "plain",
+              "1"
+            ],
+            "U"
+          ],
+          [
+            "U",
+            [
+              "plain",
+              "SEP"
+            ],
+            "P"
+          ],
+          [
+            "P",
+            [
+              "plain",
+              "0"
+            ],
+            "P"
+          ],
+          [
+            "P",
+            [
+              "plain",
+              "1"
+            ],
+            "P"
+          ],
+          [
+            "P",
+            [
+              "plain",
+              "END"
+            ],
+            "R"
+          ],
+          [
+            "R",
+            [
+              "plain",
+              "blank"
+            ],
+            "R"
+          ]
+        ]
+      },
+      "grammar_scope": "The regular boundary template is specified here as finite formal data. No source-problem encoder, proof decoder, serialized boundary inventory or implemented boundary generator is supplied.",
+      "initial_language_latex": "\\(\\square^{\\ell}\\,(q_0,\\mathrm{START})\\,u\\,\\mathrm{SEP}\\,v\\,\\mathrm{END}\\,\\square^r\\)",
+      "public_pins": "For a chosen left padding \\(\\ell\\), problem-defining vertical markings pin the head/start cell, every bit of \\(u\\), and its immediately following separator. Proof-word bits, the end position and right padding remain unknown under the fixed grammar.",
+      "start_end_clamps": {
+        "left": [
+          "init",
+          "L"
+        ],
+        "right": [
+          "init",
+          "R"
+        ]
+      },
+      "top_selector_prototype": {
+        "E": [
+          "init",
+          "p1"
+        ],
+        "S": [
+          "cell",
+          "b"
+        ],
+        "W": [
+          "init",
+          "p"
+        ],
+        "for": "each fixed grammar transition p --b--> p1",
+        "other_edges": "unassigned in the point-boundary selector model",
+        "role": "top-grammar"
+      },
+      "word_policy": "\\(u\\) is the binary public source-problem/context/theory-profile payload; \\(v\\) is an unknown finite binary proof-candidate word chosen by the tiling, never a supplied target proof. Padding is plain blank. Exact source payload/proof codecs and the actual checker are still missing."
+    },
+    "machine_convention": {
+      "actual_table": null,
+      "cell_alphabet_latex": "\\(A=\\Gamma\\sqcup(Q\\times\\Gamma)\\)",
+      "delta_signature_latex": "\\(\\delta:Q\\times\\Gamma\\rightharpoonup Q\\times\\Gamma\\times\\{-1,0,+1\\}\\)",
+      "fixed_parameters": [
+        "finite tape alphabet Gamma with blank",
+        "finite state set Q with distinguished initial q0 and accepting qacc",
+        "one partial deterministic transition table delta"
+      ],
+      "fixedness_policy": "Once the intended checker is compiled, Gamma, Q, delta, all tile prototypes, color encodings, boundary grammar and source-theory/kernel policy must be frozen once for all target statements. A different statement or candidate proof changes boundary data and finite bounds, never the machine table or tile grammar. Changing the checker/theory policy creates a new system version.",
+      "halting_convention": "\\(\\delta\\) is undefined on every accepting-state pair. Other undefined transitions are nonaccepting halts. A step writes the symbol, changes state, then moves by its declared displacement; zero displacement keeps the head on the written cell.",
+      "head_encoding": "plain(s) and head(q,s) are disjoint tagged forms; wall is an additional sentinel outside A.",
+      "strip": "Width \\(W\\ge1\\), with cells indexed from \\(0\\) through \\(W-1\\). The wall sentinel occurs only as the neighbor just outside either end. A valid configuration has exactly one head.",
+      "table_artifact_sha256": null
+    },
+    "partial_radius_one_update": {
+      "boundary": "\\(F\\) is a partial function on a finite domain. These formal cases are mathematical data, not an implemented/evaluated CA, TM simulator, compiler or rule table.",
+      "cases_as_formal_data": [
+        {
+          "condition": [
+            "no_head",
+            "triple"
+          ],
+          "output": [
+            "keep",
+            "b"
+          ]
+        },
+        {
+          "condition": [
+            "central_head",
+            [
+              "q",
+              "s"
+            ],
+            [
+              "delta",
+              "q1",
+              "s1",
+              0
+            ]
+          ],
+          "output": [
+            "head",
+            "q1",
+            "s1"
+          ]
+        },
+        {
+          "condition": [
+            "central_head",
+            [
+              "q",
+              "s"
+            ],
+            [
+              "delta",
+              "q1",
+              "s1",
+              "d"
+            ],
+            [
+              "d_in",
+              [
+                -1,
+                1
+              ]
+            ],
+            "no_escape"
+          ],
+          "output": [
+            "plain",
+            "s1"
+          ]
+        },
+        {
+          "condition": [
+            "left_head",
+            [
+              "q",
+              "s"
+            ],
+            [
+              "delta",
+              "q1",
+              "s1",
+              1
+            ],
+            [
+              "b_is_plain",
+              "z"
+            ]
+          ],
+          "output": [
+            "head",
+            "q1",
+            "z"
+          ]
+        },
+        {
+          "condition": [
+            "right_head",
+            [
+              "q",
+              "s"
+            ],
+            [
+              "delta",
+              "q1",
+              "s1",
+              -1
+            ],
+            [
+              "b_is_plain",
+              "z"
+            ]
+          ],
+          "output": [
+            "head",
+            "q1",
+            "z"
+          ]
+        },
+        {
+          "condition": [
+            "neighbor_head_does_not_enter_center",
+            [
+              "b_is_plain",
+              "z"
+            ]
+          ],
+          "output": [
+            "plain",
+            "z"
+          ]
+        }
+      ],
+      "domain": "Triples \\((a,b,c)\\) with \\(b\\in A\\) and \\(a,c\\in A\\cup\\{\\#\\}\\).",
+      "undefined_conditions": [
+        "At least two components are head-tagged.",
+        "The unique head in the triple has an undefined \\(\\delta\\) transition.",
+        "The central component is a head moving left with \\(a=\\#\\) or right with \\(c=\\#\\)."
+      ]
+    },
+    "references": [
+      {
+        "author": "A. M. Turing",
+        "doi": "10.1112/plms/s2-42.1.230",
+        "id": "Turing1936",
+        "primary_paper_url": "https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf",
+        "scope": "Original research paper, university-hosted scan. Sections 6-7 describe a universal machine; sections 8 and 11 establish undecidability results. This artifact does not execute or adopt its machine table.",
+        "title": "On Computable Numbers, with an Application to the Entscheidungsproblem",
+        "year": "1936-1937"
+      },
+      {
+        "author": "Alonzo Church",
+        "doi": "10.2307/2269326",
+        "id": "Church1936",
+        "primary_paper_url": "https://people.csail.mit.edu/brooks/idocs/church_ent.pdf",
+        "scope": "Original research note, university-hosted scan; supports the first-order decision-problem limitation, not correctness of the present tile compiler.",
+        "title": "A Note on the Entscheidungsproblem",
+        "year": "1936"
+      },
+      {
+        "author": "Hao Wang",
+        "id": "Wang1961",
+        "primary_paper_url": "https://www.nokia.com/bell-labs/publications-and-media/publications/proving-theorems-by-pattern-recognition-ii/",
+        "scope": "Bell Labs publisher archive for the original predicate-calculus/tiling research. Historical context only; no unproved equivalence of its construction to this specification is asserted.",
+        "title": "Proving Theorems by Pattern Recognition - II",
+        "year": "1961"
+      },
+      {
+        "author": "Robert Berger",
+        "id": "Berger1966",
+        "primary_paper_url": "https://doi.org/10.1090/memo/0066",
+        "publisher_scope_notice_url": "https://www.ams.org/journals/notices/196701/196701FullIssue.pdf",
+        "scope": "Original AMS research monograph metadata/table of contents consulted. The infinite-plane domino problem is a different problem from the finite accepting rectangles defined here; no aperiodicity-to-universality inference is used.",
+        "title": "The Undecidability of the Domino Problem",
+        "year": "1966"
+      }
+    ],
+    "schema": "gcts-fixed-wang-computation-source-spec/1",
+    "status": "SOURCE/REASONING-ONLY CONDITIONAL COMPILATION LEMMA AND DECLARATIVE DESIGN; NO MACHINE TABLE, FIXED SET ARTIFACT, IMPLEMENTATION, OR EXECUTION",
+    "unmet_obligations": [
+      "Specify and freeze an actual full source-theory/kernel policy and total syntactic proof checker, including generic schema/equality/quantifier rules.",
+      "Supply the actual complete finite checker TM table and prove its relation to the source proof predicate.",
+      "Bind the regular binary boundary template to lossless source/proof codecs and a concrete serialized boundary/role artifact.",
+      "Enumerate/freeze all tile prototypes and exact color coding for that one table; produce independent source proof decoding/checking.",
+      "Implement/audit the complete point-frontier graph, global dead/forced then earliest-generation scheduler, exact rollback, boundary support dependencies and termination/result scopes before any conformance claim.",
+      "Implement and validate high-level FOL lemma/macro expansions and interface certificates, plus fair conventional controls and complete cost evidence.",
+      "Independently review the present mathematical proof sketch and boundary conventions."
+    ],
+    "wang_core": {
+      "edges_as_formal_data": {
+        "E": [
+          "pair",
+          "b",
+          "c"
+        ],
+        "N": [
+          "cell",
+          "b"
+        ],
+        "S": [
+          "cell",
+          "F(a,b,c)"
+        ],
+        "W": [
+          "pair",
+          "a",
+          "b"
+        ]
+      },
+      "finite_upper_bound_latex": "\\(|\\mathcal T_\\delta|\\le |A|(|A|+1)^2\\)",
+      "orientations": "Only translations; no rotations or reflections.",
+      "prototype": "For each triple on which \\(F(a,b,c)\\) is defined, include \\(T(a,b,c)\\). All edges are tagged by channel/type.",
+      "row_side_relations_as_formal_data": {
+        "left": [
+          [
+            "pair",
+            "wall",
+            "b in A"
+          ],
+          [
+            "seen",
+            0
+          ]
+        ],
+        "right": [
+          [
+            "pair",
+            "b in A",
+            "wall"
+          ],
+          [
+            "seen",
+            1
+          ]
+        ]
+      },
+      "typed_colors": "pair, seen, init and cell/stop tags are disjoint color constructors. Integer color coding, if implemented, must be injective and exact; seen value zero is assigned, not absent."
+    }
+  },
+  "status": "REVIEWED_CONDITIONAL_PROSE_LEMMA"
+}

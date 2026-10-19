@@ -1,0 +1,1623 @@
+{
+  "GCTS_RL_advantage_established": false,
+  "failure": null,
+  "full_pipeline_qualified": false,
+  "independent_saved_review": {
+    "Model_calls": 0,
+    "Native_calls": 0,
+    "Reader_calls": 0,
+    "actual_consumed": {
+      "bytes": 549,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/CONSUMED.json",
+      "sha256": "53594175f274e20426b5a2ecb31e4be2e6e70ba230662f5ec70783d01544e18c"
+    },
+    "actual_execution_authorized": false,
+    "all_current_saved_artifacts": {
+      "actual-qualification-v2/CONSUMED.json": {
+        "bytes": 549,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/CONSUMED.json",
+        "sha256": "53594175f274e20426b5a2ecb31e4be2e6e70ba230662f5ec70783d01544e18c"
+      },
+      "actual-qualification-v2/result.json": {
+        "bytes": 16594,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/result.json",
+        "sha256": "9eb8571cf8729489f840eb2fa70407e8e58694ee9a92b78b637d1719f7bf620f"
+      },
+      "actual-qualification-v2/runner-receipt.json": {
+        "bytes": 2929,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/runner-receipt.json",
+        "sha256": "c91480a384097af4dcfe08443a609ae128afd782dadb3771ba98f0e74c88905c"
+      },
+      "actual-qualification-v2/stderr.bin": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual-qualification-v2/stdout.bin": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual-qualification-v2/worker-receipt.json": {
+        "bytes": 864,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/worker-receipt.json",
+        "sha256": "f76ae510806c9f68caaca96212262abf0f021fd006fbed66fcd1f631c67a1b27"
+      },
+      "plan-authorized-v2-terminal-observation/CONSUMED.json": {
+        "bytes": 275,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2-terminal-observation/CONSUMED.json",
+        "sha256": "fcd62ef7f2386155017ee6d832bb70af16efa7e259bcf7bac19f891665a27064"
+      },
+      "plan-authorized-v2-terminal-observation/stderr.bin": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "plan-authorized-v2-terminal-observation/stdout.bin": {
+        "bytes": 156,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2-terminal-observation/stdout.bin",
+        "sha256": "df8610290e337134d6301d3ed310a4cb9e5541d25e74683392146712a16d3ed9"
+      },
+      "plan-authorized-v2-terminal-observation/terminal.json": {
+        "bytes": 1526,
+        "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2-terminal-observation/terminal.json",
+        "sha256": "09ebcb379e005bfefa5b8750f1ee6cf46a091cb709895ebcf668b0f41aeecf4f"
+      }
+    },
+    "audit": {
+      "bytes": 39581,
+      "path": "/private/tmp/gcts-buffered-canonical-peer-20261019/saved-qualification-audit-v1.json",
+      "sha256": "ff1b5890c9001ca65f9f088adf7ad65ec8100b15dd006c45a9863dbd488ee469"
+    },
+    "author_identity": "/root",
+    "check_count": 139,
+    "codec_or_inverse_calls": 0,
+    "component_calls": 0,
+    "current_authorization": {
+      "bytes": 2284,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/authorization-v2.json",
+      "sha256": "f7421fd54fa6c5757935fae712e1ef23c48f96c1392148c18538e59c59ca8755"
+    },
+    "current_plan": {
+      "bytes": 4268,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2.json",
+      "sha256": "6cbcbc7963407aed218935b339b36c66114b28fe00bae4bc0a80b70226f1ed6e"
+    },
+    "declaration": {
+      "bytes": 10300,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/qualification-declaration-v2.json",
+      "sha256": "19170f4328d66bcc1d0bd35a094734fc84df7949f4d5eb4d92f86f07e38674b7"
+    },
+    "extraction_manifest": {
+      "bytes": 2363,
+      "path": "/private/tmp/gcts-buffered-canonical-qualification-library-20261019/extraction-manifest-v1.json",
+      "sha256": "d1137915bda4bc75c73b444d9491972191519d07ad833e42d5cece42cc43f98a"
+    },
+    "findings": [],
+    "finite_helper_qualification_supported": true,
+    "fixture_calls": 0,
+    "full_pipeline_qualified": false,
+    "limitations": [
+      "Saved ordinary metadata and whole raw hashes were audited; no comparator, fixture, Reader, encoder, inverse, Model, Native, solver or proof function was imported, called or replayed by the reviewer.",
+      "The full-input row retains one compact returned comparator packet after the reviewed harness compared old/new entire return packets and callback counts. This audit independently checks raw/BODY hashes and counts; it does not independently reencode either input or replay that comparator assertion.",
+      "Exact foreign object identity, guard checks, detached in-memory prefixes and no reread are runtime claims recorded by the raw-pinned reviewed worker/harness. Saved JSON can join their evidence but is not an independent temporal or hostile-runtime seal.",
+      "Raw-pinned private exclusive-owner SourceFileLoader and postload shallow declared code/globals/default identities remain trusted; no initial compiled-object/pyc/default-content/cell/OS seal or universal exception proof is supplied.",
+      "Known wait4 exit, owned-group absence, regular captured-log closure and external terminal are retained instrument evidence. Root authoritatively released exec session78257 exit0; no independent current process-table probe was taken or claimed by this audit.",
+      "Clock anchor is runner Source entry, excluding observer/Python prelude. Worker positive/output/header and known exit fit180; later outer checks and observed terminal fit210. Peak is Darwin worker-only highwater, excluding runner/observer RAM; Native absent. These finite costs are not full-pipeline production costs or a causal speed/RAM comparison.",
+      "Literal observer ROOT_resource_accepted stays false; runner resource_candidate_accepted and terminal_gate_passed are true. Root must adopt only the narrow finite helper result, not rewrite that historical field or infer full-cold, proof, Model, GCTS/RL or old-failure admission.",
+      "Block-late own mismatch precedence variation is observed as old ColdError versus candidate TypeError on malformed data; both fail. Optional helperLF behavior is qualified, while production externalLF is outside this actual. All prior full-pipeline failures retain status."
+    ],
+    "literal_observer_ROOT_resource_accepted": false,
+    "literal_terminal_gate_passed": true,
+    "literal_worker_status": "FINITE_COMPARATOR_QUALIFICATION_CANDIDATE",
+    "mathematical_proof_admitted": false,
+    "metrics": {
+      "conservative_physical_bytes": 9455191,
+      "control_checkpoint_ordinals": [
+        171,
+        174
+      ],
+      "control_prefix_comparator_calls": [
+        29,
+        30
+      ],
+      "group6_B": 28,
+      "group6_K": 168,
+      "helper_qualification_calls": 3,
+      "normal_comparator_calls": 108,
+      "normal_diagnostic_groups": 20,
+      "normal_successful_root_callbacks": 1834,
+      "observer_main_to_terminal_seconds": 29.335917792,
+      "ordinary_result_bytes": 16594,
+      "physical_before_runner": 18007,
+      "prefix_controls": 2,
+      "runner_Source_entry_to_terminal_seconds": 29.279028125,
+      "runner_closed_seconds": 29.245055083,
+      "total_comparator_calls": 167,
+      "whole_inputs": [
+        {
+          "body_bytes": 36913961,
+          "body_sha256": "e6f0bb58146c74f70ac3a6d910a1a30c4287cc7d34a5c17c8a88590d779c4e61",
+          "comparator_callback_calls": 268,
+          "encoder_parts": 17473126,
+          "id": "fixed",
+          "raw": {
+            "bytes": 36913962,
+            "path": "/private/tmp/gcts-finalization-integration-ROOT-20261019/actual-fixed-v1/result.json",
+            "sha256": "c90b882b15bda78bcb062fe96124c2db7c22318829515e8b8608ce4f3ed90117"
+          }
+        },
+        {
+          "body_bytes": 34001483,
+          "body_sha256": "29df18f3547213339c582424ba156bf09f9d7dedc12bd9579eb8208d36168b28",
+          "comparator_callback_calls": 244,
+          "encoder_parts": 15901556,
+          "id": "symbolic",
+          "raw": {
+            "bytes": 34001484,
+            "path": "/private/tmp/gcts-finalization-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+            "sha256": "fe6c51574591aad2105b83fb18fbca6bdfce4f231f4dbabcae968ac0b87d514e"
+          }
+        }
+      ],
+      "whole_raw_input_bytes": 70915446,
+      "worker_Darwin_highwater_MiB": 158.65625,
+      "worker_Darwin_highwater_bytes": 166363136,
+      "worker_known_exit_seconds": 29.140187583,
+      "worker_positive_completed_seconds": 29.103800875
+    },
+    "mismatch_count": 0,
+    "module_evaluations": 0,
+    "module_imports_of_subjects": 0,
+    "observer_consumed": {
+      "bytes": 275,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2-terminal-observation/CONSUMED.json",
+      "sha256": "fcd62ef7f2386155017ee6d832bb70af16efa7e259bcf7bac19f891665a27064"
+    },
+    "prior_V1_negative": {
+      "bytes": 8777,
+      "path": "/private/tmp/gcts-buffered-canonical-peer-20261019/typed-components-Source-review-v1-negative.json",
+      "sha256": "331b2f0ea8acde7f3dd69fa9d865ff2b465bbb9cb724f2bb03e97fe6c59a6a39"
+    },
+    "prior_qualified_fullpipeline_status_preserved": true,
+    "proof_replays": 0,
+    "result": {
+      "bytes": 16594,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/result.json",
+      "sha256": "9eb8571cf8729489f840eb2fa70407e8e58694ee9a92b78b637d1719f7bf620f"
+    },
+    "review_roles": {
+      "Source": {
+        "bytes": 10411,
+        "path": "/private/tmp/gcts-buffered-canonical-peer-20261019/typed-components-Source-review-v2.json",
+        "sha256": "052f018c6b1d1858d6d1598ca5757c478ba255af5220fc9a47d5798e6b192151"
+      },
+      "outer_Source": {
+        "bytes": 6523,
+        "path": "/private/tmp/gcts-buffered-canonical-peer-20261019/typed-outer-Source-review-v2.json",
+        "sha256": "35229f8dabf6a6a9c0bd3768c15e2532e9f3985d61b5a719a852e9261eb10323"
+      },
+      "plans": {
+        "bytes": 11743,
+        "path": "/private/tmp/gcts-buffered-canonical-peer-20261019/typed-prospective-plan-review-v2.json",
+        "sha256": "45f9850a01281e2e3b7e73cba76d8da3df975a8902e0196c0963b1e88ce785cf"
+      }
+    },
+    "reviewer_identity": "/root/conventional_control_review",
+    "runner_receipt": {
+      "bytes": 2929,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/runner-receipt.json",
+      "sha256": "c91480a384097af4dcfe08443a609ae128afd782dadb3771ba98f0e74c88905c"
+    },
+    "runtime_closure": {
+      "bytes": 34140,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/runtime-closure-v2.json",
+      "sha256": "7c085d088e5c6af39d02676a80f9f4d09acb4e55849f88d3ebefde30b3f25e0d"
+    },
+    "saved_data_only": true,
+    "saved_review_passed": true,
+    "schema": "buffered-canonical-qualification-saved-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "Independent complete saved-byte/ordinary-JSON evidence audit of exactly one finite extracted-comparator qualification. All20 normal groups, both full raw preimages and two explicit early qualifier-level interruptions are consistent with the reviewed Sources/subject and original resource/terminal protocol. No component or proof was replayed and no full cold or integrated production admission follows.",
+    "subject_sha256": "06bc3bc209a0965d43ea85d64fa8bdaf6da128a22c2635813efcd2508e6a34c3",
+    "terminal_observation": {
+      "bytes": 1526,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2-terminal-observation/terminal.json",
+      "sha256": "09ebcb379e005bfefa5b8750f1ee6cf46a091cb709895ebcf668b0f41aeecf4f"
+    },
+    "tools_stopped_pending_separate_publication_review": true,
+    "worker_receipt": {
+      "bytes": 864,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/worker-receipt.json",
+      "sha256": "f76ae510806c9f68caaca96212262abf0f021fd006fbed66fcd1f631c67a1b27"
+    }
+  },
+  "mathematical_proof_accepted": false,
+  "new_theorems": 0,
+  "next": "Independently review full production integration of qualified comparator before any fresh full attempt; then move to a new quantified original-input receiver with matched-knowledge controls. No rerun or theorem admission follows from helper qualification.",
+  "plan": {
+    "actual_directory": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2",
+    "authorization": {
+      "bytes": 2284,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/authorization-v2.json",
+      "sha256": "f7421fd54fa6c5757935fae712e1ef23c48f96c1392148c18538e59c59ca8755"
+    },
+    "candidate": {
+      "bytes": 2060,
+      "path": "/private/tmp/gcts-buffered-canonical-qualification-library-20261019/candidate_comparator_v1.py",
+      "sha256": "1964cf119781c57452009393e1ce617d6f68e29164bfa03bed41bdfbe179110e"
+    },
+    "cold_sources": {
+      "candidate": {
+        "bytes": 73734,
+        "path": "/private/tmp/gcts-buffered-canonical-library-20261019/owned_evidence_cold_v7.py",
+        "sha256": "876decffb4135ad1c7013ec4d94444a88695ed79df7482620637885b6bb379d4"
+      },
+      "original": {
+        "bytes": 72712,
+        "path": "/private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "sha256": "e1101723f559ae2dfecc030470a3e6e9e79c71b10c416c2bcdfc8f2f5b101d43"
+      }
+    },
+    "declaration": {
+      "bytes": 10300,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/qualification-declaration-v2.json",
+      "sha256": "19170f4328d66bcc1d0bd35a094734fc84df7949f4d5eb4d92f86f07e38674b7"
+    },
+    "extraction_manifest": {
+      "bytes": 2363,
+      "path": "/private/tmp/gcts-buffered-canonical-qualification-library-20261019/extraction-manifest-v1.json",
+      "sha256": "d1137915bda4bc75c73b444d9491972191519d07ad833e42d5cece42cc43f98a"
+    },
+    "harness": {
+      "bytes": 17159,
+      "path": "/private/tmp/gcts-buffered-canonical-qualification-library-20261019/qualify_comparators_v2.py",
+      "sha256": "f7b83822f3bbf26806f32b1cb0c25033a5db52b909613b87b58c8a1b7dbf1298"
+    },
+    "inputs": [
+      {
+        "id": "fixed",
+        "result": {
+          "bytes": 36913962,
+          "path": "/private/tmp/gcts-finalization-integration-ROOT-20261019/actual-fixed-v1/result.json",
+          "sha256": "c90b882b15bda78bcb062fe96124c2db7c22318829515e8b8608ce4f3ed90117"
+        }
+      },
+      {
+        "id": "symbolic",
+        "result": {
+          "bytes": 34001484,
+          "path": "/private/tmp/gcts-finalization-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+          "sha256": "fe6c51574591aad2105b83fb18fbca6bdfce4f231f4dbabcae968ac0b87d514e"
+        }
+      }
+    ],
+    "invocation_id": "buffered-canonical-qualification-ROOT-20261019-v2",
+    "limits": {
+      "expanded_bytes": 134217728,
+      "memory_bytes": 1073741824,
+      "overall_seconds": 210,
+      "result_bytes": 134217728,
+      "stderr_bytes": 4194304,
+      "stdout_bytes": 4194304,
+      "work_seconds": 180
+    },
+    "observer": {
+      "bytes": 5114,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/observe_comparator_qualification_once_v2.py",
+      "sha256": "254fcbb8215fa738febcd4f870c6d90ddba4748071c7082db2b0d1c9de51dd28"
+    },
+    "original": {
+      "bytes": 1044,
+      "path": "/private/tmp/gcts-buffered-canonical-qualification-library-20261019/original_comparator_v1.py",
+      "sha256": "0a063cdea8593c9945685f9a5f4f603ff9fda6af4e5e0fee8c296b8473bffa0f"
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+    },
+    "reader": {
+      "bytes": 4705,
+      "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+      "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+    },
+    "runner": {
+      "bytes": 15805,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/run_comparator_qualification_once_v2.py",
+      "sha256": "f4ef39f847abdbf9bcb150f681020ffeab45fdc6c06dfcd3632d61d39a5c6781"
+    },
+    "runtime_closure": {
+      "bytes": 34140,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/runtime-closure-v2.json",
+      "sha256": "7c085d088e5c6af39d02676a80f9f4d09acb4e55849f88d3ebefde30b3f25e0d"
+    },
+    "schema": "ROOT-buffered-canonical-qualification-once-plan-v2",
+    "worker": {
+      "bytes": 23126,
+      "path": "/private/tmp/gcts-buffered-canonical-qualification-library-20261019/qualify_comparators_worker_v2.py",
+      "sha256": "0a12b1e85e0a64c0fc73d3133c7b774c13980dade7a9fbb9b9a7007611076155"
+    }
+  },
+  "result": {
+    "Model_calls": 0,
+    "Native_calls": 0,
+    "comparator_calls_total": 167,
+    "denied_events": [],
+    "extraction_manifest": {
+      "bytes": 2363,
+      "path": "/private/tmp/gcts-buffered-canonical-qualification-library-20261019/extraction-manifest-v1.json",
+      "sha256": "d1137915bda4bc75c73b444d9491972191519d07ad833e42d5cece42cc43f98a"
+    },
+    "full_pipeline_qualified": false,
+    "helper_qualification_calls": 3,
+    "inverse_calls": 0,
+    "invocation_id": "buffered-canonical-qualification-ROOT-20261019-v2",
+    "mathematical_proof_accepted": false,
+    "normal_root_checkpoint_calls": 1834,
+    "opaque_program_decodes": 0,
+    "plan": {
+      "bytes": 4268,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2.json",
+      "sha256": "6cbcbc7963407aed218935b339b36c66114b28fe00bae4bc0a80b70226f1ed6e"
+    },
+    "prefix_fault_checks": [
+      {
+        "actual_root_fault_observed": false,
+        "exact_exception_identity": true,
+        "helper_callable_bindings_unchanged": true,
+        "mathematical_authority": false,
+        "name": "original_expected_mismatch",
+        "no_full_input_reread": true,
+        "prefix": {
+          "active_fixture": "mismatch_first_middle_last",
+          "authority": false,
+          "comparator_calls": 29,
+          "completed_diagnostics": [
+            {
+              "comparator_calls_after": 2,
+              "details": {
+                "callback_calls": 2,
+                "result": {
+                  "body_bytes": 43,
+                  "body_sha256": "8d753e16f19ece3833fc77ae7fefcc296696bb6929be954a6abbd747f75bbe8d",
+                  "chunks": 13,
+                  "literal_bytes_equal": true
+                }
+              },
+              "mathematical_authority": false,
+              "name": "canonical_scalars_and_empty_containers",
+              "root_checkpoint_calls_after": 14,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 4,
+              "details": {
+                "absent_key_preserved": true,
+                "typed_values": 5
+              },
+              "mathematical_authority": false,
+              "name": "typed_zero_and_missing",
+              "root_checkpoint_calls_after": 26,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 6,
+              "details": {
+                "UTF8_split_is_byte_preserving": true,
+                "encoded_string_exceeds_buffer": true,
+                "full_result": {
+                  "callback_calls": 2,
+                  "result": {
+                    "body_bytes": 80035,
+                    "body_sha256": "0364341712d3c58b1801b22cb9e3f985d22e28452bb469978150fc42eac87f0d",
+                    "chunks": 13,
+                    "literal_bytes_equal": true
+                  }
+                }
+              },
+              "mathematical_authority": false,
+              "name": "Unicode_key_order_and_UTF8_split",
+              "root_checkpoint_calls_after": 38,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 8,
+              "details": {
+                "callback_calls": 2,
+                "result": {
+                  "body_bytes": 35,
+                  "body_sha256": "09928801bdba5314531dc1cc7a4ef102269aa002a52ac3e81f9856899564d101",
+                  "chunks": 16,
+                  "literal_bytes_equal": true
+                }
+              },
+              "mathematical_authority": false,
+              "name": "tuple_reader_array_projection",
+              "root_checkpoint_calls_after": 50,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 16,
+              "details": {
+                "body_bytes": [
+                  65537,
+                  65538,
+                  65539,
+                  131075
+                ],
+                "source_string_lengths": [
+                  65535,
+                  65536,
+                  65537,
+                  131073
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "long_part_and_buffer_edges",
+              "root_checkpoint_calls_after": 92,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 28,
+              "details": {
+                "actual_census": [
+                  {
+                    "actual_parts": 65535,
+                    "callback_calls": 2,
+                    "expected_parts": 65535
+                  },
+                  {
+                    "actual_parts": 65536,
+                    "callback_calls": 3,
+                    "expected_parts": 65536
+                  },
+                  {
+                    "actual_parts": 65537,
+                    "callback_calls": 3,
+                    "expected_parts": 65537
+                  },
+                  {
+                    "actual_parts": 131071,
+                    "callback_calls": 3,
+                    "expected_parts": 131071
+                  },
+                  {
+                    "actual_parts": 131072,
+                    "callback_calls": 4,
+                    "expected_parts": 131072
+                  },
+                  {
+                    "actual_parts": 131073,
+                    "callback_calls": 4,
+                    "expected_parts": 131073
+                  }
+                ],
+                "final_periodic_collision_not_deduplicated": true
+              },
+              "mathematical_authority": false,
+              "name": "many_small_parts_checkpoint_census",
+              "root_checkpoint_calls_after": 168,
+              "status": "passed"
+            }
+          ],
+          "completed_inputs": [],
+          "full_pipeline_qualified": false,
+          "mathematical_authority": false,
+          "root_checkpoint_calls": 170,
+          "schema": "buffered-canonical-qualification-prefix-v1",
+          "stage": "action",
+          "status": "FAILED_OR_UNFINISHED"
+        },
+        "reached_checkpoint": 171,
+        "status": "passed"
+      },
+      {
+        "actual_root_fault_observed": false,
+        "exact_exception_identity": true,
+        "helper_callable_bindings_unchanged": true,
+        "mathematical_authority": false,
+        "name": "candidate_expected_mismatch",
+        "no_full_input_reread": true,
+        "prefix": {
+          "active_fixture": "mismatch_first_middle_last",
+          "authority": false,
+          "comparator_calls": 30,
+          "completed_diagnostics": [
+            {
+              "comparator_calls_after": 2,
+              "details": {
+                "callback_calls": 2,
+                "result": {
+                  "body_bytes": 43,
+                  "body_sha256": "8d753e16f19ece3833fc77ae7fefcc296696bb6929be954a6abbd747f75bbe8d",
+                  "chunks": 13,
+                  "literal_bytes_equal": true
+                }
+              },
+              "mathematical_authority": false,
+              "name": "canonical_scalars_and_empty_containers",
+              "root_checkpoint_calls_after": 14,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 4,
+              "details": {
+                "absent_key_preserved": true,
+                "typed_values": 5
+              },
+              "mathematical_authority": false,
+              "name": "typed_zero_and_missing",
+              "root_checkpoint_calls_after": 26,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 6,
+              "details": {
+                "UTF8_split_is_byte_preserving": true,
+                "encoded_string_exceeds_buffer": true,
+                "full_result": {
+                  "callback_calls": 2,
+                  "result": {
+                    "body_bytes": 80035,
+                    "body_sha256": "0364341712d3c58b1801b22cb9e3f985d22e28452bb469978150fc42eac87f0d",
+                    "chunks": 13,
+                    "literal_bytes_equal": true
+                  }
+                }
+              },
+              "mathematical_authority": false,
+              "name": "Unicode_key_order_and_UTF8_split",
+              "root_checkpoint_calls_after": 38,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 8,
+              "details": {
+                "callback_calls": 2,
+                "result": {
+                  "body_bytes": 35,
+                  "body_sha256": "09928801bdba5314531dc1cc7a4ef102269aa002a52ac3e81f9856899564d101",
+                  "chunks": 16,
+                  "literal_bytes_equal": true
+                }
+              },
+              "mathematical_authority": false,
+              "name": "tuple_reader_array_projection",
+              "root_checkpoint_calls_after": 50,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 16,
+              "details": {
+                "body_bytes": [
+                  65537,
+                  65538,
+                  65539,
+                  131075
+                ],
+                "source_string_lengths": [
+                  65535,
+                  65536,
+                  65537,
+                  131073
+                ]
+              },
+              "mathematical_authority": false,
+              "name": "long_part_and_buffer_edges",
+              "root_checkpoint_calls_after": 92,
+              "status": "passed"
+            },
+            {
+              "comparator_calls_after": 28,
+              "details": {
+                "actual_census": [
+                  {
+                    "actual_parts": 65535,
+                    "callback_calls": 2,
+                    "expected_parts": 65535
+                  },
+                  {
+                    "actual_parts": 65536,
+                    "callback_calls": 3,
+                    "expected_parts": 65536
+                  },
+                  {
+                    "actual_parts": 65537,
+                    "callback_calls": 3,
+                    "expected_parts": 65537
+                  },
+                  {
+                    "actual_parts": 131071,
+                    "callback_calls": 3,
+                    "expected_parts": 131071
+                  },
+                  {
+                    "actual_parts": 131072,
+                    "callback_calls": 4,
+                    "expected_parts": 131072
+                  },
+                  {
+                    "actual_parts": 131073,
+                    "callback_calls": 4,
+                    "expected_parts": 131073
+                  }
+                ],
+                "final_periodic_collision_not_deduplicated": true
+              },
+              "mathematical_authority": false,
+              "name": "many_small_parts_checkpoint_census",
+              "root_checkpoint_calls_after": 168,
+              "status": "passed"
+            }
+          ],
+          "completed_inputs": [],
+          "full_pipeline_qualified": false,
+          "mathematical_authority": false,
+          "root_checkpoint_calls": 173,
+          "schema": "buffered-canonical-qualification-prefix-v1",
+          "stage": "action",
+          "status": "FAILED_OR_UNFINISHED"
+        },
+        "reached_checkpoint": 174,
+        "status": "passed"
+      }
+    ],
+    "qualification": {
+      "authority": false,
+      "comparator_calls": 108,
+      "completed_inputs": [
+        "fixed",
+        "symbolic"
+      ],
+      "diagnostics": [
+        {
+          "comparator_calls_after": 2,
+          "details": {
+            "callback_calls": 2,
+            "result": {
+              "body_bytes": 43,
+              "body_sha256": "8d753e16f19ece3833fc77ae7fefcc296696bb6929be954a6abbd747f75bbe8d",
+              "chunks": 13,
+              "literal_bytes_equal": true
+            }
+          },
+          "mathematical_authority": false,
+          "name": "canonical_scalars_and_empty_containers",
+          "root_checkpoint_calls_after": 14,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 4,
+          "details": {
+            "absent_key_preserved": true,
+            "typed_values": 5
+          },
+          "mathematical_authority": false,
+          "name": "typed_zero_and_missing",
+          "root_checkpoint_calls_after": 26,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 6,
+          "details": {
+            "UTF8_split_is_byte_preserving": true,
+            "encoded_string_exceeds_buffer": true,
+            "full_result": {
+              "callback_calls": 2,
+              "result": {
+                "body_bytes": 80035,
+                "body_sha256": "0364341712d3c58b1801b22cb9e3f985d22e28452bb469978150fc42eac87f0d",
+                "chunks": 13,
+                "literal_bytes_equal": true
+              }
+            }
+          },
+          "mathematical_authority": false,
+          "name": "Unicode_key_order_and_UTF8_split",
+          "root_checkpoint_calls_after": 38,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 8,
+          "details": {
+            "callback_calls": 2,
+            "result": {
+              "body_bytes": 35,
+              "body_sha256": "09928801bdba5314531dc1cc7a4ef102269aa002a52ac3e81f9856899564d101",
+              "chunks": 16,
+              "literal_bytes_equal": true
+            }
+          },
+          "mathematical_authority": false,
+          "name": "tuple_reader_array_projection",
+          "root_checkpoint_calls_after": 50,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 16,
+          "details": {
+            "body_bytes": [
+              65537,
+              65538,
+              65539,
+              131075
+            ],
+            "source_string_lengths": [
+              65535,
+              65536,
+              65537,
+              131073
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "long_part_and_buffer_edges",
+          "root_checkpoint_calls_after": 92,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 28,
+          "details": {
+            "actual_census": [
+              {
+                "actual_parts": 65535,
+                "callback_calls": 2,
+                "expected_parts": 65535
+              },
+              {
+                "actual_parts": 65536,
+                "callback_calls": 3,
+                "expected_parts": 65536
+              },
+              {
+                "actual_parts": 65537,
+                "callback_calls": 3,
+                "expected_parts": 65537
+              },
+              {
+                "actual_parts": 131071,
+                "callback_calls": 3,
+                "expected_parts": 131071
+              },
+              {
+                "actual_parts": 131072,
+                "callback_calls": 4,
+                "expected_parts": 131072
+              },
+              {
+                "actual_parts": 131073,
+                "callback_calls": 4,
+                "expected_parts": 131073
+              }
+            ],
+            "final_periodic_collision_not_deduplicated": true
+          },
+          "mathematical_authority": false,
+          "name": "many_small_parts_checkpoint_census",
+          "root_checkpoint_calls_after": 168,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 34,
+          "details": {
+            "mismatch_positions": [
+              0,
+              70007,
+              140013
+            ],
+            "rejections": [
+              [
+                "ColdError",
+                "ColdError"
+              ],
+              [
+                "ColdError",
+                "ColdError"
+              ],
+              [
+                "ColdError",
+                "ColdError"
+              ]
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "mismatch_first_middle_last",
+          "root_checkpoint_calls_after": 188,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 40,
+          "details": {
+            "rejections": [
+              [
+                "ColdError",
+                "ColdError"
+              ],
+              [
+                "ColdError",
+                "ColdError"
+              ],
+              [
+                "ColdError",
+                "ColdError"
+              ]
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "short_truncated_and_extra_data",
+          "root_checkpoint_calls_after": 208,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 46,
+          "details": {
+            "doubleLF": [
+              "ColdError",
+              "ColdError"
+            ],
+            "noLF_and_singleLF_same_parent_API": true,
+            "production_externalLF_gate_tested": false
+          },
+          "mathematical_authority": false,
+          "name": "single_optional_helper_LF",
+          "root_checkpoint_calls_after": 236,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 54,
+          "details": {
+            "rejections": [
+              [
+                "ColdError",
+                "ColdError"
+              ],
+              [
+                "ColdError",
+                "ColdError"
+              ],
+              [
+                "ColdError",
+                "ColdError"
+              ],
+              [
+                "ColdError",
+                "ColdError"
+              ]
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "noncanonical_raw_forms",
+          "root_checkpoint_calls_after": 262,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 58,
+          "details": {
+            "lone_surrogate": [
+              "UnicodeEncodeError",
+              "UnicodeEncodeError"
+            ],
+            "raw_invalid_UTF8": [
+              "ColdError",
+              "ColdError"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "invalid_UTF8_or_surrogate_data",
+          "root_checkpoint_calls_after": 276,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 64,
+          "details": {
+            "blanket_subclass_rejection": false,
+            "legal_encoder_subclasses_accepted": {
+              "callback_calls": 2,
+              "result": {
+                "body_bytes": 18,
+                "body_sha256": "abe5679dac95f5549f22c82c8490516a33347e4a8a3dcba7ae9f30ce108032bf",
+                "chunks": 11,
+                "literal_bytes_equal": true
+              }
+            },
+            "nonfinite": [
+              "ValueError",
+              "ValueError"
+            ],
+            "unsupported": [
+              "TypeError",
+              "TypeError"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "nonfinite_unsupported_and_legal_subclasses",
+          "root_checkpoint_calls_after": 300,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 70,
+          "details": {
+            "reached": [
+              "_buffered_qualification_original:RuntimeError",
+              "_buffered_qualification_original:ValueError",
+              "_buffered_qualification_original:StopIteration",
+              "_buffered_qualification_candidate:RuntimeError",
+              "_buffered_qualification_candidate:ValueError",
+              "_buffered_qualification_candidate:StopIteration"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "initial_callback_identity_three_classes",
+          "root_checkpoint_calls_after": 320,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 82,
+          "details": {
+            "boundary131072": [
+              "_buffered_qualification_original:RuntimeError",
+              "_buffered_qualification_original:ValueError",
+              "_buffered_qualification_original:StopIteration",
+              "_buffered_qualification_candidate:RuntimeError",
+              "_buffered_qualification_candidate:ValueError",
+              "_buffered_qualification_candidate:StopIteration"
+            ],
+            "boundary65536": [
+              "_buffered_qualification_original:RuntimeError",
+              "_buffered_qualification_original:ValueError",
+              "_buffered_qualification_original:StopIteration",
+              "_buffered_qualification_candidate:RuntimeError",
+              "_buffered_qualification_candidate:ValueError",
+              "_buffered_qualification_candidate:StopIteration"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "part_boundary_callback_identity_three_classes",
+          "root_checkpoint_calls_after": 376,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 94,
+          "details": {
+            "boundary131072": [
+              "_buffered_qualification_original:RuntimeError",
+              "_buffered_qualification_original:ValueError",
+              "_buffered_qualification_original:StopIteration",
+              "_buffered_qualification_candidate:RuntimeError",
+              "_buffered_qualification_candidate:ValueError",
+              "_buffered_qualification_candidate:StopIteration"
+            ],
+            "boundary65536": [
+              "_buffered_qualification_original:RuntimeError",
+              "_buffered_qualification_original:ValueError",
+              "_buffered_qualification_original:StopIteration",
+              "_buffered_qualification_candidate:RuntimeError",
+              "_buffered_qualification_candidate:ValueError",
+              "_buffered_qualification_candidate:StopIteration"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "final_callback_identity_three_classes",
+          "root_checkpoint_calls_after": 444,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 96,
+          "details": {
+            "planned_checkpoint": 2,
+            "planned_foreign_sentinel_reached": false,
+            "rejections": [
+              "ColdError",
+              "ColdError"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "mismatch_flushed_before_boundary_callback",
+          "root_checkpoint_calls_after": 452,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 100,
+          "details": {
+            "final_callback_reached_on_equal_counterpart": true,
+            "rejections": [
+              "ColdError",
+              "ColdError"
+            ]
+          },
+          "mathematical_authority": false,
+          "name": "EOF_flush_before_final_callback",
+          "root_checkpoint_calls_after": 470,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 102,
+          "details": {
+            "all_negative_error_precedence_equal": false,
+            "error_types": [
+              "ColdError",
+              "TypeError"
+            ],
+            "only_rejection_required": true
+          },
+          "mathematical_authority": false,
+          "name": "pending_mismatch_vs_later_encoder_error",
+          "root_checkpoint_calls_after": 478,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 104,
+          "details": {
+            "callable_custody_is_worker_gate": true,
+            "no_code_default_or_module_mutations": true,
+            "ordinary_input_unchanged": true
+          },
+          "mathematical_authority": false,
+          "name": "input_and_callable_custody",
+          "root_checkpoint_calls_after": 490,
+          "status": "passed"
+        },
+        {
+          "comparator_calls_after": 108,
+          "details": {
+            "complete_inputs": [
+              {
+                "id": "fixed",
+                "input": {
+                  "bytes": 36913962,
+                  "path": "/private/tmp/gcts-finalization-integration-ROOT-20261019/actual-fixed-v1/result.json",
+                  "sha256": "c90b882b15bda78bcb062fe96124c2db7c22318829515e8b8608ce4f3ed90117"
+                },
+                "reader_version": "literal-result-json-immutable-interning-v2",
+                "representation_only": true,
+                "result": {
+                  "callback_calls": 268,
+                  "result": {
+                    "body_bytes": 36913961,
+                    "body_sha256": "e6f0bb58146c74f70ac3a6d910a1a30c4287cc7d34a5c17c8a88590d779c4e61",
+                    "chunks": 17473126,
+                    "literal_bytes_equal": true
+                  }
+                }
+              },
+              {
+                "id": "symbolic",
+                "input": {
+                  "bytes": 34001484,
+                  "path": "/private/tmp/gcts-finalization-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+                  "sha256": "fe6c51574591aad2105b83fb18fbca6bdfce4f231f4dbabcae968ac0b87d514e"
+                },
+                "reader_version": "literal-result-json-immutable-interning-v2",
+                "representation_only": true,
+                "result": {
+                  "callback_calls": 244,
+                  "result": {
+                    "body_bytes": 34001483,
+                    "body_sha256": "29df18f3547213339c582424ba156bf09f9d7dedc12bd9579eb8208d36168b28",
+                    "chunks": 15901556,
+                    "literal_bytes_equal": true
+                  }
+                }
+              }
+            ],
+            "proof_replays": 0,
+            "sequential": true
+          },
+          "mathematical_authority": false,
+          "name": "whole_retained_preimage_equivalence",
+          "root_checkpoint_calls_after": 1832,
+          "status": "passed"
+        }
+      ],
+      "expected_fixture_names": [
+        "canonical_scalars_and_empty_containers",
+        "typed_zero_and_missing",
+        "Unicode_key_order_and_UTF8_split",
+        "tuple_reader_array_projection",
+        "long_part_and_buffer_edges",
+        "many_small_parts_checkpoint_census",
+        "mismatch_first_middle_last",
+        "short_truncated_and_extra_data",
+        "single_optional_helper_LF",
+        "noncanonical_raw_forms",
+        "invalid_UTF8_or_surrogate_data",
+        "nonfinite_unsupported_and_legal_subclasses",
+        "initial_callback_identity_three_classes",
+        "part_boundary_callback_identity_three_classes",
+        "final_callback_identity_three_classes",
+        "mismatch_flushed_before_boundary_callback",
+        "EOF_flush_before_final_callback",
+        "pending_mismatch_vs_later_encoder_error",
+        "input_and_callable_custody",
+        "whole_retained_preimage_equivalence"
+      ],
+      "full_pipeline_qualified": false,
+      "mathematical_authority": false,
+      "negative_error_precedence_equivalent": false,
+      "no_claim": "Finite representation/callback checks only, no full cold/proof/Model/Native/inverse/search call or performance/fit claim.",
+      "real_checkpoint_faults_never_expected_negatives": true,
+      "resource_authority": false,
+      "root_checkpoint_calls_at_result_snapshot": 1833,
+      "root_checkpoint_count_scope": "Successful supplied callback returns only; row counters follow its after_checkpoint, result snapshot precedes result_final_checkpoint.",
+      "schema": "buffered-canonical-comparator-qualification-v1",
+      "status": "FINITE_COMPARATOR_QUALIFICATION_CANDIDATE"
+    },
+    "retained_prefixes_detached": true,
+    "runtime_closure": {
+      "bytes": 34140,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/runtime-closure-v2.json",
+      "sha256": "7c085d088e5c6af39d02676a80f9f4d09acb4e55849f88d3ebefde30b3f25e0d"
+    },
+    "schema": "buffered-canonical-qualification-result-v1",
+    "scientific_acceptance": false,
+    "search_calls": 0,
+    "version": "buffered-canonical-extracted-qualification-worker-v2"
+  },
+  "root_finite_scope_adoption": {
+    "GCTS_RL_advantage": false,
+    "admitted_scope": "Exactly current finite comparator qualification, normal20groups plus two reached interruption controls in one consumed worker. Complete raw old preimages are representation-only inputs. All disclosed clocks/resource/custody/loader limits remain.",
+    "author_identity": "/root",
+    "finite_comparator_qualified": true,
+    "goal_complete": false,
+    "mathematical_proof_accepted": false,
+    "new_theorems_discovered_by_search": 0,
+    "observer_ROOT_resource_accepted_literal": false,
+    "observer_field_note": "Literal false retained unmodified; Root adopts narrow finite helper result based on candidate/terminal and independent saved review, not that default field.",
+    "previous_full_fixed_failure_rescued": false,
+    "production_full_cold_qualified": false,
+    "review": {
+      "bytes": 12196,
+      "path": "/private/tmp/gcts-buffered-canonical-peer-20261019/typed-saved-qualification-review-v1.json",
+      "sha256": "184ffb50a968dc325c9a8dd1e9840164a30b57baa9d4121af616cf848c3e1013"
+    },
+    "schema": "ROOT-finite-comparator-adoption-v1"
+  },
+  "root_review": {
+    "actual_execution_authorized": false,
+    "author_identity": "/root",
+    "check_count": 74,
+    "checks": [
+      {
+        "name": "18 fields and unlaunchable sentinel",
+        "passed": true
+      },
+      {
+        "name": "frozen seventeen field subject",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/candidate_comparator_v1.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-library-20261019/owned_evidence_cold_v7.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-finalization-instrumentation-library-20261019/owned_evidence_cold_v6.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-ROOT-20261019/qualification-declaration-v2.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/extraction-manifest-v1.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/qualify_comparators_v2.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-finalization-integration-ROOT-20261019/actual-fixed-v1/result.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-finalization-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-ROOT-20261019/observe_comparator_qualification_once_v2.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/original_comparator_v1.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-ROOT-20261019/run_comparator_qualification_once_v2.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-ROOT-20261019/runtime-closure-v2.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/qualify_comparators_worker_v2.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/finalize_prospective_metadata_v2.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-cadence-integration-ROOT-20261019/basic-tiling-algorithm-HEAD.md",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-finalization-integration-ROOT-20261019/runtime-closure-v1.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/runtime-closure-proposal-v1.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/__future__.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/ast.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/collections/__init__.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/copy.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/dataclasses.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/fractions.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/hashlib.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/_abc.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/util.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/scanner.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/os.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/random.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/selectors.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/signal.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/struct.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/types.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/API-v2.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/Source-contract-v2.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/handoff-v1.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/prospective-metadata-handoff-v1.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/author-static-audit-v2.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-ROOT-20261019/prospective-metadata-manifest-v2.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-false-v2.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/author_successor_v2.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/prospective-metadata-builder-Source-contract-v2.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/freeze_successor_packet_v2.py",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-qualification-library-20261019/prospective-metadata-handoff-v2.json",
+        "passed": true
+      },
+      {
+        "name": "whole raw descriptor /private/tmp/gcts-buffered-canonical-ROOT-20261019/outer-Source-contract-v2.json",
+        "passed": true
+      },
+      {
+        "name": "seven exact executed sources",
+        "passed": true
+      },
+      {
+        "name": "four fixed library aliases",
+        "passed": true
+      },
+      {
+        "name": "all ordinary inputs and limits identical",
+        "passed": true
+      },
+      {
+        "name": "both whole retained preimages",
+        "passed": true
+      },
+      {
+        "name": "exact three calls and controls",
+        "passed": true
+      },
+      {
+        "name": "prospective only",
+        "passed": true
+      },
+      {
+        "name": "AST census worker",
+        "passed": true
+      },
+      {
+        "name": "AST census harness",
+        "passed": true
+      },
+      {
+        "name": "AST census original",
+        "passed": true
+      },
+      {
+        "name": "AST census candidate",
+        "passed": true
+      },
+      {
+        "name": "AST census reader",
+        "passed": true
+      },
+      {
+        "name": "AST census runner",
+        "passed": true
+      },
+      {
+        "name": "AST census observer",
+        "passed": true
+      },
+      {
+        "name": "fresh actual and observers",
+        "passed": true
+      },
+      {
+        "name": "real Root guard precedes planned fault",
+        "passed": true
+      },
+      {
+        "name": "real fault separately rethrown",
+        "passed": true
+      },
+      {
+        "name": "no second input parse",
+        "passed": true
+      },
+      {
+        "name": "successful callback increment after return",
+        "passed": true
+      },
+      {
+        "name": "prefixes detached",
+        "passed": true
+      }
+    ],
+    "component_calls": 0,
+    "hilbert_review": {
+      "bytes": 5335,
+      "path": "/private/tmp/gcts-hilbert-context-peer-20261019/typed-literal-context-scope-review-v1.json",
+      "sha256": "979d7c77ab43a01ffdb8dd0dd7437417a01a472f699a6abe0adef516201d34a0"
+    },
+    "schema": "ROOT-buffered-canonical-V2-raw-AST-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "Raw pins, AST census and independently read K+3/K+6 coupling. No Source evaluation or benchmark. Post-load identity guard and trusted Source loader only, not an OS seal. Conditional Wang prose and literal Hilbert correction adopted only in their reviewed mathematical/provenance scopes; neither supplies implementation nor theorem-search success.",
+    "source_only": true,
+    "subject_sha256": "06bc3bc209a0965d43ea85d64fa8bdaf6da128a22c2635813efcd2508e6a34c3",
+    "wang_review": {
+      "bytes": 11071,
+      "path": "/private/tmp/gcts-universal-wang-peer-20261019/typed-mathematical-scope-review-v1.json",
+      "sha256": "50fb3a37eba3157bd9c73ce1484c8a3ef1d2ee89d0a29087d784a0174134866f"
+    }
+  },
+  "runner": {
+    "Model_permission": false,
+    "Native_calls": 0,
+    "authorization": {
+      "bytes": 2284,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/authorization-v2.json",
+      "sha256": "f7421fd54fa6c5757935fae712e1ef23c48f96c1392148c18538e59c59ca8755"
+    },
+    "began_ns": 774288247008333,
+    "closed_ns": 774317492063416,
+    "command": [
+      "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "-I",
+      "-S",
+      "-B",
+      "/private/tmp/gcts-buffered-canonical-qualification-library-20261019/qualify_comparators_worker_v2.py",
+      "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2.json"
+    ],
+    "comparator_candidate": true,
+    "conservative_physical_bytes": 9455191,
+    "consumed_marker": {
+      "bytes": 549,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/CONSUMED.json",
+      "sha256": "53594175f274e20426b5a2ecb31e4be2e6e70ba230662f5ec70783d01544e18c"
+    },
+    "errors": [],
+    "invocation_id": "buffered-canonical-qualification-ROOT-20261019-v2",
+    "limits": {
+      "expanded_bytes": 134217728,
+      "memory_bytes": 1073741824,
+      "overall_seconds": 210,
+      "result_bytes": 134217728,
+      "stderr_bytes": 4194304,
+      "stdout_bytes": 4194304,
+      "work_seconds": 180
+    },
+    "logical_result_bytes": 16594,
+    "mathematical_proof_accepted": false,
+    "overall_deadline_ns": 774498247008333,
+    "owned_group_absent": true,
+    "owned_pgid": 99071,
+    "physical_before_runner_receipt": 18007,
+    "plan": {
+      "bytes": 4268,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2.json",
+      "sha256": "6cbcbc7963407aed218935b339b36c66114b28fe00bae4bc0a80b70226f1ed6e"
+    },
+    "regular_logs_closed": true,
+    "resource_candidate_accepted": true,
+    "result": {
+      "bytes": 16594,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/result.json",
+      "sha256": "9eb8571cf8729489f840eb2fa70407e8e58694ee9a92b78b637d1719f7bf620f"
+    },
+    "schema": "buffered-canonical-qualification-once-receipt-v1",
+    "scientific_acceptance": false,
+    "signals": [],
+    "stderr": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 0,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "subject_sha256": "06bc3bc209a0965d43ea85d64fa8bdaf6da128a22c2635813efcd2508e6a34c3",
+    "version": "buffered-canonical-qualification-once-runner-v2",
+    "work_deadline_ns": 774468247008333,
+    "worker_exit_code": 0,
+    "worker_launch_attempts": 1,
+    "worker_peak_bytes": 166363136,
+    "worker_pid": 99071,
+    "worker_reaped": true,
+    "worker_receipt": {
+      "bytes": 864,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/worker-receipt.json",
+      "sha256": "f76ae510806c9f68caaca96212262abf0f021fd006fbed66fcd1f631c67a1b27"
+    },
+    "worker_terminal_observed_ns": 774317387195916,
+    "worker_wait4_status": 0,
+    "worker_wait4_usage": {
+      "ru_majflt": 0,
+      "ru_maxrss": 166363136,
+      "ru_minflt": 80419,
+      "ru_stime": 0.542821,
+      "ru_utime": 27.365523
+    }
+  },
+  "schema": "buffered-canonical-parallel-progress-summary-v1",
+  "scope": "Three helper calls in one consumed worker: twenty finite groups and both ordinary full preimages once; two planned supplied-checkpoint failures inside expected-mismatch tests, with unfinished six-group prefixes. No proof/search/Native/Model/inverse/opaque decode.",
+  "status": "FINITE_COMPARATOR_QUALIFICATION",
+  "terminal": {
+    "ROOT_resource_accepted": false,
+    "command": [
+      "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "-I",
+      "-S",
+      "-B",
+      "/private/tmp/gcts-buffered-canonical-ROOT-20261019/run_comparator_qualification_once_v2.py",
+      "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2.json"
+    ],
+    "mathematical_proof_accepted": false,
+    "observed_instrument_elapsed_seconds": 29.335917792,
+    "observer_started_ns": 774288190118666,
+    "plan": {
+      "bytes": 4268,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/plan-authorized-v2.json",
+      "sha256": "6cbcbc7963407aed218935b339b36c66114b28fe00bae4bc0a80b70226f1ed6e"
+    },
+    "runner_clock_elapsed_seconds": 29.279028125,
+    "runner_exit_code": 0,
+    "runner_pid": 99070,
+    "runner_receipt": {
+      "bytes": 2929,
+      "path": "/private/tmp/gcts-buffered-canonical-ROOT-20261019/actual-qualification-v2/runner-receipt.json",
+      "sha256": "c91480a384097af4dcfe08443a609ae128afd782dadb3771ba98f0e74c88905c"
+    },
+    "schema": "buffered-canonical-qualification-final-terminal-observation-v1",
+    "scientific_acceptance": false,
+    "scope": "Standalone finite extracted-comparator final outer terminal/group/regular-log gate. Source-entry epoch excludes observer/Python prelude. No Native or proof search; all scientific acceptance remains false.",
+    "terminal_gate_passed": true,
+    "terminal_observed_ns": 774317526036458,
+    "version": "buffered-canonical-qualification-final-terminal-observer-v2"
+  },
+  "trained_RL": false
+}
