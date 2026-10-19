@@ -1,0 +1,40 @@
+{
+  "accepted_proofs": 0,
+  "admitted_results": 0,
+  "current_publish_base_commit": "a2310f747a4c27c42d313e82967a2cb90d7a887f",
+  "detached_review": "cluster-composer-review.json",
+  "detached_review_scope": "The separately published peer review authenticates this manifest and is outside it to avoid a self-reference. Root live whole-body verification records its hash separately.",
+  "files": [
+    {
+      "bytes": 13733,
+      "path": "cluster-composer.html",
+      "sha256": "b80f706e4505b96ba2057bbe4f1b686f367146b8d2cfd16979adac97f63f92bb"
+    },
+    {
+      "bytes": 20403,
+      "path": "cluster-composer-summary.json",
+      "sha256": "b2aace3327a4e66870f2bdf10fc753bef89f0cf096d91dc57ef13f209f98393c"
+    },
+    {
+      "bytes": 95609,
+      "path": "reader.html",
+      "sha256": "6d7c874c7f5ae55f38450f469f54da822192e1a86cdcac5728b7e4615f892615"
+    },
+    {
+      "bytes": 43253,
+      "path": "buffered-canonical.html",
+      "sha256": "09453276e1f27c627794065cef8b380de983bfe3046ea4c2bce1258616e1b282"
+    },
+    {
+      "bytes": 790475,
+      "path": "cluster-composer-evidence.tar.gz",
+      "sha256": "ce5325e77dd893b85532cd10d8fc143720e935cf856493de61d85ef0e3305afa"
+    }
+  ],
+  "goal_complete": false,
+  "packet_members": 253,
+  "primary_reader_accessed": false,
+  "protected_overview_modified": false,
+  "schema": "cluster-composer-publication-manifest-v1",
+  "source_or_pipeline_qualification_from_publication": false
+}

@@ -1,0 +1,465 @@
+{
+  "accepted_proofs": 0,
+  "admitted_results": 0,
+  "closure": {
+    "accepted_proofs": 0,
+    "admitted_results": 0,
+    "all_four_scientific_worker_launches_closed": true,
+    "all_native_processes_reaped": true,
+    "all_owned_exec_handles_closed": true,
+    "author_identity": "/root",
+    "classification": "NEGATIVE_EXPERIMENT_PROGRESS",
+    "failed_prefixes_never_rescued": true,
+    "goal_status": "active",
+    "launch_record_defect": {
+      "bytes": 1198,
+      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/ROOT-launch-record-defect-v3.json",
+      "sha256": "3022a12436f8d643bfb60bfa849cdb7f7449e8a4a7ea0bbe1c8dad651f1ab430"
+    },
+    "peer_tools_remained_idle": true,
+    "prior_setup_failure": {
+      "bytes": 3684,
+      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/ROOT-cohort-V2-setup-failure-closure-v1.json",
+      "sha256": "e05306e9cc7c7ba81704a0618d7969fc454876762762192630a969318e2487ac"
+    },
+    "release": "All timed actuals closed. Peers may resume raw/ordinaryJSON/Source analysis only; no Source/helper/Native/engine/Model/Reader/inverse/search execution, replay or failed-prefix recovery authorized.",
+    "rows": [
+      {
+        "admitted_search_result": false,
+        "all_owned_processes_reaped_and_group_absent": true,
+        "assembly_completed": false,
+        "assembly_open_seconds": 89.32236387499142,
+        "complete_result_exists": false,
+        "conservative_separate_sum_bytes": 1723121664,
+        "consumed_marker": {
+          "bytes": 705,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-and-support/CONSUMED.json",
+          "sha256": "a1e3fceb7020ff11eb3d20854e49d325c09aca3977517ffec64945a091f2b464"
+        },
+        "logical_proof_accepted": false,
+        "logs": {
+          "stderr": {
+            "bytes": 4694,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-and-support/stderr.bin",
+            "sha256": "556597088833007b5dd573a1a4606190a3f50f18272961c0602d7e2dc79c1405"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-and-support/stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "memory_cap_exceeded": true,
+        "mode": "fixed",
+        "native_exit_code": 0,
+        "native_highwater_bytes": 13090816,
+        "native_queries": 24,
+        "observations_scope": "Saved negative diagnostic records only; no positive proof/search/resource authority. Open assembly is a lower bound; nested guard intervals overlap and are not disjoint phase costs. Memory is Darwin separate-process highwater sum, not live group RSS.",
+        "observer_exit_code": 2,
+        "observer_logs": {
+          "stderr": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-fixed-and-support-ROOT-20261019-cohort-v3-terminal-observation/stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 281,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-fixed-and-support-ROOT-20261019-cohort-v3-terminal-observation/stdout.bin",
+            "sha256": "d0d78e43f3a5b5c97dd14ab8b3288c3d94b2c0c8360e61a424a5de13021265e7"
+          }
+        },
+        "outcome": "FULL_PROFILE_FAILURE_DEADLINE_AND_MEMORY",
+        "owned_exec_exit_code": 2,
+        "owned_exec_handle": 61804,
+        "resource_admitted": false,
+        "runner_exit_code": 2,
+        "runner_receipt": {
+          "bytes": 12172,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-and-support/runner-receipt.json",
+          "sha256": "ef2b45aad0c5b29683309a1471bc81a3edc246ea2d48ec2f1e39fc6f7fc469b6"
+        },
+        "runner_terminal_seconds": 181.134350459,
+        "search_ordering": "and_support",
+        "source_guard_calls": 6727,
+        "source_guard_nested_seconds": 40.385072791,
+        "terminal": {
+          "bytes": 1704,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-fixed-and-support-ROOT-20261019-cohort-v3-terminal-observation/terminal.json",
+          "sha256": "85a2da7d84747255c1bbcc7a580038a407b9d2c3df4a3e568ce0f7334605abd2"
+        },
+        "worker_exit_code": 1,
+        "worker_failure": {
+          "bytes": 28358,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-and-support/worker-failure.json",
+          "sha256": "e81eeee60b92cdf9c1108df1c4ca6d7f0b716d2fc38037cb9aa01f48620f5379"
+        },
+        "worker_highwater_bytes": 1710030848
+      },
+      {
+        "admitted_search_result": false,
+        "all_owned_processes_reaped_and_group_absent": true,
+        "assembly_completed": false,
+        "assembly_open_seconds": 112.41651050001383,
+        "complete_result_exists": false,
+        "conservative_separate_sum_bytes": 1954643968,
+        "consumed_marker": {
+          "bytes": 714,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-and-support/CONSUMED.json",
+          "sha256": "0d4e44553baa3279b7e9fcb0b4fc18998272c1d69af158a31ba86490267169cf"
+        },
+        "logical_proof_accepted": false,
+        "logs": {
+          "stderr": {
+            "bytes": 4650,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-and-support/stderr.bin",
+            "sha256": "1051b7bcab7aee60019565e18f3e9b7dceabfdb42dfe5e5fc3d6f201c54686b5"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-and-support/stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "memory_cap_exceeded": true,
+        "mode": "symbolic",
+        "native_exit_code": 0,
+        "native_highwater_bytes": 13074432,
+        "native_queries": 24,
+        "observations_scope": "Saved negative diagnostic records only; no positive proof/search/resource authority. Open assembly is a lower bound; nested guard intervals overlap and are not disjoint phase costs. Memory is Darwin separate-process highwater sum, not live group RSS.",
+        "observer_exit_code": 2,
+        "observer_logs": {
+          "stderr": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-symbolic-and-support-ROOT-20261019-cohort-v3-terminal-observation/stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 284,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-symbolic-and-support-ROOT-20261019-cohort-v3-terminal-observation/stdout.bin",
+            "sha256": "9043a06a342792edf2b28f5559b8fb1981c263b88626fba3be267dcb1ba55b54"
+          }
+        },
+        "outcome": "FULL_PROFILE_FAILURE_DEADLINE_AND_MEMORY",
+        "owned_exec_exit_code": 2,
+        "owned_exec_handle": 49106,
+        "resource_admitted": false,
+        "runner_exit_code": 2,
+        "runner_receipt": {
+          "bytes": 12196,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-and-support/runner-receipt.json",
+          "sha256": "10c4217d95ac04829ffdd095114c19a083af0a3e85eeb3a2fac845d61cdc113b"
+        },
+        "runner_terminal_seconds": 181.194107209,
+        "search_ordering": "and_support",
+        "source_guard_calls": 6727,
+        "source_guard_nested_seconds": 40.266926156,
+        "terminal": {
+          "bytes": 1714,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-symbolic-and-support-ROOT-20261019-cohort-v3-terminal-observation/terminal.json",
+          "sha256": "a95aaf90ecb238ac7b530260ce1fb02330ec095a4414454323137522f71de461"
+        },
+        "worker_exit_code": 1,
+        "worker_failure": {
+          "bytes": 28386,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-and-support/worker-failure.json",
+          "sha256": "d08910c232cda7eb9630e10145c0f9d52abd88e851da7f2e1f8a40ee3154da9a"
+        },
+        "worker_highwater_bytes": 1941569536
+      },
+      {
+        "admitted_search_result": false,
+        "all_owned_processes_reaped_and_group_absent": true,
+        "assembly_completed": false,
+        "assembly_open_seconds": 91.53895662492141,
+        "complete_result_exists": false,
+        "conservative_separate_sum_bytes": 1703460864,
+        "consumed_marker": {
+          "bytes": 720,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-composed-support/CONSUMED.json",
+          "sha256": "2c4e3263c39b52ed522e7ed095c590e3e65ff9eba4f8144bc8211dc15d69cbb9"
+        },
+        "logical_proof_accepted": false,
+        "logs": {
+          "stderr": {
+            "bytes": 4678,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-composed-support/stderr.bin",
+            "sha256": "019e70e4acd9d26a70d29f43fcb87970827b396fe6cf494d010754c04bf5bfba"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-composed-support/stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "memory_cap_exceeded": true,
+        "mode": "fixed",
+        "native_exit_code": 0,
+        "native_highwater_bytes": 13107200,
+        "native_queries": 24,
+        "observations_scope": "Saved negative diagnostic records only; no positive proof/search/resource authority. Open assembly is a lower bound; nested guard intervals overlap and are not disjoint phase costs. Memory is Darwin separate-process highwater sum, not live group RSS.",
+        "observer_exit_code": 2,
+        "observer_logs": {
+          "stderr": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-fixed-composed-support-ROOT-20261019-cohort-v3-terminal-observation/stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 286,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-fixed-composed-support-ROOT-20261019-cohort-v3-terminal-observation/stdout.bin",
+            "sha256": "5c6fe94b6d6c27a5039b4fb93dd372bedb17384df749d8f3ae350623cc44dda8"
+          }
+        },
+        "outcome": "FULL_PROFILE_FAILURE_DEADLINE_AND_MEMORY",
+        "owned_exec_exit_code": 2,
+        "owned_exec_handle": 63507,
+        "resource_admitted": false,
+        "runner_exit_code": 2,
+        "runner_receipt": {
+          "bytes": 12212,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-composed-support/runner-receipt.json",
+          "sha256": "b88f537f249d4058fd7a203b5d2412af556c3cad9723981cb530a1ab10046ce1"
+        },
+        "runner_terminal_seconds": 181.249365458,
+        "search_ordering": "composed_support",
+        "source_guard_calls": 6718,
+        "source_guard_nested_seconds": 39.364979936,
+        "terminal": {
+          "bytes": 1720,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-fixed-composed-support-ROOT-20261019-cohort-v3-terminal-observation/terminal.json",
+          "sha256": "8449d0c3e84904ba5653f3fd5275e3011dd00ebd2ff9980b5891dcc70cda66cd"
+        },
+        "worker_exit_code": 1,
+        "worker_failure": {
+          "bytes": 28367,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-fixed-composed-support/worker-failure.json",
+          "sha256": "f69813e59aeeee3ed6c629f3741959e4a04b00be5356d8260f2794ea2a4e4be6"
+        },
+        "worker_highwater_bytes": 1690353664
+      },
+      {
+        "admitted_search_result": false,
+        "all_owned_processes_reaped_and_group_absent": true,
+        "assembly_completed": false,
+        "assembly_open_seconds": 112.79241220792755,
+        "complete_result_exists": false,
+        "conservative_separate_sum_bytes": 1778270208,
+        "consumed_marker": {
+          "bytes": 729,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-composed-support/CONSUMED.json",
+          "sha256": "a97fa900499ffdf53500f3b19122ed3d17f3d8805df1254a93a4be49ac76cd4b"
+        },
+        "logical_proof_accepted": false,
+        "logs": {
+          "stderr": {
+            "bytes": 4517,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-composed-support/stderr.bin",
+            "sha256": "beef83129fa9c8aaf01486f784cd3b358d42988951baee9e96aa94d556eb0419"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-composed-support/stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "memory_cap_exceeded": true,
+        "mode": "symbolic",
+        "native_exit_code": 0,
+        "native_highwater_bytes": 13107200,
+        "native_queries": 24,
+        "observations_scope": "Saved negative diagnostic records only; no positive proof/search/resource authority. Open assembly is a lower bound; nested guard intervals overlap and are not disjoint phase costs. Memory is Darwin separate-process highwater sum, not live group RSS.",
+        "observer_exit_code": 2,
+        "observer_logs": {
+          "stderr": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-symbolic-composed-support-ROOT-20261019-cohort-v3-terminal-observation/stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 289,
+            "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-symbolic-composed-support-ROOT-20261019-cohort-v3-terminal-observation/stdout.bin",
+            "sha256": "29e3e30d4b7477fc5697c0dce34e0da63ac13d8c404052c2d54bd7f9ced381cb"
+          }
+        },
+        "outcome": "FULL_PROFILE_FAILURE_DEADLINE_AND_MEMORY",
+        "owned_exec_exit_code": 2,
+        "owned_exec_handle": 19635,
+        "resource_admitted": false,
+        "runner_exit_code": 2,
+        "runner_receipt": {
+          "bytes": 12236,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-composed-support/runner-receipt.json",
+          "sha256": "7dbab3144328bc51ed65a209bf2c73de0b80c4f0471ae2aa32e2aac472a93c8f"
+        },
+        "runner_terminal_seconds": 181.230791667,
+        "search_ordering": "composed_support",
+        "source_guard_calls": 6733,
+        "source_guard_nested_seconds": 39.384018026,
+        "terminal": {
+          "bytes": 1728,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/plans-v3/once-plans/quantified-composer-006-symbolic-composed-support-ROOT-20261019-cohort-v3-terminal-observation/terminal.json",
+          "sha256": "7d9907a2dc3c2bf0bfcb201fc811b6f308659a36b67914125aeded5a8207cc41"
+        },
+        "worker_exit_code": 1,
+        "worker_failure": {
+          "bytes": 28378,
+          "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/actual-cohort-v3-symbolic-composed-support/worker-failure.json",
+          "sha256": "6d4769bb2527df4fc81a897fb17ece97211168055b9ac269848abf39680bc3d8"
+        },
+        "worker_highwater_bytes": 1765163008
+      }
+    ],
+    "schema": "ROOT-composer-cohort-V3-closure-v1",
+    "scientific_comparison_status": "UNAVAILABLE: all four fail complete production profile. Do not rank methods by failed-prefix search/proposal observations.",
+    "search_or_composer_advantage_established": false,
+    "source_input_policy_profile_caps_unchanged_across_arms": true
+  },
+  "composer_status": "UNAVAILABLE: no complete accepted result; do not reconstruct failed prefixes.",
+  "date": "2026-10-19",
+  "evidence_packet_scope": "Passive Source/input/plan/receipt/log archive. Native/interpreter/Z3 runtime artifacts are pinned, not redistributed; not a portable replay environment.",
+  "goal_complete": false,
+  "input": {
+    "id": "prospective-fol-20261018-006",
+    "instantiation_rounds": 2,
+    "length": 12,
+    "scope": "Authored prospective synthetic first-order assertion; closed axioms and closed target, no open root assumptions or schemas. Input only, no proof/route/instance hints; twelve rows and two frozen catalog rounds. All runtime outcomes unmeasured.",
+    "target": [
+      "all",
+      "x",
+      [
+        "pred",
+        "S",
+        [
+          [
+            "var",
+            "x"
+          ]
+        ]
+      ]
+    ],
+    "theory": {
+      "axioms": {
+        "a0": [
+          "all",
+          "x",
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "a1": [
+          "all",
+          "x",
+          [
+            "imp",
+            [
+              "pred",
+              "P",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "pred",
+              "R",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ]
+          ]
+        ],
+        "a2": [
+          "all",
+          "x",
+          [
+            "imp",
+            [
+              "pred",
+              "Q",
+              [
+                [
+                  "var",
+                  "x"
+                ]
+              ]
+            ],
+            [
+              "imp",
+              [
+                "pred",
+                "R",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ],
+              [
+                "pred",
+                "S",
+                [
+                  [
+                    "var",
+                    "x"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        "a3": [
+          "all",
+          "x",
+          [
+            "pred",
+            "P",
+            [
+              [
+                "var",
+                "x"
+              ]
+            ]
+          ]
+        ]
+      },
+      "functions": {},
+      "predicates": {
+        "P": 1,
+        "Q": 1,
+        "R": 1,
+        "S": 1
+      },
+      "schemas": []
+    },
+    "title": "Prospective first-order assertion 06"
+  },
+  "input_scope_provenance": "The input.scope literal belongs to the initially authored frozen capsule. Its unmeasured wording is historical; the original006 is now exposed development data with prior UNKNOWNs and four current full-profile failures. It is retained unchanged for input identity, not current status.",
+  "schema": "cluster-composer-public-negative-summary-v1",
+  "scientific_comparison": "UNAVAILABLE: complete production profile failed in all four arms."
+}
