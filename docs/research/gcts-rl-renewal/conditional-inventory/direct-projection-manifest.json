@@ -1,0 +1,86 @@
+{
+  "GCTS_or_RL_advantage_established": false,
+  "access_scope": "Task-owned isolated /private/tmp publisher only. Overview index is not edited; no explicit primary reader/.gcts-active content read or edited this turn. Earlier metadata/hydration limitations remain in the prior manifest; no general no-access claim.",
+  "attribution": {
+    "fixtures_and_failure_diagnosis": "/root/benchmark_design",
+    "implementation": "/root/conventional_library",
+    "inherited_reviewer_authorship_overlap_disclosed": true,
+    "integration_execution_publication": "/root",
+    "parallelism_claim": "Parallel research work only; measured actuals serial with peers stopped. No algorithmic proof-search speedup is inferred.",
+    "review": "/root/conventional_control_review",
+    "same_reviewer_for_three_scopes": true
+  },
+  "author_identity": "/root",
+  "base_commit": "5420a8d79ad1c977248ce2b948b9be2f6ea92546",
+  "cleanup_diagnosis": {
+    "bytes": 14910,
+    "path": "/private/tmp/gcts-direct-projection-cleanup-diagnosis-20261019/cleanup-Source-diagnosis-v1.json",
+    "sha256": "6460542861768b44387d96e9051910f849c1d66b0dcbeb618d4754401a594206"
+  },
+  "core_files": [
+    {
+      "bytes": 96551,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "repository_path": "docs/research/gcts-rl-renewal/conditional-inventory/reader.html",
+      "sha256": "dfae6ed48147681cf122ebc5a87e280e9f581dadd92afb085d3af43b13520e3e"
+    },
+    {
+      "bytes": 17451,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/direct-projection.html",
+      "repository_path": "docs/research/gcts-rl-renewal/conditional-inventory/direct-projection.html",
+      "sha256": "6054185a8d8c3045fae9760d94c41606f7d1837a934ba2ef7318fbb4be2fabed"
+    },
+    {
+      "bytes": 66026,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/direct-projection-summary.json",
+      "repository_path": "docs/research/gcts-rl-renewal/conditional-inventory/direct-projection-summary.json",
+      "sha256": "4f11ba7c98b42eeda871e34e64cf98ee6dea76e9e5ebe91a50c4b7a6c474f993"
+    },
+    {
+      "bytes": 7695073,
+      "path": "/private/tmp/gcts-split-controls-publish-20261015/docs/research/gcts-rl-renewal/conditional-inventory/direct-projection-evidence.tar.gz",
+      "repository_path": "docs/research/gcts-rl-renewal/conditional-inventory/direct-projection-evidence.tar.gz",
+      "sha256": "f73fd6e29d21561a7fc138a2827927f8fee80f140291c099d784e571b5364c17"
+    }
+  ],
+  "destination": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/",
+  "detached_review": "direct-projection-review.json",
+  "detached_review_and_manifest_excluded_from_core_to_avoid_recursive_hashing": true,
+  "evidence": {
+    "all_V2_V3_grants_retired": true,
+    "archive_entries": 321,
+    "complete_original_fixture_inputs": 8,
+    "compressed_bytes": 7695073,
+    "includes": [
+      "Current and historical Sources, all false/true plans and grants, scoped reviews, actual receipts/logs/complete generic outputs and explicitly failed partial output, full original eight declared input preimages, reference Source, provenance, Root adoption and future cleanup Source diagnosis."
+    ],
+    "not_portable_replay_environment": true,
+    "raw_secret_pattern_scan_passed": true,
+    "runtime_and_Native_not_redistributed": true,
+    "saved_raw_bytes": 163520823,
+    "saved_raw_entries": 319
+  },
+  "finite_adoption": {
+    "bytes": 1113,
+    "path": "/private/tmp/gcts-direct-projection-ROOT-20261019/ROOT-finite-generic-adoption-v1.json",
+    "sha256": "86c203aa8ce845296240be082ab48d47712eb8522abdefe9611f47591f6b609e"
+  },
+  "full_pipeline_qualified": false,
+  "goal_complete": false,
+  "goal_status": "active",
+  "manifest_self_not_hashed": true,
+  "mathematical_proof_accepted": false,
+  "publication_policy": "Task-only existing public GitHub Pages destination. Historical evidence remains independent. Validate live complete bodies and browser typesetting after deploy; no new audience/destination.",
+  "qualification": {
+    "bytes": 66026,
+    "path": "/private/tmp/gcts-direct-projection-ROOT-20261019/ROOT-qualification-cohort-closure-v1.json",
+    "sha256": "4f11ba7c98b42eeda871e34e64cf98ee6dea76e9e5ebe91a50c4b7a6c474f993"
+  },
+  "report_scope": "V3 generic finite qualification plus negative whole-bank attempt; no whole-bank candidate run or performance rank. Three launched/two generic passes/one deadline+cleanup failure/fiveNOT_RUN. V2 negatives preserved.",
+  "saved_review": {
+    "bytes": 122654,
+    "path": "/private/tmp/gcts-direct-projection-review-20261019/typed-saved-qualification-review-v3.json",
+    "sha256": "a16b90d049b4109699102d61a8295ba6248eb79169ff0f19fe959b065e2b075b"
+  },
+  "schema": "direct-projection-publication-manifest-v1"
+}
