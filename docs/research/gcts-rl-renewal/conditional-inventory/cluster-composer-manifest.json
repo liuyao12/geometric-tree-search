@@ -33,8 +33,10 @@
   ],
   "goal_complete": false,
   "packet_members": 253,
-  "primary_reader_accessed": false,
+  "primary_checkout_metadata_attempt": "At turn start Root invoked git status in the primary checkout, then interrupted it while it was pending. No primary reader content was explicitly read or edited. Incidental metadata access or hydration state is not established; no broader absence claim is made.",
+  "primary_reader_explicit_content_read_or_edit": false,
   "protected_overview_modified": false,
+  "publication_manifest_amendment": "Clarifies a too-broad original access flag only. All five nonself artifact hashes, Source/evidence/metric bytes and protected-overview no-edit claim remain unchanged. The original manifest/review remain historical in commit582a1c01.",
   "schema": "cluster-composer-publication-manifest-v1",
   "source_or_pipeline_qualification_from_publication": false
 }

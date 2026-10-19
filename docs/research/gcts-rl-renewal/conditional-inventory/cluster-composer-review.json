@@ -1,90 +1,83 @@
 {
   "Native_calls": 0,
   "actual_execution_authorized": false,
-  "archive_member_count": 253,
   "audit": {
-    "bytes": 187546,
-    "path": "/private/tmp/gcts-new-quantified-integration-peer-20261019/publication-frozen-v1-raw-audit.json",
-    "sha256": "4ece6f777a646f644267d905600b202097109710ec74276f8334ee33aa9313e9"
+    "bytes": 4649,
+    "path": "/private/tmp/gcts-new-quantified-integration-peer-20261019/publication-manifest-amendment-v2-raw-audit.json",
+    "sha256": "4479cf33c7ae59782ee67a3ab475e774d8e5acbaf901c7650559173ddb2706bc"
   },
   "author_identity": "/root",
-  "check_count": 678,
+  "check_count": 25,
   "codec_calls": 0,
   "component_calls": 0,
   "component_imports": 0,
   "conclusions": [
-    "All six frozen file pins match the exact offered tuple. Manifest authenticates five nonself artifacts; the final peer receipt is deliberately detached to avoid a recursive manifest/archive hash. Root must authenticate the copied detached receipt and all seven live bodies separately after deployment.",
-    "The entire public summary closure is literal-equal to the retained Root closure already independently joined to four actuals. All four rounded terminal/open-assembly/separate-highwater values are correct. Historical input scope remains raw-exact and is now expressly identified as historical, not current outcome. Inventory-interface discussion is conditional, not a retained Model/admission claim.",
-    "Every nonself passive archive member matches both its inner hash/size and full original raw bytes:252 indexed members plus packet-info.json=253. All32 current Sources (including the seven changed Sources), master, full original capsule/case/policy, four current plans/grants/markers/failure/logs/terminals, scoped reviews and superseded failures are retained. Native/interpreter/Z3 runtime artifacts are pinned external trust, not redistributed replay completeness.",
-    "Reader equals the exact publisher base plus one removable new section. Buffered comparator page equals its exact base plus one removable follow-up paragraph. No overview or primary/dataless reader was accessed by this review. Base commit a2310f747a4c27c42d313e82967a2cb90d7a887f is authenticated by reading just the two existing Git blobs.",
-    "Raw HTML consistently reports zero admitted proof/search/resource outcomes, missing complete results, original180positive/knownexit versus later210terminal, lifetime separate highwaters above1GiB, unfinished89–113second assembly and overlapping39–40second guards. No inverse/proof status, search ranking, causal gain, GCTS/RL advantage or failed-prefix recovery is inferred.",
-    "The five displayed formulae are exactly the original case006 closed axioms and requested target. No new proof word/route is rendered. Colored command/guard/input cards are explicitly schematic, not accepted tiles; high-level finite adapter and universal primitive-Wang construction remain distinct. Static allocation and qualification plans are explicitly unimplemented, unqualified and conditional.",
-    "Earlier reviewer stale-scope findings and missed descriptor binding, V2 one setup attempt plus three NOT_RUN arms, current four failures, and Root optional barrier KeyError are retained honestly. Distinct roles do not imply distinct reviewer identities; historical authorship overlap remains disclosed."
+    "Only the original broad primary_reader_accessed field is removed. Three explicit clarification fields disclose Root primary-checkout git-status metadata attempt/interruption, deny only explicit content read/edit and make no absence claim for incidental metadata access/hydration. Every other manifest field is literal unchanged. This wording is properly narrower; no new Source/evidence/metric/outcome claim is created.",
+    "All five report/summary/archive/reader/buffered artifacts are full-byte identical to the independently reviewed tuple; the copied sixth historical peer receipt is also exact before planned detached replacement. Prior678-check253-member archive/source/claim review is reused without replay; no extra archive/Source changes occurred.",
+    "The new detached receipt authenticates this amended manifest outside manifest/archive self-reference. Root must verify seven latest deployed bodies after amendment, including the new detached receipt; this review has not deployed or verified HTTP. The prior commit/manifest/receipt remain historical rather than being silently rewritten."
   ],
-  "current_Source_member_count": 32,
-  "file_pins": {
-    "buffered-canonical.html": {
-      "bytes": 43253,
-      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v1/buffered-canonical.html",
-      "sha256": "09453276e1f27c627794065cef8b380de983bfe3046ea4c2bce1258616e1b282"
-    },
-    "cluster-composer-evidence.tar.gz": {
-      "bytes": 790475,
-      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v1/cluster-composer-evidence.tar.gz",
-      "sha256": "ce5325e77dd893b85532cd10d8fc143720e935cf856493de61d85ef0e3305afa"
-    },
-    "cluster-composer-manifest.json": {
-      "bytes": 1444,
-      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v1/cluster-composer-manifest.json",
-      "sha256": "566d92489c89a3b4fd3795eee7b7aa72dc5e26ab1ea4b3a6137bf891eb50b339"
-    },
-    "cluster-composer-summary.json": {
-      "bytes": 20403,
-      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v1/cluster-composer-summary.json",
-      "sha256": "b2aace3327a4e66870f2bdf10fc753bef89f0cf096d91dc57ef13f209f98393c"
-    },
-    "cluster-composer.html": {
-      "bytes": 13733,
-      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v1/cluster-composer.html",
-      "sha256": "b80f706e4505b96ba2057bbe4f1b686f367146b8d2cfd16979adac97f63f92bb"
-    },
-    "reader.html": {
-      "bytes": 95609,
-      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v1/reader.html",
-      "sha256": "6d7c874c7f5ae55f38450f469f54da822192e1a86cdcac5728b7e4615f892615"
-    }
-  },
   "findings": [],
   "fixture_calls": 0,
   "full_pipeline_qualified": false,
+  "genuine_prior_publication_review": {
+    "bytes": 7031,
+    "path": "/private/tmp/gcts-new-quantified-integration-peer-20261019/typed-publication-saved-review-v1.json",
+    "sha256": "ee2ad4da46bcf922debd1ff5628912be46942ed7b90d0d64f53473dd03917bff"
+  },
   "inverse_calls": 0,
   "limits_and_ancestry": [
-    "This is an independent saved raw-byte/HTML-Source/ordinary-JSON consistency review, not renderer/browser QA, fresh Source certification, mathematical kernel validation, execution grant or deployment. No subject/module/function/fixture, Native, opaque program/gzip, Reader/codec/inverse/Model/search was evaluated or replayed.",
-    "Control authored historical symbolic/AND-helper/outer ancestors and earlier metadata reviews. Current Library composer/consumers and Root integration changes remain separately attributed; raw archive review does not replace their scoped Source receipts or establish a continuous OS/loader seal.",
-    "Saved evidence interpretation keeps all original numeric bounds and no positive authority. No complete current output means no scientific reconstruction from failed prefixes. Root handles browser/MathJax, deployment and whole HTTP verification; those were not independently performed here.",
-    "The narrow draft claim issues are resolved in this frozen tuple. The intermediate draft staging changed during its attempted pin bind, recorded separately; no draft PASS or frozen-byte identity is inferred backward."
+    "Raw ordinary metadata and full bytes only. No subject/component/function/fixture/Native/Reader/inverse/Model/search evaluation, opaque decode, replay, renderer, process-table probe or publication mutation.",
+    "Root reported the primary-checkout metadata attempt and historical commit context. This review evaluates truthful claim scope and saved-byte delta; it cannot establish past incidental OS or hydration activity. The previous peer statement about this reviewer own restricted access remains specific to its own audit.",
+    "All scientific, inherited Source authorship/loader trust and negative-outcome restrictions of the genuine prior review remain. No qualification, proof or resource acceptance follows from publication."
   ],
   "manifest": {
-    "bytes": 1444,
-    "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v1/cluster-composer-manifest.json",
-    "sha256": "566d92489c89a3b4fd3795eee7b7aa72dc5e26ab1ea4b3a6137bf891eb50b339"
+    "bytes": 2041,
+    "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v2/cluster-composer-manifest.json",
+    "sha256": "a114fa1e93a0f09f850fb2a11bb7f81be2379a975cadca9538ba4d464eca0011"
   },
   "mathematical_proof_admitted": false,
   "mismatch_count": 0,
   "opaque_Native_decodes": 0,
+  "prior_manifest": {
+    "bytes": 1444,
+    "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v1/cluster-composer-manifest.json",
+    "sha256": "566d92489c89a3b4fd3795eee7b7aa72dc5e26ab1ea4b3a6137bf891eb50b339"
+  },
   "publication_review_passed": true,
   "render_calls": 0,
   "resource_admitted": false,
   "reviewer_identity": "/root/conventional_control_review",
   "saved_data_only": true,
-  "saved_negative_review": {
-    "bytes": 8187,
-    "path": "/private/tmp/gcts-new-quantified-integration-peer-20261019/typed-saved-actual-review-v3b.json",
-    "sha256": "082143020a289be70e9dd0b96ee4c68e90926b37b68289c106e7a81d5eced8cd"
-  },
   "saved_review_passed": true,
   "schema": "owned-evidence-cluster-composer-publication-saved-review-v1",
   "scientific_acceptance": false,
   "scientific_calls": 0,
-  "tools_stopped_after_handoff": true
+  "tools_stopped_after_handoff": true,
+  "unchanged_file_pins": {
+    "buffered-canonical.html": {
+      "bytes": 43253,
+      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v2/buffered-canonical.html",
+      "sha256": "09453276e1f27c627794065cef8b380de983bfe3046ea4c2bce1258616e1b282"
+    },
+    "cluster-composer-evidence.tar.gz": {
+      "bytes": 790475,
+      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v2/cluster-composer-evidence.tar.gz",
+      "sha256": "ce5325e77dd893b85532cd10d8fc143720e935cf856493de61d85ef0e3305afa"
+    },
+    "cluster-composer-summary.json": {
+      "bytes": 20403,
+      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v2/cluster-composer-summary.json",
+      "sha256": "b2aace3327a4e66870f2bdf10fc753bef89f0cf096d91dc57ef13f209f98393c"
+    },
+    "cluster-composer.html": {
+      "bytes": 13733,
+      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v2/cluster-composer.html",
+      "sha256": "b80f706e4505b96ba2057bbe4f1b686f367146b8d2cfd16979adac97f63f92bb"
+    },
+    "reader.html": {
+      "bytes": 95609,
+      "path": "/private/tmp/gcts-new-quantified-integration-ROOT-20261019/publication-frozen-v2/reader.html",
+      "sha256": "6d7c874c7f5ae55f38450f469f54da822192e1a86cdcac5728b7e4615f892615"
+    }
+  }
 }
