@@ -1,0 +1,86 @@
+{
+  "author_identity": "/root",
+  "evidence_packaging": {
+    "bytes": 558,
+    "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/ROOT-evidence-packaging-observation-v1.json",
+    "sha256": "95fd9d6c50c2c78622be1c54bb01e462cf12793f4190ff6d5fb9ef633b91178e"
+  },
+  "excluded_from_own_hash_inventory": [
+    "cleanup-isolation-manifest.json",
+    "cleanup-isolation-review.json"
+  ],
+  "exclusion_reason": "Avoid self/recursive hashes; detached publication review pins this manifest and every payload; Root live verification separately pins the commit and all8 complete live bodies.",
+  "existing_destination": "https://liuyao12.github.io/geometric-tree-search/docs/research/gcts-rl-renewal/conditional-inventory/",
+  "files": [
+    {
+      "original": {
+        "bytes": 97573,
+        "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/reader.html",
+        "sha256": "5bfec2ce7be685577e24b67ed2c4173809c91629d2ec2aa39c0bf512641ae8f3"
+      },
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/reader.html"
+    },
+    {
+      "original": {
+        "bytes": 22935,
+        "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/cleanup-isolation.html",
+        "sha256": "d9bd9753a41cb35298e2a2b9dd2060ef385504a11c2af7ab482eb689521290b9"
+      },
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/cleanup-isolation.html"
+    },
+    {
+      "original": {
+        "bytes": 96431,
+        "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/cleanup-isolation-summary.json",
+        "sha256": "7a80161530d3c1f59d1e0ca97cc6f41a1bdabc2fc92ac712eabe2ae3a0753115"
+      },
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/cleanup-isolation-summary.json"
+    },
+    {
+      "original": {
+        "bytes": 13410843,
+        "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/cleanup-isolation-evidence.tar.gz",
+        "sha256": "66ee905a2976b6d4d6efbf8f5adb3dcdc5004647514ed9656e3a9b4a1341f30b"
+      },
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/cleanup-isolation-evidence.tar.gz"
+    },
+    {
+      "original": {
+        "bytes": 15077,
+        "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/wang-spacetime-source.html",
+        "sha256": "0df9d9a22fa05e3d586826311b2d77c6b67077e8949fbf4318351e957e0c1726"
+      },
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/wang-spacetime-source.html"
+    },
+    {
+      "original": {
+        "bytes": 11065,
+        "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/wang-spacetime-review.json",
+        "sha256": "958f4f3ff1abd832e1e6c9f146437cce637a1019863d65a2ec673d11fb4197f6"
+      },
+      "relative_path": "docs/research/gcts-rl-renewal/conditional-inventory/wang-spacetime-review.json"
+    }
+  ],
+  "full_pipeline_qualified": false,
+  "mathematical_proof_accepted": false,
+  "new_theorems": 0,
+  "parent_commit": "8917068e306e2cc9cf0b6c2a608c26b4144465d0",
+  "public_math_review": {
+    "bytes": 10161,
+    "path": "/private/tmp/gcts-cleanup-isolation-math-review-20261019/typed-public-math-claim-review-v1.json",
+    "sha256": "3b6cd4addb15f0033495b3bd8bed09c3bf5b7b66f38b6adc65628b9fdf843350"
+  },
+  "repository": "liuyao12/geometric-tree-search",
+  "saved_review": {
+    "bytes": 108970,
+    "path": "/private/tmp/gcts-cleanup-isolation-peer-20261019/typed-saved-qualification-review-v1.json",
+    "sha256": "e6d506b21d916a57c8cfc7204ddfe1da8983b7f20d3b7374b5ae54e3d22bea68"
+  },
+  "schema": "cleanup-isolation-publication-manifest-v1",
+  "scope": "Task-owned newreport/specification/completeevidence only, plus one appended section in isolated existing reader. Prior reader prefix is preserved. No overview index, primary checkout reader or opaque artifact is changed. All execution grants are retired; archive is no replay authorization.",
+  "source": {
+    "branch": "main",
+    "path": "/"
+  },
+  "whole_declared_helper_qualified": false
+}

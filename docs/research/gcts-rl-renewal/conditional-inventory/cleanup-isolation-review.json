@@ -1,0 +1,161 @@
+{
+  "Model_calls": 0,
+  "Native_calls": 0,
+  "Reader_calls": 0,
+  "Root_cohort_closure": {
+    "bytes": 96431,
+    "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/ROOT-cohort-closure-v1.json",
+    "sha256": "7a80161530d3c1f59d1e0ca97cc6f41a1bdabc2fc92ac712eabe2ae3a0753115"
+  },
+  "actual_execution_authorized": false,
+  "archive": {
+    "bytes": 13410843,
+    "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/cleanup-isolation-evidence.tar.gz",
+    "sha256": "66ee905a2976b6d4d6efbf8f5adb3dcdc5004647514ed9656e3a9b4a1341f30b"
+  },
+  "archive_README": {
+    "archive_path": "README.txt",
+    "bytes": 939,
+    "sha256": "82e0c6ef5a05712835d0d500ec6cc447998704b7a42a770a5f80d59d29efc204"
+  },
+  "archive_inventory": {
+    "archive_path": "EVIDENCE-INVENTORY.json",
+    "bytes": 91272,
+    "sha256": "2975a879f4e60d39f906cc5fff206ce8e10fc52aaab92f4641dcee13ca41a314"
+  },
+  "archive_member_count": 244,
+  "archive_original_bytes": 275337188,
+  "archive_original_inventory_count": 242,
+  "archive_transport_decompression_only": true,
+  "audit": {
+    "bytes": 381456,
+    "path": "/private/tmp/gcts-cleanup-isolation-peer-20261019/publication-raw-audit-v2.json",
+    "sha256": "9658666e2acbe0f63e2e2efddce4f61bcff6c7e435398fc3d259a06d5b488d9d"
+  },
+  "browser_calls": 0,
+  "check_count": 1546,
+  "complete_fixture_bytes": 130648177,
+  "complete_fixture_count": 8,
+  "component_calls": 0,
+  "component_imports": 0,
+  "detached_review_policy": {
+    "all_payloads_held_exact_after_review": true,
+    "exact_staging_copy": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/cleanup-isolation-review.json",
+    "manifest_excludes": [
+      "cleanup-isolation-manifest.json",
+      "cleanup-isolation-review.json"
+    ],
+    "self_hash_embedded": false
+  },
+  "detailed_results": [
+    "All six offered payloads and exact manifest pins verified. The publication set contains only the six task payloads plus manifest and this detached review; no overview/index or primary checkout reader content is part of the changed set. The staged reader is exactly the8917068e isolated baseline with one appended section inside main; removing that section reconstructs every original baseline byte.",
+    "The passive tar transport has244 safe regular members:242 explicitly inventoried raw originals plus EVIDENCE-INVENTORY.json and README.txt. Every member whole size/SHA and every inventory original whole preimage matches. No extraction, executable import, compiler or opaque subject decode was performed. All eight complete original inputs total130648177bytes; no sample or failed prefix replaces them.",
+    "Current selected Sources for both arms, exact Root declaration/closure, all eight false/true subject metadata and consumed actual/observer records, complete results/outputs/failures/logs, three Source/prospective scopes, grant delta and v5/v6/inspector-v1 negative records are included. All current actual and observer regular files join exactly to the independent saved audit.",
+    "The main report eight outcome rows reproduce exact saved categories and correctly rounded runner-entry-to-external-terminal and worker-lifetime GiB observations. Its23-case/six-group table agrees literally with both complete generic packets, including the three prospective reference-only API NAs. All nine generic complete output bytes match across arms. The three candidate work rows agree with saved complete or failed-lower-bound totals.",
+    "Four helper-gate positives and four closed resource negatives remain distinct. Complete reference BankA outputs remain memory-negative despite retained worker completion. BankB reference parent deadline and separate worker QualificationFailure400000001 are not merged into an exact failure instant. Candidate work400000002 is an incomplete failure lower bound, with no complete result/forest or recovered qualification.",
+    "Original worker/read/known-exit180, later custody/terminal210, worker1GiB, both128MiB output, invocation400m Arena/adapter and original log/metadata boundaries are stated accurately. Lifetime highwaters are not simultaneous production RAM or isolated allocation measurements. One trial and unmatched generic extras preclude a statistical/causal speedup claim; no whole-workload, production, proof, GCTS/RL or learning advantage is asserted.",
+    "The Wang page is an exact byte copy of the previously reviewed Source-only specification, and its review is the exact frozen Source/mathematical review. The report distinguishes informal conditional finite accepting histories, schematic colored edge roles and future fixed FOL proof-checker/codec/palette artifacts. No generated palette, executed compiler, accepted tiling, unknown proof discovery or full search conformance is claimed.",
+    "New local assets and fragment links are present, including the prior report anchors and appended reader section. The sole intentionally absent detached review target is created as the exact byte copy in this handoff. Both new pages retain pinned MathJax3.2.2, balanced raw LaTeX delimiters and no sup/sub math replacements. Browser/render/live checks belong separately to Root.",
+    "Authors and one-reviewer multi-scope ancestry are disclosed. Earlier registration and cleanup failures remain historical, not rescued. The archive explicitly selects prior records; the older V2 full closure is not silently claimed to be rearchived here and remains in the unchanged preceding report/evidence packet. Saved grants confer no replay authority and current grants are retired from further Root use."
+  ],
+  "findings": [],
+  "fixture_calls": 0,
+  "full_pipeline_qualified": false,
+  "inverse_calls": 0,
+  "limitations": [
+    "Review trusts exact saved execution/Source/interpreter/stdlib/OS/exclusive-owner provenance already bounded in the independent saved review. It does not independently replay helper semantics or mathematically validate any carried proof/Model/Native data.",
+    "C is the same reviewer across current component, outer, plan, grant and saved-data scopes, with inherited author overlap disclosed in those receipts. B independently reviewed current Wang Source/informal math and public claim scope but authored earlier generic Wang prose; this is not new independent kernel certification.",
+    "The archive is a saved-byte evidence packet, not a portable trusted runtime or replay recipe. Interpreter/stdlib/builtin/frozen/transitive loader/OS binaries remain declared trusted external dependencies and are not redistributed. Current primary reader/index and opaque parent artifacts are not part of the archive.",
+    "External literature and MathJax URLs were not fetched during this review. Informal mathematical scope is checked against frozen Source/specification/review, not a newly formalized proof. Root separately reports local browser checks and must perform task-only publication and full live-byte/browser verification.",
+    "The six-root wording denotes the one cumulative six-root bank, not six independently tested failures of individual roots. Failed prefixes and locally committed roots retain no complete-bank or mathematical authority.",
+    "The detailed publication audit was generated after the frozen archive and stays outside it, avoiding recursive inventory. This detached receipt pins the entire manifest and all payload bytes; neither the manifest nor detached receipt hashes itself.",
+    "No statement here proves absence of every possible incidental primary-filesystem metadata access. This review read only the supplied temporary packet and isolated published baseline, never primary tree reader/index content, and changed only reviewer records plus the explicitly requested detached staging copy."
+  ],
+  "manifest": {
+    "bytes": 4121,
+    "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/cleanup-isolation-manifest.json",
+    "sha256": "88c22016efb46dda05018d1c34376ef4259cf8afffaa46cd02fede7d6b2412bf"
+  },
+  "mathematical_proof_admitted": false,
+  "mismatch_count": 0,
+  "opaque_subject_decodes": 0,
+  "parent_commit": "8917068e306e2cc9cf0b6c2a608c26b4144465d0",
+  "payloads": [
+    {
+      "bytes": 97573,
+      "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/reader.html",
+      "sha256": "5bfec2ce7be685577e24b67ed2c4173809c91629d2ec2aa39c0bf512641ae8f3"
+    },
+    {
+      "bytes": 22935,
+      "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/cleanup-isolation.html",
+      "sha256": "d9bd9753a41cb35298e2a2b9dd2060ef385504a11c2af7ab482eb689521290b9"
+    },
+    {
+      "bytes": 96431,
+      "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/cleanup-isolation-summary.json",
+      "sha256": "7a80161530d3c1f59d1e0ca97cc6f41a1bdabc2fc92ac712eabe2ae3a0753115"
+    },
+    {
+      "bytes": 13410843,
+      "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/cleanup-isolation-evidence.tar.gz",
+      "sha256": "66ee905a2976b6d4d6efbf8f5adb3dcdc5004647514ed9656e3a9b4a1341f30b"
+    },
+    {
+      "bytes": 15077,
+      "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/wang-spacetime-source.html",
+      "sha256": "0df9d9a22fa05e3d586826311b2d77c6b67077e8949fbf4318351e957e0c1726"
+    },
+    {
+      "bytes": 11065,
+      "path": "/private/tmp/gcts-cleanup-isolation-ROOT-20261019/publication-staging-v1/wang-spacetime-review.json",
+      "sha256": "958f4f3ff1abd832e1e6c9f146437cce637a1019863d65a2ec673d11fb4197f6"
+    }
+  ],
+  "prior_independent_saved_review": {
+    "bytes": 108970,
+    "path": "/private/tmp/gcts-cleanup-isolation-peer-20261019/typed-saved-qualification-review-v1.json",
+    "sha256": "e6d506b21d916a57c8cfc7204ddfe1da8983b7f20d3b7374b5ae54e3d22bea68"
+  },
+  "process_launches": 0,
+  "process_probes": 0,
+  "public_mathematical_claim_review": {
+    "bytes": 10161,
+    "path": "/private/tmp/gcts-cleanup-isolation-math-review-20261019/typed-public-math-claim-review-v1.json",
+    "sha256": "3b6cd4addb15f0033495b3bd8bed09c3bf5b7b66f38b6adc65628b9fdf843350"
+  },
+  "publication_review_passed": true,
+  "reader_baseline": {
+    "bytes": 96551,
+    "path": "/private/tmp/gcts-cleanup-isolation-peer-20261019/reader-baseline-8917068e.html",
+    "sha256": "dfae6ed48147681cf122ebc5a87e280e9f581dadd92afb085d3af43b13520e3e"
+  },
+  "renderer_calls": 0,
+  "reviewer_check_correction": {
+    "current_script": {
+      "bytes": 17398,
+      "path": "/private/tmp/gcts-cleanup-isolation-peer-20261019/audit_publication_v2.py",
+      "sha256": "47c3d70f41793a0d21a5b2c4689d734a1ddc85e7b50a53c9f5baee6f85515664"
+    },
+    "preserved_v1_audit": {
+      "bytes": 381496,
+      "path": "/private/tmp/gcts-cleanup-isolation-peer-20261019/publication-raw-audit-v1.json",
+      "sha256": "2a50dee9c0b04498add40280c0fc64e916223a734da7c327d349769ec16c56cd"
+    },
+    "preserved_v1_script": {
+      "bytes": 17104,
+      "path": "/private/tmp/gcts-cleanup-isolation-peer-20261019/audit_publication_v1.py",
+      "sha256": "725268c134eb4a385d80bf90c4a065552a0b8f18c3f7818fedd00d072408449d"
+    },
+    "reason": "The first reviewer audit over-required the older full V2 closure inside a packet explicitly scoped to selected prior records. Root confirmed the unchanged preceding publication/archive retains full V2 history. V2 checks the declared selected subset, with current required Sources/inputs/actuals fully included; no offered byte or claim changed. This is a reviewer scope correction, not a newly repaired evidence omission."
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "saved_data_only": true,
+  "saved_review_passed": true,
+  "schema": "cleanup-isolation-independent-publication-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Final frozen saved-byte/ordinary-JSON/raw-HTML publication review only. No new execution qualification, mathematical certification, actual grant, publisher Git mutation, deployment or live verification is supplied by this receipt.",
+  "search_calls": 0,
+  "whole_declared_helper_qualified": false
+}

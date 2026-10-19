@@ -1,0 +1,193 @@
+{
+  "Source_excerpts": {
+    "bytes": 11706,
+    "path": "/private/tmp/gcts-wang-spacetime-benchmark-review-20261019/Source-excerpts-v1.json",
+    "sha256": "c23190e4b198099d6502022c5e0ca9e84fa15151b59749e4aad3314b4de25239"
+  },
+  "actual_execution_authorized": false,
+  "author_identity": "/root/benchmark_design",
+  "authorship_disclosure": "Reviewer did not author this compiler/library packet; reviewer authored earlier generic Wang prose/specification in the same programme. This is independent current-Source review, not independent formal certification of the entire construction.",
+  "blocking_findings": [],
+  "browser_calls": 0,
+  "checks": [
+    {
+      "Source_lines": [
+        59,
+        125
+      ],
+      "finding": "Exact finite IDs exclude booleans; deterministic unique transition domain; accepting state has no outgoing transition; initial configuration pins every cell and exactly one head with declared initial state. No implicit arbitrary initial row.",
+      "id": "W01",
+      "topic": "machine and initial syntax"
+    },
+    {
+      "Source_lines": [
+        154,
+        244
+      ],
+      "finding": "All old triples over full alphabet plus wall, all collectors and full frame schemas are enumerated from owned machine before initial word/horizon processing. No statement/reachable-row/word/horizon trimming or per-instance prototype insertion occurs.",
+      "id": "W02",
+      "topic": "machine-only palette"
+    },
+    {
+      "Source_lines": [
+        129,
+        151
+      ],
+      "finding": "No-head triple preserves its plain center. One center head writes and moves/stays according to declared table; entering neighbor receives next state with its old scanned symbol. Undefined head transition removes every containing step triple. A center head moving into either wall has no tile, including both walls for width one. Neighbor-away wall safety is supplied by that neighbor head-centered tile in the same full row.",
+      "id": "W03",
+      "topic": "partial update and wall escape"
+    },
+    {
+      "Source_lines": [
+        187,
+        210
+      ],
+      "finding": "Only left frames have west exterior-left, and no tile has east exterior-left; only right frames have east exterior-right, and no tile has west exterior-right. Frames are forced exactly in extreme columns and cannot appear internally. Disjoint pair/seen constructors force each complete interior row to be step-kind or collector-kind.",
+      "id": "W04",
+      "topic": "frame exclusion and homogeneous rows"
+    },
+    {
+      "Source_lines": [
+        195,
+        216
+      ],
+      "finding": "Only collector interiors have south stop; no tile has north stop. Accepting frame south done also has no successor north done. Therefore only bottom row can collect and all preceding H rows are computation. Left seen0/right seen1 plus plain-preserve/accept-only0-to1 means exactly one accepting head; headless, nonaccepting or multiple accepting heads cannot pass.",
+      "id": "W05",
+      "topic": "collector and exact height"
+    },
+    {
+      "Source_lines": [
+        129,
+        151,
+        187,
+        210
+      ],
+      "finding": "Pinned top row has one head. Overlapping horizontal pairs reconstruct precisely its old triples with wall neighbors. Each complete step row therefore recovers the unique legal in-strip successor with exactly one head. Vertical induction across the H step rows reaches the collector north row, which must be accepting. This closes the reverse direction without assuming arbitrary malformed-row correctness.",
+      "id": "W06",
+      "topic": "reverse accepting-history argument"
+    },
+    {
+      "Source_lines": [
+        187,
+        210,
+        258,
+        278
+      ],
+      "finding": "Given a legal in-strip exact-H accepting run, its overlapping neighborhoods and matching frames instantiate every computation row; unique accepting collector flags finish it. Accepting heads have no outgoing transitions and collector/stop/done cannot continue, so a halted run cannot be padded to a larger exact time by these tiles.",
+      "id": "W07",
+      "topic": "forward direction and acceptance padding"
+    },
+    {
+      "Source_lines": [
+        69,
+        71,
+        103,
+        125,
+        195,
+        217,
+        249,
+        278
+      ],
+      "finding": "For H=0 height is one, so bottom stop forces collectors immediately. Initial==accepting is allowed; a single accepting head can connect seen0 toseen1 even at W=1. Source explicitly interns every cell color, including an accepting initial head with no step output, so no missing color lookup obstructs this branch. If initial!=accepting, the pinned sole head has no collector and zero-step is impossible. These are literal Source/schema arguments, not generated fixtures or a tiling witness.",
+      "id": "W08",
+      "topic": "literal zero-step and width-one branches"
+    },
+    {
+      "Source_lines": [
+        178,
+        185,
+        267,
+        290
+      ],
+      "finding": "Every prototype has one unit center and four assigned midpoint edge values, including assigned color0. Translations are2Z2 only; board/frame centers and finite admissible origins coincide. Adjacent placements share exactly one relevant midpoint; nonadjacent placements share none. All exterior midpoint pins have zero occupancy contribution. Thus declared point occupancy/mark agreement is the finite square matching problem.",
+      "id": "W09",
+      "topic": "exact point embedding"
+    },
+    {
+      "Source_lines": [
+        267,
+        290
+      ],
+      "finding": "The exact finite admissible-origin restriction is essential and explicitly declared; master permits finite target/exterior data with admissible placements. No center R-role is needed for this stated finite-origin construction. Removing origin restrictions or interpreting prototype provenance field origin as a spatial transform is not covered. All palette IDs at every permitted origin and all midpoint dependencies remain future engine obligations.",
+      "id": "W10",
+      "topic": "finite boundary scope"
+    },
+    {
+      "Source_lines": [
+        27,
+        50,
+        223,
+        232,
+        235,
+        291
+      ],
+      "finding": "Compiler returns candidate records only; private finite limits can stop compilation with no returned partial candidate. Direct external callbacks are not caught or converted. Read-only callbacks/exclusive input ownership remain explicit assumptions; no mutation seal, absolute preemption or runtime qualification is established.",
+      "id": "W11",
+      "topic": "resource and Source claims"
+    }
+  ],
+  "compiler_calls": 0,
+  "conditional_lemma_latex": "For a fixed declared deterministic partial machine \\(M\\), a complete one-head initial word \\(C_0\\in A^W\\), \\(W\\ge1\\), and exact \\(H\\ge0\\), the full framed palette with the prescribed boundary on \\((W+2)\\times(H+1)\\) has a tiling exactly when \\(M\\) has an in-strip legal accepting run of exactly \\(H\\) steps from \\(C_0\\).",
+  "fixture_calls": 0,
+  "full_pipeline_qualified": false,
+  "informal_correspondence_review_passed": true,
+  "machine_checked": false,
+  "master": {
+    "bytes": 36240,
+    "path": "/private/tmp/gcts-wang-spacetime-library-20261019/basic-tiling-algorithm-current.md",
+    "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+  },
+  "mathematical_authority": false,
+  "nonblocking_clarifications": [
+    "Prototype field origin stores schema provenance (old triple, collector symbol/flag or frame parameter), not a coordinate. A future codec/adapter must distinguish it from admissible_origins.",
+    "The finite origin list carries geometry restriction directly; a future role-mark formulation must be proved separately rather than presumed identical.",
+    "The literal illustration has distinct initial/accepting states, hence its zero-step branch rejects. The allowed initial==accepting schema covers accepting zero-step; no example was compiled or run."
+  ],
+  "remaining_obligations": [
+    "The actual compiler has never been run or independently checked against a generated palette; this review does not execute or certify Source.",
+    "Full FOL proof kernel, formula/term/certificate codec, source-theory policy and faithful finite single-tape machine table remain absent.",
+    "No fixed universal checker palette exists; meta-compiler machine parameterization is not a universally expressive fixed artifact.",
+    "Unknown-certificate single-board grammar, independent compiler/point verifier, GCTS complete graph/scheduler/rollback and practical lemma/macro expansion remain unimplemented.",
+    "Future serialization must preserve every assigned color including0, exact finite origins/boundary pins, tuple syntax/ID typing and canonical machine/palette epochs. Mutable returned records require independent frozen validation.",
+    "Finite accepting-history correspondence is separate from seedless whole-plane tiling, aperiodicity/selfassembly and search advantage. Core tableau row is a machine configuration, not a human logical proof line.",
+    "No primary paper is used here as a correctness certificate for this compiler; its construction is reviewed directly, and cited-paper claims were not independently expanded in this review."
+  ],
+  "rendering_calls": 0,
+  "reviewed_API": {
+    "bytes": 2914,
+    "path": "/private/tmp/gcts-wang-spacetime-library-20261019/API-v1.json",
+    "sha256": "9eca9bc0ffe0dd55d0c3f47986dda1456934c5adbe15123a954979f07a0dfbe5"
+  },
+  "reviewed_Source": {
+    "bytes": 13084,
+    "path": "/private/tmp/gcts-wang-spacetime-library-20261019/wang_spacetime_compiler_v1.py",
+    "sha256": "92a8c49bd9be346faf9e6472c588140d3844c4e52c1f0a18fef24409e7ff20ba"
+  },
+  "reviewed_contract": {
+    "bytes": 3868,
+    "path": "/private/tmp/gcts-wang-spacetime-library-20261019/Source-contract-v1.json",
+    "sha256": "482542b171029c968d50a8b3399046a6fbca570d320619d00e526cc62fc67328"
+  },
+  "reviewed_handoff": {
+    "bytes": 2446,
+    "path": "/private/tmp/gcts-wang-spacetime-library-20261019/handoff-v1.json",
+    "sha256": "f4a1ff989926b5a608a5074b3260ef17c326df83dde761a88255b5d7d89cc54a"
+  },
+  "reviewed_specification": {
+    "bytes": 15077,
+    "path": "/private/tmp/gcts-wang-spacetime-library-20261019/encoding-spec-v1.html",
+    "sha256": "0df9d9a22fa05e3d586826311b2d77c6b67077e8949fbf4318351e957e0c1726"
+  },
+  "reviewer_identity": "/root/benchmark_design",
+  "runtime_qualified": false,
+  "runtime_tests": 0,
+  "schema": "finite-framed-wang-independent-Source-spec-review-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scope": "Raw Source/AST and informal mathematical correspondence only. No compiler/helper/fixture execution/import, machine simulation, solver/checker, witness generation, opaque decode, browser or rendering.",
+  "source_only": true,
+  "source_review_passed": true,
+  "subject_imports": 0,
+  "universality_established": false,
+  "verdict": "NO_BLOCKING_SOURCE_OR_FINITE_CORRESPONDENCE_FINDING_IN_BOUNDED_REVIEW"
+}

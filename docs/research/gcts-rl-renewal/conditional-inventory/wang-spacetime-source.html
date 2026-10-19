@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Finite accepting histories as framed square Wang tiles — Source-only specification</title>
+<style>body{font:17px/1.6 Georgia,serif;color:#182d3b;max-width:1020px;margin:40px auto;padding:0 24px 60px}h1,h2,h3{font-family:system-ui,sans-serif}table{border-collapse:collapse;width:100%;font-size:15px}td,th{padding:9px;border:1px solid #b8c9d3;text-align:left;vertical-align:top}.notice{background:#fff0d1;padding:17px;border-left:4px solid #b67d20}.math{overflow:auto}code{font:13px ui-monospace,monospace}a{color:#145d80}</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script></head><body>
+<h1>A finite translation-only Wang compiler for accepting machine histories</h1>
+<div class="notice"><strong>Source-only, unexecuted.</strong> This packet supplies an algorithm and an informal correspondence argument, not a generated palette, tested compiler, proof-checking machine, theorem prover, or tiling witness. No compiler, machine, checker, or scientific component has been invoked. The actual fixed first-order kernel, its faithful machine table and the resulting fixed palette remain absent.</div>
+
+<h2>Scope and primary references</h2>
+<p>The isolated published <code>universal-wang.html</code> already describes a conditional local-update argument and exact point markings. Its finite selectors are not a serialized complete ordinary square-Wang boundary palette. This packet specifies a small complete frame construction with four assigned edge colors on every square. It does not alter that page or any current search.</p>
+<p>The original research paper <a href="https://www.lacl.fr/pvanier/rech/preprint-slopes.pdf">Jeandel and Vanier, <em>Slopes of Tilings</em>, Section 2.3 and Figure 3</a>, explicitly uses finite computation rectangles with input and accepting boundaries. We verified that primary text. Our overlapping-pair rule and frame below are a separately stated construction and proof, not a claim that the paper verifies this Source. <a href="https://www.nokia.com/bell-labs/publications-and-media/publications/proving-theorems-by-pattern-recognition-ii/">Wang's original 1961 paper record</a> supplies the historical predicate-calculus context. Infinite-plane domino undecidability and aperiodicity are separate questions and are not premises of the finite lemma.</p>
+
+<h2>Declared machine and word</h2>
+<p>Fix a deterministic, partial, single-tape machine before any instance:</p>
+<div class="math">\[M=(Q,\Gamma,\square,q_0,q_a,\delta),\qquad\delta:Q\times\Gamma\rightharpoonup Q\times\Gamma\times\{-1,0,1\}.\]</div>
+<p>The state and symbol alphabets use exact nonnegative integer IDs. The accepting state has no outgoing transition. Any other undefined transition is a nonaccepting halt. A transition writes its symbol, changes state, then moves; a stationary move is permitted. The machine has a two-sided blank tape. This packet imposes no artificial rule that forbids legitimate writing of blank symbols.</p>
+<p>Let \(A=\{\operatorname{plain}(s):s\in\Gamma\}\sqcup\{\operatorname{head}(q,s):q\in Q,s\in\Gamma\}\). A wall \(\#\notin A\) is never a center cell. An instance declares a complete word \(C_0\in A^W\), \(W\ge1\), with exactly one head in state \(q_0\), and an exact step count \(H\ge0\). Every cell, including blank padding, is pinned. Source literal cells are tuples; a future JSON encoding must explicitly normalize their declared tuple syntax, not silently accept booleans as integer IDs.</p>
+<p>For a future fixed proof checker, one possible input convention is \(\square^{\ell}\operatorname{head}(q_0,\mathrm{START})u\mathrm{SEP}v\mathrm{END}\square^r\), with plain symbols after the head. The public word \(u\), certificate word \(v\), delimiters, and blanks must have a lossless fixed codec and checker interpretation. Those artifacts do not exist in this packet. Here a finite instance pins the whole word; existential proof search could enumerate finite certificate words and bounds. It is not an implemented single-board unknown-proof language gadget.</p>
+
+<h2>Partial radius-one update</h2>
+<p>Define \(F(a,b,c)\) for \(a,c\in A\cup\{\#\}\) and \(b\in A\). It is undefined if there are at least two heads, if the sole head has no defined transition, or if a head at the center would move into a neighboring wall. In the remaining cases:</p>
+<table><tr><th>Case</th><th>Center output</th></tr>
+<tr><td>No head in the triple</td><td>The unchanged plain center.</td></tr>
+<tr><td>Center head, stationary transition \((q',s',0)\)</td><td>\(\operatorname{head}(q',s')\).</td></tr>
+<tr><td>Center head, moving transition</td><td>\(\operatorname{plain}(s')\).</td></tr>
+<tr><td>Left head moves right, or right head moves left</td><td>\(\operatorname{head}(q',s)\), where \(b=\operatorname{plain}(s)\).</td></tr>
+<tr><td>Neighboring head does not enter the center</td><td>The unchanged plain center.</td></tr></table>
+<p>A neighboring head's move away may depend on a wall outside this triple. Its own head-centered tile performs that wall test. This is sufficient for valid one-head rows. No arbitrary malformed-row dynamics is claimed.</p>
+
+<h2>Complete finite color and tile schemas</h2>
+<p>Colors are disjoint tagged constructors, interned by full literal equality into exact integer codes. They are \(\operatorname{cell}(b)\), \(\operatorname{pair}(a,b)\), \(\operatorname{seen}(i)\), \(\operatorname{stop}\), \(\operatorname{side}(d,z)\), and \(\operatorname{exterior}(d)\). Here \(i\in\{0,1\}\), \(d\in\{L,R\}\), and \(z\in\{\mathrm{run},\mathrm{done}\}\). Constructor tags prevent accidental matches. Assigned color code zero is a value, not an omitted marking.</p>
+<p>Write every square as \((N,E,S,W)\). The compiler emits all instances of these schemas; nothing is trimmed to a statement, initial word, time bound or reachable run.</p>
+<table><tr><th>Tile</th><th>Four exact edge colors</th></tr>
+<tr><td>Computation \(T(a,b,c)\), exactly when \(F(a,b,c)\) is defined</td><td>\((\operatorname{cell}(b),\operatorname{pair}(b,c),\operatorname{cell}(F(a,b,c)),\operatorname{pair}(a,b))\).</td></tr>
+<tr><td>Plain collector, every \(s\in\Gamma\), \(i\in\{0,1\}\)</td><td>\((\operatorname{cell}(\operatorname{plain}(s)),\operatorname{seen}(i),\operatorname{stop},\operatorname{seen}(i))\).</td></tr>
+<tr><td>Accepting collector, every \(s\in\Gamma\)</td><td>\((\operatorname{cell}(\operatorname{head}(q_a,s)),\operatorname{seen}(1),\operatorname{stop},\operatorname{seen}(0))\).</td></tr>
+<tr><td>Left computation frame, every \(b\in A\)</td><td>\((\operatorname{side}(L,\mathrm{run}),\operatorname{pair}(\#,b),\operatorname{side}(L,\mathrm{run}),\operatorname{exterior}(L))\).</td></tr>
+<tr><td>Right computation frame, every \(b\in A\)</td><td>\((\operatorname{side}(R,\mathrm{run}),\operatorname{exterior}(R),\operatorname{side}(R,\mathrm{run}),\operatorname{pair}(b,\#))\).</td></tr>
+<tr><td>Left accepting frame</td><td>\((\operatorname{side}(L,\mathrm{run}),\operatorname{seen}(0),\operatorname{side}(L,\mathrm{done}),\operatorname{exterior}(L))\).</td></tr>
+<tr><td>Right accepting frame</td><td>\((\operatorname{side}(R,\mathrm{run}),\operatorname{exterior}(R),\operatorname{side}(R,\mathrm{done}),\operatorname{seen}(1))\).</td></tr></table>
+<p>For \(B=|A|=|\Gamma|(1+|Q|)\), the tile count is at most \(B(B+1)^2+3|\Gamma|+2B+2\), and the color count is at most \(B^2+3B+9\). These are symbolic upper bounds, not measured compiler output. Every tile has all four colors; there are no wildcard edges, rotations, reflections, erasing background tiles, or theorem-specific prototype additions.</p>
+
+<h2>Exact finite boundary words</h2>
+<p>Use a rectangle of width \(W+2\) and height \(H+1\). Columns at the two extremes are frame columns, and the remaining columns are tape cells. Rows increase downward. Boundary words are indexed left-to-right on top and bottom and top-to-bottom on the two sides:</p>
+<div class="math">\[
+\begin{aligned}
+N&=\operatorname{side}(L,\mathrm{run})\;\operatorname{cell}(C_0[0])\cdots\operatorname{cell}(C_0[W-1])\;\operatorname{side}(R,\mathrm{run}),\\
+S&=\operatorname{side}(L,\mathrm{done})\;\operatorname{stop}^{W}\;\operatorname{side}(R,\mathrm{done}),\\
+W_{\partial}&=\operatorname{exterior}(L)^{H+1},\qquad
+E_{\partial}=\operatorname{exterior}(R)^{H+1}.
+\end{aligned}\]</div>
+<p>The exterior colors force the appropriate frame tiles in their extreme columns. Such a frame tile cannot appear internally: no tile has east color \(\operatorname{exterior}(L)\) or west color \(\operatorname{exterior}(R)\). No extra corner or seed convention is implicit. The bottom word forces collectors; pair and seen colors force a whole interior row to have one kind. No tile has north color stop, so a collector row cannot occur before the bottom.</p>
+
+<h2>Acceptance correspondence</h2>
+<p><strong>Informal proposition.</strong> With the complete fixed palette and exact boundaries above, a tiling exists if and only if the declared machine makes exactly \(H\) legal steps from \(C_0\), never crosses the two tape walls, and reaches an accepting configuration. This is a proof argument, not a formal proof or executed Source certificate.</p>
+<ol>
+<li>In a computation row, horizontal matching gives \((b_x,c_x)=(a_{x+1},b_{x+1})\). The frame supplies the missing wall neighbors, including both neighbors when \(W=1\). Thus the selected triples are exactly the overlapping neighborhoods of the north configuration; an interior wall would require an impossible wall-valued center.</li>
+<li>Starting with the unique head in the pinned top word, the rule writes precisely the new scanned symbol and either retains one stationary head or moves that single head to its destination neighbor. The head-centered wall and undefined-transition tests rule out loss of the head. Vertical matching therefore inductively recovers a genuine in-strip run.</li>
+<li>The collector has flag zero at the left and one at the right. Plain cells preserve the flag; only an accepting head can change it. A headless word, nonaccepting head, or additional accepting head cannot pass. There is no transition after an accepting row and no filler that stretches a halted run to a larger exact time.</li>
+<li>Conversely, for an actual in-strip accepting run, choose each old neighborhood's computation tile and the corresponding frame. In the final row put flag zero before its unique accepting head and one afterward. Every edge and boundary matches. If \(H=0\), this uses only collectors and succeeds precisely when the initial state is already accepting.</li>
+</ol>
+<p>A genuine finite run on a two-sided tape visits finitely many cells. A finite interval containing its initial nonblank word and every visited position, padded only with pinned blanks, gives a corresponding board. Conversely an in-strip run agrees with that blank exterior until acceptance. Enumerating complete words and bounds fairly yields a semidecision construction, not a decision procedure or a fixed finite search bound. Unknown or exhausted resource budgets are never rejection certificates for all bounds.</p>
+
+<h2>Faithful exact point embedding</h2>
+<p>Use \(L=\mathbb Z^2\), translations \(G=2\mathbb Z^2\), and no other transformations. Every prototype has \(t(0,0)=1\), zero elsewhere, and one marking channel with four values:</p>
+<div class="math">\[m(0,-1)=N,\quad m(1,0)=E,\quad m(0,1)=S,\quad m(-1,0)=W.\]</div>
+<p>Every board center \((2x,2y)\) is a required unit-capacity point and an admissible origin, including both frame columns. At each origin every palette ID is a base candidate before full marking compatibility. The boundary word pins the external midpoint marks as an explicit fixed background section with no occupancy contribution. The permitted origin list is finite and exact; no placement outside it is allowed.</p>
+<p>Each tile fills exactly one required center. Distinct adjacent centers share precisely their relevant midpoint, and nonadjacent tiles share no marked point. Therefore exact occupancy and marking agreement are equivalent to choosing one square per board cell with matching Wang edges and the full boundary word. This uses no polygon intersection, geometric containment test, wildcard-role filter, or learned marking. These are problem-defining marks.</p>
+<p>A future GCTS engine must activate every required point at generation zero, enumerate all palette IDs at every origin, and track all four midpoint dependencies, including boundary points outside the frontier. It must preserve global dead ends, then global forced moves, then earliest-generation branches, complete fallback and exact rollback. No search engine or incidence/rollback qualification is supplied here.</p>
+
+<h2>Source API, costs, and remaining work</h2>
+<p><code>compile_palette(machine, *, check, limits)</code> depends only on the machine. <code>compile_finite_problem(machine, initial_word, steps, *, check, limits)</code> retains that whole palette and produces target centers, boundary words, fixed midpoint marks and the complete candidate-universe convention. Neither function simulates a history or finds a tiling. Private finite limits cover work, alphabets, states, prototypes, colors, cells and dimensions. Direct external callback faults propagate; an own <code>CompileLimit</code> is unfinished compilation with no usable partial candidate. Callers must own inputs exclusively and supply read-only callbacks. All compiler, palette, instance, search and independent verification costs belong to any future experiment.</p>
+<ul>
+<li>The Source was parsed and compiled without evaluation only; no illustrative machine or fixture was compiled or run. The small literal example is a declaration, not a result.</li>
+<li>No full FOL formula/term codec, source-theory policy, eigenvariable/capture/equality checker, total proof checker, faithful single-tape implementation, literal fixed FOL palette, or source/checker proof is supplied.</li>
+<li>The uniform meta-compiler accepts different declared machines. A universal-proof claim instead requires freezing one checker machine and its palette before all theorem instances. Changing its table per theorem is excluded from that claim.</li>
+<li>No practical receptor/lemma expansion, machine-word interface certificates, independent compiler checker, runtime point verifier, fair search implementation, or performance comparison is established.</li>
+<li>Aperiodicity, seedless plane tiling and universal self-assembly are outside scope. They imply neither theorem discovery nor efficient proof search here.</li>
+</ul>
+<p>Author: <code>/root/conventional_library</code>. Historical Model, search, evidence and Arena authorship overlaps are disclosed. This is a new authored construction and static argument, not an independent certification of those components or of this compiler.</p>
+</body></html>
