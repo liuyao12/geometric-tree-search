@@ -1,0 +1,189 @@
+{
+  "activation_authorized": false,
+  "actual_execution_authorized": false,
+  "author_identity": "/root/conventional_library",
+  "codec_or_inverse_calls": 0,
+  "fixtures_executed": 0,
+  "future_qualification": [
+    "Fresh once-subject/current Source review required; no third actual now. Use all exact original3 full inputs and48 existing fixtures, not old partial tables or reduced/subsampled artifacts.",
+    "Independent Root implementation must remain independent from Library encoder; use only agreed wire/canonical-domain contract, not encoder imports/helpers, hashed summaries or callback claims.",
+    "Retain strict bool/int/negative0 float/Unicode/canonical lexical/ordered-repeated ports/explicit0-vs-missing semantics and all malformed/nonreachable/duplicate/cyclic input cases.",
+    "Add bounded data-only cache-specific obligations: repeated small subtree exact stream multiplicity; eligible/ineligible/cache-full ordinary fallback equality; escaped Unicode/object keys; long uncached scalar; exception mid-build/mid-copy/interyield; tiny private work/expanded-byte bounds. Actual execution remains separately authorized and charged.",
+    "Compare complete actual stream byte-for-byte with the whole original raw canonical body and declared newline. Digest alone is insufficient. Report aggregate encoded and expanded logical bytes, actual chunks/copied bytes, cache attempts/hits/payload/entries, summary/traversal/copy work and total callbacks without claiming proof effort.",
+    "Normal own-limit/deadline UNKNOWN retains exact stage, completed-prefix packets and artifact descriptors; no partial representation/Model/Native authority. Preserve both earlier negatives unchanged regardless future outcome."
+  ],
+  "implementation_written": false,
+  "limitations": [
+    "No parsed retained table, fresh inverse/encoder calls, fixtures or runtime measurements in this note.",
+    "No claim that cache is effective on these inputs, that20m work or180s will suffice, or that the measured failure was caused only by serialization.",
+    "Per-node summary/multiplicity/cache setup may cost more than it saves; bounded cache exhaustion takes the full ordinary fallback and may still hit the old numerical cap.",
+    "Canonical JSON equality does not preserve arbitrary whitespace/escape spelling or duplicate raw object keys; original raw pins and strict parsing/canonical-preimage custody remain required.",
+    "Author wrote encoder/registry/certifier and older Model/search adapters. This is not independent own Source certification and does not replace Root inverse authorship or Control review."
+  ],
+  "no_pipeline_change": true,
+  "observations": {
+    "first": {
+      "completed_diagnostics": 0,
+      "completed_input_packets": 0,
+      "representation_admitted": false,
+      "stage": "SAVED_TABLE_ENCODER_INVERSE",
+      "status": "UNKNOWN_WORK_DEADLINE",
+      "worker_peak_bytes": 725008384
+    },
+    "scope": "Observed counts/timing/peak/status from retained metadata only. Root callback count is whole-worker dispatch count, not isolated inverse work or cause attribution. Retained table prefix is not a complete independent qualification or a reusable new input/cache.",
+    "second": {
+      "completed_diagnostics": 0,
+      "completed_input_packets": 0,
+      "limit_reason": "work",
+      "own_inverse_limit": true,
+      "representation_admitted": false,
+      "retained_unqualified_table_prefix_bytes": 15096899,
+      "root_callback_dispatches": 37775805,
+      "stage": "INDEPENDENT_FULL_SAVED_INVERSE",
+      "status": "UNKNOWN_EVIDENCE_LIMIT",
+      "terminal_seconds": 112.052782959,
+      "worker_peak_bytes": 656310272
+    }
+  },
+  "preserved_limits": {
+    "aggregate_encoded_bytes": 134217728,
+    "aggregate_expanded_bytes": 134217728,
+    "current_worker_node_depth": 513,
+    "default_node_depth": 512,
+    "memory_bytes": 1073741824,
+    "overall_seconds": 210,
+    "private_edges": 8000000,
+    "private_inverse_work": 20000000,
+    "private_nodes": 2000000,
+    "scalar_bytes": 134217728,
+    "scope": "Preserve all current limits and exact worker encoder-edge/inverse-node depth convention; no new actual or cap increase authorized.",
+    "work_seconds": 180
+  },
+  "recommendation": {
+    "api": "Keep iter_inverse(wire,check,limits=None) byte-iterator ABI. Use a new execution/version profile, not a change to wire schema or encoder. Root independently authors and freezes any implementation.",
+    "checkpoint": "Preserve exact delegated exception identity and private owned-limit distinction. First/completion callbacks mandatory. Any batched checkpoints require an explicit weighted-work cadence, bounded bulk-copy windows and an independently reviewed Source/guard-latency limitation; no hard elapsed guarantee from logical tick count. Hard outer180/210 enforcement remains necessary.",
+    "correctness_obligation": "Independent induction over prior child IDs: each cached scalar fragment equals its canonical independent scalar encoding; each cached container equals punctuation plus its complete ordered child fragments/ordinary child encoding. Then substitution of that byte string at each occurrence preserves full canonical stream by concatenation. This representation argument does not certify proof/Model/Native semantics, and full wire validity/reachability remains mandatory.",
+    "memory": "Cache payload bounds are not processRAM bounds: bytes/list/dict/counters/owned nodes/raw original/reread wire and transient JSON tokens overlap. Parent/observer and worker scopes remain as declared. Existing1GiB worker measurement must include all new cache/summaries/inverse lifetimes; no memory-improvement prediction.",
+    "name": "CALL_LOCAL_BOUNDED_IMMUTABLE_CANONICAL_FRAGMENTS",
+    "phases": [
+      "1. Validate the entire fresh wire and capture immutable typed nodes exactly as current independent inverse, including every node/ordered edge/key/scalar/duplicate and whole root reachability. Do not consume encoder summaries/certificates/cached tables as authority.",
+      "2. Independently derive per-node canonical expanded byte length, ordinary occurrence count and maximum node-depth by child-before-parent dynamic programming. Scalar/key canonical bytes use the independent JSON semantics. Arrays add brackets+ordered children+commas; objects add braces+ordered exact key JSON+colons+children+commas. Stop before expansion if any reachable summary exceeds existing expanded-byte/depth bound. Multiplicity counts every repeated reference; keys count as syntax bytes, not ordinary value occurrences.",
+      "3. Optionally derive root occurrence multiplicities by reverse node order with full ordered-ref multiplicity. Deterministic proposed eligibility: repeated node with complete canonical size<=4096 B. Build a local bytes fragment only from freshly validated literals and independently justified child encodings; never identify by digest alone. Suggested separate cache ceilings:8MiB payload and65536 entries. These are proposed bounded optional cache ceilings, not raised qualification caps.",
+      "4. Cache eligibility/capacity is an optimization only. If a fragment would exceed either cache ceiling, omit that cache entry and use the ordinary iterative traversal. Do not reject, drop data, declare negative, or select a different input. Cache construction, summaries, attempted caching and fallback all consume the same newly declared20m actual-operation allowance and outer clock/memory.",
+      "5. At an encountered cached node, emit its complete immutable bytes on every occurrence instead of descending/tokenizing that subtree again. Split copying into at most64KiB blocks, include every copied byte in actual expanded-output accounting, and retain actual bytewise comparison with the complete ordinary original plus separately declared newline/hash. Uncached nodes retain ordinary traversal. No output byte, array/port multiplicity, object key or scalar disappears.",
+      "6. Keep complete end-of-stream size/occurrence reconciliation and final callback. A partial iterator, cache or saved wire remains unqualified. Release call-local cache when the generator ends/aborts; no cross-input, cross-call, historical or partially validated cache authority."
+    ],
+    "work_profile": {
+      "caveat": "If the old virtual token walk must still be charged, fragment reuse cannot erase its20m limit. A successful new actual-operation profile is not a pass under the old V3 work-unit profile, even with the same numeric20m cap. Report old/new work/event/chunk counts separately.",
+      "numeric_private_limit": 20000000,
+      "old_profile": "V3 ticks on each old occurrence-stack action and emitted token.",
+      "proposed_profile": "Newly versioned actual-operation counter charging full wire validation, every summary edge/node/scalar scan, attempted fragment construction/copy, uncached traversal, emitted chunk and custody/checkpoint work. Exact charge table must be frozen by Root before any grant; do not leave uncharged arbitrarily large builtin loops."
+    }
+  },
+  "retained_data": {
+    "current_declaration": {
+      "bytes": 6238,
+      "path": "/private/tmp/gcts-exact-evidence-ROOT-20261019/declaration-v5.json",
+      "sha256": "871e1431e475aa8d68693a59152c5b3ac02c259d42e5f551d84339a67faf8344"
+    },
+    "first_negative": {
+      "bytes": 2464,
+      "path": "/private/tmp/gcts-exact-evidence-ROOT-20261019/ROOT-negative-audit-v1.json",
+      "sha256": "ce8fd8fee103cfaec4458f7b81679a0d3e0d3dc55d53c1d682d13a657c089bd1"
+    },
+    "second_audit": {
+      "bytes": 2331,
+      "path": "/private/tmp/gcts-exact-evidence-ROOT-20261019/ROOT-final-audit-v5.json",
+      "sha256": "bd93ebdae34833df8284a126ed5734c49dd9b4ca1531933205f4c61477aa8da1"
+    },
+    "second_failure": {
+      "bytes": 804,
+      "path": "/private/tmp/gcts-exact-evidence-ROOT-20261019/actual-v5/worker-failure.json",
+      "sha256": "29d3800721a275cc48a98ccea56d838ef1a83f50924d9f1b7f892afdcbeb201c"
+    },
+    "second_runner": {
+      "bytes": 2341,
+      "path": "/private/tmp/gcts-exact-evidence-ROOT-20261019/actual-v5/runner-receipt.json",
+      "sha256": "3d292d421bc99e4a79cbd2d593d2700b42ced45f086e7f9367b4aab81e1900bf"
+    },
+    "second_terminal": {
+      "bytes": 1060,
+      "path": "/private/tmp/gcts-exact-evidence-ROOT-20261019/plan-authorized-v5-terminal-observation/terminal.json",
+      "sha256": "5b230b7685f3cbd4c90c9a0d8e9228f8c0e3789f3698bda2ed1b7e001387b303"
+    }
+  },
+  "saved_data_only": true,
+  "schema": "exact-evidence-independent-inverse-next-design-v1",
+  "scientific_acceptance": false,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scope": "Bounded Source/retained-metadata algorithm proposal only; no replacement inverse, fixture, table decode, actual or grant.",
+  "source_findings": [
+    {
+      "finding": "Private work increments once per actual tick and callback dispatch. Reaching its20m threshold is distinct from wall deadline or memory failure.",
+      "lines": [
+        38,
+        44
+      ]
+    },
+    {
+      "finding": "Whole wire identity, strict fields/types, canonical scalars, ordered object keys, prior refs, edge/depth limits, full typed duplicate exclusion and root reachability precede output. These obligations must remain complete.",
+      "lines": [
+        46,
+        118
+      ]
+    },
+    {
+      "finding": "After validation only recursively immutable owned node tuples are consulted; a new fragment cache can be local to this one validated call.",
+      "lines": [
+        108,
+        118
+      ]
+    },
+    {
+      "finding": "Occurrence-stack traversal repeatedly revisits shared subgraphs; each visit and each punctuation/scalar emit tick. Repeated string leaves and object keys call json.dumps again. Reuse can remove some real traversal/serialization operations, but actual savings/fit are unknown.",
+      "lines": [
+        119,
+        148
+      ]
+    },
+    {
+      "finding": "Every actual emitted piece contributes its complete byte length to expanded size. A cached fragment must preserve this accounting on every occurrence.",
+      "lines": [
+        121,
+        125
+      ]
+    },
+    {
+      "finding": "Original pending-buffer flushing may exceed64KiB after a large piece; any successor bounded copying must retain exact concatenated bytes and completion callback, and explicitly disclose changed physical chunking.",
+      "lines": [
+        145,
+        148
+      ]
+    }
+  ],
+  "source_only": true,
+  "sources": {
+    "encoder_v1": {
+      "bytes": 19587,
+      "path": "/private/tmp/gcts-exact-evidence-source-20261019/exact_evidence_table_v1.py",
+      "sha256": "153c27aabd110926d716156cee064466d4de4a8ef21062ea0275002024be1e4f"
+    },
+    "encoder_v2": {
+      "bytes": 20284,
+      "path": "/private/tmp/gcts-exact-evidence-source-20261019/exact_evidence_table_v2.py",
+      "sha256": "30f62fb7af4d3bc986e9cb8de82178740e8b34eb550a8c8fc7478022dc7a9ac9"
+    },
+    "independent_inverse": {
+      "bytes": 7229,
+      "path": "/private/tmp/gcts-exact-evidence-ROOT-source-20261019/independent_evidence_inverse_v3.py",
+      "sha256": "35f05d09901431d4c299923a2b4b2ff2db9c5afcc048d1042fb7929b8a2c1e8a"
+    },
+    "worker": {
+      "bytes": 20541,
+      "path": "/private/tmp/gcts-exact-evidence-ROOT-source-20261019/qualify_exact_evidence_worker_v8.py",
+      "sha256": "ab1a79b1b1dc8d214a0e42c8325ad6a5a1c9fa43e12ca4e1977af62bf988e1ec"
+    }
+  },
+  "status": "PROPOSED_NOT_IMPLEMENTED_NOT_QUALIFIED"
+}
