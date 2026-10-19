@@ -1,0 +1,2727 @@
+{
+  "RL_training_claim": false,
+  "Root_saved_audit": {
+    "GCTS_RL_advantage_established": false,
+    "arms": [
+      {
+        "ROOT_mathematical_proof_admitted": false,
+        "ROOT_resource_accepted": false,
+        "aggregate_peak_bytes": null,
+        "elapsed_seconds": 180.368534291,
+        "errors": [
+          {
+            "message": "normal exact Python exit0",
+            "stamp_ns": 764095086935666,
+            "type": "OnceRunnerError"
+          }
+        ],
+        "group_absent": true,
+        "logs_complete": true,
+        "mode": "fixed",
+        "once_plan": {
+          "bytes": 2749,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+          "sha256": "9eecdec434b65e8598f825f6d862c9d549bfc1cb2cee16aa197d9ca243e15513"
+        },
+        "outer_exit_code": 2,
+        "outputs": {
+          "stderr": {
+            "bytes": 2152,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/stderr.bin",
+            "sha256": "cf70873008672500627bd941f66072106093e012ac08a63cb54f795eeba9b4ea"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "resource_candidate": false,
+        "runner_receipt": {
+          "bytes": 11924,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/runner-receipt.json",
+          "sha256": "e8289c85622931b2fed43c7a447d3a08ef50d1c0515164c95bd0059453ed9cf9"
+        },
+        "scientific_acceptance": false,
+        "terminal": {
+          "bytes": 1609,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/terminal.json",
+          "sha256": "e68d3974925e2911e3d1e59198b452422a74f99c38be462fb072ef4977ff9c6d"
+        },
+        "worker_exit_code": 1,
+        "worker_failure": {
+          "cleanup_errors": [],
+          "complete_output_accepted": false,
+          "diagnostic_output_prefixes": [
+            {
+              "bytes": 15181020,
+              "complete_output_accepted": false,
+              "diagnostic_only": true,
+              "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+              "sha256": "a332648433d9ae0a985a1dd9ab9559ae13db8917335823aa26cf13a296029361"
+            },
+            {
+              "bytes": 36911886,
+              "complete_output_accepted": false,
+              "diagnostic_only": true,
+              "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+              "sha256": "77c6af97754c4a038da88f71f2aa40adf24dbacc16a7d76c4f23977ce4a9a5bd"
+            }
+          ],
+          "error_type": "ColdError",
+          "logical_proof_accepted": false,
+          "message": "full saved evidence inverse within original work",
+          "native_transport": {
+            "CPP_self_reported_peak_is_resource_authority": false,
+            "aggregate_resource_accepted": false,
+            "all_reaped": true,
+            "cleanup_errors": [],
+            "closed": true,
+            "closure_deadline": 764124.785715875,
+            "complete_records": 16,
+            "constructor_completed": true,
+            "limits": {
+              "binary_file_bytes": 67108864,
+              "cleanup_reserve_seconds": 30,
+              "maximum_cleanup_seconds": 10,
+              "normal_quit_grace_seconds": 1,
+              "poll_seconds": 0.05,
+              "queries": 100000,
+              "ready_bytes": 256,
+              "reply_bytes": 65536,
+              "stderr_bytes": 65536,
+              "stdout_total_bytes": 16777216,
+              "terminate_grace_seconds": 1
+            },
+            "logical_proof_accepted": false,
+            "native_exit_code": 0,
+            "native_high_water_bytes": 13336576,
+            "native_pgid": 51686,
+            "native_pid": 51689,
+            "parent_pgid": 51686,
+            "parent_pid": 51686,
+            "ready": "READY 92457 88986 0 1 2",
+            "request_stages": [
+              {
+                "input_sha256": "b224af9e292a45dd3bc6eeae43e85151bcc50786e28ba8510b2095b9d4fa57ca",
+                "limit": 1000000000,
+                "ordinal": 0,
+                "output_sha256": "b8bd02ac78a3baab2faed241181087150898f44a3c4e8f62c438dd344d2576d1",
+                "purpose": "first_order_theory_admission",
+                "record_id": 0,
+                "request_sha256": "36d444863483832379f33dbd210735f00168ecc676e40c2f272b3527d2961ed5",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "8a32deefe233a137f8a1e7225ace56e037ddb8eb9966691e74a6772766c3a6c9",
+                "limit": 1000000000,
+                "ordinal": 1,
+                "output_sha256": "6ad2d946f13695c19e84270739c4c6a007181307654c00fdc3f46b9d4069d8e3",
+                "purpose": "first_order_tautology",
+                "record_id": 1,
+                "request_sha256": "33f1c3a845f8258dd0320f63bd16e1c34af67ae646fd52b8e7dd6dfe9d1df03d",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "bbeb05f41babf201dd9832a559da333c3a35a4a093e232bb890192903cbf1a5e",
+                "limit": 1000000000,
+                "ordinal": 2,
+                "output_sha256": "91d0435515f8b6ee4782ddceafa2c4be1afb375441e5c98517d90b6622700497",
+                "purpose": "first_order_tautology",
+                "record_id": 2,
+                "request_sha256": "a58dfdd08b894ae81f7a547ad3f7ab76f4d1dc978322914e5aab8ad310f463e1",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "24e59c028b00e9b5758be9db6f49c8737bac58e40469538705eaf5f2afe7d283",
+                "limit": 1000000000,
+                "ordinal": 3,
+                "output_sha256": "b28c2d6cba13549d62ac3efe40d7041e760a62be50e93a40f369f8b9ce3ad845",
+                "purpose": "first_order_tautology",
+                "record_id": 3,
+                "request_sha256": "4d903414aab3c9c3204ac2f864b10589dde1ae49f41e1198515b96b4322324ad",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "53372aa8db628eec5aefb3d7ea5b739c996d8480ba4ce968512ebce552b319e5",
+                "limit": 1000000000,
+                "ordinal": 4,
+                "output_sha256": "c36daa0450781a65e0924b98ce9ec67e860c42d8cf30e26e9fbea4d82dc1570d",
+                "purpose": "first_order_tautology",
+                "record_id": 4,
+                "request_sha256": "117d4c4168d12ddc1116dac22043c034a39710afd34d5e6c24bb80df21d0956f",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "43f264dcd2eaace14b2f8e29ca93c3ee968e267e5d36abd355be72992de5fe72",
+                "limit": 1000000000,
+                "ordinal": 5,
+                "output_sha256": "f2756062110206e802c43dda4ac460a5411de4b1e4153b3a3cf671e0a02bb5da",
+                "purpose": "first_order_tautology",
+                "record_id": 5,
+                "request_sha256": "11c416366dc67dd172848a7e2c1b5c4e69ae602e9e9b04632cb15ee4d05347f9",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "d751621ccaf81653d37cde7a62018cea805305d07e28dea028a3b44f1f3c8574",
+                "limit": 1000000000,
+                "ordinal": 6,
+                "output_sha256": "1a4ab24c89b1af90a6cba8710cf507ced7904f94b03da7e130535e5413f96eb0",
+                "purpose": "first_order_tautology",
+                "record_id": 6,
+                "request_sha256": "782ca37bf073ec30953187adb5026c5a374b39d9ddb42a54e47fb641e6260432",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "c98f4475df21c66886b5da657d3f3384eb48473de570b244e23cce0a273f7186",
+                "limit": 1000000000,
+                "ordinal": 7,
+                "output_sha256": "73c681fcf667a5a1da46d65f35b7877a0282954485a35c51f157bc504f8cf7c5",
+                "purpose": "first_order_tautology",
+                "record_id": 7,
+                "request_sha256": "9b554605606ebccdba754dfe972a2d25183c64b3077a3965f335c14eaaaa267d",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "e90de0d082809e7d96c43d7089c0530fbaa60d0d59ba04d479af78abd10bec77",
+                "limit": 1000000000,
+                "ordinal": 8,
+                "output_sha256": "d6104eacca0c547ea3a225b780cab14bc815f2d842cf297489b51c9df60fcae7",
+                "purpose": "first_order_tautology",
+                "record_id": 8,
+                "request_sha256": "56dd4fbdd1aa27510ac38af7bf0a842d834c75b0b6394b78dbb63f8d16eb0494",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "02934633429531a84f98f60d2a88ba143cc907d3398e9b046bafd986cd4afbb5",
+                "limit": 1000000000,
+                "ordinal": 9,
+                "output_sha256": "054761fd6b6b2a79a969b433dbe70e3a53826818b880585f51f1b6fadfad3871",
+                "purpose": "first_order_tautology",
+                "record_id": 9,
+                "request_sha256": "dbfc9d5f7acaacdbb006f4b781030719cb7397ca20fed4e90627e680019f6f57",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "94a4e670e6f5aa68ab155259270bb07b2faf462adfde3e192ea221d8c4bedde6",
+                "limit": 1000000000,
+                "ordinal": 10,
+                "output_sha256": "c4b09e6149fd40bf834efab2fc965b5246e062d08acccbd019d75ba74f257ef1",
+                "purpose": "first_order_tautology",
+                "record_id": 10,
+                "request_sha256": "1000b9182abaeb5aec4bf781db22bc7a2f556ef4bc9adf026a46266fcbfd4dd2",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "5b9a30ae15ccd6b3eb1589311c2408e035b7a27ee4a5d561d873cd7f12eccf33",
+                "limit": 1000000000,
+                "ordinal": 11,
+                "output_sha256": "60c9b207671449a96d5ba4629930a8e605abaac687c3b453b01ffe2dce1277f2",
+                "purpose": "first_order_tautology",
+                "record_id": 11,
+                "request_sha256": "83be1b29d89696c15d97458ce13abf467b4595896780f5716b6bed5679cecf31",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "e155c4f19d7906abfadd3cb2df6b194fb2bb180dc7fa94c7da93e153c9db1031",
+                "limit": 1000000000,
+                "ordinal": 12,
+                "output_sha256": "dad96f8ed5f08dc08c680736b9a445dbac4cf66034765dbadced527c1fe4406d",
+                "purpose": "first_order_scheme",
+                "record_id": 12,
+                "request_sha256": "2f0a912d5c3493ef025a79e89cd6c83cf70e04b0d8577e1ac227fa8901193d94",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "1ac6360de9cad4c90e3373ca238376d9fea81c0fe64030d32e4f267fb9f11b84",
+                "limit": 1000000000,
+                "ordinal": 13,
+                "output_sha256": "790f5eda5ce3e030a3daa4f7669d5b019686818fbe25c9cdfab4e81d879e1c01",
+                "purpose": "first_order_scheme",
+                "record_id": 13,
+                "request_sha256": "e2fa929411abc851313b38c405ad6ac9d43ad6264ce5d573f924901c6152f58c",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "f66f7f1cb48b64be1718497fe0fbca80b672d396fc6ca8298ea2ac623390a32e",
+                "limit": 1000000000,
+                "ordinal": 14,
+                "output_sha256": "c1f2176c96fa1f6a7bce2f56bc3fe6212a089113a9615c87e0c9ca7004bf33bb",
+                "purpose": "first_order_scheme",
+                "record_id": 14,
+                "request_sha256": "4b9e0eebe1ccdc1880455be4584ca7d9a4381b66813838ef8f09bebe4b70df97",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "a94031145884037d9b7ee2f40a75c3866658da736c66430d0cd55f58de855625",
+                "limit": 5000000000,
+                "ordinal": 15,
+                "output_sha256": "b4a0285e38bd305a548027e00de37034e98e708c1fc8da009553ef7c4284f4de",
+                "purpose": "fresh_quantified_receiver_final",
+                "record_id": 15,
+                "request_sha256": "3687ef2abb62f53f80c0f578b4fbc3b7669baee7fe0c52f05493fa204f8bebf1",
+                "stage": "COMPLETED"
+              }
+            ],
+            "ru_maxrss_unit": "bytes on declared Darwin runtime; Root must gate platform",
+            "same_owned_process_group": true,
+            "schema": "semantic-family-native-transport-receipt-v1",
+            "scientific_acceptance": false,
+            "stderr_bytes": 0,
+            "stderr_complete": true,
+            "stderr_hex": "",
+            "stderr_utf8": "",
+            "stdout_bytes": 3402,
+            "stdout_eof": true,
+            "stdout_pending_bytes": 0,
+            "termination_signals": [],
+            "version": "semantic-family-bounded-request-oracle-transport-v1",
+            "wait4_status": 0,
+            "wait4_usage": {
+              "ru_majflt": 5,
+              "ru_maxrss": 13336576,
+              "ru_minflt": 1771,
+              "ru_stime": 0.121484,
+              "ru_utime": 12.182964
+            },
+            "work_deadline": 764094.785715875
+          },
+          "owned_evidence_statistics": null,
+          "resource_accepted": false,
+          "result_already_published": {
+            "bytes": 36911886,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+            "sha256": "77c6af97754c4a038da88f71f2aa40adf24dbacc16a7d76c4f23977ce4a9a5bd"
+          },
+          "retry_authorized": false,
+          "schema": "ROOT-owned-evidence-worker-failure-v1",
+          "scientific_acceptance": false,
+          "stage_intervals": [
+            {
+              "returned_ns": 763914845990333,
+              "stage": "intake:owned_evidence_cold_v4.py",
+              "started_ns": 763914845867500
+            },
+            {
+              "returned_ns": 763914870419333,
+              "stage": "intake:python3.12",
+              "started_ns": 763914845995500
+            },
+            {
+              "returned_ns": 763914871329291,
+              "stage": "intake:semantic-inventory-policy-001.json",
+              "started_ns": 763914870452000
+            },
+            {
+              "returned_ns": 763914871570166,
+              "stage": "intake:full-assertion-capsule.json",
+              "started_ns": 763914871335208
+            },
+            {
+              "returned_ns": 763914871698791,
+              "stage": "intake:runtime-closure-v1.json",
+              "started_ns": 763914871574250
+            },
+            {
+              "returned_ns": 763914871850416,
+              "stage": "intake:case-declaration-v1.json",
+              "started_ns": 763914871701750
+            },
+            {
+              "returned_ns": 763914872811125,
+              "stage": "select frozen receiver",
+              "started_ns": 763914872788083
+            },
+            {
+              "returned_ns": 763914873688250,
+              "stage": "intake:parent runtime closure",
+              "started_ns": 763914872812041
+            },
+            {
+              "returned_ns": 763914874426333,
+              "stage": "copy:certificate_boundary_search",
+              "started_ns": 763914874197500
+            },
+            {
+              "returned_ns": 763914874808833,
+              "stage": "copy:interned_quantified_family_points_v1",
+              "started_ns": 763914874612833
+            },
+            {
+              "returned_ns": 763914875604333,
+              "stage": "copy:interned_result_reader_v2",
+              "started_ns": 763914875315250
+            },
+            {
+              "returned_ns": 763914876095541,
+              "stage": "copy:logic",
+              "started_ns": 763914875775750
+            },
+            {
+              "returned_ns": 763914876854708,
+              "stage": "copy:native_inference_inventory",
+              "started_ns": 763914876565333
+            },
+            {
+              "returned_ns": 763914877326458,
+              "stage": "copy:native_inventory_policy",
+              "started_ns": 763914876991458
+            },
+            {
+              "returned_ns": 763914877873041,
+              "stage": "copy:native_receptor_points",
+              "started_ns": 763914877603291
+            },
+            {
+              "returned_ns": 763914878157916,
+              "stage": "copy:proof_boundary",
+              "started_ns": 763914877983500
+            },
+            {
+              "returned_ns": 763914878645958,
+              "stage": "copy:quantified_family_points_v2",
+              "started_ns": 763914878459375
+            },
+            {
+              "returned_ns": 763914878939125,
+              "stage": "copy:quantified_receptors_v1",
+              "started_ns": 763914878752958
+            },
+            {
+              "returned_ns": 763914879234750,
+              "stage": "copy:quantified_symbolic_control_v2",
+              "started_ns": 763914879032125
+            },
+            {
+              "returned_ns": 763914880106500,
+              "stage": "copy:receptor_support_ordering_v1",
+              "started_ns": 763914879362916
+            },
+            {
+              "returned_ns": 763914880409166,
+              "stage": "copy:semantic_inventory_guidance",
+              "started_ns": 763914880215875
+            },
+            {
+              "returned_ns": 763914880703791,
+              "stage": "copy:semantic_inventory_oracle",
+              "started_ns": 763914880513708
+            },
+            {
+              "returned_ns": 763914882346875,
+              "stage": "copy:semantic_inventory_search_v2",
+              "started_ns": 763914880841875
+            },
+            {
+              "returned_ns": 763914883608541,
+              "stage": "copy:semantic_lemma_inventory",
+              "started_ns": 763914882660416
+            },
+            {
+              "returned_ns": 763914883874250,
+              "stage": "copy:semantic_point_smt",
+              "started_ns": 763914883697708
+            },
+            {
+              "returned_ns": 763914884138250,
+              "stage": "copy:semantic_receptor_points",
+              "started_ns": 763914883968000
+            },
+            {
+              "returned_ns": 763914884416750,
+              "stage": "copy:tape_binary",
+              "started_ns": 763914884246458
+            },
+            {
+              "returned_ns": 763914884727083,
+              "stage": "copy:tape_tree_machine",
+              "started_ns": 763914884529125
+            },
+            {
+              "returned_ns": 763914885043708,
+              "stage": "copy:tree_machine",
+              "started_ns": 763914884827583
+            },
+            {
+              "returned_ns": 763914885347833,
+              "stage": "copy:turtle",
+              "started_ns": 763914885146166
+            },
+            {
+              "returned_ns": 763914885837541,
+              "stage": "copy:semantic_receiver_driver",
+              "started_ns": 763914885449875
+            },
+            {
+              "returned_ns": 763914886221875,
+              "stage": "copy:bounded_request_oracle",
+              "started_ns": 763914885968625
+            },
+            {
+              "returned_ns": 763914886773333,
+              "stage": "copy:owned_evidence_adapter",
+              "started_ns": 763914886482750
+            },
+            {
+              "returned_ns": 763914887087208,
+              "stage": "copy:exact_evidence_arena",
+              "started_ns": 763914886877791
+            },
+            {
+              "returned_ns": 763914887362500,
+              "stage": "copy:owned_inventory_join",
+              "started_ns": 763914887198750
+            },
+            {
+              "returned_ns": 763914887685291,
+              "stage": "copy:independent_forest_inverse",
+              "started_ns": 763914887453333
+            },
+            {
+              "returned_ns": 763914888168750,
+              "stage": "copy schema:mp_schema_certificate",
+              "started_ns": 763914887864833
+            },
+            {
+              "returned_ns": 763914888942416,
+              "stage": "kernel semantic raw Source",
+              "started_ns": 763914888256000
+            },
+            {
+              "returned_ns": 763914889913708,
+              "stage": "Z3 intake:__init__.py",
+              "started_ns": 763914888950583
+            },
+            {
+              "returned_ns": 763914891277750,
+              "stage": "Z3 intake:z3.py",
+              "started_ns": 763914889925375
+            },
+            {
+              "returned_ns": 763914891418791,
+              "stage": "Z3 intake:z3consts.py",
+              "started_ns": 763914891281541
+            },
+            {
+              "returned_ns": 763914892404458,
+              "stage": "Z3 intake:z3core.py",
+              "started_ns": 763914891422625
+            },
+            {
+              "returned_ns": 763914892607041,
+              "stage": "Z3 intake:z3num.py",
+              "started_ns": 763914892408458
+            },
+            {
+              "returned_ns": 763914892811750,
+              "stage": "Z3 intake:z3poly.py",
+              "started_ns": 763914892610916
+            },
+            {
+              "returned_ns": 763914893033208,
+              "stage": "Z3 intake:z3printer.py",
+              "started_ns": 763914892816166
+            },
+            {
+              "returned_ns": 763914893226750,
+              "stage": "Z3 intake:z3rcf.py",
+              "started_ns": 763914893036125
+            },
+            {
+              "returned_ns": 763914893355958,
+              "stage": "Z3 intake:z3types.py",
+              "started_ns": 763914893229500
+            },
+            {
+              "returned_ns": 763914893738458,
+              "stage": "Z3 intake:z3util.py",
+              "started_ns": 763914893359375
+            },
+            {
+              "returned_ns": 763914894411083,
+              "stage": "Z3 intake:z3++.h",
+              "started_ns": 763914893748750
+            },
+            {
+              "returned_ns": 763914894683666,
+              "stage": "Z3 intake:z3.h",
+              "started_ns": 763914894415833
+            },
+            {
+              "returned_ns": 763914894889125,
+              "stage": "Z3 intake:z3_algebraic.h",
+              "started_ns": 763914894687416
+            },
+            {
+              "returned_ns": 763914895561583,
+              "stage": "Z3 intake:z3_api.h",
+              "started_ns": 763914894892041
+            },
+            {
+              "returned_ns": 763914895809708,
+              "stage": "Z3 intake:z3_ast_containers.h",
+              "started_ns": 763914895566666
+            },
+            {
+              "returned_ns": 763914896012458,
+              "stage": "Z3 intake:z3_fixedpoint.h",
+              "started_ns": 763914895813541
+            },
+            {
+              "returned_ns": 763914896270250,
+              "stage": "Z3 intake:z3_fpa.h",
+              "started_ns": 763914896015791
+            },
+            {
+              "returned_ns": 763914896660208,
+              "stage": "Z3 intake:z3_macros.h",
+              "started_ns": 763914896309083
+            },
+            {
+              "returned_ns": 763914896858916,
+              "stage": "Z3 intake:z3_optimization.h",
+              "started_ns": 763914896663625
+            },
+            {
+              "returned_ns": 763914896977083,
+              "stage": "Z3 intake:z3_polynomial.h",
+              "started_ns": 763914896861833
+            },
+            {
+              "returned_ns": 763914897159208,
+              "stage": "Z3 intake:z3_rcf.h",
+              "started_ns": 763914896979791
+            },
+            {
+              "returned_ns": 763914897274083,
+              "stage": "Z3 intake:z3_spacer.h",
+              "started_ns": 763914897162041
+            },
+            {
+              "returned_ns": 763914897442375,
+              "stage": "Z3 intake:z3_v1.h",
+              "started_ns": 763914897277208
+            },
+            {
+              "returned_ns": 763914897574875,
+              "stage": "Z3 intake:z3_version.h",
+              "started_ns": 763914897444958
+            },
+            {
+              "returned_ns": 763914928616333,
+              "stage": "Z3 intake:libz3.4.15.dylib",
+              "started_ns": 763914897578000
+            },
+            {
+              "returned_ns": 763914948349708,
+              "stage": "Z3 intake:libz3.dll",
+              "started_ns": 763914928638375
+            },
+            {
+              "returned_ns": 763914980743541,
+              "stage": "Z3 intake:libz3.dylib",
+              "started_ns": 763914948364250
+            },
+            {
+              "returned_ns": 763914982243000,
+              "stage": "Z3 intake:msvcp140.dll",
+              "started_ns": 763914980769666
+            },
+            {
+              "returned_ns": 763914982461333,
+              "stage": "Z3 intake:msvcp140_1.dll",
+              "started_ns": 763914982251416
+            },
+            {
+              "returned_ns": 763914983968541,
+              "stage": "Z3 intake:msvcp140_2.dll",
+              "started_ns": 763914982464958
+            },
+            {
+              "returned_ns": 763914984431958,
+              "stage": "Z3 intake:msvcp140_atomic_wait.dll",
+              "started_ns": 763914983983250
+            },
+            {
+              "returned_ns": 763914984626166,
+              "stage": "Z3 intake:msvcp140_codecvt_ids.dll",
+              "started_ns": 763914984436083
+            },
+            {
+              "returned_ns": 763914985134666,
+              "stage": "Z3 intake:vcomp140.dll",
+              "started_ns": 763914984629291
+            },
+            {
+              "returned_ns": 763914985677875,
+              "stage": "Z3 intake:vcruntime140.dll",
+              "started_ns": 763914985138041
+            },
+            {
+              "returned_ns": 763914985914291,
+              "stage": "Z3 intake:vcruntime140_1.dll",
+              "started_ns": 763914985685833
+            },
+            {
+              "returned_ns": 763914986103333,
+              "stage": "Z3 intake:vcruntime140_threads.dll",
+              "started_ns": 763914985917875
+            },
+            {
+              "returned_ns": 763915018540083,
+              "stage": "Z3 intake:z3",
+              "started_ns": 763914986107166
+            },
+            {
+              "returned_ns": 763915018833375,
+              "stage": "Z3 intake:METADATA",
+              "started_ns": 763915018558875
+            },
+            {
+              "returned_ns": 763915019051125,
+              "stage": "Z3 intake:WHEEL",
+              "started_ns": 763915018838125
+            },
+            {
+              "returned_ns": 763915019383208,
+              "stage": "Z3 intake:top_level.txt",
+              "started_ns": 763915019055208
+            },
+            {
+              "returned_ns": 763915019582166,
+              "stage": "Z3 intake:RECORD",
+              "started_ns": 763915019386041
+            },
+            {
+              "returned_ns": 763915034057833,
+              "stage": "import:certificate_boundary_search",
+              "started_ns": 763915019599166
+            },
+            {
+              "returned_ns": 763915055422166,
+              "stage": "import:interned_quantified_family_points_v1",
+              "started_ns": 763915034060666
+            },
+            {
+              "returned_ns": 763915055911916,
+              "stage": "import:interned_result_reader_v2",
+              "started_ns": 763915055424416
+            },
+            {
+              "returned_ns": 763915055914791,
+              "stage": "import:logic",
+              "started_ns": 763915055913333
+            },
+            {
+              "returned_ns": 763915057530500,
+              "stage": "import:native_inference_inventory",
+              "started_ns": 763915055915458
+            },
+            {
+              "returned_ns": 763915058075250,
+              "stage": "import:native_inventory_policy",
+              "started_ns": 763915057532041
+            },
+            {
+              "returned_ns": 763915058078208,
+              "stage": "import:native_receptor_points",
+              "started_ns": 763915058076666
+            },
+            {
+              "returned_ns": 763915058079583,
+              "stage": "import:proof_boundary",
+              "started_ns": 763915058078833
+            },
+            {
+              "returned_ns": 763915058080291,
+              "stage": "import:quantified_family_points_v2",
+              "started_ns": 763915058079958
+            },
+            {
+              "returned_ns": 763915058081125,
+              "stage": "import:quantified_receptors_v1",
+              "started_ns": 763915058080750
+            },
+            {
+              "returned_ns": 763915060310958,
+              "stage": "import:quantified_symbolic_control_v2",
+              "started_ns": 763915058081458
+            },
+            {
+              "returned_ns": 763915062381208,
+              "stage": "import:receptor_support_ordering_v1",
+              "started_ns": 763915060312500
+            },
+            {
+              "returned_ns": 763915063679333,
+              "stage": "import:semantic_inventory_guidance",
+              "started_ns": 763915062384541
+            },
+            {
+              "returned_ns": 763915068678500,
+              "stage": "import:semantic_inventory_oracle",
+              "started_ns": 763915063681000
+            },
+            {
+              "returned_ns": 763915070342708,
+              "stage": "import:semantic_inventory_search_v2",
+              "started_ns": 763915068682208
+            },
+            {
+              "returned_ns": 763915071446416,
+              "stage": "import:semantic_lemma_inventory",
+              "started_ns": 763915070344375
+            },
+            {
+              "returned_ns": 763915072553291,
+              "stage": "import:semantic_point_smt",
+              "started_ns": 763915071448083
+            },
+            {
+              "returned_ns": 763915072561750,
+              "stage": "import:semantic_receptor_points",
+              "started_ns": 763915072557250
+            },
+            {
+              "returned_ns": 763915072564458,
+              "stage": "import:tape_binary",
+              "started_ns": 763915072563083
+            },
+            {
+              "returned_ns": 763915072566541,
+              "stage": "import:tape_tree_machine",
+              "started_ns": 763915072565250
+            },
+            {
+              "returned_ns": 763915072568791,
+              "stage": "import:tree_machine",
+              "started_ns": 763915072567208
+            },
+            {
+              "returned_ns": 763915072570375,
+              "stage": "import:turtle",
+              "started_ns": 763915072569541
+            },
+            {
+              "returned_ns": 763915085022208,
+              "stage": "import:semantic_receiver_driver",
+              "started_ns": 763915072571666
+            },
+            {
+              "returned_ns": 763915088100125,
+              "stage": "import:bounded_request_oracle",
+              "started_ns": 763915085025000
+            },
+            {
+              "returned_ns": 763915090949458,
+              "stage": "import:owned_evidence_adapter",
+              "started_ns": 763915088102416
+            },
+            {
+              "returned_ns": 763915097394541,
+              "stage": "import:exact_evidence_arena",
+              "started_ns": 763915090961458
+            },
+            {
+              "returned_ns": 763915099648500,
+              "stage": "import:owned_inventory_join",
+              "started_ns": 763915097402000
+            },
+            {
+              "returned_ns": 763915103687333,
+              "stage": "import:independent_forest_inverse",
+              "started_ns": 763915099652375
+            },
+            {
+              "returned_ns": 763915191517583,
+              "stage": "import:Z3",
+              "started_ns": 763915104343958
+            },
+            {
+              "returned_ns": 763915207356500,
+              "stage": "import schema:mp_schema_certificate",
+              "started_ns": 763915204532583
+            },
+            {
+              "returned_ns": 763915224395541,
+              "stage": "native intake:boundary-oracle-v2",
+              "started_ns": 763915223808750
+            },
+            {
+              "returned_ns": 763915226985125,
+              "stage": "native intake:proof-boundary-microcode-001.json.gz",
+              "started_ns": 763915224401666
+            },
+            {
+              "returned_ns": 763915229384875,
+              "stage": "native intake:proof-boundary-001.json",
+              "started_ns": 763915227005958
+            },
+            {
+              "returned_ns": 763915232249791,
+              "stage": "decode native template",
+              "started_ns": 763915229388291
+            },
+            {
+              "returned_ns": 763915357168958,
+              "stage": "decode fixed microcode",
+              "started_ns": 763915232251416
+            },
+            {
+              "returned_ns": 763915723238750,
+              "stage": "encode fixed native table",
+              "started_ns": 763915471418958
+            },
+            {
+              "returned_ns": 763916627713375,
+              "stage": "owned-adapter-boundary-diagnostics",
+              "started_ns": 763915728244041
+            }
+          ]
+        },
+        "worker_failure_descriptor": {
+          "bytes": 19391,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/worker-failure.json",
+          "sha256": "4cd0536bc7b5d79c2a1e7128e8094d2fc73de299b07191ed2d18d6d66c51104d"
+        }
+      },
+      {
+        "ROOT_mathematical_proof_admitted": false,
+        "ROOT_resource_accepted": false,
+        "aggregate_peak_bytes": null,
+        "elapsed_seconds": 180.472161625,
+        "errors": [
+          {
+            "message": "normal exact Python exit0",
+            "stamp_ns": 764295396721791,
+            "type": "OnceRunnerError"
+          }
+        ],
+        "group_absent": true,
+        "logs_complete": true,
+        "mode": "symbolic",
+        "once_plan": {
+          "bytes": 2764,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+          "sha256": "02e0588d5e734890d7068a6ddb021d03db4dc1166344fa4fa4695334c704c9ff"
+        },
+        "outer_exit_code": 2,
+        "outputs": {
+          "stderr": {
+            "bytes": 2118,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/stderr.bin",
+            "sha256": "23f3ae147f695954af4512f33136ec0b8cae7864919e67bb50a706ac2a51af58"
+          },
+          "stdout": {
+            "bytes": 0,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "resource_candidate": false,
+        "runner_receipt": {
+          "bytes": 11947,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/runner-receipt.json",
+          "sha256": "32592ba914992ad989cddad63007165d92392feb00e6b70986182debc4c0531d"
+        },
+        "scientific_acceptance": false,
+        "terminal": {
+          "bytes": 1618,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/terminal.json",
+          "sha256": "b23feb1f2c363b65c8e96e098619e738631c5856b9e476c791aa213900dedda1"
+        },
+        "worker_exit_code": 1,
+        "worker_failure": {
+          "cleanup_errors": [],
+          "complete_output_accepted": false,
+          "diagnostic_output_prefixes": [
+            {
+              "bytes": 14906405,
+              "complete_output_accepted": false,
+              "diagnostic_only": true,
+              "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+              "sha256": "d4450d19b8e4fd07f10ee4766cd083408258a25a8df1dcd8375bce48c2029d55"
+            },
+            {
+              "bytes": 33999395,
+              "complete_output_accepted": false,
+              "diagnostic_only": true,
+              "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+              "sha256": "6382659c11f5455af90775c8cfb1a195fafc11885dfd1e763e0b5442849f4740"
+            }
+          ],
+          "error_type": "ColdError",
+          "logical_proof_accepted": false,
+          "message": "full saved evidence inverse within original work",
+          "native_transport": {
+            "CPP_self_reported_peak_is_resource_authority": false,
+            "aggregate_resource_accepted": false,
+            "all_reaped": true,
+            "cleanup_errors": [],
+            "closed": true,
+            "closure_deadline": 764324.979967666,
+            "complete_records": 16,
+            "constructor_completed": true,
+            "limits": {
+              "binary_file_bytes": 67108864,
+              "cleanup_reserve_seconds": 30,
+              "maximum_cleanup_seconds": 10,
+              "normal_quit_grace_seconds": 1,
+              "poll_seconds": 0.05,
+              "queries": 100000,
+              "ready_bytes": 256,
+              "reply_bytes": 65536,
+              "stderr_bytes": 65536,
+              "stdout_total_bytes": 16777216,
+              "terminate_grace_seconds": 1
+            },
+            "logical_proof_accepted": false,
+            "native_exit_code": 0,
+            "native_high_water_bytes": 13320192,
+            "native_pgid": 52568,
+            "native_pid": 52569,
+            "parent_pgid": 52568,
+            "parent_pid": 52568,
+            "ready": "READY 92457 88986 0 1 2",
+            "request_stages": [
+              {
+                "input_sha256": "b224af9e292a45dd3bc6eeae43e85151bcc50786e28ba8510b2095b9d4fa57ca",
+                "limit": 1000000000,
+                "ordinal": 0,
+                "output_sha256": "b8bd02ac78a3baab2faed241181087150898f44a3c4e8f62c438dd344d2576d1",
+                "purpose": "first_order_theory_admission",
+                "record_id": 0,
+                "request_sha256": "36d444863483832379f33dbd210735f00168ecc676e40c2f272b3527d2961ed5",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "8a32deefe233a137f8a1e7225ace56e037ddb8eb9966691e74a6772766c3a6c9",
+                "limit": 1000000000,
+                "ordinal": 1,
+                "output_sha256": "6ad2d946f13695c19e84270739c4c6a007181307654c00fdc3f46b9d4069d8e3",
+                "purpose": "first_order_tautology",
+                "record_id": 1,
+                "request_sha256": "33f1c3a845f8258dd0320f63bd16e1c34af67ae646fd52b8e7dd6dfe9d1df03d",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "bbeb05f41babf201dd9832a559da333c3a35a4a093e232bb890192903cbf1a5e",
+                "limit": 1000000000,
+                "ordinal": 2,
+                "output_sha256": "91d0435515f8b6ee4782ddceafa2c4be1afb375441e5c98517d90b6622700497",
+                "purpose": "first_order_tautology",
+                "record_id": 2,
+                "request_sha256": "a58dfdd08b894ae81f7a547ad3f7ab76f4d1dc978322914e5aab8ad310f463e1",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "24e59c028b00e9b5758be9db6f49c8737bac58e40469538705eaf5f2afe7d283",
+                "limit": 1000000000,
+                "ordinal": 3,
+                "output_sha256": "b28c2d6cba13549d62ac3efe40d7041e760a62be50e93a40f369f8b9ce3ad845",
+                "purpose": "first_order_tautology",
+                "record_id": 3,
+                "request_sha256": "4d903414aab3c9c3204ac2f864b10589dde1ae49f41e1198515b96b4322324ad",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "53372aa8db628eec5aefb3d7ea5b739c996d8480ba4ce968512ebce552b319e5",
+                "limit": 1000000000,
+                "ordinal": 4,
+                "output_sha256": "c36daa0450781a65e0924b98ce9ec67e860c42d8cf30e26e9fbea4d82dc1570d",
+                "purpose": "first_order_tautology",
+                "record_id": 4,
+                "request_sha256": "117d4c4168d12ddc1116dac22043c034a39710afd34d5e6c24bb80df21d0956f",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "43f264dcd2eaace14b2f8e29ca93c3ee968e267e5d36abd355be72992de5fe72",
+                "limit": 1000000000,
+                "ordinal": 5,
+                "output_sha256": "f2756062110206e802c43dda4ac460a5411de4b1e4153b3a3cf671e0a02bb5da",
+                "purpose": "first_order_tautology",
+                "record_id": 5,
+                "request_sha256": "11c416366dc67dd172848a7e2c1b5c4e69ae602e9e9b04632cb15ee4d05347f9",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "d751621ccaf81653d37cde7a62018cea805305d07e28dea028a3b44f1f3c8574",
+                "limit": 1000000000,
+                "ordinal": 6,
+                "output_sha256": "1a4ab24c89b1af90a6cba8710cf507ced7904f94b03da7e130535e5413f96eb0",
+                "purpose": "first_order_tautology",
+                "record_id": 6,
+                "request_sha256": "782ca37bf073ec30953187adb5026c5a374b39d9ddb42a54e47fb641e6260432",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "c98f4475df21c66886b5da657d3f3384eb48473de570b244e23cce0a273f7186",
+                "limit": 1000000000,
+                "ordinal": 7,
+                "output_sha256": "73c681fcf667a5a1da46d65f35b7877a0282954485a35c51f157bc504f8cf7c5",
+                "purpose": "first_order_tautology",
+                "record_id": 7,
+                "request_sha256": "9b554605606ebccdba754dfe972a2d25183c64b3077a3965f335c14eaaaa267d",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "e90de0d082809e7d96c43d7089c0530fbaa60d0d59ba04d479af78abd10bec77",
+                "limit": 1000000000,
+                "ordinal": 8,
+                "output_sha256": "d6104eacca0c547ea3a225b780cab14bc815f2d842cf297489b51c9df60fcae7",
+                "purpose": "first_order_tautology",
+                "record_id": 8,
+                "request_sha256": "56dd4fbdd1aa27510ac38af7bf0a842d834c75b0b6394b78dbb63f8d16eb0494",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "02934633429531a84f98f60d2a88ba143cc907d3398e9b046bafd986cd4afbb5",
+                "limit": 1000000000,
+                "ordinal": 9,
+                "output_sha256": "054761fd6b6b2a79a969b433dbe70e3a53826818b880585f51f1b6fadfad3871",
+                "purpose": "first_order_tautology",
+                "record_id": 9,
+                "request_sha256": "dbfc9d5f7acaacdbb006f4b781030719cb7397ca20fed4e90627e680019f6f57",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "94a4e670e6f5aa68ab155259270bb07b2faf462adfde3e192ea221d8c4bedde6",
+                "limit": 1000000000,
+                "ordinal": 10,
+                "output_sha256": "c4b09e6149fd40bf834efab2fc965b5246e062d08acccbd019d75ba74f257ef1",
+                "purpose": "first_order_tautology",
+                "record_id": 10,
+                "request_sha256": "1000b9182abaeb5aec4bf781db22bc7a2f556ef4bc9adf026a46266fcbfd4dd2",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "5b9a30ae15ccd6b3eb1589311c2408e035b7a27ee4a5d561d873cd7f12eccf33",
+                "limit": 1000000000,
+                "ordinal": 11,
+                "output_sha256": "60c9b207671449a96d5ba4629930a8e605abaac687c3b453b01ffe2dce1277f2",
+                "purpose": "first_order_tautology",
+                "record_id": 11,
+                "request_sha256": "83be1b29d89696c15d97458ce13abf467b4595896780f5716b6bed5679cecf31",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "e155c4f19d7906abfadd3cb2df6b194fb2bb180dc7fa94c7da93e153c9db1031",
+                "limit": 1000000000,
+                "ordinal": 12,
+                "output_sha256": "dad96f8ed5f08dc08c680736b9a445dbac4cf66034765dbadced527c1fe4406d",
+                "purpose": "first_order_scheme",
+                "record_id": 12,
+                "request_sha256": "2f0a912d5c3493ef025a79e89cd6c83cf70e04b0d8577e1ac227fa8901193d94",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "1ac6360de9cad4c90e3373ca238376d9fea81c0fe64030d32e4f267fb9f11b84",
+                "limit": 1000000000,
+                "ordinal": 13,
+                "output_sha256": "790f5eda5ce3e030a3daa4f7669d5b019686818fbe25c9cdfab4e81d879e1c01",
+                "purpose": "first_order_scheme",
+                "record_id": 13,
+                "request_sha256": "e2fa929411abc851313b38c405ad6ac9d43ad6264ce5d573f924901c6152f58c",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "f66f7f1cb48b64be1718497fe0fbca80b672d396fc6ca8298ea2ac623390a32e",
+                "limit": 1000000000,
+                "ordinal": 14,
+                "output_sha256": "c1f2176c96fa1f6a7bce2f56bc3fe6212a089113a9615c87e0c9ca7004bf33bb",
+                "purpose": "first_order_scheme",
+                "record_id": 14,
+                "request_sha256": "4b9e0eebe1ccdc1880455be4584ca7d9a4381b66813838ef8f09bebe4b70df97",
+                "stage": "COMPLETED"
+              },
+              {
+                "input_sha256": "02eac578e491a0791f787e62a4163a212dc03d7d15b6f0df8e857812061c3a17",
+                "limit": 5000000000,
+                "ordinal": 15,
+                "output_sha256": "017e261e28f2b297075001242c7ba2eac5b768ff032cf0462ef8850b67bcc312",
+                "purpose": "fresh_quantified_receiver_final",
+                "record_id": 15,
+                "request_sha256": "afbb46b7c9fd9aff64324d854d865e0c26f00aa05f4a84339901280d4f6ec2ce",
+                "stage": "COMPLETED"
+              }
+            ],
+            "ru_maxrss_unit": "bytes on declared Darwin runtime; Root must gate platform",
+            "same_owned_process_group": true,
+            "schema": "semantic-family-native-transport-receipt-v1",
+            "scientific_acceptance": false,
+            "stderr_bytes": 0,
+            "stderr_complete": true,
+            "stderr_hex": "",
+            "stderr_utf8": "",
+            "stdout_bytes": 3403,
+            "stdout_eof": true,
+            "stdout_pending_bytes": 0,
+            "termination_signals": [],
+            "version": "semantic-family-bounded-request-oracle-transport-v1",
+            "wait4_status": 0,
+            "wait4_usage": {
+              "ru_majflt": 22,
+              "ru_maxrss": 13320192,
+              "ru_minflt": 1600,
+              "ru_stime": 0.229466,
+              "ru_utime": 17.545337
+            },
+            "work_deadline": 764294.979967666
+          },
+          "owned_evidence_statistics": null,
+          "resource_accepted": false,
+          "result_already_published": {
+            "bytes": 33999395,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+            "sha256": "6382659c11f5455af90775c8cfb1a195fafc11885dfd1e763e0b5442849f4740"
+          },
+          "retry_authorized": false,
+          "schema": "ROOT-owned-evidence-worker-failure-v1",
+          "scientific_acceptance": false,
+          "stage_intervals": [
+            {
+              "returned_ns": 764115025656875,
+              "stage": "intake:owned_evidence_cold_v4.py",
+              "started_ns": 764115025577541
+            },
+            {
+              "returned_ns": 764115036021000,
+              "stage": "intake:python3.12",
+              "started_ns": 764115025661625
+            },
+            {
+              "returned_ns": 764115036288375,
+              "stage": "intake:semantic-inventory-policy-001.json",
+              "started_ns": 764115036040208
+            },
+            {
+              "returned_ns": 764115036559708,
+              "stage": "intake:full-assertion-capsule.json",
+              "started_ns": 764115036293458
+            },
+            {
+              "returned_ns": 764115036860416,
+              "stage": "intake:runtime-closure-v1.json",
+              "started_ns": 764115036586541
+            },
+            {
+              "returned_ns": 764115037018083,
+              "stage": "intake:case-declaration-v1.json",
+              "started_ns": 764115036869541
+            },
+            {
+              "returned_ns": 764115037717833,
+              "stage": "select frozen receiver",
+              "started_ns": 764115037685000
+            },
+            {
+              "returned_ns": 764115038488500,
+              "stage": "intake:parent runtime closure",
+              "started_ns": 764115037719083
+            },
+            {
+              "returned_ns": 764115039636500,
+              "stage": "copy:certificate_boundary_search",
+              "started_ns": 764115039403958
+            },
+            {
+              "returned_ns": 764115040095708,
+              "stage": "copy:interned_quantified_family_points_v1",
+              "started_ns": 764115039916916
+            },
+            {
+              "returned_ns": 764115040407666,
+              "stage": "copy:interned_result_reader_v2",
+              "started_ns": 764115040230291
+            },
+            {
+              "returned_ns": 764115040656333,
+              "stage": "copy:logic",
+              "started_ns": 764115040515875
+            },
+            {
+              "returned_ns": 764115040948916,
+              "stage": "copy:native_inference_inventory",
+              "started_ns": 764115040786041
+            },
+            {
+              "returned_ns": 764115041222791,
+              "stage": "copy:native_inventory_policy",
+              "started_ns": 764115041072125
+            },
+            {
+              "returned_ns": 764115041475166,
+              "stage": "copy:native_receptor_points",
+              "started_ns": 764115041320333
+            },
+            {
+              "returned_ns": 764115041794625,
+              "stage": "copy:proof_boundary",
+              "started_ns": 764115041618583
+            },
+            {
+              "returned_ns": 764115042292791,
+              "stage": "copy:quantified_family_points_v2",
+              "started_ns": 764115041932125
+            },
+            {
+              "returned_ns": 764115042604833,
+              "stage": "copy:quantified_receptors_v1",
+              "started_ns": 764115042405583
+            },
+            {
+              "returned_ns": 764115043048708,
+              "stage": "copy:quantified_symbolic_control_v2",
+              "started_ns": 764115042827625
+            },
+            {
+              "returned_ns": 764115043336541,
+              "stage": "copy:receptor_support_ordering_v1",
+              "started_ns": 764115043160791
+            },
+            {
+              "returned_ns": 764115043592083,
+              "stage": "copy:semantic_inventory_guidance",
+              "started_ns": 764115043435250
+            },
+            {
+              "returned_ns": 764115043877750,
+              "stage": "copy:semantic_inventory_oracle",
+              "started_ns": 764115043706250
+            },
+            {
+              "returned_ns": 764115044129375,
+              "stage": "copy:semantic_inventory_search_v2",
+              "started_ns": 764115043983041
+            },
+            {
+              "returned_ns": 764115044401791,
+              "stage": "copy:semantic_lemma_inventory",
+              "started_ns": 764115044258875
+            },
+            {
+              "returned_ns": 764115044632416,
+              "stage": "copy:semantic_point_smt",
+              "started_ns": 764115044490833
+            },
+            {
+              "returned_ns": 764115044908041,
+              "stage": "copy:semantic_receptor_points",
+              "started_ns": 764115044719416
+            },
+            {
+              "returned_ns": 764115045195458,
+              "stage": "copy:tape_binary",
+              "started_ns": 764115045043000
+            },
+            {
+              "returned_ns": 764115045463541,
+              "stage": "copy:tape_tree_machine",
+              "started_ns": 764115045287625
+            },
+            {
+              "returned_ns": 764115045710791,
+              "stage": "copy:tree_machine",
+              "started_ns": 764115045562125
+            },
+            {
+              "returned_ns": 764115045984083,
+              "stage": "copy:turtle",
+              "started_ns": 764115045808625
+            },
+            {
+              "returned_ns": 764115046430375,
+              "stage": "copy:semantic_receiver_driver",
+              "started_ns": 764115046063250
+            },
+            {
+              "returned_ns": 764115046729875,
+              "stage": "copy:bounded_request_oracle",
+              "started_ns": 764115046550708
+            },
+            {
+              "returned_ns": 764115047014500,
+              "stage": "copy:owned_evidence_adapter",
+              "started_ns": 764115046882416
+            },
+            {
+              "returned_ns": 764115047825291,
+              "stage": "copy:exact_evidence_arena",
+              "started_ns": 764115047139916
+            },
+            {
+              "returned_ns": 764115048141875,
+              "stage": "copy:owned_inventory_join",
+              "started_ns": 764115047974083
+            },
+            {
+              "returned_ns": 764115048551500,
+              "stage": "copy:independent_forest_inverse",
+              "started_ns": 764115048274250
+            },
+            {
+              "returned_ns": 764115048928916,
+              "stage": "copy schema:mp_schema_certificate",
+              "started_ns": 764115048743375
+            },
+            {
+              "returned_ns": 764115049214375,
+              "stage": "kernel semantic raw Source",
+              "started_ns": 764115049020541
+            },
+            {
+              "returned_ns": 764115049385708,
+              "stage": "Z3 intake:__init__.py",
+              "started_ns": 764115049221333
+            },
+            {
+              "returned_ns": 764115051530083,
+              "stage": "Z3 intake:z3.py",
+              "started_ns": 764115049389375
+            },
+            {
+              "returned_ns": 764115051704791,
+              "stage": "Z3 intake:z3consts.py",
+              "started_ns": 764115051535166
+            },
+            {
+              "returned_ns": 764115052239583,
+              "stage": "Z3 intake:z3core.py",
+              "started_ns": 764115051707916
+            },
+            {
+              "returned_ns": 764115052383833,
+              "stage": "Z3 intake:z3num.py",
+              "started_ns": 764115052243166
+            },
+            {
+              "returned_ns": 764115052538875,
+              "stage": "Z3 intake:z3poly.py",
+              "started_ns": 764115052387500
+            },
+            {
+              "returned_ns": 764115052723083,
+              "stage": "Z3 intake:z3printer.py",
+              "started_ns": 764115052541291
+            },
+            {
+              "returned_ns": 764115052881833,
+              "stage": "Z3 intake:z3rcf.py",
+              "started_ns": 764115052726375
+            },
+            {
+              "returned_ns": 764115053154083,
+              "stage": "Z3 intake:z3types.py",
+              "started_ns": 764115052884333
+            },
+            {
+              "returned_ns": 764115053344708,
+              "stage": "Z3 intake:z3util.py",
+              "started_ns": 764115053158583
+            },
+            {
+              "returned_ns": 764115054238250,
+              "stage": "Z3 intake:z3++.h",
+              "started_ns": 764115053349041
+            },
+            {
+              "returned_ns": 764115054827416,
+              "stage": "Z3 intake:z3.h",
+              "started_ns": 764115054242500
+            },
+            {
+              "returned_ns": 764115055017458,
+              "stage": "Z3 intake:z3_algebraic.h",
+              "started_ns": 764115054831625
+            },
+            {
+              "returned_ns": 764115055641125,
+              "stage": "Z3 intake:z3_api.h",
+              "started_ns": 764115055021000
+            },
+            {
+              "returned_ns": 764115056174875,
+              "stage": "Z3 intake:z3_ast_containers.h",
+              "started_ns": 764115055645333
+            },
+            {
+              "returned_ns": 764115056361750,
+              "stage": "Z3 intake:z3_fixedpoint.h",
+              "started_ns": 764115056178750
+            },
+            {
+              "returned_ns": 764115056568833,
+              "stage": "Z3 intake:z3_fpa.h",
+              "started_ns": 764115056364916
+            },
+            {
+              "returned_ns": 764115056736625,
+              "stage": "Z3 intake:z3_macros.h",
+              "started_ns": 764115056572375
+            },
+            {
+              "returned_ns": 764115056923208,
+              "stage": "Z3 intake:z3_optimization.h",
+              "started_ns": 764115056739833
+            },
+            {
+              "returned_ns": 764115057019375,
+              "stage": "Z3 intake:z3_polynomial.h",
+              "started_ns": 764115056926625
+            },
+            {
+              "returned_ns": 764115057180333,
+              "stage": "Z3 intake:z3_rcf.h",
+              "started_ns": 764115057022083
+            },
+            {
+              "returned_ns": 764115057355375,
+              "stage": "Z3 intake:z3_spacer.h",
+              "started_ns": 764115057183000
+            },
+            {
+              "returned_ns": 764115057533458,
+              "stage": "Z3 intake:z3_v1.h",
+              "started_ns": 764115057357958
+            },
+            {
+              "returned_ns": 764115057632083,
+              "stage": "Z3 intake:z3_version.h",
+              "started_ns": 764115057537166
+            },
+            {
+              "returned_ns": 764115081702208,
+              "stage": "Z3 intake:libz3.4.15.dylib",
+              "started_ns": 764115057634625
+            },
+            {
+              "returned_ns": 764115098602083,
+              "stage": "Z3 intake:libz3.dll",
+              "started_ns": 764115081718750
+            },
+            {
+              "returned_ns": 764115122140833,
+              "stage": "Z3 intake:libz3.dylib",
+              "started_ns": 764115098612833
+            },
+            {
+              "returned_ns": 764115123367791,
+              "stage": "Z3 intake:msvcp140.dll",
+              "started_ns": 764115122155791
+            },
+            {
+              "returned_ns": 764115123573625,
+              "stage": "Z3 intake:msvcp140_1.dll",
+              "started_ns": 764115123371750
+            },
+            {
+              "returned_ns": 764115124890375,
+              "stage": "Z3 intake:msvcp140_2.dll",
+              "started_ns": 764115123579208
+            },
+            {
+              "returned_ns": 764115125114916,
+              "stage": "Z3 intake:msvcp140_atomic_wait.dll",
+              "started_ns": 764115124896041
+            },
+            {
+              "returned_ns": 764115125290333,
+              "stage": "Z3 intake:msvcp140_codecvt_ids.dll",
+              "started_ns": 764115125118750
+            },
+            {
+              "returned_ns": 764115125776041,
+              "stage": "Z3 intake:vcomp140.dll",
+              "started_ns": 764115125293333
+            },
+            {
+              "returned_ns": 764115126267958,
+              "stage": "Z3 intake:vcruntime140.dll",
+              "started_ns": 764115125805000
+            },
+            {
+              "returned_ns": 764115126546375,
+              "stage": "Z3 intake:vcruntime140_1.dll",
+              "started_ns": 764115126271125
+            },
+            {
+              "returned_ns": 764115126741333,
+              "stage": "Z3 intake:vcruntime140_threads.dll",
+              "started_ns": 764115126550333
+            },
+            {
+              "returned_ns": 764115153414500,
+              "stage": "Z3 intake:z3",
+              "started_ns": 764115126746000
+            },
+            {
+              "returned_ns": 764115153689250,
+              "stage": "Z3 intake:METADATA",
+              "started_ns": 764115153438916
+            },
+            {
+              "returned_ns": 764115153860125,
+              "stage": "Z3 intake:WHEEL",
+              "started_ns": 764115153693833
+            },
+            {
+              "returned_ns": 764115153965208,
+              "stage": "Z3 intake:top_level.txt",
+              "started_ns": 764115153864291
+            },
+            {
+              "returned_ns": 764115154133208,
+              "stage": "Z3 intake:RECORD",
+              "started_ns": 764115153967750
+            },
+            {
+              "returned_ns": 764115169146166,
+              "stage": "import:certificate_boundary_search",
+              "started_ns": 764115154150583
+            },
+            {
+              "returned_ns": 764115190042500,
+              "stage": "import:interned_quantified_family_points_v1",
+              "started_ns": 764115169149583
+            },
+            {
+              "returned_ns": 764115190523916,
+              "stage": "import:interned_result_reader_v2",
+              "started_ns": 764115190045291
+            },
+            {
+              "returned_ns": 764115190526791,
+              "stage": "import:logic",
+              "started_ns": 764115190525333
+            },
+            {
+              "returned_ns": 764115191950333,
+              "stage": "import:native_inference_inventory",
+              "started_ns": 764115190527375
+            },
+            {
+              "returned_ns": 764115192443375,
+              "stage": "import:native_inventory_policy",
+              "started_ns": 764115191951416
+            },
+            {
+              "returned_ns": 764115192446083,
+              "stage": "import:native_receptor_points",
+              "started_ns": 764115192444541
+            },
+            {
+              "returned_ns": 764115192447541,
+              "stage": "import:proof_boundary",
+              "started_ns": 764115192446625
+            },
+            {
+              "returned_ns": 764115192448333,
+              "stage": "import:quantified_family_points_v2",
+              "started_ns": 764115192447916
+            },
+            {
+              "returned_ns": 764115192449125,
+              "stage": "import:quantified_receptors_v1",
+              "started_ns": 764115192448708
+            },
+            {
+              "returned_ns": 764115195458541,
+              "stage": "import:quantified_symbolic_control_v2",
+              "started_ns": 764115192449625
+            },
+            {
+              "returned_ns": 764115197360625,
+              "stage": "import:receptor_support_ordering_v1",
+              "started_ns": 764115195461208
+            },
+            {
+              "returned_ns": 764115198649250,
+              "stage": "import:semantic_inventory_guidance",
+              "started_ns": 764115197362375
+            },
+            {
+              "returned_ns": 764115203202791,
+              "stage": "import:semantic_inventory_oracle",
+              "started_ns": 764115198651000
+            },
+            {
+              "returned_ns": 764115204914833,
+              "stage": "import:semantic_inventory_search_v2",
+              "started_ns": 764115203205375
+            },
+            {
+              "returned_ns": 764115205878250,
+              "stage": "import:semantic_lemma_inventory",
+              "started_ns": 764115204916833
+            },
+            {
+              "returned_ns": 764115206493625,
+              "stage": "import:semantic_point_smt",
+              "started_ns": 764115205879875
+            },
+            {
+              "returned_ns": 764115206496541,
+              "stage": "import:semantic_receptor_points",
+              "started_ns": 764115206494791
+            },
+            {
+              "returned_ns": 764115206497875,
+              "stage": "import:tape_binary",
+              "started_ns": 764115206497125
+            },
+            {
+              "returned_ns": 764115206499333,
+              "stage": "import:tape_tree_machine",
+              "started_ns": 764115206498458
+            },
+            {
+              "returned_ns": 764115206500500,
+              "stage": "import:tree_machine",
+              "started_ns": 764115206499750
+            },
+            {
+              "returned_ns": 764115206501250,
+              "stage": "import:turtle",
+              "started_ns": 764115206500875
+            },
+            {
+              "returned_ns": 764115217429250,
+              "stage": "import:semantic_receiver_driver",
+              "started_ns": 764115206502083
+            },
+            {
+              "returned_ns": 764115219439750,
+              "stage": "import:bounded_request_oracle",
+              "started_ns": 764115217432041
+            },
+            {
+              "returned_ns": 764115221233666,
+              "stage": "import:owned_evidence_adapter",
+              "started_ns": 764115219441833
+            },
+            {
+              "returned_ns": 764115225701750,
+              "stage": "import:exact_evidence_arena",
+              "started_ns": 764115221235083
+            },
+            {
+              "returned_ns": 764115227285875,
+              "stage": "import:owned_inventory_join",
+              "started_ns": 764115225705375
+            },
+            {
+              "returned_ns": 764115230276250,
+              "stage": "import:independent_forest_inverse",
+              "started_ns": 764115227296416
+            },
+            {
+              "returned_ns": 764115291282083,
+              "stage": "import:Z3",
+              "started_ns": 764115230853000
+            },
+            {
+              "returned_ns": 764115304254041,
+              "stage": "import schema:mp_schema_certificate",
+              "started_ns": 764115300856791
+            },
+            {
+              "returned_ns": 764115318241166,
+              "stage": "native intake:boundary-oracle-v2",
+              "started_ns": 764115317959041
+            },
+            {
+              "returned_ns": 764115320356375,
+              "stage": "native intake:proof-boundary-microcode-001.json.gz",
+              "started_ns": 764115318247125
+            },
+            {
+              "returned_ns": 764115322583916,
+              "stage": "native intake:proof-boundary-001.json",
+              "started_ns": 764115320364750
+            },
+            {
+              "returned_ns": 764115325686708,
+              "stage": "decode native template",
+              "started_ns": 764115322586833
+            },
+            {
+              "returned_ns": 764115439235833,
+              "stage": "decode fixed microcode",
+              "started_ns": 764115325688875
+            },
+            {
+              "returned_ns": 764115743242083,
+              "stage": "encode fixed native table",
+              "started_ns": 764115532586833
+            },
+            {
+              "returned_ns": 764116498469125,
+              "stage": "owned-adapter-boundary-diagnostics",
+              "started_ns": 764115748017541
+            }
+          ]
+        },
+        "worker_failure_descriptor": {
+          "bytes": 19401,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/worker-failure.json",
+          "sha256": "c3685482b583e9d4b1d97837eb48e55fbd3a3c485318568f9705e0f8e7cc995d"
+        }
+      }
+    ],
+    "author_identity": "/root",
+    "causal_speed_claim": false,
+    "clock_scope": "Inherited worker positive work, full resultreading+knownexit180; subsequent outer metadata/resource joins+terminal210. No all-outer-check180 guarantee.",
+    "component_imports": 0,
+    "goal_complete": false,
+    "historical_fixed_integration_admitted": false,
+    "mathematical_replay": false,
+    "new_RL_training": false,
+    "saved_data_only": true,
+    "schema": "ROOT-cadence-integration-saved-actual-audit-v1",
+    "scientific_calls": 0,
+    "scope": "Raw saved receipts/pins and exact existing Native/point/resource evidence adoption only, within inherited trust/Source review scopes; no new theorem, blind generalization, search/RL or cost advantage."
+  },
+  "broad_research_goal_complete": false,
+  "causal_speed_claim": false,
+  "current_master_reconciliation": {
+    "actual_execution_authorized": false,
+    "applicability": "Current full program remains subject to extended marking/corona/reuse/conformance rules. This finite proof-region adaptation keeps all primitive/Model/point/search/rollback/Native bodies unchanged and makes no new learned-marking/RL or general conformance claim.",
+    "author_identity": "/root",
+    "checks": {
+      "final_conformance_requirements_raw_identical": true,
+      "sections1through5_raw_identical": true,
+      "sections7and8_raw_identical": true
+    },
+    "current_commit": "fa2c42742e49ae4f2c7ad1f56d57e1ce7ef8532d",
+    "current_master": {
+      "bytes": 36240,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/basic-tiling-algorithm-HEAD.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "current_master_read_fully": true,
+    "delta": "Only marking-learning section6 clarifications/extensions and implementation audit9 rows. Current inverse-only metadata/profile coupling does not synthesize/activate markings or change tiling/search algorithms.",
+    "discovery": "Archivedc132wasnotcurrentHEAD. Initialdefault gitshow neededmissingpromisorblob; escalatedreadretrievedcurrentblobandprovedinequality. No scientific Source was evaluated.",
+    "historical_master": {
+      "bytes": 21657,
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/basic-tiling-algorithm.md",
+      "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+    },
+    "primary_hydration_or_reader_access": false,
+    "repository_path": "docs/basic-tiling-algorithm.md",
+    "schema": "ROOT-current-master-reconciliation-v1",
+    "scientific_calls": 0,
+    "source_or_scientific_input_changes_required": false
+  },
+  "independent_saved_review": {
+    "Native_calls": 0,
+    "Root_cohort_closure": {
+      "bytes": 1357,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-cohort-closure-v1.json",
+      "sha256": "647196f1e6c6e7d90bd1db8c6ac2b23cb5d0c73d148812e9a06a103e79c3189f"
+    },
+    "Root_saved_audit": {
+      "bytes": 65904,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+      "sha256": "08d0dace08316e5c78297a718b59470f7dd7ff7b346a281368fa774a6cf4efab"
+    },
+    "Source_review": {
+      "bytes": 32173,
+      "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-components-Source-review-v1.json",
+      "sha256": "910ee9515d386b470fedcc8f566c1dae8f43e863606f6cba76f8940373187465"
+    },
+    "actual_execution_authorized": false,
+    "actual_qualification_passed": false,
+    "arms": [
+      {
+        "Native_completed_stages": 16,
+        "Native_highwater_bytes": 13336576,
+        "Native_record_count": 16,
+        "Native_status_census": {
+          "accepted": 6,
+          "rejected": 10
+        },
+        "actual_directory": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1",
+        "adapter_diagnostic_groups_literally_retained": false,
+        "adapter_stage_duration_seconds": 0.899469334,
+        "adapter_stage_returned": true,
+        "authorization": {
+          "bytes": 10500,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/authorizations/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+          "sha256": "3bfa99825273e7b43309ca9bd9b9d4cb5ff36807da2505e37fd4cf79828d19f1"
+        },
+        "consumed": {
+          "bytes": 660,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/CONSUMED.json",
+          "sha256": "5acf36cbc66103d11479f7a69db0ff07caf94fa1e773ffb4f8e59806f95183cd"
+        },
+        "diagnostic_forest": {
+          "bytes": 15181020,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+          "sha256": "a332648433d9ae0a985a1dd9ab9559ae13db8917335823aa26cf13a296029361"
+        },
+        "diagnostic_physical_result_plus_forest_bytes": 52092906,
+        "diagnostic_result": {
+          "bytes": 36911886,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+          "sha256": "77c6af97754c4a038da88f71f2aa40adf24dbacc16a7d76c4f23977ce4a9a5bd"
+        },
+        "driver_closure_seconds_from_outer_Source_entry": 47.547941958066076,
+        "driver_interval_durations": [
+          {
+            "seconds": 4.416913725435734e-06,
+            "stage": "before_oracle"
+          },
+          {
+            "seconds": 10.11384566698689,
+            "stage": "compile"
+          },
+          {
+            "seconds": 0.0856641250429675,
+            "stage": "compile_record_joins"
+          },
+          {
+            "seconds": 0.0009734999621286988,
+            "stage": "specialize"
+          },
+          {
+            "seconds": 3.901081082993187,
+            "stage": "register"
+          },
+          {
+            "seconds": 21.413461707998067,
+            "stage": "inventory_record_join"
+          },
+          {
+            "seconds": 1.2120056248968467,
+            "stage": "model"
+          },
+          {
+            "seconds": 1.5619012089446187,
+            "stage": "search"
+          },
+          {
+            "seconds": 5.721093875006773,
+            "stage": "final_native"
+          },
+          {
+            "seconds": 0.0007700830465182662,
+            "stage": "essential_ancestry"
+          },
+          {
+            "seconds": 0.0077725829323753715,
+            "stage": "winning_hint_links"
+          }
+        ],
+        "inverse_duration_retained": false,
+        "inverse_failure_trace_location": "saved_document_STREAM",
+        "inverse_statistics_retained": false,
+        "known_worker_exit_seconds": 180.30112075,
+        "last_raw_Native_wire": {
+          "code": {
+            "bytes": 7558192,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/native/code.bin",
+            "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+          },
+          "input": {
+            "bytes": 687928,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/native/input.bin",
+            "sha256": "a94031145884037d9b7ee2f40a75c3866658da736c66430d0cd55f58de855625"
+          },
+          "output": {
+            "bytes": 687932,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/native/output.bin",
+            "sha256": "b4a0285e38bd305a548027e00de37034e98e708c1fc8da009553ef7c4284f4de"
+          }
+        },
+        "local_driver_status": "native_proof_discovered",
+        "local_native_proof_accepted": true,
+        "local_root_restoration": {
+          "engine_root_sha256": "4029763a48810949587a789daa387f2d09f06837544584f411c53d7747507bfb",
+          "root_restored": true,
+          "status": "OBSERVED"
+        },
+        "local_search_metrics": {
+          "anchors_omitted": 0,
+          "attempts": 60,
+          "branch": 12,
+          "forced": 48,
+          "hint_completed": 12,
+          "hint_eligible": 39,
+          "hints_started": 12,
+          "items": 179,
+          "nodes": 61,
+          "proposal_seconds": 0.6515732920961455,
+          "row_pool": 106,
+          "row_quota_stops": 7,
+          "sample_pair_tests": 230,
+          "sample_validation_checks": 73,
+          "support_aggregate_checks": 179,
+          "support_changed_hint_choices": 2,
+          "support_graph_work": 108,
+          "support_order_calls": 12,
+          "support_projection_work": 103678,
+          "support_ranking_work": 12322,
+          "validation_checks": 424
+        },
+        "local_search_status": "finite_marked_proof_region",
+        "mathematical_proof_admitted": false,
+        "mode": "fixed",
+        "observer_consumed": {
+          "bytes": 324,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/CONSUMED.json",
+          "sha256": "e860daa7738b5aa7f5c61d5583322180067b2f12a52b916bb4b44127d63a43a0"
+        },
+        "observer_instrument_elapsed_seconds": 180.398709958,
+        "once_plan": {
+          "bytes": 2749,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+          "sha256": "9eecdec434b65e8598f825f6d862c9d549bfc1cb2cee16aa197d9ca243e15513"
+        },
+        "outcome": "FAILED_FULL_SAVED_INVERSE_WORK_DEADLINE_NO_ADMISSION",
+        "outer_checks_closed_seconds": 180.31369125,
+        "posthoc_diagnostic_sum_MiB": 843.5,
+        "posthoc_diagnostic_sum_bytes": 884473856,
+        "posthoc_sum_is_not_simultaneous_live_peak_or_resource_admission": true,
+        "resource_admitted": false,
+        "runner_accepted_aggregate_peak_bytes": null,
+        "runner_clock_elapsed_seconds": 180.368534291,
+        "runner_receipt": {
+          "bytes": 11924,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/runner-receipt.json",
+          "sha256": "e8289c85622931b2fed43c7a447d3a08ef50d1c0515164c95bd0059453ed9cf9"
+        },
+        "scientific_stop_seconds_from_outer_Source_entry": 47.47824779106304,
+        "source_owned_count": 29,
+        "stderr": {
+          "bytes": 2152,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/stderr.bin",
+          "sha256": "cf70873008672500627bd941f66072106093e012ac08a63cb54f795eeba9b4ea"
+        },
+        "subject_sha256": "3ab6f628df7789e143c534f29ddd171b608ee027168ea47f9d9d8b3a70d032fc",
+        "terminal": {
+          "bytes": 1609,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/terminal.json",
+          "sha256": "e68d3974925e2911e3d1e59198b452422a74f99c38be462fb072ef4977ff9c6d"
+        },
+        "worker_failure": {
+          "bytes": 19391,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/worker-failure.json",
+          "sha256": "4cd0536bc7b5d79c2a1e7128e8094d2fc73de299b07191ed2d18d6d66c51104d"
+        },
+        "worker_highwater_bytes": 871137280,
+        "worker_plan": {
+          "bytes": 18137,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/worker-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+          "sha256": "b0bc154a384b411bb3d9cbcebaaa59dc82ea5cfc238683184f819f7b3de510ce"
+        }
+      },
+      {
+        "Native_completed_stages": 16,
+        "Native_highwater_bytes": 13320192,
+        "Native_record_count": 16,
+        "Native_status_census": {
+          "accepted": 6,
+          "rejected": 10
+        },
+        "actual_directory": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1",
+        "adapter_diagnostic_groups_literally_retained": false,
+        "adapter_stage_duration_seconds": 0.750451584,
+        "adapter_stage_returned": true,
+        "authorization": {
+          "bytes": 10503,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/authorizations/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+          "sha256": "880c15111d39f2e153d4b056a94877137a3dc9f8e96b7fa40661dd5b01a044f7"
+        },
+        "consumed": {
+          "bytes": 669,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json",
+          "sha256": "eb7da66951a262dee42ace5aa47f61d9016626737d88778f88a2fd7aef1b26c4"
+        },
+        "diagnostic_forest": {
+          "bytes": 14906405,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+          "sha256": "d4450d19b8e4fd07f10ee4766cd083408258a25a8df1dcd8375bce48c2029d55"
+        },
+        "diagnostic_physical_result_plus_forest_bytes": 48905800,
+        "diagnostic_result": {
+          "bytes": 33999395,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+          "sha256": "6382659c11f5455af90775c8cfb1a195fafc11885dfd1e763e0b5442849f4740"
+        },
+        "driver_closure_seconds_from_outer_Source_entry": 54.9322650419781,
+        "driver_interval_durations": [
+          {
+            "seconds": 5.749985575675964e-06,
+            "stage": "before_oracle"
+          },
+          {
+            "seconds": 10.330133375013247,
+            "stage": "compile"
+          },
+          {
+            "seconds": 0.09711954195518047,
+            "stage": "compile_record_joins"
+          },
+          {
+            "seconds": 0.0009015420218929648,
+            "stage": "specialize"
+          },
+          {
+            "seconds": 4.544216167065315,
+            "stage": "register"
+          },
+          {
+            "seconds": 23.39521462493576,
+            "stage": "inventory_record_join"
+          },
+          {
+            "seconds": 1.372165416018106,
+            "stage": "model"
+          },
+          {
+            "seconds": 0.1534725419478491,
+            "stage": "search"
+          },
+          {
+            "seconds": 0.03262354095932096,
+            "stage": "symbolic_point_projection"
+          },
+          {
+            "seconds": 11.704697249922901,
+            "stage": "final_native"
+          },
+          {
+            "seconds": 0.0004461670760065317,
+            "stage": "essential_ancestry"
+          },
+          {
+            "seconds": 1.4416058547794819e-05,
+            "stage": "winning_hint_links"
+          }
+        ],
+        "inverse_duration_retained": false,
+        "inverse_failure_trace_location": "prepare_forest_CACHE_BUILD",
+        "inverse_statistics_retained": false,
+        "known_worker_exit_seconds": 180.416633084,
+        "last_raw_Native_wire": {
+          "code": {
+            "bytes": 7558192,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/native/code.bin",
+            "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+          },
+          "input": {
+            "bytes": 783980,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/native/input.bin",
+            "sha256": "02eac578e491a0791f787e62a4163a212dc03d7d15b6f0df8e857812061c3a17"
+          },
+          "output": {
+            "bytes": 783984,
+            "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/native/output.bin",
+            "sha256": "017e261e28f2b297075001242c7ba2eac5b768ff032cf0462ef8850b67bcc312"
+          }
+        },
+        "local_driver_status": "native_proof_discovered",
+        "local_native_proof_accepted": true,
+        "local_root_restoration": {
+          "engine_root_sha256": null,
+          "root_restored": null,
+          "status": "NOT_APPLICABLE_STATELESS_CONTROL"
+        },
+        "local_search_metrics": {
+          "backtracks": 0,
+          "block_port_tuples": 35,
+          "dead_prefixes": 0,
+          "prefix_extensions": 12,
+          "prefix_nodes": 13,
+          "primitive_guard_rejections": 4763,
+          "skeleton_tests": 6097,
+          "unavailable_block_skeletons": 1185
+        },
+        "local_search_status": "symbolic_proof_candidate",
+        "mathematical_proof_admitted": false,
+        "mode": "symbolic",
+        "observer_consumed": {
+          "bytes": 327,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/CONSUMED.json",
+          "sha256": "5a92a1f6f881b25319bc0217aa63b8464f8c10f28d18cb2f38c1301732b5f162"
+        },
+        "observer_instrument_elapsed_seconds": 180.498597583,
+        "once_plan": {
+          "bytes": 2764,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+          "sha256": "02e0588d5e734890d7068a6ddb021d03db4dc1166344fa4fa4695334c704c9ff"
+        },
+        "outcome": "FAILED_FULL_SAVED_INVERSE_WORK_DEADLINE_NO_ADMISSION",
+        "outer_checks_closed_seconds": 180.428905917,
+        "posthoc_diagnostic_sum_MiB": 806.203125,
+        "posthoc_diagnostic_sum_bytes": 845365248,
+        "posthoc_sum_is_not_simultaneous_live_peak_or_resource_admission": true,
+        "resource_admitted": false,
+        "runner_accepted_aggregate_peak_bytes": null,
+        "runner_clock_elapsed_seconds": 180.472161625,
+        "runner_receipt": {
+          "bytes": 11947,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/runner-receipt.json",
+          "sha256": "32592ba914992ad989cddad63007165d92392feb00e6b70986182debc4c0531d"
+        },
+        "scientific_stop_seconds_from_outer_Source_entry": 54.864544291980565,
+        "source_owned_count": 29,
+        "stderr": {
+          "bytes": 2118,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/stderr.bin",
+          "sha256": "23f3ae147f695954af4512f33136ec0b8cae7864919e67bb50a706ac2a51af58"
+        },
+        "subject_sha256": "747a83d32333e7c6f3ef0e98b294c942a79592bce8c2b0b6b41ddfb26b6ced4b",
+        "terminal": {
+          "bytes": 1618,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/terminal.json",
+          "sha256": "b23feb1f2c363b65c8e96e098619e738631c5856b9e476c791aa213900dedda1"
+        },
+        "worker_failure": {
+          "bytes": 19401,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/worker-failure.json",
+          "sha256": "c3685482b583e9d4b1d97837eb48e55fbd3a3c485318568f9705e0f8e7cc995d"
+        },
+        "worker_highwater_bytes": 832045056,
+        "worker_plan": {
+          "bytes": 18146,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/worker-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+          "sha256": "e2ababd1c2438a9782e98bb59a1d3c40d163272648f44af13ff9064b67c64d0b"
+        }
+      }
+    ],
+    "audit": {
+      "bytes": 72510,
+      "path": "/private/tmp/gcts-cadence-integration-peer-20261019/saved-actual-audit-v1.json",
+      "sha256": "b49969256a44b31a371a58f0e157a34760aae4ca8491099ad6e842ee3717de73"
+    },
+    "author_identity": "/root",
+    "authorship_disclosure": "Control authored historical symbolic/helper/outer algorithms and prior reviews; current custody audit does not independently certify historical own Source, mathematics or kernel soundness. Current Root/Library cadence-binding Sources are separately reviewed, not executed or replayed here.",
+    "check_count": 400,
+    "claim_limits": [
+      "No retry, rescue, trimming, cap raise, table cache or failure recovery is authorized. Both new failures remain retained.",
+      "The current pair is not a causal old/new callback, speed or RAM ablation. It establishes no new theorem, full-pipeline improvement, GCTS-specific proof-search superiority, RL training or generalization claim.",
+      "Literal Native requests and response hashes were joined as saved data; Native code/wire/gzip remained raw-hash-only. No proof, point, Model, schema certificate, codec, inverse or fixture was evaluated/replayed."
+    ],
+    "clock_and_resource_scope": [
+      "The original worker-positive and known-exit boundary is180 seconds; later outer resource/custody/group/EOF/metadata and external terminal boundary is210 seconds. Both workers exit1 after180 seconds, both outers exit2; closing below210 does not admit the failed work.",
+      "Both diagnostic posthoc sums are the separate declared-Darwin worker and Native wait4 highwaters. They are below1GiB as arithmetic observations, but are neither simultaneous live RAM peaks nor runner/resource admission. The runner accepted aggregate is null.",
+      "Outer/observer RAM and interpreter/observer startup prelude exclusions remain the explicit retained instrument scope. Observer-main elapsed and runner Source-entry elapsed are distinct fields.",
+      "Both Native children exit0 and are reaped, both Python workers exit1 and are reaped, all captured logs reach EOF, owned group absence is observed with no reappearance/no signals. Root cohort records the two exact external sessions closed. No separate current process-table probe was taken or claimed in this peer audit."
+    ],
+    "codec_replays": 0,
+    "component_calls": 0,
+    "current_master": {
+      "bytes": 36240,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/basic-tiling-algorithm-HEAD.md",
+      "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+    },
+    "findings": [],
+    "fixture_calls": 0,
+    "grant_delta_review": {
+      "bytes": 12981,
+      "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-final-grant-delta-review-v2.json",
+      "sha256": "2ce13e7314f410c26349ead96d2142fccea7ea986dde4c9ec2f3e4f26e841a3f"
+    },
+    "historical_boundaries": {
+      "disposition": "The earlier symbolic finite integration positive, earlier fixed failure and standalone two-forest/thirty-group V7 qualification retain their exact historical statuses. Neither failed current arm reuses or relabels those consumed subjects.",
+      "prior_owned_integration_saved_review": {
+        "bytes": 16276,
+        "path": "/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-owned-integration-saved-review-v1.json",
+        "sha256": "5cff9e88dde9fc8f0e6c35226dda841e1119365d62037596b2f21074bd5c0328"
+      },
+      "standalone_inverse_V7_saved_review": {
+        "bytes": 11399,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-saved-qualification-review-v1.json",
+        "sha256": "b7df1e1cdfb1b7cab410e1a88dd043db7473665b74cb45dd24e7b00fb8e608d8"
+      }
+    },
+    "integration_declaration": {
+      "bytes": 9188,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/case-declaration-v1.json",
+      "sha256": "edeb0a482ef1cbf39a832a948df663a997b21035da1b04d7b9db8820a8b23b56"
+    },
+    "inverse_replays": 0,
+    "literal_versus_inferred_evidence": [
+      "Each current saved ordinary result.json literally reports native_proof_discovered, local native_proof_accepted true, a full local final request with an accepted fresh Native response, and a returned local inventory join. Both remain diagnostic because the enclosing cold saved-inverse and final header/knownexit gates failed.",
+      "Both failure packets explicitly mark complete_output_accepted/logical_proof_accepted/resource_accepted/scientific_acceptance false and tag the saved result/forest as diagnostic-only. No final worker-receipt.json exists; runner worker_receipt, Native aggregate and accepted highwater sum are null.",
+      "Both retain the returned aggregate owned-adapter-boundary-diagnostics stage. The separately reviewed unchanged cold Source requires its five groups/eight fresh Stores before the return; that is Source-backed inference, not literal per-group header packets retained in these failed actuals.",
+      "The fixed traceback reaches live document streaming; the symbolic traceback reaches prepare_forest cache building. This is location evidence only. No inverse duration, complete comparison, attempted-operation count, callback count, maximum gap or completed flag was retained; none is inferred from the standalone qualification.",
+      "The recorded arena/adapter/inverse limits are checked in each diagnostic Source epoch. Missing final operation statistics prevent asserting actual counter totals or completed budget admission. All published limits remain original."
+    ],
+    "mathematical_proof_admitted": false,
+    "mismatch_count": 0,
+    "module_imports": 0,
+    "negative_outcome_evidence_consistent": true,
+    "once_review": {
+      "bytes": 7789,
+      "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-once-Source-review-v1.json",
+      "sha256": "4f78e4c86160fdce1e2e4abc1c2f880051040721916af6e31f8a740be26620c9"
+    },
+    "opaque_decodes": 0,
+    "prospective_review": {
+      "bytes": 24458,
+      "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-prospective-plan-review-v1.json",
+      "sha256": "3b114fc644d15a722fe6d0dd8df43067af19db5751e2a74b3d3f4a9a73eb1ba4"
+    },
+    "representation_qualification_passed": false,
+    "resource_admitted": false,
+    "reviewer_identity": "/root/conventional_control_review",
+    "runtime_closure": {
+      "bytes": 90869,
+      "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/runtime-closure-v1.json",
+      "sha256": "2b89eef2c16a3148a48910bb794bbabe8dece22e91033f51b9fd79bb09f33b25"
+    },
+    "saved_data_only": true,
+    "saved_review_passed": true,
+    "schema": "cadence-integration-saved-actual-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scope": "Independent exact saved raw-byte/ordinary-JSON metadata audit of both current once failures. PASS means the negative evidence and custody/terminal joins are consistent; it is not a positive resource, representation, mathematical, Source runtime-conformance or proof qualification.",
+    "source_only": false,
+    "tools_stopped_after_handoff": true,
+    "unique_raw_pin_count": 221
+  },
+  "mathematical_proof_admitted": false,
+  "new_theorems": 0,
+  "next_design": {
+    "bytes": 33465,
+    "path": "/private/tmp/gcts-owned-finalization-next-design-library-20261019/ownnext-design-v1.json",
+    "sha256": "2cb26ec2ab20d16fe3424680561ee9384d6edf7cf5dfa6cbbfb2529920bf9e40"
+  },
+  "no_new_execution_authorization": true,
+  "outcome": "BOTH_FULL_SAVED_INVERSE_WORK_DEADLINE_FAILURES",
+  "plan_invariance": {
+    "actual_execution_authorized": false,
+    "author_identity": "/root",
+    "check_count": 45,
+    "checks": [
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "project_sources"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "components"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "native_inputs"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "policy"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "declaration"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "python"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "z3"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "receiver_id"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "result_reader"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "model_storage"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "search_ordering"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "inventory_certification_mode"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "Z3"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "Z3_imports"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "external_imports"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "fixed_native_inputs"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "native_CPP"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "runtime"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "stdlib_entry_references"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "authoring_python"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "schema_sources"
+      },
+      {
+        "mode": "fixed",
+        "passed": true,
+        "unchanged": "schema_kernel_source"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "project_sources"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "components"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "native_inputs"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "policy"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "declaration"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "python"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "z3"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "receiver_id"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "result_reader"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "model_storage"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "search_ordering"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "inventory_certification_mode"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "Z3"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "Z3_imports"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "external_imports"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "fixed_native_inputs"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "native_CPP"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "runtime"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "stdlib_entry_references"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "authoring_python"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "schema_sources"
+      },
+      {
+        "mode": "symbolic",
+        "passed": true,
+        "unchanged": "schema_kernel_source"
+      },
+      {
+        "check": "both complete18field subjects fresh and mathematical inputs unchanged",
+        "passed": true
+      }
+    ],
+    "component_evaluations": 0,
+    "passed": true,
+    "schema": "ROOT-cadence-integration-mathematical-input-invariance-v1",
+    "scientific_calls": 0,
+    "scope": "Whole saved descriptor/data equality only. All scientific functions, Native inputs and mathematical payloads remain unevaluated."
+  },
+  "resource_admitted": false,
+  "saved_timing_diagnostics": {
+    "arms": [
+      {
+        "accepted_aggregate_peak": null,
+        "adapter_group_evidence": "Returned diagnostic stage supports completion by Source-backed inference only; no finalheader/group packets.",
+        "closure_started_seconds": 47.47824995801784,
+        "compiled_semantics_sha256": "28f330ed6763f088e06306717ea6d53251b2987a5d8637c57140daedfa6852b2",
+        "complete_cold_admission": false,
+        "complete_inverse_timing_available": false,
+        "driver_stages": [
+          {
+            "stage": "before_oracle",
+            "start": 1.9236910410691053,
+            "stop": 1.9236954579828307
+          },
+          {
+            "stage": "compile",
+            "start": 1.9950443330453709,
+            "stop": 12.108890000032261
+          },
+          {
+            "stage": "compile_record_joins",
+            "start": 12.119701458024792,
+            "stop": 12.20536558306776
+          },
+          {
+            "stage": "specialize",
+            "start": 12.217929291073233,
+            "stop": 12.218902791035362
+          },
+          {
+            "stage": "register",
+            "start": 12.237558875000104,
+            "stop": 16.13863995799329
+          },
+          {
+            "stage": "inventory_record_join",
+            "start": 16.15169883298222,
+            "stop": 37.56516054098029
+          },
+          {
+            "stage": "model",
+            "start": 37.57574766606558,
+            "stop": 38.78775329096243
+          },
+          {
+            "stage": "search",
+            "start": 39.267684416030534,
+            "stop": 40.82958562497515
+          },
+          {
+            "stage": "final_native",
+            "start": 41.713271207991056,
+            "stop": 47.43436508299783
+          },
+          {
+            "stage": "essential_ancestry",
+            "start": 47.44621974998154,
+            "stop": 47.446989833028056
+          },
+          {
+            "stage": "winning_hint_links",
+            "start": 47.458433583029546,
+            "stop": 47.46620616596192
+          }
+        ],
+        "forest": {
+          "bytes": 15181020,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+          "sha256": "a332648433d9ae0a985a1dd9ab9559ae13db8917335823aa26cf13a296029361"
+        },
+        "forest_bytes": 15181020,
+        "inventory_semantics_sha256": "8b88ed7050935181c43a807fe7f81fde9dd06881a370483b719226fd0515c919",
+        "inverse_counters_available": false,
+        "local_Native_proof_accepted": true,
+        "local_status": "native_proof_discovered",
+        "logical_bytes": 36911886,
+        "mathematical_authority": false,
+        "mode": "fixed",
+        "model_identity_sha256": "0b990e7c8c43405ed75264ace6c5e1fbe84b5e6e708bc615e6e4ac5b31e86abc",
+        "oracle_closed_seconds": 47.547941958066076,
+        "posthoc_diagnostic_peak_bytes": 884473856,
+        "proof_blocks": 2,
+        "proof_rows": 12,
+        "records": 16,
+        "result": {
+          "bytes": 36911886,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+          "sha256": "77c6af97754c4a038da88f71f2aa40adf24dbacc16a7d76c4f23977ce4a9a5bd"
+        },
+        "scientific_stop_seconds": 47.47824779106304
+      },
+      {
+        "accepted_aggregate_peak": null,
+        "adapter_group_evidence": "Returned diagnostic stage supports completion by Source-backed inference only; no finalheader/group packets.",
+        "closure_started_seconds": 54.86454612505622,
+        "compiled_semantics_sha256": "28f330ed6763f088e06306717ea6d53251b2987a5d8637c57140daedfa6852b2",
+        "complete_cold_admission": false,
+        "complete_inverse_timing_available": false,
+        "driver_stages": [
+          {
+            "stage": "before_oracle",
+            "start": 1.5850170840276405,
+            "stop": 1.5850228340132162
+          },
+          {
+            "stage": "compile",
+            "start": 1.6533826669910923,
+            "stop": 11.98351604200434
+          },
+          {
+            "stage": "compile_record_joins",
+            "start": 11.996158667025156,
+            "stop": 12.093278208980337
+          },
+          {
+            "stage": "specialize",
+            "start": 12.10532316705212,
+            "stop": 12.106224709074013
+          },
+          {
+            "stage": "register",
+            "start": 12.125540375011042,
+            "stop": 16.669756542076357
+          },
+          {
+            "stage": "inventory_record_join",
+            "start": 16.680626834044233,
+            "stop": 40.075841458979994
+          },
+          {
+            "stage": "model",
+            "start": 40.08683408400975,
+            "stop": 41.45899950002786
+          },
+          {
+            "stage": "search",
+            "start": 41.928077375050634,
+            "stop": 42.08154991699848
+          },
+          {
+            "stage": "symbolic_point_projection",
+            "start": 42.09538545901887,
+            "stop": 42.12800899997819
+          },
+          {
+            "stage": "final_native",
+            "start": 43.12411366705783,
+            "stop": 54.82881091698073
+          },
+          {
+            "stage": "essential_ancestry",
+            "start": 54.840453666984104,
+            "stop": 54.84089983406011
+          },
+          {
+            "stage": "winning_hint_links",
+            "start": 54.853109708987176,
+            "stop": 54.853124125045724
+          }
+        ],
+        "forest": {
+          "bytes": 14906405,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+          "sha256": "d4450d19b8e4fd07f10ee4766cd083408258a25a8df1dcd8375bce48c2029d55"
+        },
+        "forest_bytes": 14906405,
+        "inventory_semantics_sha256": "8b88ed7050935181c43a807fe7f81fde9dd06881a370483b719226fd0515c919",
+        "inverse_counters_available": false,
+        "local_Native_proof_accepted": true,
+        "local_status": "native_proof_discovered",
+        "logical_bytes": 33999395,
+        "mathematical_authority": false,
+        "mode": "symbolic",
+        "model_identity_sha256": "0b990e7c8c43405ed75264ace6c5e1fbe84b5e6e708bc615e6e4ac5b31e86abc",
+        "oracle_closed_seconds": 54.9322650419781,
+        "posthoc_diagnostic_peak_bytes": 845365248,
+        "proof_blocks": 5,
+        "proof_rows": 12,
+        "records": 16,
+        "result": {
+          "bytes": 33999395,
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+          "sha256": "6382659c11f5455af90775c8cfb1a195fafc11885dfd1e763e0b5442849f4740"
+        },
+        "scientific_stop_seconds": 54.864544291980565
+      }
+    ],
+    "no_causal_speed_claim": true,
+    "no_replay": true,
+    "saved_data_only": true,
+    "schema": "ROOT-cadence-integration-saved-timing-diagnostics-v1",
+    "scientific_calls": 0
+  },
+  "schema": "cadence-integration-published-negative-outcome-v1",
+  "source_only_next_step": true
+}

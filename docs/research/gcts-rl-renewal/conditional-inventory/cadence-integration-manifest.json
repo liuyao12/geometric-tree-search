@@ -1,0 +1,1622 @@
+{
+  "all_originals_raw": true,
+  "archive": {
+    "bytes": 9565809,
+    "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/publication-v2/cadence-integration-archive.zip",
+    "sha256": "cf75a42ae26c594ec7bcc1bbb3059fdd403b650d8fb62d0e9374ae9ed9839eed"
+  },
+  "external_prerequisites": "Pinned Python/OS/Z3/prebuilt Native dependencies remain external; closure descriptors retain exact hashes.",
+  "members": [
+    {
+      "member": "ROOT/ROOT-cohort-closure-v1.json",
+      "original": {
+        "bytes": 1357,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-cohort-closure-v1.json",
+        "sha256": "647196f1e6c6e7d90bd1db8c6ac2b23cb5d0c73d148812e9a06a103e79c3189f"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-current-master-reconciliation-v1.json",
+      "original": {
+        "bytes": 1727,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-current-master-reconciliation-v1.json",
+        "sha256": "45ffd96d59871e47d35b58243322de905200f2ffd13d32f8506260600312c007"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-explicit-scope-adoption-v1.json",
+      "original": {
+        "bytes": 2365,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-explicit-scope-adoption-v1.json",
+        "sha256": "f65b8b63eae1e224d35acd5723427b115b228be1f77e416d22df204fb719b3fd"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-mathematical-input-invariance-v1.json",
+      "original": {
+        "bytes": 4669,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-mathematical-input-invariance-v1.json",
+        "sha256": "8c2bc16d5ba5c9c2402cb795edd5d1ce8edf56f3535071ca88630e90c3a4ec49"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-prelaunch-v1.json",
+      "original": {
+        "bytes": 634,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-prelaunch-v1.json",
+        "sha256": "184e4b6e7c925d1e2dea78c5c46608f82b7f074a25de60a7ce9d6546372a4b39"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-prior-revalidation-v1.json",
+      "original": {
+        "bytes": 5941,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-prior-revalidation-v1.json",
+        "sha256": "09b153a909b2978c3a9d89446fa4fffb0dd9063e4e0a1ccdc2947131be7c2649"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-saved-actual-audit-v1.json",
+      "original": {
+        "bytes": 65904,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+        "sha256": "08d0dace08316e5c78297a718b59470f7dd7ff7b346a281368fa774a6cf4efab"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-saved-timing-and-local-diagnostics-v1.json",
+      "original": {
+        "bytes": 6534,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-saved-timing-and-local-diagnostics-v1.json",
+        "sha256": "3c6f1eefd3740610e0187415bc3706ae1d4ab268ae643a5d9c711bfcbb4044cc"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-scope-adoption-and-grants-v1.json",
+      "original": {
+        "bytes": 2588,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-scope-adoption-and-grants-v1.json",
+        "sha256": "9a8a42ac66a72cee166119b0a7a27980023b4395997fe00d50727c41dbacf525"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/CONSUMED.json",
+      "original": {
+        "bytes": 660,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/CONSUMED.json",
+        "sha256": "5acf36cbc66103d11479f7a69db0ff07caf94fa1e773ffb4f8e59806f95183cd"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/evidence-forest.json",
+      "original": {
+        "bytes": 15181020,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+        "sha256": "a332648433d9ae0a985a1dd9ab9559ae13db8917335823aa26cf13a296029361"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/bounded_request_oracle.py",
+      "original": {
+        "bytes": 20424,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/bounded_request_oracle.py",
+        "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/certificate_boundary_search.py",
+      "original": {
+        "bytes": 7089,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/certificate_boundary_search.py",
+        "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/exact_evidence_arena.py",
+      "original": {
+        "bytes": 38300,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/exact_evidence_arena.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/independent_forest_inverse.py",
+      "original": {
+        "bytes": 24144,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/independent_forest_inverse.py",
+        "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/interned_quantified_family_points_v1.py",
+      "original": {
+        "bytes": 4311,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/interned_quantified_family_points_v1.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/interned_result_reader_v2.py",
+      "original": {
+        "bytes": 4705,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/interned_result_reader_v2.py",
+        "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/logic.py",
+      "original": {
+        "bytes": 10808,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/logic.py",
+        "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/mp_schema_certificate.py",
+      "original": {
+        "bytes": 26687,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/mp_schema_certificate.py",
+        "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/native_inference_inventory.py",
+      "original": {
+        "bytes": 10594,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/native_inference_inventory.py",
+        "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/native_inventory_policy.py",
+      "original": {
+        "bytes": 2746,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/native_inventory_policy.py",
+        "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/native_receptor_points.py",
+      "original": {
+        "bytes": 8962,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/native_receptor_points.py",
+        "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/owned_evidence_adapter.py",
+      "original": {
+        "bytes": 14997,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/owned_evidence_adapter.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/owned_inventory_join.py",
+      "original": {
+        "bytes": 13359,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/owned_inventory_join.py",
+        "sha256": "0287ee16f2da0cd2f8303f97f295f5e9bf091452718ef2f0fe2f3d0804daa872"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/proof_boundary.py",
+      "original": {
+        "bytes": 6992,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/quantified_family_points_v2.py",
+      "original": {
+        "bytes": 8155,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/quantified_family_points_v2.py",
+        "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/quantified_receptors_v1.py",
+      "original": {
+        "bytes": 11060,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/quantified_symbolic_control_v2.py",
+      "original": {
+        "bytes": 27203,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/quantified_symbolic_control_v2.py",
+        "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/receptor_support_ordering_v1.py",
+      "original": {
+        "bytes": 18508,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/receptor_support_ordering_v1.py",
+        "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/semantic_inventory_guidance.py",
+      "original": {
+        "bytes": 6942,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/semantic_inventory_guidance.py",
+        "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/semantic_inventory_oracle.py",
+      "original": {
+        "bytes": 55841,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/semantic_inventory_oracle.py",
+        "sha256": "1692345882cd14076f52ad257ab9e29daac92711a677c6febb17664b47a07ee0"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/semantic_inventory_search_v2.py",
+      "original": {
+        "bytes": 15936,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/semantic_inventory_search_v2.py",
+        "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/semantic_lemma_inventory.py",
+      "original": {
+        "bytes": 7196,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/semantic_lemma_inventory.py",
+        "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/semantic_point_smt.py",
+      "original": {
+        "bytes": 4593,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/semantic_point_smt.py",
+        "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/semantic_receiver_driver.py",
+      "original": {
+        "bytes": 114308,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/semantic_receiver_driver.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/semantic_receptor_points.py",
+      "original": {
+        "bytes": 7409,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/semantic_receptor_points.py",
+        "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/tape_binary.py",
+      "original": {
+        "bytes": 3756,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/tape_tree_machine.py",
+      "original": {
+        "bytes": 19188,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/tree_machine.py",
+      "original": {
+        "bytes": 13290,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/modules/turtle.py",
+      "original": {
+        "bytes": 28533,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/modules/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/native/code.bin",
+      "original": {
+        "bytes": 7558192,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/native/code.bin",
+        "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/native/input.bin",
+      "original": {
+        "bytes": 687928,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/native/input.bin",
+        "sha256": "a94031145884037d9b7ee2f40a75c3866658da736c66430d0cd55f58de855625"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/native/output.bin",
+      "original": {
+        "bytes": 687932,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/native/output.bin",
+        "sha256": "b4a0285e38bd305a548027e00de37034e98e708c1fc8da009553ef7c4284f4de"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/result.json",
+      "original": {
+        "bytes": 36911886,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+        "sha256": "77c6af97754c4a038da88f71f2aa40adf24dbacc16a7d76c4f23977ce4a9a5bd"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/runner-receipt.json",
+      "original": {
+        "bytes": 11924,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/runner-receipt.json",
+        "sha256": "e8289c85622931b2fed43c7a447d3a08ef50d1c0515164c95bd0059453ed9cf9"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/stderr.bin",
+      "original": {
+        "bytes": 2152,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/stderr.bin",
+        "sha256": "cf70873008672500627bd941f66072106093e012ac08a63cb54f795eeba9b4ea"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/stdout.bin",
+      "original": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "ROOT/actual-fixed-v1/worker-failure.json",
+      "original": {
+        "bytes": 19391,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/worker-failure.json",
+        "sha256": "4cd0536bc7b5d79c2a1e7128e8094d2fc73de299b07191ed2d18d6d66c51104d"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/CONSUMED.json",
+      "original": {
+        "bytes": 669,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json",
+        "sha256": "eb7da66951a262dee42ace5aa47f61d9016626737d88778f88a2fd7aef1b26c4"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/evidence-forest.json",
+      "original": {
+        "bytes": 14906405,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+        "sha256": "d4450d19b8e4fd07f10ee4766cd083408258a25a8df1dcd8375bce48c2029d55"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/bounded_request_oracle.py",
+      "original": {
+        "bytes": 20424,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/bounded_request_oracle.py",
+        "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/certificate_boundary_search.py",
+      "original": {
+        "bytes": 7089,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/certificate_boundary_search.py",
+        "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/exact_evidence_arena.py",
+      "original": {
+        "bytes": 38300,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/exact_evidence_arena.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/independent_forest_inverse.py",
+      "original": {
+        "bytes": 24144,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/independent_forest_inverse.py",
+        "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/interned_quantified_family_points_v1.py",
+      "original": {
+        "bytes": 4311,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/interned_quantified_family_points_v1.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/interned_result_reader_v2.py",
+      "original": {
+        "bytes": 4705,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/interned_result_reader_v2.py",
+        "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/logic.py",
+      "original": {
+        "bytes": 10808,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/logic.py",
+        "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/mp_schema_certificate.py",
+      "original": {
+        "bytes": 26687,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/mp_schema_certificate.py",
+        "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/native_inference_inventory.py",
+      "original": {
+        "bytes": 10594,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/native_inference_inventory.py",
+        "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/native_inventory_policy.py",
+      "original": {
+        "bytes": 2746,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/native_inventory_policy.py",
+        "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/native_receptor_points.py",
+      "original": {
+        "bytes": 8962,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/native_receptor_points.py",
+        "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/owned_evidence_adapter.py",
+      "original": {
+        "bytes": 14997,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/owned_evidence_adapter.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/owned_inventory_join.py",
+      "original": {
+        "bytes": 13359,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/owned_inventory_join.py",
+        "sha256": "0287ee16f2da0cd2f8303f97f295f5e9bf091452718ef2f0fe2f3d0804daa872"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/proof_boundary.py",
+      "original": {
+        "bytes": 6992,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/quantified_family_points_v2.py",
+      "original": {
+        "bytes": 8155,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/quantified_family_points_v2.py",
+        "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/quantified_receptors_v1.py",
+      "original": {
+        "bytes": 11060,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/quantified_symbolic_control_v2.py",
+      "original": {
+        "bytes": 27203,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/quantified_symbolic_control_v2.py",
+        "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/receptor_support_ordering_v1.py",
+      "original": {
+        "bytes": 18508,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/receptor_support_ordering_v1.py",
+        "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/semantic_inventory_guidance.py",
+      "original": {
+        "bytes": 6942,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/semantic_inventory_guidance.py",
+        "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/semantic_inventory_oracle.py",
+      "original": {
+        "bytes": 55841,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/semantic_inventory_oracle.py",
+        "sha256": "1692345882cd14076f52ad257ab9e29daac92711a677c6febb17664b47a07ee0"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/semantic_inventory_search_v2.py",
+      "original": {
+        "bytes": 15936,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/semantic_inventory_search_v2.py",
+        "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/semantic_lemma_inventory.py",
+      "original": {
+        "bytes": 7196,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/semantic_lemma_inventory.py",
+        "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/semantic_point_smt.py",
+      "original": {
+        "bytes": 4593,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/semantic_point_smt.py",
+        "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/semantic_receiver_driver.py",
+      "original": {
+        "bytes": 114308,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/semantic_receiver_driver.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/semantic_receptor_points.py",
+      "original": {
+        "bytes": 7409,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/semantic_receptor_points.py",
+        "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/tape_binary.py",
+      "original": {
+        "bytes": 3756,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/tape_tree_machine.py",
+      "original": {
+        "bytes": 19188,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/tree_machine.py",
+      "original": {
+        "bytes": 13290,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/modules/turtle.py",
+      "original": {
+        "bytes": 28533,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/modules/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/native/code.bin",
+      "original": {
+        "bytes": 7558192,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/native/code.bin",
+        "sha256": "97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/native/input.bin",
+      "original": {
+        "bytes": 783980,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/native/input.bin",
+        "sha256": "02eac578e491a0791f787e62a4163a212dc03d7d15b6f0df8e857812061c3a17"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/native/output.bin",
+      "original": {
+        "bytes": 783984,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/native/output.bin",
+        "sha256": "017e261e28f2b297075001242c7ba2eac5b768ff032cf0462ef8850b67bcc312"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/result.json",
+      "original": {
+        "bytes": 33999395,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+        "sha256": "6382659c11f5455af90775c8cfb1a195fafc11885dfd1e763e0b5442849f4740"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/runner-receipt.json",
+      "original": {
+        "bytes": 11947,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/runner-receipt.json",
+        "sha256": "32592ba914992ad989cddad63007165d92392feb00e6b70986182debc4c0531d"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/stderr.bin",
+      "original": {
+        "bytes": 2118,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/stderr.bin",
+        "sha256": "23f3ae147f695954af4512f33136ec0b8cae7864919e67bb50a706ac2a51af58"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/stdout.bin",
+      "original": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "ROOT/actual-symbolic-v1/worker-failure.json",
+      "original": {
+        "bytes": 19401,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/worker-failure.json",
+        "sha256": "c3685482b583e9d4b1d97837eb48e55fbd3a3c485318568f9705e0f8e7cc995d"
+      }
+    },
+    {
+      "member": "ROOT/audit_saved_actuals_v2.py",
+      "original": {
+        "bytes": 5905,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/audit_saved_actuals_v2.py",
+        "sha256": "154f6b2d5f03f542a5be03df6181147b450d23ecc45fa33aa51979bc68279dd5"
+      }
+    },
+    {
+      "member": "ROOT/author_outer_v2.py",
+      "original": {
+        "bytes": 3327,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/author_outer_v2.py",
+        "sha256": "e521a6446e240fed350afab51c4a9b6b2205d5d11dbb30d0b4623e6e344f027f"
+      }
+    },
+    {
+      "member": "ROOT/author_plan_builder_v1.py",
+      "original": {
+        "bytes": 3172,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/author_plan_builder_v1.py",
+        "sha256": "bce0ba21876731ec177c0cc26dbe8907450b8ed9b500ed05db47ac9e238ebb23"
+      }
+    },
+    {
+      "member": "ROOT/basic-tiling-algorithm-HEAD.md",
+      "original": {
+        "bytes": 36240,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/basic-tiling-algorithm-HEAD.md",
+        "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+      }
+    },
+    {
+      "member": "ROOT/build_false_plans_v2.py",
+      "original": {
+        "bytes": 11681,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/build_false_plans_v2.py",
+        "sha256": "ababa12abfc1c4b2f3dc01ad1addfd46bde61c70419c31ab2f40e412f20d0abb"
+      }
+    },
+    {
+      "member": "ROOT/build_publication_v1.py",
+      "original": {
+        "bytes": 22333,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/build_publication_v1.py",
+        "sha256": "6bbd746af605d9cb5f79663baab84da2110e0b04561267c142e11c549bfe3ca7"
+      }
+    },
+    {
+      "member": "ROOT/case-declaration-v1.json",
+      "original": {
+        "bytes": 9188,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/case-declaration-v1.json",
+        "sha256": "edeb0a482ef1cbf39a832a948df663a997b21035da1b04d7b9db8820a8b23b56"
+      }
+    },
+    {
+      "member": "ROOT/false-plan-manifest-v1.json",
+      "original": {
+        "bytes": 3458,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/false-plan-manifest-v1.json",
+        "sha256": "59046bf3d90ea3b12221f7e8df67a34994afcc759563d2cd89f2c7b1a2f04b66"
+      }
+    },
+    {
+      "member": "ROOT/grant_reviewed_pair_v2.py",
+      "original": {
+        "bytes": 4755,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/grant_reviewed_pair_v2.py",
+        "sha256": "c0f90c1317cbc7eacbaa7dcb28e78dbc55c5be81c4c82e1179208c8e92314d9d"
+      }
+    },
+    {
+      "member": "ROOT/master-frozen-to-HEAD.patch",
+      "original": {
+        "bytes": 20785,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/master-frozen-to-HEAD.patch",
+        "sha256": "c001336e767b2a1662717b3b08682d58823357d51152b7c884f6b2001ae35553"
+      }
+    },
+    {
+      "member": "ROOT/observe_owned_evidence_runner_v2.py",
+      "original": {
+        "bytes": 5604,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/observe_owned_evidence_runner_v2.py",
+        "sha256": "70cce32675f2d2b0648155cae05dbe7415c25945aeaf3949d65b5fc3e4f5d9d8"
+      }
+    },
+    {
+      "member": "ROOT/observer-v1-v2.patch",
+      "original": {
+        "bytes": 1080,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/observer-v1-v2.patch",
+        "sha256": "7f176413436c45c6a42961d4aff06eb9ce60251a99df02e1fbf20105ae8c5ace"
+      }
+    },
+    {
+      "member": "ROOT/outer-Source-contract-v1.json",
+      "original": {
+        "bytes": 2330,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/outer-Source-contract-v1.json",
+        "sha256": "a1518eac1cb8e9d7ea297143148ddd3e3196b042ebc04efd6e0328f0cf3f5e03"
+      }
+    },
+    {
+      "member": "ROOT/outer-v1-v2.patch",
+      "original": {
+        "bytes": 1325,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/outer-v1-v2.patch",
+        "sha256": "206bcf0966704a92f3dbfb044655e9550dbb3ccc2f3baf1c79dae9b0f024962b"
+      }
+    },
+    {
+      "member": "ROOT/owned_evidence_once_runner_v2.py",
+      "original": {
+        "bytes": 41480,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/owned_evidence_once_runner_v2.py",
+        "sha256": "b8f11d9a50c05b93f1066ecdcebec46f3d14681ae0e69c25450e8aee09f252ae"
+      }
+    },
+    {
+      "member": "ROOT/plan-builder-parent-successor.patch",
+      "original": {
+        "bytes": 10801,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plan-builder-parent-successor.patch",
+        "sha256": "34253ae73020ee351caa7e24788b639aa8c4788517dce6567af4ee9dcb72f524"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/authorizations/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+      "original": {
+        "bytes": 10500,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/authorizations/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+        "sha256": "3bfa99825273e7b43309ca9bd9b9d4cb5ff36807da2505e37fd4cf79828d19f1"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/authorizations/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+      "original": {
+        "bytes": 10503,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/authorizations/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+        "sha256": "880c15111d39f2e153d4b056a94877137a3dc9f8e96b7fa40661dd5b01a044f7"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/false-once-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+      "original": {
+        "bytes": 2597,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/false-once-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+        "sha256": "628b0628ce9c450fd4b2e8532ddbbdb82b41b3391f65fed5a4f1c9d69287a44e"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/false-once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+      "original": {
+        "bytes": 2609,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/false-once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+        "sha256": "aa0c83148c72ad90b220021d6e79eff1136a768b04998d510ca1f47160409bbc"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/CONSUMED.json",
+      "original": {
+        "bytes": 324,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/CONSUMED.json",
+        "sha256": "e860daa7738b5aa7f5c61d5583322180067b2f12a52b916bb4b44127d63a43a0"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/stderr.bin",
+      "original": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/stdout.bin",
+      "original": {
+        "bytes": 255,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/stdout.bin",
+        "sha256": "f4b0852ed5b659f681a45a81969b4164b3e6a29f07597aba460e36e97ecda6e8"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/terminal.json",
+      "original": {
+        "bytes": 1609,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/terminal.json",
+        "sha256": "e68d3974925e2911e3d1e59198b452422a74f99c38be462fb072ef4977ff9c6d"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+      "original": {
+        "bytes": 2749,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+        "sha256": "9eecdec434b65e8598f825f6d862c9d549bfc1cb2cee16aa197d9ca243e15513"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/CONSUMED.json",
+      "original": {
+        "bytes": 327,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/CONSUMED.json",
+        "sha256": "5a92a1f6f881b25319bc0217aa63b8464f8c10f28d18cb2f38c1301732b5f162"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/stderr.bin",
+      "original": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/stdout.bin",
+      "original": {
+        "bytes": 258,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/stdout.bin",
+        "sha256": "7a672c4a9ac345df2c7cd356d758c452a7d2733ec5bb6bb1fea320a72e7b3a73"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/terminal.json",
+      "original": {
+        "bytes": 1618,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/terminal.json",
+        "sha256": "b23feb1f2c363b65c8e96e098619e738631c5856b9e476c791aa213900dedda1"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+      "original": {
+        "bytes": 2764,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+        "sha256": "02e0588d5e734890d7068a6ddb021d03db4dc1166344fa4fa4695334c704c9ff"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/worker-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+      "original": {
+        "bytes": 18137,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/worker-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json",
+        "sha256": "b0bc154a384b411bb3d9cbcebaaa59dc82ea5cfc238683184f819f7b3de510ce"
+      }
+    },
+    {
+      "member": "ROOT/plans-v1/worker-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+      "original": {
+        "bytes": 18146,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/worker-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json",
+        "sha256": "e2ababd1c2438a9782e98bb59a1d3c40d163272648f44af13ff9064b67c64d0b"
+      }
+    },
+    {
+      "member": "ROOT/runtime-closure-v1.json",
+      "original": {
+        "bytes": 90869,
+        "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/runtime-closure-v1.json",
+        "sha256": "2b89eef2c16a3148a48910bb794bbabe8dece22e91033f51b9fd79bb09f33b25"
+      }
+    },
+    {
+      "member": "library/API-v1.json",
+      "original": {
+        "bytes": 6037,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/API-v1.json",
+        "sha256": "55a45e9053279087282947109399716dcc8aff2b38956ba372144256c1b6838e"
+      }
+    },
+    {
+      "member": "library/EVIDENCE_PROFILE-v4.json",
+      "original": {
+        "bytes": 3662,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/EVIDENCE_PROFILE-v4.json",
+        "sha256": "3a78d1d75a77f9d1aec11f531b9b2e88bfe920901aabdf691270cfbe2a906ee8"
+      }
+    },
+    {
+      "member": "library/Source-argument-v1.json",
+      "original": {
+        "bytes": 6528,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/Source-argument-v1.json",
+        "sha256": "34ca5140401a63e259f8405a6c39134f14ac920d1ad1542da1cd996c81224319"
+      }
+    },
+    {
+      "member": "library/Source-contract-v1.json",
+      "original": {
+        "bytes": 3873,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/Source-contract-v1.json",
+        "sha256": "cf59e99922d56081506d157008bf84b7419bca3e92d510bbd6f4ed55dcf45150"
+      }
+    },
+    {
+      "member": "library/Source-delta-v1.json",
+      "original": {
+        "bytes": 6742,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/Source-delta-v1.json",
+        "sha256": "80c22e62efef887d92aeab7bf7729015239e60c8f0e25bf5415abc894d6eba6c"
+      }
+    },
+    {
+      "member": "library/author-static-audit-v1.json",
+      "original": {
+        "bytes": 16031,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/author-static-audit-v1.json",
+        "sha256": "a7ff705d99a8647a189f792e1403cbe62ae9cb8e03e565ad130cd990da6b344f"
+      }
+    },
+    {
+      "member": "library/author_and_freeze_v1.py",
+      "original": {
+        "bytes": 13721,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/author_and_freeze_v1.py",
+        "sha256": "846e34ebcb5b6a2382e2c78e892ee464d901639dd80f07d1f1faffc6a3d45b0c"
+      }
+    },
+    {
+      "member": "library/author_master_addendum_v1.py",
+      "original": {
+        "bytes": 7406,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/author_master_addendum_v1.py",
+        "sha256": "c503bd0195f6d293f90820b61c695e5b0ee99b51b046aeab5c8b5ab821f01466"
+      }
+    },
+    {
+      "member": "library/current-master-addendum-handoff-v1.json",
+      "original": {
+        "bytes": 1098,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/current-master-addendum-handoff-v1.json",
+        "sha256": "28fb51b4933b18ecf2c27ba901fd245b6cce0e5559951c9725afe2bc37865ca7"
+      }
+    },
+    {
+      "member": "library/current-master-applicability-addendum-v1.json",
+      "original": {
+        "bytes": 8588,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/current-master-applicability-addendum-v1.json",
+        "sha256": "ee7637e71b8de63359059c6b9bc119e796354c8d154abe23fa1b7cf19b975e41"
+      }
+    },
+    {
+      "member": "library/handoff-v1.json",
+      "original": {
+        "bytes": 2843,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/handoff-v1.json",
+        "sha256": "457accfe4f522ee7b97ff98a43e9d19aa57141f46f5fbf0e5fd36751aa69e0a5"
+      }
+    },
+    {
+      "member": "library/inert-patch/forward/cold.py",
+      "original": {
+        "bytes": 62809,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/inert-patch/forward/cold.py",
+        "sha256": "02a0e8f708b0c4928630b8eb7a7956ad9cde9341e658fd0b1528c3159b267377"
+      }
+    },
+    {
+      "member": "library/inert-patch/inverse/cold.py",
+      "original": {
+        "bytes": 62795,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/inert-patch/inverse/cold.py",
+        "sha256": "a445a7fbbd2575c13223268cd23f0ad910d93bc34415421ec5583bee876828d4"
+      }
+    },
+    {
+      "member": "library/owned_evidence_cold_v4.py",
+      "original": {
+        "bytes": 62809,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/owned_evidence_cold_v4.py",
+        "sha256": "02a0e8f708b0c4928630b8eb7a7956ad9cde9341e658fd0b1528c3159b267377"
+      }
+    },
+    {
+      "member": "library/source-forward.patch",
+      "original": {
+        "bytes": 3200,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/source-forward.patch",
+        "sha256": "394ee0060cebf40fdd7dbea5ad1bf8ad104159af4b4c7cb96682dd4d8a7b1802"
+      }
+    },
+    {
+      "member": "library/source-inverse.patch",
+      "original": {
+        "bytes": 3200,
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/source-inverse.patch",
+        "sha256": "4e0ae862770b1d721b324a15e925fb57ec0329fd504c14babe67d5d845adeb7b"
+      }
+    },
+    {
+      "member": "peer/audit_current_tuple_v1.py",
+      "original": {
+        "bytes": 15122,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/audit_current_tuple_v1.py",
+        "sha256": "3e96ae260987afb27db89859ef27c49520ea421b91b68888db47cc7d9e834dce"
+      }
+    },
+    {
+      "member": "peer/audit_current_tuple_v2.py",
+      "original": {
+        "bytes": 15325,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/audit_current_tuple_v2.py",
+        "sha256": "a4529a493907842b13dc9e12adaea80412c75e7c494d4a841f7d69e8a9c11f2e"
+      }
+    },
+    {
+      "member": "peer/audit_grant_delta_v1.py",
+      "original": {
+        "bytes": 9364,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/audit_grant_delta_v1.py",
+        "sha256": "a8af7124a1044460b1504252dfe8430fe7a4d4b6fb644674d55a46f0cf186ef4"
+      }
+    },
+    {
+      "member": "peer/audit_grant_delta_v2.py",
+      "original": {
+        "bytes": 9974,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/audit_grant_delta_v2.py",
+        "sha256": "33dcd9a5d967c537658beda7877b85bc9b552326a1915660812a9284e42d6c40"
+      }
+    },
+    {
+      "member": "peer/audit_saved_actuals_v1.py",
+      "original": {
+        "bytes": 19513,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/audit_saved_actuals_v1.py",
+        "sha256": "9515e80d3a09533a2536254f0b5af0612895ce6557e8d3f66d82edf139f194a1"
+      }
+    },
+    {
+      "member": "peer/current-static-audit-v1.json",
+      "original": {
+        "bytes": 55170,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/current-static-audit-v1.json",
+        "sha256": "a3a1b0a6fcff04b1e2f50ce7042dc45c106ef313f4bb2029e521b3f912e17810"
+      }
+    },
+    {
+      "member": "peer/current-static-audit-v2.json",
+      "original": {
+        "bytes": 55936,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/current-static-audit-v2.json",
+        "sha256": "0318485e6f8db15cbdc3ca29e542dfbb1672dab57b0cbe05459d2a17150118c4"
+      }
+    },
+    {
+      "member": "peer/final-grant-delta-audit-v1.json",
+      "original": {
+        "bytes": 21217,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/final-grant-delta-audit-v1.json",
+        "sha256": "038c31d80842e6f606195bac3e3c27933e7e219c8232196f0867722607f6aa75"
+      }
+    },
+    {
+      "member": "peer/final-grant-delta-audit-v2.json",
+      "original": {
+        "bytes": 20982,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/final-grant-delta-audit-v2.json",
+        "sha256": "75cbd3968e38820d1844b4e033d33f0d2c9c7ed2218831eddce23cf230875bb1"
+      }
+    },
+    {
+      "member": "peer/freeze_review_receipts_v1.py",
+      "original": {
+        "bytes": 15615,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/freeze_review_receipts_v1.py",
+        "sha256": "86c4b7eb25b7515c7fa37c226b16f2fd3b5891985fd96104eb1b71b1d22ee34a"
+      }
+    },
+    {
+      "member": "peer/handoff-v1.json",
+      "original": {
+        "bytes": 2007,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/handoff-v1.json",
+        "sha256": "3ca2166d7787399309a7dd7082672302af582ee080c554dda6066bc465147809"
+      }
+    },
+    {
+      "member": "peer/review-obligations-v1.json",
+      "original": {
+        "bytes": 8696,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/review-obligations-v1.json",
+        "sha256": "95abd373dfd725e194c3e4d0931f389572ff72d7fcb2663cc883ab59c044c71e"
+      }
+    },
+    {
+      "member": "peer/saved-actual-audit-v1.json",
+      "original": {
+        "bytes": 72510,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/saved-actual-audit-v1.json",
+        "sha256": "b49969256a44b31a371a58f0e157a34760aae4ca8491099ad6e842ee3717de73"
+      }
+    },
+    {
+      "member": "peer/typed-components-Source-review-v1.json",
+      "original": {
+        "bytes": 32173,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-components-Source-review-v1.json",
+        "sha256": "910ee9515d386b470fedcc8f566c1dae8f43e863606f6cba76f8940373187465"
+      }
+    },
+    {
+      "member": "peer/typed-current-master-applicability-review-v1.json",
+      "original": {
+        "bytes": 3206,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-current-master-applicability-review-v1.json",
+        "sha256": "ed499839516e22216ff29c8d4e15e8b0e488ac4d6ed5a348ac4a8eae8c9d0bd5"
+      }
+    },
+    {
+      "member": "peer/typed-final-grant-delta-review-v1.json",
+      "original": {
+        "bytes": 12523,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-final-grant-delta-review-v1.json",
+        "sha256": "c425a9e182004442051ec8f6cb8a072a04e29f7c25001d0f7a20b168ac022d22"
+      }
+    },
+    {
+      "member": "peer/typed-final-grant-delta-review-v2.json",
+      "original": {
+        "bytes": 12981,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-final-grant-delta-review-v2.json",
+        "sha256": "2ce13e7314f410c26349ead96d2142fccea7ea986dde4c9ec2f3e4f26e841a3f"
+      }
+    },
+    {
+      "member": "peer/typed-once-Source-review-v1.json",
+      "original": {
+        "bytes": 7789,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-once-Source-review-v1.json",
+        "sha256": "4f78e4c86160fdce1e2e4abc1c2f880051040721916af6e31f8a740be26620c9"
+      }
+    },
+    {
+      "member": "peer/typed-prospective-plan-review-v1.json",
+      "original": {
+        "bytes": 24458,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-prospective-plan-review-v1.json",
+        "sha256": "3b114fc644d15a722fe6d0dd8df43067af19db5751e2a74b3d3f4a9a73eb1ba4"
+      }
+    },
+    {
+      "member": "peer/typed-saved-actual-review-v1.json",
+      "original": {
+        "bytes": 22634,
+        "path": "/private/tmp/gcts-cadence-integration-peer-20261019/typed-saved-actual-review-v1.json",
+        "sha256": "c0b352ef5a821343d3ea095a123d2ee2ca2b38e5c60c9a9b96f148da769be98b"
+      }
+    },
+    {
+      "member": "next-design/analysis-audit-v1.json",
+      "original": {
+        "bytes": 4957,
+        "path": "/private/tmp/gcts-owned-finalization-next-design-library-20261019/analysis-audit-v1.json",
+        "sha256": "f5089e5df838e9a3a7363e9bd2acf0f3c598cd53aa0cfe90b714057fba84faf2"
+      }
+    },
+    {
+      "member": "next-design/author_design_v1.py",
+      "original": {
+        "bytes": 20042,
+        "path": "/private/tmp/gcts-owned-finalization-next-design-library-20261019/author_design_v1.py",
+        "sha256": "51951dbdeae4adf1ed4dd33fbc09c653842b7f5b87e00c9efe36e531a873ff48"
+      }
+    },
+    {
+      "member": "next-design/handoff-v1.json",
+      "original": {
+        "bytes": 1232,
+        "path": "/private/tmp/gcts-owned-finalization-next-design-library-20261019/handoff-v1.json",
+        "sha256": "cc67d47e3ec7a55d1d447579d5c82f56de31f2672b7547f517b300b5653fe6f1"
+      }
+    },
+    {
+      "member": "next-design/ownnext-design-v1.json",
+      "original": {
+        "bytes": 33465,
+        "path": "/private/tmp/gcts-owned-finalization-next-design-library-20261019/ownnext-design-v1.json",
+        "sha256": "2cb26ec2ab20d16fe3424680561ee9384d6edf7cf5dfa6cbbfb2529920bf9e40"
+      }
+    },
+    {
+      "member": "sources/01-bounded_request_oracle_v1.py",
+      "original": {
+        "bytes": 20424,
+        "path": "/private/tmp/gcts-semantic-family-transport-source-20261018/bounded_request_oracle_v1.py",
+        "sha256": "606e790f4ba3ecc976877cbe52ccfd64519262f2ea07214c80d989f58e4f7637"
+      }
+    },
+    {
+      "member": "sources/02-certificate_boundary_search.py",
+      "original": {
+        "bytes": 7089,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/certificate_boundary_search.py",
+        "sha256": "113c8e8c526e9ccb146ef00e5ffaa4915f88eebbf2cbcef8b42fc1d28503857a"
+      }
+    },
+    {
+      "member": "sources/03-exact_evidence_arena_v3.py",
+      "original": {
+        "bytes": 38300,
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8"
+      }
+    },
+    {
+      "member": "sources/04-independent_forest_inverse_v7.py",
+      "original": {
+        "bytes": 24144,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+        "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+      }
+    },
+    {
+      "member": "sources/05-interned_quantified_family_points_v1.py",
+      "original": {
+        "bytes": 4311,
+        "path": "/private/tmp/gcts-compact-point-representation-source-20261018/interned_quantified_family_points_v1.py",
+        "sha256": "fb37663b4c0c3de4e9f3c28564678af833857f7ebe761cd83275d62f123b9a8e"
+      }
+    },
+    {
+      "member": "sources/06-interned_result_reader_v2.py",
+      "original": {
+        "bytes": 4705,
+        "path": "/private/tmp/gcts-interned-output-reader-source-20261018/interned_result_reader_v2.py",
+        "sha256": "cd06c8372b6edd05774cf5974c5b6265bbc196afdc68d47507e54a2044dec836"
+      }
+    },
+    {
+      "member": "sources/07-logic.py",
+      "original": {
+        "bytes": 10808,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/logic.py",
+        "sha256": "5e607e81c4231836e7c2f979f7f9673988e1c6326335dfb6cfc25a173169a011"
+      }
+    },
+    {
+      "member": "sources/08-native_inference_inventory.py",
+      "original": {
+        "bytes": 10594,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inference_inventory.py",
+        "sha256": "89979f6be8f422ea293c2f0b6c0e966fc9a0710a8e15cbe58437f868cbf75091"
+      }
+    },
+    {
+      "member": "sources/09-native_inventory_policy.py",
+      "original": {
+        "bytes": 2746,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_inventory_policy.py",
+        "sha256": "8721a361f4a97e5311f8ed944431d49d08592ed102f50ed333d1ad2b9ff01591"
+      }
+    },
+    {
+      "member": "sources/10-native_receptor_points.py",
+      "original": {
+        "bytes": 8962,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/native_receptor_points.py",
+        "sha256": "f8d3a26f9062432eb07805ee0c508d79fa5db232f9e1ca40fbc6c351e0e98888"
+      }
+    },
+    {
+      "member": "sources/11-owned_evidence_adapter_v3.py",
+      "original": {
+        "bytes": 14997,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8"
+      }
+    },
+    {
+      "member": "sources/12-owned_inventory_join_v2.py",
+      "original": {
+        "bytes": 13359,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_inventory_join_v2.py",
+        "sha256": "0287ee16f2da0cd2f8303f97f295f5e9bf091452718ef2f0fe2f3d0804daa872"
+      }
+    },
+    {
+      "member": "sources/13-proof_boundary.py",
+      "original": {
+        "bytes": 6992,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/proof_boundary.py",
+        "sha256": "36824e8d3b3968b1368f5f55f6cecb58b48ba5b58084fcb32f387d361c21d92f"
+      }
+    },
+    {
+      "member": "sources/14-schema_admission_family_points_v3.py",
+      "original": {
+        "bytes": 8155,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_family_points_v3.py",
+        "sha256": "7f95858af5af40d2f902d2aea6bc5d5a7944f7fe0b65b6b9a2ea66c0fb2ec4e3"
+      }
+    },
+    {
+      "member": "sources/15-quantified_receptors_v1.py",
+      "original": {
+        "bytes": 11060,
+        "path": "/private/tmp/gcts-quantified-adapter-source-20261018/quantified_receptors_v1.py",
+        "sha256": "d1c4afa10d58abbcf473cb3da8ee8768c974dd05d03ea00b988d574b2441af5a"
+      }
+    },
+    {
+      "member": "sources/16-schema_admission_symbolic_control_v3.py",
+      "original": {
+        "bytes": 27203,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_symbolic_control_v3.py",
+        "sha256": "8eda5d6fd91a137c9d22081bcba707631ab29733d2ae4ce413a2913a2b7d3bbe"
+      }
+    },
+    {
+      "member": "sources/17-schema_admission_support_ordering_v2.py",
+      "original": {
+        "bytes": 18508,
+        "path": "/private/tmp/gcts-schema-admission-ROOT-source-20261019/schema_admission_support_ordering_v2.py",
+        "sha256": "6e39f5cf5cd261c73515c29d3b315c43c27ae0bc64ef5fb509cea178b0251769"
+      }
+    },
+    {
+      "member": "sources/18-semantic_inventory_guidance.py",
+      "original": {
+        "bytes": 6942,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_inventory_guidance.py",
+        "sha256": "744948b67e2870ae24737469aceb920624b59d616e8a48f91b99d39f56c14a79"
+      }
+    },
+    {
+      "member": "sources/19-semantic_inventory_oracle_v5.py",
+      "original": {
+        "bytes": 55841,
+        "path": "/private/tmp/gcts-owned-evidence-integration-library-20261019/semantic_inventory_oracle_v5.py",
+        "sha256": "1692345882cd14076f52ad257ab9e29daac92711a677c6febb17664b47a07ee0"
+      }
+    },
+    {
+      "member": "sources/20-semantic_inventory_search_v2.py",
+      "original": {
+        "bytes": 15936,
+        "path": "/private/tmp/gcts-and-support-point-source-20261018/semantic_inventory_search_v2.py",
+        "sha256": "35443c958f2115efa18cc923fb4a4f1070e6e03ccf1d1adf2bb56ce1f7bab28b"
+      }
+    },
+    {
+      "member": "sources/21-semantic_lemma_inventory.py",
+      "original": {
+        "bytes": 7196,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_lemma_inventory.py",
+        "sha256": "8b839081400efbc600079f4164e4564ab3ca4dfe4d52aa791d5182855e0540ad"
+      }
+    },
+    {
+      "member": "sources/22-semantic_point_smt.py",
+      "original": {
+        "bytes": 4593,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_point_smt.py",
+        "sha256": "6bcb3fb60529f6888836a1ca0c613b772cea192c9549620f968dbdf7cb9be74a"
+      }
+    },
+    {
+      "member": "sources/23-owned_evidence_receiver_driver_v4.py",
+      "original": {
+        "bytes": 114308,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c"
+      }
+    },
+    {
+      "member": "sources/24-semantic_receptor_points.py",
+      "original": {
+        "bytes": 7409,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic_receptor_points.py",
+        "sha256": "c8db4a5d47ff2f2240b17df4da3fff505b9d1bf8e5505f78c38365345f08e207"
+      }
+    },
+    {
+      "member": "sources/25-tape_binary.py",
+      "original": {
+        "bytes": 3756,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tape_binary.py",
+        "sha256": "ad511bdfbdc802c3785768db9230696dadf214d4a6a4f041588a6d7cb4405247"
+      }
+    },
+    {
+      "member": "sources/26-tape_tree_machine.py",
+      "original": {
+        "bytes": 19188,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/tape_tree_machine.py",
+        "sha256": "2757ae65ade6493980ced9d6ef282b6d00ab57fcc6b7f4b8aedb7e7bb939bd0f"
+      }
+    },
+    {
+      "member": "sources/27-tree_machine.py",
+      "original": {
+        "bytes": 13290,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/tree_machine.py",
+        "sha256": "8bede1b069975ba5b911f8d27d64e550b75cf81b779aae38ad6c0bf8371d2257"
+      }
+    },
+    {
+      "member": "sources/28-turtle.py",
+      "original": {
+        "bytes": 28533,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/turtle.py",
+        "sha256": "9eefe9fd16671802e7b283ad414f02022eb591ebbf6ef1c877e3ad72dfc18c1a"
+      }
+    },
+    {
+      "member": "sources/29-mp_schema_certificate_v1.py",
+      "original": {
+        "bytes": 26687,
+        "path": "/private/tmp/gcts-mp-schema-source-20261019/mp_schema_certificate_v1.py",
+        "sha256": "7351d5954763e8b671411a78a821e5cc560ac1af19477a9491da573a735d2ae4"
+      }
+    },
+    {
+      "member": "sources/30-proof-boundary-microcode-001.json.gz",
+      "original": {
+        "bytes": 1114802,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-microcode-001.json.gz",
+        "sha256": "23e2b54cc8365fa42f05148885dc7da671f525f8cb24b154f5c69aeeb3180336"
+      }
+    },
+    {
+      "member": "sources/31-proof-boundary-001.json",
+      "original": {
+        "bytes": 1494417,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/proof-boundary-001.json",
+        "sha256": "977ceac5504ad3d712c7fa2d46d20494b42e30820f77eb2bffbeea313d07ee54"
+      }
+    },
+    {
+      "member": "sources/32-native-build-v2.json",
+      "original": {
+        "bytes": 1120,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/native-build-v2.json",
+        "sha256": "b98e6f5d1366a741ce94d43ad261834019ffc9e673e4b1d54747f6719db4e365"
+      }
+    },
+    {
+      "member": "sources/33-native-build-v1.json",
+      "original": {
+        "bytes": 29632,
+        "path": "/private/tmp/gcts-semantic-runtime-intake-20261018/native-build-v1.json",
+        "sha256": "8149deffc16da11355a64e358ac97ade8fb2d3fef287d06eee901c80c0a919c2"
+      }
+    },
+    {
+      "member": "sources/34-boundary_oracle.cpp",
+      "original": {
+        "bytes": 3547,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/boundary_oracle.cpp",
+        "sha256": "f0965f08fc9e8272d0fdd1ab3233c3a308267a4fc3b2e1a928c39dbeaaec31be"
+      }
+    },
+    {
+      "member": "sources/35-fol_checker.tree",
+      "original": {
+        "bytes": 17577,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/fol_checker.tree",
+        "sha256": "8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed"
+      }
+    },
+    {
+      "member": "prerequisite/ROOT-inverse-qualification-milestone.json",
+      "original": {
+        "bytes": 7677,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/ROOT-final-milestone-v1.json",
+        "sha256": "21cfb3bdf3cad8548db6517198b874ed016fb966bf507213c66525ef0e020c86"
+      }
+    },
+    {
+      "member": "prerequisite/independent-inverse-qualification-review.json",
+      "original": {
+        "bytes": 11399,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-saved-qualification-review-v1.json",
+        "sha256": "b7df1e1cdfb1b7cab410e1a88dd043db7473665b74cb45dd24e7b00fb8e608d8"
+      }
+    },
+    {
+      "member": "prerequisite/historical-integration-saved-review.json",
+      "original": {
+        "bytes": 16276,
+        "path": "/private/tmp/gcts-owned-evidence-integration-peer-20261019/typed-owned-integration-saved-review-v1.json",
+        "sha256": "5cff9e88dde9fc8f0e6c35226dda841e1119365d62037596b2f21074bd5c0328"
+      }
+    },
+    {
+      "member": "operational-inputs/full-assertion-capsule.json",
+      "original": {
+        "bytes": 22422,
+        "path": "/private/tmp/gcts-local-operational-20261019/full-assertion-capsule.json",
+        "sha256": "1a42c2ab16680dddbac504ca5b2d79559370785884805cf4d56b5c1c22c63dc0"
+      }
+    },
+    {
+      "member": "operational-inputs/semantic-inventory-policy-001.json",
+      "original": {
+        "bytes": 4502,
+        "path": "/private/tmp/gcts-semantic-family-next-audit-20261018/semantic-inventory-policy-001.json",
+        "sha256": "f5f0c22121f4c503db319fe6e01c4c3a146ac9db9deb7e2ccec0aab1a2f32161"
+      }
+    },
+    {
+      "member": "operational-inputs/parent-runtime-closure.json",
+      "original": {
+        "bytes": 73601,
+        "path": "/private/tmp/gcts-local-operational-20261019/parent-runtime-closure.json",
+        "sha256": "214e306b85ec29ea8863c32509c47649e4984c76498752d92d2b9756fcfe5c58"
+      }
+    }
+  ],
+  "packaging_successor": "All 198 prior raw members unchanged; append the three direct pinned operational JSON inputs. No scientific or presentation change.",
+  "schema": "cadence-integration-raw-archive-manifest-v2",
+  "scientific_evaluations": 0
+}

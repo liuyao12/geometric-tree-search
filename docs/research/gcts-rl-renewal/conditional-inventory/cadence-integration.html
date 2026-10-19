@@ -1,0 +1,370 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fresh full-pipeline deadline outcomes — GCTS research</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>:root{--ink:#193740;--muted:#506772;--line:#bfd0d3;--paper:#f3f7f6;--teal:#12666a;--purple:#7350a2;--amber:#996b20}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,sans-serif}main{max-width:1180px;padding:36px 30px 80px;margin:auto}a{color:#0d666f}nav{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:44px;font-size:15px}h1{font:600 clamp(32px,5vw,54px)/1.12 Georgia,serif;max-width:980px;margin:12px 0 22px}h2{font:600 29px/1.25 Georgia,serif;margin:0 0 22px}h3{font-size:19px}p{max-width:980px}.eyebrow{font-size:12px;letter-spacing:1.5px;font-weight:750;text-transform:uppercase;color:var(--teal)}.lead{font-size:22px;max-width:980px}.boundary{border-left:5px solid var(--amber);background:#fff2dd;padding:18px 24px;margin:28px 0}.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}.cards article{border:1px solid var(--line);background:white;padding:22px 26px}.cards b{font-size:22px}.cards p{margin-bottom:0}.timeline{height:46px;display:flex;margin:25px 0 12px;border:1px solid var(--line)}.time-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:15px}.time-legend b{display:block}.time-legend p{margin-top:5px}.proof-table{min-width:980px}.proof-table pre{max-width:500px}section{margin-top:58px;scroll-margin-top:24px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:850px;background:white;font-size:15px}th,td{padding:16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}thead{background:#e2edef}caption{text-align:left;font-size:13px;color:var(--muted);margin-top:10px;caption-side:bottom}.path{display:grid;grid-template-columns:1fr 46px 1fr 46px 1fr;align-items:stretch;margin:25px 0}.path article{background:white;border-top:5px solid var(--teal);padding:22px;border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.path.evidence article{border-top-color:var(--purple)}.path article strong{display:block;font-size:19px;line-height:1.3}.path p{font-size:15px;margin-bottom:0}.arrow{align-self:center;text-align:center;font-size:25px;color:#617a84}.lane{font-size:12px;font-weight:750;letter-spacing:1.4px;color:var(--teal);text-transform:uppercase}.lane.purple{color:var(--purple)}.note{font-size:14px;color:var(--muted)}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:560px;overflow:auto;background:#e5edef;padding:22px;font-size:12px;border:1px solid var(--line)}details{margin:22px 0}summary{cursor:pointer;font-weight:650}li{margin:12px 0}footer{border-top:1px solid var(--line);margin-top:65px;padding-top:22px;color:var(--muted);font-size:14px}code{font-size:.87em;background:#e4edee;padding:2px 4px}@media(max-width:730px){main{padding:24px 18px 60px}.cards,.time-legend{grid-template-columns:1fr}.path{grid-template-columns:1fr}.path .arrow{transform:rotate(90deg);height:42px}.lead{font-size:19px}}
+
+.diagnostic{background:white;border:1px solid var(--line);padding:14px 20px;margin:12px 0}.diagnostic summary{overflow-wrap:anywhere}.diagnostic summary span{float:right;color:var(--teal);font-size:13px}.counts{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:25px 0}.counts article{padding:25px;background:white;border-top:5px solid var(--purple)}.counts strong{display:block;font-size:28px}.scope{background:#e2efeb;padding:18px 24px;border-left:5px solid var(--teal)}@media(max-width:730px){.counts{grid-template-columns:1fr}}
+
+.status-failed{color:#933b2c}.timeline-row{margin:28px 0}.timeline-track{position:relative;display:flex;height:35px;background:#e7eded;border:1px solid var(--line);margin:10px 0}.timeline-track span{display:block}.scientific{background:#2e7e83}.evidence-cost{background:repeating-linear-gradient(135deg,#ddba7d,#ddba7d 8px,#efd4a7 8px,#efd4a7 16px)}.work-limit{position:absolute;left:85.714286%;height:53px;top:-9px;border-left:2px dashed #873c31}.terminal{position:absolute;top:-4px;height:43px;border-left:3px solid #512c25}.timeline-row p{font-size:14px}.legend-line{display:flex;flex-wrap:wrap;gap:18px;font-size:14px}.swatch{display:inline-block;width:18px;height:12px;margin-right:6px}.raw-arm{padding:16px;background:white;border:1px solid var(--line)}.small-table{min-width:780px}.history{border-left:5px solid var(--purple);padding:18px 24px;background:#eee9f5}.audit-count{font-size:30px;font-weight:700}section{scroll-margin-top:24px}
+</style></head><body><main><nav><a href="reader.html#cadence-integration">Research notebook</a><a href="#outcome">Current outcome</a><a href="#timeline">Where time went</a><a href="#next">Next measurement</a><a href="#records">Saved records</a><a href="owned-evidence.html#proof">Earlier admitted proof</a></nav>
+<p class="eyebrow">19 October 2026 · Fresh matched inputs · Two retained negative outcomes</p><h1>Both fresh full runs miss the evidence-checking deadline.</h1><p class="lead">The qualified inverse is now integrated. Each arm finds a locally accepted proof, but neither completes the enclosing reconstruction and admission checks.</p><p class="boundary">These are failed full-pipeline attempts. No new theorem, resource-qualified result, RL improvement or GCTS advantage is established. The earlier standalone inverse qualification and earlier admitted symbolic proof retain their separate statuses.</p>
+<section id="outcome"><h2>The complete result determines success.</h2><div class="cards"><article><b class="status-failed">Fixed GCTS · failed</b><p>Deadline reached while streaming the saved evidence document. The process closes with no final worker header and no complete independent reconstruction.</p></article><article><b class="status-failed">Symbolic control · failed</b><p>Deadline reached during forest preparation and cache building. Its local Native proof is also diagnostic; it does not bypass the same full evidence checks.</p></article></div><div class="table-wrap"><table class="small-table"><thead><tr><th>Current arm</th><th>Scientific stop</th><th>External terminal</th><th>Retained traceback location</th><th>Full outcome</th></tr></thead><tbody><tr><th>Fixed GCTS</th><td>\(47.478\,\mathrm{s}\)</td><td>\(180.369\,\mathrm{s}\)</td><td>Document streaming</td><td>Failed · no admission</td></tr><tr><th>Symbolic control</th><td>\(54.865\,\mathrm{s}\)</td><td>\(180.472\,\mathrm{s}\)</td><td>Forest preparation / cache building</td><td>Failed · no admission</td></tr></tbody><caption>Times are relative to the outer runner's Source-entry monotonic clock. A traceback identifies where the deadline was detected; it supplies no complete inverse duration or operation count.</caption></table></div><p>Both local ordinary result packets report <code>native_proof_discovered</code> and <code>native_proof_accepted: true</code>. Each retains \(16\) completed Native records including the final request. The enclosing cold gate failed, so both mathematical and resource admissions are false. This is an experiment-admission failure; it does not assert that the saved local derivations are logically false.</p></section>
+<section id="timeline"><h2>Measure the evidence path before optimizing it.</h2><p>The driver records scientific stop at \(47.478\,\mathrm{s}\) and \(54.865\,\mathrm{s}\). The Native oracle closes shortly afterwards. The subsequent interval includes evidence assembly, sealing, export, boundary checks and the incomplete inverse. Its internal costs were not separately retained.</p><div class="timeline-row"><b>Fixed GCTS</b><div class="timeline-track" aria-label="Scientific stop then unpartitioned evidence and incomplete inverse"><span class="scientific" style="width:22.608689%"></span><span class="evidence-cost" style="width:63.105596%"></span><i class="work-limit"></i><i class="terminal" style="left:85.889778%"></i></div><p>Scientific stop \(47.478\,\mathrm{s}\); terminal \(180.369\,\mathrm{s}\). Last location: document streaming.</p></div><div class="timeline-row"><b>Symbolic control</b><div class="timeline-track" aria-label="Scientific stop then unpartitioned evidence and incomplete inverse"><span class="scientific" style="width:26.125973%"></span><span class="evidence-cost" style="width:59.588312%"></span><i class="work-limit"></i><i class="terminal" style="left:85.939125%"></i></div><p>Scientific stop \(54.865\,\mathrm{s}\); terminal \(180.472\,\mathrm{s}\). Last location: forest preparation / cache building.</p></div><div class="legend-line"><span><i class="swatch scientific"></i>Through scientific stop</span><span><i class="swatch evidence-cost"></i>Unpartitioned evidence path and incomplete inverse</span><span>Dashed line: \(180\,\mathrm{s}\) worker deadline</span><span>Track end: \(210\,\mathrm{s}\) external deadline</span></div><p class="note">The striped segment ends at the worker deadline for readability; the dark marker gives actual terminal time. It must not be read as a measurement of inverse time alone. Neither current failure retains inverse counters, callback counts, a completed comparison, or final Arena/adapter work statistics.</p><details id="stage-details"><summary>Inspect the retained driver stage durations and output sizes</summary><div class="table-wrap"><table><thead><tr><th>Arm</th><th>Compile</th><th>Inventory record join</th><th>Search</th><th>Final Native</th><th>Ordinary result bytes</th><th>Forest bytes</th></tr></thead><tbody><tr><th>fixed</th><td>\(10.114\,\mathrm{s}\)</td><td>\(21.413\,\mathrm{s}\)</td><td>\(1.562\,\mathrm{s}\)</td><td>\(5.721\,\mathrm{s}\)</td><td>\(36\,911\,886\)</td><td>\(15\,181\,020\)</td></tr><tr><th>symbolic</th><td>\(10.330\,\mathrm{s}\)</td><td>\(23.395\,\mathrm{s}\)</td><td>\(0.153\,\mathrm{s}\)</td><td>\(11.705\,\mathrm{s}\)</td><td>\(33\,999\,395\)</td><td>\(14\,906\,405\)</td></tr></tbody><caption>Diagnostic stage observations within two failed full runs. They are not a causal speed comparison; these selected intervals do not partition the whole job. “Compile” is the driver's recorded logical compilation phase.</caption></table></div></details></section>
+<section id="limits"><h2>Same assertion, inventory, search rules and limits.</h2><p>Both arms use the original assertion \(a=b,\;P(a)\vdash P(b)\), the same mathematical inputs and the same inventory of \(4\) families / \(10\) ground entries. No proof route is supplied. The only component change is binding the already qualified inverse successor; scientific search and Native validation bodies remain unchanged.</p><p>The inherited full-pipeline work boundary is \(180\,\mathrm{s}\) for worker positive work, ordinary-result reading and known worker exit. Later outer metadata, resource, custody, process-group and EOF joins, plus external terminal, have \(210\,\mathrm{s}\). Closing below the latter limit cannot admit failed work. Both workers exit with failure, both outer runners report failure, all Native children and owned worker groups close, and captured logs reach EOF.</p><p>The conservative separate worker-plus-Native highwater sums are \(843.500\,\mathrm{MiB}\) and \(806.203\,\mathrm{MiB}\). These are posthoc diagnostics, neither simultaneous live RAM peaks nor admitted resource aggregates. The accepted aggregate is <code>null</code> in both runner receipts. The original \(1\,\mathrm{GiB}\) sum threshold, \(128\,\mathrm{MiB}\) logical/physical output limits, \(4\,\mathrm{MiB}\) log limits and operation caps were not raised.</p><p class="note">Inverse cap: \(30\,000\,000\) attempted operations per fresh state. Arena and adapter each retain their separate \(400\,000\,000\) work-unit caps; these are distinct counters. The outer wrapper does not implement a continuous live RSS bound. Runtime/observer startup prelude and outer/observer RAM exclusions remain the retained instrument scope.</p><details><summary>Contract reference correction</summary><p>The earlier archived master was stale. Before these actuals, Root, implementation and review reread the current master, \(36\,240\) bytes, SHA-256 <code>ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4</code>. Its core point/frontier/rollback rules are unchanged; updated marking-learning and implementation-audit instructions were reconciled. This inverse binding does not add new learned markings or change mathematical bodies. The raw difference and reconciliation records are archived. This does not establish general engine conformance.</p></details></section>
+<section id="parallel"><h2>Parallel work supplies distinct checks.</h2><div class="time-legend"><article><b>Implementation agent</b><p>Bound the qualified inverse into the cold worker with four constant-only changes; then inspected the evidence path as Source and saved data.</p></article><article><b>Review agent</b><p>Reviewed the component, wrapper, plan and grants before execution, then independently checked the retained negative records: \(400\) checks, no mismatches.</p></article><article><b>Root</b><p>Froze inputs and limits, ran the two arms serially while other agents stopped tools, joined the saved outcomes and prepared the report. Parallel agent activity was kept outside the timed windows.</p></article></div><p class="note">The same reviewer covers several review roles and authored some historical helper/control algorithms. Those overlaps are disclosed in the receipts. Saved-record consistency is not a fresh independent proof of historical kernel soundness.</p></section>
+<section id="next"><h2>The next change is measurement.</h2><p>Record bounded, failure-safe phase boundaries for driver return, assembly/export/sealing, inverse preparation, streaming and complete comparison, retaining a small diagnostic packet even on deadline. Charge that instrumentation and its output to the same original limits. This is a design proposal; it has not been implemented, qualified or executed.</p><p>The Arena already batches guard checks by weighted work; the adapter also checks a cumulative threshold. We should measure those costs before changing another cadence. Neither current arm retains the counters needed to attribute the timeout to either component. Historical successful counters cannot fill that gap.</p><p><a href="cadence-integration-next-design.json">Read the exact Source-only measurement design</a>. After implementation and review, use a new bounded subject rather than rerunning either consumed plan. Keep full evidence, point and Native checks; do not trim records or raise caps to turn failure into success.</p><p>Broader theorem benchmarks remain the research objective. We still need held-out assertions and conventional controls to establish whether GCTS markings, reusable receptor families or RL produce useful automated search behavior.</p></section>
+<section id="history"><h2>Earlier evidence remains available.</h2><div class="history"><p><a href="inverse-cadence.html#outcome">Standalone inverse qualification</a>: the successor reconstructs both earlier complete saved forests and passes its finite diagnostics. That component success predicts no full-pipeline result.</p><p><a href="owned-evidence.html#proof">Earlier admitted symbolic proof, line by line</a>: formulas, English, raw steps and five proof blocks for the original assertion. The earlier fixed failure remains in the same historical report. Neither old result is relabeled by these two fresh failures.</p></div></section>
+<section id="records"><h2>Inspect and reproduce the record.</h2><p><a href="cadence-integration-summary.json">Complete outcome, audits and timing metadata</a> · <a href="cadence-integration-manifest.json">Archive manifest</a> · <a href="cadence-integration-archive.zip">Full raw evidence, Sources, plans and reviews</a> · <a href="cadence-integration-next-design.json">Next measurement design</a></p><p>Expand either arm below for its literal independent saved audit packet. Complete ordinary results, forests, failure traces, consumed plans and terminal receipts are in the archive. No inverse or scientific component was replayed for this presentation.</p><details class="raw-arm" id="raw-fixed"><summary>Fixed GCTS · complete saved audit packet</summary><pre>{
+  &quot;Native_completed_stages&quot;: 16,
+  &quot;Native_highwater_bytes&quot;: 13336576,
+  &quot;Native_record_count&quot;: 16,
+  &quot;Native_status_census&quot;: {
+    &quot;accepted&quot;: 6,
+    &quot;rejected&quot;: 10
+  },
+  &quot;actual_directory&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1&quot;,
+  &quot;adapter_diagnostic_groups_literally_retained&quot;: false,
+  &quot;adapter_stage_duration_seconds&quot;: 0.899469334,
+  &quot;adapter_stage_returned&quot;: true,
+  &quot;authorization&quot;: {
+    &quot;bytes&quot;: 10500,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/authorizations/cadence-integration-001-fixed-ROOT-20261019-v1.json&quot;,
+    &quot;sha256&quot;: &quot;3bfa99825273e7b43309ca9bd9b9d4cb5ff36807da2505e37fd4cf79828d19f1&quot;
+  },
+  &quot;consumed&quot;: {
+    &quot;bytes&quot;: 660,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/CONSUMED.json&quot;,
+    &quot;sha256&quot;: &quot;5acf36cbc66103d11479f7a69db0ff07caf94fa1e773ffb4f8e59806f95183cd&quot;
+  },
+  &quot;diagnostic_forest&quot;: {
+    &quot;bytes&quot;: 15181020,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json&quot;,
+    &quot;sha256&quot;: &quot;a332648433d9ae0a985a1dd9ab9559ae13db8917335823aa26cf13a296029361&quot;
+  },
+  &quot;diagnostic_physical_result_plus_forest_bytes&quot;: 52092906,
+  &quot;diagnostic_result&quot;: {
+    &quot;bytes&quot;: 36911886,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/result.json&quot;,
+    &quot;sha256&quot;: &quot;77c6af97754c4a038da88f71f2aa40adf24dbacc16a7d76c4f23977ce4a9a5bd&quot;
+  },
+  &quot;driver_closure_seconds_from_outer_Source_entry&quot;: 47.547941958066076,
+  &quot;driver_interval_durations&quot;: [
+    {
+      &quot;seconds&quot;: 4.416913725435734e-06,
+      &quot;stage&quot;: &quot;before_oracle&quot;
+    },
+    {
+      &quot;seconds&quot;: 10.11384566698689,
+      &quot;stage&quot;: &quot;compile&quot;
+    },
+    {
+      &quot;seconds&quot;: 0.0856641250429675,
+      &quot;stage&quot;: &quot;compile_record_joins&quot;
+    },
+    {
+      &quot;seconds&quot;: 0.0009734999621286988,
+      &quot;stage&quot;: &quot;specialize&quot;
+    },
+    {
+      &quot;seconds&quot;: 3.901081082993187,
+      &quot;stage&quot;: &quot;register&quot;
+    },
+    {
+      &quot;seconds&quot;: 21.413461707998067,
+      &quot;stage&quot;: &quot;inventory_record_join&quot;
+    },
+    {
+      &quot;seconds&quot;: 1.2120056248968467,
+      &quot;stage&quot;: &quot;model&quot;
+    },
+    {
+      &quot;seconds&quot;: 1.5619012089446187,
+      &quot;stage&quot;: &quot;search&quot;
+    },
+    {
+      &quot;seconds&quot;: 5.721093875006773,
+      &quot;stage&quot;: &quot;final_native&quot;
+    },
+    {
+      &quot;seconds&quot;: 0.0007700830465182662,
+      &quot;stage&quot;: &quot;essential_ancestry&quot;
+    },
+    {
+      &quot;seconds&quot;: 0.0077725829323753715,
+      &quot;stage&quot;: &quot;winning_hint_links&quot;
+    }
+  ],
+  &quot;inverse_duration_retained&quot;: false,
+  &quot;inverse_failure_trace_location&quot;: &quot;saved_document_STREAM&quot;,
+  &quot;inverse_statistics_retained&quot;: false,
+  &quot;known_worker_exit_seconds&quot;: 180.30112075,
+  &quot;last_raw_Native_wire&quot;: {
+    &quot;code&quot;: {
+      &quot;bytes&quot;: 7558192,
+      &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/native/code.bin&quot;,
+      &quot;sha256&quot;: &quot;97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed&quot;
+    },
+    &quot;input&quot;: {
+      &quot;bytes&quot;: 687928,
+      &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/native/input.bin&quot;,
+      &quot;sha256&quot;: &quot;a94031145884037d9b7ee2f40a75c3866658da736c66430d0cd55f58de855625&quot;
+    },
+    &quot;output&quot;: {
+      &quot;bytes&quot;: 687932,
+      &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/native/output.bin&quot;,
+      &quot;sha256&quot;: &quot;b4a0285e38bd305a548027e00de37034e98e708c1fc8da009553ef7c4284f4de&quot;
+    }
+  },
+  &quot;local_driver_status&quot;: &quot;native_proof_discovered&quot;,
+  &quot;local_native_proof_accepted&quot;: true,
+  &quot;local_root_restoration&quot;: {
+    &quot;engine_root_sha256&quot;: &quot;4029763a48810949587a789daa387f2d09f06837544584f411c53d7747507bfb&quot;,
+    &quot;root_restored&quot;: true,
+    &quot;status&quot;: &quot;OBSERVED&quot;
+  },
+  &quot;local_search_metrics&quot;: {
+    &quot;anchors_omitted&quot;: 0,
+    &quot;attempts&quot;: 60,
+    &quot;branch&quot;: 12,
+    &quot;forced&quot;: 48,
+    &quot;hint_completed&quot;: 12,
+    &quot;hint_eligible&quot;: 39,
+    &quot;hints_started&quot;: 12,
+    &quot;items&quot;: 179,
+    &quot;nodes&quot;: 61,
+    &quot;proposal_seconds&quot;: 0.6515732920961455,
+    &quot;row_pool&quot;: 106,
+    &quot;row_quota_stops&quot;: 7,
+    &quot;sample_pair_tests&quot;: 230,
+    &quot;sample_validation_checks&quot;: 73,
+    &quot;support_aggregate_checks&quot;: 179,
+    &quot;support_changed_hint_choices&quot;: 2,
+    &quot;support_graph_work&quot;: 108,
+    &quot;support_order_calls&quot;: 12,
+    &quot;support_projection_work&quot;: 103678,
+    &quot;support_ranking_work&quot;: 12322,
+    &quot;validation_checks&quot;: 424
+  },
+  &quot;local_search_status&quot;: &quot;finite_marked_proof_region&quot;,
+  &quot;mathematical_proof_admitted&quot;: false,
+  &quot;mode&quot;: &quot;fixed&quot;,
+  &quot;observer_consumed&quot;: {
+    &quot;bytes&quot;: 324,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/CONSUMED.json&quot;,
+    &quot;sha256&quot;: &quot;e860daa7738b5aa7f5c61d5583322180067b2f12a52b916bb4b44127d63a43a0&quot;
+  },
+  &quot;observer_instrument_elapsed_seconds&quot;: 180.398709958,
+  &quot;once_plan&quot;: {
+    &quot;bytes&quot;: 2749,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json&quot;,
+    &quot;sha256&quot;: &quot;9eecdec434b65e8598f825f6d862c9d549bfc1cb2cee16aa197d9ca243e15513&quot;
+  },
+  &quot;outcome&quot;: &quot;FAILED_FULL_SAVED_INVERSE_WORK_DEADLINE_NO_ADMISSION&quot;,
+  &quot;outer_checks_closed_seconds&quot;: 180.31369125,
+  &quot;posthoc_diagnostic_sum_MiB&quot;: 843.5,
+  &quot;posthoc_diagnostic_sum_bytes&quot;: 884473856,
+  &quot;posthoc_sum_is_not_simultaneous_live_peak_or_resource_admission&quot;: true,
+  &quot;resource_admitted&quot;: false,
+  &quot;runner_accepted_aggregate_peak_bytes&quot;: null,
+  &quot;runner_clock_elapsed_seconds&quot;: 180.368534291,
+  &quot;runner_receipt&quot;: {
+    &quot;bytes&quot;: 11924,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/runner-receipt.json&quot;,
+    &quot;sha256&quot;: &quot;e8289c85622931b2fed43c7a447d3a08ef50d1c0515164c95bd0059453ed9cf9&quot;
+  },
+  &quot;scientific_stop_seconds_from_outer_Source_entry&quot;: 47.47824779106304,
+  &quot;source_owned_count&quot;: 29,
+  &quot;stderr&quot;: {
+    &quot;bytes&quot;: 2152,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/stderr.bin&quot;,
+    &quot;sha256&quot;: &quot;cf70873008672500627bd941f66072106093e012ac08a63cb54f795eeba9b4ea&quot;
+  },
+  &quot;subject_sha256&quot;: &quot;3ab6f628df7789e143c534f29ddd171b608ee027168ea47f9d9d8b3a70d032fc&quot;,
+  &quot;terminal&quot;: {
+    &quot;bytes&quot;: 1609,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-fixed-ROOT-20261019-v1-terminal-observation/terminal.json&quot;,
+    &quot;sha256&quot;: &quot;e68d3974925e2911e3d1e59198b452422a74f99c38be462fb072ef4977ff9c6d&quot;
+  },
+  &quot;worker_failure&quot;: {
+    &quot;bytes&quot;: 19391,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/worker-failure.json&quot;,
+    &quot;sha256&quot;: &quot;4cd0536bc7b5d79c2a1e7128e8094d2fc73de299b07191ed2d18d6d66c51104d&quot;
+  },
+  &quot;worker_highwater_bytes&quot;: 871137280,
+  &quot;worker_plan&quot;: {
+    &quot;bytes&quot;: 18137,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/worker-plans/cadence-integration-001-fixed-ROOT-20261019-v1.json&quot;,
+    &quot;sha256&quot;: &quot;b0bc154a384b411bb3d9cbcebaaa59dc82ea5cfc238683184f819f7b3de510ce&quot;
+  }
+}</pre></details><details class="raw-arm" id="raw-symbolic"><summary>Symbolic control · complete saved audit packet</summary><pre>{
+  &quot;Native_completed_stages&quot;: 16,
+  &quot;Native_highwater_bytes&quot;: 13320192,
+  &quot;Native_record_count&quot;: 16,
+  &quot;Native_status_census&quot;: {
+    &quot;accepted&quot;: 6,
+    &quot;rejected&quot;: 10
+  },
+  &quot;actual_directory&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1&quot;,
+  &quot;adapter_diagnostic_groups_literally_retained&quot;: false,
+  &quot;adapter_stage_duration_seconds&quot;: 0.750451584,
+  &quot;adapter_stage_returned&quot;: true,
+  &quot;authorization&quot;: {
+    &quot;bytes&quot;: 10503,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/authorizations/cadence-integration-001-symbolic-ROOT-20261019-v1.json&quot;,
+    &quot;sha256&quot;: &quot;880c15111d39f2e153d4b056a94877137a3dc9f8e96b7fa40661dd5b01a044f7&quot;
+  },
+  &quot;consumed&quot;: {
+    &quot;bytes&quot;: 669,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json&quot;,
+    &quot;sha256&quot;: &quot;eb7da66951a262dee42ace5aa47f61d9016626737d88778f88a2fd7aef1b26c4&quot;
+  },
+  &quot;diagnostic_forest&quot;: {
+    &quot;bytes&quot;: 14906405,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json&quot;,
+    &quot;sha256&quot;: &quot;d4450d19b8e4fd07f10ee4766cd083408258a25a8df1dcd8375bce48c2029d55&quot;
+  },
+  &quot;diagnostic_physical_result_plus_forest_bytes&quot;: 48905800,
+  &quot;diagnostic_result&quot;: {
+    &quot;bytes&quot;: 33999395,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/result.json&quot;,
+    &quot;sha256&quot;: &quot;6382659c11f5455af90775c8cfb1a195fafc11885dfd1e763e0b5442849f4740&quot;
+  },
+  &quot;driver_closure_seconds_from_outer_Source_entry&quot;: 54.9322650419781,
+  &quot;driver_interval_durations&quot;: [
+    {
+      &quot;seconds&quot;: 5.749985575675964e-06,
+      &quot;stage&quot;: &quot;before_oracle&quot;
+    },
+    {
+      &quot;seconds&quot;: 10.330133375013247,
+      &quot;stage&quot;: &quot;compile&quot;
+    },
+    {
+      &quot;seconds&quot;: 0.09711954195518047,
+      &quot;stage&quot;: &quot;compile_record_joins&quot;
+    },
+    {
+      &quot;seconds&quot;: 0.0009015420218929648,
+      &quot;stage&quot;: &quot;specialize&quot;
+    },
+    {
+      &quot;seconds&quot;: 4.544216167065315,
+      &quot;stage&quot;: &quot;register&quot;
+    },
+    {
+      &quot;seconds&quot;: 23.39521462493576,
+      &quot;stage&quot;: &quot;inventory_record_join&quot;
+    },
+    {
+      &quot;seconds&quot;: 1.372165416018106,
+      &quot;stage&quot;: &quot;model&quot;
+    },
+    {
+      &quot;seconds&quot;: 0.1534725419478491,
+      &quot;stage&quot;: &quot;search&quot;
+    },
+    {
+      &quot;seconds&quot;: 0.03262354095932096,
+      &quot;stage&quot;: &quot;symbolic_point_projection&quot;
+    },
+    {
+      &quot;seconds&quot;: 11.704697249922901,
+      &quot;stage&quot;: &quot;final_native&quot;
+    },
+    {
+      &quot;seconds&quot;: 0.0004461670760065317,
+      &quot;stage&quot;: &quot;essential_ancestry&quot;
+    },
+    {
+      &quot;seconds&quot;: 1.4416058547794819e-05,
+      &quot;stage&quot;: &quot;winning_hint_links&quot;
+    }
+  ],
+  &quot;inverse_duration_retained&quot;: false,
+  &quot;inverse_failure_trace_location&quot;: &quot;prepare_forest_CACHE_BUILD&quot;,
+  &quot;inverse_statistics_retained&quot;: false,
+  &quot;known_worker_exit_seconds&quot;: 180.416633084,
+  &quot;last_raw_Native_wire&quot;: {
+    &quot;code&quot;: {
+      &quot;bytes&quot;: 7558192,
+      &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/native/code.bin&quot;,
+      &quot;sha256&quot;: &quot;97f0b600cffd83552c4e0f0c4fb1f5d26cfdb76e3e74b267bbaebeddc836e7ed&quot;
+    },
+    &quot;input&quot;: {
+      &quot;bytes&quot;: 783980,
+      &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/native/input.bin&quot;,
+      &quot;sha256&quot;: &quot;02eac578e491a0791f787e62a4163a212dc03d7d15b6f0df8e857812061c3a17&quot;
+    },
+    &quot;output&quot;: {
+      &quot;bytes&quot;: 783984,
+      &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/native/output.bin&quot;,
+      &quot;sha256&quot;: &quot;017e261e28f2b297075001242c7ba2eac5b768ff032cf0462ef8850b67bcc312&quot;
+    }
+  },
+  &quot;local_driver_status&quot;: &quot;native_proof_discovered&quot;,
+  &quot;local_native_proof_accepted&quot;: true,
+  &quot;local_root_restoration&quot;: {
+    &quot;engine_root_sha256&quot;: null,
+    &quot;root_restored&quot;: null,
+    &quot;status&quot;: &quot;NOT_APPLICABLE_STATELESS_CONTROL&quot;
+  },
+  &quot;local_search_metrics&quot;: {
+    &quot;backtracks&quot;: 0,
+    &quot;block_port_tuples&quot;: 35,
+    &quot;dead_prefixes&quot;: 0,
+    &quot;prefix_extensions&quot;: 12,
+    &quot;prefix_nodes&quot;: 13,
+    &quot;primitive_guard_rejections&quot;: 4763,
+    &quot;skeleton_tests&quot;: 6097,
+    &quot;unavailable_block_skeletons&quot;: 1185
+  },
+  &quot;local_search_status&quot;: &quot;symbolic_proof_candidate&quot;,
+  &quot;mathematical_proof_admitted&quot;: false,
+  &quot;mode&quot;: &quot;symbolic&quot;,
+  &quot;observer_consumed&quot;: {
+    &quot;bytes&quot;: 327,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/CONSUMED.json&quot;,
+    &quot;sha256&quot;: &quot;5a92a1f6f881b25319bc0217aa63b8464f8c10f28d18cb2f38c1301732b5f162&quot;
+  },
+  &quot;observer_instrument_elapsed_seconds&quot;: 180.498597583,
+  &quot;once_plan&quot;: {
+    &quot;bytes&quot;: 2764,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json&quot;,
+    &quot;sha256&quot;: &quot;02e0588d5e734890d7068a6ddb021d03db4dc1166344fa4fa4695334c704c9ff&quot;
+  },
+  &quot;outcome&quot;: &quot;FAILED_FULL_SAVED_INVERSE_WORK_DEADLINE_NO_ADMISSION&quot;,
+  &quot;outer_checks_closed_seconds&quot;: 180.428905917,
+  &quot;posthoc_diagnostic_sum_MiB&quot;: 806.203125,
+  &quot;posthoc_diagnostic_sum_bytes&quot;: 845365248,
+  &quot;posthoc_sum_is_not_simultaneous_live_peak_or_resource_admission&quot;: true,
+  &quot;resource_admitted&quot;: false,
+  &quot;runner_accepted_aggregate_peak_bytes&quot;: null,
+  &quot;runner_clock_elapsed_seconds&quot;: 180.472161625,
+  &quot;runner_receipt&quot;: {
+    &quot;bytes&quot;: 11947,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/runner-receipt.json&quot;,
+    &quot;sha256&quot;: &quot;32592ba914992ad989cddad63007165d92392feb00e6b70986182debc4c0531d&quot;
+  },
+  &quot;scientific_stop_seconds_from_outer_Source_entry&quot;: 54.864544291980565,
+  &quot;source_owned_count&quot;: 29,
+  &quot;stderr&quot;: {
+    &quot;bytes&quot;: 2118,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/stderr.bin&quot;,
+    &quot;sha256&quot;: &quot;23f3ae147f695954af4512f33136ec0b8cae7864919e67bb50a706ac2a51af58&quot;
+  },
+  &quot;subject_sha256&quot;: &quot;747a83d32333e7c6f3ef0e98b294c942a79592bce8c2b0b6b41ddfb26b6ced4b&quot;,
+  &quot;terminal&quot;: {
+    &quot;bytes&quot;: 1618,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/once-plans/cadence-integration-001-symbolic-ROOT-20261019-v1-terminal-observation/terminal.json&quot;,
+    &quot;sha256&quot;: &quot;b23feb1f2c363b65c8e96e098619e738631c5856b9e476c791aa213900dedda1&quot;
+  },
+  &quot;worker_failure&quot;: {
+    &quot;bytes&quot;: 19401,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/worker-failure.json&quot;,
+    &quot;sha256&quot;: &quot;c3685482b583e9d4b1d97837eb48e55fbd3a3c485318568f9705e0f8e7cc995d&quot;
+  },
+  &quot;worker_highwater_bytes&quot;: 832045056,
+  &quot;worker_plan&quot;: {
+    &quot;bytes&quot;: 18146,
+    &quot;path&quot;: &quot;/private/tmp/gcts-cadence-integration-ROOT-20261019/plans-v1/worker-plans/cadence-integration-001-symbolic-ROOT-20261019-v1.json&quot;,
+    &quot;sha256&quot;: &quot;e2ababd1c2438a9782e98bb59a1d3c40d163272648f44af13ff9064b67c64d0b&quot;
+  }
+}</pre></details><p class="note">The returned adapter-diagnostic aggregate stage is retained. Completion of its five groups and eight fresh Stores follows from reviewed Source; individual group packets are absent because neither final worker header was emitted. Source-backed inference and literal retained evidence are distinct.</p><p class="note">Raw Native payloads remain opaque: this reporting step does not decode or evaluate them. Python, OS, Z3 and prebuilt Native executable dependencies are external pinned prerequisites. Archived grants are consumed historical once-only records, not permission to replay them.</p></section><footer>Research program active. Engineering progress: a frozen negative result and a concrete measurement design. No full-program completion claim.</footer></main></body></html>

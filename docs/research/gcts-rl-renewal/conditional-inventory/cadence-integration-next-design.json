@@ -1,0 +1,725 @@
+{
+  "schema": "owned-finalization-next-design-v1",
+  "author_identity": "/root/conventional_library",
+  "status": "SOURCE_AND_SAVED_METADATA_ONLY_PROPOSED_UNIMPLEMENTED_UNMEASURED",
+  "source_only": true,
+  "saved_data_only": true,
+  "scientific_calls": 0,
+  "scientific_replays": 0,
+  "scientific_acceptance": false,
+  "future_execution_authorized": false,
+  "current_master": {
+    "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/basic-tiling-algorithm-HEAD.md",
+    "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4",
+    "bytes": 36240
+  },
+  "Root_audit": {
+    "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/ROOT-saved-actual-audit-v1.json",
+    "sha256": "08d0dace08316e5c78297a718b59470f7dd7ff7b346a281368fa774a6cf4efab",
+    "bytes": 65904
+  },
+  "sources": {
+    "cold": {
+      "path": "/private/tmp/gcts-cadence-integration-library-20261019/owned_evidence_cold_v4.py",
+      "sha256": "02a0e8f708b0c4928630b8eb7a7956ad9cde9341e658fd0b1528c3159b267377",
+      "bytes": 62809
+    },
+    "arena": {
+      "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+      "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+      "bytes": 38300
+    },
+    "adapter": {
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+      "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+      "bytes": 14997
+    },
+    "driver": {
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+      "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+      "bytes": 114308
+    },
+    "inverse": {
+      "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+      "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7",
+      "bytes": 24144
+    }
+  },
+  "source_citations": [
+    {
+      "role": "cold",
+      "source": {
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/owned_evidence_cold_v4.py",
+        "sha256": "02a0e8f708b0c4928630b8eb7a7956ad9cde9341e658fd0b1528c3159b267377",
+        "bytes": 62809
+      },
+      "symbol": "verify_saved_evidence",
+      "line": 275,
+      "end_line": 334
+    },
+    {
+      "role": "cold",
+      "source": {
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/owned_evidence_cold_v4.py",
+        "sha256": "02a0e8f708b0c4928630b8eb7a7956ad9cde9341e658fd0b1528c3159b267377",
+        "bytes": 62809
+      },
+      "symbol": "main",
+      "line": 543,
+      "end_line": 968
+    },
+    {
+      "role": "cold",
+      "source": {
+        "path": "/private/tmp/gcts-cadence-integration-library-20261019/owned_evidence_cold_v4.py",
+        "sha256": "02a0e8f708b0c4928630b8eb7a7956ad9cde9341e658fd0b1528c3159b267377",
+        "bytes": 62809
+      },
+      "symbol": "source_guard",
+      "line": 598,
+      "end_line": 608
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "_Transaction",
+      "line": 75,
+      "end_line": 86
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "_read",
+      "line": 94,
+      "end_line": 95
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "_step",
+      "line": 222,
+      "end_line": 230
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "_finish",
+      "line": 235,
+      "end_line": 236
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "_read",
+      "line": 237,
+      "end_line": 237
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "_cache",
+      "line": 309,
+      "end_line": 322
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "capture",
+      "line": 483,
+      "end_line": 491
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "seal",
+      "line": 640,
+      "end_line": 669
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "to_wire",
+      "line": 670,
+      "end_line": 676
+    },
+    {
+      "role": "arena",
+      "source": {
+        "path": "/private/tmp/gcts-direct-reconcile-library-20261019/exact_evidence_arena_v3.py",
+        "sha256": "fd3f1e1372c59365cc43c06dd8c815bdaca8cab6a2e4fa292d23a901d7f146f8",
+        "bytes": 38300
+      },
+      "symbol": "statistics",
+      "line": 681,
+      "end_line": 689
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "_step",
+      "line": 109,
+      "end_line": 114
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "_finish",
+      "line": 115,
+      "end_line": 115
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "_view",
+      "line": 121,
+      "end_line": 122
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "_canonical",
+      "line": 148,
+      "end_line": 157
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "_capture",
+      "line": 158,
+      "end_line": 165
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "assemble",
+      "line": 169,
+      "end_line": 197
+    },
+    {
+      "role": "adapter",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_adapter_v3.py",
+        "sha256": "91fb57f8a3fdd4563cb74f641b630bd725b813bd305608463920dd191f0216a8",
+        "bytes": 14997
+      },
+      "symbol": "statistics",
+      "line": 244,
+      "end_line": 246
+    },
+    {
+      "role": "driver",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+        "bytes": 114308
+      },
+      "symbol": "_owned_store",
+      "line": 1439,
+      "end_line": 1445
+    },
+    {
+      "role": "driver",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+        "bytes": 114308
+      },
+      "symbol": "_atomic_owned_stream",
+      "line": 1447,
+      "end_line": 1472
+    },
+    {
+      "role": "driver",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+        "bytes": 114308
+      },
+      "symbol": "_owned_atomic_output",
+      "line": 1474,
+      "end_line": 1482
+    },
+    {
+      "role": "driver",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+        "bytes": 114308
+      },
+      "symbol": "run_receiver_owned",
+      "line": 1518,
+      "end_line": 1783
+    },
+    {
+      "role": "driver",
+      "source": {
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/owned_evidence_receiver_driver_v4.py",
+        "sha256": "4850f66edeeb73033979ab5860ca745d5936eb3455bbef3eba10e5ba0c5ff62c",
+        "bytes": 114308
+      },
+      "symbol": "check",
+      "line": 131,
+      "end_line": 140
+    },
+    {
+      "role": "inverse",
+      "source": {
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+        "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7",
+        "bytes": 24144
+      },
+      "symbol": "prepare_forest",
+      "line": 247,
+      "end_line": 387
+    },
+    {
+      "role": "inverse",
+      "source": {
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+        "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7",
+        "bytes": 24144
+      },
+      "symbol": "dispatch",
+      "line": 70,
+      "end_line": 83
+    },
+    {
+      "role": "inverse",
+      "source": {
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+        "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7",
+        "bytes": 24144
+      },
+      "symbol": "tick",
+      "line": 84,
+      "end_line": 93
+    }
+  ],
+  "current_arms": [
+    {
+      "mode": "fixed",
+      "Root_admitted": false,
+      "resource_admitted": false,
+      "outer_elapsed_seconds": 180.368534291,
+      "worker_exit_code": 1,
+      "outer_exit_code": 2,
+      "root_aggregate_peak_bytes": null,
+      "group_absent": true,
+      "logs_complete": true,
+      "saved_result_status": "native_proof_discovered",
+      "saved_result_native_candidate": true,
+      "saved_result_work_window_complete": true,
+      "cold_whole_point_and_old_reader_completed": false,
+      "fixed_negative_or_symbolic_negative_preserved": true,
+      "failure_stage_direct_stderr": "DOCUMENT_STREAM",
+      "failure_type": "ColdError",
+      "failure_message": "full saved evidence inverse within original work",
+      "endpoints": {
+        "Source_entry_began_ns": 763914785715875,
+        "work_deadline_ns": 764094785715875,
+        "overall_deadline_ns": 764124785715875,
+        "scientific_stopped_monotonic": 763962.263963666,
+        "oracle_closed_monotonic": 763962.333657833,
+        "worker_terminal_observed_ns": 764095086836625
+      },
+      "recorded_scientific_stop_from_entry_seconds": 47.478247791,
+      "recorded_oracle_closed_from_entry_seconds": 47.547941958,
+      "remaining_work_budget_after_oracle_close_seconds": 132.452058042,
+      "phase_times": [
+        {
+          "stage": "before_oracle",
+          "started_monotonic": 763916.709406916,
+          "returned_monotonic": 763916.709411333,
+          "elapsed_seconds": 4.417e-06
+        },
+        {
+          "stage": "compile",
+          "started_monotonic": 763916.780760208,
+          "returned_monotonic": 763926.894605875,
+          "elapsed_seconds": 10.113845667
+        },
+        {
+          "stage": "compile_record_joins",
+          "started_monotonic": 763926.905417333,
+          "returned_monotonic": 763926.991081458,
+          "elapsed_seconds": 0.085664125
+        },
+        {
+          "stage": "specialize",
+          "started_monotonic": 763927.003645166,
+          "returned_monotonic": 763927.004618666,
+          "elapsed_seconds": 0.0009735
+        },
+        {
+          "stage": "register",
+          "started_monotonic": 763927.02327475,
+          "returned_monotonic": 763930.924355833,
+          "elapsed_seconds": 3.901081083
+        },
+        {
+          "stage": "inventory_record_join",
+          "started_monotonic": 763930.937414708,
+          "returned_monotonic": 763952.350876416,
+          "elapsed_seconds": 21.413461708
+        },
+        {
+          "stage": "model",
+          "started_monotonic": 763952.361463541,
+          "returned_monotonic": 763953.573469166,
+          "elapsed_seconds": 1.212005625
+        },
+        {
+          "stage": "search",
+          "started_monotonic": 763954.053400291,
+          "returned_monotonic": 763955.6153015,
+          "elapsed_seconds": 1.561901209
+        },
+        {
+          "stage": "final_native",
+          "started_monotonic": 763956.498987083,
+          "returned_monotonic": 763962.220080958,
+          "elapsed_seconds": 5.721093875
+        },
+        {
+          "stage": "essential_ancestry",
+          "started_monotonic": 763962.231935625,
+          "returned_monotonic": 763962.232705708,
+          "elapsed_seconds": 0.000770083
+        },
+        {
+          "stage": "winning_hint_links",
+          "started_monotonic": 763962.244149458,
+          "returned_monotonic": 763962.251922041,
+          "elapsed_seconds": 0.007772583
+        }
+      ],
+      "source_custody_stats_retained": null,
+      "arena_adapter_work_or_callback_counts_retained": null,
+      "driver_returned_timestamp": null,
+      "assembly_seconds": null,
+      "seal_seconds": null,
+      "export_seconds": null,
+      "ordinary_output_write_seconds": null,
+      "inverse_start_timestamp": null,
+      "inverse_elapsed_seconds": null,
+      "inverse_operation_counts_retained": null,
+      "unavailable_scope": "No worker success header, driver output receipt or active inverse observation was retained. Failure owned_evidence_statistics is explicitly null. File modification times are not substituted for monotonic stage timing.",
+      "raw": {
+        "CONSUMED.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/CONSUMED.json",
+          "sha256": "5acf36cbc66103d11479f7a69db0ff07caf94fa1e773ffb4f8e59806f95183cd",
+          "bytes": 660
+        },
+        "result.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+          "sha256": "77c6af97754c4a038da88f71f2aa40adf24dbacc16a7d76c4f23977ce4a9a5bd",
+          "bytes": 36911886
+        },
+        "evidence-forest.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+          "sha256": "a332648433d9ae0a985a1dd9ab9559ae13db8917335823aa26cf13a296029361",
+          "bytes": 15181020
+        },
+        "worker-failure.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/worker-failure.json",
+          "sha256": "4cd0536bc7b5d79c2a1e7128e8094d2fc73de299b07191ed2d18d6d66c51104d",
+          "bytes": 19391
+        },
+        "runner-receipt.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/runner-receipt.json",
+          "sha256": "e8289c85622931b2fed43c7a447d3a08ef50d1c0515164c95bd0059453ed9cf9",
+          "bytes": 11924
+        },
+        "stderr.bin": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-fixed-v1/stderr.bin",
+          "sha256": "cf70873008672500627bd941f66072106093e012ac08a63cb54f795eeba9b4ea",
+          "bytes": 2152
+        }
+      }
+    },
+    {
+      "mode": "symbolic",
+      "Root_admitted": false,
+      "resource_admitted": false,
+      "outer_elapsed_seconds": 180.472161625,
+      "worker_exit_code": 1,
+      "outer_exit_code": 2,
+      "root_aggregate_peak_bytes": null,
+      "group_absent": true,
+      "logs_complete": true,
+      "saved_result_status": "native_proof_discovered",
+      "saved_result_native_candidate": true,
+      "saved_result_work_window_complete": true,
+      "cold_whole_point_and_old_reader_completed": false,
+      "fixed_negative_or_symbolic_negative_preserved": true,
+      "failure_stage_direct_stderr": "PREPARATION_CACHE_BUILD",
+      "failure_type": "ColdError",
+      "failure_message": "full saved evidence inverse within original work",
+      "endpoints": {
+        "Source_entry_began_ns": 764114979967666,
+        "work_deadline_ns": 764294979967666,
+        "overall_deadline_ns": 764324979967666,
+        "scientific_stopped_monotonic": 764169.844511958,
+        "oracle_closed_monotonic": 764169.912232708,
+        "worker_terminal_observed_ns": 764295396600750
+      },
+      "recorded_scientific_stop_from_entry_seconds": 54.864544292,
+      "recorded_oracle_closed_from_entry_seconds": 54.932265042,
+      "remaining_work_budget_after_oracle_close_seconds": 125.067734958,
+      "phase_times": [
+        {
+          "stage": "before_oracle",
+          "started_monotonic": 764116.56498475,
+          "returned_monotonic": 764116.5649905,
+          "elapsed_seconds": 5.75e-06
+        },
+        {
+          "stage": "compile",
+          "started_monotonic": 764116.633350333,
+          "returned_monotonic": 764126.963483708,
+          "elapsed_seconds": 10.330133375
+        },
+        {
+          "stage": "compile_record_joins",
+          "started_monotonic": 764126.976126333,
+          "returned_monotonic": 764127.073245875,
+          "elapsed_seconds": 0.097119542
+        },
+        {
+          "stage": "specialize",
+          "started_monotonic": 764127.085290833,
+          "returned_monotonic": 764127.086192375,
+          "elapsed_seconds": 0.000901542
+        },
+        {
+          "stage": "register",
+          "started_monotonic": 764127.105508041,
+          "returned_monotonic": 764131.649724208,
+          "elapsed_seconds": 4.544216167
+        },
+        {
+          "stage": "inventory_record_join",
+          "started_monotonic": 764131.6605945,
+          "returned_monotonic": 764155.055809125,
+          "elapsed_seconds": 23.395214625
+        },
+        {
+          "stage": "model",
+          "started_monotonic": 764155.06680175,
+          "returned_monotonic": 764156.438967166,
+          "elapsed_seconds": 1.372165416
+        },
+        {
+          "stage": "search",
+          "started_monotonic": 764156.908045041,
+          "returned_monotonic": 764157.061517583,
+          "elapsed_seconds": 0.153472542
+        },
+        {
+          "stage": "symbolic_point_projection",
+          "started_monotonic": 764157.075353125,
+          "returned_monotonic": 764157.107976666,
+          "elapsed_seconds": 0.032623541
+        },
+        {
+          "stage": "final_native",
+          "started_monotonic": 764158.104081333,
+          "returned_monotonic": 764169.808778583,
+          "elapsed_seconds": 11.70469725
+        },
+        {
+          "stage": "essential_ancestry",
+          "started_monotonic": 764169.820421333,
+          "returned_monotonic": 764169.8208675,
+          "elapsed_seconds": 0.000446167
+        },
+        {
+          "stage": "winning_hint_links",
+          "started_monotonic": 764169.833077375,
+          "returned_monotonic": 764169.833091791,
+          "elapsed_seconds": 1.4416e-05
+        }
+      ],
+      "source_custody_stats_retained": null,
+      "arena_adapter_work_or_callback_counts_retained": null,
+      "driver_returned_timestamp": null,
+      "assembly_seconds": null,
+      "seal_seconds": null,
+      "export_seconds": null,
+      "ordinary_output_write_seconds": null,
+      "inverse_start_timestamp": null,
+      "inverse_elapsed_seconds": null,
+      "inverse_operation_counts_retained": null,
+      "unavailable_scope": "No worker success header, driver output receipt or active inverse observation was retained. Failure owned_evidence_statistics is explicitly null. File modification times are not substituted for monotonic stage timing.",
+      "raw": {
+        "CONSUMED.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/CONSUMED.json",
+          "sha256": "eb7da66951a262dee42ace5aa47f61d9016626737d88778f88a2fd7aef1b26c4",
+          "bytes": 669
+        },
+        "result.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+          "sha256": "6382659c11f5455af90775c8cfb1a195fafc11885dfd1e763e0b5442849f4740",
+          "bytes": 33999395
+        },
+        "evidence-forest.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+          "sha256": "d4450d19b8e4fd07f10ee4766cd083408258a25a8df1dcd8375bce48c2029d55",
+          "bytes": 14906405
+        },
+        "worker-failure.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/worker-failure.json",
+          "sha256": "c3685482b583e9d4b1d97837eb48e55fbd3a3c485318568f9705e0f8e7cc995d",
+          "bytes": 19401
+        },
+        "runner-receipt.json": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/runner-receipt.json",
+          "sha256": "32592ba914992ad989cddad63007165d92392feb00e6b70986182debc4c0531d",
+          "bytes": 11947
+        },
+        "stderr.bin": {
+          "path": "/private/tmp/gcts-cadence-integration-ROOT-20261019/actual-symbolic-v1/stderr.bin",
+          "sha256": "23f3ae147f695954af4512f33136ec0b8cae7864919e67bb50a706ac2a51af58",
+          "bytes": 2118
+        }
+      }
+    }
+  ],
+  "historical_context_only": {
+    "source": {
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json",
+      "sha256": "002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832",
+      "bytes": 66838
+    },
+    "scope": "Earlier admitted symbolic V6-inverse integration only; not current counts or a matched storage/cadence ablation.",
+    "arena_work": 355073213,
+    "adapter_operations": 116635629,
+    "callback_dispatch_counts": "Not explicitly recorded by current arena/adapter statistics even in this historical header.",
+    "oracle_close_to_forest_serialization_start_seconds": 81.065168,
+    "full_ordinary_output_serialization_to_preflight_seconds": 21.996318500023335,
+    "inverse_seconds": 11.239489083,
+    "ordinary_canonical_roundtrip_seconds": 4.755994041
+  },
+  "conclusions": [
+    "Both current invocations failed their original whole180-work profile despite diagnostic Native candidates and full result/forest files. No current full point, old-reader, independent-inverse or resource/proof admission is established.",
+    "Fixed reached inverse document streaming; symbolic reached inverse fragment/cache preparation. A qualified inverse-only component did not certify these full producer/consumer lifetimes or leave enough whole-pipeline time.",
+    "Most mathematical/search stages ended well before180, but the remaining oracle-close-to-deadline window combines final assembly, reconciliation, seal, export, two writes, custody rereads and partial inverse. None of those current component durations was independently retained.",
+    "The prior symbolic successful envelope81.065168s is not a current assembly duration and not a guard-overhead measurement. This new pair has no ordinary-storage arm, balanced repetition or profiler; no causal performance, memory-saving or GCTS/RL claim is supported.",
+    "Arena/adapter already batch some clock checks. Repeating the inverse every-operation-to1024 change in those components is not the same available transformation. Full public/completion guards, normalization and validation remain substantial Source cost surfaces but their time shares are unmeasured."
+  ],
+  "callback_clock_scope": {
+    "arena": {
+      "existing_policy": "Each _step charges all attempted work and per-kind counts; its while loop delegates check for each crossed weighted1024 block, including an initial dispatch. Bulk charges can schedule several callbacks before the corresponding actual copying/scanning work.",
+      "completion": "Every _finish invokes Source guard and check; _read invokes _finish. Those forced boundaries are additional to weighted cadence.",
+      "quota_order": "Work cap is checked after the current dispatch loop in frozen Source; this memo proposes no change to order, units or limits.",
+      "recorded_dispatch_count": null,
+      "latency": "No bound on elapsed latency follows from prepaid logical callback blocks."
+    },
+    "adapter": {
+      "existing_policy": "Each _step adds n to operations and tests its cap, then invokes check once if cumulative delta>=1024 and resets its last-check marker to current work.",
+      "caveat": "A large n is a single post-charge callback, not a strict maximum1024-operation gap. Tightening it to repeated weighted callbacks can add calls rather than optimize them.",
+      "completion": "Each _finish invokes check, full Source guard, check. Arena callbacks route through the same nonreentrant Store wrapper.",
+      "recorded_dispatch_count": null
+    },
+    "driver": {
+      "existing_policy": "Boundary.check invokes outer tick and clock, and only full=True also invokes full source_guard plus canonical epoch comparison. Store source_guard is explicitly full=True.",
+      "consequence": "Counting weighted checks alone cannot attribute raw Source hashing/callable-seal cost. Forced public/view/completion full checks may dominate or may not; no current duration/call ledger exists."
+    },
+    "identity": "Actual invoked foreign exception objects, own quota markers, passive-statistics reentrancy and custom-stream completion semantics remain mandatory."
+  },
+  "one_recommended_next_design": {
+    "choice": "Bounded finalization/callback observability first, with unchanged existing checkpoint policies. Do not pick a new quantum or claim a batching speedup from missing data.",
+    "status": "PROPOSED_NOT_IMPLEMENTED",
+    "execution_profile": "A separately declared owned-finalization-phase-instrumented-v1 profile if implemented; no inherited timing/fault-ordinal coverage claim.",
+    "minimal_boundary_changes": [
+      "Cold: after driver return retain a bounded owned copy of the existing driver receipt timing/descriptors and passive evidence_statistics for both success and later failure. Current ColdError after inverse cannot carry the discarded receipt statistics, which explains the null failure field.",
+      "Driver: an invocation-local ordinary phase ledger around store.assemble(final_result), store.seal, store.wire, forest atomic write and complete ordinary BODY stream/write. Record begin/end/error clock endpoints and passive statistics snapshots; do not add these packets as Arena roots or append fields to an already frozen final document.",
+      "Cold: retain start/end/error endpoints and the existing passive inverse observation at fresh forest read/JSON parse, independent prepare, independent document stream, old reader, canonical inverse and final point/receipt checks.",
+      "Callback accounting: separate actual fast-check invocations, full Source-guard invocations and public/completion invocations, with full-guard cumulative duration only if captured around existing calls. Do not infer dispatch count from attempted work or introduce additional validation/stream calls to measure it.",
+      "Write only bounded out-of-band ordinary metadata for success/failure; include every new byte in the existing physical128MiB ledger and all timing/peak costs in the original invocation. No extra or hidden logical document, root, snapshot authority or cleanup-phase scientific call."
+    ],
+    "invariants": [
+      "Keep every original operation, cap test, exact typed equality, first capture plus direct reconciliation, transaction/sole publication, full catalogue reachability, full logical BODY+oneLF and original output inverse.",
+      "Keep all completion/public Source guards and existing fast callback opportunities during this instrumentation step; no hidden batching/coalescing, quota reset, cached result, omitted witness or conditional baseline-only checking.",
+      "All phase endpoints must come from the same absolute monotonic epoch. File mtimes and stdout timestamps are not substitutes.",
+      "Never let metadata snapshot/write/clock failure mask the original callback/Source/deadline error. Retain only bounded partial phase and counts, never partial proof/Model/resource authority.",
+      "Keep the mathematical core, four-family library/ten-ground complete inventory, all Model points/marks/candidates, master global dead/forced/earliest-generation scheduler, fallback and exact rollback unchanged.",
+      "Keep original180 scientific work/positive serialization and known worker exit,210 terminal, conservative worker+Native1GiB, physical and expanded128MiB, logs4MiB, and400m/400m/30m private caps."
+    ],
+    "conditional_callback_candidate": "Only after the ledger measures an actual dominating callback cost may a distinct bounded-delegation successor be proposed. It must specify weighted versus call-count cadence, preserve every nondelegated operation/cap/validation, keep forced completion/public Source checks, and name the changed custody/checkpoint profile. Coalescing full guards is not automatically equivalent merely because final bytes match.",
+    "finite_qualification_requirements": [
+      "Independent raw/AST delta review shows all mathematical/validation/scheduler and existing callback calls unchanged in instrumentation, with added metadata bounded and invocation-local.",
+      "Finite Source-defined diagnostics must actually reach initial, large bulk-charge, public view, prepublication, seal/export, yielded-last-chunk and trailing completion/failure paths. Test exact RuntimeError,ValueError,StopIteration objects and unexpected earlier own deadlines; no class-only UNKNOWN normalization.",
+      "New callback-profile qualification, if later selected, needs explicit counters for first/forced/cadence dispatches, maximum weighted gap where meaningful, and no old ordinal-based test coverage inherited.",
+      "Whole fixed and symbolic future controls use the same new instrumentation/representation Sources and original001 full inputs/caps, all conversion/verification costs included. Retain every failure and no same-subject retry. This memo grants no test or actual.",
+      "No predicted time fit or improvement. Instrumentation can itself increase time/peak; a new profile result is a descriptive engineering observation, not theorem search/RL advantage."
+    ]
+  },
+  "master_applicability": "Current ca6ee master governs. Its learned-marking/corona/certified-negative provisions are not activated or modified by evidence storage or callback metadata. The theorem-search reduction and specialized symbolic chronology remain explicitly scoped; no new learner or pruning authority is introduced.",
+  "ancestry": "Author of arena, adapter-integration cold/registry and earlier Model/point work; not an independent certificate of those own Sources. Root authored inverse/driver/adapter and actuals; Control separate negative saved-data review is not replaced.",
+  "limitations": [
+    "Current counters/timings marked null are unavailable, not zero and not reconstructed by running anything.",
+    "Only ordinary result metadata and raw Source were read; no scientific module, codec, inverse, Native, Model, fixture or renderer was imported/called.",
+    "No Source implementation, new grant, actual launch, publication edit or failed-output recovery is authorized or performed."
+  ]
+}
