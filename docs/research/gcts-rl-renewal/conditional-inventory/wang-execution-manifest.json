@@ -1,0 +1,55 @@
+{
+  "archive": {
+    "bytes": 384638,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/publication-staging-v1/wang-execution-evidence.tar.gz",
+    "sha256": "7161cedc0e7b2b19e6e8a107dc20e23e0c7cf68cc1219c3abd496556a6b7c142"
+  },
+  "archive_raw_bytes": 1843480,
+  "archive_raw_files": 145,
+  "detached_publication_review": "wang-execution-review.json excluded to avoid circular pinning; review binds this manifest",
+  "files": [
+    {
+      "bytes": 18141,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/publication-staging-v1/fixed-fol-checker.html",
+      "sha256": "205d54c9aa578cc992741f566c5da08ff8abc5385ee613532d0f56087f34b777"
+    },
+    {
+      "bytes": 98589,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/publication-staging-v1/reader.html",
+      "sha256": "e1001acc36d9cf8ac62fe186bb64889dd98acc32c541e3430fccc8a2586d9352"
+    },
+    {
+      "bytes": 12391,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/publication-staging-v1/wang-execution-data-review.json",
+      "sha256": "adb3da052a780991dfa27e4ed1e049a4301f57cd9e8ce335d1d67ea7656ccef4"
+    },
+    {
+      "bytes": 120405,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/publication-staging-v1/wang-execution-data.json",
+      "sha256": "37e95a0cf466d15ad03941733d418cd322e79315d48eae3648549815d69b0de1"
+    },
+    {
+      "bytes": 384638,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/publication-staging-v1/wang-execution-evidence.tar.gz",
+      "sha256": "7161cedc0e7b2b19e6e8a107dc20e23e0c7cf68cc1219c3abd496556a6b7c142"
+    },
+    {
+      "bytes": 35058,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/publication-staging-v1/wang-execution-source-review.json",
+      "sha256": "b6f31d31751ef65e364713d2475472307ba27f9e533d14d6116a873856dd815a"
+    },
+    {
+      "bytes": 6706,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/publication-staging-v1/wang-execution-summary.json",
+      "sha256": "48825464a341493b311e1d7a5c081b7d911e86828dda2014fe589a5d4d19b4e2"
+    },
+    {
+      "bytes": 17886,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/publication-staging-v1/wang-execution.html",
+      "sha256": "a55709f0fb395e639e175a14812904a027d848a2ce5e9aefc3f1a475c73e4fae"
+    }
+  ],
+  "goal_status": "active",
+  "schema": "wang-negative-publication-manifest-v2",
+  "scope": "Passive Source/design/closed negative only; no target invocation, complete witness, theorem, advantage or runtime component qualification."
+}

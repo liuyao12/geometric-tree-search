@@ -1,0 +1,691 @@
+{
+  "Model_calls": 0,
+  "Native_calls": 0,
+  "Sources": {
+    "compiler": {
+      "bytes": 13084,
+      "path": "/private/tmp/gcts-wang-spacetime-library-20261019/wang_spacetime_compiler_v1.py",
+      "sha256": "92a8c49bd9be346faf9e6472c588140d3844c4e52c1f0a18fef24409e7ff20ba"
+    },
+    "observer": {
+      "bytes": 5483,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/observe_wang_encoding_once_v1.py",
+      "sha256": "587b3ab980b60ad81d479957b28478185a6f459ae1270b447613e6fed5d32fa5"
+    },
+    "oracle": {
+      "bytes": 12476,
+      "path": "/private/tmp/gcts-wang-snapshot-oracle-20261019/wang_snapshot_oracle_v1.py",
+      "sha256": "f77f395b1e8b3731dc8fc64deb6cd82c970009e088b91776a18b2e547af97369"
+    },
+    "runner": {
+      "bytes": 33422,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/run_wang_encoding_once_v5.py",
+      "sha256": "6111424a52419bb6ed8653b8c354031a8916549a179517ae4fdd8f9022f42c69"
+    },
+    "search": {
+      "bytes": 24685,
+      "path": "/private/tmp/gcts-wang-search-library-20261019/wang_point_search_v2.py",
+      "sha256": "7c09bfe44ab2288066f4e71f4516763376c4b2cddda7acfdb99220f5e4008d2d"
+    },
+    "verifier": {
+      "bytes": 23707,
+      "path": "/private/tmp/gcts-wang-search-library-20261019/wang_history_verifier_v2.py",
+      "sha256": "136d9306b2389576b38ffd6c60350514835583f625a5f45467cefc044fa3908d"
+    },
+    "worker": {
+      "bytes": 45239,
+      "path": "/private/tmp/gcts-wang-calibration-worker-20261019/qualify_wang_calibration_worker_v2.py",
+      "sha256": "efdfda4673fa3eab1d399fe9f7f359d9879b5b0afa62038c413460e4af4962c0"
+    }
+  },
+  "actual_execution_authorized": false,
+  "ancestry_disclosure": "Library authored the compiler, search and verifier: independent palette/global replay means implementation separation, not separate-author kernel certification. Benchmark-design peer authored the snapshot oracle. This reviewer independently read the offered current components and authored none of them, but authored or reviewed historical controls, symbolic/AND helpers and protocol/outer ancestors. Earlier scoped reviews remain ancestry only.",
+  "author_identities": [
+    "/root",
+    "/root/conventional_library",
+    "/root/benchmark_design"
+  ],
+  "clock_resource_scope": {
+    "expanded_logical_bytes": 134217728,
+    "observer_bytes": 1048576,
+    "observer_failure_fallback_seconds": 225,
+    "outer_seconds": 210,
+    "physical_bytes": 134217728,
+    "reservation_bytes": 9437184,
+    "runner_metadata_bytes": 8388608,
+    "scope": "Runner measured Source-entry epoch excludes interpreter/observer prelude. Worker HWM is not whole parent+worker aggregate RAM. Positive whole result/header/output read and known exit180; later full custody/resource/terminal210; unchanged caps, no fit or hard per-callback-latency guarantee.",
+    "stderr_bytes": 4194304,
+    "stdout_bytes": 4194304,
+    "stored_logical_bytes": 134217728,
+    "worker_highwater_bytes": 1073741824,
+    "worker_positive_seconds": 180,
+    "worker_receipt_bytes": 4194304
+  },
+  "cohort_owner_identity": "/root",
+  "compiler_calls": 0,
+  "component_calls": 0,
+  "corrected_negative_ancestry": {
+    "bytes": 34561,
+    "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-combined-Source-prospective-review-v2-negative-final.json",
+    "sha256": "ae1bfd3d2958b5b37dd0b221feca8d1dbd2f6e4f32b5dd214e20aeda92bc853e"
+  },
+  "counter_scope_clarification": {
+    "component_call_map": "s.calls(role) sums Session.started keys for the role. Most keys are Session.call starts; Session.own_oracle_limit separately increments oracle.is_own_limit starts/completions around its direct classifier call. Internal nested helpers are not individually counted. Classification is therefore explicitly censused when reached, despite not using Session.call. This is not a total CPU/work-instruction census.",
+    "prior_receipt": {
+      "bytes": 33946,
+      "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-combined-Source-prospective-review-v3.json",
+      "sha256": "2db77fc0945fecab563854748f2d2093545eb6baab4a2c57db7900a976bbde23"
+    },
+    "reporting": "Use the retained call_started/call_completed/call_raised maps with their actual labels, component-exported work totals/cutoffs and unavailable foreign costs; never infer absent internal work or general all-call completeness.",
+    "scope": "Metadata-only clarification after Root note; same exact subject, Source bytes and58 checks. No repeated target work."
+  },
+  "current_master": {
+    "bytes": 36240,
+    "path": "/private/tmp/gcts-wang-search-library-20261019/basic-tiling-algorithm-current.md",
+    "sha256": "ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4"
+  },
+  "current_static_audit": {
+    "bytes": 5835,
+    "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/combined-v3-metadata-static-audit.json",
+    "sha256": "de4c4b452c8769b4b4edf730572e6b528405f7484d99a5e077c0eea9c3ba67cf"
+  },
+  "current_static_check_count": 58,
+  "current_static_checks": [
+    {
+      "name": "V3 exact offered whole plan pin",
+      "passed": true
+    },
+    {
+      "name": "nine-field literal whole subject",
+      "passed": true
+    },
+    {
+      "name": "whole canonical V3 subject SHA",
+      "passed": true
+    },
+    {
+      "name": "all seven exact Sources unchanged",
+      "passed": true
+    },
+    {
+      "name": "current whole Source compiler",
+      "passed": true
+    },
+    {
+      "name": "current whole Source observer",
+      "passed": true
+    },
+    {
+      "name": "current whole Source oracle",
+      "passed": true
+    },
+    {
+      "name": "current whole Source runner",
+      "passed": true
+    },
+    {
+      "name": "current whole Source search",
+      "passed": true
+    },
+    {
+      "name": "current whole Source verifier",
+      "passed": true
+    },
+    {
+      "name": "current whole Source worker",
+      "passed": true
+    },
+    {
+      "name": "current python",
+      "passed": true
+    },
+    {
+      "name": "current declaration",
+      "passed": true
+    },
+    {
+      "name": "current runtime_closure",
+      "passed": true
+    },
+    {
+      "name": "complete original input complete-four-machine-680-case-55-variant-bank",
+      "passed": true
+    },
+    {
+      "name": "current false authorization",
+      "passed": true
+    },
+    {
+      "name": "exact seven-field false/max0/no-review authority",
+      "passed": true
+    },
+    {
+      "name": "whole declaration content unchanged",
+      "passed": true
+    },
+    {
+      "name": "all caps/interpreter/full inputs unchanged",
+      "passed": true
+    },
+    {
+      "name": "exact complete original680/30/55 declaration",
+      "passed": true
+    },
+    {
+      "name": "declaration subject input and limits joins",
+      "passed": true
+    },
+    {
+      "name": "full current closure joins",
+      "passed": true
+    },
+    {
+      "name": "explicit pinned parser executable",
+      "passed": true
+    },
+    {
+      "name": "explicit actual pinned parser version",
+      "passed": true
+    },
+    {
+      "name": "explicit AST profile distinct from raw identity",
+      "passed": true
+    },
+    {
+      "name": "seven complete unique census roles",
+      "passed": true
+    },
+    {
+      "name": "worker exact pinned-parser AST/import/descriptor census",
+      "passed": true
+    },
+    {
+      "name": "compiler exact pinned-parser AST/import/descriptor census",
+      "passed": true
+    },
+    {
+      "name": "search exact pinned-parser AST/import/descriptor census",
+      "passed": true
+    },
+    {
+      "name": "verifier exact pinned-parser AST/import/descriptor census",
+      "passed": true
+    },
+    {
+      "name": "oracle exact pinned-parser AST/import/descriptor census",
+      "passed": true
+    },
+    {
+      "name": "runner exact pinned-parser AST/import/descriptor census",
+      "passed": true
+    },
+    {
+      "name": "observer exact pinned-parser AST/import/descriptor census",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 0",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 1",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 2",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 3",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 4",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 5",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 6",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 7",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 8",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 9",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 10",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 11",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 12",
+      "passed": true
+    },
+    {
+      "name": "complete declared stdlib 13",
+      "passed": true
+    },
+    {
+      "name": "closure delta only parser attribution/fingerprints and declaration path",
+      "passed": true
+    },
+    {
+      "name": "subject delta only fresh identifiers and metadata descriptors",
+      "passed": true
+    },
+    {
+      "name": "new exact fresh invocation and directory",
+      "passed": true
+    },
+    {
+      "name": "fresh absent actual",
+      "passed": true
+    },
+    {
+      "name": "fresh absent false observer",
+      "passed": true
+    },
+    {
+      "name": "fresh absent future authorized observer",
+      "passed": true
+    },
+    {
+      "name": "fresh absent authorized plan",
+      "passed": true
+    },
+    {
+      "name": "prior V1 and V2 actual paths remain absent",
+      "passed": true
+    },
+    {
+      "name": "preserved V2 false-plan bytes",
+      "passed": true
+    },
+    {
+      "name": "preserved V2 unattributed closure",
+      "passed": true
+    },
+    {
+      "name": "preserved V1 negative",
+      "passed": true
+    }
+  ],
+  "current_worker_inert_patch_directions": 2,
+  "declaration": {
+    "bytes": 61989,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/declaration-v3.json",
+    "sha256": "19d286cd2daff291b1314fdee3d96c979da3e8e00e64d3bb8ab9e6bb251d0a87"
+  },
+  "false_plan": {
+    "bytes": 3306,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/plan-false-v3.json",
+    "sha256": "243754dc073127d0d6c2bb0f50d288e72d438b6af7da4379ff7e512765b1227d"
+  },
+  "final_action": "Root may separately adopt these exact limited scopes and author one fresh max-one true grant. Review grants no execution. Exact auth-only final delta/freshness plus all-peer idle barrier still precede any Root-owned actual. Saved-data review begins only after authoritative terminal/cohort release.",
+  "findings": [],
+  "finite_fault_coverage_limit": "The 55 frozen variants include initial-callback BaseException recipes, compiler same-class limit, selected own budgets, structural corruptions and root restoration. They do not by declaration establish same-class/subclass search/verifier callback faults, mid-placement/rollback interruption, or every exception class. Report only sites actually reached and retained. Root explicitly accepted this limited finite scope; no bank expansion or runtime claim is required by this early note.",
+  "fixture_calls": 0,
+  "full_pipeline_qualified": false,
+  "genuine_prior_review_reuse": {
+    "V1_combined_negative": {
+      "bytes": 15253,
+      "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-combined-Source-prospective-review-v1-negative.json",
+      "sha256": "7492e927afce476c814e4ae7f7188348f2b92d082b7a880f1881d2b3dcd2fff1"
+    },
+    "V2_combined_negative": {
+      "bytes": 34561,
+      "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-combined-Source-prospective-review-v2-negative-final.json",
+      "sha256": "ae1bfd3d2958b5b37dd0b221feca8d1dbd2f6e4f32b5dd214e20aeda92bc853e"
+    },
+    "V2_raw_static_results": {
+      "checks": 90,
+      "passed": 83,
+      "scope": "All current Source/code repairs and whole-byte input/cap joins passed in V2. Only metadata parser fingerprints failed; each of those seven is freshly rechecked and matches in V3.",
+      "unattributed_AST_mismatches": 7
+    },
+    "early_component_review": {
+      "bytes": 15338,
+      "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-mathematical-components-early-Source-review-v1.json",
+      "sha256": "41eb42557b515888836897bd55b78f35c56acd2e71e2462122d3571d0fe9268e"
+    },
+    "early_static_checks": 101,
+    "scope": "All seven current Sources have been raw-read across the prior component/V1/outer reviews plus current V2 delta. Unchanged Source reasoning is explicitly reused; no claim of a new independent author or fresh runtime test."
+  },
+  "input": [
+    {
+      "id": "complete-four-machine-680-case-55-variant-bank",
+      "pin": {
+        "bytes": 232943,
+        "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/cohort-inputs-v1.json",
+        "sha256": "60ced7c79f91fd475ef88e90cace3ce5fffe15b0c8450d4b3e934d3764ffb80e"
+      }
+    }
+  ],
+  "limitations": [
+    "All current Sources and the input bank are unexecuted in this review. No output or runtime claim has been established. Source reasoning and syntax checks do not establish mathematical kernel soundness or a universal reduction theorem.",
+    "Finite integer unit-center translation-only Wang boards, explicit generation-zero roots and generation-one singleton-support placements only. Fractional occupancy, shared multi-frontier positive support, mixed-generation growth, unbounded geometry, learned markings, RL and generic Turtle-engine conformance remain outside scope.",
+    "A valid whole finite tiling/history is conditional evidence for the declared finite machine/input/horizon. No fixed FOL checker or TM/table/palette, unknown-proof search, theorem acceptance, universal palette, infinite-plane behavior or performance advantage is implemented or qualified by this note.",
+    "All three implementations use trusted exclusive ownership and read-only callbacks. Search/verifier own their strict ordinary copies; oracle reads already separately validated ordinary data. No hostile reflection, private-object access, general reentrancy, callable/default/OS integrity theorem or transactional protection against all caller mutation is claimed.",
+    "Private operation quotas and cooperative callbacks bound recorded work, not instantaneous memory or hard wall-clock latency. Sorting, allocation and critical rollback may occur between checks; rollback costs are not refunded. Fresh original external 180/210/1GiB/128MiB/log gates and complete failure retention remain necessary before runtime adoption.",
+    "The worker uses five explicitly declared private verifier seams (_Budget/_palette/_machine/_configuration/_global_transition). This fixed Source coupling is reviewed; it is not a stable public independent kernel API or an independent theorem proof.",
+    "Search/verifier/worker/compiler share the Library author; B oracle is separately authored. One reviewer covers Source, outer and prospective scopes, with historical protocol/control authorship overlap disclosed. No implied multiple independent reviewer identities.",
+    "Current V5 outer expanded ABI is authoritative. Worker V1 contract's V4 outer reference is retained superseded parent context, not the binding for this current subject.",
+    "This combined V3 Source/prospective PASS resolves W1 for workerV2 and M1 for closureV3 only. It supersedes their pending-review status for this exact subject while preserving all V1/V2 negative artifacts and all historical runtime failures. Components/cohort remain unexecuted; no proof/runtime qualification or actual permission is inherited."
+  ],
+  "literal_input_scope": {
+    "author_Source": {
+      "bytes": 9348,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/build_input_cohort_v1.py",
+      "sha256": "cf31f1921ea23ce0e810adc5d405af65903055aa93527aaae08eb9e294dc98ab"
+    },
+    "cases": 680,
+    "coverage": [
+      {
+        "cases": 170,
+        "machine_id": "right_scan",
+        "words": 34
+      },
+      {
+        "cases": 170,
+        "machine_id": "left_write",
+        "words": 34
+      },
+      {
+        "cases": 170,
+        "machine_id": "undefined_halt",
+        "words": 34
+      },
+      {
+        "cases": 170,
+        "machine_id": "initial_accept",
+        "words": 34
+      }
+    ],
+    "descriptor": {
+      "bytes": 232943,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/cohort-inputs-v1.json",
+      "sha256": "60ced7c79f91fd475ef88e90cace3ce5fffe15b0c8450d4b3e934d3764ffb80e"
+    },
+    "diagnostic_groups": 30,
+    "diagnostic_variants": 55,
+    "horizons": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "machines": 4,
+    "scope": "Only ordinary literal structure and declared Cartesian coverage checked. No TM transition was simulated, no case classified, no palette compiled and no witness constructed. All movement and blank/nonblank write literals occur across the declared tables; the initial-accept machine has an empty table, so no unreachable transition coverage is inferred.",
+    "words_per_machine": 34
+  },
+  "manual_Source_assessment": [
+    {
+      "finding": "The search validates the declared finite rectangle, every required/admissible row-major origin, full distinct tile identities, unit-center occupancy, all four exact midpoint edge values including zero, and every exterior boundary pin. Its palette machine semantics are deliberately not checked here; those remain a separate compiler/verifier/owner binding.",
+      "id": "S1",
+      "source": "search:126-218"
+    },
+    {
+      "finding": "The candidate universe is every tile ID at every origin, with all static t dependencies and all four mark dependencies including inactive candidates. Placement invalidation scans exactly the occupied-center and changed-mark dependency union. The full forward/reverse graph is maintained, not sampled.",
+      "id": "S2",
+      "source": "search:221-272,355-391"
+    },
+    {
+      "finding": "The complete census checks every unfilled point: any zero degree precedes forced degree one, and only then is minimum (generation, degree, point index) chosen. Every explicit root has generation zero and every singleton-support placement has generation one; this is a declared specialization.",
+      "id": "S3",
+      "source": "search:334-353"
+    },
+    {
+      "finding": "Only the DEAD path returns to a branch parent, undoes the exact checkpoint, checks the restored global decision and alternatives, then trails exclusion of that fully failed child in the parent context. A remaining singleton is forced; multiple remaining candidates receive their own branch frame. Ancestor undo removes later exclusions. No exception or quota handler reaches exclusion or finite exhaustion.",
+      "id": "S4",
+      "source": "search:393-432,461-501"
+    },
+    {
+      "finding": "Occupancy, assigned marks/reference counts, generations, active forward/reverse membership and exclusions have inverse trail operations. Critical undo is callback-free and still charges monotone attempted work; normal returns undo to root and recheck all root domains, marks, generations, exclusions, trail and reverse state. Error cleanup is best effort with no accepted success and preserves the active exception; catastrophic cleanup failure is not universally guaranteed recoverable.",
+      "id": "S5",
+      "source": "search:408-458,504-549"
+    },
+    {
+      "finding": "Snapshots are detached full ordinary structures including all candidates, chosen placements, active marks/refcounts, complete static dependencies, incidence, exclusions, boundary and scheduler. Observer policy authority is absent. Transitional partially updated states are not offered; work-limit failure can occur before the next snapshot.",
+      "id": "S6",
+      "source": "search:274-332"
+    },
+    {
+      "finding": "The verifier independently parses the complete machine and enumerates machine-only semantic tile schemas and the complete semantic color set. It checks exact set equality with declared colors/schemas, injective color coding, distinct sequential tile IDs, full t/m correspondence and no missing unused schema. The small local-tape reconstruction is separate Source from the compiler; same authorship remains disclosed.",
+      "id": "V1",
+      "source": "verifier:116-315"
+    },
+    {
+      "finding": "The verifier binds the initial complete word, exact horizon, complete board/frame boundaries, origin lists and exterior pins. The certificate has exactly one unrotated translation per board center. Whole midpoint assignment and a second direct raw-edge rectangle comparison are both checked.",
+      "id": "V2",
+      "source": "verifier:344-465"
+    },
+    {
+      "finding": "A separate whole configuration routine performs one transition lookup, one tape write and one head movement, rejects early accepting/undefined halt or wall escape, and compares every tiling north/south word to all exact global configurations. It does not call the local neighborhood constructor. Final state must be accepting at exactly the declared horizon, including zero-horizon cases.",
+      "id": "V3",
+      "source": "verifier:317-342,466-490"
+    },
+    {
+      "finding": "Exact-class short-circuit precedes private per-call owner access. Same-class foreign objects and subclasses are re-raised rather than normalized. Search own limits return UNKNOWN with no certificate; verifier own limits return UNKNOWN with no accepting-history claim. Direct non-generator callback paths preserve StopIteration and other external object identity under the declared trusted ownership scope.",
+      "id": "E1",
+      "source": "search:513-549;verifier:492-506"
+    },
+    {
+      "finding": "The separately authored oracle recomputes full physical candidate legality, complete dependencies, occupancy and marking counts, incidence and scheduler independently from the search graph. It uses exact typed structural comparison. It subtracts declared exclusions conditionally, never certifies their failed-child proof, and only bounds/returns the supplied trail length for owner full-value restoration pairing.",
+      "id": "O1",
+      "source": "oracle:83-233"
+    },
+    {
+      "finding": "The oracle private token is module-wide, not per invocation. It does not catch callback errors; its public own-limit predicate distinguishes exact class plus module-origin token. Root must latch any external callback failure before considering this predicate. The oracle uses a 1024-step cooperative callback cadence with direct initial/final callbacks; no hard latency or private-work-to-wall-clock identity is established.",
+      "id": "O2",
+      "source": "oracle:8,26-51,219-233"
+    },
+    {
+      "finding": "The original-machine palette join and per-case complete word/exact-int time/dimensions/NESW/exterior-pin joins run before every normal search. Expected semantic colors come from the complete independently verified machine palette. Current finite input cases are not reclassified by these guards; mismatch aborts, and full evidence is retained for every completed row. V1 blocker is resolved at Source level, not claimed tested.",
+      "id": "W1_RESOLVED",
+      "source": "worker V2 bind_original_case/calibrate"
+    },
+    {
+      "finding": "Whole caller arguments are canonical-compared around component calls; all original compiler returns remain retained through the positive boundary. Four machine-only palettes are independently checked before any search, and every instance palette is whole-value identical to its machine palette. Reference transitions occur strictly after that case search; exhausted negatives cannot bypass the complete palette/original-case bindings.",
+      "id": "W2",
+      "source": "worker Session.call/reference_after_search/calibrate"
+    },
+    {
+      "finding": "Each offered snapshot is fully compared by the separately authored oracle before its receipt is made. Full canonical census baselines, including trail length, support branch-parent and initial/ROOT_RESTORED equality. Full intermediate values may release after audit; archived state receipts are size/hash/reason/cost observations and cannot reconstruct all states.",
+      "id": "W3",
+      "source": "worker observer_for"
+    },
+    {
+      "finding": "All55 variants require exact expected classes or private-owner UNKNOWN, actual reach, counters and expected disposition. Planned sentinel callbacks first run the genuine Root check; first genuine Root failure dominates expected-negative logic. Compiler same-class sentinel requires identity. Oracle module-owner classification is behind fault_gate. The frozen bank still does not qualify every class or later placement/rollback site.",
+      "id": "W4",
+      "source": "worker diagnostics/Session.check/call"
+    },
+    {
+      "finding": "Complete canonical packet/output and result receive stored and reconstructed-expanded byte ledgers including each LF. Expanded compiler_problem references replace exact complete subtrees with a full shared palette bank retained; no dropped mathematical field. Header-expanded must equal payload expanded-canonical bytes plus full result bytes; both128MiB bounds and physical+9MiB reservation remain hard admission gates.",
+      "id": "W5",
+      "source": "worker write_json/main; outer V5 positive path"
+    },
+    {
+      "finding": "Only the four pinned mathematical modules load in the isolated worker after a denylist audit hook. Current Source files/origins/function-code/default identities are checked around component calls; raw stdlib/input closure is checked at intake/end. This is trusted exclusive-owner loading with an initial loader/pyc/globals/OS trust boundary, not a hostile-code or universal callable-integrity seal.",
+      "id": "W6",
+      "source": "worker Session.load/guard/main"
+    },
+    {
+      "finding": "Exact nine-field subject plus one authorization descriptor; seven Sources; one create-only marker before worker Popen. Result/header/output whole reads and known exit require original180, followed by custody/resource/log/receipt/external-terminal closure before210;225 observer timeout grants no success. Cached wait4, separate permission-aware probes, freshly justified signals, no reappearance signaling, true parent closes, stable whole logs and first-error/incomplete diagnostics retain the reviewed cleanup scope.",
+      "id": "O3",
+      "source": "runner V5 main/finalization; observer V1"
+    },
+    {
+      "finding": "Positive joins require every680 case and each declared30group/55variant in order, strict integer counts, reached expectations, whole TM agreement, complete point verification for witnesses and all offered graph audits. Native/Model/inverse/Reader/proofchecker/opaque decode remain zero; Wang search/compiler/verifier/oracle calls are explicitly positive and are not mislabeled no component execution.",
+      "id": "O4",
+      "source": "runner validate_qualification/main"
+    }
+  ],
+  "mathematical_proof_admitted": false,
+  "mismatch_count": 0,
+  "offer": {
+    "bytes": 5251,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/Source-only-offer-v3.json",
+    "sha256": "c571e359a2e8e324dd665a34125469f6384feef262a8302e49a29b25d3ad696f"
+  },
+  "operation_accounting_scope": "Root400m is invocation-total callback/checkpoint count, not old Arena/Adapter work or CPU seconds. Four per-call component400m definitions differ; oracle uses cadence1024 and exported audit_work is summed with unavailable calls kept explicit. Rollback attempts are monotone and not refunded; cleanup can exceed a component quota with no accepted return. Result counters have stated serialization cutoff and header counters a later pre-receipt cutoff; neither is claimed the final instruction count.",
+  "oracle_calls": 0,
+  "parser": {
+    "executable": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "policy": "ast.dump(ast.parse(raw),include_attributes=False), UTF-8 sha256; informational structural census distinct from raw Source identity",
+    "version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]"
+  },
+  "resolved_findings": [
+    {
+      "id": "W1",
+      "parent_negative": {
+        "bytes": 15253,
+        "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-combined-Source-prospective-review-v1-negative.json",
+        "sha256": "7492e927afce476c814e4ae7f7188348f2b92d082b7a880f1881d2b3dcd2fff1"
+      },
+      "resolution": "Full original machine/word/exact-time/dimensions and semantic NESW/pin binding now precedes every normal search, with full row evidence. No case/budget or mathematical algorithm changed."
+    },
+    {
+      "id": "M1",
+      "parent_negative": {
+        "bytes": 34561,
+        "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-combined-Source-prospective-review-v2-negative-final.json",
+        "sha256": "ae1bfd3d2958b5b37dd0b221feca8d1dbd2f6e4f32b5dd214e20aeda92bc853e"
+      },
+      "resolution": "V3 explicitly attributes the exact pinned Python3.12.14 parser and policy; all seven recomputed AST fingerprints now match. This informational census remains distinct from raw Source identity. No target Source, case, variant or cap changed."
+    }
+  ],
+  "reused_unchanged_Source_unused_compiles": 7,
+  "review_passed": true,
+  "review_phase": "FINAL COMBINED SOURCE/OUTER/FALSE PROSPECTIVE V3; NO EXECUTION AUTHORITY",
+  "reviewer_identity": "/root/conventional_control_review",
+  "reviewer_metadata_correction": {
+    "corrected_record": {
+      "bytes": 34561,
+      "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-combined-Source-prospective-review-v2-negative-final.json",
+      "sha256": "ae1bfd3d2958b5b37dd0b221feca8d1dbd2f6e4f32b5dd214e20aeda92bc853e"
+    },
+    "prior_record": {
+      "bytes": 34304,
+      "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-combined-Source-prospective-review-v2-negative.json",
+      "sha256": "d1f69e5fed91f906b51620af89b9ef69af84eecaa7912e736d7c5398559064ce"
+    },
+    "scope": "One stale draft-PASS sentence was inconsistent with the literal false review gate. Removed in this preserved metadata successor before handoff; no target/input/Source/check finding changed."
+  },
+  "runtime_closure": {
+    "bytes": 9319,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/runtime-closure-v3.json",
+    "sha256": "2a584c909494f2cfd9fc2b9fbd76c7f4aa07bd98b2660c7488f48a640aaa5637"
+  },
+  "runtime_qualified": false,
+  "schema": "wang-encoding-Source-prospective-review-v1",
+  "scientific_calls": 0,
+  "search_calls": 0,
+  "simulations": 0,
+  "snapshot_retention_scope": "Actual full typed/value state audits and full-value branch/root restoration pairing; intermediate state values may then release. Every offered state archives a receipt, not a reconstructable all-state archive. Complete compiler objects retained through the positive boundary. No hash-only acceptance.",
+  "source_only": true,
+  "subject": {
+    "actual_directory": "/private/tmp/gcts-wang-execution-ROOT-20261019/actual-complete-680-v3",
+    "declaration": {
+      "bytes": 61989,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/declaration-v3.json",
+      "sha256": "19d286cd2daff291b1314fdee3d96c979da3e8e00e64d3bb8ab9e6bb251d0a87"
+    },
+    "inputs": [
+      {
+        "id": "complete-four-machine-680-case-55-variant-bank",
+        "pin": {
+          "bytes": 232943,
+          "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/cohort-inputs-v1.json",
+          "sha256": "60ced7c79f91fd475ef88e90cace3ce5fffe15b0c8450d4b3e934d3764ffb80e"
+        }
+      }
+    ],
+    "invocation_id": "complete-wang-calibration-680-v3",
+    "limits": {
+      "expanded_bytes": 134217728,
+      "memory_bytes": 1073741824,
+      "observer_bytes": 1048576,
+      "overall_seconds": 210,
+      "result_bytes": 134217728,
+      "runner_metadata_bytes": 8388608,
+      "stderr_bytes": 4194304,
+      "stdout_bytes": 4194304,
+      "work_seconds": 180,
+      "worker_receipt_bytes": 4194304
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+    },
+    "runtime_closure": {
+      "bytes": 9319,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/runtime-closure-v3.json",
+      "sha256": "2a584c909494f2cfd9fc2b9fbd76c7f4aa07bd98b2660c7488f48a640aaa5637"
+    },
+    "schema": "ROOT-wang-encoding-qualification-plan-v1",
+    "sources": {
+      "compiler": {
+        "bytes": 13084,
+        "path": "/private/tmp/gcts-wang-spacetime-library-20261019/wang_spacetime_compiler_v1.py",
+        "sha256": "92a8c49bd9be346faf9e6472c588140d3844c4e52c1f0a18fef24409e7ff20ba"
+      },
+      "observer": {
+        "bytes": 5483,
+        "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/observe_wang_encoding_once_v1.py",
+        "sha256": "587b3ab980b60ad81d479957b28478185a6f459ae1270b447613e6fed5d32fa5"
+      },
+      "oracle": {
+        "bytes": 12476,
+        "path": "/private/tmp/gcts-wang-snapshot-oracle-20261019/wang_snapshot_oracle_v1.py",
+        "sha256": "f77f395b1e8b3731dc8fc64deb6cd82c970009e088b91776a18b2e547af97369"
+      },
+      "runner": {
+        "bytes": 33422,
+        "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/run_wang_encoding_once_v5.py",
+        "sha256": "6111424a52419bb6ed8653b8c354031a8916549a179517ae4fdd8f9022f42c69"
+      },
+      "search": {
+        "bytes": 24685,
+        "path": "/private/tmp/gcts-wang-search-library-20261019/wang_point_search_v2.py",
+        "sha256": "7c09bfe44ab2288066f4e71f4516763376c4b2cddda7acfdb99220f5e4008d2d"
+      },
+      "verifier": {
+        "bytes": 23707,
+        "path": "/private/tmp/gcts-wang-search-library-20261019/wang_history_verifier_v2.py",
+        "sha256": "136d9306b2389576b38ffd6c60350514835583f625a5f45467cefc044fa3908d"
+      },
+      "worker": {
+        "bytes": 45239,
+        "path": "/private/tmp/gcts-wang-calibration-worker-20261019/qualify_wang_calibration_worker_v2.py",
+        "sha256": "efdfda4673fa3eab1d399fe9f7f359d9879b5b0afa62038c413460e4af4962c0"
+      }
+    }
+  },
+  "subject_imports": 0,
+  "subject_sha256": "f4645eacc562a732bfcd07bdda38a8a994ae936c43e112c40e7c4fda16ac0b3a",
+  "tools_stopped_after_handoff": true,
+  "unchanged_worker_definition_AST_count": 21,
+  "unused_compiles": 0,
+  "verifier_calls": 0,
+  "worker_handoff": {
+    "bytes": 2793,
+    "path": "/private/tmp/gcts-wang-calibration-worker-20261019/handoff-v2.json",
+    "sha256": "e7dc8e8f689af810277f24538e155c17887e8a8a21341b2766f5613f588ddfae"
+  }
+}

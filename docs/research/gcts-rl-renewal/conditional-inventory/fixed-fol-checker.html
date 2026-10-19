@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>One checker boundary, several mathematical theories — GCTS design</title>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eff4f2;color:#1c3940;font:17px/1.65 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:28px 25px 70px}nav{display:flex;gap:24px;flex-wrap:wrap;font-size:14px}a{color:#11636f}h1,h2{font-family:Georgia,serif}h1{font-size:clamp(35px,5vw,53px);line-height:1.14;max-width:970px;margin:25px 0}h2{font-size:29px;line-height:1.25;margin-bottom:16px}h3{font-size:18px;margin:0 0 10px}.eyebrow{font-size:13px;margin-top:35px}.lead{font-size:21px;max-width:1000px}.notice{padding:18px 22px;background:#fff0d4;border-left:5px solid #b68037}.small,figcaption{font-size:14px;color:#547076}section{margin-top:43px;scroll-margin-top:22px}.pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:19px;margin:25px 0}.stage{position:relative;background:white;border:1px solid #bfd1cc;padding:19px 17px}.stage:not(:last-child):after{content:"";position:absolute;right:-15px;top:45%;border-left:10px solid #567973;border-top:8px solid transparent;border-bottom:8px solid transparent}.badge{display:inline-block;padding:3px 8px;font-size:11px;text-transform:uppercase;margin-bottom:12px;background:#dcece3;color:#285c46}.missing .badge{background:#fff0d4;color:#875826}.future .badge{background:#deebf3;color:#335d7b}.stage p{font-size:14px;margin:8px 0}.rule-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{background:white;border:1px solid #c0d2cd;padding:21px 22px;min-width:0}.math{overflow:auto;padding:5px 0}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;background:white;font-size:15px}td,th{padding:13px 14px;text-align:left;vertical-align:top;border-bottom:1px solid #c8d8d2}thead{background:#dce9e3}code{font:13px ui-monospace,monospace;background:#e2ece7;padding:2px 4px;overflow-wrap:anywhere}.bridge{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:16px;align-items:stretch;margin-top:20px}.bridge>div{background:white;border:1px solid #c0d2cd;padding:20px}.bridge .center{background:#e3eee9}.pins{font-size:13px;overflow-wrap:anywhere}footer{border-top:1px solid #bfd1cc;padding-top:20px;margin-top:45px}@media(max-width:850px){.pipeline{grid-template-columns:1fr 1fr}.stage:after{display:none}.bridge{grid-template-columns:1fr}.rule-grid{grid-template-columns:1fr}}@media(max-width:520px){main{padding:22px 16px 55px}.pipeline{grid-template-columns:1fr}}
+</style></head><body><main>
+<nav><a href="reader.html">Research notebook</a><a href="wang-execution.html">Wang execution and calibration record</a><a href="#rules">The checker rules</a><a href="#gaps">Missing bridges</a><a href="#sources">Frozen Sources</a></nav>
+<p class="eyebrow">Source and design note · 19 October 2026</p>
+<h1>One checker boundary, several mathematical theories</h1>
+<p class="lead">The project has a full serialized first-order certificate checker. The next foundation is to preserve its meaning through one fixed machine and one fixed Wang palette, then search for an unknown certificate.</p>
+<div class="notice"><b>Design status:</b> the checker Sources and a narrow delegation adapter are pinned. The adapter has not been invoked. A faithful fixed single-tape checker table, its resulting fixed palette and the unknown-certificate board language are still missing. This note supplies no discovered proof, compiler execution, runtime qualification or universal artifact.</div>
+
+<section id="chain"><h2>The chain, with its current gaps</h2>
+<figure><div class="pipeline" aria-label="Four-stage design chain: existing first-order checker Source; missing faithful fixed single-tape machine; missing fixed Wang palette; future unknown-certificate search.">
+<article class="stage"><span class="badge">Existing Source</span><h3>Full FOL checker</h3><p><code>serialized_kernel.check</code> parses a complete certificate and checks every rule, block and theory interface.</p><p>The paired tree-language checker is also present.</p></article>
+<article class="stage missing"><span class="badge">Missing correspondence</span><h3>One single-tape machine</h3><p>Freeze \(M_K\), implementing that same checker and a lossless input codec.</p><p>Its transition table must be independent of the theorem.</p></article>
+<article class="stage missing"><span class="badge">Missing fixed artifact</span><h3>One Wang palette</h3><p>Compile the complete palette \(T_K\) from \(M_K\) once.</p><p>Its tiles must faithfully encode checker configurations and acceptance.</p></article>
+<article class="stage future"><span class="badge">Future search</span><h3>Unknown certificate</h3><p>Hold theory and target fixed. Search certificate data and finite bounds.</p><p>Validate every returned result independently.</p></article>
+</div><figcaption>This is a correspondence plan. A tableau row is one machine configuration, not a human logical proof line.</figcaption></figure>
+<p>Existing tree bytecode, tape-lowering and Native artifacts do not establish the deterministic single-tape table required here. The compiler takes a machine parameter; a single fixed proof system requires freezing that table across theorems.</p><p>The framed compiler maps a unit Wang tile to a center with \(t=1\) and four edge-midpoint \(m\)-channels; centers lie at \((2x,2y)\), with translations in \(2\mathbb{Z}^2\) and no rotations. Pair colors enforce configuration overlap. Sidewalls forbid head escape, and an accepting collector requires the accepting head. An all-plain bottom is insufficient; halting cannot be padded. The fixed FOL table and its resulting complete palette remain unbuilt.</p></section>
+
+<section id="boundary"><h2>Freeze the problem; leave the proof unknown</h2>
+<p>The current public protocol is <code>gcts-fol-1</code>. A request has exactly five fields: <code>protocol</code>, <code>theory</code>, <code>target</code>, <code>blocks</code> and <code>proof</code>. The first three define the public problem. The last two are proposed certificate data.</p>
+<div class="bridge"><div><h3>Frozen public input</h3><div class="math">\[\bigl(\Theta,\varphi\bigr)\]</div><p>The whole signature, authorized closed axioms, schema policy and exact target are fixed before search.</p></div>
+<div class="center"><h3>Certificate boundary</h3><div class="math">\[K(\Theta,\varphi,\pi)\]</div><p>The fixed checker examines the proposed blocks and primitive rows in \(\pi\). A candidate cannot rewrite the public problem.</p></div>
+<div><h3>Search output</h3><p>An accepted certificate is evidence relative to the declared theory. A search contribution additionally needs authenticated provenance that the search found it.</p></div></div>
+<p>The public-problem hash covers only <code>protocol</code>, <code>theory</code> and <code>target</code>, using compact sorted JSON with <code>ensure_ascii=True</code>. Its expected digest must come from the frozen problem. Other evidence hashes are not interchangeable.</p>
+<p>The unexecuted adapter delegates to <code>check</code>, creating a fresh checker per request. It adds no rules. Reusing mutable <code>Checker.request</code> across requests could retain earlier blocks and needs separate isolation.</p>
+<p class="small">A future owner must bind exact Source/code/callable identities and charge parsing, copying, checking, guards and output. Path/protocol matching is insufficient; adapter guards do not supply hard preemption.</p></section>
+
+<section id="syntax"><h2>A small explicit language</h2>
+<p>Terms are variables and applications of declared functions. Formulas use equality, declared predicates, Boolean connectives and universal quantification:</p>
+<div class="math">\[
+\begin{aligned}
+t&::=x\mid f(t_1,\ldots,t_n),\\
+\varphi&::=\bot\mid s=t\mid P(t_1,\ldots,t_n)\mid\neg\varphi
+ \mid(\varphi\to\psi)\mid(\varphi\land\psi)\mid(\varphi\lor\psi)\mid\forall x\,\varphi.
+\end{aligned}
+\]</div>
+<p>Every function and predicate has a declared exact arity. Variables and symbols are literal names. The host representation uses tagged arrays such as <code>["all", "x", body]</code> and <code>["eq", left, right]</code>. Existential notation can be expressed as \(\exists x\,\varphi\equiv\neg\forall x\,\neg\varphi\); it is not an extra primitive rule.</p>
+<p>Parsing rejects duplicate keys, floats, malformed tags, fields and arities. Natural-number indices exclude booleans. Matching uses exact named trees, not automatic bound-variable renaming.</p>
+<p>The tagged tree wire uses byte atoms and immutable cons cells. Host/machine correspondence still needs exact treatment of names, unpaired surrogates, duplicate keys, integer types and delimiters.</p></section>
+
+<section id="rules"><h2>Rule interfaces the fixed checker already expresses</h2>
+<p class="small">These are schematic rule interfaces, not discovered proofs, target certificates or executed tests.</p>
+<div class="rule-grid">
+<article class="card"><h3>Universal instantiation</h3><div class="math">\[\forall x\,A\ \to\ A[t/x]\]</div><p>This row checks a capture-avoiding schema. Obtaining the instance still requires a proved universal premise and modus ponens.</p></article>
+<article class="card"><h3>Capture avoidance</h3><div class="math">\[(\forall y\,R(x,y))[y/x]=\forall z\,R(y,z)\]</div><p>Here \(z\) is fresh. This is a schematic display of binder renaming, not the literal checker output name. The implementation chooses the first available <code>freshN</code> name and requires the corresponding exact tree.</p></article>
+<article class="card"><h3>Generalization</h3><div class="math">\[\frac{\Gamma\vdash A}{\Gamma\vdash\forall x\,A}\qquad x\notin\operatorname{FV}(\Gamma)\]</div><p>The condition covers every declared local block premise, not an inferred dependency subset. Root proofs have no local assumptions; named theory axioms must be closed.</p></article>
+<article class="card"><h3>Quantifier distribution</h3><div class="math">\[\forall x(A\to B)\to(A\to\forall xB),\qquad x\notin\operatorname{FV}(A)\]</div><p>The free-variable condition is part of the checked interface. Omitting it would change the rule.</p></article>
+<article class="card"><h3>Equality substitution</h3><div class="math">\[s=t\to\bigl(A[s/x]\to A[t/x]\bigr)\]</div><p>The full formula template uses capture-avoiding substitution. Reflexivity checks \(t=t\); neither rule invokes arithmetic or geometry evaluation.</p></article>
+<article class="card"><h3>Generic induction authorization</h3><div class="math">\[\bigl(A[0/x]\land\forall x(A\to A[S(x)/x])\bigr)\to\forall xA\]</div><p>Requires <code>nat-induction</code>, nullary <code>zero</code> and unary <code>succ</code>. Other free parameters are universally closed. Human choice of an instance is not evidence of an automatically discovered strategy.</p></article>
+</div>
+<p>The eleven row kinds are <code>axiom</code>, <code>tautology</code>, <code>refl</code>, <code>instantiate</code>, <code>distribute</code>, <code>eq_subst</code>, <code>mp</code>, <code>generalize</code>, <code>induction</code>, <code>assumption</code> and <code>block</code>. Propositional tautology is checked over its finite atom set. References must be exact natural-number indices to strictly earlier rows, and the final row must equal the declared target.</p></section>
+
+<section id="theories"><h2>Common logic, different authorized axiom data</h2>
+<div class="table-wrap"><table><thead><tr><th>Theory input</th><th>What can vary</th><th>What must remain fixed</th></tr></thead><tbody>
+<tr><th>Arithmetic</th><td>The declared signature, complete closed arithmetic axioms and explicit induction authorization.</td><td>The checker algorithm, codec and eventual machine/palette. An addition equation or logical reflexivity control does not by itself establish full PA coverage.</td></tr>
+<tr><th>Hilbert geometry</th><td>A faithfully translated, fully licensed theory with its point/line/plane representation, incidence, order, congruence and exact assumptions.</td><td>The same logical kernel and eventual palette. Imported definitions, classical choices and dimensional assumptions cannot be dropped or silently strengthened.</td></tr>
+</tbody></table></div>
+<p>Acceptance is relative to supplied axioms. An independent source-theory policy must freeze and authorize them; otherwise a candidate could add its target as an axiom.</p>
+<p>Historical Hilbert controls use a closed five-rule dialect and ordered hypotheses. They need a root-request bridge and do not supply complete Hilbert axioms.</p>
+<div class="notice"><b>The hypothesis bridge is still a gate.</b> For closed ordered hypotheses \(\Gamma=(A_1,\ldots,A_n)\), an explicitly licensed translation could preserve each occurrence as a fresh named closed theory fact, or use a certified sequent/deduction encoding. Neither bridge is supplied by this note. Open hypotheses cannot be silently universally closed or promoted to closed axioms: that can strengthen the problem and invalidate generalization permissions.</div></section>
+
+<section id="lemmas"><h2>Reusable receptor families need a proof interface</h2>
+<p>A block records ordered premises, conclusion and complete primitive derivation. Names are unique; checking is dependency-first without recursion. Calls must match the exact proved premises in order.</p>
+<div class="math">\[
+\mathcal{B}:\ (A_1,\ldots,A_k)\Longrightarrow B
+\quad\text{with a checked primitive expansion under those premises.}
+\]</div>
+<p>A receptor family or cluster proposes through that interface. Policy, donor success and local fit confer no logical authority. Instantiation must preserve variable hygiene, theory, scope, ordered premise occurrences and expansion into primitives.</p>
+<p>A logical step may summarize many machine configurations. Its interface certificate and checked expansion form the missing bridge. Learned markings and pruning hypotheses remain separate from proved constraints.</p></section>
+
+<section id="search"><h2>Checking a certificate is different from finding one</h2>
+<p>Acceptance by \(K\) demonstrates checking relative to the pinned theory and target. Discovery additionally needs the original problem, candidate provenance, complete controls, budgets and independent final validation.</p>
+<p>Unknown-certificate Wang search needs variable certificate symbols, a fixed public problem, explicit boundary grammar and lossless checked decoding. Complete-word calibration pins every initial cell: it tests finite compiler/search correspondence, not unknown-proof search or theorem benchmarks.</p>
+<p>Certificate lengths, widths and exact times need fair effective enumeration beyond one bound. A timeout or exhausted board does not reject larger bounds. Calibration must retain its full domain, negatives and limits.</p>
+<p>Future receptor/RL comparisons need conventional search with the same axioms, library and charged discovery/loading/checking costs, plus complete fallback. Computation encoding alone supplies no search advantage.</p></section>
+
+<section id="gaps"><h2>The next concrete obligations</h2>
+<ol>
+<li>Check the host and tree-kernel correspondence, including malformed wire data, substitution freshness, name ordering, induction parameters and block scopes.</li>
+<li>Freeze the source-authorized theory/target policy and one lossless problem/certificate codec. Review the ordered-hypothesis bridge and the full Hilbert translation separately.</li>
+<li>Produce and independently verify one fixed single-tape checker table. Then compile and freeze its complete Wang palette before theorem instances.</li>
+<li>Implement the unknown-certificate board language, complete point search and independent verifier. A reusable macro must carry an exact interface and primitive expansion.</li>
+<li>Only then run genuinely unknown proof tasks with matched-knowledge controls and complete resource/learning-cost evidence.</li>
+</ol>
+<p>These obligations do not replace the failed whole six-root production workload or confer full cold-pipeline admission. Arithmetic/Hilbert theorem search and the broader tiling programme remain open goals.</p></section>
+
+<section id="sources"><h2>Exact existing Sources behind this note</h2>
+<p>Six audited preimages matched Git blobs at isolated publisher commit <code>36cac7044f4cc0c3666f1eebab4353b590b3d3dc</code>. This identifies a Source snapshot, not execution.</p>
+<div class="table-wrap"><table class="pins"><thead><tr><th>Artifact</th><th>Bytes</th><th>SHA-256</th></tr></thead><tbody>
+<tr><th><code>serialized_kernel.py</code></th><td>13977</td><td>045cdba67ead9f12e91c702736fa09a5ae4d9796aea86831d65b245031a261f4</td></tr>
+<tr><th><code>fol_checker.tree</code></th><td>17577</td><td>8c86a24231d9c7d1777d7998b747a8cfd07087c168da64db6c5dff0820c802ed</td></tr>
+<tr><th>Unexecuted host adapter</th><td>3181</td><td>80ca3b41f3072dfcffc8791391b72b78bceac6e880ea13bb1fc82d2699672490</td></tr>
+<tr><th>Boundary design record</th><td>12900</td><td>9108fd29212dcefe20bbb2b7a26b13530346f0c2626a65909ec5210172d0d478</td></tr>
+</tbody></table></div>
+<p class="small">Design handoff: <code>33617efb8bf6e3ec2e43fbc0fe70ac3dcdc377a0571f76177c96ce46d71928b5</code>, 2345 bytes. It records paths, codec gaps, adapter API and calibration boundaries. Master reference: <code>ca6ee206287bf18b69f88a35d30968312499567755f347a819af4cf49743e7d4</code>, 36240 bytes.</p></section>
+<footer><p>Authored by <code>/root/benchmark_design</code>, also an earlier Wang prose/review contributor. No checker, compiler, search, fixture, target, simulation, Native component or reader was imported or invoked. Rendering and publication are separate owner steps.</p><p><a href="reader.html">Return to the research notebook</a> · <a href="wang-execution.html">Open the execution/calibration record</a></p></footer>
+</main></body></html>

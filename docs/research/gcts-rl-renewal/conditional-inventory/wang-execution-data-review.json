@@ -1,0 +1,253 @@
+{
+  "Sources": {
+    "compiler": {
+      "bytes": 13084,
+      "path": "/private/tmp/gcts-wang-spacetime-library-20261019/wang_spacetime_compiler_v1.py",
+      "sha256": "92a8c49bd9be346faf9e6472c588140d3844c4e52c1f0a18fef24409e7ff20ba"
+    },
+    "observer": {
+      "bytes": 5483,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/observe_wang_encoding_once_v1.py",
+      "sha256": "587b3ab980b60ad81d479957b28478185a6f459ae1270b447613e6fed5d32fa5"
+    },
+    "oracle": {
+      "bytes": 12476,
+      "path": "/private/tmp/gcts-wang-snapshot-oracle-20261019/wang_snapshot_oracle_v1.py",
+      "sha256": "f77f395b1e8b3731dc8fc64deb6cd82c970009e088b91776a18b2e547af97369"
+    },
+    "runner": {
+      "bytes": 33422,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/run_wang_encoding_once_v5.py",
+      "sha256": "6111424a52419bb6ed8653b8c354031a8916549a179517ae4fdd8f9022f42c69"
+    },
+    "search": {
+      "bytes": 24685,
+      "path": "/private/tmp/gcts-wang-search-library-20261019/wang_point_search_v2.py",
+      "sha256": "7c09bfe44ab2288066f4e71f4516763376c4b2cddda7acfdb99220f5e4008d2d"
+    },
+    "verifier": {
+      "bytes": 23707,
+      "path": "/private/tmp/gcts-wang-search-library-20261019/wang_history_verifier_v2.py",
+      "sha256": "136d9306b2389576b38ffd6c60350514835583f625a5f45467cefc044fa3908d"
+    },
+    "worker": {
+      "bytes": 45239,
+      "path": "/private/tmp/gcts-wang-calibration-worker-20261019/qualify_wang_calibration_worker_v2.py",
+      "sha256": "efdfda4673fa3eab1d399fe9f7f359d9879b5b0afa62038c413460e4af4962c0"
+    }
+  },
+  "actual_execution_authorized": false,
+  "administrative_clock_correction": {
+    "corrected": {
+      "bytes": 1321,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/ROOT-actual-retirement-release-v2.json",
+      "sha256": "43f702f4c3434afc28bac1bbe40e89b79a226c989990080480fccd23c8c4a60b"
+    },
+    "original": {
+      "bytes": 511,
+      "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/ROOT-actual-retirement-release-v1.json",
+      "sha256": "f575d8e053e5ac170d0f4a042d379113e652c36da9fa9cce90654f7bfcf3d6b0"
+    },
+    "scope": "Original released_ns was unattributed to the pinned epoch and excluded from every resource/window join. V2 is an explicitly current postterminal administrative timestamp, not a backdated210s closure or rescue. Original run closure remains the saved runner and external terminal epochs."
+  },
+  "audit": {
+    "bytes": 15163,
+    "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/saved-negative-static-audit-v1.json",
+    "sha256": "0037e6e399199eece6a5492a01ae1d728c76e63a9de87a4b519ca5f819c0f624"
+  },
+  "authorized_plan": {
+    "bytes": 3305,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/plan-authorized-v3.json",
+    "sha256": "51c512edcce6f6f52ba60868199ea2664fa0d965deda7dd1542f875cc63010de"
+  },
+  "check_count": 113,
+  "combined_Source_review": {
+    "bytes": 35058,
+    "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-combined-Source-prospective-review-v3-final.json",
+    "sha256": "b6f31d31751ef65e364713d2475472307ba27f9e533d14d6116a873856dd815a"
+  },
+  "component_calls": 0,
+  "counter_and_timing_limits": [
+    "Counter maps are recorded prefixes at failure serialization, not all internal function calls or CPU instructions. Root83174413 is a cutoff; later writer/termination costs are outside it. Returned9 public verifier calls do not retain nine witness packets or imply nine admitted proofs.",
+    "8930 is recorded successful oracle audit calls at the failure cutoff. No exported oracle_work total or individual snapshot/census receipt list survived in this failure record; unavailable is not zero. No reconstructable all-state archive or mathematical acceptance by hashes.",
+    "Literal stage COMPLETE_CASE and map64search starts/63returns/1raised support a Source-backed location within the64th normal search. No component/phase durations or relative timing breakdown were retained; do not attribute the wall limit among compiler/search/oracle/guards or infer a causal bottleneck.",
+    "Parent180deadline and worker selfdeadline are separately retained. No exact relative failure instant is claimed. Saved TERM/wait4/group/log closure establishes a negative terminal, not a late positive rescue. closed_ns is an early wait4/parent-close snapshot; full closure uses later raw/log/ledger plus external terminal."
+  ],
+  "final_grant_delta_review": {
+    "bytes": 12607,
+    "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-final-grant-delta-review-v3.json",
+    "sha256": "c6123b7f3db1e7934c4180883d40e2a1aa16d25102b3a81aceab20861e6e91f7"
+  },
+  "finite_calibration_completed": false,
+  "full_pipeline_qualified": false,
+  "grant": {
+    "bytes": 745,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/authorization-true-v3.json",
+    "sha256": "2115ff3457ebf74a81ed7efbb1f8dad630268e30fc28f7f18cdde1987bda4056"
+  },
+  "input": [
+    {
+      "id": "complete-four-machine-680-case-55-variant-bank",
+      "pin": {
+        "bytes": 232943,
+        "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/cohort-inputs-v1.json",
+        "sha256": "60ced7c79f91fd475ef88e90cace3ce5fffe15b0c8450d4b3e934d3764ffb80e"
+      }
+    }
+  ],
+  "limits": {
+    "expanded_bytes": 134217728,
+    "memory_bytes": 1073741824,
+    "observer_bytes": 1048576,
+    "overall_seconds": 210,
+    "result_bytes": 134217728,
+    "runner_metadata_bytes": 8388608,
+    "stderr_bytes": 4194304,
+    "stdout_bytes": 4194304,
+    "work_seconds": 180,
+    "worker_receipt_bytes": 4194304
+  },
+  "mathematical_proof_admitted": false,
+  "mismatch_count": 0,
+  "opaque_decodes": 0,
+  "outcome": {
+    "KILL_sent": 0,
+    "TERM_sent": 1,
+    "actuals": 1,
+    "expanded_logical_bytes": null,
+    "full_packet_present": false,
+    "observer_main_seconds": 180.116255291,
+    "parent_logs_closed": true,
+    "parent_primary": {
+      "errno": null,
+      "message": "complete positive result/header/bytes/known-exit before180",
+      "type": "ValueError"
+    },
+    "peak_scope": "Known Darwin standalone worker lifetime highwater, excluding parent/observer. Below numerical cap is diagnostic; deadline failure means no resource admission.",
+    "physical_with_reservation_bytes": 9441099,
+    "positive_header_present": false,
+    "raw_log_ledger_custody_before210": true,
+    "result_present": false,
+    "runner_exit_code": 2,
+    "runner_pid": 59894,
+    "saved_group_absent": true,
+    "stored_logical_bytes": null,
+    "terminal_elapsed_from_runner_epoch_seconds": 180.084231,
+    "worker_exit_code": -15,
+    "worker_peak_MiB": 53.65625,
+    "worker_peak_bytes": 56262656,
+    "worker_pid": 59895,
+    "worker_reaped": true,
+    "worker_reported_fault": {
+      "message": "original absolute180s work deadline",
+      "type": "PolicyFailure"
+    },
+    "worker_wait4_status": 15
+  },
+  "prior_Source_review_status": "SOURCE_ONLY_ARGUMENT_PRESERVED; no runtime qualification from the incomplete actual.",
+  "process_probes": 0,
+  "recorded_prefix": {
+    "active_case": "right_scan-w3-s000-p2-h3",
+    "call_completed": {
+      "compiler.compile_finite_problem": 64,
+      "compiler.compile_palette": 4,
+      "oracle.audit_snapshot": 8930,
+      "search.search": 63,
+      "verifier._Budget": 67,
+      "verifier._configuration": 104,
+      "verifier._global_transition": 41,
+      "verifier._machine": 63,
+      "verifier._palette": 4,
+      "verifier.verify": 9
+    },
+    "call_raised": {
+      "search.search": 1,
+      "verifier._global_transition": 39
+    },
+    "call_started": {
+      "compiler.compile_finite_problem": 64,
+      "compiler.compile_palette": 4,
+      "oracle.audit_snapshot": 8930,
+      "search.search": 64,
+      "verifier._Budget": 67,
+      "verifier._configuration": 104,
+      "verifier._global_transition": 80,
+      "verifier._machine": 63,
+      "verifier._palette": 4,
+      "verifier.verify": 9
+    },
+    "case_count_required": 680,
+    "compiler_finite_returns": 64,
+    "complete_case_ID_count": 63,
+    "diagnostic_group_records": 0,
+    "diagnostic_variant_records": 0,
+    "full_palette_compile_returns": 4,
+    "instrumented_role_starts": {
+      "compiler_calls": 68,
+      "oracle_calls": 8930,
+      "search_calls": 64,
+      "verifier_calls": 327
+    },
+    "normal_cases_not_started": 616,
+    "not_completed": 617,
+    "oracle_audit_returns": 8930,
+    "public_verifier_returns": 9,
+    "root_checkpoint_cutoff": 83174413,
+    "scope": "Worker-reported detached failure prefix only.63 IDs and recorded call maps are not resource-admitted cases, accepted proofs or all680 outcomes. Full per-case search results, witness packets and per-state receipts were transient and are not in this retained failure packet.",
+    "search_raised": 1,
+    "search_returns": 63,
+    "search_starts": 64
+  },
+  "replays": 0,
+  "retained_scope": [
+    "All680cases plus55variants remain required; this one retired grant cannot be retried or rescued by the63-ID prefix. No complete finite calibration, component conformance qualification, all-exception coverage, fixed FOL checker/palette, theorem, generic GCTS, learned marking, trained RL, production fit or performance advantage is established.",
+    "The actual executed compiler/search/verifier/oracle functions with positive counts; zero scientific_calls/component_calls in this review describe only the passive audit, not zero executions in the failed actual. Native/Model/Reader/inverse/proofchecker counters are retained zero.",
+    "Prelaunch Source-review statements that components were unexecuted are historical. Their Source/prospective arguments remain ancestry; the current prefix ran and failed whole calibration. No runtime qualification is inherited.",
+    "Same Library author/compiler/search/verifier/worker and separately authored B oracle; this reviewer covers current Source/outer/plan/saved scopes with historical protocol/control overlap disclosed. Trusted interpreter/Source loader/OS and exclusive ownership limitations remain.",
+    "No current process probe was performed by this reviewer. Reaping, group absence and stable logs are joined from the owned saved runner/terminal observations and Root authoritative release."
+  ],
+  "retirement_release": {
+    "bytes": 1321,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/ROOT-actual-retirement-release-v2.json",
+    "sha256": "43f702f4c3434afc28bac1bbe40e89b79a226c989990080480fccd23c8c4a60b"
+  },
+  "reviewer_identity": "/root/conventional_control_review",
+  "reviewer_wording_correction": {
+    "prior_record": {
+      "bytes": 11779,
+      "path": "/private/tmp/gcts-wang-finite-qualification-peer-20261019/typed-saved-calibration-review-v1.json",
+      "sha256": "b813ce23bedefe06128c0f186518fd6d6b4631785d8255b7d95ccd5880a017e4"
+    },
+    "scope": "Replace ambiguous current_source_qualification:false with precise runtime_component_qualification:false. Prior Source-only review is preserved. No data/check/outcome changed; no replay."
+  },
+  "root_closure": {
+    "bytes": 6706,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/ROOT-calibration-closure-v1.json",
+    "sha256": "48825464a341493b311e1d7a5c081b7d911e86828dda2014fe589a5d4d19b4e2"
+  },
+  "runner": {
+    "bytes": 5612,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/actual-complete-680-v3/runner-receipt.json",
+    "sha256": "59711ab5440994c4efc3ab975a66fe13facf80f709978248d78bbedbf64680fb"
+  },
+  "runtime_component_qualification": false,
+  "saved_data_only": true,
+  "saved_review_passed": true,
+  "schema": "finite-wang-saved-negative-evidence-review-v1",
+  "scientific_calls": 0,
+  "simulations": 0,
+  "status": "NEGATIVE_DEADLINE_RUN; SAVED_EVIDENCE_AND_CUSTODY_CONSISTENT",
+  "subject_imports": 0,
+  "subject_sha256": "f4645eacc562a732bfcd07bdda38a8a994ae936c43e112c40e7c4fda16ac0b3a",
+  "terminal": {
+    "bytes": 1512,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/plan-authorized-v3-terminal-observation/terminal.json",
+    "sha256": "57eb3a1ebb4c9c8bd2609495304eb23be53b9d9e41f6536b903cbc7ac8232d17"
+  },
+  "tools_stopped_after_handoff": true,
+  "worker_failure": {
+    "bytes": 3129,
+    "path": "/private/tmp/gcts-wang-execution-ROOT-20261019/actual-complete-680-v3/worker-failure.json",
+    "sha256": "b5504e539088ee39fc05e39cbfaca8fb10ed7c352a5543afda901c2af8204288"
+  }
+}
