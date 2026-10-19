@@ -1,0 +1,795 @@
+{
+  "all_originals_raw": true,
+  "archive": {
+    "bytes": 5638108,
+    "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/publication-v1/inverse-cadence-archive.zip",
+    "sha256": "1ee5bd7b009c01326313b3dea41ef3157c6f6b6d314ebb920fc7acd617852ecc"
+  },
+  "members": [
+    {
+      "member": "ROOT/ROOT-cohort-closure-v1.json",
+      "original": {
+        "bytes": 945,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/ROOT-cohort-closure-v1.json",
+        "sha256": "6039a3f8819395189ed125598807726204dde0bedc1f2602f8b9de3bfb9bdc5a"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-saved-qualification-audit-v1.json",
+      "original": {
+        "bytes": 9775,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/ROOT-saved-qualification-audit-v1.json",
+        "sha256": "53c056d95a38acd42bd6c799bc5de426096996300c62fe867daf7ed75862c096"
+      }
+    },
+    {
+      "member": "ROOT/ROOT-scope-adoption-v1.json",
+      "original": {
+        "bytes": 5268,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/ROOT-scope-adoption-v1.json",
+        "sha256": "cbf9bf66b066bd9261215292f78534546c390330e863d11e55e8462a9e85041b"
+      }
+    },
+    {
+      "member": "ROOT/Source-contract-v1.json",
+      "original": {
+        "bytes": 2402,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/Source-contract-v1.json",
+        "sha256": "57a96cc7cbed1ec99e91dae8a7398b623608e63f453aef11d4554bc3fc8d652c"
+      }
+    },
+    {
+      "member": "ROOT/actual-v1/CONSUMED.json",
+      "original": {
+        "bytes": 529,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/CONSUMED.json",
+        "sha256": "c3ede6548368e4e3c01633748d2937a99919238f83612c3b7c487745cc5928d2"
+      }
+    },
+    {
+      "member": "ROOT/actual-v1/result.json",
+      "original": {
+        "bytes": 24599,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/result.json",
+        "sha256": "e79b62f2a4f7de8931f3f713bb84c7dd5b8068e97fb7190997dcf635873db017"
+      }
+    },
+    {
+      "member": "ROOT/actual-v1/runner-receipt.json",
+      "original": {
+        "bytes": 2789,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/runner-receipt.json",
+        "sha256": "f9944a9dd664418196e2c2ef650c83d1a3e7960864df65692b922baec08db9f6"
+      }
+    },
+    {
+      "member": "ROOT/actual-v1/stderr.bin",
+      "original": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "ROOT/actual-v1/stdout.bin",
+      "original": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "ROOT/actual-v1/worker-receipt.json",
+      "original": {
+        "bytes": 913,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/worker-receipt.json",
+        "sha256": "57d92f25d38ba784d3ee6d504e76d2fd1c26716f276bedb608a3667b93a588b8"
+      }
+    },
+    {
+      "member": "ROOT/audit_saved_qualification_v1.py",
+      "original": {
+        "bytes": 8206,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/audit_saved_qualification_v1.py",
+        "sha256": "2425983224b07c3deaabae2c714ab7d13358e89b86b96a368cb13d3332555640"
+      }
+    },
+    {
+      "member": "ROOT/author_inverse_v7.py",
+      "original": {
+        "bytes": 6578,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/author_inverse_v7.py",
+        "sha256": "ed685b69f6ebbbf65426fe48b34358f70c758e796b98fffcfc7f3dd56affb734"
+      }
+    },
+    {
+      "member": "ROOT/author_qualifier_wrappers_v1.py",
+      "original": {
+        "bytes": 7515,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/author_qualifier_wrappers_v1.py",
+        "sha256": "ef6eebd3561141b464c34b0c74312f962f876134c5bd83a2cf8b8cb009a0d999"
+      }
+    },
+    {
+      "member": "ROOT/author_qualifier_wrappers_v2.py",
+      "original": {
+        "bytes": 7514,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/author_qualifier_wrappers_v2.py",
+        "sha256": "a01476b0a541972ff74a841713ef40c61e8ccbd1a773d57aca475f3d40c14cc3"
+      }
+    },
+    {
+      "member": "ROOT/author_qualifier_wrappers_v3.py",
+      "original": {
+        "bytes": 2804,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/author_qualifier_wrappers_v3.py",
+        "sha256": "c533165b86a821d0dc26c78db7b8e144194c76335e95f68178027a1039502d46"
+      }
+    },
+    {
+      "member": "ROOT/authorization-false-v1.json",
+      "original": {
+        "bytes": 166,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/authorization-false-v1.json",
+        "sha256": "efa786ff4d4d99decce89c5b436a26e7000cc8a33a6a349713a6364408443000"
+      }
+    },
+    {
+      "member": "ROOT/authorization-false-v2.json",
+      "original": {
+        "bytes": 166,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/authorization-false-v2.json",
+        "sha256": "efa786ff4d4d99decce89c5b436a26e7000cc8a33a6a349713a6364408443000"
+      }
+    },
+    {
+      "member": "ROOT/authorization-true-v1.json",
+      "original": {
+        "bytes": 1085,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/authorization-true-v1.json",
+        "sha256": "132b7ab6560a28b1873d6327f7797226a89105179f97f8072766a252de97c61a"
+      }
+    },
+    {
+      "member": "ROOT/build_false_plan_v1.py",
+      "original": {
+        "bytes": 3894,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/build_false_plan_v1.py",
+        "sha256": "65074f7b48e3e90bcd556bee2419e33cc3230bfcfda11d3e110630f54b429240"
+      }
+    },
+    {
+      "member": "ROOT/build_false_plan_v2.py",
+      "original": {
+        "bytes": 3894,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/build_false_plan_v2.py",
+        "sha256": "48a7902d7b07e66d30114f62ebc9c3915fa0795a073c362c4f75c939aa1f2e91"
+      }
+    },
+    {
+      "member": "ROOT/build_false_plan_v3.py",
+      "original": {
+        "bytes": 3894,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/build_false_plan_v3.py",
+        "sha256": "84e4462585e4030f87bf0d665bc1aaad506c0815afd145a92be3a9fbfedcd179"
+      }
+    },
+    {
+      "member": "ROOT/build_publication_v1.py",
+      "original": {
+        "bytes": 14449,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/build_publication_v1.py",
+        "sha256": "44b9f3fba262c7ec0f735fbbd88bacfadbf52fd7893d7abd5e006a22d8c8cc4d"
+      }
+    },
+    {
+      "member": "ROOT/grant_reviewed_once_v1.py",
+      "original": {
+        "bytes": 3970,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/grant_reviewed_once_v1.py",
+        "sha256": "1d6918ad1a4bb0a093dbffe1c7f555e346353a3d99cf1cc50741483d44f1dbf9"
+      }
+    },
+    {
+      "member": "ROOT/grant_reviewed_once_v2.py",
+      "original": {
+        "bytes": 4062,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/grant_reviewed_once_v2.py",
+        "sha256": "4258f7e6a339011bf9f92402f3b939d1387a2593b7d416d8c5879f4f21fff108"
+      }
+    },
+    {
+      "member": "ROOT/grant_reviewed_once_v3.py",
+      "original": {
+        "bytes": 4362,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/grant_reviewed_once_v3.py",
+        "sha256": "39fc3cbd51cffdddf2c7931ce470d57354cbf2862263c72e2ddc1e1181f69be5"
+      }
+    },
+    {
+      "member": "ROOT/independent_forest_inverse_v7.py",
+      "original": {
+        "bytes": 24144,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+        "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+      }
+    },
+    {
+      "member": "ROOT/inverse-v6-v7.patch",
+      "original": {
+        "bytes": 5869,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/inverse-v6-v7.patch",
+        "sha256": "1ba33ac752cdf5b96f6713dfbbce21905cb888c890322d7af3a32661b67fa2c8"
+      }
+    },
+    {
+      "member": "ROOT/observe_inverse_once_v1.py",
+      "original": {
+        "bytes": 5121,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/observe_inverse_once_v1.py",
+        "sha256": "c2fdc373062425d46d0bf018ff58913687749696e99311c434dae29acb66df6d"
+      }
+    },
+    {
+      "member": "ROOT/observe_inverse_once_v2.py",
+      "original": {
+        "bytes": 5121,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/observe_inverse_once_v2.py",
+        "sha256": "f2bae1a3ad35f4fe7c877ba32ce3496012625c4e44135ad0eb30e6cfaaff0a0d"
+      }
+    },
+    {
+      "member": "ROOT/observe_inverse_once_v3.py",
+      "original": {
+        "bytes": 5121,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/observe_inverse_once_v3.py",
+        "sha256": "8425d3765d97fd76ce2e96e99af1895f00f176e3b598815f142986d985b9b02c"
+      }
+    },
+    {
+      "member": "ROOT/plan-authorized-v1-terminal-observation/CONSUMED.json",
+      "original": {
+        "bytes": 272,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1-terminal-observation/CONSUMED.json",
+        "sha256": "64129bb6a3f7d1854cd2a3472b86888393d0f6b55443bd617117de01e158d600"
+      }
+    },
+    {
+      "member": "ROOT/plan-authorized-v1-terminal-observation/stderr.bin",
+      "original": {
+        "bytes": 0,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1-terminal-observation/stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "ROOT/plan-authorized-v1-terminal-observation/stdout.bin",
+      "original": {
+        "bytes": 143,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1-terminal-observation/stdout.bin",
+        "sha256": "98e833e0d5e01759a0d86dfb3b7d8704bdc9e2d60aebc9356c4f73fbb6bbdb13"
+      }
+    },
+    {
+      "member": "ROOT/plan-authorized-v1-terminal-observation/terminal.json",
+      "original": {
+        "bytes": 1433,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1-terminal-observation/terminal.json",
+        "sha256": "294ebe518358368ad1d65fdcad0487d0a4c214931f17b40e97e9ac43680157c0"
+      }
+    },
+    {
+      "member": "ROOT/plan-authorized-v1.json",
+      "original": {
+        "bytes": 3499,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1.json",
+        "sha256": "780a5ac82e606cdab68ce1cb9ba5c934934eff0757b6e775b3e89cbb575cdc28"
+      }
+    },
+    {
+      "member": "ROOT/plan-false-v1.json",
+      "original": {
+        "bytes": 3499,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-false-v1.json",
+        "sha256": "d7dc8d92cdbe3807fb32ecc50f8727ea35a071eeae008decc69ea1a077a5d3e1"
+      }
+    },
+    {
+      "member": "ROOT/plan-false-v2.json",
+      "original": {
+        "bytes": 3499,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-false-v2.json",
+        "sha256": "95c7dd71b95ac37f29d56ce4192c22da84291ad4f018b473b46e5e03e1478185"
+      }
+    },
+    {
+      "member": "ROOT/qualification-declaration-v1.json",
+      "original": {
+        "bytes": 4155,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/qualification-declaration-v1.json",
+        "sha256": "6768cb222eaf9963f7779d747c6af833f34fdd5392e986722d8f034f4c911788"
+      }
+    },
+    {
+      "member": "ROOT/qualification-declaration-v2.json",
+      "original": {
+        "bytes": 4155,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/qualification-declaration-v2.json",
+        "sha256": "6768cb222eaf9963f7779d747c6af833f34fdd5392e986722d8f034f4c911788"
+      }
+    },
+    {
+      "member": "ROOT/qualify_inverse_worker_v1.py",
+      "original": {
+        "bytes": 7373,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/qualify_inverse_worker_v1.py",
+        "sha256": "9608edb67e0c8cc52ee831e73d2b479fae0582c3505880d72ab92ded3ba4e6c6"
+      }
+    },
+    {
+      "member": "ROOT/qualify_inverse_worker_v2.py",
+      "original": {
+        "bytes": 7527,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/qualify_inverse_worker_v2.py",
+        "sha256": "151c1feecbda5d5d2ab0691e9a6cdecf677655be6b63f294e7081444c18a2c1b"
+      }
+    },
+    {
+      "member": "ROOT/qualify_inverse_worker_v3.py",
+      "original": {
+        "bytes": 8319,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/qualify_inverse_worker_v3.py",
+        "sha256": "272e3a8692e345bfc3acce5fb1822dc76a8eeab8dbdbaad431697a3c9661273b"
+      }
+    },
+    {
+      "member": "ROOT/refine_qualifier_wrappers_v1.py",
+      "original": {
+        "bytes": 3329,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/refine_qualifier_wrappers_v1.py",
+        "sha256": "c109e4b9944ce9175abaa72feb3af361c1ec760f533365c603694776b74e398b"
+      }
+    },
+    {
+      "member": "ROOT/retained-statistics-reference-v1.json",
+      "original": {
+        "bytes": 3410,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/retained-statistics-reference-v1.json",
+        "sha256": "89b348bd84970136325612c12e09796ae7dbd9b19914d5690c12ef84c1047cd6"
+      }
+    },
+    {
+      "member": "ROOT/run_inverse_once_v1.py",
+      "original": {
+        "bytes": 12607,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/run_inverse_once_v1.py",
+        "sha256": "35701366102ee8a29537027cb0b5c50dddfa6b9324950a205185a58d7156c0fc"
+      }
+    },
+    {
+      "member": "ROOT/run_inverse_once_v2.py",
+      "original": {
+        "bytes": 12613,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/run_inverse_once_v2.py",
+        "sha256": "42f79b9f759222c1b4e8697e2b09f9a256472f047d8ca65d1b88641ab9ada57c"
+      }
+    },
+    {
+      "member": "ROOT/run_inverse_once_v3.py",
+      "original": {
+        "bytes": 12613,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/run_inverse_once_v3.py",
+        "sha256": "ea37fe7513227faf556fa5000046a964b89b7d5fd6fd22a6262ba43efd39152e"
+      }
+    },
+    {
+      "member": "library/API-v2.json",
+      "original": {
+        "bytes": 5823,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/API-v2.json",
+        "sha256": "83f4c1b598e363a94a2e8a77f4f27d1fcab54869571bac1e6b1c2450d66c2d9d"
+      }
+    },
+    {
+      "member": "library/Source-argument-v2.json",
+      "original": {
+        "bytes": 2388,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/Source-argument-v2.json",
+        "sha256": "8ea60e6574376407f17737eb70fd04a93c6619e4698707c3f22909d28fb3b35c"
+      }
+    },
+    {
+      "member": "library/Source-contract-v2.json",
+      "original": {
+        "bytes": 3819,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/Source-contract-v2.json",
+        "sha256": "2ee8c0f2702386c7f78055348a97e9a6618bb853cb2d6fd7d09aa95c0b01fedd"
+      }
+    },
+    {
+      "member": "library/author-static-audit-v2.json",
+      "original": {
+        "bytes": 12542,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/author-static-audit-v2.json",
+        "sha256": "54a4de619cedb9af8d372400306b01502d62fc60a9c6e5072845b48285000d4e"
+      }
+    },
+    {
+      "member": "library/author_harness_v2.py",
+      "original": {
+        "bytes": 2034,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/author_harness_v2.py",
+        "sha256": "2d2bef69c913cb9e8d460c2dccf1b9702e23d82df5a701c68455781bfb9fcfe6"
+      }
+    },
+    {
+      "member": "library/freeze_harness_v1.py",
+      "original": {
+        "bytes": 19360,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/freeze_harness_v1.py",
+        "sha256": "a428d02c679a68304da11fe8d3bb751543432f27ba434d346a0d058c03f7fa0a"
+      }
+    },
+    {
+      "member": "library/freeze_harness_v2.py",
+      "original": {
+        "bytes": 19621,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/freeze_harness_v2.py",
+        "sha256": "7b5f014328481ad221938d04c4d997ce42d8cabff2288faa9ddcff2b9ebbecd4"
+      }
+    },
+    {
+      "member": "library/handoff-v2.json",
+      "original": {
+        "bytes": 3424,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/handoff-v2.json",
+        "sha256": "f24c964a3450ce309c0440bc7d20e7507904aedf462969dc38567199cb2c1029"
+      }
+    },
+    {
+      "member": "library/harness-v1-v2-forward.patch",
+      "original": {
+        "bytes": 1906,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/harness-v1-v2-forward.patch",
+        "sha256": "c4dd6d547d47647f6e37d713b423b193b6a57f1362454d6eff6dcc59b04ed9b4"
+      }
+    },
+    {
+      "member": "library/harness-v1-v2-inverse.patch",
+      "original": {
+        "bytes": 1906,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/harness-v1-v2-inverse.patch",
+        "sha256": "b76810bcd3f9959023e2dbaf1516ec9cd3ecdf621a8b36f5ed9935961d9ea962"
+      }
+    },
+    {
+      "member": "library/inert-patch-v2/forward/harness.py",
+      "original": {
+        "bytes": 32782,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/inert-patch-v2/forward/harness.py",
+        "sha256": "24c36efe0f73d67c1e297acdcf7fbd6579b90dbbfd28e6fd3840f40be4b245df"
+      }
+    },
+    {
+      "member": "library/inert-patch-v2/inverse/harness.py",
+      "original": {
+        "bytes": 32792,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/inert-patch-v2/inverse/harness.py",
+        "sha256": "3d88094fd9283c14b7b92c64bfe5a0ea1c2f4e2f13934b465b1530be8b0ebe90"
+      }
+    },
+    {
+      "member": "library/inverse_cadence_qualification_v0_draft.py",
+      "original": {
+        "bytes": 28163,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/inverse_cadence_qualification_v0_draft.py",
+        "sha256": "331a2ade5c854cbac1afd9e6228c612f0163a8a20abcd05835c5031dee2d4393"
+      }
+    },
+    {
+      "member": "library/inverse_cadence_qualification_v1.py",
+      "original": {
+        "bytes": 32792,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/inverse_cadence_qualification_v1.py",
+        "sha256": "3d88094fd9283c14b7b92c64bfe5a0ea1c2f4e2f13934b465b1530be8b0ebe90"
+      }
+    },
+    {
+      "member": "library/inverse_cadence_qualification_v2.py",
+      "original": {
+        "bytes": 32782,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/inverse_cadence_qualification_v2.py",
+        "sha256": "24c36efe0f73d67c1e297acdcf7fbd6579b90dbbfd28e6fd3840f40be4b245df"
+      }
+    },
+    {
+      "member": "library/prospective-profile-v2.json",
+      "original": {
+        "bytes": 4101,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/prospective-profile-v2.json",
+        "sha256": "1651db5617c7afa72d00cf9a3415ef66fa2c52c3a9462c85bb7902a8ae9a9d3a"
+      }
+    },
+    {
+      "member": "library/source-transform-v2.json",
+      "original": {
+        "bytes": 1720,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/source-transform-v2.json",
+        "sha256": "8c2f3eaaf4a655152cb4ed39c19b66842563aa3720ae390105583eff35d03756"
+      }
+    },
+    {
+      "member": "library/v1-withdrawal-and-v2-delta-v1.json",
+      "original": {
+        "bytes": 2368,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/v1-withdrawal-and-v2-delta-v1.json",
+        "sha256": "0e9ff000c9010f8f95b10759ed62a9321a957e80252d9a7b32903a45e28f7f88"
+      }
+    },
+    {
+      "member": "peer/Source-review-handoff-v1.json",
+      "original": {
+        "bytes": 847,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/Source-review-handoff-v1.json",
+        "sha256": "25e43aa134a4e979c029fc84874238524466b86fad5a7bfbb6be759a7671f64d"
+      }
+    },
+    {
+      "member": "peer/audit_Source_v1.py",
+      "original": {
+        "bytes": 8126,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/audit_Source_v1.py",
+        "sha256": "b3551f28f7e4028ffd12f798eb8da454f873a610ec18e4e015c92cbd828ddb0b"
+      }
+    },
+    {
+      "member": "peer/audit_Source_v2.py",
+      "original": {
+        "bytes": 8126,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/audit_Source_v2.py",
+        "sha256": "d9da411cfdc042640c4cd742351cd22d6fb6f88348c5651a97c3a78f3c01d567"
+      }
+    },
+    {
+      "member": "peer/audit_prospective_v1.py",
+      "original": {
+        "bytes": 4812,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/audit_prospective_v1.py",
+        "sha256": "a9c69056996cb07cc0e62266cea6d83a0fc0994e73bce3bdd3677c18688f0f31"
+      }
+    },
+    {
+      "member": "peer/audit_prospective_v2.py",
+      "original": {
+        "bytes": 4936,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/audit_prospective_v2.py",
+        "sha256": "e12bc15a44a70360c17b3cf2cb929a6ae9781e0661638f0d2461b51c1a1d22b0"
+      }
+    },
+    {
+      "member": "peer/audit_qualification_Source_v2.py",
+      "original": {
+        "bytes": 10659,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/audit_qualification_Source_v2.py",
+        "sha256": "c670847d86bade060af69495110a1aa0920b41c6a6e0dc4fca73990cc7019f91"
+      }
+    },
+    {
+      "member": "peer/audit_qualification_Source_v3.py",
+      "original": {
+        "bytes": 10659,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/audit_qualification_Source_v3.py",
+        "sha256": "4eda44067160975e2e09d5e0e53836ec9c489dd389c7cd4f1b568e96ee9b6286"
+      }
+    },
+    {
+      "member": "peer/audit_saved_qualification_v1.py",
+      "original": {
+        "bytes": 17315,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/audit_saved_qualification_v1.py",
+        "sha256": "341fe3c3dc56579ce929586e11de37046ac91bbf7f16bac8bd7a6b75dbbf96f6"
+      }
+    },
+    {
+      "member": "peer/design-review-obligations-v1.json",
+      "original": {
+        "bytes": 7260,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/design-review-obligations-v1.json",
+        "sha256": "f9d9c25b26bf8d5cad1740df00de0bb3b5e23a217c0e194abd1b16af4206ae2a"
+      }
+    },
+    {
+      "member": "peer/prospective-static-audit-v1.json",
+      "original": {
+        "bytes": 7743,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/prospective-static-audit-v1.json",
+        "sha256": "99f614ad55915435d7d8b609743db26c9244e6ea07b4eacfee1025b0e905756e"
+      }
+    },
+    {
+      "member": "peer/prospective-static-audit-v2.json",
+      "original": {
+        "bytes": 7846,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/prospective-static-audit-v2.json",
+        "sha256": "9224d7f74a2cacb2dd0ae09960470d750fe467f9e60668a34156247842261522"
+      }
+    },
+    {
+      "member": "peer/qualification-review-handoff-v2.json",
+      "original": {
+        "bytes": 728,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/qualification-review-handoff-v2.json",
+        "sha256": "daf23590b11917f64e22d6f68b6935bb06913c0d598fc4a8bffd0f6d3f7cdc68"
+      }
+    },
+    {
+      "member": "peer/qualification-static-Source-audit-v2.json",
+      "original": {
+        "bytes": 9991,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/qualification-static-Source-audit-v2.json",
+        "sha256": "d82c96d591a338e037d8951fc5b74216ec88c7ad74f45c4305459ddb0f984358"
+      }
+    },
+    {
+      "member": "peer/qualification-static-Source-audit-v3.json",
+      "original": {
+        "bytes": 9990,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/qualification-static-Source-audit-v3.json",
+        "sha256": "5ca6200b024c1a9fd4c3a4ec277645ba137c04970b3ff0316e90f8ab84b397a3"
+      }
+    },
+    {
+      "member": "peer/saved-qualification-audit-v1.json",
+      "original": {
+        "bytes": 17417,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/saved-qualification-audit-v1.json",
+        "sha256": "f8c3a9f07dfac3b2a92edbdabcb09ea332e998638a9ad204fde3ae31f9fc4fde"
+      }
+    },
+    {
+      "member": "peer/static-Source-audit-v1.json",
+      "original": {
+        "bytes": 9679,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/static-Source-audit-v1.json",
+        "sha256": "637f2bc7d275c881209c10b1cbe1763116ed632156500e8e0a240f21876baeac"
+      }
+    },
+    {
+      "member": "peer/static-Source-audit-v2.json",
+      "original": {
+        "bytes": 9678,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/static-Source-audit-v2.json",
+        "sha256": "aac12379a2689b24065462cca1c6ade1851930a05e0d7d75f355fa3569eaed53"
+      }
+    },
+    {
+      "member": "peer/typed-components-Source-review-v1-negative.json",
+      "original": {
+        "bytes": 3724,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-components-Source-review-v1-negative.json",
+        "sha256": "f4c324d4e27588c5d5e1424c68869a498e19a1957214a3667efa1c3c1b3224f1"
+      }
+    },
+    {
+      "member": "peer/typed-components-Source-review-v2.json",
+      "original": {
+        "bytes": 12851,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-components-Source-review-v2.json",
+        "sha256": "f6eb1a1d4976c3e530f43681aa3f25ce94ba6540cb2f4e1c647949bedea3a511"
+      }
+    },
+    {
+      "member": "peer/typed-final-grant-delta-review-v1.json",
+      "original": {
+        "bytes": 9714,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-final-grant-delta-review-v1.json",
+        "sha256": "e70848bf4276222eb1cc98a741968fd00b01c8f3e0f8549d2c6015624a6518df"
+      }
+    },
+    {
+      "member": "peer/typed-inverse-Source-review-v1.json",
+      "original": {
+        "bytes": 8562,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-inverse-Source-review-v1.json",
+        "sha256": "e896586c105036477e87084cac28e0c66ce5c3380958c890096c9b39f2f12439"
+      }
+    },
+    {
+      "member": "peer/typed-prospective-plan-review-v1-negative.json",
+      "original": {
+        "bytes": 5016,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-prospective-plan-review-v1-negative.json",
+        "sha256": "32b9ace12786b3af99c45e697343e6b89e05bb46f70c1713f46c031a364f4280"
+      }
+    },
+    {
+      "member": "peer/typed-prospective-plan-review-v2.json",
+      "original": {
+        "bytes": 9918,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-prospective-plan-review-v2.json",
+        "sha256": "3e1e6e645722303bb41a8bbd107a103b091a8094949e10badab3f3e09b6a6718"
+      }
+    },
+    {
+      "member": "peer/typed-saved-qualification-review-v1.json",
+      "original": {
+        "bytes": 11399,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-saved-qualification-review-v1.json",
+        "sha256": "b7df1e1cdfb1b7cab410e1a88dd043db7473665b74cb45dd24e7b00fb8e608d8"
+      }
+    },
+    {
+      "member": "peer/typed-wrapper-preflight-review-v1-negative.json",
+      "original": {
+        "bytes": 8328,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-wrapper-preflight-review-v1-negative.json",
+        "sha256": "57ca9873569168ce9fa600e040361b029a36b10749046f03ef1db247b540fe40"
+      }
+    },
+    {
+      "member": "peer/wrapper-repair-observations-v3.json",
+      "original": {
+        "bytes": 2863,
+        "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/wrapper-repair-observations-v3.json",
+        "sha256": "b17df9a88f2bc6932f27980d2f7d8a8f746957f50e707b284b9d1c7cb225eab2"
+      }
+    },
+    {
+      "member": "historical/fixed/forest.json",
+      "original": {
+        "bytes": 15181545,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+        "sha256": "f7e39ed6b02d3c6b80cccb5e40ac4f254a1d989fdf129b6571df500d1bbe554a"
+      }
+    },
+    {
+      "member": "historical/fixed/result.json",
+      "original": {
+        "bytes": 36914326,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+        "sha256": "16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25"
+      }
+    },
+    {
+      "member": "historical/symbolic/forest.json",
+      "original": {
+        "bytes": 14906873,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+        "sha256": "c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146"
+      }
+    },
+    {
+      "member": "historical/symbolic/result.json",
+      "original": {
+        "bytes": 34001836,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+        "sha256": "e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310"
+      }
+    },
+    {
+      "member": "historical/symbolic-worker-receipt.json",
+      "original": {
+        "bytes": 66838,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json",
+        "sha256": "002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832"
+      }
+    },
+    {
+      "member": "historical/independent_forest_inverse_v6.py",
+      "original": {
+        "bytes": 22313,
+        "path": "/private/tmp/gcts-incremental-arena-ROOT-20261019/independent_forest_inverse_v6.py",
+        "sha256": "fbd655a86424ce5634ce0307af62549f5b1c4412cb9e58b752df0e13ae2397e4"
+      }
+    },
+    {
+      "member": "contract/basic-tiling-algorithm.md",
+      "original": {
+        "bytes": 21657,
+        "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/basic-tiling-algorithm.md",
+        "sha256": "c1327e5ed6e9c6bcb29768d11e21e178bfe2a231464c086cad0c6af7352a1cf9"
+      }
+    }
+  ],
+  "schema": "inverse-cadence-archive-manifest-v1"
+}

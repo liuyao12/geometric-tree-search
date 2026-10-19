@@ -1,0 +1,1102 @@
+{
+  "Model_calls": 0,
+  "Native_calls": 0,
+  "callbacks": 50213,
+  "goal_complete": false,
+  "invocation_id": "inverse-cadence-two-full-forests-ROOT-20261019-v1",
+  "mathematical_proof_replays": 0,
+  "new_theorem": false,
+  "opaque_Native_decodes": 0,
+  "plan": {
+    "bytes": 3499,
+    "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1.json",
+    "sha256": "780a5ac82e606cdab68ce1cb9ba5c934934eff0757b6e775b3e89cbb575cdc28"
+  },
+  "progress": [
+    {
+      "name": "typed_scalars_signed_zero_unicode_and_repeated_ports",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "shared_producers_ordered_object_ports",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "cache_disabled_complete_fallback",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "strict_top_fields",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "strict_boolean_reference",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "strict_forward_reference",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "all_nodes_reachable",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "all_catalogue_roots_covered",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "typed_node_uniqueness",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "sorted_object_keys",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "unique_object_keys",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "canonical_integer_lexeme",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "canonical_float_type",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "finite_float_lexeme",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "unicode_scalar_string",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "strict_boolean_limit",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "quoted_scalar_exact_boundary",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "depth_exact_boundary",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "expanded_multiplicity_exact_boundary",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "physical_wire_exact_boundary",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "private_work_cap_no_partial_authority",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "cadence_and_forced_public_entries",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "chunk_boundary_and_trailing_completion",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "foreign_prepare_exception_identity",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "foreign_stream_exception_identity",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "late_completion_exception_identity",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "callback_reentrancy_identity",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "close_incomplete_and_closed_next_no_callback",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "foreign_validation_cache_and_preparation_completion_identity",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "name": "foreign_public_yield_completion_and_stream_cadence_identity",
+      "observer": null,
+      "stage": "DIAGNOSTIC"
+    },
+    {
+      "mode": "fixed",
+      "stage": "WHOLE_INPUT"
+    },
+    {
+      "mode": "symbolic",
+      "stage": "WHOLE_INPUT"
+    }
+  ],
+  "qualification": {
+    "ROOT_resource_accepted": false,
+    "complete_original_raw_input_bytes": 101004580,
+    "completed_monotonic": 761792523461458,
+    "diagnostics": [
+      {
+        "details": {
+          "body_bytes": 33,
+          "chunks": 1,
+          "completed": true
+        },
+        "mathematical_authority": false,
+        "name": "typed_scalars_signed_zero_unicode_and_repeated_ports",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "body_bytes": 29,
+          "chunks": 1,
+          "completed": true
+        },
+        "mathematical_authority": false,
+        "name": "shared_producers_ordered_object_ports",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "body_bytes": 29,
+          "cache_entries": 0,
+          "capacity_fallbacks": 3,
+          "chunks": 1,
+          "completed": true
+        },
+        "mathematical_authority": false,
+        "name": "cache_disabled_complete_fallback",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "strict_top_fields",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "strict_boolean_reference",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "strict_forward_reference",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "all_nodes_reachable",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "all_catalogue_roots_covered",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "typed_node_uniqueness",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "sorted_object_keys",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "unique_object_keys",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "canonical_integer_lexeme",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "canonical_float_type",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "finite_float_lexeme",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "unicode_scalar_string",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "authority": false,
+          "reason": null,
+          "type": "ForestDataError"
+        },
+        "mathematical_authority": false,
+        "name": "strict_boolean_limit",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "accepted_at8": {
+            "body_bytes": 8,
+            "chunks": 1,
+            "completed": true
+          },
+          "rejected_at7": {
+            "authority": false,
+            "reason": "scalar bytes",
+            "type": "ForestLimit"
+          }
+        },
+        "mathematical_authority": false,
+        "name": "quoted_scalar_exact_boundary",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "accepted_at4": {
+            "body_bytes": 7,
+            "chunks": 1,
+            "completed": true
+          },
+          "rejected_at3": {
+            "authority": false,
+            "reason": "depth",
+            "type": "ForestLimit"
+          }
+        },
+        "mathematical_authority": false,
+        "name": "depth_exact_boundary",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "accepted": {
+            "body_bytes": 33,
+            "chunks": 1,
+            "completed": true
+          },
+          "exact_logical_bytes": 34,
+          "rejected_below": {
+            "authority": false,
+            "reason": "aggregate document bytes",
+            "type": "ForestLimit"
+          }
+        },
+        "mathematical_authority": false,
+        "name": "expanded_multiplicity_exact_boundary",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "accepted": {
+            "body_bytes": 4,
+            "chunks": 1,
+            "completed": true
+          },
+          "exact_wire_bytes": 169,
+          "rejected_below": {
+            "authority": false,
+            "reason": "wire bytes",
+            "type": "ForestLimit"
+          }
+        },
+        "mathematical_authority": false,
+        "name": "physical_wire_exact_boundary",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "attempted_operations": 2,
+          "prepared": false,
+          "refusal": {
+            "authority": false,
+            "reason": "work",
+            "type": "ForestLimit"
+          }
+        },
+        "mathematical_authority": false,
+        "name": "private_work_cap_no_partial_authority",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "attempted_operations": 41247,
+          "body_bytes": 8193,
+          "chunks": 257,
+          "completed": true,
+          "maximum_callback_operation_gap": 1024,
+          "reasons": {
+            "catalogue_entry": 1,
+            "document_completion": 1,
+            "document_pull_entry": 258,
+            "document_stream_entry": 1,
+            "documents_entry": 1,
+            "initial": 1,
+            "operation_cadence": 12,
+            "preparation_completion": 1,
+            "yield_chunk": 257
+          }
+        },
+        "mathematical_authority": false,
+        "name": "cadence_and_forced_public_entries",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "chunks": 3,
+          "closed_next_callback_delta": 0,
+          "last_chunk_requires_trailing_pull": true
+        },
+        "mathematical_authority": false,
+        "name": "chunk_boundary_and_trailing_completion",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "exact_exception_objects": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration"
+          ],
+          "initial_checkpoint": true
+        },
+        "mathematical_authority": false,
+        "name": "foreign_prepare_exception_identity",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "completed": false,
+          "exact_exception_objects": [
+            "RuntimeError",
+            "ValueError",
+            "StopIteration"
+          ],
+          "manual_next": true
+        },
+        "mathematical_authority": false,
+        "name": "foreign_stream_exception_identity",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "body_already_returned": true,
+          "completed": false,
+          "exact_StopIteration_identity": true
+        },
+        "mathematical_authority": false,
+        "name": "late_completion_exception_identity",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "completed": false,
+          "own_reentrancy_identity": true,
+          "passive_statistics": true
+        },
+        "mathematical_authority": false,
+        "name": "callback_reentrancy_identity",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "closed_incomplete": true,
+          "closed_next_callback_delta": 0,
+          "completed": false
+        },
+        "mathematical_authority": false,
+        "name": "close_incomplete_and_closed_next_no_callback",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "exact_identity": true,
+          "observations": [
+            {
+              "exception_type": "RuntimeError",
+              "operation": "scalar_scan_window",
+              "phase": "VALIDATE_COMPLETE_FOREST",
+              "target": "validation_cadence"
+            },
+            {
+              "exception_type": "ValueError",
+              "operation": "scalar_scan_window",
+              "phase": "VALIDATE_COMPLETE_FOREST",
+              "target": "validation_cadence"
+            },
+            {
+              "exception_type": "StopIteration",
+              "operation": "scalar_scan_window",
+              "phase": "VALIDATE_COMPLETE_FOREST",
+              "target": "validation_cadence"
+            },
+            {
+              "exception_type": "RuntimeError",
+              "operation": "ascii_token_begin",
+              "phase": "BUILD_BOUNDED_FOREST_FRAGMENTS",
+              "target": "cache_build_cadence"
+            },
+            {
+              "exception_type": "ValueError",
+              "operation": "ascii_token_begin",
+              "phase": "BUILD_BOUNDED_FOREST_FRAGMENTS",
+              "target": "cache_build_cadence"
+            },
+            {
+              "exception_type": "StopIteration",
+              "operation": "ascii_token_begin",
+              "phase": "BUILD_BOUNDED_FOREST_FRAGMENTS",
+              "target": "cache_build_cadence"
+            },
+            {
+              "exception_type": "RuntimeError",
+              "operation": "preparation_completion",
+              "phase": "BUILD_BOUNDED_FOREST_FRAGMENTS",
+              "target": "preparation_completion"
+            },
+            {
+              "exception_type": "ValueError",
+              "operation": "preparation_completion",
+              "phase": "BUILD_BOUNDED_FOREST_FRAGMENTS",
+              "target": "preparation_completion"
+            },
+            {
+              "exception_type": "StopIteration",
+              "operation": "preparation_completion",
+              "phase": "BUILD_BOUNDED_FOREST_FRAGMENTS",
+              "target": "preparation_completion"
+            }
+          ],
+          "private_State_access": false
+        },
+        "mathematical_authority": false,
+        "name": "foreign_validation_cache_and_preparation_completion_identity",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "exact_identity": true,
+          "manual_next": true,
+          "observations": [
+            {
+              "exception_type": "RuntimeError",
+              "last_operation": "preparation_completion",
+              "phase": "PREPARED_COMPLETE_FOREST",
+              "target": "documents_entry"
+            },
+            {
+              "exception_type": "ValueError",
+              "last_operation": "preparation_completion",
+              "phase": "PREPARED_COMPLETE_FOREST",
+              "target": "documents_entry"
+            },
+            {
+              "exception_type": "StopIteration",
+              "last_operation": "preparation_completion",
+              "phase": "PREPARED_COMPLETE_FOREST",
+              "target": "documents_entry"
+            },
+            {
+              "exception_type": "RuntimeError",
+              "last_operation": "preparation_completion",
+              "phase": "PREPARED_COMPLETE_FOREST",
+              "target": "catalogue_entry"
+            },
+            {
+              "exception_type": "ValueError",
+              "last_operation": "preparation_completion",
+              "phase": "PREPARED_COMPLETE_FOREST",
+              "target": "catalogue_entry"
+            },
+            {
+              "exception_type": "StopIteration",
+              "last_operation": "preparation_completion",
+              "phase": "PREPARED_COMPLETE_FOREST",
+              "target": "catalogue_entry"
+            },
+            {
+              "exception_type": "RuntimeError",
+              "last_operation": "preparation_completion",
+              "phase": "PREPARED_COMPLETE_FOREST",
+              "target": "document_stream_entry"
+            },
+            {
+              "exception_type": "ValueError",
+              "last_operation": "preparation_completion",
+              "phase": "PREPARED_COMPLETE_FOREST",
+              "target": "document_stream_entry"
+            },
+            {
+              "exception_type": "StopIteration",
+              "last_operation": "preparation_completion",
+              "phase": "PREPARED_COMPLETE_FOREST",
+              "target": "document_stream_entry"
+            },
+            {
+              "exception_type": "RuntimeError",
+              "last_operation": "yield_chunk",
+              "phase": "STREAM_DOCUMENT",
+              "target": "yield_chunk"
+            },
+            {
+              "exception_type": "ValueError",
+              "last_operation": "yield_chunk",
+              "phase": "STREAM_DOCUMENT",
+              "target": "yield_chunk"
+            },
+            {
+              "exception_type": "StopIteration",
+              "last_operation": "yield_chunk",
+              "phase": "STREAM_DOCUMENT",
+              "target": "yield_chunk"
+            },
+            {
+              "exception_type": "RuntimeError",
+              "last_operation": "document_completion",
+              "phase": "STREAM_DOCUMENT",
+              "target": "document_completion"
+            },
+            {
+              "exception_type": "ValueError",
+              "last_operation": "document_completion",
+              "phase": "STREAM_DOCUMENT",
+              "target": "document_completion"
+            },
+            {
+              "exception_type": "StopIteration",
+              "last_operation": "document_completion",
+              "phase": "STREAM_DOCUMENT",
+              "target": "document_completion"
+            },
+            {
+              "exception_type": "RuntimeError",
+              "last_operation": "stream_walk_action",
+              "phase": "STREAM_DOCUMENT",
+              "target": "operation_cadence"
+            },
+            {
+              "exception_type": "ValueError",
+              "last_operation": "stream_walk_action",
+              "phase": "STREAM_DOCUMENT",
+              "target": "operation_cadence"
+            },
+            {
+              "exception_type": "StopIteration",
+              "last_operation": "stream_walk_action",
+              "phase": "STREAM_DOCUMENT",
+              "target": "operation_cadence"
+            }
+          ],
+          "private_State_access": false
+        },
+        "mathematical_authority": false,
+        "name": "foreign_public_yield_completion_and_stream_cadence_identity",
+        "schema": "inverse-cadence-finite-diagnostic-v1",
+        "status": "passed"
+      }
+    ],
+    "inputs": [
+      {
+        "forest": {
+          "bytes": 15181545,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+          "sha256": "f7e39ed6b02d3c6b80cccb5e40ac4f254a1d989fdf129b6571df500d1bbe554a"
+        },
+        "mode": "fixed",
+        "result": {
+          "bytes": 36914326,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+          "sha256": "16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25"
+        }
+      },
+      {
+        "forest": {
+          "bytes": 14906873,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+          "sha256": "c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146"
+        },
+        "mode": "symbolic",
+        "result": {
+          "bytes": 34001836,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+          "sha256": "e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310"
+        }
+      }
+    ],
+    "limits": {
+      "closure_deadline": 761984860378166,
+      "diagnostics": {
+        "cache_bytes": 65536,
+        "cache_entries": 4096,
+        "chunk_bytes": 4096,
+        "depth": 128,
+        "edges": 40000,
+        "expanded_bytes": 1048576,
+        "fragment_bytes": 4096,
+        "integer_digits": 4096,
+        "nodes": 20000,
+        "roots": 128,
+        "scalar_bytes": 65536,
+        "wire_bytes": 1048576,
+        "work": 200000
+      },
+      "inverse": {
+        "cache_bytes": 8388608,
+        "cache_entries": 65536,
+        "chunk_bytes": 65536,
+        "depth": 513,
+        "edges": 8000000,
+        "expanded_bytes": 134217728,
+        "fragment_bytes": 4096,
+        "integer_digits": 4096,
+        "nodes": 2000000,
+        "roots": 4096,
+        "scalar_bytes": 16777216,
+        "wire_bytes": 134217728,
+        "work": 30000000
+      },
+      "outer_logs_bytes": 4194304,
+      "outer_physical_and_logical_bytes": 134217728,
+      "outer_worker_peak_bytes": 1073741824,
+      "work_deadline": 761954860378166
+    },
+    "mathematical_authority": false,
+    "owned_inverse_source": {
+      "bytes": 24144,
+      "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+      "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+    },
+    "reference_stats": {
+      "bytes": 66838,
+      "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json",
+      "sha256": "002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832"
+    },
+    "representation_only": true,
+    "schema": "inverse-cadence-qualification-result-v1",
+    "scientific_acceptance": false,
+    "source_only_authorship_not_execution_authority": true,
+    "stage": "COMPLETE",
+    "started_monotonic": 761774976986250,
+    "status": "FINITE_REPRESENTATION_QUALIFIED",
+    "version": "inverse-cadence-qualification-v2-disposition-fixes",
+    "whole_inputs": [
+      {
+        "V6_retained_reference_comparison": null,
+        "completed_monotonic": 761784215928125,
+        "explicit_completed": true,
+        "forest": {
+          "bytes": 15181545,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json",
+          "sha256": "f7e39ed6b02d3c6b80cccb5e40ac4f254a1d989fdf129b6571df500d1bbe554a"
+        },
+        "full_original_file_sha256": "16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25",
+        "mathematical_authority": false,
+        "mode": "fixed",
+        "original_result": {
+          "bytes": 36914326,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json",
+          "sha256": "16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25"
+        },
+        "prior_fixed_failure_recovered": false,
+        "reconstructed_complete_file_bytes": 36914326,
+        "representation_only": true,
+        "schema": "inverse-cadence-whole-input-qualification-v1",
+        "started_monotonic": 761775607785708,
+        "statistics": {
+          "aggregate_document_bytes": 36914326,
+          "aggregate_document_value_occurrences": 12370460,
+          "attempted_operations": 22874349,
+          "build_copied_bytes": 1819553,
+          "cache_attempts": 54607,
+          "cache_capacity_fallbacks": 0,
+          "cache_entries": 54607,
+          "cache_hits_build": 176926,
+          "cache_hits_stream": 2266725,
+          "cache_ineligible_nodes": 26478,
+          "cache_payload_bytes": 1819553,
+          "callback_cadence_operations": 1024,
+          "callback_dispatches": 23211,
+          "callback_dispatches_by_reason": {
+            "document_completion": 1,
+            "document_pull_entry": 565,
+            "document_stream_entry": 1,
+            "documents_entry": 1,
+            "initial": 1,
+            "operation_cadence": 22077,
+            "preparation_completion": 1,
+            "yield_chunk": 564
+          },
+          "catalogue_roots": 183,
+          "documents": {
+            "receiver:complete-legacy-result": {
+              "attempts": 1,
+              "body_bytes": 36914325,
+              "chunks": 564,
+              "closed_incomplete": false,
+              "completed": true,
+              "copied_body_bytes": 36914325,
+              "emitted_body_bytes": 36914325,
+              "logical_file_bytes": 36914326,
+              "logical_value_occurrences": 12370460,
+              "node_height": 186,
+              "root_id": 81084,
+              "stream_value_occurrences": 12370460
+            }
+          },
+          "execution_profile": "independent-forest-actual-operations-v2-callback-cadence1024",
+          "last_callback_operation": 22874349,
+          "last_operation": "document_completion",
+          "logical_documents": 1,
+          "maximum_callback_operation_gap": 1024,
+          "operations_by_kind": {
+            "ascii_token_begin": 1829,
+            "ascii_token_end": 1829,
+            "build_cache_hit": 176926,
+            "build_copy": 422506,
+            "build_walk_action": 599432,
+            "cache_eligibility": 81085,
+            "catalogue_reference_digits": 183,
+            "catalogue_root": 183,
+            "document_completion": 1,
+            "document_label_read": 1,
+            "document_lookup": 1,
+            "document_stream_attempt": 1,
+            "float_canonical_begin": 385,
+            "float_canonical_end": 385,
+            "float_parse_begin": 385,
+            "float_parse_end": 385,
+            "freeze_fragment": 54607,
+            "initial": 1,
+            "integer_lexeme_begin": 1444,
+            "integer_lexeme_end": 1444,
+            "logical_document": 1,
+            "preparation_completion": 1,
+            "reachability_edge": 2250966,
+            "reachability_node": 81085,
+            "reference_wire_digits": 2250966,
+            "scalar_scan_window": 94604,
+            "stream_cache_hit": 2266725,
+            "stream_copy_block": 4759869,
+            "stream_walk_action": 7053159,
+            "tokenize_begin": 93657,
+            "tokenize_end": 93657,
+            "typed_equality_begin": 81085,
+            "typed_equality_end": 81085,
+            "validate_edge": 2250966,
+            "validate_node": 81085,
+            "validate_pair": 91861,
+            "yield_chunk": 564
+          },
+          "pending_callback_operations": 0,
+          "phase": "DOCUMENT_COMPLETE",
+          "prepared": true,
+          "scalar_characters_scanned": 705869,
+          "validated_edges": 2250966,
+          "validated_nodes": 81085,
+          "wire_canonical_bytes": 15181545
+        },
+        "status": "complete"
+      },
+      {
+        "V6_retained_reference_comparison": {
+          "V6_callback_dispatches": 21304533,
+          "V7_callback_dispatches": 21540,
+          "all_per_kind_equal": true,
+          "attempted_operations_equal": true,
+          "scope": "Same complete valid input and same public traversal sequence; changed callback scheduling/profile, no speed claim."
+        },
+        "completed_monotonic": 761792514633625,
+        "explicit_completed": true,
+        "forest": {
+          "bytes": 14906873,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json",
+          "sha256": "c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146"
+        },
+        "full_original_file_sha256": "e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310",
+        "mathematical_authority": false,
+        "mode": "symbolic",
+        "original_result": {
+          "bytes": 34001836,
+          "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json",
+          "sha256": "e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310"
+        },
+        "prior_fixed_failure_recovered": false,
+        "reconstructed_complete_file_bytes": 34001836,
+        "representation_only": true,
+        "schema": "inverse-cadence-whole-input-qualification-v1",
+        "started_monotonic": 761784215967375,
+        "statistics": {
+          "aggregate_document_bytes": 34001836,
+          "aggregate_document_value_occurrences": 10992051,
+          "attempted_operations": 21304533,
+          "build_copied_bytes": 1344963,
+          "cache_attempts": 43209,
+          "cache_capacity_fallbacks": 0,
+          "cache_entries": 43209,
+          "cache_hits_build": 119867,
+          "cache_hits_stream": 2083598,
+          "cache_ineligible_nodes": 35783,
+          "cache_payload_bytes": 1344963,
+          "callback_cadence_operations": 1024,
+          "callback_dispatches": 21540,
+          "callback_dispatches_by_reason": {
+            "document_completion": 1,
+            "document_pull_entry": 520,
+            "document_stream_entry": 1,
+            "documents_entry": 1,
+            "initial": 1,
+            "operation_cadence": 20496,
+            "preparation_completion": 1,
+            "yield_chunk": 519
+          },
+          "catalogue_roots": 184,
+          "documents": {
+            "receiver:complete-legacy-result": {
+              "attempts": 1,
+              "body_bytes": 34001835,
+              "chunks": 519,
+              "closed_incomplete": false,
+              "completed": true,
+              "copied_body_bytes": 34001835,
+              "emitted_body_bytes": 34001835,
+              "logical_file_bytes": 34001836,
+              "logical_value_occurrences": 10992051,
+              "node_height": 20,
+              "root_id": 78991,
+              "stream_value_occurrences": 10992051
+            }
+          },
+          "execution_profile": "independent-forest-actual-operations-v2-callback-cadence1024",
+          "last_callback_operation": 21304533,
+          "last_operation": "document_completion",
+          "logical_documents": 1,
+          "maximum_callback_operation_gap": 1024,
+          "operations_by_kind": {
+            "ascii_token_begin": 1512,
+            "ascii_token_end": 1512,
+            "build_cache_hit": 119867,
+            "build_copy": 296280,
+            "build_walk_action": 416147,
+            "cache_eligibility": 78992,
+            "catalogue_reference_digits": 184,
+            "catalogue_root": 184,
+            "document_completion": 1,
+            "document_label_read": 1,
+            "document_lookup": 1,
+            "document_stream_attempt": 1,
+            "float_canonical_begin": 81,
+            "float_canonical_end": 81,
+            "float_parse_begin": 81,
+            "float_parse_end": 81,
+            "freeze_fragment": 43209,
+            "initial": 1,
+            "integer_lexeme_begin": 1431,
+            "integer_lexeme_end": 1431,
+            "logical_document": 1,
+            "preparation_completion": 1,
+            "reachability_edge": 2219968,
+            "reachability_node": 78992,
+            "reference_wire_digits": 2219968,
+            "scalar_scan_window": 90555,
+            "stream_cache_hit": 2083598,
+            "stream_copy_block": 4403551,
+            "stream_walk_action": 6522568,
+            "tokenize_begin": 89207,
+            "tokenize_end": 89207,
+            "typed_equality_begin": 78992,
+            "typed_equality_end": 78992,
+            "validate_edge": 2219968,
+            "validate_node": 78992,
+            "validate_pair": 88376,
+            "yield_chunk": 519
+          },
+          "pending_callback_operations": 0,
+          "phase": "DOCUMENT_COMPLETE",
+          "prepared": true,
+          "scalar_characters_scanned": 658845,
+          "validated_edges": 2219968,
+          "validated_nodes": 78992,
+          "wire_canonical_bytes": 14906873
+        },
+        "status": "complete"
+      }
+    ]
+  },
+  "reference": {
+    "bytes": 66838,
+    "path": "/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json",
+    "sha256": "002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832"
+  },
+  "representation_only": true,
+  "schema": "inverse-cadence-qualification-result-v1",
+  "scientific_acceptance": false,
+  "scope": "Independent inverse finite qualification on immutable historical bytes. The fixed historical pipeline remains failed. No search/kernel/Model/Native admission or speed attribution.",
+  "search_calls": 0,
+  "sources": {
+    "harness": {
+      "bytes": 32782,
+      "path": "/private/tmp/gcts-inverse-cadence-library-20261019/inverse_cadence_qualification_v2.py",
+      "sha256": "24c36efe0f73d67c1e297acdcf7fbd6579b90dbbfd28e6fd3840f40be4b245df"
+    },
+    "inverse": {
+      "bytes": 24144,
+      "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+      "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+    },
+    "observer": {
+      "bytes": 5121,
+      "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/observe_inverse_once_v3.py",
+      "sha256": "8425d3765d97fd76ce2e96e99af1895f00f176e3b598815f142986d985b9b02c"
+    },
+    "python": {
+      "bytes": 18058560,
+      "path": "/Users/liuyao/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "21a9986bad1dbbcd813a252b19b4263fc0755ed2dbf8632c83e5d6117a12f319"
+    },
+    "runner": {
+      "bytes": 12613,
+      "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/run_inverse_once_v3.py",
+      "sha256": "ea37fe7513227faf556fa5000046a964b89b7d5fd6fd22a6262ba43efd39152e"
+    },
+    "worker": {
+      "bytes": 8319,
+      "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/qualify_inverse_worker_v3.py",
+      "sha256": "272e3a8692e345bfc3acce5fb1822dc76a8eeab8dbdbaad431697a3c9661273b"
+    }
+  },
+  "version": "inverse-cadence-qualification-worker-v3"
+}

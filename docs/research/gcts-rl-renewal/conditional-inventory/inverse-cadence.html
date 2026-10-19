@@ -1,0 +1,1415 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inverse callback qualification — GCTS research</title><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>:root{--ink:#193740;--muted:#506772;--line:#bfd0d3;--paper:#f3f7f6;--teal:#12666a;--purple:#7350a2;--amber:#996b20}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,sans-serif}main{max-width:1180px;padding:36px 30px 80px;margin:auto}a{color:#0d666f}nav{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:44px;font-size:15px}h1{font:600 clamp(32px,5vw,54px)/1.12 Georgia,serif;max-width:980px;margin:12px 0 22px}h2{font:600 29px/1.25 Georgia,serif;margin:0 0 22px}h3{font-size:19px}p{max-width:980px}.eyebrow{font-size:12px;letter-spacing:1.5px;font-weight:750;text-transform:uppercase;color:var(--teal)}.lead{font-size:22px;max-width:980px}.boundary{border-left:5px solid var(--amber);background:#fff2dd;padding:18px 24px;margin:28px 0}.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}.cards article{border:1px solid var(--line);background:white;padding:22px 26px}.cards b{font-size:22px}.cards p{margin-bottom:0}.timeline{height:46px;display:flex;margin:25px 0 12px;border:1px solid var(--line)}.time-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:15px}.time-legend b{display:block}.time-legend p{margin-top:5px}.proof-table{min-width:980px}.proof-table pre{max-width:500px}section{margin-top:58px;scroll-margin-top:24px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:850px;background:white;font-size:15px}th,td{padding:16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}thead{background:#e2edef}caption{text-align:left;font-size:13px;color:var(--muted);margin-top:10px;caption-side:bottom}.path{display:grid;grid-template-columns:1fr 46px 1fr 46px 1fr;align-items:stretch;margin:25px 0}.path article{background:white;border-top:5px solid var(--teal);padding:22px;border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.path.evidence article{border-top-color:var(--purple)}.path article strong{display:block;font-size:19px;line-height:1.3}.path p{font-size:15px;margin-bottom:0}.arrow{align-self:center;text-align:center;font-size:25px;color:#617a84}.lane{font-size:12px;font-weight:750;letter-spacing:1.4px;color:var(--teal);text-transform:uppercase}.lane.purple{color:var(--purple)}.note{font-size:14px;color:var(--muted)}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:560px;overflow:auto;background:#e5edef;padding:22px;font-size:12px;border:1px solid var(--line)}details{margin:22px 0}summary{cursor:pointer;font-weight:650}li{margin:12px 0}footer{border-top:1px solid var(--line);margin-top:65px;padding-top:22px;color:var(--muted);font-size:14px}code{font-size:.87em;background:#e4edee;padding:2px 4px}@media(max-width:730px){main{padding:24px 18px 60px}.cards,.time-legend{grid-template-columns:1fr}.path{grid-template-columns:1fr}.path .arrow{transform:rotate(90deg);height:42px}.lead{font-size:19px}}
+
+.diagnostic{background:white;border:1px solid var(--line);padding:14px 20px;margin:12px 0}.diagnostic summary{overflow-wrap:anywhere}.diagnostic summary span{float:right;color:var(--teal);font-size:13px}.counts{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:25px 0}.counts article{padding:25px;background:white;border-top:5px solid var(--purple)}.counts strong{display:block;font-size:28px}.scope{background:#e2efeb;padding:18px 24px;border-left:5px solid var(--teal)}@media(max-width:730px){.counts{grid-template-columns:1fr}}
+</style></head><body><main><nav><a href="reader.html#inverse-cadence">Research notebook</a><a href="owned-evidence.html#proof">Existing proof, line by line</a><a href="#outcome">Qualification</a><a href="#diagnostics">Inspect diagnostics</a><a href="#next">Next experiment</a></nav><p class="eyebrow">19 October 2026 · Implementation, independent review, and coordination</p><h1>Full evidence reconstruction passes its finite qualification.</h1><p class="lead">Both saved forests reproduce their complete original results. Every original operation check remains; delegated clock callbacks now use bounded checkpoints.</p><p class="scope">This is an engineering prerequisite for the proof-search program. It discovers no new theorem, runs no proof search, and leaves the earlier fixed GCTS pipeline failure unchanged. The next test is a fresh full matched pipeline pair.</p>
+<section id="outcome"><h2>One bounded run, two complete reconstructions.</h2><div class="cards"><article><b>Finite qualification passed</b><p>All \(30\) diagnostic groups passed, including \(27\) reached phase/error combinations in the two added groups. Every complete output byte was compared, including the sole final newline.</p></article><article><b>Resources admitted</b><p>External terminal: \(17.811\,\mathrm{s}\). Standalone worker peak: \(311.12\,\mathrm{MiB}\). No Native process was launched.</p></article></div><div class="table-wrap"><table><thead><tr><th>Historical input</th><th>Saved forest bytes</th><th>Reconstructed result bytes</th><th>Attempted operations</th><th>Delegated callbacks</th><th>Whole reconstruction</th></tr></thead><tbody><tr><th>fixed</th><td>\(15\,181\,545\)</td><td>\(36\,914\,326\)</td><td>\(22\,874\,349\)</td><td>\(23\,211\)</td><td>\(8.608\,\mathrm{s}\)</td></tr><tr><th>symbolic</th><td>\(14\,906\,873\)</td><td>\(34\,001\,836\)</td><td>\(21\,304\,533\)</td><td>\(21\,540\)</td><td>\(8.299\,\mathrm{s}\)</td></tr></tbody><caption>Times include fresh forest parsing, preparation, full streaming and byte comparison, and boundary guards for each input. These are standalone component observations under a changed execution profile, not full search timings or an old/new performance ablation.</caption></table></div><p>Total logical result bytes: \(70\,916\,162\). Conservative physical output budget, including reserved outer metadata: \(9\,463\,225\) bytes. Both stay below \(128\,\mathrm{MiB}\). Known worker exit and complete final checks precede the original \(180\,\mathrm{s}\) work deadline; external terminal precedes \(210\,\mathrm{s}\). The standalone worker highwater stays below \(1\,\mathrm{GiB}\), and both logs stay within \(4\,\mathrm{MiB}\). Each complete forest has a fresh inverse state with its own \(30\,000\,000\) operation cap. The two full reconstructions total \(44\,178\,882\) operations; the whole job does not have one shared operation counter. The global time and worker-peak gates cover all diagnostics and both inputs.</p></section>
+<section id="change"><h2>What changed in the inverse.</h2><div class="path evidence"><article><strong>Every original operation</strong><p>Validation, type checks, exact counters and the owned work-cap test remain at each original operation.</p></article><div class="arrow" aria-hidden="true">→</div><article><strong>Bounded delegated checkpoints</strong><p>The supplied clock/guard is called at most \(1\,024\) attempted operations apart, with forced calls at public entry, pull, chunk and completion boundaries.</p></article><div class="arrow" aria-hidden="true">→</div><article><strong>Explicit full completion</strong><p>Returning the last byte is insufficient. A final successful pull must confirm the complete stream; exact callback errors cannot create success.</p></article></div><div class="counts"><article>Retained symbolic V6 counters<strong>\(21\,304\,533\)</strong>attempted operations and delegated callbacks</article><article>Fresh symbolic V7 counters<strong>\(21\,304\,533\)</strong>attempted operations; \(21\,540\) delegated callbacks</article></div><p>The symbolic reconstruction retains every per-kind operation count from the saved V6 record. The old inverse was not executed in this qualification. The smaller callback count follows the new schedule; elapsed-time benefit needs a separately matched old/new experiment. The cadence bounds counted operations between callbacks, not elapsed latency or OS interruption.</p></section>
+<section id="parallel"><h2>How parallel agents helped.</h2><div class="time-legend"><article><b>Implementation</b><p>One agent authored the finite harness and its fault cases. Root authored the inverse scheduling change and bounded wrappers.</p></article><article><b>Independent review</b><p>A separate reviewer found error-reporting and deadline-classification gaps before execution. Withdrawn drafts and their negative reviews remain in the archive.</p></article><article><b>Coordination and experiment</b><p>Root froze the reviewed inputs and limits, granted one invocation, admitted the complete saved evidence, and prepared this report. Agents stopped their tools during the timed run.</p></article></div><p class="note">The standalone wrapper uses pinned raw Sources and trusted exclusive ownership during loading and execution. It does not independently seal every loaded callable, default, closure cell or in-memory object. Finite diagnostics are not a universal proof of inverse soundness. The future full pipeline retains its separate runtime and proof gates.</p></section>
+<section id="diagnostics"><p class="eyebrow">Literal saved packets · Expand any group</p><h2>Inspect the finite checks.</h2><p>Coverage includes exact scalar types and signed zero, ordered repeated references, disabled-cache fallback, malformed inputs, exact quota boundaries, callback gaps, manual stream exhaustion, private reentrancy and foreign exception identity. The added phase groups explicitly require the intended callback to be reached.</p><details class="diagnostic"><summary>\(1\) · typed scalars signed zero unicode and repeated ports <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;body_bytes&quot;: 33,
+    &quot;chunks&quot;: 1,
+    &quot;completed&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;typed_scalars_signed_zero_unicode_and_repeated_ports&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(2\) · shared producers ordered object ports <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;body_bytes&quot;: 29,
+    &quot;chunks&quot;: 1,
+    &quot;completed&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;shared_producers_ordered_object_ports&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(3\) · cache disabled complete fallback <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;body_bytes&quot;: 29,
+    &quot;cache_entries&quot;: 0,
+    &quot;capacity_fallbacks&quot;: 3,
+    &quot;chunks&quot;: 1,
+    &quot;completed&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cache_disabled_complete_fallback&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(4\) · strict top fields <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;strict_top_fields&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(5\) · strict boolean reference <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;strict_boolean_reference&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(6\) · strict forward reference <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;strict_forward_reference&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(7\) · all nodes reachable <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;all_nodes_reachable&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(8\) · all catalogue roots covered <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;all_catalogue_roots_covered&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(9\) · typed node uniqueness <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;typed_node_uniqueness&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(10\) · sorted object keys <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;sorted_object_keys&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(11\) · unique object keys <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;unique_object_keys&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(12\) · canonical integer lexeme <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;canonical_integer_lexeme&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(13\) · canonical float type <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;canonical_float_type&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(14\) · finite float lexeme <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;finite_float_lexeme&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(15\) · unicode scalar string <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;unicode_scalar_string&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(16\) · strict boolean limit <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;authority&quot;: false,
+    &quot;reason&quot;: null,
+    &quot;type&quot;: &quot;ForestDataError&quot;
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;strict_boolean_limit&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(17\) · quoted scalar exact boundary <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;accepted_at8&quot;: {
+      &quot;body_bytes&quot;: 8,
+      &quot;chunks&quot;: 1,
+      &quot;completed&quot;: true
+    },
+    &quot;rejected_at7&quot;: {
+      &quot;authority&quot;: false,
+      &quot;reason&quot;: &quot;scalar bytes&quot;,
+      &quot;type&quot;: &quot;ForestLimit&quot;
+    }
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;quoted_scalar_exact_boundary&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(18\) · depth exact boundary <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;accepted_at4&quot;: {
+      &quot;body_bytes&quot;: 7,
+      &quot;chunks&quot;: 1,
+      &quot;completed&quot;: true
+    },
+    &quot;rejected_at3&quot;: {
+      &quot;authority&quot;: false,
+      &quot;reason&quot;: &quot;depth&quot;,
+      &quot;type&quot;: &quot;ForestLimit&quot;
+    }
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;depth_exact_boundary&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(19\) · expanded multiplicity exact boundary <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;accepted&quot;: {
+      &quot;body_bytes&quot;: 33,
+      &quot;chunks&quot;: 1,
+      &quot;completed&quot;: true
+    },
+    &quot;exact_logical_bytes&quot;: 34,
+    &quot;rejected_below&quot;: {
+      &quot;authority&quot;: false,
+      &quot;reason&quot;: &quot;aggregate document bytes&quot;,
+      &quot;type&quot;: &quot;ForestLimit&quot;
+    }
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;expanded_multiplicity_exact_boundary&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(20\) · physical wire exact boundary <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;accepted&quot;: {
+      &quot;body_bytes&quot;: 4,
+      &quot;chunks&quot;: 1,
+      &quot;completed&quot;: true
+    },
+    &quot;exact_wire_bytes&quot;: 169,
+    &quot;rejected_below&quot;: {
+      &quot;authority&quot;: false,
+      &quot;reason&quot;: &quot;wire bytes&quot;,
+      &quot;type&quot;: &quot;ForestLimit&quot;
+    }
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;physical_wire_exact_boundary&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(21\) · private work cap no partial authority <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;attempted_operations&quot;: 2,
+    &quot;prepared&quot;: false,
+    &quot;refusal&quot;: {
+      &quot;authority&quot;: false,
+      &quot;reason&quot;: &quot;work&quot;,
+      &quot;type&quot;: &quot;ForestLimit&quot;
+    }
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;private_work_cap_no_partial_authority&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(22\) · cadence and forced public entries <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;attempted_operations&quot;: 41247,
+    &quot;body_bytes&quot;: 8193,
+    &quot;chunks&quot;: 257,
+    &quot;completed&quot;: true,
+    &quot;maximum_callback_operation_gap&quot;: 1024,
+    &quot;reasons&quot;: {
+      &quot;catalogue_entry&quot;: 1,
+      &quot;document_completion&quot;: 1,
+      &quot;document_pull_entry&quot;: 258,
+      &quot;document_stream_entry&quot;: 1,
+      &quot;documents_entry&quot;: 1,
+      &quot;initial&quot;: 1,
+      &quot;operation_cadence&quot;: 12,
+      &quot;preparation_completion&quot;: 1,
+      &quot;yield_chunk&quot;: 257
+    }
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;cadence_and_forced_public_entries&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(23\) · chunk boundary and trailing completion <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;chunks&quot;: 3,
+    &quot;closed_next_callback_delta&quot;: 0,
+    &quot;last_chunk_requires_trailing_pull&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;chunk_boundary_and_trailing_completion&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(24\) · foreign prepare exception identity <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;exact_exception_objects&quot;: [
+      &quot;RuntimeError&quot;,
+      &quot;ValueError&quot;,
+      &quot;StopIteration&quot;
+    ],
+    &quot;initial_checkpoint&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;foreign_prepare_exception_identity&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(25\) · foreign stream exception identity <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;completed&quot;: false,
+    &quot;exact_exception_objects&quot;: [
+      &quot;RuntimeError&quot;,
+      &quot;ValueError&quot;,
+      &quot;StopIteration&quot;
+    ],
+    &quot;manual_next&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;foreign_stream_exception_identity&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(26\) · late completion exception identity <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;body_already_returned&quot;: true,
+    &quot;completed&quot;: false,
+    &quot;exact_StopIteration_identity&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;late_completion_exception_identity&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(27\) · callback reentrancy identity <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;completed&quot;: false,
+    &quot;own_reentrancy_identity&quot;: true,
+    &quot;passive_statistics&quot;: true
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;callback_reentrancy_identity&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(28\) · close incomplete and closed next no callback <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;closed_incomplete&quot;: true,
+    &quot;closed_next_callback_delta&quot;: 0,
+    &quot;completed&quot;: false
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;close_incomplete_and_closed_next_no_callback&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(29\) · foreign validation cache and preparation completion identity <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;exact_identity&quot;: true,
+    &quot;observations&quot;: [
+      {
+        &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+        &quot;operation&quot;: &quot;scalar_scan_window&quot;,
+        &quot;phase&quot;: &quot;VALIDATE_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;validation_cadence&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;ValueError&quot;,
+        &quot;operation&quot;: &quot;scalar_scan_window&quot;,
+        &quot;phase&quot;: &quot;VALIDATE_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;validation_cadence&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;StopIteration&quot;,
+        &quot;operation&quot;: &quot;scalar_scan_window&quot;,
+        &quot;phase&quot;: &quot;VALIDATE_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;validation_cadence&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+        &quot;operation&quot;: &quot;ascii_token_begin&quot;,
+        &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+        &quot;target&quot;: &quot;cache_build_cadence&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;ValueError&quot;,
+        &quot;operation&quot;: &quot;ascii_token_begin&quot;,
+        &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+        &quot;target&quot;: &quot;cache_build_cadence&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;StopIteration&quot;,
+        &quot;operation&quot;: &quot;ascii_token_begin&quot;,
+        &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+        &quot;target&quot;: &quot;cache_build_cadence&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+        &quot;operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+        &quot;target&quot;: &quot;preparation_completion&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;ValueError&quot;,
+        &quot;operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+        &quot;target&quot;: &quot;preparation_completion&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;StopIteration&quot;,
+        &quot;operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+        &quot;target&quot;: &quot;preparation_completion&quot;
+      }
+    ],
+    &quot;private_State_access&quot;: false
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;foreign_validation_cache_and_preparation_completion_identity&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details><details class="diagnostic"><summary>\(30\) · foreign public yield completion and stream cadence identity <span>passed</span></summary><pre>{
+  &quot;details&quot;: {
+    &quot;exact_identity&quot;: true,
+    &quot;manual_next&quot;: true,
+    &quot;observations&quot;: [
+      {
+        &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+        &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;documents_entry&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;ValueError&quot;,
+        &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;documents_entry&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;StopIteration&quot;,
+        &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;documents_entry&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+        &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;catalogue_entry&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;ValueError&quot;,
+        &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;catalogue_entry&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;StopIteration&quot;,
+        &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;catalogue_entry&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+        &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;document_stream_entry&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;ValueError&quot;,
+        &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;document_stream_entry&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;StopIteration&quot;,
+        &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+        &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+        &quot;target&quot;: &quot;document_stream_entry&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+        &quot;last_operation&quot;: &quot;yield_chunk&quot;,
+        &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+        &quot;target&quot;: &quot;yield_chunk&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;ValueError&quot;,
+        &quot;last_operation&quot;: &quot;yield_chunk&quot;,
+        &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+        &quot;target&quot;: &quot;yield_chunk&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;StopIteration&quot;,
+        &quot;last_operation&quot;: &quot;yield_chunk&quot;,
+        &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+        &quot;target&quot;: &quot;yield_chunk&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+        &quot;last_operation&quot;: &quot;document_completion&quot;,
+        &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+        &quot;target&quot;: &quot;document_completion&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;ValueError&quot;,
+        &quot;last_operation&quot;: &quot;document_completion&quot;,
+        &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+        &quot;target&quot;: &quot;document_completion&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;StopIteration&quot;,
+        &quot;last_operation&quot;: &quot;document_completion&quot;,
+        &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+        &quot;target&quot;: &quot;document_completion&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+        &quot;last_operation&quot;: &quot;stream_walk_action&quot;,
+        &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+        &quot;target&quot;: &quot;operation_cadence&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;ValueError&quot;,
+        &quot;last_operation&quot;: &quot;stream_walk_action&quot;,
+        &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+        &quot;target&quot;: &quot;operation_cadence&quot;
+      },
+      {
+        &quot;exception_type&quot;: &quot;StopIteration&quot;,
+        &quot;last_operation&quot;: &quot;stream_walk_action&quot;,
+        &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+        &quot;target&quot;: &quot;operation_cadence&quot;
+      }
+    ],
+    &quot;private_State_access&quot;: false
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;name&quot;: &quot;foreign_public_yield_completion_and_stream_cadence_identity&quot;,
+  &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+  &quot;status&quot;: &quot;passed&quot;
+}</pre></details></section>
+<section id="next"><h2>The research question remains open.</h2><p>The existing machine-selected control proof of \(a=b,\;P(a)\vdash P(b)\) remains available <a href="owned-evidence.html#proof">as formulas, English and saved steps</a>. Reconstructing its historical bytes supplies no new mathematical authority. In particular, the old fixed GCTS run remains unqualified.</p><p>Next, couple this qualified inverse to fresh fixed and symbolic runs on the same original assertion, retaining the full point-region check, Native validation, current lemma inventory, exact evidence joins and numeric limits. That is needed before broader theorem benchmarks. A later held-out suite and conventional proof-search controls must establish whether GCTS or learned receptor families contribute useful search behavior. No new RL training or GCTS advantage is established here.</p><p>The larger assembly, sealing, export and guard interval remains unpartitioned. This qualification does not resolve that bottleneck or predict a successful full-pipeline outcome.</p></section>
+<section id="reader"><h2>Records and reproduction.</h2><p><a href="inverse-cadence-summary.json">Root audit and independent saved-record review</a> · <a href="inverse-cadence-result.json">Full qualification result</a> · <a href="inverse-cadence-manifest.json">Archive manifest</a> · <a href="inverse-cadence-archive.zip">Sources, reviews, plans, receipts and full input bytes</a></p><p class="note">The archive includes raw historical input bytes and exact current Sources. Runtime executable and OS are external pinned prerequisites. Plans and grants are historical once-only records, not permission to replay scientific components.</p><details><summary>Complete saved qualification</summary><pre>{
+  &quot;ROOT_resource_accepted&quot;: false,
+  &quot;complete_original_raw_input_bytes&quot;: 101004580,
+  &quot;completed_monotonic&quot;: 761792523461458,
+  &quot;diagnostics&quot;: [
+    {
+      &quot;details&quot;: {
+        &quot;body_bytes&quot;: 33,
+        &quot;chunks&quot;: 1,
+        &quot;completed&quot;: true
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;typed_scalars_signed_zero_unicode_and_repeated_ports&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;body_bytes&quot;: 29,
+        &quot;chunks&quot;: 1,
+        &quot;completed&quot;: true
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;shared_producers_ordered_object_ports&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;body_bytes&quot;: 29,
+        &quot;cache_entries&quot;: 0,
+        &quot;capacity_fallbacks&quot;: 3,
+        &quot;chunks&quot;: 1,
+        &quot;completed&quot;: true
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;cache_disabled_complete_fallback&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;strict_top_fields&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;strict_boolean_reference&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;strict_forward_reference&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;all_nodes_reachable&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;all_catalogue_roots_covered&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;typed_node_uniqueness&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;sorted_object_keys&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;unique_object_keys&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;canonical_integer_lexeme&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;canonical_float_type&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;finite_float_lexeme&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;unicode_scalar_string&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;authority&quot;: false,
+        &quot;reason&quot;: null,
+        &quot;type&quot;: &quot;ForestDataError&quot;
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;strict_boolean_limit&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;accepted_at8&quot;: {
+          &quot;body_bytes&quot;: 8,
+          &quot;chunks&quot;: 1,
+          &quot;completed&quot;: true
+        },
+        &quot;rejected_at7&quot;: {
+          &quot;authority&quot;: false,
+          &quot;reason&quot;: &quot;scalar bytes&quot;,
+          &quot;type&quot;: &quot;ForestLimit&quot;
+        }
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;quoted_scalar_exact_boundary&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;accepted_at4&quot;: {
+          &quot;body_bytes&quot;: 7,
+          &quot;chunks&quot;: 1,
+          &quot;completed&quot;: true
+        },
+        &quot;rejected_at3&quot;: {
+          &quot;authority&quot;: false,
+          &quot;reason&quot;: &quot;depth&quot;,
+          &quot;type&quot;: &quot;ForestLimit&quot;
+        }
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;depth_exact_boundary&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;accepted&quot;: {
+          &quot;body_bytes&quot;: 33,
+          &quot;chunks&quot;: 1,
+          &quot;completed&quot;: true
+        },
+        &quot;exact_logical_bytes&quot;: 34,
+        &quot;rejected_below&quot;: {
+          &quot;authority&quot;: false,
+          &quot;reason&quot;: &quot;aggregate document bytes&quot;,
+          &quot;type&quot;: &quot;ForestLimit&quot;
+        }
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;expanded_multiplicity_exact_boundary&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;accepted&quot;: {
+          &quot;body_bytes&quot;: 4,
+          &quot;chunks&quot;: 1,
+          &quot;completed&quot;: true
+        },
+        &quot;exact_wire_bytes&quot;: 169,
+        &quot;rejected_below&quot;: {
+          &quot;authority&quot;: false,
+          &quot;reason&quot;: &quot;wire bytes&quot;,
+          &quot;type&quot;: &quot;ForestLimit&quot;
+        }
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;physical_wire_exact_boundary&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;attempted_operations&quot;: 2,
+        &quot;prepared&quot;: false,
+        &quot;refusal&quot;: {
+          &quot;authority&quot;: false,
+          &quot;reason&quot;: &quot;work&quot;,
+          &quot;type&quot;: &quot;ForestLimit&quot;
+        }
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;private_work_cap_no_partial_authority&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;attempted_operations&quot;: 41247,
+        &quot;body_bytes&quot;: 8193,
+        &quot;chunks&quot;: 257,
+        &quot;completed&quot;: true,
+        &quot;maximum_callback_operation_gap&quot;: 1024,
+        &quot;reasons&quot;: {
+          &quot;catalogue_entry&quot;: 1,
+          &quot;document_completion&quot;: 1,
+          &quot;document_pull_entry&quot;: 258,
+          &quot;document_stream_entry&quot;: 1,
+          &quot;documents_entry&quot;: 1,
+          &quot;initial&quot;: 1,
+          &quot;operation_cadence&quot;: 12,
+          &quot;preparation_completion&quot;: 1,
+          &quot;yield_chunk&quot;: 257
+        }
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;cadence_and_forced_public_entries&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;chunks&quot;: 3,
+        &quot;closed_next_callback_delta&quot;: 0,
+        &quot;last_chunk_requires_trailing_pull&quot;: true
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;chunk_boundary_and_trailing_completion&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;exact_exception_objects&quot;: [
+          &quot;RuntimeError&quot;,
+          &quot;ValueError&quot;,
+          &quot;StopIteration&quot;
+        ],
+        &quot;initial_checkpoint&quot;: true
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;foreign_prepare_exception_identity&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;completed&quot;: false,
+        &quot;exact_exception_objects&quot;: [
+          &quot;RuntimeError&quot;,
+          &quot;ValueError&quot;,
+          &quot;StopIteration&quot;
+        ],
+        &quot;manual_next&quot;: true
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;foreign_stream_exception_identity&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;body_already_returned&quot;: true,
+        &quot;completed&quot;: false,
+        &quot;exact_StopIteration_identity&quot;: true
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;late_completion_exception_identity&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;completed&quot;: false,
+        &quot;own_reentrancy_identity&quot;: true,
+        &quot;passive_statistics&quot;: true
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;callback_reentrancy_identity&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;closed_incomplete&quot;: true,
+        &quot;closed_next_callback_delta&quot;: 0,
+        &quot;completed&quot;: false
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;close_incomplete_and_closed_next_no_callback&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;exact_identity&quot;: true,
+        &quot;observations&quot;: [
+          {
+            &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+            &quot;operation&quot;: &quot;scalar_scan_window&quot;,
+            &quot;phase&quot;: &quot;VALIDATE_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;validation_cadence&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;ValueError&quot;,
+            &quot;operation&quot;: &quot;scalar_scan_window&quot;,
+            &quot;phase&quot;: &quot;VALIDATE_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;validation_cadence&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;StopIteration&quot;,
+            &quot;operation&quot;: &quot;scalar_scan_window&quot;,
+            &quot;phase&quot;: &quot;VALIDATE_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;validation_cadence&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+            &quot;operation&quot;: &quot;ascii_token_begin&quot;,
+            &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+            &quot;target&quot;: &quot;cache_build_cadence&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;ValueError&quot;,
+            &quot;operation&quot;: &quot;ascii_token_begin&quot;,
+            &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+            &quot;target&quot;: &quot;cache_build_cadence&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;StopIteration&quot;,
+            &quot;operation&quot;: &quot;ascii_token_begin&quot;,
+            &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+            &quot;target&quot;: &quot;cache_build_cadence&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+            &quot;operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+            &quot;target&quot;: &quot;preparation_completion&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;ValueError&quot;,
+            &quot;operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+            &quot;target&quot;: &quot;preparation_completion&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;StopIteration&quot;,
+            &quot;operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;BUILD_BOUNDED_FOREST_FRAGMENTS&quot;,
+            &quot;target&quot;: &quot;preparation_completion&quot;
+          }
+        ],
+        &quot;private_State_access&quot;: false
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;foreign_validation_cache_and_preparation_completion_identity&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    },
+    {
+      &quot;details&quot;: {
+        &quot;exact_identity&quot;: true,
+        &quot;manual_next&quot;: true,
+        &quot;observations&quot;: [
+          {
+            &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+            &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;documents_entry&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;ValueError&quot;,
+            &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;documents_entry&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;StopIteration&quot;,
+            &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;documents_entry&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+            &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;catalogue_entry&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;ValueError&quot;,
+            &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;catalogue_entry&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;StopIteration&quot;,
+            &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;catalogue_entry&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+            &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;document_stream_entry&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;ValueError&quot;,
+            &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;document_stream_entry&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;StopIteration&quot;,
+            &quot;last_operation&quot;: &quot;preparation_completion&quot;,
+            &quot;phase&quot;: &quot;PREPARED_COMPLETE_FOREST&quot;,
+            &quot;target&quot;: &quot;document_stream_entry&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+            &quot;last_operation&quot;: &quot;yield_chunk&quot;,
+            &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+            &quot;target&quot;: &quot;yield_chunk&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;ValueError&quot;,
+            &quot;last_operation&quot;: &quot;yield_chunk&quot;,
+            &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+            &quot;target&quot;: &quot;yield_chunk&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;StopIteration&quot;,
+            &quot;last_operation&quot;: &quot;yield_chunk&quot;,
+            &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+            &quot;target&quot;: &quot;yield_chunk&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+            &quot;last_operation&quot;: &quot;document_completion&quot;,
+            &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+            &quot;target&quot;: &quot;document_completion&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;ValueError&quot;,
+            &quot;last_operation&quot;: &quot;document_completion&quot;,
+            &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+            &quot;target&quot;: &quot;document_completion&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;StopIteration&quot;,
+            &quot;last_operation&quot;: &quot;document_completion&quot;,
+            &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+            &quot;target&quot;: &quot;document_completion&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;RuntimeError&quot;,
+            &quot;last_operation&quot;: &quot;stream_walk_action&quot;,
+            &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+            &quot;target&quot;: &quot;operation_cadence&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;ValueError&quot;,
+            &quot;last_operation&quot;: &quot;stream_walk_action&quot;,
+            &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+            &quot;target&quot;: &quot;operation_cadence&quot;
+          },
+          {
+            &quot;exception_type&quot;: &quot;StopIteration&quot;,
+            &quot;last_operation&quot;: &quot;stream_walk_action&quot;,
+            &quot;phase&quot;: &quot;STREAM_DOCUMENT&quot;,
+            &quot;target&quot;: &quot;operation_cadence&quot;
+          }
+        ],
+        &quot;private_State_access&quot;: false
+      },
+      &quot;mathematical_authority&quot;: false,
+      &quot;name&quot;: &quot;foreign_public_yield_completion_and_stream_cadence_identity&quot;,
+      &quot;schema&quot;: &quot;inverse-cadence-finite-diagnostic-v1&quot;,
+      &quot;status&quot;: &quot;passed&quot;
+    }
+  ],
+  &quot;inputs&quot;: [
+    {
+      &quot;forest&quot;: {
+        &quot;bytes&quot;: 15181545,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json&quot;,
+        &quot;sha256&quot;: &quot;f7e39ed6b02d3c6b80cccb5e40ac4f254a1d989fdf129b6571df500d1bbe554a&quot;
+      },
+      &quot;mode&quot;: &quot;fixed&quot;,
+      &quot;result&quot;: {
+        &quot;bytes&quot;: 36914326,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json&quot;,
+        &quot;sha256&quot;: &quot;16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25&quot;
+      }
+    },
+    {
+      &quot;forest&quot;: {
+        &quot;bytes&quot;: 14906873,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json&quot;,
+        &quot;sha256&quot;: &quot;c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146&quot;
+      },
+      &quot;mode&quot;: &quot;symbolic&quot;,
+      &quot;result&quot;: {
+        &quot;bytes&quot;: 34001836,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json&quot;,
+        &quot;sha256&quot;: &quot;e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310&quot;
+      }
+    }
+  ],
+  &quot;limits&quot;: {
+    &quot;closure_deadline&quot;: 761984860378166,
+    &quot;diagnostics&quot;: {
+      &quot;cache_bytes&quot;: 65536,
+      &quot;cache_entries&quot;: 4096,
+      &quot;chunk_bytes&quot;: 4096,
+      &quot;depth&quot;: 128,
+      &quot;edges&quot;: 40000,
+      &quot;expanded_bytes&quot;: 1048576,
+      &quot;fragment_bytes&quot;: 4096,
+      &quot;integer_digits&quot;: 4096,
+      &quot;nodes&quot;: 20000,
+      &quot;roots&quot;: 128,
+      &quot;scalar_bytes&quot;: 65536,
+      &quot;wire_bytes&quot;: 1048576,
+      &quot;work&quot;: 200000
+    },
+    &quot;inverse&quot;: {
+      &quot;cache_bytes&quot;: 8388608,
+      &quot;cache_entries&quot;: 65536,
+      &quot;chunk_bytes&quot;: 65536,
+      &quot;depth&quot;: 513,
+      &quot;edges&quot;: 8000000,
+      &quot;expanded_bytes&quot;: 134217728,
+      &quot;fragment_bytes&quot;: 4096,
+      &quot;integer_digits&quot;: 4096,
+      &quot;nodes&quot;: 2000000,
+      &quot;roots&quot;: 4096,
+      &quot;scalar_bytes&quot;: 16777216,
+      &quot;wire_bytes&quot;: 134217728,
+      &quot;work&quot;: 30000000
+    },
+    &quot;outer_logs_bytes&quot;: 4194304,
+    &quot;outer_physical_and_logical_bytes&quot;: 134217728,
+    &quot;outer_worker_peak_bytes&quot;: 1073741824,
+    &quot;work_deadline&quot;: 761954860378166
+  },
+  &quot;mathematical_authority&quot;: false,
+  &quot;owned_inverse_source&quot;: {
+    &quot;bytes&quot;: 24144,
+    &quot;path&quot;: &quot;/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py&quot;,
+    &quot;sha256&quot;: &quot;fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7&quot;
+  },
+  &quot;reference_stats&quot;: {
+    &quot;bytes&quot;: 66838,
+    &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json&quot;,
+    &quot;sha256&quot;: &quot;002b536459e70bef5c89ca6a3be8d82671ed3feb1196b0b3ae9bce035f3cc832&quot;
+  },
+  &quot;representation_only&quot;: true,
+  &quot;schema&quot;: &quot;inverse-cadence-qualification-result-v1&quot;,
+  &quot;scientific_acceptance&quot;: false,
+  &quot;source_only_authorship_not_execution_authority&quot;: true,
+  &quot;stage&quot;: &quot;COMPLETE&quot;,
+  &quot;started_monotonic&quot;: 761774976986250,
+  &quot;status&quot;: &quot;FINITE_REPRESENTATION_QUALIFIED&quot;,
+  &quot;version&quot;: &quot;inverse-cadence-qualification-v2-disposition-fixes&quot;,
+  &quot;whole_inputs&quot;: [
+    {
+      &quot;V6_retained_reference_comparison&quot;: null,
+      &quot;completed_monotonic&quot;: 761784215928125,
+      &quot;explicit_completed&quot;: true,
+      &quot;forest&quot;: {
+        &quot;bytes&quot;: 15181545,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/evidence-forest.json&quot;,
+        &quot;sha256&quot;: &quot;f7e39ed6b02d3c6b80cccb5e40ac4f254a1d989fdf129b6571df500d1bbe554a&quot;
+      },
+      &quot;full_original_file_sha256&quot;: &quot;16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25&quot;,
+      &quot;mathematical_authority&quot;: false,
+      &quot;mode&quot;: &quot;fixed&quot;,
+      &quot;original_result&quot;: {
+        &quot;bytes&quot;: 36914326,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-fixed-v1/result.json&quot;,
+        &quot;sha256&quot;: &quot;16e1935a7b46b70dc8588e1427d9de5de59554816f743de2ea9bd462a6545b25&quot;
+      },
+      &quot;prior_fixed_failure_recovered&quot;: false,
+      &quot;reconstructed_complete_file_bytes&quot;: 36914326,
+      &quot;representation_only&quot;: true,
+      &quot;schema&quot;: &quot;inverse-cadence-whole-input-qualification-v1&quot;,
+      &quot;started_monotonic&quot;: 761775607785708,
+      &quot;statistics&quot;: {
+        &quot;aggregate_document_bytes&quot;: 36914326,
+        &quot;aggregate_document_value_occurrences&quot;: 12370460,
+        &quot;attempted_operations&quot;: 22874349,
+        &quot;build_copied_bytes&quot;: 1819553,
+        &quot;cache_attempts&quot;: 54607,
+        &quot;cache_capacity_fallbacks&quot;: 0,
+        &quot;cache_entries&quot;: 54607,
+        &quot;cache_hits_build&quot;: 176926,
+        &quot;cache_hits_stream&quot;: 2266725,
+        &quot;cache_ineligible_nodes&quot;: 26478,
+        &quot;cache_payload_bytes&quot;: 1819553,
+        &quot;callback_cadence_operations&quot;: 1024,
+        &quot;callback_dispatches&quot;: 23211,
+        &quot;callback_dispatches_by_reason&quot;: {
+          &quot;document_completion&quot;: 1,
+          &quot;document_pull_entry&quot;: 565,
+          &quot;document_stream_entry&quot;: 1,
+          &quot;documents_entry&quot;: 1,
+          &quot;initial&quot;: 1,
+          &quot;operation_cadence&quot;: 22077,
+          &quot;preparation_completion&quot;: 1,
+          &quot;yield_chunk&quot;: 564
+        },
+        &quot;catalogue_roots&quot;: 183,
+        &quot;documents&quot;: {
+          &quot;receiver:complete-legacy-result&quot;: {
+            &quot;attempts&quot;: 1,
+            &quot;body_bytes&quot;: 36914325,
+            &quot;chunks&quot;: 564,
+            &quot;closed_incomplete&quot;: false,
+            &quot;completed&quot;: true,
+            &quot;copied_body_bytes&quot;: 36914325,
+            &quot;emitted_body_bytes&quot;: 36914325,
+            &quot;logical_file_bytes&quot;: 36914326,
+            &quot;logical_value_occurrences&quot;: 12370460,
+            &quot;node_height&quot;: 186,
+            &quot;root_id&quot;: 81084,
+            &quot;stream_value_occurrences&quot;: 12370460
+          }
+        },
+        &quot;execution_profile&quot;: &quot;independent-forest-actual-operations-v2-callback-cadence1024&quot;,
+        &quot;last_callback_operation&quot;: 22874349,
+        &quot;last_operation&quot;: &quot;document_completion&quot;,
+        &quot;logical_documents&quot;: 1,
+        &quot;maximum_callback_operation_gap&quot;: 1024,
+        &quot;operations_by_kind&quot;: {
+          &quot;ascii_token_begin&quot;: 1829,
+          &quot;ascii_token_end&quot;: 1829,
+          &quot;build_cache_hit&quot;: 176926,
+          &quot;build_copy&quot;: 422506,
+          &quot;build_walk_action&quot;: 599432,
+          &quot;cache_eligibility&quot;: 81085,
+          &quot;catalogue_reference_digits&quot;: 183,
+          &quot;catalogue_root&quot;: 183,
+          &quot;document_completion&quot;: 1,
+          &quot;document_label_read&quot;: 1,
+          &quot;document_lookup&quot;: 1,
+          &quot;document_stream_attempt&quot;: 1,
+          &quot;float_canonical_begin&quot;: 385,
+          &quot;float_canonical_end&quot;: 385,
+          &quot;float_parse_begin&quot;: 385,
+          &quot;float_parse_end&quot;: 385,
+          &quot;freeze_fragment&quot;: 54607,
+          &quot;initial&quot;: 1,
+          &quot;integer_lexeme_begin&quot;: 1444,
+          &quot;integer_lexeme_end&quot;: 1444,
+          &quot;logical_document&quot;: 1,
+          &quot;preparation_completion&quot;: 1,
+          &quot;reachability_edge&quot;: 2250966,
+          &quot;reachability_node&quot;: 81085,
+          &quot;reference_wire_digits&quot;: 2250966,
+          &quot;scalar_scan_window&quot;: 94604,
+          &quot;stream_cache_hit&quot;: 2266725,
+          &quot;stream_copy_block&quot;: 4759869,
+          &quot;stream_walk_action&quot;: 7053159,
+          &quot;tokenize_begin&quot;: 93657,
+          &quot;tokenize_end&quot;: 93657,
+          &quot;typed_equality_begin&quot;: 81085,
+          &quot;typed_equality_end&quot;: 81085,
+          &quot;validate_edge&quot;: 2250966,
+          &quot;validate_node&quot;: 81085,
+          &quot;validate_pair&quot;: 91861,
+          &quot;yield_chunk&quot;: 564
+        },
+        &quot;pending_callback_operations&quot;: 0,
+        &quot;phase&quot;: &quot;DOCUMENT_COMPLETE&quot;,
+        &quot;prepared&quot;: true,
+        &quot;scalar_characters_scanned&quot;: 705869,
+        &quot;validated_edges&quot;: 2250966,
+        &quot;validated_nodes&quot;: 81085,
+        &quot;wire_canonical_bytes&quot;: 15181545
+      },
+      &quot;status&quot;: &quot;complete&quot;
+    },
+    {
+      &quot;V6_retained_reference_comparison&quot;: {
+        &quot;V6_callback_dispatches&quot;: 21304533,
+        &quot;V7_callback_dispatches&quot;: 21540,
+        &quot;all_per_kind_equal&quot;: true,
+        &quot;attempted_operations_equal&quot;: true,
+        &quot;scope&quot;: &quot;Same complete valid input and same public traversal sequence; changed callback scheduling/profile, no speed claim.&quot;
+      },
+      &quot;completed_monotonic&quot;: 761792514633625,
+      &quot;explicit_completed&quot;: true,
+      &quot;forest&quot;: {
+        &quot;bytes&quot;: 14906873,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/evidence-forest.json&quot;,
+        &quot;sha256&quot;: &quot;c783757e1f0119d60249ac6c43e581ecce35861471299fae67926d4cc840d146&quot;
+      },
+      &quot;full_original_file_sha256&quot;: &quot;e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310&quot;,
+      &quot;mathematical_authority&quot;: false,
+      &quot;mode&quot;: &quot;symbolic&quot;,
+      &quot;original_result&quot;: {
+        &quot;bytes&quot;: 34001836,
+        &quot;path&quot;: &quot;/private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/result.json&quot;,
+        &quot;sha256&quot;: &quot;e6e247eb9e52640d92b1ae51b837661be372bbdf2f6865d0273db13d2d6a0310&quot;
+      },
+      &quot;prior_fixed_failure_recovered&quot;: false,
+      &quot;reconstructed_complete_file_bytes&quot;: 34001836,
+      &quot;representation_only&quot;: true,
+      &quot;schema&quot;: &quot;inverse-cadence-whole-input-qualification-v1&quot;,
+      &quot;started_monotonic&quot;: 761784215967375,
+      &quot;statistics&quot;: {
+        &quot;aggregate_document_bytes&quot;: 34001836,
+        &quot;aggregate_document_value_occurrences&quot;: 10992051,
+        &quot;attempted_operations&quot;: 21304533,
+        &quot;build_copied_bytes&quot;: 1344963,
+        &quot;cache_attempts&quot;: 43209,
+        &quot;cache_capacity_fallbacks&quot;: 0,
+        &quot;cache_entries&quot;: 43209,
+        &quot;cache_hits_build&quot;: 119867,
+        &quot;cache_hits_stream&quot;: 2083598,
+        &quot;cache_ineligible_nodes&quot;: 35783,
+        &quot;cache_payload_bytes&quot;: 1344963,
+        &quot;callback_cadence_operations&quot;: 1024,
+        &quot;callback_dispatches&quot;: 21540,
+        &quot;callback_dispatches_by_reason&quot;: {
+          &quot;document_completion&quot;: 1,
+          &quot;document_pull_entry&quot;: 520,
+          &quot;document_stream_entry&quot;: 1,
+          &quot;documents_entry&quot;: 1,
+          &quot;initial&quot;: 1,
+          &quot;operation_cadence&quot;: 20496,
+          &quot;preparation_completion&quot;: 1,
+          &quot;yield_chunk&quot;: 519
+        },
+        &quot;catalogue_roots&quot;: 184,
+        &quot;documents&quot;: {
+          &quot;receiver:complete-legacy-result&quot;: {
+            &quot;attempts&quot;: 1,
+            &quot;body_bytes&quot;: 34001835,
+            &quot;chunks&quot;: 519,
+            &quot;closed_incomplete&quot;: false,
+            &quot;completed&quot;: true,
+            &quot;copied_body_bytes&quot;: 34001835,
+            &quot;emitted_body_bytes&quot;: 34001835,
+            &quot;logical_file_bytes&quot;: 34001836,
+            &quot;logical_value_occurrences&quot;: 10992051,
+            &quot;node_height&quot;: 20,
+            &quot;root_id&quot;: 78991,
+            &quot;stream_value_occurrences&quot;: 10992051
+          }
+        },
+        &quot;execution_profile&quot;: &quot;independent-forest-actual-operations-v2-callback-cadence1024&quot;,
+        &quot;last_callback_operation&quot;: 21304533,
+        &quot;last_operation&quot;: &quot;document_completion&quot;,
+        &quot;logical_documents&quot;: 1,
+        &quot;maximum_callback_operation_gap&quot;: 1024,
+        &quot;operations_by_kind&quot;: {
+          &quot;ascii_token_begin&quot;: 1512,
+          &quot;ascii_token_end&quot;: 1512,
+          &quot;build_cache_hit&quot;: 119867,
+          &quot;build_copy&quot;: 296280,
+          &quot;build_walk_action&quot;: 416147,
+          &quot;cache_eligibility&quot;: 78992,
+          &quot;catalogue_reference_digits&quot;: 184,
+          &quot;catalogue_root&quot;: 184,
+          &quot;document_completion&quot;: 1,
+          &quot;document_label_read&quot;: 1,
+          &quot;document_lookup&quot;: 1,
+          &quot;document_stream_attempt&quot;: 1,
+          &quot;float_canonical_begin&quot;: 81,
+          &quot;float_canonical_end&quot;: 81,
+          &quot;float_parse_begin&quot;: 81,
+          &quot;float_parse_end&quot;: 81,
+          &quot;freeze_fragment&quot;: 43209,
+          &quot;initial&quot;: 1,
+          &quot;integer_lexeme_begin&quot;: 1431,
+          &quot;integer_lexeme_end&quot;: 1431,
+          &quot;logical_document&quot;: 1,
+          &quot;preparation_completion&quot;: 1,
+          &quot;reachability_edge&quot;: 2219968,
+          &quot;reachability_node&quot;: 78992,
+          &quot;reference_wire_digits&quot;: 2219968,
+          &quot;scalar_scan_window&quot;: 90555,
+          &quot;stream_cache_hit&quot;: 2083598,
+          &quot;stream_copy_block&quot;: 4403551,
+          &quot;stream_walk_action&quot;: 6522568,
+          &quot;tokenize_begin&quot;: 89207,
+          &quot;tokenize_end&quot;: 89207,
+          &quot;typed_equality_begin&quot;: 78992,
+          &quot;typed_equality_end&quot;: 78992,
+          &quot;validate_edge&quot;: 2219968,
+          &quot;validate_node&quot;: 78992,
+          &quot;validate_pair&quot;: 88376,
+          &quot;yield_chunk&quot;: 519
+        },
+        &quot;pending_callback_operations&quot;: 0,
+        &quot;phase&quot;: &quot;DOCUMENT_COMPLETE&quot;,
+        &quot;prepared&quot;: true,
+        &quot;scalar_characters_scanned&quot;: 658845,
+        &quot;validated_edges&quot;: 2219968,
+        &quot;validated_nodes&quot;: 78992,
+        &quot;wire_canonical_bytes&quot;: 14906873
+      },
+      &quot;status&quot;: &quot;complete&quot;
+    }
+  ]
+}</pre></details></section><footer>Research program active. Finite engineering milestone only. Earlier negative outcomes remain part of the record.</footer></main></body></html>

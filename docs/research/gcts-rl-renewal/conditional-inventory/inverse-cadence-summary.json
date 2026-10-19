@@ -1,0 +1,524 @@
+{
+  "audit": {
+    "GCTS_RL_advantage_established": false,
+    "actual_physical_files_bytes": 28830,
+    "author_identity": "/root",
+    "check_count": 53,
+    "checks": [
+      {
+        "check": "outer resource candidate",
+        "passed": true
+      },
+      {
+        "check": "external terminal0 and gate",
+        "passed": true
+      },
+      {
+        "check": "owned worker exit group logs and once",
+        "passed": true
+      },
+      {
+        "check": "exact joined subject",
+        "passed": true
+      },
+      {
+        "check": "positive final checks before180",
+        "passed": true
+      },
+      {
+        "check": "external terminal before210",
+        "passed": true
+      },
+      {
+        "check": "Darwin worker highwater1GiB no Native",
+        "passed": true
+      },
+      {
+        "check": "representation-only scope",
+        "passed": true
+      },
+      {
+        "check": "whole raw /private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/worker-receipt.json",
+        "passed": true
+      },
+      {
+        "check": "whole raw /private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/result.json",
+        "passed": true
+      },
+      {
+        "check": "exact final header/result",
+        "passed": true
+      },
+      {
+        "check": "worker positive timestamp before180",
+        "passed": true
+      },
+      {
+        "check": "whole raw /private/tmp/gcts-inverse-cadence-ROOT-20261019/qualification-declaration-v2.json",
+        "passed": true
+      },
+      {
+        "check": "whole raw /private/tmp/gcts-owned-evidence-integration-ROOT-20261019/actual-symbolic-v1/worker-receipt.json",
+        "passed": true
+      },
+      {
+        "check": "complete fresh qualification",
+        "passed": true
+      },
+      {
+        "check": "whole30diagnostic names/order",
+        "passed": true
+      },
+      {
+        "check": "all finite diagnostic statuses",
+        "passed": true
+      },
+      {
+        "check": "27actually reached phase/error observations",
+        "passed": true
+      },
+      {
+        "check": "prepare exact foreign classes",
+        "passed": true
+      },
+      {
+        "check": "public/stream exact foreign classes",
+        "passed": true
+      },
+      {
+        "check": "both full ordered reconstructions",
+        "passed": true
+      },
+      {
+        "check": "exact original pair fixed",
+        "passed": true
+      },
+      {
+        "check": "unchanged full input fixedforest",
+        "passed": true
+      },
+      {
+        "check": "unchanged full input fixedresult",
+        "passed": true
+      },
+      {
+        "check": "whole BODY+LF byte evidence fixed",
+        "passed": true
+      },
+      {
+        "check": "whole independent document ledger fixed",
+        "passed": true
+      },
+      {
+        "check": "physical/logical independent ledger fixed",
+        "passed": true
+      },
+      {
+        "check": "new callback cadence fixed",
+        "passed": true
+      },
+      {
+        "check": "full operation/callback census fixed",
+        "passed": true
+      },
+      {
+        "check": "all full output chunks fixed",
+        "passed": true
+      },
+      {
+        "check": "no historical proof reclassification fixed",
+        "passed": true
+      },
+      {
+        "check": "exact original pair symbolic",
+        "passed": true
+      },
+      {
+        "check": "unchanged full input symbolicforest",
+        "passed": true
+      },
+      {
+        "check": "unchanged full input symbolicresult",
+        "passed": true
+      },
+      {
+        "check": "whole BODY+LF byte evidence symbolic",
+        "passed": true
+      },
+      {
+        "check": "whole independent document ledger symbolic",
+        "passed": true
+      },
+      {
+        "check": "physical/logical independent ledger symbolic",
+        "passed": true
+      },
+      {
+        "check": "new callback cadence symbolic",
+        "passed": true
+      },
+      {
+        "check": "full operation/callback census symbolic",
+        "passed": true
+      },
+      {
+        "check": "all full output chunks symbolic",
+        "passed": true
+      },
+      {
+        "check": "no historical proof reclassification symbolic",
+        "passed": true
+      },
+      {
+        "check": "all old symbolic operation counts exact",
+        "passed": true
+      },
+      {
+        "check": "aggregate full logical result cap",
+        "passed": true
+      },
+      {
+        "check": "all actual files plus observer reserve inside conservative physical cap",
+        "passed": true
+      },
+      {
+        "check": "final full Source/declaration python",
+        "passed": true
+      },
+      {
+        "check": "final full Source/declaration worker",
+        "passed": true
+      },
+      {
+        "check": "final full Source/declaration harness",
+        "passed": true
+      },
+      {
+        "check": "final full Source/declaration inverse",
+        "passed": true
+      },
+      {
+        "check": "final full Source/declaration runner",
+        "passed": true
+      },
+      {
+        "check": "final full Source/declaration observer",
+        "passed": true
+      },
+      {
+        "check": "final full Source/declaration reference",
+        "passed": true
+      },
+      {
+        "check": "final full Source/declaration declaration",
+        "passed": true
+      },
+      {
+        "check": "zero scientific activity",
+        "passed": true
+      }
+    ],
+    "classification": "FINITE REPRESENTATION QUALIFIED",
+    "conservative_physical_bytes": 9463225,
+    "current_inverse_qualification_admitted": true,
+    "diagnostic_groups": 30,
+    "external_terminal_seconds": 17.810942334,
+    "full_successor_pipeline_pair_qualified": false,
+    "goal_complete": false,
+    "historical_fixed_integration_admitted": false,
+    "logical_result_bytes": 70916162,
+    "mathematical_acceptance": false,
+    "mismatch_count": 0,
+    "new_phase_exception_observations": 27,
+    "new_theorem": false,
+    "next_step": "Couple this now-qualified inverse to a fresh independently reviewed common-profile full original001 fixed/symbolic pair, retaining old failures and all gates. No causal speed claim without a separate matched old/new inverse ablation.",
+    "no_replay": true,
+    "references": {
+      "plan": {
+        "bytes": 3499,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1.json",
+        "sha256": "780a5ac82e606cdab68ce1cb9ba5c934934eff0757b6e775b3e89cbb575cdc28"
+      },
+      "result": {
+        "bytes": 24599,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/result.json",
+        "sha256": "e79b62f2a4f7de8931f3f713bb84c7dd5b8068e97fb7190997dcf635873db017"
+      },
+      "runner": {
+        "bytes": 2789,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/runner-receipt.json",
+        "sha256": "f9944a9dd664418196e2c2ef650c83d1a3e7960864df65692b922baec08db9f6"
+      },
+      "terminal": {
+        "bytes": 1433,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1-terminal-observation/terminal.json",
+        "sha256": "294ebe518358368ad1d65fdcad0487d0a4c214931f17b40e97e9ac43680157c0"
+      },
+      "worker": {
+        "bytes": 913,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/worker-receipt.json",
+        "sha256": "57d92f25d38ba784d3ee6d504e76d2fd1c26716f276bedb608a3667b93a588b8"
+      }
+    },
+    "schema": "ROOT-inverse-cadence-saved-audit-v1",
+    "scientific_calls_in_audit": 0,
+    "sources": {
+      "harness": {
+        "bytes": 32782,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/inverse_cadence_qualification_v2.py",
+        "sha256": "24c36efe0f73d67c1e297acdcf7fbd6579b90dbbfd28e6fd3840f40be4b245df"
+      },
+      "inverse": {
+        "bytes": 24144,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+        "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+      },
+      "observer": {
+        "bytes": 5121,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/observe_inverse_once_v3.py",
+        "sha256": "8425d3765d97fd76ce2e96e99af1895f00f176e3b598815f142986d985b9b02c"
+      },
+      "runner": {
+        "bytes": 12613,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/run_inverse_once_v3.py",
+        "sha256": "ea37fe7513227faf556fa5000046a964b89b7d5fd6fd22a6262ba43efd39152e"
+      },
+      "worker": {
+        "bytes": 8319,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/qualify_inverse_worker_v3.py",
+        "sha256": "272e3a8692e345bfc3acce5fb1822dc76a8eeab8dbdbaad431697a3c9661273b"
+      }
+    },
+    "whole_inputs": [
+      {
+        "attempted_operations": 22874349,
+        "callback_dispatches": 23211,
+        "callback_reasons": {
+          "document_completion": 1,
+          "document_pull_entry": 565,
+          "document_stream_entry": 1,
+          "documents_entry": 1,
+          "initial": 1,
+          "operation_cadence": 22077,
+          "preparation_completion": 1,
+          "yield_chunk": 564
+        },
+        "complete_reconstruction_seconds": 8.608142417,
+        "forest_bytes": 15181545,
+        "logical_file_bytes": 36914326,
+        "maximum_callback_operation_gap": 1024,
+        "mode": "fixed",
+        "symbolic_retained_reference_comparison": null
+      },
+      {
+        "attempted_operations": 21304533,
+        "callback_dispatches": 21540,
+        "callback_reasons": {
+          "document_completion": 1,
+          "document_pull_entry": 520,
+          "document_stream_entry": 1,
+          "documents_entry": 1,
+          "initial": 1,
+          "operation_cadence": 20496,
+          "preparation_completion": 1,
+          "yield_chunk": 519
+        },
+        "complete_reconstruction_seconds": 8.29866625,
+        "forest_bytes": 14906873,
+        "logical_file_bytes": 34001836,
+        "maximum_callback_operation_gap": 1024,
+        "mode": "symbolic",
+        "symbolic_retained_reference_comparison": {
+          "V6_callback_dispatches": 21304533,
+          "V7_callback_dispatches": 21540,
+          "all_per_kind_equal": true,
+          "attempted_operations_equal": true,
+          "scope": "Same complete valid input and same public traversal sequence; changed callback scheduling/profile, no speed claim."
+        }
+      }
+    ],
+    "worker_peak_bytes": 326238208
+  },
+  "independent_saved_review": {
+    "Native_calls": 0,
+    "actual_execution_authorized": false,
+    "all_current_five_Sources": {
+      "harness": {
+        "bytes": 32782,
+        "path": "/private/tmp/gcts-inverse-cadence-library-20261019/inverse_cadence_qualification_v2.py",
+        "sha256": "24c36efe0f73d67c1e297acdcf7fbd6579b90dbbfd28e6fd3840f40be4b245df"
+      },
+      "inverse": {
+        "bytes": 24144,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/independent_forest_inverse_v7.py",
+        "sha256": "fcbed7c5b95c8b8e6b1fc152c3d93689d644aa2e3ac32810dc77857e475750a7"
+      },
+      "observer": {
+        "bytes": 5121,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/observe_inverse_once_v3.py",
+        "sha256": "8425d3765d97fd76ce2e96e99af1895f00f176e3b598815f142986d985b9b02c"
+      },
+      "runner": {
+        "bytes": 12613,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/run_inverse_once_v3.py",
+        "sha256": "ea37fe7513227faf556fa5000046a964b89b7d5fd6fd22a6262ba43efd39152e"
+      },
+      "worker": {
+        "bytes": 8319,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/qualify_inverse_worker_v3.py",
+        "sha256": "272e3a8692e345bfc3acce5fb1822dc76a8eeab8dbdbaad431697a3c9661273b"
+      }
+    },
+    "audit": {
+      "bytes": 17417,
+      "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/saved-qualification-audit-v1.json",
+      "sha256": "f8c3a9f07dfac3b2a92edbdabcb09ea332e998638a9ad204fde3ae31f9fc4fde"
+    },
+    "audit_Source": {
+      "bytes": 17315,
+      "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/audit_saved_qualification_v1.py",
+      "sha256": "341fe3c3dc56579ce929586e11de37046ac91bbf7f16bac8bd7a6b75dbbf96f6"
+    },
+    "author_identity": "/root",
+    "check_count": 135,
+    "codec_or_inverse_replays": 0,
+    "component_evaluations": 0,
+    "disposition": "Scoped saved-data PASS for the exact once-only standalone V7 inverse qualification. Publication bytes/claims and any future full-pipeline Source/plan/actual are separate reviews. Tools stopped.",
+    "final_grant_review": {
+      "bytes": 9714,
+      "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-final-grant-delta-review-v1.json",
+      "sha256": "e70848bf4276222eb1cc98a741968fd00b01c8f3e0f8549d2c6015624a6518df"
+    },
+    "findings": [],
+    "finite_representation_gates_supported": true,
+    "full_successor_pipeline_pair_qualified": false,
+    "historical_fixed_integration_admitted": false,
+    "limitations": [
+      "This review authenticates retained metadata and raw bytes under the already reviewed Source/runtime model. It does not independently replay byte generation, verify exception-object identities from serialized strings alone, execute malformed fixtures, rerun an inverse, or supply a universal inverse/kernel soundness theorem. Full-byte/identity execution claims are supported conditionally by reviewed exact Source plus recorded current execution receipts.",
+      "Each complete forest receives its own fresh inverse state/private30m counter, exactly as prospectively frozen; the two whole-input operation totals sum44,178,882. Diagnostic contexts have their declared tighter caps. No claim is made that the entire two-input job used one aggregate30m counter. Original180/210s global wall gates charge all fixtures, both inputs, imports/intake, output and known exit.",
+      "Callback cadence bounds dispatched attempted-operation gaps, not elapsed interruption latency or actual characters/CPU work. Public forced callbacks have separate counts and reset the cadence as declared. The retained count comparison proves no causal runtime speedup.",
+      "Parent Source-entry timing excludes observer/interpreter prelude; observer-main is separately recorded. Runner/observer RAM is excluded from the standalone worker highwater cap. Saved groupabsence/known-reap/log receipts are not an independent current process-table probe or continuous OS ownership proof.",
+      "Trusted pinned Python/five raw Sources, known isolated loader and exclusive ownership apply. No formal all-callable/code/default/cell seal, hostile private-state sandbox or continuous Source guard is claimed.",
+      "Control authored historical symbolic/helper/outer code and prior Source/plans reviews, not the current five Root/Library components. This is a distinct saved-data review of current execution, not fresh certification of inherited scientific algorithms.",
+      "No new theorem/proof/Model/Native/kernel/search result, GCTS/RL advantage, causal speed/memory gain or goal completion follows. Old consumed actuals and negative Source tuples remain immutable. No further launch, replay, cap increase or integration is authorized by this receipt."
+    ],
+    "limits": {
+      "expanded_bytes": 134217728,
+      "memory_bytes": 1073741824,
+      "overall_seconds": 210,
+      "result_bytes": 134217728,
+      "stderr_bytes": 4194304,
+      "stdout_bytes": 4194304,
+      "work_seconds": 180
+    },
+    "mathematical_acceptance": false,
+    "metrics": {
+      "actual_physical_files_bytes": 28830,
+      "conservative_physical_bytes": 9463225,
+      "diagnostic_groups": 30,
+      "external_Source_entry_seconds": 17.810942334,
+      "logical_result_bytes": 70916162,
+      "new_phase_exception_observations": 27,
+      "observer_main_seconds": 17.833550834,
+      "worker_peak_MiB": 311.125,
+      "worker_peak_bytes": 326238208
+    },
+    "mismatch_count": 0,
+    "pins": {
+      "Root_audit": {
+        "bytes": 9775,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/ROOT-saved-qualification-audit-v1.json",
+        "sha256": "53c056d95a38acd42bd6c799bc5de426096996300c62fe867daf7ed75862c096"
+      },
+      "consumed": {
+        "bytes": 529,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/CONSUMED.json",
+        "sha256": "c3ede6548368e4e3c01633748d2937a99919238f83612c3b7c487745cc5928d2"
+      },
+      "grant": {
+        "bytes": 1085,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/authorization-true-v1.json",
+        "sha256": "132b7ab6560a28b1873d6327f7797226a89105179f97f8072766a252de97c61a"
+      },
+      "plan": {
+        "bytes": 3499,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1.json",
+        "sha256": "780a5ac82e606cdab68ce1cb9ba5c934934eff0757b6e775b3e89cbb575cdc28"
+      },
+      "result": {
+        "bytes": 24599,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/result.json",
+        "sha256": "e79b62f2a4f7de8931f3f713bb84c7dd5b8068e97fb7190997dcf635873db017"
+      },
+      "runner": {
+        "bytes": 2789,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/runner-receipt.json",
+        "sha256": "f9944a9dd664418196e2c2ef650c83d1a3e7960864df65692b922baec08db9f6"
+      },
+      "terminal": {
+        "bytes": 1433,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/plan-authorized-v1-terminal-observation/terminal.json",
+        "sha256": "294ebe518358368ad1d65fdcad0487d0a4c214931f17b40e97e9ac43680157c0"
+      },
+      "worker": {
+        "bytes": 913,
+        "path": "/private/tmp/gcts-inverse-cadence-ROOT-20261019/actual-v1/worker-receipt.json",
+        "sha256": "57d92f25d38ba784d3ee6d504e76d2fd1c26716f276bedb608a3667b93a588b8"
+      }
+    },
+    "prior_Source_review": {
+      "bytes": 12851,
+      "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-components-Source-review-v2.json",
+      "sha256": "f6eb1a1d4976c3e530f43681aa3f25ce94ba6540cb2f4e1c647949bedea3a511"
+    },
+    "prior_prospective_review": {
+      "bytes": 9918,
+      "path": "/private/tmp/gcts-inverse-cadence-peer-20261019/typed-prospective-plan-review-v2.json",
+      "sha256": "3e1e6e645722303bb41a8bbd107a103b091a8094949e10badab3f3e09b6a6718"
+    },
+    "reviewed_evidence": [
+      "Independent135 raw/statistical checks0mismatches, then consistency check with Root53-check saved admission. All exact current plan/grant/review-role/raw Source/reference/input/result/header/log/terminal descriptors join. One marker was consumed before one worker launch under the unchanged13-field subject; no retry or new component call was performed by reviewer.",
+      "All thirty exact ordered diagnostic packets have passed/status/authorityfalse/schema/details joined to the frozen declaration. Returned metadata includes nine reached prepare-phase and18 public/stream phase/error observations, with exact target/class order and phase names. Initial/live RuntimeError/ValueError/StopIteration, late completion, private work quota, reentrancy, chunk/trailing-completion and closed-next metadata are retained.",
+      "Both complete fixed and symbolic forest originals retain their exact raw hashes. Their full original result hashes, BODY sizes plus one LF, explicit completion, copied/emitted bytes, chunk counts, logical occurrences and independent physical/logical ledgers join each returned whole-input packet. Literal saved forest node/edge/catalogue/document counts match reported statistics; no inverse traversal/ordinary-tree expansion was performed by reviewer.",
+      "Fixed22,874,349 operations/23,211 callbacks and symbolic21,304,533 operations/21,540 callbacks are below their respective30m prepared-forest private guards. Full per-kind sum and reason-counter sum match both totals; both record maximum dispatched-operation gap1024 and pending0. The symbolic complete per-kind map is literally equal to its original complete V6 header, without V6 execution.",
+      "Known worker0 wait4, exact PID/PGID45414, empty errors/signals, recorded groupabsence and ordinary-log closure join runner0 terminal and gate. Header work completion, known worker exit, runner final closed timestamp all precede180s; external recorded terminal17.810942334s precedes210s. Observer-main17.833550834s is a separate interval.",
+      "Worker-only Darwin highwater326238208B/311.125MiB is below1GiB with no Native child. Complete logical results sum70916162B; all four original raw artifacts sum101004580B. Conservative physical ledger9463225B equals26041B before runner plus9MiB outer metadata reserves and covers current actual/observer metadata; actual files total28830B. Separate logs remain bounded and empty worker logs hash correctly.",
+      "All mathematical/Native/Model/search/proof authority flags remain false in this actual. Fixed historical proof-pipeline failure is not recovered or relabeled. Root admits only finite inverse representation qualification; a future full matched pipeline comparison remains separate."
+    ],
+    "reviewer_identity": "/root/conventional_control_review",
+    "saved_data_only": true,
+    "saved_review_passed": true,
+    "schema": "inverse-cadence-qualification-independent-saved-review-v1",
+    "scientific_acceptance": false,
+    "scientific_calls": 0,
+    "scientific_replays": 0,
+    "whole_inputs": [
+      {
+        "attempted_operations": 22874349,
+        "callback_dispatches": 23211,
+        "complete_comparison_seconds": 8.608142417,
+        "complete_result_bytes": 36914326,
+        "edges": 2250966,
+        "forest_bytes": 15181545,
+        "logical_occurrences": 12370460,
+        "maximum_callback_operation_gap": 1024,
+        "mode": "fixed",
+        "nodes": 81085,
+        "roots": 183
+      },
+      {
+        "attempted_operations": 21304533,
+        "callback_dispatches": 21540,
+        "complete_comparison_seconds": 8.29866625,
+        "complete_result_bytes": 34001836,
+        "edges": 2219968,
+        "forest_bytes": 14906873,
+        "logical_occurrences": 10992051,
+        "maximum_callback_operation_gap": 1024,
+        "mode": "symbolic",
+        "nodes": 78992,
+        "roots": 184
+      }
+    ]
+  }
+}
